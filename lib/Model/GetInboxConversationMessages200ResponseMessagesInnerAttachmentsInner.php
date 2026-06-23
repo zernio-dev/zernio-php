@@ -89,8 +89,8 @@ class GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner imple
         'id' => false,
         'type' => false,
         'url' => false,
-        'filename' => false,
-        'preview_url' => false
+        'filename' => true,
+        'preview_url' => true
     ];
 
     /**
@@ -461,7 +461,14 @@ class GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner imple
     public function setFilename($filename)
     {
         if (is_null($filename)) {
-            throw new \InvalidArgumentException('non-nullable filename cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'filename');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('filename', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['filename'] = $filename;
 
@@ -488,7 +495,14 @@ class GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner imple
     public function setPreviewUrl($preview_url)
     {
         if (is_null($preview_url)) {
-            throw new \InvalidArgumentException('non-nullable preview_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'preview_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('preview_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['preview_url'] = $preview_url;
 

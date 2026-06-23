@@ -80,7 +80,7 @@ class WebhookPayloadCommentPost implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
+        'id' => true,
         'platform_post_id' => false
     ];
 
@@ -282,7 +282,7 @@ class WebhookPayloadCommentPost implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
+        if ($this->container['id'] === null && !$this->isNullableSetToNull('id')) {
             $invalidProperties[] = "'id' can't be null";
         }
         if ($this->container['platform_post_id'] === null) {
@@ -306,7 +306,7 @@ class WebhookPayloadCommentPost implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets id
      *
-     * @return string
+     * @return string|null
      */
     public function getId()
     {
@@ -316,14 +316,21 @@ class WebhookPayloadCommentPost implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets id
      *
-     * @param string $id Internal post ID (null for posts not published through Zernio)
+     * @param string|null $id Internal post ID (null for posts not published through Zernio)
      *
      * @return self
      */
     public function setId($id)
     {
         if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['id'] = $id;
 

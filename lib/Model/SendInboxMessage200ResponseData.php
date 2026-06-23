@@ -85,9 +85,9 @@ class SendInboxMessage200ResponseData implements ModelInterface, ArrayAccess, \J
       */
     protected static array $openAPINullables = [
         'message_id' => false,
-        'conversation_id' => false,
-        'sent_at' => false,
-        'message' => false
+        'conversation_id' => true,
+        'sent_at' => true,
+        'message' => true
     ];
 
     /**
@@ -358,7 +358,14 @@ class SendInboxMessage200ResponseData implements ModelInterface, ArrayAccess, \J
     public function setConversationId($conversation_id)
     {
         if (is_null($conversation_id)) {
-            throw new \InvalidArgumentException('non-nullable conversation_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'conversation_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('conversation_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['conversation_id'] = $conversation_id;
 
@@ -385,7 +392,14 @@ class SendInboxMessage200ResponseData implements ModelInterface, ArrayAccess, \J
     public function setSentAt($sent_at)
     {
         if (is_null($sent_at)) {
-            throw new \InvalidArgumentException('non-nullable sent_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sent_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sent_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sent_at'] = $sent_at;
 
@@ -412,7 +426,14 @@ class SendInboxMessage200ResponseData implements ModelInterface, ArrayAccess, \J
     public function setMessage($message)
     {
         if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'message');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('message', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['message'] = $message;
 

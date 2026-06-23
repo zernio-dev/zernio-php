@@ -99,7 +99,7 @@ class WebhookPayloadCallReceivedCall implements ModelInterface, ArrayAccess, \Js
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'meta_call_id' => false,
+        'meta_call_id' => true,
         'account_id' => false,
         'phone_number_id' => false,
         'direction' => false,
@@ -431,7 +431,14 @@ class WebhookPayloadCallReceivedCall implements ModelInterface, ArrayAccess, \Js
     public function setMetaCallId($meta_call_id)
     {
         if (is_null($meta_call_id)) {
-            throw new \InvalidArgumentException('non-nullable meta_call_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'meta_call_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('meta_call_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['meta_call_id'] = $meta_call_id;
 

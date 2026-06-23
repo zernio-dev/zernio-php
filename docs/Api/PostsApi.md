@@ -1,6 +1,6 @@
 # Zernio\PostsApi
 
-
+Create, schedule, list, update, and delete posts across all connected social accounts.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 

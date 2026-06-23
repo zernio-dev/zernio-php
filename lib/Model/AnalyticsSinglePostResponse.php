@@ -109,20 +109,20 @@ class AnalyticsSinglePostResponse implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static array $openAPINullables = [
         'post_id' => false,
-        'late_post_id' => false,
+        'late_post_id' => true,
         'status' => false,
         'content' => false,
         'scheduled_for' => false,
-        'published_at' => false,
+        'published_at' => true,
         'analytics' => false,
         'platform_analytics' => false,
         'platform' => false,
-        'platform_post_url' => false,
+        'platform_post_url' => true,
         'is_external' => false,
         'sync_status' => false,
-        'message' => false,
-        'thumbnail_url' => false,
-        'media_type' => false,
+        'message' => true,
+        'thumbnail_url' => true,
+        'media_type' => true,
         'media_items' => false
     ];
 
@@ -524,7 +524,14 @@ class AnalyticsSinglePostResponse implements ModelInterface, ArrayAccess, \JsonS
     public function setLatePostId($late_post_id)
     {
         if (is_null($late_post_id)) {
-            throw new \InvalidArgumentException('non-nullable late_post_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'late_post_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('late_post_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['late_post_id'] = $late_post_id;
 
@@ -642,7 +649,14 @@ class AnalyticsSinglePostResponse implements ModelInterface, ArrayAccess, \JsonS
     public function setPublishedAt($published_at)
     {
         if (is_null($published_at)) {
-            throw new \InvalidArgumentException('non-nullable published_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'published_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('published_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['published_at'] = $published_at;
 
@@ -750,7 +764,14 @@ class AnalyticsSinglePostResponse implements ModelInterface, ArrayAccess, \JsonS
     public function setPlatformPostUrl($platform_post_url)
     {
         if (is_null($platform_post_url)) {
-            throw new \InvalidArgumentException('non-nullable platform_post_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'platform_post_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('platform_post_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['platform_post_url'] = $platform_post_url;
 
@@ -841,7 +862,14 @@ class AnalyticsSinglePostResponse implements ModelInterface, ArrayAccess, \JsonS
     public function setMessage($message)
     {
         if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'message');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('message', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['message'] = $message;
 
@@ -868,7 +896,14 @@ class AnalyticsSinglePostResponse implements ModelInterface, ArrayAccess, \JsonS
     public function setThumbnailUrl($thumbnail_url)
     {
         if (is_null($thumbnail_url)) {
-            throw new \InvalidArgumentException('non-nullable thumbnail_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'thumbnail_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('thumbnail_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['thumbnail_url'] = $thumbnail_url;
 
@@ -895,10 +930,17 @@ class AnalyticsSinglePostResponse implements ModelInterface, ArrayAccess, \JsonS
     public function setMediaType($media_type)
     {
         if (is_null($media_type)) {
-            throw new \InvalidArgumentException('non-nullable media_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'media_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('media_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getMediaTypeAllowableValues();
-        if (!in_array($media_type, $allowedValues, true)) {
+        if (!is_null($media_type) && !in_array($media_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'media_type', must be one of '%s'",

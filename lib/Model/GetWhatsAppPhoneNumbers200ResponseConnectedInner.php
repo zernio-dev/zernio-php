@@ -87,10 +87,10 @@ class GetWhatsAppPhoneNumbers200ResponseConnectedInner implements ModelInterface
       */
     protected static array $openAPINullables = [
         'account_id' => false,
-        'phone_number' => false,
-        'display_name' => false,
-        'profile_id' => false,
-        'connected_at' => false
+        'phone_number' => true,
+        'display_name' => true,
+        'profile_id' => true,
+        'connected_at' => true
     ];
 
     /**
@@ -365,7 +365,14 @@ class GetWhatsAppPhoneNumbers200ResponseConnectedInner implements ModelInterface
     public function setPhoneNumber($phone_number)
     {
         if (is_null($phone_number)) {
-            throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'phone_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('phone_number', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['phone_number'] = $phone_number;
 
@@ -392,7 +399,14 @@ class GetWhatsAppPhoneNumbers200ResponseConnectedInner implements ModelInterface
     public function setDisplayName($display_name)
     {
         if (is_null($display_name)) {
-            throw new \InvalidArgumentException('non-nullable display_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'display_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('display_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['display_name'] = $display_name;
 
@@ -419,7 +433,14 @@ class GetWhatsAppPhoneNumbers200ResponseConnectedInner implements ModelInterface
     public function setProfileId($profile_id)
     {
         if (is_null($profile_id)) {
-            throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'profile_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('profile_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['profile_id'] = $profile_id;
 
@@ -446,7 +467,14 @@ class GetWhatsAppPhoneNumbers200ResponseConnectedInner implements ModelInterface
     public function setConnectedAt($connected_at)
     {
         if (is_null($connected_at)) {
-            throw new \InvalidArgumentException('non-nullable connected_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'connected_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('connected_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['connected_at'] = $connected_at;
 

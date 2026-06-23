@@ -87,10 +87,10 @@ class ListDiscordGuildMembers200ResponseDataInner implements ModelInterface, Arr
       */
     protected static array $openAPINullables = [
         'user' => false,
-        'nick' => false,
+        'nick' => true,
         'roles' => false,
         'joined_at' => false,
-        'premium_since' => false
+        'premium_since' => true
     ];
 
     /**
@@ -365,7 +365,14 @@ class ListDiscordGuildMembers200ResponseDataInner implements ModelInterface, Arr
     public function setNick($nick)
     {
         if (is_null($nick)) {
-            throw new \InvalidArgumentException('non-nullable nick cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'nick');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('nick', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['nick'] = $nick;
 
@@ -446,7 +453,14 @@ class ListDiscordGuildMembers200ResponseDataInner implements ModelInterface, Arr
     public function setPremiumSince($premium_since)
     {
         if (is_null($premium_since)) {
-            throw new \InvalidArgumentException('non-nullable premium_since cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'premium_since');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('premium_since', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['premium_since'] = $premium_since;
 

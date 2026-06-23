@@ -107,11 +107,11 @@ class TrackingTag implements ModelInterface, ArrayAccess, \JsonSerializable
         'kind' => false,
         'status' => false,
         'code' => false,
-        'last_fired_time' => false,
+        'last_fired_time' => true,
         'is_unavailable' => false,
         'installed' => false,
         'creation_time' => false,
-        'owner_business_id' => false,
+        'owner_business_id' => true,
         'owner_ad_account_id' => false
     ];
 
@@ -667,7 +667,14 @@ class TrackingTag implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLastFiredTime($last_fired_time)
     {
         if (is_null($last_fired_time)) {
-            throw new \InvalidArgumentException('non-nullable last_fired_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'last_fired_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('last_fired_time', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['last_fired_time'] = $last_fired_time;
 
@@ -775,7 +782,14 @@ class TrackingTag implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOwnerBusinessId($owner_business_id)
     {
         if (is_null($owner_business_id)) {
-            throw new \InvalidArgumentException('non-nullable owner_business_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'owner_business_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('owner_business_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['owner_business_id'] = $owner_business_id;
 

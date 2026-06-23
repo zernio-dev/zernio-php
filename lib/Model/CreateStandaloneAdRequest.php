@@ -70,7 +70,6 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'budget_amount' => 'float',
         'budget_type' => 'string',
         'status' => 'string',
-        'campaign_status' => 'string',
         'budget_level' => 'string',
         'currency' => 'string',
         'headline' => 'string',
@@ -99,9 +98,6 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'zips' => '\Zernio\Model\CreateStandaloneAdRequestZipsInner[]',
         'metros' => '\Zernio\Model\CreateStandaloneAdRequestZipsInner[]',
         'custom_locations' => '\Zernio\Model\CreateStandaloneAdRequestCustomLocationsInner[]',
-        'places' => '\Zernio\Model\CreateStandaloneAdRequestPlacesInner[]',
-        'neighborhoods' => '\Zernio\Model\CreateStandaloneAdRequestPlacesInner[]',
-        'excluded_locations' => '\Zernio\Model\CreateStandaloneAdRequestExcludedLocations',
         'behaviors' => '\Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]',
         'income_tier' => 'string',
         'languages' => 'string[]',
@@ -152,7 +148,6 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'budget_amount' => null,
         'budget_type' => null,
         'status' => null,
-        'campaign_status' => null,
         'budget_level' => null,
         'currency' => null,
         'headline' => null,
@@ -181,9 +176,6 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'zips' => null,
         'metros' => null,
         'custom_locations' => null,
-        'places' => null,
-        'neighborhoods' => null,
-        'excluded_locations' => null,
         'behaviors' => null,
         'income_tier' => null,
         'languages' => null,
@@ -232,7 +224,6 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'budget_amount' => false,
         'budget_type' => false,
         'status' => false,
-        'campaign_status' => false,
         'budget_level' => false,
         'currency' => false,
         'headline' => false,
@@ -261,9 +252,6 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'zips' => false,
         'metros' => false,
         'custom_locations' => false,
-        'places' => false,
-        'neighborhoods' => false,
-        'excluded_locations' => false,
         'behaviors' => false,
         'income_tier' => false,
         'languages' => false,
@@ -392,7 +380,6 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'budget_amount' => 'budgetAmount',
         'budget_type' => 'budgetType',
         'status' => 'status',
-        'campaign_status' => 'campaignStatus',
         'budget_level' => 'budgetLevel',
         'currency' => 'currency',
         'headline' => 'headline',
@@ -421,9 +408,6 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'zips' => 'zips',
         'metros' => 'metros',
         'custom_locations' => 'customLocations',
-        'places' => 'places',
-        'neighborhoods' => 'neighborhoods',
-        'excluded_locations' => 'excludedLocations',
         'behaviors' => 'behaviors',
         'income_tier' => 'incomeTier',
         'languages' => 'languages',
@@ -472,7 +456,6 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'budget_amount' => 'setBudgetAmount',
         'budget_type' => 'setBudgetType',
         'status' => 'setStatus',
-        'campaign_status' => 'setCampaignStatus',
         'budget_level' => 'setBudgetLevel',
         'currency' => 'setCurrency',
         'headline' => 'setHeadline',
@@ -501,9 +484,6 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'zips' => 'setZips',
         'metros' => 'setMetros',
         'custom_locations' => 'setCustomLocations',
-        'places' => 'setPlaces',
-        'neighborhoods' => 'setNeighborhoods',
-        'excluded_locations' => 'setExcludedLocations',
         'behaviors' => 'setBehaviors',
         'income_tier' => 'setIncomeTier',
         'languages' => 'setLanguages',
@@ -552,7 +532,6 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'budget_amount' => 'getBudgetAmount',
         'budget_type' => 'getBudgetType',
         'status' => 'getStatus',
-        'campaign_status' => 'getCampaignStatus',
         'budget_level' => 'getBudgetLevel',
         'currency' => 'getCurrency',
         'headline' => 'getHeadline',
@@ -581,9 +560,6 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'zips' => 'getZips',
         'metros' => 'getMetros',
         'custom_locations' => 'getCustomLocations',
-        'places' => 'getPlaces',
-        'neighborhoods' => 'getNeighborhoods',
-        'excluded_locations' => 'getExcludedLocations',
         'behaviors' => 'getBehaviors',
         'income_tier' => 'getIncomeTier',
         'languages' => 'getLanguages',
@@ -668,8 +644,6 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     public const BUDGET_TYPE_LIFETIME = 'lifetime';
     public const STATUS_ACTIVE = 'ACTIVE';
     public const STATUS_PAUSED = 'PAUSED';
-    public const CAMPAIGN_STATUS_ACTIVE = 'ACTIVE';
-    public const CAMPAIGN_STATUS_PAUSED = 'PAUSED';
     public const BUDGET_LEVEL_ADSET = 'adset';
     public const BUDGET_LEVEL_CAMPAIGN = 'campaign';
     public const CALL_TO_ACTION_LEARN_MORE = 'LEARN_MORE';
@@ -751,19 +725,6 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         return [
             self::STATUS_ACTIVE,
             self::STATUS_PAUSED,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getCampaignStatusAllowableValues()
-    {
-        return [
-            self::CAMPAIGN_STATUS_ACTIVE,
-            self::CAMPAIGN_STATUS_PAUSED,
         ];
     }
 
@@ -919,7 +880,6 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('budget_amount', $data ?? [], null);
         $this->setIfExists('budget_type', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('campaign_status', $data ?? [], null);
         $this->setIfExists('budget_level', $data ?? [], 'adset');
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('headline', $data ?? [], null);
@@ -948,9 +908,6 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('zips', $data ?? [], null);
         $this->setIfExists('metros', $data ?? [], null);
         $this->setIfExists('custom_locations', $data ?? [], null);
-        $this->setIfExists('places', $data ?? [], null);
-        $this->setIfExists('neighborhoods', $data ?? [], null);
-        $this->setIfExists('excluded_locations', $data ?? [], null);
         $this->setIfExists('behaviors', $data ?? [], null);
         $this->setIfExists('income_tier', $data ?? [], null);
         $this->setIfExists('languages', $data ?? [], null);
@@ -1056,15 +1013,6 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'status', must be one of '%s'",
                 $this->container['status'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getCampaignStatusAllowableValues();
-        if (!is_null($this->container['campaign_status']) && !in_array($this->container['campaign_status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'campaign_status', must be one of '%s'",
-                $this->container['campaign_status'],
                 implode("', '", $allowedValues)
             );
         }
@@ -1541,7 +1489,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets status
      *
-     * @param string|null $status Meta only. Desired publish state of the ad (and, on the legacy/multi-ad-set shapes, the ad set too). Omitted or `ACTIVE` publishes live immediately (default). `PAUSED` creates the objects paused and skips activation — useful to stage ads before they spend. On the attach shape (`adSetId`), only the new ad is affected; the existing ad set and campaign are already live and are not touched.
+     * @param string|null $status Meta only. Publish state of the created ad set + ad. Omitted or ACTIVE publishes live (default, back-compat); PAUSED creates them paused and skips activation, so you can review before they spend.
      *
      * @return self
      */
@@ -1561,43 +1509,6 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
         $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets campaign_status
-     *
-     * @return string|null
-     */
-    public function getCampaignStatus()
-    {
-        return $this->container['campaign_status'];
-    }
-
-    /**
-     * Sets campaign_status
-     *
-     * @param string|null $campaign_status Meta only. Independent publish state for the CAMPAIGN when the create makes both a new campaign and a new ad set (legacy shape). When omitted, the campaign follows `status`. Use this to stage a paused campaign with an active ad set (`status: ACTIVE, campaignStatus: PAUSED`) — the ad set will start delivering as soon as the campaign is activated later. Ignored when `existingCampaignId` is set (the campaign is already live and its status is not changed).
-     *
-     * @return self
-     */
-    public function setCampaignStatus($campaign_status)
-    {
-        if (is_null($campaign_status)) {
-            throw new \InvalidArgumentException('non-nullable campaign_status cannot be null');
-        }
-        $allowedValues = $this->getCampaignStatusAllowableValues();
-        if (!in_array($campaign_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'campaign_status', must be one of '%s'",
-                    $campaign_status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['campaign_status'] = $campaign_status;
 
         return $this;
     }
@@ -2053,7 +1964,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets existing_creative_id
      *
-     * @param string|null $existing_creative_id Meta only. Reuse an EXISTING ad creative by id instead of building a new one from the copy/media fields (which are then ignored). Works on both shapes: - Legacy/multi-ad-set (`existingCampaignId`): combine with   `existingCampaignId` to build a multi-ad-set campaign that   shares one creative across audiences. - Attach (`adSetId`): combine with `adSetId` to add a second   (or Nth) ad to an existing ad set reusing the same creative —   no `headline`/`body`/`imageUrl` required on the body. Mutually exclusive with `creatives[]`, `dynamicCreative`, and `placementAssets`. The creative id is returned as `creativeId` on the create response.
+     * @param string|null $existing_creative_id Meta only. Reuse an EXISTING ad creative by id instead of building a new one from the copy/media fields (which are then ignored). Combine with `existingCampaignId` to build a multi-ad-set campaign that shares one creative. Mutually exclusive with `creatives[]`, `dynamicCreative`, and `placementAssets`. The creative id used is returned as `creativeId` on the create response.
      *
      * @return self
      */
@@ -2412,87 +2323,6 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets places
-     *
-     * @return \Zernio\Model\CreateStandaloneAdRequestPlacesInner[]|null
-     */
-    public function getPlaces()
-    {
-        return $this->container['places'];
-    }
-
-    /**
-     * Sets places
-     *
-     * @param \Zernio\Model\CreateStandaloneAdRequestPlacesInner[]|null $places Named points of interest (businesses, landmarks). Meta only. `key` from /v1/ads/targeting/search?dimension=geo&geoType=place. Maps to geo_locations.places.
-     *
-     * @return self
-     */
-    public function setPlaces($places)
-    {
-        if (is_null($places)) {
-            throw new \InvalidArgumentException('non-nullable places cannot be null');
-        }
-        $this->container['places'] = $places;
-
-        return $this;
-    }
-
-    /**
-     * Gets neighborhoods
-     *
-     * @return \Zernio\Model\CreateStandaloneAdRequestPlacesInner[]|null
-     */
-    public function getNeighborhoods()
-    {
-        return $this->container['neighborhoods'];
-    }
-
-    /**
-     * Sets neighborhoods
-     *
-     * @param \Zernio\Model\CreateStandaloneAdRequestPlacesInner[]|null $neighborhoods Named neighbourhood areas. Meta only. `key` from /v1/ads/targeting/search?dimension=geo&geoType=neighborhood. Maps to geo_locations.neighborhoods.
-     *
-     * @return self
-     */
-    public function setNeighborhoods($neighborhoods)
-    {
-        if (is_null($neighborhoods)) {
-            throw new \InvalidArgumentException('non-nullable neighborhoods cannot be null');
-        }
-        $this->container['neighborhoods'] = $neighborhoods;
-
-        return $this;
-    }
-
-    /**
-     * Gets excluded_locations
-     *
-     * @return \Zernio\Model\CreateStandaloneAdRequestExcludedLocations|null
-     */
-    public function getExcludedLocations()
-    {
-        return $this->container['excluded_locations'];
-    }
-
-    /**
-     * Sets excluded_locations
-     *
-     * @param \Zernio\Model\CreateStandaloneAdRequestExcludedLocations|null $excluded_locations excluded_locations
-     *
-     * @return self
-     */
-    public function setExcludedLocations($excluded_locations)
-    {
-        if (is_null($excluded_locations)) {
-            throw new \InvalidArgumentException('non-nullable excluded_locations cannot be null');
-        }
-        $this->container['excluded_locations'] = $excluded_locations;
-
-        return $this;
-    }
-
-    /**
      * Gets behaviors
      *
      * @return \Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]|null
@@ -2650,7 +2480,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets raw_targeting
      *
-     * @param array<string,mixed>|null $raw_targeting Meta only. A raw Meta-native targeting spec passed to the ad set VERBATIM (snake_case: `geo_locations`, `age_min`, `excluded_custom_audiences`, `flexible_spec`, `targeting_automation`, business places, etc.) — exactly the shape `GET /v1/ads/{adId}` returns for external ads. Use it to clone a campaign's targeting EXACTLY, preserving advanced fields the camelCase targeting fields can't model. Mutually exclusive with the camelCase targeting fields (countries/regions/cities/interests/ ageMin/...), `audienceId`, and `savedTargetingId` (sending both → 422). Sent as-is; Meta validates and surfaces any errors. If cloning an EU campaign, also pass `dsaBeneficiary` / `dsaPayor` (those are separate fields, not part of targeting). Can be combined with the top-level `placements` field — when both are present, placements are converted to Meta's snake_case and merged into this object before it is sent to Meta.
+     * @param array<string,mixed>|null $raw_targeting Meta only. A raw Meta-native targeting spec passed to the ad set VERBATIM (snake_case: `geo_locations`, `age_min`, `excluded_custom_audiences`, `flexible_spec`, `targeting_automation`, business places, etc.) — exactly the shape `GET /v1/ads/{adId}` returns for external ads. Use it to clone a campaign's targeting EXACTLY, preserving advanced fields the camelCase targeting fields can't model. Mutually exclusive with the camelCase targeting fields (countries/regions/cities/interests/ ageMin/...), `audienceId`, and `savedTargetingId` (sending both → 422). Sent as-is; Meta validates and surfaces any errors. If cloning an EU campaign, also pass `dsaBeneficiary` / `dsaPayor` (those are separate fields, not part of targeting).
      *
      * @return self
      */

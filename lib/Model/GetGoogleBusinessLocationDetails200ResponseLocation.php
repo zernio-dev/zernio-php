@@ -87,10 +87,10 @@ class GetGoogleBusinessLocationDetails200ResponseLocation implements ModelInterf
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-        'place_id' => false,
-        'review_url' => false,
-        'maps_uri' => false,
+        'name' => true,
+        'place_id' => true,
+        'review_url' => true,
+        'maps_uri' => true,
         'is_verified' => false
     ];
 
@@ -339,7 +339,14 @@ class GetGoogleBusinessLocationDetails200ResponseLocation implements ModelInterf
     public function setName($name)
     {
         if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['name'] = $name;
 
@@ -366,7 +373,14 @@ class GetGoogleBusinessLocationDetails200ResponseLocation implements ModelInterf
     public function setPlaceId($place_id)
     {
         if (is_null($place_id)) {
-            throw new \InvalidArgumentException('non-nullable place_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'place_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('place_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['place_id'] = $place_id;
 
@@ -393,7 +407,14 @@ class GetGoogleBusinessLocationDetails200ResponseLocation implements ModelInterf
     public function setReviewUrl($review_url)
     {
         if (is_null($review_url)) {
-            throw new \InvalidArgumentException('non-nullable review_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'review_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('review_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['review_url'] = $review_url;
 
@@ -420,7 +441,14 @@ class GetGoogleBusinessLocationDetails200ResponseLocation implements ModelInterf
     public function setMapsUri($maps_uri)
     {
         if (is_null($maps_uri)) {
-            throw new \InvalidArgumentException('non-nullable maps_uri cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'maps_uri');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('maps_uri', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['maps_uri'] = $maps_uri;
 

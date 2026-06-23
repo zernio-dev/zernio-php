@@ -88,7 +88,7 @@ class WorkflowEdge implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => false,
         'source' => false,
         'target' => false,
-        'source_handle' => false
+        'source_handle' => true
     ];
 
     /**
@@ -422,7 +422,14 @@ class WorkflowEdge implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSourceHandle($source_handle)
     {
         if (is_null($source_handle)) {
-            throw new \InvalidArgumentException('non-nullable source_handle cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'source_handle');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('source_handle', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['source_handle'] = $source_handle;
 

@@ -110,11 +110,11 @@ class ListWorkflowExecutions200ResponseExecutionsInner implements ModelInterface
         'platform_identifier' => false,
         'conversation_id' => false,
         'step_count' => false,
-        'last_error' => false,
-        'resume_at' => false,
+        'last_error' => true,
+        'resume_at' => true,
         'created_at' => false,
         'updated_at' => false,
-        'completed_at' => false
+        'completed_at' => true
     ];
 
     /**
@@ -650,7 +650,14 @@ class ListWorkflowExecutions200ResponseExecutionsInner implements ModelInterface
     public function setLastError($last_error)
     {
         if (is_null($last_error)) {
-            throw new \InvalidArgumentException('non-nullable last_error cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'last_error');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('last_error', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['last_error'] = $last_error;
 
@@ -677,7 +684,14 @@ class ListWorkflowExecutions200ResponseExecutionsInner implements ModelInterface
     public function setResumeAt($resume_at)
     {
         if (is_null($resume_at)) {
-            throw new \InvalidArgumentException('non-nullable resume_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'resume_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('resume_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['resume_at'] = $resume_at;
 
@@ -758,7 +772,14 @@ class ListWorkflowExecutions200ResponseExecutionsInner implements ModelInterface
     public function setCompletedAt($completed_at)
     {
         if (is_null($completed_at)) {
-            throw new \InvalidArgumentException('non-nullable completed_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'completed_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('completed_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['completed_at'] = $completed_at;
 

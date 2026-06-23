@@ -90,7 +90,7 @@ class OnWhatsAppNumberReleasedRequest implements ModelInterface, ArrayAccess, \J
         'event' => false,
         'timestamp' => false,
         'number' => false,
-        'reason' => false
+        'reason' => true
     ];
 
     /**
@@ -478,7 +478,14 @@ class OnWhatsAppNumberReleasedRequest implements ModelInterface, ArrayAccess, \J
     public function setReason($reason)
     {
         if (is_null($reason)) {
-            throw new \InvalidArgumentException('non-nullable reason cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'reason');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reason', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['reason'] = $reason;
 

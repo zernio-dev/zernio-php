@@ -123,7 +123,7 @@ class GetInboxPostComments200ResponseCommentsInner implements ModelInterface, Ar
         'like_count' => false,
         'reply_count' => false,
         'platform' => false,
-        'url' => false,
+        'url' => true,
         'replies' => false,
         'can_reply' => false,
         'can_delete' => false,
@@ -131,11 +131,11 @@ class GetInboxPostComments200ResponseCommentsInner implements ModelInterface, Ar
         'can_like' => false,
         'is_hidden' => false,
         'is_liked' => false,
-        'like_uri' => false,
-        'cid' => false,
-        'parent_id' => false,
-        'root_uri' => false,
-        'root_cid' => false
+        'like_uri' => true,
+        'cid' => true,
+        'parent_id' => true,
+        'root_uri' => true,
+        'root_cid' => true
     ];
 
     /**
@@ -632,7 +632,14 @@ class GetInboxPostComments200ResponseCommentsInner implements ModelInterface, Ar
     public function setUrl($url)
     {
         if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['url'] = $url;
 
@@ -848,7 +855,14 @@ class GetInboxPostComments200ResponseCommentsInner implements ModelInterface, Ar
     public function setLikeUri($like_uri)
     {
         if (is_null($like_uri)) {
-            throw new \InvalidArgumentException('non-nullable like_uri cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'like_uri');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('like_uri', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['like_uri'] = $like_uri;
 
@@ -875,7 +889,14 @@ class GetInboxPostComments200ResponseCommentsInner implements ModelInterface, Ar
     public function setCid($cid)
     {
         if (is_null($cid)) {
-            throw new \InvalidArgumentException('non-nullable cid cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cid');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cid', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cid'] = $cid;
 
@@ -902,7 +923,14 @@ class GetInboxPostComments200ResponseCommentsInner implements ModelInterface, Ar
     public function setParentId($parent_id)
     {
         if (is_null($parent_id)) {
-            throw new \InvalidArgumentException('non-nullable parent_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'parent_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('parent_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['parent_id'] = $parent_id;
 
@@ -929,7 +957,14 @@ class GetInboxPostComments200ResponseCommentsInner implements ModelInterface, Ar
     public function setRootUri($root_uri)
     {
         if (is_null($root_uri)) {
-            throw new \InvalidArgumentException('non-nullable root_uri cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'root_uri');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('root_uri', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['root_uri'] = $root_uri;
 
@@ -956,7 +991,14 @@ class GetInboxPostComments200ResponseCommentsInner implements ModelInterface, Ar
     public function setRootCid($root_cid)
     {
         if (is_null($root_cid)) {
-            throw new \InvalidArgumentException('non-nullable root_cid cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'root_cid');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('root_cid', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['root_cid'] = $root_cid;
 

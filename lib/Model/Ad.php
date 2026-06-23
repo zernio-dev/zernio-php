@@ -142,20 +142,20 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         'goal' => false,
         'is_external' => false,
         'budget' => false,
-        'metrics' => false,
+        'metrics' => true,
         'platform_ad_id' => false,
         'platform_ad_account_id' => false,
         'platform_campaign_id' => false,
         'platform_ad_set_id' => false,
         'campaign_name' => false,
         'ad_set_name' => false,
-        'platform_objective' => false,
-        'optimization_goal' => false,
-        'platform_ad_account_name' => false,
-        'platform_created_at' => false,
-        'bid_strategy' => false,
-        'bid_amount' => false,
-        'roas_average_floor' => false,
+        'platform_objective' => true,
+        'optimization_goal' => true,
+        'platform_ad_account_name' => true,
+        'platform_created_at' => true,
+        'bid_strategy' => true,
+        'bid_amount' => true,
+        'roas_average_floor' => true,
         'promoted_object' => false,
         'creative' => false,
         'targeting' => false,
@@ -848,7 +848,14 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMetrics($metrics)
     {
         if (is_null($metrics)) {
-            throw new \InvalidArgumentException('non-nullable metrics cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'metrics');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metrics', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['metrics'] = $metrics;
 
@@ -1037,7 +1044,14 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPlatformObjective($platform_objective)
     {
         if (is_null($platform_objective)) {
-            throw new \InvalidArgumentException('non-nullable platform_objective cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'platform_objective');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('platform_objective', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['platform_objective'] = $platform_objective;
 
@@ -1064,7 +1078,14 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOptimizationGoal($optimization_goal)
     {
         if (is_null($optimization_goal)) {
-            throw new \InvalidArgumentException('non-nullable optimization_goal cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'optimization_goal');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('optimization_goal', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['optimization_goal'] = $optimization_goal;
 
@@ -1091,7 +1112,14 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPlatformAdAccountName($platform_ad_account_name)
     {
         if (is_null($platform_ad_account_name)) {
-            throw new \InvalidArgumentException('non-nullable platform_ad_account_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'platform_ad_account_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('platform_ad_account_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['platform_ad_account_name'] = $platform_ad_account_name;
 
@@ -1118,7 +1146,14 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPlatformCreatedAt($platform_created_at)
     {
         if (is_null($platform_created_at)) {
-            throw new \InvalidArgumentException('non-nullable platform_created_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'platform_created_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('platform_created_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['platform_created_at'] = $platform_created_at;
 
@@ -1138,14 +1173,21 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets bid_strategy
      *
-     * @param \Zernio\Model\BidStrategy|null $bid_strategy Ad-set bid strategy (overrides campaign level on Meta). Populated for Meta and TikTok. TikTok's native `bid_type` is normalized to the cross-platform Meta enum: `BID_TYPE_NO_BID` -> `LOWEST_COST_WITHOUT_CAP`, `BID_TYPE_CUSTOM` -> `LOWEST_COST_WITH_BID_CAP`, deep_bid_type=MIN_ROAS or roas_bid>0 -> `LOWEST_COST_WITH_MIN_ROAS`, `BID_TYPE_MAX_CONVERSION` -> `LOWEST_COST_WITHOUT_CAP`.
+     * @param \Zernio\Model\BidStrategy|null $bid_strategy bid_strategy
      *
      * @return self
      */
     public function setBidStrategy($bid_strategy)
     {
         if (is_null($bid_strategy)) {
-            throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'bid_strategy');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bid_strategy', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['bid_strategy'] = $bid_strategy;
 
@@ -1172,7 +1214,14 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBidAmount($bid_amount)
     {
         if (is_null($bid_amount)) {
-            throw new \InvalidArgumentException('non-nullable bid_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'bid_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bid_amount', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['bid_amount'] = $bid_amount;
 
@@ -1199,7 +1248,14 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRoasAverageFloor($roas_average_floor)
     {
         if (is_null($roas_average_floor)) {
-            throw new \InvalidArgumentException('non-nullable roas_average_floor cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'roas_average_floor');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('roas_average_floor', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['roas_average_floor'] = $roas_average_floor;
 

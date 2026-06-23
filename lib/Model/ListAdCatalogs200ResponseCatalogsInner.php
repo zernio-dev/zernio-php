@@ -86,7 +86,7 @@ class ListAdCatalogs200ResponseCatalogsInner implements ModelInterface, ArrayAcc
     protected static array $openAPINullables = [
         'id' => false,
         'name' => false,
-        'vertical' => false,
+        'vertical' => true,
         'product_count' => false
     ];
 
@@ -385,7 +385,14 @@ class ListAdCatalogs200ResponseCatalogsInner implements ModelInterface, ArrayAcc
     public function setVertical($vertical)
     {
         if (is_null($vertical)) {
-            throw new \InvalidArgumentException('non-nullable vertical cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'vertical');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('vertical', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['vertical'] = $vertical;
 

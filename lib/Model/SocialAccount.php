@@ -107,12 +107,12 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'profile_id' => false,
         'username' => false,
         'display_name' => false,
-        'profile_picture' => false,
+        'profile_picture' => true,
         'profile_url' => false,
         'is_active' => false,
         'followers_count' => false,
         'followers_last_updated' => false,
-        'parent_account_id' => false,
+        'parent_account_id' => true,
         'enabled' => false,
         'metadata' => false
     ];
@@ -613,7 +613,14 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setProfilePicture($profile_picture)
     {
         if (is_null($profile_picture)) {
-            throw new \InvalidArgumentException('non-nullable profile_picture cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'profile_picture');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('profile_picture', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['profile_picture'] = $profile_picture;
 
@@ -748,7 +755,14 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setParentAccountId($parent_account_id)
     {
         if (is_null($parent_account_id)) {
-            throw new \InvalidArgumentException('non-nullable parent_account_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'parent_account_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('parent_account_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['parent_account_id'] = $parent_account_id;
 

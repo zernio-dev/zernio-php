@@ -1,6 +1,6 @@
 # Zernio\MediaApi
 
-
+Upload and presign media (images, videos, documents) for use in posts.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 

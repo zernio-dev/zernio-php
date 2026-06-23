@@ -90,9 +90,9 @@ class ListWhatsAppFlowVersions200ResponseVersionsInner implements ModelInterface
     protected static array $openAPINullables = [
         'flow_id' => false,
         'version' => false,
-        'parent_flow_id' => false,
-        'name' => false,
-        'status' => false,
+        'parent_flow_id' => true,
+        'name' => true,
+        'status' => true,
         'missing' => false
     ];
 
@@ -399,7 +399,14 @@ class ListWhatsAppFlowVersions200ResponseVersionsInner implements ModelInterface
     public function setParentFlowId($parent_flow_id)
     {
         if (is_null($parent_flow_id)) {
-            throw new \InvalidArgumentException('non-nullable parent_flow_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'parent_flow_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('parent_flow_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['parent_flow_id'] = $parent_flow_id;
 
@@ -426,7 +433,14 @@ class ListWhatsAppFlowVersions200ResponseVersionsInner implements ModelInterface
     public function setName($name)
     {
         if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['name'] = $name;
 
@@ -453,7 +467,14 @@ class ListWhatsAppFlowVersions200ResponseVersionsInner implements ModelInterface
     public function setStatus($status)
     {
         if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('status', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['status'] = $status;
 

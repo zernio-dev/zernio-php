@@ -103,7 +103,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         'ad_id' => false,
         'platform_ad_id' => false,
         'effective_story_id' => false,
-        'facebook_account_id' => false,
+        'facebook_account_id' => true,
         'instagram_user_id' => false,
         'instagram_permalink' => false,
         'instagram_account_id' => false,
@@ -604,7 +604,14 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
     public function setFacebookAccountId($facebook_account_id)
     {
         if (is_null($facebook_account_id)) {
-            throw new \InvalidArgumentException('non-nullable facebook_account_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'facebook_account_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('facebook_account_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['facebook_account_id'] = $facebook_account_id;
 

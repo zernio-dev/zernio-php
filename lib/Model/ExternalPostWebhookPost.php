@@ -102,14 +102,14 @@ class ExternalPostWebhookPost implements ModelInterface, ArrayAccess, \JsonSeria
         'id' => false,
         'platform' => false,
         'account_id' => false,
-        'url' => false,
+        'url' => true,
         'content' => false,
         'media_type' => false,
         'media_items' => false,
-        'thumbnail_url' => false,
+        'thumbnail_url' => true,
         'published_at' => false,
         'source' => false,
-        'deleted_at' => false
+        'deleted_at' => true
     ];
 
     /**
@@ -368,7 +368,7 @@ class ExternalPostWebhookPost implements ModelInterface, ArrayAccess, \JsonSeria
         if ($this->container['account_id'] === null) {
             $invalidProperties[] = "'account_id' can't be null";
         }
-        if ($this->container['url'] === null) {
+        if ($this->container['url'] === null && !$this->isNullableSetToNull('url')) {
             $invalidProperties[] = "'url' can't be null";
         }
         if ($this->container['content'] === null) {
@@ -380,7 +380,7 @@ class ExternalPostWebhookPost implements ModelInterface, ArrayAccess, \JsonSeria
         if ($this->container['media_items'] === null) {
             $invalidProperties[] = "'media_items' can't be null";
         }
-        if ($this->container['thumbnail_url'] === null) {
+        if ($this->container['thumbnail_url'] === null && !$this->isNullableSetToNull('thumbnail_url')) {
             $invalidProperties[] = "'thumbnail_url' can't be null";
         }
         if ($this->container['published_at'] === null) {
@@ -497,7 +497,7 @@ class ExternalPostWebhookPost implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets url
      *
-     * @return string
+     * @return string|null
      */
     public function getUrl()
     {
@@ -507,14 +507,21 @@ class ExternalPostWebhookPost implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets url
      *
-     * @param string $url Direct URL to the post on the platform, when available.
+     * @param string|null $url Direct URL to the post on the platform, when available.
      *
      * @return self
      */
     public function setUrl($url)
     {
         if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['url'] = $url;
 
@@ -605,7 +612,7 @@ class ExternalPostWebhookPost implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets thumbnail_url
      *
-     * @return string
+     * @return string|null
      */
     public function getThumbnailUrl()
     {
@@ -615,14 +622,21 @@ class ExternalPostWebhookPost implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets thumbnail_url
      *
-     * @param string $thumbnail_url thumbnail_url
+     * @param string|null $thumbnail_url thumbnail_url
      *
      * @return self
      */
     public function setThumbnailUrl($thumbnail_url)
     {
         if (is_null($thumbnail_url)) {
-            throw new \InvalidArgumentException('non-nullable thumbnail_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'thumbnail_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('thumbnail_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['thumbnail_url'] = $thumbnail_url;
 
@@ -713,7 +727,14 @@ class ExternalPostWebhookPost implements ModelInterface, ArrayAccess, \JsonSeria
     public function setDeletedAt($deleted_at)
     {
         if (is_null($deleted_at)) {
-            throw new \InvalidArgumentException('non-nullable deleted_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'deleted_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deleted_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['deleted_at'] = $deleted_at;
 

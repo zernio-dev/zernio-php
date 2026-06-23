@@ -1,6 +1,6 @@
 # Zernio\ProfilesApi
 
-
+Manage profiles (named groups of social accounts).
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 

@@ -109,19 +109,19 @@ class DiscordScheduledEvent implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static array $openAPINullables = [
         'id' => false,
         'guild_id' => false,
-        'channel_id' => false,
-        'creator_id' => false,
+        'channel_id' => true,
+        'creator_id' => true,
         'name' => false,
-        'description' => false,
+        'description' => true,
         'scheduled_start_time' => false,
-        'scheduled_end_time' => false,
+        'scheduled_end_time' => true,
         'privacy_level' => false,
         'status' => false,
         'entity_type' => false,
-        'entity_id' => false,
+        'entity_id' => true,
         'entity_metadata' => false,
         'user_count' => false,
-        'image' => false
+        'image' => true
     ];
 
     /**
@@ -539,7 +539,14 @@ class DiscordScheduledEvent implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setChannelId($channel_id)
     {
         if (is_null($channel_id)) {
-            throw new \InvalidArgumentException('non-nullable channel_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'channel_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('channel_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['channel_id'] = $channel_id;
 
@@ -566,7 +573,14 @@ class DiscordScheduledEvent implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setCreatorId($creator_id)
     {
         if (is_null($creator_id)) {
-            throw new \InvalidArgumentException('non-nullable creator_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'creator_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('creator_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['creator_id'] = $creator_id;
 
@@ -620,7 +634,14 @@ class DiscordScheduledEvent implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setDescription($description)
     {
         if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['description'] = $description;
 
@@ -674,7 +695,14 @@ class DiscordScheduledEvent implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setScheduledEndTime($scheduled_end_time)
     {
         if (is_null($scheduled_end_time)) {
-            throw new \InvalidArgumentException('non-nullable scheduled_end_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'scheduled_end_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('scheduled_end_time', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['scheduled_end_time'] = $scheduled_end_time;
 
@@ -812,7 +840,14 @@ class DiscordScheduledEvent implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setEntityId($entity_id)
     {
         if (is_null($entity_id)) {
-            throw new \InvalidArgumentException('non-nullable entity_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'entity_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('entity_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['entity_id'] = $entity_id;
 
@@ -893,7 +928,14 @@ class DiscordScheduledEvent implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setImage($image)
     {
         if (is_null($image)) {
-            throw new \InvalidArgumentException('non-nullable image cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'image');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('image', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['image'] = $image;
 

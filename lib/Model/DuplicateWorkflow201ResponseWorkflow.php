@@ -103,7 +103,7 @@ class DuplicateWorkflow201ResponseWorkflow implements ModelInterface, ArrayAcces
         'platform' => false,
         'account_id' => false,
         'profile_id' => false,
-        'entry_node_id' => false,
+        'entry_node_id' => true,
         'node_count' => false,
         'created_at' => false
     ];
@@ -594,7 +594,14 @@ class DuplicateWorkflow201ResponseWorkflow implements ModelInterface, ArrayAcces
     public function setEntryNodeId($entry_node_id)
     {
         if (is_null($entry_node_id)) {
-            throw new \InvalidArgumentException('non-nullable entry_node_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'entry_node_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('entry_node_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['entry_node_id'] = $entry_node_id;
 

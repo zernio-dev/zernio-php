@@ -95,8 +95,8 @@ class GetInboxConversationAnalytics200ResponseSummary implements ModelInterface,
         'read' => false,
         'failed' => false,
         'total_messages' => false,
-        'first_message_at' => false,
-        'last_message_at' => false
+        'first_message_at' => true,
+        'last_message_at' => true
     ];
 
     /**
@@ -487,7 +487,14 @@ class GetInboxConversationAnalytics200ResponseSummary implements ModelInterface,
     public function setFirstMessageAt($first_message_at)
     {
         if (is_null($first_message_at)) {
-            throw new \InvalidArgumentException('non-nullable first_message_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'first_message_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('first_message_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['first_message_at'] = $first_message_at;
 
@@ -514,7 +521,14 @@ class GetInboxConversationAnalytics200ResponseSummary implements ModelInterface,
     public function setLastMessageAt($last_message_at)
     {
         if (is_null($last_message_at)) {
-            throw new \InvalidArgumentException('non-nullable last_message_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'last_message_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('last_message_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['last_message_at'] = $last_message_at;
 

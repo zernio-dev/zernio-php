@@ -311,10 +311,6 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
             $invalidProperties[] = "invalid value for 'key', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['radius']) && ($this->container['radius'] < 0)) {
-            $invalidProperties[] = "invalid value for 'radius', must be bigger than or equal to 0.";
-        }
-
         $allowedValues = $this->getDistanceUnitAllowableValues();
         if (!is_null($this->container['distance_unit']) && !in_array($this->container['distance_unit'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -393,11 +389,6 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
         if (is_null($radius)) {
             throw new \InvalidArgumentException('non-nullable radius cannot be null');
         }
-
-        if (($radius < 0)) {
-            throw new \InvalidArgumentException('invalid value for $radius when calling CreateCtwaAdRequestCitiesInner., must be bigger than or equal to 0.');
-        }
-
         $this->container['radius'] = $radius;
 
         return $this;

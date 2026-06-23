@@ -136,24 +136,24 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'platform' => false,
         'message' => false,
         'sender_id' => false,
-        'sender_name' => false,
-        'sender_verified_type' => false,
+        'sender_name' => true,
+        'sender_verified_type' => true,
         'direction' => false,
         'created_at' => false,
         'attachments' => false,
-        'subject' => false,
-        'story_reply' => false,
-        'is_story_mention' => false,
+        'subject' => true,
+        'story_reply' => true,
+        'is_story_mention' => true,
         'is_edited' => false,
-        'edited_at' => false,
+        'edited_at' => true,
         'edit_count' => false,
         'edit_history' => false,
         'is_deleted' => false,
-        'deleted_at' => false,
-        'delivery_status' => false,
-        'delivered_at' => false,
-        'read_at' => false,
-        'sent_at' => false,
+        'deleted_at' => true,
+        'delivery_status' => true,
+        'delivered_at' => true,
+        'read_at' => true,
+        'sent_at' => true,
         'delivery_error' => false,
         'reactions' => false,
         'metadata' => false
@@ -736,7 +736,14 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     public function setSenderName($sender_name)
     {
         if (is_null($sender_name)) {
-            throw new \InvalidArgumentException('non-nullable sender_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sender_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sender_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sender_name'] = $sender_name;
 
@@ -763,10 +770,17 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     public function setSenderVerifiedType($sender_verified_type)
     {
         if (is_null($sender_verified_type)) {
-            throw new \InvalidArgumentException('non-nullable sender_verified_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sender_verified_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sender_verified_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getSenderVerifiedTypeAllowableValues();
-        if (!in_array($sender_verified_type, $allowedValues, true)) {
+        if (!is_null($sender_verified_type) && !in_array($sender_verified_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'sender_verified_type', must be one of '%s'",
@@ -891,7 +905,14 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     public function setSubject($subject)
     {
         if (is_null($subject)) {
-            throw new \InvalidArgumentException('non-nullable subject cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'subject');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('subject', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['subject'] = $subject;
 
@@ -918,7 +939,14 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     public function setStoryReply($story_reply)
     {
         if (is_null($story_reply)) {
-            throw new \InvalidArgumentException('non-nullable story_reply cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'story_reply');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('story_reply', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['story_reply'] = $story_reply;
 
@@ -945,7 +973,14 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     public function setIsStoryMention($is_story_mention)
     {
         if (is_null($is_story_mention)) {
-            throw new \InvalidArgumentException('non-nullable is_story_mention cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_story_mention');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_story_mention', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_story_mention'] = $is_story_mention;
 
@@ -999,7 +1034,14 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     public function setEditedAt($edited_at)
     {
         if (is_null($edited_at)) {
-            throw new \InvalidArgumentException('non-nullable edited_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'edited_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('edited_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['edited_at'] = $edited_at;
 
@@ -1107,7 +1149,14 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     public function setDeletedAt($deleted_at)
     {
         if (is_null($deleted_at)) {
-            throw new \InvalidArgumentException('non-nullable deleted_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'deleted_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deleted_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['deleted_at'] = $deleted_at;
 
@@ -1134,10 +1183,17 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     public function setDeliveryStatus($delivery_status)
     {
         if (is_null($delivery_status)) {
-            throw new \InvalidArgumentException('non-nullable delivery_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'delivery_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('delivery_status', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getDeliveryStatusAllowableValues();
-        if (!in_array($delivery_status, $allowedValues, true)) {
+        if (!is_null($delivery_status) && !in_array($delivery_status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'delivery_status', must be one of '%s'",
@@ -1171,7 +1227,14 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     public function setDeliveredAt($delivered_at)
     {
         if (is_null($delivered_at)) {
-            throw new \InvalidArgumentException('non-nullable delivered_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'delivered_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('delivered_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['delivered_at'] = $delivered_at;
 
@@ -1198,7 +1261,14 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     public function setReadAt($read_at)
     {
         if (is_null($read_at)) {
-            throw new \InvalidArgumentException('non-nullable read_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'read_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('read_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['read_at'] = $read_at;
 
@@ -1225,7 +1295,14 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     public function setSentAt($sent_at)
     {
         if (is_null($sent_at)) {
-            throw new \InvalidArgumentException('non-nullable sent_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sent_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sent_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sent_at'] = $sent_at;
 

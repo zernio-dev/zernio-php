@@ -71,8 +71,7 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
         'status' => 'string',
         'unread_count' => 'int',
         'url' => 'string',
-        'instagram_profile' => '\Zernio\Model\ListInboxConversations200ResponseDataInnerInstagramProfile',
-        'metadata' => 'array<string,string>'
+        'instagram_profile' => '\Zernio\Model\ListInboxConversations200ResponseDataInnerInstagramProfile'
     ];
 
     /**
@@ -96,8 +95,7 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
         'status' => null,
         'unread_count' => null,
         'url' => null,
-        'instagram_profile' => null,
-        'metadata' => null
+        'instagram_profile' => null
     ];
 
     /**
@@ -112,15 +110,14 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
         'account_username' => false,
         'participant_id' => false,
         'participant_name' => false,
-        'participant_picture' => false,
-        'participant_verified_type' => false,
+        'participant_picture' => true,
+        'participant_verified_type' => true,
         'last_message' => false,
         'updated_time' => false,
         'status' => false,
-        'unread_count' => false,
-        'url' => false,
-        'instagram_profile' => false,
-        'metadata' => false
+        'unread_count' => true,
+        'url' => true,
+        'instagram_profile' => false
     ];
 
     /**
@@ -222,8 +219,7 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
         'status' => 'status',
         'unread_count' => 'unreadCount',
         'url' => 'url',
-        'instagram_profile' => 'instagramProfile',
-        'metadata' => 'metadata'
+        'instagram_profile' => 'instagramProfile'
     ];
 
     /**
@@ -245,8 +241,7 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
         'status' => 'setStatus',
         'unread_count' => 'setUnreadCount',
         'url' => 'setUrl',
-        'instagram_profile' => 'setInstagramProfile',
-        'metadata' => 'setMetadata'
+        'instagram_profile' => 'setInstagramProfile'
     ];
 
     /**
@@ -268,8 +263,7 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
         'status' => 'getStatus',
         'unread_count' => 'getUnreadCount',
         'url' => 'getUrl',
-        'instagram_profile' => 'getInstagramProfile',
-        'metadata' => 'getMetadata'
+        'instagram_profile' => 'getInstagramProfile'
     ];
 
     /**
@@ -377,7 +371,6 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
         $this->setIfExists('unread_count', $data ?? [], null);
         $this->setIfExists('url', $data ?? [], null);
         $this->setIfExists('instagram_profile', $data ?? [], null);
-        $this->setIfExists('metadata', $data ?? [], null);
     }
 
     /**
@@ -622,7 +615,14 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
     public function setParticipantPicture($participant_picture)
     {
         if (is_null($participant_picture)) {
-            throw new \InvalidArgumentException('non-nullable participant_picture cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'participant_picture');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('participant_picture', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['participant_picture'] = $participant_picture;
 
@@ -649,10 +649,17 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
     public function setParticipantVerifiedType($participant_verified_type)
     {
         if (is_null($participant_verified_type)) {
-            throw new \InvalidArgumentException('non-nullable participant_verified_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'participant_verified_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('participant_verified_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getParticipantVerifiedTypeAllowableValues();
-        if (!in_array($participant_verified_type, $allowedValues, true)) {
+        if (!is_null($participant_verified_type) && !in_array($participant_verified_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'participant_verified_type', must be one of '%s'",
@@ -777,7 +784,14 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
     public function setUnreadCount($unread_count)
     {
         if (is_null($unread_count)) {
-            throw new \InvalidArgumentException('non-nullable unread_count cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'unread_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('unread_count', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['unread_count'] = $unread_count;
 
@@ -804,7 +818,14 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
     public function setUrl($url)
     {
         if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['url'] = $url;
 
@@ -834,33 +855,6 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
             throw new \InvalidArgumentException('non-nullable instagram_profile cannot be null');
         }
         $this->container['instagram_profile'] = $instagram_profile;
-
-        return $this;
-    }
-
-    /**
-     * Gets metadata
-     *
-     * @return array<string,string>|null
-     */
-    public function getMetadata()
-    {
-        return $this->container['metadata'];
-    }
-
-    /**
-     * Sets metadata
-     *
-     * @param array<string,string>|null $metadata Ad-click attribution captured on the first inbound message of the conversation. Only present when the conversation originated from a click-to-message ad. Absent on organic conversations.  Two sources populate this field:   - WhatsApp CTWA (Click-to-WhatsApp): `ctwa_clid`, `ctwa_source_id`,     `ctwa_source_url`, `ctwa_headline`, `ctwa_source_type`, `ctwa_captured_at`.   - Facebook Messenger CTM / Instagram CTD: `meta_ad_id`, `meta_ad_title`,     `meta_ad_source`, `meta_ad_type`, `meta_ad_ref`, `meta_ad_captured_at`,     `meta_ad_photo_url`, `meta_ad_video_url`, `meta_ad_post_id`,     `meta_ad_product_id`, `meta_ad_flow_id`.  Note: `meta_ad_photo_url` and `meta_ad_video_url` are Facebook CDN URLs that may expire. Use `meta_ad_id` for a permanent reference to the ad.
-     *
-     * @return self
-     */
-    public function setMetadata($metadata)
-    {
-        if (is_null($metadata)) {
-            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
-        }
-        $this->container['metadata'] = $metadata;
 
         return $this;
     }

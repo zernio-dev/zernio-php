@@ -99,10 +99,10 @@ class WebhookPayloadLeadLead implements ModelInterface, ArrayAccess, \JsonSerial
         'id' => false,
         'leadgen_id' => false,
         'form_id' => false,
-        'form_name' => false,
-        'ad_id' => false,
-        'adset_id' => false,
-        'campaign_id' => false,
+        'form_name' => true,
+        'ad_id' => true,
+        'adset_id' => true,
+        'campaign_id' => true,
         'fields' => false,
         'is_organic' => false,
         'created_at' => false
@@ -472,7 +472,14 @@ class WebhookPayloadLeadLead implements ModelInterface, ArrayAccess, \JsonSerial
     public function setFormName($form_name)
     {
         if (is_null($form_name)) {
-            throw new \InvalidArgumentException('non-nullable form_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'form_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('form_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['form_name'] = $form_name;
 
@@ -499,7 +506,14 @@ class WebhookPayloadLeadLead implements ModelInterface, ArrayAccess, \JsonSerial
     public function setAdId($ad_id)
     {
         if (is_null($ad_id)) {
-            throw new \InvalidArgumentException('non-nullable ad_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ad_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ad_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ad_id'] = $ad_id;
 
@@ -526,7 +540,14 @@ class WebhookPayloadLeadLead implements ModelInterface, ArrayAccess, \JsonSerial
     public function setAdsetId($adset_id)
     {
         if (is_null($adset_id)) {
-            throw new \InvalidArgumentException('non-nullable adset_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'adset_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('adset_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['adset_id'] = $adset_id;
 
@@ -553,7 +574,14 @@ class WebhookPayloadLeadLead implements ModelInterface, ArrayAccess, \JsonSerial
     public function setCampaignId($campaign_id)
     {
         if (is_null($campaign_id)) {
-            throw new \InvalidArgumentException('non-nullable campaign_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'campaign_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('campaign_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['campaign_id'] = $campaign_id;
 

@@ -86,8 +86,8 @@ class ListWorkflowExecutionEvents200ResponseExecution implements ModelInterface,
     protected static array $openAPINullables = [
         'id' => false,
         'status' => false,
-        'started_at' => false,
-        'completed_at' => false
+        'started_at' => true,
+        'completed_at' => true
     ];
 
     /**
@@ -425,7 +425,14 @@ class ListWorkflowExecutionEvents200ResponseExecution implements ModelInterface,
     public function setStartedAt($started_at)
     {
         if (is_null($started_at)) {
-            throw new \InvalidArgumentException('non-nullable started_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'started_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('started_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['started_at'] = $started_at;
 
@@ -452,7 +459,14 @@ class ListWorkflowExecutionEvents200ResponseExecution implements ModelInterface,
     public function setCompletedAt($completed_at)
     {
         if (is_null($completed_at)) {
-            throw new \InvalidArgumentException('non-nullable completed_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'completed_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('completed_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['completed_at'] = $completed_at;
 

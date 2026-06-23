@@ -87,11 +87,11 @@ class ListInboxConversations200ResponseDataInnerInstagramProfile implements Mode
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'is_follower' => false,
-        'is_following' => false,
-        'follower_count' => false,
-        'is_verified' => false,
-        'fetched_at' => false
+        'is_follower' => true,
+        'is_following' => true,
+        'follower_count' => true,
+        'is_verified' => true,
+        'fetched_at' => true
     ];
 
     /**
@@ -339,7 +339,14 @@ class ListInboxConversations200ResponseDataInnerInstagramProfile implements Mode
     public function setIsFollower($is_follower)
     {
         if (is_null($is_follower)) {
-            throw new \InvalidArgumentException('non-nullable is_follower cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_follower');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_follower', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_follower'] = $is_follower;
 
@@ -366,7 +373,14 @@ class ListInboxConversations200ResponseDataInnerInstagramProfile implements Mode
     public function setIsFollowing($is_following)
     {
         if (is_null($is_following)) {
-            throw new \InvalidArgumentException('non-nullable is_following cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_following');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_following', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_following'] = $is_following;
 
@@ -393,7 +407,14 @@ class ListInboxConversations200ResponseDataInnerInstagramProfile implements Mode
     public function setFollowerCount($follower_count)
     {
         if (is_null($follower_count)) {
-            throw new \InvalidArgumentException('non-nullable follower_count cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'follower_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('follower_count', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['follower_count'] = $follower_count;
 
@@ -420,7 +441,14 @@ class ListInboxConversations200ResponseDataInnerInstagramProfile implements Mode
     public function setIsVerified($is_verified)
     {
         if (is_null($is_verified)) {
-            throw new \InvalidArgumentException('non-nullable is_verified cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_verified');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_verified', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_verified'] = $is_verified;
 
@@ -447,7 +475,14 @@ class ListInboxConversations200ResponseDataInnerInstagramProfile implements Mode
     public function setFetchedAt($fetched_at)
     {
         if (is_null($fetched_at)) {
-            throw new \InvalidArgumentException('non-nullable fetched_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'fetched_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fetched_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['fetched_at'] = $fetched_at;
 

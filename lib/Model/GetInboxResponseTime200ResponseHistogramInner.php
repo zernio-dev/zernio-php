@@ -86,7 +86,7 @@ class GetInboxResponseTime200ResponseHistogramInner implements ModelInterface, A
     protected static array $openAPINullables = [
         'bucket' => false,
         'lower_seconds' => false,
-        'upper_seconds' => false,
+        'upper_seconds' => true,
         'count' => false
     ];
 
@@ -385,7 +385,14 @@ class GetInboxResponseTime200ResponseHistogramInner implements ModelInterface, A
     public function setUpperSeconds($upper_seconds)
     {
         if (is_null($upper_seconds)) {
-            throw new \InvalidArgumentException('non-nullable upper_seconds cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'upper_seconds');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('upper_seconds', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['upper_seconds'] = $upper_seconds;
 

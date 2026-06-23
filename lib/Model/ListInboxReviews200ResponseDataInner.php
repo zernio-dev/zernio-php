@@ -108,7 +108,7 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         'created' => false,
         'has_reply' => false,
         'reply' => false,
-        'review_url' => false
+        'review_url' => true
     ];
 
     /**
@@ -650,7 +650,14 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
     public function setReviewUrl($review_url)
     {
         if (is_null($review_url)) {
-            throw new \InvalidArgumentException('non-nullable review_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'review_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('review_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['review_url'] = $review_url;
 

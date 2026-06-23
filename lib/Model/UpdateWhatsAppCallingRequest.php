@@ -90,10 +90,10 @@ class UpdateWhatsAppCallingRequest implements ModelInterface, ArrayAccess, \Json
     protected static array $openAPINullables = [
         'account_id' => false,
         'forward_to' => false,
-        'sip_auth_username' => false,
-        'sip_auth_password' => false,
+        'sip_auth_username' => true,
+        'sip_auth_password' => true,
         'recording_enabled' => false,
-        'call_icon_countries' => false
+        'call_icon_countries' => true
     ];
 
     /**
@@ -402,7 +402,14 @@ class UpdateWhatsAppCallingRequest implements ModelInterface, ArrayAccess, \Json
     public function setSipAuthUsername($sip_auth_username)
     {
         if (is_null($sip_auth_username)) {
-            throw new \InvalidArgumentException('non-nullable sip_auth_username cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sip_auth_username');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sip_auth_username', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sip_auth_username'] = $sip_auth_username;
 
@@ -429,7 +436,14 @@ class UpdateWhatsAppCallingRequest implements ModelInterface, ArrayAccess, \Json
     public function setSipAuthPassword($sip_auth_password)
     {
         if (is_null($sip_auth_password)) {
-            throw new \InvalidArgumentException('non-nullable sip_auth_password cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sip_auth_password');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sip_auth_password', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sip_auth_password'] = $sip_auth_password;
 
@@ -483,7 +497,14 @@ class UpdateWhatsAppCallingRequest implements ModelInterface, ArrayAccess, \Json
     public function setCallIconCountries($call_icon_countries)
     {
         if (is_null($call_icon_countries)) {
-            throw new \InvalidArgumentException('non-nullable call_icon_countries cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'call_icon_countries');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('call_icon_countries', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['call_icon_countries'] = $call_icon_countries;
 

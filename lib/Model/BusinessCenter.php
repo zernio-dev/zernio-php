@@ -85,7 +85,7 @@ class BusinessCenter implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'bc_id' => false,
         'name' => false,
-        'advertiser_count' => false
+        'advertiser_count' => true
     ];
 
     /**
@@ -379,7 +379,14 @@ class BusinessCenter implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAdvertiserCount($advertiser_count)
     {
         if (is_null($advertiser_count)) {
-            throw new \InvalidArgumentException('non-nullable advertiser_count cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'advertiser_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('advertiser_count', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['advertiser_count'] = $advertiser_count;
 

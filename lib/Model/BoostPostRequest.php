@@ -71,7 +71,6 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_strategy' => '\Zernio\Model\BidStrategy',
         'bid_amount' => 'float',
         'roas_average_floor' => 'float',
-        'raw_targeting' => 'array<string,mixed>',
         'tracking' => '\Zernio\Model\BoostPostRequestTracking',
         'special_ad_categories' => 'string[]',
         'link_url' => 'string',
@@ -102,7 +101,6 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_strategy' => null,
         'bid_amount' => null,
         'roas_average_floor' => null,
-        'raw_targeting' => null,
         'tracking' => null,
         'special_ad_categories' => null,
         'link_url' => 'uri',
@@ -131,7 +129,6 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_strategy' => false,
         'bid_amount' => false,
         'roas_average_floor' => false,
-        'raw_targeting' => false,
         'tracking' => false,
         'special_ad_categories' => false,
         'link_url' => false,
@@ -240,7 +237,6 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_strategy' => 'bidStrategy',
         'bid_amount' => 'bidAmount',
         'roas_average_floor' => 'roasAverageFloor',
-        'raw_targeting' => 'rawTargeting',
         'tracking' => 'tracking',
         'special_ad_categories' => 'specialAdCategories',
         'link_url' => 'linkUrl',
@@ -269,7 +265,6 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_strategy' => 'setBidStrategy',
         'bid_amount' => 'setBidAmount',
         'roas_average_floor' => 'setRoasAverageFloor',
-        'raw_targeting' => 'setRawTargeting',
         'tracking' => 'setTracking',
         'special_ad_categories' => 'setSpecialAdCategories',
         'link_url' => 'setLinkUrl',
@@ -298,7 +293,6 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_strategy' => 'getBidStrategy',
         'bid_amount' => 'getBidAmount',
         'roas_average_floor' => 'getRoasAverageFloor',
-        'raw_targeting' => 'getRawTargeting',
         'tracking' => 'getTracking',
         'special_ad_categories' => 'getSpecialAdCategories',
         'link_url' => 'getLinkUrl',
@@ -422,7 +416,6 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('bid_strategy', $data ?? [], null);
         $this->setIfExists('bid_amount', $data ?? [], null);
         $this->setIfExists('roas_average_floor', $data ?? [], null);
-        $this->setIfExists('raw_targeting', $data ?? [], null);
         $this->setIfExists('tracking', $data ?? [], null);
         $this->setIfExists('special_ad_categories', $data ?? [], null);
         $this->setIfExists('link_url', $data ?? [], null);
@@ -871,33 +864,6 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable roas_average_floor cannot be null');
         }
         $this->container['roas_average_floor'] = $roas_average_floor;
-
-        return $this;
-    }
-
-    /**
-     * Gets raw_targeting
-     *
-     * @return array<string,mixed>|null
-     */
-    public function getRawTargeting()
-    {
-        return $this->container['raw_targeting'];
-    }
-
-    /**
-     * Sets raw_targeting
-     *
-     * @param array<string,mixed>|null $raw_targeting Meta only. A raw Meta-native targeting spec passed to the ad set VERBATIM (snake_case: `geo_locations`, `custom_audiences`, `excluded_custom_audiences`, `flexible_spec`, `targeting_automation`, etc.). Use it to target specific custom or lookalike audiences, or to clone a campaign's targeting exactly. Mutually exclusive with `targeting` (sending both → 422). Sent as-is; Meta validates and surfaces any errors.
-     *
-     * @return self
-     */
-    public function setRawTargeting($raw_targeting)
-    {
-        if (is_null($raw_targeting)) {
-            throw new \InvalidArgumentException('non-nullable raw_targeting cannot be null');
-        }
-        $this->container['raw_targeting'] = $raw_targeting;
 
         return $this;
     }

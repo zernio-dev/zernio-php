@@ -91,9 +91,9 @@ class GetWhatsAppNumberKycForm200ResponseFieldsInner implements ModelInterface, 
         'requirement_id' => false,
         'label' => false,
         'kind' => false,
-        'description' => false,
-        'example' => false,
-        'local_to' => false
+        'description' => true,
+        'example' => true,
+        'local_to' => true
     ];
 
     /**
@@ -466,7 +466,14 @@ class GetWhatsAppNumberKycForm200ResponseFieldsInner implements ModelInterface, 
     public function setDescription($description)
     {
         if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['description'] = $description;
 
@@ -493,7 +500,14 @@ class GetWhatsAppNumberKycForm200ResponseFieldsInner implements ModelInterface, 
     public function setExample($example)
     {
         if (is_null($example)) {
-            throw new \InvalidArgumentException('non-nullable example cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'example');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('example', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['example'] = $example;
 
@@ -520,7 +534,14 @@ class GetWhatsAppNumberKycForm200ResponseFieldsInner implements ModelInterface, 
     public function setLocalTo($local_to)
     {
         if (is_null($local_to)) {
-            throw new \InvalidArgumentException('non-nullable local_to cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'local_to');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('local_to', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['local_to'] = $local_to;
 

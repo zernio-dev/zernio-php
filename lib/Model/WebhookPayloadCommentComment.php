@@ -97,14 +97,14 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'post_id' => false,
+        'post_id' => true,
         'platform_post_id' => false,
         'platform' => false,
         'text' => false,
         'author' => false,
         'created_at' => false,
         'is_reply' => false,
-        'parent_comment_id' => false,
+        'parent_comment_id' => true,
         'ad' => false
     ];
 
@@ -366,7 +366,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['post_id'] === null) {
+        if ($this->container['post_id'] === null && !$this->isNullableSetToNull('post_id')) {
             $invalidProperties[] = "'post_id' can't be null";
         }
         if ($this->container['platform_post_id'] === null) {
@@ -396,7 +396,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
         if ($this->container['is_reply'] === null) {
             $invalidProperties[] = "'is_reply' can't be null";
         }
-        if ($this->container['parent_comment_id'] === null) {
+        if ($this->container['parent_comment_id'] === null && !$this->isNullableSetToNull('parent_comment_id')) {
             $invalidProperties[] = "'parent_comment_id' can't be null";
         }
         return $invalidProperties;
@@ -444,7 +444,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets post_id
      *
-     * @return string
+     * @return string|null
      */
     public function getPostId()
     {
@@ -454,14 +454,21 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets post_id
      *
-     * @param string $post_id Internal post ID (null for posts not published through Zernio)
+     * @param string|null $post_id Internal post ID (null for posts not published through Zernio)
      *
      * @return self
      */
     public function setPostId($post_id)
     {
         if (is_null($post_id)) {
-            throw new \InvalidArgumentException('non-nullable post_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'post_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('post_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['post_id'] = $post_id;
 
@@ -643,7 +650,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets parent_comment_id
      *
-     * @return string
+     * @return string|null
      */
     public function getParentCommentId()
     {
@@ -653,14 +660,21 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets parent_comment_id
      *
-     * @param string $parent_comment_id Parent comment ID if this is a reply
+     * @param string|null $parent_comment_id Parent comment ID if this is a reply
      *
      * @return self
      */
     public function setParentCommentId($parent_comment_id)
     {
         if (is_null($parent_comment_id)) {
-            throw new \InvalidArgumentException('non-nullable parent_comment_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'parent_comment_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('parent_comment_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['parent_comment_id'] = $parent_comment_id;
 

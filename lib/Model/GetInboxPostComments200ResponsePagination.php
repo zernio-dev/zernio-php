@@ -81,7 +81,7 @@ class GetInboxPostComments200ResponsePagination implements ModelInterface, Array
       */
     protected static array $openAPINullables = [
         'has_more' => false,
-        'cursor' => false
+        'cursor' => true
     ];
 
     /**
@@ -344,7 +344,14 @@ class GetInboxPostComments200ResponsePagination implements ModelInterface, Array
     public function setCursor($cursor)
     {
         if (is_null($cursor)) {
-            throw new \InvalidArgumentException('non-nullable cursor cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cursor');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cursor', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cursor'] = $cursor;
 

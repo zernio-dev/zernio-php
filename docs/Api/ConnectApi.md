@@ -1,6 +1,6 @@
 # Zernio\ConnectApi
 
-
+OAuth and credential flows for connecting social accounts, plus per-platform selection steps (Facebook pages, Pinterest boards, LinkedIn organizations, GMB locations, etc.).
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 

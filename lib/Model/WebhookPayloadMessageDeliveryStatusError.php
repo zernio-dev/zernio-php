@@ -88,7 +88,7 @@ class WebhookPayloadMessageDeliveryStatusError implements ModelInterface, ArrayA
         'code' => false,
         'title' => false,
         'message' => false,
-        'explanation' => false
+        'explanation' => true
     ];
 
     /**
@@ -413,7 +413,14 @@ class WebhookPayloadMessageDeliveryStatusError implements ModelInterface, ArrayA
     public function setExplanation($explanation)
     {
         if (is_null($explanation)) {
-            throw new \InvalidArgumentException('non-nullable explanation cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'explanation');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('explanation', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['explanation'] = $explanation;
 

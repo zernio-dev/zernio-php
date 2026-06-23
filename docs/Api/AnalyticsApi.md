@@ -1,6 +1,6 @@
 # Zernio\AnalyticsApi
 
-
+Post and account analytics across platforms (insights, demographics, follower history, best time to post, content decay, and aggregated metrics).
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 

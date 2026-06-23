@@ -120,7 +120,7 @@ class GetInboxPostComments200ResponsePost implements ModelInterface, ArrayAccess
         'created_utc' => false,
         'over18' => false,
         'stickied' => false,
-        'flair_text' => false,
+        'flair_text' => true,
         'is_gallery' => false
     ];
 
@@ -760,7 +760,14 @@ class GetInboxPostComments200ResponsePost implements ModelInterface, ArrayAccess
     public function setFlairText($flair_text)
     {
         if (is_null($flair_text)) {
-            throw new \InvalidArgumentException('non-nullable flair_text cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'flair_text');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('flair_text', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['flair_text'] = $flair_text;
 

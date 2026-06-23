@@ -94,12 +94,12 @@ class ListWhatsAppFlowResponses200ResponseResponsesInner implements ModelInterfa
     protected static array $openAPINullables = [
         'id' => false,
         'received_at' => false,
-        'from' => false,
-        'sender_name' => false,
-        'conversation_id' => false,
-        'flow_token' => false,
+        'from' => true,
+        'sender_name' => true,
+        'conversation_id' => true,
+        'flow_token' => true,
         'data' => false,
-        'raw' => false
+        'raw' => true
     ];
 
     /**
@@ -413,7 +413,14 @@ class ListWhatsAppFlowResponses200ResponseResponsesInner implements ModelInterfa
     public function setFrom($from)
     {
         if (is_null($from)) {
-            throw new \InvalidArgumentException('non-nullable from cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'from');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('from', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['from'] = $from;
 
@@ -440,7 +447,14 @@ class ListWhatsAppFlowResponses200ResponseResponsesInner implements ModelInterfa
     public function setSenderName($sender_name)
     {
         if (is_null($sender_name)) {
-            throw new \InvalidArgumentException('non-nullable sender_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sender_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sender_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sender_name'] = $sender_name;
 
@@ -467,7 +481,14 @@ class ListWhatsAppFlowResponses200ResponseResponsesInner implements ModelInterfa
     public function setConversationId($conversation_id)
     {
         if (is_null($conversation_id)) {
-            throw new \InvalidArgumentException('non-nullable conversation_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'conversation_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('conversation_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['conversation_id'] = $conversation_id;
 
@@ -494,7 +515,14 @@ class ListWhatsAppFlowResponses200ResponseResponsesInner implements ModelInterfa
     public function setFlowToken($flow_token)
     {
         if (is_null($flow_token)) {
-            throw new \InvalidArgumentException('non-nullable flow_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'flow_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('flow_token', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['flow_token'] = $flow_token;
 
@@ -548,7 +576,14 @@ class ListWhatsAppFlowResponses200ResponseResponsesInner implements ModelInterfa
     public function setRaw($raw)
     {
         if (is_null($raw)) {
-            throw new \InvalidArgumentException('non-nullable raw cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'raw');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('raw', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['raw'] = $raw;
 

@@ -91,7 +91,7 @@ class TriggerWorkflow200ResponseExecution implements ModelInterface, ArrayAccess
         'id' => false,
         'status' => false,
         'current_node_id' => false,
-        'waiting_for' => false,
+        'waiting_for' => true,
         'variables' => false,
         'conversation_id' => false
     ];
@@ -426,7 +426,14 @@ class TriggerWorkflow200ResponseExecution implements ModelInterface, ArrayAccess
     public function setWaitingFor($waiting_for)
     {
         if (is_null($waiting_for)) {
-            throw new \InvalidArgumentException('non-nullable waiting_for cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'waiting_for');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('waiting_for', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['waiting_for'] = $waiting_for;
 

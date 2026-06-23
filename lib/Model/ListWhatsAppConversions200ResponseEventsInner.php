@@ -92,11 +92,11 @@ class ListWhatsAppConversions200ResponseEventsInner implements ModelInterface, A
     protected static array $openAPINullables = [
         'timestamp' => false,
         'event_name' => false,
-        'conversation_id' => false,
-        'events_received' => false,
-        'events_failed' => false,
-        'trace_id' => false,
-        'duration_ms' => false
+        'conversation_id' => true,
+        'events_received' => true,
+        'events_failed' => true,
+        'trace_id' => true,
+        'duration_ms' => true
     ];
 
     /**
@@ -406,7 +406,14 @@ class ListWhatsAppConversions200ResponseEventsInner implements ModelInterface, A
     public function setConversationId($conversation_id)
     {
         if (is_null($conversation_id)) {
-            throw new \InvalidArgumentException('non-nullable conversation_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'conversation_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('conversation_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['conversation_id'] = $conversation_id;
 
@@ -433,7 +440,14 @@ class ListWhatsAppConversions200ResponseEventsInner implements ModelInterface, A
     public function setEventsReceived($events_received)
     {
         if (is_null($events_received)) {
-            throw new \InvalidArgumentException('non-nullable events_received cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'events_received');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('events_received', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['events_received'] = $events_received;
 
@@ -460,7 +474,14 @@ class ListWhatsAppConversions200ResponseEventsInner implements ModelInterface, A
     public function setEventsFailed($events_failed)
     {
         if (is_null($events_failed)) {
-            throw new \InvalidArgumentException('non-nullable events_failed cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'events_failed');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('events_failed', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['events_failed'] = $events_failed;
 
@@ -487,7 +508,14 @@ class ListWhatsAppConversions200ResponseEventsInner implements ModelInterface, A
     public function setTraceId($trace_id)
     {
         if (is_null($trace_id)) {
-            throw new \InvalidArgumentException('non-nullable trace_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'trace_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('trace_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['trace_id'] = $trace_id;
 
@@ -514,7 +542,14 @@ class ListWhatsAppConversions200ResponseEventsInner implements ModelInterface, A
     public function setDurationMs($duration_ms)
     {
         if (is_null($duration_ms)) {
-            throw new \InvalidArgumentException('non-nullable duration_ms cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'duration_ms');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('duration_ms', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['duration_ms'] = $duration_ms;
 

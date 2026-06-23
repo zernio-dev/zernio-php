@@ -83,7 +83,7 @@ class GetGoogleBusinessReviews200ResponseReviewsInnerReviewer implements ModelIn
       */
     protected static array $openAPINullables = [
         'display_name' => false,
-        'profile_photo_url' => false,
+        'profile_photo_url' => true,
         'is_anonymous' => false
     ];
 
@@ -351,7 +351,14 @@ class GetGoogleBusinessReviews200ResponseReviewsInnerReviewer implements ModelIn
     public function setProfilePhotoUrl($profile_photo_url)
     {
         if (is_null($profile_photo_url)) {
-            throw new \InvalidArgumentException('non-nullable profile_photo_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'profile_photo_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('profile_photo_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['profile_photo_url'] = $profile_photo_url;
 

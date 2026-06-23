@@ -89,11 +89,11 @@ class EstimateAdReach200Response implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static array $openAPINullables = [
         'available' => false,
-        'lower' => false,
-        'upper' => false,
-        'daily' => false,
-        'currency' => false,
-        'estimate_ready' => false
+        'lower' => true,
+        'upper' => true,
+        'daily' => true,
+        'currency' => true,
+        'estimate_ready' => true
     ];
 
     /**
@@ -375,7 +375,14 @@ class EstimateAdReach200Response implements ModelInterface, ArrayAccess, \JsonSe
     public function setLower($lower)
     {
         if (is_null($lower)) {
-            throw new \InvalidArgumentException('non-nullable lower cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'lower');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('lower', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['lower'] = $lower;
 
@@ -402,7 +409,14 @@ class EstimateAdReach200Response implements ModelInterface, ArrayAccess, \JsonSe
     public function setUpper($upper)
     {
         if (is_null($upper)) {
-            throw new \InvalidArgumentException('non-nullable upper cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'upper');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('upper', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['upper'] = $upper;
 
@@ -429,7 +443,14 @@ class EstimateAdReach200Response implements ModelInterface, ArrayAccess, \JsonSe
     public function setDaily($daily)
     {
         if (is_null($daily)) {
-            throw new \InvalidArgumentException('non-nullable daily cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'daily');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('daily', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['daily'] = $daily;
 
@@ -456,7 +477,14 @@ class EstimateAdReach200Response implements ModelInterface, ArrayAccess, \JsonSe
     public function setCurrency($currency)
     {
         if (is_null($currency)) {
-            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'currency');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('currency', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['currency'] = $currency;
 
@@ -483,7 +511,14 @@ class EstimateAdReach200Response implements ModelInterface, ArrayAccess, \JsonSe
     public function setEstimateReady($estimate_ready)
     {
         if (is_null($estimate_ready)) {
-            throw new \InvalidArgumentException('non-nullable estimate_ready cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'estimate_ready');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('estimate_ready', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['estimate_ready'] = $estimate_ready;
 

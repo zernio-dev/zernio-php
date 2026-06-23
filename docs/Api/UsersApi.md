@@ -1,6 +1,6 @@
 # Zernio\UsersApi
 
-
+Read the authenticated user and team members.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 

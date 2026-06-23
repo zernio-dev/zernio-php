@@ -70,7 +70,7 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'ratio' => 'float',
         'rule' => 'object',
         'customer_file_source' => 'string',
-        'spec' => '\Zernio\Model\TargetingSpec'
+        'spec' => '\ZernioModelTargetingSpec'
     ];
 
     /**
@@ -794,7 +794,7 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets spec
      *
-     * @return \Zernio\Model\TargetingSpec
+     * @return \ZernioModelTargetingSpec
      */
     public function getSpec()
     {
@@ -804,7 +804,7 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets spec
      *
-     * @param \Zernio\Model\TargetingSpec $spec The targeting spec to store.
+     * @param \ZernioModelTargetingSpec $spec The targeting spec to store.
      *
      * @return self
      */

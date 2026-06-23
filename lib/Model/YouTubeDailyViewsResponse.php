@@ -94,11 +94,11 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
     protected static array $openAPINullables = [
         'success' => false,
         'video_id' => false,
-        'duration_seconds' => false,
+        'duration_seconds' => true,
         'date_range' => false,
         'total_views' => false,
         'daily_views' => false,
-        'last_synced_at' => false,
+        'last_synced_at' => true,
         'scope_status' => false
     ];
 
@@ -413,7 +413,14 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
     public function setDurationSeconds($duration_seconds)
     {
         if (is_null($duration_seconds)) {
-            throw new \InvalidArgumentException('non-nullable duration_seconds cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'duration_seconds');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('duration_seconds', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['duration_seconds'] = $duration_seconds;
 
@@ -521,7 +528,14 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
     public function setLastSyncedAt($last_synced_at)
     {
         if (is_null($last_synced_at)) {
-            throw new \InvalidArgumentException('non-nullable last_synced_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'last_synced_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('last_synced_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['last_synced_at'] = $last_synced_at;
 

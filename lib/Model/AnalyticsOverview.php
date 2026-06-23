@@ -89,7 +89,7 @@ class AnalyticsOverview implements ModelInterface, ArrayAccess, \JsonSerializabl
         'total_posts' => false,
         'published_posts' => false,
         'scheduled_posts' => false,
-        'last_sync' => false,
+        'last_sync' => true,
         'data_staleness' => false
     ];
 
@@ -419,7 +419,14 @@ class AnalyticsOverview implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setLastSync($last_sync)
     {
         if (is_null($last_sync)) {
-            throw new \InvalidArgumentException('non-nullable last_sync cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'last_sync');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('last_sync', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['last_sync'] = $last_sync;
 

@@ -86,7 +86,7 @@ class GetWhatsAppPhoneNumbers200ResponseSandbox implements ModelInterface, Array
       */
     protected static array $openAPINullables = [
         'phone_number' => false,
-        'account_id' => false,
+        'account_id' => true,
         'template' => false,
         'is_sandbox' => false
     ];
@@ -359,7 +359,14 @@ class GetWhatsAppPhoneNumbers200ResponseSandbox implements ModelInterface, Array
     public function setAccountId($account_id)
     {
         if (is_null($account_id)) {
-            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'account_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('account_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['account_id'] = $account_id;
 

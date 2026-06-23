@@ -59,7 +59,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'status' => 'string',
-        'form' => '\Zernio\Model\GetLeadForm200ResponseForm'
+        'form' => 'object'
     ];
 
     /**
@@ -327,7 +327,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets form
      *
-     * @return \Zernio\Model\GetLeadForm200ResponseForm|null
+     * @return object|null
      */
     public function getForm()
     {
@@ -337,7 +337,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets form
      *
-     * @param \Zernio\Model\GetLeadForm200ResponseForm|null $form form
+     * @param object|null $form form
      *
      * @return self
      */

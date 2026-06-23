@@ -104,16 +104,16 @@ class GetWorkflowVersion200ResponseVersion implements ModelInterface, ArrayAcces
     protected static array $openAPINullables = [
         'version' => false,
         'name' => false,
-        'description' => false,
-        'entry_node_id' => false,
+        'description' => true,
+        'entry_node_id' => true,
         'nodes' => false,
         'edges' => false,
         'platform' => false,
         'account_id' => false,
         'profile_id' => false,
-        'created_by' => false,
-        'created_by_email' => false,
-        'restored_from_version' => false,
+        'created_by' => true,
+        'created_by_email' => true,
+        'restored_from_version' => true,
         'created_at' => false
     ];
 
@@ -448,7 +448,14 @@ class GetWorkflowVersion200ResponseVersion implements ModelInterface, ArrayAcces
     public function setDescription($description)
     {
         if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['description'] = $description;
 
@@ -475,7 +482,14 @@ class GetWorkflowVersion200ResponseVersion implements ModelInterface, ArrayAcces
     public function setEntryNodeId($entry_node_id)
     {
         if (is_null($entry_node_id)) {
-            throw new \InvalidArgumentException('non-nullable entry_node_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'entry_node_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('entry_node_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['entry_node_id'] = $entry_node_id;
 
@@ -637,7 +651,14 @@ class GetWorkflowVersion200ResponseVersion implements ModelInterface, ArrayAcces
     public function setCreatedBy($created_by)
     {
         if (is_null($created_by)) {
-            throw new \InvalidArgumentException('non-nullable created_by cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'created_by');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('created_by', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['created_by'] = $created_by;
 
@@ -664,7 +685,14 @@ class GetWorkflowVersion200ResponseVersion implements ModelInterface, ArrayAcces
     public function setCreatedByEmail($created_by_email)
     {
         if (is_null($created_by_email)) {
-            throw new \InvalidArgumentException('non-nullable created_by_email cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'created_by_email');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('created_by_email', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['created_by_email'] = $created_by_email;
 
@@ -691,7 +719,14 @@ class GetWorkflowVersion200ResponseVersion implements ModelInterface, ArrayAcces
     public function setRestoredFromVersion($restored_from_version)
     {
         if (is_null($restored_from_version)) {
-            throw new \InvalidArgumentException('non-nullable restored_from_version cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'restored_from_version');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('restored_from_version', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['restored_from_version'] = $restored_from_version;
 

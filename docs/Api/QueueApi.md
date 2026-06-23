@@ -1,6 +1,6 @@
 # Zernio\QueueApi
 
-
+Manage posting-queue time slots and preview the upcoming queue.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 

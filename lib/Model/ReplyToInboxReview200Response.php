@@ -59,7 +59,7 @@ class ReplyToInboxReview200Response implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'status' => 'string',
-        'reply' => '\Zernio\Model\ReplyToInboxReview200ResponseReply',
+        'reply' => '\Zernio\Model\ListInboxReviews200ResponseDataInnerReply',
         'platform' => 'string'
     ];
 
@@ -334,7 +334,7 @@ class ReplyToInboxReview200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets reply
      *
-     * @return \Zernio\Model\ReplyToInboxReview200ResponseReply|null
+     * @return \Zernio\Model\ListInboxReviews200ResponseDataInnerReply|null
      */
     public function getReply()
     {
@@ -344,7 +344,7 @@ class ReplyToInboxReview200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets reply
      *
-     * @param \Zernio\Model\ReplyToInboxReview200ResponseReply|null $reply reply
+     * @param \Zernio\Model\ListInboxReviews200ResponseDataInnerReply|null $reply reply
      *
      * @return self
      */

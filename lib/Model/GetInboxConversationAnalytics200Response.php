@@ -97,9 +97,9 @@ class GetInboxConversationAnalytics200Response implements ModelInterface, ArrayA
         'success' => false,
         'conversation_id' => false,
         'mongo_id' => false,
-        'platform' => false,
+        'platform' => true,
         'from' => false,
-        'to' => false,
+        'to' => true,
         'summary' => false,
         'timeseries' => false,
         'by_source' => false
@@ -447,7 +447,14 @@ class GetInboxConversationAnalytics200Response implements ModelInterface, ArrayA
     public function setPlatform($platform)
     {
         if (is_null($platform)) {
-            throw new \InvalidArgumentException('non-nullable platform cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'platform');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('platform', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['platform'] = $platform;
 
@@ -501,7 +508,14 @@ class GetInboxConversationAnalytics200Response implements ModelInterface, ArrayA
     public function setTo($to)
     {
         if (is_null($to)) {
-            throw new \InvalidArgumentException('non-nullable to cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'to');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('to', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['to'] = $to;
 

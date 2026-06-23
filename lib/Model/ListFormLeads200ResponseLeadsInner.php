@@ -89,8 +89,8 @@ class ListFormLeads200ResponseLeadsInner implements ModelInterface, ArrayAccess,
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'created_time' => false,
-        'ad_id' => false,
+        'created_time' => true,
+        'ad_id' => true,
         'form_id' => false,
         'fields' => false,
         'field_data' => false
@@ -372,7 +372,14 @@ class ListFormLeads200ResponseLeadsInner implements ModelInterface, ArrayAccess,
     public function setCreatedTime($created_time)
     {
         if (is_null($created_time)) {
-            throw new \InvalidArgumentException('non-nullable created_time cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'created_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('created_time', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['created_time'] = $created_time;
 
@@ -399,7 +406,14 @@ class ListFormLeads200ResponseLeadsInner implements ModelInterface, ArrayAccess,
     public function setAdId($ad_id)
     {
         if (is_null($ad_id)) {
-            throw new \InvalidArgumentException('non-nullable ad_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ad_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ad_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ad_id'] = $ad_id;
 

@@ -6726,7 +6726,7 @@ class AdsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListAdCatalogProductSets200Response
+     * @return \Zernio\Model\ListAdCatalogProductSets200Response|\Zernio\Model\InlineObject
      */
     public function listAdCatalogProductSets($catalog_id, $account_id, string $contentType = self::contentTypes['listAdCatalogProductSets'][0])
     {
@@ -6745,7 +6745,7 @@ class AdsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListAdCatalogProductSets200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListAdCatalogProductSets200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listAdCatalogProductSetsWithHttpInfo($catalog_id, $account_id, string $contentType = self::contentTypes['listAdCatalogProductSets'][0])
     {
@@ -6781,6 +6781,12 @@ class AdsApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -6809,6 +6815,14 @@ class AdsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\ListAdCatalogProductSets200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7019,7 +7033,7 @@ class AdsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListAdCatalogs200Response
+     * @return \Zernio\Model\ListAdCatalogs200Response|\Zernio\Model\InlineObject
      */
     public function listAdCatalogs($account_id, $ad_account_id, string $contentType = self::contentTypes['listAdCatalogs'][0])
     {
@@ -7038,7 +7052,7 @@ class AdsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListAdCatalogs200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListAdCatalogs200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listAdCatalogsWithHttpInfo($account_id, $ad_account_id, string $contentType = self::contentTypes['listAdCatalogs'][0])
     {
@@ -7074,6 +7088,12 @@ class AdsApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -7102,6 +7122,14 @@ class AdsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\ListAdCatalogs200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10692,7 +10720,7 @@ class AdsApi
      * @param  string $account_id Social account ID (a connected account on the target ad platform). (required)
      * @param  string $q Search query. For geo, the locality name only (no region/country suffix). (required)
      * @param  string|null $dimension What to search. &#x60;geo&#x60; resolves locations (scope further with &#x60;geoType&#x60;), &#x60;interest&#x60;/&#x60;behavior&#x60; resolve audience entities, &#x60;income&#x60; resolves income-tier options. Defaults to &#x60;interest&#x60; for backward compatibility with the deprecated /v1/ads/interests alias. (optional, default to 'interest')
-     * @param  string|null $geo_type Only used when &#x60;dimension&#x3D;geo&#x60;. The kind of location to resolve. &#x60;place&#x60; resolves named points of interest (businesses, landmarks). &#x60;neighborhood&#x60; resolves named neighbourhood areas. Use &#x60;all&#x60; to search every geo type in a single relevance-ranked call — mirrors Meta&#39;s own unified search box. Defaults to &#x60;city&#x60;. (optional, default to 'city')
+     * @param  string|null $geo_type Only used when &#x60;dimension&#x3D;geo&#x60;. The kind of location to resolve. Defaults to &#x60;city&#x60;. (optional, default to 'city')
      * @param  string|null $country_code ISO 3166-1 alpha-2 country code (e.g. NL) to scope a geo search. (optional)
      * @param  int|null $limit Maximum results to return. (optional, default to 25)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdTargeting'] to see the possible values for this operation
@@ -10715,7 +10743,7 @@ class AdsApi
      * @param  string $account_id Social account ID (a connected account on the target ad platform). (required)
      * @param  string $q Search query. For geo, the locality name only (no region/country suffix). (required)
      * @param  string|null $dimension What to search. &#x60;geo&#x60; resolves locations (scope further with &#x60;geoType&#x60;), &#x60;interest&#x60;/&#x60;behavior&#x60; resolve audience entities, &#x60;income&#x60; resolves income-tier options. Defaults to &#x60;interest&#x60; for backward compatibility with the deprecated /v1/ads/interests alias. (optional, default to 'interest')
-     * @param  string|null $geo_type Only used when &#x60;dimension&#x3D;geo&#x60;. The kind of location to resolve. &#x60;place&#x60; resolves named points of interest (businesses, landmarks). &#x60;neighborhood&#x60; resolves named neighbourhood areas. Use &#x60;all&#x60; to search every geo type in a single relevance-ranked call — mirrors Meta&#39;s own unified search box. Defaults to &#x60;city&#x60;. (optional, default to 'city')
+     * @param  string|null $geo_type Only used when &#x60;dimension&#x3D;geo&#x60;. The kind of location to resolve. Defaults to &#x60;city&#x60;. (optional, default to 'city')
      * @param  string|null $country_code ISO 3166-1 alpha-2 country code (e.g. NL) to scope a geo search. (optional)
      * @param  int|null $limit Maximum results to return. (optional, default to 25)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdTargeting'] to see the possible values for this operation
@@ -10819,7 +10847,7 @@ class AdsApi
      * @param  string $account_id Social account ID (a connected account on the target ad platform). (required)
      * @param  string $q Search query. For geo, the locality name only (no region/country suffix). (required)
      * @param  string|null $dimension What to search. &#x60;geo&#x60; resolves locations (scope further with &#x60;geoType&#x60;), &#x60;interest&#x60;/&#x60;behavior&#x60; resolve audience entities, &#x60;income&#x60; resolves income-tier options. Defaults to &#x60;interest&#x60; for backward compatibility with the deprecated /v1/ads/interests alias. (optional, default to 'interest')
-     * @param  string|null $geo_type Only used when &#x60;dimension&#x3D;geo&#x60;. The kind of location to resolve. &#x60;place&#x60; resolves named points of interest (businesses, landmarks). &#x60;neighborhood&#x60; resolves named neighbourhood areas. Use &#x60;all&#x60; to search every geo type in a single relevance-ranked call — mirrors Meta&#39;s own unified search box. Defaults to &#x60;city&#x60;. (optional, default to 'city')
+     * @param  string|null $geo_type Only used when &#x60;dimension&#x3D;geo&#x60;. The kind of location to resolve. Defaults to &#x60;city&#x60;. (optional, default to 'city')
      * @param  string|null $country_code ISO 3166-1 alpha-2 country code (e.g. NL) to scope a geo search. (optional)
      * @param  int|null $limit Maximum results to return. (optional, default to 25)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdTargeting'] to see the possible values for this operation
@@ -10845,7 +10873,7 @@ class AdsApi
      * @param  string $account_id Social account ID (a connected account on the target ad platform). (required)
      * @param  string $q Search query. For geo, the locality name only (no region/country suffix). (required)
      * @param  string|null $dimension What to search. &#x60;geo&#x60; resolves locations (scope further with &#x60;geoType&#x60;), &#x60;interest&#x60;/&#x60;behavior&#x60; resolve audience entities, &#x60;income&#x60; resolves income-tier options. Defaults to &#x60;interest&#x60; for backward compatibility with the deprecated /v1/ads/interests alias. (optional, default to 'interest')
-     * @param  string|null $geo_type Only used when &#x60;dimension&#x3D;geo&#x60;. The kind of location to resolve. &#x60;place&#x60; resolves named points of interest (businesses, landmarks). &#x60;neighborhood&#x60; resolves named neighbourhood areas. Use &#x60;all&#x60; to search every geo type in a single relevance-ranked call — mirrors Meta&#39;s own unified search box. Defaults to &#x60;city&#x60;. (optional, default to 'city')
+     * @param  string|null $geo_type Only used when &#x60;dimension&#x3D;geo&#x60;. The kind of location to resolve. Defaults to &#x60;city&#x60;. (optional, default to 'city')
      * @param  string|null $country_code ISO 3166-1 alpha-2 country code (e.g. NL) to scope a geo search. (optional)
      * @param  int|null $limit Maximum results to return. (optional, default to 25)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdTargeting'] to see the possible values for this operation
@@ -10900,7 +10928,7 @@ class AdsApi
      * @param  string $account_id Social account ID (a connected account on the target ad platform). (required)
      * @param  string $q Search query. For geo, the locality name only (no region/country suffix). (required)
      * @param  string|null $dimension What to search. &#x60;geo&#x60; resolves locations (scope further with &#x60;geoType&#x60;), &#x60;interest&#x60;/&#x60;behavior&#x60; resolve audience entities, &#x60;income&#x60; resolves income-tier options. Defaults to &#x60;interest&#x60; for backward compatibility with the deprecated /v1/ads/interests alias. (optional, default to 'interest')
-     * @param  string|null $geo_type Only used when &#x60;dimension&#x3D;geo&#x60;. The kind of location to resolve. &#x60;place&#x60; resolves named points of interest (businesses, landmarks). &#x60;neighborhood&#x60; resolves named neighbourhood areas. Use &#x60;all&#x60; to search every geo type in a single relevance-ranked call — mirrors Meta&#39;s own unified search box. Defaults to &#x60;city&#x60;. (optional, default to 'city')
+     * @param  string|null $geo_type Only used when &#x60;dimension&#x3D;geo&#x60;. The kind of location to resolve. Defaults to &#x60;city&#x60;. (optional, default to 'city')
      * @param  string|null $country_code ISO 3166-1 alpha-2 country code (e.g. NL) to scope a geo search. (optional)
      * @param  int|null $limit Maximum results to return. (optional, default to 25)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdTargeting'] to see the possible values for this operation

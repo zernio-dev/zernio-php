@@ -98,8 +98,8 @@ class UpdateAdSet200Response implements ModelInterface, ArrayAccess, \JsonSerial
         'status_updated' => false,
         'status_skipped' => false,
         'bid_strategy' => false,
-        'bid_amount' => false,
-        'roas_average_floor' => false
+        'bid_amount' => true,
+        'roas_average_floor' => true
     ];
 
     /**
@@ -587,7 +587,14 @@ class UpdateAdSet200Response implements ModelInterface, ArrayAccess, \JsonSerial
     public function setBidAmount($bid_amount)
     {
         if (is_null($bid_amount)) {
-            throw new \InvalidArgumentException('non-nullable bid_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'bid_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bid_amount', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['bid_amount'] = $bid_amount;
 
@@ -614,7 +621,14 @@ class UpdateAdSet200Response implements ModelInterface, ArrayAccess, \JsonSerial
     public function setRoasAverageFloor($roas_average_floor)
     {
         if (is_null($roas_average_floor)) {
-            throw new \InvalidArgumentException('non-nullable roas_average_floor cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'roas_average_floor');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('roas_average_floor', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['roas_average_floor'] = $roas_average_floor;
 

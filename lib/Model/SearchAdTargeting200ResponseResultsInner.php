@@ -62,9 +62,7 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
         'name' => 'string',
         'type' => 'string',
         'path' => 'string[]',
-        'audience_size' => 'int',
-        'latitude' => 'float',
-        'longitude' => 'float'
+        'audience_size' => 'int'
     ];
 
     /**
@@ -79,9 +77,7 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
         'name' => null,
         'type' => null,
         'path' => null,
-        'audience_size' => null,
-        'latitude' => 'float',
-        'longitude' => 'float'
+        'audience_size' => null
     ];
 
     /**
@@ -94,9 +90,7 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
         'name' => false,
         'type' => false,
         'path' => false,
-        'audience_size' => false,
-        'latitude' => false,
-        'longitude' => false
+        'audience_size' => true
     ];
 
     /**
@@ -189,9 +183,7 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
         'name' => 'name',
         'type' => 'type',
         'path' => 'path',
-        'audience_size' => 'audienceSize',
-        'latitude' => 'latitude',
-        'longitude' => 'longitude'
+        'audience_size' => 'audienceSize'
     ];
 
     /**
@@ -204,9 +196,7 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
         'name' => 'setName',
         'type' => 'setType',
         'path' => 'setPath',
-        'audience_size' => 'setAudienceSize',
-        'latitude' => 'setLatitude',
-        'longitude' => 'setLongitude'
+        'audience_size' => 'setAudienceSize'
     ];
 
     /**
@@ -219,9 +209,7 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
         'name' => 'getName',
         'type' => 'getType',
         'path' => 'getPath',
-        'audience_size' => 'getAudienceSize',
-        'latitude' => 'getLatitude',
-        'longitude' => 'getLongitude'
+        'audience_size' => 'getAudienceSize'
     ];
 
     /**
@@ -286,8 +274,6 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('path', $data ?? [], null);
         $this->setIfExists('audience_size', $data ?? [], null);
-        $this->setIfExists('latitude', $data ?? [], null);
-        $this->setIfExists('longitude', $data ?? [], null);
     }
 
     /**
@@ -469,63 +455,16 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
     public function setAudienceSize($audience_size)
     {
         if (is_null($audience_size)) {
-            throw new \InvalidArgumentException('non-nullable audience_size cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'audience_size');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('audience_size', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['audience_size'] = $audience_size;
-
-        return $this;
-    }
-
-    /**
-     * Gets latitude
-     *
-     * @return float|null
-     */
-    public function getLatitude()
-    {
-        return $this->container['latitude'];
-    }
-
-    /**
-     * Sets latitude
-     *
-     * @param float|null $latitude Centre latitude of the location. Populated on Meta geo results (city, neighborhood, place, etc.). Useful for map views.
-     *
-     * @return self
-     */
-    public function setLatitude($latitude)
-    {
-        if (is_null($latitude)) {
-            throw new \InvalidArgumentException('non-nullable latitude cannot be null');
-        }
-        $this->container['latitude'] = $latitude;
-
-        return $this;
-    }
-
-    /**
-     * Gets longitude
-     *
-     * @return float|null
-     */
-    public function getLongitude()
-    {
-        return $this->container['longitude'];
-    }
-
-    /**
-     * Sets longitude
-     *
-     * @param float|null $longitude Centre longitude of the location.
-     *
-     * @return self
-     */
-    public function setLongitude($longitude)
-    {
-        if (is_null($longitude)) {
-            throw new \InvalidArgumentException('non-nullable longitude cannot be null');
-        }
-        $this->container['longitude'] = $longitude;
 
         return $this;
     }

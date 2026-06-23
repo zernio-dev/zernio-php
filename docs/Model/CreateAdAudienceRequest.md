@@ -16,6 +16,6 @@ Name | Type | Description | Notes
 **ratio** | **float** | Required for lookalike audiences | [optional]
 **rule** | **object** | Pixel event rule for website audiences (optional) | [optional]
 **customer_file_source** | **string** | Data source declaration for GDPR compliance (customer_list only) | [optional]
-**spec** | [**\Zernio\Model\TargetingSpec**](TargetingSpec.md) | The targeting spec to store. |
+**spec** | [**\ZernioModelTargetingSpec**](\ZernioModelTargetingSpec.md) | The targeting spec to store. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

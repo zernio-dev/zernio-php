@@ -101,7 +101,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
         'platform' => false,
         'platform_message_id' => false,
         'direction' => false,
-        'text' => false,
+        'text' => true,
         'attachments' => false,
         'sender' => false,
         'sent_at' => false,
@@ -405,7 +405,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
             );
         }
 
-        if ($this->container['text'] === null) {
+        if ($this->container['text'] === null && !$this->isNullableSetToNull('text')) {
             $invalidProperties[] = "'text' can't be null";
         }
         if ($this->container['attachments'] === null) {
@@ -593,7 +593,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets text
      *
-     * @return string
+     * @return string|null
      */
     public function getText()
     {
@@ -603,14 +603,21 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets text
      *
-     * @param string $text Message text content
+     * @param string|null $text Message text content
      *
      * @return self
      */
     public function setText($text)
     {
         if (is_null($text)) {
-            throw new \InvalidArgumentException('non-nullable text cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'text');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('text', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['text'] = $text;
 

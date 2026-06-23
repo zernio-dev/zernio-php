@@ -111,13 +111,13 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
         'account_id' => false,
         'account_username' => false,
         'content' => false,
-        'picture' => false,
-        'permalink' => false,
+        'picture' => true,
+        'permalink' => true,
         'created_time' => false,
         'comment_count' => false,
         'like_count' => false,
-        'cid' => false,
-        'subreddit' => false,
+        'cid' => true,
+        'subreddit' => true,
         'is_ad' => false,
         'ad_id' => false,
         'placement' => false
@@ -567,7 +567,14 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
     public function setPicture($picture)
     {
         if (is_null($picture)) {
-            throw new \InvalidArgumentException('non-nullable picture cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'picture');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('picture', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['picture'] = $picture;
 
@@ -594,7 +601,14 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
     public function setPermalink($permalink)
     {
         if (is_null($permalink)) {
-            throw new \InvalidArgumentException('non-nullable permalink cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'permalink');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('permalink', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['permalink'] = $permalink;
 
@@ -702,7 +716,14 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
     public function setCid($cid)
     {
         if (is_null($cid)) {
-            throw new \InvalidArgumentException('non-nullable cid cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cid');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cid', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cid'] = $cid;
 
@@ -729,7 +750,14 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
     public function setSubreddit($subreddit)
     {
         if (is_null($subreddit)) {
-            throw new \InvalidArgumentException('non-nullable subreddit cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'subreddit');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('subreddit', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['subreddit'] = $subreddit;
 

@@ -81,7 +81,7 @@ class ListInboxReviews200ResponseSummary implements ModelInterface, ArrayAccess,
       */
     protected static array $openAPINullables = [
         'total_reviews' => false,
-        'average_rating' => false
+        'average_rating' => true
     ];
 
     /**
@@ -344,7 +344,14 @@ class ListInboxReviews200ResponseSummary implements ModelInterface, ArrayAccess,
     public function setAverageRating($average_rating)
     {
         if (is_null($average_rating)) {
-            throw new \InvalidArgumentException('non-nullable average_rating cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'average_rating');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('average_rating', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['average_rating'] = $average_rating;
 

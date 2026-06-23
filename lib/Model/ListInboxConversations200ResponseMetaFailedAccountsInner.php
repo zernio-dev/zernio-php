@@ -89,11 +89,11 @@ class ListInboxConversations200ResponseMetaFailedAccountsInner implements ModelI
       */
     protected static array $openAPINullables = [
         'account_id' => false,
-        'account_username' => false,
+        'account_username' => true,
         'platform' => false,
         'error' => false,
-        'code' => false,
-        'retry_after' => false
+        'code' => true,
+        'retry_after' => true
     ];
 
     /**
@@ -372,7 +372,14 @@ class ListInboxConversations200ResponseMetaFailedAccountsInner implements ModelI
     public function setAccountUsername($account_username)
     {
         if (is_null($account_username)) {
-            throw new \InvalidArgumentException('non-nullable account_username cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'account_username');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('account_username', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['account_username'] = $account_username;
 
@@ -453,7 +460,14 @@ class ListInboxConversations200ResponseMetaFailedAccountsInner implements ModelI
     public function setCode($code)
     {
         if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('code', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['code'] = $code;
 
@@ -480,7 +494,14 @@ class ListInboxConversations200ResponseMetaFailedAccountsInner implements ModelI
     public function setRetryAfter($retry_after)
     {
         if (is_null($retry_after)) {
-            throw new \InvalidArgumentException('non-nullable retry_after cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'retry_after');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('retry_after', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['retry_after'] = $retry_after;
 

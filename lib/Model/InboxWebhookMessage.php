@@ -102,7 +102,7 @@ class InboxWebhookMessage implements ModelInterface, ArrayAccess, \JsonSerializa
         'platform' => false,
         'platform_message_id' => false,
         'direction' => false,
-        'text' => false,
+        'text' => true,
         'attachments' => false,
         'sender' => false,
         'sent_at' => false,
@@ -406,7 +406,7 @@ class InboxWebhookMessage implements ModelInterface, ArrayAccess, \JsonSerializa
             );
         }
 
-        if ($this->container['text'] === null) {
+        if ($this->container['text'] === null && !$this->isNullableSetToNull('text')) {
             $invalidProperties[] = "'text' can't be null";
         }
         if ($this->container['attachments'] === null) {
@@ -594,7 +594,7 @@ class InboxWebhookMessage implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets text
      *
-     * @return string
+     * @return string|null
      */
     public function getText()
     {
@@ -604,14 +604,21 @@ class InboxWebhookMessage implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets text
      *
-     * @param string $text Message text content (retained on deleted messages for API consumers; Zernio dashboard UI hides this)
+     * @param string|null $text Message text content (retained on deleted messages for API consumers; Zernio dashboard UI hides this)
      *
      * @return self
      */
     public function setText($text)
     {
         if (is_null($text)) {
-            throw new \InvalidArgumentException('non-nullable text cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'text');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('text', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['text'] = $text;
 

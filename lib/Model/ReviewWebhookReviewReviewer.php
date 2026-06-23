@@ -82,9 +82,9 @@ class ReviewWebhookReviewReviewer implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
+        'id' => true,
         'name' => false,
-        'profile_image' => false
+        'profile_image' => true
     ];
 
     /**
@@ -289,13 +289,13 @@ class ReviewWebhookReviewReviewer implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
+        if ($this->container['id'] === null && !$this->isNullableSetToNull('id')) {
             $invalidProperties[] = "'id' can't be null";
         }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['profile_image'] === null) {
+        if ($this->container['profile_image'] === null && !$this->isNullableSetToNull('profile_image')) {
             $invalidProperties[] = "'profile_image' can't be null";
         }
         return $invalidProperties;
@@ -316,7 +316,7 @@ class ReviewWebhookReviewReviewer implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets id
      *
-     * @return string
+     * @return string|null
      */
     public function getId()
     {
@@ -326,14 +326,21 @@ class ReviewWebhookReviewReviewer implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets id
      *
-     * @param string $id Platform reviewer ID. Null when the platform does not expose it (common on Google Business anonymous reviews).
+     * @param string|null $id Platform reviewer ID. Null when the platform does not expose it (common on Google Business anonymous reviews).
      *
      * @return self
      */
     public function setId($id)
     {
         if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['id'] = $id;
 
@@ -370,7 +377,7 @@ class ReviewWebhookReviewReviewer implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets profile_image
      *
-     * @return string
+     * @return string|null
      */
     public function getProfileImage()
     {
@@ -380,14 +387,21 @@ class ReviewWebhookReviewReviewer implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets profile_image
      *
-     * @param string $profile_image profile_image
+     * @param string|null $profile_image profile_image
      *
      * @return self
      */
     public function setProfileImage($profile_image)
     {
         if (is_null($profile_image)) {
-            throw new \InvalidArgumentException('non-nullable profile_image cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'profile_image');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('profile_image', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['profile_image'] = $profile_image;
 

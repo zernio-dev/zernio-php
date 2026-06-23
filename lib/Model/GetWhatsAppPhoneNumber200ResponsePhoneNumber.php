@@ -104,10 +104,10 @@ class GetWhatsAppPhoneNumber200ResponsePhoneNumber implements ModelInterface, Ar
         'country' => false,
         'meta_preverified_id' => false,
         'meta_verification_status' => false,
-        'onfido_verification_url' => false,
-        'end_user_first_name' => false,
-        'end_user_last_name' => false,
-        'regulatory_decline_reason' => false,
+        'onfido_verification_url' => true,
+        'end_user_first_name' => true,
+        'end_user_last_name' => true,
+        'regulatory_decline_reason' => true,
         'provisioned_at' => false
     ];
 
@@ -590,7 +590,14 @@ class GetWhatsAppPhoneNumber200ResponsePhoneNumber implements ModelInterface, Ar
     public function setOnfidoVerificationUrl($onfido_verification_url)
     {
         if (is_null($onfido_verification_url)) {
-            throw new \InvalidArgumentException('non-nullable onfido_verification_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'onfido_verification_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('onfido_verification_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['onfido_verification_url'] = $onfido_verification_url;
 
@@ -617,7 +624,14 @@ class GetWhatsAppPhoneNumber200ResponsePhoneNumber implements ModelInterface, Ar
     public function setEndUserFirstName($end_user_first_name)
     {
         if (is_null($end_user_first_name)) {
-            throw new \InvalidArgumentException('non-nullable end_user_first_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'end_user_first_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end_user_first_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['end_user_first_name'] = $end_user_first_name;
 
@@ -644,7 +658,14 @@ class GetWhatsAppPhoneNumber200ResponsePhoneNumber implements ModelInterface, Ar
     public function setEndUserLastName($end_user_last_name)
     {
         if (is_null($end_user_last_name)) {
-            throw new \InvalidArgumentException('non-nullable end_user_last_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'end_user_last_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end_user_last_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['end_user_last_name'] = $end_user_last_name;
 
@@ -671,7 +692,14 @@ class GetWhatsAppPhoneNumber200ResponsePhoneNumber implements ModelInterface, Ar
     public function setRegulatoryDeclineReason($regulatory_decline_reason)
     {
         if (is_null($regulatory_decline_reason)) {
-            throw new \InvalidArgumentException('non-nullable regulatory_decline_reason cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'regulatory_decline_reason');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('regulatory_decline_reason', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['regulatory_decline_reason'] = $regulatory_decline_reason;
 

@@ -107,13 +107,13 @@ class ListInboxConversationAnalytics200ResponseItemsInner implements ModelInterf
       */
     protected static array $openAPINullables = [
         'conversation_id' => false,
-        'mongo_id' => false,
+        'mongo_id' => true,
         'account_id' => false,
         'platform' => false,
-        'participant_name' => false,
-        'participant_username' => false,
-        'participant_picture' => false,
-        'last_message' => false,
+        'participant_name' => true,
+        'participant_username' => true,
+        'participant_picture' => true,
+        'last_message' => true,
         'total_messages' => false,
         'received' => false,
         'sent' => false,
@@ -435,7 +435,14 @@ class ListInboxConversationAnalytics200ResponseItemsInner implements ModelInterf
     public function setMongoId($mongo_id)
     {
         if (is_null($mongo_id)) {
-            throw new \InvalidArgumentException('non-nullable mongo_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'mongo_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mongo_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['mongo_id'] = $mongo_id;
 
@@ -516,7 +523,14 @@ class ListInboxConversationAnalytics200ResponseItemsInner implements ModelInterf
     public function setParticipantName($participant_name)
     {
         if (is_null($participant_name)) {
-            throw new \InvalidArgumentException('non-nullable participant_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'participant_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('participant_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['participant_name'] = $participant_name;
 
@@ -543,7 +557,14 @@ class ListInboxConversationAnalytics200ResponseItemsInner implements ModelInterf
     public function setParticipantUsername($participant_username)
     {
         if (is_null($participant_username)) {
-            throw new \InvalidArgumentException('non-nullable participant_username cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'participant_username');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('participant_username', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['participant_username'] = $participant_username;
 
@@ -570,7 +591,14 @@ class ListInboxConversationAnalytics200ResponseItemsInner implements ModelInterf
     public function setParticipantPicture($participant_picture)
     {
         if (is_null($participant_picture)) {
-            throw new \InvalidArgumentException('non-nullable participant_picture cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'participant_picture');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('participant_picture', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['participant_picture'] = $participant_picture;
 
@@ -597,7 +625,14 @@ class ListInboxConversationAnalytics200ResponseItemsInner implements ModelInterf
     public function setLastMessage($last_message)
     {
         if (is_null($last_message)) {
-            throw new \InvalidArgumentException('non-nullable last_message cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'last_message');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('last_message', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['last_message'] = $last_message;
 

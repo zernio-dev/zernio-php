@@ -94,12 +94,12 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
+        'id' => true,
         'platform_audience_id' => false,
         'name' => false,
         'description' => false,
         'type' => false,
-        'spec' => false,
+        'spec' => true,
         'platform' => false,
         'size' => false,
         'status' => false
@@ -394,7 +394,14 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
     public function setId($id)
     {
         if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['id'] = $id;
 
@@ -532,14 +539,21 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
     /**
      * Sets spec
      *
-     * @param \Zernio\Model\TargetingSpec|null $spec Present (and the only meaningful payload) when `type` is `saved_targeting`. Null for uploaded/derived audience types.
+     * @param \Zernio\Model\TargetingSpec|null $spec spec
      *
      * @return self
      */
     public function setSpec($spec)
     {
         if (is_null($spec)) {
-            throw new \InvalidArgumentException('non-nullable spec cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'spec');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('spec', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['spec'] = $spec;
 

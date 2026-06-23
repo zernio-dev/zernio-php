@@ -94,12 +94,12 @@ class GetAdTrackingTags200Response implements ModelInterface, ArrayAccess, \Json
     protected static array $openAPINullables = [
         'platform' => false,
         'level' => false,
-        'url_tags' => false,
-        'template_url_spec' => false,
-        'tracking_url_template' => false,
-        'final_url_suffix' => false,
-        'dynamic_value_parameters' => false,
-        'custom_value_parameters' => false
+        'url_tags' => true,
+        'template_url_spec' => true,
+        'tracking_url_template' => true,
+        'final_url_suffix' => true,
+        'dynamic_value_parameters' => true,
+        'custom_value_parameters' => true
     ];
 
     /**
@@ -447,7 +447,14 @@ class GetAdTrackingTags200Response implements ModelInterface, ArrayAccess, \Json
     public function setUrlTags($url_tags)
     {
         if (is_null($url_tags)) {
-            throw new \InvalidArgumentException('non-nullable url_tags cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'url_tags');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('url_tags', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['url_tags'] = $url_tags;
 
@@ -474,7 +481,14 @@ class GetAdTrackingTags200Response implements ModelInterface, ArrayAccess, \Json
     public function setTemplateUrlSpec($template_url_spec)
     {
         if (is_null($template_url_spec)) {
-            throw new \InvalidArgumentException('non-nullable template_url_spec cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'template_url_spec');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('template_url_spec', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['template_url_spec'] = $template_url_spec;
 
@@ -501,7 +515,14 @@ class GetAdTrackingTags200Response implements ModelInterface, ArrayAccess, \Json
     public function setTrackingUrlTemplate($tracking_url_template)
     {
         if (is_null($tracking_url_template)) {
-            throw new \InvalidArgumentException('non-nullable tracking_url_template cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tracking_url_template');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tracking_url_template', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tracking_url_template'] = $tracking_url_template;
 
@@ -528,7 +549,14 @@ class GetAdTrackingTags200Response implements ModelInterface, ArrayAccess, \Json
     public function setFinalUrlSuffix($final_url_suffix)
     {
         if (is_null($final_url_suffix)) {
-            throw new \InvalidArgumentException('non-nullable final_url_suffix cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'final_url_suffix');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('final_url_suffix', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['final_url_suffix'] = $final_url_suffix;
 
@@ -555,7 +583,14 @@ class GetAdTrackingTags200Response implements ModelInterface, ArrayAccess, \Json
     public function setDynamicValueParameters($dynamic_value_parameters)
     {
         if (is_null($dynamic_value_parameters)) {
-            throw new \InvalidArgumentException('non-nullable dynamic_value_parameters cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'dynamic_value_parameters');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dynamic_value_parameters', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['dynamic_value_parameters'] = $dynamic_value_parameters;
 
@@ -582,7 +617,14 @@ class GetAdTrackingTags200Response implements ModelInterface, ArrayAccess, \Json
     public function setCustomValueParameters($custom_value_parameters)
     {
         if (is_null($custom_value_parameters)) {
-            throw new \InvalidArgumentException('non-nullable custom_value_parameters cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'custom_value_parameters');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('custom_value_parameters', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['custom_value_parameters'] = $custom_value_parameters;
 

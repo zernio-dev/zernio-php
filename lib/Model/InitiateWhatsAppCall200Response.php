@@ -98,7 +98,7 @@ class InitiateWhatsAppCall200Response implements ModelInterface, ArrayAccess, \J
         'status' => false,
         'direction' => false,
         'to' => false,
-        'forward_to' => false,
+        'forward_to' => true,
         'recording_enabled' => false
     ];
 
@@ -585,7 +585,14 @@ class InitiateWhatsAppCall200Response implements ModelInterface, ArrayAccess, \J
     public function setForwardTo($forward_to)
     {
         if (is_null($forward_to)) {
-            throw new \InvalidArgumentException('non-nullable forward_to cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'forward_to');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('forward_to', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['forward_to'] = $forward_to;
 

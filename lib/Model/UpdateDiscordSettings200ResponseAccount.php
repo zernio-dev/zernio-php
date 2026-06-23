@@ -107,8 +107,8 @@ class UpdateDiscordSettings200ResponseAccount implements ModelInterface, ArrayAc
         'channel_name' => false,
         'channel_type' => false,
         'guild_id' => false,
-        'webhook_username' => false,
-        'webhook_avatar_url' => false
+        'webhook_username' => true,
+        'webhook_avatar_url' => true
     ];
 
     /**
@@ -623,7 +623,14 @@ class UpdateDiscordSettings200ResponseAccount implements ModelInterface, ArrayAc
     public function setWebhookUsername($webhook_username)
     {
         if (is_null($webhook_username)) {
-            throw new \InvalidArgumentException('non-nullable webhook_username cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'webhook_username');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('webhook_username', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['webhook_username'] = $webhook_username;
 
@@ -650,7 +657,14 @@ class UpdateDiscordSettings200ResponseAccount implements ModelInterface, ArrayAc
     public function setWebhookAvatarUrl($webhook_avatar_url)
     {
         if (is_null($webhook_avatar_url)) {
-            throw new \InvalidArgumentException('non-nullable webhook_avatar_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'webhook_avatar_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('webhook_avatar_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['webhook_avatar_url'] = $webhook_avatar_url;
 

@@ -101,7 +101,7 @@ class GetContact200ResponseChannelsInner implements ModelInterface, ArrayAccess,
         'display_identifier' => false,
         'is_subscribed' => false,
         'conversation_id' => false,
-        'last_active_at' => false,
+        'last_active_at' => true,
         'created_at' => false
     ];
 
@@ -555,7 +555,14 @@ class GetContact200ResponseChannelsInner implements ModelInterface, ArrayAccess,
     public function setLastActiveAt($last_active_at)
     {
         if (is_null($last_active_at)) {
-            throw new \InvalidArgumentException('non-nullable last_active_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'last_active_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('last_active_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['last_active_at'] = $last_active_at;
 

@@ -82,9 +82,9 @@ class ListInboxReviews200ResponseDataInnerReviewer implements ModelInterface, Ar
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
+        'id' => true,
         'name' => false,
-        'profile_image' => false
+        'profile_image' => true
     ];
 
     /**
@@ -324,7 +324,14 @@ class ListInboxReviews200ResponseDataInnerReviewer implements ModelInterface, Ar
     public function setId($id)
     {
         if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['id'] = $id;
 
@@ -378,7 +385,14 @@ class ListInboxReviews200ResponseDataInnerReviewer implements ModelInterface, Ar
     public function setProfileImage($profile_image)
     {
         if (is_null($profile_image)) {
-            throw new \InvalidArgumentException('non-nullable profile_image cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'profile_image');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('profile_image', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['profile_image'] = $profile_image;
 

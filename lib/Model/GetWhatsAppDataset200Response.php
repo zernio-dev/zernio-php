@@ -78,7 +78,7 @@ class GetWhatsAppDataset200Response implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'dataset_id' => false
+        'dataset_id' => true
     ];
 
     /**
@@ -310,7 +310,14 @@ class GetWhatsAppDataset200Response implements ModelInterface, ArrayAccess, \Jso
     public function setDatasetId($dataset_id)
     {
         if (is_null($dataset_id)) {
-            throw new \InvalidArgumentException('non-nullable dataset_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'dataset_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dataset_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['dataset_id'] = $dataset_id;
 

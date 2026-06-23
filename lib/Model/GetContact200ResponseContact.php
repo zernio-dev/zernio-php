@@ -120,8 +120,8 @@ class GetContact200ResponseContact implements ModelInterface, ArrayAccess, \Json
         'is_blocked' => false,
         'messages_sent_count' => false,
         'messages_received_count' => false,
-        'last_message_sent_at' => false,
-        'last_message_received_at' => false,
+        'last_message_sent_at' => true,
+        'last_message_received_at' => true,
         'custom_fields' => false,
         'notes' => false,
         'conversation_ids' => false,
@@ -692,7 +692,14 @@ class GetContact200ResponseContact implements ModelInterface, ArrayAccess, \Json
     public function setLastMessageSentAt($last_message_sent_at)
     {
         if (is_null($last_message_sent_at)) {
-            throw new \InvalidArgumentException('non-nullable last_message_sent_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'last_message_sent_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('last_message_sent_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['last_message_sent_at'] = $last_message_sent_at;
 
@@ -719,7 +726,14 @@ class GetContact200ResponseContact implements ModelInterface, ArrayAccess, \Json
     public function setLastMessageReceivedAt($last_message_received_at)
     {
         if (is_null($last_message_received_at)) {
-            throw new \InvalidArgumentException('non-nullable last_message_received_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'last_message_received_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('last_message_received_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['last_message_received_at'] = $last_message_received_at;
 

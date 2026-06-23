@@ -93,7 +93,7 @@ class GetAdAnalytics200ResponseAd implements ModelInterface, ArrayAccess, \JsonS
         'platform' => false,
         'trigger' => false,
         'status' => false,
-        'currency' => false
+        'currency' => true
     ];
 
     /**
@@ -514,7 +514,14 @@ class GetAdAnalytics200ResponseAd implements ModelInterface, ArrayAccess, \JsonS
     public function setCurrency($currency)
     {
         if (is_null($currency)) {
-            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'currency');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('currency', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['currency'] = $currency;
 

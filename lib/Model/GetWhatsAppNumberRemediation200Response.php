@@ -86,7 +86,7 @@ class GetWhatsAppNumberRemediation200Response implements ModelInterface, ArrayAc
     protected static array $openAPINullables = [
         'country' => false,
         'number_type' => false,
-        'decline_reason' => false,
+        'decline_reason' => true,
         'fields' => false
     ];
 
@@ -385,7 +385,14 @@ class GetWhatsAppNumberRemediation200Response implements ModelInterface, ArrayAc
     public function setDeclineReason($decline_reason)
     {
         if (is_null($decline_reason)) {
-            throw new \InvalidArgumentException('non-nullable decline_reason cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'decline_reason');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('decline_reason', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['decline_reason'] = $decline_reason;
 

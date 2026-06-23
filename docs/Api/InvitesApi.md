@@ -1,6 +1,6 @@
 # Zernio\InvitesApi
 
-
+Generate invite tokens for adding members to a team.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 

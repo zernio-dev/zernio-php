@@ -93,8 +93,8 @@ class WhatsAppSandboxSession implements ModelInterface, ArrayAccess, \JsonSerial
         'phone_e164' => false,
         'status' => false,
         'expires_at' => false,
-        'activated_at' => false,
-        'created_at' => false
+        'activated_at' => true,
+        'created_at' => true
     ];
 
     /**
@@ -500,7 +500,14 @@ class WhatsAppSandboxSession implements ModelInterface, ArrayAccess, \JsonSerial
     public function setActivatedAt($activated_at)
     {
         if (is_null($activated_at)) {
-            throw new \InvalidArgumentException('non-nullable activated_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'activated_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('activated_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['activated_at'] = $activated_at;
 
@@ -527,7 +534,14 @@ class WhatsAppSandboxSession implements ModelInterface, ArrayAccess, \JsonSerial
     public function setCreatedAt($created_at)
     {
         if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'created_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('created_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['created_at'] = $created_at;
 

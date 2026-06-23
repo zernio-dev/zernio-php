@@ -81,7 +81,7 @@ class GetYoutubePlaylists200Response implements ModelInterface, ArrayAccess, \Js
       */
     protected static array $openAPINullables = [
         'playlists' => false,
-        'default_playlist_id' => false
+        'default_playlist_id' => true
     ];
 
     /**
@@ -344,7 +344,14 @@ class GetYoutubePlaylists200Response implements ModelInterface, ArrayAccess, \Js
     public function setDefaultPlaylistId($default_playlist_id)
     {
         if (is_null($default_playlist_id)) {
-            throw new \InvalidArgumentException('non-nullable default_playlist_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'default_playlist_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('default_playlist_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['default_playlist_id'] = $default_playlist_id;
 

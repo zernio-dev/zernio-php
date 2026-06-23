@@ -89,8 +89,8 @@ class CreateInboxConversation201ResponseData implements ModelInterface, ArrayAcc
         'message_id' => false,
         'conversation_id' => false,
         'participant_id' => false,
-        'participant_name' => false,
-        'participant_username' => false
+        'participant_name' => true,
+        'participant_username' => true
     ];
 
     /**
@@ -419,7 +419,14 @@ class CreateInboxConversation201ResponseData implements ModelInterface, ArrayAcc
     public function setParticipantName($participant_name)
     {
         if (is_null($participant_name)) {
-            throw new \InvalidArgumentException('non-nullable participant_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'participant_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('participant_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['participant_name'] = $participant_name;
 
@@ -446,7 +453,14 @@ class CreateInboxConversation201ResponseData implements ModelInterface, ArrayAcc
     public function setParticipantUsername($participant_username)
     {
         if (is_null($participant_username)) {
-            throw new \InvalidArgumentException('non-nullable participant_username cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'participant_username');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('participant_username', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['participant_username'] = $participant_username;
 

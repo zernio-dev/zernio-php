@@ -84,7 +84,7 @@ class ReplyToInboxPost200ResponseData implements ModelInterface, ArrayAccess, \J
     protected static array $openAPINullables = [
         'comment_id' => false,
         'is_reply' => false,
-        'cid' => false
+        'cid' => true
     ];
 
     /**
@@ -378,7 +378,14 @@ class ReplyToInboxPost200ResponseData implements ModelInterface, ArrayAccess, \J
     public function setCid($cid)
     {
         if (is_null($cid)) {
-            throw new \InvalidArgumentException('non-nullable cid cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cid');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cid', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cid'] = $cid;
 

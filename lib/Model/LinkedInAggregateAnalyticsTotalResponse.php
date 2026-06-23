@@ -64,7 +64,7 @@ class LinkedInAggregateAnalyticsTotalResponse implements ModelInterface, ArrayAc
         'account_type' => 'string',
         'username' => 'string',
         'aggregation' => 'string',
-        'date_range' => '\Zernio\Model\LinkedInAggregateAnalyticsTotalResponseDateRange',
+        'date_range' => '\Zernio\Model\YouTubeDailyViewsResponseDateRange',
         'analytics' => '\Zernio\Model\LinkedInAggregateAnalyticsTotalResponseAnalytics',
         'note' => 'string',
         'last_updated' => '\DateTime'
@@ -517,7 +517,7 @@ class LinkedInAggregateAnalyticsTotalResponse implements ModelInterface, ArrayAc
     /**
      * Gets date_range
      *
-     * @return \Zernio\Model\LinkedInAggregateAnalyticsTotalResponseDateRange|null
+     * @return \Zernio\Model\YouTubeDailyViewsResponseDateRange|null
      */
     public function getDateRange()
     {
@@ -527,7 +527,7 @@ class LinkedInAggregateAnalyticsTotalResponse implements ModelInterface, ArrayAc
     /**
      * Sets date_range
      *
-     * @param \Zernio\Model\LinkedInAggregateAnalyticsTotalResponseDateRange|null $date_range date_range
+     * @param \Zernio\Model\YouTubeDailyViewsResponseDateRange|null $date_range date_range
      *
      * @return self
      */

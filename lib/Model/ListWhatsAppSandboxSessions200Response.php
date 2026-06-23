@@ -81,7 +81,7 @@ class ListWhatsAppSandboxSessions200Response implements ModelInterface, ArrayAcc
       */
     protected static array $openAPINullables = [
         'sessions' => false,
-        'sandbox_number' => false
+        'sandbox_number' => true
     ];
 
     /**
@@ -344,7 +344,14 @@ class ListWhatsAppSandboxSessions200Response implements ModelInterface, ArrayAcc
     public function setSandboxNumber($sandbox_number)
     {
         if (is_null($sandbox_number)) {
-            throw new \InvalidArgumentException('non-nullable sandbox_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sandbox_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sandbox_number', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sandbox_number'] = $sandbox_number;
 

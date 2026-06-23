@@ -87,7 +87,7 @@ class WebhookPayloadCommentCommentAuthor implements ModelInterface, ArrayAccess,
         'id' => false,
         'username' => false,
         'name' => false,
-        'picture' => false
+        'picture' => true
     ];
 
     /**
@@ -415,7 +415,14 @@ class WebhookPayloadCommentCommentAuthor implements ModelInterface, ArrayAccess,
     public function setPicture($picture)
     {
         if (is_null($picture)) {
-            throw new \InvalidArgumentException('non-nullable picture cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'picture');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('picture', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['picture'] = $picture;
 

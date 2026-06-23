@@ -96,7 +96,7 @@ class GetGoogleBusinessReviews200Response implements ModelInterface, ArrayAccess
         'reviews' => false,
         'average_rating' => false,
         'total_review_count' => false,
-        'next_page_token' => false
+        'next_page_token' => true
     ];
 
     /**
@@ -514,7 +514,14 @@ class GetGoogleBusinessReviews200Response implements ModelInterface, ArrayAccess
     public function setNextPageToken($next_page_token)
     {
         if (is_null($next_page_token)) {
-            throw new \InvalidArgumentException('non-nullable next_page_token cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next_page_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_page_token', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['next_page_token'] = $next_page_token;
 

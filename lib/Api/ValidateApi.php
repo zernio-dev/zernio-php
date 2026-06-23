@@ -145,7 +145,7 @@ class ValidateApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ValidateMedia200Response
+     * @return \Zernio\Model\ValidateMedia200Response|\Zernio\Model\InlineObject
      */
     public function validateMedia($validate_media_request, string $contentType = self::contentTypes['validateMedia'][0])
     {
@@ -163,7 +163,7 @@ class ValidateApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ValidateMedia200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ValidateMedia200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function validateMediaWithHttpInfo($validate_media_request, string $contentType = self::contentTypes['validateMedia'][0])
     {
@@ -199,6 +199,12 @@ class ValidateApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -227,6 +233,14 @@ class ValidateApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\ValidateMedia200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -416,7 +430,7 @@ class ValidateApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ValidatePost200Response
+     * @return \Zernio\Model\ValidatePost200Response|\Zernio\Model\InlineObject
      */
     public function validatePost($validate_post_request, string $contentType = self::contentTypes['validatePost'][0])
     {
@@ -434,7 +448,7 @@ class ValidateApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ValidatePost200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ValidatePost200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function validatePostWithHttpInfo($validate_post_request, string $contentType = self::contentTypes['validatePost'][0])
     {
@@ -470,6 +484,12 @@ class ValidateApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -498,6 +518,14 @@ class ValidateApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\ValidatePost200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -687,7 +715,7 @@ class ValidateApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ValidatePostLength200Response
+     * @return \Zernio\Model\ValidatePostLength200Response|\Zernio\Model\InlineObject
      */
     public function validatePostLength($validate_post_length_request, string $contentType = self::contentTypes['validatePostLength'][0])
     {
@@ -705,7 +733,7 @@ class ValidateApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ValidatePostLength200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ValidatePostLength200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function validatePostLengthWithHttpInfo($validate_post_length_request, string $contentType = self::contentTypes['validatePostLength'][0])
     {
@@ -741,6 +769,12 @@ class ValidateApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -769,6 +803,14 @@ class ValidateApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\ValidatePostLength200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -959,7 +1001,7 @@ class ValidateApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ValidateSubreddit200Response
+     * @return \Zernio\Model\ValidateSubreddit200Response|\Zernio\Model\InlineObject
      */
     public function validateSubreddit($name, $account_id = null, string $contentType = self::contentTypes['validateSubreddit'][0])
     {
@@ -978,7 +1020,7 @@ class ValidateApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ValidateSubreddit200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ValidateSubreddit200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function validateSubredditWithHttpInfo($name, $account_id = null, string $contentType = self::contentTypes['validateSubreddit'][0])
     {
@@ -1014,6 +1056,12 @@ class ValidateApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -1042,6 +1090,14 @@ class ValidateApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\ValidateSubreddit200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

@@ -80,8 +80,8 @@ class GetWhatsAppFlowPreview200Response implements ModelInterface, ArrayAccess, 
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'preview_url' => false,
-        'expires_at' => false
+        'preview_url' => true,
+        'expires_at' => true
     ];
 
     /**
@@ -317,7 +317,14 @@ class GetWhatsAppFlowPreview200Response implements ModelInterface, ArrayAccess, 
     public function setPreviewUrl($preview_url)
     {
         if (is_null($preview_url)) {
-            throw new \InvalidArgumentException('non-nullable preview_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'preview_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('preview_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['preview_url'] = $preview_url;
 
@@ -344,7 +351,14 @@ class GetWhatsAppFlowPreview200Response implements ModelInterface, ArrayAccess, 
     public function setExpiresAt($expires_at)
     {
         if (is_null($expires_at)) {
-            throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'expires_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expires_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['expires_at'] = $expires_at;
 

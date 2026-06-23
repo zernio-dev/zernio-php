@@ -135,27 +135,27 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform' => false,
         'campaign_name' => false,
         'status' => false,
-        'review_status' => false,
-        'platform_campaign_status' => false,
-        'campaign_issues_info' => false,
+        'review_status' => true,
+        'platform_campaign_status' => true,
+        'campaign_issues_info' => true,
         'ad_count' => false,
         'ad_set_count' => false,
         'budget' => false,
         'campaign_budget' => false,
-        'budget_level' => false,
+        'budget_level' => true,
         'is_budget_schedule_enabled' => false,
-        'currency' => false,
+        'currency' => true,
         'metrics' => false,
         'platform_ad_account_id' => false,
-        'platform_ad_account_name' => false,
+        'platform_ad_account_name' => true,
         'account_id' => false,
         'profile_id' => false,
-        'advertising_channel_type' => false,
-        'platform_objective' => false,
-        'optimization_goal' => false,
-        'bid_strategy' => false,
-        'bid_amount' => false,
-        'roas_average_floor' => false,
+        'advertising_channel_type' => true,
+        'platform_objective' => true,
+        'optimization_goal' => true,
+        'bid_strategy' => true,
+        'bid_amount' => true,
+        'roas_average_floor' => true,
         'promoted_object' => false,
         'ad_sets' => false
     ];
@@ -697,10 +697,17 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReviewStatus($review_status)
     {
         if (is_null($review_status)) {
-            throw new \InvalidArgumentException('non-nullable review_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'review_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('review_status', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getReviewStatusAllowableValues();
-        if (!in_array($review_status, $allowedValues, true)) {
+        if (!is_null($review_status) && !in_array($review_status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'review_status', must be one of '%s'",
@@ -734,7 +741,14 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPlatformCampaignStatus($platform_campaign_status)
     {
         if (is_null($platform_campaign_status)) {
-            throw new \InvalidArgumentException('non-nullable platform_campaign_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'platform_campaign_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('platform_campaign_status', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['platform_campaign_status'] = $platform_campaign_status;
 
@@ -761,7 +775,14 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCampaignIssuesInfo($campaign_issues_info)
     {
         if (is_null($campaign_issues_info)) {
-            throw new \InvalidArgumentException('non-nullable campaign_issues_info cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'campaign_issues_info');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('campaign_issues_info', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['campaign_issues_info'] = $campaign_issues_info;
 
@@ -896,10 +917,17 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBudgetLevel($budget_level)
     {
         if (is_null($budget_level)) {
-            throw new \InvalidArgumentException('non-nullable budget_level cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'budget_level');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('budget_level', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getBudgetLevelAllowableValues();
-        if (!in_array($budget_level, $allowedValues, true)) {
+        if (!is_null($budget_level) && !in_array($budget_level, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'budget_level', must be one of '%s'",
@@ -960,7 +988,14 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCurrency($currency)
     {
         if (is_null($currency)) {
-            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'currency');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('currency', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['currency'] = $currency;
 
@@ -1041,7 +1076,14 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPlatformAdAccountName($platform_ad_account_name)
     {
         if (is_null($platform_ad_account_name)) {
-            throw new \InvalidArgumentException('non-nullable platform_ad_account_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'platform_ad_account_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('platform_ad_account_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['platform_ad_account_name'] = $platform_ad_account_name;
 
@@ -1122,7 +1164,14 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAdvertisingChannelType($advertising_channel_type)
     {
         if (is_null($advertising_channel_type)) {
-            throw new \InvalidArgumentException('non-nullable advertising_channel_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'advertising_channel_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('advertising_channel_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['advertising_channel_type'] = $advertising_channel_type;
 
@@ -1149,7 +1198,14 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPlatformObjective($platform_objective)
     {
         if (is_null($platform_objective)) {
-            throw new \InvalidArgumentException('non-nullable platform_objective cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'platform_objective');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('platform_objective', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['platform_objective'] = $platform_objective;
 
@@ -1176,7 +1232,14 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOptimizationGoal($optimization_goal)
     {
         if (is_null($optimization_goal)) {
-            throw new \InvalidArgumentException('non-nullable optimization_goal cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'optimization_goal');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('optimization_goal', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['optimization_goal'] = $optimization_goal;
 
@@ -1196,14 +1259,21 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets bid_strategy
      *
-     * @param \Zernio\Model\BidStrategy|null $bid_strategy Campaign-level bid strategy. Ad sets inherit this unless they override.
+     * @param \Zernio\Model\BidStrategy|null $bid_strategy bid_strategy
      *
      * @return self
      */
     public function setBidStrategy($bid_strategy)
     {
         if (is_null($bid_strategy)) {
-            throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'bid_strategy');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bid_strategy', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['bid_strategy'] = $bid_strategy;
 
@@ -1230,7 +1300,14 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBidAmount($bid_amount)
     {
         if (is_null($bid_amount)) {
-            throw new \InvalidArgumentException('non-nullable bid_amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'bid_amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bid_amount', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['bid_amount'] = $bid_amount;
 
@@ -1257,7 +1334,14 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRoasAverageFloor($roas_average_floor)
     {
         if (is_null($roas_average_floor)) {
-            throw new \InvalidArgumentException('non-nullable roas_average_floor cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'roas_average_floor');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('roas_average_floor', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['roas_average_floor'] = $roas_average_floor;
 

@@ -96,13 +96,13 @@ class WorkflowExecutionEvent implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPINullables = [
         'action' => false,
-        'status' => false,
-        'node_id' => false,
-        'node_type' => false,
-        'source_handle' => false,
-        'duration_ms' => false,
-        'error_message' => false,
-        'meta' => false,
+        'status' => true,
+        'node_id' => true,
+        'node_type' => true,
+        'source_handle' => true,
+        'duration_ms' => true,
+        'error_message' => true,
+        'meta' => true,
         'at' => false
     ];
 
@@ -468,10 +468,17 @@ class WorkflowExecutionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setStatus($status)
     {
         if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('status', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'status', must be one of '%s'",
@@ -505,7 +512,14 @@ class WorkflowExecutionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setNodeId($node_id)
     {
         if (is_null($node_id)) {
-            throw new \InvalidArgumentException('non-nullable node_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'node_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('node_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['node_id'] = $node_id;
 
@@ -532,7 +546,14 @@ class WorkflowExecutionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setNodeType($node_type)
     {
         if (is_null($node_type)) {
-            throw new \InvalidArgumentException('non-nullable node_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'node_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('node_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['node_type'] = $node_type;
 
@@ -559,7 +580,14 @@ class WorkflowExecutionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setSourceHandle($source_handle)
     {
         if (is_null($source_handle)) {
-            throw new \InvalidArgumentException('non-nullable source_handle cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'source_handle');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('source_handle', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['source_handle'] = $source_handle;
 
@@ -586,7 +614,14 @@ class WorkflowExecutionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setDurationMs($duration_ms)
     {
         if (is_null($duration_ms)) {
-            throw new \InvalidArgumentException('non-nullable duration_ms cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'duration_ms');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('duration_ms', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['duration_ms'] = $duration_ms;
 
@@ -613,7 +648,14 @@ class WorkflowExecutionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setErrorMessage($error_message)
     {
         if (is_null($error_message)) {
-            throw new \InvalidArgumentException('non-nullable error_message cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'error_message');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('error_message', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['error_message'] = $error_message;
 
@@ -640,7 +682,14 @@ class WorkflowExecutionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     public function setMeta($meta)
     {
         if (is_null($meta)) {
-            throw new \InvalidArgumentException('non-nullable meta cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'meta');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('meta', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['meta'] = $meta;
 

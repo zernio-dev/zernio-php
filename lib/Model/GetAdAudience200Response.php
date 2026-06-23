@@ -81,7 +81,7 @@ class GetAdAudience200Response implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static array $openAPINullables = [
         'audience' => false,
-        'meta_data' => false
+        'meta_data' => true
     ];
 
     /**
@@ -344,7 +344,14 @@ class GetAdAudience200Response implements ModelInterface, ArrayAccess, \JsonSeri
     public function setMetaData($meta_data)
     {
         if (is_null($meta_data)) {
-            throw new \InvalidArgumentException('non-nullable meta_data cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'meta_data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('meta_data', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['meta_data'] = $meta_data;
 

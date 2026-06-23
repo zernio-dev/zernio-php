@@ -76,7 +76,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'regions' => '\Zernio\Model\CreateCtwaAdRequestRegionsInner[]',
         'zips' => '\Zernio\Model\CreateCtwaAdRequestZipsInner[]',
         'metros' => '\Zernio\Model\CreateCtwaAdRequestZipsInner[]',
-        'custom_locations' => '\Zernio\Model\CreateCtwaAdRequestCustomLocationsInner[]',
+        'custom_locations' => '\Zernio\Model\CreateStandaloneAdRequestCustomLocationsInner[]',
         'age_min' => 'int',
         'age_max' => 'int',
         'interests' => '\Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]',
@@ -578,10 +578,6 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['budget_amount'] === null) {
             $invalidProperties[] = "'budget_amount' can't be null";
         }
-        if (($this->container['budget_amount'] < 0)) {
-            $invalidProperties[] = "invalid value for 'budget_amount', must be bigger than or equal to 0.";
-        }
-
         if ($this->container['budget_type'] === null) {
             $invalidProperties[] = "'budget_type' can't be null";
         }
@@ -643,14 +639,6 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->container['bid_strategy'],
                 implode("', '", $allowedValues)
             );
-        }
-
-        if (!is_null($this->container['bid_amount']) && ($this->container['bid_amount'] < 0)) {
-            $invalidProperties[] = "invalid value for 'bid_amount', must be bigger than or equal to 0.";
-        }
-
-        if (!is_null($this->container['roas_average_floor']) && ($this->container['roas_average_floor'] < 0)) {
-            $invalidProperties[] = "invalid value for 'roas_average_floor', must be bigger than or equal to 0.";
         }
 
         if (!is_null($this->container['dsa_beneficiary']) && (mb_strlen($this->container['dsa_beneficiary']) > 100)) {
@@ -946,11 +934,6 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         if (is_null($budget_amount)) {
             throw new \InvalidArgumentException('non-nullable budget_amount cannot be null');
         }
-
-        if (($budget_amount < 0)) {
-            throw new \InvalidArgumentException('invalid value for $budget_amount when calling CreateCtwaAdRequest., must be bigger than or equal to 0.');
-        }
-
         $this->container['budget_amount'] = $budget_amount;
 
         return $this;
@@ -1192,7 +1175,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets custom_locations
      *
-     * @return \Zernio\Model\CreateCtwaAdRequestCustomLocationsInner[]|null
+     * @return \Zernio\Model\CreateStandaloneAdRequestCustomLocationsInner[]|null
      */
     public function getCustomLocations()
     {
@@ -1202,7 +1185,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets custom_locations
      *
-     * @param \Zernio\Model\CreateCtwaAdRequestCustomLocationsInner[]|null $custom_locations Point-radius geo (Meta `geo_locations.custom_locations`). Use for targeting a radius around a specific lat/long when no Meta city/region key fits. `distanceUnit` is required.
+     * @param \Zernio\Model\CreateStandaloneAdRequestCustomLocationsInner[]|null $custom_locations Point-radius geo (Meta `geo_locations.custom_locations`). Use for targeting a radius around a specific lat/long when no Meta city/region key fits. `distanceUnit` is required.
      *
      * @return self
      */
@@ -1473,11 +1456,6 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         if (is_null($bid_amount)) {
             throw new \InvalidArgumentException('non-nullable bid_amount cannot be null');
         }
-
-        if (($bid_amount < 0)) {
-            throw new \InvalidArgumentException('invalid value for $bid_amount when calling CreateCtwaAdRequest., must be bigger than or equal to 0.');
-        }
-
         $this->container['bid_amount'] = $bid_amount;
 
         return $this;
@@ -1505,11 +1483,6 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         if (is_null($roas_average_floor)) {
             throw new \InvalidArgumentException('non-nullable roas_average_floor cannot be null');
         }
-
-        if (($roas_average_floor < 0)) {
-            throw new \InvalidArgumentException('invalid value for $roas_average_floor when calling CreateCtwaAdRequest., must be bigger than or equal to 0.');
-        }
-
         $this->container['roas_average_floor'] = $roas_average_floor;
 
         return $this;

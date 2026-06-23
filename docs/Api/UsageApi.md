@@ -1,6 +1,6 @@
 # Zernio\UsageApi
 
-
+API usage and quota stats for the current billing period.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 

@@ -97,12 +97,12 @@ class GetWhatsAppCallingConfig200Response implements ModelInterface, ArrayAccess
         'phone_number_doc_id' => false,
         'phone_number' => false,
         'calling_enabled' => false,
-        'call_deep_link' => false,
-        'forward_to' => false,
+        'call_deep_link' => true,
+        'forward_to' => true,
         'recording_enabled' => false,
-        'sip_auth_username' => false,
+        'sip_auth_username' => true,
         'sip_auth_password_configured' => false,
-        'call_icon_countries' => false
+        'call_icon_countries' => true
     ];
 
     /**
@@ -447,7 +447,14 @@ class GetWhatsAppCallingConfig200Response implements ModelInterface, ArrayAccess
     public function setCallDeepLink($call_deep_link)
     {
         if (is_null($call_deep_link)) {
-            throw new \InvalidArgumentException('non-nullable call_deep_link cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'call_deep_link');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('call_deep_link', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['call_deep_link'] = $call_deep_link;
 
@@ -474,7 +481,14 @@ class GetWhatsAppCallingConfig200Response implements ModelInterface, ArrayAccess
     public function setForwardTo($forward_to)
     {
         if (is_null($forward_to)) {
-            throw new \InvalidArgumentException('non-nullable forward_to cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'forward_to');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('forward_to', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['forward_to'] = $forward_to;
 
@@ -528,7 +542,14 @@ class GetWhatsAppCallingConfig200Response implements ModelInterface, ArrayAccess
     public function setSipAuthUsername($sip_auth_username)
     {
         if (is_null($sip_auth_username)) {
-            throw new \InvalidArgumentException('non-nullable sip_auth_username cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sip_auth_username');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sip_auth_username', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sip_auth_username'] = $sip_auth_username;
 
@@ -582,7 +603,14 @@ class GetWhatsAppCallingConfig200Response implements ModelInterface, ArrayAccess
     public function setCallIconCountries($call_icon_countries)
     {
         if (is_null($call_icon_countries)) {
-            throw new \InvalidArgumentException('non-nullable call_icon_countries cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'call_icon_countries');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('call_icon_countries', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['call_icon_countries'] = $call_icon_countries;
 

@@ -115,14 +115,14 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'thumbnail_url' => false,
         'image_url' => false,
-        'video_id' => false,
-        'video_url' => false,
+        'video_id' => true,
+        'video_url' => true,
         'object_type' => false,
-        'object_story_id' => false,
-        'effective_object_story_id' => false,
-        'effective_instagram_media_id' => false,
-        'instagram_user_id' => false,
-        'instagram_permalink_url' => false,
+        'object_story_id' => true,
+        'effective_object_story_id' => true,
+        'effective_instagram_media_id' => true,
+        'instagram_user_id' => true,
+        'instagram_permalink_url' => true,
         'media_urls' => false,
         'body' => false,
         'google_headline' => false,
@@ -484,7 +484,14 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVideoId($video_id)
     {
         if (is_null($video_id)) {
-            throw new \InvalidArgumentException('non-nullable video_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'video_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('video_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['video_id'] = $video_id;
 
@@ -511,7 +518,14 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVideoUrl($video_url)
     {
         if (is_null($video_url)) {
-            throw new \InvalidArgumentException('non-nullable video_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'video_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('video_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['video_url'] = $video_url;
 
@@ -565,7 +579,14 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setObjectStoryId($object_story_id)
     {
         if (is_null($object_story_id)) {
-            throw new \InvalidArgumentException('non-nullable object_story_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'object_story_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('object_story_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['object_story_id'] = $object_story_id;
 
@@ -592,7 +613,14 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEffectiveObjectStoryId($effective_object_story_id)
     {
         if (is_null($effective_object_story_id)) {
-            throw new \InvalidArgumentException('non-nullable effective_object_story_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'effective_object_story_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('effective_object_story_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['effective_object_story_id'] = $effective_object_story_id;
 
@@ -619,7 +647,14 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEffectiveInstagramMediaId($effective_instagram_media_id)
     {
         if (is_null($effective_instagram_media_id)) {
-            throw new \InvalidArgumentException('non-nullable effective_instagram_media_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'effective_instagram_media_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('effective_instagram_media_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['effective_instagram_media_id'] = $effective_instagram_media_id;
 
@@ -646,7 +681,14 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInstagramUserId($instagram_user_id)
     {
         if (is_null($instagram_user_id)) {
-            throw new \InvalidArgumentException('non-nullable instagram_user_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'instagram_user_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('instagram_user_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['instagram_user_id'] = $instagram_user_id;
 
@@ -673,7 +715,14 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInstagramPermalinkUrl($instagram_permalink_url)
     {
         if (is_null($instagram_permalink_url)) {
-            throw new \InvalidArgumentException('non-nullable instagram_permalink_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'instagram_permalink_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('instagram_permalink_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['instagram_permalink_url'] = $instagram_permalink_url;
 

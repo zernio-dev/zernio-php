@@ -82,7 +82,7 @@ class GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner imple
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'text' => false,
+        'text' => true,
         'attachments' => false,
         'edited_at' => false
     ];
@@ -324,7 +324,14 @@ class GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner imple
     public function setText($text)
     {
         if (is_null($text)) {
-            throw new \InvalidArgumentException('non-nullable text cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'text');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('text', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['text'] = $text;
 

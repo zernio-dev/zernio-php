@@ -63,7 +63,7 @@ class SavedTargetingAudience implements ModelInterface, ArrayAccess, \JsonSerial
         'account_id' => 'string',
         'name' => 'string',
         'description' => 'string',
-        'spec' => '\Zernio\Model\TargetingSpec'
+        'spec' => '\ZernioModelTargetingSpec'
     ];
 
     /**
@@ -91,7 +91,7 @@ class SavedTargetingAudience implements ModelInterface, ArrayAccess, \JsonSerial
         'account_id' => false,
         'name' => false,
         'description' => false,
-        'spec' => false
+        'spec' => true
     ];
 
     /**
@@ -339,7 +339,7 @@ class SavedTargetingAudience implements ModelInterface, ArrayAccess, \JsonSerial
             $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
         }
 
-        if ($this->container['spec'] === null) {
+        if ($this->container['spec'] === null && !$this->isNullableSetToNull('spec')) {
             $invalidProperties[] = "'spec' can't be null";
         }
         return $invalidProperties;
@@ -482,7 +482,7 @@ class SavedTargetingAudience implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets spec
      *
-     * @return \Zernio\Model\TargetingSpec
+     * @return \ZernioModelTargetingSpec|null
      */
     public function getSpec()
     {
@@ -492,14 +492,21 @@ class SavedTargetingAudience implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets spec
      *
-     * @param \Zernio\Model\TargetingSpec $spec The targeting spec to store.
+     * @param \ZernioModelTargetingSpec|null $spec The targeting spec to store.
      *
      * @return self
      */
     public function setSpec($spec)
     {
         if (is_null($spec)) {
-            throw new \InvalidArgumentException('non-nullable spec cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'spec');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('spec', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['spec'] = $spec;
 

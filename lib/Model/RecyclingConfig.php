@@ -95,8 +95,8 @@ class RecyclingConfig implements ModelInterface, ArrayAccess, \JsonSerializable
         'gap' => false,
         'gap_freq' => false,
         'start_date' => false,
-        'expire_count' => false,
-        'expire_date' => false,
+        'expire_count' => true,
+        'expire_date' => true,
         'content_variations' => false
     ];
 
@@ -512,10 +512,17 @@ class RecyclingConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExpireCount($expire_count)
     {
         if (is_null($expire_count)) {
-            throw new \InvalidArgumentException('non-nullable expire_count cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'expire_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expire_count', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if (($expire_count < 1)) {
+        if (!is_null($expire_count) && ($expire_count < 1)) {
             throw new \InvalidArgumentException('invalid value for $expire_count when calling RecyclingConfig., must be bigger than or equal to 1.');
         }
 
@@ -544,7 +551,14 @@ class RecyclingConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExpireDate($expire_date)
     {
         if (is_null($expire_date)) {
-            throw new \InvalidArgumentException('non-nullable expire_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'expire_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expire_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['expire_date'] = $expire_date;
 

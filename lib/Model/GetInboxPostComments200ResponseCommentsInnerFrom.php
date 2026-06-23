@@ -91,9 +91,9 @@ class GetInboxPostComments200ResponseCommentsInnerFrom implements ModelInterface
         'id' => false,
         'name' => false,
         'username' => false,
-        'picture' => false,
+        'picture' => true,
         'is_owner' => false,
-        'verified_type' => false
+        'verified_type' => true
     ];
 
     /**
@@ -454,7 +454,14 @@ class GetInboxPostComments200ResponseCommentsInnerFrom implements ModelInterface
     public function setPicture($picture)
     {
         if (is_null($picture)) {
-            throw new \InvalidArgumentException('non-nullable picture cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'picture');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('picture', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['picture'] = $picture;
 
@@ -508,10 +515,17 @@ class GetInboxPostComments200ResponseCommentsInnerFrom implements ModelInterface
     public function setVerifiedType($verified_type)
     {
         if (is_null($verified_type)) {
-            throw new \InvalidArgumentException('non-nullable verified_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'verified_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('verified_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getVerifiedTypeAllowableValues();
-        if (!in_array($verified_type, $allowedValues, true)) {
+        if (!is_null($verified_type) && !in_array($verified_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'verified_type', must be one of '%s'",

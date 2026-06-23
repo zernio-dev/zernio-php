@@ -81,7 +81,7 @@ class ListInboxConversations200ResponsePagination implements ModelInterface, Arr
       */
     protected static array $openAPINullables = [
         'has_more' => false,
-        'next_cursor' => false
+        'next_cursor' => true
     ];
 
     /**
@@ -344,7 +344,14 @@ class ListInboxConversations200ResponsePagination implements ModelInterface, Arr
     public function setNextCursor($next_cursor)
     {
         if (is_null($next_cursor)) {
-            throw new \InvalidArgumentException('non-nullable next_cursor cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next_cursor');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_cursor', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['next_cursor'] = $next_cursor;
 

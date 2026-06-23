@@ -99,9 +99,9 @@ class YouTubeVideoRetentionResponse implements ModelInterface, ArrayAccess, \Jso
         'success' => false,
         'account_id' => false,
         'video_id' => false,
-        'title' => false,
-        'published_at' => false,
-        'duration_seconds' => false,
+        'title' => true,
+        'published_at' => true,
+        'duration_seconds' => true,
         'date_range' => false,
         'retention_curve' => false,
         'note' => false,
@@ -454,7 +454,14 @@ class YouTubeVideoRetentionResponse implements ModelInterface, ArrayAccess, \Jso
     public function setTitle($title)
     {
         if (is_null($title)) {
-            throw new \InvalidArgumentException('non-nullable title cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'title');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('title', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['title'] = $title;
 
@@ -481,7 +488,14 @@ class YouTubeVideoRetentionResponse implements ModelInterface, ArrayAccess, \Jso
     public function setPublishedAt($published_at)
     {
         if (is_null($published_at)) {
-            throw new \InvalidArgumentException('non-nullable published_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'published_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('published_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['published_at'] = $published_at;
 
@@ -508,7 +522,14 @@ class YouTubeVideoRetentionResponse implements ModelInterface, ArrayAccess, \Jso
     public function setDurationSeconds($duration_seconds)
     {
         if (is_null($duration_seconds)) {
-            throw new \InvalidArgumentException('non-nullable duration_seconds cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'duration_seconds');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('duration_seconds', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['duration_seconds'] = $duration_seconds;
 

@@ -91,7 +91,7 @@ class GetInboxPostComments200ResponseMeta implements ModelInterface, ArrayAccess
         'platform' => false,
         'post_id' => false,
         'account_id' => false,
-        'subreddit' => false,
+        'subreddit' => true,
         'last_updated' => false,
         'ad_comments' => false
     ];
@@ -426,7 +426,14 @@ class GetInboxPostComments200ResponseMeta implements ModelInterface, ArrayAccess
     public function setSubreddit($subreddit)
     {
         if (is_null($subreddit)) {
-            throw new \InvalidArgumentException('non-nullable subreddit cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'subreddit');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('subreddit', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['subreddit'] = $subreddit;
 

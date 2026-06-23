@@ -82,7 +82,7 @@ class WebhookPayloadMessageEditedEditHistoryInner implements ModelInterface, Arr
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'text' => false,
+        'text' => true,
         'attachments' => false,
         'edited_at' => false
     ];
@@ -289,7 +289,7 @@ class WebhookPayloadMessageEditedEditHistoryInner implements ModelInterface, Arr
     {
         $invalidProperties = [];
 
-        if ($this->container['text'] === null) {
+        if ($this->container['text'] === null && !$this->isNullableSetToNull('text')) {
             $invalidProperties[] = "'text' can't be null";
         }
         if ($this->container['attachments'] === null) {
@@ -316,7 +316,7 @@ class WebhookPayloadMessageEditedEditHistoryInner implements ModelInterface, Arr
     /**
      * Gets text
      *
-     * @return string
+     * @return string|null
      */
     public function getText()
     {
@@ -326,14 +326,21 @@ class WebhookPayloadMessageEditedEditHistoryInner implements ModelInterface, Arr
     /**
      * Sets text
      *
-     * @param string $text text
+     * @param string|null $text text
      *
      * @return self
      */
     public function setText($text)
     {
         if (is_null($text)) {
-            throw new \InvalidArgumentException('non-nullable text cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'text');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('text', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['text'] = $text;
 

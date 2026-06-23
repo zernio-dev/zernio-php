@@ -96,7 +96,7 @@ class ValidateMedia200Response implements ModelInterface, ArrayAccess, \JsonSeri
         'url' => false,
         'error' => false,
         'content_type' => false,
-        'size' => false,
+        'size' => true,
         'size_formatted' => false,
         'type' => false,
         'platform_limits' => false
@@ -493,7 +493,14 @@ class ValidateMedia200Response implements ModelInterface, ArrayAccess, \JsonSeri
     public function setSize($size)
     {
         if (is_null($size)) {
-            throw new \InvalidArgumentException('non-nullable size cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'size');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('size', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['size'] = $size;
 

@@ -110,8 +110,8 @@ class ListBroadcastRecipients200ResponseRecipientsInner implements ModelInterfac
         'status' => false,
         'message_id' => false,
         'error' => false,
-        'error_code' => false,
-        'error_explanation' => false,
+        'error_code' => true,
+        'error_explanation' => true,
         'sent_at' => false,
         'delivered_at' => false,
         'read_at' => false
@@ -650,7 +650,14 @@ class ListBroadcastRecipients200ResponseRecipientsInner implements ModelInterfac
     public function setErrorCode($error_code)
     {
         if (is_null($error_code)) {
-            throw new \InvalidArgumentException('non-nullable error_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'error_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('error_code', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['error_code'] = $error_code;
 
@@ -677,7 +684,14 @@ class ListBroadcastRecipients200ResponseRecipientsInner implements ModelInterfac
     public function setErrorExplanation($error_explanation)
     {
         if (is_null($error_explanation)) {
-            throw new \InvalidArgumentException('non-nullable error_explanation cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'error_explanation');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('error_explanation', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['error_explanation'] = $error_explanation;
 

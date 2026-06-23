@@ -92,7 +92,7 @@ class UpdateWorkflowRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'description' => false,
         'nodes' => false,
         'edges' => false,
-        'entry_node_id' => false,
+        'entry_node_id' => true,
         'account_id' => false
     ];
 
@@ -453,7 +453,14 @@ class UpdateWorkflowRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setEntryNodeId($entry_node_id)
     {
         if (is_null($entry_node_id)) {
-            throw new \InvalidArgumentException('non-nullable entry_node_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'entry_node_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('entry_node_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['entry_node_id'] = $entry_node_id;
 

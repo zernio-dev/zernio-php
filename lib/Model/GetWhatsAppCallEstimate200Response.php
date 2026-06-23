@@ -82,7 +82,7 @@ class GetWhatsAppCallEstimate200Response implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'destination_country' => false,
+        'destination_country' => true,
         'per_minute_usd' => false,
         'breakdown' => false
     ];
@@ -324,7 +324,14 @@ class GetWhatsAppCallEstimate200Response implements ModelInterface, ArrayAccess,
     public function setDestinationCountry($destination_country)
     {
         if (is_null($destination_country)) {
-            throw new \InvalidArgumentException('non-nullable destination_country cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'destination_country');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('destination_country', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['destination_country'] = $destination_country;
 

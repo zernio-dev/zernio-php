@@ -89,8 +89,8 @@ class ListDiscordGuildMembers200ResponseDataInnerUser implements ModelInterface,
         'id' => false,
         'username' => false,
         'discriminator' => false,
-        'avatar' => false,
-        'global_name' => false
+        'avatar' => true,
+        'global_name' => true
     ];
 
     /**
@@ -419,7 +419,14 @@ class ListDiscordGuildMembers200ResponseDataInnerUser implements ModelInterface,
     public function setAvatar($avatar)
     {
         if (is_null($avatar)) {
-            throw new \InvalidArgumentException('non-nullable avatar cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'avatar');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('avatar', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['avatar'] = $avatar;
 
@@ -446,7 +453,14 @@ class ListDiscordGuildMembers200ResponseDataInnerUser implements ModelInterface,
     public function setGlobalName($global_name)
     {
         if (is_null($global_name)) {
-            throw new \InvalidArgumentException('non-nullable global_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'global_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('global_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['global_name'] = $global_name;
 

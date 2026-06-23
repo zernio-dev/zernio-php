@@ -96,13 +96,13 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static array $openAPINullables = [
         'platform' => false,
         'status' => false,
-        'platform_post_id' => false,
+        'platform_post_id' => true,
         'account_id' => false,
-        'account_username' => false,
-        'analytics' => false,
+        'account_username' => true,
+        'analytics' => true,
         'sync_status' => false,
-        'platform_post_url' => false,
-        'error_message' => false
+        'platform_post_url' => true,
+        'error_message' => true
     ];
 
     /**
@@ -480,7 +480,14 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setPlatformPostId($platform_post_id)
     {
         if (is_null($platform_post_id)) {
-            throw new \InvalidArgumentException('non-nullable platform_post_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'platform_post_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('platform_post_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['platform_post_id'] = $platform_post_id;
 
@@ -534,7 +541,14 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setAccountUsername($account_username)
     {
         if (is_null($account_username)) {
-            throw new \InvalidArgumentException('non-nullable account_username cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'account_username');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('account_username', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['account_username'] = $account_username;
 
@@ -561,7 +575,14 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setAnalytics($analytics)
     {
         if (is_null($analytics)) {
-            throw new \InvalidArgumentException('non-nullable analytics cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'analytics');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('analytics', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['analytics'] = $analytics;
 
@@ -625,7 +646,14 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setPlatformPostUrl($platform_post_url)
     {
         if (is_null($platform_post_url)) {
-            throw new \InvalidArgumentException('non-nullable platform_post_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'platform_post_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('platform_post_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['platform_post_url'] = $platform_post_url;
 
@@ -652,7 +680,14 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setErrorMessage($error_message)
     {
         if (is_null($error_message)) {
-            throw new \InvalidArgumentException('non-nullable error_message cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'error_message');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('error_message', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['error_message'] = $error_message;
 

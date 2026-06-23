@@ -101,7 +101,7 @@ class WebhookPayloadMessageMessageSender implements ModelInterface, ArrayAccess,
         'name' => false,
         'username' => false,
         'picture' => false,
-        'phone_number' => false,
+        'phone_number' => true,
         'business_scoped_user_id' => false,
         'parent_business_scoped_user_id' => false,
         'whatsapp_username' => false,
@@ -511,7 +511,14 @@ class WebhookPayloadMessageMessageSender implements ModelInterface, ArrayAccess,
     public function setPhoneNumber($phone_number)
     {
         if (is_null($phone_number)) {
-            throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'phone_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('phone_number', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['phone_number'] = $phone_number;
 

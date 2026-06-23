@@ -107,7 +107,7 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
         'signup_date' => false,
         'billing_anchor_day' => false,
         'has_access' => false,
-        'customer_id' => false,
+        'customer_id' => true,
         'is_invited_user' => false,
         'auto_upgrade_enabled' => false,
         'limits' => false,
@@ -618,7 +618,14 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCustomerId($customer_id)
     {
         if (is_null($customer_id)) {
-            throw new \InvalidArgumentException('non-nullable customer_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'customer_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('customer_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['customer_id'] = $customer_id;
 

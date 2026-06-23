@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **account_type** | **string** |  | [optional]
 **username** | **string** |  | [optional]
 **aggregation** | **string** |  | [optional]
-**date_range** | [**\Zernio\Model\LinkedInAggregateAnalyticsTotalResponseDateRange**](LinkedInAggregateAnalyticsTotalResponseDateRange.md) |  | [optional]
+**date_range** | [**\Zernio\Model\YouTubeDailyViewsResponseDateRange**](YouTubeDailyViewsResponseDateRange.md) |  | [optional]
 **analytics** | [**\Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalytics**](LinkedInAggregateAnalyticsDailyResponseAnalytics.md) |  | [optional]
 **note** | **string** |  | [optional]
 **last_updated** | **\DateTime** |  | [optional]

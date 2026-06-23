@@ -91,12 +91,12 @@ class ListInstagramStories200ResponseDataInner implements ModelInterface, ArrayA
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'media_type' => false,
-        'media_product_type' => false,
-        'media_url' => false,
-        'permalink' => false,
-        'thumbnail_url' => false,
-        'timestamp' => false
+        'media_type' => true,
+        'media_product_type' => true,
+        'media_url' => true,
+        'permalink' => true,
+        'thumbnail_url' => true,
+        'timestamp' => true
     ];
 
     /**
@@ -382,7 +382,14 @@ class ListInstagramStories200ResponseDataInner implements ModelInterface, ArrayA
     public function setMediaType($media_type)
     {
         if (is_null($media_type)) {
-            throw new \InvalidArgumentException('non-nullable media_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'media_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('media_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['media_type'] = $media_type;
 
@@ -409,7 +416,14 @@ class ListInstagramStories200ResponseDataInner implements ModelInterface, ArrayA
     public function setMediaProductType($media_product_type)
     {
         if (is_null($media_product_type)) {
-            throw new \InvalidArgumentException('non-nullable media_product_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'media_product_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('media_product_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['media_product_type'] = $media_product_type;
 
@@ -436,7 +450,14 @@ class ListInstagramStories200ResponseDataInner implements ModelInterface, ArrayA
     public function setMediaUrl($media_url)
     {
         if (is_null($media_url)) {
-            throw new \InvalidArgumentException('non-nullable media_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'media_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('media_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['media_url'] = $media_url;
 
@@ -463,7 +484,14 @@ class ListInstagramStories200ResponseDataInner implements ModelInterface, ArrayA
     public function setPermalink($permalink)
     {
         if (is_null($permalink)) {
-            throw new \InvalidArgumentException('non-nullable permalink cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'permalink');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('permalink', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['permalink'] = $permalink;
 
@@ -490,7 +518,14 @@ class ListInstagramStories200ResponseDataInner implements ModelInterface, ArrayA
     public function setThumbnailUrl($thumbnail_url)
     {
         if (is_null($thumbnail_url)) {
-            throw new \InvalidArgumentException('non-nullable thumbnail_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'thumbnail_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('thumbnail_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['thumbnail_url'] = $thumbnail_url;
 
@@ -517,7 +552,14 @@ class ListInstagramStories200ResponseDataInner implements ModelInterface, ArrayA
     public function setTimestamp($timestamp)
     {
         if (is_null($timestamp)) {
-            throw new \InvalidArgumentException('non-nullable timestamp cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'timestamp');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('timestamp', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['timestamp'] = $timestamp;
 
