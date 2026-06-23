@@ -61,6 +61,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'profile_id' => 'string',
         'country' => 'string',
         'submission_id' => 'string',
+        'quantity' => 'int',
         'reuse' => 'bool',
         'reuse_from' => 'string',
         'end_user_first_name' => 'string',
@@ -81,6 +82,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'profile_id' => null,
         'country' => null,
         'submission_id' => null,
+        'quantity' => null,
         'reuse' => null,
         'reuse_from' => null,
         'end_user_first_name' => null,
@@ -99,6 +101,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'profile_id' => false,
         'country' => false,
         'submission_id' => false,
+        'quantity' => false,
         'reuse' => false,
         'reuse_from' => false,
         'end_user_first_name' => false,
@@ -197,6 +200,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'profile_id' => 'profileId',
         'country' => 'country',
         'submission_id' => 'submissionId',
+        'quantity' => 'quantity',
         'reuse' => 'reuse',
         'reuse_from' => 'reuseFrom',
         'end_user_first_name' => 'endUserFirstName',
@@ -215,6 +219,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'profile_id' => 'setProfileId',
         'country' => 'setCountry',
         'submission_id' => 'setSubmissionId',
+        'quantity' => 'setQuantity',
         'reuse' => 'setReuse',
         'reuse_from' => 'setReuseFrom',
         'end_user_first_name' => 'setEndUserFirstName',
@@ -233,6 +238,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'profile_id' => 'getProfileId',
         'country' => 'getCountry',
         'submission_id' => 'getSubmissionId',
+        'quantity' => 'getQuantity',
         'reuse' => 'getReuse',
         'reuse_from' => 'getReuseFrom',
         'end_user_first_name' => 'getEndUserFirstName',
@@ -302,6 +308,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('country', $data ?? [], null);
         $this->setIfExists('submission_id', $data ?? [], null);
+        $this->setIfExists('quantity', $data ?? [], 1);
         $this->setIfExists('reuse', $data ?? [], null);
         $this->setIfExists('reuse_from', $data ?? [], null);
         $this->setIfExists('end_user_first_name', $data ?? [], null);
@@ -344,6 +351,14 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         if ($this->container['country'] === null) {
             $invalidProperties[] = "'country' can't be null";
         }
+        if (!is_null($this->container['quantity']) && ($this->container['quantity'] > 5)) {
+            $invalidProperties[] = "invalid value for 'quantity', must be smaller than or equal to 5.";
+        }
+
+        if (!is_null($this->container['quantity']) && ($this->container['quantity'] < 1)) {
+            $invalidProperties[] = "invalid value for 'quantity', must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -436,6 +451,41 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable submission_id cannot be null');
         }
         $this->container['submission_id'] = $submission_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets quantity
+     *
+     * @return int|null
+     */
+    public function getQuantity()
+    {
+        return $this->container['quantity'];
+    }
+
+    /**
+     * Sets quantity
+     *
+     * @param int|null $quantity Provision several same-country numbers from one submission (1-5). The single verification covers all of them; each number is billed only when it activates. Numbers that fail to order are skipped (best-effort).
+     *
+     * @return self
+     */
+    public function setQuantity($quantity)
+    {
+        if (is_null($quantity)) {
+            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
+        }
+
+        if (($quantity > 5)) {
+            throw new \InvalidArgumentException('invalid value for $quantity when calling SubmitWhatsAppNumberKycRequest., must be smaller than or equal to 5.');
+        }
+        if (($quantity < 1)) {
+            throw new \InvalidArgumentException('invalid value for $quantity when calling SubmitWhatsAppNumberKycRequest., must be bigger than or equal to 1.');
+        }
+
+        $this->container['quantity'] = $quantity;
 
         return $this;
     }

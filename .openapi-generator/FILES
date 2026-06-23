@@ -955,6 +955,7 @@ docs/Model/StartGoogleBusinessVerification200Response.md
 docs/Model/StartGoogleBusinessVerification200ResponseVerification.md
 docs/Model/StartGoogleBusinessVerificationRequest.md
 docs/Model/SubmitWhatsAppNumberKyc200Response.md
+docs/Model/SubmitWhatsAppNumberKyc200ResponseNumbersInner.md
 docs/Model/SubmitWhatsAppNumberKyc200ResponsePhoneNumber.md
 docs/Model/SubmitWhatsAppNumberKycRequest.md
 docs/Model/SubmitWhatsAppNumberKycRequestAddress.md
@@ -2187,6 +2188,7 @@ lib/Model/StartGoogleBusinessVerification200Response.php
 lib/Model/StartGoogleBusinessVerification200ResponseVerification.php
 lib/Model/StartGoogleBusinessVerificationRequest.php
 lib/Model/SubmitWhatsAppNumberKyc200Response.php
+lib/Model/SubmitWhatsAppNumberKyc200ResponseNumbersInner.php
 lib/Model/SubmitWhatsAppNumberKyc200ResponsePhoneNumber.php
 lib/Model/SubmitWhatsAppNumberKycRequest.php
 lib/Model/SubmitWhatsAppNumberKycRequestAddress.php
@@ -2463,3 +2465,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/SubmitWhatsAppNumberKyc200ResponseNumbersInnerTest.php

@@ -23030,6 +23030,7 @@ paths:
                 profileId: { type: string }
                 country: { type: string }
                 submissionId: { type: string, description: Idempotency token for this submission attempt. A retry/double-submit with the same token returns the same number; omit and each call creates a new number. }
+                quantity: { type: integer, minimum: 1, maximum: 5, default: 1, description: 'Provision several same-country numbers from one submission (1-5). The single verification covers all of them; each number is billed only when it activates. Numbers that fail to order are skipped (best-effort).' }
                 reuse: { type: boolean, description: Reuse a prior approved verification for this country (skips document/field collection; places the order immediately). }
                 reuseFrom: { type: string, description: 'Which approved verification to reuse when several exist: the phone number it was originally approved for (GET reusable.options[].fromPhoneNumber). Omitted = newest. No match = 409.' }
                 endUserFirstName: { type: string, description: End user's legal first name. Required when the country has an action/ID-verification (Onfido) requirement. }
@@ -23077,10 +23078,21 @@ paths:
                   status: { type: string, enum: [kyc_submitted, kyc_reused, kyc_already_submitted] }
                   phoneNumber:
                     type: object
+                    description: The first/primary number, kept at the top level for backward compatibility. See `numbers` for the full set when `quantity` > 1.
                     properties:
                       id: { type: string }
                       status: { type: string }
                       country: { type: string }
+                  numbers:
+                    type: array
+                    description: Every number provisioned from this submission. Length equals the requested `quantity` on full success (fewer if some orders failed; best-effort). The first element mirrors `phoneNumber`.
+                    items:
+                      type: object
+                      properties:
+                        id: { type: string }
+                        status: { type: string }
+                        phoneNumber: { type: string }
+                        country: { type: string }
         '400': { description: "Validation error (e.g. address not in-country, file too large)" }
         '409': { description: reuse requested but no prior approved verification exists for this country }
         '401': { $ref: '#/components/responses/Unauthorized' }

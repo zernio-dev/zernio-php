@@ -1350,6 +1350,7 @@ Class | Method | HTTP request | Description
 - [StartGoogleBusinessVerification200ResponseVerification](docs/Model/StartGoogleBusinessVerification200ResponseVerification.md)
 - [StartGoogleBusinessVerificationRequest](docs/Model/StartGoogleBusinessVerificationRequest.md)
 - [SubmitWhatsAppNumberKyc200Response](docs/Model/SubmitWhatsAppNumberKyc200Response.md)
+- [SubmitWhatsAppNumberKyc200ResponseNumbersInner](docs/Model/SubmitWhatsAppNumberKyc200ResponseNumbersInner.md)
 - [SubmitWhatsAppNumberKyc200ResponsePhoneNumber](docs/Model/SubmitWhatsAppNumberKyc200ResponsePhoneNumber.md)
 - [SubmitWhatsAppNumberKycRequest](docs/Model/SubmitWhatsAppNumberKycRequest.md)
 - [SubmitWhatsAppNumberKycRequestAddress](docs/Model/SubmitWhatsAppNumberKycRequestAddress.md)

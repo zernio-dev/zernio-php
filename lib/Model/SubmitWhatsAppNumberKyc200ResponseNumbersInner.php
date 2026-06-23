@@ -1,6 +1,6 @@
 <?php
 /**
- * SubmitWhatsAppNumberKyc200Response
+ * SubmitWhatsAppNumberKyc200ResponseNumbersInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SubmitWhatsAppNumberKyc200Response Class Doc Comment
+ * SubmitWhatsAppNumberKyc200ResponseNumbersInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SubmitWhatsAppNumberKyc200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class SubmitWhatsAppNumberKyc200ResponseNumbersInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SubmitWhatsAppNumberKyc200Response implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'submitWhatsAppNumberKyc_200_response';
+    protected static $openAPIModelName = 'submitWhatsAppNumberKyc_200_response_numbers_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,10 @@ class SubmitWhatsAppNumberKyc200Response implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'string',
         'status' => 'string',
-        'phone_number' => '\Zernio\Model\SubmitWhatsAppNumberKyc200ResponsePhoneNumber',
-        'numbers' => '\Zernio\Model\SubmitWhatsAppNumberKyc200ResponseNumbersInner[]'
+        'phone_number' => 'string',
+        'country' => 'string'
     ];
 
     /**
@@ -71,9 +72,10 @@ class SubmitWhatsAppNumberKyc200Response implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => null,
         'status' => null,
         'phone_number' => null,
-        'numbers' => null
+        'country' => null
     ];
 
     /**
@@ -82,9 +84,10 @@ class SubmitWhatsAppNumberKyc200Response implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'id' => false,
         'status' => false,
         'phone_number' => false,
-        'numbers' => false
+        'country' => false
     ];
 
     /**
@@ -173,9 +176,10 @@ class SubmitWhatsAppNumberKyc200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'status' => 'status',
         'phone_number' => 'phoneNumber',
-        'numbers' => 'numbers'
+        'country' => 'country'
     ];
 
     /**
@@ -184,9 +188,10 @@ class SubmitWhatsAppNumberKyc200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'status' => 'setStatus',
         'phone_number' => 'setPhoneNumber',
-        'numbers' => 'setNumbers'
+        'country' => 'setCountry'
     ];
 
     /**
@@ -195,9 +200,10 @@ class SubmitWhatsAppNumberKyc200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'status' => 'getStatus',
         'phone_number' => 'getPhoneNumber',
-        'numbers' => 'getNumbers'
+        'country' => 'getCountry'
     ];
 
     /**
@@ -241,23 +247,6 @@ class SubmitWhatsAppNumberKyc200Response implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
-    public const STATUS_KYC_SUBMITTED = 'kyc_submitted';
-    public const STATUS_KYC_REUSED = 'kyc_reused';
-    public const STATUS_KYC_ALREADY_SUBMITTED = 'kyc_already_submitted';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_KYC_SUBMITTED,
-            self::STATUS_KYC_REUSED,
-            self::STATUS_KYC_ALREADY_SUBMITTED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -274,9 +263,10 @@ class SubmitWhatsAppNumberKyc200Response implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('phone_number', $data ?? [], null);
-        $this->setIfExists('numbers', $data ?? [], null);
+        $this->setIfExists('country', $data ?? [], null);
     }
 
     /**
@@ -306,15 +296,6 @@ class SubmitWhatsAppNumberKyc200Response implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -329,6 +310,33 @@ class SubmitWhatsAppNumberKyc200Response implements ModelInterface, ArrayAccess,
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
 
     /**
      * Gets status
@@ -352,16 +360,6 @@ class SubmitWhatsAppNumberKyc200Response implements ModelInterface, ArrayAccess,
         if (is_null($status)) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['status'] = $status;
 
         return $this;
@@ -370,7 +368,7 @@ class SubmitWhatsAppNumberKyc200Response implements ModelInterface, ArrayAccess,
     /**
      * Gets phone_number
      *
-     * @return \Zernio\Model\SubmitWhatsAppNumberKyc200ResponsePhoneNumber|null
+     * @return string|null
      */
     public function getPhoneNumber()
     {
@@ -380,7 +378,7 @@ class SubmitWhatsAppNumberKyc200Response implements ModelInterface, ArrayAccess,
     /**
      * Sets phone_number
      *
-     * @param \Zernio\Model\SubmitWhatsAppNumberKyc200ResponsePhoneNumber|null $phone_number phone_number
+     * @param string|null $phone_number phone_number
      *
      * @return self
      */
@@ -395,28 +393,28 @@ class SubmitWhatsAppNumberKyc200Response implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Gets numbers
+     * Gets country
      *
-     * @return \Zernio\Model\SubmitWhatsAppNumberKyc200ResponseNumbersInner[]|null
+     * @return string|null
      */
-    public function getNumbers()
+    public function getCountry()
     {
-        return $this->container['numbers'];
+        return $this->container['country'];
     }
 
     /**
-     * Sets numbers
+     * Sets country
      *
-     * @param \Zernio\Model\SubmitWhatsAppNumberKyc200ResponseNumbersInner[]|null $numbers Every number provisioned from this submission. Length equals the requested `quantity` on full success (fewer if some orders failed; best-effort). The first element mirrors `phoneNumber`.
+     * @param string|null $country country
      *
      * @return self
      */
-    public function setNumbers($numbers)
+    public function setCountry($country)
     {
-        if (is_null($numbers)) {
-            throw new \InvalidArgumentException('non-nullable numbers cannot be null');
+        if (is_null($country)) {
+            throw new \InvalidArgumentException('non-nullable country cannot be null');
         }
-        $this->container['numbers'] = $numbers;
+        $this->container['country'] = $country;
 
         return $this;
     }

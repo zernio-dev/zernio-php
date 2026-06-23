@@ -36,6 +36,7 @@ use \Zernio\ObjectSerializer;
  * SubmitWhatsAppNumberKyc200ResponsePhoneNumber Class Doc Comment
  *
  * @category Class
+ * @description The first/primary number, kept at the top level for backward compatibility. See &#x60;numbers&#x60; for the full set when &#x60;quantity&#x60; &gt; 1.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

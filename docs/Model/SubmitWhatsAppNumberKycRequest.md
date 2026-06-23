@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **profile_id** | **string** |  |
 **country** | **string** |  |
 **submission_id** | **string** | Idempotency token for this submission attempt. A retry/double-submit with the same token returns the same number; omit and each call creates a new number. | [optional]
+**quantity** | **int** | Provision several same-country numbers from one submission (1-5). The single verification covers all of them; each number is billed only when it activates. Numbers that fail to order are skipped (best-effort). | [optional] [default to 1]
 **reuse** | **bool** | Reuse a prior approved verification for this country (skips document/field collection; places the order immediately). | [optional]
 **reuse_from** | **string** | Which approved verification to reuse when several exist: the phone number it was originally approved for (GET reusable.options[].fromPhoneNumber). Omitted &#x3D; newest. No match &#x3D; 409. | [optional]
 **end_user_first_name** | **string** | End user&#39;s legal first name. Required when the country has an action/ID-verification (Onfido) requirement. | [optional]
