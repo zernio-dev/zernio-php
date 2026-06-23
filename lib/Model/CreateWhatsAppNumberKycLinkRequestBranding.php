@@ -326,7 +326,7 @@ class CreateWhatsAppNumberKycLinkRequestBranding implements ModelInterface, Arra
     /**
      * Sets company_name
      *
-     * @param string|null $company_name Your company name
+     * @param string|null $company_name Your company name, shown on the hosted page.
      *
      * @return self
      */
@@ -384,7 +384,7 @@ class CreateWhatsAppNumberKycLinkRequestBranding implements ModelInterface, Arra
     /**
      * Sets brand_color
      *
-     * @param string|null $brand_color Hex color (e.g. \"#1a73e8\") applied to the primary action.
+     * @param string|null $brand_color Hex color (e.g. #1a73e8) used as a brand accent on the page.
      *
      * @return self
      */

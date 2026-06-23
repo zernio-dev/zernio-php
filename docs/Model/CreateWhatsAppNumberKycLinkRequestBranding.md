@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**company_name** | **string** | Your company name | [optional]
+**company_name** | **string** | Your company name, shown on the hosted page. | [optional]
 **logo_url** | **string** | Logo shown above the form. | [optional]
-**brand_color** | **string** | Hex color (e.g. \&quot;#1a73e8\&quot;) applied to the primary action. | [optional]
+**brand_color** | **string** | Hex color (e.g. #1a73e8) used as a brand accent on the page. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -23221,9 +23221,9 @@ paths:
                   type: object
                   description: Optional white-label of the hosted page the end customer sees.
                   properties:
-                    companyName: { type: string, maxLength: 60, description: Your company name, shown on the hosted page. }
+                    companyName: { type: string, maxLength: 60, description: 'Your company name, shown on the hosted page.' }
                     logoUrl: { type: string, format: uri, description: Logo shown above the form. }
-                    brandColor: { type: string, pattern: '^#[0-9a-fA-F]{6}$', description: Hex color (e.g. "#1a73e8") applied to the primary action. }
+                    brandColor: { type: string, pattern: '^#[0-9a-fA-F]{6}$', description: 'Hex color (e.g. #1a73e8) used as a brand accent on the page.' }
                 redirect_url:
                   type: string
                   format: uri
