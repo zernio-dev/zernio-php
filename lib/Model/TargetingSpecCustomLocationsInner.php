@@ -551,7 +551,7 @@ class TargetingSpecCustomLocationsInner implements ModelInterface, ArrayAccess, 
     /**
      * Sets address
      *
-     * @param string|null $address address
+     * @param string|null $address Optional label, sent to Meta as `address_string`. latitude/longitude take precedence for the pin location.
      *
      * @return self
      */

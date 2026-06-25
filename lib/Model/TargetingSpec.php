@@ -561,7 +561,7 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cities
      *
-     * @param \Zernio\Model\TargetingSpecCitiesInner[]|null $cities City targeting. Optional `radius` + `distanceUnit` extend beyond the city limits; both must be set together or both omitted. `radius` is only honoured on platforms whose capability map allows city radius (Meta).
+     * @param \Zernio\Model\TargetingSpecCitiesInner[]|null $cities City targeting. Optional `radius` + `distance_unit` extend beyond the city limits; both must be set together or both omitted. `radius` is only honoured on platforms whose capability map allows city radius (Meta).
      *
      * @return self
      */

@@ -179,7 +179,7 @@ class TargetingSpecCitiesInner implements ModelInterface, ArrayAccess, \JsonSeri
         'key' => 'key',
         'name' => 'name',
         'radius' => 'radius',
-        'distance_unit' => 'distanceUnit'
+        'distance_unit' => 'distance_unit'
     ];
 
     /**
@@ -405,7 +405,7 @@ class TargetingSpecCitiesInner implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets radius
      *
-     * @param float|null $radius Radius around the city. Requires distanceUnit.
+     * @param float|null $radius Radius around the city. Requires distance_unit.
      *
      * @return self
      */

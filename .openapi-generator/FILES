@@ -970,6 +970,8 @@ docs/Model/TargetingSpec.md
 docs/Model/TargetingSpecCitiesInner.md
 docs/Model/TargetingSpecCustomLocationsInner.md
 docs/Model/TargetingSpecExcludedLocations.md
+docs/Model/TargetingSpecExcludedLocationsCitiesInner.md
+docs/Model/TargetingSpecExcludedLocationsPlacesInner.md
 docs/Model/TelegramPlatformData.md
 docs/Model/TestWebhookRequest.md
 docs/Model/ThreadsPlatformData.md
@@ -2210,6 +2212,8 @@ lib/Model/TargetingSpec.php
 lib/Model/TargetingSpecCitiesInner.php
 lib/Model/TargetingSpecCustomLocationsInner.php
 lib/Model/TargetingSpecExcludedLocations.php
+lib/Model/TargetingSpecExcludedLocationsCitiesInner.php
+lib/Model/TargetingSpecExcludedLocationsPlacesInner.php
 lib/Model/TelegramPlatformData.php
 lib/Model/TestWebhookRequest.php
 lib/Model/ThreadsPlatformData.php
@@ -2479,3 +2483,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/TargetingSpecExcludedLocationsCitiesInnerTest.php
+test/Model/TargetingSpecExcludedLocationsPlacesInnerTest.php
