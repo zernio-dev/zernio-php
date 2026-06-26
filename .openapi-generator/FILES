@@ -348,9 +348,6 @@ docs/Model/GetAccountHealth200Response.md
 docs/Model/GetAccountHealth200ResponsePermissions.md
 docs/Model/GetAccountHealth200ResponsePermissionsPostingInner.md
 docs/Model/GetAccountHealth200ResponseTokenStatus.md
-docs/Model/GetAccountPosts200Response.md
-docs/Model/GetAccountPosts200ResponsePostsInner.md
-docs/Model/GetAccountPosts401Response.md
 docs/Model/GetAd200Response.md
 docs/Model/GetAdAnalytics200Response.md
 docs/Model/GetAdAnalytics200ResponseAd.md
@@ -1592,9 +1589,6 @@ lib/Model/GetAccountHealth200Response.php
 lib/Model/GetAccountHealth200ResponsePermissions.php
 lib/Model/GetAccountHealth200ResponsePermissionsPostingInner.php
 lib/Model/GetAccountHealth200ResponseTokenStatus.php
-lib/Model/GetAccountPosts200Response.php
-lib/Model/GetAccountPosts200ResponsePostsInner.php
-lib/Model/GetAccountPosts401Response.php
 lib/Model/GetAd200Response.php
 lib/Model/GetAdAnalytics200Response.php
 lib/Model/GetAdAnalytics200ResponseAd.php
@@ -2489,6 +2483,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetAccountPosts200ResponsePostsInnerTest.php
-test/Model/GetAccountPosts200ResponseTest.php
-test/Model/GetAccountPosts401ResponseTest.php
