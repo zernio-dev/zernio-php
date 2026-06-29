@@ -1755,6 +1755,7 @@ class PostsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Page size (optional, default to 10)
+     * @param  string|null $source Which collection to read. &#x60;zernio&#x60; (default) returns posts authored through Zernio. &#x60;external&#x60; returns posts synced from the platform (existing/historical posts that were published outside Zernio). Combine with &#x60;accountId&#x60; and paginate via &#x60;page&#x60;/&#x60;limit&#x60; to walk the full synced history (we keep up to the last ~12 months per account). (optional, default to 'zernio')
      * @param  string|null $status status (optional)
      * @param  string|null $platform platform (optional)
      * @param  string|null $profile_id profile_id (optional)
@@ -1771,9 +1772,9 @@ class PostsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\PostsListResponse|\Zernio\Model\InlineObject
      */
-    public function listPosts($page = 1, $limit = 10, $status = null, $platform = null, $profile_id = null, $created_by = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $sort_by = 'scheduled-desc', $account_id = null, string $contentType = self::contentTypes['listPosts'][0])
+    public function listPosts($page = 1, $limit = 10, $source = 'zernio', $status = null, $platform = null, $profile_id = null, $created_by = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $sort_by = 'scheduled-desc', $account_id = null, string $contentType = self::contentTypes['listPosts'][0])
     {
-        list($response) = $this->listPostsWithHttpInfo($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by, $account_id, $contentType);
+        list($response) = $this->listPostsWithHttpInfo($page, $limit, $source, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by, $account_id, $contentType);
         return $response;
     }
 
@@ -1784,6 +1785,7 @@ class PostsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Page size (optional, default to 10)
+     * @param  string|null $source Which collection to read. &#x60;zernio&#x60; (default) returns posts authored through Zernio. &#x60;external&#x60; returns posts synced from the platform (existing/historical posts that were published outside Zernio). Combine with &#x60;accountId&#x60; and paginate via &#x60;page&#x60;/&#x60;limit&#x60; to walk the full synced history (we keep up to the last ~12 months per account). (optional, default to 'zernio')
      * @param  string|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $profile_id (optional)
@@ -1800,9 +1802,9 @@ class PostsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\PostsListResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listPostsWithHttpInfo($page = 1, $limit = 10, $status = null, $platform = null, $profile_id = null, $created_by = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $sort_by = 'scheduled-desc', $account_id = null, string $contentType = self::contentTypes['listPosts'][0])
+    public function listPostsWithHttpInfo($page = 1, $limit = 10, $source = 'zernio', $status = null, $platform = null, $profile_id = null, $created_by = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $sort_by = 'scheduled-desc', $account_id = null, string $contentType = self::contentTypes['listPosts'][0])
     {
-        $request = $this->listPostsRequest($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by, $account_id, $contentType);
+        $request = $this->listPostsRequest($page, $limit, $source, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by, $account_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1894,6 +1896,7 @@ class PostsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Page size (optional, default to 10)
+     * @param  string|null $source Which collection to read. &#x60;zernio&#x60; (default) returns posts authored through Zernio. &#x60;external&#x60; returns posts synced from the platform (existing/historical posts that were published outside Zernio). Combine with &#x60;accountId&#x60; and paginate via &#x60;page&#x60;/&#x60;limit&#x60; to walk the full synced history (we keep up to the last ~12 months per account). (optional, default to 'zernio')
      * @param  string|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $profile_id (optional)
@@ -1909,9 +1912,9 @@ class PostsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPostsAsync($page = 1, $limit = 10, $status = null, $platform = null, $profile_id = null, $created_by = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $sort_by = 'scheduled-desc', $account_id = null, string $contentType = self::contentTypes['listPosts'][0])
+    public function listPostsAsync($page = 1, $limit = 10, $source = 'zernio', $status = null, $platform = null, $profile_id = null, $created_by = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $sort_by = 'scheduled-desc', $account_id = null, string $contentType = self::contentTypes['listPosts'][0])
     {
-        return $this->listPostsAsyncWithHttpInfo($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by, $account_id, $contentType)
+        return $this->listPostsAsyncWithHttpInfo($page, $limit, $source, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by, $account_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1926,6 +1929,7 @@ class PostsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Page size (optional, default to 10)
+     * @param  string|null $source Which collection to read. &#x60;zernio&#x60; (default) returns posts authored through Zernio. &#x60;external&#x60; returns posts synced from the platform (existing/historical posts that were published outside Zernio). Combine with &#x60;accountId&#x60; and paginate via &#x60;page&#x60;/&#x60;limit&#x60; to walk the full synced history (we keep up to the last ~12 months per account). (optional, default to 'zernio')
      * @param  string|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $profile_id (optional)
@@ -1941,10 +1945,10 @@ class PostsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPostsAsyncWithHttpInfo($page = 1, $limit = 10, $status = null, $platform = null, $profile_id = null, $created_by = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $sort_by = 'scheduled-desc', $account_id = null, string $contentType = self::contentTypes['listPosts'][0])
+    public function listPostsAsyncWithHttpInfo($page = 1, $limit = 10, $source = 'zernio', $status = null, $platform = null, $profile_id = null, $created_by = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $sort_by = 'scheduled-desc', $account_id = null, string $contentType = self::contentTypes['listPosts'][0])
     {
         $returnType = '\Zernio\Model\PostsListResponse';
-        $request = $this->listPostsRequest($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by, $account_id, $contentType);
+        $request = $this->listPostsRequest($page, $limit, $source, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by, $account_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1987,6 +1991,7 @@ class PostsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Page size (optional, default to 10)
+     * @param  string|null $source Which collection to read. &#x60;zernio&#x60; (default) returns posts authored through Zernio. &#x60;external&#x60; returns posts synced from the platform (existing/historical posts that were published outside Zernio). Combine with &#x60;accountId&#x60; and paginate via &#x60;page&#x60;/&#x60;limit&#x60; to walk the full synced history (we keep up to the last ~12 months per account). (optional, default to 'zernio')
      * @param  string|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $profile_id (optional)
@@ -2002,7 +2007,7 @@ class PostsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listPostsRequest($page = 1, $limit = 10, $status = null, $platform = null, $profile_id = null, $created_by = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $sort_by = 'scheduled-desc', $account_id = null, string $contentType = self::contentTypes['listPosts'][0])
+    public function listPostsRequest($page = 1, $limit = 10, $source = 'zernio', $status = null, $platform = null, $profile_id = null, $created_by = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $sort_by = 'scheduled-desc', $account_id = null, string $contentType = self::contentTypes['listPosts'][0])
     {
 
         if ($page !== null && $page < 1) {
@@ -2016,6 +2021,7 @@ class PostsApi
             throw new \InvalidArgumentException('invalid value for "$limit" when calling PostsApi.listPosts, must be bigger than or equal to 1.');
         }
         
+
 
 
 
@@ -2048,6 +2054,15 @@ class PostsApi
             $limit,
             'limit', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $source,
+            'source', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required

@@ -327,7 +327,7 @@ try {
 ## `listPosts()`
 
 ```php
-listPosts($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by, $account_id): \Zernio\Model\PostsListResponse
+listPosts($page, $limit, $source, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by, $account_id): \Zernio\Model\PostsListResponse
 ```
 
 List posts
@@ -353,6 +353,7 @@ $apiInstance = new Zernio\Api\PostsApi(
 );
 $page = 1; // int | Page number (1-based)
 $limit = 10; // int | Page size
+$source = 'zernio'; // string | Which collection to read. `zernio` (default) returns posts authored through Zernio. `external` returns posts synced from the platform (existing/historical posts that were published outside Zernio). Combine with `accountId` and paginate via `page`/`limit` to walk the full synced history (we keep up to the last ~12 months per account).
 $status = 'status_example'; // string
 $platform = twitter; // string
 $profile_id = 'profile_id_example'; // string
@@ -365,7 +366,7 @@ $sort_by = 'scheduled-desc'; // string | Sort order for results.
 $account_id = 'account_id_example'; // string | Filter posts to those published via a specific social account (24-char hex ObjectId).
 
 try {
-    $result = $apiInstance->listPosts($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by, $account_id);
+    $result = $apiInstance->listPosts($page, $limit, $source, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by, $account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PostsApi->listPosts: ', $e->getMessage(), PHP_EOL;
@@ -378,6 +379,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **page** | **int**| Page number (1-based) | [optional] [default to 1] |
 | **limit** | **int**| Page size | [optional] [default to 10] |
+| **source** | **string**| Which collection to read. &#x60;zernio&#x60; (default) returns posts authored through Zernio. &#x60;external&#x60; returns posts synced from the platform (existing/historical posts that were published outside Zernio). Combine with &#x60;accountId&#x60; and paginate via &#x60;page&#x60;/&#x60;limit&#x60; to walk the full synced history (we keep up to the last ~12 months per account). | [optional] [default to &#39;zernio&#39;] |
 | **status** | **string**|  | [optional] |
 | **platform** | **string**|  | [optional] |
 | **profile_id** | **string**|  | [optional] |
