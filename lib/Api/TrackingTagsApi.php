@@ -150,7 +150,7 @@ class TrackingTagsApi
     /**
      * Operation addTrackingTagSharedAccount
      *
-     * Share a tracking tag with an ad account
+     * Share with an ad account
      *
      * @param  string $account_id account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -170,7 +170,7 @@ class TrackingTagsApi
     /**
      * Operation addTrackingTagSharedAccountWithHttpInfo
      *
-     * Share a tracking tag with an ad account
+     * Share with an ad account
      *
      * @param  string $account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -271,7 +271,7 @@ class TrackingTagsApi
     /**
      * Operation addTrackingTagSharedAccountAsync
      *
-     * Share a tracking tag with an ad account
+     * Share with an ad account
      *
      * @param  string $account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -294,7 +294,7 @@ class TrackingTagsApi
     /**
      * Operation addTrackingTagSharedAccountAsyncWithHttpInfo
      *
-     * Share a tracking tag with an ad account
+     * Share with an ad account
      *
      * @param  string $account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -475,7 +475,7 @@ class TrackingTagsApi
     /**
      * Operation createTrackingTag
      *
-     * Create a tracking tag (Meta Pixel)
+     * Create a tracking tag
      *
      * @param  string $account_id Meta ads SocialAccount id (platform &#x60;metaads&#x60;). (required)
      * @param  \Zernio\Model\CreateTrackingTagRequest $create_tracking_tag_request create_tracking_tag_request (required)
@@ -494,7 +494,7 @@ class TrackingTagsApi
     /**
      * Operation createTrackingTagWithHttpInfo
      *
-     * Create a tracking tag (Meta Pixel)
+     * Create a tracking tag
      *
      * @param  string $account_id Meta ads SocialAccount id (platform &#x60;metaads&#x60;). (required)
      * @param  \Zernio\Model\CreateTrackingTagRequest $create_tracking_tag_request (required)
@@ -594,7 +594,7 @@ class TrackingTagsApi
     /**
      * Operation createTrackingTagAsync
      *
-     * Create a tracking tag (Meta Pixel)
+     * Create a tracking tag
      *
      * @param  string $account_id Meta ads SocialAccount id (platform &#x60;metaads&#x60;). (required)
      * @param  \Zernio\Model\CreateTrackingTagRequest $create_tracking_tag_request (required)
@@ -616,7 +616,7 @@ class TrackingTagsApi
     /**
      * Operation createTrackingTagAsyncWithHttpInfo
      *
-     * Create a tracking tag (Meta Pixel)
+     * Create a tracking tag
      *
      * @param  string $account_id Meta ads SocialAccount id (platform &#x60;metaads&#x60;). (required)
      * @param  \Zernio\Model\CreateTrackingTagRequest $create_tracking_tag_request (required)
@@ -780,7 +780,7 @@ class TrackingTagsApi
     /**
      * Operation getTrackingTag
      *
-     * Fetch a single tracking tag (Meta Pixel)
+     * Get a tracking tag
      *
      * @param  string $account_id account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -799,7 +799,7 @@ class TrackingTagsApi
     /**
      * Operation getTrackingTagWithHttpInfo
      *
-     * Fetch a single tracking tag (Meta Pixel)
+     * Get a tracking tag
      *
      * @param  string $account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -899,7 +899,7 @@ class TrackingTagsApi
     /**
      * Operation getTrackingTagAsync
      *
-     * Fetch a single tracking tag (Meta Pixel)
+     * Get a tracking tag
      *
      * @param  string $account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -921,7 +921,7 @@ class TrackingTagsApi
     /**
      * Operation getTrackingTagAsyncWithHttpInfo
      *
-     * Fetch a single tracking tag (Meta Pixel)
+     * Get a tracking tag
      *
      * @param  string $account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -1086,7 +1086,7 @@ class TrackingTagsApi
     /**
      * Operation getTrackingTagStats
      *
-     * Aggregated event stats for a tracking tag (Meta Pixel)
+     * Get aggregated event stats
      *
      * @param  string $account_id account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -1108,7 +1108,7 @@ class TrackingTagsApi
     /**
      * Operation getTrackingTagStatsWithHttpInfo
      *
-     * Aggregated event stats for a tracking tag (Meta Pixel)
+     * Get aggregated event stats
      *
      * @param  string $account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -1211,7 +1211,7 @@ class TrackingTagsApi
     /**
      * Operation getTrackingTagStatsAsync
      *
-     * Aggregated event stats for a tracking tag (Meta Pixel)
+     * Get aggregated event stats
      *
      * @param  string $account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -1236,7 +1236,7 @@ class TrackingTagsApi
     /**
      * Operation getTrackingTagStatsAsyncWithHttpInfo
      *
-     * Aggregated event stats for a tracking tag (Meta Pixel)
+     * Get aggregated event stats
      *
      * @param  string $account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -1437,7 +1437,7 @@ class TrackingTagsApi
     /**
      * Operation listTrackingTagSharedAccounts
      *
-     * List ad accounts a tracking tag is shared with
+     * List accounts it is shared with
      *
      * @param  string $account_id account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -1456,7 +1456,7 @@ class TrackingTagsApi
     /**
      * Operation listTrackingTagSharedAccountsWithHttpInfo
      *
-     * List ad accounts a tracking tag is shared with
+     * List accounts it is shared with
      *
      * @param  string $account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -1556,7 +1556,7 @@ class TrackingTagsApi
     /**
      * Operation listTrackingTagSharedAccountsAsync
      *
-     * List ad accounts a tracking tag is shared with
+     * List accounts it is shared with
      *
      * @param  string $account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -1578,7 +1578,7 @@ class TrackingTagsApi
     /**
      * Operation listTrackingTagSharedAccountsAsyncWithHttpInfo
      *
-     * List ad accounts a tracking tag is shared with
+     * List accounts it is shared with
      *
      * @param  string $account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -1743,7 +1743,7 @@ class TrackingTagsApi
     /**
      * Operation listTrackingTags
      *
-     * List tracking tags (Meta Pixels)
+     * List tracking tags
      *
      * @param  string $account_id Meta ads SocialAccount id (platform &#x60;metaads&#x60;). (required)
      * @param  string|null $ad_account_id Optional. Scope to one ad account, e.g. &#x60;act_123456789&#x60;. (optional)
@@ -1762,7 +1762,7 @@ class TrackingTagsApi
     /**
      * Operation listTrackingTagsWithHttpInfo
      *
-     * List tracking tags (Meta Pixels)
+     * List tracking tags
      *
      * @param  string $account_id Meta ads SocialAccount id (platform &#x60;metaads&#x60;). (required)
      * @param  string|null $ad_account_id Optional. Scope to one ad account, e.g. &#x60;act_123456789&#x60;. (optional)
@@ -1862,7 +1862,7 @@ class TrackingTagsApi
     /**
      * Operation listTrackingTagsAsync
      *
-     * List tracking tags (Meta Pixels)
+     * List tracking tags
      *
      * @param  string $account_id Meta ads SocialAccount id (platform &#x60;metaads&#x60;). (required)
      * @param  string|null $ad_account_id Optional. Scope to one ad account, e.g. &#x60;act_123456789&#x60;. (optional)
@@ -1884,7 +1884,7 @@ class TrackingTagsApi
     /**
      * Operation listTrackingTagsAsyncWithHttpInfo
      *
-     * List tracking tags (Meta Pixels)
+     * List tracking tags
      *
      * @param  string $account_id Meta ads SocialAccount id (platform &#x60;metaads&#x60;). (required)
      * @param  string|null $ad_account_id Optional. Scope to one ad account, e.g. &#x60;act_123456789&#x60;. (optional)
@@ -2044,7 +2044,7 @@ class TrackingTagsApi
     /**
      * Operation removeTrackingTagSharedAccount
      *
-     * Stop sharing a tracking tag with an ad account
+     * Stop sharing with an account
      *
      * @param  string $account_id account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -2063,7 +2063,7 @@ class TrackingTagsApi
     /**
      * Operation removeTrackingTagSharedAccountWithHttpInfo
      *
-     * Stop sharing a tracking tag with an ad account
+     * Stop sharing with an account
      *
      * @param  string $account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -2122,7 +2122,7 @@ class TrackingTagsApi
     /**
      * Operation removeTrackingTagSharedAccountAsync
      *
-     * Stop sharing a tracking tag with an ad account
+     * Stop sharing with an account
      *
      * @param  string $account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -2145,7 +2145,7 @@ class TrackingTagsApi
     /**
      * Operation removeTrackingTagSharedAccountAsyncWithHttpInfo
      *
-     * Stop sharing a tracking tag with an ad account
+     * Stop sharing with an account
      *
      * @param  string $account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -2309,7 +2309,7 @@ class TrackingTagsApi
     /**
      * Operation updateTrackingTag
      *
-     * Update a tracking tag (Meta Pixel)
+     * Update a tracking tag
      *
      * @param  string $account_id account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -2329,7 +2329,7 @@ class TrackingTagsApi
     /**
      * Operation updateTrackingTagWithHttpInfo
      *
-     * Update a tracking tag (Meta Pixel)
+     * Update a tracking tag
      *
      * @param  string $account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -2430,7 +2430,7 @@ class TrackingTagsApi
     /**
      * Operation updateTrackingTagAsync
      *
-     * Update a tracking tag (Meta Pixel)
+     * Update a tracking tag
      *
      * @param  string $account_id (required)
      * @param  string $tag_id Pixel id. (required)
@@ -2453,7 +2453,7 @@ class TrackingTagsApi
     /**
      * Operation updateTrackingTagAsyncWithHttpInfo
      *
-     * Update a tracking tag (Meta Pixel)
+     * Update a tracking tag
      *
      * @param  string $account_id (required)
      * @param  string $tag_id Pixel id. (required)

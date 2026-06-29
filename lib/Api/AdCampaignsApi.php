@@ -1506,7 +1506,7 @@ class AdCampaignsApi
     /**
      * Operation getAdsTimeline
      *
-     * Get daily aggregate ad metrics for an account
+     * Get daily account metrics
      *
      * @param  string $account_id Social account ID. Sibling-expanded to its linked posting↔ads pair. (required)
      * @param  string|null $ad_account_id Optional platform-native ad account ID (e.g. Meta &#x60;act_…&#x60;, TikTok advertiser ID). Use when the connection wraps multiple platform ad accounts and the chart should show one only. Note: rows ingested before 2026-05-13 don&#39;t carry this column; the recurring 7-day re-sync repopulates them naturally. (optional)
@@ -1528,7 +1528,7 @@ class AdCampaignsApi
     /**
      * Operation getAdsTimelineWithHttpInfo
      *
-     * Get daily aggregate ad metrics for an account
+     * Get daily account metrics
      *
      * @param  string $account_id Social account ID. Sibling-expanded to its linked posting↔ads pair. (required)
      * @param  string|null $ad_account_id Optional platform-native ad account ID (e.g. Meta &#x60;act_…&#x60;, TikTok advertiser ID). Use when the connection wraps multiple platform ad accounts and the chart should show one only. Note: rows ingested before 2026-05-13 don&#39;t carry this column; the recurring 7-day re-sync repopulates them naturally. (optional)
@@ -1631,7 +1631,7 @@ class AdCampaignsApi
     /**
      * Operation getAdsTimelineAsync
      *
-     * Get daily aggregate ad metrics for an account
+     * Get daily account metrics
      *
      * @param  string $account_id Social account ID. Sibling-expanded to its linked posting↔ads pair. (required)
      * @param  string|null $ad_account_id Optional platform-native ad account ID (e.g. Meta &#x60;act_…&#x60;, TikTok advertiser ID). Use when the connection wraps multiple platform ad accounts and the chart should show one only. Note: rows ingested before 2026-05-13 don&#39;t carry this column; the recurring 7-day re-sync repopulates them naturally. (optional)
@@ -1656,7 +1656,7 @@ class AdCampaignsApi
     /**
      * Operation getAdsTimelineAsyncWithHttpInfo
      *
-     * Get daily aggregate ad metrics for an account
+     * Get daily account metrics
      *
      * @param  string $account_id Social account ID. Sibling-expanded to its linked posting↔ads pair. (required)
      * @param  string|null $ad_account_id Optional platform-native ad account ID (e.g. Meta &#x60;act_…&#x60;, TikTok advertiser ID). Use when the connection wraps multiple platform ad accounts and the chart should show one only. Note: rows ingested before 2026-05-13 don&#39;t carry this column; the recurring 7-day re-sync repopulates them naturally. (optional)
@@ -2278,7 +2278,7 @@ class AdCampaignsApi
     /**
      * Operation updateAdCampaign
      *
-     * Update a campaign (budget and/or bid strategy)
+     * Update a campaign
      *
      * @param  string $campaign_id Platform campaign ID (required)
      * @param  \Zernio\Model\UpdateAdCampaignRequest $update_ad_campaign_request update_ad_campaign_request (required)
@@ -2297,7 +2297,7 @@ class AdCampaignsApi
     /**
      * Operation updateAdCampaignWithHttpInfo
      *
-     * Update a campaign (budget and/or bid strategy)
+     * Update a campaign
      *
      * @param  string $campaign_id Platform campaign ID (required)
      * @param  \Zernio\Model\UpdateAdCampaignRequest $update_ad_campaign_request (required)
@@ -2397,7 +2397,7 @@ class AdCampaignsApi
     /**
      * Operation updateAdCampaignAsync
      *
-     * Update a campaign (budget and/or bid strategy)
+     * Update a campaign
      *
      * @param  string $campaign_id Platform campaign ID (required)
      * @param  \Zernio\Model\UpdateAdCampaignRequest $update_ad_campaign_request (required)
@@ -2419,7 +2419,7 @@ class AdCampaignsApi
     /**
      * Operation updateAdCampaignAsyncWithHttpInfo
      *
-     * Update a campaign (budget and/or bid strategy)
+     * Update a campaign
      *
      * @param  string $campaign_id Platform campaign ID (required)
      * @param  \Zernio\Model\UpdateAdCampaignRequest $update_ad_campaign_request (required)
@@ -2888,7 +2888,7 @@ class AdCampaignsApi
     /**
      * Operation updateAdSet
      *
-     * Update an ad set (budget, status, and/or bid strategy)
+     * Update an ad set
      *
      * @param  string $ad_set_id Platform ad set ID (required)
      * @param  \Zernio\Model\UpdateAdSetRequest $update_ad_set_request update_ad_set_request (required)
@@ -2907,7 +2907,7 @@ class AdCampaignsApi
     /**
      * Operation updateAdSetWithHttpInfo
      *
-     * Update an ad set (budget, status, and/or bid strategy)
+     * Update an ad set
      *
      * @param  string $ad_set_id Platform ad set ID (required)
      * @param  \Zernio\Model\UpdateAdSetRequest $update_ad_set_request (required)
@@ -3007,7 +3007,7 @@ class AdCampaignsApi
     /**
      * Operation updateAdSetAsync
      *
-     * Update an ad set (budget, status, and/or bid strategy)
+     * Update an ad set
      *
      * @param  string $ad_set_id Platform ad set ID (required)
      * @param  \Zernio\Model\UpdateAdSetRequest $update_ad_set_request (required)
@@ -3029,7 +3029,7 @@ class AdCampaignsApi
     /**
      * Operation updateAdSetAsyncWithHttpInfo
      *
-     * Update an ad set (budget, status, and/or bid strategy)
+     * Update an ad set
      *
      * @param  string $ad_set_id Platform ad set ID (required)
      * @param  \Zernio\Model\UpdateAdSetRequest $update_ad_set_request (required)

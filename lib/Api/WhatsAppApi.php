@@ -1150,7 +1150,7 @@ class WhatsAppApi
     /**
      * Operation createWhatsAppDataset
      *
-     * Provision CTWA conversions dataset
+     * Provision CTWA dataset
      *
      * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request create_whats_app_dataset_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppDataset'] to see the possible values for this operation
@@ -1168,7 +1168,7 @@ class WhatsAppApi
     /**
      * Operation createWhatsAppDatasetWithHttpInfo
      *
-     * Provision CTWA conversions dataset
+     * Provision CTWA dataset
      *
      * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppDataset'] to see the possible values for this operation
@@ -1267,7 +1267,7 @@ class WhatsAppApi
     /**
      * Operation createWhatsAppDatasetAsync
      *
-     * Provision CTWA conversions dataset
+     * Provision CTWA dataset
      *
      * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppDataset'] to see the possible values for this operation
@@ -1288,7 +1288,7 @@ class WhatsAppApi
     /**
      * Operation createWhatsAppDatasetAsyncWithHttpInfo
      *
-     * Provision CTWA conversions dataset
+     * Provision CTWA dataset
      *
      * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppDataset'] to see the possible values for this operation
@@ -5375,7 +5375,7 @@ class WhatsAppApi
     /**
      * Operation listWhatsAppConversions
      *
-     * List recent WhatsApp conversion events
+     * List conversion events
      *
      * @param  string $account_id WhatsApp social account ID (required)
      * @param  int|null $limit Max events to return (1-200, default 50). (optional, default to 50)
@@ -5394,7 +5394,7 @@ class WhatsAppApi
     /**
      * Operation listWhatsAppConversionsWithHttpInfo
      *
-     * List recent WhatsApp conversion events
+     * List conversion events
      *
      * @param  string $account_id WhatsApp social account ID (required)
      * @param  int|null $limit Max events to return (1-200, default 50). (optional, default to 50)
@@ -5494,7 +5494,7 @@ class WhatsAppApi
     /**
      * Operation listWhatsAppConversionsAsync
      *
-     * List recent WhatsApp conversion events
+     * List conversion events
      *
      * @param  string $account_id WhatsApp social account ID (required)
      * @param  int|null $limit Max events to return (1-200, default 50). (optional, default to 50)
@@ -5516,7 +5516,7 @@ class WhatsAppApi
     /**
      * Operation listWhatsAppConversionsAsyncWithHttpInfo
      *
-     * List recent WhatsApp conversion events
+     * List conversion events
      *
      * @param  string $account_id WhatsApp social account ID (required)
      * @param  int|null $limit Max events to return (1-200, default 50). (optional, default to 50)

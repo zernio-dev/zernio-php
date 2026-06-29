@@ -1016,7 +1016,7 @@ class WhatsAppCallingApi
     /**
      * Operation getWhatsAppCallEstimate
      *
-     * Estimate per-minute cost for a destination
+     * Estimate per-minute cost
      *
      * @param  string $account_id account_id (required)
      * @param  string $to to (required)
@@ -1037,7 +1037,7 @@ class WhatsAppCallingApi
     /**
      * Operation getWhatsAppCallEstimateWithHttpInfo
      *
-     * Estimate per-minute cost for a destination
+     * Estimate per-minute cost
      *
      * @param  string $account_id (required)
      * @param  string $to (required)
@@ -1139,7 +1139,7 @@ class WhatsAppCallingApi
     /**
      * Operation getWhatsAppCallEstimateAsync
      *
-     * Estimate per-minute cost for a destination
+     * Estimate per-minute cost
      *
      * @param  string $account_id (required)
      * @param  string $to (required)
@@ -1163,7 +1163,7 @@ class WhatsAppCallingApi
     /**
      * Operation getWhatsAppCallEstimateAsyncWithHttpInfo
      *
-     * Estimate per-minute cost for a destination
+     * Estimate per-minute cost
      *
      * @param  string $account_id (required)
      * @param  string $to (required)
@@ -1360,7 +1360,7 @@ class WhatsAppCallingApi
     /**
      * Operation getWhatsAppCallPermissions
      *
-     * Check call permission for a consumer
+     * Check call permission
      *
      * @param  string $account_id account_id (required)
      * @param  string $to Consumer wa_id (E.164, leading + optional) (required)
@@ -1379,7 +1379,7 @@ class WhatsAppCallingApi
     /**
      * Operation getWhatsAppCallPermissionsWithHttpInfo
      *
-     * Check call permission for a consumer
+     * Check call permission
      *
      * @param  string $account_id (required)
      * @param  string $to Consumer wa_id (E.164, leading + optional) (required)
@@ -1479,7 +1479,7 @@ class WhatsAppCallingApi
     /**
      * Operation getWhatsAppCallPermissionsAsync
      *
-     * Check call permission for a consumer
+     * Check call permission
      *
      * @param  string $account_id (required)
      * @param  string $to Consumer wa_id (E.164, leading + optional) (required)
@@ -1501,7 +1501,7 @@ class WhatsAppCallingApi
     /**
      * Operation getWhatsAppCallPermissionsAsyncWithHttpInfo
      *
-     * Check call permission for a consumer
+     * Check call permission
      *
      * @param  string $account_id (required)
      * @param  string $to Consumer wa_id (E.164, leading + optional) (required)

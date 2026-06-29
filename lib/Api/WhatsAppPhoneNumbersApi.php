@@ -171,7 +171,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation checkWhatsAppNumberAvailability
      *
-     * Check a country&#39;s availability + address constraint
+     * Check country availability
      *
      * @param  string $country ISO-2 country code. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkWhatsAppNumberAvailability'] to see the possible values for this operation
@@ -189,7 +189,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation checkWhatsAppNumberAvailabilityWithHttpInfo
      *
-     * Check a country&#39;s availability + address constraint
+     * Check country availability
      *
      * @param  string $country ISO-2 country code. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkWhatsAppNumberAvailability'] to see the possible values for this operation
@@ -288,7 +288,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation checkWhatsAppNumberAvailabilityAsync
      *
-     * Check a country&#39;s availability + address constraint
+     * Check country availability
      *
      * @param  string $country ISO-2 country code. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkWhatsAppNumberAvailability'] to see the possible values for this operation
@@ -309,7 +309,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation checkWhatsAppNumberAvailabilityAsyncWithHttpInfo
      *
-     * Check a country&#39;s availability + address constraint
+     * Check country availability
      *
      * @param  string $country ISO-2 country code. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkWhatsAppNumberAvailability'] to see the possible values for this operation
@@ -1030,7 +1030,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation getWhatsAppNumberKycForm
      *
-     * Get regulated-number KYC form spec
+     * Get KYC form spec
      *
      * @param  string $country country (required)
      * @param  string $profile_id profile_id (required)
@@ -1049,7 +1049,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation getWhatsAppNumberKycFormWithHttpInfo
      *
-     * Get regulated-number KYC form spec
+     * Get KYC form spec
      *
      * @param  string $country (required)
      * @param  string $profile_id (required)
@@ -1149,7 +1149,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation getWhatsAppNumberKycFormAsync
      *
-     * Get regulated-number KYC form spec
+     * Get KYC form spec
      *
      * @param  string $country (required)
      * @param  string $profile_id (required)
@@ -1171,7 +1171,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation getWhatsAppNumberKycFormAsyncWithHttpInfo
      *
-     * Get regulated-number KYC form spec
+     * Get KYC form spec
      *
      * @param  string $country (required)
      * @param  string $profile_id (required)
@@ -1338,7 +1338,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation getWhatsAppNumberRemediation
      *
-     * Get the declined requirements to fix
+     * Get declined requirements
      *
      * @param  string $id WhatsAppPhoneNumber id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppNumberRemediation'] to see the possible values for this operation
@@ -1356,7 +1356,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation getWhatsAppNumberRemediationWithHttpInfo
      *
-     * Get the declined requirements to fix
+     * Get declined requirements
      *
      * @param  string $id WhatsAppPhoneNumber id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppNumberRemediation'] to see the possible values for this operation
@@ -1455,7 +1455,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation getWhatsAppNumberRemediationAsync
      *
-     * Get the declined requirements to fix
+     * Get declined requirements
      *
      * @param  string $id WhatsAppPhoneNumber id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppNumberRemediation'] to see the possible values for this operation
@@ -1476,7 +1476,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation getWhatsAppNumberRemediationAsyncWithHttpInfo
      *
-     * Get the declined requirements to fix
+     * Get declined requirements
      *
      * @param  string $id WhatsAppPhoneNumber id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppNumberRemediation'] to see the possible values for this operation
@@ -3099,7 +3099,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation remediateWhatsAppNumber
      *
-     * Fix a declined number and re-submit
+     * Resubmit a declined number
      *
      * @param  string $id id (required)
      * @param  \Zernio\Model\RemediateWhatsAppNumberRequest $remediate_whats_app_number_request remediate_whats_app_number_request (required)
@@ -3118,7 +3118,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation remediateWhatsAppNumberWithHttpInfo
      *
-     * Fix a declined number and re-submit
+     * Resubmit a declined number
      *
      * @param  string $id (required)
      * @param  \Zernio\Model\RemediateWhatsAppNumberRequest $remediate_whats_app_number_request (required)
@@ -3218,7 +3218,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation remediateWhatsAppNumberAsync
      *
-     * Fix a declined number and re-submit
+     * Resubmit a declined number
      *
      * @param  string $id (required)
      * @param  \Zernio\Model\RemediateWhatsAppNumberRequest $remediate_whats_app_number_request (required)
@@ -3240,7 +3240,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation remediateWhatsAppNumberAsyncWithHttpInfo
      *
-     * Fix a declined number and re-submit
+     * Resubmit a declined number
      *
      * @param  string $id (required)
      * @param  \Zernio\Model\RemediateWhatsAppNumberRequest $remediate_whats_app_number_request (required)
@@ -3404,7 +3404,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation searchAvailableWhatsAppNumbers
      *
-     * Search available numbers to purchase
+     * Search available numbers
      *
      * @param  string|null $country country (optional, default to 'US')
      * @param  string|null $type Number type; defaults to the country&#39;s WhatsApp-safe type (optional)
@@ -3427,7 +3427,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation searchAvailableWhatsAppNumbersWithHttpInfo
      *
-     * Search available numbers to purchase
+     * Search available numbers
      *
      * @param  string|null $country (optional, default to 'US')
      * @param  string|null $type Number type; defaults to the country&#39;s WhatsApp-safe type (optional)
@@ -3531,7 +3531,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation searchAvailableWhatsAppNumbersAsync
      *
-     * Search available numbers to purchase
+     * Search available numbers
      *
      * @param  string|null $country (optional, default to 'US')
      * @param  string|null $type Number type; defaults to the country&#39;s WhatsApp-safe type (optional)
@@ -3557,7 +3557,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation searchAvailableWhatsAppNumbersAsyncWithHttpInfo
      *
-     * Search available numbers to purchase
+     * Search available numbers
      *
      * @param  string|null $country (optional, default to 'US')
      * @param  string|null $type Number type; defaults to the country&#39;s WhatsApp-safe type (optional)
@@ -3763,7 +3763,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation submitWhatsAppNumberKyc
      *
-     * Submit regulated-number KYC
+     * Submit KYC
      *
      * @param  \Zernio\Model\SubmitWhatsAppNumberKycRequest $submit_whats_app_number_kyc_request submit_whats_app_number_kyc_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitWhatsAppNumberKyc'] to see the possible values for this operation
@@ -3781,7 +3781,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation submitWhatsAppNumberKycWithHttpInfo
      *
-     * Submit regulated-number KYC
+     * Submit KYC
      *
      * @param  \Zernio\Model\SubmitWhatsAppNumberKycRequest $submit_whats_app_number_kyc_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitWhatsAppNumberKyc'] to see the possible values for this operation
@@ -3880,7 +3880,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation submitWhatsAppNumberKycAsync
      *
-     * Submit regulated-number KYC
+     * Submit KYC
      *
      * @param  \Zernio\Model\SubmitWhatsAppNumberKycRequest $submit_whats_app_number_kyc_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitWhatsAppNumberKyc'] to see the possible values for this operation
@@ -3901,7 +3901,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation submitWhatsAppNumberKycAsyncWithHttpInfo
      *
-     * Submit regulated-number KYC
+     * Submit KYC
      *
      * @param  \Zernio\Model\SubmitWhatsAppNumberKycRequest $submit_whats_app_number_kyc_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitWhatsAppNumberKyc'] to see the possible values for this operation
@@ -4048,7 +4048,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation uploadWhatsAppNumberKycDocument
      *
-     * Upload a single regulated-number KYC document
+     * Upload a KYC document
      *
      * @param  string $x_filename URL-encoded original filename. (required)
      * @param  \SplFileObject $body body (required)
@@ -4067,7 +4067,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation uploadWhatsAppNumberKycDocumentWithHttpInfo
      *
-     * Upload a single regulated-number KYC document
+     * Upload a KYC document
      *
      * @param  string $x_filename URL-encoded original filename. (required)
      * @param  \SplFileObject $body (required)
@@ -4167,7 +4167,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation uploadWhatsAppNumberKycDocumentAsync
      *
-     * Upload a single regulated-number KYC document
+     * Upload a KYC document
      *
      * @param  string $x_filename URL-encoded original filename. (required)
      * @param  \SplFileObject $body (required)
@@ -4189,7 +4189,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation uploadWhatsAppNumberKycDocumentAsyncWithHttpInfo
      *
-     * Upload a single regulated-number KYC document
+     * Upload a KYC document
      *
      * @param  string $x_filename URL-encoded original filename. (required)
      * @param  \SplFileObject $body (required)
@@ -4349,7 +4349,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation validateWhatsAppNumberKycAddress
      *
-     * Pre-validate a regulated-number KYC address (Tier 4)
+     * Pre-validate KYC address
      *
      * @param  \Zernio\Model\ValidateWhatsAppNumberKycAddressRequest $validate_whats_app_number_kyc_address_request validate_whats_app_number_kyc_address_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateWhatsAppNumberKycAddress'] to see the possible values for this operation
@@ -4367,7 +4367,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation validateWhatsAppNumberKycAddressWithHttpInfo
      *
-     * Pre-validate a regulated-number KYC address (Tier 4)
+     * Pre-validate KYC address
      *
      * @param  \Zernio\Model\ValidateWhatsAppNumberKycAddressRequest $validate_whats_app_number_kyc_address_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateWhatsAppNumberKycAddress'] to see the possible values for this operation
@@ -4480,7 +4480,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation validateWhatsAppNumberKycAddressAsync
      *
-     * Pre-validate a regulated-number KYC address (Tier 4)
+     * Pre-validate KYC address
      *
      * @param  \Zernio\Model\ValidateWhatsAppNumberKycAddressRequest $validate_whats_app_number_kyc_address_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateWhatsAppNumberKycAddress'] to see the possible values for this operation
@@ -4501,7 +4501,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Operation validateWhatsAppNumberKycAddressAsyncWithHttpInfo
      *
-     * Pre-validate a regulated-number KYC address (Tier 4)
+     * Pre-validate KYC address
      *
      * @param  \Zernio\Model\ValidateWhatsAppNumberKycAddressRequest $validate_whats_app_number_kyc_address_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateWhatsAppNumberKycAddress'] to see the possible values for this operation

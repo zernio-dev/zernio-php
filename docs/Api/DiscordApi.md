@@ -14,7 +14,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getDiscordSettings()**](DiscordApi.md#getDiscordSettings) | **GET** /v1/accounts/{accountId}/discord-settings | Get Discord account settings |
 | [**listDiscordGuildMembers()**](DiscordApi.md#listDiscordGuildMembers) | **GET** /v1/discord/guilds/{guildId}/members | List Discord guild members |
 | [**listDiscordGuildRoles()**](DiscordApi.md#listDiscordGuildRoles) | **GET** /v1/discord/guilds/{guildId}/roles | List Discord guild roles |
-| [**listDiscordPinnedMessages()**](DiscordApi.md#listDiscordPinnedMessages) | **GET** /v1/discord/channels/{channelId}/pins | List pinned messages in a Discord channel |
+| [**listDiscordPinnedMessages()**](DiscordApi.md#listDiscordPinnedMessages) | **GET** /v1/discord/channels/{channelId}/pins | List pinned messages |
 | [**listDiscordScheduledEvents()**](DiscordApi.md#listDiscordScheduledEvents) | **GET** /v1/discord/guilds/{guildId}/events | List Discord scheduled events |
 | [**pinDiscordMessage()**](DiscordApi.md#pinDiscordMessage) | **PUT** /v1/discord/channels/{channelId}/pins/{messageId} | Pin a Discord message |
 | [**removeDiscordMemberRole()**](DiscordApi.md#removeDiscordMemberRole) | **DELETE** /v1/discord/guilds/{guildId}/members/{userId}/roles/{roleId} | Remove a role from a guild member |
@@ -532,7 +532,7 @@ try {
 listDiscordPinnedMessages($channel_id, $account_id): \Zernio\Model\ListDiscordPinnedMessages200Response
 ```
 
-List pinned messages in a Discord channel
+List pinned messages
 
 Returns the channel's pinned messages, sorted most-recently-pinned first. Discord caps a channel at 50 pinned messages and returns the full list unpaginated.  Bot needs READ_MESSAGE_HISTORY in the channel (granted by default BOT_PERMISSIONS).
 

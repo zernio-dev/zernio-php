@@ -9,8 +9,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**disableWhatsAppCalling()**](WhatsAppCallingApi.md#disableWhatsAppCalling) | **DELETE** /v1/whatsapp/phone-numbers/{id}/calling | Disable calling on a number |
 | [**enableWhatsAppCalling()**](WhatsAppCallingApi.md#enableWhatsAppCalling) | **POST** /v1/whatsapp/phone-numbers/{id}/calling | Enable calling on a number |
 | [**getWhatsAppCall()**](WhatsAppCallingApi.md#getWhatsAppCall) | **GET** /v1/whatsapp/calls/{callId} | Get a single call |
-| [**getWhatsAppCallEstimate()**](WhatsAppCallingApi.md#getWhatsAppCallEstimate) | **GET** /v1/whatsapp/calls/estimate | Estimate per-minute cost for a destination |
-| [**getWhatsAppCallPermissions()**](WhatsAppCallingApi.md#getWhatsAppCallPermissions) | **GET** /v1/whatsapp/call-permissions | Check call permission for a consumer |
+| [**getWhatsAppCallEstimate()**](WhatsAppCallingApi.md#getWhatsAppCallEstimate) | **GET** /v1/whatsapp/calls/estimate | Estimate per-minute cost |
+| [**getWhatsAppCallPermissions()**](WhatsAppCallingApi.md#getWhatsAppCallPermissions) | **GET** /v1/whatsapp/call-permissions | Check call permission |
 | [**getWhatsAppCallingConfig()**](WhatsAppCallingApi.md#getWhatsAppCallingConfig) | **GET** /v1/whatsapp/calling | Get calling config for an account |
 | [**initiateWhatsAppCall()**](WhatsAppCallingApi.md#initiateWhatsAppCall) | **POST** /v1/whatsapp/calls | Initiate outbound call |
 | [**listWhatsAppCalls()**](WhatsAppCallingApi.md#listWhatsAppCalls) | **GET** /v1/whatsapp/calls | List call history for an account |
@@ -206,7 +206,7 @@ try {
 getWhatsAppCallEstimate($account_id, $to, $minutes, $recording): \Zernio\Model\GetWhatsAppCallEstimate200Response
 ```
 
-Estimate per-minute cost for a destination
+Estimate per-minute cost
 
 Returns a zero-markup estimated cost for an outbound call to the given destination, broken down by Meta + Telnyx + recording line items. Costs are pass-through, no margin applied.
 
@@ -272,7 +272,7 @@ try {
 getWhatsAppCallPermissions($account_id, $to): \Zernio\Model\GetWhatsAppCallPermissions200Response
 ```
 
-Check call permission for a consumer
+Check call permission
 
 Returns the permission state and the list of available actions for a given consumer wa_id (e.g. `start_call`, `send_call_permission_request`). Use this before placing a call to decide whether to prompt for consent first.
 

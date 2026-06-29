@@ -2124,7 +2124,7 @@ class AccountsApi
     /**
      * Operation moveAccountToProfile
      *
-     * Move account to a different profile
+     * Move account to another profile
      *
      * @param  string $account_id account_id (required)
      * @param  \Zernio\Model\MoveAccountToProfileRequest $move_account_to_profile_request move_account_to_profile_request (required)
@@ -2143,7 +2143,7 @@ class AccountsApi
     /**
      * Operation moveAccountToProfileWithHttpInfo
      *
-     * Move account to a different profile
+     * Move account to another profile
      *
      * @param  string $account_id (required)
      * @param  \Zernio\Model\MoveAccountToProfileRequest $move_account_to_profile_request (required)
@@ -2243,7 +2243,7 @@ class AccountsApi
     /**
      * Operation moveAccountToProfileAsync
      *
-     * Move account to a different profile
+     * Move account to another profile
      *
      * @param  string $account_id (required)
      * @param  \Zernio\Model\MoveAccountToProfileRequest $move_account_to_profile_request (required)
@@ -2265,7 +2265,7 @@ class AccountsApi
     /**
      * Operation moveAccountToProfileAsyncWithHttpInfo
      *
-     * Move account to a different profile
+     * Move account to another profile
      *
      * @param  string $account_id (required)
      * @param  \Zernio\Model\MoveAccountToProfileRequest $move_account_to_profile_request (required)

@@ -17,7 +17,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listWorkflowVersions()**](WorkflowsApi.md#listWorkflowVersions) | **GET** /v1/workflows/{workflowId}/versions | List a workflow&#39;s version history |
 | [**listWorkflows()**](WorkflowsApi.md#listWorkflows) | **GET** /v1/workflows | List workflows |
 | [**pauseWorkflow()**](WorkflowsApi.md#pauseWorkflow) | **POST** /v1/workflows/{workflowId}/pause | Pause workflow |
-| [**restoreWorkflowVersion()**](WorkflowsApi.md#restoreWorkflowVersion) | **POST** /v1/workflows/{workflowId}/versions/{version}/restore | Restore a previous workflow version |
+| [**restoreWorkflowVersion()**](WorkflowsApi.md#restoreWorkflowVersion) | **POST** /v1/workflows/{workflowId}/versions/{version}/restore | Restore a workflow version |
 | [**triggerWorkflow()**](WorkflowsApi.md#triggerWorkflow) | **POST** /v1/workflows/{workflowId}/executions | Manually start a workflow run |
 | [**updateWorkflow()**](WorkflowsApi.md#updateWorkflow) | **PATCH** /v1/workflows/{workflowId} | Update workflow |
 
@@ -703,7 +703,7 @@ try {
 restoreWorkflowVersion($workflow_id, $version): \Zernio\Model\RestoreWorkflowVersion200Response
 ```
 
-Restore a previous workflow version
+Restore a workflow version
 
 Replace the current graph with the named version's snapshot. Before the swap, the current graph is itself snapshotted as a new version, so a restore is reversible. The workflow must be in `draft` or `paused` status (same gate as a normal graph edit). The returned workflow carries `restoredFromVersion` so the UI can surface which version was rolled back to.
 

@@ -492,7 +492,7 @@ class MessagesApi
     /**
      * Operation createInboxConversation
      *
-     * Create conversation (send a WhatsApp template)
+     * Create conversation
      *
      * @param  \Zernio\Model\CreateInboxConversationRequest $create_inbox_conversation_request create_inbox_conversation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInboxConversation'] to see the possible values for this operation
@@ -510,7 +510,7 @@ class MessagesApi
     /**
      * Operation createInboxConversationWithHttpInfo
      *
-     * Create conversation (send a WhatsApp template)
+     * Create conversation
      *
      * @param  \Zernio\Model\CreateInboxConversationRequest $create_inbox_conversation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInboxConversation'] to see the possible values for this operation
@@ -637,7 +637,7 @@ class MessagesApi
     /**
      * Operation createInboxConversationAsync
      *
-     * Create conversation (send a WhatsApp template)
+     * Create conversation
      *
      * @param  \Zernio\Model\CreateInboxConversationRequest $create_inbox_conversation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInboxConversation'] to see the possible values for this operation
@@ -658,7 +658,7 @@ class MessagesApi
     /**
      * Operation createInboxConversationAsyncWithHttpInfo
      *
-     * Create conversation (send a WhatsApp template)
+     * Create conversation
      *
      * @param  \Zernio\Model\CreateInboxConversationRequest $create_inbox_conversation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInboxConversation'] to see the possible values for this operation

@@ -135,7 +135,7 @@ class WhatsAppSandboxApi
     /**
      * Operation createWhatsAppSandboxSession
      *
-     * Start a sandbox activation for a phone
+     * Start a sandbox activation
      *
      * @param  \Zernio\Model\CreateWhatsAppSandboxSessionRequest $create_whats_app_sandbox_session_request create_whats_app_sandbox_session_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppSandboxSession'] to see the possible values for this operation
@@ -153,7 +153,7 @@ class WhatsAppSandboxApi
     /**
      * Operation createWhatsAppSandboxSessionWithHttpInfo
      *
-     * Start a sandbox activation for a phone
+     * Start a sandbox activation
      *
      * @param  \Zernio\Model\CreateWhatsAppSandboxSessionRequest $create_whats_app_sandbox_session_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppSandboxSession'] to see the possible values for this operation
@@ -252,7 +252,7 @@ class WhatsAppSandboxApi
     /**
      * Operation createWhatsAppSandboxSessionAsync
      *
-     * Start a sandbox activation for a phone
+     * Start a sandbox activation
      *
      * @param  \Zernio\Model\CreateWhatsAppSandboxSessionRequest $create_whats_app_sandbox_session_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppSandboxSession'] to see the possible values for this operation
@@ -273,7 +273,7 @@ class WhatsAppSandboxApi
     /**
      * Operation createWhatsAppSandboxSessionAsyncWithHttpInfo
      *
-     * Start a sandbox activation for a phone
+     * Start a sandbox activation
      *
      * @param  \Zernio\Model\CreateWhatsAppSandboxSessionRequest $create_whats_app_sandbox_session_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppSandboxSession'] to see the possible values for this operation

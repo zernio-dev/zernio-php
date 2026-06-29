@@ -3502,7 +3502,7 @@ class WorkflowsApi
     /**
      * Operation restoreWorkflowVersion
      *
-     * Restore a previous workflow version
+     * Restore a workflow version
      *
      * @param  string $workflow_id workflow_id (required)
      * @param  int $version version (required)
@@ -3521,7 +3521,7 @@ class WorkflowsApi
     /**
      * Operation restoreWorkflowVersionWithHttpInfo
      *
-     * Restore a previous workflow version
+     * Restore a workflow version
      *
      * @param  string $workflow_id (required)
      * @param  int $version (required)
@@ -3635,7 +3635,7 @@ class WorkflowsApi
     /**
      * Operation restoreWorkflowVersionAsync
      *
-     * Restore a previous workflow version
+     * Restore a workflow version
      *
      * @param  string $workflow_id (required)
      * @param  int $version (required)
@@ -3657,7 +3657,7 @@ class WorkflowsApi
     /**
      * Operation restoreWorkflowVersionAsyncWithHttpInfo
      *
-     * Restore a previous workflow version
+     * Restore a workflow version
      *
      * @param  string $workflow_id (required)
      * @param  int $version (required)

@@ -2702,7 +2702,7 @@ class DiscordApi
     /**
      * Operation listDiscordPinnedMessages
      *
-     * List pinned messages in a Discord channel
+     * List pinned messages
      *
      * @param  string $channel_id Discord channel snowflake. (required)
      * @param  string $account_id SocialAccount _id of any Discord account in the same guild. (required)
@@ -2721,7 +2721,7 @@ class DiscordApi
     /**
      * Operation listDiscordPinnedMessagesWithHttpInfo
      *
-     * List pinned messages in a Discord channel
+     * List pinned messages
      *
      * @param  string $channel_id Discord channel snowflake. (required)
      * @param  string $account_id SocialAccount _id of any Discord account in the same guild. (required)
@@ -2821,7 +2821,7 @@ class DiscordApi
     /**
      * Operation listDiscordPinnedMessagesAsync
      *
-     * List pinned messages in a Discord channel
+     * List pinned messages
      *
      * @param  string $channel_id Discord channel snowflake. (required)
      * @param  string $account_id SocialAccount _id of any Discord account in the same guild. (required)
@@ -2843,7 +2843,7 @@ class DiscordApi
     /**
      * Operation listDiscordPinnedMessagesAsyncWithHttpInfo
      *
-     * List pinned messages in a Discord channel
+     * List pinned messages
      *
      * @param  string $channel_id Discord channel snowflake. (required)
      * @param  string $account_id SocialAccount _id of any Discord account in the same guild. (required)

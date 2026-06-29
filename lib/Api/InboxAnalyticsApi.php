@@ -147,7 +147,7 @@ class InboxAnalyticsApi
     /**
      * Operation getInboxConversationAnalytics
      *
-     * Get analytics for a single conversation
+     * Get conversation analytics
      *
      * @param  string $conversation_id Mongo _id or platformConversationId. (required)
      * @param  \DateTime $from_date from_date (required)
@@ -167,7 +167,7 @@ class InboxAnalyticsApi
     /**
      * Operation getInboxConversationAnalyticsWithHttpInfo
      *
-     * Get analytics for a single conversation
+     * Get conversation analytics
      *
      * @param  string $conversation_id Mongo _id or platformConversationId. (required)
      * @param  \DateTime $from_date (required)
@@ -310,7 +310,7 @@ class InboxAnalyticsApi
     /**
      * Operation getInboxConversationAnalyticsAsync
      *
-     * Get analytics for a single conversation
+     * Get conversation analytics
      *
      * @param  string $conversation_id Mongo _id or platformConversationId. (required)
      * @param  \DateTime $from_date (required)
@@ -333,7 +333,7 @@ class InboxAnalyticsApi
     /**
      * Operation getInboxConversationAnalyticsAsyncWithHttpInfo
      *
-     * Get analytics for a single conversation
+     * Get conversation analytics
      *
      * @param  string $conversation_id Mongo _id or platformConversationId. (required)
      * @param  \DateTime $from_date (required)
@@ -511,7 +511,7 @@ class InboxAnalyticsApi
     /**
      * Operation getInboxHeatmap
      *
-     * Get inbox day-of-week × hour-of-day heatmap
+     * Get day × hour heatmap
      *
      * @param  \DateTime $from_date from_date (required)
      * @param  \DateTime|null $to_date to_date (optional)
@@ -535,7 +535,7 @@ class InboxAnalyticsApi
     /**
      * Operation getInboxHeatmapWithHttpInfo
      *
-     * Get inbox day-of-week × hour-of-day heatmap
+     * Get day × hour heatmap
      *
      * @param  \DateTime $from_date (required)
      * @param  \DateTime|null $to_date (optional)
@@ -668,7 +668,7 @@ class InboxAnalyticsApi
     /**
      * Operation getInboxHeatmapAsync
      *
-     * Get inbox day-of-week × hour-of-day heatmap
+     * Get day × hour heatmap
      *
      * @param  \DateTime $from_date (required)
      * @param  \DateTime|null $to_date (optional)
@@ -695,7 +695,7 @@ class InboxAnalyticsApi
     /**
      * Operation getInboxHeatmapAsyncWithHttpInfo
      *
-     * Get inbox day-of-week × hour-of-day heatmap
+     * Get day × hour heatmap
      *
      * @param  \DateTime $from_date (required)
      * @param  \DateTime|null $to_date (optional)
@@ -2452,7 +2452,7 @@ class InboxAnalyticsApi
     /**
      * Operation listInboxConversationAnalytics
      *
-     * List conversations with inbox analytics
+     * List conversation analytics
      *
      * @param  \DateTime $from_date from_date (required)
      * @param  \DateTime|null $to_date to_date (optional)
@@ -2479,7 +2479,7 @@ class InboxAnalyticsApi
     /**
      * Operation listInboxConversationAnalyticsWithHttpInfo
      *
-     * List conversations with inbox analytics
+     * List conversation analytics
      *
      * @param  \DateTime $from_date (required)
      * @param  \DateTime|null $to_date (optional)
@@ -2615,7 +2615,7 @@ class InboxAnalyticsApi
     /**
      * Operation listInboxConversationAnalyticsAsync
      *
-     * List conversations with inbox analytics
+     * List conversation analytics
      *
      * @param  \DateTime $from_date (required)
      * @param  \DateTime|null $to_date (optional)
@@ -2645,7 +2645,7 @@ class InboxAnalyticsApi
     /**
      * Operation listInboxConversationAnalyticsAsyncWithHttpInfo
      *
-     * List conversations with inbox analytics
+     * List conversation analytics
      *
      * @param  \DateTime $from_date (required)
      * @param  \DateTime|null $to_date (optional)

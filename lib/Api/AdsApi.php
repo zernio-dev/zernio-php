@@ -243,7 +243,7 @@ class AdsApi
     /**
      * Operation addConversionAssociations
      *
-     * Associate campaigns with a conversion destination
+     * Associate campaigns
      *
      * @param  string $account_id account_id (required)
      * @param  string $destination_id destination_id (required)
@@ -263,7 +263,7 @@ class AdsApi
     /**
      * Operation addConversionAssociationsWithHttpInfo
      *
-     * Associate campaigns with a conversion destination
+     * Associate campaigns
      *
      * @param  string $account_id (required)
      * @param  string $destination_id (required)
@@ -364,7 +364,7 @@ class AdsApi
     /**
      * Operation addConversionAssociationsAsync
      *
-     * Associate campaigns with a conversion destination
+     * Associate campaigns
      *
      * @param  string $account_id (required)
      * @param  string $destination_id (required)
@@ -387,7 +387,7 @@ class AdsApi
     /**
      * Operation addConversionAssociationsAsyncWithHttpInfo
      *
-     * Associate campaigns with a conversion destination
+     * Associate campaigns
      *
      * @param  string $account_id (required)
      * @param  string $destination_id (required)
@@ -568,7 +568,7 @@ class AdsApi
     /**
      * Operation adjustConversions
      *
-     * Adjust already-uploaded conversions (Google only)
+     * Adjust uploaded conversions
      *
      * @param  \Zernio\Model\AdjustConversionsRequest $adjust_conversions_request adjust_conversions_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['adjustConversions'] to see the possible values for this operation
@@ -586,7 +586,7 @@ class AdsApi
     /**
      * Operation adjustConversionsWithHttpInfo
      *
-     * Adjust already-uploaded conversions (Google only)
+     * Adjust uploaded conversions
      *
      * @param  \Zernio\Model\AdjustConversionsRequest $adjust_conversions_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['adjustConversions'] to see the possible values for this operation
@@ -685,7 +685,7 @@ class AdsApi
     /**
      * Operation adjustConversionsAsync
      *
-     * Adjust already-uploaded conversions (Google only)
+     * Adjust uploaded conversions
      *
      * @param  \Zernio\Model\AdjustConversionsRequest $adjust_conversions_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['adjustConversions'] to see the possible values for this operation
@@ -706,7 +706,7 @@ class AdsApi
     /**
      * Operation adjustConversionsAsyncWithHttpInfo
      *
-     * Adjust already-uploaded conversions (Google only)
+     * Adjust uploaded conversions
      *
      * @param  \Zernio\Model\AdjustConversionsRequest $adjust_conversions_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['adjustConversions'] to see the possible values for this operation
@@ -853,7 +853,7 @@ class AdsApi
     /**
      * Operation archiveLeadForm
      *
-     * Archive a Lead Gen form
+     * Archive a lead form
      *
      * @param  string $form_id form_id (required)
      * @param  string $account_id account_id (required)
@@ -872,7 +872,7 @@ class AdsApi
     /**
      * Operation archiveLeadFormWithHttpInfo
      *
-     * Archive a Lead Gen form
+     * Archive a lead form
      *
      * @param  string $form_id (required)
      * @param  string $account_id (required)
@@ -972,7 +972,7 @@ class AdsApi
     /**
      * Operation archiveLeadFormAsync
      *
-     * Archive a Lead Gen form
+     * Archive a lead form
      *
      * @param  string $form_id (required)
      * @param  string $account_id (required)
@@ -994,7 +994,7 @@ class AdsApi
     /**
      * Operation archiveLeadFormAsyncWithHttpInfo
      *
-     * Archive a Lead Gen form
+     * Archive a lead form
      *
      * @param  string $form_id (required)
      * @param  string $account_id (required)
@@ -1445,7 +1445,7 @@ class AdsApi
     /**
      * Operation createConversionDestination
      *
-     * Create a conversion destination (LinkedIn, Google Ads)
+     * Create a conversion destination
      *
      * @param  string $account_id SocialAccount ID (linkedinads or googleads). (required)
      * @param  \Zernio\Model\CreateConversionDestinationRequest $create_conversion_destination_request create_conversion_destination_request (required)
@@ -1464,7 +1464,7 @@ class AdsApi
     /**
      * Operation createConversionDestinationWithHttpInfo
      *
-     * Create a conversion destination (LinkedIn, Google Ads)
+     * Create a conversion destination
      *
      * @param  string $account_id SocialAccount ID (linkedinads or googleads). (required)
      * @param  \Zernio\Model\CreateConversionDestinationRequest $create_conversion_destination_request (required)
@@ -1564,7 +1564,7 @@ class AdsApi
     /**
      * Operation createConversionDestinationAsync
      *
-     * Create a conversion destination (LinkedIn, Google Ads)
+     * Create a conversion destination
      *
      * @param  string $account_id SocialAccount ID (linkedinads or googleads). (required)
      * @param  \Zernio\Model\CreateConversionDestinationRequest $create_conversion_destination_request (required)
@@ -1586,7 +1586,7 @@ class AdsApi
     /**
      * Operation createConversionDestinationAsyncWithHttpInfo
      *
-     * Create a conversion destination (LinkedIn, Google Ads)
+     * Create a conversion destination
      *
      * @param  string $account_id SocialAccount ID (linkedinads or googleads). (required)
      * @param  \Zernio\Model\CreateConversionDestinationRequest $create_conversion_destination_request (required)
@@ -1750,7 +1750,7 @@ class AdsApi
     /**
      * Operation createCtwaAd
      *
-     * Create Click-to-WhatsApp ad(s)
+     * Create Click-to-WhatsApp ad
      *
      * @param  \Zernio\Model\CreateCtwaAdRequest $create_ctwa_ad_request create_ctwa_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
@@ -1768,7 +1768,7 @@ class AdsApi
     /**
      * Operation createCtwaAdWithHttpInfo
      *
-     * Create Click-to-WhatsApp ad(s)
+     * Create Click-to-WhatsApp ad
      *
      * @param  \Zernio\Model\CreateCtwaAdRequest $create_ctwa_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
@@ -1867,7 +1867,7 @@ class AdsApi
     /**
      * Operation createCtwaAdAsync
      *
-     * Create Click-to-WhatsApp ad(s)
+     * Create Click-to-WhatsApp ad
      *
      * @param  \Zernio\Model\CreateCtwaAdRequest $create_ctwa_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
@@ -1888,7 +1888,7 @@ class AdsApi
     /**
      * Operation createCtwaAdAsyncWithHttpInfo
      *
-     * Create Click-to-WhatsApp ad(s)
+     * Create Click-to-WhatsApp ad
      *
      * @param  \Zernio\Model\CreateCtwaAdRequest $create_ctwa_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
@@ -2035,7 +2035,7 @@ class AdsApi
     /**
      * Operation createLeadForm
      *
-     * Create a Lead Gen (Instant) form
+     * Create a lead form
      *
      * @param  \Zernio\Model\CreateLeadFormRequest $create_lead_form_request create_lead_form_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLeadForm'] to see the possible values for this operation
@@ -2053,7 +2053,7 @@ class AdsApi
     /**
      * Operation createLeadFormWithHttpInfo
      *
-     * Create a Lead Gen (Instant) form
+     * Create a lead form
      *
      * @param  \Zernio\Model\CreateLeadFormRequest $create_lead_form_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLeadForm'] to see the possible values for this operation
@@ -2152,7 +2152,7 @@ class AdsApi
     /**
      * Operation createLeadFormAsync
      *
-     * Create a Lead Gen (Instant) form
+     * Create a lead form
      *
      * @param  \Zernio\Model\CreateLeadFormRequest $create_lead_form_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLeadForm'] to see the possible values for this operation
@@ -2173,7 +2173,7 @@ class AdsApi
     /**
      * Operation createLeadFormAsyncWithHttpInfo
      *
-     * Create a Lead Gen (Instant) form
+     * Create a lead form
      *
      * @param  \Zernio\Model\CreateLeadFormRequest $create_lead_form_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLeadForm'] to see the possible values for this operation
@@ -2618,7 +2618,7 @@ class AdsApi
     /**
      * Operation createTestLead
      *
-     * Create a synthetic test lead
+     * Create a test lead
      *
      * @param  string $form_id form_id (required)
      * @param  \Zernio\Model\CreateTestLeadRequest $create_test_lead_request create_test_lead_request (required)
@@ -2637,7 +2637,7 @@ class AdsApi
     /**
      * Operation createTestLeadWithHttpInfo
      *
-     * Create a synthetic test lead
+     * Create a test lead
      *
      * @param  string $form_id (required)
      * @param  \Zernio\Model\CreateTestLeadRequest $create_test_lead_request (required)
@@ -2737,7 +2737,7 @@ class AdsApi
     /**
      * Operation createTestLeadAsync
      *
-     * Create a synthetic test lead
+     * Create a test lead
      *
      * @param  string $form_id (required)
      * @param  \Zernio\Model\CreateTestLeadRequest $create_test_lead_request (required)
@@ -2759,7 +2759,7 @@ class AdsApi
     /**
      * Operation createTestLeadAsyncWithHttpInfo
      *
-     * Create a synthetic test lead
+     * Create a test lead
      *
      * @param  string $form_id (required)
      * @param  \Zernio\Model\CreateTestLeadRequest $create_test_lead_request (required)
@@ -3223,7 +3223,7 @@ class AdsApi
     /**
      * Operation deleteConversionDestination
      *
-     * Soft-delete a conversion destination
+     * Delete a conversion destination
      *
      * @param  string $account_id account_id (required)
      * @param  string $destination_id destination_id (required)
@@ -3242,7 +3242,7 @@ class AdsApi
     /**
      * Operation deleteConversionDestinationWithHttpInfo
      *
-     * Soft-delete a conversion destination
+     * Delete a conversion destination
      *
      * @param  string $account_id (required)
      * @param  string $destination_id (required)
@@ -3301,7 +3301,7 @@ class AdsApi
     /**
      * Operation deleteConversionDestinationAsync
      *
-     * Soft-delete a conversion destination
+     * Delete a conversion destination
      *
      * @param  string $account_id (required)
      * @param  string $destination_id (required)
@@ -3324,7 +3324,7 @@ class AdsApi
     /**
      * Operation deleteConversionDestinationAsyncWithHttpInfo
      *
-     * Soft-delete a conversion destination
+     * Delete a conversion destination
      *
      * @param  string $account_id (required)
      * @param  string $destination_id (required)
@@ -4783,7 +4783,7 @@ class AdsApi
     /**
      * Operation getAdTrackingTags
      *
-     * Read an ad&#39;s click-URL tracking tags
+     * Get ad tracking tags
      *
      * @param  string $ad_id Ad id (hex _id, platformAdId, or effective story/media id). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTrackingTags'] to see the possible values for this operation
@@ -4801,7 +4801,7 @@ class AdsApi
     /**
      * Operation getAdTrackingTagsWithHttpInfo
      *
-     * Read an ad&#39;s click-URL tracking tags
+     * Get ad tracking tags
      *
      * @param  string $ad_id Ad id (hex _id, platformAdId, or effective story/media id). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTrackingTags'] to see the possible values for this operation
@@ -4900,7 +4900,7 @@ class AdsApi
     /**
      * Operation getAdTrackingTagsAsync
      *
-     * Read an ad&#39;s click-URL tracking tags
+     * Get ad tracking tags
      *
      * @param  string $ad_id Ad id (hex _id, platformAdId, or effective story/media id). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTrackingTags'] to see the possible values for this operation
@@ -4921,7 +4921,7 @@ class AdsApi
     /**
      * Operation getAdTrackingTagsAsyncWithHttpInfo
      *
-     * Read an ad&#39;s click-URL tracking tags
+     * Get ad tracking tags
      *
      * @param  string $ad_id Ad id (hex _id, platformAdId, or effective story/media id). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTrackingTags'] to see the possible values for this operation
@@ -5069,7 +5069,7 @@ class AdsApi
     /**
      * Operation getConversionDestination
      *
-     * Fetch a single conversion destination
+     * Get a conversion destination
      *
      * @param  string $account_id account_id (required)
      * @param  string $destination_id destination_id (required)
@@ -5089,7 +5089,7 @@ class AdsApi
     /**
      * Operation getConversionDestinationWithHttpInfo
      *
-     * Fetch a single conversion destination
+     * Get a conversion destination
      *
      * @param  string $account_id (required)
      * @param  string $destination_id (required)
@@ -5190,7 +5190,7 @@ class AdsApi
     /**
      * Operation getConversionDestinationAsync
      *
-     * Fetch a single conversion destination
+     * Get a conversion destination
      *
      * @param  string $account_id (required)
      * @param  string $destination_id (required)
@@ -5213,7 +5213,7 @@ class AdsApi
     /**
      * Operation getConversionDestinationAsyncWithHttpInfo
      *
-     * Fetch a single conversion destination
+     * Get a conversion destination
      *
      * @param  string $account_id (required)
      * @param  string $destination_id (required)
@@ -5396,7 +5396,7 @@ class AdsApi
     /**
      * Operation getConversionMetrics
      *
-     * Fetch attribution metrics for a conversion destination
+     * Get attribution metrics
      *
      * @param  string $account_id account_id (required)
      * @param  string $destination_id destination_id (required)
@@ -5419,7 +5419,7 @@ class AdsApi
     /**
      * Operation getConversionMetricsWithHttpInfo
      *
-     * Fetch attribution metrics for a conversion destination
+     * Get attribution metrics
      *
      * @param  string $account_id (required)
      * @param  string $destination_id (required)
@@ -5523,7 +5523,7 @@ class AdsApi
     /**
      * Operation getConversionMetricsAsync
      *
-     * Fetch attribution metrics for a conversion destination
+     * Get attribution metrics
      *
      * @param  string $account_id (required)
      * @param  string $destination_id (required)
@@ -5549,7 +5549,7 @@ class AdsApi
     /**
      * Operation getConversionMetricsAsyncWithHttpInfo
      *
-     * Fetch attribution metrics for a conversion destination
+     * Get attribution metrics
      *
      * @param  string $account_id (required)
      * @param  string $destination_id (required)
@@ -5780,7 +5780,7 @@ class AdsApi
     /**
      * Operation getConversionsQuality
      *
-     * Read Event Match Quality + coverage for a Meta pixel
+     * Get Event Match Quality
      *
      * @param  string $account_id SocialAccount _id (must be a metaads account). (required)
      * @param  string $destination_id Meta pixel/dataset ID. (required)
@@ -5799,7 +5799,7 @@ class AdsApi
     /**
      * Operation getConversionsQualityWithHttpInfo
      *
-     * Read Event Match Quality + coverage for a Meta pixel
+     * Get Event Match Quality
      *
      * @param  string $account_id SocialAccount _id (must be a metaads account). (required)
      * @param  string $destination_id Meta pixel/dataset ID. (required)
@@ -5899,7 +5899,7 @@ class AdsApi
     /**
      * Operation getConversionsQualityAsync
      *
-     * Read Event Match Quality + coverage for a Meta pixel
+     * Get Event Match Quality
      *
      * @param  string $account_id SocialAccount _id (must be a metaads account). (required)
      * @param  string $destination_id Meta pixel/dataset ID. (required)
@@ -5921,7 +5921,7 @@ class AdsApi
     /**
      * Operation getConversionsQualityAsyncWithHttpInfo
      *
-     * Read Event Match Quality + coverage for a Meta pixel
+     * Get Event Match Quality
      *
      * @param  string $account_id SocialAccount _id (must be a metaads account). (required)
      * @param  string $destination_id Meta pixel/dataset ID. (required)
@@ -6088,7 +6088,7 @@ class AdsApi
     /**
      * Operation getLeadForm
      *
-     * Get a single Lead Gen form
+     * Get a lead form
      *
      * @param  string $form_id form_id (required)
      * @param  string $account_id account_id (required)
@@ -6107,7 +6107,7 @@ class AdsApi
     /**
      * Operation getLeadFormWithHttpInfo
      *
-     * Get a single Lead Gen form
+     * Get a lead form
      *
      * @param  string $form_id (required)
      * @param  string $account_id (required)
@@ -6207,7 +6207,7 @@ class AdsApi
     /**
      * Operation getLeadFormAsync
      *
-     * Get a single Lead Gen form
+     * Get a lead form
      *
      * @param  string $form_id (required)
      * @param  string $account_id (required)
@@ -6229,7 +6229,7 @@ class AdsApi
     /**
      * Operation getLeadFormAsyncWithHttpInfo
      *
-     * Get a single Lead Gen form
+     * Get a lead form
      *
      * @param  string $form_id (required)
      * @param  string $account_id (required)
@@ -8105,7 +8105,7 @@ class AdsApi
     /**
      * Operation listConversionAssociations
      *
-     * List campaigns associated with a conversion destination
+     * List associated campaigns
      *
      * @param  string $account_id account_id (required)
      * @param  string $destination_id destination_id (required)
@@ -8125,7 +8125,7 @@ class AdsApi
     /**
      * Operation listConversionAssociationsWithHttpInfo
      *
-     * List campaigns associated with a conversion destination
+     * List associated campaigns
      *
      * @param  string $account_id (required)
      * @param  string $destination_id (required)
@@ -8226,7 +8226,7 @@ class AdsApi
     /**
      * Operation listConversionAssociationsAsync
      *
-     * List campaigns associated with a conversion destination
+     * List associated campaigns
      *
      * @param  string $account_id (required)
      * @param  string $destination_id (required)
@@ -8249,7 +8249,7 @@ class AdsApi
     /**
      * Operation listConversionAssociationsAsyncWithHttpInfo
      *
-     * List campaigns associated with a conversion destination
+     * List associated campaigns
      *
      * @param  string $account_id (required)
      * @param  string $destination_id (required)
@@ -8432,7 +8432,7 @@ class AdsApi
     /**
      * Operation listConversionDestinations
      *
-     * List destinations for the Conversions API
+     * List conversion destinations
      *
      * @param  string $account_id SocialAccount ID (metaads, googleads, linkedinads, or tiktokads). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionDestinations'] to see the possible values for this operation
@@ -8450,7 +8450,7 @@ class AdsApi
     /**
      * Operation listConversionDestinationsWithHttpInfo
      *
-     * List destinations for the Conversions API
+     * List conversion destinations
      *
      * @param  string $account_id SocialAccount ID (metaads, googleads, linkedinads, or tiktokads). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionDestinations'] to see the possible values for this operation
@@ -8549,7 +8549,7 @@ class AdsApi
     /**
      * Operation listConversionDestinationsAsync
      *
-     * List destinations for the Conversions API
+     * List conversion destinations
      *
      * @param  string $account_id SocialAccount ID (metaads, googleads, linkedinads, or tiktokads). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionDestinations'] to see the possible values for this operation
@@ -8570,7 +8570,7 @@ class AdsApi
     /**
      * Operation listConversionDestinationsAsyncWithHttpInfo
      *
-     * List destinations for the Conversions API
+     * List conversion destinations
      *
      * @param  string $account_id SocialAccount ID (metaads, googleads, linkedinads, or tiktokads). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionDestinations'] to see the possible values for this operation
@@ -9076,7 +9076,7 @@ class AdsApi
     /**
      * Operation listLeadForms
      *
-     * List Lead Gen (Instant) forms
+     * List lead forms
      *
      * @param  string $account_id Connected facebook account id. (required)
      * @param  int|null $limit limit (optional, default to 25)
@@ -9096,7 +9096,7 @@ class AdsApi
     /**
      * Operation listLeadFormsWithHttpInfo
      *
-     * List Lead Gen (Instant) forms
+     * List lead forms
      *
      * @param  string $account_id Connected facebook account id. (required)
      * @param  int|null $limit (optional, default to 25)
@@ -9197,7 +9197,7 @@ class AdsApi
     /**
      * Operation listLeadFormsAsync
      *
-     * List Lead Gen (Instant) forms
+     * List lead forms
      *
      * @param  string $account_id Connected facebook account id. (required)
      * @param  int|null $limit (optional, default to 25)
@@ -9220,7 +9220,7 @@ class AdsApi
     /**
      * Operation listLeadFormsAsyncWithHttpInfo
      *
-     * List Lead Gen (Instant) forms
+     * List lead forms
      *
      * @param  string $account_id Connected facebook account id. (required)
      * @param  int|null $limit (optional, default to 25)
@@ -9399,7 +9399,7 @@ class AdsApi
     /**
      * Operation listLeads
      *
-     * List submitted leads (cross-form CRM view)
+     * List submitted leads
      *
      * @param  string|null $form_id Filter to a single lead form. (optional)
      * @param  string|null $account_id Filter to a single connected account. (optional)
@@ -9421,7 +9421,7 @@ class AdsApi
     /**
      * Operation listLeadsWithHttpInfo
      *
-     * List submitted leads (cross-form CRM view)
+     * List submitted leads
      *
      * @param  string|null $form_id Filter to a single lead form. (optional)
      * @param  string|null $account_id Filter to a single connected account. (optional)
@@ -9524,7 +9524,7 @@ class AdsApi
     /**
      * Operation listLeadsAsync
      *
-     * List submitted leads (cross-form CRM view)
+     * List submitted leads
      *
      * @param  string|null $form_id Filter to a single lead form. (optional)
      * @param  string|null $account_id Filter to a single connected account. (optional)
@@ -9549,7 +9549,7 @@ class AdsApi
     /**
      * Operation listLeadsAsyncWithHttpInfo
      *
-     * List submitted leads (cross-form CRM view)
+     * List submitted leads
      *
      * @param  string|null $form_id Filter to a single lead form. (optional)
      * @param  string|null $account_id Filter to a single connected account. (optional)
@@ -9746,7 +9746,7 @@ class AdsApi
     /**
      * Operation listWhatsAppConversions
      *
-     * List recent WhatsApp conversion events
+     * List conversion events
      *
      * @param  string $account_id WhatsApp social account ID (required)
      * @param  int|null $limit Max events to return (1-200, default 50). (optional, default to 50)
@@ -9765,7 +9765,7 @@ class AdsApi
     /**
      * Operation listWhatsAppConversionsWithHttpInfo
      *
-     * List recent WhatsApp conversion events
+     * List conversion events
      *
      * @param  string $account_id WhatsApp social account ID (required)
      * @param  int|null $limit Max events to return (1-200, default 50). (optional, default to 50)
@@ -9865,7 +9865,7 @@ class AdsApi
     /**
      * Operation listWhatsAppConversionsAsync
      *
-     * List recent WhatsApp conversion events
+     * List conversion events
      *
      * @param  string $account_id WhatsApp social account ID (required)
      * @param  int|null $limit Max events to return (1-200, default 50). (optional, default to 50)
@@ -9887,7 +9887,7 @@ class AdsApi
     /**
      * Operation listWhatsAppConversionsAsyncWithHttpInfo
      *
-     * List recent WhatsApp conversion events
+     * List conversion events
      *
      * @param  string $account_id WhatsApp social account ID (required)
      * @param  int|null $limit Max events to return (1-200, default 50). (optional, default to 50)
@@ -10054,7 +10054,7 @@ class AdsApi
     /**
      * Operation removeConversionAssociations
      *
-     * Remove campaign↔conversion associations
+     * Remove associated campaigns
      *
      * @param  string $account_id account_id (required)
      * @param  string $destination_id destination_id (required)
@@ -10075,7 +10075,7 @@ class AdsApi
     /**
      * Operation removeConversionAssociationsWithHttpInfo
      *
-     * Remove campaign↔conversion associations
+     * Remove associated campaigns
      *
      * @param  string $account_id (required)
      * @param  string $destination_id (required)
@@ -10177,7 +10177,7 @@ class AdsApi
     /**
      * Operation removeConversionAssociationsAsync
      *
-     * Remove campaign↔conversion associations
+     * Remove associated campaigns
      *
      * @param  string $account_id (required)
      * @param  string $destination_id (required)
@@ -10201,7 +10201,7 @@ class AdsApi
     /**
      * Operation removeConversionAssociationsAsyncWithHttpInfo
      *
-     * Remove campaign↔conversion associations
+     * Remove associated campaigns
      *
      * @param  string $account_id (required)
      * @param  string $destination_id (required)
@@ -10402,7 +10402,7 @@ class AdsApi
     /**
      * Operation searchAdInterests
      *
-     * Search targeting interests (deprecated)
+     * Search targeting interests
      *
      * @param  string $q Search query (required)
      * @param  string $account_id Social account ID (required)
@@ -10422,7 +10422,7 @@ class AdsApi
     /**
      * Operation searchAdInterestsWithHttpInfo
      *
-     * Search targeting interests (deprecated)
+     * Search targeting interests
      *
      * @param  string $q Search query (required)
      * @param  string $account_id Social account ID (required)
@@ -10523,7 +10523,7 @@ class AdsApi
     /**
      * Operation searchAdInterestsAsync
      *
-     * Search targeting interests (deprecated)
+     * Search targeting interests
      *
      * @param  string $q Search query (required)
      * @param  string $account_id Social account ID (required)
@@ -10546,7 +10546,7 @@ class AdsApi
     /**
      * Operation searchAdInterestsAsyncWithHttpInfo
      *
-     * Search targeting interests (deprecated)
+     * Search targeting interests
      *
      * @param  string $q Search query (required)
      * @param  string $account_id Social account ID (required)
@@ -11095,7 +11095,7 @@ class AdsApi
     /**
      * Operation sendConversions
      *
-     * Send conversion events to an ad platform
+     * Send conversion events
      *
      * @param  \Zernio\Model\SendConversionsRequest $send_conversions_request send_conversions_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendConversions'] to see the possible values for this operation
@@ -11113,7 +11113,7 @@ class AdsApi
     /**
      * Operation sendConversionsWithHttpInfo
      *
-     * Send conversion events to an ad platform
+     * Send conversion events
      *
      * @param  \Zernio\Model\SendConversionsRequest $send_conversions_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendConversions'] to see the possible values for this operation
@@ -11212,7 +11212,7 @@ class AdsApi
     /**
      * Operation sendConversionsAsync
      *
-     * Send conversion events to an ad platform
+     * Send conversion events
      *
      * @param  \Zernio\Model\SendConversionsRequest $send_conversions_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendConversions'] to see the possible values for this operation
@@ -11233,7 +11233,7 @@ class AdsApi
     /**
      * Operation sendConversionsAsyncWithHttpInfo
      *
-     * Send conversion events to an ad platform
+     * Send conversion events
      *
      * @param  \Zernio\Model\SendConversionsRequest $send_conversions_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendConversions'] to see the possible values for this operation
@@ -11984,7 +11984,7 @@ class AdsApi
     /**
      * Operation updateAdTrackingTags
      *
-     * Set/update an ad&#39;s click-URL tracking tags
+     * Set ad tracking tags
      *
      * @param  string $ad_id ad_id (required)
      * @param  \Zernio\Model\UpdateAdTrackingTagsRequest $update_ad_tracking_tags_request update_ad_tracking_tags_request (required)
@@ -12002,7 +12002,7 @@ class AdsApi
     /**
      * Operation updateAdTrackingTagsWithHttpInfo
      *
-     * Set/update an ad&#39;s click-URL tracking tags
+     * Set ad tracking tags
      *
      * @param  string $ad_id (required)
      * @param  \Zernio\Model\UpdateAdTrackingTagsRequest $update_ad_tracking_tags_request (required)
@@ -12060,7 +12060,7 @@ class AdsApi
     /**
      * Operation updateAdTrackingTagsAsync
      *
-     * Set/update an ad&#39;s click-URL tracking tags
+     * Set ad tracking tags
      *
      * @param  string $ad_id (required)
      * @param  \Zernio\Model\UpdateAdTrackingTagsRequest $update_ad_tracking_tags_request (required)
@@ -12082,7 +12082,7 @@ class AdsApi
     /**
      * Operation updateAdTrackingTagsAsyncWithHttpInfo
      *
-     * Set/update an ad&#39;s click-URL tracking tags
+     * Set ad tracking tags
      *
      * @param  string $ad_id (required)
      * @param  \Zernio\Model\UpdateAdTrackingTagsRequest $update_ad_tracking_tags_request (required)

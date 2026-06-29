@@ -4763,7 +4763,7 @@ class AnalyticsApi
     /**
      * Operation getLinkedInOrgAggregateAnalytics
      *
-     * Get LinkedIn organization page aggregate analytics
+     * Get LinkedIn org analytics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the LinkedIn organization account. (required)
      * @param  string|null $metrics Comma-separated list. Defaults to \&quot;impressions,clicks,engagement_rate,organic_followers_gained,followers_gained,followers_lost\&quot;.  Share statistics (support both total_value and time_series):   - impressions   - unique_impressions   - clicks   - likes   - comments   - shares   - engagement_rate       (0..1, LinkedIn-computed)  Follower-gain statistics (support total_value and time_series):   - organic_followers_gained   (per-day organic gains for time_series; sum of organic gains over the range for total_value)   - paid_followers_gained      (per-day paid gains for time_series; sum of paid gains over the range for total_value)  Page-view statistics (total_value ONLY - LinkedIn platform limit):   - page_views_total   - page_views_overview   - page_views_careers   - page_views_jobs   - page_views_life  Zernio-synthesized from daily follower snapshots:   - followers_gained   - followers_lost (optional)
@@ -4785,7 +4785,7 @@ class AnalyticsApi
     /**
      * Operation getLinkedInOrgAggregateAnalyticsWithHttpInfo
      *
-     * Get LinkedIn organization page aggregate analytics
+     * Get LinkedIn org analytics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the LinkedIn organization account. (required)
      * @param  string|null $metrics Comma-separated list. Defaults to \&quot;impressions,clicks,engagement_rate,organic_followers_gained,followers_gained,followers_lost\&quot;.  Share statistics (support both total_value and time_series):   - impressions   - unique_impressions   - clicks   - likes   - comments   - shares   - engagement_rate       (0..1, LinkedIn-computed)  Follower-gain statistics (support total_value and time_series):   - organic_followers_gained   (per-day organic gains for time_series; sum of organic gains over the range for total_value)   - paid_followers_gained      (per-day paid gains for time_series; sum of paid gains over the range for total_value)  Page-view statistics (total_value ONLY - LinkedIn platform limit):   - page_views_total   - page_views_overview   - page_views_careers   - page_views_jobs   - page_views_life  Zernio-synthesized from daily follower snapshots:   - followers_gained   - followers_lost (optional)
@@ -4888,7 +4888,7 @@ class AnalyticsApi
     /**
      * Operation getLinkedInOrgAggregateAnalyticsAsync
      *
-     * Get LinkedIn organization page aggregate analytics
+     * Get LinkedIn org analytics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the LinkedIn organization account. (required)
      * @param  string|null $metrics Comma-separated list. Defaults to \&quot;impressions,clicks,engagement_rate,organic_followers_gained,followers_gained,followers_lost\&quot;.  Share statistics (support both total_value and time_series):   - impressions   - unique_impressions   - clicks   - likes   - comments   - shares   - engagement_rate       (0..1, LinkedIn-computed)  Follower-gain statistics (support total_value and time_series):   - organic_followers_gained   (per-day organic gains for time_series; sum of organic gains over the range for total_value)   - paid_followers_gained      (per-day paid gains for time_series; sum of paid gains over the range for total_value)  Page-view statistics (total_value ONLY - LinkedIn platform limit):   - page_views_total   - page_views_overview   - page_views_careers   - page_views_jobs   - page_views_life  Zernio-synthesized from daily follower snapshots:   - followers_gained   - followers_lost (optional)
@@ -4913,7 +4913,7 @@ class AnalyticsApi
     /**
      * Operation getLinkedInOrgAggregateAnalyticsAsyncWithHttpInfo
      *
-     * Get LinkedIn organization page aggregate analytics
+     * Get LinkedIn org analytics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the LinkedIn organization account. (required)
      * @param  string|null $metrics Comma-separated list. Defaults to \&quot;impressions,clicks,engagement_rate,organic_followers_gained,followers_gained,followers_lost\&quot;.  Share statistics (support both total_value and time_series):   - impressions   - unique_impressions   - clicks   - likes   - comments   - shares   - engagement_rate       (0..1, LinkedIn-computed)  Follower-gain statistics (support total_value and time_series):   - organic_followers_gained   (per-day organic gains for time_series; sum of organic gains over the range for total_value)   - paid_followers_gained      (per-day paid gains for time_series; sum of paid gains over the range for total_value)  Page-view statistics (total_value ONLY - LinkedIn platform limit):   - page_views_total   - page_views_overview   - page_views_careers   - page_views_jobs   - page_views_life  Zernio-synthesized from daily follower snapshots:   - followers_gained   - followers_lost (optional)
@@ -6876,7 +6876,7 @@ class AnalyticsApi
     /**
      * Operation getYouTubeChannelInsights
      *
-     * Get YouTube channel-level insights
+     * Get YouTube channel insights
      *
      * @param  string $account_id The Zernio SocialAccount ID for the YouTube account. (required)
      * @param  string|null $metrics Comma-separated list. Defaults to \&quot;views,estimatedMinutesWatched,subscribersGained,subscribersLost\&quot;.  Live YouTube Analytics v2 metrics:   - views   - estimatedMinutesWatched   - averageViewDuration          (ratio - weighted mean computed across days)   - subscribersGained   - subscribersLost  Zernio-synthesized from daily follower snapshots (cross-platform parity):   - followers_gained   - followers_lost (optional)
@@ -6898,7 +6898,7 @@ class AnalyticsApi
     /**
      * Operation getYouTubeChannelInsightsWithHttpInfo
      *
-     * Get YouTube channel-level insights
+     * Get YouTube channel insights
      *
      * @param  string $account_id The Zernio SocialAccount ID for the YouTube account. (required)
      * @param  string|null $metrics Comma-separated list. Defaults to \&quot;views,estimatedMinutesWatched,subscribersGained,subscribersLost\&quot;.  Live YouTube Analytics v2 metrics:   - views   - estimatedMinutesWatched   - averageViewDuration          (ratio - weighted mean computed across days)   - subscribersGained   - subscribersLost  Zernio-synthesized from daily follower snapshots (cross-platform parity):   - followers_gained   - followers_lost (optional)
@@ -7015,7 +7015,7 @@ class AnalyticsApi
     /**
      * Operation getYouTubeChannelInsightsAsync
      *
-     * Get YouTube channel-level insights
+     * Get YouTube channel insights
      *
      * @param  string $account_id The Zernio SocialAccount ID for the YouTube account. (required)
      * @param  string|null $metrics Comma-separated list. Defaults to \&quot;views,estimatedMinutesWatched,subscribersGained,subscribersLost\&quot;.  Live YouTube Analytics v2 metrics:   - views   - estimatedMinutesWatched   - averageViewDuration          (ratio - weighted mean computed across days)   - subscribersGained   - subscribersLost  Zernio-synthesized from daily follower snapshots (cross-platform parity):   - followers_gained   - followers_lost (optional)
@@ -7040,7 +7040,7 @@ class AnalyticsApi
     /**
      * Operation getYouTubeChannelInsightsAsyncWithHttpInfo
      *
-     * Get YouTube channel-level insights
+     * Get YouTube channel insights
      *
      * @param  string $account_id The Zernio SocialAccount ID for the YouTube account. (required)
      * @param  string|null $metrics Comma-separated list. Defaults to \&quot;views,estimatedMinutesWatched,subscribersGained,subscribersLost\&quot;.  Live YouTube Analytics v2 metrics:   - views   - estimatedMinutesWatched   - averageViewDuration          (ratio - weighted mean computed across days)   - subscribersGained   - subscribersLost  Zernio-synthesized from daily follower snapshots (cross-platform parity):   - followers_gained   - followers_lost (optional)

@@ -518,7 +518,7 @@ class ConnectApi
     /**
      * Operation completeWhatsAppPhoneSelection
      *
-     * Complete WhatsApp phone number selection
+     * Complete number selection
      *
      * @param  \Zernio\Model\CompleteWhatsAppPhoneSelectionRequest $complete_whats_app_phone_selection_request complete_whats_app_phone_selection_request (required)
      * @param  string|null $x_connect_token Alternative auth for API users&#39; end customers (optional)
@@ -537,7 +537,7 @@ class ConnectApi
     /**
      * Operation completeWhatsAppPhoneSelectionWithHttpInfo
      *
-     * Complete WhatsApp phone number selection
+     * Complete number selection
      *
      * @param  \Zernio\Model\CompleteWhatsAppPhoneSelectionRequest $complete_whats_app_phone_selection_request (required)
      * @param  string|null $x_connect_token Alternative auth for API users&#39; end customers (optional)
@@ -679,7 +679,7 @@ class ConnectApi
     /**
      * Operation completeWhatsAppPhoneSelectionAsync
      *
-     * Complete WhatsApp phone number selection
+     * Complete number selection
      *
      * @param  \Zernio\Model\CompleteWhatsAppPhoneSelectionRequest $complete_whats_app_phone_selection_request (required)
      * @param  string|null $x_connect_token Alternative auth for API users&#39; end customers (optional)
@@ -701,7 +701,7 @@ class ConnectApi
     /**
      * Operation completeWhatsAppPhoneSelectionAsyncWithHttpInfo
      *
-     * Complete WhatsApp phone number selection
+     * Complete number selection
      *
      * @param  \Zernio\Model\CompleteWhatsAppPhoneSelectionRequest $complete_whats_app_phone_selection_request (required)
      * @param  string|null $x_connect_token Alternative auth for API users&#39; end customers (optional)
@@ -855,7 +855,7 @@ class ConnectApi
     /**
      * Operation configureTikTokAdsBrandIdentity
      *
-     * Configure TikTok Ads Brand Identity
+     * Set TikTok brand identity
      *
      * @param  \Zernio\Model\ConfigureTikTokAdsBrandIdentityRequest $configure_tik_tok_ads_brand_identity_request configure_tik_tok_ads_brand_identity_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configureTikTokAdsBrandIdentity'] to see the possible values for this operation
@@ -873,7 +873,7 @@ class ConnectApi
     /**
      * Operation configureTikTokAdsBrandIdentityWithHttpInfo
      *
-     * Configure TikTok Ads Brand Identity
+     * Set TikTok brand identity
      *
      * @param  \Zernio\Model\ConfigureTikTokAdsBrandIdentityRequest $configure_tik_tok_ads_brand_identity_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configureTikTokAdsBrandIdentity'] to see the possible values for this operation
@@ -972,7 +972,7 @@ class ConnectApi
     /**
      * Operation configureTikTokAdsBrandIdentityAsync
      *
-     * Configure TikTok Ads Brand Identity
+     * Set TikTok brand identity
      *
      * @param  \Zernio\Model\ConfigureTikTokAdsBrandIdentityRequest $configure_tik_tok_ads_brand_identity_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configureTikTokAdsBrandIdentity'] to see the possible values for this operation
@@ -993,7 +993,7 @@ class ConnectApi
     /**
      * Operation configureTikTokAdsBrandIdentityAsyncWithHttpInfo
      *
-     * Configure TikTok Ads Brand Identity
+     * Set TikTok brand identity
      *
      * @param  \Zernio\Model\ConfigureTikTokAdsBrandIdentityRequest $configure_tik_tok_ads_brand_identity_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configureTikTokAdsBrandIdentity'] to see the possible values for this operation
@@ -7262,7 +7262,7 @@ class ConnectApi
     /**
      * Operation listWhatsAppPhoneNumbers
      *
-     * List WhatsApp phone numbers for selection
+     * List numbers for selection
      *
      * @param  string $profile_id The Zernio profile ID from the headless redirect (required)
      * @param  string $temp_token The temporary access token from the headless redirect (required)
@@ -7282,7 +7282,7 @@ class ConnectApi
     /**
      * Operation listWhatsAppPhoneNumbersWithHttpInfo
      *
-     * List WhatsApp phone numbers for selection
+     * List numbers for selection
      *
      * @param  string $profile_id The Zernio profile ID from the headless redirect (required)
      * @param  string $temp_token The temporary access token from the headless redirect (required)
@@ -7411,7 +7411,7 @@ class ConnectApi
     /**
      * Operation listWhatsAppPhoneNumbersAsync
      *
-     * List WhatsApp phone numbers for selection
+     * List numbers for selection
      *
      * @param  string $profile_id The Zernio profile ID from the headless redirect (required)
      * @param  string $temp_token The temporary access token from the headless redirect (required)
@@ -7434,7 +7434,7 @@ class ConnectApi
     /**
      * Operation listWhatsAppPhoneNumbersAsyncWithHttpInfo
      *
-     * List WhatsApp phone numbers for selection
+     * List numbers for selection
      *
      * @param  string $profile_id The Zernio profile ID from the headless redirect (required)
      * @param  string $temp_token The temporary access token from the headless redirect (required)
