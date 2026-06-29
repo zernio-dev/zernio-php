@@ -68,6 +68,8 @@ class PlatformTarget implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_post_id' => 'string',
         'platform_post_url' => 'string',
         'published_at' => '\DateTime',
+        'is_trial_reel' => 'bool',
+        'trial_graduation_strategy' => 'string',
         'error_message' => 'string',
         'error_category' => 'string',
         'error_source' => 'string'
@@ -91,6 +93,8 @@ class PlatformTarget implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_post_id' => null,
         'platform_post_url' => 'uri',
         'published_at' => 'date-time',
+        'is_trial_reel' => null,
+        'trial_graduation_strategy' => null,
         'error_message' => null,
         'error_category' => null,
         'error_source' => null
@@ -112,6 +116,8 @@ class PlatformTarget implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_post_id' => false,
         'platform_post_url' => false,
         'published_at' => false,
+        'is_trial_reel' => false,
+        'trial_graduation_strategy' => false,
         'error_message' => false,
         'error_category' => false,
         'error_source' => false
@@ -213,6 +219,8 @@ class PlatformTarget implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_post_id' => 'platformPostId',
         'platform_post_url' => 'platformPostUrl',
         'published_at' => 'publishedAt',
+        'is_trial_reel' => 'isTrialReel',
+        'trial_graduation_strategy' => 'trialGraduationStrategy',
         'error_message' => 'errorMessage',
         'error_category' => 'errorCategory',
         'error_source' => 'errorSource'
@@ -234,6 +242,8 @@ class PlatformTarget implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_post_id' => 'setPlatformPostId',
         'platform_post_url' => 'setPlatformPostUrl',
         'published_at' => 'setPublishedAt',
+        'is_trial_reel' => 'setIsTrialReel',
+        'trial_graduation_strategy' => 'setTrialGraduationStrategy',
         'error_message' => 'setErrorMessage',
         'error_category' => 'setErrorCategory',
         'error_source' => 'setErrorSource'
@@ -255,6 +265,8 @@ class PlatformTarget implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_post_id' => 'getPlatformPostId',
         'platform_post_url' => 'getPlatformPostUrl',
         'published_at' => 'getPublishedAt',
+        'is_trial_reel' => 'getIsTrialReel',
+        'trial_graduation_strategy' => 'getTrialGraduationStrategy',
         'error_message' => 'getErrorMessage',
         'error_category' => 'getErrorCategory',
         'error_source' => 'getErrorSource'
@@ -301,6 +313,8 @@ class PlatformTarget implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const TRIAL_GRADUATION_STRATEGY_MANUAL = 'MANUAL';
+    public const TRIAL_GRADUATION_STRATEGY_SS_PERFORMANCE = 'SS_PERFORMANCE';
     public const ERROR_CATEGORY_AUTH_EXPIRED = 'auth_expired';
     public const ERROR_CATEGORY_USER_CONTENT = 'user_content';
     public const ERROR_CATEGORY_USER_ABUSE = 'user_abuse';
@@ -312,6 +326,19 @@ class PlatformTarget implements ModelInterface, ArrayAccess, \JsonSerializable
     public const ERROR_SOURCE_USER = 'user';
     public const ERROR_SOURCE_PLATFORM = 'platform';
     public const ERROR_SOURCE_SYSTEM = 'system';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTrialGraduationStrategyAllowableValues()
+    {
+        return [
+            self::TRIAL_GRADUATION_STRATEGY_MANUAL,
+            self::TRIAL_GRADUATION_STRATEGY_SS_PERFORMANCE,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -371,6 +398,8 @@ class PlatformTarget implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('platform_post_id', $data ?? [], null);
         $this->setIfExists('platform_post_url', $data ?? [], null);
         $this->setIfExists('published_at', $data ?? [], null);
+        $this->setIfExists('is_trial_reel', $data ?? [], null);
+        $this->setIfExists('trial_graduation_strategy', $data ?? [], null);
         $this->setIfExists('error_message', $data ?? [], null);
         $this->setIfExists('error_category', $data ?? [], null);
         $this->setIfExists('error_source', $data ?? [], null);
@@ -402,6 +431,15 @@ class PlatformTarget implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getTrialGraduationStrategyAllowableValues();
+        if (!is_null($this->container['trial_graduation_strategy']) && !in_array($this->container['trial_graduation_strategy'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'trial_graduation_strategy', must be one of '%s'",
+                $this->container['trial_graduation_strategy'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         $allowedValues = $this->getErrorCategoryAllowableValues();
         if (!is_null($this->container['error_category']) && !in_array($this->container['error_category'], $allowedValues, true)) {
@@ -702,6 +740,70 @@ class PlatformTarget implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable published_at cannot be null');
         }
         $this->container['published_at'] = $published_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_trial_reel
+     *
+     * @return bool|null
+     */
+    public function getIsTrialReel()
+    {
+        return $this->container['is_trial_reel'];
+    }
+
+    /**
+     * Sets is_trial_reel
+     *
+     * @param bool|null $is_trial_reel Present and true only when this Instagram reel was launched as a Trial through Zernio (created with platformSpecificData.trialParams). Use it to segment trial reels in analytics. Note: Instagram's Graph API exposes no readable trial field, so this reflects creation-time intent only. It indicates the reel STARTED as a trial, not whether or when it graduated.
+     *
+     * @return self
+     */
+    public function setIsTrialReel($is_trial_reel)
+    {
+        if (is_null($is_trial_reel)) {
+            throw new \InvalidArgumentException('non-nullable is_trial_reel cannot be null');
+        }
+        $this->container['is_trial_reel'] = $is_trial_reel;
+
+        return $this;
+    }
+
+    /**
+     * Gets trial_graduation_strategy
+     *
+     * @return string|null
+     */
+    public function getTrialGraduationStrategy()
+    {
+        return $this->container['trial_graduation_strategy'];
+    }
+
+    /**
+     * Sets trial_graduation_strategy
+     *
+     * @param string|null $trial_graduation_strategy Graduation strategy the trial reel was launched with. Present only when isTrialReel is true.
+     *
+     * @return self
+     */
+    public function setTrialGraduationStrategy($trial_graduation_strategy)
+    {
+        if (is_null($trial_graduation_strategy)) {
+            throw new \InvalidArgumentException('non-nullable trial_graduation_strategy cannot be null');
+        }
+        $allowedValues = $this->getTrialGraduationStrategyAllowableValues();
+        if (!in_array($trial_graduation_strategy, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'trial_graduation_strategy', must be one of '%s'",
+                    $trial_graduation_strategy,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['trial_graduation_strategy'] = $trial_graduation_strategy;
 
         return $this;
     }
