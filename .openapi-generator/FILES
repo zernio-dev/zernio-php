@@ -32,6 +32,7 @@ docs/Api/InvitesApi.md
 docs/Api/LinkedInMentionsApi.md
 docs/Api/LogsApi.md
 docs/Api/MediaApi.md
+docs/Api/MentionsApi.md
 docs/Api/MessagesApi.md
 docs/Api/PostsApi.md
 docs/Api/ProfilesApi.md
@@ -716,6 +717,10 @@ docs/Model/ListInboxConversations200ResponseDataInnerInstagramProfile.md
 docs/Model/ListInboxConversations200ResponseMeta.md
 docs/Model/ListInboxConversations200ResponseMetaFailedAccountsInner.md
 docs/Model/ListInboxConversations200ResponsePagination.md
+docs/Model/ListInboxMentions200Response.md
+docs/Model/ListInboxMentions200ResponseDataInner.md
+docs/Model/ListInboxMentions200ResponseMeta.md
+docs/Model/ListInboxMentions200ResponsePagination.md
 docs/Model/ListInboxReviews200Response.md
 docs/Model/ListInboxReviews200ResponseDataInner.md
 docs/Model/ListInboxReviews200ResponseDataInnerReply.md
@@ -1272,6 +1277,7 @@ lib/Api/InvitesApi.php
 lib/Api/LinkedInMentionsApi.php
 lib/Api/LogsApi.php
 lib/Api/MediaApi.php
+lib/Api/MentionsApi.php
 lib/Api/MessagesApi.php
 lib/Api/PostsApi.php
 lib/Api/ProfilesApi.php
@@ -1960,6 +1966,10 @@ lib/Model/ListInboxConversations200ResponseDataInnerInstagramProfile.php
 lib/Model/ListInboxConversations200ResponseMeta.php
 lib/Model/ListInboxConversations200ResponseMetaFailedAccountsInner.php
 lib/Model/ListInboxConversations200ResponsePagination.php
+lib/Model/ListInboxMentions200Response.php
+lib/Model/ListInboxMentions200ResponseDataInner.php
+lib/Model/ListInboxMentions200ResponseMeta.php
+lib/Model/ListInboxMentions200ResponsePagination.php
 lib/Model/ListInboxReviews200Response.php
 lib/Model/ListInboxReviews200ResponseDataInner.php
 lib/Model/ListInboxReviews200ResponseDataInnerReply.php
@@ -2489,8 +2499,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AdDailyMetricsTest.php
-test/Model/GetCampaignAnalytics200ResponseAnalyticsDailyInnerTest.php
-test/Model/GetCampaignAnalytics200ResponseAnalyticsTest.php
-test/Model/GetCampaignAnalytics200ResponseCampaignTest.php
-test/Model/GetCampaignAnalytics200ResponseTest.php
+test/Api/MentionsApiTest.php
+test/Model/ListInboxMentions200ResponseDataInnerTest.php
+test/Model/ListInboxMentions200ResponseMetaTest.php
+test/Model/ListInboxMentions200ResponsePaginationTest.php
+test/Model/ListInboxMentions200ResponseTest.php
