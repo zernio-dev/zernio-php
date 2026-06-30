@@ -81,7 +81,7 @@ deleteProfile($profile_id): \Zernio\Model\ProfileDeleteResponse
 
 Delete profile
 
-Permanently deletes a profile by ID.
+Permanently deletes a profile. Active connected accounts block deletion (returns 400) - disconnect them first. Any remaining disconnected accounts and provisioned WhatsApp numbers are moved to another of your profiles (a new one is created only if needed), never deleted.
 
 ### Example
 

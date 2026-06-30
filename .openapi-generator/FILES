@@ -2507,8 +2507,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/DeleteWhatsappBusinessUsernameRequestTest.php
-test/Model/GetWhatsappBusinessUsername200ResponseTest.php
-test/Model/GetWhatsappBusinessUsernameSuggestions200ResponseTest.php
-test/Model/SetWhatsappBusinessUsername200ResponseTest.php
-test/Model/SetWhatsappBusinessUsernameRequestTest.php
