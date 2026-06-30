@@ -31,5 +31,6 @@ Name | Type | Description | Notes
 **roas_average_floor** | **float** | Representative ROAS floor for the campaign — bubbled up from the top-spending ad set. Decimal multiplier (2.0 &#x3D; 2.0x). | [optional]
 **promoted_object** | [**\Zernio\Model\AdTreeCampaignPromotedObject**](AdTreeCampaignPromotedObject.md) |  | [optional]
 **ad_sets** | [**\Zernio\Model\AdTreeAdSet[]**](AdTreeAdSet.md) |  | [optional]
+**daily** | [**\Zernio\Model\AdDailyMetrics[]**](AdDailyMetrics.md) | Per-day metric series for this campaign. Present only when &#x60;GET /v1/ads/tree&#x60; is called with &#x60;timeIncrement&#x3D;1&#x60; (any &#x60;dailyLevel&#x60;). This is the per-campaign daily trend — summing its additive fields reproduces the campaign &#x60;metrics&#x60; total. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

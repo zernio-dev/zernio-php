@@ -85,7 +85,8 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_amount' => 'float',
         'roas_average_floor' => 'float',
         'promoted_object' => '\Zernio\Model\AdTreeCampaignPromotedObject',
-        'ad_sets' => '\Zernio\Model\AdTreeAdSet[]'
+        'ad_sets' => '\Zernio\Model\AdTreeAdSet[]',
+        'daily' => '\Zernio\Model\AdDailyMetrics[]'
     ];
 
     /**
@@ -122,7 +123,8 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_amount' => null,
         'roas_average_floor' => null,
         'promoted_object' => null,
-        'ad_sets' => null
+        'ad_sets' => null,
+        'daily' => null
     ];
 
     /**
@@ -157,7 +159,8 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_amount' => true,
         'roas_average_floor' => true,
         'promoted_object' => false,
-        'ad_sets' => false
+        'ad_sets' => false,
+        'daily' => false
     ];
 
     /**
@@ -272,7 +275,8 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_amount' => 'bidAmount',
         'roas_average_floor' => 'roasAverageFloor',
         'promoted_object' => 'promotedObject',
-        'ad_sets' => 'adSets'
+        'ad_sets' => 'adSets',
+        'daily' => 'daily'
     ];
 
     /**
@@ -307,7 +311,8 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_amount' => 'setBidAmount',
         'roas_average_floor' => 'setRoasAverageFloor',
         'promoted_object' => 'setPromotedObject',
-        'ad_sets' => 'setAdSets'
+        'ad_sets' => 'setAdSets',
+        'daily' => 'setDaily'
     ];
 
     /**
@@ -342,7 +347,8 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_amount' => 'getBidAmount',
         'roas_average_floor' => 'getRoasAverageFloor',
         'promoted_object' => 'getPromotedObject',
-        'ad_sets' => 'getAdSets'
+        'ad_sets' => 'getAdSets',
+        'daily' => 'getDaily'
     ];
 
     /**
@@ -488,6 +494,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('roas_average_floor', $data ?? [], null);
         $this->setIfExists('promoted_object', $data ?? [], null);
         $this->setIfExists('ad_sets', $data ?? [], null);
+        $this->setIfExists('daily', $data ?? [], null);
     }
 
     /**
@@ -1398,6 +1405,33 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable ad_sets cannot be null');
         }
         $this->container['ad_sets'] = $ad_sets;
+
+        return $this;
+    }
+
+    /**
+     * Gets daily
+     *
+     * @return \Zernio\Model\AdDailyMetrics[]|null
+     */
+    public function getDaily()
+    {
+        return $this->container['daily'];
+    }
+
+    /**
+     * Sets daily
+     *
+     * @param \Zernio\Model\AdDailyMetrics[]|null $daily Per-day metric series for this campaign. Present only when `GET /v1/ads/tree` is called with `timeIncrement=1` (any `dailyLevel`). This is the per-campaign daily trend — summing its additive fields reproduces the campaign `metrics` total.
+     *
+     * @return self
+     */
+    public function setDaily($daily)
+    {
+        if (is_null($daily)) {
+            throw new \InvalidArgumentException('non-nullable daily cannot be null');
+        }
+        $this->container['daily'] = $daily;
 
         return $this;
     }

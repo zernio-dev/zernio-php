@@ -123,6 +123,9 @@ class AdsApi
         'getAdTrackingTags' => [
             'application/json',
         ],
+        'getCampaignAnalytics' => [
+            'application/json',
+        ],
         'getConversionDestination' => [
             'application/json',
         ],
@@ -5004,6 +5007,366 @@ class AdsApi
             $resourcePath = str_replace(
                 '{' . 'adId' . '}',
                 ObjectSerializer::toPathValue($ad_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getCampaignAnalytics
+     *
+     * Get campaign analytics
+     *
+     * @param  string $campaign_id Platform campaign id (platformCampaignId). (required)
+     * @param  string|null $platform Disambiguate when the campaign id exists across platforms (e.g. facebook, instagram). (optional)
+     * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
+     * @param  string|null $breakdowns Comma-separated breakdown dimensions (Meta only): age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignAnalytics'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetCampaignAnalytics200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     */
+    public function getCampaignAnalytics($campaign_id, $platform = null, $from_date = null, $to_date = null, $breakdowns = null, string $contentType = self::contentTypes['getCampaignAnalytics'][0])
+    {
+        list($response) = $this->getCampaignAnalyticsWithHttpInfo($campaign_id, $platform, $from_date, $to_date, $breakdowns, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getCampaignAnalyticsWithHttpInfo
+     *
+     * Get campaign analytics
+     *
+     * @param  string $campaign_id Platform campaign id (platformCampaignId). (required)
+     * @param  string|null $platform Disambiguate when the campaign id exists across platforms (e.g. facebook, instagram). (optional)
+     * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
+     * @param  string|null $breakdowns Comma-separated breakdown dimensions (Meta only): age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignAnalytics'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetCampaignAnalytics200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCampaignAnalyticsWithHttpInfo($campaign_id, $platform = null, $from_date = null, $to_date = null, $breakdowns = null, string $contentType = self::contentTypes['getCampaignAnalytics'][0])
+    {
+        $request = $this->getCampaignAnalyticsRequest($campaign_id, $platform, $from_date, $to_date, $breakdowns, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetCampaignAnalytics200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetCampaignAnalytics200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetCampaignAnalytics200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getCampaignAnalyticsAsync
+     *
+     * Get campaign analytics
+     *
+     * @param  string $campaign_id Platform campaign id (platformCampaignId). (required)
+     * @param  string|null $platform Disambiguate when the campaign id exists across platforms (e.g. facebook, instagram). (optional)
+     * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
+     * @param  string|null $breakdowns Comma-separated breakdown dimensions (Meta only): age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignAnalytics'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCampaignAnalyticsAsync($campaign_id, $platform = null, $from_date = null, $to_date = null, $breakdowns = null, string $contentType = self::contentTypes['getCampaignAnalytics'][0])
+    {
+        return $this->getCampaignAnalyticsAsyncWithHttpInfo($campaign_id, $platform, $from_date, $to_date, $breakdowns, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getCampaignAnalyticsAsyncWithHttpInfo
+     *
+     * Get campaign analytics
+     *
+     * @param  string $campaign_id Platform campaign id (platformCampaignId). (required)
+     * @param  string|null $platform Disambiguate when the campaign id exists across platforms (e.g. facebook, instagram). (optional)
+     * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
+     * @param  string|null $breakdowns Comma-separated breakdown dimensions (Meta only): age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignAnalytics'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCampaignAnalyticsAsyncWithHttpInfo($campaign_id, $platform = null, $from_date = null, $to_date = null, $breakdowns = null, string $contentType = self::contentTypes['getCampaignAnalytics'][0])
+    {
+        $returnType = '\Zernio\Model\GetCampaignAnalytics200Response';
+        $request = $this->getCampaignAnalyticsRequest($campaign_id, $platform, $from_date, $to_date, $breakdowns, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getCampaignAnalytics'
+     *
+     * @param  string $campaign_id Platform campaign id (platformCampaignId). (required)
+     * @param  string|null $platform Disambiguate when the campaign id exists across platforms (e.g. facebook, instagram). (optional)
+     * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
+     * @param  string|null $breakdowns Comma-separated breakdown dimensions (Meta only): age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignAnalytics'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getCampaignAnalyticsRequest($campaign_id, $platform = null, $from_date = null, $to_date = null, $breakdowns = null, string $contentType = self::contentTypes['getCampaignAnalytics'][0])
+    {
+
+        // verify the required parameter 'campaign_id' is set
+        if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaign_id when calling getCampaignAnalytics'
+            );
+        }
+
+
+
+
+
+
+        $resourcePath = '/v1/ads/campaigns/{campaignId}/analytics';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $platform,
+            'platform', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from_date,
+            'fromDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to_date,
+            'toDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $breakdowns,
+            'breakdowns', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($campaign_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'campaignId' . '}',
+                ObjectSerializer::toPathValue($campaign_id),
                 $resourcePath
             );
         }

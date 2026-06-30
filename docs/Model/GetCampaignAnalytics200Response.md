@@ -1,10 +1,10 @@
-# # GetAdAnalytics200Response
+# # GetCampaignAnalytics200Response
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ad** | [**\Zernio\Model\GetAdAnalytics200ResponseAd**](GetAdAnalytics200ResponseAd.md) |  | [optional]
+**campaign** | [**\Zernio\Model\GetCampaignAnalytics200ResponseCampaign**](GetCampaignAnalytics200ResponseCampaign.md) |  | [optional]
 **analytics** | [**\Zernio\Model\GetCampaignAnalytics200ResponseAnalytics**](GetCampaignAnalytics200ResponseAnalytics.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

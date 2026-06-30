@@ -1,6 +1,6 @@
 <?php
 /**
- * GetAdAnalytics200Response
+ * GetCampaignAnalytics200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetAdAnalytics200Response Class Doc Comment
+ * GetCampaignAnalytics200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetCampaignAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getAdAnalytics_200_response';
+    protected static $openAPIModelName = 'getCampaignAnalytics_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'ad' => '\Zernio\Model\GetAdAnalytics200ResponseAd',
+        'campaign' => '\Zernio\Model\GetCampaignAnalytics200ResponseCampaign',
         'analytics' => '\Zernio\Model\GetCampaignAnalytics200ResponseAnalytics'
     ];
 
@@ -70,7 +70,7 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'ad' => null,
+        'campaign' => null,
         'analytics' => null
     ];
 
@@ -80,7 +80,7 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ad' => false,
+        'campaign' => false,
         'analytics' => false
     ];
 
@@ -170,7 +170,7 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'ad' => 'ad',
+        'campaign' => 'campaign',
         'analytics' => 'analytics'
     ];
 
@@ -180,7 +180,7 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'ad' => 'setAd',
+        'campaign' => 'setCampaign',
         'analytics' => 'setAnalytics'
     ];
 
@@ -190,7 +190,7 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'ad' => 'getAd',
+        'campaign' => 'getCampaign',
         'analytics' => 'getAnalytics'
     ];
 
@@ -251,7 +251,7 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('ad', $data ?? [], null);
+        $this->setIfExists('campaign', $data ?? [], null);
         $this->setIfExists('analytics', $data ?? [], null);
     }
 
@@ -298,28 +298,28 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets ad
+     * Gets campaign
      *
-     * @return \Zernio\Model\GetAdAnalytics200ResponseAd|null
+     * @return \Zernio\Model\GetCampaignAnalytics200ResponseCampaign|null
      */
-    public function getAd()
+    public function getCampaign()
     {
-        return $this->container['ad'];
+        return $this->container['campaign'];
     }
 
     /**
-     * Sets ad
+     * Sets campaign
      *
-     * @param \Zernio\Model\GetAdAnalytics200ResponseAd|null $ad ad
+     * @param \Zernio\Model\GetCampaignAnalytics200ResponseCampaign|null $campaign campaign
      *
      * @return self
      */
-    public function setAd($ad)
+    public function setCampaign($campaign)
     {
-        if (is_null($ad)) {
-            throw new \InvalidArgumentException('non-nullable ad cannot be null');
+        if (is_null($campaign)) {
+            throw new \InvalidArgumentException('non-nullable campaign cannot be null');
         }
-        $this->container['ad'] = $ad;
+        $this->container['campaign'] = $campaign;
 
         return $this;
     }

@@ -71,7 +71,8 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_amount' => 'float',
         'roas_average_floor' => 'float',
         'promoted_object' => '\Zernio\Model\AdTreeAdSetPromotedObject',
-        'ads' => '\Zernio\Model\Ad[]'
+        'ads' => '\Zernio\Model\Ad[]',
+        'daily' => '\Zernio\Model\AdDailyMetrics[]'
     ];
 
     /**
@@ -94,7 +95,8 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_amount' => null,
         'roas_average_floor' => null,
         'promoted_object' => null,
-        'ads' => null
+        'ads' => null,
+        'daily' => null
     ];
 
     /**
@@ -115,7 +117,8 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_amount' => true,
         'roas_average_floor' => true,
         'promoted_object' => false,
-        'ads' => false
+        'ads' => false,
+        'daily' => false
     ];
 
     /**
@@ -216,7 +219,8 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_amount' => 'bidAmount',
         'roas_average_floor' => 'roasAverageFloor',
         'promoted_object' => 'promotedObject',
-        'ads' => 'ads'
+        'ads' => 'ads',
+        'daily' => 'daily'
     ];
 
     /**
@@ -237,7 +241,8 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_amount' => 'setBidAmount',
         'roas_average_floor' => 'setRoasAverageFloor',
         'promoted_object' => 'setPromotedObject',
-        'ads' => 'setAds'
+        'ads' => 'setAds',
+        'daily' => 'setDaily'
     ];
 
     /**
@@ -258,7 +263,8 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_amount' => 'getBidAmount',
         'roas_average_floor' => 'getRoasAverageFloor',
         'promoted_object' => 'getPromotedObject',
-        'ads' => 'getAds'
+        'ads' => 'getAds',
+        'daily' => 'getDaily'
     ];
 
     /**
@@ -331,6 +337,7 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('roas_average_floor', $data ?? [], null);
         $this->setIfExists('promoted_object', $data ?? [], null);
         $this->setIfExists('ads', $data ?? [], null);
+        $this->setIfExists('daily', $data ?? [], null);
     }
 
     /**
@@ -740,7 +747,7 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ads
      *
-     * @param \Zernio\Model\Ad[]|null $ads Individual ads within this ad set (capped at 100). Returns a subset of Ad fields from the aggregation (core fields like _id, name, platform, status, budget, metrics, creative, goal are included; targeting and schedule may be absent).
+     * @param \Zernio\Model\Ad[]|null $ads Individual ads within this ad set (capped at 100). Returns a subset of Ad fields from the aggregation (core fields like _id, name, platform, status, budget, metrics, creative, goal are included; targeting and schedule may be absent). When `timeIncrement=1&dailyLevel=ad`, each entry also carries a `daily[]` array of `AdDailyMetrics`.
      *
      * @return self
      */
@@ -750,6 +757,33 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable ads cannot be null');
         }
         $this->container['ads'] = $ads;
+
+        return $this;
+    }
+
+    /**
+     * Gets daily
+     *
+     * @return \Zernio\Model\AdDailyMetrics[]|null
+     */
+    public function getDaily()
+    {
+        return $this->container['daily'];
+    }
+
+    /**
+     * Sets daily
+     *
+     * @param \Zernio\Model\AdDailyMetrics[]|null $daily Per-day metric series for this ad set. Present only when `GET /v1/ads/tree` is called with `timeIncrement=1` and `dailyLevel` is `adset` or `ad`.
+     *
+     * @return self
+     */
+    public function setDaily($daily)
+    {
+        if (is_null($daily)) {
+            throw new \InvalidArgumentException('non-nullable daily cannot be null');
+        }
+        $this->container['daily'] = $daily;
 
         return $this;
     }

@@ -65,6 +65,7 @@ docs/Model/AdCampaign.md
 docs/Model/AdCampaignBudget.md
 docs/Model/AdCampaignCampaignBudget.md
 docs/Model/AdCreative.md
+docs/Model/AdDailyMetrics.md
 docs/Model/AdMetrics.md
 docs/Model/AdPromotedObject.md
 docs/Model/AdSchedule.md
@@ -351,8 +352,6 @@ docs/Model/GetAccountHealth200ResponseTokenStatus.md
 docs/Model/GetAd200Response.md
 docs/Model/GetAdAnalytics200Response.md
 docs/Model/GetAdAnalytics200ResponseAd.md
-docs/Model/GetAdAnalytics200ResponseAnalytics.md
-docs/Model/GetAdAnalytics200ResponseAnalyticsDailyInner.md
 docs/Model/GetAdAudience200Response.md
 docs/Model/GetAdComments200Response.md
 docs/Model/GetAdComments200ResponseMeta.md
@@ -374,6 +373,10 @@ docs/Model/GetBroadcast200Response.md
 docs/Model/GetBroadcast200ResponseBroadcast.md
 docs/Model/GetBroadcast200ResponseBroadcastMessage.md
 docs/Model/GetBroadcast200ResponseBroadcastTemplate.md
+docs/Model/GetCampaignAnalytics200Response.md
+docs/Model/GetCampaignAnalytics200ResponseAnalytics.md
+docs/Model/GetCampaignAnalytics200ResponseAnalyticsDailyInner.md
+docs/Model/GetCampaignAnalytics200ResponseCampaign.md
 docs/Model/GetCommentAutomation200Response.md
 docs/Model/GetCommentAutomation200ResponseAutomation.md
 docs/Model/GetCommentAutomation200ResponseLogsInner.md
@@ -1306,6 +1309,7 @@ lib/Model/AdCampaign.php
 lib/Model/AdCampaignBudget.php
 lib/Model/AdCampaignCampaignBudget.php
 lib/Model/AdCreative.php
+lib/Model/AdDailyMetrics.php
 lib/Model/AdMetrics.php
 lib/Model/AdPromotedObject.php
 lib/Model/AdSchedule.php
@@ -1592,8 +1596,6 @@ lib/Model/GetAccountHealth200ResponseTokenStatus.php
 lib/Model/GetAd200Response.php
 lib/Model/GetAdAnalytics200Response.php
 lib/Model/GetAdAnalytics200ResponseAd.php
-lib/Model/GetAdAnalytics200ResponseAnalytics.php
-lib/Model/GetAdAnalytics200ResponseAnalyticsDailyInner.php
 lib/Model/GetAdAudience200Response.php
 lib/Model/GetAdComments200Response.php
 lib/Model/GetAdComments200ResponseMeta.php
@@ -1615,6 +1617,10 @@ lib/Model/GetBroadcast200Response.php
 lib/Model/GetBroadcast200ResponseBroadcast.php
 lib/Model/GetBroadcast200ResponseBroadcastMessage.php
 lib/Model/GetBroadcast200ResponseBroadcastTemplate.php
+lib/Model/GetCampaignAnalytics200Response.php
+lib/Model/GetCampaignAnalytics200ResponseAnalytics.php
+lib/Model/GetCampaignAnalytics200ResponseAnalyticsDailyInner.php
+lib/Model/GetCampaignAnalytics200ResponseCampaign.php
 lib/Model/GetCommentAutomation200Response.php
 lib/Model/GetCommentAutomation200ResponseAutomation.php
 lib/Model/GetCommentAutomation200ResponseLogsInner.php
@@ -2483,3 +2489,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AdDailyMetricsTest.php
+test/Model/GetCampaignAnalytics200ResponseAnalyticsDailyInnerTest.php
+test/Model/GetCampaignAnalytics200ResponseAnalyticsTest.php
+test/Model/GetCampaignAnalytics200ResponseCampaignTest.php
+test/Model/GetCampaignAnalytics200ResponseTest.php

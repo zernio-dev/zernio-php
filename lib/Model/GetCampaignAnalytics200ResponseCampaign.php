@@ -1,6 +1,6 @@
 <?php
 /**
- * GetAdAnalytics200Response
+ * GetCampaignAnalytics200ResponseCampaign
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetAdAnalytics200Response Class Doc Comment
+ * GetCampaignAnalytics200ResponseCampaign Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetCampaignAnalytics200ResponseCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getAdAnalytics_200_response';
+    protected static $openAPIModelName = 'getCampaignAnalytics_200_response_campaign';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,11 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'ad' => '\Zernio\Model\GetAdAnalytics200ResponseAd',
-        'analytics' => '\Zernio\Model\GetCampaignAnalytics200ResponseAnalytics'
+        'id' => 'string',
+        'name' => 'string',
+        'platform' => 'string',
+        'status' => 'string',
+        'currency' => 'string'
     ];
 
     /**
@@ -70,8 +73,11 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'ad' => null,
-        'analytics' => null
+        'id' => null,
+        'name' => null,
+        'platform' => null,
+        'status' => null,
+        'currency' => null
     ];
 
     /**
@@ -80,8 +86,11 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ad' => false,
-        'analytics' => false
+        'id' => false,
+        'name' => true,
+        'platform' => false,
+        'status' => true,
+        'currency' => true
     ];
 
     /**
@@ -170,8 +179,11 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'ad' => 'ad',
-        'analytics' => 'analytics'
+        'id' => 'id',
+        'name' => 'name',
+        'platform' => 'platform',
+        'status' => 'status',
+        'currency' => 'currency'
     ];
 
     /**
@@ -180,8 +192,11 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'ad' => 'setAd',
-        'analytics' => 'setAnalytics'
+        'id' => 'setId',
+        'name' => 'setName',
+        'platform' => 'setPlatform',
+        'status' => 'setStatus',
+        'currency' => 'setCurrency'
     ];
 
     /**
@@ -190,8 +205,11 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'ad' => 'getAd',
-        'analytics' => 'getAnalytics'
+        'id' => 'getId',
+        'name' => 'getName',
+        'platform' => 'getPlatform',
+        'status' => 'getStatus',
+        'currency' => 'getCurrency'
     ];
 
     /**
@@ -251,8 +269,11 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('ad', $data ?? [], null);
-        $this->setIfExists('analytics', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('currency', $data ?? [], null);
     }
 
     /**
@@ -298,55 +319,157 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets ad
+     * Gets id
      *
-     * @return \Zernio\Model\GetAdAnalytics200ResponseAd|null
+     * @return string|null
      */
-    public function getAd()
+    public function getId()
     {
-        return $this->container['ad'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets ad
+     * Sets id
      *
-     * @param \Zernio\Model\GetAdAnalytics200ResponseAd|null $ad ad
+     * @param string|null $id id
      *
      * @return self
      */
-    public function setAd($ad)
+    public function setId($id)
     {
-        if (is_null($ad)) {
-            throw new \InvalidArgumentException('non-nullable ad cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['ad'] = $ad;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets analytics
+     * Gets name
      *
-     * @return \Zernio\Model\GetCampaignAnalytics200ResponseAnalytics|null
+     * @return string|null
      */
-    public function getAnalytics()
+    public function getName()
     {
-        return $this->container['analytics'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets analytics
+     * Sets name
      *
-     * @param \Zernio\Model\GetCampaignAnalytics200ResponseAnalytics|null $analytics analytics
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setAnalytics($analytics)
+    public function setName($name)
     {
-        if (is_null($analytics)) {
-            throw new \InvalidArgumentException('non-nullable analytics cannot be null');
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['analytics'] = $analytics;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform
+     *
+     * @return string|null
+     */
+    public function getPlatform()
+    {
+        return $this->container['platform'];
+    }
+
+    /**
+     * Sets platform
+     *
+     * @param string|null $platform platform
+     *
+     * @return self
+     */
+    public function setPlatform($platform)
+    {
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
+        }
+        $this->container['platform'] = $platform;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status Effective campaign status (ACTIVE when any child ad is active).
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            array_push($this->openAPINullablesSetToNull, 'status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('status', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency
+     *
+     * @return string|null
+     */
+    public function getCurrency()
+    {
+        return $this->container['currency'];
+    }
+
+    /**
+     * Sets currency
+     *
+     * @param string|null $currency ISO 4217 code of the ad account (e.g. USD, THB). All money values in `summary` and `daily` are in this currency.
+     *
+     * @return self
+     */
+    public function setCurrency($currency)
+    {
+        if (is_null($currency)) {
+            array_push($this->openAPINullablesSetToNull, 'currency');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('currency', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['currency'] = $currency;
 
         return $this;
     }

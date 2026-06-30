@@ -1,6 +1,6 @@
 <?php
 /**
- * GetAdAnalytics200Response
+ * GetCampaignAnalytics200ResponseAnalytics
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetAdAnalytics200Response Class Doc Comment
+ * GetCampaignAnalytics200ResponseAnalytics Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetCampaignAnalytics200ResponseAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getAdAnalytics_200_response';
+    protected static $openAPIModelName = 'getCampaignAnalytics_200_response_analytics';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,9 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'ad' => '\Zernio\Model\GetAdAnalytics200ResponseAd',
-        'analytics' => '\Zernio\Model\GetCampaignAnalytics200ResponseAnalytics'
+        'summary' => '\Zernio\Model\AdMetrics',
+        'daily' => '\Zernio\Model\GetCampaignAnalytics200ResponseAnalyticsDailyInner[]',
+        'breakdowns' => 'array<string,object[]>'
     ];
 
     /**
@@ -70,8 +71,9 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'ad' => null,
-        'analytics' => null
+        'summary' => null,
+        'daily' => null,
+        'breakdowns' => null
     ];
 
     /**
@@ -80,8 +82,9 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ad' => false,
-        'analytics' => false
+        'summary' => false,
+        'daily' => false,
+        'breakdowns' => false
     ];
 
     /**
@@ -170,8 +173,9 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'ad' => 'ad',
-        'analytics' => 'analytics'
+        'summary' => 'summary',
+        'daily' => 'daily',
+        'breakdowns' => 'breakdowns'
     ];
 
     /**
@@ -180,8 +184,9 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'ad' => 'setAd',
-        'analytics' => 'setAnalytics'
+        'summary' => 'setSummary',
+        'daily' => 'setDaily',
+        'breakdowns' => 'setBreakdowns'
     ];
 
     /**
@@ -190,8 +195,9 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'ad' => 'getAd',
-        'analytics' => 'getAnalytics'
+        'summary' => 'getSummary',
+        'daily' => 'getDaily',
+        'breakdowns' => 'getBreakdowns'
     ];
 
     /**
@@ -251,8 +257,9 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('ad', $data ?? [], null);
-        $this->setIfExists('analytics', $data ?? [], null);
+        $this->setIfExists('summary', $data ?? [], null);
+        $this->setIfExists('daily', $data ?? [], null);
+        $this->setIfExists('breakdowns', $data ?? [], null);
     }
 
     /**
@@ -298,55 +305,82 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets ad
+     * Gets summary
      *
-     * @return \Zernio\Model\GetAdAnalytics200ResponseAd|null
+     * @return \Zernio\Model\AdMetrics|null
      */
-    public function getAd()
+    public function getSummary()
     {
-        return $this->container['ad'];
+        return $this->container['summary'];
     }
 
     /**
-     * Sets ad
+     * Sets summary
      *
-     * @param \Zernio\Model\GetAdAnalytics200ResponseAd|null $ad ad
+     * @param \Zernio\Model\AdMetrics|null $summary summary
      *
      * @return self
      */
-    public function setAd($ad)
+    public function setSummary($summary)
     {
-        if (is_null($ad)) {
-            throw new \InvalidArgumentException('non-nullable ad cannot be null');
+        if (is_null($summary)) {
+            throw new \InvalidArgumentException('non-nullable summary cannot be null');
         }
-        $this->container['ad'] = $ad;
+        $this->container['summary'] = $summary;
 
         return $this;
     }
 
     /**
-     * Gets analytics
+     * Gets daily
      *
-     * @return \Zernio\Model\GetCampaignAnalytics200ResponseAnalytics|null
+     * @return \Zernio\Model\GetCampaignAnalytics200ResponseAnalyticsDailyInner[]|null
      */
-    public function getAnalytics()
+    public function getDaily()
     {
-        return $this->container['analytics'];
+        return $this->container['daily'];
     }
 
     /**
-     * Sets analytics
+     * Sets daily
      *
-     * @param \Zernio\Model\GetCampaignAnalytics200ResponseAnalytics|null $analytics analytics
+     * @param \Zernio\Model\GetCampaignAnalytics200ResponseAnalyticsDailyInner[]|null $daily daily
      *
      * @return self
      */
-    public function setAnalytics($analytics)
+    public function setDaily($daily)
     {
-        if (is_null($analytics)) {
-            throw new \InvalidArgumentException('non-nullable analytics cannot be null');
+        if (is_null($daily)) {
+            throw new \InvalidArgumentException('non-nullable daily cannot be null');
         }
-        $this->container['analytics'] = $analytics;
+        $this->container['daily'] = $daily;
+
+        return $this;
+    }
+
+    /**
+     * Gets breakdowns
+     *
+     * @return array<string,object[]>|null
+     */
+    public function getBreakdowns()
+    {
+        return $this->container['breakdowns'];
+    }
+
+    /**
+     * Sets breakdowns
+     *
+     * @param array<string,object[]>|null $breakdowns breakdowns
+     *
+     * @return self
+     */
+    public function setBreakdowns($breakdowns)
+    {
+        if (is_null($breakdowns)) {
+            throw new \InvalidArgumentException('non-nullable breakdowns cannot be null');
+        }
+        $this->container['breakdowns'] = $breakdowns;
 
         return $this;
     }
