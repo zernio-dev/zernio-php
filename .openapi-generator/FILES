@@ -261,7 +261,6 @@ docs/Model/CreateTrackingTag201Response.md
 docs/Model/CreateTrackingTagRequest.md
 docs/Model/CreateWebhookSettingsRequest.md
 docs/Model/CreateWhatsAppDataset200Response.md
-docs/Model/CreateWhatsAppDatasetRequest.md
 docs/Model/CreateWhatsAppFlow200Response.md
 docs/Model/CreateWhatsAppFlow200ResponseFlow.md
 docs/Model/CreateWhatsAppFlowRequest.md
@@ -294,6 +293,7 @@ docs/Model/DeleteGoogleBusinessReviewReply200Response.md
 docs/Model/DeleteInboxComment200Response.md
 docs/Model/DeleteInboxReviewReply200Response.md
 docs/Model/DeleteInboxReviewReplyRequest.md
+docs/Model/DeleteWhatsappBusinessUsernameRequest.md
 docs/Model/DiscordPlatformData.md
 docs/Model/DiscordPlatformDataEmbedsInner.md
 docs/Model/DiscordPlatformDataEmbedsInnerAuthor.md
@@ -597,6 +597,8 @@ docs/Model/GetWhatsAppTemplate200Response.md
 docs/Model/GetWhatsAppTemplate200ResponseTemplate.md
 docs/Model/GetWhatsAppTemplates200Response.md
 docs/Model/GetWhatsAppTemplates200ResponseTemplatesInner.md
+docs/Model/GetWhatsappBusinessUsername200Response.md
+docs/Model/GetWhatsappBusinessUsernameSuggestions200Response.md
 docs/Model/GetWorkflow200Response.md
 docs/Model/GetWorkflow200ResponseWorkflow.md
 docs/Model/GetWorkflowVersion200Response.md
@@ -959,6 +961,8 @@ docs/Model/SetInstagramIceBreakersRequestIceBreakersInner.md
 docs/Model/SetMessengerMenuRequest.md
 docs/Model/SetTelegramCommandsRequest.md
 docs/Model/SetTelegramCommandsRequestCommandsInner.md
+docs/Model/SetWhatsappBusinessUsername200Response.md
+docs/Model/SetWhatsappBusinessUsernameRequest.md
 docs/Model/SharedAdAccount.md
 docs/Model/SnapchatPlatformData.md
 docs/Model/SocialAccount.md
@@ -1510,7 +1514,6 @@ lib/Model/CreateTrackingTag201Response.php
 lib/Model/CreateTrackingTagRequest.php
 lib/Model/CreateWebhookSettingsRequest.php
 lib/Model/CreateWhatsAppDataset200Response.php
-lib/Model/CreateWhatsAppDatasetRequest.php
 lib/Model/CreateWhatsAppFlow200Response.php
 lib/Model/CreateWhatsAppFlow200ResponseFlow.php
 lib/Model/CreateWhatsAppFlowRequest.php
@@ -1543,6 +1546,7 @@ lib/Model/DeleteGoogleBusinessReviewReply200Response.php
 lib/Model/DeleteInboxComment200Response.php
 lib/Model/DeleteInboxReviewReply200Response.php
 lib/Model/DeleteInboxReviewReplyRequest.php
+lib/Model/DeleteWhatsappBusinessUsernameRequest.php
 lib/Model/DiscordPlatformData.php
 lib/Model/DiscordPlatformDataEmbedsInner.php
 lib/Model/DiscordPlatformDataEmbedsInnerAuthor.php
@@ -1846,6 +1850,8 @@ lib/Model/GetWhatsAppTemplate200Response.php
 lib/Model/GetWhatsAppTemplate200ResponseTemplate.php
 lib/Model/GetWhatsAppTemplates200Response.php
 lib/Model/GetWhatsAppTemplates200ResponseTemplatesInner.php
+lib/Model/GetWhatsappBusinessUsername200Response.php
+lib/Model/GetWhatsappBusinessUsernameSuggestions200Response.php
 lib/Model/GetWorkflow200Response.php
 lib/Model/GetWorkflow200ResponseWorkflow.php
 lib/Model/GetWorkflowVersion200Response.php
@@ -2209,6 +2215,8 @@ lib/Model/SetInstagramIceBreakersRequestIceBreakersInner.php
 lib/Model/SetMessengerMenuRequest.php
 lib/Model/SetTelegramCommandsRequest.php
 lib/Model/SetTelegramCommandsRequestCommandsInner.php
+lib/Model/SetWhatsappBusinessUsername200Response.php
+lib/Model/SetWhatsappBusinessUsernameRequest.php
 lib/Model/SharedAdAccount.php
 lib/Model/SnapchatPlatformData.php
 lib/Model/SocialAccount.php
@@ -2499,8 +2507,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/MentionsApiTest.php
-test/Model/ListInboxMentions200ResponseDataInnerTest.php
-test/Model/ListInboxMentions200ResponseMetaTest.php
-test/Model/ListInboxMentions200ResponsePaginationTest.php
-test/Model/ListInboxMentions200ResponseTest.php
+test/Model/DeleteWhatsappBusinessUsernameRequestTest.php
+test/Model/GetWhatsappBusinessUsername200ResponseTest.php
+test/Model/GetWhatsappBusinessUsernameSuggestions200ResponseTest.php
+test/Model/SetWhatsappBusinessUsername200ResponseTest.php
+test/Model/SetWhatsappBusinessUsernameRequestTest.php

@@ -372,6 +372,7 @@ Class | Method | HTTP request | Description
 *WhatsAppApi* | [**createWhatsAppTemplate**](docs/Api/WhatsAppApi.md#createwhatsapptemplate) | **POST** /v1/whatsapp/templates | Create template
 *WhatsAppApi* | [**deleteWhatsAppGroupChat**](docs/Api/WhatsAppApi.md#deletewhatsappgroupchat) | **DELETE** /v1/whatsapp/wa-groups/{groupId} | Delete group
 *WhatsAppApi* | [**deleteWhatsAppTemplate**](docs/Api/WhatsAppApi.md#deletewhatsapptemplate) | **DELETE** /v1/whatsapp/templates/{templateName} | Delete template
+*WhatsAppApi* | [**deleteWhatsappBusinessUsername**](docs/Api/WhatsAppApi.md#deletewhatsappbusinessusername) | **DELETE** /v1/whatsapp/business-profile/username | Delete business username
 *WhatsAppApi* | [**getWhatsAppBlockStatus**](docs/Api/WhatsAppApi.md#getwhatsappblockstatus) | **GET** /v1/whatsapp/block-users/status | Check if a user is blocked
 *WhatsAppApi* | [**getWhatsAppBlockedUsers**](docs/Api/WhatsAppApi.md#getwhatsappblockedusers) | **GET** /v1/whatsapp/block-users | List blocked users
 *WhatsAppApi* | [**getWhatsAppBusinessProfile**](docs/Api/WhatsAppApi.md#getwhatsappbusinessprofile) | **GET** /v1/whatsapp/business-profile | Get business profile
@@ -380,12 +381,15 @@ Class | Method | HTTP request | Description
 *WhatsAppApi* | [**getWhatsAppGroupChat**](docs/Api/WhatsAppApi.md#getwhatsappgroupchat) | **GET** /v1/whatsapp/wa-groups/{groupId} | Get group info
 *WhatsAppApi* | [**getWhatsAppTemplate**](docs/Api/WhatsAppApi.md#getwhatsapptemplate) | **GET** /v1/whatsapp/templates/{templateName} | Get template
 *WhatsAppApi* | [**getWhatsAppTemplates**](docs/Api/WhatsAppApi.md#getwhatsapptemplates) | **GET** /v1/whatsapp/templates | List templates
+*WhatsAppApi* | [**getWhatsappBusinessUsername**](docs/Api/WhatsAppApi.md#getwhatsappbusinessusername) | **GET** /v1/whatsapp/business-profile/username | Get business username
+*WhatsAppApi* | [**getWhatsappBusinessUsernameSuggestions**](docs/Api/WhatsAppApi.md#getwhatsappbusinessusernamesuggestions) | **GET** /v1/whatsapp/business-profile/username/suggestions | Get username suggestions
 *WhatsAppApi* | [**listWhatsAppConversions**](docs/Api/WhatsAppApi.md#listwhatsappconversions) | **GET** /v1/whatsapp/conversions | List conversion events
 *WhatsAppApi* | [**listWhatsAppGroupChats**](docs/Api/WhatsAppApi.md#listwhatsappgroupchats) | **GET** /v1/whatsapp/wa-groups | List active groups
 *WhatsAppApi* | [**listWhatsAppGroupJoinRequests**](docs/Api/WhatsAppApi.md#listwhatsappgroupjoinrequests) | **GET** /v1/whatsapp/wa-groups/{groupId}/join-requests | List join requests
 *WhatsAppApi* | [**rejectWhatsAppGroupJoinRequests**](docs/Api/WhatsAppApi.md#rejectwhatsappgroupjoinrequests) | **DELETE** /v1/whatsapp/wa-groups/{groupId}/join-requests | Reject join requests
 *WhatsAppApi* | [**removeWhatsAppGroupParticipants**](docs/Api/WhatsAppApi.md#removewhatsappgroupparticipants) | **DELETE** /v1/whatsapp/wa-groups/{groupId}/participants | Remove participants
 *WhatsAppApi* | [**sendWhatsAppConversion**](docs/Api/WhatsAppApi.md#sendwhatsappconversion) | **POST** /v1/whatsapp/conversions | Send WhatsApp conversion event
+*WhatsAppApi* | [**setWhatsappBusinessUsername**](docs/Api/WhatsAppApi.md#setwhatsappbusinessusername) | **POST** /v1/whatsapp/business-profile/username | Set business username
 *WhatsAppApi* | [**unblockWhatsAppUsers**](docs/Api/WhatsAppApi.md#unblockwhatsappusers) | **DELETE** /v1/whatsapp/block-users | Unblock users
 *WhatsAppApi* | [**updateWhatsAppBusinessProfile**](docs/Api/WhatsAppApi.md#updatewhatsappbusinessprofile) | **POST** /v1/whatsapp/business-profile | Update business profile
 *WhatsAppApi* | [**updateWhatsAppDisplayName**](docs/Api/WhatsAppApi.md#updatewhatsappdisplayname) | **POST** /v1/whatsapp/business-profile/display-name | Request display name change
@@ -657,7 +661,6 @@ Class | Method | HTTP request | Description
 - [CreateTrackingTagRequest](docs/Model/CreateTrackingTagRequest.md)
 - [CreateWebhookSettingsRequest](docs/Model/CreateWebhookSettingsRequest.md)
 - [CreateWhatsAppDataset200Response](docs/Model/CreateWhatsAppDataset200Response.md)
-- [CreateWhatsAppDatasetRequest](docs/Model/CreateWhatsAppDatasetRequest.md)
 - [CreateWhatsAppFlow200Response](docs/Model/CreateWhatsAppFlow200Response.md)
 - [CreateWhatsAppFlow200ResponseFlow](docs/Model/CreateWhatsAppFlow200ResponseFlow.md)
 - [CreateWhatsAppFlowRequest](docs/Model/CreateWhatsAppFlowRequest.md)
@@ -690,6 +693,7 @@ Class | Method | HTTP request | Description
 - [DeleteInboxComment200Response](docs/Model/DeleteInboxComment200Response.md)
 - [DeleteInboxReviewReply200Response](docs/Model/DeleteInboxReviewReply200Response.md)
 - [DeleteInboxReviewReplyRequest](docs/Model/DeleteInboxReviewReplyRequest.md)
+- [DeleteWhatsappBusinessUsernameRequest](docs/Model/DeleteWhatsappBusinessUsernameRequest.md)
 - [DiscordPlatformData](docs/Model/DiscordPlatformData.md)
 - [DiscordPlatformDataEmbedsInner](docs/Model/DiscordPlatformDataEmbedsInner.md)
 - [DiscordPlatformDataEmbedsInnerAuthor](docs/Model/DiscordPlatformDataEmbedsInnerAuthor.md)
@@ -993,6 +997,8 @@ Class | Method | HTTP request | Description
 - [GetWhatsAppTemplate200ResponseTemplate](docs/Model/GetWhatsAppTemplate200ResponseTemplate.md)
 - [GetWhatsAppTemplates200Response](docs/Model/GetWhatsAppTemplates200Response.md)
 - [GetWhatsAppTemplates200ResponseTemplatesInner](docs/Model/GetWhatsAppTemplates200ResponseTemplatesInner.md)
+- [GetWhatsappBusinessUsername200Response](docs/Model/GetWhatsappBusinessUsername200Response.md)
+- [GetWhatsappBusinessUsernameSuggestions200Response](docs/Model/GetWhatsappBusinessUsernameSuggestions200Response.md)
 - [GetWorkflow200Response](docs/Model/GetWorkflow200Response.md)
 - [GetWorkflow200ResponseWorkflow](docs/Model/GetWorkflow200ResponseWorkflow.md)
 - [GetWorkflowVersion200Response](docs/Model/GetWorkflowVersion200Response.md)
@@ -1355,6 +1361,8 @@ Class | Method | HTTP request | Description
 - [SetMessengerMenuRequest](docs/Model/SetMessengerMenuRequest.md)
 - [SetTelegramCommandsRequest](docs/Model/SetTelegramCommandsRequest.md)
 - [SetTelegramCommandsRequestCommandsInner](docs/Model/SetTelegramCommandsRequestCommandsInner.md)
+- [SetWhatsappBusinessUsername200Response](docs/Model/SetWhatsappBusinessUsername200Response.md)
+- [SetWhatsappBusinessUsernameRequest](docs/Model/SetWhatsappBusinessUsernameRequest.md)
 - [SharedAdAccount](docs/Model/SharedAdAccount.md)
 - [SnapchatPlatformData](docs/Model/SnapchatPlatformData.md)
 - [SocialAccount](docs/Model/SocialAccount.md)

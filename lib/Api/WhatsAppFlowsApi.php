@@ -760,16 +760,16 @@ class WhatsAppFlowsApi
      * Deprecate flow
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request create_whats_app_dataset_request (required)
+     * @param  \Zernio\Model\DeleteWhatsappBusinessUsernameRequest $delete_whatsapp_business_username_request delete_whatsapp_business_username_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deprecateWhatsAppFlow'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject
      */
-    public function deprecateWhatsAppFlow($flow_id, $create_whats_app_dataset_request, string $contentType = self::contentTypes['deprecateWhatsAppFlow'][0])
+    public function deprecateWhatsAppFlow($flow_id, $delete_whatsapp_business_username_request, string $contentType = self::contentTypes['deprecateWhatsAppFlow'][0])
     {
-        list($response) = $this->deprecateWhatsAppFlowWithHttpInfo($flow_id, $create_whats_app_dataset_request, $contentType);
+        list($response) = $this->deprecateWhatsAppFlowWithHttpInfo($flow_id, $delete_whatsapp_business_username_request, $contentType);
         return $response;
     }
 
@@ -779,16 +779,16 @@ class WhatsAppFlowsApi
      * Deprecate flow
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request (required)
+     * @param  \Zernio\Model\DeleteWhatsappBusinessUsernameRequest $delete_whatsapp_business_username_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deprecateWhatsAppFlow'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deprecateWhatsAppFlowWithHttpInfo($flow_id, $create_whats_app_dataset_request, string $contentType = self::contentTypes['deprecateWhatsAppFlow'][0])
+    public function deprecateWhatsAppFlowWithHttpInfo($flow_id, $delete_whatsapp_business_username_request, string $contentType = self::contentTypes['deprecateWhatsAppFlow'][0])
     {
-        $request = $this->deprecateWhatsAppFlowRequest($flow_id, $create_whats_app_dataset_request, $contentType);
+        $request = $this->deprecateWhatsAppFlowRequest($flow_id, $delete_whatsapp_business_username_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -879,15 +879,15 @@ class WhatsAppFlowsApi
      * Deprecate flow
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request (required)
+     * @param  \Zernio\Model\DeleteWhatsappBusinessUsernameRequest $delete_whatsapp_business_username_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deprecateWhatsAppFlow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deprecateWhatsAppFlowAsync($flow_id, $create_whats_app_dataset_request, string $contentType = self::contentTypes['deprecateWhatsAppFlow'][0])
+    public function deprecateWhatsAppFlowAsync($flow_id, $delete_whatsapp_business_username_request, string $contentType = self::contentTypes['deprecateWhatsAppFlow'][0])
     {
-        return $this->deprecateWhatsAppFlowAsyncWithHttpInfo($flow_id, $create_whats_app_dataset_request, $contentType)
+        return $this->deprecateWhatsAppFlowAsyncWithHttpInfo($flow_id, $delete_whatsapp_business_username_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -901,16 +901,16 @@ class WhatsAppFlowsApi
      * Deprecate flow
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request (required)
+     * @param  \Zernio\Model\DeleteWhatsappBusinessUsernameRequest $delete_whatsapp_business_username_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deprecateWhatsAppFlow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deprecateWhatsAppFlowAsyncWithHttpInfo($flow_id, $create_whats_app_dataset_request, string $contentType = self::contentTypes['deprecateWhatsAppFlow'][0])
+    public function deprecateWhatsAppFlowAsyncWithHttpInfo($flow_id, $delete_whatsapp_business_username_request, string $contentType = self::contentTypes['deprecateWhatsAppFlow'][0])
     {
         $returnType = '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response';
-        $request = $this->deprecateWhatsAppFlowRequest($flow_id, $create_whats_app_dataset_request, $contentType);
+        $request = $this->deprecateWhatsAppFlowRequest($flow_id, $delete_whatsapp_business_username_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -952,13 +952,13 @@ class WhatsAppFlowsApi
      * Create request for operation 'deprecateWhatsAppFlow'
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request (required)
+     * @param  \Zernio\Model\DeleteWhatsappBusinessUsernameRequest $delete_whatsapp_business_username_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deprecateWhatsAppFlow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deprecateWhatsAppFlowRequest($flow_id, $create_whats_app_dataset_request, string $contentType = self::contentTypes['deprecateWhatsAppFlow'][0])
+    public function deprecateWhatsAppFlowRequest($flow_id, $delete_whatsapp_business_username_request, string $contentType = self::contentTypes['deprecateWhatsAppFlow'][0])
     {
 
         // verify the required parameter 'flow_id' is set
@@ -968,10 +968,10 @@ class WhatsAppFlowsApi
             );
         }
 
-        // verify the required parameter 'create_whats_app_dataset_request' is set
-        if ($create_whats_app_dataset_request === null || (is_array($create_whats_app_dataset_request) && count($create_whats_app_dataset_request) === 0)) {
+        // verify the required parameter 'delete_whatsapp_business_username_request' is set
+        if ($delete_whatsapp_business_username_request === null || (is_array($delete_whatsapp_business_username_request) && count($delete_whatsapp_business_username_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $create_whats_app_dataset_request when calling deprecateWhatsAppFlow'
+                'Missing the required parameter $delete_whatsapp_business_username_request when calling deprecateWhatsAppFlow'
             );
         }
 
@@ -1002,12 +1002,12 @@ class WhatsAppFlowsApi
         );
 
         // for model (json/xml)
-        if (isset($create_whats_app_dataset_request)) {
+        if (isset($delete_whatsapp_business_username_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_whats_app_dataset_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($delete_whatsapp_business_username_request));
             } else {
-                $httpBody = $create_whats_app_dataset_request;
+                $httpBody = $delete_whatsapp_business_username_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2930,16 +2930,16 @@ class WhatsAppFlowsApi
      * Publish flow
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request create_whats_app_dataset_request (required)
+     * @param  \Zernio\Model\DeleteWhatsappBusinessUsernameRequest $delete_whatsapp_business_username_request delete_whatsapp_business_username_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['publishWhatsAppFlow'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject
      */
-    public function publishWhatsAppFlow($flow_id, $create_whats_app_dataset_request, string $contentType = self::contentTypes['publishWhatsAppFlow'][0])
+    public function publishWhatsAppFlow($flow_id, $delete_whatsapp_business_username_request, string $contentType = self::contentTypes['publishWhatsAppFlow'][0])
     {
-        list($response) = $this->publishWhatsAppFlowWithHttpInfo($flow_id, $create_whats_app_dataset_request, $contentType);
+        list($response) = $this->publishWhatsAppFlowWithHttpInfo($flow_id, $delete_whatsapp_business_username_request, $contentType);
         return $response;
     }
 
@@ -2949,16 +2949,16 @@ class WhatsAppFlowsApi
      * Publish flow
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request (required)
+     * @param  \Zernio\Model\DeleteWhatsappBusinessUsernameRequest $delete_whatsapp_business_username_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['publishWhatsAppFlow'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function publishWhatsAppFlowWithHttpInfo($flow_id, $create_whats_app_dataset_request, string $contentType = self::contentTypes['publishWhatsAppFlow'][0])
+    public function publishWhatsAppFlowWithHttpInfo($flow_id, $delete_whatsapp_business_username_request, string $contentType = self::contentTypes['publishWhatsAppFlow'][0])
     {
-        $request = $this->publishWhatsAppFlowRequest($flow_id, $create_whats_app_dataset_request, $contentType);
+        $request = $this->publishWhatsAppFlowRequest($flow_id, $delete_whatsapp_business_username_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3049,15 +3049,15 @@ class WhatsAppFlowsApi
      * Publish flow
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request (required)
+     * @param  \Zernio\Model\DeleteWhatsappBusinessUsernameRequest $delete_whatsapp_business_username_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['publishWhatsAppFlow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function publishWhatsAppFlowAsync($flow_id, $create_whats_app_dataset_request, string $contentType = self::contentTypes['publishWhatsAppFlow'][0])
+    public function publishWhatsAppFlowAsync($flow_id, $delete_whatsapp_business_username_request, string $contentType = self::contentTypes['publishWhatsAppFlow'][0])
     {
-        return $this->publishWhatsAppFlowAsyncWithHttpInfo($flow_id, $create_whats_app_dataset_request, $contentType)
+        return $this->publishWhatsAppFlowAsyncWithHttpInfo($flow_id, $delete_whatsapp_business_username_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3071,16 +3071,16 @@ class WhatsAppFlowsApi
      * Publish flow
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request (required)
+     * @param  \Zernio\Model\DeleteWhatsappBusinessUsernameRequest $delete_whatsapp_business_username_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['publishWhatsAppFlow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function publishWhatsAppFlowAsyncWithHttpInfo($flow_id, $create_whats_app_dataset_request, string $contentType = self::contentTypes['publishWhatsAppFlow'][0])
+    public function publishWhatsAppFlowAsyncWithHttpInfo($flow_id, $delete_whatsapp_business_username_request, string $contentType = self::contentTypes['publishWhatsAppFlow'][0])
     {
         $returnType = '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response';
-        $request = $this->publishWhatsAppFlowRequest($flow_id, $create_whats_app_dataset_request, $contentType);
+        $request = $this->publishWhatsAppFlowRequest($flow_id, $delete_whatsapp_business_username_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3122,13 +3122,13 @@ class WhatsAppFlowsApi
      * Create request for operation 'publishWhatsAppFlow'
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request (required)
+     * @param  \Zernio\Model\DeleteWhatsappBusinessUsernameRequest $delete_whatsapp_business_username_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['publishWhatsAppFlow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function publishWhatsAppFlowRequest($flow_id, $create_whats_app_dataset_request, string $contentType = self::contentTypes['publishWhatsAppFlow'][0])
+    public function publishWhatsAppFlowRequest($flow_id, $delete_whatsapp_business_username_request, string $contentType = self::contentTypes['publishWhatsAppFlow'][0])
     {
 
         // verify the required parameter 'flow_id' is set
@@ -3138,10 +3138,10 @@ class WhatsAppFlowsApi
             );
         }
 
-        // verify the required parameter 'create_whats_app_dataset_request' is set
-        if ($create_whats_app_dataset_request === null || (is_array($create_whats_app_dataset_request) && count($create_whats_app_dataset_request) === 0)) {
+        // verify the required parameter 'delete_whatsapp_business_username_request' is set
+        if ($delete_whatsapp_business_username_request === null || (is_array($delete_whatsapp_business_username_request) && count($delete_whatsapp_business_username_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $create_whats_app_dataset_request when calling publishWhatsAppFlow'
+                'Missing the required parameter $delete_whatsapp_business_username_request when calling publishWhatsAppFlow'
             );
         }
 
@@ -3172,12 +3172,12 @@ class WhatsAppFlowsApi
         );
 
         // for model (json/xml)
-        if (isset($create_whats_app_dataset_request)) {
+        if (isset($delete_whatsapp_business_username_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_whats_app_dataset_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($delete_whatsapp_business_username_request));
             } else {
-                $httpBody = $create_whats_app_dataset_request;
+                $httpBody = $delete_whatsapp_business_username_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

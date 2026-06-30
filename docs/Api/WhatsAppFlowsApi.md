@@ -146,7 +146,7 @@ try {
 ## `deprecateWhatsAppFlow()`
 
 ```php
-deprecateWhatsAppFlow($flow_id, $create_whats_app_dataset_request): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
+deprecateWhatsAppFlow($flow_id, $delete_whatsapp_business_username_request): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
 ```
 
 Deprecate flow
@@ -171,10 +171,10 @@ $apiInstance = new Zernio\Api\WhatsAppFlowsApi(
     $config
 );
 $flow_id = 'flow_id_example'; // string | Flow ID
-$create_whats_app_dataset_request = new \Zernio\Model\CreateWhatsAppDatasetRequest(); // \Zernio\Model\CreateWhatsAppDatasetRequest
+$delete_whatsapp_business_username_request = new \Zernio\Model\DeleteWhatsappBusinessUsernameRequest(); // \Zernio\Model\DeleteWhatsappBusinessUsernameRequest
 
 try {
-    $result = $apiInstance->deprecateWhatsAppFlow($flow_id, $create_whats_app_dataset_request);
+    $result = $apiInstance->deprecateWhatsAppFlow($flow_id, $delete_whatsapp_business_username_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WhatsAppFlowsApi->deprecateWhatsAppFlow: ', $e->getMessage(), PHP_EOL;
@@ -186,7 +186,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **flow_id** | **string**| Flow ID | |
-| **create_whats_app_dataset_request** | [**\Zernio\Model\CreateWhatsAppDatasetRequest**](../Model/CreateWhatsAppDatasetRequest.md)|  | |
+| **delete_whatsapp_business_username_request** | [**\Zernio\Model\DeleteWhatsappBusinessUsernameRequest**](../Model/DeleteWhatsappBusinessUsernameRequest.md)|  | |
 
 ### Return type
 
@@ -584,7 +584,7 @@ try {
 ## `publishWhatsAppFlow()`
 
 ```php
-publishWhatsAppFlow($flow_id, $create_whats_app_dataset_request): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
+publishWhatsAppFlow($flow_id, $delete_whatsapp_business_username_request): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
 ```
 
 Publish flow
@@ -609,10 +609,10 @@ $apiInstance = new Zernio\Api\WhatsAppFlowsApi(
     $config
 );
 $flow_id = 'flow_id_example'; // string | Flow ID
-$create_whats_app_dataset_request = new \Zernio\Model\CreateWhatsAppDatasetRequest(); // \Zernio\Model\CreateWhatsAppDatasetRequest
+$delete_whatsapp_business_username_request = new \Zernio\Model\DeleteWhatsappBusinessUsernameRequest(); // \Zernio\Model\DeleteWhatsappBusinessUsernameRequest
 
 try {
-    $result = $apiInstance->publishWhatsAppFlow($flow_id, $create_whats_app_dataset_request);
+    $result = $apiInstance->publishWhatsAppFlow($flow_id, $delete_whatsapp_business_username_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WhatsAppFlowsApi->publishWhatsAppFlow: ', $e->getMessage(), PHP_EOL;
@@ -624,7 +624,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **flow_id** | **string**| Flow ID | |
-| **create_whats_app_dataset_request** | [**\Zernio\Model\CreateWhatsAppDatasetRequest**](../Model/CreateWhatsAppDatasetRequest.md)|  | |
+| **delete_whatsapp_business_username_request** | [**\Zernio\Model\DeleteWhatsappBusinessUsernameRequest**](../Model/DeleteWhatsappBusinessUsernameRequest.md)|  | |
 
 ### Return type
 

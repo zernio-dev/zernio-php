@@ -15,6 +15,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createWhatsAppTemplate()**](WhatsAppApi.md#createWhatsAppTemplate) | **POST** /v1/whatsapp/templates | Create template |
 | [**deleteWhatsAppGroupChat()**](WhatsAppApi.md#deleteWhatsAppGroupChat) | **DELETE** /v1/whatsapp/wa-groups/{groupId} | Delete group |
 | [**deleteWhatsAppTemplate()**](WhatsAppApi.md#deleteWhatsAppTemplate) | **DELETE** /v1/whatsapp/templates/{templateName} | Delete template |
+| [**deleteWhatsappBusinessUsername()**](WhatsAppApi.md#deleteWhatsappBusinessUsername) | **DELETE** /v1/whatsapp/business-profile/username | Delete business username |
 | [**getWhatsAppBlockStatus()**](WhatsAppApi.md#getWhatsAppBlockStatus) | **GET** /v1/whatsapp/block-users/status | Check if a user is blocked |
 | [**getWhatsAppBlockedUsers()**](WhatsAppApi.md#getWhatsAppBlockedUsers) | **GET** /v1/whatsapp/block-users | List blocked users |
 | [**getWhatsAppBusinessProfile()**](WhatsAppApi.md#getWhatsAppBusinessProfile) | **GET** /v1/whatsapp/business-profile | Get business profile |
@@ -23,12 +24,15 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getWhatsAppGroupChat()**](WhatsAppApi.md#getWhatsAppGroupChat) | **GET** /v1/whatsapp/wa-groups/{groupId} | Get group info |
 | [**getWhatsAppTemplate()**](WhatsAppApi.md#getWhatsAppTemplate) | **GET** /v1/whatsapp/templates/{templateName} | Get template |
 | [**getWhatsAppTemplates()**](WhatsAppApi.md#getWhatsAppTemplates) | **GET** /v1/whatsapp/templates | List templates |
+| [**getWhatsappBusinessUsername()**](WhatsAppApi.md#getWhatsappBusinessUsername) | **GET** /v1/whatsapp/business-profile/username | Get business username |
+| [**getWhatsappBusinessUsernameSuggestions()**](WhatsAppApi.md#getWhatsappBusinessUsernameSuggestions) | **GET** /v1/whatsapp/business-profile/username/suggestions | Get username suggestions |
 | [**listWhatsAppConversions()**](WhatsAppApi.md#listWhatsAppConversions) | **GET** /v1/whatsapp/conversions | List conversion events |
 | [**listWhatsAppGroupChats()**](WhatsAppApi.md#listWhatsAppGroupChats) | **GET** /v1/whatsapp/wa-groups | List active groups |
 | [**listWhatsAppGroupJoinRequests()**](WhatsAppApi.md#listWhatsAppGroupJoinRequests) | **GET** /v1/whatsapp/wa-groups/{groupId}/join-requests | List join requests |
 | [**rejectWhatsAppGroupJoinRequests()**](WhatsAppApi.md#rejectWhatsAppGroupJoinRequests) | **DELETE** /v1/whatsapp/wa-groups/{groupId}/join-requests | Reject join requests |
 | [**removeWhatsAppGroupParticipants()**](WhatsAppApi.md#removeWhatsAppGroupParticipants) | **DELETE** /v1/whatsapp/wa-groups/{groupId}/participants | Remove participants |
 | [**sendWhatsAppConversion()**](WhatsAppApi.md#sendWhatsAppConversion) | **POST** /v1/whatsapp/conversions | Send WhatsApp conversion event |
+| [**setWhatsappBusinessUsername()**](WhatsAppApi.md#setWhatsappBusinessUsername) | **POST** /v1/whatsapp/business-profile/username | Set business username |
 | [**unblockWhatsAppUsers()**](WhatsAppApi.md#unblockWhatsAppUsers) | **DELETE** /v1/whatsapp/block-users | Unblock users |
 | [**updateWhatsAppBusinessProfile()**](WhatsAppApi.md#updateWhatsAppBusinessProfile) | **POST** /v1/whatsapp/business-profile | Update business profile |
 | [**updateWhatsAppDisplayName()**](WhatsAppApi.md#updateWhatsAppDisplayName) | **POST** /v1/whatsapp/business-profile/display-name | Request display name change |
@@ -228,7 +232,7 @@ try {
 ## `createWhatsAppDataset()`
 
 ```php
-createWhatsAppDataset($create_whats_app_dataset_request): \Zernio\Model\CreateWhatsAppDataset200Response
+createWhatsAppDataset($delete_whatsapp_business_username_request): \Zernio\Model\CreateWhatsAppDataset200Response
 ```
 
 Provision CTWA dataset
@@ -252,10 +256,10 @@ $apiInstance = new Zernio\Api\WhatsAppApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_whats_app_dataset_request = new \Zernio\Model\CreateWhatsAppDatasetRequest(); // \Zernio\Model\CreateWhatsAppDatasetRequest
+$delete_whatsapp_business_username_request = new \Zernio\Model\DeleteWhatsappBusinessUsernameRequest(); // \Zernio\Model\DeleteWhatsappBusinessUsernameRequest
 
 try {
-    $result = $apiInstance->createWhatsAppDataset($create_whats_app_dataset_request);
+    $result = $apiInstance->createWhatsAppDataset($delete_whatsapp_business_username_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WhatsAppApi->createWhatsAppDataset: ', $e->getMessage(), PHP_EOL;
@@ -266,7 +270,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_whats_app_dataset_request** | [**\Zernio\Model\CreateWhatsAppDatasetRequest**](../Model/CreateWhatsAppDatasetRequest.md)|  | |
+| **delete_whatsapp_business_username_request** | [**\Zernio\Model\DeleteWhatsappBusinessUsernameRequest**](../Model/DeleteWhatsappBusinessUsernameRequest.md)|  | |
 
 ### Return type
 
@@ -585,6 +589,66 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteWhatsappBusinessUsername()`
+
+```php
+deleteWhatsappBusinessUsername($delete_whatsapp_business_username_request): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
+```
+
+Delete business username
+
+Release the currently claimed WhatsApp Business username from the account. After deletion the username becomes available for other accounts to claim.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$delete_whatsapp_business_username_request = {"accountId":"507f1f77bcf86cd799439011"}; // \Zernio\Model\DeleteWhatsappBusinessUsernameRequest
+
+try {
+    $result = $apiInstance->deleteWhatsappBusinessUsername($delete_whatsapp_business_username_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->deleteWhatsappBusinessUsername: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **delete_whatsapp_business_username_request** | [**\Zernio\Model\DeleteWhatsappBusinessUsernameRequest**](../Model/DeleteWhatsappBusinessUsernameRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -1081,6 +1145,126 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getWhatsappBusinessUsername()`
+
+```php
+getWhatsappBusinessUsername($account_id): \Zernio\Model\GetWhatsappBusinessUsername200Response
+```
+
+Get business username
+
+Fetch the current WhatsApp Business username and its approval status. Username status can be `approved` (active), `reserved` (pending activation), or `none` (no username set).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | WhatsApp social account ID
+
+try {
+    $result = $apiInstance->getWhatsappBusinessUsername($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->getWhatsappBusinessUsername: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| WhatsApp social account ID | |
+
+### Return type
+
+[**\Zernio\Model\GetWhatsappBusinessUsername200Response**](../Model/GetWhatsappBusinessUsername200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getWhatsappBusinessUsernameSuggestions()`
+
+```php
+getWhatsappBusinessUsernameSuggestions($account_id): \Zernio\Model\GetWhatsappBusinessUsernameSuggestions200Response
+```
+
+Get username suggestions
+
+Retrieve a list of available WhatsApp Business username suggestions based on the account's business profile name. Use these to help users discover valid, unclaimed usernames.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | WhatsApp social account ID
+
+try {
+    $result = $apiInstance->getWhatsappBusinessUsernameSuggestions($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->getWhatsappBusinessUsernameSuggestions: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| WhatsApp social account ID | |
+
+### Return type
+
+[**\Zernio\Model\GetWhatsappBusinessUsernameSuggestions200Response**](../Model/GetWhatsappBusinessUsernameSuggestions200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listWhatsAppConversions()`
 
 ```php
@@ -1443,6 +1627,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\SendWhatsAppConversion200Response**](../Model/SendWhatsAppConversion200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `setWhatsappBusinessUsername()`
+
+```php
+setWhatsappBusinessUsername($set_whatsapp_business_username_request): \Zernio\Model\SetWhatsappBusinessUsername200Response
+```
+
+Set business username
+
+Claim or transfer a WhatsApp Business username for the account.  Username rules: 3-35 characters, letters/digits/period/underscore only, must contain at least one letter, no leading or trailing periods, no consecutive periods, no `www` prefix, no domain TLD suffix (e.g. `.com`).  If the desired username is currently held by another account, pass `transferAction: \"force_transfer\"` to request a transfer. On failure the API returns a standard error envelope with one of these codes: `whatsapp_username_unavailable` (already taken and transfer not requested), `whatsapp_username_ineligible` (account not eligible to claim a username), or `whatsapp_username_transfer_required` (username is held elsewhere; retry with `force_transfer`).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$set_whatsapp_business_username_request = {"accountId":"507f1f77bcf86cd799439011","username":"mybusiness","transferAction":"none"}; // \Zernio\Model\SetWhatsappBusinessUsernameRequest
+
+try {
+    $result = $apiInstance->setWhatsappBusinessUsername($set_whatsapp_business_username_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->setWhatsappBusinessUsername: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **set_whatsapp_business_username_request** | [**\Zernio\Model\SetWhatsappBusinessUsernameRequest**](../Model/SetWhatsappBusinessUsernameRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\SetWhatsappBusinessUsername200Response**](../Model/SetWhatsappBusinessUsername200Response.md)
 
 ### Authorization
 

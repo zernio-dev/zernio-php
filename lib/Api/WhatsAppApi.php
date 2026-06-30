@@ -102,6 +102,9 @@ class WhatsAppApi
         'deleteWhatsAppTemplate' => [
             'application/json',
         ],
+        'deleteWhatsappBusinessUsername' => [
+            'application/json',
+        ],
         'getWhatsAppBlockStatus' => [
             'application/json',
         ],
@@ -126,6 +129,12 @@ class WhatsAppApi
         'getWhatsAppTemplates' => [
             'application/json',
         ],
+        'getWhatsappBusinessUsername' => [
+            'application/json',
+        ],
+        'getWhatsappBusinessUsernameSuggestions' => [
+            'application/json',
+        ],
         'listWhatsAppConversions' => [
             'application/json',
         ],
@@ -142,6 +151,9 @@ class WhatsAppApi
             'application/json',
         ],
         'sendWhatsAppConversion' => [
+            'application/json',
+        ],
+        'setWhatsappBusinessUsername' => [
             'application/json',
         ],
         'unblockWhatsAppUsers' => [
@@ -1152,16 +1164,16 @@ class WhatsAppApi
      *
      * Provision CTWA dataset
      *
-     * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request create_whats_app_dataset_request (required)
+     * @param  \Zernio\Model\DeleteWhatsappBusinessUsernameRequest $delete_whatsapp_business_username_request delete_whatsapp_business_username_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppDataset'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\CreateWhatsAppDataset200Response|\Zernio\Model\InlineObject
      */
-    public function createWhatsAppDataset($create_whats_app_dataset_request, string $contentType = self::contentTypes['createWhatsAppDataset'][0])
+    public function createWhatsAppDataset($delete_whatsapp_business_username_request, string $contentType = self::contentTypes['createWhatsAppDataset'][0])
     {
-        list($response) = $this->createWhatsAppDatasetWithHttpInfo($create_whats_app_dataset_request, $contentType);
+        list($response) = $this->createWhatsAppDatasetWithHttpInfo($delete_whatsapp_business_username_request, $contentType);
         return $response;
     }
 
@@ -1170,16 +1182,16 @@ class WhatsAppApi
      *
      * Provision CTWA dataset
      *
-     * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request (required)
+     * @param  \Zernio\Model\DeleteWhatsappBusinessUsernameRequest $delete_whatsapp_business_username_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppDataset'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\CreateWhatsAppDataset200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWhatsAppDatasetWithHttpInfo($create_whats_app_dataset_request, string $contentType = self::contentTypes['createWhatsAppDataset'][0])
+    public function createWhatsAppDatasetWithHttpInfo($delete_whatsapp_business_username_request, string $contentType = self::contentTypes['createWhatsAppDataset'][0])
     {
-        $request = $this->createWhatsAppDatasetRequest($create_whats_app_dataset_request, $contentType);
+        $request = $this->createWhatsAppDatasetRequest($delete_whatsapp_business_username_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1269,15 +1281,15 @@ class WhatsAppApi
      *
      * Provision CTWA dataset
      *
-     * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request (required)
+     * @param  \Zernio\Model\DeleteWhatsappBusinessUsernameRequest $delete_whatsapp_business_username_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppDataset'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createWhatsAppDatasetAsync($create_whats_app_dataset_request, string $contentType = self::contentTypes['createWhatsAppDataset'][0])
+    public function createWhatsAppDatasetAsync($delete_whatsapp_business_username_request, string $contentType = self::contentTypes['createWhatsAppDataset'][0])
     {
-        return $this->createWhatsAppDatasetAsyncWithHttpInfo($create_whats_app_dataset_request, $contentType)
+        return $this->createWhatsAppDatasetAsyncWithHttpInfo($delete_whatsapp_business_username_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1290,16 +1302,16 @@ class WhatsAppApi
      *
      * Provision CTWA dataset
      *
-     * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request (required)
+     * @param  \Zernio\Model\DeleteWhatsappBusinessUsernameRequest $delete_whatsapp_business_username_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppDataset'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createWhatsAppDatasetAsyncWithHttpInfo($create_whats_app_dataset_request, string $contentType = self::contentTypes['createWhatsAppDataset'][0])
+    public function createWhatsAppDatasetAsyncWithHttpInfo($delete_whatsapp_business_username_request, string $contentType = self::contentTypes['createWhatsAppDataset'][0])
     {
         $returnType = '\Zernio\Model\CreateWhatsAppDataset200Response';
-        $request = $this->createWhatsAppDatasetRequest($create_whats_app_dataset_request, $contentType);
+        $request = $this->createWhatsAppDatasetRequest($delete_whatsapp_business_username_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1340,19 +1352,19 @@ class WhatsAppApi
     /**
      * Create request for operation 'createWhatsAppDataset'
      *
-     * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request (required)
+     * @param  \Zernio\Model\DeleteWhatsappBusinessUsernameRequest $delete_whatsapp_business_username_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppDataset'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createWhatsAppDatasetRequest($create_whats_app_dataset_request, string $contentType = self::contentTypes['createWhatsAppDataset'][0])
+    public function createWhatsAppDatasetRequest($delete_whatsapp_business_username_request, string $contentType = self::contentTypes['createWhatsAppDataset'][0])
     {
 
-        // verify the required parameter 'create_whats_app_dataset_request' is set
-        if ($create_whats_app_dataset_request === null || (is_array($create_whats_app_dataset_request) && count($create_whats_app_dataset_request) === 0)) {
+        // verify the required parameter 'delete_whatsapp_business_username_request' is set
+        if ($delete_whatsapp_business_username_request === null || (is_array($delete_whatsapp_business_username_request) && count($delete_whatsapp_business_username_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $create_whats_app_dataset_request when calling createWhatsAppDataset'
+                'Missing the required parameter $delete_whatsapp_business_username_request when calling createWhatsAppDataset'
             );
         }
 
@@ -1375,12 +1387,12 @@ class WhatsAppApi
         );
 
         // for model (json/xml)
-        if (isset($create_whats_app_dataset_request)) {
+        if (isset($delete_whatsapp_business_username_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_whats_app_dataset_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($delete_whatsapp_business_username_request));
             } else {
-                $httpBody = $create_whats_app_dataset_request;
+                $httpBody = $delete_whatsapp_business_username_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2902,6 +2914,291 @@ class WhatsAppApi
 
         // for model (json/xml)
         if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteWhatsappBusinessUsername
+     *
+     * Delete business username
+     *
+     * @param  \Zernio\Model\DeleteWhatsappBusinessUsernameRequest $delete_whatsapp_business_username_request delete_whatsapp_business_username_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsappBusinessUsername'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject
+     */
+    public function deleteWhatsappBusinessUsername($delete_whatsapp_business_username_request, string $contentType = self::contentTypes['deleteWhatsappBusinessUsername'][0])
+    {
+        list($response) = $this->deleteWhatsappBusinessUsernameWithHttpInfo($delete_whatsapp_business_username_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation deleteWhatsappBusinessUsernameWithHttpInfo
+     *
+     * Delete business username
+     *
+     * @param  \Zernio\Model\DeleteWhatsappBusinessUsernameRequest $delete_whatsapp_business_username_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsappBusinessUsername'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteWhatsappBusinessUsernameWithHttpInfo($delete_whatsapp_business_username_request, string $contentType = self::contentTypes['deleteWhatsappBusinessUsername'][0])
+    {
+        $request = $this->deleteWhatsappBusinessUsernameRequest($delete_whatsapp_business_username_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteWhatsappBusinessUsernameAsync
+     *
+     * Delete business username
+     *
+     * @param  \Zernio\Model\DeleteWhatsappBusinessUsernameRequest $delete_whatsapp_business_username_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsappBusinessUsername'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteWhatsappBusinessUsernameAsync($delete_whatsapp_business_username_request, string $contentType = self::contentTypes['deleteWhatsappBusinessUsername'][0])
+    {
+        return $this->deleteWhatsappBusinessUsernameAsyncWithHttpInfo($delete_whatsapp_business_username_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteWhatsappBusinessUsernameAsyncWithHttpInfo
+     *
+     * Delete business username
+     *
+     * @param  \Zernio\Model\DeleteWhatsappBusinessUsernameRequest $delete_whatsapp_business_username_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsappBusinessUsername'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteWhatsappBusinessUsernameAsyncWithHttpInfo($delete_whatsapp_business_username_request, string $contentType = self::contentTypes['deleteWhatsappBusinessUsername'][0])
+    {
+        $returnType = '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response';
+        $request = $this->deleteWhatsappBusinessUsernameRequest($delete_whatsapp_business_username_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteWhatsappBusinessUsername'
+     *
+     * @param  \Zernio\Model\DeleteWhatsappBusinessUsernameRequest $delete_whatsapp_business_username_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsappBusinessUsername'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteWhatsappBusinessUsernameRequest($delete_whatsapp_business_username_request, string $contentType = self::contentTypes['deleteWhatsappBusinessUsername'][0])
+    {
+
+        // verify the required parameter 'delete_whatsapp_business_username_request' is set
+        if ($delete_whatsapp_business_username_request === null || (is_array($delete_whatsapp_business_username_request) && count($delete_whatsapp_business_username_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $delete_whatsapp_business_username_request when calling deleteWhatsappBusinessUsername'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/business-profile/username';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($delete_whatsapp_business_username_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($delete_whatsapp_business_username_request));
+            } else {
+                $httpBody = $delete_whatsapp_business_username_request;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -5373,6 +5670,580 @@ class WhatsAppApi
     }
 
     /**
+     * Operation getWhatsappBusinessUsername
+     *
+     * Get business username
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsappBusinessUsername'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetWhatsappBusinessUsername200Response|\Zernio\Model\InlineObject
+     */
+    public function getWhatsappBusinessUsername($account_id, string $contentType = self::contentTypes['getWhatsappBusinessUsername'][0])
+    {
+        list($response) = $this->getWhatsappBusinessUsernameWithHttpInfo($account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getWhatsappBusinessUsernameWithHttpInfo
+     *
+     * Get business username
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsappBusinessUsername'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetWhatsappBusinessUsername200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getWhatsappBusinessUsernameWithHttpInfo($account_id, string $contentType = self::contentTypes['getWhatsappBusinessUsername'][0])
+    {
+        $request = $this->getWhatsappBusinessUsernameRequest($account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetWhatsappBusinessUsername200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetWhatsappBusinessUsername200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetWhatsappBusinessUsername200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getWhatsappBusinessUsernameAsync
+     *
+     * Get business username
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsappBusinessUsername'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsappBusinessUsernameAsync($account_id, string $contentType = self::contentTypes['getWhatsappBusinessUsername'][0])
+    {
+        return $this->getWhatsappBusinessUsernameAsyncWithHttpInfo($account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getWhatsappBusinessUsernameAsyncWithHttpInfo
+     *
+     * Get business username
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsappBusinessUsername'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsappBusinessUsernameAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['getWhatsappBusinessUsername'][0])
+    {
+        $returnType = '\Zernio\Model\GetWhatsappBusinessUsername200Response';
+        $request = $this->getWhatsappBusinessUsernameRequest($account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getWhatsappBusinessUsername'
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsappBusinessUsername'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getWhatsappBusinessUsernameRequest($account_id, string $contentType = self::contentTypes['getWhatsappBusinessUsername'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getWhatsappBusinessUsername'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/business-profile/username';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getWhatsappBusinessUsernameSuggestions
+     *
+     * Get username suggestions
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsappBusinessUsernameSuggestions'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetWhatsappBusinessUsernameSuggestions200Response|\Zernio\Model\InlineObject
+     */
+    public function getWhatsappBusinessUsernameSuggestions($account_id, string $contentType = self::contentTypes['getWhatsappBusinessUsernameSuggestions'][0])
+    {
+        list($response) = $this->getWhatsappBusinessUsernameSuggestionsWithHttpInfo($account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getWhatsappBusinessUsernameSuggestionsWithHttpInfo
+     *
+     * Get username suggestions
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsappBusinessUsernameSuggestions'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetWhatsappBusinessUsernameSuggestions200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getWhatsappBusinessUsernameSuggestionsWithHttpInfo($account_id, string $contentType = self::contentTypes['getWhatsappBusinessUsernameSuggestions'][0])
+    {
+        $request = $this->getWhatsappBusinessUsernameSuggestionsRequest($account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetWhatsappBusinessUsernameSuggestions200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetWhatsappBusinessUsernameSuggestions200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetWhatsappBusinessUsernameSuggestions200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getWhatsappBusinessUsernameSuggestionsAsync
+     *
+     * Get username suggestions
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsappBusinessUsernameSuggestions'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsappBusinessUsernameSuggestionsAsync($account_id, string $contentType = self::contentTypes['getWhatsappBusinessUsernameSuggestions'][0])
+    {
+        return $this->getWhatsappBusinessUsernameSuggestionsAsyncWithHttpInfo($account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getWhatsappBusinessUsernameSuggestionsAsyncWithHttpInfo
+     *
+     * Get username suggestions
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsappBusinessUsernameSuggestions'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsappBusinessUsernameSuggestionsAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['getWhatsappBusinessUsernameSuggestions'][0])
+    {
+        $returnType = '\Zernio\Model\GetWhatsappBusinessUsernameSuggestions200Response';
+        $request = $this->getWhatsappBusinessUsernameSuggestionsRequest($account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getWhatsappBusinessUsernameSuggestions'
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsappBusinessUsernameSuggestions'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getWhatsappBusinessUsernameSuggestionsRequest($account_id, string $contentType = self::contentTypes['getWhatsappBusinessUsernameSuggestions'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getWhatsappBusinessUsernameSuggestions'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/business-profile/username/suggestions';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation listWhatsAppConversions
      *
      * List conversion events
@@ -7193,6 +8064,291 @@ class WhatsAppApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($send_whats_app_conversion_request));
             } else {
                 $httpBody = $send_whats_app_conversion_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation setWhatsappBusinessUsername
+     *
+     * Set business username
+     *
+     * @param  \Zernio\Model\SetWhatsappBusinessUsernameRequest $set_whatsapp_business_username_request set_whatsapp_business_username_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setWhatsappBusinessUsername'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\SetWhatsappBusinessUsername200Response|\Zernio\Model\InlineObject
+     */
+    public function setWhatsappBusinessUsername($set_whatsapp_business_username_request, string $contentType = self::contentTypes['setWhatsappBusinessUsername'][0])
+    {
+        list($response) = $this->setWhatsappBusinessUsernameWithHttpInfo($set_whatsapp_business_username_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation setWhatsappBusinessUsernameWithHttpInfo
+     *
+     * Set business username
+     *
+     * @param  \Zernio\Model\SetWhatsappBusinessUsernameRequest $set_whatsapp_business_username_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setWhatsappBusinessUsername'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\SetWhatsappBusinessUsername200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function setWhatsappBusinessUsernameWithHttpInfo($set_whatsapp_business_username_request, string $contentType = self::contentTypes['setWhatsappBusinessUsername'][0])
+    {
+        $request = $this->setWhatsappBusinessUsernameRequest($set_whatsapp_business_username_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\SetWhatsappBusinessUsername200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\SetWhatsappBusinessUsername200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\SetWhatsappBusinessUsername200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation setWhatsappBusinessUsernameAsync
+     *
+     * Set business username
+     *
+     * @param  \Zernio\Model\SetWhatsappBusinessUsernameRequest $set_whatsapp_business_username_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setWhatsappBusinessUsername'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function setWhatsappBusinessUsernameAsync($set_whatsapp_business_username_request, string $contentType = self::contentTypes['setWhatsappBusinessUsername'][0])
+    {
+        return $this->setWhatsappBusinessUsernameAsyncWithHttpInfo($set_whatsapp_business_username_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation setWhatsappBusinessUsernameAsyncWithHttpInfo
+     *
+     * Set business username
+     *
+     * @param  \Zernio\Model\SetWhatsappBusinessUsernameRequest $set_whatsapp_business_username_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setWhatsappBusinessUsername'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function setWhatsappBusinessUsernameAsyncWithHttpInfo($set_whatsapp_business_username_request, string $contentType = self::contentTypes['setWhatsappBusinessUsername'][0])
+    {
+        $returnType = '\Zernio\Model\SetWhatsappBusinessUsername200Response';
+        $request = $this->setWhatsappBusinessUsernameRequest($set_whatsapp_business_username_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'setWhatsappBusinessUsername'
+     *
+     * @param  \Zernio\Model\SetWhatsappBusinessUsernameRequest $set_whatsapp_business_username_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setWhatsappBusinessUsername'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function setWhatsappBusinessUsernameRequest($set_whatsapp_business_username_request, string $contentType = self::contentTypes['setWhatsappBusinessUsername'][0])
+    {
+
+        // verify the required parameter 'set_whatsapp_business_username_request' is set
+        if ($set_whatsapp_business_username_request === null || (is_array($set_whatsapp_business_username_request) && count($set_whatsapp_business_username_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $set_whatsapp_business_username_request when calling setWhatsappBusinessUsername'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/business-profile/username';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($set_whatsapp_business_username_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($set_whatsapp_business_username_request));
+            } else {
+                $httpBody = $set_whatsapp_business_username_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
