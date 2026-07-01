@@ -328,6 +328,8 @@ docs/Model/EstimateAdReach200Response.md
 docs/Model/EstimateAdReachRequest.md
 docs/Model/Expired.md
 docs/Model/ExternalPostMediaItem.md
+docs/Model/ExternalPostSummary.md
+docs/Model/ExternalPostSummaryAnalytics.md
 docs/Model/ExternalPostWebhookPost.md
 docs/Model/FacebookPlatformData.md
 docs/Model/FacebookPlatformDataCarouselCardsInner.md
@@ -978,6 +980,9 @@ docs/Model/SubmitWhatsAppNumberKycRequestAddress.md
 docs/Model/SubmitWhatsAppNumberKycRequestDocumentsInner.md
 docs/Model/SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf.md
 docs/Model/SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf1.md
+docs/Model/SyncExternalPosts200Response.md
+docs/Model/SyncExternalPosts200ResponseSynced.md
+docs/Model/SyncExternalPostsRequest.md
 docs/Model/TargetingSpec.md
 docs/Model/TargetingSpecCitiesInner.md
 docs/Model/TargetingSpecCustomLocationsInner.md
@@ -1581,6 +1586,8 @@ lib/Model/EstimateAdReach200Response.php
 lib/Model/EstimateAdReachRequest.php
 lib/Model/Expired.php
 lib/Model/ExternalPostMediaItem.php
+lib/Model/ExternalPostSummary.php
+lib/Model/ExternalPostSummaryAnalytics.php
 lib/Model/ExternalPostWebhookPost.php
 lib/Model/FacebookPlatformData.php
 lib/Model/FacebookPlatformDataCarouselCardsInner.php
@@ -2232,6 +2239,9 @@ lib/Model/SubmitWhatsAppNumberKycRequestAddress.php
 lib/Model/SubmitWhatsAppNumberKycRequestDocumentsInner.php
 lib/Model/SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf.php
 lib/Model/SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf1.php
+lib/Model/SyncExternalPosts200Response.php
+lib/Model/SyncExternalPosts200ResponseSynced.php
+lib/Model/SyncExternalPostsRequest.php
 lib/Model/TargetingSpec.php
 lib/Model/TargetingSpecCitiesInner.php
 lib/Model/TargetingSpecCustomLocationsInner.php
@@ -2507,3 +2517,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ExternalPostSummaryAnalyticsTest.php
+test/Model/ExternalPostSummaryTest.php
+test/Model/SyncExternalPosts200ResponseSyncedTest.php
+test/Model/SyncExternalPosts200ResponseTest.php
+test/Model/SyncExternalPostsRequestTest.php
