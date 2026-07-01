@@ -62,6 +62,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'message' => 'string',
         'attachment_url' => 'string',
         'attachment_type' => 'string',
+        'attachment_name' => 'string',
         'voice_note' => 'bool',
         'quick_replies' => '\Zernio\Model\SendInboxMessageRequestQuickRepliesInner[]',
         'buttons' => '\Zernio\Model\SendInboxMessageRequestButtonsInner[]',
@@ -87,6 +88,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'message' => null,
         'attachment_url' => null,
         'attachment_type' => null,
+        'attachment_name' => null,
         'voice_note' => null,
         'quick_replies' => null,
         'buttons' => null,
@@ -110,6 +112,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'message' => false,
         'attachment_url' => false,
         'attachment_type' => false,
+        'attachment_name' => false,
         'voice_note' => false,
         'quick_replies' => false,
         'buttons' => false,
@@ -213,6 +216,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'message' => 'message',
         'attachment_url' => 'attachmentUrl',
         'attachment_type' => 'attachmentType',
+        'attachment_name' => 'attachmentName',
         'voice_note' => 'voiceNote',
         'quick_replies' => 'quickReplies',
         'buttons' => 'buttons',
@@ -236,6 +240,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'message' => 'setMessage',
         'attachment_url' => 'setAttachmentUrl',
         'attachment_type' => 'setAttachmentType',
+        'attachment_name' => 'setAttachmentName',
         'voice_note' => 'setVoiceNote',
         'quick_replies' => 'setQuickReplies',
         'buttons' => 'setButtons',
@@ -259,6 +264,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'message' => 'getMessage',
         'attachment_url' => 'getAttachmentUrl',
         'attachment_type' => 'getAttachmentType',
+        'attachment_name' => 'getAttachmentName',
         'voice_note' => 'getVoiceNote',
         'quick_replies' => 'getQuickReplies',
         'buttons' => 'getButtons',
@@ -388,6 +394,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('message', $data ?? [], null);
         $this->setIfExists('attachment_url', $data ?? [], null);
         $this->setIfExists('attachment_type', $data ?? [], null);
+        $this->setIfExists('attachment_name', $data ?? [], null);
         $this->setIfExists('voice_note', $data ?? [], null);
         $this->setIfExists('quick_replies', $data ?? [], null);
         $this->setIfExists('buttons', $data ?? [], null);
@@ -595,6 +602,33 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
             );
         }
         $this->container['attachment_type'] = $attachment_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets attachment_name
+     *
+     * @return string|null
+     */
+    public function getAttachmentName()
+    {
+        return $this->container['attachment_name'];
+    }
+
+    /**
+     * Sets attachment_name
+     *
+     * @param string|null $attachment_name WhatsApp only. Display name for a document sent via attachmentUrl with attachmentType: file (e.g. \"Report.pdf\"). Maps to the recipient's file name; without it WhatsApp derives the name from the URL and shows \"Untitled\". Ignored for image/video/audio and for binary uploads (which use the uploaded file's name).
+     *
+     * @return self
+     */
+    public function setAttachmentName($attachment_name)
+    {
+        if (is_null($attachment_name)) {
+            throw new \InvalidArgumentException('non-nullable attachment_name cannot be null');
+        }
+        $this->container['attachment_name'] = $attachment_name;
 
         return $this;
     }
