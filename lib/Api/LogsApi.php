@@ -131,7 +131,7 @@ class LogsApi
      *
      * List activity logs
      *
-     * @param  string|null $type Log category to query (optional, default to 'publishing')
+     * @param  string|null $type Log category to query. Use &#x60;all&#x60; for the unified view across every category, or &#x60;api_request&#x60; for your API request logs (method, path, status, latency). (optional, default to 'publishing')
      * @param  string|null $status Filter by status (optional)
      * @param  string|null $platform Filter by platform (optional)
      * @param  string|null $action Filter by action (e.g., post.published, message.sent, account.connected, webhook.delivered) (optional)
@@ -139,15 +139,23 @@ class LogsApi
      * @param  int|null $days Number of days to look back (max 90) (optional, default to 90)
      * @param  int|null $limit Maximum number of logs to return (max 100) (optional, default to 50)
      * @param  int|null $skip Number of logs to skip (for pagination) (optional, default to 0)
+     * @param  string|null $account_id Filter by connected account ID (optional)
+     * @param  string|null $event Filter webhook logs by event (e.g. post.published, message.received) (optional)
+     * @param  string|null $request_id Correlation ID — returns every log spawned by a single API request (optional)
+     * @param  \DateTime|null $from Precise start instant (ISO 8601); narrows within the day range (optional)
+     * @param  \DateTime|null $to Precise end instant (ISO 8601) (optional)
+     * @param  int|null $status_code Filter by exact HTTP status code (api_request logs) (optional)
+     * @param  string|null $api_key_id Filter by the API key that made the request (api_request logs) (optional)
+     * @param  bool|null $include_read_receipts Include message.read / message.delivered events (hidden by default for messaging logs) (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLogs'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListLogs200Response|\Zernio\Model\InlineObject
      */
-    public function listLogs($type = 'publishing', $status = null, $platform = null, $action = null, $search = null, $days = 90, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listLogs'][0])
+    public function listLogs($type = 'publishing', $status = null, $platform = null, $action = null, $search = null, $days = 90, $limit = 50, $skip = 0, $account_id = null, $event = null, $request_id = null, $from = null, $to = null, $status_code = null, $api_key_id = null, $include_read_receipts = false, string $contentType = self::contentTypes['listLogs'][0])
     {
-        list($response) = $this->listLogsWithHttpInfo($type, $status, $platform, $action, $search, $days, $limit, $skip, $contentType);
+        list($response) = $this->listLogsWithHttpInfo($type, $status, $platform, $action, $search, $days, $limit, $skip, $account_id, $event, $request_id, $from, $to, $status_code, $api_key_id, $include_read_receipts, $contentType);
         return $response;
     }
 
@@ -156,7 +164,7 @@ class LogsApi
      *
      * List activity logs
      *
-     * @param  string|null $type Log category to query (optional, default to 'publishing')
+     * @param  string|null $type Log category to query. Use &#x60;all&#x60; for the unified view across every category, or &#x60;api_request&#x60; for your API request logs (method, path, status, latency). (optional, default to 'publishing')
      * @param  string|null $status Filter by status (optional)
      * @param  string|null $platform Filter by platform (optional)
      * @param  string|null $action Filter by action (e.g., post.published, message.sent, account.connected, webhook.delivered) (optional)
@@ -164,15 +172,23 @@ class LogsApi
      * @param  int|null $days Number of days to look back (max 90) (optional, default to 90)
      * @param  int|null $limit Maximum number of logs to return (max 100) (optional, default to 50)
      * @param  int|null $skip Number of logs to skip (for pagination) (optional, default to 0)
+     * @param  string|null $account_id Filter by connected account ID (optional)
+     * @param  string|null $event Filter webhook logs by event (e.g. post.published, message.received) (optional)
+     * @param  string|null $request_id Correlation ID — returns every log spawned by a single API request (optional)
+     * @param  \DateTime|null $from Precise start instant (ISO 8601); narrows within the day range (optional)
+     * @param  \DateTime|null $to Precise end instant (ISO 8601) (optional)
+     * @param  int|null $status_code Filter by exact HTTP status code (api_request logs) (optional)
+     * @param  string|null $api_key_id Filter by the API key that made the request (api_request logs) (optional)
+     * @param  bool|null $include_read_receipts Include message.read / message.delivered events (hidden by default for messaging logs) (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLogs'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListLogs200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listLogsWithHttpInfo($type = 'publishing', $status = null, $platform = null, $action = null, $search = null, $days = 90, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listLogs'][0])
+    public function listLogsWithHttpInfo($type = 'publishing', $status = null, $platform = null, $action = null, $search = null, $days = 90, $limit = 50, $skip = 0, $account_id = null, $event = null, $request_id = null, $from = null, $to = null, $status_code = null, $api_key_id = null, $include_read_receipts = false, string $contentType = self::contentTypes['listLogs'][0])
     {
-        $request = $this->listLogsRequest($type, $status, $platform, $action, $search, $days, $limit, $skip, $contentType);
+        $request = $this->listLogsRequest($type, $status, $platform, $action, $search, $days, $limit, $skip, $account_id, $event, $request_id, $from, $to, $status_code, $api_key_id, $include_read_receipts, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -262,7 +278,7 @@ class LogsApi
      *
      * List activity logs
      *
-     * @param  string|null $type Log category to query (optional, default to 'publishing')
+     * @param  string|null $type Log category to query. Use &#x60;all&#x60; for the unified view across every category, or &#x60;api_request&#x60; for your API request logs (method, path, status, latency). (optional, default to 'publishing')
      * @param  string|null $status Filter by status (optional)
      * @param  string|null $platform Filter by platform (optional)
      * @param  string|null $action Filter by action (e.g., post.published, message.sent, account.connected, webhook.delivered) (optional)
@@ -270,14 +286,22 @@ class LogsApi
      * @param  int|null $days Number of days to look back (max 90) (optional, default to 90)
      * @param  int|null $limit Maximum number of logs to return (max 100) (optional, default to 50)
      * @param  int|null $skip Number of logs to skip (for pagination) (optional, default to 0)
+     * @param  string|null $account_id Filter by connected account ID (optional)
+     * @param  string|null $event Filter webhook logs by event (e.g. post.published, message.received) (optional)
+     * @param  string|null $request_id Correlation ID — returns every log spawned by a single API request (optional)
+     * @param  \DateTime|null $from Precise start instant (ISO 8601); narrows within the day range (optional)
+     * @param  \DateTime|null $to Precise end instant (ISO 8601) (optional)
+     * @param  int|null $status_code Filter by exact HTTP status code (api_request logs) (optional)
+     * @param  string|null $api_key_id Filter by the API key that made the request (api_request logs) (optional)
+     * @param  bool|null $include_read_receipts Include message.read / message.delivered events (hidden by default for messaging logs) (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLogs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listLogsAsync($type = 'publishing', $status = null, $platform = null, $action = null, $search = null, $days = 90, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listLogs'][0])
+    public function listLogsAsync($type = 'publishing', $status = null, $platform = null, $action = null, $search = null, $days = 90, $limit = 50, $skip = 0, $account_id = null, $event = null, $request_id = null, $from = null, $to = null, $status_code = null, $api_key_id = null, $include_read_receipts = false, string $contentType = self::contentTypes['listLogs'][0])
     {
-        return $this->listLogsAsyncWithHttpInfo($type, $status, $platform, $action, $search, $days, $limit, $skip, $contentType)
+        return $this->listLogsAsyncWithHttpInfo($type, $status, $platform, $action, $search, $days, $limit, $skip, $account_id, $event, $request_id, $from, $to, $status_code, $api_key_id, $include_read_receipts, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -290,7 +314,7 @@ class LogsApi
      *
      * List activity logs
      *
-     * @param  string|null $type Log category to query (optional, default to 'publishing')
+     * @param  string|null $type Log category to query. Use &#x60;all&#x60; for the unified view across every category, or &#x60;api_request&#x60; for your API request logs (method, path, status, latency). (optional, default to 'publishing')
      * @param  string|null $status Filter by status (optional)
      * @param  string|null $platform Filter by platform (optional)
      * @param  string|null $action Filter by action (e.g., post.published, message.sent, account.connected, webhook.delivered) (optional)
@@ -298,15 +322,23 @@ class LogsApi
      * @param  int|null $days Number of days to look back (max 90) (optional, default to 90)
      * @param  int|null $limit Maximum number of logs to return (max 100) (optional, default to 50)
      * @param  int|null $skip Number of logs to skip (for pagination) (optional, default to 0)
+     * @param  string|null $account_id Filter by connected account ID (optional)
+     * @param  string|null $event Filter webhook logs by event (e.g. post.published, message.received) (optional)
+     * @param  string|null $request_id Correlation ID — returns every log spawned by a single API request (optional)
+     * @param  \DateTime|null $from Precise start instant (ISO 8601); narrows within the day range (optional)
+     * @param  \DateTime|null $to Precise end instant (ISO 8601) (optional)
+     * @param  int|null $status_code Filter by exact HTTP status code (api_request logs) (optional)
+     * @param  string|null $api_key_id Filter by the API key that made the request (api_request logs) (optional)
+     * @param  bool|null $include_read_receipts Include message.read / message.delivered events (hidden by default for messaging logs) (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLogs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listLogsAsyncWithHttpInfo($type = 'publishing', $status = null, $platform = null, $action = null, $search = null, $days = 90, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listLogs'][0])
+    public function listLogsAsyncWithHttpInfo($type = 'publishing', $status = null, $platform = null, $action = null, $search = null, $days = 90, $limit = 50, $skip = 0, $account_id = null, $event = null, $request_id = null, $from = null, $to = null, $status_code = null, $api_key_id = null, $include_read_receipts = false, string $contentType = self::contentTypes['listLogs'][0])
     {
         $returnType = '\Zernio\Model\ListLogs200Response';
-        $request = $this->listLogsRequest($type, $status, $platform, $action, $search, $days, $limit, $skip, $contentType);
+        $request = $this->listLogsRequest($type, $status, $platform, $action, $search, $days, $limit, $skip, $account_id, $event, $request_id, $from, $to, $status_code, $api_key_id, $include_read_receipts, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -347,7 +379,7 @@ class LogsApi
     /**
      * Create request for operation 'listLogs'
      *
-     * @param  string|null $type Log category to query (optional, default to 'publishing')
+     * @param  string|null $type Log category to query. Use &#x60;all&#x60; for the unified view across every category, or &#x60;api_request&#x60; for your API request logs (method, path, status, latency). (optional, default to 'publishing')
      * @param  string|null $status Filter by status (optional)
      * @param  string|null $platform Filter by platform (optional)
      * @param  string|null $action Filter by action (e.g., post.published, message.sent, account.connected, webhook.delivered) (optional)
@@ -355,12 +387,20 @@ class LogsApi
      * @param  int|null $days Number of days to look back (max 90) (optional, default to 90)
      * @param  int|null $limit Maximum number of logs to return (max 100) (optional, default to 50)
      * @param  int|null $skip Number of logs to skip (for pagination) (optional, default to 0)
+     * @param  string|null $account_id Filter by connected account ID (optional)
+     * @param  string|null $event Filter webhook logs by event (e.g. post.published, message.received) (optional)
+     * @param  string|null $request_id Correlation ID — returns every log spawned by a single API request (optional)
+     * @param  \DateTime|null $from Precise start instant (ISO 8601); narrows within the day range (optional)
+     * @param  \DateTime|null $to Precise end instant (ISO 8601) (optional)
+     * @param  int|null $status_code Filter by exact HTTP status code (api_request logs) (optional)
+     * @param  string|null $api_key_id Filter by the API key that made the request (api_request logs) (optional)
+     * @param  bool|null $include_read_receipts Include message.read / message.delivered events (hidden by default for messaging logs) (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLogs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listLogsRequest($type = 'publishing', $status = null, $platform = null, $action = null, $search = null, $days = 90, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listLogs'][0])
+    public function listLogsRequest($type = 'publishing', $status = null, $platform = null, $action = null, $search = null, $days = 90, $limit = 50, $skip = 0, $account_id = null, $event = null, $request_id = null, $from = null, $to = null, $status_code = null, $api_key_id = null, $include_read_receipts = false, string $contentType = self::contentTypes['listLogs'][0])
     {
 
 
@@ -386,6 +426,14 @@ class LogsApi
             throw new \InvalidArgumentException('invalid value for "$skip" when calling LogsApi.listLogs, must be bigger than or equal to 0.');
         }
         
+
+
+
+
+
+
+
+
 
         $resourcePath = '/v1/logs';
         $formParams = [];
@@ -462,6 +510,78 @@ class LogsApi
             $skip,
             'skip', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'account_id', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $event,
+            'event', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $request_id,
+            'request_id', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from,
+            'from', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to,
+            'to', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $status_code,
+            'status_code', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $api_key_id,
+            'api_key_id', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $include_read_receipts,
+            'include_read_receipts', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required

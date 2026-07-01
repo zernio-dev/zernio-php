@@ -72,7 +72,13 @@ class ListLogs200ResponseLogsInner implements ModelInterface, ArrayAccess, \Json
         'request_body' => 'string',
         'response_body' => 'string',
         'created_at' => '\DateTime',
-        'metadata' => 'string'
+        'metadata' => 'string',
+        'request_id' => 'string',
+        'api_key_id' => 'string',
+        'method' => 'string',
+        'path' => 'string',
+        'ip_address' => 'string',
+        'user_agent' => 'string'
     ];
 
     /**
@@ -97,7 +103,13 @@ class ListLogs200ResponseLogsInner implements ModelInterface, ArrayAccess, \Json
         'request_body' => null,
         'response_body' => null,
         'created_at' => 'date-time',
-        'metadata' => null
+        'metadata' => null,
+        'request_id' => null,
+        'api_key_id' => null,
+        'method' => null,
+        'path' => null,
+        'ip_address' => null,
+        'user_agent' => null
     ];
 
     /**
@@ -120,7 +132,13 @@ class ListLogs200ResponseLogsInner implements ModelInterface, ArrayAccess, \Json
         'request_body' => false,
         'response_body' => false,
         'created_at' => false,
-        'metadata' => false
+        'metadata' => false,
+        'request_id' => false,
+        'api_key_id' => false,
+        'method' => false,
+        'path' => false,
+        'ip_address' => false,
+        'user_agent' => false
     ];
 
     /**
@@ -223,7 +241,13 @@ class ListLogs200ResponseLogsInner implements ModelInterface, ArrayAccess, \Json
         'request_body' => 'request_body',
         'response_body' => 'response_body',
         'created_at' => 'created_at',
-        'metadata' => 'metadata'
+        'metadata' => 'metadata',
+        'request_id' => 'request_id',
+        'api_key_id' => 'api_key_id',
+        'method' => 'method',
+        'path' => 'path',
+        'ip_address' => 'ip_address',
+        'user_agent' => 'user_agent'
     ];
 
     /**
@@ -246,7 +270,13 @@ class ListLogs200ResponseLogsInner implements ModelInterface, ArrayAccess, \Json
         'request_body' => 'setRequestBody',
         'response_body' => 'setResponseBody',
         'created_at' => 'setCreatedAt',
-        'metadata' => 'setMetadata'
+        'metadata' => 'setMetadata',
+        'request_id' => 'setRequestId',
+        'api_key_id' => 'setApiKeyId',
+        'method' => 'setMethod',
+        'path' => 'setPath',
+        'ip_address' => 'setIpAddress',
+        'user_agent' => 'setUserAgent'
     ];
 
     /**
@@ -269,7 +299,13 @@ class ListLogs200ResponseLogsInner implements ModelInterface, ArrayAccess, \Json
         'request_body' => 'getRequestBody',
         'response_body' => 'getResponseBody',
         'created_at' => 'getCreatedAt',
-        'metadata' => 'getMetadata'
+        'metadata' => 'getMetadata',
+        'request_id' => 'getRequestId',
+        'api_key_id' => 'getApiKeyId',
+        'method' => 'getMethod',
+        'path' => 'getPath',
+        'ip_address' => 'getIpAddress',
+        'user_agent' => 'getUserAgent'
     ];
 
     /**
@@ -363,6 +399,12 @@ class ListLogs200ResponseLogsInner implements ModelInterface, ArrayAccess, \Json
         $this->setIfExists('response_body', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('request_id', $data ?? [], null);
+        $this->setIfExists('api_key_id', $data ?? [], null);
+        $this->setIfExists('method', $data ?? [], null);
+        $this->setIfExists('path', $data ?? [], null);
+        $this->setIfExists('ip_address', $data ?? [], null);
+        $this->setIfExists('user_agent', $data ?? [], null);
     }
 
     /**
@@ -827,6 +869,168 @@ class ListLogs200ResponseLogsInner implements ModelInterface, ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable metadata cannot be null');
         }
         $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_id
+     *
+     * @return string|null
+     */
+    public function getRequestId()
+    {
+        return $this->container['request_id'];
+    }
+
+    /**
+     * Sets request_id
+     *
+     * @param string|null $request_id Correlation ID linking every log from one API request (api_request logs)
+     *
+     * @return self
+     */
+    public function setRequestId($request_id)
+    {
+        if (is_null($request_id)) {
+            throw new \InvalidArgumentException('non-nullable request_id cannot be null');
+        }
+        $this->container['request_id'] = $request_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets api_key_id
+     *
+     * @return string|null
+     */
+    public function getApiKeyId()
+    {
+        return $this->container['api_key_id'];
+    }
+
+    /**
+     * Sets api_key_id
+     *
+     * @param string|null $api_key_id The API key that made the request (api_request logs)
+     *
+     * @return self
+     */
+    public function setApiKeyId($api_key_id)
+    {
+        if (is_null($api_key_id)) {
+            throw new \InvalidArgumentException('non-nullable api_key_id cannot be null');
+        }
+        $this->container['api_key_id'] = $api_key_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets method
+     *
+     * @return string|null
+     */
+    public function getMethod()
+    {
+        return $this->container['method'];
+    }
+
+    /**
+     * Sets method
+     *
+     * @param string|null $method HTTP method (api_request logs)
+     *
+     * @return self
+     */
+    public function setMethod($method)
+    {
+        if (is_null($method)) {
+            throw new \InvalidArgumentException('non-nullable method cannot be null');
+        }
+        $this->container['method'] = $method;
+
+        return $this;
+    }
+
+    /**
+     * Gets path
+     *
+     * @return string|null
+     */
+    public function getPath()
+    {
+        return $this->container['path'];
+    }
+
+    /**
+     * Sets path
+     *
+     * @param string|null $path Request path (api_request logs)
+     *
+     * @return self
+     */
+    public function setPath($path)
+    {
+        if (is_null($path)) {
+            throw new \InvalidArgumentException('non-nullable path cannot be null');
+        }
+        $this->container['path'] = $path;
+
+        return $this;
+    }
+
+    /**
+     * Gets ip_address
+     *
+     * @return string|null
+     */
+    public function getIpAddress()
+    {
+        return $this->container['ip_address'];
+    }
+
+    /**
+     * Sets ip_address
+     *
+     * @param string|null $ip_address Client IP address (api_request logs)
+     *
+     * @return self
+     */
+    public function setIpAddress($ip_address)
+    {
+        if (is_null($ip_address)) {
+            throw new \InvalidArgumentException('non-nullable ip_address cannot be null');
+        }
+        $this->container['ip_address'] = $ip_address;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_agent
+     *
+     * @return string|null
+     */
+    public function getUserAgent()
+    {
+        return $this->container['user_agent'];
+    }
+
+    /**
+     * Sets user_agent
+     *
+     * @param string|null $user_agent Client user-agent (api_request logs)
+     *
+     * @return self
+     */
+    public function setUserAgent($user_agent)
+    {
+        if (is_null($user_agent)) {
+            throw new \InvalidArgumentException('non-nullable user_agent cannot be null');
+        }
+        $this->container['user_agent'] = $user_agent;
 
         return $this;
     }
