@@ -2538,7 +2538,7 @@ class PostsApi
     /**
      * Operation syncExternalPosts
      *
-     * Sync or verify an external post on demand
+     * Sync an external post
      *
      * @param  \Zernio\Model\SyncExternalPostsRequest $sync_external_posts_request sync_external_posts_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['syncExternalPosts'] to see the possible values for this operation
@@ -2556,7 +2556,7 @@ class PostsApi
     /**
      * Operation syncExternalPostsWithHttpInfo
      *
-     * Sync or verify an external post on demand
+     * Sync an external post
      *
      * @param  \Zernio\Model\SyncExternalPostsRequest $sync_external_posts_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['syncExternalPosts'] to see the possible values for this operation
@@ -2669,7 +2669,7 @@ class PostsApi
     /**
      * Operation syncExternalPostsAsync
      *
-     * Sync or verify an external post on demand
+     * Sync an external post
      *
      * @param  \Zernio\Model\SyncExternalPostsRequest $sync_external_posts_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['syncExternalPosts'] to see the possible values for this operation
@@ -2690,7 +2690,7 @@ class PostsApi
     /**
      * Operation syncExternalPostsAsyncWithHttpInfo
      *
-     * Sync or verify an external post on demand
+     * Sync an external post
      *
      * @param  \Zernio\Model\SyncExternalPostsRequest $sync_external_posts_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['syncExternalPosts'] to see the possible values for this operation

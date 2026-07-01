@@ -2517,8 +2517,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ExternalPostSummaryAnalyticsTest.php
-test/Model/ExternalPostSummaryTest.php
-test/Model/SyncExternalPosts200ResponseSyncedTest.php
-test/Model/SyncExternalPosts200ResponseTest.php
-test/Model/SyncExternalPostsRequestTest.php

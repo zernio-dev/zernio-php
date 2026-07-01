@@ -306,7 +306,7 @@ Class | Method | HTTP request | Description
 *PostsApi* | [**getPost**](docs/Api/PostsApi.md#getpost) | **GET** /v1/posts/{postId} | Get post
 *PostsApi* | [**listPosts**](docs/Api/PostsApi.md#listposts) | **GET** /v1/posts | List posts
 *PostsApi* | [**retryPost**](docs/Api/PostsApi.md#retrypost) | **POST** /v1/posts/{postId}/retry | Retry failed post
-*PostsApi* | [**syncExternalPosts**](docs/Api/PostsApi.md#syncexternalposts) | **POST** /v1/posts/sync-external | Sync or verify an external post on demand
+*PostsApi* | [**syncExternalPosts**](docs/Api/PostsApi.md#syncexternalposts) | **POST** /v1/posts/sync-external | Sync an external post
 *PostsApi* | [**unpublishPost**](docs/Api/PostsApi.md#unpublishpost) | **POST** /v1/posts/{postId}/unpublish | Unpublish post
 *PostsApi* | [**updatePost**](docs/Api/PostsApi.md#updatepost) | **PUT** /v1/posts/{postId} | Update post
 *PostsApi* | [**updatePostMetadata**](docs/Api/PostsApi.md#updatepostmetadata) | **POST** /v1/posts/{postId}/update-metadata | Update post metadata
