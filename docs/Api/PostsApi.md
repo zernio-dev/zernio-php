@@ -13,7 +13,6 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getPost()**](PostsApi.md#getPost) | **GET** /v1/posts/{postId} | Get post |
 | [**listPosts()**](PostsApi.md#listPosts) | **GET** /v1/posts | List posts |
 | [**retryPost()**](PostsApi.md#retryPost) | **POST** /v1/posts/{postId}/retry | Retry failed post |
-| [**syncExternalPosts()**](PostsApi.md#syncExternalPosts) | **POST** /v1/posts/sync-external | Sync an external post |
 | [**unpublishPost()**](PostsApi.md#unpublishPost) | **POST** /v1/posts/{postId}/unpublish | Unpublish post |
 | [**updatePost()**](PostsApi.md#updatePost) | **PUT** /v1/posts/{postId} | Update post |
 | [**updatePostMetadata()**](PostsApi.md#updatePostMetadata) | **POST** /v1/posts/{postId}/update-metadata | Update post metadata |
@@ -463,66 +462,6 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `syncExternalPosts()`
-
-```php
-syncExternalPosts($sync_external_posts_request): \Zernio\Model\SyncExternalPosts200Response
-```
-
-Sync an external post
-
-Fetch an account's latest external posts (published directly on the platform, not through Zernio) on demand, so a just-published post is retrievable within seconds instead of waiting for the background sync (which refreshes each account at most every ~90 minutes).  Primary use case: verifying a submitted post. When a user publishes on the platform and immediately pastes the post URL into your app, call this with `accountId` plus `url` (or `postId`) to confirm the post exists and return its metadata.  Behavior: - We check our stored copy first and return immediately if the post is already known (no platform call). - Otherwise we fetch the account's latest posts live from the platform, then match and return the submitted post. - Requests are debounced per account (~15s): if the account was just synced, the live fetch is skipped.  `accountId` is required — a post URL or id alone cannot be resolved to an account, and the account must be connected to Zernio (we use its token to read the platform). Supported for every platform with a listing API (Instagram, Facebook, TikTok, YouTube, X, Threads, Pinterest, Reddit, Bluesky, Google Business, and LinkedIn organization accounts; LinkedIn personal accounts are not supported).  `url` accepts any format the platform uses (e.g. `instagram.com/p/…`, `instagram.com/reel/…`, `youtu.be/…`, `youtube.com/shorts/…`, `tiktok.com/@user/video/…`, and `vm.tiktok.com` short links). Pass `postId` (the platform media/video id) as an alternative locator.  Note: post-level analytics (reach, impressions) still carry the platform's own delay (e.g. ~24h on Instagram). This endpoint confirms the post exists and returns its metadata plus basic engagement (likes, comments), not delayed insights.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer (JWT) authorization: bearerAuth
-$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Zernio\Api\PostsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$sync_external_posts_request = new \Zernio\Model\SyncExternalPostsRequest(); // \Zernio\Model\SyncExternalPostsRequest
-
-try {
-    $result = $apiInstance->syncExternalPosts($sync_external_posts_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling PostsApi->syncExternalPosts: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **sync_external_posts_request** | [**\Zernio\Model\SyncExternalPostsRequest**](../Model/SyncExternalPostsRequest.md)|  | |
-
-### Return type
-
-[**\Zernio\Model\SyncExternalPosts200Response**](../Model/SyncExternalPosts200Response.md)
-
-### Authorization
-
-[bearerAuth](../../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
