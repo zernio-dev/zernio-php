@@ -443,7 +443,7 @@ class CreateInviteTokenRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets role
      *
-     * @param string|null $role Org role granted to the invitee. Defaults to 'member'. 'admin' can manage the team (invite/remove members, change roles and access) but not billing, ownership transfer or account deletion. 'viewer' creates a read-only member who can view everything in their profile scope but cannot perform any content mutation (publish, edit, delete, connect accounts).
+     * @param string|null $role Org role granted to the invitee. Defaults to 'member'. 'admin' can manage the team (invite/remove members, change roles and access) and billing, but not ownership transfer or account deletion. 'billing_admin' (displayed as Billing Manager) manages billing only. 'viewer' creates a read-only member who can view everything in their profile scope but cannot perform any content mutation (publish, edit, delete, connect accounts).
      *
      * @return self
      */
