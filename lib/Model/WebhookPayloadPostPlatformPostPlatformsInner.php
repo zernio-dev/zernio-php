@@ -1,6 +1,6 @@
 <?php
 /**
- * WebhookPayloadPostPostPlatformsInner
+ * WebhookPayloadPostPlatformPostPlatformsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * WebhookPayloadPostPostPlatformsInner Class Doc Comment
+ * WebhookPayloadPostPlatformPostPlatformsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WebhookPayloadPostPostPlatformsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class WebhookPayloadPostPlatformPostPlatformsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class WebhookPayloadPostPostPlatformsInner implements ModelInterface, ArrayAcces
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WebhookPayloadPost_post_platforms_inner';
+    protected static $openAPIModelName = 'WebhookPayloadPostPlatform_post_platforms_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -398,7 +398,7 @@ class WebhookPayloadPostPostPlatformsInner implements ModelInterface, ArrayAcces
     /**
      * Sets account_id
      *
-     * @param string|null $account_id SocialAccount id this platform target published through. Use it to route events by connected account (e.g. separate staging vs production endpoints). A post can span multiple accounts.
+     * @param string|null $account_id SocialAccount id this platform target published through. On post.platform.* events see also the top-level `account` block.
      *
      * @return self
      */

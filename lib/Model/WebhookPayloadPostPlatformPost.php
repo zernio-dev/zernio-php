@@ -63,7 +63,7 @@ class WebhookPayloadPostPlatformPost implements ModelInterface, ArrayAccess, \Js
         'status' => 'string',
         'scheduled_for' => '\DateTime',
         'published_at' => '\DateTime',
-        'platforms' => '\Zernio\Model\WebhookPayloadPostPostPlatformsInner[]'
+        'platforms' => '\Zernio\Model\WebhookPayloadPostPlatformPostPlatformsInner[]'
     ];
 
     /**
@@ -478,7 +478,7 @@ class WebhookPayloadPostPlatformPost implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets platforms
      *
-     * @return \Zernio\Model\WebhookPayloadPostPostPlatformsInner[]
+     * @return \Zernio\Model\WebhookPayloadPostPlatformPostPlatformsInner[]
      */
     public function getPlatforms()
     {
@@ -488,7 +488,7 @@ class WebhookPayloadPostPlatformPost implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets platforms
      *
-     * @param \Zernio\Model\WebhookPayloadPostPostPlatformsInner[] $platforms platforms
+     * @param \Zernio\Model\WebhookPayloadPostPlatformPostPlatformsInner[] $platforms platforms
      *
      * @return self
      */
