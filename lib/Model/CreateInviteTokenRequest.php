@@ -249,6 +249,7 @@ class CreateInviteTokenRequest implements ModelInterface, ArrayAccess, \JsonSeri
 
     public const SCOPE_ALL = 'all';
     public const SCOPE_PROFILES = 'profiles';
+    public const ROLE_ADMIN = 'admin';
     public const ROLE_MEMBER = 'member';
     public const ROLE_BILLING_ADMIN = 'billing_admin';
     public const ROLE_VIEWER = 'viewer';
@@ -274,6 +275,7 @@ class CreateInviteTokenRequest implements ModelInterface, ArrayAccess, \JsonSeri
     public function getRoleAllowableValues()
     {
         return [
+            self::ROLE_ADMIN,
             self::ROLE_MEMBER,
             self::ROLE_BILLING_ADMIN,
             self::ROLE_VIEWER,
@@ -441,7 +443,7 @@ class CreateInviteTokenRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets role
      *
-     * @param string|null $role Org role granted to the invitee. Defaults to 'member'. 'viewer' creates a read-only member who can view everything in their profile scope but cannot perform any content mutation (publish, edit, delete, connect accounts).
+     * @param string|null $role Org role granted to the invitee. Defaults to 'member'. 'admin' can manage the team (invite/remove members, change roles and access) but not billing, ownership transfer or account deletion. 'viewer' creates a read-only member who can view everything in their profile scope but cannot perform any content mutation (publish, edit, delete, connect accounts).
      *
      * @return self
      */
@@ -479,7 +481,7 @@ class CreateInviteTokenRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets read_only
      *
-     * @param bool|null $read_only Deprecated. Use role 'viewer' instead. When true, the invite is created with role 'viewer'. Cannot be combined with role 'billing_admin'.
+     * @param bool|null $read_only Deprecated. Use role 'viewer' instead. When true, the invite is created with role 'viewer'. Cannot be combined with role 'billing_admin' or 'admin'.
      *
      * @return self
      * @deprecated
