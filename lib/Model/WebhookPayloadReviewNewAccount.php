@@ -59,6 +59,7 @@ class WebhookPayloadReviewNewAccount implements ModelInterface, ArrayAccess, \Js
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'account_id' => 'string',
         'platform' => 'string',
         'username' => 'string'
     ];
@@ -72,6 +73,7 @@ class WebhookPayloadReviewNewAccount implements ModelInterface, ArrayAccess, \Js
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'account_id' => null,
         'platform' => null,
         'username' => null
     ];
@@ -83,6 +85,7 @@ class WebhookPayloadReviewNewAccount implements ModelInterface, ArrayAccess, \Js
       */
     protected static array $openAPINullables = [
         'id' => false,
+        'account_id' => false,
         'platform' => false,
         'username' => false
     ];
@@ -174,6 +177,7 @@ class WebhookPayloadReviewNewAccount implements ModelInterface, ArrayAccess, \Js
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'account_id' => 'accountId',
         'platform' => 'platform',
         'username' => 'username'
     ];
@@ -185,6 +189,7 @@ class WebhookPayloadReviewNewAccount implements ModelInterface, ArrayAccess, \Js
      */
     protected static $setters = [
         'id' => 'setId',
+        'account_id' => 'setAccountId',
         'platform' => 'setPlatform',
         'username' => 'setUsername'
     ];
@@ -196,6 +201,7 @@ class WebhookPayloadReviewNewAccount implements ModelInterface, ArrayAccess, \Js
      */
     protected static $getters = [
         'id' => 'getId',
+        'account_id' => 'getAccountId',
         'platform' => 'getPlatform',
         'username' => 'getUsername'
     ];
@@ -258,6 +264,7 @@ class WebhookPayloadReviewNewAccount implements ModelInterface, ArrayAccess, \Js
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('username', $data ?? [], null);
     }
@@ -336,6 +343,33 @@ class WebhookPayloadReviewNewAccount implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_id
+     *
+     * @return string|null
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id Social account ID (same as id); canonical field for account filtering.
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }

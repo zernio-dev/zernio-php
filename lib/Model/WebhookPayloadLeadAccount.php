@@ -59,6 +59,7 @@ class WebhookPayloadLeadAccount implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'account_id' => 'string',
         'platform' => 'string'
     ];
 
@@ -71,6 +72,7 @@ class WebhookPayloadLeadAccount implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'account_id' => null,
         'platform' => null
     ];
 
@@ -81,6 +83,7 @@ class WebhookPayloadLeadAccount implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static array $openAPINullables = [
         'id' => false,
+        'account_id' => false,
         'platform' => false
     ];
 
@@ -171,6 +174,7 @@ class WebhookPayloadLeadAccount implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'account_id' => 'accountId',
         'platform' => 'platform'
     ];
 
@@ -181,6 +185,7 @@ class WebhookPayloadLeadAccount implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'id' => 'setId',
+        'account_id' => 'setAccountId',
         'platform' => 'setPlatform'
     ];
 
@@ -191,6 +196,7 @@ class WebhookPayloadLeadAccount implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'id' => 'getId',
+        'account_id' => 'getAccountId',
         'platform' => 'getPlatform'
     ];
 
@@ -265,6 +271,7 @@ class WebhookPayloadLeadAccount implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('platform', $data ?? [], null);
     }
 
@@ -348,6 +355,33 @@ class WebhookPayloadLeadAccount implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_id
+     *
+     * @return string|null
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id Social account ID (same as id); canonical field for account filtering.
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }

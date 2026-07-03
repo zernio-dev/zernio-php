@@ -60,6 +60,7 @@ class InboxWebhookAccount implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'account_id' => 'string',
         'platform' => 'string',
         'username' => 'string',
         'display_name' => 'string'
@@ -74,6 +75,7 @@ class InboxWebhookAccount implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'account_id' => null,
         'platform' => null,
         'username' => null,
         'display_name' => null
@@ -86,6 +88,7 @@ class InboxWebhookAccount implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPINullables = [
         'id' => false,
+        'account_id' => false,
         'platform' => false,
         'username' => false,
         'display_name' => false
@@ -178,6 +181,7 @@ class InboxWebhookAccount implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'account_id' => 'accountId',
         'platform' => 'platform',
         'username' => 'username',
         'display_name' => 'displayName'
@@ -190,6 +194,7 @@ class InboxWebhookAccount implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'id' => 'setId',
+        'account_id' => 'setAccountId',
         'platform' => 'setPlatform',
         'username' => 'setUsername',
         'display_name' => 'setDisplayName'
@@ -202,6 +207,7 @@ class InboxWebhookAccount implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'id' => 'getId',
+        'account_id' => 'getAccountId',
         'platform' => 'getPlatform',
         'username' => 'getUsername',
         'display_name' => 'getDisplayName'
@@ -265,6 +271,7 @@ class InboxWebhookAccount implements ModelInterface, ArrayAccess, \JsonSerializa
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('username', $data ?? [], null);
         $this->setIfExists('display_name', $data ?? [], null);
@@ -344,6 +351,33 @@ class InboxWebhookAccount implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_id
+     *
+     * @return string|null
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id Social account ID (same value as id). Canonical field so consumers can filter every webhook event on one field (e.g. route staging vs production by account). id is kept for backward compatibility.
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }
