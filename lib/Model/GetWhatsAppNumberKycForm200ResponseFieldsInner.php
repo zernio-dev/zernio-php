@@ -63,7 +63,8 @@ class GetWhatsAppNumberKycForm200ResponseFieldsInner implements ModelInterface, 
         'kind' => 'string',
         'description' => 'string',
         'example' => 'string',
-        'local_to' => 'string'
+        'local_to' => 'string',
+        'audience' => 'string'
     ];
 
     /**
@@ -79,7 +80,8 @@ class GetWhatsAppNumberKycForm200ResponseFieldsInner implements ModelInterface, 
         'kind' => null,
         'description' => null,
         'example' => null,
-        'local_to' => null
+        'local_to' => null,
+        'audience' => null
     ];
 
     /**
@@ -93,7 +95,8 @@ class GetWhatsAppNumberKycForm200ResponseFieldsInner implements ModelInterface, 
         'kind' => false,
         'description' => true,
         'example' => true,
-        'local_to' => true
+        'local_to' => true,
+        'audience' => true
     ];
 
     /**
@@ -187,7 +190,8 @@ class GetWhatsAppNumberKycForm200ResponseFieldsInner implements ModelInterface, 
         'kind' => 'kind',
         'description' => 'description',
         'example' => 'example',
-        'local_to' => 'localTo'
+        'local_to' => 'localTo',
+        'audience' => 'audience'
     ];
 
     /**
@@ -201,7 +205,8 @@ class GetWhatsAppNumberKycForm200ResponseFieldsInner implements ModelInterface, 
         'kind' => 'setKind',
         'description' => 'setDescription',
         'example' => 'setExample',
-        'local_to' => 'setLocalTo'
+        'local_to' => 'setLocalTo',
+        'audience' => 'setAudience'
     ];
 
     /**
@@ -215,7 +220,8 @@ class GetWhatsAppNumberKycForm200ResponseFieldsInner implements ModelInterface, 
         'kind' => 'getKind',
         'description' => 'getDescription',
         'example' => 'getExample',
-        'local_to' => 'getLocalTo'
+        'local_to' => 'getLocalTo',
+        'audience' => 'getAudience'
     ];
 
     /**
@@ -264,6 +270,8 @@ class GetWhatsAppNumberKycForm200ResponseFieldsInner implements ModelInterface, 
     public const KIND_ADDRESS = 'address';
     public const KIND_FILE = 'file';
     public const KIND_ACTION = 'action';
+    public const AUDIENCE_BUSINESS = 'business';
+    public const AUDIENCE_INDIVIDUAL = 'individual';
 
     /**
      * Gets allowable values of the enum
@@ -278,6 +286,19 @@ class GetWhatsAppNumberKycForm200ResponseFieldsInner implements ModelInterface, 
             self::KIND_ADDRESS,
             self::KIND_FILE,
             self::KIND_ACTION,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAudienceAllowableValues()
+    {
+        return [
+            self::AUDIENCE_BUSINESS,
+            self::AUDIENCE_INDIVIDUAL,
         ];
     }
 
@@ -302,6 +323,7 @@ class GetWhatsAppNumberKycForm200ResponseFieldsInner implements ModelInterface, 
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('example', $data ?? [], null);
         $this->setIfExists('local_to', $data ?? [], null);
+        $this->setIfExists('audience', $data ?? [], null);
     }
 
     /**
@@ -336,6 +358,15 @@ class GetWhatsAppNumberKycForm200ResponseFieldsInner implements ModelInterface, 
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'kind', must be one of '%s'",
                 $this->container['kind'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getAudienceAllowableValues();
+        if (!is_null($this->container['audience']) && !in_array($this->container['audience'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'audience', must be one of '%s'",
+                $this->container['audience'],
                 implode("', '", $allowedValues)
             );
         }
@@ -544,6 +575,50 @@ class GetWhatsAppNumberKycForm200ResponseFieldsInner implements ModelInterface, 
             }
         }
         $this->container['local_to'] = $local_to;
+
+        return $this;
+    }
+
+    /**
+     * Gets audience
+     *
+     * @return string|null
+     */
+    public function getAudience()
+    {
+        return $this->container['audience'];
+    }
+
+    /**
+     * Sets audience
+     *
+     * @param string|null $audience When set, the requirement applies ONLY to this end-user type — provide it for that type and OMIT it for the other (e.g. Brazil: \"Cartão CNPJ\" is business-only, \"CPF\" and \"ID/Passport Copy\" are personal-only). Submitting both sets makes the regulator ask whether the number is for personal or business use and stalls the review. Pass `entityType` on POST so the server drops the inapplicable set.
+     *
+     * @return self
+     */
+    public function setAudience($audience)
+    {
+        if (is_null($audience)) {
+            array_push($this->openAPINullablesSetToNull, 'audience');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('audience', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getAudienceAllowableValues();
+        if (!is_null($audience) && !in_array($audience, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'audience', must be one of '%s'",
+                    $audience,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['audience'] = $audience;
 
         return $this;
     }
