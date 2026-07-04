@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * WebhookPayloadPostPlatform Class Doc Comment
  *
  * @category Class
- * @description Webhook payload for the per-platform terminal events &#x60;post.platform.published&#x60; and &#x60;post.platform.failed&#x60;. Fires once per platform target inside a post as that platform reaches a terminal state (published or permanent failure). The &#x60;post&#x60; envelope mirrors the shape of &#x60;WebhookPayloadPost&#x60; so consumers can reuse rendering logic; the &#x60;platform&#x60; block identifies which specific platform transitioned; the &#x60;account&#x60; block identifies the connected social account behind that platform-write.
+ * @description Webhook payload for the per-platform terminal events &#x60;post.platform.published&#x60; and &#x60;post.platform.failed&#x60;, and for &#x60;post.tiktok.url_resolved&#x60; (same shape, fired when a published TikTok post&#39;s public URL is backfilled). Terminal events fire once per platform target inside a post as that platform reaches a terminal state (published or permanent failure). The &#x60;post&#x60; envelope mirrors the shape of &#x60;WebhookPayloadPost&#x60; so consumers can reuse rendering logic; the &#x60;platform&#x60; block identifies which specific platform transitioned; the &#x60;account&#x60; block identifies the connected social account behind that platform-write.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -262,6 +262,7 @@ class WebhookPayloadPostPlatform implements ModelInterface, ArrayAccess, \JsonSe
 
     public const EVENT_POST_PLATFORM_PUBLISHED = 'post.platform.published';
     public const EVENT_POST_PLATFORM_FAILED = 'post.platform.failed';
+    public const EVENT_POST_TIKTOK_URL_RESOLVED = 'post.tiktok.url_resolved';
 
     /**
      * Gets allowable values of the enum
@@ -273,6 +274,7 @@ class WebhookPayloadPostPlatform implements ModelInterface, ArrayAccess, \JsonSe
         return [
             self::EVENT_POST_PLATFORM_PUBLISHED,
             self::EVENT_POST_PLATFORM_FAILED,
+            self::EVENT_POST_TIKTOK_URL_RESOLVED,
         ];
     }
 

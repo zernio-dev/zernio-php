@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **platforms** | [**\Zernio\Model\UpdatePostRequestPlatformsInner[]**](UpdatePostRequestPlatformsInner.md) | Target platforms and accounts for this post. Each item must include platform and accountId. | [optional]
 **scheduled_for** | **\DateTime** |  | [optional]
 **publish_now** | **bool** |  | [optional] [default to false]
-**is_draft** | **bool** |  | [optional]
+**is_draft** | **bool** | When omitted, the post keeps its current draft status. Send &#x60;false&#x60; to promote a draft to scheduled (combined with &#x60;scheduledFor&#x60;, &#x60;publishNow&#x60;, or a queue). | [optional]
 **timezone** | **string** |  | [optional]
 **visibility** | **string** |  | [optional]
 **tags** | **string[]** |  | [optional]

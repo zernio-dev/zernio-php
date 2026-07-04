@@ -162,6 +162,9 @@ class WebhookEventsApi
         'onPostScheduled' => [
             'application/json',
         ],
+        'onPostTikTokUrlResolved' => [
+            'application/json',
+        ],
         'onReactionReceived' => [
             'application/json',
         ],
@@ -6607,6 +6610,227 @@ class WebhookEventsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_post));
             } else {
                 $httpBody = $webhook_payload_post;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation onPostTikTokUrlResolved
+     *
+     * TikTok post URL resolved event
+     *
+     * @param  \Zernio\Model\WebhookPayloadPostPlatform $webhook_payload_post_platform webhook_payload_post_platform (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostTikTokUrlResolved'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function onPostTikTokUrlResolved($webhook_payload_post_platform, string $contentType = self::contentTypes['onPostTikTokUrlResolved'][0])
+    {
+        $this->onPostTikTokUrlResolvedWithHttpInfo($webhook_payload_post_platform, $contentType);
+    }
+
+    /**
+     * Operation onPostTikTokUrlResolvedWithHttpInfo
+     *
+     * TikTok post URL resolved event
+     *
+     * @param  \Zernio\Model\WebhookPayloadPostPlatform $webhook_payload_post_platform (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostTikTokUrlResolved'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function onPostTikTokUrlResolvedWithHttpInfo($webhook_payload_post_platform, string $contentType = self::contentTypes['onPostTikTokUrlResolved'][0])
+    {
+        $request = $this->onPostTikTokUrlResolvedRequest($webhook_payload_post_platform, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation onPostTikTokUrlResolvedAsync
+     *
+     * TikTok post URL resolved event
+     *
+     * @param  \Zernio\Model\WebhookPayloadPostPlatform $webhook_payload_post_platform (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostTikTokUrlResolved'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onPostTikTokUrlResolvedAsync($webhook_payload_post_platform, string $contentType = self::contentTypes['onPostTikTokUrlResolved'][0])
+    {
+        return $this->onPostTikTokUrlResolvedAsyncWithHttpInfo($webhook_payload_post_platform, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation onPostTikTokUrlResolvedAsyncWithHttpInfo
+     *
+     * TikTok post URL resolved event
+     *
+     * @param  \Zernio\Model\WebhookPayloadPostPlatform $webhook_payload_post_platform (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostTikTokUrlResolved'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onPostTikTokUrlResolvedAsyncWithHttpInfo($webhook_payload_post_platform, string $contentType = self::contentTypes['onPostTikTokUrlResolved'][0])
+    {
+        $returnType = '';
+        $request = $this->onPostTikTokUrlResolvedRequest($webhook_payload_post_platform, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'onPostTikTokUrlResolved'
+     *
+     * @param  \Zernio\Model\WebhookPayloadPostPlatform $webhook_payload_post_platform (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostTikTokUrlResolved'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function onPostTikTokUrlResolvedRequest($webhook_payload_post_platform, string $contentType = self::contentTypes['onPostTikTokUrlResolved'][0])
+    {
+
+        // verify the required parameter 'webhook_payload_post_platform' is set
+        if ($webhook_payload_post_platform === null || (is_array($webhook_payload_post_platform) && count($webhook_payload_post_platform) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $webhook_payload_post_platform when calling onPostTikTokUrlResolved'
+            );
+        }
+
+
+        $resourcePath = '/post.tiktok.url_resolved';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($webhook_payload_post_platform)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_post_platform));
+            } else {
+                $httpBody = $webhook_payload_post_platform;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

@@ -617,7 +617,7 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets is_draft
      *
-     * @param bool|null $is_draft is_draft
+     * @param bool|null $is_draft When omitted, the post keeps its current draft status. Send `false` to promote a draft to scheduled (combined with `scheduledFor`, `publishNow`, or a queue).
      *
      * @return self
      */
