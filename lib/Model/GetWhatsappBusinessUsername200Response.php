@@ -83,7 +83,7 @@ class GetWhatsappBusinessUsername200Response implements ModelInterface, ArrayAcc
       */
     protected static array $openAPINullables = [
         'success' => false,
-        'username' => false,
+        'username' => true,
         'status' => false
     ];
 
@@ -377,7 +377,14 @@ class GetWhatsappBusinessUsername200Response implements ModelInterface, ArrayAcc
     public function setUsername($username)
     {
         if (is_null($username)) {
-            throw new \InvalidArgumentException('non-nullable username cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'username');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('username', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['username'] = $username;
 

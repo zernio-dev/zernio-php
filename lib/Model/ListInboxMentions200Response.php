@@ -59,7 +59,7 @@ class ListInboxMentions200Response implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPITypes = [
         'data' => '\Zernio\Model\ListInboxMentions200ResponseDataInner[]',
-        'pagination' => '\Zernio\Model\ListInboxMentions200ResponsePagination',
+        'pagination' => '\Zernio\Model\GetInboxPostComments200ResponsePagination',
         'meta' => '\Zernio\Model\ListInboxMentions200ResponseMeta'
     ];
 
@@ -334,7 +334,7 @@ class ListInboxMentions200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets pagination
      *
-     * @return \Zernio\Model\ListInboxMentions200ResponsePagination|null
+     * @return \Zernio\Model\GetInboxPostComments200ResponsePagination|null
      */
     public function getPagination()
     {
@@ -344,7 +344,7 @@ class ListInboxMentions200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets pagination
      *
-     * @param \Zernio\Model\ListInboxMentions200ResponsePagination|null $pagination pagination
+     * @param \Zernio\Model\GetInboxPostComments200ResponsePagination|null $pagination pagination
      *
      * @return self
      */

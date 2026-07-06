@@ -101,8 +101,8 @@ class ListInboxMentions200ResponseDataInner implements ModelInterface, ArrayAcce
         'account_id' => false,
         'account_username' => false,
         'content' => false,
-        'permalink' => false,
-        'author_urn' => false,
+        'permalink' => true,
+        'author_urn' => true,
         'organizational_entity' => false,
         'published_at' => false,
         'created_at' => false
@@ -540,7 +540,14 @@ class ListInboxMentions200ResponseDataInner implements ModelInterface, ArrayAcce
     public function setPermalink($permalink)
     {
         if (is_null($permalink)) {
-            throw new \InvalidArgumentException('non-nullable permalink cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'permalink');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('permalink', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['permalink'] = $permalink;
 
@@ -567,7 +574,14 @@ class ListInboxMentions200ResponseDataInner implements ModelInterface, ArrayAcce
     public function setAuthorUrn($author_urn)
     {
         if (is_null($author_urn)) {
-            throw new \InvalidArgumentException('non-nullable author_urn cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'author_urn');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('author_urn', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['author_urn'] = $author_urn;
 

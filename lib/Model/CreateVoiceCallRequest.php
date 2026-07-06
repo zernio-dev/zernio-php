@@ -65,7 +65,6 @@ class CreateVoiceCallRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'record_override' => 'bool',
         'transcribe_override' => 'bool',
         'transcription_language' => 'string',
-        'idempotency_key' => 'string',
         'amd' => 'bool',
         'voicemail_drop_message' => 'string'
     ];
@@ -85,7 +84,6 @@ class CreateVoiceCallRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'record_override' => null,
         'transcribe_override' => null,
         'transcription_language' => null,
-        'idempotency_key' => null,
         'amd' => null,
         'voicemail_drop_message' => null
     ];
@@ -103,7 +101,6 @@ class CreateVoiceCallRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'record_override' => false,
         'transcribe_override' => false,
         'transcription_language' => false,
-        'idempotency_key' => false,
         'amd' => false,
         'voicemail_drop_message' => false
     ];
@@ -201,7 +198,6 @@ class CreateVoiceCallRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'record_override' => 'recordOverride',
         'transcribe_override' => 'transcribeOverride',
         'transcription_language' => 'transcriptionLanguage',
-        'idempotency_key' => 'idempotencyKey',
         'amd' => 'amd',
         'voicemail_drop_message' => 'voicemailDropMessage'
     ];
@@ -219,7 +215,6 @@ class CreateVoiceCallRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'record_override' => 'setRecordOverride',
         'transcribe_override' => 'setTranscribeOverride',
         'transcription_language' => 'setTranscriptionLanguage',
-        'idempotency_key' => 'setIdempotencyKey',
         'amd' => 'setAmd',
         'voicemail_drop_message' => 'setVoicemailDropMessage'
     ];
@@ -237,7 +232,6 @@ class CreateVoiceCallRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'record_override' => 'getRecordOverride',
         'transcribe_override' => 'getTranscribeOverride',
         'transcription_language' => 'getTranscriptionLanguage',
-        'idempotency_key' => 'getIdempotencyKey',
         'amd' => 'getAmd',
         'voicemail_drop_message' => 'getVoicemailDropMessage'
     ];
@@ -323,7 +317,6 @@ class CreateVoiceCallRequest implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('record_override', $data ?? [], null);
         $this->setIfExists('transcribe_override', $data ?? [], null);
         $this->setIfExists('transcription_language', $data ?? [], null);
-        $this->setIfExists('idempotency_key', $data ?? [], null);
         $this->setIfExists('amd', $data ?? [], null);
         $this->setIfExists('voicemail_drop_message', $data ?? [], null);
     }
@@ -377,14 +370,6 @@ class CreateVoiceCallRequest implements ModelInterface, ArrayAccess, \JsonSerial
                 $this->container['transcription_language'],
                 implode("', '", $allowedValues)
             );
-        }
-
-        if (!is_null($this->container['idempotency_key']) && (mb_strlen($this->container['idempotency_key']) > 255)) {
-            $invalidProperties[] = "invalid value for 'idempotency_key', the character length must be smaller than or equal to 255.";
-        }
-
-        if (!is_null($this->container['idempotency_key']) && (mb_strlen($this->container['idempotency_key']) < 1)) {
-            $invalidProperties[] = "invalid value for 'idempotency_key', the character length must be bigger than or equal to 1.";
         }
 
         if (!is_null($this->container['voicemail_drop_message']) && (mb_strlen($this->container['voicemail_drop_message']) > 1000)) {
@@ -615,40 +600,6 @@ class CreateVoiceCallRequest implements ModelInterface, ArrayAccess, \JsonSerial
             );
         }
         $this->container['transcription_language'] = $transcription_language;
-
-        return $this;
-    }
-
-    /**
-     * Gets idempotency_key
-     *
-     * @return string|null
-     */
-    public function getIdempotencyKey()
-    {
-        return $this->container['idempotency_key'];
-    }
-
-    /**
-     * Sets idempotency_key
-     *
-     * @param string|null $idempotency_key A retry with the same key returns the original call instead of dialing again.
-     *
-     * @return self
-     */
-    public function setIdempotencyKey($idempotency_key)
-    {
-        if (is_null($idempotency_key)) {
-            throw new \InvalidArgumentException('non-nullable idempotency_key cannot be null');
-        }
-        if ((mb_strlen($idempotency_key) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $idempotency_key when calling CreateVoiceCallRequest., must be smaller than or equal to 255.');
-        }
-        if ((mb_strlen($idempotency_key) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $idempotency_key when calling CreateVoiceCallRequest., must be bigger than or equal to 1.');
-        }
-
-        $this->container['idempotency_key'] = $idempotency_key;
 
         return $this;
     }

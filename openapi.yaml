@@ -21908,12 +21908,10 @@ paths:
                           type: string
                           description: Text of the post that mentioned you
                         permalink:
-                          type: string
-                          nullable: true
+                          type: [string, "null"]
                           description: URL to the source post on LinkedIn
                         authorUrn:
-                          type: string
-                          nullable: true
+                          type: [string, "null"]
                           description: LinkedIn URN of the person who mentioned you
                         organizationalEntity:
                           type: string
@@ -21930,8 +21928,7 @@ paths:
                       hasMore:
                         type: boolean
                       cursor:
-                        type: string
-                        nullable: true
+                        type: [string, "null"]
                   meta:
                     type: object
                     properties:
@@ -23016,8 +23013,7 @@ paths:
 
         **Idempotency:** send an `Idempotency-Key` header to make retries safe;
         same key + same body replays the original response instead of dialing
-        (and billing) a second call. The body `idempotencyKey` field predates
-        the header and keeps working; prefer the header.
+        (and billing) a second call.
       security:
         - bearerAuth: []
       parameters:
@@ -23045,7 +23041,6 @@ paths:
                 recordOverride: { type: boolean, description: Per-call recording toggle; defaults to the number's setting. }
                 transcribeOverride: { type: boolean, description: Per-call transcription toggle; defaults to the number's setting. }
                 transcriptionLanguage: { type: string, enum: [auto, en, es], description: "'auto' derives from the callee's country; 'en'/'es' force it." }
-                idempotencyKey: { type: string, minLength: 1, maxLength: 255, description: A retry with the same key returns the original call instead of dialing again. }
                 amd: { type: boolean, description: Answering-machine detection; defers the bridge until human vs machine is known. }
                 voicemailDropMessage: { type: string, maxLength: 1000, description: "Spoken to a detected machine, then hang up (implies `amd`). For outbound voicemail drops." }
       responses:
@@ -24076,8 +24071,7 @@ paths:
                 properties:
                   success: { type: boolean }
                   username:
-                    type: string
-                    nullable: true
+                    type: [string, "null"]
                     description: The current username, or null if none is set
                   status:
                     type: string
@@ -26522,7 +26516,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  enabled: { type: boolean, enum: [false] }
+                  enabled: { type: boolean, description: Always false after a successful disable. }
                   phoneNumber: { type: string }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '404': { description: Number not found }
@@ -26604,7 +26598,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  enabled: { type: boolean, enum: [false] }
+                  enabled: { type: boolean, description: Always false after a successful disable. }
                   phoneNumber: { type: string }
                   disabled: { type: boolean, description: False when SMS was already off. Legacy field; prefer `enabled`. }
         '401': { $ref: '#/components/responses/Unauthorized' }

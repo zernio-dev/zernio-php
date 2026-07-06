@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**enabled** | **bool** |  | [optional]
+**enabled** | **bool** | Always false after a successful disable. | [optional]
 **phone_number** | **string** |  | [optional]
 **disabled** | **bool** | False when SMS was already off. Legacy field; prefer &#x60;enabled&#x60;. | [optional]
 

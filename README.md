@@ -1221,7 +1221,6 @@ Class | Method | HTTP request | Description
 - [ListInboxMentions200Response](docs/Model/ListInboxMentions200Response.md)
 - [ListInboxMentions200ResponseDataInner](docs/Model/ListInboxMentions200ResponseDataInner.md)
 - [ListInboxMentions200ResponseMeta](docs/Model/ListInboxMentions200ResponseMeta.md)
-- [ListInboxMentions200ResponsePagination](docs/Model/ListInboxMentions200ResponsePagination.md)
 - [ListInboxReviews200Response](docs/Model/ListInboxReviews200Response.md)
 - [ListInboxReviews200ResponseDataInner](docs/Model/ListInboxReviews200ResponseDataInner.md)
 - [ListInboxReviews200ResponseDataInnerReply](docs/Model/ListInboxReviews200ResponseDataInnerReply.md)

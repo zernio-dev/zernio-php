@@ -770,7 +770,6 @@ docs/Model/ListInboxConversations200ResponsePagination.md
 docs/Model/ListInboxMentions200Response.md
 docs/Model/ListInboxMentions200ResponseDataInner.md
 docs/Model/ListInboxMentions200ResponseMeta.md
-docs/Model/ListInboxMentions200ResponsePagination.md
 docs/Model/ListInboxReviews200Response.md
 docs/Model/ListInboxReviews200ResponseDataInner.md
 docs/Model/ListInboxReviews200ResponseDataInnerReply.md
@@ -2114,7 +2113,6 @@ lib/Model/ListInboxConversations200ResponsePagination.php
 lib/Model/ListInboxMentions200Response.php
 lib/Model/ListInboxMentions200ResponseDataInner.php
 lib/Model/ListInboxMentions200ResponseMeta.php
-lib/Model/ListInboxMentions200ResponsePagination.php
 lib/Model/ListInboxReviews200Response.php
 lib/Model/ListInboxReviews200ResponseDataInner.php
 lib/Model/ListInboxReviews200ResponseDataInnerReply.php

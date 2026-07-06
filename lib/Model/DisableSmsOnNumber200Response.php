@@ -241,19 +241,6 @@ class DisableSmsOnNumber200Response implements ModelInterface, ArrayAccess, \Jso
         return self::$openAPIModelName;
     }
 
-    public const ENABLED_FALSE = 'false';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEnabledAllowableValues()
-    {
-        return [
-            self::ENABLED_FALSE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -302,15 +289,6 @@ class DisableSmsOnNumber200Response implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getEnabledAllowableValues();
-        if (!is_null($this->container['enabled']) && !in_array($this->container['enabled'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'enabled', must be one of '%s'",
-                $this->container['enabled'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -339,7 +317,7 @@ class DisableSmsOnNumber200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets enabled
      *
-     * @param bool|null $enabled enabled
+     * @param bool|null $enabled Always false after a successful disable.
      *
      * @return self
      */
@@ -347,16 +325,6 @@ class DisableSmsOnNumber200Response implements ModelInterface, ArrayAccess, \Jso
     {
         if (is_null($enabled)) {
             throw new \InvalidArgumentException('non-nullable enabled cannot be null');
-        }
-        $allowedValues = $this->getEnabledAllowableValues();
-        if (!in_array($enabled, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'enabled', must be one of '%s'",
-                    $enabled,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['enabled'] = $enabled;
 
