@@ -61,6 +61,7 @@ class InboxWebhookAccount implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $openAPITypes = [
         'id' => 'string',
         'account_id' => 'string',
+        'profile_id' => 'string',
         'platform' => 'string',
         'username' => 'string',
         'display_name' => 'string'
@@ -76,6 +77,7 @@ class InboxWebhookAccount implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $openAPIFormats = [
         'id' => null,
         'account_id' => null,
+        'profile_id' => null,
         'platform' => null,
         'username' => null,
         'display_name' => null
@@ -89,6 +91,7 @@ class InboxWebhookAccount implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static array $openAPINullables = [
         'id' => false,
         'account_id' => false,
+        'profile_id' => false,
         'platform' => false,
         'username' => false,
         'display_name' => false
@@ -182,6 +185,7 @@ class InboxWebhookAccount implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $attributeMap = [
         'id' => 'id',
         'account_id' => 'accountId',
+        'profile_id' => 'profileId',
         'platform' => 'platform',
         'username' => 'username',
         'display_name' => 'displayName'
@@ -195,6 +199,7 @@ class InboxWebhookAccount implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $setters = [
         'id' => 'setId',
         'account_id' => 'setAccountId',
+        'profile_id' => 'setProfileId',
         'platform' => 'setPlatform',
         'username' => 'setUsername',
         'display_name' => 'setDisplayName'
@@ -208,6 +213,7 @@ class InboxWebhookAccount implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $getters = [
         'id' => 'getId',
         'account_id' => 'getAccountId',
+        'profile_id' => 'getProfileId',
         'platform' => 'getPlatform',
         'username' => 'getUsername',
         'display_name' => 'getDisplayName'
@@ -272,6 +278,7 @@ class InboxWebhookAccount implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('username', $data ?? [], null);
         $this->setIfExists('display_name', $data ?? [], null);
@@ -378,6 +385,33 @@ class InboxWebhookAccount implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
         $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets profile_id
+     *
+     * @return string|null
+     */
+    public function getProfileId()
+    {
+        return $this->container['profile_id'];
+    }
+
+    /**
+     * Sets profile_id
+     *
+     * @param string|null $profile_id Zernio profile (workspace) ID this account belongs to. Use it to route or filter inbox webhooks by workspace. This is the profile ID only, not its name (resolve the name via the API with this ID). Optional; omitted on the shared WhatsApp sandbox account and when the account has no resolvable profile.
+     *
+     * @return self
+     */
+    public function setProfileId($profile_id)
+    {
+        if (is_null($profile_id)) {
+            throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
+        }
+        $this->container['profile_id'] = $profile_id;
 
         return $this;
     }
