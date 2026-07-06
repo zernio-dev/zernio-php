@@ -58,7 +58,8 @@ class ListWhatsAppCalls200Response implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'calls' => '\Zernio\Model\ListWhatsAppCalls200ResponseCallsInner[]'
+        'calls' => '\Zernio\Model\ListWhatsAppCalls200ResponseCallsInner[]',
+        'next_cursor' => '\DateTime'
     ];
 
     /**
@@ -69,7 +70,8 @@ class ListWhatsAppCalls200Response implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'calls' => null
+        'calls' => null,
+        'next_cursor' => 'date-time'
     ];
 
     /**
@@ -78,7 +80,8 @@ class ListWhatsAppCalls200Response implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'calls' => false
+        'calls' => false,
+        'next_cursor' => true
     ];
 
     /**
@@ -167,7 +170,8 @@ class ListWhatsAppCalls200Response implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'calls' => 'calls'
+        'calls' => 'calls',
+        'next_cursor' => 'nextCursor'
     ];
 
     /**
@@ -176,7 +180,8 @@ class ListWhatsAppCalls200Response implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'calls' => 'setCalls'
+        'calls' => 'setCalls',
+        'next_cursor' => 'setNextCursor'
     ];
 
     /**
@@ -185,7 +190,8 @@ class ListWhatsAppCalls200Response implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'calls' => 'getCalls'
+        'calls' => 'getCalls',
+        'next_cursor' => 'getNextCursor'
     ];
 
     /**
@@ -246,6 +252,7 @@ class ListWhatsAppCalls200Response implements ModelInterface, ArrayAccess, \Json
     public function __construct(?array $data = null)
     {
         $this->setIfExists('calls', $data ?? [], null);
+        $this->setIfExists('next_cursor', $data ?? [], null);
     }
 
     /**
@@ -313,6 +320,40 @@ class ListWhatsAppCalls200Response implements ModelInterface, ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable calls cannot be null');
         }
         $this->container['calls'] = $calls;
+
+        return $this;
+    }
+
+    /**
+     * Gets next_cursor
+     *
+     * @return \DateTime|null
+     */
+    public function getNextCursor()
+    {
+        return $this->container['next_cursor'];
+    }
+
+    /**
+     * Sets next_cursor
+     *
+     * @param \DateTime|null $next_cursor Pass as `before` for the next page; null on the last page.
+     *
+     * @return self
+     */
+    public function setNextCursor($next_cursor)
+    {
+        if (is_null($next_cursor)) {
+            array_push($this->openAPINullablesSetToNull, 'next_cursor');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_cursor', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['next_cursor'] = $next_cursor;
 
         return $this;
     }

@@ -302,6 +302,10 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['to'] === null) {
             $invalidProperties[] = "'to' can't be null";
         }
+        if (!is_null($this->container['media_urls']) && (count($this->container['media_urls']) > 10)) {
+            $invalidProperties[] = "invalid value for 'media_urls', number of items must be less than or equal to 10.";
+        }
+
         return $invalidProperties;
     }
 
@@ -330,7 +334,7 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets from
      *
-     * @param string $from One of your SMS-enabled numbers (E.164).
+     * @param string $from One of your SMS-enabled numbers (E.164; formatting is normalized).
      *
      * @return self
      */
@@ -384,7 +388,7 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets text
      *
-     * @param string|null $text text
+     * @param string|null $text Message body. Required unless `mediaUrls` is set. Max 10 SMS segments (1530 GSM-7 or 670 unicode characters).
      *
      * @return self
      */
@@ -411,7 +415,7 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets media_urls
      *
-     * @param string[]|null $media_urls Publicly reachable media URLs for MMS (max 10, total < 1MB).
+     * @param string[]|null $media_urls Public media URLs to attach (sends as MMS). Max 10.
      *
      * @return self
      */
@@ -419,6 +423,10 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($media_urls)) {
             throw new \InvalidArgumentException('non-nullable media_urls cannot be null');
+        }
+
+        if ((count($media_urls) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $media_urls when calling SendSmsRequest., number of items must be less than or equal to 10.');
         }
         $this->container['media_urls'] = $media_urls;
 

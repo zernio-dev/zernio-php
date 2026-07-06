@@ -59,7 +59,7 @@ class ActivateSequence200Response implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'sequence' => '\Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber'
+        'sequence' => '\Zernio\Model\RemediatePhoneNumber200ResponsePhoneNumber'
     ];
 
     /**
@@ -327,7 +327,7 @@ class ActivateSequence200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets sequence
      *
-     * @return \Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber|null
+     * @return \Zernio\Model\RemediatePhoneNumber200ResponsePhoneNumber|null
      */
     public function getSequence()
     {
@@ -337,7 +337,7 @@ class ActivateSequence200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets sequence
      *
-     * @param \Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber|null $sequence sequence
+     * @param \Zernio\Model\RemediatePhoneNumber200ResponsePhoneNumber|null $sequence sequence
      *
      * @return self
      */

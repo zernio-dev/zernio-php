@@ -12,6 +12,6 @@ Name | Type | Description | Notes
 **from** | **string** |  | [optional]
 **to** | **string** |  | [optional]
 **failed_at** | **\DateTime** |  | [optional]
-**error** | [**\Zernio\Model\WebhookPayloadCallFailedCallError**](WebhookPayloadCallFailedCallError.md) |  | [optional]
+**error** | [**\Zernio\Model\CallRecordCallErrorsInner**](CallRecordCallErrorsInner.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -178,7 +178,8 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CheckWhatsAppNumberAvailability200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CheckPhoneNumberAvailability200Response|\Zernio\Model\InlineObject
+     * @deprecated
      */
     public function checkWhatsAppNumberAvailability($country, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
     {
@@ -196,7 +197,8 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CheckWhatsAppNumberAvailability200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CheckPhoneNumberAvailability200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function checkWhatsAppNumberAvailabilityWithHttpInfo($country, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
     {
@@ -228,7 +230,7 @@ class WhatsAppPhoneNumbersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\CheckWhatsAppNumberAvailability200Response',
+                        '\Zernio\Model\CheckPhoneNumberAvailability200Response',
                         $request,
                         $response,
                     );
@@ -256,7 +258,7 @@ class WhatsAppPhoneNumbersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\CheckWhatsAppNumberAvailability200Response',
+                '\Zernio\Model\CheckPhoneNumberAvailability200Response',
                 $request,
                 $response,
             );
@@ -265,7 +267,7 @@ class WhatsAppPhoneNumbersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\CheckWhatsAppNumberAvailability200Response',
+                        '\Zernio\Model\CheckPhoneNumberAvailability200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -295,6 +297,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function checkWhatsAppNumberAvailabilityAsync($country, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
     {
@@ -316,10 +319,11 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function checkWhatsAppNumberAvailabilityAsyncWithHttpInfo($country, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
     {
-        $returnType = '\Zernio\Model\CheckWhatsAppNumberAvailability200Response';
+        $returnType = '\Zernio\Model\CheckPhoneNumberAvailability200Response';
         $request = $this->checkWhatsAppNumberAvailabilityRequest($country, $contentType);
 
         return $this->client
@@ -366,6 +370,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function checkWhatsAppNumberAvailabilityRequest($country, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
     {
@@ -460,16 +465,17 @@ class WhatsAppPhoneNumbersApi
      *
      * Create a hosted KYC link
      *
-     * @param  \Zernio\Model\CreateWhatsAppNumberKycLinkRequest $create_whats_app_number_kyc_link_request create_whats_app_number_kyc_link_request (required)
+     * @param  \Zernio\Model\CreatePhoneNumberKycLinkRequest $create_phone_number_kyc_link_request create_phone_number_kyc_link_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppNumberKycLink'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateWhatsAppNumberKycLink200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CreatePhoneNumberKycLink200Response|\Zernio\Model\InlineObject
+     * @deprecated
      */
-    public function createWhatsAppNumberKycLink($create_whats_app_number_kyc_link_request, string $contentType = self::contentTypes['createWhatsAppNumberKycLink'][0])
+    public function createWhatsAppNumberKycLink($create_phone_number_kyc_link_request, string $contentType = self::contentTypes['createWhatsAppNumberKycLink'][0])
     {
-        list($response) = $this->createWhatsAppNumberKycLinkWithHttpInfo($create_whats_app_number_kyc_link_request, $contentType);
+        list($response) = $this->createWhatsAppNumberKycLinkWithHttpInfo($create_phone_number_kyc_link_request, $contentType);
         return $response;
     }
 
@@ -478,16 +484,17 @@ class WhatsAppPhoneNumbersApi
      *
      * Create a hosted KYC link
      *
-     * @param  \Zernio\Model\CreateWhatsAppNumberKycLinkRequest $create_whats_app_number_kyc_link_request (required)
+     * @param  \Zernio\Model\CreatePhoneNumberKycLinkRequest $create_phone_number_kyc_link_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppNumberKycLink'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateWhatsAppNumberKycLink200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreatePhoneNumberKycLink200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
-    public function createWhatsAppNumberKycLinkWithHttpInfo($create_whats_app_number_kyc_link_request, string $contentType = self::contentTypes['createWhatsAppNumberKycLink'][0])
+    public function createWhatsAppNumberKycLinkWithHttpInfo($create_phone_number_kyc_link_request, string $contentType = self::contentTypes['createWhatsAppNumberKycLink'][0])
     {
-        $request = $this->createWhatsAppNumberKycLinkRequest($create_whats_app_number_kyc_link_request, $contentType);
+        $request = $this->createWhatsAppNumberKycLinkRequest($create_phone_number_kyc_link_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -515,7 +522,7 @@ class WhatsAppPhoneNumbersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\CreateWhatsAppNumberKycLink200Response',
+                        '\Zernio\Model\CreatePhoneNumberKycLink200Response',
                         $request,
                         $response,
                     );
@@ -543,7 +550,7 @@ class WhatsAppPhoneNumbersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\CreateWhatsAppNumberKycLink200Response',
+                '\Zernio\Model\CreatePhoneNumberKycLink200Response',
                 $request,
                 $response,
             );
@@ -552,7 +559,7 @@ class WhatsAppPhoneNumbersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\CreateWhatsAppNumberKycLink200Response',
+                        '\Zernio\Model\CreatePhoneNumberKycLink200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -577,15 +584,16 @@ class WhatsAppPhoneNumbersApi
      *
      * Create a hosted KYC link
      *
-     * @param  \Zernio\Model\CreateWhatsAppNumberKycLinkRequest $create_whats_app_number_kyc_link_request (required)
+     * @param  \Zernio\Model\CreatePhoneNumberKycLinkRequest $create_phone_number_kyc_link_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppNumberKycLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
-    public function createWhatsAppNumberKycLinkAsync($create_whats_app_number_kyc_link_request, string $contentType = self::contentTypes['createWhatsAppNumberKycLink'][0])
+    public function createWhatsAppNumberKycLinkAsync($create_phone_number_kyc_link_request, string $contentType = self::contentTypes['createWhatsAppNumberKycLink'][0])
     {
-        return $this->createWhatsAppNumberKycLinkAsyncWithHttpInfo($create_whats_app_number_kyc_link_request, $contentType)
+        return $this->createWhatsAppNumberKycLinkAsyncWithHttpInfo($create_phone_number_kyc_link_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -598,16 +606,17 @@ class WhatsAppPhoneNumbersApi
      *
      * Create a hosted KYC link
      *
-     * @param  \Zernio\Model\CreateWhatsAppNumberKycLinkRequest $create_whats_app_number_kyc_link_request (required)
+     * @param  \Zernio\Model\CreatePhoneNumberKycLinkRequest $create_phone_number_kyc_link_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppNumberKycLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
-    public function createWhatsAppNumberKycLinkAsyncWithHttpInfo($create_whats_app_number_kyc_link_request, string $contentType = self::contentTypes['createWhatsAppNumberKycLink'][0])
+    public function createWhatsAppNumberKycLinkAsyncWithHttpInfo($create_phone_number_kyc_link_request, string $contentType = self::contentTypes['createWhatsAppNumberKycLink'][0])
     {
-        $returnType = '\Zernio\Model\CreateWhatsAppNumberKycLink200Response';
-        $request = $this->createWhatsAppNumberKycLinkRequest($create_whats_app_number_kyc_link_request, $contentType);
+        $returnType = '\Zernio\Model\CreatePhoneNumberKycLink200Response';
+        $request = $this->createWhatsAppNumberKycLinkRequest($create_phone_number_kyc_link_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -648,19 +657,20 @@ class WhatsAppPhoneNumbersApi
     /**
      * Create request for operation 'createWhatsAppNumberKycLink'
      *
-     * @param  \Zernio\Model\CreateWhatsAppNumberKycLinkRequest $create_whats_app_number_kyc_link_request (required)
+     * @param  \Zernio\Model\CreatePhoneNumberKycLinkRequest $create_phone_number_kyc_link_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppNumberKycLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
-    public function createWhatsAppNumberKycLinkRequest($create_whats_app_number_kyc_link_request, string $contentType = self::contentTypes['createWhatsAppNumberKycLink'][0])
+    public function createWhatsAppNumberKycLinkRequest($create_phone_number_kyc_link_request, string $contentType = self::contentTypes['createWhatsAppNumberKycLink'][0])
     {
 
-        // verify the required parameter 'create_whats_app_number_kyc_link_request' is set
-        if ($create_whats_app_number_kyc_link_request === null || (is_array($create_whats_app_number_kyc_link_request) && count($create_whats_app_number_kyc_link_request) === 0)) {
+        // verify the required parameter 'create_phone_number_kyc_link_request' is set
+        if ($create_phone_number_kyc_link_request === null || (is_array($create_phone_number_kyc_link_request) && count($create_phone_number_kyc_link_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $create_whats_app_number_kyc_link_request when calling createWhatsAppNumberKycLink'
+                'Missing the required parameter $create_phone_number_kyc_link_request when calling createWhatsAppNumberKycLink'
             );
         }
 
@@ -683,12 +693,12 @@ class WhatsAppPhoneNumbersApi
         );
 
         // for model (json/xml)
-        if (isset($create_whats_app_number_kyc_link_request)) {
+        if (isset($create_phone_number_kyc_link_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_whats_app_number_kyc_link_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_phone_number_kyc_link_request));
             } else {
-                $httpBody = $create_whats_app_number_kyc_link_request;
+                $httpBody = $create_phone_number_kyc_link_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1039,6 +1049,7 @@ class WhatsAppPhoneNumbersApi
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetWhatsAppNumberKycForm200Response|\Zernio\Model\InlineObject
+     * @deprecated
      */
     public function getWhatsAppNumberKycForm($country, $profile_id, string $contentType = self::contentTypes['getWhatsAppNumberKycForm'][0])
     {
@@ -1058,6 +1069,7 @@ class WhatsAppPhoneNumbersApi
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetWhatsAppNumberKycForm200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getWhatsAppNumberKycFormWithHttpInfo($country, $profile_id, string $contentType = self::contentTypes['getWhatsAppNumberKycForm'][0])
     {
@@ -1157,6 +1169,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWhatsAppNumberKycFormAsync($country, $profile_id, string $contentType = self::contentTypes['getWhatsAppNumberKycForm'][0])
     {
@@ -1179,6 +1192,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWhatsAppNumberKycFormAsyncWithHttpInfo($country, $profile_id, string $contentType = self::contentTypes['getWhatsAppNumberKycForm'][0])
     {
@@ -1230,6 +1244,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getWhatsAppNumberKycFormRequest($country, $profile_id, string $contentType = self::contentTypes['getWhatsAppNumberKycForm'][0])
     {
@@ -1346,6 +1361,7 @@ class WhatsAppPhoneNumbersApi
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetWhatsAppNumberRemediation200Response|\Zernio\Model\InlineObject
+     * @deprecated
      */
     public function getWhatsAppNumberRemediation($id, string $contentType = self::contentTypes['getWhatsAppNumberRemediation'][0])
     {
@@ -1364,6 +1380,7 @@ class WhatsAppPhoneNumbersApi
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetWhatsAppNumberRemediation200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getWhatsAppNumberRemediationWithHttpInfo($id, string $contentType = self::contentTypes['getWhatsAppNumberRemediation'][0])
     {
@@ -1462,6 +1479,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWhatsAppNumberRemediationAsync($id, string $contentType = self::contentTypes['getWhatsAppNumberRemediation'][0])
     {
@@ -1483,6 +1501,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWhatsAppNumberRemediationAsyncWithHttpInfo($id, string $contentType = self::contentTypes['getWhatsAppNumberRemediation'][0])
     {
@@ -1533,6 +1552,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getWhatsAppNumberRemediationRequest($id, string $contentType = self::contentTypes['getWhatsAppNumberRemediation'][0])
     {
@@ -1631,7 +1651,8 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetWhatsAppPhoneNumber200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\GetPhoneNumber200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @deprecated
      */
     public function getWhatsAppPhoneNumber($phone_number_id, string $contentType = self::contentTypes['getWhatsAppPhoneNumber'][0])
     {
@@ -1649,7 +1670,8 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetWhatsAppPhoneNumber200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetPhoneNumber200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getWhatsAppPhoneNumberWithHttpInfo($phone_number_id, string $contentType = self::contentTypes['getWhatsAppPhoneNumber'][0])
     {
@@ -1681,7 +1703,7 @@ class WhatsAppPhoneNumbersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\GetWhatsAppPhoneNumber200Response',
+                        '\Zernio\Model\GetPhoneNumber200Response',
                         $request,
                         $response,
                     );
@@ -1715,7 +1737,7 @@ class WhatsAppPhoneNumbersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\GetWhatsAppPhoneNumber200Response',
+                '\Zernio\Model\GetPhoneNumber200Response',
                 $request,
                 $response,
             );
@@ -1724,7 +1746,7 @@ class WhatsAppPhoneNumbersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\GetWhatsAppPhoneNumber200Response',
+                        '\Zernio\Model\GetPhoneNumber200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1762,6 +1784,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWhatsAppPhoneNumberAsync($phone_number_id, string $contentType = self::contentTypes['getWhatsAppPhoneNumber'][0])
     {
@@ -1783,10 +1806,11 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWhatsAppPhoneNumberAsyncWithHttpInfo($phone_number_id, string $contentType = self::contentTypes['getWhatsAppPhoneNumber'][0])
     {
-        $returnType = '\Zernio\Model\GetWhatsAppPhoneNumber200Response';
+        $returnType = '\Zernio\Model\GetPhoneNumber200Response';
         $request = $this->getWhatsAppPhoneNumberRequest($phone_number_id, $contentType);
 
         return $this->client
@@ -1833,6 +1857,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getWhatsAppPhoneNumberRequest($phone_number_id, string $contentType = self::contentTypes['getWhatsAppPhoneNumber'][0])
     {
@@ -1932,7 +1957,8 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetWhatsAppPhoneNumbers200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListPhoneNumbers200Response|\Zernio\Model\InlineObject
+     * @deprecated
      */
     public function getWhatsAppPhoneNumbers($status = null, $profile_id = null, string $contentType = self::contentTypes['getWhatsAppPhoneNumbers'][0])
     {
@@ -1951,7 +1977,8 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetWhatsAppPhoneNumbers200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListPhoneNumbers200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getWhatsAppPhoneNumbersWithHttpInfo($status = null, $profile_id = null, string $contentType = self::contentTypes['getWhatsAppPhoneNumbers'][0])
     {
@@ -1983,7 +2010,7 @@ class WhatsAppPhoneNumbersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\GetWhatsAppPhoneNumbers200Response',
+                        '\Zernio\Model\ListPhoneNumbers200Response',
                         $request,
                         $response,
                     );
@@ -2011,7 +2038,7 @@ class WhatsAppPhoneNumbersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\GetWhatsAppPhoneNumbers200Response',
+                '\Zernio\Model\ListPhoneNumbers200Response',
                 $request,
                 $response,
             );
@@ -2020,7 +2047,7 @@ class WhatsAppPhoneNumbersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\GetWhatsAppPhoneNumbers200Response',
+                        '\Zernio\Model\ListPhoneNumbers200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2051,6 +2078,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWhatsAppPhoneNumbersAsync($status = null, $profile_id = null, string $contentType = self::contentTypes['getWhatsAppPhoneNumbers'][0])
     {
@@ -2073,10 +2101,11 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWhatsAppPhoneNumbersAsyncWithHttpInfo($status = null, $profile_id = null, string $contentType = self::contentTypes['getWhatsAppPhoneNumbers'][0])
     {
-        $returnType = '\Zernio\Model\GetWhatsAppPhoneNumbers200Response';
+        $returnType = '\Zernio\Model\ListPhoneNumbers200Response';
         $request = $this->getWhatsAppPhoneNumbersRequest($status, $profile_id, $contentType);
 
         return $this->client
@@ -2124,6 +2153,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getWhatsAppPhoneNumbersRequest($status = null, $profile_id = null, string $contentType = self::contentTypes['getWhatsAppPhoneNumbers'][0])
     {
@@ -2227,6 +2257,7 @@ class WhatsAppPhoneNumbersApi
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListWhatsAppNumberCountries200Response|\Zernio\Model\InlineObject
+     * @deprecated
      */
     public function listWhatsAppNumberCountries(string $contentType = self::contentTypes['listWhatsAppNumberCountries'][0])
     {
@@ -2244,6 +2275,7 @@ class WhatsAppPhoneNumbersApi
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListWhatsAppNumberCountries200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function listWhatsAppNumberCountriesWithHttpInfo(string $contentType = self::contentTypes['listWhatsAppNumberCountries'][0])
     {
@@ -2341,6 +2373,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function listWhatsAppNumberCountriesAsync(string $contentType = self::contentTypes['listWhatsAppNumberCountries'][0])
     {
@@ -2361,6 +2394,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function listWhatsAppNumberCountriesAsyncWithHttpInfo(string $contentType = self::contentTypes['listWhatsAppNumberCountries'][0])
     {
@@ -2410,6 +2444,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function listWhatsAppNumberCountriesRequest(string $contentType = self::contentTypes['listWhatsAppNumberCountries'][0])
     {
@@ -2493,7 +2528,8 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\PurchaseWhatsAppPhoneNumber200Response|\Zernio\Model\InlineObject|\Zernio\Model\PurchaseWhatsAppPhoneNumber409Response|\Zernio\Model\PurchaseWhatsAppPhoneNumber202Response
+     * @return \Zernio\Model\PurchasePhoneNumber200Response|\Zernio\Model\InlineObject|\Zernio\Model\PurchasePhoneNumber409Response|\Zernio\Model\PurchasePhoneNumber202Response
+     * @deprecated
      */
     public function purchaseWhatsAppPhoneNumber($purchase_whats_app_phone_number_request, string $contentType = self::contentTypes['purchaseWhatsAppPhoneNumber'][0])
     {
@@ -2511,7 +2547,8 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\PurchaseWhatsAppPhoneNumber200Response|\Zernio\Model\InlineObject|\Zernio\Model\PurchaseWhatsAppPhoneNumber409Response|\Zernio\Model\PurchaseWhatsAppPhoneNumber202Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\PurchasePhoneNumber200Response|\Zernio\Model\InlineObject|\Zernio\Model\PurchasePhoneNumber409Response|\Zernio\Model\PurchasePhoneNumber202Response, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function purchaseWhatsAppPhoneNumberWithHttpInfo($purchase_whats_app_phone_number_request, string $contentType = self::contentTypes['purchaseWhatsAppPhoneNumber'][0])
     {
@@ -2543,7 +2580,7 @@ class WhatsAppPhoneNumbersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\PurchaseWhatsAppPhoneNumber200Response',
+                        '\Zernio\Model\PurchasePhoneNumber200Response',
                         $request,
                         $response,
                     );
@@ -2555,13 +2592,13 @@ class WhatsAppPhoneNumbersApi
                     );
                 case 409:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\PurchaseWhatsAppPhoneNumber409Response',
+                        '\Zernio\Model\PurchasePhoneNumber409Response',
                         $request,
                         $response,
                     );
                 case 202:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\PurchaseWhatsAppPhoneNumber202Response',
+                        '\Zernio\Model\PurchasePhoneNumber202Response',
                         $request,
                         $response,
                     );
@@ -2583,7 +2620,7 @@ class WhatsAppPhoneNumbersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\PurchaseWhatsAppPhoneNumber200Response',
+                '\Zernio\Model\PurchasePhoneNumber200Response',
                 $request,
                 $response,
             );
@@ -2592,7 +2629,7 @@ class WhatsAppPhoneNumbersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\PurchaseWhatsAppPhoneNumber200Response',
+                        '\Zernio\Model\PurchasePhoneNumber200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2608,7 +2645,7 @@ class WhatsAppPhoneNumbersApi
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\PurchaseWhatsAppPhoneNumber409Response',
+                        '\Zernio\Model\PurchasePhoneNumber409Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2616,7 +2653,7 @@ class WhatsAppPhoneNumbersApi
                 case 202:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\PurchaseWhatsAppPhoneNumber202Response',
+                        '\Zernio\Model\PurchasePhoneNumber202Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2638,6 +2675,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function purchaseWhatsAppPhoneNumberAsync($purchase_whats_app_phone_number_request, string $contentType = self::contentTypes['purchaseWhatsAppPhoneNumber'][0])
     {
@@ -2659,10 +2697,11 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function purchaseWhatsAppPhoneNumberAsyncWithHttpInfo($purchase_whats_app_phone_number_request, string $contentType = self::contentTypes['purchaseWhatsAppPhoneNumber'][0])
     {
-        $returnType = '\Zernio\Model\PurchaseWhatsAppPhoneNumber200Response';
+        $returnType = '\Zernio\Model\PurchasePhoneNumber200Response';
         $request = $this->purchaseWhatsAppPhoneNumberRequest($purchase_whats_app_phone_number_request, $contentType);
 
         return $this->client
@@ -2709,6 +2748,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function purchaseWhatsAppPhoneNumberRequest($purchase_whats_app_phone_number_request, string $contentType = self::contentTypes['purchaseWhatsAppPhoneNumber'][0])
     {
@@ -2806,7 +2846,8 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ReleaseWhatsAppPhoneNumber200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ReleasePhoneNumber200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @deprecated
      */
     public function releaseWhatsAppPhoneNumber($phone_number_id, string $contentType = self::contentTypes['releaseWhatsAppPhoneNumber'][0])
     {
@@ -2824,7 +2865,8 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ReleaseWhatsAppPhoneNumber200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ReleasePhoneNumber200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function releaseWhatsAppPhoneNumberWithHttpInfo($phone_number_id, string $contentType = self::contentTypes['releaseWhatsAppPhoneNumber'][0])
     {
@@ -2856,7 +2898,7 @@ class WhatsAppPhoneNumbersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\ReleaseWhatsAppPhoneNumber200Response',
+                        '\Zernio\Model\ReleasePhoneNumber200Response',
                         $request,
                         $response,
                     );
@@ -2890,7 +2932,7 @@ class WhatsAppPhoneNumbersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\ReleaseWhatsAppPhoneNumber200Response',
+                '\Zernio\Model\ReleasePhoneNumber200Response',
                 $request,
                 $response,
             );
@@ -2899,7 +2941,7 @@ class WhatsAppPhoneNumbersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\ReleaseWhatsAppPhoneNumber200Response',
+                        '\Zernio\Model\ReleasePhoneNumber200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2937,6 +2979,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function releaseWhatsAppPhoneNumberAsync($phone_number_id, string $contentType = self::contentTypes['releaseWhatsAppPhoneNumber'][0])
     {
@@ -2958,10 +3001,11 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function releaseWhatsAppPhoneNumberAsyncWithHttpInfo($phone_number_id, string $contentType = self::contentTypes['releaseWhatsAppPhoneNumber'][0])
     {
-        $returnType = '\Zernio\Model\ReleaseWhatsAppPhoneNumber200Response';
+        $returnType = '\Zernio\Model\ReleasePhoneNumber200Response';
         $request = $this->releaseWhatsAppPhoneNumberRequest($phone_number_id, $contentType);
 
         return $this->client
@@ -3008,6 +3052,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function releaseWhatsAppPhoneNumberRequest($phone_number_id, string $contentType = self::contentTypes['releaseWhatsAppPhoneNumber'][0])
     {
@@ -3102,16 +3147,17 @@ class WhatsAppPhoneNumbersApi
      * Resubmit a declined number
      *
      * @param  string $id id (required)
-     * @param  \Zernio\Model\RemediateWhatsAppNumberRequest $remediate_whats_app_number_request remediate_whats_app_number_request (required)
+     * @param  \Zernio\Model\RemediatePhoneNumberRequest $remediate_phone_number_request remediate_phone_number_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remediateWhatsAppNumber'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\RemediateWhatsAppNumber200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\RemediatePhoneNumber200Response|\Zernio\Model\InlineObject
+     * @deprecated
      */
-    public function remediateWhatsAppNumber($id, $remediate_whats_app_number_request, string $contentType = self::contentTypes['remediateWhatsAppNumber'][0])
+    public function remediateWhatsAppNumber($id, $remediate_phone_number_request, string $contentType = self::contentTypes['remediateWhatsAppNumber'][0])
     {
-        list($response) = $this->remediateWhatsAppNumberWithHttpInfo($id, $remediate_whats_app_number_request, $contentType);
+        list($response) = $this->remediateWhatsAppNumberWithHttpInfo($id, $remediate_phone_number_request, $contentType);
         return $response;
     }
 
@@ -3121,16 +3167,17 @@ class WhatsAppPhoneNumbersApi
      * Resubmit a declined number
      *
      * @param  string $id (required)
-     * @param  \Zernio\Model\RemediateWhatsAppNumberRequest $remediate_whats_app_number_request (required)
+     * @param  \Zernio\Model\RemediatePhoneNumberRequest $remediate_phone_number_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remediateWhatsAppNumber'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\RemediateWhatsAppNumber200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\RemediatePhoneNumber200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
-    public function remediateWhatsAppNumberWithHttpInfo($id, $remediate_whats_app_number_request, string $contentType = self::contentTypes['remediateWhatsAppNumber'][0])
+    public function remediateWhatsAppNumberWithHttpInfo($id, $remediate_phone_number_request, string $contentType = self::contentTypes['remediateWhatsAppNumber'][0])
     {
-        $request = $this->remediateWhatsAppNumberRequest($id, $remediate_whats_app_number_request, $contentType);
+        $request = $this->remediateWhatsAppNumberRequest($id, $remediate_phone_number_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3158,7 +3205,7 @@ class WhatsAppPhoneNumbersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\RemediateWhatsAppNumber200Response',
+                        '\Zernio\Model\RemediatePhoneNumber200Response',
                         $request,
                         $response,
                     );
@@ -3186,7 +3233,7 @@ class WhatsAppPhoneNumbersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\RemediateWhatsAppNumber200Response',
+                '\Zernio\Model\RemediatePhoneNumber200Response',
                 $request,
                 $response,
             );
@@ -3195,7 +3242,7 @@ class WhatsAppPhoneNumbersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\RemediateWhatsAppNumber200Response',
+                        '\Zernio\Model\RemediatePhoneNumber200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3221,15 +3268,16 @@ class WhatsAppPhoneNumbersApi
      * Resubmit a declined number
      *
      * @param  string $id (required)
-     * @param  \Zernio\Model\RemediateWhatsAppNumberRequest $remediate_whats_app_number_request (required)
+     * @param  \Zernio\Model\RemediatePhoneNumberRequest $remediate_phone_number_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remediateWhatsAppNumber'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
-    public function remediateWhatsAppNumberAsync($id, $remediate_whats_app_number_request, string $contentType = self::contentTypes['remediateWhatsAppNumber'][0])
+    public function remediateWhatsAppNumberAsync($id, $remediate_phone_number_request, string $contentType = self::contentTypes['remediateWhatsAppNumber'][0])
     {
-        return $this->remediateWhatsAppNumberAsyncWithHttpInfo($id, $remediate_whats_app_number_request, $contentType)
+        return $this->remediateWhatsAppNumberAsyncWithHttpInfo($id, $remediate_phone_number_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3243,16 +3291,17 @@ class WhatsAppPhoneNumbersApi
      * Resubmit a declined number
      *
      * @param  string $id (required)
-     * @param  \Zernio\Model\RemediateWhatsAppNumberRequest $remediate_whats_app_number_request (required)
+     * @param  \Zernio\Model\RemediatePhoneNumberRequest $remediate_phone_number_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remediateWhatsAppNumber'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
-    public function remediateWhatsAppNumberAsyncWithHttpInfo($id, $remediate_whats_app_number_request, string $contentType = self::contentTypes['remediateWhatsAppNumber'][0])
+    public function remediateWhatsAppNumberAsyncWithHttpInfo($id, $remediate_phone_number_request, string $contentType = self::contentTypes['remediateWhatsAppNumber'][0])
     {
-        $returnType = '\Zernio\Model\RemediateWhatsAppNumber200Response';
-        $request = $this->remediateWhatsAppNumberRequest($id, $remediate_whats_app_number_request, $contentType);
+        $returnType = '\Zernio\Model\RemediatePhoneNumber200Response';
+        $request = $this->remediateWhatsAppNumberRequest($id, $remediate_phone_number_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3294,13 +3343,14 @@ class WhatsAppPhoneNumbersApi
      * Create request for operation 'remediateWhatsAppNumber'
      *
      * @param  string $id (required)
-     * @param  \Zernio\Model\RemediateWhatsAppNumberRequest $remediate_whats_app_number_request (required)
+     * @param  \Zernio\Model\RemediatePhoneNumberRequest $remediate_phone_number_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remediateWhatsAppNumber'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
-    public function remediateWhatsAppNumberRequest($id, $remediate_whats_app_number_request, string $contentType = self::contentTypes['remediateWhatsAppNumber'][0])
+    public function remediateWhatsAppNumberRequest($id, $remediate_phone_number_request, string $contentType = self::contentTypes['remediateWhatsAppNumber'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -3310,10 +3360,10 @@ class WhatsAppPhoneNumbersApi
             );
         }
 
-        // verify the required parameter 'remediate_whats_app_number_request' is set
-        if ($remediate_whats_app_number_request === null || (is_array($remediate_whats_app_number_request) && count($remediate_whats_app_number_request) === 0)) {
+        // verify the required parameter 'remediate_phone_number_request' is set
+        if ($remediate_phone_number_request === null || (is_array($remediate_phone_number_request) && count($remediate_phone_number_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $remediate_whats_app_number_request when calling remediateWhatsAppNumber'
+                'Missing the required parameter $remediate_phone_number_request when calling remediateWhatsAppNumber'
             );
         }
 
@@ -3344,12 +3394,12 @@ class WhatsAppPhoneNumbersApi
         );
 
         // for model (json/xml)
-        if (isset($remediate_whats_app_number_request)) {
+        if (isset($remediate_phone_number_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($remediate_whats_app_number_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($remediate_phone_number_request));
             } else {
-                $httpBody = $remediate_whats_app_number_request;
+                $httpBody = $remediate_phone_number_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -3417,6 +3467,7 @@ class WhatsAppPhoneNumbersApi
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\SearchAvailableWhatsAppNumbers200Response|\Zernio\Model\InlineObject
+     * @deprecated
      */
     public function searchAvailableWhatsAppNumbers($country = 'US', $type = null, $prefix = null, $locality = null, $contains = null, $limit = 20, string $contentType = self::contentTypes['searchAvailableWhatsAppNumbers'][0])
     {
@@ -3440,6 +3491,7 @@ class WhatsAppPhoneNumbersApi
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\SearchAvailableWhatsAppNumbers200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function searchAvailableWhatsAppNumbersWithHttpInfo($country = 'US', $type = null, $prefix = null, $locality = null, $contains = null, $limit = 20, string $contentType = self::contentTypes['searchAvailableWhatsAppNumbers'][0])
     {
@@ -3543,6 +3595,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function searchAvailableWhatsAppNumbersAsync($country = 'US', $type = null, $prefix = null, $locality = null, $contains = null, $limit = 20, string $contentType = self::contentTypes['searchAvailableWhatsAppNumbers'][0])
     {
@@ -3569,6 +3622,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function searchAvailableWhatsAppNumbersAsyncWithHttpInfo($country = 'US', $type = null, $prefix = null, $locality = null, $contains = null, $limit = 20, string $contentType = self::contentTypes['searchAvailableWhatsAppNumbers'][0])
     {
@@ -3624,6 +3678,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function searchAvailableWhatsAppNumbersRequest($country = 'US', $type = null, $prefix = null, $locality = null, $contains = null, $limit = 20, string $contentType = self::contentTypes['searchAvailableWhatsAppNumbers'][0])
     {
@@ -3770,7 +3825,8 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\SubmitWhatsAppNumberKyc200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\SubmitPhoneNumberKyc200Response|\Zernio\Model\InlineObject
+     * @deprecated
      */
     public function submitWhatsAppNumberKyc($submit_whats_app_number_kyc_request, string $contentType = self::contentTypes['submitWhatsAppNumberKyc'][0])
     {
@@ -3788,7 +3844,8 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\SubmitWhatsAppNumberKyc200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SubmitPhoneNumberKyc200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function submitWhatsAppNumberKycWithHttpInfo($submit_whats_app_number_kyc_request, string $contentType = self::contentTypes['submitWhatsAppNumberKyc'][0])
     {
@@ -3820,7 +3877,7 @@ class WhatsAppPhoneNumbersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\SubmitWhatsAppNumberKyc200Response',
+                        '\Zernio\Model\SubmitPhoneNumberKyc200Response',
                         $request,
                         $response,
                     );
@@ -3848,7 +3905,7 @@ class WhatsAppPhoneNumbersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\SubmitWhatsAppNumberKyc200Response',
+                '\Zernio\Model\SubmitPhoneNumberKyc200Response',
                 $request,
                 $response,
             );
@@ -3857,7 +3914,7 @@ class WhatsAppPhoneNumbersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\SubmitWhatsAppNumberKyc200Response',
+                        '\Zernio\Model\SubmitPhoneNumberKyc200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3887,6 +3944,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function submitWhatsAppNumberKycAsync($submit_whats_app_number_kyc_request, string $contentType = self::contentTypes['submitWhatsAppNumberKyc'][0])
     {
@@ -3908,10 +3966,11 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function submitWhatsAppNumberKycAsyncWithHttpInfo($submit_whats_app_number_kyc_request, string $contentType = self::contentTypes['submitWhatsAppNumberKyc'][0])
     {
-        $returnType = '\Zernio\Model\SubmitWhatsAppNumberKyc200Response';
+        $returnType = '\Zernio\Model\SubmitPhoneNumberKyc200Response';
         $request = $this->submitWhatsAppNumberKycRequest($submit_whats_app_number_kyc_request, $contentType);
 
         return $this->client
@@ -3958,6 +4017,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function submitWhatsAppNumberKycRequest($submit_whats_app_number_kyc_request, string $contentType = self::contentTypes['submitWhatsAppNumberKyc'][0])
     {
@@ -4056,7 +4116,8 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UploadWhatsAppNumberKycDocument200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UploadPhoneNumberKycDocument200Response|\Zernio\Model\InlineObject
+     * @deprecated
      */
     public function uploadWhatsAppNumberKycDocument($x_filename, $body, string $contentType = self::contentTypes['uploadWhatsAppNumberKycDocument'][0])
     {
@@ -4075,7 +4136,8 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UploadWhatsAppNumberKycDocument200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UploadPhoneNumberKycDocument200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function uploadWhatsAppNumberKycDocumentWithHttpInfo($x_filename, $body, string $contentType = self::contentTypes['uploadWhatsAppNumberKycDocument'][0])
     {
@@ -4107,7 +4169,7 @@ class WhatsAppPhoneNumbersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\UploadWhatsAppNumberKycDocument200Response',
+                        '\Zernio\Model\UploadPhoneNumberKycDocument200Response',
                         $request,
                         $response,
                     );
@@ -4135,7 +4197,7 @@ class WhatsAppPhoneNumbersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\UploadWhatsAppNumberKycDocument200Response',
+                '\Zernio\Model\UploadPhoneNumberKycDocument200Response',
                 $request,
                 $response,
             );
@@ -4144,7 +4206,7 @@ class WhatsAppPhoneNumbersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\UploadWhatsAppNumberKycDocument200Response',
+                        '\Zernio\Model\UploadPhoneNumberKycDocument200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4175,6 +4237,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function uploadWhatsAppNumberKycDocumentAsync($x_filename, $body, string $contentType = self::contentTypes['uploadWhatsAppNumberKycDocument'][0])
     {
@@ -4197,10 +4260,11 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function uploadWhatsAppNumberKycDocumentAsyncWithHttpInfo($x_filename, $body, string $contentType = self::contentTypes['uploadWhatsAppNumberKycDocument'][0])
     {
-        $returnType = '\Zernio\Model\UploadWhatsAppNumberKycDocument200Response';
+        $returnType = '\Zernio\Model\UploadPhoneNumberKycDocument200Response';
         $request = $this->uploadWhatsAppNumberKycDocumentRequest($x_filename, $body, $contentType);
 
         return $this->client
@@ -4248,6 +4312,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function uploadWhatsAppNumberKycDocumentRequest($x_filename, $body, string $contentType = self::contentTypes['uploadWhatsAppNumberKycDocument'][0])
     {
@@ -4351,16 +4416,17 @@ class WhatsAppPhoneNumbersApi
      *
      * Pre-validate KYC address
      *
-     * @param  \Zernio\Model\ValidateWhatsAppNumberKycAddressRequest $validate_whats_app_number_kyc_address_request validate_whats_app_number_kyc_address_request (required)
+     * @param  \Zernio\Model\ValidatePhoneNumberKycAddressRequest $validate_phone_number_kyc_address_request validate_phone_number_kyc_address_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateWhatsAppNumberKycAddress'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ValidateWhatsAppNumberKycAddress200Response|\Zernio\Model\ValidateWhatsAppNumberKycAddress400Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ValidatePhoneNumberKycAddress200Response|\Zernio\Model\ValidatePhoneNumberKycAddress400Response|\Zernio\Model\InlineObject
+     * @deprecated
      */
-    public function validateWhatsAppNumberKycAddress($validate_whats_app_number_kyc_address_request, string $contentType = self::contentTypes['validateWhatsAppNumberKycAddress'][0])
+    public function validateWhatsAppNumberKycAddress($validate_phone_number_kyc_address_request, string $contentType = self::contentTypes['validateWhatsAppNumberKycAddress'][0])
     {
-        list($response) = $this->validateWhatsAppNumberKycAddressWithHttpInfo($validate_whats_app_number_kyc_address_request, $contentType);
+        list($response) = $this->validateWhatsAppNumberKycAddressWithHttpInfo($validate_phone_number_kyc_address_request, $contentType);
         return $response;
     }
 
@@ -4369,16 +4435,17 @@ class WhatsAppPhoneNumbersApi
      *
      * Pre-validate KYC address
      *
-     * @param  \Zernio\Model\ValidateWhatsAppNumberKycAddressRequest $validate_whats_app_number_kyc_address_request (required)
+     * @param  \Zernio\Model\ValidatePhoneNumberKycAddressRequest $validate_phone_number_kyc_address_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateWhatsAppNumberKycAddress'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ValidateWhatsAppNumberKycAddress200Response|\Zernio\Model\ValidateWhatsAppNumberKycAddress400Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ValidatePhoneNumberKycAddress200Response|\Zernio\Model\ValidatePhoneNumberKycAddress400Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
-    public function validateWhatsAppNumberKycAddressWithHttpInfo($validate_whats_app_number_kyc_address_request, string $contentType = self::contentTypes['validateWhatsAppNumberKycAddress'][0])
+    public function validateWhatsAppNumberKycAddressWithHttpInfo($validate_phone_number_kyc_address_request, string $contentType = self::contentTypes['validateWhatsAppNumberKycAddress'][0])
     {
-        $request = $this->validateWhatsAppNumberKycAddressRequest($validate_whats_app_number_kyc_address_request, $contentType);
+        $request = $this->validateWhatsAppNumberKycAddressRequest($validate_phone_number_kyc_address_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4406,13 +4473,13 @@ class WhatsAppPhoneNumbersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\ValidateWhatsAppNumberKycAddress200Response',
+                        '\Zernio\Model\ValidatePhoneNumberKycAddress200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\ValidateWhatsAppNumberKycAddress400Response',
+                        '\Zernio\Model\ValidatePhoneNumberKycAddress400Response',
                         $request,
                         $response,
                     );
@@ -4440,7 +4507,7 @@ class WhatsAppPhoneNumbersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\ValidateWhatsAppNumberKycAddress200Response',
+                '\Zernio\Model\ValidatePhoneNumberKycAddress200Response',
                 $request,
                 $response,
             );
@@ -4449,7 +4516,7 @@ class WhatsAppPhoneNumbersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\ValidateWhatsAppNumberKycAddress200Response',
+                        '\Zernio\Model\ValidatePhoneNumberKycAddress200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4457,7 +4524,7 @@ class WhatsAppPhoneNumbersApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\ValidateWhatsAppNumberKycAddress400Response',
+                        '\Zernio\Model\ValidatePhoneNumberKycAddress400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4482,15 +4549,16 @@ class WhatsAppPhoneNumbersApi
      *
      * Pre-validate KYC address
      *
-     * @param  \Zernio\Model\ValidateWhatsAppNumberKycAddressRequest $validate_whats_app_number_kyc_address_request (required)
+     * @param  \Zernio\Model\ValidatePhoneNumberKycAddressRequest $validate_phone_number_kyc_address_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateWhatsAppNumberKycAddress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
-    public function validateWhatsAppNumberKycAddressAsync($validate_whats_app_number_kyc_address_request, string $contentType = self::contentTypes['validateWhatsAppNumberKycAddress'][0])
+    public function validateWhatsAppNumberKycAddressAsync($validate_phone_number_kyc_address_request, string $contentType = self::contentTypes['validateWhatsAppNumberKycAddress'][0])
     {
-        return $this->validateWhatsAppNumberKycAddressAsyncWithHttpInfo($validate_whats_app_number_kyc_address_request, $contentType)
+        return $this->validateWhatsAppNumberKycAddressAsyncWithHttpInfo($validate_phone_number_kyc_address_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4503,16 +4571,17 @@ class WhatsAppPhoneNumbersApi
      *
      * Pre-validate KYC address
      *
-     * @param  \Zernio\Model\ValidateWhatsAppNumberKycAddressRequest $validate_whats_app_number_kyc_address_request (required)
+     * @param  \Zernio\Model\ValidatePhoneNumberKycAddressRequest $validate_phone_number_kyc_address_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateWhatsAppNumberKycAddress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
-    public function validateWhatsAppNumberKycAddressAsyncWithHttpInfo($validate_whats_app_number_kyc_address_request, string $contentType = self::contentTypes['validateWhatsAppNumberKycAddress'][0])
+    public function validateWhatsAppNumberKycAddressAsyncWithHttpInfo($validate_phone_number_kyc_address_request, string $contentType = self::contentTypes['validateWhatsAppNumberKycAddress'][0])
     {
-        $returnType = '\Zernio\Model\ValidateWhatsAppNumberKycAddress200Response';
-        $request = $this->validateWhatsAppNumberKycAddressRequest($validate_whats_app_number_kyc_address_request, $contentType);
+        $returnType = '\Zernio\Model\ValidatePhoneNumberKycAddress200Response';
+        $request = $this->validateWhatsAppNumberKycAddressRequest($validate_phone_number_kyc_address_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4553,19 +4622,20 @@ class WhatsAppPhoneNumbersApi
     /**
      * Create request for operation 'validateWhatsAppNumberKycAddress'
      *
-     * @param  \Zernio\Model\ValidateWhatsAppNumberKycAddressRequest $validate_whats_app_number_kyc_address_request (required)
+     * @param  \Zernio\Model\ValidatePhoneNumberKycAddressRequest $validate_phone_number_kyc_address_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateWhatsAppNumberKycAddress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
-    public function validateWhatsAppNumberKycAddressRequest($validate_whats_app_number_kyc_address_request, string $contentType = self::contentTypes['validateWhatsAppNumberKycAddress'][0])
+    public function validateWhatsAppNumberKycAddressRequest($validate_phone_number_kyc_address_request, string $contentType = self::contentTypes['validateWhatsAppNumberKycAddress'][0])
     {
 
-        // verify the required parameter 'validate_whats_app_number_kyc_address_request' is set
-        if ($validate_whats_app_number_kyc_address_request === null || (is_array($validate_whats_app_number_kyc_address_request) && count($validate_whats_app_number_kyc_address_request) === 0)) {
+        // verify the required parameter 'validate_phone_number_kyc_address_request' is set
+        if ($validate_phone_number_kyc_address_request === null || (is_array($validate_phone_number_kyc_address_request) && count($validate_phone_number_kyc_address_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $validate_whats_app_number_kyc_address_request when calling validateWhatsAppNumberKycAddress'
+                'Missing the required parameter $validate_phone_number_kyc_address_request when calling validateWhatsAppNumberKycAddress'
             );
         }
 
@@ -4588,12 +4658,12 @@ class WhatsAppPhoneNumbersApi
         );
 
         // for model (json/xml)
-        if (isset($validate_whats_app_number_kyc_address_request)) {
+        if (isset($validate_phone_number_kyc_address_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($validate_whats_app_number_kyc_address_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($validate_phone_number_kyc_address_request));
             } else {
-                $httpBody = $validate_whats_app_number_kyc_address_request;
+                $httpBody = $validate_phone_number_kyc_address_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

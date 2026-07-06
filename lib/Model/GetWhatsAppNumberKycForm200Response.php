@@ -61,7 +61,7 @@ class GetWhatsAppNumberKycForm200Response implements ModelInterface, ArrayAccess
         'country' => 'string',
         'number_type' => 'string',
         'fields' => '\Zernio\Model\GetWhatsAppNumberKycForm200ResponseFieldsInner[]',
-        'reusable' => '\Zernio\Model\GetWhatsAppNumberKycForm200ResponseReusable'
+        'reusable' => '\Zernio\Model\GetPhoneNumberKycForm200ResponseReusable'
     ];
 
     /**
@@ -395,7 +395,7 @@ class GetWhatsAppNumberKycForm200Response implements ModelInterface, ArrayAccess
     /**
      * Gets reusable
      *
-     * @return \Zernio\Model\GetWhatsAppNumberKycForm200ResponseReusable|null
+     * @return \Zernio\Model\GetPhoneNumberKycForm200ResponseReusable|null
      */
     public function getReusable()
     {
@@ -405,7 +405,7 @@ class GetWhatsAppNumberKycForm200Response implements ModelInterface, ArrayAccess
     /**
      * Sets reusable
      *
-     * @param \Zernio\Model\GetWhatsAppNumberKycForm200ResponseReusable|null $reusable reusable
+     * @param \Zernio\Model\GetPhoneNumberKycForm200ResponseReusable|null $reusable reusable
      *
      * @return self
      */

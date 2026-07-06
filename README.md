@@ -170,6 +170,9 @@ Class | Method | HTTP request | Description
 *BroadcastsApi* | [**scheduleBroadcast**](docs/Api/BroadcastsApi.md#schedulebroadcast) | **POST** /v1/broadcasts/{broadcastId}/schedule | Schedule broadcast for later
 *BroadcastsApi* | [**sendBroadcast**](docs/Api/BroadcastsApi.md#sendbroadcast) | **POST** /v1/broadcasts/{broadcastId}/send | Send broadcast now
 *BroadcastsApi* | [**updateBroadcast**](docs/Api/BroadcastsApi.md#updatebroadcast) | **PATCH** /v1/broadcasts/{broadcastId} | Update broadcast
+*CallsApi* | [**getCall**](docs/Api/CallsApi.md#getcall) | **GET** /v1/calls/{id} | Get a call (any channel)
+*CallsApi* | [**getCallRecording**](docs/Api/CallsApi.md#getcallrecording) | **GET** /v1/calls/{id}/recording | Get a call recording (any channel)
+*CallsApi* | [**listCalls**](docs/Api/CallsApi.md#listcalls) | **GET** /v1/calls | List all calls (unified history)
 *CommentAutomationsApi* | [**createCommentAutomation**](docs/Api/CommentAutomationsApi.md#createcommentautomation) | **POST** /v1/comment-automations | Create comment-to-DM automation
 *CommentAutomationsApi* | [**deleteCommentAutomation**](docs/Api/CommentAutomationsApi.md#deletecommentautomation) | **DELETE** /v1/comment-automations/{automationId} | Delete automation
 *CommentAutomationsApi* | [**getCommentAutomation**](docs/Api/CommentAutomationsApi.md#getcommentautomation) | **GET** /v1/comment-automations/{automationId} | Get automation details
@@ -300,6 +303,26 @@ Class | Method | HTTP request | Description
 *MessagesApi* | [**sendTypingIndicator**](docs/Api/MessagesApi.md#sendtypingindicator) | **POST** /v1/inbox/conversations/{conversationId}/typing | Send typing indicator
 *MessagesApi* | [**updateInboxConversation**](docs/Api/MessagesApi.md#updateinboxconversation) | **PUT** /v1/inbox/conversations/{conversationId} | Update conversation status
 *MessagesApi* | [**uploadMediaDirect**](docs/Api/MessagesApi.md#uploadmediadirect) | **POST** /v1/media/upload-direct | Upload media file
+*PhoneNumbersApi* | [**cancelPhoneNumberPortIn**](docs/Api/PhoneNumbersApi.md#cancelphonenumberportin) | **DELETE** /v1/phone-numbers/port-in/{id} | Cancel a port-in
+*PhoneNumbersApi* | [**checkPhoneNumberAvailability**](docs/Api/PhoneNumbersApi.md#checkphonenumberavailability) | **GET** /v1/phone-numbers/availability | Check country availability
+*PhoneNumbersApi* | [**checkPhoneNumberPortability**](docs/Api/PhoneNumbersApi.md#checkphonenumberportability) | **POST** /v1/phone-numbers/port-in/check | Check portability
+*PhoneNumbersApi* | [**createPhoneNumberKycLink**](docs/Api/PhoneNumbersApi.md#createphonenumberkyclink) | **POST** /v1/phone-numbers/kyc/share | Create a hosted KYC link
+*PhoneNumbersApi* | [**createPhoneNumberPortIn**](docs/Api/PhoneNumbersApi.md#createphonenumberportin) | **POST** /v1/phone-numbers/port-in | Port numbers in
+*PhoneNumbersApi* | [**getPhoneNumber**](docs/Api/PhoneNumbersApi.md#getphonenumber) | **GET** /v1/phone-numbers/{id} | Get phone number
+*PhoneNumbersApi* | [**getPhoneNumberKycForm**](docs/Api/PhoneNumbersApi.md#getphonenumberkycform) | **GET** /v1/phone-numbers/kyc | Get KYC form spec
+*PhoneNumbersApi* | [**getPhoneNumberRemediation**](docs/Api/PhoneNumbersApi.md#getphonenumberremediation) | **GET** /v1/phone-numbers/{id}/remediate | Get declined requirements
+*PhoneNumbersApi* | [**listPhoneNumberCountries**](docs/Api/PhoneNumbersApi.md#listphonenumbercountries) | **GET** /v1/phone-numbers/countries | List offerable number countries
+*PhoneNumbersApi* | [**listPhoneNumberPortIns**](docs/Api/PhoneNumbersApi.md#listphonenumberportins) | **GET** /v1/phone-numbers/port-in | List port-in orders
+*PhoneNumbersApi* | [**listPhoneNumbers**](docs/Api/PhoneNumbersApi.md#listphonenumbers) | **GET** /v1/phone-numbers | List phone numbers
+*PhoneNumbersApi* | [**purchasePhoneNumber**](docs/Api/PhoneNumbersApi.md#purchasephonenumber) | **POST** /v1/phone-numbers/purchase | Purchase phone number
+*PhoneNumbersApi* | [**releasePhoneNumber**](docs/Api/PhoneNumbersApi.md#releasephonenumber) | **DELETE** /v1/phone-numbers/{id} | Release phone number
+*PhoneNumbersApi* | [**remediatePhoneNumber**](docs/Api/PhoneNumbersApi.md#remediatephonenumber) | **POST** /v1/phone-numbers/{id}/remediate | Resubmit a declined number
+*PhoneNumbersApi* | [**reviewPhoneNumberKycPacket**](docs/Api/PhoneNumbersApi.md#reviewphonenumberkycpacket) | **POST** /v1/phone-numbers/kyc/review-packet | Pre-review a KYC packet
+*PhoneNumbersApi* | [**searchAvailablePhoneNumbers**](docs/Api/PhoneNumbersApi.md#searchavailablephonenumbers) | **GET** /v1/phone-numbers/available | Search available numbers
+*PhoneNumbersApi* | [**submitPhoneNumberKyc**](docs/Api/PhoneNumbersApi.md#submitphonenumberkyc) | **POST** /v1/phone-numbers/kyc | Submit KYC
+*PhoneNumbersApi* | [**uploadPhoneNumberKycDocument**](docs/Api/PhoneNumbersApi.md#uploadphonenumberkycdocument) | **POST** /v1/phone-numbers/kyc/upload-document | Upload a KYC document
+*PhoneNumbersApi* | [**uploadPhoneNumberPortInDocument**](docs/Api/PhoneNumbersApi.md#uploadphonenumberportindocument) | **POST** /v1/phone-numbers/port-in/documents | Upload a porting document
+*PhoneNumbersApi* | [**validatePhoneNumberKycAddress**](docs/Api/PhoneNumbersApi.md#validatephonenumberkycaddress) | **POST** /v1/phone-numbers/kyc/validate-address | Pre-validate KYC address
 *PostsApi* | [**bulkUploadPosts**](docs/Api/PostsApi.md#bulkuploadposts) | **POST** /v1/posts/bulk-upload | Bulk upload from CSV
 *PostsApi* | [**createPost**](docs/Api/PostsApi.md#createpost) | **POST** /v1/posts | Create post
 *PostsApi* | [**deletePost**](docs/Api/PostsApi.md#deletepost) | **DELETE** /v1/posts/{postId} | Delete post
@@ -326,6 +349,18 @@ Class | Method | HTTP request | Description
 *ReviewsApi* | [**deleteInboxReviewReply**](docs/Api/ReviewsApi.md#deleteinboxreviewreply) | **DELETE** /v1/inbox/reviews/{reviewId}/reply | Delete review reply
 *ReviewsApi* | [**listInboxReviews**](docs/Api/ReviewsApi.md#listinboxreviews) | **GET** /v1/inbox/reviews | List reviews
 *ReviewsApi* | [**replyToInboxReview**](docs/Api/ReviewsApi.md#replytoinboxreview) | **POST** /v1/inbox/reviews/{reviewId}/reply | Reply to review
+*SMSApi* | [**appealSmsRegistration**](docs/Api/SMSApi.md#appealsmsregistration) | **POST** /v1/sms/registrations/{id}/appeal | Appeal a rejected campaign
+*SMSApi* | [**disableSmsOnNumber**](docs/Api/SMSApi.md#disablesmsonnumber) | **DELETE** /v1/phone-numbers/{id}/sms | Disable SMS on a number
+*SMSApi* | [**enableSmsOnNumber**](docs/Api/SMSApi.md#enablesmsonnumber) | **POST** /v1/phone-numbers/{id}/sms | Enable SMS on a number
+*SMSApi* | [**getSmsRegistration**](docs/Api/SMSApi.md#getsmsregistration) | **GET** /v1/sms/registrations/{id} | Get a carrier registration
+*SMSApi* | [**listSmsOptOuts**](docs/Api/SMSApi.md#listsmsoptouts) | **GET** /v1/sms/opt-outs | List SMS opt-outs
+*SMSApi* | [**listSmsRegistrations**](docs/Api/SMSApi.md#listsmsregistrations) | **GET** /v1/sms/registrations | List carrier registrations
+*SMSApi* | [**lookupSmsNumber**](docs/Api/SMSApi.md#lookupsmsnumber) | **GET** /v1/sms/lookup | Look up carrier + line type
+*SMSApi* | [**reuseSmsRegistrationForNumber**](docs/Api/SMSApi.md#reusesmsregistrationfornumber) | **POST** /v1/phone-numbers/{id}/sms/reuse-registration | Add a number to an existing registration
+*SMSApi* | [**sendSms**](docs/Api/SMSApi.md#sendsms) | **POST** /v1/sms/messages | Send an SMS/MMS
+*SMSApi* | [**shareSmsRegistration**](docs/Api/SMSApi.md#sharesmsregistration) | **POST** /v1/sms/registrations/share | Create a registration share link
+*SMSApi* | [**startSmsRegistration**](docs/Api/SMSApi.md#startsmsregistration) | **POST** /v1/sms/registrations | Start a carrier registration
+*SMSApi* | [**verifySmsRegistrationOtp**](docs/Api/SMSApi.md#verifysmsregistrationotp) | **POST** /v1/sms/registrations/{id}/verify-otp | Submit the sole-prop OTP
 *SequencesApi* | [**activateSequence**](docs/Api/SequencesApi.md#activatesequence) | **POST** /v1/sequences/{sequenceId}/activate | Activate sequence
 *SequencesApi* | [**createSequence**](docs/Api/SequencesApi.md#createsequence) | **POST** /v1/sequences | Create sequence
 *SequencesApi* | [**deleteSequence**](docs/Api/SequencesApi.md#deletesequence) | **DELETE** /v1/sequences/{sequenceId} | Delete sequence
@@ -350,6 +385,9 @@ Class | Method | HTTP request | Description
 *TwitterEngagementApi* | [**retweetPost**](docs/Api/TwitterEngagementApi.md#retweetpost) | **POST** /v1/twitter/retweet | Retweet a post
 *TwitterEngagementApi* | [**undoRetweet**](docs/Api/TwitterEngagementApi.md#undoretweet) | **DELETE** /v1/twitter/retweet | Undo retweet
 *TwitterEngagementApi* | [**unfollowUser**](docs/Api/TwitterEngagementApi.md#unfollowuser) | **DELETE** /v1/twitter/follow | Unfollow a user
+*UsageApi* | [**getCallsUsage**](docs/Api/UsageApi.md#getcallsusage) | **GET** /v1/usage/calls | Calling usage (volumes + billable cost)
+*UsageApi* | [**getSmsUsage**](docs/Api/UsageApi.md#getsmsusage) | **GET** /v1/usage/sms | SMS usage (volumes)
+*UsageApi* | [**getUsage**](docs/Api/UsageApi.md#getusage) | **GET** /v1/usage | Get plan and usage snapshot
 *UsageApi* | [**getUsageStats**](docs/Api/UsageApi.md#getusagestats) | **GET** /v1/usage-stats | Get plan and usage stats
 *UsageApi* | [**getXApiPricing**](docs/Api/UsageApi.md#getxapipricing) | **GET** /v1/billing/x-pricing | Get X/Twitter API pricing table
 *UsersApi* | [**getUser**](docs/Api/UsersApi.md#getuser) | **GET** /v1/users/{userId} | Get user
@@ -358,6 +396,17 @@ Class | Method | HTTP request | Description
 *ValidateApi* | [**validatePost**](docs/Api/ValidateApi.md#validatepost) | **POST** /v1/tools/validate/post | Validate post content
 *ValidateApi* | [**validatePostLength**](docs/Api/ValidateApi.md#validatepostlength) | **POST** /v1/tools/validate/post-length | Validate character count
 *ValidateApi* | [**validateSubreddit**](docs/Api/ValidateApi.md#validatesubreddit) | **GET** /v1/tools/validate/subreddit | Check subreddit existence
+*VoiceApi* | [**createVoiceCall**](docs/Api/VoiceApi.md#createvoicecall) | **POST** /v1/voice/calls | Place an outbound phone call
+*VoiceApi* | [**createVoiceWebSession**](docs/Api/VoiceApi.md#createvoicewebsession) | **POST** /v1/voice/calls/web | Mint a browser softphone session
+*VoiceApi* | [**dialVoiceWebCall**](docs/Api/VoiceApi.md#dialvoicewebcall) | **POST** /v1/voice/calls/web/dial | Dial from the browser softphone
+*VoiceApi* | [**disableVoiceOnNumber**](docs/Api/VoiceApi.md#disablevoiceonnumber) | **DELETE** /v1/phone-numbers/{id}/voice | Disable phone calling on a number
+*VoiceApi* | [**enableVoiceOnNumber**](docs/Api/VoiceApi.md#enablevoiceonnumber) | **POST** /v1/phone-numbers/{id}/voice | Enable phone calling on a number
+*VoiceApi* | [**endVoiceCall**](docs/Api/VoiceApi.md#endvoicecall) | **POST** /v1/voice/calls/{id}/end | Hang up a live call
+*VoiceApi* | [**getVoiceCall**](docs/Api/VoiceApi.md#getvoicecall) | **GET** /v1/voice/calls/{id} | Get a phone call
+*VoiceApi* | [**getVoiceCallEstimate**](docs/Api/VoiceApi.md#getvoicecallestimate) | **GET** /v1/voice/calls/estimate | Estimate call cost
+*VoiceApi* | [**getVoiceCallRecording**](docs/Api/VoiceApi.md#getvoicecallrecording) | **GET** /v1/voice/calls/{id}/recording | Get a call recording
+*VoiceApi* | [**listVoiceCalls**](docs/Api/VoiceApi.md#listvoicecalls) | **GET** /v1/voice/calls | List phone calls
+*VoiceApi* | [**transferVoiceCall**](docs/Api/VoiceApi.md#transfervoicecall) | **POST** /v1/voice/calls/{id}/transfer | Blind-transfer a live call
 *WebhooksApi* | [**createWebhookSettings**](docs/Api/WebhooksApi.md#createwebhooksettings) | **POST** /v1/webhooks/settings | Create webhook
 *WebhooksApi* | [**deleteWebhookSettings**](docs/Api/WebhooksApi.md#deletewebhooksettings) | **DELETE** /v1/webhooks/settings | Delete webhook
 *WebhooksApi* | [**getWebhookLogs**](docs/Api/WebhooksApi.md#getwebhooklogs) | **GET** /v1/webhooks/logs | List webhook delivery logs
@@ -397,15 +446,20 @@ Class | Method | HTTP request | Description
 *WhatsAppApi* | [**updateWhatsAppGroupChat**](docs/Api/WhatsAppApi.md#updatewhatsappgroupchat) | **POST** /v1/whatsapp/wa-groups/{groupId} | Update group settings
 *WhatsAppApi* | [**updateWhatsAppTemplate**](docs/Api/WhatsAppApi.md#updatewhatsapptemplate) | **PATCH** /v1/whatsapp/templates/{templateName} | Update template
 *WhatsAppApi* | [**uploadWhatsAppProfilePhoto**](docs/Api/WhatsAppApi.md#uploadwhatsappprofilephoto) | **POST** /v1/whatsapp/business-profile/photo | Upload profile picture
-*WhatsAppCallingApi* | [**disableWhatsAppCalling**](docs/Api/WhatsAppCallingApi.md#disablewhatsappcalling) | **DELETE** /v1/whatsapp/phone-numbers/{id}/calling | Disable calling on a number
-*WhatsAppCallingApi* | [**enableWhatsAppCalling**](docs/Api/WhatsAppCallingApi.md#enablewhatsappcalling) | **POST** /v1/whatsapp/phone-numbers/{id}/calling | Enable calling on a number
+*WhatsAppCallingApi* | [**disableWhatsAppCalling**](docs/Api/WhatsAppCallingApi.md#disablewhatsappcalling) | **DELETE** /v1/phone-numbers/{id}/whatsapp/calling | Disable calling on a number
+*WhatsAppCallingApi* | [**disableWhatsAppCallingLegacy**](docs/Api/WhatsAppCallingApi.md#disablewhatsappcallinglegacy) | **DELETE** /v1/whatsapp/phone-numbers/{id}/calling | Disable calling on a number
+*WhatsAppCallingApi* | [**enableWhatsAppCalling**](docs/Api/WhatsAppCallingApi.md#enablewhatsappcalling) | **POST** /v1/phone-numbers/{id}/whatsapp/calling | Enable calling on a number
+*WhatsAppCallingApi* | [**enableWhatsAppCallingLegacy**](docs/Api/WhatsAppCallingApi.md#enablewhatsappcallinglegacy) | **POST** /v1/whatsapp/phone-numbers/{id}/calling | Enable calling on a number
 *WhatsAppCallingApi* | [**getWhatsAppCall**](docs/Api/WhatsAppCallingApi.md#getwhatsappcall) | **GET** /v1/whatsapp/calls/{callId} | Get a single call
 *WhatsAppCallingApi* | [**getWhatsAppCallEstimate**](docs/Api/WhatsAppCallingApi.md#getwhatsappcallestimate) | **GET** /v1/whatsapp/calls/estimate | Estimate per-minute cost
 *WhatsAppCallingApi* | [**getWhatsAppCallPermissions**](docs/Api/WhatsAppCallingApi.md#getwhatsappcallpermissions) | **GET** /v1/whatsapp/call-permissions | Check call permission
+*WhatsAppCallingApi* | [**getWhatsAppCallRecording**](docs/Api/WhatsAppCallingApi.md#getwhatsappcallrecording) | **GET** /v1/whatsapp/calls/{callId}/recording | Get a call recording
+*WhatsAppCallingApi* | [**getWhatsAppCalling**](docs/Api/WhatsAppCallingApi.md#getwhatsappcalling) | **GET** /v1/phone-numbers/{id}/whatsapp/calling | Get calling config for a number
 *WhatsAppCallingApi* | [**getWhatsAppCallingConfig**](docs/Api/WhatsAppCallingApi.md#getwhatsappcallingconfig) | **GET** /v1/whatsapp/calling | Get calling config for an account
 *WhatsAppCallingApi* | [**initiateWhatsAppCall**](docs/Api/WhatsAppCallingApi.md#initiatewhatsappcall) | **POST** /v1/whatsapp/calls | Initiate outbound call
 *WhatsAppCallingApi* | [**listWhatsAppCalls**](docs/Api/WhatsAppCallingApi.md#listwhatsappcalls) | **GET** /v1/whatsapp/calls | List call history for an account
-*WhatsAppCallingApi* | [**updateWhatsAppCalling**](docs/Api/WhatsAppCallingApi.md#updatewhatsappcalling) | **PATCH** /v1/whatsapp/phone-numbers/{id}/calling | Update calling config
+*WhatsAppCallingApi* | [**updateWhatsAppCalling**](docs/Api/WhatsAppCallingApi.md#updatewhatsappcalling) | **PATCH** /v1/phone-numbers/{id}/whatsapp/calling | Update calling config
+*WhatsAppCallingApi* | [**updateWhatsAppCallingLegacy**](docs/Api/WhatsAppCallingApi.md#updatewhatsappcallinglegacy) | **PATCH** /v1/whatsapp/phone-numbers/{id}/calling | Update calling config
 *WhatsAppFlowsApi* | [**createWhatsAppFlow**](docs/Api/WhatsAppFlowsApi.md#createwhatsappflow) | **POST** /v1/whatsapp/flows | Create flow
 *WhatsAppFlowsApi* | [**deleteWhatsAppFlow**](docs/Api/WhatsAppFlowsApi.md#deletewhatsappflow) | **DELETE** /v1/whatsapp/flows/{flowId} | Delete flow
 *WhatsAppFlowsApi* | [**deprecateWhatsAppFlow**](docs/Api/WhatsAppFlowsApi.md#deprecatewhatsappflow) | **POST** /v1/whatsapp/flows/{flowId}/deprecate | Deprecate flow
@@ -506,6 +560,8 @@ Class | Method | HTTP request | Description
 - [AnalyticsSinglePostResponseMediaItemsInner](docs/Model/AnalyticsSinglePostResponseMediaItemsInner.md)
 - [ApiKey](docs/Model/ApiKey.md)
 - [ApiKeyProfileIdsInner](docs/Model/ApiKeyProfileIdsInner.md)
+- [AppealSmsRegistration200Response](docs/Model/AppealSmsRegistration200Response.md)
+- [AppealSmsRegistrationRequest](docs/Model/AppealSmsRegistrationRequest.md)
 - [ApproveWhatsAppGroupJoinRequestsRequest](docs/Model/ApproveWhatsAppGroupJoinRequestsRequest.md)
 - [ArchiveLeadForm200Response](docs/Model/ArchiveLeadForm200Response.md)
 - [BatchGetGoogleBusinessReviews200Response](docs/Model/BatchGetGoogleBusinessReviews200Response.md)
@@ -536,8 +592,16 @@ Class | Method | HTTP request | Description
 - [BulkUploadResultRateLimitedAccountsInner](docs/Model/BulkUploadResultRateLimitedAccountsInner.md)
 - [BulkUploadResultResultsInner](docs/Model/BulkUploadResultResultsInner.md)
 - [BusinessCenter](docs/Model/BusinessCenter.md)
+- [CallRecord](docs/Model/CallRecord.md)
+- [CallRecordBilling](docs/Model/CallRecordBilling.md)
+- [CallRecordCallErrorsInner](docs/Model/CallRecordCallErrorsInner.md)
+- [CallRecordTranscriptInner](docs/Model/CallRecordTranscriptInner.md)
 - [CancelBroadcast200Response](docs/Model/CancelBroadcast200Response.md)
-- [CheckWhatsAppNumberAvailability200Response](docs/Model/CheckWhatsAppNumberAvailability200Response.md)
+- [CancelPhoneNumberPortIn200Response](docs/Model/CancelPhoneNumberPortIn200Response.md)
+- [CheckPhoneNumberAvailability200Response](docs/Model/CheckPhoneNumberAvailability200Response.md)
+- [CheckPhoneNumberPortability200Response](docs/Model/CheckPhoneNumberPortability200Response.md)
+- [CheckPhoneNumberPortability200ResponseResultsInner](docs/Model/CheckPhoneNumberPortability200ResponseResultsInner.md)
+- [CheckPhoneNumberPortabilityRequest](docs/Model/CheckPhoneNumberPortabilityRequest.md)
 - [CompleteGoogleBusinessVerificationRequest](docs/Model/CompleteGoogleBusinessVerificationRequest.md)
 - [CompleteTelegramConnect200Response](docs/Model/CompleteTelegramConnect200Response.md)
 - [CompleteWhatsAppPhoneSelection200Response](docs/Model/CompleteWhatsAppPhoneSelection200Response.md)
@@ -617,6 +681,13 @@ Class | Method | HTTP request | Description
 - [CreateLeadFormRequest](docs/Model/CreateLeadFormRequest.md)
 - [CreateLeadFormRequestQuestionsInner](docs/Model/CreateLeadFormRequestQuestionsInner.md)
 - [CreateLeadFormRequestQuestionsInnerOptionsInner](docs/Model/CreateLeadFormRequestQuestionsInnerOptionsInner.md)
+- [CreatePhoneNumberKycLink200Response](docs/Model/CreatePhoneNumberKycLink200Response.md)
+- [CreatePhoneNumberKycLinkRequest](docs/Model/CreatePhoneNumberKycLinkRequest.md)
+- [CreatePhoneNumberKycLinkRequestBranding](docs/Model/CreatePhoneNumberKycLinkRequestBranding.md)
+- [CreatePhoneNumberPortIn201Response](docs/Model/CreatePhoneNumberPortIn201Response.md)
+- [CreatePhoneNumberPortIn201ResponseOrdersInner](docs/Model/CreatePhoneNumberPortIn201ResponseOrdersInner.md)
+- [CreatePhoneNumberPortInRequest](docs/Model/CreatePhoneNumberPortInRequest.md)
+- [CreatePhoneNumberPortInRequestEndUser](docs/Model/CreatePhoneNumberPortInRequestEndUser.md)
 - [CreatePost409Response](docs/Model/CreatePost409Response.md)
 - [CreatePost409ResponseDetails](docs/Model/CreatePost409ResponseDetails.md)
 - [CreatePost429Response](docs/Model/CreatePost429Response.md)
@@ -660,6 +731,9 @@ Class | Method | HTTP request | Description
 - [CreateTestLeadRequestFieldDataInner](docs/Model/CreateTestLeadRequestFieldDataInner.md)
 - [CreateTrackingTag201Response](docs/Model/CreateTrackingTag201Response.md)
 - [CreateTrackingTagRequest](docs/Model/CreateTrackingTagRequest.md)
+- [CreateVoiceCall200Response](docs/Model/CreateVoiceCall200Response.md)
+- [CreateVoiceCallRequest](docs/Model/CreateVoiceCallRequest.md)
+- [CreateVoiceWebSession200Response](docs/Model/CreateVoiceWebSession200Response.md)
 - [CreateWebhookSettingsRequest](docs/Model/CreateWebhookSettingsRequest.md)
 - [CreateWhatsAppDataset200Response](docs/Model/CreateWhatsAppDataset200Response.md)
 - [CreateWhatsAppFlow200Response](docs/Model/CreateWhatsAppFlow200Response.md)
@@ -669,9 +743,6 @@ Class | Method | HTTP request | Description
 - [CreateWhatsAppGroupChat201ResponseGroup](docs/Model/CreateWhatsAppGroupChat201ResponseGroup.md)
 - [CreateWhatsAppGroupChatRequest](docs/Model/CreateWhatsAppGroupChatRequest.md)
 - [CreateWhatsAppGroupInviteLink200Response](docs/Model/CreateWhatsAppGroupInviteLink200Response.md)
-- [CreateWhatsAppNumberKycLink200Response](docs/Model/CreateWhatsAppNumberKycLink200Response.md)
-- [CreateWhatsAppNumberKycLinkRequest](docs/Model/CreateWhatsAppNumberKycLinkRequest.md)
-- [CreateWhatsAppNumberKycLinkRequestBranding](docs/Model/CreateWhatsAppNumberKycLinkRequestBranding.md)
 - [CreateWhatsAppSandboxSession200Response](docs/Model/CreateWhatsAppSandboxSession200Response.md)
 - [CreateWhatsAppSandboxSessionRequest](docs/Model/CreateWhatsAppSandboxSessionRequest.md)
 - [CreateWhatsAppTemplate200Response](docs/Model/CreateWhatsAppTemplate200Response.md)
@@ -695,12 +766,15 @@ Class | Method | HTTP request | Description
 - [DeleteInboxReviewReply200Response](docs/Model/DeleteInboxReviewReply200Response.md)
 - [DeleteInboxReviewReplyRequest](docs/Model/DeleteInboxReviewReplyRequest.md)
 - [DeleteWhatsappBusinessUsernameRequest](docs/Model/DeleteWhatsappBusinessUsernameRequest.md)
+- [DialVoiceWebCall200Response](docs/Model/DialVoiceWebCall200Response.md)
+- [DialVoiceWebCallRequest](docs/Model/DialVoiceWebCallRequest.md)
+- [DisableSmsOnNumber200Response](docs/Model/DisableSmsOnNumber200Response.md)
+- [DisableVoiceOnNumber200Response](docs/Model/DisableVoiceOnNumber200Response.md)
 - [DiscordPlatformData](docs/Model/DiscordPlatformData.md)
 - [DiscordPlatformDataEmbedsInner](docs/Model/DiscordPlatformDataEmbedsInner.md)
 - [DiscordPlatformDataEmbedsInnerAuthor](docs/Model/DiscordPlatformDataEmbedsInnerAuthor.md)
 - [DiscordPlatformDataEmbedsInnerFieldsInner](docs/Model/DiscordPlatformDataEmbedsInnerFieldsInner.md)
 - [DiscordPlatformDataEmbedsInnerFooter](docs/Model/DiscordPlatformDataEmbedsInnerFooter.md)
-- [DiscordPlatformDataEmbedsInnerImage](docs/Model/DiscordPlatformDataEmbedsInnerImage.md)
 - [DiscordPlatformDataPoll](docs/Model/DiscordPlatformDataPoll.md)
 - [DiscordPlatformDataPollAnswersInner](docs/Model/DiscordPlatformDataPollAnswersInner.md)
 - [DiscordPlatformDataPollAnswersInnerPollMedia](docs/Model/DiscordPlatformDataPollAnswersInnerPollMedia.md)
@@ -720,8 +794,17 @@ Class | Method | HTTP request | Description
 - [EditInboxMessageRequestReplyMarkupKeyboardInnerInner](docs/Model/EditInboxMessageRequestReplyMarkupKeyboardInnerInner.md)
 - [EditPost200Response](docs/Model/EditPost200Response.md)
 - [EditPostRequest](docs/Model/EditPostRequest.md)
-- [EnableWhatsAppCalling200Response](docs/Model/EnableWhatsAppCalling200Response.md)
-- [EnableWhatsAppCallingRequest](docs/Model/EnableWhatsAppCallingRequest.md)
+- [EnableSmsOnNumber200Response](docs/Model/EnableSmsOnNumber200Response.md)
+- [EnableSmsOnNumber200ResponseReusable](docs/Model/EnableSmsOnNumber200ResponseReusable.md)
+- [EnableVoiceOnNumber200Response](docs/Model/EnableVoiceOnNumber200Response.md)
+- [EnableVoiceOnNumber200ResponseBusinessHoursInner](docs/Model/EnableVoiceOnNumber200ResponseBusinessHoursInner.md)
+- [EnableVoiceOnNumber200ResponseIvrOptionsInner](docs/Model/EnableVoiceOnNumber200ResponseIvrOptionsInner.md)
+- [EnableVoiceOnNumberRequest](docs/Model/EnableVoiceOnNumberRequest.md)
+- [EnableVoiceOnNumberRequestBusinessHoursInner](docs/Model/EnableVoiceOnNumberRequestBusinessHoursInner.md)
+- [EnableVoiceOnNumberRequestIvrOptionsInner](docs/Model/EnableVoiceOnNumberRequestIvrOptionsInner.md)
+- [EnableWhatsAppCallingLegacy200Response](docs/Model/EnableWhatsAppCallingLegacy200Response.md)
+- [EnableWhatsAppCallingLegacyRequest](docs/Model/EnableWhatsAppCallingLegacyRequest.md)
+- [EndVoiceCall200Response](docs/Model/EndVoiceCall200Response.md)
 - [EnrollContacts200Response](docs/Model/EnrollContacts200Response.md)
 - [EnrollContactsRequest](docs/Model/EnrollContactsRequest.md)
 - [ErrorResponse](docs/Model/ErrorResponse.md)
@@ -777,6 +860,10 @@ Class | Method | HTTP request | Description
 - [GetBroadcast200ResponseBroadcast](docs/Model/GetBroadcast200ResponseBroadcast.md)
 - [GetBroadcast200ResponseBroadcastMessage](docs/Model/GetBroadcast200ResponseBroadcastMessage.md)
 - [GetBroadcast200ResponseBroadcastTemplate](docs/Model/GetBroadcast200ResponseBroadcastTemplate.md)
+- [GetCall200Response](docs/Model/GetCall200Response.md)
+- [GetCallsUsage200Response](docs/Model/GetCallsUsage200Response.md)
+- [GetCallsUsage200ResponseGroupsInner](docs/Model/GetCallsUsage200ResponseGroupsInner.md)
+- [GetCallsUsage200ResponseTotals](docs/Model/GetCallsUsage200ResponseTotals.md)
 - [GetCampaignAnalytics200Response](docs/Model/GetCampaignAnalytics200Response.md)
 - [GetCampaignAnalytics200ResponseAnalytics](docs/Model/GetCampaignAnalytics200ResponseAnalytics.md)
 - [GetCampaignAnalytics200ResponseAnalyticsDailyInner](docs/Model/GetCampaignAnalytics200ResponseAnalyticsDailyInner.md)
@@ -920,6 +1007,14 @@ Class | Method | HTTP request | Description
 - [GetMessengerMenu200Response](docs/Model/GetMessengerMenu200Response.md)
 - [GetPendingOAuthData200Response](docs/Model/GetPendingOAuthData200Response.md)
 - [GetPendingOAuthData200ResponseOrganizationsInner](docs/Model/GetPendingOAuthData200ResponseOrganizationsInner.md)
+- [GetPhoneNumber200Response](docs/Model/GetPhoneNumber200Response.md)
+- [GetPhoneNumber200ResponsePhoneNumber](docs/Model/GetPhoneNumber200ResponsePhoneNumber.md)
+- [GetPhoneNumberKycForm200Response](docs/Model/GetPhoneNumberKycForm200Response.md)
+- [GetPhoneNumberKycForm200ResponseFieldsInner](docs/Model/GetPhoneNumberKycForm200ResponseFieldsInner.md)
+- [GetPhoneNumberKycForm200ResponseReusable](docs/Model/GetPhoneNumberKycForm200ResponseReusable.md)
+- [GetPhoneNumberKycForm200ResponseReusableDetailsInner](docs/Model/GetPhoneNumberKycForm200ResponseReusableDetailsInner.md)
+- [GetPhoneNumberKycForm200ResponseReusableOptionsInner](docs/Model/GetPhoneNumberKycForm200ResponseReusableOptionsInner.md)
+- [GetPhoneNumberRemediation200Response](docs/Model/GetPhoneNumberRemediation200Response.md)
 - [GetPinterestBoards200Response](docs/Model/GetPinterestBoards200Response.md)
 - [GetPinterestBoards200ResponseBoardsInner](docs/Model/GetPinterestBoards200ResponseBoardsInner.md)
 - [GetPostTimeline200Response](docs/Model/GetPostTimeline200Response.md)
@@ -937,6 +1032,10 @@ Class | Method | HTTP request | Description
 - [GetSequence200ResponseSequence](docs/Model/GetSequence200ResponseSequence.md)
 - [GetSequence200ResponseSequenceStepsInner](docs/Model/GetSequence200ResponseSequenceStepsInner.md)
 - [GetSequence200ResponseSequenceStepsInnerTemplate](docs/Model/GetSequence200ResponseSequenceStepsInnerTemplate.md)
+- [GetSmsRegistration200Response](docs/Model/GetSmsRegistration200Response.md)
+- [GetSmsUsage200Response](docs/Model/GetSmsUsage200Response.md)
+- [GetSmsUsage200ResponseGroupsInner](docs/Model/GetSmsUsage200ResponseGroupsInner.md)
+- [GetSmsUsage200ResponseTotals](docs/Model/GetSmsUsage200ResponseTotals.md)
 - [GetTelegramCommands200Response](docs/Model/GetTelegramCommands200Response.md)
 - [GetTelegramCommands200ResponseDataInner](docs/Model/GetTelegramCommands200ResponseDataInner.md)
 - [GetTelegramConnectStatus200Response](docs/Model/GetTelegramConnectStatus200Response.md)
@@ -949,6 +1048,9 @@ Class | Method | HTTP request | Description
 - [GetTrackingTagStats200ResponseStats](docs/Model/GetTrackingTagStats200ResponseStats.md)
 - [GetUser200Response](docs/Model/GetUser200Response.md)
 - [GetUser200ResponseUser](docs/Model/GetUser200ResponseUser.md)
+- [GetVoiceCall200Response](docs/Model/GetVoiceCall200Response.md)
+- [GetVoiceCallEstimate200Response](docs/Model/GetVoiceCallEstimate200Response.md)
+- [GetVoiceCallEstimate200ResponseBreakdown](docs/Model/GetVoiceCallEstimate200ResponseBreakdown.md)
 - [GetWebhookLogs200Response](docs/Model/GetWebhookLogs200Response.md)
 - [GetWebhookLogs200ResponsePagination](docs/Model/GetWebhookLogs200ResponsePagination.md)
 - [GetWebhookSettings200Response](docs/Model/GetWebhookSettings200Response.md)
@@ -963,6 +1065,8 @@ Class | Method | HTTP request | Description
 - [GetWhatsAppCallPermissions200Response](docs/Model/GetWhatsAppCallPermissions200Response.md)
 - [GetWhatsAppCallPermissions200ResponseActionsInner](docs/Model/GetWhatsAppCallPermissions200ResponseActionsInner.md)
 - [GetWhatsAppCallPermissions200ResponsePermission](docs/Model/GetWhatsAppCallPermissions200ResponsePermission.md)
+- [GetWhatsAppCallRecording200Response](docs/Model/GetWhatsAppCallRecording200Response.md)
+- [GetWhatsAppCalling200Response](docs/Model/GetWhatsAppCalling200Response.md)
 - [GetWhatsAppCallingConfig200Response](docs/Model/GetWhatsAppCallingConfig200Response.md)
 - [GetWhatsAppDataset200Response](docs/Model/GetWhatsAppDataset200Response.md)
 - [GetWhatsAppDisplayName200Response](docs/Model/GetWhatsAppDisplayName200Response.md)
@@ -985,17 +1089,7 @@ Class | Method | HTTP request | Description
 - [GetWhatsAppNumberInfo200ResponseWaba](docs/Model/GetWhatsAppNumberInfo200ResponseWaba.md)
 - [GetWhatsAppNumberKycForm200Response](docs/Model/GetWhatsAppNumberKycForm200Response.md)
 - [GetWhatsAppNumberKycForm200ResponseFieldsInner](docs/Model/GetWhatsAppNumberKycForm200ResponseFieldsInner.md)
-- [GetWhatsAppNumberKycForm200ResponseReusable](docs/Model/GetWhatsAppNumberKycForm200ResponseReusable.md)
-- [GetWhatsAppNumberKycForm200ResponseReusableDetailsInner](docs/Model/GetWhatsAppNumberKycForm200ResponseReusableDetailsInner.md)
-- [GetWhatsAppNumberKycForm200ResponseReusableOptionsInner](docs/Model/GetWhatsAppNumberKycForm200ResponseReusableOptionsInner.md)
 - [GetWhatsAppNumberRemediation200Response](docs/Model/GetWhatsAppNumberRemediation200Response.md)
-- [GetWhatsAppPhoneNumber200Response](docs/Model/GetWhatsAppPhoneNumber200Response.md)
-- [GetWhatsAppPhoneNumber200ResponsePhoneNumber](docs/Model/GetWhatsAppPhoneNumber200ResponsePhoneNumber.md)
-- [GetWhatsAppPhoneNumbers200Response](docs/Model/GetWhatsAppPhoneNumbers200Response.md)
-- [GetWhatsAppPhoneNumbers200ResponseConnectedInner](docs/Model/GetWhatsAppPhoneNumbers200ResponseConnectedInner.md)
-- [GetWhatsAppPhoneNumbers200ResponseNumbersInner](docs/Model/GetWhatsAppPhoneNumbers200ResponseNumbersInner.md)
-- [GetWhatsAppPhoneNumbers200ResponseSandbox](docs/Model/GetWhatsAppPhoneNumbers200ResponseSandbox.md)
-- [GetWhatsAppPhoneNumbers200ResponseSandboxTemplate](docs/Model/GetWhatsAppPhoneNumbers200ResponseSandboxTemplate.md)
 - [GetWhatsAppTemplate200Response](docs/Model/GetWhatsAppTemplate200Response.md)
 - [GetWhatsAppTemplate200ResponseTemplate](docs/Model/GetWhatsAppTemplate200ResponseTemplate.md)
 - [GetWhatsAppTemplates200Response](docs/Model/GetWhatsAppTemplates200Response.md)
@@ -1077,6 +1171,8 @@ Class | Method | HTTP request | Description
 - [ListBroadcastRecipients200ResponseRecipientsInner](docs/Model/ListBroadcastRecipients200ResponseRecipientsInner.md)
 - [ListBroadcasts200Response](docs/Model/ListBroadcasts200Response.md)
 - [ListBroadcasts200ResponseBroadcastsInner](docs/Model/ListBroadcasts200ResponseBroadcastsInner.md)
+- [ListCalls200Response](docs/Model/ListCalls200Response.md)
+- [ListCalls200ResponseCallsInner](docs/Model/ListCalls200ResponseCallsInner.md)
 - [ListCommentAutomationLogs200Response](docs/Model/ListCommentAutomationLogs200Response.md)
 - [ListCommentAutomations200Response](docs/Model/ListCommentAutomations200Response.md)
 - [ListCommentAutomations200ResponseAutomationsInner](docs/Model/ListCommentAutomations200ResponseAutomationsInner.md)
@@ -1141,6 +1237,15 @@ Class | Method | HTTP request | Description
 - [ListLogs200Response](docs/Model/ListLogs200Response.md)
 - [ListLogs200ResponseLogsInner](docs/Model/ListLogs200ResponseLogsInner.md)
 - [ListLogs200ResponsePagination](docs/Model/ListLogs200ResponsePagination.md)
+- [ListPhoneNumberCountries200Response](docs/Model/ListPhoneNumberCountries200Response.md)
+- [ListPhoneNumberCountries200ResponseCountriesInner](docs/Model/ListPhoneNumberCountries200ResponseCountriesInner.md)
+- [ListPhoneNumberPortIns200Response](docs/Model/ListPhoneNumberPortIns200Response.md)
+- [ListPhoneNumberPortIns200ResponseOrdersInner](docs/Model/ListPhoneNumberPortIns200ResponseOrdersInner.md)
+- [ListPhoneNumbers200Response](docs/Model/ListPhoneNumbers200Response.md)
+- [ListPhoneNumbers200ResponseConnectedInner](docs/Model/ListPhoneNumbers200ResponseConnectedInner.md)
+- [ListPhoneNumbers200ResponseNumbersInner](docs/Model/ListPhoneNumbers200ResponseNumbersInner.md)
+- [ListPhoneNumbers200ResponseSandbox](docs/Model/ListPhoneNumbers200ResponseSandbox.md)
+- [ListPhoneNumbers200ResponseSandboxTemplate](docs/Model/ListPhoneNumbers200ResponseSandboxTemplate.md)
 - [ListPinterestBoardsForSelection200Response](docs/Model/ListPinterestBoardsForSelection200Response.md)
 - [ListPinterestBoardsForSelection200ResponseBoardsInner](docs/Model/ListPinterestBoardsForSelection200ResponseBoardsInner.md)
 - [ListQueueSlots200Response](docs/Model/ListQueueSlots200Response.md)
@@ -1149,12 +1254,18 @@ Class | Method | HTTP request | Description
 - [ListSequenceEnrollments200ResponseEnrollmentsInner](docs/Model/ListSequenceEnrollments200ResponseEnrollmentsInner.md)
 - [ListSequences200Response](docs/Model/ListSequences200Response.md)
 - [ListSequences200ResponseSequencesInner](docs/Model/ListSequences200ResponseSequencesInner.md)
+- [ListSmsOptOuts200Response](docs/Model/ListSmsOptOuts200Response.md)
+- [ListSmsOptOuts200ResponseOptOutsInner](docs/Model/ListSmsOptOuts200ResponseOptOutsInner.md)
+- [ListSmsRegistrations200Response](docs/Model/ListSmsRegistrations200Response.md)
+- [ListSmsRegistrations200ResponseRegistrationsInner](docs/Model/ListSmsRegistrations200ResponseRegistrationsInner.md)
+- [ListSmsRegistrations200ResponseRegistrationsInnerThroughput](docs/Model/ListSmsRegistrations200ResponseRegistrationsInnerThroughput.md)
 - [ListSnapchatProfiles200Response](docs/Model/ListSnapchatProfiles200Response.md)
 - [ListSnapchatProfiles200ResponsePublicProfilesInner](docs/Model/ListSnapchatProfiles200ResponsePublicProfilesInner.md)
 - [ListTrackingTagSharedAccounts200Response](docs/Model/ListTrackingTagSharedAccounts200Response.md)
 - [ListTrackingTags200Response](docs/Model/ListTrackingTags200Response.md)
 - [ListUsers200Response](docs/Model/ListUsers200Response.md)
 - [ListUsers200ResponseUsersInner](docs/Model/ListUsers200ResponseUsersInner.md)
+- [ListVoiceCalls200Response](docs/Model/ListVoiceCalls200Response.md)
 - [ListWhatsAppCalls200Response](docs/Model/ListWhatsAppCalls200Response.md)
 - [ListWhatsAppCalls200ResponseCallsInner](docs/Model/ListWhatsAppCalls200ResponseCallsInner.md)
 - [ListWhatsAppCalls200ResponseCallsInnerBilling](docs/Model/ListWhatsAppCalls200ResponseCallsInnerBilling.md)
@@ -1186,6 +1297,7 @@ Class | Method | HTTP request | Description
 - [ListWorkflowVersions200ResponseVersionsInner](docs/Model/ListWorkflowVersions200ResponseVersionsInner.md)
 - [ListWorkflows200Response](docs/Model/ListWorkflows200Response.md)
 - [ListWorkflows200ResponseWorkflowsInner](docs/Model/ListWorkflows200ResponseWorkflowsInner.md)
+- [LookupSmsNumber200Response](docs/Model/LookupSmsNumber200Response.md)
 - [MarkConversationRead200Response](docs/Model/MarkConversationRead200Response.md)
 - [MediaItem](docs/Model/MediaItem.md)
 - [MediaUploadResponse](docs/Model/MediaUploadResponse.md)
@@ -1226,13 +1338,14 @@ Class | Method | HTTP request | Description
 - [ProfileGetResponse](docs/Model/ProfileGetResponse.md)
 - [ProfileUpdateResponse](docs/Model/ProfileUpdateResponse.md)
 - [ProfilesListResponse](docs/Model/ProfilesListResponse.md)
-- [PurchaseWhatsAppPhoneNumber200Response](docs/Model/PurchaseWhatsAppPhoneNumber200Response.md)
-- [PurchaseWhatsAppPhoneNumber200ResponseOneOf](docs/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf.md)
-- [PurchaseWhatsAppPhoneNumber200ResponseOneOf1](docs/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf1.md)
-- [PurchaseWhatsAppPhoneNumber200ResponseOneOf1PhoneNumber](docs/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf1PhoneNumber.md)
-- [PurchaseWhatsAppPhoneNumber200ResponseOneOf2](docs/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf2.md)
-- [PurchaseWhatsAppPhoneNumber202Response](docs/Model/PurchaseWhatsAppPhoneNumber202Response.md)
-- [PurchaseWhatsAppPhoneNumber409Response](docs/Model/PurchaseWhatsAppPhoneNumber409Response.md)
+- [PurchasePhoneNumber200Response](docs/Model/PurchasePhoneNumber200Response.md)
+- [PurchasePhoneNumber200ResponseOneOf](docs/Model/PurchasePhoneNumber200ResponseOneOf.md)
+- [PurchasePhoneNumber200ResponseOneOf1](docs/Model/PurchasePhoneNumber200ResponseOneOf1.md)
+- [PurchasePhoneNumber200ResponseOneOf1PhoneNumber](docs/Model/PurchasePhoneNumber200ResponseOneOf1PhoneNumber.md)
+- [PurchasePhoneNumber200ResponseOneOf2](docs/Model/PurchasePhoneNumber200ResponseOneOf2.md)
+- [PurchasePhoneNumber202Response](docs/Model/PurchasePhoneNumber202Response.md)
+- [PurchasePhoneNumber409Response](docs/Model/PurchasePhoneNumber409Response.md)
+- [PurchasePhoneNumberRequest](docs/Model/PurchasePhoneNumberRequest.md)
 - [PurchaseWhatsAppPhoneNumberRequest](docs/Model/PurchaseWhatsAppPhoneNumberRequest.md)
 - [QueueDeleteResponse](docs/Model/QueueDeleteResponse.md)
 - [QueueNextSlotResponse](docs/Model/QueueNextSlotResponse.md)
@@ -1246,13 +1359,13 @@ Class | Method | HTTP request | Description
 - [RedditPlatformData](docs/Model/RedditPlatformData.md)
 - [RedditPost](docs/Model/RedditPost.md)
 - [RejectWhatsAppGroupJoinRequestsRequest](docs/Model/RejectWhatsAppGroupJoinRequestsRequest.md)
-- [ReleaseWhatsAppPhoneNumber200Response](docs/Model/ReleaseWhatsAppPhoneNumber200Response.md)
-- [ReleaseWhatsAppPhoneNumber200ResponsePhoneNumber](docs/Model/ReleaseWhatsAppPhoneNumber200ResponsePhoneNumber.md)
-- [RemediateWhatsAppNumber200Response](docs/Model/RemediateWhatsAppNumber200Response.md)
-- [RemediateWhatsAppNumber200ResponsePhoneNumber](docs/Model/RemediateWhatsAppNumber200ResponsePhoneNumber.md)
-- [RemediateWhatsAppNumberRequest](docs/Model/RemediateWhatsAppNumberRequest.md)
-- [RemediateWhatsAppNumberRequestDocumentsInner](docs/Model/RemediateWhatsAppNumberRequestDocumentsInner.md)
-- [RemediateWhatsAppNumberRequestDocumentsInnerOneOf](docs/Model/RemediateWhatsAppNumberRequestDocumentsInnerOneOf.md)
+- [ReleasePhoneNumber200Response](docs/Model/ReleasePhoneNumber200Response.md)
+- [ReleasePhoneNumber200ResponsePhoneNumber](docs/Model/ReleasePhoneNumber200ResponsePhoneNumber.md)
+- [RemediatePhoneNumber200Response](docs/Model/RemediatePhoneNumber200Response.md)
+- [RemediatePhoneNumber200ResponsePhoneNumber](docs/Model/RemediatePhoneNumber200ResponsePhoneNumber.md)
+- [RemediatePhoneNumberRequest](docs/Model/RemediatePhoneNumberRequest.md)
+- [RemediatePhoneNumberRequestDocumentsInner](docs/Model/RemediatePhoneNumberRequestDocumentsInner.md)
+- [RemediatePhoneNumberRequestDocumentsInnerOneOf](docs/Model/RemediatePhoneNumberRequestDocumentsInnerOneOf.md)
 - [RemoveBookmark200Response](docs/Model/RemoveBookmark200Response.md)
 - [RemoveConversionAssociations200Response](docs/Model/RemoveConversionAssociations200Response.md)
 - [RemoveDiscordMemberRole200Response](docs/Model/RemoveDiscordMemberRole200Response.md)
@@ -1268,6 +1381,10 @@ Class | Method | HTTP request | Description
 - [RestoreWorkflowVersion200ResponseWorkflow](docs/Model/RestoreWorkflowVersion200ResponseWorkflow.md)
 - [RetweetPost200Response](docs/Model/RetweetPost200Response.md)
 - [RetweetPostRequest](docs/Model/RetweetPostRequest.md)
+- [ReuseSmsRegistrationForNumber200Response](docs/Model/ReuseSmsRegistrationForNumber200Response.md)
+- [ReviewPhoneNumberKycPacket200Response](docs/Model/ReviewPhoneNumberKycPacket200Response.md)
+- [ReviewPhoneNumberKycPacket200ResponseAdvisoriesInner](docs/Model/ReviewPhoneNumberKycPacket200ResponseAdvisoriesInner.md)
+- [ReviewPhoneNumberKycPacketRequest](docs/Model/ReviewPhoneNumberKycPacketRequest.md)
 - [ReviewWebhookReview](docs/Model/ReviewWebhookReview.md)
 - [ReviewWebhookReviewReply](docs/Model/ReviewWebhookReviewReply.md)
 - [ReviewWebhookReviewReviewer](docs/Model/ReviewWebhookReviewReviewer.md)
@@ -1279,6 +1396,8 @@ Class | Method | HTTP request | Description
 - [SearchAdInterests200ResponseInterestsInner](docs/Model/SearchAdInterests200ResponseInterestsInner.md)
 - [SearchAdTargeting200Response](docs/Model/SearchAdTargeting200Response.md)
 - [SearchAdTargeting200ResponseResultsInner](docs/Model/SearchAdTargeting200ResponseResultsInner.md)
+- [SearchAvailablePhoneNumbers200Response](docs/Model/SearchAvailablePhoneNumbers200Response.md)
+- [SearchAvailablePhoneNumbers200ResponseNumbersInner](docs/Model/SearchAvailablePhoneNumbers200ResponseNumbersInner.md)
 - [SearchAvailableWhatsAppNumbers200Response](docs/Model/SearchAvailableWhatsAppNumbers200Response.md)
 - [SearchAvailableWhatsAppNumbers200ResponseNumbersInner](docs/Model/SearchAvailableWhatsAppNumbers200ResponseNumbersInner.md)
 - [SearchReddit200Response](docs/Model/SearchReddit200Response.md)
@@ -1351,6 +1470,8 @@ Class | Method | HTTP request | Description
 - [SendPrivateReplyToCommentRequestButtonsInnerOneOf1](docs/Model/SendPrivateReplyToCommentRequestButtonsInnerOneOf1.md)
 - [SendPrivateReplyToCommentRequestButtonsInnerOneOf2](docs/Model/SendPrivateReplyToCommentRequestButtonsInnerOneOf2.md)
 - [SendPrivateReplyToCommentRequestQuickRepliesInner](docs/Model/SendPrivateReplyToCommentRequestQuickRepliesInner.md)
+- [SendSms200Response](docs/Model/SendSms200Response.md)
+- [SendSmsRequest](docs/Model/SendSmsRequest.md)
 - [SendTypingIndicatorRequest](docs/Model/SendTypingIndicatorRequest.md)
 - [SendWhatsAppConversion200Response](docs/Model/SendWhatsAppConversion200Response.md)
 - [SendWhatsAppConversionRequest](docs/Model/SendWhatsAppConversionRequest.md)
@@ -1366,6 +1487,8 @@ Class | Method | HTTP request | Description
 - [SetTelegramCommandsRequestCommandsInner](docs/Model/SetTelegramCommandsRequestCommandsInner.md)
 - [SetWhatsappBusinessUsername200Response](docs/Model/SetWhatsappBusinessUsername200Response.md)
 - [SetWhatsappBusinessUsernameRequest](docs/Model/SetWhatsappBusinessUsernameRequest.md)
+- [ShareSmsRegistration200Response](docs/Model/ShareSmsRegistration200Response.md)
+- [ShareSmsRegistrationRequest](docs/Model/ShareSmsRegistrationRequest.md)
 - [SharedAdAccount](docs/Model/SharedAdAccount.md)
 - [SnapchatPlatformData](docs/Model/SnapchatPlatformData.md)
 - [SocialAccount](docs/Model/SocialAccount.md)
@@ -1373,14 +1496,22 @@ Class | Method | HTTP request | Description
 - [StartGoogleBusinessVerification200Response](docs/Model/StartGoogleBusinessVerification200Response.md)
 - [StartGoogleBusinessVerification200ResponseVerification](docs/Model/StartGoogleBusinessVerification200ResponseVerification.md)
 - [StartGoogleBusinessVerificationRequest](docs/Model/StartGoogleBusinessVerificationRequest.md)
-- [SubmitWhatsAppNumberKyc200Response](docs/Model/SubmitWhatsAppNumberKyc200Response.md)
-- [SubmitWhatsAppNumberKyc200ResponseNumbersInner](docs/Model/SubmitWhatsAppNumberKyc200ResponseNumbersInner.md)
-- [SubmitWhatsAppNumberKyc200ResponsePhoneNumber](docs/Model/SubmitWhatsAppNumberKyc200ResponsePhoneNumber.md)
+- [StartSmsRegistration200Response](docs/Model/StartSmsRegistration200Response.md)
+- [StartSmsRegistrationRequest](docs/Model/StartSmsRegistrationRequest.md)
+- [StartSmsRegistrationRequestBrand](docs/Model/StartSmsRegistrationRequestBrand.md)
+- [StartSmsRegistrationRequestCampaign](docs/Model/StartSmsRegistrationRequestCampaign.md)
+- [StartSmsRegistrationRequestTollFree](docs/Model/StartSmsRegistrationRequestTollFree.md)
+- [SubmitPhoneNumberKyc200Response](docs/Model/SubmitPhoneNumberKyc200Response.md)
+- [SubmitPhoneNumberKyc200ResponseNumbersInner](docs/Model/SubmitPhoneNumberKyc200ResponseNumbersInner.md)
+- [SubmitPhoneNumberKyc200ResponsePhoneNumber](docs/Model/SubmitPhoneNumberKyc200ResponsePhoneNumber.md)
+- [SubmitPhoneNumberKycRequest](docs/Model/SubmitPhoneNumberKycRequest.md)
+- [SubmitPhoneNumberKycRequestAddress](docs/Model/SubmitPhoneNumberKycRequestAddress.md)
+- [SubmitPhoneNumberKycRequestDocumentsInner](docs/Model/SubmitPhoneNumberKycRequestDocumentsInner.md)
+- [SubmitPhoneNumberKycRequestDocumentsInnerOneOf](docs/Model/SubmitPhoneNumberKycRequestDocumentsInnerOneOf.md)
+- [SubmitPhoneNumberKycRequestDocumentsInnerOneOf1](docs/Model/SubmitPhoneNumberKycRequestDocumentsInnerOneOf1.md)
 - [SubmitWhatsAppNumberKycRequest](docs/Model/SubmitWhatsAppNumberKycRequest.md)
-- [SubmitWhatsAppNumberKycRequestAddress](docs/Model/SubmitWhatsAppNumberKycRequestAddress.md)
 - [SubmitWhatsAppNumberKycRequestDocumentsInner](docs/Model/SubmitWhatsAppNumberKycRequestDocumentsInner.md)
 - [SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf](docs/Model/SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf.md)
-- [SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf1](docs/Model/SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf1.md)
 - [SyncExternalPosts200Response](docs/Model/SyncExternalPosts200Response.md)
 - [SyncExternalPosts200ResponseSynced](docs/Model/SyncExternalPosts200ResponseSynced.md)
 - [SyncExternalPostsRequest](docs/Model/SyncExternalPostsRequest.md)
@@ -1395,6 +1526,8 @@ Class | Method | HTTP request | Description
 - [ThreadsPlatformData](docs/Model/ThreadsPlatformData.md)
 - [TikTokPlatformData](docs/Model/TikTokPlatformData.md)
 - [TrackingTag](docs/Model/TrackingTag.md)
+- [TransferVoiceCall200Response](docs/Model/TransferVoiceCall200Response.md)
+- [TransferVoiceCallRequest](docs/Model/TransferVoiceCallRequest.md)
 - [TriggerWorkflow200Response](docs/Model/TriggerWorkflow200Response.md)
 - [TriggerWorkflow200ResponseExecution](docs/Model/TriggerWorkflow200ResponseExecution.md)
 - [TriggerWorkflowRequest](docs/Model/TriggerWorkflowRequest.md)
@@ -1504,7 +1637,7 @@ Class | Method | HTTP request | Description
 - [UpdateWebhookSettings200Response](docs/Model/UpdateWebhookSettings200Response.md)
 - [UpdateWebhookSettingsRequest](docs/Model/UpdateWebhookSettingsRequest.md)
 - [UpdateWhatsAppBusinessProfileRequest](docs/Model/UpdateWhatsAppBusinessProfileRequest.md)
-- [UpdateWhatsAppCallingRequest](docs/Model/UpdateWhatsAppCallingRequest.md)
+- [UpdateWhatsAppCallingLegacyRequest](docs/Model/UpdateWhatsAppCallingLegacyRequest.md)
 - [UpdateWhatsAppDisplayName200Response](docs/Model/UpdateWhatsAppDisplayName200Response.md)
 - [UpdateWhatsAppDisplayName200ResponseDisplayName](docs/Model/UpdateWhatsAppDisplayName200ResponseDisplayName.md)
 - [UpdateWhatsAppDisplayNameRequest](docs/Model/UpdateWhatsAppDisplayNameRequest.md)
@@ -1519,13 +1652,14 @@ Class | Method | HTTP request | Description
 - [UpdateYoutubeDefaultPlaylist200Response](docs/Model/UpdateYoutubeDefaultPlaylist200Response.md)
 - [UpdateYoutubeDefaultPlaylistRequest](docs/Model/UpdateYoutubeDefaultPlaylistRequest.md)
 - [UploadMediaDirect200Response](docs/Model/UploadMediaDirect200Response.md)
+- [UploadPhoneNumberKycDocument200Response](docs/Model/UploadPhoneNumberKycDocument200Response.md)
+- [UploadPhoneNumberPortInDocument200Response](docs/Model/UploadPhoneNumberPortInDocument200Response.md)
 - [UploadTokenResponse](docs/Model/UploadTokenResponse.md)
 - [UploadTokenStatusResponse](docs/Model/UploadTokenStatusResponse.md)
 - [UploadWhatsAppFlowJson200Response](docs/Model/UploadWhatsAppFlowJson200Response.md)
 - [UploadWhatsAppFlowJson200ResponseValidationErrorsInner](docs/Model/UploadWhatsAppFlowJson200ResponseValidationErrorsInner.md)
 - [UploadWhatsAppFlowJsonRequest](docs/Model/UploadWhatsAppFlowJsonRequest.md)
 - [UploadWhatsAppFlowJsonRequestFlowJson](docs/Model/UploadWhatsAppFlowJsonRequestFlowJson.md)
-- [UploadWhatsAppNumberKycDocument200Response](docs/Model/UploadWhatsAppNumberKycDocument200Response.md)
 - [UploadedFile](docs/Model/UploadedFile.md)
 - [UploadedOrDerivedAudience](docs/Model/UploadedOrDerivedAudience.md)
 - [UsageStats](docs/Model/UsageStats.md)
@@ -1539,6 +1673,11 @@ Class | Method | HTTP request | Description
 - [ValidateMedia200Response](docs/Model/ValidateMedia200Response.md)
 - [ValidateMedia200ResponsePlatformLimitsValue](docs/Model/ValidateMedia200ResponsePlatformLimitsValue.md)
 - [ValidateMediaRequest](docs/Model/ValidateMediaRequest.md)
+- [ValidatePhoneNumberKycAddress200Response](docs/Model/ValidatePhoneNumberKycAddress200Response.md)
+- [ValidatePhoneNumberKycAddress400Response](docs/Model/ValidatePhoneNumberKycAddress400Response.md)
+- [ValidatePhoneNumberKycAddress400ResponseDetails](docs/Model/ValidatePhoneNumberKycAddress400ResponseDetails.md)
+- [ValidatePhoneNumberKycAddress400ResponseDetailsAddressSuggestionsInner](docs/Model/ValidatePhoneNumberKycAddress400ResponseDetailsAddressSuggestionsInner.md)
+- [ValidatePhoneNumberKycAddressRequest](docs/Model/ValidatePhoneNumberKycAddressRequest.md)
 - [ValidatePost200Response](docs/Model/ValidatePost200Response.md)
 - [ValidatePost200ResponseOneOf](docs/Model/ValidatePost200ResponseOneOf.md)
 - [ValidatePost200ResponseOneOf1](docs/Model/ValidatePost200ResponseOneOf1.md)
@@ -1553,11 +1692,8 @@ Class | Method | HTTP request | Description
 - [ValidateSubreddit200ResponseOneOf](docs/Model/ValidateSubreddit200ResponseOneOf.md)
 - [ValidateSubreddit200ResponseOneOf1](docs/Model/ValidateSubreddit200ResponseOneOf1.md)
 - [ValidateSubreddit200ResponseOneOfSubreddit](docs/Model/ValidateSubreddit200ResponseOneOfSubreddit.md)
-- [ValidateWhatsAppNumberKycAddress200Response](docs/Model/ValidateWhatsAppNumberKycAddress200Response.md)
-- [ValidateWhatsAppNumberKycAddress400Response](docs/Model/ValidateWhatsAppNumberKycAddress400Response.md)
-- [ValidateWhatsAppNumberKycAddress400ResponseDetails](docs/Model/ValidateWhatsAppNumberKycAddress400ResponseDetails.md)
-- [ValidateWhatsAppNumberKycAddress400ResponseDetailsAddressSuggestionsInner](docs/Model/ValidateWhatsAppNumberKycAddress400ResponseDetailsAddressSuggestionsInner.md)
-- [ValidateWhatsAppNumberKycAddressRequest](docs/Model/ValidateWhatsAppNumberKycAddressRequest.md)
+- [VerifySmsRegistrationOtp200Response](docs/Model/VerifySmsRegistrationOtp200Response.md)
+- [VerifySmsRegistrationOtpRequest](docs/Model/VerifySmsRegistrationOtpRequest.md)
 - [Webhook](docs/Model/Webhook.md)
 - [WebhookLog](docs/Model/WebhookLog.md)
 - [WebhookPayloadAccountAdsInitialSyncCompleted](docs/Model/WebhookPayloadAccountAdsInitialSyncCompleted.md)
@@ -1577,7 +1713,6 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadCallEndedCallBilling](docs/Model/WebhookPayloadCallEndedCallBilling.md)
 - [WebhookPayloadCallFailed](docs/Model/WebhookPayloadCallFailed.md)
 - [WebhookPayloadCallFailedCall](docs/Model/WebhookPayloadCallFailedCall.md)
-- [WebhookPayloadCallFailedCallError](docs/Model/WebhookPayloadCallFailedCallError.md)
 - [WebhookPayloadCallPermissionRequest](docs/Model/WebhookPayloadCallPermissionRequest.md)
 - [WebhookPayloadCallPermissionRequestPermission](docs/Model/WebhookPayloadCallPermissionRequestPermission.md)
 - [WebhookPayloadCallReceived](docs/Model/WebhookPayloadCallReceived.md)

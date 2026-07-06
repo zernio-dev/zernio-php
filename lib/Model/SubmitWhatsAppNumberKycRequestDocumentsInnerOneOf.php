@@ -59,8 +59,7 @@ class SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf implements ModelInterfac
       */
     protected static $openAPITypes = [
         'requirement_id' => 'string',
-        'filename' => 'string',
-        'base64' => 'string'
+        'document_id' => 'string'
     ];
 
     /**
@@ -72,8 +71,7 @@ class SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf implements ModelInterfac
       */
     protected static $openAPIFormats = [
         'requirement_id' => null,
-        'filename' => null,
-        'base64' => null
+        'document_id' => null
     ];
 
     /**
@@ -83,8 +81,7 @@ class SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf implements ModelInterfac
       */
     protected static array $openAPINullables = [
         'requirement_id' => false,
-        'filename' => false,
-        'base64' => false
+        'document_id' => false
     ];
 
     /**
@@ -174,8 +171,7 @@ class SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf implements ModelInterfac
      */
     protected static $attributeMap = [
         'requirement_id' => 'requirementId',
-        'filename' => 'filename',
-        'base64' => 'base64'
+        'document_id' => 'documentId'
     ];
 
     /**
@@ -185,8 +181,7 @@ class SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf implements ModelInterfac
      */
     protected static $setters = [
         'requirement_id' => 'setRequirementId',
-        'filename' => 'setFilename',
-        'base64' => 'setBase64'
+        'document_id' => 'setDocumentId'
     ];
 
     /**
@@ -196,8 +191,7 @@ class SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf implements ModelInterfac
      */
     protected static $getters = [
         'requirement_id' => 'getRequirementId',
-        'filename' => 'getFilename',
-        'base64' => 'getBase64'
+        'document_id' => 'getDocumentId'
     ];
 
     /**
@@ -258,8 +252,7 @@ class SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf implements ModelInterfac
     public function __construct(?array $data = null)
     {
         $this->setIfExists('requirement_id', $data ?? [], null);
-        $this->setIfExists('filename', $data ?? [], null);
-        $this->setIfExists('base64', $data ?? [], null);
+        $this->setIfExists('document_id', $data ?? [], null);
     }
 
     /**
@@ -292,11 +285,8 @@ class SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf implements ModelInterfac
         if ($this->container['requirement_id'] === null) {
             $invalidProperties[] = "'requirement_id' can't be null";
         }
-        if ($this->container['filename'] === null) {
-            $invalidProperties[] = "'filename' can't be null";
-        }
-        if ($this->container['base64'] === null) {
-            $invalidProperties[] = "'base64' can't be null";
+        if ($this->container['document_id'] === null) {
+            $invalidProperties[] = "'document_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -341,55 +331,28 @@ class SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf implements ModelInterfac
     }
 
     /**
-     * Gets filename
+     * Gets document_id
      *
      * @return string
      */
-    public function getFilename()
+    public function getDocumentId()
     {
-        return $this->container['filename'];
+        return $this->container['document_id'];
     }
 
     /**
-     * Sets filename
+     * Sets document_id
      *
-     * @param string $filename filename
+     * @param string $document_id Id from POST /v1/whatsapp/phone-numbers/kyc/upload-document.
      *
      * @return self
      */
-    public function setFilename($filename)
+    public function setDocumentId($document_id)
     {
-        if (is_null($filename)) {
-            throw new \InvalidArgumentException('non-nullable filename cannot be null');
+        if (is_null($document_id)) {
+            throw new \InvalidArgumentException('non-nullable document_id cannot be null');
         }
-        $this->container['filename'] = $filename;
-
-        return $this;
-    }
-
-    /**
-     * Gets base64
-     *
-     * @return string
-     */
-    public function getBase64()
-    {
-        return $this->container['base64'];
-    }
-
-    /**
-     * Sets base64
-     *
-     * @param string $base64 base64
-     *
-     * @return self
-     */
-    public function setBase64($base64)
-    {
-        if (is_null($base64)) {
-            throw new \InvalidArgumentException('non-nullable base64 cannot be null');
-        }
-        $this->container['base64'] = $base64;
+        $this->container['document_id'] = $document_id;
 
         return $this;
     }

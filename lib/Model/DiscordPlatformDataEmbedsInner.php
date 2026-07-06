@@ -62,8 +62,8 @@ class DiscordPlatformDataEmbedsInner implements ModelInterface, ArrayAccess, \Js
         'description' => 'string',
         'url' => 'string',
         'color' => 'int',
-        'image' => '\Zernio\Model\DiscordPlatformDataEmbedsInnerImage',
-        'thumbnail' => '\Zernio\Model\DiscordPlatformDataEmbedsInnerImage',
+        'image' => '\Zernio\Model\GetWhatsAppCallRecording200Response',
+        'thumbnail' => '\Zernio\Model\GetWhatsAppCallRecording200Response',
         'footer' => '\Zernio\Model\DiscordPlatformDataEmbedsInnerFooter',
         'author' => '\Zernio\Model\DiscordPlatformDataEmbedsInnerAuthor',
         'fields' => '\Zernio\Model\DiscordPlatformDataEmbedsInnerFieldsInner[]'
@@ -461,7 +461,7 @@ class DiscordPlatformDataEmbedsInner implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets image
      *
-     * @return \Zernio\Model\DiscordPlatformDataEmbedsInnerImage|null
+     * @return \Zernio\Model\GetWhatsAppCallRecording200Response|null
      */
     public function getImage()
     {
@@ -471,7 +471,7 @@ class DiscordPlatformDataEmbedsInner implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets image
      *
-     * @param \Zernio\Model\DiscordPlatformDataEmbedsInnerImage|null $image image
+     * @param \Zernio\Model\GetWhatsAppCallRecording200Response|null $image image
      *
      * @return self
      */
@@ -488,7 +488,7 @@ class DiscordPlatformDataEmbedsInner implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets thumbnail
      *
-     * @return \Zernio\Model\DiscordPlatformDataEmbedsInnerImage|null
+     * @return \Zernio\Model\GetWhatsAppCallRecording200Response|null
      */
     public function getThumbnail()
     {
@@ -498,7 +498,7 @@ class DiscordPlatformDataEmbedsInner implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets thumbnail
      *
-     * @param \Zernio\Model\DiscordPlatformDataEmbedsInnerImage|null $thumbnail thumbnail
+     * @param \Zernio\Model\GetWhatsAppCallRecording200Response|null $thumbnail thumbnail
      *
      * @return self
      */

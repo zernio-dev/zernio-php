@@ -1,0 +1,20 @@
+# # CreateVoiceCall200Response
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**success** | **bool** |  | [optional]
+**call_id** | **string** | Internal Call doc ID | [optional]
+**telnyx_call_control_id** | **string** |  | [optional]
+**status** | **string** |  | [optional]
+**direction** | **string** |  | [optional]
+**from** | **string** |  | [optional]
+**to** | **string** |  | [optional]
+**forward_to** | **string** |  | [optional]
+**greeting** | **string** |  | [optional]
+**recording_enabled** | **bool** |  | [optional]
+**transcription_enabled** | **bool** |  | [optional]
+**transcription_language** | **string** |  | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

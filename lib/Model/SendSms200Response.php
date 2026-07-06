@@ -241,6 +241,19 @@ class SendSms200Response implements ModelInterface, ArrayAccess, \JsonSerializab
         return self::$openAPIModelName;
     }
 
+    public const STATUS_SENT = 'sent';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_SENT,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -289,6 +302,15 @@ class SendSms200Response implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -317,7 +339,7 @@ class SendSms200Response implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets id
      *
-     * @param string|null $id Telnyx message id
+     * @param string|null $id Message ID
      *
      * @return self
      */
@@ -344,7 +366,7 @@ class SendSms200Response implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets conversation_id
      *
-     * @param string|null $conversation_id conversation_id
+     * @param string|null $conversation_id Inbox conversation the message was threaded into.
      *
      * @return self
      */
@@ -379,6 +401,16 @@ class SendSms200Response implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         if (is_null($status)) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
         $this->container['status'] = $status;
 

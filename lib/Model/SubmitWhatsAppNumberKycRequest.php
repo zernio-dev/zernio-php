@@ -68,7 +68,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'end_user_last_name' => 'string',
         'values' => 'array<string,string>',
         'documents' => '\Zernio\Model\SubmitWhatsAppNumberKycRequestDocumentsInner[]',
-        'address' => '\Zernio\Model\SubmitWhatsAppNumberKycRequestAddress'
+        'address' => '\Zernio\Model\SubmitPhoneNumberKycRequestAddress'
     ];
 
     /**
@@ -655,7 +655,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets address
      *
-     * @return \Zernio\Model\SubmitWhatsAppNumberKycRequestAddress|null
+     * @return \Zernio\Model\SubmitPhoneNumberKycRequestAddress|null
      */
     public function getAddress()
     {
@@ -665,7 +665,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets address
      *
-     * @param \Zernio\Model\SubmitWhatsAppNumberKycRequestAddress|null $address address
+     * @param \Zernio\Model\SubmitPhoneNumberKycRequestAddress|null $address address
      *
      * @return self
      */

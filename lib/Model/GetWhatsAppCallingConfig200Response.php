@@ -359,7 +359,7 @@ class GetWhatsAppCallingConfig200Response implements ModelInterface, ArrayAccess
     /**
      * Sets phone_number_doc_id
      *
-     * @param string|null $phone_number_doc_id WhatsAppPhoneNumber Mongo ID (use on /v1/whatsapp/phone-numbers/{id}/calling)
+     * @param string|null $phone_number_doc_id Phone number record ID (use on /v1/phone-numbers/{id}/whatsapp/calling)
      *
      * @return self
      */

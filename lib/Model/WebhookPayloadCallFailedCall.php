@@ -66,7 +66,7 @@ class WebhookPayloadCallFailedCall implements ModelInterface, ArrayAccess, \Json
         'from' => 'string',
         'to' => 'string',
         'failed_at' => '\DateTime',
-        'error' => '\Zernio\Model\WebhookPayloadCallFailedCallError'
+        'error' => '\Zernio\Model\CallRecordCallErrorsInner'
     ];
 
     /**
@@ -606,7 +606,7 @@ class WebhookPayloadCallFailedCall implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets error
      *
-     * @return \Zernio\Model\WebhookPayloadCallFailedCallError|null
+     * @return \Zernio\Model\CallRecordCallErrorsInner|null
      */
     public function getError()
     {
@@ -616,7 +616,7 @@ class WebhookPayloadCallFailedCall implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets error
      *
-     * @param \Zernio\Model\WebhookPayloadCallFailedCallError|null $error error
+     * @param \Zernio\Model\CallRecordCallErrorsInner|null $error error
      *
      * @return self
      */

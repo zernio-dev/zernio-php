@@ -78,7 +78,13 @@ class WhatsAppCallingApi
         'disableWhatsAppCalling' => [
             'application/json',
         ],
+        'disableWhatsAppCallingLegacy' => [
+            'application/json',
+        ],
         'enableWhatsAppCalling' => [
+            'application/json',
+        ],
+        'enableWhatsAppCallingLegacy' => [
             'application/json',
         ],
         'getWhatsAppCall' => [
@@ -88,6 +94,12 @@ class WhatsAppCallingApi
             'application/json',
         ],
         'getWhatsAppCallPermissions' => [
+            'application/json',
+        ],
+        'getWhatsAppCallRecording' => [
+            'application/json',
+        ],
+        'getWhatsAppCalling' => [
             'application/json',
         ],
         'getWhatsAppCallingConfig' => [
@@ -100,6 +112,9 @@ class WhatsAppCallingApi
             'application/json',
         ],
         'updateWhatsAppCalling' => [
+            'application/json',
+        ],
+        'updateWhatsAppCallingLegacy' => [
             'application/json',
         ],
     ];
@@ -316,6 +331,262 @@ class WhatsAppCallingApi
         }
 
 
+        $resourcePath = '/v1/phone-numbers/{id}/whatsapp/calling';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation disableWhatsAppCallingLegacy
+     *
+     * Disable calling on a number
+     *
+     * @param  string $id id (required)
+     * @param  string $account_id account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableWhatsAppCallingLegacy'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     * @deprecated
+     */
+    public function disableWhatsAppCallingLegacy($id, $account_id, string $contentType = self::contentTypes['disableWhatsAppCallingLegacy'][0])
+    {
+        $this->disableWhatsAppCallingLegacyWithHttpInfo($id, $account_id, $contentType);
+    }
+
+    /**
+     * Operation disableWhatsAppCallingLegacyWithHttpInfo
+     *
+     * Disable calling on a number
+     *
+     * @param  string $id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableWhatsAppCallingLegacy'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
+     */
+    public function disableWhatsAppCallingLegacyWithHttpInfo($id, $account_id, string $contentType = self::contentTypes['disableWhatsAppCallingLegacy'][0])
+    {
+        $request = $this->disableWhatsAppCallingLegacyRequest($id, $account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation disableWhatsAppCallingLegacyAsync
+     *
+     * Disable calling on a number
+     *
+     * @param  string $id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableWhatsAppCallingLegacy'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
+     */
+    public function disableWhatsAppCallingLegacyAsync($id, $account_id, string $contentType = self::contentTypes['disableWhatsAppCallingLegacy'][0])
+    {
+        return $this->disableWhatsAppCallingLegacyAsyncWithHttpInfo($id, $account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation disableWhatsAppCallingLegacyAsyncWithHttpInfo
+     *
+     * Disable calling on a number
+     *
+     * @param  string $id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableWhatsAppCallingLegacy'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
+     */
+    public function disableWhatsAppCallingLegacyAsyncWithHttpInfo($id, $account_id, string $contentType = self::contentTypes['disableWhatsAppCallingLegacy'][0])
+    {
+        $returnType = '';
+        $request = $this->disableWhatsAppCallingLegacyRequest($id, $account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'disableWhatsAppCallingLegacy'
+     *
+     * @param  string $id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableWhatsAppCallingLegacy'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
+     */
+    public function disableWhatsAppCallingLegacyRequest($id, $account_id, string $contentType = self::contentTypes['disableWhatsAppCallingLegacy'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling disableWhatsAppCallingLegacy'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling disableWhatsAppCallingLegacy'
+            );
+        }
+
+
         $resourcePath = '/v1/whatsapp/phone-numbers/{id}/calling';
         $formParams = [];
         $queryParams = [];
@@ -406,17 +677,17 @@ class WhatsAppCallingApi
      *
      * Enable calling on a number
      *
-     * @param  string $id WhatsAppPhoneNumber Mongo ID (required)
-     * @param  \Zernio\Model\EnableWhatsAppCallingRequest $enable_whats_app_calling_request enable_whats_app_calling_request (required)
+     * @param  string $id Phone number record ID (from GET /v1/phone-numbers). (required)
+     * @param  \Zernio\Model\EnableWhatsAppCallingLegacyRequest $enable_whats_app_calling_legacy_request enable_whats_app_calling_legacy_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableWhatsAppCalling'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\EnableWhatsAppCalling200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\EnableWhatsAppCallingLegacy200Response|\Zernio\Model\InlineObject
      */
-    public function enableWhatsAppCalling($id, $enable_whats_app_calling_request, string $contentType = self::contentTypes['enableWhatsAppCalling'][0])
+    public function enableWhatsAppCalling($id, $enable_whats_app_calling_legacy_request, string $contentType = self::contentTypes['enableWhatsAppCalling'][0])
     {
-        list($response) = $this->enableWhatsAppCallingWithHttpInfo($id, $enable_whats_app_calling_request, $contentType);
+        list($response) = $this->enableWhatsAppCallingWithHttpInfo($id, $enable_whats_app_calling_legacy_request, $contentType);
         return $response;
     }
 
@@ -425,17 +696,17 @@ class WhatsAppCallingApi
      *
      * Enable calling on a number
      *
-     * @param  string $id WhatsAppPhoneNumber Mongo ID (required)
-     * @param  \Zernio\Model\EnableWhatsAppCallingRequest $enable_whats_app_calling_request (required)
+     * @param  string $id Phone number record ID (from GET /v1/phone-numbers). (required)
+     * @param  \Zernio\Model\EnableWhatsAppCallingLegacyRequest $enable_whats_app_calling_legacy_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableWhatsAppCalling'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\EnableWhatsAppCalling200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\EnableWhatsAppCallingLegacy200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function enableWhatsAppCallingWithHttpInfo($id, $enable_whats_app_calling_request, string $contentType = self::contentTypes['enableWhatsAppCalling'][0])
+    public function enableWhatsAppCallingWithHttpInfo($id, $enable_whats_app_calling_legacy_request, string $contentType = self::contentTypes['enableWhatsAppCalling'][0])
     {
-        $request = $this->enableWhatsAppCallingRequest($id, $enable_whats_app_calling_request, $contentType);
+        $request = $this->enableWhatsAppCallingRequest($id, $enable_whats_app_calling_legacy_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -463,7 +734,7 @@ class WhatsAppCallingApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\EnableWhatsAppCalling200Response',
+                        '\Zernio\Model\EnableWhatsAppCallingLegacy200Response',
                         $request,
                         $response,
                     );
@@ -491,7 +762,7 @@ class WhatsAppCallingApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\EnableWhatsAppCalling200Response',
+                '\Zernio\Model\EnableWhatsAppCallingLegacy200Response',
                 $request,
                 $response,
             );
@@ -500,7 +771,7 @@ class WhatsAppCallingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\EnableWhatsAppCalling200Response',
+                        '\Zernio\Model\EnableWhatsAppCallingLegacy200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -525,16 +796,16 @@ class WhatsAppCallingApi
      *
      * Enable calling on a number
      *
-     * @param  string $id WhatsAppPhoneNumber Mongo ID (required)
-     * @param  \Zernio\Model\EnableWhatsAppCallingRequest $enable_whats_app_calling_request (required)
+     * @param  string $id Phone number record ID (from GET /v1/phone-numbers). (required)
+     * @param  \Zernio\Model\EnableWhatsAppCallingLegacyRequest $enable_whats_app_calling_legacy_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableWhatsAppCalling'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function enableWhatsAppCallingAsync($id, $enable_whats_app_calling_request, string $contentType = self::contentTypes['enableWhatsAppCalling'][0])
+    public function enableWhatsAppCallingAsync($id, $enable_whats_app_calling_legacy_request, string $contentType = self::contentTypes['enableWhatsAppCalling'][0])
     {
-        return $this->enableWhatsAppCallingAsyncWithHttpInfo($id, $enable_whats_app_calling_request, $contentType)
+        return $this->enableWhatsAppCallingAsyncWithHttpInfo($id, $enable_whats_app_calling_legacy_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -547,17 +818,17 @@ class WhatsAppCallingApi
      *
      * Enable calling on a number
      *
-     * @param  string $id WhatsAppPhoneNumber Mongo ID (required)
-     * @param  \Zernio\Model\EnableWhatsAppCallingRequest $enable_whats_app_calling_request (required)
+     * @param  string $id Phone number record ID (from GET /v1/phone-numbers). (required)
+     * @param  \Zernio\Model\EnableWhatsAppCallingLegacyRequest $enable_whats_app_calling_legacy_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableWhatsAppCalling'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function enableWhatsAppCallingAsyncWithHttpInfo($id, $enable_whats_app_calling_request, string $contentType = self::contentTypes['enableWhatsAppCalling'][0])
+    public function enableWhatsAppCallingAsyncWithHttpInfo($id, $enable_whats_app_calling_legacy_request, string $contentType = self::contentTypes['enableWhatsAppCalling'][0])
     {
-        $returnType = '\Zernio\Model\EnableWhatsAppCalling200Response';
-        $request = $this->enableWhatsAppCallingRequest($id, $enable_whats_app_calling_request, $contentType);
+        $returnType = '\Zernio\Model\EnableWhatsAppCallingLegacy200Response';
+        $request = $this->enableWhatsAppCallingRequest($id, $enable_whats_app_calling_legacy_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -598,14 +869,14 @@ class WhatsAppCallingApi
     /**
      * Create request for operation 'enableWhatsAppCalling'
      *
-     * @param  string $id WhatsAppPhoneNumber Mongo ID (required)
-     * @param  \Zernio\Model\EnableWhatsAppCallingRequest $enable_whats_app_calling_request (required)
+     * @param  string $id Phone number record ID (from GET /v1/phone-numbers). (required)
+     * @param  \Zernio\Model\EnableWhatsAppCallingLegacyRequest $enable_whats_app_calling_legacy_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableWhatsAppCalling'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function enableWhatsAppCallingRequest($id, $enable_whats_app_calling_request, string $contentType = self::contentTypes['enableWhatsAppCalling'][0])
+    public function enableWhatsAppCallingRequest($id, $enable_whats_app_calling_legacy_request, string $contentType = self::contentTypes['enableWhatsAppCalling'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -615,10 +886,320 @@ class WhatsAppCallingApi
             );
         }
 
-        // verify the required parameter 'enable_whats_app_calling_request' is set
-        if ($enable_whats_app_calling_request === null || (is_array($enable_whats_app_calling_request) && count($enable_whats_app_calling_request) === 0)) {
+        // verify the required parameter 'enable_whats_app_calling_legacy_request' is set
+        if ($enable_whats_app_calling_legacy_request === null || (is_array($enable_whats_app_calling_legacy_request) && count($enable_whats_app_calling_legacy_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $enable_whats_app_calling_request when calling enableWhatsAppCalling'
+                'Missing the required parameter $enable_whats_app_calling_legacy_request when calling enableWhatsAppCalling'
+            );
+        }
+
+
+        $resourcePath = '/v1/phone-numbers/{id}/whatsapp/calling';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($enable_whats_app_calling_legacy_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($enable_whats_app_calling_legacy_request));
+            } else {
+                $httpBody = $enable_whats_app_calling_legacy_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation enableWhatsAppCallingLegacy
+     *
+     * Enable calling on a number
+     *
+     * @param  string $id WhatsAppPhoneNumber Mongo ID (required)
+     * @param  \Zernio\Model\EnableWhatsAppCallingLegacyRequest $enable_whats_app_calling_legacy_request enable_whats_app_calling_legacy_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableWhatsAppCallingLegacy'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\EnableWhatsAppCallingLegacy200Response|\Zernio\Model\InlineObject
+     * @deprecated
+     */
+    public function enableWhatsAppCallingLegacy($id, $enable_whats_app_calling_legacy_request, string $contentType = self::contentTypes['enableWhatsAppCallingLegacy'][0])
+    {
+        list($response) = $this->enableWhatsAppCallingLegacyWithHttpInfo($id, $enable_whats_app_calling_legacy_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation enableWhatsAppCallingLegacyWithHttpInfo
+     *
+     * Enable calling on a number
+     *
+     * @param  string $id WhatsAppPhoneNumber Mongo ID (required)
+     * @param  \Zernio\Model\EnableWhatsAppCallingLegacyRequest $enable_whats_app_calling_legacy_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableWhatsAppCallingLegacy'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\EnableWhatsAppCallingLegacy200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
+     */
+    public function enableWhatsAppCallingLegacyWithHttpInfo($id, $enable_whats_app_calling_legacy_request, string $contentType = self::contentTypes['enableWhatsAppCallingLegacy'][0])
+    {
+        $request = $this->enableWhatsAppCallingLegacyRequest($id, $enable_whats_app_calling_legacy_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\EnableWhatsAppCallingLegacy200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\EnableWhatsAppCallingLegacy200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\EnableWhatsAppCallingLegacy200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation enableWhatsAppCallingLegacyAsync
+     *
+     * Enable calling on a number
+     *
+     * @param  string $id WhatsAppPhoneNumber Mongo ID (required)
+     * @param  \Zernio\Model\EnableWhatsAppCallingLegacyRequest $enable_whats_app_calling_legacy_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableWhatsAppCallingLegacy'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
+     */
+    public function enableWhatsAppCallingLegacyAsync($id, $enable_whats_app_calling_legacy_request, string $contentType = self::contentTypes['enableWhatsAppCallingLegacy'][0])
+    {
+        return $this->enableWhatsAppCallingLegacyAsyncWithHttpInfo($id, $enable_whats_app_calling_legacy_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation enableWhatsAppCallingLegacyAsyncWithHttpInfo
+     *
+     * Enable calling on a number
+     *
+     * @param  string $id WhatsAppPhoneNumber Mongo ID (required)
+     * @param  \Zernio\Model\EnableWhatsAppCallingLegacyRequest $enable_whats_app_calling_legacy_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableWhatsAppCallingLegacy'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
+     */
+    public function enableWhatsAppCallingLegacyAsyncWithHttpInfo($id, $enable_whats_app_calling_legacy_request, string $contentType = self::contentTypes['enableWhatsAppCallingLegacy'][0])
+    {
+        $returnType = '\Zernio\Model\EnableWhatsAppCallingLegacy200Response';
+        $request = $this->enableWhatsAppCallingLegacyRequest($id, $enable_whats_app_calling_legacy_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'enableWhatsAppCallingLegacy'
+     *
+     * @param  string $id WhatsAppPhoneNumber Mongo ID (required)
+     * @param  \Zernio\Model\EnableWhatsAppCallingLegacyRequest $enable_whats_app_calling_legacy_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableWhatsAppCallingLegacy'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
+     */
+    public function enableWhatsAppCallingLegacyRequest($id, $enable_whats_app_calling_legacy_request, string $contentType = self::contentTypes['enableWhatsAppCallingLegacy'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling enableWhatsAppCallingLegacy'
+            );
+        }
+
+        // verify the required parameter 'enable_whats_app_calling_legacy_request' is set
+        if ($enable_whats_app_calling_legacy_request === null || (is_array($enable_whats_app_calling_legacy_request) && count($enable_whats_app_calling_legacy_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $enable_whats_app_calling_legacy_request when calling enableWhatsAppCallingLegacy'
             );
         }
 
@@ -649,12 +1230,12 @@ class WhatsAppCallingApi
         );
 
         // for model (json/xml)
-        if (isset($enable_whats_app_calling_request)) {
+        if (isset($enable_whats_app_calling_legacy_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($enable_whats_app_calling_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($enable_whats_app_calling_legacy_request));
             } else {
-                $httpBody = $enable_whats_app_calling_request;
+                $httpBody = $enable_whats_app_calling_legacy_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1666,6 +2247,614 @@ class WhatsAppCallingApi
     }
 
     /**
+     * Operation getWhatsAppCallRecording
+     *
+     * Get a call recording
+     *
+     * @param  string $call_id call_id (required)
+     * @param  string $account_id account_id (required)
+     * @param  string|null $as &#x60;json&#x60; returns &#x60;{ url }&#x60; instead of a 302 redirect. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppCallRecording'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return |\Zernio\Model\GetWhatsAppCallRecording200Response|\Zernio\Model\InlineObject
+     */
+    public function getWhatsAppCallRecording($call_id, $account_id, $as = null, string $contentType = self::contentTypes['getWhatsAppCallRecording'][0])
+    {
+        list($response) = $this->getWhatsAppCallRecordingWithHttpInfo($call_id, $account_id, $as, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getWhatsAppCallRecordingWithHttpInfo
+     *
+     * Get a call recording
+     *
+     * @param  string $call_id (required)
+     * @param  string $account_id (required)
+     * @param  string|null $as &#x60;json&#x60; returns &#x60;{ url }&#x60; instead of a 302 redirect. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppCallRecording'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of |\Zernio\Model\GetWhatsAppCallRecording200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getWhatsAppCallRecordingWithHttpInfo($call_id, $account_id, $as = null, string $contentType = self::contentTypes['getWhatsAppCallRecording'][0])
+    {
+        $request = $this->getWhatsAppCallRecordingRequest($call_id, $account_id, $as, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetWhatsAppCallRecording200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetWhatsAppCallRecording200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetWhatsAppCallRecording200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getWhatsAppCallRecordingAsync
+     *
+     * Get a call recording
+     *
+     * @param  string $call_id (required)
+     * @param  string $account_id (required)
+     * @param  string|null $as &#x60;json&#x60; returns &#x60;{ url }&#x60; instead of a 302 redirect. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppCallRecording'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsAppCallRecordingAsync($call_id, $account_id, $as = null, string $contentType = self::contentTypes['getWhatsAppCallRecording'][0])
+    {
+        return $this->getWhatsAppCallRecordingAsyncWithHttpInfo($call_id, $account_id, $as, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getWhatsAppCallRecordingAsyncWithHttpInfo
+     *
+     * Get a call recording
+     *
+     * @param  string $call_id (required)
+     * @param  string $account_id (required)
+     * @param  string|null $as &#x60;json&#x60; returns &#x60;{ url }&#x60; instead of a 302 redirect. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppCallRecording'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsAppCallRecordingAsyncWithHttpInfo($call_id, $account_id, $as = null, string $contentType = self::contentTypes['getWhatsAppCallRecording'][0])
+    {
+        $returnType = '\Zernio\Model\GetWhatsAppCallRecording200Response';
+        $request = $this->getWhatsAppCallRecordingRequest($call_id, $account_id, $as, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getWhatsAppCallRecording'
+     *
+     * @param  string $call_id (required)
+     * @param  string $account_id (required)
+     * @param  string|null $as &#x60;json&#x60; returns &#x60;{ url }&#x60; instead of a 302 redirect. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppCallRecording'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getWhatsAppCallRecordingRequest($call_id, $account_id, $as = null, string $contentType = self::contentTypes['getWhatsAppCallRecording'][0])
+    {
+
+        // verify the required parameter 'call_id' is set
+        if ($call_id === null || (is_array($call_id) && count($call_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $call_id when calling getWhatsAppCallRecording'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getWhatsAppCallRecording'
+            );
+        }
+
+
+
+        $resourcePath = '/v1/whatsapp/calls/{callId}/recording';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $as,
+            'as', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($call_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'callId' . '}',
+                ObjectSerializer::toPathValue($call_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getWhatsAppCalling
+     *
+     * Get calling config for a number
+     *
+     * @param  string $id Phone number record ID (from GET /v1/phone-numbers). (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppCalling'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetWhatsAppCalling200Response|\Zernio\Model\InlineObject
+     */
+    public function getWhatsAppCalling($id, string $contentType = self::contentTypes['getWhatsAppCalling'][0])
+    {
+        list($response) = $this->getWhatsAppCallingWithHttpInfo($id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getWhatsAppCallingWithHttpInfo
+     *
+     * Get calling config for a number
+     *
+     * @param  string $id Phone number record ID (from GET /v1/phone-numbers). (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppCalling'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetWhatsAppCalling200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getWhatsAppCallingWithHttpInfo($id, string $contentType = self::contentTypes['getWhatsAppCalling'][0])
+    {
+        $request = $this->getWhatsAppCallingRequest($id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetWhatsAppCalling200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetWhatsAppCalling200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetWhatsAppCalling200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getWhatsAppCallingAsync
+     *
+     * Get calling config for a number
+     *
+     * @param  string $id Phone number record ID (from GET /v1/phone-numbers). (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppCalling'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsAppCallingAsync($id, string $contentType = self::contentTypes['getWhatsAppCalling'][0])
+    {
+        return $this->getWhatsAppCallingAsyncWithHttpInfo($id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getWhatsAppCallingAsyncWithHttpInfo
+     *
+     * Get calling config for a number
+     *
+     * @param  string $id Phone number record ID (from GET /v1/phone-numbers). (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppCalling'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsAppCallingAsyncWithHttpInfo($id, string $contentType = self::contentTypes['getWhatsAppCalling'][0])
+    {
+        $returnType = '\Zernio\Model\GetWhatsAppCalling200Response';
+        $request = $this->getWhatsAppCallingRequest($id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getWhatsAppCalling'
+     *
+     * @param  string $id Phone number record ID (from GET /v1/phone-numbers). (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppCalling'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getWhatsAppCallingRequest($id, string $contentType = self::contentTypes['getWhatsAppCalling'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling getWhatsAppCalling'
+            );
+        }
+
+
+        $resourcePath = '/v1/phone-numbers/{id}/whatsapp/calling';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getWhatsAppCallingConfig
      *
      * Get calling config for an account
@@ -1958,15 +3147,16 @@ class WhatsAppCallingApi
      * Initiate outbound call
      *
      * @param  \Zernio\Model\InitiateWhatsAppCallRequest $initiate_whats_app_call_request initiate_whats_app_call_request (required)
+     * @param  string|null $idempotency_key Optional client-generated unique key (e.g. a UUID) that makes dial retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiateWhatsAppCall'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\InitiateWhatsAppCall200Response|\Zernio\Model\InlineObject
      */
-    public function initiateWhatsAppCall($initiate_whats_app_call_request, string $contentType = self::contentTypes['initiateWhatsAppCall'][0])
+    public function initiateWhatsAppCall($initiate_whats_app_call_request, $idempotency_key = null, string $contentType = self::contentTypes['initiateWhatsAppCall'][0])
     {
-        list($response) = $this->initiateWhatsAppCallWithHttpInfo($initiate_whats_app_call_request, $contentType);
+        list($response) = $this->initiateWhatsAppCallWithHttpInfo($initiate_whats_app_call_request, $idempotency_key, $contentType);
         return $response;
     }
 
@@ -1976,15 +3166,16 @@ class WhatsAppCallingApi
      * Initiate outbound call
      *
      * @param  \Zernio\Model\InitiateWhatsAppCallRequest $initiate_whats_app_call_request (required)
+     * @param  string|null $idempotency_key Optional client-generated unique key (e.g. a UUID) that makes dial retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiateWhatsAppCall'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\InitiateWhatsAppCall200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function initiateWhatsAppCallWithHttpInfo($initiate_whats_app_call_request, string $contentType = self::contentTypes['initiateWhatsAppCall'][0])
+    public function initiateWhatsAppCallWithHttpInfo($initiate_whats_app_call_request, $idempotency_key = null, string $contentType = self::contentTypes['initiateWhatsAppCall'][0])
     {
-        $request = $this->initiateWhatsAppCallRequest($initiate_whats_app_call_request, $contentType);
+        $request = $this->initiateWhatsAppCallRequest($initiate_whats_app_call_request, $idempotency_key, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2075,14 +3266,15 @@ class WhatsAppCallingApi
      * Initiate outbound call
      *
      * @param  \Zernio\Model\InitiateWhatsAppCallRequest $initiate_whats_app_call_request (required)
+     * @param  string|null $idempotency_key Optional client-generated unique key (e.g. a UUID) that makes dial retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiateWhatsAppCall'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function initiateWhatsAppCallAsync($initiate_whats_app_call_request, string $contentType = self::contentTypes['initiateWhatsAppCall'][0])
+    public function initiateWhatsAppCallAsync($initiate_whats_app_call_request, $idempotency_key = null, string $contentType = self::contentTypes['initiateWhatsAppCall'][0])
     {
-        return $this->initiateWhatsAppCallAsyncWithHttpInfo($initiate_whats_app_call_request, $contentType)
+        return $this->initiateWhatsAppCallAsyncWithHttpInfo($initiate_whats_app_call_request, $idempotency_key, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2096,15 +3288,16 @@ class WhatsAppCallingApi
      * Initiate outbound call
      *
      * @param  \Zernio\Model\InitiateWhatsAppCallRequest $initiate_whats_app_call_request (required)
+     * @param  string|null $idempotency_key Optional client-generated unique key (e.g. a UUID) that makes dial retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiateWhatsAppCall'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function initiateWhatsAppCallAsyncWithHttpInfo($initiate_whats_app_call_request, string $contentType = self::contentTypes['initiateWhatsAppCall'][0])
+    public function initiateWhatsAppCallAsyncWithHttpInfo($initiate_whats_app_call_request, $idempotency_key = null, string $contentType = self::contentTypes['initiateWhatsAppCall'][0])
     {
         $returnType = '\Zernio\Model\InitiateWhatsAppCall200Response';
-        $request = $this->initiateWhatsAppCallRequest($initiate_whats_app_call_request, $contentType);
+        $request = $this->initiateWhatsAppCallRequest($initiate_whats_app_call_request, $idempotency_key, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2146,12 +3339,13 @@ class WhatsAppCallingApi
      * Create request for operation 'initiateWhatsAppCall'
      *
      * @param  \Zernio\Model\InitiateWhatsAppCallRequest $initiate_whats_app_call_request (required)
+     * @param  string|null $idempotency_key Optional client-generated unique key (e.g. a UUID) that makes dial retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiateWhatsAppCall'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function initiateWhatsAppCallRequest($initiate_whats_app_call_request, string $contentType = self::contentTypes['initiateWhatsAppCall'][0])
+    public function initiateWhatsAppCallRequest($initiate_whats_app_call_request, $idempotency_key = null, string $contentType = self::contentTypes['initiateWhatsAppCall'][0])
     {
 
         // verify the required parameter 'initiate_whats_app_call_request' is set
@@ -2161,6 +3355,10 @@ class WhatsAppCallingApi
             );
         }
 
+        if ($idempotency_key !== null && strlen($idempotency_key) > 255) {
+            throw new \InvalidArgumentException('invalid length for "$idempotency_key" when calling WhatsAppCallingApi.initiateWhatsAppCall, must be smaller than or equal to 255.');
+        }
+        
 
         $resourcePath = '/v1/whatsapp/calls';
         $formParams = [];
@@ -2170,6 +3368,10 @@ class WhatsAppCallingApi
         $multipart = false;
 
 
+        // header params
+        if ($idempotency_key !== null) {
+            $headerParams['Idempotency-Key'] = ObjectSerializer::toHeaderValue($idempotency_key);
+        }
 
 
 
@@ -2247,6 +3449,7 @@ class WhatsAppCallingApi
      * @param  string|null $direction direction (optional)
      * @param  \DateTime|null $since since (optional)
      * @param  \DateTime|null $until until (optional)
+     * @param  \DateTime|null $before Return calls with startedAt strictly before this instant (use the previous page&#39;s nextCursor). (optional)
      * @param  int|null $limit limit (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppCalls'] to see the possible values for this operation
      *
@@ -2254,9 +3457,9 @@ class WhatsAppCallingApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListWhatsAppCalls200Response|\Zernio\Model\InlineObject
      */
-    public function listWhatsAppCalls($account_id, $status = null, $direction = null, $since = null, $until = null, $limit = null, string $contentType = self::contentTypes['listWhatsAppCalls'][0])
+    public function listWhatsAppCalls($account_id, $status = null, $direction = null, $since = null, $until = null, $before = null, $limit = null, string $contentType = self::contentTypes['listWhatsAppCalls'][0])
     {
-        list($response) = $this->listWhatsAppCallsWithHttpInfo($account_id, $status, $direction, $since, $until, $limit, $contentType);
+        list($response) = $this->listWhatsAppCallsWithHttpInfo($account_id, $status, $direction, $since, $until, $before, $limit, $contentType);
         return $response;
     }
 
@@ -2270,6 +3473,7 @@ class WhatsAppCallingApi
      * @param  string|null $direction (optional)
      * @param  \DateTime|null $since (optional)
      * @param  \DateTime|null $until (optional)
+     * @param  \DateTime|null $before Return calls with startedAt strictly before this instant (use the previous page&#39;s nextCursor). (optional)
      * @param  int|null $limit (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppCalls'] to see the possible values for this operation
      *
@@ -2277,9 +3481,9 @@ class WhatsAppCallingApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListWhatsAppCalls200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listWhatsAppCallsWithHttpInfo($account_id, $status = null, $direction = null, $since = null, $until = null, $limit = null, string $contentType = self::contentTypes['listWhatsAppCalls'][0])
+    public function listWhatsAppCallsWithHttpInfo($account_id, $status = null, $direction = null, $since = null, $until = null, $before = null, $limit = null, string $contentType = self::contentTypes['listWhatsAppCalls'][0])
     {
-        $request = $this->listWhatsAppCallsRequest($account_id, $status, $direction, $since, $until, $limit, $contentType);
+        $request = $this->listWhatsAppCallsRequest($account_id, $status, $direction, $since, $until, $before, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2374,15 +3578,16 @@ class WhatsAppCallingApi
      * @param  string|null $direction (optional)
      * @param  \DateTime|null $since (optional)
      * @param  \DateTime|null $until (optional)
+     * @param  \DateTime|null $before Return calls with startedAt strictly before this instant (use the previous page&#39;s nextCursor). (optional)
      * @param  int|null $limit (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppCalls'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listWhatsAppCallsAsync($account_id, $status = null, $direction = null, $since = null, $until = null, $limit = null, string $contentType = self::contentTypes['listWhatsAppCalls'][0])
+    public function listWhatsAppCallsAsync($account_id, $status = null, $direction = null, $since = null, $until = null, $before = null, $limit = null, string $contentType = self::contentTypes['listWhatsAppCalls'][0])
     {
-        return $this->listWhatsAppCallsAsyncWithHttpInfo($account_id, $status, $direction, $since, $until, $limit, $contentType)
+        return $this->listWhatsAppCallsAsyncWithHttpInfo($account_id, $status, $direction, $since, $until, $before, $limit, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2400,16 +3605,17 @@ class WhatsAppCallingApi
      * @param  string|null $direction (optional)
      * @param  \DateTime|null $since (optional)
      * @param  \DateTime|null $until (optional)
+     * @param  \DateTime|null $before Return calls with startedAt strictly before this instant (use the previous page&#39;s nextCursor). (optional)
      * @param  int|null $limit (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppCalls'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listWhatsAppCallsAsyncWithHttpInfo($account_id, $status = null, $direction = null, $since = null, $until = null, $limit = null, string $contentType = self::contentTypes['listWhatsAppCalls'][0])
+    public function listWhatsAppCallsAsyncWithHttpInfo($account_id, $status = null, $direction = null, $since = null, $until = null, $before = null, $limit = null, string $contentType = self::contentTypes['listWhatsAppCalls'][0])
     {
         $returnType = '\Zernio\Model\ListWhatsAppCalls200Response';
-        $request = $this->listWhatsAppCallsRequest($account_id, $status, $direction, $since, $until, $limit, $contentType);
+        $request = $this->listWhatsAppCallsRequest($account_id, $status, $direction, $since, $until, $before, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2455,13 +3661,14 @@ class WhatsAppCallingApi
      * @param  string|null $direction (optional)
      * @param  \DateTime|null $since (optional)
      * @param  \DateTime|null $until (optional)
+     * @param  \DateTime|null $before Return calls with startedAt strictly before this instant (use the previous page&#39;s nextCursor). (optional)
      * @param  int|null $limit (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppCalls'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listWhatsAppCallsRequest($account_id, $status = null, $direction = null, $since = null, $until = null, $limit = null, string $contentType = self::contentTypes['listWhatsAppCalls'][0])
+    public function listWhatsAppCallsRequest($account_id, $status = null, $direction = null, $since = null, $until = null, $before = null, $limit = null, string $contentType = self::contentTypes['listWhatsAppCalls'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -2470,6 +3677,7 @@ class WhatsAppCallingApi
                 'Missing the required parameter $account_id when calling listWhatsAppCalls'
             );
         }
+
 
 
 
@@ -2530,6 +3738,15 @@ class WhatsAppCallingApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $until,
             'until', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $before,
+            'before', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -2611,16 +3828,16 @@ class WhatsAppCallingApi
      * Update calling config
      *
      * @param  string $id id (required)
-     * @param  \Zernio\Model\UpdateWhatsAppCallingRequest $update_whats_app_calling_request update_whats_app_calling_request (required)
+     * @param  \Zernio\Model\UpdateWhatsAppCallingLegacyRequest $update_whats_app_calling_legacy_request update_whats_app_calling_legacy_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppCalling'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function updateWhatsAppCalling($id, $update_whats_app_calling_request, string $contentType = self::contentTypes['updateWhatsAppCalling'][0])
+    public function updateWhatsAppCalling($id, $update_whats_app_calling_legacy_request, string $contentType = self::contentTypes['updateWhatsAppCalling'][0])
     {
-        $this->updateWhatsAppCallingWithHttpInfo($id, $update_whats_app_calling_request, $contentType);
+        $this->updateWhatsAppCallingWithHttpInfo($id, $update_whats_app_calling_legacy_request, $contentType);
     }
 
     /**
@@ -2629,16 +3846,16 @@ class WhatsAppCallingApi
      * Update calling config
      *
      * @param  string $id (required)
-     * @param  \Zernio\Model\UpdateWhatsAppCallingRequest $update_whats_app_calling_request (required)
+     * @param  \Zernio\Model\UpdateWhatsAppCallingLegacyRequest $update_whats_app_calling_legacy_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppCalling'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWhatsAppCallingWithHttpInfo($id, $update_whats_app_calling_request, string $contentType = self::contentTypes['updateWhatsAppCalling'][0])
+    public function updateWhatsAppCallingWithHttpInfo($id, $update_whats_app_calling_legacy_request, string $contentType = self::contentTypes['updateWhatsAppCalling'][0])
     {
-        $request = $this->updateWhatsAppCallingRequest($id, $update_whats_app_calling_request, $contentType);
+        $request = $this->updateWhatsAppCallingRequest($id, $update_whats_app_calling_legacy_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2687,15 +3904,15 @@ class WhatsAppCallingApi
      * Update calling config
      *
      * @param  string $id (required)
-     * @param  \Zernio\Model\UpdateWhatsAppCallingRequest $update_whats_app_calling_request (required)
+     * @param  \Zernio\Model\UpdateWhatsAppCallingLegacyRequest $update_whats_app_calling_legacy_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppCalling'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateWhatsAppCallingAsync($id, $update_whats_app_calling_request, string $contentType = self::contentTypes['updateWhatsAppCalling'][0])
+    public function updateWhatsAppCallingAsync($id, $update_whats_app_calling_legacy_request, string $contentType = self::contentTypes['updateWhatsAppCalling'][0])
     {
-        return $this->updateWhatsAppCallingAsyncWithHttpInfo($id, $update_whats_app_calling_request, $contentType)
+        return $this->updateWhatsAppCallingAsyncWithHttpInfo($id, $update_whats_app_calling_legacy_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2709,16 +3926,16 @@ class WhatsAppCallingApi
      * Update calling config
      *
      * @param  string $id (required)
-     * @param  \Zernio\Model\UpdateWhatsAppCallingRequest $update_whats_app_calling_request (required)
+     * @param  \Zernio\Model\UpdateWhatsAppCallingLegacyRequest $update_whats_app_calling_legacy_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppCalling'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateWhatsAppCallingAsyncWithHttpInfo($id, $update_whats_app_calling_request, string $contentType = self::contentTypes['updateWhatsAppCalling'][0])
+    public function updateWhatsAppCallingAsyncWithHttpInfo($id, $update_whats_app_calling_legacy_request, string $contentType = self::contentTypes['updateWhatsAppCalling'][0])
     {
         $returnType = '';
-        $request = $this->updateWhatsAppCallingRequest($id, $update_whats_app_calling_request, $contentType);
+        $request = $this->updateWhatsAppCallingRequest($id, $update_whats_app_calling_legacy_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2747,13 +3964,13 @@ class WhatsAppCallingApi
      * Create request for operation 'updateWhatsAppCalling'
      *
      * @param  string $id (required)
-     * @param  \Zernio\Model\UpdateWhatsAppCallingRequest $update_whats_app_calling_request (required)
+     * @param  \Zernio\Model\UpdateWhatsAppCallingLegacyRequest $update_whats_app_calling_legacy_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppCalling'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateWhatsAppCallingRequest($id, $update_whats_app_calling_request, string $contentType = self::contentTypes['updateWhatsAppCalling'][0])
+    public function updateWhatsAppCallingRequest($id, $update_whats_app_calling_legacy_request, string $contentType = self::contentTypes['updateWhatsAppCalling'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -2763,10 +3980,264 @@ class WhatsAppCallingApi
             );
         }
 
-        // verify the required parameter 'update_whats_app_calling_request' is set
-        if ($update_whats_app_calling_request === null || (is_array($update_whats_app_calling_request) && count($update_whats_app_calling_request) === 0)) {
+        // verify the required parameter 'update_whats_app_calling_legacy_request' is set
+        if ($update_whats_app_calling_legacy_request === null || (is_array($update_whats_app_calling_legacy_request) && count($update_whats_app_calling_legacy_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_whats_app_calling_request when calling updateWhatsAppCalling'
+                'Missing the required parameter $update_whats_app_calling_legacy_request when calling updateWhatsAppCalling'
+            );
+        }
+
+
+        $resourcePath = '/v1/phone-numbers/{id}/whatsapp/calling';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_whats_app_calling_legacy_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_whats_app_calling_legacy_request));
+            } else {
+                $httpBody = $update_whats_app_calling_legacy_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateWhatsAppCallingLegacy
+     *
+     * Update calling config
+     *
+     * @param  string $id id (required)
+     * @param  \Zernio\Model\UpdateWhatsAppCallingLegacyRequest $update_whats_app_calling_legacy_request update_whats_app_calling_legacy_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppCallingLegacy'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     * @deprecated
+     */
+    public function updateWhatsAppCallingLegacy($id, $update_whats_app_calling_legacy_request, string $contentType = self::contentTypes['updateWhatsAppCallingLegacy'][0])
+    {
+        $this->updateWhatsAppCallingLegacyWithHttpInfo($id, $update_whats_app_calling_legacy_request, $contentType);
+    }
+
+    /**
+     * Operation updateWhatsAppCallingLegacyWithHttpInfo
+     *
+     * Update calling config
+     *
+     * @param  string $id (required)
+     * @param  \Zernio\Model\UpdateWhatsAppCallingLegacyRequest $update_whats_app_calling_legacy_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppCallingLegacy'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
+     */
+    public function updateWhatsAppCallingLegacyWithHttpInfo($id, $update_whats_app_calling_legacy_request, string $contentType = self::contentTypes['updateWhatsAppCallingLegacy'][0])
+    {
+        $request = $this->updateWhatsAppCallingLegacyRequest($id, $update_whats_app_calling_legacy_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateWhatsAppCallingLegacyAsync
+     *
+     * Update calling config
+     *
+     * @param  string $id (required)
+     * @param  \Zernio\Model\UpdateWhatsAppCallingLegacyRequest $update_whats_app_calling_legacy_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppCallingLegacy'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
+     */
+    public function updateWhatsAppCallingLegacyAsync($id, $update_whats_app_calling_legacy_request, string $contentType = self::contentTypes['updateWhatsAppCallingLegacy'][0])
+    {
+        return $this->updateWhatsAppCallingLegacyAsyncWithHttpInfo($id, $update_whats_app_calling_legacy_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateWhatsAppCallingLegacyAsyncWithHttpInfo
+     *
+     * Update calling config
+     *
+     * @param  string $id (required)
+     * @param  \Zernio\Model\UpdateWhatsAppCallingLegacyRequest $update_whats_app_calling_legacy_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppCallingLegacy'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
+     */
+    public function updateWhatsAppCallingLegacyAsyncWithHttpInfo($id, $update_whats_app_calling_legacy_request, string $contentType = self::contentTypes['updateWhatsAppCallingLegacy'][0])
+    {
+        $returnType = '';
+        $request = $this->updateWhatsAppCallingLegacyRequest($id, $update_whats_app_calling_legacy_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateWhatsAppCallingLegacy'
+     *
+     * @param  string $id (required)
+     * @param  \Zernio\Model\UpdateWhatsAppCallingLegacyRequest $update_whats_app_calling_legacy_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppCallingLegacy'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
+     */
+    public function updateWhatsAppCallingLegacyRequest($id, $update_whats_app_calling_legacy_request, string $contentType = self::contentTypes['updateWhatsAppCallingLegacy'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling updateWhatsAppCallingLegacy'
+            );
+        }
+
+        // verify the required parameter 'update_whats_app_calling_legacy_request' is set
+        if ($update_whats_app_calling_legacy_request === null || (is_array($update_whats_app_calling_legacy_request) && count($update_whats_app_calling_legacy_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_whats_app_calling_legacy_request when calling updateWhatsAppCallingLegacy'
             );
         }
 
@@ -2797,12 +4268,12 @@ class WhatsAppCallingApi
         );
 
         // for model (json/xml)
-        if (isset($update_whats_app_calling_request)) {
+        if (isset($update_whats_app_calling_legacy_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_whats_app_calling_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_whats_app_calling_legacy_request));
             } else {
-                $httpBody = $update_whats_app_calling_request;
+                $httpBody = $update_whats_app_calling_legacy_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

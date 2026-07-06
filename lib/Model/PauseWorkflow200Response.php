@@ -59,7 +59,7 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'workflow' => '\Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber'
+        'workflow' => '\Zernio\Model\RemediatePhoneNumber200ResponsePhoneNumber'
     ];
 
     /**
@@ -327,7 +327,7 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets workflow
      *
-     * @return \Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber|null
+     * @return \Zernio\Model\RemediatePhoneNumber200ResponsePhoneNumber|null
      */
     public function getWorkflow()
     {
@@ -337,7 +337,7 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets workflow
      *
-     * @param \Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber|null $workflow workflow
+     * @param \Zernio\Model\RemediatePhoneNumber200ResponsePhoneNumber|null $workflow workflow
      *
      * @return self
      */
