@@ -2549,7 +2549,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
     /**
      * Sets commercial_content_type
      *
-     * @param string|null $commercial_content_type Type of commercial content disclosure
+     * @param string|null $commercial_content_type Type of commercial content disclosure. Sufficient on its own: \"brand_organic\" (\"Your Brand\") implies isBrandOrganicPost and \"brand_content\" (\"Branded Content\", paid partnership) implies brandPartnerPromote, so you don't need to send the boolean flags separately. Branded content cannot be posted with privacyLevel SELF_ONLY.
      *
      * @return self
      */
@@ -2586,7 +2586,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
     /**
      * Sets brand_partner_promote
      *
-     * @param bool|null $brand_partner_promote Whether the post promotes a brand partner
+     * @param bool|null $brand_partner_promote Whether the post promotes a brand partner (branded content / paid partnership). Only needed to disclose BOTH types at once (set it alongside commercialContentType \"brand_organic\"), or to override the value implied by commercialContentType.
      *
      * @return self
      */
@@ -2613,7 +2613,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
     /**
      * Sets is_brand_organic_post
      *
-     * @param bool|null $is_brand_organic_post Whether the post is a brand organic post
+     * @param bool|null $is_brand_organic_post Whether the post promotes the creator's own brand (brand organic). Only needed to disclose BOTH types at once (set it alongside commercialContentType \"brand_content\"), or to override the value implied by commercialContentType.
      *
      * @return self
      */
