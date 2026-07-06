@@ -15,6 +15,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listInboxConversations()**](MessagesApi.md#listInboxConversations) | **GET** /v1/inbox/conversations | List conversations |
 | [**markConversationRead()**](MessagesApi.md#markConversationRead) | **POST** /v1/inbox/conversations/{conversationId}/read | Mark a conversation as read |
 | [**removeMessageReaction()**](MessagesApi.md#removeMessageReaction) | **DELETE** /v1/inbox/conversations/{conversationId}/messages/{messageId}/reactions | Remove reaction |
+| [**searchInboxConversations()**](MessagesApi.md#searchInboxConversations) | **GET** /v1/inbox/conversations/search | Search conversations |
 | [**sendInboxMessage()**](MessagesApi.md#sendInboxMessage) | **POST** /v1/inbox/conversations/{conversationId}/messages | Send message |
 | [**sendTypingIndicator()**](MessagesApi.md#sendTypingIndicator) | **POST** /v1/inbox/conversations/{conversationId}/typing | Send typing indicator |
 | [**updateInboxConversation()**](MessagesApi.md#updateInboxConversation) | **PUT** /v1/inbox/conversations/{conversationId} | Update conversation status |
@@ -587,6 +588,78 @@ try {
 ### Return type
 
 [**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `searchInboxConversations()`
+
+```php
+searchInboxConversations($query, $direction, $profile_id, $platform, $account_id, $limit, $cursor): \Zernio\Model\SearchInboxConversations200Response
+```
+
+Search conversations
+
+Search message text across your conversations and get back the conversations that contain the query, each with up to 3 most-recent matching messages. Useful for finding threads about a topic, or (with direction=outgoing) collecting examples of how you write to customers, for example to teach an AI agent your tone of voice.  Only platforms whose messages are stored by Zernio are searchable: WhatsApp, SMS, Telegram, Facebook and Instagram. Twitter/X, Bluesky and Reddit conversations are fetched live from the platforms and cannot be searched; those accounts are listed in meta.accountsSkipped.  Matching is word-based: case-insensitive and accent-insensitive, exact tokens only (no substrings, no stemming). Quote a phrase to match it exactly.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\MessagesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$query = 'query_example'; // string | Text to search for in message content
+$direction = 'direction_example'; // string | Only match messages sent to you (incoming) or by you (outgoing)
+$profile_id = 'profile_id_example'; // string | Filter by profile ID
+$platform = 'platform_example'; // string | Filter by platform (searchable platforms only)
+$account_id = 'account_id_example'; // string | Filter by specific social account ID
+$limit = 20; // int | Maximum number of conversations to return
+$cursor = 'cursor_example'; // string | Pagination cursor for next page
+
+try {
+    $result = $apiInstance->searchInboxConversations($query, $direction, $profile_id, $platform, $account_id, $limit, $cursor);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MessagesApi->searchInboxConversations: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **query** | **string**| Text to search for in message content | |
+| **direction** | **string**| Only match messages sent to you (incoming) or by you (outgoing) | [optional] |
+| **profile_id** | **string**| Filter by profile ID | [optional] |
+| **platform** | **string**| Filter by platform (searchable platforms only) | [optional] |
+| **account_id** | **string**| Filter by specific social account ID | [optional] |
+| **limit** | **int**| Maximum number of conversations to return | [optional] [default to 20] |
+| **cursor** | **string**| Pagination cursor for next page | [optional] |
+
+### Return type
+
+[**\Zernio\Model\SearchInboxConversations200Response**](../Model/SearchInboxConversations200Response.md)
 
 ### Authorization
 

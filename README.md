@@ -299,6 +299,7 @@ Class | Method | HTTP request | Description
 *MessagesApi* | [**listInboxConversations**](docs/Api/MessagesApi.md#listinboxconversations) | **GET** /v1/inbox/conversations | List conversations
 *MessagesApi* | [**markConversationRead**](docs/Api/MessagesApi.md#markconversationread) | **POST** /v1/inbox/conversations/{conversationId}/read | Mark a conversation as read
 *MessagesApi* | [**removeMessageReaction**](docs/Api/MessagesApi.md#removemessagereaction) | **DELETE** /v1/inbox/conversations/{conversationId}/messages/{messageId}/reactions | Remove reaction
+*MessagesApi* | [**searchInboxConversations**](docs/Api/MessagesApi.md#searchinboxconversations) | **GET** /v1/inbox/conversations/search | Search conversations
 *MessagesApi* | [**sendInboxMessage**](docs/Api/MessagesApi.md#sendinboxmessage) | **POST** /v1/inbox/conversations/{conversationId}/messages | Send message
 *MessagesApi* | [**sendTypingIndicator**](docs/Api/MessagesApi.md#sendtypingindicator) | **POST** /v1/inbox/conversations/{conversationId}/typing | Send typing indicator
 *MessagesApi* | [**updateInboxConversation**](docs/Api/MessagesApi.md#updateinboxconversation) | **PUT** /v1/inbox/conversations/{conversationId} | Update conversation status
@@ -1399,6 +1400,13 @@ Class | Method | HTTP request | Description
 - [SearchAvailablePhoneNumbers200ResponseNumbersInner](docs/Model/SearchAvailablePhoneNumbers200ResponseNumbersInner.md)
 - [SearchAvailableWhatsAppNumbers200Response](docs/Model/SearchAvailableWhatsAppNumbers200Response.md)
 - [SearchAvailableWhatsAppNumbers200ResponseNumbersInner](docs/Model/SearchAvailableWhatsAppNumbers200ResponseNumbersInner.md)
+- [SearchInboxConversations200Response](docs/Model/SearchInboxConversations200Response.md)
+- [SearchInboxConversations200ResponseDataInner](docs/Model/SearchInboxConversations200ResponseDataInner.md)
+- [SearchInboxConversations200ResponseDataInnerConversation](docs/Model/SearchInboxConversations200ResponseDataInnerConversation.md)
+- [SearchInboxConversations200ResponseDataInnerMatchesInner](docs/Model/SearchInboxConversations200ResponseDataInnerMatchesInner.md)
+- [SearchInboxConversations200ResponseMeta](docs/Model/SearchInboxConversations200ResponseMeta.md)
+- [SearchInboxConversations200ResponseMetaAccountsSkippedInner](docs/Model/SearchInboxConversations200ResponseMetaAccountsSkippedInner.md)
+- [SearchInboxConversations200ResponseMetaFailedAccountsInner](docs/Model/SearchInboxConversations200ResponseMetaFailedAccountsInner.md)
 - [SearchReddit200Response](docs/Model/SearchReddit200Response.md)
 - [SelectFacebookPage200Response](docs/Model/SelectFacebookPage200Response.md)
 - [SelectFacebookPage200ResponseAccount](docs/Model/SelectFacebookPage200ResponseAccount.md)
