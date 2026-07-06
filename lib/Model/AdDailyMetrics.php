@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * AdDailyMetrics Class Doc Comment
  *
  * @category Class
- * @description One day of metrics. Same fields as &#x60;AdMetrics&#x60; plus the &#x60;date&#x60; they apply to. Returned inside a node&#39;s &#x60;daily[]&#x60; when &#x60;GET /v1/ads/tree&#x60; is called with &#x60;timeIncrement&#x3D;1&#x60;. Rate metrics (ctr/cpc/cpm/costPerConversion/ roas) are recomputed per day from that day&#39;s sums, so summing the additive fields across a node&#39;s &#x60;daily[]&#x60; reproduces its aggregated &#x60;metrics&#x60; total.
+ * @description One day of metrics. Same fields as &#x60;AdMetrics&#x60; plus the &#x60;date&#x60; they apply to. Returned inside a node&#39;s &#x60;daily[]&#x60; when &#x60;GET /v1/ads/tree&#x60; is called with &#x60;timeIncrement&#x3D;1&#x60;. Rate metrics (ctr/cpc/cpm/costPerConversion/ roas/videoAvgTimeWatchedActions) are recomputed per day from that day&#39;s sums, so summing the additive fields across a node&#39;s &#x60;daily[]&#x60; reproduces its aggregated &#x60;metrics&#x60; total. Do NOT sum or plain-average &#x60;videoAvgTimeWatchedActions&#x60; across days: the range value is the play-weighted average of the daily values.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -73,6 +73,15 @@ class AdDailyMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'action_values' => 'array<string,float>',
         'purchase_value' => 'float',
         'roas' => 'float',
+        'video_play_actions' => 'int',
+        'video30_sec_watched_actions' => 'int',
+        'video_thruplay_watched_actions' => 'int',
+        'video_p25_watched_actions' => 'int',
+        'video_p50_watched_actions' => 'int',
+        'video_p75_watched_actions' => 'int',
+        'video_p95_watched_actions' => 'int',
+        'video_p100_watched_actions' => 'int',
+        'video_avg_time_watched_actions' => 'float',
         'last_synced_at' => '\DateTime',
         'date' => '\DateTime'
     ];
@@ -99,6 +108,15 @@ class AdDailyMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'action_values' => null,
         'purchase_value' => null,
         'roas' => null,
+        'video_play_actions' => null,
+        'video30_sec_watched_actions' => null,
+        'video_thruplay_watched_actions' => null,
+        'video_p25_watched_actions' => null,
+        'video_p50_watched_actions' => null,
+        'video_p75_watched_actions' => null,
+        'video_p95_watched_actions' => null,
+        'video_p100_watched_actions' => null,
+        'video_avg_time_watched_actions' => null,
         'last_synced_at' => 'date-time',
         'date' => 'date'
     ];
@@ -123,6 +141,15 @@ class AdDailyMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'action_values' => false,
         'purchase_value' => false,
         'roas' => false,
+        'video_play_actions' => false,
+        'video30_sec_watched_actions' => false,
+        'video_thruplay_watched_actions' => false,
+        'video_p25_watched_actions' => false,
+        'video_p50_watched_actions' => false,
+        'video_p75_watched_actions' => false,
+        'video_p95_watched_actions' => false,
+        'video_p100_watched_actions' => false,
+        'video_avg_time_watched_actions' => false,
         'last_synced_at' => false,
         'date' => false
     ];
@@ -227,6 +254,15 @@ class AdDailyMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'action_values' => 'actionValues',
         'purchase_value' => 'purchaseValue',
         'roas' => 'roas',
+        'video_play_actions' => 'videoPlayActions',
+        'video30_sec_watched_actions' => 'video30SecWatchedActions',
+        'video_thruplay_watched_actions' => 'videoThruplayWatchedActions',
+        'video_p25_watched_actions' => 'videoP25WatchedActions',
+        'video_p50_watched_actions' => 'videoP50WatchedActions',
+        'video_p75_watched_actions' => 'videoP75WatchedActions',
+        'video_p95_watched_actions' => 'videoP95WatchedActions',
+        'video_p100_watched_actions' => 'videoP100WatchedActions',
+        'video_avg_time_watched_actions' => 'videoAvgTimeWatchedActions',
         'last_synced_at' => 'lastSyncedAt',
         'date' => 'date'
     ];
@@ -251,6 +287,15 @@ class AdDailyMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'action_values' => 'setActionValues',
         'purchase_value' => 'setPurchaseValue',
         'roas' => 'setRoas',
+        'video_play_actions' => 'setVideoPlayActions',
+        'video30_sec_watched_actions' => 'setVideo30SecWatchedActions',
+        'video_thruplay_watched_actions' => 'setVideoThruplayWatchedActions',
+        'video_p25_watched_actions' => 'setVideoP25WatchedActions',
+        'video_p50_watched_actions' => 'setVideoP50WatchedActions',
+        'video_p75_watched_actions' => 'setVideoP75WatchedActions',
+        'video_p95_watched_actions' => 'setVideoP95WatchedActions',
+        'video_p100_watched_actions' => 'setVideoP100WatchedActions',
+        'video_avg_time_watched_actions' => 'setVideoAvgTimeWatchedActions',
         'last_synced_at' => 'setLastSyncedAt',
         'date' => 'setDate'
     ];
@@ -275,6 +320,15 @@ class AdDailyMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'action_values' => 'getActionValues',
         'purchase_value' => 'getPurchaseValue',
         'roas' => 'getRoas',
+        'video_play_actions' => 'getVideoPlayActions',
+        'video30_sec_watched_actions' => 'getVideo30SecWatchedActions',
+        'video_thruplay_watched_actions' => 'getVideoThruplayWatchedActions',
+        'video_p25_watched_actions' => 'getVideoP25WatchedActions',
+        'video_p50_watched_actions' => 'getVideoP50WatchedActions',
+        'video_p75_watched_actions' => 'getVideoP75WatchedActions',
+        'video_p95_watched_actions' => 'getVideoP95WatchedActions',
+        'video_p100_watched_actions' => 'getVideoP100WatchedActions',
+        'video_avg_time_watched_actions' => 'getVideoAvgTimeWatchedActions',
         'last_synced_at' => 'getLastSyncedAt',
         'date' => 'getDate'
     ];
@@ -350,6 +404,15 @@ class AdDailyMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('action_values', $data ?? [], null);
         $this->setIfExists('purchase_value', $data ?? [], null);
         $this->setIfExists('roas', $data ?? [], null);
+        $this->setIfExists('video_play_actions', $data ?? [], null);
+        $this->setIfExists('video30_sec_watched_actions', $data ?? [], null);
+        $this->setIfExists('video_thruplay_watched_actions', $data ?? [], null);
+        $this->setIfExists('video_p25_watched_actions', $data ?? [], null);
+        $this->setIfExists('video_p50_watched_actions', $data ?? [], null);
+        $this->setIfExists('video_p75_watched_actions', $data ?? [], null);
+        $this->setIfExists('video_p95_watched_actions', $data ?? [], null);
+        $this->setIfExists('video_p100_watched_actions', $data ?? [], null);
+        $this->setIfExists('video_avg_time_watched_actions', $data ?? [], null);
         $this->setIfExists('last_synced_at', $data ?? [], null);
         $this->setIfExists('date', $data ?? [], null);
     }
@@ -770,6 +833,249 @@ class AdDailyMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable roas cannot be null');
         }
         $this->container['roas'] = $roas;
+
+        return $this;
+    }
+
+    /**
+     * Gets video_play_actions
+     *
+     * @return int|null
+     */
+    public function getVideoPlayActions()
+    {
+        return $this->container['video_play_actions'];
+    }
+
+    /**
+     * Sets video_play_actions
+     *
+     * @param int|null $video_play_actions Meta video ads only (0 for non-video ads and other platforms), like all video* fields below. Number of times the video started playing (Meta `video_play_actions`), summed over the date range and across children at ad-set/campaign level.
+     *
+     * @return self
+     */
+    public function setVideoPlayActions($video_play_actions)
+    {
+        if (is_null($video_play_actions)) {
+            throw new \InvalidArgumentException('non-nullable video_play_actions cannot be null');
+        }
+        $this->container['video_play_actions'] = $video_play_actions;
+
+        return $this;
+    }
+
+    /**
+     * Gets video30_sec_watched_actions
+     *
+     * @return int|null
+     */
+    public function getVideo30SecWatchedActions()
+    {
+        return $this->container['video30_sec_watched_actions'];
+    }
+
+    /**
+     * Sets video30_sec_watched_actions
+     *
+     * @param int|null $video30_sec_watched_actions Views of at least 30 seconds (or to the end, for shorter videos). Meta `video_30_sec_watched_actions`.
+     *
+     * @return self
+     */
+    public function setVideo30SecWatchedActions($video30_sec_watched_actions)
+    {
+        if (is_null($video30_sec_watched_actions)) {
+            throw new \InvalidArgumentException('non-nullable video30_sec_watched_actions cannot be null');
+        }
+        $this->container['video30_sec_watched_actions'] = $video30_sec_watched_actions;
+
+        return $this;
+    }
+
+    /**
+     * Gets video_thruplay_watched_actions
+     *
+     * @return int|null
+     */
+    public function getVideoThruplayWatchedActions()
+    {
+        return $this->container['video_thruplay_watched_actions'];
+    }
+
+    /**
+     * Sets video_thruplay_watched_actions
+     *
+     * @param int|null $video_thruplay_watched_actions ThruPlays (watched to completion, or at least 15 seconds). Meta `video_thruplay_watched_actions`.
+     *
+     * @return self
+     */
+    public function setVideoThruplayWatchedActions($video_thruplay_watched_actions)
+    {
+        if (is_null($video_thruplay_watched_actions)) {
+            throw new \InvalidArgumentException('non-nullable video_thruplay_watched_actions cannot be null');
+        }
+        $this->container['video_thruplay_watched_actions'] = $video_thruplay_watched_actions;
+
+        return $this;
+    }
+
+    /**
+     * Gets video_p25_watched_actions
+     *
+     * @return int|null
+     */
+    public function getVideoP25WatchedActions()
+    {
+        return $this->container['video_p25_watched_actions'];
+    }
+
+    /**
+     * Sets video_p25_watched_actions
+     *
+     * @param int|null $video_p25_watched_actions Views reaching 25% of the video's length. With the other percentile fields, powers hook/hold/drop-off analysis (e.g. hook rate = videoP25WatchedActions / videoPlayActions). Meta `video_p25_watched_actions`.
+     *
+     * @return self
+     */
+    public function setVideoP25WatchedActions($video_p25_watched_actions)
+    {
+        if (is_null($video_p25_watched_actions)) {
+            throw new \InvalidArgumentException('non-nullable video_p25_watched_actions cannot be null');
+        }
+        $this->container['video_p25_watched_actions'] = $video_p25_watched_actions;
+
+        return $this;
+    }
+
+    /**
+     * Gets video_p50_watched_actions
+     *
+     * @return int|null
+     */
+    public function getVideoP50WatchedActions()
+    {
+        return $this->container['video_p50_watched_actions'];
+    }
+
+    /**
+     * Sets video_p50_watched_actions
+     *
+     * @param int|null $video_p50_watched_actions Views reaching 50% of the video's length. Meta `video_p50_watched_actions`.
+     *
+     * @return self
+     */
+    public function setVideoP50WatchedActions($video_p50_watched_actions)
+    {
+        if (is_null($video_p50_watched_actions)) {
+            throw new \InvalidArgumentException('non-nullable video_p50_watched_actions cannot be null');
+        }
+        $this->container['video_p50_watched_actions'] = $video_p50_watched_actions;
+
+        return $this;
+    }
+
+    /**
+     * Gets video_p75_watched_actions
+     *
+     * @return int|null
+     */
+    public function getVideoP75WatchedActions()
+    {
+        return $this->container['video_p75_watched_actions'];
+    }
+
+    /**
+     * Sets video_p75_watched_actions
+     *
+     * @param int|null $video_p75_watched_actions Views reaching 75% of the video's length. Meta `video_p75_watched_actions`.
+     *
+     * @return self
+     */
+    public function setVideoP75WatchedActions($video_p75_watched_actions)
+    {
+        if (is_null($video_p75_watched_actions)) {
+            throw new \InvalidArgumentException('non-nullable video_p75_watched_actions cannot be null');
+        }
+        $this->container['video_p75_watched_actions'] = $video_p75_watched_actions;
+
+        return $this;
+    }
+
+    /**
+     * Gets video_p95_watched_actions
+     *
+     * @return int|null
+     */
+    public function getVideoP95WatchedActions()
+    {
+        return $this->container['video_p95_watched_actions'];
+    }
+
+    /**
+     * Sets video_p95_watched_actions
+     *
+     * @param int|null $video_p95_watched_actions Views reaching 95% of the video's length. Meta `video_p95_watched_actions`.
+     *
+     * @return self
+     */
+    public function setVideoP95WatchedActions($video_p95_watched_actions)
+    {
+        if (is_null($video_p95_watched_actions)) {
+            throw new \InvalidArgumentException('non-nullable video_p95_watched_actions cannot be null');
+        }
+        $this->container['video_p95_watched_actions'] = $video_p95_watched_actions;
+
+        return $this;
+    }
+
+    /**
+     * Gets video_p100_watched_actions
+     *
+     * @return int|null
+     */
+    public function getVideoP100WatchedActions()
+    {
+        return $this->container['video_p100_watched_actions'];
+    }
+
+    /**
+     * Sets video_p100_watched_actions
+     *
+     * @param int|null $video_p100_watched_actions Views reaching 100% of the video's length. Meta `video_p100_watched_actions`.
+     *
+     * @return self
+     */
+    public function setVideoP100WatchedActions($video_p100_watched_actions)
+    {
+        if (is_null($video_p100_watched_actions)) {
+            throw new \InvalidArgumentException('non-nullable video_p100_watched_actions cannot be null');
+        }
+        $this->container['video_p100_watched_actions'] = $video_p100_watched_actions;
+
+        return $this;
+    }
+
+    /**
+     * Gets video_avg_time_watched_actions
+     *
+     * @return float|null
+     */
+    public function getVideoAvgTimeWatchedActions()
+    {
+        return $this->container['video_avg_time_watched_actions'];
+    }
+
+    /**
+     * Sets video_avg_time_watched_actions
+     *
+     * @param float|null $video_avg_time_watched_actions Average seconds watched per play (Meta `video_avg_time_watched_actions`). Aggregated over date ranges and across children as a play-weighted average (total watch time / total plays), never a plain average of averages.
+     *
+     * @return self
+     */
+    public function setVideoAvgTimeWatchedActions($video_avg_time_watched_actions)
+    {
+        if (is_null($video_avg_time_watched_actions)) {
+            throw new \InvalidArgumentException('non-nullable video_avg_time_watched_actions cannot be null');
+        }
+        $this->container['video_avg_time_watched_actions'] = $video_avg_time_watched_actions;
 
         return $this;
     }
