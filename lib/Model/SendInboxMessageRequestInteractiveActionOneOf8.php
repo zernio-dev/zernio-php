@@ -1,6 +1,6 @@
 <?php
 /**
- * SendInboxMessageRequestInteractiveHeader
+ * SendInboxMessageRequestInteractiveActionOneOf8
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SendInboxMessageRequestInteractiveHeader Class Doc Comment
+ * SendInboxMessageRequestInteractiveActionOneOf8 Class Doc Comment
  *
  * @category Class
- * @description Optional header shown above the body. Required with &#x60;type: \&quot;text\&quot;&#x60; for &#x60;product_list&#x60;; not allowed for &#x60;product&#x60; or &#x60;carousel&#x60;.
+ * @description Carousel action. &#x60;type&#x60; on the parent must be &#x60;carousel&#x60;. Carries 2-10 cards, either all product cards (&#x60;type: \&quot;product\&quot;&#x60;, all referencing the same &#x60;catalog_id&#x60;) or media cards (any other &#x60;type&#x60;, e.g. &#x60;cta_url&#x60;, with a required image/video &#x60;header&#x60; on each card). &#x60;card_index&#x60; (0-9, non-repeating) is auto-filled sequentially when omitted. Product carousels require a Meta catalog connected to the WhatsApp Business Account in Commerce Manager; media carousels do not.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SendInboxMessageRequestInteractiveHeader implements ModelInterface, ArrayAccess, \JsonSerializable
+class SendInboxMessageRequestInteractiveActionOneOf8 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class SendInboxMessageRequestInteractiveHeader implements ModelInterface, ArrayA
       *
       * @var string
       */
-    protected static $openAPIModelName = 'sendInboxMessage_request_interactive_header';
+    protected static $openAPIModelName = 'sendInboxMessage_request_interactive_action_oneOf_8';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,11 +59,7 @@ class SendInboxMessageRequestInteractiveHeader implements ModelInterface, ArrayA
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'text' => 'string',
-        'image' => '\Zernio\Model\SendInboxMessageRequestInteractiveHeaderImage',
-        'video' => '\Zernio\Model\SendInboxMessageRequestInteractiveHeaderImage',
-        'document' => '\Zernio\Model\SendInboxMessageRequestInteractiveHeaderImage'
+        'cards' => '\Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf8CardsInner[]'
     ];
 
     /**
@@ -74,11 +70,7 @@ class SendInboxMessageRequestInteractiveHeader implements ModelInterface, ArrayA
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'text' => null,
-        'image' => null,
-        'video' => null,
-        'document' => null
+        'cards' => null
     ];
 
     /**
@@ -87,11 +79,7 @@ class SendInboxMessageRequestInteractiveHeader implements ModelInterface, ArrayA
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
-        'text' => false,
-        'image' => false,
-        'video' => false,
-        'document' => false
+        'cards' => false
     ];
 
     /**
@@ -180,11 +168,7 @@ class SendInboxMessageRequestInteractiveHeader implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'text' => 'text',
-        'image' => 'image',
-        'video' => 'video',
-        'document' => 'document'
+        'cards' => 'cards'
     ];
 
     /**
@@ -193,11 +177,7 @@ class SendInboxMessageRequestInteractiveHeader implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'text' => 'setText',
-        'image' => 'setImage',
-        'video' => 'setVideo',
-        'document' => 'setDocument'
+        'cards' => 'setCards'
     ];
 
     /**
@@ -206,11 +186,7 @@ class SendInboxMessageRequestInteractiveHeader implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'text' => 'getText',
-        'image' => 'getImage',
-        'video' => 'getVideo',
-        'document' => 'getDocument'
+        'cards' => 'getCards'
     ];
 
     /**
@@ -254,25 +230,6 @@ class SendInboxMessageRequestInteractiveHeader implements ModelInterface, ArrayA
         return self::$openAPIModelName;
     }
 
-    public const TYPE_TEXT = 'text';
-    public const TYPE_IMAGE = 'image';
-    public const TYPE_VIDEO = 'video';
-    public const TYPE_DOCUMENT = 'document';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_TEXT,
-            self::TYPE_IMAGE,
-            self::TYPE_VIDEO,
-            self::TYPE_DOCUMENT,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -289,11 +246,7 @@ class SendInboxMessageRequestInteractiveHeader implements ModelInterface, ArrayA
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('text', $data ?? [], null);
-        $this->setIfExists('image', $data ?? [], null);
-        $this->setIfExists('video', $data ?? [], null);
-        $this->setIfExists('document', $data ?? [], null);
+        $this->setIfExists('cards', $data ?? [], null);
     }
 
     /**
@@ -323,13 +276,15 @@ class SendInboxMessageRequestInteractiveHeader implements ModelInterface, ArrayA
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['cards'] === null) {
+            $invalidProperties[] = "'cards' can't be null";
+        }
+        if ((count($this->container['cards']) > 10)) {
+            $invalidProperties[] = "invalid value for 'cards', number of items must be less than or equal to 10.";
+        }
+
+        if ((count($this->container['cards']) < 2)) {
+            $invalidProperties[] = "invalid value for 'cards', number of items must be greater than or equal to 2.";
         }
 
         return $invalidProperties;
@@ -348,146 +303,35 @@ class SendInboxMessageRequestInteractiveHeader implements ModelInterface, ArrayA
 
 
     /**
-     * Gets type
+     * Gets cards
      *
-     * @return string|null
+     * @return \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf8CardsInner[]
      */
-    public function getType()
+    public function getCards()
     {
-        return $this->container['type'];
+        return $this->container['cards'];
     }
 
     /**
-     * Sets type
+     * Sets cards
      *
-     * @param string|null $type type
+     * @param \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf8CardsInner[] $cards cards
      *
      * @return self
      */
-    public function setType($type)
+    public function setCards($cards)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($cards)) {
+            throw new \InvalidArgumentException('non-nullable cards cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
+
+        if ((count($cards) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $cards when calling SendInboxMessageRequestInteractiveActionOneOf8., number of items must be less than or equal to 10.');
         }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets text
-     *
-     * @return string|null
-     */
-    public function getText()
-    {
-        return $this->container['text'];
-    }
-
-    /**
-     * Sets text
-     *
-     * @param string|null $text Required when header type is text.
-     *
-     * @return self
-     */
-    public function setText($text)
-    {
-        if (is_null($text)) {
-            throw new \InvalidArgumentException('non-nullable text cannot be null');
+        if ((count($cards) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $cards when calling SendInboxMessageRequestInteractiveActionOneOf8., number of items must be greater than or equal to 2.');
         }
-        $this->container['text'] = $text;
-
-        return $this;
-    }
-
-    /**
-     * Gets image
-     *
-     * @return \Zernio\Model\SendInboxMessageRequestInteractiveHeaderImage|null
-     */
-    public function getImage()
-    {
-        return $this->container['image'];
-    }
-
-    /**
-     * Sets image
-     *
-     * @param \Zernio\Model\SendInboxMessageRequestInteractiveHeaderImage|null $image image
-     *
-     * @return self
-     */
-    public function setImage($image)
-    {
-        if (is_null($image)) {
-            throw new \InvalidArgumentException('non-nullable image cannot be null');
-        }
-        $this->container['image'] = $image;
-
-        return $this;
-    }
-
-    /**
-     * Gets video
-     *
-     * @return \Zernio\Model\SendInboxMessageRequestInteractiveHeaderImage|null
-     */
-    public function getVideo()
-    {
-        return $this->container['video'];
-    }
-
-    /**
-     * Sets video
-     *
-     * @param \Zernio\Model\SendInboxMessageRequestInteractiveHeaderImage|null $video video
-     *
-     * @return self
-     */
-    public function setVideo($video)
-    {
-        if (is_null($video)) {
-            throw new \InvalidArgumentException('non-nullable video cannot be null');
-        }
-        $this->container['video'] = $video;
-
-        return $this;
-    }
-
-    /**
-     * Gets document
-     *
-     * @return \Zernio\Model\SendInboxMessageRequestInteractiveHeaderImage|null
-     */
-    public function getDocument()
-    {
-        return $this->container['document'];
-    }
-
-    /**
-     * Sets document
-     *
-     * @param \Zernio\Model\SendInboxMessageRequestInteractiveHeaderImage|null $document document
-     *
-     * @return self
-     */
-    public function setDocument($document)
-    {
-        if (is_null($document)) {
-            throw new \InvalidArgumentException('non-nullable document cannot be null');
-        }
-        $this->container['document'] = $document;
+        $this->container['cards'] = $cards;
 
         return $this;
     }

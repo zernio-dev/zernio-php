@@ -1,6 +1,6 @@
 <?php
 /**
- * SendInboxMessageRequestInteractive
+ * SendInboxMessageRequestInteractiveActionOneOf6SectionsInner
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SendInboxMessageRequestInteractive Class Doc Comment
+ * SendInboxMessageRequestInteractiveActionOneOf6SectionsInner Class Doc Comment
  *
  * @category Class
- * @description WhatsApp-only. Rich interactive payload for list messages, CTA URL buttons, Flow prompts, location requests, voice-call buttons, and commerce messages (single product, product list, catalog, and carousel). When set, takes priority over &#x60;buttons&#x60; and &#x60;quickReplies&#x60;. The shape mirrors Meta&#39;s Cloud API &#x60;interactive&#x60; object verbatim, so any payload that works against Meta directly will also work here.  Use &#x60;buttons&#x60; / &#x60;quickReplies&#x60; for simple button replies (WhatsApp&#39;s &#x60;interactive.type: \&quot;button\&quot;&#x60;): the abstraction caps at 3 buttons and handles the auto-conversion for you. Use this field only for the types listed in the enum below.  All interactive messages are session messages: they can only be sent inside the 24-hour customer service window opened by the user&#39;s last inbound message.  Commerce types (&#x60;product&#x60;, &#x60;product_list&#x60;, &#x60;catalog_message&#x60;, and product carousels) require a Meta catalog connected to the WhatsApp Business Account in Commerce Manager. Media carousels (image/video cards) do not need a catalog.  For &#x60;product&#x60;, &#x60;body&#x60; is optional (WhatsApp renders the product card itself) and &#x60;header&#x60; is not allowed (the product image is the header). For &#x60;product_list&#x60;, a &#x60;header&#x60; with &#x60;type: \&quot;text\&quot;&#x60; is required. For &#x60;carousel&#x60;, top-level &#x60;header&#x60;/&#x60;footer&#x60; are not supported; media goes on each card instead.  For &#x60;voice_call&#x60;, the message renders WhatsApp&#39;s native call button; tapping it starts a voice call to your business number. Requires WhatsApp Business Calling to be enabled on the sending number. The optional &#x60;parameters.payload&#x60; string is echoed back on the &#x60;calls&#x60; webhook (as &#x60;cta_payload&#x60;) for attribution.  For &#x60;location_request_message&#x60;, &#x60;action&#x60; may be omitted (we default it to &#x60;{ \&quot;name\&quot;: \&quot;send_location\&quot; }&#x60;). WhatsApp renders a localized \&quot;Send location\&quot; button; the user&#39;s reply arrives as a regular location message in the conversation.  For &#x60;catalog_message&#x60;, &#x60;action&#x60; may also be omitted (we default it to &#x60;{ \&quot;name\&quot;: \&quot;catalog_message\&quot; }&#x60;).  Tap events come back via the &#x60;message.received&#x60; webhook with &#x60;metadata.interactiveType&#x60; set to &#x60;list_reply&#x60; or &#x60;nfm_reply&#x60;. Carts submitted from commerce messages arrive as &#x60;metadata.order&#x60;; product inquiries arrive as &#x60;metadata.referredProduct&#x60;.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SendInboxMessageRequestInteractive implements ModelInterface, ArrayAccess, \JsonSerializable
+class SendInboxMessageRequestInteractiveActionOneOf6SectionsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class SendInboxMessageRequestInteractive implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'sendInboxMessage_request_interactive';
+    protected static $openAPIModelName = 'sendInboxMessage_request_interactive_action_oneOf_6_sections_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,11 +58,8 @@ class SendInboxMessageRequestInteractive implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'header' => '\Zernio\Model\SendInboxMessageRequestInteractiveHeader',
-        'body' => '\Zernio\Model\SendInboxMessageRequestInteractiveBody',
-        'footer' => '\Zernio\Model\SendInboxMessageRequestInteractiveFooter',
-        'action' => '\Zernio\Model\SendInboxMessageRequestInteractiveAction'
+        'title' => 'string',
+        'product_items' => '\Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf6SectionsInnerProductItemsInner[]'
     ];
 
     /**
@@ -74,11 +70,8 @@ class SendInboxMessageRequestInteractive implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'header' => null,
-        'body' => null,
-        'footer' => null,
-        'action' => null
+        'title' => null,
+        'product_items' => null
     ];
 
     /**
@@ -87,11 +80,8 @@ class SendInboxMessageRequestInteractive implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
-        'header' => false,
-        'body' => false,
-        'footer' => false,
-        'action' => false
+        'title' => false,
+        'product_items' => false
     ];
 
     /**
@@ -180,11 +170,8 @@ class SendInboxMessageRequestInteractive implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'header' => 'header',
-        'body' => 'body',
-        'footer' => 'footer',
-        'action' => 'action'
+        'title' => 'title',
+        'product_items' => 'product_items'
     ];
 
     /**
@@ -193,11 +180,8 @@ class SendInboxMessageRequestInteractive implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'header' => 'setHeader',
-        'body' => 'setBody',
-        'footer' => 'setFooter',
-        'action' => 'setAction'
+        'title' => 'setTitle',
+        'product_items' => 'setProductItems'
     ];
 
     /**
@@ -206,11 +190,8 @@ class SendInboxMessageRequestInteractive implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'header' => 'getHeader',
-        'body' => 'getBody',
-        'footer' => 'getFooter',
-        'action' => 'getAction'
+        'title' => 'getTitle',
+        'product_items' => 'getProductItems'
     ];
 
     /**
@@ -254,35 +235,6 @@ class SendInboxMessageRequestInteractive implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
-    public const TYPE__LIST = 'list';
-    public const TYPE_CTA_URL = 'cta_url';
-    public const TYPE_FLOW = 'flow';
-    public const TYPE_LOCATION_REQUEST_MESSAGE = 'location_request_message';
-    public const TYPE_VOICE_CALL = 'voice_call';
-    public const TYPE_PRODUCT = 'product';
-    public const TYPE_PRODUCT_LIST = 'product_list';
-    public const TYPE_CATALOG_MESSAGE = 'catalog_message';
-    public const TYPE_CAROUSEL = 'carousel';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE__LIST,
-            self::TYPE_CTA_URL,
-            self::TYPE_FLOW,
-            self::TYPE_LOCATION_REQUEST_MESSAGE,
-            self::TYPE_VOICE_CALL,
-            self::TYPE_PRODUCT,
-            self::TYPE_PRODUCT_LIST,
-            self::TYPE_CATALOG_MESSAGE,
-            self::TYPE_CAROUSEL,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -299,11 +251,8 @@ class SendInboxMessageRequestInteractive implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('header', $data ?? [], null);
-        $this->setIfExists('body', $data ?? [], null);
-        $this->setIfExists('footer', $data ?? [], null);
-        $this->setIfExists('action', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('product_items', $data ?? [], null);
     }
 
     /**
@@ -333,16 +282,11 @@ class SendInboxMessageRequestInteractive implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+        if ($this->container['product_items'] === null) {
+            $invalidProperties[] = "'product_items' can't be null";
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
+        if ((count($this->container['product_items']) < 1)) {
+            $invalidProperties[] = "invalid value for 'product_items', number of items must be greater than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -361,146 +305,60 @@ class SendInboxMessageRequestInteractive implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets type
+     * Gets title
      *
-     * @return string
+     * @return string|null
      */
-    public function getType()
+    public function getTitle()
     {
-        return $this->container['type'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets type
+     * Sets title
      *
-     * @param string $type Which interactive layout to render.
+     * @param string|null $title Optional section header.
      *
      * @return self
      */
-    public function setType($type)
+    public function setTitle($title)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets header
+     * Gets product_items
      *
-     * @return \Zernio\Model\SendInboxMessageRequestInteractiveHeader|null
+     * @return \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf6SectionsInnerProductItemsInner[]
      */
-    public function getHeader()
+    public function getProductItems()
     {
-        return $this->container['header'];
+        return $this->container['product_items'];
     }
 
     /**
-     * Sets header
+     * Sets product_items
      *
-     * @param \Zernio\Model\SendInboxMessageRequestInteractiveHeader|null $header header
+     * @param \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf6SectionsInnerProductItemsInner[] $product_items product_items
      *
      * @return self
      */
-    public function setHeader($header)
+    public function setProductItems($product_items)
     {
-        if (is_null($header)) {
-            throw new \InvalidArgumentException('non-nullable header cannot be null');
+        if (is_null($product_items)) {
+            throw new \InvalidArgumentException('non-nullable product_items cannot be null');
         }
-        $this->container['header'] = $header;
 
-        return $this;
-    }
 
-    /**
-     * Gets body
-     *
-     * @return \Zernio\Model\SendInboxMessageRequestInteractiveBody|null
-     */
-    public function getBody()
-    {
-        return $this->container['body'];
-    }
-
-    /**
-     * Sets body
-     *
-     * @param \Zernio\Model\SendInboxMessageRequestInteractiveBody|null $body body
-     *
-     * @return self
-     */
-    public function setBody($body)
-    {
-        if (is_null($body)) {
-            throw new \InvalidArgumentException('non-nullable body cannot be null');
+        if ((count($product_items) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $product_items when calling SendInboxMessageRequestInteractiveActionOneOf6SectionsInner., number of items must be greater than or equal to 1.');
         }
-        $this->container['body'] = $body;
-
-        return $this;
-    }
-
-    /**
-     * Gets footer
-     *
-     * @return \Zernio\Model\SendInboxMessageRequestInteractiveFooter|null
-     */
-    public function getFooter()
-    {
-        return $this->container['footer'];
-    }
-
-    /**
-     * Sets footer
-     *
-     * @param \Zernio\Model\SendInboxMessageRequestInteractiveFooter|null $footer footer
-     *
-     * @return self
-     */
-    public function setFooter($footer)
-    {
-        if (is_null($footer)) {
-            throw new \InvalidArgumentException('non-nullable footer cannot be null');
-        }
-        $this->container['footer'] = $footer;
-
-        return $this;
-    }
-
-    /**
-     * Gets action
-     *
-     * @return \Zernio\Model\SendInboxMessageRequestInteractiveAction|null
-     */
-    public function getAction()
-    {
-        return $this->container['action'];
-    }
-
-    /**
-     * Sets action
-     *
-     * @param \Zernio\Model\SendInboxMessageRequestInteractiveAction|null $action action
-     *
-     * @return self
-     */
-    public function setAction($action)
-    {
-        if (is_null($action)) {
-            throw new \InvalidArgumentException('non-nullable action cannot be null');
-        }
-        $this->container['action'] = $action;
+        $this->container['product_items'] = $product_items;
 
         return $this;
     }

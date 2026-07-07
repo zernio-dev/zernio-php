@@ -36,6 +36,7 @@ use \Zernio\ObjectSerializer;
  * SendInboxMessageRequestInteractiveBody Class Doc Comment
  *
  * @category Class
+ * @description Required for every type except &#x60;product&#x60;, where it is optional.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

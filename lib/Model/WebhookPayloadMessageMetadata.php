@@ -68,6 +68,8 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'button_payload' => 'string',
         'flow_response_json' => 'string',
         'flow_response_data' => 'array<string,mixed>',
+        'order' => '\Zernio\Model\WebhookPayloadMessageMetadataOrder',
+        'referred_product' => '\Zernio\Model\WebhookPayloadMessageMetadataReferredProduct',
         'story_reply' => '\Zernio\Model\WebhookPayloadMessageMetadataStoryReply',
         'is_story_mention' => 'bool',
         'referral' => '\Zernio\Model\WebhookPayloadMessageMetadataReferral'
@@ -90,6 +92,8 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'button_payload' => null,
         'flow_response_json' => null,
         'flow_response_data' => null,
+        'order' => null,
+        'referred_product' => null,
         'story_reply' => null,
         'is_story_mention' => null,
         'referral' => null
@@ -110,6 +114,8 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'button_payload' => false,
         'flow_response_json' => false,
         'flow_response_data' => false,
+        'order' => false,
+        'referred_product' => false,
         'story_reply' => false,
         'is_story_mention' => false,
         'referral' => false
@@ -210,6 +216,8 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'button_payload' => 'buttonPayload',
         'flow_response_json' => 'flowResponseJson',
         'flow_response_data' => 'flowResponseData',
+        'order' => 'order',
+        'referred_product' => 'referredProduct',
         'story_reply' => 'storyReply',
         'is_story_mention' => 'isStoryMention',
         'referral' => 'referral'
@@ -230,6 +238,8 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'button_payload' => 'setButtonPayload',
         'flow_response_json' => 'setFlowResponseJson',
         'flow_response_data' => 'setFlowResponseData',
+        'order' => 'setOrder',
+        'referred_product' => 'setReferredProduct',
         'story_reply' => 'setStoryReply',
         'is_story_mention' => 'setIsStoryMention',
         'referral' => 'setReferral'
@@ -250,6 +260,8 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'button_payload' => 'getButtonPayload',
         'flow_response_json' => 'getFlowResponseJson',
         'flow_response_data' => 'getFlowResponseData',
+        'order' => 'getOrder',
+        'referred_product' => 'getReferredProduct',
         'story_reply' => 'getStoryReply',
         'is_story_mention' => 'getIsStoryMention',
         'referral' => 'getReferral'
@@ -338,6 +350,8 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('button_payload', $data ?? [], null);
         $this->setIfExists('flow_response_json', $data ?? [], null);
         $this->setIfExists('flow_response_data', $data ?? [], null);
+        $this->setIfExists('order', $data ?? [], null);
+        $this->setIfExists('referred_product', $data ?? [], null);
         $this->setIfExists('story_reply', $data ?? [], null);
         $this->setIfExists('is_story_mention', $data ?? [], null);
         $this->setIfExists('referral', $data ?? [], null);
@@ -643,6 +657,60 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable flow_response_data cannot be null');
         }
         $this->container['flow_response_data'] = $flow_response_data;
+
+        return $this;
+    }
+
+    /**
+     * Gets order
+     *
+     * @return \Zernio\Model\WebhookPayloadMessageMetadataOrder|null
+     */
+    public function getOrder()
+    {
+        return $this->container['order'];
+    }
+
+    /**
+     * Sets order
+     *
+     * @param \Zernio\Model\WebhookPayloadMessageMetadataOrder|null $order order
+     *
+     * @return self
+     */
+    public function setOrder($order)
+    {
+        if (is_null($order)) {
+            throw new \InvalidArgumentException('non-nullable order cannot be null');
+        }
+        $this->container['order'] = $order;
+
+        return $this;
+    }
+
+    /**
+     * Gets referred_product
+     *
+     * @return \Zernio\Model\WebhookPayloadMessageMetadataReferredProduct|null
+     */
+    public function getReferredProduct()
+    {
+        return $this->container['referred_product'];
+    }
+
+    /**
+     * Sets referred_product
+     *
+     * @param \Zernio\Model\WebhookPayloadMessageMetadataReferredProduct|null $referred_product referred_product
+     *
+     * @return self
+     */
+    public function setReferredProduct($referred_product)
+    {
+        if (is_null($referred_product)) {
+            throw new \InvalidArgumentException('non-nullable referred_product cannot be null');
+        }
+        $this->container['referred_product'] = $referred_product;
 
         return $this;
     }

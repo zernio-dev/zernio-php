@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **string** | Which interactive layout to render. |
 **header** | [**\Zernio\Model\SendInboxMessageRequestInteractiveHeader**](SendInboxMessageRequestInteractiveHeader.md) |  | [optional]
-**body** | [**\Zernio\Model\SendInboxMessageRequestInteractiveBody**](SendInboxMessageRequestInteractiveBody.md) |  |
+**body** | [**\Zernio\Model\SendInboxMessageRequestInteractiveBody**](SendInboxMessageRequestInteractiveBody.md) |  | [optional]
 **footer** | [**\Zernio\Model\SendInboxMessageRequestInteractiveFooter**](SendInboxMessageRequestInteractiveFooter.md) |  | [optional]
 **action** | [**\Zernio\Model\SendInboxMessageRequestInteractiveAction**](SendInboxMessageRequestInteractiveAction.md) |  | [optional]
 
