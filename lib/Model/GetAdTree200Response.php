@@ -59,6 +59,7 @@ class GetAdTree200Response implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'campaigns' => '\Zernio\Model\AdTreeCampaign[]',
+        'backfill_pending' => 'bool',
         'pagination' => '\Zernio\Model\Pagination'
     ];
 
@@ -71,6 +72,7 @@ class GetAdTree200Response implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPIFormats = [
         'campaigns' => null,
+        'backfill_pending' => null,
         'pagination' => null
     ];
 
@@ -81,6 +83,7 @@ class GetAdTree200Response implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPINullables = [
         'campaigns' => false,
+        'backfill_pending' => false,
         'pagination' => false
     ];
 
@@ -171,6 +174,7 @@ class GetAdTree200Response implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'campaigns' => 'campaigns',
+        'backfill_pending' => 'backfillPending',
         'pagination' => 'pagination'
     ];
 
@@ -181,6 +185,7 @@ class GetAdTree200Response implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'campaigns' => 'setCampaigns',
+        'backfill_pending' => 'setBackfillPending',
         'pagination' => 'setPagination'
     ];
 
@@ -191,6 +196,7 @@ class GetAdTree200Response implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'campaigns' => 'getCampaigns',
+        'backfill_pending' => 'getBackfillPending',
         'pagination' => 'getPagination'
     ];
 
@@ -252,6 +258,7 @@ class GetAdTree200Response implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(?array $data = null)
     {
         $this->setIfExists('campaigns', $data ?? [], null);
+        $this->setIfExists('backfill_pending', $data ?? [], null);
         $this->setIfExists('pagination', $data ?? [], null);
     }
 
@@ -320,6 +327,33 @@ class GetAdTree200Response implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable campaigns cannot be null');
         }
         $this->container['campaigns'] = $campaigns;
+
+        return $this;
+    }
+
+    /**
+     * Gets backfill_pending
+     *
+     * @return bool|null
+     */
+    public function getBackfillPending()
+    {
+        return $this->container['backfill_pending'];
+    }
+
+    /**
+     * Sets backfill_pending
+     *
+     * @param bool|null $backfill_pending Present and true only on `202` responses: part of the requested date range is still being backfilled from the platform in the background. Retry the same request shortly; it returns 200 once the range is fully ingested.
+     *
+     * @return self
+     */
+    public function setBackfillPending($backfill_pending)
+    {
+        if (is_null($backfill_pending)) {
+            throw new \InvalidArgumentException('non-nullable backfill_pending cannot be null');
+        }
+        $this->container['backfill_pending'] = $backfill_pending;
 
         return $this;
     }

@@ -58,7 +58,8 @@ class GetAdsTimeline200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'rows' => '\Zernio\Model\GetAdsTimeline200ResponseRowsInner[]'
+        'rows' => '\Zernio\Model\GetAdsTimeline200ResponseRowsInner[]',
+        'backfill_pending' => 'bool'
     ];
 
     /**
@@ -69,7 +70,8 @@ class GetAdsTimeline200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'rows' => null
+        'rows' => null,
+        'backfill_pending' => null
     ];
 
     /**
@@ -78,7 +80,8 @@ class GetAdsTimeline200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'rows' => false
+        'rows' => false,
+        'backfill_pending' => false
     ];
 
     /**
@@ -167,7 +170,8 @@ class GetAdsTimeline200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'rows' => 'rows'
+        'rows' => 'rows',
+        'backfill_pending' => 'backfillPending'
     ];
 
     /**
@@ -176,7 +180,8 @@ class GetAdsTimeline200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'rows' => 'setRows'
+        'rows' => 'setRows',
+        'backfill_pending' => 'setBackfillPending'
     ];
 
     /**
@@ -185,7 +190,8 @@ class GetAdsTimeline200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'rows' => 'getRows'
+        'rows' => 'getRows',
+        'backfill_pending' => 'getBackfillPending'
     ];
 
     /**
@@ -246,6 +252,7 @@ class GetAdsTimeline200Response implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(?array $data = null)
     {
         $this->setIfExists('rows', $data ?? [], null);
+        $this->setIfExists('backfill_pending', $data ?? [], null);
     }
 
     /**
@@ -313,6 +320,33 @@ class GetAdsTimeline200Response implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable rows cannot be null');
         }
         $this->container['rows'] = $rows;
+
+        return $this;
+    }
+
+    /**
+     * Gets backfill_pending
+     *
+     * @return bool|null
+     */
+    public function getBackfillPending()
+    {
+        return $this->container['backfill_pending'];
+    }
+
+    /**
+     * Sets backfill_pending
+     *
+     * @param bool|null $backfill_pending Present and true only on `202` responses: part of the requested date range is still being backfilled from the platform in the background. Retry the same request shortly; it returns 200 once the range is fully ingested.
+     *
+     * @return self
+     */
+    public function setBackfillPending($backfill_pending)
+    {
+        if (is_null($backfill_pending)) {
+            throw new \InvalidArgumentException('non-nullable backfill_pending cannot be null');
+        }
+        $this->container['backfill_pending'] = $backfill_pending;
 
         return $this;
     }

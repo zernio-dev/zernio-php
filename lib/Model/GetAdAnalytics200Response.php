@@ -59,6 +59,7 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'ad' => '\Zernio\Model\GetAdAnalytics200ResponseAd',
+        'backfill_pending' => 'bool',
         'analytics' => '\Zernio\Model\GetCampaignAnalytics200ResponseAnalytics'
     ];
 
@@ -71,6 +72,7 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPIFormats = [
         'ad' => null,
+        'backfill_pending' => null,
         'analytics' => null
     ];
 
@@ -81,6 +83,7 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static array $openAPINullables = [
         'ad' => false,
+        'backfill_pending' => false,
         'analytics' => false
     ];
 
@@ -171,6 +174,7 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'ad' => 'ad',
+        'backfill_pending' => 'backfillPending',
         'analytics' => 'analytics'
     ];
 
@@ -181,6 +185,7 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'ad' => 'setAd',
+        'backfill_pending' => 'setBackfillPending',
         'analytics' => 'setAnalytics'
     ];
 
@@ -191,6 +196,7 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'ad' => 'getAd',
+        'backfill_pending' => 'getBackfillPending',
         'analytics' => 'getAnalytics'
     ];
 
@@ -252,6 +258,7 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(?array $data = null)
     {
         $this->setIfExists('ad', $data ?? [], null);
+        $this->setIfExists('backfill_pending', $data ?? [], null);
         $this->setIfExists('analytics', $data ?? [], null);
     }
 
@@ -320,6 +327,33 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable ad cannot be null');
         }
         $this->container['ad'] = $ad;
+
+        return $this;
+    }
+
+    /**
+     * Gets backfill_pending
+     *
+     * @return bool|null
+     */
+    public function getBackfillPending()
+    {
+        return $this->container['backfill_pending'];
+    }
+
+    /**
+     * Sets backfill_pending
+     *
+     * @param bool|null $backfill_pending Present and true only on `202` responses: part of the requested date range is still being backfilled from the platform in the background. Retry the same request shortly; it returns 200 once the range is fully ingested.
+     *
+     * @return self
+     */
+    public function setBackfillPending($backfill_pending)
+    {
+        if (is_null($backfill_pending)) {
+            throw new \InvalidArgumentException('non-nullable backfill_pending cannot be null');
+        }
+        $this->container['backfill_pending'] = $backfill_pending;
 
         return $this;
     }
