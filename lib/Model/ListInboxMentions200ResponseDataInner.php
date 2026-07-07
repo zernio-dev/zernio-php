@@ -65,6 +65,9 @@ class ListInboxMentions200ResponseDataInner implements ModelInterface, ArrayAcce
         'content' => 'string',
         'permalink' => 'string',
         'author_urn' => 'string',
+        'author_name' => 'string',
+        'author_username' => 'string',
+        'author_picture' => 'string',
         'organizational_entity' => 'string',
         'published_at' => '\DateTime',
         'created_at' => '\DateTime'
@@ -85,6 +88,9 @@ class ListInboxMentions200ResponseDataInner implements ModelInterface, ArrayAcce
         'content' => null,
         'permalink' => null,
         'author_urn' => null,
+        'author_name' => null,
+        'author_username' => null,
+        'author_picture' => null,
         'organizational_entity' => null,
         'published_at' => 'date-time',
         'created_at' => 'date-time'
@@ -103,6 +109,9 @@ class ListInboxMentions200ResponseDataInner implements ModelInterface, ArrayAcce
         'content' => false,
         'permalink' => true,
         'author_urn' => true,
+        'author_name' => true,
+        'author_username' => true,
+        'author_picture' => true,
         'organizational_entity' => false,
         'published_at' => false,
         'created_at' => false
@@ -201,6 +210,9 @@ class ListInboxMentions200ResponseDataInner implements ModelInterface, ArrayAcce
         'content' => 'content',
         'permalink' => 'permalink',
         'author_urn' => 'authorUrn',
+        'author_name' => 'authorName',
+        'author_username' => 'authorUsername',
+        'author_picture' => 'authorPicture',
         'organizational_entity' => 'organizationalEntity',
         'published_at' => 'publishedAt',
         'created_at' => 'createdAt'
@@ -219,6 +231,9 @@ class ListInboxMentions200ResponseDataInner implements ModelInterface, ArrayAcce
         'content' => 'setContent',
         'permalink' => 'setPermalink',
         'author_urn' => 'setAuthorUrn',
+        'author_name' => 'setAuthorName',
+        'author_username' => 'setAuthorUsername',
+        'author_picture' => 'setAuthorPicture',
         'organizational_entity' => 'setOrganizationalEntity',
         'published_at' => 'setPublishedAt',
         'created_at' => 'setCreatedAt'
@@ -237,6 +252,9 @@ class ListInboxMentions200ResponseDataInner implements ModelInterface, ArrayAcce
         'content' => 'getContent',
         'permalink' => 'getPermalink',
         'author_urn' => 'getAuthorUrn',
+        'author_name' => 'getAuthorName',
+        'author_username' => 'getAuthorUsername',
+        'author_picture' => 'getAuthorPicture',
         'organizational_entity' => 'getOrganizationalEntity',
         'published_at' => 'getPublishedAt',
         'created_at' => 'getCreatedAt'
@@ -319,6 +337,9 @@ class ListInboxMentions200ResponseDataInner implements ModelInterface, ArrayAcce
         $this->setIfExists('content', $data ?? [], null);
         $this->setIfExists('permalink', $data ?? [], null);
         $this->setIfExists('author_urn', $data ?? [], null);
+        $this->setIfExists('author_name', $data ?? [], null);
+        $this->setIfExists('author_username', $data ?? [], null);
+        $this->setIfExists('author_picture', $data ?? [], null);
         $this->setIfExists('organizational_entity', $data ?? [], null);
         $this->setIfExists('published_at', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
@@ -584,6 +605,108 @@ class ListInboxMentions200ResponseDataInner implements ModelInterface, ArrayAcce
             }
         }
         $this->container['author_urn'] = $author_urn;
+
+        return $this;
+    }
+
+    /**
+     * Gets author_name
+     *
+     * @return string|null
+     */
+    public function getAuthorName()
+    {
+        return $this->container['author_name'];
+    }
+
+    /**
+     * Sets author_name
+     *
+     * @param string|null $author_name Display name of the author, resolved from authorUrn. Null when LinkedIn does not allow resolving the profile.
+     *
+     * @return self
+     */
+    public function setAuthorName($author_name)
+    {
+        if (is_null($author_name)) {
+            array_push($this->openAPINullablesSetToNull, 'author_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('author_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['author_name'] = $author_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets author_username
+     *
+     * @return string|null
+     */
+    public function getAuthorUsername()
+    {
+        return $this->container['author_username'];
+    }
+
+    /**
+     * Sets author_username
+     *
+     * @param string|null $author_username LinkedIn vanity name of the author (the slug in their profile URL)
+     *
+     * @return self
+     */
+    public function setAuthorUsername($author_username)
+    {
+        if (is_null($author_username)) {
+            array_push($this->openAPINullablesSetToNull, 'author_username');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('author_username', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['author_username'] = $author_username;
+
+        return $this;
+    }
+
+    /**
+     * Gets author_picture
+     *
+     * @return string|null
+     */
+    public function getAuthorPicture()
+    {
+        return $this->container['author_picture'];
+    }
+
+    /**
+     * Sets author_picture
+     *
+     * @param string|null $author_picture Profile picture URL of the author. LinkedIn CDN URLs expire after some time, so fetch promptly rather than storing long-term.
+     *
+     * @return self
+     */
+    public function setAuthorPicture($author_picture)
+    {
+        if (is_null($author_picture)) {
+            array_push($this->openAPINullablesSetToNull, 'author_picture');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('author_picture', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['author_picture'] = $author_picture;
 
         return $this;
     }
