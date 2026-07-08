@@ -873,7 +873,7 @@ $apiInstance = new Zernio\Api\AdsApi(
 $ad_id = 'ad_id_example'; // string
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start of date range (YYYY-MM-DD). Defaults to 90 days ago.
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range.
-$breakdowns = 'breakdowns_example'; // string | Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region. TikTok: gender, age, country_code, platform, ac, language.
+$breakdowns = 'breakdowns_example'; // string | Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. TikTok: gender, age, country_code, platform, ac, language. `placement` is accepted as an alias for `publisher_platform` (Facebook vs Instagram vs Audience Network). The singular `breakdown` is accepted too. Unknown values return 400 with the supported list rather than being ignored.
 
 try {
     $result = $apiInstance->getAdAnalytics($ad_id, $from_date, $to_date, $breakdowns);
@@ -890,7 +890,7 @@ try {
 | **ad_id** | **string**|  | |
 | **from_date** | **\DateTime**| Start of date range (YYYY-MM-DD). Defaults to 90 days ago. | [optional] |
 | **to_date** | **\DateTime**| End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range. | [optional] |
-| **breakdowns** | **string**| Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region. TikTok: gender, age, country_code, platform, ac, language. | [optional] |
+| **breakdowns** | **string**| Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. TikTok: gender, age, country_code, platform, ac, language. &#x60;placement&#x60; is accepted as an alias for &#x60;publisher_platform&#x60; (Facebook vs Instagram vs Audience Network). The singular &#x60;breakdown&#x60; is accepted too. Unknown values return 400 with the supported list rather than being ignored. | [optional] |
 
 ### Return type
 
@@ -1066,7 +1066,7 @@ $campaign_id = 'campaign_id_example'; // string | Platform campaign id (platform
 $platform = 'platform_example'; // string | Disambiguate when the campaign id exists across platforms (e.g. facebook, instagram).
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start of date range (YYYY-MM-DD). Defaults to 90 days ago.
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range.
-$breakdowns = 'breakdowns_example'; // string | Comma-separated breakdown dimensions (Meta only): age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset.
+$breakdowns = 'breakdowns_example'; // string | Comma-separated breakdown dimensions (Meta only): age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. `placement` is accepted as an alias for `publisher_platform` (Facebook vs Instagram vs Audience Network). The singular `breakdown` is accepted too. Unknown values return 400 with the supported list rather than being ignored.
 
 try {
     $result = $apiInstance->getCampaignAnalytics($campaign_id, $platform, $from_date, $to_date, $breakdowns);
@@ -1084,7 +1084,7 @@ try {
 | **platform** | **string**| Disambiguate when the campaign id exists across platforms (e.g. facebook, instagram). | [optional] |
 | **from_date** | **\DateTime**| Start of date range (YYYY-MM-DD). Defaults to 90 days ago. | [optional] |
 | **to_date** | **\DateTime**| End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range. | [optional] |
-| **breakdowns** | **string**| Comma-separated breakdown dimensions (Meta only): age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. | [optional] |
+| **breakdowns** | **string**| Comma-separated breakdown dimensions (Meta only): age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. &#x60;placement&#x60; is accepted as an alias for &#x60;publisher_platform&#x60; (Facebook vs Instagram vs Audience Network). The singular &#x60;breakdown&#x60; is accepted too. Unknown values return 400 with the supported list rather than being ignored. | [optional] |
 
 ### Return type
 

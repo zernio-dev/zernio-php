@@ -4095,12 +4095,12 @@ class AdsApi
      * @param  string $ad_id ad_id (required)
      * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
-     * @param  string|null $breakdowns Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region. TikTok: gender, age, country_code, platform, ac, language. (optional)
+     * @param  string|null $breakdowns Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. TikTok: gender, age, country_code, platform, ac, language. &#x60;placement&#x60; is accepted as an alias for &#x60;publisher_platform&#x60; (Facebook vs Instagram vs Audience Network). The singular &#x60;breakdown&#x60; is accepted too. Unknown values return 400 with the supported list rather than being ignored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdAnalytics'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetAdAnalytics200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\GetAdAnalytics200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function getAdAnalytics($ad_id, $from_date = null, $to_date = null, $breakdowns = null, string $contentType = self::contentTypes['getAdAnalytics'][0])
     {
@@ -4116,12 +4116,12 @@ class AdsApi
      * @param  string $ad_id (required)
      * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
-     * @param  string|null $breakdowns Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region. TikTok: gender, age, country_code, platform, ac, language. (optional)
+     * @param  string|null $breakdowns Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. TikTok: gender, age, country_code, platform, ac, language. &#x60;placement&#x60; is accepted as an alias for &#x60;publisher_platform&#x60; (Facebook vs Instagram vs Audience Network). The singular &#x60;breakdown&#x60; is accepted too. Unknown values return 400 with the supported list rather than being ignored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdAnalytics'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetAdAnalytics200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetAdAnalytics200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAdAnalyticsWithHttpInfo($ad_id, $from_date = null, $to_date = null, $breakdowns = null, string $contentType = self::contentTypes['getAdAnalytics'][0])
     {
@@ -4154,6 +4154,12 @@ class AdsApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\GetAdAnalytics200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -4201,6 +4207,14 @@ class AdsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4232,7 +4246,7 @@ class AdsApi
      * @param  string $ad_id (required)
      * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
-     * @param  string|null $breakdowns Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region. TikTok: gender, age, country_code, platform, ac, language. (optional)
+     * @param  string|null $breakdowns Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. TikTok: gender, age, country_code, platform, ac, language. &#x60;placement&#x60; is accepted as an alias for &#x60;publisher_platform&#x60; (Facebook vs Instagram vs Audience Network). The singular &#x60;breakdown&#x60; is accepted too. Unknown values return 400 with the supported list rather than being ignored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4256,7 +4270,7 @@ class AdsApi
      * @param  string $ad_id (required)
      * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
-     * @param  string|null $breakdowns Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region. TikTok: gender, age, country_code, platform, ac, language. (optional)
+     * @param  string|null $breakdowns Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. TikTok: gender, age, country_code, platform, ac, language. &#x60;placement&#x60; is accepted as an alias for &#x60;publisher_platform&#x60; (Facebook vs Instagram vs Audience Network). The singular &#x60;breakdown&#x60; is accepted too. Unknown values return 400 with the supported list rather than being ignored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4309,7 +4323,7 @@ class AdsApi
      * @param  string $ad_id (required)
      * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
-     * @param  string|null $breakdowns Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region. TikTok: gender, age, country_code, platform, ac, language. (optional)
+     * @param  string|null $breakdowns Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. TikTok: gender, age, country_code, platform, ac, language. &#x60;placement&#x60; is accepted as an alias for &#x60;publisher_platform&#x60; (Facebook vs Instagram vs Audience Network). The singular &#x60;breakdown&#x60; is accepted too. Unknown values return 400 with the supported list rather than being ignored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5078,12 +5092,12 @@ class AdsApi
      * @param  string|null $platform Disambiguate when the campaign id exists across platforms (e.g. facebook, instagram). (optional)
      * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
-     * @param  string|null $breakdowns Comma-separated breakdown dimensions (Meta only): age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. (optional)
+     * @param  string|null $breakdowns Comma-separated breakdown dimensions (Meta only): age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. &#x60;placement&#x60; is accepted as an alias for &#x60;publisher_platform&#x60; (Facebook vs Instagram vs Audience Network). The singular &#x60;breakdown&#x60; is accepted too. Unknown values return 400 with the supported list rather than being ignored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignAnalytics'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetCampaignAnalytics200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\GetCampaignAnalytics200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function getCampaignAnalytics($campaign_id, $platform = null, $from_date = null, $to_date = null, $breakdowns = null, string $contentType = self::contentTypes['getCampaignAnalytics'][0])
     {
@@ -5100,12 +5114,12 @@ class AdsApi
      * @param  string|null $platform Disambiguate when the campaign id exists across platforms (e.g. facebook, instagram). (optional)
      * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
-     * @param  string|null $breakdowns Comma-separated breakdown dimensions (Meta only): age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. (optional)
+     * @param  string|null $breakdowns Comma-separated breakdown dimensions (Meta only): age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. &#x60;placement&#x60; is accepted as an alias for &#x60;publisher_platform&#x60; (Facebook vs Instagram vs Audience Network). The singular &#x60;breakdown&#x60; is accepted too. Unknown values return 400 with the supported list rather than being ignored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignAnalytics'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetCampaignAnalytics200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetCampaignAnalytics200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCampaignAnalyticsWithHttpInfo($campaign_id, $platform = null, $from_date = null, $to_date = null, $breakdowns = null, string $contentType = self::contentTypes['getCampaignAnalytics'][0])
     {
@@ -5138,6 +5152,12 @@ class AdsApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\GetCampaignAnalytics200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -5185,6 +5205,14 @@ class AdsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -5217,7 +5245,7 @@ class AdsApi
      * @param  string|null $platform Disambiguate when the campaign id exists across platforms (e.g. facebook, instagram). (optional)
      * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
-     * @param  string|null $breakdowns Comma-separated breakdown dimensions (Meta only): age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. (optional)
+     * @param  string|null $breakdowns Comma-separated breakdown dimensions (Meta only): age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. &#x60;placement&#x60; is accepted as an alias for &#x60;publisher_platform&#x60; (Facebook vs Instagram vs Audience Network). The singular &#x60;breakdown&#x60; is accepted too. Unknown values return 400 with the supported list rather than being ignored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5242,7 +5270,7 @@ class AdsApi
      * @param  string|null $platform Disambiguate when the campaign id exists across platforms (e.g. facebook, instagram). (optional)
      * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
-     * @param  string|null $breakdowns Comma-separated breakdown dimensions (Meta only): age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. (optional)
+     * @param  string|null $breakdowns Comma-separated breakdown dimensions (Meta only): age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. &#x60;placement&#x60; is accepted as an alias for &#x60;publisher_platform&#x60; (Facebook vs Instagram vs Audience Network). The singular &#x60;breakdown&#x60; is accepted too. Unknown values return 400 with the supported list rather than being ignored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5296,7 +5324,7 @@ class AdsApi
      * @param  string|null $platform Disambiguate when the campaign id exists across platforms (e.g. facebook, instagram). (optional)
      * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
-     * @param  string|null $breakdowns Comma-separated breakdown dimensions (Meta only): age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. (optional)
+     * @param  string|null $breakdowns Comma-separated breakdown dimensions (Meta only): age, gender, country, publisher_platform, device_platform, region, platform_position, impression_device, video_asset, image_asset, body_asset, title_asset. &#x60;placement&#x60; is accepted as an alias for &#x60;publisher_platform&#x60; (Facebook vs Instagram vs Audience Network). The singular &#x60;breakdown&#x60; is accepted too. Unknown values return 400 with the supported list rather than being ignored. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
