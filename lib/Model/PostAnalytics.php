@@ -66,6 +66,7 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
         'saves' => 'int',
         'clicks' => 'int',
         'views' => 'int',
+        'follows' => 'int',
         'ig_reels_avg_watch_time' => 'int',
         'ig_reels_video_view_total_time' => 'int',
         'engagement_rate' => 'float',
@@ -88,6 +89,7 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
         'saves' => null,
         'clicks' => null,
         'views' => null,
+        'follows' => null,
         'ig_reels_avg_watch_time' => null,
         'ig_reels_video_view_total_time' => null,
         'engagement_rate' => null,
@@ -108,6 +110,7 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
         'saves' => false,
         'clicks' => false,
         'views' => false,
+        'follows' => false,
         'ig_reels_avg_watch_time' => false,
         'ig_reels_video_view_total_time' => false,
         'engagement_rate' => false,
@@ -208,6 +211,7 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
         'saves' => 'saves',
         'clicks' => 'clicks',
         'views' => 'views',
+        'follows' => 'follows',
         'ig_reels_avg_watch_time' => 'igReelsAvgWatchTime',
         'ig_reels_video_view_total_time' => 'igReelsVideoViewTotalTime',
         'engagement_rate' => 'engagementRate',
@@ -228,6 +232,7 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
         'saves' => 'setSaves',
         'clicks' => 'setClicks',
         'views' => 'setViews',
+        'follows' => 'setFollows',
         'ig_reels_avg_watch_time' => 'setIgReelsAvgWatchTime',
         'ig_reels_video_view_total_time' => 'setIgReelsVideoViewTotalTime',
         'engagement_rate' => 'setEngagementRate',
@@ -248,6 +253,7 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
         'saves' => 'getSaves',
         'clicks' => 'getClicks',
         'views' => 'getViews',
+        'follows' => 'getFollows',
         'ig_reels_avg_watch_time' => 'getIgReelsAvgWatchTime',
         'ig_reels_video_view_total_time' => 'getIgReelsVideoViewTotalTime',
         'engagement_rate' => 'getEngagementRate',
@@ -319,6 +325,7 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('saves', $data ?? [], null);
         $this->setIfExists('clicks', $data ?? [], null);
         $this->setIfExists('views', $data ?? [], null);
+        $this->setIfExists('follows', $data ?? [], null);
         $this->setIfExists('ig_reels_avg_watch_time', $data ?? [], null);
         $this->setIfExists('ig_reels_video_view_total_time', $data ?? [], null);
         $this->setIfExists('engagement_rate', $data ?? [], null);
@@ -579,6 +586,33 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable views cannot be null');
         }
         $this->container['views'] = $views;
+
+        return $this;
+    }
+
+    /**
+     * Gets follows
+     *
+     * @return int|null
+     */
+    public function getFollows()
+    {
+        return $this->container['follows'];
+    }
+
+    /**
+     * Sets follows
+     *
+     * @param int|null $follows Instagram feed posts and stories only: organic accounts that started following from this post. 0 for reels and other platforms.
+     *
+     * @return self
+     */
+    public function setFollows($follows)
+    {
+        if (is_null($follows)) {
+            throw new \InvalidArgumentException('non-nullable follows cannot be null');
+        }
+        $this->container['follows'] = $follows;
 
         return $this;
     }
