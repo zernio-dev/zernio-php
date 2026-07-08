@@ -90,6 +90,9 @@ class AdAudiencesApi
         'listAdAudiences' => [
             'application/json',
         ],
+        'updateAdAudience' => [
+            'application/json',
+        ],
     ];
 
     /**
@@ -1674,6 +1677,325 @@ class AdAudiencesApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateAdAudience
+     *
+     * Update saved targeting audience
+     *
+     * @param  string $audience_id audience_id (required)
+     * @param  \Zernio\Model\UpdateAdAudienceRequest $update_ad_audience_request update_ad_audience_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdAudience'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CreateAdAudience201Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     */
+    public function updateAdAudience($audience_id, $update_ad_audience_request, string $contentType = self::contentTypes['updateAdAudience'][0])
+    {
+        list($response) = $this->updateAdAudienceWithHttpInfo($audience_id, $update_ad_audience_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateAdAudienceWithHttpInfo
+     *
+     * Update saved targeting audience
+     *
+     * @param  string $audience_id (required)
+     * @param  \Zernio\Model\UpdateAdAudienceRequest $update_ad_audience_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdAudience'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CreateAdAudience201Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateAdAudienceWithHttpInfo($audience_id, $update_ad_audience_request, string $contentType = self::contentTypes['updateAdAudience'][0])
+    {
+        $request = $this->updateAdAudienceRequest($audience_id, $update_ad_audience_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreateAdAudience201Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CreateAdAudience201Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreateAdAudience201Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateAdAudienceAsync
+     *
+     * Update saved targeting audience
+     *
+     * @param  string $audience_id (required)
+     * @param  \Zernio\Model\UpdateAdAudienceRequest $update_ad_audience_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdAudience'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAdAudienceAsync($audience_id, $update_ad_audience_request, string $contentType = self::contentTypes['updateAdAudience'][0])
+    {
+        return $this->updateAdAudienceAsyncWithHttpInfo($audience_id, $update_ad_audience_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateAdAudienceAsyncWithHttpInfo
+     *
+     * Update saved targeting audience
+     *
+     * @param  string $audience_id (required)
+     * @param  \Zernio\Model\UpdateAdAudienceRequest $update_ad_audience_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdAudience'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAdAudienceAsyncWithHttpInfo($audience_id, $update_ad_audience_request, string $contentType = self::contentTypes['updateAdAudience'][0])
+    {
+        $returnType = '\Zernio\Model\CreateAdAudience201Response';
+        $request = $this->updateAdAudienceRequest($audience_id, $update_ad_audience_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateAdAudience'
+     *
+     * @param  string $audience_id (required)
+     * @param  \Zernio\Model\UpdateAdAudienceRequest $update_ad_audience_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdAudience'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateAdAudienceRequest($audience_id, $update_ad_audience_request, string $contentType = self::contentTypes['updateAdAudience'][0])
+    {
+
+        // verify the required parameter 'audience_id' is set
+        if ($audience_id === null || (is_array($audience_id) && count($audience_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $audience_id when calling updateAdAudience'
+            );
+        }
+
+        // verify the required parameter 'update_ad_audience_request' is set
+        if ($update_ad_audience_request === null || (is_array($update_ad_audience_request) && count($update_ad_audience_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_ad_audience_request when calling updateAdAudience'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/audiences/{audienceId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($audience_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'audienceId' . '}',
+                ObjectSerializer::toPathValue($audience_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_ad_audience_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_ad_audience_request));
+            } else {
+                $httpBody = $update_ad_audience_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

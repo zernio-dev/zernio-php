@@ -1114,6 +1114,7 @@ docs/Model/UpdateAccountGroupRequest.md
 docs/Model/UpdateAccountRequest.md
 docs/Model/UpdateAccountRequestXCapabilities.md
 docs/Model/UpdateAd200Response.md
+docs/Model/UpdateAdAudienceRequest.md
 docs/Model/UpdateAdCampaign200Response.md
 docs/Model/UpdateAdCampaignRequest.md
 docs/Model/UpdateAdCampaignRequestBudget.md
@@ -2477,6 +2478,7 @@ lib/Model/UpdateAccountGroupRequest.php
 lib/Model/UpdateAccountRequest.php
 lib/Model/UpdateAccountRequestXCapabilities.php
 lib/Model/UpdateAd200Response.php
+lib/Model/UpdateAdAudienceRequest.php
 lib/Model/UpdateAdCampaign200Response.php
 lib/Model/UpdateAdCampaignRequest.php
 lib/Model/UpdateAdCampaignRequestBudget.php
@@ -2725,3 +2727,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/UpdateAdAudienceRequestTest.php

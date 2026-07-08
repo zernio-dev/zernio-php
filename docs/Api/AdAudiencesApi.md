@@ -11,6 +11,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**deleteAdAudience()**](AdAudiencesApi.md#deleteAdAudience) | **DELETE** /v1/ads/audiences/{audienceId} | Delete custom audience |
 | [**getAdAudience()**](AdAudiencesApi.md#getAdAudience) | **GET** /v1/ads/audiences/{audienceId} | Get audience details |
 | [**listAdAudiences()**](AdAudiencesApi.md#listAdAudiences) | **GET** /v1/ads/audiences | List custom audiences |
+| [**updateAdAudience()**](AdAudiencesApi.md#updateAdAudience) | **PUT** /v1/ads/audiences/{audienceId} | Update saved targeting audience |
 
 
 ## `addUsersToAdAudience()`
@@ -143,7 +144,7 @@ deleteAdAudience($audience_id): \Zernio\Model\DeleteAccountGroup200Response
 
 Delete custom audience
 
-Deletes the audience from both Meta and the local database.
+Deletes the audience from both the platform and the local database. `saved_targeting` audiences exist only on Zernio, so only the local record is removed.
 
 ### Example
 
@@ -315,6 +316,68 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateAdAudience()`
+
+```php
+updateAdAudience($audience_id, $update_ad_audience_request): \Zernio\Model\CreateAdAudience201Response
+```
+
+Update saved targeting audience
+
+Update a `saved_targeting` audience's name, description, or spec. Only `saved_targeting` audiences are updatable (they exist only on Zernio); uploaded/derived audiences return 422, delete and recreate those instead. `spec` replaces the stored spec wholesale (no merge). Ads already created from this audience are unaffected, they snapshot the targeting at creation.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAudiencesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$audience_id = 'audience_id_example'; // string
+$update_ad_audience_request = new \Zernio\Model\UpdateAdAudienceRequest(); // \Zernio\Model\UpdateAdAudienceRequest
+
+try {
+    $result = $apiInstance->updateAdAudience($audience_id, $update_ad_audience_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAudiencesApi->updateAdAudience: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **audience_id** | **string**|  | |
+| **update_ad_audience_request** | [**\Zernio\Model\UpdateAdAudienceRequest**](../Model/UpdateAdAudienceRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateAdAudience201Response**](../Model/CreateAdAudience201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
