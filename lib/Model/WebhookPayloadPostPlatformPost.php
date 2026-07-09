@@ -63,7 +63,8 @@ class WebhookPayloadPostPlatformPost implements ModelInterface, ArrayAccess, \Js
         'status' => 'string',
         'scheduled_for' => '\DateTime',
         'published_at' => '\DateTime',
-        'platforms' => '\Zernio\Model\WebhookPayloadPostPlatformPostPlatformsInner[]'
+        'platforms' => '\Zernio\Model\WebhookPayloadPostPlatformPostPlatformsInner[]',
+        'metadata' => 'array<string,mixed>'
     ];
 
     /**
@@ -79,7 +80,8 @@ class WebhookPayloadPostPlatformPost implements ModelInterface, ArrayAccess, \Js
         'status' => null,
         'scheduled_for' => 'date-time',
         'published_at' => 'date-time',
-        'platforms' => null
+        'platforms' => null,
+        'metadata' => null
     ];
 
     /**
@@ -93,7 +95,8 @@ class WebhookPayloadPostPlatformPost implements ModelInterface, ArrayAccess, \Js
         'status' => false,
         'scheduled_for' => false,
         'published_at' => false,
-        'platforms' => false
+        'platforms' => false,
+        'metadata' => false
     ];
 
     /**
@@ -187,7 +190,8 @@ class WebhookPayloadPostPlatformPost implements ModelInterface, ArrayAccess, \Js
         'status' => 'status',
         'scheduled_for' => 'scheduledFor',
         'published_at' => 'publishedAt',
-        'platforms' => 'platforms'
+        'platforms' => 'platforms',
+        'metadata' => 'metadata'
     ];
 
     /**
@@ -201,7 +205,8 @@ class WebhookPayloadPostPlatformPost implements ModelInterface, ArrayAccess, \Js
         'status' => 'setStatus',
         'scheduled_for' => 'setScheduledFor',
         'published_at' => 'setPublishedAt',
-        'platforms' => 'setPlatforms'
+        'platforms' => 'setPlatforms',
+        'metadata' => 'setMetadata'
     ];
 
     /**
@@ -215,7 +220,8 @@ class WebhookPayloadPostPlatformPost implements ModelInterface, ArrayAccess, \Js
         'status' => 'getStatus',
         'scheduled_for' => 'getScheduledFor',
         'published_at' => 'getPublishedAt',
-        'platforms' => 'getPlatforms'
+        'platforms' => 'getPlatforms',
+        'metadata' => 'getMetadata'
     ];
 
     /**
@@ -281,6 +287,7 @@ class WebhookPayloadPostPlatformPost implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('scheduled_for', $data ?? [], null);
         $this->setIfExists('published_at', $data ?? [], null);
         $this->setIfExists('platforms', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
     }
 
     /**
@@ -498,6 +505,33 @@ class WebhookPayloadPostPlatformPost implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable platforms cannot be null');
         }
         $this->container['platforms'] = $platforms;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param array<string,mixed>|null $metadata The free-form `metadata` object supplied when the post was created, echoed back so you can map events onto your own records. Omitted when the post was created without it.
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+        }
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }
