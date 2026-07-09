@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * StartSmsRegistrationRequestCampaign Class Doc Comment
  *
  * @category Class
- * @description Required for 10DLC. What you&#39;ll send and how recipients opt in/out.
+ * @description Required for 10DLC. What you&#39;ll send and how recipients opt in/out. Opt-in/opt-out/help auto-responses must name the registered brand and carry the carrier-required disclosures; submissions that don&#39;t (or that are blank) are automatically rewritten to a compliant, brand-named template before the campaign is filed.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -413,6 +413,13 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
             $invalidProperties[] = "invalid value for 'sample1', the character length must be bigger than or equal to 20.";
         }
 
+        if ($this->container['sample2'] === null) {
+            $invalidProperties[] = "'sample2' can't be null";
+        }
+        if ((mb_strlen($this->container['sample2']) < 20)) {
+            $invalidProperties[] = "invalid value for 'sample2', the character length must be bigger than or equal to 20.";
+        }
+
         if ($this->container['help_message'] === null) {
             $invalidProperties[] = "'help_message' can't be null";
         }
@@ -600,7 +607,7 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
     /**
      * Gets sample2
      *
-     * @return string|null
+     * @return string
      */
     public function getSample2()
     {
@@ -610,7 +617,7 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
     /**
      * Sets sample2
      *
-     * @param string|null $sample2 sample2
+     * @param string $sample2 Second example message; carriers require two distinct samples
      *
      * @return self
      */
@@ -619,6 +626,11 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
         if (is_null($sample2)) {
             throw new \InvalidArgumentException('non-nullable sample2 cannot be null');
         }
+
+        if ((mb_strlen($sample2) < 20)) {
+            throw new \InvalidArgumentException('invalid length for $sample2 when calling StartSmsRegistrationRequestCampaign., must be bigger than or equal to 20.');
+        }
+
         $this->container['sample2'] = $sample2;
 
         return $this;

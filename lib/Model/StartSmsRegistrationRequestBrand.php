@@ -482,6 +482,18 @@ class StartSmsRegistrationRequestBrand implements ModelInterface, ArrayAccess, \
         if ($this->container['display_name'] === null) {
             $invalidProperties[] = "'display_name' can't be null";
         }
+        if ($this->container['street'] === null) {
+            $invalidProperties[] = "'street' can't be null";
+        }
+        if ($this->container['city'] === null) {
+            $invalidProperties[] = "'city' can't be null";
+        }
+        if ($this->container['state'] === null) {
+            $invalidProperties[] = "'state' can't be null";
+        }
+        if ($this->container['postal_code'] === null) {
+            $invalidProperties[] = "'postal_code' can't be null";
+        }
         if ($this->container['country'] === null) {
             $invalidProperties[] = "'country' can't be null";
         }
@@ -494,6 +506,9 @@ class StartSmsRegistrationRequestBrand implements ModelInterface, ArrayAccess, \
             );
         }
 
+        if ($this->container['website'] === null) {
+            $invalidProperties[] = "'website' can't be null";
+        }
         if ($this->container['vertical'] === null) {
             $invalidProperties[] = "'vertical' can't be null";
         }
@@ -652,7 +667,7 @@ class StartSmsRegistrationRequestBrand implements ModelInterface, ArrayAccess, \
     /**
      * Sets phone
      *
-     * @param string|null $phone phone
+     * @param string|null $phone Business contact phone. Required for every entityType except SOLE_PROPRIETOR.
      *
      * @return self
      */
@@ -696,7 +711,7 @@ class StartSmsRegistrationRequestBrand implements ModelInterface, ArrayAccess, \
     /**
      * Gets street
      *
-     * @return string|null
+     * @return string
      */
     public function getStreet()
     {
@@ -706,7 +721,7 @@ class StartSmsRegistrationRequestBrand implements ModelInterface, ArrayAccess, \
     /**
      * Sets street
      *
-     * @param string|null $street street
+     * @param string $street street
      *
      * @return self
      */
@@ -723,7 +738,7 @@ class StartSmsRegistrationRequestBrand implements ModelInterface, ArrayAccess, \
     /**
      * Gets city
      *
-     * @return string|null
+     * @return string
      */
     public function getCity()
     {
@@ -733,7 +748,7 @@ class StartSmsRegistrationRequestBrand implements ModelInterface, ArrayAccess, \
     /**
      * Sets city
      *
-     * @param string|null $city city
+     * @param string $city city
      *
      * @return self
      */
@@ -750,7 +765,7 @@ class StartSmsRegistrationRequestBrand implements ModelInterface, ArrayAccess, \
     /**
      * Gets state
      *
-     * @return string|null
+     * @return string
      */
     public function getState()
     {
@@ -760,7 +775,7 @@ class StartSmsRegistrationRequestBrand implements ModelInterface, ArrayAccess, \
     /**
      * Sets state
      *
-     * @param string|null $state state
+     * @param string $state state
      *
      * @return self
      */
@@ -777,7 +792,7 @@ class StartSmsRegistrationRequestBrand implements ModelInterface, ArrayAccess, \
     /**
      * Gets postal_code
      *
-     * @return string|null
+     * @return string
      */
     public function getPostalCode()
     {
@@ -787,7 +802,7 @@ class StartSmsRegistrationRequestBrand implements ModelInterface, ArrayAccess, \
     /**
      * Sets postal_code
      *
-     * @param string|null $postal_code postal_code
+     * @param string $postal_code postal_code
      *
      * @return self
      */
@@ -868,7 +883,7 @@ class StartSmsRegistrationRequestBrand implements ModelInterface, ArrayAccess, \
     /**
      * Gets website
      *
-     * @return string|null
+     * @return string
      */
     public function getWebsite()
     {
@@ -878,7 +893,7 @@ class StartSmsRegistrationRequestBrand implements ModelInterface, ArrayAccess, \
     /**
      * Sets website
      *
-     * @param string|null $website website
+     * @param string $website The brand's website (sole proprietors may use a social profile such as LinkedIn or a business Facebook page). Carriers verify the brand against it; a bare domain is normalized to https://.
      *
      * @return self
      */

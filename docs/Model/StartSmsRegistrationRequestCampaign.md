@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **description** | **string** |  |
 **message_flow** | **string** | How a recipient ends up receiving your messages (the opt-in flow). |
 **sample1** | **string** |  |
-**sample2** | **string** |  | [optional]
+**sample2** | **string** | Second example message; carriers require two distinct samples |
 **help_message** | **string** |  |
 **optin_keywords** | **string** |  |
 **optin_message** | **string** |  |
