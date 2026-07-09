@@ -78,10 +78,28 @@ class DiscordApi
         'addDiscordMemberRole' => [
             'application/json',
         ],
+        'createDiscordGuildRole' => [
+            'application/json',
+        ],
         'createDiscordScheduledEvent' => [
             'application/json',
         ],
+        'createDiscordThread' => [
+            'application/json',
+        ],
+        'crosspostDiscordMessage' => [
+            'application/json',
+        ],
+        'deleteDiscordGuildRole' => [
+            'application/json',
+        ],
+        'deleteDiscordMessage' => [
+            'application/json',
+        ],
         'deleteDiscordScheduledEvent' => [
+            'application/json',
+        ],
+        'editDiscordGuildRole' => [
             'application/json',
         ],
         'getDiscordChannels' => [
@@ -519,6 +537,332 @@ class DiscordApi
     }
 
     /**
+     * Operation createDiscordGuildRole
+     *
+     * Create a Discord guild role
+     *
+     * @param  string $guild_id Discord guild snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this guild (required)
+     * @param  \Zernio\Model\CreateDiscordGuildRoleRequest $create_discord_guild_role_request create_discord_guild_role_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDiscordGuildRole'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CreateDiscordGuildRole201Response|\Zernio\Model\InlineObject
+     */
+    public function createDiscordGuildRole($guild_id, $account_id, $create_discord_guild_role_request, string $contentType = self::contentTypes['createDiscordGuildRole'][0])
+    {
+        list($response) = $this->createDiscordGuildRoleWithHttpInfo($guild_id, $account_id, $create_discord_guild_role_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createDiscordGuildRoleWithHttpInfo
+     *
+     * Create a Discord guild role
+     *
+     * @param  string $guild_id Discord guild snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this guild (required)
+     * @param  \Zernio\Model\CreateDiscordGuildRoleRequest $create_discord_guild_role_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDiscordGuildRole'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CreateDiscordGuildRole201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createDiscordGuildRoleWithHttpInfo($guild_id, $account_id, $create_discord_guild_role_request, string $contentType = self::contentTypes['createDiscordGuildRole'][0])
+    {
+        $request = $this->createDiscordGuildRoleRequest($guild_id, $account_id, $create_discord_guild_role_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreateDiscordGuildRole201Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CreateDiscordGuildRole201Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreateDiscordGuildRole201Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createDiscordGuildRoleAsync
+     *
+     * Create a Discord guild role
+     *
+     * @param  string $guild_id Discord guild snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this guild (required)
+     * @param  \Zernio\Model\CreateDiscordGuildRoleRequest $create_discord_guild_role_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDiscordGuildRole'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createDiscordGuildRoleAsync($guild_id, $account_id, $create_discord_guild_role_request, string $contentType = self::contentTypes['createDiscordGuildRole'][0])
+    {
+        return $this->createDiscordGuildRoleAsyncWithHttpInfo($guild_id, $account_id, $create_discord_guild_role_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createDiscordGuildRoleAsyncWithHttpInfo
+     *
+     * Create a Discord guild role
+     *
+     * @param  string $guild_id Discord guild snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this guild (required)
+     * @param  \Zernio\Model\CreateDiscordGuildRoleRequest $create_discord_guild_role_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDiscordGuildRole'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createDiscordGuildRoleAsyncWithHttpInfo($guild_id, $account_id, $create_discord_guild_role_request, string $contentType = self::contentTypes['createDiscordGuildRole'][0])
+    {
+        $returnType = '\Zernio\Model\CreateDiscordGuildRole201Response';
+        $request = $this->createDiscordGuildRoleRequest($guild_id, $account_id, $create_discord_guild_role_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createDiscordGuildRole'
+     *
+     * @param  string $guild_id Discord guild snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this guild (required)
+     * @param  \Zernio\Model\CreateDiscordGuildRoleRequest $create_discord_guild_role_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDiscordGuildRole'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createDiscordGuildRoleRequest($guild_id, $account_id, $create_discord_guild_role_request, string $contentType = self::contentTypes['createDiscordGuildRole'][0])
+    {
+
+        // verify the required parameter 'guild_id' is set
+        if ($guild_id === null || (is_array($guild_id) && count($guild_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $guild_id when calling createDiscordGuildRole'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling createDiscordGuildRole'
+            );
+        }
+
+        // verify the required parameter 'create_discord_guild_role_request' is set
+        if ($create_discord_guild_role_request === null || (is_array($create_discord_guild_role_request) && count($create_discord_guild_role_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_discord_guild_role_request when calling createDiscordGuildRole'
+            );
+        }
+
+
+        $resourcePath = '/v1/discord/guilds/{guildId}/roles';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($guild_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'guildId' . '}',
+                ObjectSerializer::toPathValue($guild_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_discord_guild_role_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_discord_guild_role_request));
+            } else {
+                $httpBody = $create_discord_guild_role_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation createDiscordScheduledEvent
      *
      * Create a Discord scheduled event
@@ -817,6 +1161,1313 @@ class DiscordApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createDiscordThread
+     *
+     * Create a Discord public thread
+     *
+     * @param  string $channel_id Discord channel snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this channel&#39;s guild (required)
+     * @param  \Zernio\Model\CreateDiscordThreadRequest $create_discord_thread_request create_discord_thread_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDiscordThread'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CreateDiscordThread200Response|\Zernio\Model\InlineObject
+     */
+    public function createDiscordThread($channel_id, $account_id, $create_discord_thread_request, string $contentType = self::contentTypes['createDiscordThread'][0])
+    {
+        list($response) = $this->createDiscordThreadWithHttpInfo($channel_id, $account_id, $create_discord_thread_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createDiscordThreadWithHttpInfo
+     *
+     * Create a Discord public thread
+     *
+     * @param  string $channel_id Discord channel snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this channel&#39;s guild (required)
+     * @param  \Zernio\Model\CreateDiscordThreadRequest $create_discord_thread_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDiscordThread'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CreateDiscordThread200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createDiscordThreadWithHttpInfo($channel_id, $account_id, $create_discord_thread_request, string $contentType = self::contentTypes['createDiscordThread'][0])
+    {
+        $request = $this->createDiscordThreadRequest($channel_id, $account_id, $create_discord_thread_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreateDiscordThread200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CreateDiscordThread200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreateDiscordThread200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createDiscordThreadAsync
+     *
+     * Create a Discord public thread
+     *
+     * @param  string $channel_id Discord channel snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this channel&#39;s guild (required)
+     * @param  \Zernio\Model\CreateDiscordThreadRequest $create_discord_thread_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDiscordThread'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createDiscordThreadAsync($channel_id, $account_id, $create_discord_thread_request, string $contentType = self::contentTypes['createDiscordThread'][0])
+    {
+        return $this->createDiscordThreadAsyncWithHttpInfo($channel_id, $account_id, $create_discord_thread_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createDiscordThreadAsyncWithHttpInfo
+     *
+     * Create a Discord public thread
+     *
+     * @param  string $channel_id Discord channel snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this channel&#39;s guild (required)
+     * @param  \Zernio\Model\CreateDiscordThreadRequest $create_discord_thread_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDiscordThread'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createDiscordThreadAsyncWithHttpInfo($channel_id, $account_id, $create_discord_thread_request, string $contentType = self::contentTypes['createDiscordThread'][0])
+    {
+        $returnType = '\Zernio\Model\CreateDiscordThread200Response';
+        $request = $this->createDiscordThreadRequest($channel_id, $account_id, $create_discord_thread_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createDiscordThread'
+     *
+     * @param  string $channel_id Discord channel snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this channel&#39;s guild (required)
+     * @param  \Zernio\Model\CreateDiscordThreadRequest $create_discord_thread_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDiscordThread'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createDiscordThreadRequest($channel_id, $account_id, $create_discord_thread_request, string $contentType = self::contentTypes['createDiscordThread'][0])
+    {
+
+        // verify the required parameter 'channel_id' is set
+        if ($channel_id === null || (is_array($channel_id) && count($channel_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $channel_id when calling createDiscordThread'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling createDiscordThread'
+            );
+        }
+
+        // verify the required parameter 'create_discord_thread_request' is set
+        if ($create_discord_thread_request === null || (is_array($create_discord_thread_request) && count($create_discord_thread_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_discord_thread_request when calling createDiscordThread'
+            );
+        }
+
+
+        $resourcePath = '/v1/discord/channels/{channelId}/threads';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($channel_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'channelId' . '}',
+                ObjectSerializer::toPathValue($channel_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_discord_thread_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_discord_thread_request));
+            } else {
+                $httpBody = $create_discord_thread_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation crosspostDiscordMessage
+     *
+     * Crosspost a Discord announcement message
+     *
+     * @param  string $channel_id Discord announcement channel snowflake ID (required)
+     * @param  string $message_id Discord message snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this channel&#39;s guild (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crosspostDiscordMessage'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CrosspostDiscordMessage200Response|\Zernio\Model\InlineObject
+     */
+    public function crosspostDiscordMessage($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['crosspostDiscordMessage'][0])
+    {
+        list($response) = $this->crosspostDiscordMessageWithHttpInfo($channel_id, $message_id, $account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation crosspostDiscordMessageWithHttpInfo
+     *
+     * Crosspost a Discord announcement message
+     *
+     * @param  string $channel_id Discord announcement channel snowflake ID (required)
+     * @param  string $message_id Discord message snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this channel&#39;s guild (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crosspostDiscordMessage'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CrosspostDiscordMessage200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function crosspostDiscordMessageWithHttpInfo($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['crosspostDiscordMessage'][0])
+    {
+        $request = $this->crosspostDiscordMessageRequest($channel_id, $message_id, $account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CrosspostDiscordMessage200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CrosspostDiscordMessage200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CrosspostDiscordMessage200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation crosspostDiscordMessageAsync
+     *
+     * Crosspost a Discord announcement message
+     *
+     * @param  string $channel_id Discord announcement channel snowflake ID (required)
+     * @param  string $message_id Discord message snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this channel&#39;s guild (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crosspostDiscordMessage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function crosspostDiscordMessageAsync($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['crosspostDiscordMessage'][0])
+    {
+        return $this->crosspostDiscordMessageAsyncWithHttpInfo($channel_id, $message_id, $account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation crosspostDiscordMessageAsyncWithHttpInfo
+     *
+     * Crosspost a Discord announcement message
+     *
+     * @param  string $channel_id Discord announcement channel snowflake ID (required)
+     * @param  string $message_id Discord message snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this channel&#39;s guild (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crosspostDiscordMessage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function crosspostDiscordMessageAsyncWithHttpInfo($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['crosspostDiscordMessage'][0])
+    {
+        $returnType = '\Zernio\Model\CrosspostDiscordMessage200Response';
+        $request = $this->crosspostDiscordMessageRequest($channel_id, $message_id, $account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'crosspostDiscordMessage'
+     *
+     * @param  string $channel_id Discord announcement channel snowflake ID (required)
+     * @param  string $message_id Discord message snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this channel&#39;s guild (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crosspostDiscordMessage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function crosspostDiscordMessageRequest($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['crosspostDiscordMessage'][0])
+    {
+
+        // verify the required parameter 'channel_id' is set
+        if ($channel_id === null || (is_array($channel_id) && count($channel_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $channel_id when calling crosspostDiscordMessage'
+            );
+        }
+
+        // verify the required parameter 'message_id' is set
+        if ($message_id === null || (is_array($message_id) && count($message_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $message_id when calling crosspostDiscordMessage'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling crosspostDiscordMessage'
+            );
+        }
+
+
+        $resourcePath = '/v1/discord/channels/{channelId}/messages/{messageId}/crosspost';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($channel_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'channelId' . '}',
+                ObjectSerializer::toPathValue($channel_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($message_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'messageId' . '}',
+                ObjectSerializer::toPathValue($message_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteDiscordGuildRole
+     *
+     * Delete a Discord guild role
+     *
+     * @param  string $guild_id Discord guild snowflake ID (required)
+     * @param  string $role_id Discord role snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this guild (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDiscordGuildRole'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject
+     */
+    public function deleteDiscordGuildRole($guild_id, $role_id, $account_id, string $contentType = self::contentTypes['deleteDiscordGuildRole'][0])
+    {
+        list($response) = $this->deleteDiscordGuildRoleWithHttpInfo($guild_id, $role_id, $account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation deleteDiscordGuildRoleWithHttpInfo
+     *
+     * Delete a Discord guild role
+     *
+     * @param  string $guild_id Discord guild snowflake ID (required)
+     * @param  string $role_id Discord role snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this guild (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDiscordGuildRole'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteDiscordGuildRoleWithHttpInfo($guild_id, $role_id, $account_id, string $contentType = self::contentTypes['deleteDiscordGuildRole'][0])
+    {
+        $request = $this->deleteDiscordGuildRoleRequest($guild_id, $role_id, $account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteDiscordGuildRoleAsync
+     *
+     * Delete a Discord guild role
+     *
+     * @param  string $guild_id Discord guild snowflake ID (required)
+     * @param  string $role_id Discord role snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this guild (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDiscordGuildRole'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteDiscordGuildRoleAsync($guild_id, $role_id, $account_id, string $contentType = self::contentTypes['deleteDiscordGuildRole'][0])
+    {
+        return $this->deleteDiscordGuildRoleAsyncWithHttpInfo($guild_id, $role_id, $account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteDiscordGuildRoleAsyncWithHttpInfo
+     *
+     * Delete a Discord guild role
+     *
+     * @param  string $guild_id Discord guild snowflake ID (required)
+     * @param  string $role_id Discord role snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this guild (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDiscordGuildRole'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteDiscordGuildRoleAsyncWithHttpInfo($guild_id, $role_id, $account_id, string $contentType = self::contentTypes['deleteDiscordGuildRole'][0])
+    {
+        $returnType = '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response';
+        $request = $this->deleteDiscordGuildRoleRequest($guild_id, $role_id, $account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteDiscordGuildRole'
+     *
+     * @param  string $guild_id Discord guild snowflake ID (required)
+     * @param  string $role_id Discord role snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this guild (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDiscordGuildRole'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteDiscordGuildRoleRequest($guild_id, $role_id, $account_id, string $contentType = self::contentTypes['deleteDiscordGuildRole'][0])
+    {
+
+        // verify the required parameter 'guild_id' is set
+        if ($guild_id === null || (is_array($guild_id) && count($guild_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $guild_id when calling deleteDiscordGuildRole'
+            );
+        }
+
+        // verify the required parameter 'role_id' is set
+        if ($role_id === null || (is_array($role_id) && count($role_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $role_id when calling deleteDiscordGuildRole'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling deleteDiscordGuildRole'
+            );
+        }
+
+
+        $resourcePath = '/v1/discord/guilds/{guildId}/roles/{roleId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($guild_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'guildId' . '}',
+                ObjectSerializer::toPathValue($guild_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($role_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'roleId' . '}',
+                ObjectSerializer::toPathValue($role_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteDiscordMessage
+     *
+     * Delete a Discord channel message
+     *
+     * @param  string $channel_id Discord channel snowflake ID (required)
+     * @param  string $message_id Discord message snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this channel&#39;s guild (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDiscordMessage'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject
+     */
+    public function deleteDiscordMessage($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['deleteDiscordMessage'][0])
+    {
+        list($response) = $this->deleteDiscordMessageWithHttpInfo($channel_id, $message_id, $account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation deleteDiscordMessageWithHttpInfo
+     *
+     * Delete a Discord channel message
+     *
+     * @param  string $channel_id Discord channel snowflake ID (required)
+     * @param  string $message_id Discord message snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this channel&#39;s guild (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDiscordMessage'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteDiscordMessageWithHttpInfo($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['deleteDiscordMessage'][0])
+    {
+        $request = $this->deleteDiscordMessageRequest($channel_id, $message_id, $account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteDiscordMessageAsync
+     *
+     * Delete a Discord channel message
+     *
+     * @param  string $channel_id Discord channel snowflake ID (required)
+     * @param  string $message_id Discord message snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this channel&#39;s guild (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDiscordMessage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteDiscordMessageAsync($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['deleteDiscordMessage'][0])
+    {
+        return $this->deleteDiscordMessageAsyncWithHttpInfo($channel_id, $message_id, $account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteDiscordMessageAsyncWithHttpInfo
+     *
+     * Delete a Discord channel message
+     *
+     * @param  string $channel_id Discord channel snowflake ID (required)
+     * @param  string $message_id Discord message snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this channel&#39;s guild (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDiscordMessage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteDiscordMessageAsyncWithHttpInfo($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['deleteDiscordMessage'][0])
+    {
+        $returnType = '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response';
+        $request = $this->deleteDiscordMessageRequest($channel_id, $message_id, $account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteDiscordMessage'
+     *
+     * @param  string $channel_id Discord channel snowflake ID (required)
+     * @param  string $message_id Discord message snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this channel&#39;s guild (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDiscordMessage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteDiscordMessageRequest($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['deleteDiscordMessage'][0])
+    {
+
+        // verify the required parameter 'channel_id' is set
+        if ($channel_id === null || (is_array($channel_id) && count($channel_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $channel_id when calling deleteDiscordMessage'
+            );
+        }
+
+        // verify the required parameter 'message_id' is set
+        if ($message_id === null || (is_array($message_id) && count($message_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $message_id when calling deleteDiscordMessage'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling deleteDiscordMessage'
+            );
+        }
+
+
+        $resourcePath = '/v1/discord/channels/{channelId}/messages/{messageId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($channel_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'channelId' . '}',
+                ObjectSerializer::toPathValue($channel_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($message_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'messageId' . '}',
+                ObjectSerializer::toPathValue($message_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -1144,6 +2795,352 @@ class DiscordApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editDiscordGuildRole
+     *
+     * Edit a Discord guild role
+     *
+     * @param  string $guild_id Discord guild snowflake ID (required)
+     * @param  string $role_id Discord role snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this guild (required)
+     * @param  \Zernio\Model\EditDiscordGuildRoleRequest $edit_discord_guild_role_request edit_discord_guild_role_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editDiscordGuildRole'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CreateDiscordGuildRole201Response|\Zernio\Model\InlineObject
+     */
+    public function editDiscordGuildRole($guild_id, $role_id, $account_id, $edit_discord_guild_role_request, string $contentType = self::contentTypes['editDiscordGuildRole'][0])
+    {
+        list($response) = $this->editDiscordGuildRoleWithHttpInfo($guild_id, $role_id, $account_id, $edit_discord_guild_role_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation editDiscordGuildRoleWithHttpInfo
+     *
+     * Edit a Discord guild role
+     *
+     * @param  string $guild_id Discord guild snowflake ID (required)
+     * @param  string $role_id Discord role snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this guild (required)
+     * @param  \Zernio\Model\EditDiscordGuildRoleRequest $edit_discord_guild_role_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editDiscordGuildRole'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CreateDiscordGuildRole201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editDiscordGuildRoleWithHttpInfo($guild_id, $role_id, $account_id, $edit_discord_guild_role_request, string $contentType = self::contentTypes['editDiscordGuildRole'][0])
+    {
+        $request = $this->editDiscordGuildRoleRequest($guild_id, $role_id, $account_id, $edit_discord_guild_role_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreateDiscordGuildRole201Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CreateDiscordGuildRole201Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreateDiscordGuildRole201Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editDiscordGuildRoleAsync
+     *
+     * Edit a Discord guild role
+     *
+     * @param  string $guild_id Discord guild snowflake ID (required)
+     * @param  string $role_id Discord role snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this guild (required)
+     * @param  \Zernio\Model\EditDiscordGuildRoleRequest $edit_discord_guild_role_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editDiscordGuildRole'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDiscordGuildRoleAsync($guild_id, $role_id, $account_id, $edit_discord_guild_role_request, string $contentType = self::contentTypes['editDiscordGuildRole'][0])
+    {
+        return $this->editDiscordGuildRoleAsyncWithHttpInfo($guild_id, $role_id, $account_id, $edit_discord_guild_role_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editDiscordGuildRoleAsyncWithHttpInfo
+     *
+     * Edit a Discord guild role
+     *
+     * @param  string $guild_id Discord guild snowflake ID (required)
+     * @param  string $role_id Discord role snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this guild (required)
+     * @param  \Zernio\Model\EditDiscordGuildRoleRequest $edit_discord_guild_role_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editDiscordGuildRole'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDiscordGuildRoleAsyncWithHttpInfo($guild_id, $role_id, $account_id, $edit_discord_guild_role_request, string $contentType = self::contentTypes['editDiscordGuildRole'][0])
+    {
+        $returnType = '\Zernio\Model\CreateDiscordGuildRole201Response';
+        $request = $this->editDiscordGuildRoleRequest($guild_id, $role_id, $account_id, $edit_discord_guild_role_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editDiscordGuildRole'
+     *
+     * @param  string $guild_id Discord guild snowflake ID (required)
+     * @param  string $role_id Discord role snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this guild (required)
+     * @param  \Zernio\Model\EditDiscordGuildRoleRequest $edit_discord_guild_role_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editDiscordGuildRole'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function editDiscordGuildRoleRequest($guild_id, $role_id, $account_id, $edit_discord_guild_role_request, string $contentType = self::contentTypes['editDiscordGuildRole'][0])
+    {
+
+        // verify the required parameter 'guild_id' is set
+        if ($guild_id === null || (is_array($guild_id) && count($guild_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $guild_id when calling editDiscordGuildRole'
+            );
+        }
+
+        // verify the required parameter 'role_id' is set
+        if ($role_id === null || (is_array($role_id) && count($role_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $role_id when calling editDiscordGuildRole'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling editDiscordGuildRole'
+            );
+        }
+
+        // verify the required parameter 'edit_discord_guild_role_request' is set
+        if ($edit_discord_guild_role_request === null || (is_array($edit_discord_guild_role_request) && count($edit_discord_guild_role_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $edit_discord_guild_role_request when calling editDiscordGuildRole'
+            );
+        }
+
+
+        $resourcePath = '/v1/discord/guilds/{guildId}/roles/{roleId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($guild_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'guildId' . '}',
+                ObjectSerializer::toPathValue($guild_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($role_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'roleId' . '}',
+                ObjectSerializer::toPathValue($role_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($edit_discord_guild_role_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($edit_discord_guild_role_request));
+            } else {
+                $httpBody = $edit_discord_guild_role_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

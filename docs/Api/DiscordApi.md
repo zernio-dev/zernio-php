@@ -7,8 +7,14 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**addDiscordMemberRole()**](DiscordApi.md#addDiscordMemberRole) | **PUT** /v1/discord/guilds/{guildId}/members/{userId}/roles/{roleId} | Assign a role to a guild member |
+| [**createDiscordGuildRole()**](DiscordApi.md#createDiscordGuildRole) | **POST** /v1/discord/guilds/{guildId}/roles | Create a Discord guild role |
 | [**createDiscordScheduledEvent()**](DiscordApi.md#createDiscordScheduledEvent) | **POST** /v1/discord/guilds/{guildId}/events | Create a Discord scheduled event |
+| [**createDiscordThread()**](DiscordApi.md#createDiscordThread) | **POST** /v1/discord/channels/{channelId}/threads | Create a Discord public thread |
+| [**crosspostDiscordMessage()**](DiscordApi.md#crosspostDiscordMessage) | **POST** /v1/discord/channels/{channelId}/messages/{messageId}/crosspost | Crosspost a Discord announcement message |
+| [**deleteDiscordGuildRole()**](DiscordApi.md#deleteDiscordGuildRole) | **DELETE** /v1/discord/guilds/{guildId}/roles/{roleId} | Delete a Discord guild role |
+| [**deleteDiscordMessage()**](DiscordApi.md#deleteDiscordMessage) | **DELETE** /v1/discord/channels/{channelId}/messages/{messageId} | Delete a Discord channel message |
 | [**deleteDiscordScheduledEvent()**](DiscordApi.md#deleteDiscordScheduledEvent) | **DELETE** /v1/discord/guilds/{guildId}/events/{eventId} | Delete a Discord scheduled event |
+| [**editDiscordGuildRole()**](DiscordApi.md#editDiscordGuildRole) | **PATCH** /v1/discord/guilds/{guildId}/roles/{roleId} | Edit a Discord guild role |
 | [**getDiscordChannels()**](DiscordApi.md#getDiscordChannels) | **GET** /v1/accounts/{accountId}/discord-channels | List Discord guild channels |
 | [**getDiscordScheduledEvent()**](DiscordApi.md#getDiscordScheduledEvent) | **GET** /v1/discord/guilds/{guildId}/events/{eventId} | Get a Discord scheduled event |
 | [**getDiscordSettings()**](DiscordApi.md#getDiscordSettings) | **GET** /v1/accounts/{accountId}/discord-settings | Get Discord account settings |
@@ -90,6 +96,70 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createDiscordGuildRole()`
+
+```php
+createDiscordGuildRole($guild_id, $account_id, $create_discord_guild_role_request): \Zernio\Model\CreateDiscordGuildRole201Response
+```
+
+Create a Discord guild role
+
+Creates a new role in the guild.  Requires the bot to hold the Manage Roles permission. Guilds that added the Zernio bot before role management shipped must re-invite it, because Discord applies the permission set at invite time.  Discord's role hierarchy applies: the bot cannot create a role positioned at or above its own highest role, and cannot grant permissions it does not itself hold. Either attempt returns a 403 carrying Discord's own error.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\DiscordApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$guild_id = 'guild_id_example'; // string | Discord guild snowflake ID
+$account_id = 'account_id_example'; // string | SocialAccount _id of the Discord account bound to this guild
+$create_discord_guild_role_request = {"name":"Moderators","color":16711680,"hoist":true,"mentionable":false}; // \Zernio\Model\CreateDiscordGuildRoleRequest
+
+try {
+    $result = $apiInstance->createDiscordGuildRole($guild_id, $account_id, $create_discord_guild_role_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DiscordApi->createDiscordGuildRole: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **guild_id** | **string**| Discord guild snowflake ID | |
+| **account_id** | **string**| SocialAccount _id of the Discord account bound to this guild | |
+| **create_discord_guild_role_request** | [**\Zernio\Model\CreateDiscordGuildRoleRequest**](../Model/CreateDiscordGuildRoleRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateDiscordGuildRole201Response**](../Model/CreateDiscordGuildRole201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `createDiscordScheduledEvent()`
 
 ```php
@@ -146,6 +216,262 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createDiscordThread()`
+
+```php
+createDiscordThread($channel_id, $account_id, $create_discord_thread_request): \Zernio\Model\CreateDiscordThread200Response
+```
+
+Create a Discord public thread
+
+Creates a public thread in a channel. Pass `messageId` to start the thread from an existing message, or omit it to create a standalone thread.  Threads created here are always public. Requires the bot to hold Create Public Threads, which the Zernio bot requests at install time.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\DiscordApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$channel_id = 'channel_id_example'; // string | Discord channel snowflake ID
+$account_id = 'account_id_example'; // string | SocialAccount _id of the Discord account bound to this channel's guild
+$create_discord_thread_request = {"name":"Release 2.4 discussion","autoArchiveDuration":1440}; // \Zernio\Model\CreateDiscordThreadRequest
+
+try {
+    $result = $apiInstance->createDiscordThread($channel_id, $account_id, $create_discord_thread_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DiscordApi->createDiscordThread: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **channel_id** | **string**| Discord channel snowflake ID | |
+| **account_id** | **string**| SocialAccount _id of the Discord account bound to this channel&#39;s guild | |
+| **create_discord_thread_request** | [**\Zernio\Model\CreateDiscordThreadRequest**](../Model/CreateDiscordThreadRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateDiscordThread200Response**](../Model/CreateDiscordThread200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `crosspostDiscordMessage()`
+
+```php
+crosspostDiscordMessage($channel_id, $message_id, $account_id): \Zernio\Model\CrosspostDiscordMessage200Response
+```
+
+Crosspost a Discord announcement message
+
+Publishes a message from an announcement channel so it propagates to every server following that channel.  The source channel must be an announcement channel. Calling this on a regular text channel returns a 400 before Discord is contacted, because Discord's own error for this case is opaque.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\DiscordApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$channel_id = 'channel_id_example'; // string | Discord announcement channel snowflake ID
+$message_id = 'message_id_example'; // string | Discord message snowflake ID
+$account_id = 'account_id_example'; // string | SocialAccount _id of the Discord account bound to this channel's guild
+
+try {
+    $result = $apiInstance->crosspostDiscordMessage($channel_id, $message_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DiscordApi->crosspostDiscordMessage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **channel_id** | **string**| Discord announcement channel snowflake ID | |
+| **message_id** | **string**| Discord message snowflake ID | |
+| **account_id** | **string**| SocialAccount _id of the Discord account bound to this channel&#39;s guild | |
+
+### Return type
+
+[**\Zernio\Model\CrosspostDiscordMessage200Response**](../Model/CrosspostDiscordMessage200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteDiscordGuildRole()`
+
+```php
+deleteDiscordGuildRole($guild_id, $role_id, $account_id): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
+```
+
+Delete a Discord guild role
+
+Permanently deletes a role from the guild and removes it from every member. This cannot be undone.  Requires the bot to hold Manage Roles, and the target role must sit below the bot's highest role.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\DiscordApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$guild_id = 'guild_id_example'; // string | Discord guild snowflake ID
+$role_id = 'role_id_example'; // string | Discord role snowflake ID
+$account_id = 'account_id_example'; // string | SocialAccount _id of the Discord account bound to this guild
+
+try {
+    $result = $apiInstance->deleteDiscordGuildRole($guild_id, $role_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DiscordApi->deleteDiscordGuildRole: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **guild_id** | **string**| Discord guild snowflake ID | |
+| **role_id** | **string**| Discord role snowflake ID | |
+| **account_id** | **string**| SocialAccount _id of the Discord account bound to this guild | |
+
+### Return type
+
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteDiscordMessage()`
+
+```php
+deleteDiscordMessage($channel_id, $message_id, $account_id): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
+```
+
+Delete a Discord channel message
+
+Deletes a message from a channel, for moderation and cleanup. This cannot be undone.  Deleting a message the bot did not send requires the bot to hold the Manage Messages permission, which the Zernio bot requests at install time. Deleting the bot's own message needs no extra permission.  Ownership is verified by resolving the channel's guild and confirming the caller owns a Discord account bound to it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\DiscordApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$channel_id = 'channel_id_example'; // string | Discord channel snowflake ID
+$message_id = 'message_id_example'; // string | Discord message snowflake ID
+$account_id = 'account_id_example'; // string | SocialAccount _id of the Discord account bound to this channel's guild
+
+try {
+    $result = $apiInstance->deleteDiscordMessage($channel_id, $message_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DiscordApi->deleteDiscordMessage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **channel_id** | **string**| Discord channel snowflake ID | |
+| **message_id** | **string**| Discord message snowflake ID | |
+| **account_id** | **string**| SocialAccount _id of the Discord account bound to this channel&#39;s guild | |
+
+### Return type
+
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -210,6 +536,72 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `editDiscordGuildRole()`
+
+```php
+editDiscordGuildRole($guild_id, $role_id, $account_id, $edit_discord_guild_role_request): \Zernio\Model\CreateDiscordGuildRole201Response
+```
+
+Edit a Discord guild role
+
+Updates a role's name, color, hoist, mentionable flag, or permission bitfield. At least one field must be supplied. Omitted fields are left unchanged.  Requires the bot to hold Manage Roles, and the target role must sit below the bot's highest role. See the create-role operation for the re-invite requirement.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\DiscordApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$guild_id = 'guild_id_example'; // string | Discord guild snowflake ID
+$role_id = 'role_id_example'; // string | Discord role snowflake ID
+$account_id = 'account_id_example'; // string | SocialAccount _id of the Discord account bound to this guild
+$edit_discord_guild_role_request = {"name":"Senior Moderators","mentionable":true}; // \Zernio\Model\EditDiscordGuildRoleRequest
+
+try {
+    $result = $apiInstance->editDiscordGuildRole($guild_id, $role_id, $account_id, $edit_discord_guild_role_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DiscordApi->editDiscordGuildRole: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **guild_id** | **string**| Discord guild snowflake ID | |
+| **role_id** | **string**| Discord role snowflake ID | |
+| **account_id** | **string**| SocialAccount _id of the Discord account bound to this guild | |
+| **edit_discord_guild_role_request** | [**\Zernio\Model\EditDiscordGuildRoleRequest**](../Model/EditDiscordGuildRoleRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateDiscordGuildRole201Response**](../Model/CreateDiscordGuildRole201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

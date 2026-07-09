@@ -20,6 +20,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getPinterestBoards()**](ConnectApi.md#getPinterestBoards) | **GET** /v1/accounts/{accountId}/pinterest-boards | List Pinterest boards |
 | [**getRedditFlairs()**](ConnectApi.md#getRedditFlairs) | **GET** /v1/accounts/{accountId}/reddit-flairs | List subreddit flairs |
 | [**getRedditSubreddits()**](ConnectApi.md#getRedditSubreddits) | **GET** /v1/accounts/{accountId}/reddit-subreddits | List Reddit subreddits |
+| [**getSubredditRules()**](ConnectApi.md#getSubredditRules) | **GET** /v1/accounts/{accountId}/reddit-subreddits/{subreddit}/rules | Get subreddit rules |
 | [**getTelegramConnectStatus()**](ConnectApi.md#getTelegramConnectStatus) | **GET** /v1/connect/telegram | Generate Telegram code |
 | [**getYoutubePlaylists()**](ConnectApi.md#getYoutubePlaylists) | **GET** /v1/accounts/{accountId}/youtube-playlists | List YouTube playlists |
 | [**handleOAuthCallback()**](ConnectApi.md#handleOAuthCallback) | **POST** /v1/connect/{platform} | Complete OAuth callback |
@@ -35,12 +36,14 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**selectLinkedInOrganization()**](ConnectApi.md#selectLinkedInOrganization) | **POST** /v1/connect/linkedin/select-organization | Select LinkedIn org |
 | [**selectPinterestBoard()**](ConnectApi.md#selectPinterestBoard) | **POST** /v1/connect/pinterest/select-board | Select Pinterest board |
 | [**selectSnapchatProfile()**](ConnectApi.md#selectSnapchatProfile) | **POST** /v1/connect/snapchat/select-profile | Select Snapchat profile |
+| [**setRedditPostFlair()**](ConnectApi.md#setRedditPostFlair) | **POST** /v1/accounts/{accountId}/reddit-flairs | Set flair on a published Reddit post |
 | [**updateFacebookPage()**](ConnectApi.md#updateFacebookPage) | **PUT** /v1/accounts/{accountId}/facebook-page | Update Facebook page |
 | [**updateGmbLocation()**](ConnectApi.md#updateGmbLocation) | **PUT** /v1/accounts/{accountId}/gmb-locations | Update GBP location |
 | [**updateLinkedInOrganization()**](ConnectApi.md#updateLinkedInOrganization) | **PUT** /v1/accounts/{accountId}/linkedin-organization | Switch LinkedIn account type |
 | [**updatePinterestBoards()**](ConnectApi.md#updatePinterestBoards) | **PUT** /v1/accounts/{accountId}/pinterest-boards | Set default Pinterest board |
 | [**updateRedditSubreddits()**](ConnectApi.md#updateRedditSubreddits) | **PUT** /v1/accounts/{accountId}/reddit-subreddits | Set default subreddit |
 | [**updateYoutubeDefaultPlaylist()**](ConnectApi.md#updateYoutubeDefaultPlaylist) | **PUT** /v1/accounts/{accountId}/youtube-playlists | Set default YouTube playlist |
+| [**voteRedditThing()**](ConnectApi.md#voteRedditThing) | **POST** /v1/accounts/{accountId}/reddit-vote | Vote on a Reddit post or comment |
 
 
 ## `completeTelegramConnect()`
@@ -897,6 +900,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetRedditSubreddits200Response**](../Model/GetRedditSubreddits200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getSubredditRules()`
+
+```php
+getSubredditRules($account_id, $subreddit): \Zernio\Model\GetSubredditRules200Response
+```
+
+Get subreddit rules
+
+Returns a subreddit's posting rules plus Reddit's site-wide rules, so you can check them before submitting and avoid a removal.  Use this alongside `POST /v1/tools/validate/subreddit`, which only confirms that a subreddit exists and reports its basic posting settings.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The ID of the Reddit account
+$subreddit = webdev; // string | Subreddit name (without the \"r/\" prefix)
+
+try {
+    $result = $apiInstance->getSubredditRules($account_id, $subreddit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->getSubredditRules: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The ID of the Reddit account | |
+| **subreddit** | **string**| Subreddit name (without the \&quot;r/\&quot; prefix) | |
+
+### Return type
+
+[**\Zernio\Model\GetSubredditRules200Response**](../Model/GetSubredditRules200Response.md)
 
 ### Authorization
 
@@ -1858,6 +1923,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `setRedditPostFlair()`
+
+```php
+setRedditPostFlair($account_id, $set_reddit_post_flair_request): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
+```
+
+Set flair on a published Reddit post
+
+Applies a flair to a post the connected account already published. Use the GET on this path to list the available `flairTemplateId` values for the subreddit.  Flair can also be set at submit time by passing `flairId` in `platformSpecificData` when creating the post. This endpoint is for changing it afterwards.  The subreddit must allow users to select their own post flair. Setting flair on another user's post requires moderator permissions, which Zernio does not request.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The ID of the Reddit account that owns the post
+$set_reddit_post_flair_request = {"subreddit":"webdev","postId":"t3_abc123","flairTemplateId":"a1b2c3d4-e5f6-7890-abcd-ef1234567890"}; // \Zernio\Model\SetRedditPostFlairRequest
+
+try {
+    $result = $apiInstance->setRedditPostFlair($account_id, $set_reddit_post_flair_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->setRedditPostFlair: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The ID of the Reddit account that owns the post | |
+| **set_reddit_post_flair_request** | [**\Zernio\Model\SetRedditPostFlairRequest**](../Model/SetRedditPostFlairRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `updateFacebookPage()`
 
 ```php
@@ -2212,6 +2339,68 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
 | **update_youtube_default_playlist_request** | [**\Zernio\Model\UpdateYoutubeDefaultPlaylistRequest**](../Model/UpdateYoutubeDefaultPlaylistRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `voteRedditThing()`
+
+```php
+voteRedditThing($account_id, $vote_reddit_thing_request): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
+```
+
+Vote on a Reddit post or comment
+
+Cast, change, or clear the connected account's vote on a Reddit post or comment.  **Reddit requires that votes be cast by humans.** Reddit's API terms permit a client to proxy a human's action one-for-one, and prohibit a bot from deciding how to vote or from amplifying a human's vote. Call this endpoint only in direct response to an explicit action by the account owner. Automated or agent-decided voting is vote manipulation and puts API access at risk.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The ID of the Reddit account casting the vote
+$vote_reddit_thing_request = {"thingId":"t3_abc123","direction":1}; // \Zernio\Model\VoteRedditThingRequest
+
+try {
+    $result = $apiInstance->voteRedditThing($account_id, $vote_reddit_thing_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->voteRedditThing: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The ID of the Reddit account casting the vote | |
+| **vote_reddit_thing_request** | [**\Zernio\Model\VoteRedditThingRequest**](../Model/VoteRedditThingRequest.md)|  | |
 
 ### Return type
 

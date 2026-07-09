@@ -78,6 +78,9 @@ class CommentsApi
         'deleteInboxComment' => [
             'application/json',
         ],
+        'editInboxComment' => [
+            'application/json',
+        ],
         'getInboxPostComments' => [
             'application/json',
         ],
@@ -94,6 +97,9 @@ class CommentsApi
             'application/json',
         ],
         'sendPrivateReplyToComment' => [
+            'application/json',
+        ],
+        'setCommentModeration' => [
             'application/json',
         ],
         'unhideInboxComment' => [
@@ -486,6 +492,331 @@ class CommentsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editInboxComment
+     *
+     * Edit comment
+     *
+     * @param  string $post_id post_id (required)
+     * @param  string $comment_id comment_id (required)
+     * @param  \Zernio\Model\EditInboxCommentRequest $edit_inbox_comment_request edit_inbox_comment_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editInboxComment'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\EditInboxComment200Response|\Zernio\Model\InlineObject
+     */
+    public function editInboxComment($post_id, $comment_id, $edit_inbox_comment_request, string $contentType = self::contentTypes['editInboxComment'][0])
+    {
+        list($response) = $this->editInboxCommentWithHttpInfo($post_id, $comment_id, $edit_inbox_comment_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation editInboxCommentWithHttpInfo
+     *
+     * Edit comment
+     *
+     * @param  string $post_id (required)
+     * @param  string $comment_id (required)
+     * @param  \Zernio\Model\EditInboxCommentRequest $edit_inbox_comment_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editInboxComment'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\EditInboxComment200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editInboxCommentWithHttpInfo($post_id, $comment_id, $edit_inbox_comment_request, string $contentType = self::contentTypes['editInboxComment'][0])
+    {
+        $request = $this->editInboxCommentRequest($post_id, $comment_id, $edit_inbox_comment_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\EditInboxComment200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\EditInboxComment200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\EditInboxComment200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editInboxCommentAsync
+     *
+     * Edit comment
+     *
+     * @param  string $post_id (required)
+     * @param  string $comment_id (required)
+     * @param  \Zernio\Model\EditInboxCommentRequest $edit_inbox_comment_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editInboxComment'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editInboxCommentAsync($post_id, $comment_id, $edit_inbox_comment_request, string $contentType = self::contentTypes['editInboxComment'][0])
+    {
+        return $this->editInboxCommentAsyncWithHttpInfo($post_id, $comment_id, $edit_inbox_comment_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editInboxCommentAsyncWithHttpInfo
+     *
+     * Edit comment
+     *
+     * @param  string $post_id (required)
+     * @param  string $comment_id (required)
+     * @param  \Zernio\Model\EditInboxCommentRequest $edit_inbox_comment_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editInboxComment'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editInboxCommentAsyncWithHttpInfo($post_id, $comment_id, $edit_inbox_comment_request, string $contentType = self::contentTypes['editInboxComment'][0])
+    {
+        $returnType = '\Zernio\Model\EditInboxComment200Response';
+        $request = $this->editInboxCommentRequest($post_id, $comment_id, $edit_inbox_comment_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editInboxComment'
+     *
+     * @param  string $post_id (required)
+     * @param  string $comment_id (required)
+     * @param  \Zernio\Model\EditInboxCommentRequest $edit_inbox_comment_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editInboxComment'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function editInboxCommentRequest($post_id, $comment_id, $edit_inbox_comment_request, string $contentType = self::contentTypes['editInboxComment'][0])
+    {
+
+        // verify the required parameter 'post_id' is set
+        if ($post_id === null || (is_array($post_id) && count($post_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $post_id when calling editInboxComment'
+            );
+        }
+
+        // verify the required parameter 'comment_id' is set
+        if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $comment_id when calling editInboxComment'
+            );
+        }
+
+        // verify the required parameter 'edit_inbox_comment_request' is set
+        if ($edit_inbox_comment_request === null || (is_array($edit_inbox_comment_request) && count($edit_inbox_comment_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $edit_inbox_comment_request when calling editInboxComment'
+            );
+        }
+
+
+        $resourcePath = '/v1/inbox/comments/{postId}/{commentId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($post_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'postId' . '}',
+                ObjectSerializer::toPathValue($post_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($comment_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'commentId' . '}',
+                ObjectSerializer::toPathValue($comment_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($edit_inbox_comment_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($edit_inbox_comment_request));
+            } else {
+                $httpBody = $edit_inbox_comment_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -2518,6 +2849,331 @@ class CommentsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($send_private_reply_to_comment_request));
             } else {
                 $httpBody = $send_private_reply_to_comment_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation setCommentModeration
+     *
+     * Set comment moderation status
+     *
+     * @param  string $post_id post_id (required)
+     * @param  string $comment_id comment_id (required)
+     * @param  \Zernio\Model\SetCommentModerationRequest $set_comment_moderation_request set_comment_moderation_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCommentModeration'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject
+     */
+    public function setCommentModeration($post_id, $comment_id, $set_comment_moderation_request, string $contentType = self::contentTypes['setCommentModeration'][0])
+    {
+        list($response) = $this->setCommentModerationWithHttpInfo($post_id, $comment_id, $set_comment_moderation_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation setCommentModerationWithHttpInfo
+     *
+     * Set comment moderation status
+     *
+     * @param  string $post_id (required)
+     * @param  string $comment_id (required)
+     * @param  \Zernio\Model\SetCommentModerationRequest $set_comment_moderation_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCommentModeration'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function setCommentModerationWithHttpInfo($post_id, $comment_id, $set_comment_moderation_request, string $contentType = self::contentTypes['setCommentModeration'][0])
+    {
+        $request = $this->setCommentModerationRequest($post_id, $comment_id, $set_comment_moderation_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation setCommentModerationAsync
+     *
+     * Set comment moderation status
+     *
+     * @param  string $post_id (required)
+     * @param  string $comment_id (required)
+     * @param  \Zernio\Model\SetCommentModerationRequest $set_comment_moderation_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCommentModeration'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function setCommentModerationAsync($post_id, $comment_id, $set_comment_moderation_request, string $contentType = self::contentTypes['setCommentModeration'][0])
+    {
+        return $this->setCommentModerationAsyncWithHttpInfo($post_id, $comment_id, $set_comment_moderation_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation setCommentModerationAsyncWithHttpInfo
+     *
+     * Set comment moderation status
+     *
+     * @param  string $post_id (required)
+     * @param  string $comment_id (required)
+     * @param  \Zernio\Model\SetCommentModerationRequest $set_comment_moderation_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCommentModeration'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function setCommentModerationAsyncWithHttpInfo($post_id, $comment_id, $set_comment_moderation_request, string $contentType = self::contentTypes['setCommentModeration'][0])
+    {
+        $returnType = '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response';
+        $request = $this->setCommentModerationRequest($post_id, $comment_id, $set_comment_moderation_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'setCommentModeration'
+     *
+     * @param  string $post_id (required)
+     * @param  string $comment_id (required)
+     * @param  \Zernio\Model\SetCommentModerationRequest $set_comment_moderation_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCommentModeration'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function setCommentModerationRequest($post_id, $comment_id, $set_comment_moderation_request, string $contentType = self::contentTypes['setCommentModeration'][0])
+    {
+
+        // verify the required parameter 'post_id' is set
+        if ($post_id === null || (is_array($post_id) && count($post_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $post_id when calling setCommentModeration'
+            );
+        }
+
+        // verify the required parameter 'comment_id' is set
+        if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $comment_id when calling setCommentModeration'
+            );
+        }
+
+        // verify the required parameter 'set_comment_moderation_request' is set
+        if ($set_comment_moderation_request === null || (is_array($set_comment_moderation_request) && count($set_comment_moderation_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $set_comment_moderation_request when calling setCommentModeration'
+            );
+        }
+
+
+        $resourcePath = '/v1/inbox/comments/{postId}/{commentId}/moderation';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($post_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'postId' . '}',
+                ObjectSerializer::toPathValue($post_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($comment_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'commentId' . '}',
+                ObjectSerializer::toPathValue($comment_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($set_comment_moderation_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($set_comment_moderation_request));
+            } else {
+                $httpBody = $set_comment_moderation_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

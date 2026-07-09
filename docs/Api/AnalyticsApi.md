@@ -11,6 +11,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getContentDecay()**](AnalyticsApi.md#getContentDecay) | **GET** /v1/analytics/content-decay | Get content performance decay |
 | [**getDailyMetrics()**](AnalyticsApi.md#getDailyMetrics) | **GET** /v1/analytics/daily-metrics | Get daily aggregated metrics |
 | [**getFacebookPageInsights()**](AnalyticsApi.md#getFacebookPageInsights) | **GET** /v1/analytics/facebook/page-insights | Get Facebook Page insights |
+| [**getFacebookPostReactions()**](AnalyticsApi.md#getFacebookPostReactions) | **GET** /v1/accounts/{accountId}/facebook-post-reactions | Get Facebook post reactions |
 | [**getFollowerStats()**](AnalyticsApi.md#getFollowerStats) | **GET** /v1/accounts/follower-stats | Get follower stats |
 | [**getGoogleBusinessPerformance()**](AnalyticsApi.md#getGoogleBusinessPerformance) | **GET** /v1/analytics/googlebusiness/performance | Get GBP performance metrics |
 | [**getGoogleBusinessSearchKeywords()**](AnalyticsApi.md#getGoogleBusinessSearchKeywords) | **GET** /v1/analytics/googlebusiness/search-keywords | Get GBP search keywords |
@@ -369,6 +370,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\InstagramAccountInsightsResponse**](../Model/InstagramAccountInsightsResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getFacebookPostReactions()`
+
+```php
+getFacebookPostReactions($account_id, $post_id): \Zernio\Model\GetFacebookPostReactions200Response
+```
+
+Get Facebook post reactions
+
+Returns the reaction breakdown for a Facebook Page post: a count per reaction type plus the overall total.  The whole breakdown is fetched in a single Graph call. Note that the post analytics endpoint reports only an aggregate reaction count (surfaced there as `likes`), so use this endpoint when you need per-type counts.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The ID of the Facebook Page account
+$post_id = 1234567890_9876543210; // string | The Facebook post ID
+
+try {
+    $result = $apiInstance->getFacebookPostReactions($account_id, $post_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->getFacebookPostReactions: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The ID of the Facebook Page account | |
+| **post_id** | **string**| The Facebook post ID | |
+
+### Return type
+
+[**\Zernio\Model\GetFacebookPostReactions200Response**](../Model/GetFacebookPostReactions200Response.md)
 
 ### Authorization
 

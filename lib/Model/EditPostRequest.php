@@ -236,6 +236,9 @@ class EditPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     public const PLATFORM_TWITTER = 'twitter';
+    public const PLATFORM_DISCORD = 'discord';
+    public const PLATFORM_FACEBOOK = 'facebook';
+    public const PLATFORM_REDDIT = 'reddit';
 
     /**
      * Gets allowable values of the enum
@@ -246,6 +249,9 @@ class EditPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return [
             self::PLATFORM_TWITTER,
+            self::PLATFORM_DISCORD,
+            self::PLATFORM_FACEBOOK,
+            self::PLATFORM_REDDIT,
         ];
     }
 
@@ -338,7 +344,7 @@ class EditPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets platform
      *
-     * @param string $platform The platform to edit the post on. Currently only twitter is supported.
+     * @param string $platform The platform to edit the post on.
      *
      * @return self
      */
@@ -375,7 +381,7 @@ class EditPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets content
      *
-     * @param string $content The new tweet text content
+     * @param string $content The new post text content
      *
      * @return self
      */

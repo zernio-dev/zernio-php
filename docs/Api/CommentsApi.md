@@ -7,12 +7,14 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**deleteInboxComment()**](CommentsApi.md#deleteInboxComment) | **DELETE** /v1/inbox/comments/{postId} | Delete comment |
+| [**editInboxComment()**](CommentsApi.md#editInboxComment) | **PATCH** /v1/inbox/comments/{postId}/{commentId} | Edit comment |
 | [**getInboxPostComments()**](CommentsApi.md#getInboxPostComments) | **GET** /v1/inbox/comments/{postId} | Get post comments |
 | [**hideInboxComment()**](CommentsApi.md#hideInboxComment) | **POST** /v1/inbox/comments/{postId}/{commentId}/hide | Hide comment |
 | [**likeInboxComment()**](CommentsApi.md#likeInboxComment) | **POST** /v1/inbox/comments/{postId}/{commentId}/like | Like comment |
 | [**listInboxComments()**](CommentsApi.md#listInboxComments) | **GET** /v1/inbox/comments | List commented posts |
 | [**replyToInboxPost()**](CommentsApi.md#replyToInboxPost) | **POST** /v1/inbox/comments/{postId} | Reply to comment |
 | [**sendPrivateReplyToComment()**](CommentsApi.md#sendPrivateReplyToComment) | **POST** /v1/inbox/comments/{postId}/{commentId}/private-reply | Send private reply |
+| [**setCommentModeration()**](CommentsApi.md#setCommentModeration) | **POST** /v1/inbox/comments/{postId}/{commentId}/moderation | Set comment moderation status |
 | [**unhideInboxComment()**](CommentsApi.md#unhideInboxComment) | **DELETE** /v1/inbox/comments/{postId}/{commentId}/hide | Unhide comment |
 | [**unlikeInboxComment()**](CommentsApi.md#unlikeInboxComment) | **DELETE** /v1/inbox/comments/{postId}/{commentId}/like | Unlike comment |
 
@@ -75,6 +77,70 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `editInboxComment()`
+
+```php
+editInboxComment($post_id, $comment_id, $edit_inbox_comment_request): \Zernio\Model\EditInboxComment200Response
+```
+
+Edit comment
+
+Edit the body of a comment the connected account posted. Supported on Reddit only.  Reddit keeps the same comment id after an edit. Reddit exposes no API to edit a post title, and a link post has no editable body. To edit a published post's body, use `POST /v1/posts/{postId}/edit`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CommentsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$post_id = 'post_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$edit_inbox_comment_request = {"accountId":"60f7a1b2c3d4e5f6a7b8c9d0","platform":"reddit","content":"Edited: corrected the version number."}; // \Zernio\Model\EditInboxCommentRequest
+
+try {
+    $result = $apiInstance->editInboxComment($post_id, $comment_id, $edit_inbox_comment_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommentsApi->editInboxComment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **post_id** | **string**|  | |
+| **comment_id** | **string**|  | |
+| **edit_inbox_comment_request** | [**\Zernio\Model\EditInboxCommentRequest**](../Model/EditInboxCommentRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\EditInboxComment200Response**](../Model/EditInboxComment200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -467,6 +533,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\SendPrivateReplyToComment200Response**](../Model/SendPrivateReplyToComment200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `setCommentModeration()`
+
+```php
+setCommentModeration($post_id, $comment_id, $set_comment_moderation_request): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
+```
+
+Set comment moderation status
+
+Set a comment's moderation status. Supported on YouTube only.  Use this to work a moderation queue: approve a held comment (`published`), reject it (`rejected`), or send it back for review (`heldForReview`).  The request must be authorized by the owner of the channel or video the comment belongs to. You cannot moderate comments on videos you do not own.  This is distinct from `POST /v1/inbox/comments/{postId}/{commentId}/hide`, which covers Facebook, Instagram, Threads, and X/Twitter and does not apply to YouTube.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CommentsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$post_id = 'post_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$set_comment_moderation_request = {"accountId":"60f7a1b2c3d4e5f6a7b8c9d0","platform":"youtube","moderationStatus":"rejected","banAuthor":true}; // \Zernio\Model\SetCommentModerationRequest
+
+try {
+    $result = $apiInstance->setCommentModeration($post_id, $comment_id, $set_comment_moderation_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommentsApi->setCommentModeration: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **post_id** | **string**|  | |
+| **comment_id** | **string**|  | |
+| **set_comment_moderation_request** | [**\Zernio\Model\SetCommentModerationRequest**](../Model/SetCommentModerationRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
 
 ### Authorization
 

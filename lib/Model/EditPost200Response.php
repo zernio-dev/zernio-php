@@ -351,7 +351,7 @@ class EditPost200Response implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets id
      *
-     * @param string|null $id New tweet ID assigned by X after edit
+     * @param string|null $id The platform post ID after the edit. X assigns a new ID; Discord, Facebook, and Reddit return the original ID unchanged.
      *
      * @return self
      */
@@ -378,7 +378,7 @@ class EditPost200Response implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets url
      *
-     * @param string|null $url URL of the edited tweet
+     * @param string|null $url URL of the edited post
      *
      * @return self
      */

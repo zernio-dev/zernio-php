@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**platform** | **string** | The platform to edit the post on. Currently only twitter is supported. |
-**content** | **string** | The new tweet text content |
+**platform** | **string** | The platform to edit the post on. |
+**content** | **string** | The new post text content |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

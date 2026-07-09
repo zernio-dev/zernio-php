@@ -401,7 +401,7 @@ class SendInboxMessageRequestInteractiveActionOneOf8CardsInner implements ModelI
     /**
      * Sets header
      *
-     * @param object|null $header Media cards only
+     * @param object|null $header Media cards only, required. Carries the card's image or video.
      *
      * @return self
      */
