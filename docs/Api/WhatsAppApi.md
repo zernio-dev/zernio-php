@@ -2015,7 +2015,7 @@ uploadWhatsAppProfilePhoto($account_id, $file): \Zernio\Model\UnpublishPost200Re
 
 Upload profile picture
 
-Upload a new profile picture for the WhatsApp Business Profile. Uses Meta's resumable upload API under the hood: creates an upload session, uploads the image bytes, then updates the business profile with the resulting handle.
+Upload a new profile picture for the WhatsApp Business Profile. Uses Meta's resumable upload API under the hood: creates an upload session, uploads the image bytes, then updates the business profile with the resulting handle.  Provide the image either as a binary upload (`multipart/form-data` with `file`) or as a download URL (`application/json` with `url`) — with a URL we fetch the image server-side and upload the bytes for you. Meta's profile-photo API is bytes-only, so there is no direct URL passthrough. JPEG/PNG, max 5MB either way.
 
 ### Example
 
@@ -2062,7 +2062,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `multipart/form-data`
+- **Content-Type**: `multipart/form-data`, `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

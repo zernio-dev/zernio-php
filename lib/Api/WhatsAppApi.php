@@ -173,6 +173,7 @@ class WhatsAppApi
         ],
         'uploadWhatsAppProfilePhoto' => [
             'multipart/form-data',
+            'application/json',
         ],
     ];
 

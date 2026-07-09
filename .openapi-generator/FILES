@@ -1244,6 +1244,7 @@ docs/Model/UploadWhatsAppFlowJson200Response.md
 docs/Model/UploadWhatsAppFlowJson200ResponseValidationErrorsInner.md
 docs/Model/UploadWhatsAppFlowJsonRequest.md
 docs/Model/UploadWhatsAppFlowJsonRequestFlowJson.md
+docs/Model/UploadWhatsAppProfilePhotoRequest1.md
 docs/Model/UploadedFile.md
 docs/Model/UploadedOrDerivedAudience.md
 docs/Model/UsageStats.md
@@ -2628,6 +2629,7 @@ lib/Model/UploadWhatsAppFlowJson200Response.php
 lib/Model/UploadWhatsAppFlowJson200ResponseValidationErrorsInner.php
 lib/Model/UploadWhatsAppFlowJsonRequest.php
 lib/Model/UploadWhatsAppFlowJsonRequestFlowJson.php
+lib/Model/UploadWhatsAppProfilePhotoRequest1.php
 lib/Model/UploadedFile.php
 lib/Model/UploadedOrDerivedAudience.php
 lib/Model/UsageStats.php
@@ -2767,3 +2769,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/UploadWhatsAppProfilePhotoRequest1Test.php
