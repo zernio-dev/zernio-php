@@ -7,7 +7,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**getCall()**](CallsApi.md#getCall) | **GET** /v1/calls/{id} | Get a call (any channel) |
-| [**getCallRecording()**](CallsApi.md#getCallRecording) | **GET** /v1/calls/{id}/recording | Get a call recording (any channel) |
+| [**getCallRecording()**](CallsApi.md#getCallRecording) | **GET** /v1/calls/{id}/recording | Get a call recording |
 | [**listCalls()**](CallsApi.md#listCalls) | **GET** /v1/calls | List all calls (unified history) |
 
 
@@ -77,7 +77,7 @@ try {
 getCallRecording($id, $as): \Zernio\Model\GetWhatsAppCallRecording200Response
 ```
 
-Get a call recording (any channel)
+Get a call recording
 
 Channel-agnostic recording fetch: resolves a fresh, playable MP3 URL for any call regardless of channel (provider-signed URLs expire ~10 minutes after signing, so this re-signs on demand). Default responds `302 Found` redirecting to the fresh URL; pass `as=json` to receive `{ url }` instead.
 

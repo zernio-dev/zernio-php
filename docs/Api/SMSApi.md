@@ -13,7 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listSmsOptOuts()**](SMSApi.md#listSmsOptOuts) | **GET** /v1/sms/opt-outs | List SMS opt-outs |
 | [**listSmsRegistrations()**](SMSApi.md#listSmsRegistrations) | **GET** /v1/sms/registrations | List carrier registrations |
 | [**lookupSmsNumber()**](SMSApi.md#lookupSmsNumber) | **GET** /v1/sms/lookup | Look up carrier + line type |
-| [**reuseSmsRegistrationForNumber()**](SMSApi.md#reuseSmsRegistrationForNumber) | **POST** /v1/phone-numbers/{id}/sms/reuse-registration | Add a number to an existing registration |
+| [**reuseSmsRegistrationForNumber()**](SMSApi.md#reuseSmsRegistrationForNumber) | **POST** /v1/phone-numbers/{id}/sms/reuse-registration | Add number to SMS registration |
 | [**sendSms()**](SMSApi.md#sendSms) | **POST** /v1/sms/messages | Send an SMS/MMS |
 | [**shareSmsRegistration()**](SMSApi.md#shareSmsRegistration) | **POST** /v1/sms/registrations/share | Create a registration share link |
 | [**startSmsRegistration()**](SMSApi.md#startSmsRegistration) | **POST** /v1/sms/registrations | Start a carrier registration |
@@ -445,7 +445,7 @@ try {
 reuseSmsRegistrationForNumber($id): \Zernio\Model\ReuseSmsRegistrationForNumber200Response
 ```
 
-Add a number to an existing registration
+Add number to SMS registration
 
 Attaches this number to your existing approved 10DLC campaign instead of running a fresh registration: the number inherits the campaign's approval (no new brand or campaign, no extra carrier fee). Enable SMS on the number first (`POST /v1/phone-numbers/{id}/sms`; its response tells you whether a reusable registration exists).
 

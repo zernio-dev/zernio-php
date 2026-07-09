@@ -173,7 +173,7 @@ Class | Method | HTTP request | Description
 *BroadcastsApi* | [**sendBroadcast**](docs/Api/BroadcastsApi.md#sendbroadcast) | **POST** /v1/broadcasts/{broadcastId}/send | Send broadcast now
 *BroadcastsApi* | [**updateBroadcast**](docs/Api/BroadcastsApi.md#updatebroadcast) | **PATCH** /v1/broadcasts/{broadcastId} | Update broadcast
 *CallsApi* | [**getCall**](docs/Api/CallsApi.md#getcall) | **GET** /v1/calls/{id} | Get a call (any channel)
-*CallsApi* | [**getCallRecording**](docs/Api/CallsApi.md#getcallrecording) | **GET** /v1/calls/{id}/recording | Get a call recording (any channel)
+*CallsApi* | [**getCallRecording**](docs/Api/CallsApi.md#getcallrecording) | **GET** /v1/calls/{id}/recording | Get a call recording
 *CallsApi* | [**listCalls**](docs/Api/CallsApi.md#listcalls) | **GET** /v1/calls | List all calls (unified history)
 *CommentAutomationsApi* | [**createCommentAutomation**](docs/Api/CommentAutomationsApi.md#createcommentautomation) | **POST** /v1/comment-automations | Create comment-to-DM automation
 *CommentAutomationsApi* | [**deleteCommentAutomation**](docs/Api/CommentAutomationsApi.md#deletecommentautomation) | **DELETE** /v1/comment-automations/{automationId} | Delete automation
@@ -372,7 +372,7 @@ Class | Method | HTTP request | Description
 *SMSApi* | [**listSmsOptOuts**](docs/Api/SMSApi.md#listsmsoptouts) | **GET** /v1/sms/opt-outs | List SMS opt-outs
 *SMSApi* | [**listSmsRegistrations**](docs/Api/SMSApi.md#listsmsregistrations) | **GET** /v1/sms/registrations | List carrier registrations
 *SMSApi* | [**lookupSmsNumber**](docs/Api/SMSApi.md#lookupsmsnumber) | **GET** /v1/sms/lookup | Look up carrier + line type
-*SMSApi* | [**reuseSmsRegistrationForNumber**](docs/Api/SMSApi.md#reusesmsregistrationfornumber) | **POST** /v1/phone-numbers/{id}/sms/reuse-registration | Add a number to an existing registration
+*SMSApi* | [**reuseSmsRegistrationForNumber**](docs/Api/SMSApi.md#reusesmsregistrationfornumber) | **POST** /v1/phone-numbers/{id}/sms/reuse-registration | Add number to SMS registration
 *SMSApi* | [**sendSms**](docs/Api/SMSApi.md#sendsms) | **POST** /v1/sms/messages | Send an SMS/MMS
 *SMSApi* | [**shareSmsRegistration**](docs/Api/SMSApi.md#sharesmsregistration) | **POST** /v1/sms/registrations/share | Create a registration share link
 *SMSApi* | [**startSmsRegistration**](docs/Api/SMSApi.md#startsmsregistration) | **POST** /v1/sms/registrations | Start a carrier registration
@@ -401,7 +401,7 @@ Class | Method | HTTP request | Description
 *TwitterEngagementApi* | [**retweetPost**](docs/Api/TwitterEngagementApi.md#retweetpost) | **POST** /v1/twitter/retweet | Retweet a post
 *TwitterEngagementApi* | [**undoRetweet**](docs/Api/TwitterEngagementApi.md#undoretweet) | **DELETE** /v1/twitter/retweet | Undo retweet
 *TwitterEngagementApi* | [**unfollowUser**](docs/Api/TwitterEngagementApi.md#unfollowuser) | **DELETE** /v1/twitter/follow | Unfollow a user
-*UsageApi* | [**getCallsUsage**](docs/Api/UsageApi.md#getcallsusage) | **GET** /v1/usage/calls | Calling usage (volumes + billable cost)
+*UsageApi* | [**getCallsUsage**](docs/Api/UsageApi.md#getcallsusage) | **GET** /v1/usage/calls | Calling usage and cost
 *UsageApi* | [**getSmsUsage**](docs/Api/UsageApi.md#getsmsusage) | **GET** /v1/usage/sms | SMS usage (volumes)
 *UsageApi* | [**getUsage**](docs/Api/UsageApi.md#getusage) | **GET** /v1/usage | Get plan and usage snapshot
 *UsageApi* | [**getUsageStats**](docs/Api/UsageApi.md#getusagestats) | **GET** /v1/usage-stats | Get plan and usage stats

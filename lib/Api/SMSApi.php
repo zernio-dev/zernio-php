@@ -2183,7 +2183,7 @@ class SMSApi
     /**
      * Operation reuseSmsRegistrationForNumber
      *
-     * Add a number to an existing registration
+     * Add number to SMS registration
      *
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reuseSmsRegistrationForNumber'] to see the possible values for this operation
@@ -2201,7 +2201,7 @@ class SMSApi
     /**
      * Operation reuseSmsRegistrationForNumberWithHttpInfo
      *
-     * Add a number to an existing registration
+     * Add number to SMS registration
      *
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reuseSmsRegistrationForNumber'] to see the possible values for this operation
@@ -2300,7 +2300,7 @@ class SMSApi
     /**
      * Operation reuseSmsRegistrationForNumberAsync
      *
-     * Add a number to an existing registration
+     * Add number to SMS registration
      *
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reuseSmsRegistrationForNumber'] to see the possible values for this operation
@@ -2321,7 +2321,7 @@ class SMSApi
     /**
      * Operation reuseSmsRegistrationForNumberAsyncWithHttpInfo
      *
-     * Add a number to an existing registration
+     * Add number to SMS registration
      *
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reuseSmsRegistrationForNumber'] to see the possible values for this operation

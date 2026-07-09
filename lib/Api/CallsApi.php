@@ -421,7 +421,7 @@ class CallsApi
     /**
      * Operation getCallRecording
      *
-     * Get a call recording (any channel)
+     * Get a call recording
      *
      * @param  string $id id (required)
      * @param  string|null $as &#x60;json&#x60; returns &#x60;{ url }&#x60; instead of a 302 redirect. (optional)
@@ -440,7 +440,7 @@ class CallsApi
     /**
      * Operation getCallRecordingWithHttpInfo
      *
-     * Get a call recording (any channel)
+     * Get a call recording
      *
      * @param  string $id (required)
      * @param  string|null $as &#x60;json&#x60; returns &#x60;{ url }&#x60; instead of a 302 redirect. (optional)
@@ -540,7 +540,7 @@ class CallsApi
     /**
      * Operation getCallRecordingAsync
      *
-     * Get a call recording (any channel)
+     * Get a call recording
      *
      * @param  string $id (required)
      * @param  string|null $as &#x60;json&#x60; returns &#x60;{ url }&#x60; instead of a 302 redirect. (optional)
@@ -562,7 +562,7 @@ class CallsApi
     /**
      * Operation getCallRecordingAsyncWithHttpInfo
      *
-     * Get a call recording (any channel)
+     * Get a call recording
      *
      * @param  string $id (required)
      * @param  string|null $as &#x60;json&#x60; returns &#x60;{ url }&#x60; instead of a 302 redirect. (optional)

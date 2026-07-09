@@ -141,7 +141,7 @@ class UsageApi
     /**
      * Operation getCallsUsage
      *
-     * Calling usage (volumes + billable cost)
+     * Calling usage and cost
      *
      * @param  \DateTime|null $since Start of the window (inclusive). Default 30 days before &#x60;until&#x60;. (optional)
      * @param  \DateTime|null $until End of the window (exclusive). Default now. (optional)
@@ -163,7 +163,7 @@ class UsageApi
     /**
      * Operation getCallsUsageWithHttpInfo
      *
-     * Calling usage (volumes + billable cost)
+     * Calling usage and cost
      *
      * @param  \DateTime|null $since Start of the window (inclusive). Default 30 days before &#x60;until&#x60;. (optional)
      * @param  \DateTime|null $until End of the window (exclusive). Default now. (optional)
@@ -266,7 +266,7 @@ class UsageApi
     /**
      * Operation getCallsUsageAsync
      *
-     * Calling usage (volumes + billable cost)
+     * Calling usage and cost
      *
      * @param  \DateTime|null $since Start of the window (inclusive). Default 30 days before &#x60;until&#x60;. (optional)
      * @param  \DateTime|null $until End of the window (exclusive). Default now. (optional)
@@ -291,7 +291,7 @@ class UsageApi
     /**
      * Operation getCallsUsageAsyncWithHttpInfo
      *
-     * Calling usage (volumes + billable cost)
+     * Calling usage and cost
      *
      * @param  \DateTime|null $since Start of the window (inclusive). Default 30 days before &#x60;until&#x60;. (optional)
      * @param  \DateTime|null $until End of the window (exclusive). Default now. (optional)
