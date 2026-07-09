@@ -59,7 +59,6 @@ class GoogleBusinessPlatformDataOffer implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'offer_type' => 'string',
         'redeem_online_url' => 'string',
         'terms_conditions' => 'string',
         'coupon_code' => 'string'
@@ -73,7 +72,6 @@ class GoogleBusinessPlatformDataOffer implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'offer_type' => null,
         'redeem_online_url' => 'uri',
         'terms_conditions' => null,
         'coupon_code' => null
@@ -85,7 +83,6 @@ class GoogleBusinessPlatformDataOffer implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'offer_type' => false,
         'redeem_online_url' => false,
         'terms_conditions' => false,
         'coupon_code' => false
@@ -177,7 +174,6 @@ class GoogleBusinessPlatformDataOffer implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'offer_type' => 'offerType',
         'redeem_online_url' => 'redeemOnlineUrl',
         'terms_conditions' => 'termsConditions',
         'coupon_code' => 'couponCode'
@@ -189,7 +185,6 @@ class GoogleBusinessPlatformDataOffer implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'offer_type' => 'setOfferType',
         'redeem_online_url' => 'setRedeemOnlineUrl',
         'terms_conditions' => 'setTermsConditions',
         'coupon_code' => 'setCouponCode'
@@ -201,7 +196,6 @@ class GoogleBusinessPlatformDataOffer implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'offer_type' => 'getOfferType',
         'redeem_online_url' => 'getRedeemOnlineUrl',
         'terms_conditions' => 'getTermsConditions',
         'coupon_code' => 'getCouponCode'
@@ -248,21 +242,6 @@ class GoogleBusinessPlatformDataOffer implements ModelInterface, ArrayAccess, \J
         return self::$openAPIModelName;
     }
 
-    public const OFFER_TYPE_OFFER = 'OFFER';
-    public const OFFER_TYPE_BUY_ONE_GET_ONE = 'BUY_ONE_GET_ONE';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getOfferTypeAllowableValues()
-    {
-        return [
-            self::OFFER_TYPE_OFFER,
-            self::OFFER_TYPE_BUY_ONE_GET_ONE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -279,7 +258,6 @@ class GoogleBusinessPlatformDataOffer implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('offer_type', $data ?? [], null);
         $this->setIfExists('redeem_online_url', $data ?? [], null);
         $this->setIfExists('terms_conditions', $data ?? [], null);
         $this->setIfExists('coupon_code', $data ?? [], null);
@@ -312,15 +290,6 @@ class GoogleBusinessPlatformDataOffer implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getOfferTypeAllowableValues();
-        if (!is_null($this->container['offer_type']) && !in_array($this->container['offer_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'offer_type', must be one of '%s'",
-                $this->container['offer_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -335,43 +304,6 @@ class GoogleBusinessPlatformDataOffer implements ModelInterface, ArrayAccess, \J
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets offer_type
-     *
-     * @return string|null
-     */
-    public function getOfferType()
-    {
-        return $this->container['offer_type'];
-    }
-
-    /**
-     * Sets offer_type
-     *
-     * @param string|null $offer_type Type of offer
-     *
-     * @return self
-     */
-    public function setOfferType($offer_type)
-    {
-        if (is_null($offer_type)) {
-            throw new \InvalidArgumentException('non-nullable offer_type cannot be null');
-        }
-        $allowedValues = $this->getOfferTypeAllowableValues();
-        if (!in_array($offer_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'offer_type', must be one of '%s'",
-                    $offer_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['offer_type'] = $offer_type;
-
-        return $this;
-    }
 
     /**
      * Gets redeem_online_url
