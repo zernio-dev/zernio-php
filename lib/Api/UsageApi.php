@@ -75,6 +75,9 @@ class UsageApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
+        'getBilling' => [
+            'application/json',
+        ],
         'getCallsUsage' => [
             'application/json',
         ],
@@ -136,6 +139,286 @@ class UsageApi
     public function getConfig()
     {
         return $this->config;
+    }
+
+    /**
+     * Operation getBilling
+     *
+     * Account billing snapshot (plan, cycle, balance, caps, status)
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBilling'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\BillingSnapshot|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     */
+    public function getBilling(string $contentType = self::contentTypes['getBilling'][0])
+    {
+        list($response) = $this->getBillingWithHttpInfo($contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getBillingWithHttpInfo
+     *
+     * Account billing snapshot (plan, cycle, balance, caps, status)
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBilling'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\BillingSnapshot|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getBillingWithHttpInfo(string $contentType = self::contentTypes['getBilling'][0])
+    {
+        $request = $this->getBillingRequest($contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\BillingSnapshot',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\BillingSnapshot',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\BillingSnapshot',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getBillingAsync
+     *
+     * Account billing snapshot (plan, cycle, balance, caps, status)
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBilling'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getBillingAsync(string $contentType = self::contentTypes['getBilling'][0])
+    {
+        return $this->getBillingAsyncWithHttpInfo($contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getBillingAsyncWithHttpInfo
+     *
+     * Account billing snapshot (plan, cycle, balance, caps, status)
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBilling'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getBillingAsyncWithHttpInfo(string $contentType = self::contentTypes['getBilling'][0])
+    {
+        $returnType = '\Zernio\Model\BillingSnapshot';
+        $request = $this->getBillingRequest($contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getBilling'
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBilling'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getBillingRequest(string $contentType = self::contentTypes['getBilling'][0])
+    {
+
+
+        $resourcePath = '/v1/billing';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -808,36 +1091,44 @@ class UsageApi
     /**
      * Operation getUsage
      *
-     * Get plan and usage snapshot
+     * Usage snapshot (default) or billed-spend metering (with params)
      *
-     * @param  bool|null $reconcile For Stripe subscription users, &#x60;true&#x60; forces a subscription reconciliation pass even when cached plan data looks complete. Omit the parameter, or pass &#x60;false&#x60;, to use the default first-time-only reconciliation behavior. Invalid boolean values are rejected. (optional)
+     * @param  bool|null $reconcile Snapshot mode only. For Stripe subscription users, &#x60;true&#x60; forces a subscription reconciliation pass even when cached plan data looks complete. (optional)
+     * @param  string|null $range Window to report. &#x60;cycle&#x60; / &#x60;prev-cycle&#x60; resolve to the customer&#39;s real billing-period bounds (falling back to a trailing 30 days when no invoice exists yet); &#x60;7d&#x60;…&#x60;12mo&#x60; are trailing windows; &#x60;custom&#x60; uses &#x60;from&#x60; / &#x60;to&#x60;. (optional, default to 'cycle')
+     * @param  \DateTime|null $from Inclusive start (UTC date). Required when &#x60;range&#x3D;custom&#x60;. (optional)
+     * @param  \DateTime|null $to Inclusive end (UTC date). Required when &#x60;range&#x3D;custom&#x60;. Max span 366 days. (optional)
+     * @param  string|null $granularity Bucketing of the &#x60;days&#x60; series: &#x60;day&#x60; (one row per UTC day), &#x60;month&#x60; (one row per calendar month, dated to the 1st), or &#x60;total&#x60; (no series — read &#x60;totals&#x60;). Does not affect &#x60;totals&#x60;. (optional, default to 'day')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsage'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UsageStats|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\GetUsage200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
-    public function getUsage($reconcile = null, string $contentType = self::contentTypes['getUsage'][0])
+    public function getUsage($reconcile = null, $range = 'cycle', $from = null, $to = null, $granularity = 'day', string $contentType = self::contentTypes['getUsage'][0])
     {
-        list($response) = $this->getUsageWithHttpInfo($reconcile, $contentType);
+        list($response) = $this->getUsageWithHttpInfo($reconcile, $range, $from, $to, $granularity, $contentType);
         return $response;
     }
 
     /**
      * Operation getUsageWithHttpInfo
      *
-     * Get plan and usage snapshot
+     * Usage snapshot (default) or billed-spend metering (with params)
      *
-     * @param  bool|null $reconcile For Stripe subscription users, &#x60;true&#x60; forces a subscription reconciliation pass even when cached plan data looks complete. Omit the parameter, or pass &#x60;false&#x60;, to use the default first-time-only reconciliation behavior. Invalid boolean values are rejected. (optional)
+     * @param  bool|null $reconcile Snapshot mode only. For Stripe subscription users, &#x60;true&#x60; forces a subscription reconciliation pass even when cached plan data looks complete. (optional)
+     * @param  string|null $range Window to report. &#x60;cycle&#x60; / &#x60;prev-cycle&#x60; resolve to the customer&#39;s real billing-period bounds (falling back to a trailing 30 days when no invoice exists yet); &#x60;7d&#x60;…&#x60;12mo&#x60; are trailing windows; &#x60;custom&#x60; uses &#x60;from&#x60; / &#x60;to&#x60;. (optional, default to 'cycle')
+     * @param  \DateTime|null $from Inclusive start (UTC date). Required when &#x60;range&#x3D;custom&#x60;. (optional)
+     * @param  \DateTime|null $to Inclusive end (UTC date). Required when &#x60;range&#x3D;custom&#x60;. Max span 366 days. (optional)
+     * @param  string|null $granularity Bucketing of the &#x60;days&#x60; series: &#x60;day&#x60; (one row per UTC day), &#x60;month&#x60; (one row per calendar month, dated to the 1st), or &#x60;total&#x60; (no series — read &#x60;totals&#x60;). Does not affect &#x60;totals&#x60;. (optional, default to 'day')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsage'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UsageStats|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetUsage200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUsageWithHttpInfo($reconcile = null, string $contentType = self::contentTypes['getUsage'][0])
+    public function getUsageWithHttpInfo($reconcile = null, $range = 'cycle', $from = null, $to = null, $granularity = 'day', string $contentType = self::contentTypes['getUsage'][0])
     {
-        $request = $this->getUsageRequest($reconcile, $contentType);
+        $request = $this->getUsageRequest($reconcile, $range, $from, $to, $granularity, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -865,7 +1156,7 @@ class UsageApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\UsageStats',
+                        '\Zernio\Model\GetUsage200Response',
                         $request,
                         $response,
                     );
@@ -899,7 +1190,7 @@ class UsageApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\UsageStats',
+                '\Zernio\Model\GetUsage200Response',
                 $request,
                 $response,
             );
@@ -908,7 +1199,7 @@ class UsageApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\UsageStats',
+                        '\Zernio\Model\GetUsage200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -939,17 +1230,21 @@ class UsageApi
     /**
      * Operation getUsageAsync
      *
-     * Get plan and usage snapshot
+     * Usage snapshot (default) or billed-spend metering (with params)
      *
-     * @param  bool|null $reconcile For Stripe subscription users, &#x60;true&#x60; forces a subscription reconciliation pass even when cached plan data looks complete. Omit the parameter, or pass &#x60;false&#x60;, to use the default first-time-only reconciliation behavior. Invalid boolean values are rejected. (optional)
+     * @param  bool|null $reconcile Snapshot mode only. For Stripe subscription users, &#x60;true&#x60; forces a subscription reconciliation pass even when cached plan data looks complete. (optional)
+     * @param  string|null $range Window to report. &#x60;cycle&#x60; / &#x60;prev-cycle&#x60; resolve to the customer&#39;s real billing-period bounds (falling back to a trailing 30 days when no invoice exists yet); &#x60;7d&#x60;…&#x60;12mo&#x60; are trailing windows; &#x60;custom&#x60; uses &#x60;from&#x60; / &#x60;to&#x60;. (optional, default to 'cycle')
+     * @param  \DateTime|null $from Inclusive start (UTC date). Required when &#x60;range&#x3D;custom&#x60;. (optional)
+     * @param  \DateTime|null $to Inclusive end (UTC date). Required when &#x60;range&#x3D;custom&#x60;. Max span 366 days. (optional)
+     * @param  string|null $granularity Bucketing of the &#x60;days&#x60; series: &#x60;day&#x60; (one row per UTC day), &#x60;month&#x60; (one row per calendar month, dated to the 1st), or &#x60;total&#x60; (no series — read &#x60;totals&#x60;). Does not affect &#x60;totals&#x60;. (optional, default to 'day')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUsageAsync($reconcile = null, string $contentType = self::contentTypes['getUsage'][0])
+    public function getUsageAsync($reconcile = null, $range = 'cycle', $from = null, $to = null, $granularity = 'day', string $contentType = self::contentTypes['getUsage'][0])
     {
-        return $this->getUsageAsyncWithHttpInfo($reconcile, $contentType)
+        return $this->getUsageAsyncWithHttpInfo($reconcile, $range, $from, $to, $granularity, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -960,18 +1255,22 @@ class UsageApi
     /**
      * Operation getUsageAsyncWithHttpInfo
      *
-     * Get plan and usage snapshot
+     * Usage snapshot (default) or billed-spend metering (with params)
      *
-     * @param  bool|null $reconcile For Stripe subscription users, &#x60;true&#x60; forces a subscription reconciliation pass even when cached plan data looks complete. Omit the parameter, or pass &#x60;false&#x60;, to use the default first-time-only reconciliation behavior. Invalid boolean values are rejected. (optional)
+     * @param  bool|null $reconcile Snapshot mode only. For Stripe subscription users, &#x60;true&#x60; forces a subscription reconciliation pass even when cached plan data looks complete. (optional)
+     * @param  string|null $range Window to report. &#x60;cycle&#x60; / &#x60;prev-cycle&#x60; resolve to the customer&#39;s real billing-period bounds (falling back to a trailing 30 days when no invoice exists yet); &#x60;7d&#x60;…&#x60;12mo&#x60; are trailing windows; &#x60;custom&#x60; uses &#x60;from&#x60; / &#x60;to&#x60;. (optional, default to 'cycle')
+     * @param  \DateTime|null $from Inclusive start (UTC date). Required when &#x60;range&#x3D;custom&#x60;. (optional)
+     * @param  \DateTime|null $to Inclusive end (UTC date). Required when &#x60;range&#x3D;custom&#x60;. Max span 366 days. (optional)
+     * @param  string|null $granularity Bucketing of the &#x60;days&#x60; series: &#x60;day&#x60; (one row per UTC day), &#x60;month&#x60; (one row per calendar month, dated to the 1st), or &#x60;total&#x60; (no series — read &#x60;totals&#x60;). Does not affect &#x60;totals&#x60;. (optional, default to 'day')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUsageAsyncWithHttpInfo($reconcile = null, string $contentType = self::contentTypes['getUsage'][0])
+    public function getUsageAsyncWithHttpInfo($reconcile = null, $range = 'cycle', $from = null, $to = null, $granularity = 'day', string $contentType = self::contentTypes['getUsage'][0])
     {
-        $returnType = '\Zernio\Model\UsageStats';
-        $request = $this->getUsageRequest($reconcile, $contentType);
+        $returnType = '\Zernio\Model\GetUsage200Response';
+        $request = $this->getUsageRequest($reconcile, $range, $from, $to, $granularity, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1012,14 +1311,22 @@ class UsageApi
     /**
      * Create request for operation 'getUsage'
      *
-     * @param  bool|null $reconcile For Stripe subscription users, &#x60;true&#x60; forces a subscription reconciliation pass even when cached plan data looks complete. Omit the parameter, or pass &#x60;false&#x60;, to use the default first-time-only reconciliation behavior. Invalid boolean values are rejected. (optional)
+     * @param  bool|null $reconcile Snapshot mode only. For Stripe subscription users, &#x60;true&#x60; forces a subscription reconciliation pass even when cached plan data looks complete. (optional)
+     * @param  string|null $range Window to report. &#x60;cycle&#x60; / &#x60;prev-cycle&#x60; resolve to the customer&#39;s real billing-period bounds (falling back to a trailing 30 days when no invoice exists yet); &#x60;7d&#x60;…&#x60;12mo&#x60; are trailing windows; &#x60;custom&#x60; uses &#x60;from&#x60; / &#x60;to&#x60;. (optional, default to 'cycle')
+     * @param  \DateTime|null $from Inclusive start (UTC date). Required when &#x60;range&#x3D;custom&#x60;. (optional)
+     * @param  \DateTime|null $to Inclusive end (UTC date). Required when &#x60;range&#x3D;custom&#x60;. Max span 366 days. (optional)
+     * @param  string|null $granularity Bucketing of the &#x60;days&#x60; series: &#x60;day&#x60; (one row per UTC day), &#x60;month&#x60; (one row per calendar month, dated to the 1st), or &#x60;total&#x60; (no series — read &#x60;totals&#x60;). Does not affect &#x60;totals&#x60;. (optional, default to 'day')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getUsageRequest($reconcile = null, string $contentType = self::contentTypes['getUsage'][0])
+    public function getUsageRequest($reconcile = null, $range = 'cycle', $from = null, $to = null, $granularity = 'day', string $contentType = self::contentTypes['getUsage'][0])
     {
+
+
+
+
 
 
 
@@ -1035,6 +1342,42 @@ class UsageApi
             $reconcile,
             'reconcile', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $range,
+            'range', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from,
+            'from', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to,
+            'to', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $granularity,
+            'granularity', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1103,7 +1446,7 @@ class UsageApi
     /**
      * Operation getUsageStats
      *
-     * Get plan and usage stats
+     * Get plan and usage snapshot (plan, limits, payment status)
      *
      * @param  bool|null $reconcile For Stripe subscription users, &#x60;true&#x60; forces a subscription reconciliation pass even when cached plan data looks complete. Omit the parameter, or pass &#x60;false&#x60;, to use the default first-time-only reconciliation behavior. Invalid boolean values are rejected. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsageStats'] to see the possible values for this operation
@@ -1122,7 +1465,7 @@ class UsageApi
     /**
      * Operation getUsageStatsWithHttpInfo
      *
-     * Get plan and usage stats
+     * Get plan and usage snapshot (plan, limits, payment status)
      *
      * @param  bool|null $reconcile For Stripe subscription users, &#x60;true&#x60; forces a subscription reconciliation pass even when cached plan data looks complete. Omit the parameter, or pass &#x60;false&#x60;, to use the default first-time-only reconciliation behavior. Invalid boolean values are rejected. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsageStats'] to see the possible values for this operation
@@ -1236,7 +1579,7 @@ class UsageApi
     /**
      * Operation getUsageStatsAsync
      *
-     * Get plan and usage stats
+     * Get plan and usage snapshot (plan, limits, payment status)
      *
      * @param  bool|null $reconcile For Stripe subscription users, &#x60;true&#x60; forces a subscription reconciliation pass even when cached plan data looks complete. Omit the parameter, or pass &#x60;false&#x60;, to use the default first-time-only reconciliation behavior. Invalid boolean values are rejected. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsageStats'] to see the possible values for this operation
@@ -1258,7 +1601,7 @@ class UsageApi
     /**
      * Operation getUsageStatsAsyncWithHttpInfo
      *
-     * Get plan and usage stats
+     * Get plan and usage snapshot (plan, limits, payment status)
      *
      * @param  bool|null $reconcile For Stripe subscription users, &#x60;true&#x60; forces a subscription reconciliation pass even when cached plan data looks complete. Omit the parameter, or pass &#x60;false&#x60;, to use the default first-time-only reconciliation behavior. Invalid boolean values are rejected. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsageStats'] to see the possible values for this operation

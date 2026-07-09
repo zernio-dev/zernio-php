@@ -401,10 +401,11 @@ Class | Method | HTTP request | Description
 *TwitterEngagementApi* | [**retweetPost**](docs/Api/TwitterEngagementApi.md#retweetpost) | **POST** /v1/twitter/retweet | Retweet a post
 *TwitterEngagementApi* | [**undoRetweet**](docs/Api/TwitterEngagementApi.md#undoretweet) | **DELETE** /v1/twitter/retweet | Undo retweet
 *TwitterEngagementApi* | [**unfollowUser**](docs/Api/TwitterEngagementApi.md#unfollowuser) | **DELETE** /v1/twitter/follow | Unfollow a user
+*UsageApi* | [**getBilling**](docs/Api/UsageApi.md#getbilling) | **GET** /v1/billing | Account billing snapshot (plan, cycle, balance, caps, status)
 *UsageApi* | [**getCallsUsage**](docs/Api/UsageApi.md#getcallsusage) | **GET** /v1/usage/calls | Calling usage and cost
 *UsageApi* | [**getSmsUsage**](docs/Api/UsageApi.md#getsmsusage) | **GET** /v1/usage/sms | SMS usage (volumes)
-*UsageApi* | [**getUsage**](docs/Api/UsageApi.md#getusage) | **GET** /v1/usage | Get plan and usage snapshot
-*UsageApi* | [**getUsageStats**](docs/Api/UsageApi.md#getusagestats) | **GET** /v1/usage-stats | Get plan and usage stats
+*UsageApi* | [**getUsage**](docs/Api/UsageApi.md#getusage) | **GET** /v1/usage | Usage snapshot (default) or billed-spend metering (with params)
+*UsageApi* | [**getUsageStats**](docs/Api/UsageApi.md#getusagestats) | **GET** /v1/usage-stats | Get plan and usage snapshot (plan, limits, payment status)
 *UsageApi* | [**getXApiPricing**](docs/Api/UsageApi.md#getxapipricing) | **GET** /v1/billing/x-pricing | Get X/Twitter API pricing table
 *UsersApi* | [**getUser**](docs/Api/UsersApi.md#getuser) | **GET** /v1/users/{userId} | Get user
 *UsersApi* | [**listUsers**](docs/Api/UsersApi.md#listusers) | **GET** /v1/users | List users
@@ -584,6 +585,14 @@ Class | Method | HTTP request | Description
 - [BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner](docs/Model/BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner.md)
 - [BatchGetGoogleBusinessReviewsRequest](docs/Model/BatchGetGoogleBusinessReviewsRequest.md)
 - [BidStrategy](docs/Model/BidStrategy.md)
+- [BillingSnapshot](docs/Model/BillingSnapshot.md)
+- [BillingSnapshotBalance](docs/Model/BillingSnapshotBalance.md)
+- [BillingSnapshotCaps](docs/Model/BillingSnapshotCaps.md)
+- [BillingSnapshotLegacy](docs/Model/BillingSnapshotLegacy.md)
+- [BillingSnapshotLegacyLimits](docs/Model/BillingSnapshotLegacyLimits.md)
+- [BillingSnapshotPeriod](docs/Model/BillingSnapshotPeriod.md)
+- [BillingSnapshotPlan](docs/Model/BillingSnapshotPlan.md)
+- [BillingSnapshotStatus](docs/Model/BillingSnapshotStatus.md)
 - [BlockWhatsAppUsers200Response](docs/Model/BlockWhatsAppUsers200Response.md)
 - [BlockWhatsAppUsers200ResponseBlockedInner](docs/Model/BlockWhatsAppUsers200ResponseBlockedInner.md)
 - [BlockWhatsAppUsers200ResponseFailedInner](docs/Model/BlockWhatsAppUsers200ResponseFailedInner.md)
@@ -1078,6 +1087,7 @@ Class | Method | HTTP request | Description
 - [GetTikTokCreatorInfo200ResponsePrivacyLevelsInner](docs/Model/GetTikTokCreatorInfo200ResponsePrivacyLevelsInner.md)
 - [GetTrackingTagStats200Response](docs/Model/GetTrackingTagStats200Response.md)
 - [GetTrackingTagStats200ResponseStats](docs/Model/GetTrackingTagStats200ResponseStats.md)
+- [GetUsage200Response](docs/Model/GetUsage200Response.md)
 - [GetUser200Response](docs/Model/GetUser200Response.md)
 - [GetUser200ResponseUser](docs/Model/GetUser200ResponseUser.md)
 - [GetVoiceCall200Response](docs/Model/GetVoiceCall200Response.md)
@@ -1714,6 +1724,14 @@ Class | Method | HTTP request | Description
 - [UploadWhatsAppProfilePhotoRequest1](docs/Model/UploadWhatsAppProfilePhotoRequest1.md)
 - [UploadedFile](docs/Model/UploadedFile.md)
 - [UploadedOrDerivedAudience](docs/Model/UploadedOrDerivedAudience.md)
+- [UsageMetering](docs/Model/UsageMetering.md)
+- [UsageMeteringCallUsage](docs/Model/UsageMeteringCallUsage.md)
+- [UsageMeteringCallUsageWhatsapp](docs/Model/UsageMeteringCallUsageWhatsapp.md)
+- [UsageMeteringDaysInner](docs/Model/UsageMeteringDaysInner.md)
+- [UsageMeteringLineItemsInner](docs/Model/UsageMeteringLineItemsInner.md)
+- [UsageMeteringPeaks](docs/Model/UsageMeteringPeaks.md)
+- [UsageMeteringPeriod](docs/Model/UsageMeteringPeriod.md)
+- [UsageMeteringTotals](docs/Model/UsageMeteringTotals.md)
 - [UsageStats](docs/Model/UsageStats.md)
 - [UsageStatsLimits](docs/Model/UsageStatsLimits.md)
 - [UsageStatsSpend](docs/Model/UsageStatsSpend.md)
