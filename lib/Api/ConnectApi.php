@@ -9368,7 +9368,7 @@ class ConnectApi
     /**
      * Operation setRedditPostFlair
      *
-     * Set flair on a published Reddit post
+     * Set Reddit post flair
      *
      * @param  string $account_id The ID of the Reddit account that owns the post (required)
      * @param  \Zernio\Model\SetRedditPostFlairRequest $set_reddit_post_flair_request set_reddit_post_flair_request (required)
@@ -9387,7 +9387,7 @@ class ConnectApi
     /**
      * Operation setRedditPostFlairWithHttpInfo
      *
-     * Set flair on a published Reddit post
+     * Set Reddit post flair
      *
      * @param  string $account_id The ID of the Reddit account that owns the post (required)
      * @param  \Zernio\Model\SetRedditPostFlairRequest $set_reddit_post_flair_request (required)
@@ -9487,7 +9487,7 @@ class ConnectApi
     /**
      * Operation setRedditPostFlairAsync
      *
-     * Set flair on a published Reddit post
+     * Set Reddit post flair
      *
      * @param  string $account_id The ID of the Reddit account that owns the post (required)
      * @param  \Zernio\Model\SetRedditPostFlairRequest $set_reddit_post_flair_request (required)
@@ -9509,7 +9509,7 @@ class ConnectApi
     /**
      * Operation setRedditPostFlairAsyncWithHttpInfo
      *
-     * Set flair on a published Reddit post
+     * Set Reddit post flair
      *
      * @param  string $account_id The ID of the Reddit account that owns the post (required)
      * @param  \Zernio\Model\SetRedditPostFlairRequest $set_reddit_post_flair_request (required)

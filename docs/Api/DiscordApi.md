@@ -10,7 +10,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createDiscordGuildRole()**](DiscordApi.md#createDiscordGuildRole) | **POST** /v1/discord/guilds/{guildId}/roles | Create a Discord guild role |
 | [**createDiscordScheduledEvent()**](DiscordApi.md#createDiscordScheduledEvent) | **POST** /v1/discord/guilds/{guildId}/events | Create a Discord scheduled event |
 | [**createDiscordThread()**](DiscordApi.md#createDiscordThread) | **POST** /v1/discord/channels/{channelId}/threads | Create a Discord public thread |
-| [**crosspostDiscordMessage()**](DiscordApi.md#crosspostDiscordMessage) | **POST** /v1/discord/channels/{channelId}/messages/{messageId}/crosspost | Crosspost a Discord announcement message |
+| [**crosspostDiscordMessage()**](DiscordApi.md#crosspostDiscordMessage) | **POST** /v1/discord/channels/{channelId}/messages/{messageId}/crosspost | Crosspost Discord message |
 | [**deleteDiscordGuildRole()**](DiscordApi.md#deleteDiscordGuildRole) | **DELETE** /v1/discord/guilds/{guildId}/roles/{roleId} | Delete a Discord guild role |
 | [**deleteDiscordMessage()**](DiscordApi.md#deleteDiscordMessage) | **DELETE** /v1/discord/channels/{channelId}/messages/{messageId} | Delete a Discord channel message |
 | [**deleteDiscordScheduledEvent()**](DiscordApi.md#deleteDiscordScheduledEvent) | **DELETE** /v1/discord/guilds/{guildId}/events/{eventId} | Delete a Discord scheduled event |
@@ -292,7 +292,7 @@ try {
 crosspostDiscordMessage($channel_id, $message_id, $account_id): \Zernio\Model\CrosspostDiscordMessage200Response
 ```
 
-Crosspost a Discord announcement message
+Crosspost Discord message
 
 Publishes a message from an announcement channel so it propagates to every server following that channel.  The source channel must be an announcement channel. Calling this on a regular text channel returns a 400 before Discord is contacted, because Discord's own error for this case is opaque.
 

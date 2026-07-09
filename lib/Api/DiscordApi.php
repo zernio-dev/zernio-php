@@ -1496,7 +1496,7 @@ class DiscordApi
     /**
      * Operation crosspostDiscordMessage
      *
-     * Crosspost a Discord announcement message
+     * Crosspost Discord message
      *
      * @param  string $channel_id Discord announcement channel snowflake ID (required)
      * @param  string $message_id Discord message snowflake ID (required)
@@ -1516,7 +1516,7 @@ class DiscordApi
     /**
      * Operation crosspostDiscordMessageWithHttpInfo
      *
-     * Crosspost a Discord announcement message
+     * Crosspost Discord message
      *
      * @param  string $channel_id Discord announcement channel snowflake ID (required)
      * @param  string $message_id Discord message snowflake ID (required)
@@ -1617,7 +1617,7 @@ class DiscordApi
     /**
      * Operation crosspostDiscordMessageAsync
      *
-     * Crosspost a Discord announcement message
+     * Crosspost Discord message
      *
      * @param  string $channel_id Discord announcement channel snowflake ID (required)
      * @param  string $message_id Discord message snowflake ID (required)
@@ -1640,7 +1640,7 @@ class DiscordApi
     /**
      * Operation crosspostDiscordMessageAsyncWithHttpInfo
      *
-     * Crosspost a Discord announcement message
+     * Crosspost Discord message
      *
      * @param  string $channel_id Discord announcement channel snowflake ID (required)
      * @param  string $message_id Discord message snowflake ID (required)

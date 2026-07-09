@@ -222,7 +222,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**selectLinkedInOrganization**](docs/Api/ConnectApi.md#selectlinkedinorganization) | **POST** /v1/connect/linkedin/select-organization | Select LinkedIn org
 *ConnectApi* | [**selectPinterestBoard**](docs/Api/ConnectApi.md#selectpinterestboard) | **POST** /v1/connect/pinterest/select-board | Select Pinterest board
 *ConnectApi* | [**selectSnapchatProfile**](docs/Api/ConnectApi.md#selectsnapchatprofile) | **POST** /v1/connect/snapchat/select-profile | Select Snapchat profile
-*ConnectApi* | [**setRedditPostFlair**](docs/Api/ConnectApi.md#setredditpostflair) | **POST** /v1/accounts/{accountId}/reddit-flairs | Set flair on a published Reddit post
+*ConnectApi* | [**setRedditPostFlair**](docs/Api/ConnectApi.md#setredditpostflair) | **POST** /v1/accounts/{accountId}/reddit-flairs | Set Reddit post flair
 *ConnectApi* | [**updateFacebookPage**](docs/Api/ConnectApi.md#updatefacebookpage) | **PUT** /v1/accounts/{accountId}/facebook-page | Update Facebook page
 *ConnectApi* | [**updateGmbLocation**](docs/Api/ConnectApi.md#updategmblocation) | **PUT** /v1/accounts/{accountId}/gmb-locations | Update GBP location
 *ConnectApi* | [**updateLinkedInOrganization**](docs/Api/ConnectApi.md#updatelinkedinorganization) | **PUT** /v1/accounts/{accountId}/linkedin-organization | Switch LinkedIn account type
@@ -247,7 +247,7 @@ Class | Method | HTTP request | Description
 *DiscordApi* | [**createDiscordGuildRole**](docs/Api/DiscordApi.md#creatediscordguildrole) | **POST** /v1/discord/guilds/{guildId}/roles | Create a Discord guild role
 *DiscordApi* | [**createDiscordScheduledEvent**](docs/Api/DiscordApi.md#creatediscordscheduledevent) | **POST** /v1/discord/guilds/{guildId}/events | Create a Discord scheduled event
 *DiscordApi* | [**createDiscordThread**](docs/Api/DiscordApi.md#creatediscordthread) | **POST** /v1/discord/channels/{channelId}/threads | Create a Discord public thread
-*DiscordApi* | [**crosspostDiscordMessage**](docs/Api/DiscordApi.md#crosspostdiscordmessage) | **POST** /v1/discord/channels/{channelId}/messages/{messageId}/crosspost | Crosspost a Discord announcement message
+*DiscordApi* | [**crosspostDiscordMessage**](docs/Api/DiscordApi.md#crosspostdiscordmessage) | **POST** /v1/discord/channels/{channelId}/messages/{messageId}/crosspost | Crosspost Discord message
 *DiscordApi* | [**deleteDiscordGuildRole**](docs/Api/DiscordApi.md#deletediscordguildrole) | **DELETE** /v1/discord/guilds/{guildId}/roles/{roleId} | Delete a Discord guild role
 *DiscordApi* | [**deleteDiscordMessage**](docs/Api/DiscordApi.md#deletediscordmessage) | **DELETE** /v1/discord/channels/{channelId}/messages/{messageId} | Delete a Discord channel message
 *DiscordApi* | [**deleteDiscordScheduledEvent**](docs/Api/DiscordApi.md#deletediscordscheduledevent) | **DELETE** /v1/discord/guilds/{guildId}/events/{eventId} | Delete a Discord scheduled event
