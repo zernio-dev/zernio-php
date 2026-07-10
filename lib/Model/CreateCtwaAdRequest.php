@@ -81,6 +81,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'age_max' => 'int',
         'interests' => '\Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]',
         'audience_id' => 'string',
+        'placements' => '\Zernio\Model\CreateCtwaAdRequestPlacements',
         'advantage_audience' => 'int',
         'objective' => 'string',
         'bid_strategy' => 'string',
@@ -120,6 +121,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'age_max' => null,
         'interests' => null,
         'audience_id' => null,
+        'placements' => null,
         'advantage_audience' => null,
         'objective' => null,
         'bid_strategy' => null,
@@ -157,6 +159,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'age_max' => false,
         'interests' => false,
         'audience_id' => false,
+        'placements' => false,
         'advantage_audience' => false,
         'objective' => false,
         'bid_strategy' => false,
@@ -274,6 +277,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'age_max' => 'ageMax',
         'interests' => 'interests',
         'audience_id' => 'audienceId',
+        'placements' => 'placements',
         'advantage_audience' => 'advantageAudience',
         'objective' => 'objective',
         'bid_strategy' => 'bidStrategy',
@@ -311,6 +315,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'age_max' => 'setAgeMax',
         'interests' => 'setInterests',
         'audience_id' => 'setAudienceId',
+        'placements' => 'setPlacements',
         'advantage_audience' => 'setAdvantageAudience',
         'objective' => 'setObjective',
         'bid_strategy' => 'setBidStrategy',
@@ -348,6 +353,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'age_max' => 'getAgeMax',
         'interests' => 'getInterests',
         'audience_id' => 'getAudienceId',
+        'placements' => 'getPlacements',
         'advantage_audience' => 'getAdvantageAudience',
         'objective' => 'getObjective',
         'bid_strategy' => 'getBidStrategy',
@@ -502,6 +508,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('age_max', $data ?? [], null);
         $this->setIfExists('interests', $data ?? [], null);
         $this->setIfExists('audience_id', $data ?? [], null);
+        $this->setIfExists('placements', $data ?? [], null);
         $this->setIfExists('advantage_audience', $data ?? [], null);
         $this->setIfExists('objective', $data ?? [], null);
         $this->setIfExists('bid_strategy', $data ?? [], null);
@@ -1319,6 +1326,33 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable audience_id cannot be null');
         }
         $this->container['audience_id'] = $audience_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets placements
+     *
+     * @return \Zernio\Model\CreateCtwaAdRequestPlacements|null
+     */
+    public function getPlacements()
+    {
+        return $this->container['placements'];
+    }
+
+    /**
+     * Sets placements
+     *
+     * @param \Zernio\Model\CreateCtwaAdRequestPlacements|null $placements placements
+     *
+     * @return self
+     */
+    public function setPlacements($placements)
+    {
+        if (is_null($placements)) {
+            throw new \InvalidArgumentException('non-nullable placements cannot be null');
+        }
+        $this->container['placements'] = $placements;
 
         return $this;
     }

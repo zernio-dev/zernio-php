@@ -680,6 +680,7 @@ Class | Method | HTTP request | Description
 - [CreateCtwaAdRequestCitiesInner](docs/Model/CreateCtwaAdRequestCitiesInner.md)
 - [CreateCtwaAdRequestCreativesInner](docs/Model/CreateCtwaAdRequestCreativesInner.md)
 - [CreateCtwaAdRequestCreativesInnerVideo](docs/Model/CreateCtwaAdRequestCreativesInnerVideo.md)
+- [CreateCtwaAdRequestPlacements](docs/Model/CreateCtwaAdRequestPlacements.md)
 - [CreateCtwaAdRequestRegionsInner](docs/Model/CreateCtwaAdRequestRegionsInner.md)
 - [CreateCtwaAdRequestVideo](docs/Model/CreateCtwaAdRequestVideo.md)
 - [CreateCtwaAdRequestZipsInner](docs/Model/CreateCtwaAdRequestZipsInner.md)

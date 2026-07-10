@@ -212,6 +212,7 @@ docs/Model/CreateCtwaAdRequest.md
 docs/Model/CreateCtwaAdRequestCitiesInner.md
 docs/Model/CreateCtwaAdRequestCreativesInner.md
 docs/Model/CreateCtwaAdRequestCreativesInnerVideo.md
+docs/Model/CreateCtwaAdRequestPlacements.md
 docs/Model/CreateCtwaAdRequestRegionsInner.md
 docs/Model/CreateCtwaAdRequestVideo.md
 docs/Model/CreateCtwaAdRequestZipsInner.md
@@ -1617,6 +1618,7 @@ lib/Model/CreateCtwaAdRequest.php
 lib/Model/CreateCtwaAdRequestCitiesInner.php
 lib/Model/CreateCtwaAdRequestCreativesInner.php
 lib/Model/CreateCtwaAdRequestCreativesInnerVideo.php
+lib/Model/CreateCtwaAdRequestPlacements.php
 lib/Model/CreateCtwaAdRequestRegionsInner.php
 lib/Model/CreateCtwaAdRequestVideo.php
 lib/Model/CreateCtwaAdRequestZipsInner.php
@@ -2811,4 +2813,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/UsageMeteringTaxTest.php
+test/Model/CreateCtwaAdRequestPlacementsTest.php
