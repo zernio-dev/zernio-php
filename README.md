@@ -467,10 +467,10 @@ Class | Method | HTTP request | Description
 *WhatsAppCallingApi* | [**disableWhatsAppCallingLegacy**](docs/Api/WhatsAppCallingApi.md#disablewhatsappcallinglegacy) | **DELETE** /v1/whatsapp/phone-numbers/{id}/calling | Disable calling on a number
 *WhatsAppCallingApi* | [**enableWhatsAppCalling**](docs/Api/WhatsAppCallingApi.md#enablewhatsappcalling) | **POST** /v1/phone-numbers/{id}/whatsapp/calling | Enable calling on a number
 *WhatsAppCallingApi* | [**enableWhatsAppCallingLegacy**](docs/Api/WhatsAppCallingApi.md#enablewhatsappcallinglegacy) | **POST** /v1/whatsapp/phone-numbers/{id}/calling | Enable calling on a number
-*WhatsAppCallingApi* | [**getWhatsAppCall**](docs/Api/WhatsAppCallingApi.md#getwhatsappcall) | **GET** /v1/whatsapp/calls/{callId} | Get a single call
+*WhatsAppCallingApi* | [**getWhatsAppCall**](docs/Api/WhatsAppCallingApi.md#getwhatsappcall) | **GET** /v1/whatsapp/calls/{id} | Get a single call
 *WhatsAppCallingApi* | [**getWhatsAppCallEstimate**](docs/Api/WhatsAppCallingApi.md#getwhatsappcallestimate) | **GET** /v1/whatsapp/calls/estimate | Estimate per-minute cost
 *WhatsAppCallingApi* | [**getWhatsAppCallPermissions**](docs/Api/WhatsAppCallingApi.md#getwhatsappcallpermissions) | **GET** /v1/whatsapp/call-permissions | Check call permission
-*WhatsAppCallingApi* | [**getWhatsAppCallRecording**](docs/Api/WhatsAppCallingApi.md#getwhatsappcallrecording) | **GET** /v1/whatsapp/calls/{callId}/recording | Get a call recording
+*WhatsAppCallingApi* | [**getWhatsAppCallRecording**](docs/Api/WhatsAppCallingApi.md#getwhatsappcallrecording) | **GET** /v1/whatsapp/calls/{id}/recording | Get a call recording
 *WhatsAppCallingApi* | [**getWhatsAppCalling**](docs/Api/WhatsAppCallingApi.md#getwhatsappcalling) | **GET** /v1/phone-numbers/{id}/whatsapp/calling | Get calling config for a number
 *WhatsAppCallingApi* | [**getWhatsAppCallingConfig**](docs/Api/WhatsAppCallingApi.md#getwhatsappcallingconfig) | **GET** /v1/whatsapp/calling | Get calling config for an account
 *WhatsAppCallingApi* | [**initiateWhatsAppCall**](docs/Api/WhatsAppCallingApi.md#initiatewhatsappcall) | **POST** /v1/whatsapp/calls | Initiate outbound call

@@ -2809,6 +2809,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetSmsRegistration200ResponseCampaignContentTest.php
-test/Model/OnWhatsAppAutomaticEventRequestCustomDataTest.php
-test/Model/OnWhatsAppAutomaticEventRequestTest.php

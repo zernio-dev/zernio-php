@@ -10,10 +10,10 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**disableWhatsAppCallingLegacy()**](WhatsAppCallingApi.md#disableWhatsAppCallingLegacy) | **DELETE** /v1/whatsapp/phone-numbers/{id}/calling | Disable calling on a number |
 | [**enableWhatsAppCalling()**](WhatsAppCallingApi.md#enableWhatsAppCalling) | **POST** /v1/phone-numbers/{id}/whatsapp/calling | Enable calling on a number |
 | [**enableWhatsAppCallingLegacy()**](WhatsAppCallingApi.md#enableWhatsAppCallingLegacy) | **POST** /v1/whatsapp/phone-numbers/{id}/calling | Enable calling on a number |
-| [**getWhatsAppCall()**](WhatsAppCallingApi.md#getWhatsAppCall) | **GET** /v1/whatsapp/calls/{callId} | Get a single call |
+| [**getWhatsAppCall()**](WhatsAppCallingApi.md#getWhatsAppCall) | **GET** /v1/whatsapp/calls/{id} | Get a single call |
 | [**getWhatsAppCallEstimate()**](WhatsAppCallingApi.md#getWhatsAppCallEstimate) | **GET** /v1/whatsapp/calls/estimate | Estimate per-minute cost |
 | [**getWhatsAppCallPermissions()**](WhatsAppCallingApi.md#getWhatsAppCallPermissions) | **GET** /v1/whatsapp/call-permissions | Check call permission |
-| [**getWhatsAppCallRecording()**](WhatsAppCallingApi.md#getWhatsAppCallRecording) | **GET** /v1/whatsapp/calls/{callId}/recording | Get a call recording |
+| [**getWhatsAppCallRecording()**](WhatsAppCallingApi.md#getWhatsAppCallRecording) | **GET** /v1/whatsapp/calls/{id}/recording | Get a call recording |
 | [**getWhatsAppCalling()**](WhatsAppCallingApi.md#getWhatsAppCalling) | **GET** /v1/phone-numbers/{id}/whatsapp/calling | Get calling config for a number |
 | [**getWhatsAppCallingConfig()**](WhatsAppCallingApi.md#getWhatsAppCallingConfig) | **GET** /v1/whatsapp/calling | Get calling config for an account |
 | [**initiateWhatsAppCall()**](WhatsAppCallingApi.md#initiateWhatsAppCall) | **POST** /v1/whatsapp/calls | Initiate outbound call |
@@ -271,7 +271,7 @@ try {
 ## `getWhatsAppCall()`
 
 ```php
-getWhatsAppCall($call_id, $account_id): \Zernio\Model\GetWhatsAppCall200Response
+getWhatsAppCall($id, $account_id): \Zernio\Model\GetWhatsAppCall200Response
 ```
 
 Get a single call
@@ -293,11 +293,11 @@ $apiInstance = new Zernio\Api\WhatsAppCallingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$call_id = 'call_id_example'; // string
+$id = 'id_example'; // string
 $account_id = 'account_id_example'; // string
 
 try {
-    $result = $apiInstance->getWhatsAppCall($call_id, $account_id);
+    $result = $apiInstance->getWhatsAppCall($id, $account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WhatsAppCallingApi->getWhatsAppCall: ', $e->getMessage(), PHP_EOL;
@@ -308,7 +308,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **call_id** | **string**|  | |
+| **id** | **string**|  | |
 | **account_id** | **string**|  | |
 
 ### Return type
@@ -459,7 +459,7 @@ try {
 ## `getWhatsAppCallRecording()`
 
 ```php
-getWhatsAppCallRecording($call_id, $account_id, $as): \Zernio\Model\GetWhatsAppCallRecording200Response
+getWhatsAppCallRecording($id, $account_id, $as): \Zernio\Model\GetWhatsAppCallRecording200Response
 ```
 
 Get a call recording
@@ -483,12 +483,12 @@ $apiInstance = new Zernio\Api\WhatsAppCallingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$call_id = 'call_id_example'; // string
+$id = 'id_example'; // string
 $account_id = 'account_id_example'; // string
 $as = 'as_example'; // string | `json` returns `{ url }` instead of a 302 redirect.
 
 try {
-    $result = $apiInstance->getWhatsAppCallRecording($call_id, $account_id, $as);
+    $result = $apiInstance->getWhatsAppCallRecording($id, $account_id, $as);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WhatsAppCallingApi->getWhatsAppCallRecording: ', $e->getMessage(), PHP_EOL;
@@ -499,7 +499,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **call_id** | **string**|  | |
+| **id** | **string**|  | |
 | **account_id** | **string**|  | |
 | **as** | **string**| &#x60;json&#x60; returns &#x60;{ url }&#x60; instead of a 302 redirect. | [optional] |
 
