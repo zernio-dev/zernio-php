@@ -277,6 +277,7 @@ class CreateStandaloneAdRequestPlacements implements ModelInterface, ArrayAccess
     public const PUBLISHER_PLATFORMS_THREADS = 'threads';
     public const PUBLISHER_PLATFORMS_MESSENGER = 'messenger';
     public const PUBLISHER_PLATFORMS_AUDIENCE_NETWORK = 'audience_network';
+    public const PUBLISHER_PLATFORMS_WHATSAPP = 'whatsapp';
     public const FACEBOOK_POSITIONS_FEED = 'feed';
     public const FACEBOOK_POSITIONS_RIGHT_HAND_COLUMN = 'right_hand_column';
     public const FACEBOOK_POSITIONS_MARKETPLACE = 'marketplace';
@@ -319,6 +320,7 @@ class CreateStandaloneAdRequestPlacements implements ModelInterface, ArrayAccess
             self::PUBLISHER_PLATFORMS_THREADS,
             self::PUBLISHER_PLATFORMS_MESSENGER,
             self::PUBLISHER_PLATFORMS_AUDIENCE_NETWORK,
+            self::PUBLISHER_PLATFORMS_WHATSAPP,
         ];
     }
 
