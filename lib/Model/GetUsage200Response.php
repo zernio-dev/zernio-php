@@ -77,7 +77,8 @@ class GetUsage200Response implements ModelInterface, ArrayAccess, \JsonSerializa
         'line_items' => '\Zernio\Model\UsageMeteringLineItemsInner[]',
         'peaks' => '\Zernio\Model\UsageMeteringPeaks',
         'call_usage' => '\Zernio\Model\UsageMeteringCallUsage',
-        'period' => '\Zernio\Model\UsageMeteringPeriod'
+        'period' => '\Zernio\Model\UsageMeteringPeriod',
+        'tax' => '\Zernio\Model\UsageMeteringTax'
     ];
 
     /**
@@ -107,7 +108,8 @@ class GetUsage200Response implements ModelInterface, ArrayAccess, \JsonSerializa
         'line_items' => null,
         'peaks' => null,
         'call_usage' => null,
-        'period' => null
+        'period' => null,
+        'tax' => null
     ];
 
     /**
@@ -135,7 +137,8 @@ class GetUsage200Response implements ModelInterface, ArrayAccess, \JsonSerializa
         'line_items' => false,
         'peaks' => false,
         'call_usage' => false,
-        'period' => false
+        'period' => false,
+        'tax' => false
     ];
 
     /**
@@ -243,7 +246,8 @@ class GetUsage200Response implements ModelInterface, ArrayAccess, \JsonSerializa
         'line_items' => 'lineItems',
         'peaks' => 'peaks',
         'call_usage' => 'callUsage',
-        'period' => 'period'
+        'period' => 'period',
+        'tax' => 'tax'
     ];
 
     /**
@@ -271,7 +275,8 @@ class GetUsage200Response implements ModelInterface, ArrayAccess, \JsonSerializa
         'line_items' => 'setLineItems',
         'peaks' => 'setPeaks',
         'call_usage' => 'setCallUsage',
-        'period' => 'setPeriod'
+        'period' => 'setPeriod',
+        'tax' => 'setTax'
     ];
 
     /**
@@ -299,7 +304,8 @@ class GetUsage200Response implements ModelInterface, ArrayAccess, \JsonSerializa
         'line_items' => 'getLineItems',
         'peaks' => 'getPeaks',
         'call_usage' => 'getCallUsage',
-        'period' => 'getPeriod'
+        'period' => 'getPeriod',
+        'tax' => 'getTax'
     ];
 
     /**
@@ -426,6 +432,7 @@ class GetUsage200Response implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('peaks', $data ?? [], null);
         $this->setIfExists('call_usage', $data ?? [], null);
         $this->setIfExists('period', $data ?? [], null);
+        $this->setIfExists('tax', $data ?? [], null);
     }
 
     /**
@@ -1063,6 +1070,33 @@ class GetUsage200Response implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable period cannot be null');
         }
         $this->container['period'] = $period;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax
+     *
+     * @return \Zernio\Model\UsageMeteringTax|null
+     */
+    public function getTax()
+    {
+        return $this->container['tax'];
+    }
+
+    /**
+     * Sets tax
+     *
+     * @param \Zernio\Model\UsageMeteringTax|null $tax tax
+     *
+     * @return self
+     */
+    public function setTax($tax)
+    {
+        if (is_null($tax)) {
+            throw new \InvalidArgumentException('non-nullable tax cannot be null');
+        }
+        $this->container['tax'] = $tax;
 
         return $this;
     }

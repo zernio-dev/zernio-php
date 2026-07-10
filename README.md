@@ -1734,6 +1734,7 @@ Class | Method | HTTP request | Description
 - [UsageMeteringLineItemsInner](docs/Model/UsageMeteringLineItemsInner.md)
 - [UsageMeteringPeaks](docs/Model/UsageMeteringPeaks.md)
 - [UsageMeteringPeriod](docs/Model/UsageMeteringPeriod.md)
+- [UsageMeteringTax](docs/Model/UsageMeteringTax.md)
 - [UsageMeteringTotals](docs/Model/UsageMeteringTotals.md)
 - [UsageStats](docs/Model/UsageStats.md)
 - [UsageStatsLimits](docs/Model/UsageStatsLimits.md)

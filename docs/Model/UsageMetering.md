@@ -12,5 +12,6 @@ Name | Type | Description | Notes
 **peaks** | [**\Zernio\Model\UsageMeteringPeaks**](UsageMeteringPeaks.md) |  | [optional]
 **call_usage** | [**\Zernio\Model\UsageMeteringCallUsage**](UsageMeteringCallUsage.md) |  | [optional]
 **period** | [**\Zernio\Model\UsageMeteringPeriod**](UsageMeteringPeriod.md) |  | [optional]
+**tax** | [**\Zernio\Model\UsageMeteringTax**](UsageMeteringTax.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

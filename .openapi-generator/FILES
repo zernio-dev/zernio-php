@@ -1266,6 +1266,7 @@ docs/Model/UsageMeteringDaysInner.md
 docs/Model/UsageMeteringLineItemsInner.md
 docs/Model/UsageMeteringPeaks.md
 docs/Model/UsageMeteringPeriod.md
+docs/Model/UsageMeteringTax.md
 docs/Model/UsageMeteringTotals.md
 docs/Model/UsageStats.md
 docs/Model/UsageStatsLimits.md
@@ -2671,6 +2672,7 @@ lib/Model/UsageMeteringDaysInner.php
 lib/Model/UsageMeteringLineItemsInner.php
 lib/Model/UsageMeteringPeaks.php
 lib/Model/UsageMeteringPeriod.php
+lib/Model/UsageMeteringTax.php
 lib/Model/UsageMeteringTotals.php
 lib/Model/UsageStats.php
 lib/Model/UsageStatsLimits.php
@@ -2809,3 +2811,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/UsageMeteringTaxTest.php

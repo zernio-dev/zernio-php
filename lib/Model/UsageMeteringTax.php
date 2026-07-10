@@ -1,6 +1,6 @@
 <?php
 /**
- * UsageMetering
+ * UsageMeteringTax
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UsageMetering Class Doc Comment
+ * UsageMeteringTax Class Doc Comment
  *
  * @category Class
- * @description Billed spend by product family over a window, from Metronome&#39;s invoice breakdown (the CHARGE view). Returned by &#x60;GET /v1/usage&#x60;.
+ * @description Estimated tax on the window&#39;s net &#x60;totals.total&#x60;, computed with Stripe Tax against the billing address (the same engine the real invoice uses; invoices apply exclusive tax, so the card is charged total + tax). Null when the account has no billing address on file, the total is zero or negative, or the estimate failed.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UsageMetering implements ModelInterface, ArrayAccess, \JsonSerializable
+class UsageMeteringTax implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class UsageMetering implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UsageMetering';
+    protected static $openAPIModelName = 'UsageMetering_tax';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,15 +59,10 @@ class UsageMetering implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'supported' => 'bool',
-        'granularity' => 'string',
-        'days' => '\Zernio\Model\UsageMeteringDaysInner[]',
-        'totals' => '\Zernio\Model\UsageMeteringTotals',
-        'line_items' => '\Zernio\Model\UsageMeteringLineItemsInner[]',
-        'peaks' => '\Zernio\Model\UsageMeteringPeaks',
-        'call_usage' => '\Zernio\Model\UsageMeteringCallUsage',
-        'period' => '\Zernio\Model\UsageMeteringPeriod',
-        'tax' => '\Zernio\Model\UsageMeteringTax'
+        'tax_usd' => 'float',
+        'rate_percent' => 'float',
+        'jurisdiction_label' => 'string',
+        'reverse_charge' => 'bool'
     ];
 
     /**
@@ -78,15 +73,10 @@ class UsageMetering implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'supported' => null,
-        'granularity' => null,
-        'days' => null,
-        'totals' => null,
-        'line_items' => null,
-        'peaks' => null,
-        'call_usage' => null,
-        'period' => null,
-        'tax' => null
+        'tax_usd' => null,
+        'rate_percent' => null,
+        'jurisdiction_label' => null,
+        'reverse_charge' => null
     ];
 
     /**
@@ -95,15 +85,10 @@ class UsageMetering implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'supported' => false,
-        'granularity' => false,
-        'days' => false,
-        'totals' => false,
-        'line_items' => false,
-        'peaks' => false,
-        'call_usage' => false,
-        'period' => false,
-        'tax' => false
+        'tax_usd' => false,
+        'rate_percent' => true,
+        'jurisdiction_label' => true,
+        'reverse_charge' => false
     ];
 
     /**
@@ -192,15 +177,10 @@ class UsageMetering implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'supported' => 'supported',
-        'granularity' => 'granularity',
-        'days' => 'days',
-        'totals' => 'totals',
-        'line_items' => 'lineItems',
-        'peaks' => 'peaks',
-        'call_usage' => 'callUsage',
-        'period' => 'period',
-        'tax' => 'tax'
+        'tax_usd' => 'taxUsd',
+        'rate_percent' => 'ratePercent',
+        'jurisdiction_label' => 'jurisdictionLabel',
+        'reverse_charge' => 'reverseCharge'
     ];
 
     /**
@@ -209,15 +189,10 @@ class UsageMetering implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'supported' => 'setSupported',
-        'granularity' => 'setGranularity',
-        'days' => 'setDays',
-        'totals' => 'setTotals',
-        'line_items' => 'setLineItems',
-        'peaks' => 'setPeaks',
-        'call_usage' => 'setCallUsage',
-        'period' => 'setPeriod',
-        'tax' => 'setTax'
+        'tax_usd' => 'setTaxUsd',
+        'rate_percent' => 'setRatePercent',
+        'jurisdiction_label' => 'setJurisdictionLabel',
+        'reverse_charge' => 'setReverseCharge'
     ];
 
     /**
@@ -226,15 +201,10 @@ class UsageMetering implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'supported' => 'getSupported',
-        'granularity' => 'getGranularity',
-        'days' => 'getDays',
-        'totals' => 'getTotals',
-        'line_items' => 'getLineItems',
-        'peaks' => 'getPeaks',
-        'call_usage' => 'getCallUsage',
-        'period' => 'getPeriod',
-        'tax' => 'getTax'
+        'tax_usd' => 'getTaxUsd',
+        'rate_percent' => 'getRatePercent',
+        'jurisdiction_label' => 'getJurisdictionLabel',
+        'reverse_charge' => 'getReverseCharge'
     ];
 
     /**
@@ -278,23 +248,6 @@ class UsageMetering implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const GRANULARITY_DAY = 'day';
-    public const GRANULARITY_MONTH = 'month';
-    public const GRANULARITY_TOTAL = 'total';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getGranularityAllowableValues()
-    {
-        return [
-            self::GRANULARITY_DAY,
-            self::GRANULARITY_MONTH,
-            self::GRANULARITY_TOTAL,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -311,15 +264,10 @@ class UsageMetering implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('supported', $data ?? [], null);
-        $this->setIfExists('granularity', $data ?? [], null);
-        $this->setIfExists('days', $data ?? [], null);
-        $this->setIfExists('totals', $data ?? [], null);
-        $this->setIfExists('line_items', $data ?? [], null);
-        $this->setIfExists('peaks', $data ?? [], null);
-        $this->setIfExists('call_usage', $data ?? [], null);
-        $this->setIfExists('period', $data ?? [], null);
-        $this->setIfExists('tax', $data ?? [], null);
+        $this->setIfExists('tax_usd', $data ?? [], null);
+        $this->setIfExists('rate_percent', $data ?? [], null);
+        $this->setIfExists('jurisdiction_label', $data ?? [], null);
+        $this->setIfExists('reverse_charge', $data ?? [], null);
     }
 
     /**
@@ -349,15 +297,6 @@ class UsageMetering implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getGranularityAllowableValues();
-        if (!is_null($this->container['granularity']) && !in_array($this->container['granularity'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'granularity', must be one of '%s'",
-                $this->container['granularity'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -374,254 +313,123 @@ class UsageMetering implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets supported
+     * Gets tax_usd
      *
-     * @return bool|null
+     * @return float|null
      */
-    public function getSupported()
+    public function getTaxUsd()
     {
-        return $this->container['supported'];
+        return $this->container['tax_usd'];
     }
 
     /**
-     * Sets supported
+     * Sets tax_usd
      *
-     * @param bool|null $supported False for legacy Stripe accounts (no Metronome invoice to split); `days` and `totals` are then empty/zero.
+     * @param float|null $tax_usd Estimated tax in USD
      *
      * @return self
      */
-    public function setSupported($supported)
+    public function setTaxUsd($tax_usd)
     {
-        if (is_null($supported)) {
-            throw new \InvalidArgumentException('non-nullable supported cannot be null');
+        if (is_null($tax_usd)) {
+            throw new \InvalidArgumentException('non-nullable tax_usd cannot be null');
         }
-        $this->container['supported'] = $supported;
+        $this->container['tax_usd'] = $tax_usd;
 
         return $this;
     }
 
     /**
-     * Gets granularity
+     * Gets rate_percent
+     *
+     * @return float|null
+     */
+    public function getRatePercent()
+    {
+        return $this->container['rate_percent'];
+    }
+
+    /**
+     * Sets rate_percent
+     *
+     * @param float|null $rate_percent Combined rate percentage
+     *
+     * @return self
+     */
+    public function setRatePercent($rate_percent)
+    {
+        if (is_null($rate_percent)) {
+            array_push($this->openAPINullablesSetToNull, 'rate_percent');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rate_percent', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['rate_percent'] = $rate_percent;
+
+        return $this;
+    }
+
+    /**
+     * Gets jurisdiction_label
      *
      * @return string|null
      */
-    public function getGranularity()
+    public function getJurisdictionLabel()
     {
-        return $this->container['granularity'];
+        return $this->container['jurisdiction_label'];
     }
 
     /**
-     * Sets granularity
+     * Sets jurisdiction_label
      *
-     * @param string|null $granularity granularity
+     * @param string|null $jurisdiction_label Human jurisdiction label
      *
      * @return self
      */
-    public function setGranularity($granularity)
+    public function setJurisdictionLabel($jurisdiction_label)
     {
-        if (is_null($granularity)) {
-            throw new \InvalidArgumentException('non-nullable granularity cannot be null');
+        if (is_null($jurisdiction_label)) {
+            array_push($this->openAPINullablesSetToNull, 'jurisdiction_label');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('jurisdiction_label', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $allowedValues = $this->getGranularityAllowableValues();
-        if (!in_array($granularity, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'granularity', must be one of '%s'",
-                    $granularity,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['granularity'] = $granularity;
+        $this->container['jurisdiction_label'] = $jurisdiction_label;
 
         return $this;
     }
 
     /**
-     * Gets days
+     * Gets reverse_charge
      *
-     * @return \Zernio\Model\UsageMeteringDaysInner[]|null
+     * @return bool|null
      */
-    public function getDays()
+    public function getReverseCharge()
     {
-        return $this->container['days'];
+        return $this->container['reverse_charge'];
     }
 
     /**
-     * Sets days
+     * Sets reverse_charge
      *
-     * @param \Zernio\Model\UsageMeteringDaysInner[]|null $days One row per bucket. Empty when `granularity=total`. `date` is a UTC date (month buckets use the 1st).
+     * @param bool|null $reverse_charge True for EU/UK B2B reverse charge (0 tax added by design).
      *
      * @return self
      */
-    public function setDays($days)
+    public function setReverseCharge($reverse_charge)
     {
-        if (is_null($days)) {
-            throw new \InvalidArgumentException('non-nullable days cannot be null');
+        if (is_null($reverse_charge)) {
+            throw new \InvalidArgumentException('non-nullable reverse_charge cannot be null');
         }
-        $this->container['days'] = $days;
-
-        return $this;
-    }
-
-    /**
-     * Gets totals
-     *
-     * @return \Zernio\Model\UsageMeteringTotals|null
-     */
-    public function getTotals()
-    {
-        return $this->container['totals'];
-    }
-
-    /**
-     * Sets totals
-     *
-     * @param \Zernio\Model\UsageMeteringTotals|null $totals totals
-     *
-     * @return self
-     */
-    public function setTotals($totals)
-    {
-        if (is_null($totals)) {
-            throw new \InvalidArgumentException('non-nullable totals cannot be null');
-        }
-        $this->container['totals'] = $totals;
-
-        return $this;
-    }
-
-    /**
-     * Gets line_items
-     *
-     * @return \Zernio\Model\UsageMeteringLineItemsInner[]|null
-     */
-    public function getLineItems()
-    {
-        return $this->container['line_items'];
-    }
-
-    /**
-     * Sets line_items
-     *
-     * @param \Zernio\Model\UsageMeteringLineItemsInner[]|null $line_items Per-invoice-line-item rows (largest spend first) for a detailed breakdown.
-     *
-     * @return self
-     */
-    public function setLineItems($line_items)
-    {
-        if (is_null($line_items)) {
-            throw new \InvalidArgumentException('non-nullable line_items cannot be null');
-        }
-        $this->container['line_items'] = $line_items;
-
-        return $this;
-    }
-
-    /**
-     * Gets peaks
-     *
-     * @return \Zernio\Model\UsageMeteringPeaks|null
-     */
-    public function getPeaks()
-    {
-        return $this->container['peaks'];
-    }
-
-    /**
-     * Sets peaks
-     *
-     * @param \Zernio\Model\UsageMeteringPeaks|null $peaks peaks
-     *
-     * @return self
-     */
-    public function setPeaks($peaks)
-    {
-        if (is_null($peaks)) {
-            throw new \InvalidArgumentException('non-nullable peaks cannot be null');
-        }
-        $this->container['peaks'] = $peaks;
-
-        return $this;
-    }
-
-    /**
-     * Gets call_usage
-     *
-     * @return \Zernio\Model\UsageMeteringCallUsage|null
-     */
-    public function getCallUsage()
-    {
-        return $this->container['call_usage'];
-    }
-
-    /**
-     * Sets call_usage
-     *
-     * @param \Zernio\Model\UsageMeteringCallUsage|null $call_usage call_usage
-     *
-     * @return self
-     */
-    public function setCallUsage($call_usage)
-    {
-        if (is_null($call_usage)) {
-            throw new \InvalidArgumentException('non-nullable call_usage cannot be null');
-        }
-        $this->container['call_usage'] = $call_usage;
-
-        return $this;
-    }
-
-    /**
-     * Gets period
-     *
-     * @return \Zernio\Model\UsageMeteringPeriod|null
-     */
-    public function getPeriod()
-    {
-        return $this->container['period'];
-    }
-
-    /**
-     * Sets period
-     *
-     * @param \Zernio\Model\UsageMeteringPeriod|null $period period
-     *
-     * @return self
-     */
-    public function setPeriod($period)
-    {
-        if (is_null($period)) {
-            throw new \InvalidArgumentException('non-nullable period cannot be null');
-        }
-        $this->container['period'] = $period;
-
-        return $this;
-    }
-
-    /**
-     * Gets tax
-     *
-     * @return \Zernio\Model\UsageMeteringTax|null
-     */
-    public function getTax()
-    {
-        return $this->container['tax'];
-    }
-
-    /**
-     * Sets tax
-     *
-     * @param \Zernio\Model\UsageMeteringTax|null $tax tax
-     *
-     * @return self
-     */
-    public function setTax($tax)
-    {
-        if (is_null($tax)) {
-            throw new \InvalidArgumentException('non-nullable tax cannot be null');
-        }
-        $this->container['tax'] = $tax;
+        $this->container['reverse_charge'] = $reverse_charge;
 
         return $this;
     }
