@@ -604,6 +604,7 @@ docs/Model/GetSequence200ResponseSequence.md
 docs/Model/GetSequence200ResponseSequenceStepsInner.md
 docs/Model/GetSequence200ResponseSequenceStepsInnerTemplate.md
 docs/Model/GetSmsRegistration200Response.md
+docs/Model/GetSmsRegistration200ResponseCampaignContent.md
 docs/Model/GetSmsUsage200Response.md
 docs/Model/GetSmsUsage200ResponseGroupsInner.md
 docs/Model/GetSmsUsage200ResponseTotals.md
@@ -877,6 +878,8 @@ docs/Model/MediaUploadResponse.md
 docs/Model/Money.md
 docs/Model/MoveAccountToProfile200Response.md
 docs/Model/MoveAccountToProfileRequest.md
+docs/Model/OnWhatsAppAutomaticEventRequest.md
+docs/Model/OnWhatsAppAutomaticEventRequestCustomData.md
 docs/Model/OnWhatsAppNumberActionRequiredRequest.md
 docs/Model/OnWhatsAppNumberActivatedRequest.md
 docs/Model/OnWhatsAppNumberActivatedRequestNumber.md
@@ -2005,6 +2008,7 @@ lib/Model/GetSequence200ResponseSequence.php
 lib/Model/GetSequence200ResponseSequenceStepsInner.php
 lib/Model/GetSequence200ResponseSequenceStepsInnerTemplate.php
 lib/Model/GetSmsRegistration200Response.php
+lib/Model/GetSmsRegistration200ResponseCampaignContent.php
 lib/Model/GetSmsUsage200Response.php
 lib/Model/GetSmsUsage200ResponseGroupsInner.php
 lib/Model/GetSmsUsage200ResponseTotals.php
@@ -2279,6 +2283,8 @@ lib/Model/ModelInterface.php
 lib/Model/Money.php
 lib/Model/MoveAccountToProfile200Response.php
 lib/Model/MoveAccountToProfileRequest.php
+lib/Model/OnWhatsAppAutomaticEventRequest.php
+lib/Model/OnWhatsAppAutomaticEventRequestCustomData.php
 lib/Model/OnWhatsAppNumberActionRequiredRequest.php
 lib/Model/OnWhatsAppNumberActivatedRequest.php
 lib/Model/OnWhatsAppNumberActivatedRequestNumber.php
@@ -2803,20 +2809,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/BillingSnapshotBalanceTest.php
-test/Model/BillingSnapshotCapsTest.php
-test/Model/BillingSnapshotLegacyLimitsTest.php
-test/Model/BillingSnapshotLegacyTest.php
-test/Model/BillingSnapshotPeriodTest.php
-test/Model/BillingSnapshotPlanTest.php
-test/Model/BillingSnapshotStatusTest.php
-test/Model/BillingSnapshotTest.php
-test/Model/GetUsage200ResponseTest.php
-test/Model/UsageMeteringCallUsageTest.php
-test/Model/UsageMeteringCallUsageWhatsappTest.php
-test/Model/UsageMeteringDaysInnerTest.php
-test/Model/UsageMeteringLineItemsInnerTest.php
-test/Model/UsageMeteringPeaksTest.php
-test/Model/UsageMeteringPeriodTest.php
-test/Model/UsageMeteringTest.php
-test/Model/UsageMeteringTotalsTest.php
+test/Model/GetSmsRegistration200ResponseCampaignContentTest.php
+test/Model/OnWhatsAppAutomaticEventRequestCustomDataTest.php
+test/Model/OnWhatsAppAutomaticEventRequestTest.php

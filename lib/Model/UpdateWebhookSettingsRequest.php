@@ -281,6 +281,11 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     public const EVENTS_ACCOUNT_DISCONNECTED = 'account.disconnected';
     public const EVENTS_ACCOUNT_ADS_INITIAL_SYNC_COMPLETED = 'account.ads.initial_sync_completed';
     public const EVENTS_MESSAGE_RECEIVED = 'message.received';
+    public const EVENTS_CONVERSATION_STARTED = 'conversation.started';
+    public const EVENTS_CALL_RECEIVED = 'call.received';
+    public const EVENTS_CALL_ENDED = 'call.ended';
+    public const EVENTS_CALL_FAILED = 'call.failed';
+    public const EVENTS_CALL_PERMISSION_REQUEST = 'call.permission_request';
     public const EVENTS_MESSAGE_SENT = 'message.sent';
     public const EVENTS_MESSAGE_EDITED = 'message.edited';
     public const EVENTS_MESSAGE_DELETED = 'message.deleted';
@@ -291,8 +296,10 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     public const EVENTS_COMMENT_RECEIVED = 'comment.received';
     public const EVENTS_REVIEW_NEW = 'review.new';
     public const EVENTS_REVIEW_UPDATED = 'review.updated';
+    public const EVENTS_LEAD_RECEIVED = 'lead.received';
     public const EVENTS_AD_STATUS_CHANGED = 'ad.status_changed';
     public const EVENTS_WHATSAPP_TEMPLATE_STATUS_UPDATED = 'whatsapp.template.status_updated';
+    public const EVENTS_WHATSAPP_AUTOMATIC_EVENT = 'whatsapp.automatic_event';
     public const EVENTS_WHATSAPP_NUMBER_ACTIVATED = 'whatsapp.number.activated';
     public const EVENTS_WHATSAPP_NUMBER_DECLINED = 'whatsapp.number.declined';
     public const EVENTS_WHATSAPP_NUMBER_ACTION_REQUIRED = 'whatsapp.number.action_required';
@@ -326,6 +333,11 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
             self::EVENTS_ACCOUNT_DISCONNECTED,
             self::EVENTS_ACCOUNT_ADS_INITIAL_SYNC_COMPLETED,
             self::EVENTS_MESSAGE_RECEIVED,
+            self::EVENTS_CONVERSATION_STARTED,
+            self::EVENTS_CALL_RECEIVED,
+            self::EVENTS_CALL_ENDED,
+            self::EVENTS_CALL_FAILED,
+            self::EVENTS_CALL_PERMISSION_REQUEST,
             self::EVENTS_MESSAGE_SENT,
             self::EVENTS_MESSAGE_EDITED,
             self::EVENTS_MESSAGE_DELETED,
@@ -336,8 +348,10 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
             self::EVENTS_COMMENT_RECEIVED,
             self::EVENTS_REVIEW_NEW,
             self::EVENTS_REVIEW_UPDATED,
+            self::EVENTS_LEAD_RECEIVED,
             self::EVENTS_AD_STATUS_CHANGED,
             self::EVENTS_WHATSAPP_TEMPLATE_STATUS_UPDATED,
+            self::EVENTS_WHATSAPP_AUTOMATIC_EVENT,
             self::EVENTS_WHATSAPP_NUMBER_ACTIVATED,
             self::EVENTS_WHATSAPP_NUMBER_DECLINED,
             self::EVENTS_WHATSAPP_NUMBER_ACTION_REQUIRED,

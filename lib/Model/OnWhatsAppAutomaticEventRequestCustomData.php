@@ -1,6 +1,6 @@
 <?php
 /**
- * AppealSmsRegistrationRequest
+ * OnWhatsAppAutomaticEventRequestCustomData
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * AppealSmsRegistrationRequest Class Doc Comment
+ * OnWhatsAppAutomaticEventRequestCustomData Class Doc Comment
  *
  * @category Class
+ * @description Purchase events may carry the detected amount.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class OnWhatsAppAutomaticEventRequestCustomData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'appealSmsRegistration_request';
+    protected static $openAPIModelName = 'onWhatsAppAutomaticEvent_request_customData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +59,8 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'appeal_reason' => 'string',
-        'message_flow' => 'string',
-        'sample1' => 'string',
-        'sample2' => 'string'
+        'currency' => 'string',
+        'value' => 'float'
     ];
 
     /**
@@ -72,10 +71,8 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'appeal_reason' => null,
-        'message_flow' => null,
-        'sample1' => null,
-        'sample2' => null
+        'currency' => null,
+        'value' => null
     ];
 
     /**
@@ -84,10 +81,8 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'appeal_reason' => false,
-        'message_flow' => false,
-        'sample1' => false,
-        'sample2' => false
+        'currency' => false,
+        'value' => false
     ];
 
     /**
@@ -176,10 +171,8 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'appeal_reason' => 'appealReason',
-        'message_flow' => 'messageFlow',
-        'sample1' => 'sample1',
-        'sample2' => 'sample2'
+        'currency' => 'currency',
+        'value' => 'value'
     ];
 
     /**
@@ -188,10 +181,8 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'appeal_reason' => 'setAppealReason',
-        'message_flow' => 'setMessageFlow',
-        'sample1' => 'setSample1',
-        'sample2' => 'setSample2'
+        'currency' => 'setCurrency',
+        'value' => 'setValue'
     ];
 
     /**
@@ -200,10 +191,8 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'appeal_reason' => 'getAppealReason',
-        'message_flow' => 'getMessageFlow',
-        'sample1' => 'getSample1',
-        'sample2' => 'getSample2'
+        'currency' => 'getCurrency',
+        'value' => 'getValue'
     ];
 
     /**
@@ -263,10 +252,8 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('appeal_reason', $data ?? [], null);
-        $this->setIfExists('message_flow', $data ?? [], null);
-        $this->setIfExists('sample1', $data ?? [], null);
-        $this->setIfExists('sample2', $data ?? [], null);
+        $this->setIfExists('currency', $data ?? [], null);
+        $this->setIfExists('value', $data ?? [], null);
     }
 
     /**
@@ -296,33 +283,6 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['appeal_reason'] === null) {
-            $invalidProperties[] = "'appeal_reason' can't be null";
-        }
-        if ((mb_strlen($this->container['appeal_reason']) > 2000)) {
-            $invalidProperties[] = "invalid value for 'appeal_reason', the character length must be smaller than or equal to 2000.";
-        }
-
-        if ((mb_strlen($this->container['appeal_reason']) < 10)) {
-            $invalidProperties[] = "invalid value for 'appeal_reason', the character length must be bigger than or equal to 10.";
-        }
-
-        if (!is_null($this->container['message_flow']) && (mb_strlen($this->container['message_flow']) > 2048)) {
-            $invalidProperties[] = "invalid value for 'message_flow', the character length must be smaller than or equal to 2048.";
-        }
-
-        if (!is_null($this->container['message_flow']) && (mb_strlen($this->container['message_flow']) < 40)) {
-            $invalidProperties[] = "invalid value for 'message_flow', the character length must be bigger than or equal to 40.";
-        }
-
-        if (!is_null($this->container['sample1']) && (mb_strlen($this->container['sample1']) < 20)) {
-            $invalidProperties[] = "invalid value for 'sample1', the character length must be bigger than or equal to 20.";
-        }
-
-        if (!is_null($this->container['sample2']) && (mb_strlen($this->container['sample2']) < 20)) {
-            $invalidProperties[] = "invalid value for 'sample2', the character length must be bigger than or equal to 20.";
-        }
-
         return $invalidProperties;
     }
 
@@ -339,133 +299,55 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets appeal_reason
+     * Gets currency
      *
-     * @return string
+     * @return string|null
      */
-    public function getAppealReason()
+    public function getCurrency()
     {
-        return $this->container['appeal_reason'];
+        return $this->container['currency'];
     }
 
     /**
-     * Sets appeal_reason
+     * Sets currency
      *
-     * @param string $appeal_reason Goes verbatim to the carrier reviewer — address the decline reason directly.
+     * @param string|null $currency currency
      *
      * @return self
      */
-    public function setAppealReason($appeal_reason)
+    public function setCurrency($currency)
     {
-        if (is_null($appeal_reason)) {
-            throw new \InvalidArgumentException('non-nullable appeal_reason cannot be null');
+        if (is_null($currency)) {
+            throw new \InvalidArgumentException('non-nullable currency cannot be null');
         }
-        if ((mb_strlen($appeal_reason) > 2000)) {
-            throw new \InvalidArgumentException('invalid length for $appeal_reason when calling AppealSmsRegistrationRequest., must be smaller than or equal to 2000.');
-        }
-        if ((mb_strlen($appeal_reason) < 10)) {
-            throw new \InvalidArgumentException('invalid length for $appeal_reason when calling AppealSmsRegistrationRequest., must be bigger than or equal to 10.');
-        }
-
-        $this->container['appeal_reason'] = $appeal_reason;
+        $this->container['currency'] = $currency;
 
         return $this;
     }
 
     /**
-     * Gets message_flow
+     * Gets value
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getMessageFlow()
+    public function getValue()
     {
-        return $this->container['message_flow'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets message_flow
+     * Sets value
      *
-     * @param string|null $message_flow Corrected opt-in flow; include a link to the opt-in page/form.
+     * @param float|null $value value
      *
      * @return self
      */
-    public function setMessageFlow($message_flow)
+    public function setValue($value)
     {
-        if (is_null($message_flow)) {
-            throw new \InvalidArgumentException('non-nullable message_flow cannot be null');
+        if (is_null($value)) {
+            throw new \InvalidArgumentException('non-nullable value cannot be null');
         }
-        if ((mb_strlen($message_flow) > 2048)) {
-            throw new \InvalidArgumentException('invalid length for $message_flow when calling AppealSmsRegistrationRequest., must be smaller than or equal to 2048.');
-        }
-        if ((mb_strlen($message_flow) < 40)) {
-            throw new \InvalidArgumentException('invalid length for $message_flow when calling AppealSmsRegistrationRequest., must be bigger than or equal to 40.');
-        }
-
-        $this->container['message_flow'] = $message_flow;
-
-        return $this;
-    }
-
-    /**
-     * Gets sample1
-     *
-     * @return string|null
-     */
-    public function getSample1()
-    {
-        return $this->container['sample1'];
-    }
-
-    /**
-     * Sets sample1
-     *
-     * @param string|null $sample1 sample1
-     *
-     * @return self
-     */
-    public function setSample1($sample1)
-    {
-        if (is_null($sample1)) {
-            throw new \InvalidArgumentException('non-nullable sample1 cannot be null');
-        }
-
-        if ((mb_strlen($sample1) < 20)) {
-            throw new \InvalidArgumentException('invalid length for $sample1 when calling AppealSmsRegistrationRequest., must be bigger than or equal to 20.');
-        }
-
-        $this->container['sample1'] = $sample1;
-
-        return $this;
-    }
-
-    /**
-     * Gets sample2
-     *
-     * @return string|null
-     */
-    public function getSample2()
-    {
-        return $this->container['sample2'];
-    }
-
-    /**
-     * Sets sample2
-     *
-     * @param string|null $sample2 sample2
-     *
-     * @return self
-     */
-    public function setSample2($sample2)
-    {
-        if (is_null($sample2)) {
-            throw new \InvalidArgumentException('non-nullable sample2 cannot be null');
-        }
-
-        if ((mb_strlen($sample2) < 20)) {
-            throw new \InvalidArgumentException('invalid length for $sample2 when calling AppealSmsRegistrationRequest., must be bigger than or equal to 20.');
-        }
-
-        $this->container['sample2'] = $sample2;
+        $this->container['value'] = $value;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * GetSmsRegistration200Response
+ * OnWhatsAppAutomaticEventRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetSmsRegistration200Response Class Doc Comment
+ * OnWhatsAppAutomaticEventRequest Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetSmsRegistration200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class OnWhatsAppAutomaticEventRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetSmsRegistration200Response implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getSmsRegistration_200_response';
+    protected static $openAPIModelName = 'onWhatsAppAutomaticEvent_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,14 +59,15 @@ class GetSmsRegistration200Response implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'registration_type' => 'string',
-        'status' => 'string',
-        'brand_status' => 'string',
-        'campaign_status' => 'string',
-        'decline_reason' => 'string',
-        'phone_numbers' => 'string[]',
-        'awaiting_otp' => 'bool',
-        'campaign_content' => '\Zernio\Model\GetSmsRegistration200ResponseCampaignContent'
+        'event' => 'string',
+        'timestamp' => '\DateTime',
+        'account_id' => 'string',
+        'conversation_id' => 'string',
+        'platform_message_id' => 'string',
+        'event_name' => 'string',
+        'ctwa_clid' => 'string',
+        'custom_data' => '\Zernio\Model\OnWhatsAppAutomaticEventRequestCustomData',
+        'detected_at' => '\DateTime'
     ];
 
     /**
@@ -78,14 +79,15 @@ class GetSmsRegistration200Response implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'registration_type' => null,
-        'status' => null,
-        'brand_status' => null,
-        'campaign_status' => null,
-        'decline_reason' => null,
-        'phone_numbers' => null,
-        'awaiting_otp' => null,
-        'campaign_content' => null
+        'event' => null,
+        'timestamp' => 'date-time',
+        'account_id' => null,
+        'conversation_id' => null,
+        'platform_message_id' => null,
+        'event_name' => null,
+        'ctwa_clid' => null,
+        'custom_data' => null,
+        'detected_at' => 'date-time'
     ];
 
     /**
@@ -95,14 +97,15 @@ class GetSmsRegistration200Response implements ModelInterface, ArrayAccess, \Jso
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'registration_type' => false,
-        'status' => false,
-        'brand_status' => false,
-        'campaign_status' => false,
-        'decline_reason' => true,
-        'phone_numbers' => false,
-        'awaiting_otp' => false,
-        'campaign_content' => false
+        'event' => false,
+        'timestamp' => false,
+        'account_id' => false,
+        'conversation_id' => false,
+        'platform_message_id' => false,
+        'event_name' => false,
+        'ctwa_clid' => false,
+        'custom_data' => false,
+        'detected_at' => false
     ];
 
     /**
@@ -192,14 +195,15 @@ class GetSmsRegistration200Response implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'registration_type' => 'registrationType',
-        'status' => 'status',
-        'brand_status' => 'brandStatus',
-        'campaign_status' => 'campaignStatus',
-        'decline_reason' => 'declineReason',
-        'phone_numbers' => 'phoneNumbers',
-        'awaiting_otp' => 'awaitingOtp',
-        'campaign_content' => 'campaignContent'
+        'event' => 'event',
+        'timestamp' => 'timestamp',
+        'account_id' => 'accountId',
+        'conversation_id' => 'conversationId',
+        'platform_message_id' => 'platformMessageId',
+        'event_name' => 'eventName',
+        'ctwa_clid' => 'ctwaClid',
+        'custom_data' => 'customData',
+        'detected_at' => 'detectedAt'
     ];
 
     /**
@@ -209,14 +213,15 @@ class GetSmsRegistration200Response implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $setters = [
         'id' => 'setId',
-        'registration_type' => 'setRegistrationType',
-        'status' => 'setStatus',
-        'brand_status' => 'setBrandStatus',
-        'campaign_status' => 'setCampaignStatus',
-        'decline_reason' => 'setDeclineReason',
-        'phone_numbers' => 'setPhoneNumbers',
-        'awaiting_otp' => 'setAwaitingOtp',
-        'campaign_content' => 'setCampaignContent'
+        'event' => 'setEvent',
+        'timestamp' => 'setTimestamp',
+        'account_id' => 'setAccountId',
+        'conversation_id' => 'setConversationId',
+        'platform_message_id' => 'setPlatformMessageId',
+        'event_name' => 'setEventName',
+        'ctwa_clid' => 'setCtwaClid',
+        'custom_data' => 'setCustomData',
+        'detected_at' => 'setDetectedAt'
     ];
 
     /**
@@ -226,14 +231,15 @@ class GetSmsRegistration200Response implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $getters = [
         'id' => 'getId',
-        'registration_type' => 'getRegistrationType',
-        'status' => 'getStatus',
-        'brand_status' => 'getBrandStatus',
-        'campaign_status' => 'getCampaignStatus',
-        'decline_reason' => 'getDeclineReason',
-        'phone_numbers' => 'getPhoneNumbers',
-        'awaiting_otp' => 'getAwaitingOtp',
-        'campaign_content' => 'getCampaignContent'
+        'event' => 'getEvent',
+        'timestamp' => 'getTimestamp',
+        'account_id' => 'getAccountId',
+        'conversation_id' => 'getConversationId',
+        'platform_message_id' => 'getPlatformMessageId',
+        'event_name' => 'getEventName',
+        'ctwa_clid' => 'getCtwaClid',
+        'custom_data' => 'getCustomData',
+        'detected_at' => 'getDetectedAt'
     ];
 
     /**
@@ -277,38 +283,17 @@ class GetSmsRegistration200Response implements ModelInterface, ArrayAccess, \Jso
         return self::$openAPIModelName;
     }
 
-    public const REGISTRATION_TYPE_STANDARD_10DLC = 'standard_10dlc';
-    public const REGISTRATION_TYPE_SOLE_PROP_10DLC = 'sole_prop_10dlc';
-    public const REGISTRATION_TYPE_TOLL_FREE = 'toll_free';
-    public const STATUS_PENDING = 'pending';
-    public const STATUS_APPROVED = 'approved';
-    public const STATUS_REJECTED = 'rejected';
+    public const EVENT_WHATSAPP_AUTOMATIC_EVENT = 'whatsapp.automatic_event';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getRegistrationTypeAllowableValues()
+    public function getEventAllowableValues()
     {
         return [
-            self::REGISTRATION_TYPE_STANDARD_10DLC,
-            self::REGISTRATION_TYPE_SOLE_PROP_10DLC,
-            self::REGISTRATION_TYPE_TOLL_FREE,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_PENDING,
-            self::STATUS_APPROVED,
-            self::STATUS_REJECTED,
+            self::EVENT_WHATSAPP_AUTOMATIC_EVENT,
         ];
     }
 
@@ -328,14 +313,15 @@ class GetSmsRegistration200Response implements ModelInterface, ArrayAccess, \Jso
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('registration_type', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('brand_status', $data ?? [], null);
-        $this->setIfExists('campaign_status', $data ?? [], null);
-        $this->setIfExists('decline_reason', $data ?? [], null);
-        $this->setIfExists('phone_numbers', $data ?? [], null);
-        $this->setIfExists('awaiting_otp', $data ?? [], null);
-        $this->setIfExists('campaign_content', $data ?? [], null);
+        $this->setIfExists('event', $data ?? [], null);
+        $this->setIfExists('timestamp', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('conversation_id', $data ?? [], null);
+        $this->setIfExists('platform_message_id', $data ?? [], null);
+        $this->setIfExists('event_name', $data ?? [], null);
+        $this->setIfExists('ctwa_clid', $data ?? [], null);
+        $this->setIfExists('custom_data', $data ?? [], null);
+        $this->setIfExists('detected_at', $data ?? [], null);
     }
 
     /**
@@ -365,20 +351,11 @@ class GetSmsRegistration200Response implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getRegistrationTypeAllowableValues();
-        if (!is_null($this->container['registration_type']) && !in_array($this->container['registration_type'], $allowedValues, true)) {
+        $allowedValues = $this->getEventAllowableValues();
+        if (!is_null($this->container['event']) && !in_array($this->container['event'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'registration_type', must be one of '%s'",
-                $this->container['registration_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
+                "invalid value '%s' for 'event', must be one of '%s'",
+                $this->container['event'],
                 implode("', '", $allowedValues)
             );
         }
@@ -426,244 +403,254 @@ class GetSmsRegistration200Response implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets registration_type
+     * Gets event
      *
      * @return string|null
      */
-    public function getRegistrationType()
+    public function getEvent()
     {
-        return $this->container['registration_type'];
+        return $this->container['event'];
     }
 
     /**
-     * Sets registration_type
+     * Sets event
      *
-     * @param string|null $registration_type registration_type
+     * @param string|null $event event
      *
      * @return self
      */
-    public function setRegistrationType($registration_type)
+    public function setEvent($event)
     {
-        if (is_null($registration_type)) {
-            throw new \InvalidArgumentException('non-nullable registration_type cannot be null');
+        if (is_null($event)) {
+            throw new \InvalidArgumentException('non-nullable event cannot be null');
         }
-        $allowedValues = $this->getRegistrationTypeAllowableValues();
-        if (!in_array($registration_type, $allowedValues, true)) {
+        $allowedValues = $this->getEventAllowableValues();
+        if (!in_array($event, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'registration_type', must be one of '%s'",
-                    $registration_type,
+                    "Invalid value '%s' for 'event', must be one of '%s'",
+                    $event,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['registration_type'] = $registration_type;
+        $this->container['event'] = $event;
 
         return $this;
     }
 
     /**
-     * Gets status
+     * Gets timestamp
+     *
+     * @return \DateTime|null
+     */
+    public function getTimestamp()
+    {
+        return $this->container['timestamp'];
+    }
+
+    /**
+     * Sets timestamp
+     *
+     * @param \DateTime|null $timestamp timestamp
+     *
+     * @return self
+     */
+    public function setTimestamp($timestamp)
+    {
+        if (is_null($timestamp)) {
+            throw new \InvalidArgumentException('non-nullable timestamp cannot be null');
+        }
+        $this->container['timestamp'] = $timestamp;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_id
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getAccountId()
     {
-        return $this->container['status'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets status
+     * Sets account_id
      *
-     * @param string|null $status status
+     * @param string|null $account_id SocialAccount id of the WhatsApp number whose conversation was flagged.
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setAccountId($account_id)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }
 
     /**
-     * Gets brand_status
+     * Gets conversation_id
      *
      * @return string|null
      */
-    public function getBrandStatus()
+    public function getConversationId()
     {
-        return $this->container['brand_status'];
+        return $this->container['conversation_id'];
     }
 
     /**
-     * Sets brand_status
+     * Sets conversation_id
      *
-     * @param string|null $brand_status brand_status
+     * @param string|null $conversation_id Zernio conversation id, when the thread could be resolved.
      *
      * @return self
      */
-    public function setBrandStatus($brand_status)
+    public function setConversationId($conversation_id)
     {
-        if (is_null($brand_status)) {
-            throw new \InvalidArgumentException('non-nullable brand_status cannot be null');
+        if (is_null($conversation_id)) {
+            throw new \InvalidArgumentException('non-nullable conversation_id cannot be null');
         }
-        $this->container['brand_status'] = $brand_status;
+        $this->container['conversation_id'] = $conversation_id;
 
         return $this;
     }
 
     /**
-     * Gets campaign_status
+     * Gets platform_message_id
      *
      * @return string|null
      */
-    public function getCampaignStatus()
+    public function getPlatformMessageId()
     {
-        return $this->container['campaign_status'];
+        return $this->container['platform_message_id'];
     }
 
     /**
-     * Sets campaign_status
+     * Sets platform_message_id
      *
-     * @param string|null $campaign_status campaign_status
+     * @param string|null $platform_message_id The wamid of the message Meta's analysis flagged.
      *
      * @return self
      */
-    public function setCampaignStatus($campaign_status)
+    public function setPlatformMessageId($platform_message_id)
     {
-        if (is_null($campaign_status)) {
-            throw new \InvalidArgumentException('non-nullable campaign_status cannot be null');
+        if (is_null($platform_message_id)) {
+            throw new \InvalidArgumentException('non-nullable platform_message_id cannot be null');
         }
-        $this->container['campaign_status'] = $campaign_status;
+        $this->container['platform_message_id'] = $platform_message_id;
 
         return $this;
     }
 
     /**
-     * Gets decline_reason
+     * Gets event_name
      *
      * @return string|null
      */
-    public function getDeclineReason()
+    public function getEventName()
     {
-        return $this->container['decline_reason'];
+        return $this->container['event_name'];
     }
 
     /**
-     * Sets decline_reason
+     * Sets event_name
      *
-     * @param string|null $decline_reason decline_reason
+     * @param string|null $event_name Meta-detected event: `LeadSubmitted` | `Purchase`.
      *
      * @return self
      */
-    public function setDeclineReason($decline_reason)
+    public function setEventName($event_name)
     {
-        if (is_null($decline_reason)) {
-            array_push($this->openAPINullablesSetToNull, 'decline_reason');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('decline_reason', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($event_name)) {
+            throw new \InvalidArgumentException('non-nullable event_name cannot be null');
         }
-        $this->container['decline_reason'] = $decline_reason;
+        $this->container['event_name'] = $event_name;
 
         return $this;
     }
 
     /**
-     * Gets phone_numbers
+     * Gets ctwa_clid
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getPhoneNumbers()
+    public function getCtwaClid()
     {
-        return $this->container['phone_numbers'];
+        return $this->container['ctwa_clid'];
     }
 
     /**
-     * Sets phone_numbers
+     * Sets ctwa_clid
      *
-     * @param string[]|null $phone_numbers phone_numbers
+     * @param string|null $ctwa_clid Meta's CTWA click id, the Conversions API match key.
      *
      * @return self
      */
-    public function setPhoneNumbers($phone_numbers)
+    public function setCtwaClid($ctwa_clid)
     {
-        if (is_null($phone_numbers)) {
-            throw new \InvalidArgumentException('non-nullable phone_numbers cannot be null');
+        if (is_null($ctwa_clid)) {
+            throw new \InvalidArgumentException('non-nullable ctwa_clid cannot be null');
         }
-        $this->container['phone_numbers'] = $phone_numbers;
+        $this->container['ctwa_clid'] = $ctwa_clid;
 
         return $this;
     }
 
     /**
-     * Gets awaiting_otp
+     * Gets custom_data
      *
-     * @return bool|null
+     * @return \Zernio\Model\OnWhatsAppAutomaticEventRequestCustomData|null
      */
-    public function getAwaitingOtp()
+    public function getCustomData()
     {
-        return $this->container['awaiting_otp'];
+        return $this->container['custom_data'];
     }
 
     /**
-     * Sets awaiting_otp
+     * Sets custom_data
      *
-     * @param bool|null $awaiting_otp awaiting_otp
+     * @param \Zernio\Model\OnWhatsAppAutomaticEventRequestCustomData|null $custom_data custom_data
      *
      * @return self
      */
-    public function setAwaitingOtp($awaiting_otp)
+    public function setCustomData($custom_data)
     {
-        if (is_null($awaiting_otp)) {
-            throw new \InvalidArgumentException('non-nullable awaiting_otp cannot be null');
+        if (is_null($custom_data)) {
+            throw new \InvalidArgumentException('non-nullable custom_data cannot be null');
         }
-        $this->container['awaiting_otp'] = $awaiting_otp;
+        $this->container['custom_data'] = $custom_data;
 
         return $this;
     }
 
     /**
-     * Gets campaign_content
+     * Gets detected_at
      *
-     * @return \Zernio\Model\GetSmsRegistration200ResponseCampaignContent|null
+     * @return \DateTime|null
      */
-    public function getCampaignContent()
+    public function getDetectedAt()
     {
-        return $this->container['campaign_content'];
+        return $this->container['detected_at'];
     }
 
     /**
-     * Sets campaign_content
+     * Sets detected_at
      *
-     * @param \Zernio\Model\GetSmsRegistration200ResponseCampaignContent|null $campaign_content campaign_content
+     * @param \DateTime|null $detected_at detected_at
      *
      * @return self
      */
-    public function setCampaignContent($campaign_content)
+    public function setDetectedAt($detected_at)
     {
-        if (is_null($campaign_content)) {
-            throw new \InvalidArgumentException('non-nullable campaign_content cannot be null');
+        if (is_null($detected_at)) {
+            throw new \InvalidArgumentException('non-nullable detected_at cannot be null');
         }
-        $this->container['campaign_content'] = $campaign_content;
+        $this->container['detected_at'] = $detected_at;
 
         return $this;
     }

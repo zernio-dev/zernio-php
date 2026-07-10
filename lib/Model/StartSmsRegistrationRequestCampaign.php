@@ -60,6 +60,7 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'usecase' => 'string',
+        'sub_usecases' => 'string[]',
         'description' => 'string',
         'message_flow' => 'string',
         'sample1' => 'string',
@@ -86,6 +87,7 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'usecase' => null,
+        'sub_usecases' => null,
         'description' => null,
         'message_flow' => null,
         'sample1' => null,
@@ -110,6 +112,7 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
       */
     protected static array $openAPINullables = [
         'usecase' => false,
+        'sub_usecases' => false,
         'description' => false,
         'message_flow' => false,
         'sample1' => false,
@@ -214,6 +217,7 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'usecase' => 'usecase',
+        'sub_usecases' => 'subUsecases',
         'description' => 'description',
         'message_flow' => 'messageFlow',
         'sample1' => 'sample1',
@@ -238,6 +242,7 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'usecase' => 'setUsecase',
+        'sub_usecases' => 'setSubUsecases',
         'description' => 'setDescription',
         'message_flow' => 'setMessageFlow',
         'sample1' => 'setSample1',
@@ -262,6 +267,7 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'usecase' => 'getUsecase',
+        'sub_usecases' => 'getSubUsecases',
         'description' => 'getDescription',
         'message_flow' => 'getMessageFlow',
         'sample1' => 'getSample1',
@@ -320,6 +326,37 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    public const SUB_USECASES__2_FA = '2FA';
+    public const SUB_USECASES_ACCOUNT_NOTIFICATION = 'ACCOUNT_NOTIFICATION';
+    public const SUB_USECASES_CUSTOMER_CARE = 'CUSTOMER_CARE';
+    public const SUB_USECASES_DELIVERY_NOTIFICATION = 'DELIVERY_NOTIFICATION';
+    public const SUB_USECASES_FRAUD_ALERT = 'FRAUD_ALERT';
+    public const SUB_USECASES_HIGHER_EDUCATION = 'HIGHER_EDUCATION';
+    public const SUB_USECASES_MARKETING = 'MARKETING';
+    public const SUB_USECASES_POLLING_VOTING = 'POLLING_VOTING';
+    public const SUB_USECASES_PUBLIC_SERVICE_ANNOUNCEMENT = 'PUBLIC_SERVICE_ANNOUNCEMENT';
+    public const SUB_USECASES_SECURITY_ALERT = 'SECURITY_ALERT';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSubUsecasesAllowableValues()
+    {
+        return [
+            self::SUB_USECASES__2_FA,
+            self::SUB_USECASES_ACCOUNT_NOTIFICATION,
+            self::SUB_USECASES_CUSTOMER_CARE,
+            self::SUB_USECASES_DELIVERY_NOTIFICATION,
+            self::SUB_USECASES_FRAUD_ALERT,
+            self::SUB_USECASES_HIGHER_EDUCATION,
+            self::SUB_USECASES_MARKETING,
+            self::SUB_USECASES_POLLING_VOTING,
+            self::SUB_USECASES_PUBLIC_SERVICE_ANNOUNCEMENT,
+            self::SUB_USECASES_SECURITY_ALERT,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -337,6 +374,7 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
     public function __construct(?array $data = null)
     {
         $this->setIfExists('usecase', $data ?? [], null);
+        $this->setIfExists('sub_usecases', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('message_flow', $data ?? [], null);
         $this->setIfExists('sample1', $data ?? [], null);
@@ -384,6 +422,14 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
         if ($this->container['usecase'] === null) {
             $invalidProperties[] = "'usecase' can't be null";
         }
+        if (!is_null($this->container['sub_usecases']) && (count($this->container['sub_usecases']) > 5)) {
+            $invalidProperties[] = "invalid value for 'sub_usecases', number of items must be less than or equal to 5.";
+        }
+
+        if (!is_null($this->container['sub_usecases']) && (count($this->container['sub_usecases']) < 2)) {
+            $invalidProperties[] = "invalid value for 'sub_usecases', number of items must be greater than or equal to 2.";
+        }
+
         if ($this->container['description'] === null) {
             $invalidProperties[] = "'description' can't be null";
         }
@@ -505,6 +551,49 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets sub_usecases
+     *
+     * @return string[]|null
+     */
+    public function getSubUsecases()
+    {
+        return $this->container['sub_usecases'];
+    }
+
+    /**
+     * Sets sub_usecases
+     *
+     * @param string[]|null $sub_usecases The concrete kinds of messages a MIXED campaign sends (the carrier registry requires 2-5, and reviewers match them against the sample messages). Omitted: a default pair is applied for MIXED.
+     *
+     * @return self
+     */
+    public function setSubUsecases($sub_usecases)
+    {
+        if (is_null($sub_usecases)) {
+            throw new \InvalidArgumentException('non-nullable sub_usecases cannot be null');
+        }
+        $allowedValues = $this->getSubUsecasesAllowableValues();
+        if (array_diff($sub_usecases, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'sub_usecases', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+
+        if ((count($sub_usecases) > 5)) {
+            throw new \InvalidArgumentException('invalid value for $sub_usecases when calling StartSmsRegistrationRequestCampaign., number of items must be less than or equal to 5.');
+        }
+        if ((count($sub_usecases) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $sub_usecases when calling StartSmsRegistrationRequestCampaign., number of items must be greater than or equal to 2.');
+        }
+        $this->container['sub_usecases'] = $sub_usecases;
+
+        return $this;
+    }
+
+    /**
      * Gets description
      *
      * @return string
@@ -551,7 +640,7 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
     /**
      * Sets message_flow
      *
-     * @param string $message_flow How a recipient ends up receiving your messages (the opt-in flow).
+     * @param string $message_flow How a recipient ends up receiving your messages (the opt-in flow). Include a link to the page or form where they opt in — carrier reviewers reject campaigns whose consent they can't verify.
      *
      * @return self
      */

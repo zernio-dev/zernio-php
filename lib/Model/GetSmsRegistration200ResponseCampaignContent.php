@@ -1,6 +1,6 @@
 <?php
 /**
- * AppealSmsRegistrationRequest
+ * GetSmsRegistration200ResponseCampaignContent
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * AppealSmsRegistrationRequest Class Doc Comment
+ * GetSmsRegistration200ResponseCampaignContent Class Doc Comment
  *
  * @category Class
+ * @description The submitted campaign content, present only for rejected registrations with a campaign. Edit and resubmit it via the appeal endpoint&#39;s optional content fields.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetSmsRegistration200ResponseCampaignContent implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'appealSmsRegistration_request';
+    protected static $openAPIModelName = 'getSmsRegistration_200_response_campaignContent';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +59,6 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'appeal_reason' => 'string',
         'message_flow' => 'string',
         'sample1' => 'string',
         'sample2' => 'string'
@@ -72,7 +72,6 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'appeal_reason' => null,
         'message_flow' => null,
         'sample1' => null,
         'sample2' => null
@@ -84,7 +83,6 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'appeal_reason' => false,
         'message_flow' => false,
         'sample1' => false,
         'sample2' => false
@@ -176,7 +174,6 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'appeal_reason' => 'appealReason',
         'message_flow' => 'messageFlow',
         'sample1' => 'sample1',
         'sample2' => 'sample2'
@@ -188,7 +185,6 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'appeal_reason' => 'setAppealReason',
         'message_flow' => 'setMessageFlow',
         'sample1' => 'setSample1',
         'sample2' => 'setSample2'
@@ -200,7 +196,6 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'appeal_reason' => 'getAppealReason',
         'message_flow' => 'getMessageFlow',
         'sample1' => 'getSample1',
         'sample2' => 'getSample2'
@@ -263,7 +258,6 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('appeal_reason', $data ?? [], null);
         $this->setIfExists('message_flow', $data ?? [], null);
         $this->setIfExists('sample1', $data ?? [], null);
         $this->setIfExists('sample2', $data ?? [], null);
@@ -296,33 +290,6 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['appeal_reason'] === null) {
-            $invalidProperties[] = "'appeal_reason' can't be null";
-        }
-        if ((mb_strlen($this->container['appeal_reason']) > 2000)) {
-            $invalidProperties[] = "invalid value for 'appeal_reason', the character length must be smaller than or equal to 2000.";
-        }
-
-        if ((mb_strlen($this->container['appeal_reason']) < 10)) {
-            $invalidProperties[] = "invalid value for 'appeal_reason', the character length must be bigger than or equal to 10.";
-        }
-
-        if (!is_null($this->container['message_flow']) && (mb_strlen($this->container['message_flow']) > 2048)) {
-            $invalidProperties[] = "invalid value for 'message_flow', the character length must be smaller than or equal to 2048.";
-        }
-
-        if (!is_null($this->container['message_flow']) && (mb_strlen($this->container['message_flow']) < 40)) {
-            $invalidProperties[] = "invalid value for 'message_flow', the character length must be bigger than or equal to 40.";
-        }
-
-        if (!is_null($this->container['sample1']) && (mb_strlen($this->container['sample1']) < 20)) {
-            $invalidProperties[] = "invalid value for 'sample1', the character length must be bigger than or equal to 20.";
-        }
-
-        if (!is_null($this->container['sample2']) && (mb_strlen($this->container['sample2']) < 20)) {
-            $invalidProperties[] = "invalid value for 'sample2', the character length must be bigger than or equal to 20.";
-        }
-
         return $invalidProperties;
     }
 
@@ -339,40 +306,6 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets appeal_reason
-     *
-     * @return string
-     */
-    public function getAppealReason()
-    {
-        return $this->container['appeal_reason'];
-    }
-
-    /**
-     * Sets appeal_reason
-     *
-     * @param string $appeal_reason Goes verbatim to the carrier reviewer — address the decline reason directly.
-     *
-     * @return self
-     */
-    public function setAppealReason($appeal_reason)
-    {
-        if (is_null($appeal_reason)) {
-            throw new \InvalidArgumentException('non-nullable appeal_reason cannot be null');
-        }
-        if ((mb_strlen($appeal_reason) > 2000)) {
-            throw new \InvalidArgumentException('invalid length for $appeal_reason when calling AppealSmsRegistrationRequest., must be smaller than or equal to 2000.');
-        }
-        if ((mb_strlen($appeal_reason) < 10)) {
-            throw new \InvalidArgumentException('invalid length for $appeal_reason when calling AppealSmsRegistrationRequest., must be bigger than or equal to 10.');
-        }
-
-        $this->container['appeal_reason'] = $appeal_reason;
-
-        return $this;
-    }
-
-    /**
      * Gets message_flow
      *
      * @return string|null
@@ -385,7 +318,7 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets message_flow
      *
-     * @param string|null $message_flow Corrected opt-in flow; include a link to the opt-in page/form.
+     * @param string|null $message_flow message_flow
      *
      * @return self
      */
@@ -394,13 +327,6 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
         if (is_null($message_flow)) {
             throw new \InvalidArgumentException('non-nullable message_flow cannot be null');
         }
-        if ((mb_strlen($message_flow) > 2048)) {
-            throw new \InvalidArgumentException('invalid length for $message_flow when calling AppealSmsRegistrationRequest., must be smaller than or equal to 2048.');
-        }
-        if ((mb_strlen($message_flow) < 40)) {
-            throw new \InvalidArgumentException('invalid length for $message_flow when calling AppealSmsRegistrationRequest., must be bigger than or equal to 40.');
-        }
-
         $this->container['message_flow'] = $message_flow;
 
         return $this;
@@ -428,11 +354,6 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
         if (is_null($sample1)) {
             throw new \InvalidArgumentException('non-nullable sample1 cannot be null');
         }
-
-        if ((mb_strlen($sample1) < 20)) {
-            throw new \InvalidArgumentException('invalid length for $sample1 when calling AppealSmsRegistrationRequest., must be bigger than or equal to 20.');
-        }
-
         $this->container['sample1'] = $sample1;
 
         return $this;
@@ -460,11 +381,6 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
         if (is_null($sample2)) {
             throw new \InvalidArgumentException('non-nullable sample2 cannot be null');
         }
-
-        if ((mb_strlen($sample2) < 20)) {
-            throw new \InvalidArgumentException('invalid length for $sample2 when calling AppealSmsRegistrationRequest., must be bigger than or equal to 20.');
-        }
-
         $this->container['sample2'] = $sample2;
 
         return $this;
