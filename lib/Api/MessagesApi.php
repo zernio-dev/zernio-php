@@ -3136,8 +3136,8 @@ class MessagesApi
      *
      * Search conversations
      *
-     * @param  string $query Text to search for in message content (required)
-     * @param  string|null $direction Only match messages sent to you (incoming) or by you (outgoing) (optional)
+     * @param  string $query Text to search for, in message content and in the contact&#39;s name, username, or phone number (required)
+     * @param  string|null $direction Only match messages sent to you (incoming) or by you (outgoing). Contact-identity matching is not applied when this is set. (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $platform Filter by platform (searchable platforms only) (optional)
      * @param  string|null $account_id Filter by specific social account ID (optional)
@@ -3160,8 +3160,8 @@ class MessagesApi
      *
      * Search conversations
      *
-     * @param  string $query Text to search for in message content (required)
-     * @param  string|null $direction Only match messages sent to you (incoming) or by you (outgoing) (optional)
+     * @param  string $query Text to search for, in message content and in the contact&#39;s name, username, or phone number (required)
+     * @param  string|null $direction Only match messages sent to you (incoming) or by you (outgoing). Contact-identity matching is not applied when this is set. (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $platform Filter by platform (searchable platforms only) (optional)
      * @param  string|null $account_id Filter by specific social account ID (optional)
@@ -3265,8 +3265,8 @@ class MessagesApi
      *
      * Search conversations
      *
-     * @param  string $query Text to search for in message content (required)
-     * @param  string|null $direction Only match messages sent to you (incoming) or by you (outgoing) (optional)
+     * @param  string $query Text to search for, in message content and in the contact&#39;s name, username, or phone number (required)
+     * @param  string|null $direction Only match messages sent to you (incoming) or by you (outgoing). Contact-identity matching is not applied when this is set. (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $platform Filter by platform (searchable platforms only) (optional)
      * @param  string|null $account_id Filter by specific social account ID (optional)
@@ -3292,8 +3292,8 @@ class MessagesApi
      *
      * Search conversations
      *
-     * @param  string $query Text to search for in message content (required)
-     * @param  string|null $direction Only match messages sent to you (incoming) or by you (outgoing) (optional)
+     * @param  string $query Text to search for, in message content and in the contact&#39;s name, username, or phone number (required)
+     * @param  string|null $direction Only match messages sent to you (incoming) or by you (outgoing). Contact-identity matching is not applied when this is set. (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $platform Filter by platform (searchable platforms only) (optional)
      * @param  string|null $account_id Filter by specific social account ID (optional)
@@ -3348,8 +3348,8 @@ class MessagesApi
     /**
      * Create request for operation 'searchInboxConversations'
      *
-     * @param  string $query Text to search for in message content (required)
-     * @param  string|null $direction Only match messages sent to you (incoming) or by you (outgoing) (optional)
+     * @param  string $query Text to search for, in message content and in the contact&#39;s name, username, or phone number (required)
+     * @param  string|null $direction Only match messages sent to you (incoming) or by you (outgoing). Contact-identity matching is not applied when this is set. (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $platform Filter by platform (searchable platforms only) (optional)
      * @param  string|null $account_id Filter by specific social account ID (optional)

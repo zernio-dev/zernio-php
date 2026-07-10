@@ -344,7 +344,7 @@ class SearchInboxConversations200ResponseDataInner implements ModelInterface, Ar
     /**
      * Sets match_count
      *
-     * @param int|null $match_count Total number of matching messages in this conversation
+     * @param int|null $match_count Number of matching messages in this conversation. 0 when the conversation matched only on contact identity (name, username, or phone number), not on message text.
      *
      * @return self
      */
@@ -371,7 +371,7 @@ class SearchInboxConversations200ResponseDataInner implements ModelInterface, Ar
     /**
      * Sets matches
      *
-     * @param \Zernio\Model\SearchInboxConversations200ResponseDataInnerMatchesInner[]|null $matches Up to 3 most-recent matching messages
+     * @param \Zernio\Model\SearchInboxConversations200ResponseDataInnerMatchesInner[]|null $matches Up to 3 most-recent matching messages (empty for an identity-only match)
      *
      * @return self
      */

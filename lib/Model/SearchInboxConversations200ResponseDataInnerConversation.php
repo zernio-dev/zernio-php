@@ -65,6 +65,7 @@ class SearchInboxConversations200ResponseDataInnerConversation implements ModelI
         'participant_username' => 'string',
         'participant_picture' => 'string',
         'status' => 'string',
+        'last_message' => 'string',
         'last_message_at' => '\DateTime'
     ];
 
@@ -83,6 +84,7 @@ class SearchInboxConversations200ResponseDataInnerConversation implements ModelI
         'participant_username' => null,
         'participant_picture' => null,
         'status' => null,
+        'last_message' => null,
         'last_message_at' => 'date-time'
     ];
 
@@ -99,6 +101,7 @@ class SearchInboxConversations200ResponseDataInnerConversation implements ModelI
         'participant_username' => true,
         'participant_picture' => true,
         'status' => false,
+        'last_message' => true,
         'last_message_at' => true
     ];
 
@@ -195,6 +198,7 @@ class SearchInboxConversations200ResponseDataInnerConversation implements ModelI
         'participant_username' => 'participantUsername',
         'participant_picture' => 'participantPicture',
         'status' => 'status',
+        'last_message' => 'lastMessage',
         'last_message_at' => 'lastMessageAt'
     ];
 
@@ -211,6 +215,7 @@ class SearchInboxConversations200ResponseDataInnerConversation implements ModelI
         'participant_username' => 'setParticipantUsername',
         'participant_picture' => 'setParticipantPicture',
         'status' => 'setStatus',
+        'last_message' => 'setLastMessage',
         'last_message_at' => 'setLastMessageAt'
     ];
 
@@ -227,6 +232,7 @@ class SearchInboxConversations200ResponseDataInnerConversation implements ModelI
         'participant_username' => 'getParticipantUsername',
         'participant_picture' => 'getParticipantPicture',
         'status' => 'getStatus',
+        'last_message' => 'getLastMessage',
         'last_message_at' => 'getLastMessageAt'
     ];
 
@@ -309,6 +315,7 @@ class SearchInboxConversations200ResponseDataInnerConversation implements ModelI
         $this->setIfExists('participant_username', $data ?? [], null);
         $this->setIfExists('participant_picture', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('last_message', $data ?? [], null);
         $this->setIfExists('last_message_at', $data ?? [], null);
     }
 
@@ -579,6 +586,40 @@ class SearchInboxConversations200ResponseDataInnerConversation implements ModelI
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_message
+     *
+     * @return string|null
+     */
+    public function getLastMessage()
+    {
+        return $this->container['last_message'];
+    }
+
+    /**
+     * Sets last_message
+     *
+     * @param string|null $last_message The conversation's most recent message preview
+     *
+     * @return self
+     */
+    public function setLastMessage($last_message)
+    {
+        if (is_null($last_message)) {
+            array_push($this->openAPINullablesSetToNull, 'last_message');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('last_message', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['last_message'] = $last_message;
 
         return $this;
     }
