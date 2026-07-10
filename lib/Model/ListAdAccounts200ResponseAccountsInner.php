@@ -63,7 +63,9 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'currency' => 'string',
         'status' => 'string',
         'timezone_name' => 'string',
-        'timezone_offset_hours_utc' => 'float'
+        'timezone_offset_hours_utc' => 'float',
+        'selectable' => 'bool',
+        'unusable_reason' => 'string'
     ];
 
     /**
@@ -79,7 +81,9 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'currency' => null,
         'status' => null,
         'timezone_name' => null,
-        'timezone_offset_hours_utc' => null
+        'timezone_offset_hours_utc' => null,
+        'selectable' => null,
+        'unusable_reason' => null
     ];
 
     /**
@@ -93,7 +97,9 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'currency' => false,
         'status' => false,
         'timezone_name' => false,
-        'timezone_offset_hours_utc' => false
+        'timezone_offset_hours_utc' => false,
+        'selectable' => false,
+        'unusable_reason' => false
     ];
 
     /**
@@ -187,7 +193,9 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'currency' => 'currency',
         'status' => 'status',
         'timezone_name' => 'timezoneName',
-        'timezone_offset_hours_utc' => 'timezoneOffsetHoursUtc'
+        'timezone_offset_hours_utc' => 'timezoneOffsetHoursUtc',
+        'selectable' => 'selectable',
+        'unusable_reason' => 'unusableReason'
     ];
 
     /**
@@ -201,7 +209,9 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'currency' => 'setCurrency',
         'status' => 'setStatus',
         'timezone_name' => 'setTimezoneName',
-        'timezone_offset_hours_utc' => 'setTimezoneOffsetHoursUtc'
+        'timezone_offset_hours_utc' => 'setTimezoneOffsetHoursUtc',
+        'selectable' => 'setSelectable',
+        'unusable_reason' => 'setUnusableReason'
     ];
 
     /**
@@ -215,7 +225,9 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'currency' => 'getCurrency',
         'status' => 'getStatus',
         'timezone_name' => 'getTimezoneName',
-        'timezone_offset_hours_utc' => 'getTimezoneOffsetHoursUtc'
+        'timezone_offset_hours_utc' => 'getTimezoneOffsetHoursUtc',
+        'selectable' => 'getSelectable',
+        'unusable_reason' => 'getUnusableReason'
     ];
 
     /**
@@ -281,6 +293,8 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('timezone_name', $data ?? [], null);
         $this->setIfExists('timezone_offset_hours_utc', $data ?? [], null);
+        $this->setIfExists('selectable', $data ?? [], null);
+        $this->setIfExists('unusable_reason', $data ?? [], null);
     }
 
     /**
@@ -483,6 +497,60 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
             throw new \InvalidArgumentException('non-nullable timezone_offset_hours_utc cannot be null');
         }
         $this->container['timezone_offset_hours_utc'] = $timezone_offset_hours_utc;
+
+        return $this;
+    }
+
+    /**
+     * Gets selectable
+     *
+     * @return bool|null
+     */
+    public function getSelectable()
+    {
+        return $this->container['selectable'];
+    }
+
+    /**
+     * Sets selectable
+     *
+     * @param bool|null $selectable Meta only. Whether the account can create/run ads now. Absent (treat as true) on non-Meta platforms.
+     *
+     * @return self
+     */
+    public function setSelectable($selectable)
+    {
+        if (is_null($selectable)) {
+            throw new \InvalidArgumentException('non-nullable selectable cannot be null');
+        }
+        $this->container['selectable'] = $selectable;
+
+        return $this;
+    }
+
+    /**
+     * Gets unusable_reason
+     *
+     * @return string|null
+     */
+    public function getUnusableReason()
+    {
+        return $this->container['unusable_reason'];
+    }
+
+    /**
+     * Sets unusable_reason
+     *
+     * @param string|null $unusable_reason Meta only. Human-readable reason when selectable is false; null when selectable.
+     *
+     * @return self
+     */
+    public function setUnusableReason($unusable_reason)
+    {
+        if (is_null($unusable_reason)) {
+            throw new \InvalidArgumentException('non-nullable unusable_reason cannot be null');
+        }
+        $this->container['unusable_reason'] = $unusable_reason;
 
         return $this;
     }
