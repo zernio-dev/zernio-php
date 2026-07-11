@@ -284,6 +284,7 @@ class WebhookPayloadConversationStartedConversation implements ModelInterface, A
     public const PLATFORM_TWITTER = 'twitter';
     public const PLATFORM_REDDIT = 'reddit';
     public const PLATFORM_BLUESKY = 'bluesky';
+    public const PLATFORM_SMS = 'sms';
     public const STATUS_ACTIVE = 'active';
     public const STATUS_ARCHIVED = 'archived';
 
@@ -302,6 +303,7 @@ class WebhookPayloadConversationStartedConversation implements ModelInterface, A
             self::PLATFORM_TWITTER,
             self::PLATFORM_REDDIT,
             self::PLATFORM_BLUESKY,
+            self::PLATFORM_SMS,
         ];
     }
 
