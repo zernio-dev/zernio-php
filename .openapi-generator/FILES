@@ -1162,6 +1162,8 @@ docs/Model/UpdateAdSet200Response.md
 docs/Model/UpdateAdSetRequest.md
 docs/Model/UpdateAdSetRequestBudget.md
 docs/Model/UpdateAdSetStatus200Response.md
+docs/Model/UpdateAdStatus200Response.md
+docs/Model/UpdateAdStatusRequest.md
 docs/Model/UpdateAdTrackingTagsRequest.md
 docs/Model/UpdateAdTrackingTagsRequestCreative.md
 docs/Model/UpdateAdTrackingTagsRequestUrlTagsInner.md
@@ -2570,6 +2572,8 @@ lib/Model/UpdateAdSet200Response.php
 lib/Model/UpdateAdSetRequest.php
 lib/Model/UpdateAdSetRequestBudget.php
 lib/Model/UpdateAdSetStatus200Response.php
+lib/Model/UpdateAdStatus200Response.php
+lib/Model/UpdateAdStatusRequest.php
 lib/Model/UpdateAdTrackingTagsRequest.php
 lib/Model/UpdateAdTrackingTagsRequestCreative.php
 lib/Model/UpdateAdTrackingTagsRequestUrlTagsInner.php
@@ -2815,3 +2819,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/UpdateAdStatus200ResponseTest.php
+test/Model/UpdateAdStatusRequestTest.php

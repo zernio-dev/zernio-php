@@ -44,6 +44,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**sendConversions()**](AdsApi.md#sendConversions) | **POST** /v1/ads/conversions | Send conversion events |
 | [**sendWhatsAppConversion()**](AdsApi.md#sendWhatsAppConversion) | **POST** /v1/whatsapp/conversions | Send WhatsApp conversion event |
 | [**updateAd()**](AdsApi.md#updateAd) | **PUT** /v1/ads/{adId} | Update ad |
+| [**updateAdStatus()**](AdsApi.md#updateAdStatus) | **PUT** /v1/ads/{adId}/status | Pause or resume a single ad |
 | [**updateAdTrackingTags()**](AdsApi.md#updateAdTrackingTags) | **PATCH** /v1/ads/{adId}/tracking-tags | Set ad tracking tags |
 | [**updateConversionDestination()**](AdsApi.md#updateConversionDestination) | **PATCH** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Update a conversion destination |
 
@@ -2445,6 +2446,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\UpdateAd200Response**](../Model/UpdateAd200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateAdStatus()`
+
+```php
+updateAdStatus($ad_id, $update_ad_status_request): \Zernio\Model\UpdateAdStatus200Response
+```
+
+Pause or resume a single ad
+
+Ad-scoped pause/resume — touches ONLY this ad, never its parent ad set or campaign (so sibling ads keep running). Thin wrapper over the `status` field of PUT /v1/ads/{adId}, for callers that want a URL symmetric to /v1/ads/campaigns/{campaignId}/status and /v1/ads/ad-sets/{adSetId}/status.  `{adId}` accepts the same identifier dialects as GET/PUT /v1/ads/{adId} (Zernio hex `_id`, Meta numeric `platformAdId`, or the creative's effective story/media IDs). `platform` is inferred from the ad, so it's not required in the body. Ads in terminal statuses (rejected, completed, cancelled) and no-op flips (already in the target state) are skipped.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$ad_id = 'ad_id_example'; // string | Zernio `_id` (hex), Meta `platformAdId` (numeric), or one of the creative's effective story/media IDs.
+$update_ad_status_request = new \Zernio\Model\UpdateAdStatusRequest(); // \Zernio\Model\UpdateAdStatusRequest
+
+try {
+    $result = $apiInstance->updateAdStatus($ad_id, $update_ad_status_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->updateAdStatus: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ad_id** | **string**| Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. | |
+| **update_ad_status_request** | [**\Zernio\Model\UpdateAdStatusRequest**](../Model/UpdateAdStatusRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateAdStatus200Response**](../Model/UpdateAdStatus200Response.md)
 
 ### Authorization
 
