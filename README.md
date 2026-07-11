@@ -706,6 +706,7 @@ Class | Method | HTTP request | Description
 - [CreateInboxConversation400Response](docs/Model/CreateInboxConversation400Response.md)
 - [CreateInboxConversation422Response](docs/Model/CreateInboxConversation422Response.md)
 - [CreateInboxConversationRequest](docs/Model/CreateInboxConversationRequest.md)
+- [CreateInboxConversationRequestHeaderMedia](docs/Model/CreateInboxConversationRequestHeaderMedia.md)
 - [CreateInviteToken201Response](docs/Model/CreateInviteToken201Response.md)
 - [CreateInviteTokenRequest](docs/Model/CreateInviteTokenRequest.md)
 - [CreateLeadForm200Response](docs/Model/CreateLeadForm200Response.md)

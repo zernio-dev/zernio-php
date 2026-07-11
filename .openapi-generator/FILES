@@ -238,6 +238,7 @@ docs/Model/CreateInboxConversation201ResponseData.md
 docs/Model/CreateInboxConversation400Response.md
 docs/Model/CreateInboxConversation422Response.md
 docs/Model/CreateInboxConversationRequest.md
+docs/Model/CreateInboxConversationRequestHeaderMedia.md
 docs/Model/CreateInviteToken201Response.md
 docs/Model/CreateInviteTokenRequest.md
 docs/Model/CreateLeadForm200Response.md
@@ -1644,6 +1645,7 @@ lib/Model/CreateInboxConversation201ResponseData.php
 lib/Model/CreateInboxConversation400Response.php
 lib/Model/CreateInboxConversation422Response.php
 lib/Model/CreateInboxConversationRequest.php
+lib/Model/CreateInboxConversationRequestHeaderMedia.php
 lib/Model/CreateInviteToken201Response.php
 lib/Model/CreateInviteTokenRequest.php
 lib/Model/CreateLeadForm200Response.php
@@ -2813,3 +2815,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateInboxConversationRequestHeaderMediaTest.php

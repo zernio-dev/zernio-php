@@ -65,7 +65,8 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
         'skip_dm_check' => 'bool',
         'template_name' => 'string',
         'template_language' => 'string',
-        'template_params' => 'string[]'
+        'template_params' => 'string[]',
+        'header_media' => '\Zernio\Model\CreateInboxConversationRequestHeaderMedia'
     ];
 
     /**
@@ -83,7 +84,8 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
         'skip_dm_check' => null,
         'template_name' => null,
         'template_language' => null,
-        'template_params' => null
+        'template_params' => null,
+        'header_media' => null
     ];
 
     /**
@@ -99,7 +101,8 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
         'skip_dm_check' => false,
         'template_name' => false,
         'template_language' => false,
-        'template_params' => false
+        'template_params' => false,
+        'header_media' => false
     ];
 
     /**
@@ -195,7 +198,8 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
         'skip_dm_check' => 'skipDmCheck',
         'template_name' => 'templateName',
         'template_language' => 'templateLanguage',
-        'template_params' => 'templateParams'
+        'template_params' => 'templateParams',
+        'header_media' => 'headerMedia'
     ];
 
     /**
@@ -211,7 +215,8 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
         'skip_dm_check' => 'setSkipDmCheck',
         'template_name' => 'setTemplateName',
         'template_language' => 'setTemplateLanguage',
-        'template_params' => 'setTemplateParams'
+        'template_params' => 'setTemplateParams',
+        'header_media' => 'setHeaderMedia'
     ];
 
     /**
@@ -227,7 +232,8 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
         'skip_dm_check' => 'getSkipDmCheck',
         'template_name' => 'getTemplateName',
         'template_language' => 'getTemplateLanguage',
-        'template_params' => 'getTemplateParams'
+        'template_params' => 'getTemplateParams',
+        'header_media' => 'getHeaderMedia'
     ];
 
     /**
@@ -295,6 +301,7 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('template_name', $data ?? [], null);
         $this->setIfExists('template_language', $data ?? [], null);
         $this->setIfExists('template_params', $data ?? [], null);
+        $this->setIfExists('header_media', $data ?? [], null);
     }
 
     /**
@@ -544,7 +551,7 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets template_params
      *
-     * @param string[]|null $template_params WhatsApp only. Template variable values as one flat array, in the order the variables appear across the whole template: text-header variables first, then body variables, then one value per dynamic URL button (in button order). Works with positional placeholders ({{1}}, {{2}}, ...) and with named placeholders ({{name}}, {{company}} - how Meta Business Manager creates templates), where values fill the named slots in order of appearance. Example - a body with {{1}}, {{2}} plus a URL button https://example.com/{{1}} takes three values: [body1, body2, buttonSuffix]. Media headers (image, video, document) are filled automatically from the approved template and take no value here.
+     * @param string[]|null $template_params WhatsApp only. Template variable values as one flat array, in the order the variables appear across the whole template: text-header variables first, then body variables, then one value per dynamic URL button (in button order). Works with positional placeholders ({{1}}, {{2}}, ...) and with named placeholders ({{name}}, {{company}} - how Meta Business Manager creates templates), where values fill the named slots in order of appearance. Example - a body with {{1}}, {{2}} plus a URL button https://example.com/{{1}} takes three values: [body1, body2, buttonSuffix]. Media headers (image, video, document) are filled automatically from the approved template and take no value here (use headerMedia to override the header asset per send).
      *
      * @return self
      */
@@ -554,6 +561,33 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable template_params cannot be null');
         }
         $this->container['template_params'] = $template_params;
+
+        return $this;
+    }
+
+    /**
+     * Gets header_media
+     *
+     * @return \Zernio\Model\CreateInboxConversationRequestHeaderMedia|null
+     */
+    public function getHeaderMedia()
+    {
+        return $this->container['header_media'];
+    }
+
+    /**
+     * Sets header_media
+     *
+     * @param \Zernio\Model\CreateInboxConversationRequestHeaderMedia|null $header_media header_media
+     *
+     * @return self
+     */
+    public function setHeaderMedia($header_media)
+    {
+        if (is_null($header_media)) {
+            throw new \InvalidArgumentException('non-nullable header_media cannot be null');
+        }
+        $this->container['header_media'] = $header_media;
 
         return $this;
     }
