@@ -60,7 +60,8 @@ class AnalyticsSinglePostResponseMediaItemsInner implements ModelInterface, Arra
     protected static $openAPITypes = [
         'type' => 'string',
         'url' => 'string',
-        'thumbnail' => 'string'
+        'thumbnail' => 'string',
+        'alt_text' => 'string'
     ];
 
     /**
@@ -73,7 +74,8 @@ class AnalyticsSinglePostResponseMediaItemsInner implements ModelInterface, Arra
     protected static $openAPIFormats = [
         'type' => null,
         'url' => 'uri',
-        'thumbnail' => 'uri'
+        'thumbnail' => 'uri',
+        'alt_text' => null
     ];
 
     /**
@@ -84,7 +86,8 @@ class AnalyticsSinglePostResponseMediaItemsInner implements ModelInterface, Arra
     protected static array $openAPINullables = [
         'type' => false,
         'url' => false,
-        'thumbnail' => false
+        'thumbnail' => false,
+        'alt_text' => false
     ];
 
     /**
@@ -175,7 +178,8 @@ class AnalyticsSinglePostResponseMediaItemsInner implements ModelInterface, Arra
     protected static $attributeMap = [
         'type' => 'type',
         'url' => 'url',
-        'thumbnail' => 'thumbnail'
+        'thumbnail' => 'thumbnail',
+        'alt_text' => 'altText'
     ];
 
     /**
@@ -186,7 +190,8 @@ class AnalyticsSinglePostResponseMediaItemsInner implements ModelInterface, Arra
     protected static $setters = [
         'type' => 'setType',
         'url' => 'setUrl',
-        'thumbnail' => 'setThumbnail'
+        'thumbnail' => 'setThumbnail',
+        'alt_text' => 'setAltText'
     ];
 
     /**
@@ -197,7 +202,8 @@ class AnalyticsSinglePostResponseMediaItemsInner implements ModelInterface, Arra
     protected static $getters = [
         'type' => 'getType',
         'url' => 'getUrl',
-        'thumbnail' => 'getThumbnail'
+        'thumbnail' => 'getThumbnail',
+        'alt_text' => 'getAltText'
     ];
 
     /**
@@ -275,6 +281,7 @@ class AnalyticsSinglePostResponseMediaItemsInner implements ModelInterface, Arra
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('url', $data ?? [], null);
         $this->setIfExists('thumbnail', $data ?? [], null);
+        $this->setIfExists('alt_text', $data ?? [], null);
     }
 
     /**
@@ -415,6 +422,33 @@ class AnalyticsSinglePostResponseMediaItemsInner implements ModelInterface, Arra
             throw new \InvalidArgumentException('non-nullable thumbnail cannot be null');
         }
         $this->container['thumbnail'] = $thumbnail;
+
+        return $this;
+    }
+
+    /**
+     * Gets alt_text
+     *
+     * @return string|null
+     */
+    public function getAltText()
+    {
+        return $this->container['alt_text'];
+    }
+
+    /**
+     * Sets alt_text
+     *
+     * @param string|null $alt_text Accessibility alt text set on the media, when present.
+     *
+     * @return self
+     */
+    public function setAltText($alt_text)
+    {
+        if (is_null($alt_text)) {
+            throw new \InvalidArgumentException('non-nullable alt_text cannot be null');
+        }
+        $this->container['alt_text'] = $alt_text;
 
         return $this;
     }
