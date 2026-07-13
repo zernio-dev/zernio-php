@@ -457,7 +457,7 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
     /**
      * Sets billing_phone_number
      *
-     * @param string|null $billing_phone_number billing_phone_number
+     * @param string|null $billing_phone_number Phone number on the losing carrier's bill. Defaults to the ported number itself on single-number orders.
      *
      * @return self
      */

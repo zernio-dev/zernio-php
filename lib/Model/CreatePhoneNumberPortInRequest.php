@@ -63,7 +63,8 @@ class CreatePhoneNumberPortInRequest implements ModelInterface, ArrayAccess, \Js
         'loa_document_id' => 'string',
         'invoice_document_id' => 'string',
         'foc_datetime_requested' => '\DateTime',
-        'customer_reference' => 'string'
+        'customer_reference' => 'string',
+        'port_type' => 'string'
     ];
 
     /**
@@ -79,7 +80,8 @@ class CreatePhoneNumberPortInRequest implements ModelInterface, ArrayAccess, \Js
         'loa_document_id' => null,
         'invoice_document_id' => null,
         'foc_datetime_requested' => 'date-time',
-        'customer_reference' => null
+        'customer_reference' => null,
+        'port_type' => null
     ];
 
     /**
@@ -93,7 +95,8 @@ class CreatePhoneNumberPortInRequest implements ModelInterface, ArrayAccess, \Js
         'loa_document_id' => false,
         'invoice_document_id' => false,
         'foc_datetime_requested' => false,
-        'customer_reference' => false
+        'customer_reference' => false,
+        'port_type' => false
     ];
 
     /**
@@ -187,7 +190,8 @@ class CreatePhoneNumberPortInRequest implements ModelInterface, ArrayAccess, \Js
         'loa_document_id' => 'loaDocumentId',
         'invoice_document_id' => 'invoiceDocumentId',
         'foc_datetime_requested' => 'focDatetimeRequested',
-        'customer_reference' => 'customerReference'
+        'customer_reference' => 'customerReference',
+        'port_type' => 'portType'
     ];
 
     /**
@@ -201,7 +205,8 @@ class CreatePhoneNumberPortInRequest implements ModelInterface, ArrayAccess, \Js
         'loa_document_id' => 'setLoaDocumentId',
         'invoice_document_id' => 'setInvoiceDocumentId',
         'foc_datetime_requested' => 'setFocDatetimeRequested',
-        'customer_reference' => 'setCustomerReference'
+        'customer_reference' => 'setCustomerReference',
+        'port_type' => 'setPortType'
     ];
 
     /**
@@ -215,7 +220,8 @@ class CreatePhoneNumberPortInRequest implements ModelInterface, ArrayAccess, \Js
         'loa_document_id' => 'getLoaDocumentId',
         'invoice_document_id' => 'getInvoiceDocumentId',
         'foc_datetime_requested' => 'getFocDatetimeRequested',
-        'customer_reference' => 'getCustomerReference'
+        'customer_reference' => 'getCustomerReference',
+        'port_type' => 'getPortType'
     ];
 
     /**
@@ -259,6 +265,21 @@ class CreatePhoneNumberPortInRequest implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
+    public const PORT_TYPE_FULL = 'full';
+    public const PORT_TYPE_PARTIAL = 'partial';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPortTypeAllowableValues()
+    {
+        return [
+            self::PORT_TYPE_FULL,
+            self::PORT_TYPE_PARTIAL,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -281,6 +302,7 @@ class CreatePhoneNumberPortInRequest implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('invoice_document_id', $data ?? [], null);
         $this->setIfExists('foc_datetime_requested', $data ?? [], null);
         $this->setIfExists('customer_reference', $data ?? [], null);
+        $this->setIfExists('port_type', $data ?? [], 'full');
     }
 
     /**
@@ -332,6 +354,15 @@ class CreatePhoneNumberPortInRequest implements ModelInterface, ArrayAccess, \Js
         }
         if (!is_null($this->container['customer_reference']) && (mb_strlen($this->container['customer_reference']) > 100)) {
             $invalidProperties[] = "invalid value for 'customer_reference', the character length must be smaller than or equal to 100.";
+        }
+
+        $allowedValues = $this->getPortTypeAllowableValues();
+        if (!is_null($this->container['port_type']) && !in_array($this->container['port_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'port_type', must be one of '%s'",
+                $this->container['port_type'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -477,7 +508,7 @@ class CreatePhoneNumberPortInRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets foc_datetime_requested
      *
-     * @param \DateTime|null $foc_datetime_requested Requested port date; the carrier confirms the actual FOC later.
+     * @param \DateTime|null $foc_datetime_requested Requested port date; the carrier confirms the actual FOC later. Defaults to one week out (shifted off weekends) when omitted.
      *
      * @return self
      */
@@ -518,6 +549,43 @@ class CreatePhoneNumberPortInRequest implements ModelInterface, ArrayAccess, \Js
         }
 
         $this->container['customer_reference'] = $customer_reference;
+
+        return $this;
+    }
+
+    /**
+     * Gets port_type
+     *
+     * @return string|null
+     */
+    public function getPortType()
+    {
+        return $this->container['port_type'];
+    }
+
+    /**
+     * Sets port_type
+     *
+     * @param string|null $port_type Whether the losing account ports all its numbers (full) or keeps some (partial).
+     *
+     * @return self
+     */
+    public function setPortType($port_type)
+    {
+        if (is_null($port_type)) {
+            throw new \InvalidArgumentException('non-nullable port_type cannot be null');
+        }
+        $allowedValues = $this->getPortTypeAllowableValues();
+        if (!in_array($port_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'port_type', must be one of '%s'",
+                    $port_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['port_type'] = $port_type;
 
         return $this;
     }
