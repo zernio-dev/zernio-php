@@ -319,8 +319,6 @@ class StartSmsRegistrationRequestBrand implements ModelInterface, ArrayAccess, \
     public const ENTITY_TYPE_NON_PROFIT = 'NON_PROFIT';
     public const ENTITY_TYPE_GOVERNMENT = 'GOVERNMENT';
     public const ENTITY_TYPE_SOLE_PROPRIETOR = 'SOLE_PROPRIETOR';
-    public const COUNTRY_US = 'US';
-    public const COUNTRY_CA = 'CA';
     public const VERTICAL_AGRICULTURE = 'AGRICULTURE';
     public const VERTICAL_COMMUNICATION = 'COMMUNICATION';
     public const VERTICAL_CONSTRUCTION = 'CONSTRUCTION';
@@ -358,19 +356,6 @@ class StartSmsRegistrationRequestBrand implements ModelInterface, ArrayAccess, \
             self::ENTITY_TYPE_NON_PROFIT,
             self::ENTITY_TYPE_GOVERNMENT,
             self::ENTITY_TYPE_SOLE_PROPRIETOR,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getCountryAllowableValues()
-    {
-        return [
-            self::COUNTRY_US,
-            self::COUNTRY_CA,
         ];
     }
 
@@ -497,13 +482,12 @@ class StartSmsRegistrationRequestBrand implements ModelInterface, ArrayAccess, \
         if ($this->container['country'] === null) {
             $invalidProperties[] = "'country' can't be null";
         }
-        $allowedValues = $this->getCountryAllowableValues();
-        if (!is_null($this->container['country']) && !in_array($this->container['country'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'country', must be one of '%s'",
-                $this->container['country'],
-                implode("', '", $allowedValues)
-            );
+        if ((mb_strlen($this->container['country']) > 2)) {
+            $invalidProperties[] = "invalid value for 'country', the character length must be smaller than or equal to 2.";
+        }
+
+        if ((mb_strlen($this->container['country']) < 2)) {
+            $invalidProperties[] = "invalid value for 'country', the character length must be bigger than or equal to 2.";
         }
 
         if ($this->container['website'] === null) {
@@ -829,7 +813,7 @@ class StartSmsRegistrationRequestBrand implements ModelInterface, ArrayAccess, \
     /**
      * Sets country
      *
-     * @param string $country country
+     * @param string $country ISO 3166-1 alpha-2 country where the company is registered. Companies worldwide can register standard 10DLC (non-US companies use their local tax ID in `ein`; carrier vetting may take longer). SOLE_PROPRIETOR is US/CA only.
      *
      * @return self
      */
@@ -838,16 +822,13 @@ class StartSmsRegistrationRequestBrand implements ModelInterface, ArrayAccess, \
         if (is_null($country)) {
             throw new \InvalidArgumentException('non-nullable country cannot be null');
         }
-        $allowedValues = $this->getCountryAllowableValues();
-        if (!in_array($country, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'country', must be one of '%s'",
-                    $country,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if ((mb_strlen($country) > 2)) {
+            throw new \InvalidArgumentException('invalid length for $country when calling StartSmsRegistrationRequestBrand., must be smaller than or equal to 2.');
         }
+        if ((mb_strlen($country) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $country when calling StartSmsRegistrationRequestBrand., must be bigger than or equal to 2.');
+        }
+
         $this->container['country'] = $country;
 
         return $this;
