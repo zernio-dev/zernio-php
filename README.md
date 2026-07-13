@@ -118,6 +118,8 @@ Class | Method | HTTP request | Description
 *AdsApi* | [**getConversionDestination**](docs/Api/AdsApi.md#getconversiondestination) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Get a conversion destination
 *AdsApi* | [**getConversionMetrics**](docs/Api/AdsApi.md#getconversionmetrics) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/metrics | Get attribution metrics
 *AdsApi* | [**getConversionsQuality**](docs/Api/AdsApi.md#getconversionsquality) | **GET** /v1/ads/conversions/quality | Get Event Match Quality
+*AdsApi* | [**getDsaDefaults**](docs/Api/AdsApi.md#getdsadefaults) | **GET** /v1/ads/dsa-defaults | Get ad account DSA defaults
+*AdsApi* | [**getDsaRecommendations**](docs/Api/AdsApi.md#getdsarecommendations) | **GET** /v1/ads/dsa-recommendations | List DSA beneficiary/payor suggestions
 *AdsApi* | [**getLeadForm**](docs/Api/AdsApi.md#getleadform) | **GET** /v1/ads/lead-forms/{formId} | Get a lead form
 *AdsApi* | [**listAdAccounts**](docs/Api/AdsApi.md#listadaccounts) | **GET** /v1/ads/accounts | List ad accounts
 *AdsApi* | [**listAdCatalogProductSets**](docs/Api/AdsApi.md#listadcatalogproductsets) | **GET** /v1/ads/catalogs/{catalogId}/product-sets | List a catalog&#39;s product sets
@@ -136,6 +138,7 @@ Class | Method | HTTP request | Description
 *AdsApi* | [**sendConversions**](docs/Api/AdsApi.md#sendconversions) | **POST** /v1/ads/conversions | Send conversion events
 *AdsApi* | [**sendWhatsAppConversion**](docs/Api/AdsApi.md#sendwhatsappconversion) | **POST** /v1/whatsapp/conversions | Send WhatsApp conversion event
 *AdsApi* | [**updateAd**](docs/Api/AdsApi.md#updatead) | **PUT** /v1/ads/{adId} | Update ad
+*AdsApi* | [**updateAdAccount**](docs/Api/AdsApi.md#updateadaccount) | **PATCH** /v1/ads/accounts | Update ad account settings
 *AdsApi* | [**updateAdStatus**](docs/Api/AdsApi.md#updateadstatus) | **PUT** /v1/ads/{adId}/status | Pause or resume a single ad
 *AdsApi* | [**updateAdTrackingTags**](docs/Api/AdsApi.md#updateadtrackingtags) | **PATCH** /v1/ads/{adId}/tracking-tags | Set ad tracking tags
 *AdsApi* | [**updateConversionDestination**](docs/Api/AdsApi.md#updateconversiondestination) | **PATCH** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Update a conversion destination
@@ -933,6 +936,7 @@ Class | Method | HTTP request | Description
 - [GetDiscordChannels200ResponseChannelsInner](docs/Model/GetDiscordChannels200ResponseChannelsInner.md)
 - [GetDiscordSettings200Response](docs/Model/GetDiscordSettings200Response.md)
 - [GetDiscordSettings200ResponseAccount](docs/Model/GetDiscordSettings200ResponseAccount.md)
+- [GetDsaRecommendations200Response](docs/Model/GetDsaRecommendations200Response.md)
 - [GetFacebookPages200Response](docs/Model/GetFacebookPages200Response.md)
 - [GetFacebookPages200ResponsePagesInner](docs/Model/GetFacebookPages200ResponsePagesInner.md)
 - [GetFacebookPostReactions200Response](docs/Model/GetFacebookPostReactions200Response.md)
@@ -1616,6 +1620,9 @@ Class | Method | HTTP request | Description
 - [UpdateAccountRequest](docs/Model/UpdateAccountRequest.md)
 - [UpdateAccountRequestXCapabilities](docs/Model/UpdateAccountRequestXCapabilities.md)
 - [UpdateAd200Response](docs/Model/UpdateAd200Response.md)
+- [UpdateAdAccount200Response](docs/Model/UpdateAdAccount200Response.md)
+- [UpdateAdAccount200ResponseDsaDefaults](docs/Model/UpdateAdAccount200ResponseDsaDefaults.md)
+- [UpdateAdAccountRequest](docs/Model/UpdateAdAccountRequest.md)
 - [UpdateAdAudienceRequest](docs/Model/UpdateAdAudienceRequest.md)
 - [UpdateAdCampaign200Response](docs/Model/UpdateAdCampaign200Response.md)
 - [UpdateAdCampaignRequest](docs/Model/UpdateAdCampaignRequest.md)
