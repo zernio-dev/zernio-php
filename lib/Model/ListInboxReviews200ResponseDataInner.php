@@ -67,6 +67,8 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         'text' => 'string',
         'created' => '\DateTime',
         'has_reply' => 'bool',
+        'has_photos' => 'bool',
+        'photo_count' => 'int',
         'reply' => '\Zernio\Model\ListInboxReviews200ResponseDataInnerReply',
         'review_url' => 'string'
     ];
@@ -88,6 +90,8 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         'text' => null,
         'created' => 'date-time',
         'has_reply' => null,
+        'has_photos' => null,
+        'photo_count' => null,
         'reply' => null,
         'review_url' => null
     ];
@@ -107,6 +111,8 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         'text' => false,
         'created' => false,
         'has_reply' => false,
+        'has_photos' => false,
+        'photo_count' => false,
         'reply' => false,
         'review_url' => true
     ];
@@ -206,6 +212,8 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         'text' => 'text',
         'created' => 'created',
         'has_reply' => 'hasReply',
+        'has_photos' => 'hasPhotos',
+        'photo_count' => 'photoCount',
         'reply' => 'reply',
         'review_url' => 'reviewUrl'
     ];
@@ -225,6 +233,8 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         'text' => 'setText',
         'created' => 'setCreated',
         'has_reply' => 'setHasReply',
+        'has_photos' => 'setHasPhotos',
+        'photo_count' => 'setPhotoCount',
         'reply' => 'setReply',
         'review_url' => 'setReviewUrl'
     ];
@@ -244,6 +254,8 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         'text' => 'getText',
         'created' => 'getCreated',
         'has_reply' => 'getHasReply',
+        'has_photos' => 'getHasPhotos',
+        'photo_count' => 'getPhotoCount',
         'reply' => 'getReply',
         'review_url' => 'getReviewUrl'
     ];
@@ -314,6 +326,8 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         $this->setIfExists('text', $data ?? [], null);
         $this->setIfExists('created', $data ?? [], null);
         $this->setIfExists('has_reply', $data ?? [], null);
+        $this->setIfExists('has_photos', $data ?? [], null);
+        $this->setIfExists('photo_count', $data ?? [], null);
         $this->setIfExists('reply', $data ?? [], null);
         $this->setIfExists('review_url', $data ?? [], null);
     }
@@ -599,6 +613,60 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
             throw new \InvalidArgumentException('non-nullable has_reply cannot be null');
         }
         $this->container['has_reply'] = $has_reply;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_photos
+     *
+     * @return bool|null
+     */
+    public function getHasPhotos()
+    {
+        return $this->container['has_photos'];
+    }
+
+    /**
+     * Sets has_photos
+     *
+     * @param bool|null $has_photos Whether the review has at least one photo. Google Business only; always false for other platforms.
+     *
+     * @return self
+     */
+    public function setHasPhotos($has_photos)
+    {
+        if (is_null($has_photos)) {
+            throw new \InvalidArgumentException('non-nullable has_photos cannot be null');
+        }
+        $this->container['has_photos'] = $has_photos;
+
+        return $this;
+    }
+
+    /**
+     * Gets photo_count
+     *
+     * @return int|null
+     */
+    public function getPhotoCount()
+    {
+        return $this->container['photo_count'];
+    }
+
+    /**
+     * Sets photo_count
+     *
+     * @param int|null $photo_count Number of photos attached to the review (photos only; videos are not counted). Google Business only; 0 for other platforms.
+     *
+     * @return self
+     */
+    public function setPhotoCount($photo_count)
+    {
+        if (is_null($photo_count)) {
+            throw new \InvalidArgumentException('non-nullable photo_count cannot be null');
+        }
+        $this->container['photo_count'] = $photo_count;
 
         return $this;
     }

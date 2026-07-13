@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **text** | **string** |  | [optional]
 **created** | **\DateTime** |  | [optional]
 **has_reply** | **bool** |  | [optional]
+**has_photos** | **bool** | Whether the review has at least one photo. Google Business only; always false for other platforms. | [optional]
+**photo_count** | **int** | Number of photos attached to the review (photos only; videos are not counted). Google Business only; 0 for other platforms. | [optional]
 **reply** | [**\Zernio\Model\ListInboxReviews200ResponseDataInnerReply**](ListInboxReviews200ResponseDataInnerReply.md) |  | [optional]
 **review_url** | **string** |  | [optional]
 

@@ -64,6 +64,7 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'status' => 'string',
         'timezone_name' => 'string',
         'timezone_offset_hours_utc' => 'float',
+        'minimum_daily_budget' => 'float',
         'selectable' => 'bool',
         'unusable_reason' => 'string'
     ];
@@ -82,6 +83,7 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'status' => null,
         'timezone_name' => null,
         'timezone_offset_hours_utc' => null,
+        'minimum_daily_budget' => null,
         'selectable' => null,
         'unusable_reason' => null
     ];
@@ -98,6 +100,7 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'status' => false,
         'timezone_name' => false,
         'timezone_offset_hours_utc' => false,
+        'minimum_daily_budget' => false,
         'selectable' => false,
         'unusable_reason' => false
     ];
@@ -194,6 +197,7 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'status' => 'status',
         'timezone_name' => 'timezoneName',
         'timezone_offset_hours_utc' => 'timezoneOffsetHoursUtc',
+        'minimum_daily_budget' => 'minimumDailyBudget',
         'selectable' => 'selectable',
         'unusable_reason' => 'unusableReason'
     ];
@@ -210,6 +214,7 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'status' => 'setStatus',
         'timezone_name' => 'setTimezoneName',
         'timezone_offset_hours_utc' => 'setTimezoneOffsetHoursUtc',
+        'minimum_daily_budget' => 'setMinimumDailyBudget',
         'selectable' => 'setSelectable',
         'unusable_reason' => 'setUnusableReason'
     ];
@@ -226,6 +231,7 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'status' => 'getStatus',
         'timezone_name' => 'getTimezoneName',
         'timezone_offset_hours_utc' => 'getTimezoneOffsetHoursUtc',
+        'minimum_daily_budget' => 'getMinimumDailyBudget',
         'selectable' => 'getSelectable',
         'unusable_reason' => 'getUnusableReason'
     ];
@@ -293,6 +299,7 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('timezone_name', $data ?? [], null);
         $this->setIfExists('timezone_offset_hours_utc', $data ?? [], null);
+        $this->setIfExists('minimum_daily_budget', $data ?? [], null);
         $this->setIfExists('selectable', $data ?? [], null);
         $this->setIfExists('unusable_reason', $data ?? [], null);
     }
@@ -497,6 +504,33 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
             throw new \InvalidArgumentException('non-nullable timezone_offset_hours_utc cannot be null');
         }
         $this->container['timezone_offset_hours_utc'] = $timezone_offset_hours_utc;
+
+        return $this;
+    }
+
+    /**
+     * Gets minimum_daily_budget
+     *
+     * @return float|null
+     */
+    public function getMinimumDailyBudget()
+    {
+        return $this->container['minimum_daily_budget'];
+    }
+
+    /**
+     * Sets minimum_daily_budget
+     *
+     * @param float|null $minimum_daily_budget Meta only. Minimum daily budget for the account, in the account currency's major units. This is the impressions-billed minimum; other billing events have higher minimums. Absent when the connected token cannot read it.
+     *
+     * @return self
+     */
+    public function setMinimumDailyBudget($minimum_daily_budget)
+    {
+        if (is_null($minimum_daily_budget)) {
+            throw new \InvalidArgumentException('non-nullable minimum_daily_budget cannot be null');
+        }
+        $this->container['minimum_daily_budget'] = $minimum_daily_budget;
 
         return $this;
     }
