@@ -62,7 +62,6 @@ class InlineObject2Details implements ModelInterface, ArrayAccess, \JsonSerializ
         'free_tier_account_limit' => 'int',
         'current_account_count' => 'int',
         'has_payment_method' => 'bool',
-        'public_account_limit' => 'int',
         'effective_account_limit' => 'int'
     ];
 
@@ -77,7 +76,6 @@ class InlineObject2Details implements ModelInterface, ArrayAccess, \JsonSerializ
         'free_tier_account_limit' => null,
         'current_account_count' => null,
         'has_payment_method' => null,
-        'public_account_limit' => null,
         'effective_account_limit' => null
     ];
 
@@ -90,7 +88,6 @@ class InlineObject2Details implements ModelInterface, ArrayAccess, \JsonSerializ
         'free_tier_account_limit' => false,
         'current_account_count' => false,
         'has_payment_method' => false,
-        'public_account_limit' => false,
         'effective_account_limit' => false
     ];
 
@@ -183,7 +180,6 @@ class InlineObject2Details implements ModelInterface, ArrayAccess, \JsonSerializ
         'free_tier_account_limit' => 'free_tier_account_limit',
         'current_account_count' => 'current_account_count',
         'has_payment_method' => 'has_payment_method',
-        'public_account_limit' => 'public_account_limit',
         'effective_account_limit' => 'effective_account_limit'
     ];
 
@@ -196,7 +192,6 @@ class InlineObject2Details implements ModelInterface, ArrayAccess, \JsonSerializ
         'free_tier_account_limit' => 'setFreeTierAccountLimit',
         'current_account_count' => 'setCurrentAccountCount',
         'has_payment_method' => 'setHasPaymentMethod',
-        'public_account_limit' => 'setPublicAccountLimit',
         'effective_account_limit' => 'setEffectiveAccountLimit'
     ];
 
@@ -209,7 +204,6 @@ class InlineObject2Details implements ModelInterface, ArrayAccess, \JsonSerializ
         'free_tier_account_limit' => 'getFreeTierAccountLimit',
         'current_account_count' => 'getCurrentAccountCount',
         'has_payment_method' => 'getHasPaymentMethod',
-        'public_account_limit' => 'getPublicAccountLimit',
         'effective_account_limit' => 'getEffectiveAccountLimit'
     ];
 
@@ -273,7 +267,6 @@ class InlineObject2Details implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('free_tier_account_limit', $data ?? [], null);
         $this->setIfExists('current_account_count', $data ?? [], null);
         $this->setIfExists('has_payment_method', $data ?? [], null);
-        $this->setIfExists('public_account_limit', $data ?? [], null);
         $this->setIfExists('effective_account_limit', $data ?? [], null);
     }
 
@@ -401,33 +394,6 @@ class InlineObject2Details implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets public_account_limit
-     *
-     * @return int|null
-     */
-    public function getPublicAccountLimit()
-    {
-        return $this->container['public_account_limit'];
-    }
-
-    /**
-     * Sets public_account_limit
-     *
-     * @param int|null $public_account_limit Public pricing ceiling (the published cap beyond which an enterprise contract is required). Only set when reason=enterprise_required.
-     *
-     * @return self
-     */
-    public function setPublicAccountLimit($public_account_limit)
-    {
-        if (is_null($public_account_limit)) {
-            throw new \InvalidArgumentException('non-nullable public_account_limit cannot be null');
-        }
-        $this->container['public_account_limit'] = $public_account_limit;
-
-        return $this;
-    }
-
-    /**
      * Gets effective_account_limit
      *
      * @return int|null
@@ -440,7 +406,7 @@ class InlineObject2Details implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets effective_account_limit
      *
-     * @param int|null $effective_account_limit The cap actually applied to this team. Equals `public_account_limit` for organic teams; for teams with a per-customer override (grandfathered legacy customers, signed enterprise contracts) this can be higher. Only set when reason=enterprise_required.
+     * @param int|null $effective_account_limit The negotiated connected-account cap from the team's enterprise contract. Self-service teams have no cap and never receive this reason. Only set when reason=enterprise_required.
      *
      * @return self
      */
