@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * StartSmsRegistrationRequestCampaign Class Doc Comment
  *
  * @category Class
- * @description Required for 10DLC. What you&#39;ll send and how recipients opt in/out. Opt-in/opt-out/help auto-responses must name the registered brand and carry the carrier-required disclosures; submissions that don&#39;t (or that are blank) are automatically rewritten to a compliant, brand-named template before the campaign is filed.
+ * @description Required for 10DLC. What you&#39;ll send and how recipients opt in/out. The opt-in/opt-out/help auto-responses (&#x60;optinMessage&#x60;, &#x60;optoutMessage&#x60;, &#x60;helpMessage&#x60;) are optional: when omitted, a compliant, brand-named template with the carrier-required disclosures is generated for you. If you do send them, they must name the registered brand and carry the disclosures — submissions that don&#39;t are rewritten to the compliant template before the campaign is filed.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -466,42 +466,33 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
             $invalidProperties[] = "invalid value for 'sample2', the character length must be bigger than or equal to 20.";
         }
 
-        if ($this->container['help_message'] === null) {
-            $invalidProperties[] = "'help_message' can't be null";
-        }
-        if ((mb_strlen($this->container['help_message']) > 320)) {
+        if (!is_null($this->container['help_message']) && (mb_strlen($this->container['help_message']) > 320)) {
             $invalidProperties[] = "invalid value for 'help_message', the character length must be smaller than or equal to 320.";
         }
 
-        if ((mb_strlen($this->container['help_message']) < 20)) {
+        if (!is_null($this->container['help_message']) && (mb_strlen($this->container['help_message']) < 20)) {
             $invalidProperties[] = "invalid value for 'help_message', the character length must be bigger than or equal to 20.";
         }
 
         if ($this->container['optin_keywords'] === null) {
             $invalidProperties[] = "'optin_keywords' can't be null";
         }
-        if ($this->container['optin_message'] === null) {
-            $invalidProperties[] = "'optin_message' can't be null";
-        }
-        if ((mb_strlen($this->container['optin_message']) > 320)) {
+        if (!is_null($this->container['optin_message']) && (mb_strlen($this->container['optin_message']) > 320)) {
             $invalidProperties[] = "invalid value for 'optin_message', the character length must be smaller than or equal to 320.";
         }
 
-        if ((mb_strlen($this->container['optin_message']) < 20)) {
+        if (!is_null($this->container['optin_message']) && (mb_strlen($this->container['optin_message']) < 20)) {
             $invalidProperties[] = "invalid value for 'optin_message', the character length must be bigger than or equal to 20.";
         }
 
         if ($this->container['optout_keywords'] === null) {
             $invalidProperties[] = "'optout_keywords' can't be null";
         }
-        if ($this->container['optout_message'] === null) {
-            $invalidProperties[] = "'optout_message' can't be null";
-        }
-        if ((mb_strlen($this->container['optout_message']) > 320)) {
+        if (!is_null($this->container['optout_message']) && (mb_strlen($this->container['optout_message']) > 320)) {
             $invalidProperties[] = "invalid value for 'optout_message', the character length must be smaller than or equal to 320.";
         }
 
-        if ((mb_strlen($this->container['optout_message']) < 20)) {
+        if (!is_null($this->container['optout_message']) && (mb_strlen($this->container['optout_message']) < 20)) {
             $invalidProperties[] = "invalid value for 'optout_message', the character length must be bigger than or equal to 20.";
         }
 
@@ -728,7 +719,7 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
     /**
      * Gets help_message
      *
-     * @return string
+     * @return string|null
      */
     public function getHelpMessage()
     {
@@ -738,7 +729,7 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
     /**
      * Sets help_message
      *
-     * @param string $help_message help_message
+     * @param string|null $help_message help_message
      *
      * @return self
      */
@@ -789,7 +780,7 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
     /**
      * Gets optin_message
      *
-     * @return string
+     * @return string|null
      */
     public function getOptinMessage()
     {
@@ -799,7 +790,7 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
     /**
      * Sets optin_message
      *
-     * @param string $optin_message optin_message
+     * @param string|null $optin_message optin_message
      *
      * @return self
      */
@@ -850,7 +841,7 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
     /**
      * Gets optout_message
      *
-     * @return string
+     * @return string|null
      */
     public function getOptoutMessage()
     {
@@ -860,7 +851,7 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
     /**
      * Sets optout_message
      *
-     * @param string $optout_message optout_message
+     * @param string|null $optout_message optout_message
      *
      * @return self
      */

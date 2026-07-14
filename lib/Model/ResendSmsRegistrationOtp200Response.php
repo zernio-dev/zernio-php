@@ -1,6 +1,6 @@
 <?php
 /**
- * CheckPhoneNumberPortability200ResponseResultsInner
+ * ResendSmsRegistrationOtp200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CheckPhoneNumberPortability200ResponseResultsInner Class Doc Comment
+ * ResendSmsRegistrationOtp200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class ResendSmsRegistrationOtp200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'checkPhoneNumberPortability_200_response_results_inner';
+    protected static $openAPIModelName = 'resendSmsRegistrationOtp_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,7 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'phone_number' => 'string',
-        'portable' => 'bool',
-        'fast_portable' => 'bool',
-        'line_type' => 'string',
-        'not_portable_reason' => 'string'
+        'sent' => 'bool'
     ];
 
     /**
@@ -73,11 +69,7 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'phone_number' => null,
-        'portable' => null,
-        'fast_portable' => null,
-        'line_type' => null,
-        'not_portable_reason' => null
+        'sent' => null
     ];
 
     /**
@@ -86,11 +78,7 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'phone_number' => false,
-        'portable' => false,
-        'fast_portable' => false,
-        'line_type' => true,
-        'not_portable_reason' => true
+        'sent' => false
     ];
 
     /**
@@ -179,11 +167,7 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
      * @var string[]
      */
     protected static $attributeMap = [
-        'phone_number' => 'phoneNumber',
-        'portable' => 'portable',
-        'fast_portable' => 'fastPortable',
-        'line_type' => 'lineType',
-        'not_portable_reason' => 'notPortableReason'
+        'sent' => 'sent'
     ];
 
     /**
@@ -192,11 +176,7 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
      * @var string[]
      */
     protected static $setters = [
-        'phone_number' => 'setPhoneNumber',
-        'portable' => 'setPortable',
-        'fast_portable' => 'setFastPortable',
-        'line_type' => 'setLineType',
-        'not_portable_reason' => 'setNotPortableReason'
+        'sent' => 'setSent'
     ];
 
     /**
@@ -205,11 +185,7 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
      * @var string[]
      */
     protected static $getters = [
-        'phone_number' => 'getPhoneNumber',
-        'portable' => 'getPortable',
-        'fast_portable' => 'getFastPortable',
-        'line_type' => 'getLineType',
-        'not_portable_reason' => 'getNotPortableReason'
+        'sent' => 'getSent'
     ];
 
     /**
@@ -269,11 +245,7 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('phone_number', $data ?? [], null);
-        $this->setIfExists('portable', $data ?? [], null);
-        $this->setIfExists('fast_portable', $data ?? [], null);
-        $this->setIfExists('line_type', $data ?? [], null);
-        $this->setIfExists('not_portable_reason', $data ?? [], null);
+        $this->setIfExists('sent', $data ?? [], null);
     }
 
     /**
@@ -319,150 +291,28 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
 
 
     /**
-     * Gets phone_number
-     *
-     * @return string|null
-     */
-    public function getPhoneNumber()
-    {
-        return $this->container['phone_number'];
-    }
-
-    /**
-     * Sets phone_number
-     *
-     * @param string|null $phone_number phone_number
-     *
-     * @return self
-     */
-    public function setPhoneNumber($phone_number)
-    {
-        if (is_null($phone_number)) {
-            throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
-        }
-        $this->container['phone_number'] = $phone_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets portable
+     * Gets sent
      *
      * @return bool|null
      */
-    public function getPortable()
+    public function getSent()
     {
-        return $this->container['portable'];
+        return $this->container['sent'];
     }
 
     /**
-     * Sets portable
+     * Sets sent
      *
-     * @param bool|null $portable portable
+     * @param bool|null $sent sent
      *
      * @return self
      */
-    public function setPortable($portable)
+    public function setSent($sent)
     {
-        if (is_null($portable)) {
-            throw new \InvalidArgumentException('non-nullable portable cannot be null');
+        if (is_null($sent)) {
+            throw new \InvalidArgumentException('non-nullable sent cannot be null');
         }
-        $this->container['portable'] = $portable;
-
-        return $this;
-    }
-
-    /**
-     * Gets fast_portable
-     *
-     * @return bool|null
-     */
-    public function getFastPortable()
-    {
-        return $this->container['fast_portable'];
-    }
-
-    /**
-     * Sets fast_portable
-     *
-     * @param bool|null $fast_portable Qualifies for the carrier's accelerated FastPort lane.
-     *
-     * @return self
-     */
-    public function setFastPortable($fast_portable)
-    {
-        if (is_null($fast_portable)) {
-            throw new \InvalidArgumentException('non-nullable fast_portable cannot be null');
-        }
-        $this->container['fast_portable'] = $fast_portable;
-
-        return $this;
-    }
-
-    /**
-     * Gets line_type
-     *
-     * @return string|null
-     */
-    public function getLineType()
-    {
-        return $this->container['line_type'];
-    }
-
-    /**
-     * Sets line_type
-     *
-     * @param string|null $line_type Line type when known (mobile, landline, voip…). A mobile number requires the transfer PIN at submit.
-     *
-     * @return self
-     */
-    public function setLineType($line_type)
-    {
-        if (is_null($line_type)) {
-            array_push($this->openAPINullablesSetToNull, 'line_type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('line_type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['line_type'] = $line_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets not_portable_reason
-     *
-     * @return string|null
-     */
-    public function getNotPortableReason()
-    {
-        return $this->container['not_portable_reason'];
-    }
-
-    /**
-     * Sets not_portable_reason
-     *
-     * @param string|null $not_portable_reason Carrier reason when not portable; null when portable.
-     *
-     * @return self
-     */
-    public function setNotPortableReason($not_portable_reason)
-    {
-        if (is_null($not_portable_reason)) {
-            array_push($this->openAPINullablesSetToNull, 'not_portable_reason');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('not_portable_reason', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['not_portable_reason'] = $not_portable_reason;
+        $this->container['sent'] = $sent;
 
         return $this;
     }

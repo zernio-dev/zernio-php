@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * CreatePhoneNumberPortInRequestEndUser Class Doc Comment
  *
  * @category Class
- * @description End-user / current-carrier account info that authorizes the port.
+ * @description End-user / current-carrier account info that authorizes the port. The losing carrier matches every field against its records and rejects the whole port on a mismatch — enter values exactly as they appear on the carrier bill.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -290,6 +290,21 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
         return self::$openAPIModelName;
     }
 
+    public const COUNTRY_CODE_US = 'US';
+    public const COUNTRY_CODE_CA = 'CA';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCountryCodeAllowableValues()
+    {
+        return [
+            self::COUNTRY_CODE_US,
+            self::COUNTRY_CODE_CA,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -352,6 +367,9 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
         if ($this->container['auth_person_name'] === null) {
             $invalidProperties[] = "'auth_person_name' can't be null";
         }
+        if ($this->container['account_number'] === null) {
+            $invalidProperties[] = "'account_number' can't be null";
+        }
         if ($this->container['street_address'] === null) {
             $invalidProperties[] = "'street_address' can't be null";
         }
@@ -367,6 +385,15 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
         if ($this->container['country_code'] === null) {
             $invalidProperties[] = "'country_code' can't be null";
         }
+        $allowedValues = $this->getCountryCodeAllowableValues();
+        if (!is_null($this->container['country_code']) && !in_array($this->container['country_code'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'country_code', must be one of '%s'",
+                $this->container['country_code'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ((mb_strlen($this->container['country_code']) > 2)) {
             $invalidProperties[] = "invalid value for 'country_code', the character length must be smaller than or equal to 2.";
         }
@@ -403,7 +430,7 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
     /**
      * Sets entity_name
      *
-     * @param string $entity_name entity_name
+     * @param string $entity_name Account holder / business name, as on the carrier account.
      *
      * @return self
      */
@@ -430,7 +457,7 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
     /**
      * Sets auth_person_name
      *
-     * @param string $auth_person_name auth_person_name
+     * @param string $auth_person_name Full name (first + last) of the person authorizing the port — must match the LOA signature.
      *
      * @return self
      */
@@ -457,7 +484,7 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
     /**
      * Sets billing_phone_number
      *
-     * @param string|null $billing_phone_number Phone number on the losing carrier's bill. Defaults to the ported number itself on single-number orders.
+     * @param string|null $billing_phone_number Phone number on the losing carrier's bill. Defaults to the ported number itself on single-number orders. Validated as a real phone number when present.
      *
      * @return self
      */
@@ -474,7 +501,7 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
     /**
      * Gets account_number
      *
-     * @return string|null
+     * @return string
      */
     public function getAccountNumber()
     {
@@ -484,7 +511,7 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
     /**
      * Sets account_number
      *
-     * @param string|null $account_number account_number
+     * @param string $account_number Account number with the losing carrier — required (carriers reject ports without it; on prepaid mobile plans it is often the phone number itself).
      *
      * @return self
      */
@@ -511,7 +538,7 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
     /**
      * Sets pin_passcode
      *
-     * @param string|null $pin_passcode Transfer PIN. Forwarded to the carrier, never stored.
+     * @param string|null $pin_passcode Transfer PIN. Required for mobile numbers (wireless carriers reject PIN-less ports). Forwarded to the carrier, never stored.
      *
      * @return self
      */
@@ -619,7 +646,7 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
     /**
      * Sets administrative_area
      *
-     * @param string $administrative_area administrative_area
+     * @param string $administrative_area 2-letter US state / CA province code (full names are accepted and normalized).
      *
      * @return self
      */
@@ -646,7 +673,7 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
     /**
      * Sets postal_code
      *
-     * @param string $postal_code postal_code
+     * @param string $postal_code US ZIP (5 digits) or Canadian postal code, matching countryCode.
      *
      * @return self
      */
@@ -681,6 +708,16 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
     {
         if (is_null($country_code)) {
             throw new \InvalidArgumentException('non-nullable country_code cannot be null');
+        }
+        $allowedValues = $this->getCountryCodeAllowableValues();
+        if (!in_array($country_code, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'country_code', must be one of '%s'",
+                    $country_code,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
         if ((mb_strlen($country_code) > 2)) {
             throw new \InvalidArgumentException('invalid length for $country_code when calling CreatePhoneNumberPortInRequestEndUser., must be smaller than or equal to 2.');

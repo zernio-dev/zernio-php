@@ -13,6 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listSmsOptOuts()**](SMSApi.md#listSmsOptOuts) | **GET** /v1/sms/opt-outs | List SMS opt-outs |
 | [**listSmsRegistrations()**](SMSApi.md#listSmsRegistrations) | **GET** /v1/sms/registrations | List carrier registrations |
 | [**lookupSmsNumber()**](SMSApi.md#lookupSmsNumber) | **GET** /v1/sms/lookup | Look up carrier + line type |
+| [**resendSmsRegistrationOtp()**](SMSApi.md#resendSmsRegistrationOtp) | **POST** /v1/sms/registrations/{id}/resend-otp | Re-send the sole-prop OTP |
 | [**reuseSmsRegistrationForNumber()**](SMSApi.md#reuseSmsRegistrationForNumber) | **POST** /v1/phone-numbers/{id}/sms/reuse-registration | Add number to SMS registration |
 | [**sendSms()**](SMSApi.md#sendSms) | **POST** /v1/sms/messages | Send an SMS/MMS |
 | [**shareSmsRegistration()**](SMSApi.md#shareSmsRegistration) | **POST** /v1/sms/registrations/share | Create a registration share link |
@@ -425,6 +426,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\LookupSmsNumber200Response**](../Model/LookupSmsNumber200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `resendSmsRegistrationOtp()`
+
+```php
+resendSmsRegistrationOtp($id): \Zernio\Model\ResendSmsRegistrationOtp200Response
+```
+
+Re-send the sole-prop OTP
+
+Re-sends the sole-proprietor verification PIN to the brand's mobile number — use it when the original code expired or never arrived. Only valid while the registration is pending and awaiting its OTP; rate limited to one send per minute.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\SMSApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->resendSmsRegistrationOtp($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SMSApi->resendSmsRegistrationOtp: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\ResendSmsRegistrationOtp200Response**](../Model/ResendSmsRegistrationOtp200Response.md)
 
 ### Authorization
 

@@ -959,6 +959,7 @@ docs/Model/ReplyToInboxReview200Response.md
 docs/Model/ReplyToInboxReviewRequest.md
 docs/Model/ReplyToMention200Response.md
 docs/Model/ReplyToMentionRequest.md
+docs/Model/ResendSmsRegistrationOtp200Response.md
 docs/Model/RestoreWorkflowVersion200Response.md
 docs/Model/RestoreWorkflowVersion200ResponseWorkflow.md
 docs/Model/RetweetPost200Response.md
@@ -2374,6 +2375,7 @@ lib/Model/ReplyToInboxReview200Response.php
 lib/Model/ReplyToInboxReviewRequest.php
 lib/Model/ReplyToMention200Response.php
 lib/Model/ReplyToMentionRequest.php
+lib/Model/ResendSmsRegistrationOtp200Response.php
 lib/Model/RestoreWorkflowVersion200Response.php
 lib/Model/RestoreWorkflowVersion200ResponseWorkflow.php
 lib/Model/RetweetPost200Response.php
@@ -2829,3 +2831,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ResendSmsRegistrationOtp200ResponseTest.php
