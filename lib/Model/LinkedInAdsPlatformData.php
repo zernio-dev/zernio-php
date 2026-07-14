@@ -70,7 +70,9 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
         'document' => '\Zernio\Model\LinkedInAdsPlatformDataDocument',
         'spotlight' => '\Zernio\Model\LinkedInAdsPlatformDataSpotlight',
         'follower' => '\Zernio\Model\LinkedInAdsPlatformDataFollower',
+        'jobs' => '\Zernio\Model\LinkedInAdsPlatformDataJobs',
         'text_ad' => '\Zernio\Model\LinkedInAdsPlatformDataTextAd',
+        'conversation' => '\Zernio\Model\LinkedInAdsPlatformDataConversation',
         'event' => '\Zernio\Model\LinkedInAdsPlatformDataEvent'
     ];
 
@@ -93,7 +95,9 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
         'document' => null,
         'spotlight' => null,
         'follower' => null,
+        'jobs' => null,
         'text_ad' => null,
+        'conversation' => null,
         'event' => null
     ];
 
@@ -114,7 +118,9 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
         'document' => false,
         'spotlight' => false,
         'follower' => false,
+        'jobs' => false,
         'text_ad' => false,
+        'conversation' => false,
         'event' => false
     ];
 
@@ -215,7 +221,9 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
         'document' => 'document',
         'spotlight' => 'spotlight',
         'follower' => 'follower',
+        'jobs' => 'jobs',
         'text_ad' => 'textAd',
+        'conversation' => 'conversation',
         'event' => 'event'
     ];
 
@@ -236,7 +244,9 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
         'document' => 'setDocument',
         'spotlight' => 'setSpotlight',
         'follower' => 'setFollower',
+        'jobs' => 'setJobs',
         'text_ad' => 'setTextAd',
+        'conversation' => 'setConversation',
         'event' => 'setEvent'
     ];
 
@@ -257,7 +267,9 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
         'document' => 'getDocument',
         'spotlight' => 'getSpotlight',
         'follower' => 'getFollower',
+        'jobs' => 'getJobs',
         'text_ad' => 'getTextAd',
+        'conversation' => 'getConversation',
         'event' => 'getEvent'
     ];
 
@@ -361,7 +373,9 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('document', $data ?? [], null);
         $this->setIfExists('spotlight', $data ?? [], null);
         $this->setIfExists('follower', $data ?? [], null);
+        $this->setIfExists('jobs', $data ?? [], null);
         $this->setIfExists('text_ad', $data ?? [], null);
+        $this->setIfExists('conversation', $data ?? [], null);
         $this->setIfExists('event', $data ?? [], null);
     }
 
@@ -743,6 +757,33 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
+     * Gets jobs
+     *
+     * @return \Zernio\Model\LinkedInAdsPlatformDataJobs|null
+     */
+    public function getJobs()
+    {
+        return $this->container['jobs'];
+    }
+
+    /**
+     * Sets jobs
+     *
+     * @param \Zernio\Model\LinkedInAdsPlatformDataJobs|null $jobs jobs
+     *
+     * @return self
+     */
+    public function setJobs($jobs)
+    {
+        if (is_null($jobs)) {
+            throw new \InvalidArgumentException('non-nullable jobs cannot be null');
+        }
+        $this->container['jobs'] = $jobs;
+
+        return $this;
+    }
+
+    /**
      * Gets text_ad
      *
      * @return \Zernio\Model\LinkedInAdsPlatformDataTextAd|null
@@ -765,6 +806,33 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable text_ad cannot be null');
         }
         $this->container['text_ad'] = $text_ad;
+
+        return $this;
+    }
+
+    /**
+     * Gets conversation
+     *
+     * @return \Zernio\Model\LinkedInAdsPlatformDataConversation|null
+     */
+    public function getConversation()
+    {
+        return $this->container['conversation'];
+    }
+
+    /**
+     * Sets conversation
+     *
+     * @param \Zernio\Model\LinkedInAdsPlatformDataConversation|null $conversation conversation
+     *
+     * @return self
+     */
+    public function setConversation($conversation)
+    {
+        if (is_null($conversation)) {
+            throw new \InvalidArgumentException('non-nullable conversation cannot be null');
+        }
+        $this->container['conversation'] = $conversation;
 
         return $this;
     }

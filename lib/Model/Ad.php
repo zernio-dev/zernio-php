@@ -415,6 +415,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     public const GOAL_CONVERSIONS = 'conversions';
     public const GOAL_APP_PROMOTION = 'app_promotion';
     public const GOAL_CATALOG_SALES = 'catalog_sales';
+    public const GOAL_JOB_APPLICANTS = 'job_applicants';
 
     /**
      * Gets allowable values of the enum
@@ -464,6 +465,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
             self::GOAL_CONVERSIONS,
             self::GOAL_APP_PROMOTION,
             self::GOAL_CATALOG_SALES,
+            self::GOAL_JOB_APPLICANTS,
         ];
     }
 
