@@ -65,6 +65,8 @@ class UpdateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
         'dm_message' => 'string',
         'buttons' => '\Zernio\Model\DmButton[]',
         'comment_reply' => 'string',
+        'dm_message_variations' => 'string[]',
+        'comment_reply_variations' => 'string[]',
         'is_active' => 'bool',
         'updated_at' => '\DateTime'
     ];
@@ -84,6 +86,8 @@ class UpdateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
         'dm_message' => null,
         'buttons' => null,
         'comment_reply' => null,
+        'dm_message_variations' => null,
+        'comment_reply_variations' => null,
         'is_active' => null,
         'updated_at' => 'date-time'
     ];
@@ -101,6 +105,8 @@ class UpdateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
         'dm_message' => false,
         'buttons' => false,
         'comment_reply' => false,
+        'dm_message_variations' => false,
+        'comment_reply_variations' => false,
         'is_active' => false,
         'updated_at' => false
     ];
@@ -198,6 +204,8 @@ class UpdateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
         'dm_message' => 'dmMessage',
         'buttons' => 'buttons',
         'comment_reply' => 'commentReply',
+        'dm_message_variations' => 'dmMessageVariations',
+        'comment_reply_variations' => 'commentReplyVariations',
         'is_active' => 'isActive',
         'updated_at' => 'updatedAt'
     ];
@@ -215,6 +223,8 @@ class UpdateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
         'dm_message' => 'setDmMessage',
         'buttons' => 'setButtons',
         'comment_reply' => 'setCommentReply',
+        'dm_message_variations' => 'setDmMessageVariations',
+        'comment_reply_variations' => 'setCommentReplyVariations',
         'is_active' => 'setIsActive',
         'updated_at' => 'setUpdatedAt'
     ];
@@ -232,6 +242,8 @@ class UpdateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
         'dm_message' => 'getDmMessage',
         'buttons' => 'getButtons',
         'comment_reply' => 'getCommentReply',
+        'dm_message_variations' => 'getDmMessageVariations',
+        'comment_reply_variations' => 'getCommentReplyVariations',
         'is_active' => 'getIsActive',
         'updated_at' => 'getUpdatedAt'
     ];
@@ -315,6 +327,8 @@ class UpdateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
         $this->setIfExists('dm_message', $data ?? [], null);
         $this->setIfExists('buttons', $data ?? [], null);
         $this->setIfExists('comment_reply', $data ?? [], null);
+        $this->setIfExists('dm_message_variations', $data ?? [], null);
+        $this->setIfExists('comment_reply_variations', $data ?? [], null);
         $this->setIfExists('is_active', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
     }
@@ -565,6 +579,60 @@ class UpdateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
             throw new \InvalidArgumentException('non-nullable comment_reply cannot be null');
         }
         $this->container['comment_reply'] = $comment_reply;
+
+        return $this;
+    }
+
+    /**
+     * Gets dm_message_variations
+     *
+     * @return string[]|null
+     */
+    public function getDmMessageVariations()
+    {
+        return $this->container['dm_message_variations'];
+    }
+
+    /**
+     * Sets dm_message_variations
+     *
+     * @param string[]|null $dm_message_variations Alternate DM texts rotated at random with dmMessage. Omitted when none.
+     *
+     * @return self
+     */
+    public function setDmMessageVariations($dm_message_variations)
+    {
+        if (is_null($dm_message_variations)) {
+            throw new \InvalidArgumentException('non-nullable dm_message_variations cannot be null');
+        }
+        $this->container['dm_message_variations'] = $dm_message_variations;
+
+        return $this;
+    }
+
+    /**
+     * Gets comment_reply_variations
+     *
+     * @return string[]|null
+     */
+    public function getCommentReplyVariations()
+    {
+        return $this->container['comment_reply_variations'];
+    }
+
+    /**
+     * Sets comment_reply_variations
+     *
+     * @param string[]|null $comment_reply_variations Alternate public replies rotated at random with commentReply. Omitted when none.
+     *
+     * @return self
+     */
+    public function setCommentReplyVariations($comment_reply_variations)
+    {
+        if (is_null($comment_reply_variations)) {
+            throw new \InvalidArgumentException('non-nullable comment_reply_variations cannot be null');
+        }
+        $this->container['comment_reply_variations'] = $comment_reply_variations;
 
         return $this;
     }

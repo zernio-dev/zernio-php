@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **dm_message** | **string** | DM text to send to commenter. Max 640 chars when buttons are set, otherwise ~1000. |
 **buttons** | [**\Zernio\Model\DmButton[]**](DmButton.md) | Optional inline DM buttons (1-3). Phone buttons are Facebook-only. Omit or pass [] for a plain-text DM. | [optional]
 **comment_reply** | **string** | Optional public reply to the comment | [optional]
+**dm_message_variations** | **string[]** | Optional alternate DM texts for random rotation. When set, each triggered comment sends one picked at random from [dmMessage, ...dmMessageVariations], so repeat commenters get slightly different DMs (helps avoid identical-message patterns). Up to 5. Buttons are attached to whichever text is picked, not varied. | [optional]
+**comment_reply_variations** | **string[]** | Optional alternate public replies, rotated at random alongside commentReply (picked independently of the DM). Up to 5. | [optional]
 **link_tracking** | **bool** | Wrap link buttons in the DM in a tracked redirect so clicks are counted (Link Clicks / CTR). Pass false to send links exactly as written. Defaults to on. | [optional] [default to true]
 **click_tag** | **string** | Optional tag applied to a contact when they click a tracked link (requires linkTracking). Lets you segment clickers for broadcasts/sequences. | [optional]
 

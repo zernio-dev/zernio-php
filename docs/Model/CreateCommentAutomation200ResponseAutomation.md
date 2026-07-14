@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **dm_message** | **string** |  | [optional]
 **buttons** | [**\Zernio\Model\DmButton[]**](DmButton.md) | Inline DM buttons (up to 3). Omitted when none are set. | [optional]
 **comment_reply** | **string** |  | [optional]
+**dm_message_variations** | **string[]** | Alternate DM texts rotated at random with dmMessage. Omitted when none. | [optional]
+**comment_reply_variations** | **string[]** | Alternate public replies rotated at random with commentReply. Omitted when none. | [optional]
 **link_tracking** | **bool** |  | [optional]
 **click_tag** | **string** |  | [optional]
 **is_active** | **bool** |  | [optional]
