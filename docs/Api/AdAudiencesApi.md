@@ -286,7 +286,7 @@ $apiInstance = new Zernio\Api\AdAudiencesApi(
 $account_id = 'account_id_example'; // string | Social account ID
 $ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID
 $platform = 'platform_example'; // string
-$type = 'type_example'; // string | Filter to one audience type. `saved_targeting` returns stored TargetingSpec audiences (each item carries a `spec`); the other types return uploaded/derived audiences.
+$type = 'type_example'; // string | Filter to one audience type. `saved_targeting` returns stored TargetingSpec audiences; the other types return uploaded/derived audiences.
 
 try {
     $result = $apiInstance->listAdAudiences($account_id, $ad_account_id, $platform, $type);
@@ -303,7 +303,7 @@ try {
 | **account_id** | **string**| Social account ID | |
 | **ad_account_id** | **string**| Platform ad account ID | |
 | **platform** | **string**|  | [optional] |
-| **type** | **string**| Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences (each item carries a &#x60;spec&#x60;); the other types return uploaded/derived audiences. | [optional] |
+| **type** | **string**| Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences; the other types return uploaded/derived audiences. | [optional] |
 
 ### Return type
 

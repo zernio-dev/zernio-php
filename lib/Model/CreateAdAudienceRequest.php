@@ -63,6 +63,11 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'name' => 'string',
         'description' => 'string',
         'type' => 'string',
+        'source_type' => 'string',
+        'trigger' => 'string',
+        'lookback_days' => 'int',
+        'engagement_sources' => 'string[]',
+        'companies' => '\Zernio\Model\UploadedOrDerivedAudienceCompaniesInner[]',
         'pixel_id' => 'string',
         'retention_days' => 'int',
         'source_audience_id' => 'string',
@@ -86,6 +91,11 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'name' => null,
         'description' => null,
         'type' => null,
+        'source_type' => null,
+        'trigger' => null,
+        'lookback_days' => null,
+        'engagement_sources' => null,
+        'companies' => null,
         'pixel_id' => null,
         'retention_days' => null,
         'source_audience_id' => null,
@@ -107,6 +117,11 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'name' => false,
         'description' => false,
         'type' => false,
+        'source_type' => false,
+        'trigger' => false,
+        'lookback_days' => false,
+        'engagement_sources' => false,
+        'companies' => false,
         'pixel_id' => false,
         'retention_days' => false,
         'source_audience_id' => false,
@@ -208,6 +223,11 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'name' => 'name',
         'description' => 'description',
         'type' => 'type',
+        'source_type' => 'sourceType',
+        'trigger' => 'trigger',
+        'lookback_days' => 'lookbackDays',
+        'engagement_sources' => 'engagementSources',
+        'companies' => 'companies',
         'pixel_id' => 'pixelId',
         'retention_days' => 'retentionDays',
         'source_audience_id' => 'sourceAudienceId',
@@ -229,6 +249,11 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'name' => 'setName',
         'description' => 'setDescription',
         'type' => 'setType',
+        'source_type' => 'setSourceType',
+        'trigger' => 'setTrigger',
+        'lookback_days' => 'setLookbackDays',
+        'engagement_sources' => 'setEngagementSources',
+        'companies' => 'setCompanies',
         'pixel_id' => 'setPixelId',
         'retention_days' => 'setRetentionDays',
         'source_audience_id' => 'setSourceAudienceId',
@@ -250,6 +275,11 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'name' => 'getName',
         'description' => 'getDescription',
         'type' => 'getType',
+        'source_type' => 'getSourceType',
+        'trigger' => 'getTrigger',
+        'lookback_days' => 'getLookbackDays',
+        'engagement_sources' => 'getEngagementSources',
+        'companies' => 'getCompanies',
         'pixel_id' => 'getPixelId',
         'retention_days' => 'getRetentionDays',
         'source_audience_id' => 'getSourceAudienceId',
@@ -302,9 +332,21 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     public const TYPE_CUSTOMER_LIST = 'customer_list';
+    public const TYPE_COMPANY_LIST = 'company_list';
+    public const TYPE_ENGAGEMENT = 'engagement';
     public const TYPE_WEBSITE = 'website';
     public const TYPE_LOOKALIKE = 'lookalike';
     public const TYPE_SAVED_TARGETING = 'saved_targeting';
+    public const SOURCE_TYPE_VIDEO_ADS = 'VIDEO_ADS';
+    public const SOURCE_TYPE_LEAD_GEN_FORMS = 'LEAD_GEN_FORMS';
+    public const SOURCE_TYPE_ORGANIZATION_PAGES = 'ORGANIZATION_PAGES';
+    public const SOURCE_TYPE_EVENT_PAGES = 'EVENT_PAGES';
+    public const SOURCE_TYPE_SINGLE_IMAGE_ADS = 'SINGLE_IMAGE_ADS';
+    public const LOOKBACK_DAYS_NUMBER_30 = 30;
+    public const LOOKBACK_DAYS_NUMBER_60 = 60;
+    public const LOOKBACK_DAYS_NUMBER_90 = 90;
+    public const LOOKBACK_DAYS_NUMBER_180 = 180;
+    public const LOOKBACK_DAYS_NUMBER_365 = 365;
 
     /**
      * Gets allowable values of the enum
@@ -315,9 +357,43 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
     {
         return [
             self::TYPE_CUSTOMER_LIST,
+            self::TYPE_COMPANY_LIST,
+            self::TYPE_ENGAGEMENT,
             self::TYPE_WEBSITE,
             self::TYPE_LOOKALIKE,
             self::TYPE_SAVED_TARGETING,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSourceTypeAllowableValues()
+    {
+        return [
+            self::SOURCE_TYPE_VIDEO_ADS,
+            self::SOURCE_TYPE_LEAD_GEN_FORMS,
+            self::SOURCE_TYPE_ORGANIZATION_PAGES,
+            self::SOURCE_TYPE_EVENT_PAGES,
+            self::SOURCE_TYPE_SINGLE_IMAGE_ADS,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getLookbackDaysAllowableValues()
+    {
+        return [
+            self::LOOKBACK_DAYS_NUMBER_30,
+            self::LOOKBACK_DAYS_NUMBER_60,
+            self::LOOKBACK_DAYS_NUMBER_90,
+            self::LOOKBACK_DAYS_NUMBER_180,
+            self::LOOKBACK_DAYS_NUMBER_365,
         ];
     }
 
@@ -341,6 +417,11 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('source_type', $data ?? [], null);
+        $this->setIfExists('trigger', $data ?? [], null);
+        $this->setIfExists('lookback_days', $data ?? [], null);
+        $this->setIfExists('engagement_sources', $data ?? [], null);
+        $this->setIfExists('companies', $data ?? [], null);
         $this->setIfExists('pixel_id', $data ?? [], null);
         $this->setIfExists('retention_days', $data ?? [], null);
         $this->setIfExists('source_audience_id', $data ?? [], null);
@@ -401,6 +482,40 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
                 $this->container['type'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        $allowedValues = $this->getSourceTypeAllowableValues();
+        if (!is_null($this->container['source_type']) && !in_array($this->container['source_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'source_type', must be one of '%s'",
+                $this->container['source_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getLookbackDaysAllowableValues();
+        if (!is_null($this->container['lookback_days']) && !in_array($this->container['lookback_days'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'lookback_days', must be one of '%s'",
+                $this->container['lookback_days'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if (!is_null($this->container['engagement_sources']) && (count($this->container['engagement_sources']) > 50)) {
+            $invalidProperties[] = "invalid value for 'engagement_sources', number of items must be less than or equal to 50.";
+        }
+
+        if (!is_null($this->container['engagement_sources']) && (count($this->container['engagement_sources']) < 1)) {
+            $invalidProperties[] = "invalid value for 'engagement_sources', number of items must be greater than or equal to 1.";
+        }
+
+        if (!is_null($this->container['companies']) && (count($this->container['companies']) > 300000)) {
+            $invalidProperties[] = "invalid value for 'companies', number of items must be less than or equal to 300000.";
+        }
+
+        if (!is_null($this->container['companies']) && (count($this->container['companies']) < 1)) {
+            $invalidProperties[] = "invalid value for 'companies', number of items must be greater than or equal to 1.";
         }
 
         if (!is_null($this->container['retention_days']) && ($this->container['retention_days'] > 180)) {
@@ -582,6 +697,175 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
             );
         }
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets source_type
+     *
+     * @return string|null
+     */
+    public function getSourceType()
+    {
+        return $this->container['source_type'];
+    }
+
+    /**
+     * Sets source_type
+     *
+     * @param string|null $source_type Required for engagement audiences (LinkedIn only): what members engaged with — a video/leadgen/single-image ad campaign, a Company Page or an Event page.
+     *
+     * @return self
+     */
+    public function setSourceType($source_type)
+    {
+        if (is_null($source_type)) {
+            throw new \InvalidArgumentException('non-nullable source_type cannot be null');
+        }
+        $allowedValues = $this->getSourceTypeAllowableValues();
+        if (!in_array($source_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'source_type', must be one of '%s'",
+                    $source_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['source_type'] = $source_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets trigger
+     *
+     * @return string|null
+     */
+    public function getTrigger()
+    {
+        return $this->container['trigger'];
+    }
+
+    /**
+     * Sets trigger
+     *
+     * @param string|null $trigger Required for engagement audiences. The action, validated by LinkedIn against `sourceType`. Common values: VIDEO_ADS FIRST_QUARTILE / MIDPOINT / THIRD_QUARTILE / FULL_COMPLETE; LEAD_GEN_FORMS VIEW_FORM / LEAD_FORM_SUBMIT; ORGANIZATION_PAGES VIEW / CTA_CLICK; EVENT_PAGES RSVPED / VIDEO_VIEWED / ENGAGEMENT / CLICK.
+     *
+     * @return self
+     */
+    public function setTrigger($trigger)
+    {
+        if (is_null($trigger)) {
+            throw new \InvalidArgumentException('non-nullable trigger cannot be null');
+        }
+        $this->container['trigger'] = $trigger;
+
+        return $this;
+    }
+
+    /**
+     * Gets lookback_days
+     *
+     * @return int|null
+     */
+    public function getLookbackDays()
+    {
+        return $this->container['lookback_days'];
+    }
+
+    /**
+     * Sets lookback_days
+     *
+     * @param int|null $lookback_days Required for engagement audiences. Rolling window.
+     *
+     * @return self
+     */
+    public function setLookbackDays($lookback_days)
+    {
+        if (is_null($lookback_days)) {
+            throw new \InvalidArgumentException('non-nullable lookback_days cannot be null');
+        }
+        $allowedValues = $this->getLookbackDaysAllowableValues();
+        if (!in_array($lookback_days, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'lookback_days', must be one of '%s'",
+                    $lookback_days,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['lookback_days'] = $lookback_days;
+
+        return $this;
+    }
+
+    /**
+     * Gets engagement_sources
+     *
+     * @return string[]|null
+     */
+    public function getEngagementSources()
+    {
+        return $this->container['engagement_sources'];
+    }
+
+    /**
+     * Sets engagement_sources
+     *
+     * @param string[]|null $engagement_sources Required for engagement audiences. Campaign URNs for the ad source types, organization URNs for pages and events. LinkedIn creates one rule per source, all sharing the same trigger and lookbackDays.
+     *
+     * @return self
+     */
+    public function setEngagementSources($engagement_sources)
+    {
+        if (is_null($engagement_sources)) {
+            throw new \InvalidArgumentException('non-nullable engagement_sources cannot be null');
+        }
+
+        if ((count($engagement_sources) > 50)) {
+            throw new \InvalidArgumentException('invalid value for $engagement_sources when calling CreateAdAudienceRequest., number of items must be less than or equal to 50.');
+        }
+        if ((count($engagement_sources) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $engagement_sources when calling CreateAdAudienceRequest., number of items must be greater than or equal to 1.');
+        }
+        $this->container['engagement_sources'] = $engagement_sources;
+
+        return $this;
+    }
+
+    /**
+     * Gets companies
+     *
+     * @return \Zernio\Model\UploadedOrDerivedAudienceCompaniesInner[]|null
+     */
+    public function getCompanies()
+    {
+        return $this->container['companies'];
+    }
+
+    /**
+     * Sets companies
+     *
+     * @param \Zernio\Model\UploadedOrDerivedAudienceCompaniesInner[]|null $companies Required for company_list audiences (LinkedIn only): plain-text company rows for account targeting. Each row needs at least one identifier. LinkedIn recommends 1,000+ companies for a usable match rate and takes up to 48h to process the list.
+     *
+     * @return self
+     */
+    public function setCompanies($companies)
+    {
+        if (is_null($companies)) {
+            throw new \InvalidArgumentException('non-nullable companies cannot be null');
+        }
+
+        if ((count($companies) > 300000)) {
+            throw new \InvalidArgumentException('invalid value for $companies when calling CreateAdAudienceRequest., number of items must be less than or equal to 300000.');
+        }
+        if ((count($companies) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $companies when calling CreateAdAudienceRequest., number of items must be greater than or equal to 1.');
+        }
+        $this->container['companies'] = $companies;
 
         return $this;
     }

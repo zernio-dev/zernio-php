@@ -1353,7 +1353,7 @@ class AdAudiencesApi
      * @param  string $account_id Social account ID (required)
      * @param  string $ad_account_id Platform ad account ID (required)
      * @param  string|null $platform platform (optional)
-     * @param  string|null $type Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences (each item carries a &#x60;spec&#x60;); the other types return uploaded/derived audiences. (optional)
+     * @param  string|null $type Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences; the other types return uploaded/derived audiences. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAudiences'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1374,7 +1374,7 @@ class AdAudiencesApi
      * @param  string $account_id Social account ID (required)
      * @param  string $ad_account_id Platform ad account ID (required)
      * @param  string|null $platform (optional)
-     * @param  string|null $type Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences (each item carries a &#x60;spec&#x60;); the other types return uploaded/derived audiences. (optional)
+     * @param  string|null $type Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences; the other types return uploaded/derived audiences. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAudiences'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1476,7 +1476,7 @@ class AdAudiencesApi
      * @param  string $account_id Social account ID (required)
      * @param  string $ad_account_id Platform ad account ID (required)
      * @param  string|null $platform (optional)
-     * @param  string|null $type Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences (each item carries a &#x60;spec&#x60;); the other types return uploaded/derived audiences. (optional)
+     * @param  string|null $type Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences; the other types return uploaded/derived audiences. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAudiences'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1500,7 +1500,7 @@ class AdAudiencesApi
      * @param  string $account_id Social account ID (required)
      * @param  string $ad_account_id Platform ad account ID (required)
      * @param  string|null $platform (optional)
-     * @param  string|null $type Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences (each item carries a &#x60;spec&#x60;); the other types return uploaded/derived audiences. (optional)
+     * @param  string|null $type Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences; the other types return uploaded/derived audiences. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAudiences'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1553,7 +1553,7 @@ class AdAudiencesApi
      * @param  string $account_id Social account ID (required)
      * @param  string $ad_account_id Platform ad account ID (required)
      * @param  string|null $platform (optional)
-     * @param  string|null $type Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences (each item carries a &#x60;spec&#x60;); the other types return uploaded/derived audiences. (optional)
+     * @param  string|null $type Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences; the other types return uploaded/derived audiences. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAudiences'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

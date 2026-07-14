@@ -1,6 +1,6 @@
 <?php
 /**
- * ListAdAudiences200ResponseAudiencesInner
+ * UploadedOrDerivedAudienceCompaniesInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ListAdAudiences200ResponseAudiencesInner Class Doc Comment
+ * UploadedOrDerivedAudienceCompaniesInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class UploadedOrDerivedAudienceCompaniesInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
       *
       * @var string
       */
-    protected static $openAPIModelName = 'listAdAudiences_200_response_audiences_inner';
+    protected static $openAPIModelName = 'UploadedOrDerivedAudience_companies_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,16 +58,10 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'account_id' => 'string',
-        'platform_audience_id' => 'string',
         'name' => 'string',
-        'description' => 'string',
-        'type' => 'string',
-        'spec' => '\Zernio\Model\TargetingSpec',
-        'platform' => 'string',
-        'size' => 'int',
-        'status' => 'string'
+        'domain' => 'string',
+        'website' => 'string',
+        'linkedin_page_url' => 'string'
     ];
 
     /**
@@ -78,16 +72,10 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'account_id' => null,
-        'platform_audience_id' => null,
         'name' => null,
-        'description' => null,
-        'type' => null,
-        'spec' => null,
-        'platform' => null,
-        'size' => null,
-        'status' => null
+        'domain' => null,
+        'website' => null,
+        'linkedin_page_url' => null
     ];
 
     /**
@@ -96,16 +84,10 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => true,
-        'account_id' => false,
-        'platform_audience_id' => false,
         'name' => false,
-        'description' => false,
-        'type' => false,
-        'spec' => true,
-        'platform' => false,
-        'size' => false,
-        'status' => false
+        'domain' => false,
+        'website' => false,
+        'linkedin_page_url' => false
     ];
 
     /**
@@ -194,16 +176,10 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'account_id' => 'accountId',
-        'platform_audience_id' => 'platformAudienceId',
         'name' => 'name',
-        'description' => 'description',
-        'type' => 'type',
-        'spec' => 'spec',
-        'platform' => 'platform',
-        'size' => 'size',
-        'status' => 'status'
+        'domain' => 'domain',
+        'website' => 'website',
+        'linkedin_page_url' => 'linkedinPageUrl'
     ];
 
     /**
@@ -212,16 +188,10 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'account_id' => 'setAccountId',
-        'platform_audience_id' => 'setPlatformAudienceId',
         'name' => 'setName',
-        'description' => 'setDescription',
-        'type' => 'setType',
-        'spec' => 'setSpec',
-        'platform' => 'setPlatform',
-        'size' => 'setSize',
-        'status' => 'setStatus'
+        'domain' => 'setDomain',
+        'website' => 'setWebsite',
+        'linkedin_page_url' => 'setLinkedinPageUrl'
     ];
 
     /**
@@ -230,16 +200,10 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'account_id' => 'getAccountId',
-        'platform_audience_id' => 'getPlatformAudienceId',
         'name' => 'getName',
-        'description' => 'getDescription',
-        'type' => 'getType',
-        'spec' => 'getSpec',
-        'platform' => 'getPlatform',
-        'size' => 'getSize',
-        'status' => 'getStatus'
+        'domain' => 'getDomain',
+        'website' => 'getWebsite',
+        'linkedin_page_url' => 'getLinkedinPageUrl'
     ];
 
     /**
@@ -283,29 +247,6 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
         return self::$openAPIModelName;
     }
 
-    public const TYPE_CUSTOMER_LIST = 'customer_list';
-    public const TYPE_COMPANY_LIST = 'company_list';
-    public const TYPE_ENGAGEMENT = 'engagement';
-    public const TYPE_WEBSITE = 'website';
-    public const TYPE_LOOKALIKE = 'lookalike';
-    public const TYPE_SAVED_TARGETING = 'saved_targeting';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_CUSTOMER_LIST,
-            self::TYPE_COMPANY_LIST,
-            self::TYPE_ENGAGEMENT,
-            self::TYPE_WEBSITE,
-            self::TYPE_LOOKALIKE,
-            self::TYPE_SAVED_TARGETING,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -322,16 +263,10 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('platform_audience_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('spec', $data ?? [], null);
-        $this->setIfExists('platform', $data ?? [], null);
-        $this->setIfExists('size', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('domain', $data ?? [], null);
+        $this->setIfExists('website', $data ?? [], null);
+        $this->setIfExists('linkedin_page_url', $data ?? [], null);
     }
 
     /**
@@ -361,13 +296,16 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['domain']) && (mb_strlen($this->container['domain']) > 100)) {
+            $invalidProperties[] = "invalid value for 'domain', the character length must be smaller than or equal to 100.";
+        }
+
+        if (!is_null($this->container['website']) && (mb_strlen($this->container['website']) > 100)) {
+            $invalidProperties[] = "invalid value for 'website', the character length must be smaller than or equal to 100.";
         }
 
         return $invalidProperties;
@@ -384,94 +322,6 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets account_id
-     *
-     * @return string|null
-     */
-    public function getAccountId()
-    {
-        return $this->container['account_id'];
-    }
-
-    /**
-     * Sets account_id
-     *
-     * @param string|null $account_id Social account the audience was created against. Returned for saved_targeting items.
-     *
-     * @return self
-     */
-    public function setAccountId($account_id)
-    {
-        if (is_null($account_id)) {
-            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
-        }
-        $this->container['account_id'] = $account_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets platform_audience_id
-     *
-     * @return string|null
-     */
-    public function getPlatformAudienceId()
-    {
-        return $this->container['platform_audience_id'];
-    }
-
-    /**
-     * Sets platform_audience_id
-     *
-     * @param string|null $platform_audience_id platform_audience_id
-     *
-     * @return self
-     */
-    public function setPlatformAudienceId($platform_audience_id)
-    {
-        if (is_null($platform_audience_id)) {
-            throw new \InvalidArgumentException('non-nullable platform_audience_id cannot be null');
-        }
-        $this->container['platform_audience_id'] = $platform_audience_id;
-
-        return $this;
-    }
 
     /**
      * Gets name
@@ -495,186 +345,100 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
+        if ((mb_strlen($name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling UploadedOrDerivedAudienceCompaniesInner., must be smaller than or equal to 255.');
+        }
+
         $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets description
+     * Gets domain
      *
      * @return string|null
      */
-    public function getDescription()
+    public function getDomain()
     {
-        return $this->container['description'];
+        return $this->container['domain'];
     }
 
     /**
-     * Sets description
+     * Sets domain
      *
-     * @param string|null $description description
+     * @param string|null $domain domain
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setDomain($domain)
     {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        if (is_null($domain)) {
+            throw new \InvalidArgumentException('non-nullable domain cannot be null');
         }
-        $this->container['description'] = $description;
+        if ((mb_strlen($domain) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $domain when calling UploadedOrDerivedAudienceCompaniesInner., must be smaller than or equal to 100.');
+        }
+
+        $this->container['domain'] = $domain;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets website
      *
      * @return string|null
      */
-    public function getType()
+    public function getWebsite()
     {
-        return $this->container['type'];
+        return $this->container['website'];
     }
 
     /**
-     * Sets type
+     * Sets website
      *
-     * @param string|null $type type
+     * @param string|null $website website
      *
      * @return self
      */
-    public function setType($type)
+    public function setWebsite($website)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($website)) {
+            throw new \InvalidArgumentException('non-nullable website cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if ((mb_strlen($website) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $website when calling UploadedOrDerivedAudienceCompaniesInner., must be smaller than or equal to 100.');
         }
-        $this->container['type'] = $type;
+
+        $this->container['website'] = $website;
 
         return $this;
     }
 
     /**
-     * Gets spec
-     *
-     * @return \Zernio\Model\TargetingSpec|null
-     */
-    public function getSpec()
-    {
-        return $this->container['spec'];
-    }
-
-    /**
-     * Sets spec
-     *
-     * @param \Zernio\Model\TargetingSpec|null $spec spec
-     *
-     * @return self
-     */
-    public function setSpec($spec)
-    {
-        if (is_null($spec)) {
-            array_push($this->openAPINullablesSetToNull, 'spec');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('spec', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['spec'] = $spec;
-
-        return $this;
-    }
-
-    /**
-     * Gets platform
+     * Gets linkedin_page_url
      *
      * @return string|null
      */
-    public function getPlatform()
+    public function getLinkedinPageUrl()
     {
-        return $this->container['platform'];
+        return $this->container['linkedin_page_url'];
     }
 
     /**
-     * Sets platform
+     * Sets linkedin_page_url
      *
-     * @param string|null $platform platform
+     * @param string|null $linkedin_page_url linkedin_page_url
      *
      * @return self
      */
-    public function setPlatform($platform)
+    public function setLinkedinPageUrl($linkedin_page_url)
     {
-        if (is_null($platform)) {
-            throw new \InvalidArgumentException('non-nullable platform cannot be null');
+        if (is_null($linkedin_page_url)) {
+            throw new \InvalidArgumentException('non-nullable linkedin_page_url cannot be null');
         }
-        $this->container['platform'] = $platform;
-
-        return $this;
-    }
-
-    /**
-     * Gets size
-     *
-     * @return int|null
-     */
-    public function getSize()
-    {
-        return $this->container['size'];
-    }
-
-    /**
-     * Sets size
-     *
-     * @param int|null $size size
-     *
-     * @return self
-     */
-    public function setSize($size)
-    {
-        if (is_null($size)) {
-            throw new \InvalidArgumentException('non-nullable size cannot be null');
-        }
-        $this->container['size'] = $size;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $this->container['status'] = $status;
+        $this->container['linkedin_page_url'] = $linkedin_page_url;
 
         return $this;
     }
