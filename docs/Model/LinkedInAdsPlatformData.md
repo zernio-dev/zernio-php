@@ -11,5 +11,11 @@ Name | Type | Description | Notes
 **audience_expansion_enabled** | **bool** | Enable LinkedIn audience expansion. Defaults to false. | [optional]
 **offsite_delivery_enabled** | **bool** | Deliver on the LinkedIn Audience Network. Defaults to false. | [optional]
 **connected_television_only** | **bool** | Restrict delivery to Connected TV inventory. | [optional]
+**carousel** | [**\Zernio\Model\LinkedInAdsPlatformDataCarousel**](LinkedInAdsPlatformDataCarousel.md) |  | [optional]
+**document** | [**\Zernio\Model\LinkedInAdsPlatformDataDocument**](LinkedInAdsPlatformDataDocument.md) |  | [optional]
+**spotlight** | [**\Zernio\Model\LinkedInAdsPlatformDataSpotlight**](LinkedInAdsPlatformDataSpotlight.md) |  | [optional]
+**follower** | [**\Zernio\Model\LinkedInAdsPlatformDataFollower**](LinkedInAdsPlatformDataFollower.md) |  | [optional]
+**text_ad** | [**\Zernio\Model\LinkedInAdsPlatformDataTextAd**](LinkedInAdsPlatformDataTextAd.md) |  | [optional]
+**event** | [**\Zernio\Model\LinkedInAdsPlatformDataEvent**](LinkedInAdsPlatformDataEvent.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

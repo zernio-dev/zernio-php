@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * LinkedInAdsPlatformData Class Doc Comment
  *
  * @category Class
- * @description LinkedIn campaign bidding and delivery controls for POST /v1/ads/boost and POST /v1/ads/create. Unknown keys are rejected.
+ * @description LinkedIn-specific options for POST /v1/ads/boost and POST /v1/ads/create: campaign bidding and delivery controls, plus the LinkedIn-only creative formats on /v1/ads/create. Unknown keys are rejected.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -65,7 +65,13 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
         'creative_selection' => 'string',
         'audience_expansion_enabled' => 'bool',
         'offsite_delivery_enabled' => 'bool',
-        'connected_television_only' => 'bool'
+        'connected_television_only' => 'bool',
+        'carousel' => '\Zernio\Model\LinkedInAdsPlatformDataCarousel',
+        'document' => '\Zernio\Model\LinkedInAdsPlatformDataDocument',
+        'spotlight' => '\Zernio\Model\LinkedInAdsPlatformDataSpotlight',
+        'follower' => '\Zernio\Model\LinkedInAdsPlatformDataFollower',
+        'text_ad' => '\Zernio\Model\LinkedInAdsPlatformDataTextAd',
+        'event' => '\Zernio\Model\LinkedInAdsPlatformDataEvent'
     ];
 
     /**
@@ -82,7 +88,13 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
         'creative_selection' => null,
         'audience_expansion_enabled' => null,
         'offsite_delivery_enabled' => null,
-        'connected_television_only' => null
+        'connected_television_only' => null,
+        'carousel' => null,
+        'document' => null,
+        'spotlight' => null,
+        'follower' => null,
+        'text_ad' => null,
+        'event' => null
     ];
 
     /**
@@ -97,7 +109,13 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
         'creative_selection' => false,
         'audience_expansion_enabled' => false,
         'offsite_delivery_enabled' => false,
-        'connected_television_only' => false
+        'connected_television_only' => false,
+        'carousel' => false,
+        'document' => false,
+        'spotlight' => false,
+        'follower' => false,
+        'text_ad' => false,
+        'event' => false
     ];
 
     /**
@@ -192,7 +210,13 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
         'creative_selection' => 'creativeSelection',
         'audience_expansion_enabled' => 'audienceExpansionEnabled',
         'offsite_delivery_enabled' => 'offsiteDeliveryEnabled',
-        'connected_television_only' => 'connectedTelevisionOnly'
+        'connected_television_only' => 'connectedTelevisionOnly',
+        'carousel' => 'carousel',
+        'document' => 'document',
+        'spotlight' => 'spotlight',
+        'follower' => 'follower',
+        'text_ad' => 'textAd',
+        'event' => 'event'
     ];
 
     /**
@@ -207,7 +231,13 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
         'creative_selection' => 'setCreativeSelection',
         'audience_expansion_enabled' => 'setAudienceExpansionEnabled',
         'offsite_delivery_enabled' => 'setOffsiteDeliveryEnabled',
-        'connected_television_only' => 'setConnectedTelevisionOnly'
+        'connected_television_only' => 'setConnectedTelevisionOnly',
+        'carousel' => 'setCarousel',
+        'document' => 'setDocument',
+        'spotlight' => 'setSpotlight',
+        'follower' => 'setFollower',
+        'text_ad' => 'setTextAd',
+        'event' => 'setEvent'
     ];
 
     /**
@@ -222,7 +252,13 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
         'creative_selection' => 'getCreativeSelection',
         'audience_expansion_enabled' => 'getAudienceExpansionEnabled',
         'offsite_delivery_enabled' => 'getOffsiteDeliveryEnabled',
-        'connected_television_only' => 'getConnectedTelevisionOnly'
+        'connected_television_only' => 'getConnectedTelevisionOnly',
+        'carousel' => 'getCarousel',
+        'document' => 'getDocument',
+        'spotlight' => 'getSpotlight',
+        'follower' => 'getFollower',
+        'text_ad' => 'getTextAd',
+        'event' => 'getEvent'
     ];
 
     /**
@@ -321,6 +357,12 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('audience_expansion_enabled', $data ?? [], null);
         $this->setIfExists('offsite_delivery_enabled', $data ?? [], null);
         $this->setIfExists('connected_television_only', $data ?? [], null);
+        $this->setIfExists('carousel', $data ?? [], null);
+        $this->setIfExists('document', $data ?? [], null);
+        $this->setIfExists('spotlight', $data ?? [], null);
+        $this->setIfExists('follower', $data ?? [], null);
+        $this->setIfExists('text_ad', $data ?? [], null);
+        $this->setIfExists('event', $data ?? [], null);
     }
 
     /**
@@ -588,6 +630,168 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable connected_television_only cannot be null');
         }
         $this->container['connected_television_only'] = $connected_television_only;
+
+        return $this;
+    }
+
+    /**
+     * Gets carousel
+     *
+     * @return \Zernio\Model\LinkedInAdsPlatformDataCarousel|null
+     */
+    public function getCarousel()
+    {
+        return $this->container['carousel'];
+    }
+
+    /**
+     * Sets carousel
+     *
+     * @param \Zernio\Model\LinkedInAdsPlatformDataCarousel|null $carousel carousel
+     *
+     * @return self
+     */
+    public function setCarousel($carousel)
+    {
+        if (is_null($carousel)) {
+            throw new \InvalidArgumentException('non-nullable carousel cannot be null');
+        }
+        $this->container['carousel'] = $carousel;
+
+        return $this;
+    }
+
+    /**
+     * Gets document
+     *
+     * @return \Zernio\Model\LinkedInAdsPlatformDataDocument|null
+     */
+    public function getDocument()
+    {
+        return $this->container['document'];
+    }
+
+    /**
+     * Sets document
+     *
+     * @param \Zernio\Model\LinkedInAdsPlatformDataDocument|null $document document
+     *
+     * @return self
+     */
+    public function setDocument($document)
+    {
+        if (is_null($document)) {
+            throw new \InvalidArgumentException('non-nullable document cannot be null');
+        }
+        $this->container['document'] = $document;
+
+        return $this;
+    }
+
+    /**
+     * Gets spotlight
+     *
+     * @return \Zernio\Model\LinkedInAdsPlatformDataSpotlight|null
+     */
+    public function getSpotlight()
+    {
+        return $this->container['spotlight'];
+    }
+
+    /**
+     * Sets spotlight
+     *
+     * @param \Zernio\Model\LinkedInAdsPlatformDataSpotlight|null $spotlight spotlight
+     *
+     * @return self
+     */
+    public function setSpotlight($spotlight)
+    {
+        if (is_null($spotlight)) {
+            throw new \InvalidArgumentException('non-nullable spotlight cannot be null');
+        }
+        $this->container['spotlight'] = $spotlight;
+
+        return $this;
+    }
+
+    /**
+     * Gets follower
+     *
+     * @return \Zernio\Model\LinkedInAdsPlatformDataFollower|null
+     */
+    public function getFollower()
+    {
+        return $this->container['follower'];
+    }
+
+    /**
+     * Sets follower
+     *
+     * @param \Zernio\Model\LinkedInAdsPlatformDataFollower|null $follower follower
+     *
+     * @return self
+     */
+    public function setFollower($follower)
+    {
+        if (is_null($follower)) {
+            throw new \InvalidArgumentException('non-nullable follower cannot be null');
+        }
+        $this->container['follower'] = $follower;
+
+        return $this;
+    }
+
+    /**
+     * Gets text_ad
+     *
+     * @return \Zernio\Model\LinkedInAdsPlatformDataTextAd|null
+     */
+    public function getTextAd()
+    {
+        return $this->container['text_ad'];
+    }
+
+    /**
+     * Sets text_ad
+     *
+     * @param \Zernio\Model\LinkedInAdsPlatformDataTextAd|null $text_ad text_ad
+     *
+     * @return self
+     */
+    public function setTextAd($text_ad)
+    {
+        if (is_null($text_ad)) {
+            throw new \InvalidArgumentException('non-nullable text_ad cannot be null');
+        }
+        $this->container['text_ad'] = $text_ad;
+
+        return $this;
+    }
+
+    /**
+     * Gets event
+     *
+     * @return \Zernio\Model\LinkedInAdsPlatformDataEvent|null
+     */
+    public function getEvent()
+    {
+        return $this->container['event'];
+    }
+
+    /**
+     * Sets event
+     *
+     * @param \Zernio\Model\LinkedInAdsPlatformDataEvent|null $event event
+     *
+     * @return self
+     */
+    public function setEvent($event)
+    {
+        if (is_null($event)) {
+            throw new \InvalidArgumentException('non-nullable event cannot be null');
+        }
+        $this->container['event'] = $event;
 
         return $this;
     }
