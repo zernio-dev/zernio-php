@@ -725,6 +725,7 @@ docs/Model/InstagramPlatformDataTrialParams.md
 docs/Model/InstagramPlatformDataUserTagsInner.md
 docs/Model/LikeInboxComment200Response.md
 docs/Model/LikeInboxCommentRequest.md
+docs/Model/LinkedInAdsPlatformData.md
 docs/Model/LinkedInAggregateAnalyticsDailyResponse.md
 docs/Model/LinkedInAggregateAnalyticsDailyResponseAnalytics.md
 docs/Model/LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner.md
@@ -2138,6 +2139,7 @@ lib/Model/InstagramPlatformDataTrialParams.php
 lib/Model/InstagramPlatformDataUserTagsInner.php
 lib/Model/LikeInboxComment200Response.php
 lib/Model/LikeInboxCommentRequest.php
+lib/Model/LinkedInAdsPlatformData.php
 lib/Model/LinkedInAggregateAnalyticsDailyResponse.php
 lib/Model/LinkedInAggregateAnalyticsDailyResponseAnalytics.php
 lib/Model/LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner.php
@@ -2827,3 +2829,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/LinkedInAdsPlatformDataTest.php

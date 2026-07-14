@@ -71,6 +71,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_strategy' => '\Zernio\Model\BidStrategy',
         'bid_amount' => 'float',
         'roas_average_floor' => 'float',
+        'platform_specific_data' => '\Zernio\Model\LinkedInAdsPlatformData',
         'tracking' => '\Zernio\Model\BoostPostRequestTracking',
         'special_ad_categories' => 'string[]',
         'link_url' => 'string',
@@ -101,6 +102,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_strategy' => null,
         'bid_amount' => null,
         'roas_average_floor' => null,
+        'platform_specific_data' => null,
         'tracking' => null,
         'special_ad_categories' => null,
         'link_url' => 'uri',
@@ -129,6 +131,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_strategy' => false,
         'bid_amount' => false,
         'roas_average_floor' => false,
+        'platform_specific_data' => false,
         'tracking' => false,
         'special_ad_categories' => false,
         'link_url' => false,
@@ -237,6 +240,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_strategy' => 'bidStrategy',
         'bid_amount' => 'bidAmount',
         'roas_average_floor' => 'roasAverageFloor',
+        'platform_specific_data' => 'platformSpecificData',
         'tracking' => 'tracking',
         'special_ad_categories' => 'specialAdCategories',
         'link_url' => 'linkUrl',
@@ -265,6 +269,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_strategy' => 'setBidStrategy',
         'bid_amount' => 'setBidAmount',
         'roas_average_floor' => 'setRoasAverageFloor',
+        'platform_specific_data' => 'setPlatformSpecificData',
         'tracking' => 'setTracking',
         'special_ad_categories' => 'setSpecialAdCategories',
         'link_url' => 'setLinkUrl',
@@ -293,6 +298,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid_strategy' => 'getBidStrategy',
         'bid_amount' => 'getBidAmount',
         'roas_average_floor' => 'getRoasAverageFloor',
+        'platform_specific_data' => 'getPlatformSpecificData',
         'tracking' => 'getTracking',
         'special_ad_categories' => 'getSpecialAdCategories',
         'link_url' => 'getLinkUrl',
@@ -416,6 +422,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('bid_strategy', $data ?? [], null);
         $this->setIfExists('bid_amount', $data ?? [], null);
         $this->setIfExists('roas_average_floor', $data ?? [], null);
+        $this->setIfExists('platform_specific_data', $data ?? [], null);
         $this->setIfExists('tracking', $data ?? [], null);
         $this->setIfExists('special_ad_categories', $data ?? [], null);
         $this->setIfExists('link_url', $data ?? [], null);
@@ -864,6 +871,33 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable roas_average_floor cannot be null');
         }
         $this->container['roas_average_floor'] = $roas_average_floor;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_specific_data
+     *
+     * @return \Zernio\Model\LinkedInAdsPlatformData|null
+     */
+    public function getPlatformSpecificData()
+    {
+        return $this->container['platform_specific_data'];
+    }
+
+    /**
+     * Sets platform_specific_data
+     *
+     * @param \Zernio\Model\LinkedInAdsPlatformData|null $platform_specific_data platform_specific_data
+     *
+     * @return self
+     */
+    public function setPlatformSpecificData($platform_specific_data)
+    {
+        if (is_null($platform_specific_data)) {
+            throw new \InvalidArgumentException('non-nullable platform_specific_data cannot be null');
+        }
+        $this->container['platform_specific_data'] = $platform_specific_data;
 
         return $this;
     }

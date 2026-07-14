@@ -121,6 +121,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'bid_strategy' => '\Zernio\Model\BidStrategy',
         'bid_amount' => 'float',
         'roas_average_floor' => 'float',
+        'platform_specific_data' => '\Zernio\Model\LinkedInAdsPlatformData',
         'dsa_beneficiary' => 'string',
         'dsa_payor' => 'string',
         'brand_identity' => '\Zernio\Model\CreateStandaloneAdRequestBrandIdentity',
@@ -199,6 +200,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'bid_strategy' => null,
         'bid_amount' => null,
         'roas_average_floor' => null,
+        'platform_specific_data' => null,
         'dsa_beneficiary' => null,
         'dsa_payor' => null,
         'brand_identity' => null,
@@ -275,6 +277,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'bid_strategy' => false,
         'bid_amount' => false,
         'roas_average_floor' => false,
+        'platform_specific_data' => false,
         'dsa_beneficiary' => false,
         'dsa_payor' => false,
         'brand_identity' => false,
@@ -431,6 +434,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'bid_strategy' => 'bidStrategy',
         'bid_amount' => 'bidAmount',
         'roas_average_floor' => 'roasAverageFloor',
+        'platform_specific_data' => 'platformSpecificData',
         'dsa_beneficiary' => 'dsaBeneficiary',
         'dsa_payor' => 'dsaPayor',
         'brand_identity' => 'brandIdentity',
@@ -507,6 +511,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'bid_strategy' => 'setBidStrategy',
         'bid_amount' => 'setBidAmount',
         'roas_average_floor' => 'setRoasAverageFloor',
+        'platform_specific_data' => 'setPlatformSpecificData',
         'dsa_beneficiary' => 'setDsaBeneficiary',
         'dsa_payor' => 'setDsaPayor',
         'brand_identity' => 'setBrandIdentity',
@@ -583,6 +588,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'bid_strategy' => 'getBidStrategy',
         'bid_amount' => 'getBidAmount',
         'roas_average_floor' => 'getRoasAverageFloor',
+        'platform_specific_data' => 'getPlatformSpecificData',
         'dsa_beneficiary' => 'getDsaBeneficiary',
         'dsa_payor' => 'getDsaPayor',
         'brand_identity' => 'getBrandIdentity',
@@ -931,6 +937,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('bid_strategy', $data ?? [], null);
         $this->setIfExists('bid_amount', $data ?? [], null);
         $this->setIfExists('roas_average_floor', $data ?? [], null);
+        $this->setIfExists('platform_specific_data', $data ?? [], null);
         $this->setIfExists('dsa_beneficiary', $data ?? [], null);
         $this->setIfExists('dsa_payor', $data ?? [], null);
         $this->setIfExists('brand_identity', $data ?? [], null);
@@ -2995,6 +3002,33 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable roas_average_floor cannot be null');
         }
         $this->container['roas_average_floor'] = $roas_average_floor;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_specific_data
+     *
+     * @return \Zernio\Model\LinkedInAdsPlatformData|null
+     */
+    public function getPlatformSpecificData()
+    {
+        return $this->container['platform_specific_data'];
+    }
+
+    /**
+     * Sets platform_specific_data
+     *
+     * @param \Zernio\Model\LinkedInAdsPlatformData|null $platform_specific_data platform_specific_data
+     *
+     * @return self
+     */
+    public function setPlatformSpecificData($platform_specific_data)
+    {
+        if (is_null($platform_specific_data)) {
+            throw new \InvalidArgumentException('non-nullable platform_specific_data cannot be null');
+        }
+        $this->container['platform_specific_data'] = $platform_specific_data;
 
         return $this;
     }
