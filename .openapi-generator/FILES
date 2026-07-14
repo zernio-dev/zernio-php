@@ -2861,9 +2861,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/LinkedInAdsPlatformDataConversationMessagesInnerButtonsInnerTest.php
-test/Model/LinkedInAdsPlatformDataConversationMessagesInnerTest.php
-test/Model/LinkedInAdsPlatformDataConversationTest.php
-test/Model/LinkedInAdsPlatformDataJobsButtonLabelTest.php
-test/Model/LinkedInAdsPlatformDataJobsHeadlineTest.php
-test/Model/LinkedInAdsPlatformDataJobsTest.php
