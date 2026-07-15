@@ -720,7 +720,7 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets match_rules
      *
-     * @param \Zernio\Model\UploadedOrDerivedAudienceMatchRulesInner[]|null $match_rules Required for website_retargeting audiences (LinkedIn only). Each rule is a URL pattern; a member who visits any matching page enters the segment. Needs the LinkedIn Insight Tag installed on the customer's site — the segment only starts filling once the tag reports visits.
+     * @param \Zernio\Model\UploadedOrDerivedAudienceMatchRulesInner[]|null $match_rules Required for website_retargeting audiences (LinkedIn only). Each rule is a URL pattern; a member who visits any matching page enters the segment. Needs the LinkedIn Insight Tag installed on the customer's site — the segment only starts filling once the tag reports visits.  The response's `platformAudienceId` is the LinkedIn adSegment id, valid for downstream use. These segments appear in GET /v1/ads/audiences with  `type: website_retargeting` once LinkedIn has finished building them.
      *
      * @return self
      */

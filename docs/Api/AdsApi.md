@@ -29,6 +29,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getDsaDefaults()**](AdsApi.md#getDsaDefaults) | **GET** /v1/ads/dsa-defaults | Get ad account DSA defaults |
 | [**getDsaRecommendations()**](AdsApi.md#getDsaRecommendations) | **GET** /v1/ads/dsa-recommendations | List DSA beneficiary/payor suggestions |
 | [**getLeadForm()**](AdsApi.md#getLeadForm) | **GET** /v1/ads/lead-forms/{formId} | Get a lead form |
+| [**getLinkedInBidPricing()**](AdsApi.md#getLinkedInBidPricing) | **POST** /v1/ads/targeting/bid-pricing | Suggested bid and budget bounds (LinkedIn) |
+| [**getLinkedInSupplyForecast()**](AdsApi.md#getLinkedInSupplyForecast) | **POST** /v1/ads/targeting/supply-forecast | Impressions, clicks and spend forecast (LinkedIn) |
 | [**listAdAccounts()**](AdsApi.md#listAdAccounts) | **GET** /v1/ads/accounts | List ad accounts |
 | [**listAdCatalogProductSets()**](AdsApi.md#listAdCatalogProductSets) | **GET** /v1/ads/catalogs/{catalogId}/product-sets | List a catalog&#39;s product sets |
 | [**listAdCatalogs()**](AdsApi.md#listAdCatalogs) | **GET** /v1/ads/catalogs | List Meta product catalogs |
@@ -1481,6 +1483,126 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getLinkedInBidPricing()`
+
+```php
+getLinkedInBidPricing($get_linked_in_bid_pricing_request): \Zernio\Model\GetLinkedInBidPricing200Response
+```
+
+Suggested bid and budget bounds (LinkedIn)
+
+LinkedIn-only. Returns the suggested bid and bid limits for a targeting spec, plus the daily-budget bounds LinkedIn will accept. Use it before creating a campaign to pick a bid inside the allowed range and warn the user if their daily budget is below the minimum. Wraps LinkedIn's `adBudgetPricing` finder.  Non-LinkedIn accounts return `available: false` so clients can hide the pricing UI without treating it as a failure.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$get_linked_in_bid_pricing_request = new \Zernio\Model\GetLinkedInBidPricingRequest(); // \Zernio\Model\GetLinkedInBidPricingRequest
+
+try {
+    $result = $apiInstance->getLinkedInBidPricing($get_linked_in_bid_pricing_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->getLinkedInBidPricing: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **get_linked_in_bid_pricing_request** | [**\Zernio\Model\GetLinkedInBidPricingRequest**](../Model/GetLinkedInBidPricingRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\GetLinkedInBidPricing200Response**](../Model/GetLinkedInBidPricing200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getLinkedInSupplyForecast()`
+
+```php
+getLinkedInSupplyForecast($get_linked_in_supply_forecast_request): \Zernio\Model\GetLinkedInSupplyForecast200Response
+```
+
+Impressions, clicks and spend forecast (LinkedIn)
+
+LinkedIn-only. Forecasted impressions, clicks, spend and ~20 other metrics for a targeting spec over a time range. Wraps LinkedIn's `adSupplyForecasts` finder.  Each returned series carries a `metricType` (IMPRESSION, CLICK, SPENDING, MAX_POTENTIAL_BUDGET, COST_PER_MILLION_IMPRESSIONS, ...) and a `granularity` (DAILY, SEVEN_DAY, THIRTY_DAY, CUSTOM). LinkedIn caps the daily spending forecast at 1.2x the daily budget and returns 0 once the total budget is exhausted.  Non-LinkedIn accounts return `available: false`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$get_linked_in_supply_forecast_request = new \Zernio\Model\GetLinkedInSupplyForecastRequest(); // \Zernio\Model\GetLinkedInSupplyForecastRequest
+
+try {
+    $result = $apiInstance->getLinkedInSupplyForecast($get_linked_in_supply_forecast_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->getLinkedInSupplyForecast: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **get_linked_in_supply_forecast_request** | [**\Zernio\Model\GetLinkedInSupplyForecastRequest**](../Model/GetLinkedInSupplyForecastRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\GetLinkedInSupplyForecast200Response**](../Model/GetLinkedInSupplyForecast200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

@@ -121,6 +121,8 @@ Class | Method | HTTP request | Description
 *AdsApi* | [**getDsaDefaults**](docs/Api/AdsApi.md#getdsadefaults) | **GET** /v1/ads/dsa-defaults | Get ad account DSA defaults
 *AdsApi* | [**getDsaRecommendations**](docs/Api/AdsApi.md#getdsarecommendations) | **GET** /v1/ads/dsa-recommendations | List DSA beneficiary/payor suggestions
 *AdsApi* | [**getLeadForm**](docs/Api/AdsApi.md#getleadform) | **GET** /v1/ads/lead-forms/{formId} | Get a lead form
+*AdsApi* | [**getLinkedInBidPricing**](docs/Api/AdsApi.md#getlinkedinbidpricing) | **POST** /v1/ads/targeting/bid-pricing | Suggested bid and budget bounds (LinkedIn)
+*AdsApi* | [**getLinkedInSupplyForecast**](docs/Api/AdsApi.md#getlinkedinsupplyforecast) | **POST** /v1/ads/targeting/supply-forecast | Impressions, clicks and spend forecast (LinkedIn)
 *AdsApi* | [**listAdAccounts**](docs/Api/AdsApi.md#listadaccounts) | **GET** /v1/ads/accounts | List ad accounts
 *AdsApi* | [**listAdCatalogProductSets**](docs/Api/AdsApi.md#listadcatalogproductsets) | **GET** /v1/ads/catalogs/{catalogId}/product-sets | List a catalog&#39;s product sets
 *AdsApi* | [**listAdCatalogs**](docs/Api/AdsApi.md#listadcatalogs) | **GET** /v1/ads/catalogs | List Meta product catalogs
@@ -1043,6 +1045,11 @@ Class | Method | HTTP request | Description
 - [GetLinkedInAggregateAnalytics400Response](docs/Model/GetLinkedInAggregateAnalytics400Response.md)
 - [GetLinkedInAggregateAnalytics402Response](docs/Model/GetLinkedInAggregateAnalytics402Response.md)
 - [GetLinkedInAggregateAnalytics403Response](docs/Model/GetLinkedInAggregateAnalytics403Response.md)
+- [GetLinkedInBidPricing200Response](docs/Model/GetLinkedInBidPricing200Response.md)
+- [GetLinkedInBidPricing200ResponsePricing](docs/Model/GetLinkedInBidPricing200ResponsePricing.md)
+- [GetLinkedInBidPricing200ResponsePricingBidLimits](docs/Model/GetLinkedInBidPricing200ResponsePricingBidLimits.md)
+- [GetLinkedInBidPricing200ResponsePricingSuggestedBid](docs/Model/GetLinkedInBidPricing200ResponsePricingSuggestedBid.md)
+- [GetLinkedInBidPricingRequest](docs/Model/GetLinkedInBidPricingRequest.md)
 - [GetLinkedInMentions200Response](docs/Model/GetLinkedInMentions200Response.md)
 - [GetLinkedInOrganizations200Response](docs/Model/GetLinkedInOrganizations200Response.md)
 - [GetLinkedInOrganizations200ResponseOrganizationsInner](docs/Model/GetLinkedInOrganizations200ResponseOrganizationsInner.md)
@@ -1055,6 +1062,12 @@ Class | Method | HTTP request | Description
 - [GetLinkedInPostReactions200ResponseReactionsInner](docs/Model/GetLinkedInPostReactions200ResponseReactionsInner.md)
 - [GetLinkedInPostReactions200ResponseReactionsInnerFrom](docs/Model/GetLinkedInPostReactions200ResponseReactionsInnerFrom.md)
 - [GetLinkedInPostReactions400Response](docs/Model/GetLinkedInPostReactions400Response.md)
+- [GetLinkedInSupplyForecast200Response](docs/Model/GetLinkedInSupplyForecast200Response.md)
+- [GetLinkedInSupplyForecast200ResponseForecastInner](docs/Model/GetLinkedInSupplyForecast200ResponseForecastInner.md)
+- [GetLinkedInSupplyForecast200ResponseForecastInnerTimeSeriesInner](docs/Model/GetLinkedInSupplyForecast200ResponseForecastInnerTimeSeriesInner.md)
+- [GetLinkedInSupplyForecast200ResponseForecastInnerTimeSeriesInnerAdForecastRange](docs/Model/GetLinkedInSupplyForecast200ResponseForecastInnerTimeSeriesInnerAdForecastRange.md)
+- [GetLinkedInSupplyForecastRequest](docs/Model/GetLinkedInSupplyForecastRequest.md)
+- [GetLinkedInSupplyForecastRequestCompetingBid](docs/Model/GetLinkedInSupplyForecastRequestCompetingBid.md)
 - [GetMediaPresignedUrl200Response](docs/Model/GetMediaPresignedUrl200Response.md)
 - [GetMediaPresignedUrlRequest](docs/Model/GetMediaPresignedUrlRequest.md)
 - [GetMessengerMenu200Response](docs/Model/GetMessengerMenu200Response.md)
@@ -1374,6 +1387,7 @@ Class | Method | HTTP request | Description
 - [MediaItem](docs/Model/MediaItem.md)
 - [MediaUploadResponse](docs/Model/MediaUploadResponse.md)
 - [Money](docs/Model/Money.md)
+- [MoneyAmount](docs/Model/MoneyAmount.md)
 - [MoveAccountToProfile200Response](docs/Model/MoveAccountToProfile200Response.md)
 - [MoveAccountToProfileRequest](docs/Model/MoveAccountToProfileRequest.md)
 - [OnWhatsAppAutomaticEventRequest](docs/Model/OnWhatsAppAutomaticEventRequest.md)
