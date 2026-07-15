@@ -1278,6 +1278,7 @@ docs/Model/UpdateYoutubeDefaultPlaylistRequest.md
 docs/Model/UploadMediaDirect200Response.md
 docs/Model/UploadPhoneNumberKycDocument200Response.md
 docs/Model/UploadPhoneNumberPortInDocument200Response.md
+docs/Model/UploadSmsOptInProof200Response.md
 docs/Model/UploadTokenResponse.md
 docs/Model/UploadTokenStatusResponse.md
 docs/Model/UploadWhatsAppFlowJson200Response.md
@@ -2714,6 +2715,7 @@ lib/Model/UpdateYoutubeDefaultPlaylistRequest.php
 lib/Model/UploadMediaDirect200Response.php
 lib/Model/UploadPhoneNumberKycDocument200Response.php
 lib/Model/UploadPhoneNumberPortInDocument200Response.php
+lib/Model/UploadSmsOptInProof200Response.php
 lib/Model/UploadTokenResponse.php
 lib/Model/UploadTokenStatusResponse.php
 lib/Model/UploadWhatsAppFlowJson200Response.php
@@ -2871,6 +2873,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreatePinterestBoard201ResponseBoardTest.php
-test/Model/CreatePinterestBoard201ResponseTest.php
-test/Model/CreatePinterestBoardRequestTest.php
+test/Model/UploadSmsOptInProof200ResponseTest.php
