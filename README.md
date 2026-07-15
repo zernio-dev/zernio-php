@@ -373,6 +373,7 @@ Class | Method | HTTP request | Description
 *ReviewsApi* | [**listInboxReviews**](docs/Api/ReviewsApi.md#listinboxreviews) | **GET** /v1/inbox/reviews | List reviews
 *ReviewsApi* | [**replyToInboxReview**](docs/Api/ReviewsApi.md#replytoinboxreview) | **POST** /v1/inbox/reviews/{reviewId}/reply | Reply to review
 *SMSApi* | [**appealSmsRegistration**](docs/Api/SMSApi.md#appealsmsregistration) | **POST** /v1/sms/registrations/{id}/appeal | Appeal a rejected campaign
+*SMSApi* | [**deactivateSmsRegistration**](docs/Api/SMSApi.md#deactivatesmsregistration) | **DELETE** /v1/sms/registrations/{id} | Deactivate a brand/campaign registration
 *SMSApi* | [**disableSmsOnNumber**](docs/Api/SMSApi.md#disablesmsonnumber) | **DELETE** /v1/phone-numbers/{id}/sms | Disable SMS on a number
 *SMSApi* | [**enableSmsOnNumber**](docs/Api/SMSApi.md#enablesmsonnumber) | **POST** /v1/phone-numbers/{id}/sms | Enable SMS on a number
 *SMSApi* | [**getSmsRegistration**](docs/Api/SMSApi.md#getsmsregistration) | **GET** /v1/sms/registrations/{id} | Get a carrier registration
@@ -802,6 +803,7 @@ Class | Method | HTTP request | Description
 - [CrosspostDiscordMessage200Response](docs/Model/CrosspostDiscordMessage200Response.md)
 - [CtwaMultiResponse](docs/Model/CtwaMultiResponse.md)
 - [CtwaSingleResponse](docs/Model/CtwaSingleResponse.md)
+- [DeactivateSmsRegistration200Response](docs/Model/DeactivateSmsRegistration200Response.md)
 - [DeleteAccountGroup200Response](docs/Model/DeleteAccountGroup200Response.md)
 - [DeleteAdCampaign200Response](docs/Model/DeleteAdCampaign200Response.md)
 - [DeleteAdCampaignRequest](docs/Model/DeleteAdCampaignRequest.md)

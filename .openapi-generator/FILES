@@ -324,6 +324,7 @@ docs/Model/CreateWorkflowRequest.md
 docs/Model/CrosspostDiscordMessage200Response.md
 docs/Model/CtwaMultiResponse.md
 docs/Model/CtwaSingleResponse.md
+docs/Model/DeactivateSmsRegistration200Response.md
 docs/Model/DeleteAccountGroup200Response.md
 docs/Model/DeleteAdCampaign200Response.md
 docs/Model/DeleteAdCampaignRequest.md
@@ -1773,6 +1774,7 @@ lib/Model/CreateWorkflowRequest.php
 lib/Model/CrosspostDiscordMessage200Response.php
 lib/Model/CtwaMultiResponse.php
 lib/Model/CtwaSingleResponse.php
+lib/Model/DeactivateSmsRegistration200Response.php
 lib/Model/DeleteAccountGroup200Response.php
 lib/Model/DeleteAdCampaign200Response.php
 lib/Model/DeleteAdCampaignRequest.php
@@ -2899,4 +2901,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/LinkedInAdsPlatformDataThoughtLeaderTest.php
+test/Model/DeactivateSmsRegistration200ResponseTest.php
