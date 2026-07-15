@@ -61,7 +61,8 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'from' => 'string',
         'to' => 'string',
         'text' => 'string',
-        'media_urls' => 'string[]'
+        'media_urls' => 'string[]',
+        'send_at' => '\DateTime'
     ];
 
     /**
@@ -75,7 +76,8 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'from' => null,
         'to' => null,
         'text' => null,
-        'media_urls' => 'uri'
+        'media_urls' => 'uri',
+        'send_at' => 'date-time'
     ];
 
     /**
@@ -87,7 +89,8 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'from' => false,
         'to' => false,
         'text' => false,
-        'media_urls' => false
+        'media_urls' => false,
+        'send_at' => false
     ];
 
     /**
@@ -179,7 +182,8 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'from' => 'from',
         'to' => 'to',
         'text' => 'text',
-        'media_urls' => 'mediaUrls'
+        'media_urls' => 'mediaUrls',
+        'send_at' => 'sendAt'
     ];
 
     /**
@@ -191,7 +195,8 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'from' => 'setFrom',
         'to' => 'setTo',
         'text' => 'setText',
-        'media_urls' => 'setMediaUrls'
+        'media_urls' => 'setMediaUrls',
+        'send_at' => 'setSendAt'
     ];
 
     /**
@@ -203,7 +208,8 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'from' => 'getFrom',
         'to' => 'getTo',
         'text' => 'getText',
-        'media_urls' => 'getMediaUrls'
+        'media_urls' => 'getMediaUrls',
+        'send_at' => 'getSendAt'
     ];
 
     /**
@@ -267,6 +273,7 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('to', $data ?? [], null);
         $this->setIfExists('text', $data ?? [], null);
         $this->setIfExists('media_urls', $data ?? [], null);
+        $this->setIfExists('send_at', $data ?? [], null);
     }
 
     /**
@@ -429,6 +436,33 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('invalid value for $media_urls when calling SendSmsRequest., number of items must be less than or equal to 10.');
         }
         $this->container['media_urls'] = $media_urls;
+
+        return $this;
+    }
+
+    /**
+     * Gets send_at
+     *
+     * @return \DateTime|null
+     */
+    public function getSendAt()
+    {
+        return $this->container['send_at'];
+    }
+
+    /**
+     * Sets send_at
+     *
+     * @param \DateTime|null $send_at Optional. Schedule the send for a future time (ISO 8601 with offset, e.g. `2026-08-01T12:00:00Z`). Must be in the future. The message is queued and the `message.delivered` webhook fires when it actually sends.
+     *
+     * @return self
+     */
+    public function setSendAt($send_at)
+    {
+        if (is_null($send_at)) {
+            throw new \InvalidArgumentException('non-nullable send_at cannot be null');
+        }
+        $this->container['send_at'] = $send_at;
 
         return $this;
     }
