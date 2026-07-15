@@ -644,7 +644,7 @@ class GetAdsTimeline200ResponseRowsInner implements ModelInterface, ArrayAccess,
     /**
      * Sets conversions
      *
-     * @param int|null $conversions Sum of conversion events matching the campaign optimization goal. Meta-only at time of writing.
+     * @param int|null $conversions Sum of conversion events over the range. Meta: events matching the campaign optimization goal. Google: tracked conversions. X / LinkedIn: reported website/lead conversions (added 2026-07).
      *
      * @return self
      */
