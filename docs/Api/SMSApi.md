@@ -19,6 +19,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**shareSmsRegistration()**](SMSApi.md#shareSmsRegistration) | **POST** /v1/sms/registrations/share | Create a registration share link |
 | [**startSmsRegistration()**](SMSApi.md#startSmsRegistration) | **POST** /v1/sms/registrations | Start a carrier registration |
 | [**uploadSmsOptInProof()**](SMSApi.md#uploadSmsOptInProof) | **POST** /v1/sms/registrations/{id}/opt-in-proof | Upload opt-in form proof for an appeal |
+| [**uploadSmsOptInProofFile()**](SMSApi.md#uploadSmsOptInProofFile) | **POST** /v1/sms/opt-in-proof | Upload opt-in form proof |
 | [**verifySmsRegistrationOtp()**](SMSApi.md#verifySmsRegistrationOtp) | **POST** /v1/sms/registrations/{id}/verify-otp | Submit the sole-prop OTP |
 
 
@@ -746,7 +747,7 @@ try {
 ## `uploadSmsOptInProof()`
 
 ```php
-uploadSmsOptInProof($id, $file): \Zernio\Model\UploadSmsOptInProof200Response
+uploadSmsOptInProof($id, $file): \Zernio\Model\UploadSmsOptInProofFile200Response
 ```
 
 Upload opt-in form proof for an appeal
@@ -790,7 +791,67 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\UploadSmsOptInProof200Response**](../Model/UploadSmsOptInProof200Response.md)
+[**\Zernio\Model\UploadSmsOptInProofFile200Response**](../Model/UploadSmsOptInProofFile200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `multipart/form-data`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `uploadSmsOptInProofFile()`
+
+```php
+uploadSmsOptInProofFile($file): \Zernio\Model\UploadSmsOptInProofFile200Response
+```
+
+Upload opt-in form proof
+
+Hosts a screenshot (or PDF) of your SMS opt-in form and returns its public URL. Include that URL in the campaign's `messageFlow` (the opt-in workflow text) — the carrier registry has no attachment field, so reviewers verify consent by opening links in that answer. Works before a registration exists (use it when registering) and for appeals. `/v1/sms/registrations/{id}/opt-in-proof` is an alias.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\SMSApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$file = '/path/to/file.txt'; // \SplFileObject | PNG, JPG, WebP, GIF or PDF, max 4MB.
+
+try {
+    $result = $apiInstance->uploadSmsOptInProofFile($file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SMSApi->uploadSmsOptInProofFile: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **file** | **\SplFileObject****\SplFileObject**| PNG, JPG, WebP, GIF or PDF, max 4MB. | |
+
+### Return type
+
+[**\Zernio\Model\UploadSmsOptInProofFile200Response**](../Model/UploadSmsOptInProofFile200Response.md)
 
 ### Authorization
 

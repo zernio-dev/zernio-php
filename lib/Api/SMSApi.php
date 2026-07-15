@@ -114,6 +114,9 @@ class SMSApi
         'uploadSmsOptInProof' => [
             'multipart/form-data',
         ],
+        'uploadSmsOptInProofFile' => [
+            'multipart/form-data',
+        ],
         'verifySmsRegistrationOtp' => [
             'application/json',
         ],
@@ -3637,7 +3640,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UploadSmsOptInProof200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UploadSmsOptInProofFile200Response|\Zernio\Model\InlineObject
      */
     public function uploadSmsOptInProof($id, $file, string $contentType = self::contentTypes['uploadSmsOptInProof'][0])
     {
@@ -3656,7 +3659,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UploadSmsOptInProof200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UploadSmsOptInProofFile200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadSmsOptInProofWithHttpInfo($id, $file, string $contentType = self::contentTypes['uploadSmsOptInProof'][0])
     {
@@ -3688,7 +3691,7 @@ class SMSApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\UploadSmsOptInProof200Response',
+                        '\Zernio\Model\UploadSmsOptInProofFile200Response',
                         $request,
                         $response,
                     );
@@ -3716,7 +3719,7 @@ class SMSApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\UploadSmsOptInProof200Response',
+                '\Zernio\Model\UploadSmsOptInProofFile200Response',
                 $request,
                 $response,
             );
@@ -3725,7 +3728,7 @@ class SMSApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\UploadSmsOptInProof200Response',
+                        '\Zernio\Model\UploadSmsOptInProofFile200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3781,7 +3784,7 @@ class SMSApi
      */
     public function uploadSmsOptInProofAsyncWithHttpInfo($id, $file, string $contentType = self::contentTypes['uploadSmsOptInProof'][0])
     {
-        $returnType = '\Zernio\Model\UploadSmsOptInProof200Response';
+        $returnType = '\Zernio\Model\UploadSmsOptInProofFile200Response';
         $request = $this->uploadSmsOptInProofRequest($id, $file, $contentType);
 
         return $this->client
@@ -3865,6 +3868,294 @@ class SMSApi
                 $resourcePath
             );
         }
+
+        // form params
+        $formDataProcessor = new FormDataProcessor();
+
+        $formData = $formDataProcessor->prepare([
+            'file' => $file,
+        ]);
+
+        $formParams = $formDataProcessor->flatten($formData);
+        $multipart = $formDataProcessor->has_file;
+
+        $multipart = true;
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation uploadSmsOptInProofFile
+     *
+     * Upload opt-in form proof
+     *
+     * @param  \SplFileObject $file PNG, JPG, WebP, GIF or PDF, max 4MB. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadSmsOptInProofFile'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\UploadSmsOptInProofFile200Response|\Zernio\Model\InlineObject
+     */
+    public function uploadSmsOptInProofFile($file, string $contentType = self::contentTypes['uploadSmsOptInProofFile'][0])
+    {
+        list($response) = $this->uploadSmsOptInProofFileWithHttpInfo($file, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation uploadSmsOptInProofFileWithHttpInfo
+     *
+     * Upload opt-in form proof
+     *
+     * @param  \SplFileObject $file PNG, JPG, WebP, GIF or PDF, max 4MB. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadSmsOptInProofFile'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\UploadSmsOptInProofFile200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function uploadSmsOptInProofFileWithHttpInfo($file, string $contentType = self::contentTypes['uploadSmsOptInProofFile'][0])
+    {
+        $request = $this->uploadSmsOptInProofFileRequest($file, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\UploadSmsOptInProofFile200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\UploadSmsOptInProofFile200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\UploadSmsOptInProofFile200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation uploadSmsOptInProofFileAsync
+     *
+     * Upload opt-in form proof
+     *
+     * @param  \SplFileObject $file PNG, JPG, WebP, GIF or PDF, max 4MB. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadSmsOptInProofFile'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function uploadSmsOptInProofFileAsync($file, string $contentType = self::contentTypes['uploadSmsOptInProofFile'][0])
+    {
+        return $this->uploadSmsOptInProofFileAsyncWithHttpInfo($file, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation uploadSmsOptInProofFileAsyncWithHttpInfo
+     *
+     * Upload opt-in form proof
+     *
+     * @param  \SplFileObject $file PNG, JPG, WebP, GIF or PDF, max 4MB. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadSmsOptInProofFile'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function uploadSmsOptInProofFileAsyncWithHttpInfo($file, string $contentType = self::contentTypes['uploadSmsOptInProofFile'][0])
+    {
+        $returnType = '\Zernio\Model\UploadSmsOptInProofFile200Response';
+        $request = $this->uploadSmsOptInProofFileRequest($file, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'uploadSmsOptInProofFile'
+     *
+     * @param  \SplFileObject $file PNG, JPG, WebP, GIF or PDF, max 4MB. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadSmsOptInProofFile'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function uploadSmsOptInProofFileRequest($file, string $contentType = self::contentTypes['uploadSmsOptInProofFile'][0])
+    {
+
+        // verify the required parameter 'file' is set
+        if ($file === null || (is_array($file) && count($file) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $file when calling uploadSmsOptInProofFile'
+            );
+        }
+
+
+        $resourcePath = '/v1/sms/opt-in-proof';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
 
         // form params
         $formDataProcessor = new FormDataProcessor();
