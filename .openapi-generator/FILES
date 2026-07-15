@@ -1285,6 +1285,7 @@ docs/Model/UploadWhatsAppProfilePhotoRequest1.md
 docs/Model/UploadedFile.md
 docs/Model/UploadedOrDerivedAudience.md
 docs/Model/UploadedOrDerivedAudienceCompaniesInner.md
+docs/Model/UploadedOrDerivedAudienceMatchRulesInner.md
 docs/Model/UsageMetering.md
 docs/Model/UsageMeteringCallUsage.md
 docs/Model/UsageMeteringCallUsageWhatsapp.md
@@ -2717,6 +2718,7 @@ lib/Model/UploadWhatsAppProfilePhotoRequest1.php
 lib/Model/UploadedFile.php
 lib/Model/UploadedOrDerivedAudience.php
 lib/Model/UploadedOrDerivedAudienceCompaniesInner.php
+lib/Model/UploadedOrDerivedAudienceMatchRulesInner.php
 lib/Model/UsageMetering.php
 lib/Model/UsageMeteringCallUsage.php
 lib/Model/UsageMeteringCallUsageWhatsapp.php
@@ -2863,4 +2865,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/UploadedOrDerivedAudienceCompaniesInnerTest.php
+test/Model/UploadedOrDerivedAudienceMatchRulesInnerTest.php

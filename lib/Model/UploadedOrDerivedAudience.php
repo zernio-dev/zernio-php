@@ -64,6 +64,7 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
         'name' => 'string',
         'description' => 'string',
         'type' => 'string',
+        'match_rules' => '\Zernio\Model\UploadedOrDerivedAudienceMatchRulesInner[]',
         'source_type' => 'string',
         'trigger' => 'string',
         'lookback_days' => 'int',
@@ -91,6 +92,7 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
         'name' => null,
         'description' => null,
         'type' => null,
+        'match_rules' => null,
         'source_type' => null,
         'trigger' => null,
         'lookback_days' => null,
@@ -116,6 +118,7 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
         'name' => false,
         'description' => false,
         'type' => false,
+        'match_rules' => false,
         'source_type' => false,
         'trigger' => false,
         'lookback_days' => false,
@@ -221,6 +224,7 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
         'name' => 'name',
         'description' => 'description',
         'type' => 'type',
+        'match_rules' => 'matchRules',
         'source_type' => 'sourceType',
         'trigger' => 'trigger',
         'lookback_days' => 'lookbackDays',
@@ -246,6 +250,7 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
         'name' => 'setName',
         'description' => 'setDescription',
         'type' => 'setType',
+        'match_rules' => 'setMatchRules',
         'source_type' => 'setSourceType',
         'trigger' => 'setTrigger',
         'lookback_days' => 'setLookbackDays',
@@ -271,6 +276,7 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
         'name' => 'getName',
         'description' => 'getDescription',
         'type' => 'getType',
+        'match_rules' => 'getMatchRules',
         'source_type' => 'getSourceType',
         'trigger' => 'getTrigger',
         'lookback_days' => 'getLookbackDays',
@@ -330,6 +336,7 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
     public const TYPE_COMPANY_LIST = 'company_list';
     public const TYPE_ENGAGEMENT = 'engagement';
     public const TYPE_WEBSITE = 'website';
+    public const TYPE_WEBSITE_RETARGETING = 'website_retargeting';
     public const TYPE_LOOKALIKE = 'lookalike';
     public const SOURCE_TYPE_VIDEO_ADS = 'VIDEO_ADS';
     public const SOURCE_TYPE_LEAD_GEN_FORMS = 'LEAD_GEN_FORMS';
@@ -354,6 +361,7 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
             self::TYPE_COMPANY_LIST,
             self::TYPE_ENGAGEMENT,
             self::TYPE_WEBSITE,
+            self::TYPE_WEBSITE_RETARGETING,
             self::TYPE_LOOKALIKE,
         ];
     }
@@ -410,6 +418,7 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('match_rules', $data ?? [], null);
         $this->setIfExists('source_type', $data ?? [], null);
         $this->setIfExists('trigger', $data ?? [], null);
         $this->setIfExists('lookback_days', $data ?? [], null);
@@ -474,6 +483,14 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
                 $this->container['type'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['match_rules']) && (count($this->container['match_rules']) > 50)) {
+            $invalidProperties[] = "invalid value for 'match_rules', number of items must be less than or equal to 50.";
+        }
+
+        if (!is_null($this->container['match_rules']) && (count($this->container['match_rules']) < 1)) {
+            $invalidProperties[] = "invalid value for 'match_rules', number of items must be greater than or equal to 1.";
         }
 
         $allowedValues = $this->getSourceTypeAllowableValues();
@@ -686,6 +703,40 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets match_rules
+     *
+     * @return \Zernio\Model\UploadedOrDerivedAudienceMatchRulesInner[]|null
+     */
+    public function getMatchRules()
+    {
+        return $this->container['match_rules'];
+    }
+
+    /**
+     * Sets match_rules
+     *
+     * @param \Zernio\Model\UploadedOrDerivedAudienceMatchRulesInner[]|null $match_rules Required for website_retargeting audiences (LinkedIn only). Each rule is a URL pattern; a member who visits any matching page enters the segment. Needs the LinkedIn Insight Tag installed on the customer's site — the segment only starts filling once the tag reports visits.
+     *
+     * @return self
+     */
+    public function setMatchRules($match_rules)
+    {
+        if (is_null($match_rules)) {
+            throw new \InvalidArgumentException('non-nullable match_rules cannot be null');
+        }
+
+        if ((count($match_rules) > 50)) {
+            throw new \InvalidArgumentException('invalid value for $match_rules when calling UploadedOrDerivedAudience., number of items must be less than or equal to 50.');
+        }
+        if ((count($match_rules) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $match_rules when calling UploadedOrDerivedAudience., number of items must be greater than or equal to 1.');
+        }
+        $this->container['match_rules'] = $match_rules;
 
         return $this;
     }
