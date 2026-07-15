@@ -19,5 +19,6 @@ Name | Type | Description | Notes
 **text_ad** | [**\Zernio\Model\LinkedInAdsPlatformDataTextAd**](LinkedInAdsPlatformDataTextAd.md) |  | [optional]
 **conversation** | [**\Zernio\Model\LinkedInAdsPlatformDataConversation**](LinkedInAdsPlatformDataConversation.md) |  | [optional]
 **event** | [**\Zernio\Model\LinkedInAdsPlatformDataEvent**](LinkedInAdsPlatformDataEvent.md) |  | [optional]
+**thought_leader** | [**\Zernio\Model\LinkedInAdsPlatformDataThoughtLeader**](LinkedInAdsPlatformDataThoughtLeader.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

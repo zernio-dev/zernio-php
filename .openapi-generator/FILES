@@ -755,6 +755,7 @@ docs/Model/LinkedInAdsPlatformDataJobsButtonLabel.md
 docs/Model/LinkedInAdsPlatformDataJobsHeadline.md
 docs/Model/LinkedInAdsPlatformDataSpotlight.md
 docs/Model/LinkedInAdsPlatformDataTextAd.md
+docs/Model/LinkedInAdsPlatformDataThoughtLeader.md
 docs/Model/LinkedInAggregateAnalyticsDailyResponse.md
 docs/Model/LinkedInAggregateAnalyticsDailyResponseAnalytics.md
 docs/Model/LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner.md
@@ -2203,6 +2204,7 @@ lib/Model/LinkedInAdsPlatformDataJobsButtonLabel.php
 lib/Model/LinkedInAdsPlatformDataJobsHeadline.php
 lib/Model/LinkedInAdsPlatformDataSpotlight.php
 lib/Model/LinkedInAdsPlatformDataTextAd.php
+lib/Model/LinkedInAdsPlatformDataThoughtLeader.php
 lib/Model/LinkedInAggregateAnalyticsDailyResponse.php
 lib/Model/LinkedInAggregateAnalyticsDailyResponseAnalytics.php
 lib/Model/LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner.php
@@ -2897,3 +2899,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/LinkedInAdsPlatformDataThoughtLeaderTest.php

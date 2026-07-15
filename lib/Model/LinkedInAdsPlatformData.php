@@ -73,7 +73,8 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
         'jobs' => '\Zernio\Model\LinkedInAdsPlatformDataJobs',
         'text_ad' => '\Zernio\Model\LinkedInAdsPlatformDataTextAd',
         'conversation' => '\Zernio\Model\LinkedInAdsPlatformDataConversation',
-        'event' => '\Zernio\Model\LinkedInAdsPlatformDataEvent'
+        'event' => '\Zernio\Model\LinkedInAdsPlatformDataEvent',
+        'thought_leader' => '\Zernio\Model\LinkedInAdsPlatformDataThoughtLeader'
     ];
 
     /**
@@ -98,7 +99,8 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
         'jobs' => null,
         'text_ad' => null,
         'conversation' => null,
-        'event' => null
+        'event' => null,
+        'thought_leader' => null
     ];
 
     /**
@@ -121,7 +123,8 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
         'jobs' => false,
         'text_ad' => false,
         'conversation' => false,
-        'event' => false
+        'event' => false,
+        'thought_leader' => false
     ];
 
     /**
@@ -224,7 +227,8 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
         'jobs' => 'jobs',
         'text_ad' => 'textAd',
         'conversation' => 'conversation',
-        'event' => 'event'
+        'event' => 'event',
+        'thought_leader' => 'thoughtLeader'
     ];
 
     /**
@@ -247,7 +251,8 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
         'jobs' => 'setJobs',
         'text_ad' => 'setTextAd',
         'conversation' => 'setConversation',
-        'event' => 'setEvent'
+        'event' => 'setEvent',
+        'thought_leader' => 'setThoughtLeader'
     ];
 
     /**
@@ -270,7 +275,8 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
         'jobs' => 'getJobs',
         'text_ad' => 'getTextAd',
         'conversation' => 'getConversation',
-        'event' => 'getEvent'
+        'event' => 'getEvent',
+        'thought_leader' => 'getThoughtLeader'
     ];
 
     /**
@@ -377,6 +383,7 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('text_ad', $data ?? [], null);
         $this->setIfExists('conversation', $data ?? [], null);
         $this->setIfExists('event', $data ?? [], null);
+        $this->setIfExists('thought_leader', $data ?? [], null);
     }
 
     /**
@@ -860,6 +867,33 @@ class LinkedInAdsPlatformData implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable event cannot be null');
         }
         $this->container['event'] = $event;
+
+        return $this;
+    }
+
+    /**
+     * Gets thought_leader
+     *
+     * @return \Zernio\Model\LinkedInAdsPlatformDataThoughtLeader|null
+     */
+    public function getThoughtLeader()
+    {
+        return $this->container['thought_leader'];
+    }
+
+    /**
+     * Sets thought_leader
+     *
+     * @param \Zernio\Model\LinkedInAdsPlatformDataThoughtLeader|null $thought_leader thought_leader
+     *
+     * @return self
+     */
+    public function setThoughtLeader($thought_leader)
+    {
+        if (is_null($thought_leader)) {
+            throw new \InvalidArgumentException('non-nullable thought_leader cannot be null');
+        }
+        $this->container['thought_leader'] = $thought_leader;
 
         return $this;
     }

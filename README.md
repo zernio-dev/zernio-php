@@ -1233,6 +1233,7 @@ Class | Method | HTTP request | Description
 - [LinkedInAdsPlatformDataJobsHeadline](docs/Model/LinkedInAdsPlatformDataJobsHeadline.md)
 - [LinkedInAdsPlatformDataSpotlight](docs/Model/LinkedInAdsPlatformDataSpotlight.md)
 - [LinkedInAdsPlatformDataTextAd](docs/Model/LinkedInAdsPlatformDataTextAd.md)
+- [LinkedInAdsPlatformDataThoughtLeader](docs/Model/LinkedInAdsPlatformDataThoughtLeader.md)
 - [LinkedInAggregateAnalyticsDailyResponse](docs/Model/LinkedInAggregateAnalyticsDailyResponse.md)
 - [LinkedInAggregateAnalyticsDailyResponseAnalytics](docs/Model/LinkedInAggregateAnalyticsDailyResponseAnalytics.md)
 - [LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner](docs/Model/LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner.md)
