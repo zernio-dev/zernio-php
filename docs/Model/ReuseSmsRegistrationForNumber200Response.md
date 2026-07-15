@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **registration_id** | **string** |  | [optional]
-**status** | **string** |  | [optional]
+**status** | **string** | requested/changes_requested &#x3D; pre-submission review states; customers see them as pending / needs changes. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

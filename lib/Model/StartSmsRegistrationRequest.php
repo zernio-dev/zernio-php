@@ -62,6 +62,8 @@ class StartSmsRegistrationRequest implements ModelInterface, ArrayAccess, \JsonS
         'phone_numbers' => 'string[]',
         'brand' => '\Zernio\Model\StartSmsRegistrationRequestBrand',
         'campaign' => '\Zernio\Model\StartSmsRegistrationRequestCampaign',
+        'wizard_values' => 'array<string,string>',
+        'resubmit_request_id' => 'string',
         'toll_free' => '\Zernio\Model\StartSmsRegistrationRequestTollFree'
     ];
 
@@ -77,6 +79,8 @@ class StartSmsRegistrationRequest implements ModelInterface, ArrayAccess, \JsonS
         'phone_numbers' => null,
         'brand' => null,
         'campaign' => null,
+        'wizard_values' => null,
+        'resubmit_request_id' => null,
         'toll_free' => null
     ];
 
@@ -90,6 +94,8 @@ class StartSmsRegistrationRequest implements ModelInterface, ArrayAccess, \JsonS
         'phone_numbers' => false,
         'brand' => false,
         'campaign' => false,
+        'wizard_values' => false,
+        'resubmit_request_id' => false,
         'toll_free' => false
     ];
 
@@ -183,6 +189,8 @@ class StartSmsRegistrationRequest implements ModelInterface, ArrayAccess, \JsonS
         'phone_numbers' => 'phoneNumbers',
         'brand' => 'brand',
         'campaign' => 'campaign',
+        'wizard_values' => 'wizardValues',
+        'resubmit_request_id' => 'resubmitRequestId',
         'toll_free' => 'tollFree'
     ];
 
@@ -196,6 +204,8 @@ class StartSmsRegistrationRequest implements ModelInterface, ArrayAccess, \JsonS
         'phone_numbers' => 'setPhoneNumbers',
         'brand' => 'setBrand',
         'campaign' => 'setCampaign',
+        'wizard_values' => 'setWizardValues',
+        'resubmit_request_id' => 'setResubmitRequestId',
         'toll_free' => 'setTollFree'
     ];
 
@@ -209,6 +219,8 @@ class StartSmsRegistrationRequest implements ModelInterface, ArrayAccess, \JsonS
         'phone_numbers' => 'getPhoneNumbers',
         'brand' => 'getBrand',
         'campaign' => 'getCampaign',
+        'wizard_values' => 'getWizardValues',
+        'resubmit_request_id' => 'getResubmitRequestId',
         'toll_free' => 'getTollFree'
     ];
 
@@ -290,6 +302,8 @@ class StartSmsRegistrationRequest implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('phone_numbers', $data ?? [], null);
         $this->setIfExists('brand', $data ?? [], null);
         $this->setIfExists('campaign', $data ?? [], null);
+        $this->setIfExists('wizard_values', $data ?? [], null);
+        $this->setIfExists('resubmit_request_id', $data ?? [], null);
         $this->setIfExists('toll_free', $data ?? [], null);
     }
 
@@ -473,6 +487,60 @@ class StartSmsRegistrationRequest implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable campaign cannot be null');
         }
         $this->container['campaign'] = $campaign;
+
+        return $this;
+    }
+
+    /**
+     * Gets wizard_values
+     *
+     * @return array<string,string>|null
+     */
+    public function getWizardValues()
+    {
+        return $this->container['wizard_values'];
+    }
+
+    /**
+     * Sets wizard_values
+     *
+     * @param array<string,string>|null $wizard_values Raw dashboard-wizard answers, stored only to prefill edit-and-resubmit. API integrators can omit.
+     *
+     * @return self
+     */
+    public function setWizardValues($wizard_values)
+    {
+        if (is_null($wizard_values)) {
+            throw new \InvalidArgumentException('non-nullable wizard_values cannot be null');
+        }
+        $this->container['wizard_values'] = $wizard_values;
+
+        return $this;
+    }
+
+    /**
+     * Gets resubmit_request_id
+     *
+     * @return string|null
+     */
+    public function getResubmitRequestId()
+    {
+        return $this->container['resubmit_request_id'];
+    }
+
+    /**
+     * Sets resubmit_request_id
+     *
+     * @param string|null $resubmit_request_id Resubmit a registration that was returned for changes — updates it in place instead of creating a new one.
+     *
+     * @return self
+     */
+    public function setResubmitRequestId($resubmit_request_id)
+    {
+        if (is_null($resubmit_request_id)) {
+            throw new \InvalidArgumentException('non-nullable resubmit_request_id cannot be null');
+        }
+        $this->container['resubmit_request_id'] = $resubmit_request_id;
 
         return $this;
     }

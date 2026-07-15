@@ -238,6 +238,9 @@ class ReuseSmsRegistrationForNumber200Response implements ModelInterface, ArrayA
     public const STATUS_PENDING = 'pending';
     public const STATUS_APPROVED = 'approved';
     public const STATUS_REJECTED = 'rejected';
+    public const STATUS_REQUESTED = 'requested';
+    public const STATUS_CHANGES_REQUESTED = 'changes_requested';
+    public const STATUS_DEACTIVATED = 'deactivated';
 
     /**
      * Gets allowable values of the enum
@@ -250,6 +253,9 @@ class ReuseSmsRegistrationForNumber200Response implements ModelInterface, ArrayA
             self::STATUS_PENDING,
             self::STATUS_APPROVED,
             self::STATUS_REJECTED,
+            self::STATUS_REQUESTED,
+            self::STATUS_CHANGES_REQUESTED,
+            self::STATUS_DEACTIVATED,
         ];
     }
 
@@ -363,7 +369,7 @@ class ReuseSmsRegistrationForNumber200Response implements ModelInterface, ArrayA
     /**
      * Sets status
      *
-     * @param string|null $status status
+     * @param string|null $status requested/changes_requested = pre-submission review states; customers see them as pending / needs changes.
      *
      * @return self
      */
