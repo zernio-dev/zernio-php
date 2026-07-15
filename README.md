@@ -202,6 +202,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**connectAds**](docs/Api/ConnectApi.md#connectads) | **GET** /v1/connect/{platform}/ads | Connect ads for a platform
 *ConnectApi* | [**connectBlueskyCredentials**](docs/Api/ConnectApi.md#connectblueskycredentials) | **POST** /v1/connect/bluesky/credentials | Connect Bluesky account
 *ConnectApi* | [**connectWhatsAppCredentials**](docs/Api/ConnectApi.md#connectwhatsappcredentials) | **POST** /v1/connect/whatsapp/credentials | Connect WhatsApp via credentials
+*ConnectApi* | [**createPinterestBoard**](docs/Api/ConnectApi.md#createpinterestboard) | **POST** /v1/accounts/{accountId}/pinterest-boards | Create Pinterest board
 *ConnectApi* | [**getConnectUrl**](docs/Api/ConnectApi.md#getconnecturl) | **GET** /v1/connect/{platform} | Get OAuth connect URL
 *ConnectApi* | [**getFacebookPages**](docs/Api/ConnectApi.md#getfacebookpages) | **GET** /v1/accounts/{accountId}/facebook-page | List Facebook pages
 *ConnectApi* | [**getGmbLocations**](docs/Api/ConnectApi.md#getgmblocations) | **GET** /v1/accounts/{accountId}/gmb-locations | List GBP locations
@@ -725,6 +726,9 @@ Class | Method | HTTP request | Description
 - [CreatePhoneNumberPortIn201ResponseOrdersInner](docs/Model/CreatePhoneNumberPortIn201ResponseOrdersInner.md)
 - [CreatePhoneNumberPortInRequest](docs/Model/CreatePhoneNumberPortInRequest.md)
 - [CreatePhoneNumberPortInRequestEndUser](docs/Model/CreatePhoneNumberPortInRequestEndUser.md)
+- [CreatePinterestBoard201Response](docs/Model/CreatePinterestBoard201Response.md)
+- [CreatePinterestBoard201ResponseBoard](docs/Model/CreatePinterestBoard201ResponseBoard.md)
+- [CreatePinterestBoardRequest](docs/Model/CreatePinterestBoardRequest.md)
 - [CreatePost403Response](docs/Model/CreatePost403Response.md)
 - [CreatePost409Response](docs/Model/CreatePost409Response.md)
 - [CreatePost409ResponseDetails](docs/Model/CreatePost409ResponseDetails.md)

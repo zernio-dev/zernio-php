@@ -252,6 +252,9 @@ docs/Model/CreatePhoneNumberPortIn201Response.md
 docs/Model/CreatePhoneNumberPortIn201ResponseOrdersInner.md
 docs/Model/CreatePhoneNumberPortInRequest.md
 docs/Model/CreatePhoneNumberPortInRequestEndUser.md
+docs/Model/CreatePinterestBoard201Response.md
+docs/Model/CreatePinterestBoard201ResponseBoard.md
+docs/Model/CreatePinterestBoardRequest.md
 docs/Model/CreatePost403Response.md
 docs/Model/CreatePost409Response.md
 docs/Model/CreatePost409ResponseDetails.md
@@ -1684,6 +1687,9 @@ lib/Model/CreatePhoneNumberPortIn201Response.php
 lib/Model/CreatePhoneNumberPortIn201ResponseOrdersInner.php
 lib/Model/CreatePhoneNumberPortInRequest.php
 lib/Model/CreatePhoneNumberPortInRequestEndUser.php
+lib/Model/CreatePinterestBoard201Response.php
+lib/Model/CreatePinterestBoard201ResponseBoard.php
+lib/Model/CreatePinterestBoardRequest.php
 lib/Model/CreatePost403Response.php
 lib/Model/CreatePost409Response.php
 lib/Model/CreatePost409ResponseDetails.php
@@ -2865,4 +2871,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/UploadedOrDerivedAudienceMatchRulesInnerTest.php
+test/Model/CreatePinterestBoard201ResponseBoardTest.php
+test/Model/CreatePinterestBoard201ResponseTest.php
+test/Model/CreatePinterestBoardRequestTest.php
