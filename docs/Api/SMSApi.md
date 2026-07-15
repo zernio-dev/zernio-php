@@ -391,7 +391,7 @@ try {
 ## `listSmsRegistrations()`
 
 ```php
-listSmsRegistrations(): \Zernio\Model\ListSmsRegistrations200Response
+listSmsRegistrations($include_deactivated): \Zernio\Model\ListSmsRegistrations200Response
 ```
 
 List carrier registrations
@@ -413,9 +413,10 @@ $apiInstance = new Zernio\Api\SMSApi(
     new GuzzleHttp\Client(),
     $config
 );
+$include_deactivated = True; // bool | Deactivated (terminated) registrations are hidden by default — pass true to include them.
 
 try {
-    $result = $apiInstance->listSmsRegistrations();
+    $result = $apiInstance->listSmsRegistrations($include_deactivated);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SMSApi->listSmsRegistrations: ', $e->getMessage(), PHP_EOL;
@@ -424,7 +425,9 @@ try {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **include_deactivated** | **bool**| Deactivated (terminated) registrations are hidden by default — pass true to include them. | [optional] |
 
 ### Return type
 

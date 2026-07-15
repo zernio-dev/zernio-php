@@ -1927,15 +1927,16 @@ class SMSApi
      *
      * List carrier registrations
      *
+     * @param  bool|null $include_deactivated Deactivated (terminated) registrations are hidden by default — pass true to include them. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSmsRegistrations'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListSmsRegistrations200Response|\Zernio\Model\InlineObject
      */
-    public function listSmsRegistrations(string $contentType = self::contentTypes['listSmsRegistrations'][0])
+    public function listSmsRegistrations($include_deactivated = null, string $contentType = self::contentTypes['listSmsRegistrations'][0])
     {
-        list($response) = $this->listSmsRegistrationsWithHttpInfo($contentType);
+        list($response) = $this->listSmsRegistrationsWithHttpInfo($include_deactivated, $contentType);
         return $response;
     }
 
@@ -1944,15 +1945,16 @@ class SMSApi
      *
      * List carrier registrations
      *
+     * @param  bool|null $include_deactivated Deactivated (terminated) registrations are hidden by default — pass true to include them. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSmsRegistrations'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListSmsRegistrations200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listSmsRegistrationsWithHttpInfo(string $contentType = self::contentTypes['listSmsRegistrations'][0])
+    public function listSmsRegistrationsWithHttpInfo($include_deactivated = null, string $contentType = self::contentTypes['listSmsRegistrations'][0])
     {
-        $request = $this->listSmsRegistrationsRequest($contentType);
+        $request = $this->listSmsRegistrationsRequest($include_deactivated, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2042,14 +2044,15 @@ class SMSApi
      *
      * List carrier registrations
      *
+     * @param  bool|null $include_deactivated Deactivated (terminated) registrations are hidden by default — pass true to include them. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSmsRegistrations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listSmsRegistrationsAsync(string $contentType = self::contentTypes['listSmsRegistrations'][0])
+    public function listSmsRegistrationsAsync($include_deactivated = null, string $contentType = self::contentTypes['listSmsRegistrations'][0])
     {
-        return $this->listSmsRegistrationsAsyncWithHttpInfo($contentType)
+        return $this->listSmsRegistrationsAsyncWithHttpInfo($include_deactivated, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2062,15 +2065,16 @@ class SMSApi
      *
      * List carrier registrations
      *
+     * @param  bool|null $include_deactivated Deactivated (terminated) registrations are hidden by default — pass true to include them. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSmsRegistrations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listSmsRegistrationsAsyncWithHttpInfo(string $contentType = self::contentTypes['listSmsRegistrations'][0])
+    public function listSmsRegistrationsAsyncWithHttpInfo($include_deactivated = null, string $contentType = self::contentTypes['listSmsRegistrations'][0])
     {
         $returnType = '\Zernio\Model\ListSmsRegistrations200Response';
-        $request = $this->listSmsRegistrationsRequest($contentType);
+        $request = $this->listSmsRegistrationsRequest($include_deactivated, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2111,13 +2115,15 @@ class SMSApi
     /**
      * Create request for operation 'listSmsRegistrations'
      *
+     * @param  bool|null $include_deactivated Deactivated (terminated) registrations are hidden by default — pass true to include them. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSmsRegistrations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listSmsRegistrationsRequest(string $contentType = self::contentTypes['listSmsRegistrations'][0])
+    public function listSmsRegistrationsRequest($include_deactivated = null, string $contentType = self::contentTypes['listSmsRegistrations'][0])
     {
+
 
 
         $resourcePath = '/v1/sms/registrations';
@@ -2127,6 +2133,15 @@ class SMSApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $include_deactivated,
+            'includeDeactivated', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
 
