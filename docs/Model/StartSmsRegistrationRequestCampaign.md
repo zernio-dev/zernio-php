@@ -16,10 +16,12 @@ Name | Type | Description | Notes
 **optout_keywords** | **string** |  |
 **optout_message** | **string** |  | [optional]
 **help_keywords** | **string** |  |
-**embedded_link** | **bool** |  | [optional]
-**embedded_phone** | **bool** |  | [optional]
+**embedded_link** | **bool** | Whether messages carry links. Auto-derived from the samples when omitted, so the declaration matches what the reviewer reads. | [optional]
+**embedded_phone** | **bool** | Whether messages carry phone numbers. Auto-derived from the samples when omitted. | [optional]
 **number_pool** | **bool** |  | [optional]
 **age_gated** | **bool** |  | [optional]
 **direct_lending** | **bool** |  | [optional]
+**privacy_policy_link** | **string** | Link to your privacy policy. Recommended: reviewers check that it says mobile information is not sold or shared with third parties for promotional purposes. A bare domain is normalized to https://. | [optional]
+**terms_and_conditions_link** | **string** | Link to your terms &amp; conditions. A bare domain is normalized to https://. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

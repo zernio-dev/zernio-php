@@ -75,7 +75,9 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
         'embedded_phone' => 'bool',
         'number_pool' => 'bool',
         'age_gated' => 'bool',
-        'direct_lending' => 'bool'
+        'direct_lending' => 'bool',
+        'privacy_policy_link' => 'string',
+        'terms_and_conditions_link' => 'string'
     ];
 
     /**
@@ -102,7 +104,9 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
         'embedded_phone' => null,
         'number_pool' => null,
         'age_gated' => null,
-        'direct_lending' => null
+        'direct_lending' => null,
+        'privacy_policy_link' => null,
+        'terms_and_conditions_link' => null
     ];
 
     /**
@@ -127,7 +131,9 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
         'embedded_phone' => false,
         'number_pool' => false,
         'age_gated' => false,
-        'direct_lending' => false
+        'direct_lending' => false,
+        'privacy_policy_link' => false,
+        'terms_and_conditions_link' => false
     ];
 
     /**
@@ -232,7 +238,9 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
         'embedded_phone' => 'embeddedPhone',
         'number_pool' => 'numberPool',
         'age_gated' => 'ageGated',
-        'direct_lending' => 'directLending'
+        'direct_lending' => 'directLending',
+        'privacy_policy_link' => 'privacyPolicyLink',
+        'terms_and_conditions_link' => 'termsAndConditionsLink'
     ];
 
     /**
@@ -257,7 +265,9 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
         'embedded_phone' => 'setEmbeddedPhone',
         'number_pool' => 'setNumberPool',
         'age_gated' => 'setAgeGated',
-        'direct_lending' => 'setDirectLending'
+        'direct_lending' => 'setDirectLending',
+        'privacy_policy_link' => 'setPrivacyPolicyLink',
+        'terms_and_conditions_link' => 'setTermsAndConditionsLink'
     ];
 
     /**
@@ -282,7 +292,9 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
         'embedded_phone' => 'getEmbeddedPhone',
         'number_pool' => 'getNumberPool',
         'age_gated' => 'getAgeGated',
-        'direct_lending' => 'getDirectLending'
+        'direct_lending' => 'getDirectLending',
+        'privacy_policy_link' => 'getPrivacyPolicyLink',
+        'terms_and_conditions_link' => 'getTermsAndConditionsLink'
     ];
 
     /**
@@ -390,6 +402,8 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
         $this->setIfExists('number_pool', $data ?? [], null);
         $this->setIfExists('age_gated', $data ?? [], null);
         $this->setIfExists('direct_lending', $data ?? [], null);
+        $this->setIfExists('privacy_policy_link', $data ?? [], null);
+        $this->setIfExists('terms_and_conditions_link', $data ?? [], null);
     }
 
     /**
@@ -912,7 +926,7 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
     /**
      * Sets embedded_link
      *
-     * @param bool|null $embedded_link embedded_link
+     * @param bool|null $embedded_link Whether messages carry links. Auto-derived from the samples when omitted, so the declaration matches what the reviewer reads.
      *
      * @return self
      */
@@ -939,7 +953,7 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
     /**
      * Sets embedded_phone
      *
-     * @param bool|null $embedded_phone embedded_phone
+     * @param bool|null $embedded_phone Whether messages carry phone numbers. Auto-derived from the samples when omitted.
      *
      * @return self
      */
@@ -1030,6 +1044,60 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
             throw new \InvalidArgumentException('non-nullable direct_lending cannot be null');
         }
         $this->container['direct_lending'] = $direct_lending;
+
+        return $this;
+    }
+
+    /**
+     * Gets privacy_policy_link
+     *
+     * @return string|null
+     */
+    public function getPrivacyPolicyLink()
+    {
+        return $this->container['privacy_policy_link'];
+    }
+
+    /**
+     * Sets privacy_policy_link
+     *
+     * @param string|null $privacy_policy_link Link to your privacy policy. Recommended: reviewers check that it says mobile information is not sold or shared with third parties for promotional purposes. A bare domain is normalized to https://.
+     *
+     * @return self
+     */
+    public function setPrivacyPolicyLink($privacy_policy_link)
+    {
+        if (is_null($privacy_policy_link)) {
+            throw new \InvalidArgumentException('non-nullable privacy_policy_link cannot be null');
+        }
+        $this->container['privacy_policy_link'] = $privacy_policy_link;
+
+        return $this;
+    }
+
+    /**
+     * Gets terms_and_conditions_link
+     *
+     * @return string|null
+     */
+    public function getTermsAndConditionsLink()
+    {
+        return $this->container['terms_and_conditions_link'];
+    }
+
+    /**
+     * Sets terms_and_conditions_link
+     *
+     * @param string|null $terms_and_conditions_link Link to your terms & conditions. A bare domain is normalized to https://.
+     *
+     * @return self
+     */
+    public function setTermsAndConditionsLink($terms_and_conditions_link)
+    {
+        if (is_null($terms_and_conditions_link)) {
+            throw new \InvalidArgumentException('non-nullable terms_and_conditions_link cannot be null');
+        }
+        $this->container['terms_and_conditions_link'] = $terms_and_conditions_link;
 
         return $this;
     }
