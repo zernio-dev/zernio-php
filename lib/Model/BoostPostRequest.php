@@ -68,6 +68,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'string',
         'schedule' => '\Zernio\Model\BoostPostRequestSchedule',
         'targeting' => '\Zernio\Model\BoostPostRequestTargeting',
+        'raw_targeting' => 'array<string,mixed>',
         'bid_strategy' => '\Zernio\Model\BidStrategy',
         'bid_amount' => 'float',
         'roas_average_floor' => 'float',
@@ -99,6 +100,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => null,
         'schedule' => null,
         'targeting' => null,
+        'raw_targeting' => null,
         'bid_strategy' => null,
         'bid_amount' => null,
         'roas_average_floor' => null,
@@ -128,6 +130,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => false,
         'schedule' => false,
         'targeting' => false,
+        'raw_targeting' => false,
         'bid_strategy' => false,
         'bid_amount' => false,
         'roas_average_floor' => false,
@@ -237,6 +240,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'currency',
         'schedule' => 'schedule',
         'targeting' => 'targeting',
+        'raw_targeting' => 'rawTargeting',
         'bid_strategy' => 'bidStrategy',
         'bid_amount' => 'bidAmount',
         'roas_average_floor' => 'roasAverageFloor',
@@ -266,6 +270,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'setCurrency',
         'schedule' => 'setSchedule',
         'targeting' => 'setTargeting',
+        'raw_targeting' => 'setRawTargeting',
         'bid_strategy' => 'setBidStrategy',
         'bid_amount' => 'setBidAmount',
         'roas_average_floor' => 'setRoasAverageFloor',
@@ -295,6 +300,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'getCurrency',
         'schedule' => 'getSchedule',
         'targeting' => 'getTargeting',
+        'raw_targeting' => 'getRawTargeting',
         'bid_strategy' => 'getBidStrategy',
         'bid_amount' => 'getBidAmount',
         'roas_average_floor' => 'getRoasAverageFloor',
@@ -419,6 +425,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('schedule', $data ?? [], null);
         $this->setIfExists('targeting', $data ?? [], null);
+        $this->setIfExists('raw_targeting', $data ?? [], null);
         $this->setIfExists('bid_strategy', $data ?? [], null);
         $this->setIfExists('bid_amount', $data ?? [], null);
         $this->setIfExists('roas_average_floor', $data ?? [], null);
@@ -790,6 +797,33 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable targeting cannot be null');
         }
         $this->container['targeting'] = $targeting;
+
+        return $this;
+    }
+
+    /**
+     * Gets raw_targeting
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getRawTargeting()
+    {
+        return $this->container['raw_targeting'];
+    }
+
+    /**
+     * Sets raw_targeting
+     *
+     * @param array<string,mixed>|null $raw_targeting Meta only. A verbatim Meta-native targeting spec (e.g. `{ \"geo_locations\": { \"cities\": [{ \"key\": \"...\", \"radius\": 15, \"distance_unit\": \"kilometer\" }] } }`), forwarded unchanged. Mutually exclusive with `targeting` (sending both is a 400). Use for advanced fields the structured object does not expose (flexible_spec, excluded audiences, business places).
+     *
+     * @return self
+     */
+    public function setRawTargeting($raw_targeting)
+    {
+        if (is_null($raw_targeting)) {
+            throw new \InvalidArgumentException('non-nullable raw_targeting cannot be null');
+        }
+        $this->container['raw_targeting'] = $raw_targeting;
 
         return $this;
     }

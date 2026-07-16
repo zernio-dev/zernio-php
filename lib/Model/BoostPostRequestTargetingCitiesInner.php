@@ -1,6 +1,6 @@
 <?php
 /**
- * TargetingSpecExcludedLocations
+ * BoostPostRequestTargetingCitiesInner
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * TargetingSpecExcludedLocations Class Doc Comment
+ * BoostPostRequestTargetingCitiesInner Class Doc Comment
  *
  * @category Class
- * @description Geo to exclude from the audience. Mirrors the inclusion geo shape: excluded cities can carry a radius catchment and excluded custom (lat/lng) pins are supported, both on Meta (excluded_geo_locations).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \JsonSerializable
+class BoostPostRequestTargetingCitiesInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'TargetingSpec_excludedLocations';
+    protected static $openAPIModelName = 'boostPost_request_targeting_cities_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,13 +58,10 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'countries' => 'string[]',
-        'regions' => '\Zernio\Model\BoostPostRequestTargetingRegionsInner[]',
-        'cities' => '\Zernio\Model\TargetingSpecExcludedLocationsCitiesInner[]',
-        'zips' => '\Zernio\Model\BoostPostRequestTargetingRegionsInner[]',
-        'places' => '\Zernio\Model\TargetingSpecExcludedLocationsPlacesInner[]',
-        'neighborhoods' => '\Zernio\Model\TargetingSpecExcludedLocationsPlacesInner[]',
-        'custom_locations' => '\Zernio\Model\TargetingSpecCustomLocationsInner[]'
+        'key' => 'string',
+        'name' => 'string',
+        'radius' => 'float',
+        'distance_unit' => 'string'
     ];
 
     /**
@@ -76,13 +72,10 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'countries' => null,
-        'regions' => null,
-        'cities' => null,
-        'zips' => null,
-        'places' => null,
-        'neighborhoods' => null,
-        'custom_locations' => null
+        'key' => null,
+        'name' => null,
+        'radius' => null,
+        'distance_unit' => null
     ];
 
     /**
@@ -91,13 +84,10 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'countries' => false,
-        'regions' => false,
-        'cities' => false,
-        'zips' => false,
-        'places' => false,
-        'neighborhoods' => false,
-        'custom_locations' => false
+        'key' => false,
+        'name' => false,
+        'radius' => false,
+        'distance_unit' => false
     ];
 
     /**
@@ -186,13 +176,10 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'countries' => 'countries',
-        'regions' => 'regions',
-        'cities' => 'cities',
-        'zips' => 'zips',
-        'places' => 'places',
-        'neighborhoods' => 'neighborhoods',
-        'custom_locations' => 'customLocations'
+        'key' => 'key',
+        'name' => 'name',
+        'radius' => 'radius',
+        'distance_unit' => 'distance_unit'
     ];
 
     /**
@@ -201,13 +188,10 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'countries' => 'setCountries',
-        'regions' => 'setRegions',
-        'cities' => 'setCities',
-        'zips' => 'setZips',
-        'places' => 'setPlaces',
-        'neighborhoods' => 'setNeighborhoods',
-        'custom_locations' => 'setCustomLocations'
+        'key' => 'setKey',
+        'name' => 'setName',
+        'radius' => 'setRadius',
+        'distance_unit' => 'setDistanceUnit'
     ];
 
     /**
@@ -216,13 +200,10 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'countries' => 'getCountries',
-        'regions' => 'getRegions',
-        'cities' => 'getCities',
-        'zips' => 'getZips',
-        'places' => 'getPlaces',
-        'neighborhoods' => 'getNeighborhoods',
-        'custom_locations' => 'getCustomLocations'
+        'key' => 'getKey',
+        'name' => 'getName',
+        'radius' => 'getRadius',
+        'distance_unit' => 'getDistanceUnit'
     ];
 
     /**
@@ -266,6 +247,21 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
+    public const DISTANCE_UNIT_MILE = 'mile';
+    public const DISTANCE_UNIT_KILOMETER = 'kilometer';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getDistanceUnitAllowableValues()
+    {
+        return [
+            self::DISTANCE_UNIT_MILE,
+            self::DISTANCE_UNIT_KILOMETER,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -282,13 +278,10 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('countries', $data ?? [], null);
-        $this->setIfExists('regions', $data ?? [], null);
-        $this->setIfExists('cities', $data ?? [], null);
-        $this->setIfExists('zips', $data ?? [], null);
-        $this->setIfExists('places', $data ?? [], null);
-        $this->setIfExists('neighborhoods', $data ?? [], null);
-        $this->setIfExists('custom_locations', $data ?? [], null);
+        $this->setIfExists('key', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('radius', $data ?? [], null);
+        $this->setIfExists('distance_unit', $data ?? [], null);
     }
 
     /**
@@ -318,6 +311,18 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
+        if ($this->container['key'] === null) {
+            $invalidProperties[] = "'key' can't be null";
+        }
+        $allowedValues = $this->getDistanceUnitAllowableValues();
+        if (!is_null($this->container['distance_unit']) && !in_array($this->container['distance_unit'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'distance_unit', must be one of '%s'",
+                $this->container['distance_unit'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -334,190 +339,119 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets countries
+     * Gets key
      *
-     * @return string[]|null
+     * @return string
      */
-    public function getCountries()
+    public function getKey()
     {
-        return $this->container['countries'];
+        return $this->container['key'];
     }
 
     /**
-     * Sets countries
+     * Sets key
      *
-     * @param string[]|null $countries countries
+     * @param string $key key
      *
      * @return self
      */
-    public function setCountries($countries)
+    public function setKey($key)
     {
-        if (is_null($countries)) {
-            throw new \InvalidArgumentException('non-nullable countries cannot be null');
+        if (is_null($key)) {
+            throw new \InvalidArgumentException('non-nullable key cannot be null');
         }
-        $this->container['countries'] = $countries;
+        $this->container['key'] = $key;
 
         return $this;
     }
 
     /**
-     * Gets regions
+     * Gets name
      *
-     * @return \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null
+     * @return string|null
      */
-    public function getRegions()
+    public function getName()
     {
-        return $this->container['regions'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets regions
+     * Sets name
      *
-     * @param \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null $regions regions
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setRegions($regions)
+    public function setName($name)
     {
-        if (is_null($regions)) {
-            throw new \InvalidArgumentException('non-nullable regions cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['regions'] = $regions;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets cities
+     * Gets radius
      *
-     * @return \Zernio\Model\TargetingSpecExcludedLocationsCitiesInner[]|null
+     * @return float|null
      */
-    public function getCities()
+    public function getRadius()
     {
-        return $this->container['cities'];
+        return $this->container['radius'];
     }
 
     /**
-     * Sets cities
+     * Sets radius
      *
-     * @param \Zernio\Model\TargetingSpecExcludedLocationsCitiesInner[]|null $cities Cities to exclude. Optional `radius` + `distance_unit` exclude a catchment around the city (both must be set together or both omitted); Meta honours the radius on excluded cities.
+     * @param float|null $radius Requires distance_unit.
      *
      * @return self
      */
-    public function setCities($cities)
+    public function setRadius($radius)
     {
-        if (is_null($cities)) {
-            throw new \InvalidArgumentException('non-nullable cities cannot be null');
+        if (is_null($radius)) {
+            throw new \InvalidArgumentException('non-nullable radius cannot be null');
         }
-        $this->container['cities'] = $cities;
+        $this->container['radius'] = $radius;
 
         return $this;
     }
 
     /**
-     * Gets zips
+     * Gets distance_unit
      *
-     * @return \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null
+     * @return string|null
      */
-    public function getZips()
+    public function getDistanceUnit()
     {
-        return $this->container['zips'];
+        return $this->container['distance_unit'];
     }
 
     /**
-     * Sets zips
+     * Sets distance_unit
      *
-     * @param \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null $zips zips
+     * @param string|null $distance_unit distance_unit
      *
      * @return self
      */
-    public function setZips($zips)
+    public function setDistanceUnit($distance_unit)
     {
-        if (is_null($zips)) {
-            throw new \InvalidArgumentException('non-nullable zips cannot be null');
+        if (is_null($distance_unit)) {
+            throw new \InvalidArgumentException('non-nullable distance_unit cannot be null');
         }
-        $this->container['zips'] = $zips;
-
-        return $this;
-    }
-
-    /**
-     * Gets places
-     *
-     * @return \Zernio\Model\TargetingSpecExcludedLocationsPlacesInner[]|null
-     */
-    public function getPlaces()
-    {
-        return $this->container['places'];
-    }
-
-    /**
-     * Sets places
-     *
-     * @param \Zernio\Model\TargetingSpecExcludedLocationsPlacesInner[]|null $places Named points of interest to exclude. `key` from /v1/ads/targeting/search.
-     *
-     * @return self
-     */
-    public function setPlaces($places)
-    {
-        if (is_null($places)) {
-            throw new \InvalidArgumentException('non-nullable places cannot be null');
+        $allowedValues = $this->getDistanceUnitAllowableValues();
+        if (!in_array($distance_unit, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'distance_unit', must be one of '%s'",
+                    $distance_unit,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['places'] = $places;
-
-        return $this;
-    }
-
-    /**
-     * Gets neighborhoods
-     *
-     * @return \Zernio\Model\TargetingSpecExcludedLocationsPlacesInner[]|null
-     */
-    public function getNeighborhoods()
-    {
-        return $this->container['neighborhoods'];
-    }
-
-    /**
-     * Sets neighborhoods
-     *
-     * @param \Zernio\Model\TargetingSpecExcludedLocationsPlacesInner[]|null $neighborhoods Named neighbourhood areas to exclude. `key` from /v1/ads/targeting/search.
-     *
-     * @return self
-     */
-    public function setNeighborhoods($neighborhoods)
-    {
-        if (is_null($neighborhoods)) {
-            throw new \InvalidArgumentException('non-nullable neighborhoods cannot be null');
-        }
-        $this->container['neighborhoods'] = $neighborhoods;
-
-        return $this;
-    }
-
-    /**
-     * Gets custom_locations
-     *
-     * @return \Zernio\Model\TargetingSpecCustomLocationsInner[]|null
-     */
-    public function getCustomLocations()
-    {
-        return $this->container['custom_locations'];
-    }
-
-    /**
-     * Sets custom_locations
-     *
-     * @param \Zernio\Model\TargetingSpecCustomLocationsInner[]|null $custom_locations Point-radius (lat/lng) pins to exclude (Meta excluded_geo_locations.custom_locations). Mirrors the inclusion customLocations shape.
-     *
-     * @return self
-     */
-    public function setCustomLocations($custom_locations)
-    {
-        if (is_null($custom_locations)) {
-            throw new \InvalidArgumentException('non-nullable custom_locations cannot be null');
-        }
-        $this->container['custom_locations'] = $custom_locations;
+        $this->container['distance_unit'] = $distance_unit;
 
         return $this;
     }

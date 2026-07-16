@@ -95,8 +95,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'age_min' => 'int',
         'age_max' => 'int',
         'interests' => '\Zernio\Model\UpdateAdRequestTargetingInterestsInner[]',
-        'zips' => '\Zernio\Model\CreateStandaloneAdRequestZipsInner[]',
-        'metros' => '\Zernio\Model\CreateStandaloneAdRequestZipsInner[]',
+        'zips' => '\Zernio\Model\BoostPostRequestTargetingRegionsInner[]',
+        'metros' => '\Zernio\Model\BoostPostRequestTargetingRegionsInner[]',
         'custom_locations' => '\Zernio\Model\CreateStandaloneAdRequestCustomLocationsInner[]',
         'behaviors' => '\Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]',
         'income_tier' => 'string',
@@ -2253,7 +2253,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets zips
      *
-     * @return \Zernio\Model\CreateStandaloneAdRequestZipsInner[]|null
+     * @return \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null
      */
     public function getZips()
     {
@@ -2263,7 +2263,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets zips
      *
-     * @param \Zernio\Model\CreateStandaloneAdRequestZipsInner[]|null $zips Postal/ZIP geo targeting. `key` is the platform's postal location ID from /v1/ads/targeting/search?dimension=geo&geoType=zip. Supported on Meta, Google, TikTok, Pinterest, X.
+     * @param \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null $zips Postal/ZIP geo targeting. `key` is the platform's postal location ID from /v1/ads/targeting/search?dimension=geo&geoType=zip. Supported on Meta, Google, TikTok, Pinterest, X.
      *
      * @return self
      */
@@ -2280,7 +2280,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets metros
      *
-     * @return \Zernio\Model\CreateStandaloneAdRequestZipsInner[]|null
+     * @return \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null
      */
     public function getMetros()
     {
@@ -2290,7 +2290,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets metros
      *
-     * @param \Zernio\Model\CreateStandaloneAdRequestZipsInner[]|null $metros DMA / metro-area geo targeting. `key` is the platform's metro ID from /v1/ads/targeting/search?dimension=geo&geoType=metro.
+     * @param \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null $metros DMA / metro-area geo targeting. `key` is the platform's metro ID from /v1/ads/targeting/search?dimension=geo&geoType=metro.
      *
      * @return self
      */

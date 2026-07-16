@@ -36,6 +36,7 @@ use \Zernio\ObjectSerializer;
  * BoostPostRequestTargeting Class Doc Comment
  *
  * @category Class
+ * @description Same geo/demographic fields as the &#x60;TargetingSpec&#x60; used by /v1/ads/create. Geo keys (&#x60;regions&#x60;/&#x60;cities&#x60;/&#x60;zips&#x60;/&#x60;metros&#x60;) resolve via GET /v1/ads/targeting/search?dimension&#x3D;geo. City radius and lat/lng &#x60;customLocations&#x60; are Meta-only and preserve the boosted post&#39;s social proof (the ad references the existing post).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,7 +61,14 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPITypes = [
         'age_min' => 'int',
         'age_max' => 'int',
+        'gender' => 'string',
+        'languages' => 'string[]',
         'countries' => 'string[]',
+        'regions' => '\Zernio\Model\BoostPostRequestTargetingRegionsInner[]',
+        'cities' => '\Zernio\Model\BoostPostRequestTargetingCitiesInner[]',
+        'zips' => '\Zernio\Model\BoostPostRequestTargetingRegionsInner[]',
+        'metros' => '\Zernio\Model\BoostPostRequestTargetingRegionsInner[]',
+        'custom_locations' => '\Zernio\Model\BoostPostRequestTargetingCustomLocationsInner[]',
         'interests' => '\Zernio\Model\UpdateAdRequestTargetingInterestsInner[]',
         'advantage_audience' => 'int'
     ];
@@ -75,7 +83,14 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPIFormats = [
         'age_min' => null,
         'age_max' => null,
+        'gender' => null,
+        'languages' => null,
         'countries' => null,
+        'regions' => null,
+        'cities' => null,
+        'zips' => null,
+        'metros' => null,
+        'custom_locations' => null,
         'interests' => null,
         'advantage_audience' => null
     ];
@@ -88,7 +103,14 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
     protected static array $openAPINullables = [
         'age_min' => false,
         'age_max' => false,
+        'gender' => false,
+        'languages' => false,
         'countries' => false,
+        'regions' => false,
+        'cities' => false,
+        'zips' => false,
+        'metros' => false,
+        'custom_locations' => false,
         'interests' => false,
         'advantage_audience' => false
     ];
@@ -181,7 +203,14 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
     protected static $attributeMap = [
         'age_min' => 'ageMin',
         'age_max' => 'ageMax',
+        'gender' => 'gender',
+        'languages' => 'languages',
         'countries' => 'countries',
+        'regions' => 'regions',
+        'cities' => 'cities',
+        'zips' => 'zips',
+        'metros' => 'metros',
+        'custom_locations' => 'customLocations',
         'interests' => 'interests',
         'advantage_audience' => 'advantage_audience'
     ];
@@ -194,7 +223,14 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
     protected static $setters = [
         'age_min' => 'setAgeMin',
         'age_max' => 'setAgeMax',
+        'gender' => 'setGender',
+        'languages' => 'setLanguages',
         'countries' => 'setCountries',
+        'regions' => 'setRegions',
+        'cities' => 'setCities',
+        'zips' => 'setZips',
+        'metros' => 'setMetros',
+        'custom_locations' => 'setCustomLocations',
         'interests' => 'setInterests',
         'advantage_audience' => 'setAdvantageAudience'
     ];
@@ -207,7 +243,14 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
     protected static $getters = [
         'age_min' => 'getAgeMin',
         'age_max' => 'getAgeMax',
+        'gender' => 'getGender',
+        'languages' => 'getLanguages',
         'countries' => 'getCountries',
+        'regions' => 'getRegions',
+        'cities' => 'getCities',
+        'zips' => 'getZips',
+        'metros' => 'getMetros',
+        'custom_locations' => 'getCustomLocations',
         'interests' => 'getInterests',
         'advantage_audience' => 'getAdvantageAudience'
     ];
@@ -253,8 +296,25 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
+    public const GENDER_ALL = 'all';
+    public const GENDER_MALE = 'male';
+    public const GENDER_FEMALE = 'female';
     public const ADVANTAGE_AUDIENCE_NUMBER_0 = 0;
     public const ADVANTAGE_AUDIENCE_NUMBER_1 = 1;
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getGenderAllowableValues()
+    {
+        return [
+            self::GENDER_ALL,
+            self::GENDER_MALE,
+            self::GENDER_FEMALE,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -286,7 +346,14 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
     {
         $this->setIfExists('age_min', $data ?? [], null);
         $this->setIfExists('age_max', $data ?? [], null);
+        $this->setIfExists('gender', $data ?? [], null);
+        $this->setIfExists('languages', $data ?? [], null);
         $this->setIfExists('countries', $data ?? [], null);
+        $this->setIfExists('regions', $data ?? [], null);
+        $this->setIfExists('cities', $data ?? [], null);
+        $this->setIfExists('zips', $data ?? [], null);
+        $this->setIfExists('metros', $data ?? [], null);
+        $this->setIfExists('custom_locations', $data ?? [], null);
         $this->setIfExists('interests', $data ?? [], null);
         $this->setIfExists('advantage_audience', $data ?? [], null);
     }
@@ -332,6 +399,15 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
 
         if (!is_null($this->container['age_max']) && ($this->container['age_max'] < 13)) {
             $invalidProperties[] = "invalid value for 'age_max', must be bigger than or equal to 13.";
+        }
+
+        $allowedValues = $this->getGenderAllowableValues();
+        if (!is_null($this->container['gender']) && !in_array($this->container['gender'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'gender', must be one of '%s'",
+                $this->container['gender'],
+                implode("', '", $allowedValues)
+            );
         }
 
         $allowedValues = $this->getAdvantageAudienceAllowableValues();
@@ -429,6 +505,70 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets gender
+     *
+     * @return string|null
+     */
+    public function getGender()
+    {
+        return $this->container['gender'];
+    }
+
+    /**
+     * Sets gender
+     *
+     * @param string|null $gender Meta only.
+     *
+     * @return self
+     */
+    public function setGender($gender)
+    {
+        if (is_null($gender)) {
+            throw new \InvalidArgumentException('non-nullable gender cannot be null');
+        }
+        $allowedValues = $this->getGenderAllowableValues();
+        if (!in_array($gender, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'gender', must be one of '%s'",
+                    $gender,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['gender'] = $gender;
+
+        return $this;
+    }
+
+    /**
+     * Gets languages
+     *
+     * @return string[]|null
+     */
+    public function getLanguages()
+    {
+        return $this->container['languages'];
+    }
+
+    /**
+     * Sets languages
+     *
+     * @param string[]|null $languages Meta locale ids (numeric), passed through as given.
+     *
+     * @return self
+     */
+    public function setLanguages($languages)
+    {
+        if (is_null($languages)) {
+            throw new \InvalidArgumentException('non-nullable languages cannot be null');
+        }
+        $this->container['languages'] = $languages;
+
+        return $this;
+    }
+
+    /**
      * Gets countries
      *
      * @return string[]|null
@@ -451,6 +591,141 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable countries cannot be null');
         }
         $this->container['countries'] = $countries;
+
+        return $this;
+    }
+
+    /**
+     * Gets regions
+     *
+     * @return \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null
+     */
+    public function getRegions()
+    {
+        return $this->container['regions'];
+    }
+
+    /**
+     * Sets regions
+     *
+     * @param \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null $regions Region/state targeting. `key` from /v1/ads/targeting/search?dimension=geo&geoType=region.
+     *
+     * @return self
+     */
+    public function setRegions($regions)
+    {
+        if (is_null($regions)) {
+            throw new \InvalidArgumentException('non-nullable regions cannot be null');
+        }
+        $this->container['regions'] = $regions;
+
+        return $this;
+    }
+
+    /**
+     * Gets cities
+     *
+     * @return \Zernio\Model\BoostPostRequestTargetingCitiesInner[]|null
+     */
+    public function getCities()
+    {
+        return $this->container['cities'];
+    }
+
+    /**
+     * Sets cities
+     *
+     * @param \Zernio\Model\BoostPostRequestTargetingCitiesInner[]|null $cities City targeting. Optional `radius` + `distance_unit` extend beyond the city limits (both set together, Meta only).
+     *
+     * @return self
+     */
+    public function setCities($cities)
+    {
+        if (is_null($cities)) {
+            throw new \InvalidArgumentException('non-nullable cities cannot be null');
+        }
+        $this->container['cities'] = $cities;
+
+        return $this;
+    }
+
+    /**
+     * Gets zips
+     *
+     * @return \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null
+     */
+    public function getZips()
+    {
+        return $this->container['zips'];
+    }
+
+    /**
+     * Sets zips
+     *
+     * @param \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null $zips Postal/ZIP targeting. `key` is the platform's postal location ID (e.g. Meta `US:94304`).
+     *
+     * @return self
+     */
+    public function setZips($zips)
+    {
+        if (is_null($zips)) {
+            throw new \InvalidArgumentException('non-nullable zips cannot be null');
+        }
+        $this->container['zips'] = $zips;
+
+        return $this;
+    }
+
+    /**
+     * Gets metros
+     *
+     * @return \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null
+     */
+    public function getMetros()
+    {
+        return $this->container['metros'];
+    }
+
+    /**
+     * Sets metros
+     *
+     * @param \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null $metros DMA / metro-area targeting. `key` is the platform's metro ID (e.g. Meta `DMA:807`).
+     *
+     * @return self
+     */
+    public function setMetros($metros)
+    {
+        if (is_null($metros)) {
+            throw new \InvalidArgumentException('non-nullable metros cannot be null');
+        }
+        $this->container['metros'] = $metros;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_locations
+     *
+     * @return \Zernio\Model\BoostPostRequestTargetingCustomLocationsInner[]|null
+     */
+    public function getCustomLocations()
+    {
+        return $this->container['custom_locations'];
+    }
+
+    /**
+     * Sets custom_locations
+     *
+     * @param \Zernio\Model\BoostPostRequestTargetingCustomLocationsInner[]|null $custom_locations Point-radius (lat/lng) targeting (Meta custom_locations). No geo `key` lookup needed.
+     *
+     * @return self
+     */
+    public function setCustomLocations($custom_locations)
+    {
+        if (is_null($custom_locations)) {
+            throw new \InvalidArgumentException('non-nullable custom_locations cannot be null');
+        }
+        $this->container['custom_locations'] = $custom_locations;
 
         return $this;
     }

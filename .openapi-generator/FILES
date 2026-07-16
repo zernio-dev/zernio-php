@@ -136,6 +136,9 @@ docs/Model/BoostPostRequest.md
 docs/Model/BoostPostRequestBudget.md
 docs/Model/BoostPostRequestSchedule.md
 docs/Model/BoostPostRequestTargeting.md
+docs/Model/BoostPostRequestTargetingCitiesInner.md
+docs/Model/BoostPostRequestTargetingCustomLocationsInner.md
+docs/Model/BoostPostRequestTargetingRegionsInner.md
 docs/Model/BoostPostRequestTracking.md
 docs/Model/BulkCreateContacts200Response.md
 docs/Model/BulkCreateContactsRequest.md
@@ -292,7 +295,6 @@ docs/Model/CreateStandaloneAdRequestPromotedObject.md
 docs/Model/CreateStandaloneAdRequestRegionsInner.md
 docs/Model/CreateStandaloneAdRequestTracking.md
 docs/Model/CreateStandaloneAdRequestVideo.md
-docs/Model/CreateStandaloneAdRequestZipsInner.md
 docs/Model/CreateTestLead200Response.md
 docs/Model/CreateTestLead200ResponseTestLead.md
 docs/Model/CreateTestLeadRequest.md
@@ -1586,6 +1588,9 @@ lib/Model/BoostPostRequest.php
 lib/Model/BoostPostRequestBudget.php
 lib/Model/BoostPostRequestSchedule.php
 lib/Model/BoostPostRequestTargeting.php
+lib/Model/BoostPostRequestTargetingCitiesInner.php
+lib/Model/BoostPostRequestTargetingCustomLocationsInner.php
+lib/Model/BoostPostRequestTargetingRegionsInner.php
 lib/Model/BoostPostRequestTracking.php
 lib/Model/BulkCreateContacts200Response.php
 lib/Model/BulkCreateContactsRequest.php
@@ -1742,7 +1747,6 @@ lib/Model/CreateStandaloneAdRequestPromotedObject.php
 lib/Model/CreateStandaloneAdRequestRegionsInner.php
 lib/Model/CreateStandaloneAdRequestTracking.php
 lib/Model/CreateStandaloneAdRequestVideo.php
-lib/Model/CreateStandaloneAdRequestZipsInner.php
 lib/Model/CreateTestLead200Response.php
 lib/Model/CreateTestLead200ResponseTestLead.php
 lib/Model/CreateTestLeadRequest.php
@@ -2901,3 +2905,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/BoostPostRequestTargetingCitiesInnerTest.php
+test/Model/BoostPostRequestTargetingCustomLocationsInnerTest.php
+test/Model/BoostPostRequestTargetingRegionsInnerTest.php

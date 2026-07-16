@@ -60,10 +60,10 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'countries' => 'string[]',
-        'regions' => '\Zernio\Model\CreateStandaloneAdRequestZipsInner[]',
+        'regions' => '\Zernio\Model\BoostPostRequestTargetingRegionsInner[]',
         'cities' => '\Zernio\Model\TargetingSpecCitiesInner[]',
-        'zips' => '\Zernio\Model\CreateStandaloneAdRequestZipsInner[]',
-        'metros' => '\Zernio\Model\CreateStandaloneAdRequestZipsInner[]',
+        'zips' => '\Zernio\Model\BoostPostRequestTargetingRegionsInner[]',
+        'metros' => '\Zernio\Model\BoostPostRequestTargetingRegionsInner[]',
         'custom_locations' => '\Zernio\Model\TargetingSpecCustomLocationsInner[]',
         'excluded_locations' => '\Zernio\Model\TargetingSpecExcludedLocations',
         'age_min' => 'int',
@@ -524,7 +524,7 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets regions
      *
-     * @return \Zernio\Model\CreateStandaloneAdRequestZipsInner[]|null
+     * @return \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null
      */
     public function getRegions()
     {
@@ -534,7 +534,7 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets regions
      *
-     * @param \Zernio\Model\CreateStandaloneAdRequestZipsInner[]|null $regions Region/state targeting. `key` is the platform location ID from /v1/ads/targeting/search?dimension=geo&geoType=region.
+     * @param \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null $regions Region/state targeting. `key` is the platform location ID from /v1/ads/targeting/search?dimension=geo&geoType=region.
      *
      * @return self
      */
@@ -578,7 +578,7 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets zips
      *
-     * @return \Zernio\Model\CreateStandaloneAdRequestZipsInner[]|null
+     * @return \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null
      */
     public function getZips()
     {
@@ -588,7 +588,7 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets zips
      *
-     * @param \Zernio\Model\CreateStandaloneAdRequestZipsInner[]|null $zips Postal/ZIP targeting. `key` is the platform's postal location ID (e.g. Meta `US:94304`). Supported on Meta, Google, TikTok, Pinterest, X.
+     * @param \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null $zips Postal/ZIP targeting. `key` is the platform's postal location ID (e.g. Meta `US:94304`). Supported on Meta, Google, TikTok, Pinterest, X.
      *
      * @return self
      */
@@ -605,7 +605,7 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets metros
      *
-     * @return \Zernio\Model\CreateStandaloneAdRequestZipsInner[]|null
+     * @return \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null
      */
     public function getMetros()
     {
@@ -615,7 +615,7 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets metros
      *
-     * @param \Zernio\Model\CreateStandaloneAdRequestZipsInner[]|null $metros DMA / metro-area targeting. `key` is the platform's metro ID (e.g. Meta `DMA:807`).
+     * @param \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null $metros DMA / metro-area targeting. `key` is the platform's metro ID (e.g. Meta `DMA:807`).
      *
      * @return self
      */
