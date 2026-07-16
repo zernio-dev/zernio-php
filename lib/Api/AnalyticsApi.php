@@ -7961,8 +7961,9 @@ class AnalyticsApi
      * Get YouTube demographics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the YouTube account (required)
+     * @param  string|null $video_id YouTube video ID. When provided, demographics are scoped to this single video (must belong to the connected channel; otherwise 404 video_not_found). (optional)
      * @param  string|null $breakdown Comma-separated list of demographic dimensions: age, gender, country. Defaults to all three if omitted. (optional)
-     * @param  \DateTime|null $start_date Start date in YYYY-MM-DD format. Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $start_date Start date in YYYY-MM-DD format. Defaults to 90 days ago, or to the video&#39;s publish date (lifetime) when videoId is provided. (optional)
      * @param  \DateTime|null $end_date End date in YYYY-MM-DD format. Defaults to 3 days ago (YouTube data latency). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeDemographics'] to see the possible values for this operation
      *
@@ -7970,9 +7971,9 @@ class AnalyticsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\YouTubeDemographicsResponse|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\GetYouTubeDailyViews403Response|\Zernio\Model\GetInstagramAccountInsights404Response|\Zernio\Model\GetYouTubeDemographics412Response
      */
-    public function getYouTubeDemographics($account_id, $breakdown = null, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getYouTubeDemographics'][0])
+    public function getYouTubeDemographics($account_id, $video_id = null, $breakdown = null, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getYouTubeDemographics'][0])
     {
-        list($response) = $this->getYouTubeDemographicsWithHttpInfo($account_id, $breakdown, $start_date, $end_date, $contentType);
+        list($response) = $this->getYouTubeDemographicsWithHttpInfo($account_id, $video_id, $breakdown, $start_date, $end_date, $contentType);
         return $response;
     }
 
@@ -7982,8 +7983,9 @@ class AnalyticsApi
      * Get YouTube demographics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the YouTube account (required)
+     * @param  string|null $video_id YouTube video ID. When provided, demographics are scoped to this single video (must belong to the connected channel; otherwise 404 video_not_found). (optional)
      * @param  string|null $breakdown Comma-separated list of demographic dimensions: age, gender, country. Defaults to all three if omitted. (optional)
-     * @param  \DateTime|null $start_date Start date in YYYY-MM-DD format. Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $start_date Start date in YYYY-MM-DD format. Defaults to 90 days ago, or to the video&#39;s publish date (lifetime) when videoId is provided. (optional)
      * @param  \DateTime|null $end_date End date in YYYY-MM-DD format. Defaults to 3 days ago (YouTube data latency). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeDemographics'] to see the possible values for this operation
      *
@@ -7991,9 +7993,9 @@ class AnalyticsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\YouTubeDemographicsResponse|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\GetYouTubeDailyViews403Response|\Zernio\Model\GetInstagramAccountInsights404Response|\Zernio\Model\GetYouTubeDemographics412Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getYouTubeDemographicsWithHttpInfo($account_id, $breakdown = null, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getYouTubeDemographics'][0])
+    public function getYouTubeDemographicsWithHttpInfo($account_id, $video_id = null, $breakdown = null, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getYouTubeDemographics'][0])
     {
-        $request = $this->getYouTubeDemographicsRequest($account_id, $breakdown, $start_date, $end_date, $contentType);
+        $request = $this->getYouTubeDemographicsRequest($account_id, $video_id, $breakdown, $start_date, $end_date, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8154,17 +8156,18 @@ class AnalyticsApi
      * Get YouTube demographics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the YouTube account (required)
+     * @param  string|null $video_id YouTube video ID. When provided, demographics are scoped to this single video (must belong to the connected channel; otherwise 404 video_not_found). (optional)
      * @param  string|null $breakdown Comma-separated list of demographic dimensions: age, gender, country. Defaults to all three if omitted. (optional)
-     * @param  \DateTime|null $start_date Start date in YYYY-MM-DD format. Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $start_date Start date in YYYY-MM-DD format. Defaults to 90 days ago, or to the video&#39;s publish date (lifetime) when videoId is provided. (optional)
      * @param  \DateTime|null $end_date End date in YYYY-MM-DD format. Defaults to 3 days ago (YouTube data latency). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeDemographics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getYouTubeDemographicsAsync($account_id, $breakdown = null, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getYouTubeDemographics'][0])
+    public function getYouTubeDemographicsAsync($account_id, $video_id = null, $breakdown = null, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getYouTubeDemographics'][0])
     {
-        return $this->getYouTubeDemographicsAsyncWithHttpInfo($account_id, $breakdown, $start_date, $end_date, $contentType)
+        return $this->getYouTubeDemographicsAsyncWithHttpInfo($account_id, $video_id, $breakdown, $start_date, $end_date, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8178,18 +8181,19 @@ class AnalyticsApi
      * Get YouTube demographics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the YouTube account (required)
+     * @param  string|null $video_id YouTube video ID. When provided, demographics are scoped to this single video (must belong to the connected channel; otherwise 404 video_not_found). (optional)
      * @param  string|null $breakdown Comma-separated list of demographic dimensions: age, gender, country. Defaults to all three if omitted. (optional)
-     * @param  \DateTime|null $start_date Start date in YYYY-MM-DD format. Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $start_date Start date in YYYY-MM-DD format. Defaults to 90 days ago, or to the video&#39;s publish date (lifetime) when videoId is provided. (optional)
      * @param  \DateTime|null $end_date End date in YYYY-MM-DD format. Defaults to 3 days ago (YouTube data latency). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeDemographics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getYouTubeDemographicsAsyncWithHttpInfo($account_id, $breakdown = null, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getYouTubeDemographics'][0])
+    public function getYouTubeDemographicsAsyncWithHttpInfo($account_id, $video_id = null, $breakdown = null, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getYouTubeDemographics'][0])
     {
         $returnType = '\Zernio\Model\YouTubeDemographicsResponse';
-        $request = $this->getYouTubeDemographicsRequest($account_id, $breakdown, $start_date, $end_date, $contentType);
+        $request = $this->getYouTubeDemographicsRequest($account_id, $video_id, $breakdown, $start_date, $end_date, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8231,15 +8235,16 @@ class AnalyticsApi
      * Create request for operation 'getYouTubeDemographics'
      *
      * @param  string $account_id The Zernio SocialAccount ID for the YouTube account (required)
+     * @param  string|null $video_id YouTube video ID. When provided, demographics are scoped to this single video (must belong to the connected channel; otherwise 404 video_not_found). (optional)
      * @param  string|null $breakdown Comma-separated list of demographic dimensions: age, gender, country. Defaults to all three if omitted. (optional)
-     * @param  \DateTime|null $start_date Start date in YYYY-MM-DD format. Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $start_date Start date in YYYY-MM-DD format. Defaults to 90 days ago, or to the video&#39;s publish date (lifetime) when videoId is provided. (optional)
      * @param  \DateTime|null $end_date End date in YYYY-MM-DD format. Defaults to 3 days ago (YouTube data latency). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeDemographics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getYouTubeDemographicsRequest($account_id, $breakdown = null, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getYouTubeDemographics'][0])
+    public function getYouTubeDemographicsRequest($account_id, $video_id = null, $breakdown = null, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getYouTubeDemographics'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -8248,6 +8253,7 @@ class AnalyticsApi
                 'Missing the required parameter $account_id when calling getYouTubeDemographics'
             );
         }
+
 
 
 
@@ -8268,6 +8274,15 @@ class AnalyticsApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $video_id,
+            'videoId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(

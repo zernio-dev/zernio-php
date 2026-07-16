@@ -400,7 +400,7 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets cities
      *
-     * @param \Zernio\Model\TargetingSpecExcludedLocationsCitiesInner[]|null $cities Cities to exclude. Optional `radius` + `distance_unit` exclude a catchment around the city (both must be set together or both omitted); Meta honours the radius on excluded cities.
+     * @param \Zernio\Model\TargetingSpecExcludedLocationsCitiesInner[]|null $cities Cities to exclude. Optional `radius` + `distanceUnit` exclude a catchment around the city (both must be set together or both omitted); Meta honours the radius on excluded cities.
      *
      * @return self
      */

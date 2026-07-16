@@ -179,7 +179,7 @@ class TargetingSpecCitiesInner implements ModelInterface, ArrayAccess, \JsonSeri
         'key' => 'key',
         'name' => 'name',
         'radius' => 'radius',
-        'distance_unit' => 'distance_unit'
+        'distance_unit' => 'distanceUnit'
     ];
 
     /**
@@ -405,7 +405,7 @@ class TargetingSpecCitiesInner implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets radius
      *
-     * @param float|null $radius Radius around the city. Requires distance_unit.
+     * @param float|null $radius Radius around the city. Requires distanceUnit. Meta enforces a minimum city radius (~17 km / 10 mi); smaller values resolve to a 0-size audience and the ad fails at launch. For a tighter catchment use customLocations (lat/lng), which allows a smaller radius.
      *
      * @return self
      */

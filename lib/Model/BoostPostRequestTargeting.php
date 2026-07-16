@@ -635,7 +635,7 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets cities
      *
-     * @param \Zernio\Model\BoostPostRequestTargetingCitiesInner[]|null $cities City targeting. Optional `radius` + `distance_unit` extend beyond the city limits (both set together, Meta only).
+     * @param \Zernio\Model\BoostPostRequestTargetingCitiesInner[]|null $cities City targeting. Optional `radius` + `distanceUnit` extend beyond the city limits (both set together, Meta only).
      *
      * @return self
      */

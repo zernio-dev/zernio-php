@@ -175,7 +175,7 @@ class TargetingSpecExcludedLocationsCitiesInner implements ModelInterface, Array
     protected static $attributeMap = [
         'key' => 'key',
         'radius' => 'radius',
-        'distance_unit' => 'distance_unit'
+        'distance_unit' => 'distanceUnit'
     ];
 
     /**
@@ -371,7 +371,7 @@ class TargetingSpecExcludedLocationsCitiesInner implements ModelInterface, Array
     /**
      * Sets radius
      *
-     * @param float|null $radius Radius around the excluded city. Requires distance_unit.
+     * @param float|null $radius Radius around the excluded city. Requires distanceUnit.
      *
      * @return self
      */

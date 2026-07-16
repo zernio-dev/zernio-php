@@ -1447,12 +1447,12 @@ try {
 ## `getYouTubeDemographics()`
 
 ```php
-getYouTubeDemographics($account_id, $breakdown, $start_date, $end_date): \Zernio\Model\YouTubeDemographicsResponse
+getYouTubeDemographics($account_id, $video_id, $breakdown, $start_date, $end_date): \Zernio\Model\YouTubeDemographicsResponse
 ```
 
 Get YouTube demographics
 
-Returns audience demographic insights for a YouTube channel, broken down by age, gender, and/or country. Age and gender values are viewer percentages (0-100). Country values are view counts. Data is based on signed-in viewers only, with a 2-3 day delay. Requires the Analytics add-on.
+Returns audience demographic insights for a YouTube channel, broken down by age, gender, and/or country. Pass videoId to get the audience profile of a single video instead of the whole channel. Age and gender values are viewer percentages (0-100). Country values are view counts. Data is based on signed-in viewers only, with a 2-3 day delay. YouTube suppresses demographics for videos with too few signed-in views, so low-traffic videos can return empty breakdowns. Requires the Analytics add-on.
 
 ### Example
 
@@ -1472,12 +1472,13 @@ $apiInstance = new Zernio\Api\AnalyticsApi(
     $config
 );
 $account_id = 'account_id_example'; // string | The Zernio SocialAccount ID for the YouTube account
+$video_id = 'video_id_example'; // string | YouTube video ID. When provided, demographics are scoped to this single video (must belong to the connected channel; otherwise 404 video_not_found).
 $breakdown = 'breakdown_example'; // string | Comma-separated list of demographic dimensions: age, gender, country. Defaults to all three if omitted.
-$start_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start date in YYYY-MM-DD format. Defaults to 90 days ago.
+$start_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start date in YYYY-MM-DD format. Defaults to 90 days ago, or to the video's publish date (lifetime) when videoId is provided.
 $end_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date in YYYY-MM-DD format. Defaults to 3 days ago (YouTube data latency).
 
 try {
-    $result = $apiInstance->getYouTubeDemographics($account_id, $breakdown, $start_date, $end_date);
+    $result = $apiInstance->getYouTubeDemographics($account_id, $video_id, $breakdown, $start_date, $end_date);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AnalyticsApi->getYouTubeDemographics: ', $e->getMessage(), PHP_EOL;
@@ -1489,8 +1490,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The Zernio SocialAccount ID for the YouTube account | |
+| **video_id** | **string**| YouTube video ID. When provided, demographics are scoped to this single video (must belong to the connected channel; otherwise 404 video_not_found). | [optional] |
 | **breakdown** | **string**| Comma-separated list of demographic dimensions: age, gender, country. Defaults to all three if omitted. | [optional] |
-| **start_date** | **\DateTime**| Start date in YYYY-MM-DD format. Defaults to 90 days ago. | [optional] |
+| **start_date** | **\DateTime**| Start date in YYYY-MM-DD format. Defaults to 90 days ago, or to the video&#39;s publish date (lifetime) when videoId is provided. | [optional] |
 | **end_date** | **\DateTime**| End date in YYYY-MM-DD format. Defaults to 3 days ago (YouTube data latency). | [optional] |
 
 ### Return type

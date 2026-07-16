@@ -1084,7 +1084,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets cities
      *
-     * @param \Zernio\Model\CreateCtwaAdRequestCitiesInner[]|null $cities City-level geo targeting for local CTWA campaigns (e.g. 25km radius around Milan). Each entry maps to Meta's TargetingGeoLocationCity. `key` is Meta's city ID (lookupable via GET /v1/ads/targeting/search). `radius` and `distance_unit` are coupled: set both or neither.
+     * @param \Zernio\Model\CreateCtwaAdRequestCitiesInner[]|null $cities City-level geo targeting for local CTWA campaigns (e.g. 25km radius around Milan). Each entry maps to Meta's TargetingGeoLocationCity. `key` is Meta's city ID (lookupable via GET /v1/ads/targeting/search). `radius` and `distance_unit` are coupled: set both or neither. Meta enforces a minimum city radius (~17 km / 10 mi); smaller values resolve to a 0-size audience and the ad fails at launch. For a tighter catchment use customLocations (lat/lng).
      *
      * @return self
      */

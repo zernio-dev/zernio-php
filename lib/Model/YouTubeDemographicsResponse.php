@@ -61,6 +61,9 @@ class YouTubeDemographicsResponse implements ModelInterface, ArrayAccess, \JsonS
         'success' => 'bool',
         'account_id' => 'string',
         'platform' => 'string',
+        'video_id' => 'string',
+        'title' => 'string',
+        'published_at' => '\DateTime',
         'demographics' => 'array<string,\Zernio\Model\YouTubeDemographicsResponseDemographicsValueInner[]>',
         'date_range' => '\Zernio\Model\YouTubeDemographicsResponseDateRange',
         'note' => 'string'
@@ -77,6 +80,9 @@ class YouTubeDemographicsResponse implements ModelInterface, ArrayAccess, \JsonS
         'success' => null,
         'account_id' => null,
         'platform' => null,
+        'video_id' => null,
+        'title' => null,
+        'published_at' => 'date-time',
         'demographics' => null,
         'date_range' => null,
         'note' => null
@@ -91,6 +97,9 @@ class YouTubeDemographicsResponse implements ModelInterface, ArrayAccess, \JsonS
         'success' => false,
         'account_id' => false,
         'platform' => false,
+        'video_id' => false,
+        'title' => true,
+        'published_at' => true,
         'demographics' => false,
         'date_range' => false,
         'note' => false
@@ -185,6 +194,9 @@ class YouTubeDemographicsResponse implements ModelInterface, ArrayAccess, \JsonS
         'success' => 'success',
         'account_id' => 'accountId',
         'platform' => 'platform',
+        'video_id' => 'videoId',
+        'title' => 'title',
+        'published_at' => 'publishedAt',
         'demographics' => 'demographics',
         'date_range' => 'dateRange',
         'note' => 'note'
@@ -199,6 +211,9 @@ class YouTubeDemographicsResponse implements ModelInterface, ArrayAccess, \JsonS
         'success' => 'setSuccess',
         'account_id' => 'setAccountId',
         'platform' => 'setPlatform',
+        'video_id' => 'setVideoId',
+        'title' => 'setTitle',
+        'published_at' => 'setPublishedAt',
         'demographics' => 'setDemographics',
         'date_range' => 'setDateRange',
         'note' => 'setNote'
@@ -213,6 +228,9 @@ class YouTubeDemographicsResponse implements ModelInterface, ArrayAccess, \JsonS
         'success' => 'getSuccess',
         'account_id' => 'getAccountId',
         'platform' => 'getPlatform',
+        'video_id' => 'getVideoId',
+        'title' => 'getTitle',
+        'published_at' => 'getPublishedAt',
         'demographics' => 'getDemographics',
         'date_range' => 'getDateRange',
         'note' => 'getNote'
@@ -278,6 +296,9 @@ class YouTubeDemographicsResponse implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('success', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('video_id', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('published_at', $data ?? [], null);
         $this->setIfExists('demographics', $data ?? [], null);
         $this->setIfExists('date_range', $data ?? [], null);
         $this->setIfExists('note', $data ?? [], null);
@@ -402,6 +423,101 @@ class YouTubeDemographicsResponse implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable platform cannot be null');
         }
         $this->container['platform'] = $platform;
+
+        return $this;
+    }
+
+    /**
+     * Gets video_id
+     *
+     * @return string|null
+     */
+    public function getVideoId()
+    {
+        return $this->container['video_id'];
+    }
+
+    /**
+     * Sets video_id
+     *
+     * @param string|null $video_id Present only when demographics are scoped to a single video
+     *
+     * @return self
+     */
+    public function setVideoId($video_id)
+    {
+        if (is_null($video_id)) {
+            throw new \InvalidArgumentException('non-nullable video_id cannot be null');
+        }
+        $this->container['video_id'] = $video_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title Video title (video mode only)
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        if (is_null($title)) {
+            array_push($this->openAPINullablesSetToNull, 'title');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('title', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets published_at
+     *
+     * @return \DateTime|null
+     */
+    public function getPublishedAt()
+    {
+        return $this->container['published_at'];
+    }
+
+    /**
+     * Sets published_at
+     *
+     * @param \DateTime|null $published_at Video publish date (video mode only)
+     *
+     * @return self
+     */
+    public function setPublishedAt($published_at)
+    {
+        if (is_null($published_at)) {
+            array_push($this->openAPINullablesSetToNull, 'published_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('published_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['published_at'] = $published_at;
 
         return $this;
     }

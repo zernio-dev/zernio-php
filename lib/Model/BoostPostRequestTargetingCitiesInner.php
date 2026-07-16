@@ -179,7 +179,7 @@ class BoostPostRequestTargetingCitiesInner implements ModelInterface, ArrayAcces
         'key' => 'key',
         'name' => 'name',
         'radius' => 'radius',
-        'distance_unit' => 'distance_unit'
+        'distance_unit' => 'distanceUnit'
     ];
 
     /**
@@ -405,7 +405,7 @@ class BoostPostRequestTargetingCitiesInner implements ModelInterface, ArrayAcces
     /**
      * Sets radius
      *
-     * @param float|null $radius Requires distance_unit.
+     * @param float|null $radius Requires distanceUnit. Meta enforces a minimum city radius (~17 km / 10 mi); smaller values resolve to a 0-size audience and the ad fails at launch. For a tighter catchment use customLocations (lat/lng).
      *
      * @return self
      */
