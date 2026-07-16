@@ -280,6 +280,7 @@ class DuplicateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSe
     public const PLATFORM_FACEBOOK = 'facebook';
     public const PLATFORM_INSTAGRAM = 'instagram';
     public const PLATFORM_TIKTOK = 'tiktok';
+    public const PLATFORM_LINKEDIN = 'linkedin';
     public const STATUS_OPTION_ACTIVE = 'ACTIVE';
     public const STATUS_OPTION_PAUSED = 'PAUSED';
     public const STATUS_OPTION_INHERITED_FROM_SOURCE = 'INHERITED_FROM_SOURCE';
@@ -298,6 +299,7 @@ class DuplicateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSe
             self::PLATFORM_FACEBOOK,
             self::PLATFORM_INSTAGRAM,
             self::PLATFORM_TIKTOK,
+            self::PLATFORM_LINKEDIN,
         ];
     }
 
@@ -504,7 +506,7 @@ class DuplicateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets status_option
      *
-     * @param string|null $status_option status_option
+     * @param string|null $status_option ACTIVE = launch the clone immediately (spends the moment LinkedIn approves it). PAUSED = clone stays DRAFT, safe default. INHERITED_FROM_SOURCE = mirror each entity's source status per-entity. Duplicating an ACTIVE campaign this way starts a second front of spend.
      *
      * @return self
      */

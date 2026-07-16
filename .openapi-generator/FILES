@@ -2905,6 +2905,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/BoostPostRequestTargetingCitiesInnerTest.php
-test/Model/BoostPostRequestTargetingCustomLocationsInnerTest.php
-test/Model/BoostPostRequestTargetingRegionsInnerTest.php
