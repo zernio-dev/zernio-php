@@ -1192,6 +1192,7 @@ docs/Model/UpdateAdAudienceRequest.md
 docs/Model/UpdateAdCampaign200Response.md
 docs/Model/UpdateAdCampaignRequest.md
 docs/Model/UpdateAdCampaignRequestBudget.md
+docs/Model/UpdateAdCampaignRequestPlatformSpecificData.md
 docs/Model/UpdateAdCampaignStatus200Response.md
 docs/Model/UpdateAdCampaignStatusRequest.md
 docs/Model/UpdateAdRequest.md
@@ -1202,6 +1203,8 @@ docs/Model/UpdateAdRequestTargetingInterestsInner.md
 docs/Model/UpdateAdSet200Response.md
 docs/Model/UpdateAdSetRequest.md
 docs/Model/UpdateAdSetRequestBudget.md
+docs/Model/UpdateAdSetRequestPlatformSpecificData.md
+docs/Model/UpdateAdSetRequestPlatformSpecificDataPromotedObject.md
 docs/Model/UpdateAdSetStatus200Response.md
 docs/Model/UpdateAdStatus200Response.md
 docs/Model/UpdateAdStatusRequest.md
@@ -2646,6 +2649,7 @@ lib/Model/UpdateAdAudienceRequest.php
 lib/Model/UpdateAdCampaign200Response.php
 lib/Model/UpdateAdCampaignRequest.php
 lib/Model/UpdateAdCampaignRequestBudget.php
+lib/Model/UpdateAdCampaignRequestPlatformSpecificData.php
 lib/Model/UpdateAdCampaignStatus200Response.php
 lib/Model/UpdateAdCampaignStatusRequest.php
 lib/Model/UpdateAdRequest.php
@@ -2656,6 +2660,8 @@ lib/Model/UpdateAdRequestTargetingInterestsInner.php
 lib/Model/UpdateAdSet200Response.php
 lib/Model/UpdateAdSetRequest.php
 lib/Model/UpdateAdSetRequestBudget.php
+lib/Model/UpdateAdSetRequestPlatformSpecificData.php
+lib/Model/UpdateAdSetRequestPlatformSpecificDataPromotedObject.php
 lib/Model/UpdateAdSetStatus200Response.php
 lib/Model/UpdateAdStatus200Response.php
 lib/Model/UpdateAdStatusRequest.php
@@ -2907,4 +2913,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/EnrollContacts200ResponseResultsInnerTest.php
+test/Model/UpdateAdCampaignRequestPlatformSpecificDataTest.php
+test/Model/UpdateAdSetRequestPlatformSpecificDataPromotedObjectTest.php
+test/Model/UpdateAdSetRequestPlatformSpecificDataTest.php

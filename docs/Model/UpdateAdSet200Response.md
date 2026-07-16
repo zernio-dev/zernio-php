@@ -12,5 +12,6 @@ Name | Type | Description | Notes
 **bid_strategy** | [**\Zernio\Model\BidStrategy**](BidStrategy.md) |  | [optional]
 **bid_amount** | **float** |  | [optional]
 **roas_average_floor** | **float** |  | [optional]
+**platform_specific_data** | **object** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

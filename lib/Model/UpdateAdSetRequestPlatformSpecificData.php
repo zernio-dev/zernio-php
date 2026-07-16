@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateAdCampaignRequest
+ * UpdateAdSetRequestPlatformSpecificData
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UpdateAdCampaignRequest Class Doc Comment
+ * UpdateAdSetRequestPlatformSpecificData Class Doc Comment
  *
  * @category Class
+ * @description Platform-specific post-launch delivery settings. The platform is implied by the &#x60;platform&#x60; body param. Meta only; other platforms return 400. Unknown keys are rejected.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateAdSetRequestPlatformSpecificData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updateAdCampaign_request';
+    protected static $openAPIModelName = 'updateAdSet_request_platformSpecificData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +59,11 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'platform' => 'string',
-        'budget' => '\Zernio\Model\UpdateAdCampaignRequestBudget',
-        'bid_strategy' => '\Zernio\Model\BidStrategy',
-        'name' => 'string',
-        'platform_specific_data' => '\Zernio\Model\UpdateAdCampaignRequestPlatformSpecificData'
+        'optimization_goal' => 'string',
+        'billing_event' => 'string',
+        'start_date' => 'string',
+        'end_date' => 'string',
+        'promoted_object' => '\Zernio\Model\UpdateAdSetRequestPlatformSpecificDataPromotedObject'
     ];
 
     /**
@@ -73,11 +74,11 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'platform' => null,
-        'budget' => null,
-        'bid_strategy' => null,
-        'name' => null,
-        'platform_specific_data' => null
+        'optimization_goal' => null,
+        'billing_event' => null,
+        'start_date' => null,
+        'end_date' => null,
+        'promoted_object' => null
     ];
 
     /**
@@ -86,11 +87,11 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'platform' => false,
-        'budget' => false,
-        'bid_strategy' => false,
-        'name' => false,
-        'platform_specific_data' => false
+        'optimization_goal' => false,
+        'billing_event' => false,
+        'start_date' => false,
+        'end_date' => false,
+        'promoted_object' => false
     ];
 
     /**
@@ -179,11 +180,11 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'platform' => 'platform',
-        'budget' => 'budget',
-        'bid_strategy' => 'bidStrategy',
-        'name' => 'name',
-        'platform_specific_data' => 'platformSpecificData'
+        'optimization_goal' => 'optimizationGoal',
+        'billing_event' => 'billingEvent',
+        'start_date' => 'startDate',
+        'end_date' => 'endDate',
+        'promoted_object' => 'promotedObject'
     ];
 
     /**
@@ -192,11 +193,11 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'platform' => 'setPlatform',
-        'budget' => 'setBudget',
-        'bid_strategy' => 'setBidStrategy',
-        'name' => 'setName',
-        'platform_specific_data' => 'setPlatformSpecificData'
+        'optimization_goal' => 'setOptimizationGoal',
+        'billing_event' => 'setBillingEvent',
+        'start_date' => 'setStartDate',
+        'end_date' => 'setEndDate',
+        'promoted_object' => 'setPromotedObject'
     ];
 
     /**
@@ -205,11 +206,11 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'platform' => 'getPlatform',
-        'budget' => 'getBudget',
-        'bid_strategy' => 'getBidStrategy',
-        'name' => 'getName',
-        'platform_specific_data' => 'getPlatformSpecificData'
+        'optimization_goal' => 'getOptimizationGoal',
+        'billing_event' => 'getBillingEvent',
+        'start_date' => 'getStartDate',
+        'end_date' => 'getEndDate',
+        'promoted_object' => 'getPromotedObject'
     ];
 
     /**
@@ -253,21 +254,6 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
-    public const PLATFORM_FACEBOOK = 'facebook';
-    public const PLATFORM_INSTAGRAM = 'instagram';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getPlatformAllowableValues()
-    {
-        return [
-            self::PLATFORM_FACEBOOK,
-            self::PLATFORM_INSTAGRAM,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -284,11 +270,11 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('platform', $data ?? [], null);
-        $this->setIfExists('budget', $data ?? [], null);
-        $this->setIfExists('bid_strategy', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('platform_specific_data', $data ?? [], null);
+        $this->setIfExists('optimization_goal', $data ?? [], null);
+        $this->setIfExists('billing_event', $data ?? [], null);
+        $this->setIfExists('start_date', $data ?? [], null);
+        $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('promoted_object', $data ?? [], null);
     }
 
     /**
@@ -318,22 +304,6 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['platform'] === null) {
-            $invalidProperties[] = "'platform' can't be null";
-        }
-        $allowedValues = $this->getPlatformAllowableValues();
-        if (!is_null($this->container['platform']) && !in_array($this->container['platform'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'platform', must be one of '%s'",
-                $this->container['platform'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
-        }
-
         return $invalidProperties;
     }
 
@@ -350,150 +320,136 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets platform
-     *
-     * @return string
-     */
-    public function getPlatform()
-    {
-        return $this->container['platform'];
-    }
-
-    /**
-     * Sets platform
-     *
-     * @param string $platform platform
-     *
-     * @return self
-     */
-    public function setPlatform($platform)
-    {
-        if (is_null($platform)) {
-            throw new \InvalidArgumentException('non-nullable platform cannot be null');
-        }
-        $allowedValues = $this->getPlatformAllowableValues();
-        if (!in_array($platform, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'platform', must be one of '%s'",
-                    $platform,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['platform'] = $platform;
-
-        return $this;
-    }
-
-    /**
-     * Gets budget
-     *
-     * @return \Zernio\Model\UpdateAdCampaignRequestBudget|null
-     */
-    public function getBudget()
-    {
-        return $this->container['budget'];
-    }
-
-    /**
-     * Sets budget
-     *
-     * @param \Zernio\Model\UpdateAdCampaignRequestBudget|null $budget budget
-     *
-     * @return self
-     */
-    public function setBudget($budget)
-    {
-        if (is_null($budget)) {
-            throw new \InvalidArgumentException('non-nullable budget cannot be null');
-        }
-        $this->container['budget'] = $budget;
-
-        return $this;
-    }
-
-    /**
-     * Gets bid_strategy
-     *
-     * @return \Zernio\Model\BidStrategy|null
-     */
-    public function getBidStrategy()
-    {
-        return $this->container['bid_strategy'];
-    }
-
-    /**
-     * Sets bid_strategy
-     *
-     * @param \Zernio\Model\BidStrategy|null $bid_strategy Campaign-level default. Ad sets inherit this unless they override.
-     *
-     * @return self
-     */
-    public function setBidStrategy($bid_strategy)
-    {
-        if (is_null($bid_strategy)) {
-            throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
-        }
-        $this->container['bid_strategy'] = $bid_strategy;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
+     * Gets optimization_goal
      *
      * @return string|null
      */
-    public function getName()
+    public function getOptimizationGoal()
     {
-        return $this->container['name'];
+        return $this->container['optimization_goal'];
     }
 
     /**
-     * Sets name
+     * Sets optimization_goal
      *
-     * @param string|null $name Rename the campaign (Meta only; other platforms return 501). At least one of budget/bidStrategy/name/platformSpecificData is required.
+     * @param string|null $optimization_goal Meta ad-set optimization_goal (e.g. OFFSITE_CONVERSIONS, LANDING_PAGE_VIEWS).
      *
      * @return self
      */
-    public function setName($name)
+    public function setOptimizationGoal($optimization_goal)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($optimization_goal)) {
+            throw new \InvalidArgumentException('non-nullable optimization_goal cannot be null');
         }
-        if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling UpdateAdCampaignRequest., must be smaller than or equal to 255.');
-        }
-
-        $this->container['name'] = $name;
+        $this->container['optimization_goal'] = $optimization_goal;
 
         return $this;
     }
 
     /**
-     * Gets platform_specific_data
+     * Gets billing_event
      *
-     * @return \Zernio\Model\UpdateAdCampaignRequestPlatformSpecificData|null
+     * @return string|null
      */
-    public function getPlatformSpecificData()
+    public function getBillingEvent()
     {
-        return $this->container['platform_specific_data'];
+        return $this->container['billing_event'];
     }
 
     /**
-     * Sets platform_specific_data
+     * Sets billing_event
      *
-     * @param \Zernio\Model\UpdateAdCampaignRequestPlatformSpecificData|null $platform_specific_data platform_specific_data
+     * @param string|null $billing_event Meta ad-set billing_event (e.g. IMPRESSIONS, LINK_CLICKS, THRUPLAY).
      *
      * @return self
      */
-    public function setPlatformSpecificData($platform_specific_data)
+    public function setBillingEvent($billing_event)
     {
-        if (is_null($platform_specific_data)) {
-            throw new \InvalidArgumentException('non-nullable platform_specific_data cannot be null');
+        if (is_null($billing_event)) {
+            throw new \InvalidArgumentException('non-nullable billing_event cannot be null');
         }
-        $this->container['platform_specific_data'] = $platform_specific_data;
+        $this->container['billing_event'] = $billing_event;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_date
+     *
+     * @return string|null
+     */
+    public function getStartDate()
+    {
+        return $this->container['start_date'];
+    }
+
+    /**
+     * Sets start_date
+     *
+     * @param string|null $start_date Ad set start_time (ISO 8601).
+     *
+     * @return self
+     */
+    public function setStartDate($start_date)
+    {
+        if (is_null($start_date)) {
+            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
+        }
+        $this->container['start_date'] = $start_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets end_date
+     *
+     * @return string|null
+     */
+    public function getEndDate()
+    {
+        return $this->container['end_date'];
+    }
+
+    /**
+     * Sets end_date
+     *
+     * @param string|null $end_date Ad set end_time (ISO 8601).
+     *
+     * @return self
+     */
+    public function setEndDate($end_date)
+    {
+        if (is_null($end_date)) {
+            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
+        }
+        $this->container['end_date'] = $end_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets promoted_object
+     *
+     * @return \Zernio\Model\UpdateAdSetRequestPlatformSpecificDataPromotedObject|null
+     */
+    public function getPromotedObject()
+    {
+        return $this->container['promoted_object'];
+    }
+
+    /**
+     * Sets promoted_object
+     *
+     * @param \Zernio\Model\UpdateAdSetRequestPlatformSpecificDataPromotedObject|null $promoted_object promoted_object
+     *
+     * @return self
+     */
+    public function setPromotedObject($promoted_object)
+    {
+        if (is_null($promoted_object)) {
+            throw new \InvalidArgumentException('non-nullable promoted_object cannot be null');
+        }
+        $this->container['promoted_object'] = $promoted_object;
 
         return $this;
     }

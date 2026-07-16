@@ -64,7 +64,8 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => 'string',
         'bid_strategy' => '\Zernio\Model\BidStrategy',
         'bid_amount' => 'float',
-        'roas_average_floor' => 'float'
+        'roas_average_floor' => 'float',
+        'platform_specific_data' => '\Zernio\Model\UpdateAdSetRequestPlatformSpecificData'
     ];
 
     /**
@@ -81,7 +82,8 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => null,
         'bid_strategy' => null,
         'bid_amount' => null,
-        'roas_average_floor' => null
+        'roas_average_floor' => null,
+        'platform_specific_data' => null
     ];
 
     /**
@@ -96,7 +98,8 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => false,
         'bid_strategy' => false,
         'bid_amount' => false,
-        'roas_average_floor' => false
+        'roas_average_floor' => false,
+        'platform_specific_data' => false
     ];
 
     /**
@@ -191,7 +194,8 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => 'name',
         'bid_strategy' => 'bidStrategy',
         'bid_amount' => 'bidAmount',
-        'roas_average_floor' => 'roasAverageFloor'
+        'roas_average_floor' => 'roasAverageFloor',
+        'platform_specific_data' => 'platformSpecificData'
     ];
 
     /**
@@ -206,7 +210,8 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => 'setName',
         'bid_strategy' => 'setBidStrategy',
         'bid_amount' => 'setBidAmount',
-        'roas_average_floor' => 'setRoasAverageFloor'
+        'roas_average_floor' => 'setRoasAverageFloor',
+        'platform_specific_data' => 'setPlatformSpecificData'
     ];
 
     /**
@@ -221,7 +226,8 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => 'getName',
         'bid_strategy' => 'getBidStrategy',
         'bid_amount' => 'getBidAmount',
-        'roas_average_floor' => 'getRoasAverageFloor'
+        'roas_average_floor' => 'getRoasAverageFloor',
+        'platform_specific_data' => 'getPlatformSpecificData'
     ];
 
     /**
@@ -328,6 +334,7 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('bid_strategy', $data ?? [], null);
         $this->setIfExists('bid_amount', $data ?? [], null);
         $this->setIfExists('roas_average_floor', $data ?? [], null);
+        $this->setIfExists('platform_specific_data', $data ?? [], null);
     }
 
     /**
@@ -606,6 +613,33 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable roas_average_floor cannot be null');
         }
         $this->container['roas_average_floor'] = $roas_average_floor;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_specific_data
+     *
+     * @return \Zernio\Model\UpdateAdSetRequestPlatformSpecificData|null
+     */
+    public function getPlatformSpecificData()
+    {
+        return $this->container['platform_specific_data'];
+    }
+
+    /**
+     * Sets platform_specific_data
+     *
+     * @param \Zernio\Model\UpdateAdSetRequestPlatformSpecificData|null $platform_specific_data platform_specific_data
+     *
+     * @return self
+     */
+    public function setPlatformSpecificData($platform_specific_data)
+    {
+        if (is_null($platform_specific_data)) {
+            throw new \InvalidArgumentException('non-nullable platform_specific_data cannot be null');
+        }
+        $this->container['platform_specific_data'] = $platform_specific_data;
 
         return $this;
     }

@@ -65,7 +65,8 @@ class UpdateAdSet200Response implements ModelInterface, ArrayAccess, \JsonSerial
         'status_skipped' => 'int',
         'bid_strategy' => '\Zernio\Model\BidStrategy',
         'bid_amount' => 'float',
-        'roas_average_floor' => 'float'
+        'roas_average_floor' => 'float',
+        'platform_specific_data' => 'object'
     ];
 
     /**
@@ -83,7 +84,8 @@ class UpdateAdSet200Response implements ModelInterface, ArrayAccess, \JsonSerial
         'status_skipped' => null,
         'bid_strategy' => null,
         'bid_amount' => null,
-        'roas_average_floor' => null
+        'roas_average_floor' => null,
+        'platform_specific_data' => null
     ];
 
     /**
@@ -99,7 +101,8 @@ class UpdateAdSet200Response implements ModelInterface, ArrayAccess, \JsonSerial
         'status_skipped' => false,
         'bid_strategy' => false,
         'bid_amount' => true,
-        'roas_average_floor' => true
+        'roas_average_floor' => true,
+        'platform_specific_data' => false
     ];
 
     /**
@@ -195,7 +198,8 @@ class UpdateAdSet200Response implements ModelInterface, ArrayAccess, \JsonSerial
         'status_skipped' => 'statusSkipped',
         'bid_strategy' => 'bidStrategy',
         'bid_amount' => 'bidAmount',
-        'roas_average_floor' => 'roasAverageFloor'
+        'roas_average_floor' => 'roasAverageFloor',
+        'platform_specific_data' => 'platformSpecificData'
     ];
 
     /**
@@ -211,7 +215,8 @@ class UpdateAdSet200Response implements ModelInterface, ArrayAccess, \JsonSerial
         'status_skipped' => 'setStatusSkipped',
         'bid_strategy' => 'setBidStrategy',
         'bid_amount' => 'setBidAmount',
-        'roas_average_floor' => 'setRoasAverageFloor'
+        'roas_average_floor' => 'setRoasAverageFloor',
+        'platform_specific_data' => 'setPlatformSpecificData'
     ];
 
     /**
@@ -227,7 +232,8 @@ class UpdateAdSet200Response implements ModelInterface, ArrayAccess, \JsonSerial
         'status_skipped' => 'getStatusSkipped',
         'bid_strategy' => 'getBidStrategy',
         'bid_amount' => 'getBidAmount',
-        'roas_average_floor' => 'getRoasAverageFloor'
+        'roas_average_floor' => 'getRoasAverageFloor',
+        'platform_specific_data' => 'getPlatformSpecificData'
     ];
 
     /**
@@ -323,6 +329,7 @@ class UpdateAdSet200Response implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('bid_strategy', $data ?? [], null);
         $this->setIfExists('bid_amount', $data ?? [], null);
         $this->setIfExists('roas_average_floor', $data ?? [], null);
+        $this->setIfExists('platform_specific_data', $data ?? [], null);
     }
 
     /**
@@ -631,6 +638,33 @@ class UpdateAdSet200Response implements ModelInterface, ArrayAccess, \JsonSerial
             }
         }
         $this->container['roas_average_floor'] = $roas_average_floor;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_specific_data
+     *
+     * @return object|null
+     */
+    public function getPlatformSpecificData()
+    {
+        return $this->container['platform_specific_data'];
+    }
+
+    /**
+     * Sets platform_specific_data
+     *
+     * @param object|null $platform_specific_data platform_specific_data
+     *
+     * @return self
+     */
+    public function setPlatformSpecificData($platform_specific_data)
+    {
+        if (is_null($platform_specific_data)) {
+            throw new \InvalidArgumentException('non-nullable platform_specific_data cannot be null');
+        }
+        $this->container['platform_specific_data'] = $platform_specific_data;
 
         return $this;
     }

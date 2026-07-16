@@ -67,6 +67,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'tracking' => '\Zernio\Model\CreateStandaloneAdRequestTracking',
         'goal' => 'string',
         'optimization_goal' => 'string',
+        'billing_event' => 'string',
         'budget_amount' => 'float',
         'budget_type' => 'string',
         'status' => 'string',
@@ -146,6 +147,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'tracking' => null,
         'goal' => null,
         'optimization_goal' => null,
+        'billing_event' => null,
         'budget_amount' => null,
         'budget_type' => null,
         'status' => null,
@@ -223,6 +225,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'tracking' => false,
         'goal' => false,
         'optimization_goal' => false,
+        'billing_event' => false,
         'budget_amount' => false,
         'budget_type' => false,
         'status' => false,
@@ -380,6 +383,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'tracking' => 'tracking',
         'goal' => 'goal',
         'optimization_goal' => 'optimizationGoal',
+        'billing_event' => 'billingEvent',
         'budget_amount' => 'budgetAmount',
         'budget_type' => 'budgetType',
         'status' => 'status',
@@ -457,6 +461,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'tracking' => 'setTracking',
         'goal' => 'setGoal',
         'optimization_goal' => 'setOptimizationGoal',
+        'billing_event' => 'setBillingEvent',
         'budget_amount' => 'setBudgetAmount',
         'budget_type' => 'setBudgetType',
         'status' => 'setStatus',
@@ -534,6 +539,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'tracking' => 'getTracking',
         'goal' => 'getGoal',
         'optimization_goal' => 'getOptimizationGoal',
+        'billing_event' => 'getBillingEvent',
         'budget_amount' => 'getBudgetAmount',
         'budget_type' => 'getBudgetType',
         'status' => 'getStatus',
@@ -885,6 +891,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('tracking', $data ?? [], null);
         $this->setIfExists('goal', $data ?? [], null);
         $this->setIfExists('optimization_goal', $data ?? [], null);
+        $this->setIfExists('billing_event', $data ?? [], null);
         $this->setIfExists('budget_amount', $data ?? [], null);
         $this->setIfExists('budget_type', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
@@ -1417,6 +1424,33 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable optimization_goal cannot be null');
         }
         $this->container['optimization_goal'] = $optimization_goal;
+
+        return $this;
+    }
+
+    /**
+     * Gets billing_event
+     *
+     * @return string|null
+     */
+    public function getBillingEvent()
+    {
+        return $this->container['billing_event'];
+    }
+
+    /**
+     * Sets billing_event
+     *
+     * @param string|null $billing_event Meta only. Explicit ad-set `billing_event`. Defaults to `IMPRESSIONS`. Forwarded verbatim to Meta, which validates compatibility with the optimization goal.
+     *
+     * @return self
+     */
+    public function setBillingEvent($billing_event)
+    {
+        if (is_null($billing_event)) {
+            throw new \InvalidArgumentException('non-nullable billing_event cannot be null');
+        }
+        $this->container['billing_event'] = $billing_event;
 
         return $this;
     }

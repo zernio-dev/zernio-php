@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateAdCampaignRequest
+ * UpdateAdSetRequestPlatformSpecificDataPromotedObject
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UpdateAdCampaignRequest Class Doc Comment
+ * UpdateAdSetRequestPlatformSpecificDataPromotedObject Class Doc Comment
  *
  * @category Class
+ * @description Meta ad-set promoted_object, forwarded verbatim (same shape as /v1/ads/create).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateAdSetRequestPlatformSpecificDataPromotedObject implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updateAdCampaign_request';
+    protected static $openAPIModelName = 'updateAdSet_request_platformSpecificData_promotedObject';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +59,14 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'platform' => 'string',
-        'budget' => '\Zernio\Model\UpdateAdCampaignRequestBudget',
-        'bid_strategy' => '\Zernio\Model\BidStrategy',
-        'name' => 'string',
-        'platform_specific_data' => '\Zernio\Model\UpdateAdCampaignRequestPlatformSpecificData'
+        'pixel_id' => 'string',
+        'custom_event_type' => 'string',
+        'page_id' => 'string',
+        'application_id' => 'string',
+        'object_store_url' => 'string',
+        'custom_conversion_id' => 'string',
+        'product_catalog_id' => 'string',
+        'product_set_id' => 'string'
     ];
 
     /**
@@ -73,11 +77,14 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'platform' => null,
-        'budget' => null,
-        'bid_strategy' => null,
-        'name' => null,
-        'platform_specific_data' => null
+        'pixel_id' => null,
+        'custom_event_type' => null,
+        'page_id' => null,
+        'application_id' => null,
+        'object_store_url' => null,
+        'custom_conversion_id' => null,
+        'product_catalog_id' => null,
+        'product_set_id' => null
     ];
 
     /**
@@ -86,11 +93,14 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'platform' => false,
-        'budget' => false,
-        'bid_strategy' => false,
-        'name' => false,
-        'platform_specific_data' => false
+        'pixel_id' => false,
+        'custom_event_type' => false,
+        'page_id' => false,
+        'application_id' => false,
+        'object_store_url' => false,
+        'custom_conversion_id' => false,
+        'product_catalog_id' => false,
+        'product_set_id' => false
     ];
 
     /**
@@ -179,11 +189,14 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'platform' => 'platform',
-        'budget' => 'budget',
-        'bid_strategy' => 'bidStrategy',
-        'name' => 'name',
-        'platform_specific_data' => 'platformSpecificData'
+        'pixel_id' => 'pixelId',
+        'custom_event_type' => 'customEventType',
+        'page_id' => 'pageId',
+        'application_id' => 'applicationId',
+        'object_store_url' => 'objectStoreUrl',
+        'custom_conversion_id' => 'customConversionId',
+        'product_catalog_id' => 'productCatalogId',
+        'product_set_id' => 'productSetId'
     ];
 
     /**
@@ -192,11 +205,14 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'platform' => 'setPlatform',
-        'budget' => 'setBudget',
-        'bid_strategy' => 'setBidStrategy',
-        'name' => 'setName',
-        'platform_specific_data' => 'setPlatformSpecificData'
+        'pixel_id' => 'setPixelId',
+        'custom_event_type' => 'setCustomEventType',
+        'page_id' => 'setPageId',
+        'application_id' => 'setApplicationId',
+        'object_store_url' => 'setObjectStoreUrl',
+        'custom_conversion_id' => 'setCustomConversionId',
+        'product_catalog_id' => 'setProductCatalogId',
+        'product_set_id' => 'setProductSetId'
     ];
 
     /**
@@ -205,11 +221,14 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'platform' => 'getPlatform',
-        'budget' => 'getBudget',
-        'bid_strategy' => 'getBidStrategy',
-        'name' => 'getName',
-        'platform_specific_data' => 'getPlatformSpecificData'
+        'pixel_id' => 'getPixelId',
+        'custom_event_type' => 'getCustomEventType',
+        'page_id' => 'getPageId',
+        'application_id' => 'getApplicationId',
+        'object_store_url' => 'getObjectStoreUrl',
+        'custom_conversion_id' => 'getCustomConversionId',
+        'product_catalog_id' => 'getProductCatalogId',
+        'product_set_id' => 'getProductSetId'
     ];
 
     /**
@@ -253,21 +272,6 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
-    public const PLATFORM_FACEBOOK = 'facebook';
-    public const PLATFORM_INSTAGRAM = 'instagram';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getPlatformAllowableValues()
-    {
-        return [
-            self::PLATFORM_FACEBOOK,
-            self::PLATFORM_INSTAGRAM,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -284,11 +288,14 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('platform', $data ?? [], null);
-        $this->setIfExists('budget', $data ?? [], null);
-        $this->setIfExists('bid_strategy', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('platform_specific_data', $data ?? [], null);
+        $this->setIfExists('pixel_id', $data ?? [], null);
+        $this->setIfExists('custom_event_type', $data ?? [], null);
+        $this->setIfExists('page_id', $data ?? [], null);
+        $this->setIfExists('application_id', $data ?? [], null);
+        $this->setIfExists('object_store_url', $data ?? [], null);
+        $this->setIfExists('custom_conversion_id', $data ?? [], null);
+        $this->setIfExists('product_catalog_id', $data ?? [], null);
+        $this->setIfExists('product_set_id', $data ?? [], null);
     }
 
     /**
@@ -318,22 +325,6 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['platform'] === null) {
-            $invalidProperties[] = "'platform' can't be null";
-        }
-        $allowedValues = $this->getPlatformAllowableValues();
-        if (!is_null($this->container['platform']) && !in_array($this->container['platform'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'platform', must be one of '%s'",
-                $this->container['platform'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
-        }
-
         return $invalidProperties;
     }
 
@@ -350,150 +341,217 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets platform
-     *
-     * @return string
-     */
-    public function getPlatform()
-    {
-        return $this->container['platform'];
-    }
-
-    /**
-     * Sets platform
-     *
-     * @param string $platform platform
-     *
-     * @return self
-     */
-    public function setPlatform($platform)
-    {
-        if (is_null($platform)) {
-            throw new \InvalidArgumentException('non-nullable platform cannot be null');
-        }
-        $allowedValues = $this->getPlatformAllowableValues();
-        if (!in_array($platform, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'platform', must be one of '%s'",
-                    $platform,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['platform'] = $platform;
-
-        return $this;
-    }
-
-    /**
-     * Gets budget
-     *
-     * @return \Zernio\Model\UpdateAdCampaignRequestBudget|null
-     */
-    public function getBudget()
-    {
-        return $this->container['budget'];
-    }
-
-    /**
-     * Sets budget
-     *
-     * @param \Zernio\Model\UpdateAdCampaignRequestBudget|null $budget budget
-     *
-     * @return self
-     */
-    public function setBudget($budget)
-    {
-        if (is_null($budget)) {
-            throw new \InvalidArgumentException('non-nullable budget cannot be null');
-        }
-        $this->container['budget'] = $budget;
-
-        return $this;
-    }
-
-    /**
-     * Gets bid_strategy
-     *
-     * @return \Zernio\Model\BidStrategy|null
-     */
-    public function getBidStrategy()
-    {
-        return $this->container['bid_strategy'];
-    }
-
-    /**
-     * Sets bid_strategy
-     *
-     * @param \Zernio\Model\BidStrategy|null $bid_strategy Campaign-level default. Ad sets inherit this unless they override.
-     *
-     * @return self
-     */
-    public function setBidStrategy($bid_strategy)
-    {
-        if (is_null($bid_strategy)) {
-            throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
-        }
-        $this->container['bid_strategy'] = $bid_strategy;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
+     * Gets pixel_id
      *
      * @return string|null
      */
-    public function getName()
+    public function getPixelId()
     {
-        return $this->container['name'];
+        return $this->container['pixel_id'];
     }
 
     /**
-     * Sets name
+     * Sets pixel_id
      *
-     * @param string|null $name Rename the campaign (Meta only; other platforms return 501). At least one of budget/bidStrategy/name/platformSpecificData is required.
+     * @param string|null $pixel_id pixel_id
      *
      * @return self
      */
-    public function setName($name)
+    public function setPixelId($pixel_id)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($pixel_id)) {
+            throw new \InvalidArgumentException('non-nullable pixel_id cannot be null');
         }
-        if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling UpdateAdCampaignRequest., must be smaller than or equal to 255.');
-        }
-
-        $this->container['name'] = $name;
+        $this->container['pixel_id'] = $pixel_id;
 
         return $this;
     }
 
     /**
-     * Gets platform_specific_data
+     * Gets custom_event_type
      *
-     * @return \Zernio\Model\UpdateAdCampaignRequestPlatformSpecificData|null
+     * @return string|null
      */
-    public function getPlatformSpecificData()
+    public function getCustomEventType()
     {
-        return $this->container['platform_specific_data'];
+        return $this->container['custom_event_type'];
     }
 
     /**
-     * Sets platform_specific_data
+     * Sets custom_event_type
      *
-     * @param \Zernio\Model\UpdateAdCampaignRequestPlatformSpecificData|null $platform_specific_data platform_specific_data
+     * @param string|null $custom_event_type custom_event_type
      *
      * @return self
      */
-    public function setPlatformSpecificData($platform_specific_data)
+    public function setCustomEventType($custom_event_type)
     {
-        if (is_null($platform_specific_data)) {
-            throw new \InvalidArgumentException('non-nullable platform_specific_data cannot be null');
+        if (is_null($custom_event_type)) {
+            throw new \InvalidArgumentException('non-nullable custom_event_type cannot be null');
         }
-        $this->container['platform_specific_data'] = $platform_specific_data;
+        $this->container['custom_event_type'] = $custom_event_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets page_id
+     *
+     * @return string|null
+     */
+    public function getPageId()
+    {
+        return $this->container['page_id'];
+    }
+
+    /**
+     * Sets page_id
+     *
+     * @param string|null $page_id page_id
+     *
+     * @return self
+     */
+    public function setPageId($page_id)
+    {
+        if (is_null($page_id)) {
+            throw new \InvalidArgumentException('non-nullable page_id cannot be null');
+        }
+        $this->container['page_id'] = $page_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets application_id
+     *
+     * @return string|null
+     */
+    public function getApplicationId()
+    {
+        return $this->container['application_id'];
+    }
+
+    /**
+     * Sets application_id
+     *
+     * @param string|null $application_id application_id
+     *
+     * @return self
+     */
+    public function setApplicationId($application_id)
+    {
+        if (is_null($application_id)) {
+            throw new \InvalidArgumentException('non-nullable application_id cannot be null');
+        }
+        $this->container['application_id'] = $application_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_store_url
+     *
+     * @return string|null
+     */
+    public function getObjectStoreUrl()
+    {
+        return $this->container['object_store_url'];
+    }
+
+    /**
+     * Sets object_store_url
+     *
+     * @param string|null $object_store_url object_store_url
+     *
+     * @return self
+     */
+    public function setObjectStoreUrl($object_store_url)
+    {
+        if (is_null($object_store_url)) {
+            throw new \InvalidArgumentException('non-nullable object_store_url cannot be null');
+        }
+        $this->container['object_store_url'] = $object_store_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_conversion_id
+     *
+     * @return string|null
+     */
+    public function getCustomConversionId()
+    {
+        return $this->container['custom_conversion_id'];
+    }
+
+    /**
+     * Sets custom_conversion_id
+     *
+     * @param string|null $custom_conversion_id custom_conversion_id
+     *
+     * @return self
+     */
+    public function setCustomConversionId($custom_conversion_id)
+    {
+        if (is_null($custom_conversion_id)) {
+            throw new \InvalidArgumentException('non-nullable custom_conversion_id cannot be null');
+        }
+        $this->container['custom_conversion_id'] = $custom_conversion_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_catalog_id
+     *
+     * @return string|null
+     */
+    public function getProductCatalogId()
+    {
+        return $this->container['product_catalog_id'];
+    }
+
+    /**
+     * Sets product_catalog_id
+     *
+     * @param string|null $product_catalog_id product_catalog_id
+     *
+     * @return self
+     */
+    public function setProductCatalogId($product_catalog_id)
+    {
+        if (is_null($product_catalog_id)) {
+            throw new \InvalidArgumentException('non-nullable product_catalog_id cannot be null');
+        }
+        $this->container['product_catalog_id'] = $product_catalog_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_set_id
+     *
+     * @return string|null
+     */
+    public function getProductSetId()
+    {
+        return $this->container['product_set_id'];
+    }
+
+    /**
+     * Sets product_set_id
+     *
+     * @param string|null $product_set_id product_set_id
+     *
+     * @return self
+     */
+    public function setProductSetId($product_set_id)
+    {
+        if (is_null($product_set_id)) {
+            throw new \InvalidArgumentException('non-nullable product_set_id cannot be null');
+        }
+        $this->container['product_set_id'] = $product_set_id;
 
         return $this;
     }

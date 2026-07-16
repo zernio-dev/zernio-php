@@ -61,7 +61,8 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
         'updated' => 'int',
         'budget' => '\Zernio\Model\AdBudget',
         'budget_level' => 'string',
-        'bid_strategy' => '\Zernio\Model\BidStrategy'
+        'bid_strategy' => '\Zernio\Model\BidStrategy',
+        'platform_specific_data' => 'object'
     ];
 
     /**
@@ -75,7 +76,8 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
         'updated' => null,
         'budget' => null,
         'budget_level' => null,
-        'bid_strategy' => null
+        'bid_strategy' => null,
+        'platform_specific_data' => null
     ];
 
     /**
@@ -87,7 +89,8 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
         'updated' => false,
         'budget' => false,
         'budget_level' => false,
-        'bid_strategy' => false
+        'bid_strategy' => false,
+        'platform_specific_data' => false
     ];
 
     /**
@@ -179,7 +182,8 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
         'updated' => 'updated',
         'budget' => 'budget',
         'budget_level' => 'budgetLevel',
-        'bid_strategy' => 'bidStrategy'
+        'bid_strategy' => 'bidStrategy',
+        'platform_specific_data' => 'platformSpecificData'
     ];
 
     /**
@@ -191,7 +195,8 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
         'updated' => 'setUpdated',
         'budget' => 'setBudget',
         'budget_level' => 'setBudgetLevel',
-        'bid_strategy' => 'setBidStrategy'
+        'bid_strategy' => 'setBidStrategy',
+        'platform_specific_data' => 'setPlatformSpecificData'
     ];
 
     /**
@@ -203,7 +208,8 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
         'updated' => 'getUpdated',
         'budget' => 'getBudget',
         'budget_level' => 'getBudgetLevel',
-        'bid_strategy' => 'getBidStrategy'
+        'bid_strategy' => 'getBidStrategy',
+        'platform_specific_data' => 'getPlatformSpecificData'
     ];
 
     /**
@@ -280,6 +286,7 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('budget', $data ?? [], null);
         $this->setIfExists('budget_level', $data ?? [], null);
         $this->setIfExists('bid_strategy', $data ?? [], null);
+        $this->setIfExists('platform_specific_data', $data ?? [], null);
     }
 
     /**
@@ -447,6 +454,33 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
         }
         $this->container['bid_strategy'] = $bid_strategy;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_specific_data
+     *
+     * @return object|null
+     */
+    public function getPlatformSpecificData()
+    {
+        return $this->container['platform_specific_data'];
+    }
+
+    /**
+     * Sets platform_specific_data
+     *
+     * @param object|null $platform_specific_data platform_specific_data
+     *
+     * @return self
+     */
+    public function setPlatformSpecificData($platform_specific_data)
+    {
+        if (is_null($platform_specific_data)) {
+            throw new \InvalidArgumentException('non-nullable platform_specific_data cannot be null');
+        }
+        $this->container['platform_specific_data'] = $platform_specific_data;
 
         return $this;
     }
