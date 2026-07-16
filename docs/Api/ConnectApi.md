@@ -616,12 +616,12 @@ try {
 ## `getGmbLocations()`
 
 ```php
-getGmbLocations($account_id, $search, $filter): \Zernio\Model\GetGmbLocations200Response
+getGmbLocations($account_id, $search, $filter, $limit): \Zernio\Model\GetGmbLocations200Response
 ```
 
 List GBP locations
 
-Returns Google Business Profile locations the connected account can access, plus the currently selected location. The list is bounded (see hasMore); for accounts that own many locations, use the search or filter query params to find a specific one instead of loading them all.
+Returns Google Business Profile locations the connected account can access, plus the currently selected location. The list is bounded (see hasMore); for accounts that own many locations, use the search or filter query params to find a specific one instead of loading them all, or raise limit to enumerate an account with more than 100 locations.
 
 ### Example
 
@@ -643,9 +643,10 @@ $apiInstance = new Zernio\Api\ConnectApi(
 $account_id = 'account_id_example'; // string
 $search = 'search_example'; // string | Free-text search on the business name, applied server-side by Google. Use for accounts with many locations.
 $filter = 'filter_example'; // string | Raw Google Business Information API filter expression (advanced; takes precedence over search), e.g. storeCode=\"LH279411\".
+$limit = 100; // int | Max locations to return (default 100, max 500). Raise it to enumerate an account with more than 100 locations; for accounts with thousands, use search/filter instead.
 
 try {
-    $result = $apiInstance->getGmbLocations($account_id, $search, $filter);
+    $result = $apiInstance->getGmbLocations($account_id, $search, $filter, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectApi->getGmbLocations: ', $e->getMessage(), PHP_EOL;
@@ -659,6 +660,7 @@ try {
 | **account_id** | **string**|  | |
 | **search** | **string**| Free-text search on the business name, applied server-side by Google. Use for accounts with many locations. | [optional] |
 | **filter** | **string**| Raw Google Business Information API filter expression (advanced; takes precedence over search), e.g. storeCode&#x3D;\&quot;LH279411\&quot;. | [optional] |
+| **limit** | **int**| Max locations to return (default 100, max 500). Raise it to enumerate an account with more than 100 locations; for accounts with thousands, use search/filter instead. | [optional] [default to 100] |
 
 ### Return type
 

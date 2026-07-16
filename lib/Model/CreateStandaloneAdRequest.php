@@ -2408,7 +2408,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets languages
      *
-     * @param string[]|null $languages Language codes (e.g. ['en']). Restricts the audience by language.
+     * @param string[]|null $languages Language codes restricting the audience by language. On Meta, ISO 639-1 codes (e.g. ['en'], ['de']); a bare code targets all regional variants (\"en\" = all English), or use a region-qualified code for a specific one (\"en_GB\", \"pt_BR\", \"zh_TW\"). Unknown codes are rejected. Other ad platforms use their own language-code systems.
      *
      * @return self
      */

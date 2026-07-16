@@ -840,7 +840,7 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets languages
      *
-     * @param string[]|null $languages Language codes (e.g. ['en']).
+     * @param string[]|null $languages Language codes restricting the audience by language. On Meta, ISO 639-1 codes (e.g. ['en']); a bare code targets all regional variants (\"en\" = all English), or use a region-qualified code (\"en_GB\", \"pt_BR\") for a specific one. Unknown codes are rejected.
      *
      * @return self
      */

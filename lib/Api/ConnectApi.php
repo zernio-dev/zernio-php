@@ -3067,15 +3067,16 @@ class ConnectApi
      * @param  string $account_id account_id (required)
      * @param  string|null $search Free-text search on the business name, applied server-side by Google. Use for accounts with many locations. (optional)
      * @param  string|null $filter Raw Google Business Information API filter expression (advanced; takes precedence over search), e.g. storeCode&#x3D;\&quot;LH279411\&quot;. (optional)
+     * @param  int|null $limit Max locations to return (default 100, max 500). Raise it to enumerate an account with more than 100 locations; for accounts with thousands, use search/filter instead. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbLocations'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetGmbLocations200Response|\Zernio\Model\InlineObject
      */
-    public function getGmbLocations($account_id, $search = null, $filter = null, string $contentType = self::contentTypes['getGmbLocations'][0])
+    public function getGmbLocations($account_id, $search = null, $filter = null, $limit = 100, string $contentType = self::contentTypes['getGmbLocations'][0])
     {
-        list($response) = $this->getGmbLocationsWithHttpInfo($account_id, $search, $filter, $contentType);
+        list($response) = $this->getGmbLocationsWithHttpInfo($account_id, $search, $filter, $limit, $contentType);
         return $response;
     }
 
@@ -3087,15 +3088,16 @@ class ConnectApi
      * @param  string $account_id (required)
      * @param  string|null $search Free-text search on the business name, applied server-side by Google. Use for accounts with many locations. (optional)
      * @param  string|null $filter Raw Google Business Information API filter expression (advanced; takes precedence over search), e.g. storeCode&#x3D;\&quot;LH279411\&quot;. (optional)
+     * @param  int|null $limit Max locations to return (default 100, max 500). Raise it to enumerate an account with more than 100 locations; for accounts with thousands, use search/filter instead. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbLocations'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetGmbLocations200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getGmbLocationsWithHttpInfo($account_id, $search = null, $filter = null, string $contentType = self::contentTypes['getGmbLocations'][0])
+    public function getGmbLocationsWithHttpInfo($account_id, $search = null, $filter = null, $limit = 100, string $contentType = self::contentTypes['getGmbLocations'][0])
     {
-        $request = $this->getGmbLocationsRequest($account_id, $search, $filter, $contentType);
+        $request = $this->getGmbLocationsRequest($account_id, $search, $filter, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3188,14 +3190,15 @@ class ConnectApi
      * @param  string $account_id (required)
      * @param  string|null $search Free-text search on the business name, applied server-side by Google. Use for accounts with many locations. (optional)
      * @param  string|null $filter Raw Google Business Information API filter expression (advanced; takes precedence over search), e.g. storeCode&#x3D;\&quot;LH279411\&quot;. (optional)
+     * @param  int|null $limit Max locations to return (default 100, max 500). Raise it to enumerate an account with more than 100 locations; for accounts with thousands, use search/filter instead. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbLocations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getGmbLocationsAsync($account_id, $search = null, $filter = null, string $contentType = self::contentTypes['getGmbLocations'][0])
+    public function getGmbLocationsAsync($account_id, $search = null, $filter = null, $limit = 100, string $contentType = self::contentTypes['getGmbLocations'][0])
     {
-        return $this->getGmbLocationsAsyncWithHttpInfo($account_id, $search, $filter, $contentType)
+        return $this->getGmbLocationsAsyncWithHttpInfo($account_id, $search, $filter, $limit, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3211,15 +3214,16 @@ class ConnectApi
      * @param  string $account_id (required)
      * @param  string|null $search Free-text search on the business name, applied server-side by Google. Use for accounts with many locations. (optional)
      * @param  string|null $filter Raw Google Business Information API filter expression (advanced; takes precedence over search), e.g. storeCode&#x3D;\&quot;LH279411\&quot;. (optional)
+     * @param  int|null $limit Max locations to return (default 100, max 500). Raise it to enumerate an account with more than 100 locations; for accounts with thousands, use search/filter instead. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbLocations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getGmbLocationsAsyncWithHttpInfo($account_id, $search = null, $filter = null, string $contentType = self::contentTypes['getGmbLocations'][0])
+    public function getGmbLocationsAsyncWithHttpInfo($account_id, $search = null, $filter = null, $limit = 100, string $contentType = self::contentTypes['getGmbLocations'][0])
     {
         $returnType = '\Zernio\Model\GetGmbLocations200Response';
-        $request = $this->getGmbLocationsRequest($account_id, $search, $filter, $contentType);
+        $request = $this->getGmbLocationsRequest($account_id, $search, $filter, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3263,12 +3267,13 @@ class ConnectApi
      * @param  string $account_id (required)
      * @param  string|null $search Free-text search on the business name, applied server-side by Google. Use for accounts with many locations. (optional)
      * @param  string|null $filter Raw Google Business Information API filter expression (advanced; takes precedence over search), e.g. storeCode&#x3D;\&quot;LH279411\&quot;. (optional)
+     * @param  int|null $limit Max locations to return (default 100, max 500). Raise it to enumerate an account with more than 100 locations; for accounts with thousands, use search/filter instead. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbLocations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getGmbLocationsRequest($account_id, $search = null, $filter = null, string $contentType = self::contentTypes['getGmbLocations'][0])
+    public function getGmbLocationsRequest($account_id, $search = null, $filter = null, $limit = 100, string $contentType = self::contentTypes['getGmbLocations'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -3280,6 +3285,13 @@ class ConnectApi
 
 
 
+        if ($limit !== null && $limit > 500) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling ConnectApi.getGmbLocations, must be smaller than or equal to 500.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling ConnectApi.getGmbLocations, must be bigger than or equal to 1.');
+        }
+        
 
         $resourcePath = '/v1/accounts/{accountId}/gmb-locations';
         $formParams = [];
@@ -3302,6 +3314,15 @@ class ConnectApi
             $filter,
             'filter', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
