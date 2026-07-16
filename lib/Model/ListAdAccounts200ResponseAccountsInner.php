@@ -102,7 +102,7 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'timezone_offset_hours_utc' => false,
         'minimum_daily_budget' => false,
         'selectable' => false,
-        'unusable_reason' => false
+        'unusable_reason' => true
     ];
 
     /**
@@ -582,7 +582,14 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
     public function setUnusableReason($unusable_reason)
     {
         if (is_null($unusable_reason)) {
-            throw new \InvalidArgumentException('non-nullable unusable_reason cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'unusable_reason');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('unusable_reason', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['unusable_reason'] = $unusable_reason;
 

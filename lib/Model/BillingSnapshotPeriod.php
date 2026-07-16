@@ -83,8 +83,8 @@ class BillingSnapshotPeriod implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'start' => false,
-        'end' => false,
+        'start' => true,
+        'end' => true,
         'anchor_day' => false
     ];
 
@@ -325,7 +325,14 @@ class BillingSnapshotPeriod implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setStart($start)
     {
         if (is_null($start)) {
-            throw new \InvalidArgumentException('non-nullable start cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'start');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('start', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['start'] = $start;
 
@@ -352,7 +359,14 @@ class BillingSnapshotPeriod implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setEnd($end)
     {
         if (is_null($end)) {
-            throw new \InvalidArgumentException('non-nullable end cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'end');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['end'] = $end;
 

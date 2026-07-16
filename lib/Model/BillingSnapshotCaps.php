@@ -81,7 +81,7 @@ class BillingSnapshotCaps implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPINullables = [
         'x_spend_used_cents' => false,
-        'x_spend_limit_cents' => false
+        'x_spend_limit_cents' => true
     ];
 
     /**
@@ -344,7 +344,14 @@ class BillingSnapshotCaps implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setXSpendLimitCents($x_spend_limit_cents)
     {
         if (is_null($x_spend_limit_cents)) {
-            throw new \InvalidArgumentException('non-nullable x_spend_limit_cents cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'x_spend_limit_cents');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('x_spend_limit_cents', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['x_spend_limit_cents'] = $x_spend_limit_cents;
 

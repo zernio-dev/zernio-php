@@ -711,7 +711,7 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
     /**
      * Sets sample2
      *
-     * @param string $sample2 Second example message; carriers require two distinct samples
+     * @param string $sample2 Second example message; carriers require two distinct samples, so it must differ from sample1.
      *
      * @return self
      */

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **description** | **string** |  |
 **message_flow** | **string** | How a recipient ends up receiving your messages (the opt-in flow). Include a link to the page or form where they opt in — carrier reviewers reject campaigns whose consent they can&#39;t verify. |
 **sample1** | **string** |  |
-**sample2** | **string** | Second example message; carriers require two distinct samples |
+**sample2** | **string** | Second example message; carriers require two distinct samples, so it must differ from sample1. |
 **help_message** | **string** |  | [optional]
 **optin_keywords** | **string** |  |
 **optin_message** | **string** |  | [optional]

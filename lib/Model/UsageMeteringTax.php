@@ -325,7 +325,7 @@ class UsageMeteringTax implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tax_usd
      *
-     * @param float|null $tax_usd Estimated tax in USD
+     * @param float|null $tax_usd Estimated tax in USD, added on top of `totals.total`.
      *
      * @return self
      */
@@ -352,7 +352,7 @@ class UsageMeteringTax implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rate_percent
      *
-     * @param float|null $rate_percent Combined rate percentage
+     * @param float|null $rate_percent Combined rate percentage, e.g. 21.
      *
      * @return self
      */
@@ -386,7 +386,7 @@ class UsageMeteringTax implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets jurisdiction_label
      *
-     * @param string|null $jurisdiction_label Human jurisdiction label
+     * @param string|null $jurisdiction_label Human jurisdiction label, e.g. \"ES VAT\" or \"WA sales tax\".
      *
      * @return self
      */

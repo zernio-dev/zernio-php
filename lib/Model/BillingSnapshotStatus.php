@@ -92,10 +92,10 @@ class BillingSnapshotStatus implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static array $openAPINullables = [
         'has_access' => false,
         'suspended' => false,
-        'suspended_at' => false,
-        'suspension_reason' => false,
-        'open_invoice_url' => false,
-        'decline_reason' => false,
+        'suspended_at' => true,
+        'suspension_reason' => true,
+        'open_invoice_url' => true,
+        'decline_reason' => true,
         'auto_upgrade_enabled' => false
     ];
 
@@ -406,7 +406,14 @@ class BillingSnapshotStatus implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setSuspendedAt($suspended_at)
     {
         if (is_null($suspended_at)) {
-            throw new \InvalidArgumentException('non-nullable suspended_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'suspended_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('suspended_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['suspended_at'] = $suspended_at;
 
@@ -433,7 +440,14 @@ class BillingSnapshotStatus implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setSuspensionReason($suspension_reason)
     {
         if (is_null($suspension_reason)) {
-            throw new \InvalidArgumentException('non-nullable suspension_reason cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'suspension_reason');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('suspension_reason', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['suspension_reason'] = $suspension_reason;
 
@@ -460,7 +474,14 @@ class BillingSnapshotStatus implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setOpenInvoiceUrl($open_invoice_url)
     {
         if (is_null($open_invoice_url)) {
-            throw new \InvalidArgumentException('non-nullable open_invoice_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'open_invoice_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('open_invoice_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['open_invoice_url'] = $open_invoice_url;
 
@@ -487,7 +508,14 @@ class BillingSnapshotStatus implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setDeclineReason($decline_reason)
     {
         if (is_null($decline_reason)) {
-            throw new \InvalidArgumentException('non-nullable decline_reason cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'decline_reason');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('decline_reason', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['decline_reason'] = $decline_reason;
 
