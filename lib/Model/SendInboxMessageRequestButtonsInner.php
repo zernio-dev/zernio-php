@@ -367,7 +367,7 @@ class SendInboxMessageRequestButtonsInner implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param string $type Button type. phone is Facebook only.
+     * @param string $type Button type. phone is Facebook only. Ignored on WhatsApp (buttons always render as reply buttons).
      *
      * @return self
      */
@@ -435,7 +435,7 @@ class SendInboxMessageRequestButtonsInner implements ModelInterface, ArrayAccess
     /**
      * Sets url
      *
-     * @param string|null $url URL for url-type buttons
+     * @param string|null $url URL for url-type buttons (Facebook/Instagram only)
      *
      * @return self
      */
@@ -462,7 +462,7 @@ class SendInboxMessageRequestButtonsInner implements ModelInterface, ArrayAccess
     /**
      * Sets payload
      *
-     * @param string|null $payload Payload for postback-type buttons
+     * @param string|null $payload Payload for postback-type buttons. On WhatsApp, this is the reply ID returned on the message.received webhook when the button is tapped.
      *
      * @return self
      */
