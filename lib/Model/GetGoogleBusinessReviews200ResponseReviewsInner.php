@@ -66,7 +66,9 @@ class GetGoogleBusinessReviews200ResponseReviewsInner implements ModelInterface,
         'comment' => 'string',
         'create_time' => '\DateTime',
         'update_time' => '\DateTime',
-        'review_reply' => '\Zernio\Model\GetGoogleBusinessReviews200ResponseReviewsInnerReviewReply'
+        'review_reply' => '\Zernio\Model\GetGoogleBusinessReviews200ResponseReviewsInnerReviewReply',
+        'photo_count' => 'int',
+        'photos' => '\Zernio\Model\GetGoogleBusinessReviews200ResponseReviewsInnerPhotosInner[]'
     ];
 
     /**
@@ -85,7 +87,9 @@ class GetGoogleBusinessReviews200ResponseReviewsInner implements ModelInterface,
         'comment' => null,
         'create_time' => 'date-time',
         'update_time' => 'date-time',
-        'review_reply' => null
+        'review_reply' => null,
+        'photo_count' => null,
+        'photos' => null
     ];
 
     /**
@@ -102,7 +106,9 @@ class GetGoogleBusinessReviews200ResponseReviewsInner implements ModelInterface,
         'comment' => false,
         'create_time' => false,
         'update_time' => false,
-        'review_reply' => false
+        'review_reply' => false,
+        'photo_count' => false,
+        'photos' => false
     ];
 
     /**
@@ -199,7 +205,9 @@ class GetGoogleBusinessReviews200ResponseReviewsInner implements ModelInterface,
         'comment' => 'comment',
         'create_time' => 'createTime',
         'update_time' => 'updateTime',
-        'review_reply' => 'reviewReply'
+        'review_reply' => 'reviewReply',
+        'photo_count' => 'photoCount',
+        'photos' => 'photos'
     ];
 
     /**
@@ -216,7 +224,9 @@ class GetGoogleBusinessReviews200ResponseReviewsInner implements ModelInterface,
         'comment' => 'setComment',
         'create_time' => 'setCreateTime',
         'update_time' => 'setUpdateTime',
-        'review_reply' => 'setReviewReply'
+        'review_reply' => 'setReviewReply',
+        'photo_count' => 'setPhotoCount',
+        'photos' => 'setPhotos'
     ];
 
     /**
@@ -233,7 +243,9 @@ class GetGoogleBusinessReviews200ResponseReviewsInner implements ModelInterface,
         'comment' => 'getComment',
         'create_time' => 'getCreateTime',
         'update_time' => 'getUpdateTime',
-        'review_reply' => 'getReviewReply'
+        'review_reply' => 'getReviewReply',
+        'photo_count' => 'getPhotoCount',
+        'photos' => 'getPhotos'
     ];
 
     /**
@@ -323,6 +335,8 @@ class GetGoogleBusinessReviews200ResponseReviewsInner implements ModelInterface,
         $this->setIfExists('create_time', $data ?? [], null);
         $this->setIfExists('update_time', $data ?? [], null);
         $this->setIfExists('review_reply', $data ?? [], null);
+        $this->setIfExists('photo_count', $data ?? [], null);
+        $this->setIfExists('photos', $data ?? [], null);
     }
 
     /**
@@ -641,6 +655,60 @@ class GetGoogleBusinessReviews200ResponseReviewsInner implements ModelInterface,
             throw new \InvalidArgumentException('non-nullable review_reply cannot be null');
         }
         $this->container['review_reply'] = $review_reply;
+
+        return $this;
+    }
+
+    /**
+     * Gets photo_count
+     *
+     * @return int|null
+     */
+    public function getPhotoCount()
+    {
+        return $this->container['photo_count'];
+    }
+
+    /**
+     * Sets photo_count
+     *
+     * @param int|null $photo_count Number of photos attached to the review (photos only, videos are not counted)
+     *
+     * @return self
+     */
+    public function setPhotoCount($photo_count)
+    {
+        if (is_null($photo_count)) {
+            throw new \InvalidArgumentException('non-nullable photo_count cannot be null');
+        }
+        $this->container['photo_count'] = $photo_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets photos
+     *
+     * @return \Zernio\Model\GetGoogleBusinessReviews200ResponseReviewsInnerPhotosInner[]|null
+     */
+    public function getPhotos()
+    {
+        return $this->container['photos'];
+    }
+
+    /**
+     * Sets photos
+     *
+     * @param \Zernio\Model\GetGoogleBusinessReviews200ResponseReviewsInnerPhotosInner[]|null $photos Photos attached to the review by the reviewer
+     *
+     * @return self
+     */
+    public function setPhotos($photos)
+    {
+        if (is_null($photos)) {
+            throw new \InvalidArgumentException('non-nullable photos cannot be null');
+        }
+        $this->container['photos'] = $photos;
 
         return $this;
     }

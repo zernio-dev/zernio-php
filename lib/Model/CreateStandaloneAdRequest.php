@@ -90,6 +90,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'business_name' => 'string',
         'board_id' => 'string',
         'organization_id' => 'string',
+        'targeting' => '\Zernio\Model\TargetingSpec',
         'countries' => 'string[]',
         'cities' => '\Zernio\Model\CreateStandaloneAdRequestCitiesInner[]',
         'regions' => '\Zernio\Model\CreateStandaloneAdRequestRegionsInner[]',
@@ -170,6 +171,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'business_name' => null,
         'board_id' => null,
         'organization_id' => null,
+        'targeting' => null,
         'countries' => null,
         'cities' => null,
         'regions' => null,
@@ -248,6 +250,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'business_name' => false,
         'board_id' => false,
         'organization_id' => false,
+        'targeting' => false,
         'countries' => false,
         'cities' => false,
         'regions' => false,
@@ -406,6 +409,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'business_name' => 'businessName',
         'board_id' => 'boardId',
         'organization_id' => 'organizationId',
+        'targeting' => 'targeting',
         'countries' => 'countries',
         'cities' => 'cities',
         'regions' => 'regions',
@@ -484,6 +488,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'business_name' => 'setBusinessName',
         'board_id' => 'setBoardId',
         'organization_id' => 'setOrganizationId',
+        'targeting' => 'setTargeting',
         'countries' => 'setCountries',
         'cities' => 'setCities',
         'regions' => 'setRegions',
@@ -562,6 +567,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'business_name' => 'getBusinessName',
         'board_id' => 'getBoardId',
         'organization_id' => 'getOrganizationId',
+        'targeting' => 'getTargeting',
         'countries' => 'getCountries',
         'cities' => 'getCities',
         'regions' => 'getRegions',
@@ -914,6 +920,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('business_name', $data ?? [], null);
         $this->setIfExists('board_id', $data ?? [], null);
         $this->setIfExists('organization_id', $data ?? [], null);
+        $this->setIfExists('targeting', $data ?? [], null);
         $this->setIfExists('countries', $data ?? [], null);
         $this->setIfExists('cities', $data ?? [], null);
         $this->setIfExists('regions', $data ?? [], null);
@@ -2107,6 +2114,33 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets targeting
+     *
+     * @return \Zernio\Model\TargetingSpec|null
+     */
+    public function getTargeting()
+    {
+        return $this->container['targeting'];
+    }
+
+    /**
+     * Sets targeting
+     *
+     * @param \Zernio\Model\TargetingSpec|null $targeting Nested targeting object — the same TargetingSpec shape as `POST /v1/ads/boost`, `POST /v1/ads/targeting/reach-estimate`, and `saved_targeting` audiences. Merged UNDER the flat inline targeting fields below: `savedTargetingId` < `targeting` < flat fields (a flat field present on the body replaces the nested value entirely). Both forms are equivalent; use whichever your integration already builds.
+     *
+     * @return self
+     */
+    public function setTargeting($targeting)
+    {
+        if (is_null($targeting)) {
+            throw new \InvalidArgumentException('non-nullable targeting cannot be null');
+        }
+        $this->container['targeting'] = $targeting;
+
+        return $this;
+    }
+
+    /**
      * Gets countries
      *
      * @return string[]|null
@@ -2119,7 +2153,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets countries
      *
-     * @param string[]|null $countries ISO 3166-1 alpha-2 country codes (e.g. ['NL']). Defaults to ['US'] when no `cities` or `regions` are provided. (LinkedIn currently honours country-level targeting only.)
+     * @param string[]|null $countries ISO 3166-1 alpha-2 country codes (e.g. ['NL']). Defaults to ['US'] when no other geo targeting (flat or nested `targeting`) is provided. (LinkedIn currently honours country-level targeting only.)
      *
      * @return self
      */

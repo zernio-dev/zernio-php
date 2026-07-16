@@ -69,6 +69,7 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         'has_reply' => 'bool',
         'has_photos' => 'bool',
         'photo_count' => 'int',
+        'photos' => '\Zernio\Model\GetGoogleBusinessReviews200ResponseReviewsInnerPhotosInner[]',
         'reply' => '\Zernio\Model\ListInboxReviews200ResponseDataInnerReply',
         'review_url' => 'string'
     ];
@@ -92,6 +93,7 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         'has_reply' => null,
         'has_photos' => null,
         'photo_count' => null,
+        'photos' => null,
         'reply' => null,
         'review_url' => null
     ];
@@ -113,6 +115,7 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         'has_reply' => false,
         'has_photos' => false,
         'photo_count' => false,
+        'photos' => false,
         'reply' => false,
         'review_url' => true
     ];
@@ -214,6 +217,7 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         'has_reply' => 'hasReply',
         'has_photos' => 'hasPhotos',
         'photo_count' => 'photoCount',
+        'photos' => 'photos',
         'reply' => 'reply',
         'review_url' => 'reviewUrl'
     ];
@@ -235,6 +239,7 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         'has_reply' => 'setHasReply',
         'has_photos' => 'setHasPhotos',
         'photo_count' => 'setPhotoCount',
+        'photos' => 'setPhotos',
         'reply' => 'setReply',
         'review_url' => 'setReviewUrl'
     ];
@@ -256,6 +261,7 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         'has_reply' => 'getHasReply',
         'has_photos' => 'getHasPhotos',
         'photo_count' => 'getPhotoCount',
+        'photos' => 'getPhotos',
         'reply' => 'getReply',
         'review_url' => 'getReviewUrl'
     ];
@@ -328,6 +334,7 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         $this->setIfExists('has_reply', $data ?? [], null);
         $this->setIfExists('has_photos', $data ?? [], null);
         $this->setIfExists('photo_count', $data ?? [], null);
+        $this->setIfExists('photos', $data ?? [], null);
         $this->setIfExists('reply', $data ?? [], null);
         $this->setIfExists('review_url', $data ?? [], null);
     }
@@ -667,6 +674,33 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
             throw new \InvalidArgumentException('non-nullable photo_count cannot be null');
         }
         $this->container['photo_count'] = $photo_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets photos
+     *
+     * @return \Zernio\Model\GetGoogleBusinessReviews200ResponseReviewsInnerPhotosInner[]|null
+     */
+    public function getPhotos()
+    {
+        return $this->container['photos'];
+    }
+
+    /**
+     * Sets photos
+     *
+     * @param \Zernio\Model\GetGoogleBusinessReviews200ResponseReviewsInnerPhotosInner[]|null $photos Photos attached to the review. Google Business only; always an empty array for other platforms.
+     *
+     * @return self
+     */
+    public function setPhotos($photos)
+    {
+        if (is_null($photos)) {
+            throw new \InvalidArgumentException('non-nullable photos cannot be null');
+        }
+        $this->container['photos'] = $photos;
 
         return $this;
     }
