@@ -382,6 +382,7 @@ docs/Model/EnableWhatsAppCallingLegacy200Response.md
 docs/Model/EnableWhatsAppCallingLegacyRequest.md
 docs/Model/EndVoiceCall200Response.md
 docs/Model/EnrollContacts200Response.md
+docs/Model/EnrollContacts200ResponseResultsInner.md
 docs/Model/EnrollContactsRequest.md
 docs/Model/ErrorResponse.md
 docs/Model/EstimateAdReach200Response.md
@@ -1834,6 +1835,7 @@ lib/Model/EnableWhatsAppCallingLegacy200Response.php
 lib/Model/EnableWhatsAppCallingLegacyRequest.php
 lib/Model/EndVoiceCall200Response.php
 lib/Model/EnrollContacts200Response.php
+lib/Model/EnrollContacts200ResponseResultsInner.php
 lib/Model/EnrollContactsRequest.php
 lib/Model/ErrorResponse.php
 lib/Model/EstimateAdReach200Response.php
@@ -2905,3 +2907,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/EnrollContacts200ResponseResultsInnerTest.php

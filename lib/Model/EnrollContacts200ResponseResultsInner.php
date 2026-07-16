@@ -1,6 +1,6 @@
 <?php
 /**
- * EnrollContacts200Response
+ * EnrollContacts200ResponseResultsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * EnrollContacts200Response Class Doc Comment
+ * EnrollContacts200ResponseResultsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class EnrollContacts200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class EnrollContacts200ResponseResultsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class EnrollContacts200Response implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'enrollContacts_200_response';
+    protected static $openAPIModelName = 'enrollContacts_200_response_results_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,9 @@ class EnrollContacts200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
+        'contact_id' => 'string',
         'success' => 'bool',
-        'enrolled' => 'int',
-        'failed' => 'int',
-        'results' => '\Zernio\Model\EnrollContacts200ResponseResultsInner[]'
+        'error' => 'string'
     ];
 
     /**
@@ -72,10 +71,9 @@ class EnrollContacts200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'contact_id' => null,
         'success' => null,
-        'enrolled' => null,
-        'failed' => null,
-        'results' => null
+        'error' => null
     ];
 
     /**
@@ -84,10 +82,9 @@ class EnrollContacts200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'contact_id' => false,
         'success' => false,
-        'enrolled' => false,
-        'failed' => false,
-        'results' => false
+        'error' => false
     ];
 
     /**
@@ -176,10 +173,9 @@ class EnrollContacts200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
+        'contact_id' => 'contactId',
         'success' => 'success',
-        'enrolled' => 'enrolled',
-        'failed' => 'failed',
-        'results' => 'results'
+        'error' => 'error'
     ];
 
     /**
@@ -188,10 +184,9 @@ class EnrollContacts200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
+        'contact_id' => 'setContactId',
         'success' => 'setSuccess',
-        'enrolled' => 'setEnrolled',
-        'failed' => 'setFailed',
-        'results' => 'setResults'
+        'error' => 'setError'
     ];
 
     /**
@@ -200,10 +195,9 @@ class EnrollContacts200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
+        'contact_id' => 'getContactId',
         'success' => 'getSuccess',
-        'enrolled' => 'getEnrolled',
-        'failed' => 'getFailed',
-        'results' => 'getResults'
+        'error' => 'getError'
     ];
 
     /**
@@ -263,10 +257,9 @@ class EnrollContacts200Response implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('contact_id', $data ?? [], null);
         $this->setIfExists('success', $data ?? [], null);
-        $this->setIfExists('enrolled', $data ?? [], null);
-        $this->setIfExists('failed', $data ?? [], null);
-        $this->setIfExists('results', $data ?? [], null);
+        $this->setIfExists('error', $data ?? [], null);
     }
 
     /**
@@ -312,6 +305,33 @@ class EnrollContacts200Response implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
+     * Gets contact_id
+     *
+     * @return string|null
+     */
+    public function getContactId()
+    {
+        return $this->container['contact_id'];
+    }
+
+    /**
+     * Sets contact_id
+     *
+     * @param string|null $contact_id contact_id
+     *
+     * @return self
+     */
+    public function setContactId($contact_id)
+    {
+        if (is_null($contact_id)) {
+            throw new \InvalidArgumentException('non-nullable contact_id cannot be null');
+        }
+        $this->container['contact_id'] = $contact_id;
+
+        return $this;
+    }
+
+    /**
      * Gets success
      *
      * @return bool|null
@@ -339,82 +359,28 @@ class EnrollContacts200Response implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets enrolled
+     * Gets error
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getEnrolled()
+    public function getError()
     {
-        return $this->container['enrolled'];
+        return $this->container['error'];
     }
 
     /**
-     * Sets enrolled
+     * Sets error
      *
-     * @param int|null $enrolled Number of contacts successfully enrolled
+     * @param string|null $error Present when success is false
      *
      * @return self
      */
-    public function setEnrolled($enrolled)
+    public function setError($error)
     {
-        if (is_null($enrolled)) {
-            throw new \InvalidArgumentException('non-nullable enrolled cannot be null');
+        if (is_null($error)) {
+            throw new \InvalidArgumentException('non-nullable error cannot be null');
         }
-        $this->container['enrolled'] = $enrolled;
-
-        return $this;
-    }
-
-    /**
-     * Gets failed
-     *
-     * @return int|null
-     */
-    public function getFailed()
-    {
-        return $this->container['failed'];
-    }
-
-    /**
-     * Sets failed
-     *
-     * @param int|null $failed Number that failed (already enrolled, or no subscribed channel on the sequence platform)
-     *
-     * @return self
-     */
-    public function setFailed($failed)
-    {
-        if (is_null($failed)) {
-            throw new \InvalidArgumentException('non-nullable failed cannot be null');
-        }
-        $this->container['failed'] = $failed;
-
-        return $this;
-    }
-
-    /**
-     * Gets results
-     *
-     * @return \Zernio\Model\EnrollContacts200ResponseResultsInner[]|null
-     */
-    public function getResults()
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \Zernio\Model\EnrollContacts200ResponseResultsInner[]|null $results Per-contact outcome
-     *
-     * @return self
-     */
-    public function setResults($results)
-    {
-        if (is_null($results)) {
-            throw new \InvalidArgumentException('non-nullable results cannot be null');
-        }
-        $this->container['results'] = $results;
+        $this->container['error'] = $error;
 
         return $this;
     }

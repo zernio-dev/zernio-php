@@ -82,7 +82,7 @@ deleteQueueSlot($profile_id, $queue_id): \Zernio\Model\QueueDeleteResponse
 
 Delete schedule
 
-Delete a queue from a profile. Requires queueId to specify which queue to delete. If deleting the default queue, another queue will be promoted to default.
+Delete a queue from a profile. Pass queueId to delete a specific queue; omit it to delete all queues for the profile. If deleting the default queue, another queue will be promoted to default.
 
 ### Example
 
@@ -102,7 +102,7 @@ $apiInstance = new Zernio\Api\QueueApi(
     $config
 );
 $profile_id = 'profile_id_example'; // string
-$queue_id = 'queue_id_example'; // string | Queue ID to delete
+$queue_id = 'queue_id_example'; // string | Queue ID to delete. Omit to delete all queues for the profile
 
 try {
     $result = $apiInstance->deleteQueueSlot($profile_id, $queue_id);
@@ -117,7 +117,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **profile_id** | **string**|  | |
-| **queue_id** | **string**| Queue ID to delete | |
+| **queue_id** | **string**| Queue ID to delete. Omit to delete all queues for the profile | [optional] |
 
 ### Return type
 

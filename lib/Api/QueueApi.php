@@ -432,14 +432,14 @@ class QueueApi
      * Delete schedule
      *
      * @param  string $profile_id profile_id (required)
-     * @param  string $queue_id Queue ID to delete (required)
+     * @param  string|null $queue_id Queue ID to delete. Omit to delete all queues for the profile (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteQueueSlot'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\QueueDeleteResponse|\Zernio\Model\InlineObject
      */
-    public function deleteQueueSlot($profile_id, $queue_id, string $contentType = self::contentTypes['deleteQueueSlot'][0])
+    public function deleteQueueSlot($profile_id, $queue_id = null, string $contentType = self::contentTypes['deleteQueueSlot'][0])
     {
         list($response) = $this->deleteQueueSlotWithHttpInfo($profile_id, $queue_id, $contentType);
         return $response;
@@ -451,14 +451,14 @@ class QueueApi
      * Delete schedule
      *
      * @param  string $profile_id (required)
-     * @param  string $queue_id Queue ID to delete (required)
+     * @param  string|null $queue_id Queue ID to delete. Omit to delete all queues for the profile (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteQueueSlot'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\QueueDeleteResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteQueueSlotWithHttpInfo($profile_id, $queue_id, string $contentType = self::contentTypes['deleteQueueSlot'][0])
+    public function deleteQueueSlotWithHttpInfo($profile_id, $queue_id = null, string $contentType = self::contentTypes['deleteQueueSlot'][0])
     {
         $request = $this->deleteQueueSlotRequest($profile_id, $queue_id, $contentType);
 
@@ -551,13 +551,13 @@ class QueueApi
      * Delete schedule
      *
      * @param  string $profile_id (required)
-     * @param  string $queue_id Queue ID to delete (required)
+     * @param  string|null $queue_id Queue ID to delete. Omit to delete all queues for the profile (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteQueueSlot'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteQueueSlotAsync($profile_id, $queue_id, string $contentType = self::contentTypes['deleteQueueSlot'][0])
+    public function deleteQueueSlotAsync($profile_id, $queue_id = null, string $contentType = self::contentTypes['deleteQueueSlot'][0])
     {
         return $this->deleteQueueSlotAsyncWithHttpInfo($profile_id, $queue_id, $contentType)
             ->then(
@@ -573,13 +573,13 @@ class QueueApi
      * Delete schedule
      *
      * @param  string $profile_id (required)
-     * @param  string $queue_id Queue ID to delete (required)
+     * @param  string|null $queue_id Queue ID to delete. Omit to delete all queues for the profile (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteQueueSlot'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteQueueSlotAsyncWithHttpInfo($profile_id, $queue_id, string $contentType = self::contentTypes['deleteQueueSlot'][0])
+    public function deleteQueueSlotAsyncWithHttpInfo($profile_id, $queue_id = null, string $contentType = self::contentTypes['deleteQueueSlot'][0])
     {
         $returnType = '\Zernio\Model\QueueDeleteResponse';
         $request = $this->deleteQueueSlotRequest($profile_id, $queue_id, $contentType);
@@ -624,13 +624,13 @@ class QueueApi
      * Create request for operation 'deleteQueueSlot'
      *
      * @param  string $profile_id (required)
-     * @param  string $queue_id Queue ID to delete (required)
+     * @param  string|null $queue_id Queue ID to delete. Omit to delete all queues for the profile (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteQueueSlot'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteQueueSlotRequest($profile_id, $queue_id, string $contentType = self::contentTypes['deleteQueueSlot'][0])
+    public function deleteQueueSlotRequest($profile_id, $queue_id = null, string $contentType = self::contentTypes['deleteQueueSlot'][0])
     {
 
         // verify the required parameter 'profile_id' is set
@@ -640,12 +640,6 @@ class QueueApi
             );
         }
 
-        // verify the required parameter 'queue_id' is set
-        if ($queue_id === null || (is_array($queue_id) && count($queue_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $queue_id when calling deleteQueueSlot'
-            );
-        }
 
 
         $resourcePath = '/v1/queue/slots';
@@ -671,7 +665,7 @@ class QueueApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
 
