@@ -10,6 +10,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**adjustConversions()**](AdsApi.md#adjustConversions) | **POST** /v1/ads/conversions/adjustments | Adjust uploaded conversions |
 | [**archiveLeadForm()**](AdsApi.md#archiveLeadForm) | **DELETE** /v1/ads/lead-forms/{formId} | Archive a lead form |
 | [**boostPost()**](AdsApi.md#boostPost) | **POST** /v1/ads/boost | Boost post as ad |
+| [**createAdInsightsReport()**](AdsApi.md#createAdInsightsReport) | **POST** /v1/ads/insights/reports | Submit an async insights report run (Meta) |
 | [**createConversionDestination()**](AdsApi.md#createConversionDestination) | **POST** /v1/accounts/{accountId}/conversion-destinations | Create a conversion destination |
 | [**createCtwaAd()**](AdsApi.md#createCtwaAd) | **POST** /v1/ads/ctwa | Create Click-to-WhatsApp ad |
 | [**createLeadForm()**](AdsApi.md#createLeadForm) | **POST** /v1/ads/lead-forms | Create a lead form |
@@ -21,6 +22,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getAd()**](AdsApi.md#getAd) | **GET** /v1/ads/{adId} | Get ad details |
 | [**getAdAnalytics()**](AdsApi.md#getAdAnalytics) | **GET** /v1/ads/{adId}/analytics | Get ad analytics |
 | [**getAdComments()**](AdsApi.md#getAdComments) | **GET** /v1/ads/{adId}/comments | List comments on an ad |
+| [**getAdInsightsReport()**](AdsApi.md#getAdInsightsReport) | **GET** /v1/ads/insights/reports/{reportRunId} | Poll an async insights report run (Meta) |
 | [**getAdTrackingTags()**](AdsApi.md#getAdTrackingTags) | **GET** /v1/ads/{adId}/tracking-tags | Get ad tracking tags |
 | [**getCampaignAnalytics()**](AdsApi.md#getCampaignAnalytics) | **GET** /v1/ads/campaigns/{campaignId}/analytics | Get campaign analytics |
 | [**getConversionDestination()**](AdsApi.md#getConversionDestination) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Get a conversion destination |
@@ -42,6 +44,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listLeadForms()**](AdsApi.md#listLeadForms) | **GET** /v1/ads/lead-forms | List lead forms |
 | [**listLeads()**](AdsApi.md#listLeads) | **GET** /v1/ads/leads | List submitted leads |
 | [**listWhatsAppConversions()**](AdsApi.md#listWhatsAppConversions) | **GET** /v1/whatsapp/conversions | List conversion events |
+| [**queryAdInsights()**](AdsApi.md#queryAdInsights) | **GET** /v1/ads/insights | Flexible live insights query (Meta) |
 | [**removeConversionAssociations()**](AdsApi.md#removeConversionAssociations) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Remove associated campaigns |
 | [**searchAdInterests()**](AdsApi.md#searchAdInterests) | **GET** /v1/ads/interests | Search targeting interests |
 | [**searchAdTargeting()**](AdsApi.md#searchAdTargeting) | **GET** /v1/ads/targeting/search | Search targeting options |
@@ -286,6 +289,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\UpdateAd200Response**](../Model/UpdateAd200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createAdInsightsReport()`
+
+```php
+createAdInsightsReport($create_ad_insights_report_request): \Zernio\Model\CreateAdInsightsReport202Response
+```
+
+Submit an async insights report run (Meta)
+
+Submits an asynchronous Meta insights report. Same query surface as GET /v1/ads/insights, but in the JSON body; Meta processes the report server-side, which is the right choice for long ranges or large accounts where the sync query is slow or rate-limited. Returns a `reportRunId` to poll via GET /v1/ads/insights/reports/{reportRunId}. Meta only.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_ad_insights_report_request = new \Zernio\Model\CreateAdInsightsReportRequest(); // \Zernio\Model\CreateAdInsightsReportRequest
+
+try {
+    $result = $apiInstance->createAdInsightsReport($create_ad_insights_report_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->createAdInsightsReport: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_ad_insights_report_request** | [**\Zernio\Model\CreateAdInsightsReportRequest**](../Model/CreateAdInsightsReportRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateAdInsightsReport202Response**](../Model/CreateAdInsightsReport202Response.md)
 
 ### Authorization
 
@@ -967,6 +1030,72 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetAdComments200Response**](../Model/GetAdComments200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getAdInsightsReport()`
+
+```php
+getAdInsightsReport($report_run_id, $account_id, $limit, $after): \Zernio\Model\GetAdInsightsReport200Response
+```
+
+Poll an async insights report run (Meta)
+
+Status and results for a report run created via POST /v1/ads/insights/reports. While the job runs, returns `status` and `percentCompletion`. Once `status` is \"Job Completed\" the response also carries a `data` page, cursor-paginated via `limit` / `after`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$report_run_id = 'report_run_id_example'; // string
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id used to resolve the Meta token (must be the same connection that created the run).
+$limit = 25; // int
+$after = 'after_example'; // string
+
+try {
+    $result = $apiInstance->getAdInsightsReport($report_run_id, $account_id, $limit, $after);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->getAdInsightsReport: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **report_run_id** | **string**|  | |
+| **account_id** | **string**| Zernio SocialAccount id used to resolve the Meta token (must be the same connection that created the run). | |
+| **limit** | **int**|  | [optional] [default to 25] |
+| **after** | **string**|  | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetAdInsightsReport200Response**](../Model/GetAdInsightsReport200Response.md)
 
 ### Authorization
 
@@ -2315,6 +2444,88 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListWhatsAppConversions200Response**](../Model/ListWhatsAppConversions200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `queryAdInsights()`
+
+```php
+queryAdInsights($account_id, $object_id, $level, $fields, $breakdowns, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after): \Zernio\Model\QueryAdInsights200Response
+```
+
+Flexible live insights query (Meta)
+
+Live, flexible insights query against Meta's Graph API. Unlike GET /v1/ads/{adId}/analytics (fixed metric set, cached), this forwards caller-chosen `fields`, `breakdowns` and `filtering` to any Meta insights node and returns Meta's rows verbatim.  `objectId` selects the node: an ad account, campaign, ad set or ad platform id. `level` sets row granularity independently of the node.  Semantic validation is Meta's: an unknown field or invalid breakdown combination returns a 400 carrying Meta's message. For long ranges or agency-scale accounts prefer the async variant (POST /v1/ads/insights/reports). Meta only.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token.
+$object_id = 'object_id_example'; // string | Meta insights node: act_<n>, campaign id, ad set id or ad id.
+$level = 'level_example'; // string | Row granularity
+$fields = 'fields_example'; // string | Comma-separated Graph insights fields (e.g. spend,impressions,frequency,website_purchase_roas). Omitted = Meta's default set.
+$breakdowns = 'breakdowns_example'; // string | Comma-separated Graph breakdowns (e.g. age,gender or publisher_platform).
+$filtering = 'filtering_example'; // string | JSON array of Meta filter objects: [{\"field\", \"operator\", \"value\"}]. Applied server-side by Meta.
+$date_preset = 'date_preset_example'; // string | Meta date_preset (e.g. last_7d, last_30d, this_month). Mutually exclusive with fromDate/toDate.
+$from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start of range (YYYY-MM-DD); requires toDate.
+$to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End of range (YYYY-MM-DD); requires fromDate.
+$time_increment = 'time_increment_example'; // string | Days per row (1-90), monthly, or all_days.
+$limit = 25; // int | Rows per page
+$after = 'after_example'; // string | Cursor from paging.after of the previous page.
+
+try {
+    $result = $apiInstance->queryAdInsights($account_id, $object_id, $level, $fields, $breakdowns, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->queryAdInsights: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. | |
+| **object_id** | **string**| Meta insights node: act_&lt;n&gt;, campaign id, ad set id or ad id. | |
+| **level** | **string**| Row granularity | [optional] |
+| **fields** | **string**| Comma-separated Graph insights fields (e.g. spend,impressions,frequency,website_purchase_roas). Omitted &#x3D; Meta&#39;s default set. | [optional] |
+| **breakdowns** | **string**| Comma-separated Graph breakdowns (e.g. age,gender or publisher_platform). | [optional] |
+| **filtering** | **string**| JSON array of Meta filter objects: [{\&quot;field\&quot;, \&quot;operator\&quot;, \&quot;value\&quot;}]. Applied server-side by Meta. | [optional] |
+| **date_preset** | **string**| Meta date_preset (e.g. last_7d, last_30d, this_month). Mutually exclusive with fromDate/toDate. | [optional] |
+| **from_date** | **\DateTime**| Start of range (YYYY-MM-DD); requires toDate. | [optional] |
+| **to_date** | **\DateTime**| End of range (YYYY-MM-DD); requires fromDate. | [optional] |
+| **time_increment** | **string**| Days per row (1-90), monthly, or all_days. | [optional] |
+| **limit** | **int**| Rows per page | [optional] [default to 25] |
+| **after** | **string**| Cursor from paging.after of the previous page. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\QueryAdInsights200Response**](../Model/QueryAdInsights200Response.md)
 
 ### Authorization
 

@@ -192,6 +192,10 @@ docs/Model/CreateAccountGroup201ResponseGroup.md
 docs/Model/CreateAccountGroupRequest.md
 docs/Model/CreateAdAudience201Response.md
 docs/Model/CreateAdAudienceRequest.md
+docs/Model/CreateAdInsightsReport202Response.md
+docs/Model/CreateAdInsightsReportRequest.md
+docs/Model/CreateAdInsightsReportRequestFilteringInner.md
+docs/Model/CreateAdInsightsReportRequestTimeIncrement.md
 docs/Model/CreateApiKey201Response.md
 docs/Model/CreateApiKeyRequest.md
 docs/Model/CreateBroadcast200Response.md
@@ -423,6 +427,8 @@ docs/Model/GetAdAudience200Response.md
 docs/Model/GetAdComments200Response.md
 docs/Model/GetAdComments200ResponseMeta.md
 docs/Model/GetAdComments200ResponsePagination.md
+docs/Model/GetAdInsightsReport200Response.md
+docs/Model/GetAdInsightsReport200ResponsePaging.md
 docs/Model/GetAdTrackingTags200Response.md
 docs/Model/GetAdTree200Response.md
 docs/Model/GetAdsTimeline200Response.md
@@ -967,6 +973,8 @@ docs/Model/PurchasePhoneNumber202Response.md
 docs/Model/PurchasePhoneNumber409Response.md
 docs/Model/PurchasePhoneNumberRequest.md
 docs/Model/PurchaseWhatsAppPhoneNumberRequest.md
+docs/Model/QueryAdInsights200Response.md
+docs/Model/QueryAdInsights200ResponsePaging.md
 docs/Model/QueueDeleteResponse.md
 docs/Model/QueueNextSlotResponse.md
 docs/Model/QueuePreviewResponse.md
@@ -1654,6 +1662,10 @@ lib/Model/CreateAccountGroup201ResponseGroup.php
 lib/Model/CreateAccountGroupRequest.php
 lib/Model/CreateAdAudience201Response.php
 lib/Model/CreateAdAudienceRequest.php
+lib/Model/CreateAdInsightsReport202Response.php
+lib/Model/CreateAdInsightsReportRequest.php
+lib/Model/CreateAdInsightsReportRequestFilteringInner.php
+lib/Model/CreateAdInsightsReportRequestTimeIncrement.php
 lib/Model/CreateApiKey201Response.php
 lib/Model/CreateApiKeyRequest.php
 lib/Model/CreateBroadcast200Response.php
@@ -1885,6 +1897,8 @@ lib/Model/GetAdAudience200Response.php
 lib/Model/GetAdComments200Response.php
 lib/Model/GetAdComments200ResponseMeta.php
 lib/Model/GetAdComments200ResponsePagination.php
+lib/Model/GetAdInsightsReport200Response.php
+lib/Model/GetAdInsightsReport200ResponsePaging.php
 lib/Model/GetAdTrackingTags200Response.php
 lib/Model/GetAdTree200Response.php
 lib/Model/GetAdsTimeline200Response.php
@@ -2430,6 +2444,8 @@ lib/Model/PurchasePhoneNumber202Response.php
 lib/Model/PurchasePhoneNumber409Response.php
 lib/Model/PurchasePhoneNumberRequest.php
 lib/Model/PurchaseWhatsAppPhoneNumberRequest.php
+lib/Model/QueryAdInsights200Response.php
+lib/Model/QueryAdInsights200ResponsePaging.php
 lib/Model/QueueDeleteResponse.php
 lib/Model/QueueNextSlotResponse.php
 lib/Model/QueuePreviewResponse.php
@@ -2925,3 +2941,11 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateAdInsightsReport202ResponseTest.php
+test/Model/CreateAdInsightsReportRequestFilteringInnerTest.php
+test/Model/CreateAdInsightsReportRequestTest.php
+test/Model/CreateAdInsightsReportRequestTimeIncrementTest.php
+test/Model/GetAdInsightsReport200ResponsePagingTest.php
+test/Model/GetAdInsightsReport200ResponseTest.php
+test/Model/QueryAdInsights200ResponsePagingTest.php
+test/Model/QueryAdInsights200ResponseTest.php

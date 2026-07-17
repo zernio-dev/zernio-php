@@ -87,6 +87,9 @@ class AdsApi
         'boostPost' => [
             'application/json',
         ],
+        'createAdInsightsReport' => [
+            'application/json',
+        ],
         'createConversionDestination' => [
             'application/json',
         ],
@@ -118,6 +121,9 @@ class AdsApi
             'application/json',
         ],
         'getAdComments' => [
+            'application/json',
+        ],
+        'getAdInsightsReport' => [
             'application/json',
         ],
         'getAdTrackingTags' => [
@@ -181,6 +187,9 @@ class AdsApi
             'application/json',
         ],
         'listWhatsAppConversions' => [
+            'application/json',
+        ],
+        'queryAdInsights' => [
             'application/json',
         ],
         'removeConversionAssociations' => [
@@ -1412,6 +1421,291 @@ class AdsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($boost_post_request));
             } else {
                 $httpBody = $boost_post_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createAdInsightsReport
+     *
+     * Submit an async insights report run (Meta)
+     *
+     * @param  \Zernio\Model\CreateAdInsightsReportRequest $create_ad_insights_report_request create_ad_insights_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdInsightsReport'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CreateAdInsightsReport202Response|\Zernio\Model\InlineObject
+     */
+    public function createAdInsightsReport($create_ad_insights_report_request, string $contentType = self::contentTypes['createAdInsightsReport'][0])
+    {
+        list($response) = $this->createAdInsightsReportWithHttpInfo($create_ad_insights_report_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createAdInsightsReportWithHttpInfo
+     *
+     * Submit an async insights report run (Meta)
+     *
+     * @param  \Zernio\Model\CreateAdInsightsReportRequest $create_ad_insights_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdInsightsReport'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CreateAdInsightsReport202Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createAdInsightsReportWithHttpInfo($create_ad_insights_report_request, string $contentType = self::contentTypes['createAdInsightsReport'][0])
+    {
+        $request = $this->createAdInsightsReportRequest($create_ad_insights_report_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 202:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreateAdInsightsReport202Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CreateAdInsightsReport202Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 202:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreateAdInsightsReport202Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createAdInsightsReportAsync
+     *
+     * Submit an async insights report run (Meta)
+     *
+     * @param  \Zernio\Model\CreateAdInsightsReportRequest $create_ad_insights_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdInsightsReport'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAdInsightsReportAsync($create_ad_insights_report_request, string $contentType = self::contentTypes['createAdInsightsReport'][0])
+    {
+        return $this->createAdInsightsReportAsyncWithHttpInfo($create_ad_insights_report_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createAdInsightsReportAsyncWithHttpInfo
+     *
+     * Submit an async insights report run (Meta)
+     *
+     * @param  \Zernio\Model\CreateAdInsightsReportRequest $create_ad_insights_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdInsightsReport'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAdInsightsReportAsyncWithHttpInfo($create_ad_insights_report_request, string $contentType = self::contentTypes['createAdInsightsReport'][0])
+    {
+        $returnType = '\Zernio\Model\CreateAdInsightsReport202Response';
+        $request = $this->createAdInsightsReportRequest($create_ad_insights_report_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createAdInsightsReport'
+     *
+     * @param  \Zernio\Model\CreateAdInsightsReportRequest $create_ad_insights_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdInsightsReport'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createAdInsightsReportRequest($create_ad_insights_report_request, string $contentType = self::contentTypes['createAdInsightsReport'][0])
+    {
+
+        // verify the required parameter 'create_ad_insights_report_request' is set
+        if ($create_ad_insights_report_request === null || (is_array($create_ad_insights_report_request) && count($create_ad_insights_report_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_ad_insights_report_request when calling createAdInsightsReport'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/insights/reports';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_ad_insights_report_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_ad_insights_report_request));
+            } else {
+                $httpBody = $create_ad_insights_report_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -4753,6 +5047,349 @@ class AdsApi
             $resourcePath = str_replace(
                 '{' . 'adId' . '}',
                 ObjectSerializer::toPathValue($ad_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAdInsightsReport
+     *
+     * Poll an async insights report run (Meta)
+     *
+     * @param  string $report_run_id report_run_id (required)
+     * @param  string $account_id Zernio SocialAccount id used to resolve the Meta token (must be the same connection that created the run). (required)
+     * @param  int|null $limit limit (optional, default to 25)
+     * @param  string|null $after after (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdInsightsReport'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetAdInsightsReport200Response|\Zernio\Model\InlineObject
+     */
+    public function getAdInsightsReport($report_run_id, $account_id, $limit = 25, $after = null, string $contentType = self::contentTypes['getAdInsightsReport'][0])
+    {
+        list($response) = $this->getAdInsightsReportWithHttpInfo($report_run_id, $account_id, $limit, $after, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getAdInsightsReportWithHttpInfo
+     *
+     * Poll an async insights report run (Meta)
+     *
+     * @param  string $report_run_id (required)
+     * @param  string $account_id Zernio SocialAccount id used to resolve the Meta token (must be the same connection that created the run). (required)
+     * @param  int|null $limit (optional, default to 25)
+     * @param  string|null $after (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdInsightsReport'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetAdInsightsReport200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAdInsightsReportWithHttpInfo($report_run_id, $account_id, $limit = 25, $after = null, string $contentType = self::contentTypes['getAdInsightsReport'][0])
+    {
+        $request = $this->getAdInsightsReportRequest($report_run_id, $account_id, $limit, $after, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetAdInsightsReport200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetAdInsightsReport200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetAdInsightsReport200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAdInsightsReportAsync
+     *
+     * Poll an async insights report run (Meta)
+     *
+     * @param  string $report_run_id (required)
+     * @param  string $account_id Zernio SocialAccount id used to resolve the Meta token (must be the same connection that created the run). (required)
+     * @param  int|null $limit (optional, default to 25)
+     * @param  string|null $after (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdInsightsReport'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAdInsightsReportAsync($report_run_id, $account_id, $limit = 25, $after = null, string $contentType = self::contentTypes['getAdInsightsReport'][0])
+    {
+        return $this->getAdInsightsReportAsyncWithHttpInfo($report_run_id, $account_id, $limit, $after, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAdInsightsReportAsyncWithHttpInfo
+     *
+     * Poll an async insights report run (Meta)
+     *
+     * @param  string $report_run_id (required)
+     * @param  string $account_id Zernio SocialAccount id used to resolve the Meta token (must be the same connection that created the run). (required)
+     * @param  int|null $limit (optional, default to 25)
+     * @param  string|null $after (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdInsightsReport'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAdInsightsReportAsyncWithHttpInfo($report_run_id, $account_id, $limit = 25, $after = null, string $contentType = self::contentTypes['getAdInsightsReport'][0])
+    {
+        $returnType = '\Zernio\Model\GetAdInsightsReport200Response';
+        $request = $this->getAdInsightsReportRequest($report_run_id, $account_id, $limit, $after, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAdInsightsReport'
+     *
+     * @param  string $report_run_id (required)
+     * @param  string $account_id Zernio SocialAccount id used to resolve the Meta token (must be the same connection that created the run). (required)
+     * @param  int|null $limit (optional, default to 25)
+     * @param  string|null $after (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdInsightsReport'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAdInsightsReportRequest($report_run_id, $account_id, $limit = 25, $after = null, string $contentType = self::contentTypes['getAdInsightsReport'][0])
+    {
+
+        // verify the required parameter 'report_run_id' is set
+        if ($report_run_id === null || (is_array($report_run_id) && count($report_run_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $report_run_id when calling getAdInsightsReport'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getAdInsightsReport'
+            );
+        }
+
+        if ($limit !== null && $limit > 500) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AdsApi.getAdInsightsReport, must be smaller than or equal to 500.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AdsApi.getAdInsightsReport, must be bigger than or equal to 1.');
+        }
+        
+
+
+        $resourcePath = '/v1/ads/insights/reports/{reportRunId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $after,
+            'after', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($report_run_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'reportRunId' . '}',
+                ObjectSerializer::toPathValue($report_run_id),
                 $resourcePath
             );
         }
@@ -11609,6 +12246,470 @@ class AdsApi
             $limit,
             'limit', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation queryAdInsights
+     *
+     * Flexible live insights query (Meta)
+     *
+     * @param  string $account_id Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. (required)
+     * @param  string $object_id Meta insights node: act_&lt;n&gt;, campaign id, ad set id or ad id. (required)
+     * @param  string|null $level Row granularity (optional)
+     * @param  string|null $fields Comma-separated Graph insights fields (e.g. spend,impressions,frequency,website_purchase_roas). Omitted &#x3D; Meta&#39;s default set. (optional)
+     * @param  string|null $breakdowns Comma-separated Graph breakdowns (e.g. age,gender or publisher_platform). (optional)
+     * @param  string|null $filtering JSON array of Meta filter objects: [{\&quot;field\&quot;, \&quot;operator\&quot;, \&quot;value\&quot;}]. Applied server-side by Meta. (optional)
+     * @param  string|null $date_preset Meta date_preset (e.g. last_7d, last_30d, this_month). Mutually exclusive with fromDate/toDate. (optional)
+     * @param  \DateTime|null $from_date Start of range (YYYY-MM-DD); requires toDate. (optional)
+     * @param  \DateTime|null $to_date End of range (YYYY-MM-DD); requires fromDate. (optional)
+     * @param  string|null $time_increment Days per row (1-90), monthly, or all_days. (optional)
+     * @param  int|null $limit Rows per page (optional, default to 25)
+     * @param  string|null $after Cursor from paging.after of the previous page. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['queryAdInsights'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\QueryAdInsights200Response|\Zernio\Model\InlineObject
+     */
+    public function queryAdInsights($account_id, $object_id, $level = null, $fields = null, $breakdowns = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
+    {
+        list($response) = $this->queryAdInsightsWithHttpInfo($account_id, $object_id, $level, $fields, $breakdowns, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation queryAdInsightsWithHttpInfo
+     *
+     * Flexible live insights query (Meta)
+     *
+     * @param  string $account_id Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. (required)
+     * @param  string $object_id Meta insights node: act_&lt;n&gt;, campaign id, ad set id or ad id. (required)
+     * @param  string|null $level Row granularity (optional)
+     * @param  string|null $fields Comma-separated Graph insights fields (e.g. spend,impressions,frequency,website_purchase_roas). Omitted &#x3D; Meta&#39;s default set. (optional)
+     * @param  string|null $breakdowns Comma-separated Graph breakdowns (e.g. age,gender or publisher_platform). (optional)
+     * @param  string|null $filtering JSON array of Meta filter objects: [{\&quot;field\&quot;, \&quot;operator\&quot;, \&quot;value\&quot;}]. Applied server-side by Meta. (optional)
+     * @param  string|null $date_preset Meta date_preset (e.g. last_7d, last_30d, this_month). Mutually exclusive with fromDate/toDate. (optional)
+     * @param  \DateTime|null $from_date Start of range (YYYY-MM-DD); requires toDate. (optional)
+     * @param  \DateTime|null $to_date End of range (YYYY-MM-DD); requires fromDate. (optional)
+     * @param  string|null $time_increment Days per row (1-90), monthly, or all_days. (optional)
+     * @param  int|null $limit Rows per page (optional, default to 25)
+     * @param  string|null $after Cursor from paging.after of the previous page. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['queryAdInsights'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\QueryAdInsights200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function queryAdInsightsWithHttpInfo($account_id, $object_id, $level = null, $fields = null, $breakdowns = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
+    {
+        $request = $this->queryAdInsightsRequest($account_id, $object_id, $level, $fields, $breakdowns, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\QueryAdInsights200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\QueryAdInsights200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\QueryAdInsights200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation queryAdInsightsAsync
+     *
+     * Flexible live insights query (Meta)
+     *
+     * @param  string $account_id Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. (required)
+     * @param  string $object_id Meta insights node: act_&lt;n&gt;, campaign id, ad set id or ad id. (required)
+     * @param  string|null $level Row granularity (optional)
+     * @param  string|null $fields Comma-separated Graph insights fields (e.g. spend,impressions,frequency,website_purchase_roas). Omitted &#x3D; Meta&#39;s default set. (optional)
+     * @param  string|null $breakdowns Comma-separated Graph breakdowns (e.g. age,gender or publisher_platform). (optional)
+     * @param  string|null $filtering JSON array of Meta filter objects: [{\&quot;field\&quot;, \&quot;operator\&quot;, \&quot;value\&quot;}]. Applied server-side by Meta. (optional)
+     * @param  string|null $date_preset Meta date_preset (e.g. last_7d, last_30d, this_month). Mutually exclusive with fromDate/toDate. (optional)
+     * @param  \DateTime|null $from_date Start of range (YYYY-MM-DD); requires toDate. (optional)
+     * @param  \DateTime|null $to_date End of range (YYYY-MM-DD); requires fromDate. (optional)
+     * @param  string|null $time_increment Days per row (1-90), monthly, or all_days. (optional)
+     * @param  int|null $limit Rows per page (optional, default to 25)
+     * @param  string|null $after Cursor from paging.after of the previous page. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['queryAdInsights'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function queryAdInsightsAsync($account_id, $object_id, $level = null, $fields = null, $breakdowns = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
+    {
+        return $this->queryAdInsightsAsyncWithHttpInfo($account_id, $object_id, $level, $fields, $breakdowns, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation queryAdInsightsAsyncWithHttpInfo
+     *
+     * Flexible live insights query (Meta)
+     *
+     * @param  string $account_id Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. (required)
+     * @param  string $object_id Meta insights node: act_&lt;n&gt;, campaign id, ad set id or ad id. (required)
+     * @param  string|null $level Row granularity (optional)
+     * @param  string|null $fields Comma-separated Graph insights fields (e.g. spend,impressions,frequency,website_purchase_roas). Omitted &#x3D; Meta&#39;s default set. (optional)
+     * @param  string|null $breakdowns Comma-separated Graph breakdowns (e.g. age,gender or publisher_platform). (optional)
+     * @param  string|null $filtering JSON array of Meta filter objects: [{\&quot;field\&quot;, \&quot;operator\&quot;, \&quot;value\&quot;}]. Applied server-side by Meta. (optional)
+     * @param  string|null $date_preset Meta date_preset (e.g. last_7d, last_30d, this_month). Mutually exclusive with fromDate/toDate. (optional)
+     * @param  \DateTime|null $from_date Start of range (YYYY-MM-DD); requires toDate. (optional)
+     * @param  \DateTime|null $to_date End of range (YYYY-MM-DD); requires fromDate. (optional)
+     * @param  string|null $time_increment Days per row (1-90), monthly, or all_days. (optional)
+     * @param  int|null $limit Rows per page (optional, default to 25)
+     * @param  string|null $after Cursor from paging.after of the previous page. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['queryAdInsights'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function queryAdInsightsAsyncWithHttpInfo($account_id, $object_id, $level = null, $fields = null, $breakdowns = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
+    {
+        $returnType = '\Zernio\Model\QueryAdInsights200Response';
+        $request = $this->queryAdInsightsRequest($account_id, $object_id, $level, $fields, $breakdowns, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'queryAdInsights'
+     *
+     * @param  string $account_id Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. (required)
+     * @param  string $object_id Meta insights node: act_&lt;n&gt;, campaign id, ad set id or ad id. (required)
+     * @param  string|null $level Row granularity (optional)
+     * @param  string|null $fields Comma-separated Graph insights fields (e.g. spend,impressions,frequency,website_purchase_roas). Omitted &#x3D; Meta&#39;s default set. (optional)
+     * @param  string|null $breakdowns Comma-separated Graph breakdowns (e.g. age,gender or publisher_platform). (optional)
+     * @param  string|null $filtering JSON array of Meta filter objects: [{\&quot;field\&quot;, \&quot;operator\&quot;, \&quot;value\&quot;}]. Applied server-side by Meta. (optional)
+     * @param  string|null $date_preset Meta date_preset (e.g. last_7d, last_30d, this_month). Mutually exclusive with fromDate/toDate. (optional)
+     * @param  \DateTime|null $from_date Start of range (YYYY-MM-DD); requires toDate. (optional)
+     * @param  \DateTime|null $to_date End of range (YYYY-MM-DD); requires fromDate. (optional)
+     * @param  string|null $time_increment Days per row (1-90), monthly, or all_days. (optional)
+     * @param  int|null $limit Rows per page (optional, default to 25)
+     * @param  string|null $after Cursor from paging.after of the previous page. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['queryAdInsights'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function queryAdInsightsRequest($account_id, $object_id, $level = null, $fields = null, $breakdowns = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling queryAdInsights'
+            );
+        }
+
+        // verify the required parameter 'object_id' is set
+        if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $object_id when calling queryAdInsights'
+            );
+        }
+
+
+
+
+
+
+
+
+
+        if ($limit !== null && $limit > 500) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AdsApi.queryAdInsights, must be smaller than or equal to 500.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AdsApi.queryAdInsights, must be bigger than or equal to 1.');
+        }
+        
+
+
+        $resourcePath = '/v1/ads/insights';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $object_id,
+            'objectId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $level,
+            'level', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $breakdowns,
+            'breakdowns', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $filtering,
+            'filtering', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $date_preset,
+            'datePreset', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from_date,
+            'fromDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to_date,
+            'toDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $time_increment,
+            'timeIncrement', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $after,
+            'after', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
