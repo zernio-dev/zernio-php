@@ -1486,14 +1486,14 @@ class CustomFieldsApi
      * Update custom field
      *
      * @param  string $field_id field_id (required)
-     * @param  \Zernio\Model\UpdateCustomFieldRequest|null $update_custom_field_request update_custom_field_request (optional)
+     * @param  \Zernio\Model\UpdateCustomFieldRequest $update_custom_field_request update_custom_field_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomField'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\UpdateCustomField200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
-    public function updateCustomField($field_id, $update_custom_field_request = null, string $contentType = self::contentTypes['updateCustomField'][0])
+    public function updateCustomField($field_id, $update_custom_field_request, string $contentType = self::contentTypes['updateCustomField'][0])
     {
         list($response) = $this->updateCustomFieldWithHttpInfo($field_id, $update_custom_field_request, $contentType);
         return $response;
@@ -1505,14 +1505,14 @@ class CustomFieldsApi
      * Update custom field
      *
      * @param  string $field_id (required)
-     * @param  \Zernio\Model\UpdateCustomFieldRequest|null $update_custom_field_request (optional)
+     * @param  \Zernio\Model\UpdateCustomFieldRequest $update_custom_field_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomField'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\UpdateCustomField200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCustomFieldWithHttpInfo($field_id, $update_custom_field_request = null, string $contentType = self::contentTypes['updateCustomField'][0])
+    public function updateCustomFieldWithHttpInfo($field_id, $update_custom_field_request, string $contentType = self::contentTypes['updateCustomField'][0])
     {
         $request = $this->updateCustomFieldRequest($field_id, $update_custom_field_request, $contentType);
 
@@ -1619,13 +1619,13 @@ class CustomFieldsApi
      * Update custom field
      *
      * @param  string $field_id (required)
-     * @param  \Zernio\Model\UpdateCustomFieldRequest|null $update_custom_field_request (optional)
+     * @param  \Zernio\Model\UpdateCustomFieldRequest $update_custom_field_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomFieldAsync($field_id, $update_custom_field_request = null, string $contentType = self::contentTypes['updateCustomField'][0])
+    public function updateCustomFieldAsync($field_id, $update_custom_field_request, string $contentType = self::contentTypes['updateCustomField'][0])
     {
         return $this->updateCustomFieldAsyncWithHttpInfo($field_id, $update_custom_field_request, $contentType)
             ->then(
@@ -1641,13 +1641,13 @@ class CustomFieldsApi
      * Update custom field
      *
      * @param  string $field_id (required)
-     * @param  \Zernio\Model\UpdateCustomFieldRequest|null $update_custom_field_request (optional)
+     * @param  \Zernio\Model\UpdateCustomFieldRequest $update_custom_field_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomFieldAsyncWithHttpInfo($field_id, $update_custom_field_request = null, string $contentType = self::contentTypes['updateCustomField'][0])
+    public function updateCustomFieldAsyncWithHttpInfo($field_id, $update_custom_field_request, string $contentType = self::contentTypes['updateCustomField'][0])
     {
         $returnType = '\Zernio\Model\UpdateCustomField200Response';
         $request = $this->updateCustomFieldRequest($field_id, $update_custom_field_request, $contentType);
@@ -1692,13 +1692,13 @@ class CustomFieldsApi
      * Create request for operation 'updateCustomField'
      *
      * @param  string $field_id (required)
-     * @param  \Zernio\Model\UpdateCustomFieldRequest|null $update_custom_field_request (optional)
+     * @param  \Zernio\Model\UpdateCustomFieldRequest $update_custom_field_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateCustomFieldRequest($field_id, $update_custom_field_request = null, string $contentType = self::contentTypes['updateCustomField'][0])
+    public function updateCustomFieldRequest($field_id, $update_custom_field_request, string $contentType = self::contentTypes['updateCustomField'][0])
     {
 
         // verify the required parameter 'field_id' is set
@@ -1708,6 +1708,12 @@ class CustomFieldsApi
             );
         }
 
+        // verify the required parameter 'update_custom_field_request' is set
+        if ($update_custom_field_request === null || (is_array($update_custom_field_request) && count($update_custom_field_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_custom_field_request when calling updateCustomField'
+            );
+        }
 
 
         $resourcePath = '/v1/custom-fields/{fieldId}';

@@ -360,7 +360,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **field_id** | **string**|  | |
-| **update_custom_field_request** | [**\Zernio\Model\UpdateCustomFieldRequest**](../Model/UpdateCustomFieldRequest.md)|  | [optional] |
+| **update_custom_field_request** | [**\Zernio\Model\UpdateCustomFieldRequest**](../Model/UpdateCustomFieldRequest.md)|  | |
 
 ### Return type
 
