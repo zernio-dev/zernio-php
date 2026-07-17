@@ -132,7 +132,13 @@ jobs:
         if: steps.changes.outputs.has_changes == 'true'
         id: version
         run: |
-          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          # Highest existing tag, NOT `git describe`: a no-commit run once tagged
+          # v0.0.298 onto the commit already tagged v0.0.297, and describe kept
+          # resolving the tie to v0.0.297 — so every later run recomputed
+          # "next = v0.0.298", found the tag taken, and silently reused the old
+          # release (Packagist was stuck from 2026-05-27 to 2026-07-17).
+          LATEST_TAG=$(git tag -l 'v*' | sort -V | tail -n1)
+          LATEST_TAG=${LATEST_TAG:-v0.0.0}
           NEW_VERSION=$(echo $LATEST_TAG | awk -F. '{printf "v%d.%d.%d", $1, $2, $3+1}' | sed 's/vv/v/')
           COMPOSER_VERSION=$(echo $NEW_VERSION | sed 's/v//')
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
@@ -145,6 +151,7 @@ jobs:
 
       - name: Commit and push
         if: steps.changes.outputs.has_changes == 'true'
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -157,8 +164,10 @@ jobs:
           # Bail out cleanly instead so an idempotent regen is a success, not red.
           if git diff --staged --quiet; then
             echo "No net changes after version bump; nothing to commit."
+            echo "committed=false" >> $GITHUB_OUTPUT
             exit 0
           fi
+          echo "committed=true" >> $GITHUB_OUTPUT
           git commit -m "chore: regenerate from OpenAPI spec
 
           - Auto-generated SDK updates
@@ -173,7 +182,9 @@ jobs:
           done
 
       - name: Create GitHub Release
-        if: steps.changes.outputs.has_changes == 'true'
+        # Gate on an actual commit: tagging a no-commit run is how the
+        # duplicate v0.0.297/v0.0.298 tag pair happened.
+        if: steps.changes.outputs.has_changes == 'true' && steps.commit.outputs.committed == 'true'
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ steps.version.outputs.new_version }}
