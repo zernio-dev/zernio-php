@@ -1,6 +1,6 @@
 <?php
 /**
- * WebhookPayloadMessageEdited
+ * InboxMessageEditHistoryEntry
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * WebhookPayloadMessageEdited Class Doc Comment
+ * InboxMessageEditHistoryEntry Class Doc Comment
  *
  * @category Class
- * @description Webhook payload for message.edited events. Fires when the sender edits a previously-sent message. Supported platforms: Instagram, Facebook Messenger, Telegram. The message object reflects the LATEST state; editHistory contains every prior version in order (oldest first), so the last entry is the version immediately before the current content.
+ * @description One prior version of an edited message.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonSerializable
+class InboxMessageEditHistoryEntry implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WebhookPayloadMessageEdited';
+    protected static $openAPIModelName = 'InboxMessageEditHistoryEntry';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,15 +59,9 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'event' => 'string',
-        'message' => '\Zernio\Model\InboxWebhookMessage',
-        'edit_history' => '\Zernio\Model\InboxMessageEditHistoryEntry[]',
-        'edit_count' => 'int',
-        'edited_at' => '\DateTime',
-        'conversation' => '\Zernio\Model\InboxWebhookConversation',
-        'account' => '\Zernio\Model\InboxWebhookAccount',
-        'timestamp' => '\DateTime'
+        'text' => 'string',
+        'attachments' => '\Zernio\Model\InboxMessageEditAttachment[]',
+        'edited_at' => '\DateTime'
     ];
 
     /**
@@ -78,15 +72,9 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'event' => null,
-        'message' => null,
-        'edit_history' => null,
-        'edit_count' => null,
-        'edited_at' => 'date-time',
-        'conversation' => null,
-        'account' => null,
-        'timestamp' => 'date-time'
+        'text' => null,
+        'attachments' => null,
+        'edited_at' => 'date-time'
     ];
 
     /**
@@ -95,15 +83,9 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'event' => false,
-        'message' => false,
-        'edit_history' => false,
-        'edit_count' => false,
-        'edited_at' => false,
-        'conversation' => false,
-        'account' => false,
-        'timestamp' => false
+        'text' => true,
+        'attachments' => false,
+        'edited_at' => false
     ];
 
     /**
@@ -192,15 +174,9 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'event' => 'event',
-        'message' => 'message',
-        'edit_history' => 'editHistory',
-        'edit_count' => 'editCount',
-        'edited_at' => 'editedAt',
-        'conversation' => 'conversation',
-        'account' => 'account',
-        'timestamp' => 'timestamp'
+        'text' => 'text',
+        'attachments' => 'attachments',
+        'edited_at' => 'editedAt'
     ];
 
     /**
@@ -209,15 +185,9 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'event' => 'setEvent',
-        'message' => 'setMessage',
-        'edit_history' => 'setEditHistory',
-        'edit_count' => 'setEditCount',
-        'edited_at' => 'setEditedAt',
-        'conversation' => 'setConversation',
-        'account' => 'setAccount',
-        'timestamp' => 'setTimestamp'
+        'text' => 'setText',
+        'attachments' => 'setAttachments',
+        'edited_at' => 'setEditedAt'
     ];
 
     /**
@@ -226,15 +196,9 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'event' => 'getEvent',
-        'message' => 'getMessage',
-        'edit_history' => 'getEditHistory',
-        'edit_count' => 'getEditCount',
-        'edited_at' => 'getEditedAt',
-        'conversation' => 'getConversation',
-        'account' => 'getAccount',
-        'timestamp' => 'getTimestamp'
+        'text' => 'getText',
+        'attachments' => 'getAttachments',
+        'edited_at' => 'getEditedAt'
     ];
 
     /**
@@ -278,19 +242,6 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
-    public const EVENT_MESSAGE_EDITED = 'message.edited';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEventAllowableValues()
-    {
-        return [
-            self::EVENT_MESSAGE_EDITED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -307,15 +258,9 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('event', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('edit_history', $data ?? [], null);
-        $this->setIfExists('edit_count', $data ?? [], null);
+        $this->setIfExists('text', $data ?? [], null);
+        $this->setIfExists('attachments', $data ?? [], null);
         $this->setIfExists('edited_at', $data ?? [], null);
-        $this->setIfExists('conversation', $data ?? [], null);
-        $this->setIfExists('account', $data ?? [], null);
-        $this->setIfExists('timestamp', $data ?? [], null);
     }
 
     /**
@@ -345,41 +290,14 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['text'] === null && !$this->isNullableSetToNull('text')) {
+            $invalidProperties[] = "'text' can't be null";
         }
-        if ($this->container['event'] === null) {
-            $invalidProperties[] = "'event' can't be null";
-        }
-        $allowedValues = $this->getEventAllowableValues();
-        if (!is_null($this->container['event']) && !in_array($this->container['event'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'event', must be one of '%s'",
-                $this->container['event'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['edit_history'] === null) {
-            $invalidProperties[] = "'edit_history' can't be null";
-        }
-        if ($this->container['edit_count'] === null) {
-            $invalidProperties[] = "'edit_count' can't be null";
+        if ($this->container['attachments'] === null) {
+            $invalidProperties[] = "'attachments' can't be null";
         }
         if ($this->container['edited_at'] === null) {
             $invalidProperties[] = "'edited_at' can't be null";
-        }
-        if ($this->container['conversation'] === null) {
-            $invalidProperties[] = "'conversation' can't be null";
-        }
-        if ($this->container['account'] === null) {
-            $invalidProperties[] = "'account' can't be null";
-        }
-        if ($this->container['timestamp'] === null) {
-            $invalidProperties[] = "'timestamp' can't be null";
         }
         return $invalidProperties;
     }
@@ -397,146 +315,62 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets id
+     * Gets text
      *
-     * @return string
+     * @return string|null
      */
-    public function getId()
+    public function getText()
     {
-        return $this->container['id'];
+        return $this->container['text'];
     }
 
     /**
-     * Sets id
+     * Sets text
      *
-     * @param string $id id
+     * @param string|null $text text
      *
      * @return self
      */
-    public function setId($id)
+    public function setText($text)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($text)) {
+            array_push($this->openAPINullablesSetToNull, 'text');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('text', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['id'] = $id;
+        $this->container['text'] = $text;
 
         return $this;
     }
 
     /**
-     * Gets event
+     * Gets attachments
      *
-     * @return string
+     * @return \Zernio\Model\InboxMessageEditAttachment[]
      */
-    public function getEvent()
+    public function getAttachments()
     {
-        return $this->container['event'];
+        return $this->container['attachments'];
     }
 
     /**
-     * Sets event
+     * Sets attachments
      *
-     * @param string $event event
+     * @param \Zernio\Model\InboxMessageEditAttachment[] $attachments attachments
      *
      * @return self
      */
-    public function setEvent($event)
+    public function setAttachments($attachments)
     {
-        if (is_null($event)) {
-            throw new \InvalidArgumentException('non-nullable event cannot be null');
+        if (is_null($attachments)) {
+            throw new \InvalidArgumentException('non-nullable attachments cannot be null');
         }
-        $allowedValues = $this->getEventAllowableValues();
-        if (!in_array($event, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'event', must be one of '%s'",
-                    $event,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['event'] = $event;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
-     *
-     * @return \Zernio\Model\InboxWebhookMessage
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param \Zernio\Model\InboxWebhookMessage $message message
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
-        }
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets edit_history
-     *
-     * @return \Zernio\Model\InboxMessageEditHistoryEntry[]
-     */
-    public function getEditHistory()
-    {
-        return $this->container['edit_history'];
-    }
-
-    /**
-     * Sets edit_history
-     *
-     * @param \Zernio\Model\InboxMessageEditHistoryEntry[] $edit_history Prior versions of the message, oldest first.
-     *
-     * @return self
-     */
-    public function setEditHistory($edit_history)
-    {
-        if (is_null($edit_history)) {
-            throw new \InvalidArgumentException('non-nullable edit_history cannot be null');
-        }
-        $this->container['edit_history'] = $edit_history;
-
-        return $this;
-    }
-
-    /**
-     * Gets edit_count
-     *
-     * @return int
-     */
-    public function getEditCount()
-    {
-        return $this->container['edit_count'];
-    }
-
-    /**
-     * Sets edit_count
-     *
-     * @param int $edit_count Total number of edits applied to this message.
-     *
-     * @return self
-     */
-    public function setEditCount($edit_count)
-    {
-        if (is_null($edit_count)) {
-            throw new \InvalidArgumentException('non-nullable edit_count cannot be null');
-        }
-        $this->container['edit_count'] = $edit_count;
+        $this->container['attachments'] = $attachments;
 
         return $this;
     }
@@ -554,7 +388,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets edited_at
      *
-     * @param \DateTime $edited_at When the most recent edit happened.
+     * @param \DateTime $edited_at edited_at
      *
      * @return self
      */
@@ -564,87 +398,6 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable edited_at cannot be null');
         }
         $this->container['edited_at'] = $edited_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets conversation
-     *
-     * @return \Zernio\Model\InboxWebhookConversation
-     */
-    public function getConversation()
-    {
-        return $this->container['conversation'];
-    }
-
-    /**
-     * Sets conversation
-     *
-     * @param \Zernio\Model\InboxWebhookConversation $conversation conversation
-     *
-     * @return self
-     */
-    public function setConversation($conversation)
-    {
-        if (is_null($conversation)) {
-            throw new \InvalidArgumentException('non-nullable conversation cannot be null');
-        }
-        $this->container['conversation'] = $conversation;
-
-        return $this;
-    }
-
-    /**
-     * Gets account
-     *
-     * @return \Zernio\Model\InboxWebhookAccount
-     */
-    public function getAccount()
-    {
-        return $this->container['account'];
-    }
-
-    /**
-     * Sets account
-     *
-     * @param \Zernio\Model\InboxWebhookAccount $account account
-     *
-     * @return self
-     */
-    public function setAccount($account)
-    {
-        if (is_null($account)) {
-            throw new \InvalidArgumentException('non-nullable account cannot be null');
-        }
-        $this->container['account'] = $account;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp
-     *
-     * @return \DateTime
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     *
-     * @param \DateTime $timestamp timestamp
-     *
-     * @return self
-     */
-    public function setTimestamp($timestamp)
-    {
-        if (is_null($timestamp)) {
-            throw new \InvalidArgumentException('non-nullable timestamp cannot be null');
-        }
-        $this->container['timestamp'] = $timestamp;
 
         return $this;
     }

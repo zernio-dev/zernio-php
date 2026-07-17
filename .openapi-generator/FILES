@@ -545,8 +545,6 @@ docs/Model/GetInboxConversationMessages200Response.md
 docs/Model/GetInboxConversationMessages200ResponseMessagesInner.md
 docs/Model/GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner.md
 docs/Model/GetInboxConversationMessages200ResponseMessagesInnerDeliveryError.md
-docs/Model/GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner.md
-docs/Model/GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerAttachmentsInner.md
 docs/Model/GetInboxConversationMessages200ResponseMessagesInnerReactionsInner.md
 docs/Model/GetInboxConversationMessages200ResponsePagination.md
 docs/Model/GetInboxHeatmap200Response.md
@@ -726,6 +724,8 @@ docs/Model/GoogleBusinessPlatformDataOffer.md
 docs/Model/HandleOAuthCallbackRequest.md
 docs/Model/HideInboxComment200Response.md
 docs/Model/HideInboxCommentRequest.md
+docs/Model/InboxMessageEditAttachment.md
+docs/Model/InboxMessageEditHistoryEntry.md
 docs/Model/InboxWebhookAccount.md
 docs/Model/InboxWebhookConversation.md
 docs/Model/InboxWebhookMessage.md
@@ -1407,7 +1407,6 @@ docs/Model/WebhookPayloadMessageDeleted.md
 docs/Model/WebhookPayloadMessageDeliveryStatus.md
 docs/Model/WebhookPayloadMessageDeliveryStatusError.md
 docs/Model/WebhookPayloadMessageEdited.md
-docs/Model/WebhookPayloadMessageEditedEditHistoryInner.md
 docs/Model/WebhookPayloadMessageMessage.md
 docs/Model/WebhookPayloadMessageMessageSender.md
 docs/Model/WebhookPayloadMessageMessageSenderInstagramProfile.md
@@ -2015,8 +2014,6 @@ lib/Model/GetInboxConversationMessages200Response.php
 lib/Model/GetInboxConversationMessages200ResponseMessagesInner.php
 lib/Model/GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner.php
 lib/Model/GetInboxConversationMessages200ResponseMessagesInnerDeliveryError.php
-lib/Model/GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner.php
-lib/Model/GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerAttachmentsInner.php
 lib/Model/GetInboxConversationMessages200ResponseMessagesInnerReactionsInner.php
 lib/Model/GetInboxConversationMessages200ResponsePagination.php
 lib/Model/GetInboxHeatmap200Response.php
@@ -2196,6 +2193,8 @@ lib/Model/GoogleBusinessPlatformDataOffer.php
 lib/Model/HandleOAuthCallbackRequest.php
 lib/Model/HideInboxComment200Response.php
 lib/Model/HideInboxCommentRequest.php
+lib/Model/InboxMessageEditAttachment.php
+lib/Model/InboxMessageEditHistoryEntry.php
 lib/Model/InboxWebhookAccount.php
 lib/Model/InboxWebhookConversation.php
 lib/Model/InboxWebhookMessage.php
@@ -2878,7 +2877,6 @@ lib/Model/WebhookPayloadMessageDeleted.php
 lib/Model/WebhookPayloadMessageDeliveryStatus.php
 lib/Model/WebhookPayloadMessageDeliveryStatusError.php
 lib/Model/WebhookPayloadMessageEdited.php
-lib/Model/WebhookPayloadMessageEditedEditHistoryInner.php
 lib/Model/WebhookPayloadMessageMessage.php
 lib/Model/WebhookPayloadMessageMessageSender.php
 lib/Model/WebhookPayloadMessageMessageSenderInstagramProfile.php
@@ -2941,11 +2939,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateAdInsightsReport202ResponseTest.php
-test/Model/CreateAdInsightsReportRequestFilteringInnerTest.php
-test/Model/CreateAdInsightsReportRequestTest.php
-test/Model/CreateAdInsightsReportRequestTimeIncrementTest.php
-test/Model/GetAdInsightsReport200ResponsePagingTest.php
-test/Model/GetAdInsightsReport200ResponseTest.php
-test/Model/QueryAdInsights200ResponsePagingTest.php
-test/Model/QueryAdInsights200ResponseTest.php
+test/Model/InboxMessageEditAttachmentTest.php
+test/Model/InboxMessageEditHistoryEntryTest.php

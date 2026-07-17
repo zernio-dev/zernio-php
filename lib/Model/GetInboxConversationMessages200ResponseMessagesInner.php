@@ -75,7 +75,7 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'is_edited' => 'bool',
         'edited_at' => '\DateTime',
         'edit_count' => 'int',
-        'edit_history' => '\Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner[]',
+        'edit_history' => '\Zernio\Model\InboxMessageEditHistoryEntry[]',
         'is_deleted' => 'bool',
         'deleted_at' => '\DateTime',
         'delivery_status' => 'string',
@@ -1078,7 +1078,7 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     /**
      * Gets edit_history
      *
-     * @return \Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner[]|null
+     * @return \Zernio\Model\InboxMessageEditHistoryEntry[]|null
      */
     public function getEditHistory()
     {
@@ -1088,7 +1088,7 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     /**
      * Sets edit_history
      *
-     * @param \Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner[]|null $edit_history Every prior version of the message, oldest first.
+     * @param \Zernio\Model\InboxMessageEditHistoryEntry[]|null $edit_history Every prior version of the message, oldest first.
      *
      * @return self
      */
