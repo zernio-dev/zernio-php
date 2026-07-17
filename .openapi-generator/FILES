@@ -2925,8 +2925,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AssignGoogleBusinessLocation200ResponseAccountTest.php
-test/Model/AssignGoogleBusinessLocation200ResponseTest.php
-test/Model/AssignGoogleBusinessLocationRequestTest.php
-test/Model/ListPhoneNumberCountries200ResponseCountriesInnerTypesInnerTest.php
-test/Model/SelectFacebookPage409ResponseTest.php
