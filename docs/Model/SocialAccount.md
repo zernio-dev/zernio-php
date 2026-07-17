@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **profile_picture** | **string** | URL to the account&#39;s profile picture on the platform. May be null if the platform does not provide one. | [optional]
 **profile_url** | **string** | Full profile URL for the connected account on its platform. | [optional]
 **is_active** | **bool** |  |
+**needs_reconnection** | **bool** | The platform definitively reported the stored OAuth token as dead. While true, GET /v1/connect/{platform}/ads returns a fresh authUrl (implicit force&#x3D;true) instead of alreadyConnected, so re-running the connect flow recovers the account. Cleared automatically when the account is re-authorized. | [optional]
 **followers_count** | **float** | Follower count (only included if user has analytics add-on) | [optional]
 **followers_last_updated** | **\DateTime** | Last time follower count was updated (only included if user has analytics add-on) | [optional]
 **parent_account_id** | **string** | Reference to the parent posting SocialAccount. Set for ads accounts that share or derive from a posting account&#39;s OAuth token. null for standalone ads (Google Ads) and all posting accounts. | [optional]

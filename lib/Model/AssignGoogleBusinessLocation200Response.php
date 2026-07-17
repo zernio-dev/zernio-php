@@ -1,6 +1,6 @@
 <?php
 /**
- * PurchasePhoneNumber202Response
+ * AssignGoogleBusinessLocation200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * PurchasePhoneNumber202Response Class Doc Comment
+ * AssignGoogleBusinessLocation200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class AssignGoogleBusinessLocation200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'purchasePhoneNumber_202_response';
+    protected static $openAPIModelName = 'assignGoogleBusinessLocation_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,8 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'country' => 'string',
-        'number_type' => 'string',
-        'kyc_url' => 'string'
+        'message' => 'string',
+        'account' => '\Zernio\Model\AssignGoogleBusinessLocation200ResponseAccount'
     ];
 
     /**
@@ -72,10 +70,8 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'country' => null,
-        'number_type' => null,
-        'kyc_url' => null
+        'message' => null,
+        'account' => null
     ];
 
     /**
@@ -84,10 +80,8 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-        'country' => false,
-        'number_type' => false,
-        'kyc_url' => false
+        'message' => false,
+        'account' => false
     ];
 
     /**
@@ -176,10 +170,8 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'country' => 'country',
-        'number_type' => 'numberType',
-        'kyc_url' => 'kycUrl'
+        'message' => 'message',
+        'account' => 'account'
     ];
 
     /**
@@ -188,10 +180,8 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'country' => 'setCountry',
-        'number_type' => 'setNumberType',
-        'kyc_url' => 'setKycUrl'
+        'message' => 'setMessage',
+        'account' => 'setAccount'
     ];
 
     /**
@@ -200,10 +190,8 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'country' => 'getCountry',
-        'number_type' => 'getNumberType',
-        'kyc_url' => 'getKycUrl'
+        'message' => 'getMessage',
+        'account' => 'getAccount'
     ];
 
     /**
@@ -247,19 +235,6 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
-    public const STATUS_KYC_REQUIRED = 'kyc_required';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_KYC_REQUIRED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -276,10 +251,8 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('country', $data ?? [], null);
-        $this->setIfExists('number_type', $data ?? [], null);
-        $this->setIfExists('kyc_url', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('account', $data ?? [], null);
     }
 
     /**
@@ -309,15 +282,6 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -334,119 +298,55 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets status
+     * Gets message
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getMessage()
     {
-        return $this->container['status'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets status
+     * Sets message
      *
-     * @param string|null $status status
+     * @param string|null $message message
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setMessage($message)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($message)) {
+            throw new \InvalidArgumentException('non-nullable message cannot be null');
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
+        $this->container['message'] = $message;
 
         return $this;
     }
 
     /**
-     * Gets country
+     * Gets account
      *
-     * @return string|null
+     * @return \Zernio\Model\AssignGoogleBusinessLocation200ResponseAccount|null
      */
-    public function getCountry()
+    public function getAccount()
     {
-        return $this->container['country'];
+        return $this->container['account'];
     }
 
     /**
-     * Sets country
+     * Sets account
      *
-     * @param string|null $country country
+     * @param \Zernio\Model\AssignGoogleBusinessLocation200ResponseAccount|null $account account
      *
      * @return self
      */
-    public function setCountry($country)
+    public function setAccount($account)
     {
-        if (is_null($country)) {
-            throw new \InvalidArgumentException('non-nullable country cannot be null');
+        if (is_null($account)) {
+            throw new \InvalidArgumentException('non-nullable account cannot be null');
         }
-        $this->container['country'] = $country;
-
-        return $this;
-    }
-
-    /**
-     * Gets number_type
-     *
-     * @return string|null
-     */
-    public function getNumberType()
-    {
-        return $this->container['number_type'];
-    }
-
-    /**
-     * Sets number_type
-     *
-     * @param string|null $number_type The type that will be ordered after KYC approval.
-     *
-     * @return self
-     */
-    public function setNumberType($number_type)
-    {
-        if (is_null($number_type)) {
-            throw new \InvalidArgumentException('non-nullable number_type cannot be null');
-        }
-        $this->container['number_type'] = $number_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets kyc_url
-     *
-     * @return string|null
-     */
-    public function getKycUrl()
-    {
-        return $this->container['kyc_url'];
-    }
-
-    /**
-     * Sets kyc_url
-     *
-     * @param string|null $kyc_url kyc_url
-     *
-     * @return self
-     */
-    public function setKycUrl($kyc_url)
-    {
-        if (is_null($kyc_url)) {
-            throw new \InvalidArgumentException('non-nullable kyc_url cannot be null');
-        }
-        $this->container['kyc_url'] = $kyc_url;
+        $this->container['account'] = $account;
 
         return $this;
     }

@@ -91,7 +91,7 @@ try {
 ## `checkPhoneNumberAvailability()`
 
 ```php
-checkPhoneNumberAvailability($country): \Zernio\Model\CheckPhoneNumberAvailability200Response
+checkPhoneNumberAvailability($country, $number_type): \Zernio\Model\CheckPhoneNumberAvailability200Response
 ```
 
 Check country availability
@@ -116,9 +116,10 @@ $apiInstance = new Zernio\Api\PhoneNumbersApi(
     $config
 );
 $country = 'country_example'; // string | ISO-2 country code.
+$number_type = 'number_type_example'; // string | Check a specific offered type (stock and address constraints are per type). Omitted = the country's default type.
 
 try {
-    $result = $apiInstance->checkPhoneNumberAvailability($country);
+    $result = $apiInstance->checkPhoneNumberAvailability($country, $number_type);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PhoneNumbersApi->checkPhoneNumberAvailability: ', $e->getMessage(), PHP_EOL;
@@ -130,6 +131,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **country** | **string**| ISO-2 country code. | |
+| **number_type** | **string**| Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. | [optional] |
 
 ### Return type
 
@@ -391,7 +393,7 @@ try {
 ## `getPhoneNumberKycForm()`
 
 ```php
-getPhoneNumberKycForm($country): \Zernio\Model\GetPhoneNumberKycForm200Response
+getPhoneNumberKycForm($country, $number_type): \Zernio\Model\GetPhoneNumberKycForm200Response
 ```
 
 Get KYC form spec
@@ -416,9 +418,10 @@ $apiInstance = new Zernio\Api\PhoneNumbersApi(
     $config
 );
 $country = 'country_example'; // string
+$number_type = 'number_type_example'; // string | Requirements and reuse eligibility are per (country, type). Omitted = the country's default type. Pass the same value on the POST.
 
 try {
-    $result = $apiInstance->getPhoneNumberKycForm($country);
+    $result = $apiInstance->getPhoneNumberKycForm($country, $number_type);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PhoneNumbersApi->getPhoneNumberKycForm: ', $e->getMessage(), PHP_EOL;
@@ -430,6 +433,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **country** | **string**|  | |
+| **number_type** | **string**| Requirements and reuse eligibility are per (country, type). Omitted &#x3D; the country&#39;s default type. Pass the same value on the POST. | [optional] |
 
 ### Return type
 

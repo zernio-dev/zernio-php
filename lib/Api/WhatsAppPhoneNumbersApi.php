@@ -174,6 +174,7 @@ class WhatsAppPhoneNumbersApi
      * Check country availability
      *
      * @param  string $country ISO-2 country code. (required)
+     * @param  string|null $number_type Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkWhatsAppNumberAvailability'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -181,9 +182,9 @@ class WhatsAppPhoneNumbersApi
      * @return \Zernio\Model\CheckPhoneNumberAvailability200Response|\Zernio\Model\InlineObject
      * @deprecated
      */
-    public function checkWhatsAppNumberAvailability($country, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
+    public function checkWhatsAppNumberAvailability($country, $number_type = null, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
     {
-        list($response) = $this->checkWhatsAppNumberAvailabilityWithHttpInfo($country, $contentType);
+        list($response) = $this->checkWhatsAppNumberAvailabilityWithHttpInfo($country, $number_type, $contentType);
         return $response;
     }
 
@@ -193,6 +194,7 @@ class WhatsAppPhoneNumbersApi
      * Check country availability
      *
      * @param  string $country ISO-2 country code. (required)
+     * @param  string|null $number_type Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkWhatsAppNumberAvailability'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -200,9 +202,9 @@ class WhatsAppPhoneNumbersApi
      * @return array of \Zernio\Model\CheckPhoneNumberAvailability200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
-    public function checkWhatsAppNumberAvailabilityWithHttpInfo($country, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
+    public function checkWhatsAppNumberAvailabilityWithHttpInfo($country, $number_type = null, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
     {
-        $request = $this->checkWhatsAppNumberAvailabilityRequest($country, $contentType);
+        $request = $this->checkWhatsAppNumberAvailabilityRequest($country, $number_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -293,15 +295,16 @@ class WhatsAppPhoneNumbersApi
      * Check country availability
      *
      * @param  string $country ISO-2 country code. (required)
+     * @param  string|null $number_type Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkWhatsAppNumberAvailability'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function checkWhatsAppNumberAvailabilityAsync($country, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
+    public function checkWhatsAppNumberAvailabilityAsync($country, $number_type = null, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
     {
-        return $this->checkWhatsAppNumberAvailabilityAsyncWithHttpInfo($country, $contentType)
+        return $this->checkWhatsAppNumberAvailabilityAsyncWithHttpInfo($country, $number_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -315,16 +318,17 @@ class WhatsAppPhoneNumbersApi
      * Check country availability
      *
      * @param  string $country ISO-2 country code. (required)
+     * @param  string|null $number_type Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkWhatsAppNumberAvailability'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function checkWhatsAppNumberAvailabilityAsyncWithHttpInfo($country, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
+    public function checkWhatsAppNumberAvailabilityAsyncWithHttpInfo($country, $number_type = null, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
     {
         $returnType = '\Zernio\Model\CheckPhoneNumberAvailability200Response';
-        $request = $this->checkWhatsAppNumberAvailabilityRequest($country, $contentType);
+        $request = $this->checkWhatsAppNumberAvailabilityRequest($country, $number_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -366,13 +370,14 @@ class WhatsAppPhoneNumbersApi
      * Create request for operation 'checkWhatsAppNumberAvailability'
      *
      * @param  string $country ISO-2 country code. (required)
+     * @param  string|null $number_type Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkWhatsAppNumberAvailability'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      * @deprecated
      */
-    public function checkWhatsAppNumberAvailabilityRequest($country, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
+    public function checkWhatsAppNumberAvailabilityRequest($country, $number_type = null, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
     {
 
         // verify the required parameter 'country' is set
@@ -381,6 +386,7 @@ class WhatsAppPhoneNumbersApi
                 'Missing the required parameter $country when calling checkWhatsAppNumberAvailability'
             );
         }
+
 
 
         $resourcePath = '/v1/whatsapp/phone-numbers/availability';
@@ -398,6 +404,15 @@ class WhatsAppPhoneNumbersApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $number_type,
+            'numberType', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
 
 

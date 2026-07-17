@@ -60,6 +60,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
     protected static $openAPITypes = [
         'profile_id' => 'string',
         'country' => 'string',
+        'number_type' => 'string',
         'connect_whatsapp' => 'bool',
         'wants_sms' => 'bool',
         'purchase_intent_id' => 'string',
@@ -76,6 +77,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
     protected static $openAPIFormats = [
         'profile_id' => null,
         'country' => null,
+        'number_type' => null,
         'connect_whatsapp' => null,
         'wants_sms' => null,
         'purchase_intent_id' => null,
@@ -90,6 +92,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
     protected static array $openAPINullables = [
         'profile_id' => false,
         'country' => false,
+        'number_type' => false,
         'connect_whatsapp' => false,
         'wants_sms' => false,
         'purchase_intent_id' => false,
@@ -184,6 +187,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
     protected static $attributeMap = [
         'profile_id' => 'profileId',
         'country' => 'country',
+        'number_type' => 'numberType',
         'connect_whatsapp' => 'connectWhatsapp',
         'wants_sms' => 'wantsSms',
         'purchase_intent_id' => 'purchaseIntentId',
@@ -198,6 +202,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
     protected static $setters = [
         'profile_id' => 'setProfileId',
         'country' => 'setCountry',
+        'number_type' => 'setNumberType',
         'connect_whatsapp' => 'setConnectWhatsapp',
         'wants_sms' => 'setWantsSms',
         'purchase_intent_id' => 'setPurchaseIntentId',
@@ -212,6 +217,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
     protected static $getters = [
         'profile_id' => 'getProfileId',
         'country' => 'getCountry',
+        'number_type' => 'getNumberType',
         'connect_whatsapp' => 'getConnectWhatsapp',
         'wants_sms' => 'getWantsSms',
         'purchase_intent_id' => 'getPurchaseIntentId',
@@ -259,6 +265,25 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
+    public const NUMBER_TYPE_LOCAL = 'local';
+    public const NUMBER_TYPE_MOBILE = 'mobile';
+    public const NUMBER_TYPE_NATIONAL = 'national';
+    public const NUMBER_TYPE_TOLL_FREE = 'toll_free';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getNumberTypeAllowableValues()
+    {
+        return [
+            self::NUMBER_TYPE_LOCAL,
+            self::NUMBER_TYPE_MOBILE,
+            self::NUMBER_TYPE_NATIONAL,
+            self::NUMBER_TYPE_TOLL_FREE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -277,6 +302,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
     {
         $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('country', $data ?? [], 'US');
+        $this->setIfExists('number_type', $data ?? [], null);
         $this->setIfExists('connect_whatsapp', $data ?? [], true);
         $this->setIfExists('wants_sms', $data ?? [], false);
         $this->setIfExists('purchase_intent_id', $data ?? [], null);
@@ -313,6 +339,15 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['profile_id'] === null) {
             $invalidProperties[] = "'profile_id' can't be null";
         }
+        $allowedValues = $this->getNumberTypeAllowableValues();
+        if (!is_null($this->container['number_type']) && !in_array($this->container['number_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'number_type', must be one of '%s'",
+                $this->container['number_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if (!is_null($this->container['purchase_intent_id']) && (mb_strlen($this->container['purchase_intent_id']) > 100)) {
             $invalidProperties[] = "invalid value for 'purchase_intent_id', the character length must be smaller than or equal to 100.";
         }
@@ -382,6 +417,43 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable country cannot be null');
         }
         $this->container['country'] = $country;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_type
+     *
+     * @return string|null
+     */
+    public function getNumberType()
+    {
+        return $this->container['number_type'];
+    }
+
+    /**
+     * Sets number_type
+     *
+     * @param string|null $number_type Which of the country's offered number types to order (see `types[]` on GET /v1/phone-numbers/countries). Omitted = the country's default type, which is always the WhatsApp-safe choice. Capabilities, price, and KYC requirements are per (country, type): toll_free can never connect WhatsApp (400 when combined with connectWhatsapp:true), and wantsSms:true requires an SMS-capable type.
+     *
+     * @return self
+     */
+    public function setNumberType($number_type)
+    {
+        if (is_null($number_type)) {
+            throw new \InvalidArgumentException('non-nullable number_type cannot be null');
+        }
+        $allowedValues = $this->getNumberTypeAllowableValues();
+        if (!in_array($number_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'number_type', must be one of '%s'",
+                    $number_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['number_type'] = $number_type;
 
         return $this;
     }

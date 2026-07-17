@@ -475,15 +475,16 @@ class PhoneNumbersApi
      * Check country availability
      *
      * @param  string $country ISO-2 country code. (required)
+     * @param  string|null $number_type Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkPhoneNumberAvailability'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\CheckPhoneNumberAvailability200Response|\Zernio\Model\InlineObject
      */
-    public function checkPhoneNumberAvailability($country, string $contentType = self::contentTypes['checkPhoneNumberAvailability'][0])
+    public function checkPhoneNumberAvailability($country, $number_type = null, string $contentType = self::contentTypes['checkPhoneNumberAvailability'][0])
     {
-        list($response) = $this->checkPhoneNumberAvailabilityWithHttpInfo($country, $contentType);
+        list($response) = $this->checkPhoneNumberAvailabilityWithHttpInfo($country, $number_type, $contentType);
         return $response;
     }
 
@@ -493,15 +494,16 @@ class PhoneNumbersApi
      * Check country availability
      *
      * @param  string $country ISO-2 country code. (required)
+     * @param  string|null $number_type Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkPhoneNumberAvailability'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\CheckPhoneNumberAvailability200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function checkPhoneNumberAvailabilityWithHttpInfo($country, string $contentType = self::contentTypes['checkPhoneNumberAvailability'][0])
+    public function checkPhoneNumberAvailabilityWithHttpInfo($country, $number_type = null, string $contentType = self::contentTypes['checkPhoneNumberAvailability'][0])
     {
-        $request = $this->checkPhoneNumberAvailabilityRequest($country, $contentType);
+        $request = $this->checkPhoneNumberAvailabilityRequest($country, $number_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -592,14 +594,15 @@ class PhoneNumbersApi
      * Check country availability
      *
      * @param  string $country ISO-2 country code. (required)
+     * @param  string|null $number_type Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkPhoneNumberAvailability'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function checkPhoneNumberAvailabilityAsync($country, string $contentType = self::contentTypes['checkPhoneNumberAvailability'][0])
+    public function checkPhoneNumberAvailabilityAsync($country, $number_type = null, string $contentType = self::contentTypes['checkPhoneNumberAvailability'][0])
     {
-        return $this->checkPhoneNumberAvailabilityAsyncWithHttpInfo($country, $contentType)
+        return $this->checkPhoneNumberAvailabilityAsyncWithHttpInfo($country, $number_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -613,15 +616,16 @@ class PhoneNumbersApi
      * Check country availability
      *
      * @param  string $country ISO-2 country code. (required)
+     * @param  string|null $number_type Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkPhoneNumberAvailability'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function checkPhoneNumberAvailabilityAsyncWithHttpInfo($country, string $contentType = self::contentTypes['checkPhoneNumberAvailability'][0])
+    public function checkPhoneNumberAvailabilityAsyncWithHttpInfo($country, $number_type = null, string $contentType = self::contentTypes['checkPhoneNumberAvailability'][0])
     {
         $returnType = '\Zernio\Model\CheckPhoneNumberAvailability200Response';
-        $request = $this->checkPhoneNumberAvailabilityRequest($country, $contentType);
+        $request = $this->checkPhoneNumberAvailabilityRequest($country, $number_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -663,12 +667,13 @@ class PhoneNumbersApi
      * Create request for operation 'checkPhoneNumberAvailability'
      *
      * @param  string $country ISO-2 country code. (required)
+     * @param  string|null $number_type Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkPhoneNumberAvailability'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function checkPhoneNumberAvailabilityRequest($country, string $contentType = self::contentTypes['checkPhoneNumberAvailability'][0])
+    public function checkPhoneNumberAvailabilityRequest($country, $number_type = null, string $contentType = self::contentTypes['checkPhoneNumberAvailability'][0])
     {
 
         // verify the required parameter 'country' is set
@@ -677,6 +682,7 @@ class PhoneNumbersApi
                 'Missing the required parameter $country when calling checkPhoneNumberAvailability'
             );
         }
+
 
 
         $resourcePath = '/v1/phone-numbers/availability';
@@ -694,6 +700,15 @@ class PhoneNumbersApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $number_type,
+            'numberType', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
 
 
@@ -1917,15 +1932,16 @@ class PhoneNumbersApi
      * Get KYC form spec
      *
      * @param  string $country country (required)
+     * @param  string|null $number_type Requirements and reuse eligibility are per (country, type). Omitted &#x3D; the country&#39;s default type. Pass the same value on the POST. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberKycForm'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetPhoneNumberKycForm200Response|\Zernio\Model\InlineObject
      */
-    public function getPhoneNumberKycForm($country, string $contentType = self::contentTypes['getPhoneNumberKycForm'][0])
+    public function getPhoneNumberKycForm($country, $number_type = null, string $contentType = self::contentTypes['getPhoneNumberKycForm'][0])
     {
-        list($response) = $this->getPhoneNumberKycFormWithHttpInfo($country, $contentType);
+        list($response) = $this->getPhoneNumberKycFormWithHttpInfo($country, $number_type, $contentType);
         return $response;
     }
 
@@ -1935,15 +1951,16 @@ class PhoneNumbersApi
      * Get KYC form spec
      *
      * @param  string $country (required)
+     * @param  string|null $number_type Requirements and reuse eligibility are per (country, type). Omitted &#x3D; the country&#39;s default type. Pass the same value on the POST. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberKycForm'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetPhoneNumberKycForm200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPhoneNumberKycFormWithHttpInfo($country, string $contentType = self::contentTypes['getPhoneNumberKycForm'][0])
+    public function getPhoneNumberKycFormWithHttpInfo($country, $number_type = null, string $contentType = self::contentTypes['getPhoneNumberKycForm'][0])
     {
-        $request = $this->getPhoneNumberKycFormRequest($country, $contentType);
+        $request = $this->getPhoneNumberKycFormRequest($country, $number_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2034,14 +2051,15 @@ class PhoneNumbersApi
      * Get KYC form spec
      *
      * @param  string $country (required)
+     * @param  string|null $number_type Requirements and reuse eligibility are per (country, type). Omitted &#x3D; the country&#39;s default type. Pass the same value on the POST. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberKycForm'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPhoneNumberKycFormAsync($country, string $contentType = self::contentTypes['getPhoneNumberKycForm'][0])
+    public function getPhoneNumberKycFormAsync($country, $number_type = null, string $contentType = self::contentTypes['getPhoneNumberKycForm'][0])
     {
-        return $this->getPhoneNumberKycFormAsyncWithHttpInfo($country, $contentType)
+        return $this->getPhoneNumberKycFormAsyncWithHttpInfo($country, $number_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2055,15 +2073,16 @@ class PhoneNumbersApi
      * Get KYC form spec
      *
      * @param  string $country (required)
+     * @param  string|null $number_type Requirements and reuse eligibility are per (country, type). Omitted &#x3D; the country&#39;s default type. Pass the same value on the POST. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberKycForm'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPhoneNumberKycFormAsyncWithHttpInfo($country, string $contentType = self::contentTypes['getPhoneNumberKycForm'][0])
+    public function getPhoneNumberKycFormAsyncWithHttpInfo($country, $number_type = null, string $contentType = self::contentTypes['getPhoneNumberKycForm'][0])
     {
         $returnType = '\Zernio\Model\GetPhoneNumberKycForm200Response';
-        $request = $this->getPhoneNumberKycFormRequest($country, $contentType);
+        $request = $this->getPhoneNumberKycFormRequest($country, $number_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2105,12 +2124,13 @@ class PhoneNumbersApi
      * Create request for operation 'getPhoneNumberKycForm'
      *
      * @param  string $country (required)
+     * @param  string|null $number_type Requirements and reuse eligibility are per (country, type). Omitted &#x3D; the country&#39;s default type. Pass the same value on the POST. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberKycForm'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPhoneNumberKycFormRequest($country, string $contentType = self::contentTypes['getPhoneNumberKycForm'][0])
+    public function getPhoneNumberKycFormRequest($country, $number_type = null, string $contentType = self::contentTypes['getPhoneNumberKycForm'][0])
     {
 
         // verify the required parameter 'country' is set
@@ -2119,6 +2139,7 @@ class PhoneNumbersApi
                 'Missing the required parameter $country when calling getPhoneNumberKycForm'
             );
         }
+
 
 
         $resourcePath = '/v1/phone-numbers/kyc';
@@ -2136,6 +2157,15 @@ class PhoneNumbersApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $number_type,
+            'numberType', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
 
 

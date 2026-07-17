@@ -6,6 +6,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**assignGoogleBusinessLocation()**](ConnectApi.md#assignGoogleBusinessLocation) | **POST** /v1/accounts/{accountId}/gmb-locations/assign | Assign GBP location to another profile |
 | [**completeTelegramConnect()**](ConnectApi.md#completeTelegramConnect) | **PATCH** /v1/connect/telegram | Check Telegram status |
 | [**completeWhatsAppPhoneSelection()**](ConnectApi.md#completeWhatsAppPhoneSelection) | **POST** /v1/connect/whatsapp/select-phone-number | Complete number selection |
 | [**configureTikTokAdsBrandIdentity()**](ConnectApi.md#configureTikTokAdsBrandIdentity) | **PATCH** /v1/connect/tiktok-ads | Set TikTok brand identity |
@@ -46,6 +47,68 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**updateYoutubeDefaultPlaylist()**](ConnectApi.md#updateYoutubeDefaultPlaylist) | **PUT** /v1/accounts/{accountId}/youtube-playlists | Set default YouTube playlist |
 | [**voteRedditThing()**](ConnectApi.md#voteRedditThing) | **POST** /v1/accounts/{accountId}/reddit-vote | Vote on a Reddit post or comment |
 
+
+## `assignGoogleBusinessLocation()`
+
+```php
+assignGoogleBusinessLocation($account_id, $assign_google_business_location_request): \Zernio\Model\AssignGoogleBusinessLocation200Response
+```
+
+Assign GBP location to another profile
+
+Connect a Google Business location onto a DIFFERENT profile by reusing the OAuth grant from an already-connected GBP account — no browser, no re-authorization. Built for agencies whose single Google account has manager access to many client locations and who run one profile per client: connect one location the normal way (browser OAuth), then bulk-assign the rest onto each client's profile via this endpoint. The path `accountId` is a SOURCE connected GBP account (the token holder); the body `profileId` is the TARGET profile. Returns 409 if the target profile already has a Google Business connection (switch its location with PUT gmb-locations instead).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | A source connected GBP account whose OAuth grant is reused.
+$assign_google_business_location_request = {"profileId":"507f1f77bcf86cd799439011","selectedLocationId":"locations/12345678901234567890","googleAccountId":"accounts/123456789"}; // \Zernio\Model\AssignGoogleBusinessLocationRequest
+
+try {
+    $result = $apiInstance->assignGoogleBusinessLocation($account_id, $assign_google_business_location_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->assignGoogleBusinessLocation: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| A source connected GBP account whose OAuth grant is reused. | |
+| **assign_google_business_location_request** | [**\Zernio\Model\AssignGoogleBusinessLocationRequest**](../Model/AssignGoogleBusinessLocationRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\AssignGoogleBusinessLocation200Response**](../Model/AssignGoogleBusinessLocation200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `completeTelegramConnect()`
 

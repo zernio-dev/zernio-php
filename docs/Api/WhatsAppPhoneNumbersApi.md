@@ -26,7 +26,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `checkWhatsAppNumberAvailability()`
 
 ```php
-checkWhatsAppNumberAvailability($country): \Zernio\Model\CheckPhoneNumberAvailability200Response
+checkWhatsAppNumberAvailability($country, $number_type): \Zernio\Model\CheckPhoneNumberAvailability200Response
 ```
 
 Check country availability
@@ -51,9 +51,10 @@ $apiInstance = new Zernio\Api\WhatsAppPhoneNumbersApi(
     $config
 );
 $country = 'country_example'; // string | ISO-2 country code.
+$number_type = 'number_type_example'; // string | Check a specific offered type (stock and address constraints are per type). Omitted = the country's default type.
 
 try {
-    $result = $apiInstance->checkWhatsAppNumberAvailability($country);
+    $result = $apiInstance->checkWhatsAppNumberAvailability($country, $number_type);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WhatsAppPhoneNumbersApi->checkWhatsAppNumberAvailability: ', $e->getMessage(), PHP_EOL;
@@ -65,6 +66,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **country** | **string**| ISO-2 country code. | |
+| **number_type** | **string**| Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. | [optional] |
 
 ### Return type
 

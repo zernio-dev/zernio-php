@@ -1,6 +1,6 @@
 <?php
 /**
- * PurchasePhoneNumber202Response
+ * AssignGoogleBusinessLocationRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * PurchasePhoneNumber202Response Class Doc Comment
+ * AssignGoogleBusinessLocationRequest Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class AssignGoogleBusinessLocationRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'purchasePhoneNumber_202_response';
+    protected static $openAPIModelName = 'assignGoogleBusinessLocation_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,9 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'country' => 'string',
-        'number_type' => 'string',
-        'kyc_url' => 'string'
+        'profile_id' => 'string',
+        'selected_location_id' => 'string',
+        'google_account_id' => 'string'
     ];
 
     /**
@@ -72,10 +71,9 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'country' => null,
-        'number_type' => null,
-        'kyc_url' => null
+        'profile_id' => null,
+        'selected_location_id' => null,
+        'google_account_id' => null
     ];
 
     /**
@@ -84,10 +82,9 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-        'country' => false,
-        'number_type' => false,
-        'kyc_url' => false
+        'profile_id' => false,
+        'selected_location_id' => false,
+        'google_account_id' => false
     ];
 
     /**
@@ -176,10 +173,9 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'country' => 'country',
-        'number_type' => 'numberType',
-        'kyc_url' => 'kycUrl'
+        'profile_id' => 'profileId',
+        'selected_location_id' => 'selectedLocationId',
+        'google_account_id' => 'googleAccountId'
     ];
 
     /**
@@ -188,10 +184,9 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'country' => 'setCountry',
-        'number_type' => 'setNumberType',
-        'kyc_url' => 'setKycUrl'
+        'profile_id' => 'setProfileId',
+        'selected_location_id' => 'setSelectedLocationId',
+        'google_account_id' => 'setGoogleAccountId'
     ];
 
     /**
@@ -200,10 +195,9 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'country' => 'getCountry',
-        'number_type' => 'getNumberType',
-        'kyc_url' => 'getKycUrl'
+        'profile_id' => 'getProfileId',
+        'selected_location_id' => 'getSelectedLocationId',
+        'google_account_id' => 'getGoogleAccountId'
     ];
 
     /**
@@ -247,19 +241,6 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
-    public const STATUS_KYC_REQUIRED = 'kyc_required';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_KYC_REQUIRED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -276,10 +257,9 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('country', $data ?? [], null);
-        $this->setIfExists('number_type', $data ?? [], null);
-        $this->setIfExists('kyc_url', $data ?? [], null);
+        $this->setIfExists('profile_id', $data ?? [], null);
+        $this->setIfExists('selected_location_id', $data ?? [], null);
+        $this->setIfExists('google_account_id', $data ?? [], null);
     }
 
     /**
@@ -309,15 +289,12 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['profile_id'] === null) {
+            $invalidProperties[] = "'profile_id' can't be null";
         }
-
+        if ($this->container['selected_location_id'] === null) {
+            $invalidProperties[] = "'selected_location_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -334,119 +311,82 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets status
+     * Gets profile_id
      *
-     * @return string|null
+     * @return string
      */
-    public function getStatus()
+    public function getProfileId()
     {
-        return $this->container['status'];
+        return $this->container['profile_id'];
     }
 
     /**
-     * Sets status
+     * Sets profile_id
      *
-     * @param string|null $status status
+     * @param string $profile_id Target profile to connect the location onto.
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setProfileId($profile_id)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($profile_id)) {
+            throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
+        $this->container['profile_id'] = $profile_id;
 
         return $this;
     }
 
     /**
-     * Gets country
+     * Gets selected_location_id
      *
-     * @return string|null
+     * @return string
      */
-    public function getCountry()
+    public function getSelectedLocationId()
     {
-        return $this->container['country'];
+        return $this->container['selected_location_id'];
     }
 
     /**
-     * Sets country
+     * Sets selected_location_id
      *
-     * @param string|null $country country
+     * @param string $selected_location_id The Google Business location ID to assign (e.g. \"locations/123\").
      *
      * @return self
      */
-    public function setCountry($country)
+    public function setSelectedLocationId($selected_location_id)
     {
-        if (is_null($country)) {
-            throw new \InvalidArgumentException('non-nullable country cannot be null');
+        if (is_null($selected_location_id)) {
+            throw new \InvalidArgumentException('non-nullable selected_location_id cannot be null');
         }
-        $this->container['country'] = $country;
+        $this->container['selected_location_id'] = $selected_location_id;
 
         return $this;
     }
 
     /**
-     * Gets number_type
+     * Gets google_account_id
      *
      * @return string|null
      */
-    public function getNumberType()
+    public function getGoogleAccountId()
     {
-        return $this->container['number_type'];
+        return $this->container['google_account_id'];
     }
 
     /**
-     * Sets number_type
+     * Sets google_account_id
      *
-     * @param string|null $number_type The type that will be ordered after KYC approval.
+     * @param string|null $google_account_id Optional but recommended. The Google Business Account resource name (\"accounts/123\") that owns the location (from GET gmb-locations). When provided the location is resolved directly instead of by enumerating the account, required for accounts with many locations.
      *
      * @return self
      */
-    public function setNumberType($number_type)
+    public function setGoogleAccountId($google_account_id)
     {
-        if (is_null($number_type)) {
-            throw new \InvalidArgumentException('non-nullable number_type cannot be null');
+        if (is_null($google_account_id)) {
+            throw new \InvalidArgumentException('non-nullable google_account_id cannot be null');
         }
-        $this->container['number_type'] = $number_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets kyc_url
-     *
-     * @return string|null
-     */
-    public function getKycUrl()
-    {
-        return $this->container['kyc_url'];
-    }
-
-    /**
-     * Sets kyc_url
-     *
-     * @param string|null $kyc_url kyc_url
-     *
-     * @return self
-     */
-    public function setKycUrl($kyc_url)
-    {
-        if (is_null($kyc_url)) {
-            throw new \InvalidArgumentException('non-nullable kyc_url cannot be null');
-        }
-        $this->container['kyc_url'] = $kyc_url;
+        $this->container['google_account_id'] = $google_account_id;
 
         return $this;
     }

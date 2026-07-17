@@ -1,6 +1,6 @@
 <?php
 /**
- * ListPhoneNumberCountries200ResponseCountriesInner
+ * ListPhoneNumberCountries200ResponseCountriesInnerTypesInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ListPhoneNumberCountries200ResponseCountriesInner Class Doc Comment
+ * ListPhoneNumberCountries200ResponseCountriesInnerTypesInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListPhoneNumberCountries200ResponseCountriesInnerTypesInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
       *
       * @var string
       */
-    protected static $openAPIModelName = 'listPhoneNumberCountries_200_response_countries_inner';
+    protected static $openAPIModelName = 'listPhoneNumberCountries_200_response_countries_inner_types_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,16 +58,14 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'string',
+        'number_type' => 'string',
         'tier' => 'int',
-        'monthly_cents' => 'int',
         'needs_kyc' => 'bool',
-        'calls_available' => 'bool',
+        'monthly_cents' => 'int',
         'whatsapp_available' => 'bool',
         'sms_available' => 'bool',
-        'outbound_calling_available' => 'bool',
-        'in_stock' => 'bool',
-        'types' => '\Zernio\Model\ListPhoneNumberCountries200ResponseCountriesInnerTypesInner[]'
+        'calls_available' => 'bool',
+        'in_stock' => 'bool'
     ];
 
     /**
@@ -78,16 +76,14 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
+        'number_type' => null,
         'tier' => null,
-        'monthly_cents' => null,
         'needs_kyc' => null,
-        'calls_available' => null,
+        'monthly_cents' => null,
         'whatsapp_available' => null,
         'sms_available' => null,
-        'outbound_calling_available' => null,
-        'in_stock' => null,
-        'types' => null
+        'calls_available' => null,
+        'in_stock' => null
     ];
 
     /**
@@ -96,16 +92,14 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
+        'number_type' => false,
         'tier' => false,
-        'monthly_cents' => false,
         'needs_kyc' => false,
-        'calls_available' => false,
+        'monthly_cents' => false,
         'whatsapp_available' => false,
         'sms_available' => false,
-        'outbound_calling_available' => false,
-        'in_stock' => false,
-        'types' => false
+        'calls_available' => false,
+        'in_stock' => false
     ];
 
     /**
@@ -194,16 +188,14 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
+        'number_type' => 'numberType',
         'tier' => 'tier',
-        'monthly_cents' => 'monthlyCents',
         'needs_kyc' => 'needsKyc',
-        'calls_available' => 'callsAvailable',
+        'monthly_cents' => 'monthlyCents',
         'whatsapp_available' => 'whatsappAvailable',
         'sms_available' => 'smsAvailable',
-        'outbound_calling_available' => 'outboundCallingAvailable',
-        'in_stock' => 'inStock',
-        'types' => 'types'
+        'calls_available' => 'callsAvailable',
+        'in_stock' => 'inStock'
     ];
 
     /**
@@ -212,16 +204,14 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
+        'number_type' => 'setNumberType',
         'tier' => 'setTier',
-        'monthly_cents' => 'setMonthlyCents',
         'needs_kyc' => 'setNeedsKyc',
-        'calls_available' => 'setCallsAvailable',
+        'monthly_cents' => 'setMonthlyCents',
         'whatsapp_available' => 'setWhatsappAvailable',
         'sms_available' => 'setSmsAvailable',
-        'outbound_calling_available' => 'setOutboundCallingAvailable',
-        'in_stock' => 'setInStock',
-        'types' => 'setTypes'
+        'calls_available' => 'setCallsAvailable',
+        'in_stock' => 'setInStock'
     ];
 
     /**
@@ -230,16 +220,14 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
+        'number_type' => 'getNumberType',
         'tier' => 'getTier',
-        'monthly_cents' => 'getMonthlyCents',
         'needs_kyc' => 'getNeedsKyc',
-        'calls_available' => 'getCallsAvailable',
+        'monthly_cents' => 'getMonthlyCents',
         'whatsapp_available' => 'getWhatsappAvailable',
         'sms_available' => 'getSmsAvailable',
-        'outbound_calling_available' => 'getOutboundCallingAvailable',
-        'in_stock' => 'getInStock',
-        'types' => 'getTypes'
+        'calls_available' => 'getCallsAvailable',
+        'in_stock' => 'getInStock'
     ];
 
     /**
@@ -283,10 +271,29 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
         return self::$openAPIModelName;
     }
 
+    public const NUMBER_TYPE_LOCAL = 'local';
+    public const NUMBER_TYPE_MOBILE = 'mobile';
+    public const NUMBER_TYPE_NATIONAL = 'national';
+    public const NUMBER_TYPE_TOLL_FREE = 'toll_free';
     public const TIER_NUMBER_1 = 1;
     public const TIER_NUMBER_2 = 2;
     public const TIER_NUMBER_3 = 3;
     public const TIER_NUMBER_4 = 4;
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getNumberTypeAllowableValues()
+    {
+        return [
+            self::NUMBER_TYPE_LOCAL,
+            self::NUMBER_TYPE_MOBILE,
+            self::NUMBER_TYPE_NATIONAL,
+            self::NUMBER_TYPE_TOLL_FREE,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -318,16 +325,14 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('number_type', $data ?? [], null);
         $this->setIfExists('tier', $data ?? [], null);
-        $this->setIfExists('monthly_cents', $data ?? [], null);
         $this->setIfExists('needs_kyc', $data ?? [], null);
-        $this->setIfExists('calls_available', $data ?? [], null);
+        $this->setIfExists('monthly_cents', $data ?? [], null);
         $this->setIfExists('whatsapp_available', $data ?? [], null);
         $this->setIfExists('sms_available', $data ?? [], null);
-        $this->setIfExists('outbound_calling_available', $data ?? [], null);
+        $this->setIfExists('calls_available', $data ?? [], null);
         $this->setIfExists('in_stock', $data ?? [], null);
-        $this->setIfExists('types', $data ?? [], null);
     }
 
     /**
@@ -357,6 +362,15 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getNumberTypeAllowableValues();
+        if (!is_null($this->container['number_type']) && !in_array($this->container['number_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'number_type', must be one of '%s'",
+                $this->container['number_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         $allowedValues = $this->getTierAllowableValues();
         if (!is_null($this->container['tier']) && !in_array($this->container['tier'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -382,28 +396,38 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
 
 
     /**
-     * Gets code
+     * Gets number_type
      *
      * @return string|null
      */
-    public function getCode()
+    public function getNumberType()
     {
-        return $this->container['code'];
+        return $this->container['number_type'];
     }
 
     /**
-     * Sets code
+     * Sets number_type
      *
-     * @param string|null $code ISO 3166-1 alpha-2
+     * @param string|null $number_type number_type
      *
      * @return self
      */
-    public function setCode($code)
+    public function setNumberType($number_type)
     {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
+        if (is_null($number_type)) {
+            throw new \InvalidArgumentException('non-nullable number_type cannot be null');
         }
-        $this->container['code'] = $code;
+        $allowedValues = $this->getNumberTypeAllowableValues();
+        if (!in_array($number_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'number_type', must be one of '%s'",
+                    $number_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['number_type'] = $number_type;
 
         return $this;
     }
@@ -446,33 +470,6 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
     }
 
     /**
-     * Gets monthly_cents
-     *
-     * @return int|null
-     */
-    public function getMonthlyCents()
-    {
-        return $this->container['monthly_cents'];
-    }
-
-    /**
-     * Sets monthly_cents
-     *
-     * @param int|null $monthly_cents monthly_cents
-     *
-     * @return self
-     */
-    public function setMonthlyCents($monthly_cents)
-    {
-        if (is_null($monthly_cents)) {
-            throw new \InvalidArgumentException('non-nullable monthly_cents cannot be null');
-        }
-        $this->container['monthly_cents'] = $monthly_cents;
-
-        return $this;
-    }
-
-    /**
      * Gets needs_kyc
      *
      * @return bool|null
@@ -500,28 +497,28 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
     }
 
     /**
-     * Gets calls_available
+     * Gets monthly_cents
      *
-     * @return bool|null
+     * @return int|null
      */
-    public function getCallsAvailable()
+    public function getMonthlyCents()
     {
-        return $this->container['calls_available'];
+        return $this->container['monthly_cents'];
     }
 
     /**
-     * Sets calls_available
+     * Sets monthly_cents
      *
-     * @param bool|null $calls_available Regular phone (PSTN) calling on the number, inbound + outbound. Available on every offerable country.
+     * @param int|null $monthly_cents monthly_cents
      *
      * @return self
      */
-    public function setCallsAvailable($calls_available)
+    public function setMonthlyCents($monthly_cents)
     {
-        if (is_null($calls_available)) {
-            throw new \InvalidArgumentException('non-nullable calls_available cannot be null');
+        if (is_null($monthly_cents)) {
+            throw new \InvalidArgumentException('non-nullable monthly_cents cannot be null');
         }
-        $this->container['calls_available'] = $calls_available;
+        $this->container['monthly_cents'] = $monthly_cents;
 
         return $this;
     }
@@ -539,7 +536,7 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
     /**
      * Sets whatsapp_available
      *
-     * @param bool|null $whatsapp_available WhatsApp can be enabled on numbers from this country.
+     * @param bool|null $whatsapp_available Always false for toll_free (WhatsApp does not reliably register toll-free numbers).
      *
      * @return self
      */
@@ -566,7 +563,7 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
     /**
      * Sets sms_available
      *
-     * @param bool|null $sms_available Whether this country's number type can do SMS. Use it to filter the picker when the buyer wants SMS (pair with `wantsSms` on purchase).
+     * @param bool|null $sms_available sms_available
      *
      * @return self
      */
@@ -581,28 +578,28 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
     }
 
     /**
-     * Gets outbound_calling_available
+     * Gets calls_available
      *
      * @return bool|null
      */
-    public function getOutboundCallingAvailable()
+    public function getCallsAvailable()
     {
-        return $this->container['outbound_calling_available'];
+        return $this->container['calls_available'];
     }
 
     /**
-     * Sets outbound_calling_available
+     * Sets calls_available
      *
-     * @param bool|null $outbound_calling_available WhatsApp Business Calling (BIC) outbound availability, a Meta feature blocked in some countries. NOT the PSTN Calls feature (`callsAvailable`).
+     * @param bool|null $calls_available calls_available
      *
      * @return self
      */
-    public function setOutboundCallingAvailable($outbound_calling_available)
+    public function setCallsAvailable($calls_available)
     {
-        if (is_null($outbound_calling_available)) {
-            throw new \InvalidArgumentException('non-nullable outbound_calling_available cannot be null');
+        if (is_null($calls_available)) {
+            throw new \InvalidArgumentException('non-nullable calls_available cannot be null');
         }
-        $this->container['outbound_calling_available'] = $outbound_calling_available;
+        $this->container['calls_available'] = $calls_available;
 
         return $this;
     }
@@ -620,7 +617,7 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
     /**
      * Sets in_stock
      *
-     * @param bool|null $in_stock Live carrier-stock snapshot (refreshed every 6h + on availability checks): false when NO offered type currently has deliverable inventory, so a purchase would fail. Treat as advisory; the purchase itself re-checks.
+     * @param bool|null $in_stock in_stock
      *
      * @return self
      */
@@ -630,33 +627,6 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
             throw new \InvalidArgumentException('non-nullable in_stock cannot be null');
         }
         $this->container['in_stock'] = $in_stock;
-
-        return $this;
-    }
-
-    /**
-     * Gets types
-     *
-     * @return \Zernio\Model\ListPhoneNumberCountries200ResponseCountriesInnerTypesInner[]|null
-     */
-    public function getTypes()
-    {
-        return $this->container['types'];
-    }
-
-    /**
-     * Sets types
-     *
-     * @param \Zernio\Model\ListPhoneNumberCountries200ResponseCountriesInnerTypesInner[]|null $types Every number type offered in this country (default first). Capabilities, KYC tier, monthly price, and stock are per type. The country-level fields above mirror the first (default) entry. Pass the chosen `numberType` to POST /v1/phone-numbers/purchase.
-     *
-     * @return self
-     */
-    public function setTypes($types)
-    {
-        if (is_null($types)) {
-            throw new \InvalidArgumentException('non-nullable types cannot be null');
-        }
-        $this->container['types'] = $types;
 
         return $this;
     }

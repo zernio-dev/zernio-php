@@ -66,6 +66,7 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'profile_picture' => 'string',
         'profile_url' => 'string',
         'is_active' => 'bool',
+        'needs_reconnection' => 'bool',
         'followers_count' => 'float',
         'followers_last_updated' => '\DateTime',
         'parent_account_id' => 'string',
@@ -89,6 +90,7 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'profile_picture' => null,
         'profile_url' => null,
         'is_active' => null,
+        'needs_reconnection' => null,
         'followers_count' => null,
         'followers_last_updated' => 'date-time',
         'parent_account_id' => null,
@@ -110,6 +112,7 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'profile_picture' => true,
         'profile_url' => false,
         'is_active' => false,
+        'needs_reconnection' => false,
         'followers_count' => false,
         'followers_last_updated' => false,
         'parent_account_id' => true,
@@ -211,6 +214,7 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'profile_picture' => 'profilePicture',
         'profile_url' => 'profileUrl',
         'is_active' => 'isActive',
+        'needs_reconnection' => 'needsReconnection',
         'followers_count' => 'followersCount',
         'followers_last_updated' => 'followersLastUpdated',
         'parent_account_id' => 'parentAccountId',
@@ -232,6 +236,7 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'profile_picture' => 'setProfilePicture',
         'profile_url' => 'setProfileUrl',
         'is_active' => 'setIsActive',
+        'needs_reconnection' => 'setNeedsReconnection',
         'followers_count' => 'setFollowersCount',
         'followers_last_updated' => 'setFollowersLastUpdated',
         'parent_account_id' => 'setParentAccountId',
@@ -253,6 +258,7 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'profile_picture' => 'getProfilePicture',
         'profile_url' => 'getProfileUrl',
         'is_active' => 'getIsActive',
+        'needs_reconnection' => 'getNeedsReconnection',
         'followers_count' => 'getFollowersCount',
         'followers_last_updated' => 'getFollowersLastUpdated',
         'parent_account_id' => 'getParentAccountId',
@@ -378,6 +384,7 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('profile_picture', $data ?? [], null);
         $this->setIfExists('profile_url', $data ?? [], null);
         $this->setIfExists('is_active', $data ?? [], null);
+        $this->setIfExists('needs_reconnection', $data ?? [], null);
         $this->setIfExists('followers_count', $data ?? [], null);
         $this->setIfExists('followers_last_updated', $data ?? [], null);
         $this->setIfExists('parent_account_id', $data ?? [], null);
@@ -677,6 +684,33 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable is_active cannot be null');
         }
         $this->container['is_active'] = $is_active;
+
+        return $this;
+    }
+
+    /**
+     * Gets needs_reconnection
+     *
+     * @return bool|null
+     */
+    public function getNeedsReconnection()
+    {
+        return $this->container['needs_reconnection'];
+    }
+
+    /**
+     * Sets needs_reconnection
+     *
+     * @param bool|null $needs_reconnection The platform definitively reported the stored OAuth token as dead. While true, GET /v1/connect/{platform}/ads returns a fresh authUrl (implicit force=true) instead of alreadyConnected, so re-running the connect flow recovers the account. Cleared automatically when the account is re-authorized.
+     *
+     * @return self
+     */
+    public function setNeedsReconnection($needs_reconnection)
+    {
+        if (is_null($needs_reconnection)) {
+            throw new \InvalidArgumentException('non-nullable needs_reconnection cannot be null');
+        }
+        $this->container['needs_reconnection'] = $needs_reconnection;
 
         return $this;
     }

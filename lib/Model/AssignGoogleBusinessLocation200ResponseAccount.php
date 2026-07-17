@@ -1,6 +1,6 @@
 <?php
 /**
- * PurchasePhoneNumber202Response
+ * AssignGoogleBusinessLocation200ResponseAccount
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * PurchasePhoneNumber202Response Class Doc Comment
+ * AssignGoogleBusinessLocation200ResponseAccount Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class AssignGoogleBusinessLocation200ResponseAccount implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'purchasePhoneNumber_202_response';
+    protected static $openAPIModelName = 'assignGoogleBusinessLocation_200_response_account';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,13 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'country' => 'string',
-        'number_type' => 'string',
-        'kyc_url' => 'string'
+        'account_id' => 'string',
+        'platform' => 'string',
+        'username' => 'string',
+        'display_name' => 'string',
+        'is_active' => 'bool',
+        'selected_location_name' => 'string',
+        'selected_location_id' => 'string'
     ];
 
     /**
@@ -72,10 +75,13 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'country' => null,
-        'number_type' => null,
-        'kyc_url' => null
+        'account_id' => null,
+        'platform' => null,
+        'username' => null,
+        'display_name' => null,
+        'is_active' => null,
+        'selected_location_name' => null,
+        'selected_location_id' => null
     ];
 
     /**
@@ -84,10 +90,13 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-        'country' => false,
-        'number_type' => false,
-        'kyc_url' => false
+        'account_id' => false,
+        'platform' => false,
+        'username' => false,
+        'display_name' => false,
+        'is_active' => false,
+        'selected_location_name' => false,
+        'selected_location_id' => false
     ];
 
     /**
@@ -176,10 +185,13 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'country' => 'country',
-        'number_type' => 'numberType',
-        'kyc_url' => 'kycUrl'
+        'account_id' => 'accountId',
+        'platform' => 'platform',
+        'username' => 'username',
+        'display_name' => 'displayName',
+        'is_active' => 'isActive',
+        'selected_location_name' => 'selectedLocationName',
+        'selected_location_id' => 'selectedLocationId'
     ];
 
     /**
@@ -188,10 +200,13 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'country' => 'setCountry',
-        'number_type' => 'setNumberType',
-        'kyc_url' => 'setKycUrl'
+        'account_id' => 'setAccountId',
+        'platform' => 'setPlatform',
+        'username' => 'setUsername',
+        'display_name' => 'setDisplayName',
+        'is_active' => 'setIsActive',
+        'selected_location_name' => 'setSelectedLocationName',
+        'selected_location_id' => 'setSelectedLocationId'
     ];
 
     /**
@@ -200,10 +215,13 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'country' => 'getCountry',
-        'number_type' => 'getNumberType',
-        'kyc_url' => 'getKycUrl'
+        'account_id' => 'getAccountId',
+        'platform' => 'getPlatform',
+        'username' => 'getUsername',
+        'display_name' => 'getDisplayName',
+        'is_active' => 'getIsActive',
+        'selected_location_name' => 'getSelectedLocationName',
+        'selected_location_id' => 'getSelectedLocationId'
     ];
 
     /**
@@ -247,19 +265,6 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
-    public const STATUS_KYC_REQUIRED = 'kyc_required';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_KYC_REQUIRED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -276,10 +281,13 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('country', $data ?? [], null);
-        $this->setIfExists('number_type', $data ?? [], null);
-        $this->setIfExists('kyc_url', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('username', $data ?? [], null);
+        $this->setIfExists('display_name', $data ?? [], null);
+        $this->setIfExists('is_active', $data ?? [], null);
+        $this->setIfExists('selected_location_name', $data ?? [], null);
+        $this->setIfExists('selected_location_id', $data ?? [], null);
     }
 
     /**
@@ -309,15 +317,6 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -334,119 +333,190 @@ class PurchasePhoneNumber202Response implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets status
+     * Gets account_id
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getAccountId()
     {
-        return $this->container['status'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets status
+     * Sets account_id
      *
-     * @param string|null $status status
+     * @param string|null $account_id account_id
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setAccountId($account_id)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }
 
     /**
-     * Gets country
+     * Gets platform
      *
      * @return string|null
      */
-    public function getCountry()
+    public function getPlatform()
     {
-        return $this->container['country'];
+        return $this->container['platform'];
     }
 
     /**
-     * Sets country
+     * Sets platform
      *
-     * @param string|null $country country
+     * @param string|null $platform platform
      *
      * @return self
      */
-    public function setCountry($country)
+    public function setPlatform($platform)
     {
-        if (is_null($country)) {
-            throw new \InvalidArgumentException('non-nullable country cannot be null');
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
         }
-        $this->container['country'] = $country;
+        $this->container['platform'] = $platform;
 
         return $this;
     }
 
     /**
-     * Gets number_type
+     * Gets username
      *
      * @return string|null
      */
-    public function getNumberType()
+    public function getUsername()
     {
-        return $this->container['number_type'];
+        return $this->container['username'];
     }
 
     /**
-     * Sets number_type
+     * Sets username
      *
-     * @param string|null $number_type The type that will be ordered after KYC approval.
+     * @param string|null $username username
      *
      * @return self
      */
-    public function setNumberType($number_type)
+    public function setUsername($username)
     {
-        if (is_null($number_type)) {
-            throw new \InvalidArgumentException('non-nullable number_type cannot be null');
+        if (is_null($username)) {
+            throw new \InvalidArgumentException('non-nullable username cannot be null');
         }
-        $this->container['number_type'] = $number_type;
+        $this->container['username'] = $username;
 
         return $this;
     }
 
     /**
-     * Gets kyc_url
+     * Gets display_name
      *
      * @return string|null
      */
-    public function getKycUrl()
+    public function getDisplayName()
     {
-        return $this->container['kyc_url'];
+        return $this->container['display_name'];
     }
 
     /**
-     * Sets kyc_url
+     * Sets display_name
      *
-     * @param string|null $kyc_url kyc_url
+     * @param string|null $display_name display_name
      *
      * @return self
      */
-    public function setKycUrl($kyc_url)
+    public function setDisplayName($display_name)
     {
-        if (is_null($kyc_url)) {
-            throw new \InvalidArgumentException('non-nullable kyc_url cannot be null');
+        if (is_null($display_name)) {
+            throw new \InvalidArgumentException('non-nullable display_name cannot be null');
         }
-        $this->container['kyc_url'] = $kyc_url;
+        $this->container['display_name'] = $display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_active
+     *
+     * @return bool|null
+     */
+    public function getIsActive()
+    {
+        return $this->container['is_active'];
+    }
+
+    /**
+     * Sets is_active
+     *
+     * @param bool|null $is_active is_active
+     *
+     * @return self
+     */
+    public function setIsActive($is_active)
+    {
+        if (is_null($is_active)) {
+            throw new \InvalidArgumentException('non-nullable is_active cannot be null');
+        }
+        $this->container['is_active'] = $is_active;
+
+        return $this;
+    }
+
+    /**
+     * Gets selected_location_name
+     *
+     * @return string|null
+     */
+    public function getSelectedLocationName()
+    {
+        return $this->container['selected_location_name'];
+    }
+
+    /**
+     * Sets selected_location_name
+     *
+     * @param string|null $selected_location_name selected_location_name
+     *
+     * @return self
+     */
+    public function setSelectedLocationName($selected_location_name)
+    {
+        if (is_null($selected_location_name)) {
+            throw new \InvalidArgumentException('non-nullable selected_location_name cannot be null');
+        }
+        $this->container['selected_location_name'] = $selected_location_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets selected_location_id
+     *
+     * @return string|null
+     */
+    public function getSelectedLocationId()
+    {
+        return $this->container['selected_location_id'];
+    }
+
+    /**
+     * Sets selected_location_id
+     *
+     * @param string|null $selected_location_id selected_location_id
+     *
+     * @return self
+     */
+    public function setSelectedLocationId($selected_location_id)
+    {
+        if (is_null($selected_location_id)) {
+            throw new \InvalidArgumentException('non-nullable selected_location_id cannot be null');
+        }
+        $this->container['selected_location_id'] = $selected_location_id;
 
         return $this;
     }

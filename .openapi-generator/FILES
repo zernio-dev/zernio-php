@@ -113,6 +113,9 @@ docs/Model/AppealSmsRegistration200Response.md
 docs/Model/AppealSmsRegistrationRequest.md
 docs/Model/ApproveWhatsAppGroupJoinRequestsRequest.md
 docs/Model/ArchiveLeadForm200Response.md
+docs/Model/AssignGoogleBusinessLocation200Response.md
+docs/Model/AssignGoogleBusinessLocation200ResponseAccount.md
+docs/Model/AssignGoogleBusinessLocationRequest.md
 docs/Model/BatchGetGoogleBusinessReviews200Response.md
 docs/Model/BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner.md
 docs/Model/BatchGetGoogleBusinessReviewsRequest.md
@@ -852,6 +855,7 @@ docs/Model/ListLogs200ResponseLogsInner.md
 docs/Model/ListLogs200ResponsePagination.md
 docs/Model/ListPhoneNumberCountries200Response.md
 docs/Model/ListPhoneNumberCountries200ResponseCountriesInner.md
+docs/Model/ListPhoneNumberCountries200ResponseCountriesInnerTypesInner.md
 docs/Model/ListPhoneNumberPortIns200Response.md
 docs/Model/ListPhoneNumberPortIns200ResponseOrdersInner.md
 docs/Model/ListPhoneNumbers200Response.md
@@ -1029,6 +1033,7 @@ docs/Model/SearchInboxConversations200ResponseMetaFailedAccountsInner.md
 docs/Model/SearchReddit200Response.md
 docs/Model/SelectFacebookPage200Response.md
 docs/Model/SelectFacebookPage200ResponseAccount.md
+docs/Model/SelectFacebookPage409Response.md
 docs/Model/SelectFacebookPageRequest.md
 docs/Model/SelectFacebookPageRequestUserProfile.md
 docs/Model/SelectGoogleBusinessLocation200Response.md
@@ -1570,6 +1575,9 @@ lib/Model/AppealSmsRegistration200Response.php
 lib/Model/AppealSmsRegistrationRequest.php
 lib/Model/ApproveWhatsAppGroupJoinRequestsRequest.php
 lib/Model/ArchiveLeadForm200Response.php
+lib/Model/AssignGoogleBusinessLocation200Response.php
+lib/Model/AssignGoogleBusinessLocation200ResponseAccount.php
+lib/Model/AssignGoogleBusinessLocationRequest.php
 lib/Model/BatchGetGoogleBusinessReviews200Response.php
 lib/Model/BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner.php
 lib/Model/BatchGetGoogleBusinessReviewsRequest.php
@@ -2309,6 +2317,7 @@ lib/Model/ListLogs200ResponseLogsInner.php
 lib/Model/ListLogs200ResponsePagination.php
 lib/Model/ListPhoneNumberCountries200Response.php
 lib/Model/ListPhoneNumberCountries200ResponseCountriesInner.php
+lib/Model/ListPhoneNumberCountries200ResponseCountriesInnerTypesInner.php
 lib/Model/ListPhoneNumberPortIns200Response.php
 lib/Model/ListPhoneNumberPortIns200ResponseOrdersInner.php
 lib/Model/ListPhoneNumbers200Response.php
@@ -2487,6 +2496,7 @@ lib/Model/SearchInboxConversations200ResponseMetaFailedAccountsInner.php
 lib/Model/SearchReddit200Response.php
 lib/Model/SelectFacebookPage200Response.php
 lib/Model/SelectFacebookPage200ResponseAccount.php
+lib/Model/SelectFacebookPage409Response.php
 lib/Model/SelectFacebookPageRequest.php
 lib/Model/SelectFacebookPageRequestUserProfile.php
 lib/Model/SelectGoogleBusinessLocation200Response.php
@@ -2915,3 +2925,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AssignGoogleBusinessLocation200ResponseAccountTest.php
+test/Model/AssignGoogleBusinessLocation200ResponseTest.php
+test/Model/AssignGoogleBusinessLocationRequestTest.php
+test/Model/ListPhoneNumberCountries200ResponseCountriesInnerTypesInnerTest.php
+test/Model/SelectFacebookPage409ResponseTest.php
