@@ -548,7 +548,7 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
     /**
      * Sets selectable
      *
-     * @param bool|null $selectable Meta only. Whether the account can create/run ads now. Absent (treat as true) on non-Meta platforms.
+     * @param bool|null $selectable Meta and X only. Whether the account can create/run ads now. Absent (treat as true) on other platforms.
      *
      * @return self
      */
@@ -575,7 +575,7 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
     /**
      * Sets unusable_reason
      *
-     * @param string|null $unusable_reason Meta only. Human-readable reason when selectable is false; null when selectable.
+     * @param string|null $unusable_reason Meta and X only. Human-readable reason when selectable is false; null when selectable.
      *
      * @return self
      */

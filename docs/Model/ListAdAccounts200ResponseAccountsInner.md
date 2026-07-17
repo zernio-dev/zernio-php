@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **timezone_name** | **string** | IANA timezone of the ad account (Meta only). Drives daily-budget reset and Insights day boundaries. | [optional]
 **timezone_offset_hours_utc** | **float** | Signed UTC offset in hours, reflecting current DST (Meta only). | [optional]
 **minimum_daily_budget** | **float** | Meta only. Minimum daily budget for the account, in the account currency&#39;s major units. This is the impressions-billed minimum; other billing events have higher minimums. Absent when the connected token cannot read it. | [optional]
-**selectable** | **bool** | Meta only. Whether the account can create/run ads now. Absent (treat as true) on non-Meta platforms. | [optional]
-**unusable_reason** | **string** | Meta only. Human-readable reason when selectable is false; null when selectable. | [optional]
+**selectable** | **bool** | Meta and X only. Whether the account can create/run ads now. Absent (treat as true) on other platforms. | [optional]
+**unusable_reason** | **string** | Meta and X only. Human-readable reason when selectable is false; null when selectable. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
