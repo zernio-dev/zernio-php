@@ -2242,7 +2242,7 @@ try {
 ## `updateLinkedInOrganization()`
 
 ```php
-updateLinkedInOrganization($account_id, $update_linked_in_organization_request): \Zernio\Model\ConnectBlueskyCredentials200Response
+updateLinkedInOrganization($account_id, $update_linked_in_organization_request): \Zernio\Model\UpdateLinkedInOrganization200Response
 ```
 
 Switch LinkedIn account type
@@ -2267,7 +2267,7 @@ $apiInstance = new Zernio\Api\ConnectApi(
     $config
 );
 $account_id = 'account_id_example'; // string
-$update_linked_in_organization_request = {"accountType":"organization","selectedOrganization":{"id":"12345678","name":"Acme Corporation","vanityName":"acme-corp"}}; // \Zernio\Model\UpdateLinkedInOrganizationRequest
+$update_linked_in_organization_request = {"accountType":"organization","selectedOrganization":{"id":"12345678","urn":"urn:li:organization:12345678","name":"Acme Corporation","vanityName":"acme-corp"}}; // \Zernio\Model\UpdateLinkedInOrganizationRequest
 
 try {
     $result = $apiInstance->updateLinkedInOrganization($account_id, $update_linked_in_organization_request);
@@ -2286,7 +2286,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\ConnectBlueskyCredentials200Response**](../Model/ConnectBlueskyCredentials200Response.md)
+[**\Zernio\Model\UpdateLinkedInOrganization200Response**](../Model/UpdateLinkedInOrganization200Response.md)
 
 ### Authorization
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * SetRedditPostFlairRequest
+ * UpdateGoogleBusinessServicesRequestServiceItemsInnerFreeFormServiceItem
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SetRedditPostFlairRequest Class Doc Comment
+ * UpdateGoogleBusinessServicesRequestServiceItemsInnerFreeFormServiceItem Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateGoogleBusinessServicesRequestServiceItemsInnerFreeFormServiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'setRedditPostFlair_request';
+    protected static $openAPIModelName = 'updateGoogleBusinessServices_request_serviceItems_inner_freeFormServiceItem';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,8 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'subreddit' => 'string',
-        'post_id' => 'string',
-        'flair_template_id' => 'string',
-        'text' => 'string'
+        'category' => 'string',
+        'label' => '\Zernio\Model\UpdateGoogleBusinessServicesRequestServiceItemsInnerFreeFormServiceItemLabel'
     ];
 
     /**
@@ -72,10 +70,8 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'subreddit' => null,
-        'post_id' => null,
-        'flair_template_id' => null,
-        'text' => null
+        'category' => null,
+        'label' => null
     ];
 
     /**
@@ -84,10 +80,8 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'subreddit' => false,
-        'post_id' => false,
-        'flair_template_id' => false,
-        'text' => false
+        'category' => false,
+        'label' => false
     ];
 
     /**
@@ -176,10 +170,8 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'subreddit' => 'subreddit',
-        'post_id' => 'postId',
-        'flair_template_id' => 'flairTemplateId',
-        'text' => 'text'
+        'category' => 'category',
+        'label' => 'label'
     ];
 
     /**
@@ -188,10 +180,8 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'subreddit' => 'setSubreddit',
-        'post_id' => 'setPostId',
-        'flair_template_id' => 'setFlairTemplateId',
-        'text' => 'setText'
+        'category' => 'setCategory',
+        'label' => 'setLabel'
     ];
 
     /**
@@ -200,10 +190,8 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'subreddit' => 'getSubreddit',
-        'post_id' => 'getPostId',
-        'flair_template_id' => 'getFlairTemplateId',
-        'text' => 'getText'
+        'category' => 'getCategory',
+        'label' => 'getLabel'
     ];
 
     /**
@@ -263,10 +251,8 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('subreddit', $data ?? [], null);
-        $this->setIfExists('post_id', $data ?? [], null);
-        $this->setIfExists('flair_template_id', $data ?? [], null);
-        $this->setIfExists('text', $data ?? [], null);
+        $this->setIfExists('category', $data ?? [], null);
+        $this->setIfExists('label', $data ?? [], null);
     }
 
     /**
@@ -296,27 +282,16 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        if ($this->container['subreddit'] === null) {
-            $invalidProperties[] = "'subreddit' can't be null";
+        if ($this->container['category'] === null) {
+            $invalidProperties[] = "'category' can't be null";
         }
-        if ((mb_strlen($this->container['subreddit']) < 1)) {
-            $invalidProperties[] = "invalid value for 'subreddit', the character length must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['post_id'] === null) {
-            $invalidProperties[] = "'post_id' can't be null";
-        }
-        if ((mb_strlen($this->container['post_id']) < 1)) {
-            $invalidProperties[] = "invalid value for 'post_id', the character length must be bigger than or equal to 1.";
+        if ((mb_strlen($this->container['category']) < 1)) {
+            $invalidProperties[] = "invalid value for 'category', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['flair_template_id'] === null) {
-            $invalidProperties[] = "'flair_template_id' can't be null";
+        if ($this->container['label'] === null) {
+            $invalidProperties[] = "'label' can't be null";
         }
-        if ((mb_strlen($this->container['flair_template_id']) < 1)) {
-            $invalidProperties[] = "invalid value for 'flair_template_id', the character length must be bigger than or equal to 1.";
-        }
-
         return $invalidProperties;
     }
 
@@ -333,124 +308,60 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets subreddit
+     * Gets category
      *
      * @return string
      */
-    public function getSubreddit()
+    public function getCategory()
     {
-        return $this->container['subreddit'];
+        return $this->container['category'];
     }
 
     /**
-     * Sets subreddit
+     * Sets category
      *
-     * @param string $subreddit Subreddit name (without the \"r/\" prefix)
+     * @param string $category category
      *
      * @return self
      */
-    public function setSubreddit($subreddit)
+    public function setCategory($category)
     {
-        if (is_null($subreddit)) {
-            throw new \InvalidArgumentException('non-nullable subreddit cannot be null');
+        if (is_null($category)) {
+            throw new \InvalidArgumentException('non-nullable category cannot be null');
         }
 
-        if ((mb_strlen($subreddit) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $subreddit when calling SetRedditPostFlairRequest., must be bigger than or equal to 1.');
+        if ((mb_strlen($category) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $category when calling UpdateGoogleBusinessServicesRequestServiceItemsInnerFreeFormServiceItem., must be bigger than or equal to 1.');
         }
 
-        $this->container['subreddit'] = $subreddit;
+        $this->container['category'] = $category;
 
         return $this;
     }
 
     /**
-     * Gets post_id
+     * Gets label
      *
-     * @return string
+     * @return \Zernio\Model\UpdateGoogleBusinessServicesRequestServiceItemsInnerFreeFormServiceItemLabel
      */
-    public function getPostId()
+    public function getLabel()
     {
-        return $this->container['post_id'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets post_id
+     * Sets label
      *
-     * @param string $post_id Reddit post id, with or without the t3_ prefix
+     * @param \Zernio\Model\UpdateGoogleBusinessServicesRequestServiceItemsInnerFreeFormServiceItemLabel $label label
      *
      * @return self
      */
-    public function setPostId($post_id)
+    public function setLabel($label)
     {
-        if (is_null($post_id)) {
-            throw new \InvalidArgumentException('non-nullable post_id cannot be null');
+        if (is_null($label)) {
+            throw new \InvalidArgumentException('non-nullable label cannot be null');
         }
-
-        if ((mb_strlen($post_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $post_id when calling SetRedditPostFlairRequest., must be bigger than or equal to 1.');
-        }
-
-        $this->container['post_id'] = $post_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets flair_template_id
-     *
-     * @return string
-     */
-    public function getFlairTemplateId()
-    {
-        return $this->container['flair_template_id'];
-    }
-
-    /**
-     * Sets flair_template_id
-     *
-     * @param string $flair_template_id Flair template id from the GET on this path
-     *
-     * @return self
-     */
-    public function setFlairTemplateId($flair_template_id)
-    {
-        if (is_null($flair_template_id)) {
-            throw new \InvalidArgumentException('non-nullable flair_template_id cannot be null');
-        }
-
-        if ((mb_strlen($flair_template_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $flair_template_id when calling SetRedditPostFlairRequest., must be bigger than or equal to 1.');
-        }
-
-        $this->container['flair_template_id'] = $flair_template_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets text
-     *
-     * @return string|null
-     */
-    public function getText()
-    {
-        return $this->container['text'];
-    }
-
-    /**
-     * Sets text
-     *
-     * @param string|null $text Optional override text, only for editable flair templates
-     *
-     * @return self
-     */
-    public function setText($text)
-    {
-        if (is_null($text)) {
-            throw new \InvalidArgumentException('non-nullable text cannot be null');
-        }
-        $this->container['text'] = $text;
+        $this->container['label'] = $label;
 
         return $this;
     }

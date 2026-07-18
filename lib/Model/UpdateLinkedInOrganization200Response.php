@@ -1,6 +1,6 @@
 <?php
 /**
- * SetRedditPostFlairRequest
+ * UpdateLinkedInOrganization200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SetRedditPostFlairRequest Class Doc Comment
+ * UpdateLinkedInOrganization200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateLinkedInOrganization200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'setRedditPostFlair_request';
+    protected static $openAPIModelName = 'updateLinkedInOrganization_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,9 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'subreddit' => 'string',
-        'post_id' => 'string',
-        'flair_template_id' => 'string',
-        'text' => 'string'
+        'message' => 'string',
+        'account_type' => 'string',
+        'account_name' => 'string'
     ];
 
     /**
@@ -72,10 +71,9 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'subreddit' => null,
-        'post_id' => null,
-        'flair_template_id' => null,
-        'text' => null
+        'message' => null,
+        'account_type' => null,
+        'account_name' => null
     ];
 
     /**
@@ -84,10 +82,9 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'subreddit' => false,
-        'post_id' => false,
-        'flair_template_id' => false,
-        'text' => false
+        'message' => false,
+        'account_type' => false,
+        'account_name' => false
     ];
 
     /**
@@ -176,10 +173,9 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'subreddit' => 'subreddit',
-        'post_id' => 'postId',
-        'flair_template_id' => 'flairTemplateId',
-        'text' => 'text'
+        'message' => 'message',
+        'account_type' => 'accountType',
+        'account_name' => 'accountName'
     ];
 
     /**
@@ -188,10 +184,9 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'subreddit' => 'setSubreddit',
-        'post_id' => 'setPostId',
-        'flair_template_id' => 'setFlairTemplateId',
-        'text' => 'setText'
+        'message' => 'setMessage',
+        'account_type' => 'setAccountType',
+        'account_name' => 'setAccountName'
     ];
 
     /**
@@ -200,10 +195,9 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'subreddit' => 'getSubreddit',
-        'post_id' => 'getPostId',
-        'flair_template_id' => 'getFlairTemplateId',
-        'text' => 'getText'
+        'message' => 'getMessage',
+        'account_type' => 'getAccountType',
+        'account_name' => 'getAccountName'
     ];
 
     /**
@@ -247,6 +241,21 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
+    public const ACCOUNT_TYPE_PERSONAL = 'personal';
+    public const ACCOUNT_TYPE_ORGANIZATION = 'organization';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAccountTypeAllowableValues()
+    {
+        return [
+            self::ACCOUNT_TYPE_PERSONAL,
+            self::ACCOUNT_TYPE_ORGANIZATION,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -263,10 +272,9 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('subreddit', $data ?? [], null);
-        $this->setIfExists('post_id', $data ?? [], null);
-        $this->setIfExists('flair_template_id', $data ?? [], null);
-        $this->setIfExists('text', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('account_type', $data ?? [], null);
+        $this->setIfExists('account_name', $data ?? [], null);
     }
 
     /**
@@ -296,25 +304,13 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        if ($this->container['subreddit'] === null) {
-            $invalidProperties[] = "'subreddit' can't be null";
-        }
-        if ((mb_strlen($this->container['subreddit']) < 1)) {
-            $invalidProperties[] = "invalid value for 'subreddit', the character length must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['post_id'] === null) {
-            $invalidProperties[] = "'post_id' can't be null";
-        }
-        if ((mb_strlen($this->container['post_id']) < 1)) {
-            $invalidProperties[] = "invalid value for 'post_id', the character length must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['flair_template_id'] === null) {
-            $invalidProperties[] = "'flair_template_id' can't be null";
-        }
-        if ((mb_strlen($this->container['flair_template_id']) < 1)) {
-            $invalidProperties[] = "invalid value for 'flair_template_id', the character length must be bigger than or equal to 1.";
+        $allowedValues = $this->getAccountTypeAllowableValues();
+        if (!is_null($this->container['account_type']) && !in_array($this->container['account_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'account_type', must be one of '%s'",
+                $this->container['account_type'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -333,124 +329,92 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets subreddit
-     *
-     * @return string
-     */
-    public function getSubreddit()
-    {
-        return $this->container['subreddit'];
-    }
-
-    /**
-     * Sets subreddit
-     *
-     * @param string $subreddit Subreddit name (without the \"r/\" prefix)
-     *
-     * @return self
-     */
-    public function setSubreddit($subreddit)
-    {
-        if (is_null($subreddit)) {
-            throw new \InvalidArgumentException('non-nullable subreddit cannot be null');
-        }
-
-        if ((mb_strlen($subreddit) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $subreddit when calling SetRedditPostFlairRequest., must be bigger than or equal to 1.');
-        }
-
-        $this->container['subreddit'] = $subreddit;
-
-        return $this;
-    }
-
-    /**
-     * Gets post_id
-     *
-     * @return string
-     */
-    public function getPostId()
-    {
-        return $this->container['post_id'];
-    }
-
-    /**
-     * Sets post_id
-     *
-     * @param string $post_id Reddit post id, with or without the t3_ prefix
-     *
-     * @return self
-     */
-    public function setPostId($post_id)
-    {
-        if (is_null($post_id)) {
-            throw new \InvalidArgumentException('non-nullable post_id cannot be null');
-        }
-
-        if ((mb_strlen($post_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $post_id when calling SetRedditPostFlairRequest., must be bigger than or equal to 1.');
-        }
-
-        $this->container['post_id'] = $post_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets flair_template_id
-     *
-     * @return string
-     */
-    public function getFlairTemplateId()
-    {
-        return $this->container['flair_template_id'];
-    }
-
-    /**
-     * Sets flair_template_id
-     *
-     * @param string $flair_template_id Flair template id from the GET on this path
-     *
-     * @return self
-     */
-    public function setFlairTemplateId($flair_template_id)
-    {
-        if (is_null($flair_template_id)) {
-            throw new \InvalidArgumentException('non-nullable flair_template_id cannot be null');
-        }
-
-        if ((mb_strlen($flair_template_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $flair_template_id when calling SetRedditPostFlairRequest., must be bigger than or equal to 1.');
-        }
-
-        $this->container['flair_template_id'] = $flair_template_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets text
+     * Gets message
      *
      * @return string|null
      */
-    public function getText()
+    public function getMessage()
     {
-        return $this->container['text'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets text
+     * Sets message
      *
-     * @param string|null $text Optional override text, only for editable flair templates
+     * @param string|null $message message
      *
      * @return self
      */
-    public function setText($text)
+    public function setMessage($message)
     {
-        if (is_null($text)) {
-            throw new \InvalidArgumentException('non-nullable text cannot be null');
+        if (is_null($message)) {
+            throw new \InvalidArgumentException('non-nullable message cannot be null');
         }
-        $this->container['text'] = $text;
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_type
+     *
+     * @return string|null
+     */
+    public function getAccountType()
+    {
+        return $this->container['account_type'];
+    }
+
+    /**
+     * Sets account_type
+     *
+     * @param string|null $account_type account_type
+     *
+     * @return self
+     */
+    public function setAccountType($account_type)
+    {
+        if (is_null($account_type)) {
+            throw new \InvalidArgumentException('non-nullable account_type cannot be null');
+        }
+        $allowedValues = $this->getAccountTypeAllowableValues();
+        if (!in_array($account_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'account_type', must be one of '%s'",
+                    $account_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['account_type'] = $account_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_name
+     *
+     * @return string|null
+     */
+    public function getAccountName()
+    {
+        return $this->container['account_name'];
+    }
+
+    /**
+     * Sets account_name
+     *
+     * @param string|null $account_name account_name
+     *
+     * @return self
+     */
+    public function setAccountName($account_name)
+    {
+        if (is_null($account_name)) {
+            throw new \InvalidArgumentException('non-nullable account_name cannot be null');
+        }
+        $this->container['account_name'] = $account_name;
 
         return $this;
     }

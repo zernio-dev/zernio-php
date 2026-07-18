@@ -285,9 +285,29 @@ class SetTelegramCommandsRequestCommandsInner implements ModelInterface, ArrayAc
         if ($this->container['command'] === null) {
             $invalidProperties[] = "'command' can't be null";
         }
+        if ((mb_strlen($this->container['command']) > 32)) {
+            $invalidProperties[] = "invalid value for 'command', the character length must be smaller than or equal to 32.";
+        }
+
+        if ((mb_strlen($this->container['command']) < 1)) {
+            $invalidProperties[] = "invalid value for 'command', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!preg_match("/^[a-z0-9_]+$/", $this->container['command'])) {
+            $invalidProperties[] = "invalid value for 'command', must be conform to the pattern /^[a-z0-9_]+$/.";
+        }
+
         if ($this->container['description'] === null) {
             $invalidProperties[] = "'description' can't be null";
         }
+        if ((mb_strlen($this->container['description']) > 256)) {
+            $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 256.";
+        }
+
+        if ((mb_strlen($this->container['description']) < 1)) {
+            $invalidProperties[] = "invalid value for 'description', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -325,6 +345,16 @@ class SetTelegramCommandsRequestCommandsInner implements ModelInterface, ArrayAc
         if (is_null($command)) {
             throw new \InvalidArgumentException('non-nullable command cannot be null');
         }
+        if ((mb_strlen($command) > 32)) {
+            throw new \InvalidArgumentException('invalid length for $command when calling SetTelegramCommandsRequestCommandsInner., must be smaller than or equal to 32.');
+        }
+        if ((mb_strlen($command) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $command when calling SetTelegramCommandsRequestCommandsInner., must be bigger than or equal to 1.');
+        }
+        if ((!preg_match("/^[a-z0-9_]+$/", ObjectSerializer::toString($command)))) {
+            throw new \InvalidArgumentException("invalid value for \$command when calling SetTelegramCommandsRequestCommandsInner., must conform to the pattern /^[a-z0-9_]+$/.");
+        }
+
         $this->container['command'] = $command;
 
         return $this;
@@ -352,6 +382,13 @@ class SetTelegramCommandsRequestCommandsInner implements ModelInterface, ArrayAc
         if (is_null($description)) {
             throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
+        if ((mb_strlen($description) > 256)) {
+            throw new \InvalidArgumentException('invalid length for $description when calling SetTelegramCommandsRequestCommandsInner., must be smaller than or equal to 256.');
+        }
+        if ((mb_strlen($description) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $description when calling SetTelegramCommandsRequestCommandsInner., must be bigger than or equal to 1.');
+        }
+
         $this->container['description'] = $description;
 
         return $this;

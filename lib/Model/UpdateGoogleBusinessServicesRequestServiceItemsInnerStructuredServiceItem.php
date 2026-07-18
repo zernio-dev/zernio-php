@@ -1,6 +1,6 @@
 <?php
 /**
- * SetRedditPostFlairRequest
+ * UpdateGoogleBusinessServicesRequestServiceItemsInnerStructuredServiceItem
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SetRedditPostFlairRequest Class Doc Comment
+ * UpdateGoogleBusinessServicesRequestServiceItemsInnerStructuredServiceItem Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateGoogleBusinessServicesRequestServiceItemsInnerStructuredServiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'setRedditPostFlair_request';
+    protected static $openAPIModelName = 'updateGoogleBusinessServices_request_serviceItems_inner_structuredServiceItem';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,8 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'subreddit' => 'string',
-        'post_id' => 'string',
-        'flair_template_id' => 'string',
-        'text' => 'string'
+        'service_type_id' => 'string',
+        'description' => 'string'
     ];
 
     /**
@@ -72,10 +70,8 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'subreddit' => null,
-        'post_id' => null,
-        'flair_template_id' => null,
-        'text' => null
+        'service_type_id' => null,
+        'description' => null
     ];
 
     /**
@@ -84,10 +80,8 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'subreddit' => false,
-        'post_id' => false,
-        'flair_template_id' => false,
-        'text' => false
+        'service_type_id' => false,
+        'description' => false
     ];
 
     /**
@@ -176,10 +170,8 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'subreddit' => 'subreddit',
-        'post_id' => 'postId',
-        'flair_template_id' => 'flairTemplateId',
-        'text' => 'text'
+        'service_type_id' => 'serviceTypeId',
+        'description' => 'description'
     ];
 
     /**
@@ -188,10 +180,8 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'subreddit' => 'setSubreddit',
-        'post_id' => 'setPostId',
-        'flair_template_id' => 'setFlairTemplateId',
-        'text' => 'setText'
+        'service_type_id' => 'setServiceTypeId',
+        'description' => 'setDescription'
     ];
 
     /**
@@ -200,10 +190,8 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'subreddit' => 'getSubreddit',
-        'post_id' => 'getPostId',
-        'flair_template_id' => 'getFlairTemplateId',
-        'text' => 'getText'
+        'service_type_id' => 'getServiceTypeId',
+        'description' => 'getDescription'
     ];
 
     /**
@@ -263,10 +251,8 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('subreddit', $data ?? [], null);
-        $this->setIfExists('post_id', $data ?? [], null);
-        $this->setIfExists('flair_template_id', $data ?? [], null);
-        $this->setIfExists('text', $data ?? [], null);
+        $this->setIfExists('service_type_id', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
     }
 
     /**
@@ -296,25 +282,11 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        if ($this->container['subreddit'] === null) {
-            $invalidProperties[] = "'subreddit' can't be null";
+        if ($this->container['service_type_id'] === null) {
+            $invalidProperties[] = "'service_type_id' can't be null";
         }
-        if ((mb_strlen($this->container['subreddit']) < 1)) {
-            $invalidProperties[] = "invalid value for 'subreddit', the character length must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['post_id'] === null) {
-            $invalidProperties[] = "'post_id' can't be null";
-        }
-        if ((mb_strlen($this->container['post_id']) < 1)) {
-            $invalidProperties[] = "invalid value for 'post_id', the character length must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['flair_template_id'] === null) {
-            $invalidProperties[] = "'flair_template_id' can't be null";
-        }
-        if ((mb_strlen($this->container['flair_template_id']) < 1)) {
-            $invalidProperties[] = "invalid value for 'flair_template_id', the character length must be bigger than or equal to 1.";
+        if ((mb_strlen($this->container['service_type_id']) < 1)) {
+            $invalidProperties[] = "invalid value for 'service_type_id', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -333,124 +305,60 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets subreddit
+     * Gets service_type_id
      *
      * @return string
      */
-    public function getSubreddit()
+    public function getServiceTypeId()
     {
-        return $this->container['subreddit'];
+        return $this->container['service_type_id'];
     }
 
     /**
-     * Sets subreddit
+     * Sets service_type_id
      *
-     * @param string $subreddit Subreddit name (without the \"r/\" prefix)
+     * @param string $service_type_id service_type_id
      *
      * @return self
      */
-    public function setSubreddit($subreddit)
+    public function setServiceTypeId($service_type_id)
     {
-        if (is_null($subreddit)) {
-            throw new \InvalidArgumentException('non-nullable subreddit cannot be null');
+        if (is_null($service_type_id)) {
+            throw new \InvalidArgumentException('non-nullable service_type_id cannot be null');
         }
 
-        if ((mb_strlen($subreddit) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $subreddit when calling SetRedditPostFlairRequest., must be bigger than or equal to 1.');
+        if ((mb_strlen($service_type_id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $service_type_id when calling UpdateGoogleBusinessServicesRequestServiceItemsInnerStructuredServiceItem., must be bigger than or equal to 1.');
         }
 
-        $this->container['subreddit'] = $subreddit;
+        $this->container['service_type_id'] = $service_type_id;
 
         return $this;
     }
 
     /**
-     * Gets post_id
-     *
-     * @return string
-     */
-    public function getPostId()
-    {
-        return $this->container['post_id'];
-    }
-
-    /**
-     * Sets post_id
-     *
-     * @param string $post_id Reddit post id, with or without the t3_ prefix
-     *
-     * @return self
-     */
-    public function setPostId($post_id)
-    {
-        if (is_null($post_id)) {
-            throw new \InvalidArgumentException('non-nullable post_id cannot be null');
-        }
-
-        if ((mb_strlen($post_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $post_id when calling SetRedditPostFlairRequest., must be bigger than or equal to 1.');
-        }
-
-        $this->container['post_id'] = $post_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets flair_template_id
-     *
-     * @return string
-     */
-    public function getFlairTemplateId()
-    {
-        return $this->container['flair_template_id'];
-    }
-
-    /**
-     * Sets flair_template_id
-     *
-     * @param string $flair_template_id Flair template id from the GET on this path
-     *
-     * @return self
-     */
-    public function setFlairTemplateId($flair_template_id)
-    {
-        if (is_null($flair_template_id)) {
-            throw new \InvalidArgumentException('non-nullable flair_template_id cannot be null');
-        }
-
-        if ((mb_strlen($flair_template_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $flair_template_id when calling SetRedditPostFlairRequest., must be bigger than or equal to 1.');
-        }
-
-        $this->container['flair_template_id'] = $flair_template_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets text
+     * Gets description
      *
      * @return string|null
      */
-    public function getText()
+    public function getDescription()
     {
-        return $this->container['text'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets text
+     * Sets description
      *
-     * @param string|null $text Optional override text, only for editable flair templates
+     * @param string|null $description description
      *
      * @return self
      */
-    public function setText($text)
+    public function setDescription($description)
     {
-        if (is_null($text)) {
-            throw new \InvalidArgumentException('non-nullable text cannot be null');
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
-        $this->container['text'] = $text;
+        $this->container['description'] = $description;
 
         return $this;
     }

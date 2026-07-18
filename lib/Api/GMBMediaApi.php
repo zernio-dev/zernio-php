@@ -1044,6 +1044,9 @@ class GMBMediaApi
         if ($page_size !== null && $page_size > 100) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling GMBMediaApi.listGoogleBusinessMedia, must be smaller than or equal to 100.');
         }
+        if ($page_size !== null && $page_size < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling GMBMediaApi.listGoogleBusinessMedia, must be bigger than or equal to 1.');
+        }
         
 
 

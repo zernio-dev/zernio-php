@@ -401,7 +401,10 @@ class GMBVerificationsApi
             );
         }
 
-
+        if ($location_id !== null && strlen($location_id) < 1) {
+            throw new \InvalidArgumentException('invalid length for "$location_id" when calling GMBVerificationsApi.completeGoogleBusinessVerification, must be bigger than or equal to 1.');
+        }
+        
 
         $resourcePath = '/v1/accounts/{accountId}/gmb-verifications/{verificationId}/complete';
         $formParams = [];
@@ -757,7 +760,10 @@ class GMBVerificationsApi
             );
         }
 
-
+        if ($location_id !== null && strlen($location_id) < 1) {
+            throw new \InvalidArgumentException('invalid length for "$location_id" when calling GMBVerificationsApi.fetchGoogleBusinessVerificationOptions, must be bigger than or equal to 1.');
+        }
+        
 
         $resourcePath = '/v1/accounts/{accountId}/gmb-verifications/options';
         $formParams = [];

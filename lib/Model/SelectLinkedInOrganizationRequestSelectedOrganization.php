@@ -1,6 +1,6 @@
 <?php
 /**
- * SetRedditPostFlairRequest
+ * SelectLinkedInOrganizationRequestSelectedOrganization
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SetRedditPostFlairRequest Class Doc Comment
+ * SelectLinkedInOrganizationRequestSelectedOrganization Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class SelectLinkedInOrganizationRequestSelectedOrganization implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'setRedditPostFlair_request';
+    protected static $openAPIModelName = 'selectLinkedInOrganization_request_selectedOrganization';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,11 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'subreddit' => 'string',
-        'post_id' => 'string',
-        'flair_template_id' => 'string',
-        'text' => 'string'
+        'id' => 'string',
+        'urn' => 'string',
+        'name' => 'string',
+        'logo_url' => 'string',
+        'vanity_name' => 'string'
     ];
 
     /**
@@ -72,10 +73,11 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'subreddit' => null,
-        'post_id' => null,
-        'flair_template_id' => null,
-        'text' => null
+        'id' => null,
+        'urn' => null,
+        'name' => null,
+        'logo_url' => 'uri',
+        'vanity_name' => null
     ];
 
     /**
@@ -84,10 +86,11 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'subreddit' => false,
-        'post_id' => false,
-        'flair_template_id' => false,
-        'text' => false
+        'id' => false,
+        'urn' => false,
+        'name' => false,
+        'logo_url' => false,
+        'vanity_name' => false
     ];
 
     /**
@@ -176,10 +179,11 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'subreddit' => 'subreddit',
-        'post_id' => 'postId',
-        'flair_template_id' => 'flairTemplateId',
-        'text' => 'text'
+        'id' => 'id',
+        'urn' => 'urn',
+        'name' => 'name',
+        'logo_url' => 'logoUrl',
+        'vanity_name' => 'vanityName'
     ];
 
     /**
@@ -188,10 +192,11 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'subreddit' => 'setSubreddit',
-        'post_id' => 'setPostId',
-        'flair_template_id' => 'setFlairTemplateId',
-        'text' => 'setText'
+        'id' => 'setId',
+        'urn' => 'setUrn',
+        'name' => 'setName',
+        'logo_url' => 'setLogoUrl',
+        'vanity_name' => 'setVanityName'
     ];
 
     /**
@@ -200,10 +205,11 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'subreddit' => 'getSubreddit',
-        'post_id' => 'getPostId',
-        'flair_template_id' => 'getFlairTemplateId',
-        'text' => 'getText'
+        'id' => 'getId',
+        'urn' => 'getUrn',
+        'name' => 'getName',
+        'logo_url' => 'getLogoUrl',
+        'vanity_name' => 'getVanityName'
     ];
 
     /**
@@ -263,10 +269,11 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('subreddit', $data ?? [], null);
-        $this->setIfExists('post_id', $data ?? [], null);
-        $this->setIfExists('flair_template_id', $data ?? [], null);
-        $this->setIfExists('text', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('urn', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('logo_url', $data ?? [], null);
+        $this->setIfExists('vanity_name', $data ?? [], null);
     }
 
     /**
@@ -296,25 +303,25 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        if ($this->container['subreddit'] === null) {
-            $invalidProperties[] = "'subreddit' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
-        if ((mb_strlen($this->container['subreddit']) < 1)) {
-            $invalidProperties[] = "invalid value for 'subreddit', the character length must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['post_id'] === null) {
-            $invalidProperties[] = "'post_id' can't be null";
-        }
-        if ((mb_strlen($this->container['post_id']) < 1)) {
-            $invalidProperties[] = "invalid value for 'post_id', the character length must be bigger than or equal to 1.";
+        if ((mb_strlen($this->container['id']) < 1)) {
+            $invalidProperties[] = "invalid value for 'id', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['flair_template_id'] === null) {
-            $invalidProperties[] = "'flair_template_id' can't be null";
+        if ($this->container['urn'] === null) {
+            $invalidProperties[] = "'urn' can't be null";
         }
-        if ((mb_strlen($this->container['flair_template_id']) < 1)) {
-            $invalidProperties[] = "invalid value for 'flair_template_id', the character length must be bigger than or equal to 1.";
+        if (!preg_match("/^urn:li:organization:/", $this->container['urn'])) {
+            $invalidProperties[] = "invalid value for 'urn', must be conform to the pattern /^urn:li:organization:/.";
+        }
+
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ((mb_strlen($this->container['name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -333,124 +340,151 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets subreddit
+     * Gets id
      *
      * @return string
      */
-    public function getSubreddit()
+    public function getId()
     {
-        return $this->container['subreddit'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets subreddit
+     * Sets id
      *
-     * @param string $subreddit Subreddit name (without the \"r/\" prefix)
+     * @param string $id id
      *
      * @return self
      */
-    public function setSubreddit($subreddit)
+    public function setId($id)
     {
-        if (is_null($subreddit)) {
-            throw new \InvalidArgumentException('non-nullable subreddit cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
 
-        if ((mb_strlen($subreddit) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $subreddit when calling SetRedditPostFlairRequest., must be bigger than or equal to 1.');
+        if ((mb_strlen($id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $id when calling SelectLinkedInOrganizationRequestSelectedOrganization., must be bigger than or equal to 1.');
         }
 
-        $this->container['subreddit'] = $subreddit;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets post_id
+     * Gets urn
      *
      * @return string
      */
-    public function getPostId()
+    public function getUrn()
     {
-        return $this->container['post_id'];
+        return $this->container['urn'];
     }
 
     /**
-     * Sets post_id
+     * Sets urn
      *
-     * @param string $post_id Reddit post id, with or without the t3_ prefix
+     * @param string $urn urn
      *
      * @return self
      */
-    public function setPostId($post_id)
+    public function setUrn($urn)
     {
-        if (is_null($post_id)) {
-            throw new \InvalidArgumentException('non-nullable post_id cannot be null');
+        if (is_null($urn)) {
+            throw new \InvalidArgumentException('non-nullable urn cannot be null');
         }
 
-        if ((mb_strlen($post_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $post_id when calling SetRedditPostFlairRequest., must be bigger than or equal to 1.');
+        if ((!preg_match("/^urn:li:organization:/", ObjectSerializer::toString($urn)))) {
+            throw new \InvalidArgumentException("invalid value for \$urn when calling SelectLinkedInOrganizationRequestSelectedOrganization., must conform to the pattern /^urn:li:organization:/.");
         }
 
-        $this->container['post_id'] = $post_id;
+        $this->container['urn'] = $urn;
 
         return $this;
     }
 
     /**
-     * Gets flair_template_id
+     * Gets name
      *
      * @return string
      */
-    public function getFlairTemplateId()
+    public function getName()
     {
-        return $this->container['flair_template_id'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets flair_template_id
+     * Sets name
      *
-     * @param string $flair_template_id Flair template id from the GET on this path
+     * @param string $name name
      *
      * @return self
      */
-    public function setFlairTemplateId($flair_template_id)
+    public function setName($name)
     {
-        if (is_null($flair_template_id)) {
-            throw new \InvalidArgumentException('non-nullable flair_template_id cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
 
-        if ((mb_strlen($flair_template_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $flair_template_id when calling SetRedditPostFlairRequest., must be bigger than or equal to 1.');
+        if ((mb_strlen($name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling SelectLinkedInOrganizationRequestSelectedOrganization., must be bigger than or equal to 1.');
         }
 
-        $this->container['flair_template_id'] = $flair_template_id;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets text
+     * Gets logo_url
      *
      * @return string|null
      */
-    public function getText()
+    public function getLogoUrl()
     {
-        return $this->container['text'];
+        return $this->container['logo_url'];
     }
 
     /**
-     * Sets text
+     * Sets logo_url
      *
-     * @param string|null $text Optional override text, only for editable flair templates
+     * @param string|null $logo_url logo_url
      *
      * @return self
      */
-    public function setText($text)
+    public function setLogoUrl($logo_url)
     {
-        if (is_null($text)) {
-            throw new \InvalidArgumentException('non-nullable text cannot be null');
+        if (is_null($logo_url)) {
+            throw new \InvalidArgumentException('non-nullable logo_url cannot be null');
         }
-        $this->container['text'] = $text;
+        $this->container['logo_url'] = $logo_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets vanity_name
+     *
+     * @return string|null
+     */
+    public function getVanityName()
+    {
+        return $this->container['vanity_name'];
+    }
+
+    /**
+     * Sets vanity_name
+     *
+     * @param string|null $vanity_name vanity_name
+     *
+     * @return self
+     */
+    public function setVanityName($vanity_name)
+    {
+        if (is_null($vanity_name)) {
+            throw new \InvalidArgumentException('non-nullable vanity_name cannot be null');
+        }
+        $this->container['vanity_name'] = $vanity_name;
 
         return $this;
     }

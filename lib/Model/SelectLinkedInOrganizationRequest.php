@@ -62,7 +62,7 @@ class SelectLinkedInOrganizationRequest implements ModelInterface, ArrayAccess, 
         'temp_token' => 'string',
         'user_profile' => 'object',
         'account_type' => 'string',
-        'selected_organization' => 'object',
+        'selected_organization' => '\Zernio\Model\SelectLinkedInOrganizationRequestSelectedOrganization',
         'redirect_url' => 'string'
     ];
 
@@ -482,7 +482,7 @@ class SelectLinkedInOrganizationRequest implements ModelInterface, ArrayAccess, 
     /**
      * Gets selected_organization
      *
-     * @return object|null
+     * @return \Zernio\Model\SelectLinkedInOrganizationRequestSelectedOrganization|null
      */
     public function getSelectedOrganization()
     {
@@ -492,7 +492,7 @@ class SelectLinkedInOrganizationRequest implements ModelInterface, ArrayAccess, 
     /**
      * Sets selected_organization
      *
-     * @param object|null $selected_organization selected_organization
+     * @param \Zernio\Model\SelectLinkedInOrganizationRequestSelectedOrganization|null $selected_organization selected_organization
      *
      * @return self
      */

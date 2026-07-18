@@ -1,6 +1,6 @@
 <?php
 /**
- * SetRedditPostFlairRequest
+ * UpdateGoogleBusinessServicesRequestServiceItemsInnerPrice
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SetRedditPostFlairRequest Class Doc Comment
+ * UpdateGoogleBusinessServicesRequestServiceItemsInnerPrice Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateGoogleBusinessServicesRequestServiceItemsInnerPrice implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'setRedditPostFlair_request';
+    protected static $openAPIModelName = 'updateGoogleBusinessServices_request_serviceItems_inner_price';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,9 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'subreddit' => 'string',
-        'post_id' => 'string',
-        'flair_template_id' => 'string',
-        'text' => 'string'
+        'currency_code' => 'string',
+        'units' => 'string',
+        'nanos' => 'int'
     ];
 
     /**
@@ -72,10 +71,9 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'subreddit' => null,
-        'post_id' => null,
-        'flair_template_id' => null,
-        'text' => null
+        'currency_code' => null,
+        'units' => null,
+        'nanos' => null
     ];
 
     /**
@@ -84,10 +82,9 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'subreddit' => false,
-        'post_id' => false,
-        'flair_template_id' => false,
-        'text' => false
+        'currency_code' => false,
+        'units' => false,
+        'nanos' => false
     ];
 
     /**
@@ -176,10 +173,9 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'subreddit' => 'subreddit',
-        'post_id' => 'postId',
-        'flair_template_id' => 'flairTemplateId',
-        'text' => 'text'
+        'currency_code' => 'currencyCode',
+        'units' => 'units',
+        'nanos' => 'nanos'
     ];
 
     /**
@@ -188,10 +184,9 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'subreddit' => 'setSubreddit',
-        'post_id' => 'setPostId',
-        'flair_template_id' => 'setFlairTemplateId',
-        'text' => 'setText'
+        'currency_code' => 'setCurrencyCode',
+        'units' => 'setUnits',
+        'nanos' => 'setNanos'
     ];
 
     /**
@@ -200,10 +195,9 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'subreddit' => 'getSubreddit',
-        'post_id' => 'getPostId',
-        'flair_template_id' => 'getFlairTemplateId',
-        'text' => 'getText'
+        'currency_code' => 'getCurrencyCode',
+        'units' => 'getUnits',
+        'nanos' => 'getNanos'
     ];
 
     /**
@@ -263,10 +257,9 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('subreddit', $data ?? [], null);
-        $this->setIfExists('post_id', $data ?? [], null);
-        $this->setIfExists('flair_template_id', $data ?? [], null);
-        $this->setIfExists('text', $data ?? [], null);
+        $this->setIfExists('currency_code', $data ?? [], null);
+        $this->setIfExists('units', $data ?? [], null);
+        $this->setIfExists('nanos', $data ?? [], null);
     }
 
     /**
@@ -296,25 +289,12 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        if ($this->container['subreddit'] === null) {
-            $invalidProperties[] = "'subreddit' can't be null";
-        }
-        if ((mb_strlen($this->container['subreddit']) < 1)) {
-            $invalidProperties[] = "invalid value for 'subreddit', the character length must be bigger than or equal to 1.";
+        if (!is_null($this->container['currency_code']) && (mb_strlen($this->container['currency_code']) < 1)) {
+            $invalidProperties[] = "invalid value for 'currency_code', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['post_id'] === null) {
-            $invalidProperties[] = "'post_id' can't be null";
-        }
-        if ((mb_strlen($this->container['post_id']) < 1)) {
-            $invalidProperties[] = "invalid value for 'post_id', the character length must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['flair_template_id'] === null) {
-            $invalidProperties[] = "'flair_template_id' can't be null";
-        }
-        if ((mb_strlen($this->container['flair_template_id']) < 1)) {
-            $invalidProperties[] = "invalid value for 'flair_template_id', the character length must be bigger than or equal to 1.";
+        if (!is_null($this->container['units']) && (mb_strlen($this->container['units']) < 1)) {
+            $invalidProperties[] = "invalid value for 'units', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -333,124 +313,92 @@ class SetRedditPostFlairRequest implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets subreddit
-     *
-     * @return string
-     */
-    public function getSubreddit()
-    {
-        return $this->container['subreddit'];
-    }
-
-    /**
-     * Sets subreddit
-     *
-     * @param string $subreddit Subreddit name (without the \"r/\" prefix)
-     *
-     * @return self
-     */
-    public function setSubreddit($subreddit)
-    {
-        if (is_null($subreddit)) {
-            throw new \InvalidArgumentException('non-nullable subreddit cannot be null');
-        }
-
-        if ((mb_strlen($subreddit) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $subreddit when calling SetRedditPostFlairRequest., must be bigger than or equal to 1.');
-        }
-
-        $this->container['subreddit'] = $subreddit;
-
-        return $this;
-    }
-
-    /**
-     * Gets post_id
-     *
-     * @return string
-     */
-    public function getPostId()
-    {
-        return $this->container['post_id'];
-    }
-
-    /**
-     * Sets post_id
-     *
-     * @param string $post_id Reddit post id, with or without the t3_ prefix
-     *
-     * @return self
-     */
-    public function setPostId($post_id)
-    {
-        if (is_null($post_id)) {
-            throw new \InvalidArgumentException('non-nullable post_id cannot be null');
-        }
-
-        if ((mb_strlen($post_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $post_id when calling SetRedditPostFlairRequest., must be bigger than or equal to 1.');
-        }
-
-        $this->container['post_id'] = $post_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets flair_template_id
-     *
-     * @return string
-     */
-    public function getFlairTemplateId()
-    {
-        return $this->container['flair_template_id'];
-    }
-
-    /**
-     * Sets flair_template_id
-     *
-     * @param string $flair_template_id Flair template id from the GET on this path
-     *
-     * @return self
-     */
-    public function setFlairTemplateId($flair_template_id)
-    {
-        if (is_null($flair_template_id)) {
-            throw new \InvalidArgumentException('non-nullable flair_template_id cannot be null');
-        }
-
-        if ((mb_strlen($flair_template_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $flair_template_id when calling SetRedditPostFlairRequest., must be bigger than or equal to 1.');
-        }
-
-        $this->container['flair_template_id'] = $flair_template_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets text
+     * Gets currency_code
      *
      * @return string|null
      */
-    public function getText()
+    public function getCurrencyCode()
     {
-        return $this->container['text'];
+        return $this->container['currency_code'];
     }
 
     /**
-     * Sets text
+     * Sets currency_code
      *
-     * @param string|null $text Optional override text, only for editable flair templates
+     * @param string|null $currency_code currency_code
      *
      * @return self
      */
-    public function setText($text)
+    public function setCurrencyCode($currency_code)
     {
-        if (is_null($text)) {
-            throw new \InvalidArgumentException('non-nullable text cannot be null');
+        if (is_null($currency_code)) {
+            throw new \InvalidArgumentException('non-nullable currency_code cannot be null');
         }
-        $this->container['text'] = $text;
+
+        if ((mb_strlen($currency_code) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $currency_code when calling UpdateGoogleBusinessServicesRequestServiceItemsInnerPrice., must be bigger than or equal to 1.');
+        }
+
+        $this->container['currency_code'] = $currency_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets units
+     *
+     * @return string|null
+     */
+    public function getUnits()
+    {
+        return $this->container['units'];
+    }
+
+    /**
+     * Sets units
+     *
+     * @param string|null $units units
+     *
+     * @return self
+     */
+    public function setUnits($units)
+    {
+        if (is_null($units)) {
+            throw new \InvalidArgumentException('non-nullable units cannot be null');
+        }
+
+        if ((mb_strlen($units) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $units when calling UpdateGoogleBusinessServicesRequestServiceItemsInnerPrice., must be bigger than or equal to 1.');
+        }
+
+        $this->container['units'] = $units;
+
+        return $this;
+    }
+
+    /**
+     * Gets nanos
+     *
+     * @return int|null
+     */
+    public function getNanos()
+    {
+        return $this->container['nanos'];
+    }
+
+    /**
+     * Sets nanos
+     *
+     * @param int|null $nanos nanos
+     *
+     * @return self
+     */
+    public function setNanos($nanos)
+    {
+        if (is_null($nanos)) {
+            throw new \InvalidArgumentException('non-nullable nanos cannot be null');
+        }
+        $this->container['nanos'] = $nanos;
 
         return $this;
     }

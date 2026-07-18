@@ -1047,6 +1047,9 @@ class GMBPlaceActionsApi
         if ($page_size !== null && $page_size > 100) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling GMBPlaceActionsApi.listGoogleBusinessPlaceActions, must be smaller than or equal to 100.');
         }
+        if ($page_size !== null && $page_size < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling GMBPlaceActionsApi.listGoogleBusinessPlaceActions, must be bigger than or equal to 1.');
+        }
         
 
 
@@ -1159,7 +1162,7 @@ class GMBPlaceActionsApi
      * Update action link
      *
      * @param  string $account_id account_id (required)
-     * @param  \Zernio\Model\UpdateGoogleBusinessPlaceActionRequest $update_google_business_place_action_request update_google_business_place_action_request (required)
+     * @param  \Zernio\Model\UpdateGoogleBusinessPlaceActionRequest|null $update_google_business_place_action_request update_google_business_place_action_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessPlaceAction'] to see the possible values for this operation
      *
@@ -1179,7 +1182,7 @@ class GMBPlaceActionsApi
      * Update action link
      *
      * @param  string $account_id (required)
-     * @param  \Zernio\Model\UpdateGoogleBusinessPlaceActionRequest $update_google_business_place_action_request (required)
+     * @param  \Zernio\Model\UpdateGoogleBusinessPlaceActionRequest|null $update_google_business_place_action_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessPlaceAction'] to see the possible values for this operation
      *
@@ -1294,7 +1297,7 @@ class GMBPlaceActionsApi
      * Update action link
      *
      * @param  string $account_id (required)
-     * @param  \Zernio\Model\UpdateGoogleBusinessPlaceActionRequest $update_google_business_place_action_request (required)
+     * @param  \Zernio\Model\UpdateGoogleBusinessPlaceActionRequest|null $update_google_business_place_action_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessPlaceAction'] to see the possible values for this operation
      *
@@ -1317,7 +1320,7 @@ class GMBPlaceActionsApi
      * Update action link
      *
      * @param  string $account_id (required)
-     * @param  \Zernio\Model\UpdateGoogleBusinessPlaceActionRequest $update_google_business_place_action_request (required)
+     * @param  \Zernio\Model\UpdateGoogleBusinessPlaceActionRequest|null $update_google_business_place_action_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessPlaceAction'] to see the possible values for this operation
      *
@@ -1369,7 +1372,7 @@ class GMBPlaceActionsApi
      * Create request for operation 'updateGoogleBusinessPlaceAction'
      *
      * @param  string $account_id (required)
-     * @param  \Zernio\Model\UpdateGoogleBusinessPlaceActionRequest $update_google_business_place_action_request (required)
+     * @param  \Zernio\Model\UpdateGoogleBusinessPlaceActionRequest|null $update_google_business_place_action_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessPlaceAction'] to see the possible values for this operation
      *

@@ -265,6 +265,25 @@ class FoodMenuItemAttributes implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$openAPIModelName;
     }
 
+    public const SPICINESS_SPICINESS_UNSPECIFIED = 'SPICINESS_UNSPECIFIED';
+    public const SPICINESS_MILD = 'MILD';
+    public const SPICINESS_MEDIUM = 'MEDIUM';
+    public const SPICINESS_HOT = 'HOT';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSpicinessAllowableValues()
+    {
+        return [
+            self::SPICINESS_SPICINESS_UNSPECIFIED,
+            self::SPICINESS_MILD,
+            self::SPICINESS_MEDIUM,
+            self::SPICINESS_HOT,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -316,6 +335,19 @@ class FoodMenuItemAttributes implements ModelInterface, ArrayAccess, \JsonSerial
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getSpicinessAllowableValues();
+        if (!is_null($this->container['spiciness']) && !in_array($this->container['spiciness'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'spiciness', must be one of '%s'",
+                $this->container['spiciness'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if (!is_null($this->container['serves_num_people']) && ($this->container['serves_num_people'] < 1)) {
+            $invalidProperties[] = "invalid value for 'serves_num_people', must be bigger than or equal to 1.";
+        }
 
         return $invalidProperties;
     }
@@ -380,6 +412,16 @@ class FoodMenuItemAttributes implements ModelInterface, ArrayAccess, \JsonSerial
     {
         if (is_null($spiciness)) {
             throw new \InvalidArgumentException('non-nullable spiciness cannot be null');
+        }
+        $allowedValues = $this->getSpicinessAllowableValues();
+        if (!in_array($spiciness, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'spiciness', must be one of '%s'",
+                    $spiciness,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
         $this->container['spiciness'] = $spiciness;
 
@@ -462,6 +504,11 @@ class FoodMenuItemAttributes implements ModelInterface, ArrayAccess, \JsonSerial
         if (is_null($serves_num_people)) {
             throw new \InvalidArgumentException('non-nullable serves_num_people cannot be null');
         }
+
+        if (($serves_num_people < 1)) {
+            throw new \InvalidArgumentException('invalid value for $serves_num_people when calling FoodMenuItemAttributes., must be bigger than or equal to 1.');
+        }
+
         $this->container['serves_num_people'] = $serves_num_people;
 
         return $this;

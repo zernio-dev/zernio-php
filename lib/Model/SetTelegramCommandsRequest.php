@@ -278,6 +278,10 @@ class SetTelegramCommandsRequest implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['commands'] === null) {
             $invalidProperties[] = "'commands' can't be null";
         }
+        if ((count($this->container['commands']) > 100)) {
+            $invalidProperties[] = "invalid value for 'commands', number of items must be less than or equal to 100.";
+        }
+
         return $invalidProperties;
     }
 
@@ -314,6 +318,10 @@ class SetTelegramCommandsRequest implements ModelInterface, ArrayAccess, \JsonSe
     {
         if (is_null($commands)) {
             throw new \InvalidArgumentException('non-nullable commands cannot be null');
+        }
+
+        if ((count($commands) > 100)) {
+            throw new \InvalidArgumentException('invalid value for $commands when calling SetTelegramCommandsRequest., number of items must be less than or equal to 100.');
         }
         $this->container['commands'] = $commands;
 

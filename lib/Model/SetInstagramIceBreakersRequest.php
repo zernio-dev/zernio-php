@@ -282,6 +282,10 @@ class SetInstagramIceBreakersRequest implements ModelInterface, ArrayAccess, \Js
             $invalidProperties[] = "invalid value for 'ice_breakers', number of items must be less than or equal to 4.";
         }
 
+        if ((count($this->container['ice_breakers']) < 1)) {
+            $invalidProperties[] = "invalid value for 'ice_breakers', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -322,6 +326,9 @@ class SetInstagramIceBreakersRequest implements ModelInterface, ArrayAccess, \Js
 
         if ((count($ice_breakers) > 4)) {
             throw new \InvalidArgumentException('invalid value for $ice_breakers when calling SetInstagramIceBreakersRequest., number of items must be less than or equal to 4.');
+        }
+        if ((count($ice_breakers) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $ice_breakers when calling SetInstagramIceBreakersRequest., number of items must be greater than or equal to 1.');
         }
         $this->container['ice_breakers'] = $ice_breakers;
 

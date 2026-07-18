@@ -278,6 +278,10 @@ class UpdateRedditSubredditsRequest implements ModelInterface, ArrayAccess, \Jso
         if ($this->container['default_subreddit'] === null) {
             $invalidProperties[] = "'default_subreddit' can't be null";
         }
+        if ((mb_strlen($this->container['default_subreddit']) < 1)) {
+            $invalidProperties[] = "invalid value for 'default_subreddit', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -315,6 +319,11 @@ class UpdateRedditSubredditsRequest implements ModelInterface, ArrayAccess, \Jso
         if (is_null($default_subreddit)) {
             throw new \InvalidArgumentException('non-nullable default_subreddit cannot be null');
         }
+
+        if ((mb_strlen($default_subreddit) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $default_subreddit when calling UpdateRedditSubredditsRequest., must be bigger than or equal to 1.');
+        }
+
         $this->container['default_subreddit'] = $default_subreddit;
 
         return $this;

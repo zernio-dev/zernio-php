@@ -72,7 +72,7 @@ class CreateGoogleBusinessMediaRequest implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'source_url' => null,
+        'source_url' => 'uri',
         'media_format' => null,
         'description' => null,
         'category' => null
@@ -249,15 +249,19 @@ class CreateGoogleBusinessMediaRequest implements ModelInterface, ArrayAccess, \
 
     public const MEDIA_FORMAT_PHOTO = 'PHOTO';
     public const MEDIA_FORMAT_VIDEO = 'VIDEO';
+    public const CATEGORY_CATEGORY_UNSPECIFIED = 'CATEGORY_UNSPECIFIED';
     public const CATEGORY_COVER = 'COVER';
     public const CATEGORY_PROFILE = 'PROFILE';
     public const CATEGORY_LOGO = 'LOGO';
     public const CATEGORY_EXTERIOR = 'EXTERIOR';
     public const CATEGORY_INTERIOR = 'INTERIOR';
+    public const CATEGORY_PRODUCT = 'PRODUCT';
     public const CATEGORY_FOOD_AND_DRINK = 'FOOD_AND_DRINK';
     public const CATEGORY_MENU = 'MENU';
-    public const CATEGORY_PRODUCT = 'PRODUCT';
+    public const CATEGORY_COMMON_AREA = 'COMMON_AREA';
+    public const CATEGORY_ROOMS = 'ROOMS';
     public const CATEGORY_TEAMS = 'TEAMS';
+    public const CATEGORY_AT_WORK = 'AT_WORK';
     public const CATEGORY_ADDITIONAL = 'ADDITIONAL';
 
     /**
@@ -281,15 +285,19 @@ class CreateGoogleBusinessMediaRequest implements ModelInterface, ArrayAccess, \
     public function getCategoryAllowableValues()
     {
         return [
+            self::CATEGORY_CATEGORY_UNSPECIFIED,
             self::CATEGORY_COVER,
             self::CATEGORY_PROFILE,
             self::CATEGORY_LOGO,
             self::CATEGORY_EXTERIOR,
             self::CATEGORY_INTERIOR,
+            self::CATEGORY_PRODUCT,
             self::CATEGORY_FOOD_AND_DRINK,
             self::CATEGORY_MENU,
-            self::CATEGORY_PRODUCT,
+            self::CATEGORY_COMMON_AREA,
+            self::CATEGORY_ROOMS,
             self::CATEGORY_TEAMS,
+            self::CATEGORY_AT_WORK,
             self::CATEGORY_ADDITIONAL,
         ];
     }
@@ -352,6 +360,10 @@ class CreateGoogleBusinessMediaRequest implements ModelInterface, ArrayAccess, \
                 $this->container['media_format'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) < 1)) {
+            $invalidProperties[] = "invalid value for 'description', the character length must be bigger than or equal to 1.";
         }
 
         $allowedValues = $this->getCategoryAllowableValues();
@@ -464,6 +476,11 @@ class CreateGoogleBusinessMediaRequest implements ModelInterface, ArrayAccess, \
         if (is_null($description)) {
             throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
+
+        if ((mb_strlen($description) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $description when calling CreateGoogleBusinessMediaRequest., must be bigger than or equal to 1.');
+        }
+
         $this->container['description'] = $description;
 
         return $this;

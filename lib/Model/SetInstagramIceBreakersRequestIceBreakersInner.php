@@ -289,9 +289,17 @@ class SetInstagramIceBreakersRequestIceBreakersInner implements ModelInterface, 
             $invalidProperties[] = "invalid value for 'question', the character length must be smaller than or equal to 80.";
         }
 
+        if ((mb_strlen($this->container['question']) < 1)) {
+            $invalidProperties[] = "invalid value for 'question', the character length must be bigger than or equal to 1.";
+        }
+
         if ($this->container['payload'] === null) {
             $invalidProperties[] = "'payload' can't be null";
         }
+        if ((mb_strlen($this->container['payload']) < 1)) {
+            $invalidProperties[] = "invalid value for 'payload', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -332,6 +340,9 @@ class SetInstagramIceBreakersRequestIceBreakersInner implements ModelInterface, 
         if ((mb_strlen($question) > 80)) {
             throw new \InvalidArgumentException('invalid length for $question when calling SetInstagramIceBreakersRequestIceBreakersInner., must be smaller than or equal to 80.');
         }
+        if ((mb_strlen($question) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $question when calling SetInstagramIceBreakersRequestIceBreakersInner., must be bigger than or equal to 1.');
+        }
 
         $this->container['question'] = $question;
 
@@ -360,6 +371,11 @@ class SetInstagramIceBreakersRequestIceBreakersInner implements ModelInterface, 
         if (is_null($payload)) {
             throw new \InvalidArgumentException('non-nullable payload cannot be null');
         }
+
+        if ((mb_strlen($payload) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $payload when calling SetInstagramIceBreakersRequestIceBreakersInner., must be bigger than or equal to 1.');
+        }
+
         $this->container['payload'] = $payload;
 
         return $this;

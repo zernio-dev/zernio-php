@@ -5777,14 +5777,14 @@ class AnalyticsApi
      * @param  string $account_id The ID of the LinkedIn organization account (required)
      * @param  string $urn The LinkedIn post URN (required)
      * @param  int|null $limit Maximum number of reactions to return per page (optional, default to 25)
-     * @param  string|null $cursor Offset-based pagination start index (optional)
+     * @param  int|null $cursor Offset-based pagination start index (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInPostReactions'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetLinkedInPostReactions200Response|\Zernio\Model\GetLinkedInPostReactions400Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetLinkedInPostReactions200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
      */
-    public function getLinkedInPostReactions($account_id, $urn, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getLinkedInPostReactions'][0])
+    public function getLinkedInPostReactions($account_id, $urn, $limit = 25, $cursor = 0, string $contentType = self::contentTypes['getLinkedInPostReactions'][0])
     {
         list($response) = $this->getLinkedInPostReactionsWithHttpInfo($account_id, $urn, $limit, $cursor, $contentType);
         return $response;
@@ -5798,14 +5798,14 @@ class AnalyticsApi
      * @param  string $account_id The ID of the LinkedIn organization account (required)
      * @param  string $urn The LinkedIn post URN (required)
      * @param  int|null $limit Maximum number of reactions to return per page (optional, default to 25)
-     * @param  string|null $cursor Offset-based pagination start index (optional)
+     * @param  int|null $cursor Offset-based pagination start index (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInPostReactions'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetLinkedInPostReactions200Response|\Zernio\Model\GetLinkedInPostReactions400Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetLinkedInPostReactions200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getLinkedInPostReactionsWithHttpInfo($account_id, $urn, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getLinkedInPostReactions'][0])
+    public function getLinkedInPostReactionsWithHttpInfo($account_id, $urn, $limit = 25, $cursor = 0, string $contentType = self::contentTypes['getLinkedInPostReactions'][0])
     {
         $request = $this->getLinkedInPostReactionsRequest($account_id, $urn, $limit, $cursor, $contentType);
 
@@ -5841,7 +5841,7 @@ class AnalyticsApi
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\GetLinkedInPostReactions400Response',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -5886,7 +5886,7 @@ class AnalyticsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\GetLinkedInPostReactions400Response',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5914,13 +5914,13 @@ class AnalyticsApi
      * @param  string $account_id The ID of the LinkedIn organization account (required)
      * @param  string $urn The LinkedIn post URN (required)
      * @param  int|null $limit Maximum number of reactions to return per page (optional, default to 25)
-     * @param  string|null $cursor Offset-based pagination start index (optional)
+     * @param  int|null $cursor Offset-based pagination start index (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInPostReactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getLinkedInPostReactionsAsync($account_id, $urn, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getLinkedInPostReactions'][0])
+    public function getLinkedInPostReactionsAsync($account_id, $urn, $limit = 25, $cursor = 0, string $contentType = self::contentTypes['getLinkedInPostReactions'][0])
     {
         return $this->getLinkedInPostReactionsAsyncWithHttpInfo($account_id, $urn, $limit, $cursor, $contentType)
             ->then(
@@ -5938,13 +5938,13 @@ class AnalyticsApi
      * @param  string $account_id The ID of the LinkedIn organization account (required)
      * @param  string $urn The LinkedIn post URN (required)
      * @param  int|null $limit Maximum number of reactions to return per page (optional, default to 25)
-     * @param  string|null $cursor Offset-based pagination start index (optional)
+     * @param  int|null $cursor Offset-based pagination start index (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInPostReactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getLinkedInPostReactionsAsyncWithHttpInfo($account_id, $urn, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getLinkedInPostReactions'][0])
+    public function getLinkedInPostReactionsAsyncWithHttpInfo($account_id, $urn, $limit = 25, $cursor = 0, string $contentType = self::contentTypes['getLinkedInPostReactions'][0])
     {
         $returnType = '\Zernio\Model\GetLinkedInPostReactions200Response';
         $request = $this->getLinkedInPostReactionsRequest($account_id, $urn, $limit, $cursor, $contentType);
@@ -5991,13 +5991,13 @@ class AnalyticsApi
      * @param  string $account_id The ID of the LinkedIn organization account (required)
      * @param  string $urn The LinkedIn post URN (required)
      * @param  int|null $limit Maximum number of reactions to return per page (optional, default to 25)
-     * @param  string|null $cursor Offset-based pagination start index (optional)
+     * @param  int|null $cursor Offset-based pagination start index (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInPostReactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getLinkedInPostReactionsRequest($account_id, $urn, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getLinkedInPostReactions'][0])
+    public function getLinkedInPostReactionsRequest($account_id, $urn, $limit = 25, $cursor = 0, string $contentType = self::contentTypes['getLinkedInPostReactions'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -6013,7 +6013,10 @@ class AnalyticsApi
                 'Missing the required parameter $urn when calling getLinkedInPostReactions'
             );
         }
-
+        if (!preg_match("/^urn:li:(share|ugcPost|activity):[0-9]+$/", $urn)) {
+            throw new \InvalidArgumentException("invalid value for \"urn\" when calling AnalyticsApi.getLinkedInPostReactions, must conform to the pattern /^urn:li:(share|ugcPost|activity):[0-9]+$/.");
+        }
+        
         if ($limit !== null && $limit > 100) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling AnalyticsApi.getLinkedInPostReactions, must be smaller than or equal to 100.');
         }
@@ -6021,7 +6024,10 @@ class AnalyticsApi
             throw new \InvalidArgumentException('invalid value for "$limit" when calling AnalyticsApi.getLinkedInPostReactions, must be bigger than or equal to 1.');
         }
         
-
+        if ($cursor !== null && $cursor < 0) {
+            throw new \InvalidArgumentException('invalid value for "$cursor" when calling AnalyticsApi.getLinkedInPostReactions, must be bigger than or equal to 0.');
+        }
+        
 
         $resourcePath = '/v1/accounts/{accountId}/linkedin-post-reactions';
         $formParams = [];
@@ -6052,7 +6058,7 @@ class AnalyticsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $cursor,
             'cursor', // param base name
-            'string', // openApiType
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required

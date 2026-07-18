@@ -759,7 +759,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetAllAccountsHealth200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetAllAccountsHealth200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
      */
     public function getAllAccountsHealth($profile_id = null, $platform = null, $status = null, string $contentType = self::contentTypes['getAllAccountsHealth'][0])
     {
@@ -779,7 +779,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetAllAccountsHealth200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetAllAccountsHealth200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAllAccountsHealthWithHttpInfo($profile_id = null, $platform = null, $status = null, string $contentType = self::contentTypes['getAllAccountsHealth'][0])
     {
@@ -812,6 +812,12 @@ class AccountsApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\GetAllAccountsHealth200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -849,6 +855,14 @@ class AccountsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\GetAllAccountsHealth200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

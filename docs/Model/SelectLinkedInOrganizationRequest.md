@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **temp_token** | **string** |  |
 **user_profile** | **object** |  |
 **account_type** | **string** |  |
-**selected_organization** | **object** |  | [optional]
+**selected_organization** | [**\Zernio\Model\SelectLinkedInOrganizationRequestSelectedOrganization**](SelectLinkedInOrganizationRequestSelectedOrganization.md) |  | [optional]
 **redirect_url** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

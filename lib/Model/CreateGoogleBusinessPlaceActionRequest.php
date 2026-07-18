@@ -70,7 +70,7 @@ class CreateGoogleBusinessPlaceActionRequest implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'uri' => null,
+        'uri' => 'uri',
         'place_action_type' => null
     ];
 

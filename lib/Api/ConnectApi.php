@@ -4797,7 +4797,10 @@ class ConnectApi
                 'Missing the required parameter $subreddit when calling getRedditFlairs'
             );
         }
-
+        if (strlen($subreddit) < 1) {
+            throw new \InvalidArgumentException('invalid length for "$subreddit" when calling ConnectApi.getRedditFlairs, must be bigger than or equal to 1.');
+        }
+        
 
         $resourcePath = '/v1/accounts/{accountId}/reddit-flairs';
         $formParams = [];
@@ -10957,7 +10960,7 @@ class ConnectApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ConnectBlueskyCredentials200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UpdateLinkedInOrganization200Response|\Zernio\Model\InlineObject
      */
     public function updateLinkedInOrganization($account_id, $update_linked_in_organization_request, string $contentType = self::contentTypes['updateLinkedInOrganization'][0])
     {
@@ -10976,7 +10979,7 @@ class ConnectApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ConnectBlueskyCredentials200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateLinkedInOrganization200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateLinkedInOrganizationWithHttpInfo($account_id, $update_linked_in_organization_request, string $contentType = self::contentTypes['updateLinkedInOrganization'][0])
     {
@@ -11008,7 +11011,7 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\ConnectBlueskyCredentials200Response',
+                        '\Zernio\Model\UpdateLinkedInOrganization200Response',
                         $request,
                         $response,
                     );
@@ -11036,7 +11039,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\ConnectBlueskyCredentials200Response',
+                '\Zernio\Model\UpdateLinkedInOrganization200Response',
                 $request,
                 $response,
             );
@@ -11045,7 +11048,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\ConnectBlueskyCredentials200Response',
+                        '\Zernio\Model\UpdateLinkedInOrganization200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -11101,7 +11104,7 @@ class ConnectApi
      */
     public function updateLinkedInOrganizationAsyncWithHttpInfo($account_id, $update_linked_in_organization_request, string $contentType = self::contentTypes['updateLinkedInOrganization'][0])
     {
-        $returnType = '\Zernio\Model\ConnectBlueskyCredentials200Response';
+        $returnType = '\Zernio\Model\UpdateLinkedInOrganization200Response';
         $request = $this->updateLinkedInOrganizationRequest($account_id, $update_linked_in_organization_request, $contentType);
 
         return $this->client

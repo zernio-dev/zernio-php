@@ -1076,7 +1076,7 @@ $apiInstance = new Zernio\Api\AnalyticsApi(
 $account_id = 'account_id_example'; // string | The ID of the LinkedIn organization account
 $urn = urn:li:share:7123456789012345678; // string | The LinkedIn post URN
 $limit = 25; // int | Maximum number of reactions to return per page
-$cursor = 'cursor_example'; // string | Offset-based pagination start index
+$cursor = 0; // int | Offset-based pagination start index
 
 try {
     $result = $apiInstance->getLinkedInPostReactions($account_id, $urn, $limit, $cursor);
@@ -1093,7 +1093,7 @@ try {
 | **account_id** | **string**| The ID of the LinkedIn organization account | |
 | **urn** | **string**| The LinkedIn post URN | |
 | **limit** | **int**| Maximum number of reactions to return per page | [optional] [default to 25] |
-| **cursor** | **string**| Offset-based pagination start index | [optional] |
+| **cursor** | **int**| Offset-based pagination start index | [optional] [default to 0] |
 
 ### Return type
 

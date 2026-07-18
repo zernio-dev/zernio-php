@@ -59,7 +59,8 @@ class UpdateGmbLocationRequest implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPITypes = [
         'selected_location_id' => 'string',
-        'google_account_id' => 'string'
+        'google_account_id' => 'string',
+        'account_id' => 'string'
     ];
 
     /**
@@ -71,7 +72,8 @@ class UpdateGmbLocationRequest implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPIFormats = [
         'selected_location_id' => null,
-        'google_account_id' => null
+        'google_account_id' => null,
+        'account_id' => null
     ];
 
     /**
@@ -81,7 +83,8 @@ class UpdateGmbLocationRequest implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static array $openAPINullables = [
         'selected_location_id' => false,
-        'google_account_id' => false
+        'google_account_id' => false,
+        'account_id' => false
     ];
 
     /**
@@ -171,7 +174,8 @@ class UpdateGmbLocationRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $attributeMap = [
         'selected_location_id' => 'selectedLocationId',
-        'google_account_id' => 'googleAccountId'
+        'google_account_id' => 'googleAccountId',
+        'account_id' => 'accountId'
     ];
 
     /**
@@ -181,7 +185,8 @@ class UpdateGmbLocationRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $setters = [
         'selected_location_id' => 'setSelectedLocationId',
-        'google_account_id' => 'setGoogleAccountId'
+        'google_account_id' => 'setGoogleAccountId',
+        'account_id' => 'setAccountId'
     ];
 
     /**
@@ -191,7 +196,8 @@ class UpdateGmbLocationRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $getters = [
         'selected_location_id' => 'getSelectedLocationId',
-        'google_account_id' => 'getGoogleAccountId'
+        'google_account_id' => 'getGoogleAccountId',
+        'account_id' => 'getAccountId'
     ];
 
     /**
@@ -253,6 +259,7 @@ class UpdateGmbLocationRequest implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $this->setIfExists('selected_location_id', $data ?? [], null);
         $this->setIfExists('google_account_id', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
     }
 
     /**
@@ -285,6 +292,18 @@ class UpdateGmbLocationRequest implements ModelInterface, ArrayAccess, \JsonSeri
         if ($this->container['selected_location_id'] === null) {
             $invalidProperties[] = "'selected_location_id' can't be null";
         }
+        if ((mb_strlen($this->container['selected_location_id']) < 1)) {
+            $invalidProperties[] = "invalid value for 'selected_location_id', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['google_account_id']) && (mb_strlen($this->container['google_account_id']) < 1)) {
+            $invalidProperties[] = "invalid value for 'google_account_id', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['account_id']) && (mb_strlen($this->container['account_id']) < 1)) {
+            $invalidProperties[] = "invalid value for 'account_id', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -322,6 +341,11 @@ class UpdateGmbLocationRequest implements ModelInterface, ArrayAccess, \JsonSeri
         if (is_null($selected_location_id)) {
             throw new \InvalidArgumentException('non-nullable selected_location_id cannot be null');
         }
+
+        if ((mb_strlen($selected_location_id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $selected_location_id when calling UpdateGmbLocationRequest., must be bigger than or equal to 1.');
+        }
+
         $this->container['selected_location_id'] = $selected_location_id;
 
         return $this;
@@ -349,7 +373,46 @@ class UpdateGmbLocationRequest implements ModelInterface, ArrayAccess, \JsonSeri
         if (is_null($google_account_id)) {
             throw new \InvalidArgumentException('non-nullable google_account_id cannot be null');
         }
+
+        if ((mb_strlen($google_account_id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $google_account_id when calling UpdateGmbLocationRequest., must be bigger than or equal to 1.');
+        }
+
         $this->container['google_account_id'] = $google_account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_id
+     *
+     * @return string|null
+     * @deprecated
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id Legacy alias for googleAccountId. Use googleAccountId for new integrations.
+     *
+     * @return self
+     * @deprecated
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+
+        if ((mb_strlen($account_id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $account_id when calling UpdateGmbLocationRequest., must be bigger than or equal to 1.');
+        }
+
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }

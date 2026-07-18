@@ -140,7 +140,7 @@ class GMBServicesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetGoogleBusinessServices200Response|\Zernio\Model\ErrorResponse
+     * @return \Zernio\Model\GetGoogleBusinessServices200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
     public function getGoogleBusinessServices($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessServices'][0])
     {
@@ -159,7 +159,7 @@ class GMBServicesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetGoogleBusinessServices200Response|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetGoogleBusinessServices200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getGoogleBusinessServicesWithHttpInfo($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessServices'][0])
     {
@@ -192,6 +192,12 @@ class GMBServicesApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\GetGoogleBusinessServices200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -229,6 +235,14 @@ class GMBServicesApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\GetGoogleBusinessServices200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

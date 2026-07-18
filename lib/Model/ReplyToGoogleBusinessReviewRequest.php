@@ -278,6 +278,10 @@ class ReplyToGoogleBusinessReviewRequest implements ModelInterface, ArrayAccess,
         if ($this->container['comment'] === null) {
             $invalidProperties[] = "'comment' can't be null";
         }
+        if ((mb_strlen($this->container['comment']) < 1)) {
+            $invalidProperties[] = "invalid value for 'comment', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -315,6 +319,11 @@ class ReplyToGoogleBusinessReviewRequest implements ModelInterface, ArrayAccess,
         if (is_null($comment)) {
             throw new \InvalidArgumentException('non-nullable comment cannot be null');
         }
+
+        if ((mb_strlen($comment) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $comment when calling ReplyToGoogleBusinessReviewRequest., must be bigger than or equal to 1.');
+        }
+
         $this->container['comment'] = $comment;
 
         return $this;

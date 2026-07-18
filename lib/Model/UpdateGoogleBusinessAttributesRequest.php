@@ -288,6 +288,10 @@ class UpdateGoogleBusinessAttributesRequest implements ModelInterface, ArrayAcce
         if ($this->container['attribute_mask'] === null) {
             $invalidProperties[] = "'attribute_mask' can't be null";
         }
+        if ((mb_strlen($this->container['attribute_mask']) < 1)) {
+            $invalidProperties[] = "invalid value for 'attribute_mask', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -352,6 +356,11 @@ class UpdateGoogleBusinessAttributesRequest implements ModelInterface, ArrayAcce
         if (is_null($attribute_mask)) {
             throw new \InvalidArgumentException('non-nullable attribute_mask cannot be null');
         }
+
+        if ((mb_strlen($attribute_mask) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $attribute_mask when calling UpdateGoogleBusinessAttributesRequest., must be bigger than or equal to 1.');
+        }
+
         $this->container['attribute_mask'] = $attribute_mask;
 
         return $this;

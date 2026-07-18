@@ -59,8 +59,10 @@ class UpdateGoogleBusinessAttributesRequestAttributesInner implements ModelInter
       */
     protected static $openAPITypes = [
         'name' => 'string',
+        'value_type' => 'string',
         'values' => 'mixed[]',
-        'repeated_enum_value' => '\Zernio\Model\GetGoogleBusinessAttributes200ResponseAttributesInnerRepeatedEnumValue'
+        'repeated_enum_value' => '\Zernio\Model\GetGoogleBusinessAttributes200ResponseAttributesInnerRepeatedEnumValue',
+        'uri_values' => '\Zernio\Model\UpdateGoogleBusinessAttributesRequestAttributesInnerUriValuesInner[]'
     ];
 
     /**
@@ -72,8 +74,10 @@ class UpdateGoogleBusinessAttributesRequestAttributesInner implements ModelInter
       */
     protected static $openAPIFormats = [
         'name' => null,
+        'value_type' => null,
         'values' => null,
-        'repeated_enum_value' => null
+        'repeated_enum_value' => null,
+        'uri_values' => null
     ];
 
     /**
@@ -83,8 +87,10 @@ class UpdateGoogleBusinessAttributesRequestAttributesInner implements ModelInter
       */
     protected static array $openAPINullables = [
         'name' => false,
+        'value_type' => false,
         'values' => false,
-        'repeated_enum_value' => false
+        'repeated_enum_value' => false,
+        'uri_values' => false
     ];
 
     /**
@@ -174,8 +180,10 @@ class UpdateGoogleBusinessAttributesRequestAttributesInner implements ModelInter
      */
     protected static $attributeMap = [
         'name' => 'name',
+        'value_type' => 'valueType',
         'values' => 'values',
-        'repeated_enum_value' => 'repeatedEnumValue'
+        'repeated_enum_value' => 'repeatedEnumValue',
+        'uri_values' => 'uriValues'
     ];
 
     /**
@@ -185,8 +193,10 @@ class UpdateGoogleBusinessAttributesRequestAttributesInner implements ModelInter
      */
     protected static $setters = [
         'name' => 'setName',
+        'value_type' => 'setValueType',
         'values' => 'setValues',
-        'repeated_enum_value' => 'setRepeatedEnumValue'
+        'repeated_enum_value' => 'setRepeatedEnumValue',
+        'uri_values' => 'setUriValues'
     ];
 
     /**
@@ -196,8 +206,10 @@ class UpdateGoogleBusinessAttributesRequestAttributesInner implements ModelInter
      */
     protected static $getters = [
         'name' => 'getName',
+        'value_type' => 'getValueType',
         'values' => 'getValues',
-        'repeated_enum_value' => 'getRepeatedEnumValue'
+        'repeated_enum_value' => 'getRepeatedEnumValue',
+        'uri_values' => 'getUriValues'
     ];
 
     /**
@@ -241,6 +253,27 @@ class UpdateGoogleBusinessAttributesRequestAttributesInner implements ModelInter
         return self::$openAPIModelName;
     }
 
+    public const VALUE_TYPE_ATTRIBUTE_VALUE_TYPE_UNSPECIFIED = 'ATTRIBUTE_VALUE_TYPE_UNSPECIFIED';
+    public const VALUE_TYPE_BOOL = 'BOOL';
+    public const VALUE_TYPE_ENUM = 'ENUM';
+    public const VALUE_TYPE_URL = 'URL';
+    public const VALUE_TYPE_REPEATED_ENUM = 'REPEATED_ENUM';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getValueTypeAllowableValues()
+    {
+        return [
+            self::VALUE_TYPE_ATTRIBUTE_VALUE_TYPE_UNSPECIFIED,
+            self::VALUE_TYPE_BOOL,
+            self::VALUE_TYPE_ENUM,
+            self::VALUE_TYPE_URL,
+            self::VALUE_TYPE_REPEATED_ENUM,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -258,8 +291,10 @@ class UpdateGoogleBusinessAttributesRequestAttributesInner implements ModelInter
     public function __construct(?array $data = null)
     {
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('value_type', $data ?? [], null);
         $this->setIfExists('values', $data ?? [], null);
         $this->setIfExists('repeated_enum_value', $data ?? [], null);
+        $this->setIfExists('uri_values', $data ?? [], null);
     }
 
     /**
@@ -289,6 +324,22 @@ class UpdateGoogleBusinessAttributesRequestAttributesInner implements ModelInter
     {
         $invalidProperties = [];
 
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ((mb_strlen($this->container['name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
+        }
+
+        $allowedValues = $this->getValueTypeAllowableValues();
+        if (!is_null($this->container['value_type']) && !in_array($this->container['value_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'value_type', must be one of '%s'",
+                $this->container['value_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -307,7 +358,7 @@ class UpdateGoogleBusinessAttributesRequestAttributesInner implements ModelInter
     /**
      * Gets name
      *
-     * @return string|null
+     * @return string
      */
     public function getName()
     {
@@ -317,7 +368,7 @@ class UpdateGoogleBusinessAttributesRequestAttributesInner implements ModelInter
     /**
      * Sets name
      *
-     * @param string|null $name name
+     * @param string $name name
      *
      * @return self
      */
@@ -326,7 +377,49 @@ class UpdateGoogleBusinessAttributesRequestAttributesInner implements ModelInter
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
+
+        if ((mb_strlen($name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling UpdateGoogleBusinessAttributesRequestAttributesInner., must be bigger than or equal to 1.');
+        }
+
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets value_type
+     *
+     * @return string|null
+     */
+    public function getValueType()
+    {
+        return $this->container['value_type'];
+    }
+
+    /**
+     * Sets value_type
+     *
+     * @param string|null $value_type value_type
+     *
+     * @return self
+     */
+    public function setValueType($value_type)
+    {
+        if (is_null($value_type)) {
+            throw new \InvalidArgumentException('non-nullable value_type cannot be null');
+        }
+        $allowedValues = $this->getValueTypeAllowableValues();
+        if (!in_array($value_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'value_type', must be one of '%s'",
+                    $value_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['value_type'] = $value_type;
 
         return $this;
     }
@@ -381,6 +474,33 @@ class UpdateGoogleBusinessAttributesRequestAttributesInner implements ModelInter
             throw new \InvalidArgumentException('non-nullable repeated_enum_value cannot be null');
         }
         $this->container['repeated_enum_value'] = $repeated_enum_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets uri_values
+     *
+     * @return \Zernio\Model\UpdateGoogleBusinessAttributesRequestAttributesInnerUriValuesInner[]|null
+     */
+    public function getUriValues()
+    {
+        return $this->container['uri_values'];
+    }
+
+    /**
+     * Sets uri_values
+     *
+     * @param \Zernio\Model\UpdateGoogleBusinessAttributesRequestAttributesInnerUriValuesInner[]|null $uri_values uri_values
+     *
+     * @return self
+     */
+    public function setUriValues($uri_values)
+    {
+        if (is_null($uri_values)) {
+            throw new \InvalidArgumentException('non-nullable uri_values cannot be null');
+        }
+        $this->container['uri_values'] = $uri_values;
 
         return $this;
     }

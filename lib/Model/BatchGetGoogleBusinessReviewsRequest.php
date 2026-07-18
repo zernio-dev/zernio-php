@@ -292,8 +292,20 @@ class BatchGetGoogleBusinessReviewsRequest implements ModelInterface, ArrayAcces
         if ($this->container['location_names'] === null) {
             $invalidProperties[] = "'location_names' can't be null";
         }
+        if ((count($this->container['location_names']) < 1)) {
+            $invalidProperties[] = "invalid value for 'location_names', number of items must be greater than or equal to 1.";
+        }
+
         if (!is_null($this->container['page_size']) && ($this->container['page_size'] > 50)) {
             $invalidProperties[] = "invalid value for 'page_size', must be smaller than or equal to 50.";
+        }
+
+        if (!is_null($this->container['page_size']) && ($this->container['page_size'] < 1)) {
+            $invalidProperties[] = "invalid value for 'page_size', must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['page_token']) && (mb_strlen($this->container['page_token']) < 1)) {
+            $invalidProperties[] = "invalid value for 'page_token', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -333,6 +345,11 @@ class BatchGetGoogleBusinessReviewsRequest implements ModelInterface, ArrayAcces
         if (is_null($location_names)) {
             throw new \InvalidArgumentException('non-nullable location_names cannot be null');
         }
+
+
+        if ((count($location_names) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $location_names when calling BatchGetGoogleBusinessReviewsRequest., number of items must be greater than or equal to 1.');
+        }
         $this->container['location_names'] = $location_names;
 
         return $this;
@@ -364,6 +381,9 @@ class BatchGetGoogleBusinessReviewsRequest implements ModelInterface, ArrayAcces
         if (($page_size > 50)) {
             throw new \InvalidArgumentException('invalid value for $page_size when calling BatchGetGoogleBusinessReviewsRequest., must be smaller than or equal to 50.');
         }
+        if (($page_size < 1)) {
+            throw new \InvalidArgumentException('invalid value for $page_size when calling BatchGetGoogleBusinessReviewsRequest., must be bigger than or equal to 1.');
+        }
 
         $this->container['page_size'] = $page_size;
 
@@ -392,6 +412,11 @@ class BatchGetGoogleBusinessReviewsRequest implements ModelInterface, ArrayAcces
         if (is_null($page_token)) {
             throw new \InvalidArgumentException('non-nullable page_token cannot be null');
         }
+
+        if ((mb_strlen($page_token) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $page_token when calling BatchGetGoogleBusinessReviewsRequest., must be bigger than or equal to 1.');
+        }
+
         $this->container['page_token'] = $page_token;
 
         return $this;

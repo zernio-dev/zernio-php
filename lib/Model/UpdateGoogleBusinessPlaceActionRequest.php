@@ -72,7 +72,7 @@ class UpdateGoogleBusinessPlaceActionRequest implements ModelInterface, ArrayAcc
       */
     protected static $openAPIFormats = [
         'name' => null,
-        'uri' => null,
+        'uri' => 'uri',
         'place_action_type' => null
     ];
 

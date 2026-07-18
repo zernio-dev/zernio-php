@@ -75,7 +75,7 @@ class FoodMenu implements ModelInterface, ArrayAccess, \JsonSerializable
         'labels' => null,
         'sections' => null,
         'cuisines' => null,
-        'source_url' => null
+        'source_url' => 'uri'
     ];
 
     /**
@@ -299,6 +299,10 @@ class FoodMenu implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['labels'] === null) {
             $invalidProperties[] = "'labels' can't be null";
         }
+        if ((count($this->container['labels']) < 1)) {
+            $invalidProperties[] = "invalid value for 'labels', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -335,6 +339,11 @@ class FoodMenu implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($labels)) {
             throw new \InvalidArgumentException('non-nullable labels cannot be null');
+        }
+
+
+        if ((count($labels) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $labels when calling FoodMenu., number of items must be greater than or equal to 1.');
         }
         $this->container['labels'] = $labels;
 

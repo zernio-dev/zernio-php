@@ -282,6 +282,16 @@ class FoodMenuItemOptionsInner implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
+        if ($this->container['labels'] === null) {
+            $invalidProperties[] = "'labels' can't be null";
+        }
+        if ((count($this->container['labels']) < 1)) {
+            $invalidProperties[] = "invalid value for 'labels', number of items must be greater than or equal to 1.";
+        }
+
+        if ($this->container['attributes'] === null) {
+            $invalidProperties[] = "'attributes' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -300,7 +310,7 @@ class FoodMenuItemOptionsInner implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets labels
      *
-     * @return \Zernio\Model\FoodMenuLabel[]|null
+     * @return \Zernio\Model\FoodMenuLabel[]
      */
     public function getLabels()
     {
@@ -310,7 +320,7 @@ class FoodMenuItemOptionsInner implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets labels
      *
-     * @param \Zernio\Model\FoodMenuLabel[]|null $labels labels
+     * @param \Zernio\Model\FoodMenuLabel[] $labels labels
      *
      * @return self
      */
@@ -318,6 +328,11 @@ class FoodMenuItemOptionsInner implements ModelInterface, ArrayAccess, \JsonSeri
     {
         if (is_null($labels)) {
             throw new \InvalidArgumentException('non-nullable labels cannot be null');
+        }
+
+
+        if ((count($labels) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $labels when calling FoodMenuItemOptionsInner., number of items must be greater than or equal to 1.');
         }
         $this->container['labels'] = $labels;
 
@@ -327,7 +342,7 @@ class FoodMenuItemOptionsInner implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets attributes
      *
-     * @return \Zernio\Model\FoodMenuItemAttributes|null
+     * @return \Zernio\Model\FoodMenuItemAttributes
      */
     public function getAttributes()
     {
@@ -337,7 +352,7 @@ class FoodMenuItemOptionsInner implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets attributes
      *
-     * @param \Zernio\Model\FoodMenuItemAttributes|null $attributes attributes
+     * @param \Zernio\Model\FoodMenuItemAttributes $attributes attributes
      *
      * @return self
      */
