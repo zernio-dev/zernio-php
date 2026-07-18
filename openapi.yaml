@@ -21005,7 +21005,9 @@ paths:
                     items:
                       type: object
                       properties:
-                        id: { type: string }
+                        id:
+                          type: string
+                          description: 'Opaque conversation identifier. Pass it back verbatim to any /v1/inbox/conversations/{conversationId} route; do not assume a fixed format.'
                         platform: { type: string }
                         accountId: { type: string }
                         accountUsername: { type: string }

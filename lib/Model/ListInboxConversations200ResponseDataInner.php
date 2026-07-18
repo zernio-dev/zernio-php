@@ -446,7 +446,7 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param string|null $id Opaque conversation identifier. Pass it back verbatim to any /v1/inbox/conversations/{conversationId} route; do not assume a fixed format.
      *
      * @return self
      */
