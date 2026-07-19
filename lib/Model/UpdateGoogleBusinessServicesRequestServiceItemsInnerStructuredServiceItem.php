@@ -36,6 +36,7 @@ use \Zernio\ObjectSerializer;
  * UpdateGoogleBusinessServicesRequestServiceItemsInnerStructuredServiceItem Class Doc Comment
  *
  * @category Class
+ * @description Exactly one of structuredServiceItem or freeFormServiceItem is required per item (enforced server-side; not modeled as oneOf because required-only oneOf branches break SDK generators).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -381,7 +381,7 @@ class UpdateGoogleBusinessPlaceActionRequest implements ModelInterface, ArrayAcc
     /**
      * Sets uri
      *
-     * @param string|null $uri New action URL
+     * @param string|null $uri New action URL. At least one of uri or placeActionType is required (enforced server-side; not modeled as anyOf because required-only anyOf branches break SDK generators).
      *
      * @return self
      */
