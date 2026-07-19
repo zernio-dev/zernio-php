@@ -306,7 +306,7 @@ class CreateStandaloneAdRequestRegionsInner implements ModelInterface, ArrayAcce
     /**
      * Sets key
      *
-     * @param string $key Meta region ID, from /v1/ads/targeting/search results.
+     * @param string $key Platform region ID, from /v1/ads/targeting/search results.
      *
      * @return self
      */
