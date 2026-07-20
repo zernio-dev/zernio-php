@@ -480,7 +480,7 @@ class AssignGoogleBusinessLocation200ResponseAccount implements ModelInterface, 
     /**
      * Sets selected_location_name
      *
-     * @param string|null $selected_location_name selected_location_name
+     * @param string|null $selected_location_name Human-readable location display name (e.g. \"Snap Fitness Dianella\"), NOT a resource name. Do not use it to build API paths.
      *
      * @return self
      */
@@ -507,7 +507,7 @@ class AssignGoogleBusinessLocation200ResponseAccount implements ModelInterface, 
     /**
      * Sets selected_location_id
      *
-     * @param string|null $selected_location_id selected_location_id
+     * @param string|null $selected_location_id Bare GBP location id (digits only). Combine with the GBP account id as accounts/{gbpAccountId}/locations/{selectedLocationId} to form the location resource names that gmb-reviews/batch expects in locationNames.
      *
      * @return self
      */

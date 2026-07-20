@@ -310,7 +310,7 @@ class BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner implements Mo
     /**
      * Sets name
      *
-     * @param string|null $name Full review resource name (accounts/_*_/locations/_*_/reviews/_*)
+     * @param string|null $name LOCATION resource name the review belongs to (accounts/{accountId}/locations/{locationId}) - NOT the review resource name. Use it to attribute the review to a location; the review identity is review.reviewId (full review resource name at review.name).
      *
      * @return self
      */
@@ -337,7 +337,7 @@ class BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner implements Mo
     /**
      * Sets review
      *
-     * @param object|null $review The review object (reviewId, starRating, comment, reviewer, createTime, updateTime, reviewReply)
+     * @param object|null $review The review object: reviewId (the review's identity), name (full review resource name, accounts/_*_/locations/_*_/reviews/_*), starRating, comment, reviewer, createTime, updateTime, reviewReply, and reviewMediaItems (review photos/videos; photo items carry thumbnailUrl, video items carry videoUrl)
      *
      * @return self
      */

@@ -60,7 +60,8 @@ class BatchGetGoogleBusinessReviewsRequest implements ModelInterface, ArrayAcces
     protected static $openAPITypes = [
         'location_names' => 'string[]',
         'page_size' => 'int',
-        'page_token' => 'string'
+        'page_token' => 'string',
+        'order_by' => 'string'
     ];
 
     /**
@@ -73,7 +74,8 @@ class BatchGetGoogleBusinessReviewsRequest implements ModelInterface, ArrayAcces
     protected static $openAPIFormats = [
         'location_names' => null,
         'page_size' => null,
-        'page_token' => null
+        'page_token' => null,
+        'order_by' => null
     ];
 
     /**
@@ -84,7 +86,8 @@ class BatchGetGoogleBusinessReviewsRequest implements ModelInterface, ArrayAcces
     protected static array $openAPINullables = [
         'location_names' => false,
         'page_size' => false,
-        'page_token' => false
+        'page_token' => false,
+        'order_by' => false
     ];
 
     /**
@@ -175,7 +178,8 @@ class BatchGetGoogleBusinessReviewsRequest implements ModelInterface, ArrayAcces
     protected static $attributeMap = [
         'location_names' => 'locationNames',
         'page_size' => 'pageSize',
-        'page_token' => 'pageToken'
+        'page_token' => 'pageToken',
+        'order_by' => 'orderBy'
     ];
 
     /**
@@ -186,7 +190,8 @@ class BatchGetGoogleBusinessReviewsRequest implements ModelInterface, ArrayAcces
     protected static $setters = [
         'location_names' => 'setLocationNames',
         'page_size' => 'setPageSize',
-        'page_token' => 'setPageToken'
+        'page_token' => 'setPageToken',
+        'order_by' => 'setOrderBy'
     ];
 
     /**
@@ -197,7 +202,8 @@ class BatchGetGoogleBusinessReviewsRequest implements ModelInterface, ArrayAcces
     protected static $getters = [
         'location_names' => 'getLocationNames',
         'page_size' => 'getPageSize',
-        'page_token' => 'getPageToken'
+        'page_token' => 'getPageToken',
+        'order_by' => 'getOrderBy'
     ];
 
     /**
@@ -241,6 +247,23 @@ class BatchGetGoogleBusinessReviewsRequest implements ModelInterface, ArrayAcces
         return self::$openAPIModelName;
     }
 
+    public const ORDER_BY_UPDATE_TIME_DESC = 'updateTime desc';
+    public const ORDER_BY_RATING = 'rating';
+    public const ORDER_BY_RATING_DESC = 'rating desc';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getOrderByAllowableValues()
+    {
+        return [
+            self::ORDER_BY_UPDATE_TIME_DESC,
+            self::ORDER_BY_RATING,
+            self::ORDER_BY_RATING_DESC,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -260,6 +283,7 @@ class BatchGetGoogleBusinessReviewsRequest implements ModelInterface, ArrayAcces
         $this->setIfExists('location_names', $data ?? [], null);
         $this->setIfExists('page_size', $data ?? [], 50);
         $this->setIfExists('page_token', $data ?? [], null);
+        $this->setIfExists('order_by', $data ?? [], 'updateTime desc');
     }
 
     /**
@@ -292,6 +316,10 @@ class BatchGetGoogleBusinessReviewsRequest implements ModelInterface, ArrayAcces
         if ($this->container['location_names'] === null) {
             $invalidProperties[] = "'location_names' can't be null";
         }
+        if ((count($this->container['location_names']) > 50)) {
+            $invalidProperties[] = "invalid value for 'location_names', number of items must be less than or equal to 50.";
+        }
+
         if ((count($this->container['location_names']) < 1)) {
             $invalidProperties[] = "invalid value for 'location_names', number of items must be greater than or equal to 1.";
         }
@@ -306,6 +334,15 @@ class BatchGetGoogleBusinessReviewsRequest implements ModelInterface, ArrayAcces
 
         if (!is_null($this->container['page_token']) && (mb_strlen($this->container['page_token']) < 1)) {
             $invalidProperties[] = "invalid value for 'page_token', the character length must be bigger than or equal to 1.";
+        }
+
+        $allowedValues = $this->getOrderByAllowableValues();
+        if (!is_null($this->container['order_by']) && !in_array($this->container['order_by'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'order_by', must be one of '%s'",
+                $this->container['order_by'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -336,7 +373,7 @@ class BatchGetGoogleBusinessReviewsRequest implements ModelInterface, ArrayAcces
     /**
      * Sets location_names
      *
-     * @param string[] $location_names Array of full location resource names (e.g. ['accounts/123/locations/456'])
+     * @param string[] $location_names Array of full location resource names (e.g. ['accounts/123/locations/456']). Max 50 per request (Google's batchGetReviews cap); chunk larger sets into multiple requests.
      *
      * @return self
      */
@@ -346,7 +383,9 @@ class BatchGetGoogleBusinessReviewsRequest implements ModelInterface, ArrayAcces
             throw new \InvalidArgumentException('non-nullable location_names cannot be null');
         }
 
-
+        if ((count($location_names) > 50)) {
+            throw new \InvalidArgumentException('invalid value for $location_names when calling BatchGetGoogleBusinessReviewsRequest., number of items must be less than or equal to 50.');
+        }
         if ((count($location_names) < 1)) {
             throw new \InvalidArgumentException('invalid length for $location_names when calling BatchGetGoogleBusinessReviewsRequest., number of items must be greater than or equal to 1.');
         }
@@ -418,6 +457,43 @@ class BatchGetGoogleBusinessReviewsRequest implements ModelInterface, ArrayAcces
         }
 
         $this->container['page_token'] = $page_token;
+
+        return $this;
+    }
+
+    /**
+     * Gets order_by
+     *
+     * @return string|null
+     */
+    public function getOrderBy()
+    {
+        return $this->container['order_by'];
+    }
+
+    /**
+     * Sets order_by
+     *
+     * @param string|null $order_by Sort order requested from Google. Defaults to 'updateTime desc' (newest first), which allows early-stopping pagination once results cross your date window.
+     *
+     * @return self
+     */
+    public function setOrderBy($order_by)
+    {
+        if (is_null($order_by)) {
+            throw new \InvalidArgumentException('non-nullable order_by cannot be null');
+        }
+        $allowedValues = $this->getOrderByAllowableValues();
+        if (!in_array($order_by, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'order_by', must be one of '%s'",
+                    $order_by,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['order_by'] = $order_by;
 
         return $this;
     }

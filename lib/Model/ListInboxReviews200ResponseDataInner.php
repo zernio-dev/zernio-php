@@ -62,6 +62,8 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         'platform' => 'string',
         'account_id' => 'string',
         'account_username' => 'string',
+        'location_id' => 'string',
+        'location_name' => 'string',
         'reviewer' => '\Zernio\Model\ListInboxReviews200ResponseDataInnerReviewer',
         'rating' => 'int',
         'text' => 'string',
@@ -86,6 +88,8 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         'platform' => null,
         'account_id' => null,
         'account_username' => null,
+        'location_id' => null,
+        'location_name' => null,
         'reviewer' => null,
         'rating' => null,
         'text' => null,
@@ -108,6 +112,8 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         'platform' => false,
         'account_id' => false,
         'account_username' => false,
+        'location_id' => false,
+        'location_name' => true,
         'reviewer' => false,
         'rating' => false,
         'text' => false,
@@ -210,6 +216,8 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         'platform' => 'platform',
         'account_id' => 'accountId',
         'account_username' => 'accountUsername',
+        'location_id' => 'locationId',
+        'location_name' => 'locationName',
         'reviewer' => 'reviewer',
         'rating' => 'rating',
         'text' => 'text',
@@ -232,6 +240,8 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         'platform' => 'setPlatform',
         'account_id' => 'setAccountId',
         'account_username' => 'setAccountUsername',
+        'location_id' => 'setLocationId',
+        'location_name' => 'setLocationName',
         'reviewer' => 'setReviewer',
         'rating' => 'setRating',
         'text' => 'setText',
@@ -254,6 +264,8 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         'platform' => 'getPlatform',
         'account_id' => 'getAccountId',
         'account_username' => 'getAccountUsername',
+        'location_id' => 'getLocationId',
+        'location_name' => 'getLocationName',
         'reviewer' => 'getReviewer',
         'rating' => 'getRating',
         'text' => 'getText',
@@ -327,6 +339,8 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('account_username', $data ?? [], null);
+        $this->setIfExists('location_id', $data ?? [], null);
+        $this->setIfExists('location_name', $data ?? [], null);
         $this->setIfExists('reviewer', $data ?? [], null);
         $this->setIfExists('rating', $data ?? [], null);
         $this->setIfExists('text', $data ?? [], null);
@@ -394,7 +408,7 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param string|null $id Review identifier. For Google Business this is the full review resource name (accounts/{accountId}/locations/{locationId}/reviews/{reviewId}), so it also encodes the location.
      *
      * @return self
      */
@@ -485,6 +499,67 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
             throw new \InvalidArgumentException('non-nullable account_username cannot be null');
         }
         $this->container['account_username'] = $account_username;
+
+        return $this;
+    }
+
+    /**
+     * Gets location_id
+     *
+     * @return string|null
+     */
+    public function getLocationId()
+    {
+        return $this->container['location_id'];
+    }
+
+    /**
+     * Sets location_id
+     *
+     * @param string|null $location_id Bare GBP location id the review belongs to. Google Business only; absent for other platforms.
+     *
+     * @return self
+     */
+    public function setLocationId($location_id)
+    {
+        if (is_null($location_id)) {
+            throw new \InvalidArgumentException('non-nullable location_id cannot be null');
+        }
+        $this->container['location_id'] = $location_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets location_name
+     *
+     * @return string|null
+     */
+    public function getLocationName()
+    {
+        return $this->container['location_name'];
+    }
+
+    /**
+     * Sets location_name
+     *
+     * @param string|null $location_name Human-readable GBP location display name. Google Business only; absent for other platforms.
+     *
+     * @return self
+     */
+    public function setLocationName($location_name)
+    {
+        if (is_null($location_name)) {
+            array_push($this->openAPINullablesSetToNull, 'location_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('location_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['location_name'] = $location_name;
 
         return $this;
     }

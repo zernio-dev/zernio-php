@@ -533,7 +533,7 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
     /**
      * Sets content
      *
-     * @param string|null $content content
+     * @param string|null $content The post text/caption. On ad rows (isAd: true) this is the AD NAME, not the underlying post's caption — the creative text isn't exposed here.
      *
      * @return self
      */
@@ -560,7 +560,7 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
     /**
      * Sets picture
      *
-     * @param string|null $picture picture
+     * @param string|null $picture Post media thumbnail. On ad rows this is the ad creative thumbnail.
      *
      * @return self
      */
@@ -594,7 +594,7 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
     /**
      * Sets permalink
      *
-     * @param string|null $permalink permalink
+     * @param string|null $permalink Public URL of the post. On ad rows: the Facebook dark-post URL (facebook placement) or the IG media permalink (instagram placement); may be null when unknown.
      *
      * @return self
      */
@@ -682,7 +682,7 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
     /**
      * Sets like_count
      *
-     * @param int|null $like_count like_count
+     * @param int|null $like_count Not fetched for ad rows (always 0 there).
      *
      * @return self
      */
