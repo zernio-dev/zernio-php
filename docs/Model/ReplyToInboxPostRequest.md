@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **account_id** | **string** |  |
 **message** | **string** |  |
+**attachment_url** | **string** | (Facebook only) URL of an image to attach, publishing a photo comment alongside the text. The URL must be publicly accessible so Meta can fetch it. Returns 400 for other platforms. | [optional]
 **comment_id** | **string** | Reply to specific comment (optional) | [optional]
 **parent_cid** | **string** | (Bluesky only) Parent content identifier | [optional]
 **root_uri** | **string** | (Bluesky only) Root post URI | [optional]

@@ -60,6 +60,7 @@ class ReplyToInboxPostRequest implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPITypes = [
         'account_id' => 'string',
         'message' => 'string',
+        'attachment_url' => 'string',
         'comment_id' => 'string',
         'parent_cid' => 'string',
         'root_uri' => 'string',
@@ -76,6 +77,7 @@ class ReplyToInboxPostRequest implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPIFormats = [
         'account_id' => null,
         'message' => null,
+        'attachment_url' => 'uri',
         'comment_id' => null,
         'parent_cid' => null,
         'root_uri' => null,
@@ -90,6 +92,7 @@ class ReplyToInboxPostRequest implements ModelInterface, ArrayAccess, \JsonSeria
     protected static array $openAPINullables = [
         'account_id' => false,
         'message' => false,
+        'attachment_url' => false,
         'comment_id' => false,
         'parent_cid' => false,
         'root_uri' => false,
@@ -184,6 +187,7 @@ class ReplyToInboxPostRequest implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $attributeMap = [
         'account_id' => 'accountId',
         'message' => 'message',
+        'attachment_url' => 'attachmentUrl',
         'comment_id' => 'commentId',
         'parent_cid' => 'parentCid',
         'root_uri' => 'rootUri',
@@ -198,6 +202,7 @@ class ReplyToInboxPostRequest implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $setters = [
         'account_id' => 'setAccountId',
         'message' => 'setMessage',
+        'attachment_url' => 'setAttachmentUrl',
         'comment_id' => 'setCommentId',
         'parent_cid' => 'setParentCid',
         'root_uri' => 'setRootUri',
@@ -212,6 +217,7 @@ class ReplyToInboxPostRequest implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $getters = [
         'account_id' => 'getAccountId',
         'message' => 'getMessage',
+        'attachment_url' => 'getAttachmentUrl',
         'comment_id' => 'getCommentId',
         'parent_cid' => 'getParentCid',
         'root_uri' => 'getRootUri',
@@ -277,6 +283,7 @@ class ReplyToInboxPostRequest implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('attachment_url', $data ?? [], null);
         $this->setIfExists('comment_id', $data ?? [], null);
         $this->setIfExists('parent_cid', $data ?? [], null);
         $this->setIfExists('root_uri', $data ?? [], null);
@@ -381,6 +388,33 @@ class ReplyToInboxPostRequest implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable message cannot be null');
         }
         $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets attachment_url
+     *
+     * @return string|null
+     */
+    public function getAttachmentUrl()
+    {
+        return $this->container['attachment_url'];
+    }
+
+    /**
+     * Sets attachment_url
+     *
+     * @param string|null $attachment_url (Facebook only) URL of an image to attach, publishing a photo comment alongside the text. The URL must be publicly accessible so Meta can fetch it. Returns 400 for other platforms.
+     *
+     * @return self
+     */
+    public function setAttachmentUrl($attachment_url)
+    {
+        if (is_null($attachment_url)) {
+            throw new \InvalidArgumentException('non-nullable attachment_url cannot be null');
+        }
+        $this->container['attachment_url'] = $attachment_url;
 
         return $this;
     }
