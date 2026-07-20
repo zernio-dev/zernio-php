@@ -11,18 +11,22 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**archiveLeadForm()**](AdsApi.md#archiveLeadForm) | **DELETE** /v1/ads/lead-forms/{formId} | Archive a lead form |
 | [**boostPost()**](AdsApi.md#boostPost) | **POST** /v1/ads/boost | Boost post as ad |
 | [**createAdInsightsReport()**](AdsApi.md#createAdInsightsReport) | **POST** /v1/ads/insights/reports | Submit an async insights report run (Meta) |
+| [**createCallAd()**](AdsApi.md#createCallAd) | **POST** /v1/ads/call | Create Click-to-Call ad |
 | [**createConversionDestination()**](AdsApi.md#createConversionDestination) | **POST** /v1/accounts/{accountId}/conversion-destinations | Create a conversion destination |
-| [**createCtwaAd()**](AdsApi.md#createCtwaAd) | **POST** /v1/ads/ctwa | Create Click-to-WhatsApp ad |
+| [**createCtwaAd()**](AdsApi.md#createCtwaAd) | **POST** /v1/ads/ctwa | Create Click-to-WhatsApp ad (deprecated) |
 | [**createLeadForm()**](AdsApi.md#createLeadForm) | **POST** /v1/ads/lead-forms | Create a lead form |
+| [**createMessagingAd()**](AdsApi.md#createMessagingAd) | **POST** /v1/ads/messaging | Create click-to-message ad (WhatsApp / Messenger / Instagram Direct) |
 | [**createStandaloneAd()**](AdsApi.md#createStandaloneAd) | **POST** /v1/ads/create | Create standalone ad |
 | [**createTestLead()**](AdsApi.md#createTestLead) | **POST** /v1/ads/lead-forms/{formId}/test-leads | Create a test lead |
 | [**deleteAd()**](AdsApi.md#deleteAd) | **DELETE** /v1/ads/{adId} | Cancel an ad |
 | [**deleteConversionDestination()**](AdsApi.md#deleteConversionDestination) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Delete a conversion destination |
 | [**estimateAdReach()**](AdsApi.md#estimateAdReach) | **POST** /v1/ads/targeting/reach-estimate | Estimate audience reach |
+| [**generateAdPreviews()**](AdsApi.md#generateAdPreviews) | **POST** /v1/ads/preview | Render pre-create ad previews (Meta) |
 | [**getAd()**](AdsApi.md#getAd) | **GET** /v1/ads/{adId} | Get ad details |
 | [**getAdAnalytics()**](AdsApi.md#getAdAnalytics) | **GET** /v1/ads/{adId}/analytics | Get ad analytics |
 | [**getAdComments()**](AdsApi.md#getAdComments) | **GET** /v1/ads/{adId}/comments | List comments on an ad |
 | [**getAdInsightsReport()**](AdsApi.md#getAdInsightsReport) | **GET** /v1/ads/insights/reports/{reportRunId} | Poll an async insights report run (Meta) |
+| [**getAdPreviews()**](AdsApi.md#getAdPreviews) | **GET** /v1/ads/{adId}/preview | Render previews of an existing ad (Meta) |
 | [**getAdTrackingTags()**](AdsApi.md#getAdTrackingTags) | **GET** /v1/ads/{adId}/tracking-tags | Get ad tracking tags |
 | [**getCampaignAnalytics()**](AdsApi.md#getCampaignAnalytics) | **GET** /v1/ads/campaigns/{campaignId}/analytics | Get campaign analytics |
 | [**getConversionDestination()**](AdsApi.md#getConversionDestination) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Get a conversion destination |
@@ -363,6 +367,65 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createCallAd()`
+
+```php
+createCallAd($create_call_ad_request)
+```
+
+Create Click-to-Call ad
+
+Same shape and flow as POST /v1/ads/ctwa, but the CTA is CALL_NOW dialing `phoneNumber` via a tel: link. The ad set is destination_type PHONE_CALL optimizing QUALITY_CALL and the campaign objective defaults to OUTCOME_LEADS. Supports the same single-creative and multi-creative shapes as CTWA.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_call_ad_request = new \Zernio\Model\CreateCallAdRequest(); // \Zernio\Model\CreateCallAdRequest
+
+try {
+    $apiInstance->createCallAd($create_call_ad_request);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->createCallAd: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_call_ad_request** | [**\Zernio\Model\CreateCallAdRequest**](../Model/CreateCallAdRequest.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `createConversionDestination()`
 
 ```php
@@ -428,12 +491,12 @@ try {
 ## `createCtwaAd()`
 
 ```php
-createCtwaAd($create_ctwa_ad_request): \Zernio\Model\CreateCtwaAd201Response
+createCtwaAd($ctwa_ad_request_body): \Zernio\Model\CreateCtwaAd201Response
 ```
 
-Create Click-to-WhatsApp ad
+Create Click-to-WhatsApp ad (deprecated)
 
-Creates one or more Click-to-WhatsApp (CTWA) ads on Meta under a single campaign and ad set. When tapped, each ad opens a WhatsApp conversation with the business attached to the supplied Facebook Page. The full hierarchy (campaign, ad set, creative(s), ad(s)) is created and activated in one call. The CTA is locked to WHATSAPP_MESSAGE and the destination is hard-coded to api.whatsapp.com/send; Meta resolves the actual WhatsApp number from the Page-to-WA pairing configured in Page settings or Business Manager.  Supports two mutually-exclusive shapes:  - **Single-creative**: supply top-level `headline`, `body`, and one of `imageUrl` / `video`. Creates 1 campaign + 1 ad set + 1 ad.  - **Multi-creative**: supply a `creatives[]` array with N entries (each carrying its own headline, body, and image/video). Creates 1 campaign + 1 ad set + N ads sharing budget and targeting so Meta A/Bs the creatives inside a single auction instead of fragmenting budget across N parallel campaigns. Recommended when launching multiple creative variants for the same campaign.  Prerequisites enforced by Meta (surfaced as platform_error on failure): the Facebook Page must be paired with a verified WhatsApp Business number, the WhatsApp Business Account must be business-verified, and the Meta access token must carry ads_management.
+Deprecated: use POST /v1/ads/messaging with `destination: whatsapp`. This endpoint stays available for back-compat; no removal planned.  Creates one or more Click-to-WhatsApp (CTWA) ads on Meta under a single campaign and ad set. When tapped, each ad opens a WhatsApp conversation with the business attached to the supplied Facebook Page. The full hierarchy (campaign, ad set, creative(s), ad(s)) is created and activated in one call. The CTA is locked to WHATSAPP_MESSAGE and the destination is hard-coded to api.whatsapp.com/send; Meta resolves the actual WhatsApp number from the Page-to-WA pairing configured in Page settings or Business Manager.  Supports two mutually-exclusive shapes:  - **Single-creative**: supply top-level `headline`, `body`, and one of `imageUrl` / `video`. Creates 1 campaign + 1 ad set + 1 ad.  - **Multi-creative**: supply a `creatives[]` array with N entries (each carrying its own headline, body, and image/video). Creates 1 campaign + 1 ad set + N ads sharing budget and targeting so Meta A/Bs the creatives inside a single auction instead of fragmenting budget across N parallel campaigns. Recommended when launching multiple creative variants for the same campaign.  Prerequisites enforced by Meta (surfaced as platform_error on failure): the Facebook Page must be paired with a verified WhatsApp Business number, the WhatsApp Business Account must be business-verified, and the Meta access token must carry ads_management.
 
 ### Example
 
@@ -452,10 +515,10 @@ $apiInstance = new Zernio\Api\AdsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_ctwa_ad_request = new \Zernio\Model\CreateCtwaAdRequest(); // \Zernio\Model\CreateCtwaAdRequest
+$ctwa_ad_request_body = new \Zernio\Model\CtwaAdRequestBody(); // \Zernio\Model\CtwaAdRequestBody
 
 try {
-    $result = $apiInstance->createCtwaAd($create_ctwa_ad_request);
+    $result = $apiInstance->createCtwaAd($ctwa_ad_request_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdsApi->createCtwaAd: ', $e->getMessage(), PHP_EOL;
@@ -466,7 +529,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_ctwa_ad_request** | [**\Zernio\Model\CreateCtwaAdRequest**](../Model/CreateCtwaAdRequest.md)|  | |
+| **ctwa_ad_request_body** | [**\Zernio\Model\CtwaAdRequestBody**](../Model/CtwaAdRequestBody.md)|  | |
 
 ### Return type
 
@@ -531,6 +594,65 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreateLeadForm200Response**](../Model/CreateLeadForm200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createMessagingAd()`
+
+```php
+createMessagingAd($create_messaging_ad_request)
+```
+
+Create click-to-message ad (WhatsApp / Messenger / Instagram Direct)
+
+Creates a click-to-message ad; `destination` selects where the tapped ad opens a conversation: WhatsApp, the Page's Messenger inbox or the linked Instagram account's Direct inbox. The ad set is created with the matching destination_type and CONVERSATIONS optimization; the campaign objective defaults to OUTCOME_ENGAGEMENT. Supports single-creative and multi-creative shapes. Supersedes POST /v1/ads/ctwa (deprecated, equivalent to `destination: whatsapp`).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_messaging_ad_request = new \Zernio\Model\CreateMessagingAdRequest(); // \Zernio\Model\CreateMessagingAdRequest
+
+try {
+    $apiInstance->createMessagingAd($create_messaging_ad_request);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->createMessagingAd: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_messaging_ad_request** | [**\Zernio\Model\CreateMessagingAdRequest**](../Model/CreateMessagingAdRequest.md)|  | |
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
@@ -852,6 +974,66 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `generateAdPreviews()`
+
+```php
+generateAdPreviews($generate_ad_previews_request): \Zernio\Model\GenerateAdPreviews200Response
+```
+
+Render pre-create ad previews (Meta)
+
+Renders how a creative would look per placement BEFORE any ad exists, via Meta's `/generatepreviews`. Provide exactly one creative source: `existingCreativeId` or `creativeSpec`. Each preview is an HTML `<iframe>` snippet embeddable directly. Unknown `formats` values return Meta's 400 verbatim. Meta only.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$generate_ad_previews_request = new \Zernio\Model\GenerateAdPreviewsRequest(); // \Zernio\Model\GenerateAdPreviewsRequest
+
+try {
+    $result = $apiInstance->generateAdPreviews($generate_ad_previews_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->generateAdPreviews: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **generate_ad_previews_request** | [**\Zernio\Model\GenerateAdPreviewsRequest**](../Model/GenerateAdPreviewsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\GenerateAdPreviews200Response**](../Model/GenerateAdPreviews200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getAd()`
 
 ```php
@@ -1096,6 +1278,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetAdInsightsReport200Response**](../Model/GetAdInsightsReport200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getAdPreviews()`
+
+```php
+getAdPreviews($ad_id, $formats): \Zernio\Model\GetAdPreviews200Response
+```
+
+Render previews of an existing ad (Meta)
+
+Renders an EXISTING ad per placement via Meta's `/{ad_id}/previews`. Each preview is an HTML `<iframe>` snippet embeddable directly. Unknown `formats` values return Meta's 400 verbatim. Meta only.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$ad_id = 'ad_id_example'; // string | Zernio ad id (24-char hex).
+$formats = 'formats_example'; // string | Comma-separated Meta ad_format values (max 10), one preview per format. Defaults to DESKTOP_FEED_STANDARD.
+
+try {
+    $result = $apiInstance->getAdPreviews($ad_id, $formats);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->getAdPreviews: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ad_id** | **string**| Zernio ad id (24-char hex). | |
+| **formats** | **string**| Comma-separated Meta ad_format values (max 10), one preview per format. Defaults to DESKTOP_FEED_STANDARD. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetAdPreviews200Response**](../Model/GetAdPreviews200Response.md)
 
 ### Authorization
 

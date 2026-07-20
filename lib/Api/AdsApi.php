@@ -90,6 +90,9 @@ class AdsApi
         'createAdInsightsReport' => [
             'application/json',
         ],
+        'createCallAd' => [
+            'application/json',
+        ],
         'createConversionDestination' => [
             'application/json',
         ],
@@ -97,6 +100,9 @@ class AdsApi
             'application/json',
         ],
         'createLeadForm' => [
+            'application/json',
+        ],
+        'createMessagingAd' => [
             'application/json',
         ],
         'createStandaloneAd' => [
@@ -114,6 +120,9 @@ class AdsApi
         'estimateAdReach' => [
             'application/json',
         ],
+        'generateAdPreviews' => [
+            'application/json',
+        ],
         'getAd' => [
             'application/json',
         ],
@@ -124,6 +133,9 @@ class AdsApi
             'application/json',
         ],
         'getAdInsightsReport' => [
+            'application/json',
+        ],
+        'getAdPreviews' => [
             'application/json',
         ],
         'getAdTrackingTags' => [
@@ -1758,6 +1770,235 @@ class AdsApi
     }
 
     /**
+     * Operation createCallAd
+     *
+     * Create Click-to-Call ad
+     *
+     * @param  \Zernio\Model\CreateCallAdRequest $create_call_ad_request create_call_ad_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCallAd'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function createCallAd($create_call_ad_request, string $contentType = self::contentTypes['createCallAd'][0])
+    {
+        $this->createCallAdWithHttpInfo($create_call_ad_request, $contentType);
+    }
+
+    /**
+     * Operation createCallAdWithHttpInfo
+     *
+     * Create Click-to-Call ad
+     *
+     * @param  \Zernio\Model\CreateCallAdRequest $create_call_ad_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCallAd'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createCallAdWithHttpInfo($create_call_ad_request, string $contentType = self::contentTypes['createCallAd'][0])
+    {
+        $request = $this->createCallAdRequest($create_call_ad_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createCallAdAsync
+     *
+     * Create Click-to-Call ad
+     *
+     * @param  \Zernio\Model\CreateCallAdRequest $create_call_ad_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCallAd'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createCallAdAsync($create_call_ad_request, string $contentType = self::contentTypes['createCallAd'][0])
+    {
+        return $this->createCallAdAsyncWithHttpInfo($create_call_ad_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createCallAdAsyncWithHttpInfo
+     *
+     * Create Click-to-Call ad
+     *
+     * @param  \Zernio\Model\CreateCallAdRequest $create_call_ad_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCallAd'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createCallAdAsyncWithHttpInfo($create_call_ad_request, string $contentType = self::contentTypes['createCallAd'][0])
+    {
+        $returnType = '';
+        $request = $this->createCallAdRequest($create_call_ad_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createCallAd'
+     *
+     * @param  \Zernio\Model\CreateCallAdRequest $create_call_ad_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCallAd'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createCallAdRequest($create_call_ad_request, string $contentType = self::contentTypes['createCallAd'][0])
+    {
+
+        // verify the required parameter 'create_call_ad_request' is set
+        if ($create_call_ad_request === null || (is_array($create_call_ad_request) && count($create_call_ad_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_call_ad_request when calling createCallAd'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/call';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_call_ad_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_call_ad_request));
+            } else {
+                $httpBody = $create_call_ad_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation createConversionDestination
      *
      * Create a conversion destination
@@ -2065,36 +2306,38 @@ class AdsApi
     /**
      * Operation createCtwaAd
      *
-     * Create Click-to-WhatsApp ad
+     * Create Click-to-WhatsApp ad (deprecated)
      *
-     * @param  \Zernio\Model\CreateCtwaAdRequest $create_ctwa_ad_request create_ctwa_ad_request (required)
+     * @param  \Zernio\Model\CtwaAdRequestBody $ctwa_ad_request_body ctwa_ad_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\CreateCtwaAd201Response|\Zernio\Model\InlineObject
+     * @deprecated
      */
-    public function createCtwaAd($create_ctwa_ad_request, string $contentType = self::contentTypes['createCtwaAd'][0])
+    public function createCtwaAd($ctwa_ad_request_body, string $contentType = self::contentTypes['createCtwaAd'][0])
     {
-        list($response) = $this->createCtwaAdWithHttpInfo($create_ctwa_ad_request, $contentType);
+        list($response) = $this->createCtwaAdWithHttpInfo($ctwa_ad_request_body, $contentType);
         return $response;
     }
 
     /**
      * Operation createCtwaAdWithHttpInfo
      *
-     * Create Click-to-WhatsApp ad
+     * Create Click-to-WhatsApp ad (deprecated)
      *
-     * @param  \Zernio\Model\CreateCtwaAdRequest $create_ctwa_ad_request (required)
+     * @param  \Zernio\Model\CtwaAdRequestBody $ctwa_ad_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\CreateCtwaAd201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
-    public function createCtwaAdWithHttpInfo($create_ctwa_ad_request, string $contentType = self::contentTypes['createCtwaAd'][0])
+    public function createCtwaAdWithHttpInfo($ctwa_ad_request_body, string $contentType = self::contentTypes['createCtwaAd'][0])
     {
-        $request = $this->createCtwaAdRequest($create_ctwa_ad_request, $contentType);
+        $request = $this->createCtwaAdRequest($ctwa_ad_request_body, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2182,17 +2425,18 @@ class AdsApi
     /**
      * Operation createCtwaAdAsync
      *
-     * Create Click-to-WhatsApp ad
+     * Create Click-to-WhatsApp ad (deprecated)
      *
-     * @param  \Zernio\Model\CreateCtwaAdRequest $create_ctwa_ad_request (required)
+     * @param  \Zernio\Model\CtwaAdRequestBody $ctwa_ad_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
-    public function createCtwaAdAsync($create_ctwa_ad_request, string $contentType = self::contentTypes['createCtwaAd'][0])
+    public function createCtwaAdAsync($ctwa_ad_request_body, string $contentType = self::contentTypes['createCtwaAd'][0])
     {
-        return $this->createCtwaAdAsyncWithHttpInfo($create_ctwa_ad_request, $contentType)
+        return $this->createCtwaAdAsyncWithHttpInfo($ctwa_ad_request_body, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2203,18 +2447,19 @@ class AdsApi
     /**
      * Operation createCtwaAdAsyncWithHttpInfo
      *
-     * Create Click-to-WhatsApp ad
+     * Create Click-to-WhatsApp ad (deprecated)
      *
-     * @param  \Zernio\Model\CreateCtwaAdRequest $create_ctwa_ad_request (required)
+     * @param  \Zernio\Model\CtwaAdRequestBody $ctwa_ad_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
-    public function createCtwaAdAsyncWithHttpInfo($create_ctwa_ad_request, string $contentType = self::contentTypes['createCtwaAd'][0])
+    public function createCtwaAdAsyncWithHttpInfo($ctwa_ad_request_body, string $contentType = self::contentTypes['createCtwaAd'][0])
     {
         $returnType = '\Zernio\Model\CreateCtwaAd201Response';
-        $request = $this->createCtwaAdRequest($create_ctwa_ad_request, $contentType);
+        $request = $this->createCtwaAdRequest($ctwa_ad_request_body, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2255,19 +2500,20 @@ class AdsApi
     /**
      * Create request for operation 'createCtwaAd'
      *
-     * @param  \Zernio\Model\CreateCtwaAdRequest $create_ctwa_ad_request (required)
+     * @param  \Zernio\Model\CtwaAdRequestBody $ctwa_ad_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
-    public function createCtwaAdRequest($create_ctwa_ad_request, string $contentType = self::contentTypes['createCtwaAd'][0])
+    public function createCtwaAdRequest($ctwa_ad_request_body, string $contentType = self::contentTypes['createCtwaAd'][0])
     {
 
-        // verify the required parameter 'create_ctwa_ad_request' is set
-        if ($create_ctwa_ad_request === null || (is_array($create_ctwa_ad_request) && count($create_ctwa_ad_request) === 0)) {
+        // verify the required parameter 'ctwa_ad_request_body' is set
+        if ($ctwa_ad_request_body === null || (is_array($ctwa_ad_request_body) && count($ctwa_ad_request_body) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $create_ctwa_ad_request when calling createCtwaAd'
+                'Missing the required parameter $ctwa_ad_request_body when calling createCtwaAd'
             );
         }
 
@@ -2290,12 +2536,12 @@ class AdsApi
         );
 
         // for model (json/xml)
-        if (isset($create_ctwa_ad_request)) {
+        if (isset($ctwa_ad_request_body)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_ctwa_ad_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ctwa_ad_request_body));
             } else {
-                $httpBody = $create_ctwa_ad_request;
+                $httpBody = $ctwa_ad_request_body;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2581,6 +2827,235 @@ class AdsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_lead_form_request));
             } else {
                 $httpBody = $create_lead_form_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createMessagingAd
+     *
+     * Create click-to-message ad (WhatsApp / Messenger / Instagram Direct)
+     *
+     * @param  \Zernio\Model\CreateMessagingAdRequest $create_messaging_ad_request create_messaging_ad_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createMessagingAd'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function createMessagingAd($create_messaging_ad_request, string $contentType = self::contentTypes['createMessagingAd'][0])
+    {
+        $this->createMessagingAdWithHttpInfo($create_messaging_ad_request, $contentType);
+    }
+
+    /**
+     * Operation createMessagingAdWithHttpInfo
+     *
+     * Create click-to-message ad (WhatsApp / Messenger / Instagram Direct)
+     *
+     * @param  \Zernio\Model\CreateMessagingAdRequest $create_messaging_ad_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createMessagingAd'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createMessagingAdWithHttpInfo($create_messaging_ad_request, string $contentType = self::contentTypes['createMessagingAd'][0])
+    {
+        $request = $this->createMessagingAdRequest($create_messaging_ad_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createMessagingAdAsync
+     *
+     * Create click-to-message ad (WhatsApp / Messenger / Instagram Direct)
+     *
+     * @param  \Zernio\Model\CreateMessagingAdRequest $create_messaging_ad_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createMessagingAd'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createMessagingAdAsync($create_messaging_ad_request, string $contentType = self::contentTypes['createMessagingAd'][0])
+    {
+        return $this->createMessagingAdAsyncWithHttpInfo($create_messaging_ad_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createMessagingAdAsyncWithHttpInfo
+     *
+     * Create click-to-message ad (WhatsApp / Messenger / Instagram Direct)
+     *
+     * @param  \Zernio\Model\CreateMessagingAdRequest $create_messaging_ad_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createMessagingAd'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createMessagingAdAsyncWithHttpInfo($create_messaging_ad_request, string $contentType = self::contentTypes['createMessagingAd'][0])
+    {
+        $returnType = '';
+        $request = $this->createMessagingAdRequest($create_messaging_ad_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createMessagingAd'
+     *
+     * @param  \Zernio\Model\CreateMessagingAdRequest $create_messaging_ad_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createMessagingAd'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createMessagingAdRequest($create_messaging_ad_request, string $contentType = self::contentTypes['createMessagingAd'][0])
+    {
+
+        // verify the required parameter 'create_messaging_ad_request' is set
+        if ($create_messaging_ad_request === null || (is_array($create_messaging_ad_request) && count($create_messaging_ad_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_messaging_ad_request when calling createMessagingAd'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/messaging';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_messaging_ad_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_messaging_ad_request));
+            } else {
+                $httpBody = $create_messaging_ad_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -4100,6 +4575,291 @@ class AdsApi
     }
 
     /**
+     * Operation generateAdPreviews
+     *
+     * Render pre-create ad previews (Meta)
+     *
+     * @param  \Zernio\Model\GenerateAdPreviewsRequest $generate_ad_previews_request generate_ad_previews_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAdPreviews'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GenerateAdPreviews200Response|\Zernio\Model\InlineObject
+     */
+    public function generateAdPreviews($generate_ad_previews_request, string $contentType = self::contentTypes['generateAdPreviews'][0])
+    {
+        list($response) = $this->generateAdPreviewsWithHttpInfo($generate_ad_previews_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation generateAdPreviewsWithHttpInfo
+     *
+     * Render pre-create ad previews (Meta)
+     *
+     * @param  \Zernio\Model\GenerateAdPreviewsRequest $generate_ad_previews_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAdPreviews'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GenerateAdPreviews200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function generateAdPreviewsWithHttpInfo($generate_ad_previews_request, string $contentType = self::contentTypes['generateAdPreviews'][0])
+    {
+        $request = $this->generateAdPreviewsRequest($generate_ad_previews_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GenerateAdPreviews200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GenerateAdPreviews200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GenerateAdPreviews200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation generateAdPreviewsAsync
+     *
+     * Render pre-create ad previews (Meta)
+     *
+     * @param  \Zernio\Model\GenerateAdPreviewsRequest $generate_ad_previews_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAdPreviews'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function generateAdPreviewsAsync($generate_ad_previews_request, string $contentType = self::contentTypes['generateAdPreviews'][0])
+    {
+        return $this->generateAdPreviewsAsyncWithHttpInfo($generate_ad_previews_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation generateAdPreviewsAsyncWithHttpInfo
+     *
+     * Render pre-create ad previews (Meta)
+     *
+     * @param  \Zernio\Model\GenerateAdPreviewsRequest $generate_ad_previews_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAdPreviews'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function generateAdPreviewsAsyncWithHttpInfo($generate_ad_previews_request, string $contentType = self::contentTypes['generateAdPreviews'][0])
+    {
+        $returnType = '\Zernio\Model\GenerateAdPreviews200Response';
+        $request = $this->generateAdPreviewsRequest($generate_ad_previews_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'generateAdPreviews'
+     *
+     * @param  \Zernio\Model\GenerateAdPreviewsRequest $generate_ad_previews_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAdPreviews'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function generateAdPreviewsRequest($generate_ad_previews_request, string $contentType = self::contentTypes['generateAdPreviews'][0])
+    {
+
+        // verify the required parameter 'generate_ad_previews_request' is set
+        if ($generate_ad_previews_request === null || (is_array($generate_ad_previews_request) && count($generate_ad_previews_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $generate_ad_previews_request when calling generateAdPreviews'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/preview';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($generate_ad_previews_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($generate_ad_previews_request));
+            } else {
+                $httpBody = $generate_ad_previews_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getAd
      *
      * Get ad details
@@ -5390,6 +6150,307 @@ class AdsApi
             $resourcePath = str_replace(
                 '{' . 'reportRunId' . '}',
                 ObjectSerializer::toPathValue($report_run_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAdPreviews
+     *
+     * Render previews of an existing ad (Meta)
+     *
+     * @param  string $ad_id Zernio ad id (24-char hex). (required)
+     * @param  string|null $formats Comma-separated Meta ad_format values (max 10), one preview per format. Defaults to DESKTOP_FEED_STANDARD. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdPreviews'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetAdPreviews200Response|\Zernio\Model\InlineObject
+     */
+    public function getAdPreviews($ad_id, $formats = null, string $contentType = self::contentTypes['getAdPreviews'][0])
+    {
+        list($response) = $this->getAdPreviewsWithHttpInfo($ad_id, $formats, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getAdPreviewsWithHttpInfo
+     *
+     * Render previews of an existing ad (Meta)
+     *
+     * @param  string $ad_id Zernio ad id (24-char hex). (required)
+     * @param  string|null $formats Comma-separated Meta ad_format values (max 10), one preview per format. Defaults to DESKTOP_FEED_STANDARD. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdPreviews'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetAdPreviews200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAdPreviewsWithHttpInfo($ad_id, $formats = null, string $contentType = self::contentTypes['getAdPreviews'][0])
+    {
+        $request = $this->getAdPreviewsRequest($ad_id, $formats, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetAdPreviews200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetAdPreviews200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetAdPreviews200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAdPreviewsAsync
+     *
+     * Render previews of an existing ad (Meta)
+     *
+     * @param  string $ad_id Zernio ad id (24-char hex). (required)
+     * @param  string|null $formats Comma-separated Meta ad_format values (max 10), one preview per format. Defaults to DESKTOP_FEED_STANDARD. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdPreviews'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAdPreviewsAsync($ad_id, $formats = null, string $contentType = self::contentTypes['getAdPreviews'][0])
+    {
+        return $this->getAdPreviewsAsyncWithHttpInfo($ad_id, $formats, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAdPreviewsAsyncWithHttpInfo
+     *
+     * Render previews of an existing ad (Meta)
+     *
+     * @param  string $ad_id Zernio ad id (24-char hex). (required)
+     * @param  string|null $formats Comma-separated Meta ad_format values (max 10), one preview per format. Defaults to DESKTOP_FEED_STANDARD. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdPreviews'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAdPreviewsAsyncWithHttpInfo($ad_id, $formats = null, string $contentType = self::contentTypes['getAdPreviews'][0])
+    {
+        $returnType = '\Zernio\Model\GetAdPreviews200Response';
+        $request = $this->getAdPreviewsRequest($ad_id, $formats, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAdPreviews'
+     *
+     * @param  string $ad_id Zernio ad id (24-char hex). (required)
+     * @param  string|null $formats Comma-separated Meta ad_format values (max 10), one preview per format. Defaults to DESKTOP_FEED_STANDARD. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdPreviews'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAdPreviewsRequest($ad_id, $formats = null, string $contentType = self::contentTypes['getAdPreviews'][0])
+    {
+
+        // verify the required parameter 'ad_id' is set
+        if ($ad_id === null || (is_array($ad_id) && count($ad_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ad_id when calling getAdPreviews'
+            );
+        }
+
+
+
+        $resourcePath = '/v1/ads/{adId}/preview';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $formats,
+            'formats', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($ad_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'adId' . '}',
+                ObjectSerializer::toPathValue($ad_id),
                 $resourcePath
             );
         }
