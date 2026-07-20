@@ -2461,7 +2461,7 @@ try {
 ## `queryAdInsights()`
 
 ```php
-queryAdInsights($account_id, $object_id, $level, $fields, $breakdowns, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after): \Zernio\Model\QueryAdInsights200Response
+queryAdInsights($account_id, $object_id, $level, $fields, $breakdowns, $action_breakdowns, $action_attribution_windows, $action_report_time, $use_unified_attribution_setting, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after): \Zernio\Model\QueryAdInsights200Response
 ```
 
 Flexible live insights query (Meta)
@@ -2490,6 +2490,10 @@ $object_id = 'object_id_example'; // string | Meta insights node: act_<n>, campa
 $level = 'level_example'; // string | Row granularity
 $fields = 'fields_example'; // string | Comma-separated Graph insights fields (e.g. spend,impressions,frequency,website_purchase_roas). Omitted = Meta's default set.
 $breakdowns = 'breakdowns_example'; // string | Comma-separated Graph breakdowns (e.g. age,gender or publisher_platform).
+$action_breakdowns = 'action_breakdowns_example'; // string | Comma-separated Graph action breakdowns. Segments the actions[] arrays in each row.
+$action_attribution_windows = 'action_attribution_windows_example'; // string | Comma-separated Meta attribution windows. Action values are returned keyed per window.
+$action_report_time = 'action_report_time_example'; // string | When actions are counted: impression, conversion or mixed.
+$use_unified_attribution_setting = True; // bool | Use the ad sets' own attribution settings for action counting.
 $filtering = 'filtering_example'; // string | JSON array of Meta filter objects: [{\"field\", \"operator\", \"value\"}]. Applied server-side by Meta.
 $date_preset = 'date_preset_example'; // string | Meta date_preset (e.g. last_7d, last_30d, this_month). Mutually exclusive with fromDate/toDate.
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start of range (YYYY-MM-DD); requires toDate.
@@ -2499,7 +2503,7 @@ $limit = 25; // int | Rows per page
 $after = 'after_example'; // string | Cursor from paging.after of the previous page.
 
 try {
-    $result = $apiInstance->queryAdInsights($account_id, $object_id, $level, $fields, $breakdowns, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after);
+    $result = $apiInstance->queryAdInsights($account_id, $object_id, $level, $fields, $breakdowns, $action_breakdowns, $action_attribution_windows, $action_report_time, $use_unified_attribution_setting, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdsApi->queryAdInsights: ', $e->getMessage(), PHP_EOL;
@@ -2515,6 +2519,10 @@ try {
 | **level** | **string**| Row granularity | [optional] |
 | **fields** | **string**| Comma-separated Graph insights fields (e.g. spend,impressions,frequency,website_purchase_roas). Omitted &#x3D; Meta&#39;s default set. | [optional] |
 | **breakdowns** | **string**| Comma-separated Graph breakdowns (e.g. age,gender or publisher_platform). | [optional] |
+| **action_breakdowns** | **string**| Comma-separated Graph action breakdowns. Segments the actions[] arrays in each row. | [optional] |
+| **action_attribution_windows** | **string**| Comma-separated Meta attribution windows. Action values are returned keyed per window. | [optional] |
+| **action_report_time** | **string**| When actions are counted: impression, conversion or mixed. | [optional] |
+| **use_unified_attribution_setting** | **bool**| Use the ad sets&#39; own attribution settings for action counting. | [optional] |
 | **filtering** | **string**| JSON array of Meta filter objects: [{\&quot;field\&quot;, \&quot;operator\&quot;, \&quot;value\&quot;}]. Applied server-side by Meta. | [optional] |
 | **date_preset** | **string**| Meta date_preset (e.g. last_7d, last_30d, this_month). Mutually exclusive with fromDate/toDate. | [optional] |
 | **from_date** | **\DateTime**| Start of range (YYYY-MM-DD); requires toDate. | [optional] |

@@ -12321,6 +12321,10 @@ class AdsApi
      * @param  string|null $level Row granularity (optional)
      * @param  string|null $fields Comma-separated Graph insights fields (e.g. spend,impressions,frequency,website_purchase_roas). Omitted &#x3D; Meta&#39;s default set. (optional)
      * @param  string|null $breakdowns Comma-separated Graph breakdowns (e.g. age,gender or publisher_platform). (optional)
+     * @param  string|null $action_breakdowns Comma-separated Graph action breakdowns. Segments the actions[] arrays in each row. (optional)
+     * @param  string|null $action_attribution_windows Comma-separated Meta attribution windows. Action values are returned keyed per window. (optional)
+     * @param  string|null $action_report_time When actions are counted: impression, conversion or mixed. (optional)
+     * @param  bool|null $use_unified_attribution_setting Use the ad sets&#39; own attribution settings for action counting. (optional)
      * @param  string|null $filtering JSON array of Meta filter objects: [{\&quot;field\&quot;, \&quot;operator\&quot;, \&quot;value\&quot;}]. Applied server-side by Meta. (optional)
      * @param  string|null $date_preset Meta date_preset (e.g. last_7d, last_30d, this_month). Mutually exclusive with fromDate/toDate. (optional)
      * @param  \DateTime|null $from_date Start of range (YYYY-MM-DD); requires toDate. (optional)
@@ -12334,9 +12338,9 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\QueryAdInsights200Response|\Zernio\Model\InlineObject
      */
-    public function queryAdInsights($account_id, $object_id, $level = null, $fields = null, $breakdowns = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
+    public function queryAdInsights($account_id, $object_id, $level = null, $fields = null, $breakdowns = null, $action_breakdowns = null, $action_attribution_windows = null, $action_report_time = null, $use_unified_attribution_setting = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
     {
-        list($response) = $this->queryAdInsightsWithHttpInfo($account_id, $object_id, $level, $fields, $breakdowns, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after, $contentType);
+        list($response) = $this->queryAdInsightsWithHttpInfo($account_id, $object_id, $level, $fields, $breakdowns, $action_breakdowns, $action_attribution_windows, $action_report_time, $use_unified_attribution_setting, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after, $contentType);
         return $response;
     }
 
@@ -12350,6 +12354,10 @@ class AdsApi
      * @param  string|null $level Row granularity (optional)
      * @param  string|null $fields Comma-separated Graph insights fields (e.g. spend,impressions,frequency,website_purchase_roas). Omitted &#x3D; Meta&#39;s default set. (optional)
      * @param  string|null $breakdowns Comma-separated Graph breakdowns (e.g. age,gender or publisher_platform). (optional)
+     * @param  string|null $action_breakdowns Comma-separated Graph action breakdowns. Segments the actions[] arrays in each row. (optional)
+     * @param  string|null $action_attribution_windows Comma-separated Meta attribution windows. Action values are returned keyed per window. (optional)
+     * @param  string|null $action_report_time When actions are counted: impression, conversion or mixed. (optional)
+     * @param  bool|null $use_unified_attribution_setting Use the ad sets&#39; own attribution settings for action counting. (optional)
      * @param  string|null $filtering JSON array of Meta filter objects: [{\&quot;field\&quot;, \&quot;operator\&quot;, \&quot;value\&quot;}]. Applied server-side by Meta. (optional)
      * @param  string|null $date_preset Meta date_preset (e.g. last_7d, last_30d, this_month). Mutually exclusive with fromDate/toDate. (optional)
      * @param  \DateTime|null $from_date Start of range (YYYY-MM-DD); requires toDate. (optional)
@@ -12363,9 +12371,9 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\QueryAdInsights200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function queryAdInsightsWithHttpInfo($account_id, $object_id, $level = null, $fields = null, $breakdowns = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
+    public function queryAdInsightsWithHttpInfo($account_id, $object_id, $level = null, $fields = null, $breakdowns = null, $action_breakdowns = null, $action_attribution_windows = null, $action_report_time = null, $use_unified_attribution_setting = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
     {
-        $request = $this->queryAdInsightsRequest($account_id, $object_id, $level, $fields, $breakdowns, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after, $contentType);
+        $request = $this->queryAdInsightsRequest($account_id, $object_id, $level, $fields, $breakdowns, $action_breakdowns, $action_attribution_windows, $action_report_time, $use_unified_attribution_setting, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -12460,6 +12468,10 @@ class AdsApi
      * @param  string|null $level Row granularity (optional)
      * @param  string|null $fields Comma-separated Graph insights fields (e.g. spend,impressions,frequency,website_purchase_roas). Omitted &#x3D; Meta&#39;s default set. (optional)
      * @param  string|null $breakdowns Comma-separated Graph breakdowns (e.g. age,gender or publisher_platform). (optional)
+     * @param  string|null $action_breakdowns Comma-separated Graph action breakdowns. Segments the actions[] arrays in each row. (optional)
+     * @param  string|null $action_attribution_windows Comma-separated Meta attribution windows. Action values are returned keyed per window. (optional)
+     * @param  string|null $action_report_time When actions are counted: impression, conversion or mixed. (optional)
+     * @param  bool|null $use_unified_attribution_setting Use the ad sets&#39; own attribution settings for action counting. (optional)
      * @param  string|null $filtering JSON array of Meta filter objects: [{\&quot;field\&quot;, \&quot;operator\&quot;, \&quot;value\&quot;}]. Applied server-side by Meta. (optional)
      * @param  string|null $date_preset Meta date_preset (e.g. last_7d, last_30d, this_month). Mutually exclusive with fromDate/toDate. (optional)
      * @param  \DateTime|null $from_date Start of range (YYYY-MM-DD); requires toDate. (optional)
@@ -12472,9 +12484,9 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function queryAdInsightsAsync($account_id, $object_id, $level = null, $fields = null, $breakdowns = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
+    public function queryAdInsightsAsync($account_id, $object_id, $level = null, $fields = null, $breakdowns = null, $action_breakdowns = null, $action_attribution_windows = null, $action_report_time = null, $use_unified_attribution_setting = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
     {
-        return $this->queryAdInsightsAsyncWithHttpInfo($account_id, $object_id, $level, $fields, $breakdowns, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after, $contentType)
+        return $this->queryAdInsightsAsyncWithHttpInfo($account_id, $object_id, $level, $fields, $breakdowns, $action_breakdowns, $action_attribution_windows, $action_report_time, $use_unified_attribution_setting, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -12492,6 +12504,10 @@ class AdsApi
      * @param  string|null $level Row granularity (optional)
      * @param  string|null $fields Comma-separated Graph insights fields (e.g. spend,impressions,frequency,website_purchase_roas). Omitted &#x3D; Meta&#39;s default set. (optional)
      * @param  string|null $breakdowns Comma-separated Graph breakdowns (e.g. age,gender or publisher_platform). (optional)
+     * @param  string|null $action_breakdowns Comma-separated Graph action breakdowns. Segments the actions[] arrays in each row. (optional)
+     * @param  string|null $action_attribution_windows Comma-separated Meta attribution windows. Action values are returned keyed per window. (optional)
+     * @param  string|null $action_report_time When actions are counted: impression, conversion or mixed. (optional)
+     * @param  bool|null $use_unified_attribution_setting Use the ad sets&#39; own attribution settings for action counting. (optional)
      * @param  string|null $filtering JSON array of Meta filter objects: [{\&quot;field\&quot;, \&quot;operator\&quot;, \&quot;value\&quot;}]. Applied server-side by Meta. (optional)
      * @param  string|null $date_preset Meta date_preset (e.g. last_7d, last_30d, this_month). Mutually exclusive with fromDate/toDate. (optional)
      * @param  \DateTime|null $from_date Start of range (YYYY-MM-DD); requires toDate. (optional)
@@ -12504,10 +12520,10 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function queryAdInsightsAsyncWithHttpInfo($account_id, $object_id, $level = null, $fields = null, $breakdowns = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
+    public function queryAdInsightsAsyncWithHttpInfo($account_id, $object_id, $level = null, $fields = null, $breakdowns = null, $action_breakdowns = null, $action_attribution_windows = null, $action_report_time = null, $use_unified_attribution_setting = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
     {
         $returnType = '\Zernio\Model\QueryAdInsights200Response';
-        $request = $this->queryAdInsightsRequest($account_id, $object_id, $level, $fields, $breakdowns, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after, $contentType);
+        $request = $this->queryAdInsightsRequest($account_id, $object_id, $level, $fields, $breakdowns, $action_breakdowns, $action_attribution_windows, $action_report_time, $use_unified_attribution_setting, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -12553,6 +12569,10 @@ class AdsApi
      * @param  string|null $level Row granularity (optional)
      * @param  string|null $fields Comma-separated Graph insights fields (e.g. spend,impressions,frequency,website_purchase_roas). Omitted &#x3D; Meta&#39;s default set. (optional)
      * @param  string|null $breakdowns Comma-separated Graph breakdowns (e.g. age,gender or publisher_platform). (optional)
+     * @param  string|null $action_breakdowns Comma-separated Graph action breakdowns. Segments the actions[] arrays in each row. (optional)
+     * @param  string|null $action_attribution_windows Comma-separated Meta attribution windows. Action values are returned keyed per window. (optional)
+     * @param  string|null $action_report_time When actions are counted: impression, conversion or mixed. (optional)
+     * @param  bool|null $use_unified_attribution_setting Use the ad sets&#39; own attribution settings for action counting. (optional)
      * @param  string|null $filtering JSON array of Meta filter objects: [{\&quot;field\&quot;, \&quot;operator\&quot;, \&quot;value\&quot;}]. Applied server-side by Meta. (optional)
      * @param  string|null $date_preset Meta date_preset (e.g. last_7d, last_30d, this_month). Mutually exclusive with fromDate/toDate. (optional)
      * @param  \DateTime|null $from_date Start of range (YYYY-MM-DD); requires toDate. (optional)
@@ -12565,7 +12585,7 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function queryAdInsightsRequest($account_id, $object_id, $level = null, $fields = null, $breakdowns = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
+    public function queryAdInsightsRequest($account_id, $object_id, $level = null, $fields = null, $breakdowns = null, $action_breakdowns = null, $action_attribution_windows = null, $action_report_time = null, $use_unified_attribution_setting = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -12581,6 +12601,10 @@ class AdsApi
                 'Missing the required parameter $object_id when calling queryAdInsights'
             );
         }
+
+
+
+
 
 
 
@@ -12647,6 +12671,42 @@ class AdsApi
             $breakdowns,
             'breakdowns', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $action_breakdowns,
+            'actionBreakdowns', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $action_attribution_windows,
+            'actionAttributionWindows', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $action_report_time,
+            'actionReportTime', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $use_unified_attribution_setting,
+            'useUnifiedAttributionSetting', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required

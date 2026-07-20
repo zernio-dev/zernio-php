@@ -771,6 +771,7 @@ Class | Method | HTTP request | Description
 - [CreateStandaloneAdRequestAttributionSpecInner](docs/Model/CreateStandaloneAdRequestAttributionSpecInner.md)
 - [CreateStandaloneAdRequestBehaviorsInner](docs/Model/CreateStandaloneAdRequestBehaviorsInner.md)
 - [CreateStandaloneAdRequestBrandIdentity](docs/Model/CreateStandaloneAdRequestBrandIdentity.md)
+- [CreateStandaloneAdRequestCarouselCardsInner](docs/Model/CreateStandaloneAdRequestCarouselCardsInner.md)
 - [CreateStandaloneAdRequestCitiesInner](docs/Model/CreateStandaloneAdRequestCitiesInner.md)
 - [CreateStandaloneAdRequestCreativesInner](docs/Model/CreateStandaloneAdRequestCreativesInner.md)
 - [CreateStandaloneAdRequestCreativesInnerVideo](docs/Model/CreateStandaloneAdRequestCreativesInnerVideo.md)

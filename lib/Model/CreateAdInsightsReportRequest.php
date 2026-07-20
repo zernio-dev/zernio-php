@@ -63,6 +63,10 @@ class CreateAdInsightsReportRequest implements ModelInterface, ArrayAccess, \Jso
         'level' => 'string',
         'fields' => 'string',
         'breakdowns' => 'string',
+        'action_breakdowns' => 'string',
+        'action_attribution_windows' => 'string[]',
+        'action_report_time' => 'string',
+        'use_unified_attribution_setting' => 'bool',
         'filtering' => '\Zernio\Model\CreateAdInsightsReportRequestFilteringInner[]',
         'date_preset' => 'string',
         'from_date' => '\DateTime',
@@ -83,6 +87,10 @@ class CreateAdInsightsReportRequest implements ModelInterface, ArrayAccess, \Jso
         'level' => null,
         'fields' => null,
         'breakdowns' => null,
+        'action_breakdowns' => null,
+        'action_attribution_windows' => null,
+        'action_report_time' => null,
+        'use_unified_attribution_setting' => null,
         'filtering' => null,
         'date_preset' => null,
         'from_date' => 'date',
@@ -101,6 +109,10 @@ class CreateAdInsightsReportRequest implements ModelInterface, ArrayAccess, \Jso
         'level' => false,
         'fields' => false,
         'breakdowns' => false,
+        'action_breakdowns' => false,
+        'action_attribution_windows' => false,
+        'action_report_time' => false,
+        'use_unified_attribution_setting' => false,
         'filtering' => false,
         'date_preset' => false,
         'from_date' => false,
@@ -199,6 +211,10 @@ class CreateAdInsightsReportRequest implements ModelInterface, ArrayAccess, \Jso
         'level' => 'level',
         'fields' => 'fields',
         'breakdowns' => 'breakdowns',
+        'action_breakdowns' => 'actionBreakdowns',
+        'action_attribution_windows' => 'actionAttributionWindows',
+        'action_report_time' => 'actionReportTime',
+        'use_unified_attribution_setting' => 'useUnifiedAttributionSetting',
         'filtering' => 'filtering',
         'date_preset' => 'datePreset',
         'from_date' => 'fromDate',
@@ -217,6 +233,10 @@ class CreateAdInsightsReportRequest implements ModelInterface, ArrayAccess, \Jso
         'level' => 'setLevel',
         'fields' => 'setFields',
         'breakdowns' => 'setBreakdowns',
+        'action_breakdowns' => 'setActionBreakdowns',
+        'action_attribution_windows' => 'setActionAttributionWindows',
+        'action_report_time' => 'setActionReportTime',
+        'use_unified_attribution_setting' => 'setUseUnifiedAttributionSetting',
         'filtering' => 'setFiltering',
         'date_preset' => 'setDatePreset',
         'from_date' => 'setFromDate',
@@ -235,6 +255,10 @@ class CreateAdInsightsReportRequest implements ModelInterface, ArrayAccess, \Jso
         'level' => 'getLevel',
         'fields' => 'getFields',
         'breakdowns' => 'getBreakdowns',
+        'action_breakdowns' => 'getActionBreakdowns',
+        'action_attribution_windows' => 'getActionAttributionWindows',
+        'action_report_time' => 'getActionReportTime',
+        'use_unified_attribution_setting' => 'getUseUnifiedAttributionSetting',
         'filtering' => 'getFiltering',
         'date_preset' => 'getDatePreset',
         'from_date' => 'getFromDate',
@@ -323,6 +347,10 @@ class CreateAdInsightsReportRequest implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('level', $data ?? [], null);
         $this->setIfExists('fields', $data ?? [], null);
         $this->setIfExists('breakdowns', $data ?? [], null);
+        $this->setIfExists('action_breakdowns', $data ?? [], null);
+        $this->setIfExists('action_attribution_windows', $data ?? [], null);
+        $this->setIfExists('action_report_time', $data ?? [], null);
+        $this->setIfExists('use_unified_attribution_setting', $data ?? [], null);
         $this->setIfExists('filtering', $data ?? [], null);
         $this->setIfExists('date_preset', $data ?? [], null);
         $this->setIfExists('from_date', $data ?? [], null);
@@ -528,6 +556,114 @@ class CreateAdInsightsReportRequest implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable breakdowns cannot be null');
         }
         $this->container['breakdowns'] = $breakdowns;
+
+        return $this;
+    }
+
+    /**
+     * Gets action_breakdowns
+     *
+     * @return string|null
+     */
+    public function getActionBreakdowns()
+    {
+        return $this->container['action_breakdowns'];
+    }
+
+    /**
+     * Sets action_breakdowns
+     *
+     * @param string|null $action_breakdowns Comma-separated Graph action breakdowns (e.g. action_type,action_destination).
+     *
+     * @return self
+     */
+    public function setActionBreakdowns($action_breakdowns)
+    {
+        if (is_null($action_breakdowns)) {
+            throw new \InvalidArgumentException('non-nullable action_breakdowns cannot be null');
+        }
+        $this->container['action_breakdowns'] = $action_breakdowns;
+
+        return $this;
+    }
+
+    /**
+     * Gets action_attribution_windows
+     *
+     * @return string[]|null
+     */
+    public function getActionAttributionWindows()
+    {
+        return $this->container['action_attribution_windows'];
+    }
+
+    /**
+     * Sets action_attribution_windows
+     *
+     * @param string[]|null $action_attribution_windows Meta attribution windows (e.g. [\"7d_click\", \"1d_view\"]). Action values are returned keyed per window.
+     *
+     * @return self
+     */
+    public function setActionAttributionWindows($action_attribution_windows)
+    {
+        if (is_null($action_attribution_windows)) {
+            throw new \InvalidArgumentException('non-nullable action_attribution_windows cannot be null');
+        }
+        $this->container['action_attribution_windows'] = $action_attribution_windows;
+
+        return $this;
+    }
+
+    /**
+     * Gets action_report_time
+     *
+     * @return string|null
+     */
+    public function getActionReportTime()
+    {
+        return $this->container['action_report_time'];
+    }
+
+    /**
+     * Sets action_report_time
+     *
+     * @param string|null $action_report_time When actions are counted: impression, conversion or mixed.
+     *
+     * @return self
+     */
+    public function setActionReportTime($action_report_time)
+    {
+        if (is_null($action_report_time)) {
+            throw new \InvalidArgumentException('non-nullable action_report_time cannot be null');
+        }
+        $this->container['action_report_time'] = $action_report_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets use_unified_attribution_setting
+     *
+     * @return bool|null
+     */
+    public function getUseUnifiedAttributionSetting()
+    {
+        return $this->container['use_unified_attribution_setting'];
+    }
+
+    /**
+     * Sets use_unified_attribution_setting
+     *
+     * @param bool|null $use_unified_attribution_setting Use the ad sets' own attribution settings for action counting.
+     *
+     * @return self
+     */
+    public function setUseUnifiedAttributionSetting($use_unified_attribution_setting)
+    {
+        if (is_null($use_unified_attribution_setting)) {
+            throw new \InvalidArgumentException('non-nullable use_unified_attribution_setting cannot be null');
+        }
+        $this->container['use_unified_attribution_setting'] = $use_unified_attribution_setting;
 
         return $this;
     }

@@ -111,6 +111,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'start_date' => '\DateTime',
         'instagram_account_id' => 'string',
         'dynamic_creative' => '\Zernio\Model\CreateStandaloneAdRequestDynamicCreative',
+        'carousel_cards' => '\Zernio\Model\CreateStandaloneAdRequestCarouselCardsInner[]',
         'placement_assets' => '\Zernio\Model\CreateStandaloneAdRequestPlacementAssets',
         'audience_id' => 'string',
         'campaign_type' => 'string',
@@ -192,6 +193,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'start_date' => 'date-time',
         'instagram_account_id' => null,
         'dynamic_creative' => null,
+        'carousel_cards' => null,
         'placement_assets' => null,
         'audience_id' => null,
         'campaign_type' => null,
@@ -271,6 +273,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'start_date' => false,
         'instagram_account_id' => false,
         'dynamic_creative' => false,
+        'carousel_cards' => false,
         'placement_assets' => false,
         'audience_id' => false,
         'campaign_type' => false,
@@ -430,6 +433,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'start_date' => 'startDate',
         'instagram_account_id' => 'instagramAccountId',
         'dynamic_creative' => 'dynamicCreative',
+        'carousel_cards' => 'carouselCards',
         'placement_assets' => 'placementAssets',
         'audience_id' => 'audienceId',
         'campaign_type' => 'campaignType',
@@ -509,6 +513,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'start_date' => 'setStartDate',
         'instagram_account_id' => 'setInstagramAccountId',
         'dynamic_creative' => 'setDynamicCreative',
+        'carousel_cards' => 'setCarouselCards',
         'placement_assets' => 'setPlacementAssets',
         'audience_id' => 'setAudienceId',
         'campaign_type' => 'setCampaignType',
@@ -588,6 +593,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'start_date' => 'getStartDate',
         'instagram_account_id' => 'getInstagramAccountId',
         'dynamic_creative' => 'getDynamicCreative',
+        'carousel_cards' => 'getCarouselCards',
         'placement_assets' => 'getPlacementAssets',
         'audience_id' => 'getAudienceId',
         'campaign_type' => 'getCampaignType',
@@ -941,6 +947,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('instagram_account_id', $data ?? [], null);
         $this->setIfExists('dynamic_creative', $data ?? [], null);
+        $this->setIfExists('carousel_cards', $data ?? [], null);
         $this->setIfExists('placement_assets', $data ?? [], null);
         $this->setIfExists('audience_id', $data ?? [], null);
         $this->setIfExists('campaign_type', $data ?? [], 'display');
@@ -1097,6 +1104,14 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
                 $this->container['income_tier'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['carousel_cards']) && (count($this->container['carousel_cards']) > 10)) {
+            $invalidProperties[] = "invalid value for 'carousel_cards', number of items must be less than or equal to 10.";
+        }
+
+        if (!is_null($this->container['carousel_cards']) && (count($this->container['carousel_cards']) < 2)) {
+            $invalidProperties[] = "invalid value for 'carousel_cards', number of items must be greater than or equal to 2.";
         }
 
         $allowedValues = $this->getCampaignTypeAllowableValues();
@@ -2711,6 +2726,40 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable dynamic_creative cannot be null');
         }
         $this->container['dynamic_creative'] = $dynamic_creative;
+
+        return $this;
+    }
+
+    /**
+     * Gets carousel_cards
+     *
+     * @return \Zernio\Model\CreateStandaloneAdRequestCarouselCardsInner[]|null
+     */
+    public function getCarouselCards()
+    {
+        return $this->container['carousel_cards'];
+    }
+
+    /**
+     * Sets carousel_cards
+     *
+     * @param \Zernio\Model\CreateStandaloneAdRequestCarouselCardsInner[]|null $carousel_cards Meta only. Hand-built carousel: 2-10 authored cards in DETERMINISTIC order, mapped to the creative's `link_data.child_attachments`. Unlike `dynamicCreative`, you control the card order and per-card copy/link. Requires top-level `body`, `linkUrl` and `callToAction`. Mutually exclusive with `imageUrl`/`video`, `creatives[]`, `dynamicCreative`, `placementAssets`, `existingCreativeId`, `adSetId`, `leadGenFormId` and goal `catalog_sales`.
+     *
+     * @return self
+     */
+    public function setCarouselCards($carousel_cards)
+    {
+        if (is_null($carousel_cards)) {
+            throw new \InvalidArgumentException('non-nullable carousel_cards cannot be null');
+        }
+
+        if ((count($carousel_cards) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $carousel_cards when calling CreateStandaloneAdRequest., number of items must be less than or equal to 10.');
+        }
+        if ((count($carousel_cards) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $carousel_cards when calling CreateStandaloneAdRequest., number of items must be greater than or equal to 2.');
+        }
+        $this->container['carousel_cards'] = $carousel_cards;
 
         return $this;
     }
