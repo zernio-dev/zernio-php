@@ -10,12 +10,14 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**adjustConversions()**](AdsApi.md#adjustConversions) | **POST** /v1/ads/conversions/adjustments | Adjust uploaded conversions |
 | [**archiveLeadForm()**](AdsApi.md#archiveLeadForm) | **DELETE** /v1/ads/lead-forms/{formId} | Archive a lead form |
 | [**boostPost()**](AdsApi.md#boostPost) | **POST** /v1/ads/boost | Boost post as ad |
+| [**cancelRfReservation()**](AdsApi.md#cancelRfReservation) | **DELETE** /v1/ads/rf-predictions/{predictionId} | Cancel a Reach &amp; Frequency reservation (Meta) |
 | [**createAdInsightsReport()**](AdsApi.md#createAdInsightsReport) | **POST** /v1/ads/insights/reports | Submit an async insights report run (Meta) |
 | [**createCallAd()**](AdsApi.md#createCallAd) | **POST** /v1/ads/call | Create Click-to-Call ad |
 | [**createConversionDestination()**](AdsApi.md#createConversionDestination) | **POST** /v1/accounts/{accountId}/conversion-destinations | Create a conversion destination |
 | [**createCtwaAd()**](AdsApi.md#createCtwaAd) | **POST** /v1/ads/ctwa | Create Click-to-WhatsApp ad (deprecated) |
 | [**createLeadForm()**](AdsApi.md#createLeadForm) | **POST** /v1/ads/lead-forms | Create a lead form |
 | [**createMessagingAd()**](AdsApi.md#createMessagingAd) | **POST** /v1/ads/messaging | Create click-to-message ad (WhatsApp / Messenger / Instagram Direct) |
+| [**createRfPrediction()**](AdsApi.md#createRfPrediction) | **POST** /v1/ads/rf-predictions | Create a Reach &amp; Frequency prediction (Meta) |
 | [**createStandaloneAd()**](AdsApi.md#createStandaloneAd) | **POST** /v1/ads/create | Create standalone ad |
 | [**createTestLead()**](AdsApi.md#createTestLead) | **POST** /v1/ads/lead-forms/{formId}/test-leads | Create a test lead |
 | [**deleteAd()**](AdsApi.md#deleteAd) | **DELETE** /v1/ads/{adId} | Cancel an ad |
@@ -39,6 +41,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getLeadForm()**](AdsApi.md#getLeadForm) | **GET** /v1/ads/lead-forms/{formId} | Get a lead form |
 | [**getLinkedInBidPricing()**](AdsApi.md#getLinkedInBidPricing) | **POST** /v1/ads/targeting/bid-pricing | Suggested bid and budget bounds (LinkedIn) |
 | [**getLinkedInSupplyForecast()**](AdsApi.md#getLinkedInSupplyForecast) | **POST** /v1/ads/targeting/supply-forecast | Impressions, clicks and spend forecast (LinkedIn) |
+| [**getRfPrediction()**](AdsApi.md#getRfPrediction) | **GET** /v1/ads/rf-predictions/{predictionId} | Read a Reach &amp; Frequency prediction (Meta) |
 | [**listAdAccounts()**](AdsApi.md#listAdAccounts) | **GET** /v1/ads/accounts | List ad accounts |
 | [**listAdCatalogProductSets()**](AdsApi.md#listAdCatalogProductSets) | **GET** /v1/ads/catalogs/{catalogId}/product-sets | List a catalog&#39;s product sets |
 | [**listAdCatalogs()**](AdsApi.md#listAdCatalogs) | **GET** /v1/ads/catalogs | List Meta product catalogs |
@@ -53,6 +56,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listWhatsAppConversions()**](AdsApi.md#listWhatsAppConversions) | **GET** /v1/whatsapp/conversions | List conversion events |
 | [**queryAdInsights()**](AdsApi.md#queryAdInsights) | **GET** /v1/ads/insights | Flexible live insights query (Meta) |
 | [**removeConversionAssociations()**](AdsApi.md#removeConversionAssociations) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Remove associated campaigns |
+| [**reserveRfPrediction()**](AdsApi.md#reserveRfPrediction) | **POST** /v1/ads/rf-predictions/{predictionId}/reserve | Reserve a Reach &amp; Frequency prediction (Meta) |
 | [**searchAdInterests()**](AdsApi.md#searchAdInterests) | **GET** /v1/ads/interests | Search targeting interests |
 | [**searchAdTargeting()**](AdsApi.md#searchAdTargeting) | **GET** /v1/ads/targeting/search | Search targeting options |
 | [**sendConversions()**](AdsApi.md#sendConversions) | **POST** /v1/ads/conversions | Send conversion events |
@@ -305,6 +309,69 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `cancelRfReservation()`
+
+```php
+cancelRfReservation($prediction_id, $account_id, $ad_account_id)
+```
+
+Cancel a Reach & Frequency reservation (Meta)
+
+Releases a RESERVATION's locked price and inventory. Unreserved predictions expire on their own.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$prediction_id = 'prediction_id_example'; // string
+$account_id = 'account_id_example'; // string
+$ad_account_id = 'ad_account_id_example'; // string
+
+try {
+    $apiInstance->cancelRfReservation($prediction_id, $account_id, $ad_account_id);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->cancelRfReservation: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **prediction_id** | **string**|  | |
+| **account_id** | **string**|  | |
+| **ad_account_id** | **string**|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -657,6 +724,66 @@ try {
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createRfPrediction()`
+
+```php
+createRfPrediction($create_rf_prediction_request): \Zernio\Model\CreateRfPrediction201Response
+```
+
+Create a Reach & Frequency prediction (Meta)
+
+Creates an R&F prediction — a QUOTE, nothing is bought and no ad entities are created. Provide a date range plus exactly one of `budgetAmount` (Meta predicts reach) or `reach` (Meta predicts the budget). The response carries the estimate and its allowed bounds (min/max budget and reach). Predictions expire on their own; to buy, reserve one via POST /v1/ads/rf-predictions/{predictionId}/reserve and pass the RESERVED id to POST /v1/ads/create with `buyingType: \"RESERVED\"`.  Reservation campaigns reject automatic placements, so omitted `placements` default to Facebook feed (+ Instagram stream when a linked IG professional account resolves); Instagram placements require that IG account. Meta only.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_rf_prediction_request = new \Zernio\Model\CreateRfPredictionRequest(); // \Zernio\Model\CreateRfPredictionRequest
+
+try {
+    $result = $apiInstance->createRfPrediction($create_rf_prediction_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->createRfPrediction: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_rf_prediction_request** | [**\Zernio\Model\CreateRfPredictionRequest**](../Model/CreateRfPredictionRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateRfPrediction201Response**](../Model/CreateRfPrediction201Response.md)
 
 ### Authorization
 
@@ -2120,6 +2247,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getRfPrediction()`
+
+```php
+getRfPrediction($prediction_id, $account_id, $ad_account_id): \Zernio\Model\CreateRfPrediction201Response
+```
+
+Read a Reach & Frequency prediction (Meta)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$prediction_id = 'prediction_id_example'; // string
+$account_id = 'account_id_example'; // string
+$ad_account_id = 'ad_account_id_example'; // string
+
+try {
+    $result = $apiInstance->getRfPrediction($prediction_id, $account_id, $ad_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->getRfPrediction: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **prediction_id** | **string**|  | |
+| **account_id** | **string**|  | |
+| **ad_account_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateRfPrediction201Response**](../Model/CreateRfPrediction201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listAdAccounts()`
 
 ```php
@@ -3058,6 +3247,68 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `reserveRfPrediction()`
+
+```php
+reserveRfPrediction($prediction_id, $reserve_rf_prediction_request): \Zernio\Model\ReserveRfPrediction201Response
+```
+
+Reserve a Reach & Frequency prediction (Meta)
+
+Locks the quoted price + inventory until the returned `expiresAt` and mints a NEW prediction id — pass that RESERVED id (not the original) as `rfPredictionId` on POST /v1/ads/create. Release an unused reservation via DELETE. Meta only.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$prediction_id = 'prediction_id_example'; // string
+$reserve_rf_prediction_request = new \Zernio\Model\ReserveRfPredictionRequest(); // \Zernio\Model\ReserveRfPredictionRequest
+
+try {
+    $result = $apiInstance->reserveRfPrediction($prediction_id, $reserve_rf_prediction_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->reserveRfPrediction: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **prediction_id** | **string**|  | |
+| **reserve_rf_prediction_request** | [**\Zernio\Model\ReserveRfPredictionRequest**](../Model/ReserveRfPredictionRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ReserveRfPrediction201Response**](../Model/ReserveRfPrediction201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

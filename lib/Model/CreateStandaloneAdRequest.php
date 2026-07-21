@@ -68,6 +68,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'goal' => 'string',
         'optimization_goal' => 'string',
         'billing_event' => 'string',
+        'buying_type' => 'string',
+        'rf_prediction_id' => 'string',
         'budget_amount' => 'float',
         'budget_type' => 'string',
         'status' => 'string',
@@ -150,6 +152,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'goal' => null,
         'optimization_goal' => null,
         'billing_event' => null,
+        'buying_type' => null,
+        'rf_prediction_id' => null,
         'budget_amount' => null,
         'budget_type' => null,
         'status' => null,
@@ -230,6 +234,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'goal' => false,
         'optimization_goal' => false,
         'billing_event' => false,
+        'buying_type' => false,
+        'rf_prediction_id' => false,
         'budget_amount' => false,
         'budget_type' => false,
         'status' => false,
@@ -390,6 +396,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'goal' => 'goal',
         'optimization_goal' => 'optimizationGoal',
         'billing_event' => 'billingEvent',
+        'buying_type' => 'buyingType',
+        'rf_prediction_id' => 'rfPredictionId',
         'budget_amount' => 'budgetAmount',
         'budget_type' => 'budgetType',
         'status' => 'status',
@@ -470,6 +478,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'goal' => 'setGoal',
         'optimization_goal' => 'setOptimizationGoal',
         'billing_event' => 'setBillingEvent',
+        'buying_type' => 'setBuyingType',
+        'rf_prediction_id' => 'setRfPredictionId',
         'budget_amount' => 'setBudgetAmount',
         'budget_type' => 'setBudgetType',
         'status' => 'setStatus',
@@ -550,6 +560,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'goal' => 'getGoal',
         'optimization_goal' => 'getOptimizationGoal',
         'billing_event' => 'getBillingEvent',
+        'buying_type' => 'getBuyingType',
+        'rf_prediction_id' => 'getRfPredictionId',
         'budget_amount' => 'getBudgetAmount',
         'budget_type' => 'getBudgetType',
         'status' => 'getStatus',
@@ -665,6 +677,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     public const GOAL_APP_PROMOTION = 'app_promotion';
     public const GOAL_CATALOG_SALES = 'catalog_sales';
     public const GOAL_JOB_APPLICANTS = 'job_applicants';
+    public const BUYING_TYPE_AUCTION = 'AUCTION';
+    public const BUYING_TYPE_RESERVED = 'RESERVED';
     public const BUDGET_TYPE_DAILY = 'daily';
     public const BUDGET_TYPE_LIFETIME = 'lifetime';
     public const STATUS_ACTIVE = 'ACTIVE';
@@ -743,6 +757,19 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             self::GOAL_APP_PROMOTION,
             self::GOAL_CATALOG_SALES,
             self::GOAL_JOB_APPLICANTS,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBuyingTypeAllowableValues()
+    {
+        return [
+            self::BUYING_TYPE_AUCTION,
+            self::BUYING_TYPE_RESERVED,
         ];
     }
 
@@ -940,6 +967,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('goal', $data ?? [], null);
         $this->setIfExists('optimization_goal', $data ?? [], null);
         $this->setIfExists('billing_event', $data ?? [], null);
+        $this->setIfExists('buying_type', $data ?? [], null);
+        $this->setIfExists('rf_prediction_id', $data ?? [], null);
         $this->setIfExists('budget_amount', $data ?? [], null);
         $this->setIfExists('budget_type', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
@@ -1061,6 +1090,15 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'goal', must be one of '%s'",
                 $this->container['goal'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getBuyingTypeAllowableValues();
+        if (!is_null($this->container['buying_type']) && !in_array($this->container['buying_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'buying_type', must be one of '%s'",
+                $this->container['buying_type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -1509,6 +1547,70 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable billing_event cannot be null');
         }
         $this->container['billing_event'] = $billing_event;
+
+        return $this;
+    }
+
+    /**
+     * Gets buying_type
+     *
+     * @return string|null
+     */
+    public function getBuyingType()
+    {
+        return $this->container['buying_type'];
+    }
+
+    /**
+     * Sets buying_type
+     *
+     * @param string|null $buying_type Meta only. RESERVED = Reach & Frequency: requires `rfPredictionId` (a RESERVED prediction from /v1/ads/rf-predictions + /reserve). Budget, schedule and pricing come from the reservation, so budgetAmount/budgetType are not required and bid fields are ignored. Only the plain single-ad shape (no creatives[], adSetId, existingCampaignId or dynamicCreative).
+     *
+     * @return self
+     */
+    public function setBuyingType($buying_type)
+    {
+        if (is_null($buying_type)) {
+            throw new \InvalidArgumentException('non-nullable buying_type cannot be null');
+        }
+        $allowedValues = $this->getBuyingTypeAllowableValues();
+        if (!in_array($buying_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'buying_type', must be one of '%s'",
+                    $buying_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['buying_type'] = $buying_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets rf_prediction_id
+     *
+     * @return string|null
+     */
+    public function getRfPredictionId()
+    {
+        return $this->container['rf_prediction_id'];
+    }
+
+    /**
+     * Sets rf_prediction_id
+     *
+     * @param string|null $rf_prediction_id Meta only. The RESERVED prediction id the R&F ad set runs on (reserving mints a new id — pass that one). Requires buyingType RESERVED.
+     *
+     * @return self
+     */
+    public function setRfPredictionId($rf_prediction_id)
+    {
+        if (is_null($rf_prediction_id)) {
+            throw new \InvalidArgumentException('non-nullable rf_prediction_id cannot be null');
+        }
+        $this->container['rf_prediction_id'] = $rf_prediction_id;
 
         return $this;
     }

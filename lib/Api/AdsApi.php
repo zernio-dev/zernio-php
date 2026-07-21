@@ -87,6 +87,9 @@ class AdsApi
         'boostPost' => [
             'application/json',
         ],
+        'cancelRfReservation' => [
+            'application/json',
+        ],
         'createAdInsightsReport' => [
             'application/json',
         ],
@@ -103,6 +106,9 @@ class AdsApi
             'application/json',
         ],
         'createMessagingAd' => [
+            'application/json',
+        ],
+        'createRfPrediction' => [
             'application/json',
         ],
         'createStandaloneAd' => [
@@ -174,6 +180,9 @@ class AdsApi
         'getLinkedInSupplyForecast' => [
             'application/json',
         ],
+        'getRfPrediction' => [
+            'application/json',
+        ],
         'listAdAccounts' => [
             'application/json',
         ],
@@ -214,6 +223,9 @@ class AdsApi
             'application/json',
         ],
         'removeConversionAssociations' => [
+            'application/json',
+        ],
+        'reserveRfPrediction' => [
             'application/json',
         ],
         'searchAdInterests' => [
@@ -1490,6 +1502,278 @@ class AdsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation cancelRfReservation
+     *
+     * Cancel a Reach &amp; Frequency reservation (Meta)
+     *
+     * @param  string $prediction_id prediction_id (required)
+     * @param  string $account_id account_id (required)
+     * @param  string $ad_account_id ad_account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelRfReservation'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function cancelRfReservation($prediction_id, $account_id, $ad_account_id, string $contentType = self::contentTypes['cancelRfReservation'][0])
+    {
+        $this->cancelRfReservationWithHttpInfo($prediction_id, $account_id, $ad_account_id, $contentType);
+    }
+
+    /**
+     * Operation cancelRfReservationWithHttpInfo
+     *
+     * Cancel a Reach &amp; Frequency reservation (Meta)
+     *
+     * @param  string $prediction_id (required)
+     * @param  string $account_id (required)
+     * @param  string $ad_account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelRfReservation'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function cancelRfReservationWithHttpInfo($prediction_id, $account_id, $ad_account_id, string $contentType = self::contentTypes['cancelRfReservation'][0])
+    {
+        $request = $this->cancelRfReservationRequest($prediction_id, $account_id, $ad_account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation cancelRfReservationAsync
+     *
+     * Cancel a Reach &amp; Frequency reservation (Meta)
+     *
+     * @param  string $prediction_id (required)
+     * @param  string $account_id (required)
+     * @param  string $ad_account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelRfReservation'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function cancelRfReservationAsync($prediction_id, $account_id, $ad_account_id, string $contentType = self::contentTypes['cancelRfReservation'][0])
+    {
+        return $this->cancelRfReservationAsyncWithHttpInfo($prediction_id, $account_id, $ad_account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation cancelRfReservationAsyncWithHttpInfo
+     *
+     * Cancel a Reach &amp; Frequency reservation (Meta)
+     *
+     * @param  string $prediction_id (required)
+     * @param  string $account_id (required)
+     * @param  string $ad_account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelRfReservation'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function cancelRfReservationAsyncWithHttpInfo($prediction_id, $account_id, $ad_account_id, string $contentType = self::contentTypes['cancelRfReservation'][0])
+    {
+        $returnType = '';
+        $request = $this->cancelRfReservationRequest($prediction_id, $account_id, $ad_account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'cancelRfReservation'
+     *
+     * @param  string $prediction_id (required)
+     * @param  string $account_id (required)
+     * @param  string $ad_account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelRfReservation'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function cancelRfReservationRequest($prediction_id, $account_id, $ad_account_id, string $contentType = self::contentTypes['cancelRfReservation'][0])
+    {
+
+        // verify the required parameter 'prediction_id' is set
+        if ($prediction_id === null || (is_array($prediction_id) && count($prediction_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $prediction_id when calling cancelRfReservation'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling cancelRfReservation'
+            );
+        }
+
+        // verify the required parameter 'ad_account_id' is set
+        if ($ad_account_id === null || (is_array($ad_account_id) && count($ad_account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ad_account_id when calling cancelRfReservation'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/rf-predictions/{predictionId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($prediction_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'predictionId' . '}',
+                ObjectSerializer::toPathValue($prediction_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -3068,6 +3352,291 @@ class AdsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_messaging_ad_request));
             } else {
                 $httpBody = $create_messaging_ad_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createRfPrediction
+     *
+     * Create a Reach &amp; Frequency prediction (Meta)
+     *
+     * @param  \Zernio\Model\CreateRfPredictionRequest $create_rf_prediction_request create_rf_prediction_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRfPrediction'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CreateRfPrediction201Response|\Zernio\Model\InlineObject
+     */
+    public function createRfPrediction($create_rf_prediction_request, string $contentType = self::contentTypes['createRfPrediction'][0])
+    {
+        list($response) = $this->createRfPredictionWithHttpInfo($create_rf_prediction_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createRfPredictionWithHttpInfo
+     *
+     * Create a Reach &amp; Frequency prediction (Meta)
+     *
+     * @param  \Zernio\Model\CreateRfPredictionRequest $create_rf_prediction_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRfPrediction'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CreateRfPrediction201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createRfPredictionWithHttpInfo($create_rf_prediction_request, string $contentType = self::contentTypes['createRfPrediction'][0])
+    {
+        $request = $this->createRfPredictionRequest($create_rf_prediction_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreateRfPrediction201Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CreateRfPrediction201Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreateRfPrediction201Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createRfPredictionAsync
+     *
+     * Create a Reach &amp; Frequency prediction (Meta)
+     *
+     * @param  \Zernio\Model\CreateRfPredictionRequest $create_rf_prediction_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRfPrediction'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createRfPredictionAsync($create_rf_prediction_request, string $contentType = self::contentTypes['createRfPrediction'][0])
+    {
+        return $this->createRfPredictionAsyncWithHttpInfo($create_rf_prediction_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createRfPredictionAsyncWithHttpInfo
+     *
+     * Create a Reach &amp; Frequency prediction (Meta)
+     *
+     * @param  \Zernio\Model\CreateRfPredictionRequest $create_rf_prediction_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRfPrediction'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createRfPredictionAsyncWithHttpInfo($create_rf_prediction_request, string $contentType = self::contentTypes['createRfPrediction'][0])
+    {
+        $returnType = '\Zernio\Model\CreateRfPrediction201Response';
+        $request = $this->createRfPredictionRequest($create_rf_prediction_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createRfPrediction'
+     *
+     * @param  \Zernio\Model\CreateRfPredictionRequest $create_rf_prediction_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRfPrediction'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createRfPredictionRequest($create_rf_prediction_request, string $contentType = self::contentTypes['createRfPrediction'][0])
+    {
+
+        // verify the required parameter 'create_rf_prediction_request' is set
+        if ($create_rf_prediction_request === null || (is_array($create_rf_prediction_request) && count($create_rf_prediction_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_rf_prediction_request when calling createRfPrediction'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/rf-predictions';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_rf_prediction_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_rf_prediction_request));
+            } else {
+                $httpBody = $create_rf_prediction_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -10423,6 +10992,334 @@ class AdsApi
     }
 
     /**
+     * Operation getRfPrediction
+     *
+     * Read a Reach &amp; Frequency prediction (Meta)
+     *
+     * @param  string $prediction_id prediction_id (required)
+     * @param  string $account_id account_id (required)
+     * @param  string $ad_account_id ad_account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRfPrediction'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CreateRfPrediction201Response|\Zernio\Model\InlineObject
+     */
+    public function getRfPrediction($prediction_id, $account_id, $ad_account_id, string $contentType = self::contentTypes['getRfPrediction'][0])
+    {
+        list($response) = $this->getRfPredictionWithHttpInfo($prediction_id, $account_id, $ad_account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getRfPredictionWithHttpInfo
+     *
+     * Read a Reach &amp; Frequency prediction (Meta)
+     *
+     * @param  string $prediction_id (required)
+     * @param  string $account_id (required)
+     * @param  string $ad_account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRfPrediction'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CreateRfPrediction201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getRfPredictionWithHttpInfo($prediction_id, $account_id, $ad_account_id, string $contentType = self::contentTypes['getRfPrediction'][0])
+    {
+        $request = $this->getRfPredictionRequest($prediction_id, $account_id, $ad_account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreateRfPrediction201Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CreateRfPrediction201Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreateRfPrediction201Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getRfPredictionAsync
+     *
+     * Read a Reach &amp; Frequency prediction (Meta)
+     *
+     * @param  string $prediction_id (required)
+     * @param  string $account_id (required)
+     * @param  string $ad_account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRfPrediction'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getRfPredictionAsync($prediction_id, $account_id, $ad_account_id, string $contentType = self::contentTypes['getRfPrediction'][0])
+    {
+        return $this->getRfPredictionAsyncWithHttpInfo($prediction_id, $account_id, $ad_account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getRfPredictionAsyncWithHttpInfo
+     *
+     * Read a Reach &amp; Frequency prediction (Meta)
+     *
+     * @param  string $prediction_id (required)
+     * @param  string $account_id (required)
+     * @param  string $ad_account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRfPrediction'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getRfPredictionAsyncWithHttpInfo($prediction_id, $account_id, $ad_account_id, string $contentType = self::contentTypes['getRfPrediction'][0])
+    {
+        $returnType = '\Zernio\Model\CreateRfPrediction201Response';
+        $request = $this->getRfPredictionRequest($prediction_id, $account_id, $ad_account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getRfPrediction'
+     *
+     * @param  string $prediction_id (required)
+     * @param  string $account_id (required)
+     * @param  string $ad_account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRfPrediction'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getRfPredictionRequest($prediction_id, $account_id, $ad_account_id, string $contentType = self::contentTypes['getRfPrediction'][0])
+    {
+
+        // verify the required parameter 'prediction_id' is set
+        if ($prediction_id === null || (is_array($prediction_id) && count($prediction_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $prediction_id when calling getRfPrediction'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getRfPrediction'
+            );
+        }
+
+        // verify the required parameter 'ad_account_id' is set
+        if ($ad_account_id === null || (is_array($ad_account_id) && count($ad_account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ad_account_id when calling getRfPrediction'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/rf-predictions/{predictionId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($prediction_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'predictionId' . '}',
+                ObjectSerializer::toPathValue($prediction_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation listAdAccounts
      *
      * List ad accounts
@@ -15306,6 +16203,311 @@ class AdsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation reserveRfPrediction
+     *
+     * Reserve a Reach &amp; Frequency prediction (Meta)
+     *
+     * @param  string $prediction_id prediction_id (required)
+     * @param  \Zernio\Model\ReserveRfPredictionRequest $reserve_rf_prediction_request reserve_rf_prediction_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reserveRfPrediction'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ReserveRfPrediction201Response|\Zernio\Model\InlineObject
+     */
+    public function reserveRfPrediction($prediction_id, $reserve_rf_prediction_request, string $contentType = self::contentTypes['reserveRfPrediction'][0])
+    {
+        list($response) = $this->reserveRfPredictionWithHttpInfo($prediction_id, $reserve_rf_prediction_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation reserveRfPredictionWithHttpInfo
+     *
+     * Reserve a Reach &amp; Frequency prediction (Meta)
+     *
+     * @param  string $prediction_id (required)
+     * @param  \Zernio\Model\ReserveRfPredictionRequest $reserve_rf_prediction_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reserveRfPrediction'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ReserveRfPrediction201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function reserveRfPredictionWithHttpInfo($prediction_id, $reserve_rf_prediction_request, string $contentType = self::contentTypes['reserveRfPrediction'][0])
+    {
+        $request = $this->reserveRfPredictionRequest($prediction_id, $reserve_rf_prediction_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ReserveRfPrediction201Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ReserveRfPrediction201Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ReserveRfPrediction201Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation reserveRfPredictionAsync
+     *
+     * Reserve a Reach &amp; Frequency prediction (Meta)
+     *
+     * @param  string $prediction_id (required)
+     * @param  \Zernio\Model\ReserveRfPredictionRequest $reserve_rf_prediction_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reserveRfPrediction'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function reserveRfPredictionAsync($prediction_id, $reserve_rf_prediction_request, string $contentType = self::contentTypes['reserveRfPrediction'][0])
+    {
+        return $this->reserveRfPredictionAsyncWithHttpInfo($prediction_id, $reserve_rf_prediction_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation reserveRfPredictionAsyncWithHttpInfo
+     *
+     * Reserve a Reach &amp; Frequency prediction (Meta)
+     *
+     * @param  string $prediction_id (required)
+     * @param  \Zernio\Model\ReserveRfPredictionRequest $reserve_rf_prediction_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reserveRfPrediction'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function reserveRfPredictionAsyncWithHttpInfo($prediction_id, $reserve_rf_prediction_request, string $contentType = self::contentTypes['reserveRfPrediction'][0])
+    {
+        $returnType = '\Zernio\Model\ReserveRfPrediction201Response';
+        $request = $this->reserveRfPredictionRequest($prediction_id, $reserve_rf_prediction_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'reserveRfPrediction'
+     *
+     * @param  string $prediction_id (required)
+     * @param  \Zernio\Model\ReserveRfPredictionRequest $reserve_rf_prediction_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reserveRfPrediction'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function reserveRfPredictionRequest($prediction_id, $reserve_rf_prediction_request, string $contentType = self::contentTypes['reserveRfPrediction'][0])
+    {
+
+        // verify the required parameter 'prediction_id' is set
+        if ($prediction_id === null || (is_array($prediction_id) && count($prediction_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $prediction_id when calling reserveRfPrediction'
+            );
+        }
+
+        // verify the required parameter 'reserve_rf_prediction_request' is set
+        if ($reserve_rf_prediction_request === null || (is_array($reserve_rf_prediction_request) && count($reserve_rf_prediction_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $reserve_rf_prediction_request when calling reserveRfPrediction'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/rf-predictions/{predictionId}/reserve';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($prediction_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'predictionId' . '}',
+                ObjectSerializer::toPathValue($prediction_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($reserve_rf_prediction_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($reserve_rf_prediction_request));
+            } else {
+                $httpBody = $reserve_rf_prediction_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

@@ -269,6 +269,8 @@ docs/Model/CreatePostRequestPlatformsInnerPlatformSpecificData.md
 docs/Model/CreateProfileRequest.md
 docs/Model/CreateQueueSlot201Response.md
 docs/Model/CreateQueueSlotRequest.md
+docs/Model/CreateRfPrediction201Response.md
+docs/Model/CreateRfPredictionRequest.md
 docs/Model/CreateSequence200Response.md
 docs/Model/CreateSequence200ResponseSequence.md
 docs/Model/CreateSequenceRequest.md
@@ -1019,6 +1021,8 @@ docs/Model/ReplyToInboxReviewRequest.md
 docs/Model/ReplyToMention200Response.md
 docs/Model/ReplyToMentionRequest.md
 docs/Model/ResendSmsRegistrationOtp200Response.md
+docs/Model/ReserveRfPrediction201Response.md
+docs/Model/ReserveRfPredictionRequest.md
 docs/Model/RestoreWorkflowVersion200Response.md
 docs/Model/RestoreWorkflowVersion200ResponseWorkflow.md
 docs/Model/RetweetPost200Response.md
@@ -1030,6 +1034,7 @@ docs/Model/ReviewPhoneNumberKycPacketRequest.md
 docs/Model/ReviewWebhookReview.md
 docs/Model/ReviewWebhookReviewReply.md
 docs/Model/ReviewWebhookReviewReviewer.md
+docs/Model/RfPrediction.md
 docs/Model/SavedTargetingAudience.md
 docs/Model/ScheduleBroadcast200Response.md
 docs/Model/ScheduleBroadcast200ResponseBroadcast.md
@@ -1759,6 +1764,8 @@ lib/Model/CreatePostRequestPlatformsInnerPlatformSpecificData.php
 lib/Model/CreateProfileRequest.php
 lib/Model/CreateQueueSlot201Response.php
 lib/Model/CreateQueueSlotRequest.php
+lib/Model/CreateRfPrediction201Response.php
+lib/Model/CreateRfPredictionRequest.php
 lib/Model/CreateSequence200Response.php
 lib/Model/CreateSequence200ResponseSequence.php
 lib/Model/CreateSequenceRequest.php
@@ -2510,6 +2517,8 @@ lib/Model/ReplyToInboxReviewRequest.php
 lib/Model/ReplyToMention200Response.php
 lib/Model/ReplyToMentionRequest.php
 lib/Model/ResendSmsRegistrationOtp200Response.php
+lib/Model/ReserveRfPrediction201Response.php
+lib/Model/ReserveRfPredictionRequest.php
 lib/Model/RestoreWorkflowVersion200Response.php
 lib/Model/RestoreWorkflowVersion200ResponseWorkflow.php
 lib/Model/RetweetPost200Response.php
@@ -2521,6 +2530,7 @@ lib/Model/ReviewPhoneNumberKycPacketRequest.php
 lib/Model/ReviewWebhookReview.php
 lib/Model/ReviewWebhookReviewReply.php
 lib/Model/ReviewWebhookReviewReviewer.php
+lib/Model/RfPrediction.php
 lib/Model/SavedTargetingAudience.php
 lib/Model/ScheduleBroadcast200Response.php
 lib/Model/ScheduleBroadcast200ResponseBroadcast.php
@@ -2981,11 +2991,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetAdAccountFinance200ResponseFundingSourceTest.php
-test/Model/GetAdAccountFinance200ResponseTest.php
-test/Model/GetAdSetDetails200ResponseTest.php
-test/Model/GetAdsActivityLog200ResponseTest.php
-test/Model/ListAdStudies200ResponseTest.php
-test/Model/UploadAdImage201ResponseImageTest.php
-test/Model/UploadAdImage201ResponseTest.php
-test/Model/UploadAdImageRequestTest.php
+test/Model/CreateRfPrediction201ResponseTest.php
+test/Model/CreateRfPredictionRequestTest.php
+test/Model/ReserveRfPrediction201ResponseTest.php
+test/Model/ReserveRfPredictionRequestTest.php
+test/Model/RfPredictionTest.php
