@@ -256,6 +256,7 @@ docs/Model/CreatePhoneNumberPortIn201Response.md
 docs/Model/CreatePhoneNumberPortIn201ResponseOrdersInner.md
 docs/Model/CreatePhoneNumberPortInRequest.md
 docs/Model/CreatePhoneNumberPortInRequestEndUser.md
+docs/Model/CreatePhoneNumberPortInRequestRequirementsInner.md
 docs/Model/CreatePinterestBoard201Response.md
 docs/Model/CreatePinterestBoard201ResponseBoard.md
 docs/Model/CreatePinterestBoardRequest.md
@@ -626,6 +627,10 @@ docs/Model/GetPhoneNumberKycForm200ResponseFieldsInner.md
 docs/Model/GetPhoneNumberKycForm200ResponseReusable.md
 docs/Model/GetPhoneNumberKycForm200ResponseReusableDetailsInner.md
 docs/Model/GetPhoneNumberKycForm200ResponseReusableOptionsInner.md
+docs/Model/GetPhoneNumberPortInOrderRequirements200Response.md
+docs/Model/GetPhoneNumberPortInOrderRequirements200ResponseRequirementsInner.md
+docs/Model/GetPhoneNumberPortInRequirements200Response.md
+docs/Model/GetPhoneNumberPortInRequirements200ResponseFieldsInner.md
 docs/Model/GetPhoneNumberRemediation200Response.md
 docs/Model/GetPinterestBoards200Response.md
 docs/Model/GetPinterestBoards200ResponseBoardsInner.md
@@ -1751,6 +1756,7 @@ lib/Model/CreatePhoneNumberPortIn201Response.php
 lib/Model/CreatePhoneNumberPortIn201ResponseOrdersInner.php
 lib/Model/CreatePhoneNumberPortInRequest.php
 lib/Model/CreatePhoneNumberPortInRequestEndUser.php
+lib/Model/CreatePhoneNumberPortInRequestRequirementsInner.php
 lib/Model/CreatePinterestBoard201Response.php
 lib/Model/CreatePinterestBoard201ResponseBoard.php
 lib/Model/CreatePinterestBoardRequest.php
@@ -2121,6 +2127,10 @@ lib/Model/GetPhoneNumberKycForm200ResponseFieldsInner.php
 lib/Model/GetPhoneNumberKycForm200ResponseReusable.php
 lib/Model/GetPhoneNumberKycForm200ResponseReusableDetailsInner.php
 lib/Model/GetPhoneNumberKycForm200ResponseReusableOptionsInner.php
+lib/Model/GetPhoneNumberPortInOrderRequirements200Response.php
+lib/Model/GetPhoneNumberPortInOrderRequirements200ResponseRequirementsInner.php
+lib/Model/GetPhoneNumberPortInRequirements200Response.php
+lib/Model/GetPhoneNumberPortInRequirements200ResponseFieldsInner.php
 lib/Model/GetPhoneNumberRemediation200Response.php
 lib/Model/GetPinterestBoards200Response.php
 lib/Model/GetPinterestBoards200ResponseBoardsInner.php
@@ -2991,8 +3001,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateRfPrediction201ResponseTest.php
-test/Model/CreateRfPredictionRequestTest.php
-test/Model/ReserveRfPrediction201ResponseTest.php
-test/Model/ReserveRfPredictionRequestTest.php
-test/Model/RfPredictionTest.php
+test/Model/CreatePhoneNumberPortInRequestRequirementsInnerTest.php
+test/Model/GetPhoneNumberPortInOrderRequirements200ResponseRequirementsInnerTest.php
+test/Model/GetPhoneNumberPortInOrderRequirements200ResponseTest.php
+test/Model/GetPhoneNumberPortInRequirements200ResponseFieldsInnerTest.php
+test/Model/GetPhoneNumberPortInRequirements200ResponseTest.php

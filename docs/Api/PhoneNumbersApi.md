@@ -13,6 +13,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createPhoneNumberPortIn()**](PhoneNumbersApi.md#createPhoneNumberPortIn) | **POST** /v1/phone-numbers/port-in | Port numbers in |
 | [**getPhoneNumber()**](PhoneNumbersApi.md#getPhoneNumber) | **GET** /v1/phone-numbers/{id} | Get phone number |
 | [**getPhoneNumberKycForm()**](PhoneNumbersApi.md#getPhoneNumberKycForm) | **GET** /v1/phone-numbers/kyc | Get KYC form spec |
+| [**getPhoneNumberPortInOrderRequirements()**](PhoneNumbersApi.md#getPhoneNumberPortInOrderRequirements) | **GET** /v1/phone-numbers/port-in/{id}/requirements | A port-in order&#39;s pending requirements |
+| [**getPhoneNumberPortInRequirements()**](PhoneNumbersApi.md#getPhoneNumberPortInRequirements) | **GET** /v1/phone-numbers/port-in/requirements | Country porting requirements |
 | [**getPhoneNumberRemediation()**](PhoneNumbersApi.md#getPhoneNumberRemediation) | **GET** /v1/phone-numbers/{id}/remediate | Get declined requirements |
 | [**listPhoneNumberCountries()**](PhoneNumbersApi.md#listPhoneNumberCountries) | **GET** /v1/phone-numbers/countries | List offerable number countries |
 | [**listPhoneNumberPortIns()**](PhoneNumbersApi.md#listPhoneNumberPortIns) | **GET** /v1/phone-numbers/port-in | List port-in orders |
@@ -278,7 +280,7 @@ createPhoneNumberPortIn($create_phone_number_port_in_request): \Zernio\Model\Cre
 
 Port numbers in
 
-Submit a port-in for one or more existing numbers from another carrier. Creates the carrier order(s), attaches the end-user (current account) info plus the LOA and invoice documents, and submits to the losing carrier. The transfer PIN is forwarded to the carrier and never stored. Ported numbers arrive voice-ready (and SMS-ready where the order supports messaging).  Run the portability check (POST /v1/phone-numbers/port-in/check) and upload the two documents (POST /v1/phone-numbers/port-in/documents) first. The carrier may split the numbers into several orders (by country, number type, losing carrier); `orders` carries per-order results, and a partial failure still returns 201 with the failed orders' `error` set (they stay as cancellable drafts).
+Submit a port-in for one or more existing numbers from another carrier. Creates the carrier order(s), attaches the end-user (current account) info plus the LOA and invoice documents, and submits to the losing carrier. The transfer PIN is forwarded to the carrier and never stored. Ported numbers arrive voice-ready (and SMS-ready where the order supports messaging).  Run the portability check (POST /v1/phone-numbers/port-in/check) and upload the two documents (POST /v1/phone-numbers/port-in/documents) first — uploaded documents must be attached to an order within 30 minutes or the carrier deletes them, so upload right before this call. The carrier may split the numbers into several orders (by country, number type, losing carrier); `orders` carries per-order results, and a partial failure still returns 201 with the failed orders' `error` set (they stay as cancellable drafts).  Non-US/CA numbers additionally need the country-specific values from GET /v1/phone-numbers/port-in/requirements, passed via `requirements`, and must be submitted one country per request. When required information is still missing after submission, the order is kept as a resumable draft whose `error` / `declineReason` names the gaps.
 
 ### Example
 
@@ -438,6 +440,128 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetPhoneNumberKycForm200Response**](../Model/GetPhoneNumberKycForm200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getPhoneNumberPortInOrderRequirements()`
+
+```php
+getPhoneNumberPortInOrderRequirements($id): \Zernio\Model\GetPhoneNumberPortInOrderRequirements200Response
+```
+
+A port-in order's pending requirements
+
+The live requirements on an EXISTING porting order: which are filled, which are still pending, and which bounced on review (`requirement-info-exception`). Use it to fix and resubmit a rejected international port. Same field shape as the country-level requirements endpoint, plus per-requirement status.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\PhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | Porting order ID (from the port-in list).
+
+try {
+    $result = $apiInstance->getPhoneNumberPortInOrderRequirements($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PhoneNumbersApi->getPhoneNumberPortInOrderRequirements: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| Porting order ID (from the port-in list). | |
+
+### Return type
+
+[**\Zernio\Model\GetPhoneNumberPortInOrderRequirements200Response**](../Model/GetPhoneNumberPortInOrderRequirements200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getPhoneNumberPortInRequirements()`
+
+```php
+getPhoneNumberPortInRequirements($country, $number_type): \Zernio\Model\GetPhoneNumberPortInRequirements200Response
+```
+
+Country porting requirements
+
+The country-specific information a port-in needs BEYOND the LOA, invoice, and account/address details — e.g. an ID copy, proof of address, a tax id, or a porting code. Call it after the portability check (which returns each number's `countryCode` and `phoneNumberType`), render the fields, and pass the collected values as the create request's `requirements`. US/CA return an empty list.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\PhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$country = 'country_example'; // string | ISO country of the numbers being ported (a supported port-in country).
+$number_type = 'local'; // string | The portability check's phoneNumberType — requirements differ by type.
+
+try {
+    $result = $apiInstance->getPhoneNumberPortInRequirements($country, $number_type);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PhoneNumbersApi->getPhoneNumberPortInRequirements: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **country** | **string**| ISO country of the numbers being ported (a supported port-in country). | |
+| **number_type** | **string**| The portability check&#39;s phoneNumberType — requirements differ by type. | [optional] [default to &#39;local&#39;] |
+
+### Return type
+
+[**\Zernio\Model\GetPhoneNumberPortInRequirements200Response**](../Model/GetPhoneNumberPortInRequirements200Response.md)
 
 ### Authorization
 
@@ -1132,7 +1256,7 @@ uploadPhoneNumberPortInDocument($file, $kind): \Zernio\Model\UploadPhoneNumberPo
 
 Upload a porting document
 
-Upload ONE porting document (the signed LOA or a recent carrier invoice) and get back its `documentId`, which the port-in create request takes as `loaDocumentId` / `invoiceDocumentId`. PDF, JPEG, or PNG, 10MB max.
+Upload ONE porting document and get back its `documentId`. For the signed LOA / carrier invoice the id goes to `loaDocumentId` / `invoiceDocumentId`; for a country-specific document requirement (international ports) it becomes that requirement's `fieldValue`. Requirement documents are normalized to PDF automatically (regulators reject raw images). PDF, JPEG, or PNG, 10MB max. Uploads must be attached to an order within 30 minutes or the carrier deletes them.
 
 ### Example
 
@@ -1152,7 +1276,7 @@ $apiInstance = new Zernio\Api\PhoneNumbersApi(
     $config
 );
 $file = '/path/to/file.txt'; // \SplFileObject | The document (PDF/JPEG/PNG, 10MB max).
-$kind = 'kind_example'; // string | Informational; used for the stored filename.
+$kind = 'kind_example'; // string | 'loa', 'invoice', or any short slug for requirement documents. Informational; used for the stored filename.
 
 try {
     $result = $apiInstance->uploadPhoneNumberPortInDocument($file, $kind);
@@ -1167,7 +1291,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **file** | **\SplFileObject****\SplFileObject**| The document (PDF/JPEG/PNG, 10MB max). | |
-| **kind** | **string**| Informational; used for the stored filename. | [optional] |
+| **kind** | **string**| &#39;loa&#39;, &#39;invoice&#39;, or any short slug for requirement documents. Informational; used for the stored filename. | [optional] |
 
 ### Return type
 

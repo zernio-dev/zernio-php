@@ -1,6 +1,6 @@
 <?php
 /**
- * CheckPhoneNumberPortability200ResponseResultsInner
+ * GetPhoneNumberPortInOrderRequirements200ResponseRequirementsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CheckPhoneNumberPortability200ResponseResultsInner Class Doc Comment
+ * GetPhoneNumberPortInOrderRequirements200ResponseRequirementsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetPhoneNumberPortInOrderRequirements200ResponseRequirementsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'checkPhoneNumberPortability_200_response_results_inner';
+    protected static $openAPIModelName = 'getPhoneNumberPortInOrderRequirements_200_response_requirements_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,13 +58,14 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'phone_number' => 'string',
-        'portable' => 'bool',
-        'fast_portable' => 'bool',
-        'line_type' => 'string',
-        'country_code' => 'string',
-        'phone_number_type' => 'string',
-        'not_portable_reason' => 'string'
+        'requirement_id' => 'string',
+        'label' => 'string',
+        'kind' => 'string',
+        'description' => 'string',
+        'example' => 'string',
+        'acceptable_values' => 'string[]',
+        'status' => 'string',
+        'filled' => 'bool'
     ];
 
     /**
@@ -75,13 +76,14 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'phone_number' => null,
-        'portable' => null,
-        'fast_portable' => null,
-        'line_type' => null,
-        'country_code' => null,
-        'phone_number_type' => null,
-        'not_portable_reason' => null
+        'requirement_id' => null,
+        'label' => null,
+        'kind' => null,
+        'description' => null,
+        'example' => null,
+        'acceptable_values' => null,
+        'status' => null,
+        'filled' => null
     ];
 
     /**
@@ -90,13 +92,14 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'phone_number' => false,
-        'portable' => false,
-        'fast_portable' => false,
-        'line_type' => true,
-        'country_code' => true,
-        'phone_number_type' => true,
-        'not_portable_reason' => true
+        'requirement_id' => false,
+        'label' => false,
+        'kind' => false,
+        'description' => false,
+        'example' => false,
+        'acceptable_values' => false,
+        'status' => false,
+        'filled' => false
     ];
 
     /**
@@ -185,13 +188,14 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
      * @var string[]
      */
     protected static $attributeMap = [
-        'phone_number' => 'phoneNumber',
-        'portable' => 'portable',
-        'fast_portable' => 'fastPortable',
-        'line_type' => 'lineType',
-        'country_code' => 'countryCode',
-        'phone_number_type' => 'phoneNumberType',
-        'not_portable_reason' => 'notPortableReason'
+        'requirement_id' => 'requirementId',
+        'label' => 'label',
+        'kind' => 'kind',
+        'description' => 'description',
+        'example' => 'example',
+        'acceptable_values' => 'acceptableValues',
+        'status' => 'status',
+        'filled' => 'filled'
     ];
 
     /**
@@ -200,13 +204,14 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
      * @var string[]
      */
     protected static $setters = [
-        'phone_number' => 'setPhoneNumber',
-        'portable' => 'setPortable',
-        'fast_portable' => 'setFastPortable',
-        'line_type' => 'setLineType',
-        'country_code' => 'setCountryCode',
-        'phone_number_type' => 'setPhoneNumberType',
-        'not_portable_reason' => 'setNotPortableReason'
+        'requirement_id' => 'setRequirementId',
+        'label' => 'setLabel',
+        'kind' => 'setKind',
+        'description' => 'setDescription',
+        'example' => 'setExample',
+        'acceptable_values' => 'setAcceptableValues',
+        'status' => 'setStatus',
+        'filled' => 'setFilled'
     ];
 
     /**
@@ -215,13 +220,14 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
      * @var string[]
      */
     protected static $getters = [
-        'phone_number' => 'getPhoneNumber',
-        'portable' => 'getPortable',
-        'fast_portable' => 'getFastPortable',
-        'line_type' => 'getLineType',
-        'country_code' => 'getCountryCode',
-        'phone_number_type' => 'getPhoneNumberType',
-        'not_portable_reason' => 'getNotPortableReason'
+        'requirement_id' => 'getRequirementId',
+        'label' => 'getLabel',
+        'kind' => 'getKind',
+        'description' => 'getDescription',
+        'example' => 'getExample',
+        'acceptable_values' => 'getAcceptableValues',
+        'status' => 'getStatus',
+        'filled' => 'getFilled'
     ];
 
     /**
@@ -265,6 +271,27 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
         return self::$openAPIModelName;
     }
 
+    public const KIND_TEXT = 'text';
+    public const KIND_DATE = 'date';
+    public const KIND_ADDRESS = 'address';
+    public const KIND_FILE = 'file';
+    public const KIND_ACTION = 'action';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getKindAllowableValues()
+    {
+        return [
+            self::KIND_TEXT,
+            self::KIND_DATE,
+            self::KIND_ADDRESS,
+            self::KIND_FILE,
+            self::KIND_ACTION,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -281,13 +308,14 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('phone_number', $data ?? [], null);
-        $this->setIfExists('portable', $data ?? [], null);
-        $this->setIfExists('fast_portable', $data ?? [], null);
-        $this->setIfExists('line_type', $data ?? [], null);
-        $this->setIfExists('country_code', $data ?? [], null);
-        $this->setIfExists('phone_number_type', $data ?? [], null);
-        $this->setIfExists('not_portable_reason', $data ?? [], null);
+        $this->setIfExists('requirement_id', $data ?? [], null);
+        $this->setIfExists('label', $data ?? [], null);
+        $this->setIfExists('kind', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('example', $data ?? [], null);
+        $this->setIfExists('acceptable_values', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('filled', $data ?? [], null);
     }
 
     /**
@@ -317,6 +345,15 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getKindAllowableValues();
+        if (!is_null($this->container['kind']) && !in_array($this->container['kind'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'kind', must be one of '%s'",
+                $this->container['kind'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -333,218 +370,227 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
 
 
     /**
-     * Gets phone_number
+     * Gets requirement_id
      *
      * @return string|null
      */
-    public function getPhoneNumber()
+    public function getRequirementId()
     {
-        return $this->container['phone_number'];
+        return $this->container['requirement_id'];
     }
 
     /**
-     * Sets phone_number
+     * Sets requirement_id
      *
-     * @param string|null $phone_number phone_number
+     * @param string|null $requirement_id requirement_id
      *
      * @return self
      */
-    public function setPhoneNumber($phone_number)
+    public function setRequirementId($requirement_id)
     {
-        if (is_null($phone_number)) {
-            throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
+        if (is_null($requirement_id)) {
+            throw new \InvalidArgumentException('non-nullable requirement_id cannot be null');
         }
-        $this->container['phone_number'] = $phone_number;
+        $this->container['requirement_id'] = $requirement_id;
 
         return $this;
     }
 
     /**
-     * Gets portable
+     * Gets label
+     *
+     * @return string|null
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string|null $label label
+     *
+     * @return self
+     */
+    public function setLabel($label)
+    {
+        if (is_null($label)) {
+            throw new \InvalidArgumentException('non-nullable label cannot be null');
+        }
+        $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
+     * Gets kind
+     *
+     * @return string|null
+     */
+    public function getKind()
+    {
+        return $this->container['kind'];
+    }
+
+    /**
+     * Sets kind
+     *
+     * @param string|null $kind kind
+     *
+     * @return self
+     */
+    public function setKind($kind)
+    {
+        if (is_null($kind)) {
+            throw new \InvalidArgumentException('non-nullable kind cannot be null');
+        }
+        $allowedValues = $this->getKindAllowableValues();
+        if (!in_array($kind, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'kind', must be one of '%s'",
+                    $kind,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['kind'] = $kind;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description description
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        }
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets example
+     *
+     * @return string|null
+     */
+    public function getExample()
+    {
+        return $this->container['example'];
+    }
+
+    /**
+     * Sets example
+     *
+     * @param string|null $example example
+     *
+     * @return self
+     */
+    public function setExample($example)
+    {
+        if (is_null($example)) {
+            throw new \InvalidArgumentException('non-nullable example cannot be null');
+        }
+        $this->container['example'] = $example;
+
+        return $this;
+    }
+
+    /**
+     * Gets acceptable_values
+     *
+     * @return string[]|null
+     */
+    public function getAcceptableValues()
+    {
+        return $this->container['acceptable_values'];
+    }
+
+    /**
+     * Sets acceptable_values
+     *
+     * @param string[]|null $acceptable_values acceptable_values
+     *
+     * @return self
+     */
+    public function setAcceptableValues($acceptable_values)
+    {
+        if (is_null($acceptable_values)) {
+            throw new \InvalidArgumentException('non-nullable acceptable_values cannot be null');
+        }
+        $this->container['acceptable_values'] = $acceptable_values;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status requirement-info-pending | requirement-info-under-review | requirement-info-exception | approved
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets filled
      *
      * @return bool|null
      */
-    public function getPortable()
+    public function getFilled()
     {
-        return $this->container['portable'];
+        return $this->container['filled'];
     }
 
     /**
-     * Sets portable
+     * Sets filled
      *
-     * @param bool|null $portable portable
+     * @param bool|null $filled filled
      *
      * @return self
      */
-    public function setPortable($portable)
+    public function setFilled($filled)
     {
-        if (is_null($portable)) {
-            throw new \InvalidArgumentException('non-nullable portable cannot be null');
+        if (is_null($filled)) {
+            throw new \InvalidArgumentException('non-nullable filled cannot be null');
         }
-        $this->container['portable'] = $portable;
-
-        return $this;
-    }
-
-    /**
-     * Gets fast_portable
-     *
-     * @return bool|null
-     */
-    public function getFastPortable()
-    {
-        return $this->container['fast_portable'];
-    }
-
-    /**
-     * Sets fast_portable
-     *
-     * @param bool|null $fast_portable Qualifies for the carrier's accelerated FastPort lane.
-     *
-     * @return self
-     */
-    public function setFastPortable($fast_portable)
-    {
-        if (is_null($fast_portable)) {
-            throw new \InvalidArgumentException('non-nullable fast_portable cannot be null');
-        }
-        $this->container['fast_portable'] = $fast_portable;
-
-        return $this;
-    }
-
-    /**
-     * Gets line_type
-     *
-     * @return string|null
-     */
-    public function getLineType()
-    {
-        return $this->container['line_type'];
-    }
-
-    /**
-     * Sets line_type
-     *
-     * @param string|null $line_type Line type when known (mobile, landline, voip…). A US/CA mobile number requires the transfer PIN at submit.
-     *
-     * @return self
-     */
-    public function setLineType($line_type)
-    {
-        if (is_null($line_type)) {
-            array_push($this->openAPINullablesSetToNull, 'line_type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('line_type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['line_type'] = $line_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets country_code
-     *
-     * @return string|null
-     */
-    public function getCountryCode()
-    {
-        return $this->container['country_code'];
-    }
-
-    /**
-     * Sets country_code
-     *
-     * @param string|null $country_code ISO country of the number — pass it to GET /v1/phone-numbers/port-in/requirements for international numbers.
-     *
-     * @return self
-     */
-    public function setCountryCode($country_code)
-    {
-        if (is_null($country_code)) {
-            array_push($this->openAPINullablesSetToNull, 'country_code');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('country_code', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['country_code'] = $country_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets phone_number_type
-     *
-     * @return string|null
-     */
-    public function getPhoneNumberType()
-    {
-        return $this->container['phone_number_type'];
-    }
-
-    /**
-     * Sets phone_number_type
-     *
-     * @param string|null $phone_number_type Carrier number-type classification (local, mobile, national, toll_free…) — the numberType for the requirements endpoint.
-     *
-     * @return self
-     */
-    public function setPhoneNumberType($phone_number_type)
-    {
-        if (is_null($phone_number_type)) {
-            array_push($this->openAPINullablesSetToNull, 'phone_number_type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('phone_number_type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['phone_number_type'] = $phone_number_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets not_portable_reason
-     *
-     * @return string|null
-     */
-    public function getNotPortableReason()
-    {
-        return $this->container['not_portable_reason'];
-    }
-
-    /**
-     * Sets not_portable_reason
-     *
-     * @param string|null $not_portable_reason Carrier reason when not portable; null when portable.
-     *
-     * @return self
-     */
-    public function setNotPortableReason($not_portable_reason)
-    {
-        if (is_null($not_portable_reason)) {
-            array_push($this->openAPINullablesSetToNull, 'not_portable_reason');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('not_portable_reason', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['not_portable_reason'] = $not_portable_reason;
+        $this->container['filled'] = $filled;
 
         return $this;
     }

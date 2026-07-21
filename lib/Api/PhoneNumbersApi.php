@@ -96,6 +96,12 @@ class PhoneNumbersApi
         'getPhoneNumberKycForm' => [
             'application/json',
         ],
+        'getPhoneNumberPortInOrderRequirements' => [
+            'application/json',
+        ],
+        'getPhoneNumberPortInRequirements' => [
+            'application/json',
+        ],
         'getPhoneNumberRemediation' => [
             'application/json',
         ],
@@ -1351,7 +1357,7 @@ class PhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreatePhoneNumberPortIn201Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CreatePhoneNumberPortIn201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
      */
     public function createPhoneNumberPortIn($create_phone_number_port_in_request, string $contentType = self::contentTypes['createPhoneNumberPortIn'][0])
     {
@@ -1369,7 +1375,7 @@ class PhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreatePhoneNumberPortIn201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreatePhoneNumberPortIn201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function createPhoneNumberPortInWithHttpInfo($create_phone_number_port_in_request, string $contentType = self::contentTypes['createPhoneNumberPortIn'][0])
     {
@@ -1402,6 +1408,12 @@ class PhoneNumbersApi
                 case 201:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\CreatePhoneNumberPortIn201Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -1439,6 +1451,14 @@ class PhoneNumbersApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\CreatePhoneNumberPortIn201Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2143,6 +2163,628 @@ class PhoneNumbersApi
 
 
         $resourcePath = '/v1/phone-numbers/kyc';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $country,
+            'country', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $number_type,
+            'numberType', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getPhoneNumberPortInOrderRequirements
+     *
+     * A port-in order&#39;s pending requirements
+     *
+     * @param  string $id Porting order ID (from the port-in list). (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberPortInOrderRequirements'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetPhoneNumberPortInOrderRequirements200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     */
+    public function getPhoneNumberPortInOrderRequirements($id, string $contentType = self::contentTypes['getPhoneNumberPortInOrderRequirements'][0])
+    {
+        list($response) = $this->getPhoneNumberPortInOrderRequirementsWithHttpInfo($id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getPhoneNumberPortInOrderRequirementsWithHttpInfo
+     *
+     * A port-in order&#39;s pending requirements
+     *
+     * @param  string $id Porting order ID (from the port-in list). (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberPortInOrderRequirements'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetPhoneNumberPortInOrderRequirements200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getPhoneNumberPortInOrderRequirementsWithHttpInfo($id, string $contentType = self::contentTypes['getPhoneNumberPortInOrderRequirements'][0])
+    {
+        $request = $this->getPhoneNumberPortInOrderRequirementsRequest($id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetPhoneNumberPortInOrderRequirements200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetPhoneNumberPortInOrderRequirements200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetPhoneNumberPortInOrderRequirements200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getPhoneNumberPortInOrderRequirementsAsync
+     *
+     * A port-in order&#39;s pending requirements
+     *
+     * @param  string $id Porting order ID (from the port-in list). (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberPortInOrderRequirements'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPhoneNumberPortInOrderRequirementsAsync($id, string $contentType = self::contentTypes['getPhoneNumberPortInOrderRequirements'][0])
+    {
+        return $this->getPhoneNumberPortInOrderRequirementsAsyncWithHttpInfo($id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getPhoneNumberPortInOrderRequirementsAsyncWithHttpInfo
+     *
+     * A port-in order&#39;s pending requirements
+     *
+     * @param  string $id Porting order ID (from the port-in list). (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberPortInOrderRequirements'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPhoneNumberPortInOrderRequirementsAsyncWithHttpInfo($id, string $contentType = self::contentTypes['getPhoneNumberPortInOrderRequirements'][0])
+    {
+        $returnType = '\Zernio\Model\GetPhoneNumberPortInOrderRequirements200Response';
+        $request = $this->getPhoneNumberPortInOrderRequirementsRequest($id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getPhoneNumberPortInOrderRequirements'
+     *
+     * @param  string $id Porting order ID (from the port-in list). (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberPortInOrderRequirements'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getPhoneNumberPortInOrderRequirementsRequest($id, string $contentType = self::contentTypes['getPhoneNumberPortInOrderRequirements'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling getPhoneNumberPortInOrderRequirements'
+            );
+        }
+
+
+        $resourcePath = '/v1/phone-numbers/port-in/{id}/requirements';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getPhoneNumberPortInRequirements
+     *
+     * Country porting requirements
+     *
+     * @param  string $country ISO country of the numbers being ported (a supported port-in country). (required)
+     * @param  string|null $number_type The portability check&#39;s phoneNumberType — requirements differ by type. (optional, default to 'local')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberPortInRequirements'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetPhoneNumberPortInRequirements200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     */
+    public function getPhoneNumberPortInRequirements($country, $number_type = 'local', string $contentType = self::contentTypes['getPhoneNumberPortInRequirements'][0])
+    {
+        list($response) = $this->getPhoneNumberPortInRequirementsWithHttpInfo($country, $number_type, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getPhoneNumberPortInRequirementsWithHttpInfo
+     *
+     * Country porting requirements
+     *
+     * @param  string $country ISO country of the numbers being ported (a supported port-in country). (required)
+     * @param  string|null $number_type The portability check&#39;s phoneNumberType — requirements differ by type. (optional, default to 'local')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberPortInRequirements'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetPhoneNumberPortInRequirements200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getPhoneNumberPortInRequirementsWithHttpInfo($country, $number_type = 'local', string $contentType = self::contentTypes['getPhoneNumberPortInRequirements'][0])
+    {
+        $request = $this->getPhoneNumberPortInRequirementsRequest($country, $number_type, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetPhoneNumberPortInRequirements200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetPhoneNumberPortInRequirements200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetPhoneNumberPortInRequirements200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getPhoneNumberPortInRequirementsAsync
+     *
+     * Country porting requirements
+     *
+     * @param  string $country ISO country of the numbers being ported (a supported port-in country). (required)
+     * @param  string|null $number_type The portability check&#39;s phoneNumberType — requirements differ by type. (optional, default to 'local')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberPortInRequirements'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPhoneNumberPortInRequirementsAsync($country, $number_type = 'local', string $contentType = self::contentTypes['getPhoneNumberPortInRequirements'][0])
+    {
+        return $this->getPhoneNumberPortInRequirementsAsyncWithHttpInfo($country, $number_type, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getPhoneNumberPortInRequirementsAsyncWithHttpInfo
+     *
+     * Country porting requirements
+     *
+     * @param  string $country ISO country of the numbers being ported (a supported port-in country). (required)
+     * @param  string|null $number_type The portability check&#39;s phoneNumberType — requirements differ by type. (optional, default to 'local')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberPortInRequirements'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPhoneNumberPortInRequirementsAsyncWithHttpInfo($country, $number_type = 'local', string $contentType = self::contentTypes['getPhoneNumberPortInRequirements'][0])
+    {
+        $returnType = '\Zernio\Model\GetPhoneNumberPortInRequirements200Response';
+        $request = $this->getPhoneNumberPortInRequirementsRequest($country, $number_type, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getPhoneNumberPortInRequirements'
+     *
+     * @param  string $country ISO country of the numbers being ported (a supported port-in country). (required)
+     * @param  string|null $number_type The portability check&#39;s phoneNumberType — requirements differ by type. (optional, default to 'local')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberPortInRequirements'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getPhoneNumberPortInRequirementsRequest($country, $number_type = 'local', string $contentType = self::contentTypes['getPhoneNumberPortInRequirements'][0])
+    {
+
+        // verify the required parameter 'country' is set
+        if ($country === null || (is_array($country) && count($country) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $country when calling getPhoneNumberPortInRequirements'
+            );
+        }
+        if (strlen($country) > 2) {
+            throw new \InvalidArgumentException('invalid length for "$country" when calling PhoneNumbersApi.getPhoneNumberPortInRequirements, must be smaller than or equal to 2.');
+        }
+        if (strlen($country) < 2) {
+            throw new \InvalidArgumentException('invalid length for "$country" when calling PhoneNumbersApi.getPhoneNumberPortInRequirements, must be bigger than or equal to 2.');
+        }
+        
+
+
+        $resourcePath = '/v1/phone-numbers/port-in/requirements';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -5511,7 +6153,7 @@ class PhoneNumbersApi
      * Upload a porting document
      *
      * @param  \SplFileObject $file The document (PDF/JPEG/PNG, 10MB max). (required)
-     * @param  string|null $kind Informational; used for the stored filename. (optional)
+     * @param  string|null $kind &#39;loa&#39;, &#39;invoice&#39;, or any short slug for requirement documents. Informational; used for the stored filename. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadPhoneNumberPortInDocument'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5530,7 +6172,7 @@ class PhoneNumbersApi
      * Upload a porting document
      *
      * @param  \SplFileObject $file The document (PDF/JPEG/PNG, 10MB max). (required)
-     * @param  string|null $kind Informational; used for the stored filename. (optional)
+     * @param  string|null $kind &#39;loa&#39;, &#39;invoice&#39;, or any short slug for requirement documents. Informational; used for the stored filename. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadPhoneNumberPortInDocument'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5630,7 +6272,7 @@ class PhoneNumbersApi
      * Upload a porting document
      *
      * @param  \SplFileObject $file The document (PDF/JPEG/PNG, 10MB max). (required)
-     * @param  string|null $kind Informational; used for the stored filename. (optional)
+     * @param  string|null $kind &#39;loa&#39;, &#39;invoice&#39;, or any short slug for requirement documents. Informational; used for the stored filename. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadPhoneNumberPortInDocument'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5652,7 +6294,7 @@ class PhoneNumbersApi
      * Upload a porting document
      *
      * @param  \SplFileObject $file The document (PDF/JPEG/PNG, 10MB max). (required)
-     * @param  string|null $kind Informational; used for the stored filename. (optional)
+     * @param  string|null $kind &#39;loa&#39;, &#39;invoice&#39;, or any short slug for requirement documents. Informational; used for the stored filename. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadPhoneNumberPortInDocument'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5703,7 +6345,7 @@ class PhoneNumbersApi
      * Create request for operation 'uploadPhoneNumberPortInDocument'
      *
      * @param  \SplFileObject $file The document (PDF/JPEG/PNG, 10MB max). (required)
-     * @param  string|null $kind Informational; used for the stored filename. (optional)
+     * @param  string|null $kind &#39;loa&#39;, &#39;invoice&#39;, or any short slug for requirement documents. Informational; used for the stored filename. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadPhoneNumberPortInDocument'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

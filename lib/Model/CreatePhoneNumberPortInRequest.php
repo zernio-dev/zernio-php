@@ -64,7 +64,8 @@ class CreatePhoneNumberPortInRequest implements ModelInterface, ArrayAccess, \Js
         'invoice_document_id' => 'string',
         'foc_datetime_requested' => '\DateTime',
         'customer_reference' => 'string',
-        'port_type' => 'string'
+        'port_type' => 'string',
+        'requirements' => '\Zernio\Model\CreatePhoneNumberPortInRequestRequirementsInner[]'
     ];
 
     /**
@@ -81,7 +82,8 @@ class CreatePhoneNumberPortInRequest implements ModelInterface, ArrayAccess, \Js
         'invoice_document_id' => null,
         'foc_datetime_requested' => 'date-time',
         'customer_reference' => null,
-        'port_type' => null
+        'port_type' => null,
+        'requirements' => null
     ];
 
     /**
@@ -96,7 +98,8 @@ class CreatePhoneNumberPortInRequest implements ModelInterface, ArrayAccess, \Js
         'invoice_document_id' => false,
         'foc_datetime_requested' => false,
         'customer_reference' => false,
-        'port_type' => false
+        'port_type' => false,
+        'requirements' => false
     ];
 
     /**
@@ -191,7 +194,8 @@ class CreatePhoneNumberPortInRequest implements ModelInterface, ArrayAccess, \Js
         'invoice_document_id' => 'invoiceDocumentId',
         'foc_datetime_requested' => 'focDatetimeRequested',
         'customer_reference' => 'customerReference',
-        'port_type' => 'portType'
+        'port_type' => 'portType',
+        'requirements' => 'requirements'
     ];
 
     /**
@@ -206,7 +210,8 @@ class CreatePhoneNumberPortInRequest implements ModelInterface, ArrayAccess, \Js
         'invoice_document_id' => 'setInvoiceDocumentId',
         'foc_datetime_requested' => 'setFocDatetimeRequested',
         'customer_reference' => 'setCustomerReference',
-        'port_type' => 'setPortType'
+        'port_type' => 'setPortType',
+        'requirements' => 'setRequirements'
     ];
 
     /**
@@ -221,7 +226,8 @@ class CreatePhoneNumberPortInRequest implements ModelInterface, ArrayAccess, \Js
         'invoice_document_id' => 'getInvoiceDocumentId',
         'foc_datetime_requested' => 'getFocDatetimeRequested',
         'customer_reference' => 'getCustomerReference',
-        'port_type' => 'getPortType'
+        'port_type' => 'getPortType',
+        'requirements' => 'getRequirements'
     ];
 
     /**
@@ -303,6 +309,7 @@ class CreatePhoneNumberPortInRequest implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('foc_datetime_requested', $data ?? [], null);
         $this->setIfExists('customer_reference', $data ?? [], null);
         $this->setIfExists('port_type', $data ?? [], 'full');
+        $this->setIfExists('requirements', $data ?? [], null);
     }
 
     /**
@@ -363,6 +370,10 @@ class CreatePhoneNumberPortInRequest implements ModelInterface, ArrayAccess, \Js
                 $this->container['port_type'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['requirements']) && (count($this->container['requirements']) > 30)) {
+            $invalidProperties[] = "invalid value for 'requirements', number of items must be less than or equal to 30.";
         }
 
         return $invalidProperties;
@@ -508,7 +519,7 @@ class CreatePhoneNumberPortInRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets foc_datetime_requested
      *
-     * @param \DateTime|null $foc_datetime_requested Requested port date; the carrier confirms the actual FOC later. Defaults to one week out (shifted off weekends) when omitted.
+     * @param \DateTime|null $foc_datetime_requested Requested port date; the carrier confirms the actual FOC later. US/CA default is one week out (shifted off weekends); international orders are scheduled into the carrier's next allowed porting window at or after this date.
      *
      * @return self
      */
@@ -586,6 +597,37 @@ class CreatePhoneNumberPortInRequest implements ModelInterface, ArrayAccess, \Js
             );
         }
         $this->container['port_type'] = $port_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets requirements
+     *
+     * @return \Zernio\Model\CreatePhoneNumberPortInRequestRequirementsInner[]|null
+     */
+    public function getRequirements()
+    {
+        return $this->container['requirements'];
+    }
+
+    /**
+     * Sets requirements
+     *
+     * @param \Zernio\Model\CreatePhoneNumberPortInRequestRequirementsInner[]|null $requirements Country-specific requirement values for international ports (from GET /v1/phone-numbers/port-in/requirements). Not needed for US/CA. The LOA and invoice requirements are satisfied automatically by loaDocumentId/invoiceDocumentId, and address-type requirements by the endUser service address.
+     *
+     * @return self
+     */
+    public function setRequirements($requirements)
+    {
+        if (is_null($requirements)) {
+            throw new \InvalidArgumentException('non-nullable requirements cannot be null');
+        }
+
+        if ((count($requirements) > 30)) {
+            throw new \InvalidArgumentException('invalid value for $requirements when calling CreatePhoneNumberPortInRequest., number of items must be less than or equal to 30.');
+        }
+        $this->container['requirements'] = $requirements;
 
         return $this;
     }

@@ -64,6 +64,8 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
         'billing_phone_number' => 'string',
         'account_number' => 'string',
         'pin_passcode' => 'string',
+        'tax_identifier' => 'string',
+        'business_identifier' => 'string',
         'street_address' => 'string',
         'extended_address' => 'string',
         'locality' => 'string',
@@ -85,6 +87,8 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
         'billing_phone_number' => null,
         'account_number' => null,
         'pin_passcode' => null,
+        'tax_identifier' => null,
+        'business_identifier' => null,
         'street_address' => null,
         'extended_address' => null,
         'locality' => null,
@@ -104,6 +108,8 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
         'billing_phone_number' => false,
         'account_number' => false,
         'pin_passcode' => false,
+        'tax_identifier' => false,
+        'business_identifier' => false,
         'street_address' => false,
         'extended_address' => false,
         'locality' => false,
@@ -203,6 +209,8 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
         'billing_phone_number' => 'billingPhoneNumber',
         'account_number' => 'accountNumber',
         'pin_passcode' => 'pinPasscode',
+        'tax_identifier' => 'taxIdentifier',
+        'business_identifier' => 'businessIdentifier',
         'street_address' => 'streetAddress',
         'extended_address' => 'extendedAddress',
         'locality' => 'locality',
@@ -222,6 +230,8 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
         'billing_phone_number' => 'setBillingPhoneNumber',
         'account_number' => 'setAccountNumber',
         'pin_passcode' => 'setPinPasscode',
+        'tax_identifier' => 'setTaxIdentifier',
+        'business_identifier' => 'setBusinessIdentifier',
         'street_address' => 'setStreetAddress',
         'extended_address' => 'setExtendedAddress',
         'locality' => 'setLocality',
@@ -241,6 +251,8 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
         'billing_phone_number' => 'getBillingPhoneNumber',
         'account_number' => 'getAccountNumber',
         'pin_passcode' => 'getPinPasscode',
+        'tax_identifier' => 'getTaxIdentifier',
+        'business_identifier' => 'getBusinessIdentifier',
         'street_address' => 'getStreetAddress',
         'extended_address' => 'getExtendedAddress',
         'locality' => 'getLocality',
@@ -292,6 +304,12 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
 
     public const COUNTRY_CODE_US = 'US';
     public const COUNTRY_CODE_CA = 'CA';
+    public const COUNTRY_CODE_GB = 'GB';
+    public const COUNTRY_CODE_ES = 'ES';
+    public const COUNTRY_CODE_DE = 'DE';
+    public const COUNTRY_CODE_FR = 'FR';
+    public const COUNTRY_CODE_NL = 'NL';
+    public const COUNTRY_CODE_AU = 'AU';
 
     /**
      * Gets allowable values of the enum
@@ -303,6 +321,12 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
         return [
             self::COUNTRY_CODE_US,
             self::COUNTRY_CODE_CA,
+            self::COUNTRY_CODE_GB,
+            self::COUNTRY_CODE_ES,
+            self::COUNTRY_CODE_DE,
+            self::COUNTRY_CODE_FR,
+            self::COUNTRY_CODE_NL,
+            self::COUNTRY_CODE_AU,
         ];
     }
 
@@ -326,6 +350,8 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
         $this->setIfExists('billing_phone_number', $data ?? [], null);
         $this->setIfExists('account_number', $data ?? [], null);
         $this->setIfExists('pin_passcode', $data ?? [], null);
+        $this->setIfExists('tax_identifier', $data ?? [], null);
+        $this->setIfExists('business_identifier', $data ?? [], null);
         $this->setIfExists('street_address', $data ?? [], null);
         $this->setIfExists('extended_address', $data ?? [], null);
         $this->setIfExists('locality', $data ?? [], null);
@@ -370,14 +396,19 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
         if ($this->container['account_number'] === null) {
             $invalidProperties[] = "'account_number' can't be null";
         }
+        if (!is_null($this->container['tax_identifier']) && (mb_strlen($this->container['tax_identifier']) > 50)) {
+            $invalidProperties[] = "invalid value for 'tax_identifier', the character length must be smaller than or equal to 50.";
+        }
+
+        if (!is_null($this->container['business_identifier']) && (mb_strlen($this->container['business_identifier']) > 50)) {
+            $invalidProperties[] = "invalid value for 'business_identifier', the character length must be smaller than or equal to 50.";
+        }
+
         if ($this->container['street_address'] === null) {
             $invalidProperties[] = "'street_address' can't be null";
         }
         if ($this->container['locality'] === null) {
             $invalidProperties[] = "'locality' can't be null";
-        }
-        if ($this->container['administrative_area'] === null) {
-            $invalidProperties[] = "'administrative_area' can't be null";
         }
         if ($this->container['postal_code'] === null) {
             $invalidProperties[] = "'postal_code' can't be null";
@@ -538,7 +569,7 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
     /**
      * Sets pin_passcode
      *
-     * @param string|null $pin_passcode Transfer PIN. Required for mobile numbers (wireless carriers reject PIN-less ports). Forwarded to the carrier, never stored.
+     * @param string|null $pin_passcode Transfer PIN. Required for US/CA mobile numbers (wireless carriers reject PIN-less ports). Forwarded to the carrier, never stored. International porting codes (e.g. the UK PAC) go through `requirements` instead.
      *
      * @return self
      */
@@ -548,6 +579,68 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
             throw new \InvalidArgumentException('non-nullable pin_passcode cannot be null');
         }
         $this->container['pin_passcode'] = $pin_passcode;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax_identifier
+     *
+     * @return string|null
+     */
+    public function getTaxIdentifier()
+    {
+        return $this->container['tax_identifier'];
+    }
+
+    /**
+     * Sets tax_identifier
+     *
+     * @param string|null $tax_identifier Company tax id on the carrier account (EU ports, e.g. Spanish CIF).
+     *
+     * @return self
+     */
+    public function setTaxIdentifier($tax_identifier)
+    {
+        if (is_null($tax_identifier)) {
+            throw new \InvalidArgumentException('non-nullable tax_identifier cannot be null');
+        }
+        if ((mb_strlen($tax_identifier) > 50)) {
+            throw new \InvalidArgumentException('invalid length for $tax_identifier when calling CreatePhoneNumberPortInRequestEndUser., must be smaller than or equal to 50.');
+        }
+
+        $this->container['tax_identifier'] = $tax_identifier;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_identifier
+     *
+     * @return string|null
+     */
+    public function getBusinessIdentifier()
+    {
+        return $this->container['business_identifier'];
+    }
+
+    /**
+     * Sets business_identifier
+     *
+     * @param string|null $business_identifier Business registration id on the carrier account (EU ports).
+     *
+     * @return self
+     */
+    public function setBusinessIdentifier($business_identifier)
+    {
+        if (is_null($business_identifier)) {
+            throw new \InvalidArgumentException('non-nullable business_identifier cannot be null');
+        }
+        if ((mb_strlen($business_identifier) > 50)) {
+            throw new \InvalidArgumentException('invalid length for $business_identifier when calling CreatePhoneNumberPortInRequestEndUser., must be smaller than or equal to 50.');
+        }
+
+        $this->container['business_identifier'] = $business_identifier;
 
         return $this;
     }
@@ -636,7 +729,7 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
     /**
      * Gets administrative_area
      *
-     * @return string
+     * @return string|null
      */
     public function getAdministrativeArea()
     {
@@ -646,7 +739,7 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
     /**
      * Sets administrative_area
      *
-     * @param string $administrative_area 2-letter US state / CA province code (full names are accepted and normalized).
+     * @param string|null $administrative_area Region. Required for US/CA as the 2-letter state/province code (full names are accepted and normalized); optional elsewhere.
      *
      * @return self
      */
@@ -673,7 +766,7 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
     /**
      * Sets postal_code
      *
-     * @param string $postal_code US ZIP (5 digits) or Canadian postal code, matching countryCode.
+     * @param string $postal_code Postal code. Validated as a US ZIP / Canadian postal code for US/CA; free-form elsewhere.
      *
      * @return self
      */
@@ -700,7 +793,7 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
     /**
      * Sets country_code
      *
-     * @param string $country_code country_code
+     * @param string $country_code Service-address country (a supported port-in country).
      *
      * @return self
      */
