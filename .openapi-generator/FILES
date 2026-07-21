@@ -3001,8 +3001,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreatePhoneNumberPortInRequestRequirementsInnerTest.php
-test/Model/GetPhoneNumberPortInOrderRequirements200ResponseRequirementsInnerTest.php
-test/Model/GetPhoneNumberPortInOrderRequirements200ResponseTest.php
-test/Model/GetPhoneNumberPortInRequirements200ResponseFieldsInnerTest.php
-test/Model/GetPhoneNumberPortInRequirements200ResponseTest.php
