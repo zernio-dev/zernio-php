@@ -1,6 +1,6 @@
 <?php
 /**
- * SendSmsRequest
+ * ListSmsSenderIds200ResponseBudget
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SendSmsRequest Class Doc Comment
+ * ListSmsSenderIds200ResponseBudget Class Doc Comment
  *
  * @category Class
+ * @description Workspace-wide daily sending budget, shared by every sender ID (resets midnight UTC).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListSmsSenderIds200ResponseBudget implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'sendSms_request';
+    protected static $openAPIModelName = 'listSmsSenderIds_200_response_budget';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +59,10 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'from' => 'string',
-        'to' => 'string',
-        'text' => 'string',
-        'media_urls' => 'string[]',
-        'send_at' => '\DateTime'
+        'cap' => 'int',
+        'used_today' => 'int',
+        'level' => 'int',
+        'pending_request' => '\Zernio\Model\ListSmsSenderIds200ResponseBudgetPendingRequest'
     ];
 
     /**
@@ -73,11 +73,10 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'from' => null,
-        'to' => null,
-        'text' => null,
-        'media_urls' => 'uri',
-        'send_at' => 'date-time'
+        'cap' => null,
+        'used_today' => null,
+        'level' => null,
+        'pending_request' => null
     ];
 
     /**
@@ -86,11 +85,10 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'from' => false,
-        'to' => false,
-        'text' => false,
-        'media_urls' => false,
-        'send_at' => false
+        'cap' => false,
+        'used_today' => false,
+        'level' => false,
+        'pending_request' => false
     ];
 
     /**
@@ -179,11 +177,10 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'from' => 'from',
-        'to' => 'to',
-        'text' => 'text',
-        'media_urls' => 'mediaUrls',
-        'send_at' => 'sendAt'
+        'cap' => 'cap',
+        'used_today' => 'usedToday',
+        'level' => 'level',
+        'pending_request' => 'pendingRequest'
     ];
 
     /**
@@ -192,11 +189,10 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'from' => 'setFrom',
-        'to' => 'setTo',
-        'text' => 'setText',
-        'media_urls' => 'setMediaUrls',
-        'send_at' => 'setSendAt'
+        'cap' => 'setCap',
+        'used_today' => 'setUsedToday',
+        'level' => 'setLevel',
+        'pending_request' => 'setPendingRequest'
     ];
 
     /**
@@ -205,11 +201,10 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'from' => 'getFrom',
-        'to' => 'getTo',
-        'text' => 'getText',
-        'media_urls' => 'getMediaUrls',
-        'send_at' => 'getSendAt'
+        'cap' => 'getCap',
+        'used_today' => 'getUsedToday',
+        'level' => 'getLevel',
+        'pending_request' => 'getPendingRequest'
     ];
 
     /**
@@ -269,11 +264,10 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('from', $data ?? [], null);
-        $this->setIfExists('to', $data ?? [], null);
-        $this->setIfExists('text', $data ?? [], null);
-        $this->setIfExists('media_urls', $data ?? [], null);
-        $this->setIfExists('send_at', $data ?? [], null);
+        $this->setIfExists('cap', $data ?? [], null);
+        $this->setIfExists('used_today', $data ?? [], null);
+        $this->setIfExists('level', $data ?? [], null);
+        $this->setIfExists('pending_request', $data ?? [], null);
     }
 
     /**
@@ -303,16 +297,6 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['from'] === null) {
-            $invalidProperties[] = "'from' can't be null";
-        }
-        if ($this->container['to'] === null) {
-            $invalidProperties[] = "'to' can't be null";
-        }
-        if (!is_null($this->container['media_urls']) && (count($this->container['media_urls']) > 10)) {
-            $invalidProperties[] = "invalid value for 'media_urls', number of items must be less than or equal to 10.";
-        }
-
         return $invalidProperties;
     }
 
@@ -329,140 +313,109 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets from
+     * Gets cap
      *
-     * @return string
+     * @return int|null
      */
-    public function getFrom()
+    public function getCap()
     {
-        return $this->container['from'];
+        return $this->container['cap'];
     }
 
     /**
-     * Sets from
+     * Sets cap
      *
-     * @param string $from One of your SMS-enabled numbers (E.164; formatting is normalized), or an approved alphanumeric sender ID (3-11 letters/digits/spaces, created via `/v1/sms/sender-ids`).
+     * @param int|null $cap Daily message cap (raisable via `/v1/sms/sender-ids/limit-request`).
      *
      * @return self
      */
-    public function setFrom($from)
+    public function setCap($cap)
     {
-        if (is_null($from)) {
-            throw new \InvalidArgumentException('non-nullable from cannot be null');
+        if (is_null($cap)) {
+            throw new \InvalidArgumentException('non-nullable cap cannot be null');
         }
-        $this->container['from'] = $from;
+        $this->container['cap'] = $cap;
 
         return $this;
     }
 
     /**
-     * Gets to
+     * Gets used_today
      *
-     * @return string
+     * @return int|null
      */
-    public function getTo()
+    public function getUsedToday()
     {
-        return $this->container['to'];
+        return $this->container['used_today'];
     }
 
     /**
-     * Sets to
+     * Sets used_today
      *
-     * @param string $to Recipient number (E.164).
+     * @param int|null $used_today Messages already counted against today's cap.
      *
      * @return self
      */
-    public function setTo($to)
+    public function setUsedToday($used_today)
     {
-        if (is_null($to)) {
-            throw new \InvalidArgumentException('non-nullable to cannot be null');
+        if (is_null($used_today)) {
+            throw new \InvalidArgumentException('non-nullable used_today cannot be null');
         }
-        $this->container['to'] = $to;
+        $this->container['used_today'] = $used_today;
 
         return $this;
     }
 
     /**
-     * Gets text
+     * Gets level
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getText()
+    public function getLevel()
     {
-        return $this->container['text'];
+        return $this->container['level'];
     }
 
     /**
-     * Sets text
+     * Sets level
      *
-     * @param string|null $text Message body. Required unless `mediaUrls` is set. Max 10 SMS segments (1530 GSM-7 or 670 unicode characters).
+     * @param int|null $level Cap tier (Level 1 = 500/day).
      *
      * @return self
      */
-    public function setText($text)
+    public function setLevel($level)
     {
-        if (is_null($text)) {
-            throw new \InvalidArgumentException('non-nullable text cannot be null');
+        if (is_null($level)) {
+            throw new \InvalidArgumentException('non-nullable level cannot be null');
         }
-        $this->container['text'] = $text;
+        $this->container['level'] = $level;
 
         return $this;
     }
 
     /**
-     * Gets media_urls
+     * Gets pending_request
      *
-     * @return string[]|null
+     * @return \Zernio\Model\ListSmsSenderIds200ResponseBudgetPendingRequest|null
      */
-    public function getMediaUrls()
+    public function getPendingRequest()
     {
-        return $this->container['media_urls'];
+        return $this->container['pending_request'];
     }
 
     /**
-     * Sets media_urls
+     * Sets pending_request
      *
-     * @param string[]|null $media_urls Public media URLs to attach (sends as MMS). Max 10.
+     * @param \Zernio\Model\ListSmsSenderIds200ResponseBudgetPendingRequest|null $pending_request pending_request
      *
      * @return self
      */
-    public function setMediaUrls($media_urls)
+    public function setPendingRequest($pending_request)
     {
-        if (is_null($media_urls)) {
-            throw new \InvalidArgumentException('non-nullable media_urls cannot be null');
+        if (is_null($pending_request)) {
+            throw new \InvalidArgumentException('non-nullable pending_request cannot be null');
         }
-
-        if ((count($media_urls) > 10)) {
-            throw new \InvalidArgumentException('invalid value for $media_urls when calling SendSmsRequest., number of items must be less than or equal to 10.');
-        }
-        $this->container['media_urls'] = $media_urls;
-
-        return $this;
-    }
-
-    /**
-     * Gets send_at
-     *
-     * @return \DateTime|null
-     */
-    public function getSendAt()
-    {
-        return $this->container['send_at'];
-    }
-
-    /**
-     * Sets send_at
-     *
-     * @param \DateTime|null $send_at Optional. Schedule the send for a future time (ISO 8601 with offset, e.g. `2026-08-01T12:00:00Z`). Must be in the future. The message is queued and the `message.delivered` webhook fires when it actually sends.
-     *
-     * @return self
-     */
-    public function setSendAt($send_at)
-    {
-        if (is_null($send_at)) {
-            throw new \InvalidArgumentException('non-nullable send_at cannot be null');
-        }
-        $this->container['send_at'] = $send_at;
+        $this->container['pending_request'] = $pending_request;
 
         return $this;
     }

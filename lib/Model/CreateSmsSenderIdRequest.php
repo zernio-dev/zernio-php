@@ -1,6 +1,6 @@
 <?php
 /**
- * SendSmsRequest
+ * CreateSmsSenderIdRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SendSmsRequest Class Doc Comment
+ * CreateSmsSenderIdRequest Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateSmsSenderIdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'sendSms_request';
+    protected static $openAPIModelName = 'createSmsSenderId_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,7 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'from' => 'string',
-        'to' => 'string',
-        'text' => 'string',
-        'media_urls' => 'string[]',
-        'send_at' => '\DateTime'
+        'sender_id' => 'string'
     ];
 
     /**
@@ -73,11 +69,7 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'from' => null,
-        'to' => null,
-        'text' => null,
-        'media_urls' => 'uri',
-        'send_at' => 'date-time'
+        'sender_id' => null
     ];
 
     /**
@@ -86,11 +78,7 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'from' => false,
-        'to' => false,
-        'text' => false,
-        'media_urls' => false,
-        'send_at' => false
+        'sender_id' => false
     ];
 
     /**
@@ -179,11 +167,7 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'from' => 'from',
-        'to' => 'to',
-        'text' => 'text',
-        'media_urls' => 'mediaUrls',
-        'send_at' => 'sendAt'
+        'sender_id' => 'senderId'
     ];
 
     /**
@@ -192,11 +176,7 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'from' => 'setFrom',
-        'to' => 'setTo',
-        'text' => 'setText',
-        'media_urls' => 'setMediaUrls',
-        'send_at' => 'setSendAt'
+        'sender_id' => 'setSenderId'
     ];
 
     /**
@@ -205,11 +185,7 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'from' => 'getFrom',
-        'to' => 'getTo',
-        'text' => 'getText',
-        'media_urls' => 'getMediaUrls',
-        'send_at' => 'getSendAt'
+        'sender_id' => 'getSenderId'
     ];
 
     /**
@@ -269,11 +245,7 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('from', $data ?? [], null);
-        $this->setIfExists('to', $data ?? [], null);
-        $this->setIfExists('text', $data ?? [], null);
-        $this->setIfExists('media_urls', $data ?? [], null);
-        $this->setIfExists('send_at', $data ?? [], null);
+        $this->setIfExists('sender_id', $data ?? [], null);
     }
 
     /**
@@ -303,14 +275,15 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['from'] === null) {
-            $invalidProperties[] = "'from' can't be null";
+        if ($this->container['sender_id'] === null) {
+            $invalidProperties[] = "'sender_id' can't be null";
         }
-        if ($this->container['to'] === null) {
-            $invalidProperties[] = "'to' can't be null";
+        if ((mb_strlen($this->container['sender_id']) > 11)) {
+            $invalidProperties[] = "invalid value for 'sender_id', the character length must be smaller than or equal to 11.";
         }
-        if (!is_null($this->container['media_urls']) && (count($this->container['media_urls']) > 10)) {
-            $invalidProperties[] = "invalid value for 'media_urls', number of items must be less than or equal to 10.";
+
+        if ((mb_strlen($this->container['sender_id']) < 3)) {
+            $invalidProperties[] = "invalid value for 'sender_id', the character length must be bigger than or equal to 3.";
         }
 
         return $invalidProperties;
@@ -329,140 +302,35 @@ class SendSmsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets from
+     * Gets sender_id
      *
      * @return string
      */
-    public function getFrom()
+    public function getSenderId()
     {
-        return $this->container['from'];
+        return $this->container['sender_id'];
     }
 
     /**
-     * Sets from
+     * Sets sender_id
      *
-     * @param string $from One of your SMS-enabled numbers (E.164; formatting is normalized), or an approved alphanumeric sender ID (3-11 letters/digits/spaces, created via `/v1/sms/sender-ids`).
+     * @param string $sender_id The sender ID recipients will see (3-11 letters/digits/spaces, at least one letter, no leading/trailing space).
      *
      * @return self
      */
-    public function setFrom($from)
+    public function setSenderId($sender_id)
     {
-        if (is_null($from)) {
-            throw new \InvalidArgumentException('non-nullable from cannot be null');
+        if (is_null($sender_id)) {
+            throw new \InvalidArgumentException('non-nullable sender_id cannot be null');
         }
-        $this->container['from'] = $from;
-
-        return $this;
-    }
-
-    /**
-     * Gets to
-     *
-     * @return string
-     */
-    public function getTo()
-    {
-        return $this->container['to'];
-    }
-
-    /**
-     * Sets to
-     *
-     * @param string $to Recipient number (E.164).
-     *
-     * @return self
-     */
-    public function setTo($to)
-    {
-        if (is_null($to)) {
-            throw new \InvalidArgumentException('non-nullable to cannot be null');
+        if ((mb_strlen($sender_id) > 11)) {
+            throw new \InvalidArgumentException('invalid length for $sender_id when calling CreateSmsSenderIdRequest., must be smaller than or equal to 11.');
         }
-        $this->container['to'] = $to;
-
-        return $this;
-    }
-
-    /**
-     * Gets text
-     *
-     * @return string|null
-     */
-    public function getText()
-    {
-        return $this->container['text'];
-    }
-
-    /**
-     * Sets text
-     *
-     * @param string|null $text Message body. Required unless `mediaUrls` is set. Max 10 SMS segments (1530 GSM-7 or 670 unicode characters).
-     *
-     * @return self
-     */
-    public function setText($text)
-    {
-        if (is_null($text)) {
-            throw new \InvalidArgumentException('non-nullable text cannot be null');
-        }
-        $this->container['text'] = $text;
-
-        return $this;
-    }
-
-    /**
-     * Gets media_urls
-     *
-     * @return string[]|null
-     */
-    public function getMediaUrls()
-    {
-        return $this->container['media_urls'];
-    }
-
-    /**
-     * Sets media_urls
-     *
-     * @param string[]|null $media_urls Public media URLs to attach (sends as MMS). Max 10.
-     *
-     * @return self
-     */
-    public function setMediaUrls($media_urls)
-    {
-        if (is_null($media_urls)) {
-            throw new \InvalidArgumentException('non-nullable media_urls cannot be null');
+        if ((mb_strlen($sender_id) < 3)) {
+            throw new \InvalidArgumentException('invalid length for $sender_id when calling CreateSmsSenderIdRequest., must be bigger than or equal to 3.');
         }
 
-        if ((count($media_urls) > 10)) {
-            throw new \InvalidArgumentException('invalid value for $media_urls when calling SendSmsRequest., number of items must be less than or equal to 10.');
-        }
-        $this->container['media_urls'] = $media_urls;
-
-        return $this;
-    }
-
-    /**
-     * Gets send_at
-     *
-     * @return \DateTime|null
-     */
-    public function getSendAt()
-    {
-        return $this->container['send_at'];
-    }
-
-    /**
-     * Sets send_at
-     *
-     * @param \DateTime|null $send_at Optional. Schedule the send for a future time (ISO 8601 with offset, e.g. `2026-08-01T12:00:00Z`). Must be in the future. The message is queued and the `message.delivered` webhook fires when it actually sends.
-     *
-     * @return self
-     */
-    public function setSendAt($send_at)
-    {
-        if (is_null($send_at)) {
-            throw new \InvalidArgumentException('non-nullable send_at cannot be null');
-        }
-        $this->container['send_at'] = $send_at;
+        $this->container['sender_id'] = $sender_id;
 
         return $this;
     }

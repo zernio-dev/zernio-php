@@ -278,6 +278,8 @@ docs/Model/CreateSequenceRequest.md
 docs/Model/CreateSequenceRequestStepsInner.md
 docs/Model/CreateSequenceRequestStepsInnerTemplate.md
 docs/Model/CreateSequenceRequestStepsInnerTemplateVariableMappingValue.md
+docs/Model/CreateSmsSenderId200Response.md
+docs/Model/CreateSmsSenderIdRequest.md
 docs/Model/CreateStandaloneAd201Response.md
 docs/Model/CreateStandaloneAd201ResponseOneOf.md
 docs/Model/CreateStandaloneAd201ResponseOneOf1.md
@@ -350,6 +352,7 @@ docs/Model/DeleteGoogleBusinessReviewReply200Response.md
 docs/Model/DeleteInboxComment200Response.md
 docs/Model/DeleteInboxReviewReply200Response.md
 docs/Model/DeleteInboxReviewReplyRequest.md
+docs/Model/DeleteSmsSenderId200Response.md
 docs/Model/DeleteWhatsappBusinessUsernameRequest.md
 docs/Model/DialVoiceWebCall200Response.md
 docs/Model/DialVoiceWebCallRequest.md
@@ -900,6 +903,10 @@ docs/Model/ListSmsOptOuts200ResponseOptOutsInner.md
 docs/Model/ListSmsRegistrations200Response.md
 docs/Model/ListSmsRegistrations200ResponseRegistrationsInner.md
 docs/Model/ListSmsRegistrations200ResponseRegistrationsInnerThroughput.md
+docs/Model/ListSmsSenderIds200Response.md
+docs/Model/ListSmsSenderIds200ResponseBudget.md
+docs/Model/ListSmsSenderIds200ResponseBudgetPendingRequest.md
+docs/Model/ListSmsSenderIds200ResponseSenderIdsInner.md
 docs/Model/ListSnapchatProfiles200Response.md
 docs/Model/ListSnapchatProfiles200ResponsePublicProfilesInner.md
 docs/Model/ListTrackingTagSharedAccounts200Response.md
@@ -1025,6 +1032,8 @@ docs/Model/ReplyToInboxReview200Response.md
 docs/Model/ReplyToInboxReviewRequest.md
 docs/Model/ReplyToMention200Response.md
 docs/Model/ReplyToMentionRequest.md
+docs/Model/RequestSmsSenderIdLimitIncrease200Response.md
+docs/Model/RequestSmsSenderIdLimitIncreaseRequest.md
 docs/Model/ResendSmsRegistrationOtp200Response.md
 docs/Model/ReserveRfPrediction201Response.md
 docs/Model/ReserveRfPredictionRequest.md
@@ -1778,6 +1787,8 @@ lib/Model/CreateSequenceRequest.php
 lib/Model/CreateSequenceRequestStepsInner.php
 lib/Model/CreateSequenceRequestStepsInnerTemplate.php
 lib/Model/CreateSequenceRequestStepsInnerTemplateVariableMappingValue.php
+lib/Model/CreateSmsSenderId200Response.php
+lib/Model/CreateSmsSenderIdRequest.php
 lib/Model/CreateStandaloneAd201Response.php
 lib/Model/CreateStandaloneAd201ResponseOneOf.php
 lib/Model/CreateStandaloneAd201ResponseOneOf1.php
@@ -1850,6 +1861,7 @@ lib/Model/DeleteGoogleBusinessReviewReply200Response.php
 lib/Model/DeleteInboxComment200Response.php
 lib/Model/DeleteInboxReviewReply200Response.php
 lib/Model/DeleteInboxReviewReplyRequest.php
+lib/Model/DeleteSmsSenderId200Response.php
 lib/Model/DeleteWhatsappBusinessUsernameRequest.php
 lib/Model/DialVoiceWebCall200Response.php
 lib/Model/DialVoiceWebCallRequest.php
@@ -2400,6 +2412,10 @@ lib/Model/ListSmsOptOuts200ResponseOptOutsInner.php
 lib/Model/ListSmsRegistrations200Response.php
 lib/Model/ListSmsRegistrations200ResponseRegistrationsInner.php
 lib/Model/ListSmsRegistrations200ResponseRegistrationsInnerThroughput.php
+lib/Model/ListSmsSenderIds200Response.php
+lib/Model/ListSmsSenderIds200ResponseBudget.php
+lib/Model/ListSmsSenderIds200ResponseBudgetPendingRequest.php
+lib/Model/ListSmsSenderIds200ResponseSenderIdsInner.php
 lib/Model/ListSnapchatProfiles200Response.php
 lib/Model/ListSnapchatProfiles200ResponsePublicProfilesInner.php
 lib/Model/ListTrackingTagSharedAccounts200Response.php
@@ -2526,6 +2542,8 @@ lib/Model/ReplyToInboxReview200Response.php
 lib/Model/ReplyToInboxReviewRequest.php
 lib/Model/ReplyToMention200Response.php
 lib/Model/ReplyToMentionRequest.php
+lib/Model/RequestSmsSenderIdLimitIncrease200Response.php
+lib/Model/RequestSmsSenderIdLimitIncreaseRequest.php
 lib/Model/ResendSmsRegistrationOtp200Response.php
 lib/Model/ReserveRfPrediction201Response.php
 lib/Model/ReserveRfPredictionRequest.php
@@ -3001,3 +3019,12 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateSmsSenderId200ResponseTest.php
+test/Model/CreateSmsSenderIdRequestTest.php
+test/Model/DeleteSmsSenderId200ResponseTest.php
+test/Model/ListSmsSenderIds200ResponseBudgetPendingRequestTest.php
+test/Model/ListSmsSenderIds200ResponseBudgetTest.php
+test/Model/ListSmsSenderIds200ResponseSenderIdsInnerTest.php
+test/Model/ListSmsSenderIds200ResponseTest.php
+test/Model/RequestSmsSenderIdLimitIncrease200ResponseTest.php
+test/Model/RequestSmsSenderIdLimitIncreaseRequestTest.php
