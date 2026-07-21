@@ -23,11 +23,13 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**estimateAdReach()**](AdsApi.md#estimateAdReach) | **POST** /v1/ads/targeting/reach-estimate | Estimate audience reach |
 | [**generateAdPreviews()**](AdsApi.md#generateAdPreviews) | **POST** /v1/ads/preview | Render pre-create ad previews (Meta) |
 | [**getAd()**](AdsApi.md#getAd) | **GET** /v1/ads/{adId} | Get ad details |
+| [**getAdAccountFinance()**](AdsApi.md#getAdAccountFinance) | **GET** /v1/ads/accounts/finance | Ad account finances (Meta) |
 | [**getAdAnalytics()**](AdsApi.md#getAdAnalytics) | **GET** /v1/ads/{adId}/analytics | Get ad analytics |
 | [**getAdComments()**](AdsApi.md#getAdComments) | **GET** /v1/ads/{adId}/comments | List comments on an ad |
 | [**getAdInsightsReport()**](AdsApi.md#getAdInsightsReport) | **GET** /v1/ads/insights/reports/{reportRunId} | Poll an async insights report run (Meta) |
 | [**getAdPreviews()**](AdsApi.md#getAdPreviews) | **GET** /v1/ads/{adId}/preview | Render previews of an existing ad (Meta) |
 | [**getAdTrackingTags()**](AdsApi.md#getAdTrackingTags) | **GET** /v1/ads/{adId}/tracking-tags | Get ad tracking tags |
+| [**getAdsActivityLog()**](AdsApi.md#getAdsActivityLog) | **GET** /v1/ads/activity | Ad account change / audit log (Meta) |
 | [**getCampaignAnalytics()**](AdsApi.md#getCampaignAnalytics) | **GET** /v1/ads/campaigns/{campaignId}/analytics | Get campaign analytics |
 | [**getConversionDestination()**](AdsApi.md#getConversionDestination) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Get a conversion destination |
 | [**getConversionMetrics()**](AdsApi.md#getConversionMetrics) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/metrics | Get attribution metrics |
@@ -40,6 +42,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listAdAccounts()**](AdsApi.md#listAdAccounts) | **GET** /v1/ads/accounts | List ad accounts |
 | [**listAdCatalogProductSets()**](AdsApi.md#listAdCatalogProductSets) | **GET** /v1/ads/catalogs/{catalogId}/product-sets | List a catalog&#39;s product sets |
 | [**listAdCatalogs()**](AdsApi.md#listAdCatalogs) | **GET** /v1/ads/catalogs | List Meta product catalogs |
+| [**listAdStudies()**](AdsApi.md#listAdStudies) | **GET** /v1/ads/studies | A/B tests and lift studies (Meta) |
 | [**listAds()**](AdsApi.md#listAds) | **GET** /v1/ads | List ads |
 | [**listAdsBusinessCenters()**](AdsApi.md#listAdsBusinessCenters) | **GET** /v1/ads/business-centers | List TikTok Business Centers |
 | [**listConversionAssociations()**](AdsApi.md#listConversionAssociations) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | List associated campaigns |
@@ -59,6 +62,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**updateAdStatus()**](AdsApi.md#updateAdStatus) | **PUT** /v1/ads/{adId}/status | Pause or resume a single ad |
 | [**updateAdTrackingTags()**](AdsApi.md#updateAdTrackingTags) | **PATCH** /v1/ads/{adId}/tracking-tags | Set ad tracking tags |
 | [**updateConversionDestination()**](AdsApi.md#updateConversionDestination) | **PATCH** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Update a conversion destination |
+| [**uploadAdImage()**](AdsApi.md#uploadAdImage) | **POST** /v1/ads/images | Upload an ad image from base64 (Meta) |
 
 
 ## `addConversionAssociations()`
@@ -1094,6 +1098,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getAdAccountFinance()`
+
+```php
+getAdAccountFinance($account_id, $ad_account_id): \Zernio\Model\GetAdAccountFinance200Response
+```
+
+Ad account finances (Meta)
+
+Finances of one Meta ad account: prepaid `balance`, lifetime `amountSpent`, account `spendCap` (null = no cap) and the `fundingSource`. Money values are converted from Meta's minor units to whole units of `currency`. Meta only.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token.
+$ad_account_id = 'ad_account_id_example'; // string | Meta ad account id (act_<n>).
+
+try {
+    $result = $apiInstance->getAdAccountFinance($account_id, $ad_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->getAdAccountFinance: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. | |
+| **ad_account_id** | **string**| Meta ad account id (act_&lt;n&gt;). | |
+
+### Return type
+
+[**\Zernio\Model\GetAdAccountFinance200Response**](../Model/GetAdAccountFinance200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getAdAnalytics()`
 
 ```php
@@ -1400,6 +1466,78 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetAdTrackingTags200Response**](../Model/GetAdTrackingTags200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getAdsActivityLog()`
+
+```php
+getAdsActivityLog($account_id, $ad_account_id, $since, $until, $object_id, $limit, $after): \Zernio\Model\GetAdsActivityLog200Response
+```
+
+Ad account change / audit log (Meta)
+
+Account-level audit log from Meta's `/act_X/activities`: who changed what and when (creates, edits, status flips, budget changes...) with Meta's translated event names and the structured before/after in `extra_data`. Rows are returned verbatim. Meta has no server-side per-object filter on this edge, so `objectId` filters the returned page client-side (combine with paging to walk history for one campaign/ad set/ad). Meta only.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token.
+$ad_account_id = 'ad_account_id_example'; // string | Meta ad account id (act_<n>).
+$since = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start of range (YYYY-MM-DD).
+$until = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End of range (YYYY-MM-DD).
+$object_id = 'object_id_example'; // string | Client-side filter to one Meta object id (campaign, ad set or ad).
+$limit = 50; // int | Rows per page
+$after = 'after_example'; // string | Cursor from paging.after of the previous page.
+
+try {
+    $result = $apiInstance->getAdsActivityLog($account_id, $ad_account_id, $since, $until, $object_id, $limit, $after);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->getAdsActivityLog: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. | |
+| **ad_account_id** | **string**| Meta ad account id (act_&lt;n&gt;). | |
+| **since** | **\DateTime**| Start of range (YYYY-MM-DD). | [optional] |
+| **until** | **\DateTime**| End of range (YYYY-MM-DD). | [optional] |
+| **object_id** | **string**| Client-side filter to one Meta object id (campaign, ad set or ad). | [optional] |
+| **limit** | **int**| Rows per page | [optional] [default to 50] |
+| **after** | **string**| Cursor from paging.after of the previous page. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetAdsActivityLog200Response**](../Model/GetAdsActivityLog200Response.md)
 
 ### Authorization
 
@@ -2156,6 +2294,74 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListAdCatalogs200Response**](../Model/ListAdCatalogs200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listAdStudies()`
+
+```php
+listAdStudies($account_id, $ad_account_id, $fields, $limit, $after): \Zernio\Model\ListAdStudies200Response
+```
+
+A/B tests and lift studies (Meta)
+
+Lists the ad account's A/B tests and lift studies (Meta's `/act_X/ad_studies`), rows returned verbatim. The default projection covers id, name, type, timing and cells with split percentages; `fields` is a raw-passthrough override. Meta only.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token.
+$ad_account_id = 'ad_account_id_example'; // string | Meta ad account id (act_<n>).
+$fields = 'fields_example'; // string | Comma-separated Graph field override (supports nested {} projections).
+$limit = 25; // int | Rows per page
+$after = 'after_example'; // string | Cursor from paging.after of the previous page.
+
+try {
+    $result = $apiInstance->listAdStudies($account_id, $ad_account_id, $fields, $limit, $after);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->listAdStudies: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. | |
+| **ad_account_id** | **string**| Meta ad account id (act_&lt;n&gt;). | |
+| **fields** | **string**| Comma-separated Graph field override (supports nested {} projections). | [optional] |
+| **limit** | **int**| Rows per page | [optional] [default to 25] |
+| **after** | **string**| Cursor from paging.after of the previous page. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListAdStudies200Response**](../Model/ListAdStudies200Response.md)
 
 ### Authorization
 
@@ -3405,6 +3611,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetConversionDestination200Response**](../Model/GetConversionDestination200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `uploadAdImage()`
+
+```php
+uploadAdImage($upload_ad_image_request): \Zernio\Model\UploadAdImage201Response
+```
+
+Upload an ad image from base64 (Meta)
+
+Uploads raw image bytes to the Meta ad account's image library — for callers whose creatives aren't hosted at a public URL. Returns the image `hash` (Meta's identifier for the asset) and the Meta-hosted `url`, which can be used directly as `imageUrl` on the create endpoints. Max 30 MB decoded. Meta only.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$upload_ad_image_request = new \Zernio\Model\UploadAdImageRequest(); // \Zernio\Model\UploadAdImageRequest
+
+try {
+    $result = $apiInstance->uploadAdImage($upload_ad_image_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->uploadAdImage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **upload_ad_image_request** | [**\Zernio\Model\UploadAdImageRequest**](../Model/UploadAdImageRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UploadAdImage201Response**](../Model/UploadAdImage201Response.md)
 
 ### Authorization
 

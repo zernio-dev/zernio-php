@@ -1,6 +1,6 @@
 <?php
 /**
- * SendConversionsRequestConsent
+ * GetAdAccountFinance200Response
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SendConversionsRequestConsent Class Doc Comment
+ * GetAdAccountFinance200Response Class Doc Comment
  *
  * @category Class
- * @description Batch-level user consent. Required by Google for EEA/UK events under the Feb 2026 restrictions. On Meta, any DENIED flag enables Limited Data Use on every event in the batch (data_processing_options [\&quot;LDU\&quot;] with geolocation, country 0 / state 0); GRANTED or absent consent sends events with Meta&#39;s default processing. Ignored by LinkedIn.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetAdAccountFinance200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'sendConversions_request_consent';
+    protected static $openAPIModelName = 'getAdAccountFinance_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +58,12 @@ class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'ad_user_data' => 'string',
-        'ad_personalization' => 'string'
+        'ad_account_id' => 'string',
+        'currency' => 'string',
+        'balance' => 'float',
+        'amount_spent' => 'float',
+        'spend_cap' => 'float',
+        'funding_source' => '\Zernio\Model\GetAdAccountFinance200ResponseFundingSource'
     ];
 
     /**
@@ -71,8 +74,12 @@ class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'ad_user_data' => null,
-        'ad_personalization' => null
+        'ad_account_id' => null,
+        'currency' => null,
+        'balance' => null,
+        'amount_spent' => null,
+        'spend_cap' => null,
+        'funding_source' => null
     ];
 
     /**
@@ -81,8 +88,12 @@ class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ad_user_data' => false,
-        'ad_personalization' => false
+        'ad_account_id' => false,
+        'currency' => false,
+        'balance' => false,
+        'amount_spent' => false,
+        'spend_cap' => true,
+        'funding_source' => false
     ];
 
     /**
@@ -171,8 +182,12 @@ class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'ad_user_data' => 'adUserData',
-        'ad_personalization' => 'adPersonalization'
+        'ad_account_id' => 'adAccountId',
+        'currency' => 'currency',
+        'balance' => 'balance',
+        'amount_spent' => 'amountSpent',
+        'spend_cap' => 'spendCap',
+        'funding_source' => 'fundingSource'
     ];
 
     /**
@@ -181,8 +196,12 @@ class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'ad_user_data' => 'setAdUserData',
-        'ad_personalization' => 'setAdPersonalization'
+        'ad_account_id' => 'setAdAccountId',
+        'currency' => 'setCurrency',
+        'balance' => 'setBalance',
+        'amount_spent' => 'setAmountSpent',
+        'spend_cap' => 'setSpendCap',
+        'funding_source' => 'setFundingSource'
     ];
 
     /**
@@ -191,8 +210,12 @@ class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'ad_user_data' => 'getAdUserData',
-        'ad_personalization' => 'getAdPersonalization'
+        'ad_account_id' => 'getAdAccountId',
+        'currency' => 'getCurrency',
+        'balance' => 'getBalance',
+        'amount_spent' => 'getAmountSpent',
+        'spend_cap' => 'getSpendCap',
+        'funding_source' => 'getFundingSource'
     ];
 
     /**
@@ -236,36 +259,6 @@ class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \Jso
         return self::$openAPIModelName;
     }
 
-    public const AD_USER_DATA_GRANTED = 'GRANTED';
-    public const AD_USER_DATA_DENIED = 'DENIED';
-    public const AD_PERSONALIZATION_GRANTED = 'GRANTED';
-    public const AD_PERSONALIZATION_DENIED = 'DENIED';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAdUserDataAllowableValues()
-    {
-        return [
-            self::AD_USER_DATA_GRANTED,
-            self::AD_USER_DATA_DENIED,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAdPersonalizationAllowableValues()
-    {
-        return [
-            self::AD_PERSONALIZATION_GRANTED,
-            self::AD_PERSONALIZATION_DENIED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -282,8 +275,12 @@ class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('ad_user_data', $data ?? [], null);
-        $this->setIfExists('ad_personalization', $data ?? [], null);
+        $this->setIfExists('ad_account_id', $data ?? [], null);
+        $this->setIfExists('currency', $data ?? [], null);
+        $this->setIfExists('balance', $data ?? [], null);
+        $this->setIfExists('amount_spent', $data ?? [], null);
+        $this->setIfExists('spend_cap', $data ?? [], null);
+        $this->setIfExists('funding_source', $data ?? [], null);
     }
 
     /**
@@ -313,24 +310,6 @@ class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getAdUserDataAllowableValues();
-        if (!is_null($this->container['ad_user_data']) && !in_array($this->container['ad_user_data'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'ad_user_data', must be one of '%s'",
-                $this->container['ad_user_data'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getAdPersonalizationAllowableValues();
-        if (!is_null($this->container['ad_personalization']) && !in_array($this->container['ad_personalization'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'ad_personalization', must be one of '%s'",
-                $this->container['ad_personalization'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -347,75 +326,170 @@ class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets ad_user_data
+     * Gets ad_account_id
      *
      * @return string|null
      */
-    public function getAdUserData()
+    public function getAdAccountId()
     {
-        return $this->container['ad_user_data'];
+        return $this->container['ad_account_id'];
     }
 
     /**
-     * Sets ad_user_data
+     * Sets ad_account_id
      *
-     * @param string|null $ad_user_data ad_user_data
+     * @param string|null $ad_account_id ad_account_id
      *
      * @return self
      */
-    public function setAdUserData($ad_user_data)
+    public function setAdAccountId($ad_account_id)
     {
-        if (is_null($ad_user_data)) {
-            throw new \InvalidArgumentException('non-nullable ad_user_data cannot be null');
+        if (is_null($ad_account_id)) {
+            throw new \InvalidArgumentException('non-nullable ad_account_id cannot be null');
         }
-        $allowedValues = $this->getAdUserDataAllowableValues();
-        if (!in_array($ad_user_data, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'ad_user_data', must be one of '%s'",
-                    $ad_user_data,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['ad_user_data'] = $ad_user_data;
+        $this->container['ad_account_id'] = $ad_account_id;
 
         return $this;
     }
 
     /**
-     * Gets ad_personalization
+     * Gets currency
      *
      * @return string|null
      */
-    public function getAdPersonalization()
+    public function getCurrency()
     {
-        return $this->container['ad_personalization'];
+        return $this->container['currency'];
     }
 
     /**
-     * Sets ad_personalization
+     * Sets currency
      *
-     * @param string|null $ad_personalization ad_personalization
+     * @param string|null $currency ISO 4217 code all money values are expressed in.
      *
      * @return self
      */
-    public function setAdPersonalization($ad_personalization)
+    public function setCurrency($currency)
     {
-        if (is_null($ad_personalization)) {
-            throw new \InvalidArgumentException('non-nullable ad_personalization cannot be null');
+        if (is_null($currency)) {
+            throw new \InvalidArgumentException('non-nullable currency cannot be null');
         }
-        $allowedValues = $this->getAdPersonalizationAllowableValues();
-        if (!in_array($ad_personalization, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'ad_personalization', must be one of '%s'",
-                    $ad_personalization,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets balance
+     *
+     * @return float|null
+     */
+    public function getBalance()
+    {
+        return $this->container['balance'];
+    }
+
+    /**
+     * Sets balance
+     *
+     * @param float|null $balance Outstanding/prepaid balance in whole currency units.
+     *
+     * @return self
+     */
+    public function setBalance($balance)
+    {
+        if (is_null($balance)) {
+            throw new \InvalidArgumentException('non-nullable balance cannot be null');
         }
-        $this->container['ad_personalization'] = $ad_personalization;
+        $this->container['balance'] = $balance;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_spent
+     *
+     * @return float|null
+     */
+    public function getAmountSpent()
+    {
+        return $this->container['amount_spent'];
+    }
+
+    /**
+     * Sets amount_spent
+     *
+     * @param float|null $amount_spent Lifetime amount spent in whole currency units.
+     *
+     * @return self
+     */
+    public function setAmountSpent($amount_spent)
+    {
+        if (is_null($amount_spent)) {
+            throw new \InvalidArgumentException('non-nullable amount_spent cannot be null');
+        }
+        $this->container['amount_spent'] = $amount_spent;
+
+        return $this;
+    }
+
+    /**
+     * Gets spend_cap
+     *
+     * @return float|null
+     */
+    public function getSpendCap()
+    {
+        return $this->container['spend_cap'];
+    }
+
+    /**
+     * Sets spend_cap
+     *
+     * @param float|null $spend_cap Account spend cap; null when none is set.
+     *
+     * @return self
+     */
+    public function setSpendCap($spend_cap)
+    {
+        if (is_null($spend_cap)) {
+            array_push($this->openAPINullablesSetToNull, 'spend_cap');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('spend_cap', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['spend_cap'] = $spend_cap;
+
+        return $this;
+    }
+
+    /**
+     * Gets funding_source
+     *
+     * @return \Zernio\Model\GetAdAccountFinance200ResponseFundingSource|null
+     */
+    public function getFundingSource()
+    {
+        return $this->container['funding_source'];
+    }
+
+    /**
+     * Sets funding_source
+     *
+     * @param \Zernio\Model\GetAdAccountFinance200ResponseFundingSource|null $funding_source funding_source
+     *
+     * @return self
+     */
+    public function setFundingSource($funding_source)
+    {
+        if (is_null($funding_source)) {
+            throw new \InvalidArgumentException('non-nullable funding_source cannot be null');
+        }
+        $this->container['funding_source'] = $funding_source;
 
         return $this;
     }

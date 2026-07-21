@@ -282,6 +282,22 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
     public const CALL_TO_ACTION_GET_QUOTE = 'GET_QUOTE';
     public const CALL_TO_ACTION_SUBSCRIBE = 'SUBSCRIBE';
     public const CALL_TO_ACTION_WATCH_MORE = 'WATCH_MORE';
+    public const CALL_TO_ACTION_ADD_TO_CART = 'ADD_TO_CART';
+    public const CALL_TO_ACTION_APPLY_NOW = 'APPLY_NOW';
+    public const CALL_TO_ACTION_BOOK_NOW = 'BOOK_NOW';
+    public const CALL_TO_ACTION_BUY_TICKETS = 'BUY_TICKETS';
+    public const CALL_TO_ACTION_DONATE = 'DONATE';
+    public const CALL_TO_ACTION_DONATE_NOW = 'DONATE_NOW';
+    public const CALL_TO_ACTION_GET_DIRECTIONS = 'GET_DIRECTIONS';
+    public const CALL_TO_ACTION_GET_SHOWTIMES = 'GET_SHOWTIMES';
+    public const CALL_TO_ACTION_LISTEN_NOW = 'LISTEN_NOW';
+    public const CALL_TO_ACTION_ORDER_NOW = 'ORDER_NOW';
+    public const CALL_TO_ACTION_PLAY_GAME = 'PLAY_GAME';
+    public const CALL_TO_ACTION_REQUEST_TIME = 'REQUEST_TIME';
+    public const CALL_TO_ACTION_SEE_MENU = 'SEE_MENU';
+    public const CALL_TO_ACTION_START_ORDER = 'START_ORDER';
+    public const CALL_TO_ACTION_INSTALL_MOBILE_APP = 'INSTALL_MOBILE_APP';
+    public const CALL_TO_ACTION_USE_APP = 'USE_APP';
 
     /**
      * Gets allowable values of the enum
@@ -301,6 +317,22 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
             self::CALL_TO_ACTION_GET_QUOTE,
             self::CALL_TO_ACTION_SUBSCRIBE,
             self::CALL_TO_ACTION_WATCH_MORE,
+            self::CALL_TO_ACTION_ADD_TO_CART,
+            self::CALL_TO_ACTION_APPLY_NOW,
+            self::CALL_TO_ACTION_BOOK_NOW,
+            self::CALL_TO_ACTION_BUY_TICKETS,
+            self::CALL_TO_ACTION_DONATE,
+            self::CALL_TO_ACTION_DONATE_NOW,
+            self::CALL_TO_ACTION_GET_DIRECTIONS,
+            self::CALL_TO_ACTION_GET_SHOWTIMES,
+            self::CALL_TO_ACTION_LISTEN_NOW,
+            self::CALL_TO_ACTION_ORDER_NOW,
+            self::CALL_TO_ACTION_PLAY_GAME,
+            self::CALL_TO_ACTION_REQUEST_TIME,
+            self::CALL_TO_ACTION_SEE_MENU,
+            self::CALL_TO_ACTION_START_ORDER,
+            self::CALL_TO_ACTION_INSTALL_MOBILE_APP,
+            self::CALL_TO_ACTION_USE_APP,
         ];
     }
 

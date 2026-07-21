@@ -1,6 +1,6 @@
 <?php
 /**
- * SendConversionsRequestConsent
+ * UploadAdImage201ResponseImage
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SendConversionsRequestConsent Class Doc Comment
+ * UploadAdImage201ResponseImage Class Doc Comment
  *
  * @category Class
- * @description Batch-level user consent. Required by Google for EEA/UK events under the Feb 2026 restrictions. On Meta, any DENIED flag enables Limited Data Use on every event in the batch (data_processing_options [\&quot;LDU\&quot;] with geolocation, country 0 / state 0); GRANTED or absent consent sends events with Meta&#39;s default processing. Ignored by LinkedIn.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \JsonSerializable
+class UploadAdImage201ResponseImage implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'sendConversions_request_consent';
+    protected static $openAPIModelName = 'uploadAdImage_201_response_image';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +58,8 @@ class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'ad_user_data' => 'string',
-        'ad_personalization' => 'string'
+        'hash' => 'string',
+        'url' => 'string'
     ];
 
     /**
@@ -71,8 +70,8 @@ class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'ad_user_data' => null,
-        'ad_personalization' => null
+        'hash' => null,
+        'url' => null
     ];
 
     /**
@@ -81,8 +80,8 @@ class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ad_user_data' => false,
-        'ad_personalization' => false
+        'hash' => false,
+        'url' => false
     ];
 
     /**
@@ -171,8 +170,8 @@ class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'ad_user_data' => 'adUserData',
-        'ad_personalization' => 'adPersonalization'
+        'hash' => 'hash',
+        'url' => 'url'
     ];
 
     /**
@@ -181,8 +180,8 @@ class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'ad_user_data' => 'setAdUserData',
-        'ad_personalization' => 'setAdPersonalization'
+        'hash' => 'setHash',
+        'url' => 'setUrl'
     ];
 
     /**
@@ -191,8 +190,8 @@ class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'ad_user_data' => 'getAdUserData',
-        'ad_personalization' => 'getAdPersonalization'
+        'hash' => 'getHash',
+        'url' => 'getUrl'
     ];
 
     /**
@@ -236,36 +235,6 @@ class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \Jso
         return self::$openAPIModelName;
     }
 
-    public const AD_USER_DATA_GRANTED = 'GRANTED';
-    public const AD_USER_DATA_DENIED = 'DENIED';
-    public const AD_PERSONALIZATION_GRANTED = 'GRANTED';
-    public const AD_PERSONALIZATION_DENIED = 'DENIED';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAdUserDataAllowableValues()
-    {
-        return [
-            self::AD_USER_DATA_GRANTED,
-            self::AD_USER_DATA_DENIED,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAdPersonalizationAllowableValues()
-    {
-        return [
-            self::AD_PERSONALIZATION_GRANTED,
-            self::AD_PERSONALIZATION_DENIED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -282,8 +251,8 @@ class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('ad_user_data', $data ?? [], null);
-        $this->setIfExists('ad_personalization', $data ?? [], null);
+        $this->setIfExists('hash', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
     }
 
     /**
@@ -313,24 +282,6 @@ class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getAdUserDataAllowableValues();
-        if (!is_null($this->container['ad_user_data']) && !in_array($this->container['ad_user_data'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'ad_user_data', must be one of '%s'",
-                $this->container['ad_user_data'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getAdPersonalizationAllowableValues();
-        if (!is_null($this->container['ad_personalization']) && !in_array($this->container['ad_personalization'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'ad_personalization', must be one of '%s'",
-                $this->container['ad_personalization'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -347,75 +298,55 @@ class SendConversionsRequestConsent implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets ad_user_data
+     * Gets hash
      *
      * @return string|null
      */
-    public function getAdUserData()
+    public function getHash()
     {
-        return $this->container['ad_user_data'];
+        return $this->container['hash'];
     }
 
     /**
-     * Sets ad_user_data
+     * Sets hash
      *
-     * @param string|null $ad_user_data ad_user_data
+     * @param string|null $hash Meta image hash, reusable wherever image_hash is accepted.
      *
      * @return self
      */
-    public function setAdUserData($ad_user_data)
+    public function setHash($hash)
     {
-        if (is_null($ad_user_data)) {
-            throw new \InvalidArgumentException('non-nullable ad_user_data cannot be null');
+        if (is_null($hash)) {
+            throw new \InvalidArgumentException('non-nullable hash cannot be null');
         }
-        $allowedValues = $this->getAdUserDataAllowableValues();
-        if (!in_array($ad_user_data, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'ad_user_data', must be one of '%s'",
-                    $ad_user_data,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['ad_user_data'] = $ad_user_data;
+        $this->container['hash'] = $hash;
 
         return $this;
     }
 
     /**
-     * Gets ad_personalization
+     * Gets url
      *
      * @return string|null
      */
-    public function getAdPersonalization()
+    public function getUrl()
     {
-        return $this->container['ad_personalization'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets ad_personalization
+     * Sets url
      *
-     * @param string|null $ad_personalization ad_personalization
+     * @param string|null $url Meta-hosted image URL; usable as imageUrl on the create endpoints.
      *
      * @return self
      */
-    public function setAdPersonalization($ad_personalization)
+    public function setUrl($url)
     {
-        if (is_null($ad_personalization)) {
-            throw new \InvalidArgumentException('non-nullable ad_personalization cannot be null');
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
-        $allowedValues = $this->getAdPersonalizationAllowableValues();
-        if (!in_array($ad_personalization, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'ad_personalization', must be one of '%s'",
-                    $ad_personalization,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['ad_personalization'] = $ad_personalization;
+        $this->container['url'] = $url;
 
         return $this;
     }

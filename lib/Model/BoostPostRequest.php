@@ -365,7 +365,9 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public const SPECIAL_AD_CATEGORIES_HOUSING = 'HOUSING';
     public const SPECIAL_AD_CATEGORIES_EMPLOYMENT = 'EMPLOYMENT';
     public const SPECIAL_AD_CATEGORIES_CREDIT = 'CREDIT';
+    public const SPECIAL_AD_CATEGORIES_FINANCIAL_PRODUCTS_SERVICES = 'FINANCIAL_PRODUCTS_SERVICES';
     public const SPECIAL_AD_CATEGORIES_ISSUES_ELECTIONS_POLITICS = 'ISSUES_ELECTIONS_POLITICS';
+    public const SPECIAL_AD_CATEGORIES_ONLINE_GAMBLING_AND_GAMING = 'ONLINE_GAMBLING_AND_GAMING';
 
     /**
      * Gets allowable values of the enum
@@ -396,7 +398,9 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             self::SPECIAL_AD_CATEGORIES_HOUSING,
             self::SPECIAL_AD_CATEGORIES_EMPLOYMENT,
             self::SPECIAL_AD_CATEGORIES_CREDIT,
+            self::SPECIAL_AD_CATEGORIES_FINANCIAL_PRODUCTS_SERVICES,
             self::SPECIAL_AD_CATEGORIES_ISSUES_ELECTIONS_POLITICS,
+            self::SPECIAL_AD_CATEGORIES_ONLINE_GAMBLING_AND_GAMING,
         ];
     }
 
