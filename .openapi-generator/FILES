@@ -3019,12 +3019,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateSmsSenderId200ResponseTest.php
-test/Model/CreateSmsSenderIdRequestTest.php
-test/Model/DeleteSmsSenderId200ResponseTest.php
-test/Model/ListSmsSenderIds200ResponseBudgetPendingRequestTest.php
-test/Model/ListSmsSenderIds200ResponseBudgetTest.php
-test/Model/ListSmsSenderIds200ResponseSenderIdsInnerTest.php
-test/Model/ListSmsSenderIds200ResponseTest.php
-test/Model/RequestSmsSenderIdLimitIncrease200ResponseTest.php
-test/Model/RequestSmsSenderIdLimitIncreaseRequestTest.php
