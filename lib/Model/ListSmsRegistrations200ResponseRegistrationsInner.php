@@ -67,6 +67,7 @@ class ListSmsRegistrations200ResponseRegistrationsInner implements ModelInterfac
         'brand_id' => 'string',
         'campaign_id' => 'string',
         'decline_reason' => 'string',
+        'tf_action_required_at' => '\DateTime',
         'phone_numbers' => 'string[]',
         'awaiting_otp' => 'bool',
         'trust_score' => 'float',
@@ -90,6 +91,7 @@ class ListSmsRegistrations200ResponseRegistrationsInner implements ModelInterfac
         'brand_id' => null,
         'campaign_id' => null,
         'decline_reason' => null,
+        'tf_action_required_at' => 'date-time',
         'phone_numbers' => null,
         'awaiting_otp' => null,
         'trust_score' => null,
@@ -111,6 +113,7 @@ class ListSmsRegistrations200ResponseRegistrationsInner implements ModelInterfac
         'brand_id' => true,
         'campaign_id' => true,
         'decline_reason' => true,
+        'tf_action_required_at' => true,
         'phone_numbers' => false,
         'awaiting_otp' => false,
         'trust_score' => true,
@@ -212,6 +215,7 @@ class ListSmsRegistrations200ResponseRegistrationsInner implements ModelInterfac
         'brand_id' => 'brandId',
         'campaign_id' => 'campaignId',
         'decline_reason' => 'declineReason',
+        'tf_action_required_at' => 'tfActionRequiredAt',
         'phone_numbers' => 'phoneNumbers',
         'awaiting_otp' => 'awaitingOtp',
         'trust_score' => 'trustScore',
@@ -233,6 +237,7 @@ class ListSmsRegistrations200ResponseRegistrationsInner implements ModelInterfac
         'brand_id' => 'setBrandId',
         'campaign_id' => 'setCampaignId',
         'decline_reason' => 'setDeclineReason',
+        'tf_action_required_at' => 'setTfActionRequiredAt',
         'phone_numbers' => 'setPhoneNumbers',
         'awaiting_otp' => 'setAwaitingOtp',
         'trust_score' => 'setTrustScore',
@@ -254,6 +259,7 @@ class ListSmsRegistrations200ResponseRegistrationsInner implements ModelInterfac
         'brand_id' => 'getBrandId',
         'campaign_id' => 'getCampaignId',
         'decline_reason' => 'getDeclineReason',
+        'tf_action_required_at' => 'getTfActionRequiredAt',
         'phone_numbers' => 'getPhoneNumbers',
         'awaiting_otp' => 'getAwaitingOtp',
         'trust_score' => 'getTrustScore',
@@ -366,6 +372,7 @@ class ListSmsRegistrations200ResponseRegistrationsInner implements ModelInterfac
         $this->setIfExists('brand_id', $data ?? [], null);
         $this->setIfExists('campaign_id', $data ?? [], null);
         $this->setIfExists('decline_reason', $data ?? [], null);
+        $this->setIfExists('tf_action_required_at', $data ?? [], null);
         $this->setIfExists('phone_numbers', $data ?? [], null);
         $this->setIfExists('awaiting_otp', $data ?? [], null);
         $this->setIfExists('trust_score', $data ?? [], null);
@@ -719,6 +726,40 @@ class ListSmsRegistrations200ResponseRegistrationsInner implements ModelInterfac
             }
         }
         $this->container['decline_reason'] = $decline_reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets tf_action_required_at
+     *
+     * @return \DateTime|null
+     */
+    public function getTfActionRequiredAt()
+    {
+        return $this->container['tf_action_required_at'];
+    }
+
+    /**
+     * Sets tf_action_required_at
+     *
+     * @param \DateTime|null $tf_action_required_at Toll-free only: when the carrier requested changes (\"Waiting For Customer\"). The request must be resubmitted within 7 days of this timestamp or it expires.
+     *
+     * @return self
+     */
+    public function setTfActionRequiredAt($tf_action_required_at)
+    {
+        if (is_null($tf_action_required_at)) {
+            array_push($this->openAPINullablesSetToNull, 'tf_action_required_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tf_action_required_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tf_action_required_at'] = $tf_action_required_at;
 
         return $this;
     }
