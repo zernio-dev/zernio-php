@@ -12,5 +12,7 @@ Name | Type | Description | Notes
 **custom_conversion_id** | **string** |  | [optional]
 **product_catalog_id** | **string** |  | [optional]
 **product_set_id** | **string** |  | [optional]
+**offline_conversion_data_set_id** | **string** |  | [optional]
+**whatsapp_phone_number** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

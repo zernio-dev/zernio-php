@@ -12,5 +12,7 @@ Name | Type | Description | Notes
 **custom_conversion_id** | **string** | Custom Conversion ID, when optimising against one instead of a standard event. | [optional]
 **product_catalog_id** | **string** | Catalog ID for catalog/Advantage+ Shopping campaigns. | [optional]
 **product_set_id** | **string** | Product Set ID inside the catalog. | [optional]
+**offline_conversion_data_set_id** | **string** | Meta only. Offline event set (dataset) to optimise toward. Post-merger these are datasets: the id is the dataset id (for pixel-backed datasets, the pixel id). | [optional]
+**whatsapp_phone_number** | **string** | Meta only. WhatsApp number on messaging-destination ad sets. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

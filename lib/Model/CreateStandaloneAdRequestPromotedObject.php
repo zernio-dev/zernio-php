@@ -66,7 +66,9 @@ class CreateStandaloneAdRequestPromotedObject implements ModelInterface, ArrayAc
         'object_store_url' => 'string',
         'custom_conversion_id' => 'string',
         'product_catalog_id' => 'string',
-        'product_set_id' => 'string'
+        'product_set_id' => 'string',
+        'offline_conversion_data_set_id' => 'string',
+        'whatsapp_phone_number' => 'string'
     ];
 
     /**
@@ -84,7 +86,9 @@ class CreateStandaloneAdRequestPromotedObject implements ModelInterface, ArrayAc
         'object_store_url' => 'uri',
         'custom_conversion_id' => null,
         'product_catalog_id' => null,
-        'product_set_id' => null
+        'product_set_id' => null,
+        'offline_conversion_data_set_id' => null,
+        'whatsapp_phone_number' => null
     ];
 
     /**
@@ -100,7 +104,9 @@ class CreateStandaloneAdRequestPromotedObject implements ModelInterface, ArrayAc
         'object_store_url' => false,
         'custom_conversion_id' => false,
         'product_catalog_id' => false,
-        'product_set_id' => false
+        'product_set_id' => false,
+        'offline_conversion_data_set_id' => false,
+        'whatsapp_phone_number' => false
     ];
 
     /**
@@ -196,7 +202,9 @@ class CreateStandaloneAdRequestPromotedObject implements ModelInterface, ArrayAc
         'object_store_url' => 'objectStoreUrl',
         'custom_conversion_id' => 'customConversionId',
         'product_catalog_id' => 'productCatalogId',
-        'product_set_id' => 'productSetId'
+        'product_set_id' => 'productSetId',
+        'offline_conversion_data_set_id' => 'offlineConversionDataSetId',
+        'whatsapp_phone_number' => 'whatsappPhoneNumber'
     ];
 
     /**
@@ -212,7 +220,9 @@ class CreateStandaloneAdRequestPromotedObject implements ModelInterface, ArrayAc
         'object_store_url' => 'setObjectStoreUrl',
         'custom_conversion_id' => 'setCustomConversionId',
         'product_catalog_id' => 'setProductCatalogId',
-        'product_set_id' => 'setProductSetId'
+        'product_set_id' => 'setProductSetId',
+        'offline_conversion_data_set_id' => 'setOfflineConversionDataSetId',
+        'whatsapp_phone_number' => 'setWhatsappPhoneNumber'
     ];
 
     /**
@@ -228,7 +238,9 @@ class CreateStandaloneAdRequestPromotedObject implements ModelInterface, ArrayAc
         'object_store_url' => 'getObjectStoreUrl',
         'custom_conversion_id' => 'getCustomConversionId',
         'product_catalog_id' => 'getProductCatalogId',
-        'product_set_id' => 'getProductSetId'
+        'product_set_id' => 'getProductSetId',
+        'offline_conversion_data_set_id' => 'getOfflineConversionDataSetId',
+        'whatsapp_phone_number' => 'getWhatsappPhoneNumber'
     ];
 
     /**
@@ -296,6 +308,8 @@ class CreateStandaloneAdRequestPromotedObject implements ModelInterface, ArrayAc
         $this->setIfExists('custom_conversion_id', $data ?? [], null);
         $this->setIfExists('product_catalog_id', $data ?? [], null);
         $this->setIfExists('product_set_id', $data ?? [], null);
+        $this->setIfExists('offline_conversion_data_set_id', $data ?? [], null);
+        $this->setIfExists('whatsapp_phone_number', $data ?? [], null);
     }
 
     /**
@@ -552,6 +566,60 @@ class CreateStandaloneAdRequestPromotedObject implements ModelInterface, ArrayAc
             throw new \InvalidArgumentException('non-nullable product_set_id cannot be null');
         }
         $this->container['product_set_id'] = $product_set_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets offline_conversion_data_set_id
+     *
+     * @return string|null
+     */
+    public function getOfflineConversionDataSetId()
+    {
+        return $this->container['offline_conversion_data_set_id'];
+    }
+
+    /**
+     * Sets offline_conversion_data_set_id
+     *
+     * @param string|null $offline_conversion_data_set_id Meta only. Offline event set (dataset) to optimise toward. Post-merger these are datasets: the id is the dataset id (for pixel-backed datasets, the pixel id).
+     *
+     * @return self
+     */
+    public function setOfflineConversionDataSetId($offline_conversion_data_set_id)
+    {
+        if (is_null($offline_conversion_data_set_id)) {
+            throw new \InvalidArgumentException('non-nullable offline_conversion_data_set_id cannot be null');
+        }
+        $this->container['offline_conversion_data_set_id'] = $offline_conversion_data_set_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets whatsapp_phone_number
+     *
+     * @return string|null
+     */
+    public function getWhatsappPhoneNumber()
+    {
+        return $this->container['whatsapp_phone_number'];
+    }
+
+    /**
+     * Sets whatsapp_phone_number
+     *
+     * @param string|null $whatsapp_phone_number Meta only. WhatsApp number on messaging-destination ad sets.
+     *
+     * @return self
+     */
+    public function setWhatsappPhoneNumber($whatsapp_phone_number)
+    {
+        if (is_null($whatsapp_phone_number)) {
+            throw new \InvalidArgumentException('non-nullable whatsapp_phone_number cannot be null');
+        }
+        $this->container['whatsapp_phone_number'] = $whatsapp_phone_number;
 
         return $this;
     }

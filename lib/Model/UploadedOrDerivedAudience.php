@@ -72,6 +72,9 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
         'companies' => '\Zernio\Model\UploadedOrDerivedAudienceCompaniesInner[]',
         'pixel_id' => 'string',
         'retention_days' => 'int',
+        'engagement_source' => 'string',
+        'source_id' => 'string',
+        'event' => 'string',
         'source_audience_id' => 'string',
         'country' => 'string',
         'ratio' => 'float',
@@ -100,6 +103,9 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
         'companies' => null,
         'pixel_id' => null,
         'retention_days' => null,
+        'engagement_source' => null,
+        'source_id' => null,
+        'event' => null,
         'source_audience_id' => null,
         'country' => null,
         'ratio' => null,
@@ -126,6 +132,9 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
         'companies' => false,
         'pixel_id' => false,
         'retention_days' => false,
+        'engagement_source' => false,
+        'source_id' => false,
+        'event' => false,
         'source_audience_id' => false,
         'country' => false,
         'ratio' => false,
@@ -232,6 +241,9 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
         'companies' => 'companies',
         'pixel_id' => 'pixelId',
         'retention_days' => 'retentionDays',
+        'engagement_source' => 'engagementSource',
+        'source_id' => 'sourceId',
+        'event' => 'event',
         'source_audience_id' => 'sourceAudienceId',
         'country' => 'country',
         'ratio' => 'ratio',
@@ -258,6 +270,9 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
         'companies' => 'setCompanies',
         'pixel_id' => 'setPixelId',
         'retention_days' => 'setRetentionDays',
+        'engagement_source' => 'setEngagementSource',
+        'source_id' => 'setSourceId',
+        'event' => 'setEvent',
         'source_audience_id' => 'setSourceAudienceId',
         'country' => 'setCountry',
         'ratio' => 'setRatio',
@@ -284,6 +299,9 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
         'companies' => 'getCompanies',
         'pixel_id' => 'getPixelId',
         'retention_days' => 'getRetentionDays',
+        'engagement_source' => 'getEngagementSource',
+        'source_id' => 'getSourceId',
+        'event' => 'getEvent',
         'source_audience_id' => 'getSourceAudienceId',
         'country' => 'getCountry',
         'ratio' => 'getRatio',
@@ -335,6 +353,7 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
     public const TYPE_CUSTOMER_LIST = 'customer_list';
     public const TYPE_COMPANY_LIST = 'company_list';
     public const TYPE_ENGAGEMENT = 'engagement';
+    public const TYPE_META_ENGAGEMENT = 'meta_engagement';
     public const TYPE_WEBSITE = 'website';
     public const TYPE_WEBSITE_RETARGETING = 'website_retargeting';
     public const TYPE_LOOKALIKE = 'lookalike';
@@ -348,6 +367,9 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
     public const LOOKBACK_DAYS_NUMBER_90 = 90;
     public const LOOKBACK_DAYS_NUMBER_180 = 180;
     public const LOOKBACK_DAYS_NUMBER_365 = 365;
+    public const ENGAGEMENT_SOURCE_PAGE = 'page';
+    public const ENGAGEMENT_SOURCE_INSTAGRAM = 'instagram';
+    public const ENGAGEMENT_SOURCE_VIDEO = 'video';
 
     /**
      * Gets allowable values of the enum
@@ -360,6 +382,7 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
             self::TYPE_CUSTOMER_LIST,
             self::TYPE_COMPANY_LIST,
             self::TYPE_ENGAGEMENT,
+            self::TYPE_META_ENGAGEMENT,
             self::TYPE_WEBSITE,
             self::TYPE_WEBSITE_RETARGETING,
             self::TYPE_LOOKALIKE,
@@ -399,6 +422,20 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getEngagementSourceAllowableValues()
+    {
+        return [
+            self::ENGAGEMENT_SOURCE_PAGE,
+            self::ENGAGEMENT_SOURCE_INSTAGRAM,
+            self::ENGAGEMENT_SOURCE_VIDEO,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -426,6 +463,9 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('companies', $data ?? [], null);
         $this->setIfExists('pixel_id', $data ?? [], null);
         $this->setIfExists('retention_days', $data ?? [], null);
+        $this->setIfExists('engagement_source', $data ?? [], null);
+        $this->setIfExists('source_id', $data ?? [], null);
+        $this->setIfExists('event', $data ?? [], null);
         $this->setIfExists('source_audience_id', $data ?? [], null);
         $this->setIfExists('country', $data ?? [], null);
         $this->setIfExists('ratio', $data ?? [], null);
@@ -527,12 +567,21 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
             $invalidProperties[] = "invalid value for 'companies', number of items must be greater than or equal to 1.";
         }
 
-        if (!is_null($this->container['retention_days']) && ($this->container['retention_days'] > 180)) {
-            $invalidProperties[] = "invalid value for 'retention_days', must be smaller than or equal to 180.";
+        if (!is_null($this->container['retention_days']) && ($this->container['retention_days'] > 365)) {
+            $invalidProperties[] = "invalid value for 'retention_days', must be smaller than or equal to 365.";
         }
 
         if (!is_null($this->container['retention_days']) && ($this->container['retention_days'] < 1)) {
             $invalidProperties[] = "invalid value for 'retention_days', must be bigger than or equal to 1.";
+        }
+
+        $allowedValues = $this->getEngagementSourceAllowableValues();
+        if (!is_null($this->container['engagement_source']) && !in_array($this->container['engagement_source'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'engagement_source', must be one of '%s'",
+                $this->container['engagement_source'],
+                implode("', '", $allowedValues)
+            );
         }
 
         if (!is_null($this->container['ratio']) && ($this->container['ratio'] > 0.2)) {
@@ -950,7 +999,7 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets retention_days
      *
-     * @param int|null $retention_days Required for website audiences
+     * @param int|null $retention_days Required for website (max 180) and meta_engagement (max 365) audiences.
      *
      * @return self
      */
@@ -960,14 +1009,105 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable retention_days cannot be null');
         }
 
-        if (($retention_days > 180)) {
-            throw new \InvalidArgumentException('invalid value for $retention_days when calling UploadedOrDerivedAudience., must be smaller than or equal to 180.');
+        if (($retention_days > 365)) {
+            throw new \InvalidArgumentException('invalid value for $retention_days when calling UploadedOrDerivedAudience., must be smaller than or equal to 365.');
         }
         if (($retention_days < 1)) {
             throw new \InvalidArgumentException('invalid value for $retention_days when calling UploadedOrDerivedAudience., must be bigger than or equal to 1.');
         }
 
         $this->container['retention_days'] = $retention_days;
+
+        return $this;
+    }
+
+    /**
+     * Gets engagement_source
+     *
+     * @return string|null
+     */
+    public function getEngagementSource()
+    {
+        return $this->container['engagement_source'];
+    }
+
+    /**
+     * Sets engagement_source
+     *
+     * @param string|null $engagement_source Required for meta_engagement audiences (Meta only): what people engaged with. `page` = a Facebook Page, `instagram` = an IG professional account, `video` = a video. The source object must be eligible for engagement audiences or Meta rejects with subcode 1713151 (\"Invalid Event Name\"), surfaced verbatim.
+     *
+     * @return self
+     */
+    public function setEngagementSource($engagement_source)
+    {
+        if (is_null($engagement_source)) {
+            throw new \InvalidArgumentException('non-nullable engagement_source cannot be null');
+        }
+        $allowedValues = $this->getEngagementSourceAllowableValues();
+        if (!in_array($engagement_source, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'engagement_source', must be one of '%s'",
+                    $engagement_source,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['engagement_source'] = $engagement_source;
+
+        return $this;
+    }
+
+    /**
+     * Gets source_id
+     *
+     * @return string|null
+     */
+    public function getSourceId()
+    {
+        return $this->container['source_id'];
+    }
+
+    /**
+     * Sets source_id
+     *
+     * @param string|null $source_id Required for meta_engagement: the Page / IG account / video id.
+     *
+     * @return self
+     */
+    public function setSourceId($source_id)
+    {
+        if (is_null($source_id)) {
+            throw new \InvalidArgumentException('non-nullable source_id cannot be null');
+        }
+        $this->container['source_id'] = $source_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets event
+     *
+     * @return string|null
+     */
+    public function getEvent()
+    {
+        return $this->container['event'];
+    }
+
+    /**
+     * Sets event
+     *
+     * @param string|null $event meta_engagement only. The engagement event; defaults per source (page → page_engaged, instagram → ig_business_profile_all, video → video_watched). Ignored when `rule` is provided.
+     *
+     * @return self
+     */
+    public function setEvent($event)
+    {
+        if (is_null($event)) {
+            throw new \InvalidArgumentException('non-nullable event cannot be null');
+        }
+        $this->container['event'] = $event;
 
         return $this;
     }
@@ -1074,7 +1214,7 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets rule
      *
-     * @param object|null $rule Pixel event rule for website audiences (optional)
+     * @param object|null $rule Optional raw Meta rule, forwarded verbatim: pixel event rule for website audiences, or the engagement rule for meta_engagement (overrides the built rule, e.g. for event/canvas/lead-form sources).
      *
      * @return self
      */

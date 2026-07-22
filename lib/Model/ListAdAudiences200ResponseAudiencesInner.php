@@ -286,6 +286,7 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
     public const TYPE_CUSTOMER_LIST = 'customer_list';
     public const TYPE_COMPANY_LIST = 'company_list';
     public const TYPE_ENGAGEMENT = 'engagement';
+    public const TYPE_META_ENGAGEMENT = 'meta_engagement';
     public const TYPE_WEBSITE = 'website';
     public const TYPE_WEBSITE_RETARGETING = 'website_retargeting';
     public const TYPE_LOOKALIKE = 'lookalike';
@@ -302,6 +303,7 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
             self::TYPE_CUSTOMER_LIST,
             self::TYPE_COMPANY_LIST,
             self::TYPE_ENGAGEMENT,
+            self::TYPE_META_ENGAGEMENT,
             self::TYPE_WEBSITE,
             self::TYPE_WEBSITE_RETARGETING,
             self::TYPE_LOOKALIKE,

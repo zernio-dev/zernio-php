@@ -3085,10 +3085,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateStandaloneAd200ResponseResultsInnerTest.php
-test/Model/CreateStandaloneAd200ResponseTest.php
-test/Model/DiscordGuildMemberTest.php
-test/Model/DiscordGuildMemberUserTest.php
-test/Model/GetDiscordGuildMember200ResponseTest.php
-test/Model/ListMetaBusinesses200ResponseTest.php
-test/Model/SearchDiscordGuildMembers200ResponseTest.php

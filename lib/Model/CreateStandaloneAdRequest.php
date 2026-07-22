@@ -111,6 +111,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'saved_targeting_id' => 'string',
         'raw_targeting' => 'array<string,mixed>',
         'special_ad_categories' => 'string[]',
+        'special_ad_category_country' => 'string[]',
         'end_date' => '\DateTime',
         'start_date' => '\DateTime',
         'instagram_account_id' => 'string',
@@ -197,6 +198,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'saved_targeting_id' => null,
         'raw_targeting' => null,
         'special_ad_categories' => null,
+        'special_ad_category_country' => null,
         'end_date' => 'date-time',
         'start_date' => 'date-time',
         'instagram_account_id' => null,
@@ -281,6 +283,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'saved_targeting_id' => false,
         'raw_targeting' => false,
         'special_ad_categories' => false,
+        'special_ad_category_country' => false,
         'end_date' => false,
         'start_date' => false,
         'instagram_account_id' => false,
@@ -445,6 +448,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'saved_targeting_id' => 'savedTargetingId',
         'raw_targeting' => 'rawTargeting',
         'special_ad_categories' => 'specialAdCategories',
+        'special_ad_category_country' => 'specialAdCategoryCountry',
         'end_date' => 'endDate',
         'start_date' => 'startDate',
         'instagram_account_id' => 'instagramAccountId',
@@ -529,6 +533,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'saved_targeting_id' => 'setSavedTargetingId',
         'raw_targeting' => 'setRawTargeting',
         'special_ad_categories' => 'setSpecialAdCategories',
+        'special_ad_category_country' => 'setSpecialAdCategoryCountry',
         'end_date' => 'setEndDate',
         'start_date' => 'setStartDate',
         'instagram_account_id' => 'setInstagramAccountId',
@@ -613,6 +618,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'saved_targeting_id' => 'getSavedTargetingId',
         'raw_targeting' => 'getRawTargeting',
         'special_ad_categories' => 'getSpecialAdCategories',
+        'special_ad_category_country' => 'getSpecialAdCategoryCountry',
         'end_date' => 'getEndDate',
         'start_date' => 'getStartDate',
         'instagram_account_id' => 'getInstagramAccountId',
@@ -1037,6 +1043,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('saved_targeting_id', $data ?? [], null);
         $this->setIfExists('raw_targeting', $data ?? [], null);
         $this->setIfExists('special_ad_categories', $data ?? [], null);
+        $this->setIfExists('special_ad_category_country', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('instagram_account_id', $data ?? [], null);
@@ -2848,6 +2855,33 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
         $this->container['special_ad_categories'] = $special_ad_categories;
+
+        return $this;
+    }
+
+    /**
+     * Gets special_ad_category_country
+     *
+     * @return string[]|null
+     */
+    public function getSpecialAdCategoryCountry()
+    {
+        return $this->container['special_ad_category_country'];
+    }
+
+    /**
+     * Sets special_ad_category_country
+     *
+     * @param string[]|null $special_ad_category_country Meta (metaads) only. 2-letter ISO country codes the special ad category applies to. Requires specialAdCategories to be set (400 otherwise). Ignored when joining an existing campaign via existingCampaignId (the existing campaign's category/country already governs it).
+     *
+     * @return self
+     */
+    public function setSpecialAdCategoryCountry($special_ad_category_country)
+    {
+        if (is_null($special_ad_category_country)) {
+            throw new \InvalidArgumentException('non-nullable special_ad_category_country cannot be null');
+        }
+        $this->container['special_ad_category_country'] = $special_ad_category_country;
 
         return $this;
     }

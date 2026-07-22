@@ -75,6 +75,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_specific_data' => '\Zernio\Model\LinkedInAdsPlatformData',
         'tracking' => '\Zernio\Model\BoostPostRequestTracking',
         'special_ad_categories' => 'string[]',
+        'special_ad_category_country' => 'string[]',
         'link_url' => 'string',
         'call_to_action' => 'string',
         'spark_auth_code' => 'string',
@@ -107,6 +108,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_specific_data' => null,
         'tracking' => null,
         'special_ad_categories' => null,
+        'special_ad_category_country' => null,
         'link_url' => 'uri',
         'call_to_action' => null,
         'spark_auth_code' => null,
@@ -137,6 +139,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_specific_data' => false,
         'tracking' => false,
         'special_ad_categories' => false,
+        'special_ad_category_country' => false,
         'link_url' => false,
         'call_to_action' => false,
         'spark_auth_code' => false,
@@ -247,6 +250,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_specific_data' => 'platformSpecificData',
         'tracking' => 'tracking',
         'special_ad_categories' => 'specialAdCategories',
+        'special_ad_category_country' => 'specialAdCategoryCountry',
         'link_url' => 'linkUrl',
         'call_to_action' => 'callToAction',
         'spark_auth_code' => 'sparkAuthCode',
@@ -277,6 +281,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_specific_data' => 'setPlatformSpecificData',
         'tracking' => 'setTracking',
         'special_ad_categories' => 'setSpecialAdCategories',
+        'special_ad_category_country' => 'setSpecialAdCategoryCountry',
         'link_url' => 'setLinkUrl',
         'call_to_action' => 'setCallToAction',
         'spark_auth_code' => 'setSparkAuthCode',
@@ -307,6 +312,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_specific_data' => 'getPlatformSpecificData',
         'tracking' => 'getTracking',
         'special_ad_categories' => 'getSpecialAdCategories',
+        'special_ad_category_country' => 'getSpecialAdCategoryCountry',
         'link_url' => 'getLinkUrl',
         'call_to_action' => 'getCallToAction',
         'spark_auth_code' => 'getSparkAuthCode',
@@ -436,6 +442,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('platform_specific_data', $data ?? [], null);
         $this->setIfExists('tracking', $data ?? [], null);
         $this->setIfExists('special_ad_categories', $data ?? [], null);
+        $this->setIfExists('special_ad_category_country', $data ?? [], null);
         $this->setIfExists('link_url', $data ?? [], null);
         $this->setIfExists('call_to_action', $data ?? [], null);
         $this->setIfExists('spark_auth_code', $data ?? [], null);
@@ -999,6 +1006,33 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['special_ad_categories'] = $special_ad_categories;
+
+        return $this;
+    }
+
+    /**
+     * Gets special_ad_category_country
+     *
+     * @return string[]|null
+     */
+    public function getSpecialAdCategoryCountry()
+    {
+        return $this->container['special_ad_category_country'];
+    }
+
+    /**
+     * Sets special_ad_category_country
+     *
+     * @param string[]|null $special_ad_category_country Meta (metaads) only. 2-letter ISO country codes the special ad category applies to. Requires specialAdCategories to be set (400 otherwise).
+     *
+     * @return self
+     */
+    public function setSpecialAdCategoryCountry($special_ad_category_country)
+    {
+        if (is_null($special_ad_category_country)) {
+            throw new \InvalidArgumentException('non-nullable special_ad_category_country cannot be null');
+        }
+        $this->container['special_ad_category_country'] = $special_ad_category_country;
 
         return $this;
     }
