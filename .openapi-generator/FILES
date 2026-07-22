@@ -3071,12 +3071,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/VerifyApiTest.php
-test/Model/CheckVerification200ResponseTest.php
-test/Model/CheckVerificationRequestTest.php
-test/Model/CreateVerificationRequestTest.php
-test/Model/OnVerificationApprovedRequestTest.php
-test/Model/OnVerificationApprovedRequestVerificationTest.php
-test/Model/OnVerificationFailedRequestTest.php
-test/Model/OnVerificationFailedRequestVerificationTest.php
-test/Model/VerificationTest.php
