@@ -3095,8 +3095,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/WhatsAppCarouselCardComponentTest.php
-test/Model/WhatsAppCarouselComponentCardsInnerTest.php
-test/Model/WhatsAppCarouselComponentTest.php
-test/Model/WhatsAppLimitedTimeOfferComponentLimitedTimeOfferTest.php
-test/Model/WhatsAppLimitedTimeOfferComponentTest.php
