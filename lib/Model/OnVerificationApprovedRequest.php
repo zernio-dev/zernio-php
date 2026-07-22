@@ -1,6 +1,6 @@
 <?php
 /**
- * OnWhatsAppNumberKycSubmittedRequest
+ * OnVerificationApprovedRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * OnWhatsAppNumberKycSubmittedRequest Class Doc Comment
+ * OnVerificationApprovedRequest Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class OnVerificationApprovedRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'onWhatsAppNumberKycSubmitted_request';
+    protected static $openAPIModelName = 'onVerificationApproved_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,7 +61,7 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
         'id' => 'string',
         'event' => 'string',
         'timestamp' => '\DateTime',
-        'number' => '\Zernio\Model\OnWhatsAppNumberDeclinedRequestNumber'
+        'verification' => '\Zernio\Model\OnVerificationApprovedRequestVerification'
     ];
 
     /**
@@ -75,7 +75,7 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
         'id' => null,
         'event' => null,
         'timestamp' => 'date-time',
-        'number' => null
+        'verification' => null
     ];
 
     /**
@@ -87,7 +87,7 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
         'id' => false,
         'event' => false,
         'timestamp' => false,
-        'number' => false
+        'verification' => false
     ];
 
     /**
@@ -179,7 +179,7 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
         'id' => 'id',
         'event' => 'event',
         'timestamp' => 'timestamp',
-        'number' => 'number'
+        'verification' => 'verification'
     ];
 
     /**
@@ -191,7 +191,7 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
         'id' => 'setId',
         'event' => 'setEvent',
         'timestamp' => 'setTimestamp',
-        'number' => 'setNumber'
+        'verification' => 'setVerification'
     ];
 
     /**
@@ -203,7 +203,7 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
         'id' => 'getId',
         'event' => 'getEvent',
         'timestamp' => 'getTimestamp',
-        'number' => 'getNumber'
+        'verification' => 'getVerification'
     ];
 
     /**
@@ -247,9 +247,7 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    public const EVENT_WHATSAPP_NUMBER_KYC_SUBMITTED = 'whatsapp.number.kyc_submitted';
     public const EVENT_VERIFICATION_APPROVED = 'verification.approved';
-    public const EVENT_VERIFICATION_FAILED = 'verification.failed';
 
     /**
      * Gets allowable values of the enum
@@ -259,9 +257,7 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
     public function getEventAllowableValues()
     {
         return [
-            self::EVENT_WHATSAPP_NUMBER_KYC_SUBMITTED,
             self::EVENT_VERIFICATION_APPROVED,
-            self::EVENT_VERIFICATION_FAILED,
         ];
     }
 
@@ -283,7 +279,7 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('event', $data ?? [], null);
         $this->setIfExists('timestamp', $data ?? [], null);
-        $this->setIfExists('number', $data ?? [], null);
+        $this->setIfExists('verification', $data ?? [], null);
     }
 
     /**
@@ -429,28 +425,28 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets number
+     * Gets verification
      *
-     * @return \Zernio\Model\OnWhatsAppNumberDeclinedRequestNumber|null
+     * @return \Zernio\Model\OnVerificationApprovedRequestVerification|null
      */
-    public function getNumber()
+    public function getVerification()
     {
-        return $this->container['number'];
+        return $this->container['verification'];
     }
 
     /**
-     * Sets number
+     * Sets verification
      *
-     * @param \Zernio\Model\OnWhatsAppNumberDeclinedRequestNumber|null $number number
+     * @param \Zernio\Model\OnVerificationApprovedRequestVerification|null $verification verification
      *
      * @return self
      */
-    public function setNumber($number)
+    public function setVerification($verification)
     {
-        if (is_null($number)) {
-            throw new \InvalidArgumentException('non-nullable number cannot be null');
+        if (is_null($verification)) {
+            throw new \InvalidArgumentException('non-nullable verification cannot be null');
         }
-        $this->container['number'] = $number;
+        $this->container['verification'] = $verification;
 
         return $this;
     }

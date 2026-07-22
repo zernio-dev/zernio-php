@@ -48,6 +48,7 @@ docs/Api/TwitterEngagementApi.md
 docs/Api/UsageApi.md
 docs/Api/UsersApi.md
 docs/Api/ValidateApi.md
+docs/Api/VerifyApi.md
 docs/Api/VoiceApi.md
 docs/Api/WebhookEventsApi.md
 docs/Api/WebhooksApi.md
@@ -165,6 +166,8 @@ docs/Model/CheckPhoneNumberAvailability200Response.md
 docs/Model/CheckPhoneNumberPortability200Response.md
 docs/Model/CheckPhoneNumberPortability200ResponseResultsInner.md
 docs/Model/CheckPhoneNumberPortabilityRequest.md
+docs/Model/CheckVerification200Response.md
+docs/Model/CheckVerificationRequest.md
 docs/Model/CompleteGoogleBusinessVerificationRequest.md
 docs/Model/CompleteTelegramConnect200Response.md
 docs/Model/CompleteWhatsAppPhoneSelection200Response.md
@@ -313,6 +316,7 @@ docs/Model/CreateTestLeadRequest.md
 docs/Model/CreateTestLeadRequestFieldDataInner.md
 docs/Model/CreateTrackingTag201Response.md
 docs/Model/CreateTrackingTagRequest.md
+docs/Model/CreateVerificationRequest.md
 docs/Model/CreateVoiceCall200Response.md
 docs/Model/CreateVoiceCallRequest.md
 docs/Model/CreateVoiceWebSession200Response.md
@@ -968,6 +972,10 @@ docs/Model/Money.md
 docs/Model/MoneyAmount.md
 docs/Model/MoveAccountToProfile200Response.md
 docs/Model/MoveAccountToProfileRequest.md
+docs/Model/OnVerificationApprovedRequest.md
+docs/Model/OnVerificationApprovedRequestVerification.md
+docs/Model/OnVerificationFailedRequest.md
+docs/Model/OnVerificationFailedRequestVerification.md
 docs/Model/OnWhatsAppAutomaticEventRequest.md
 docs/Model/OnWhatsAppAutomaticEventRequestCustomData.md
 docs/Model/OnWhatsAppNumberActionRequiredRequest.md
@@ -1420,6 +1428,7 @@ docs/Model/ValidateSubreddit200Response.md
 docs/Model/ValidateSubreddit200ResponseOneOf.md
 docs/Model/ValidateSubreddit200ResponseOneOf1.md
 docs/Model/ValidateSubreddit200ResponseOneOfSubreddit.md
+docs/Model/Verification.md
 docs/Model/VerifySmsRegistrationOtp200Response.md
 docs/Model/VerifySmsRegistrationOtpRequest.md
 docs/Model/VoteRedditThingRequest.md
@@ -1570,6 +1579,7 @@ lib/Api/TwitterEngagementApi.php
 lib/Api/UsageApi.php
 lib/Api/UsersApi.php
 lib/Api/ValidateApi.php
+lib/Api/VerifyApi.php
 lib/Api/VoiceApi.php
 lib/Api/WebhookEventsApi.php
 lib/Api/WebhooksApi.php
@@ -1691,6 +1701,8 @@ lib/Model/CheckPhoneNumberAvailability200Response.php
 lib/Model/CheckPhoneNumberPortability200Response.php
 lib/Model/CheckPhoneNumberPortability200ResponseResultsInner.php
 lib/Model/CheckPhoneNumberPortabilityRequest.php
+lib/Model/CheckVerification200Response.php
+lib/Model/CheckVerificationRequest.php
 lib/Model/CompleteGoogleBusinessVerificationRequest.php
 lib/Model/CompleteTelegramConnect200Response.php
 lib/Model/CompleteWhatsAppPhoneSelection200Response.php
@@ -1839,6 +1851,7 @@ lib/Model/CreateTestLeadRequest.php
 lib/Model/CreateTestLeadRequestFieldDataInner.php
 lib/Model/CreateTrackingTag201Response.php
 lib/Model/CreateTrackingTagRequest.php
+lib/Model/CreateVerificationRequest.php
 lib/Model/CreateVoiceCall200Response.php
 lib/Model/CreateVoiceCallRequest.php
 lib/Model/CreateVoiceWebSession200Response.php
@@ -2495,6 +2508,10 @@ lib/Model/Money.php
 lib/Model/MoneyAmount.php
 lib/Model/MoveAccountToProfile200Response.php
 lib/Model/MoveAccountToProfileRequest.php
+lib/Model/OnVerificationApprovedRequest.php
+lib/Model/OnVerificationApprovedRequestVerification.php
+lib/Model/OnVerificationFailedRequest.php
+lib/Model/OnVerificationFailedRequestVerification.php
 lib/Model/OnWhatsAppAutomaticEventRequest.php
 lib/Model/OnWhatsAppAutomaticEventRequestCustomData.php
 lib/Model/OnWhatsAppNumberActionRequiredRequest.php
@@ -2947,6 +2964,7 @@ lib/Model/ValidateSubreddit200Response.php
 lib/Model/ValidateSubreddit200ResponseOneOf.php
 lib/Model/ValidateSubreddit200ResponseOneOf1.php
 lib/Model/ValidateSubreddit200ResponseOneOfSubreddit.php
+lib/Model/Verification.php
 lib/Model/VerifySmsRegistrationOtp200Response.php
 lib/Model/VerifySmsRegistrationOtpRequest.php
 lib/Model/VoteRedditThingRequest.php
@@ -3053,3 +3071,12 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Api/VerifyApiTest.php
+test/Model/CheckVerification200ResponseTest.php
+test/Model/CheckVerificationRequestTest.php
+test/Model/CreateVerificationRequestTest.php
+test/Model/OnVerificationApprovedRequestTest.php
+test/Model/OnVerificationApprovedRequestVerificationTest.php
+test/Model/OnVerificationFailedRequestTest.php
+test/Model/OnVerificationFailedRequestVerificationTest.php
+test/Model/VerificationTest.php

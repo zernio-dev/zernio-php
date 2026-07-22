@@ -1,6 +1,6 @@
 <?php
 /**
- * OnWhatsAppNumberKycSubmittedRequest
+ * CreateVerificationRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * OnWhatsAppNumberKycSubmittedRequest Class Doc Comment
+ * CreateVerificationRequest Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateVerificationRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'onWhatsAppNumberKycSubmitted_request';
+    protected static $openAPIModelName = 'createVerification_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,12 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'event' => 'string',
-        'timestamp' => '\DateTime',
-        'number' => '\Zernio\Model\OnWhatsAppNumberDeclinedRequestNumber'
+        'channel' => 'string',
+        'to' => 'string',
+        'from' => 'string',
+        'brand_name' => 'string',
+        'code_length' => 'int',
+        'ttl_minutes' => 'int'
     ];
 
     /**
@@ -72,10 +74,12 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'event' => null,
-        'timestamp' => 'date-time',
-        'number' => null
+        'channel' => null,
+        'to' => null,
+        'from' => null,
+        'brand_name' => null,
+        'code_length' => null,
+        'ttl_minutes' => null
     ];
 
     /**
@@ -84,10 +88,12 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'event' => false,
-        'timestamp' => false,
-        'number' => false
+        'channel' => false,
+        'to' => false,
+        'from' => false,
+        'brand_name' => false,
+        'code_length' => false,
+        'ttl_minutes' => false
     ];
 
     /**
@@ -176,10 +182,12 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'event' => 'event',
-        'timestamp' => 'timestamp',
-        'number' => 'number'
+        'channel' => 'channel',
+        'to' => 'to',
+        'from' => 'from',
+        'brand_name' => 'brandName',
+        'code_length' => 'codeLength',
+        'ttl_minutes' => 'ttlMinutes'
     ];
 
     /**
@@ -188,10 +196,12 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'event' => 'setEvent',
-        'timestamp' => 'setTimestamp',
-        'number' => 'setNumber'
+        'channel' => 'setChannel',
+        'to' => 'setTo',
+        'from' => 'setFrom',
+        'brand_name' => 'setBrandName',
+        'code_length' => 'setCodeLength',
+        'ttl_minutes' => 'setTtlMinutes'
     ];
 
     /**
@@ -200,10 +210,12 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'event' => 'getEvent',
-        'timestamp' => 'getTimestamp',
-        'number' => 'getNumber'
+        'channel' => 'getChannel',
+        'to' => 'getTo',
+        'from' => 'getFrom',
+        'brand_name' => 'getBrandName',
+        'code_length' => 'getCodeLength',
+        'ttl_minutes' => 'getTtlMinutes'
     ];
 
     /**
@@ -247,21 +259,17 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    public const EVENT_WHATSAPP_NUMBER_KYC_SUBMITTED = 'whatsapp.number.kyc_submitted';
-    public const EVENT_VERIFICATION_APPROVED = 'verification.approved';
-    public const EVENT_VERIFICATION_FAILED = 'verification.failed';
+    public const CHANNEL_SMS = 'sms';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getEventAllowableValues()
+    public function getChannelAllowableValues()
     {
         return [
-            self::EVENT_WHATSAPP_NUMBER_KYC_SUBMITTED,
-            self::EVENT_VERIFICATION_APPROVED,
-            self::EVENT_VERIFICATION_FAILED,
+            self::CHANNEL_SMS,
         ];
     }
 
@@ -280,10 +288,12 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('event', $data ?? [], null);
-        $this->setIfExists('timestamp', $data ?? [], null);
-        $this->setIfExists('number', $data ?? [], null);
+        $this->setIfExists('channel', $data ?? [], null);
+        $this->setIfExists('to', $data ?? [], null);
+        $this->setIfExists('from', $data ?? [], null);
+        $this->setIfExists('brand_name', $data ?? [], null);
+        $this->setIfExists('code_length', $data ?? [], 6);
+        $this->setIfExists('ttl_minutes', $data ?? [], 10);
     }
 
     /**
@@ -313,13 +323,39 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getEventAllowableValues();
-        if (!is_null($this->container['event']) && !in_array($this->container['event'], $allowedValues, true)) {
+        if ($this->container['channel'] === null) {
+            $invalidProperties[] = "'channel' can't be null";
+        }
+        $allowedValues = $this->getChannelAllowableValues();
+        if (!is_null($this->container['channel']) && !in_array($this->container['channel'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'event', must be one of '%s'",
-                $this->container['event'],
+                "invalid value '%s' for 'channel', must be one of '%s'",
+                $this->container['channel'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if ($this->container['to'] === null) {
+            $invalidProperties[] = "'to' can't be null";
+        }
+        if (!is_null($this->container['brand_name']) && (mb_strlen($this->container['brand_name']) > 30)) {
+            $invalidProperties[] = "invalid value for 'brand_name', the character length must be smaller than or equal to 30.";
+        }
+
+        if (!is_null($this->container['code_length']) && ($this->container['code_length'] > 8)) {
+            $invalidProperties[] = "invalid value for 'code_length', must be smaller than or equal to 8.";
+        }
+
+        if (!is_null($this->container['code_length']) && ($this->container['code_length'] < 4)) {
+            $invalidProperties[] = "invalid value for 'code_length', must be bigger than or equal to 4.";
+        }
+
+        if (!is_null($this->container['ttl_minutes']) && ($this->container['ttl_minutes'] > 15)) {
+            $invalidProperties[] = "invalid value for 'ttl_minutes', must be smaller than or equal to 15.";
+        }
+
+        if (!is_null($this->container['ttl_minutes']) && ($this->container['ttl_minutes'] < 1)) {
+            $invalidProperties[] = "invalid value for 'ttl_minutes', must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -338,119 +374,193 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets channel
      *
-     * @return string|null
+     * @return string
      */
-    public function getId()
+    public function getChannel()
     {
-        return $this->container['id'];
+        return $this->container['channel'];
     }
 
     /**
-     * Sets id
+     * Sets channel
      *
-     * @param string|null $id id
+     * @param string $channel SMS-only for now.
      *
      * @return self
      */
-    public function setId($id)
+    public function setChannel($channel)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($channel)) {
+            throw new \InvalidArgumentException('non-nullable channel cannot be null');
         }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets event
-     *
-     * @return string|null
-     */
-    public function getEvent()
-    {
-        return $this->container['event'];
-    }
-
-    /**
-     * Sets event
-     *
-     * @param string|null $event event
-     *
-     * @return self
-     */
-    public function setEvent($event)
-    {
-        if (is_null($event)) {
-            throw new \InvalidArgumentException('non-nullable event cannot be null');
-        }
-        $allowedValues = $this->getEventAllowableValues();
-        if (!in_array($event, $allowedValues, true)) {
+        $allowedValues = $this->getChannelAllowableValues();
+        if (!in_array($channel, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'event', must be one of '%s'",
-                    $event,
+                    "Invalid value '%s' for 'channel', must be one of '%s'",
+                    $channel,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['event'] = $event;
+        $this->container['channel'] = $channel;
 
         return $this;
     }
 
     /**
-     * Gets timestamp
+     * Gets to
      *
-     * @return \DateTime|null
+     * @return string
      */
-    public function getTimestamp()
+    public function getTo()
     {
-        return $this->container['timestamp'];
+        return $this->container['to'];
     }
 
     /**
-     * Sets timestamp
+     * Sets to
      *
-     * @param \DateTime|null $timestamp timestamp
+     * @param string $to E.164 phone number.
      *
      * @return self
      */
-    public function setTimestamp($timestamp)
+    public function setTo($to)
     {
-        if (is_null($timestamp)) {
-            throw new \InvalidArgumentException('non-nullable timestamp cannot be null');
+        if (is_null($to)) {
+            throw new \InvalidArgumentException('non-nullable to cannot be null');
         }
-        $this->container['timestamp'] = $timestamp;
+        $this->container['to'] = $to;
 
         return $this;
     }
 
     /**
-     * Gets number
+     * Gets from
      *
-     * @return \Zernio\Model\OnWhatsAppNumberDeclinedRequestNumber|null
+     * @return string|null
      */
-    public function getNumber()
+    public function getFrom()
     {
-        return $this->container['number'];
+        return $this->container['from'];
     }
 
     /**
-     * Sets number
+     * Sets from
      *
-     * @param \Zernio\Model\OnWhatsAppNumberDeclinedRequestNumber|null $number number
+     * @param string|null $from The SMS-enabled number on your account to send from. Defaults to your only SMS number.
      *
      * @return self
      */
-    public function setNumber($number)
+    public function setFrom($from)
     {
-        if (is_null($number)) {
-            throw new \InvalidArgumentException('non-nullable number cannot be null');
+        if (is_null($from)) {
+            throw new \InvalidArgumentException('non-nullable from cannot be null');
         }
-        $this->container['number'] = $number;
+        $this->container['from'] = $from;
+
+        return $this;
+    }
+
+    /**
+     * Gets brand_name
+     *
+     * @return string|null
+     */
+    public function getBrandName()
+    {
+        return $this->container['brand_name'];
+    }
+
+    /**
+     * Sets brand_name
+     *
+     * @param string|null $brand_name Your app or business name, rendered in the message. Defaults to your account name. Letters, numbers, and basic punctuation only.
+     *
+     * @return self
+     */
+    public function setBrandName($brand_name)
+    {
+        if (is_null($brand_name)) {
+            throw new \InvalidArgumentException('non-nullable brand_name cannot be null');
+        }
+        if ((mb_strlen($brand_name) > 30)) {
+            throw new \InvalidArgumentException('invalid length for $brand_name when calling CreateVerificationRequest., must be smaller than or equal to 30.');
+        }
+
+        $this->container['brand_name'] = $brand_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets code_length
+     *
+     * @return int|null
+     */
+    public function getCodeLength()
+    {
+        return $this->container['code_length'];
+    }
+
+    /**
+     * Sets code_length
+     *
+     * @param int|null $code_length code_length
+     *
+     * @return self
+     */
+    public function setCodeLength($code_length)
+    {
+        if (is_null($code_length)) {
+            throw new \InvalidArgumentException('non-nullable code_length cannot be null');
+        }
+
+        if (($code_length > 8)) {
+            throw new \InvalidArgumentException('invalid value for $code_length when calling CreateVerificationRequest., must be smaller than or equal to 8.');
+        }
+        if (($code_length < 4)) {
+            throw new \InvalidArgumentException('invalid value for $code_length when calling CreateVerificationRequest., must be bigger than or equal to 4.');
+        }
+
+        $this->container['code_length'] = $code_length;
+
+        return $this;
+    }
+
+    /**
+     * Gets ttl_minutes
+     *
+     * @return int|null
+     */
+    public function getTtlMinutes()
+    {
+        return $this->container['ttl_minutes'];
+    }
+
+    /**
+     * Sets ttl_minutes
+     *
+     * @param int|null $ttl_minutes ttl_minutes
+     *
+     * @return self
+     */
+    public function setTtlMinutes($ttl_minutes)
+    {
+        if (is_null($ttl_minutes)) {
+            throw new \InvalidArgumentException('non-nullable ttl_minutes cannot be null');
+        }
+
+        if (($ttl_minutes > 15)) {
+            throw new \InvalidArgumentException('invalid value for $ttl_minutes when calling CreateVerificationRequest., must be smaller than or equal to 15.');
+        }
+        if (($ttl_minutes < 1)) {
+            throw new \InvalidArgumentException('invalid value for $ttl_minutes when calling CreateVerificationRequest., must be bigger than or equal to 1.');
+        }
+
+        $this->container['ttl_minutes'] = $ttl_minutes;
 
         return $this;
     }

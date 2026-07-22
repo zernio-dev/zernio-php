@@ -1,6 +1,6 @@
 <?php
 /**
- * OnWhatsAppNumberKycSubmittedRequest
+ * CheckVerificationRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * OnWhatsAppNumberKycSubmittedRequest Class Doc Comment
+ * CheckVerificationRequest Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class CheckVerificationRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'onWhatsAppNumberKycSubmitted_request';
+    protected static $openAPIModelName = 'checkVerification_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,7 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'event' => 'string',
-        'timestamp' => '\DateTime',
-        'number' => '\Zernio\Model\OnWhatsAppNumberDeclinedRequestNumber'
+        'code' => 'string'
     ];
 
     /**
@@ -72,10 +69,7 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'event' => null,
-        'timestamp' => 'date-time',
-        'number' => null
+        'code' => null
     ];
 
     /**
@@ -84,10 +78,7 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'event' => false,
-        'timestamp' => false,
-        'number' => false
+        'code' => false
     ];
 
     /**
@@ -176,10 +167,7 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'event' => 'event',
-        'timestamp' => 'timestamp',
-        'number' => 'number'
+        'code' => 'code'
     ];
 
     /**
@@ -188,10 +176,7 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'event' => 'setEvent',
-        'timestamp' => 'setTimestamp',
-        'number' => 'setNumber'
+        'code' => 'setCode'
     ];
 
     /**
@@ -200,10 +185,7 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'event' => 'getEvent',
-        'timestamp' => 'getTimestamp',
-        'number' => 'getNumber'
+        'code' => 'getCode'
     ];
 
     /**
@@ -247,23 +229,6 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    public const EVENT_WHATSAPP_NUMBER_KYC_SUBMITTED = 'whatsapp.number.kyc_submitted';
-    public const EVENT_VERIFICATION_APPROVED = 'verification.approved';
-    public const EVENT_VERIFICATION_FAILED = 'verification.failed';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEventAllowableValues()
-    {
-        return [
-            self::EVENT_WHATSAPP_NUMBER_KYC_SUBMITTED,
-            self::EVENT_VERIFICATION_APPROVED,
-            self::EVENT_VERIFICATION_FAILED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -280,10 +245,7 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('event', $data ?? [], null);
-        $this->setIfExists('timestamp', $data ?? [], null);
-        $this->setIfExists('number', $data ?? [], null);
+        $this->setIfExists('code', $data ?? [], null);
     }
 
     /**
@@ -313,13 +275,11 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getEventAllowableValues();
-        if (!is_null($this->container['event']) && !in_array($this->container['event'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'event', must be one of '%s'",
-                $this->container['event'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
+        }
+        if (!preg_match("/^\\d{4,8}$/", $this->container['code'])) {
+            $invalidProperties[] = "invalid value for 'code', must be conform to the pattern /^\\d{4,8}$/.";
         }
 
         return $invalidProperties;
@@ -338,119 +298,33 @@ class OnWhatsAppNumberKycSubmittedRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets code
      *
-     * @return string|null
+     * @return string
      */
-    public function getId()
+    public function getCode()
     {
-        return $this->container['id'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets id
+     * Sets code
      *
-     * @param string|null $id id
+     * @param string $code code
      *
      * @return self
      */
-    public function setId($id)
+    public function setCode($code)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($code)) {
+            throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
-        $this->container['id'] = $id;
 
-        return $this;
-    }
-
-    /**
-     * Gets event
-     *
-     * @return string|null
-     */
-    public function getEvent()
-    {
-        return $this->container['event'];
-    }
-
-    /**
-     * Sets event
-     *
-     * @param string|null $event event
-     *
-     * @return self
-     */
-    public function setEvent($event)
-    {
-        if (is_null($event)) {
-            throw new \InvalidArgumentException('non-nullable event cannot be null');
+        if ((!preg_match("/^\\d{4,8}$/", ObjectSerializer::toString($code)))) {
+            throw new \InvalidArgumentException("invalid value for \$code when calling CheckVerificationRequest., must conform to the pattern /^\\d{4,8}$/.");
         }
-        $allowedValues = $this->getEventAllowableValues();
-        if (!in_array($event, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'event', must be one of '%s'",
-                    $event,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['event'] = $event;
 
-        return $this;
-    }
-
-    /**
-     * Gets timestamp
-     *
-     * @return \DateTime|null
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     *
-     * @param \DateTime|null $timestamp timestamp
-     *
-     * @return self
-     */
-    public function setTimestamp($timestamp)
-    {
-        if (is_null($timestamp)) {
-            throw new \InvalidArgumentException('non-nullable timestamp cannot be null');
-        }
-        $this->container['timestamp'] = $timestamp;
-
-        return $this;
-    }
-
-    /**
-     * Gets number
-     *
-     * @return \Zernio\Model\OnWhatsAppNumberDeclinedRequestNumber|null
-     */
-    public function getNumber()
-    {
-        return $this->container['number'];
-    }
-
-    /**
-     * Sets number
-     *
-     * @param \Zernio\Model\OnWhatsAppNumberDeclinedRequestNumber|null $number number
-     *
-     * @return self
-     */
-    public function setNumber($number)
-    {
-        if (is_null($number)) {
-            throw new \InvalidArgumentException('non-nullable number cannot be null');
-        }
-        $this->container['number'] = $number;
+        $this->container['code'] = $code;
 
         return $this;
     }
