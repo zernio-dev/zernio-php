@@ -1,6 +1,6 @@
 <?php
 /**
- * MediaApi
+ * InboxApi
  * PHP version 8.1
  *
  * @category Class
@@ -44,14 +44,14 @@ use Zernio\HeaderSelector;
 use Zernio\ObjectSerializer;
 
 /**
- * MediaApi Class Doc Comment
+ * InboxApi Class Doc Comment
  *
  * @category Class
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class MediaApi
+class InboxApi
 {
     /**
      * @var ClientInterface
@@ -75,7 +75,7 @@ class MediaApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'getMediaPresignedUrl' => [
+        'getWhatsAppMedia' => [
             'application/json',
         ],
     ];
@@ -127,38 +127,40 @@ class MediaApi
     }
 
     /**
-     * Operation getMediaPresignedUrl
+     * Operation getWhatsAppMedia
      *
-     * Get upload URL
+     * Download WhatsApp media
      *
-     * @param  \Zernio\Model\GetMediaPresignedUrlRequest $get_media_presigned_url_request get_media_presigned_url_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMediaPresignedUrl'] to see the possible values for this operation
+     * @param  string $media_id The media id from &#x60;attachments[].payload.id&#x60;. (required)
+     * @param  string $account_id The WhatsApp account that received the media. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppMedia'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetMediaPresignedUrl200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \SplFileObject|\Zernio\Model\InlineObject
      */
-    public function getMediaPresignedUrl($get_media_presigned_url_request, string $contentType = self::contentTypes['getMediaPresignedUrl'][0])
+    public function getWhatsAppMedia($media_id, $account_id, string $contentType = self::contentTypes['getWhatsAppMedia'][0])
     {
-        list($response) = $this->getMediaPresignedUrlWithHttpInfo($get_media_presigned_url_request, $contentType);
+        list($response) = $this->getWhatsAppMediaWithHttpInfo($media_id, $account_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation getMediaPresignedUrlWithHttpInfo
+     * Operation getWhatsAppMediaWithHttpInfo
      *
-     * Get upload URL
+     * Download WhatsApp media
      *
-     * @param  \Zernio\Model\GetMediaPresignedUrlRequest $get_media_presigned_url_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMediaPresignedUrl'] to see the possible values for this operation
+     * @param  string $media_id The media id from &#x60;attachments[].payload.id&#x60;. (required)
+     * @param  string $account_id The WhatsApp account that received the media. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppMedia'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetMediaPresignedUrl200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SplFileObject|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getMediaPresignedUrlWithHttpInfo($get_media_presigned_url_request, string $contentType = self::contentTypes['getMediaPresignedUrl'][0])
+    public function getWhatsAppMediaWithHttpInfo($media_id, $account_id, string $contentType = self::contentTypes['getWhatsAppMedia'][0])
     {
-        $request = $this->getMediaPresignedUrlRequest($get_media_presigned_url_request, $contentType);
+        $request = $this->getWhatsAppMediaRequest($media_id, $account_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -186,13 +188,7 @@ class MediaApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\GetMediaPresignedUrl200Response',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\Zernio\Model\ErrorResponse',
+                        '\SplFileObject',
                         $request,
                         $response,
                     );
@@ -220,7 +216,7 @@ class MediaApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\GetMediaPresignedUrl200Response',
+                '\SplFileObject',
                 $request,
                 $response,
             );
@@ -229,15 +225,7 @@ class MediaApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\GetMediaPresignedUrl200Response',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Zernio\Model\ErrorResponse',
+                        '\SplFileObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -258,19 +246,20 @@ class MediaApi
     }
 
     /**
-     * Operation getMediaPresignedUrlAsync
+     * Operation getWhatsAppMediaAsync
      *
-     * Get upload URL
+     * Download WhatsApp media
      *
-     * @param  \Zernio\Model\GetMediaPresignedUrlRequest $get_media_presigned_url_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMediaPresignedUrl'] to see the possible values for this operation
+     * @param  string $media_id The media id from &#x60;attachments[].payload.id&#x60;. (required)
+     * @param  string $account_id The WhatsApp account that received the media. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppMedia'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getMediaPresignedUrlAsync($get_media_presigned_url_request, string $contentType = self::contentTypes['getMediaPresignedUrl'][0])
+    public function getWhatsAppMediaAsync($media_id, $account_id, string $contentType = self::contentTypes['getWhatsAppMedia'][0])
     {
-        return $this->getMediaPresignedUrlAsyncWithHttpInfo($get_media_presigned_url_request, $contentType)
+        return $this->getWhatsAppMediaAsyncWithHttpInfo($media_id, $account_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -279,20 +268,21 @@ class MediaApi
     }
 
     /**
-     * Operation getMediaPresignedUrlAsyncWithHttpInfo
+     * Operation getWhatsAppMediaAsyncWithHttpInfo
      *
-     * Get upload URL
+     * Download WhatsApp media
      *
-     * @param  \Zernio\Model\GetMediaPresignedUrlRequest $get_media_presigned_url_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMediaPresignedUrl'] to see the possible values for this operation
+     * @param  string $media_id The media id from &#x60;attachments[].payload.id&#x60;. (required)
+     * @param  string $account_id The WhatsApp account that received the media. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppMedia'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getMediaPresignedUrlAsyncWithHttpInfo($get_media_presigned_url_request, string $contentType = self::contentTypes['getMediaPresignedUrl'][0])
+    public function getWhatsAppMediaAsyncWithHttpInfo($media_id, $account_id, string $contentType = self::contentTypes['getWhatsAppMedia'][0])
     {
-        $returnType = '\Zernio\Model\GetMediaPresignedUrl200Response';
-        $request = $this->getMediaPresignedUrlRequest($get_media_presigned_url_request, $contentType);
+        $returnType = '\SplFileObject';
+        $request = $this->getWhatsAppMediaRequest($media_id, $account_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -331,51 +321,69 @@ class MediaApi
     }
 
     /**
-     * Create request for operation 'getMediaPresignedUrl'
+     * Create request for operation 'getWhatsAppMedia'
      *
-     * @param  \Zernio\Model\GetMediaPresignedUrlRequest $get_media_presigned_url_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMediaPresignedUrl'] to see the possible values for this operation
+     * @param  string $media_id The media id from &#x60;attachments[].payload.id&#x60;. (required)
+     * @param  string $account_id The WhatsApp account that received the media. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppMedia'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getMediaPresignedUrlRequest($get_media_presigned_url_request, string $contentType = self::contentTypes['getMediaPresignedUrl'][0])
+    public function getWhatsAppMediaRequest($media_id, $account_id, string $contentType = self::contentTypes['getWhatsAppMedia'][0])
     {
 
-        // verify the required parameter 'get_media_presigned_url_request' is set
-        if ($get_media_presigned_url_request === null || (is_array($get_media_presigned_url_request) && count($get_media_presigned_url_request) === 0)) {
+        // verify the required parameter 'media_id' is set
+        if ($media_id === null || (is_array($media_id) && count($media_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $get_media_presigned_url_request when calling getMediaPresignedUrl'
+                'Missing the required parameter $media_id when calling getWhatsAppMedia'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getWhatsAppMedia'
             );
         }
 
 
-        $resourcePath = '/v1/media/presign';
+        $resourcePath = '/v1/whatsapp/media/{mediaId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
 
 
+        // path params
+        if ($media_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'mediaId' . '}',
+                ObjectSerializer::toPathValue($media_id),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['application/octet-stream', 'application/json', ],
             $contentType,
             $multipart
         );
 
         // for model (json/xml)
-        if (isset($get_media_presigned_url_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($get_media_presigned_url_request));
-            } else {
-                $httpBody = $get_media_presigned_url_request;
-            }
-        } elseif (count($formParams) > 0) {
+        if (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -418,7 +426,7 @@ class MediaApi
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
-            'POST',
+            'GET',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

@@ -350,7 +350,7 @@ class InboxWebhookMessageAttachmentsInner implements ModelInterface, ArrayAccess
     /**
      * Sets url
      *
-     * @param string $url Attachment URL (may expire for Meta platforms)
+     * @param string $url Where to fetch the attachment. The contract depends on direction and platform: inbound WhatsApp media points at the authenticated `GET /v1/whatsapp/media/{mediaId}` and requires `Authorization: Bearer <your API key>`, while outgoing media carries the URL originally supplied and Instagram / Facebook / Telegram carry direct platform CDN links that need no authentication.
      *
      * @return self
      */

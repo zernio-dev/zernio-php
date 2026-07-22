@@ -28,6 +28,7 @@ docs/Api/GMBReviewsApi.md
 docs/Api/GMBServicesApi.md
 docs/Api/GMBVerificationsApi.md
 docs/Api/InboxAnalyticsApi.md
+docs/Api/InboxApi.md
 docs/Api/InstagramApi.md
 docs/Api/InvitesApi.md
 docs/Api/LinkedInMentionsApi.md
@@ -195,11 +196,6 @@ docs/Model/CreateAccountGroup201ResponseGroup.md
 docs/Model/CreateAccountGroupRequest.md
 docs/Model/CreateAdAudience201Response.md
 docs/Model/CreateAdAudienceRequest.md
-docs/Model/CreateAdCampaign201Response.md
-docs/Model/CreateAdCampaignRequest.md
-docs/Model/CreateAdCreative201Response.md
-docs/Model/CreateAdCreativeRequest.md
-docs/Model/CreateAdCreativeRequestCarouselCardsInner.md
 docs/Model/CreateAdInsightsReport202Response.md
 docs/Model/CreateAdInsightsReportRequest.md
 docs/Model/CreateAdInsightsReportRequestFilteringInner.md
@@ -286,8 +282,6 @@ docs/Model/CreateSequenceRequest.md
 docs/Model/CreateSequenceRequestStepsInner.md
 docs/Model/CreateSequenceRequestStepsInnerTemplate.md
 docs/Model/CreateSequenceRequestStepsInnerTemplateVariableMappingValue.md
-docs/Model/CreateSmsSenderId200Response.md
-docs/Model/CreateSmsSenderIdRequest.md
 docs/Model/CreateStandaloneAd201Response.md
 docs/Model/CreateStandaloneAd201ResponseOneOf.md
 docs/Model/CreateStandaloneAd201ResponseOneOf1.md
@@ -354,7 +348,6 @@ docs/Model/DeactivateSmsRegistration200Response.md
 docs/Model/DeleteAccountGroup200Response.md
 docs/Model/DeleteAdCampaign200Response.md
 docs/Model/DeleteAdCampaignRequest.md
-docs/Model/DeleteAdCreative200Response.md
 docs/Model/DeleteDiscordScheduledEvent200Response.md
 docs/Model/DeleteGoogleBusinessMedia200Response.md
 docs/Model/DeleteGoogleBusinessPlaceAction200Response.md
@@ -362,7 +355,6 @@ docs/Model/DeleteGoogleBusinessReviewReply200Response.md
 docs/Model/DeleteInboxComment200Response.md
 docs/Model/DeleteInboxReviewReply200Response.md
 docs/Model/DeleteInboxReviewReplyRequest.md
-docs/Model/DeleteSmsSenderId200Response.md
 docs/Model/DeleteWhatsappBusinessUsernameRequest.md
 docs/Model/DialVoiceWebCall200Response.md
 docs/Model/DialVoiceWebCallRequest.md
@@ -382,12 +374,8 @@ docs/Model/DiscordRole.md
 docs/Model/DiscordScheduledEvent.md
 docs/Model/DiscordScheduledEventEntityMetadata.md
 docs/Model/DmButton.md
-docs/Model/DuplicateAd200Response.md
 docs/Model/DuplicateAdCampaign200Response.md
 docs/Model/DuplicateAdCampaignRequest.md
-docs/Model/DuplicateAdRequest.md
-docs/Model/DuplicateAdSet200Response.md
-docs/Model/DuplicateAdSetRequest.md
 docs/Model/DuplicateWorkflow201Response.md
 docs/Model/DuplicateWorkflow201ResponseWorkflow.md
 docs/Model/EditDiscordGuildRoleRequest.md
@@ -455,7 +443,6 @@ docs/Model/GetAdAudience200Response.md
 docs/Model/GetAdComments200Response.md
 docs/Model/GetAdComments200ResponseMeta.md
 docs/Model/GetAdComments200ResponsePagination.md
-docs/Model/GetAdCreative200Response.md
 docs/Model/GetAdInsightsReport200Response.md
 docs/Model/GetAdInsightsReport200ResponsePaging.md
 docs/Model/GetAdPreviews200Response.md
@@ -822,9 +809,6 @@ docs/Model/ListAdCatalogProductSets200Response.md
 docs/Model/ListAdCatalogProductSets200ResponseProductSetsInner.md
 docs/Model/ListAdCatalogs200Response.md
 docs/Model/ListAdCatalogs200ResponseCatalogsInner.md
-docs/Model/ListAdCreatives200Response.md
-docs/Model/ListAdImages200Response.md
-docs/Model/ListAdLabels200Response.md
 docs/Model/ListAdStudies200Response.md
 docs/Model/ListAds200Response.md
 docs/Model/ListAdsBusinessCenters200Response.md
@@ -869,7 +853,6 @@ docs/Model/ListGoogleBusinessMedia200ResponseMediaItemsInner.md
 docs/Model/ListGoogleBusinessMedia200ResponseMediaItemsInnerLocationAssociation.md
 docs/Model/ListGoogleBusinessPlaceActions200Response.md
 docs/Model/ListGoogleBusinessPlaceActions200ResponsePlaceActionLinksInner.md
-docs/Model/ListHighDemandPeriods200Response.md
 docs/Model/ListInboxComments200Response.md
 docs/Model/ListInboxComments200ResponseDataInner.md
 docs/Model/ListInboxConversationAnalytics200Response.md
@@ -922,10 +905,6 @@ docs/Model/ListSmsOptOuts200ResponseOptOutsInner.md
 docs/Model/ListSmsRegistrations200Response.md
 docs/Model/ListSmsRegistrations200ResponseRegistrationsInner.md
 docs/Model/ListSmsRegistrations200ResponseRegistrationsInnerThroughput.md
-docs/Model/ListSmsSenderIds200Response.md
-docs/Model/ListSmsSenderIds200ResponseBudget.md
-docs/Model/ListSmsSenderIds200ResponseBudgetPendingRequest.md
-docs/Model/ListSmsSenderIds200ResponseSenderIdsInner.md
 docs/Model/ListSnapchatProfiles200Response.md
 docs/Model/ListSnapchatProfiles200ResponsePublicProfilesInner.md
 docs/Model/ListTrackingTagSharedAccounts200Response.md
@@ -1055,8 +1034,6 @@ docs/Model/ReplyToInboxReview200Response.md
 docs/Model/ReplyToInboxReviewRequest.md
 docs/Model/ReplyToMention200Response.md
 docs/Model/ReplyToMentionRequest.md
-docs/Model/RequestSmsSenderIdLimitIncrease200Response.md
-docs/Model/RequestSmsSenderIdLimitIncreaseRequest.md
 docs/Model/ResendSmsRegistrationOtp200Response.md
 docs/Model/ReserveRfPrediction201Response.md
 docs/Model/ReserveRfPredictionRequest.md
@@ -1263,8 +1240,6 @@ docs/Model/UpdateAdCampaignRequestBudget.md
 docs/Model/UpdateAdCampaignRequestPlatformSpecificData.md
 docs/Model/UpdateAdCampaignStatus200Response.md
 docs/Model/UpdateAdCampaignStatusRequest.md
-docs/Model/UpdateAdCreative200Response.md
-docs/Model/UpdateAdCreativeRequest.md
 docs/Model/UpdateAdRequest.md
 docs/Model/UpdateAdRequestBudget.md
 docs/Model/UpdateAdRequestCreative.md
@@ -1474,6 +1449,7 @@ docs/Model/WebhookPayloadMessageDeliveryStatus.md
 docs/Model/WebhookPayloadMessageDeliveryStatusError.md
 docs/Model/WebhookPayloadMessageEdited.md
 docs/Model/WebhookPayloadMessageMessage.md
+docs/Model/WebhookPayloadMessageMessageAttachmentsInner.md
 docs/Model/WebhookPayloadMessageMessageSender.md
 docs/Model/WebhookPayloadMessageMessageSenderInstagramProfile.md
 docs/Model/WebhookPayloadMessageMetadata.md
@@ -1485,6 +1461,7 @@ docs/Model/WebhookPayloadMessageMetadataReferredProduct.md
 docs/Model/WebhookPayloadMessageMetadataStoryReply.md
 docs/Model/WebhookPayloadMessageSent.md
 docs/Model/WebhookPayloadMessageSentMessage.md
+docs/Model/WebhookPayloadMessageSentMessageAttachmentsInner.md
 docs/Model/WebhookPayloadMessageSentMessageSender.md
 docs/Model/WebhookPayloadPost.md
 docs/Model/WebhookPayloadPostPlatform.md
@@ -1559,6 +1536,7 @@ lib/Api/GMBReviewsApi.php
 lib/Api/GMBServicesApi.php
 lib/Api/GMBVerificationsApi.php
 lib/Api/InboxAnalyticsApi.php
+lib/Api/InboxApi.php
 lib/Api/InstagramApi.php
 lib/Api/InvitesApi.php
 lib/Api/LinkedInMentionsApi.php
@@ -1730,11 +1708,6 @@ lib/Model/CreateAccountGroup201ResponseGroup.php
 lib/Model/CreateAccountGroupRequest.php
 lib/Model/CreateAdAudience201Response.php
 lib/Model/CreateAdAudienceRequest.php
-lib/Model/CreateAdCampaign201Response.php
-lib/Model/CreateAdCampaignRequest.php
-lib/Model/CreateAdCreative201Response.php
-lib/Model/CreateAdCreativeRequest.php
-lib/Model/CreateAdCreativeRequestCarouselCardsInner.php
 lib/Model/CreateAdInsightsReport202Response.php
 lib/Model/CreateAdInsightsReportRequest.php
 lib/Model/CreateAdInsightsReportRequestFilteringInner.php
@@ -1821,8 +1794,6 @@ lib/Model/CreateSequenceRequest.php
 lib/Model/CreateSequenceRequestStepsInner.php
 lib/Model/CreateSequenceRequestStepsInnerTemplate.php
 lib/Model/CreateSequenceRequestStepsInnerTemplateVariableMappingValue.php
-lib/Model/CreateSmsSenderId200Response.php
-lib/Model/CreateSmsSenderIdRequest.php
 lib/Model/CreateStandaloneAd201Response.php
 lib/Model/CreateStandaloneAd201ResponseOneOf.php
 lib/Model/CreateStandaloneAd201ResponseOneOf1.php
@@ -1889,7 +1860,6 @@ lib/Model/DeactivateSmsRegistration200Response.php
 lib/Model/DeleteAccountGroup200Response.php
 lib/Model/DeleteAdCampaign200Response.php
 lib/Model/DeleteAdCampaignRequest.php
-lib/Model/DeleteAdCreative200Response.php
 lib/Model/DeleteDiscordScheduledEvent200Response.php
 lib/Model/DeleteGoogleBusinessMedia200Response.php
 lib/Model/DeleteGoogleBusinessPlaceAction200Response.php
@@ -1897,7 +1867,6 @@ lib/Model/DeleteGoogleBusinessReviewReply200Response.php
 lib/Model/DeleteInboxComment200Response.php
 lib/Model/DeleteInboxReviewReply200Response.php
 lib/Model/DeleteInboxReviewReplyRequest.php
-lib/Model/DeleteSmsSenderId200Response.php
 lib/Model/DeleteWhatsappBusinessUsernameRequest.php
 lib/Model/DialVoiceWebCall200Response.php
 lib/Model/DialVoiceWebCallRequest.php
@@ -1917,12 +1886,8 @@ lib/Model/DiscordRole.php
 lib/Model/DiscordScheduledEvent.php
 lib/Model/DiscordScheduledEventEntityMetadata.php
 lib/Model/DmButton.php
-lib/Model/DuplicateAd200Response.php
 lib/Model/DuplicateAdCampaign200Response.php
 lib/Model/DuplicateAdCampaignRequest.php
-lib/Model/DuplicateAdRequest.php
-lib/Model/DuplicateAdSet200Response.php
-lib/Model/DuplicateAdSetRequest.php
 lib/Model/DuplicateWorkflow201Response.php
 lib/Model/DuplicateWorkflow201ResponseWorkflow.php
 lib/Model/EditDiscordGuildRoleRequest.php
@@ -1990,7 +1955,6 @@ lib/Model/GetAdAudience200Response.php
 lib/Model/GetAdComments200Response.php
 lib/Model/GetAdComments200ResponseMeta.php
 lib/Model/GetAdComments200ResponsePagination.php
-lib/Model/GetAdCreative200Response.php
 lib/Model/GetAdInsightsReport200Response.php
 lib/Model/GetAdInsightsReport200ResponsePaging.php
 lib/Model/GetAdPreviews200Response.php
@@ -2357,9 +2321,6 @@ lib/Model/ListAdCatalogProductSets200Response.php
 lib/Model/ListAdCatalogProductSets200ResponseProductSetsInner.php
 lib/Model/ListAdCatalogs200Response.php
 lib/Model/ListAdCatalogs200ResponseCatalogsInner.php
-lib/Model/ListAdCreatives200Response.php
-lib/Model/ListAdImages200Response.php
-lib/Model/ListAdLabels200Response.php
 lib/Model/ListAdStudies200Response.php
 lib/Model/ListAds200Response.php
 lib/Model/ListAdsBusinessCenters200Response.php
@@ -2404,7 +2365,6 @@ lib/Model/ListGoogleBusinessMedia200ResponseMediaItemsInner.php
 lib/Model/ListGoogleBusinessMedia200ResponseMediaItemsInnerLocationAssociation.php
 lib/Model/ListGoogleBusinessPlaceActions200Response.php
 lib/Model/ListGoogleBusinessPlaceActions200ResponsePlaceActionLinksInner.php
-lib/Model/ListHighDemandPeriods200Response.php
 lib/Model/ListInboxComments200Response.php
 lib/Model/ListInboxComments200ResponseDataInner.php
 lib/Model/ListInboxConversationAnalytics200Response.php
@@ -2457,10 +2417,6 @@ lib/Model/ListSmsOptOuts200ResponseOptOutsInner.php
 lib/Model/ListSmsRegistrations200Response.php
 lib/Model/ListSmsRegistrations200ResponseRegistrationsInner.php
 lib/Model/ListSmsRegistrations200ResponseRegistrationsInnerThroughput.php
-lib/Model/ListSmsSenderIds200Response.php
-lib/Model/ListSmsSenderIds200ResponseBudget.php
-lib/Model/ListSmsSenderIds200ResponseBudgetPendingRequest.php
-lib/Model/ListSmsSenderIds200ResponseSenderIdsInner.php
 lib/Model/ListSnapchatProfiles200Response.php
 lib/Model/ListSnapchatProfiles200ResponsePublicProfilesInner.php
 lib/Model/ListTrackingTagSharedAccounts200Response.php
@@ -2591,8 +2547,6 @@ lib/Model/ReplyToInboxReview200Response.php
 lib/Model/ReplyToInboxReviewRequest.php
 lib/Model/ReplyToMention200Response.php
 lib/Model/ReplyToMentionRequest.php
-lib/Model/RequestSmsSenderIdLimitIncrease200Response.php
-lib/Model/RequestSmsSenderIdLimitIncreaseRequest.php
 lib/Model/ResendSmsRegistrationOtp200Response.php
 lib/Model/ReserveRfPrediction201Response.php
 lib/Model/ReserveRfPredictionRequest.php
@@ -2799,8 +2753,6 @@ lib/Model/UpdateAdCampaignRequestBudget.php
 lib/Model/UpdateAdCampaignRequestPlatformSpecificData.php
 lib/Model/UpdateAdCampaignStatus200Response.php
 lib/Model/UpdateAdCampaignStatusRequest.php
-lib/Model/UpdateAdCreative200Response.php
-lib/Model/UpdateAdCreativeRequest.php
 lib/Model/UpdateAdRequest.php
 lib/Model/UpdateAdRequestBudget.php
 lib/Model/UpdateAdRequestCreative.php
@@ -3010,6 +2962,7 @@ lib/Model/WebhookPayloadMessageDeliveryStatus.php
 lib/Model/WebhookPayloadMessageDeliveryStatusError.php
 lib/Model/WebhookPayloadMessageEdited.php
 lib/Model/WebhookPayloadMessageMessage.php
+lib/Model/WebhookPayloadMessageMessageAttachmentsInner.php
 lib/Model/WebhookPayloadMessageMessageSender.php
 lib/Model/WebhookPayloadMessageMessageSenderInstagramProfile.php
 lib/Model/WebhookPayloadMessageMetadata.php
@@ -3021,6 +2974,7 @@ lib/Model/WebhookPayloadMessageMetadataReferredProduct.php
 lib/Model/WebhookPayloadMessageMetadataStoryReply.php
 lib/Model/WebhookPayloadMessageSent.php
 lib/Model/WebhookPayloadMessageSentMessage.php
+lib/Model/WebhookPayloadMessageSentMessageAttachmentsInner.php
 lib/Model/WebhookPayloadMessageSentMessageSender.php
 lib/Model/WebhookPayloadPost.php
 lib/Model/WebhookPayloadPostPlatform.php
@@ -3071,3 +3025,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Api/InboxApiTest.php
+test/Model/WebhookPayloadMessageSentMessageAttachmentsInnerTest.php

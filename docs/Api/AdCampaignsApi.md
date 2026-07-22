@@ -7,10 +7,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**bulkUpdateAdCampaignStatus()**](AdCampaignsApi.md#bulkUpdateAdCampaignStatus) | **POST** /v1/ads/campaigns/bulk-status | Pause or resume many campaigns |
-| [**createAdCampaign()**](AdCampaignsApi.md#createAdCampaign) | **POST** /v1/ads/campaigns | Create a standalone campaign (Meta) |
 | [**deleteAdCampaign()**](AdCampaignsApi.md#deleteAdCampaign) | **DELETE** /v1/ads/campaigns/{campaignId} | Delete a campaign |
 | [**duplicateAdCampaign()**](AdCampaignsApi.md#duplicateAdCampaign) | **POST** /v1/ads/campaigns/{campaignId}/duplicate | Duplicate a campaign |
-| [**duplicateAdSet()**](AdCampaignsApi.md#duplicateAdSet) | **POST** /v1/ads/ad-sets/{adSetId}/duplicate | Duplicate an ad set (Meta) |
 | [**getAdSetDetails()**](AdCampaignsApi.md#getAdSetDetails) | **GET** /v1/ads/ad-sets/{adSetId} | Live ad-set details incl. learning phase (Meta) |
 | [**getAdTree()**](AdCampaignsApi.md#getAdTree) | **GET** /v1/ads/tree | Get campaign tree |
 | [**getAdsTimeline()**](AdCampaignsApi.md#getAdsTimeline) | **GET** /v1/ads/timeline | Get daily account metrics |
@@ -67,66 +65,6 @@ try {
 ### Return type
 
 [**\Zernio\Model\BulkUpdateAdCampaignStatus200Response**](../Model/BulkUpdateAdCampaignStatus200Response.md)
-
-### Authorization
-
-[bearerAuth](../../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `createAdCampaign()`
-
-```php
-createAdCampaign($create_ad_campaign_request): \Zernio\Model\CreateAdCampaign201Response
-```
-
-Create a standalone campaign (Meta)
-
-Creates a campaign WITHOUT its first ad set / ad (the ODAX shell only). Ad sets join it later via `existingCampaignId` on the create endpoints. A budget here is campaign-level (CBO) by definition; omit it for ABO (each ad set carries its own budget). Created `PAUSED` unless `status: ACTIVE`. The campaign materializes in `/v1/ads/tree` via the next sync discovery pass. Meta only.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer (JWT) authorization: bearerAuth
-$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Zernio\Api\AdCampaignsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$create_ad_campaign_request = new \Zernio\Model\CreateAdCampaignRequest(); // \Zernio\Model\CreateAdCampaignRequest
-
-try {
-    $result = $apiInstance->createAdCampaign($create_ad_campaign_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AdCampaignsApi->createAdCampaign: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **create_ad_campaign_request** | [**\Zernio\Model\CreateAdCampaignRequest**](../Model/CreateAdCampaignRequest.md)|  | |
-
-### Return type
-
-[**\Zernio\Model\CreateAdCampaign201Response**](../Model/CreateAdCampaign201Response.md)
 
 ### Authorization
 
@@ -251,68 +189,6 @@ try {
 ### Return type
 
 [**\Zernio\Model\DuplicateAdCampaign200Response**](../Model/DuplicateAdCampaign200Response.md)
-
-### Authorization
-
-[bearerAuth](../../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `duplicateAdSet()`
-
-```php
-duplicateAdSet($ad_set_id, $duplicate_ad_set_request): \Zernio\Model\DuplicateAdSet200Response
-```
-
-Duplicate an ad set (Meta)
-
-Duplicates an ad set, including its ads and creatives by default (`deepCopy: true`), via Meta's native `POST /{adset-id}/copies`. The copy is created paused so callers can review before launching. `campaignId` retargets the copy into another campaign; omitted = the source's own campaign. The new hierarchy materializes asynchronously — sync discovery is triggered automatically (`syncAfter: false` to skip). Meta only.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer (JWT) authorization: bearerAuth
-$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Zernio\Api\AdCampaignsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$ad_set_id = 'ad_set_id_example'; // string | Source platform ad set ID
-$duplicate_ad_set_request = new \Zernio\Model\DuplicateAdSetRequest(); // \Zernio\Model\DuplicateAdSetRequest
-
-try {
-    $result = $apiInstance->duplicateAdSet($ad_set_id, $duplicate_ad_set_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AdCampaignsApi->duplicateAdSet: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **ad_set_id** | **string**| Source platform ad set ID | |
-| **duplicate_ad_set_request** | [**\Zernio\Model\DuplicateAdSetRequest**](../Model/DuplicateAdSetRequest.md)|  | |
-
-### Return type
-
-[**\Zernio\Model\DuplicateAdSet200Response**](../Model/DuplicateAdSet200Response.md)
 
 ### Authorization
 

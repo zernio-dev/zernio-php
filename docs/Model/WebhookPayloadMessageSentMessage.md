@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **platform_message_id** | **string** | Platform&#39;s message ID |
 **direction** | **string** |  |
 **text** | **string** | Message text content |
-**attachments** | [**\Zernio\Model\InboxWebhookMessageAttachmentsInner[]**](InboxWebhookMessageAttachmentsInner.md) |  |
+**attachments** | [**\Zernio\Model\WebhookPayloadMessageSentMessageAttachmentsInner[]**](WebhookPayloadMessageSentMessageAttachmentsInner.md) |  |
 **sender** | [**\Zernio\Model\WebhookPayloadMessageSentMessageSender**](WebhookPayloadMessageSentMessageSender.md) |  |
 **sent_at** | **\DateTime** |  |
 **is_read** | **bool** |  |

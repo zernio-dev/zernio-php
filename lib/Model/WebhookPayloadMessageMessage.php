@@ -64,7 +64,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
         'platform_message_id' => 'string',
         'direction' => 'string',
         'text' => 'string',
-        'attachments' => '\Zernio\Model\InboxWebhookMessageAttachmentsInner[]',
+        'attachments' => '\Zernio\Model\WebhookPayloadMessageMessageAttachmentsInner[]',
         'sender' => '\Zernio\Model\WebhookPayloadMessageMessageSender',
         'sent_at' => '\DateTime',
         'is_read' => 'bool'
@@ -627,7 +627,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets attachments
      *
-     * @return \Zernio\Model\InboxWebhookMessageAttachmentsInner[]
+     * @return \Zernio\Model\WebhookPayloadMessageMessageAttachmentsInner[]
      */
     public function getAttachments()
     {
@@ -637,7 +637,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets attachments
      *
-     * @param \Zernio\Model\InboxWebhookMessageAttachmentsInner[] $attachments attachments
+     * @param \Zernio\Model\WebhookPayloadMessageMessageAttachmentsInner[] $attachments attachments
      *
      * @return self
      */

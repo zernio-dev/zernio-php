@@ -1686,7 +1686,7 @@ class AdAudiencesApi
     /**
      * Operation updateAdAudience
      *
-     * Update an audience
+     * Update saved targeting audience
      *
      * @param  string $audience_id audience_id (required)
      * @param  \Zernio\Model\UpdateAdAudienceRequest $update_ad_audience_request update_ad_audience_request (required)
@@ -1705,7 +1705,7 @@ class AdAudiencesApi
     /**
      * Operation updateAdAudienceWithHttpInfo
      *
-     * Update an audience
+     * Update saved targeting audience
      *
      * @param  string $audience_id (required)
      * @param  \Zernio\Model\UpdateAdAudienceRequest $update_ad_audience_request (required)
@@ -1819,7 +1819,7 @@ class AdAudiencesApi
     /**
      * Operation updateAdAudienceAsync
      *
-     * Update an audience
+     * Update saved targeting audience
      *
      * @param  string $audience_id (required)
      * @param  \Zernio\Model\UpdateAdAudienceRequest $update_ad_audience_request (required)
@@ -1841,7 +1841,7 @@ class AdAudiencesApi
     /**
      * Operation updateAdAudienceAsyncWithHttpInfo
      *
-     * Update an audience
+     * Update saved targeting audience
      *
      * @param  string $audience_id (required)
      * @param  \Zernio\Model\UpdateAdAudienceRequest $update_ad_audience_request (required)

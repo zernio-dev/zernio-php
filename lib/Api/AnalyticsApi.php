@@ -3547,7 +3547,7 @@ class AnalyticsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\InstagramAccountInsightsResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\GetYouTubeDailyViews403Response|\Zernio\Model\GetInstagramAccountInsights404Response
+     * @return \Zernio\Model\InstagramAccountInsightsResponse|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\GetYouTubeDailyViews403Response|\Zernio\Model\GetInstagramAccountInsights404Response
      */
     public function getInstagramAccountInsights($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', $breakdown = null, string $contentType = self::contentTypes['getInstagramAccountInsights'][0])
     {
@@ -3570,7 +3570,7 @@ class AnalyticsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\InstagramAccountInsightsResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\GetYouTubeDailyViews403Response|\Zernio\Model\GetInstagramAccountInsights404Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\InstagramAccountInsightsResponse|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\GetYouTubeDailyViews403Response|\Zernio\Model\GetInstagramAccountInsights404Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInstagramAccountInsightsWithHttpInfo($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', $breakdown = null, string $contentType = self::contentTypes['getInstagramAccountInsights'][0])
     {
@@ -3608,7 +3608,7 @@ class AnalyticsApi
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\ErrorResponse',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $request,
                         $response,
                     );
@@ -3671,7 +3671,7 @@ class AnalyticsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\ErrorResponse',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
