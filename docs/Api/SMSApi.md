@@ -7,13 +7,17 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**appealSmsRegistration()**](SMSApi.md#appealSmsRegistration) | **POST** /v1/sms/registrations/{id}/appeal | Appeal a rejected campaign |
+| [**createSmsSenderId()**](SMSApi.md#createSmsSenderId) | **POST** /v1/sms/sender-ids | Create an alphanumeric sender ID |
 | [**deactivateSmsRegistration()**](SMSApi.md#deactivateSmsRegistration) | **DELETE** /v1/sms/registrations/{id} | Deactivate a brand/campaign registration |
+| [**deleteSmsSenderId()**](SMSApi.md#deleteSmsSenderId) | **DELETE** /v1/sms/sender-ids/{id} | Delete an alphanumeric sender ID |
 | [**disableSmsOnNumber()**](SMSApi.md#disableSmsOnNumber) | **DELETE** /v1/phone-numbers/{id}/sms | Disable SMS on a number |
 | [**enableSmsOnNumber()**](SMSApi.md#enableSmsOnNumber) | **POST** /v1/phone-numbers/{id}/sms | Enable SMS on a number |
 | [**getSmsRegistration()**](SMSApi.md#getSmsRegistration) | **GET** /v1/sms/registrations/{id} | Get a carrier registration |
 | [**listSmsOptOuts()**](SMSApi.md#listSmsOptOuts) | **GET** /v1/sms/opt-outs | List SMS opt-outs |
 | [**listSmsRegistrations()**](SMSApi.md#listSmsRegistrations) | **GET** /v1/sms/registrations | List carrier registrations |
+| [**listSmsSenderIds()**](SMSApi.md#listSmsSenderIds) | **GET** /v1/sms/sender-ids | List alphanumeric sender IDs |
 | [**lookupSmsNumber()**](SMSApi.md#lookupSmsNumber) | **GET** /v1/sms/lookup | Look up carrier + line type |
+| [**requestSmsSenderIdLimitIncrease()**](SMSApi.md#requestSmsSenderIdLimitIncrease) | **POST** /v1/sms/sender-ids/limit-request | Request a higher sender ID daily limit |
 | [**resendSmsRegistrationOtp()**](SMSApi.md#resendSmsRegistrationOtp) | **POST** /v1/sms/registrations/{id}/resend-otp | Re-send the sole-prop OTP |
 | [**reuseSmsRegistrationForNumber()**](SMSApi.md#reuseSmsRegistrationForNumber) | **POST** /v1/phone-numbers/{id}/sms/reuse-registration | Add number to SMS registration |
 | [**sendSms()**](SMSApi.md#sendSms) | **POST** /v1/sms/messages | Send an SMS/MMS |
@@ -86,6 +90,66 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createSmsSenderId()`
+
+```php
+createSmsSenderId($create_sms_sender_id_request): \Zernio\Model\CreateSmsSenderId200Response
+```
+
+Create an alphanumeric sender ID
+
+Registers an alphanumeric sender ID (e.g. `ZERNIO`) — a branded `from` for one-way international SMS. No phone number purchase or carrier registration is needed; once created, pass it as `from` on `POST /v1/sms/messages`.  Constraints: 3-11 characters (letters, digits, spaces; at least one letter). Sends cannot reach the US, Canada, or Puerto Rico, are text-only, and recipients cannot reply. Sender IDs that impersonate well-known brands or institutions are rejected, and an ID already registered by another workspace returns 409 (active sender IDs are globally unique, first-come-first-served). Creating the same sender ID again is a no-op (re-activates it after a delete).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\SMSApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_sms_sender_id_request = new \Zernio\Model\CreateSmsSenderIdRequest(); // \Zernio\Model\CreateSmsSenderIdRequest
+
+try {
+    $result = $apiInstance->createSmsSenderId($create_sms_sender_id_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SMSApi->createSmsSenderId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_sms_sender_id_request** | [**\Zernio\Model\CreateSmsSenderIdRequest**](../Model/CreateSmsSenderIdRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateSmsSenderId200Response**](../Model/CreateSmsSenderId200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deactivateSmsRegistration()`
 
 ```php
@@ -132,6 +196,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\DeactivateSmsRegistration200Response**](../Model/DeactivateSmsRegistration200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteSmsSenderId()`
+
+```php
+deleteSmsSenderId($id): \Zernio\Model\DeleteSmsSenderId200Response
+```
+
+Delete an alphanumeric sender ID
+
+Deactivates the sender ID so it can no longer send. Re-creating the same sender ID via `POST /v1/sms/sender-ids` re-activates it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\SMSApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | Sender ID resource id.
+
+try {
+    $result = $apiInstance->deleteSmsSenderId($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SMSApi->deleteSmsSenderId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| Sender ID resource id. | |
+
+### Return type
+
+[**\Zernio\Model\DeleteSmsSenderId200Response**](../Model/DeleteSmsSenderId200Response.md)
 
 ### Authorization
 
@@ -446,6 +570,61 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listSmsSenderIds()`
+
+```php
+listSmsSenderIds(): \Zernio\Model\ListSmsSenderIds200Response
+```
+
+List alphanumeric sender IDs
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\SMSApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listSmsSenderIds();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SMSApi->listSmsSenderIds: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Zernio\Model\ListSmsSenderIds200Response**](../Model/ListSmsSenderIds200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `lookupSmsNumber()`
 
 ```php
@@ -500,6 +679,66 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `requestSmsSenderIdLimitIncrease()`
+
+```php
+requestSmsSenderIdLimitIncrease($request_sms_sender_id_limit_increase_request): \Zernio\Model\RequestSmsSenderIdLimitIncrease200Response
+```
+
+Request a higher sender ID daily limit
+
+Asks support to raise the workspace's daily sender-ID message cap. There is no self-serve raise: the request (desired cap + use case) is reviewed manually, usually within a business day.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\SMSApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$request_sms_sender_id_limit_increase_request = new \Zernio\Model\RequestSmsSenderIdLimitIncreaseRequest(); // \Zernio\Model\RequestSmsSenderIdLimitIncreaseRequest
+
+try {
+    $result = $apiInstance->requestSmsSenderIdLimitIncrease($request_sms_sender_id_limit_increase_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SMSApi->requestSmsSenderIdLimitIncrease: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **request_sms_sender_id_limit_increase_request** | [**\Zernio\Model\RequestSmsSenderIdLimitIncreaseRequest**](../Model/RequestSmsSenderIdLimitIncreaseRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\RequestSmsSenderIdLimitIncrease200Response**](../Model/RequestSmsSenderIdLimitIncrease200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

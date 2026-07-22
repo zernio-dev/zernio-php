@@ -1,6 +1,6 @@
 <?php
 /**
- * ListDiscordGuildMembers200Response
+ * DiscordGuildMemberUser
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ListDiscordGuildMembers200Response Class Doc Comment
+ * DiscordGuildMemberUser Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class DiscordGuildMemberUser implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'listDiscordGuildMembers_200_response';
+    protected static $openAPIModelName = 'DiscordGuildMember_user';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,11 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\Zernio\Model\DiscordGuildMember[]',
-        'pagination' => '\Zernio\Model\ListDiscordGuildMembers200ResponsePagination'
+        'id' => 'string',
+        'username' => 'string',
+        'discriminator' => 'string',
+        'avatar' => 'string',
+        'global_name' => 'string'
     ];
 
     /**
@@ -70,8 +73,11 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'pagination' => null
+        'id' => null,
+        'username' => null,
+        'discriminator' => null,
+        'avatar' => null,
+        'global_name' => null
     ];
 
     /**
@@ -80,8 +86,11 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false,
-        'pagination' => false
+        'id' => false,
+        'username' => false,
+        'discriminator' => false,
+        'avatar' => true,
+        'global_name' => true
     ];
 
     /**
@@ -170,8 +179,11 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'pagination' => 'pagination'
+        'id' => 'id',
+        'username' => 'username',
+        'discriminator' => 'discriminator',
+        'avatar' => 'avatar',
+        'global_name' => 'global_name'
     ];
 
     /**
@@ -180,8 +192,11 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'pagination' => 'setPagination'
+        'id' => 'setId',
+        'username' => 'setUsername',
+        'discriminator' => 'setDiscriminator',
+        'avatar' => 'setAvatar',
+        'global_name' => 'setGlobalName'
     ];
 
     /**
@@ -190,8 +205,11 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'pagination' => 'getPagination'
+        'id' => 'getId',
+        'username' => 'getUsername',
+        'discriminator' => 'getDiscriminator',
+        'avatar' => 'getAvatar',
+        'global_name' => 'getGlobalName'
     ];
 
     /**
@@ -251,8 +269,11 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('pagination', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('username', $data ?? [], null);
+        $this->setIfExists('discriminator', $data ?? [], null);
+        $this->setIfExists('avatar', $data ?? [], null);
+        $this->setIfExists('global_name', $data ?? [], null);
     }
 
     /**
@@ -298,55 +319,150 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets data
+     * Gets id
      *
-     * @return \Zernio\Model\DiscordGuildMember[]|null
+     * @return string|null
      */
-    public function getData()
+    public function getId()
     {
-        return $this->container['data'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets data
+     * Sets id
      *
-     * @param \Zernio\Model\DiscordGuildMember[]|null $data data
+     * @param string|null $id User snowflake
      *
      * @return self
      */
-    public function setData($data)
+    public function setId($id)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets pagination
+     * Gets username
      *
-     * @return \Zernio\Model\ListDiscordGuildMembers200ResponsePagination|null
+     * @return string|null
      */
-    public function getPagination()
+    public function getUsername()
     {
-        return $this->container['pagination'];
+        return $this->container['username'];
     }
 
     /**
-     * Sets pagination
+     * Sets username
      *
-     * @param \Zernio\Model\ListDiscordGuildMembers200ResponsePagination|null $pagination pagination
+     * @param string|null $username username
      *
      * @return self
      */
-    public function setPagination($pagination)
+    public function setUsername($username)
     {
-        if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+        if (is_null($username)) {
+            throw new \InvalidArgumentException('non-nullable username cannot be null');
         }
-        $this->container['pagination'] = $pagination;
+        $this->container['username'] = $username;
+
+        return $this;
+    }
+
+    /**
+     * Gets discriminator
+     *
+     * @return string|null
+     */
+    public function getDiscriminator()
+    {
+        return $this->container['discriminator'];
+    }
+
+    /**
+     * Sets discriminator
+     *
+     * @param string|null $discriminator discriminator
+     *
+     * @return self
+     */
+    public function setDiscriminator($discriminator)
+    {
+        if (is_null($discriminator)) {
+            throw new \InvalidArgumentException('non-nullable discriminator cannot be null');
+        }
+        $this->container['discriminator'] = $discriminator;
+
+        return $this;
+    }
+
+    /**
+     * Gets avatar
+     *
+     * @return string|null
+     */
+    public function getAvatar()
+    {
+        return $this->container['avatar'];
+    }
+
+    /**
+     * Sets avatar
+     *
+     * @param string|null $avatar avatar
+     *
+     * @return self
+     */
+    public function setAvatar($avatar)
+    {
+        if (is_null($avatar)) {
+            array_push($this->openAPINullablesSetToNull, 'avatar');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('avatar', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['avatar'] = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * Gets global_name
+     *
+     * @return string|null
+     */
+    public function getGlobalName()
+    {
+        return $this->container['global_name'];
+    }
+
+    /**
+     * Sets global_name
+     *
+     * @param string|null $global_name User's display name (post-2023 Discord rebrand)
+     *
+     * @return self
+     */
+    public function setGlobalName($global_name)
+    {
+        if (is_null($global_name)) {
+            array_push($this->openAPINullablesSetToNull, 'global_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('global_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['global_name'] = $global_name;
 
         return $this;
     }

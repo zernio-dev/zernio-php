@@ -1,6 +1,6 @@
 <?php
 /**
- * ListDiscordGuildMembers200Response
+ * CreateStandaloneAd200ResponseResultsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ListDiscordGuildMembers200Response Class Doc Comment
+ * CreateStandaloneAd200ResponseResultsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'listDiscordGuildMembers_200_response';
+    protected static $openAPIModelName = 'createStandaloneAd_200_response_results_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,9 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\Zernio\Model\DiscordGuildMember[]',
-        'pagination' => '\Zernio\Model\ListDiscordGuildMembers200ResponsePagination'
+        'node' => 'string',
+        'status' => 'string',
+        'reason' => 'string'
     ];
 
     /**
@@ -70,8 +71,9 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'pagination' => null
+        'node' => null,
+        'status' => null,
+        'reason' => null
     ];
 
     /**
@@ -80,8 +82,9 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false,
-        'pagination' => false
+        'node' => false,
+        'status' => false,
+        'reason' => false
     ];
 
     /**
@@ -170,8 +173,9 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'pagination' => 'pagination'
+        'node' => 'node',
+        'status' => 'status',
+        'reason' => 'reason'
     ];
 
     /**
@@ -180,8 +184,9 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'pagination' => 'setPagination'
+        'node' => 'setNode',
+        'status' => 'setStatus',
+        'reason' => 'setReason'
     ];
 
     /**
@@ -190,8 +195,9 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'pagination' => 'getPagination'
+        'node' => 'getNode',
+        'status' => 'getStatus',
+        'reason' => 'getReason'
     ];
 
     /**
@@ -235,6 +241,40 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
+    public const NODE_CAMPAIGN = 'campaign';
+    public const NODE_AD_SET = 'adSet';
+    public const NODE_CREATIVE = 'creative';
+    public const NODE_AD = 'ad';
+    public const STATUS_VALIDATED = 'validated';
+    public const STATUS_SKIPPED = 'skipped';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getNodeAllowableValues()
+    {
+        return [
+            self::NODE_CAMPAIGN,
+            self::NODE_AD_SET,
+            self::NODE_CREATIVE,
+            self::NODE_AD,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_VALIDATED,
+            self::STATUS_SKIPPED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -251,8 +291,9 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('pagination', $data ?? [], null);
+        $this->setIfExists('node', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('reason', $data ?? [], null);
     }
 
     /**
@@ -282,6 +323,24 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getNodeAllowableValues();
+        if (!is_null($this->container['node']) && !in_array($this->container['node'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'node', must be one of '%s'",
+                $this->container['node'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -298,55 +357,102 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets data
+     * Gets node
      *
-     * @return \Zernio\Model\DiscordGuildMember[]|null
+     * @return string|null
      */
-    public function getData()
+    public function getNode()
     {
-        return $this->container['data'];
+        return $this->container['node'];
     }
 
     /**
-     * Sets data
+     * Sets node
      *
-     * @param \Zernio\Model\DiscordGuildMember[]|null $data data
+     * @param string|null $node node
      *
      * @return self
      */
-    public function setData($data)
+    public function setNode($node)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($node)) {
+            throw new \InvalidArgumentException('non-nullable node cannot be null');
         }
-        $this->container['data'] = $data;
+        $allowedValues = $this->getNodeAllowableValues();
+        if (!in_array($node, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'node', must be one of '%s'",
+                    $node,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['node'] = $node;
 
         return $this;
     }
 
     /**
-     * Gets pagination
+     * Gets status
      *
-     * @return \Zernio\Model\ListDiscordGuildMembers200ResponsePagination|null
+     * @return string|null
      */
-    public function getPagination()
+    public function getStatus()
     {
-        return $this->container['pagination'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets pagination
+     * Sets status
      *
-     * @param \Zernio\Model\ListDiscordGuildMembers200ResponsePagination|null $pagination pagination
+     * @param string|null $status status
      *
      * @return self
      */
-    public function setPagination($pagination)
+    public function setStatus($status)
     {
-        if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['pagination'] = $pagination;
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets reason
+     *
+     * @return string|null
+     */
+    public function getReason()
+    {
+        return $this->container['reason'];
+    }
+
+    /**
+     * Sets reason
+     *
+     * @param string|null $reason Why the node could not be validated (only on skipped).
+     *
+     * @return self
+     */
+    public function setReason($reason)
+    {
+        if (is_null($reason)) {
+            throw new \InvalidArgumentException('non-nullable reason cannot be null');
+        }
+        $this->container['reason'] = $reason;
 
         return $this;
     }

@@ -70,6 +70,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'billing_event' => 'string',
         'buying_type' => 'string',
         'rf_prediction_id' => 'string',
+        'creative_features' => 'array<string,string>',
+        'validate_only' => 'bool',
         'budget_amount' => 'float',
         'budget_type' => 'string',
         'status' => 'string',
@@ -154,6 +156,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'billing_event' => null,
         'buying_type' => null,
         'rf_prediction_id' => null,
+        'creative_features' => null,
+        'validate_only' => null,
         'budget_amount' => null,
         'budget_type' => null,
         'status' => null,
@@ -236,6 +240,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'billing_event' => false,
         'buying_type' => false,
         'rf_prediction_id' => false,
+        'creative_features' => false,
+        'validate_only' => false,
         'budget_amount' => false,
         'budget_type' => false,
         'status' => false,
@@ -398,6 +404,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'billing_event' => 'billingEvent',
         'buying_type' => 'buyingType',
         'rf_prediction_id' => 'rfPredictionId',
+        'creative_features' => 'creativeFeatures',
+        'validate_only' => 'validateOnly',
         'budget_amount' => 'budgetAmount',
         'budget_type' => 'budgetType',
         'status' => 'status',
@@ -480,6 +488,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'billing_event' => 'setBillingEvent',
         'buying_type' => 'setBuyingType',
         'rf_prediction_id' => 'setRfPredictionId',
+        'creative_features' => 'setCreativeFeatures',
+        'validate_only' => 'setValidateOnly',
         'budget_amount' => 'setBudgetAmount',
         'budget_type' => 'setBudgetType',
         'status' => 'setStatus',
@@ -562,6 +572,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'billing_event' => 'getBillingEvent',
         'buying_type' => 'getBuyingType',
         'rf_prediction_id' => 'getRfPredictionId',
+        'creative_features' => 'getCreativeFeatures',
+        'validate_only' => 'getValidateOnly',
         'budget_amount' => 'getBudgetAmount',
         'budget_type' => 'getBudgetType',
         'status' => 'getStatus',
@@ -679,6 +691,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     public const GOAL_JOB_APPLICANTS = 'job_applicants';
     public const BUYING_TYPE_AUCTION = 'AUCTION';
     public const BUYING_TYPE_RESERVED = 'RESERVED';
+    public const CREATIVE_FEATURES_OPT_IN = 'OPT_IN';
+    public const CREATIVE_FEATURES_OPT_OUT = 'OPT_OUT';
     public const BUDGET_TYPE_DAILY = 'daily';
     public const BUDGET_TYPE_LIFETIME = 'lifetime';
     public const STATUS_ACTIVE = 'ACTIVE';
@@ -770,6 +784,19 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         return [
             self::BUYING_TYPE_AUCTION,
             self::BUYING_TYPE_RESERVED,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCreativeFeaturesAllowableValues()
+    {
+        return [
+            self::CREATIVE_FEATURES_OPT_IN,
+            self::CREATIVE_FEATURES_OPT_OUT,
         ];
     }
 
@@ -969,6 +996,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('billing_event', $data ?? [], null);
         $this->setIfExists('buying_type', $data ?? [], null);
         $this->setIfExists('rf_prediction_id', $data ?? [], null);
+        $this->setIfExists('creative_features', $data ?? [], null);
+        $this->setIfExists('validate_only', $data ?? [], null);
         $this->setIfExists('budget_amount', $data ?? [], null);
         $this->setIfExists('budget_type', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
@@ -1611,6 +1640,69 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable rf_prediction_id cannot be null');
         }
         $this->container['rf_prediction_id'] = $rf_prediction_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets creative_features
+     *
+     * @return array<string,string>|null
+     */
+    public function getCreativeFeatures()
+    {
+        return $this->container['creative_features'];
+    }
+
+    /**
+     * Sets creative_features
+     *
+     * @param array<string,string>|null $creative_features Meta only. Advantage+ creative enhancements: a partial map of Meta creative feature keys (snake_case, e.g. enhance_cta, image_brightness_and_contrast, text_optimizations) to enroll status, forwarded as degrees_of_freedom_spec.creative_features_spec. Meta validates the keys; unspecified features default to OPT_OUT. The legacy standard_enhancements bundle is deprecated by Meta and rejected.
+     *
+     * @return self
+     */
+    public function setCreativeFeatures($creative_features)
+    {
+        if (is_null($creative_features)) {
+            throw new \InvalidArgumentException('non-nullable creative_features cannot be null');
+        }
+        $allowedValues = $this->getCreativeFeaturesAllowableValues();
+        if (array_diff($creative_features, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'creative_features', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['creative_features'] = $creative_features;
+
+        return $this;
+    }
+
+    /**
+     * Gets validate_only
+     *
+     * @return bool|null
+     */
+    public function getValidateOnly()
+    {
+        return $this->container['validate_only'];
+    }
+
+    /**
+     * Sets validate_only
+     *
+     * @param bool|null $validate_only Meta only, single standalone shape only (no creatives[], adSetId, or RESERVED). Dry-run: each node runs Meta's execution_options validate_only and NOTHING is created or persisted. Children need real parents, so a fresh tree validates the campaign + creative (the ad set needs its campaign to exist — pass existingCampaignId to validate it too; the ad itself is never validatable pre-create). A Meta validation failure returns the 400 verbatim; success returns 200 with per-node results instead of an ad.
+     *
+     * @return self
+     */
+    public function setValidateOnly($validate_only)
+    {
+        if (is_null($validate_only)) {
+            throw new \InvalidArgumentException('non-nullable validate_only cannot be null');
+        }
+        $this->container['validate_only'] = $validate_only;
 
         return $this;
     }

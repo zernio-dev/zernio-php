@@ -68,7 +68,8 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'image_url' => 'string',
         'image_hash' => 'string',
         'carousel_cards' => '\Zernio\Model\CreateAdCreativeRequestCarouselCardsInner[]',
-        'url_tags' => 'string'
+        'url_tags' => 'string',
+        'creative_features' => 'array<string,string>'
     ];
 
     /**
@@ -89,7 +90,8 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'image_url' => 'uri',
         'image_hash' => null,
         'carousel_cards' => null,
-        'url_tags' => null
+        'url_tags' => null,
+        'creative_features' => null
     ];
 
     /**
@@ -108,7 +110,8 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'image_url' => false,
         'image_hash' => false,
         'carousel_cards' => false,
-        'url_tags' => false
+        'url_tags' => false,
+        'creative_features' => false
     ];
 
     /**
@@ -207,7 +210,8 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'image_url' => 'imageUrl',
         'image_hash' => 'imageHash',
         'carousel_cards' => 'carouselCards',
-        'url_tags' => 'urlTags'
+        'url_tags' => 'urlTags',
+        'creative_features' => 'creativeFeatures'
     ];
 
     /**
@@ -226,7 +230,8 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'image_url' => 'setImageUrl',
         'image_hash' => 'setImageHash',
         'carousel_cards' => 'setCarouselCards',
-        'url_tags' => 'setUrlTags'
+        'url_tags' => 'setUrlTags',
+        'creative_features' => 'setCreativeFeatures'
     ];
 
     /**
@@ -245,7 +250,8 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'image_url' => 'getImageUrl',
         'image_hash' => 'getImageHash',
         'carousel_cards' => 'getCarouselCards',
-        'url_tags' => 'getUrlTags'
+        'url_tags' => 'getUrlTags',
+        'creative_features' => 'getCreativeFeatures'
     ];
 
     /**
@@ -289,6 +295,21 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
+    public const CREATIVE_FEATURES_OPT_IN = 'OPT_IN';
+    public const CREATIVE_FEATURES_OPT_OUT = 'OPT_OUT';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCreativeFeaturesAllowableValues()
+    {
+        return [
+            self::CREATIVE_FEATURES_OPT_IN,
+            self::CREATIVE_FEATURES_OPT_OUT,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -316,6 +337,7 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('image_hash', $data ?? [], null);
         $this->setIfExists('carousel_cards', $data ?? [], null);
         $this->setIfExists('url_tags', $data ?? [], null);
+        $this->setIfExists('creative_features', $data ?? [], null);
     }
 
     /**
@@ -699,6 +721,42 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable url_tags cannot be null');
         }
         $this->container['url_tags'] = $url_tags;
+
+        return $this;
+    }
+
+    /**
+     * Gets creative_features
+     *
+     * @return array<string,string>|null
+     */
+    public function getCreativeFeatures()
+    {
+        return $this->container['creative_features'];
+    }
+
+    /**
+     * Sets creative_features
+     *
+     * @param array<string,string>|null $creative_features Advantage+ creative enhancements: partial map of Meta creative feature keys (snake_case) to enroll status, forwarded as degrees_of_freedom_spec.creative_features_spec. Unspecified features default to OPT_OUT.
+     *
+     * @return self
+     */
+    public function setCreativeFeatures($creative_features)
+    {
+        if (is_null($creative_features)) {
+            throw new \InvalidArgumentException('non-nullable creative_features cannot be null');
+        }
+        $allowedValues = $this->getCreativeFeaturesAllowableValues();
+        if (array_diff($creative_features, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'creative_features', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['creative_features'] = $creative_features;
 
         return $this;
     }

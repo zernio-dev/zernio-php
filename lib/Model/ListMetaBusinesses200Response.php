@@ -1,6 +1,6 @@
 <?php
 /**
- * ListDiscordGuildMembers200Response
+ * ListMetaBusinesses200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ListDiscordGuildMembers200Response Class Doc Comment
+ * ListMetaBusinesses200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListMetaBusinesses200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'listDiscordGuildMembers_200_response';
+    protected static $openAPIModelName = 'listMetaBusinesses_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\Zernio\Model\DiscordGuildMember[]',
-        'pagination' => '\Zernio\Model\ListDiscordGuildMembers200ResponsePagination'
+        'data' => 'object[]',
+        'paging' => '\Zernio\Model\QueryAdInsights200ResponsePaging'
     ];
 
     /**
@@ -71,7 +71,7 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
       */
     protected static $openAPIFormats = [
         'data' => null,
-        'pagination' => null
+        'paging' => null
     ];
 
     /**
@@ -81,7 +81,7 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
       */
     protected static array $openAPINullables = [
         'data' => false,
-        'pagination' => false
+        'paging' => false
     ];
 
     /**
@@ -171,7 +171,7 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
      */
     protected static $attributeMap = [
         'data' => 'data',
-        'pagination' => 'pagination'
+        'paging' => 'paging'
     ];
 
     /**
@@ -181,7 +181,7 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
      */
     protected static $setters = [
         'data' => 'setData',
-        'pagination' => 'setPagination'
+        'paging' => 'setPaging'
     ];
 
     /**
@@ -191,7 +191,7 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
      */
     protected static $getters = [
         'data' => 'getData',
-        'pagination' => 'getPagination'
+        'paging' => 'getPaging'
     ];
 
     /**
@@ -252,7 +252,7 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
     public function __construct(?array $data = null)
     {
         $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('pagination', $data ?? [], null);
+        $this->setIfExists('paging', $data ?? [], null);
     }
 
     /**
@@ -300,7 +300,7 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
     /**
      * Gets data
      *
-     * @return \Zernio\Model\DiscordGuildMember[]|null
+     * @return object[]|null
      */
     public function getData()
     {
@@ -310,7 +310,7 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
     /**
      * Sets data
      *
-     * @param \Zernio\Model\DiscordGuildMember[]|null $data data
+     * @param object[]|null $data data
      *
      * @return self
      */
@@ -325,28 +325,28 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Gets pagination
+     * Gets paging
      *
-     * @return \Zernio\Model\ListDiscordGuildMembers200ResponsePagination|null
+     * @return \Zernio\Model\QueryAdInsights200ResponsePaging|null
      */
-    public function getPagination()
+    public function getPaging()
     {
-        return $this->container['pagination'];
+        return $this->container['paging'];
     }
 
     /**
-     * Sets pagination
+     * Sets paging
      *
-     * @param \Zernio\Model\ListDiscordGuildMembers200ResponsePagination|null $pagination pagination
+     * @param \Zernio\Model\QueryAdInsights200ResponsePaging|null $paging paging
      *
      * @return self
      */
-    public function setPagination($pagination)
+    public function setPaging($paging)
     {
-        if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+        if (is_null($paging)) {
+            throw new \InvalidArgumentException('non-nullable paging cannot be null');
         }
-        $this->container['pagination'] = $pagination;
+        $this->container['paging'] = $paging;
 
         return $this;
     }

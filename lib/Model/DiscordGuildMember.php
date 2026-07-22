@@ -1,6 +1,6 @@
 <?php
 /**
- * ListDiscordGuildMembers200Response
+ * DiscordGuildMember
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ListDiscordGuildMembers200Response Class Doc Comment
+ * DiscordGuildMember Class Doc Comment
  *
  * @category Class
+ * @description A Discord guild member, returned verbatim from Discord&#39;s API.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class DiscordGuildMember implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'listDiscordGuildMembers_200_response';
+    protected static $openAPIModelName = 'DiscordGuildMember';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,11 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\Zernio\Model\DiscordGuildMember[]',
-        'pagination' => '\Zernio\Model\ListDiscordGuildMembers200ResponsePagination'
+        'user' => '\Zernio\Model\DiscordGuildMemberUser',
+        'nick' => 'string',
+        'roles' => 'string[]',
+        'joined_at' => '\DateTime',
+        'premium_since' => '\DateTime'
     ];
 
     /**
@@ -70,8 +74,11 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'pagination' => null
+        'user' => null,
+        'nick' => null,
+        'roles' => null,
+        'joined_at' => 'date-time',
+        'premium_since' => 'date-time'
     ];
 
     /**
@@ -80,8 +87,11 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false,
-        'pagination' => false
+        'user' => false,
+        'nick' => true,
+        'roles' => false,
+        'joined_at' => false,
+        'premium_since' => true
     ];
 
     /**
@@ -170,8 +180,11 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'pagination' => 'pagination'
+        'user' => 'user',
+        'nick' => 'nick',
+        'roles' => 'roles',
+        'joined_at' => 'joined_at',
+        'premium_since' => 'premium_since'
     ];
 
     /**
@@ -180,8 +193,11 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'pagination' => 'setPagination'
+        'user' => 'setUser',
+        'nick' => 'setNick',
+        'roles' => 'setRoles',
+        'joined_at' => 'setJoinedAt',
+        'premium_since' => 'setPremiumSince'
     ];
 
     /**
@@ -190,8 +206,11 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'pagination' => 'getPagination'
+        'user' => 'getUser',
+        'nick' => 'getNick',
+        'roles' => 'getRoles',
+        'joined_at' => 'getJoinedAt',
+        'premium_since' => 'getPremiumSince'
     ];
 
     /**
@@ -251,8 +270,11 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('pagination', $data ?? [], null);
+        $this->setIfExists('user', $data ?? [], null);
+        $this->setIfExists('nick', $data ?? [], null);
+        $this->setIfExists('roles', $data ?? [], null);
+        $this->setIfExists('joined_at', $data ?? [], null);
+        $this->setIfExists('premium_since', $data ?? [], null);
     }
 
     /**
@@ -298,55 +320,150 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets data
+     * Gets user
      *
-     * @return \Zernio\Model\DiscordGuildMember[]|null
+     * @return \Zernio\Model\DiscordGuildMemberUser|null
      */
-    public function getData()
+    public function getUser()
     {
-        return $this->container['data'];
+        return $this->container['user'];
     }
 
     /**
-     * Sets data
+     * Sets user
      *
-     * @param \Zernio\Model\DiscordGuildMember[]|null $data data
+     * @param \Zernio\Model\DiscordGuildMemberUser|null $user user
      *
      * @return self
      */
-    public function setData($data)
+    public function setUser($user)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($user)) {
+            throw new \InvalidArgumentException('non-nullable user cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['user'] = $user;
 
         return $this;
     }
 
     /**
-     * Gets pagination
+     * Gets nick
      *
-     * @return \Zernio\Model\ListDiscordGuildMembers200ResponsePagination|null
+     * @return string|null
      */
-    public function getPagination()
+    public function getNick()
     {
-        return $this->container['pagination'];
+        return $this->container['nick'];
     }
 
     /**
-     * Sets pagination
+     * Sets nick
      *
-     * @param \Zernio\Model\ListDiscordGuildMembers200ResponsePagination|null $pagination pagination
+     * @param string|null $nick Guild-specific nickname
      *
      * @return self
      */
-    public function setPagination($pagination)
+    public function setNick($nick)
     {
-        if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+        if (is_null($nick)) {
+            array_push($this->openAPINullablesSetToNull, 'nick');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('nick', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['pagination'] = $pagination;
+        $this->container['nick'] = $nick;
+
+        return $this;
+    }
+
+    /**
+     * Gets roles
+     *
+     * @return string[]|null
+     */
+    public function getRoles()
+    {
+        return $this->container['roles'];
+    }
+
+    /**
+     * Sets roles
+     *
+     * @param string[]|null $roles Snowflake IDs of roles assigned to this member
+     *
+     * @return self
+     */
+    public function setRoles($roles)
+    {
+        if (is_null($roles)) {
+            throw new \InvalidArgumentException('non-nullable roles cannot be null');
+        }
+        $this->container['roles'] = $roles;
+
+        return $this;
+    }
+
+    /**
+     * Gets joined_at
+     *
+     * @return \DateTime|null
+     */
+    public function getJoinedAt()
+    {
+        return $this->container['joined_at'];
+    }
+
+    /**
+     * Sets joined_at
+     *
+     * @param \DateTime|null $joined_at joined_at
+     *
+     * @return self
+     */
+    public function setJoinedAt($joined_at)
+    {
+        if (is_null($joined_at)) {
+            throw new \InvalidArgumentException('non-nullable joined_at cannot be null');
+        }
+        $this->container['joined_at'] = $joined_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets premium_since
+     *
+     * @return \DateTime|null
+     */
+    public function getPremiumSince()
+    {
+        return $this->container['premium_since'];
+    }
+
+    /**
+     * Sets premium_since
+     *
+     * @param \DateTime|null $premium_since When the user started boosting the server
+     *
+     * @return self
+     */
+    public function setPremiumSince($premium_since)
+    {
+        if (is_null($premium_since)) {
+            array_push($this->openAPINullablesSetToNull, 'premium_since');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('premium_since', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['premium_since'] = $premium_since;
 
         return $this;
     }

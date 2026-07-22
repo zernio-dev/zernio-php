@@ -105,6 +105,9 @@ class DiscordApi
         'getDiscordChannels' => [
             'application/json',
         ],
+        'getDiscordGuildMember' => [
+            'application/json',
+        ],
         'getDiscordScheduledEvent' => [
             'application/json',
         ],
@@ -127,6 +130,9 @@ class DiscordApi
             'application/json',
         ],
         'removeDiscordMemberRole' => [
+            'application/json',
+        ],
+        'searchDiscordGuildMembers' => [
             'application/json',
         ],
         'sendDiscordDirectMessage' => [
@@ -3434,6 +3440,347 @@ class DiscordApi
     }
 
     /**
+     * Operation getDiscordGuildMember
+     *
+     * Get a Discord guild member
+     *
+     * @param  string $guild_id guild_id (required)
+     * @param  string $user_id Discord user snowflake. (required)
+     * @param  string $account_id account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDiscordGuildMember'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetDiscordGuildMember200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     */
+    public function getDiscordGuildMember($guild_id, $user_id, $account_id, string $contentType = self::contentTypes['getDiscordGuildMember'][0])
+    {
+        list($response) = $this->getDiscordGuildMemberWithHttpInfo($guild_id, $user_id, $account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getDiscordGuildMemberWithHttpInfo
+     *
+     * Get a Discord guild member
+     *
+     * @param  string $guild_id (required)
+     * @param  string $user_id Discord user snowflake. (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDiscordGuildMember'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetDiscordGuildMember200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getDiscordGuildMemberWithHttpInfo($guild_id, $user_id, $account_id, string $contentType = self::contentTypes['getDiscordGuildMember'][0])
+    {
+        $request = $this->getDiscordGuildMemberRequest($guild_id, $user_id, $account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetDiscordGuildMember200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetDiscordGuildMember200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetDiscordGuildMember200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getDiscordGuildMemberAsync
+     *
+     * Get a Discord guild member
+     *
+     * @param  string $guild_id (required)
+     * @param  string $user_id Discord user snowflake. (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDiscordGuildMember'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getDiscordGuildMemberAsync($guild_id, $user_id, $account_id, string $contentType = self::contentTypes['getDiscordGuildMember'][0])
+    {
+        return $this->getDiscordGuildMemberAsyncWithHttpInfo($guild_id, $user_id, $account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getDiscordGuildMemberAsyncWithHttpInfo
+     *
+     * Get a Discord guild member
+     *
+     * @param  string $guild_id (required)
+     * @param  string $user_id Discord user snowflake. (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDiscordGuildMember'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getDiscordGuildMemberAsyncWithHttpInfo($guild_id, $user_id, $account_id, string $contentType = self::contentTypes['getDiscordGuildMember'][0])
+    {
+        $returnType = '\Zernio\Model\GetDiscordGuildMember200Response';
+        $request = $this->getDiscordGuildMemberRequest($guild_id, $user_id, $account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getDiscordGuildMember'
+     *
+     * @param  string $guild_id (required)
+     * @param  string $user_id Discord user snowflake. (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDiscordGuildMember'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getDiscordGuildMemberRequest($guild_id, $user_id, $account_id, string $contentType = self::contentTypes['getDiscordGuildMember'][0])
+    {
+
+        // verify the required parameter 'guild_id' is set
+        if ($guild_id === null || (is_array($guild_id) && count($guild_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $guild_id when calling getDiscordGuildMember'
+            );
+        }
+
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $user_id when calling getDiscordGuildMember'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getDiscordGuildMember'
+            );
+        }
+
+
+        $resourcePath = '/v1/discord/guilds/{guildId}/members/{userId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($guild_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'guildId' . '}',
+                ObjectSerializer::toPathValue($guild_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($user_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'userId' . '}',
+                ObjectSerializer::toPathValue($user_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getDiscordScheduledEvent
      *
      * Get a Discord scheduled event
@@ -5993,6 +6340,361 @@ class DiscordApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation searchDiscordGuildMembers
+     *
+     * Search Discord guild members
+     *
+     * @param  string $guild_id guild_id (required)
+     * @param  string $account_id account_id (required)
+     * @param  string $query Username or nickname prefix to match. (required)
+     * @param  int|null $limit limit (optional, default to 25)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchDiscordGuildMembers'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\SearchDiscordGuildMembers200Response|\Zernio\Model\InlineObject
+     */
+    public function searchDiscordGuildMembers($guild_id, $account_id, $query, $limit = 25, string $contentType = self::contentTypes['searchDiscordGuildMembers'][0])
+    {
+        list($response) = $this->searchDiscordGuildMembersWithHttpInfo($guild_id, $account_id, $query, $limit, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation searchDiscordGuildMembersWithHttpInfo
+     *
+     * Search Discord guild members
+     *
+     * @param  string $guild_id (required)
+     * @param  string $account_id (required)
+     * @param  string $query Username or nickname prefix to match. (required)
+     * @param  int|null $limit (optional, default to 25)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchDiscordGuildMembers'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\SearchDiscordGuildMembers200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function searchDiscordGuildMembersWithHttpInfo($guild_id, $account_id, $query, $limit = 25, string $contentType = self::contentTypes['searchDiscordGuildMembers'][0])
+    {
+        $request = $this->searchDiscordGuildMembersRequest($guild_id, $account_id, $query, $limit, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\SearchDiscordGuildMembers200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\SearchDiscordGuildMembers200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\SearchDiscordGuildMembers200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation searchDiscordGuildMembersAsync
+     *
+     * Search Discord guild members
+     *
+     * @param  string $guild_id (required)
+     * @param  string $account_id (required)
+     * @param  string $query Username or nickname prefix to match. (required)
+     * @param  int|null $limit (optional, default to 25)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchDiscordGuildMembers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchDiscordGuildMembersAsync($guild_id, $account_id, $query, $limit = 25, string $contentType = self::contentTypes['searchDiscordGuildMembers'][0])
+    {
+        return $this->searchDiscordGuildMembersAsyncWithHttpInfo($guild_id, $account_id, $query, $limit, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation searchDiscordGuildMembersAsyncWithHttpInfo
+     *
+     * Search Discord guild members
+     *
+     * @param  string $guild_id (required)
+     * @param  string $account_id (required)
+     * @param  string $query Username or nickname prefix to match. (required)
+     * @param  int|null $limit (optional, default to 25)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchDiscordGuildMembers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchDiscordGuildMembersAsyncWithHttpInfo($guild_id, $account_id, $query, $limit = 25, string $contentType = self::contentTypes['searchDiscordGuildMembers'][0])
+    {
+        $returnType = '\Zernio\Model\SearchDiscordGuildMembers200Response';
+        $request = $this->searchDiscordGuildMembersRequest($guild_id, $account_id, $query, $limit, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'searchDiscordGuildMembers'
+     *
+     * @param  string $guild_id (required)
+     * @param  string $account_id (required)
+     * @param  string $query Username or nickname prefix to match. (required)
+     * @param  int|null $limit (optional, default to 25)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchDiscordGuildMembers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function searchDiscordGuildMembersRequest($guild_id, $account_id, $query, $limit = 25, string $contentType = self::contentTypes['searchDiscordGuildMembers'][0])
+    {
+
+        // verify the required parameter 'guild_id' is set
+        if ($guild_id === null || (is_array($guild_id) && count($guild_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $guild_id when calling searchDiscordGuildMembers'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling searchDiscordGuildMembers'
+            );
+        }
+
+        // verify the required parameter 'query' is set
+        if ($query === null || (is_array($query) && count($query) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $query when calling searchDiscordGuildMembers'
+            );
+        }
+        if (strlen($query) > 100) {
+            throw new \InvalidArgumentException('invalid length for "$query" when calling DiscordApi.searchDiscordGuildMembers, must be smaller than or equal to 100.');
+        }
+        if (strlen($query) < 1) {
+            throw new \InvalidArgumentException('invalid length for "$query" when calling DiscordApi.searchDiscordGuildMembers, must be bigger than or equal to 1.');
+        }
+        
+        if ($limit !== null && $limit > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling DiscordApi.searchDiscordGuildMembers, must be smaller than or equal to 1000.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling DiscordApi.searchDiscordGuildMembers, must be bigger than or equal to 1.');
+        }
+        
+
+        $resourcePath = '/v1/discord/guilds/{guildId}/members/search';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $query,
+            'query', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($guild_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'guildId' . '}',
+                ObjectSerializer::toPathValue($guild_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

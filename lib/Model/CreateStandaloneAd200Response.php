@@ -1,6 +1,6 @@
 <?php
 /**
- * ListDiscordGuildMembers200Response
+ * CreateStandaloneAd200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ListDiscordGuildMembers200Response Class Doc Comment
+ * CreateStandaloneAd200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateStandaloneAd200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'listDiscordGuildMembers_200_response';
+    protected static $openAPIModelName = 'createStandaloneAd_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,9 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\Zernio\Model\DiscordGuildMember[]',
-        'pagination' => '\Zernio\Model\ListDiscordGuildMembers200ResponsePagination'
+        'validate_only' => 'bool',
+        'results' => '\Zernio\Model\CreateStandaloneAd200ResponseResultsInner[]',
+        'message' => 'string'
     ];
 
     /**
@@ -70,8 +71,9 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'pagination' => null
+        'validate_only' => null,
+        'results' => null,
+        'message' => null
     ];
 
     /**
@@ -80,8 +82,9 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false,
-        'pagination' => false
+        'validate_only' => false,
+        'results' => false,
+        'message' => false
     ];
 
     /**
@@ -170,8 +173,9 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'pagination' => 'pagination'
+        'validate_only' => 'validateOnly',
+        'results' => 'results',
+        'message' => 'message'
     ];
 
     /**
@@ -180,8 +184,9 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'pagination' => 'setPagination'
+        'validate_only' => 'setValidateOnly',
+        'results' => 'setResults',
+        'message' => 'setMessage'
     ];
 
     /**
@@ -190,8 +195,9 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'pagination' => 'getPagination'
+        'validate_only' => 'getValidateOnly',
+        'results' => 'getResults',
+        'message' => 'getMessage'
     ];
 
     /**
@@ -235,6 +241,19 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
+    public const VALIDATE_ONLY_TRUE = 'true';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getValidateOnlyAllowableValues()
+    {
+        return [
+            self::VALIDATE_ONLY_TRUE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -251,8 +270,9 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('pagination', $data ?? [], null);
+        $this->setIfExists('validate_only', $data ?? [], null);
+        $this->setIfExists('results', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
     }
 
     /**
@@ -282,6 +302,15 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getValidateOnlyAllowableValues();
+        if (!is_null($this->container['validate_only']) && !in_array($this->container['validate_only'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'validate_only', must be one of '%s'",
+                $this->container['validate_only'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -298,55 +327,92 @@ class ListDiscordGuildMembers200Response implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets data
+     * Gets validate_only
      *
-     * @return \Zernio\Model\DiscordGuildMember[]|null
+     * @return bool|null
      */
-    public function getData()
+    public function getValidateOnly()
     {
-        return $this->container['data'];
+        return $this->container['validate_only'];
     }
 
     /**
-     * Sets data
+     * Sets validate_only
      *
-     * @param \Zernio\Model\DiscordGuildMember[]|null $data data
+     * @param bool|null $validate_only validate_only
      *
      * @return self
      */
-    public function setData($data)
+    public function setValidateOnly($validate_only)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($validate_only)) {
+            throw new \InvalidArgumentException('non-nullable validate_only cannot be null');
         }
-        $this->container['data'] = $data;
+        $allowedValues = $this->getValidateOnlyAllowableValues();
+        if (!in_array($validate_only, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'validate_only', must be one of '%s'",
+                    $validate_only,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['validate_only'] = $validate_only;
 
         return $this;
     }
 
     /**
-     * Gets pagination
+     * Gets results
      *
-     * @return \Zernio\Model\ListDiscordGuildMembers200ResponsePagination|null
+     * @return \Zernio\Model\CreateStandaloneAd200ResponseResultsInner[]|null
      */
-    public function getPagination()
+    public function getResults()
     {
-        return $this->container['pagination'];
+        return $this->container['results'];
     }
 
     /**
-     * Sets pagination
+     * Sets results
      *
-     * @param \Zernio\Model\ListDiscordGuildMembers200ResponsePagination|null $pagination pagination
+     * @param \Zernio\Model\CreateStandaloneAd200ResponseResultsInner[]|null $results results
      *
      * @return self
      */
-    public function setPagination($pagination)
+    public function setResults($results)
     {
-        if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+        if (is_null($results)) {
+            throw new \InvalidArgumentException('non-nullable results cannot be null');
         }
-        $this->container['pagination'] = $pagination;
+        $this->container['results'] = $results;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string|null
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string|null $message message
+     *
+     * @return self
+     */
+    public function setMessage($message)
+    {
+        if (is_null($message)) {
+            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        }
+        $this->container['message'] = $message;
 
         return $this;
     }

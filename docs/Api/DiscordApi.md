@@ -16,6 +16,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**deleteDiscordScheduledEvent()**](DiscordApi.md#deleteDiscordScheduledEvent) | **DELETE** /v1/discord/guilds/{guildId}/events/{eventId} | Delete a Discord scheduled event |
 | [**editDiscordGuildRole()**](DiscordApi.md#editDiscordGuildRole) | **PATCH** /v1/discord/guilds/{guildId}/roles/{roleId} | Edit a Discord guild role |
 | [**getDiscordChannels()**](DiscordApi.md#getDiscordChannels) | **GET** /v1/accounts/{accountId}/discord-channels | List Discord guild channels |
+| [**getDiscordGuildMember()**](DiscordApi.md#getDiscordGuildMember) | **GET** /v1/discord/guilds/{guildId}/members/{userId} | Get a Discord guild member |
 | [**getDiscordScheduledEvent()**](DiscordApi.md#getDiscordScheduledEvent) | **GET** /v1/discord/guilds/{guildId}/events/{eventId} | Get a Discord scheduled event |
 | [**getDiscordSettings()**](DiscordApi.md#getDiscordSettings) | **GET** /v1/accounts/{accountId}/discord-settings | Get Discord account settings |
 | [**listDiscordGuildMembers()**](DiscordApi.md#listDiscordGuildMembers) | **GET** /v1/discord/guilds/{guildId}/members | List Discord guild members |
@@ -24,6 +25,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listDiscordScheduledEvents()**](DiscordApi.md#listDiscordScheduledEvents) | **GET** /v1/discord/guilds/{guildId}/events | List Discord scheduled events |
 | [**pinDiscordMessage()**](DiscordApi.md#pinDiscordMessage) | **PUT** /v1/discord/channels/{channelId}/pins/{messageId} | Pin a Discord message |
 | [**removeDiscordMemberRole()**](DiscordApi.md#removeDiscordMemberRole) | **DELETE** /v1/discord/guilds/{guildId}/members/{userId}/roles/{roleId} | Remove a role from a guild member |
+| [**searchDiscordGuildMembers()**](DiscordApi.md#searchDiscordGuildMembers) | **GET** /v1/discord/guilds/{guildId}/members/search | Search Discord guild members |
 | [**sendDiscordDirectMessage()**](DiscordApi.md#sendDiscordDirectMessage) | **POST** /v1/discord/dms | Send a Discord Direct Message |
 | [**unpinDiscordMessage()**](DiscordApi.md#unpinDiscordMessage) | **DELETE** /v1/discord/channels/{channelId}/pins/{messageId} | Unpin a Discord message |
 | [**updateDiscordScheduledEvent()**](DiscordApi.md#updateDiscordScheduledEvent) | **PATCH** /v1/discord/guilds/{guildId}/events/{eventId} | Update a Discord scheduled event |
@@ -668,6 +670,70 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getDiscordGuildMember()`
+
+```php
+getDiscordGuildMember($guild_id, $user_id, $account_id): \Zernio\Model\GetDiscordGuildMember200Response
+```
+
+Get a Discord guild member
+
+Fetch a single guild member by Discord user id.  Does not require the privileged Server Members Intent, so this works even where the full member listing returns 403.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\DiscordApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$guild_id = 'guild_id_example'; // string
+$user_id = 'user_id_example'; // string | Discord user snowflake.
+$account_id = 'account_id_example'; // string
+
+try {
+    $result = $apiInstance->getDiscordGuildMember($guild_id, $user_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DiscordApi->getDiscordGuildMember: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **guild_id** | **string**|  | |
+| **user_id** | **string**| Discord user snowflake. | |
+| **account_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\GetDiscordGuildMember200Response**](../Model/GetDiscordGuildMember200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getDiscordScheduledEvent()`
 
 ```php
@@ -798,7 +864,7 @@ listDiscordGuildMembers($guild_id, $account_id, $limit, $after): \Zernio\Model\L
 
 List Discord guild members
 
-Cursor-paginated list of guild members. Returns Discord's raw member objects so callers can build community-ops automation (e.g. \"add role to all members joined in the last 7 days\") on the actual platform shape.  **Important:** this endpoint requires the privileged \"Server Members Intent\" enabled on the Discord app (Developer Portal → Bot tab → toggle \"Server Members Intent\" ON, then Save). Without it, Discord returns an empty array with no error. Verify the intent is enabled before relying on this endpoint.  Pagination: pass `after` = the last `user.id` from the previous page. Omit on the first call. Response includes a `nextCursor` and `hasMore` flag so callers don't need to know Discord's pagination shape.
+Cursor-paginated list of guild members. Returns Discord's raw member objects so callers can build community-ops automation (e.g. \"add role to all members joined in the last 7 days\") on the actual platform shape.  **Important:** this endpoint requires the privileged \"Server Members Intent\" on the Discord application. If the intent is not enabled, Discord rejects the call and this endpoint returns **403**. Single member lookup and prefix search (see the sibling endpoints) do not need the intent.  Pagination: pass `after` = the last `user.id` from the previous page. Omit on the first call. Response includes a `nextCursor` and `hasMore` flag so callers don't need to know Discord's pagination shape.
 
 ### Example
 
@@ -1160,6 +1226,72 @@ try {
 ### Return type
 
 [**\Zernio\Model\RemoveDiscordMemberRole200Response**](../Model/RemoveDiscordMemberRole200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `searchDiscordGuildMembers()`
+
+```php
+searchDiscordGuildMembers($guild_id, $account_id, $query, $limit): \Zernio\Model\SearchDiscordGuildMembers200Response
+```
+
+Search Discord guild members
+
+Search guild members whose username or nickname **starts with** the query (Discord matches prefixes only, not substrings).  Does not require the privileged Server Members Intent, so this works even where the full member listing returns 403.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\DiscordApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$guild_id = 'guild_id_example'; // string
+$account_id = 'account_id_example'; // string
+$query = 'query_example'; // string | Username or nickname prefix to match.
+$limit = 25; // int
+
+try {
+    $result = $apiInstance->searchDiscordGuildMembers($guild_id, $account_id, $query, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DiscordApi->searchDiscordGuildMembers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **guild_id** | **string**|  | |
+| **account_id** | **string**|  | |
+| **query** | **string**| Username or nickname prefix to match. | |
+| **limit** | **int**|  | [optional] [default to 25] |
+
+### Return type
+
+[**\Zernio\Model\SearchDiscordGuildMembers200Response**](../Model/SearchDiscordGuildMembers200Response.md)
 
 ### Authorization
 
