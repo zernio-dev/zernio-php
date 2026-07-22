@@ -28,7 +28,6 @@ docs/Api/GMBReviewsApi.md
 docs/Api/GMBServicesApi.md
 docs/Api/GMBVerificationsApi.md
 docs/Api/InboxAnalyticsApi.md
-docs/Api/InboxApi.md
 docs/Api/InstagramApi.md
 docs/Api/InvitesApi.md
 docs/Api/LinkedInMentionsApi.md
@@ -1536,7 +1535,6 @@ lib/Api/GMBReviewsApi.php
 lib/Api/GMBServicesApi.php
 lib/Api/GMBVerificationsApi.php
 lib/Api/InboxAnalyticsApi.php
-lib/Api/InboxApi.php
 lib/Api/InstagramApi.php
 lib/Api/InvitesApi.php
 lib/Api/LinkedInMentionsApi.php
