@@ -521,7 +521,7 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets components
      *
-     * @param \Zernio\Model\WhatsAppTemplateComponent[]|null $components Template components (header, body, footer, buttons). Required for custom templates, omit when using library_template_name.
+     * @param \Zernio\Model\WhatsAppTemplateComponent[]|null $components Template components (header, body, footer, buttons, carousel, limited_time_offer). Required for custom templates, omit when using library_template_name.
      *
      * @return self
      */

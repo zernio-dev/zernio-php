@@ -63,6 +63,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'number_type' => 'string',
         'connect_whatsapp' => 'bool',
         'wants_sms' => 'bool',
+        'wants_whatsapp' => 'bool',
         'purchase_intent_id' => 'string',
         'allow_multiple' => 'bool'
     ];
@@ -80,6 +81,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'number_type' => null,
         'connect_whatsapp' => null,
         'wants_sms' => null,
+        'wants_whatsapp' => null,
         'purchase_intent_id' => null,
         'allow_multiple' => null
     ];
@@ -95,6 +97,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'number_type' => false,
         'connect_whatsapp' => false,
         'wants_sms' => false,
+        'wants_whatsapp' => false,
         'purchase_intent_id' => false,
         'allow_multiple' => false
     ];
@@ -190,6 +193,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'number_type' => 'numberType',
         'connect_whatsapp' => 'connectWhatsapp',
         'wants_sms' => 'wantsSms',
+        'wants_whatsapp' => 'wantsWhatsapp',
         'purchase_intent_id' => 'purchaseIntentId',
         'allow_multiple' => 'allowMultiple'
     ];
@@ -205,6 +209,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'number_type' => 'setNumberType',
         'connect_whatsapp' => 'setConnectWhatsapp',
         'wants_sms' => 'setWantsSms',
+        'wants_whatsapp' => 'setWantsWhatsapp',
         'purchase_intent_id' => 'setPurchaseIntentId',
         'allow_multiple' => 'setAllowMultiple'
     ];
@@ -220,6 +225,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'number_type' => 'getNumberType',
         'connect_whatsapp' => 'getConnectWhatsapp',
         'wants_sms' => 'getWantsSms',
+        'wants_whatsapp' => 'getWantsWhatsapp',
         'purchase_intent_id' => 'getPurchaseIntentId',
         'allow_multiple' => 'getAllowMultiple'
     ];
@@ -305,6 +311,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('number_type', $data ?? [], null);
         $this->setIfExists('connect_whatsapp', $data ?? [], true);
         $this->setIfExists('wants_sms', $data ?? [], false);
+        $this->setIfExists('wants_whatsapp', $data ?? [], false);
         $this->setIfExists('purchase_intent_id', $data ?? [], null);
         $this->setIfExists('allow_multiple', $data ?? [], false);
     }
@@ -508,6 +515,33 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable wants_sms cannot be null');
         }
         $this->container['wants_sms'] = $wants_sms;
+
+        return $this;
+    }
+
+    /**
+     * Gets wants_whatsapp
+     *
+     * @return bool|null
+     */
+    public function getWantsWhatsapp()
+    {
+        return $this->container['wants_whatsapp'];
+    }
+
+    /**
+     * Sets wants_whatsapp
+     *
+     * @param bool|null $wants_whatsapp Declare WhatsApp intent on a STANDALONE purchase (connectWhatsapp:false). The number still activates and bills immediately, but if WhatsApp's buy-time check rejects the assigned number, it is automatically swapped for a WhatsApp-eligible one during the purchase instead of being delivered with WhatsApp unavailable. Ignored on the WhatsApp provisioning path (connectWhatsapp omitted or true), which always delivers a WhatsApp-verified number.
+     *
+     * @return self
+     */
+    public function setWantsWhatsapp($wants_whatsapp)
+    {
+        if (is_null($wants_whatsapp)) {
+            throw new \InvalidArgumentException('non-nullable wants_whatsapp cannot be null');
+        }
+        $this->container['wants_whatsapp'] = $wants_whatsapp;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsAppTemplateComponent
+ * WhatsAppCarouselCardComponent
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * WhatsAppTemplateComponent Class Doc Comment
+ * WhatsAppCarouselCardComponent Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsAppCarouselCardComponent implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = 'type';
 
@@ -50,7 +50,7 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsAppTemplateComponent';
+    protected static $openAPIModelName = 'WhatsAppCarouselCardComponent';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -63,10 +63,7 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         'text' => 'string',
         'example' => '\Zernio\Model\WhatsAppBodyComponentExample',
         'add_security_recommendation' => 'bool',
-        'code_expiration_minutes' => 'int',
-        'buttons' => '\Zernio\Model\WhatsAppTemplateButton[]',
-        'cards' => '\Zernio\Model\WhatsAppCarouselComponentCardsInner[]',
-        'limited_time_offer' => '\Zernio\Model\WhatsAppLimitedTimeOfferComponentLimitedTimeOffer'
+        'buttons' => '\Zernio\Model\WhatsAppTemplateButton[]'
     ];
 
     /**
@@ -82,10 +79,7 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         'text' => null,
         'example' => null,
         'add_security_recommendation' => null,
-        'code_expiration_minutes' => null,
-        'buttons' => null,
-        'cards' => null,
-        'limited_time_offer' => null
+        'buttons' => null
     ];
 
     /**
@@ -99,10 +93,7 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         'text' => false,
         'example' => false,
         'add_security_recommendation' => false,
-        'code_expiration_minutes' => false,
-        'buttons' => false,
-        'cards' => false,
-        'limited_time_offer' => false
+        'buttons' => false
     ];
 
     /**
@@ -196,10 +187,7 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         'text' => 'text',
         'example' => 'example',
         'add_security_recommendation' => 'add_security_recommendation',
-        'code_expiration_minutes' => 'code_expiration_minutes',
-        'buttons' => 'buttons',
-        'cards' => 'cards',
-        'limited_time_offer' => 'limited_time_offer'
+        'buttons' => 'buttons'
     ];
 
     /**
@@ -213,10 +201,7 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         'text' => 'setText',
         'example' => 'setExample',
         'add_security_recommendation' => 'setAddSecurityRecommendation',
-        'code_expiration_minutes' => 'setCodeExpirationMinutes',
-        'buttons' => 'setButtons',
-        'cards' => 'setCards',
-        'limited_time_offer' => 'setLimitedTimeOffer'
+        'buttons' => 'setButtons'
     ];
 
     /**
@@ -230,10 +215,7 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         'text' => 'getText',
         'example' => 'getExample',
         'add_security_recommendation' => 'getAddSecurityRecommendation',
-        'code_expiration_minutes' => 'getCodeExpirationMinutes',
-        'buttons' => 'getButtons',
-        'cards' => 'getCards',
-        'limited_time_offer' => 'getLimitedTimeOffer'
+        'buttons' => 'getButtons'
     ];
 
     /**
@@ -279,10 +261,7 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
 
     public const TYPE_HEADER = 'header';
     public const TYPE_BODY = 'body';
-    public const TYPE_FOOTER = 'footer';
     public const TYPE_BUTTONS = 'buttons';
-    public const TYPE_CAROUSEL = 'carousel';
-    public const TYPE_LIMITED_TIME_OFFER = 'limited_time_offer';
     public const FORMAT_TEXT = 'text';
     public const FORMAT_IMAGE = 'image';
     public const FORMAT_VIDEO = 'video';
@@ -300,10 +279,7 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         return [
             self::TYPE_HEADER,
             self::TYPE_BODY,
-            self::TYPE_FOOTER,
             self::TYPE_BUTTONS,
-            self::TYPE_CAROUSEL,
-            self::TYPE_LIMITED_TIME_OFFER,
         ];
     }
 
@@ -344,10 +320,7 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('text', $data ?? [], null);
         $this->setIfExists('example', $data ?? [], null);
         $this->setIfExists('add_security_recommendation', $data ?? [], null);
-        $this->setIfExists('code_expiration_minutes', $data ?? [], null);
         $this->setIfExists('buttons', $data ?? [], null);
-        $this->setIfExists('cards', $data ?? [], null);
-        $this->setIfExists('limited_time_offer', $data ?? [], null);
 
         // Initialize discriminator property with the model name.
         $this->container['type'] = static::$openAPIModelName;
@@ -407,10 +380,6 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['text'] === null) {
             $invalidProperties[] = "'text' can't be null";
         }
-        if (!is_null($this->container['code_expiration_minutes']) && ($this->container['code_expiration_minutes'] < 1)) {
-            $invalidProperties[] = "invalid value for 'code_expiration_minutes', must be bigger than or equal to 1.";
-        }
-
         if ($this->container['buttons'] === null) {
             $invalidProperties[] = "'buttons' can't be null";
         }
@@ -418,20 +387,6 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
             $invalidProperties[] = "invalid value for 'buttons', number of items must be greater than or equal to 1.";
         }
 
-        if ($this->container['cards'] === null) {
-            $invalidProperties[] = "'cards' can't be null";
-        }
-        if ((count($this->container['cards']) > 10)) {
-            $invalidProperties[] = "invalid value for 'cards', number of items must be less than or equal to 10.";
-        }
-
-        if ((count($this->container['cards']) < 2)) {
-            $invalidProperties[] = "invalid value for 'cards', number of items must be greater than or equal to 2.";
-        }
-
-        if ($this->container['limited_time_offer'] === null) {
-            $invalidProperties[] = "'limited_time_offer' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -534,7 +489,7 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets text
      *
-     * @param string $text Static footer text
+     * @param string $text Body text with optional {{n}} variables
      *
      * @return self
      */
@@ -603,38 +558,6 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets code_expiration_minutes
-     *
-     * @return int|null
-     */
-    public function getCodeExpirationMinutes()
-    {
-        return $this->container['code_expiration_minutes'];
-    }
-
-    /**
-     * Sets code_expiration_minutes
-     *
-     * @param int|null $code_expiration_minutes OTP code expiry in minutes (authentication templates only)
-     *
-     * @return self
-     */
-    public function setCodeExpirationMinutes($code_expiration_minutes)
-    {
-        if (is_null($code_expiration_minutes)) {
-            throw new \InvalidArgumentException('non-nullable code_expiration_minutes cannot be null');
-        }
-
-        if (($code_expiration_minutes < 1)) {
-            throw new \InvalidArgumentException('invalid value for $code_expiration_minutes when calling WhatsAppTemplateComponent., must be bigger than or equal to 1.');
-        }
-
-        $this->container['code_expiration_minutes'] = $code_expiration_minutes;
-
-        return $this;
-    }
-
-    /**
      * Gets buttons
      *
      * @return \Zernio\Model\WhatsAppTemplateButton[]
@@ -659,70 +582,9 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
 
 
         if ((count($buttons) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $buttons when calling WhatsAppTemplateComponent., number of items must be greater than or equal to 1.');
+            throw new \InvalidArgumentException('invalid length for $buttons when calling WhatsAppCarouselCardComponent., number of items must be greater than or equal to 1.');
         }
         $this->container['buttons'] = $buttons;
-
-        return $this;
-    }
-
-    /**
-     * Gets cards
-     *
-     * @return \Zernio\Model\WhatsAppCarouselComponentCardsInner[]
-     */
-    public function getCards()
-    {
-        return $this->container['cards'];
-    }
-
-    /**
-     * Sets cards
-     *
-     * @param \Zernio\Model\WhatsAppCarouselComponentCardsInner[] $cards 2-10 cards. Meta requires all cards to share the same component structure; a mismatch surfaces as a rejected_reason. MARKETING category only.
-     *
-     * @return self
-     */
-    public function setCards($cards)
-    {
-        if (is_null($cards)) {
-            throw new \InvalidArgumentException('non-nullable cards cannot be null');
-        }
-
-        if ((count($cards) > 10)) {
-            throw new \InvalidArgumentException('invalid value for $cards when calling WhatsAppTemplateComponent., number of items must be less than or equal to 10.');
-        }
-        if ((count($cards) < 2)) {
-            throw new \InvalidArgumentException('invalid length for $cards when calling WhatsAppTemplateComponent., number of items must be greater than or equal to 2.');
-        }
-        $this->container['cards'] = $cards;
-
-        return $this;
-    }
-
-    /**
-     * Gets limited_time_offer
-     *
-     * @return \Zernio\Model\WhatsAppLimitedTimeOfferComponentLimitedTimeOffer
-     */
-    public function getLimitedTimeOffer()
-    {
-        return $this->container['limited_time_offer'];
-    }
-
-    /**
-     * Sets limited_time_offer
-     *
-     * @param \Zernio\Model\WhatsAppLimitedTimeOfferComponentLimitedTimeOffer $limited_time_offer limited_time_offer
-     *
-     * @return self
-     */
-    public function setLimitedTimeOffer($limited_time_offer)
-    {
-        if (is_null($limited_time_offer)) {
-            throw new \InvalidArgumentException('non-nullable limited_time_offer cannot be null');
-        }
-        $this->container['limited_time_offer'] = $limited_time_offer;
 
         return $this;
     }
