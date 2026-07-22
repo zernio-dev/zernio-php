@@ -192,6 +192,11 @@ docs/Model/CreateAccountGroup201ResponseGroup.md
 docs/Model/CreateAccountGroupRequest.md
 docs/Model/CreateAdAudience201Response.md
 docs/Model/CreateAdAudienceRequest.md
+docs/Model/CreateAdCampaign201Response.md
+docs/Model/CreateAdCampaignRequest.md
+docs/Model/CreateAdCreative201Response.md
+docs/Model/CreateAdCreativeRequest.md
+docs/Model/CreateAdCreativeRequestCarouselCardsInner.md
 docs/Model/CreateAdInsightsReport202Response.md
 docs/Model/CreateAdInsightsReportRequest.md
 docs/Model/CreateAdInsightsReportRequestFilteringInner.md
@@ -345,6 +350,7 @@ docs/Model/DeactivateSmsRegistration200Response.md
 docs/Model/DeleteAccountGroup200Response.md
 docs/Model/DeleteAdCampaign200Response.md
 docs/Model/DeleteAdCampaignRequest.md
+docs/Model/DeleteAdCreative200Response.md
 docs/Model/DeleteDiscordScheduledEvent200Response.md
 docs/Model/DeleteGoogleBusinessMedia200Response.md
 docs/Model/DeleteGoogleBusinessPlaceAction200Response.md
@@ -372,8 +378,12 @@ docs/Model/DiscordRole.md
 docs/Model/DiscordScheduledEvent.md
 docs/Model/DiscordScheduledEventEntityMetadata.md
 docs/Model/DmButton.md
+docs/Model/DuplicateAd200Response.md
 docs/Model/DuplicateAdCampaign200Response.md
 docs/Model/DuplicateAdCampaignRequest.md
+docs/Model/DuplicateAdRequest.md
+docs/Model/DuplicateAdSet200Response.md
+docs/Model/DuplicateAdSetRequest.md
 docs/Model/DuplicateWorkflow201Response.md
 docs/Model/DuplicateWorkflow201ResponseWorkflow.md
 docs/Model/EditDiscordGuildRoleRequest.md
@@ -441,6 +451,7 @@ docs/Model/GetAdAudience200Response.md
 docs/Model/GetAdComments200Response.md
 docs/Model/GetAdComments200ResponseMeta.md
 docs/Model/GetAdComments200ResponsePagination.md
+docs/Model/GetAdCreative200Response.md
 docs/Model/GetAdInsightsReport200Response.md
 docs/Model/GetAdInsightsReport200ResponsePaging.md
 docs/Model/GetAdPreviews200Response.md
@@ -807,6 +818,9 @@ docs/Model/ListAdCatalogProductSets200Response.md
 docs/Model/ListAdCatalogProductSets200ResponseProductSetsInner.md
 docs/Model/ListAdCatalogs200Response.md
 docs/Model/ListAdCatalogs200ResponseCatalogsInner.md
+docs/Model/ListAdCreatives200Response.md
+docs/Model/ListAdImages200Response.md
+docs/Model/ListAdLabels200Response.md
 docs/Model/ListAdStudies200Response.md
 docs/Model/ListAds200Response.md
 docs/Model/ListAdsBusinessCenters200Response.md
@@ -851,6 +865,7 @@ docs/Model/ListGoogleBusinessMedia200ResponseMediaItemsInner.md
 docs/Model/ListGoogleBusinessMedia200ResponseMediaItemsInnerLocationAssociation.md
 docs/Model/ListGoogleBusinessPlaceActions200Response.md
 docs/Model/ListGoogleBusinessPlaceActions200ResponsePlaceActionLinksInner.md
+docs/Model/ListHighDemandPeriods200Response.md
 docs/Model/ListInboxComments200Response.md
 docs/Model/ListInboxComments200ResponseDataInner.md
 docs/Model/ListInboxConversationAnalytics200Response.md
@@ -1240,6 +1255,8 @@ docs/Model/UpdateAdCampaignRequestBudget.md
 docs/Model/UpdateAdCampaignRequestPlatformSpecificData.md
 docs/Model/UpdateAdCampaignStatus200Response.md
 docs/Model/UpdateAdCampaignStatusRequest.md
+docs/Model/UpdateAdCreative200Response.md
+docs/Model/UpdateAdCreativeRequest.md
 docs/Model/UpdateAdRequest.md
 docs/Model/UpdateAdRequestBudget.md
 docs/Model/UpdateAdRequestCreative.md
@@ -1701,6 +1718,11 @@ lib/Model/CreateAccountGroup201ResponseGroup.php
 lib/Model/CreateAccountGroupRequest.php
 lib/Model/CreateAdAudience201Response.php
 lib/Model/CreateAdAudienceRequest.php
+lib/Model/CreateAdCampaign201Response.php
+lib/Model/CreateAdCampaignRequest.php
+lib/Model/CreateAdCreative201Response.php
+lib/Model/CreateAdCreativeRequest.php
+lib/Model/CreateAdCreativeRequestCarouselCardsInner.php
 lib/Model/CreateAdInsightsReport202Response.php
 lib/Model/CreateAdInsightsReportRequest.php
 lib/Model/CreateAdInsightsReportRequestFilteringInner.php
@@ -1854,6 +1876,7 @@ lib/Model/DeactivateSmsRegistration200Response.php
 lib/Model/DeleteAccountGroup200Response.php
 lib/Model/DeleteAdCampaign200Response.php
 lib/Model/DeleteAdCampaignRequest.php
+lib/Model/DeleteAdCreative200Response.php
 lib/Model/DeleteDiscordScheduledEvent200Response.php
 lib/Model/DeleteGoogleBusinessMedia200Response.php
 lib/Model/DeleteGoogleBusinessPlaceAction200Response.php
@@ -1881,8 +1904,12 @@ lib/Model/DiscordRole.php
 lib/Model/DiscordScheduledEvent.php
 lib/Model/DiscordScheduledEventEntityMetadata.php
 lib/Model/DmButton.php
+lib/Model/DuplicateAd200Response.php
 lib/Model/DuplicateAdCampaign200Response.php
 lib/Model/DuplicateAdCampaignRequest.php
+lib/Model/DuplicateAdRequest.php
+lib/Model/DuplicateAdSet200Response.php
+lib/Model/DuplicateAdSetRequest.php
 lib/Model/DuplicateWorkflow201Response.php
 lib/Model/DuplicateWorkflow201ResponseWorkflow.php
 lib/Model/EditDiscordGuildRoleRequest.php
@@ -1950,6 +1977,7 @@ lib/Model/GetAdAudience200Response.php
 lib/Model/GetAdComments200Response.php
 lib/Model/GetAdComments200ResponseMeta.php
 lib/Model/GetAdComments200ResponsePagination.php
+lib/Model/GetAdCreative200Response.php
 lib/Model/GetAdInsightsReport200Response.php
 lib/Model/GetAdInsightsReport200ResponsePaging.php
 lib/Model/GetAdPreviews200Response.php
@@ -2316,6 +2344,9 @@ lib/Model/ListAdCatalogProductSets200Response.php
 lib/Model/ListAdCatalogProductSets200ResponseProductSetsInner.php
 lib/Model/ListAdCatalogs200Response.php
 lib/Model/ListAdCatalogs200ResponseCatalogsInner.php
+lib/Model/ListAdCreatives200Response.php
+lib/Model/ListAdImages200Response.php
+lib/Model/ListAdLabels200Response.php
 lib/Model/ListAdStudies200Response.php
 lib/Model/ListAds200Response.php
 lib/Model/ListAdsBusinessCenters200Response.php
@@ -2360,6 +2391,7 @@ lib/Model/ListGoogleBusinessMedia200ResponseMediaItemsInner.php
 lib/Model/ListGoogleBusinessMedia200ResponseMediaItemsInnerLocationAssociation.php
 lib/Model/ListGoogleBusinessPlaceActions200Response.php
 lib/Model/ListGoogleBusinessPlaceActions200ResponsePlaceActionLinksInner.php
+lib/Model/ListHighDemandPeriods200Response.php
 lib/Model/ListInboxComments200Response.php
 lib/Model/ListInboxComments200ResponseDataInner.php
 lib/Model/ListInboxConversationAnalytics200Response.php
@@ -2750,6 +2782,8 @@ lib/Model/UpdateAdCampaignRequestBudget.php
 lib/Model/UpdateAdCampaignRequestPlatformSpecificData.php
 lib/Model/UpdateAdCampaignStatus200Response.php
 lib/Model/UpdateAdCampaignStatusRequest.php
+lib/Model/UpdateAdCreative200Response.php
+lib/Model/UpdateAdCreativeRequest.php
 lib/Model/UpdateAdRequest.php
 lib/Model/UpdateAdRequestBudget.php
 lib/Model/UpdateAdRequestCreative.php
@@ -3019,3 +3053,20 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateAdCampaign201ResponseTest.php
+test/Model/CreateAdCampaignRequestTest.php
+test/Model/CreateAdCreative201ResponseTest.php
+test/Model/CreateAdCreativeRequestCarouselCardsInnerTest.php
+test/Model/CreateAdCreativeRequestTest.php
+test/Model/DeleteAdCreative200ResponseTest.php
+test/Model/DuplicateAd200ResponseTest.php
+test/Model/DuplicateAdRequestTest.php
+test/Model/DuplicateAdSet200ResponseTest.php
+test/Model/DuplicateAdSetRequestTest.php
+test/Model/GetAdCreative200ResponseTest.php
+test/Model/ListAdCreatives200ResponseTest.php
+test/Model/ListAdImages200ResponseTest.php
+test/Model/ListAdLabels200ResponseTest.php
+test/Model/ListHighDemandPeriods200ResponseTest.php
+test/Model/UpdateAdCreative200ResponseTest.php
+test/Model/UpdateAdCreativeRequestTest.php
