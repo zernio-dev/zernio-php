@@ -3123,6 +3123,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ReplyToPhoneNumberReviewer200ResponseTest.php
-test/Model/ReplyToPhoneNumberReviewerRequestAttachmentsInnerTest.php
-test/Model/ReplyToPhoneNumberReviewerRequestTest.php

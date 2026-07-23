@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**validate_only** | **bool** |  | [optional]
+**validate_only** | **bool** | Always true in a validate-only response. | [optional]
 **results** | [**\Zernio\Model\CreateStandaloneAd200ResponseResultsInner[]**](CreateStandaloneAd200ResponseResultsInner.md) |  | [optional]
 **message** | **string** |  | [optional]
 

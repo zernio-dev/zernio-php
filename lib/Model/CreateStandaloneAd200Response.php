@@ -241,19 +241,6 @@ class CreateStandaloneAd200Response implements ModelInterface, ArrayAccess, \Jso
         return self::$openAPIModelName;
     }
 
-    public const VALIDATE_ONLY_TRUE = 'true';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getValidateOnlyAllowableValues()
-    {
-        return [
-            self::VALIDATE_ONLY_TRUE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -302,15 +289,6 @@ class CreateStandaloneAd200Response implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getValidateOnlyAllowableValues();
-        if (!is_null($this->container['validate_only']) && !in_array($this->container['validate_only'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'validate_only', must be one of '%s'",
-                $this->container['validate_only'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -339,7 +317,7 @@ class CreateStandaloneAd200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets validate_only
      *
-     * @param bool|null $validate_only validate_only
+     * @param bool|null $validate_only Always true in a validate-only response.
      *
      * @return self
      */
@@ -347,16 +325,6 @@ class CreateStandaloneAd200Response implements ModelInterface, ArrayAccess, \Jso
     {
         if (is_null($validate_only)) {
             throw new \InvalidArgumentException('non-nullable validate_only cannot be null');
-        }
-        $allowedValues = $this->getValidateOnlyAllowableValues();
-        if (!in_array($validate_only, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'validate_only', must be one of '%s'",
-                    $validate_only,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['validate_only'] = $validate_only;
 
