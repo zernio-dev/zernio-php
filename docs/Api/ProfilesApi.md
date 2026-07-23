@@ -16,12 +16,12 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `createProfile()`
 
 ```php
-createProfile($create_profile_request): \Zernio\Model\ProfileCreateResponse
+createProfile($create_profile_request, $idempotency_key): \Zernio\Model\ProfileCreateResponse
 ```
 
 Create profile
 
-Creates a new profile with a name, optional description, and color.
+Creates a new profile with a name, optional description, and color. Names are unique per workspace: a duplicate returns a 409 whose details.existingProfileId carries the id of the existing profile. Send an Idempotency-Key header to make retries safe: a retried create with the same key and body replays the original 201 (same _id) instead of conflicting.
 
 ### Example
 
@@ -41,9 +41,10 @@ $apiInstance = new Zernio\Api\ProfilesApi(
     $config
 );
 $create_profile_request = {"name":"Marketing Team","description":"Profile for marketing campaigns","color":"#4CAF50"}; // \Zernio\Model\CreateProfileRequest
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes create retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409.
 
 try {
-    $result = $apiInstance->createProfile($create_profile_request);
+    $result = $apiInstance->createProfile($create_profile_request, $idempotency_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProfilesApi->createProfile: ', $e->getMessage(), PHP_EOL;
@@ -55,6 +56,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **create_profile_request** | [**\Zernio\Model\CreateProfileRequest**](../Model/CreateProfileRequest.md)|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes create retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. | [optional] |
 
 ### Return type
 
@@ -196,12 +198,12 @@ try {
 ## `listProfiles()`
 
 ```php
-listProfiles($include_over_limit): \Zernio\Model\ProfilesListResponse
+listProfiles($include_over_limit, $name, $limit, $skip): \Zernio\Model\ProfilesListResponse
 ```
 
 List profiles
 
-Returns profiles sorted by creation date. Use includeOverLimit=true to include profiles that exceed the plan limit.
+Returns profiles sorted default-first, then by creation date. Filter with name (exact match) and paginate with limit/skip; without those params the full list is returned unchanged. Use includeOverLimit=true to include profiles that exceed the plan limit.
 
 ### Example
 
@@ -221,9 +223,12 @@ $apiInstance = new Zernio\Api\ProfilesApi(
     $config
 );
 $include_over_limit = false; // bool | When true, includes over-limit profiles (marked with isOverLimit: true).
+$name = 'name_example'; // string | Exact-match filter on the profile name. Useful to recover a profile id after an ambiguous create (timeout followed by a 409 on retry).
+$limit = 56; // int | Page size. When limit or skip is present, the response includes total and skip (and echoes limit).
+$skip = 56; // int | Number of profiles to skip, applied after sorting and filtering.
 
 try {
-    $result = $apiInstance->listProfiles($include_over_limit);
+    $result = $apiInstance->listProfiles($include_over_limit, $name, $limit, $skip);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProfilesApi->listProfiles: ', $e->getMessage(), PHP_EOL;
@@ -235,6 +240,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **include_over_limit** | **bool**| When true, includes over-limit profiles (marked with isOverLimit: true). | [optional] [default to false] |
+| **name** | **string**| Exact-match filter on the profile name. Useful to recover a profile id after an ambiguous create (timeout followed by a 409 on retry). | [optional] |
+| **limit** | **int**| Page size. When limit or skip is present, the response includes total and skip (and echoes limit). | [optional] |
+| **skip** | **int**| Number of profiles to skip, applied after sorting and filtering. | [optional] |
 
 ### Return type
 

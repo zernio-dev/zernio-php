@@ -58,7 +58,10 @@ class ProfilesListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'profiles' => '\Zernio\Model\Profile[]'
+        'profiles' => '\Zernio\Model\Profile[]',
+        'total' => 'int',
+        'skip' => 'int',
+        'limit' => 'int'
     ];
 
     /**
@@ -69,7 +72,10 @@ class ProfilesListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'profiles' => null
+        'profiles' => null,
+        'total' => null,
+        'skip' => null,
+        'limit' => null
     ];
 
     /**
@@ -78,7 +84,10 @@ class ProfilesListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'profiles' => false
+        'profiles' => false,
+        'total' => false,
+        'skip' => false,
+        'limit' => false
     ];
 
     /**
@@ -167,7 +176,10 @@ class ProfilesListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'profiles' => 'profiles'
+        'profiles' => 'profiles',
+        'total' => 'total',
+        'skip' => 'skip',
+        'limit' => 'limit'
     ];
 
     /**
@@ -176,7 +188,10 @@ class ProfilesListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'profiles' => 'setProfiles'
+        'profiles' => 'setProfiles',
+        'total' => 'setTotal',
+        'skip' => 'setSkip',
+        'limit' => 'setLimit'
     ];
 
     /**
@@ -185,7 +200,10 @@ class ProfilesListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'profiles' => 'getProfiles'
+        'profiles' => 'getProfiles',
+        'total' => 'getTotal',
+        'skip' => 'getSkip',
+        'limit' => 'getLimit'
     ];
 
     /**
@@ -246,6 +264,9 @@ class ProfilesListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(?array $data = null)
     {
         $this->setIfExists('profiles', $data ?? [], null);
+        $this->setIfExists('total', $data ?? [], null);
+        $this->setIfExists('skip', $data ?? [], null);
+        $this->setIfExists('limit', $data ?? [], null);
     }
 
     /**
@@ -313,6 +334,87 @@ class ProfilesListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable profiles cannot be null');
         }
         $this->container['profiles'] = $profiles;
+
+        return $this;
+    }
+
+    /**
+     * Gets total
+     *
+     * @return int|null
+     */
+    public function getTotal()
+    {
+        return $this->container['total'];
+    }
+
+    /**
+     * Sets total
+     *
+     * @param int|null $total Total matching profiles across all pages. Present only when limit or skip was passed.
+     *
+     * @return self
+     */
+    public function setTotal($total)
+    {
+        if (is_null($total)) {
+            throw new \InvalidArgumentException('non-nullable total cannot be null');
+        }
+        $this->container['total'] = $total;
+
+        return $this;
+    }
+
+    /**
+     * Gets skip
+     *
+     * @return int|null
+     */
+    public function getSkip()
+    {
+        return $this->container['skip'];
+    }
+
+    /**
+     * Sets skip
+     *
+     * @param int|null $skip Offset applied. Present only when limit or skip was passed.
+     *
+     * @return self
+     */
+    public function setSkip($skip)
+    {
+        if (is_null($skip)) {
+            throw new \InvalidArgumentException('non-nullable skip cannot be null');
+        }
+        $this->container['skip'] = $skip;
+
+        return $this;
+    }
+
+    /**
+     * Gets limit
+     *
+     * @return int|null
+     */
+    public function getLimit()
+    {
+        return $this->container['limit'];
+    }
+
+    /**
+     * Sets limit
+     *
+     * @param int|null $limit Echo of the limit query param. Present only when it was passed.
+     *
+     * @return self
+     */
+    public function setLimit($limit)
+    {
+        if (is_null($limit)) {
+            throw new \InvalidArgumentException('non-nullable limit cannot be null');
+        }
+        $this->container['limit'] = $limit;
 
         return $this;
     }

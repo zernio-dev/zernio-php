@@ -144,15 +144,16 @@ class ProfilesApi
      * Create profile
      *
      * @param  \Zernio\Model\CreateProfileRequest $create_profile_request create_profile_request (required)
+     * @param  string|null $idempotency_key Optional client-generated unique key (e.g. a UUID) that makes create retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProfile'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ProfileCreateResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2
      */
-    public function createProfile($create_profile_request, string $contentType = self::contentTypes['createProfile'][0])
+    public function createProfile($create_profile_request, $idempotency_key = null, string $contentType = self::contentTypes['createProfile'][0])
     {
-        list($response) = $this->createProfileWithHttpInfo($create_profile_request, $contentType);
+        list($response) = $this->createProfileWithHttpInfo($create_profile_request, $idempotency_key, $contentType);
         return $response;
     }
 
@@ -162,15 +163,16 @@ class ProfilesApi
      * Create profile
      *
      * @param  \Zernio\Model\CreateProfileRequest $create_profile_request (required)
+     * @param  string|null $idempotency_key Optional client-generated unique key (e.g. a UUID) that makes create retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProfile'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ProfileCreateResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createProfileWithHttpInfo($create_profile_request, string $contentType = self::contentTypes['createProfile'][0])
+    public function createProfileWithHttpInfo($create_profile_request, $idempotency_key = null, string $contentType = self::contentTypes['createProfile'][0])
     {
-        $request = $this->createProfileRequest($create_profile_request, $contentType);
+        $request = $this->createProfileRequest($create_profile_request, $idempotency_key, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -275,14 +277,15 @@ class ProfilesApi
      * Create profile
      *
      * @param  \Zernio\Model\CreateProfileRequest $create_profile_request (required)
+     * @param  string|null $idempotency_key Optional client-generated unique key (e.g. a UUID) that makes create retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProfile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createProfileAsync($create_profile_request, string $contentType = self::contentTypes['createProfile'][0])
+    public function createProfileAsync($create_profile_request, $idempotency_key = null, string $contentType = self::contentTypes['createProfile'][0])
     {
-        return $this->createProfileAsyncWithHttpInfo($create_profile_request, $contentType)
+        return $this->createProfileAsyncWithHttpInfo($create_profile_request, $idempotency_key, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -296,15 +299,16 @@ class ProfilesApi
      * Create profile
      *
      * @param  \Zernio\Model\CreateProfileRequest $create_profile_request (required)
+     * @param  string|null $idempotency_key Optional client-generated unique key (e.g. a UUID) that makes create retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProfile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createProfileAsyncWithHttpInfo($create_profile_request, string $contentType = self::contentTypes['createProfile'][0])
+    public function createProfileAsyncWithHttpInfo($create_profile_request, $idempotency_key = null, string $contentType = self::contentTypes['createProfile'][0])
     {
         $returnType = '\Zernio\Model\ProfileCreateResponse';
-        $request = $this->createProfileRequest($create_profile_request, $contentType);
+        $request = $this->createProfileRequest($create_profile_request, $idempotency_key, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -346,12 +350,13 @@ class ProfilesApi
      * Create request for operation 'createProfile'
      *
      * @param  \Zernio\Model\CreateProfileRequest $create_profile_request (required)
+     * @param  string|null $idempotency_key Optional client-generated unique key (e.g. a UUID) that makes create retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProfile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createProfileRequest($create_profile_request, string $contentType = self::contentTypes['createProfile'][0])
+    public function createProfileRequest($create_profile_request, $idempotency_key = null, string $contentType = self::contentTypes['createProfile'][0])
     {
 
         // verify the required parameter 'create_profile_request' is set
@@ -361,6 +366,10 @@ class ProfilesApi
             );
         }
 
+        if ($idempotency_key !== null && strlen($idempotency_key) > 255) {
+            throw new \InvalidArgumentException('invalid length for "$idempotency_key" when calling ProfilesApi.createProfile, must be smaller than or equal to 255.');
+        }
+        
 
         $resourcePath = '/v1/profiles';
         $formParams = [];
@@ -370,6 +379,10 @@ class ProfilesApi
         $multipart = false;
 
 
+        // header params
+        if ($idempotency_key !== null) {
+            $headerParams['Idempotency-Key'] = ObjectSerializer::toHeaderValue($idempotency_key);
+        }
 
 
 
@@ -1043,15 +1056,18 @@ class ProfilesApi
      * List profiles
      *
      * @param  bool|null $include_over_limit When true, includes over-limit profiles (marked with isOverLimit: true). (optional, default to false)
+     * @param  string|null $name Exact-match filter on the profile name. Useful to recover a profile id after an ambiguous create (timeout followed by a 409 on retry). (optional)
+     * @param  int|null $limit Page size. When limit or skip is present, the response includes total and skip (and echoes limit). (optional)
+     * @param  int|null $skip Number of profiles to skip, applied after sorting and filtering. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProfiles'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ProfilesListResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ProfilesListResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
      */
-    public function listProfiles($include_over_limit = false, string $contentType = self::contentTypes['listProfiles'][0])
+    public function listProfiles($include_over_limit = false, $name = null, $limit = null, $skip = null, string $contentType = self::contentTypes['listProfiles'][0])
     {
-        list($response) = $this->listProfilesWithHttpInfo($include_over_limit, $contentType);
+        list($response) = $this->listProfilesWithHttpInfo($include_over_limit, $name, $limit, $skip, $contentType);
         return $response;
     }
 
@@ -1061,15 +1077,18 @@ class ProfilesApi
      * List profiles
      *
      * @param  bool|null $include_over_limit When true, includes over-limit profiles (marked with isOverLimit: true). (optional, default to false)
+     * @param  string|null $name Exact-match filter on the profile name. Useful to recover a profile id after an ambiguous create (timeout followed by a 409 on retry). (optional)
+     * @param  int|null $limit Page size. When limit or skip is present, the response includes total and skip (and echoes limit). (optional)
+     * @param  int|null $skip Number of profiles to skip, applied after sorting and filtering. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProfiles'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ProfilesListResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ProfilesListResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listProfilesWithHttpInfo($include_over_limit = false, string $contentType = self::contentTypes['listProfiles'][0])
+    public function listProfilesWithHttpInfo($include_over_limit = false, $name = null, $limit = null, $skip = null, string $contentType = self::contentTypes['listProfiles'][0])
     {
-        $request = $this->listProfilesRequest($include_over_limit, $contentType);
+        $request = $this->listProfilesRequest($include_over_limit, $name, $limit, $skip, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1098,6 +1117,12 @@ class ProfilesApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\ProfilesListResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -1139,6 +1164,14 @@ class ProfilesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1160,14 +1193,17 @@ class ProfilesApi
      * List profiles
      *
      * @param  bool|null $include_over_limit When true, includes over-limit profiles (marked with isOverLimit: true). (optional, default to false)
+     * @param  string|null $name Exact-match filter on the profile name. Useful to recover a profile id after an ambiguous create (timeout followed by a 409 on retry). (optional)
+     * @param  int|null $limit Page size. When limit or skip is present, the response includes total and skip (and echoes limit). (optional)
+     * @param  int|null $skip Number of profiles to skip, applied after sorting and filtering. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProfiles'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listProfilesAsync($include_over_limit = false, string $contentType = self::contentTypes['listProfiles'][0])
+    public function listProfilesAsync($include_over_limit = false, $name = null, $limit = null, $skip = null, string $contentType = self::contentTypes['listProfiles'][0])
     {
-        return $this->listProfilesAsyncWithHttpInfo($include_over_limit, $contentType)
+        return $this->listProfilesAsyncWithHttpInfo($include_over_limit, $name, $limit, $skip, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1181,15 +1217,18 @@ class ProfilesApi
      * List profiles
      *
      * @param  bool|null $include_over_limit When true, includes over-limit profiles (marked with isOverLimit: true). (optional, default to false)
+     * @param  string|null $name Exact-match filter on the profile name. Useful to recover a profile id after an ambiguous create (timeout followed by a 409 on retry). (optional)
+     * @param  int|null $limit Page size. When limit or skip is present, the response includes total and skip (and echoes limit). (optional)
+     * @param  int|null $skip Number of profiles to skip, applied after sorting and filtering. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProfiles'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listProfilesAsyncWithHttpInfo($include_over_limit = false, string $contentType = self::contentTypes['listProfiles'][0])
+    public function listProfilesAsyncWithHttpInfo($include_over_limit = false, $name = null, $limit = null, $skip = null, string $contentType = self::contentTypes['listProfiles'][0])
     {
         $returnType = '\Zernio\Model\ProfilesListResponse';
-        $request = $this->listProfilesRequest($include_over_limit, $contentType);
+        $request = $this->listProfilesRequest($include_over_limit, $name, $limit, $skip, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1231,15 +1270,30 @@ class ProfilesApi
      * Create request for operation 'listProfiles'
      *
      * @param  bool|null $include_over_limit When true, includes over-limit profiles (marked with isOverLimit: true). (optional, default to false)
+     * @param  string|null $name Exact-match filter on the profile name. Useful to recover a profile id after an ambiguous create (timeout followed by a 409 on retry). (optional)
+     * @param  int|null $limit Page size. When limit or skip is present, the response includes total and skip (and echoes limit). (optional)
+     * @param  int|null $skip Number of profiles to skip, applied after sorting and filtering. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProfiles'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listProfilesRequest($include_over_limit = false, string $contentType = self::contentTypes['listProfiles'][0])
+    public function listProfilesRequest($include_over_limit = false, $name = null, $limit = null, $skip = null, string $contentType = self::contentTypes['listProfiles'][0])
     {
 
 
+
+        if ($limit !== null && $limit > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling ProfilesApi.listProfiles, must be smaller than or equal to 1000.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling ProfilesApi.listProfiles, must be bigger than or equal to 1.');
+        }
+        
+        if ($skip !== null && $skip < 0) {
+            throw new \InvalidArgumentException('invalid value for "$skip" when calling ProfilesApi.listProfiles, must be bigger than or equal to 0.');
+        }
+        
 
         $resourcePath = '/v1/profiles';
         $formParams = [];
@@ -1253,6 +1307,33 @@ class ProfilesApi
             $include_over_limit,
             'includeOverLimit', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $name,
+            'name', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $skip,
+            'skip', // param base name
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
