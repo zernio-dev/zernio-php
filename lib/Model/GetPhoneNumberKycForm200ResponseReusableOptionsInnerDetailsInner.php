@@ -1,6 +1,6 @@
 <?php
 /**
- * GetPhoneNumberKycForm200ResponseReusableOptionsInner
+ * GetPhoneNumberKycForm200ResponseReusableOptionsInnerDetailsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetPhoneNumberKycForm200ResponseReusableOptionsInner Class Doc Comment
+ * GetPhoneNumberKycForm200ResponseReusableOptionsInnerDetailsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetPhoneNumberKycForm200ResponseReusableOptionsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetPhoneNumberKycForm200ResponseReusableOptionsInnerDetailsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetPhoneNumberKycForm200ResponseReusableOptionsInner implements ModelInter
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getPhoneNumberKycForm_200_response_reusable_options_inner';
+    protected static $openAPIModelName = 'getPhoneNumberKycForm_200_response_reusable_options_inner_details_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,9 @@ class GetPhoneNumberKycForm200ResponseReusableOptionsInner implements ModelInter
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'from_phone_number' => 'string',
-        'instant' => 'bool',
-        'details' => '\Zernio\Model\GetPhoneNumberKycForm200ResponseReusableOptionsInnerDetailsInner[]'
+        'label' => 'string',
+        'value' => 'string',
+        'document_id' => 'string'
     ];
 
     /**
@@ -72,10 +71,9 @@ class GetPhoneNumberKycForm200ResponseReusableOptionsInner implements ModelInter
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'from_phone_number' => null,
-        'instant' => null,
-        'details' => null
+        'label' => null,
+        'value' => null,
+        'document_id' => null
     ];
 
     /**
@@ -84,10 +82,9 @@ class GetPhoneNumberKycForm200ResponseReusableOptionsInner implements ModelInter
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'from_phone_number' => false,
-        'instant' => false,
-        'details' => false
+        'label' => false,
+        'value' => false,
+        'document_id' => false
     ];
 
     /**
@@ -176,10 +173,9 @@ class GetPhoneNumberKycForm200ResponseReusableOptionsInner implements ModelInter
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'from_phone_number' => 'fromPhoneNumber',
-        'instant' => 'instant',
-        'details' => 'details'
+        'label' => 'label',
+        'value' => 'value',
+        'document_id' => 'documentId'
     ];
 
     /**
@@ -188,10 +184,9 @@ class GetPhoneNumberKycForm200ResponseReusableOptionsInner implements ModelInter
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'from_phone_number' => 'setFromPhoneNumber',
-        'instant' => 'setInstant',
-        'details' => 'setDetails'
+        'label' => 'setLabel',
+        'value' => 'setValue',
+        'document_id' => 'setDocumentId'
     ];
 
     /**
@@ -200,10 +195,9 @@ class GetPhoneNumberKycForm200ResponseReusableOptionsInner implements ModelInter
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'from_phone_number' => 'getFromPhoneNumber',
-        'instant' => 'getInstant',
-        'details' => 'getDetails'
+        'label' => 'getLabel',
+        'value' => 'getValue',
+        'document_id' => 'getDocumentId'
     ];
 
     /**
@@ -263,10 +257,9 @@ class GetPhoneNumberKycForm200ResponseReusableOptionsInner implements ModelInter
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('from_phone_number', $data ?? [], null);
-        $this->setIfExists('instant', $data ?? [], null);
-        $this->setIfExists('details', $data ?? [], null);
+        $this->setIfExists('label', $data ?? [], null);
+        $this->setIfExists('value', $data ?? [], null);
+        $this->setIfExists('document_id', $data ?? [], null);
     }
 
     /**
@@ -312,109 +305,82 @@ class GetPhoneNumberKycForm200ResponseReusableOptionsInner implements ModelInter
 
 
     /**
-     * Gets id
+     * Gets label
      *
      * @return string|null
      */
-    public function getId()
+    public function getLabel()
     {
-        return $this->container['id'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets id
+     * Sets label
      *
-     * @param string|null $id Opaque option id — pass as `reuseOptionId` on POST. Stable selection key (a phone number is not unique across verifications).
+     * @param string|null $label label
      *
      * @return self
      */
-    public function setId($id)
+    public function setLabel($label)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($label)) {
+            throw new \InvalidArgumentException('non-nullable label cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['label'] = $label;
 
         return $this;
     }
 
     /**
-     * Gets from_phone_number
+     * Gets value
      *
      * @return string|null
      */
-    public function getFromPhoneNumber()
+    public function getValue()
     {
-        return $this->container['from_phone_number'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets from_phone_number
+     * Sets value
      *
-     * @param string|null $from_phone_number Display only — the number this verification was submitted for. Not a selection key.
+     * @param string|null $value value
      *
      * @return self
      */
-    public function setFromPhoneNumber($from_phone_number)
+    public function setValue($value)
     {
-        if (is_null($from_phone_number)) {
-            throw new \InvalidArgumentException('non-nullable from_phone_number cannot be null');
+        if (is_null($value)) {
+            throw new \InvalidArgumentException('non-nullable value cannot be null');
         }
-        $this->container['from_phone_number'] = $from_phone_number;
+        $this->container['value'] = $value;
 
         return $this;
     }
 
     /**
-     * Gets instant
+     * Gets document_id
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getInstant()
+    public function getDocumentId()
     {
-        return $this->container['instant'];
+        return $this->container['document_id'];
     }
 
     /**
-     * Sets instant
+     * Sets document_id
      *
-     * @param bool|null $instant true = group-approved, a new order activates in minutes; false = documents are reused but the order still queues for carrier review (1-3 days).
+     * @param string|null $document_id Present on document rows — the Telnyx document id. GET /v1/whatsapp/phone-numbers/kyc/document/{documentId} streams it (auth-scoped, inline PDF).
      *
      * @return self
      */
-    public function setInstant($instant)
+    public function setDocumentId($document_id)
     {
-        if (is_null($instant)) {
-            throw new \InvalidArgumentException('non-nullable instant cannot be null');
+        if (is_null($document_id)) {
+            throw new \InvalidArgumentException('non-nullable document_id cannot be null');
         }
-        $this->container['instant'] = $instant;
-
-        return $this;
-    }
-
-    /**
-     * Gets details
-     *
-     * @return \Zernio\Model\GetPhoneNumberKycForm200ResponseReusableOptionsInnerDetailsInner[]|null
-     */
-    public function getDetails()
-    {
-        return $this->container['details'];
-    }
-
-    /**
-     * Sets details
-     *
-     * @param \Zernio\Model\GetPhoneNumberKycForm200ResponseReusableOptionsInnerDetailsInner[]|null $details details
-     *
-     * @return self
-     */
-    public function setDetails($details)
-    {
-        if (is_null($details)) {
-            throw new \InvalidArgumentException('non-nullable details cannot be null');
-        }
-        $this->container['details'] = $details;
+        $this->container['document_id'] = $document_id;
 
         return $this;
     }

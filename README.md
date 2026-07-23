@@ -372,6 +372,7 @@ Class | Method | HTTP request | Description
 *PhoneNumbersApi* | [**uploadPhoneNumberKycDocument**](docs/Api/PhoneNumbersApi.md#uploadphonenumberkycdocument) | **POST** /v1/phone-numbers/kyc/upload-document | Upload a KYC document
 *PhoneNumbersApi* | [**uploadPhoneNumberPortInDocument**](docs/Api/PhoneNumbersApi.md#uploadphonenumberportindocument) | **POST** /v1/phone-numbers/port-in/documents | Upload a porting document
 *PhoneNumbersApi* | [**validatePhoneNumberKycAddress**](docs/Api/PhoneNumbersApi.md#validatephonenumberkycaddress) | **POST** /v1/phone-numbers/kyc/validate-address | Pre-validate KYC address
+*PhoneNumbersApi* | [**viewPhoneNumberKycDocument**](docs/Api/PhoneNumbersApi.md#viewphonenumberkycdocument) | **GET** /v1/phone-numbers/kyc/document/{documentId} | View a KYC document on file
 *PostsApi* | [**bulkUploadPosts**](docs/Api/PostsApi.md#bulkuploadposts) | **POST** /v1/posts/bulk-upload | Bulk upload from CSV
 *PostsApi* | [**createPost**](docs/Api/PostsApi.md#createpost) | **POST** /v1/posts | Create post
 *PostsApi* | [**deletePost**](docs/Api/PostsApi.md#deletepost) | **DELETE** /v1/posts/{postId} | Delete post
@@ -1170,6 +1171,7 @@ Class | Method | HTTP request | Description
 - [GetPhoneNumberKycForm200ResponseReusable](docs/Model/GetPhoneNumberKycForm200ResponseReusable.md)
 - [GetPhoneNumberKycForm200ResponseReusableDetailsInner](docs/Model/GetPhoneNumberKycForm200ResponseReusableDetailsInner.md)
 - [GetPhoneNumberKycForm200ResponseReusableOptionsInner](docs/Model/GetPhoneNumberKycForm200ResponseReusableOptionsInner.md)
+- [GetPhoneNumberKycForm200ResponseReusableOptionsInnerDetailsInner](docs/Model/GetPhoneNumberKycForm200ResponseReusableOptionsInnerDetailsInner.md)
 - [GetPhoneNumberPortInOrderRequirements200Response](docs/Model/GetPhoneNumberPortInOrderRequirements200Response.md)
 - [GetPhoneNumberPortInOrderRequirements200ResponseRequirementsInner](docs/Model/GetPhoneNumberPortInOrderRequirements200ResponseRequirementsInner.md)
 - [GetPhoneNumberPortInRequirements200Response](docs/Model/GetPhoneNumberPortInRequirements200Response.md)

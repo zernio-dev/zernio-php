@@ -28,6 +28,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**uploadPhoneNumberKycDocument()**](PhoneNumbersApi.md#uploadPhoneNumberKycDocument) | **POST** /v1/phone-numbers/kyc/upload-document | Upload a KYC document |
 | [**uploadPhoneNumberPortInDocument()**](PhoneNumbersApi.md#uploadPhoneNumberPortInDocument) | **POST** /v1/phone-numbers/port-in/documents | Upload a porting document |
 | [**validatePhoneNumberKycAddress()**](PhoneNumbersApi.md#validatePhoneNumberKycAddress) | **POST** /v1/phone-numbers/kyc/validate-address | Pre-validate KYC address |
+| [**viewPhoneNumberKycDocument()**](PhoneNumbersApi.md#viewPhoneNumberKycDocument) | **GET** /v1/phone-numbers/kyc/document/{documentId} | View a KYC document on file |
 
 
 ## `cancelPhoneNumberPortIn()`
@@ -1365,6 +1366,66 @@ try {
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `viewPhoneNumberKycDocument()`
+
+```php
+viewPhoneNumberKycDocument($document_id): \SplFileObject
+```
+
+View a KYC document on file
+
+Stream a document backing a reusable verification (the `documentId` values from GET /v1/phone-numbers/kyc `reusable.options[].details[]`), so the account holder can see what's on file before reusing it. Returned inline as `application/pdf` (uploads are normalized to PDF). Auth-scoped: a document is viewable only when its id is referenced by one of the caller's own numbers — otherwise `404`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\PhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$document_id = 'document_id_example'; // string | The Telnyx document id (from `reusable.options[].details[].documentId`).
+
+try {
+    $result = $apiInstance->viewPhoneNumberKycDocument($document_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PhoneNumbersApi->viewPhoneNumberKycDocument: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **document_id** | **string**| The Telnyx document id (from &#x60;reusable.options[].details[].documentId&#x60;). | |
+
+### Return type
+
+**\SplFileObject**
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/pdf`, `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
