@@ -366,6 +366,7 @@ Class | Method | HTTP request | Description
 *PhoneNumbersApi* | [**purchasePhoneNumber**](docs/Api/PhoneNumbersApi.md#purchasephonenumber) | **POST** /v1/phone-numbers/purchase | Purchase phone number
 *PhoneNumbersApi* | [**releasePhoneNumber**](docs/Api/PhoneNumbersApi.md#releasephonenumber) | **DELETE** /v1/phone-numbers/{id} | Release phone number
 *PhoneNumbersApi* | [**remediatePhoneNumber**](docs/Api/PhoneNumbersApi.md#remediatephonenumber) | **POST** /v1/phone-numbers/{id}/remediate | Resubmit a declined number
+*PhoneNumbersApi* | [**replyToPhoneNumberReviewer**](docs/Api/PhoneNumbersApi.md#replytophonenumberreviewer) | **POST** /v1/phone-numbers/{id}/remediate/reply | Reply to the regulatory reviewer
 *PhoneNumbersApi* | [**reviewPhoneNumberKycPacket**](docs/Api/PhoneNumbersApi.md#reviewphonenumberkycpacket) | **POST** /v1/phone-numbers/kyc/review-packet | Pre-review a KYC packet
 *PhoneNumbersApi* | [**searchAvailablePhoneNumbers**](docs/Api/PhoneNumbersApi.md#searchavailablephonenumbers) | **GET** /v1/phone-numbers/available | Search available numbers
 *PhoneNumbersApi* | [**submitPhoneNumberKyc**](docs/Api/PhoneNumbersApi.md#submitphonenumberkyc) | **POST** /v1/phone-numbers/kyc | Submit KYC
@@ -1582,6 +1583,9 @@ Class | Method | HTTP request | Description
 - [ReplyToInboxReviewRequest](docs/Model/ReplyToInboxReviewRequest.md)
 - [ReplyToMention200Response](docs/Model/ReplyToMention200Response.md)
 - [ReplyToMentionRequest](docs/Model/ReplyToMentionRequest.md)
+- [ReplyToPhoneNumberReviewer200Response](docs/Model/ReplyToPhoneNumberReviewer200Response.md)
+- [ReplyToPhoneNumberReviewerRequest](docs/Model/ReplyToPhoneNumberReviewerRequest.md)
+- [ReplyToPhoneNumberReviewerRequestAttachmentsInner](docs/Model/ReplyToPhoneNumberReviewerRequestAttachmentsInner.md)
 - [RequestSmsSenderIdLimitIncrease200Response](docs/Model/RequestSmsSenderIdLimitIncrease200Response.md)
 - [RequestSmsSenderIdLimitIncreaseRequest](docs/Model/RequestSmsSenderIdLimitIncreaseRequest.md)
 - [ResendSmsRegistrationOtp200Response](docs/Model/ResendSmsRegistrationOtp200Response.md)

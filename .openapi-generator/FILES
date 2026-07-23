@@ -1070,6 +1070,9 @@ docs/Model/ReplyToInboxReview200Response.md
 docs/Model/ReplyToInboxReviewRequest.md
 docs/Model/ReplyToMention200Response.md
 docs/Model/ReplyToMentionRequest.md
+docs/Model/ReplyToPhoneNumberReviewer200Response.md
+docs/Model/ReplyToPhoneNumberReviewerRequest.md
+docs/Model/ReplyToPhoneNumberReviewerRequestAttachmentsInner.md
 docs/Model/RequestSmsSenderIdLimitIncrease200Response.md
 docs/Model/RequestSmsSenderIdLimitIncreaseRequest.md
 docs/Model/ResendSmsRegistrationOtp200Response.md
@@ -2629,6 +2632,9 @@ lib/Model/ReplyToInboxReview200Response.php
 lib/Model/ReplyToInboxReviewRequest.php
 lib/Model/ReplyToMention200Response.php
 lib/Model/ReplyToMentionRequest.php
+lib/Model/ReplyToPhoneNumberReviewer200Response.php
+lib/Model/ReplyToPhoneNumberReviewerRequest.php
+lib/Model/ReplyToPhoneNumberReviewerRequestAttachmentsInner.php
 lib/Model/RequestSmsSenderIdLimitIncrease200Response.php
 lib/Model/RequestSmsSenderIdLimitIncreaseRequest.php
 lib/Model/ResendSmsRegistrationOtp200Response.php
@@ -3117,4 +3123,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetPhoneNumberKycForm200ResponseReusableOptionsInnerDetailsInnerTest.php
+test/Model/ReplyToPhoneNumberReviewer200ResponseTest.php
+test/Model/ReplyToPhoneNumberReviewerRequestAttachmentsInnerTest.php
+test/Model/ReplyToPhoneNumberReviewerRequestTest.php

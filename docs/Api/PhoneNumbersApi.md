@@ -22,6 +22,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**purchasePhoneNumber()**](PhoneNumbersApi.md#purchasePhoneNumber) | **POST** /v1/phone-numbers/purchase | Purchase phone number |
 | [**releasePhoneNumber()**](PhoneNumbersApi.md#releasePhoneNumber) | **DELETE** /v1/phone-numbers/{id} | Release phone number |
 | [**remediatePhoneNumber()**](PhoneNumbersApi.md#remediatePhoneNumber) | **POST** /v1/phone-numbers/{id}/remediate | Resubmit a declined number |
+| [**replyToPhoneNumberReviewer()**](PhoneNumbersApi.md#replyToPhoneNumberReviewer) | **POST** /v1/phone-numbers/{id}/remediate/reply | Reply to the regulatory reviewer |
 | [**reviewPhoneNumberKycPacket()**](PhoneNumbersApi.md#reviewPhoneNumberKycPacket) | **POST** /v1/phone-numbers/kyc/review-packet | Pre-review a KYC packet |
 | [**searchAvailablePhoneNumbers()**](PhoneNumbersApi.md#searchAvailablePhoneNumbers) | **GET** /v1/phone-numbers/available | Search available numbers |
 | [**submitPhoneNumberKyc()**](PhoneNumbersApi.md#submitPhoneNumberKyc) | **POST** /v1/phone-numbers/kyc | Submit KYC |
@@ -981,6 +982,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\RemediatePhoneNumber200Response**](../Model/RemediatePhoneNumber200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `replyToPhoneNumberReviewer()`
+
+```php
+replyToPhoneNumberReviewer($id, $reply_to_phone_number_reviewer_request): \Zernio\Model\ReplyToPhoneNumberReviewer200Response
+```
+
+Reply to the regulatory reviewer
+
+Post a free-text reply (with optional file attachments) to the reviewer on a number awaiting remediation — for asks the structured form can't express (e.g. \"is this personal or business?\"). Attachments are stored by us and their links are added to the reviewer's comment thread (the carrier's number order takes no loose files). A reply to a comment-style ask moves the number back to \"in review\"; a reply on a formal decline is supplementary and you must still resubmit the fix. Requires text or at least one attachment.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\PhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+$reply_to_phone_number_reviewer_request = new \Zernio\Model\ReplyToPhoneNumberReviewerRequest(); // \Zernio\Model\ReplyToPhoneNumberReviewerRequest
+
+try {
+    $result = $apiInstance->replyToPhoneNumberReviewer($id, $reply_to_phone_number_reviewer_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PhoneNumbersApi->replyToPhoneNumberReviewer: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**|  | |
+| **reply_to_phone_number_reviewer_request** | [**\Zernio\Model\ReplyToPhoneNumberReviewerRequest**](../Model/ReplyToPhoneNumberReviewerRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ReplyToPhoneNumberReviewer200Response**](../Model/ReplyToPhoneNumberReviewer200Response.md)
 
 ### Authorization
 
