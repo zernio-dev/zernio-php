@@ -66,6 +66,7 @@ class YouTubeDemographicsResponse implements ModelInterface, ArrayAccess, \JsonS
         'published_at' => '\DateTime',
         'demographics' => 'array<string,\Zernio\Model\YouTubeDemographicsResponseDemographicsValueInner[]>',
         'date_range' => '\Zernio\Model\YouTubeDemographicsResponseDateRange',
+        'provisional_since' => '\DateTime',
         'note' => 'string'
     ];
 
@@ -85,6 +86,7 @@ class YouTubeDemographicsResponse implements ModelInterface, ArrayAccess, \JsonS
         'published_at' => 'date-time',
         'demographics' => null,
         'date_range' => null,
+        'provisional_since' => 'date',
         'note' => null
     ];
 
@@ -102,6 +104,7 @@ class YouTubeDemographicsResponse implements ModelInterface, ArrayAccess, \JsonS
         'published_at' => true,
         'demographics' => false,
         'date_range' => false,
+        'provisional_since' => false,
         'note' => false
     ];
 
@@ -199,6 +202,7 @@ class YouTubeDemographicsResponse implements ModelInterface, ArrayAccess, \JsonS
         'published_at' => 'publishedAt',
         'demographics' => 'demographics',
         'date_range' => 'dateRange',
+        'provisional_since' => 'provisionalSince',
         'note' => 'note'
     ];
 
@@ -216,6 +220,7 @@ class YouTubeDemographicsResponse implements ModelInterface, ArrayAccess, \JsonS
         'published_at' => 'setPublishedAt',
         'demographics' => 'setDemographics',
         'date_range' => 'setDateRange',
+        'provisional_since' => 'setProvisionalSince',
         'note' => 'setNote'
     ];
 
@@ -233,6 +238,7 @@ class YouTubeDemographicsResponse implements ModelInterface, ArrayAccess, \JsonS
         'published_at' => 'getPublishedAt',
         'demographics' => 'getDemographics',
         'date_range' => 'getDateRange',
+        'provisional_since' => 'getProvisionalSince',
         'note' => 'getNote'
     ];
 
@@ -301,6 +307,7 @@ class YouTubeDemographicsResponse implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('published_at', $data ?? [], null);
         $this->setIfExists('demographics', $data ?? [], null);
         $this->setIfExists('date_range', $data ?? [], null);
+        $this->setIfExists('provisional_since', $data ?? [], null);
         $this->setIfExists('note', $data ?? [], null);
     }
 
@@ -572,6 +579,33 @@ class YouTubeDemographicsResponse implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable date_range cannot be null');
         }
         $this->container['date_range'] = $date_range;
+
+        return $this;
+    }
+
+    /**
+     * Gets provisional_since
+     *
+     * @return \DateTime|null
+     */
+    public function getProvisionalSince()
+    {
+        return $this->container['provisional_since'];
+    }
+
+    /**
+     * Sets provisional_since
+     *
+     * @param \DateTime|null $provisional_since Present only when the range reaches into YouTube's ~3-day processing window: the first date whose numbers are provisional and may still be revised by YouTube.
+     *
+     * @return self
+     */
+    public function setProvisionalSince($provisional_since)
+    {
+        if (is_null($provisional_since)) {
+            throw new \InvalidArgumentException('non-nullable provisional_since cannot be null');
+        }
+        $this->container['provisional_since'] = $provisional_since;
 
         return $this;
     }

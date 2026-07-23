@@ -62,6 +62,7 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
         'video_id' => 'string',
         'duration_seconds' => 'int',
         'date_range' => '\Zernio\Model\YouTubeDailyViewsResponseDateRange',
+        'provisional_since' => '\DateTime',
         'total_views' => 'int',
         'daily_views' => '\Zernio\Model\YouTubeDailyViewsResponseDailyViewsInner[]',
         'last_synced_at' => '\DateTime',
@@ -80,6 +81,7 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
         'video_id' => null,
         'duration_seconds' => null,
         'date_range' => null,
+        'provisional_since' => 'date',
         'total_views' => null,
         'daily_views' => null,
         'last_synced_at' => 'date-time',
@@ -96,6 +98,7 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
         'video_id' => false,
         'duration_seconds' => true,
         'date_range' => false,
+        'provisional_since' => false,
         'total_views' => false,
         'daily_views' => false,
         'last_synced_at' => true,
@@ -192,6 +195,7 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
         'video_id' => 'videoId',
         'duration_seconds' => 'durationSeconds',
         'date_range' => 'dateRange',
+        'provisional_since' => 'provisionalSince',
         'total_views' => 'totalViews',
         'daily_views' => 'dailyViews',
         'last_synced_at' => 'lastSyncedAt',
@@ -208,6 +212,7 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
         'video_id' => 'setVideoId',
         'duration_seconds' => 'setDurationSeconds',
         'date_range' => 'setDateRange',
+        'provisional_since' => 'setProvisionalSince',
         'total_views' => 'setTotalViews',
         'daily_views' => 'setDailyViews',
         'last_synced_at' => 'setLastSyncedAt',
@@ -224,6 +229,7 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
         'video_id' => 'getVideoId',
         'duration_seconds' => 'getDurationSeconds',
         'date_range' => 'getDateRange',
+        'provisional_since' => 'getProvisionalSince',
         'total_views' => 'getTotalViews',
         'daily_views' => 'getDailyViews',
         'last_synced_at' => 'getLastSyncedAt',
@@ -291,6 +297,7 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('video_id', $data ?? [], null);
         $this->setIfExists('duration_seconds', $data ?? [], null);
         $this->setIfExists('date_range', $data ?? [], null);
+        $this->setIfExists('provisional_since', $data ?? [], null);
         $this->setIfExists('total_views', $data ?? [], null);
         $this->setIfExists('daily_views', $data ?? [], null);
         $this->setIfExists('last_synced_at', $data ?? [], null);
@@ -450,6 +457,33 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable date_range cannot be null');
         }
         $this->container['date_range'] = $date_range;
+
+        return $this;
+    }
+
+    /**
+     * Gets provisional_since
+     *
+     * @return \DateTime|null
+     */
+    public function getProvisionalSince()
+    {
+        return $this->container['provisional_since'];
+    }
+
+    /**
+     * Sets provisional_since
+     *
+     * @param \DateTime|null $provisional_since Present only when the range reaches into YouTube's ~3-day processing window: the first date whose numbers are provisional and may still be revised by YouTube.
+     *
+     * @return self
+     */
+    public function setProvisionalSince($provisional_since)
+    {
+        if (is_null($provisional_since)) {
+            throw new \InvalidArgumentException('non-nullable provisional_since cannot be null');
+        }
+        $this->container['provisional_since'] = $provisional_since;
 
         return $this;
     }

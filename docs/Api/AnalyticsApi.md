@@ -1386,7 +1386,7 @@ getYouTubeDailyViews($video_id, $account_id, $start_date, $end_date): \Zernio\Mo
 
 Get YouTube daily views
 
-Returns daily view counts for a YouTube video including views, watch time, and subscriber changes. Requires yt-analytics.readonly scope (re-authorization may be needed). Data has a 2-3 day delay. Max 90 days, defaults to last 30 days.
+Returns daily view counts for a YouTube video including views, watch time, and subscriber changes. Requires yt-analytics.readonly scope (re-authorization may be needed). YouTube finalizes analytics with a ~3-day delay; by default only finalized days are returned, and an explicit endDate can reach into the delay window (see the endDate parameter). Max 90 days, defaults to last 30 days.
 
 ### Example
 
@@ -1408,7 +1408,7 @@ $apiInstance = new Zernio\Api\AnalyticsApi(
 $video_id = 'video_id_example'; // string | The YouTube video ID (e.g., \"dQw4w9WgXcQ\")
 $account_id = 'account_id_example'; // string | The Zernio account ID for the YouTube account
 $start_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start date (YYYY-MM-DD). Defaults to 30 days ago.
-$end_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date (YYYY-MM-DD). Defaults to 3 days ago (YouTube data latency).
+$end_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date (YYYY-MM-DD). Defaults to 3 days ago, the newest fully finalized day (YouTube finalizes analytics with a ~3-day delay). An explicit endDate is honored up to today: days inside the delay window are provisional and may still be revised by YouTube (see provisionalSince in the response), and days YouTube has not processed yet are omitted from dailyViews.
 
 try {
     $result = $apiInstance->getYouTubeDailyViews($video_id, $account_id, $start_date, $end_date);
@@ -1425,7 +1425,7 @@ try {
 | **video_id** | **string**| The YouTube video ID (e.g., \&quot;dQw4w9WgXcQ\&quot;) | |
 | **account_id** | **string**| The Zernio account ID for the YouTube account | |
 | **start_date** | **\DateTime**| Start date (YYYY-MM-DD). Defaults to 30 days ago. | [optional] |
-| **end_date** | **\DateTime**| End date (YYYY-MM-DD). Defaults to 3 days ago (YouTube data latency). | [optional] |
+| **end_date** | **\DateTime**| End date (YYYY-MM-DD). Defaults to 3 days ago, the newest fully finalized day (YouTube finalizes analytics with a ~3-day delay). An explicit endDate is honored up to today: days inside the delay window are provisional and may still be revised by YouTube (see provisionalSince in the response), and days YouTube has not processed yet are omitted from dailyViews. | [optional] |
 
 ### Return type
 
@@ -1475,7 +1475,7 @@ $account_id = 'account_id_example'; // string | The Zernio SocialAccount ID for 
 $video_id = 'video_id_example'; // string | YouTube video ID. When provided, demographics are scoped to this single video (must belong to the connected channel; otherwise 404 video_not_found).
 $breakdown = 'breakdown_example'; // string | Comma-separated list of demographic dimensions: age, gender, country. Defaults to all three if omitted.
 $start_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start date in YYYY-MM-DD format. Defaults to 90 days ago, or to the video's publish date (lifetime) when videoId is provided.
-$end_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date in YYYY-MM-DD format. Defaults to 3 days ago (YouTube data latency).
+$end_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date (YYYY-MM-DD). Defaults to 3 days ago, the newest fully finalized day (YouTube finalizes analytics with a ~3-day delay). An explicit endDate is honored up to today: days inside the delay window are provisional and may still be revised by YouTube (see provisionalSince in the response).
 
 try {
     $result = $apiInstance->getYouTubeDemographics($account_id, $video_id, $breakdown, $start_date, $end_date);
@@ -1493,7 +1493,7 @@ try {
 | **video_id** | **string**| YouTube video ID. When provided, demographics are scoped to this single video (must belong to the connected channel; otherwise 404 video_not_found). | [optional] |
 | **breakdown** | **string**| Comma-separated list of demographic dimensions: age, gender, country. Defaults to all three if omitted. | [optional] |
 | **start_date** | **\DateTime**| Start date in YYYY-MM-DD format. Defaults to 90 days ago, or to the video&#39;s publish date (lifetime) when videoId is provided. | [optional] |
-| **end_date** | **\DateTime**| End date in YYYY-MM-DD format. Defaults to 3 days ago (YouTube data latency). | [optional] |
+| **end_date** | **\DateTime**| End date (YYYY-MM-DD). Defaults to 3 days ago, the newest fully finalized day (YouTube finalizes analytics with a ~3-day delay). An explicit endDate is honored up to today: days inside the delay window are provisional and may still be revised by YouTube (see provisionalSince in the response). | [optional] |
 
 ### Return type
 
@@ -1542,7 +1542,7 @@ $apiInstance = new Zernio\Api\AnalyticsApi(
 $video_id = 'video_id_example'; // string | The YouTube video ID (e.g., \"dQw4w9WgXcQ\")
 $account_id = 'account_id_example'; // string | The Zernio account ID for the YouTube account
 $start_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start date (YYYY-MM-DD). Defaults to the video's publish date (lifetime curve).
-$end_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date (YYYY-MM-DD). Defaults to 3 days ago (YouTube data latency).
+$end_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date (YYYY-MM-DD). Defaults to 3 days ago, the newest fully finalized day (YouTube finalizes analytics with a ~3-day delay). An explicit endDate is honored up to today: days inside the delay window are provisional and may still be revised by YouTube (see provisionalSince in the response).
 
 try {
     $result = $apiInstance->getYouTubeVideoRetention($video_id, $account_id, $start_date, $end_date);
@@ -1559,7 +1559,7 @@ try {
 | **video_id** | **string**| The YouTube video ID (e.g., \&quot;dQw4w9WgXcQ\&quot;) | |
 | **account_id** | **string**| The Zernio account ID for the YouTube account | |
 | **start_date** | **\DateTime**| Start date (YYYY-MM-DD). Defaults to the video&#39;s publish date (lifetime curve). | [optional] |
-| **end_date** | **\DateTime**| End date (YYYY-MM-DD). Defaults to 3 days ago (YouTube data latency). | [optional] |
+| **end_date** | **\DateTime**| End date (YYYY-MM-DD). Defaults to 3 days ago, the newest fully finalized day (YouTube finalizes analytics with a ~3-day delay). An explicit endDate is honored up to today: days inside the delay window are provisional and may still be revised by YouTube (see provisionalSince in the response). | [optional] |
 
 ### Return type
 

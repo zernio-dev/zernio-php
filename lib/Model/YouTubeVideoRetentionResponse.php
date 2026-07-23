@@ -65,6 +65,7 @@ class YouTubeVideoRetentionResponse implements ModelInterface, ArrayAccess, \Jso
         'published_at' => '\DateTime',
         'duration_seconds' => 'int',
         'date_range' => '\Zernio\Model\YouTubeDailyViewsResponseDateRange',
+        'provisional_since' => '\DateTime',
         'retention_curve' => '\Zernio\Model\YouTubeVideoRetentionResponseRetentionCurveInner[]',
         'note' => 'string',
         'scope_status' => '\Zernio\Model\YouTubeDailyViewsResponseScopeStatus'
@@ -85,6 +86,7 @@ class YouTubeVideoRetentionResponse implements ModelInterface, ArrayAccess, \Jso
         'published_at' => 'date-time',
         'duration_seconds' => null,
         'date_range' => null,
+        'provisional_since' => 'date',
         'retention_curve' => null,
         'note' => null,
         'scope_status' => null
@@ -103,6 +105,7 @@ class YouTubeVideoRetentionResponse implements ModelInterface, ArrayAccess, \Jso
         'published_at' => true,
         'duration_seconds' => true,
         'date_range' => false,
+        'provisional_since' => false,
         'retention_curve' => false,
         'note' => false,
         'scope_status' => false
@@ -201,6 +204,7 @@ class YouTubeVideoRetentionResponse implements ModelInterface, ArrayAccess, \Jso
         'published_at' => 'publishedAt',
         'duration_seconds' => 'durationSeconds',
         'date_range' => 'dateRange',
+        'provisional_since' => 'provisionalSince',
         'retention_curve' => 'retentionCurve',
         'note' => 'note',
         'scope_status' => 'scopeStatus'
@@ -219,6 +223,7 @@ class YouTubeVideoRetentionResponse implements ModelInterface, ArrayAccess, \Jso
         'published_at' => 'setPublishedAt',
         'duration_seconds' => 'setDurationSeconds',
         'date_range' => 'setDateRange',
+        'provisional_since' => 'setProvisionalSince',
         'retention_curve' => 'setRetentionCurve',
         'note' => 'setNote',
         'scope_status' => 'setScopeStatus'
@@ -237,6 +242,7 @@ class YouTubeVideoRetentionResponse implements ModelInterface, ArrayAccess, \Jso
         'published_at' => 'getPublishedAt',
         'duration_seconds' => 'getDurationSeconds',
         'date_range' => 'getDateRange',
+        'provisional_since' => 'getProvisionalSince',
         'retention_curve' => 'getRetentionCurve',
         'note' => 'getNote',
         'scope_status' => 'getScopeStatus'
@@ -306,6 +312,7 @@ class YouTubeVideoRetentionResponse implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('published_at', $data ?? [], null);
         $this->setIfExists('duration_seconds', $data ?? [], null);
         $this->setIfExists('date_range', $data ?? [], null);
+        $this->setIfExists('provisional_since', $data ?? [], null);
         $this->setIfExists('retention_curve', $data ?? [], null);
         $this->setIfExists('note', $data ?? [], null);
         $this->setIfExists('scope_status', $data ?? [], null);
@@ -559,6 +566,33 @@ class YouTubeVideoRetentionResponse implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable date_range cannot be null');
         }
         $this->container['date_range'] = $date_range;
+
+        return $this;
+    }
+
+    /**
+     * Gets provisional_since
+     *
+     * @return \DateTime|null
+     */
+    public function getProvisionalSince()
+    {
+        return $this->container['provisional_since'];
+    }
+
+    /**
+     * Sets provisional_since
+     *
+     * @param \DateTime|null $provisional_since Present only when the range reaches into YouTube's ~3-day processing window: the first date whose numbers are provisional and may still be revised by YouTube.
+     *
+     * @return self
+     */
+    public function setProvisionalSince($provisional_since)
+    {
+        if (is_null($provisional_since)) {
+            throw new \InvalidArgumentException('non-nullable provisional_since cannot be null');
+        }
+        $this->container['provisional_since'] = $provisional_since;
 
         return $this;
     }

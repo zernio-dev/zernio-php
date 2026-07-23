@@ -7561,7 +7561,7 @@ class AnalyticsApi
      * @param  string $video_id The YouTube video ID (e.g., \&quot;dQw4w9WgXcQ\&quot;) (required)
      * @param  string $account_id The Zernio account ID for the YouTube account (required)
      * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
-     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago (YouTube data latency). (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago, the newest fully finalized day (YouTube finalizes analytics with a ~3-day delay). An explicit endDate is honored up to today: days inside the delay window are provisional and may still be revised by YouTube (see provisionalSince in the response), and days YouTube has not processed yet are omitted from dailyViews. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeDailyViews'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7582,7 +7582,7 @@ class AnalyticsApi
      * @param  string $video_id The YouTube video ID (e.g., \&quot;dQw4w9WgXcQ\&quot;) (required)
      * @param  string $account_id The Zernio account ID for the YouTube account (required)
      * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
-     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago (YouTube data latency). (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago, the newest fully finalized day (YouTube finalizes analytics with a ~3-day delay). An explicit endDate is honored up to today: days inside the delay window are provisional and may still be revised by YouTube (see provisionalSince in the response), and days YouTube has not processed yet are omitted from dailyViews. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeDailyViews'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7754,7 +7754,7 @@ class AnalyticsApi
      * @param  string $video_id The YouTube video ID (e.g., \&quot;dQw4w9WgXcQ\&quot;) (required)
      * @param  string $account_id The Zernio account ID for the YouTube account (required)
      * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
-     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago (YouTube data latency). (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago, the newest fully finalized day (YouTube finalizes analytics with a ~3-day delay). An explicit endDate is honored up to today: days inside the delay window are provisional and may still be revised by YouTube (see provisionalSince in the response), and days YouTube has not processed yet are omitted from dailyViews. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeDailyViews'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7778,7 +7778,7 @@ class AnalyticsApi
      * @param  string $video_id The YouTube video ID (e.g., \&quot;dQw4w9WgXcQ\&quot;) (required)
      * @param  string $account_id The Zernio account ID for the YouTube account (required)
      * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
-     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago (YouTube data latency). (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago, the newest fully finalized day (YouTube finalizes analytics with a ~3-day delay). An explicit endDate is honored up to today: days inside the delay window are provisional and may still be revised by YouTube (see provisionalSince in the response), and days YouTube has not processed yet are omitted from dailyViews. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeDailyViews'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7831,7 +7831,7 @@ class AnalyticsApi
      * @param  string $video_id The YouTube video ID (e.g., \&quot;dQw4w9WgXcQ\&quot;) (required)
      * @param  string $account_id The Zernio account ID for the YouTube account (required)
      * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
-     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago (YouTube data latency). (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago, the newest fully finalized day (YouTube finalizes analytics with a ~3-day delay). An explicit endDate is honored up to today: days inside the delay window are provisional and may still be revised by YouTube (see provisionalSince in the response), and days YouTube has not processed yet are omitted from dailyViews. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeDailyViews'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7970,7 +7970,7 @@ class AnalyticsApi
      * @param  string|null $video_id YouTube video ID. When provided, demographics are scoped to this single video (must belong to the connected channel; otherwise 404 video_not_found). (optional)
      * @param  string|null $breakdown Comma-separated list of demographic dimensions: age, gender, country. Defaults to all three if omitted. (optional)
      * @param  \DateTime|null $start_date Start date in YYYY-MM-DD format. Defaults to 90 days ago, or to the video&#39;s publish date (lifetime) when videoId is provided. (optional)
-     * @param  \DateTime|null $end_date End date in YYYY-MM-DD format. Defaults to 3 days ago (YouTube data latency). (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago, the newest fully finalized day (YouTube finalizes analytics with a ~3-day delay). An explicit endDate is honored up to today: days inside the delay window are provisional and may still be revised by YouTube (see provisionalSince in the response). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeDemographics'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7992,7 +7992,7 @@ class AnalyticsApi
      * @param  string|null $video_id YouTube video ID. When provided, demographics are scoped to this single video (must belong to the connected channel; otherwise 404 video_not_found). (optional)
      * @param  string|null $breakdown Comma-separated list of demographic dimensions: age, gender, country. Defaults to all three if omitted. (optional)
      * @param  \DateTime|null $start_date Start date in YYYY-MM-DD format. Defaults to 90 days ago, or to the video&#39;s publish date (lifetime) when videoId is provided. (optional)
-     * @param  \DateTime|null $end_date End date in YYYY-MM-DD format. Defaults to 3 days ago (YouTube data latency). (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago, the newest fully finalized day (YouTube finalizes analytics with a ~3-day delay). An explicit endDate is honored up to today: days inside the delay window are provisional and may still be revised by YouTube (see provisionalSince in the response). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeDemographics'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -8165,7 +8165,7 @@ class AnalyticsApi
      * @param  string|null $video_id YouTube video ID. When provided, demographics are scoped to this single video (must belong to the connected channel; otherwise 404 video_not_found). (optional)
      * @param  string|null $breakdown Comma-separated list of demographic dimensions: age, gender, country. Defaults to all three if omitted. (optional)
      * @param  \DateTime|null $start_date Start date in YYYY-MM-DD format. Defaults to 90 days ago, or to the video&#39;s publish date (lifetime) when videoId is provided. (optional)
-     * @param  \DateTime|null $end_date End date in YYYY-MM-DD format. Defaults to 3 days ago (YouTube data latency). (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago, the newest fully finalized day (YouTube finalizes analytics with a ~3-day delay). An explicit endDate is honored up to today: days inside the delay window are provisional and may still be revised by YouTube (see provisionalSince in the response). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeDemographics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8190,7 +8190,7 @@ class AnalyticsApi
      * @param  string|null $video_id YouTube video ID. When provided, demographics are scoped to this single video (must belong to the connected channel; otherwise 404 video_not_found). (optional)
      * @param  string|null $breakdown Comma-separated list of demographic dimensions: age, gender, country. Defaults to all three if omitted. (optional)
      * @param  \DateTime|null $start_date Start date in YYYY-MM-DD format. Defaults to 90 days ago, or to the video&#39;s publish date (lifetime) when videoId is provided. (optional)
-     * @param  \DateTime|null $end_date End date in YYYY-MM-DD format. Defaults to 3 days ago (YouTube data latency). (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago, the newest fully finalized day (YouTube finalizes analytics with a ~3-day delay). An explicit endDate is honored up to today: days inside the delay window are provisional and may still be revised by YouTube (see provisionalSince in the response). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeDemographics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8244,7 +8244,7 @@ class AnalyticsApi
      * @param  string|null $video_id YouTube video ID. When provided, demographics are scoped to this single video (must belong to the connected channel; otherwise 404 video_not_found). (optional)
      * @param  string|null $breakdown Comma-separated list of demographic dimensions: age, gender, country. Defaults to all three if omitted. (optional)
      * @param  \DateTime|null $start_date Start date in YYYY-MM-DD format. Defaults to 90 days ago, or to the video&#39;s publish date (lifetime) when videoId is provided. (optional)
-     * @param  \DateTime|null $end_date End date in YYYY-MM-DD format. Defaults to 3 days ago (YouTube data latency). (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago, the newest fully finalized day (YouTube finalizes analytics with a ~3-day delay). An explicit endDate is honored up to today: days inside the delay window are provisional and may still be revised by YouTube (see provisionalSince in the response). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeDemographics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8386,7 +8386,7 @@ class AnalyticsApi
      * @param  string $video_id The YouTube video ID (e.g., \&quot;dQw4w9WgXcQ\&quot;) (required)
      * @param  string $account_id The Zernio account ID for the YouTube account (required)
      * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). Defaults to the video&#39;s publish date (lifetime curve). (optional)
-     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago (YouTube data latency). (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago, the newest fully finalized day (YouTube finalizes analytics with a ~3-day delay). An explicit endDate is honored up to today: days inside the delay window are provisional and may still be revised by YouTube (see provisionalSince in the response). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeVideoRetention'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -8407,7 +8407,7 @@ class AnalyticsApi
      * @param  string $video_id The YouTube video ID (e.g., \&quot;dQw4w9WgXcQ\&quot;) (required)
      * @param  string $account_id The Zernio account ID for the YouTube account (required)
      * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). Defaults to the video&#39;s publish date (lifetime curve). (optional)
-     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago (YouTube data latency). (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago, the newest fully finalized day (YouTube finalizes analytics with a ~3-day delay). An explicit endDate is honored up to today: days inside the delay window are provisional and may still be revised by YouTube (see provisionalSince in the response). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeVideoRetention'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -8593,7 +8593,7 @@ class AnalyticsApi
      * @param  string $video_id The YouTube video ID (e.g., \&quot;dQw4w9WgXcQ\&quot;) (required)
      * @param  string $account_id The Zernio account ID for the YouTube account (required)
      * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). Defaults to the video&#39;s publish date (lifetime curve). (optional)
-     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago (YouTube data latency). (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago, the newest fully finalized day (YouTube finalizes analytics with a ~3-day delay). An explicit endDate is honored up to today: days inside the delay window are provisional and may still be revised by YouTube (see provisionalSince in the response). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeVideoRetention'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8617,7 +8617,7 @@ class AnalyticsApi
      * @param  string $video_id The YouTube video ID (e.g., \&quot;dQw4w9WgXcQ\&quot;) (required)
      * @param  string $account_id The Zernio account ID for the YouTube account (required)
      * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). Defaults to the video&#39;s publish date (lifetime curve). (optional)
-     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago (YouTube data latency). (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago, the newest fully finalized day (YouTube finalizes analytics with a ~3-day delay). An explicit endDate is honored up to today: days inside the delay window are provisional and may still be revised by YouTube (see provisionalSince in the response). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeVideoRetention'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8670,7 +8670,7 @@ class AnalyticsApi
      * @param  string $video_id The YouTube video ID (e.g., \&quot;dQw4w9WgXcQ\&quot;) (required)
      * @param  string $account_id The Zernio account ID for the YouTube account (required)
      * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). Defaults to the video&#39;s publish date (lifetime curve). (optional)
-     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago (YouTube data latency). (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago, the newest fully finalized day (YouTube finalizes analytics with a ~3-day delay). An explicit endDate is honored up to today: days inside the delay window are provisional and may still be revised by YouTube (see provisionalSince in the response). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeVideoRetention'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

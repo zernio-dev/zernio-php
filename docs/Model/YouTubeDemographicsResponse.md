@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **published_at** | **\DateTime** | Video publish date (video mode only) | [optional]
 **demographics** | **array<string,\Zernio\Model\YouTubeDemographicsResponseDemographicsValueInner[]>** | Object keyed by breakdown dimension (age, gender, country) | [optional]
 **date_range** | [**\Zernio\Model\YouTubeDemographicsResponseDateRange**](YouTubeDemographicsResponseDateRange.md) |  | [optional]
+**provisional_since** | **\DateTime** | Present only when the range reaches into YouTube&#39;s ~3-day processing window: the first date whose numbers are provisional and may still be revised by YouTube. | [optional]
 **note** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
