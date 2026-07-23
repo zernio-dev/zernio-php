@@ -1,6 +1,6 @@
 <?php
 /**
- * BoostPostRequestTracking
+ * BoostPostRequestTrackingUrlTagsInner
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * BoostPostRequestTracking Class Doc Comment
+ * BoostPostRequestTrackingUrlTagsInner Class Doc Comment
  *
  * @category Class
- * @description Meta only. Tracking specs (pixel, URL tags).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BoostPostRequestTracking implements ModelInterface, ArrayAccess, \JsonSerializable
+class BoostPostRequestTrackingUrlTagsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class BoostPostRequestTracking implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'boostPost_request_tracking';
+    protected static $openAPIModelName = 'boostPost_request_tracking_urlTags_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +58,8 @@ class BoostPostRequestTracking implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'pixel_id' => 'string',
-        'url_tags' => '\Zernio\Model\BoostPostRequestTrackingUrlTagsInner[]'
+        'key' => 'string',
+        'value' => 'string'
     ];
 
     /**
@@ -71,8 +70,8 @@ class BoostPostRequestTracking implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'pixel_id' => null,
-        'url_tags' => null
+        'key' => null,
+        'value' => null
     ];
 
     /**
@@ -81,8 +80,8 @@ class BoostPostRequestTracking implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'pixel_id' => false,
-        'url_tags' => false
+        'key' => false,
+        'value' => false
     ];
 
     /**
@@ -171,8 +170,8 @@ class BoostPostRequestTracking implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'pixel_id' => 'pixelId',
-        'url_tags' => 'urlTags'
+        'key' => 'key',
+        'value' => 'value'
     ];
 
     /**
@@ -181,8 +180,8 @@ class BoostPostRequestTracking implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'pixel_id' => 'setPixelId',
-        'url_tags' => 'setUrlTags'
+        'key' => 'setKey',
+        'value' => 'setValue'
     ];
 
     /**
@@ -191,8 +190,8 @@ class BoostPostRequestTracking implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'pixel_id' => 'getPixelId',
-        'url_tags' => 'getUrlTags'
+        'key' => 'getKey',
+        'value' => 'getValue'
     ];
 
     /**
@@ -252,8 +251,8 @@ class BoostPostRequestTracking implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('pixel_id', $data ?? [], null);
-        $this->setIfExists('url_tags', $data ?? [], null);
+        $this->setIfExists('key', $data ?? [], null);
+        $this->setIfExists('value', $data ?? [], null);
     }
 
     /**
@@ -299,55 +298,55 @@ class BoostPostRequestTracking implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets pixel_id
+     * Gets key
      *
      * @return string|null
      */
-    public function getPixelId()
+    public function getKey()
     {
-        return $this->container['pixel_id'];
+        return $this->container['key'];
     }
 
     /**
-     * Sets pixel_id
+     * Sets key
      *
-     * @param string|null $pixel_id pixel_id
+     * @param string|null $key key
      *
      * @return self
      */
-    public function setPixelId($pixel_id)
+    public function setKey($key)
     {
-        if (is_null($pixel_id)) {
-            throw new \InvalidArgumentException('non-nullable pixel_id cannot be null');
+        if (is_null($key)) {
+            throw new \InvalidArgumentException('non-nullable key cannot be null');
         }
-        $this->container['pixel_id'] = $pixel_id;
+        $this->container['key'] = $key;
 
         return $this;
     }
 
     /**
-     * Gets url_tags
+     * Gets value
      *
-     * @return \Zernio\Model\BoostPostRequestTrackingUrlTagsInner[]|null
+     * @return string|null
      */
-    public function getUrlTags()
+    public function getValue()
     {
-        return $this->container['url_tags'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets url_tags
+     * Sets value
      *
-     * @param \Zernio\Model\BoostPostRequestTrackingUrlTagsInner[]|null $url_tags URL parameters appended to the ad link, rendered as `key=value` pairs joined with `&`.
+     * @param string|null $value value
      *
      * @return self
      */
-    public function setUrlTags($url_tags)
+    public function setValue($value)
     {
-        if (is_null($url_tags)) {
-            throw new \InvalidArgumentException('non-nullable url_tags cannot be null');
+        if (is_null($value)) {
+            throw new \InvalidArgumentException('non-nullable value cannot be null');
         }
-        $this->container['url_tags'] = $url_tags;
+        $this->container['value'] = $value;
 
         return $this;
     }

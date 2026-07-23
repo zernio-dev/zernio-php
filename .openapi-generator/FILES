@@ -151,6 +151,7 @@ docs/Model/BoostPostRequestTargetingCitiesInner.md
 docs/Model/BoostPostRequestTargetingCustomLocationsInner.md
 docs/Model/BoostPostRequestTargetingRegionsInner.md
 docs/Model/BoostPostRequestTracking.md
+docs/Model/BoostPostRequestTrackingUrlTagsInner.md
 docs/Model/BulkCreateContacts200Response.md
 docs/Model/BulkCreateContactsRequest.md
 docs/Model/BulkCreateContactsRequestContactsInner.md
@@ -262,7 +263,6 @@ docs/Model/CreateInviteTokenRequest.md
 docs/Model/CreateLeadForm200Response.md
 docs/Model/CreateLeadFormRequest.md
 docs/Model/CreateLeadFormRequestQuestionsInner.md
-docs/Model/CreateLeadFormRequestQuestionsInnerOptionsInner.md
 docs/Model/CreateMessagingAdRequest.md
 docs/Model/CreatePhoneNumberKycLink200Response.md
 docs/Model/CreatePhoneNumberKycLinkRequest.md
@@ -1705,6 +1705,7 @@ lib/Model/BoostPostRequestTargetingCitiesInner.php
 lib/Model/BoostPostRequestTargetingCustomLocationsInner.php
 lib/Model/BoostPostRequestTargetingRegionsInner.php
 lib/Model/BoostPostRequestTracking.php
+lib/Model/BoostPostRequestTrackingUrlTagsInner.php
 lib/Model/BulkCreateContacts200Response.php
 lib/Model/BulkCreateContactsRequest.php
 lib/Model/BulkCreateContactsRequestContactsInner.php
@@ -1816,7 +1817,6 @@ lib/Model/CreateInviteTokenRequest.php
 lib/Model/CreateLeadForm200Response.php
 lib/Model/CreateLeadFormRequest.php
 lib/Model/CreateLeadFormRequestQuestionsInner.php
-lib/Model/CreateLeadFormRequestQuestionsInnerOptionsInner.php
 lib/Model/CreateMessagingAdRequest.php
 lib/Model/CreatePhoneNumberKycLink200Response.php
 lib/Model/CreatePhoneNumberKycLinkRequest.php
@@ -3109,11 +3109,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/AdAccountsApiTest.php
-test/Api/AdCreativesApiTest.php
-test/Api/AdInsightsApiTest.php
-test/Api/AdTargetingApiTest.php
-test/Api/ConversionsApiTest.php
-test/Api/LeadGenApiTest.php
-test/Api/MessagingAdsApiTest.php
-test/Api/ReachAndFrequencyApiTest.php
+test/Model/BoostPostRequestTrackingUrlTagsInnerTest.php

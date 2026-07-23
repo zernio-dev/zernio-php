@@ -61,7 +61,7 @@ class CreateLeadFormRequestQuestionsInner implements ModelInterface, ArrayAccess
         'type' => 'string',
         'key' => 'string',
         'label' => 'string',
-        'options' => '\Zernio\Model\CreateLeadFormRequestQuestionsInnerOptionsInner[]',
+        'options' => '\Zernio\Model\BoostPostRequestTrackingUrlTagsInner[]',
         'inline_context' => 'string'
     ];
 
@@ -405,7 +405,7 @@ class CreateLeadFormRequestQuestionsInner implements ModelInterface, ArrayAccess
     /**
      * Gets options
      *
-     * @return \Zernio\Model\CreateLeadFormRequestQuestionsInnerOptionsInner[]|null
+     * @return \Zernio\Model\BoostPostRequestTrackingUrlTagsInner[]|null
      */
     public function getOptions()
     {
@@ -415,7 +415,7 @@ class CreateLeadFormRequestQuestionsInner implements ModelInterface, ArrayAccess
     /**
      * Sets options
      *
-     * @param \Zernio\Model\CreateLeadFormRequestQuestionsInnerOptionsInner[]|null $options options
+     * @param \Zernio\Model\BoostPostRequestTrackingUrlTagsInner[]|null $options options
      *
      * @return self
      */
