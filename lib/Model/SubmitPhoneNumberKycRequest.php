@@ -63,6 +63,7 @@ class SubmitPhoneNumberKycRequest implements ModelInterface, ArrayAccess, \JsonS
         'submission_id' => 'string',
         'quantity' => 'int',
         'reuse' => 'bool',
+        'reuse_option_id' => 'string',
         'reuse_from' => 'string',
         'end_user_first_name' => 'string',
         'end_user_last_name' => 'string',
@@ -84,6 +85,7 @@ class SubmitPhoneNumberKycRequest implements ModelInterface, ArrayAccess, \JsonS
         'submission_id' => null,
         'quantity' => null,
         'reuse' => null,
+        'reuse_option_id' => null,
         'reuse_from' => null,
         'end_user_first_name' => null,
         'end_user_last_name' => null,
@@ -103,6 +105,7 @@ class SubmitPhoneNumberKycRequest implements ModelInterface, ArrayAccess, \JsonS
         'submission_id' => false,
         'quantity' => false,
         'reuse' => false,
+        'reuse_option_id' => false,
         'reuse_from' => false,
         'end_user_first_name' => false,
         'end_user_last_name' => false,
@@ -202,6 +205,7 @@ class SubmitPhoneNumberKycRequest implements ModelInterface, ArrayAccess, \JsonS
         'submission_id' => 'submissionId',
         'quantity' => 'quantity',
         'reuse' => 'reuse',
+        'reuse_option_id' => 'reuseOptionId',
         'reuse_from' => 'reuseFrom',
         'end_user_first_name' => 'endUserFirstName',
         'end_user_last_name' => 'endUserLastName',
@@ -221,6 +225,7 @@ class SubmitPhoneNumberKycRequest implements ModelInterface, ArrayAccess, \JsonS
         'submission_id' => 'setSubmissionId',
         'quantity' => 'setQuantity',
         'reuse' => 'setReuse',
+        'reuse_option_id' => 'setReuseOptionId',
         'reuse_from' => 'setReuseFrom',
         'end_user_first_name' => 'setEndUserFirstName',
         'end_user_last_name' => 'setEndUserLastName',
@@ -240,6 +245,7 @@ class SubmitPhoneNumberKycRequest implements ModelInterface, ArrayAccess, \JsonS
         'submission_id' => 'getSubmissionId',
         'quantity' => 'getQuantity',
         'reuse' => 'getReuse',
+        'reuse_option_id' => 'getReuseOptionId',
         'reuse_from' => 'getReuseFrom',
         'end_user_first_name' => 'getEndUserFirstName',
         'end_user_last_name' => 'getEndUserLastName',
@@ -310,6 +316,7 @@ class SubmitPhoneNumberKycRequest implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('submission_id', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], 1);
         $this->setIfExists('reuse', $data ?? [], null);
+        $this->setIfExists('reuse_option_id', $data ?? [], null);
         $this->setIfExists('reuse_from', $data ?? [], null);
         $this->setIfExists('end_user_first_name', $data ?? [], null);
         $this->setIfExists('end_user_last_name', $data ?? [], null);
@@ -518,6 +525,33 @@ class SubmitPhoneNumberKycRequest implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
+     * Gets reuse_option_id
+     *
+     * @return string|null
+     */
+    public function getReuseOptionId()
+    {
+        return $this->container['reuse_option_id'];
+    }
+
+    /**
+     * Sets reuse_option_id
+     *
+     * @param string|null $reuse_option_id Which reusable verification to use (GET reusable.options[].id). The unambiguous selection key. Omitted = the approved default. No match = 409.
+     *
+     * @return self
+     */
+    public function setReuseOptionId($reuse_option_id)
+    {
+        if (is_null($reuse_option_id)) {
+            throw new \InvalidArgumentException('non-nullable reuse_option_id cannot be null');
+        }
+        $this->container['reuse_option_id'] = $reuse_option_id;
+
+        return $this;
+    }
+
+    /**
      * Gets reuse_from
      *
      * @return string|null
@@ -530,7 +564,7 @@ class SubmitPhoneNumberKycRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets reuse_from
      *
-     * @param string|null $reuse_from Which approved verification to reuse when several exist: the phone number it was originally approved for (GET reusable.options[].fromPhoneNumber). Omitted = newest. No match = 409.
+     * @param string|null $reuse_from Legacy fallback for `reuseOptionId`: the source phone number (GET reusable.options[].fromPhoneNumber). Ambiguous when a number labels two verifications — prefer `reuseOptionId`. Omitted = the approved default. No match = 409.
      *
      * @return self
      */

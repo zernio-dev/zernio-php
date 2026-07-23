@@ -58,7 +58,9 @@ class GetPhoneNumberKycForm200ResponseReusableOptionsInner implements ModelInter
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'string',
         'from_phone_number' => 'string',
+        'instant' => 'bool',
         'details' => '\Zernio\Model\GetPhoneNumberKycForm200ResponseReusableDetailsInner[]'
     ];
 
@@ -70,7 +72,9 @@ class GetPhoneNumberKycForm200ResponseReusableOptionsInner implements ModelInter
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => null,
         'from_phone_number' => null,
+        'instant' => null,
         'details' => null
     ];
 
@@ -80,7 +84,9 @@ class GetPhoneNumberKycForm200ResponseReusableOptionsInner implements ModelInter
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'id' => false,
         'from_phone_number' => false,
+        'instant' => false,
         'details' => false
     ];
 
@@ -170,7 +176,9 @@ class GetPhoneNumberKycForm200ResponseReusableOptionsInner implements ModelInter
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'from_phone_number' => 'fromPhoneNumber',
+        'instant' => 'instant',
         'details' => 'details'
     ];
 
@@ -180,7 +188,9 @@ class GetPhoneNumberKycForm200ResponseReusableOptionsInner implements ModelInter
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'from_phone_number' => 'setFromPhoneNumber',
+        'instant' => 'setInstant',
         'details' => 'setDetails'
     ];
 
@@ -190,7 +200,9 @@ class GetPhoneNumberKycForm200ResponseReusableOptionsInner implements ModelInter
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'from_phone_number' => 'getFromPhoneNumber',
+        'instant' => 'getInstant',
         'details' => 'getDetails'
     ];
 
@@ -251,7 +263,9 @@ class GetPhoneNumberKycForm200ResponseReusableOptionsInner implements ModelInter
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('from_phone_number', $data ?? [], null);
+        $this->setIfExists('instant', $data ?? [], null);
         $this->setIfExists('details', $data ?? [], null);
     }
 
@@ -298,6 +312,33 @@ class GetPhoneNumberKycForm200ResponseReusableOptionsInner implements ModelInter
 
 
     /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id Opaque option id — pass as `reuseOptionId` on POST. Stable selection key (a phone number is not unique across verifications).
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
      * Gets from_phone_number
      *
      * @return string|null
@@ -310,7 +351,7 @@ class GetPhoneNumberKycForm200ResponseReusableOptionsInner implements ModelInter
     /**
      * Sets from_phone_number
      *
-     * @param string|null $from_phone_number from_phone_number
+     * @param string|null $from_phone_number Display only — the number this verification was submitted for. Not a selection key.
      *
      * @return self
      */
@@ -320,6 +361,33 @@ class GetPhoneNumberKycForm200ResponseReusableOptionsInner implements ModelInter
             throw new \InvalidArgumentException('non-nullable from_phone_number cannot be null');
         }
         $this->container['from_phone_number'] = $from_phone_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets instant
+     *
+     * @return bool|null
+     */
+    public function getInstant()
+    {
+        return $this->container['instant'];
+    }
+
+    /**
+     * Sets instant
+     *
+     * @param bool|null $instant true = group-approved, a new order activates in minutes; false = documents are reused but the order still queues for carrier review (1-3 days).
+     *
+     * @return self
+     */
+    public function setInstant($instant)
+    {
+        if (is_null($instant)) {
+            throw new \InvalidArgumentException('non-nullable instant cannot be null');
+        }
+        $this->container['instant'] = $instant;
 
         return $this;
     }
