@@ -3115,6 +3115,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ConnectOpenAIAdsCredentials200ResponseTest.php
-test/Model/ConnectOpenAIAdsCredentialsRequestTest.php
-test/Model/GetTrackingTag200ResponseTest.php
