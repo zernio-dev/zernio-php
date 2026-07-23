@@ -483,7 +483,7 @@ class TrackingTagsApi
      *
      * Create a tracking tag
      *
-     * @param  string $account_id Meta ads SocialAccount id (platform &#x60;metaads&#x60;). (required)
+     * @param  string $account_id Ads SocialAccount id (platform &#x60;metaads&#x60; or &#x60;openaiads&#x60;). (required)
      * @param  \Zernio\Model\CreateTrackingTagRequest $create_tracking_tag_request create_tracking_tag_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTrackingTag'] to see the possible values for this operation
      *
@@ -502,7 +502,7 @@ class TrackingTagsApi
      *
      * Create a tracking tag
      *
-     * @param  string $account_id Meta ads SocialAccount id (platform &#x60;metaads&#x60;). (required)
+     * @param  string $account_id Ads SocialAccount id (platform &#x60;metaads&#x60; or &#x60;openaiads&#x60;). (required)
      * @param  \Zernio\Model\CreateTrackingTagRequest $create_tracking_tag_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTrackingTag'] to see the possible values for this operation
      *
@@ -602,7 +602,7 @@ class TrackingTagsApi
      *
      * Create a tracking tag
      *
-     * @param  string $account_id Meta ads SocialAccount id (platform &#x60;metaads&#x60;). (required)
+     * @param  string $account_id Ads SocialAccount id (platform &#x60;metaads&#x60; or &#x60;openaiads&#x60;). (required)
      * @param  \Zernio\Model\CreateTrackingTagRequest $create_tracking_tag_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTrackingTag'] to see the possible values for this operation
      *
@@ -624,7 +624,7 @@ class TrackingTagsApi
      *
      * Create a tracking tag
      *
-     * @param  string $account_id Meta ads SocialAccount id (platform &#x60;metaads&#x60;). (required)
+     * @param  string $account_id Ads SocialAccount id (platform &#x60;metaads&#x60; or &#x60;openaiads&#x60;). (required)
      * @param  \Zernio\Model\CreateTrackingTagRequest $create_tracking_tag_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTrackingTag'] to see the possible values for this operation
      *
@@ -675,7 +675,7 @@ class TrackingTagsApi
     /**
      * Create request for operation 'createTrackingTag'
      *
-     * @param  string $account_id Meta ads SocialAccount id (platform &#x60;metaads&#x60;). (required)
+     * @param  string $account_id Ads SocialAccount id (platform &#x60;metaads&#x60; or &#x60;openaiads&#x60;). (required)
      * @param  \Zernio\Model\CreateTrackingTagRequest $create_tracking_tag_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTrackingTag'] to see the possible values for this operation
      *
@@ -1080,7 +1080,7 @@ class TrackingTagsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateTrackingTag201Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetTrackingTag200Response|\Zernio\Model\InlineObject
      */
     public function getTrackingTag($account_id, $tag_id, string $contentType = self::contentTypes['getTrackingTag'][0])
     {
@@ -1099,7 +1099,7 @@ class TrackingTagsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateTrackingTag201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetTrackingTag200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrackingTagWithHttpInfo($account_id, $tag_id, string $contentType = self::contentTypes['getTrackingTag'][0])
     {
@@ -1131,7 +1131,7 @@ class TrackingTagsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\CreateTrackingTag201Response',
+                        '\Zernio\Model\GetTrackingTag200Response',
                         $request,
                         $response,
                     );
@@ -1159,7 +1159,7 @@ class TrackingTagsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\CreateTrackingTag201Response',
+                '\Zernio\Model\GetTrackingTag200Response',
                 $request,
                 $response,
             );
@@ -1168,7 +1168,7 @@ class TrackingTagsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\CreateTrackingTag201Response',
+                        '\Zernio\Model\GetTrackingTag200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1224,7 +1224,7 @@ class TrackingTagsApi
      */
     public function getTrackingTagAsyncWithHttpInfo($account_id, $tag_id, string $contentType = self::contentTypes['getTrackingTag'][0])
     {
-        $returnType = '\Zernio\Model\CreateTrackingTag201Response';
+        $returnType = '\Zernio\Model\GetTrackingTag200Response';
         $request = $this->getTrackingTagRequest($account_id, $tag_id, $contentType);
 
         return $this->client
@@ -2037,8 +2037,8 @@ class TrackingTagsApi
      *
      * List tracking tags
      *
-     * @param  string $account_id Meta ads SocialAccount id (platform &#x60;metaads&#x60;). (required)
-     * @param  string|null $ad_account_id Optional. Scope to one ad account, e.g. &#x60;act_123456789&#x60;. (optional)
+     * @param  string $account_id Ads SocialAccount id (platform &#x60;metaads&#x60; or &#x60;openaiads&#x60;). (required)
+     * @param  string|null $ad_account_id Optional, Meta only. Scope to one ad account, e.g. &#x60;act_123456789&#x60;. Ignored for OpenAI Ads. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTrackingTags'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2056,8 +2056,8 @@ class TrackingTagsApi
      *
      * List tracking tags
      *
-     * @param  string $account_id Meta ads SocialAccount id (platform &#x60;metaads&#x60;). (required)
-     * @param  string|null $ad_account_id Optional. Scope to one ad account, e.g. &#x60;act_123456789&#x60;. (optional)
+     * @param  string $account_id Ads SocialAccount id (platform &#x60;metaads&#x60; or &#x60;openaiads&#x60;). (required)
+     * @param  string|null $ad_account_id Optional, Meta only. Scope to one ad account, e.g. &#x60;act_123456789&#x60;. Ignored for OpenAI Ads. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTrackingTags'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2156,8 +2156,8 @@ class TrackingTagsApi
      *
      * List tracking tags
      *
-     * @param  string $account_id Meta ads SocialAccount id (platform &#x60;metaads&#x60;). (required)
-     * @param  string|null $ad_account_id Optional. Scope to one ad account, e.g. &#x60;act_123456789&#x60;. (optional)
+     * @param  string $account_id Ads SocialAccount id (platform &#x60;metaads&#x60; or &#x60;openaiads&#x60;). (required)
+     * @param  string|null $ad_account_id Optional, Meta only. Scope to one ad account, e.g. &#x60;act_123456789&#x60;. Ignored for OpenAI Ads. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTrackingTags'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2178,8 +2178,8 @@ class TrackingTagsApi
      *
      * List tracking tags
      *
-     * @param  string $account_id Meta ads SocialAccount id (platform &#x60;metaads&#x60;). (required)
-     * @param  string|null $ad_account_id Optional. Scope to one ad account, e.g. &#x60;act_123456789&#x60;. (optional)
+     * @param  string $account_id Ads SocialAccount id (platform &#x60;metaads&#x60; or &#x60;openaiads&#x60;). (required)
+     * @param  string|null $ad_account_id Optional, Meta only. Scope to one ad account, e.g. &#x60;act_123456789&#x60;. Ignored for OpenAI Ads. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTrackingTags'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2229,8 +2229,8 @@ class TrackingTagsApi
     /**
      * Create request for operation 'listTrackingTags'
      *
-     * @param  string $account_id Meta ads SocialAccount id (platform &#x60;metaads&#x60;). (required)
-     * @param  string|null $ad_account_id Optional. Scope to one ad account, e.g. &#x60;act_123456789&#x60;. (optional)
+     * @param  string $account_id Ads SocialAccount id (platform &#x60;metaads&#x60; or &#x60;openaiads&#x60;). (required)
+     * @param  string|null $ad_account_id Optional, Meta only. Scope to one ad account, e.g. &#x60;act_123456789&#x60;. Ignored for OpenAI Ads. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTrackingTags'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2859,7 +2859,7 @@ class TrackingTagsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateTrackingTag201Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetTrackingTag200Response|\Zernio\Model\InlineObject
      */
     public function updateTrackingTag($account_id, $tag_id, $update_tracking_tag_request, string $contentType = self::contentTypes['updateTrackingTag'][0])
     {
@@ -2879,7 +2879,7 @@ class TrackingTagsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateTrackingTag201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetTrackingTag200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateTrackingTagWithHttpInfo($account_id, $tag_id, $update_tracking_tag_request, string $contentType = self::contentTypes['updateTrackingTag'][0])
     {
@@ -2911,7 +2911,7 @@ class TrackingTagsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\CreateTrackingTag201Response',
+                        '\Zernio\Model\GetTrackingTag200Response',
                         $request,
                         $response,
                     );
@@ -2939,7 +2939,7 @@ class TrackingTagsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\CreateTrackingTag201Response',
+                '\Zernio\Model\GetTrackingTag200Response',
                 $request,
                 $response,
             );
@@ -2948,7 +2948,7 @@ class TrackingTagsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\CreateTrackingTag201Response',
+                        '\Zernio\Model\GetTrackingTag200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3006,7 +3006,7 @@ class TrackingTagsApi
      */
     public function updateTrackingTagAsyncWithHttpInfo($account_id, $tag_id, $update_tracking_tag_request, string $contentType = self::contentTypes['updateTrackingTag'][0])
     {
-        $returnType = '\Zernio\Model\CreateTrackingTag201Response';
+        $returnType = '\Zernio\Model\GetTrackingTag200Response';
         $request = $this->updateTrackingTagRequest($account_id, $tag_id, $update_tracking_tag_request, $contentType);
 
         return $this->client

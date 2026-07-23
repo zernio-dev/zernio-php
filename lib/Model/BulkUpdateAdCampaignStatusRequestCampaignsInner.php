@@ -242,6 +242,7 @@ class BulkUpdateAdCampaignStatusRequestCampaignsInner implements ModelInterface,
     public const PLATFORM_PINTEREST = 'pinterest';
     public const PLATFORM_GOOGLE = 'google';
     public const PLATFORM_TWITTER = 'twitter';
+    public const PLATFORM_OPENAI = 'openai';
 
     /**
      * Gets allowable values of the enum
@@ -258,6 +259,7 @@ class BulkUpdateAdCampaignStatusRequestCampaignsInner implements ModelInterface,
             self::PLATFORM_PINTEREST,
             self::PLATFORM_GOOGLE,
             self::PLATFORM_TWITTER,
+            self::PLATFORM_OPENAI,
         ];
     }
 

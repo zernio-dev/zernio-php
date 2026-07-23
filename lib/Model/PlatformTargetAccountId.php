@@ -328,6 +328,7 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
     public const PLATFORM_TIKTOKADS = 'tiktokads';
     public const PLATFORM_XADS = 'xads';
     public const PLATFORM_GOOGLEADS = 'googleads';
+    public const PLATFORM_OPENAIADS = 'openaiads';
 
     /**
      * Gets allowable values of the enum
@@ -358,6 +359,7 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
             self::PLATFORM_TIKTOKADS,
             self::PLATFORM_XADS,
             self::PLATFORM_GOOGLEADS,
+            self::PLATFORM_OPENAIADS,
         ];
     }
 

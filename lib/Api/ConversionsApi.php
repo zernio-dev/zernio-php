@@ -2704,7 +2704,7 @@ class ConversionsApi
      *
      * List conversion destinations
      *
-     * @param  string $account_id SocialAccount ID (metaads, googleads, linkedinads, or tiktokads). (required)
+     * @param  string $account_id SocialAccount ID (metaads, googleads, linkedinads, tiktokads, or openaiads). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionDestinations'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2722,7 +2722,7 @@ class ConversionsApi
      *
      * List conversion destinations
      *
-     * @param  string $account_id SocialAccount ID (metaads, googleads, linkedinads, or tiktokads). (required)
+     * @param  string $account_id SocialAccount ID (metaads, googleads, linkedinads, tiktokads, or openaiads). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionDestinations'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2821,7 +2821,7 @@ class ConversionsApi
      *
      * List conversion destinations
      *
-     * @param  string $account_id SocialAccount ID (metaads, googleads, linkedinads, or tiktokads). (required)
+     * @param  string $account_id SocialAccount ID (metaads, googleads, linkedinads, tiktokads, or openaiads). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionDestinations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2842,7 +2842,7 @@ class ConversionsApi
      *
      * List conversion destinations
      *
-     * @param  string $account_id SocialAccount ID (metaads, googleads, linkedinads, or tiktokads). (required)
+     * @param  string $account_id SocialAccount ID (metaads, googleads, linkedinads, tiktokads, or openaiads). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionDestinations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2892,7 +2892,7 @@ class ConversionsApi
     /**
      * Create request for operation 'listConversionDestinations'
      *
-     * @param  string $account_id SocialAccount ID (metaads, googleads, linkedinads, or tiktokads). (required)
+     * @param  string $account_id SocialAccount ID (metaads, googleads, linkedinads, tiktokads, or openaiads). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionDestinations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

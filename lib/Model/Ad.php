@@ -404,6 +404,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     public const PLATFORM_PINTEREST = 'pinterest';
     public const PLATFORM_GOOGLE = 'google';
     public const PLATFORM_TWITTER = 'twitter';
+    public const PLATFORM_OPENAI = 'openai';
     public const AD_TYPE_BOOST = 'boost';
     public const AD_TYPE_STANDALONE = 'standalone';
     public const GOAL_ENGAGEMENT = 'engagement';
@@ -432,6 +433,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
             self::PLATFORM_PINTEREST,
             self::PLATFORM_GOOGLE,
             self::PLATFORM_TWITTER,
+            self::PLATFORM_OPENAI,
         ];
     }
 

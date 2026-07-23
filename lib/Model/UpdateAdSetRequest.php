@@ -278,6 +278,7 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const PLATFORM_PINTEREST = 'pinterest';
     public const PLATFORM_GOOGLE = 'google';
     public const PLATFORM_TWITTER = 'twitter';
+    public const PLATFORM_OPENAI = 'openai';
     public const STATUS_ACTIVE = 'active';
     public const STATUS_PAUSED = 'paused';
 
@@ -296,6 +297,7 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::PLATFORM_PINTEREST,
             self::PLATFORM_GOOGLE,
             self::PLATFORM_TWITTER,
+            self::PLATFORM_OPENAI,
         ];
     }
 

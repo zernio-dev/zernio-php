@@ -236,6 +236,7 @@ class CreateTrackingTag201Response implements ModelInterface, ArrayAccess, \Json
     }
 
     public const PLATFORM_METAADS = 'metaads';
+    public const PLATFORM_OPENAIADS = 'openaiads';
 
     /**
      * Gets allowable values of the enum
@@ -246,6 +247,7 @@ class CreateTrackingTag201Response implements ModelInterface, ArrayAccess, \Json
     {
         return [
             self::PLATFORM_METAADS,
+            self::PLATFORM_OPENAIADS,
         ];
     }
 

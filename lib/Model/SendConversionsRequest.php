@@ -344,7 +344,7 @@ class SendConversionsRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets account_id
      *
-     * @param string $account_id SocialAccount ID (metaads, googleads, linkedinads, or tiktokads).
+     * @param string $account_id SocialAccount ID (metaads, googleads, linkedinads, tiktokads, or openaiads).
      *
      * @return self
      */
@@ -371,7 +371,7 @@ class SendConversionsRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets destination_id
      *
-     * @param string $destination_id Platform destination identifier. For Meta, the pixel/dataset ID. For Google, the conversion action resource name. For LinkedIn, the conversion rule ID or full `urn:lla:llaPartnerConversion:{id}` URN.
+     * @param string $destination_id Platform destination identifier. For Meta, the pixel/dataset ID. For Google, the conversion action resource name. For LinkedIn, the conversion rule ID or full `urn:lla:llaPartnerConversion:{id}` URN. For OpenAI Ads, the pixel wire id.
      *
      * @return self
      */
@@ -430,7 +430,7 @@ class SendConversionsRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets test_code
      *
-     * @param string|null $test_code Meta `test_event_code` passthrough. Ignored by Google and LinkedIn.
+     * @param string|null $test_code Meta `test_event_code` passthrough. Ignored by Google, LinkedIn, and OpenAI Ads.
      *
      * @return self
      */

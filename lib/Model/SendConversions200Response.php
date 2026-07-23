@@ -257,6 +257,7 @@ class SendConversions200Response implements ModelInterface, ArrayAccess, \JsonSe
     public const PLATFORM_GOOGLEADS = 'googleads';
     public const PLATFORM_LINKEDINADS = 'linkedinads';
     public const PLATFORM_TIKTOKADS = 'tiktokads';
+    public const PLATFORM_OPENAIADS = 'openaiads';
 
     /**
      * Gets allowable values of the enum
@@ -270,6 +271,7 @@ class SendConversions200Response implements ModelInterface, ArrayAccess, \JsonSe
             self::PLATFORM_GOOGLEADS,
             self::PLATFORM_LINKEDINADS,
             self::PLATFORM_TIKTOKADS,
+            self::PLATFORM_OPENAIADS,
         ];
     }
 
@@ -477,7 +479,7 @@ class SendConversions200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets trace_id
      *
-     * @param string|null $trace_id Platform trace ID for debugging. fbtrace_id for Meta, requestId for Google. Absent for LinkedIn (LinkedIn's conversionEvents endpoint does not surface a trace ID).
+     * @param string|null $trace_id Platform trace ID for debugging. fbtrace_id for Meta, requestId for Google. Absent for LinkedIn (LinkedIn's conversionEvents endpoint does not surface a trace ID) and OpenAI Ads (no trace ID surfaced).
      *
      * @return self
      */

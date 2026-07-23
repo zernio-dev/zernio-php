@@ -399,6 +399,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     public const PLATFORM_PINTEREST = 'pinterest';
     public const PLATFORM_GOOGLE = 'google';
     public const PLATFORM_TWITTER = 'twitter';
+    public const PLATFORM_OPENAI = 'openai';
     public const REVIEW_STATUS_IN_REVIEW = 'in_review';
     public const REVIEW_STATUS_APPROVED = 'approved';
     public const REVIEW_STATUS_REJECTED = 'rejected';
@@ -421,6 +422,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
             self::PLATFORM_PINTEREST,
             self::PLATFORM_GOOGLE,
             self::PLATFORM_TWITTER,
+            self::PLATFORM_OPENAI,
         ];
     }
 

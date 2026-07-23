@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateAdRequestBudget
+ * GetTrackingTag200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UpdateAdRequestBudget Class Doc Comment
+ * GetTrackingTag200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetTrackingTag200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updateAd_request_budget';
+    protected static $openAPIModelName = 'getTrackingTag_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'float',
-        'type' => 'string'
+        'platform' => 'string',
+        'tag' => '\Zernio\Model\TrackingTag'
     ];
 
     /**
@@ -70,8 +70,8 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => null,
-        'type' => null
+        'platform' => null,
+        'tag' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amount' => false,
-        'type' => false
+        'platform' => false,
+        'tag' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'type' => 'type'
+        'platform' => 'platform',
+        'tag' => 'tag'
     ];
 
     /**
@@ -180,8 +180,8 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'type' => 'setType'
+        'platform' => 'setPlatform',
+        'tag' => 'setTag'
     ];
 
     /**
@@ -190,8 +190,8 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'type' => 'getType'
+        'platform' => 'getPlatform',
+        'tag' => 'getTag'
     ];
 
     /**
@@ -235,19 +235,17 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$openAPIModelName;
     }
 
-    public const TYPE_DAILY = 'daily';
-    public const TYPE_LIFETIME = 'lifetime';
+    public const PLATFORM_METAADS = 'metaads';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getTypeAllowableValues()
+    public function getPlatformAllowableValues()
     {
         return [
-            self::TYPE_DAILY,
-            self::TYPE_LIFETIME,
+            self::PLATFORM_METAADS,
         ];
     }
 
@@ -266,8 +264,8 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('tag', $data ?? [], null);
     }
 
     /**
@@ -297,11 +295,11 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!is_null($this->container['platform']) && !in_array($this->container['platform'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
+                "invalid value '%s' for 'platform', must be one of '%s'",
+                $this->container['platform'],
                 implode("', '", $allowedValues)
             );
         }
@@ -322,65 +320,65 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets amount
+     * Gets platform
      *
-     * @return float|null
+     * @return string|null
      */
-    public function getAmount()
+    public function getPlatform()
     {
-        return $this->container['amount'];
+        return $this->container['platform'];
     }
 
     /**
-     * Sets amount
+     * Sets platform
      *
-     * @param float|null $amount Minimum varies by platform: TikTok=$20, Pinterest=$5, others=$1
+     * @param string|null $platform platform
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setPlatform($platform)
     {
-        if (is_null($amount)) {
-            throw new \InvalidArgumentException('non-nullable amount cannot be null');
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
         }
-        $this->container['amount'] = $amount;
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!in_array($platform, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'platform', must be one of '%s'",
+                    $platform,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['platform'] = $platform;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets tag
      *
-     * @return string|null
+     * @return \Zernio\Model\TrackingTag|null
      */
-    public function getType()
+    public function getTag()
     {
-        return $this->container['type'];
+        return $this->container['tag'];
     }
 
     /**
-     * Sets type
+     * Sets tag
      *
-     * @param string|null $type OpenAI Ads accepts lifetime only; sending daily returns 422.
+     * @param \Zernio\Model\TrackingTag|null $tag tag
      *
      * @return self
      */
-    public function setType($type)
+    public function setTag($tag)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($tag)) {
+            throw new \InvalidArgumentException('non-nullable tag cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
+        $this->container['tag'] = $tag;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateAdRequestBudget
+ * ConnectOpenAIAdsCredentials200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UpdateAdRequestBudget Class Doc Comment
+ * ConnectOpenAIAdsCredentials200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSerializable
+class ConnectOpenAIAdsCredentials200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updateAd_request_budget';
+    protected static $openAPIModelName = 'connectOpenAIAdsCredentials_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,9 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'float',
-        'type' => 'string'
+        'account_id' => 'string',
+        'ad_account_name' => 'string',
+        'redirect_url' => 'string'
     ];
 
     /**
@@ -70,8 +71,9 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => null,
-        'type' => null
+        'account_id' => null,
+        'ad_account_name' => null,
+        'redirect_url' => null
     ];
 
     /**
@@ -80,8 +82,9 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amount' => false,
-        'type' => false
+        'account_id' => false,
+        'ad_account_name' => false,
+        'redirect_url' => false
     ];
 
     /**
@@ -170,8 +173,9 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'type' => 'type'
+        'account_id' => 'accountId',
+        'ad_account_name' => 'adAccountName',
+        'redirect_url' => 'redirectUrl'
     ];
 
     /**
@@ -180,8 +184,9 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'type' => 'setType'
+        'account_id' => 'setAccountId',
+        'ad_account_name' => 'setAdAccountName',
+        'redirect_url' => 'setRedirectUrl'
     ];
 
     /**
@@ -190,8 +195,9 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'type' => 'getType'
+        'account_id' => 'getAccountId',
+        'ad_account_name' => 'getAdAccountName',
+        'redirect_url' => 'getRedirectUrl'
     ];
 
     /**
@@ -235,21 +241,6 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$openAPIModelName;
     }
 
-    public const TYPE_DAILY = 'daily';
-    public const TYPE_LIFETIME = 'lifetime';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_DAILY,
-            self::TYPE_LIFETIME,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -266,8 +257,9 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('ad_account_name', $data ?? [], null);
+        $this->setIfExists('redirect_url', $data ?? [], null);
     }
 
     /**
@@ -297,15 +289,6 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -322,65 +305,82 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets amount
+     * Gets account_id
      *
-     * @return float|null
+     * @return string|null
      */
-    public function getAmount()
+    public function getAccountId()
     {
-        return $this->container['amount'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets amount
+     * Sets account_id
      *
-     * @param float|null $amount Minimum varies by platform: TikTok=$20, Pinterest=$5, others=$1
+     * @param string|null $account_id account_id
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setAccountId($account_id)
     {
-        if (is_null($amount)) {
-            throw new \InvalidArgumentException('non-nullable amount cannot be null');
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
-        $this->container['amount'] = $amount;
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets ad_account_name
      *
      * @return string|null
      */
-    public function getType()
+    public function getAdAccountName()
     {
-        return $this->container['type'];
+        return $this->container['ad_account_name'];
     }
 
     /**
-     * Sets type
+     * Sets ad_account_name
      *
-     * @param string|null $type OpenAI Ads accepts lifetime only; sending daily returns 422.
+     * @param string|null $ad_account_name ad_account_name
      *
      * @return self
      */
-    public function setType($type)
+    public function setAdAccountName($ad_account_name)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($ad_account_name)) {
+            throw new \InvalidArgumentException('non-nullable ad_account_name cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['ad_account_name'] = $ad_account_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets redirect_url
+     *
+     * @return string|null
+     */
+    public function getRedirectUrl()
+    {
+        return $this->container['redirect_url'];
+    }
+
+    /**
+     * Sets redirect_url
+     *
+     * @param string|null $redirect_url redirect_url
+     *
+     * @return self
+     */
+    public function setRedirectUrl($redirect_url)
+    {
+        if (is_null($redirect_url)) {
+            throw new \InvalidArgumentException('non-nullable redirect_url cannot be null');
         }
-        $this->container['type'] = $type;
+        $this->container['redirect_url'] = $redirect_url;
 
         return $this;
     }

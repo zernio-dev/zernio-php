@@ -355,7 +355,7 @@ class ListConversionDestinations200ResponseDestinationsInner implements ModelInt
     /**
      * Sets id
      *
-     * @param string|null $id Destination identifier. Meta: pixel ID. Google: conversion action resource name. LinkedIn: numeric conversion rule ID.
+     * @param string|null $id Destination identifier. Meta: pixel ID. Google: conversion action resource name. LinkedIn: numeric conversion rule ID. OpenAI Ads: pixel wire id.
      *
      * @return self
      */

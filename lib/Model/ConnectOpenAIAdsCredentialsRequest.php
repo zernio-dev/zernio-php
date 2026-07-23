@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateAdRequestBudget
+ * ConnectOpenAIAdsCredentialsRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UpdateAdRequestBudget Class Doc Comment
+ * ConnectOpenAIAdsCredentialsRequest Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSerializable
+class ConnectOpenAIAdsCredentialsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updateAd_request_budget';
+    protected static $openAPIModelName = 'connectOpenAIAdsCredentials_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,10 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'float',
-        'type' => 'string'
+        'api_key' => 'string',
+        'profile_id' => 'string',
+        'state' => 'string',
+        'redirect_uri' => 'string'
     ];
 
     /**
@@ -70,8 +72,10 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => null,
-        'type' => null
+        'api_key' => null,
+        'profile_id' => null,
+        'state' => null,
+        'redirect_uri' => 'uri'
     ];
 
     /**
@@ -80,8 +84,10 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amount' => false,
-        'type' => false
+        'api_key' => false,
+        'profile_id' => false,
+        'state' => false,
+        'redirect_uri' => false
     ];
 
     /**
@@ -170,8 +176,10 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'type' => 'type'
+        'api_key' => 'apiKey',
+        'profile_id' => 'profileId',
+        'state' => 'state',
+        'redirect_uri' => 'redirectUri'
     ];
 
     /**
@@ -180,8 +188,10 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'type' => 'setType'
+        'api_key' => 'setApiKey',
+        'profile_id' => 'setProfileId',
+        'state' => 'setState',
+        'redirect_uri' => 'setRedirectUri'
     ];
 
     /**
@@ -190,8 +200,10 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'type' => 'getType'
+        'api_key' => 'getApiKey',
+        'profile_id' => 'getProfileId',
+        'state' => 'getState',
+        'redirect_uri' => 'getRedirectUri'
     ];
 
     /**
@@ -235,21 +247,6 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$openAPIModelName;
     }
 
-    public const TYPE_DAILY = 'daily';
-    public const TYPE_LIFETIME = 'lifetime';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_DAILY,
-            self::TYPE_LIFETIME,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -266,8 +263,10 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('api_key', $data ?? [], null);
+        $this->setIfExists('profile_id', $data ?? [], null);
+        $this->setIfExists('state', $data ?? [], null);
+        $this->setIfExists('redirect_uri', $data ?? [], null);
     }
 
     /**
@@ -297,15 +296,12 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['api_key'] === null) {
+            $invalidProperties[] = "'api_key' can't be null";
         }
-
+        if ($this->container['profile_id'] === null) {
+            $invalidProperties[] = "'profile_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -322,65 +318,109 @@ class UpdateAdRequestBudget implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets amount
+     * Gets api_key
      *
-     * @return float|null
+     * @return string
      */
-    public function getAmount()
+    public function getApiKey()
     {
-        return $this->container['amount'];
+        return $this->container['api_key'];
     }
 
     /**
-     * Sets amount
+     * Sets api_key
      *
-     * @param float|null $amount Minimum varies by platform: TikTok=$20, Pinterest=$5, others=$1
+     * @param string $api_key API key from ChatGPT Ads Manager (Settings). Grants full read/write access on OpenAI's side; Zernio only ever reads with it.
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setApiKey($api_key)
     {
-        if (is_null($amount)) {
-            throw new \InvalidArgumentException('non-nullable amount cannot be null');
+        if (is_null($api_key)) {
+            throw new \InvalidArgumentException('non-nullable api_key cannot be null');
         }
-        $this->container['amount'] = $amount;
+        $this->container['api_key'] = $api_key;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets profile_id
      *
-     * @return string|null
+     * @return string
      */
-    public function getType()
+    public function getProfileId()
     {
-        return $this->container['type'];
+        return $this->container['profile_id'];
     }
 
     /**
-     * Sets type
+     * Sets profile_id
      *
-     * @param string|null $type OpenAI Ads accepts lifetime only; sending daily returns 422.
+     * @param string $profile_id Your Zernio profile ID
      *
      * @return self
      */
-    public function setType($type)
+    public function setProfileId($profile_id)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($profile_id)) {
+            throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['profile_id'] = $profile_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets state
+     *
+     * @return string|null
+     */
+    public function getState()
+    {
+        return $this->container['state'];
+    }
+
+    /**
+     * Sets state
+     *
+     * @param string|null $state Optional state passthrough for the connect flow.
+     *
+     * @return self
+     */
+    public function setState($state)
+    {
+        if (is_null($state)) {
+            throw new \InvalidArgumentException('non-nullable state cannot be null');
         }
-        $this->container['type'] = $type;
+        $this->container['state'] = $state;
+
+        return $this;
+    }
+
+    /**
+     * Gets redirect_uri
+     *
+     * @return string|null
+     */
+    public function getRedirectUri()
+    {
+        return $this->container['redirect_uri'];
+    }
+
+    /**
+     * Sets redirect_uri
+     *
+     * @param string|null $redirect_uri Optional URL to redirect to after successful connection
+     *
+     * @return self
+     */
+    public function setRedirectUri($redirect_uri)
+    {
+        if (is_null($redirect_uri)) {
+            throw new \InvalidArgumentException('non-nullable redirect_uri cannot be null');
+        }
+        $this->container['redirect_uri'] = $redirect_uri;
 
         return $this;
     }

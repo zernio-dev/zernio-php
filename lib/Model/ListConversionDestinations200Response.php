@@ -239,6 +239,7 @@ class ListConversionDestinations200Response implements ModelInterface, ArrayAcce
     public const PLATFORM_GOOGLEADS = 'googleads';
     public const PLATFORM_LINKEDINADS = 'linkedinads';
     public const PLATFORM_TIKTOKADS = 'tiktokads';
+    public const PLATFORM_OPENAIADS = 'openaiads';
 
     /**
      * Gets allowable values of the enum
@@ -252,6 +253,7 @@ class ListConversionDestinations200Response implements ModelInterface, ArrayAcce
             self::PLATFORM_GOOGLEADS,
             self::PLATFORM_LINKEDINADS,
             self::PLATFORM_TIKTOKADS,
+            self::PLATFORM_OPENAIADS,
         ];
     }
 

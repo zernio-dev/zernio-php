@@ -364,6 +364,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
     public const PLATFORM_TIKTOKADS = 'tiktokads';
     public const PLATFORM_XADS = 'xads';
     public const PLATFORM_GOOGLEADS = 'googleads';
+    public const PLATFORM_OPENAIADS = 'openaiads';
 
     /**
      * Gets allowable values of the enum
@@ -394,6 +395,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
             self::PLATFORM_TIKTOKADS,
             self::PLATFORM_XADS,
             self::PLATFORM_GOOGLEADS,
+            self::PLATFORM_OPENAIADS,
         ];
     }
 

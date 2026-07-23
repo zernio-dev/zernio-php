@@ -324,7 +324,7 @@ class CreateTrackingTagRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets ad_account_id
      *
-     * @param string $ad_account_id Meta ad account id, e.g. `act_123456789`.
+     * @param string $ad_account_id Meta ad account id, e.g. `act_123456789`. Required by this endpoint but ignored for OpenAI Ads.
      *
      * @return self
      */

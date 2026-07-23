@@ -411,7 +411,7 @@ class ConversionEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets event_name
      *
-     * @param string $event_name Standard event name (Purchase, Lead, CompleteRegistration, AddToCart, InitiateCheckout, AddPaymentInfo, Subscribe, StartTrial, ViewContent, Search, Contact, SubmitApplication, Schedule) or a custom string (only supported on platforms that accept custom events — Meta).  Per-platform behavior: - Meta: free-form; standard names match Meta's built-ins. - Google: ignored — the conversion action's category determines the type. - LinkedIn: ignored — the conversion rule's `type` is locked to the destination.
+     * @param string $event_name Standard event name (Purchase, Lead, CompleteRegistration, AddToCart, InitiateCheckout, AddPaymentInfo, Subscribe, StartTrial, ViewContent, Search, Contact, SubmitApplication, Schedule) or a custom string (only supported on platforms that accept custom events — Meta and OpenAI Ads).  Per-platform behavior: - Meta: free-form; standard names match Meta's built-ins. - Google: ignored — the conversion action's category determines the type. - LinkedIn: ignored — the conversion rule's `type` is locked to the destination. - OpenAI Ads: a fixed subset of standard names (Purchase, Lead, AddToCart, ViewContent, InitiateCheckout, CompleteRegistration, Subscribe, StartTrial, Schedule) maps 1:1 onto OpenAI's own event-type enum; anything else is sent as a custom event with the name preserved.
      *
      * @return self
      */

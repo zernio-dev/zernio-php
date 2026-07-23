@@ -188,6 +188,8 @@ docs/Model/ConnectAds200ResponseOneOf.md
 docs/Model/ConnectAds200ResponseOneOf1.md
 docs/Model/ConnectBlueskyCredentials200Response.md
 docs/Model/ConnectBlueskyCredentialsRequest.md
+docs/Model/ConnectOpenAIAdsCredentials200Response.md
+docs/Model/ConnectOpenAIAdsCredentialsRequest.md
 docs/Model/ConnectWhatsAppCredentials200Response.md
 docs/Model/ConnectWhatsAppCredentials200ResponseAccount.md
 docs/Model/ConnectWhatsAppCredentialsRequest.md
@@ -694,6 +696,7 @@ docs/Model/GetTikTokCreatorInfo200ResponseCommercialContentTypesInner.md
 docs/Model/GetTikTokCreatorInfo200ResponseCreator.md
 docs/Model/GetTikTokCreatorInfo200ResponsePostingLimits.md
 docs/Model/GetTikTokCreatorInfo200ResponsePrivacyLevelsInner.md
+docs/Model/GetTrackingTag200Response.md
 docs/Model/GetTrackingTagStats200Response.md
 docs/Model/GetTrackingTagStats200ResponseStats.md
 docs/Model/GetUsage200Response.md
@@ -1742,6 +1745,8 @@ lib/Model/ConnectAds200ResponseOneOf.php
 lib/Model/ConnectAds200ResponseOneOf1.php
 lib/Model/ConnectBlueskyCredentials200Response.php
 lib/Model/ConnectBlueskyCredentialsRequest.php
+lib/Model/ConnectOpenAIAdsCredentials200Response.php
+lib/Model/ConnectOpenAIAdsCredentialsRequest.php
 lib/Model/ConnectWhatsAppCredentials200Response.php
 lib/Model/ConnectWhatsAppCredentials200ResponseAccount.php
 lib/Model/ConnectWhatsAppCredentialsRequest.php
@@ -2248,6 +2253,7 @@ lib/Model/GetTikTokCreatorInfo200ResponseCommercialContentTypesInner.php
 lib/Model/GetTikTokCreatorInfo200ResponseCreator.php
 lib/Model/GetTikTokCreatorInfo200ResponsePostingLimits.php
 lib/Model/GetTikTokCreatorInfo200ResponsePrivacyLevelsInner.php
+lib/Model/GetTrackingTag200Response.php
 lib/Model/GetTrackingTagStats200Response.php
 lib/Model/GetTrackingTagStats200ResponseStats.php
 lib/Model/GetUsage200Response.php
@@ -3109,4 +3115,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/BoostPostRequestTrackingUrlTagsInnerTest.php
+test/Model/ConnectOpenAIAdsCredentials200ResponseTest.php
+test/Model/ConnectOpenAIAdsCredentialsRequestTest.php
+test/Model/GetTrackingTag200ResponseTest.php
