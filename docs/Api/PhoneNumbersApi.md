@@ -23,6 +23,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**releasePhoneNumber()**](PhoneNumbersApi.md#releasePhoneNumber) | **DELETE** /v1/phone-numbers/{id} | Release phone number |
 | [**remediatePhoneNumber()**](PhoneNumbersApi.md#remediatePhoneNumber) | **POST** /v1/phone-numbers/{id}/remediate | Resubmit a declined number |
 | [**replyToPhoneNumberReviewer()**](PhoneNumbersApi.md#replyToPhoneNumberReviewer) | **POST** /v1/phone-numbers/{id}/remediate/reply | Reply to the regulatory reviewer |
+| [**respondToPhoneNumberReviewer()**](PhoneNumbersApi.md#respondToPhoneNumberReviewer) | **POST** /v1/phone-numbers/{id}/remediate/respond | Respond to the regulatory reviewer (message + corrections) |
 | [**reviewPhoneNumberKycPacket()**](PhoneNumbersApi.md#reviewPhoneNumberKycPacket) | **POST** /v1/phone-numbers/kyc/review-packet | Pre-review a KYC packet |
 | [**searchAvailablePhoneNumbers()**](PhoneNumbersApi.md#searchAvailablePhoneNumbers) | **GET** /v1/phone-numbers/available | Search available numbers |
 | [**submitPhoneNumberKyc()**](PhoneNumbersApi.md#submitPhoneNumberKyc) | **POST** /v1/phone-numbers/kyc | Submit KYC |
@@ -1044,6 +1045,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\ReplyToPhoneNumberReviewer200Response**](../Model/ReplyToPhoneNumberReviewer200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `respondToPhoneNumberReviewer()`
+
+```php
+respondToPhoneNumberReviewer($id, $respond_to_phone_number_reviewer_request): \Zernio\Model\RespondToPhoneNumberReviewer200Response
+```
+
+Respond to the regulatory reviewer (message + corrections)
+
+Send a single response to the reviewer on a number awaiting remediation: a free-text message and/or corrected requirement documents, in one call. If corrections are present they are PATCHed onto the requirement group and re-submitted (the number goes back to \"in review\"); if a message or file attachments are present they are posted to the reviewer's comment thread. When both are present, your message is the thread comment and the resubmit drives the state change. At least one of message, corrections, or attachments is required. `documents` correct requirement slots; `attachments` are loose files (their links are added to your message).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\PhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+$respond_to_phone_number_reviewer_request = new \Zernio\Model\RespondToPhoneNumberReviewerRequest(); // \Zernio\Model\RespondToPhoneNumberReviewerRequest
+
+try {
+    $result = $apiInstance->respondToPhoneNumberReviewer($id, $respond_to_phone_number_reviewer_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PhoneNumbersApi->respondToPhoneNumberReviewer: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**|  | |
+| **respond_to_phone_number_reviewer_request** | [**\Zernio\Model\RespondToPhoneNumberReviewerRequest**](../Model/RespondToPhoneNumberReviewerRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\RespondToPhoneNumberReviewer200Response**](../Model/RespondToPhoneNumberReviewer200Response.md)
 
 ### Authorization
 

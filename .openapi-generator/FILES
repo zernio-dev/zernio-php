@@ -1078,6 +1078,9 @@ docs/Model/RequestSmsSenderIdLimitIncreaseRequest.md
 docs/Model/ResendSmsRegistrationOtp200Response.md
 docs/Model/ReserveRfPrediction201Response.md
 docs/Model/ReserveRfPredictionRequest.md
+docs/Model/RespondToPhoneNumberReviewer200Response.md
+docs/Model/RespondToPhoneNumberReviewerRequest.md
+docs/Model/RespondToPhoneNumberReviewerRequestDocumentsInner.md
 docs/Model/RestoreWorkflowVersion200Response.md
 docs/Model/RestoreWorkflowVersion200ResponseWorkflow.md
 docs/Model/RetweetPost200Response.md
@@ -2640,6 +2643,9 @@ lib/Model/RequestSmsSenderIdLimitIncreaseRequest.php
 lib/Model/ResendSmsRegistrationOtp200Response.php
 lib/Model/ReserveRfPrediction201Response.php
 lib/Model/ReserveRfPredictionRequest.php
+lib/Model/RespondToPhoneNumberReviewer200Response.php
+lib/Model/RespondToPhoneNumberReviewerRequest.php
+lib/Model/RespondToPhoneNumberReviewerRequestDocumentsInner.php
 lib/Model/RestoreWorkflowVersion200Response.php
 lib/Model/RestoreWorkflowVersion200ResponseWorkflow.php
 lib/Model/RetweetPost200Response.php
@@ -3123,3 +3129,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/RespondToPhoneNumberReviewer200ResponseTest.php
+test/Model/RespondToPhoneNumberReviewerRequestDocumentsInnerTest.php
+test/Model/RespondToPhoneNumberReviewerRequestTest.php
