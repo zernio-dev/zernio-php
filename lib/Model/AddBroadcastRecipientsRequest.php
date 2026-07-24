@@ -289,6 +289,10 @@ class AddBroadcastRecipientsRequest implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['phones']) && (count($this->container['phones']) > 20000)) {
+            $invalidProperties[] = "invalid value for 'phones', number of items must be less than or equal to 20000.";
+        }
+
         return $invalidProperties;
     }
 
@@ -352,6 +356,10 @@ class AddBroadcastRecipientsRequest implements ModelInterface, ArrayAccess, \Jso
     {
         if (is_null($phones)) {
             throw new \InvalidArgumentException('non-nullable phones cannot be null');
+        }
+
+        if ((count($phones) > 20000)) {
+            throw new \InvalidArgumentException('invalid value for $phones when calling AddBroadcastRecipientsRequest., number of items must be less than or equal to 20000.');
         }
         $this->container['phones'] = $phones;
 
