@@ -50,6 +50,81 @@ jobs:
             --git-user-id=zernio-dev \
             --git-repo-id=zernio-php
 
+      - name: Patch Configuration.php to use versioned User-Agent
+        run: |
+          # Rewrite the generated OpenAPI-Generator user agent default so it
+          # resolves to "zernio-php/<composer.json version>/PHP" at runtime.
+          # Keeps the SDK version visible to the API without depending on
+          # generation-time knowledge of the next version bump.
+          python3 - <<'PY'
+          import re, sys
+
+          path = 'lib/Configuration.php'
+          with open(path) as f:
+              src = f.read()
+
+          new_prop = (
+              "    /**\n"
+              "     * User agent of the HTTP request. Defaults to \"zernio-php/{composer.json version}/PHP\",\n"
+              "     * resolved lazily the first time getUserAgent() is called.\n"
+              "     *\n"
+              "     * @var string|null\n"
+              "     */\n"
+              "    protected \$userAgent = null;"
+          )
+          src, n = re.subn(
+              r"    /\*\*\n     \* User agent of the HTTP request[\s\S]*?protected \$userAgent = '[^']*';",
+              lambda m: new_prop,
+              src,
+              count=1,
+          )
+          if n != 1:
+              sys.exit('Failed to patch $userAgent property')
+
+          new_getter = (
+              "    public function getUserAgent()\n"
+              "    {\n"
+              "        if (\$this->userAgent === null) {\n"
+              "            \$this->userAgent = self::defaultUserAgent();\n"
+              "        }\n"
+              "        return \$this->userAgent;\n"
+              "    }\n"
+              "\n"
+              "    /**\n"
+              "     * Builds the default user agent string from the package's composer.json version.\n"
+              "     *\n"
+              "     * @return string\n"
+              "     */\n"
+              "    private static function defaultUserAgent()\n"
+              "    {\n"
+              "        static \$cached = null;\n"
+              "        if (\$cached !== null) {\n"
+              "            return \$cached;\n"
+              "        }\n"
+              "        \$version = 'unknown';\n"
+              "        \$composerPath = __DIR__ . '/../composer.json';\n"
+              "        if (is_file(\$composerPath)) {\n"
+              "            \$data = json_decode((string) file_get_contents(\$composerPath), true);\n"
+              "            if (is_array(\$data) && isset(\$data['version']) && is_string(\$data['version'])) {\n"
+              "                \$version = \$data['version'];\n"
+              "            }\n"
+              "        }\n"
+              "        return \$cached = 'zernio-php/' . \$version . '/PHP';\n"
+              "    }"
+          )
+          src, n = re.subn(
+              r"    public function getUserAgent\(\)\n    \{\n        return \$this->userAgent;\n    \}",
+              lambda m: new_getter,
+              src,
+              count=1,
+          )
+          if n != 1:
+              sys.exit('Failed to patch getUserAgent() method')
+
+          with open(path, 'w') as f:
+              f.write(src)
+          PY
+
       - name: Add Late namespace backwards-compat shim
         run: |
           # Register a lazy spl_autoloader that aliases any referenced
