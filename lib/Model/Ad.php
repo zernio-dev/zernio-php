@@ -62,6 +62,8 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'platform' => 'string',
         'status' => '\Zernio\Model\AdStatus',
+        'configured_status' => 'string',
+        'review_status' => '\Zernio\Model\AdReviewStatus',
         'ad_type' => 'string',
         'goal' => 'string',
         'is_external' => 'bool',
@@ -101,6 +103,8 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => null,
         'platform' => null,
         'status' => null,
+        'configured_status' => null,
+        'review_status' => null,
         'ad_type' => null,
         'goal' => null,
         'is_external' => null,
@@ -138,6 +142,8 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => false,
         'platform' => false,
         'status' => false,
+        'configured_status' => true,
+        'review_status' => false,
         'ad_type' => false,
         'goal' => false,
         'is_external' => false,
@@ -255,6 +261,8 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'name',
         'platform' => 'platform',
         'status' => 'status',
+        'configured_status' => 'configuredStatus',
+        'review_status' => 'reviewStatus',
         'ad_type' => 'adType',
         'goal' => 'goal',
         'is_external' => 'isExternal',
@@ -292,6 +300,8 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'setName',
         'platform' => 'setPlatform',
         'status' => 'setStatus',
+        'configured_status' => 'setConfiguredStatus',
+        'review_status' => 'setReviewStatus',
         'ad_type' => 'setAdType',
         'goal' => 'setGoal',
         'is_external' => 'setIsExternal',
@@ -329,6 +339,8 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'getName',
         'platform' => 'getPlatform',
         'status' => 'getStatus',
+        'configured_status' => 'getConfiguredStatus',
+        'review_status' => 'getReviewStatus',
         'ad_type' => 'getAdType',
         'goal' => 'getGoal',
         'is_external' => 'getIsExternal',
@@ -490,6 +502,8 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('configured_status', $data ?? [], null);
+        $this->setIfExists('review_status', $data ?? [], null);
         $this->setIfExists('ad_type', $data ?? [], null);
         $this->setIfExists('goal', $data ?? [], null);
         $this->setIfExists('is_external', $data ?? [], null);
@@ -690,7 +704,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \Zernio\Model\AdStatus|null $status status
+     * @param \Zernio\Model\AdStatus|null $status Delivery status. Derived from the platform `effective_status`, so it inherits ancestor pauses (an ACTIVE ad under a PAUSED campaign reads `paused`). For the ad's own on/off toggle use `configuredStatus`; for the review state use `reviewStatus`.
      *
      * @return self
      */
@@ -700,6 +714,67 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets configured_status
+     *
+     * @return string|null
+     */
+    public function getConfiguredStatus()
+    {
+        return $this->container['configured_status'];
+    }
+
+    /**
+     * Sets configured_status
+     *
+     * @param string|null $configured_status The ad's own on/off toggle as configured on the platform (Meta `configured_status`: ACTIVE / PAUSED), unaffected by ancestor (ad set / campaign) pauses. Distinct from `status`, which is the ancestor-cascaded delivery status. Only present for Meta ads synced after this field was added.
+     *
+     * @return self
+     */
+    public function setConfiguredStatus($configured_status)
+    {
+        if (is_null($configured_status)) {
+            array_push($this->openAPINullablesSetToNull, 'configured_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('configured_status', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['configured_status'] = $configured_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets review_status
+     *
+     * @return \Zernio\Model\AdReviewStatus|null
+     */
+    public function getReviewStatus()
+    {
+        return $this->container['review_status'];
+    }
+
+    /**
+     * Sets review_status
+     *
+     * @param \Zernio\Model\AdReviewStatus|null $review_status Platform review state of this ad, independent of delivery `status` / `configuredStatus`. Absent when the platform reports no review signal.
+     *
+     * @return self
+     */
+    public function setReviewStatus($review_status)
+    {
+        if (is_null($review_status)) {
+            throw new \InvalidArgumentException('non-nullable review_status cannot be null');
+        }
+        $this->container['review_status'] = $review_status;
 
         return $this;
     }

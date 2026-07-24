@@ -62,7 +62,7 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform' => 'string',
         'campaign_name' => 'string',
         'status' => '\Zernio\Model\AdStatus',
-        'review_status' => 'string',
+        'review_status' => '\Zernio\Model\AdReviewStatus',
         'platform_campaign_status' => 'string',
         'campaign_issues_info' => 'object[]',
         'ad_count' => 'int',
@@ -393,10 +393,6 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     public const PLATFORM_GOOGLE = 'google';
     public const PLATFORM_TWITTER = 'twitter';
     public const PLATFORM_OPENAI = 'openai';
-    public const REVIEW_STATUS_IN_REVIEW = 'in_review';
-    public const REVIEW_STATUS_APPROVED = 'approved';
-    public const REVIEW_STATUS_REJECTED = 'rejected';
-    public const REVIEW_STATUS_WITH_ISSUES = 'with_issues';
     public const BUDGET_LEVEL_CAMPAIGN = 'campaign';
     public const BUDGET_LEVEL_ADSET = 'adset';
 
@@ -416,21 +412,6 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
             self::PLATFORM_GOOGLE,
             self::PLATFORM_TWITTER,
             self::PLATFORM_OPENAI,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getReviewStatusAllowableValues()
-    {
-        return [
-            self::REVIEW_STATUS_IN_REVIEW,
-            self::REVIEW_STATUS_APPROVED,
-            self::REVIEW_STATUS_REJECTED,
-            self::REVIEW_STATUS_WITH_ISSUES,
         ];
     }
 
@@ -523,15 +504,6 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'platform', must be one of '%s'",
                 $this->container['platform'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getReviewStatusAllowableValues();
-        if (!is_null($this->container['review_status']) && !in_array($this->container['review_status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'review_status', must be one of '%s'",
-                $this->container['review_status'],
                 implode("', '", $allowedValues)
             );
         }
@@ -681,7 +653,7 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets review_status
      *
-     * @return string|null
+     * @return \Zernio\Model\AdReviewStatus|null
      */
     public function getReviewStatus()
     {
@@ -691,7 +663,7 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets review_status
      *
-     * @param string|null $review_status Platform-side review state of the campaign. See AdTreeCampaign.reviewStatus for the full description.
+     * @param \Zernio\Model\AdReviewStatus|null $review_status review_status
      *
      * @return self
      */
@@ -706,16 +678,6 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
-        }
-        $allowedValues = $this->getReviewStatusAllowableValues();
-        if (!is_null($review_status) && !in_array($review_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'review_status', must be one of '%s'",
-                    $review_status,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['review_status'] = $review_status;
 
