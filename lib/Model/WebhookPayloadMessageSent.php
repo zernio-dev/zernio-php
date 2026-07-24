@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * WebhookPayloadMessageSent Class Doc Comment
  *
  * @category Class
- * @description Webhook payload for message sent events (fired when a message is sent via the API)
+ * @description Webhook payload for message sent events (fired when a message is sent via the API, or from the WhatsApp Business app on Coexistence numbers)
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

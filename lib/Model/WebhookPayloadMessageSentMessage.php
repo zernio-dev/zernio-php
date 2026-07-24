@@ -67,7 +67,8 @@ class WebhookPayloadMessageSentMessage implements ModelInterface, ArrayAccess, \
         'attachments' => '\Zernio\Model\WebhookPayloadMessageSentMessageAttachmentsInner[]',
         'sender' => '\Zernio\Model\WebhookPayloadMessageSentMessageSender',
         'sent_at' => '\DateTime',
-        'is_read' => 'bool'
+        'is_read' => 'bool',
+        'source' => 'string'
     ];
 
     /**
@@ -87,7 +88,8 @@ class WebhookPayloadMessageSentMessage implements ModelInterface, ArrayAccess, \
         'attachments' => null,
         'sender' => null,
         'sent_at' => 'date-time',
-        'is_read' => null
+        'is_read' => null,
+        'source' => null
     ];
 
     /**
@@ -105,7 +107,8 @@ class WebhookPayloadMessageSentMessage implements ModelInterface, ArrayAccess, \
         'attachments' => false,
         'sender' => false,
         'sent_at' => false,
-        'is_read' => false
+        'is_read' => false,
+        'source' => false
     ];
 
     /**
@@ -203,7 +206,8 @@ class WebhookPayloadMessageSentMessage implements ModelInterface, ArrayAccess, \
         'attachments' => 'attachments',
         'sender' => 'sender',
         'sent_at' => 'sentAt',
-        'is_read' => 'isRead'
+        'is_read' => 'isRead',
+        'source' => 'source'
     ];
 
     /**
@@ -221,7 +225,8 @@ class WebhookPayloadMessageSentMessage implements ModelInterface, ArrayAccess, \
         'attachments' => 'setAttachments',
         'sender' => 'setSender',
         'sent_at' => 'setSentAt',
-        'is_read' => 'setIsRead'
+        'is_read' => 'setIsRead',
+        'source' => 'setSource'
     ];
 
     /**
@@ -239,7 +244,8 @@ class WebhookPayloadMessageSentMessage implements ModelInterface, ArrayAccess, \
         'attachments' => 'getAttachments',
         'sender' => 'getSender',
         'sent_at' => 'getSentAt',
-        'is_read' => 'getIsRead'
+        'is_read' => 'getIsRead',
+        'source' => 'getSource'
     ];
 
     /**
@@ -289,6 +295,8 @@ class WebhookPayloadMessageSentMessage implements ModelInterface, ArrayAccess, \
     public const PLATFORM_WHATSAPP = 'whatsapp';
     public const DIRECTION_INCOMING = 'incoming';
     public const DIRECTION_OUTGOING = 'outgoing';
+    public const SOURCE_WHATSAPP_BUSINESS_APP = 'whatsapp_business_app';
+    public const SOURCE_CLOUD_API = 'cloud_api';
 
     /**
      * Gets allowable values of the enum
@@ -319,6 +327,19 @@ class WebhookPayloadMessageSentMessage implements ModelInterface, ArrayAccess, \
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSourceAllowableValues()
+    {
+        return [
+            self::SOURCE_WHATSAPP_BUSINESS_APP,
+            self::SOURCE_CLOUD_API,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -343,6 +364,7 @@ class WebhookPayloadMessageSentMessage implements ModelInterface, ArrayAccess, \
         $this->setIfExists('sender', $data ?? [], null);
         $this->setIfExists('sent_at', $data ?? [], null);
         $this->setIfExists('is_read', $data ?? [], null);
+        $this->setIfExists('source', $data ?? [], null);
     }
 
     /**
@@ -420,6 +442,15 @@ class WebhookPayloadMessageSentMessage implements ModelInterface, ArrayAccess, \
         if ($this->container['is_read'] === null) {
             $invalidProperties[] = "'is_read' can't be null";
         }
+        $allowedValues = $this->getSourceAllowableValues();
+        if (!is_null($this->container['source']) && !in_array($this->container['source'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'source', must be one of '%s'",
+                $this->container['source'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -728,6 +759,43 @@ class WebhookPayloadMessageSentMessage implements ModelInterface, ArrayAccess, \
             throw new \InvalidArgumentException('non-nullable is_read cannot be null');
         }
         $this->container['is_read'] = $is_read;
+
+        return $this;
+    }
+
+    /**
+     * Gets source
+     *
+     * @return string|null
+     */
+    public function getSource()
+    {
+        return $this->container['source'];
+    }
+
+    /**
+     * Sets source
+     *
+     * @param string|null $source WhatsApp send origin. whatsapp_business_app when sent from the WhatsApp Business phone app on a Coexistence number; cloud_api when sent through Zernio (dashboard, API, or broadcasts). Absent on non-WhatsApp platforms. This is not the inbox metadata.source lineage field.
+     *
+     * @return self
+     */
+    public function setSource($source)
+    {
+        if (is_null($source)) {
+            throw new \InvalidArgumentException('non-nullable source cannot be null');
+        }
+        $allowedValues = $this->getSourceAllowableValues();
+        if (!in_array($source, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'source', must be one of '%s'",
+                    $source,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['source'] = $source;
 
         return $this;
     }

@@ -1065,7 +1065,7 @@ onMessageSent($webhook_payload_message_sent)
 
 Message sent event
 
-Fired when a message is sent via the API.
+Fired when a message is sent via the API, or from the WhatsApp Business app on Coexistence numbers.
 
 ### Example
 
