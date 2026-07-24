@@ -26,7 +26,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `checkWhatsAppNumberAvailability()`
 
 ```php
-checkWhatsAppNumberAvailability($country, $number_type): \Zernio\Model\CheckPhoneNumberAvailability200Response
+checkWhatsAppNumberAvailability($country, $number_type, $sms): \Zernio\Model\CheckPhoneNumberAvailability200Response
 ```
 
 Check country availability
@@ -52,9 +52,10 @@ $apiInstance = new Zernio\Api\WhatsAppPhoneNumbersApi(
 );
 $country = 'country_example'; // string | ISO-2 country code.
 $number_type = 'number_type_example'; // string | Check a specific offered type (stock and address constraints are per type). Omitted = the country's default type.
+$sms = True; // bool | Pass true when the buyer wants SMS: availability, areas, and areaOptions then describe the SMS-capable pool (an SMS purchase orders from it), not the wider voice-only pool.
 
 try {
-    $result = $apiInstance->checkWhatsAppNumberAvailability($country, $number_type);
+    $result = $apiInstance->checkWhatsAppNumberAvailability($country, $number_type, $sms);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WhatsAppPhoneNumbersApi->checkWhatsAppNumberAvailability: ', $e->getMessage(), PHP_EOL;
@@ -67,6 +68,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **country** | **string**| ISO-2 country code. | |
 | **number_type** | **string**| Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. | [optional] |
+| **sms** | **bool**| Pass true when the buyer wants SMS: availability, areas, and areaOptions then describe the SMS-capable pool (an SMS purchase orders from it), not the wider voice-only pool. | [optional] |
 
 ### Return type
 

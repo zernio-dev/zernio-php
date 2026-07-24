@@ -62,7 +62,8 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
         'number_type' => 'string',
         'available' => 'bool',
         'address_constraint' => 'string',
-        'areas' => 'string[]'
+        'areas' => 'string[]',
+        'area_options' => '\Zernio\Model\CheckPhoneNumberAvailability200ResponseAreaOptionsInner[]'
     ];
 
     /**
@@ -77,7 +78,8 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
         'number_type' => null,
         'available' => null,
         'address_constraint' => null,
-        'areas' => null
+        'areas' => null,
+        'area_options' => null
     ];
 
     /**
@@ -90,7 +92,8 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
         'number_type' => false,
         'available' => false,
         'address_constraint' => false,
-        'areas' => false
+        'areas' => false,
+        'area_options' => false
     ];
 
     /**
@@ -183,7 +186,8 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
         'number_type' => 'numberType',
         'available' => 'available',
         'address_constraint' => 'addressConstraint',
-        'areas' => 'areas'
+        'areas' => 'areas',
+        'area_options' => 'areaOptions'
     ];
 
     /**
@@ -196,7 +200,8 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
         'number_type' => 'setNumberType',
         'available' => 'setAvailable',
         'address_constraint' => 'setAddressConstraint',
-        'areas' => 'setAreas'
+        'areas' => 'setAreas',
+        'area_options' => 'setAreaOptions'
     ];
 
     /**
@@ -209,7 +214,8 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
         'number_type' => 'getNumberType',
         'available' => 'getAvailable',
         'address_constraint' => 'getAddressConstraint',
-        'areas' => 'getAreas'
+        'areas' => 'getAreas',
+        'area_options' => 'getAreaOptions'
     ];
 
     /**
@@ -291,6 +297,7 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
         $this->setIfExists('available', $data ?? [], null);
         $this->setIfExists('address_constraint', $data ?? [], null);
         $this->setIfExists('areas', $data ?? [], null);
+        $this->setIfExists('area_options', $data ?? [], null);
     }
 
     /**
@@ -485,6 +492,33 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
             throw new \InvalidArgumentException('non-nullable areas cannot be null');
         }
         $this->container['areas'] = $areas;
+
+        return $this;
+    }
+
+    /**
+     * Gets area_options
+     *
+     * @return \Zernio\Model\CheckPhoneNumberAvailability200ResponseAreaOptionsInner[]|null
+     */
+    public function getAreaOptions()
+    {
+        return $this->container['area_options'];
+    }
+
+    /**
+     * Sets area_options
+     *
+     * @param \Zernio\Model\CheckPhoneNumberAvailability200ResponseAreaOptionsInner[]|null $area_options Live inventory grouped by area code, largest stock first. Empty when out of stock (or the area lookup failed). Pass a chosen `ndc` as `areaCode` on POST /v1/phone-numbers/purchase (or on the KYC submit for regulated countries) to require that area.
+     *
+     * @return self
+     */
+    public function setAreaOptions($area_options)
+    {
+        if (is_null($area_options)) {
+            throw new \InvalidArgumentException('non-nullable area_options cannot be null');
+        }
+        $this->container['area_options'] = $area_options;
 
         return $this;
     }

@@ -61,6 +61,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'profile_id' => 'string',
         'country' => 'string',
         'number_type' => 'string',
+        'area_code' => 'string',
         'connect_whatsapp' => 'bool',
         'wants_sms' => 'bool',
         'wants_whatsapp' => 'bool',
@@ -79,6 +80,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'profile_id' => null,
         'country' => null,
         'number_type' => null,
+        'area_code' => null,
         'connect_whatsapp' => null,
         'wants_sms' => null,
         'wants_whatsapp' => null,
@@ -95,6 +97,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'profile_id' => false,
         'country' => false,
         'number_type' => false,
+        'area_code' => false,
         'connect_whatsapp' => false,
         'wants_sms' => false,
         'wants_whatsapp' => false,
@@ -191,6 +194,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'profile_id' => 'profileId',
         'country' => 'country',
         'number_type' => 'numberType',
+        'area_code' => 'areaCode',
         'connect_whatsapp' => 'connectWhatsapp',
         'wants_sms' => 'wantsSms',
         'wants_whatsapp' => 'wantsWhatsapp',
@@ -207,6 +211,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'profile_id' => 'setProfileId',
         'country' => 'setCountry',
         'number_type' => 'setNumberType',
+        'area_code' => 'setAreaCode',
         'connect_whatsapp' => 'setConnectWhatsapp',
         'wants_sms' => 'setWantsSms',
         'wants_whatsapp' => 'setWantsWhatsapp',
@@ -223,6 +228,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'profile_id' => 'getProfileId',
         'country' => 'getCountry',
         'number_type' => 'getNumberType',
+        'area_code' => 'getAreaCode',
         'connect_whatsapp' => 'getConnectWhatsapp',
         'wants_sms' => 'getWantsSms',
         'wants_whatsapp' => 'getWantsWhatsapp',
@@ -309,6 +315,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('country', $data ?? [], 'US');
         $this->setIfExists('number_type', $data ?? [], null);
+        $this->setIfExists('area_code', $data ?? [], null);
         $this->setIfExists('connect_whatsapp', $data ?? [], true);
         $this->setIfExists('wants_sms', $data ?? [], false);
         $this->setIfExists('wants_whatsapp', $data ?? [], false);
@@ -353,6 +360,10 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
                 $this->container['number_type'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['area_code']) && !preg_match("/^\\d{1,4}$/", $this->container['area_code'])) {
+            $invalidProperties[] = "invalid value for 'area_code', must be conform to the pattern /^\\d{1,4}$/.";
         }
 
         if (!is_null($this->container['purchase_intent_id']) && (mb_strlen($this->container['purchase_intent_id']) > 100)) {
@@ -461,6 +472,38 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
             );
         }
         $this->container['number_type'] = $number_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets area_code
+     *
+     * @return string|null
+     */
+    public function getAreaCode()
+    {
+        return $this->container['area_code'];
+    }
+
+    /**
+     * Sets area_code
+     *
+     * @param string|null $area_code Area code (national destination code, e.g. 11 for Sao Paulo) the number must be in. Hard constraint: when the area has no deliverable inventory the purchase fails with 409 code AREA_CODE_UNAVAILABLE instead of assigning a number from another area, and later replacements stay in this area too. Omit for any area. Get live options from GET /v1/phone-numbers/availability (areaOptions).
+     *
+     * @return self
+     */
+    public function setAreaCode($area_code)
+    {
+        if (is_null($area_code)) {
+            throw new \InvalidArgumentException('non-nullable area_code cannot be null');
+        }
+
+        if ((!preg_match("/^\\d{1,4}$/", ObjectSerializer::toString($area_code)))) {
+            throw new \InvalidArgumentException("invalid value for \$area_code when calling PurchasePhoneNumberRequest., must conform to the pattern /^\\d{1,4}$/.");
+        }
+
+        $this->container['area_code'] = $area_code;
 
         return $this;
     }

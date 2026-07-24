@@ -491,15 +491,16 @@ class PhoneNumbersApi
      *
      * @param  string $country ISO-2 country code. (required)
      * @param  string|null $number_type Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. (optional)
+     * @param  bool|null $sms Pass true when the buyer wants SMS: availability, areas, and areaOptions then describe the SMS-capable pool (an SMS purchase orders from it), not the wider voice-only pool. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkPhoneNumberAvailability'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\CheckPhoneNumberAvailability200Response|\Zernio\Model\InlineObject
      */
-    public function checkPhoneNumberAvailability($country, $number_type = null, string $contentType = self::contentTypes['checkPhoneNumberAvailability'][0])
+    public function checkPhoneNumberAvailability($country, $number_type = null, $sms = null, string $contentType = self::contentTypes['checkPhoneNumberAvailability'][0])
     {
-        list($response) = $this->checkPhoneNumberAvailabilityWithHttpInfo($country, $number_type, $contentType);
+        list($response) = $this->checkPhoneNumberAvailabilityWithHttpInfo($country, $number_type, $sms, $contentType);
         return $response;
     }
 
@@ -510,15 +511,16 @@ class PhoneNumbersApi
      *
      * @param  string $country ISO-2 country code. (required)
      * @param  string|null $number_type Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. (optional)
+     * @param  bool|null $sms Pass true when the buyer wants SMS: availability, areas, and areaOptions then describe the SMS-capable pool (an SMS purchase orders from it), not the wider voice-only pool. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkPhoneNumberAvailability'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\CheckPhoneNumberAvailability200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function checkPhoneNumberAvailabilityWithHttpInfo($country, $number_type = null, string $contentType = self::contentTypes['checkPhoneNumberAvailability'][0])
+    public function checkPhoneNumberAvailabilityWithHttpInfo($country, $number_type = null, $sms = null, string $contentType = self::contentTypes['checkPhoneNumberAvailability'][0])
     {
-        $request = $this->checkPhoneNumberAvailabilityRequest($country, $number_type, $contentType);
+        $request = $this->checkPhoneNumberAvailabilityRequest($country, $number_type, $sms, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -610,14 +612,15 @@ class PhoneNumbersApi
      *
      * @param  string $country ISO-2 country code. (required)
      * @param  string|null $number_type Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. (optional)
+     * @param  bool|null $sms Pass true when the buyer wants SMS: availability, areas, and areaOptions then describe the SMS-capable pool (an SMS purchase orders from it), not the wider voice-only pool. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkPhoneNumberAvailability'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function checkPhoneNumberAvailabilityAsync($country, $number_type = null, string $contentType = self::contentTypes['checkPhoneNumberAvailability'][0])
+    public function checkPhoneNumberAvailabilityAsync($country, $number_type = null, $sms = null, string $contentType = self::contentTypes['checkPhoneNumberAvailability'][0])
     {
-        return $this->checkPhoneNumberAvailabilityAsyncWithHttpInfo($country, $number_type, $contentType)
+        return $this->checkPhoneNumberAvailabilityAsyncWithHttpInfo($country, $number_type, $sms, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -632,15 +635,16 @@ class PhoneNumbersApi
      *
      * @param  string $country ISO-2 country code. (required)
      * @param  string|null $number_type Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. (optional)
+     * @param  bool|null $sms Pass true when the buyer wants SMS: availability, areas, and areaOptions then describe the SMS-capable pool (an SMS purchase orders from it), not the wider voice-only pool. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkPhoneNumberAvailability'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function checkPhoneNumberAvailabilityAsyncWithHttpInfo($country, $number_type = null, string $contentType = self::contentTypes['checkPhoneNumberAvailability'][0])
+    public function checkPhoneNumberAvailabilityAsyncWithHttpInfo($country, $number_type = null, $sms = null, string $contentType = self::contentTypes['checkPhoneNumberAvailability'][0])
     {
         $returnType = '\Zernio\Model\CheckPhoneNumberAvailability200Response';
-        $request = $this->checkPhoneNumberAvailabilityRequest($country, $number_type, $contentType);
+        $request = $this->checkPhoneNumberAvailabilityRequest($country, $number_type, $sms, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -683,12 +687,13 @@ class PhoneNumbersApi
      *
      * @param  string $country ISO-2 country code. (required)
      * @param  string|null $number_type Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. (optional)
+     * @param  bool|null $sms Pass true when the buyer wants SMS: availability, areas, and areaOptions then describe the SMS-capable pool (an SMS purchase orders from it), not the wider voice-only pool. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkPhoneNumberAvailability'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function checkPhoneNumberAvailabilityRequest($country, $number_type = null, string $contentType = self::contentTypes['checkPhoneNumberAvailability'][0])
+    public function checkPhoneNumberAvailabilityRequest($country, $number_type = null, $sms = null, string $contentType = self::contentTypes['checkPhoneNumberAvailability'][0])
     {
 
         // verify the required parameter 'country' is set
@@ -697,6 +702,7 @@ class PhoneNumbersApi
                 'Missing the required parameter $country when calling checkPhoneNumberAvailability'
             );
         }
+
 
 
 
@@ -721,6 +727,15 @@ class PhoneNumbersApi
             $number_type,
             'numberType', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sms,
+            'sms', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required

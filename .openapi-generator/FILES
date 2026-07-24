@@ -172,6 +172,7 @@ docs/Model/CallRecordTranscriptInner.md
 docs/Model/CancelBroadcast200Response.md
 docs/Model/CancelPhoneNumberPortIn200Response.md
 docs/Model/CheckPhoneNumberAvailability200Response.md
+docs/Model/CheckPhoneNumberAvailability200ResponseAreaOptionsInner.md
 docs/Model/CheckPhoneNumberPortability200Response.md
 docs/Model/CheckPhoneNumberPortability200ResponseResultsInner.md
 docs/Model/CheckPhoneNumberPortabilityRequest.md
@@ -1737,6 +1738,7 @@ lib/Model/CallRecordTranscriptInner.php
 lib/Model/CancelBroadcast200Response.php
 lib/Model/CancelPhoneNumberPortIn200Response.php
 lib/Model/CheckPhoneNumberAvailability200Response.php
+lib/Model/CheckPhoneNumberAvailability200ResponseAreaOptionsInner.php
 lib/Model/CheckPhoneNumberPortability200Response.php
 lib/Model/CheckPhoneNumberPortability200ResponseResultsInner.php
 lib/Model/CheckPhoneNumberPortabilityRequest.php
@@ -3131,4 +3133,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AdReviewStatusTest.php
+test/Model/CheckPhoneNumberAvailability200ResponseAreaOptionsInnerTest.php

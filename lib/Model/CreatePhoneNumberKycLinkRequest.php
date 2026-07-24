@@ -60,6 +60,7 @@ class CreatePhoneNumberKycLinkRequest implements ModelInterface, ArrayAccess, \J
     protected static $openAPITypes = [
         'profile_id' => 'string',
         'country' => 'string',
+        'area_code' => 'string',
         'branding' => '\Zernio\Model\CreatePhoneNumberKycLinkRequestBranding',
         'redirect_url' => 'string'
     ];
@@ -74,6 +75,7 @@ class CreatePhoneNumberKycLinkRequest implements ModelInterface, ArrayAccess, \J
     protected static $openAPIFormats = [
         'profile_id' => null,
         'country' => null,
+        'area_code' => null,
         'branding' => null,
         'redirect_url' => 'uri'
     ];
@@ -86,6 +88,7 @@ class CreatePhoneNumberKycLinkRequest implements ModelInterface, ArrayAccess, \J
     protected static array $openAPINullables = [
         'profile_id' => false,
         'country' => false,
+        'area_code' => false,
         'branding' => false,
         'redirect_url' => false
     ];
@@ -178,6 +181,7 @@ class CreatePhoneNumberKycLinkRequest implements ModelInterface, ArrayAccess, \J
     protected static $attributeMap = [
         'profile_id' => 'profileId',
         'country' => 'country',
+        'area_code' => 'areaCode',
         'branding' => 'branding',
         'redirect_url' => 'redirect_url'
     ];
@@ -190,6 +194,7 @@ class CreatePhoneNumberKycLinkRequest implements ModelInterface, ArrayAccess, \J
     protected static $setters = [
         'profile_id' => 'setProfileId',
         'country' => 'setCountry',
+        'area_code' => 'setAreaCode',
         'branding' => 'setBranding',
         'redirect_url' => 'setRedirectUrl'
     ];
@@ -202,6 +207,7 @@ class CreatePhoneNumberKycLinkRequest implements ModelInterface, ArrayAccess, \J
     protected static $getters = [
         'profile_id' => 'getProfileId',
         'country' => 'getCountry',
+        'area_code' => 'getAreaCode',
         'branding' => 'getBranding',
         'redirect_url' => 'getRedirectUrl'
     ];
@@ -265,6 +271,7 @@ class CreatePhoneNumberKycLinkRequest implements ModelInterface, ArrayAccess, \J
     {
         $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('country', $data ?? [], null);
+        $this->setIfExists('area_code', $data ?? [], null);
         $this->setIfExists('branding', $data ?? [], null);
         $this->setIfExists('redirect_url', $data ?? [], null);
     }
@@ -308,6 +315,10 @@ class CreatePhoneNumberKycLinkRequest implements ModelInterface, ArrayAccess, \J
 
         if ((mb_strlen($this->container['country']) < 2)) {
             $invalidProperties[] = "invalid value for 'country', the character length must be bigger than or equal to 2.";
+        }
+
+        if (!is_null($this->container['area_code']) && !preg_match("/^\\d{1,4}$/", $this->container['area_code'])) {
+            $invalidProperties[] = "invalid value for 'area_code', must be conform to the pattern /^\\d{1,4}$/.";
         }
 
         return $invalidProperties;
@@ -382,6 +393,38 @@ class CreatePhoneNumberKycLinkRequest implements ModelInterface, ArrayAccess, \J
         }
 
         $this->container['country'] = $country;
+
+        return $this;
+    }
+
+    /**
+     * Gets area_code
+     *
+     * @return string|null
+     */
+    public function getAreaCode()
+    {
+        return $this->container['area_code'];
+    }
+
+    /**
+     * Sets area_code
+     *
+     * @param string|null $area_code Area code (NDC) the eventual number must be in. Hard constraint carried by the link; the end customer filling the form makes no area choice. Options come from GET /v1/phone-numbers/availability (areaOptions).
+     *
+     * @return self
+     */
+    public function setAreaCode($area_code)
+    {
+        if (is_null($area_code)) {
+            throw new \InvalidArgumentException('non-nullable area_code cannot be null');
+        }
+
+        if ((!preg_match("/^\\d{1,4}$/", ObjectSerializer::toString($area_code)))) {
+            throw new \InvalidArgumentException("invalid value for \$area_code when calling CreatePhoneNumberKycLinkRequest., must conform to the pattern /^\\d{1,4}$/.");
+        }
+
+        $this->container['area_code'] = $area_code;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * PurchasePhoneNumber409Response
+ * CheckPhoneNumberAvailability200ResponseAreaOptionsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * PurchasePhoneNumber409Response Class Doc Comment
+ * CheckPhoneNumberAvailability200ResponseAreaOptionsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PurchasePhoneNumber409Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class CheckPhoneNumberAvailability200ResponseAreaOptionsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PurchasePhoneNumber409Response implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'purchasePhoneNumber_409_response';
+    protected static $openAPIModelName = 'checkPhoneNumberAvailability_200_response_areaOptions_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,9 @@ class PurchasePhoneNumber409Response implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'error' => 'string',
-        'code' => 'string'
+        'ndc' => 'string',
+        'name' => 'string',
+        'count' => 'int'
     ];
 
     /**
@@ -70,8 +71,9 @@ class PurchasePhoneNumber409Response implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'error' => null,
-        'code' => null
+        'ndc' => null,
+        'name' => null,
+        'count' => null
     ];
 
     /**
@@ -80,8 +82,9 @@ class PurchasePhoneNumber409Response implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'error' => false,
-        'code' => false
+        'ndc' => false,
+        'name' => false,
+        'count' => false
     ];
 
     /**
@@ -170,8 +173,9 @@ class PurchasePhoneNumber409Response implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'error' => 'error',
-        'code' => 'code'
+        'ndc' => 'ndc',
+        'name' => 'name',
+        'count' => 'count'
     ];
 
     /**
@@ -180,8 +184,9 @@ class PurchasePhoneNumber409Response implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'error' => 'setError',
-        'code' => 'setCode'
+        'ndc' => 'setNdc',
+        'name' => 'setName',
+        'count' => 'setCount'
     ];
 
     /**
@@ -190,8 +195,9 @@ class PurchasePhoneNumber409Response implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'error' => 'getError',
-        'code' => 'getCode'
+        'ndc' => 'getNdc',
+        'name' => 'getName',
+        'count' => 'getCount'
     ];
 
     /**
@@ -235,21 +241,6 @@ class PurchasePhoneNumber409Response implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
-    public const CODE_PURCHASE_VELOCITY = 'PURCHASE_VELOCITY';
-    public const CODE_AREA_CODE_UNAVAILABLE = 'AREA_CODE_UNAVAILABLE';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getCodeAllowableValues()
-    {
-        return [
-            self::CODE_PURCHASE_VELOCITY,
-            self::CODE_AREA_CODE_UNAVAILABLE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -266,8 +257,9 @@ class PurchasePhoneNumber409Response implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('error', $data ?? [], null);
-        $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('ndc', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('count', $data ?? [], null);
     }
 
     /**
@@ -297,15 +289,6 @@ class PurchasePhoneNumber409Response implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getCodeAllowableValues();
-        if (!is_null($this->container['code']) && !in_array($this->container['code'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'code', must be one of '%s'",
-                $this->container['code'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -322,65 +305,82 @@ class PurchasePhoneNumber409Response implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets error
+     * Gets ndc
      *
      * @return string|null
      */
-    public function getError()
+    public function getNdc()
     {
-        return $this->container['error'];
+        return $this->container['ndc'];
     }
 
     /**
-     * Sets error
+     * Sets ndc
      *
-     * @param string|null $error error
+     * @param string|null $ndc Area code (national destination code), e.g. \"11\".
      *
      * @return self
      */
-    public function setError($error)
+    public function setNdc($ndc)
     {
-        if (is_null($error)) {
-            throw new \InvalidArgumentException('non-nullable error cannot be null');
+        if (is_null($ndc)) {
+            throw new \InvalidArgumentException('non-nullable ndc cannot be null');
         }
-        $this->container['error'] = $error;
+        $this->container['ndc'] = $ndc;
 
         return $this;
     }
 
     /**
-     * Gets code
+     * Gets name
      *
      * @return string|null
      */
-    public function getCode()
+    public function getName()
     {
-        return $this->container['code'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets code
+     * Sets name
      *
-     * @param string|null $code code
+     * @param string|null $name Human-readable area name, e.g. \"Sao Paulo\".
      *
      * @return self
      */
-    public function setCode($code)
+    public function setName($name)
     {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $allowedValues = $this->getCodeAllowableValues();
-        if (!in_array($code, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'code', must be one of '%s'",
-                    $code,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets count
+     *
+     * @return int|null
+     */
+    public function getCount()
+    {
+        return $this->container['count'];
+    }
+
+    /**
+     * Sets count
+     *
+     * @param int|null $count Deliverable numbers seen in this area on the latest inventory page.
+     *
+     * @return self
+     */
+    public function setCount($count)
+    {
+        if (is_null($count)) {
+            throw new \InvalidArgumentException('non-nullable count cannot be null');
         }
-        $this->container['code'] = $code;
+        $this->container['count'] = $count;
 
         return $this;
     }

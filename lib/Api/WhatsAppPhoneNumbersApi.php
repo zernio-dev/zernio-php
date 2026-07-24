@@ -175,6 +175,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @param  string $country ISO-2 country code. (required)
      * @param  string|null $number_type Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. (optional)
+     * @param  bool|null $sms Pass true when the buyer wants SMS: availability, areas, and areaOptions then describe the SMS-capable pool (an SMS purchase orders from it), not the wider voice-only pool. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkWhatsAppNumberAvailability'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -182,9 +183,9 @@ class WhatsAppPhoneNumbersApi
      * @return \Zernio\Model\CheckPhoneNumberAvailability200Response|\Zernio\Model\InlineObject
      * @deprecated
      */
-    public function checkWhatsAppNumberAvailability($country, $number_type = null, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
+    public function checkWhatsAppNumberAvailability($country, $number_type = null, $sms = null, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
     {
-        list($response) = $this->checkWhatsAppNumberAvailabilityWithHttpInfo($country, $number_type, $contentType);
+        list($response) = $this->checkWhatsAppNumberAvailabilityWithHttpInfo($country, $number_type, $sms, $contentType);
         return $response;
     }
 
@@ -195,6 +196,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @param  string $country ISO-2 country code. (required)
      * @param  string|null $number_type Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. (optional)
+     * @param  bool|null $sms Pass true when the buyer wants SMS: availability, areas, and areaOptions then describe the SMS-capable pool (an SMS purchase orders from it), not the wider voice-only pool. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkWhatsAppNumberAvailability'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -202,9 +204,9 @@ class WhatsAppPhoneNumbersApi
      * @return array of \Zernio\Model\CheckPhoneNumberAvailability200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
-    public function checkWhatsAppNumberAvailabilityWithHttpInfo($country, $number_type = null, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
+    public function checkWhatsAppNumberAvailabilityWithHttpInfo($country, $number_type = null, $sms = null, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
     {
-        $request = $this->checkWhatsAppNumberAvailabilityRequest($country, $number_type, $contentType);
+        $request = $this->checkWhatsAppNumberAvailabilityRequest($country, $number_type, $sms, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -296,15 +298,16 @@ class WhatsAppPhoneNumbersApi
      *
      * @param  string $country ISO-2 country code. (required)
      * @param  string|null $number_type Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. (optional)
+     * @param  bool|null $sms Pass true when the buyer wants SMS: availability, areas, and areaOptions then describe the SMS-capable pool (an SMS purchase orders from it), not the wider voice-only pool. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkWhatsAppNumberAvailability'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function checkWhatsAppNumberAvailabilityAsync($country, $number_type = null, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
+    public function checkWhatsAppNumberAvailabilityAsync($country, $number_type = null, $sms = null, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
     {
-        return $this->checkWhatsAppNumberAvailabilityAsyncWithHttpInfo($country, $number_type, $contentType)
+        return $this->checkWhatsAppNumberAvailabilityAsyncWithHttpInfo($country, $number_type, $sms, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -319,16 +322,17 @@ class WhatsAppPhoneNumbersApi
      *
      * @param  string $country ISO-2 country code. (required)
      * @param  string|null $number_type Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. (optional)
+     * @param  bool|null $sms Pass true when the buyer wants SMS: availability, areas, and areaOptions then describe the SMS-capable pool (an SMS purchase orders from it), not the wider voice-only pool. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkWhatsAppNumberAvailability'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function checkWhatsAppNumberAvailabilityAsyncWithHttpInfo($country, $number_type = null, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
+    public function checkWhatsAppNumberAvailabilityAsyncWithHttpInfo($country, $number_type = null, $sms = null, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
     {
         $returnType = '\Zernio\Model\CheckPhoneNumberAvailability200Response';
-        $request = $this->checkWhatsAppNumberAvailabilityRequest($country, $number_type, $contentType);
+        $request = $this->checkWhatsAppNumberAvailabilityRequest($country, $number_type, $sms, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -371,13 +375,14 @@ class WhatsAppPhoneNumbersApi
      *
      * @param  string $country ISO-2 country code. (required)
      * @param  string|null $number_type Check a specific offered type (stock and address constraints are per type). Omitted &#x3D; the country&#39;s default type. (optional)
+     * @param  bool|null $sms Pass true when the buyer wants SMS: availability, areas, and areaOptions then describe the SMS-capable pool (an SMS purchase orders from it), not the wider voice-only pool. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkWhatsAppNumberAvailability'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      * @deprecated
      */
-    public function checkWhatsAppNumberAvailabilityRequest($country, $number_type = null, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
+    public function checkWhatsAppNumberAvailabilityRequest($country, $number_type = null, $sms = null, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
     {
 
         // verify the required parameter 'country' is set
@@ -386,6 +391,7 @@ class WhatsAppPhoneNumbersApi
                 'Missing the required parameter $country when calling checkWhatsAppNumberAvailability'
             );
         }
+
 
 
 
@@ -410,6 +416,15 @@ class WhatsAppPhoneNumbersApi
             $number_type,
             'numberType', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sms,
+            'sms', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required

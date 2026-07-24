@@ -65,6 +65,7 @@ class SubmitPhoneNumberKycRequest implements ModelInterface, ArrayAccess, \JsonS
         'reuse' => 'bool',
         'reuse_option_id' => 'string',
         'reuse_from' => 'string',
+        'area_code' => 'string',
         'end_user_first_name' => 'string',
         'end_user_last_name' => 'string',
         'values' => 'array<string,string>',
@@ -87,6 +88,7 @@ class SubmitPhoneNumberKycRequest implements ModelInterface, ArrayAccess, \JsonS
         'reuse' => null,
         'reuse_option_id' => null,
         'reuse_from' => null,
+        'area_code' => null,
         'end_user_first_name' => null,
         'end_user_last_name' => null,
         'values' => null,
@@ -107,6 +109,7 @@ class SubmitPhoneNumberKycRequest implements ModelInterface, ArrayAccess, \JsonS
         'reuse' => false,
         'reuse_option_id' => false,
         'reuse_from' => false,
+        'area_code' => false,
         'end_user_first_name' => false,
         'end_user_last_name' => false,
         'values' => false,
@@ -207,6 +210,7 @@ class SubmitPhoneNumberKycRequest implements ModelInterface, ArrayAccess, \JsonS
         'reuse' => 'reuse',
         'reuse_option_id' => 'reuseOptionId',
         'reuse_from' => 'reuseFrom',
+        'area_code' => 'areaCode',
         'end_user_first_name' => 'endUserFirstName',
         'end_user_last_name' => 'endUserLastName',
         'values' => 'values',
@@ -227,6 +231,7 @@ class SubmitPhoneNumberKycRequest implements ModelInterface, ArrayAccess, \JsonS
         'reuse' => 'setReuse',
         'reuse_option_id' => 'setReuseOptionId',
         'reuse_from' => 'setReuseFrom',
+        'area_code' => 'setAreaCode',
         'end_user_first_name' => 'setEndUserFirstName',
         'end_user_last_name' => 'setEndUserLastName',
         'values' => 'setValues',
@@ -247,6 +252,7 @@ class SubmitPhoneNumberKycRequest implements ModelInterface, ArrayAccess, \JsonS
         'reuse' => 'getReuse',
         'reuse_option_id' => 'getReuseOptionId',
         'reuse_from' => 'getReuseFrom',
+        'area_code' => 'getAreaCode',
         'end_user_first_name' => 'getEndUserFirstName',
         'end_user_last_name' => 'getEndUserLastName',
         'values' => 'getValues',
@@ -318,6 +324,7 @@ class SubmitPhoneNumberKycRequest implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('reuse', $data ?? [], null);
         $this->setIfExists('reuse_option_id', $data ?? [], null);
         $this->setIfExists('reuse_from', $data ?? [], null);
+        $this->setIfExists('area_code', $data ?? [], null);
         $this->setIfExists('end_user_first_name', $data ?? [], null);
         $this->setIfExists('end_user_last_name', $data ?? [], null);
         $this->setIfExists('values', $data ?? [], null);
@@ -364,6 +371,10 @@ class SubmitPhoneNumberKycRequest implements ModelInterface, ArrayAccess, \JsonS
 
         if (!is_null($this->container['quantity']) && ($this->container['quantity'] < 1)) {
             $invalidProperties[] = "invalid value for 'quantity', must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['area_code']) && !preg_match("/^\\d{1,4}$/", $this->container['area_code'])) {
+            $invalidProperties[] = "invalid value for 'area_code', must be conform to the pattern /^\\d{1,4}$/.";
         }
 
         return $invalidProperties;
@@ -574,6 +585,38 @@ class SubmitPhoneNumberKycRequest implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable reuse_from cannot be null');
         }
         $this->container['reuse_from'] = $reuse_from;
+
+        return $this;
+    }
+
+    /**
+     * Gets area_code
+     *
+     * @return string|null
+     */
+    public function getAreaCode()
+    {
+        return $this->container['area_code'];
+    }
+
+    /**
+     * Sets area_code
+     *
+     * @param string|null $area_code Area code (NDC) the number must be in. Hard constraint: an empty area pool fails with 409 code AREA_CODE_UNAVAILABLE instead of ordering from another area. Omit for any area. Options come from GET /v1/phone-numbers/availability (areaOptions); the purchase 202 kycUrl echoes the areaCode picked at purchase time so it can be passed here.
+     *
+     * @return self
+     */
+    public function setAreaCode($area_code)
+    {
+        if (is_null($area_code)) {
+            throw new \InvalidArgumentException('non-nullable area_code cannot be null');
+        }
+
+        if ((!preg_match("/^\\d{1,4}$/", ObjectSerializer::toString($area_code)))) {
+            throw new \InvalidArgumentException("invalid value for \$area_code when calling SubmitPhoneNumberKycRequest., must conform to the pattern /^\\d{1,4}$/.");
+        }
+
+        $this->container['area_code'] = $area_code;
 
         return $this;
     }
