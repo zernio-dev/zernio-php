@@ -238,7 +238,7 @@ class WhatsAppApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UnpublishPost200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UnpublishPost200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
      */
     public function addWhatsAppGroupParticipants($group_id, $account_id, $add_whats_app_group_participants_request, string $contentType = self::contentTypes['addWhatsAppGroupParticipants'][0])
     {
@@ -258,7 +258,7 @@ class WhatsAppApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UnpublishPost200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UnpublishPost200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function addWhatsAppGroupParticipantsWithHttpInfo($group_id, $account_id, $add_whats_app_group_participants_request, string $contentType = self::contentTypes['addWhatsAppGroupParticipants'][0])
     {
@@ -291,6 +291,12 @@ class WhatsAppApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\UnpublishPost200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -328,6 +334,14 @@ class WhatsAppApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\UnpublishPost200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -564,7 +578,7 @@ class WhatsAppApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UnpublishPost200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UnpublishPost200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
      */
     public function approveWhatsAppGroupJoinRequests($group_id, $account_id, $approve_whats_app_group_join_requests_request, string $contentType = self::contentTypes['approveWhatsAppGroupJoinRequests'][0])
     {
@@ -584,7 +598,7 @@ class WhatsAppApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UnpublishPost200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UnpublishPost200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function approveWhatsAppGroupJoinRequestsWithHttpInfo($group_id, $account_id, $approve_whats_app_group_join_requests_request, string $contentType = self::contentTypes['approveWhatsAppGroupJoinRequests'][0])
     {
@@ -617,6 +631,12 @@ class WhatsAppApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\UnpublishPost200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -654,6 +674,14 @@ class WhatsAppApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\UnpublishPost200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1458,7 +1486,7 @@ class WhatsAppApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateWhatsAppGroupChat201Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CreateWhatsAppGroupChat201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
      */
     public function createWhatsAppGroupChat($create_whats_app_group_chat_request, string $contentType = self::contentTypes['createWhatsAppGroupChat'][0])
     {
@@ -1476,7 +1504,7 @@ class WhatsAppApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateWhatsAppGroupChat201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateWhatsAppGroupChat201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWhatsAppGroupChatWithHttpInfo($create_whats_app_group_chat_request, string $contentType = self::contentTypes['createWhatsAppGroupChat'][0])
     {
@@ -1509,6 +1537,12 @@ class WhatsAppApi
                 case 201:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\CreateWhatsAppGroupChat201Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -1546,6 +1580,14 @@ class WhatsAppApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\CreateWhatsAppGroupChat201Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1744,7 +1786,7 @@ class WhatsAppApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateWhatsAppGroupInviteLink200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CreateWhatsAppGroupInviteLink200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
      */
     public function createWhatsAppGroupInviteLink($group_id, $account_id, string $contentType = self::contentTypes['createWhatsAppGroupInviteLink'][0])
     {
@@ -1763,7 +1805,7 @@ class WhatsAppApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateWhatsAppGroupInviteLink200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateWhatsAppGroupInviteLink200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWhatsAppGroupInviteLinkWithHttpInfo($group_id, $account_id, string $contentType = self::contentTypes['createWhatsAppGroupInviteLink'][0])
     {
@@ -1796,6 +1838,12 @@ class WhatsAppApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\CreateWhatsAppGroupInviteLink200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -1833,6 +1881,14 @@ class WhatsAppApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\CreateWhatsAppGroupInviteLink200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2336,7 +2392,7 @@ class WhatsAppApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UnpublishPost200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\UnpublishPost200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function deleteWhatsAppGroupChat($group_id, $account_id, string $contentType = self::contentTypes['deleteWhatsAppGroupChat'][0])
     {
@@ -2355,7 +2411,7 @@ class WhatsAppApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UnpublishPost200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UnpublishPost200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteWhatsAppGroupChatWithHttpInfo($group_id, $account_id, string $contentType = self::contentTypes['deleteWhatsAppGroupChat'][0])
     {
@@ -2388,6 +2444,12 @@ class WhatsAppApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\UnpublishPost200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -2431,6 +2493,14 @@ class WhatsAppApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\UnpublishPost200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4755,7 +4825,7 @@ class WhatsAppApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetWhatsAppGroupChat200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\GetWhatsAppGroupChat200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function getWhatsAppGroupChat($group_id, $account_id, string $contentType = self::contentTypes['getWhatsAppGroupChat'][0])
     {
@@ -4774,7 +4844,7 @@ class WhatsAppApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetWhatsAppGroupChat200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetWhatsAppGroupChat200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWhatsAppGroupChatWithHttpInfo($group_id, $account_id, string $contentType = self::contentTypes['getWhatsAppGroupChat'][0])
     {
@@ -4807,6 +4877,12 @@ class WhatsAppApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\GetWhatsAppGroupChat200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -4850,6 +4926,14 @@ class WhatsAppApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\GetWhatsAppGroupChat200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6874,7 +6958,7 @@ class WhatsAppApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListWhatsAppGroupChats200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListWhatsAppGroupChats200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
      */
     public function listWhatsAppGroupChats($account_id, $limit = 25, $after = null, string $contentType = self::contentTypes['listWhatsAppGroupChats'][0])
     {
@@ -6894,7 +6978,7 @@ class WhatsAppApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListWhatsAppGroupChats200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListWhatsAppGroupChats200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listWhatsAppGroupChatsWithHttpInfo($account_id, $limit = 25, $after = null, string $contentType = self::contentTypes['listWhatsAppGroupChats'][0])
     {
@@ -6927,6 +7011,12 @@ class WhatsAppApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\ListWhatsAppGroupChats200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -6964,6 +7054,14 @@ class WhatsAppApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\ListWhatsAppGroupChats200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7193,7 +7291,7 @@ class WhatsAppApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListWhatsAppGroupJoinRequests200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListWhatsAppGroupJoinRequests200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
      */
     public function listWhatsAppGroupJoinRequests($group_id, $account_id, string $contentType = self::contentTypes['listWhatsAppGroupJoinRequests'][0])
     {
@@ -7212,7 +7310,7 @@ class WhatsAppApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListWhatsAppGroupJoinRequests200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListWhatsAppGroupJoinRequests200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listWhatsAppGroupJoinRequestsWithHttpInfo($group_id, $account_id, string $contentType = self::contentTypes['listWhatsAppGroupJoinRequests'][0])
     {
@@ -7245,6 +7343,12 @@ class WhatsAppApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\ListWhatsAppGroupJoinRequests200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -7282,6 +7386,14 @@ class WhatsAppApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\ListWhatsAppGroupJoinRequests200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7501,7 +7613,7 @@ class WhatsAppApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UnpublishPost200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UnpublishPost200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
      */
     public function rejectWhatsAppGroupJoinRequests($group_id, $account_id, $reject_whats_app_group_join_requests_request, string $contentType = self::contentTypes['rejectWhatsAppGroupJoinRequests'][0])
     {
@@ -7521,7 +7633,7 @@ class WhatsAppApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UnpublishPost200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UnpublishPost200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function rejectWhatsAppGroupJoinRequestsWithHttpInfo($group_id, $account_id, $reject_whats_app_group_join_requests_request, string $contentType = self::contentTypes['rejectWhatsAppGroupJoinRequests'][0])
     {
@@ -7554,6 +7666,12 @@ class WhatsAppApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\UnpublishPost200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -7591,6 +7709,14 @@ class WhatsAppApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\UnpublishPost200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7827,7 +7953,7 @@ class WhatsAppApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UnpublishPost200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UnpublishPost200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
      */
     public function removeWhatsAppGroupParticipants($group_id, $account_id, $remove_whats_app_group_participants_request, string $contentType = self::contentTypes['removeWhatsAppGroupParticipants'][0])
     {
@@ -7847,7 +7973,7 @@ class WhatsAppApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UnpublishPost200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UnpublishPost200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function removeWhatsAppGroupParticipantsWithHttpInfo($group_id, $account_id, $remove_whats_app_group_participants_request, string $contentType = self::contentTypes['removeWhatsAppGroupParticipants'][0])
     {
@@ -7880,6 +8006,12 @@ class WhatsAppApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\UnpublishPost200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -7917,6 +8049,14 @@ class WhatsAppApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\UnpublishPost200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9578,7 +9718,7 @@ class WhatsAppApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UnpublishPost200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\UnpublishPost200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function updateWhatsAppGroupChat($group_id, $account_id, $update_whats_app_group_chat_request, string $contentType = self::contentTypes['updateWhatsAppGroupChat'][0])
     {
@@ -9598,7 +9738,7 @@ class WhatsAppApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UnpublishPost200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UnpublishPost200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateWhatsAppGroupChatWithHttpInfo($group_id, $account_id, $update_whats_app_group_chat_request, string $contentType = self::contentTypes['updateWhatsAppGroupChat'][0])
     {
@@ -9631,6 +9771,12 @@ class WhatsAppApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\UnpublishPost200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -9674,6 +9820,14 @@ class WhatsAppApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\UnpublishPost200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
