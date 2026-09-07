@@ -1,6 +1,6 @@
 <?php
 /**
- * GetTikTokCreatorInfo200ResponsePostingLimits
+ * GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettingsAllowDuet
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetTikTokCreatorInfo200ResponsePostingLimits Class Doc Comment
+ * GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettingsAllowDuet Class Doc Comment
  *
  * @category Class
+ * @description Descriptor for the allow_duet toggle. Null when mediaType is photo.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetTikTokCreatorInfo200ResponsePostingLimits implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettingsAllowDuet implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class GetTikTokCreatorInfo200ResponsePostingLimits implements ModelInterface, Ar
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getTikTokCreatorInfo_200_response_postingLimits';
+    protected static $openAPIModelName = 'getTikTokCreatorInfo_200_response_postingLimits_interactionSettings_allow_duet';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,10 @@ class GetTikTokCreatorInfo200ResponsePostingLimits implements ModelInterface, Ar
       * @var string[]
       */
     protected static $openAPITypes = [
-        'max_video_duration_sec' => 'int',
-        'interaction_settings' => '\Zernio\Model\GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettings'
+        'enabled' => 'bool',
+        'required' => 'bool',
+        'default' => 'bool',
+        'label' => 'string'
     ];
 
     /**
@@ -70,8 +73,10 @@ class GetTikTokCreatorInfo200ResponsePostingLimits implements ModelInterface, Ar
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'max_video_duration_sec' => null,
-        'interaction_settings' => null
+        'enabled' => null,
+        'required' => null,
+        'default' => null,
+        'label' => null
     ];
 
     /**
@@ -80,8 +85,10 @@ class GetTikTokCreatorInfo200ResponsePostingLimits implements ModelInterface, Ar
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'max_video_duration_sec' => false,
-        'interaction_settings' => false
+        'enabled' => false,
+        'required' => false,
+        'default' => false,
+        'label' => false
     ];
 
     /**
@@ -170,8 +177,10 @@ class GetTikTokCreatorInfo200ResponsePostingLimits implements ModelInterface, Ar
      * @var string[]
      */
     protected static $attributeMap = [
-        'max_video_duration_sec' => 'maxVideoDurationSec',
-        'interaction_settings' => 'interactionSettings'
+        'enabled' => 'enabled',
+        'required' => 'required',
+        'default' => 'default',
+        'label' => 'label'
     ];
 
     /**
@@ -180,8 +189,10 @@ class GetTikTokCreatorInfo200ResponsePostingLimits implements ModelInterface, Ar
      * @var string[]
      */
     protected static $setters = [
-        'max_video_duration_sec' => 'setMaxVideoDurationSec',
-        'interaction_settings' => 'setInteractionSettings'
+        'enabled' => 'setEnabled',
+        'required' => 'setRequired',
+        'default' => 'setDefault',
+        'label' => 'setLabel'
     ];
 
     /**
@@ -190,8 +201,10 @@ class GetTikTokCreatorInfo200ResponsePostingLimits implements ModelInterface, Ar
      * @var string[]
      */
     protected static $getters = [
-        'max_video_duration_sec' => 'getMaxVideoDurationSec',
-        'interaction_settings' => 'getInteractionSettings'
+        'enabled' => 'getEnabled',
+        'required' => 'getRequired',
+        'default' => 'getDefault',
+        'label' => 'getLabel'
     ];
 
     /**
@@ -251,8 +264,10 @@ class GetTikTokCreatorInfo200ResponsePostingLimits implements ModelInterface, Ar
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('max_video_duration_sec', $data ?? [], null);
-        $this->setIfExists('interaction_settings', $data ?? [], null);
+        $this->setIfExists('enabled', $data ?? [], null);
+        $this->setIfExists('required', $data ?? [], null);
+        $this->setIfExists('default', $data ?? [], null);
+        $this->setIfExists('label', $data ?? [], null);
     }
 
     /**
@@ -298,55 +313,109 @@ class GetTikTokCreatorInfo200ResponsePostingLimits implements ModelInterface, Ar
 
 
     /**
-     * Gets max_video_duration_sec
+     * Gets enabled
      *
-     * @return int|null
+     * @return bool|null
      */
-    public function getMaxVideoDurationSec()
+    public function getEnabled()
     {
-        return $this->container['max_video_duration_sec'];
+        return $this->container['enabled'];
     }
 
     /**
-     * Sets max_video_duration_sec
+     * Sets enabled
      *
-     * @param int|null $max_video_duration_sec Maximum video duration in seconds
+     * @param bool|null $enabled Whether the creator permits this interaction. False means they disabled it in the TikTok app. This is availability, never the value the user selected.
      *
      * @return self
      */
-    public function setMaxVideoDurationSec($max_video_duration_sec)
+    public function setEnabled($enabled)
     {
-        if (is_null($max_video_duration_sec)) {
-            throw new \InvalidArgumentException('non-nullable max_video_duration_sec cannot be null');
+        if (is_null($enabled)) {
+            throw new \InvalidArgumentException('non-nullable enabled cannot be null');
         }
-        $this->container['max_video_duration_sec'] = $max_video_duration_sec;
+        $this->container['enabled'] = $enabled;
 
         return $this;
     }
 
     /**
-     * Gets interaction_settings
+     * Gets required
      *
-     * @return \Zernio\Model\GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettings|null
+     * @return bool|null
      */
-    public function getInteractionSettings()
+    public function getRequired()
     {
-        return $this->container['interaction_settings'];
+        return $this->container['required'];
     }
 
     /**
-     * Sets interaction_settings
+     * Sets required
      *
-     * @param \Zernio\Model\GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettings|null $interaction_settings interaction_settings
+     * @param bool|null $required Whether tiktokSettings.allow_duet must be supplied when creating a post. Always true, because TikTok forbids defaulting it.
      *
      * @return self
      */
-    public function setInteractionSettings($interaction_settings)
+    public function setRequired($required)
     {
-        if (is_null($interaction_settings)) {
-            throw new \InvalidArgumentException('non-nullable interaction_settings cannot be null');
+        if (is_null($required)) {
+            throw new \InvalidArgumentException('non-nullable required cannot be null');
         }
-        $this->container['interaction_settings'] = $interaction_settings;
+        $this->container['required'] = $required;
+
+        return $this;
+    }
+
+    /**
+     * Gets default
+     *
+     * @return bool|null
+     */
+    public function getDefault()
+    {
+        return $this->container['default'];
+    }
+
+    /**
+     * Sets default
+     *
+     * @param bool|null $default Initial value a post composer should render. A UI seed only, never applied server-side when the field is omitted.
+     *
+     * @return self
+     */
+    public function setDefault($default)
+    {
+        if (is_null($default)) {
+            throw new \InvalidArgumentException('non-nullable default cannot be null');
+        }
+        $this->container['default'] = $default;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string|null
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string|null $label Human-readable toggle label.
+     *
+     * @return self
+     */
+    public function setLabel($label)
+    {
+        if (is_null($label)) {
+            throw new \InvalidArgumentException('non-nullable label cannot be null');
+        }
+        $this->container['label'] = $label;
 
         return $this;
     }

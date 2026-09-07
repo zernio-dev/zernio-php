@@ -1,6 +1,6 @@
 <?php
 /**
- * GetTikTokCreatorInfo200ResponsePostingLimits
+ * GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettings
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetTikTokCreatorInfo200ResponsePostingLimits Class Doc Comment
+ * GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettings Class Doc Comment
  *
  * @category Class
+ * @description Per-interaction descriptors for the comment, duet and stitch toggles. Each key matches the tiktokSettings field of the same name on the create-post request. allow_duet and allow_stitch are null when mediaType is photo, because TikTok does not apply duet or stitch to photo posts.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetTikTokCreatorInfo200ResponsePostingLimits implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettings implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class GetTikTokCreatorInfo200ResponsePostingLimits implements ModelInterface, Ar
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getTikTokCreatorInfo_200_response_postingLimits';
+    protected static $openAPIModelName = 'getTikTokCreatorInfo_200_response_postingLimits_interactionSettings';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,9 @@ class GetTikTokCreatorInfo200ResponsePostingLimits implements ModelInterface, Ar
       * @var string[]
       */
     protected static $openAPITypes = [
-        'max_video_duration_sec' => 'int',
-        'interaction_settings' => '\Zernio\Model\GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettings'
+        'allow_comment' => '\Zernio\Model\GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettingsAllowComment',
+        'allow_duet' => '\Zernio\Model\GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettingsAllowDuet',
+        'allow_stitch' => '\Zernio\Model\GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettingsAllowStitch'
     ];
 
     /**
@@ -70,8 +72,9 @@ class GetTikTokCreatorInfo200ResponsePostingLimits implements ModelInterface, Ar
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'max_video_duration_sec' => null,
-        'interaction_settings' => null
+        'allow_comment' => null,
+        'allow_duet' => null,
+        'allow_stitch' => null
     ];
 
     /**
@@ -80,8 +83,9 @@ class GetTikTokCreatorInfo200ResponsePostingLimits implements ModelInterface, Ar
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'max_video_duration_sec' => false,
-        'interaction_settings' => false
+        'allow_comment' => false,
+        'allow_duet' => false,
+        'allow_stitch' => false
     ];
 
     /**
@@ -170,8 +174,9 @@ class GetTikTokCreatorInfo200ResponsePostingLimits implements ModelInterface, Ar
      * @var string[]
      */
     protected static $attributeMap = [
-        'max_video_duration_sec' => 'maxVideoDurationSec',
-        'interaction_settings' => 'interactionSettings'
+        'allow_comment' => 'allow_comment',
+        'allow_duet' => 'allow_duet',
+        'allow_stitch' => 'allow_stitch'
     ];
 
     /**
@@ -180,8 +185,9 @@ class GetTikTokCreatorInfo200ResponsePostingLimits implements ModelInterface, Ar
      * @var string[]
      */
     protected static $setters = [
-        'max_video_duration_sec' => 'setMaxVideoDurationSec',
-        'interaction_settings' => 'setInteractionSettings'
+        'allow_comment' => 'setAllowComment',
+        'allow_duet' => 'setAllowDuet',
+        'allow_stitch' => 'setAllowStitch'
     ];
 
     /**
@@ -190,8 +196,9 @@ class GetTikTokCreatorInfo200ResponsePostingLimits implements ModelInterface, Ar
      * @var string[]
      */
     protected static $getters = [
-        'max_video_duration_sec' => 'getMaxVideoDurationSec',
-        'interaction_settings' => 'getInteractionSettings'
+        'allow_comment' => 'getAllowComment',
+        'allow_duet' => 'getAllowDuet',
+        'allow_stitch' => 'getAllowStitch'
     ];
 
     /**
@@ -251,8 +258,9 @@ class GetTikTokCreatorInfo200ResponsePostingLimits implements ModelInterface, Ar
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('max_video_duration_sec', $data ?? [], null);
-        $this->setIfExists('interaction_settings', $data ?? [], null);
+        $this->setIfExists('allow_comment', $data ?? [], null);
+        $this->setIfExists('allow_duet', $data ?? [], null);
+        $this->setIfExists('allow_stitch', $data ?? [], null);
     }
 
     /**
@@ -298,55 +306,82 @@ class GetTikTokCreatorInfo200ResponsePostingLimits implements ModelInterface, Ar
 
 
     /**
-     * Gets max_video_duration_sec
+     * Gets allow_comment
      *
-     * @return int|null
+     * @return \Zernio\Model\GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettingsAllowComment|null
      */
-    public function getMaxVideoDurationSec()
+    public function getAllowComment()
     {
-        return $this->container['max_video_duration_sec'];
+        return $this->container['allow_comment'];
     }
 
     /**
-     * Sets max_video_duration_sec
+     * Sets allow_comment
      *
-     * @param int|null $max_video_duration_sec Maximum video duration in seconds
+     * @param \Zernio\Model\GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettingsAllowComment|null $allow_comment allow_comment
      *
      * @return self
      */
-    public function setMaxVideoDurationSec($max_video_duration_sec)
+    public function setAllowComment($allow_comment)
     {
-        if (is_null($max_video_duration_sec)) {
-            throw new \InvalidArgumentException('non-nullable max_video_duration_sec cannot be null');
+        if (is_null($allow_comment)) {
+            throw new \InvalidArgumentException('non-nullable allow_comment cannot be null');
         }
-        $this->container['max_video_duration_sec'] = $max_video_duration_sec;
+        $this->container['allow_comment'] = $allow_comment;
 
         return $this;
     }
 
     /**
-     * Gets interaction_settings
+     * Gets allow_duet
      *
-     * @return \Zernio\Model\GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettings|null
+     * @return \Zernio\Model\GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettingsAllowDuet|null
      */
-    public function getInteractionSettings()
+    public function getAllowDuet()
     {
-        return $this->container['interaction_settings'];
+        return $this->container['allow_duet'];
     }
 
     /**
-     * Sets interaction_settings
+     * Sets allow_duet
      *
-     * @param \Zernio\Model\GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettings|null $interaction_settings interaction_settings
+     * @param \Zernio\Model\GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettingsAllowDuet|null $allow_duet allow_duet
      *
      * @return self
      */
-    public function setInteractionSettings($interaction_settings)
+    public function setAllowDuet($allow_duet)
     {
-        if (is_null($interaction_settings)) {
-            throw new \InvalidArgumentException('non-nullable interaction_settings cannot be null');
+        if (is_null($allow_duet)) {
+            throw new \InvalidArgumentException('non-nullable allow_duet cannot be null');
         }
-        $this->container['interaction_settings'] = $interaction_settings;
+        $this->container['allow_duet'] = $allow_duet;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_stitch
+     *
+     * @return \Zernio\Model\GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettingsAllowStitch|null
+     */
+    public function getAllowStitch()
+    {
+        return $this->container['allow_stitch'];
+    }
+
+    /**
+     * Sets allow_stitch
+     *
+     * @param \Zernio\Model\GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettingsAllowStitch|null $allow_stitch allow_stitch
+     *
+     * @return self
+     */
+    public function setAllowStitch($allow_stitch)
+    {
+        if (is_null($allow_stitch)) {
+            throw new \InvalidArgumentException('non-nullable allow_stitch cannot be null');
+        }
+        $this->container['allow_stitch'] = $allow_stitch;
 
         return $this;
     }
