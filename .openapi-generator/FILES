@@ -12,6 +12,7 @@ docs/Api/AdAudiencesApi.md
 docs/Api/AdCampaignsApi.md
 docs/Api/AdCreativesApi.md
 docs/Api/AdInsightsApi.md
+docs/Api/AdLibraryApi.md
 docs/Api/AdTargetingApi.md
 docs/Api/AnalyticsApi.md
 docs/Api/BlogsApi.md
@@ -1292,6 +1293,8 @@ docs/Model/ScheduleBroadcast200ResponseBroadcast.md
 docs/Model/ScheduleBroadcastRequest.md
 docs/Model/SearchAdInterests200Response.md
 docs/Model/SearchAdInterests200ResponseInterestsInner.md
+docs/Model/SearchAdLibrary200Response.md
+docs/Model/SearchAdLibrary200ResponsePaging.md
 docs/Model/SearchAdTargeting200Response.md
 docs/Model/SearchAdTargeting200ResponseResultsInner.md
 docs/Model/SearchAvailablePhoneNumbers200Response.md
@@ -1855,6 +1858,7 @@ lib/Api/AdAudiencesApi.php
 lib/Api/AdCampaignsApi.php
 lib/Api/AdCreativesApi.php
 lib/Api/AdInsightsApi.php
+lib/Api/AdLibraryApi.php
 lib/Api/AdTargetingApi.php
 lib/Api/AnalyticsApi.php
 lib/Api/BlogsApi.php
@@ -3140,6 +3144,8 @@ lib/Model/ScheduleBroadcast200ResponseBroadcast.php
 lib/Model/ScheduleBroadcastRequest.php
 lib/Model/SearchAdInterests200Response.php
 lib/Model/SearchAdInterests200ResponseInterestsInner.php
+lib/Model/SearchAdLibrary200Response.php
+lib/Model/SearchAdLibrary200ResponsePaging.php
 lib/Model/SearchAdTargeting200Response.php
 lib/Model/SearchAdTargeting200ResponseResultsInner.php
 lib/Model/SearchAvailablePhoneNumbers200Response.php
@@ -3695,3 +3701,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Api/AdLibraryApiTest.php
+test/Model/SearchAdLibrary200ResponsePagingTest.php
+test/Model/SearchAdLibrary200ResponseTest.php

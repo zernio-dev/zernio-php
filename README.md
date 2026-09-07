@@ -174,6 +174,7 @@ Class | Method | HTTP request | Description
 *AdInsightsApi* | [**listLocalServicesLeadConversations**](docs/Api/AdInsightsApi.md#listlocalservicesleadconversations) | **GET** /v1/ads/local-services/leads/{leadId}/conversations | Conversations of a Local Services lead
 *AdInsightsApi* | [**listLocalServicesLeads**](docs/Api/AdInsightsApi.md#listlocalservicesleads) | **GET** /v1/ads/local-services/leads | Google Local Services Ads leads
 *AdInsightsApi* | [**queryAdInsights**](docs/Api/AdInsightsApi.md#queryadinsights) | **GET** /v1/ads/insights | Flexible live insights query
+*AdLibraryApi* | [**searchAdLibrary**](docs/Api/AdLibraryApi.md#searchadlibrary) | **GET** /v1/ads/library | Search the public Ad Library
 *AdTargetingApi* | [**estimateAdReach**](docs/Api/AdTargetingApi.md#estimateadreach) | **POST** /v1/ads/targeting/reach-estimate | Estimate audience reach
 *AdTargetingApi* | [**getLinkedInBidPricing**](docs/Api/AdTargetingApi.md#getlinkedinbidpricing) | **POST** /v1/ads/targeting/bid-pricing | Suggested bid and budget bounds
 *AdTargetingApi* | [**getLinkedInSupplyForecast**](docs/Api/AdTargetingApi.md#getlinkedinsupplyforecast) | **POST** /v1/ads/targeting/supply-forecast | Impressions, clicks and spend forecast
@@ -1894,6 +1895,8 @@ Class | Method | HTTP request | Description
 - [ScheduleBroadcastRequest](docs/Model/ScheduleBroadcastRequest.md)
 - [SearchAdInterests200Response](docs/Model/SearchAdInterests200Response.md)
 - [SearchAdInterests200ResponseInterestsInner](docs/Model/SearchAdInterests200ResponseInterestsInner.md)
+- [SearchAdLibrary200Response](docs/Model/SearchAdLibrary200Response.md)
+- [SearchAdLibrary200ResponsePaging](docs/Model/SearchAdLibrary200ResponsePaging.md)
 - [SearchAdTargeting200Response](docs/Model/SearchAdTargeting200Response.md)
 - [SearchAdTargeting200ResponseResultsInner](docs/Model/SearchAdTargeting200ResponseResultsInner.md)
 - [SearchAvailablePhoneNumbers200Response](docs/Model/SearchAvailablePhoneNumbers200Response.md)
