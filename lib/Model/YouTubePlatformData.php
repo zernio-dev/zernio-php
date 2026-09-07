@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * YouTubePlatformData Class Doc Comment
  *
  * @category Class
- * @description Videos under 3 min auto-detected as Shorts. Custom thumbnails for regular videos only. Scheduled videos are uploaded immediately with the specified visibility.
+ * @description Videos under 3 min auto-detected as Shorts. Custom thumbnails for regular videos only. Scheduled videos are uploaded immediately with the specified visibility. There is no description field here: the video description comes from the post content, or from customContent on this platform target when set, and is truncated to 5000 characters.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
