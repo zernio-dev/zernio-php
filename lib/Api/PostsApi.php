@@ -531,7 +531,7 @@ class PostsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\PostCreateResponse|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\CreatePost403Response|\Zernio\Model\CreatePost409Response|\Zernio\Model\CreatePost429Response
+     * @return \Zernio\Model\PostCreateResponse|\Zernio\Model\PostPublishIncompleteResponse|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\CreatePost403Response|\Zernio\Model\CreatePost409Response|\Zernio\Model\CreatePost429Response
      */
     public function createPost($create_post_request, $x_request_id = null, string $contentType = self::contentTypes['createPost'][0])
     {
@@ -550,7 +550,7 @@ class PostsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\PostCreateResponse|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\CreatePost403Response|\Zernio\Model\CreatePost409Response|\Zernio\Model\CreatePost429Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\PostCreateResponse|\Zernio\Model\PostPublishIncompleteResponse|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\CreatePost403Response|\Zernio\Model\CreatePost409Response|\Zernio\Model\CreatePost429Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function createPostWithHttpInfo($create_post_request, $x_request_id = null, string $contentType = self::contentTypes['createPost'][0])
     {
@@ -583,6 +583,12 @@ class PostsApi
                 case 201:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\PostCreateResponse',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\PostPublishIncompleteResponse',
                         $request,
                         $response,
                     );
@@ -644,6 +650,14 @@ class PostsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\PostCreateResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\PostPublishIncompleteResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2340,7 +2354,7 @@ class PostsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\PostRetryResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\GetInboxVolume400Response
+     * @return \Zernio\Model\PostRetryResponse|\Zernio\Model\RetryPost207Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\GetInboxVolume400Response
      */
     public function retryPost($post_id, string $contentType = self::contentTypes['retryPost'][0])
     {
@@ -2358,7 +2372,7 @@ class PostsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\PostRetryResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\GetInboxVolume400Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\PostRetryResponse|\Zernio\Model\RetryPost207Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\GetInboxVolume400Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function retryPostWithHttpInfo($post_id, string $contentType = self::contentTypes['retryPost'][0])
     {
@@ -2391,6 +2405,12 @@ class PostsApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\PostRetryResponse',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\RetryPost207Response',
                         $request,
                         $response,
                     );
@@ -2464,6 +2484,14 @@ class PostsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\PostRetryResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\RetryPost207Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3058,7 +3086,7 @@ class PostsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\PostUpdateResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\PostUpdateResponse|\Zernio\Model\PostPublishIncompleteResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function updatePost($post_id, $update_post_request, string $contentType = self::contentTypes['updatePost'][0])
     {
@@ -3077,7 +3105,7 @@ class PostsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\PostUpdateResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\PostUpdateResponse|\Zernio\Model\PostPublishIncompleteResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function updatePostWithHttpInfo($post_id, $update_post_request, string $contentType = self::contentTypes['updatePost'][0])
     {
@@ -3110,6 +3138,12 @@ class PostsApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\PostUpdateResponse',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\PostPublishIncompleteResponse',
                         $request,
                         $response,
                     );
@@ -3165,6 +3199,14 @@ class PostsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\PostUpdateResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\PostPublishIncompleteResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

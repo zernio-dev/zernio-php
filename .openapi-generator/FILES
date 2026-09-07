@@ -1184,6 +1184,8 @@ docs/Model/PostAnalytics.md
 docs/Model/PostCreateResponse.md
 docs/Model/PostDeleteResponse.md
 docs/Model/PostGetResponse.md
+docs/Model/PostPublishIncompleteResponse.md
+docs/Model/PostPublishIncompleteResponsePlatformResultsInner.md
 docs/Model/PostRetryResponse.md
 docs/Model/PostUpdateResponse.md
 docs/Model/PostUserId.md
@@ -1267,6 +1269,7 @@ docs/Model/RespondToSmsRegistrationReview200Response.md
 docs/Model/RespondToSmsRegistrationReviewRequest.md
 docs/Model/RestoreWorkflowVersion200Response.md
 docs/Model/RestoreWorkflowVersion200ResponseWorkflow.md
+docs/Model/RetryPost207Response.md
 docs/Model/RetweetPost200Response.md
 docs/Model/RetweetPostRequest.md
 docs/Model/ReuseSmsRegistrationForNumber200Response.md
@@ -3025,6 +3028,8 @@ lib/Model/PostAnalytics.php
 lib/Model/PostCreateResponse.php
 lib/Model/PostDeleteResponse.php
 lib/Model/PostGetResponse.php
+lib/Model/PostPublishIncompleteResponse.php
+lib/Model/PostPublishIncompleteResponsePlatformResultsInner.php
 lib/Model/PostRetryResponse.php
 lib/Model/PostUpdateResponse.php
 lib/Model/PostUserId.php
@@ -3108,6 +3113,7 @@ lib/Model/RespondToSmsRegistrationReview200Response.php
 lib/Model/RespondToSmsRegistrationReviewRequest.php
 lib/Model/RestoreWorkflowVersion200Response.php
 lib/Model/RestoreWorkflowVersion200ResponseWorkflow.php
+lib/Model/RetryPost207Response.php
 lib/Model/RetweetPost200Response.php
 lib/Model/RetweetPostRequest.php
 lib/Model/ReuseSmsRegistrationForNumber200Response.php
@@ -3681,3 +3687,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/PostPublishIncompleteResponsePlatformResultsInnerTest.php
+test/Model/PostPublishIncompleteResponseTest.php
+test/Model/RetryPost207ResponseTest.php
