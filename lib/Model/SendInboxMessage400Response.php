@@ -243,6 +243,9 @@ class SendInboxMessage400Response implements ModelInterface, ArrayAccess, \JsonS
 
     public const CODE_PLATFORM_LIMITATION = 'PLATFORM_LIMITATION';
     public const CODE_MISSING_PARTICIPANT = 'MISSING_PARTICIPANT';
+    public const CODE_DIRECT_SEND_NOT_ELIGIBLE = 'DIRECT_SEND_NOT_ELIGIBLE';
+    public const CODE_DIRECT_SEND_LIMITED = 'DIRECT_SEND_LIMITED';
+    public const CODE_DIRECT_SEND_BLOCKED = 'DIRECT_SEND_BLOCKED';
 
     /**
      * Gets allowable values of the enum
@@ -254,6 +257,9 @@ class SendInboxMessage400Response implements ModelInterface, ArrayAccess, \JsonS
         return [
             self::CODE_PLATFORM_LIMITATION,
             self::CODE_MISSING_PARTICIPANT,
+            self::CODE_DIRECT_SEND_NOT_ELIGIBLE,
+            self::CODE_DIRECT_SEND_LIMITED,
+            self::CODE_DIRECT_SEND_BLOCKED,
         ];
     }
 
@@ -368,7 +374,7 @@ class SendInboxMessage400Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets code
      *
-     * @param string|null $code Stable machine-readable reason. PLATFORM_LIMITATION covers a capability the platform does not offer (e.g. Bluesky and Reddit DMs reject media); MISSING_PARTICIPANT means the stored conversation has no recipient to send to.
+     * @param string|null $code Stable machine-readable reason. PLATFORM_LIMITATION covers a capability the platform does not offer (e.g. Bluesky and Reddit DMs reject media); MISSING_PARTICIPANT means the stored conversation has no recipient to send to; DIRECT_SEND_NOT_ELIGIBLE and DIRECT_SEND_BLOCKED mean the WhatsApp Business Account needs Meta to grant or restore Direct Send access; DIRECT_SEND_LIMITED is temporary, Meta lifts it on its own.
      *
      * @return self
      */

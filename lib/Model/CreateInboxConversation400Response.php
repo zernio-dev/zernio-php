@@ -236,6 +236,13 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
     }
 
     public const CODE_PLATFORM_NOT_SUPPORTED = 'PLATFORM_NOT_SUPPORTED';
+    public const CODE_PLATFORM_LIMITATION = 'PLATFORM_LIMITATION';
+    public const CODE_TEMPLATE_REQUIRED = 'TEMPLATE_REQUIRED';
+    public const CODE_INVALID_TEMPLATE_PARAMS = 'INVALID_TEMPLATE_PARAMS';
+    public const CODE_INVALID_TEMPLATE_BUTTON_PARAM = 'INVALID_TEMPLATE_BUTTON_PARAM';
+    public const CODE_DIRECT_SEND_NOT_ELIGIBLE = 'DIRECT_SEND_NOT_ELIGIBLE';
+    public const CODE_DIRECT_SEND_LIMITED = 'DIRECT_SEND_LIMITED';
+    public const CODE_DIRECT_SEND_BLOCKED = 'DIRECT_SEND_BLOCKED';
 
     /**
      * Gets allowable values of the enum
@@ -246,6 +253,13 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
     {
         return [
             self::CODE_PLATFORM_NOT_SUPPORTED,
+            self::CODE_PLATFORM_LIMITATION,
+            self::CODE_TEMPLATE_REQUIRED,
+            self::CODE_INVALID_TEMPLATE_PARAMS,
+            self::CODE_INVALID_TEMPLATE_BUTTON_PARAM,
+            self::CODE_DIRECT_SEND_NOT_ELIGIBLE,
+            self::CODE_DIRECT_SEND_LIMITED,
+            self::CODE_DIRECT_SEND_BLOCKED,
         ];
     }
 
