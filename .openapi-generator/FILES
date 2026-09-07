@@ -3701,6 +3701,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/AdLibraryApiTest.php
-test/Model/SearchAdLibrary200ResponsePagingTest.php
-test/Model/SearchAdLibrary200ResponseTest.php

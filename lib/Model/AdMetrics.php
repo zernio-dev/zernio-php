@@ -67,6 +67,7 @@ class AdMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'cpm' => 'float',
         'engagement' => 'int',
         'conversions' => 'float',
+        'all_conversions' => 'float',
         'cost_per_conversion' => 'float',
         'actions' => 'array<string,int>',
         'action_values' => 'array<string,float>',
@@ -111,6 +112,7 @@ class AdMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'cpm' => null,
         'engagement' => null,
         'conversions' => null,
+        'all_conversions' => null,
         'cost_per_conversion' => null,
         'actions' => null,
         'action_values' => null,
@@ -153,6 +155,7 @@ class AdMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'cpm' => false,
         'engagement' => false,
         'conversions' => false,
+        'all_conversions' => false,
         'cost_per_conversion' => false,
         'actions' => false,
         'action_values' => false,
@@ -275,6 +278,7 @@ class AdMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'cpm' => 'cpm',
         'engagement' => 'engagement',
         'conversions' => 'conversions',
+        'all_conversions' => 'allConversions',
         'cost_per_conversion' => 'costPerConversion',
         'actions' => 'actions',
         'action_values' => 'actionValues',
@@ -317,6 +321,7 @@ class AdMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'cpm' => 'setCpm',
         'engagement' => 'setEngagement',
         'conversions' => 'setConversions',
+        'all_conversions' => 'setAllConversions',
         'cost_per_conversion' => 'setCostPerConversion',
         'actions' => 'setActions',
         'action_values' => 'setActionValues',
@@ -359,6 +364,7 @@ class AdMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'cpm' => 'getCpm',
         'engagement' => 'getEngagement',
         'conversions' => 'getConversions',
+        'all_conversions' => 'getAllConversions',
         'cost_per_conversion' => 'getCostPerConversion',
         'actions' => 'getActions',
         'action_values' => 'getActionValues',
@@ -452,6 +458,7 @@ class AdMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('cpm', $data ?? [], null);
         $this->setIfExists('engagement', $data ?? [], null);
         $this->setIfExists('conversions', $data ?? [], null);
+        $this->setIfExists('all_conversions', $data ?? [], null);
         $this->setIfExists('cost_per_conversion', $data ?? [], null);
         $this->setIfExists('actions', $data ?? [], null);
         $this->setIfExists('action_values', $data ?? [], null);
@@ -760,6 +767,33 @@ class AdMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable conversions cannot be null');
         }
         $this->container['conversions'] = $conversions;
+
+        return $this;
+    }
+
+    /**
+     * Gets all_conversions
+     *
+     * @return float|null
+     */
+    public function getAllConversions()
+    {
+        return $this->container['all_conversions'];
+    }
+
+    /**
+     * Sets all_conversions
+     *
+     * @param float|null $all_conversions All conversions, including actions excluded from the Conversions column (Google metrics.all_conversions). 0 on platforms without the concept.
+     *
+     * @return self
+     */
+    public function setAllConversions($all_conversions)
+    {
+        if (is_null($all_conversions)) {
+            throw new \InvalidArgumentException('non-nullable all_conversions cannot be null');
+        }
+        $this->container['all_conversions'] = $all_conversions;
 
         return $this;
     }
