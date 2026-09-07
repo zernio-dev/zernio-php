@@ -65,6 +65,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'scheduled_for' => '\DateTime',
         'publish_now' => 'bool',
         'is_draft' => 'bool',
+        'dry_run' => 'bool',
         'timezone' => 'string',
         'tags' => 'string[]',
         'hashtags' => 'string[]',
@@ -93,6 +94,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'scheduled_for' => 'date-time',
         'publish_now' => null,
         'is_draft' => null,
+        'dry_run' => null,
         'timezone' => null,
         'tags' => null,
         'hashtags' => null,
@@ -119,6 +121,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'scheduled_for' => false,
         'publish_now' => false,
         'is_draft' => false,
+        'dry_run' => false,
         'timezone' => false,
         'tags' => false,
         'hashtags' => false,
@@ -225,6 +228,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'scheduled_for' => 'scheduledFor',
         'publish_now' => 'publishNow',
         'is_draft' => 'isDraft',
+        'dry_run' => 'dryRun',
         'timezone' => 'timezone',
         'tags' => 'tags',
         'hashtags' => 'hashtags',
@@ -251,6 +255,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'scheduled_for' => 'setScheduledFor',
         'publish_now' => 'setPublishNow',
         'is_draft' => 'setIsDraft',
+        'dry_run' => 'setDryRun',
         'timezone' => 'setTimezone',
         'tags' => 'setTags',
         'hashtags' => 'setHashtags',
@@ -277,6 +282,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'scheduled_for' => 'getScheduledFor',
         'publish_now' => 'getPublishNow',
         'is_draft' => 'getIsDraft',
+        'dry_run' => 'getDryRun',
         'timezone' => 'getTimezone',
         'tags' => 'getTags',
         'hashtags' => 'getHashtags',
@@ -354,6 +360,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('scheduled_for', $data ?? [], null);
         $this->setIfExists('publish_now', $data ?? [], false);
         $this->setIfExists('is_draft', $data ?? [], false);
+        $this->setIfExists('dry_run', $data ?? [], false);
         $this->setIfExists('timezone', $data ?? [], 'UTC');
         $this->setIfExists('tags', $data ?? [], null);
         $this->setIfExists('hashtags', $data ?? [], null);
@@ -594,6 +601,33 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable is_draft cannot be null');
         }
         $this->container['is_draft'] = $is_draft;
+
+        return $this;
+    }
+
+    /**
+     * Gets dry_run
+     *
+     * @return bool|null
+     */
+    public function getDryRun()
+    {
+        return $this->container['dry_run'];
+    }
+
+    /**
+     * Sets dry_run
+     *
+     * @param bool|null $dry_run TikTok only. Preview whether each `tiktok` entry in `platforms` could publish right now under the TikTok Direct Post daily limits, without creating, scheduling or publishing anything: no post is persisted and no upload slot is claimed, so it can be repeated freely. The request still goes through auth, the payment gate and body validation, then returns HTTP 200 with `{ dryRun: true, canPublish, tiktok: [...] }` instead of 201. Only `tiktok` entries are evaluated; other platforms in the body are ignored, and a body with no `tiktok` entry is rejected with 400 `invalid_field_value` on `platforms`. An entry with `platformSpecificData.tiktokSettings.draft: true` (Creator Inbox upload) is not subject to the limit and always reports `canPublish: true`.
+     *
+     * @return self
+     */
+    public function setDryRun($dry_run)
+    {
+        if (is_null($dry_run)) {
+            throw new \InvalidArgumentException('non-nullable dry_run cannot be null');
+        }
+        $this->container['dry_run'] = $dry_run;
 
         return $this;
     }

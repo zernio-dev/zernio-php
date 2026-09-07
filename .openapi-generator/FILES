@@ -209,6 +209,9 @@ docs/Model/CampaignAnalyticsResponseAnalyticsDailyInner.md
 docs/Model/CampaignAnalyticsResponseCampaign.md
 docs/Model/CancelBroadcast200Response.md
 docs/Model/CancelPhoneNumberPortIn200Response.md
+docs/Model/ChannelPicker.md
+docs/Model/ChannelPickerChannelsInner.md
+docs/Model/ChannelPickerTeam.md
 docs/Model/CheckPhoneNumberAvailability200Response.md
 docs/Model/CheckPhoneNumberAvailability200ResponseAreaOptionsInner.md
 docs/Model/CheckPhoneNumberPortability200Response.md
@@ -344,6 +347,8 @@ docs/Model/CreatePhoneNumberStockWatchRequest.md
 docs/Model/CreatePinterestBoard201Response.md
 docs/Model/CreatePinterestBoard201ResponseBoard.md
 docs/Model/CreatePinterestBoardRequest.md
+docs/Model/CreatePost200Response.md
+docs/Model/CreatePost200ResponseTiktokInner.md
 docs/Model/CreatePost403Response.md
 docs/Model/CreatePost409Response.md
 docs/Model/CreatePost409ResponseDetails.md
@@ -1100,6 +1105,7 @@ docs/Model/ListSequences200ResponseSequencesInner.md
 docs/Model/ListSipTrunks200Response.md
 docs/Model/ListSipTrunks200ResponseTrunksInner.md
 docs/Model/ListSipTrunks200ResponseTrunksInnerTermination.md
+docs/Model/ListSlackChannels200Response.md
 docs/Model/ListSlackMembers200Response.md
 docs/Model/ListSlackMembers200ResponseMembersInner.md
 docs/Model/ListSmsOptOuts200Response.md
@@ -1445,6 +1451,7 @@ docs/Model/SocialAccountProfileId.md
 docs/Model/StartGoogleBusinessVerification200Response.md
 docs/Model/StartGoogleBusinessVerification200ResponseVerification.md
 docs/Model/StartGoogleBusinessVerificationRequest.md
+docs/Model/StartOAuth.md
 docs/Model/StartSmsRegistration200Response.md
 docs/Model/StartSmsRegistrationRequest.md
 docs/Model/StartSmsRegistrationRequestBrand.md
@@ -2071,6 +2078,9 @@ lib/Model/CampaignAnalyticsResponseAnalyticsDailyInner.php
 lib/Model/CampaignAnalyticsResponseCampaign.php
 lib/Model/CancelBroadcast200Response.php
 lib/Model/CancelPhoneNumberPortIn200Response.php
+lib/Model/ChannelPicker.php
+lib/Model/ChannelPickerChannelsInner.php
+lib/Model/ChannelPickerTeam.php
 lib/Model/CheckPhoneNumberAvailability200Response.php
 lib/Model/CheckPhoneNumberAvailability200ResponseAreaOptionsInner.php
 lib/Model/CheckPhoneNumberPortability200Response.php
@@ -2206,6 +2216,8 @@ lib/Model/CreatePhoneNumberStockWatchRequest.php
 lib/Model/CreatePinterestBoard201Response.php
 lib/Model/CreatePinterestBoard201ResponseBoard.php
 lib/Model/CreatePinterestBoardRequest.php
+lib/Model/CreatePost200Response.php
+lib/Model/CreatePost200ResponseTiktokInner.php
 lib/Model/CreatePost403Response.php
 lib/Model/CreatePost409Response.php
 lib/Model/CreatePost409ResponseDetails.php
@@ -2962,6 +2974,7 @@ lib/Model/ListSequences200ResponseSequencesInner.php
 lib/Model/ListSipTrunks200Response.php
 lib/Model/ListSipTrunks200ResponseTrunksInner.php
 lib/Model/ListSipTrunks200ResponseTrunksInnerTermination.php
+lib/Model/ListSlackChannels200Response.php
 lib/Model/ListSlackMembers200Response.php
 lib/Model/ListSlackMembers200ResponseMembersInner.php
 lib/Model/ListSmsOptOuts200Response.php
@@ -3308,6 +3321,7 @@ lib/Model/SocialAccountProfileId.php
 lib/Model/StartGoogleBusinessVerification200Response.php
 lib/Model/StartGoogleBusinessVerification200ResponseVerification.php
 lib/Model/StartGoogleBusinessVerificationRequest.php
+lib/Model/StartOAuth.php
 lib/Model/StartSmsRegistration200Response.php
 lib/Model/StartSmsRegistrationRequest.php
 lib/Model/StartSmsRegistrationRequestBrand.php
@@ -3725,17 +3739,10 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AdKeywordMetricsTest.php
-test/Model/AdKeywordTest.php
-test/Model/AddAdKeywords201ResponseTest.php
-test/Model/AddAdKeywordsRequestKeywordsInnerAnyOfTest.php
-test/Model/AddAdKeywordsRequestKeywordsInnerTest.php
-test/Model/AddAdKeywordsRequestTest.php
-test/Model/KeywordEntryTest.php
-test/Model/ListCampaignNegativeKeywords200ResponseKeywordsInnerTest.php
-test/Model/ListCampaignNegativeKeywords200ResponseTest.php
-test/Model/RemoveAdKeyword200ResponseTest.php
-test/Model/ReplaceCampaignNegativeKeywords200ResponseTest.php
-test/Model/ReplaceCampaignNegativeKeywordsRequestTest.php
-test/Model/UpdateAdKeyword200ResponseTest.php
-test/Model/UpdateAdKeywordRequestTest.php
+test/Model/ChannelPickerChannelsInnerTest.php
+test/Model/ChannelPickerTeamTest.php
+test/Model/ChannelPickerTest.php
+test/Model/CreatePost200ResponseTest.php
+test/Model/CreatePost200ResponseTiktokInnerTest.php
+test/Model/ListSlackChannels200ResponseTest.php
+test/Model/StartOAuthTest.php

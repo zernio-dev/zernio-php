@@ -39,6 +39,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listInstagramPages()**](ConnectApi.md#listInstagramPages) | **GET** /v1/connect/instagram/select-account | List Pages with a linked Instagram account |
 | [**listLinkedInOrganizations()**](ConnectApi.md#listLinkedInOrganizations) | **GET** /v1/connect/linkedin/organizations | List LinkedIn orgs |
 | [**listPinterestBoardsForSelection()**](ConnectApi.md#listPinterestBoardsForSelection) | **GET** /v1/connect/pinterest/select-board | List Pinterest boards |
+| [**listSlackChannels()**](ConnectApi.md#listSlackChannels) | **GET** /v1/connect/slack | List Slack channels for the channel picker |
 | [**listSnapchatProfiles()**](ConnectApi.md#listSnapchatProfiles) | **GET** /v1/connect/snapchat/select-profile | List Snapchat profiles |
 | [**listWhatsAppPhoneNumbers()**](ConnectApi.md#listWhatsAppPhoneNumbers) | **GET** /v1/connect/whatsapp/select-phone-number | List numbers for selection |
 | [**selectFacebookPage()**](ConnectApi.md#selectFacebookPage) | **POST** /v1/connect/facebook/select-page | Select Facebook page |
@@ -2108,6 +2109,72 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListPinterestBoardsForSelection200Response**](../Model/ListPinterestBoardsForSelection200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listSlackChannels()`
+
+```php
+listSlackChannels($profile_id, $pending_data_token, $account_id, $redirect_url): \Zernio\Model\ListSlackChannels200Response
+```
+
+List Slack channels for the channel picker
+
+Serves the channel picker of the Slack connect flow. Slack's OAuth installs the bot into a workspace, not a channel, so after the redirect the caller lists the workspace's channels here and finalizes one with `POST /v1/connect/slack`. Served by a dedicated route that shadows `GET /v1/connect/{platform}` for `slack`.  Send exactly one of `pendingDataToken` (first connect: the nonce from the OAuth redirect, bound to the same `profileId`) or `accountId` (add another channel to a workspace already connected: the existing Slack account's workspace token is reused, no re-OAuth). With neither, the endpoint behaves like `GET /v1/connect/{platform}` and returns `authUrl` and `state` to start the OAuth flow.  Channels are read live from Slack (`conversations.list`, public and private, archived excluded, up to 2,000). `isMember` says whether the Zernio bot is already in the channel: a public channel is joined automatically on finalize, a private one must be invited (`/invite @Zernio`) first.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$profile_id = 'profile_id_example'; // string | Zernio profile the channel account will belong to. Must match the profile the OAuth flow was started on when `pendingDataToken` is used.
+$pending_data_token = 'pending_data_token_example'; // string | Nonce from the OAuth redirect (first connect).
+$account_id = 'account_id_example'; // string | Existing active Slack account (yours or a team member's) whose workspace token is reused.
+$redirect_url = 'redirect_url_example'; // string | Start-OAuth mode only: where to send the user after the connect completes. `redirectUrl` is accepted as an alias.
+
+try {
+    $result = $apiInstance->listSlackChannels($profile_id, $pending_data_token, $account_id, $redirect_url);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->listSlackChannels: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profile_id** | **string**| Zernio profile the channel account will belong to. Must match the profile the OAuth flow was started on when &#x60;pendingDataToken&#x60; is used. | |
+| **pending_data_token** | **string**| Nonce from the OAuth redirect (first connect). | [optional] |
+| **account_id** | **string**| Existing active Slack account (yours or a team member&#39;s) whose workspace token is reused. | [optional] |
+| **redirect_url** | **string**| Start-OAuth mode only: where to send the user after the connect completes. &#x60;redirectUrl&#x60; is accepted as an alias. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListSlackChannels200Response**](../Model/ListSlackChannels200Response.md)
 
 ### Authorization
 

@@ -531,7 +531,7 @@ class PostsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\PostCreateResponse|\Zernio\Model\PostPublishIncompleteResponse|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\CreatePost403Response|\Zernio\Model\CreatePost409Response|\Zernio\Model\CreatePost429Response
+     * @return \Zernio\Model\CreatePost200Response|\Zernio\Model\PostCreateResponse|\Zernio\Model\PostPublishIncompleteResponse|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\CreatePost403Response|\Zernio\Model\CreatePost409Response|\Zernio\Model\CreatePost429Response
      */
     public function createPost($create_post_request, $x_request_id = null, string $contentType = self::contentTypes['createPost'][0])
     {
@@ -550,7 +550,7 @@ class PostsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\PostCreateResponse|\Zernio\Model\PostPublishIncompleteResponse|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\CreatePost403Response|\Zernio\Model\CreatePost409Response|\Zernio\Model\CreatePost429Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreatePost200Response|\Zernio\Model\PostCreateResponse|\Zernio\Model\PostPublishIncompleteResponse|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\CreatePost403Response|\Zernio\Model\CreatePost409Response|\Zernio\Model\CreatePost429Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function createPostWithHttpInfo($create_post_request, $x_request_id = null, string $contentType = self::contentTypes['createPost'][0])
     {
@@ -580,6 +580,12 @@ class PostsApi
 
 
             switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreatePost200Response',
+                        $request,
+                        $response,
+                    );
                 case 201:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\PostCreateResponse',
@@ -640,12 +646,20 @@ class PostsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\PostCreateResponse',
+                '\Zernio\Model\CreatePost200Response',
                 $request,
                 $response,
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreatePost200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -745,7 +759,7 @@ class PostsApi
      */
     public function createPostAsyncWithHttpInfo($create_post_request, $x_request_id = null, string $contentType = self::contentTypes['createPost'][0])
     {
-        $returnType = '\Zernio\Model\PostCreateResponse';
+        $returnType = '\Zernio\Model\CreatePost200Response';
         $request = $this->createPostRequest($create_post_request, $x_request_id, $contentType);
 
         return $this->client

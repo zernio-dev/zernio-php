@@ -347,8 +347,9 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
     public const STATUS_SCHEDULED = 'scheduled';
     public const STATUS_PUBLISHING = 'publishing';
     public const STATUS_PUBLISHED = 'published';
-    public const STATUS_FAILED = 'failed';
     public const STATUS_PARTIAL = 'partial';
+    public const STATUS_FAILED = 'failed';
+    public const STATUS_CANCELLED = 'cancelled';
     public const VISIBILITY__PUBLIC = 'public';
     public const VISIBILITY__PRIVATE = 'private';
     public const VISIBILITY_UNLISTED = 'unlisted';
@@ -365,8 +366,9 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
             self::STATUS_SCHEDULED,
             self::STATUS_PUBLISHING,
             self::STATUS_PUBLISHED,
-            self::STATUS_FAILED,
             self::STATUS_PARTIAL,
+            self::STATUS_FAILED,
+            self::STATUS_CANCELLED,
         ];
     }
 
@@ -710,7 +712,7 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param string|null $status status
+     * @param string|null $status `cancelled` is set by DELETE /v1/posts/{postId}/unpublish once every platform entry has been removed from its platform (a post with published entries left becomes `partial`); cancelled posts can be edited and rescheduled like drafts.
      *
      * @return self
      */

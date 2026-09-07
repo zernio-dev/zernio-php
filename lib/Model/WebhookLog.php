@@ -500,7 +500,7 @@ class WebhookLog implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets event_id
      *
-     * @param string|null $event_id Stable webhook event ID (correlates to the delivered payload)
+     * @param string|null $event_id Stable webhook event ID: the payload `id`, also sent as the X-Zernio-Event-Id header. Shared by every attempt and redelivery of the same event.
      *
      * @return self
      */

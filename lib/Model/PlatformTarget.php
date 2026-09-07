@@ -660,7 +660,7 @@ class PlatformTarget implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param string|null $status Platform-specific status: pending, publishing, published, failed
+     * @param string|null $status Platform-specific status: pending, processing, uploading, published, failed, cancelled (removed from the platform via DELETE /v1/posts/{postId}/unpublish)
      *
      * @return self
      */

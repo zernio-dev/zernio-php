@@ -83,7 +83,7 @@ try {
 ## `createPost()`
 
 ```php
-createPost($create_post_request, $x_request_id): \Zernio\Model\PostCreateResponse
+createPost($create_post_request, $x_request_id): \Zernio\Model\CreatePost200Response
 ```
 
 Create post
@@ -127,7 +127,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\PostCreateResponse**](../Model/PostCreateResponse.md)
+[**\Zernio\Model\CreatePost200Response**](../Model/CreatePost200Response.md)
 
 ### Authorization
 
