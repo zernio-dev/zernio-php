@@ -59,7 +59,8 @@ class CreateTrackingTagRequest implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPITypes = [
         'ad_account_id' => 'string',
-        'name' => 'string'
+        'name' => 'string',
+        'default_event_type' => 'string'
     ];
 
     /**
@@ -71,7 +72,8 @@ class CreateTrackingTagRequest implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPIFormats = [
         'ad_account_id' => null,
-        'name' => null
+        'name' => null,
+        'default_event_type' => null
     ];
 
     /**
@@ -81,7 +83,8 @@ class CreateTrackingTagRequest implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static array $openAPINullables = [
         'ad_account_id' => false,
-        'name' => false
+        'name' => false,
+        'default_event_type' => false
     ];
 
     /**
@@ -171,7 +174,8 @@ class CreateTrackingTagRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $attributeMap = [
         'ad_account_id' => 'adAccountId',
-        'name' => 'name'
+        'name' => 'name',
+        'default_event_type' => 'defaultEventType'
     ];
 
     /**
@@ -181,7 +185,8 @@ class CreateTrackingTagRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $setters = [
         'ad_account_id' => 'setAdAccountId',
-        'name' => 'setName'
+        'name' => 'setName',
+        'default_event_type' => 'setDefaultEventType'
     ];
 
     /**
@@ -191,7 +196,8 @@ class CreateTrackingTagRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $getters = [
         'ad_account_id' => 'getAdAccountId',
-        'name' => 'getName'
+        'name' => 'getName',
+        'default_event_type' => 'getDefaultEventType'
     ];
 
     /**
@@ -235,6 +241,41 @@ class CreateTrackingTagRequest implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$openAPIModelName;
     }
 
+    public const DEFAULT_EVENT_TYPE_ORDER_CREATED = 'order_created';
+    public const DEFAULT_EVENT_TYPE_LEAD_CREATED = 'lead_created';
+    public const DEFAULT_EVENT_TYPE_ITEMS_ADDED = 'items_added';
+    public const DEFAULT_EVENT_TYPE_CONTENTS_VIEWED = 'contents_viewed';
+    public const DEFAULT_EVENT_TYPE_CHECKOUT_STARTED = 'checkout_started';
+    public const DEFAULT_EVENT_TYPE_REGISTRATION_COMPLETED = 'registration_completed';
+    public const DEFAULT_EVENT_TYPE_SUBSCRIPTION_CREATED = 'subscription_created';
+    public const DEFAULT_EVENT_TYPE_TRIAL_STARTED = 'trial_started';
+    public const DEFAULT_EVENT_TYPE_APPOINTMENT_SCHEDULED = 'appointment_scheduled';
+    public const DEFAULT_EVENT_TYPE_PAGE_VIEWED = 'page_viewed';
+    public const DEFAULT_EVENT_TYPE_APP_INSTALLED = 'app_installed';
+    public const DEFAULT_EVENT_TYPE_APP_OPENED = 'app_opened';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getDefaultEventTypeAllowableValues()
+    {
+        return [
+            self::DEFAULT_EVENT_TYPE_ORDER_CREATED,
+            self::DEFAULT_EVENT_TYPE_LEAD_CREATED,
+            self::DEFAULT_EVENT_TYPE_ITEMS_ADDED,
+            self::DEFAULT_EVENT_TYPE_CONTENTS_VIEWED,
+            self::DEFAULT_EVENT_TYPE_CHECKOUT_STARTED,
+            self::DEFAULT_EVENT_TYPE_REGISTRATION_COMPLETED,
+            self::DEFAULT_EVENT_TYPE_SUBSCRIPTION_CREATED,
+            self::DEFAULT_EVENT_TYPE_TRIAL_STARTED,
+            self::DEFAULT_EVENT_TYPE_APPOINTMENT_SCHEDULED,
+            self::DEFAULT_EVENT_TYPE_PAGE_VIEWED,
+            self::DEFAULT_EVENT_TYPE_APP_INSTALLED,
+            self::DEFAULT_EVENT_TYPE_APP_OPENED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -253,6 +294,7 @@ class CreateTrackingTagRequest implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $this->setIfExists('ad_account_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('default_event_type', $data ?? [], null);
     }
 
     /**
@@ -294,6 +336,15 @@ class CreateTrackingTagRequest implements ModelInterface, ArrayAccess, \JsonSeri
 
         if ((mb_strlen($this->container['name']) < 1)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
+        }
+
+        $allowedValues = $this->getDefaultEventTypeAllowableValues();
+        if (!is_null($this->container['default_event_type']) && !in_array($this->container['default_event_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'default_event_type', must be one of '%s'",
+                $this->container['default_event_type'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -368,6 +419,43 @@ class CreateTrackingTagRequest implements ModelInterface, ArrayAccess, \JsonSeri
         }
 
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets default_event_type
+     *
+     * @return string|null
+     */
+    public function getDefaultEventType()
+    {
+        return $this->container['default_event_type'];
+    }
+
+    /**
+     * Sets default_event_type
+     *
+     * @param string|null $default_event_type OpenAI Ads only (ignored by Meta). When set, also provisions a standard conversion event setting wired to the new pixel, so `goal: conversions` ad creates on `POST /v1/ads/create` have an event to reference immediately.
+     *
+     * @return self
+     */
+    public function setDefaultEventType($default_event_type)
+    {
+        if (is_null($default_event_type)) {
+            throw new \InvalidArgumentException('non-nullable default_event_type cannot be null');
+        }
+        $allowedValues = $this->getDefaultEventTypeAllowableValues();
+        if (!in_array($default_event_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'default_event_type', must be one of '%s'",
+                    $default_event_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['default_event_type'] = $default_event_type;
 
         return $this;
     }
