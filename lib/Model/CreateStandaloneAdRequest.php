@@ -106,8 +106,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'age_min' => 'int',
         'age_max' => 'int',
         'interests' => '\Zernio\Model\UpdateAdRequestTargetingInterestsInner[]',
-        'zips' => '\Zernio\Model\BoostPostRequestTargetingRegionsInner[]',
-        'metros' => '\Zernio\Model\BoostPostRequestTargetingRegionsInner[]',
+        'zips' => '\Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]',
+        'metros' => '\Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]',
         'custom_locations' => '\Zernio\Model\CreateStandaloneAdRequestCustomLocationsInner[]',
         'behaviors' => '\Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]',
         'work_positions' => '\Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]',
@@ -3026,7 +3026,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets zips
      *
-     * @return \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null
+     * @return \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]|null
      */
     public function getZips()
     {
@@ -3036,7 +3036,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets zips
      *
-     * @param \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null $zips Postal/ZIP geo targeting. `key` is the platform's postal location ID from /v1/ads/targeting/search?dimension=geo&geoType=zip. Supported on Meta, Google, TikTok, Pinterest, X.
+     * @param \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]|null $zips Postal/ZIP geo targeting. `key` is the platform's postal location ID from /v1/ads/targeting/search?dimension=geo&geoType=zip. Supported on Meta, Google, TikTok, Pinterest, X.
      *
      * @return self
      */
@@ -3053,7 +3053,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets metros
      *
-     * @return \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null
+     * @return \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]|null
      */
     public function getMetros()
     {
@@ -3063,7 +3063,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets metros
      *
-     * @param \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null $metros DMA / metro-area geo targeting (Meta and TikTok). `key` is the platform's metro ID from /v1/ads/targeting/search?dimension=geo&geoType=metro (TikTok metros appear as type `metro`, e.g. the New York DMA).
+     * @param \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]|null $metros DMA / metro-area geo targeting (Meta and TikTok). `key` is the platform's metro ID from /v1/ads/targeting/search?dimension=geo&geoType=metro (TikTok metros appear as type `metro`, e.g. the New York DMA).
      *
      * @return self
      */
@@ -3262,7 +3262,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets languages
      *
-     * @param string[]|null $languages Language codes restricting the audience by language. On Meta, ISO 639-1 codes (e.g. ['en'], ['de']); a bare code targets all regional variants (\"en\" = all English), or use a region-qualified code for a specific one (\"en_GB\", \"pt_BR\", \"zh_TW\"). Unknown codes are rejected. Other ad platforms use their own language-code systems.
+     * @param string[]|null $languages e.g. [\"en\",\"es\"]. Google: campaign language targeting (language_constant) using Google's language codes (ISO 639-1, plus variants such as `zh_CN`); unknown codes return 400. On Meta, a bare code targets all regional variants (\"en\" = all English), or use a region-qualified code for a specific one (\"en_GB\", \"pt_BR\", \"zh_TW\"); unknown codes are rejected. Other ad platforms use their own language-code systems.
      *
      * @return self
      */

@@ -6,6 +6,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**addAccountCallouts()**](AdAccountsApi.md#addAccountCallouts) | **POST** /v1/ads/accounts/callouts | Add account-level callout extensions |
 | [**createCustomConversion()**](AdAccountsApi.md#createCustomConversion) | **POST** /v1/accounts/{accountId}/custom-conversions | Create or reuse a custom conversion |
 | [**createHighDemandPeriod()**](AdAccountsApi.md#createHighDemandPeriod) | **POST** /v1/ads/high-demand-periods | Schedule a budget increase |
 | [**createValueRuleSet()**](AdAccountsApi.md#createValueRuleSet) | **POST** /v1/ads/value-rule-sets | Create a value rule set |
@@ -16,6 +17,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getDsaDefaults()**](AdAccountsApi.md#getDsaDefaults) | **GET** /v1/ads/dsa-defaults | Get ad account DSA defaults |
 | [**getDsaRecommendations()**](AdAccountsApi.md#getDsaRecommendations) | **GET** /v1/ads/dsa-recommendations | List DSA beneficiary/payor suggestions |
 | [**getValueRuleSet()**](AdAccountsApi.md#getValueRuleSet) | **GET** /v1/ads/value-rule-sets/{valueRuleSetId} | Read a value rule set |
+| [**listAccountCallouts()**](AdAccountsApi.md#listAccountCallouts) | **GET** /v1/ads/accounts/callouts | List account-level callout extensions |
 | [**listAdAccounts()**](AdAccountsApi.md#listAdAccounts) | **GET** /v1/ads/accounts | List ad accounts |
 | [**listAdLabels()**](AdAccountsApi.md#listAdLabels) | **GET** /v1/ads/labels | Ad labels |
 | [**listAdStudies()**](AdAccountsApi.md#listAdStudies) | **GET** /v1/ads/studies | A/B tests and lift studies |
@@ -24,9 +26,70 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listHighDemandPeriods()**](AdAccountsApi.md#listHighDemandPeriods) | **GET** /v1/ads/high-demand-periods | High demand periods / budget schedules |
 | [**listMetaBusinesses()**](AdAccountsApi.md#listMetaBusinesses) | **GET** /v1/ads/businesses | Businesses list |
 | [**listValueRuleSets()**](AdAccountsApi.md#listValueRuleSets) | **GET** /v1/ads/value-rule-sets | List value rule sets |
+| [**removeAccountCallout()**](AdAccountsApi.md#removeAccountCallout) | **DELETE** /v1/ads/accounts/callouts | Remove an account-level callout extension |
 | [**updateAdAccount()**](AdAccountsApi.md#updateAdAccount) | **PATCH** /v1/ads/accounts | Update ad account settings |
 | [**updateValueRuleSet()**](AdAccountsApi.md#updateValueRuleSet) | **PUT** /v1/ads/value-rule-sets/{valueRuleSetId} | Replace a value rule set |
 
+
+## `addAccountCallouts()`
+
+```php
+addAccountCallouts($add_account_callouts_request): \Zernio\Model\AddAccountCallouts201Response
+```
+
+Add account-level callout extensions
+
+Creates one asset plus one `customerAsset` link (field type CALLOUT) per callout text, in a single mutate. Google only; every other platform returns 501.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$add_account_callouts_request = new \Zernio\Model\AddAccountCalloutsRequest(); // \Zernio\Model\AddAccountCalloutsRequest
+
+try {
+    $result = $apiInstance->addAccountCallouts($add_account_callouts_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->addAccountCallouts: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **add_account_callouts_request** | [**\Zernio\Model\AddAccountCalloutsRequest**](../Model/AddAccountCalloutsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\AddAccountCallouts201Response**](../Model/AddAccountCallouts201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `createCustomConversion()`
 
@@ -658,6 +721,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listAccountCallouts()`
+
+```php
+listAccountCallouts($account_id, $customer_id): \Zernio\Model\ListAccountCallouts200Response
+```
+
+List account-level callout extensions
+
+Google Ads compliance row C.75: callout assets linked at the CUSTOMER level via `customer_asset` (not a campaign or ad group), so they serve fleet-wide across the account. Google only; every other platform returns 501. Draws on the shared Google Ads operations budget.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Google ads SocialAccount id.
+$customer_id = 'customer_id_example'; // string | Numeric Google Ads customer id (no dashes). Defaults to the account's connected customer.
+
+try {
+    $result = $apiInstance->listAccountCallouts($account_id, $customer_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->listAccountCallouts: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Google ads SocialAccount id. | |
+| **customer_id** | **string**| Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListAccountCallouts200Response**](../Model/ListAccountCallouts200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listAdAccounts()`
 
 ```php
@@ -1170,6 +1295,66 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `removeAccountCallout()`
+
+```php
+removeAccountCallout($remove_account_callout_request): \Zernio\Model\RemoveAccountCallout200Response
+```
+
+Remove an account-level callout extension
+
+Removes the `customerAsset` link (`customers/{cid}/customerAssets/{assetId}~CALLOUT`). Google only; every other platform returns 501.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$remove_account_callout_request = new \Zernio\Model\RemoveAccountCalloutRequest(); // \Zernio\Model\RemoveAccountCalloutRequest
+
+try {
+    $result = $apiInstance->removeAccountCallout($remove_account_callout_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->removeAccountCallout: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **remove_account_callout_request** | [**\Zernio\Model\RemoveAccountCalloutRequest**](../Model/RemoveAccountCalloutRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\RemoveAccountCallout200Response**](../Model/RemoveAccountCallout200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

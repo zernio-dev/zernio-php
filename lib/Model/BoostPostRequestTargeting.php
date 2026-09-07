@@ -64,10 +64,10 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
         'gender' => 'string',
         'languages' => 'string[]',
         'countries' => 'string[]',
-        'regions' => '\Zernio\Model\BoostPostRequestTargetingRegionsInner[]',
+        'regions' => '\Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]',
         'cities' => '\Zernio\Model\BoostPostRequestTargetingCitiesInner[]',
-        'zips' => '\Zernio\Model\BoostPostRequestTargetingRegionsInner[]',
-        'metros' => '\Zernio\Model\BoostPostRequestTargetingRegionsInner[]',
+        'zips' => '\Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]',
+        'metros' => '\Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]',
         'custom_locations' => '\Zernio\Model\BoostPostRequestTargetingCustomLocationsInner[]',
         'interests' => '\Zernio\Model\UpdateAdRequestTargetingInterestsInner[]',
         'advantage_audience' => 'int'
@@ -598,7 +598,7 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets regions
      *
-     * @return \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null
+     * @return \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]|null
      */
     public function getRegions()
     {
@@ -608,7 +608,7 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets regions
      *
-     * @param \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null $regions Region/state targeting. `key` from /v1/ads/targeting/search?dimension=geo&geoType=region.
+     * @param \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]|null $regions Region/state targeting. `key` from /v1/ads/targeting/search?dimension=geo&geoType=region.
      *
      * @return self
      */
@@ -652,7 +652,7 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets zips
      *
-     * @return \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null
+     * @return \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]|null
      */
     public function getZips()
     {
@@ -662,7 +662,7 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets zips
      *
-     * @param \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null $zips Postal/ZIP targeting. `key` is the platform's postal location ID (e.g. Meta `US:94304`).
+     * @param \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]|null $zips Postal/ZIP targeting. `key` is the platform's postal location ID (e.g. Meta `US:94304`).
      *
      * @return self
      */
@@ -679,7 +679,7 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets metros
      *
-     * @return \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null
+     * @return \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]|null
      */
     public function getMetros()
     {
@@ -689,7 +689,7 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets metros
      *
-     * @param \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null $metros DMA / metro-area targeting. `key` is the platform's metro ID (e.g. Meta `DMA:807`).
+     * @param \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]|null $metros DMA / metro-area targeting. `key` is the platform's metro ID (e.g. Meta `DMA:807`).
      *
      * @return self
      */

@@ -98,6 +98,7 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**updateAccount**](docs/Api/AccountsApi.md#updateaccount) | **PUT** /v1/accounts/{accountId} | Update account
 *AccountsApi* | [**updateBlueskySettings**](docs/Api/AccountsApi.md#updateblueskysettings) | **PATCH** /v1/accounts/{accountId}/bluesky-settings | Update Bluesky account settings
 *AccountsApi* | [**updateSlackSettings**](docs/Api/AccountsApi.md#updateslacksettings) | **PATCH** /v1/accounts/{accountId}/slack-settings | Update Slack account settings
+*AdAccountsApi* | [**addAccountCallouts**](docs/Api/AdAccountsApi.md#addaccountcallouts) | **POST** /v1/ads/accounts/callouts | Add account-level callout extensions
 *AdAccountsApi* | [**createCustomConversion**](docs/Api/AdAccountsApi.md#createcustomconversion) | **POST** /v1/accounts/{accountId}/custom-conversions | Create or reuse a custom conversion
 *AdAccountsApi* | [**createHighDemandPeriod**](docs/Api/AdAccountsApi.md#createhighdemandperiod) | **POST** /v1/ads/high-demand-periods | Schedule a budget increase
 *AdAccountsApi* | [**createValueRuleSet**](docs/Api/AdAccountsApi.md#createvalueruleset) | **POST** /v1/ads/value-rule-sets | Create a value rule set
@@ -108,6 +109,7 @@ Class | Method | HTTP request | Description
 *AdAccountsApi* | [**getDsaDefaults**](docs/Api/AdAccountsApi.md#getdsadefaults) | **GET** /v1/ads/dsa-defaults | Get ad account DSA defaults
 *AdAccountsApi* | [**getDsaRecommendations**](docs/Api/AdAccountsApi.md#getdsarecommendations) | **GET** /v1/ads/dsa-recommendations | List DSA beneficiary/payor suggestions
 *AdAccountsApi* | [**getValueRuleSet**](docs/Api/AdAccountsApi.md#getvalueruleset) | **GET** /v1/ads/value-rule-sets/{valueRuleSetId} | Read a value rule set
+*AdAccountsApi* | [**listAccountCallouts**](docs/Api/AdAccountsApi.md#listaccountcallouts) | **GET** /v1/ads/accounts/callouts | List account-level callout extensions
 *AdAccountsApi* | [**listAdAccounts**](docs/Api/AdAccountsApi.md#listadaccounts) | **GET** /v1/ads/accounts | List ad accounts
 *AdAccountsApi* | [**listAdLabels**](docs/Api/AdAccountsApi.md#listadlabels) | **GET** /v1/ads/labels | Ad labels
 *AdAccountsApi* | [**listAdStudies**](docs/Api/AdAccountsApi.md#listadstudies) | **GET** /v1/ads/studies | A/B tests and lift studies
@@ -116,6 +118,7 @@ Class | Method | HTTP request | Description
 *AdAccountsApi* | [**listHighDemandPeriods**](docs/Api/AdAccountsApi.md#listhighdemandperiods) | **GET** /v1/ads/high-demand-periods | High demand periods / budget schedules
 *AdAccountsApi* | [**listMetaBusinesses**](docs/Api/AdAccountsApi.md#listmetabusinesses) | **GET** /v1/ads/businesses | Businesses list
 *AdAccountsApi* | [**listValueRuleSets**](docs/Api/AdAccountsApi.md#listvaluerulesets) | **GET** /v1/ads/value-rule-sets | List value rule sets
+*AdAccountsApi* | [**removeAccountCallout**](docs/Api/AdAccountsApi.md#removeaccountcallout) | **DELETE** /v1/ads/accounts/callouts | Remove an account-level callout extension
 *AdAccountsApi* | [**updateAdAccount**](docs/Api/AdAccountsApi.md#updateadaccount) | **PATCH** /v1/ads/accounts | Update ad account settings
 *AdAccountsApi* | [**updateValueRuleSet**](docs/Api/AdAccountsApi.md#updatevalueruleset) | **PUT** /v1/ads/value-rule-sets/{valueRuleSetId} | Replace a value rule set
 *AdAudiencesApi* | [**addUsersToAdAudience**](docs/Api/AdAudiencesApi.md#adduserstoadaudience) | **POST** /v1/ads/audiences/{audienceId}/users | Add users to audience
@@ -130,6 +133,7 @@ Class | Method | HTTP request | Description
 *AdCampaignsApi* | [**boostPost**](docs/Api/AdCampaignsApi.md#boostpost) | **POST** /v1/ads/boost | Boost post as ad
 *AdCampaignsApi* | [**bulkUpdateAdCampaignStatus**](docs/Api/AdCampaignsApi.md#bulkupdateadcampaignstatus) | **POST** /v1/ads/campaigns/bulk-status | Pause or resume many campaigns
 *AdCampaignsApi* | [**createAdCampaign**](docs/Api/AdCampaignsApi.md#createadcampaign) | **POST** /v1/ads/campaigns | Create a standalone campaign
+*AdCampaignsApi* | [**createAdSet**](docs/Api/AdCampaignsApi.md#createadset) | **POST** /v1/ads/ad-sets | Create a standalone ad group
 *AdCampaignsApi* | [**createStandaloneAd**](docs/Api/AdCampaignsApi.md#createstandalonead) | **POST** /v1/ads/create | Create standalone ad
 *AdCampaignsApi* | [**deleteAd**](docs/Api/AdCampaignsApi.md#deletead) | **DELETE** /v1/ads/{adId} | Cancel an ad
 *AdCampaignsApi* | [**deleteAdCampaign**](docs/Api/AdCampaignsApi.md#deleteadcampaign) | **DELETE** /v1/ads/campaigns/{campaignId} | Delete a campaign
@@ -141,8 +145,10 @@ Class | Method | HTTP request | Description
 *AdCampaignsApi* | [**getAdSetDetails**](docs/Api/AdCampaignsApi.md#getadsetdetails) | **GET** /v1/ads/ad-sets/{adSetId} | Live ad-set details incl. learning phase
 *AdCampaignsApi* | [**getAdTree**](docs/Api/AdCampaignsApi.md#getadtree) | **GET** /v1/ads/tree | Get campaign tree
 *AdCampaignsApi* | [**getAdsTimeline**](docs/Api/AdCampaignsApi.md#getadstimeline) | **GET** /v1/ads/timeline | Get daily account metrics
+*AdCampaignsApi* | [**getCampaignTargeting**](docs/Api/AdCampaignsApi.md#getcampaigntargeting) | **GET** /v1/ads/campaigns/{campaignId}/targeting | Read a Google campaign&#39;s device, location, and language targeting
 *AdCampaignsApi* | [**listAdCampaigns**](docs/Api/AdCampaignsApi.md#listadcampaigns) | **GET** /v1/ads/campaigns | List campaigns
 *AdCampaignsApi* | [**listAdKeywords**](docs/Api/AdCampaignsApi.md#listadkeywords) | **GET** /v1/ads/keywords | List Search keywords
+*AdCampaignsApi* | [**listAdSets**](docs/Api/AdCampaignsApi.md#listadsets) | **GET** /v1/ads/ad-sets | List ad sets
 *AdCampaignsApi* | [**listAds**](docs/Api/AdCampaignsApi.md#listads) | **GET** /v1/ads | List ads
 *AdCampaignsApi* | [**listCampaignNegativeKeywords**](docs/Api/AdCampaignsApi.md#listcampaignnegativekeywords) | **GET** /v1/ads/campaigns/{campaignId}/negative-keywords | List campaign-level negative keywords
 *AdCampaignsApi* | [**removeAdKeyword**](docs/Api/AdCampaignsApi.md#removeadkeyword) | **DELETE** /v1/ads/keywords/{keywordId} | Remove a Search keyword
@@ -154,6 +160,7 @@ Class | Method | HTTP request | Description
 *AdCampaignsApi* | [**updateAdSet**](docs/Api/AdCampaignsApi.md#updateadset) | **PUT** /v1/ads/ad-sets/{adSetId} | Update an ad set
 *AdCampaignsApi* | [**updateAdSetStatus**](docs/Api/AdCampaignsApi.md#updateadsetstatus) | **PUT** /v1/ads/ad-sets/{adSetId}/status | Pause or resume a single ad set
 *AdCampaignsApi* | [**updateAdStatus**](docs/Api/AdCampaignsApi.md#updateadstatus) | **PUT** /v1/ads/{adId}/status | Pause or resume a single ad
+*AdCampaignsApi* | [**updateCampaignTargeting**](docs/Api/AdCampaignsApi.md#updatecampaigntargeting) | **PUT** /v1/ads/campaigns/{campaignId}/targeting | Edit a Google campaign&#39;s device, location, or language targeting
 *AdCreativesApi* | [**createAdCreative**](docs/Api/AdCreativesApi.md#createadcreative) | **POST** /v1/ads/creatives | Create a standalone creative
 *AdCreativesApi* | [**deleteAdCreative**](docs/Api/AdCreativesApi.md#deleteadcreative) | **DELETE** /v1/ads/creatives/{creativeId} | Delete a creative
 *AdCreativesApi* | [**deleteAdVideo**](docs/Api/AdCreativesApi.md#deleteadvideo) | **DELETE** /v1/ads/videos/{videoId} | Delete an ad video
@@ -314,11 +321,13 @@ Class | Method | HTTP request | Description
 *ContactsApi* | [**updateContact**](docs/Api/ContactsApi.md#updatecontact) | **PATCH** /v1/contacts/{contactId} | Update contact
 *ConversionsApi* | [**addConversionAssociations**](docs/Api/ConversionsApi.md#addconversionassociations) | **POST** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Associate campaigns
 *ConversionsApi* | [**adjustConversions**](docs/Api/ConversionsApi.md#adjustconversions) | **POST** /v1/ads/conversions/adjustments | Adjust uploaded conversions
+*ConversionsApi* | [**createConversionAction**](docs/Api/ConversionsApi.md#createconversionaction) | **POST** /v1/ads/conversions/actions | Create a website conversion action
 *ConversionsApi* | [**createConversionDestination**](docs/Api/ConversionsApi.md#createconversiondestination) | **POST** /v1/accounts/{accountId}/conversion-destinations | Create a conversion destination
 *ConversionsApi* | [**deleteConversionDestination**](docs/Api/ConversionsApi.md#deleteconversiondestination) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Delete a conversion destination
 *ConversionsApi* | [**getConversionDestination**](docs/Api/ConversionsApi.md#getconversiondestination) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Get a conversion destination
 *ConversionsApi* | [**getConversionMetrics**](docs/Api/ConversionsApi.md#getconversionmetrics) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/metrics | Get attribution metrics
 *ConversionsApi* | [**getConversionsQuality**](docs/Api/ConversionsApi.md#getconversionsquality) | **GET** /v1/ads/conversions/quality | Get Event Match Quality
+*ConversionsApi* | [**listConversionActions**](docs/Api/ConversionsApi.md#listconversionactions) | **GET** /v1/ads/conversions/actions | List conversion actions and their tag snippets
 *ConversionsApi* | [**listConversionAssociations**](docs/Api/ConversionsApi.md#listconversionassociations) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | List associated campaigns
 *ConversionsApi* | [**listConversionDestinations**](docs/Api/ConversionsApi.md#listconversiondestinations) | **GET** /v1/accounts/{accountId}/conversion-destinations | List conversion destinations
 *ConversionsApi* | [**removeConversionAssociations**](docs/Api/ConversionsApi.md#removeconversionassociations) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Remove associated campaigns
@@ -712,6 +721,9 @@ Class | Method | HTTP request | Description
 - [AdTreeCampaignOptimizationGoal](docs/Model/AdTreeCampaignOptimizationGoal.md)
 - [AdTreeCampaignPromotedObject](docs/Model/AdTreeCampaignPromotedObject.md)
 - [AdTreeResponse](docs/Model/AdTreeResponse.md)
+- [AddAccountCallouts201Response](docs/Model/AddAccountCallouts201Response.md)
+- [AddAccountCallouts201ResponseCalloutsInner](docs/Model/AddAccountCallouts201ResponseCalloutsInner.md)
+- [AddAccountCalloutsRequest](docs/Model/AddAccountCalloutsRequest.md)
 - [AddAdKeywords201Response](docs/Model/AddAdKeywords201Response.md)
 - [AddAdKeywordsRequest](docs/Model/AddAdKeywordsRequest.md)
 - [AddAdKeywordsRequestKeywordsInner](docs/Model/AddAdKeywordsRequestKeywordsInner.md)
@@ -792,7 +804,6 @@ Class | Method | HTTP request | Description
 - [BoostPostRequestTargeting](docs/Model/BoostPostRequestTargeting.md)
 - [BoostPostRequestTargetingCitiesInner](docs/Model/BoostPostRequestTargetingCitiesInner.md)
 - [BoostPostRequestTargetingCustomLocationsInner](docs/Model/BoostPostRequestTargetingCustomLocationsInner.md)
-- [BoostPostRequestTargetingRegionsInner](docs/Model/BoostPostRequestTargetingRegionsInner.md)
 - [BoostPostRequestTracking](docs/Model/BoostPostRequestTracking.md)
 - [BoostPostRequestTrackingUrlTagsInner](docs/Model/BoostPostRequestTrackingUrlTagsInner.md)
 - [BulkCreateContacts200Response](docs/Model/BulkCreateContacts200Response.md)
@@ -858,6 +869,8 @@ Class | Method | HTTP request | Description
 - [Connected](docs/Model/Connected.md)
 - [ConnectedAccount](docs/Model/ConnectedAccount.md)
 - [ConnectedApp](docs/Model/ConnectedApp.md)
+- [ConversionAction](docs/Model/ConversionAction.md)
+- [ConversionActionTagSnippetsInner](docs/Model/ConversionActionTagSnippetsInner.md)
 - [ConversionDestination](docs/Model/ConversionDestination.md)
 - [ConversionEvent](docs/Model/ConversionEvent.md)
 - [ConversionEventItemsInner](docs/Model/ConversionEventItemsInner.md)
@@ -877,6 +890,8 @@ Class | Method | HTTP request | Description
 - [CreateAdInsightsReportRequest](docs/Model/CreateAdInsightsReportRequest.md)
 - [CreateAdInsightsReportRequestFilteringInner](docs/Model/CreateAdInsightsReportRequestFilteringInner.md)
 - [CreateAdInsightsReportRequestTimeIncrement](docs/Model/CreateAdInsightsReportRequestTimeIncrement.md)
+- [CreateAdSet201Response](docs/Model/CreateAdSet201Response.md)
+- [CreateAdSetRequest](docs/Model/CreateAdSetRequest.md)
 - [CreateApiKey201Response](docs/Model/CreateApiKey201Response.md)
 - [CreateApiKeyRequest](docs/Model/CreateApiKeyRequest.md)
 - [CreateBlog201Response](docs/Model/CreateBlog201Response.md)
@@ -902,6 +917,8 @@ Class | Method | HTTP request | Description
 - [CreateContact200ResponseChannel](docs/Model/CreateContact200ResponseChannel.md)
 - [CreateContact200ResponseContact](docs/Model/CreateContact200ResponseContact.md)
 - [CreateContactRequest](docs/Model/CreateContactRequest.md)
+- [CreateConversionAction201Response](docs/Model/CreateConversionAction201Response.md)
+- [CreateConversionActionRequest](docs/Model/CreateConversionActionRequest.md)
 - [CreateConversionDestination201Response](docs/Model/CreateConversionDestination201Response.md)
 - [CreateConversionDestinationRequest](docs/Model/CreateConversionDestinationRequest.md)
 - [CreateConversionDestinationRequestValue](docs/Model/CreateConversionDestinationRequestValue.md)
@@ -1214,6 +1231,10 @@ Class | Method | HTTP request | Description
 - [GetCallsUsage200ResponseGroupsInner](docs/Model/GetCallsUsage200ResponseGroupsInner.md)
 - [GetCallsUsage200ResponseTotals](docs/Model/GetCallsUsage200ResponseTotals.md)
 - [GetCampaignAnalytics202Response](docs/Model/GetCampaignAnalytics202Response.md)
+- [GetCampaignTargeting200Response](docs/Model/GetCampaignTargeting200Response.md)
+- [GetCampaignTargeting200ResponseDevicesInner](docs/Model/GetCampaignTargeting200ResponseDevicesInner.md)
+- [GetCampaignTargeting200ResponseLanguagesInner](docs/Model/GetCampaignTargeting200ResponseLanguagesInner.md)
+- [GetCampaignTargeting200ResponseLocationsInner](docs/Model/GetCampaignTargeting200ResponseLocationsInner.md)
 - [GetCommentAutomation200Response](docs/Model/GetCommentAutomation200Response.md)
 - [GetCommentAutomation200ResponseAutomation](docs/Model/GetCommentAutomation200ResponseAutomation.md)
 - [GetCommentAutomation200ResponseLogsInner](docs/Model/GetCommentAutomation200ResponseLogsInner.md)
@@ -1578,6 +1599,8 @@ Class | Method | HTTP request | Description
 - [LinkedInLeadFormPlatformDataQuestionsInnerOneOf1ChoicesInner](docs/Model/LinkedInLeadFormPlatformDataQuestionsInnerOneOf1ChoicesInner.md)
 - [LinkedInPlatformData](docs/Model/LinkedInPlatformData.md)
 - [LinkedInPlatformDataPoll](docs/Model/LinkedInPlatformDataPoll.md)
+- [ListAccountCallouts200Response](docs/Model/ListAccountCallouts200Response.md)
+- [ListAccountCallouts200ResponseCalloutsInner](docs/Model/ListAccountCallouts200ResponseCalloutsInner.md)
 - [ListAccountGroups200Response](docs/Model/ListAccountGroups200Response.md)
 - [ListAccountGroups200ResponseGroupsInner](docs/Model/ListAccountGroups200ResponseGroupsInner.md)
 - [ListAdAccounts200Response](docs/Model/ListAdAccounts200Response.md)
@@ -1593,6 +1616,8 @@ Class | Method | HTTP request | Description
 - [ListAdImages200Response](docs/Model/ListAdImages200Response.md)
 - [ListAdKeywords200Response](docs/Model/ListAdKeywords200Response.md)
 - [ListAdLabels200Response](docs/Model/ListAdLabels200Response.md)
+- [ListAdSets200Response](docs/Model/ListAdSets200Response.md)
+- [ListAdSets200ResponseAdSetsInner](docs/Model/ListAdSets200ResponseAdSetsInner.md)
 - [ListAdStudies200Response](docs/Model/ListAdStudies200Response.md)
 - [ListAdVideos200Response](docs/Model/ListAdVideos200Response.md)
 - [ListAds202Response](docs/Model/ListAds202Response.md)
@@ -1620,6 +1645,7 @@ Class | Method | HTTP request | Description
 - [ListContacts200ResponseContactsInner](docs/Model/ListContacts200ResponseContactsInner.md)
 - [ListContacts200ResponseFilters](docs/Model/ListContacts200ResponseFilters.md)
 - [ListContacts200ResponsePagination](docs/Model/ListContacts200ResponsePagination.md)
+- [ListConversionActions200Response](docs/Model/ListConversionActions200Response.md)
 - [ListConversionAssociations200Response](docs/Model/ListConversionAssociations200Response.md)
 - [ListConversionAssociations200ResponseAssociationsInner](docs/Model/ListConversionAssociations200ResponseAssociationsInner.md)
 - [ListConversionDestinations200Response](docs/Model/ListConversionDestinations200Response.md)
@@ -1864,6 +1890,8 @@ Class | Method | HTTP request | Description
 - [RemediatePhoneNumberRequest](docs/Model/RemediatePhoneNumberRequest.md)
 - [RemediatePhoneNumberRequestDocumentsInner](docs/Model/RemediatePhoneNumberRequestDocumentsInner.md)
 - [RemediatePhoneNumberRequestDocumentsInnerOneOf](docs/Model/RemediatePhoneNumberRequestDocumentsInnerOneOf.md)
+- [RemoveAccountCallout200Response](docs/Model/RemoveAccountCallout200Response.md)
+- [RemoveAccountCalloutRequest](docs/Model/RemoveAccountCalloutRequest.md)
 - [RemoveAdKeyword200Response](docs/Model/RemoveAdKeyword200Response.md)
 - [RemoveBookmark200Response](docs/Model/RemoveBookmark200Response.md)
 - [RemoveConversionAssociations200Response](docs/Model/RemoveConversionAssociations200Response.md)
@@ -2157,6 +2185,14 @@ Class | Method | HTTP request | Description
 - [UpdateBroadcastRequestMessage](docs/Model/UpdateBroadcastRequestMessage.md)
 - [UpdateBroadcastRequestTemplate](docs/Model/UpdateBroadcastRequestTemplate.md)
 - [UpdateBroadcastRequestTemplateVariableMappingValue](docs/Model/UpdateBroadcastRequestTemplateVariableMappingValue.md)
+- [UpdateCampaignTargeting200Response](docs/Model/UpdateCampaignTargeting200Response.md)
+- [UpdateCampaignTargetingRequest](docs/Model/UpdateCampaignTargetingRequest.md)
+- [UpdateCampaignTargetingRequestTargeting](docs/Model/UpdateCampaignTargetingRequestTargeting.md)
+- [UpdateCampaignTargetingRequestTargetingDevicesInner](docs/Model/UpdateCampaignTargetingRequestTargetingDevicesInner.md)
+- [UpdateCampaignTargetingRequestTargetingDevicesInnerOneOf](docs/Model/UpdateCampaignTargetingRequestTargetingDevicesInnerOneOf.md)
+- [UpdateCampaignTargetingRequestTargetingLocations](docs/Model/UpdateCampaignTargetingRequestTargetingLocations.md)
+- [UpdateCampaignTargetingRequestTargetingLocationsOneOf](docs/Model/UpdateCampaignTargetingRequestTargetingLocationsOneOf.md)
+- [UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner](docs/Model/UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner.md)
 - [UpdateCommentAutomation200Response](docs/Model/UpdateCommentAutomation200Response.md)
 - [UpdateCommentAutomation200ResponseAutomation](docs/Model/UpdateCommentAutomation200ResponseAutomation.md)
 - [UpdateCommentAutomationRequest](docs/Model/UpdateCommentAutomationRequest.md)

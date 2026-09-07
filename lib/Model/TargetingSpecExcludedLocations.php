@@ -60,9 +60,9 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
       */
     protected static $openAPITypes = [
         'countries' => 'string[]',
-        'regions' => '\Zernio\Model\BoostPostRequestTargetingRegionsInner[]',
+        'regions' => '\Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]',
         'cities' => '\Zernio\Model\TargetingSpecExcludedLocationsCitiesInner[]',
-        'zips' => '\Zernio\Model\BoostPostRequestTargetingRegionsInner[]',
+        'zips' => '\Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]',
         'places' => '\Zernio\Model\TargetingSpecExcludedLocationsPlacesInner[]',
         'neighborhoods' => '\Zernio\Model\TargetingSpecExcludedLocationsPlacesInner[]',
         'custom_locations' => '\Zernio\Model\TargetingSpecCustomLocationsInner[]'
@@ -363,7 +363,7 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets regions
      *
-     * @return \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null
+     * @return \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]|null
      */
     public function getRegions()
     {
@@ -373,7 +373,7 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets regions
      *
-     * @param \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null $regions regions
+     * @param \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]|null $regions regions
      *
      * @return self
      */
@@ -417,7 +417,7 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets zips
      *
-     * @return \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null
+     * @return \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]|null
      */
     public function getZips()
     {
@@ -427,7 +427,7 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets zips
      *
-     * @param \Zernio\Model\BoostPostRequestTargetingRegionsInner[]|null $zips zips
+     * @param \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]|null $zips zips
      *
      * @return self
      */

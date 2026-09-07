@@ -11,6 +11,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**boostPost()**](AdCampaignsApi.md#boostPost) | **POST** /v1/ads/boost | Boost post as ad |
 | [**bulkUpdateAdCampaignStatus()**](AdCampaignsApi.md#bulkUpdateAdCampaignStatus) | **POST** /v1/ads/campaigns/bulk-status | Pause or resume many campaigns |
 | [**createAdCampaign()**](AdCampaignsApi.md#createAdCampaign) | **POST** /v1/ads/campaigns | Create a standalone campaign |
+| [**createAdSet()**](AdCampaignsApi.md#createAdSet) | **POST** /v1/ads/ad-sets | Create a standalone ad group |
 | [**createStandaloneAd()**](AdCampaignsApi.md#createStandaloneAd) | **POST** /v1/ads/create | Create standalone ad |
 | [**deleteAd()**](AdCampaignsApi.md#deleteAd) | **DELETE** /v1/ads/{adId} | Cancel an ad |
 | [**deleteAdCampaign()**](AdCampaignsApi.md#deleteAdCampaign) | **DELETE** /v1/ads/campaigns/{campaignId} | Delete a campaign |
@@ -22,8 +23,10 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getAdSetDetails()**](AdCampaignsApi.md#getAdSetDetails) | **GET** /v1/ads/ad-sets/{adSetId} | Live ad-set details incl. learning phase |
 | [**getAdTree()**](AdCampaignsApi.md#getAdTree) | **GET** /v1/ads/tree | Get campaign tree |
 | [**getAdsTimeline()**](AdCampaignsApi.md#getAdsTimeline) | **GET** /v1/ads/timeline | Get daily account metrics |
+| [**getCampaignTargeting()**](AdCampaignsApi.md#getCampaignTargeting) | **GET** /v1/ads/campaigns/{campaignId}/targeting | Read a Google campaign&#39;s device, location, and language targeting |
 | [**listAdCampaigns()**](AdCampaignsApi.md#listAdCampaigns) | **GET** /v1/ads/campaigns | List campaigns |
 | [**listAdKeywords()**](AdCampaignsApi.md#listAdKeywords) | **GET** /v1/ads/keywords | List Search keywords |
+| [**listAdSets()**](AdCampaignsApi.md#listAdSets) | **GET** /v1/ads/ad-sets | List ad sets |
 | [**listAds()**](AdCampaignsApi.md#listAds) | **GET** /v1/ads | List ads |
 | [**listCampaignNegativeKeywords()**](AdCampaignsApi.md#listCampaignNegativeKeywords) | **GET** /v1/ads/campaigns/{campaignId}/negative-keywords | List campaign-level negative keywords |
 | [**removeAdKeyword()**](AdCampaignsApi.md#removeAdKeyword) | **DELETE** /v1/ads/keywords/{keywordId} | Remove a Search keyword |
@@ -35,6 +38,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**updateAdSet()**](AdCampaignsApi.md#updateAdSet) | **PUT** /v1/ads/ad-sets/{adSetId} | Update an ad set |
 | [**updateAdSetStatus()**](AdCampaignsApi.md#updateAdSetStatus) | **PUT** /v1/ads/ad-sets/{adSetId}/status | Pause or resume a single ad set |
 | [**updateAdStatus()**](AdCampaignsApi.md#updateAdStatus) | **PUT** /v1/ads/{adId}/status | Pause or resume a single ad |
+| [**updateCampaignTargeting()**](AdCampaignsApi.md#updateCampaignTargeting) | **PUT** /v1/ads/campaigns/{campaignId}/targeting | Edit a Google campaign&#39;s device, location, or language targeting |
 
 
 ## `addAdKeywords()`
@@ -329,6 +333,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreateAdCampaign201Response**](../Model/CreateAdCampaign201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createAdSet()`
+
+```php
+createAdSet($create_ad_set_request, $idempotency_key): \Zernio\Model\CreateAdSet201Response
+```
+
+Create a standalone ad group
+
+Google Ads compliance row C.190: creates an ad group WITHOUT an ad, under an existing campaign. Ads join it later via `existingAdGroupId` on POST /v1/ads/create. Google only; every other platform returns 501.  Created `PAUSED` unless `status: ACTIVE`. The new ad group has no ad yet, so it will not appear in GET /v1/ads/tree (built purely from `ads` rows) until one is added; use GET /v1/ads/ad-sets to see it in the meantime.  **Idempotency:** send an `Idempotency-Key` header to make retries safe.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_ad_set_request = new \Zernio\Model\CreateAdSetRequest(); // \Zernio\Model\CreateAdSetRequest
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. Only 2xx responses are stored, so a request that failed with a 4xx can be retried with a corrected body under the SAME key.
+
+try {
+    $result = $apiInstance->createAdSet($create_ad_set_request, $idempotency_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->createAdSet: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_ad_set_request** | [**\Zernio\Model\CreateAdSetRequest**](../Model/CreateAdSetRequest.md)|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. Only 2xx responses are stored, so a request that failed with a 4xx can be retried with a corrected body under the SAME key. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\CreateAdSet201Response**](../Model/CreateAdSet201Response.md)
 
 ### Authorization
 
@@ -1063,6 +1129,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getCampaignTargeting()`
+
+```php
+getCampaignTargeting($campaign_id, $platform): \Zernio\Model\GetCampaignTargeting200Response
+```
+
+Read a Google campaign's device, location, and language targeting
+
+Google Ads compliance requires geo, language, budget, and bidding targeting set at creation to stay editable afterwards; this reads the live campaign state so an integrator can build an editor around it. Google only; every other platform returns 501.  `devices` always lists all four device types with `included` reflecting Google's negative device criteria (a device absent from any negative criterion is included by default). This read has no bid-modifier source, so `bidModifier` is always `null` even for a device with one configured.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Google platform campaign ID
+$platform = 'platform_example'; // string | Disambiguates when the same campaignId string exists on more than one connected platform.
+
+try {
+    $result = $apiInstance->getCampaignTargeting($campaign_id, $platform);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->getCampaignTargeting: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Google platform campaign ID | |
+| **platform** | **string**| Disambiguates when the same campaignId string exists on more than one connected platform. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetCampaignTargeting200Response**](../Model/GetCampaignTargeting200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listAdCampaigns()`
 
 ```php
@@ -1215,6 +1343,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListAdKeywords200Response**](../Model/ListAdKeywords200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listAdSets()`
+
+```php
+listAdSets($account_id, $campaign_id, $platform): \Zernio\Model\ListAdSets200Response
+```
+
+List ad sets
+
+Ad sets (Google ad groups) synced for the connection, optionally filtered by platform and campaignId. Reads the `ad_sets` table directly, independent of the `ads` rollup GET /v1/ads/tree uses, so a just-created standalone ad group with no ad yet (POST /v1/ads/ad-sets, Google only) is visible here even though it is invisible in the tree until an ad joins it via `existingAdGroupId`. Returns at most 500 rows, newest first.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Social account ID
+$campaign_id = 'campaign_id_example'; // string | Platform campaign ID
+$platform = 'platform_example'; // string
+
+try {
+    $result = $apiInstance->listAdSets($account_id, $campaign_id, $platform);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->listAdSets: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Social account ID | [optional] |
+| **campaign_id** | **string**| Platform campaign ID | [optional] |
+| **platform** | **string**|  | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListAdSets200Response**](../Model/ListAdSets200Response.md)
 
 ### Authorization
 
@@ -1923,6 +2115,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\UpdateAdStatus200Response**](../Model/UpdateAdStatus200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateCampaignTargeting()`
+
+```php
+updateCampaignTargeting($campaign_id, $update_campaign_targeting_request): \Zernio\Model\UpdateCampaignTargeting200Response
+```
+
+Edit a Google campaign's device, location, or language targeting
+
+Google Ads compliance row M.10: geo and language targeting set at creation must stay editable afterwards. Send at least one of `devices`, `locations`, `languages`; each provided field REPLACES that field's existing criteria on the campaign (a full set, not a delta). Fields left out of the body are untouched. Google only; every other platform returns 501.  `locations` accepts the same shapes as campaign creation: a bare array of ISO country codes, or an object with `countries`/`regions`/`cities`/`zips`/`metros` key lists (`key` from GET /v1/ads/targeting/search?dimension=geo). Negative (excluded) locations are left untouched by this endpoint.  `languages` is an array of Google's language codes (ISO 639-1, plus variants such as `zh_CN`); an unknown code returns 400.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Google platform campaign ID
+$update_campaign_targeting_request = new \Zernio\Model\UpdateCampaignTargetingRequest(); // \Zernio\Model\UpdateCampaignTargetingRequest
+
+try {
+    $result = $apiInstance->updateCampaignTargeting($campaign_id, $update_campaign_targeting_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->updateCampaignTargeting: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Google platform campaign ID | |
+| **update_campaign_targeting_request** | [**\Zernio\Model\UpdateCampaignTargetingRequest**](../Model/UpdateCampaignTargetingRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateCampaignTargeting200Response**](../Model/UpdateCampaignTargeting200Response.md)
 
 ### Authorization
 

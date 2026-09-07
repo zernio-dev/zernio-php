@@ -8,11 +8,13 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | ------------- | ------------- | ------------- |
 | [**addConversionAssociations()**](ConversionsApi.md#addConversionAssociations) | **POST** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Associate campaigns |
 | [**adjustConversions()**](ConversionsApi.md#adjustConversions) | **POST** /v1/ads/conversions/adjustments | Adjust uploaded conversions |
+| [**createConversionAction()**](ConversionsApi.md#createConversionAction) | **POST** /v1/ads/conversions/actions | Create a website conversion action |
 | [**createConversionDestination()**](ConversionsApi.md#createConversionDestination) | **POST** /v1/accounts/{accountId}/conversion-destinations | Create a conversion destination |
 | [**deleteConversionDestination()**](ConversionsApi.md#deleteConversionDestination) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Delete a conversion destination |
 | [**getConversionDestination()**](ConversionsApi.md#getConversionDestination) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Get a conversion destination |
 | [**getConversionMetrics()**](ConversionsApi.md#getConversionMetrics) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/metrics | Get attribution metrics |
 | [**getConversionsQuality()**](ConversionsApi.md#getConversionsQuality) | **GET** /v1/ads/conversions/quality | Get Event Match Quality |
+| [**listConversionActions()**](ConversionsApi.md#listConversionActions) | **GET** /v1/ads/conversions/actions | List conversion actions and their tag snippets |
 | [**listConversionAssociations()**](ConversionsApi.md#listConversionAssociations) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | List associated campaigns |
 | [**listConversionDestinations()**](ConversionsApi.md#listConversionDestinations) | **GET** /v1/accounts/{accountId}/conversion-destinations | List conversion destinations |
 | [**removeConversionAssociations()**](ConversionsApi.md#removeConversionAssociations) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Remove associated campaigns |
@@ -130,6 +132,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\AdjustConversions200Response**](../Model/AdjustConversions200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createConversionAction()`
+
+```php
+createConversionAction($create_conversion_action_request): \Zernio\Model\CreateConversionAction201Response
+```
+
+Create a website conversion action
+
+Creates a `WEBPAGE` conversion action (category `DEFAULT`) and returns it with its tag snippets, read back after creation since Google never returns them on the create response itself. Google-only; other platforms return `501`. Requires the Ads add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_conversion_action_request = new \Zernio\Model\CreateConversionActionRequest(); // \Zernio\Model\CreateConversionActionRequest
+
+try {
+    $result = $apiInstance->createConversionAction($create_conversion_action_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->createConversionAction: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_conversion_action_request** | [**\Zernio\Model\CreateConversionActionRequest**](../Model/CreateConversionActionRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateConversionAction201Response**](../Model/CreateConversionAction201Response.md)
 
 ### Authorization
 
@@ -451,6 +513,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetConversionsQuality200Response**](../Model/GetConversionsQuality200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listConversionActions()`
+
+```php
+listConversionActions($account_id, $customer_id, $type): \Zernio\Model\ListConversionActions200Response
+```
+
+List conversion actions and their tag snippets
+
+Lists Google Ads conversion actions on the resolved customer, all types by default. Each action's `tagSnippets` (global site tag + event snippet) is included when Google has them for that action's type, e.g. `WEBPAGE`. Google-only; other platforms return `501`. Requires the Ads add-on.  `customerId` is optional: when omitted, it is resolved from the connection's accessible Google Ads customers, and the call fails with `400` when more than one is accessible (pass `customerId` to disambiguate).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | SocialAccount _id (must be a googleads account).
+$customer_id = 'customer_id_example'; // string | Google Ads customer id (digits only). Resolved automatically when the connection has exactly one accessible customer.
+$type = 'type_example'; // string | Filter by Google's ConversionActionType enum (e.g. WEBPAGE, UPLOAD_CLICKS).
+
+try {
+    $result = $apiInstance->listConversionActions($account_id, $customer_id, $type);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->listConversionActions: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| SocialAccount _id (must be a googleads account). | |
+| **customer_id** | **string**| Google Ads customer id (digits only). Resolved automatically when the connection has exactly one accessible customer. | [optional] |
+| **type** | **string**| Filter by Google&#39;s ConversionActionType enum (e.g. WEBPAGE, UPLOAD_CLICKS). | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListConversionActions200Response**](../Model/ListConversionActions200Response.md)
 
 ### Authorization
 
