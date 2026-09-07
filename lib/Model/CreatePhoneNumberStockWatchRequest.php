@@ -58,7 +58,8 @@ class CreatePhoneNumberStockWatchRequest implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'country' => 'string'
+        'country' => 'string',
+        'number_type' => 'string'
     ];
 
     /**
@@ -69,7 +70,8 @@ class CreatePhoneNumberStockWatchRequest implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'country' => null
+        'country' => null,
+        'number_type' => null
     ];
 
     /**
@@ -78,7 +80,8 @@ class CreatePhoneNumberStockWatchRequest implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'country' => false
+        'country' => false,
+        'number_type' => false
     ];
 
     /**
@@ -167,7 +170,8 @@ class CreatePhoneNumberStockWatchRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'country' => 'country'
+        'country' => 'country',
+        'number_type' => 'numberType'
     ];
 
     /**
@@ -176,7 +180,8 @@ class CreatePhoneNumberStockWatchRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'country' => 'setCountry'
+        'country' => 'setCountry',
+        'number_type' => 'setNumberType'
     ];
 
     /**
@@ -185,7 +190,8 @@ class CreatePhoneNumberStockWatchRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'country' => 'getCountry'
+        'country' => 'getCountry',
+        'number_type' => 'getNumberType'
     ];
 
     /**
@@ -229,6 +235,25 @@ class CreatePhoneNumberStockWatchRequest implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
+    public const NUMBER_TYPE_LOCAL = 'local';
+    public const NUMBER_TYPE_MOBILE = 'mobile';
+    public const NUMBER_TYPE_NATIONAL = 'national';
+    public const NUMBER_TYPE_TOLL_FREE = 'toll_free';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getNumberTypeAllowableValues()
+    {
+        return [
+            self::NUMBER_TYPE_LOCAL,
+            self::NUMBER_TYPE_MOBILE,
+            self::NUMBER_TYPE_NATIONAL,
+            self::NUMBER_TYPE_TOLL_FREE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -246,6 +271,7 @@ class CreatePhoneNumberStockWatchRequest implements ModelInterface, ArrayAccess,
     public function __construct(?array $data = null)
     {
         $this->setIfExists('country', $data ?? [], null);
+        $this->setIfExists('number_type', $data ?? [], null);
     }
 
     /**
@@ -284,6 +310,15 @@ class CreatePhoneNumberStockWatchRequest implements ModelInterface, ArrayAccess,
 
         if ((mb_strlen($this->container['country']) < 2)) {
             $invalidProperties[] = "invalid value for 'country', the character length must be bigger than or equal to 2.";
+        }
+
+        $allowedValues = $this->getNumberTypeAllowableValues();
+        if (!is_null($this->container['number_type']) && !in_array($this->container['number_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'number_type', must be one of '%s'",
+                $this->container['number_type'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -331,6 +366,43 @@ class CreatePhoneNumberStockWatchRequest implements ModelInterface, ArrayAccess,
         }
 
         $this->container['country'] = $country;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_type
+     *
+     * @return string|null
+     */
+    public function getNumberType()
+    {
+        return $this->container['number_type'];
+    }
+
+    /**
+     * Sets number_type
+     *
+     * @param string|null $number_type Narrow the watch to one number type. Omit to be notified when any type in the country is back.
+     *
+     * @return self
+     */
+    public function setNumberType($number_type)
+    {
+        if (is_null($number_type)) {
+            throw new \InvalidArgumentException('non-nullable number_type cannot be null');
+        }
+        $allowedValues = $this->getNumberTypeAllowableValues();
+        if (!in_array($number_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'number_type', must be one of '%s'",
+                    $number_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['number_type'] = $number_type;
 
         return $this;
     }

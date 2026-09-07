@@ -61,6 +61,7 @@ class PhoneNumberStockWatch implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => 'string',
         'country' => 'string',
         'country_name' => 'string',
+        'number_type' => 'string',
         'created_at' => '\DateTime'
     ];
 
@@ -75,6 +76,7 @@ class PhoneNumberStockWatch implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => null,
         'country' => null,
         'country_name' => null,
+        'number_type' => null,
         'created_at' => 'date-time'
     ];
 
@@ -87,6 +89,7 @@ class PhoneNumberStockWatch implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => false,
         'country' => false,
         'country_name' => false,
+        'number_type' => true,
         'created_at' => false
     ];
 
@@ -179,6 +182,7 @@ class PhoneNumberStockWatch implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => 'id',
         'country' => 'country',
         'country_name' => 'countryName',
+        'number_type' => 'numberType',
         'created_at' => 'createdAt'
     ];
 
@@ -191,6 +195,7 @@ class PhoneNumberStockWatch implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => 'setId',
         'country' => 'setCountry',
         'country_name' => 'setCountryName',
+        'number_type' => 'setNumberType',
         'created_at' => 'setCreatedAt'
     ];
 
@@ -203,6 +208,7 @@ class PhoneNumberStockWatch implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => 'getId',
         'country' => 'getCountry',
         'country_name' => 'getCountryName',
+        'number_type' => 'getNumberType',
         'created_at' => 'getCreatedAt'
     ];
 
@@ -247,6 +253,25 @@ class PhoneNumberStockWatch implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$openAPIModelName;
     }
 
+    public const NUMBER_TYPE_LOCAL = 'local';
+    public const NUMBER_TYPE_MOBILE = 'mobile';
+    public const NUMBER_TYPE_NATIONAL = 'national';
+    public const NUMBER_TYPE_TOLL_FREE = 'toll_free';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getNumberTypeAllowableValues()
+    {
+        return [
+            self::NUMBER_TYPE_LOCAL,
+            self::NUMBER_TYPE_MOBILE,
+            self::NUMBER_TYPE_NATIONAL,
+            self::NUMBER_TYPE_TOLL_FREE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -266,6 +291,7 @@ class PhoneNumberStockWatch implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('country', $data ?? [], null);
         $this->setIfExists('country_name', $data ?? [], null);
+        $this->setIfExists('number_type', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
     }
 
@@ -305,6 +331,18 @@ class PhoneNumberStockWatch implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['country_name'] === null) {
             $invalidProperties[] = "'country_name' can't be null";
         }
+        if ($this->container['number_type'] === null && !$this->isNullableSetToNull('number_type')) {
+            $invalidProperties[] = "'number_type' can't be null";
+        }
+        $allowedValues = $this->getNumberTypeAllowableValues();
+        if (!is_null($this->container['number_type']) && !in_array($this->container['number_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'number_type', must be one of '%s'",
+                $this->container['number_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
         }
@@ -400,6 +438,50 @@ class PhoneNumberStockWatch implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable country_name cannot be null');
         }
         $this->container['country_name'] = $country_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_type
+     *
+     * @return string|null
+     */
+    public function getNumberType()
+    {
+        return $this->container['number_type'];
+    }
+
+    /**
+     * Sets number_type
+     *
+     * @param string|null $number_type The watched number type, or null when the watch covers every type in the country.
+     *
+     * @return self
+     */
+    public function setNumberType($number_type)
+    {
+        if (is_null($number_type)) {
+            array_push($this->openAPINullablesSetToNull, 'number_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('number_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getNumberTypeAllowableValues();
+        if (!is_null($number_type) && !in_array($number_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'number_type', must be one of '%s'",
+                    $number_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['number_type'] = $number_type;
 
         return $this;
     }
