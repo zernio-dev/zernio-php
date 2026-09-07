@@ -146,6 +146,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'bid_strategy' => '\Zernio\Model\BidStrategy',
         'bid_amount' => 'float',
         'roas_average_floor' => 'float',
+        'portfolio_bid_strategy_id' => 'string',
         'value_rule_set_id' => 'string',
         'value_rules_applied' => 'bool',
         'platform_specific_data' => '\Zernio\Model\CreateStandaloneAdRequestPlatformSpecificData',
@@ -253,6 +254,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'bid_strategy' => null,
         'bid_amount' => null,
         'roas_average_floor' => null,
+        'portfolio_bid_strategy_id' => null,
         'value_rule_set_id' => null,
         'value_rules_applied' => null,
         'platform_specific_data' => null,
@@ -358,6 +360,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'bid_strategy' => false,
         'bid_amount' => false,
         'roas_average_floor' => false,
+        'portfolio_bid_strategy_id' => false,
         'value_rule_set_id' => false,
         'value_rules_applied' => false,
         'platform_specific_data' => false,
@@ -543,6 +546,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'bid_strategy' => 'bidStrategy',
         'bid_amount' => 'bidAmount',
         'roas_average_floor' => 'roasAverageFloor',
+        'portfolio_bid_strategy_id' => 'portfolioBidStrategyId',
         'value_rule_set_id' => 'valueRuleSetId',
         'value_rules_applied' => 'valueRulesApplied',
         'platform_specific_data' => 'platformSpecificData',
@@ -648,6 +652,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'bid_strategy' => 'setBidStrategy',
         'bid_amount' => 'setBidAmount',
         'roas_average_floor' => 'setRoasAverageFloor',
+        'portfolio_bid_strategy_id' => 'setPortfolioBidStrategyId',
         'value_rule_set_id' => 'setValueRuleSetId',
         'value_rules_applied' => 'setValueRulesApplied',
         'platform_specific_data' => 'setPlatformSpecificData',
@@ -753,6 +758,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'bid_strategy' => 'getBidStrategy',
         'bid_amount' => 'getBidAmount',
         'roas_average_floor' => 'getRoasAverageFloor',
+        'portfolio_bid_strategy_id' => 'getPortfolioBidStrategyId',
         'value_rule_set_id' => 'getValueRuleSetId',
         'value_rules_applied' => 'getValueRulesApplied',
         'platform_specific_data' => 'getPlatformSpecificData',
@@ -1230,6 +1236,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('bid_strategy', $data ?? [], null);
         $this->setIfExists('bid_amount', $data ?? [], null);
         $this->setIfExists('roas_average_floor', $data ?? [], null);
+        $this->setIfExists('portfolio_bid_strategy_id', $data ?? [], null);
         $this->setIfExists('value_rule_set_id', $data ?? [], null);
         $this->setIfExists('value_rules_applied', $data ?? [], null);
         $this->setIfExists('platform_specific_data', $data ?? [], null);
@@ -1523,6 +1530,10 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
                 $this->container['gender'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['portfolio_bid_strategy_id']) && !preg_match("/^\\d+$/", $this->container['portfolio_bid_strategy_id'])) {
+            $invalidProperties[] = "invalid value for 'portfolio_bid_strategy_id', must be conform to the pattern /^\\d+$/.";
         }
 
         if (!is_null($this->container['value_rule_set_id']) && !preg_match("/^\\d+$/", $this->container['value_rule_set_id'])) {
@@ -4139,7 +4150,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets bid_strategy
      *
-     * @param \Zernio\Model\BidStrategy|null $bid_strategy Deprecated: send it inside `platformSpecificData` instead (Meta today; TikTok's nested shape is planned). The flat field keeps working during the deprecation window; sending both shapes returns a 400.  Meta bid strategy applied to the ad set.  OpenAI Ads: required on every ad group via this flat field, the only channel it supports (`platformSpecificData` is Meta/LinkedIn-only and returns 400 for OpenAI). No auto-bid option exists; send `LOWEST_COST_WITH_BID_CAP` or `COST_CAP` together with `bidAmount`, omitting it returns 400.
+     * @param \Zernio\Model\BidStrategy|null $bid_strategy Deprecated: send it inside `platformSpecificData` instead (Meta today; TikTok's nested shape is planned). The flat field keeps working during the deprecation window; sending both shapes returns a 400.  Meta bid strategy applied to the ad set.  OpenAI Ads: required on every ad group via this flat field, the only channel it supports (`platformSpecificData` is Meta/LinkedIn-only and returns 400 for OpenAI). No auto-bid option exists; send `LOWEST_COST_WITH_BID_CAP` or `COST_CAP` together with `bidAmount`, omitting it returns 400.  Google (not deprecated there, this shared flat field is Google's only shape): applied to the campaign this call creates. On Google: LOWEST_COST_WITHOUT_CAP = Maximize Conversions, COST_CAP + bidAmount = Target CPA, LOWEST_COST_WITH_MIN_ROAS + roasAverageFloor = Target ROAS, LOWEST_COST_WITH_BID_CAP + bidAmount = Maximize Clicks with a CPC ceiling; portfolioBidStrategyId attaches a portfolio strategy instead. Omitted, the campaign falls back to a goal-based default.
      *
      * @return self
      * @deprecated
@@ -4208,6 +4219,38 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable roas_average_floor cannot be null');
         }
         $this->container['roas_average_floor'] = $roas_average_floor;
+
+        return $this;
+    }
+
+    /**
+     * Gets portfolio_bid_strategy_id
+     *
+     * @return string|null
+     */
+    public function getPortfolioBidStrategyId()
+    {
+        return $this->container['portfolio_bid_strategy_id'];
+    }
+
+    /**
+     * Sets portfolio_bid_strategy_id
+     *
+     * @param string|null $portfolio_bid_strategy_id Google only. Attach an existing portfolio bid strategy (numeric id from GET /v1/ads/bid-strategies) to the new campaign instead of a standard one. Exclusive with bidStrategy.
+     *
+     * @return self
+     */
+    public function setPortfolioBidStrategyId($portfolio_bid_strategy_id)
+    {
+        if (is_null($portfolio_bid_strategy_id)) {
+            throw new \InvalidArgumentException('non-nullable portfolio_bid_strategy_id cannot be null');
+        }
+
+        if ((!preg_match("/^\\d+$/", ObjectSerializer::toString($portfolio_bid_strategy_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$portfolio_bid_strategy_id when calling CreateStandaloneAdRequest., must conform to the pattern /^\\d+$/.");
+        }
+
+        $this->container['portfolio_bid_strategy_id'] = $portfolio_bid_strategy_id;
 
         return $this;
     }

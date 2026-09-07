@@ -93,6 +93,9 @@ class AdCampaignsApi
         'createAdSet' => [
             'application/json',
         ],
+        'createBidStrategy' => [
+            'application/json',
+        ],
         'createStandaloneAd' => [
             'application/json',
         ],
@@ -126,6 +129,9 @@ class AdCampaignsApi
         'getAdsTimeline' => [
             'application/json',
         ],
+        'getCampaignBidding' => [
+            'application/json',
+        ],
         'getCampaignTargeting' => [
             'application/json',
         ],
@@ -139,6 +145,9 @@ class AdCampaignsApi
             'application/json',
         ],
         'listAds' => [
+            'application/json',
+        ],
+        'listBidStrategies' => [
             'application/json',
         ],
         'listCampaignNegativeKeywords' => [
@@ -169,6 +178,9 @@ class AdCampaignsApi
             'application/json',
         ],
         'updateAdStatus' => [
+            'application/json',
+        ],
+        'updateBidStrategy' => [
             'application/json',
         ],
         'updateCampaignTargeting' => [
@@ -1968,6 +1980,305 @@ class AdCampaignsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_ad_set_request));
             } else {
                 $httpBody = $create_ad_set_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createBidStrategy
+     *
+     * Create a Google Ads portfolio bid strategy
+     *
+     * @param  \Zernio\Model\CreateBidStrategyRequest $create_bid_strategy_request create_bid_strategy_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBidStrategy'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CreateBidStrategy201Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     */
+    public function createBidStrategy($create_bid_strategy_request, string $contentType = self::contentTypes['createBidStrategy'][0])
+    {
+        list($response) = $this->createBidStrategyWithHttpInfo($create_bid_strategy_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createBidStrategyWithHttpInfo
+     *
+     * Create a Google Ads portfolio bid strategy
+     *
+     * @param  \Zernio\Model\CreateBidStrategyRequest $create_bid_strategy_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBidStrategy'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CreateBidStrategy201Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createBidStrategyWithHttpInfo($create_bid_strategy_request, string $contentType = self::contentTypes['createBidStrategy'][0])
+    {
+        $request = $this->createBidStrategyRequest($create_bid_strategy_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreateBidStrategy201Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CreateBidStrategy201Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreateBidStrategy201Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createBidStrategyAsync
+     *
+     * Create a Google Ads portfolio bid strategy
+     *
+     * @param  \Zernio\Model\CreateBidStrategyRequest $create_bid_strategy_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBidStrategy'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createBidStrategyAsync($create_bid_strategy_request, string $contentType = self::contentTypes['createBidStrategy'][0])
+    {
+        return $this->createBidStrategyAsyncWithHttpInfo($create_bid_strategy_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createBidStrategyAsyncWithHttpInfo
+     *
+     * Create a Google Ads portfolio bid strategy
+     *
+     * @param  \Zernio\Model\CreateBidStrategyRequest $create_bid_strategy_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBidStrategy'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createBidStrategyAsyncWithHttpInfo($create_bid_strategy_request, string $contentType = self::contentTypes['createBidStrategy'][0])
+    {
+        $returnType = '\Zernio\Model\CreateBidStrategy201Response';
+        $request = $this->createBidStrategyRequest($create_bid_strategy_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createBidStrategy'
+     *
+     * @param  \Zernio\Model\CreateBidStrategyRequest $create_bid_strategy_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBidStrategy'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createBidStrategyRequest($create_bid_strategy_request, string $contentType = self::contentTypes['createBidStrategy'][0])
+    {
+
+        // verify the required parameter 'create_bid_strategy_request' is set
+        if ($create_bid_strategy_request === null || (is_array($create_bid_strategy_request) && count($create_bid_strategy_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_bid_strategy_request when calling createBidStrategy'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/bid-strategies';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_bid_strategy_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_bid_strategy_request));
+            } else {
+                $httpBody = $create_bid_strategy_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -5715,6 +6026,349 @@ class AdCampaignsApi
     }
 
     /**
+     * Operation getCampaignBidding
+     *
+     * Read a campaign&#39;s current bidding
+     *
+     * @param  string $campaign_id Numeric Google platform campaign id. (required)
+     * @param  string $account_id Zernio Google Ads SocialAccount id: resolves the customer id + refresh token. (required)
+     * @param  string $platform Required: campaign IDs are not globally unique. Only \&quot;google\&quot; is supported today. (required)
+     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Required when the connection has multiple Google Ads accounts; optional (and inferred) when it has only one. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignBidding'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetCampaignBidding200Response|\Zernio\Model\InlineObject
+     */
+    public function getCampaignBidding($campaign_id, $account_id, $platform, $customer_id = null, string $contentType = self::contentTypes['getCampaignBidding'][0])
+    {
+        list($response) = $this->getCampaignBiddingWithHttpInfo($campaign_id, $account_id, $platform, $customer_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getCampaignBiddingWithHttpInfo
+     *
+     * Read a campaign&#39;s current bidding
+     *
+     * @param  string $campaign_id Numeric Google platform campaign id. (required)
+     * @param  string $account_id Zernio Google Ads SocialAccount id: resolves the customer id + refresh token. (required)
+     * @param  string $platform Required: campaign IDs are not globally unique. Only \&quot;google\&quot; is supported today. (required)
+     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Required when the connection has multiple Google Ads accounts; optional (and inferred) when it has only one. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignBidding'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetCampaignBidding200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCampaignBiddingWithHttpInfo($campaign_id, $account_id, $platform, $customer_id = null, string $contentType = self::contentTypes['getCampaignBidding'][0])
+    {
+        $request = $this->getCampaignBiddingRequest($campaign_id, $account_id, $platform, $customer_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetCampaignBidding200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetCampaignBidding200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetCampaignBidding200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getCampaignBiddingAsync
+     *
+     * Read a campaign&#39;s current bidding
+     *
+     * @param  string $campaign_id Numeric Google platform campaign id. (required)
+     * @param  string $account_id Zernio Google Ads SocialAccount id: resolves the customer id + refresh token. (required)
+     * @param  string $platform Required: campaign IDs are not globally unique. Only \&quot;google\&quot; is supported today. (required)
+     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Required when the connection has multiple Google Ads accounts; optional (and inferred) when it has only one. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignBidding'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCampaignBiddingAsync($campaign_id, $account_id, $platform, $customer_id = null, string $contentType = self::contentTypes['getCampaignBidding'][0])
+    {
+        return $this->getCampaignBiddingAsyncWithHttpInfo($campaign_id, $account_id, $platform, $customer_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getCampaignBiddingAsyncWithHttpInfo
+     *
+     * Read a campaign&#39;s current bidding
+     *
+     * @param  string $campaign_id Numeric Google platform campaign id. (required)
+     * @param  string $account_id Zernio Google Ads SocialAccount id: resolves the customer id + refresh token. (required)
+     * @param  string $platform Required: campaign IDs are not globally unique. Only \&quot;google\&quot; is supported today. (required)
+     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Required when the connection has multiple Google Ads accounts; optional (and inferred) when it has only one. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignBidding'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCampaignBiddingAsyncWithHttpInfo($campaign_id, $account_id, $platform, $customer_id = null, string $contentType = self::contentTypes['getCampaignBidding'][0])
+    {
+        $returnType = '\Zernio\Model\GetCampaignBidding200Response';
+        $request = $this->getCampaignBiddingRequest($campaign_id, $account_id, $platform, $customer_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getCampaignBidding'
+     *
+     * @param  string $campaign_id Numeric Google platform campaign id. (required)
+     * @param  string $account_id Zernio Google Ads SocialAccount id: resolves the customer id + refresh token. (required)
+     * @param  string $platform Required: campaign IDs are not globally unique. Only \&quot;google\&quot; is supported today. (required)
+     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Required when the connection has multiple Google Ads accounts; optional (and inferred) when it has only one. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignBidding'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getCampaignBiddingRequest($campaign_id, $account_id, $platform, $customer_id = null, string $contentType = self::contentTypes['getCampaignBidding'][0])
+    {
+
+        // verify the required parameter 'campaign_id' is set
+        if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaign_id when calling getCampaignBidding'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getCampaignBidding'
+            );
+        }
+
+        // verify the required parameter 'platform' is set
+        if ($platform === null || (is_array($platform) && count($platform) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $platform when calling getCampaignBidding'
+            );
+        }
+
+
+
+        $resourcePath = '/v1/ads/campaigns/{campaignId}/bidding';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $platform,
+            'platform', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $customer_id,
+            'customerId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($campaign_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'campaignId' . '}',
+                ObjectSerializer::toPathValue($campaign_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getCampaignTargeting
      *
      * Read a Google campaign&#39;s device, location, and language targeting
@@ -7772,6 +8426,366 @@ class AdCampaignsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $effective_instagram_media_id,
             'effectiveInstagramMediaId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from_date,
+            'fromDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to_date,
+            'toDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listBidStrategies
+     *
+     * List Google Ads portfolio bid strategies
+     *
+     * @param  string $account_id Google ads SocialAccount id. (required)
+     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  \DateTime|null $from_date Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $to_date Defaults to today. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBidStrategies'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListBidStrategies200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     */
+    public function listBidStrategies($account_id, $customer_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listBidStrategies'][0])
+    {
+        list($response) = $this->listBidStrategiesWithHttpInfo($account_id, $customer_id, $from_date, $to_date, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listBidStrategiesWithHttpInfo
+     *
+     * List Google Ads portfolio bid strategies
+     *
+     * @param  string $account_id Google ads SocialAccount id. (required)
+     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  \DateTime|null $from_date Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $to_date Defaults to today. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBidStrategies'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListBidStrategies200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listBidStrategiesWithHttpInfo($account_id, $customer_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listBidStrategies'][0])
+    {
+        $request = $this->listBidStrategiesRequest($account_id, $customer_id, $from_date, $to_date, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListBidStrategies200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListBidStrategies200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListBidStrategies200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listBidStrategiesAsync
+     *
+     * List Google Ads portfolio bid strategies
+     *
+     * @param  string $account_id Google ads SocialAccount id. (required)
+     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  \DateTime|null $from_date Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $to_date Defaults to today. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBidStrategies'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listBidStrategiesAsync($account_id, $customer_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listBidStrategies'][0])
+    {
+        return $this->listBidStrategiesAsyncWithHttpInfo($account_id, $customer_id, $from_date, $to_date, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listBidStrategiesAsyncWithHttpInfo
+     *
+     * List Google Ads portfolio bid strategies
+     *
+     * @param  string $account_id Google ads SocialAccount id. (required)
+     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  \DateTime|null $from_date Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $to_date Defaults to today. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBidStrategies'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listBidStrategiesAsyncWithHttpInfo($account_id, $customer_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listBidStrategies'][0])
+    {
+        $returnType = '\Zernio\Model\ListBidStrategies200Response';
+        $request = $this->listBidStrategiesRequest($account_id, $customer_id, $from_date, $to_date, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listBidStrategies'
+     *
+     * @param  string $account_id Google ads SocialAccount id. (required)
+     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  \DateTime|null $from_date Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $to_date Defaults to today. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBidStrategies'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listBidStrategiesRequest($account_id, $customer_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listBidStrategies'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling listBidStrategies'
+            );
+        }
+
+
+
+
+
+        $resourcePath = '/v1/ads/bid-strategies';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $customer_id,
+            'customerId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -10933,6 +11947,339 @@ class AdCampaignsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateBidStrategy
+     *
+     * Update a Google Ads portfolio bid strategy
+     *
+     * @param  string $strategy_id Numeric Google Ads bid strategy id. (required)
+     * @param  \Zernio\Model\UpdateBidStrategyRequest $update_bid_strategy_request update_bid_strategy_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBidStrategy'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\UpdateBidStrategy200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     */
+    public function updateBidStrategy($strategy_id, $update_bid_strategy_request, string $contentType = self::contentTypes['updateBidStrategy'][0])
+    {
+        list($response) = $this->updateBidStrategyWithHttpInfo($strategy_id, $update_bid_strategy_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateBidStrategyWithHttpInfo
+     *
+     * Update a Google Ads portfolio bid strategy
+     *
+     * @param  string $strategy_id Numeric Google Ads bid strategy id. (required)
+     * @param  \Zernio\Model\UpdateBidStrategyRequest $update_bid_strategy_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBidStrategy'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\UpdateBidStrategy200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateBidStrategyWithHttpInfo($strategy_id, $update_bid_strategy_request, string $contentType = self::contentTypes['updateBidStrategy'][0])
+    {
+        $request = $this->updateBidStrategyRequest($strategy_id, $update_bid_strategy_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\UpdateBidStrategy200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\UpdateBidStrategy200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\UpdateBidStrategy200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateBidStrategyAsync
+     *
+     * Update a Google Ads portfolio bid strategy
+     *
+     * @param  string $strategy_id Numeric Google Ads bid strategy id. (required)
+     * @param  \Zernio\Model\UpdateBidStrategyRequest $update_bid_strategy_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBidStrategy'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateBidStrategyAsync($strategy_id, $update_bid_strategy_request, string $contentType = self::contentTypes['updateBidStrategy'][0])
+    {
+        return $this->updateBidStrategyAsyncWithHttpInfo($strategy_id, $update_bid_strategy_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateBidStrategyAsyncWithHttpInfo
+     *
+     * Update a Google Ads portfolio bid strategy
+     *
+     * @param  string $strategy_id Numeric Google Ads bid strategy id. (required)
+     * @param  \Zernio\Model\UpdateBidStrategyRequest $update_bid_strategy_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBidStrategy'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateBidStrategyAsyncWithHttpInfo($strategy_id, $update_bid_strategy_request, string $contentType = self::contentTypes['updateBidStrategy'][0])
+    {
+        $returnType = '\Zernio\Model\UpdateBidStrategy200Response';
+        $request = $this->updateBidStrategyRequest($strategy_id, $update_bid_strategy_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateBidStrategy'
+     *
+     * @param  string $strategy_id Numeric Google Ads bid strategy id. (required)
+     * @param  \Zernio\Model\UpdateBidStrategyRequest $update_bid_strategy_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBidStrategy'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateBidStrategyRequest($strategy_id, $update_bid_strategy_request, string $contentType = self::contentTypes['updateBidStrategy'][0])
+    {
+
+        // verify the required parameter 'strategy_id' is set
+        if ($strategy_id === null || (is_array($strategy_id) && count($strategy_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $strategy_id when calling updateBidStrategy'
+            );
+        }
+
+        // verify the required parameter 'update_bid_strategy_request' is set
+        if ($update_bid_strategy_request === null || (is_array($update_bid_strategy_request) && count($update_bid_strategy_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_bid_strategy_request when calling updateBidStrategy'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/bid-strategies/{strategyId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($strategy_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'strategyId' . '}',
+                ObjectSerializer::toPathValue($strategy_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_bid_strategy_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_bid_strategy_request));
+            } else {
+                $httpBody = $update_bid_strategy_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

@@ -12,6 +12,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**bulkUpdateAdCampaignStatus()**](AdCampaignsApi.md#bulkUpdateAdCampaignStatus) | **POST** /v1/ads/campaigns/bulk-status | Pause or resume many campaigns |
 | [**createAdCampaign()**](AdCampaignsApi.md#createAdCampaign) | **POST** /v1/ads/campaigns | Create a standalone campaign |
 | [**createAdSet()**](AdCampaignsApi.md#createAdSet) | **POST** /v1/ads/ad-sets | Create a standalone ad group |
+| [**createBidStrategy()**](AdCampaignsApi.md#createBidStrategy) | **POST** /v1/ads/bid-strategies | Create a Google Ads portfolio bid strategy |
 | [**createStandaloneAd()**](AdCampaignsApi.md#createStandaloneAd) | **POST** /v1/ads/create | Create standalone ad |
 | [**deleteAd()**](AdCampaignsApi.md#deleteAd) | **DELETE** /v1/ads/{adId} | Cancel an ad |
 | [**deleteAdCampaign()**](AdCampaignsApi.md#deleteAdCampaign) | **DELETE** /v1/ads/campaigns/{campaignId} | Delete a campaign |
@@ -23,11 +24,13 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getAdSetDetails()**](AdCampaignsApi.md#getAdSetDetails) | **GET** /v1/ads/ad-sets/{adSetId} | Live ad-set details incl. learning phase |
 | [**getAdTree()**](AdCampaignsApi.md#getAdTree) | **GET** /v1/ads/tree | Get campaign tree |
 | [**getAdsTimeline()**](AdCampaignsApi.md#getAdsTimeline) | **GET** /v1/ads/timeline | Get daily account metrics |
+| [**getCampaignBidding()**](AdCampaignsApi.md#getCampaignBidding) | **GET** /v1/ads/campaigns/{campaignId}/bidding | Read a campaign&#39;s current bidding |
 | [**getCampaignTargeting()**](AdCampaignsApi.md#getCampaignTargeting) | **GET** /v1/ads/campaigns/{campaignId}/targeting | Read a Google campaign&#39;s device, location, and language targeting |
 | [**listAdCampaigns()**](AdCampaignsApi.md#listAdCampaigns) | **GET** /v1/ads/campaigns | List campaigns |
 | [**listAdKeywords()**](AdCampaignsApi.md#listAdKeywords) | **GET** /v1/ads/keywords | List Search keywords |
 | [**listAdSets()**](AdCampaignsApi.md#listAdSets) | **GET** /v1/ads/ad-sets | List ad sets |
 | [**listAds()**](AdCampaignsApi.md#listAds) | **GET** /v1/ads | List ads |
+| [**listBidStrategies()**](AdCampaignsApi.md#listBidStrategies) | **GET** /v1/ads/bid-strategies | List Google Ads portfolio bid strategies |
 | [**listCampaignNegativeKeywords()**](AdCampaignsApi.md#listCampaignNegativeKeywords) | **GET** /v1/ads/campaigns/{campaignId}/negative-keywords | List campaign-level negative keywords |
 | [**removeAdKeyword()**](AdCampaignsApi.md#removeAdKeyword) | **DELETE** /v1/ads/keywords/{keywordId} | Remove a Search keyword |
 | [**replaceCampaignNegativeKeywords()**](AdCampaignsApi.md#replaceCampaignNegativeKeywords) | **PUT** /v1/ads/campaigns/{campaignId}/negative-keywords | Replace campaign-level negative keywords |
@@ -38,6 +41,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**updateAdSet()**](AdCampaignsApi.md#updateAdSet) | **PUT** /v1/ads/ad-sets/{adSetId} | Update an ad set |
 | [**updateAdSetStatus()**](AdCampaignsApi.md#updateAdSetStatus) | **PUT** /v1/ads/ad-sets/{adSetId}/status | Pause or resume a single ad set |
 | [**updateAdStatus()**](AdCampaignsApi.md#updateAdStatus) | **PUT** /v1/ads/{adId}/status | Pause or resume a single ad |
+| [**updateBidStrategy()**](AdCampaignsApi.md#updateBidStrategy) | **PATCH** /v1/ads/bid-strategies/{strategyId} | Update a Google Ads portfolio bid strategy |
 | [**updateCampaignTargeting()**](AdCampaignsApi.md#updateCampaignTargeting) | **PUT** /v1/ads/campaigns/{campaignId}/targeting | Edit a Google campaign&#39;s device, location, or language targeting |
 
 
@@ -293,7 +297,7 @@ createAdCampaign($create_ad_campaign_request, $idempotency_key): \Zernio\Model\C
 
 Create a standalone campaign
 
-Creates a campaign WITHOUT its first ad set / ad, on the platform of the given `accountId`. Ad sets join it later via `existingCampaignId` on the create endpoints. Platform notes: on Meta a budget here is campaign-level (CBO) by definition; omit it for ABO (each ad set carries its own budget), and `specialAdCategories` / `bidStrategy` are Meta-only (400 elsewhere). Google, X and OpenAI require a budget (422 without one; OpenAI accepts only `budgetType: lifetime`, Google only `budgetType: daily`). LinkedIn creates the campaign GROUP (our campaign level) and rejects a budget, which lives on the campaign (ad set) level there; it comes back `status: DRAFT`. TikTok campaigns are created without a status and report `ENABLE`. Created `PAUSED` unless `status: ACTIVE` where the platform supports it.  **Idempotency:** send an `Idempotency-Key` header to make retries safe.
+Creates a campaign WITHOUT its first ad set / ad, on the platform of the given `accountId`. Ad sets join it later via `existingCampaignId` on the create endpoints. Platform notes: on Meta a budget here is campaign-level (CBO) by definition; omit it for ABO (each ad set carries its own budget), and `specialAdCategories` is Meta-only (400 elsewhere); `bidStrategy` is Meta and Google (400 elsewhere), and Google also accepts `portfolioBidStrategyId` instead. Google, X and OpenAI require a budget (422 without one; OpenAI accepts only `budgetType: lifetime`, Google only `budgetType: daily`). LinkedIn creates the campaign GROUP (our campaign level) and rejects a budget, which lives on the campaign (ad set) level there; it comes back `status: DRAFT`. TikTok campaigns are created without a status and report `ENABLE`. Created `PAUSED` unless `status: ACTIVE` where the platform supports it.  **Idempotency:** send an `Idempotency-Key` header to make retries safe.
 
 ### Example
 
@@ -395,6 +399,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreateAdSet201Response**](../Model/CreateAdSet201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createBidStrategy()`
+
+```php
+createBidStrategy($create_bid_strategy_request): \Zernio\Model\CreateBidStrategy201Response
+```
+
+Create a Google Ads portfolio bid strategy
+
+Creates a standalone bid strategy shared across campaigns. Attach it to a campaign with `portfolioBidStrategyId` on POST /v1/ads/create, PUT /v1/ads/campaigns/{campaignId}, or PUT /v1/ads/ad-sets/{adSetId}. Attaching a strategy aligned to a shared budget fails there with a 400 (Google's `BIDDING_STRATEGY_AND_BUDGET_MUST_BE_ALIGNED`); this is not retryable.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_bid_strategy_request = new \Zernio\Model\CreateBidStrategyRequest(); // \Zernio\Model\CreateBidStrategyRequest
+
+try {
+    $result = $apiInstance->createBidStrategy($create_bid_strategy_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->createBidStrategy: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_bid_strategy_request** | [**\Zernio\Model\CreateBidStrategyRequest**](../Model/CreateBidStrategyRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateBidStrategy201Response**](../Model/CreateBidStrategy201Response.md)
 
 ### Authorization
 
@@ -1129,6 +1193,72 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getCampaignBidding()`
+
+```php
+getCampaignBidding($campaign_id, $account_id, $platform, $customer_id): \Zernio\Model\GetCampaignBidding200Response
+```
+
+Read a campaign's current bidding
+
+Live read of the campaign's bidding strategy on Google, for pre-filling the bid strategy block before a PUT to /v1/ads/campaigns/{campaignId}. Google Ads only; `platform` is required and rejected when it is anything else, since a `campaignId` is not globally unique.  Maps Google's bidding strategy onto the same triplet PUT accepts: `LOWEST_COST_WITHOUT_CAP` (Maximize Conversions, no target), `COST_CAP` + `bidAmount` (Target CPA), `LOWEST_COST_WITH_MIN_ROAS` + `roasAverageFloor` (Target ROAS), `LOWEST_COST_WITH_BID_CAP` + `bidAmount` (Maximize Clicks with a CPC ceiling). A campaign on a portfolio strategy returns `portfolio` (id + name) and `bidSpec.portfolioBidStrategyId` instead of the triplet. Anything else (Manual CPC, Target Impression Share, ...) returns `bidSpec: null`; show `biddingStrategyType` as-is.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Numeric Google platform campaign id.
+$account_id = 'account_id_example'; // string | Zernio Google Ads SocialAccount id: resolves the customer id + refresh token.
+$platform = 'platform_example'; // string | Required: campaign IDs are not globally unique. Only \"google\" is supported today.
+$customer_id = 'customer_id_example'; // string | Numeric Google Ads customer id (no dashes). Required when the connection has multiple Google Ads accounts; optional (and inferred) when it has only one.
+
+try {
+    $result = $apiInstance->getCampaignBidding($campaign_id, $account_id, $platform, $customer_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->getCampaignBidding: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Numeric Google platform campaign id. | |
+| **account_id** | **string**| Zernio Google Ads SocialAccount id: resolves the customer id + refresh token. | |
+| **platform** | **string**| Required: campaign IDs are not globally unique. Only \&quot;google\&quot; is supported today. | |
+| **customer_id** | **string**| Numeric Google Ads customer id (no dashes). Required when the connection has multiple Google Ads accounts; optional (and inferred) when it has only one. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetCampaignBidding200Response**](../Model/GetCampaignBidding200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getCampaignTargeting()`
 
 ```php
@@ -1511,6 +1641,72 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listBidStrategies()`
+
+```php
+listBidStrategies($account_id, $customer_id, $from_date, $to_date): \Zernio\Model\ListBidStrategies200Response
+```
+
+List Google Ads portfolio bid strategies
+
+Bidding strategy report: type, status, campaign count, clicks, cost, cost per conversion, impressions, average CPC and conversions over the date range (default last 30 days). Reads Google's `bidding_strategy` resource live. Draws on the shared Google Ads operations budget.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Google ads SocialAccount id.
+$customer_id = 'customer_id_example'; // string | Numeric Google Ads customer id (no dashes). Defaults to the account's connected customer.
+$from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Defaults to 30 days ago.
+$to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Defaults to today.
+
+try {
+    $result = $apiInstance->listBidStrategies($account_id, $customer_id, $from_date, $to_date);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->listBidStrategies: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Google ads SocialAccount id. | |
+| **customer_id** | **string**| Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. | [optional] |
+| **from_date** | **\DateTime**| Defaults to 30 days ago. | [optional] |
+| **to_date** | **\DateTime**| Defaults to today. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListBidStrategies200Response**](../Model/ListBidStrategies200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listCampaignNegativeKeywords()`
 
 ```php
@@ -1703,7 +1899,7 @@ updateAd($ad_id, $update_ad_request): \Zernio\Model\UpdateAd200Response
 
 Update ad
 
-Patch one or more fields on an ad. Status, budget, targeting, and creative changes are propagated to the platform.  Per-platform support: - **Meta** (Facebook + Instagram): all fields supported. - **TikTok**: status, budget, targeting (via `/v2/adgroup/update/`), and creative   (via `/v2/ad/update/` patch-style — `headline` is ignored, `body` becomes `ad_text`). - **Google**: status, budget, and KEYWORD edits via `targeting.keywords` /   `targeting.negativeKeywords` — each list you send becomes the FULL new set of its   kind on the ad group (criteria not in the list are removed); a kind left out is   untouched. Any other `targeting` field returns 400: Google cannot mutate broad   targeting post-create without recreating the campaign. `creative` returns 501. - **LinkedIn**: status, budget, targeting (geo countries only, applied to the   LinkedIn Campaign via PARTIAL_UPDATE), and creative (uploads new media, creates a   replacement inline creative on the same campaign, pauses the old one). - **Pinterest / X / OpenAI Ads**: status + budget only. Sending   `targeting` or `creative` returns 501 with code `unsupported_platform_operation`.   OpenAI Ads budget is lifetime-only (see `budget.type` below).
+Patch one or more fields on an ad. Status, budget, targeting, and creative changes are propagated to the platform.  Per-platform support: - **Meta** (Facebook + Instagram): all fields supported. - **TikTok**: status, budget, targeting (via `/v2/adgroup/update/`), and creative   (via `/v2/ad/update/` patch-style — `headline` is ignored, `body` becomes `ad_text`). - **Google**: status, budget, KEYWORD edits via `targeting.keywords` /   `targeting.negativeKeywords`, and DEVICE bid adjustments via `targeting.devices`   — each list you send becomes the FULL new set of its kind (criteria not in the   list are removed); a kind left out is untouched. Any other `targeting` field   returns 400: Google cannot mutate broad targeting post-create without recreating   the campaign. `creative` returns 501. - **LinkedIn**: status, budget, targeting (geo countries only, applied to the   LinkedIn Campaign via PARTIAL_UPDATE), and creative (uploads new media, creates a   replacement inline creative on the same campaign, pauses the old one). - **Pinterest / X / OpenAI Ads**: status + budget only. Sending   `targeting` or `creative` returns 501 with code `unsupported_platform_operation`.   OpenAI Ads budget is lifetime-only (see `budget.type` below).
 
 ### Example
 
@@ -1765,7 +1961,7 @@ updateAdCampaign($campaign_id, $update_ad_campaign_request): \Zernio\Model\Updat
 
 Update a campaign
 
-Campaign-level edits. Send at least one of `budget`, `bidStrategy`, `name` or `platformSpecificData`. An unsupported field is always an error, never a silent drop.  | Body field | Meta | Google | Others | |---|---|---|---| | `bidStrategy` | Yes | Yes | 501 | | `bidAmount`, `roasAverageFloor` | 400 — ad-set level | Yes | 400 | | `budget` (CBO; ABO returns 409) | Yes | 501 | 501 | | `name` | Yes | 501 | 501 | | `platformSpecificData.spendCap` | Yes | 400 | 400 | | `accountId` (empty campaigns) | Yes | - | - |  Google maps the shared enum onto its own strategies: `LOWEST_COST_WITHOUT_CAP` to Maximize Clicks, `LOWEST_COST_WITH_BID_CAP` to Maximize Clicks with a max CPC (`bidAmount`), `COST_CAP` to Target CPA (`bidAmount`), `LOWEST_COST_WITH_MIN_ROAS` to Target ROAS (`roasAverageFloor`). A campaign on a PORTFOLIO bidding strategy is rejected: detach it in Google Ads first, since it is shared across campaigns.  `accountId` forwards the update straight to Meta for a campaign with zero ads, which would otherwise 404; the response then carries `updated: 0`.
+Campaign-level edits. Send at least one of `budget`, `bidStrategy`, `portfolioBidStrategyId`, `name` or `platformSpecificData`. An unsupported field is always an error, never a silent drop.  | Body field | Meta | Google | Others | |---|---|---|---| | `bidStrategy` | Yes | Yes | 501 | | `bidAmount`, `roasAverageFloor` | 400 — ad-set level | Yes | 400 | | `portfolioBidStrategyId` | 400 | Yes | 400 | | `budget` (CBO; ABO returns 409) | Yes | 501 | 501 | | `name` | Yes | 501 | 501 | | `platformSpecificData.spendCap` | Yes | 400 | 400 | | `accountId` (empty campaigns) | Yes | - | - |  On Google: `LOWEST_COST_WITHOUT_CAP` = Maximize Conversions, `COST_CAP` + `bidAmount` = Target CPA, `LOWEST_COST_WITH_MIN_ROAS` + `roasAverageFloor` = Target ROAS, `LOWEST_COST_WITH_BID_CAP` + `bidAmount` = Maximize Clicks with a CPC ceiling; `portfolioBidStrategyId` attaches a portfolio strategy instead (exclusive with `bidStrategy`). Setting the standard triplet on a campaign that is currently on a PORTFOLIO strategy is rejected: detach it in Google Ads first, since it is shared across campaigns.  `accountId` forwards the update straight to Meta for a campaign with zero ads, which would otherwise 404; the response then carries `updated: 0`.
 
 ### Example
 
@@ -2115,6 +2311,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\UpdateAdStatus200Response**](../Model/UpdateAdStatus200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateBidStrategy()`
+
+```php
+updateBidStrategy($strategy_id, $update_bid_strategy_request): \Zernio\Model\UpdateBidStrategy200Response
+```
+
+Update a Google Ads portfolio bid strategy
+
+Renames or retargets a portfolio bid strategy. The strategy's status is output only on Google's side, so it cannot be changed here; remove a strategy in Google Ads. `type` is only needed alongside `targetCpa`/`targetRoas` to disambiguate the field Google writes to (TARGET_CPA and MAXIMIZE_CONVERSIONS both take a target CPA; TARGET_ROAS and MAXIMIZE_CONVERSION_VALUE both take a target ROAS); the strategy's family is otherwise immutable once created.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$strategy_id = 'strategy_id_example'; // string | Numeric Google Ads bid strategy id.
+$update_bid_strategy_request = new \Zernio\Model\UpdateBidStrategyRequest(); // \Zernio\Model\UpdateBidStrategyRequest
+
+try {
+    $result = $apiInstance->updateBidStrategy($strategy_id, $update_bid_strategy_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->updateBidStrategy: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **strategy_id** | **string**| Numeric Google Ads bid strategy id. | |
+| **update_bid_strategy_request** | [**\Zernio\Model\UpdateBidStrategyRequest**](../Model/UpdateBidStrategyRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateBidStrategy200Response**](../Model/UpdateBidStrategy200Response.md)
 
 ### Authorization
 

@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * UpdateAdRequestTargeting Class Doc Comment
  *
  * @category Class
- * @description Meta + TikTok (demographics/interests), Google (keyword edits only), and LinkedIn (geo countries). Pinterest / X return 501.
+ * @description Meta + TikTok (demographics/interests), Google (keyword and device bid adjustment edits only), and LinkedIn (geo countries). Pinterest / X return 501.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -61,6 +61,7 @@ class UpdateAdRequestTargeting implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $openAPITypes = [
         'keywords' => '\Zernio\Model\UpdateAdRequestTargetingKeywordsInner[]',
         'negative_keywords' => '\Zernio\Model\UpdateAdRequestTargetingKeywordsInner[]',
+        'devices' => '\Zernio\Model\UpdateAdRequestTargetingDevicesInner[]',
         'age_min' => 'int',
         'age_max' => 'int',
         'countries' => 'string[]',
@@ -78,6 +79,7 @@ class UpdateAdRequestTargeting implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $openAPIFormats = [
         'keywords' => null,
         'negative_keywords' => null,
+        'devices' => null,
         'age_min' => null,
         'age_max' => null,
         'countries' => null,
@@ -93,6 +95,7 @@ class UpdateAdRequestTargeting implements ModelInterface, ArrayAccess, \JsonSeri
     protected static array $openAPINullables = [
         'keywords' => false,
         'negative_keywords' => false,
+        'devices' => false,
         'age_min' => false,
         'age_max' => false,
         'countries' => false,
@@ -188,6 +191,7 @@ class UpdateAdRequestTargeting implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $attributeMap = [
         'keywords' => 'keywords',
         'negative_keywords' => 'negativeKeywords',
+        'devices' => 'devices',
         'age_min' => 'ageMin',
         'age_max' => 'ageMax',
         'countries' => 'countries',
@@ -203,6 +207,7 @@ class UpdateAdRequestTargeting implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $setters = [
         'keywords' => 'setKeywords',
         'negative_keywords' => 'setNegativeKeywords',
+        'devices' => 'setDevices',
         'age_min' => 'setAgeMin',
         'age_max' => 'setAgeMax',
         'countries' => 'setCountries',
@@ -218,6 +223,7 @@ class UpdateAdRequestTargeting implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $getters = [
         'keywords' => 'getKeywords',
         'negative_keywords' => 'getNegativeKeywords',
+        'devices' => 'getDevices',
         'age_min' => 'getAgeMin',
         'age_max' => 'getAgeMax',
         'countries' => 'getCountries',
@@ -299,6 +305,7 @@ class UpdateAdRequestTargeting implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $this->setIfExists('keywords', $data ?? [], null);
         $this->setIfExists('negative_keywords', $data ?? [], null);
+        $this->setIfExists('devices', $data ?? [], null);
         $this->setIfExists('age_min', $data ?? [], null);
         $this->setIfExists('age_max', $data ?? [], null);
         $this->setIfExists('countries', $data ?? [], null);
@@ -423,6 +430,33 @@ class UpdateAdRequestTargeting implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable negative_keywords cannot be null');
         }
         $this->container['negative_keywords'] = $negative_keywords;
+
+        return $this;
+    }
+
+    /**
+     * Gets devices
+     *
+     * @return \Zernio\Model\UpdateAdRequestTargetingDevicesInner[]|null
+     */
+    public function getDevices()
+    {
+        return $this->container['devices'];
+    }
+
+    /**
+     * Sets devices
+     *
+     * @param \Zernio\Model\UpdateAdRequestTargetingDevicesInner[]|null $devices Google only. The FULL new set of device criteria for the campaign; devices not listed are excluded. Entries are a device name alone (included, no bid adjustment) or { device, bidModifier }.
+     *
+     * @return self
+     */
+    public function setDevices($devices)
+    {
+        if (is_null($devices)) {
+            throw new \InvalidArgumentException('non-nullable devices cannot be null');
+        }
+        $this->container['devices'] = $devices;
 
         return $this;
     }

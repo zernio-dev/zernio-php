@@ -68,7 +68,8 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'status' => 'string',
         'bid_strategy' => 'string',
         'bid_amount' => 'float',
-        'roas_average_floor' => 'float'
+        'roas_average_floor' => 'float',
+        'portfolio_bid_strategy_id' => 'string'
     ];
 
     /**
@@ -89,7 +90,8 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'status' => null,
         'bid_strategy' => null,
         'bid_amount' => null,
-        'roas_average_floor' => null
+        'roas_average_floor' => null,
+        'portfolio_bid_strategy_id' => null
     ];
 
     /**
@@ -108,7 +110,8 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'status' => false,
         'bid_strategy' => false,
         'bid_amount' => false,
-        'roas_average_floor' => false
+        'roas_average_floor' => false,
+        'portfolio_bid_strategy_id' => false
     ];
 
     /**
@@ -207,7 +210,8 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'status' => 'status',
         'bid_strategy' => 'bidStrategy',
         'bid_amount' => 'bidAmount',
-        'roas_average_floor' => 'roasAverageFloor'
+        'roas_average_floor' => 'roasAverageFloor',
+        'portfolio_bid_strategy_id' => 'portfolioBidStrategyId'
     ];
 
     /**
@@ -226,7 +230,8 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'status' => 'setStatus',
         'bid_strategy' => 'setBidStrategy',
         'bid_amount' => 'setBidAmount',
-        'roas_average_floor' => 'setRoasAverageFloor'
+        'roas_average_floor' => 'setRoasAverageFloor',
+        'portfolio_bid_strategy_id' => 'setPortfolioBidStrategyId'
     ];
 
     /**
@@ -245,7 +250,8 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'status' => 'getStatus',
         'bid_strategy' => 'getBidStrategy',
         'bid_amount' => 'getBidAmount',
-        'roas_average_floor' => 'getRoasAverageFloor'
+        'roas_average_floor' => 'getRoasAverageFloor',
+        'portfolio_bid_strategy_id' => 'getPortfolioBidStrategyId'
     ];
 
     /**
@@ -421,6 +427,7 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('bid_strategy', $data ?? [], null);
         $this->setIfExists('bid_amount', $data ?? [], null);
         $this->setIfExists('roas_average_floor', $data ?? [], null);
+        $this->setIfExists('portfolio_bid_strategy_id', $data ?? [], null);
     }
 
     /**
@@ -500,6 +507,10 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
                 $this->container['bid_strategy'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['portfolio_bid_strategy_id']) && !preg_match("/^\\d+$/", $this->container['portfolio_bid_strategy_id'])) {
+            $invalidProperties[] = "invalid value for 'portfolio_bid_strategy_id', must be conform to the pattern /^\\d+$/.";
         }
 
         return $invalidProperties;
@@ -789,7 +800,7 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets bid_strategy
      *
-     * @param string|null $bid_strategy Campaign bid strategy. Meta stores `bid_strategy` alongside the budget, so this REQUIRES `budgetAmount` + `budgetType` on the same request; sending it without a campaign budget is a 400. A campaign carrying a strategy without its `bid_amount` makes every ad set created under it fail with an error that names the ad set (code 100, subcode 1815857), so the bad state is rejected up front rather than accepted. To bid at ad-set level, set the strategy there instead.
+     * @param string|null $bid_strategy Campaign bid strategy. Meta stores `bid_strategy` alongside the budget, so this REQUIRES `budgetAmount` + `budgetType` on the same request; sending it without a campaign budget is a 400. A campaign carrying a strategy without its `bid_amount` makes every ad set created under it fail with an error that names the ad set (code 100, subcode 1815857), so the bad state is rejected up front rather than accepted. To bid at ad-set level on Meta, set the strategy there instead. On Google: LOWEST_COST_WITHOUT_CAP = Maximize Conversions, COST_CAP + bidAmount = Target CPA, LOWEST_COST_WITH_MIN_ROAS + roasAverageFloor = Target ROAS, LOWEST_COST_WITH_BID_CAP + bidAmount = Maximize Clicks with a CPC ceiling; portfolioBidStrategyId attaches a portfolio strategy instead.
      *
      * @return self
      */
@@ -826,7 +837,7 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets bid_amount
      *
-     * @param float|null $bid_amount Whole currency units (USD: 5 = $5.00). Required for LOWEST_COST_WITH_BID_CAP and COST_CAP; ignored otherwise. Validated here but NOT stored by Meta: the campaign object has no bid_amount field, only bid_strategy lives on it. The amount takes effect once an ad set joins this campaign (existingCampaignId on POST /v1/ads/create) and supplies its own bidAmount there.
+     * @param float|null $bid_amount Whole currency units (USD: 5 = $5.00). Required for LOWEST_COST_WITH_BID_CAP and COST_CAP; ignored otherwise. On Meta, validated here but NOT stored: the campaign object has no bid_amount field, only bid_strategy lives on it, and the amount takes effect once an ad set joins this campaign (existingCampaignId on POST /v1/ads/create) and supplies its own bidAmount there. On Google, stored directly on the campaign's bidding strategy.
      *
      * @return self
      */
@@ -863,6 +874,38 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable roas_average_floor cannot be null');
         }
         $this->container['roas_average_floor'] = $roas_average_floor;
+
+        return $this;
+    }
+
+    /**
+     * Gets portfolio_bid_strategy_id
+     *
+     * @return string|null
+     */
+    public function getPortfolioBidStrategyId()
+    {
+        return $this->container['portfolio_bid_strategy_id'];
+    }
+
+    /**
+     * Sets portfolio_bid_strategy_id
+     *
+     * @param string|null $portfolio_bid_strategy_id Google only. Attach an existing portfolio bid strategy (numeric id from GET /v1/ads/bid-strategies) to the new campaign instead of a standard one. Exclusive with bidStrategy.
+     *
+     * @return self
+     */
+    public function setPortfolioBidStrategyId($portfolio_bid_strategy_id)
+    {
+        if (is_null($portfolio_bid_strategy_id)) {
+            throw new \InvalidArgumentException('non-nullable portfolio_bid_strategy_id cannot be null');
+        }
+
+        if ((!preg_match("/^\\d+$/", ObjectSerializer::toString($portfolio_bid_strategy_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$portfolio_bid_strategy_id when calling CreateAdCampaignRequest., must conform to the pattern /^\\d+$/.");
+        }
+
+        $this->container['portfolio_bid_strategy_id'] = $portfolio_bid_strategy_id;
 
         return $this;
     }

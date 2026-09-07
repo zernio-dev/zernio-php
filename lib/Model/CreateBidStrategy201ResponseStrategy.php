@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateAdCampaign200Response
+ * CreateBidStrategy201ResponseStrategy
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UpdateAdCampaign200Response Class Doc Comment
+ * CreateBidStrategy201ResponseStrategy Class Doc Comment
  *
  * @category Class
- * @description Echoes back only the fields you sent, plus &#x60;updated&#x60;.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateBidStrategy201ResponseStrategy implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updateAdCampaign_200_response';
+    protected static $openAPIModelName = 'createBidStrategy_201_response_strategy';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,14 +58,9 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'updated' => 'int',
-        'budget' => '\Zernio\Model\AdBudget',
-        'budget_level' => 'string',
-        'bid_strategy' => '\Zernio\Model\BidStrategy',
-        'bid_amount' => 'float',
-        'roas_average_floor' => 'float',
-        'portfolio_bid_strategy_id' => 'string',
-        'platform_specific_data' => 'object'
+        'customer_id' => 'string',
+        'id' => 'string',
+        'resource_name' => 'string'
     ];
 
     /**
@@ -77,14 +71,9 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'updated' => null,
-        'budget' => null,
-        'budget_level' => null,
-        'bid_strategy' => null,
-        'bid_amount' => null,
-        'roas_average_floor' => null,
-        'portfolio_bid_strategy_id' => null,
-        'platform_specific_data' => null
+        'customer_id' => null,
+        'id' => null,
+        'resource_name' => null
     ];
 
     /**
@@ -93,14 +82,9 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'updated' => false,
-        'budget' => false,
-        'budget_level' => false,
-        'bid_strategy' => false,
-        'bid_amount' => false,
-        'roas_average_floor' => false,
-        'portfolio_bid_strategy_id' => false,
-        'platform_specific_data' => false
+        'customer_id' => false,
+        'id' => false,
+        'resource_name' => false
     ];
 
     /**
@@ -189,14 +173,9 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'updated' => 'updated',
-        'budget' => 'budget',
-        'budget_level' => 'budgetLevel',
-        'bid_strategy' => 'bidStrategy',
-        'bid_amount' => 'bidAmount',
-        'roas_average_floor' => 'roasAverageFloor',
-        'portfolio_bid_strategy_id' => 'portfolioBidStrategyId',
-        'platform_specific_data' => 'platformSpecificData'
+        'customer_id' => 'customerId',
+        'id' => 'id',
+        'resource_name' => 'resourceName'
     ];
 
     /**
@@ -205,14 +184,9 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'updated' => 'setUpdated',
-        'budget' => 'setBudget',
-        'budget_level' => 'setBudgetLevel',
-        'bid_strategy' => 'setBidStrategy',
-        'bid_amount' => 'setBidAmount',
-        'roas_average_floor' => 'setRoasAverageFloor',
-        'portfolio_bid_strategy_id' => 'setPortfolioBidStrategyId',
-        'platform_specific_data' => 'setPlatformSpecificData'
+        'customer_id' => 'setCustomerId',
+        'id' => 'setId',
+        'resource_name' => 'setResourceName'
     ];
 
     /**
@@ -221,14 +195,9 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'updated' => 'getUpdated',
-        'budget' => 'getBudget',
-        'budget_level' => 'getBudgetLevel',
-        'bid_strategy' => 'getBidStrategy',
-        'bid_amount' => 'getBidAmount',
-        'roas_average_floor' => 'getRoasAverageFloor',
-        'portfolio_bid_strategy_id' => 'getPortfolioBidStrategyId',
-        'platform_specific_data' => 'getPlatformSpecificData'
+        'customer_id' => 'getCustomerId',
+        'id' => 'getId',
+        'resource_name' => 'getResourceName'
     ];
 
     /**
@@ -272,19 +241,6 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
-    public const BUDGET_LEVEL_CAMPAIGN = 'campaign';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getBudgetLevelAllowableValues()
-    {
-        return [
-            self::BUDGET_LEVEL_CAMPAIGN,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -301,14 +257,9 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('updated', $data ?? [], null);
-        $this->setIfExists('budget', $data ?? [], null);
-        $this->setIfExists('budget_level', $data ?? [], null);
-        $this->setIfExists('bid_strategy', $data ?? [], null);
-        $this->setIfExists('bid_amount', $data ?? [], null);
-        $this->setIfExists('roas_average_floor', $data ?? [], null);
-        $this->setIfExists('portfolio_bid_strategy_id', $data ?? [], null);
-        $this->setIfExists('platform_specific_data', $data ?? [], null);
+        $this->setIfExists('customer_id', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('resource_name', $data ?? [], null);
     }
 
     /**
@@ -338,15 +289,6 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getBudgetLevelAllowableValues();
-        if (!is_null($this->container['budget_level']) && !in_array($this->container['budget_level'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'budget_level', must be one of '%s'",
-                $this->container['budget_level'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -363,227 +305,82 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets updated
-     *
-     * @return int|null
-     */
-    public function getUpdated()
-    {
-        return $this->container['updated'];
-    }
-
-    /**
-     * Sets updated
-     *
-     * @param int|null $updated Local Ad documents mirrored. 0 on the empty-campaign path.
-     *
-     * @return self
-     */
-    public function setUpdated($updated)
-    {
-        if (is_null($updated)) {
-            throw new \InvalidArgumentException('non-nullable updated cannot be null');
-        }
-        $this->container['updated'] = $updated;
-
-        return $this;
-    }
-
-    /**
-     * Gets budget
-     *
-     * @return \Zernio\Model\AdBudget|null
-     */
-    public function getBudget()
-    {
-        return $this->container['budget'];
-    }
-
-    /**
-     * Sets budget
-     *
-     * @param \Zernio\Model\AdBudget|null $budget budget
-     *
-     * @return self
-     */
-    public function setBudget($budget)
-    {
-        if (is_null($budget)) {
-            throw new \InvalidArgumentException('non-nullable budget cannot be null');
-        }
-        $this->container['budget'] = $budget;
-
-        return $this;
-    }
-
-    /**
-     * Gets budget_level
+     * Gets customer_id
      *
      * @return string|null
      */
-    public function getBudgetLevel()
+    public function getCustomerId()
     {
-        return $this->container['budget_level'];
+        return $this->container['customer_id'];
     }
 
     /**
-     * Sets budget_level
+     * Sets customer_id
      *
-     * @param string|null $budget_level budget_level
+     * @param string|null $customer_id customer_id
      *
      * @return self
      */
-    public function setBudgetLevel($budget_level)
+    public function setCustomerId($customer_id)
     {
-        if (is_null($budget_level)) {
-            throw new \InvalidArgumentException('non-nullable budget_level cannot be null');
+        if (is_null($customer_id)) {
+            throw new \InvalidArgumentException('non-nullable customer_id cannot be null');
         }
-        $allowedValues = $this->getBudgetLevelAllowableValues();
-        if (!in_array($budget_level, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'budget_level', must be one of '%s'",
-                    $budget_level,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['budget_level'] = $budget_level;
+        $this->container['customer_id'] = $customer_id;
 
         return $this;
     }
 
     /**
-     * Gets bid_strategy
-     *
-     * @return \Zernio\Model\BidStrategy|null
-     */
-    public function getBidStrategy()
-    {
-        return $this->container['bid_strategy'];
-    }
-
-    /**
-     * Sets bid_strategy
-     *
-     * @param \Zernio\Model\BidStrategy|null $bid_strategy bid_strategy
-     *
-     * @return self
-     */
-    public function setBidStrategy($bid_strategy)
-    {
-        if (is_null($bid_strategy)) {
-            throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
-        }
-        $this->container['bid_strategy'] = $bid_strategy;
-
-        return $this;
-    }
-
-    /**
-     * Gets bid_amount
-     *
-     * @return float|null
-     */
-    public function getBidAmount()
-    {
-        return $this->container['bid_amount'];
-    }
-
-    /**
-     * Sets bid_amount
-     *
-     * @param float|null $bid_amount bid_amount
-     *
-     * @return self
-     */
-    public function setBidAmount($bid_amount)
-    {
-        if (is_null($bid_amount)) {
-            throw new \InvalidArgumentException('non-nullable bid_amount cannot be null');
-        }
-        $this->container['bid_amount'] = $bid_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets roas_average_floor
-     *
-     * @return float|null
-     */
-    public function getRoasAverageFloor()
-    {
-        return $this->container['roas_average_floor'];
-    }
-
-    /**
-     * Sets roas_average_floor
-     *
-     * @param float|null $roas_average_floor roas_average_floor
-     *
-     * @return self
-     */
-    public function setRoasAverageFloor($roas_average_floor)
-    {
-        if (is_null($roas_average_floor)) {
-            throw new \InvalidArgumentException('non-nullable roas_average_floor cannot be null');
-        }
-        $this->container['roas_average_floor'] = $roas_average_floor;
-
-        return $this;
-    }
-
-    /**
-     * Gets portfolio_bid_strategy_id
+     * Gets id
      *
      * @return string|null
      */
-    public function getPortfolioBidStrategyId()
+    public function getId()
     {
-        return $this->container['portfolio_bid_strategy_id'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets portfolio_bid_strategy_id
+     * Sets id
      *
-     * @param string|null $portfolio_bid_strategy_id Google only. Echoed back, but NOT mirrored onto local Ad documents (no column for it yet).
+     * @param string|null $id Numeric bid strategy id; pass as portfolioBidStrategyId or in the {strategyId} path.
      *
      * @return self
      */
-    public function setPortfolioBidStrategyId($portfolio_bid_strategy_id)
+    public function setId($id)
     {
-        if (is_null($portfolio_bid_strategy_id)) {
-            throw new \InvalidArgumentException('non-nullable portfolio_bid_strategy_id cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['portfolio_bid_strategy_id'] = $portfolio_bid_strategy_id;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets platform_specific_data
+     * Gets resource_name
      *
-     * @return object|null
+     * @return string|null
      */
-    public function getPlatformSpecificData()
+    public function getResourceName()
     {
-        return $this->container['platform_specific_data'];
+        return $this->container['resource_name'];
     }
 
     /**
-     * Sets platform_specific_data
+     * Sets resource_name
      *
-     * @param object|null $platform_specific_data platform_specific_data
+     * @param string|null $resource_name resource_name
      *
      * @return self
      */
-    public function setPlatformSpecificData($platform_specific_data)
+    public function setResourceName($resource_name)
     {
-        if (is_null($platform_specific_data)) {
-            throw new \InvalidArgumentException('non-nullable platform_specific_data cannot be null');
+        if (is_null($resource_name)) {
+            throw new \InvalidArgumentException('non-nullable resource_name cannot be null');
         }
-        $this->container['platform_specific_data'] = $platform_specific_data;
+        $this->container['resource_name'] = $resource_name;
 
         return $this;
     }

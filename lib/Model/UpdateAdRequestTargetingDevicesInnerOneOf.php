@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateAdCampaign200Response
+ * UpdateAdRequestTargetingDevicesInnerOneOf
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UpdateAdCampaign200Response Class Doc Comment
+ * UpdateAdRequestTargetingDevicesInnerOneOf Class Doc Comment
  *
  * @category Class
- * @description Echoes back only the fields you sent, plus &#x60;updated&#x60;.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateAdRequestTargetingDevicesInnerOneOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updateAdCampaign_200_response';
+    protected static $openAPIModelName = 'updateAd_request_targeting_devices_inner_oneOf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,14 +58,8 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'updated' => 'int',
-        'budget' => '\Zernio\Model\AdBudget',
-        'budget_level' => 'string',
-        'bid_strategy' => '\Zernio\Model\BidStrategy',
-        'bid_amount' => 'float',
-        'roas_average_floor' => 'float',
-        'portfolio_bid_strategy_id' => 'string',
-        'platform_specific_data' => 'object'
+        'device' => 'string',
+        'bid_modifier' => 'float'
     ];
 
     /**
@@ -77,14 +70,8 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'updated' => null,
-        'budget' => null,
-        'budget_level' => null,
-        'bid_strategy' => null,
-        'bid_amount' => null,
-        'roas_average_floor' => null,
-        'portfolio_bid_strategy_id' => null,
-        'platform_specific_data' => null
+        'device' => null,
+        'bid_modifier' => null
     ];
 
     /**
@@ -93,14 +80,8 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'updated' => false,
-        'budget' => false,
-        'budget_level' => false,
-        'bid_strategy' => false,
-        'bid_amount' => false,
-        'roas_average_floor' => false,
-        'portfolio_bid_strategy_id' => false,
-        'platform_specific_data' => false
+        'device' => false,
+        'bid_modifier' => false
     ];
 
     /**
@@ -189,14 +170,8 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'updated' => 'updated',
-        'budget' => 'budget',
-        'budget_level' => 'budgetLevel',
-        'bid_strategy' => 'bidStrategy',
-        'bid_amount' => 'bidAmount',
-        'roas_average_floor' => 'roasAverageFloor',
-        'portfolio_bid_strategy_id' => 'portfolioBidStrategyId',
-        'platform_specific_data' => 'platformSpecificData'
+        'device' => 'device',
+        'bid_modifier' => 'bidModifier'
     ];
 
     /**
@@ -205,14 +180,8 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'updated' => 'setUpdated',
-        'budget' => 'setBudget',
-        'budget_level' => 'setBudgetLevel',
-        'bid_strategy' => 'setBidStrategy',
-        'bid_amount' => 'setBidAmount',
-        'roas_average_floor' => 'setRoasAverageFloor',
-        'portfolio_bid_strategy_id' => 'setPortfolioBidStrategyId',
-        'platform_specific_data' => 'setPlatformSpecificData'
+        'device' => 'setDevice',
+        'bid_modifier' => 'setBidModifier'
     ];
 
     /**
@@ -221,14 +190,8 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'updated' => 'getUpdated',
-        'budget' => 'getBudget',
-        'budget_level' => 'getBudgetLevel',
-        'bid_strategy' => 'getBidStrategy',
-        'bid_amount' => 'getBidAmount',
-        'roas_average_floor' => 'getRoasAverageFloor',
-        'portfolio_bid_strategy_id' => 'getPortfolioBidStrategyId',
-        'platform_specific_data' => 'getPlatformSpecificData'
+        'device' => 'getDevice',
+        'bid_modifier' => 'getBidModifier'
     ];
 
     /**
@@ -272,17 +235,23 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
-    public const BUDGET_LEVEL_CAMPAIGN = 'campaign';
+    public const DEVICE_MOBILE = 'MOBILE';
+    public const DEVICE_DESKTOP = 'DESKTOP';
+    public const DEVICE_TABLET = 'TABLET';
+    public const DEVICE_CONNECTED_TV = 'CONNECTED_TV';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getBudgetLevelAllowableValues()
+    public function getDeviceAllowableValues()
     {
         return [
-            self::BUDGET_LEVEL_CAMPAIGN,
+            self::DEVICE_MOBILE,
+            self::DEVICE_DESKTOP,
+            self::DEVICE_TABLET,
+            self::DEVICE_CONNECTED_TV,
         ];
     }
 
@@ -301,14 +270,8 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('updated', $data ?? [], null);
-        $this->setIfExists('budget', $data ?? [], null);
-        $this->setIfExists('budget_level', $data ?? [], null);
-        $this->setIfExists('bid_strategy', $data ?? [], null);
-        $this->setIfExists('bid_amount', $data ?? [], null);
-        $this->setIfExists('roas_average_floor', $data ?? [], null);
-        $this->setIfExists('portfolio_bid_strategy_id', $data ?? [], null);
-        $this->setIfExists('platform_specific_data', $data ?? [], null);
+        $this->setIfExists('device', $data ?? [], null);
+        $this->setIfExists('bid_modifier', $data ?? [], null);
     }
 
     /**
@@ -338,13 +301,24 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getBudgetLevelAllowableValues();
-        if (!is_null($this->container['budget_level']) && !in_array($this->container['budget_level'], $allowedValues, true)) {
+        if ($this->container['device'] === null) {
+            $invalidProperties[] = "'device' can't be null";
+        }
+        $allowedValues = $this->getDeviceAllowableValues();
+        if (!is_null($this->container['device']) && !in_array($this->container['device'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'budget_level', must be one of '%s'",
-                $this->container['budget_level'],
+                "invalid value '%s' for 'device', must be one of '%s'",
+                $this->container['device'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['bid_modifier']) && ($this->container['bid_modifier'] > 10)) {
+            $invalidProperties[] = "invalid value for 'bid_modifier', must be smaller than or equal to 10.";
+        }
+
+        if (!is_null($this->container['bid_modifier']) && ($this->container['bid_modifier'] < 0.1)) {
+            $invalidProperties[] = "invalid value for 'bid_modifier', must be bigger than or equal to 0.1.";
         }
 
         return $invalidProperties;
@@ -363,227 +337,73 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets updated
+     * Gets device
      *
-     * @return int|null
+     * @return string
      */
-    public function getUpdated()
+    public function getDevice()
     {
-        return $this->container['updated'];
+        return $this->container['device'];
     }
 
     /**
-     * Sets updated
+     * Sets device
      *
-     * @param int|null $updated Local Ad documents mirrored. 0 on the empty-campaign path.
+     * @param string $device device
      *
      * @return self
      */
-    public function setUpdated($updated)
+    public function setDevice($device)
     {
-        if (is_null($updated)) {
-            throw new \InvalidArgumentException('non-nullable updated cannot be null');
+        if (is_null($device)) {
+            throw new \InvalidArgumentException('non-nullable device cannot be null');
         }
-        $this->container['updated'] = $updated;
-
-        return $this;
-    }
-
-    /**
-     * Gets budget
-     *
-     * @return \Zernio\Model\AdBudget|null
-     */
-    public function getBudget()
-    {
-        return $this->container['budget'];
-    }
-
-    /**
-     * Sets budget
-     *
-     * @param \Zernio\Model\AdBudget|null $budget budget
-     *
-     * @return self
-     */
-    public function setBudget($budget)
-    {
-        if (is_null($budget)) {
-            throw new \InvalidArgumentException('non-nullable budget cannot be null');
-        }
-        $this->container['budget'] = $budget;
-
-        return $this;
-    }
-
-    /**
-     * Gets budget_level
-     *
-     * @return string|null
-     */
-    public function getBudgetLevel()
-    {
-        return $this->container['budget_level'];
-    }
-
-    /**
-     * Sets budget_level
-     *
-     * @param string|null $budget_level budget_level
-     *
-     * @return self
-     */
-    public function setBudgetLevel($budget_level)
-    {
-        if (is_null($budget_level)) {
-            throw new \InvalidArgumentException('non-nullable budget_level cannot be null');
-        }
-        $allowedValues = $this->getBudgetLevelAllowableValues();
-        if (!in_array($budget_level, $allowedValues, true)) {
+        $allowedValues = $this->getDeviceAllowableValues();
+        if (!in_array($device, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'budget_level', must be one of '%s'",
-                    $budget_level,
+                    "Invalid value '%s' for 'device', must be one of '%s'",
+                    $device,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['budget_level'] = $budget_level;
+        $this->container['device'] = $device;
 
         return $this;
     }
 
     /**
-     * Gets bid_strategy
-     *
-     * @return \Zernio\Model\BidStrategy|null
-     */
-    public function getBidStrategy()
-    {
-        return $this->container['bid_strategy'];
-    }
-
-    /**
-     * Sets bid_strategy
-     *
-     * @param \Zernio\Model\BidStrategy|null $bid_strategy bid_strategy
-     *
-     * @return self
-     */
-    public function setBidStrategy($bid_strategy)
-    {
-        if (is_null($bid_strategy)) {
-            throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
-        }
-        $this->container['bid_strategy'] = $bid_strategy;
-
-        return $this;
-    }
-
-    /**
-     * Gets bid_amount
+     * Gets bid_modifier
      *
      * @return float|null
      */
-    public function getBidAmount()
+    public function getBidModifier()
     {
-        return $this->container['bid_amount'];
+        return $this->container['bid_modifier'];
     }
 
     /**
-     * Sets bid_amount
+     * Sets bid_modifier
      *
-     * @param float|null $bid_amount bid_amount
+     * @param float|null $bid_modifier Google device bid modifier, 0.1 to 10 (minus 90% to plus 900%). Omit a device to exclude it.
      *
      * @return self
      */
-    public function setBidAmount($bid_amount)
+    public function setBidModifier($bid_modifier)
     {
-        if (is_null($bid_amount)) {
-            throw new \InvalidArgumentException('non-nullable bid_amount cannot be null');
+        if (is_null($bid_modifier)) {
+            throw new \InvalidArgumentException('non-nullable bid_modifier cannot be null');
         }
-        $this->container['bid_amount'] = $bid_amount;
 
-        return $this;
-    }
-
-    /**
-     * Gets roas_average_floor
-     *
-     * @return float|null
-     */
-    public function getRoasAverageFloor()
-    {
-        return $this->container['roas_average_floor'];
-    }
-
-    /**
-     * Sets roas_average_floor
-     *
-     * @param float|null $roas_average_floor roas_average_floor
-     *
-     * @return self
-     */
-    public function setRoasAverageFloor($roas_average_floor)
-    {
-        if (is_null($roas_average_floor)) {
-            throw new \InvalidArgumentException('non-nullable roas_average_floor cannot be null');
+        if (($bid_modifier > 10)) {
+            throw new \InvalidArgumentException('invalid value for $bid_modifier when calling UpdateAdRequestTargetingDevicesInnerOneOf., must be smaller than or equal to 10.');
         }
-        $this->container['roas_average_floor'] = $roas_average_floor;
-
-        return $this;
-    }
-
-    /**
-     * Gets portfolio_bid_strategy_id
-     *
-     * @return string|null
-     */
-    public function getPortfolioBidStrategyId()
-    {
-        return $this->container['portfolio_bid_strategy_id'];
-    }
-
-    /**
-     * Sets portfolio_bid_strategy_id
-     *
-     * @param string|null $portfolio_bid_strategy_id Google only. Echoed back, but NOT mirrored onto local Ad documents (no column for it yet).
-     *
-     * @return self
-     */
-    public function setPortfolioBidStrategyId($portfolio_bid_strategy_id)
-    {
-        if (is_null($portfolio_bid_strategy_id)) {
-            throw new \InvalidArgumentException('non-nullable portfolio_bid_strategy_id cannot be null');
+        if (($bid_modifier < 0.1)) {
+            throw new \InvalidArgumentException('invalid value for $bid_modifier when calling UpdateAdRequestTargetingDevicesInnerOneOf., must be bigger than or equal to 0.1.');
         }
-        $this->container['portfolio_bid_strategy_id'] = $portfolio_bid_strategy_id;
 
-        return $this;
-    }
-
-    /**
-     * Gets platform_specific_data
-     *
-     * @return object|null
-     */
-    public function getPlatformSpecificData()
-    {
-        return $this->container['platform_specific_data'];
-    }
-
-    /**
-     * Sets platform_specific_data
-     *
-     * @param object|null $platform_specific_data platform_specific_data
-     *
-     * @return self
-     */
-    public function setPlatformSpecificData($platform_specific_data)
-    {
-        if (is_null($platform_specific_data)) {
-            throw new \InvalidArgumentException('non-nullable platform_specific_data cannot be null');
-        }
-        $this->container['platform_specific_data'] = $platform_specific_data;
+        $this->container['bid_modifier'] = $bid_modifier;
 
         return $this;
     }
