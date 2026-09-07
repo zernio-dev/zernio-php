@@ -1,10 +1,10 @@
-# # ListAdKeywords200Response
+# # RemoveAdKeyword200Response
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**keywords** | [**\Zernio\Model\AdKeyword[]**](AdKeyword.md) |  | [optional]
-**pagination** | [**\Zernio\Model\Pagination**](Pagination.md) |  | [optional]
+**removed** | **bool** | Always true on success | [optional]
+**keyword_id** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

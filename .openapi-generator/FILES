@@ -87,6 +87,8 @@ docs/Model/AdCreative.md
 docs/Model/AdDailyMetrics.md
 docs/Model/AdEngagementCounts.md
 docs/Model/AdFunnelCounts.md
+docs/Model/AdKeyword.md
+docs/Model/AdKeywordMetrics.md
 docs/Model/AdMetrics.md
 docs/Model/AdPromotedObject.md
 docs/Model/AdReviewStatus.md
@@ -102,6 +104,10 @@ docs/Model/AdTreeCampaignCampaignBudget.md
 docs/Model/AdTreeCampaignOptimizationGoal.md
 docs/Model/AdTreeCampaignPromotedObject.md
 docs/Model/AdTreeResponse.md
+docs/Model/AddAdKeywords201Response.md
+docs/Model/AddAdKeywordsRequest.md
+docs/Model/AddAdKeywordsRequestKeywordsInner.md
+docs/Model/AddAdKeywordsRequestKeywordsInnerAnyOf.md
 docs/Model/AddBroadcastRecipients200Response.md
 docs/Model/AddBroadcastRecipientsRequest.md
 docs/Model/AddConversionAssociations200Response.md
@@ -923,6 +929,7 @@ docs/Model/InstagramPlatformData.md
 docs/Model/InstagramPlatformDataAudioConfiguration.md
 docs/Model/InstagramPlatformDataTrialParams.md
 docs/Model/InstagramPlatformDataUserTagsInner.md
+docs/Model/KeywordEntry.md
 docs/Model/LikeInboxComment200Response.md
 docs/Model/LikeInboxCommentRequest.md
 docs/Model/LikePost200Response.md
@@ -972,7 +979,6 @@ docs/Model/ListAdCatalogs200ResponseCatalogsInner.md
 docs/Model/ListAdCreatives200Response.md
 docs/Model/ListAdImages200Response.md
 docs/Model/ListAdKeywords200Response.md
-docs/Model/ListAdKeywords200ResponseKeywordsInner.md
 docs/Model/ListAdLabels200Response.md
 docs/Model/ListAdStudies200Response.md
 docs/Model/ListAdVideos200Response.md
@@ -988,6 +994,8 @@ docs/Model/ListBroadcasts200Response.md
 docs/Model/ListBroadcasts200ResponseBroadcastsInner.md
 docs/Model/ListCalls200Response.md
 docs/Model/ListCalls200ResponseCallsInner.md
+docs/Model/ListCampaignNegativeKeywords200Response.md
+docs/Model/ListCampaignNegativeKeywords200ResponseKeywordsInner.md
 docs/Model/ListCommentAutomationLogs200Response.md
 docs/Model/ListCommentAutomationLogs200ResponseMisses.md
 docs/Model/ListCommentAutomationLogs200ResponseMissesSamplesInner.md
@@ -1242,6 +1250,7 @@ docs/Model/RemediatePhoneNumber200ResponsePhoneNumber.md
 docs/Model/RemediatePhoneNumberRequest.md
 docs/Model/RemediatePhoneNumberRequestDocumentsInner.md
 docs/Model/RemediatePhoneNumberRequestDocumentsInnerOneOf.md
+docs/Model/RemoveAdKeyword200Response.md
 docs/Model/RemoveBookmark200Response.md
 docs/Model/RemoveConversionAssociations200Response.md
 docs/Model/RemoveDiscordMemberRole200Response.md
@@ -1250,6 +1259,8 @@ docs/Model/RemoveWhatsAppGroupParticipantsRequest.md
 docs/Model/ReplaceAdAudienceCompanies200Response.md
 docs/Model/ReplaceAdAudienceCompaniesRequest.md
 docs/Model/ReplaceAdAudienceCompaniesRequestCompaniesInner.md
+docs/Model/ReplaceCampaignNegativeKeywords200Response.md
+docs/Model/ReplaceCampaignNegativeKeywordsRequest.md
 docs/Model/ReplyToGoogleBusinessReview200Response.md
 docs/Model/ReplyToGoogleBusinessReviewRequest.md
 docs/Model/ReplyToInboxPost200Response.md
@@ -1503,6 +1514,8 @@ docs/Model/UpdateAdCampaignStatus200Response.md
 docs/Model/UpdateAdCampaignStatusRequest.md
 docs/Model/UpdateAdCreative200Response.md
 docs/Model/UpdateAdCreativeRequest.md
+docs/Model/UpdateAdKeyword200Response.md
+docs/Model/UpdateAdKeywordRequest.md
 docs/Model/UpdateAdRequest.md
 docs/Model/UpdateAdRequestBudget.md
 docs/Model/UpdateAdRequestCreative.md
@@ -1517,7 +1530,6 @@ docs/Model/UpdateAdSetRequestPlatformSpecificData.md
 docs/Model/UpdateAdSetRequestPlatformSpecificDataPromotedObject.md
 docs/Model/UpdateAdSetStatus200Response.md
 docs/Model/UpdateAdStatus200Response.md
-docs/Model/UpdateAdStatusRequest.md
 docs/Model/UpdateAdTrackingTagsRequest.md
 docs/Model/UpdateAdTrackingTagsRequestCreative.md
 docs/Model/UpdateAdTrackingTagsRequestUrlTagsInner.md
@@ -1937,6 +1949,8 @@ lib/Model/AdCreative.php
 lib/Model/AdDailyMetrics.php
 lib/Model/AdEngagementCounts.php
 lib/Model/AdFunnelCounts.php
+lib/Model/AdKeyword.php
+lib/Model/AdKeywordMetrics.php
 lib/Model/AdMetrics.php
 lib/Model/AdPromotedObject.php
 lib/Model/AdReviewStatus.php
@@ -1952,6 +1966,10 @@ lib/Model/AdTreeCampaignCampaignBudget.php
 lib/Model/AdTreeCampaignOptimizationGoal.php
 lib/Model/AdTreeCampaignPromotedObject.php
 lib/Model/AdTreeResponse.php
+lib/Model/AddAdKeywords201Response.php
+lib/Model/AddAdKeywordsRequest.php
+lib/Model/AddAdKeywordsRequestKeywordsInner.php
+lib/Model/AddAdKeywordsRequestKeywordsInnerAnyOf.php
 lib/Model/AddBroadcastRecipients200Response.php
 lib/Model/AddBroadcastRecipientsRequest.php
 lib/Model/AddConversionAssociations200Response.php
@@ -2773,6 +2791,7 @@ lib/Model/InstagramPlatformData.php
 lib/Model/InstagramPlatformDataAudioConfiguration.php
 lib/Model/InstagramPlatformDataTrialParams.php
 lib/Model/InstagramPlatformDataUserTagsInner.php
+lib/Model/KeywordEntry.php
 lib/Model/LikeInboxComment200Response.php
 lib/Model/LikeInboxCommentRequest.php
 lib/Model/LikePost200Response.php
@@ -2822,7 +2841,6 @@ lib/Model/ListAdCatalogs200ResponseCatalogsInner.php
 lib/Model/ListAdCreatives200Response.php
 lib/Model/ListAdImages200Response.php
 lib/Model/ListAdKeywords200Response.php
-lib/Model/ListAdKeywords200ResponseKeywordsInner.php
 lib/Model/ListAdLabels200Response.php
 lib/Model/ListAdStudies200Response.php
 lib/Model/ListAdVideos200Response.php
@@ -2838,6 +2856,8 @@ lib/Model/ListBroadcasts200Response.php
 lib/Model/ListBroadcasts200ResponseBroadcastsInner.php
 lib/Model/ListCalls200Response.php
 lib/Model/ListCalls200ResponseCallsInner.php
+lib/Model/ListCampaignNegativeKeywords200Response.php
+lib/Model/ListCampaignNegativeKeywords200ResponseKeywordsInner.php
 lib/Model/ListCommentAutomationLogs200Response.php
 lib/Model/ListCommentAutomationLogs200ResponseMisses.php
 lib/Model/ListCommentAutomationLogs200ResponseMissesSamplesInner.php
@@ -3093,6 +3113,7 @@ lib/Model/RemediatePhoneNumber200ResponsePhoneNumber.php
 lib/Model/RemediatePhoneNumberRequest.php
 lib/Model/RemediatePhoneNumberRequestDocumentsInner.php
 lib/Model/RemediatePhoneNumberRequestDocumentsInnerOneOf.php
+lib/Model/RemoveAdKeyword200Response.php
 lib/Model/RemoveBookmark200Response.php
 lib/Model/RemoveConversionAssociations200Response.php
 lib/Model/RemoveDiscordMemberRole200Response.php
@@ -3101,6 +3122,8 @@ lib/Model/RemoveWhatsAppGroupParticipantsRequest.php
 lib/Model/ReplaceAdAudienceCompanies200Response.php
 lib/Model/ReplaceAdAudienceCompaniesRequest.php
 lib/Model/ReplaceAdAudienceCompaniesRequestCompaniesInner.php
+lib/Model/ReplaceCampaignNegativeKeywords200Response.php
+lib/Model/ReplaceCampaignNegativeKeywordsRequest.php
 lib/Model/ReplyToGoogleBusinessReview200Response.php
 lib/Model/ReplyToGoogleBusinessReviewRequest.php
 lib/Model/ReplyToInboxPost200Response.php
@@ -3354,6 +3377,8 @@ lib/Model/UpdateAdCampaignStatus200Response.php
 lib/Model/UpdateAdCampaignStatusRequest.php
 lib/Model/UpdateAdCreative200Response.php
 lib/Model/UpdateAdCreativeRequest.php
+lib/Model/UpdateAdKeyword200Response.php
+lib/Model/UpdateAdKeywordRequest.php
 lib/Model/UpdateAdRequest.php
 lib/Model/UpdateAdRequestBudget.php
 lib/Model/UpdateAdRequestCreative.php
@@ -3368,7 +3393,6 @@ lib/Model/UpdateAdSetRequestPlatformSpecificData.php
 lib/Model/UpdateAdSetRequestPlatformSpecificDataPromotedObject.php
 lib/Model/UpdateAdSetStatus200Response.php
 lib/Model/UpdateAdStatus200Response.php
-lib/Model/UpdateAdStatusRequest.php
 lib/Model/UpdateAdTrackingTagsRequest.php
 lib/Model/UpdateAdTrackingTagsRequestCreative.php
 lib/Model/UpdateAdTrackingTagsRequestUrlTagsInner.php
@@ -3701,3 +3725,17 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AdKeywordMetricsTest.php
+test/Model/AdKeywordTest.php
+test/Model/AddAdKeywords201ResponseTest.php
+test/Model/AddAdKeywordsRequestKeywordsInnerAnyOfTest.php
+test/Model/AddAdKeywordsRequestKeywordsInnerTest.php
+test/Model/AddAdKeywordsRequestTest.php
+test/Model/KeywordEntryTest.php
+test/Model/ListCampaignNegativeKeywords200ResponseKeywordsInnerTest.php
+test/Model/ListCampaignNegativeKeywords200ResponseTest.php
+test/Model/RemoveAdKeyword200ResponseTest.php
+test/Model/ReplaceCampaignNegativeKeywords200ResponseTest.php
+test/Model/ReplaceCampaignNegativeKeywordsRequestTest.php
+test/Model/UpdateAdKeyword200ResponseTest.php
+test/Model/UpdateAdKeywordRequestTest.php

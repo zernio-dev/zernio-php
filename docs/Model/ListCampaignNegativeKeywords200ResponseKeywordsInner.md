@@ -1,10 +1,11 @@
-# # ListAdKeywords200Response
+# # ListCampaignNegativeKeywords200ResponseKeywordsInner
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**keywords** | [**\Zernio\Model\AdKeyword[]**](AdKeyword.md) |  | [optional]
-**pagination** | [**\Zernio\Model\Pagination**](Pagination.md) |  | [optional]
+**criterion_id** | **string** |  | [optional]
+**text** | **string** |  | [optional]
+**match_type** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

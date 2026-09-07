@@ -1,6 +1,6 @@
 <?php
 /**
- * ListAdKeywords200Response
+ * KeywordEntry
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ListAdKeywords200Response Class Doc Comment
+ * KeywordEntry Class Doc Comment
  *
  * @category Class
+ * @description A Google Search keyword: a bare string (BROAD match), or an object naming the match type.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class KeywordEntry implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'listAdKeywords_200_response';
+    protected static $openAPIModelName = 'KeywordEntry';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,8 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'keywords' => '\Zernio\Model\AdKeyword[]',
-        'pagination' => '\Zernio\Model\Pagination'
+        'text' => 'string',
+        'match_type' => 'string'
     ];
 
     /**
@@ -70,8 +71,8 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'keywords' => null,
-        'pagination' => null
+        'text' => null,
+        'match_type' => null
     ];
 
     /**
@@ -80,8 +81,8 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'keywords' => false,
-        'pagination' => false
+        'text' => false,
+        'match_type' => false
     ];
 
     /**
@@ -170,8 +171,8 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'keywords' => 'keywords',
-        'pagination' => 'pagination'
+        'text' => 'text',
+        'match_type' => 'matchType'
     ];
 
     /**
@@ -180,8 +181,8 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'keywords' => 'setKeywords',
-        'pagination' => 'setPagination'
+        'text' => 'setText',
+        'match_type' => 'setMatchType'
     ];
 
     /**
@@ -190,8 +191,8 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'keywords' => 'getKeywords',
-        'pagination' => 'getPagination'
+        'text' => 'getText',
+        'match_type' => 'getMatchType'
     ];
 
     /**
@@ -235,6 +236,23 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
+    public const MATCH_TYPE_EXACT = 'exact';
+    public const MATCH_TYPE_PHRASE = 'phrase';
+    public const MATCH_TYPE_BROAD = 'broad';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMatchTypeAllowableValues()
+    {
+        return [
+            self::MATCH_TYPE_EXACT,
+            self::MATCH_TYPE_PHRASE,
+            self::MATCH_TYPE_BROAD,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -251,8 +269,8 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('keywords', $data ?? [], null);
-        $this->setIfExists('pagination', $data ?? [], null);
+        $this->setIfExists('text', $data ?? [], null);
+        $this->setIfExists('match_type', $data ?? [], null);
     }
 
     /**
@@ -282,6 +300,26 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
+        if ($this->container['text'] === null) {
+            $invalidProperties[] = "'text' can't be null";
+        }
+        if ((mb_strlen($this->container['text']) > 80)) {
+            $invalidProperties[] = "invalid value for 'text', the character length must be smaller than or equal to 80.";
+        }
+
+        if ((mb_strlen($this->container['text']) < 1)) {
+            $invalidProperties[] = "invalid value for 'text', the character length must be bigger than or equal to 1.";
+        }
+
+        $allowedValues = $this->getMatchTypeAllowableValues();
+        if (!is_null($this->container['match_type']) && !in_array($this->container['match_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'match_type', must be one of '%s'",
+                $this->container['match_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -298,55 +336,72 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets keywords
+     * Gets text
      *
-     * @return \Zernio\Model\AdKeyword[]|null
+     * @return string
      */
-    public function getKeywords()
+    public function getText()
     {
-        return $this->container['keywords'];
+        return $this->container['text'];
     }
 
     /**
-     * Sets keywords
+     * Sets text
      *
-     * @param \Zernio\Model\AdKeyword[]|null $keywords keywords
+     * @param string $text text
      *
      * @return self
      */
-    public function setKeywords($keywords)
+    public function setText($text)
     {
-        if (is_null($keywords)) {
-            throw new \InvalidArgumentException('non-nullable keywords cannot be null');
+        if (is_null($text)) {
+            throw new \InvalidArgumentException('non-nullable text cannot be null');
         }
-        $this->container['keywords'] = $keywords;
+        if ((mb_strlen($text) > 80)) {
+            throw new \InvalidArgumentException('invalid length for $text when calling KeywordEntry., must be smaller than or equal to 80.');
+        }
+        if ((mb_strlen($text) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $text when calling KeywordEntry., must be bigger than or equal to 1.');
+        }
+
+        $this->container['text'] = $text;
 
         return $this;
     }
 
     /**
-     * Gets pagination
+     * Gets match_type
      *
-     * @return \Zernio\Model\Pagination|null
+     * @return string|null
      */
-    public function getPagination()
+    public function getMatchType()
     {
-        return $this->container['pagination'];
+        return $this->container['match_type'];
     }
 
     /**
-     * Sets pagination
+     * Sets match_type
      *
-     * @param \Zernio\Model\Pagination|null $pagination pagination
+     * @param string|null $match_type match_type
      *
      * @return self
      */
-    public function setPagination($pagination)
+    public function setMatchType($match_type)
     {
-        if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+        if (is_null($match_type)) {
+            throw new \InvalidArgumentException('non-nullable match_type cannot be null');
         }
-        $this->container['pagination'] = $pagination;
+        $allowedValues = $this->getMatchTypeAllowableValues();
+        if (!in_array($match_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'match_type', must be one of '%s'",
+                    $match_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['match_type'] = $match_type;
 
         return $this;
     }

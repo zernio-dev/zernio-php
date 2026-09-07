@@ -1,6 +1,6 @@
 <?php
 /**
- * ListAdKeywords200Response
+ * AddAdKeywordsRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ListAdKeywords200Response Class Doc Comment
+ * AddAdKeywordsRequest Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class AddAdKeywordsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'listAdKeywords_200_response';
+    protected static $openAPIModelName = 'addAdKeywords_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,10 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'keywords' => '\Zernio\Model\AdKeyword[]',
-        'pagination' => '\Zernio\Model\Pagination'
+        'account_id' => 'string',
+        'ad_set_id' => 'string',
+        'keywords' => '\Zernio\Model\AddAdKeywordsRequestKeywordsInner[]',
+        'negative' => 'bool'
     ];
 
     /**
@@ -70,8 +72,10 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'account_id' => null,
+        'ad_set_id' => null,
         'keywords' => null,
-        'pagination' => null
+        'negative' => null
     ];
 
     /**
@@ -80,8 +84,10 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'account_id' => false,
+        'ad_set_id' => false,
         'keywords' => false,
-        'pagination' => false
+        'negative' => false
     ];
 
     /**
@@ -170,8 +176,10 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
+        'account_id' => 'accountId',
+        'ad_set_id' => 'adSetId',
         'keywords' => 'keywords',
-        'pagination' => 'pagination'
+        'negative' => 'negative'
     ];
 
     /**
@@ -180,8 +188,10 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
+        'account_id' => 'setAccountId',
+        'ad_set_id' => 'setAdSetId',
         'keywords' => 'setKeywords',
-        'pagination' => 'setPagination'
+        'negative' => 'setNegative'
     ];
 
     /**
@@ -190,8 +200,10 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
+        'account_id' => 'getAccountId',
+        'ad_set_id' => 'getAdSetId',
         'keywords' => 'getKeywords',
-        'pagination' => 'getPagination'
+        'negative' => 'getNegative'
     ];
 
     /**
@@ -251,8 +263,10 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('ad_set_id', $data ?? [], null);
         $this->setIfExists('keywords', $data ?? [], null);
-        $this->setIfExists('pagination', $data ?? [], null);
+        $this->setIfExists('negative', $data ?? [], false);
     }
 
     /**
@@ -282,6 +296,23 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
+        if ($this->container['account_id'] === null) {
+            $invalidProperties[] = "'account_id' can't be null";
+        }
+        if ($this->container['ad_set_id'] === null) {
+            $invalidProperties[] = "'ad_set_id' can't be null";
+        }
+        if ($this->container['keywords'] === null) {
+            $invalidProperties[] = "'keywords' can't be null";
+        }
+        if ((count($this->container['keywords']) > 1000)) {
+            $invalidProperties[] = "invalid value for 'keywords', number of items must be less than or equal to 1000.";
+        }
+
+        if ((count($this->container['keywords']) < 1)) {
+            $invalidProperties[] = "invalid value for 'keywords', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -298,9 +329,63 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
+     * Gets account_id
+     *
+     * @return string
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string $account_id Social account ID (Google Ads)
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets ad_set_id
+     *
+     * @return string
+     */
+    public function getAdSetId()
+    {
+        return $this->container['ad_set_id'];
+    }
+
+    /**
+     * Sets ad_set_id
+     *
+     * @param string $ad_set_id Google ad group ID to add the keywords to
+     *
+     * @return self
+     */
+    public function setAdSetId($ad_set_id)
+    {
+        if (is_null($ad_set_id)) {
+            throw new \InvalidArgumentException('non-nullable ad_set_id cannot be null');
+        }
+        $this->container['ad_set_id'] = $ad_set_id;
+
+        return $this;
+    }
+
+    /**
      * Gets keywords
      *
-     * @return \Zernio\Model\AdKeyword[]|null
+     * @return \Zernio\Model\AddAdKeywordsRequestKeywordsInner[]
      */
     public function getKeywords()
     {
@@ -310,7 +395,7 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets keywords
      *
-     * @param \Zernio\Model\AdKeyword[]|null $keywords keywords
+     * @param \Zernio\Model\AddAdKeywordsRequestKeywordsInner[] $keywords keywords
      *
      * @return self
      */
@@ -319,34 +404,41 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
         if (is_null($keywords)) {
             throw new \InvalidArgumentException('non-nullable keywords cannot be null');
         }
+
+        if ((count($keywords) > 1000)) {
+            throw new \InvalidArgumentException('invalid value for $keywords when calling AddAdKeywordsRequest., number of items must be less than or equal to 1000.');
+        }
+        if ((count($keywords) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $keywords when calling AddAdKeywordsRequest., number of items must be greater than or equal to 1.');
+        }
         $this->container['keywords'] = $keywords;
 
         return $this;
     }
 
     /**
-     * Gets pagination
+     * Gets negative
      *
-     * @return \Zernio\Model\Pagination|null
+     * @return bool|null
      */
-    public function getPagination()
+    public function getNegative()
     {
-        return $this->container['pagination'];
+        return $this->container['negative'];
     }
 
     /**
-     * Sets pagination
+     * Sets negative
      *
-     * @param \Zernio\Model\Pagination|null $pagination pagination
+     * @param bool|null $negative Add as ad-group-level negatives instead of positive keywords
      *
      * @return self
      */
-    public function setPagination($pagination)
+    public function setNegative($negative)
     {
-        if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+        if (is_null($negative)) {
+            throw new \InvalidArgumentException('non-nullable negative cannot be null');
         }
-        $this->container['pagination'] = $pagination;
+        $this->container['negative'] = $negative;
 
         return $this;
     }

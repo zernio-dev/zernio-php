@@ -1,6 +1,6 @@
 <?php
 /**
- * ListAdKeywords200Response
+ * ReplaceCampaignNegativeKeywordsRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ListAdKeywords200Response Class Doc Comment
+ * ReplaceCampaignNegativeKeywordsRequest Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class ReplaceCampaignNegativeKeywordsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'listAdKeywords_200_response';
+    protected static $openAPIModelName = 'replaceCampaignNegativeKeywords_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'keywords' => '\Zernio\Model\AdKeyword[]',
-        'pagination' => '\Zernio\Model\Pagination'
+        'platform' => 'string',
+        'keywords' => '\Zernio\Model\KeywordEntry[]'
     ];
 
     /**
@@ -70,8 +70,8 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'keywords' => null,
-        'pagination' => null
+        'platform' => null,
+        'keywords' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'keywords' => false,
-        'pagination' => false
+        'platform' => false,
+        'keywords' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'keywords' => 'keywords',
-        'pagination' => 'pagination'
+        'platform' => 'platform',
+        'keywords' => 'keywords'
     ];
 
     /**
@@ -180,8 +180,8 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'keywords' => 'setKeywords',
-        'pagination' => 'setPagination'
+        'platform' => 'setPlatform',
+        'keywords' => 'setKeywords'
     ];
 
     /**
@@ -190,8 +190,8 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'keywords' => 'getKeywords',
-        'pagination' => 'getPagination'
+        'platform' => 'getPlatform',
+        'keywords' => 'getKeywords'
     ];
 
     /**
@@ -235,6 +235,33 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
+    public const PLATFORM_FACEBOOK = 'facebook';
+    public const PLATFORM_INSTAGRAM = 'instagram';
+    public const PLATFORM_TIKTOK = 'tiktok';
+    public const PLATFORM_LINKEDIN = 'linkedin';
+    public const PLATFORM_PINTEREST = 'pinterest';
+    public const PLATFORM_GOOGLE = 'google';
+    public const PLATFORM_TWITTER = 'twitter';
+    public const PLATFORM_OPENAI = 'openai';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPlatformAllowableValues()
+    {
+        return [
+            self::PLATFORM_FACEBOOK,
+            self::PLATFORM_INSTAGRAM,
+            self::PLATFORM_TIKTOK,
+            self::PLATFORM_LINKEDIN,
+            self::PLATFORM_PINTEREST,
+            self::PLATFORM_GOOGLE,
+            self::PLATFORM_TWITTER,
+            self::PLATFORM_OPENAI,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -251,8 +278,8 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('keywords', $data ?? [], null);
-        $this->setIfExists('pagination', $data ?? [], null);
     }
 
     /**
@@ -282,6 +309,22 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!is_null($this->container['platform']) && !in_array($this->container['platform'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'platform', must be one of '%s'",
+                $this->container['platform'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['keywords'] === null) {
+            $invalidProperties[] = "'keywords' can't be null";
+        }
+        if ((count($this->container['keywords']) > 1000)) {
+            $invalidProperties[] = "invalid value for 'keywords', number of items must be less than or equal to 1000.";
+        }
+
         return $invalidProperties;
     }
 
@@ -298,9 +341,46 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
+     * Gets platform
+     *
+     * @return string|null
+     */
+    public function getPlatform()
+    {
+        return $this->container['platform'];
+    }
+
+    /**
+     * Sets platform
+     *
+     * @param string|null $platform Optional and NOT authoritative: the resolved campaign's own platform decides 200 vs 501, never this hint.
+     *
+     * @return self
+     */
+    public function setPlatform($platform)
+    {
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
+        }
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!in_array($platform, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'platform', must be one of '%s'",
+                    $platform,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['platform'] = $platform;
+
+        return $this;
+    }
+
+    /**
      * Gets keywords
      *
-     * @return \Zernio\Model\AdKeyword[]|null
+     * @return \Zernio\Model\KeywordEntry[]
      */
     public function getKeywords()
     {
@@ -310,7 +390,7 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets keywords
      *
-     * @param \Zernio\Model\AdKeyword[]|null $keywords keywords
+     * @param \Zernio\Model\KeywordEntry[] $keywords keywords
      *
      * @return self
      */
@@ -319,34 +399,11 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
         if (is_null($keywords)) {
             throw new \InvalidArgumentException('non-nullable keywords cannot be null');
         }
-        $this->container['keywords'] = $keywords;
 
-        return $this;
-    }
-
-    /**
-     * Gets pagination
-     *
-     * @return \Zernio\Model\Pagination|null
-     */
-    public function getPagination()
-    {
-        return $this->container['pagination'];
-    }
-
-    /**
-     * Sets pagination
-     *
-     * @param \Zernio\Model\Pagination|null $pagination pagination
-     *
-     * @return self
-     */
-    public function setPagination($pagination)
-    {
-        if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+        if ((count($keywords) > 1000)) {
+            throw new \InvalidArgumentException('invalid value for $keywords when calling ReplaceCampaignNegativeKeywordsRequest., number of items must be less than or equal to 1000.');
         }
-        $this->container['pagination'] = $pagination;
+        $this->container['keywords'] = $keywords;
 
         return $this;
     }

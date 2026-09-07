@@ -1,6 +1,6 @@
 <?php
 /**
- * ListAdKeywords200Response
+ * AdKeywordMetrics
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ListAdKeywords200Response Class Doc Comment
+ * AdKeywordMetrics Class Doc Comment
  *
  * @category Class
+ * @description Trailing 30-day window. Null on rows synced before the metrics columns existed (re-synced on the keyword&#39;s next weekly sweep).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class AdKeywordMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'listAdKeywords_200_response';
+    protected static $openAPIModelName = 'AdKeyword_metrics';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,13 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'keywords' => '\Zernio\Model\AdKeyword[]',
-        'pagination' => '\Zernio\Model\Pagination'
+        'window_days' => 'int',
+        'clicks' => 'int',
+        'impressions' => 'int',
+        'cost' => 'float',
+        'conversions' => 'float',
+        'first_page_cpc' => 'float',
+        'first_position_cpc' => 'float'
     ];
 
     /**
@@ -70,8 +76,13 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'keywords' => null,
-        'pagination' => null
+        'window_days' => null,
+        'clicks' => null,
+        'impressions' => null,
+        'cost' => null,
+        'conversions' => null,
+        'first_page_cpc' => null,
+        'first_position_cpc' => null
     ];
 
     /**
@@ -80,8 +91,13 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'keywords' => false,
-        'pagination' => false
+        'window_days' => false,
+        'clicks' => false,
+        'impressions' => false,
+        'cost' => false,
+        'conversions' => false,
+        'first_page_cpc' => true,
+        'first_position_cpc' => true
     ];
 
     /**
@@ -170,8 +186,13 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'keywords' => 'keywords',
-        'pagination' => 'pagination'
+        'window_days' => 'windowDays',
+        'clicks' => 'clicks',
+        'impressions' => 'impressions',
+        'cost' => 'cost',
+        'conversions' => 'conversions',
+        'first_page_cpc' => 'firstPageCpc',
+        'first_position_cpc' => 'firstPositionCpc'
     ];
 
     /**
@@ -180,8 +201,13 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'keywords' => 'setKeywords',
-        'pagination' => 'setPagination'
+        'window_days' => 'setWindowDays',
+        'clicks' => 'setClicks',
+        'impressions' => 'setImpressions',
+        'cost' => 'setCost',
+        'conversions' => 'setConversions',
+        'first_page_cpc' => 'setFirstPageCpc',
+        'first_position_cpc' => 'setFirstPositionCpc'
     ];
 
     /**
@@ -190,8 +216,13 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'keywords' => 'getKeywords',
-        'pagination' => 'getPagination'
+        'window_days' => 'getWindowDays',
+        'clicks' => 'getClicks',
+        'impressions' => 'getImpressions',
+        'cost' => 'getCost',
+        'conversions' => 'getConversions',
+        'first_page_cpc' => 'getFirstPageCpc',
+        'first_position_cpc' => 'getFirstPositionCpc'
     ];
 
     /**
@@ -251,8 +282,13 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('keywords', $data ?? [], null);
-        $this->setIfExists('pagination', $data ?? [], null);
+        $this->setIfExists('window_days', $data ?? [], null);
+        $this->setIfExists('clicks', $data ?? [], null);
+        $this->setIfExists('impressions', $data ?? [], null);
+        $this->setIfExists('cost', $data ?? [], null);
+        $this->setIfExists('conversions', $data ?? [], null);
+        $this->setIfExists('first_page_cpc', $data ?? [], null);
+        $this->setIfExists('first_position_cpc', $data ?? [], null);
     }
 
     /**
@@ -298,55 +334,204 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets keywords
+     * Gets window_days
      *
-     * @return \Zernio\Model\AdKeyword[]|null
+     * @return int|null
      */
-    public function getKeywords()
+    public function getWindowDays()
     {
-        return $this->container['keywords'];
+        return $this->container['window_days'];
     }
 
     /**
-     * Sets keywords
+     * Sets window_days
      *
-     * @param \Zernio\Model\AdKeyword[]|null $keywords keywords
+     * @param int|null $window_days window_days
      *
      * @return self
      */
-    public function setKeywords($keywords)
+    public function setWindowDays($window_days)
     {
-        if (is_null($keywords)) {
-            throw new \InvalidArgumentException('non-nullable keywords cannot be null');
+        if (is_null($window_days)) {
+            throw new \InvalidArgumentException('non-nullable window_days cannot be null');
         }
-        $this->container['keywords'] = $keywords;
+        $this->container['window_days'] = $window_days;
 
         return $this;
     }
 
     /**
-     * Gets pagination
+     * Gets clicks
      *
-     * @return \Zernio\Model\Pagination|null
+     * @return int|null
      */
-    public function getPagination()
+    public function getClicks()
     {
-        return $this->container['pagination'];
+        return $this->container['clicks'];
     }
 
     /**
-     * Sets pagination
+     * Sets clicks
      *
-     * @param \Zernio\Model\Pagination|null $pagination pagination
+     * @param int|null $clicks clicks
      *
      * @return self
      */
-    public function setPagination($pagination)
+    public function setClicks($clicks)
     {
-        if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+        if (is_null($clicks)) {
+            throw new \InvalidArgumentException('non-nullable clicks cannot be null');
         }
-        $this->container['pagination'] = $pagination;
+        $this->container['clicks'] = $clicks;
+
+        return $this;
+    }
+
+    /**
+     * Gets impressions
+     *
+     * @return int|null
+     */
+    public function getImpressions()
+    {
+        return $this->container['impressions'];
+    }
+
+    /**
+     * Sets impressions
+     *
+     * @param int|null $impressions impressions
+     *
+     * @return self
+     */
+    public function setImpressions($impressions)
+    {
+        if (is_null($impressions)) {
+            throw new \InvalidArgumentException('non-nullable impressions cannot be null');
+        }
+        $this->container['impressions'] = $impressions;
+
+        return $this;
+    }
+
+    /**
+     * Gets cost
+     *
+     * @return float|null
+     */
+    public function getCost()
+    {
+        return $this->container['cost'];
+    }
+
+    /**
+     * Sets cost
+     *
+     * @param float|null $cost Account currency, not USD-normalized
+     *
+     * @return self
+     */
+    public function setCost($cost)
+    {
+        if (is_null($cost)) {
+            throw new \InvalidArgumentException('non-nullable cost cannot be null');
+        }
+        $this->container['cost'] = $cost;
+
+        return $this;
+    }
+
+    /**
+     * Gets conversions
+     *
+     * @return float|null
+     */
+    public function getConversions()
+    {
+        return $this->container['conversions'];
+    }
+
+    /**
+     * Sets conversions
+     *
+     * @param float|null $conversions conversions
+     *
+     * @return self
+     */
+    public function setConversions($conversions)
+    {
+        if (is_null($conversions)) {
+            throw new \InvalidArgumentException('non-nullable conversions cannot be null');
+        }
+        $this->container['conversions'] = $conversions;
+
+        return $this;
+    }
+
+    /**
+     * Gets first_page_cpc
+     *
+     * @return float|null
+     */
+    public function getFirstPageCpc()
+    {
+        return $this->container['first_page_cpc'];
+    }
+
+    /**
+     * Sets first_page_cpc
+     *
+     * @param float|null $first_page_cpc Account currency
+     *
+     * @return self
+     */
+    public function setFirstPageCpc($first_page_cpc)
+    {
+        if (is_null($first_page_cpc)) {
+            array_push($this->openAPINullablesSetToNull, 'first_page_cpc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('first_page_cpc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['first_page_cpc'] = $first_page_cpc;
+
+        return $this;
+    }
+
+    /**
+     * Gets first_position_cpc
+     *
+     * @return float|null
+     */
+    public function getFirstPositionCpc()
+    {
+        return $this->container['first_position_cpc'];
+    }
+
+    /**
+     * Sets first_position_cpc
+     *
+     * @param float|null $first_position_cpc Account currency
+     *
+     * @return self
+     */
+    public function setFirstPositionCpc($first_position_cpc)
+    {
+        if (is_null($first_position_cpc)) {
+            array_push($this->openAPINullablesSetToNull, 'first_position_cpc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('first_position_cpc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['first_position_cpc'] = $first_position_cpc;
 
         return $this;
     }

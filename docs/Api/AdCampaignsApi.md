@@ -6,6 +6,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**addAdKeywords()**](AdCampaignsApi.md#addAdKeywords) | **POST** /v1/ads/keywords | Add Search keywords to an ad group |
 | [**attachCampaignAssets()**](AdCampaignsApi.md#attachCampaignAssets) | **POST** /v1/ads/campaigns/{campaignId}/assets | Attach extension assets to a Google Search campaign |
 | [**boostPost()**](AdCampaignsApi.md#boostPost) | **POST** /v1/ads/boost | Boost post as ad |
 | [**bulkUpdateAdCampaignStatus()**](AdCampaignsApi.md#bulkUpdateAdCampaignStatus) | **POST** /v1/ads/campaigns/bulk-status | Pause or resume many campaigns |
@@ -24,13 +25,77 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listAdCampaigns()**](AdCampaignsApi.md#listAdCampaigns) | **GET** /v1/ads/campaigns | List campaigns |
 | [**listAdKeywords()**](AdCampaignsApi.md#listAdKeywords) | **GET** /v1/ads/keywords | List Search keywords |
 | [**listAds()**](AdCampaignsApi.md#listAds) | **GET** /v1/ads | List ads |
+| [**listCampaignNegativeKeywords()**](AdCampaignsApi.md#listCampaignNegativeKeywords) | **GET** /v1/ads/campaigns/{campaignId}/negative-keywords | List campaign-level negative keywords |
+| [**removeAdKeyword()**](AdCampaignsApi.md#removeAdKeyword) | **DELETE** /v1/ads/keywords/{keywordId} | Remove a Search keyword |
+| [**replaceCampaignNegativeKeywords()**](AdCampaignsApi.md#replaceCampaignNegativeKeywords) | **PUT** /v1/ads/campaigns/{campaignId}/negative-keywords | Replace campaign-level negative keywords |
 | [**updateAd()**](AdCampaignsApi.md#updateAd) | **PUT** /v1/ads/{adId} | Update ad |
 | [**updateAdCampaign()**](AdCampaignsApi.md#updateAdCampaign) | **PUT** /v1/ads/campaigns/{campaignId} | Update a campaign |
 | [**updateAdCampaignStatus()**](AdCampaignsApi.md#updateAdCampaignStatus) | **PUT** /v1/ads/campaigns/{campaignId}/status | Pause or resume a campaign |
+| [**updateAdKeyword()**](AdCampaignsApi.md#updateAdKeyword) | **PATCH** /v1/ads/keywords/{keywordId} | Pause or enable a Search keyword |
 | [**updateAdSet()**](AdCampaignsApi.md#updateAdSet) | **PUT** /v1/ads/ad-sets/{adSetId} | Update an ad set |
 | [**updateAdSetStatus()**](AdCampaignsApi.md#updateAdSetStatus) | **PUT** /v1/ads/ad-sets/{adSetId}/status | Pause or resume a single ad set |
 | [**updateAdStatus()**](AdCampaignsApi.md#updateAdStatus) | **PUT** /v1/ads/{adId}/status | Pause or resume a single ad |
 
+
+## `addAdKeywords()`
+
+```php
+addAdKeywords($add_ad_keywords_request): \Zernio\Model\AddAdKeywords201Response
+```
+
+Add Search keywords to an ad group
+
+Adds one or more keyword criteria to an existing Google Search ad group, without touching the keywords already there (unlike the whole-set diff on `PUT /v1/ads/{adId}`, `keywords`/`negativeKeywords` in `platformSpecificData`, which replaces the set). Set `negative: true` to add ad-group-level negatives instead of positive keywords.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$add_ad_keywords_request = new \Zernio\Model\AddAdKeywordsRequest(); // \Zernio\Model\AddAdKeywordsRequest
+
+try {
+    $result = $apiInstance->addAdKeywords($add_ad_keywords_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->addAdKeywords: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **add_ad_keywords_request** | [**\Zernio\Model\AddAdKeywordsRequest**](../Model/AddAdKeywordsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\AddAdKeywords201Response**](../Model/AddAdKeywords201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `attachCampaignAssets()`
 
@@ -1254,6 +1319,190 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listCampaignNegativeKeywords()`
+
+```php
+listCampaignNegativeKeywords($campaign_id, $platform): \Zernio\Model\ListCampaignNegativeKeywords200Response
+```
+
+List campaign-level negative keywords
+
+Returns the campaign-level negative keywords (`campaign_criterion.negative`), distinct from the ad-group-level negatives under `GET /v1/ads/keywords`. Read live from Google on every call (not synced to Postgres), and gated by the shared Google Ads operations budget like every other on-demand Google surface.  The platform is always discovered from the campaign itself; a non-Google campaign returns 501 rather than 404, whether or not `platform` was passed.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Platform campaign ID
+$platform = 'platform_example'; // string | Optional and NOT authoritative: the resolved campaign's own platform decides 200 vs 501, never this hint.
+
+try {
+    $result = $apiInstance->listCampaignNegativeKeywords($campaign_id, $platform);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->listCampaignNegativeKeywords: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Platform campaign ID | |
+| **platform** | **string**| Optional and NOT authoritative: the resolved campaign&#39;s own platform decides 200 vs 501, never this hint. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListCampaignNegativeKeywords200Response**](../Model/ListCampaignNegativeKeywords200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `removeAdKeyword()`
+
+```php
+removeAdKeyword($keyword_id): \Zernio\Model\RemoveAdKeyword200Response
+```
+
+Remove a Search keyword
+
+Removes one keyword criterion (positive or negative) from its ad group (M.140).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$keyword_id = 'keyword_id_example'; // string | Zernio keyword ID (not the Google criterion ID)
+
+try {
+    $result = $apiInstance->removeAdKeyword($keyword_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->removeAdKeyword: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **keyword_id** | **string**| Zernio keyword ID (not the Google criterion ID) | |
+
+### Return type
+
+[**\Zernio\Model\RemoveAdKeyword200Response**](../Model/RemoveAdKeyword200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `replaceCampaignNegativeKeywords()`
+
+```php
+replaceCampaignNegativeKeywords($campaign_id, $replace_campaign_negative_keywords_request): \Zernio\Model\ReplaceCampaignNegativeKeywords200Response
+```
+
+Replace campaign-level negative keywords
+
+Replaces the FULL set of campaign-level negative keywords (C.270): the desired list is diffed against what Google already has, and the difference is applied as one `create`/`remove` mutate. Send an empty array to clear every campaign negative.  The platform is always discovered from the campaign itself; a non-Google campaign returns 501 rather than 404, whether or not `platform` was sent.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Platform campaign ID
+$replace_campaign_negative_keywords_request = new \Zernio\Model\ReplaceCampaignNegativeKeywordsRequest(); // \Zernio\Model\ReplaceCampaignNegativeKeywordsRequest
+
+try {
+    $result = $apiInstance->replaceCampaignNegativeKeywords($campaign_id, $replace_campaign_negative_keywords_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->replaceCampaignNegativeKeywords: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Platform campaign ID | |
+| **replace_campaign_negative_keywords_request** | [**\Zernio\Model\ReplaceCampaignNegativeKeywordsRequest**](../Model/ReplaceCampaignNegativeKeywordsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ReplaceCampaignNegativeKeywords200Response**](../Model/ReplaceCampaignNegativeKeywords200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `updateAd()`
 
 ```php
@@ -1440,6 +1689,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `updateAdKeyword()`
+
+```php
+updateAdKeyword($keyword_id, $update_ad_keyword_request): \Zernio\Model\UpdateAdKeyword200Response
+```
+
+Pause or enable a Search keyword
+
+Changes `ad_group_criterion.status` for one keyword criterion (M.140). Negative keywords have no status on Google and cannot be paused or enabled.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$keyword_id = 'keyword_id_example'; // string | Zernio keyword ID (not the Google criterion ID)
+$update_ad_keyword_request = new \Zernio\Model\UpdateAdKeywordRequest(); // \Zernio\Model\UpdateAdKeywordRequest
+
+try {
+    $result = $apiInstance->updateAdKeyword($keyword_id, $update_ad_keyword_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->updateAdKeyword: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **keyword_id** | **string**| Zernio keyword ID (not the Google criterion ID) | |
+| **update_ad_keyword_request** | [**\Zernio\Model\UpdateAdKeywordRequest**](../Model/UpdateAdKeywordRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateAdKeyword200Response**](../Model/UpdateAdKeyword200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `updateAdSet()`
 
 ```php
@@ -1567,7 +1878,7 @@ try {
 ## `updateAdStatus()`
 
 ```php
-updateAdStatus($ad_id, $update_ad_status_request): \Zernio\Model\UpdateAdStatus200Response
+updateAdStatus($ad_id, $update_ad_keyword_request): \Zernio\Model\UpdateAdStatus200Response
 ```
 
 Pause or resume a single ad
@@ -1592,10 +1903,10 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
     $config
 );
 $ad_id = 'ad_id_example'; // string | Zernio `_id` (hex), Meta `platformAdId` (numeric), or one of the creative's effective story/media IDs.
-$update_ad_status_request = new \Zernio\Model\UpdateAdStatusRequest(); // \Zernio\Model\UpdateAdStatusRequest
+$update_ad_keyword_request = new \Zernio\Model\UpdateAdKeywordRequest(); // \Zernio\Model\UpdateAdKeywordRequest
 
 try {
-    $result = $apiInstance->updateAdStatus($ad_id, $update_ad_status_request);
+    $result = $apiInstance->updateAdStatus($ad_id, $update_ad_keyword_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->updateAdStatus: ', $e->getMessage(), PHP_EOL;
@@ -1607,7 +1918,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_id** | **string**| Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. | |
-| **update_ad_status_request** | [**\Zernio\Model\UpdateAdStatusRequest**](../Model/UpdateAdStatusRequest.md)|  | |
+| **update_ad_keyword_request** | [**\Zernio\Model\UpdateAdKeywordRequest**](../Model/UpdateAdKeywordRequest.md)|  | |
 
 ### Return type
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * ListAdKeywords200Response
+ * ListCampaignNegativeKeywords200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ListAdKeywords200Response Class Doc Comment
+ * ListCampaignNegativeKeywords200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListCampaignNegativeKeywords200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'listAdKeywords_200_response';
+    protected static $openAPIModelName = 'listCampaignNegativeKeywords_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,7 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'keywords' => '\Zernio\Model\AdKeyword[]',
-        'pagination' => '\Zernio\Model\Pagination'
+        'keywords' => '\Zernio\Model\ListCampaignNegativeKeywords200ResponseKeywordsInner[]'
     ];
 
     /**
@@ -70,8 +69,7 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'keywords' => null,
-        'pagination' => null
+        'keywords' => null
     ];
 
     /**
@@ -80,8 +78,7 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'keywords' => false,
-        'pagination' => false
+        'keywords' => false
     ];
 
     /**
@@ -170,8 +167,7 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'keywords' => 'keywords',
-        'pagination' => 'pagination'
+        'keywords' => 'keywords'
     ];
 
     /**
@@ -180,8 +176,7 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'keywords' => 'setKeywords',
-        'pagination' => 'setPagination'
+        'keywords' => 'setKeywords'
     ];
 
     /**
@@ -190,8 +185,7 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'keywords' => 'getKeywords',
-        'pagination' => 'getPagination'
+        'keywords' => 'getKeywords'
     ];
 
     /**
@@ -252,7 +246,6 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(?array $data = null)
     {
         $this->setIfExists('keywords', $data ?? [], null);
-        $this->setIfExists('pagination', $data ?? [], null);
     }
 
     /**
@@ -300,7 +293,7 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets keywords
      *
-     * @return \Zernio\Model\AdKeyword[]|null
+     * @return \Zernio\Model\ListCampaignNegativeKeywords200ResponseKeywordsInner[]|null
      */
     public function getKeywords()
     {
@@ -310,7 +303,7 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets keywords
      *
-     * @param \Zernio\Model\AdKeyword[]|null $keywords keywords
+     * @param \Zernio\Model\ListCampaignNegativeKeywords200ResponseKeywordsInner[]|null $keywords keywords
      *
      * @return self
      */
@@ -320,33 +313,6 @@ class ListAdKeywords200Response implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable keywords cannot be null');
         }
         $this->container['keywords'] = $keywords;
-
-        return $this;
-    }
-
-    /**
-     * Gets pagination
-     *
-     * @return \Zernio\Model\Pagination|null
-     */
-    public function getPagination()
-    {
-        return $this->container['pagination'];
-    }
-
-    /**
-     * Sets pagination
-     *
-     * @param \Zernio\Model\Pagination|null $pagination pagination
-     *
-     * @return self
-     */
-    public function setPagination($pagination)
-    {
-        if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
-        }
-        $this->container['pagination'] = $pagination;
 
         return $this;
     }

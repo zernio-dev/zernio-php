@@ -1,10 +1,9 @@
-# # ListAdKeywords200Response
+# # UpdateAdKeywordRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**keywords** | [**\Zernio\Model\AdKeyword[]**](AdKeyword.md) |  | [optional]
-**pagination** | [**\Zernio\Model\Pagination**](Pagination.md) |  | [optional]
+**status** | **string** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

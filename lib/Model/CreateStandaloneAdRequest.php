@@ -132,8 +132,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'placement_assets' => '\Zernio\Model\CreateStandaloneAdRequestPlacementAssets',
         'audience_id' => 'string',
         'campaign_type' => 'string',
-        'keywords' => 'string[]',
-        'negative_keywords' => 'string[]',
+        'keywords' => '\Zernio\Model\KeywordEntry[]',
+        'negative_keywords' => '\Zernio\Model\KeywordEntry[]',
+        'campaign_negative_keywords' => '\Zernio\Model\KeywordEntry[]',
         'additional_headlines' => 'string[]',
         'additional_descriptions' => 'string[]',
         'sitelinks' => '\Zernio\Model\CreateStandaloneAdRequestSitelinksInner[]',
@@ -240,6 +241,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'campaign_type' => null,
         'keywords' => null,
         'negative_keywords' => null,
+        'campaign_negative_keywords' => null,
         'additional_headlines' => null,
         'additional_descriptions' => null,
         'sitelinks' => null,
@@ -344,6 +346,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'campaign_type' => false,
         'keywords' => false,
         'negative_keywords' => false,
+        'campaign_negative_keywords' => false,
         'additional_headlines' => false,
         'additional_descriptions' => false,
         'sitelinks' => false,
@@ -528,6 +531,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'campaign_type' => 'campaignType',
         'keywords' => 'keywords',
         'negative_keywords' => 'negativeKeywords',
+        'campaign_negative_keywords' => 'campaignNegativeKeywords',
         'additional_headlines' => 'additionalHeadlines',
         'additional_descriptions' => 'additionalDescriptions',
         'sitelinks' => 'sitelinks',
@@ -632,6 +636,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'campaign_type' => 'setCampaignType',
         'keywords' => 'setKeywords',
         'negative_keywords' => 'setNegativeKeywords',
+        'campaign_negative_keywords' => 'setCampaignNegativeKeywords',
         'additional_headlines' => 'setAdditionalHeadlines',
         'additional_descriptions' => 'setAdditionalDescriptions',
         'sitelinks' => 'setSitelinks',
@@ -736,6 +741,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'campaign_type' => 'getCampaignType',
         'keywords' => 'getKeywords',
         'negative_keywords' => 'getNegativeKeywords',
+        'campaign_negative_keywords' => 'getCampaignNegativeKeywords',
         'additional_headlines' => 'getAdditionalHeadlines',
         'additional_descriptions' => 'getAdditionalDescriptions',
         'sitelinks' => 'getSitelinks',
@@ -1212,6 +1218,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('campaign_type', $data ?? [], 'display');
         $this->setIfExists('keywords', $data ?? [], null);
         $this->setIfExists('negative_keywords', $data ?? [], null);
+        $this->setIfExists('campaign_negative_keywords', $data ?? [], null);
         $this->setIfExists('additional_headlines', $data ?? [], null);
         $this->setIfExists('additional_descriptions', $data ?? [], null);
         $this->setIfExists('sitelinks', $data ?? [], null);
@@ -1458,6 +1465,14 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
 
         if (!is_null($this->container['keywords']) && (count($this->container['keywords']) > 1000)) {
             $invalidProperties[] = "invalid value for 'keywords', number of items must be less than or equal to 1000.";
+        }
+
+        if (!is_null($this->container['negative_keywords']) && (count($this->container['negative_keywords']) > 1000)) {
+            $invalidProperties[] = "invalid value for 'negative_keywords', number of items must be less than or equal to 1000.";
+        }
+
+        if (!is_null($this->container['campaign_negative_keywords']) && (count($this->container['campaign_negative_keywords']) > 1000)) {
+            $invalidProperties[] = "invalid value for 'campaign_negative_keywords', number of items must be less than or equal to 1000.";
         }
 
         if (!is_null($this->container['sitelinks']) && (count($this->container['sitelinks']) > 20)) {
@@ -3756,7 +3771,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets keywords
      *
-     * @return string[]|null
+     * @return \Zernio\Model\KeywordEntry[]|null
      */
     public function getKeywords()
     {
@@ -3766,7 +3781,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets keywords
      *
-     * @param string[]|null $keywords Google Search only. BROAD-match keywords on the new ad group. Editable later via PUT /v1/ads/{adId} targeting.keywords, which also sets match types.
+     * @param \Zernio\Model\KeywordEntry[]|null $keywords Google Search only. Keywords on the new ad group; entries are strings (BROAD) or { text, matchType }. Editable later via PUT /v1/ads/{adId} targeting.keywords.
      *
      * @return self
      */
@@ -3787,7 +3802,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets negative_keywords
      *
-     * @return string[]|null
+     * @return \Zernio\Model\KeywordEntry[]|null
      */
     public function getNegativeKeywords()
     {
@@ -3797,7 +3812,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets negative_keywords
      *
-     * @param string[]|null $negative_keywords Google Search only; other platforms return 400. BROAD-match negative keywords on the new ad group. Editable later via PUT /v1/ads/{adId} targeting.negativeKeywords.
+     * @param \Zernio\Model\KeywordEntry[]|null $negative_keywords Google Search only; other platforms return 400. Ad-group-level negative keywords on the new ad group. Editable later via PUT /v1/ads/{adId} targeting.negativeKeywords.
      *
      * @return self
      */
@@ -3806,7 +3821,42 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         if (is_null($negative_keywords)) {
             throw new \InvalidArgumentException('non-nullable negative_keywords cannot be null');
         }
+
+        if ((count($negative_keywords) > 1000)) {
+            throw new \InvalidArgumentException('invalid value for $negative_keywords when calling CreateStandaloneAdRequest., number of items must be less than or equal to 1000.');
+        }
         $this->container['negative_keywords'] = $negative_keywords;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_negative_keywords
+     *
+     * @return \Zernio\Model\KeywordEntry[]|null
+     */
+    public function getCampaignNegativeKeywords()
+    {
+        return $this->container['campaign_negative_keywords'];
+    }
+
+    /**
+     * Sets campaign_negative_keywords
+     *
+     * @param \Zernio\Model\KeywordEntry[]|null $campaign_negative_keywords Google Search only; other platforms return 400. Campaign-level negative keywords (campaign_criterion.negative), created alongside the ad group. Editable later via PUT /v1/ads/campaigns/{campaignId}/negative-keywords.
+     *
+     * @return self
+     */
+    public function setCampaignNegativeKeywords($campaign_negative_keywords)
+    {
+        if (is_null($campaign_negative_keywords)) {
+            throw new \InvalidArgumentException('non-nullable campaign_negative_keywords cannot be null');
+        }
+
+        if ((count($campaign_negative_keywords) > 1000)) {
+            throw new \InvalidArgumentException('invalid value for $campaign_negative_keywords when calling CreateStandaloneAdRequest., number of items must be less than or equal to 1000.');
+        }
+        $this->container['campaign_negative_keywords'] = $campaign_negative_keywords;
 
         return $this;
     }

@@ -75,6 +75,9 @@ class AdCampaignsApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
+        'addAdKeywords' => [
+            'application/json',
+        ],
         'attachCampaignAssets' => [
             'application/json',
         ],
@@ -129,6 +132,15 @@ class AdCampaignsApi
         'listAds' => [
             'application/json',
         ],
+        'listCampaignNegativeKeywords' => [
+            'application/json',
+        ],
+        'removeAdKeyword' => [
+            'application/json',
+        ],
+        'replaceCampaignNegativeKeywords' => [
+            'application/json',
+        ],
         'updateAd' => [
             'application/json',
         ],
@@ -136,6 +148,9 @@ class AdCampaignsApi
             'application/json',
         ],
         'updateAdCampaignStatus' => [
+            'application/json',
+        ],
+        'updateAdKeyword' => [
             'application/json',
         ],
         'updateAdSet' => [
@@ -193,6 +208,305 @@ class AdCampaignsApi
     public function getConfig()
     {
         return $this->config;
+    }
+
+    /**
+     * Operation addAdKeywords
+     *
+     * Add Search keywords to an ad group
+     *
+     * @param  \Zernio\Model\AddAdKeywordsRequest $add_ad_keywords_request add_ad_keywords_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAdKeywords'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\AddAdKeywords201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     */
+    public function addAdKeywords($add_ad_keywords_request, string $contentType = self::contentTypes['addAdKeywords'][0])
+    {
+        list($response) = $this->addAdKeywordsWithHttpInfo($add_ad_keywords_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation addAdKeywordsWithHttpInfo
+     *
+     * Add Search keywords to an ad group
+     *
+     * @param  \Zernio\Model\AddAdKeywordsRequest $add_ad_keywords_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAdKeywords'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\AddAdKeywords201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function addAdKeywordsWithHttpInfo($add_ad_keywords_request, string $contentType = self::contentTypes['addAdKeywords'][0])
+    {
+        $request = $this->addAdKeywordsRequest($add_ad_keywords_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\AddAdKeywords201Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\AddAdKeywords201Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\AddAdKeywords201Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation addAdKeywordsAsync
+     *
+     * Add Search keywords to an ad group
+     *
+     * @param  \Zernio\Model\AddAdKeywordsRequest $add_ad_keywords_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAdKeywords'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addAdKeywordsAsync($add_ad_keywords_request, string $contentType = self::contentTypes['addAdKeywords'][0])
+    {
+        return $this->addAdKeywordsAsyncWithHttpInfo($add_ad_keywords_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation addAdKeywordsAsyncWithHttpInfo
+     *
+     * Add Search keywords to an ad group
+     *
+     * @param  \Zernio\Model\AddAdKeywordsRequest $add_ad_keywords_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAdKeywords'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addAdKeywordsAsyncWithHttpInfo($add_ad_keywords_request, string $contentType = self::contentTypes['addAdKeywords'][0])
+    {
+        $returnType = '\Zernio\Model\AddAdKeywords201Response';
+        $request = $this->addAdKeywordsRequest($add_ad_keywords_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'addAdKeywords'
+     *
+     * @param  \Zernio\Model\AddAdKeywordsRequest $add_ad_keywords_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAdKeywords'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function addAdKeywordsRequest($add_ad_keywords_request, string $contentType = self::contentTypes['addAdKeywords'][0])
+    {
+
+        // verify the required parameter 'add_ad_keywords_request' is set
+        if ($add_ad_keywords_request === null || (is_array($add_ad_keywords_request) && count($add_ad_keywords_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $add_ad_keywords_request when calling addAdKeywords'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/keywords';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($add_ad_keywords_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($add_ad_keywords_request));
+            } else {
+                $httpBody = $add_ad_keywords_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -6579,6 +6893,926 @@ class AdCampaignsApi
     }
 
     /**
+     * Operation listCampaignNegativeKeywords
+     *
+     * List campaign-level negative keywords
+     *
+     * @param  string $campaign_id Platform campaign ID (required)
+     * @param  string|null $platform Optional and NOT authoritative: the resolved campaign&#39;s own platform decides 200 vs 501, never this hint. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCampaignNegativeKeywords'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListCampaignNegativeKeywords200Response|\Zernio\Model\InlineObject
+     */
+    public function listCampaignNegativeKeywords($campaign_id, $platform = null, string $contentType = self::contentTypes['listCampaignNegativeKeywords'][0])
+    {
+        list($response) = $this->listCampaignNegativeKeywordsWithHttpInfo($campaign_id, $platform, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listCampaignNegativeKeywordsWithHttpInfo
+     *
+     * List campaign-level negative keywords
+     *
+     * @param  string $campaign_id Platform campaign ID (required)
+     * @param  string|null $platform Optional and NOT authoritative: the resolved campaign&#39;s own platform decides 200 vs 501, never this hint. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCampaignNegativeKeywords'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListCampaignNegativeKeywords200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listCampaignNegativeKeywordsWithHttpInfo($campaign_id, $platform = null, string $contentType = self::contentTypes['listCampaignNegativeKeywords'][0])
+    {
+        $request = $this->listCampaignNegativeKeywordsRequest($campaign_id, $platform, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListCampaignNegativeKeywords200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListCampaignNegativeKeywords200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListCampaignNegativeKeywords200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listCampaignNegativeKeywordsAsync
+     *
+     * List campaign-level negative keywords
+     *
+     * @param  string $campaign_id Platform campaign ID (required)
+     * @param  string|null $platform Optional and NOT authoritative: the resolved campaign&#39;s own platform decides 200 vs 501, never this hint. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCampaignNegativeKeywords'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listCampaignNegativeKeywordsAsync($campaign_id, $platform = null, string $contentType = self::contentTypes['listCampaignNegativeKeywords'][0])
+    {
+        return $this->listCampaignNegativeKeywordsAsyncWithHttpInfo($campaign_id, $platform, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listCampaignNegativeKeywordsAsyncWithHttpInfo
+     *
+     * List campaign-level negative keywords
+     *
+     * @param  string $campaign_id Platform campaign ID (required)
+     * @param  string|null $platform Optional and NOT authoritative: the resolved campaign&#39;s own platform decides 200 vs 501, never this hint. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCampaignNegativeKeywords'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listCampaignNegativeKeywordsAsyncWithHttpInfo($campaign_id, $platform = null, string $contentType = self::contentTypes['listCampaignNegativeKeywords'][0])
+    {
+        $returnType = '\Zernio\Model\ListCampaignNegativeKeywords200Response';
+        $request = $this->listCampaignNegativeKeywordsRequest($campaign_id, $platform, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listCampaignNegativeKeywords'
+     *
+     * @param  string $campaign_id Platform campaign ID (required)
+     * @param  string|null $platform Optional and NOT authoritative: the resolved campaign&#39;s own platform decides 200 vs 501, never this hint. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCampaignNegativeKeywords'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listCampaignNegativeKeywordsRequest($campaign_id, $platform = null, string $contentType = self::contentTypes['listCampaignNegativeKeywords'][0])
+    {
+
+        // verify the required parameter 'campaign_id' is set
+        if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaign_id when calling listCampaignNegativeKeywords'
+            );
+        }
+
+
+
+        $resourcePath = '/v1/ads/campaigns/{campaignId}/negative-keywords';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $platform,
+            'platform', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($campaign_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'campaignId' . '}',
+                ObjectSerializer::toPathValue($campaign_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation removeAdKeyword
+     *
+     * Remove a Search keyword
+     *
+     * @param  string $keyword_id Zernio keyword ID (not the Google criterion ID) (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAdKeyword'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\RemoveAdKeyword200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     */
+    public function removeAdKeyword($keyword_id, string $contentType = self::contentTypes['removeAdKeyword'][0])
+    {
+        list($response) = $this->removeAdKeywordWithHttpInfo($keyword_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation removeAdKeywordWithHttpInfo
+     *
+     * Remove a Search keyword
+     *
+     * @param  string $keyword_id Zernio keyword ID (not the Google criterion ID) (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAdKeyword'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\RemoveAdKeyword200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function removeAdKeywordWithHttpInfo($keyword_id, string $contentType = self::contentTypes['removeAdKeyword'][0])
+    {
+        $request = $this->removeAdKeywordRequest($keyword_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\RemoveAdKeyword200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\RemoveAdKeyword200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\RemoveAdKeyword200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation removeAdKeywordAsync
+     *
+     * Remove a Search keyword
+     *
+     * @param  string $keyword_id Zernio keyword ID (not the Google criterion ID) (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAdKeyword'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeAdKeywordAsync($keyword_id, string $contentType = self::contentTypes['removeAdKeyword'][0])
+    {
+        return $this->removeAdKeywordAsyncWithHttpInfo($keyword_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation removeAdKeywordAsyncWithHttpInfo
+     *
+     * Remove a Search keyword
+     *
+     * @param  string $keyword_id Zernio keyword ID (not the Google criterion ID) (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAdKeyword'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeAdKeywordAsyncWithHttpInfo($keyword_id, string $contentType = self::contentTypes['removeAdKeyword'][0])
+    {
+        $returnType = '\Zernio\Model\RemoveAdKeyword200Response';
+        $request = $this->removeAdKeywordRequest($keyword_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'removeAdKeyword'
+     *
+     * @param  string $keyword_id Zernio keyword ID (not the Google criterion ID) (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAdKeyword'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function removeAdKeywordRequest($keyword_id, string $contentType = self::contentTypes['removeAdKeyword'][0])
+    {
+
+        // verify the required parameter 'keyword_id' is set
+        if ($keyword_id === null || (is_array($keyword_id) && count($keyword_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $keyword_id when calling removeAdKeyword'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/keywords/{keywordId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($keyword_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'keywordId' . '}',
+                ObjectSerializer::toPathValue($keyword_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation replaceCampaignNegativeKeywords
+     *
+     * Replace campaign-level negative keywords
+     *
+     * @param  string $campaign_id Platform campaign ID (required)
+     * @param  \Zernio\Model\ReplaceCampaignNegativeKeywordsRequest $replace_campaign_negative_keywords_request replace_campaign_negative_keywords_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceCampaignNegativeKeywords'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ReplaceCampaignNegativeKeywords200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     */
+    public function replaceCampaignNegativeKeywords($campaign_id, $replace_campaign_negative_keywords_request, string $contentType = self::contentTypes['replaceCampaignNegativeKeywords'][0])
+    {
+        list($response) = $this->replaceCampaignNegativeKeywordsWithHttpInfo($campaign_id, $replace_campaign_negative_keywords_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation replaceCampaignNegativeKeywordsWithHttpInfo
+     *
+     * Replace campaign-level negative keywords
+     *
+     * @param  string $campaign_id Platform campaign ID (required)
+     * @param  \Zernio\Model\ReplaceCampaignNegativeKeywordsRequest $replace_campaign_negative_keywords_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceCampaignNegativeKeywords'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ReplaceCampaignNegativeKeywords200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function replaceCampaignNegativeKeywordsWithHttpInfo($campaign_id, $replace_campaign_negative_keywords_request, string $contentType = self::contentTypes['replaceCampaignNegativeKeywords'][0])
+    {
+        $request = $this->replaceCampaignNegativeKeywordsRequest($campaign_id, $replace_campaign_negative_keywords_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ReplaceCampaignNegativeKeywords200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ReplaceCampaignNegativeKeywords200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ReplaceCampaignNegativeKeywords200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation replaceCampaignNegativeKeywordsAsync
+     *
+     * Replace campaign-level negative keywords
+     *
+     * @param  string $campaign_id Platform campaign ID (required)
+     * @param  \Zernio\Model\ReplaceCampaignNegativeKeywordsRequest $replace_campaign_negative_keywords_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceCampaignNegativeKeywords'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function replaceCampaignNegativeKeywordsAsync($campaign_id, $replace_campaign_negative_keywords_request, string $contentType = self::contentTypes['replaceCampaignNegativeKeywords'][0])
+    {
+        return $this->replaceCampaignNegativeKeywordsAsyncWithHttpInfo($campaign_id, $replace_campaign_negative_keywords_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation replaceCampaignNegativeKeywordsAsyncWithHttpInfo
+     *
+     * Replace campaign-level negative keywords
+     *
+     * @param  string $campaign_id Platform campaign ID (required)
+     * @param  \Zernio\Model\ReplaceCampaignNegativeKeywordsRequest $replace_campaign_negative_keywords_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceCampaignNegativeKeywords'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function replaceCampaignNegativeKeywordsAsyncWithHttpInfo($campaign_id, $replace_campaign_negative_keywords_request, string $contentType = self::contentTypes['replaceCampaignNegativeKeywords'][0])
+    {
+        $returnType = '\Zernio\Model\ReplaceCampaignNegativeKeywords200Response';
+        $request = $this->replaceCampaignNegativeKeywordsRequest($campaign_id, $replace_campaign_negative_keywords_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'replaceCampaignNegativeKeywords'
+     *
+     * @param  string $campaign_id Platform campaign ID (required)
+     * @param  \Zernio\Model\ReplaceCampaignNegativeKeywordsRequest $replace_campaign_negative_keywords_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceCampaignNegativeKeywords'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function replaceCampaignNegativeKeywordsRequest($campaign_id, $replace_campaign_negative_keywords_request, string $contentType = self::contentTypes['replaceCampaignNegativeKeywords'][0])
+    {
+
+        // verify the required parameter 'campaign_id' is set
+        if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaign_id when calling replaceCampaignNegativeKeywords'
+            );
+        }
+
+        // verify the required parameter 'replace_campaign_negative_keywords_request' is set
+        if ($replace_campaign_negative_keywords_request === null || (is_array($replace_campaign_negative_keywords_request) && count($replace_campaign_negative_keywords_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $replace_campaign_negative_keywords_request when calling replaceCampaignNegativeKeywords'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/campaigns/{campaignId}/negative-keywords';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($campaign_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'campaignId' . '}',
+                ObjectSerializer::toPathValue($campaign_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($replace_campaign_negative_keywords_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($replace_campaign_negative_keywords_request));
+            } else {
+                $httpBody = $replace_campaign_negative_keywords_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation updateAd
      *
      * Update ad
@@ -7508,6 +8742,325 @@ class AdCampaignsApi
     }
 
     /**
+     * Operation updateAdKeyword
+     *
+     * Pause or enable a Search keyword
+     *
+     * @param  string $keyword_id Zernio keyword ID (not the Google criterion ID) (required)
+     * @param  \Zernio\Model\UpdateAdKeywordRequest $update_ad_keyword_request update_ad_keyword_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdKeyword'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\UpdateAdKeyword200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     */
+    public function updateAdKeyword($keyword_id, $update_ad_keyword_request, string $contentType = self::contentTypes['updateAdKeyword'][0])
+    {
+        list($response) = $this->updateAdKeywordWithHttpInfo($keyword_id, $update_ad_keyword_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateAdKeywordWithHttpInfo
+     *
+     * Pause or enable a Search keyword
+     *
+     * @param  string $keyword_id Zernio keyword ID (not the Google criterion ID) (required)
+     * @param  \Zernio\Model\UpdateAdKeywordRequest $update_ad_keyword_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdKeyword'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\UpdateAdKeyword200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateAdKeywordWithHttpInfo($keyword_id, $update_ad_keyword_request, string $contentType = self::contentTypes['updateAdKeyword'][0])
+    {
+        $request = $this->updateAdKeywordRequest($keyword_id, $update_ad_keyword_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\UpdateAdKeyword200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\UpdateAdKeyword200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\UpdateAdKeyword200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateAdKeywordAsync
+     *
+     * Pause or enable a Search keyword
+     *
+     * @param  string $keyword_id Zernio keyword ID (not the Google criterion ID) (required)
+     * @param  \Zernio\Model\UpdateAdKeywordRequest $update_ad_keyword_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdKeyword'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAdKeywordAsync($keyword_id, $update_ad_keyword_request, string $contentType = self::contentTypes['updateAdKeyword'][0])
+    {
+        return $this->updateAdKeywordAsyncWithHttpInfo($keyword_id, $update_ad_keyword_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateAdKeywordAsyncWithHttpInfo
+     *
+     * Pause or enable a Search keyword
+     *
+     * @param  string $keyword_id Zernio keyword ID (not the Google criterion ID) (required)
+     * @param  \Zernio\Model\UpdateAdKeywordRequest $update_ad_keyword_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdKeyword'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAdKeywordAsyncWithHttpInfo($keyword_id, $update_ad_keyword_request, string $contentType = self::contentTypes['updateAdKeyword'][0])
+    {
+        $returnType = '\Zernio\Model\UpdateAdKeyword200Response';
+        $request = $this->updateAdKeywordRequest($keyword_id, $update_ad_keyword_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateAdKeyword'
+     *
+     * @param  string $keyword_id Zernio keyword ID (not the Google criterion ID) (required)
+     * @param  \Zernio\Model\UpdateAdKeywordRequest $update_ad_keyword_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdKeyword'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateAdKeywordRequest($keyword_id, $update_ad_keyword_request, string $contentType = self::contentTypes['updateAdKeyword'][0])
+    {
+
+        // verify the required parameter 'keyword_id' is set
+        if ($keyword_id === null || (is_array($keyword_id) && count($keyword_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $keyword_id when calling updateAdKeyword'
+            );
+        }
+
+        // verify the required parameter 'update_ad_keyword_request' is set
+        if ($update_ad_keyword_request === null || (is_array($update_ad_keyword_request) && count($update_ad_keyword_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_ad_keyword_request when calling updateAdKeyword'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/keywords/{keywordId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($keyword_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'keywordId' . '}',
+                ObjectSerializer::toPathValue($keyword_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_ad_keyword_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_ad_keyword_request));
+            } else {
+                $httpBody = $update_ad_keyword_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation updateAdSet
      *
      * Update an ad set
@@ -8123,16 +9676,16 @@ class AdCampaignsApi
      * Pause or resume a single ad
      *
      * @param  string $ad_id Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. (required)
-     * @param  \Zernio\Model\UpdateAdStatusRequest $update_ad_status_request update_ad_status_request (required)
+     * @param  \Zernio\Model\UpdateAdKeywordRequest $update_ad_keyword_request update_ad_keyword_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdStatus'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\UpdateAdStatus200Response|\Zernio\Model\InlineObject
      */
-    public function updateAdStatus($ad_id, $update_ad_status_request, string $contentType = self::contentTypes['updateAdStatus'][0])
+    public function updateAdStatus($ad_id, $update_ad_keyword_request, string $contentType = self::contentTypes['updateAdStatus'][0])
     {
-        list($response) = $this->updateAdStatusWithHttpInfo($ad_id, $update_ad_status_request, $contentType);
+        list($response) = $this->updateAdStatusWithHttpInfo($ad_id, $update_ad_keyword_request, $contentType);
         return $response;
     }
 
@@ -8142,16 +9695,16 @@ class AdCampaignsApi
      * Pause or resume a single ad
      *
      * @param  string $ad_id Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. (required)
-     * @param  \Zernio\Model\UpdateAdStatusRequest $update_ad_status_request (required)
+     * @param  \Zernio\Model\UpdateAdKeywordRequest $update_ad_keyword_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdStatus'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\UpdateAdStatus200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateAdStatusWithHttpInfo($ad_id, $update_ad_status_request, string $contentType = self::contentTypes['updateAdStatus'][0])
+    public function updateAdStatusWithHttpInfo($ad_id, $update_ad_keyword_request, string $contentType = self::contentTypes['updateAdStatus'][0])
     {
-        $request = $this->updateAdStatusRequest($ad_id, $update_ad_status_request, $contentType);
+        $request = $this->updateAdStatusRequest($ad_id, $update_ad_keyword_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8242,15 +9795,15 @@ class AdCampaignsApi
      * Pause or resume a single ad
      *
      * @param  string $ad_id Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. (required)
-     * @param  \Zernio\Model\UpdateAdStatusRequest $update_ad_status_request (required)
+     * @param  \Zernio\Model\UpdateAdKeywordRequest $update_ad_keyword_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAdStatusAsync($ad_id, $update_ad_status_request, string $contentType = self::contentTypes['updateAdStatus'][0])
+    public function updateAdStatusAsync($ad_id, $update_ad_keyword_request, string $contentType = self::contentTypes['updateAdStatus'][0])
     {
-        return $this->updateAdStatusAsyncWithHttpInfo($ad_id, $update_ad_status_request, $contentType)
+        return $this->updateAdStatusAsyncWithHttpInfo($ad_id, $update_ad_keyword_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8264,16 +9817,16 @@ class AdCampaignsApi
      * Pause or resume a single ad
      *
      * @param  string $ad_id Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. (required)
-     * @param  \Zernio\Model\UpdateAdStatusRequest $update_ad_status_request (required)
+     * @param  \Zernio\Model\UpdateAdKeywordRequest $update_ad_keyword_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAdStatusAsyncWithHttpInfo($ad_id, $update_ad_status_request, string $contentType = self::contentTypes['updateAdStatus'][0])
+    public function updateAdStatusAsyncWithHttpInfo($ad_id, $update_ad_keyword_request, string $contentType = self::contentTypes['updateAdStatus'][0])
     {
         $returnType = '\Zernio\Model\UpdateAdStatus200Response';
-        $request = $this->updateAdStatusRequest($ad_id, $update_ad_status_request, $contentType);
+        $request = $this->updateAdStatusRequest($ad_id, $update_ad_keyword_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8315,13 +9868,13 @@ class AdCampaignsApi
      * Create request for operation 'updateAdStatus'
      *
      * @param  string $ad_id Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. (required)
-     * @param  \Zernio\Model\UpdateAdStatusRequest $update_ad_status_request (required)
+     * @param  \Zernio\Model\UpdateAdKeywordRequest $update_ad_keyword_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateAdStatusRequest($ad_id, $update_ad_status_request, string $contentType = self::contentTypes['updateAdStatus'][0])
+    public function updateAdStatusRequest($ad_id, $update_ad_keyword_request, string $contentType = self::contentTypes['updateAdStatus'][0])
     {
 
         // verify the required parameter 'ad_id' is set
@@ -8331,10 +9884,10 @@ class AdCampaignsApi
             );
         }
 
-        // verify the required parameter 'update_ad_status_request' is set
-        if ($update_ad_status_request === null || (is_array($update_ad_status_request) && count($update_ad_status_request) === 0)) {
+        // verify the required parameter 'update_ad_keyword_request' is set
+        if ($update_ad_keyword_request === null || (is_array($update_ad_keyword_request) && count($update_ad_keyword_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_ad_status_request when calling updateAdStatus'
+                'Missing the required parameter $update_ad_keyword_request when calling updateAdStatus'
             );
         }
 
@@ -8365,12 +9918,12 @@ class AdCampaignsApi
         );
 
         // for model (json/xml)
-        if (isset($update_ad_status_request)) {
+        if (isset($update_ad_keyword_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_ad_status_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_ad_keyword_request));
             } else {
-                $httpBody = $update_ad_status_request;
+                $httpBody = $update_ad_keyword_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

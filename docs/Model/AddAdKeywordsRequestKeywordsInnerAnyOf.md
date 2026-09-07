@@ -1,10 +1,10 @@
-# # ListAdKeywords200Response
+# # AddAdKeywordsRequestKeywordsInnerAnyOf
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**keywords** | [**\Zernio\Model\AdKeyword[]**](AdKeyword.md) |  | [optional]
-**pagination** | [**\Zernio\Model\Pagination**](Pagination.md) |  | [optional]
+**text** | **string** |  |
+**match_type** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
