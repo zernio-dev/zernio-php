@@ -60,7 +60,9 @@ class GetCampaignTargeting200Response implements ModelInterface, ArrayAccess, \J
     protected static $openAPITypes = [
         'devices' => '\Zernio\Model\GetCampaignTargeting200ResponseDevicesInner[]',
         'locations' => '\Zernio\Model\GetCampaignTargeting200ResponseLocationsInner[]',
-        'languages' => '\Zernio\Model\GetCampaignTargeting200ResponseLanguagesInner[]'
+        'languages' => '\Zernio\Model\GetCampaignTargeting200ResponseLanguagesInner[]',
+        'cached_at' => '\DateTime',
+        'stale' => 'bool'
     ];
 
     /**
@@ -73,7 +75,9 @@ class GetCampaignTargeting200Response implements ModelInterface, ArrayAccess, \J
     protected static $openAPIFormats = [
         'devices' => null,
         'locations' => null,
-        'languages' => null
+        'languages' => null,
+        'cached_at' => 'date-time',
+        'stale' => null
     ];
 
     /**
@@ -84,7 +88,9 @@ class GetCampaignTargeting200Response implements ModelInterface, ArrayAccess, \J
     protected static array $openAPINullables = [
         'devices' => false,
         'locations' => false,
-        'languages' => false
+        'languages' => false,
+        'cached_at' => true,
+        'stale' => false
     ];
 
     /**
@@ -175,7 +181,9 @@ class GetCampaignTargeting200Response implements ModelInterface, ArrayAccess, \J
     protected static $attributeMap = [
         'devices' => 'devices',
         'locations' => 'locations',
-        'languages' => 'languages'
+        'languages' => 'languages',
+        'cached_at' => 'cachedAt',
+        'stale' => 'stale'
     ];
 
     /**
@@ -186,7 +194,9 @@ class GetCampaignTargeting200Response implements ModelInterface, ArrayAccess, \J
     protected static $setters = [
         'devices' => 'setDevices',
         'locations' => 'setLocations',
-        'languages' => 'setLanguages'
+        'languages' => 'setLanguages',
+        'cached_at' => 'setCachedAt',
+        'stale' => 'setStale'
     ];
 
     /**
@@ -197,7 +207,9 @@ class GetCampaignTargeting200Response implements ModelInterface, ArrayAccess, \J
     protected static $getters = [
         'devices' => 'getDevices',
         'locations' => 'getLocations',
-        'languages' => 'getLanguages'
+        'languages' => 'getLanguages',
+        'cached_at' => 'getCachedAt',
+        'stale' => 'getStale'
     ];
 
     /**
@@ -260,6 +272,8 @@ class GetCampaignTargeting200Response implements ModelInterface, ArrayAccess, \J
         $this->setIfExists('devices', $data ?? [], null);
         $this->setIfExists('locations', $data ?? [], null);
         $this->setIfExists('languages', $data ?? [], null);
+        $this->setIfExists('cached_at', $data ?? [], null);
+        $this->setIfExists('stale', $data ?? [], null);
     }
 
     /**
@@ -381,6 +395,67 @@ class GetCampaignTargeting200Response implements ModelInterface, ArrayAccess, \J
             throw new \InvalidArgumentException('non-nullable languages cannot be null');
         }
         $this->container['languages'] = $languages;
+
+        return $this;
+    }
+
+    /**
+     * Gets cached_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCachedAt()
+    {
+        return $this->container['cached_at'];
+    }
+
+    /**
+     * Sets cached_at
+     *
+     * @param \DateTime|null $cached_at When this targeting was fetched from Google. Null when it was never served from cache.
+     *
+     * @return self
+     */
+    public function setCachedAt($cached_at)
+    {
+        if (is_null($cached_at)) {
+            array_push($this->openAPINullablesSetToNull, 'cached_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cached_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cached_at'] = $cached_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets stale
+     *
+     * @return bool|null
+     */
+    public function getStale()
+    {
+        return $this->container['stale'];
+    }
+
+    /**
+     * Sets stale
+     *
+     * @param bool|null $stale True when Google's daily API quota was exhausted and this is the last successful fetch, not a live read.
+     *
+     * @return self
+     */
+    public function setStale($stale)
+    {
+        if (is_null($stale)) {
+            throw new \InvalidArgumentException('non-nullable stale cannot be null');
+        }
+        $this->container['stale'] = $stale;
 
         return $this;
     }

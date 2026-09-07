@@ -58,7 +58,9 @@ class ListAdAccounts200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'accounts' => '\Zernio\Model\ListAdAccounts200ResponseAccountsInner[]'
+        'accounts' => '\Zernio\Model\ListAdAccounts200ResponseAccountsInner[]',
+        'cached_at' => '\DateTime',
+        'stale' => 'bool'
     ];
 
     /**
@@ -69,7 +71,9 @@ class ListAdAccounts200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'accounts' => null
+        'accounts' => null,
+        'cached_at' => 'date-time',
+        'stale' => null
     ];
 
     /**
@@ -78,7 +82,9 @@ class ListAdAccounts200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'accounts' => false
+        'accounts' => false,
+        'cached_at' => true,
+        'stale' => false
     ];
 
     /**
@@ -167,7 +173,9 @@ class ListAdAccounts200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'accounts' => 'accounts'
+        'accounts' => 'accounts',
+        'cached_at' => 'cachedAt',
+        'stale' => 'stale'
     ];
 
     /**
@@ -176,7 +184,9 @@ class ListAdAccounts200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'accounts' => 'setAccounts'
+        'accounts' => 'setAccounts',
+        'cached_at' => 'setCachedAt',
+        'stale' => 'setStale'
     ];
 
     /**
@@ -185,7 +195,9 @@ class ListAdAccounts200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'accounts' => 'getAccounts'
+        'accounts' => 'getAccounts',
+        'cached_at' => 'getCachedAt',
+        'stale' => 'getStale'
     ];
 
     /**
@@ -246,6 +258,8 @@ class ListAdAccounts200Response implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(?array $data = null)
     {
         $this->setIfExists('accounts', $data ?? [], null);
+        $this->setIfExists('cached_at', $data ?? [], null);
+        $this->setIfExists('stale', $data ?? [], null);
     }
 
     /**
@@ -313,6 +327,67 @@ class ListAdAccounts200Response implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable accounts cannot be null');
         }
         $this->container['accounts'] = $accounts;
+
+        return $this;
+    }
+
+    /**
+     * Gets cached_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCachedAt()
+    {
+        return $this->container['cached_at'];
+    }
+
+    /**
+     * Sets cached_at
+     *
+     * @param \DateTime|null $cached_at Google only. When this list was fetched from Google. Null when it was never served from cache, or on other platforms.
+     *
+     * @return self
+     */
+    public function setCachedAt($cached_at)
+    {
+        if (is_null($cached_at)) {
+            array_push($this->openAPINullablesSetToNull, 'cached_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cached_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cached_at'] = $cached_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets stale
+     *
+     * @return bool|null
+     */
+    public function getStale()
+    {
+        return $this->container['stale'];
+    }
+
+    /**
+     * Sets stale
+     *
+     * @param bool|null $stale Google only. True when Google's daily API quota was exhausted and this is the last successful fetch, not a live read. Absent on other platforms.
+     *
+     * @return self
+     */
+    public function setStale($stale)
+    {
+        if (is_null($stale)) {
+            throw new \InvalidArgumentException('non-nullable stale cannot be null');
+        }
+        $this->container['stale'] = $stale;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * GetAdsSearchTerms200Response
+ * UpdateCampaignTargeting200ResponseLanguagesInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetAdsSearchTerms200Response Class Doc Comment
+ * UpdateCampaignTargeting200ResponseLanguagesInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetAdsSearchTerms200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateCampaignTargeting200ResponseLanguagesInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetAdsSearchTerms200Response implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getAdsSearchTerms_200_response';
+    protected static $openAPIModelName = 'updateCampaignTargeting_200_response_languages_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,9 @@ class GetAdsSearchTerms200Response implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'customer_id' => 'string',
-        'data' => '\Zernio\Model\GetAdsSearchTerms200ResponseDataInner[]',
-        'paging' => '\Zernio\Model\GetAdsSearchTerms200ResponsePaging',
-        'cached_at' => '\DateTime',
-        'stale' => 'bool'
+        'code' => 'string',
+        'id' => 'string',
+        'name' => 'string'
     ];
 
     /**
@@ -73,11 +71,9 @@ class GetAdsSearchTerms200Response implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'customer_id' => null,
-        'data' => null,
-        'paging' => null,
-        'cached_at' => 'date-time',
-        'stale' => null
+        'code' => null,
+        'id' => null,
+        'name' => null
     ];
 
     /**
@@ -86,11 +82,9 @@ class GetAdsSearchTerms200Response implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'customer_id' => false,
-        'data' => false,
-        'paging' => false,
-        'cached_at' => true,
-        'stale' => false
+        'code' => false,
+        'id' => false,
+        'name' => false
     ];
 
     /**
@@ -179,11 +173,9 @@ class GetAdsSearchTerms200Response implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'customer_id' => 'customerId',
-        'data' => 'data',
-        'paging' => 'paging',
-        'cached_at' => 'cachedAt',
-        'stale' => 'stale'
+        'code' => 'code',
+        'id' => 'id',
+        'name' => 'name'
     ];
 
     /**
@@ -192,11 +184,9 @@ class GetAdsSearchTerms200Response implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'customer_id' => 'setCustomerId',
-        'data' => 'setData',
-        'paging' => 'setPaging',
-        'cached_at' => 'setCachedAt',
-        'stale' => 'setStale'
+        'code' => 'setCode',
+        'id' => 'setId',
+        'name' => 'setName'
     ];
 
     /**
@@ -205,11 +195,9 @@ class GetAdsSearchTerms200Response implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'customer_id' => 'getCustomerId',
-        'data' => 'getData',
-        'paging' => 'getPaging',
-        'cached_at' => 'getCachedAt',
-        'stale' => 'getStale'
+        'code' => 'getCode',
+        'id' => 'getId',
+        'name' => 'getName'
     ];
 
     /**
@@ -269,11 +257,9 @@ class GetAdsSearchTerms200Response implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('customer_id', $data ?? [], null);
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('paging', $data ?? [], null);
-        $this->setIfExists('cached_at', $data ?? [], null);
-        $this->setIfExists('stale', $data ?? [], null);
+        $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
     }
 
     /**
@@ -319,143 +305,82 @@ class GetAdsSearchTerms200Response implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets customer_id
+     * Gets code
      *
      * @return string|null
      */
-    public function getCustomerId()
+    public function getCode()
     {
-        return $this->container['customer_id'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets customer_id
+     * Sets code
      *
-     * @param string|null $customer_id customer_id
+     * @param string|null $code code
      *
      * @return self
      */
-    public function setCustomerId($customer_id)
+    public function setCode($code)
     {
-        if (is_null($customer_id)) {
-            throw new \InvalidArgumentException('non-nullable customer_id cannot be null');
+        if (is_null($code)) {
+            throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
-        $this->container['customer_id'] = $customer_id;
+        $this->container['code'] = $code;
 
         return $this;
     }
 
     /**
-     * Gets data
+     * Gets id
      *
-     * @return \Zernio\Model\GetAdsSearchTerms200ResponseDataInner[]|null
+     * @return string|null
      */
-    public function getData()
+    public function getId()
     {
-        return $this->container['data'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets data
+     * Sets id
      *
-     * @param \Zernio\Model\GetAdsSearchTerms200ResponseDataInner[]|null $data data
+     * @param string|null $id id
      *
      * @return self
      */
-    public function setData($data)
+    public function setId($id)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets paging
+     * Gets name
      *
-     * @return \Zernio\Model\GetAdsSearchTerms200ResponsePaging|null
+     * @return string|null
      */
-    public function getPaging()
+    public function getName()
     {
-        return $this->container['paging'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets paging
+     * Sets name
      *
-     * @param \Zernio\Model\GetAdsSearchTerms200ResponsePaging|null $paging paging
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setPaging($paging)
+    public function setName($name)
     {
-        if (is_null($paging)) {
-            throw new \InvalidArgumentException('non-nullable paging cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['paging'] = $paging;
-
-        return $this;
-    }
-
-    /**
-     * Gets cached_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCachedAt()
-    {
-        return $this->container['cached_at'];
-    }
-
-    /**
-     * Sets cached_at
-     *
-     * @param \DateTime|null $cached_at When this data was fetched from Google. Null when it was never served from cache.
-     *
-     * @return self
-     */
-    public function setCachedAt($cached_at)
-    {
-        if (is_null($cached_at)) {
-            array_push($this->openAPINullablesSetToNull, 'cached_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cached_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['cached_at'] = $cached_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets stale
-     *
-     * @return bool|null
-     */
-    public function getStale()
-    {
-        return $this->container['stale'];
-    }
-
-    /**
-     * Sets stale
-     *
-     * @param bool|null $stale True when Google's daily API quota was exhausted and this is the last successful fetch, not a live read.
-     *
-     * @return self
-     */
-    public function setStale($stale)
-    {
-        if (is_null($stale)) {
-            throw new \InvalidArgumentException('non-nullable stale cannot be null');
-        }
-        $this->container['stale'] = $stale;
+        $this->container['name'] = $name;
 
         return $this;
     }

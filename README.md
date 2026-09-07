@@ -2204,6 +2204,8 @@ Class | Method | HTTP request | Description
 - [UpdateBroadcastRequestTemplate](docs/Model/UpdateBroadcastRequestTemplate.md)
 - [UpdateBroadcastRequestTemplateVariableMappingValue](docs/Model/UpdateBroadcastRequestTemplateVariableMappingValue.md)
 - [UpdateCampaignTargeting200Response](docs/Model/UpdateCampaignTargeting200Response.md)
+- [UpdateCampaignTargeting200ResponseDevicesInner](docs/Model/UpdateCampaignTargeting200ResponseDevicesInner.md)
+- [UpdateCampaignTargeting200ResponseLanguagesInner](docs/Model/UpdateCampaignTargeting200ResponseLanguagesInner.md)
 - [UpdateCampaignTargetingRequest](docs/Model/UpdateCampaignTargetingRequest.md)
 - [UpdateCampaignTargetingRequestTargeting](docs/Model/UpdateCampaignTargetingRequestTargeting.md)
 - [UpdateCampaignTargetingRequestTargetingDevicesInner](docs/Model/UpdateCampaignTargetingRequestTargetingDevicesInner.md)

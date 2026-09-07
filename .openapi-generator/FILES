@@ -1583,6 +1583,8 @@ docs/Model/UpdateBroadcastRequestMessage.md
 docs/Model/UpdateBroadcastRequestTemplate.md
 docs/Model/UpdateBroadcastRequestTemplateVariableMappingValue.md
 docs/Model/UpdateCampaignTargeting200Response.md
+docs/Model/UpdateCampaignTargeting200ResponseDevicesInner.md
+docs/Model/UpdateCampaignTargeting200ResponseLanguagesInner.md
 docs/Model/UpdateCampaignTargetingRequest.md
 docs/Model/UpdateCampaignTargetingRequestTargeting.md
 docs/Model/UpdateCampaignTargetingRequestTargetingDevicesInner.md
@@ -3494,6 +3496,8 @@ lib/Model/UpdateBroadcastRequestMessage.php
 lib/Model/UpdateBroadcastRequestTemplate.php
 lib/Model/UpdateBroadcastRequestTemplateVariableMappingValue.php
 lib/Model/UpdateCampaignTargeting200Response.php
+lib/Model/UpdateCampaignTargeting200ResponseDevicesInner.php
+lib/Model/UpdateCampaignTargeting200ResponseLanguagesInner.php
 lib/Model/UpdateCampaignTargetingRequest.php
 lib/Model/UpdateCampaignTargetingRequestTargeting.php
 lib/Model/UpdateCampaignTargetingRequestTargetingDevicesInner.php
@@ -3821,17 +3825,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CampaignBiddingBidSpecTest.php
-test/Model/CampaignBiddingPortfolioTest.php
-test/Model/CampaignBiddingTest.php
-test/Model/CreateBidStrategy201ResponseStrategyTest.php
-test/Model/CreateBidStrategy201ResponseTest.php
-test/Model/CreateBidStrategyRequestTest.php
-test/Model/GetCampaignBidding200ResponseTest.php
-test/Model/ListBidStrategies200ResponseTest.php
-test/Model/PortfolioBidStrategyTest.php
-test/Model/UpdateAdRequestTargetingDevicesInnerOneOfTest.php
-test/Model/UpdateAdRequestTargetingDevicesInnerTest.php
-test/Model/UpdateBidStrategy200ResponseStrategyTest.php
-test/Model/UpdateBidStrategy200ResponseTest.php
-test/Model/UpdateBidStrategyRequestTest.php
+test/Model/UpdateCampaignTargeting200ResponseDevicesInnerTest.php
+test/Model/UpdateCampaignTargeting200ResponseLanguagesInnerTest.php

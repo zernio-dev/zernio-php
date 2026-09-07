@@ -1,6 +1,6 @@
 <?php
 /**
- * GetAdsSearchTerms200Response
+ * UpdateCampaignTargeting200ResponseDevicesInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetAdsSearchTerms200Response Class Doc Comment
+ * UpdateCampaignTargeting200ResponseDevicesInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetAdsSearchTerms200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateCampaignTargeting200ResponseDevicesInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetAdsSearchTerms200Response implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getAdsSearchTerms_200_response';
+    protected static $openAPIModelName = 'updateCampaignTargeting_200_response_devices_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,9 @@ class GetAdsSearchTerms200Response implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'customer_id' => 'string',
-        'data' => '\Zernio\Model\GetAdsSearchTerms200ResponseDataInner[]',
-        'paging' => '\Zernio\Model\GetAdsSearchTerms200ResponsePaging',
-        'cached_at' => '\DateTime',
-        'stale' => 'bool'
+        'device' => 'string',
+        'included' => 'bool',
+        'bid_modifier' => 'float'
     ];
 
     /**
@@ -73,11 +71,9 @@ class GetAdsSearchTerms200Response implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'customer_id' => null,
-        'data' => null,
-        'paging' => null,
-        'cached_at' => 'date-time',
-        'stale' => null
+        'device' => null,
+        'included' => null,
+        'bid_modifier' => null
     ];
 
     /**
@@ -86,11 +82,9 @@ class GetAdsSearchTerms200Response implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'customer_id' => false,
-        'data' => false,
-        'paging' => false,
-        'cached_at' => true,
-        'stale' => false
+        'device' => false,
+        'included' => false,
+        'bid_modifier' => true
     ];
 
     /**
@@ -179,11 +173,9 @@ class GetAdsSearchTerms200Response implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'customer_id' => 'customerId',
-        'data' => 'data',
-        'paging' => 'paging',
-        'cached_at' => 'cachedAt',
-        'stale' => 'stale'
+        'device' => 'device',
+        'included' => 'included',
+        'bid_modifier' => 'bidModifier'
     ];
 
     /**
@@ -192,11 +184,9 @@ class GetAdsSearchTerms200Response implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'customer_id' => 'setCustomerId',
-        'data' => 'setData',
-        'paging' => 'setPaging',
-        'cached_at' => 'setCachedAt',
-        'stale' => 'setStale'
+        'device' => 'setDevice',
+        'included' => 'setIncluded',
+        'bid_modifier' => 'setBidModifier'
     ];
 
     /**
@@ -205,11 +195,9 @@ class GetAdsSearchTerms200Response implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'customer_id' => 'getCustomerId',
-        'data' => 'getData',
-        'paging' => 'getPaging',
-        'cached_at' => 'getCachedAt',
-        'stale' => 'getStale'
+        'device' => 'getDevice',
+        'included' => 'getIncluded',
+        'bid_modifier' => 'getBidModifier'
     ];
 
     /**
@@ -253,6 +241,25 @@ class GetAdsSearchTerms200Response implements ModelInterface, ArrayAccess, \Json
         return self::$openAPIModelName;
     }
 
+    public const DEVICE_MOBILE = 'MOBILE';
+    public const DEVICE_DESKTOP = 'DESKTOP';
+    public const DEVICE_TABLET = 'TABLET';
+    public const DEVICE_CONNECTED_TV = 'CONNECTED_TV';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getDeviceAllowableValues()
+    {
+        return [
+            self::DEVICE_MOBILE,
+            self::DEVICE_DESKTOP,
+            self::DEVICE_TABLET,
+            self::DEVICE_CONNECTED_TV,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -269,11 +276,9 @@ class GetAdsSearchTerms200Response implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('customer_id', $data ?? [], null);
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('paging', $data ?? [], null);
-        $this->setIfExists('cached_at', $data ?? [], null);
-        $this->setIfExists('stale', $data ?? [], null);
+        $this->setIfExists('device', $data ?? [], null);
+        $this->setIfExists('included', $data ?? [], null);
+        $this->setIfExists('bid_modifier', $data ?? [], null);
     }
 
     /**
@@ -303,6 +308,15 @@ class GetAdsSearchTerms200Response implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getDeviceAllowableValues();
+        if (!is_null($this->container['device']) && !in_array($this->container['device'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'device', must be one of '%s'",
+                $this->container['device'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -319,143 +333,99 @@ class GetAdsSearchTerms200Response implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets customer_id
+     * Gets device
      *
      * @return string|null
      */
-    public function getCustomerId()
+    public function getDevice()
     {
-        return $this->container['customer_id'];
+        return $this->container['device'];
     }
 
     /**
-     * Sets customer_id
+     * Sets device
      *
-     * @param string|null $customer_id customer_id
+     * @param string|null $device device
      *
      * @return self
      */
-    public function setCustomerId($customer_id)
+    public function setDevice($device)
     {
-        if (is_null($customer_id)) {
-            throw new \InvalidArgumentException('non-nullable customer_id cannot be null');
+        if (is_null($device)) {
+            throw new \InvalidArgumentException('non-nullable device cannot be null');
         }
-        $this->container['customer_id'] = $customer_id;
+        $allowedValues = $this->getDeviceAllowableValues();
+        if (!in_array($device, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'device', must be one of '%s'",
+                    $device,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['device'] = $device;
 
         return $this;
     }
 
     /**
-     * Gets data
+     * Gets included
      *
-     * @return \Zernio\Model\GetAdsSearchTerms200ResponseDataInner[]|null
+     * @return bool|null
      */
-    public function getData()
+    public function getIncluded()
     {
-        return $this->container['data'];
+        return $this->container['included'];
     }
 
     /**
-     * Sets data
+     * Sets included
      *
-     * @param \Zernio\Model\GetAdsSearchTerms200ResponseDataInner[]|null $data data
+     * @param bool|null $included included
      *
      * @return self
      */
-    public function setData($data)
+    public function setIncluded($included)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($included)) {
+            throw new \InvalidArgumentException('non-nullable included cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['included'] = $included;
 
         return $this;
     }
 
     /**
-     * Gets paging
+     * Gets bid_modifier
      *
-     * @return \Zernio\Model\GetAdsSearchTerms200ResponsePaging|null
+     * @return float|null
      */
-    public function getPaging()
+    public function getBidModifier()
     {
-        return $this->container['paging'];
+        return $this->container['bid_modifier'];
     }
 
     /**
-     * Sets paging
+     * Sets bid_modifier
      *
-     * @param \Zernio\Model\GetAdsSearchTerms200ResponsePaging|null $paging paging
+     * @param float|null $bid_modifier Always null on this read; see GET's description.
      *
      * @return self
      */
-    public function setPaging($paging)
+    public function setBidModifier($bid_modifier)
     {
-        if (is_null($paging)) {
-            throw new \InvalidArgumentException('non-nullable paging cannot be null');
-        }
-        $this->container['paging'] = $paging;
-
-        return $this;
-    }
-
-    /**
-     * Gets cached_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCachedAt()
-    {
-        return $this->container['cached_at'];
-    }
-
-    /**
-     * Sets cached_at
-     *
-     * @param \DateTime|null $cached_at When this data was fetched from Google. Null when it was never served from cache.
-     *
-     * @return self
-     */
-    public function setCachedAt($cached_at)
-    {
-        if (is_null($cached_at)) {
-            array_push($this->openAPINullablesSetToNull, 'cached_at');
+        if (is_null($bid_modifier)) {
+            array_push($this->openAPINullablesSetToNull, 'bid_modifier');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cached_at', $nullablesSetToNull);
+            $index = array_search('bid_modifier', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['cached_at'] = $cached_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets stale
-     *
-     * @return bool|null
-     */
-    public function getStale()
-    {
-        return $this->container['stale'];
-    }
-
-    /**
-     * Sets stale
-     *
-     * @param bool|null $stale True when Google's daily API quota was exhausted and this is the last successful fetch, not a live read.
-     *
-     * @return self
-     */
-    public function setStale($stale)
-    {
-        if (is_null($stale)) {
-            throw new \InvalidArgumentException('non-nullable stale cannot be null');
-        }
-        $this->container['stale'] = $stale;
+        $this->container['bid_modifier'] = $bid_modifier;
 
         return $this;
     }

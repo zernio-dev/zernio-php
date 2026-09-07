@@ -59,7 +59,10 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
       */
     protected static $openAPITypes = [
         'campaign_id' => 'string',
-        'updated' => 'string[]'
+        'updated' => 'string[]',
+        'devices' => '\Zernio\Model\UpdateCampaignTargeting200ResponseDevicesInner[]',
+        'locations' => '\Zernio\Model\GetCampaignTargeting200ResponseLocationsInner[]',
+        'languages' => '\Zernio\Model\UpdateCampaignTargeting200ResponseLanguagesInner[]'
     ];
 
     /**
@@ -71,7 +74,10 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
       */
     protected static $openAPIFormats = [
         'campaign_id' => null,
-        'updated' => null
+        'updated' => null,
+        'devices' => null,
+        'locations' => null,
+        'languages' => null
     ];
 
     /**
@@ -81,7 +87,10 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
       */
     protected static array $openAPINullables = [
         'campaign_id' => false,
-        'updated' => false
+        'updated' => false,
+        'devices' => false,
+        'locations' => false,
+        'languages' => false
     ];
 
     /**
@@ -171,7 +180,10 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
      */
     protected static $attributeMap = [
         'campaign_id' => 'campaignId',
-        'updated' => 'updated'
+        'updated' => 'updated',
+        'devices' => 'devices',
+        'locations' => 'locations',
+        'languages' => 'languages'
     ];
 
     /**
@@ -181,7 +193,10 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
      */
     protected static $setters = [
         'campaign_id' => 'setCampaignId',
-        'updated' => 'setUpdated'
+        'updated' => 'setUpdated',
+        'devices' => 'setDevices',
+        'locations' => 'setLocations',
+        'languages' => 'setLanguages'
     ];
 
     /**
@@ -191,7 +206,10 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
      */
     protected static $getters = [
         'campaign_id' => 'getCampaignId',
-        'updated' => 'getUpdated'
+        'updated' => 'getUpdated',
+        'devices' => 'getDevices',
+        'locations' => 'getLocations',
+        'languages' => 'getLanguages'
     ];
 
     /**
@@ -270,6 +288,9 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
     {
         $this->setIfExists('campaign_id', $data ?? [], null);
         $this->setIfExists('updated', $data ?? [], null);
+        $this->setIfExists('devices', $data ?? [], null);
+        $this->setIfExists('locations', $data ?? [], null);
+        $this->setIfExists('languages', $data ?? [], null);
     }
 
     /**
@@ -373,6 +394,87 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
             );
         }
         $this->container['updated'] = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Gets devices
+     *
+     * @return \Zernio\Model\UpdateCampaignTargeting200ResponseDevicesInner[]|null
+     */
+    public function getDevices()
+    {
+        return $this->container['devices'];
+    }
+
+    /**
+     * Sets devices
+     *
+     * @param \Zernio\Model\UpdateCampaignTargeting200ResponseDevicesInner[]|null $devices devices
+     *
+     * @return self
+     */
+    public function setDevices($devices)
+    {
+        if (is_null($devices)) {
+            throw new \InvalidArgumentException('non-nullable devices cannot be null');
+        }
+        $this->container['devices'] = $devices;
+
+        return $this;
+    }
+
+    /**
+     * Gets locations
+     *
+     * @return \Zernio\Model\GetCampaignTargeting200ResponseLocationsInner[]|null
+     */
+    public function getLocations()
+    {
+        return $this->container['locations'];
+    }
+
+    /**
+     * Sets locations
+     *
+     * @param \Zernio\Model\GetCampaignTargeting200ResponseLocationsInner[]|null $locations locations
+     *
+     * @return self
+     */
+    public function setLocations($locations)
+    {
+        if (is_null($locations)) {
+            throw new \InvalidArgumentException('non-nullable locations cannot be null');
+        }
+        $this->container['locations'] = $locations;
+
+        return $this;
+    }
+
+    /**
+     * Gets languages
+     *
+     * @return \Zernio\Model\UpdateCampaignTargeting200ResponseLanguagesInner[]|null
+     */
+    public function getLanguages()
+    {
+        return $this->container['languages'];
+    }
+
+    /**
+     * Sets languages
+     *
+     * @param \Zernio\Model\UpdateCampaignTargeting200ResponseLanguagesInner[]|null $languages languages
+     *
+     * @return self
+     */
+    public function setLanguages($languages)
+    {
+        if (is_null($languages)) {
+            throw new \InvalidArgumentException('non-nullable languages cannot be null');
+        }
+        $this->container['languages'] = $languages;
 
         return $this;
     }

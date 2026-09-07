@@ -62,6 +62,8 @@ class GetCampaignBidding200Response implements ModelInterface, ArrayAccess, \Jso
         'bidding_strategy_type' => 'string',
         'bid_spec' => '\Zernio\Model\CampaignBiddingBidSpec',
         'portfolio' => '\Zernio\Model\CampaignBiddingPortfolio',
+        'cached_at' => '\DateTime',
+        'stale' => 'bool',
         'campaign_id' => 'string'
     ];
 
@@ -77,6 +79,8 @@ class GetCampaignBidding200Response implements ModelInterface, ArrayAccess, \Jso
         'bidding_strategy_type' => null,
         'bid_spec' => null,
         'portfolio' => null,
+        'cached_at' => 'date-time',
+        'stale' => null,
         'campaign_id' => null
     ];
 
@@ -90,6 +94,8 @@ class GetCampaignBidding200Response implements ModelInterface, ArrayAccess, \Jso
         'bidding_strategy_type' => false,
         'bid_spec' => false,
         'portfolio' => false,
+        'cached_at' => false,
+        'stale' => false,
         'campaign_id' => false
     ];
 
@@ -183,6 +189,8 @@ class GetCampaignBidding200Response implements ModelInterface, ArrayAccess, \Jso
         'bidding_strategy_type' => 'biddingStrategyType',
         'bid_spec' => 'bidSpec',
         'portfolio' => 'portfolio',
+        'cached_at' => 'cachedAt',
+        'stale' => 'stale',
         'campaign_id' => 'campaignId'
     ];
 
@@ -196,6 +204,8 @@ class GetCampaignBidding200Response implements ModelInterface, ArrayAccess, \Jso
         'bidding_strategy_type' => 'setBiddingStrategyType',
         'bid_spec' => 'setBidSpec',
         'portfolio' => 'setPortfolio',
+        'cached_at' => 'setCachedAt',
+        'stale' => 'setStale',
         'campaign_id' => 'setCampaignId'
     ];
 
@@ -209,6 +219,8 @@ class GetCampaignBidding200Response implements ModelInterface, ArrayAccess, \Jso
         'bidding_strategy_type' => 'getBiddingStrategyType',
         'bid_spec' => 'getBidSpec',
         'portfolio' => 'getPortfolio',
+        'cached_at' => 'getCachedAt',
+        'stale' => 'getStale',
         'campaign_id' => 'getCampaignId'
     ];
 
@@ -288,6 +300,8 @@ class GetCampaignBidding200Response implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('bidding_strategy_type', $data ?? [], null);
         $this->setIfExists('bid_spec', $data ?? [], null);
         $this->setIfExists('portfolio', $data ?? [], null);
+        $this->setIfExists('cached_at', $data ?? [], null);
+        $this->setIfExists('stale', $data ?? [], null);
         $this->setIfExists('campaign_id', $data ?? [], null);
     }
 
@@ -456,6 +470,60 @@ class GetCampaignBidding200Response implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable portfolio cannot be null');
         }
         $this->container['portfolio'] = $portfolio;
+
+        return $this;
+    }
+
+    /**
+     * Gets cached_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCachedAt()
+    {
+        return $this->container['cached_at'];
+    }
+
+    /**
+     * Sets cached_at
+     *
+     * @param \DateTime|null $cached_at When this data was fetched from Google. Null when it was never served from cache.
+     *
+     * @return self
+     */
+    public function setCachedAt($cached_at)
+    {
+        if (is_null($cached_at)) {
+            throw new \InvalidArgumentException('non-nullable cached_at cannot be null');
+        }
+        $this->container['cached_at'] = $cached_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets stale
+     *
+     * @return bool|null
+     */
+    public function getStale()
+    {
+        return $this->container['stale'];
+    }
+
+    /**
+     * Sets stale
+     *
+     * @param bool|null $stale True when Google's daily API quota was exhausted and this is the last successful fetch, not a live read.
+     *
+     * @return self
+     */
+    public function setStale($stale)
+    {
+        if (is_null($stale)) {
+            throw new \InvalidArgumentException('non-nullable stale cannot be null');
+        }
+        $this->container['stale'] = $stale;
 
         return $this;
     }
