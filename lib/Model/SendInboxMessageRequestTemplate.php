@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * SendInboxMessageRequestTemplate Class Doc Comment
  *
  * @category Class
- * @description Platform-dependent template payload. Ignored on Telegram.  Instagram / Facebook: a generic template (carousel). Set &#x60;type: generic&#x60; and provide up to 10 &#x60;elements&#x60;, each with a &#x60;title&#x60; (required) and optional &#x60;subtitle&#x60;, &#x60;imageUrl&#x60;, and &#x60;buttons&#x60;. Mutually exclusive with the top-level &#x60;buttons&#x60; field (sending both is a 400); put the card&#39;s buttons on its &#x60;elements&#x60; instead.  WhatsApp: sends an approved WhatsApp template message, the only message type WhatsApp accepts when the 24-hour customer-service window is closed. Provide exactly one element carrying the template reference: &#x60;{ \&quot;elements\&quot;: [{ \&quot;name\&quot;: \&quot;order_update\&quot;, \&quot;language\&quot;: \&quot;en_US\&quot;, \&quot;components\&quot;: [...] }] }&#x60; (&#x60;type&#x60; is ignored on WhatsApp). &#x60;components&#x60; is optional and is forwarded unchanged as the &#x60;template.components&#x60; array of Meta&#39;s Cloud API send payload; use it to fill body/header variables and button parameters, e.g. &#x60;[{ \&quot;type\&quot;: \&quot;body\&quot;, \&quot;parameters\&quot;: [{ \&quot;type\&quot;: \&quot;text\&quot;, \&quot;text\&quot;: \&quot;John\&quot; }] }]&#x60;. Templates with media headers (image, video, document) must include the header component with its media link here at send time. To send a template to a phone number with no existing conversation, or to have media headers filled in automatically from the template definition, use the create-conversation endpoint (POST /v1/inbox/conversations) instead.
+ * @description Platform-dependent template payload. Ignored on Telegram.  Instagram / Facebook: a generic template (carousel). Set &#x60;type: generic&#x60; and provide up to 10 &#x60;elements&#x60;, each with a &#x60;title&#x60; (required) and optional &#x60;subtitle&#x60;, &#x60;imageUrl&#x60;, and &#x60;buttons&#x60;. Mutually exclusive with the top-level &#x60;buttons&#x60; field (sending both is a 400); put the card&#39;s buttons on its &#x60;elements&#x60; instead. On Facebook, &#x60;imageAspectRatio&#x60; (&#x60;horizontal&#x60;, the default, or &#x60;square&#x60;) sets how Messenger renders the element images; Instagram has no such setting and rejects it.  WhatsApp: sends an approved WhatsApp template message, the only message type WhatsApp accepts when the 24-hour customer-service window is closed. Provide exactly one element carrying the template reference: &#x60;{ \&quot;elements\&quot;: [{ \&quot;name\&quot;: \&quot;order_update\&quot;, \&quot;language\&quot;: \&quot;en_US\&quot;, \&quot;components\&quot;: [...] }] }&#x60; (&#x60;type&#x60; is ignored on WhatsApp). &#x60;components&#x60; is optional and is forwarded unchanged as the &#x60;template.components&#x60; array of Meta&#39;s Cloud API send payload; use it to fill body/header variables and button parameters, e.g. &#x60;[{ \&quot;type\&quot;: \&quot;body\&quot;, \&quot;parameters\&quot;: [{ \&quot;type\&quot;: \&quot;text\&quot;, \&quot;text\&quot;: \&quot;John\&quot; }] }]&#x60;. Templates with media headers (image, video, document) must include the header component with its media link here at send time. To send a template to a phone number with no existing conversation, or to have media headers filled in automatically from the template definition, use the create-conversation endpoint (POST /v1/inbox/conversations) instead.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,6 +60,7 @@ class SendInboxMessageRequestTemplate implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPITypes = [
         'type' => 'string',
+        'image_aspect_ratio' => 'string',
         'elements' => '\Zernio\Model\SendInboxMessageRequestTemplateElementsInner[]'
     ];
 
@@ -72,6 +73,7 @@ class SendInboxMessageRequestTemplate implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPIFormats = [
         'type' => null,
+        'image_aspect_ratio' => null,
         'elements' => null
     ];
 
@@ -82,6 +84,7 @@ class SendInboxMessageRequestTemplate implements ModelInterface, ArrayAccess, \J
       */
     protected static array $openAPINullables = [
         'type' => false,
+        'image_aspect_ratio' => false,
         'elements' => false
     ];
 
@@ -172,6 +175,7 @@ class SendInboxMessageRequestTemplate implements ModelInterface, ArrayAccess, \J
      */
     protected static $attributeMap = [
         'type' => 'type',
+        'image_aspect_ratio' => 'imageAspectRatio',
         'elements' => 'elements'
     ];
 
@@ -182,6 +186,7 @@ class SendInboxMessageRequestTemplate implements ModelInterface, ArrayAccess, \J
      */
     protected static $setters = [
         'type' => 'setType',
+        'image_aspect_ratio' => 'setImageAspectRatio',
         'elements' => 'setElements'
     ];
 
@@ -192,6 +197,7 @@ class SendInboxMessageRequestTemplate implements ModelInterface, ArrayAccess, \J
      */
     protected static $getters = [
         'type' => 'getType',
+        'image_aspect_ratio' => 'getImageAspectRatio',
         'elements' => 'getElements'
     ];
 
@@ -237,6 +243,8 @@ class SendInboxMessageRequestTemplate implements ModelInterface, ArrayAccess, \J
     }
 
     public const TYPE_GENERIC = 'generic';
+    public const IMAGE_ASPECT_RATIO_HORIZONTAL = 'horizontal';
+    public const IMAGE_ASPECT_RATIO_SQUARE = 'square';
 
     /**
      * Gets allowable values of the enum
@@ -247,6 +255,19 @@ class SendInboxMessageRequestTemplate implements ModelInterface, ArrayAccess, \J
     {
         return [
             self::TYPE_GENERIC,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getImageAspectRatioAllowableValues()
+    {
+        return [
+            self::IMAGE_ASPECT_RATIO_HORIZONTAL,
+            self::IMAGE_ASPECT_RATIO_SQUARE,
         ];
     }
 
@@ -266,6 +287,7 @@ class SendInboxMessageRequestTemplate implements ModelInterface, ArrayAccess, \J
     public function __construct(?array $data = null)
     {
         $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('image_aspect_ratio', $data ?? [], null);
         $this->setIfExists('elements', $data ?? [], null);
     }
 
@@ -301,6 +323,15 @@ class SendInboxMessageRequestTemplate implements ModelInterface, ArrayAccess, \J
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'type', must be one of '%s'",
                 $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getImageAspectRatioAllowableValues();
+        if (!is_null($this->container['image_aspect_ratio']) && !in_array($this->container['image_aspect_ratio'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'image_aspect_ratio', must be one of '%s'",
+                $this->container['image_aspect_ratio'],
                 implode("', '", $allowedValues)
             );
         }
@@ -357,6 +388,43 @@ class SendInboxMessageRequestTemplate implements ModelInterface, ArrayAccess, \J
             );
         }
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets image_aspect_ratio
+     *
+     * @return string|null
+     */
+    public function getImageAspectRatio()
+    {
+        return $this->container['image_aspect_ratio'];
+    }
+
+    /**
+     * Sets image_aspect_ratio
+     *
+     * @param string|null $image_aspect_ratio Facebook only. Aspect ratio Messenger renders element images at: horizontal (1.91:1, default) or square (1:1). A 400 on Instagram.
+     *
+     * @return self
+     */
+    public function setImageAspectRatio($image_aspect_ratio)
+    {
+        if (is_null($image_aspect_ratio)) {
+            throw new \InvalidArgumentException('non-nullable image_aspect_ratio cannot be null');
+        }
+        $allowedValues = $this->getImageAspectRatioAllowableValues();
+        if (!in_array($image_aspect_ratio, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'image_aspect_ratio', must be one of '%s'",
+                    $image_aspect_ratio,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['image_aspect_ratio'] = $image_aspect_ratio;
 
         return $this;
     }

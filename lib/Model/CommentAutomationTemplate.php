@@ -60,6 +60,7 @@ class CommentAutomationTemplate implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'type' => 'string',
+        'image_aspect_ratio' => 'string',
         'elements' => '\Zernio\Model\CommentAutomationTemplateElement[]'
     ];
 
@@ -72,6 +73,7 @@ class CommentAutomationTemplate implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPIFormats = [
         'type' => null,
+        'image_aspect_ratio' => null,
         'elements' => null
     ];
 
@@ -82,6 +84,7 @@ class CommentAutomationTemplate implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static array $openAPINullables = [
         'type' => false,
+        'image_aspect_ratio' => false,
         'elements' => false
     ];
 
@@ -172,6 +175,7 @@ class CommentAutomationTemplate implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'type' => 'type',
+        'image_aspect_ratio' => 'imageAspectRatio',
         'elements' => 'elements'
     ];
 
@@ -182,6 +186,7 @@ class CommentAutomationTemplate implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'type' => 'setType',
+        'image_aspect_ratio' => 'setImageAspectRatio',
         'elements' => 'setElements'
     ];
 
@@ -192,6 +197,7 @@ class CommentAutomationTemplate implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'type' => 'getType',
+        'image_aspect_ratio' => 'getImageAspectRatio',
         'elements' => 'getElements'
     ];
 
@@ -237,6 +243,8 @@ class CommentAutomationTemplate implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     public const TYPE_GENERIC = 'generic';
+    public const IMAGE_ASPECT_RATIO_HORIZONTAL = 'horizontal';
+    public const IMAGE_ASPECT_RATIO_SQUARE = 'square';
 
     /**
      * Gets allowable values of the enum
@@ -247,6 +255,19 @@ class CommentAutomationTemplate implements ModelInterface, ArrayAccess, \JsonSer
     {
         return [
             self::TYPE_GENERIC,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getImageAspectRatioAllowableValues()
+    {
+        return [
+            self::IMAGE_ASPECT_RATIO_HORIZONTAL,
+            self::IMAGE_ASPECT_RATIO_SQUARE,
         ];
     }
 
@@ -266,6 +287,7 @@ class CommentAutomationTemplate implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(?array $data = null)
     {
         $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('image_aspect_ratio', $data ?? [], null);
         $this->setIfExists('elements', $data ?? [], null);
     }
 
@@ -304,6 +326,15 @@ class CommentAutomationTemplate implements ModelInterface, ArrayAccess, \JsonSer
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'type', must be one of '%s'",
                 $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getImageAspectRatioAllowableValues();
+        if (!is_null($this->container['image_aspect_ratio']) && !in_array($this->container['image_aspect_ratio'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'image_aspect_ratio', must be one of '%s'",
+                $this->container['image_aspect_ratio'],
                 implode("', '", $allowedValues)
             );
         }
@@ -367,6 +398,43 @@ class CommentAutomationTemplate implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets image_aspect_ratio
+     *
+     * @return string|null
+     */
+    public function getImageAspectRatio()
+    {
+        return $this->container['image_aspect_ratio'];
+    }
+
+    /**
+     * Sets image_aspect_ratio
+     *
+     * @param string|null $image_aspect_ratio Facebook only. How Messenger renders each element imageUrl: horizontal (1.91:1, the default) or square (1:1). Instagram has no such setting, so an Instagram automation carrying it is a 400.
+     *
+     * @return self
+     */
+    public function setImageAspectRatio($image_aspect_ratio)
+    {
+        if (is_null($image_aspect_ratio)) {
+            throw new \InvalidArgumentException('non-nullable image_aspect_ratio cannot be null');
+        }
+        $allowedValues = $this->getImageAspectRatioAllowableValues();
+        if (!in_array($image_aspect_ratio, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'image_aspect_ratio', must be one of '%s'",
+                    $image_aspect_ratio,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['image_aspect_ratio'] = $image_aspect_ratio;
 
         return $this;
     }
