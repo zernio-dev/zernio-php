@@ -3843,9 +3843,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetWhatsAppSdkConfig200ResponseTest.php
-test/Model/SetConversationThreadControl200ResponseControlTest.php
-test/Model/SetConversationThreadControl200ResponseTest.php
-test/Model/SetConversationThreadControlRequestTest.php
-test/Model/WebhookPayloadConversationControlChangedControlTest.php
-test/Model/WebhookPayloadConversationControlChangedTest.php
