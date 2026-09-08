@@ -297,6 +297,7 @@ class CreateContactRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public const PLATFORM_REDDIT = 'reddit';
     public const PLATFORM_WHATSAPP = 'whatsapp';
     public const PLATFORM_SLACK = 'slack';
+    public const PLATFORM_SMS = 'sms';
 
     /**
      * Gets allowable values of the enum
@@ -314,6 +315,7 @@ class CreateContactRequest implements ModelInterface, ArrayAccess, \JsonSerializ
             self::PLATFORM_REDDIT,
             self::PLATFORM_WHATSAPP,
             self::PLATFORM_SLACK,
+            self::PLATFORM_SMS,
         ];
     }
 

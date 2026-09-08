@@ -278,6 +278,8 @@ class CreateBroadcastRequest implements ModelInterface, ArrayAccess, \JsonSerial
     public const PLATFORM_BLUESKY = 'bluesky';
     public const PLATFORM_REDDIT = 'reddit';
     public const PLATFORM_WHATSAPP = 'whatsapp';
+    public const PLATFORM_SMS = 'sms';
+    public const PLATFORM_SLACK = 'slack';
 
     /**
      * Gets allowable values of the enum
@@ -294,6 +296,8 @@ class CreateBroadcastRequest implements ModelInterface, ArrayAccess, \JsonSerial
             self::PLATFORM_BLUESKY,
             self::PLATFORM_REDDIT,
             self::PLATFORM_WHATSAPP,
+            self::PLATFORM_SMS,
+            self::PLATFORM_SLACK,
         ];
     }
 

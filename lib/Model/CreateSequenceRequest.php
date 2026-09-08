@@ -278,6 +278,7 @@ class CreateSequenceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public const PLATFORM_BLUESKY = 'bluesky';
     public const PLATFORM_REDDIT = 'reddit';
     public const PLATFORM_WHATSAPP = 'whatsapp';
+    public const PLATFORM_SLACK = 'slack';
 
     /**
      * Gets allowable values of the enum
@@ -294,6 +295,7 @@ class CreateSequenceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
             self::PLATFORM_BLUESKY,
             self::PLATFORM_REDDIT,
             self::PLATFORM_WHATSAPP,
+            self::PLATFORM_SLACK,
         ];
     }
 
