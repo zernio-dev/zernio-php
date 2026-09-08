@@ -880,7 +880,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets creative_type
      *
-     * @param string|null $creative_type Creative format, classified from the media the creative carries. `null` when the creative carries no media to classify — an unsynced creative and a genuine text-only ad are indistinguishable, so neither is guessed at. Returned by `GET /v1/ads`, `GET /v1/ads/{adId}` and the ad nodes of `GET /v1/ads/tree`.
+     * @param string|null $creative_type Creative format, classified from the media the creative carries. `null` when the creative carries no media to classify. An unsynced creative and a genuine text-only ad are indistinguishable, so neither is guessed at. Returned by `GET /v1/ads`, `GET /v1/ads/{adId}` and the ad nodes of `GET /v1/ads/tree`.
      *
      * @return self
      */
@@ -924,7 +924,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets goal
      *
-     * @param string|null $goal Available goals vary by platform. Meta (Facebook/Instagram) supports all 10 (incl. `lead_conversion` = website pixel lead optimization, `catalog_sales` = Advantage+ catalog ads and `page_likes` = Page Likes conversion location under Engagement). TikTok supports engagement, traffic, awareness, video_views, lead_generation, conversions, app_promotion. LinkedIn supports all Meta goals except app_promotion / lead_conversion / catalog_sales / page_likes. Twitter/X supports engagement, traffic, awareness, video_views, app_promotion. Pinterest supports only engagement, traffic, awareness, video_views. Google Ads supports only engagement, traffic, awareness (video_views is rejected at create with 422 FEATURE_NOT_AVAILABLE).
+     * @param string|null $goal Available goals vary by platform. Meta (Facebook/Instagram) supports all 10 (incl. `lead_conversion` = website pixel lead optimization, `catalog_sales` = Advantage+ catalog ads and `page_likes` = Page Likes conversion location under Engagement). TikTok supports engagement, traffic, awareness, video_views, lead_generation, conversions, app_promotion. LinkedIn supports all Meta goals except app_promotion / lead_conversion / catalog_sales / page_likes. X supports engagement, traffic, awareness, video_views, app_promotion. Pinterest supports only engagement, traffic, awareness, video_views. Google Ads supports only engagement, traffic, awareness (video_views is rejected at create with 422 FEATURE_NOT_AVAILABLE).
      *
      * @return self
      */
@@ -1313,7 +1313,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets serving_statuses
      *
-     * @param string[]|null $serving_statuses LinkedIn only. Why the parent campaign is (or is not) delivering, verbatim from LinkedIn. A campaign can report `status: ACTIVE` and still serve nothing; this array is what says so.  - `[]` means no serving data: a non-LinkedIn ad, or a LinkedIn ad not yet re-synced. - `[\"RUNNABLE\"]` means the campaign is eligible to serve. - Anything else is a hold. Known values include ACCOUNT_SERVING_HOLD, ACCOUNT_TOTAL_BUDGET_HOLD,   ACCOUNT_END_DATE_HOLD, CAMPAIGN_START_DATE_HOLD, CAMPAIGN_END_DATE_HOLD,   CAMPAIGN_TOTAL_BUDGET_HOLD, CAMPAIGN_AUDIENCE_COUNT_HOLD, CAMPAIGN_GROUP_START_DATE_HOLD,   CAMPAIGN_GROUP_END_DATE_HOLD, CAMPAIGN_GROUP_TOTAL_BUDGET_HOLD, CAMPAIGN_GROUP_STATUS_HOLD and   STOPPED. The list is open on purpose, so treat unrecognized values as holds rather than errors.  The end-date and total-budget holds are terminal and surface as `status: completed`; the rest surface as `status: paused`. Note that a hold is not the only cause of zero delivery: with manual, target-cost or cost-cap bidding, a `bidAmount` of 0 stops delivery while `servingStatuses` still reads `[\"RUNNABLE\"]`. Check `costType` / `bidAmount` / `optimizationGoal` as well.
+     * @param string[]|null $serving_statuses LinkedIn only. Why the parent campaign is (or is not) delivering, verbatim from LinkedIn. A campaign can report `status: ACTIVE` and still serve nothing; this array is what says so.  - `[]` means no serving data: a non-LinkedIn ad, or a LinkedIn ad not yet re-synced. - `[\"RUNNABLE\"]` means the campaign is eligible to serve. - Anything else is a hold. Known values include ACCOUNT_SERVING_HOLD, ACCOUNT_TOTAL_BUDGET_HOLD,   ACCOUNT_END_DATE_HOLD, CAMPAIGN_START_DATE_HOLD, CAMPAIGN_END_DATE_HOLD,   CAMPAIGN_TOTAL_BUDGET_HOLD, CAMPAIGN_AUDIENCE_COUNT_HOLD, CAMPAIGN_GROUP_START_DATE_HOLD,   CAMPAIGN_GROUP_END_DATE_HOLD, CAMPAIGN_GROUP_TOTAL_BUDGET_HOLD, CAMPAIGN_GROUP_STATUS_HOLD and   STOPPED. The list is open on purpose, so treat unrecognized values as holds rather than errors.  The end-date and total-budget holds are terminal and surface as `status: completed`; the rest surface as `status: paused`. A hold is not the only cause of zero delivery: with manual, target-cost or cost-cap bidding, a `bidAmount` of 0 stops delivery while `servingStatuses` still reads `[\"RUNNABLE\"]`. Check `costType` / `bidAmount` / `optimizationGoal` as well.
      *
      * @return self
      */
@@ -1374,7 +1374,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets platform_created_at
      *
-     * @param \DateTime|null $platform_created_at Platform-reported creation timestamp (Meta `created_time`, TikTok `create_time`). Distinct from `createdAt` which reflects when Zernio first synced the doc — for sort/filter by \"when the ad was actually created on the platform\", read this field. `null` for legacy ads synced before this field was added; aggregations fall back to `createdAt` in that case.
+     * @param \DateTime|null $platform_created_at Platform-reported creation timestamp (Meta `created_time`, TikTok `create_time`). Distinct from `createdAt` which reflects when Zernio first synced the doc. To sort or filter by \"when the ad was actually created on the platform\", read this field. `null` for legacy ads synced before this field was added; aggregations fall back to `createdAt` in that case.
      *
      * @return self
      */

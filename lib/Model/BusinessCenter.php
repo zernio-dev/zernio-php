@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * BusinessCenter Class Doc Comment
  *
  * @category Class
- * @description TikTok Business Center entity. Returned by &#x60;GET /v1/ads/business-centers&#x60;. BCs are TikTok&#39;s agency container — one BC owns N advertisers (ad accounts). Most solo advertisers don&#39;t have one; the agency token uses BCs to roll up multi-client access.
+ * @description TikTok Business Center entity. Returned by &#x60;GET /v1/ads/business-centers&#x60;. BCs are TikTok&#39;s agency container: one BC owns N advertisers (ad accounts). Most solo advertisers don&#39;t have one; the agency token uses BCs to roll up multi-client access.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -372,7 +372,7 @@ class BusinessCenter implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets advertiser_count
      *
-     * @param int|null $advertiser_count Number of advertisers reachable under this BC for the calling token. `null` when the BC asset walk returned empty or failed (typical for agency apps without full BC asset read scope) — distinct from `0`, which would imply the BC genuinely has no advertisers.
+     * @param int|null $advertiser_count Number of advertisers reachable under this BC for the calling token. `null` when the BC asset walk returned empty or failed (typical for agency apps without full BC asset read scope), distinct from `0`, which would imply the BC genuinely has no advertisers.
      *
      * @return self
      */

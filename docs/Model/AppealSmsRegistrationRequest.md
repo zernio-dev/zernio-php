@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**appeal_reason** | **string** | Goes verbatim to the carrier reviewer — address the decline reason directly. |
+**appeal_reason** | **string** | Goes verbatim to the carrier reviewer. Address the decline reason directly. |
 **message_flow** | **string** | Corrected opt-in flow; include a link to the opt-in page/form. | [optional]
 **sample1** | **string** |  | [optional]
 **sample2** | **string** |  | [optional]

@@ -454,7 +454,7 @@ class UpdateAdSetRequestPlatformSpecificData implements ModelInterface, ArrayAcc
     /**
      * Sets daily_min_spend_target
      *
-     * @param float|null $daily_min_spend_target Meta `daily_min_spend_target`: the least this ad set should spend per day, in whole currency units of the ad account. It reserves a share of a CAMPAIGN budget for one ad set, so it requires a campaign using Advantage campaign budget (CBO). On an ad set that owns its budget (ABO) this returns 409 — move the budget to the campaign with `PUT /v1/ads/campaigns/{campaignId}` first. Meta treats it as a target, not a guarantee, and rejects the combined minimum of a campaign's ad sets going over the campaign budget. Mutually exclusive with `lifetimeMinSpendTarget` (400): the flavour must match the campaign budget type, a daily budget takes a daily target. Read it back with `GET /v1/ads/ad-sets/{adSetId}?fields=daily_min_spend_target`.
+     * @param float|null $daily_min_spend_target Meta `daily_min_spend_target`: the least this ad set should spend per day, in whole currency units of the ad account. It reserves a share of a CAMPAIGN budget for one ad set, so it requires a campaign using Advantage campaign budget (CBO). On an ad set that owns its budget (ABO) this returns 409. Move the budget to the campaign with `PUT /v1/ads/campaigns/{campaignId}` first. Meta treats it as a target, not a guarantee, and rejects the combined minimum of a campaign's ad sets going over the campaign budget. Mutually exclusive with `lifetimeMinSpendTarget` (400): the flavour must match the campaign budget type, a daily budget takes a daily target. Read it back with `GET /v1/ads/ad-sets/{adSetId}?fields=daily_min_spend_target`.
      *
      * @return self
      */

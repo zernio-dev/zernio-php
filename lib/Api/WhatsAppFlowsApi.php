@@ -459,7 +459,7 @@ class WhatsAppFlowsApi
      * Delete flow
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppFlow'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -478,7 +478,7 @@ class WhatsAppFlowsApi
      * Delete flow
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppFlow'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -578,7 +578,7 @@ class WhatsAppFlowsApi
      * Delete flow
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppFlow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -600,7 +600,7 @@ class WhatsAppFlowsApi
      * Delete flow
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppFlow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -651,7 +651,7 @@ class WhatsAppFlowsApi
      * Create request for operation 'deleteWhatsAppFlow'
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppFlow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1071,7 +1071,7 @@ class WhatsAppFlowsApi
      * Get flow
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $fields Comma-separated fields to return (default: id,name,status,categories,validation_errors,json_version,preview,data_api_version,endpoint_uri) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlow'] to see the possible values for this operation
      *
@@ -1091,7 +1091,7 @@ class WhatsAppFlowsApi
      * Get flow
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $fields Comma-separated fields to return (default: id,name,status,categories,validation_errors,json_version,preview,data_api_version,endpoint_uri) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlow'] to see the possible values for this operation
      *
@@ -1192,7 +1192,7 @@ class WhatsAppFlowsApi
      * Get flow
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $fields Comma-separated fields to return (default: id,name,status,categories,validation_errors,json_version,preview,data_api_version,endpoint_uri) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlow'] to see the possible values for this operation
      *
@@ -1215,7 +1215,7 @@ class WhatsAppFlowsApi
      * Get flow
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $fields Comma-separated fields to return (default: id,name,status,categories,validation_errors,json_version,preview,data_api_version,endpoint_uri) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlow'] to see the possible values for this operation
      *
@@ -1267,7 +1267,7 @@ class WhatsAppFlowsApi
      * Create request for operation 'getWhatsAppFlow'
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $fields Comma-separated fields to return (default: id,name,status,categories,validation_errors,json_version,preview,data_api_version,endpoint_uri) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlow'] to see the possible values for this operation
      *
@@ -1393,7 +1393,7 @@ class WhatsAppFlowsApi
      * Get flow JSON asset
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlowJson'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1412,7 +1412,7 @@ class WhatsAppFlowsApi
      * Get flow JSON asset
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlowJson'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1512,7 +1512,7 @@ class WhatsAppFlowsApi
      * Get flow JSON asset
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlowJson'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1534,7 +1534,7 @@ class WhatsAppFlowsApi
      * Get flow JSON asset
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlowJson'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1585,7 +1585,7 @@ class WhatsAppFlowsApi
      * Create request for operation 'getWhatsAppFlowJson'
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlowJson'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1700,7 +1700,7 @@ class WhatsAppFlowsApi
      * Get flow preview URL
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  bool|null $invalidate Mint a fresh preview link (default false) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlowPreview'] to see the possible values for this operation
      *
@@ -1720,7 +1720,7 @@ class WhatsAppFlowsApi
      * Get flow preview URL
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  bool|null $invalidate Mint a fresh preview link (default false) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlowPreview'] to see the possible values for this operation
      *
@@ -1821,7 +1821,7 @@ class WhatsAppFlowsApi
      * Get flow preview URL
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  bool|null $invalidate Mint a fresh preview link (default false) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlowPreview'] to see the possible values for this operation
      *
@@ -1844,7 +1844,7 @@ class WhatsAppFlowsApi
      * Get flow preview URL
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  bool|null $invalidate Mint a fresh preview link (default false) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlowPreview'] to see the possible values for this operation
      *
@@ -1896,7 +1896,7 @@ class WhatsAppFlowsApi
      * Create request for operation 'getWhatsAppFlowPreview'
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  bool|null $invalidate Mint a fresh preview link (default false) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlowPreview'] to see the possible values for this operation
      *
@@ -2021,7 +2021,7 @@ class WhatsAppFlowsApi
      *
      * Get Flows encryption key status
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlowsEncryptionKey'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2039,7 +2039,7 @@ class WhatsAppFlowsApi
      *
      * Get Flows encryption key status
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlowsEncryptionKey'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2166,7 +2166,7 @@ class WhatsAppFlowsApi
      *
      * Get Flows encryption key status
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlowsEncryptionKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2187,7 +2187,7 @@ class WhatsAppFlowsApi
      *
      * Get Flows encryption key status
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlowsEncryptionKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2237,7 +2237,7 @@ class WhatsAppFlowsApi
     /**
      * Create request for operation 'getWhatsAppFlowsEncryptionKey'
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlowsEncryptionKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2336,7 +2336,7 @@ class WhatsAppFlowsApi
      *
      * List flow responses
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $flow_id Scope to responses for this flow (optional)
      * @param  int|null $limit Max responses to return (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppFlowResponses'] to see the possible values for this operation
@@ -2356,7 +2356,7 @@ class WhatsAppFlowsApi
      *
      * List flow responses
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $flow_id Scope to responses for this flow (optional)
      * @param  int|null $limit Max responses to return (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppFlowResponses'] to see the possible values for this operation
@@ -2457,7 +2457,7 @@ class WhatsAppFlowsApi
      *
      * List flow responses
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $flow_id Scope to responses for this flow (optional)
      * @param  int|null $limit Max responses to return (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppFlowResponses'] to see the possible values for this operation
@@ -2480,7 +2480,7 @@ class WhatsAppFlowsApi
      *
      * List flow responses
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $flow_id Scope to responses for this flow (optional)
      * @param  int|null $limit Max responses to return (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppFlowResponses'] to see the possible values for this operation
@@ -2532,7 +2532,7 @@ class WhatsAppFlowsApi
     /**
      * Create request for operation 'listWhatsAppFlowResponses'
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $flow_id Scope to responses for this flow (optional)
      * @param  int|null $limit Max responses to return (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppFlowResponses'] to see the possible values for this operation
@@ -2657,7 +2657,7 @@ class WhatsAppFlowsApi
      * List flow versions
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppFlowVersions'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2676,7 +2676,7 @@ class WhatsAppFlowsApi
      * List flow versions
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppFlowVersions'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2776,7 +2776,7 @@ class WhatsAppFlowsApi
      * List flow versions
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppFlowVersions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2798,7 +2798,7 @@ class WhatsAppFlowsApi
      * List flow versions
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppFlowVersions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2849,7 +2849,7 @@ class WhatsAppFlowsApi
      * Create request for operation 'listWhatsAppFlowVersions'
      *
      * @param  string $flow_id Flow ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppFlowVersions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2963,7 +2963,7 @@ class WhatsAppFlowsApi
      *
      * List flows
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppFlows'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2981,7 +2981,7 @@ class WhatsAppFlowsApi
      *
      * List flows
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppFlows'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3080,7 +3080,7 @@ class WhatsAppFlowsApi
      *
      * List flows
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppFlows'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3101,7 +3101,7 @@ class WhatsAppFlowsApi
      *
      * List flows
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppFlows'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3151,7 +3151,7 @@ class WhatsAppFlowsApi
     /**
      * Create request for operation 'listWhatsAppFlows'
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppFlows'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

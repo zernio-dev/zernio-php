@@ -371,7 +371,7 @@ class GetPhoneNumberKycForm200ResponseReusableOptionsInnerDetailsInner implement
     /**
      * Sets document_id
      *
-     * @param string|null $document_id Present on document rows — the Telnyx document id. GET /v1/whatsapp/phone-numbers/kyc/document/{documentId} streams it (auth-scoped, inline PDF).
+     * @param string|null $document_id Present on document rows: the Telnyx document id. GET /v1/whatsapp/phone-numbers/kyc/document/{documentId} streams it (auth-scoped, inline PDF).
      *
      * @return self
      */

@@ -15,8 +15,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getFacebookPostEarnings()**](AnalyticsApi.md#getFacebookPostEarnings) | **GET** /v1/analytics/facebook/post-earnings | Get Facebook post monetization earnings |
 | [**getFacebookPostReactions()**](AnalyticsApi.md#getFacebookPostReactions) | **GET** /v1/accounts/{accountId}/facebook-post-reactions | Get Facebook post reactions |
 | [**getFollowerStats()**](AnalyticsApi.md#getFollowerStats) | **GET** /v1/accounts/follower-stats | Get follower stats |
-| [**getGoogleBusinessPerformance()**](AnalyticsApi.md#getGoogleBusinessPerformance) | **GET** /v1/analytics/googlebusiness/performance | Get GBP performance metrics |
-| [**getGoogleBusinessSearchKeywords()**](AnalyticsApi.md#getGoogleBusinessSearchKeywords) | **GET** /v1/analytics/googlebusiness/search-keywords | Get GBP search keywords |
+| [**getGoogleBusinessPerformance()**](AnalyticsApi.md#getGoogleBusinessPerformance) | **GET** /v1/analytics/googlebusiness/performance | Get Google Business Profile performance metrics |
+| [**getGoogleBusinessSearchKeywords()**](AnalyticsApi.md#getGoogleBusinessSearchKeywords) | **GET** /v1/analytics/googlebusiness/search-keywords | Get Google Business Profile search keywords |
 | [**getInstagramAccountInsights()**](AnalyticsApi.md#getInstagramAccountInsights) | **GET** /v1/analytics/instagram/account-insights | Get Instagram insights |
 | [**getInstagramDemographics()**](AnalyticsApi.md#getInstagramDemographics) | **GET** /v1/analytics/instagram/demographics | Get Instagram demographics |
 | [**getInstagramFollowerHistory()**](AnalyticsApi.md#getInstagramFollowerHistory) | **GET** /v1/analytics/instagram/follower-history | Get Instagram follower history |
@@ -64,7 +64,7 @@ $apiInstance = new Zernio\Api\AnalyticsApi(
 $post_id = 'post_id_example'; // string | Returns analytics for a single post. Accepts both Zernio Post IDs and External Post IDs. Zernio IDs are auto-resolved to External Post analytics.
 $platform = 'platform_example'; // string | Filter by platform (default \"all\")
 $profile_id = 'profile_id_example'; // string | Filter by profile ID (default \"all\")
-$account_id = 'account_id_example'; // string | Filter by social account ID
+$account_id = 'account_id_example'; // string | Filter by account ID
 $source = 'all'; // string | Filter by post source: late (posted via Zernio API), external (synced from platform), all (default)
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive lower bound (YYYY-MM-DD). Defaults to 90 days ago if omitted. Max range is 366 days.
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted.
@@ -88,7 +88,7 @@ try {
 | **post_id** | **string**| Returns analytics for a single post. Accepts both Zernio Post IDs and External Post IDs. Zernio IDs are auto-resolved to External Post analytics. | [optional] |
 | **platform** | **string**| Filter by platform (default \&quot;all\&quot;) | [optional] |
 | **profile_id** | **string**| Filter by profile ID (default \&quot;all\&quot;) | [optional] |
-| **account_id** | **string**| Filter by social account ID | [optional] |
+| **account_id** | **string**| Filter by account ID | [optional] |
 | **source** | **string**| Filter by post source: late (posted via Zernio API), external (synced from platform), all (default) | [optional] [default to &#39;all&#39;] |
 | **from_date** | **\DateTime**| Inclusive lower bound (YYYY-MM-DD). Defaults to 90 days ago if omitted. Max range is 366 days. | [optional] |
 | **to_date** | **\DateTime**| Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted. | [optional] |
@@ -122,7 +122,7 @@ getAnalyticsDelta($cursor, $limit, $platform, $profile_id): \Zernio\Model\Analyt
 
 Analytics changed since a cursor
 
-Cursor feed of the analytics snapshots that CHANGED, across every account you can read, in one paginated stream. Built for integrations that would otherwise call `GET /v1/analytics` once per connected account. Each page carries changes from many accounts at once, so your call count scales with how much actually changed rather than with how many accounts you have. Measured against a fleet of roughly 1,600 connected accounts: about 1,599 per-account analytics calls an hour became about 205 delta calls an hour, a 7.8x reduction.  **Bootstrap once, then stay in sync.** Load your baseline from `GET /v1/analytics`, which is the historical endpoint. This one is a rolling 7-day change log and cannot replay history. Then call this endpoint with NO `cursor`: it answers with an empty `data` array plus the feed's current position in `nextCursor`. Send that `nextCursor` back on the next call and you receive everything written since. `nextCursor` is present on every response, empty pages included, so you always have something to advance with.  **Ordering.** Entries come back oldest first, in the order the feed received them. That order is NOT `syncedAt`: `syncedAt` is stamped when an account's sync cycle started, and a slow cycle writes its rows after a faster cycle that started later, so `syncedAt` can go backwards between consecutive entries. Do not sort, filter or resume on it. The cursor is the only stable position, and it is opaque: pass it back verbatim, and do not parse, construct or compare cursors.  **`hasMore: false` does not mean the feed ended.** This stream has no end and `nextCursor` is never null. `hasMore: true` means more changes are already waiting, so call again straight away. `hasMore: false` means you are caught up: keep the cursor and poll again on your normal interval.  **The newest changes settle before they are served.** The feed deliberately holds back its last few seconds of writes, so that a row can never become visible behind a cursor you have already advanced past. A read issued the instant an `analytics.synced` webhook lands will therefore often return an empty page for that account. Do not read an empty page as \"nothing changed\": poll again with the SAME cursor you just used rather than advancing.  **Repeats inside one instant.** A sync cycle occasionally records the same post twice at the same feed position. When that happens the feed delivers one of those rows, not both. Measured over a day of production traffic, about 1.3% of rows fall in such a group and 99.4% of those groups are identical rows, so this is far more often deduplication than loss. Metrics are absolute values rather than increments, so a later entry for the same post supersedes an earlier one.  **Retention is 7 days.** Changes older than that leave the feed. A cursor older than 6 days is rejected with a `400` (a day of margin, because expiry is lazy). Recover by re-bootstrapping from `GET /v1/analytics` and taking a fresh cursor from a call to this endpoint with no `cursor`. A consumer that polls at least daily never reaches this.  Pairs with the `analytics.synced` webhook, so changes can be read on notification instead of on a timer. That event carries no cursor of its own: keep using the `nextCursor` this endpoint gave you.  Requires the same analytics access as `GET /v1/analytics`, and shares the stricter per-second rate-limit window applied to analytics endpoints.
+Cursor feed of the analytics snapshots that CHANGED, across every account you can read, in one paginated stream. Built for integrations that would otherwise call `GET /v1/analytics` once per connected account. Each page carries changes from many accounts at once, so your call count scales with how much actually changed rather than with how many accounts you have. Measured against a fleet of roughly 1,600 connected accounts: about 1,599 per-account analytics calls an hour became about 205 delta calls an hour, a 7.8x reduction.  **Bootstrap once, then stay in sync.** Load your baseline from `GET /v1/analytics`, which is the historical endpoint. This one is a rolling 7-day change log and cannot replay history. Then call this endpoint with NO `cursor`: it answers with an empty `data` array plus the feed's current position in `nextCursor`. Send that `nextCursor` back on the next call and you receive everything written since. `nextCursor` is present on every response, empty pages included, so you always have something to advance with.  **Ordering.** Entries come back oldest first, in the order the feed received them. That order is NOT `syncedAt`: `syncedAt` is stamped when an account's sync cycle started, and a slow cycle writes its rows after a faster cycle that started later, so `syncedAt` can go backwards between consecutive entries. Do not sort, filter or resume on it. The cursor is the only stable position, and it is opaque: pass it back verbatim, and do not parse, construct or compare cursors.  **`hasMore: false` does not mean the feed ended.** This stream has no end and `nextCursor` is never null. `hasMore: true` means more changes are already waiting, so call again straight away. `hasMore: false` means you are caught up: keep the cursor and poll again on your normal interval.  **The newest changes settle before they are served.** The feed deliberately holds back its last few seconds of writes, so that a row can never become visible behind a cursor you have already advanced past. A read issued the instant an `analytics.synced` webhook lands will therefore often return an empty page for that account. Do not read an empty page as \"nothing changed\": poll again with the SAME cursor you last used rather than advancing.  **Repeats inside one instant.** A sync cycle occasionally records the same post twice at the same feed position. When that happens the feed delivers one of those rows, not both. Measured over a day of production traffic, about 1.3% of rows fall in such a group and 99.4% of those groups are identical rows, so this is far more often deduplication than loss. Metrics are absolute values rather than increments, so a later entry for the same post supersedes an earlier one.  **Retention is 7 days.** Changes older than that leave the feed. A cursor older than 6 days is rejected with a `400` (a day of margin, because expiry is lazy). Recover by re-bootstrapping from `GET /v1/analytics` and taking a fresh cursor from a call to this endpoint with no `cursor`. A consumer that polls at least daily never reaches this.  Pairs with the `analytics.synced` webhook, so changes can be read on notification instead of on a timer. That event carries no cursor of its own: keep using the `nextCursor` this endpoint gave you.  Requires the same analytics access as `GET /v1/analytics`, and shares the stricter per-second rate-limit window applied to analytics endpoints.
 
 ### Example
 
@@ -209,7 +209,7 @@ $apiInstance = new Zernio\Api\AnalyticsApi(
 );
 $platform = 'platform_example'; // string | Filter by platform (e.g. \"instagram\", \"tiktok\"). Omit for all platforms.
 $profile_id = 'profile_id_example'; // string | Filter by profile ID. Omit for all profiles.
-$account_id = 'account_id_example'; // string | Filter by social account ID. Omit for all accounts.
+$account_id = 'account_id_example'; // string | Filter by account ID. Omit for all accounts.
 $source = 'all'; // string | Filter by post origin. \"late\" for posts published via Zernio, \"external\" for posts imported from platforms.
 
 try {
@@ -226,7 +226,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **platform** | **string**| Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. | [optional] |
 | **profile_id** | **string**| Filter by profile ID. Omit for all profiles. | [optional] |
-| **account_id** | **string**| Filter by social account ID. Omit for all accounts. | [optional] |
+| **account_id** | **string**| Filter by account ID. Omit for all accounts. | [optional] |
 | **source** | **string**| Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. | [optional] [default to &#39;all&#39;] |
 
 ### Return type
@@ -275,7 +275,7 @@ $apiInstance = new Zernio\Api\AnalyticsApi(
 );
 $platform = 'platform_example'; // string | Filter by platform (e.g. \"instagram\", \"tiktok\"). Omit for all platforms.
 $profile_id = 'profile_id_example'; // string | Filter by profile ID. Omit for all profiles.
-$account_id = 'account_id_example'; // string | Filter by social account ID. Omit for all accounts.
+$account_id = 'account_id_example'; // string | Filter by account ID. Omit for all accounts.
 $source = 'all'; // string | Filter by post origin. \"late\" for posts published via Zernio, \"external\" for posts imported from platforms.
 
 try {
@@ -292,7 +292,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **platform** | **string**| Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. | [optional] |
 | **profile_id** | **string**| Filter by profile ID. Omit for all profiles. | [optional] |
-| **account_id** | **string**| Filter by social account ID. Omit for all accounts. | [optional] |
+| **account_id** | **string**| Filter by account ID. Omit for all accounts. | [optional] |
 | **source** | **string**| Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. | [optional] [default to &#39;all&#39;] |
 
 ### Return type
@@ -341,7 +341,7 @@ $apiInstance = new Zernio\Api\AnalyticsApi(
 );
 $platform = 'platform_example'; // string | Filter by platform (e.g. \"instagram\", \"tiktok\"). Omit for all platforms.
 $profile_id = 'profile_id_example'; // string | Filter by profile ID. Omit for all profiles.
-$account_id = 'account_id_example'; // string | Filter by social account ID
+$account_id = 'account_id_example'; // string | Filter by account ID
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive start date (ISO 8601). Defaults to 180 days ago.
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive end date (ISO 8601). Defaults to now.
 $source = 'all'; // string | Filter by post origin. \"late\" for posts published via Zernio, \"external\" for posts imported from platforms.
@@ -361,7 +361,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **platform** | **string**| Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. | [optional] |
 | **profile_id** | **string**| Filter by profile ID. Omit for all profiles. | [optional] |
-| **account_id** | **string**| Filter by social account ID | [optional] |
+| **account_id** | **string**| Filter by account ID | [optional] |
 | **from_date** | **\DateTime**| Inclusive start date (ISO 8601). Defaults to 180 days ago. | [optional] |
 | **to_date** | **\DateTime**| Inclusive end date (ISO 8601). Defaults to now. | [optional] |
 | **source** | **string**| Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. | [optional] [default to &#39;all&#39;] |
@@ -524,7 +524,7 @@ getFacebookPostReactions($account_id, $post_id): \Zernio\Model\GetFacebookPostRe
 
 Get Facebook post reactions
 
-Returns the reaction breakdown for a Facebook Page post: a count per reaction type plus the overall total.  The whole breakdown is fetched in a single Graph call. Note that the post analytics endpoint reports only an aggregate reaction count (surfaced there as `likes`), so use this endpoint when you need per-type counts.
+Returns the reaction breakdown for a Facebook Page post: a count per reaction type plus the overall total.  The whole breakdown is fetched in a single Graph call. The post analytics endpoint reports only an aggregate reaction count (surfaced there as `likes`), so use this endpoint when you need per-type counts.
 
 ### Example
 
@@ -586,7 +586,7 @@ getFollowerStats($account_ids, $profile_id, $from_date, $to_date, $granularity):
 
 Get follower stats
 
-Returns follower count history and growth metrics for connected social accounts. Requires analytics add-on subscription. Follower counts are refreshed once per day.
+Returns follower count history and growth metrics for connected accounts. Requires analytics add-on subscription. Follower counts are refreshed once per day.
 
 ### Example
 
@@ -652,7 +652,7 @@ try {
 getGoogleBusinessPerformance($account_id, $metrics, $start_date, $end_date): \Zernio\Model\GetGoogleBusinessPerformance200Response
 ```
 
-Get GBP performance metrics
+Get Google Business Profile performance metrics
 
 Returns daily performance metrics for a Google Business Profile location. Metrics include impressions (Maps/Search, desktop/mobile), website clicks, call clicks, direction requests, conversations, bookings, and food orders. Data may be delayed 2-3 days. Max 18 months of historical data. Requires the Analytics add-on.
 
@@ -718,7 +718,7 @@ try {
 getGoogleBusinessSearchKeywords($account_id, $start_month, $end_month): \Zernio\Model\GetGoogleBusinessSearchKeywords200Response
 ```
 
-Get GBP search keywords
+Get Google Business Profile search keywords
 
 Returns search keywords that triggered impressions for a Google Business Profile location. Data is aggregated monthly. Keywords below a minimum impression threshold set by Google are excluded. Max 18 months of historical data. Requires the Analytics add-on.
 
@@ -1337,7 +1337,7 @@ $apiInstance = new Zernio\Api\AnalyticsApi(
 );
 $platform = 'platform_example'; // string | Filter by platform (e.g. \"instagram\", \"tiktok\"). Omit for all platforms.
 $profile_id = 'profile_id_example'; // string | Filter by profile ID. Omit for all profiles.
-$account_id = 'account_id_example'; // string | Filter by social account ID. Omit for all accounts.
+$account_id = 'account_id_example'; // string | Filter by account ID. Omit for all accounts.
 $source = 'all'; // string | Filter by post origin. \"late\" for posts published via Zernio, \"external\" for posts imported from platforms.
 
 try {
@@ -1354,7 +1354,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **platform** | **string**| Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. | [optional] |
 | **profile_id** | **string**| Filter by profile ID. Omit for all profiles. | [optional] |
-| **account_id** | **string**| Filter by social account ID. Omit for all accounts. | [optional] |
+| **account_id** | **string**| Filter by account ID. Omit for all accounts. | [optional] |
 | **source** | **string**| Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. | [optional] [default to &#39;all&#39;] |
 
 ### Return type
@@ -1718,7 +1718,7 @@ syncExternalPosts($sync_external_posts_request): \Zernio\Model\SyncExternalPosts
 
 Sync an external post
 
-Fetch an account's latest external posts (published directly on the platform, not through Zernio) on demand, so a just-published post is retrievable within seconds instead of waiting for the background sync (which refreshes each account at most every ~90 minutes).  Primary use case: verifying a submitted post. When a user publishes on the platform and immediately pastes the post URL into your app, call this with `accountId` plus `url` (or `postId`) to confirm the post exists and return its metadata.  Behavior: - We check our stored copy first and return immediately if the post is already known (no platform call). - Otherwise we fetch the account's latest posts live from the platform, then match and return the submitted post. - Requests are debounced per account (~15s): if the account was just synced, the live fetch is skipped.  `accountId` is required — a post URL or id alone cannot be resolved to an account, and the account must be connected to Zernio (we use its token to read the platform). Supported for every platform with a listing API (Instagram, Facebook, TikTok, YouTube, X, Threads, Pinterest, Reddit, Bluesky, Google Business, and LinkedIn organization accounts).  LinkedIn personal profiles: LinkedIn has no listing API for personal profiles, so a `url` is REQUIRED and imports that single post. Pass any LinkedIn post URL (`linkedin.com/posts/…`, `linkedin.com/feed/update/urn:li:activity:…`) or a `urn:li:share:…` / `urn:li:ugcPost:…` URN. Works for posts published outside Zernio and before the account was connected, any age; the post must be authored by the connected member. Imported posts return full analytics (impressions, reach, reactions, comments, reshares, saves) and keep refreshing on the background analytics cycle, but carry no content/media (LinkedIn does not expose them for personal profiles).  `url` accepts any format the platform uses (e.g. `instagram.com/p/…`, `instagram.com/reel/…`, `youtu.be/…`, `youtube.com/shorts/…`, `tiktok.com/@user/video/…`, `vm.tiktok.com` short links, `pinterest.com/pin/…` on any regional domain, and `pin.it` short links). Pass `postId` (the platform media/video/pin id) as an alternative locator.  Note: post-level analytics (reach, impressions) still carry the platform's own delay (e.g. ~24h on Instagram). This endpoint confirms the post exists and returns its metadata plus basic engagement (likes, comments), not delayed insights.
+Fetch an account's latest external posts (published directly on the platform, not through Zernio) on demand, so a newly published post is retrievable within seconds instead of waiting for the background sync (which refreshes each account at most every ~90 minutes).  Primary use case: verifying a submitted post. When a user publishes on the platform and immediately pastes the post URL into your app, call this with `accountId` plus `url` (or `postId`) to confirm the post exists and return its metadata.  Behavior: - We check our stored copy first and return immediately if the post is already known (no platform call). - Otherwise we fetch the account's latest posts live from the platform, then match and return the submitted post. - Requests are debounced per account (~15s): if the account was synced inside that window, the live fetch is skipped.  `accountId` is required, because a post URL or id alone cannot be resolved to an account, and the account must be connected to Zernio (we use its token to read the platform). Supported for every platform with a listing API (Instagram, Facebook, TikTok, YouTube, X, Threads, Pinterest, Reddit, Bluesky, Google Business Profile, and LinkedIn organization accounts).  LinkedIn personal profiles: LinkedIn has no listing API for personal profiles, so a `url` is REQUIRED and imports that single post. Pass any LinkedIn post URL (`linkedin.com/posts/…`, `linkedin.com/feed/update/urn:li:activity:…`) or a `urn:li:share:…` / `urn:li:ugcPost:…` URN. Works for posts published outside Zernio and before the account was connected, any age; the post must be authored by the connected member. Imported posts return full analytics (impressions, reach, reactions, comments, reshares, saves) and keep refreshing on the background analytics cycle, but carry no content/media (LinkedIn does not expose them for personal profiles).  `url` accepts any format the platform uses (e.g. `instagram.com/p/…`, `instagram.com/reel/…`, `youtu.be/…`, `youtube.com/shorts/…`, `tiktok.com/@user/video/…`, `vm.tiktok.com` short links, `pinterest.com/pin/…` on any regional domain, and `pin.it` short links). Pass `postId` (the platform media/video/pin id) as an alternative locator.  Note: post-level analytics (reach, impressions) still carry the platform's own delay (e.g. ~24h on Instagram). This endpoint confirms the post exists and returns its metadata plus basic engagement (likes, comments), not delayed insights.
 
 ### Example
 

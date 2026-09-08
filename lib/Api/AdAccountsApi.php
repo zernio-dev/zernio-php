@@ -2754,7 +2754,7 @@ class AdAccountsApi
      *
      * Get ad account DSA defaults
      *
-     * @param  string $account_id Social account ID (metaads, or a facebook/instagram posting account) (required)
+     * @param  string $account_id Account ID (metaads, or a facebook/instagram posting account) (required)
      * @param  string $ad_account_id Meta ad account ID (act_...) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDsaDefaults'] to see the possible values for this operation
      *
@@ -2773,7 +2773,7 @@ class AdAccountsApi
      *
      * Get ad account DSA defaults
      *
-     * @param  string $account_id Social account ID (metaads, or a facebook/instagram posting account) (required)
+     * @param  string $account_id Account ID (metaads, or a facebook/instagram posting account) (required)
      * @param  string $ad_account_id Meta ad account ID (act_...) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDsaDefaults'] to see the possible values for this operation
      *
@@ -2873,7 +2873,7 @@ class AdAccountsApi
      *
      * Get ad account DSA defaults
      *
-     * @param  string $account_id Social account ID (metaads, or a facebook/instagram posting account) (required)
+     * @param  string $account_id Account ID (metaads, or a facebook/instagram posting account) (required)
      * @param  string $ad_account_id Meta ad account ID (act_...) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDsaDefaults'] to see the possible values for this operation
      *
@@ -2895,7 +2895,7 @@ class AdAccountsApi
      *
      * Get ad account DSA defaults
      *
-     * @param  string $account_id Social account ID (metaads, or a facebook/instagram posting account) (required)
+     * @param  string $account_id Account ID (metaads, or a facebook/instagram posting account) (required)
      * @param  string $ad_account_id Meta ad account ID (act_...) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDsaDefaults'] to see the possible values for this operation
      *
@@ -2946,7 +2946,7 @@ class AdAccountsApi
     /**
      * Create request for operation 'getDsaDefaults'
      *
-     * @param  string $account_id Social account ID (metaads, or a facebook/instagram posting account) (required)
+     * @param  string $account_id Account ID (metaads, or a facebook/instagram posting account) (required)
      * @param  string $ad_account_id Meta ad account ID (act_...) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDsaDefaults'] to see the possible values for this operation
      *
@@ -3062,7 +3062,7 @@ class AdAccountsApi
      *
      * List DSA beneficiary/payor suggestions
      *
-     * @param  string $account_id Social account ID (metaads, or a facebook/instagram posting account) (required)
+     * @param  string $account_id Account ID (metaads, or a facebook/instagram posting account) (required)
      * @param  string $ad_account_id Meta ad account ID (act_...) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDsaRecommendations'] to see the possible values for this operation
      *
@@ -3081,7 +3081,7 @@ class AdAccountsApi
      *
      * List DSA beneficiary/payor suggestions
      *
-     * @param  string $account_id Social account ID (metaads, or a facebook/instagram posting account) (required)
+     * @param  string $account_id Account ID (metaads, or a facebook/instagram posting account) (required)
      * @param  string $ad_account_id Meta ad account ID (act_...) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDsaRecommendations'] to see the possible values for this operation
      *
@@ -3181,7 +3181,7 @@ class AdAccountsApi
      *
      * List DSA beneficiary/payor suggestions
      *
-     * @param  string $account_id Social account ID (metaads, or a facebook/instagram posting account) (required)
+     * @param  string $account_id Account ID (metaads, or a facebook/instagram posting account) (required)
      * @param  string $ad_account_id Meta ad account ID (act_...) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDsaRecommendations'] to see the possible values for this operation
      *
@@ -3203,7 +3203,7 @@ class AdAccountsApi
      *
      * List DSA beneficiary/payor suggestions
      *
-     * @param  string $account_id Social account ID (metaads, or a facebook/instagram posting account) (required)
+     * @param  string $account_id Account ID (metaads, or a facebook/instagram posting account) (required)
      * @param  string $ad_account_id Meta ad account ID (act_...) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDsaRecommendations'] to see the possible values for this operation
      *
@@ -3254,7 +3254,7 @@ class AdAccountsApi
     /**
      * Create request for operation 'getDsaRecommendations'
      *
-     * @param  string $account_id Social account ID (metaads, or a facebook/instagram posting account) (required)
+     * @param  string $account_id Account ID (metaads, or a facebook/instagram posting account) (required)
      * @param  string $ad_account_id Meta ad account ID (act_...) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDsaRecommendations'] to see the possible values for this operation
      *
@@ -4007,7 +4007,7 @@ class AdAccountsApi
      *
      * List ad accounts
      *
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string|null $ad_account_id Filter response to a single platform ad account ID (e.g. &#x60;act_123&#x60; for Meta, advertiser_id for TikTok). Returns at most one item. (optional)
      * @param  int|null $limit Clamp the returned &#x60;accounts[]&#x60; length. Useful for typeahead pickers on agency tokens with hundreds of advertisers. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAccounts'] to see the possible values for this operation
@@ -4027,7 +4027,7 @@ class AdAccountsApi
      *
      * List ad accounts
      *
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string|null $ad_account_id Filter response to a single platform ad account ID (e.g. &#x60;act_123&#x60; for Meta, advertiser_id for TikTok). Returns at most one item. (optional)
      * @param  int|null $limit Clamp the returned &#x60;accounts[]&#x60; length. Useful for typeahead pickers on agency tokens with hundreds of advertisers. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAccounts'] to see the possible values for this operation
@@ -4142,7 +4142,7 @@ class AdAccountsApi
      *
      * List ad accounts
      *
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string|null $ad_account_id Filter response to a single platform ad account ID (e.g. &#x60;act_123&#x60; for Meta, advertiser_id for TikTok). Returns at most one item. (optional)
      * @param  int|null $limit Clamp the returned &#x60;accounts[]&#x60; length. Useful for typeahead pickers on agency tokens with hundreds of advertisers. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAccounts'] to see the possible values for this operation
@@ -4165,7 +4165,7 @@ class AdAccountsApi
      *
      * List ad accounts
      *
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string|null $ad_account_id Filter response to a single platform ad account ID (e.g. &#x60;act_123&#x60; for Meta, advertiser_id for TikTok). Returns at most one item. (optional)
      * @param  int|null $limit Clamp the returned &#x60;accounts[]&#x60; length. Useful for typeahead pickers on agency tokens with hundreds of advertisers. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAccounts'] to see the possible values for this operation
@@ -4217,7 +4217,7 @@ class AdAccountsApi
     /**
      * Create request for operation 'listAdAccounts'
      *
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string|null $ad_account_id Filter response to a single platform ad account ID (e.g. &#x60;act_123&#x60; for Meta, advertiser_id for TikTok). Returns at most one item. (optional)
      * @param  int|null $limit Clamp the returned &#x60;accounts[]&#x60; length. Useful for typeahead pickers on agency tokens with hundreds of advertisers. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAccounts'] to see the possible values for this operation

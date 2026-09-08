@@ -585,7 +585,7 @@ class InboxWebhookConversation implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets contact_id
      *
-     * @param string|null $contact_id Zernio CRM Contact ID for the participant, when one exists. Resolved by joining `participantId` to the ContactChannel collection. Best-effort: omitted when no channel matches or `participantId` is absent. Lets integrators join any inbox webhook back to the CRM Contact without needing to look at the sender — which matters for outgoing and delivery-status events whose sender is the business.
+     * @param string|null $contact_id Zernio CRM Contact ID for the participant, when one exists. Resolved by joining `participantId` to the ContactChannel collection. Best-effort: omitted when no channel matches or `participantId` is absent. Lets integrators join any inbox webhook back to the CRM Contact without needing to look at the sender, which matters for outgoing and delivery-status events whose sender is the business.
      *
      * @return self
      */

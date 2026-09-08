@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * TrackingTag Class Doc Comment
  *
  * @category Class
- * @description A platform measurement tag — the thing you create, install on a website, send events to, and target ads against. On Meta this is a Pixel (&#x60;kind: pixel&#x60;). The shape is platform-neutral so other platforms (Pinterest Tag, LinkedIn Insight Tag, etc.) can be added without changing the contract; platform-specific fields are simply absent where a platform has no equivalent. Returned by &#x60;listTrackingTags&#x60;, &#x60;createTrackingTag&#x60;, &#x60;getTrackingTag&#x60;, and &#x60;updateTrackingTag&#x60;.
+ * @description A platform measurement tag: the thing you create, install on a website, send events to, and target ads against. On Meta this is a Pixel (&#x60;kind: pixel&#x60;). The shape is platform-neutral so other platforms (Pinterest Tag, LinkedIn Insight Tag, etc.) can be added without changing the contract; platform-specific fields are absent where a platform has no equivalent. Returned by &#x60;listTrackingTags&#x60;, &#x60;createTrackingTag&#x60;, &#x60;getTrackingTag&#x60;, and &#x60;updateTrackingTag&#x60;.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -721,7 +721,7 @@ class TrackingTag implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets installed
      *
-     * @param bool|null $installed Convenience flag derived from `lastFiredTime` — has the tag ever fired.
+     * @param bool|null $installed Convenience flag derived from `lastFiredTime`: has the tag ever fired.
      *
      * @return self
      */
@@ -775,7 +775,7 @@ class TrackingTag implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner_business_id
      *
-     * @param string|null $owner_business_id Business Manager id that owns the tag, or `null` when the tag lives on a personal (non-BM) ad account — such tags can't be shared with other ad accounts.
+     * @param string|null $owner_business_id Business Manager id that owns the tag, or `null` when the tag lives on a personal (non-BM) ad account. Such tags can't be shared with other ad accounts.
      *
      * @return self
      */

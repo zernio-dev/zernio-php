@@ -996,7 +996,7 @@ class ValidateApi
      * Check subreddit existence
      *
      * @param  string $name Subreddit name (with or without \&quot;r/\&quot; prefix) (required)
-     * @param  string|null $account_id Reddit social account ID for authenticated lookup (recommended for reliable results) (optional)
+     * @param  string|null $account_id Reddit account ID for authenticated lookup (recommended for reliable results) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateSubreddit'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1015,7 +1015,7 @@ class ValidateApi
      * Check subreddit existence
      *
      * @param  string $name Subreddit name (with or without \&quot;r/\&quot; prefix) (required)
-     * @param  string|null $account_id Reddit social account ID for authenticated lookup (recommended for reliable results) (optional)
+     * @param  string|null $account_id Reddit account ID for authenticated lookup (recommended for reliable results) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateSubreddit'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1115,7 +1115,7 @@ class ValidateApi
      * Check subreddit existence
      *
      * @param  string $name Subreddit name (with or without \&quot;r/\&quot; prefix) (required)
-     * @param  string|null $account_id Reddit social account ID for authenticated lookup (recommended for reliable results) (optional)
+     * @param  string|null $account_id Reddit account ID for authenticated lookup (recommended for reliable results) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateSubreddit'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1137,7 +1137,7 @@ class ValidateApi
      * Check subreddit existence
      *
      * @param  string $name Subreddit name (with or without \&quot;r/\&quot; prefix) (required)
-     * @param  string|null $account_id Reddit social account ID for authenticated lookup (recommended for reliable results) (optional)
+     * @param  string|null $account_id Reddit account ID for authenticated lookup (recommended for reliable results) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateSubreddit'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1188,7 +1188,7 @@ class ValidateApi
      * Create request for operation 'validateSubreddit'
      *
      * @param  string $name Subreddit name (with or without \&quot;r/\&quot; prefix) (required)
-     * @param  string|null $account_id Reddit social account ID for authenticated lookup (recommended for reliable results) (optional)
+     * @param  string|null $account_id Reddit account ID for authenticated lookup (recommended for reliable results) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateSubreddit'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

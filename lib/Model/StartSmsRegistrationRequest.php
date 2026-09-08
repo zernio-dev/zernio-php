@@ -568,7 +568,7 @@ class StartSmsRegistrationRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets resubmit_request_id
      *
-     * @param string|null $resubmit_request_id Resubmit a registration that was returned for changes — updates it in place instead of creating a new one.
+     * @param string|null $resubmit_request_id Resubmit a registration that was returned for changes. Updates it in place instead of creating a new one.
      *
      * @return self
      */

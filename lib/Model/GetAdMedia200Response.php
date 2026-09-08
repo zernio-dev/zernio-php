@@ -344,7 +344,7 @@ class GetAdMedia200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets platform
      *
-     * @param string|null $platform 'facebook' or 'instagram' — only Meta is supported for now.
+     * @param string|null $platform 'facebook' or 'instagram'. Only Meta is supported for now.
      *
      * @return self
      */

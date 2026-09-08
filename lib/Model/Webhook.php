@@ -303,6 +303,7 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
     public const EVENTS_ANALYTICS_SYNCED = 'analytics.synced';
     public const EVENTS_MESSAGE_RECEIVED = 'message.received';
     public const EVENTS_CONVERSATION_STARTED = 'conversation.started';
+    public const EVENTS_CONVERSATION_CONTROL_CHANGED = 'conversation.control_changed';
     public const EVENTS_CALL_RECEIVED = 'call.received';
     public const EVENTS_CALL_ENDED = 'call.ended';
     public const EVENTS_CALL_FAILED = 'call.failed';
@@ -373,6 +374,7 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
             self::EVENTS_ANALYTICS_SYNCED,
             self::EVENTS_MESSAGE_RECEIVED,
             self::EVENTS_CONVERSATION_STARTED,
+            self::EVENTS_CONVERSATION_CONTROL_CHANGED,
             self::EVENTS_CALL_RECEIVED,
             self::EVENTS_CALL_ENDED,
             self::EVENTS_CALL_FAILED,

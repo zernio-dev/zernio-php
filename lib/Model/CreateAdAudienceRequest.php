@@ -638,7 +638,7 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets account_id
      *
-     * @param string $account_id Social account ID on the target ad platform.
+     * @param string $account_id Account ID on the target ad platform.
      *
      * @return self
      */
@@ -787,7 +787,7 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets match_rules
      *
-     * @param \Zernio\Model\UploadedOrDerivedAudienceMatchRulesInner[]|null $match_rules Required for website_retargeting audiences (LinkedIn only). Each rule is a URL pattern; a member who visits any matching page enters the segment. Needs the LinkedIn Insight Tag installed on the customer's site — the segment only starts filling once the tag reports visits.  The response's `platformAudienceId` is the LinkedIn adSegment id, valid for downstream use. These segments appear in GET /v1/ads/audiences with  `type: website_retargeting` once LinkedIn has finished building them.
+     * @param \Zernio\Model\UploadedOrDerivedAudienceMatchRulesInner[]|null $match_rules Required for website_retargeting audiences (LinkedIn only). Each rule is a URL pattern; a member who visits any matching page enters the segment. Needs the LinkedIn Insight Tag installed on the customer's site; the segment only starts filling once the tag reports visits.  The response's `platformAudienceId` is the LinkedIn adSegment id, valid for downstream use. These segments appear in GET /v1/ads/audiences with  `type: website_retargeting` once LinkedIn has finished building them.
      *
      * @return self
      */
@@ -821,7 +821,7 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets source_type
      *
-     * @param string|null $source_type Required for engagement audiences (LinkedIn only): what members engaged with — a video/leadgen/single-image ad campaign, a Company Page or an Event page.
+     * @param string|null $source_type Required for engagement audiences (LinkedIn only): what members engaged with: a video/leadgen/single-image ad campaign, a Company Page or an Event page.
      *
      * @return self
      */

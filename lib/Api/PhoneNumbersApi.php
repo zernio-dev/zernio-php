@@ -3200,7 +3200,7 @@ class PhoneNumbersApi
      * Country porting requirements
      *
      * @param  string $country ISO country of the numbers being ported (a supported port-in country). (required)
-     * @param  string|null $number_type The portability check&#39;s phoneNumberType — requirements differ by type. (optional, default to 'local')
+     * @param  string|null $number_type The portability check&#39;s phoneNumberType. Requirements differ by type. (optional, default to 'local')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberPortInRequirements'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3219,7 +3219,7 @@ class PhoneNumbersApi
      * Country porting requirements
      *
      * @param  string $country ISO country of the numbers being ported (a supported port-in country). (required)
-     * @param  string|null $number_type The portability check&#39;s phoneNumberType — requirements differ by type. (optional, default to 'local')
+     * @param  string|null $number_type The portability check&#39;s phoneNumberType. Requirements differ by type. (optional, default to 'local')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberPortInRequirements'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3333,7 +3333,7 @@ class PhoneNumbersApi
      * Country porting requirements
      *
      * @param  string $country ISO country of the numbers being ported (a supported port-in country). (required)
-     * @param  string|null $number_type The portability check&#39;s phoneNumberType — requirements differ by type. (optional, default to 'local')
+     * @param  string|null $number_type The portability check&#39;s phoneNumberType. Requirements differ by type. (optional, default to 'local')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberPortInRequirements'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3355,7 +3355,7 @@ class PhoneNumbersApi
      * Country porting requirements
      *
      * @param  string $country ISO country of the numbers being ported (a supported port-in country). (required)
-     * @param  string|null $number_type The portability check&#39;s phoneNumberType — requirements differ by type. (optional, default to 'local')
+     * @param  string|null $number_type The portability check&#39;s phoneNumberType. Requirements differ by type. (optional, default to 'local')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberPortInRequirements'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3406,7 +3406,7 @@ class PhoneNumbersApi
      * Create request for operation 'getPhoneNumberPortInRequirements'
      *
      * @param  string $country ISO country of the numbers being ported (a supported port-in country). (required)
-     * @param  string|null $number_type The portability check&#39;s phoneNumberType — requirements differ by type. (optional, default to 'local')
+     * @param  string|null $number_type The portability check&#39;s phoneNumberType. Requirements differ by type. (optional, default to 'local')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberPortInRequirements'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4605,7 +4605,7 @@ class PhoneNumbersApi
      *
      * List phone numbers
      *
-     * @param  string|null $status Filter by status (by default excludes released numbers). NOTE: &#x60;status&#x3D;pending_regulatory&#x60; returns the \&quot;provisioning\&quot; view — numbers still in review PLUS recently-declined (last 30 days) ones, so a failed registration surfaces (with &#x60;regulatoryDeclineReason&#x60;) instead of silently disappearing. Declined numbers can be re-submitted via POST /v1/phone-numbers/{id}/remediate. &#x60;verifying&#x60; is the short-lived state after the number is provisioned on our side while WhatsApp confirms the activation code; the number is not billed until it reaches &#x60;active&#x60;. (optional)
+     * @param  string|null $status Filter by status (by default excludes released numbers). NOTE: &#x60;status&#x3D;pending_regulatory&#x60; returns the \&quot;provisioning\&quot; view: numbers still in review PLUS recently-declined (last 30 days) ones, so a failed registration surfaces (with &#x60;regulatoryDeclineReason&#x60;) instead of silently disappearing. Declined numbers can be re-submitted via POST /v1/phone-numbers/{id}/remediate. &#x60;verifying&#x60; is the short-lived state after the number is provisioned on our side while WhatsApp confirms the activation code; the number is not billed until it reaches &#x60;active&#x60;. (optional)
      * @param  string|null $profile_id Filter by profile (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPhoneNumbers'] to see the possible values for this operation
      *
@@ -4624,7 +4624,7 @@ class PhoneNumbersApi
      *
      * List phone numbers
      *
-     * @param  string|null $status Filter by status (by default excludes released numbers). NOTE: &#x60;status&#x3D;pending_regulatory&#x60; returns the \&quot;provisioning\&quot; view — numbers still in review PLUS recently-declined (last 30 days) ones, so a failed registration surfaces (with &#x60;regulatoryDeclineReason&#x60;) instead of silently disappearing. Declined numbers can be re-submitted via POST /v1/phone-numbers/{id}/remediate. &#x60;verifying&#x60; is the short-lived state after the number is provisioned on our side while WhatsApp confirms the activation code; the number is not billed until it reaches &#x60;active&#x60;. (optional)
+     * @param  string|null $status Filter by status (by default excludes released numbers). NOTE: &#x60;status&#x3D;pending_regulatory&#x60; returns the \&quot;provisioning\&quot; view: numbers still in review PLUS recently-declined (last 30 days) ones, so a failed registration surfaces (with &#x60;regulatoryDeclineReason&#x60;) instead of silently disappearing. Declined numbers can be re-submitted via POST /v1/phone-numbers/{id}/remediate. &#x60;verifying&#x60; is the short-lived state after the number is provisioned on our side while WhatsApp confirms the activation code; the number is not billed until it reaches &#x60;active&#x60;. (optional)
      * @param  string|null $profile_id Filter by profile (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPhoneNumbers'] to see the possible values for this operation
      *
@@ -4724,7 +4724,7 @@ class PhoneNumbersApi
      *
      * List phone numbers
      *
-     * @param  string|null $status Filter by status (by default excludes released numbers). NOTE: &#x60;status&#x3D;pending_regulatory&#x60; returns the \&quot;provisioning\&quot; view — numbers still in review PLUS recently-declined (last 30 days) ones, so a failed registration surfaces (with &#x60;regulatoryDeclineReason&#x60;) instead of silently disappearing. Declined numbers can be re-submitted via POST /v1/phone-numbers/{id}/remediate. &#x60;verifying&#x60; is the short-lived state after the number is provisioned on our side while WhatsApp confirms the activation code; the number is not billed until it reaches &#x60;active&#x60;. (optional)
+     * @param  string|null $status Filter by status (by default excludes released numbers). NOTE: &#x60;status&#x3D;pending_regulatory&#x60; returns the \&quot;provisioning\&quot; view: numbers still in review PLUS recently-declined (last 30 days) ones, so a failed registration surfaces (with &#x60;regulatoryDeclineReason&#x60;) instead of silently disappearing. Declined numbers can be re-submitted via POST /v1/phone-numbers/{id}/remediate. &#x60;verifying&#x60; is the short-lived state after the number is provisioned on our side while WhatsApp confirms the activation code; the number is not billed until it reaches &#x60;active&#x60;. (optional)
      * @param  string|null $profile_id Filter by profile (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPhoneNumbers'] to see the possible values for this operation
      *
@@ -4746,7 +4746,7 @@ class PhoneNumbersApi
      *
      * List phone numbers
      *
-     * @param  string|null $status Filter by status (by default excludes released numbers). NOTE: &#x60;status&#x3D;pending_regulatory&#x60; returns the \&quot;provisioning\&quot; view — numbers still in review PLUS recently-declined (last 30 days) ones, so a failed registration surfaces (with &#x60;regulatoryDeclineReason&#x60;) instead of silently disappearing. Declined numbers can be re-submitted via POST /v1/phone-numbers/{id}/remediate. &#x60;verifying&#x60; is the short-lived state after the number is provisioned on our side while WhatsApp confirms the activation code; the number is not billed until it reaches &#x60;active&#x60;. (optional)
+     * @param  string|null $status Filter by status (by default excludes released numbers). NOTE: &#x60;status&#x3D;pending_regulatory&#x60; returns the \&quot;provisioning\&quot; view: numbers still in review PLUS recently-declined (last 30 days) ones, so a failed registration surfaces (with &#x60;regulatoryDeclineReason&#x60;) instead of silently disappearing. Declined numbers can be re-submitted via POST /v1/phone-numbers/{id}/remediate. &#x60;verifying&#x60; is the short-lived state after the number is provisioned on our side while WhatsApp confirms the activation code; the number is not billed until it reaches &#x60;active&#x60;. (optional)
      * @param  string|null $profile_id Filter by profile (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPhoneNumbers'] to see the possible values for this operation
      *
@@ -4797,7 +4797,7 @@ class PhoneNumbersApi
     /**
      * Create request for operation 'listPhoneNumbers'
      *
-     * @param  string|null $status Filter by status (by default excludes released numbers). NOTE: &#x60;status&#x3D;pending_regulatory&#x60; returns the \&quot;provisioning\&quot; view — numbers still in review PLUS recently-declined (last 30 days) ones, so a failed registration surfaces (with &#x60;regulatoryDeclineReason&#x60;) instead of silently disappearing. Declined numbers can be re-submitted via POST /v1/phone-numbers/{id}/remediate. &#x60;verifying&#x60; is the short-lived state after the number is provisioned on our side while WhatsApp confirms the activation code; the number is not billed until it reaches &#x60;active&#x60;. (optional)
+     * @param  string|null $status Filter by status (by default excludes released numbers). NOTE: &#x60;status&#x3D;pending_regulatory&#x60; returns the \&quot;provisioning\&quot; view: numbers still in review PLUS recently-declined (last 30 days) ones, so a failed registration surfaces (with &#x60;regulatoryDeclineReason&#x60;) instead of silently disappearing. Declined numbers can be re-submitted via POST /v1/phone-numbers/{id}/remediate. &#x60;verifying&#x60; is the short-lived state after the number is provisioned on our side while WhatsApp confirms the activation code; the number is not billed until it reaches &#x60;active&#x60;. (optional)
      * @param  string|null $profile_id Filter by profile (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPhoneNumbers'] to see the possible values for this operation
      *

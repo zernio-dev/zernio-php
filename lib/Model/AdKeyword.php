@@ -523,7 +523,7 @@ class AdKeyword implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets account_id
      *
-     * @param string|null $account_id Social account ID owning the sync
+     * @param string|null $account_id Account ID owning the sync
      *
      * @return self
      */

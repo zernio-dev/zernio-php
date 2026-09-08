@@ -352,7 +352,7 @@ class EditInboxCommentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets account_id
      *
-     * @param string $account_id The social account ID
+     * @param string $account_id The account ID
      *
      * @return self
      */

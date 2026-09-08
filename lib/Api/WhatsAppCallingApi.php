@@ -2865,7 +2865,7 @@ class WhatsAppCallingApi
      *
      * Get calling config for an account
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppCallingConfig'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2883,7 +2883,7 @@ class WhatsAppCallingApi
      *
      * Get calling config for an account
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppCallingConfig'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2982,7 +2982,7 @@ class WhatsAppCallingApi
      *
      * Get calling config for an account
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppCallingConfig'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3003,7 +3003,7 @@ class WhatsAppCallingApi
      *
      * Get calling config for an account
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppCallingConfig'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3053,7 +3053,7 @@ class WhatsAppCallingApi
     /**
      * Create request for operation 'getWhatsAppCallingConfig'
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppCallingConfig'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

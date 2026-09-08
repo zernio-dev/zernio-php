@@ -651,7 +651,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created_time
      *
-     * @param \DateTime|null $created_time Earliest `platformCreatedAt` (platform ad creation time; falls back to `createdAt`, Zernio's sync time, for ads synced before that field existed) across every ad in the campaign. Not the platform campaign's own creation time (Meta's `Campaign.created_time` etc. is not synced) — a campaign created empty and populated later will show its first ad's time, not the campaign's. Usable for sorting \"most recently created\" without the numeric-campaign-id heuristic. Same source as `AdTreeAdSet.createdTime` and `Ad.platformCreatedAt`; mirrors `AdCampaign.earliestAd`.
+     * @param \DateTime|null $created_time Earliest `platformCreatedAt` (platform ad creation time; falls back to `createdAt`, Zernio's sync time, for ads synced before that field existed) across every ad in the campaign. Not the platform campaign's own creation time (Meta's `Campaign.created_time` etc. is not synced). A campaign created empty and populated later will show its first ad's time, not the campaign's. Usable for sorting \"most recently created\" without the numeric-campaign-id heuristic. Same source as `AdTreeAdSet.createdTime` and `Ad.platformCreatedAt`; mirrors `AdCampaign.earliestAd`.
      *
      * @return self
      */
@@ -966,7 +966,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_budget_schedule_enabled
      *
-     * @param bool|null $is_budget_schedule_enabled Meta-only. Mirrors Campaign.is_budget_schedule_enabled — true when the campaign uses budget scheduling (time-based budget changes). Independent of CBO/ABO.
+     * @param bool|null $is_budget_schedule_enabled Meta-only. Mirrors Campaign.is_budget_schedule_enabled: true when the campaign uses budget scheduling (time-based budget changes). Independent of CBO/ABO.
      *
      * @return self
      */
@@ -1332,7 +1332,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets roas_average_floor
      *
-     * @param float|null $roas_average_floor Representative ROAS floor for the campaign — bubbled up from the top-spending ad set. Decimal multiplier (2.0 = 2.0x).
+     * @param float|null $roas_average_floor Representative ROAS floor for the campaign, bubbled up from the top-spending ad set. Decimal multiplier (2.0 = 2.0x).
      *
      * @return self
      */
@@ -1420,7 +1420,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets daily
      *
-     * @param \Zernio\Model\AdDailyMetrics[]|null $daily Per-day metric series for this campaign. Present only when `GET /v1/ads/tree` is called with `timeIncrement=1` (any `dailyLevel`). This is the per-campaign daily trend — summing its additive fields reproduces the campaign `metrics` total, except `reach`: on Meta the range total is de-duplicated, so daily reach does not sum to it.
+     * @param \Zernio\Model\AdDailyMetrics[]|null $daily Per-day metric series for this campaign. Present only when `GET /v1/ads/tree` is called with `timeIncrement=1` (any `dailyLevel`). This is the per-campaign daily trend. Summing its additive fields reproduces the campaign `metrics` total, except `reach`: on Meta the range total is de-duplicated, so daily reach does not sum to it.
      *
      * @return self
      */

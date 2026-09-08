@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * UsageStatsSpend Class Doc Comment
  *
  * @category Class
- * @description Metronome users only. Current-period spend summary.
+ * @description Usage-based billing only. Current-period spend summary.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -379,7 +379,7 @@ class UsageStatsSpend implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_spend_cents
      *
-     * @param int|null $x_spend_cents Current-period X/Twitter API spend in cents, summed from `xApiCallsByOperation` × per-operation prices. Tier-agnostic (covers every price including the $0.200 URL tier). Rounded up for conservative enforcement against `xSpendLimitCents`.
+     * @param int|null $x_spend_cents Current-period X API spend in cents, summed from `xApiCallsByOperation` × per-operation prices. Tier-agnostic (covers every price including the $0.200 URL tier). Rounded up for conservative enforcement against `xSpendLimitCents`.
      *
      * @return self
      */

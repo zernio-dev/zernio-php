@@ -209,7 +209,7 @@ class AnalyticsApi
      * @param  string|null $post_id Returns analytics for a single post. Accepts both Zernio Post IDs and External Post IDs. Zernio IDs are auto-resolved to External Post analytics. (optional)
      * @param  string|null $platform Filter by platform (default \&quot;all\&quot;) (optional)
      * @param  string|null $profile_id Filter by profile ID (default \&quot;all\&quot;) (optional)
-     * @param  string|null $account_id Filter by social account ID (optional)
+     * @param  string|null $account_id Filter by account ID (optional)
      * @param  string|null $source Filter by post source: late (posted via Zernio API), external (synced from platform), all (default) (optional, default to 'all')
      * @param  \DateTime|null $from_date Inclusive lower bound (YYYY-MM-DD). Defaults to 90 days ago if omitted. Max range is 366 days. (optional)
      * @param  \DateTime|null $to_date Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted. (optional)
@@ -237,7 +237,7 @@ class AnalyticsApi
      * @param  string|null $post_id Returns analytics for a single post. Accepts both Zernio Post IDs and External Post IDs. Zernio IDs are auto-resolved to External Post analytics. (optional)
      * @param  string|null $platform Filter by platform (default \&quot;all\&quot;) (optional)
      * @param  string|null $profile_id Filter by profile ID (default \&quot;all\&quot;) (optional)
-     * @param  string|null $account_id Filter by social account ID (optional)
+     * @param  string|null $account_id Filter by account ID (optional)
      * @param  string|null $source Filter by post source: late (posted via Zernio API), external (synced from platform), all (default) (optional, default to 'all')
      * @param  \DateTime|null $from_date Inclusive lower bound (YYYY-MM-DD). Defaults to 90 days ago if omitted. Max range is 366 days. (optional)
      * @param  \DateTime|null $to_date Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted. (optional)
@@ -430,7 +430,7 @@ class AnalyticsApi
      * @param  string|null $post_id Returns analytics for a single post. Accepts both Zernio Post IDs and External Post IDs. Zernio IDs are auto-resolved to External Post analytics. (optional)
      * @param  string|null $platform Filter by platform (default \&quot;all\&quot;) (optional)
      * @param  string|null $profile_id Filter by profile ID (default \&quot;all\&quot;) (optional)
-     * @param  string|null $account_id Filter by social account ID (optional)
+     * @param  string|null $account_id Filter by account ID (optional)
      * @param  string|null $source Filter by post source: late (posted via Zernio API), external (synced from platform), all (default) (optional, default to 'all')
      * @param  \DateTime|null $from_date Inclusive lower bound (YYYY-MM-DD). Defaults to 90 days ago if omitted. Max range is 366 days. (optional)
      * @param  \DateTime|null $to_date Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted. (optional)
@@ -461,7 +461,7 @@ class AnalyticsApi
      * @param  string|null $post_id Returns analytics for a single post. Accepts both Zernio Post IDs and External Post IDs. Zernio IDs are auto-resolved to External Post analytics. (optional)
      * @param  string|null $platform Filter by platform (default \&quot;all\&quot;) (optional)
      * @param  string|null $profile_id Filter by profile ID (default \&quot;all\&quot;) (optional)
-     * @param  string|null $account_id Filter by social account ID (optional)
+     * @param  string|null $account_id Filter by account ID (optional)
      * @param  string|null $source Filter by post source: late (posted via Zernio API), external (synced from platform), all (default) (optional, default to 'all')
      * @param  \DateTime|null $from_date Inclusive lower bound (YYYY-MM-DD). Defaults to 90 days ago if omitted. Max range is 366 days. (optional)
      * @param  \DateTime|null $to_date Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted. (optional)
@@ -521,7 +521,7 @@ class AnalyticsApi
      * @param  string|null $post_id Returns analytics for a single post. Accepts both Zernio Post IDs and External Post IDs. Zernio IDs are auto-resolved to External Post analytics. (optional)
      * @param  string|null $platform Filter by platform (default \&quot;all\&quot;) (optional)
      * @param  string|null $profile_id Filter by profile ID (default \&quot;all\&quot;) (optional)
-     * @param  string|null $account_id Filter by social account ID (optional)
+     * @param  string|null $account_id Filter by account ID (optional)
      * @param  string|null $source Filter by post source: late (posted via Zernio API), external (synced from platform), all (default) (optional, default to 'all')
      * @param  \DateTime|null $from_date Inclusive lower bound (YYYY-MM-DD). Defaults to 90 days ago if omitted. Max range is 366 days. (optional)
      * @param  \DateTime|null $to_date Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted. (optional)
@@ -1148,7 +1148,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
-     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
+     * @param  string|null $account_id Filter by account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBestTimeToPost'] to see the possible values for this operation
      *
@@ -1169,7 +1169,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
-     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
+     * @param  string|null $account_id Filter by account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBestTimeToPost'] to see the possible values for this operation
      *
@@ -1285,7 +1285,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
-     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
+     * @param  string|null $account_id Filter by account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBestTimeToPost'] to see the possible values for this operation
      *
@@ -1309,7 +1309,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
-     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
+     * @param  string|null $account_id Filter by account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBestTimeToPost'] to see the possible values for this operation
      *
@@ -1362,7 +1362,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
-     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
+     * @param  string|null $account_id Filter by account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBestTimeToPost'] to see the possible values for this operation
      *
@@ -1488,7 +1488,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
-     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
+     * @param  string|null $account_id Filter by account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentDecay'] to see the possible values for this operation
      *
@@ -1509,7 +1509,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
-     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
+     * @param  string|null $account_id Filter by account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentDecay'] to see the possible values for this operation
      *
@@ -1625,7 +1625,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
-     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
+     * @param  string|null $account_id Filter by account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentDecay'] to see the possible values for this operation
      *
@@ -1649,7 +1649,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
-     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
+     * @param  string|null $account_id Filter by account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentDecay'] to see the possible values for this operation
      *
@@ -1702,7 +1702,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
-     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
+     * @param  string|null $account_id Filter by account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentDecay'] to see the possible values for this operation
      *
@@ -1828,7 +1828,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
-     * @param  string|null $account_id Filter by social account ID (optional)
+     * @param  string|null $account_id Filter by account ID (optional)
      * @param  \DateTime|null $from_date Inclusive start date (ISO 8601). Defaults to 180 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end date (ISO 8601). Defaults to now. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
@@ -1852,7 +1852,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
-     * @param  string|null $account_id Filter by social account ID (optional)
+     * @param  string|null $account_id Filter by account ID (optional)
      * @param  \DateTime|null $from_date Inclusive start date (ISO 8601). Defaults to 180 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end date (ISO 8601). Defaults to now. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
@@ -1971,7 +1971,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
-     * @param  string|null $account_id Filter by social account ID (optional)
+     * @param  string|null $account_id Filter by account ID (optional)
      * @param  \DateTime|null $from_date Inclusive start date (ISO 8601). Defaults to 180 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end date (ISO 8601). Defaults to now. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
@@ -1998,7 +1998,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
-     * @param  string|null $account_id Filter by social account ID (optional)
+     * @param  string|null $account_id Filter by account ID (optional)
      * @param  \DateTime|null $from_date Inclusive start date (ISO 8601). Defaults to 180 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end date (ISO 8601). Defaults to now. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
@@ -2054,7 +2054,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
-     * @param  string|null $account_id Filter by social account ID (optional)
+     * @param  string|null $account_id Filter by account ID (optional)
      * @param  \DateTime|null $from_date Inclusive start date (ISO 8601). Defaults to 180 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end date (ISO 8601). Defaults to now. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
@@ -3541,7 +3541,7 @@ class AnalyticsApi
     /**
      * Operation getGoogleBusinessPerformance
      *
-     * Get GBP performance metrics
+     * Get Google Business Profile performance metrics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
      * @param  string|null $metrics Comma-separated metric names. Defaults to all available metrics. Valid values: BUSINESS_IMPRESSIONS_DESKTOP_MAPS, BUSINESS_IMPRESSIONS_DESKTOP_SEARCH, BUSINESS_IMPRESSIONS_MOBILE_MAPS, BUSINESS_IMPRESSIONS_MOBILE_SEARCH, BUSINESS_CONVERSATIONS, BUSINESS_DIRECTION_REQUESTS, CALL_CLICKS, WEBSITE_CLICKS, BUSINESS_BOOKINGS, BUSINESS_FOOD_ORDERS, BUSINESS_FOOD_MENU_CLICKS (optional)
@@ -3562,7 +3562,7 @@ class AnalyticsApi
     /**
      * Operation getGoogleBusinessPerformanceWithHttpInfo
      *
-     * Get GBP performance metrics
+     * Get Google Business Profile performance metrics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
      * @param  string|null $metrics Comma-separated metric names. Defaults to all available metrics. Valid values: BUSINESS_IMPRESSIONS_DESKTOP_MAPS, BUSINESS_IMPRESSIONS_DESKTOP_SEARCH, BUSINESS_IMPRESSIONS_MOBILE_MAPS, BUSINESS_IMPRESSIONS_MOBILE_SEARCH, BUSINESS_CONVERSATIONS, BUSINESS_DIRECTION_REQUESTS, CALL_CLICKS, WEBSITE_CLICKS, BUSINESS_BOOKINGS, BUSINESS_FOOD_ORDERS, BUSINESS_FOOD_MENU_CLICKS (optional)
@@ -3706,7 +3706,7 @@ class AnalyticsApi
     /**
      * Operation getGoogleBusinessPerformanceAsync
      *
-     * Get GBP performance metrics
+     * Get Google Business Profile performance metrics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
      * @param  string|null $metrics Comma-separated metric names. Defaults to all available metrics. Valid values: BUSINESS_IMPRESSIONS_DESKTOP_MAPS, BUSINESS_IMPRESSIONS_DESKTOP_SEARCH, BUSINESS_IMPRESSIONS_MOBILE_MAPS, BUSINESS_IMPRESSIONS_MOBILE_SEARCH, BUSINESS_CONVERSATIONS, BUSINESS_DIRECTION_REQUESTS, CALL_CLICKS, WEBSITE_CLICKS, BUSINESS_BOOKINGS, BUSINESS_FOOD_ORDERS, BUSINESS_FOOD_MENU_CLICKS (optional)
@@ -3730,7 +3730,7 @@ class AnalyticsApi
     /**
      * Operation getGoogleBusinessPerformanceAsyncWithHttpInfo
      *
-     * Get GBP performance metrics
+     * Get Google Business Profile performance metrics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
      * @param  string|null $metrics Comma-separated metric names. Defaults to all available metrics. Valid values: BUSINESS_IMPRESSIONS_DESKTOP_MAPS, BUSINESS_IMPRESSIONS_DESKTOP_SEARCH, BUSINESS_IMPRESSIONS_MOBILE_MAPS, BUSINESS_IMPRESSIONS_MOBILE_SEARCH, BUSINESS_CONVERSATIONS, BUSINESS_DIRECTION_REQUESTS, CALL_CLICKS, WEBSITE_CLICKS, BUSINESS_BOOKINGS, BUSINESS_FOOD_ORDERS, BUSINESS_FOOD_MENU_CLICKS (optional)
@@ -3915,7 +3915,7 @@ class AnalyticsApi
     /**
      * Operation getGoogleBusinessSearchKeywords
      *
-     * Get GBP search keywords
+     * Get Google Business Profile search keywords
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
      * @param  string|null $start_month Start month (YYYY-MM). Defaults to 3 months ago. (optional)
@@ -3935,7 +3935,7 @@ class AnalyticsApi
     /**
      * Operation getGoogleBusinessSearchKeywordsWithHttpInfo
      *
-     * Get GBP search keywords
+     * Get Google Business Profile search keywords
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
      * @param  string|null $start_month Start month (YYYY-MM). Defaults to 3 months ago. (optional)
@@ -4078,7 +4078,7 @@ class AnalyticsApi
     /**
      * Operation getGoogleBusinessSearchKeywordsAsync
      *
-     * Get GBP search keywords
+     * Get Google Business Profile search keywords
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
      * @param  string|null $start_month Start month (YYYY-MM). Defaults to 3 months ago. (optional)
@@ -4101,7 +4101,7 @@ class AnalyticsApi
     /**
      * Operation getGoogleBusinessSearchKeywordsAsyncWithHttpInfo
      *
-     * Get GBP search keywords
+     * Get Google Business Profile search keywords
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
      * @param  string|null $start_month Start month (YYYY-MM). Defaults to 3 months ago. (optional)
@@ -7257,7 +7257,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
-     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
+     * @param  string|null $account_id Filter by account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostingFrequency'] to see the possible values for this operation
      *
@@ -7278,7 +7278,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
-     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
+     * @param  string|null $account_id Filter by account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostingFrequency'] to see the possible values for this operation
      *
@@ -7394,7 +7394,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
-     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
+     * @param  string|null $account_id Filter by account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostingFrequency'] to see the possible values for this operation
      *
@@ -7418,7 +7418,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
-     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
+     * @param  string|null $account_id Filter by account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostingFrequency'] to see the possible values for this operation
      *
@@ -7471,7 +7471,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
-     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
+     * @param  string|null $account_id Filter by account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostingFrequency'] to see the possible values for this operation
      *

@@ -111,7 +111,7 @@ $apiInstance = new Zernio\Api\WhatsAppFlowsApi(
     $config
 );
 $flow_id = 'flow_id_example'; // string | Flow ID
-$account_id = 'account_id_example'; // string | WhatsApp social account ID
+$account_id = 'account_id_example'; // string | WhatsApp account ID
 
 try {
     $result = $apiInstance->deleteWhatsAppFlow($flow_id, $account_id);
@@ -126,7 +126,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **flow_id** | **string**| Flow ID | |
-| **account_id** | **string**| WhatsApp social account ID | |
+| **account_id** | **string**| WhatsApp account ID | |
 
 ### Return type
 
@@ -235,7 +235,7 @@ $apiInstance = new Zernio\Api\WhatsAppFlowsApi(
     $config
 );
 $flow_id = 'flow_id_example'; // string | Flow ID
-$account_id = 'account_id_example'; // string | WhatsApp social account ID
+$account_id = 'account_id_example'; // string | WhatsApp account ID
 $fields = 'fields_example'; // string | Comma-separated fields to return (default: id,name,status,categories,validation_errors,json_version,preview,data_api_version,endpoint_uri)
 
 try {
@@ -251,7 +251,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **flow_id** | **string**| Flow ID | |
-| **account_id** | **string**| WhatsApp social account ID | |
+| **account_id** | **string**| WhatsApp account ID | |
 | **fields** | **string**| Comma-separated fields to return (default: id,name,status,categories,validation_errors,json_version,preview,data_api_version,endpoint_uri) | [optional] |
 
 ### Return type
@@ -299,7 +299,7 @@ $apiInstance = new Zernio\Api\WhatsAppFlowsApi(
     $config
 );
 $flow_id = 'flow_id_example'; // string | Flow ID
-$account_id = 'account_id_example'; // string | WhatsApp social account ID
+$account_id = 'account_id_example'; // string | WhatsApp account ID
 
 try {
     $result = $apiInstance->getWhatsAppFlowJson($flow_id, $account_id);
@@ -314,7 +314,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **flow_id** | **string**| Flow ID | |
-| **account_id** | **string**| WhatsApp social account ID | |
+| **account_id** | **string**| WhatsApp account ID | |
 
 ### Return type
 
@@ -361,7 +361,7 @@ $apiInstance = new Zernio\Api\WhatsAppFlowsApi(
     $config
 );
 $flow_id = 'flow_id_example'; // string | Flow ID
-$account_id = 'account_id_example'; // string | WhatsApp social account ID
+$account_id = 'account_id_example'; // string | WhatsApp account ID
 $invalidate = True; // bool | Mint a fresh preview link (default false)
 
 try {
@@ -377,7 +377,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **flow_id** | **string**| Flow ID | |
-| **account_id** | **string**| WhatsApp social account ID | |
+| **account_id** | **string**| WhatsApp account ID | |
 | **invalidate** | **bool**| Mint a fresh preview link (default false) | [optional] |
 
 ### Return type
@@ -424,7 +424,7 @@ $apiInstance = new Zernio\Api\WhatsAppFlowsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | WhatsApp social account ID
+$account_id = 'account_id_example'; // string | WhatsApp account ID
 
 try {
     $result = $apiInstance->getWhatsAppFlowsEncryptionKey($account_id);
@@ -438,7 +438,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| WhatsApp social account ID | |
+| **account_id** | **string**| WhatsApp account ID | |
 
 ### Return type
 
@@ -465,7 +465,7 @@ listWhatsAppFlowResponses($account_id, $flow_id, $limit): \Zernio\Model\ListWhat
 
 List flow responses
 
-List the responses customers submitted when completing a flow (parsed from the nfm_reply messages received via webhook), newest first. Scope to a single flow with `flowId` — this matches responses whose flow_token carries the `<flowId>:` prefix that Zernio stamps on auto-generated tokens at send time. Responses sent with a custom integrator-supplied flow_token are not attributed to a flow.
+List the responses customers submitted when completing a flow (parsed from the nfm_reply messages received via webhook), newest first. Scope to a single flow with `flowId`, which matches responses whose flow_token carries the `<flowId>:` prefix that Zernio stamps on auto-generated tokens at send time. Responses sent with a custom integrator-supplied flow_token are not attributed to a flow.
 
 ### Example
 
@@ -484,7 +484,7 @@ $apiInstance = new Zernio\Api\WhatsAppFlowsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | WhatsApp social account ID
+$account_id = 'account_id_example'; // string | WhatsApp account ID
 $flow_id = 'flow_id_example'; // string | Scope to responses for this flow
 $limit = 50; // int | Max responses to return
 
@@ -500,7 +500,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| WhatsApp social account ID | |
+| **account_id** | **string**| WhatsApp account ID | |
 | **flow_id** | **string**| Scope to responses for this flow | [optional] |
 | **limit** | **int**| Max responses to return | [optional] [default to 50] |
 
@@ -529,7 +529,7 @@ listWhatsAppFlowVersions($flow_id, $account_id): \Zernio\Model\ListWhatsAppFlowV
 
 List flow versions
 
-List the flow's version history (the clone lineage Zernio tracks, since Meta has no native versioning), newest version first. Each entry is enriched with the version's live name and status from Meta. A flow with no lineage returns just itself as version 1.
+List the flow's version history (the clone lineage Zernio tracks, since Meta has no native versioning), newest version first. Each entry is enriched with the version's live name and status from Meta. A flow with no lineage returns only itself as version 1.
 
 ### Example
 
@@ -549,7 +549,7 @@ $apiInstance = new Zernio\Api\WhatsAppFlowsApi(
     $config
 );
 $flow_id = 'flow_id_example'; // string | Flow ID
-$account_id = 'account_id_example'; // string | WhatsApp social account ID
+$account_id = 'account_id_example'; // string | WhatsApp account ID
 
 try {
     $result = $apiInstance->listWhatsAppFlowVersions($flow_id, $account_id);
@@ -564,7 +564,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **flow_id** | **string**| Flow ID | |
-| **account_id** | **string**| WhatsApp social account ID | |
+| **account_id** | **string**| WhatsApp account ID | |
 
 ### Return type
 
@@ -610,7 +610,7 @@ $apiInstance = new Zernio\Api\WhatsAppFlowsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | WhatsApp social account ID
+$account_id = 'account_id_example'; // string | WhatsApp account ID
 
 try {
     $result = $apiInstance->listWhatsAppFlows($account_id);
@@ -624,7 +624,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| WhatsApp social account ID | |
+| **account_id** | **string**| WhatsApp account ID | |
 
 ### Return type
 

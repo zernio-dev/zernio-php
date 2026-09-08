@@ -360,7 +360,7 @@ class WebhookPayloadReviewNewAccount implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets account_id
      *
-     * @param string|null $account_id Social account ID (same as id); canonical field for account filtering.
+     * @param string|null $account_id Account ID (same as id); canonical field for account filtering.
      *
      * @return self
      */

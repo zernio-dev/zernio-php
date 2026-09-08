@@ -39,7 +39,7 @@ $apiInstance = new Zernio\Api\GMBAttributesApi(
     $config
 );
 $account_id = 'account_id_example'; // string
-$location_id = 'location_id_example'; // string | GBP location ID (e.g. \"6257659026299438786\"). If omitted, uses the account's stored selectedLocationId. Mutually exclusive with categoryName.
+$location_id = 'location_id_example'; // string | Google Business Profile location ID (e.g. \"6257659026299438786\"). If omitted, uses the account's stored selectedLocationId. Mutually exclusive with categoryName.
 $category_name = 'category_name_example'; // string | Category resource name, must start with \"categories/\" (e.g. \"categories/gcid:plumber\"). Required together with regionCode. Mutually exclusive with locationId.
 $region_code = 'region_code_example'; // string | BCP-47 region code (e.g. \"US\", \"ES\"). Required when categoryName is provided.
 $language_code = 'language_code_example'; // string | BCP-47 language code for display names (e.g. \"en\", \"es\"). Optional when categoryName is provided. Omitted from the Google call when not supplied.
@@ -59,7 +59,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **location_id** | **string**| GBP location ID (e.g. \&quot;6257659026299438786\&quot;). If omitted, uses the account&#39;s stored selectedLocationId. Mutually exclusive with categoryName. | [optional] |
+| **location_id** | **string**| Google Business Profile location ID (e.g. \&quot;6257659026299438786\&quot;). If omitted, uses the account&#39;s stored selectedLocationId. Mutually exclusive with categoryName. | [optional] |
 | **category_name** | **string**| Category resource name, must start with \&quot;categories/\&quot; (e.g. \&quot;categories/gcid:plumber\&quot;). Required together with regionCode. Mutually exclusive with locationId. | [optional] |
 | **region_code** | **string**| BCP-47 region code (e.g. \&quot;US\&quot;, \&quot;ES\&quot;). Required when categoryName is provided. | [optional] |
 | **language_code** | **string**| BCP-47 language code for display names (e.g. \&quot;en\&quot;, \&quot;es\&quot;). Optional when categoryName is provided. Omitted from the Google call when not supplied. | [optional] |
@@ -91,7 +91,7 @@ getGoogleBusinessAttributes($account_id, $location_id): \Zernio\Model\GetGoogleB
 
 Get attributes
 
-Returns GBP location attributes (amenities, services, accessibility, payment types). Available attributes vary by business category.
+Returns Google Business Profile location attributes (amenities, services, accessibility, payment types). Available attributes vary by business category.
 
 ### Example
 

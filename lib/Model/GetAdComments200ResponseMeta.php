@@ -479,7 +479,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets placement
      *
-     * @param string $placement The placement these comments are for — useful when you didn't pass ?placement= and want to know which one you got.
+     * @param string $placement The placement these comments are for, useful when you didn't pass ?placement= and want to know which one you got.
      *
      * @return self
      */
@@ -597,7 +597,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets facebook_account_id
      *
-     * @param string|null $facebook_account_id Facebook-only. The connected Facebook Page SocialAccount these comments were read through — pass it as `accountId` (with `effectiveStoryId` as the postId) to /v1/inbox/comments to reply/hide/delete. Null when no connected Page was used (then moderation isn't possible).
+     * @param string|null $facebook_account_id Facebook-only. The connected Facebook Page SocialAccount these comments were read through. Pass it as `accountId` (with `effectiveStoryId` as the postId) to /v1/inbox/comments to reply/hide/delete. Null when no connected Page was used (then moderation isn't possible).
      *
      * @return self
      */
@@ -685,7 +685,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets instagram_account_id
      *
-     * @param string|null $instagram_account_id Instagram-only. The connected Instagram SocialAccount these comments were read through — pass it as `accountId` (with `effectiveStoryId` as the postId) to /v1/inbox/comments to reply/hide/delete.
+     * @param string|null $instagram_account_id Instagram-only. The connected Instagram SocialAccount these comments were read through. Pass it as `accountId` (with `effectiveStoryId` as the postId) to /v1/inbox/comments to reply/hide/delete.
      *
      * @return self
      */
@@ -712,7 +712,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets account_id
      *
-     * @param string $account_id Social account ID (ads SocialAccount).
+     * @param string $account_id Account ID (ads SocialAccount).
      *
      * @return self
      */

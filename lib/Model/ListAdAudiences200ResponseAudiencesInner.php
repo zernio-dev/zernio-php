@@ -436,7 +436,7 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
     /**
      * Sets account_id
      *
-     * @param string|null $account_id Social account the audience was created against. Returned for saved_targeting items.
+     * @param string|null $account_id Account the audience was created against. Returned for saved_targeting items.
      *
      * @return self
      */

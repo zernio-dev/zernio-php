@@ -372,7 +372,7 @@ class CtwaAdRequestBodyVideo implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets thumbnail_url
      *
-     * @param string|null $thumbnail_url OPTIONAL: when omitted, the poster is auto-generated from Meta's own preferred video thumbnail. When Meta produces no candidate the request fails with a 502 platform_error (reason: video_thumbnail_unavailable) — retry, or supply this field to control the poster frame exactly.
+     * @param string|null $thumbnail_url OPTIONAL: when omitted, the poster is auto-generated from Meta's own preferred video thumbnail. When Meta produces no candidate the request fails with a 502 platform_error (reason: video_thumbnail_unavailable). Retry, or supply this field to control the poster frame exactly.
      *
      * @return self
      */

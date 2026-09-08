@@ -371,7 +371,7 @@ class BillingSnapshotPlan implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets is_paid
      *
-     * @param bool|null $is_paid True when the key belongs to an account with an active paid billing relationship (Stripe subscription, Metronome enrollment, or Shopify-managed billing).
+     * @param bool|null $is_paid True when the key belongs to an account with an active paid billing relationship (Stripe subscription, usage-based billing, or Shopify-managed billing).
      *
      * @return self
      */

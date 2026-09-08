@@ -801,7 +801,7 @@ class GetInboxPostComments200ResponseCommentsInner implements ModelInterface, Ar
     /**
      * Sets can_like
      *
-     * @param bool|null $can_like Whether this comment can be liked (Facebook, Twitter/X, Bluesky, Reddit)
+     * @param bool|null $can_like Whether this comment can be liked (Facebook, X, Bluesky, Reddit)
      *
      * @return self
      */
@@ -950,7 +950,7 @@ class GetInboxPostComments200ResponseCommentsInner implements ModelInterface, Ar
     /**
      * Sets parent_id
      *
-     * @param string|null $parent_id ID of the parent comment. Present on entries inside replies[] for Facebook, Instagram and X/Twitter. On X/Twitter it is also present on top-level entries, where it holds the ID of the post replied to. Omitted entirely (key absent, not null) on top-level Facebook and Instagram entries and on every other platform, which express the parent relationship only through replies[] nesting.
+     * @param string|null $parent_id ID of the parent comment. Present on entries inside replies[] for Facebook, Instagram and X. On X it is also present on top-level entries, where it holds the ID of the post replied to. Omitted entirely (key absent, not null) on top-level Facebook and Instagram entries and on every other platform, which express the parent relationship only through replies[] nesting.
      *
      * @return self
      */

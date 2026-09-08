@@ -1,6 +1,6 @@
 # Zernio\ReviewsApi
 
-Unified inbox API for managing reviews on Facebook Pages and Google Business accounts. All endpoints aggregate data from multiple social accounts in a single API call. Requires Inbox addon.
+Unified inbox API for managing reviews on Facebook Pages and Google Business Profile accounts. All endpoints aggregate data from multiple accounts in a single API call. Requires Inbox addon.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
@@ -19,7 +19,7 @@ deleteInboxReviewReply($review_id, $delete_inbox_review_reply_request): \Zernio\
 
 Delete review reply
 
-Delete a reply to a review (Google Business only). Requires accountId in request body.
+Delete a reply to a review (Google Business Profile only). Requires accountId in request body.
 
 ### Example
 
@@ -81,7 +81,7 @@ listInboxReviews($profile_id, $platform, $min_rating, $max_rating, $has_reply, $
 
 List reviews
 
-Fetch reviews from all connected Facebook Pages and Google Business accounts. Aggregates data with filtering and sorting options. Supported platforms: Facebook, Google Business.
+Fetch reviews from all connected Facebook Pages and Google Business Profile accounts. Aggregates data with filtering and sorting options. Supported platforms: Facebook, Google Business Profile.
 
 ### Example
 
@@ -109,7 +109,7 @@ $sort_by = 'date'; // string
 $sort_order = 'desc'; // string
 $limit = 25; // int
 $cursor = 'cursor_example'; // string
-$account_id = 'account_id_example'; // string | Filter by specific social account ID
+$account_id = 'account_id_example'; // string | Filter by specific account ID
 
 try {
     $result = $apiInstance->listInboxReviews($profile_id, $platform, $min_rating, $max_rating, $has_reply, $sort_by, $sort_order, $limit, $cursor, $account_id);
@@ -132,7 +132,7 @@ try {
 | **sort_order** | **string**|  | [optional] [default to &#39;desc&#39;] |
 | **limit** | **int**|  | [optional] [default to 25] |
 | **cursor** | **string**|  | [optional] |
-| **account_id** | **string**| Filter by specific social account ID | [optional] |
+| **account_id** | **string**| Filter by specific account ID | [optional] |
 
 ### Return type
 
@@ -178,7 +178,7 @@ $apiInstance = new Zernio\Api\ReviewsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$review_id = 'review_id_example'; // string | Review ID (URL-encoded for Google Business)
+$review_id = 'review_id_example'; // string | Review ID (URL-encoded for Google Business Profile)
 $reply_to_inbox_review_request = new \Zernio\Model\ReplyToInboxReviewRequest(); // \Zernio\Model\ReplyToInboxReviewRequest
 $idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409.
 
@@ -194,7 +194,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **review_id** | **string**| Review ID (URL-encoded for Google Business) | |
+| **review_id** | **string**| Review ID (URL-encoded for Google Business Profile) | |
 | **reply_to_inbox_review_request** | [**\Zernio\Model\ReplyToInboxReviewRequest**](../Model/ReplyToInboxReviewRequest.md)|  | |
 | **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. | [optional] |
 

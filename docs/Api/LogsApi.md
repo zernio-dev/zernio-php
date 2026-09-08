@@ -46,7 +46,7 @@ $limit = 50; // int | Maximum number of logs to return (max 100)
 $skip = 0; // int | Number of logs to skip (for pagination)
 $account_id = 'account_id_example'; // string | Filter by connected account ID
 $event = 'event_example'; // string | Filter webhook logs by event (e.g. post.published, message.received)
-$request_id = 'request_id_example'; // string | Correlation ID — returns every log spawned by a single API request
+$request_id = 'request_id_example'; // string | Correlation ID. Returns every log spawned by a single API request
 $from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Precise start instant (ISO 8601); narrows within the day range
 $to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Precise end instant (ISO 8601)
 $status_code = 56; // int | Filter by exact HTTP status code (api_request logs)
@@ -75,7 +75,7 @@ try {
 | **skip** | **int**| Number of logs to skip (for pagination) | [optional] [default to 0] |
 | **account_id** | **string**| Filter by connected account ID | [optional] |
 | **event** | **string**| Filter webhook logs by event (e.g. post.published, message.received) | [optional] |
-| **request_id** | **string**| Correlation ID — returns every log spawned by a single API request | [optional] |
+| **request_id** | **string**| Correlation ID. Returns every log spawned by a single API request | [optional] |
 | **from** | **\DateTime**| Precise start instant (ISO 8601); narrows within the day range | [optional] |
 | **to** | **\DateTime**| Precise end instant (ISO 8601) | [optional] |
 | **status_code** | **int**| Filter by exact HTTP status code (api_request logs) | [optional] |

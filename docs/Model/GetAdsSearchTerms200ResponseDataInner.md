@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **search_term** | **string** |  | [optional]
-**status** | **string** | ADDED / EXCLUDED / ADDED_EXCLUDED / NONE — whether the term is already a keyword or a negative. | [optional]
+**status** | **string** | ADDED / EXCLUDED / ADDED_EXCLUDED / NONE: whether the term is already a keyword or a negative. | [optional]
 **match_type** | **string** | How the term matched (BROAD, PHRASE, EXACT, NEAR_PHRASE, NEAR_EXACT). | [optional]
 **campaign_id** | **string** |  | [optional]
 **campaign_name** | **string** |  | [optional]

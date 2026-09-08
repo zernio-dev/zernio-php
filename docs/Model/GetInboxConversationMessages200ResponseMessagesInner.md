@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **message** | **string** |  | [optional]
 **sender_id** | **string** |  | [optional]
 **sender_name** | **string** |  | [optional]
-**sender_verified_type** | **string** | X/Twitter verified badge type. Only present for Twitter/X messages. | [optional]
+**sender_verified_type** | **string** | X verified badge type. Only present for X messages. | [optional]
 **direction** | **string** |  | [optional]
 **created_at** | **\DateTime** |  | [optional]
 **attachments** | [**\Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner[]**](GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner.md) |  | [optional]

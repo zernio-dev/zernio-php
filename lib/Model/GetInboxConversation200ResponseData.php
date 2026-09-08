@@ -645,7 +645,7 @@ class GetInboxConversation200ResponseData implements ModelInterface, ArrayAccess
     /**
      * Sets participant_verified_type
      *
-     * @param string|null $participant_verified_type X/Twitter verified badge type. Only present for Twitter/X conversations.
+     * @param string|null $participant_verified_type X verified badge type. Only present for X conversations.
      *
      * @return self
      */

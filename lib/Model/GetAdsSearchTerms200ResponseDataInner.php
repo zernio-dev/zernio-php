@@ -414,7 +414,7 @@ class GetAdsSearchTerms200ResponseDataInner implements ModelInterface, ArrayAcce
     /**
      * Sets status
      *
-     * @param string|null $status ADDED / EXCLUDED / ADDED_EXCLUDED / NONE — whether the term is already a keyword or a negative.
+     * @param string|null $status ADDED / EXCLUDED / ADDED_EXCLUDED / NONE: whether the term is already a keyword or a negative.
      *
      * @return self
      */

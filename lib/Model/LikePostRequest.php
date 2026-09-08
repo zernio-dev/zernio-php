@@ -352,7 +352,7 @@ class LikePostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets account_id
      *
-     * @param string $account_id The social account acting as the liker
+     * @param string $account_id The account acting as the liker
      *
      * @return self
      */

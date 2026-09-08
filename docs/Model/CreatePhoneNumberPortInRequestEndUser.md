@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **entity_name** | **string** | Account holder / business name, as on the carrier account. |
-**auth_person_name** | **string** | Full name (first + last) of the person authorizing the port — must match the LOA signature. |
+**auth_person_name** | **string** | Full name (first + last) of the person authorizing the port, which must match the LOA signature. |
 **billing_phone_number** | **string** | Phone number on the losing carrier&#39;s bill. Defaults to the ported number itself on single-number orders. Validated as a real phone number when present. | [optional]
-**account_number** | **string** | Account number with the losing carrier — required (carriers reject ports without it; on prepaid mobile plans it is often the phone number itself). |
+**account_number** | **string** | Account number with the losing carrier. Required (carriers reject ports without it; on prepaid mobile plans it is often the phone number itself). |
 **pin_passcode** | **string** | Transfer PIN. Required for US/CA mobile numbers (wireless carriers reject PIN-less ports). Forwarded to the carrier, never stored. International porting codes (e.g. the UK PAC) go through &#x60;requirements&#x60; instead. | [optional]
 **tax_identifier** | **string** | Company tax id on the carrier account (EU ports, e.g. Spanish CIF). | [optional]
 **business_identifier** | **string** | Business registration id on the carrier account (EU ports). | [optional]

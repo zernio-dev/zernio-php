@@ -482,7 +482,7 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
     /**
      * Sets areas
      *
-     * @param string[]|null $areas For `geo` only — the area(s) the registered address must be in.
+     * @param string[]|null $areas For `geo` only: the area(s) the registered address must be in.
      *
      * @return self
      */

@@ -134,7 +134,7 @@ class MentionsApi
      *
      * List mentions
      *
-     * @param  string|null $account_id Filter by social account ID (optional)
+     * @param  string|null $account_id Filter by account ID (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $sort_order Sort order by publishedAt (optional, default to 'desc')
      * @param  int|null $limit limit (optional, default to 25)
@@ -156,7 +156,7 @@ class MentionsApi
      *
      * List mentions
      *
-     * @param  string|null $account_id Filter by social account ID (optional)
+     * @param  string|null $account_id Filter by account ID (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $sort_order Sort order by publishedAt (optional, default to 'desc')
      * @param  int|null $limit (optional, default to 25)
@@ -259,7 +259,7 @@ class MentionsApi
      *
      * List mentions
      *
-     * @param  string|null $account_id Filter by social account ID (optional)
+     * @param  string|null $account_id Filter by account ID (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $sort_order Sort order by publishedAt (optional, default to 'desc')
      * @param  int|null $limit (optional, default to 25)
@@ -284,7 +284,7 @@ class MentionsApi
      *
      * List mentions
      *
-     * @param  string|null $account_id Filter by social account ID (optional)
+     * @param  string|null $account_id Filter by account ID (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $sort_order Sort order by publishedAt (optional, default to 'desc')
      * @param  int|null $limit (optional, default to 25)
@@ -338,7 +338,7 @@ class MentionsApi
     /**
      * Create request for operation 'listInboxMentions'
      *
-     * @param  string|null $account_id Filter by social account ID (optional)
+     * @param  string|null $account_id Filter by account ID (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $sort_order Sort order by publishedAt (optional, default to 'desc')
      * @param  int|null $limit (optional, default to 25)

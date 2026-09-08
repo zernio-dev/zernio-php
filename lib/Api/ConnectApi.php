@@ -147,6 +147,9 @@ class ConnectApi
         'getTelegramConnectStatus' => [
             'application/json',
         ],
+        'getWhatsAppSdkConfig' => [
+            'application/json',
+        ],
         'getYoutubeCaptions' => [
             'application/json',
         ],
@@ -276,9 +279,9 @@ class ConnectApi
     /**
      * Operation assignGoogleBusinessLocation
      *
-     * Assign GBP location to another profile
+     * Assign Google Business Profile location to another profile
      *
-     * @param  string $account_id A source connected GBP account whose OAuth grant is reused. (required)
+     * @param  string $account_id A source connected Google Business Profile account whose OAuth grant is reused. (required)
      * @param  \Zernio\Model\AssignGoogleBusinessLocationRequest $assign_google_business_location_request assign_google_business_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['assignGoogleBusinessLocation'] to see the possible values for this operation
      *
@@ -295,9 +298,9 @@ class ConnectApi
     /**
      * Operation assignGoogleBusinessLocationWithHttpInfo
      *
-     * Assign GBP location to another profile
+     * Assign Google Business Profile location to another profile
      *
-     * @param  string $account_id A source connected GBP account whose OAuth grant is reused. (required)
+     * @param  string $account_id A source connected Google Business Profile account whose OAuth grant is reused. (required)
      * @param  \Zernio\Model\AssignGoogleBusinessLocationRequest $assign_google_business_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['assignGoogleBusinessLocation'] to see the possible values for this operation
      *
@@ -395,9 +398,9 @@ class ConnectApi
     /**
      * Operation assignGoogleBusinessLocationAsync
      *
-     * Assign GBP location to another profile
+     * Assign Google Business Profile location to another profile
      *
-     * @param  string $account_id A source connected GBP account whose OAuth grant is reused. (required)
+     * @param  string $account_id A source connected Google Business Profile account whose OAuth grant is reused. (required)
      * @param  \Zernio\Model\AssignGoogleBusinessLocationRequest $assign_google_business_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['assignGoogleBusinessLocation'] to see the possible values for this operation
      *
@@ -417,9 +420,9 @@ class ConnectApi
     /**
      * Operation assignGoogleBusinessLocationAsyncWithHttpInfo
      *
-     * Assign GBP location to another profile
+     * Assign Google Business Profile location to another profile
      *
-     * @param  string $account_id A source connected GBP account whose OAuth grant is reused. (required)
+     * @param  string $account_id A source connected Google Business Profile account whose OAuth grant is reused. (required)
      * @param  \Zernio\Model\AssignGoogleBusinessLocationRequest $assign_google_business_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['assignGoogleBusinessLocation'] to see the possible values for this operation
      *
@@ -470,7 +473,7 @@ class ConnectApi
     /**
      * Create request for operation 'assignGoogleBusinessLocation'
      *
-     * @param  string $account_id A source connected GBP account whose OAuth grant is reused. (required)
+     * @param  string $account_id A source connected Google Business Profile account whose OAuth grant is reused. (required)
      * @param  \Zernio\Model\AssignGoogleBusinessLocationRequest $assign_google_business_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['assignGoogleBusinessLocation'] to see the possible values for this operation
      *
@@ -1508,8 +1511,8 @@ class ConnectApi
      *
      * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted.  &#x60;instagram&#x60; requires an Instagram account connected with loginMethod&#x3D;facebook_login whose token carries ads_management and ads_read. With an account connected through the default instagram_login flow no ads account can be created; do not use this value for those accounts. (required)
      * @param  string $profile_id Your Zernio profile ID (required)
-     * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60; — omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
-     * @param  string|null $redirect_url Custom URL the browser is sent to once the OAuth flow finishes. Honored on every ads platform, including the separate-token (&#x60;tiktok&#x60;, &#x60;twitter&#x60;) and standalone (&#x60;googleads&#x60;) flows. MUST be an absolute http(s) URL or a custom app scheme for mobile deeplinks (e.g. myapp://callback); a relative path is rejected with 400 INVALID_REDIRECT_URL. On success &#x60;tiktok&#x60;, &#x60;twitter&#x60; and &#x60;googleads&#x60; land on the URL unchanged, while the same-token platforms (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) append &#x60;connected&#x60;, &#x60;profileId&#x60;, &#x60;accountId&#x60;, &#x60;username&#x60; and, on API-key calls, &#x60;connect_token&#x60;. On failure the same error contract applies as on GET /v1/connect/{platform}: &#x60;error&#x60; and &#x60;platform&#x60; are always appended, other params are optional, and the value list there is not exhaustive. Note that on the tiktok, twitter and googleads flows &#x60;platform&#x60; carries the ads platform id (&#x60;tiktokads&#x60;, &#x60;xads&#x60;, &#x60;googleads&#x60;), not the value used in the request path. When omitted, the browser lands on the Zernio dashboard. (optional)
+     * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60;: omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
+     * @param  string|null $redirect_url Custom URL the browser is sent to once the OAuth flow finishes. Honored on every ads platform, including the separate-token (&#x60;tiktok&#x60;, &#x60;twitter&#x60;) and standalone (&#x60;googleads&#x60;) flows. MUST be an absolute http(s) URL or a custom app scheme for mobile deeplinks (e.g. myapp://callback); a relative path is rejected with 400 INVALID_REDIRECT_URL. On success &#x60;tiktok&#x60;, &#x60;twitter&#x60; and &#x60;googleads&#x60; land on the URL unchanged, while the same-token platforms (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) append &#x60;connected&#x60;, &#x60;profileId&#x60;, &#x60;accountId&#x60;, &#x60;username&#x60; and, on API-key calls, &#x60;connect_token&#x60;. On failure the same error contract applies as on GET /v1/connect/{platform}: &#x60;error&#x60; and &#x60;platform&#x60; are always appended, other params are optional, and the value list there is not exhaustive. On the tiktok, twitter and googleads flows &#x60;platform&#x60; carries the ads platform id (&#x60;tiktokads&#x60;, &#x60;xads&#x60;, &#x60;googleads&#x60;), not the value used in the request path. When omitted, the browser lands on the Zernio dashboard. (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
      * @param  bool|null $force Force a fresh OAuth even when an account already exists. Normally the endpoint returns &#x60;alreadyConnected: true&#x60; whenever a connected account is found, keying off its active state rather than token liveness. Set &#x60;force&#x3D;true&#x60; to bypass that and always receivean &#x60;authUrl&#x60;. Completing the returned OAuth refreshes the stored token on the existing posting and ads accounts in place. (optional, default to false)
      * @param  string|null $ad_account_id Scope ad sync to a single platform ad account. Without this param, sync covers every ad account the connected token can see. Supported on &#x60;facebook&#x60;/&#x60;instagram&#x60; (Meta, &#x60;act_&lt;digits&gt;&#x60;), &#x60;linkedin&#x60; (bare numeric sponsored-account id), &#x60;googleads&#x60; (bare customer id digits) and &#x60;twitter&#x60; (X Ads, base36 account id). &#x60;tiktok&#x60; scopes advertisers at OAuth and &#x60;pinterest&#x60; has no ads discovery, so both ignore it. Meta ids are additionally validated against the connected token; unreachable IDs return 400. Setting a scope also removes already synced ads from de-scoped ad accounts. For multiple accounts use &#x60;adAccountIds&#x60; instead. (optional)
@@ -1533,8 +1536,8 @@ class ConnectApi
      *
      * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted.  &#x60;instagram&#x60; requires an Instagram account connected with loginMethod&#x3D;facebook_login whose token carries ads_management and ads_read. With an account connected through the default instagram_login flow no ads account can be created; do not use this value for those accounts. (required)
      * @param  string $profile_id Your Zernio profile ID (required)
-     * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60; — omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
-     * @param  string|null $redirect_url Custom URL the browser is sent to once the OAuth flow finishes. Honored on every ads platform, including the separate-token (&#x60;tiktok&#x60;, &#x60;twitter&#x60;) and standalone (&#x60;googleads&#x60;) flows. MUST be an absolute http(s) URL or a custom app scheme for mobile deeplinks (e.g. myapp://callback); a relative path is rejected with 400 INVALID_REDIRECT_URL. On success &#x60;tiktok&#x60;, &#x60;twitter&#x60; and &#x60;googleads&#x60; land on the URL unchanged, while the same-token platforms (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) append &#x60;connected&#x60;, &#x60;profileId&#x60;, &#x60;accountId&#x60;, &#x60;username&#x60; and, on API-key calls, &#x60;connect_token&#x60;. On failure the same error contract applies as on GET /v1/connect/{platform}: &#x60;error&#x60; and &#x60;platform&#x60; are always appended, other params are optional, and the value list there is not exhaustive. Note that on the tiktok, twitter and googleads flows &#x60;platform&#x60; carries the ads platform id (&#x60;tiktokads&#x60;, &#x60;xads&#x60;, &#x60;googleads&#x60;), not the value used in the request path. When omitted, the browser lands on the Zernio dashboard. (optional)
+     * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60;: omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
+     * @param  string|null $redirect_url Custom URL the browser is sent to once the OAuth flow finishes. Honored on every ads platform, including the separate-token (&#x60;tiktok&#x60;, &#x60;twitter&#x60;) and standalone (&#x60;googleads&#x60;) flows. MUST be an absolute http(s) URL or a custom app scheme for mobile deeplinks (e.g. myapp://callback); a relative path is rejected with 400 INVALID_REDIRECT_URL. On success &#x60;tiktok&#x60;, &#x60;twitter&#x60; and &#x60;googleads&#x60; land on the URL unchanged, while the same-token platforms (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) append &#x60;connected&#x60;, &#x60;profileId&#x60;, &#x60;accountId&#x60;, &#x60;username&#x60; and, on API-key calls, &#x60;connect_token&#x60;. On failure the same error contract applies as on GET /v1/connect/{platform}: &#x60;error&#x60; and &#x60;platform&#x60; are always appended, other params are optional, and the value list there is not exhaustive. On the tiktok, twitter and googleads flows &#x60;platform&#x60; carries the ads platform id (&#x60;tiktokads&#x60;, &#x60;xads&#x60;, &#x60;googleads&#x60;), not the value used in the request path. When omitted, the browser lands on the Zernio dashboard. (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
      * @param  bool|null $force Force a fresh OAuth even when an account already exists. Normally the endpoint returns &#x60;alreadyConnected: true&#x60; whenever a connected account is found, keying off its active state rather than token liveness. Set &#x60;force&#x3D;true&#x60; to bypass that and always receivean &#x60;authUrl&#x60;. Completing the returned OAuth refreshes the stored token on the existing posting and ads accounts in place. (optional, default to false)
      * @param  string|null $ad_account_id Scope ad sync to a single platform ad account. Without this param, sync covers every ad account the connected token can see. Supported on &#x60;facebook&#x60;/&#x60;instagram&#x60; (Meta, &#x60;act_&lt;digits&gt;&#x60;), &#x60;linkedin&#x60; (bare numeric sponsored-account id), &#x60;googleads&#x60; (bare customer id digits) and &#x60;twitter&#x60; (X Ads, base36 account id). &#x60;tiktok&#x60; scopes advertisers at OAuth and &#x60;pinterest&#x60; has no ads discovery, so both ignore it. Meta ids are additionally validated against the connected token; unreachable IDs return 400. Setting a scope also removes already synced ads from de-scoped ad accounts. For multiple accounts use &#x60;adAccountIds&#x60; instead. (optional)
@@ -1639,8 +1642,8 @@ class ConnectApi
      *
      * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted.  &#x60;instagram&#x60; requires an Instagram account connected with loginMethod&#x3D;facebook_login whose token carries ads_management and ads_read. With an account connected through the default instagram_login flow no ads account can be created; do not use this value for those accounts. (required)
      * @param  string $profile_id Your Zernio profile ID (required)
-     * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60; — omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
-     * @param  string|null $redirect_url Custom URL the browser is sent to once the OAuth flow finishes. Honored on every ads platform, including the separate-token (&#x60;tiktok&#x60;, &#x60;twitter&#x60;) and standalone (&#x60;googleads&#x60;) flows. MUST be an absolute http(s) URL or a custom app scheme for mobile deeplinks (e.g. myapp://callback); a relative path is rejected with 400 INVALID_REDIRECT_URL. On success &#x60;tiktok&#x60;, &#x60;twitter&#x60; and &#x60;googleads&#x60; land on the URL unchanged, while the same-token platforms (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) append &#x60;connected&#x60;, &#x60;profileId&#x60;, &#x60;accountId&#x60;, &#x60;username&#x60; and, on API-key calls, &#x60;connect_token&#x60;. On failure the same error contract applies as on GET /v1/connect/{platform}: &#x60;error&#x60; and &#x60;platform&#x60; are always appended, other params are optional, and the value list there is not exhaustive. Note that on the tiktok, twitter and googleads flows &#x60;platform&#x60; carries the ads platform id (&#x60;tiktokads&#x60;, &#x60;xads&#x60;, &#x60;googleads&#x60;), not the value used in the request path. When omitted, the browser lands on the Zernio dashboard. (optional)
+     * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60;: omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
+     * @param  string|null $redirect_url Custom URL the browser is sent to once the OAuth flow finishes. Honored on every ads platform, including the separate-token (&#x60;tiktok&#x60;, &#x60;twitter&#x60;) and standalone (&#x60;googleads&#x60;) flows. MUST be an absolute http(s) URL or a custom app scheme for mobile deeplinks (e.g. myapp://callback); a relative path is rejected with 400 INVALID_REDIRECT_URL. On success &#x60;tiktok&#x60;, &#x60;twitter&#x60; and &#x60;googleads&#x60; land on the URL unchanged, while the same-token platforms (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) append &#x60;connected&#x60;, &#x60;profileId&#x60;, &#x60;accountId&#x60;, &#x60;username&#x60; and, on API-key calls, &#x60;connect_token&#x60;. On failure the same error contract applies as on GET /v1/connect/{platform}: &#x60;error&#x60; and &#x60;platform&#x60; are always appended, other params are optional, and the value list there is not exhaustive. On the tiktok, twitter and googleads flows &#x60;platform&#x60; carries the ads platform id (&#x60;tiktokads&#x60;, &#x60;xads&#x60;, &#x60;googleads&#x60;), not the value used in the request path. When omitted, the browser lands on the Zernio dashboard. (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
      * @param  bool|null $force Force a fresh OAuth even when an account already exists. Normally the endpoint returns &#x60;alreadyConnected: true&#x60; whenever a connected account is found, keying off its active state rather than token liveness. Set &#x60;force&#x3D;true&#x60; to bypass that and always receivean &#x60;authUrl&#x60;. Completing the returned OAuth refreshes the stored token on the existing posting and ads accounts in place. (optional, default to false)
      * @param  string|null $ad_account_id Scope ad sync to a single platform ad account. Without this param, sync covers every ad account the connected token can see. Supported on &#x60;facebook&#x60;/&#x60;instagram&#x60; (Meta, &#x60;act_&lt;digits&gt;&#x60;), &#x60;linkedin&#x60; (bare numeric sponsored-account id), &#x60;googleads&#x60; (bare customer id digits) and &#x60;twitter&#x60; (X Ads, base36 account id). &#x60;tiktok&#x60; scopes advertisers at OAuth and &#x60;pinterest&#x60; has no ads discovery, so both ignore it. Meta ids are additionally validated against the connected token; unreachable IDs return 400. Setting a scope also removes already synced ads from de-scoped ad accounts. For multiple accounts use &#x60;adAccountIds&#x60; instead. (optional)
@@ -1667,8 +1670,8 @@ class ConnectApi
      *
      * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted.  &#x60;instagram&#x60; requires an Instagram account connected with loginMethod&#x3D;facebook_login whose token carries ads_management and ads_read. With an account connected through the default instagram_login flow no ads account can be created; do not use this value for those accounts. (required)
      * @param  string $profile_id Your Zernio profile ID (required)
-     * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60; — omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
-     * @param  string|null $redirect_url Custom URL the browser is sent to once the OAuth flow finishes. Honored on every ads platform, including the separate-token (&#x60;tiktok&#x60;, &#x60;twitter&#x60;) and standalone (&#x60;googleads&#x60;) flows. MUST be an absolute http(s) URL or a custom app scheme for mobile deeplinks (e.g. myapp://callback); a relative path is rejected with 400 INVALID_REDIRECT_URL. On success &#x60;tiktok&#x60;, &#x60;twitter&#x60; and &#x60;googleads&#x60; land on the URL unchanged, while the same-token platforms (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) append &#x60;connected&#x60;, &#x60;profileId&#x60;, &#x60;accountId&#x60;, &#x60;username&#x60; and, on API-key calls, &#x60;connect_token&#x60;. On failure the same error contract applies as on GET /v1/connect/{platform}: &#x60;error&#x60; and &#x60;platform&#x60; are always appended, other params are optional, and the value list there is not exhaustive. Note that on the tiktok, twitter and googleads flows &#x60;platform&#x60; carries the ads platform id (&#x60;tiktokads&#x60;, &#x60;xads&#x60;, &#x60;googleads&#x60;), not the value used in the request path. When omitted, the browser lands on the Zernio dashboard. (optional)
+     * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60;: omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
+     * @param  string|null $redirect_url Custom URL the browser is sent to once the OAuth flow finishes. Honored on every ads platform, including the separate-token (&#x60;tiktok&#x60;, &#x60;twitter&#x60;) and standalone (&#x60;googleads&#x60;) flows. MUST be an absolute http(s) URL or a custom app scheme for mobile deeplinks (e.g. myapp://callback); a relative path is rejected with 400 INVALID_REDIRECT_URL. On success &#x60;tiktok&#x60;, &#x60;twitter&#x60; and &#x60;googleads&#x60; land on the URL unchanged, while the same-token platforms (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) append &#x60;connected&#x60;, &#x60;profileId&#x60;, &#x60;accountId&#x60;, &#x60;username&#x60; and, on API-key calls, &#x60;connect_token&#x60;. On failure the same error contract applies as on GET /v1/connect/{platform}: &#x60;error&#x60; and &#x60;platform&#x60; are always appended, other params are optional, and the value list there is not exhaustive. On the tiktok, twitter and googleads flows &#x60;platform&#x60; carries the ads platform id (&#x60;tiktokads&#x60;, &#x60;xads&#x60;, &#x60;googleads&#x60;), not the value used in the request path. When omitted, the browser lands on the Zernio dashboard. (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
      * @param  bool|null $force Force a fresh OAuth even when an account already exists. Normally the endpoint returns &#x60;alreadyConnected: true&#x60; whenever a connected account is found, keying off its active state rather than token liveness. Set &#x60;force&#x3D;true&#x60; to bypass that and always receivean &#x60;authUrl&#x60;. Completing the returned OAuth refreshes the stored token on the existing posting and ads accounts in place. (optional, default to false)
      * @param  string|null $ad_account_id Scope ad sync to a single platform ad account. Without this param, sync covers every ad account the connected token can see. Supported on &#x60;facebook&#x60;/&#x60;instagram&#x60; (Meta, &#x60;act_&lt;digits&gt;&#x60;), &#x60;linkedin&#x60; (bare numeric sponsored-account id), &#x60;googleads&#x60; (bare customer id digits) and &#x60;twitter&#x60; (X Ads, base36 account id). &#x60;tiktok&#x60; scopes advertisers at OAuth and &#x60;pinterest&#x60; has no ads discovery, so both ignore it. Meta ids are additionally validated against the connected token; unreachable IDs return 400. Setting a scope also removes already synced ads from de-scoped ad accounts. For multiple accounts use &#x60;adAccountIds&#x60; instead. (optional)
@@ -1724,8 +1727,8 @@ class ConnectApi
      *
      * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted.  &#x60;instagram&#x60; requires an Instagram account connected with loginMethod&#x3D;facebook_login whose token carries ads_management and ads_read. With an account connected through the default instagram_login flow no ads account can be created; do not use this value for those accounts. (required)
      * @param  string $profile_id Your Zernio profile ID (required)
-     * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60; — omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
-     * @param  string|null $redirect_url Custom URL the browser is sent to once the OAuth flow finishes. Honored on every ads platform, including the separate-token (&#x60;tiktok&#x60;, &#x60;twitter&#x60;) and standalone (&#x60;googleads&#x60;) flows. MUST be an absolute http(s) URL or a custom app scheme for mobile deeplinks (e.g. myapp://callback); a relative path is rejected with 400 INVALID_REDIRECT_URL. On success &#x60;tiktok&#x60;, &#x60;twitter&#x60; and &#x60;googleads&#x60; land on the URL unchanged, while the same-token platforms (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) append &#x60;connected&#x60;, &#x60;profileId&#x60;, &#x60;accountId&#x60;, &#x60;username&#x60; and, on API-key calls, &#x60;connect_token&#x60;. On failure the same error contract applies as on GET /v1/connect/{platform}: &#x60;error&#x60; and &#x60;platform&#x60; are always appended, other params are optional, and the value list there is not exhaustive. Note that on the tiktok, twitter and googleads flows &#x60;platform&#x60; carries the ads platform id (&#x60;tiktokads&#x60;, &#x60;xads&#x60;, &#x60;googleads&#x60;), not the value used in the request path. When omitted, the browser lands on the Zernio dashboard. (optional)
+     * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60;: omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
+     * @param  string|null $redirect_url Custom URL the browser is sent to once the OAuth flow finishes. Honored on every ads platform, including the separate-token (&#x60;tiktok&#x60;, &#x60;twitter&#x60;) and standalone (&#x60;googleads&#x60;) flows. MUST be an absolute http(s) URL or a custom app scheme for mobile deeplinks (e.g. myapp://callback); a relative path is rejected with 400 INVALID_REDIRECT_URL. On success &#x60;tiktok&#x60;, &#x60;twitter&#x60; and &#x60;googleads&#x60; land on the URL unchanged, while the same-token platforms (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) append &#x60;connected&#x60;, &#x60;profileId&#x60;, &#x60;accountId&#x60;, &#x60;username&#x60; and, on API-key calls, &#x60;connect_token&#x60;. On failure the same error contract applies as on GET /v1/connect/{platform}: &#x60;error&#x60; and &#x60;platform&#x60; are always appended, other params are optional, and the value list there is not exhaustive. On the tiktok, twitter and googleads flows &#x60;platform&#x60; carries the ads platform id (&#x60;tiktokads&#x60;, &#x60;xads&#x60;, &#x60;googleads&#x60;), not the value used in the request path. When omitted, the browser lands on the Zernio dashboard. (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
      * @param  bool|null $force Force a fresh OAuth even when an account already exists. Normally the endpoint returns &#x60;alreadyConnected: true&#x60; whenever a connected account is found, keying off its active state rather than token liveness. Set &#x60;force&#x3D;true&#x60; to bypass that and always receivean &#x60;authUrl&#x60;. Completing the returned OAuth refreshes the stored token on the existing posting and ads accounts in place. (optional, default to false)
      * @param  string|null $ad_account_id Scope ad sync to a single platform ad account. Without this param, sync covers every ad account the connected token can see. Supported on &#x60;facebook&#x60;/&#x60;instagram&#x60; (Meta, &#x60;act_&lt;digits&gt;&#x60;), &#x60;linkedin&#x60; (bare numeric sponsored-account id), &#x60;googleads&#x60; (bare customer id digits) and &#x60;twitter&#x60; (X Ads, base36 account id). &#x60;tiktok&#x60; scopes advertisers at OAuth and &#x60;pinterest&#x60; has no ads discovery, so both ignore it. Meta ids are additionally validated against the connected token; unreachable IDs return 400. Setting a scope also removes already synced ads from de-scoped ad accounts. For multiple accounts use &#x60;adAccountIds&#x60; instead. (optional)
@@ -4777,7 +4780,7 @@ class ConnectApi
     /**
      * Operation getGmbLocations
      *
-     * List GBP locations
+     * List Google Business Profile locations
      *
      * @param  string $account_id account_id (required)
      * @param  string|null $search Free-text search on the business name, applied server-side by Google. Use for accounts with many locations. (optional)
@@ -4798,7 +4801,7 @@ class ConnectApi
     /**
      * Operation getGmbLocationsWithHttpInfo
      *
-     * List GBP locations
+     * List Google Business Profile locations
      *
      * @param  string $account_id (required)
      * @param  string|null $search Free-text search on the business name, applied server-side by Google. Use for accounts with many locations. (optional)
@@ -4900,7 +4903,7 @@ class ConnectApi
     /**
      * Operation getGmbLocationsAsync
      *
-     * List GBP locations
+     * List Google Business Profile locations
      *
      * @param  string $account_id (required)
      * @param  string|null $search Free-text search on the business name, applied server-side by Google. Use for accounts with many locations. (optional)
@@ -4924,7 +4927,7 @@ class ConnectApi
     /**
      * Operation getGmbLocationsAsyncWithHttpInfo
      *
-     * List GBP locations
+     * List Google Business Profile locations
      *
      * @param  string $account_id (required)
      * @param  string|null $search Free-text search on the business name, applied server-side by Google. Use for accounts with many locations. (optional)
@@ -7511,6 +7514,272 @@ class ConnectApi
     }
 
     /**
+     * Operation getWhatsAppSdkConfig
+     *
+     * Get Embedded Signup SDK config
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppSdkConfig'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetWhatsAppSdkConfig200Response|\Zernio\Model\InlineObject
+     */
+    public function getWhatsAppSdkConfig(string $contentType = self::contentTypes['getWhatsAppSdkConfig'][0])
+    {
+        list($response) = $this->getWhatsAppSdkConfigWithHttpInfo($contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getWhatsAppSdkConfigWithHttpInfo
+     *
+     * Get Embedded Signup SDK config
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppSdkConfig'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetWhatsAppSdkConfig200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getWhatsAppSdkConfigWithHttpInfo(string $contentType = self::contentTypes['getWhatsAppSdkConfig'][0])
+    {
+        $request = $this->getWhatsAppSdkConfigRequest($contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetWhatsAppSdkConfig200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetWhatsAppSdkConfig200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetWhatsAppSdkConfig200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getWhatsAppSdkConfigAsync
+     *
+     * Get Embedded Signup SDK config
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppSdkConfig'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsAppSdkConfigAsync(string $contentType = self::contentTypes['getWhatsAppSdkConfig'][0])
+    {
+        return $this->getWhatsAppSdkConfigAsyncWithHttpInfo($contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getWhatsAppSdkConfigAsyncWithHttpInfo
+     *
+     * Get Embedded Signup SDK config
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppSdkConfig'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsAppSdkConfigAsyncWithHttpInfo(string $contentType = self::contentTypes['getWhatsAppSdkConfig'][0])
+    {
+        $returnType = '\Zernio\Model\GetWhatsAppSdkConfig200Response';
+        $request = $this->getWhatsAppSdkConfigRequest($contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getWhatsAppSdkConfig'
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppSdkConfig'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getWhatsAppSdkConfigRequest(string $contentType = self::contentTypes['getWhatsAppSdkConfig'][0])
+    {
+
+
+        $resourcePath = '/v1/connect/whatsapp/sdk-config';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getYoutubeCaptions
      *
      * Get a YouTube video transcript
@@ -9048,7 +9317,7 @@ class ConnectApi
     /**
      * Operation listGoogleBusinessLocations
      *
-     * List GBP locations
+     * List Google Business Profile locations
      *
      * @param  string|null $profile_id Profile ID from your connection flow. Required for auth validation when provided. (optional)
      * @param  string|null $pending_data_token Token from the OAuth callback redirect. Preferred over tempToken because it preserves server-side token storage. One of pendingDataToken or tempToken is required. (optional)
@@ -9070,7 +9339,7 @@ class ConnectApi
     /**
      * Operation listGoogleBusinessLocationsWithHttpInfo
      *
-     * List GBP locations
+     * List Google Business Profile locations
      *
      * @param  string|null $profile_id Profile ID from your connection flow. Required for auth validation when provided. (optional)
      * @param  string|null $pending_data_token Token from the OAuth callback redirect. Preferred over tempToken because it preserves server-side token storage. One of pendingDataToken or tempToken is required. (optional)
@@ -9187,7 +9456,7 @@ class ConnectApi
     /**
      * Operation listGoogleBusinessLocationsAsync
      *
-     * List GBP locations
+     * List Google Business Profile locations
      *
      * @param  string|null $profile_id Profile ID from your connection flow. Required for auth validation when provided. (optional)
      * @param  string|null $pending_data_token Token from the OAuth callback redirect. Preferred over tempToken because it preserves server-side token storage. One of pendingDataToken or tempToken is required. (optional)
@@ -9212,7 +9481,7 @@ class ConnectApi
     /**
      * Operation listGoogleBusinessLocationsAsyncWithHttpInfo
      *
-     * List GBP locations
+     * List Google Business Profile locations
      *
      * @param  string|null $profile_id Profile ID from your connection flow. Required for auth validation when provided. (optional)
      * @param  string|null $pending_data_token Token from the OAuth callback redirect. Preferred over tempToken because it preserves server-side token storage. One of pendingDataToken or tempToken is required. (optional)
@@ -11662,7 +11931,7 @@ class ConnectApi
     /**
      * Operation selectGoogleBusinessLocation
      *
-     * Select GBP location
+     * Select Google Business Profile location
      *
      * @param  \Zernio\Model\SelectGoogleBusinessLocationRequest $select_google_business_location_request select_google_business_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectGoogleBusinessLocation'] to see the possible values for this operation
@@ -11680,7 +11949,7 @@ class ConnectApi
     /**
      * Operation selectGoogleBusinessLocationWithHttpInfo
      *
-     * Select GBP location
+     * Select Google Business Profile location
      *
      * @param  \Zernio\Model\SelectGoogleBusinessLocationRequest $select_google_business_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectGoogleBusinessLocation'] to see the possible values for this operation
@@ -11779,7 +12048,7 @@ class ConnectApi
     /**
      * Operation selectGoogleBusinessLocationAsync
      *
-     * Select GBP location
+     * Select Google Business Profile location
      *
      * @param  \Zernio\Model\SelectGoogleBusinessLocationRequest $select_google_business_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectGoogleBusinessLocation'] to see the possible values for this operation
@@ -11800,7 +12069,7 @@ class ConnectApi
     /**
      * Operation selectGoogleBusinessLocationAsyncWithHttpInfo
      *
-     * Select GBP location
+     * Select Google Business Profile location
      *
      * @param  \Zernio\Model\SelectGoogleBusinessLocationRequest $select_google_business_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectGoogleBusinessLocation'] to see the possible values for this operation
@@ -13731,7 +14000,7 @@ class ConnectApi
     /**
      * Operation updateGmbLocation
      *
-     * Update GBP location
+     * Update Google Business Profile location
      *
      * @param  string $account_id account_id (required)
      * @param  \Zernio\Model\UpdateGmbLocationRequest $update_gmb_location_request update_gmb_location_request (required)
@@ -13750,7 +14019,7 @@ class ConnectApi
     /**
      * Operation updateGmbLocationWithHttpInfo
      *
-     * Update GBP location
+     * Update Google Business Profile location
      *
      * @param  string $account_id (required)
      * @param  \Zernio\Model\UpdateGmbLocationRequest $update_gmb_location_request (required)
@@ -13850,7 +14119,7 @@ class ConnectApi
     /**
      * Operation updateGmbLocationAsync
      *
-     * Update GBP location
+     * Update Google Business Profile location
      *
      * @param  string $account_id (required)
      * @param  \Zernio\Model\UpdateGmbLocationRequest $update_gmb_location_request (required)
@@ -13872,7 +14141,7 @@ class ConnectApi
     /**
      * Operation updateGmbLocationAsyncWithHttpInfo
      *
-     * Update GBP location
+     * Update Google Business Profile location
      *
      * @param  string $account_id (required)
      * @param  \Zernio\Model\UpdateGmbLocationRequest $update_gmb_location_request (required)

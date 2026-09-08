@@ -585,7 +585,7 @@ class ListPhoneNumbers200ResponseNumbersInner implements ModelInterface, ArrayAc
     /**
      * Sets registrant_name
      *
-     * @param string|null $registrant_name For regulated numbers, who it's registered for (company or person) — set from the submitted KYC.
+     * @param string|null $registrant_name For regulated numbers, who it's registered for (company or person), set from the submitted KYC.
      *
      * @return self
      */
@@ -680,7 +680,7 @@ class ListPhoneNumbers200ResponseNumbersInner implements ModelInterface, ArrayAc
     /**
      * Sets hosted_by_zernio
      *
-     * @param bool|null $hosted_by_zernio False for numbers you brought yourself (connected via Meta embedded signup) — they live on your own carrier, so SMS/Calls can't be enabled on them.
+     * @param bool|null $hosted_by_zernio False for numbers you brought yourself (connected via Meta embedded signup). They live on your own carrier, so SMS/Calls can't be enabled on them.
      *
      * @return self
      */
@@ -849,7 +849,7 @@ class ListPhoneNumbers200ResponseNumbersInner implements ModelInterface, ArrayAc
     /**
      * Sets onfido_verification_url
      *
-     * @param string|null $onfido_verification_url For regulated (Tier 3/4) numbers with an Onfido ID-verification step — the link to forward to the end user. Set once the order is placed; null otherwise. Poll this field after submitting KYC.
+     * @param string|null $onfido_verification_url For regulated (Tier 3/4) numbers with an Onfido ID-verification step: the link to forward to the end user. Set once the order is placed; null otherwise. Poll this field after submitting KYC.
      *
      * @return self
      */

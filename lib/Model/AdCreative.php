@@ -614,7 +614,7 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets object_type
      *
-     * @param string|null $object_type Meta creative object_type (e.g. SHARE, VIDEO, PRIVACY_CHECK_FAIL, POST_DELETED). Use this to render state-aware previews — when Meta moderation strips image/video fields, only thumbnailUrl at 64x64 is available.
+     * @param string|null $object_type Meta creative object_type (e.g. SHARE, VIDEO, PRIVACY_CHECK_FAIL, POST_DELETED). Use this to render state-aware previews: when Meta moderation strips image/video fields, only thumbnailUrl at 64x64 is available.
      *
      * @return self
      */
@@ -641,7 +641,7 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets object_story_id
      *
-     * @param string|null $object_story_id Meta creative `object_story_id` (the SHARE reference). Frequently absent — Meta omits it for SHARE creatives. Use effectiveObjectStoryId instead.
+     * @param string|null $object_story_id Meta creative `object_story_id` (the SHARE reference). Frequently absent, because Meta omits it for SHARE creatives. Use effectiveObjectStoryId instead.
      *
      * @return self
      */
@@ -675,7 +675,7 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets effective_object_story_id
      *
-     * @param string|null $effective_object_story_id Meta `effective_object_story_id` — `{pageId}_{postId}` of the Facebook post the ad's engagement (comments) lives on. Pass to GET /v1/ads?effectiveObjectStoryId= to map a Business-Manager-visible post back to this ad; GET /v1/ads/{adId}/comments resolves comments against it.
+     * @param string|null $effective_object_story_id Meta `effective_object_story_id`, the `{pageId}_{postId}` of the Facebook post the ad's engagement (comments) lives on. Pass to GET /v1/ads?effectiveObjectStoryId= to map a Business-Manager-visible post back to this ad; GET /v1/ads/{adId}/comments resolves comments against it.
      *
      * @return self
      */
@@ -743,7 +743,7 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets effective_instagram_media_id
      *
-     * @param string|null $effective_instagram_media_id Meta `effective_instagram_media_id` — the Instagram media ID of the boosted post the ad's engagement lives on. Pass to GET /v1/ads?effectiveInstagramMediaId= to map a Business-Manager-visible IG post back to this ad.
+     * @param string|null $effective_instagram_media_id Meta `effective_instagram_media_id`, the Instagram media ID of the boosted post the ad's engagement lives on. Pass to GET /v1/ads?effectiveInstagramMediaId= to map a Business-Manager-visible IG post back to this ad.
      *
      * @return self
      */
@@ -777,7 +777,7 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets instagram_user_id
      *
-     * @param string|null $instagram_user_id Meta `instagram_user_id` — the Instagram-scoped business ID that owns the boosted media.
+     * @param string|null $instagram_user_id Meta `instagram_user_id`, the Instagram-scoped business ID that owns the boosted media.
      *
      * @return self
      */
@@ -811,7 +811,7 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets instagram_permalink_url
      *
-     * @param string|null $instagram_permalink_url Meta `instagram_permalink_url` — public Instagram post URL of the boosted media.
+     * @param string|null $instagram_permalink_url Meta `instagram_permalink_url`, the public Instagram post URL of the boosted media.
      *
      * @return self
      */

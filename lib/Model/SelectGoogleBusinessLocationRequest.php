@@ -367,7 +367,7 @@ class SelectGoogleBusinessLocationRequest implements ModelInterface, ArrayAccess
     /**
      * Sets location_id
      *
-     * @param string $location_id The Google Business location ID selected by the user
+     * @param string $location_id The Google Business Profile location ID selected by the user
      *
      * @return self
      */
@@ -394,7 +394,7 @@ class SelectGoogleBusinessLocationRequest implements ModelInterface, ArrayAccess
     /**
      * Sets account_id
      *
-     * @param string|null $account_id Optional but recommended. The Google Business Account resource name (\"accounts/123\") that owns the selected location (returned per-location by GET /v1/connect/googlebusiness/locations). When provided, the location is resolved directly instead of by enumerating the account, which is required for accounts that own many locations. Omit only for small accounts.
+     * @param string|null $account_id Optional but recommended. The Google Business Profile Account resource name (\"accounts/123\") that owns the selected location (returned per-location by GET /v1/connect/googlebusiness/locations). When provided, the location is resolved directly instead of by enumerating the account, which is required for accounts that own many locations. Omit only for small accounts.
      *
      * @return self
      */

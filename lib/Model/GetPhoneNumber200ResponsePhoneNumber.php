@@ -590,7 +590,7 @@ class GetPhoneNumber200ResponsePhoneNumber implements ModelInterface, ArrayAcces
     /**
      * Sets onfido_verification_url
      *
-     * @param string|null $onfido_verification_url For a regulated number with an Onfido ID step — the link to forward to the end user. Appears once the order is placed; null otherwise.
+     * @param string|null $onfido_verification_url For a regulated number with an Onfido ID step: the link to forward to the end user. Appears once the order is placed; null otherwise.
      *
      * @return self
      */

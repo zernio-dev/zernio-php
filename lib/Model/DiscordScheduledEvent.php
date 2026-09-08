@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * DiscordScheduledEvent Class Doc Comment
  *
  * @category Class
- * @description Discord guild scheduled event. Returned by /v1/discord/guilds/{guildId}/events endpoints. Fields below are the subset Zernio consumes — Discord may return more (e.g. creator, image hash) which we pass through verbatim.
+ * @description Discord guild scheduled event. Returned by /v1/discord/guilds/{guildId}/events endpoints. Fields below are the subset Zernio consumes. Discord may return more (e.g. creator, image hash) which we pass through verbatim.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -722,7 +722,7 @@ class DiscordScheduledEvent implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets privacy_level
      *
-     * @param int|null $privacy_level Always 2 (GUILD_ONLY) — Discord deprecated PUBLIC events.
+     * @param int|null $privacy_level Always 2 (GUILD_ONLY). Discord deprecated PUBLIC events.
      *
      * @return self
      */

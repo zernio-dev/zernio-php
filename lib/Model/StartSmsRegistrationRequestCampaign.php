@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * StartSmsRegistrationRequestCampaign Class Doc Comment
  *
  * @category Class
- * @description Required for 10DLC. What you&#39;ll send and how recipients opt in/out. The opt-in/opt-out/help auto-responses (&#x60;optinMessage&#x60;, &#x60;optoutMessage&#x60;, &#x60;helpMessage&#x60;) are optional: when omitted, a compliant, brand-named template with the carrier-required disclosures is generated for you. If you do send them, they must name the registered brand and carry the disclosures — submissions that don&#39;t are rewritten to the compliant template before the campaign is filed.
+ * @description Required for 10DLC. What you&#39;ll send and how recipients opt in/out. The opt-in/opt-out/help auto-responses (&#x60;optinMessage&#x60;, &#x60;optoutMessage&#x60;, &#x60;helpMessage&#x60;) are optional: when omitted, a compliant, brand-named template with the carrier-required disclosures is generated for you. If you do send them, they must name the registered brand and carry the disclosures. Submissions that don&#39;t are rewritten to the compliant template before the campaign is filed.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -645,7 +645,7 @@ class StartSmsRegistrationRequestCampaign implements ModelInterface, ArrayAccess
     /**
      * Sets message_flow
      *
-     * @param string $message_flow How a recipient ends up receiving your messages (the opt-in flow). Include a link to the page or form where they opt in — carrier reviewers reject campaigns whose consent they can't verify.
+     * @param string $message_flow How a recipient ends up receiving your messages (the opt-in flow). Include a link to the page or form where they opt in, because carrier reviewers reject campaigns whose consent they can't verify.
      *
      * @return self
      */

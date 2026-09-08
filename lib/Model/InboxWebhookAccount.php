@@ -348,7 +348,7 @@ class InboxWebhookAccount implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets id
      *
-     * @param string $id Social account ID
+     * @param string $id Account ID
      *
      * @return self
      */
@@ -375,7 +375,7 @@ class InboxWebhookAccount implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets account_id
      *
-     * @param string|null $account_id Social account ID (same value as id). Canonical field so consumers can filter every webhook event on one field (e.g. route staging vs production by account). id is kept for backward compatibility.
+     * @param string|null $account_id Account ID (same value as id). Canonical field so consumers can filter every webhook event on one field (e.g. route staging vs production by account). id is kept for backward compatibility.
      *
      * @return self
      */
@@ -402,7 +402,7 @@ class InboxWebhookAccount implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets profile_id
      *
-     * @param string|null $profile_id Zernio profile (workspace) ID this account belongs to. Use it to route or filter inbox webhooks by workspace. This is the profile ID only, not its name (resolve the name via the API with this ID). Optional; omitted on the shared WhatsApp sandbox account and when the account has no resolvable profile.
+     * @param string|null $profile_id Zernio profile ID this account belongs to. Use it to route or filter inbox webhooks by profile. This is the profile ID only, not its name (resolve the name via the API with this ID). Optional; omitted on the shared WhatsApp sandbox account and when the account has no resolvable profile.
      *
      * @return self
      */

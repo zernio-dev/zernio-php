@@ -710,7 +710,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets account_id
      *
-     * @param string $account_id Social account ID
+     * @param string $account_id Account ID
      *
      * @return self
      */
@@ -795,7 +795,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets goal
      *
-     * @param string $goal Available goals vary by platform. Meta (Facebook/Instagram) and TikTok support all 7. LinkedIn supports all except app_promotion. Twitter/X supports engagement, traffic, awareness, video_views, app_promotion. Pinterest and Google Ads support only engagement, traffic, awareness, video_views.
+     * @param string $goal Available goals vary by platform. Meta (Facebook/Instagram) and TikTok support all 7. LinkedIn supports all except app_promotion. X supports engagement, traffic, awareness, video_views, app_promotion. Pinterest and Google Ads support only engagement, traffic, awareness, video_views.
      *
      * @return self
      */
@@ -913,7 +913,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets destination_type
      *
-     * @param string|null $destination_type Meta only. Ad-set destination_type — where the click LANDS, as opposed to instagramAccountId which is who the ad runs as. Lead ads force ON_AD and ignore this.
+     * @param string|null $destination_type Meta only. Ad-set destination_type: where the click LANDS, as opposed to instagramAccountId which is who the ad runs as. Lead ads force ON_AD and ignore this.
      *
      * @return self
      */
@@ -1350,7 +1350,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets call_to_action
      *
-     * @param string|null $call_to_action CTA button label. Send it together with `linkUrl` — a CTA without a destination produces a button that goes nowhere, so sending one alone is a 400.  **Meta**: the CTA enum of POST /v1/ads/create plus `VIEW_INSTAGRAM_PROFILE`, which is accepted on boost only. For that value `linkUrl` is typically the Instagram profile URL.  **TikTok**: pass-through to `call_to_action` on the Spark Ad creative; the platform validates the value. See TikTok's \"Enumeration - Call-to-Action\".
+     * @param string|null $call_to_action CTA button label. Send it together with `linkUrl`: a CTA without a destination produces a button that goes nowhere, so sending one alone is a 400.  **Meta**: the CTA enum of POST /v1/ads/create plus `VIEW_INSTAGRAM_PROFILE`, which is accepted on boost only. For that value `linkUrl` is typically the Instagram profile URL.  **TikTok**: pass-through to `call_to_action` on the Spark Ad creative; the platform validates the value. See TikTok's \"Enumeration - Call-to-Action\".
      *
      * @return self
      */
@@ -1377,7 +1377,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets spark_auth_code
      *
-     * @param string|null $spark_auth_code TikTok-only. Spark Code (creator's `auth_code`) authorizing cross-creator Spark Ads — the advertiser can boost a video owned by a DIFFERENT TikTok account. Without this, boosts are limited to videos owned by the same account running the ads (same-BC creators only). The creator generates the code in their TikTok app's Promote settings and shares it with the advertiser. Maps to `auth_code` on the creative entry of /v2/ad/create/.
+     * @param string|null $spark_auth_code TikTok-only. Spark Code (creator's `auth_code`) authorizing cross-creator Spark Ads: the advertiser can boost a video owned by a DIFFERENT TikTok account. Without this, boosts are limited to videos owned by the same account running the ads (same-BC creators only). The creator generates the code in their TikTok app's Promote settings and shares it with the advertiser. Maps to `auth_code` on the creative entry of /v2/ad/create/.
      *
      * @return self
      */

@@ -316,7 +316,7 @@ class FollowUserRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets account_id
      *
-     * @param string $account_id The social account ID
+     * @param string $account_id The account ID
      *
      * @return self
      */
@@ -343,7 +343,7 @@ class FollowUserRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets target_user_id
      *
-     * @param string $target_user_id The Twitter ID of the user to follow
+     * @param string $target_user_id The X ID of the user to follow
      *
      * @return self
      */

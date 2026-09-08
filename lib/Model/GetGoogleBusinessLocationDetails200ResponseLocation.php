@@ -332,7 +332,7 @@ class GetGoogleBusinessLocationDetails200ResponseLocation implements ModelInterf
     /**
      * Sets name
      *
-     * @param string|null $name Business name as set in GBP
+     * @param string|null $name Business name as set in Google Business Profile
      *
      * @return self
      */

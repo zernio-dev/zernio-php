@@ -2212,7 +2212,7 @@ class CommentsApi
      * @param  string|null $sort_order Sort order (optional, default to 'desc')
      * @param  int|null $limit limit (optional, default to 50)
      * @param  string|null $cursor cursor (optional)
-     * @param  string|null $account_id Filter by specific social account ID (optional)
+     * @param  string|null $account_id Filter by specific account ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listInboxComments'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2238,7 +2238,7 @@ class CommentsApi
      * @param  string|null $sort_order Sort order (optional, default to 'desc')
      * @param  int|null $limit (optional, default to 50)
      * @param  string|null $cursor (optional)
-     * @param  string|null $account_id Filter by specific social account ID (optional)
+     * @param  string|null $account_id Filter by specific account ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listInboxComments'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2345,7 +2345,7 @@ class CommentsApi
      * @param  string|null $sort_order Sort order (optional, default to 'desc')
      * @param  int|null $limit (optional, default to 50)
      * @param  string|null $cursor (optional)
-     * @param  string|null $account_id Filter by specific social account ID (optional)
+     * @param  string|null $account_id Filter by specific account ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listInboxComments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2374,7 +2374,7 @@ class CommentsApi
      * @param  string|null $sort_order Sort order (optional, default to 'desc')
      * @param  int|null $limit (optional, default to 50)
      * @param  string|null $cursor (optional)
-     * @param  string|null $account_id Filter by specific social account ID (optional)
+     * @param  string|null $account_id Filter by specific account ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listInboxComments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2432,7 +2432,7 @@ class CommentsApi
      * @param  string|null $sort_order Sort order (optional, default to 'desc')
      * @param  int|null $limit (optional, default to 50)
      * @param  string|null $cursor (optional)
-     * @param  string|null $account_id Filter by specific social account ID (optional)
+     * @param  string|null $account_id Filter by specific account ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listInboxComments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

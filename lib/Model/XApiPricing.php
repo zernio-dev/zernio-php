@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * XApiPricing Class Doc Comment
  *
  * @category Class
- * @description Canonical X/Twitter API pricing table. Zernio passes X API costs through at exact rates with zero markup, so every call you make has a known per-unit price. Use this payload alongside &#x60;/v1/usage-stats&#x60; (which returns per-operation call counts via &#x60;xApiCallsByOperation&#x60;) to compute exact cost attribution by X action.
+ * @description Canonical X API pricing table. Zernio passes X API costs through at exact rates with zero markup, so every call you make has a known per-unit price. Use this payload alongside &#x60;/v1/usage-stats&#x60; (which returns per-operation call counts via &#x60;xApiCallsByOperation&#x60;) to compute exact cost attribution by X action.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -366,7 +366,7 @@ class XApiPricing implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets markup
      *
-     * @param string|null $markup Always 0% — Zernio does not mark up X API rates.
+     * @param string|null $markup Always 0%, because Zernio does not mark up X API rates.
      *
      * @return self
      */

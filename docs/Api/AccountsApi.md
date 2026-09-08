@@ -1,6 +1,6 @@
 # Zernio\AccountsApi
 
-Manage connected social media accounts: list, fetch, update, disconnect, and read account health.
+Manage connected accounts: list, fetch, update, disconnect, and read account health.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
@@ -30,7 +30,7 @@ deleteAccount($account_id): \Zernio\Model\DeleteAccountGroup200Response
 
 Disconnect account
 
-Disconnects and removes a connected social account. Repeating the call for an account already disconnected returns 404, the account stays in its 1h grace window and the disconnect is not re-run.
+Disconnects and removes a connected account. Repeating the call for an account already disconnected returns 404, the account stays in its 1h grace window and the disconnect is not re-run.
 
 ### Example
 
@@ -334,7 +334,7 @@ getFollowerStats($account_ids, $profile_id, $from_date, $to_date, $granularity):
 
 Get follower stats
 
-Returns follower count history and growth metrics for connected social accounts. Requires analytics add-on subscription. Follower counts are refreshed once per day.
+Returns follower count history and growth metrics for connected accounts. Requires analytics add-on subscription. Follower counts are refreshed once per day.
 
 ### Example
 
@@ -588,7 +588,7 @@ listAccounts($profile_id, $platform, $status, $include_over_limit, $page, $limit
 
 List accounts
 
-Returns connected social accounts. Only includes accounts within the plan limit by default. Follower data requires analytics add-on. Supports optional server-side pagination via page/limit params. When omitted, returns all accounts (backward-compatible). page and limit must be supplied together; out-of-range page/limit values are rejected with 400 rather than silently clamped.
+Returns connected accounts. Only includes accounts within the plan limit by default. Follower data requires analytics add-on. Supports optional server-side pagination via page/limit params. When omitted, returns all accounts (backward-compatible). page and limit must be supplied together; out-of-range page/limit values are rejected with 400 rather than silently clamped.
 
 ### Example
 
@@ -658,7 +658,7 @@ moveAccountToProfile($account_id, $move_account_to_profile_request): \Zernio\Mod
 
 Move account to another profile
 
-Moves a connected social account to a different profile owned by the same user. The target profile must belong to the same user as the account.  For API keys restricted to specific profiles, BOTH the source account's current profile AND the target profile must be in the key's allowed set. Calls with a target profile outside the key's scope return 403.
+Moves a connected account to a different profile owned by the same user. The target profile must belong to the same user as the account.  For API keys restricted to specific profiles, BOTH the source account's current profile AND the target profile must be in the key's allowed set. Calls with a target profile outside the key's scope return 403.
 
 ### Example
 
@@ -720,7 +720,7 @@ updateAccount($account_id, $update_account_request): \Zernio\Model\UpdateAccount
 
 Update account
 
-Updates a connected social account's display name or username override.  For X/Twitter accounts on usage-based billing, also accepts an `xCapabilities` object to toggle background API operations that incur X API pass-through costs. Both fields are opt-in (default `false`) — when off, no analytics syncs or DM polling are performed for that account, and no API call is metered for those operations. Publishing and deleting posts are always available regardless of these toggles. Setting `xCapabilities` on a non-X account returns 400.
+Updates a connected account's display name or username override.  For X accounts on usage-based billing, also accepts an `xCapabilities` object to toggle background API operations that incur X API pass-through costs. Both fields are opt-in (default `false`). When off, no analytics syncs or DM polling are performed for that account, and no API call is metered for those operations. Publishing and deleting posts are always available regardless of these toggles. Setting `xCapabilities` on a non-X account returns 400.
 
 ### Example
 

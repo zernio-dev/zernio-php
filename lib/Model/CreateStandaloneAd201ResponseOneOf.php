@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * CreateStandaloneAd201ResponseOneOf Class Doc Comment
  *
  * @category Class
- * @description Legacy + attach shapes — one ad returned.
+ * @description Legacy + attach shapes: one ad returned.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

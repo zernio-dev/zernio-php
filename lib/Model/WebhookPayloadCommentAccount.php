@@ -333,7 +333,7 @@ class WebhookPayloadCommentAccount implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets id
      *
-     * @param string $id Social account ID
+     * @param string $id Account ID
      *
      * @return self
      */
@@ -360,7 +360,7 @@ class WebhookPayloadCommentAccount implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets account_id
      *
-     * @param string|null $account_id Social account ID (same as id); canonical field for account filtering.
+     * @param string|null $account_id Account ID (same as id); canonical field for account filtering.
      *
      * @return self
      */

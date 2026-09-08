@@ -131,7 +131,7 @@ class WhatsAppTemplatesApi
      *
      * Look up a library template
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $name Exact library template name (required)
      * @param  string|null $language Desired language variant (e.g. es, en_US). If the template is not offered in it, the first available variant is returned and named in the response language field. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppLibraryTemplate'] to see the possible values for this operation
@@ -151,7 +151,7 @@ class WhatsAppTemplatesApi
      *
      * Look up a library template
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $name Exact library template name (required)
      * @param  string|null $language Desired language variant (e.g. es, en_US). If the template is not offered in it, the first available variant is returned and named in the response language field. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppLibraryTemplate'] to see the possible values for this operation
@@ -252,7 +252,7 @@ class WhatsAppTemplatesApi
      *
      * Look up a library template
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $name Exact library template name (required)
      * @param  string|null $language Desired language variant (e.g. es, en_US). If the template is not offered in it, the first available variant is returned and named in the response language field. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppLibraryTemplate'] to see the possible values for this operation
@@ -275,7 +275,7 @@ class WhatsAppTemplatesApi
      *
      * Look up a library template
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $name Exact library template name (required)
      * @param  string|null $language Desired language variant (e.g. es, en_US). If the template is not offered in it, the first available variant is returned and named in the response language field. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppLibraryTemplate'] to see the possible values for this operation
@@ -327,7 +327,7 @@ class WhatsAppTemplatesApi
     /**
      * Create request for operation 'getWhatsAppLibraryTemplate'
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $name Exact library template name (required)
      * @param  string|null $language Desired language variant (e.g. es, en_US). If the template is not offered in it, the first available variant is returned and named in the response language field. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppLibraryTemplate'] to see the possible values for this operation

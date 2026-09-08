@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * UpdateAccountRequestXCapabilities Class Doc Comment
  *
  * @category Class
- * @description X/Twitter only. Per-account opt-in toggles for background API operations that incur X API pass-through costs. Each call is billed via Metronome at the X tier rate. Either field can be sent independently; omitted fields are unchanged.
+ * @description X only. Per-account opt-in toggles for background API operations that incur X API pass-through costs. Each call is billed at the X tier rate. Either field can be sent independently; omitted fields are unchanged.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -311,7 +311,7 @@ class UpdateAccountRequestXCapabilities implements ModelInterface, ArrayAccess, 
     /**
      * Sets analytics
      *
-     * @param bool|null $analytics Enable periodic analytics reads (impressions, likes, etc.) for this X account. Each X API call is metered as `posts_read` and billed pass-through (~$0.005/call at the time of writing — actual rate depends on X's pricing tier).
+     * @param bool|null $analytics Enable periodic analytics reads (impressions, likes, etc.) for this X account. Each X API call is metered as `posts_read` and billed pass-through (~$0.005/call at the time of writing; the actual rate depends on X's pricing tier).
      *
      * @return self
      */

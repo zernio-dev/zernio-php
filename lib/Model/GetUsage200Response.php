@@ -767,7 +767,7 @@ class GetUsage200Response implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets auto_upgrade_enabled
      *
-     * @param bool|null $auto_upgrade_enabled Stripe-only. Always false for Metronome users.
+     * @param bool|null $auto_upgrade_enabled Stripe-only. Always false for accounts on usage-based billing.
      *
      * @return self
      */
@@ -875,7 +875,7 @@ class GetUsage200Response implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets supported
      *
-     * @param bool|null $supported False for legacy Stripe accounts (no Metronome invoice to split); `days` and `totals` are then empty/zero.
+     * @param bool|null $supported False for legacy Stripe accounts (no usage-based invoice to split); `days` and `totals` are then empty/zero.
      *
      * @return self
      */

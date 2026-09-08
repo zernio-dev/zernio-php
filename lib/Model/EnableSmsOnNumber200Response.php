@@ -447,7 +447,7 @@ class EnableSmsOnNumber200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets id
      *
-     * @param string|null $id The SMS social account ID (present when enabled).
+     * @param string|null $id The SMS account ID (present when enabled).
      *
      * @return self
      */

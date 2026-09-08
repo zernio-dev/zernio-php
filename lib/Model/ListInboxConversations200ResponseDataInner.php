@@ -70,6 +70,7 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
         'updated_time' => '\DateTime',
         'status' => 'string',
         'unread_count' => 'int',
+        'thread_control' => 'string',
         'url' => 'string',
         'instagram_profile' => '\Zernio\Model\ListInboxConversations200ResponseDataInnerInstagramProfile',
         'metadata' => '\Zernio\Model\ListInboxConversations200ResponseDataInnerMetadata'
@@ -95,6 +96,7 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
         'updated_time' => 'date-time',
         'status' => null,
         'unread_count' => null,
+        'thread_control' => null,
         'url' => null,
         'instagram_profile' => null,
         'metadata' => null
@@ -118,6 +120,7 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
         'updated_time' => false,
         'status' => false,
         'unread_count' => true,
+        'thread_control' => false,
         'url' => true,
         'instagram_profile' => false,
         'metadata' => false
@@ -221,6 +224,7 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
         'updated_time' => 'updatedTime',
         'status' => 'status',
         'unread_count' => 'unreadCount',
+        'thread_control' => 'threadControl',
         'url' => 'url',
         'instagram_profile' => 'instagramProfile',
         'metadata' => 'metadata'
@@ -244,6 +248,7 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
         'updated_time' => 'setUpdatedTime',
         'status' => 'setStatus',
         'unread_count' => 'setUnreadCount',
+        'thread_control' => 'setThreadControl',
         'url' => 'setUrl',
         'instagram_profile' => 'setInstagramProfile',
         'metadata' => 'setMetadata'
@@ -267,6 +272,7 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
         'updated_time' => 'getUpdatedTime',
         'status' => 'getStatus',
         'unread_count' => 'getUnreadCount',
+        'thread_control' => 'getThreadControl',
         'url' => 'getUrl',
         'instagram_profile' => 'getInstagramProfile',
         'metadata' => 'getMetadata'
@@ -319,6 +325,9 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
     public const PARTICIPANT_VERIFIED_TYPE_NONE = 'none';
     public const STATUS_ACTIVE = 'active';
     public const STATUS_ARCHIVED = 'archived';
+    public const THREAD_CONTROL_APP = 'app';
+    public const THREAD_CONTROL_AI_AGENT = 'ai_agent';
+    public const THREAD_CONTROL_OTHER = 'other';
 
     /**
      * Gets allowable values of the enum
@@ -349,6 +358,20 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getThreadControlAllowableValues()
+    {
+        return [
+            self::THREAD_CONTROL_APP,
+            self::THREAD_CONTROL_AI_AGENT,
+            self::THREAD_CONTROL_OTHER,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -375,6 +398,7 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
         $this->setIfExists('updated_time', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('unread_count', $data ?? [], null);
+        $this->setIfExists('thread_control', $data ?? [], null);
         $this->setIfExists('url', $data ?? [], null);
         $this->setIfExists('instagram_profile', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
@@ -421,6 +445,15 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'status', must be one of '%s'",
                 $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getThreadControlAllowableValues();
+        if (!is_null($this->container['thread_control']) && !in_array($this->container['thread_control'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'thread_control', must be one of '%s'",
+                $this->container['thread_control'],
                 implode("', '", $allowedValues)
             );
         }
@@ -649,7 +682,7 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
     /**
      * Sets participant_verified_type
      *
-     * @param string|null $participant_verified_type X/Twitter verified badge type. Only present for Twitter/X conversations.
+     * @param string|null $participant_verified_type X verified badge type. Only present for X conversations.
      *
      * @return self
      */
@@ -801,6 +834,43 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
             }
         }
         $this->container['unread_count'] = $unread_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets thread_control
+     *
+     * @return string|null
+     */
+    public function getThreadControl()
+    {
+        return $this->container['thread_control'];
+    }
+
+    /**
+     * Sets thread_control
+     *
+     * @param string|null $thread_control WhatsApp only, present once Meta Business Agent has touched the thread. ai_agent: the agent answers and new inbound arrive flagged metadata.standby; app: you hold control; other: another partner app does. Change it with POST /v1/inbox/conversations/{conversationId}/thread-control.
+     *
+     * @return self
+     */
+    public function setThreadControl($thread_control)
+    {
+        if (is_null($thread_control)) {
+            throw new \InvalidArgumentException('non-nullable thread_control cannot be null');
+        }
+        $allowedValues = $this->getThreadControlAllowableValues();
+        if (!in_array($thread_control, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'thread_control', must be one of '%s'",
+                    $thread_control,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['thread_control'] = $thread_control;
 
         return $this;
     }

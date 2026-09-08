@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **display_name** | **string** |  | [optional]
 **is_active** | **bool** |  | [optional]
 **selected_location_name** | **string** | Human-readable location display name (e.g. \&quot;Snap Fitness Dianella\&quot;), NOT a resource name. Do not use it to build API paths. | [optional]
-**selected_location_id** | **string** | Bare GBP location id (digits only). Combine with the GBP account id as accounts/{gbpAccountId}/locations/{selectedLocationId} to form the location resource names that gmb-reviews/batch expects in locationNames. | [optional]
+**selected_location_id** | **string** | Bare Google Business Profile location id (digits only). Combine with the Google Business Profile account id as accounts/{gbpAccountId}/locations/{selectedLocationId} to form the location resource names that gmb-reviews/batch expects in locationNames. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

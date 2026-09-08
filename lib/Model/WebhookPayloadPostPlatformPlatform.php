@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * WebhookPayloadPostPlatformPlatform Class Doc Comment
  *
  * @category Class
- * @description The specific platform that just transitioned to a terminal state.
+ * @description The specific platform that transitioned to a terminal state.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * ListDiscordPinnedMessages200ResponseDataInner Class Doc Comment
  *
  * @category Class
- * @description Raw Discord Message object — see DiscordPlatformData for embed/attachment shapes.
+ * @description Raw Discord Message object. See DiscordPlatformData for embed/attachment shapes.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

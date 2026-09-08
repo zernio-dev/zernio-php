@@ -539,7 +539,7 @@ class SelectGoogleBusinessLocation200ResponseAccount implements ModelInterface, 
     /**
      * Sets selected_location_id
      *
-     * @param string|null $selected_location_id Bare GBP location id. Combine with the GBP account id as accounts/{gbpAccountId}/locations/{selectedLocationId} to form the location resource names that gmb-reviews/batch expects in locationNames.
+     * @param string|null $selected_location_id Bare Google Business Profile location id. Combine with the Google Business Profile account id as accounts/{gbpAccountId}/locations/{selectedLocationId} to form the location resource names that gmb-reviews/batch expects in locationNames.
      *
      * @return self
      */

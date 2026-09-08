@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * UsageStats Class Doc Comment
  *
  * @category Class
- * @description Plan and usage stats. The response shape depends on &#x60;billingSystem&#x60;:   * Stripe users (default): per-period counters like &#x60;usage.uploads&#x60; and     &#x60;usage.profiles&#x60; are returned, scoped by the plan&#39;s &#x60;limits&#x60;.   * Metronome users (usage-based): &#x60;limits&#x60; are unlimited (-1). The     &#x60;usage&#x60; block carries connected-account and per-X-operation counts,     and the &#x60;spend&#x60; block carries current-period costs plus the X cap.
+ * @description Plan and usage stats. The response shape depends on &#x60;billingSystem&#x60;:   * Stripe users (default): per-period counters like &#x60;usage.uploads&#x60; and     &#x60;usage.profiles&#x60; are returned, scoped by the plan&#39;s &#x60;limits&#x60;.   * Usage-based billing users: &#x60;limits&#x60; are unlimited (-1). The     &#x60;usage&#x60; block carries connected-account and per-X-operation counts,     and the &#x60;spend&#x60; block carries current-period costs plus the X cap.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -672,7 +672,7 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets auto_upgrade_enabled
      *
-     * @param bool|null $auto_upgrade_enabled Stripe-only. Always false for Metronome users.
+     * @param bool|null $auto_upgrade_enabled Stripe-only. Always false for accounts on usage-based billing.
      *
      * @return self
      */

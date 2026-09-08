@@ -379,7 +379,7 @@ class GetPhoneNumberKycForm200ResponseReusable implements ModelInterface, ArrayA
     /**
      * Sets details
      *
-     * @param \Zernio\Model\GetPhoneNumberKycForm200ResponseReusableDetailsInner[]|null $details Human-readable summary of the verification on file (field labels + values, plus the address as one line). Best-effort — may be empty if the provider lookup fails.
+     * @param \Zernio\Model\GetPhoneNumberKycForm200ResponseReusableDetailsInner[]|null $details Human-readable summary of the verification on file (field labels + values, plus the address as one line). Best-effort. May be empty if the provider lookup fails.
      *
      * @return self
      */

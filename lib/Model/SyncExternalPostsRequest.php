@@ -347,7 +347,7 @@ class SyncExternalPostsRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets url
      *
-     * @param string|null $url The post URL to locate. Optional. Provide `url` or `postId` to return a specific post; omit both to just refresh and return the account's recent posts.
+     * @param string|null $url The post URL to locate. Optional. Provide `url` or `postId` to return a specific post; omit both to refresh and return the account's recent posts.
      *
      * @return self
      */

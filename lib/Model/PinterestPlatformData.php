@@ -515,7 +515,7 @@ class PinterestPlatformData implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets is_ai_generated
      *
-     * @param bool|null $is_ai_generated When true, the Pin is created with Pinterest's AI_MODIFIED disclosure (ai_disclosures), which shows an \"AI modified\" label. Applies to image and video Pins. Pinterest offers no \"not AI\" value, so false simply omits the disclosure. Pinterest may still label a Pin on its own detection.
+     * @param bool|null $is_ai_generated When true, the Pin is created with Pinterest's AI_MODIFIED disclosure (ai_disclosures), which shows an \"AI modified\" label. Applies to image and video Pins. Pinterest offers no \"not AI\" value, so false omits the disclosure. Pinterest may still label a Pin on its own detection.
      *
      * @return self
      */

@@ -454,7 +454,7 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets reshare_url
      *
-     * @param string|null $reshare_url LinkedIn post link to repost (use the post's \"Copy link to post\" action), or a urn:li:share / urn:li:ugcPost / urn:li:groupPost URN. The published post is always a reshare authored by your account with the original embedded underneath: with content your text is the commentary (LinkedIn's \"repost with your thoughts\"), and with no content it publishes as a text-free reshare. Note that a text-free reshare is NOT LinkedIn's one-click \"Repost\" (the feed treatment where the original author stays the author); LinkedIn's API exposes no way to create that, so the post still appears authored by you with the original embedded. Mutually exclusive with media. Works on personal profiles and organization pages.
+     * @param string|null $reshare_url LinkedIn post link to repost (use the post's \"Copy link to post\" action), or a urn:li:share / urn:li:ugcPost / urn:li:groupPost URN. The published post is always a reshare authored by your account with the original embedded underneath: with content your text is the commentary (LinkedIn's \"repost with your thoughts\"), and with no content it publishes as a text-free reshare. A text-free reshare is NOT LinkedIn's one-click \"Repost\" (the feed treatment where the original author stays the author); LinkedIn's API exposes no way to create that, so the post still appears authored by you with the original embedded. Mutually exclusive with media. Works on personal profiles and organization pages.
      *
      * @return self
      */

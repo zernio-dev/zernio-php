@@ -400,7 +400,7 @@ class ListWhatsAppAccountEvents200ResponseEventsInner implements ModelInterface,
     /**
      * Sets account_id
      *
-     * @param string|null $account_id WhatsApp social account the event belongs to
+     * @param string|null $account_id WhatsApp account the event belongs to
      *
      * @return self
      */

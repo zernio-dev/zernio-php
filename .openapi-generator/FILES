@@ -255,6 +255,7 @@ docs/Model/ConnectWhatsAppEmbeddedSignupRequest.md
 docs/Model/Connected.md
 docs/Model/ConnectedAccount.md
 docs/Model/ConnectedApp.md
+docs/Model/Conversation.md
 docs/Model/ConversionAction.md
 docs/Model/ConversionActionTagSnippetsInner.md
 docs/Model/ConversionDestination.md
@@ -884,6 +885,7 @@ docs/Model/GetWhatsAppNumberInfo200ResponseWaba.md
 docs/Model/GetWhatsAppNumberKycForm200Response.md
 docs/Model/GetWhatsAppNumberKycForm200ResponseFieldsInner.md
 docs/Model/GetWhatsAppNumberRemediation200Response.md
+docs/Model/GetWhatsAppSdkConfig200Response.md
 docs/Model/GetWhatsAppTemplate200Response.md
 docs/Model/GetWhatsAppTemplate200ResponseTemplate.md
 docs/Model/GetWhatsAppTemplate409Response.md
@@ -1461,6 +1463,9 @@ docs/Model/SendWhatsAppFlowMessageRequestFlowActionPayload.md
 docs/Model/SendWhatsAppFlowMessageRequestHeader.md
 docs/Model/SetCommentModerationRequest.md
 docs/Model/SetContactFieldValueRequest.md
+docs/Model/SetConversationThreadControl200Response.md
+docs/Model/SetConversationThreadControl200ResponseControl.md
+docs/Model/SetConversationThreadControlRequest.md
 docs/Model/SetInstagramIceBreakersRequest.md
 docs/Model/SetInstagramIceBreakersRequestIceBreakersInner.md
 docs/Model/SetMessengerMenuRequest.md
@@ -1793,6 +1798,8 @@ docs/Model/WebhookPayloadCommentCommentAttachment.md
 docs/Model/WebhookPayloadCommentCommentAuthor.md
 docs/Model/WebhookPayloadCommentCommentAuthorInstagramProfile.md
 docs/Model/WebhookPayloadCommentPost.md
+docs/Model/WebhookPayloadConversationControlChanged.md
+docs/Model/WebhookPayloadConversationControlChangedControl.md
 docs/Model/WebhookPayloadConversationStarted.md
 docs/Model/WebhookPayloadConversationStartedConversation.md
 docs/Model/WebhookPayloadExternalPost.md
@@ -2169,6 +2176,7 @@ lib/Model/ConnectWhatsAppEmbeddedSignupRequest.php
 lib/Model/Connected.php
 lib/Model/ConnectedAccount.php
 lib/Model/ConnectedApp.php
+lib/Model/Conversation.php
 lib/Model/ConversionAction.php
 lib/Model/ConversionActionTagSnippetsInner.php
 lib/Model/ConversionDestination.php
@@ -2798,6 +2806,7 @@ lib/Model/GetWhatsAppNumberInfo200ResponseWaba.php
 lib/Model/GetWhatsAppNumberKycForm200Response.php
 lib/Model/GetWhatsAppNumberKycForm200ResponseFieldsInner.php
 lib/Model/GetWhatsAppNumberRemediation200Response.php
+lib/Model/GetWhatsAppSdkConfig200Response.php
 lib/Model/GetWhatsAppTemplate200Response.php
 lib/Model/GetWhatsAppTemplate200ResponseTemplate.php
 lib/Model/GetWhatsAppTemplate409Response.php
@@ -3376,6 +3385,9 @@ lib/Model/SendWhatsAppFlowMessageRequestFlowActionPayload.php
 lib/Model/SendWhatsAppFlowMessageRequestHeader.php
 lib/Model/SetCommentModerationRequest.php
 lib/Model/SetContactFieldValueRequest.php
+lib/Model/SetConversationThreadControl200Response.php
+lib/Model/SetConversationThreadControl200ResponseControl.php
+lib/Model/SetConversationThreadControlRequest.php
 lib/Model/SetInstagramIceBreakersRequest.php
 lib/Model/SetInstagramIceBreakersRequestIceBreakersInner.php
 lib/Model/SetMessengerMenuRequest.php
@@ -3708,6 +3720,8 @@ lib/Model/WebhookPayloadCommentCommentAttachment.php
 lib/Model/WebhookPayloadCommentCommentAuthor.php
 lib/Model/WebhookPayloadCommentCommentAuthorInstagramProfile.php
 lib/Model/WebhookPayloadCommentPost.php
+lib/Model/WebhookPayloadConversationControlChanged.php
+lib/Model/WebhookPayloadConversationControlChangedControl.php
 lib/Model/WebhookPayloadConversationStarted.php
 lib/Model/WebhookPayloadConversationStartedConversation.php
 lib/Model/WebhookPayloadExternalPost.php
@@ -3829,3 +3843,9 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetWhatsAppSdkConfig200ResponseTest.php
+test/Model/SetConversationThreadControl200ResponseControlTest.php
+test/Model/SetConversationThreadControl200ResponseTest.php
+test/Model/SetConversationThreadControlRequestTest.php
+test/Model/WebhookPayloadConversationControlChangedControlTest.php
+test/Model/WebhookPayloadConversationControlChangedTest.php

@@ -247,7 +247,7 @@ class WhatsAppApi
      * Add participants
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\AddWhatsAppGroupParticipantsRequest $add_whats_app_group_participants_request add_whats_app_group_participants_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addWhatsAppGroupParticipants'] to see the possible values for this operation
      *
@@ -267,7 +267,7 @@ class WhatsAppApi
      * Add participants
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\AddWhatsAppGroupParticipantsRequest $add_whats_app_group_participants_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addWhatsAppGroupParticipants'] to see the possible values for this operation
      *
@@ -382,7 +382,7 @@ class WhatsAppApi
      * Add participants
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\AddWhatsAppGroupParticipantsRequest $add_whats_app_group_participants_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addWhatsAppGroupParticipants'] to see the possible values for this operation
      *
@@ -405,7 +405,7 @@ class WhatsAppApi
      * Add participants
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\AddWhatsAppGroupParticipantsRequest $add_whats_app_group_participants_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addWhatsAppGroupParticipants'] to see the possible values for this operation
      *
@@ -457,7 +457,7 @@ class WhatsAppApi
      * Create request for operation 'addWhatsAppGroupParticipants'
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\AddWhatsAppGroupParticipantsRequest $add_whats_app_group_participants_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addWhatsAppGroupParticipants'] to see the possible values for this operation
      *
@@ -587,7 +587,7 @@ class WhatsAppApi
      * Approve join requests
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\ApproveWhatsAppGroupJoinRequestsRequest $approve_whats_app_group_join_requests_request approve_whats_app_group_join_requests_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['approveWhatsAppGroupJoinRequests'] to see the possible values for this operation
      *
@@ -607,7 +607,7 @@ class WhatsAppApi
      * Approve join requests
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\ApproveWhatsAppGroupJoinRequestsRequest $approve_whats_app_group_join_requests_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['approveWhatsAppGroupJoinRequests'] to see the possible values for this operation
      *
@@ -722,7 +722,7 @@ class WhatsAppApi
      * Approve join requests
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\ApproveWhatsAppGroupJoinRequestsRequest $approve_whats_app_group_join_requests_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['approveWhatsAppGroupJoinRequests'] to see the possible values for this operation
      *
@@ -745,7 +745,7 @@ class WhatsAppApi
      * Approve join requests
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\ApproveWhatsAppGroupJoinRequestsRequest $approve_whats_app_group_join_requests_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['approveWhatsAppGroupJoinRequests'] to see the possible values for this operation
      *
@@ -797,7 +797,7 @@ class WhatsAppApi
      * Create request for operation 'approveWhatsAppGroupJoinRequests'
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\ApproveWhatsAppGroupJoinRequestsRequest $approve_whats_app_group_join_requests_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['approveWhatsAppGroupJoinRequests'] to see the possible values for this operation
      *
@@ -1796,7 +1796,7 @@ class WhatsAppApi
      * Create invite link
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppGroupInviteLink'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1815,7 +1815,7 @@ class WhatsAppApi
      * Create invite link
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppGroupInviteLink'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1929,7 +1929,7 @@ class WhatsAppApi
      * Create invite link
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppGroupInviteLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1951,7 +1951,7 @@ class WhatsAppApi
      * Create invite link
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppGroupInviteLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2002,7 +2002,7 @@ class WhatsAppApi
      * Create request for operation 'createWhatsAppGroupInviteLink'
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppGroupInviteLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2402,7 +2402,7 @@ class WhatsAppApi
      * Delete group
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppGroupChat'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2421,7 +2421,7 @@ class WhatsAppApi
      * Delete group
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppGroupChat'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2549,7 +2549,7 @@ class WhatsAppApi
      * Delete group
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppGroupChat'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2571,7 +2571,7 @@ class WhatsAppApi
      * Delete group
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppGroupChat'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2622,7 +2622,7 @@ class WhatsAppApi
      * Create request for operation 'deleteWhatsAppGroupChat'
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppGroupChat'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2737,7 +2737,7 @@ class WhatsAppApi
      * Delete template
      *
      * @param  string $template_name Template name (the family). (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $language Delete only this language variant (e.g. es). Omit to delete the whole family. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppTemplate'] to see the possible values for this operation
      *
@@ -2757,7 +2757,7 @@ class WhatsAppApi
      * Delete template
      *
      * @param  string $template_name Template name (the family). (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $language Delete only this language variant (e.g. es). Omit to delete the whole family. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppTemplate'] to see the possible values for this operation
      *
@@ -2886,7 +2886,7 @@ class WhatsAppApi
      * Delete template
      *
      * @param  string $template_name Template name (the family). (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $language Delete only this language variant (e.g. es). Omit to delete the whole family. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppTemplate'] to see the possible values for this operation
      *
@@ -2909,7 +2909,7 @@ class WhatsAppApi
      * Delete template
      *
      * @param  string $template_name Template name (the family). (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $language Delete only this language variant (e.g. es). Omit to delete the whole family. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppTemplate'] to see the possible values for this operation
      *
@@ -2961,7 +2961,7 @@ class WhatsAppApi
      * Create request for operation 'deleteWhatsAppTemplate'
      *
      * @param  string $template_name Template name (the family). (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $language Delete only this language variant (e.g. es). Omit to delete the whole family. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppTemplate'] to see the possible values for this operation
      *
@@ -3087,7 +3087,7 @@ class WhatsAppApi
      * Delete template by id
      *
      * @param  string $template_id Meta template id (numeric). (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppTemplateById'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3106,7 +3106,7 @@ class WhatsAppApi
      * Delete template by id
      *
      * @param  string $template_id Meta template id (numeric). (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppTemplateById'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3220,7 +3220,7 @@ class WhatsAppApi
      * Delete template by id
      *
      * @param  string $template_id Meta template id (numeric). (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppTemplateById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3242,7 +3242,7 @@ class WhatsAppApi
      * Delete template by id
      *
      * @param  string $template_id Meta template id (numeric). (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppTemplateById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3293,7 +3293,7 @@ class WhatsAppApi
      * Create request for operation 'deleteWhatsAppTemplateById'
      *
      * @param  string $template_id Meta template id (numeric). (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppTemplateById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4000,7 +4000,7 @@ class WhatsAppApi
      *
      * List blocked users
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  int|null $limit Page size. (optional)
      * @param  string|null $after Cursor from a previous response&#39;s &#x60;nextCursor&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppBlockedUsers'] to see the possible values for this operation
@@ -4020,7 +4020,7 @@ class WhatsAppApi
      *
      * List blocked users
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  int|null $limit Page size. (optional)
      * @param  string|null $after Cursor from a previous response&#39;s &#x60;nextCursor&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppBlockedUsers'] to see the possible values for this operation
@@ -4121,7 +4121,7 @@ class WhatsAppApi
      *
      * List blocked users
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  int|null $limit Page size. (optional)
      * @param  string|null $after Cursor from a previous response&#39;s &#x60;nextCursor&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppBlockedUsers'] to see the possible values for this operation
@@ -4144,7 +4144,7 @@ class WhatsAppApi
      *
      * List blocked users
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  int|null $limit Page size. (optional)
      * @param  string|null $after Cursor from a previous response&#39;s &#x60;nextCursor&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppBlockedUsers'] to see the possible values for this operation
@@ -4196,7 +4196,7 @@ class WhatsAppApi
     /**
      * Create request for operation 'getWhatsAppBlockedUsers'
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  int|null $limit Page size. (optional)
      * @param  string|null $after Cursor from a previous response&#39;s &#x60;nextCursor&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppBlockedUsers'] to see the possible values for this operation
@@ -4323,7 +4323,7 @@ class WhatsAppApi
      *
      * Get business profile
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppBusinessProfile'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4341,7 +4341,7 @@ class WhatsAppApi
      *
      * Get business profile
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppBusinessProfile'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4440,7 +4440,7 @@ class WhatsAppApi
      *
      * Get business profile
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppBusinessProfile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4461,7 +4461,7 @@ class WhatsAppApi
      *
      * Get business profile
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppBusinessProfile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4511,7 +4511,7 @@ class WhatsAppApi
     /**
      * Create request for operation 'getWhatsAppBusinessProfile'
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppBusinessProfile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4610,7 +4610,7 @@ class WhatsAppApi
      *
      * Get CTWA conversions dataset
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDataset'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4628,7 +4628,7 @@ class WhatsAppApi
      *
      * Get CTWA conversions dataset
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDataset'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4727,7 +4727,7 @@ class WhatsAppApi
      *
      * Get CTWA conversions dataset
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDataset'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4748,7 +4748,7 @@ class WhatsAppApi
      *
      * Get CTWA conversions dataset
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDataset'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4798,7 +4798,7 @@ class WhatsAppApi
     /**
      * Create request for operation 'getWhatsAppDataset'
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDataset'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4897,7 +4897,7 @@ class WhatsAppApi
      *
      * Get display name status
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDisplayName'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4915,7 +4915,7 @@ class WhatsAppApi
      *
      * Get display name status
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDisplayName'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5014,7 +5014,7 @@ class WhatsAppApi
      *
      * Get display name status
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDisplayName'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5035,7 +5035,7 @@ class WhatsAppApi
      *
      * Get display name status
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDisplayName'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5085,7 +5085,7 @@ class WhatsAppApi
     /**
      * Create request for operation 'getWhatsAppDisplayName'
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDisplayName'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5185,7 +5185,7 @@ class WhatsAppApi
      * Get group info
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppGroupChat'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5204,7 +5204,7 @@ class WhatsAppApi
      * Get group info
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppGroupChat'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5332,7 +5332,7 @@ class WhatsAppApi
      * Get group info
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppGroupChat'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5354,7 +5354,7 @@ class WhatsAppApi
      * Get group info
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppGroupChat'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5405,7 +5405,7 @@ class WhatsAppApi
      * Create request for operation 'getWhatsAppGroupChat'
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppGroupChat'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5827,7 +5827,7 @@ class WhatsAppApi
      * Get template
      *
      * @param  string $template_name Template name (the family). (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $language Language code of the variant (e.g. en_US, es, pt_BR). Required when the family has several languages. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppTemplate'] to see the possible values for this operation
      *
@@ -5847,7 +5847,7 @@ class WhatsAppApi
      * Get template
      *
      * @param  string $template_name Template name (the family). (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $language Language code of the variant (e.g. en_US, es, pt_BR). Required when the family has several languages. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppTemplate'] to see the possible values for this operation
      *
@@ -5976,7 +5976,7 @@ class WhatsAppApi
      * Get template
      *
      * @param  string $template_name Template name (the family). (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $language Language code of the variant (e.g. en_US, es, pt_BR). Required when the family has several languages. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppTemplate'] to see the possible values for this operation
      *
@@ -5999,7 +5999,7 @@ class WhatsAppApi
      * Get template
      *
      * @param  string $template_name Template name (the family). (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $language Language code of the variant (e.g. en_US, es, pt_BR). Required when the family has several languages. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppTemplate'] to see the possible values for this operation
      *
@@ -6051,7 +6051,7 @@ class WhatsAppApi
      * Create request for operation 'getWhatsAppTemplate'
      *
      * @param  string $template_name Template name (the family). (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $language Language code of the variant (e.g. en_US, es, pt_BR). Required when the family has several languages. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppTemplate'] to see the possible values for this operation
      *
@@ -6177,7 +6177,7 @@ class WhatsAppApi
      * Get template by id
      *
      * @param  string $template_id Meta template id (numeric). (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppTemplateById'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6196,7 +6196,7 @@ class WhatsAppApi
      * Get template by id
      *
      * @param  string $template_id Meta template id (numeric). (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppTemplateById'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6310,7 +6310,7 @@ class WhatsAppApi
      * Get template by id
      *
      * @param  string $template_id Meta template id (numeric). (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppTemplateById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6332,7 +6332,7 @@ class WhatsAppApi
      * Get template by id
      *
      * @param  string $template_id Meta template id (numeric). (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppTemplateById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6383,7 +6383,7 @@ class WhatsAppApi
      * Create request for operation 'getWhatsAppTemplateById'
      *
      * @param  string $template_id Meta template id (numeric). (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppTemplateById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6497,7 +6497,7 @@ class WhatsAppApi
      *
      * List templates
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $name Exact template name; returns every language variant of that family. (optional)
      * @param  string|null $language Exact language code (e.g. en_US). (optional)
      * @param  string|null $status status (optional)
@@ -6518,7 +6518,7 @@ class WhatsAppApi
      *
      * List templates
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $name Exact template name; returns every language variant of that family. (optional)
      * @param  string|null $language Exact language code (e.g. en_US). (optional)
      * @param  string|null $status (optional)
@@ -6620,7 +6620,7 @@ class WhatsAppApi
      *
      * List templates
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $name Exact template name; returns every language variant of that family. (optional)
      * @param  string|null $language Exact language code (e.g. en_US). (optional)
      * @param  string|null $status (optional)
@@ -6644,7 +6644,7 @@ class WhatsAppApi
      *
      * List templates
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $name Exact template name; returns every language variant of that family. (optional)
      * @param  string|null $language Exact language code (e.g. en_US). (optional)
      * @param  string|null $status (optional)
@@ -6697,7 +6697,7 @@ class WhatsAppApi
     /**
      * Create request for operation 'getWhatsAppTemplates'
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string|null $name Exact template name; returns every language variant of that family. (optional)
      * @param  string|null $language Exact language code (e.g. en_US). (optional)
      * @param  string|null $status (optional)
@@ -6829,7 +6829,7 @@ class WhatsAppApi
      *
      * Get business username
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsappBusinessUsername'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6847,7 +6847,7 @@ class WhatsAppApi
      *
      * Get business username
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsappBusinessUsername'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6946,7 +6946,7 @@ class WhatsAppApi
      *
      * Get business username
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsappBusinessUsername'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6967,7 +6967,7 @@ class WhatsAppApi
      *
      * Get business username
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsappBusinessUsername'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7017,7 +7017,7 @@ class WhatsAppApi
     /**
      * Create request for operation 'getWhatsappBusinessUsername'
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsappBusinessUsername'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7116,7 +7116,7 @@ class WhatsAppApi
      *
      * Get username suggestions
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsappBusinessUsernameSuggestions'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7134,7 +7134,7 @@ class WhatsAppApi
      *
      * Get username suggestions
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsappBusinessUsernameSuggestions'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7233,7 +7233,7 @@ class WhatsAppApi
      *
      * Get username suggestions
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsappBusinessUsernameSuggestions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7254,7 +7254,7 @@ class WhatsAppApi
      *
      * Get username suggestions
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsappBusinessUsernameSuggestions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7304,7 +7304,7 @@ class WhatsAppApi
     /**
      * Create request for operation 'getWhatsappBusinessUsernameSuggestions'
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsappBusinessUsernameSuggestions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7403,7 +7403,7 @@ class WhatsAppApi
      *
      * List account notifications
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  int|null $limit Maximum events to return (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppAccountEvents'] to see the possible values for this operation
      *
@@ -7422,7 +7422,7 @@ class WhatsAppApi
      *
      * List account notifications
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  int|null $limit Maximum events to return (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppAccountEvents'] to see the possible values for this operation
      *
@@ -7536,7 +7536,7 @@ class WhatsAppApi
      *
      * List account notifications
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  int|null $limit Maximum events to return (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppAccountEvents'] to see the possible values for this operation
      *
@@ -7558,7 +7558,7 @@ class WhatsAppApi
      *
      * List account notifications
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  int|null $limit Maximum events to return (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppAccountEvents'] to see the possible values for this operation
      *
@@ -7609,7 +7609,7 @@ class WhatsAppApi
     /**
      * Create request for operation 'listWhatsAppAccountEvents'
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  int|null $limit Maximum events to return (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppAccountEvents'] to see the possible values for this operation
      *
@@ -7725,7 +7725,7 @@ class WhatsAppApi
      *
      * List conversion events
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  int|null $limit Max events to return (1-200, default 50). (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppConversions'] to see the possible values for this operation
      *
@@ -7744,7 +7744,7 @@ class WhatsAppApi
      *
      * List conversion events
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  int|null $limit Max events to return (1-200, default 50). (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppConversions'] to see the possible values for this operation
      *
@@ -7844,7 +7844,7 @@ class WhatsAppApi
      *
      * List conversion events
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  int|null $limit Max events to return (1-200, default 50). (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppConversions'] to see the possible values for this operation
      *
@@ -7866,7 +7866,7 @@ class WhatsAppApi
      *
      * List conversion events
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  int|null $limit Max events to return (1-200, default 50). (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppConversions'] to see the possible values for this operation
      *
@@ -7917,7 +7917,7 @@ class WhatsAppApi
     /**
      * Create request for operation 'listWhatsAppConversions'
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  int|null $limit Max events to return (1-200, default 50). (optional, default to 50)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppConversions'] to see the possible values for this operation
      *
@@ -8033,7 +8033,7 @@ class WhatsAppApi
      *
      * List active groups
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  int|null $limit Max groups to return (optional, default to 25)
      * @param  string|null $after Pagination cursor (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppGroupChats'] to see the possible values for this operation
@@ -8053,7 +8053,7 @@ class WhatsAppApi
      *
      * List active groups
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  int|null $limit Max groups to return (optional, default to 25)
      * @param  string|null $after Pagination cursor (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppGroupChats'] to see the possible values for this operation
@@ -8168,7 +8168,7 @@ class WhatsAppApi
      *
      * List active groups
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  int|null $limit Max groups to return (optional, default to 25)
      * @param  string|null $after Pagination cursor (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppGroupChats'] to see the possible values for this operation
@@ -8191,7 +8191,7 @@ class WhatsAppApi
      *
      * List active groups
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  int|null $limit Max groups to return (optional, default to 25)
      * @param  string|null $after Pagination cursor (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppGroupChats'] to see the possible values for this operation
@@ -8243,7 +8243,7 @@ class WhatsAppApi
     /**
      * Create request for operation 'listWhatsAppGroupChats'
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  int|null $limit Max groups to return (optional, default to 25)
      * @param  string|null $after Pagination cursor (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppGroupChats'] to see the possible values for this operation
@@ -8368,7 +8368,7 @@ class WhatsAppApi
      * List join requests
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppGroupJoinRequests'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -8387,7 +8387,7 @@ class WhatsAppApi
      * List join requests
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppGroupJoinRequests'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -8501,7 +8501,7 @@ class WhatsAppApi
      * List join requests
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppGroupJoinRequests'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8523,7 +8523,7 @@ class WhatsAppApi
      * List join requests
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppGroupJoinRequests'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8574,7 +8574,7 @@ class WhatsAppApi
      * Create request for operation 'listWhatsAppGroupJoinRequests'
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppGroupJoinRequests'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8988,7 +8988,7 @@ class WhatsAppApi
      * Reject join requests
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\RejectWhatsAppGroupJoinRequestsRequest $reject_whats_app_group_join_requests_request reject_whats_app_group_join_requests_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rejectWhatsAppGroupJoinRequests'] to see the possible values for this operation
      *
@@ -9008,7 +9008,7 @@ class WhatsAppApi
      * Reject join requests
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\RejectWhatsAppGroupJoinRequestsRequest $reject_whats_app_group_join_requests_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rejectWhatsAppGroupJoinRequests'] to see the possible values for this operation
      *
@@ -9123,7 +9123,7 @@ class WhatsAppApi
      * Reject join requests
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\RejectWhatsAppGroupJoinRequestsRequest $reject_whats_app_group_join_requests_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rejectWhatsAppGroupJoinRequests'] to see the possible values for this operation
      *
@@ -9146,7 +9146,7 @@ class WhatsAppApi
      * Reject join requests
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\RejectWhatsAppGroupJoinRequestsRequest $reject_whats_app_group_join_requests_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rejectWhatsAppGroupJoinRequests'] to see the possible values for this operation
      *
@@ -9198,7 +9198,7 @@ class WhatsAppApi
      * Create request for operation 'rejectWhatsAppGroupJoinRequests'
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\RejectWhatsAppGroupJoinRequestsRequest $reject_whats_app_group_join_requests_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rejectWhatsAppGroupJoinRequests'] to see the possible values for this operation
      *
@@ -9328,7 +9328,7 @@ class WhatsAppApi
      * Remove participants
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\RemoveWhatsAppGroupParticipantsRequest $remove_whats_app_group_participants_request remove_whats_app_group_participants_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeWhatsAppGroupParticipants'] to see the possible values for this operation
      *
@@ -9348,7 +9348,7 @@ class WhatsAppApi
      * Remove participants
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\RemoveWhatsAppGroupParticipantsRequest $remove_whats_app_group_participants_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeWhatsAppGroupParticipants'] to see the possible values for this operation
      *
@@ -9463,7 +9463,7 @@ class WhatsAppApi
      * Remove participants
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\RemoveWhatsAppGroupParticipantsRequest $remove_whats_app_group_participants_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeWhatsAppGroupParticipants'] to see the possible values for this operation
      *
@@ -9486,7 +9486,7 @@ class WhatsAppApi
      * Remove participants
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\RemoveWhatsAppGroupParticipantsRequest $remove_whats_app_group_participants_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeWhatsAppGroupParticipants'] to see the possible values for this operation
      *
@@ -9538,7 +9538,7 @@ class WhatsAppApi
      * Create request for operation 'removeWhatsAppGroupParticipants'
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\RemoveWhatsAppGroupParticipantsRequest $remove_whats_app_group_participants_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeWhatsAppGroupParticipants'] to see the possible values for this operation
      *
@@ -11093,7 +11093,7 @@ class WhatsAppApi
      * Update group settings
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\UpdateWhatsAppGroupChatRequest $update_whats_app_group_chat_request update_whats_app_group_chat_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppGroupChat'] to see the possible values for this operation
      *
@@ -11113,7 +11113,7 @@ class WhatsAppApi
      * Update group settings
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\UpdateWhatsAppGroupChatRequest $update_whats_app_group_chat_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppGroupChat'] to see the possible values for this operation
      *
@@ -11242,7 +11242,7 @@ class WhatsAppApi
      * Update group settings
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\UpdateWhatsAppGroupChatRequest $update_whats_app_group_chat_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppGroupChat'] to see the possible values for this operation
      *
@@ -11265,7 +11265,7 @@ class WhatsAppApi
      * Update group settings
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\UpdateWhatsAppGroupChatRequest $update_whats_app_group_chat_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppGroupChat'] to see the possible values for this operation
      *
@@ -11317,7 +11317,7 @@ class WhatsAppApi
      * Create request for operation 'updateWhatsAppGroupChat'
      *
      * @param  string $group_id Group ID (required)
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \Zernio\Model\UpdateWhatsAppGroupChatRequest $update_whats_app_group_chat_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppGroupChat'] to see the possible values for this operation
      *
@@ -12098,7 +12098,7 @@ class WhatsAppApi
      *
      * Upload profile picture
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \SplFileObject $file Image file (JPEG or PNG, max 5MB, recommended 640x640) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadWhatsAppProfilePhoto'] to see the possible values for this operation
      *
@@ -12117,7 +12117,7 @@ class WhatsAppApi
      *
      * Upload profile picture
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \SplFileObject $file Image file (JPEG or PNG, max 5MB, recommended 640x640) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadWhatsAppProfilePhoto'] to see the possible values for this operation
      *
@@ -12217,7 +12217,7 @@ class WhatsAppApi
      *
      * Upload profile picture
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \SplFileObject $file Image file (JPEG or PNG, max 5MB, recommended 640x640) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadWhatsAppProfilePhoto'] to see the possible values for this operation
      *
@@ -12239,7 +12239,7 @@ class WhatsAppApi
      *
      * Upload profile picture
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \SplFileObject $file Image file (JPEG or PNG, max 5MB, recommended 640x640) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadWhatsAppProfilePhoto'] to see the possible values for this operation
      *
@@ -12290,7 +12290,7 @@ class WhatsAppApi
     /**
      * Create request for operation 'uploadWhatsAppProfilePhoto'
      *
-     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $account_id WhatsApp account ID (required)
      * @param  \SplFileObject $file Image file (JPEG or PNG, max 5MB, recommended 640x640) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadWhatsAppProfilePhoto'] to see the possible values for this operation
      *

@@ -132,7 +132,7 @@ class AdLibraryApi
      * Search the public Ad Library
      *
      * @param  string|null $platform Which archive to search. &#x60;meta&#x60; needs no accountId. Required unless accountId is given. (optional)
-     * @param  string|null $account_id Zernio SocialAccount id. Required for LinkedIn (linkedin / linkedinads: its token searches). Optional for Meta, where any facebook / instagram / metaads account just selects the platform. (optional)
+     * @param  string|null $account_id Zernio SocialAccount id. Required for LinkedIn (linkedin / linkedinads: its token searches). Optional for Meta, where any facebook / instagram / metaads account only selects the platform. (optional)
      * @param  string|null $q Keyword search. Meta does not translate it, so write it in the ads&#39; language. Required unless pageIds (Meta) or advertiser (LinkedIn) is given. (optional)
      * @param  string|null $page_ids Meta only. Comma-separated Facebook Page ids (max 10) whose ads to list. (optional)
      * @param  string|null $advertiser LinkedIn only. Advertiser (Page) name to search. (optional)
@@ -166,7 +166,7 @@ class AdLibraryApi
      * Search the public Ad Library
      *
      * @param  string|null $platform Which archive to search. &#x60;meta&#x60; needs no accountId. Required unless accountId is given. (optional)
-     * @param  string|null $account_id Zernio SocialAccount id. Required for LinkedIn (linkedin / linkedinads: its token searches). Optional for Meta, where any facebook / instagram / metaads account just selects the platform. (optional)
+     * @param  string|null $account_id Zernio SocialAccount id. Required for LinkedIn (linkedin / linkedinads: its token searches). Optional for Meta, where any facebook / instagram / metaads account only selects the platform. (optional)
      * @param  string|null $q Keyword search. Meta does not translate it, so write it in the ads&#39; language. Required unless pageIds (Meta) or advertiser (LinkedIn) is given. (optional)
      * @param  string|null $page_ids Meta only. Comma-separated Facebook Page ids (max 10) whose ads to list. (optional)
      * @param  string|null $advertiser LinkedIn only. Advertiser (Page) name to search. (optional)
@@ -295,7 +295,7 @@ class AdLibraryApi
      * Search the public Ad Library
      *
      * @param  string|null $platform Which archive to search. &#x60;meta&#x60; needs no accountId. Required unless accountId is given. (optional)
-     * @param  string|null $account_id Zernio SocialAccount id. Required for LinkedIn (linkedin / linkedinads: its token searches). Optional for Meta, where any facebook / instagram / metaads account just selects the platform. (optional)
+     * @param  string|null $account_id Zernio SocialAccount id. Required for LinkedIn (linkedin / linkedinads: its token searches). Optional for Meta, where any facebook / instagram / metaads account only selects the platform. (optional)
      * @param  string|null $q Keyword search. Meta does not translate it, so write it in the ads&#39; language. Required unless pageIds (Meta) or advertiser (LinkedIn) is given. (optional)
      * @param  string|null $page_ids Meta only. Comma-separated Facebook Page ids (max 10) whose ads to list. (optional)
      * @param  string|null $advertiser LinkedIn only. Advertiser (Page) name to search. (optional)
@@ -332,7 +332,7 @@ class AdLibraryApi
      * Search the public Ad Library
      *
      * @param  string|null $platform Which archive to search. &#x60;meta&#x60; needs no accountId. Required unless accountId is given. (optional)
-     * @param  string|null $account_id Zernio SocialAccount id. Required for LinkedIn (linkedin / linkedinads: its token searches). Optional for Meta, where any facebook / instagram / metaads account just selects the platform. (optional)
+     * @param  string|null $account_id Zernio SocialAccount id. Required for LinkedIn (linkedin / linkedinads: its token searches). Optional for Meta, where any facebook / instagram / metaads account only selects the platform. (optional)
      * @param  string|null $q Keyword search. Meta does not translate it, so write it in the ads&#39; language. Required unless pageIds (Meta) or advertiser (LinkedIn) is given. (optional)
      * @param  string|null $page_ids Meta only. Comma-separated Facebook Page ids (max 10) whose ads to list. (optional)
      * @param  string|null $advertiser LinkedIn only. Advertiser (Page) name to search. (optional)
@@ -398,7 +398,7 @@ class AdLibraryApi
      * Create request for operation 'searchAdLibrary'
      *
      * @param  string|null $platform Which archive to search. &#x60;meta&#x60; needs no accountId. Required unless accountId is given. (optional)
-     * @param  string|null $account_id Zernio SocialAccount id. Required for LinkedIn (linkedin / linkedinads: its token searches). Optional for Meta, where any facebook / instagram / metaads account just selects the platform. (optional)
+     * @param  string|null $account_id Zernio SocialAccount id. Required for LinkedIn (linkedin / linkedinads: its token searches). Optional for Meta, where any facebook / instagram / metaads account only selects the platform. (optional)
      * @param  string|null $q Keyword search. Meta does not translate it, so write it in the ads&#39; language. Required unless pageIds (Meta) or advertiser (LinkedIn) is given. (optional)
      * @param  string|null $page_ids Meta only. Comma-separated Facebook Page ids (max 10) whose ads to list. (optional)
      * @param  string|null $advertiser LinkedIn only. Advertiser (Page) name to search. (optional)

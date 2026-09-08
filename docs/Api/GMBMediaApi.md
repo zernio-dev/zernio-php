@@ -83,7 +83,7 @@ deleteGoogleBusinessMedia($account_id, $media_id, $location_id): \Zernio\Model\D
 
 Delete photo
 
-Deletes a photo or media item from a GBP location.
+Deletes a photo or media item from a Google Business Profile location.
 
 ### Example
 

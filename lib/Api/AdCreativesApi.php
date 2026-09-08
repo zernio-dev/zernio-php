@@ -2302,7 +2302,7 @@ class AdCreativesApi
      * List a catalog&#39;s product sets
      *
      * @param  string $catalog_id Meta product catalog ID (from GET /v1/ads/catalogs) (required)
-     * @param  string $account_id A facebook, instagram, or metaads social account ID (required)
+     * @param  string $account_id A facebook, instagram, or metaads account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdCatalogProductSets'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2321,7 +2321,7 @@ class AdCreativesApi
      * List a catalog&#39;s product sets
      *
      * @param  string $catalog_id Meta product catalog ID (from GET /v1/ads/catalogs) (required)
-     * @param  string $account_id A facebook, instagram, or metaads social account ID (required)
+     * @param  string $account_id A facebook, instagram, or metaads account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdCatalogProductSets'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2435,7 +2435,7 @@ class AdCreativesApi
      * List a catalog&#39;s product sets
      *
      * @param  string $catalog_id Meta product catalog ID (from GET /v1/ads/catalogs) (required)
-     * @param  string $account_id A facebook, instagram, or metaads social account ID (required)
+     * @param  string $account_id A facebook, instagram, or metaads account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdCatalogProductSets'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2457,7 +2457,7 @@ class AdCreativesApi
      * List a catalog&#39;s product sets
      *
      * @param  string $catalog_id Meta product catalog ID (from GET /v1/ads/catalogs) (required)
-     * @param  string $account_id A facebook, instagram, or metaads social account ID (required)
+     * @param  string $account_id A facebook, instagram, or metaads account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdCatalogProductSets'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2508,7 +2508,7 @@ class AdCreativesApi
      * Create request for operation 'listAdCatalogProductSets'
      *
      * @param  string $catalog_id Meta product catalog ID (from GET /v1/ads/catalogs) (required)
-     * @param  string $account_id A facebook, instagram, or metaads social account ID (required)
+     * @param  string $account_id A facebook, instagram, or metaads account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdCatalogProductSets'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2622,7 +2622,7 @@ class AdCreativesApi
      *
      * List Meta product catalogs
      *
-     * @param  string $account_id A facebook, instagram, or metaads social account ID (required)
+     * @param  string $account_id A facebook, instagram, or metaads account ID (required)
      * @param  string $ad_account_id Meta ad account ID (act_...) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdCatalogs'] to see the possible values for this operation
      *
@@ -2641,7 +2641,7 @@ class AdCreativesApi
      *
      * List Meta product catalogs
      *
-     * @param  string $account_id A facebook, instagram, or metaads social account ID (required)
+     * @param  string $account_id A facebook, instagram, or metaads account ID (required)
      * @param  string $ad_account_id Meta ad account ID (act_...) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdCatalogs'] to see the possible values for this operation
      *
@@ -2755,7 +2755,7 @@ class AdCreativesApi
      *
      * List Meta product catalogs
      *
-     * @param  string $account_id A facebook, instagram, or metaads social account ID (required)
+     * @param  string $account_id A facebook, instagram, or metaads account ID (required)
      * @param  string $ad_account_id Meta ad account ID (act_...) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdCatalogs'] to see the possible values for this operation
      *
@@ -2777,7 +2777,7 @@ class AdCreativesApi
      *
      * List Meta product catalogs
      *
-     * @param  string $account_id A facebook, instagram, or metaads social account ID (required)
+     * @param  string $account_id A facebook, instagram, or metaads account ID (required)
      * @param  string $ad_account_id Meta ad account ID (act_...) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdCatalogs'] to see the possible values for this operation
      *
@@ -2828,7 +2828,7 @@ class AdCreativesApi
     /**
      * Create request for operation 'listAdCatalogs'
      *
-     * @param  string $account_id A facebook, instagram, or metaads social account ID (required)
+     * @param  string $account_id A facebook, instagram, or metaads account ID (required)
      * @param  string $ad_account_id Meta ad account ID (act_...) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdCatalogs'] to see the possible values for this operation
      *

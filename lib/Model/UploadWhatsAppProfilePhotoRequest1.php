@@ -316,7 +316,7 @@ class UploadWhatsAppProfilePhotoRequest1 implements ModelInterface, ArrayAccess,
     /**
      * Sets account_id
      *
-     * @param string $account_id WhatsApp social account ID
+     * @param string $account_id WhatsApp account ID
      *
      * @return self
      */

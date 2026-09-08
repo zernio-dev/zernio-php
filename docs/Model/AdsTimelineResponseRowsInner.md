@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **reach** | **int** | Reach summed across the account&#39;s ads for this single day. A person seen by two ads the same day counts twice, and reach is de-duplicated per day only: do NOT sum it across days (people reached on multiple days would be double-counted). | [optional]
 **clicks** | **int** |  | [optional]
 **engagement** | **int** |  | [optional]
-**ctr** | **float** | Click-through rate as a percentage (0–100). | [optional]
+**ctr** | **float** | Click-through rate as a percentage (0 to 100). | [optional]
 **cpc** | **float** | Cost per click in native currency. | [optional]
 **cpm** | **float** | Cost per 1000 impressions in native currency. | [optional]
 **conversions** | **float** | Sum of conversion events over the range. Fractional values are normal (attribution splitting + Google modeled conversions). Meta: events matching the campaign optimization goal. Google: tracked conversions. X / LinkedIn: reported website/lead conversions (added 2026-07). | [optional]

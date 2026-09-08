@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * WebhookPayloadComment Class Doc Comment
  *
  * @category Class
- * @description Webhook payload for comment received events (Instagram, Facebook, Twitter/X, YouTube, LinkedIn, Bluesky, Reddit)
+ * @description Webhook payload for comment received events (Instagram, Facebook, X, YouTube, LinkedIn, Bluesky, Reddit)
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * BillingSnapshot Class Doc Comment
  *
  * @category Class
- * @description Account billing state — plan, cycle, balance, spend caps, and payment / access status. Returned by &#x60;GET /v1/billing&#x60;.
+ * @description Account billing state: plan, cycle, balance, spend caps, and payment / access status. Returned by &#x60;GET /v1/billing&#x60;.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

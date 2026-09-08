@@ -530,7 +530,7 @@ getWhatsAppCalling($id): \Zernio\Model\GetWhatsAppCalling200Response
 
 Get calling config for a number
 
-The WhatsApp Business Calling configuration of this number, keyed the same way as the POST/PATCH/DELETE below (full read-write on one sub-resource). Encrypted secrets are never returned; only a boolean saying whether a SIP password is stored. The account-scoped read (`GET /v1/whatsapp/calling?accountId=`) remains for callers that only know the social account id, and additionally carries account-level extras (billing eligibility, current-period spend).
+The WhatsApp Business Calling configuration of this number, keyed the same way as the POST/PATCH/DELETE below (full read-write on one sub-resource). Encrypted secrets are never returned; only a boolean saying whether a SIP password is stored. The account-scoped read (`GET /v1/whatsapp/calling?accountId=`) remains for callers that only know the account id, and additionally carries account-level extras (billing eligibility, current-period spend).
 
 ### Example
 
@@ -609,7 +609,7 @@ $apiInstance = new Zernio\Api\WhatsAppCallingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | WhatsApp social account ID
+$account_id = 'account_id_example'; // string | WhatsApp account ID
 
 try {
     $result = $apiInstance->getWhatsAppCallingConfig($account_id);
@@ -623,7 +623,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| WhatsApp social account ID | |
+| **account_id** | **string**| WhatsApp account ID | |
 
 ### Return type
 

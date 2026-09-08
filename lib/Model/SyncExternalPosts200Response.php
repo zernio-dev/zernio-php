@@ -351,7 +351,7 @@ class SyncExternalPosts200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets found
      *
-     * @param bool|null $found Present only when a locator (`url`/`postId`) was provided — whether the post was found.
+     * @param bool|null $found Present only when a locator (`url`/`postId`) was provided: whether the post was found.
      *
      * @return self
      */

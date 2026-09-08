@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**account_id** | **string** | WhatsApp social account ID |
+**account_id** | **string** | WhatsApp account ID |
 **name** | **string** | Flow display name |
 **categories** | **string[]** | Flow categories |
 **clone_flow_id** | **string** | Optional: ID of an existing flow to clone the Flow JSON from | [optional]

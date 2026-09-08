@@ -805,7 +805,7 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets multi_advertiser
      *
-     * @param string|null $multi_advertiser Meta only. Multi-advertiser ads: whether Meta may show this ad alongside other advertisers' in one unit. Meta auto-enrols since Aug 2024, so send OPT_OUT to leave. It is a top-level creative field, NOT a `creativeFeatures` key — Meta rejects it there.
+     * @param string|null $multi_advertiser Meta only. Multi-advertiser ads: whether Meta may show this ad alongside other advertisers' in one unit. Meta auto-enrols since Aug 2024, so send OPT_OUT to leave. It is a top-level creative field, NOT a `creativeFeatures` key, and Meta rejects it there.
      *
      * @return self
      */

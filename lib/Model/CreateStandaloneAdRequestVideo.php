@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * CreateStandaloneAdRequestVideo Class Doc Comment
  *
  * @category Class
- * @description Meta (facebook, instagram) and LinkedIn. Creates a single VIDEO ad. Mutually exclusive with &#x60;imageUrl&#x60;. Supply &#x60;url&#x60; to upload a file, or &#x60;id&#x60; to reuse a video already on the ad account (list them with GET /v1/ads/videos). Works on the single-ad and attach (&#x60;adSetId&#x60;) shapes; for Meta multi-creative, set &#x60;video&#x60; per entry inside &#x60;creatives[]&#x60; instead. For LinkedIn the video is uploaded to LinkedIn under the authoring Company Page (see &#x60;organizationId&#x60;) and the campaign format is set to SINGLE_VIDEO; LinkedIn ignores &#x60;thumbnailUrl&#x60; (it auto-generates the poster frame) — supply MP4 H.264/AAC, 3s-30min, 75KB-500MB.
+ * @description Meta (facebook, instagram) and LinkedIn. Creates a single VIDEO ad. Mutually exclusive with &#x60;imageUrl&#x60;. Supply &#x60;url&#x60; to upload a file, or &#x60;id&#x60; to reuse a video already on the ad account (list them with GET /v1/ads/videos). Works on the single-ad and attach (&#x60;adSetId&#x60;) shapes; for Meta multi-creative, set &#x60;video&#x60; per entry inside &#x60;creatives[]&#x60; instead. For LinkedIn the video is uploaded to LinkedIn under the authoring Company Page (see &#x60;organizationId&#x60;) and the campaign format is set to SINGLE_VIDEO; LinkedIn ignores &#x60;thumbnailUrl&#x60; (it auto-generates the poster frame). Supply MP4 H.264/AAC, 3s-30min, 75KB-500MB.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -318,7 +318,7 @@ class CreateStandaloneAdRequestVideo implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets url
      *
-     * @param string|null $url Public URL of the video. Meta: uploaded via chunked transfer on /act_X/advideos, then the request blocks on Meta's transcoding until status.video_status === 'ready'. LinkedIn: uploaded via the Videos API (multipart), then the request blocks until LinkedIn finishes transcoding (status AVAILABLE) — short clips take ~10-30s. Provide either `url` or `id`.
+     * @param string|null $url Public URL of the video. Meta: uploaded via chunked transfer on /act_X/advideos, then the request blocks on Meta's transcoding until status.video_status === 'ready'. LinkedIn: uploaded via the Videos API (multipart), then the request blocks until LinkedIn finishes transcoding (status AVAILABLE); short clips take ~10-30s. Provide either `url` or `id`.
      *
      * @return self
      */
@@ -372,7 +372,7 @@ class CreateStandaloneAdRequestVideo implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets thumbnail_url
      *
-     * @param string|null $thumbnail_url Public URL of a still-image thumbnail for the video. OPTIONAL: when omitted on Meta, the poster is auto-generated from Meta's own preferred video thumbnail (the same candidates Ads Manager shows), so video ads usually publish without supplying one. When Meta produces no candidate the request fails with a 502 platform_error (reason: video_thumbnail_unavailable) — retry, or supply this field. Provide it to control the poster frame exactly (uploaded as an ad image and referenced in object_story_spec.video_data). Ignored by LinkedIn (auto-generated poster frame).
+     * @param string|null $thumbnail_url Public URL of a still-image thumbnail for the video. OPTIONAL: when omitted on Meta, the poster is auto-generated from Meta's own preferred video thumbnail (the same candidates Ads Manager shows), so video ads usually publish without supplying one. When Meta produces no candidate the request fails with a 502 platform_error (reason: video_thumbnail_unavailable). Retry, or supply this field. Provide it to control the poster frame exactly (uploaded as an ad image and referenced in object_story_spec.video_data). Ignored by LinkedIn (auto-generated poster frame).
      *
      * @return self
      */

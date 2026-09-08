@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * GetInboxPostComments200ResponseMetaAdComments Class Doc Comment
  *
  * @category Class
- * @description (Facebook/Instagram only) Present when this post has no organic comments but is a boosted post — the engagement lives on the ad. Use the ad-comments endpoint instead.
+ * @description (Facebook/Instagram only) Present when this post has no organic comments but is a boosted post: the engagement lives on the ad. Use the ad-comments endpoint instead.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

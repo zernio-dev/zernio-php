@@ -1,6 +1,6 @@
 # Zernio\InstagramApi
 
-Instagram-specific read endpoints: list a connected account&#39;s Stories and fetch per-Story insights. All endpoints require an accountId parameter identifying the Instagram-connected social account.
+Instagram-specific read endpoints: list a connected account&#39;s Stories and fetch per-Story insights. All endpoints require an accountId parameter identifying the Instagram-connected account.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
@@ -143,7 +143,7 @@ getInstagramStoryInsights($account_id, $story_id): \Zernio\Model\GetInstagramSto
 
 Get Instagram story insights
 
-Returns metrics for a single story. The `source` field discriminates between three states:  - `live` — fetched from Meta in real time (story is still active) - `cached` — fetched from a persisted `story_insights` webhook payload   (story has expired but we received its final-state metrics from Meta) - `unavailable` — story has expired and we never received its webhook   payload (for example, the account connected after the story expired)  Meta can report an expired story as an empty successful result rather than an error, so an expired story resolves to `cached` or `unavailable` even though the upstream request itself succeeded.  Field semantics follow Meta's API. Counts below 5 may be returned as 0 due to Meta's privacy floor on small audiences. The `navigation` field is the sum of `tapsForward + tapsBack + exits + swipesForward`.
+Returns metrics for a single story. The `source` field discriminates between three states:  - `live`: fetched from Meta in real time (story is still active) - `cached`: fetched from a persisted `story_insights` webhook payload   (story has expired but we received its final-state metrics from Meta) - `unavailable`: story has expired and we never received its webhook   payload (for example, the account connected after the story expired)  Meta can report an expired story as an empty successful result rather than an error, so an expired story resolves to `cached` or `unavailable` even though the upstream request itself succeeded.  Field semantics follow Meta's API. Counts below 5 may be returned as 0 due to Meta's privacy floor on small audiences. The `navigation` field is the sum of `tapsForward + tapsBack + exits + swipesForward`.
 
 ### Example
 

@@ -18,7 +18,7 @@ getGoogleBusinessFoodMenus($account_id, $location_id): \Zernio\Model\GetGoogleBu
 
 Get food menus
 
-Returns food menus for a GBP location including sections, items, pricing, and dietary info. Only for locations with food menu support.
+Returns food menus for a Google Business Profile location including sections, items, pricing, and dietary info. Only for locations with food menu support.
 
 ### Example
 
@@ -80,7 +80,7 @@ updateGoogleBusinessFoodMenus($account_id, $update_google_business_food_menus_re
 
 Update food menus
 
-Updates food menus for a GBP location. Send the full menus array. Use updateMask for partial updates.
+Updates food menus for a Google Business Profile location. Send the full menus array. Use updateMask for partial updates.
 
 ### Example
 

@@ -365,7 +365,7 @@ class XApiOperationTriggeredByInner implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets metering
      *
-     * @param string|null $metering When the method actually bills the user:   * `always` — every call is metered   * `analytics_optin` — only when the X account has analytics enabled   * `inbox_optin` — only when the X account has inbox sync enabled   * `absorbed` — Zernio eats the cost, never billed
+     * @param string|null $metering When the method actually bills the user:   * `always`: every call is metered   * `analytics_optin`: only when the X account has analytics enabled   * `inbox_optin`: only when the X account has inbox sync enabled   * `absorbed`: Zernio eats the cost, never billed
      *
      * @return self
      */

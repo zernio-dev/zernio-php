@@ -344,7 +344,7 @@ class ConnectWhatsAppEmbeddedSignupRequest implements ModelInterface, ArrayAcces
     /**
      * Sets code
      *
-     * @param string $code Authorization code from the WA_EMBEDDED_SIGNUP postMessage
+     * @param string $code Authorization code from the FB.login response (authResponse.code)
      *
      * @return self
      */
@@ -398,7 +398,7 @@ class ConnectWhatsAppEmbeddedSignupRequest implements ModelInterface, ArrayAcces
     /**
      * Sets waba_id
      *
-     * @param string|null $waba_id WhatsApp Business Account id, when the SDK reported one
+     * @param string|null $waba_id waba_id from the WA_EMBEDDED_SIGNUP message event
      *
      * @return self
      */
@@ -425,7 +425,7 @@ class ConnectWhatsAppEmbeddedSignupRequest implements ModelInterface, ArrayAcces
     /**
      * Sets phone_number_id
      *
-     * @param string|null $phone_number_id phone_number_id
+     * @param string|null $phone_number_id phone_number_id from the WA_EMBEDDED_SIGNUP message event. With wabaId it skips the number picker.
      *
      * @return self
      */
@@ -452,7 +452,7 @@ class ConnectWhatsAppEmbeddedSignupRequest implements ModelInterface, ArrayAcces
     /**
      * Sets is_coexistence
      *
-     * @param bool|null $is_coexistence Number is also live in the WhatsApp Business app
+     * @param bool|null $is_coexistence Set when the popup ended with the FINISH_WHATSAPP_BUSINESS_APP_ONBOARDING event, so the number stays live in the WhatsApp Business app
      *
      * @return self
      */

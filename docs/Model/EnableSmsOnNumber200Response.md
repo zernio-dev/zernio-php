@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **enabled** | **bool** |  | [optional]
-**id** | **string** | The SMS social account ID (present when enabled). | [optional]
+**id** | **string** | The SMS account ID (present when enabled). | [optional]
 **phone_number** | **string** |  | [optional]
 **is_active** | **bool** | False for US numbers until their registration is approved. | [optional]
 **country** | **string** |  | [optional]

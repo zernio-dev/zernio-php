@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **currency** | **string** |  | [optional]
-**markup** | **string** | Always 0% — Zernio does not mark up X API rates. | [optional]
+**markup** | **string** | Always 0%, because Zernio does not mark up X API rates. | [optional]
 **source** | **string** |  | [optional]
 **last_verified** | **\DateTime** | Date the prices were last verified against X&#39;s published rates. | [optional]
 **tiers** | [**\Zernio\Model\XApiPricingTiersInner[]**](XApiPricingTiersInner.md) | Rollup of operations grouped by their per-call price. | [optional]

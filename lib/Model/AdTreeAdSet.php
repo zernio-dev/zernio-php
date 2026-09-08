@@ -497,7 +497,7 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created_time
      *
-     * @param \DateTime|null $created_time Earliest `platformCreatedAt` (platform ad creation time; falls back to `createdAt`, Zernio's sync time, for ads synced before that field existed) across this ad set's ads. Not the ad set's own creation time on the platform — a proxy usable for sorting.
+     * @param \DateTime|null $created_time Earliest `platformCreatedAt` (platform ad creation time; falls back to `createdAt`, Zernio's sync time, for ads synced before that field existed) across this ad set's ads. Not the ad set's own creation time on the platform, but a proxy usable for sorting.
      *
      * @return self
      */

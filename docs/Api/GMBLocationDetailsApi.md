@@ -18,7 +18,7 @@ getGoogleBusinessLocationDetails($account_id, $location_id, $read_mask): \Zernio
 
 Get location details
 
-Returns detailed GBP location info (hours, description, phone, website, categories, services). Use readMask to request specific fields.
+Returns detailed Google Business Profile location info (hours, description, phone, website, categories, services). Use readMask to request specific fields.
 
 ### Example
 
@@ -82,7 +82,7 @@ updateGoogleBusinessLocationDetails($account_id, $update_google_business_locatio
 
 Update location details
 
-Updates GBP location details. The updateMask field is required and specifies which fields to update. This endpoint proxies Google's Business Information API locations.patch, so any valid updateMask field is supported. Common fields: regularHours, specialHours, profile.description, websiteUri, phoneNumbers, categories, serviceItems.
+Updates Google Business Profile location details. The updateMask field is required and specifies which fields to update. This endpoint proxies Google's Business Information API locations.patch, so any valid updateMask field is supported. Common fields: regularHours, specialHours, profile.description, websiteUri, phoneNumbers, categories, serviceItems.
 
 ### Example
 

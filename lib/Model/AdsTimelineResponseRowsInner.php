@@ -570,7 +570,7 @@ class AdsTimelineResponseRowsInner implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets ctr
      *
-     * @param float|null $ctr Click-through rate as a percentage (0–100).
+     * @param float|null $ctr Click-through rate as a percentage (0 to 100).
      *
      * @return self
      */

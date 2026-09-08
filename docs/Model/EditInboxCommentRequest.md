@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**account_id** | **string** | The social account ID |
+**account_id** | **string** | The account ID |
 **platform** | **string** | Only Reddit supports editing a comment |
 **content** | **string** | The new comment body |
 

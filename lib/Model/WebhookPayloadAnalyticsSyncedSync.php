@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * WebhookPayloadAnalyticsSyncedSync Class Doc Comment
  *
  * @category Class
- * @description Summary of the analytics sync cycle that just completed.
+ * @description Summary of the analytics sync cycle that completed.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

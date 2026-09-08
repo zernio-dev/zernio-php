@@ -16,6 +16,6 @@ Name | Type | Description | Notes
 **carousel_cards** | [**\Zernio\Model\CreateAdCreativeRequestCarouselCardsInner[]**](CreateAdCreativeRequestCarouselCardsInner.md) |  | [optional]
 **url_tags** | **string** | Appended to every outbound URL (e.g. utm_source&#x3D;fb). | [optional]
 **creative_features** | **array<string,string>** | Advantage+ creative enhancements: partial map of Meta creative feature keys (snake_case) to enroll status, forwarded as degrees_of_freedom_spec.creative_features_spec. Unspecified features default to OPT_OUT. | [optional]
-**multi_advertiser** | **string** | Meta only. Multi-advertiser ads: whether Meta may show this ad alongside other advertisers&#39; in one unit. Meta auto-enrols since Aug 2024, so send OPT_OUT to leave. It is a top-level creative field, NOT a &#x60;creativeFeatures&#x60; key — Meta rejects it there. | [optional]
+**multi_advertiser** | **string** | Meta only. Multi-advertiser ads: whether Meta may show this ad alongside other advertisers&#39; in one unit. Meta auto-enrols since Aug 2024, so send OPT_OUT to leave. It is a top-level creative field, NOT a &#x60;creativeFeatures&#x60; key, and Meta rejects it there. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

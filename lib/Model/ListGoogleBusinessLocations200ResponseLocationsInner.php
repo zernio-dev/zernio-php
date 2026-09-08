@@ -399,7 +399,7 @@ class ListGoogleBusinessLocations200ResponseLocationsInner implements ModelInter
     /**
      * Sets account_id
      *
-     * @param string|null $account_id Google Business Account ID
+     * @param string|null $account_id Google Business Profile Account ID
      *
      * @return self
      */

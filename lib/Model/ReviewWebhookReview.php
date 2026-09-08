@@ -404,7 +404,7 @@ class ReviewWebhookReview implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets id
      *
-     * @param string $id Platform review ID (e.g. \"accounts/123/locations/456/reviews/789\" for Google Business).
+     * @param string $id Platform review ID (e.g. \"accounts/123/locations/456/reviews/789\" for Google Business Profile).
      *
      * @return self
      */

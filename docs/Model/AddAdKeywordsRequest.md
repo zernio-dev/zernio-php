@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**account_id** | **string** | Social account ID (Google Ads) |
+**account_id** | **string** | Account ID (Google Ads) |
 **ad_set_id** | **string** | Google ad group ID to add the keywords to |
 **keywords** | [**\Zernio\Model\AddAdKeywordsRequestKeywordsInner[]**](AddAdKeywordsRequestKeywordsInner.md) |  |
 **negative** | **bool** | Add as ad-group-level negatives instead of positive keywords | [optional] [default to false]

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **string** |  |
-**account_id** | **string** | Social account ID on the target ad platform. |
+**account_id** | **string** | Account ID on the target ad platform. |
 **name** | **string** |  |
 **description** | **string** |  | [optional]
 **spec** | [**\ZernioModelTargetingSpec**](\ZernioModelTargetingSpec.md) | The targeting spec to store. |

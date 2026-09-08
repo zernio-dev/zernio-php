@@ -804,7 +804,7 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     /**
      * Sets sender_verified_type
      *
-     * @param string|null $sender_verified_type X/Twitter verified badge type. Only present for Twitter/X messages.
+     * @param string|null $sender_verified_type X verified badge type. Only present for X messages.
      *
      * @return self
      */

@@ -84,7 +84,7 @@ deleteGoogleBusinessPlaceAction($account_id, $name, $location_id): \Zernio\Model
 
 Delete action link
 
-Deletes a place action link (e.g. booking or ordering URL) from a GBP location.
+Deletes a place action link (e.g. booking or ordering URL) from a Google Business Profile location.
 
 ### Example
 

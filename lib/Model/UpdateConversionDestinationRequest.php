@@ -528,7 +528,7 @@ class UpdateConversionDestinationRequest implements ModelInterface, ArrayAccess,
     /**
      * Sets enabled
      *
-     * @param bool|null $enabled Setting `false` is equivalent to calling DELETE — the rule will appear as `inactive` afterwards.
+     * @param bool|null $enabled Setting `false` is equivalent to calling DELETE: the rule will appear as `inactive` afterwards.
      *
      * @return self
      */

@@ -1,6 +1,6 @@
 # Zernio\MessagesApi
 
-Unified inbox API for managing conversations and direct messages across all connected accounts. All endpoints aggregate data from multiple social accounts in a single API call. Requires Inbox addon.
+Unified inbox API for managing conversations and direct messages across all connected accounts. All endpoints aggregate data from multiple accounts in a single API call. Requires Inbox addon.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
@@ -19,6 +19,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**searchInboxConversations()**](MessagesApi.md#searchInboxConversations) | **GET** /v1/inbox/conversations/search | Search conversations |
 | [**sendInboxMessage()**](MessagesApi.md#sendInboxMessage) | **POST** /v1/inbox/conversations/{conversationId}/messages | Send message |
 | [**sendTypingIndicator()**](MessagesApi.md#sendTypingIndicator) | **POST** /v1/inbox/conversations/{conversationId}/typing | Send typing indicator |
+| [**setConversationThreadControl()**](MessagesApi.md#setConversationThreadControl) | **POST** /v1/inbox/conversations/{conversationId}/thread-control | Hand a conversation to or from Meta Business Agent |
 | [**updateInboxConversation()**](MessagesApi.md#updateInboxConversation) | **PUT** /v1/inbox/conversations/{conversationId} | Update conversation status |
 | [**uploadMediaDirect()**](MessagesApi.md#uploadMediaDirect) | **POST** /v1/media/upload-direct | Upload media file |
 
@@ -95,7 +96,7 @@ createInboxConversation($create_inbox_conversation_request): \Zernio\Model\Creat
 
 Create conversation
 
-Initiate a new direct message conversation with a specified user. If a conversation already exists with the recipient, the message is added to the existing thread.  Supported platforms: X/Twitter, Bluesky, Reddit, WhatsApp, SMS, and Slack. Other platforms return PLATFORM_NOT_SUPPORTED.  Slack: pass a workspace member id as participantId (list them with GET /v1/accounts/{accountId}/slack-members). Zernio opens the DM channel with that member and sends the message; the thread then behaves like any other Slack conversation in the inbox. The member must belong to the connected workspace.  WhatsApp: this is the endpoint for sending an approved template message to a phone number. Provide templateName, templateLanguage, and templateParams (variable values for the text header, body and dynamic URL buttons, in that order), with the recipient phone in participantId. A template is required because WhatsApp does not permit freeform messages to open a conversation; a missing template returns TEMPLATE_REQUIRED. Templates with media headers (image, video, document) are handled automatically: Zernio reads the approved template definition and fills the header at send time with the template's approved sample asset. To send a DIFFERENT asset per message (e.g. a distinct invoice PDF for each recipient), pass the headerMedia field with a public link (or a Meta media id); it overrides the sample for that send. A template whose approved header format is LOCATION has no header asset to reconstruct at all: Meta only accepts the location at send time, so pass headerLocation (latitude and longitude required) whenever such a template is sent; headerMedia and headerLocation cannot both be supplied. A button that carries its own value at send time (a copy-code button holding a Pix payment code or a coupon, a flow token) is sent with templateButtonParams, addressed by the button's index; templateParams covers text variables and dynamic URL buttons only. Calling this for a number you already have a thread with simply sends the template into that thread, which also makes it the way to re-engage a contact after the 24-hour customer-service window has closed. Once the recipient replies (opening the 24h window), send freeform messages with the send-message endpoint (POST /v1/inbox/conversations/{conversationId}/messages). Template fields are accepted on the JSON body only, not on multipart requests. Alternatively, WhatsApp Business Accounts eligible for Meta Direct Send can open a conversation with a business-initiated utility text message and no template: pass category: 'utility' together with message (and no templateName). See the category field below.  DM eligibility (X/Twitter): Before sending, the endpoint checks if the recipient accepts DMs from your account (via the receives_your_dm field). If not, a 422 error with code DM_NOT_ALLOWED is returned. You can skip this check with skipDmCheck: true if you have already verified eligibility.  X API tier requirement: DM write endpoints require X API Pro tier ($5,000/month) or Enterprise access. This applies to BYOK (Bring Your Own Key) users who provide their own X API credentials.  Rate limits (X/Twitter only): X's DM API enforces 200 requests per 15 minutes, 1,000 per 24 hours per connected X account, and 15,000 per 24 hours per X developer app (shared across all DM endpoints). These limits do NOT apply to other platforms. WhatsApp sends are governed by Meta's per-number messaging tiers (unique business-initiated conversations per 24 hours) and per-number throughput instead.
+Start a direct message conversation with a user. If a conversation with that recipient already exists, the message is added to the existing thread.  Supported platforms: X, Bluesky, Reddit, WhatsApp, SMS, and Slack. Other platforms return PLATFORM_NOT_SUPPORTED.  **Slack.** Pass a workspace member id as participantId (list them with GET /v1/accounts/{accountId}/slack-members). Zernio opens the DM channel with that member and sends the message; the thread then behaves like any other Slack conversation in the inbox. The member must belong to the connected workspace.  **WhatsApp.** This is the endpoint for sending an approved template message to a phone number. Provide templateName, templateLanguage, and templateParams (variable values for the text header, body and dynamic URL buttons, in that order), with the recipient phone in participantId. A template is required because WhatsApp does not permit freeform messages to open a conversation; a missing template returns TEMPLATE_REQUIRED.  - Templates with media headers (image, video, document) are handled automatically: Zernio reads the approved template definition and fills the header at send time with the template's approved sample asset. To send a DIFFERENT asset per message (e.g. a distinct invoice PDF for each recipient), pass the headerMedia field with a public link (or a Meta media id); it overrides the sample for that send. - A template whose approved header format is LOCATION has no header asset to reconstruct at all: Meta only accepts the location at send time, so pass headerLocation (latitude and longitude required) whenever such a template is sent; headerMedia and headerLocation cannot both be supplied. - A button that carries its own value at send time (a copy-code button holding a Pix payment code or a coupon, a flow token) is sent with templateButtonParams, addressed by the button's index; templateParams covers text variables and dynamic URL buttons only. - Template fields are accepted on the JSON body only, not on multipart requests.  For a number you already have a thread with, this sends the template into that thread, which also makes it the way to re-engage a contact after the 24-hour customer-service window has closed. Once the recipient replies (opening the 24h window), send freeform messages with the send-message endpoint (POST /v1/inbox/conversations/{conversationId}/messages).  Alternatively, WhatsApp Business Accounts eligible for Meta Direct Send can open a conversation with a business-initiated utility text message and no template: pass category: 'utility' together with message (and no templateName). See the category field below.  **DM eligibility (X).** Before sending, the endpoint checks if the recipient accepts DMs from your account (via the receives_your_dm field). If not, a 422 error with code DM_NOT_ALLOWED is returned. You can skip this check with skipDmCheck: true if you have already verified eligibility.  **X API tier requirement.** DM write endpoints require X API Pro tier ($5,000/month) or Enterprise access. This applies to BYOK (Bring Your Own Key) users who provide their own X API credentials.  **Rate limits (X only).** X's DM API enforces 200 requests per 15 minutes, 1,000 per 24 hours per connected X account, and 15,000 per 24 hours per X developer app (shared across all DM endpoints). These limits do NOT apply to other platforms. WhatsApp sends are governed by Meta's per-number messaging tiers (unique business-initiated conversations per 24 hours) and per-number throughput instead.
 
 ### Example
 
@@ -155,7 +156,7 @@ deleteInboxMessage($conversation_id, $message_id, $account_id): \Zernio\Model\Up
 
 Delete message
 
-Delete a message from a conversation. Platform support varies: - Telegram: Full delete (bot's own messages anytime, others if admin) - X/Twitter: Full delete (own DM events only) - Bluesky: Delete for self only (recipient still sees it) - Reddit: Delete from sender's view only - Facebook, Instagram, WhatsApp: Not supported (returns 400)
+Delete a message from a conversation. Platform support varies: - Telegram: Full delete (bot's own messages anytime, others if admin) - X: Full delete (own DM events only) - Bluesky: Delete for self only (recipient still sees it) - Reddit: Delete from sender's view only - Facebook, Instagram, WhatsApp: Not supported (returns 400)
 
 ### Example
 
@@ -176,7 +177,7 @@ $apiInstance = new Zernio\Api\MessagesApi(
 );
 $conversation_id = 'conversation_id_example'; // string | The conversation ID
 $message_id = 'message_id_example'; // string | The platform message ID to delete
-$account_id = 'account_id_example'; // string | Social account ID
+$account_id = 'account_id_example'; // string | Account ID
 
 try {
     $result = $apiInstance->deleteInboxMessage($conversation_id, $message_id, $account_id);
@@ -192,7 +193,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **conversation_id** | **string**| The conversation ID | |
 | **message_id** | **string**| The platform message ID to delete | |
-| **account_id** | **string**| Social account ID | |
+| **account_id** | **string**| Account ID | |
 
 ### Return type
 
@@ -303,7 +304,7 @@ $apiInstance = new Zernio\Api\MessagesApi(
     $config
 );
 $conversation_id = 'conversation_id_example'; // string | Opaque conversation identifier, accepted verbatim from the list endpoint or from the conversationId on inbox webhooks. Format not to be assumed.
-$account_id = 'account_id_example'; // string | The social account ID
+$account_id = 'account_id_example'; // string | The account ID
 
 try {
     $result = $apiInstance->getInboxConversation($conversation_id, $account_id);
@@ -318,7 +319,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **conversation_id** | **string**| Opaque conversation identifier, accepted verbatim from the list endpoint or from the conversationId on inbox webhooks. Format not to be assumed. | |
-| **account_id** | **string**| The social account ID | |
+| **account_id** | **string**| The account ID | |
 
 ### Return type
 
@@ -345,7 +346,7 @@ getInboxConversationMessages($conversation_id, $account_id, $limit, $cursor, $so
 
 List messages
 
-Fetch messages for a specific conversation, with cursor-based pagination and ordering control.  Pagination: pass `pagination.nextCursor` from a prior response back as the `cursor` query param to fetch the next page. The cursor is opaque; do not parse or construct it client-side.  Sort order: defaults to `asc` (oldest first, chat style). For the \"show me the latest messages\" pattern, pass `?sortOrder=desc&limit=N`. Twitter, Instagram, Telegram, WhatsApp and Reddit honor the requested order from the local message store. For Facebook and Bluesky, the upstream APIs only return newest-first and have no order parameter — sort order is best-effort and only reverses items within a single page (pages still walk newest→oldest). The response field `sortOrderApplied` tells you what was actually applied.  Reddit threads are paginated client-side because Reddit's API has no per-thread cursor. Very long threads may be upstream-truncated by Reddit's inbox/sent windows (~100 most-recent items each); this is a Reddit platform limitation.  Instagram and Facebook conversations include history from before the account was connected, replayed from Meta. That replay covers the 500 most recent messages per conversation: a longer thread keeps its newest 500 and older messages are not retrievable. Messages that arrived after the account was connected are unaffected. Replayed messages are stored as already read and emit no webhooks.  Twitter/X limitation: X's encrypted \"X Chat\" messages are not accessible via the API. Conversations where the other participant uses encrypted X Chat may only show your outgoing messages. See the list conversations endpoint for more details.  This endpoint is read-only and does NOT mark messages as read or send read receipts. To mark a conversation read (and send WhatsApp blue ticks on eligible accounts), call `POST /v1/inbox/conversations/{conversationId}/read`.
+Fetch messages for a specific conversation, with cursor-based pagination and ordering control.  Pagination: pass `pagination.nextCursor` from a prior response back as the `cursor` query param to fetch the next page. The cursor is opaque; do not parse or construct it client-side.  Sort order: defaults to `asc` (oldest first, chat style). For the \"show me the latest messages\" pattern, pass `?sortOrder=desc&limit=N`. X, Instagram, Telegram, WhatsApp and Reddit honor the requested order from the local message store. For Facebook and Bluesky, the upstream APIs only return newest-first and have no order parameter, so sort order is best-effort and only reverses items within a single page (pages still walk newest→oldest). The response field `sortOrderApplied` tells you what was actually applied.  Reddit threads are paginated client-side because Reddit's API has no per-thread cursor. Very long threads may be upstream-truncated by Reddit's inbox/sent windows (~100 most-recent items each); this is a Reddit platform limitation.  Instagram and Facebook conversations include history from before the account was connected, replayed from Meta. That replay covers the 500 most recent messages per conversation: a longer thread keeps its newest 500 and older messages are not retrievable. Messages that arrived after the account was connected are unaffected. Replayed messages are stored as already read and emit no webhooks.  X limitation: X's encrypted \"X Chat\" messages are not accessible via the API. Conversations where the other participant uses encrypted X Chat may only show your outgoing messages. See the list conversations endpoint for more details.  This endpoint is read-only and does NOT mark messages as read or send read receipts. To mark a conversation read (and send WhatsApp blue ticks on eligible accounts), call `POST /v1/inbox/conversations/{conversationId}/read`.
 
 ### Example
 
@@ -365,10 +366,10 @@ $apiInstance = new Zernio\Api\MessagesApi(
     $config
 );
 $conversation_id = 'conversation_id_example'; // string | Opaque conversation identifier, accepted verbatim from the list endpoint or from the conversationId on inbox webhooks. Format not to be assumed.
-$account_id = 'account_id_example'; // string | Social account ID
+$account_id = 'account_id_example'; // string | Account ID
 $limit = 100; // int | Number of messages to return per page. Default 100, max 100.
 $cursor = 'cursor_example'; // string | Opaque pagination cursor. Pass `pagination.nextCursor` from a prior response verbatim: a cursor we cannot parse returns 400 rather than silently restarting from the first page.
-$sort_order = 'asc'; // string | Order of returned messages. Default `asc` (oldest first, chat style). Twitter, Instagram, Telegram, WhatsApp and Reddit honor this order across cursor pages. For Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See `sortOrderApplied` in the response.
+$sort_order = 'asc'; // string | Order of returned messages. Default `asc` (oldest first, chat style). X, Instagram, Telegram, WhatsApp and Reddit honor this order across cursor pages. For Facebook and Bluesky, only intra-page ordering is affected. Pages always walk newest→oldest. See `sortOrderApplied` in the response.
 
 try {
     $result = $apiInstance->getInboxConversationMessages($conversation_id, $account_id, $limit, $cursor, $sort_order);
@@ -383,10 +384,10 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **conversation_id** | **string**| Opaque conversation identifier, accepted verbatim from the list endpoint or from the conversationId on inbox webhooks. Format not to be assumed. | |
-| **account_id** | **string**| Social account ID | |
+| **account_id** | **string**| Account ID | |
 | **limit** | **int**| Number of messages to return per page. Default 100, max 100. | [optional] [default to 100] |
 | **cursor** | **string**| Opaque pagination cursor. Pass &#x60;pagination.nextCursor&#x60; from a prior response verbatim: a cursor we cannot parse returns 400 rather than silently restarting from the first page. | [optional] |
-| **sort_order** | **string**| Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). Twitter, Instagram, Telegram, WhatsApp and Reddit honor this order across cursor pages. For Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. | [optional] [default to &#39;asc&#39;] |
+| **sort_order** | **string**| Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). X, Instagram, Telegram, WhatsApp and Reddit honor this order across cursor pages. For Facebook and Bluesky, only intra-page ordering is affected. Pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. | [optional] [default to &#39;asc&#39;] |
 
 ### Return type
 
@@ -413,7 +414,7 @@ getMessageAttachment($conversation_id, $message_id, $index, $account_id, $format
 
 Resolve message attachment
 
-Resolve one attachment on a message to a media url that works right now.  Instagram and Facebook sign DM media urls per request and expire them, so the `url` on a message is a snapshot: it works when you read the message and stops working later. This endpoint checks the stored url and, when it has gone stale, re-mints the message's media from Meta and persists it before answering. The message id never expires, so this URL is the one to store. It is returned ready-made on each attachment as `refreshUrl` when you read a message over REST.  **Webhook payloads do not carry `refreshUrl`**, so a webhook-driven integration builds this URL itself. Every piece is in the event: `message.conversationId`, `message.platformMessageId`, the attachment's zero-based position, and `account.accountId`. Note that **`accountId` is a required query parameter**; omitting it returns `400` `missing_required_field`, which is the same requirement `GET /v1/whatsapp/media/{mediaId}` has.  By default it responds `302` to the live media url, so it can be used directly as an `<img src>` on a browser session. API-key integrators should pass `?format=json` and read `url` off the body, since a browser cannot attach an Authorization header to an image request.  Only Instagram and Facebook media can be re-minted. On other platforms the stored url is returned as-is when it still resolves, and `404` otherwise.
+Resolve one attachment on a message to a media url that works right now.  Instagram and Facebook sign DM media urls per request and expire them, so the `url` on a message is a snapshot: it works when you read the message and stops working later. This endpoint checks the stored url and, when it has gone stale, re-mints the message's media from Meta and persists it before answering. The message id never expires, so this URL is the one to store. It is returned ready-made on each attachment as `refreshUrl` when you read a message over REST.  **Webhook payloads do not carry `refreshUrl`**, so a webhook-driven integration builds this URL itself. Every piece is in the event: `message.conversationId`, `message.platformMessageId`, the attachment's zero-based position, and `account.accountId`. **`accountId` is a required query parameter**; omitting it returns `400` `missing_required_field`, which is the same requirement `GET /v1/whatsapp/media/{mediaId}` has.  By default it responds `302` to the live media url, so it can be used directly as an `<img src>` on a browser session. API-key integrators should pass `?format=json` and read `url` off the body, since a browser cannot attach an Authorization header to an image request.  Only Instagram and Facebook media can be re-minted. On other platforms the stored url is returned as-is when it still resolves, and `404` otherwise.
 
 ### Example
 
@@ -435,7 +436,7 @@ $apiInstance = new Zernio\Api\MessagesApi(
 $conversation_id = 'conversation_id_example'; // string | The conversation ID (Zernio id or platform conversation id)
 $message_id = 'message_id_example'; // string | The message id as returned by the list-messages endpoint (the platform message id)
 $index = 56; // int | Zero-based position of the attachment in the message's attachments array
-$account_id = 'account_id_example'; // string | Social account ID. Required: without it the request returns 400 missing_required_field.
+$account_id = 'account_id_example'; // string | Account ID. Required: without it the request returns 400 missing_required_field.
 $format = 'redirect'; // string | `redirect` (default) answers 302 to the media; `json` returns the url in the body
 
 try {
@@ -453,7 +454,7 @@ try {
 | **conversation_id** | **string**| The conversation ID (Zernio id or platform conversation id) | |
 | **message_id** | **string**| The message id as returned by the list-messages endpoint (the platform message id) | |
 | **index** | **int**| Zero-based position of the attachment in the message&#39;s attachments array | |
-| **account_id** | **string**| Social account ID. Required: without it the request returns 400 missing_required_field. | |
+| **account_id** | **string**| Account ID. Required: without it the request returns 400 missing_required_field. | |
 | **format** | **string**| &#x60;redirect&#x60; (default) answers 302 to the media; &#x60;json&#x60; returns the url in the body | [optional] [default to &#39;redirect&#39;] |
 
 ### Return type
@@ -481,7 +482,7 @@ listInboxConversations($profile_id, $platform, $status, $sort_order, $limit, $cu
 
 List conversations
 
-Fetch conversations (DMs) from all connected messaging accounts in a single API call. Supports filtering by profile and platform. Results are aggregated and deduplicated. Supported platforms: Facebook, Instagram, Twitter/X, Bluesky, Reddit, Telegram.  Twitter/X limitation: X has replaced traditional DMs with encrypted \"X Chat\" for many accounts. Messages sent or received through encrypted X Chat are not accessible via X's API (the /2/dm_events endpoint only returns legacy unencrypted DMs). This means some Twitter/X conversations may show only outgoing messages or appear empty. This is an X platform limitation that affects all third-party applications. See X's docs on encrypted messaging for more details.  Instagram and Facebook pre-connect history: when one of these accounts is connected, Zernio replays the DM history the account already holds on Meta, so conversations that began before the account was connected appear here. Up to 500 conversations per account are replayed. The replay runs in the background and can finish after a listing you have already taken, and replayed conversations keep their original lastMessageAt, so they sort into date order rather than appearing at the top. If you mirror this endpoint into your own store, re-run the sweep rather than relying on a single pass at connect time. Replayed history emits no webhooks and is stored as already read, so it never affects unread counts. Threads that Meta refuses to serve are skipped, and an account whose Instagram \"connected tools\" message access is turned off is not replayed at all.
+Fetch conversations (DMs) from all connected messaging accounts in a single API call. Supports filtering by profile and platform. Results are aggregated and deduplicated.  Supported platforms: Facebook, Instagram, X, Bluesky, Reddit, Telegram.  **X limitation.** X has replaced traditional DMs with encrypted \"X Chat\" for many accounts. Messages sent or received through encrypted X Chat are not accessible via X's API (the /2/dm_events endpoint only returns legacy unencrypted DMs). This means some X conversations may show only outgoing messages or appear empty. This is an X platform limitation that affects all third-party applications. See X's docs on encrypted messaging for more details.  **Instagram and Facebook pre-connect history.** When one of these accounts is connected, Zernio replays the DM history the account already holds on Meta, so conversations that began before the account was connected appear here. Up to 500 conversations per account are replayed.  - The replay runs in the background and can finish after a listing you have already taken, and replayed conversations keep their original lastMessageAt, so they sort into date order rather than appearing at the top. If you mirror this endpoint into your own store, re-run the sweep rather than relying on a single pass at connect time. - Replayed history emits no webhooks and is stored as already read, so it never affects unread counts. - Threads that Meta refuses to serve are skipped, and an account whose Instagram \"connected tools\" message access is turned off is not replayed at all.
 
 ### Example
 
@@ -506,7 +507,7 @@ $status = 'status_example'; // string | Filter by conversation status
 $sort_order = 'desc'; // string | Sort order by updated time
 $limit = 50; // int | Maximum number of conversations to return
 $cursor = 'cursor_example'; // string | Pagination cursor for next page
-$account_id = 'account_id_example'; // string | Filter by specific social account ID
+$account_id = 'account_id_example'; // string | Filter by specific account ID
 
 try {
     $result = $apiInstance->listInboxConversations($profile_id, $platform, $status, $sort_order, $limit, $cursor, $account_id);
@@ -526,7 +527,7 @@ try {
 | **sort_order** | **string**| Sort order by updated time | [optional] [default to &#39;desc&#39;] |
 | **limit** | **int**| Maximum number of conversations to return | [optional] [default to 50] |
 | **cursor** | **string**| Pagination cursor for next page | [optional] |
-| **account_id** | **string**| Filter by specific social account ID | [optional] |
+| **account_id** | **string**| Filter by specific account ID | [optional] |
 
 ### Return type
 
@@ -636,7 +637,7 @@ $apiInstance = new Zernio\Api\MessagesApi(
 );
 $conversation_id = 'conversation_id_example'; // string | The conversation ID
 $message_id = 'message_id_example'; // string | The platform message ID (as returned by GET /messages) or the Zernio message ID (as returned by the reaction webhook)
-$account_id = 'account_id_example'; // string | Social account ID
+$account_id = 'account_id_example'; // string | Account ID
 
 try {
     $result = $apiInstance->removeMessageReaction($conversation_id, $message_id, $account_id);
@@ -652,7 +653,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **conversation_id** | **string**| The conversation ID | |
 | **message_id** | **string**| The platform message ID (as returned by GET /messages) or the Zernio message ID (as returned by the reaction webhook) | |
-| **account_id** | **string**| Social account ID | |
+| **account_id** | **string**| Account ID | |
 
 ### Return type
 
@@ -679,7 +680,7 @@ searchInboxConversations($query, $direction, $profile_id, $platform, $account_id
 
 Search conversations
 
-Search your conversations two ways at once, and get back the matching conversations, most-recent match first:  - Message text: matches words inside message bodies. Case-insensitive and accent-insensitive, exact tokens only (no substrings, no stemming). Each hit carries up to 3 most-recent matching messages. With direction=outgoing you can collect examples of how you write to customers, for example to teach an AI agent your tone of voice. - Contact identity: matches the participant's name, username, or phone number as a case-insensitive substring. These hits have matchCount 0 and an empty matches array.  A conversation that matches both ways is returned once, carrying its message matches.  Only platforms whose messages are stored by Zernio are searchable: WhatsApp, SMS, Telegram, Facebook, Instagram, Twitter/X and Reddit. Bluesky conversations are fetched live from the platform and cannot be searched; those accounts are listed in meta.accountsSkipped.
+Search your conversations two ways at once, and get back the matching conversations, most-recent match first:  - Message text: matches words inside message bodies. Case-insensitive and accent-insensitive, exact tokens only (no substrings, no stemming). Each hit carries up to 3 most-recent matching messages. With direction=outgoing you can collect examples of how you write to customers, for example to teach an AI agent your tone of voice. - Contact identity: matches the participant's name, username, or phone number as a case-insensitive substring. These hits have matchCount 0 and an empty matches array.  A conversation that matches both ways is returned once, carrying its message matches.  Only platforms whose messages are stored by Zernio are searchable: WhatsApp, SMS, Telegram, Facebook, Instagram, X and Reddit. Bluesky conversations are fetched live from the platform and cannot be searched; those accounts are listed in meta.accountsSkipped.
 
 ### Example
 
@@ -702,7 +703,7 @@ $query = 'query_example'; // string | Text to search for, in message content and
 $direction = 'direction_example'; // string | Only match messages sent to you (incoming) or by you (outgoing). Contact-identity matching is not applied when this is set.
 $profile_id = 'profile_id_example'; // string | Filter by profile ID
 $platform = 'platform_example'; // string | Filter by platform (searchable platforms only)
-$account_id = 'account_id_example'; // string | Filter by specific social account ID
+$account_id = 'account_id_example'; // string | Filter by specific account ID
 $limit = 20; // int | Maximum number of conversations to return
 $cursor = 'cursor_example'; // string | Opaque pagination cursor. Pass back pagination.nextCursor verbatim; do not construct one.
 
@@ -722,7 +723,7 @@ try {
 | **direction** | **string**| Only match messages sent to you (incoming) or by you (outgoing). Contact-identity matching is not applied when this is set. | [optional] |
 | **profile_id** | **string**| Filter by profile ID | [optional] |
 | **platform** | **string**| Filter by platform (searchable platforms only) | [optional] |
-| **account_id** | **string**| Filter by specific social account ID | [optional] |
+| **account_id** | **string**| Filter by specific account ID | [optional] |
 | **limit** | **int**| Maximum number of conversations to return | [optional] [default to 20] |
 | **cursor** | **string**| Opaque pagination cursor. Pass back pagination.nextCursor verbatim; do not construct one. | [optional] |
 
@@ -869,6 +870,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `setConversationThreadControl()`
+
+```php
+setConversationThreadControl($conversation_id, $set_conversation_thread_control_request): \Zernio\Model\SetConversationThreadControl200Response
+```
+
+Hand a conversation to or from Meta Business Agent
+
+WhatsApp only, on numbers with Meta Business Agent enabled. Wraps Meta's thread control: - `release`: hand the conversation back to the agent so it resumes answering. You must currently hold control (sending any message takes it implicitly). - `take`: take control before sending anything, so the agent stops replying while an operator reads the thread. Meta accepts this only from the business configured as the number's escalation partner; other apps take control by sending a message. - `pass`: transfer control to the number's configured escalation partner, or to the agent with `target: ai_agent`.  The conversation's `threadControl` follows the result; a `conversation.control_changed` webhook fires when Meta later reports the change.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\MessagesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$conversation_id = 'conversation_id_example'; // string | The conversation ID
+$set_conversation_thread_control_request = new \Zernio\Model\SetConversationThreadControlRequest(); // \Zernio\Model\SetConversationThreadControlRequest
+
+try {
+    $result = $apiInstance->setConversationThreadControl($conversation_id, $set_conversation_thread_control_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MessagesApi->setConversationThreadControl: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **conversation_id** | **string**| The conversation ID | |
+| **set_conversation_thread_control_request** | [**\Zernio\Model\SetConversationThreadControlRequest**](../Model/SetConversationThreadControlRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\SetConversationThreadControl200Response**](../Model/SetConversationThreadControl200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `updateInboxConversation()`
 
 ```php
@@ -939,7 +1002,7 @@ uploadMediaDirect($file, $content_type): \Zernio\Model\UploadMediaDirect200Respo
 
 Upload media file
 
-Upload a media file using API key authentication and get back a publicly accessible URL. The URL can be used as attachmentUrl when sending inbox messages.  Files are stored in temporary storage and auto-delete after 7 days. Maximum file size is 25MB.  Unlike /v1/media/upload (which uses upload tokens for end-user flows), this endpoint uses standard Bearer token authentication for programmatic use.
+Upload a media file using API key authentication and get back a publicly accessible URL. The URL can be used as attachmentUrl when sending inbox messages.  Files are stored in temporary storage and auto-delete after 7 days. Maximum file size is 25MB.  Unlike /v1/media/upload (which uses upload tokens for end-user flows), this endpoint takes your API key in the Authorization header, for programmatic use.
 
 ### Example
 

@@ -116,6 +116,9 @@ class MessagesApi
         'sendTypingIndicator' => [
             'application/json',
         ],
+        'setConversationThreadControl' => [
+            'application/json',
+        ],
         'updateInboxConversation' => [
             'application/json',
         ],
@@ -843,7 +846,7 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The platform message ID to delete (required)
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxMessage'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -863,7 +866,7 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The platform message ID to delete (required)
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxMessage'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -964,7 +967,7 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The platform message ID to delete (required)
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxMessage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -987,7 +990,7 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The platform message ID to delete (required)
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxMessage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1039,7 +1042,7 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The platform message ID to delete (required)
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxMessage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1494,7 +1497,7 @@ class MessagesApi
      * Get conversation
      *
      * @param  string $conversation_id Opaque conversation identifier, accepted verbatim from the list endpoint or from the conversationId on inbox webhooks. Format not to be assumed. (required)
-     * @param  string $account_id The social account ID (required)
+     * @param  string $account_id The account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversation'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1513,7 +1516,7 @@ class MessagesApi
      * Get conversation
      *
      * @param  string $conversation_id Opaque conversation identifier, accepted verbatim from the list endpoint or from the conversationId on inbox webhooks. Format not to be assumed. (required)
-     * @param  string $account_id The social account ID (required)
+     * @param  string $account_id The account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversation'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1613,7 +1616,7 @@ class MessagesApi
      * Get conversation
      *
      * @param  string $conversation_id Opaque conversation identifier, accepted verbatim from the list endpoint or from the conversationId on inbox webhooks. Format not to be assumed. (required)
-     * @param  string $account_id The social account ID (required)
+     * @param  string $account_id The account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1635,7 +1638,7 @@ class MessagesApi
      * Get conversation
      *
      * @param  string $conversation_id Opaque conversation identifier, accepted verbatim from the list endpoint or from the conversationId on inbox webhooks. Format not to be assumed. (required)
-     * @param  string $account_id The social account ID (required)
+     * @param  string $account_id The account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1686,7 +1689,7 @@ class MessagesApi
      * Create request for operation 'getInboxConversation'
      *
      * @param  string $conversation_id Opaque conversation identifier, accepted verbatim from the list endpoint or from the conversationId on inbox webhooks. Format not to be assumed. (required)
-     * @param  string $account_id The social account ID (required)
+     * @param  string $account_id The account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1801,10 +1804,10 @@ class MessagesApi
      * List messages
      *
      * @param  string $conversation_id Opaque conversation identifier, accepted verbatim from the list endpoint or from the conversationId on inbox webhooks. Format not to be assumed. (required)
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  int|null $limit Number of messages to return per page. Default 100, max 100. (optional, default to 100)
      * @param  string|null $cursor Opaque pagination cursor. Pass &#x60;pagination.nextCursor&#x60; from a prior response verbatim: a cursor we cannot parse returns 400 rather than silently restarting from the first page. (optional)
-     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). Twitter, Instagram, Telegram, WhatsApp and Reddit honor this order across cursor pages. For Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
+     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). X, Instagram, Telegram, WhatsApp and Reddit honor this order across cursor pages. For Facebook and Bluesky, only intra-page ordering is affected. Pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversationMessages'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1823,10 +1826,10 @@ class MessagesApi
      * List messages
      *
      * @param  string $conversation_id Opaque conversation identifier, accepted verbatim from the list endpoint or from the conversationId on inbox webhooks. Format not to be assumed. (required)
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  int|null $limit Number of messages to return per page. Default 100, max 100. (optional, default to 100)
      * @param  string|null $cursor Opaque pagination cursor. Pass &#x60;pagination.nextCursor&#x60; from a prior response verbatim: a cursor we cannot parse returns 400 rather than silently restarting from the first page. (optional)
-     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). Twitter, Instagram, Telegram, WhatsApp and Reddit honor this order across cursor pages. For Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
+     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). X, Instagram, Telegram, WhatsApp and Reddit honor this order across cursor pages. For Facebook and Bluesky, only intra-page ordering is affected. Pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversationMessages'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1940,10 +1943,10 @@ class MessagesApi
      * List messages
      *
      * @param  string $conversation_id Opaque conversation identifier, accepted verbatim from the list endpoint or from the conversationId on inbox webhooks. Format not to be assumed. (required)
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  int|null $limit Number of messages to return per page. Default 100, max 100. (optional, default to 100)
      * @param  string|null $cursor Opaque pagination cursor. Pass &#x60;pagination.nextCursor&#x60; from a prior response verbatim: a cursor we cannot parse returns 400 rather than silently restarting from the first page. (optional)
-     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). Twitter, Instagram, Telegram, WhatsApp and Reddit honor this order across cursor pages. For Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
+     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). X, Instagram, Telegram, WhatsApp and Reddit honor this order across cursor pages. For Facebook and Bluesky, only intra-page ordering is affected. Pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversationMessages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1965,10 +1968,10 @@ class MessagesApi
      * List messages
      *
      * @param  string $conversation_id Opaque conversation identifier, accepted verbatim from the list endpoint or from the conversationId on inbox webhooks. Format not to be assumed. (required)
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  int|null $limit Number of messages to return per page. Default 100, max 100. (optional, default to 100)
      * @param  string|null $cursor Opaque pagination cursor. Pass &#x60;pagination.nextCursor&#x60; from a prior response verbatim: a cursor we cannot parse returns 400 rather than silently restarting from the first page. (optional)
-     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). Twitter, Instagram, Telegram, WhatsApp and Reddit honor this order across cursor pages. For Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
+     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). X, Instagram, Telegram, WhatsApp and Reddit honor this order across cursor pages. For Facebook and Bluesky, only intra-page ordering is affected. Pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversationMessages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2019,10 +2022,10 @@ class MessagesApi
      * Create request for operation 'getInboxConversationMessages'
      *
      * @param  string $conversation_id Opaque conversation identifier, accepted verbatim from the list endpoint or from the conversationId on inbox webhooks. Format not to be assumed. (required)
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  int|null $limit Number of messages to return per page. Default 100, max 100. (optional, default to 100)
      * @param  string|null $cursor Opaque pagination cursor. Pass &#x60;pagination.nextCursor&#x60; from a prior response verbatim: a cursor we cannot parse returns 400 rather than silently restarting from the first page. (optional)
-     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). Twitter, Instagram, Telegram, WhatsApp and Reddit honor this order across cursor pages. For Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
+     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). X, Instagram, Telegram, WhatsApp and Reddit honor this order across cursor pages. For Facebook and Bluesky, only intra-page ordering is affected. Pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversationMessages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2175,7 +2178,7 @@ class MessagesApi
      * @param  string $conversation_id The conversation ID (Zernio id or platform conversation id) (required)
      * @param  string $message_id The message id as returned by the list-messages endpoint (the platform message id) (required)
      * @param  int $index Zero-based position of the attachment in the message&#39;s attachments array (required)
-     * @param  string $account_id Social account ID. Required: without it the request returns 400 missing_required_field. (required)
+     * @param  string $account_id Account ID. Required: without it the request returns 400 missing_required_field. (required)
      * @param  string|null $format &#x60;redirect&#x60; (default) answers 302 to the media; &#x60;json&#x60; returns the url in the body (optional, default to 'redirect')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMessageAttachment'] to see the possible values for this operation
      *
@@ -2197,7 +2200,7 @@ class MessagesApi
      * @param  string $conversation_id The conversation ID (Zernio id or platform conversation id) (required)
      * @param  string $message_id The message id as returned by the list-messages endpoint (the platform message id) (required)
      * @param  int $index Zero-based position of the attachment in the message&#39;s attachments array (required)
-     * @param  string $account_id Social account ID. Required: without it the request returns 400 missing_required_field. (required)
+     * @param  string $account_id Account ID. Required: without it the request returns 400 missing_required_field. (required)
      * @param  string|null $format &#x60;redirect&#x60; (default) answers 302 to the media; &#x60;json&#x60; returns the url in the body (optional, default to 'redirect')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMessageAttachment'] to see the possible values for this operation
      *
@@ -2314,7 +2317,7 @@ class MessagesApi
      * @param  string $conversation_id The conversation ID (Zernio id or platform conversation id) (required)
      * @param  string $message_id The message id as returned by the list-messages endpoint (the platform message id) (required)
      * @param  int $index Zero-based position of the attachment in the message&#39;s attachments array (required)
-     * @param  string $account_id Social account ID. Required: without it the request returns 400 missing_required_field. (required)
+     * @param  string $account_id Account ID. Required: without it the request returns 400 missing_required_field. (required)
      * @param  string|null $format &#x60;redirect&#x60; (default) answers 302 to the media; &#x60;json&#x60; returns the url in the body (optional, default to 'redirect')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMessageAttachment'] to see the possible values for this operation
      *
@@ -2339,7 +2342,7 @@ class MessagesApi
      * @param  string $conversation_id The conversation ID (Zernio id or platform conversation id) (required)
      * @param  string $message_id The message id as returned by the list-messages endpoint (the platform message id) (required)
      * @param  int $index Zero-based position of the attachment in the message&#39;s attachments array (required)
-     * @param  string $account_id Social account ID. Required: without it the request returns 400 missing_required_field. (required)
+     * @param  string $account_id Account ID. Required: without it the request returns 400 missing_required_field. (required)
      * @param  string|null $format &#x60;redirect&#x60; (default) answers 302 to the media; &#x60;json&#x60; returns the url in the body (optional, default to 'redirect')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMessageAttachment'] to see the possible values for this operation
      *
@@ -2393,7 +2396,7 @@ class MessagesApi
      * @param  string $conversation_id The conversation ID (Zernio id or platform conversation id) (required)
      * @param  string $message_id The message id as returned by the list-messages endpoint (the platform message id) (required)
      * @param  int $index Zero-based position of the attachment in the message&#39;s attachments array (required)
-     * @param  string $account_id Social account ID. Required: without it the request returns 400 missing_required_field. (required)
+     * @param  string $account_id Account ID. Required: without it the request returns 400 missing_required_field. (required)
      * @param  string|null $format &#x60;redirect&#x60; (default) answers 302 to the media; &#x60;json&#x60; returns the url in the body (optional, default to 'redirect')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMessageAttachment'] to see the possible values for this operation
      *
@@ -2557,7 +2560,7 @@ class MessagesApi
      * @param  string|null $sort_order Sort order by updated time (optional, default to 'desc')
      * @param  int|null $limit Maximum number of conversations to return (optional, default to 50)
      * @param  string|null $cursor Pagination cursor for next page (optional)
-     * @param  string|null $account_id Filter by specific social account ID (optional)
+     * @param  string|null $account_id Filter by specific account ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listInboxConversations'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2581,7 +2584,7 @@ class MessagesApi
      * @param  string|null $sort_order Sort order by updated time (optional, default to 'desc')
      * @param  int|null $limit Maximum number of conversations to return (optional, default to 50)
      * @param  string|null $cursor Pagination cursor for next page (optional)
-     * @param  string|null $account_id Filter by specific social account ID (optional)
+     * @param  string|null $account_id Filter by specific account ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listInboxConversations'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2686,7 +2689,7 @@ class MessagesApi
      * @param  string|null $sort_order Sort order by updated time (optional, default to 'desc')
      * @param  int|null $limit Maximum number of conversations to return (optional, default to 50)
      * @param  string|null $cursor Pagination cursor for next page (optional)
-     * @param  string|null $account_id Filter by specific social account ID (optional)
+     * @param  string|null $account_id Filter by specific account ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listInboxConversations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2713,7 +2716,7 @@ class MessagesApi
      * @param  string|null $sort_order Sort order by updated time (optional, default to 'desc')
      * @param  int|null $limit Maximum number of conversations to return (optional, default to 50)
      * @param  string|null $cursor Pagination cursor for next page (optional)
-     * @param  string|null $account_id Filter by specific social account ID (optional)
+     * @param  string|null $account_id Filter by specific account ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listInboxConversations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2769,7 +2772,7 @@ class MessagesApi
      * @param  string|null $sort_order Sort order by updated time (optional, default to 'desc')
      * @param  int|null $limit Maximum number of conversations to return (optional, default to 50)
      * @param  string|null $cursor Pagination cursor for next page (optional)
-     * @param  string|null $account_id Filter by specific social account ID (optional)
+     * @param  string|null $account_id Filter by specific account ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listInboxConversations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3235,7 +3238,7 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The platform message ID (as returned by GET /messages) or the Zernio message ID (as returned by the reaction webhook) (required)
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeMessageReaction'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3255,7 +3258,7 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The platform message ID (as returned by GET /messages) or the Zernio message ID (as returned by the reaction webhook) (required)
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeMessageReaction'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3356,7 +3359,7 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The platform message ID (as returned by GET /messages) or the Zernio message ID (as returned by the reaction webhook) (required)
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeMessageReaction'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3379,7 +3382,7 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The platform message ID (as returned by GET /messages) or the Zernio message ID (as returned by the reaction webhook) (required)
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeMessageReaction'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3431,7 +3434,7 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The platform message ID (as returned by GET /messages) or the Zernio message ID (as returned by the reaction webhook) (required)
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeMessageReaction'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3564,7 +3567,7 @@ class MessagesApi
      * @param  string|null $direction Only match messages sent to you (incoming) or by you (outgoing). Contact-identity matching is not applied when this is set. (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $platform Filter by platform (searchable platforms only) (optional)
-     * @param  string|null $account_id Filter by specific social account ID (optional)
+     * @param  string|null $account_id Filter by specific account ID (optional)
      * @param  int|null $limit Maximum number of conversations to return (optional, default to 20)
      * @param  string|null $cursor Opaque pagination cursor. Pass back pagination.nextCursor verbatim; do not construct one. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchInboxConversations'] to see the possible values for this operation
@@ -3588,7 +3591,7 @@ class MessagesApi
      * @param  string|null $direction Only match messages sent to you (incoming) or by you (outgoing). Contact-identity matching is not applied when this is set. (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $platform Filter by platform (searchable platforms only) (optional)
-     * @param  string|null $account_id Filter by specific social account ID (optional)
+     * @param  string|null $account_id Filter by specific account ID (optional)
      * @param  int|null $limit Maximum number of conversations to return (optional, default to 20)
      * @param  string|null $cursor Opaque pagination cursor. Pass back pagination.nextCursor verbatim; do not construct one. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchInboxConversations'] to see the possible values for this operation
@@ -3693,7 +3696,7 @@ class MessagesApi
      * @param  string|null $direction Only match messages sent to you (incoming) or by you (outgoing). Contact-identity matching is not applied when this is set. (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $platform Filter by platform (searchable platforms only) (optional)
-     * @param  string|null $account_id Filter by specific social account ID (optional)
+     * @param  string|null $account_id Filter by specific account ID (optional)
      * @param  int|null $limit Maximum number of conversations to return (optional, default to 20)
      * @param  string|null $cursor Opaque pagination cursor. Pass back pagination.nextCursor verbatim; do not construct one. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchInboxConversations'] to see the possible values for this operation
@@ -3720,7 +3723,7 @@ class MessagesApi
      * @param  string|null $direction Only match messages sent to you (incoming) or by you (outgoing). Contact-identity matching is not applied when this is set. (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $platform Filter by platform (searchable platforms only) (optional)
-     * @param  string|null $account_id Filter by specific social account ID (optional)
+     * @param  string|null $account_id Filter by specific account ID (optional)
      * @param  int|null $limit Maximum number of conversations to return (optional, default to 20)
      * @param  string|null $cursor Opaque pagination cursor. Pass back pagination.nextCursor verbatim; do not construct one. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchInboxConversations'] to see the possible values for this operation
@@ -3776,7 +3779,7 @@ class MessagesApi
      * @param  string|null $direction Only match messages sent to you (incoming) or by you (outgoing). Contact-identity matching is not applied when this is set. (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $platform Filter by platform (searchable platforms only) (optional)
-     * @param  string|null $account_id Filter by specific social account ID (optional)
+     * @param  string|null $account_id Filter by specific account ID (optional)
      * @param  int|null $limit Maximum number of conversations to return (optional, default to 20)
      * @param  string|null $cursor Opaque pagination cursor. Pass back pagination.nextCursor verbatim; do not construct one. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchInboxConversations'] to see the possible values for this operation
@@ -4544,6 +4547,325 @@ class MessagesApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($send_typing_indicator_request));
             } else {
                 $httpBody = $send_typing_indicator_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation setConversationThreadControl
+     *
+     * Hand a conversation to or from Meta Business Agent
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  \Zernio\Model\SetConversationThreadControlRequest $set_conversation_thread_control_request set_conversation_thread_control_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setConversationThreadControl'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\SetConversationThreadControl200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     */
+    public function setConversationThreadControl($conversation_id, $set_conversation_thread_control_request, string $contentType = self::contentTypes['setConversationThreadControl'][0])
+    {
+        list($response) = $this->setConversationThreadControlWithHttpInfo($conversation_id, $set_conversation_thread_control_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation setConversationThreadControlWithHttpInfo
+     *
+     * Hand a conversation to or from Meta Business Agent
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  \Zernio\Model\SetConversationThreadControlRequest $set_conversation_thread_control_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setConversationThreadControl'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\SetConversationThreadControl200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function setConversationThreadControlWithHttpInfo($conversation_id, $set_conversation_thread_control_request, string $contentType = self::contentTypes['setConversationThreadControl'][0])
+    {
+        $request = $this->setConversationThreadControlRequest($conversation_id, $set_conversation_thread_control_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\SetConversationThreadControl200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\SetConversationThreadControl200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\SetConversationThreadControl200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation setConversationThreadControlAsync
+     *
+     * Hand a conversation to or from Meta Business Agent
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  \Zernio\Model\SetConversationThreadControlRequest $set_conversation_thread_control_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setConversationThreadControl'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function setConversationThreadControlAsync($conversation_id, $set_conversation_thread_control_request, string $contentType = self::contentTypes['setConversationThreadControl'][0])
+    {
+        return $this->setConversationThreadControlAsyncWithHttpInfo($conversation_id, $set_conversation_thread_control_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation setConversationThreadControlAsyncWithHttpInfo
+     *
+     * Hand a conversation to or from Meta Business Agent
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  \Zernio\Model\SetConversationThreadControlRequest $set_conversation_thread_control_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setConversationThreadControl'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function setConversationThreadControlAsyncWithHttpInfo($conversation_id, $set_conversation_thread_control_request, string $contentType = self::contentTypes['setConversationThreadControl'][0])
+    {
+        $returnType = '\Zernio\Model\SetConversationThreadControl200Response';
+        $request = $this->setConversationThreadControlRequest($conversation_id, $set_conversation_thread_control_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'setConversationThreadControl'
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  \Zernio\Model\SetConversationThreadControlRequest $set_conversation_thread_control_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setConversationThreadControl'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function setConversationThreadControlRequest($conversation_id, $set_conversation_thread_control_request, string $contentType = self::contentTypes['setConversationThreadControl'][0])
+    {
+
+        // verify the required parameter 'conversation_id' is set
+        if ($conversation_id === null || (is_array($conversation_id) && count($conversation_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $conversation_id when calling setConversationThreadControl'
+            );
+        }
+
+        // verify the required parameter 'set_conversation_thread_control_request' is set
+        if ($set_conversation_thread_control_request === null || (is_array($set_conversation_thread_control_request) && count($set_conversation_thread_control_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $set_conversation_thread_control_request when calling setConversationThreadControl'
+            );
+        }
+
+
+        $resourcePath = '/v1/inbox/conversations/{conversationId}/thread-control';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($conversation_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'conversationId' . '}',
+                ObjectSerializer::toPathValue($conversation_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($set_conversation_thread_control_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($set_conversation_thread_control_request));
+            } else {
+                $httpBody = $set_conversation_thread_control_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

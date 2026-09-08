@@ -373,7 +373,7 @@ class XApiOperation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets event_type
      *
-     * @param string|null $event_type Metronome `event_type` emitted when this operation runs.
+     * @param string|null $event_type Metering `event_type` emitted when this operation runs.
      *
      * @return self
      */
@@ -400,7 +400,7 @@ class XApiOperation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets display_name
      *
-     * @param string|null $display_name Human-readable label shown on Metronome invoices.
+     * @param string|null $display_name Human-readable label shown on invoices.
      *
      * @return self
      */

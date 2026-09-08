@@ -316,7 +316,7 @@ class UploadWhatsAppFlowJsonRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets account_id
      *
-     * @param string $account_id WhatsApp social account ID
+     * @param string $account_id WhatsApp account ID
      *
      * @return self
      */

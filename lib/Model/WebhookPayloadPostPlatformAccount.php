@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * WebhookPayloadPostPlatformAccount Class Doc Comment
  *
  * @category Class
- * @description The connected social account the platform-write went through.
+ * @description The connected account the platform-write went through.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

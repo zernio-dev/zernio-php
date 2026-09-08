@@ -341,7 +341,7 @@ class UpdateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets account_id
      *
-     * @param string $account_id Social account ID (metaads, or a facebook/instagram posting account)
+     * @param string $account_id Account ID (metaads, or a facebook/instagram posting account)
      *
      * @return self
      */

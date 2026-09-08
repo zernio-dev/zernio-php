@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * ConversionDestination Class Doc Comment
  *
  * @category Class
- * @description A discoverable conversion destination on an ad platform — a Meta pixel, Google conversion action, or LinkedIn conversion rule. Returned by &#x60;listConversionDestinations&#x60;, &#x60;getConversionDestination&#x60;, &#x60;createConversionDestination&#x60;, and &#x60;updateConversionDestination&#x60;.
+ * @description A discoverable conversion destination on an ad platform: a Meta pixel, Google conversion action, or LinkedIn conversion rule. Returned by &#x60;listConversionDestinations&#x60;, &#x60;getConversionDestination&#x60;, &#x60;createConversionDestination&#x60;, and &#x60;updateConversionDestination&#x60;.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

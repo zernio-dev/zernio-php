@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * AdFunnelCounts Class Doc Comment
  *
  * @category Class
- * @description Named conversion-funnel steps, resolved from the same data as &#x60;actions&#x60; so you never have to parse action-type strings yourself.  Meta reports one event under several action types at once (&#x60;offsite_conversion.fb_pixel_purchase&#x60;, &#x60;omni_purchase&#x60;, &#x60;purchase&#x60;, …). Each field below takes the FIRST family member present rather than summing them, which is what makes these counts safe to add up — summing the raw &#x60;actions&#x60; keys yourself double or triple counts. The same priority order backs &#x60;conversions&#x60;, so a purchase-optimised campaign reports the identical number in &#x60;conversions&#x60; and &#x60;funnel.purchases&#x60;.  Every field is 0 when that step never fired. Populated for Meta ads; other platforms report a different action taxonomy and generally leave these at 0 (read &#x60;actions&#x60; for those). At ad-set and campaign level each step is summed from its per-ad values.
+ * @description Named conversion-funnel steps, resolved from the same data as &#x60;actions&#x60; so you never have to parse action-type strings yourself.  Meta reports one event under several action types at once (&#x60;offsite_conversion.fb_pixel_purchase&#x60;, &#x60;omni_purchase&#x60;, &#x60;purchase&#x60;, …). Each field below takes the FIRST family member present rather than summing them, which is what makes these counts safe to add up. Summing the raw &#x60;actions&#x60; keys yourself double or triple counts. The same priority order backs &#x60;conversions&#x60;, so a purchase-optimised campaign reports the identical number in &#x60;conversions&#x60; and &#x60;funnel.purchases&#x60;.  Every field is 0 when that step never fired. Populated for Meta ads; other platforms report a different action taxonomy and generally leave these at 0 (read &#x60;actions&#x60; for those). At ad-set and campaign level each step is summed from its per-ad values.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -388,7 +388,7 @@ class AdFunnelCounts implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets landing_page_views
      *
-     * @param int|null $landing_page_views Landing page views — the visitor actually loaded the destination, unlike a link click. Meta `landing_page_view`.
+     * @param int|null $landing_page_views Landing page views: the visitor actually loaded the destination, unlike a link click. Meta `landing_page_view`.
      *
      * @return self
      */
@@ -604,7 +604,7 @@ class AdFunnelCounts implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets leads
      *
-     * @param int|null $leads Leads, from either the website pixel or an instant form — whichever the ad uses.
+     * @param int|null $leads Leads, from either the website pixel or an instant form, whichever the ad uses.
      *
      * @return self
      */
@@ -685,7 +685,7 @@ class AdFunnelCounts implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets messaging_conversations_started
      *
-     * @param int|null $messaging_conversations_started Messaging conversations started within 7 days — the headline metric for click-to-WhatsApp and click-to-Messenger ads.
+     * @param int|null $messaging_conversations_started Messaging conversations started within 7 days, the headline metric for click-to-WhatsApp and click-to-Messenger ads.
      *
      * @return self
      */

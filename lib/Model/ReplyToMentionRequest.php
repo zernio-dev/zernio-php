@@ -333,7 +333,7 @@ class ReplyToMentionRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets account_id
      *
-     * @param string $account_id The Instagram social account ID
+     * @param string $account_id The Instagram account ID
      *
      * @return self
      */

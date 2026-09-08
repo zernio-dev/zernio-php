@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_id** | **string** |  | [optional]
-**account_id** | **string** | Owning social account. The unified /v1/calls/{id} detail + recording endpoints work for any channel; the channel-specific endpoints remain for account-scoped access. | [optional]
+**account_id** | **string** | Owning account. The unified /v1/calls/{id} detail + recording endpoints work for any channel; the channel-specific endpoints remain for account-scoped access. | [optional]
 **conversation_id** | **string** | Inbox conversation with the counterparty, when one exists. | [optional]
 **contact_id** | **string** | CRM Contact for the counterparty, when resolved. | [optional]
 **channel** | **string** |  | [optional]
@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **transferred_at** | **\DateTime** | When the call was blind-transferred (POST /v1/voice/calls/{id}/transfer). | [optional]
 **duration_seconds** | **int** |  | [optional]
 **end_reason** | **string** |  | [optional]
-**hangup_cause** | **string** | Raw carrier hangup cause behind endReason (e.g. normal_clearing, not_found, time_limit) — the actual motive when endReason is a coarse bucket. | [optional]
+**hangup_cause** | **string** | Raw carrier hangup cause behind endReason (e.g. normal_clearing, not_found, time_limit). The actual motive when endReason is a coarse bucket. | [optional]
 **sip_hangup_cause** | **string** | SIP response code that ended the call, when SIP-signalled (e.g. &#39;403&#39;, &#39;488&#39;). The real failure reason for SIP legs. | [optional]
 **call_errors** | [**\Zernio\Model\CallRecordCallErrorsInner[]**](CallRecordCallErrorsInner.md) | Per-call failure log (dial failed, bridge failed, recording error). | [optional]
 **recording_url** | **string** | May be expired. Resolve a fresh playable URL via GET /v1/calls/{id}/recording (any channel). | [optional]

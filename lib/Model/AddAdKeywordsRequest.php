@@ -341,7 +341,7 @@ class AddAdKeywordsRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets account_id
      *
-     * @param string $account_id Social account ID (Google Ads)
+     * @param string $account_id Account ID (Google Ads)
      *
      * @return self
      */

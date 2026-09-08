@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **has_access** | **bool** | True if the account is in good standing. False for past-due/unpaid/paused subscriptions. | [optional]
 **customer_id** | **string** | Stripe customer ID, when present. | [optional]
 **is_invited_user** | **bool** | True if this is a team member; limits/usage reflect the account owner. | [optional]
-**auto_upgrade_enabled** | **bool** | Stripe-only. Always false for Metronome users. | [optional]
+**auto_upgrade_enabled** | **bool** | Stripe-only. Always false for accounts on usage-based billing. | [optional]
 **limits** | [**\Zernio\Model\UsageStatsLimits**](UsageStatsLimits.md) |  | [optional]
 **usage** | [**\Zernio\Model\UsageStatsUsage**](UsageStatsUsage.md) |  | [optional]
 **spend** | [**\Zernio\Model\UsageStatsSpend**](UsageStatsSpend.md) |  | [optional]

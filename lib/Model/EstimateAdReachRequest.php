@@ -333,7 +333,7 @@ class EstimateAdReachRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets account_id
      *
-     * @param string $account_id Zernio social account ID on the target ad platform (the estimate runs against its platform).
+     * @param string $account_id Zernio account ID on the target ad platform (the estimate runs against its platform).
      *
      * @return self
      */

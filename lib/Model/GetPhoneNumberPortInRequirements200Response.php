@@ -378,7 +378,7 @@ class GetPhoneNumberPortInRequirements200Response implements ModelInterface, Arr
     /**
      * Sets supported
      *
-     * @param bool|null $supported false when the combination includes a step that can't be completed through the API (e.g. an in-person identity verification) — porting it needs support.
+     * @param bool|null $supported false when the combination includes a step that can't be completed through the API (e.g. an in-person identity verification). Porting it needs support.
      *
      * @return self
      */

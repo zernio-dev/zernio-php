@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * ListSmsSenderIds200ResponseBudget Class Doc Comment
  *
  * @category Class
- * @description Workspace-wide daily sending budget, shared by every sender ID (resets midnight UTC).
+ * @description Team-wide daily sending budget, shared by every sender ID (resets midnight UTC).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

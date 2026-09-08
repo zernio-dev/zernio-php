@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **type** | **string** | Error class for programmatic handling. | [optional]
 **code** | **string** | Stable machine-readable error code. | [optional]
 **param** | **string** | The request field that caused the error, when applicable. | [optional]
-**platform** | **string** | Upstream platform (e.g. meta, google, tiktok) — present when type is platform_error. | [optional]
+**platform** | **string** | Upstream platform (e.g. meta, google, tiktok), present when type is platform_error. | [optional]
 **platform_error** | **array<string,mixed>** | Raw error payload from the upstream platform, passed through verbatim so integrators can read provider-specific codes. For Meta this includes error_subcode, error_user_title, and error_user_msg. | [optional]
 **details** | **array<string,mixed>** | Additional structured context (e.g. field-level validation errors), for example &#x60;privateReplyConsumed&#x60; on the private-reply endpoint&#39;s 400 when the comment&#39;s single reply is already spent. | [optional]
 

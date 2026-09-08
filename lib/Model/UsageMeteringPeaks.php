@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * UsageMeteringPeaks Class Doc Comment
  *
  * @category Class
- * @description Peak counts over the window (Metronome COUNT metrics + live active-number count). Null when &#x60;profileId&#x60; / &#x60;accountId&#x60; is set.
+ * @description Peak counts over the window (usage-based COUNT metrics + live active-number count). Null when &#x60;profileId&#x60; / &#x60;accountId&#x60; is set.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

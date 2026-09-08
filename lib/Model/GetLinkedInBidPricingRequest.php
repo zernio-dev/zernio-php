@@ -459,7 +459,7 @@ class GetLinkedInBidPricingRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets account_id
      *
-     * @param string $account_id Zernio social account ID (LinkedIn).
+     * @param string $account_id Zernio account ID (LinkedIn).
      *
      * @return self
      */

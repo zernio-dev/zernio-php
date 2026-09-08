@@ -344,7 +344,7 @@ class ListPhoneNumbers200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets connected
      *
-     * @param \Zernio\Model\ListPhoneNumbers200ResponseConnectedInner[]|null $connected Connected (bring-your-own) WhatsApp numbers — your own WABA numbers linked via Embedded Signup. Not provisioned or billed by Zernio, so they are not in `numbers`; `accountId` is the social-account id used by the messaging and inbox endpoints. Included only on the default and `status=active` views.
+     * @param \Zernio\Model\ListPhoneNumbers200ResponseConnectedInner[]|null $connected Connected (bring-your-own) WhatsApp numbers: your own WABA numbers linked via Embedded Signup. Not provisioned or billed by Zernio, so they are not in `numbers`; `accountId` is the social-account id used by the messaging and inbox endpoints. Included only on the default and `status=active` views.
      *
      * @return self
      */

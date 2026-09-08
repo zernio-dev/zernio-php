@@ -3266,7 +3266,7 @@ class AdInsightsApi
      * Flexible live insights query
      *
      * @param  string $account_id Zernio SocialAccount id (posting or ads variant); its platform selects the Meta or Google contract. (required)
-     * @param  string|null $object_id Meta only (required there): insights node — act_&lt;n&gt;, campaign id, ad set id or ad id. (optional)
+     * @param  string|null $object_id Meta only (required there): insights node (act_&lt;n&gt;, campaign id, ad set id or ad id). (optional)
      * @param  string|null $query Google only (required there): the GAQL SELECT statement to run. (optional)
      * @param  string|null $customer_id Google only: numeric customer id (no dashes) when the connection has several Google Ads accounts. (optional)
      * @param  string|null $page_token Google only: cursor from paging.nextPageToken of the previous page. (optional)
@@ -3302,7 +3302,7 @@ class AdInsightsApi
      * Flexible live insights query
      *
      * @param  string $account_id Zernio SocialAccount id (posting or ads variant); its platform selects the Meta or Google contract. (required)
-     * @param  string|null $object_id Meta only (required there): insights node — act_&lt;n&gt;, campaign id, ad set id or ad id. (optional)
+     * @param  string|null $object_id Meta only (required there): insights node (act_&lt;n&gt;, campaign id, ad set id or ad id). (optional)
      * @param  string|null $query Google only (required there): the GAQL SELECT statement to run. (optional)
      * @param  string|null $customer_id Google only: numeric customer id (no dashes) when the connection has several Google Ads accounts. (optional)
      * @param  string|null $page_token Google only: cursor from paging.nextPageToken of the previous page. (optional)
@@ -3419,7 +3419,7 @@ class AdInsightsApi
      * Flexible live insights query
      *
      * @param  string $account_id Zernio SocialAccount id (posting or ads variant); its platform selects the Meta or Google contract. (required)
-     * @param  string|null $object_id Meta only (required there): insights node — act_&lt;n&gt;, campaign id, ad set id or ad id. (optional)
+     * @param  string|null $object_id Meta only (required there): insights node (act_&lt;n&gt;, campaign id, ad set id or ad id). (optional)
      * @param  string|null $query Google only (required there): the GAQL SELECT statement to run. (optional)
      * @param  string|null $customer_id Google only: numeric customer id (no dashes) when the connection has several Google Ads accounts. (optional)
      * @param  string|null $page_token Google only: cursor from paging.nextPageToken of the previous page. (optional)
@@ -3458,7 +3458,7 @@ class AdInsightsApi
      * Flexible live insights query
      *
      * @param  string $account_id Zernio SocialAccount id (posting or ads variant); its platform selects the Meta or Google contract. (required)
-     * @param  string|null $object_id Meta only (required there): insights node — act_&lt;n&gt;, campaign id, ad set id or ad id. (optional)
+     * @param  string|null $object_id Meta only (required there): insights node (act_&lt;n&gt;, campaign id, ad set id or ad id). (optional)
      * @param  string|null $query Google only (required there): the GAQL SELECT statement to run. (optional)
      * @param  string|null $customer_id Google only: numeric customer id (no dashes) when the connection has several Google Ads accounts. (optional)
      * @param  string|null $page_token Google only: cursor from paging.nextPageToken of the previous page. (optional)
@@ -3526,7 +3526,7 @@ class AdInsightsApi
      * Create request for operation 'queryAdInsights'
      *
      * @param  string $account_id Zernio SocialAccount id (posting or ads variant); its platform selects the Meta or Google contract. (required)
-     * @param  string|null $object_id Meta only (required there): insights node — act_&lt;n&gt;, campaign id, ad set id or ad id. (optional)
+     * @param  string|null $object_id Meta only (required there): insights node (act_&lt;n&gt;, campaign id, ad set id or ad id). (optional)
      * @param  string|null $query Google only (required there): the GAQL SELECT statement to run. (optional)
      * @param  string|null $customer_id Google only: numeric customer id (no dashes) when the connection has several Google Ads accounts. (optional)
      * @param  string|null $page_token Google only: cursor from paging.nextPageToken of the previous page. (optional)

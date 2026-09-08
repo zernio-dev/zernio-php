@@ -467,7 +467,7 @@ class CustomConversion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets pixel_id
      *
-     * @param string|null $pixel_id Meta's event_source_id — the pixel the rule reads from.
+     * @param string|null $pixel_id Meta's event_source_id, the pixel the rule reads from.
      *
      * @return self
      */

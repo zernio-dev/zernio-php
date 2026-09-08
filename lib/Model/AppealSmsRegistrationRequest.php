@@ -351,7 +351,7 @@ class AppealSmsRegistrationRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets appeal_reason
      *
-     * @param string $appeal_reason Goes verbatim to the carrier reviewer — address the decline reason directly.
+     * @param string $appeal_reason Goes verbatim to the carrier reviewer. Address the decline reason directly.
      *
      * @return self
      */

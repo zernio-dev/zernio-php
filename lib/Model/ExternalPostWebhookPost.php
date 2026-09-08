@@ -508,7 +508,7 @@ class ExternalPostWebhookPost implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets account_id
      *
-     * @param string $account_id Zernio social account ID the post belongs to.
+     * @param string $account_id Zernio account ID the post belongs to.
      *
      * @return self
      */
@@ -819,7 +819,7 @@ class ExternalPostWebhookPost implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets source
      *
-     * @param string $source Always \"external\" — distinguishes these from Zernio-originated post.* events.
+     * @param string $source Always \"external\". Distinguishes these from Zernio-originated post.* events.
      *
      * @return self
      */

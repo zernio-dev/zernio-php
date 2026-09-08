@@ -504,7 +504,7 @@ class InboxWebhookMessageSender implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets phone_number
      *
-     * @param string|null $phone_number WhatsApp only. Sender's phone number in E.164 format (with leading `+`).  **Nullable during the BSUID rollout (April 2026+).** WhatsApp users who adopt a username can message businesses without exposing a phone number — this field is omitted for them. Match by `businessScopedUserId` instead. See `docs/whatsapp-bsuid-migration.md`.
+     * @param string|null $phone_number WhatsApp only. Sender's phone number in E.164 format (with leading `+`).  **Nullable during the BSUID rollout (April 2026+).** WhatsApp users who adopt a username can message businesses without exposing a phone number, so this field is omitted for them. Match by `businessScopedUserId` instead. See `docs/whatsapp-bsuid-migration.md`.
      *
      * @return self
      */
@@ -538,7 +538,7 @@ class InboxWebhookMessageSender implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets business_scoped_user_id
      *
-     * @param string|null $business_scoped_user_id WhatsApp only. Business-scoped user ID (BSUID) — Meta's canonical identifier for a WhatsApp user within your business. Present when Meta includes it in the inbound payload (rollout in progress since early April 2026). **Recommended primary identity anchor** going forward; fall back to `phoneNumber` only when this field is absent.
+     * @param string|null $business_scoped_user_id WhatsApp only. Business-scoped user ID (BSUID), Meta's canonical identifier for a WhatsApp user within your business. Present when Meta includes it in the inbound payload (rollout in progress since early April 2026). **Recommended primary identity anchor** going forward; fall back to `phoneNumber` only when this field is absent.
      *
      * @return self
      */
@@ -592,7 +592,7 @@ class InboxWebhookMessageSender implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets whatsapp_username
      *
-     * @param string|null $whatsapp_username WhatsApp only. User's WhatsApp username (e.g. `@jane`). Not a stable identifier — users can change it. Useful for display, not recommended as an identity anchor.
+     * @param string|null $whatsapp_username WhatsApp only. User's WhatsApp username (e.g. `@jane`). Not a stable identifier, because users can change it. Useful for display, not recommended as an identity anchor.
      *
      * @return self
      */

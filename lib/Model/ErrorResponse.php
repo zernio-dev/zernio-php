@@ -498,7 +498,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets platform
      *
-     * @param string|null $platform Upstream platform (e.g. meta, google, tiktok) — present when type is platform_error.
+     * @param string|null $platform Upstream platform (e.g. meta, google, tiktok), present when type is platform_error.
      *
      * @return self
      */

@@ -412,7 +412,7 @@ class AnalyticsListResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets accounts
      *
-     * @param \Zernio\Model\SocialAccount[]|null $accounts Connected social accounts (followerCount and followersLastUpdated only included if user has analytics add-on)
+     * @param \Zernio\Model\SocialAccount[]|null $accounts Connected accounts (followerCount and followersLastUpdated only included if user has analytics add-on)
      *
      * @return self
      */

@@ -326,7 +326,7 @@ class ReviewWebhookReviewReviewer implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets id
      *
-     * @param string|null $id Platform reviewer ID. Null when the platform does not expose it (common on Google Business anonymous reviews).
+     * @param string|null $id Platform reviewer ID. Null when the platform does not expose it (common on Google Business Profile anonymous reviews).
      *
      * @return self
      */

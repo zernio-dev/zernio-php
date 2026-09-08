@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * CreateStandaloneAd201ResponseOneOf1 Class Doc Comment
  *
  * @category Class
- * @description Multi-creative shape — N ads returned sharing platformCampaignId / platformAdSetId.
+ * @description Multi-creative shape: N ads returned sharing platformCampaignId / platformAdSetId.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

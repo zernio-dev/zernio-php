@@ -1041,7 +1041,7 @@ class AdTargetingApi
      * Search targeting interests
      *
      * @param  string $q Search query (required)
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdInterests'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1061,7 +1061,7 @@ class AdTargetingApi
      * Search targeting interests
      *
      * @param  string $q Search query (required)
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdInterests'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1162,7 +1162,7 @@ class AdTargetingApi
      * Search targeting interests
      *
      * @param  string $q Search query (required)
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdInterests'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1185,7 +1185,7 @@ class AdTargetingApi
      * Search targeting interests
      *
      * @param  string $q Search query (required)
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdInterests'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1237,7 +1237,7 @@ class AdTargetingApi
      * Create request for operation 'searchAdInterests'
      *
      * @param  string $q Search query (required)
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdInterests'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1353,7 +1353,7 @@ class AdTargetingApi
      *
      * Search targeting options
      *
-     * @param  string $account_id Social account ID (a connected account on the target ad platform). (required)
+     * @param  string $account_id Account ID (a connected account on the target ad platform). (required)
      * @param  string $q Search query. For geo, the locality name only (no region/country suffix). (required)
      * @param  string|null $dimension What to search. &#x60;geo&#x60; resolves locations (scope further with &#x60;geoType&#x60;), &#x60;interest&#x60;/&#x60;behavior&#x60; resolve audience entities, &#x60;income&#x60; resolves income-tier options, &#x60;language&#x60; resolves Google&#39;s targetable language_constant table (Google only), &#x60;workPosition&#x60;/&#x60;workEmployer&#x60;/&#x60;workIndustry&#x60; resolve Meta work demographics. Defaults to &#x60;interest&#x60; for backward compatibility with the deprecated /v1/ads/interests alias. (optional, default to 'interest')
      * @param  string|null $geo_type Only used when &#x60;dimension&#x3D;geo&#x60;. The kind of location to resolve. &#x60;all&#x60; searches every type in one relevance-ranked call. Defaults to &#x60;city&#x60;. (optional, default to 'city')
@@ -1376,7 +1376,7 @@ class AdTargetingApi
      *
      * Search targeting options
      *
-     * @param  string $account_id Social account ID (a connected account on the target ad platform). (required)
+     * @param  string $account_id Account ID (a connected account on the target ad platform). (required)
      * @param  string $q Search query. For geo, the locality name only (no region/country suffix). (required)
      * @param  string|null $dimension What to search. &#x60;geo&#x60; resolves locations (scope further with &#x60;geoType&#x60;), &#x60;interest&#x60;/&#x60;behavior&#x60; resolve audience entities, &#x60;income&#x60; resolves income-tier options, &#x60;language&#x60; resolves Google&#39;s targetable language_constant table (Google only), &#x60;workPosition&#x60;/&#x60;workEmployer&#x60;/&#x60;workIndustry&#x60; resolve Meta work demographics. Defaults to &#x60;interest&#x60; for backward compatibility with the deprecated /v1/ads/interests alias. (optional, default to 'interest')
      * @param  string|null $geo_type Only used when &#x60;dimension&#x3D;geo&#x60;. The kind of location to resolve. &#x60;all&#x60; searches every type in one relevance-ranked call. Defaults to &#x60;city&#x60;. (optional, default to 'city')
@@ -1480,7 +1480,7 @@ class AdTargetingApi
      *
      * Search targeting options
      *
-     * @param  string $account_id Social account ID (a connected account on the target ad platform). (required)
+     * @param  string $account_id Account ID (a connected account on the target ad platform). (required)
      * @param  string $q Search query. For geo, the locality name only (no region/country suffix). (required)
      * @param  string|null $dimension What to search. &#x60;geo&#x60; resolves locations (scope further with &#x60;geoType&#x60;), &#x60;interest&#x60;/&#x60;behavior&#x60; resolve audience entities, &#x60;income&#x60; resolves income-tier options, &#x60;language&#x60; resolves Google&#39;s targetable language_constant table (Google only), &#x60;workPosition&#x60;/&#x60;workEmployer&#x60;/&#x60;workIndustry&#x60; resolve Meta work demographics. Defaults to &#x60;interest&#x60; for backward compatibility with the deprecated /v1/ads/interests alias. (optional, default to 'interest')
      * @param  string|null $geo_type Only used when &#x60;dimension&#x3D;geo&#x60;. The kind of location to resolve. &#x60;all&#x60; searches every type in one relevance-ranked call. Defaults to &#x60;city&#x60;. (optional, default to 'city')
@@ -1506,7 +1506,7 @@ class AdTargetingApi
      *
      * Search targeting options
      *
-     * @param  string $account_id Social account ID (a connected account on the target ad platform). (required)
+     * @param  string $account_id Account ID (a connected account on the target ad platform). (required)
      * @param  string $q Search query. For geo, the locality name only (no region/country suffix). (required)
      * @param  string|null $dimension What to search. &#x60;geo&#x60; resolves locations (scope further with &#x60;geoType&#x60;), &#x60;interest&#x60;/&#x60;behavior&#x60; resolve audience entities, &#x60;income&#x60; resolves income-tier options, &#x60;language&#x60; resolves Google&#39;s targetable language_constant table (Google only), &#x60;workPosition&#x60;/&#x60;workEmployer&#x60;/&#x60;workIndustry&#x60; resolve Meta work demographics. Defaults to &#x60;interest&#x60; for backward compatibility with the deprecated /v1/ads/interests alias. (optional, default to 'interest')
      * @param  string|null $geo_type Only used when &#x60;dimension&#x3D;geo&#x60;. The kind of location to resolve. &#x60;all&#x60; searches every type in one relevance-ranked call. Defaults to &#x60;city&#x60;. (optional, default to 'city')
@@ -1561,7 +1561,7 @@ class AdTargetingApi
     /**
      * Create request for operation 'searchAdTargeting'
      *
-     * @param  string $account_id Social account ID (a connected account on the target ad platform). (required)
+     * @param  string $account_id Account ID (a connected account on the target ad platform). (required)
      * @param  string $q Search query. For geo, the locality name only (no region/country suffix). (required)
      * @param  string|null $dimension What to search. &#x60;geo&#x60; resolves locations (scope further with &#x60;geoType&#x60;), &#x60;interest&#x60;/&#x60;behavior&#x60; resolve audience entities, &#x60;income&#x60; resolves income-tier options, &#x60;language&#x60; resolves Google&#39;s targetable language_constant table (Google only), &#x60;workPosition&#x60;/&#x60;workEmployer&#x60;/&#x60;workIndustry&#x60; resolve Meta work demographics. Defaults to &#x60;interest&#x60; for backward compatibility with the deprecated /v1/ads/interests alias. (optional, default to 'interest')
      * @param  string|null $geo_type Only used when &#x60;dimension&#x3D;geo&#x60;. The kind of location to resolve. &#x60;all&#x60; searches every type in one relevance-ranked call. Defaults to &#x60;city&#x60;. (optional, default to 'city')

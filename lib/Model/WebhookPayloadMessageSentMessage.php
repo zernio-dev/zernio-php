@@ -307,6 +307,7 @@ class WebhookPayloadMessageSentMessage implements ModelInterface, ArrayAccess, \
     public const DIRECTION_OUTGOING = 'outgoing';
     public const SOURCE_WHATSAPP_BUSINESS_APP = 'whatsapp_business_app';
     public const SOURCE_CLOUD_API = 'cloud_api';
+    public const SOURCE_META_BUSINESS_AGENT = 'meta_business_agent';
     public const SENT_VIA_HUMAN = 'human';
     public const SENT_VIA_API = 'api';
     public const SENT_VIA_BROADCAST = 'broadcast';
@@ -357,6 +358,7 @@ class WebhookPayloadMessageSentMessage implements ModelInterface, ArrayAccess, \
         return [
             self::SOURCE_WHATSAPP_BUSINESS_APP,
             self::SOURCE_CLOUD_API,
+            self::SOURCE_META_BUSINESS_AGENT,
         ];
     }
 
@@ -825,7 +827,7 @@ class WebhookPayloadMessageSentMessage implements ModelInterface, ArrayAccess, \
     /**
      * Sets source
      *
-     * @param string|null $source WhatsApp send origin. whatsapp_business_app when sent from the WhatsApp Business phone app on a Coexistence number; cloud_api when sent through Zernio (dashboard, API, or broadcasts). Absent on non-WhatsApp platforms. Says where WhatsApp saw the send come from, not which Zernio surface produced it: read sentVia for that.
+     * @param string|null $source WhatsApp send origin. whatsapp_business_app when sent from the WhatsApp Business phone app on a Coexistence number; cloud_api when sent through Zernio (dashboard, API, or broadcasts); meta_business_agent when Meta Business Agent answered on the number. Absent on non-WhatsApp platforms. Says where WhatsApp saw the send come from, not which Zernio surface produced it: read sentVia for that.
      *
      * @return self
      */

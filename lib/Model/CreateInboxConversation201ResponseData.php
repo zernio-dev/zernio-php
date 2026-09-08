@@ -385,7 +385,7 @@ class CreateInboxConversation201ResponseData implements ModelInterface, ArrayAcc
     /**
      * Sets participant_id
      *
-     * @param string|null $participant_id Twitter numeric user ID of the recipient
+     * @param string|null $participant_id X numeric user ID of the recipient
      *
      * @return self
      */
@@ -446,7 +446,7 @@ class CreateInboxConversation201ResponseData implements ModelInterface, ArrayAcc
     /**
      * Sets participant_username
      *
-     * @param string|null $participant_username Twitter username of the recipient
+     * @param string|null $participant_username X username of the recipient
      *
      * @return self
      */

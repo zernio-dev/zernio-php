@@ -609,7 +609,7 @@ class GetInboxTopAccounts200ResponseAccountsInner implements ModelInterface, Arr
     /**
      * Sets replied_count
      *
-     * @param int|null $replied_count Distinguishes 'instant replies' from 'no replies at all' so a zero medianResponseSeconds with repliedCount=0 renders as '—' instead of '0s'
+     * @param int|null $replied_count Distinguishes 'instant replies' from 'no replies at all' so a zero medianResponseSeconds with repliedCount=0 renders as an em dash instead of '0s'
      *
      * @return self
      */

@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * WebhookPayloadMessageMetadata Class Doc Comment
  *
  * @category Class
- * @description Platform-specific message context (present when the message is a quick reply tap, postback button tap, inline keyboard callback, or a quote-reply to an earlier message)
+ * @description Platform-specific message context (present when the message is a quick reply tap, postback button tap, inline keyboard callback, a quote-reply to an earlier message, or a WhatsApp inbound that Meta Business Agent is answering)
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,6 +59,7 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
+        'standby' => 'bool',
         'quoted_message_id' => 'string',
         'quoted_message' => '\Zernio\Model\WebhookPayloadMessageMetadataQuotedMessage',
         'quick_reply_payload' => 'string',
@@ -90,6 +91,7 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'standby' => null,
         'quoted_message_id' => null,
         'quoted_message' => null,
         'quick_reply_payload' => null,
@@ -119,6 +121,7 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'standby' => false,
         'quoted_message_id' => false,
         'quoted_message' => false,
         'quick_reply_payload' => false,
@@ -228,6 +231,7 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
+        'standby' => 'standby',
         'quoted_message_id' => 'quotedMessageId',
         'quoted_message' => 'quotedMessage',
         'quick_reply_payload' => 'quickReplyPayload',
@@ -257,6 +261,7 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
+        'standby' => 'setStandby',
         'quoted_message_id' => 'setQuotedMessageId',
         'quoted_message' => 'setQuotedMessage',
         'quick_reply_payload' => 'setQuickReplyPayload',
@@ -286,6 +291,7 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
+        'standby' => 'getStandby',
         'quoted_message_id' => 'getQuotedMessageId',
         'quoted_message' => 'getQuotedMessage',
         'quick_reply_payload' => 'getQuickReplyPayload',
@@ -398,6 +404,7 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('standby', $data ?? [], null);
         $this->setIfExists('quoted_message_id', $data ?? [], null);
         $this->setIfExists('quoted_message', $data ?? [], null);
         $this->setIfExists('quick_reply_payload', $data ?? [], null);
@@ -480,6 +487,33 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets standby
+     *
+     * @return bool|null
+     */
+    public function getStandby()
+    {
+        return $this->container['standby'];
+    }
+
+    /**
+     * Sets standby
+     *
+     * @param bool|null $standby WhatsApp only. true when this inbound arrived while Meta Business Agent held the conversation: the agent answers it, and Zernio only observes. Sending a reply takes control back. See conversation.control_changed.
+     *
+     * @return self
+     */
+    public function setStandby($standby)
+    {
+        if (is_null($standby)) {
+            throw new \InvalidArgumentException('non-nullable standby cannot be null');
+        }
+        $this->container['standby'] = $standby;
+
+        return $this;
+    }
 
     /**
      * Gets quoted_message_id
@@ -1054,7 +1088,7 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets no_renderable_content
      *
-     * @param bool|null $no_renderable_content Instagram / Facebook Messenger only. Set when the message carries nothing an integrator can render (a `template` attachment with no text and no parseable content, or Meta's own `is_unsupported` flag). Sibling of `unsupported` above (WhatsApp only, carries Meta's error code/title/details): this field has no error envelope, just the boolean. Absence means \"not flagged\", never \"checked and renderable\".
+     * @param bool|null $no_renderable_content Instagram / Facebook Messenger only. Set when the message carries nothing an integrator can render (a `template` attachment with no text and no parseable content, or Meta's own `is_unsupported` flag). Sibling of `unsupported` above (WhatsApp only, carries Meta's error code/title/details): this field has no error envelope, only the boolean. Absence means \"not flagged\", never \"checked and renderable\".
      *
      * @return self
      */

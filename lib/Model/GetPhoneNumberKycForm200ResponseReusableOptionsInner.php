@@ -324,7 +324,7 @@ class GetPhoneNumberKycForm200ResponseReusableOptionsInner implements ModelInter
     /**
      * Sets id
      *
-     * @param string|null $id Opaque option id — pass as `reuseOptionId` on POST. Stable selection key (a phone number is not unique across verifications).
+     * @param string|null $id Opaque option id. Pass as `reuseOptionId` on POST. Stable selection key (a phone number is not unique across verifications).
      *
      * @return self
      */
@@ -351,7 +351,7 @@ class GetPhoneNumberKycForm200ResponseReusableOptionsInner implements ModelInter
     /**
      * Sets from_phone_number
      *
-     * @param string|null $from_phone_number Display only — the number this verification was submitted for. Not a selection key.
+     * @param string|null $from_phone_number Display only. The number this verification was submitted for. Not a selection key.
      *
      * @return self
      */

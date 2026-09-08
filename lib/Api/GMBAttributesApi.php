@@ -138,7 +138,7 @@ class GMBAttributesApi
      * Get attribute metadata
      *
      * @param  string $account_id account_id (required)
-     * @param  string|null $location_id GBP location ID (e.g. \&quot;6257659026299438786\&quot;). If omitted, uses the account&#39;s stored selectedLocationId. Mutually exclusive with categoryName. (optional)
+     * @param  string|null $location_id Google Business Profile location ID (e.g. \&quot;6257659026299438786\&quot;). If omitted, uses the account&#39;s stored selectedLocationId. Mutually exclusive with categoryName. (optional)
      * @param  string|null $category_name Category resource name, must start with \&quot;categories/\&quot; (e.g. \&quot;categories/gcid:plumber\&quot;). Required together with regionCode. Mutually exclusive with locationId. (optional)
      * @param  string|null $region_code BCP-47 region code (e.g. \&quot;US\&quot;, \&quot;ES\&quot;). Required when categoryName is provided. (optional)
      * @param  string|null $language_code BCP-47 language code for display names (e.g. \&quot;en\&quot;, \&quot;es\&quot;). Optional when categoryName is provided. Omitted from the Google call when not supplied. (optional)
@@ -162,7 +162,7 @@ class GMBAttributesApi
      * Get attribute metadata
      *
      * @param  string $account_id (required)
-     * @param  string|null $location_id GBP location ID (e.g. \&quot;6257659026299438786\&quot;). If omitted, uses the account&#39;s stored selectedLocationId. Mutually exclusive with categoryName. (optional)
+     * @param  string|null $location_id Google Business Profile location ID (e.g. \&quot;6257659026299438786\&quot;). If omitted, uses the account&#39;s stored selectedLocationId. Mutually exclusive with categoryName. (optional)
      * @param  string|null $category_name Category resource name, must start with \&quot;categories/\&quot; (e.g. \&quot;categories/gcid:plumber\&quot;). Required together with regionCode. Mutually exclusive with locationId. (optional)
      * @param  string|null $region_code BCP-47 region code (e.g. \&quot;US\&quot;, \&quot;ES\&quot;). Required when categoryName is provided. (optional)
      * @param  string|null $language_code BCP-47 language code for display names (e.g. \&quot;en\&quot;, \&quot;es\&quot;). Optional when categoryName is provided. Omitted from the Google call when not supplied. (optional)
@@ -295,7 +295,7 @@ class GMBAttributesApi
      * Get attribute metadata
      *
      * @param  string $account_id (required)
-     * @param  string|null $location_id GBP location ID (e.g. \&quot;6257659026299438786\&quot;). If omitted, uses the account&#39;s stored selectedLocationId. Mutually exclusive with categoryName. (optional)
+     * @param  string|null $location_id Google Business Profile location ID (e.g. \&quot;6257659026299438786\&quot;). If omitted, uses the account&#39;s stored selectedLocationId. Mutually exclusive with categoryName. (optional)
      * @param  string|null $category_name Category resource name, must start with \&quot;categories/\&quot; (e.g. \&quot;categories/gcid:plumber\&quot;). Required together with regionCode. Mutually exclusive with locationId. (optional)
      * @param  string|null $region_code BCP-47 region code (e.g. \&quot;US\&quot;, \&quot;ES\&quot;). Required when categoryName is provided. (optional)
      * @param  string|null $language_code BCP-47 language code for display names (e.g. \&quot;en\&quot;, \&quot;es\&quot;). Optional when categoryName is provided. Omitted from the Google call when not supplied. (optional)
@@ -322,7 +322,7 @@ class GMBAttributesApi
      * Get attribute metadata
      *
      * @param  string $account_id (required)
-     * @param  string|null $location_id GBP location ID (e.g. \&quot;6257659026299438786\&quot;). If omitted, uses the account&#39;s stored selectedLocationId. Mutually exclusive with categoryName. (optional)
+     * @param  string|null $location_id Google Business Profile location ID (e.g. \&quot;6257659026299438786\&quot;). If omitted, uses the account&#39;s stored selectedLocationId. Mutually exclusive with categoryName. (optional)
      * @param  string|null $category_name Category resource name, must start with \&quot;categories/\&quot; (e.g. \&quot;categories/gcid:plumber\&quot;). Required together with regionCode. Mutually exclusive with locationId. (optional)
      * @param  string|null $region_code BCP-47 region code (e.g. \&quot;US\&quot;, \&quot;ES\&quot;). Required when categoryName is provided. (optional)
      * @param  string|null $language_code BCP-47 language code for display names (e.g. \&quot;en\&quot;, \&quot;es\&quot;). Optional when categoryName is provided. Omitted from the Google call when not supplied. (optional)
@@ -378,7 +378,7 @@ class GMBAttributesApi
      * Create request for operation 'getGmbAttributeMetadata'
      *
      * @param  string $account_id (required)
-     * @param  string|null $location_id GBP location ID (e.g. \&quot;6257659026299438786\&quot;). If omitted, uses the account&#39;s stored selectedLocationId. Mutually exclusive with categoryName. (optional)
+     * @param  string|null $location_id Google Business Profile location ID (e.g. \&quot;6257659026299438786\&quot;). If omitted, uses the account&#39;s stored selectedLocationId. Mutually exclusive with categoryName. (optional)
      * @param  string|null $category_name Category resource name, must start with \&quot;categories/\&quot; (e.g. \&quot;categories/gcid:plumber\&quot;). Required together with regionCode. Mutually exclusive with locationId. (optional)
      * @param  string|null $region_code BCP-47 region code (e.g. \&quot;US\&quot;, \&quot;ES\&quot;). Required when categoryName is provided. (optional)
      * @param  string|null $language_code BCP-47 language code for display names (e.g. \&quot;en\&quot;, \&quot;es\&quot;). Optional when categoryName is provided. Omitted from the Google call when not supplied. (optional)

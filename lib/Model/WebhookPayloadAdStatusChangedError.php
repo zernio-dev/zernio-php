@@ -321,7 +321,7 @@ class WebhookPayloadAdStatusChangedError implements ModelInterface, ArrayAccess,
     /**
      * Sets code
      *
-     * @param string $code Platform-native error code, forwarded verbatim. For Meta this is `error_code` as a string. Use as the stable discriminator — `summary` and `message` are localized.
+     * @param string $code Platform-native error code, forwarded verbatim. For Meta this is `error_code` as a string. Use as the stable discriminator, since `summary` and `message` are localized.
      *
      * @return self
      */
@@ -348,7 +348,7 @@ class WebhookPayloadAdStatusChangedError implements ModelInterface, ArrayAccess,
     /**
      * Sets summary
      *
-     * @param string|null $summary Short human-readable summary (Meta `error_summary`). Localized to the ad-account owner's Meta locale — display only, do not match on it.
+     * @param string|null $summary Short human-readable summary (Meta `error_summary`). Localized to the ad-account owner's Meta locale. Display only, do not match on it.
      *
      * @return self
      */
@@ -375,7 +375,7 @@ class WebhookPayloadAdStatusChangedError implements ModelInterface, ArrayAccess,
     /**
      * Sets message
      *
-     * @param string|null $message Full human-readable error message (Meta `error_message`). Localized — display only.
+     * @param string|null $message Full human-readable error message (Meta `error_message`). Localized, display only.
      *
      * @return self
      */

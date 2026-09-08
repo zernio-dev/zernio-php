@@ -84,7 +84,7 @@ followUser($follow_user_request): \Zernio\Model\FollowUser200Response
 
 Follow a user
 
-Follow a user on X/Twitter. Requires the follows.write OAuth scope. For protected accounts, a follow request is sent instead (pending_follow will be true).
+Follow a user on X. Requires the follows.write OAuth scope. For protected accounts, a follow request is sent instead (pending_follow will be true).
 
 ### Example
 
@@ -163,7 +163,7 @@ $apiInstance = new Zernio\Api\TwitterEngagementApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | The social account ID whose X token is used for the lookup
+$account_id = 'account_id_example'; // string | The account ID whose X token is used for the lookup
 $id = 'id_example'; // string | Numeric tweet ID or a tweet URL (e.g. https://x.com/user/status/123...)
 
 try {
@@ -178,7 +178,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The social account ID whose X token is used for the lookup | |
+| **account_id** | **string**| The account ID whose X token is used for the lookup | |
 | **id** | **string**| Numeric tweet ID or a tweet URL (e.g. https://x.com/user/status/123...) | |
 
 ### Return type
@@ -328,7 +328,7 @@ searchTweets($account_id, $query, $limit, $since_id, $until_id, $start_time, $en
 
 Search recent tweets
 
-Search public tweets from the last 7 days matching an X search query, e.g. to discover tweets to reply to. The query string is passed through to X unchanged and supports X's search operators (`from:user`, `-is:retweet`, `is:reply`, `lang:en`, `\"exact phrase\"`, `conversation_id:123`, boolean `OR`, ...). Note that standalone operators like `is:` / `has:` / `lang:` must be combined with a keyword or `from:` clause.  To reply to a found tweet, pass its `id` as the twitter platform entry's `platformSpecificData.replyToTweetId` when creating a post.  Rate limit: 300 requests per 15-min window per connected account.
+Search public tweets from the last 7 days matching an X search query, e.g. to discover tweets to reply to. The query string is passed through to X unchanged and supports X's search operators (`from:user`, `-is:retweet`, `is:reply`, `lang:en`, `\"exact phrase\"`, `conversation_id:123`, boolean `OR`, ...). Standalone operators like `is:` / `has:` / `lang:` must be combined with a keyword or `from:` clause.  To reply to a found tweet, pass its `id` as the twitter platform entry's `platformSpecificData.replyToTweetId` when creating a post.  Rate limit: 300 requests per 15-min window per connected account.
 
 ### Example
 
@@ -347,7 +347,7 @@ $apiInstance = new Zernio\Api\TwitterEngagementApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | The social account ID
+$account_id = 'account_id_example'; // string | The account ID
 $query = 'query_example'; // string | X search query, max 512 characters. Operators are passed through unchanged; X rejects malformed queries with a 400.
 $limit = 10; // int | Results per page. X requires a minimum of 10; values below 10 are rejected.
 $since_id = 'since_id_example'; // string | Only return tweets with an ID greater than (more recent than) this numeric tweet ID. Non-numeric values are rejected with 400.
@@ -369,7 +369,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The social account ID | |
+| **account_id** | **string**| The account ID | |
 | **query** | **string**| X search query, max 512 characters. Operators are passed through unchanged; X rejects malformed queries with a 400. | |
 | **limit** | **int**| Results per page. X requires a minimum of 10; values below 10 are rejected. | [optional] [default to 10] |
 | **since_id** | **string**| Only return tweets with an ID greater than (more recent than) this numeric tweet ID. Non-numeric values are rejected with 400. | [optional] |
@@ -466,7 +466,7 @@ unfollowUser($account_id, $target_user_id): \Zernio\Model\UnfollowUser200Respons
 
 Unfollow a user
 
-Unfollow a user on X/Twitter.
+Unfollow a user on X.
 
 ### Example
 
@@ -486,7 +486,7 @@ $apiInstance = new Zernio\Api\TwitterEngagementApi(
     $config
 );
 $account_id = 'account_id_example'; // string
-$target_user_id = 'target_user_id_example'; // string | The Twitter ID of the user to unfollow
+$target_user_id = 'target_user_id_example'; // string | The X ID of the user to unfollow
 
 try {
     $result = $apiInstance->unfollowUser($account_id, $target_user_id);
@@ -501,7 +501,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **target_user_id** | **string**| The Twitter ID of the user to unfollow | |
+| **target_user_id** | **string**| The X ID of the user to unfollow | |
 
 ### Return type
 

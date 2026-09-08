@@ -575,7 +575,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets reuse_from
      *
-     * @param string|null $reuse_from Legacy fallback for `reuseOptionId`: the source phone number (GET reusable.options[].fromPhoneNumber). Ambiguous when a number labels two verifications — prefer `reuseOptionId`. Omitted = the approved default. No match = 409.
+     * @param string|null $reuse_from Legacy fallback for `reuseOptionId`: the source phone number (GET reusable.options[].fromPhoneNumber). Ambiguous when a number labels two verifications, so prefer `reuseOptionId`. Omitted = the approved default. No match = 409.
      *
      * @return self
      */

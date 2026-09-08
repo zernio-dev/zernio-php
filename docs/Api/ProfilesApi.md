@@ -1,6 +1,6 @@
 # Zernio\ProfilesApi
 
-Manage profiles (named groups of social accounts).
+Manage profiles (named groups of accounts).
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
@@ -21,7 +21,7 @@ createProfile($create_profile_request, $idempotency_key): \Zernio\Model\ProfileC
 
 Create profile
 
-Creates a new profile with a name, optional description, and color. Names are unique per workspace: a duplicate returns a 409 whose details.existingProfileId carries the id of the existing profile. Send an Idempotency-Key header to make retries safe: a retried create with the same key and body replays the original 201 (same _id) instead of conflicting.
+Creates a new profile with a name, optional description, and color. Names are unique per team: a duplicate returns a 409 whose details.existingProfileId carries the id of the existing profile. Send an Idempotency-Key header to make retries safe: a retried create with the same key and body replays the original 201 (same _id) instead of conflicting.
 
 ### Example
 

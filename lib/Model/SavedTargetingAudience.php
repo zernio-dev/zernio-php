@@ -407,7 +407,7 @@ class SavedTargetingAudience implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets account_id
      *
-     * @param string $account_id Social account ID on the target ad platform.
+     * @param string $account_id Account ID on the target ad platform.
      *
      * @return self
      */

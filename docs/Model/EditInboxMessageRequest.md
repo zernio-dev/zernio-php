@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**account_id** | **string** | Social account ID |
+**account_id** | **string** | Account ID |
 **text** | **string** | New message text | [optional]
 **reply_markup** | [**\Zernio\Model\EditInboxMessageRequestReplyMarkup**](EditInboxMessageRequestReplyMarkup.md) |  | [optional]
 

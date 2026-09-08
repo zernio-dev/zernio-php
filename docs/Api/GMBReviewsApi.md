@@ -83,7 +83,7 @@ deleteGoogleBusinessReviewReply($account_id, $review_id): \Zernio\Model\DeleteGo
 
 Delete a review reply
 
-Removes the business owner reply from a Google Business review. The review itself remains.
+Removes the business owner reply from a Google Business Profile review. The review itself remains.
 
 ### Example
 
@@ -145,7 +145,7 @@ getGoogleBusinessReview($account_id, $review_id, $location_id): \Zernio\Model\Ge
 
 Get a review
 
-Returns one Google Business review, in the same shape as the entries of GET /v1/accounts/{accountId}/gmb-reviews. The review is read from the account's selected location unless locationId overrides it, and Google returns 404 for a review id that belongs to another location. Read the review before replying if a human may have answered it already: replies are overwritten in place and Google keeps no history.
+Returns one Google Business Profile review, in the same shape as the entries of GET /v1/accounts/{accountId}/gmb-reviews. The review is read from the account's selected location unless locationId overrides it, and Google returns 404 for a review id that belongs to another location. Read the review before replying if a human may have answered it already: replies are overwritten in place and Google keeps no history.
 
 ### Example
 
@@ -209,7 +209,7 @@ getGoogleBusinessReviews($account_id, $location_id, $page_size, $page_token): \Z
 
 Get reviews
 
-Returns reviews for a GBP account including ratings, comments, and owner replies. Use nextPageToken for pagination.
+Returns reviews for a Google Business Profile account including ratings, comments, and owner replies. Use nextPageToken for pagination.
 
 ### Example
 
@@ -275,7 +275,7 @@ replyToGoogleBusinessReview($account_id, $review_id, $reply_to_google_business_r
 
 Reply to a review
 
-Posts (or updates) the business owner reply to a Google Business review. The reply is associated with the account's currently selected location (set via /v1/accounts/{accountId}/gmb-locations). Calling this endpoint a second time on the same review overwrites the previous reply (PUT semantics on Google's side). Google keeps no history, so an automated retry silently replaces a reply someone edited by hand in the Google Business Profile UI. Read the review before retrying if a human may have answered it.
+Posts (or updates) the business owner reply to a Google Business Profile review. The reply is associated with the account's currently selected location (set via /v1/accounts/{accountId}/gmb-locations). Calling this endpoint a second time on the same review overwrites the previous reply (PUT semantics on Google's side). Google keeps no history, so an automated retry silently replaces a reply someone edited by hand in the Google Business Profile UI. Read the review before retrying if a human may have answered it.
 
 ### Example
 

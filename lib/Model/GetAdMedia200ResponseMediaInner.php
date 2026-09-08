@@ -399,7 +399,7 @@ class GetAdMedia200ResponseMediaInner implements ModelInterface, ArrayAccess, \J
     /**
      * Sets url
      *
-     * @param string|null $url Direct file URL (signed; short-lived — see description).
+     * @param string|null $url Direct file URL (signed; short-lived, see description).
      *
      * @return self
      */

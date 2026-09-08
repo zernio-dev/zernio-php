@@ -36,7 +36,7 @@ $apiInstance = new Zernio\Api\WhatsAppTemplatesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | WhatsApp social account ID
+$account_id = 'account_id_example'; // string | WhatsApp account ID
 $name = 'name_example'; // string | Exact library template name
 $language = 'language_example'; // string | Desired language variant (e.g. es, en_US). If the template is not offered in it, the first available variant is returned and named in the response language field.
 
@@ -52,7 +52,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| WhatsApp social account ID | |
+| **account_id** | **string**| WhatsApp account ID | |
 | **name** | **string**| Exact library template name | |
 | **language** | **string**| Desired language variant (e.g. es, en_US). If the template is not offered in it, the first available variant is returned and named in the response language field. | [optional] |
 

@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * UsageMetering Class Doc Comment
  *
  * @category Class
- * @description Billed spend by product family over a window, from Metronome&#39;s invoice breakdown (the CHARGE view). Returned by &#x60;GET /v1/usage&#x60;.
+ * @description Billed spend by product family over a window, from the usage-based invoice breakdown (the CHARGE view). Returned by &#x60;GET /v1/usage&#x60;.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -400,7 +400,7 @@ class UsageMetering implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets supported
      *
-     * @param bool|null $supported False for legacy Stripe accounts (no Metronome invoice to split); `days` and `totals` are then empty/zero.
+     * @param bool|null $supported False for legacy Stripe accounts (no usage-based invoice to split); `days` and `totals` are then empty/zero.
      *
      * @return self
      */

@@ -709,7 +709,7 @@ class CallRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets account_id
      *
-     * @param string|null $account_id Owning social account. The unified /v1/calls/{id} detail + recording endpoints work for any channel; the channel-specific endpoints remain for account-scoped access.
+     * @param string|null $account_id Owning account. The unified /v1/calls/{id} detail + recording endpoints work for any channel; the channel-specific endpoints remain for account-scoped access.
      *
      * @return self
      */
@@ -1446,7 +1446,7 @@ class CallRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets hangup_cause
      *
-     * @param string|null $hangup_cause Raw carrier hangup cause behind endReason (e.g. normal_clearing, not_found, time_limit) — the actual motive when endReason is a coarse bucket.
+     * @param string|null $hangup_cause Raw carrier hangup cause behind endReason (e.g. normal_clearing, not_found, time_limit). The actual motive when endReason is a coarse bucket.
      *
      * @return self
      */

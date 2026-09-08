@@ -1353,7 +1353,7 @@ class AdAudiencesApi
      *
      * List custom audiences
      *
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string $ad_account_id Platform ad account ID (required)
      * @param  string|null $platform platform (optional)
      * @param  string|null $type Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences; the other types return uploaded/derived audiences. (optional)
@@ -1374,7 +1374,7 @@ class AdAudiencesApi
      *
      * List custom audiences
      *
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string $ad_account_id Platform ad account ID (required)
      * @param  string|null $platform (optional)
      * @param  string|null $type Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences; the other types return uploaded/derived audiences. (optional)
@@ -1476,7 +1476,7 @@ class AdAudiencesApi
      *
      * List custom audiences
      *
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string $ad_account_id Platform ad account ID (required)
      * @param  string|null $platform (optional)
      * @param  string|null $type Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences; the other types return uploaded/derived audiences. (optional)
@@ -1500,7 +1500,7 @@ class AdAudiencesApi
      *
      * List custom audiences
      *
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string $ad_account_id Platform ad account ID (required)
      * @param  string|null $platform (optional)
      * @param  string|null $type Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences; the other types return uploaded/derived audiences. (optional)
@@ -1553,7 +1553,7 @@ class AdAudiencesApi
     /**
      * Create request for operation 'listAdAudiences'
      *
-     * @param  string $account_id Social account ID (required)
+     * @param  string $account_id Account ID (required)
      * @param  string $ad_account_id Platform ad account ID (required)
      * @param  string|null $platform (optional)
      * @param  string|null $type Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences; the other types return uploaded/derived audiences. (optional)

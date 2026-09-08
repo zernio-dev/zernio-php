@@ -392,7 +392,7 @@ class SendDiscordDirectMessage200Response implements ModelInterface, ArrayAccess
     /**
      * Sets url
      *
-     * @param string|null $url Direct link to the message — uses Discord's @me path for DMs
+     * @param string|null $url Direct link to the message, using Discord's @me path for DMs
      *
      * @return self
      */

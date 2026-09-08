@@ -1891,7 +1891,7 @@ class PostsApi
      * @param  bool|null $include_hidden include_hidden (optional, default to false)
      * @param  string|null $search Search posts by text content. (optional)
      * @param  string|null $sort_by Sort order for results. (optional, default to 'scheduled-desc')
-     * @param  string|null $account_id Filter posts to those published via a specific social account (24-char hex ObjectId). (optional)
+     * @param  string|null $account_id Filter posts to those published via a specific account (24-char hex ObjectId). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPosts'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1921,7 +1921,7 @@ class PostsApi
      * @param  bool|null $include_hidden (optional, default to false)
      * @param  string|null $search Search posts by text content. (optional)
      * @param  string|null $sort_by Sort order for results. (optional, default to 'scheduled-desc')
-     * @param  string|null $account_id Filter posts to those published via a specific social account (24-char hex ObjectId). (optional)
+     * @param  string|null $account_id Filter posts to those published via a specific account (24-char hex ObjectId). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPosts'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2046,7 +2046,7 @@ class PostsApi
      * @param  bool|null $include_hidden (optional, default to false)
      * @param  string|null $search Search posts by text content. (optional)
      * @param  string|null $sort_by Sort order for results. (optional, default to 'scheduled-desc')
-     * @param  string|null $account_id Filter posts to those published via a specific social account (24-char hex ObjectId). (optional)
+     * @param  string|null $account_id Filter posts to those published via a specific account (24-char hex ObjectId). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPosts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2079,7 +2079,7 @@ class PostsApi
      * @param  bool|null $include_hidden (optional, default to false)
      * @param  string|null $search Search posts by text content. (optional)
      * @param  string|null $sort_by Sort order for results. (optional, default to 'scheduled-desc')
-     * @param  string|null $account_id Filter posts to those published via a specific social account (24-char hex ObjectId). (optional)
+     * @param  string|null $account_id Filter posts to those published via a specific account (24-char hex ObjectId). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPosts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2141,7 +2141,7 @@ class PostsApi
      * @param  bool|null $include_hidden (optional, default to false)
      * @param  string|null $search Search posts by text content. (optional)
      * @param  string|null $sort_by Sort order for results. (optional, default to 'scheduled-desc')
-     * @param  string|null $account_id Filter posts to those published via a specific social account (24-char hex ObjectId). (optional)
+     * @param  string|null $account_id Filter posts to those published via a specific account (24-char hex ObjectId). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPosts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

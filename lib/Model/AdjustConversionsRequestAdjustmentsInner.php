@@ -482,7 +482,7 @@ class AdjustConversionsRequestAdjustmentsInner implements ModelInterface, ArrayA
     /**
      * Sets gclid
      *
-     * @param string|null $gclid Alternative key — the original click ID. Pair with `conversionTime`. Not valid for ENHANCEMENT.
+     * @param string|null $gclid Alternative key. The original click ID. Pair with `conversionTime`. Not valid for ENHANCEMENT.
      *
      * @return self
      */
@@ -536,7 +536,7 @@ class AdjustConversionsRequestAdjustmentsInner implements ModelInterface, ArrayA
     /**
      * Sets restatement_value
      *
-     * @param float|null $restatement_value RESTATEMENT only — the corrected TOTAL conversion value.
+     * @param float|null $restatement_value RESTATEMENT only. The corrected TOTAL conversion value.
      *
      * @return self
      */
@@ -563,7 +563,7 @@ class AdjustConversionsRequestAdjustmentsInner implements ModelInterface, ArrayA
     /**
      * Sets currency
      *
-     * @param string|null $currency RESTATEMENT only — ISO 4217 currency for `restatementValue`.
+     * @param string|null $currency RESTATEMENT only. ISO 4217 currency for `restatementValue`.
      *
      * @return self
      */
@@ -617,7 +617,7 @@ class AdjustConversionsRequestAdjustmentsInner implements ModelInterface, ArrayA
     /**
      * Sets user_agent
      *
-     * @param string|null $user_agent ENHANCEMENT only — the original conversion's user agent (improves match quality).
+     * @param string|null $user_agent ENHANCEMENT only. The original conversion's user agent (improves match quality).
      *
      * @return self
      */

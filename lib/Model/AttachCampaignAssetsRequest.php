@@ -358,7 +358,7 @@ class AttachCampaignAssetsRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets account_id
      *
-     * @param string $account_id Zernio Google Ads SocialAccount id — resolves the customer id + refresh token.
+     * @param string $account_id Zernio Google Ads SocialAccount id. Resolves the customer id + refresh token.
      *
      * @return self
      */
@@ -412,7 +412,7 @@ class AttachCampaignAssetsRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets sitelinks
      *
-     * @param \Zernio\Model\AttachCampaignAssetsRequestSitelinksInner[]|null $sitelinks See POST /v1/ads/create sitelinks — same shape.
+     * @param \Zernio\Model\AttachCampaignAssetsRequestSitelinksInner[]|null $sitelinks See POST /v1/ads/create sitelinks, same shape.
      *
      * @return self
      */

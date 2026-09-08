@@ -455,7 +455,7 @@ class AccountWithFollowerStatsAllOfAccountStats implements ModelInterface, Array
     /**
      * Sets tweet_count
      *
-     * @param float|null $tweet_count Total tweets (X/Twitter)
+     * @param float|null $tweet_count Total tweets (X)
      *
      * @return self
      */
@@ -617,7 +617,7 @@ class AccountWithFollowerStatsAllOfAccountStats implements ModelInterface, Array
     /**
      * Sets listed_count
      *
-     * @param float|null $listed_count Lists the user appears on (X/Twitter)
+     * @param float|null $listed_count Lists the user appears on (X)
      *
      * @return self
      */

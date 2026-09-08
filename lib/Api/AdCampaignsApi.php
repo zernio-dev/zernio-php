@@ -5110,21 +5110,21 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Campaigns per page (optional, default to 20)
-     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
+     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager. Matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default; use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform platform (optional)
      * @param  \Zernio\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
-     * @param  string|null $ad_account_id One or more platform ad account IDs to scope the tree to (agency profiles connect a whole Business Manager but a workspace usually cares about a subset). Comma-separate for multiple (&#x60;?adAccountId&#x3D;act_1,act_2,act_3&#x60;); single value keeps its old shape. Max 50 accounts per request; the plural aliases &#x60;adAccountIds&#x60; and &#x60;platformAdAccountIds&#x60; are rejected with a 400 to stop them from silently returning the unfiltered fleet. (optional)
-     * @param  string|null $page_id Meta only: Facebook Page ID. Prunes the tree to ads whose creative is backed by this Page — campaigns and ad sets with no ad on the Page drop out, and rolled-up metrics cover only the Page&#39;s ads. Mirrors the same filter on /v1/ads and /v1/ads/campaigns. (optional)
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $ad_account_id One or more platform ad account IDs to scope the tree to (agency profiles connect a whole Business Manager but a team usually cares about a subset). Comma-separate for multiple (&#x60;?adAccountId&#x3D;act_1,act_2,act_3&#x60;); single value keeps its old shape. Max 50 accounts per request; the plural aliases &#x60;adAccountIds&#x60; and &#x60;platformAdAccountIds&#x60; are rejected with a 400 to stop them from silently returning the unfiltered fleet. (optional)
+     * @param  string|null $page_id Meta only: Facebook Page ID. Prunes the tree to ads whose creative is backed by this Page: campaigns and ad sets with no ad on the Page drop out, and rolled-up metrics cover only the Page&#39;s ads. Mirrors the same filter on /v1/ads and /v1/ads/campaigns. (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
-     * @param  string|null $campaign_id Restrict the tree to a single campaign by its platform campaign id (the id the platform assigns, e.g. Meta&#39;s numeric campaign id). Filters the campaign set itself, so it works regardless of account size and pagination — pass this when you already hold a campaign id instead of paging the tree to find it. Mirrors the &#x60;campaignId&#x60; filter on GET /v1/ads. (optional)
-     * @param  \DateTime|null $from_date Start of the METRICS date range (YYYY-MM-DD). On its own it affects only the spend/impression numbers overlaid on each node, not which campaigns are returned — pass &#x60;hasDelivery&#x60; or &#x60;minSpend&#x60; to also filter the campaign set to this window. Defaults to 90 days ago. (optional)
+     * @param  string|null $campaign_id Restrict the tree to a single campaign by its platform campaign id (the id the platform assigns, e.g. Meta&#39;s numeric campaign id). Filters the campaign set itself, so it works regardless of account size and pagination. Pass this when you already hold a campaign id instead of paging the tree to find it. Mirrors the &#x60;campaignId&#x60; filter on GET /v1/ads. (optional)
+     * @param  \DateTime|null $from_date Start of the METRICS date range (YYYY-MM-DD). On its own it affects only the spend/impression numbers overlaid on each node, not which campaigns are returned. Pass &#x60;hasDelivery&#x60; or &#x60;minSpend&#x60; to also filter the campaign set to this window. Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
-     * @param  bool|null $has_delivery Return only campaigns that delivered between &#x60;fromDate&#x60; and &#x60;toDate&#x60; — spend above zero, or impressions served at zero spend. Unlike &#x60;status&#x60;, which reads a campaign&#39;s CURRENT state, this filters on what happened inside the window, so a campaign that spent then and is paused today is still returned. Filters the campaign set itself, so &#x60;pagination.total&#x60; counts only matching campaigns. (optional)
+     * @param  bool|null $has_delivery Return only campaigns that delivered between &#x60;fromDate&#x60; and &#x60;toDate&#x60;: spend above zero, or impressions served at zero spend. Unlike &#x60;status&#x60;, which reads a campaign&#39;s CURRENT state, this filters on what happened inside the window, so a campaign that spent then and is paused today is still returned. Filters the campaign set itself, so &#x60;pagination.total&#x60; counts only matching campaigns. (optional)
      * @param  float|null $min_spend Return only campaigns whose spend between &#x60;fromDate&#x60; and &#x60;toDate&#x60; reaches this amount. Expressed in each campaign&#39;s OWN currency (the &#x60;currency&#x60; field on the campaign node): spend is stored per ad account in its native currency and one response can span several. Implies &#x60;hasDelivery&#x60;; &#x60;minSpend&#x3D;0&#x60; applies no filter. (optional)
      * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) / &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; order by aggregated spend in the requested date range; campaigns with no spend land at the end. (optional, default to 'newest')
      * @param  int|null $time_increment Set to &#x60;1&#x60; to also return a daily breakdown. Mirrors Meta Insights&#39; &#x60;time_increment&#x3D;1&#x60;: each node gains a &#x60;daily[]&#x60; array of per-day metrics (same fields as the aggregated &#x60;metrics&#x60;) alongside the range total, so you get per-entity daily trends in ONE call instead of calling the tree once per day. Only &#x60;1&#x60; (daily) is supported. The daily series covers the same date range and uses the same source data as &#x60;metrics&#x60;, except &#x60;reach&#x60; on Meta and TikTok: the range total is the platform&#39;s de-duplicated value, so daily reach does not sum to it. See &#x60;dailyLevel&#x60; to control which levels carry it. (optional)
-     * @param  string|null $daily_level Which tree levels get the &#x60;daily[]&#x60; series when &#x60;timeIncrement&#x3D;1&#x60;. &#x60;campaign&#x60; (default) attaches it on campaign nodes only — the common per-campaign-trend case, and the smallest payload. &#x60;adset&#x60; adds it on ad sets too; &#x60;ad&#x60; adds it on every ad in &#x60;ads[]&#x60; as well (heaviest — a long range × up to 100 ads per ad set). Scope with &#x60;campaignId&#x60; to keep &#x60;ad&#x60;-level responses small. Ignored when &#x60;timeIncrement&#x60; is unset. (optional, default to 'campaign')
+     * @param  string|null $daily_level Which tree levels get the &#x60;daily[]&#x60; series when &#x60;timeIncrement&#x3D;1&#x60;. &#x60;campaign&#x60; (default) attaches it on campaign nodes only: the common per-campaign-trend case, and the smallest payload. &#x60;adset&#x60; adds it on ad sets too; &#x60;ad&#x60; adds it on every ad in &#x60;ads[]&#x60; as well (heaviest: a long range × up to 100 ads per ad set). Scope with &#x60;campaignId&#x60; to keep &#x60;ad&#x60;-level responses small. Ignored when &#x60;timeIncrement&#x60; is unset. (optional, default to 'campaign')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5144,21 +5144,21 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Campaigns per page (optional, default to 20)
-     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
+     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager. Matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default; use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
      * @param  \Zernio\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
-     * @param  string|null $ad_account_id One or more platform ad account IDs to scope the tree to (agency profiles connect a whole Business Manager but a workspace usually cares about a subset). Comma-separate for multiple (&#x60;?adAccountId&#x3D;act_1,act_2,act_3&#x60;); single value keeps its old shape. Max 50 accounts per request; the plural aliases &#x60;adAccountIds&#x60; and &#x60;platformAdAccountIds&#x60; are rejected with a 400 to stop them from silently returning the unfiltered fleet. (optional)
-     * @param  string|null $page_id Meta only: Facebook Page ID. Prunes the tree to ads whose creative is backed by this Page — campaigns and ad sets with no ad on the Page drop out, and rolled-up metrics cover only the Page&#39;s ads. Mirrors the same filter on /v1/ads and /v1/ads/campaigns. (optional)
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $ad_account_id One or more platform ad account IDs to scope the tree to (agency profiles connect a whole Business Manager but a team usually cares about a subset). Comma-separate for multiple (&#x60;?adAccountId&#x3D;act_1,act_2,act_3&#x60;); single value keeps its old shape. Max 50 accounts per request; the plural aliases &#x60;adAccountIds&#x60; and &#x60;platformAdAccountIds&#x60; are rejected with a 400 to stop them from silently returning the unfiltered fleet. (optional)
+     * @param  string|null $page_id Meta only: Facebook Page ID. Prunes the tree to ads whose creative is backed by this Page: campaigns and ad sets with no ad on the Page drop out, and rolled-up metrics cover only the Page&#39;s ads. Mirrors the same filter on /v1/ads and /v1/ads/campaigns. (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
-     * @param  string|null $campaign_id Restrict the tree to a single campaign by its platform campaign id (the id the platform assigns, e.g. Meta&#39;s numeric campaign id). Filters the campaign set itself, so it works regardless of account size and pagination — pass this when you already hold a campaign id instead of paging the tree to find it. Mirrors the &#x60;campaignId&#x60; filter on GET /v1/ads. (optional)
-     * @param  \DateTime|null $from_date Start of the METRICS date range (YYYY-MM-DD). On its own it affects only the spend/impression numbers overlaid on each node, not which campaigns are returned — pass &#x60;hasDelivery&#x60; or &#x60;minSpend&#x60; to also filter the campaign set to this window. Defaults to 90 days ago. (optional)
+     * @param  string|null $campaign_id Restrict the tree to a single campaign by its platform campaign id (the id the platform assigns, e.g. Meta&#39;s numeric campaign id). Filters the campaign set itself, so it works regardless of account size and pagination. Pass this when you already hold a campaign id instead of paging the tree to find it. Mirrors the &#x60;campaignId&#x60; filter on GET /v1/ads. (optional)
+     * @param  \DateTime|null $from_date Start of the METRICS date range (YYYY-MM-DD). On its own it affects only the spend/impression numbers overlaid on each node, not which campaigns are returned. Pass &#x60;hasDelivery&#x60; or &#x60;minSpend&#x60; to also filter the campaign set to this window. Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
-     * @param  bool|null $has_delivery Return only campaigns that delivered between &#x60;fromDate&#x60; and &#x60;toDate&#x60; — spend above zero, or impressions served at zero spend. Unlike &#x60;status&#x60;, which reads a campaign&#39;s CURRENT state, this filters on what happened inside the window, so a campaign that spent then and is paused today is still returned. Filters the campaign set itself, so &#x60;pagination.total&#x60; counts only matching campaigns. (optional)
+     * @param  bool|null $has_delivery Return only campaigns that delivered between &#x60;fromDate&#x60; and &#x60;toDate&#x60;: spend above zero, or impressions served at zero spend. Unlike &#x60;status&#x60;, which reads a campaign&#39;s CURRENT state, this filters on what happened inside the window, so a campaign that spent then and is paused today is still returned. Filters the campaign set itself, so &#x60;pagination.total&#x60; counts only matching campaigns. (optional)
      * @param  float|null $min_spend Return only campaigns whose spend between &#x60;fromDate&#x60; and &#x60;toDate&#x60; reaches this amount. Expressed in each campaign&#39;s OWN currency (the &#x60;currency&#x60; field on the campaign node): spend is stored per ad account in its native currency and one response can span several. Implies &#x60;hasDelivery&#x60;; &#x60;minSpend&#x3D;0&#x60; applies no filter. (optional)
      * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) / &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; order by aggregated spend in the requested date range; campaigns with no spend land at the end. (optional, default to 'newest')
      * @param  int|null $time_increment Set to &#x60;1&#x60; to also return a daily breakdown. Mirrors Meta Insights&#39; &#x60;time_increment&#x3D;1&#x60;: each node gains a &#x60;daily[]&#x60; array of per-day metrics (same fields as the aggregated &#x60;metrics&#x60;) alongside the range total, so you get per-entity daily trends in ONE call instead of calling the tree once per day. Only &#x60;1&#x60; (daily) is supported. The daily series covers the same date range and uses the same source data as &#x60;metrics&#x60;, except &#x60;reach&#x60; on Meta and TikTok: the range total is the platform&#39;s de-duplicated value, so daily reach does not sum to it. See &#x60;dailyLevel&#x60; to control which levels carry it. (optional)
-     * @param  string|null $daily_level Which tree levels get the &#x60;daily[]&#x60; series when &#x60;timeIncrement&#x3D;1&#x60;. &#x60;campaign&#x60; (default) attaches it on campaign nodes only — the common per-campaign-trend case, and the smallest payload. &#x60;adset&#x60; adds it on ad sets too; &#x60;ad&#x60; adds it on every ad in &#x60;ads[]&#x60; as well (heaviest — a long range × up to 100 ads per ad set). Scope with &#x60;campaignId&#x60; to keep &#x60;ad&#x60;-level responses small. Ignored when &#x60;timeIncrement&#x60; is unset. (optional, default to 'campaign')
+     * @param  string|null $daily_level Which tree levels get the &#x60;daily[]&#x60; series when &#x60;timeIncrement&#x3D;1&#x60;. &#x60;campaign&#x60; (default) attaches it on campaign nodes only: the common per-campaign-trend case, and the smallest payload. &#x60;adset&#x60; adds it on ad sets too; &#x60;ad&#x60; adds it on every ad in &#x60;ads[]&#x60; as well (heaviest: a long range × up to 100 ads per ad set). Scope with &#x60;campaignId&#x60; to keep &#x60;ad&#x60;-level responses small. Ignored when &#x60;timeIncrement&#x60; is unset. (optional, default to 'campaign')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5273,21 +5273,21 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Campaigns per page (optional, default to 20)
-     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
+     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager. Matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default; use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
      * @param  \Zernio\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
-     * @param  string|null $ad_account_id One or more platform ad account IDs to scope the tree to (agency profiles connect a whole Business Manager but a workspace usually cares about a subset). Comma-separate for multiple (&#x60;?adAccountId&#x3D;act_1,act_2,act_3&#x60;); single value keeps its old shape. Max 50 accounts per request; the plural aliases &#x60;adAccountIds&#x60; and &#x60;platformAdAccountIds&#x60; are rejected with a 400 to stop them from silently returning the unfiltered fleet. (optional)
-     * @param  string|null $page_id Meta only: Facebook Page ID. Prunes the tree to ads whose creative is backed by this Page — campaigns and ad sets with no ad on the Page drop out, and rolled-up metrics cover only the Page&#39;s ads. Mirrors the same filter on /v1/ads and /v1/ads/campaigns. (optional)
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $ad_account_id One or more platform ad account IDs to scope the tree to (agency profiles connect a whole Business Manager but a team usually cares about a subset). Comma-separate for multiple (&#x60;?adAccountId&#x3D;act_1,act_2,act_3&#x60;); single value keeps its old shape. Max 50 accounts per request; the plural aliases &#x60;adAccountIds&#x60; and &#x60;platformAdAccountIds&#x60; are rejected with a 400 to stop them from silently returning the unfiltered fleet. (optional)
+     * @param  string|null $page_id Meta only: Facebook Page ID. Prunes the tree to ads whose creative is backed by this Page: campaigns and ad sets with no ad on the Page drop out, and rolled-up metrics cover only the Page&#39;s ads. Mirrors the same filter on /v1/ads and /v1/ads/campaigns. (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
-     * @param  string|null $campaign_id Restrict the tree to a single campaign by its platform campaign id (the id the platform assigns, e.g. Meta&#39;s numeric campaign id). Filters the campaign set itself, so it works regardless of account size and pagination — pass this when you already hold a campaign id instead of paging the tree to find it. Mirrors the &#x60;campaignId&#x60; filter on GET /v1/ads. (optional)
-     * @param  \DateTime|null $from_date Start of the METRICS date range (YYYY-MM-DD). On its own it affects only the spend/impression numbers overlaid on each node, not which campaigns are returned — pass &#x60;hasDelivery&#x60; or &#x60;minSpend&#x60; to also filter the campaign set to this window. Defaults to 90 days ago. (optional)
+     * @param  string|null $campaign_id Restrict the tree to a single campaign by its platform campaign id (the id the platform assigns, e.g. Meta&#39;s numeric campaign id). Filters the campaign set itself, so it works regardless of account size and pagination. Pass this when you already hold a campaign id instead of paging the tree to find it. Mirrors the &#x60;campaignId&#x60; filter on GET /v1/ads. (optional)
+     * @param  \DateTime|null $from_date Start of the METRICS date range (YYYY-MM-DD). On its own it affects only the spend/impression numbers overlaid on each node, not which campaigns are returned. Pass &#x60;hasDelivery&#x60; or &#x60;minSpend&#x60; to also filter the campaign set to this window. Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
-     * @param  bool|null $has_delivery Return only campaigns that delivered between &#x60;fromDate&#x60; and &#x60;toDate&#x60; — spend above zero, or impressions served at zero spend. Unlike &#x60;status&#x60;, which reads a campaign&#39;s CURRENT state, this filters on what happened inside the window, so a campaign that spent then and is paused today is still returned. Filters the campaign set itself, so &#x60;pagination.total&#x60; counts only matching campaigns. (optional)
+     * @param  bool|null $has_delivery Return only campaigns that delivered between &#x60;fromDate&#x60; and &#x60;toDate&#x60;: spend above zero, or impressions served at zero spend. Unlike &#x60;status&#x60;, which reads a campaign&#39;s CURRENT state, this filters on what happened inside the window, so a campaign that spent then and is paused today is still returned. Filters the campaign set itself, so &#x60;pagination.total&#x60; counts only matching campaigns. (optional)
      * @param  float|null $min_spend Return only campaigns whose spend between &#x60;fromDate&#x60; and &#x60;toDate&#x60; reaches this amount. Expressed in each campaign&#39;s OWN currency (the &#x60;currency&#x60; field on the campaign node): spend is stored per ad account in its native currency and one response can span several. Implies &#x60;hasDelivery&#x60;; &#x60;minSpend&#x3D;0&#x60; applies no filter. (optional)
      * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) / &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; order by aggregated spend in the requested date range; campaigns with no spend land at the end. (optional, default to 'newest')
      * @param  int|null $time_increment Set to &#x60;1&#x60; to also return a daily breakdown. Mirrors Meta Insights&#39; &#x60;time_increment&#x3D;1&#x60;: each node gains a &#x60;daily[]&#x60; array of per-day metrics (same fields as the aggregated &#x60;metrics&#x60;) alongside the range total, so you get per-entity daily trends in ONE call instead of calling the tree once per day. Only &#x60;1&#x60; (daily) is supported. The daily series covers the same date range and uses the same source data as &#x60;metrics&#x60;, except &#x60;reach&#x60; on Meta and TikTok: the range total is the platform&#39;s de-duplicated value, so daily reach does not sum to it. See &#x60;dailyLevel&#x60; to control which levels carry it. (optional)
-     * @param  string|null $daily_level Which tree levels get the &#x60;daily[]&#x60; series when &#x60;timeIncrement&#x3D;1&#x60;. &#x60;campaign&#x60; (default) attaches it on campaign nodes only — the common per-campaign-trend case, and the smallest payload. &#x60;adset&#x60; adds it on ad sets too; &#x60;ad&#x60; adds it on every ad in &#x60;ads[]&#x60; as well (heaviest — a long range × up to 100 ads per ad set). Scope with &#x60;campaignId&#x60; to keep &#x60;ad&#x60;-level responses small. Ignored when &#x60;timeIncrement&#x60; is unset. (optional, default to 'campaign')
+     * @param  string|null $daily_level Which tree levels get the &#x60;daily[]&#x60; series when &#x60;timeIncrement&#x3D;1&#x60;. &#x60;campaign&#x60; (default) attaches it on campaign nodes only: the common per-campaign-trend case, and the smallest payload. &#x60;adset&#x60; adds it on ad sets too; &#x60;ad&#x60; adds it on every ad in &#x60;ads[]&#x60; as well (heaviest: a long range × up to 100 ads per ad set). Scope with &#x60;campaignId&#x60; to keep &#x60;ad&#x60;-level responses small. Ignored when &#x60;timeIncrement&#x60; is unset. (optional, default to 'campaign')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5310,21 +5310,21 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Campaigns per page (optional, default to 20)
-     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
+     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager. Matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default; use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
      * @param  \Zernio\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
-     * @param  string|null $ad_account_id One or more platform ad account IDs to scope the tree to (agency profiles connect a whole Business Manager but a workspace usually cares about a subset). Comma-separate for multiple (&#x60;?adAccountId&#x3D;act_1,act_2,act_3&#x60;); single value keeps its old shape. Max 50 accounts per request; the plural aliases &#x60;adAccountIds&#x60; and &#x60;platformAdAccountIds&#x60; are rejected with a 400 to stop them from silently returning the unfiltered fleet. (optional)
-     * @param  string|null $page_id Meta only: Facebook Page ID. Prunes the tree to ads whose creative is backed by this Page — campaigns and ad sets with no ad on the Page drop out, and rolled-up metrics cover only the Page&#39;s ads. Mirrors the same filter on /v1/ads and /v1/ads/campaigns. (optional)
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $ad_account_id One or more platform ad account IDs to scope the tree to (agency profiles connect a whole Business Manager but a team usually cares about a subset). Comma-separate for multiple (&#x60;?adAccountId&#x3D;act_1,act_2,act_3&#x60;); single value keeps its old shape. Max 50 accounts per request; the plural aliases &#x60;adAccountIds&#x60; and &#x60;platformAdAccountIds&#x60; are rejected with a 400 to stop them from silently returning the unfiltered fleet. (optional)
+     * @param  string|null $page_id Meta only: Facebook Page ID. Prunes the tree to ads whose creative is backed by this Page: campaigns and ad sets with no ad on the Page drop out, and rolled-up metrics cover only the Page&#39;s ads. Mirrors the same filter on /v1/ads and /v1/ads/campaigns. (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
-     * @param  string|null $campaign_id Restrict the tree to a single campaign by its platform campaign id (the id the platform assigns, e.g. Meta&#39;s numeric campaign id). Filters the campaign set itself, so it works regardless of account size and pagination — pass this when you already hold a campaign id instead of paging the tree to find it. Mirrors the &#x60;campaignId&#x60; filter on GET /v1/ads. (optional)
-     * @param  \DateTime|null $from_date Start of the METRICS date range (YYYY-MM-DD). On its own it affects only the spend/impression numbers overlaid on each node, not which campaigns are returned — pass &#x60;hasDelivery&#x60; or &#x60;minSpend&#x60; to also filter the campaign set to this window. Defaults to 90 days ago. (optional)
+     * @param  string|null $campaign_id Restrict the tree to a single campaign by its platform campaign id (the id the platform assigns, e.g. Meta&#39;s numeric campaign id). Filters the campaign set itself, so it works regardless of account size and pagination. Pass this when you already hold a campaign id instead of paging the tree to find it. Mirrors the &#x60;campaignId&#x60; filter on GET /v1/ads. (optional)
+     * @param  \DateTime|null $from_date Start of the METRICS date range (YYYY-MM-DD). On its own it affects only the spend/impression numbers overlaid on each node, not which campaigns are returned. Pass &#x60;hasDelivery&#x60; or &#x60;minSpend&#x60; to also filter the campaign set to this window. Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
-     * @param  bool|null $has_delivery Return only campaigns that delivered between &#x60;fromDate&#x60; and &#x60;toDate&#x60; — spend above zero, or impressions served at zero spend. Unlike &#x60;status&#x60;, which reads a campaign&#39;s CURRENT state, this filters on what happened inside the window, so a campaign that spent then and is paused today is still returned. Filters the campaign set itself, so &#x60;pagination.total&#x60; counts only matching campaigns. (optional)
+     * @param  bool|null $has_delivery Return only campaigns that delivered between &#x60;fromDate&#x60; and &#x60;toDate&#x60;: spend above zero, or impressions served at zero spend. Unlike &#x60;status&#x60;, which reads a campaign&#39;s CURRENT state, this filters on what happened inside the window, so a campaign that spent then and is paused today is still returned. Filters the campaign set itself, so &#x60;pagination.total&#x60; counts only matching campaigns. (optional)
      * @param  float|null $min_spend Return only campaigns whose spend between &#x60;fromDate&#x60; and &#x60;toDate&#x60; reaches this amount. Expressed in each campaign&#39;s OWN currency (the &#x60;currency&#x60; field on the campaign node): spend is stored per ad account in its native currency and one response can span several. Implies &#x60;hasDelivery&#x60;; &#x60;minSpend&#x3D;0&#x60; applies no filter. (optional)
      * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) / &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; order by aggregated spend in the requested date range; campaigns with no spend land at the end. (optional, default to 'newest')
      * @param  int|null $time_increment Set to &#x60;1&#x60; to also return a daily breakdown. Mirrors Meta Insights&#39; &#x60;time_increment&#x3D;1&#x60;: each node gains a &#x60;daily[]&#x60; array of per-day metrics (same fields as the aggregated &#x60;metrics&#x60;) alongside the range total, so you get per-entity daily trends in ONE call instead of calling the tree once per day. Only &#x60;1&#x60; (daily) is supported. The daily series covers the same date range and uses the same source data as &#x60;metrics&#x60;, except &#x60;reach&#x60; on Meta and TikTok: the range total is the platform&#39;s de-duplicated value, so daily reach does not sum to it. See &#x60;dailyLevel&#x60; to control which levels carry it. (optional)
-     * @param  string|null $daily_level Which tree levels get the &#x60;daily[]&#x60; series when &#x60;timeIncrement&#x3D;1&#x60;. &#x60;campaign&#x60; (default) attaches it on campaign nodes only — the common per-campaign-trend case, and the smallest payload. &#x60;adset&#x60; adds it on ad sets too; &#x60;ad&#x60; adds it on every ad in &#x60;ads[]&#x60; as well (heaviest — a long range × up to 100 ads per ad set). Scope with &#x60;campaignId&#x60; to keep &#x60;ad&#x60;-level responses small. Ignored when &#x60;timeIncrement&#x60; is unset. (optional, default to 'campaign')
+     * @param  string|null $daily_level Which tree levels get the &#x60;daily[]&#x60; series when &#x60;timeIncrement&#x3D;1&#x60;. &#x60;campaign&#x60; (default) attaches it on campaign nodes only: the common per-campaign-trend case, and the smallest payload. &#x60;adset&#x60; adds it on ad sets too; &#x60;ad&#x60; adds it on every ad in &#x60;ads[]&#x60; as well (heaviest: a long range × up to 100 ads per ad set). Scope with &#x60;campaignId&#x60; to keep &#x60;ad&#x60;-level responses small. Ignored when &#x60;timeIncrement&#x60; is unset. (optional, default to 'campaign')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5376,21 +5376,21 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Campaigns per page (optional, default to 20)
-     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
+     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager. Matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default; use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
      * @param  \Zernio\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
-     * @param  string|null $ad_account_id One or more platform ad account IDs to scope the tree to (agency profiles connect a whole Business Manager but a workspace usually cares about a subset). Comma-separate for multiple (&#x60;?adAccountId&#x3D;act_1,act_2,act_3&#x60;); single value keeps its old shape. Max 50 accounts per request; the plural aliases &#x60;adAccountIds&#x60; and &#x60;platformAdAccountIds&#x60; are rejected with a 400 to stop them from silently returning the unfiltered fleet. (optional)
-     * @param  string|null $page_id Meta only: Facebook Page ID. Prunes the tree to ads whose creative is backed by this Page — campaigns and ad sets with no ad on the Page drop out, and rolled-up metrics cover only the Page&#39;s ads. Mirrors the same filter on /v1/ads and /v1/ads/campaigns. (optional)
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $ad_account_id One or more platform ad account IDs to scope the tree to (agency profiles connect a whole Business Manager but a team usually cares about a subset). Comma-separate for multiple (&#x60;?adAccountId&#x3D;act_1,act_2,act_3&#x60;); single value keeps its old shape. Max 50 accounts per request; the plural aliases &#x60;adAccountIds&#x60; and &#x60;platformAdAccountIds&#x60; are rejected with a 400 to stop them from silently returning the unfiltered fleet. (optional)
+     * @param  string|null $page_id Meta only: Facebook Page ID. Prunes the tree to ads whose creative is backed by this Page: campaigns and ad sets with no ad on the Page drop out, and rolled-up metrics cover only the Page&#39;s ads. Mirrors the same filter on /v1/ads and /v1/ads/campaigns. (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
-     * @param  string|null $campaign_id Restrict the tree to a single campaign by its platform campaign id (the id the platform assigns, e.g. Meta&#39;s numeric campaign id). Filters the campaign set itself, so it works regardless of account size and pagination — pass this when you already hold a campaign id instead of paging the tree to find it. Mirrors the &#x60;campaignId&#x60; filter on GET /v1/ads. (optional)
-     * @param  \DateTime|null $from_date Start of the METRICS date range (YYYY-MM-DD). On its own it affects only the spend/impression numbers overlaid on each node, not which campaigns are returned — pass &#x60;hasDelivery&#x60; or &#x60;minSpend&#x60; to also filter the campaign set to this window. Defaults to 90 days ago. (optional)
+     * @param  string|null $campaign_id Restrict the tree to a single campaign by its platform campaign id (the id the platform assigns, e.g. Meta&#39;s numeric campaign id). Filters the campaign set itself, so it works regardless of account size and pagination. Pass this when you already hold a campaign id instead of paging the tree to find it. Mirrors the &#x60;campaignId&#x60; filter on GET /v1/ads. (optional)
+     * @param  \DateTime|null $from_date Start of the METRICS date range (YYYY-MM-DD). On its own it affects only the spend/impression numbers overlaid on each node, not which campaigns are returned. Pass &#x60;hasDelivery&#x60; or &#x60;minSpend&#x60; to also filter the campaign set to this window. Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
-     * @param  bool|null $has_delivery Return only campaigns that delivered between &#x60;fromDate&#x60; and &#x60;toDate&#x60; — spend above zero, or impressions served at zero spend. Unlike &#x60;status&#x60;, which reads a campaign&#39;s CURRENT state, this filters on what happened inside the window, so a campaign that spent then and is paused today is still returned. Filters the campaign set itself, so &#x60;pagination.total&#x60; counts only matching campaigns. (optional)
+     * @param  bool|null $has_delivery Return only campaigns that delivered between &#x60;fromDate&#x60; and &#x60;toDate&#x60;: spend above zero, or impressions served at zero spend. Unlike &#x60;status&#x60;, which reads a campaign&#39;s CURRENT state, this filters on what happened inside the window, so a campaign that spent then and is paused today is still returned. Filters the campaign set itself, so &#x60;pagination.total&#x60; counts only matching campaigns. (optional)
      * @param  float|null $min_spend Return only campaigns whose spend between &#x60;fromDate&#x60; and &#x60;toDate&#x60; reaches this amount. Expressed in each campaign&#39;s OWN currency (the &#x60;currency&#x60; field on the campaign node): spend is stored per ad account in its native currency and one response can span several. Implies &#x60;hasDelivery&#x60;; &#x60;minSpend&#x3D;0&#x60; applies no filter. (optional)
      * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) / &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; order by aggregated spend in the requested date range; campaigns with no spend land at the end. (optional, default to 'newest')
      * @param  int|null $time_increment Set to &#x60;1&#x60; to also return a daily breakdown. Mirrors Meta Insights&#39; &#x60;time_increment&#x3D;1&#x60;: each node gains a &#x60;daily[]&#x60; array of per-day metrics (same fields as the aggregated &#x60;metrics&#x60;) alongside the range total, so you get per-entity daily trends in ONE call instead of calling the tree once per day. Only &#x60;1&#x60; (daily) is supported. The daily series covers the same date range and uses the same source data as &#x60;metrics&#x60;, except &#x60;reach&#x60; on Meta and TikTok: the range total is the platform&#39;s de-duplicated value, so daily reach does not sum to it. See &#x60;dailyLevel&#x60; to control which levels carry it. (optional)
-     * @param  string|null $daily_level Which tree levels get the &#x60;daily[]&#x60; series when &#x60;timeIncrement&#x3D;1&#x60;. &#x60;campaign&#x60; (default) attaches it on campaign nodes only — the common per-campaign-trend case, and the smallest payload. &#x60;adset&#x60; adds it on ad sets too; &#x60;ad&#x60; adds it on every ad in &#x60;ads[]&#x60; as well (heaviest — a long range × up to 100 ads per ad set). Scope with &#x60;campaignId&#x60; to keep &#x60;ad&#x60;-level responses small. Ignored when &#x60;timeIncrement&#x60; is unset. (optional, default to 'campaign')
+     * @param  string|null $daily_level Which tree levels get the &#x60;daily[]&#x60; series when &#x60;timeIncrement&#x3D;1&#x60;. &#x60;campaign&#x60; (default) attaches it on campaign nodes only: the common per-campaign-trend case, and the smallest payload. &#x60;adset&#x60; adds it on ad sets too; &#x60;ad&#x60; adds it on every ad in &#x60;ads[]&#x60; as well (heaviest: a long range × up to 100 ads per ad set). Scope with &#x60;campaignId&#x60; to keep &#x60;ad&#x60;-level responses small. Ignored when &#x60;timeIncrement&#x60; is unset. (optional, default to 'campaign')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5655,7 +5655,7 @@ class AdCampaignsApi
      *
      * Get daily account metrics
      *
-     * @param  string $account_id Social account ID. Sibling-expanded to its linked posting↔ads pair. (required)
+     * @param  string $account_id Account ID. Sibling-expanded to its linked posting↔ads pair. (required)
      * @param  string|null $ad_account_id Optional platform-native ad account ID (e.g. Meta &#x60;act_…&#x60;, TikTok advertiser ID). Use when the connection wraps multiple platform ad accounts and the chart should show one only. Note: rows ingested before 2026-05-13 don&#39;t carry this column; the recurring 7-day re-sync repopulates them naturally. (optional)
      * @param  \DateTime|null $from_date Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
@@ -5677,7 +5677,7 @@ class AdCampaignsApi
      *
      * Get daily account metrics
      *
-     * @param  string $account_id Social account ID. Sibling-expanded to its linked posting↔ads pair. (required)
+     * @param  string $account_id Account ID. Sibling-expanded to its linked posting↔ads pair. (required)
      * @param  string|null $ad_account_id Optional platform-native ad account ID (e.g. Meta &#x60;act_…&#x60;, TikTok advertiser ID). Use when the connection wraps multiple platform ad accounts and the chart should show one only. Note: rows ingested before 2026-05-13 don&#39;t carry this column; the recurring 7-day re-sync repopulates them naturally. (optional)
      * @param  \DateTime|null $from_date Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
@@ -5808,7 +5808,7 @@ class AdCampaignsApi
      *
      * Get daily account metrics
      *
-     * @param  string $account_id Social account ID. Sibling-expanded to its linked posting↔ads pair. (required)
+     * @param  string $account_id Account ID. Sibling-expanded to its linked posting↔ads pair. (required)
      * @param  string|null $ad_account_id Optional platform-native ad account ID (e.g. Meta &#x60;act_…&#x60;, TikTok advertiser ID). Use when the connection wraps multiple platform ad accounts and the chart should show one only. Note: rows ingested before 2026-05-13 don&#39;t carry this column; the recurring 7-day re-sync repopulates them naturally. (optional)
      * @param  \DateTime|null $from_date Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
@@ -5833,7 +5833,7 @@ class AdCampaignsApi
      *
      * Get daily account metrics
      *
-     * @param  string $account_id Social account ID. Sibling-expanded to its linked posting↔ads pair. (required)
+     * @param  string $account_id Account ID. Sibling-expanded to its linked posting↔ads pair. (required)
      * @param  string|null $ad_account_id Optional platform-native ad account ID (e.g. Meta &#x60;act_…&#x60;, TikTok advertiser ID). Use when the connection wraps multiple platform ad accounts and the chart should show one only. Note: rows ingested before 2026-05-13 don&#39;t carry this column; the recurring 7-day re-sync repopulates them naturally. (optional)
      * @param  \DateTime|null $from_date Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
@@ -5887,7 +5887,7 @@ class AdCampaignsApi
     /**
      * Create request for operation 'getAdsTimeline'
      *
-     * @param  string $account_id Social account ID. Sibling-expanded to its linked posting↔ads pair. (required)
+     * @param  string $account_id Account ID. Sibling-expanded to its linked posting↔ads pair. (required)
      * @param  string|null $ad_account_id Optional platform-native ad account ID (e.g. Meta &#x60;act_…&#x60;, TikTok advertiser ID). Use when the connection wraps multiple platform ad accounts and the chart should show one only. Note: rows ingested before 2026-05-13 don&#39;t carry this column; the recurring 7-day re-sync repopulates them naturally. (optional)
      * @param  \DateTime|null $from_date Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
@@ -6688,19 +6688,19 @@ class AdCampaignsApi
      *
      * List campaigns
      *
-     * @param  bool|null $include_empty Meta only. Campaign reads aggregate over ad documents, so a campaign with ZERO ads is normally invisible here — the state the two-step create (campaign, then ads via &#x60;existingCampaignId&#x60;) leaves behind whenever Meta rejects the ad step. Set true to list those too, with &#x60;adCount: 0&#x60; and zeroed metrics. Requires &#x60;accountId&#x60; and &#x60;adAccountId&#x60;, since an empty campaign has no ad row to resolve a token or ad account from. (optional)
+     * @param  bool|null $include_empty Meta only. Campaign reads aggregate over ad documents, so a campaign with ZERO ads is normally invisible here, the state the two-step create (campaign, then ads via &#x60;existingCampaignId&#x60;) leaves behind whenever Meta rejects the ad step. Set true to list those too, with &#x60;adCount: 0&#x60; and zeroed metrics. Requires &#x60;accountId&#x60; and &#x60;adAccountId&#x60;, since an empty campaign has no ad row to resolve a token or ad account from. (optional)
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit limit (optional, default to 20)
-     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
+     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager. Matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default; use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform platform (optional)
      * @param  \Zernio\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
      * @param  string|null $page_id Meta only: Facebook Page ID. Campaigns have no Page of their own, so this keeps campaigns having at least one ad backed by this Page, with adCount and metrics computed over those ads only. Mirrors the same filter on /v1/ads and /v1/ads/tree. (optional)
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD, inclusive). Defaults to 90 days ago when both date params are omitted. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD, inclusive). Defaults to today. Max 730-day range. (optional)
-     * @param  bool|null $has_delivery Return only campaigns that delivered between &#x60;fromDate&#x60; and &#x60;toDate&#x60; — spend above zero, or impressions served at zero spend. Unlike &#x60;status&#x60;, which reads a campaign&#39;s CURRENT state, this filters on what happened inside the window. Filters the campaign set itself, so &#x60;pagination.total&#x60; counts only matching campaigns. Mirrors the same filter on /v1/ads/tree. (optional)
+     * @param  bool|null $has_delivery Return only campaigns that delivered between &#x60;fromDate&#x60; and &#x60;toDate&#x60;: spend above zero, or impressions served at zero spend. Unlike &#x60;status&#x60;, which reads a campaign&#39;s CURRENT state, this filters on what happened inside the window. Filters the campaign set itself, so &#x60;pagination.total&#x60; counts only matching campaigns. Mirrors the same filter on /v1/ads/tree. (optional)
      * @param  float|null $min_spend Return only campaigns whose spend between &#x60;fromDate&#x60; and &#x60;toDate&#x60; reaches this amount, in each campaign&#39;s OWN currency (the &#x60;currency&#x60; field on the campaign). Implies &#x60;hasDelivery&#x60;; &#x60;minSpend&#x3D;0&#x60; applies no filter. Mirrors the same filter on /v1/ads/tree. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdCampaigns'] to see the possible values for this operation
      *
@@ -6719,19 +6719,19 @@ class AdCampaignsApi
      *
      * List campaigns
      *
-     * @param  bool|null $include_empty Meta only. Campaign reads aggregate over ad documents, so a campaign with ZERO ads is normally invisible here — the state the two-step create (campaign, then ads via &#x60;existingCampaignId&#x60;) leaves behind whenever Meta rejects the ad step. Set true to list those too, with &#x60;adCount: 0&#x60; and zeroed metrics. Requires &#x60;accountId&#x60; and &#x60;adAccountId&#x60;, since an empty campaign has no ad row to resolve a token or ad account from. (optional)
+     * @param  bool|null $include_empty Meta only. Campaign reads aggregate over ad documents, so a campaign with ZERO ads is normally invisible here, the state the two-step create (campaign, then ads via &#x60;existingCampaignId&#x60;) leaves behind whenever Meta rejects the ad step. Set true to list those too, with &#x60;adCount: 0&#x60; and zeroed metrics. Requires &#x60;accountId&#x60; and &#x60;adAccountId&#x60;, since an empty campaign has no ad row to resolve a token or ad account from. (optional)
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 20)
-     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
+     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager. Matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default; use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
      * @param  \Zernio\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
      * @param  string|null $page_id Meta only: Facebook Page ID. Campaigns have no Page of their own, so this keeps campaigns having at least one ad backed by this Page, with adCount and metrics computed over those ads only. Mirrors the same filter on /v1/ads and /v1/ads/tree. (optional)
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD, inclusive). Defaults to 90 days ago when both date params are omitted. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD, inclusive). Defaults to today. Max 730-day range. (optional)
-     * @param  bool|null $has_delivery Return only campaigns that delivered between &#x60;fromDate&#x60; and &#x60;toDate&#x60; — spend above zero, or impressions served at zero spend. Unlike &#x60;status&#x60;, which reads a campaign&#39;s CURRENT state, this filters on what happened inside the window. Filters the campaign set itself, so &#x60;pagination.total&#x60; counts only matching campaigns. Mirrors the same filter on /v1/ads/tree. (optional)
+     * @param  bool|null $has_delivery Return only campaigns that delivered between &#x60;fromDate&#x60; and &#x60;toDate&#x60;: spend above zero, or impressions served at zero spend. Unlike &#x60;status&#x60;, which reads a campaign&#39;s CURRENT state, this filters on what happened inside the window. Filters the campaign set itself, so &#x60;pagination.total&#x60; counts only matching campaigns. Mirrors the same filter on /v1/ads/tree. (optional)
      * @param  float|null $min_spend Return only campaigns whose spend between &#x60;fromDate&#x60; and &#x60;toDate&#x60; reaches this amount, in each campaign&#39;s OWN currency (the &#x60;currency&#x60; field on the campaign). Implies &#x60;hasDelivery&#x60;; &#x60;minSpend&#x3D;0&#x60; applies no filter. Mirrors the same filter on /v1/ads/tree. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdCampaigns'] to see the possible values for this operation
      *
@@ -6845,19 +6845,19 @@ class AdCampaignsApi
      *
      * List campaigns
      *
-     * @param  bool|null $include_empty Meta only. Campaign reads aggregate over ad documents, so a campaign with ZERO ads is normally invisible here — the state the two-step create (campaign, then ads via &#x60;existingCampaignId&#x60;) leaves behind whenever Meta rejects the ad step. Set true to list those too, with &#x60;adCount: 0&#x60; and zeroed metrics. Requires &#x60;accountId&#x60; and &#x60;adAccountId&#x60;, since an empty campaign has no ad row to resolve a token or ad account from. (optional)
+     * @param  bool|null $include_empty Meta only. Campaign reads aggregate over ad documents, so a campaign with ZERO ads is normally invisible here, the state the two-step create (campaign, then ads via &#x60;existingCampaignId&#x60;) leaves behind whenever Meta rejects the ad step. Set true to list those too, with &#x60;adCount: 0&#x60; and zeroed metrics. Requires &#x60;accountId&#x60; and &#x60;adAccountId&#x60;, since an empty campaign has no ad row to resolve a token or ad account from. (optional)
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 20)
-     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
+     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager. Matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default; use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
      * @param  \Zernio\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
      * @param  string|null $page_id Meta only: Facebook Page ID. Campaigns have no Page of their own, so this keeps campaigns having at least one ad backed by this Page, with adCount and metrics computed over those ads only. Mirrors the same filter on /v1/ads and /v1/ads/tree. (optional)
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD, inclusive). Defaults to 90 days ago when both date params are omitted. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD, inclusive). Defaults to today. Max 730-day range. (optional)
-     * @param  bool|null $has_delivery Return only campaigns that delivered between &#x60;fromDate&#x60; and &#x60;toDate&#x60; — spend above zero, or impressions served at zero spend. Unlike &#x60;status&#x60;, which reads a campaign&#39;s CURRENT state, this filters on what happened inside the window. Filters the campaign set itself, so &#x60;pagination.total&#x60; counts only matching campaigns. Mirrors the same filter on /v1/ads/tree. (optional)
+     * @param  bool|null $has_delivery Return only campaigns that delivered between &#x60;fromDate&#x60; and &#x60;toDate&#x60;: spend above zero, or impressions served at zero spend. Unlike &#x60;status&#x60;, which reads a campaign&#39;s CURRENT state, this filters on what happened inside the window. Filters the campaign set itself, so &#x60;pagination.total&#x60; counts only matching campaigns. Mirrors the same filter on /v1/ads/tree. (optional)
      * @param  float|null $min_spend Return only campaigns whose spend between &#x60;fromDate&#x60; and &#x60;toDate&#x60; reaches this amount, in each campaign&#39;s OWN currency (the &#x60;currency&#x60; field on the campaign). Implies &#x60;hasDelivery&#x60;; &#x60;minSpend&#x3D;0&#x60; applies no filter. Mirrors the same filter on /v1/ads/tree. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdCampaigns'] to see the possible values for this operation
      *
@@ -6879,19 +6879,19 @@ class AdCampaignsApi
      *
      * List campaigns
      *
-     * @param  bool|null $include_empty Meta only. Campaign reads aggregate over ad documents, so a campaign with ZERO ads is normally invisible here — the state the two-step create (campaign, then ads via &#x60;existingCampaignId&#x60;) leaves behind whenever Meta rejects the ad step. Set true to list those too, with &#x60;adCount: 0&#x60; and zeroed metrics. Requires &#x60;accountId&#x60; and &#x60;adAccountId&#x60;, since an empty campaign has no ad row to resolve a token or ad account from. (optional)
+     * @param  bool|null $include_empty Meta only. Campaign reads aggregate over ad documents, so a campaign with ZERO ads is normally invisible here, the state the two-step create (campaign, then ads via &#x60;existingCampaignId&#x60;) leaves behind whenever Meta rejects the ad step. Set true to list those too, with &#x60;adCount: 0&#x60; and zeroed metrics. Requires &#x60;accountId&#x60; and &#x60;adAccountId&#x60;, since an empty campaign has no ad row to resolve a token or ad account from. (optional)
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 20)
-     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
+     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager. Matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default; use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
      * @param  \Zernio\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
      * @param  string|null $page_id Meta only: Facebook Page ID. Campaigns have no Page of their own, so this keeps campaigns having at least one ad backed by this Page, with adCount and metrics computed over those ads only. Mirrors the same filter on /v1/ads and /v1/ads/tree. (optional)
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD, inclusive). Defaults to 90 days ago when both date params are omitted. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD, inclusive). Defaults to today. Max 730-day range. (optional)
-     * @param  bool|null $has_delivery Return only campaigns that delivered between &#x60;fromDate&#x60; and &#x60;toDate&#x60; — spend above zero, or impressions served at zero spend. Unlike &#x60;status&#x60;, which reads a campaign&#39;s CURRENT state, this filters on what happened inside the window. Filters the campaign set itself, so &#x60;pagination.total&#x60; counts only matching campaigns. Mirrors the same filter on /v1/ads/tree. (optional)
+     * @param  bool|null $has_delivery Return only campaigns that delivered between &#x60;fromDate&#x60; and &#x60;toDate&#x60;: spend above zero, or impressions served at zero spend. Unlike &#x60;status&#x60;, which reads a campaign&#39;s CURRENT state, this filters on what happened inside the window. Filters the campaign set itself, so &#x60;pagination.total&#x60; counts only matching campaigns. Mirrors the same filter on /v1/ads/tree. (optional)
      * @param  float|null $min_spend Return only campaigns whose spend between &#x60;fromDate&#x60; and &#x60;toDate&#x60; reaches this amount, in each campaign&#39;s OWN currency (the &#x60;currency&#x60; field on the campaign). Implies &#x60;hasDelivery&#x60;; &#x60;minSpend&#x3D;0&#x60; applies no filter. Mirrors the same filter on /v1/ads/tree. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdCampaigns'] to see the possible values for this operation
      *
@@ -6942,19 +6942,19 @@ class AdCampaignsApi
     /**
      * Create request for operation 'listAdCampaigns'
      *
-     * @param  bool|null $include_empty Meta only. Campaign reads aggregate over ad documents, so a campaign with ZERO ads is normally invisible here — the state the two-step create (campaign, then ads via &#x60;existingCampaignId&#x60;) leaves behind whenever Meta rejects the ad step. Set true to list those too, with &#x60;adCount: 0&#x60; and zeroed metrics. Requires &#x60;accountId&#x60; and &#x60;adAccountId&#x60;, since an empty campaign has no ad row to resolve a token or ad account from. (optional)
+     * @param  bool|null $include_empty Meta only. Campaign reads aggregate over ad documents, so a campaign with ZERO ads is normally invisible here, the state the two-step create (campaign, then ads via &#x60;existingCampaignId&#x60;) leaves behind whenever Meta rejects the ad step. Set true to list those too, with &#x60;adCount: 0&#x60; and zeroed metrics. Requires &#x60;accountId&#x60; and &#x60;adAccountId&#x60;, since an empty campaign has no ad row to resolve a token or ad account from. (optional)
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 20)
-     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
+     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager. Matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default; use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
      * @param  \Zernio\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
      * @param  string|null $page_id Meta only: Facebook Page ID. Campaigns have no Page of their own, so this keeps campaigns having at least one ad backed by this Page, with adCount and metrics computed over those ads only. Mirrors the same filter on /v1/ads and /v1/ads/tree. (optional)
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD, inclusive). Defaults to 90 days ago when both date params are omitted. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD, inclusive). Defaults to today. Max 730-day range. (optional)
-     * @param  bool|null $has_delivery Return only campaigns that delivered between &#x60;fromDate&#x60; and &#x60;toDate&#x60; — spend above zero, or impressions served at zero spend. Unlike &#x60;status&#x60;, which reads a campaign&#39;s CURRENT state, this filters on what happened inside the window. Filters the campaign set itself, so &#x60;pagination.total&#x60; counts only matching campaigns. Mirrors the same filter on /v1/ads/tree. (optional)
+     * @param  bool|null $has_delivery Return only campaigns that delivered between &#x60;fromDate&#x60; and &#x60;toDate&#x60;: spend above zero, or impressions served at zero spend. Unlike &#x60;status&#x60;, which reads a campaign&#39;s CURRENT state, this filters on what happened inside the window. Filters the campaign set itself, so &#x60;pagination.total&#x60; counts only matching campaigns. Mirrors the same filter on /v1/ads/tree. (optional)
      * @param  float|null $min_spend Return only campaigns whose spend between &#x60;fromDate&#x60; and &#x60;toDate&#x60; reaches this amount, in each campaign&#39;s OWN currency (the &#x60;currency&#x60; field on the campaign). Implies &#x60;hasDelivery&#x60;; &#x60;minSpend&#x3D;0&#x60; applies no filter. Mirrors the same filter on /v1/ads/tree. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdCampaigns'] to see the possible values for this operation
      *
@@ -7192,7 +7192,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit limit (optional, default to 50)
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $ad_account_id Platform ad account ID (Google customer ID). Mirrors the same filter on /v1/ads. (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (optional)
@@ -7220,7 +7220,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 50)
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $ad_account_id Platform ad account ID (Google customer ID). Mirrors the same filter on /v1/ads. (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (optional)
@@ -7343,7 +7343,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 50)
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $ad_account_id Platform ad account ID (Google customer ID). Mirrors the same filter on /v1/ads. (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (optional)
@@ -7374,7 +7374,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 50)
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $ad_account_id Platform ad account ID (Google customer ID). Mirrors the same filter on /v1/ads. (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (optional)
@@ -7434,7 +7434,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 50)
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $ad_account_id Platform ad account ID (Google customer ID). Mirrors the same filter on /v1/ads. (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (optional)
@@ -7647,7 +7647,7 @@ class AdCampaignsApi
      *
      * List ad sets
      *
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (optional)
      * @param  string|null $platform platform (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdSets'] to see the possible values for this operation
@@ -7667,7 +7667,7 @@ class AdCampaignsApi
      *
      * List ad sets
      *
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (optional)
      * @param  string|null $platform (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdSets'] to see the possible values for this operation
@@ -7782,7 +7782,7 @@ class AdCampaignsApi
      *
      * List ad sets
      *
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (optional)
      * @param  string|null $platform (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdSets'] to see the possible values for this operation
@@ -7805,7 +7805,7 @@ class AdCampaignsApi
      *
      * List ad sets
      *
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (optional)
      * @param  string|null $platform (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdSets'] to see the possible values for this operation
@@ -7857,7 +7857,7 @@ class AdCampaignsApi
     /**
      * Create request for operation 'listAdSets'
      *
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (optional)
      * @param  string|null $platform (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdSets'] to see the possible values for this operation
@@ -7977,7 +7977,7 @@ class AdCampaignsApi
      * @param  string|null $source all (default) &#x3D; Zernio-created + platform-discovered ads. zernio &#x3D; restrict to Zernio-created only. (optional, default to 'all')
      * @param  \Zernio\Model\AdStatus|null $status status (optional)
      * @param  string|null $platform platform (optional)
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $page_id Meta only: Facebook Page ID. Returns only ads whose creative is backed by this Page (a Meta ad account serves ads for every Page in the Business Manager). Matches each ad&#39;s &#x60;creative.pageId&#x60;; ads with no page signal (rare IG-only creatives) never match. Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $profile_id Profile ID (optional)
@@ -8010,7 +8010,7 @@ class AdCampaignsApi
      * @param  string|null $source all (default) &#x3D; Zernio-created + platform-discovered ads. zernio &#x3D; restrict to Zernio-created only. (optional, default to 'all')
      * @param  \Zernio\Model\AdStatus|null $status (optional)
      * @param  string|null $platform (optional)
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $page_id Meta only: Facebook Page ID. Returns only ads whose creative is backed by this Page (a Meta ad account serves ads for every Page in the Business Manager). Matches each ad&#39;s &#x60;creative.pageId&#x60;; ads with no page signal (rare IG-only creatives) never match. Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $profile_id Profile ID (optional)
@@ -8152,7 +8152,7 @@ class AdCampaignsApi
      * @param  string|null $source all (default) &#x3D; Zernio-created + platform-discovered ads. zernio &#x3D; restrict to Zernio-created only. (optional, default to 'all')
      * @param  \Zernio\Model\AdStatus|null $status (optional)
      * @param  string|null $platform (optional)
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $page_id Meta only: Facebook Page ID. Returns only ads whose creative is backed by this Page (a Meta ad account serves ads for every Page in the Business Manager). Matches each ad&#39;s &#x60;creative.pageId&#x60;; ads with no page signal (rare IG-only creatives) never match. Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $profile_id Profile ID (optional)
@@ -8188,7 +8188,7 @@ class AdCampaignsApi
      * @param  string|null $source all (default) &#x3D; Zernio-created + platform-discovered ads. zernio &#x3D; restrict to Zernio-created only. (optional, default to 'all')
      * @param  \Zernio\Model\AdStatus|null $status (optional)
      * @param  string|null $platform (optional)
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $page_id Meta only: Facebook Page ID. Returns only ads whose creative is backed by this Page (a Meta ad account serves ads for every Page in the Business Manager). Matches each ad&#39;s &#x60;creative.pageId&#x60;; ads with no page signal (rare IG-only creatives) never match. Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $profile_id Profile ID (optional)
@@ -8253,7 +8253,7 @@ class AdCampaignsApi
      * @param  string|null $source all (default) &#x3D; Zernio-created + platform-discovered ads. zernio &#x3D; restrict to Zernio-created only. (optional, default to 'all')
      * @param  \Zernio\Model\AdStatus|null $status (optional)
      * @param  string|null $platform (optional)
-     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $account_id Account ID (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $page_id Meta only: Facebook Page ID. Returns only ads whose creative is backed by this Page (a Meta ad account serves ads for every Page in the Business Manager). Matches each ad&#39;s &#x60;creative.pageId&#x60;; ads with no page signal (rare IG-only creatives) never match. Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $profile_id Profile ID (optional)

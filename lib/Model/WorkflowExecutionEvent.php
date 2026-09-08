@@ -675,7 +675,7 @@ class WorkflowExecutionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets meta
      *
-     * @param array<string,mixed>|null $meta Per-node-type payload. Shape varies — see WorkflowNode `type`. Examples:   `send_message` → `{ messageType, text, recipient }`,   `webhook` → `{ url, method, statusCode, responseTimeMs, responsePreview }`,   `ai` → `{ model, provider, inputTokens, outputTokens, responsePreview }`,   `condition` → `{ matchedHandle, rulesEvaluated }`,   `a_b_split` → `{ percentage, chosen }`.
+     * @param array<string,mixed>|null $meta Per-node-type payload. Shape varies; see WorkflowNode `type`. Examples:   `send_message` → `{ messageType, text, recipient }`,   `webhook` → `{ url, method, statusCode, responseTimeMs, responsePreview }`,   `ai` → `{ model, provider, inputTokens, outputTokens, responsePreview }`,   `condition` → `{ matchedHandle, rulesEvaluated }`,   `a_b_split` → `{ percentage, chosen }`.
      *
      * @return self
      */

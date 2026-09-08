@@ -722,7 +722,7 @@ class TwitterEngagementApi
      *
      * Look up a tweet
      *
-     * @param  string $account_id The social account ID whose X token is used for the lookup (required)
+     * @param  string $account_id The account ID whose X token is used for the lookup (required)
      * @param  string $id Numeric tweet ID or a tweet URL (e.g. https://x.com/user/status/123...) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTweet'] to see the possible values for this operation
      *
@@ -741,7 +741,7 @@ class TwitterEngagementApi
      *
      * Look up a tweet
      *
-     * @param  string $account_id The social account ID whose X token is used for the lookup (required)
+     * @param  string $account_id The account ID whose X token is used for the lookup (required)
      * @param  string $id Numeric tweet ID or a tweet URL (e.g. https://x.com/user/status/123...) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTweet'] to see the possible values for this operation
      *
@@ -855,7 +855,7 @@ class TwitterEngagementApi
      *
      * Look up a tweet
      *
-     * @param  string $account_id The social account ID whose X token is used for the lookup (required)
+     * @param  string $account_id The account ID whose X token is used for the lookup (required)
      * @param  string $id Numeric tweet ID or a tweet URL (e.g. https://x.com/user/status/123...) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTweet'] to see the possible values for this operation
      *
@@ -877,7 +877,7 @@ class TwitterEngagementApi
      *
      * Look up a tweet
      *
-     * @param  string $account_id The social account ID whose X token is used for the lookup (required)
+     * @param  string $account_id The account ID whose X token is used for the lookup (required)
      * @param  string $id Numeric tweet ID or a tweet URL (e.g. https://x.com/user/status/123...) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTweet'] to see the possible values for this operation
      *
@@ -928,7 +928,7 @@ class TwitterEngagementApi
     /**
      * Create request for operation 'getTweet'
      *
-     * @param  string $account_id The social account ID whose X token is used for the lookup (required)
+     * @param  string $account_id The account ID whose X token is used for the lookup (required)
      * @param  string $id Numeric tweet ID or a tweet URL (e.g. https://x.com/user/status/123...) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTweet'] to see the possible values for this operation
      *
@@ -1637,7 +1637,7 @@ class TwitterEngagementApi
      *
      * Search recent tweets
      *
-     * @param  string $account_id The social account ID (required)
+     * @param  string $account_id The account ID (required)
      * @param  string $query X search query, max 512 characters. Operators are passed through unchanged; X rejects malformed queries with a 400. (required)
      * @param  int|null $limit Results per page. X requires a minimum of 10; values below 10 are rejected. (optional, default to 10)
      * @param  string|null $since_id Only return tweets with an ID greater than (more recent than) this numeric tweet ID. Non-numeric values are rejected with 400. (optional)
@@ -1663,7 +1663,7 @@ class TwitterEngagementApi
      *
      * Search recent tweets
      *
-     * @param  string $account_id The social account ID (required)
+     * @param  string $account_id The account ID (required)
      * @param  string $query X search query, max 512 characters. Operators are passed through unchanged; X rejects malformed queries with a 400. (required)
      * @param  int|null $limit Results per page. X requires a minimum of 10; values below 10 are rejected. (optional, default to 10)
      * @param  string|null $since_id Only return tweets with an ID greater than (more recent than) this numeric tweet ID. Non-numeric values are rejected with 400. (optional)
@@ -1770,7 +1770,7 @@ class TwitterEngagementApi
      *
      * Search recent tweets
      *
-     * @param  string $account_id The social account ID (required)
+     * @param  string $account_id The account ID (required)
      * @param  string $query X search query, max 512 characters. Operators are passed through unchanged; X rejects malformed queries with a 400. (required)
      * @param  int|null $limit Results per page. X requires a minimum of 10; values below 10 are rejected. (optional, default to 10)
      * @param  string|null $since_id Only return tweets with an ID greater than (more recent than) this numeric tweet ID. Non-numeric values are rejected with 400. (optional)
@@ -1799,7 +1799,7 @@ class TwitterEngagementApi
      *
      * Search recent tweets
      *
-     * @param  string $account_id The social account ID (required)
+     * @param  string $account_id The account ID (required)
      * @param  string $query X search query, max 512 characters. Operators are passed through unchanged; X rejects malformed queries with a 400. (required)
      * @param  int|null $limit Results per page. X requires a minimum of 10; values below 10 are rejected. (optional, default to 10)
      * @param  string|null $since_id Only return tweets with an ID greater than (more recent than) this numeric tweet ID. Non-numeric values are rejected with 400. (optional)
@@ -1857,7 +1857,7 @@ class TwitterEngagementApi
     /**
      * Create request for operation 'searchTweets'
      *
-     * @param  string $account_id The social account ID (required)
+     * @param  string $account_id The account ID (required)
      * @param  string $query X search query, max 512 characters. Operators are passed through unchanged; X rejects malformed queries with a 400. (required)
      * @param  int|null $limit Results per page. X requires a minimum of 10; values below 10 are rejected. (optional, default to 10)
      * @param  string|null $since_id Only return tweets with an ID greater than (more recent than) this numeric tweet ID. Non-numeric values are rejected with 400. (optional)
@@ -2377,7 +2377,7 @@ class TwitterEngagementApi
      * Unfollow a user
      *
      * @param  string $account_id account_id (required)
-     * @param  string $target_user_id The Twitter ID of the user to unfollow (required)
+     * @param  string $target_user_id The X ID of the user to unfollow (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unfollowUser'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2396,7 +2396,7 @@ class TwitterEngagementApi
      * Unfollow a user
      *
      * @param  string $account_id (required)
-     * @param  string $target_user_id The Twitter ID of the user to unfollow (required)
+     * @param  string $target_user_id The X ID of the user to unfollow (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unfollowUser'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2496,7 +2496,7 @@ class TwitterEngagementApi
      * Unfollow a user
      *
      * @param  string $account_id (required)
-     * @param  string $target_user_id The Twitter ID of the user to unfollow (required)
+     * @param  string $target_user_id The X ID of the user to unfollow (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unfollowUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2518,7 +2518,7 @@ class TwitterEngagementApi
      * Unfollow a user
      *
      * @param  string $account_id (required)
-     * @param  string $target_user_id The Twitter ID of the user to unfollow (required)
+     * @param  string $target_user_id The X ID of the user to unfollow (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unfollowUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2569,7 +2569,7 @@ class TwitterEngagementApi
      * Create request for operation 'unfollowUser'
      *
      * @param  string $account_id (required)
-     * @param  string $target_user_id The Twitter ID of the user to unfollow (required)
+     * @param  string $target_user_id The X ID of the user to unfollow (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unfollowUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

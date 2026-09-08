@@ -342,7 +342,7 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
     /**
      * Sets account_id
      *
-     * @param string $account_id The social account ID (Instagram or Facebook)
+     * @param string $account_id The account ID (Instagram or Facebook)
      *
      * @return self
      */
@@ -396,7 +396,7 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
     /**
      * Sets quick_replies
      *
-     * @param \Zernio\Model\SendPrivateReplyToCommentRequestQuickRepliesInner[]|null $quick_replies Optional quick-reply chips appended to the message. Visible only in the Instagram and Messenger apps (not on web). Maximum 13 entries. Mutually exclusive with `buttons`. Note: chips do NOT render in the Instagram Message Requests folder where DMs from non-followers land — use `buttons` instead for cold reach.
+     * @param \Zernio\Model\SendPrivateReplyToCommentRequestQuickRepliesInner[]|null $quick_replies Optional quick-reply chips appended to the message. Visible only in the Instagram and Messenger apps (not on web). Maximum 13 entries. Mutually exclusive with `buttons`. Note: chips do NOT render in the Instagram Message Requests folder where DMs from non-followers land. Use `buttons` instead for cold reach.
      *
      * @return self
      */

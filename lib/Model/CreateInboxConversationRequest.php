@@ -416,7 +416,7 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets account_id
      *
-     * @param string $account_id The social account ID to send from
+     * @param string $account_id The account ID to send from
      *
      * @return self
      */
@@ -470,7 +470,7 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets participant_username
      *
-     * @param string|null $participant_username Recipient handle/username — an X or Bluesky handle (with or without @) or a Reddit username (with or without u/). Resolved via lookup. Provide either this or participantId.
+     * @param string|null $participant_username Recipient handle/username, an X or Bluesky handle (with or without @) or a Reddit username (with or without u/). Resolved via lookup. Provide either this or participantId.
      *
      * @return self
      */
@@ -524,7 +524,7 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets skip_dm_check
      *
-     * @param bool|null $skip_dm_check X/Twitter only. Skip the receives_your_dm eligibility check before sending. Use if you have already verified the recipient accepts DMs.
+     * @param bool|null $skip_dm_check X only. Skip the receives_your_dm eligibility check before sending. Use if you have already verified the recipient accepts DMs.
      *
      * @return self
      */

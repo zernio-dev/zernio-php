@@ -320,7 +320,7 @@ class EditInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets account_id
      *
-     * @param string $account_id Social account ID
+     * @param string $account_id Account ID
      *
      * @return self
      */

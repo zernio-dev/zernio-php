@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * UsageStatsUsageXApiCalls Class Doc Comment
  *
  * @category Class
- * @description **Deprecated.** Legacy 3-tier aggregate. Operations outside the three historical prices ($0.005/$0.010/$0.015) — notably the $0.200 \&quot;Posts with URL\&quot; tier added April 2026 — are silently excluded from this shape. Use &#x60;xApiCallsByOperation&#x60; instead; it captures every tier and is the source of truth for per-operation call counts.
+ * @description **Deprecated.** Legacy 3-tier aggregate. Operations outside the three historical prices ($0.005/$0.010/$0.015), notably the $0.200 \&quot;Posts with URL\&quot; tier added April 2026, are silently excluded from this shape. Use &#x60;xApiCallsByOperation&#x60; instead; it captures every tier and is the source of truth for per-operation call counts.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -2572,7 +2572,7 @@ class SMSApi
      *
      * List carrier registrations
      *
-     * @param  bool|null $include_deactivated Deactivated (terminated) registrations are hidden by default — pass true to include them. (optional)
+     * @param  bool|null $include_deactivated Deactivated (terminated) registrations are hidden by default. Pass true to include them. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSmsRegistrations'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2590,7 +2590,7 @@ class SMSApi
      *
      * List carrier registrations
      *
-     * @param  bool|null $include_deactivated Deactivated (terminated) registrations are hidden by default — pass true to include them. (optional)
+     * @param  bool|null $include_deactivated Deactivated (terminated) registrations are hidden by default. Pass true to include them. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSmsRegistrations'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2703,7 +2703,7 @@ class SMSApi
      *
      * List carrier registrations
      *
-     * @param  bool|null $include_deactivated Deactivated (terminated) registrations are hidden by default — pass true to include them. (optional)
+     * @param  bool|null $include_deactivated Deactivated (terminated) registrations are hidden by default. Pass true to include them. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSmsRegistrations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2724,7 +2724,7 @@ class SMSApi
      *
      * List carrier registrations
      *
-     * @param  bool|null $include_deactivated Deactivated (terminated) registrations are hidden by default — pass true to include them. (optional)
+     * @param  bool|null $include_deactivated Deactivated (terminated) registrations are hidden by default. Pass true to include them. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSmsRegistrations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2774,7 +2774,7 @@ class SMSApi
     /**
      * Create request for operation 'listSmsRegistrations'
      *
-     * @param  bool|null $include_deactivated Deactivated (terminated) registrations are hidden by default — pass true to include them. (optional)
+     * @param  bool|null $include_deactivated Deactivated (terminated) registrations are hidden by default. Pass true to include them. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSmsRegistrations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

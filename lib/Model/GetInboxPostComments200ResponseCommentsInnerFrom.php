@@ -508,7 +508,7 @@ class GetInboxPostComments200ResponseCommentsInnerFrom implements ModelInterface
     /**
      * Sets verified_type
      *
-     * @param string|null $verified_type X/Twitter verified badge type. Only present for Twitter/X comments.
+     * @param string|null $verified_type X verified badge type. Only present for X comments.
      *
      * @return self
      */

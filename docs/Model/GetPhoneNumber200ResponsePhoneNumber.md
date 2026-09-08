@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **country** | **string** |  | [optional]
 **meta_preverified_id** | **string** |  | [optional]
 **meta_verification_status** | **string** |  | [optional]
-**onfido_verification_url** | **string** | For a regulated number with an Onfido ID step — the link to forward to the end user. Appears once the order is placed; null otherwise. | [optional]
+**onfido_verification_url** | **string** | For a regulated number with an Onfido ID step: the link to forward to the end user. Appears once the order is placed; null otherwise. | [optional]
 **end_user_first_name** | **string** |  | [optional]
 **end_user_last_name** | **string** |  | [optional]
 **regulatory_decline_reason** | **string** | Reviewer rejection reason when status is regulatory_declined. | [optional]

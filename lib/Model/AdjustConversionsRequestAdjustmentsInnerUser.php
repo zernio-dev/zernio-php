@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * AdjustConversionsRequestAdjustmentsInnerUser Class Doc Comment
  *
  * @category Class
- * @description ENHANCEMENT only — first-party identifiers (hashed server-side). At least one of email/phone required.
+ * @description ENHANCEMENT only. First-party identifiers (hashed server-side). At least one of email/phone required.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

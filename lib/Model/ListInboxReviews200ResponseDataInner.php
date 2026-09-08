@@ -408,7 +408,7 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
     /**
      * Sets id
      *
-     * @param string|null $id Review identifier. For Google Business this is the full review resource name (accounts/{accountId}/locations/{locationId}/reviews/{reviewId}), so it also encodes the location.
+     * @param string|null $id Review identifier. For Google Business Profile this is the full review resource name (accounts/{accountId}/locations/{locationId}/reviews/{reviewId}), so it also encodes the location.
      *
      * @return self
      */
@@ -516,7 +516,7 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
     /**
      * Sets location_id
      *
-     * @param string|null $location_id Bare GBP location id the review belongs to. Google Business only; absent for other platforms.
+     * @param string|null $location_id Bare Google Business Profile location id the review belongs to. Google Business Profile only; absent for other platforms.
      *
      * @return self
      */
@@ -543,7 +543,7 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
     /**
      * Sets location_name
      *
-     * @param string|null $location_name Human-readable GBP location display name. Google Business only; absent for other platforms.
+     * @param string|null $location_name Human-readable Google Business Profile location display name. Google Business Profile only; absent for other platforms.
      *
      * @return self
      */
@@ -712,7 +712,7 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
     /**
      * Sets has_photos
      *
-     * @param bool|null $has_photos Whether the review has at least one photo. Google Business only; always false for other platforms.
+     * @param bool|null $has_photos Whether the review has at least one photo. Google Business Profile only; always false for other platforms.
      *
      * @return self
      */
@@ -739,7 +739,7 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
     /**
      * Sets photo_count
      *
-     * @param int|null $photo_count Number of photos attached to the review (photos only; videos are not counted). Google Business only; 0 for other platforms.
+     * @param int|null $photo_count Number of photos attached to the review (photos only; videos are not counted). Google Business Profile only; 0 for other platforms.
      *
      * @return self
      */
@@ -766,7 +766,7 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
     /**
      * Sets photos
      *
-     * @param \Zernio\Model\ListInboxReviews200ResponseDataInnerPhotosInner[]|null $photos Photos attached to the review. Google Business only; always an empty array for other platforms.
+     * @param \Zernio\Model\ListInboxReviews200ResponseDataInnerPhotosInner[]|null $photos Photos attached to the review. Google Business Profile only; always an empty array for other platforms.
      *
      * @return self
      */

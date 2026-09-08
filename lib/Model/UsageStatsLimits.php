@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * UsageStatsLimits Class Doc Comment
  *
  * @category Class
- * @description Plan limits. For Metronome users both fields are &#x60;-1&#x60; (unlimited).
+ * @description Plan limits. For accounts on usage-based billing both fields are &#x60;-1&#x60; (unlimited).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

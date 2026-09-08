@@ -414,7 +414,7 @@ class AnalyticsDeltaEntry implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets account_id
      *
-     * @param string $account_id Social account this post was published through
+     * @param string $account_id Account this post was published through
      *
      * @return self
      */

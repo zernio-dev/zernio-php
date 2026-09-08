@@ -460,7 +460,7 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
     /**
      * Sets country_code
      *
-     * @param string|null $country_code ISO country of the number — pass it to GET /v1/phone-numbers/port-in/requirements for international numbers.
+     * @param string|null $country_code ISO country of the number. Pass it to GET /v1/phone-numbers/port-in/requirements for international numbers.
      *
      * @return self
      */
@@ -494,7 +494,7 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
     /**
      * Sets phone_number_type
      *
-     * @param string|null $phone_number_type Carrier number-type classification (local, mobile, national, toll_free…) — the numberType for the requirements endpoint.
+     * @param string|null $phone_number_type Carrier number-type classification (local, mobile, national, toll_free…), the numberType for the requirements endpoint.
      *
      * @return self
      */

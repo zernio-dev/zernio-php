@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * CreatePhoneNumberPortInRequestEndUser Class Doc Comment
  *
  * @category Class
- * @description End-user / current-carrier account info that authorizes the port. The losing carrier matches every field against its records and rejects the whole port on a mismatch — enter values exactly as they appear on the carrier bill.
+ * @description End-user / current-carrier account info that authorizes the port. The losing carrier matches every field against its records and rejects the whole port on a mismatch, so enter values exactly as they appear on the carrier bill.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -490,7 +490,7 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
     /**
      * Sets auth_person_name
      *
-     * @param string $auth_person_name Full name (first + last) of the person authorizing the port — must match the LOA signature.
+     * @param string $auth_person_name Full name (first + last) of the person authorizing the port, which must match the LOA signature.
      *
      * @return self
      */
@@ -544,7 +544,7 @@ class CreatePhoneNumberPortInRequestEndUser implements ModelInterface, ArrayAcce
     /**
      * Sets account_number
      *
-     * @param string $account_number Account number with the losing carrier — required (carriers reject ports without it; on prepaid mobile plans it is often the phone number itself).
+     * @param string $account_number Account number with the losing carrier. Required (carriers reject ports without it; on prepaid mobile plans it is often the phone number itself).
      *
      * @return self
      */

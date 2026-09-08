@@ -350,7 +350,7 @@ class AssignGoogleBusinessLocationRequest implements ModelInterface, ArrayAccess
     /**
      * Sets selected_location_id
      *
-     * @param string $selected_location_id The Google Business location ID to assign (e.g. \"locations/123\").
+     * @param string $selected_location_id The Google Business Profile location ID to assign (e.g. \"locations/123\").
      *
      * @return self
      */
@@ -377,7 +377,7 @@ class AssignGoogleBusinessLocationRequest implements ModelInterface, ArrayAccess
     /**
      * Sets google_account_id
      *
-     * @param string|null $google_account_id Optional but recommended. The Google Business Account resource name (\"accounts/123\") that owns the location (from GET gmb-locations). When provided the location is resolved directly instead of by enumerating the account, required for accounts with many locations.
+     * @param string|null $google_account_id Optional but recommended. The Google Business Profile Account resource name (\"accounts/123\") that owns the location (from GET gmb-locations). When provided the location is resolved directly instead of by enumerating the account, required for accounts with many locations.
      *
      * @return self
      */

@@ -533,7 +533,7 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
     /**
      * Sets content
      *
-     * @param string|null $content The post text/caption. On ad rows (isAd: true) this is the AD NAME, not the underlying post's caption — the creative text isn't exposed here.
+     * @param string|null $content The post text/caption. On ad rows (isAd: true) this is the AD NAME, not the underlying post's caption. The creative text isn't exposed here.
      *
      * @return self
      */
@@ -804,7 +804,7 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
     /**
      * Sets ad_id
      *
-     * @param string|null $ad_id Internal Zernio ad id — only on ad rows.
+     * @param string|null $ad_id Internal Zernio ad id, only on ad rows.
      *
      * @return self
      */
@@ -831,7 +831,7 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
     /**
      * Sets placement
      *
-     * @param string|null $placement Which side of the ad this row's comments are on — only on ad rows.
+     * @param string|null $placement Which side of the ad this row's comments are on, only on ad rows.
      *
      * @return self
      */

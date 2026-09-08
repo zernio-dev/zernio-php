@@ -407,7 +407,7 @@ class WebhookPayloadCommentPost implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets content
      *
-     * @param string|null $content Post text, from our synced copy — no platform call is made on the comment path, so null when the post was never synced.
+     * @param string|null $content Post text, from our synced copy. No platform call is made on the comment path, so null when the post was never synced.
      *
      * @return self
      */

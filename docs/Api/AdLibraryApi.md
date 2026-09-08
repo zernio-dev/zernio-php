@@ -37,7 +37,7 @@ $apiInstance = new Zernio\Api\AdLibraryApi(
     $config
 );
 $platform = 'platform_example'; // string | Which archive to search. `meta` needs no accountId. Required unless accountId is given.
-$account_id = 'account_id_example'; // string | Zernio SocialAccount id. Required for LinkedIn (linkedin / linkedinads: its token searches). Optional for Meta, where any facebook / instagram / metaads account just selects the platform.
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id. Required for LinkedIn (linkedin / linkedinads: its token searches). Optional for Meta, where any facebook / instagram / metaads account only selects the platform.
 $q = 'q_example'; // string | Keyword search. Meta does not translate it, so write it in the ads' language. Required unless pageIds (Meta) or advertiser (LinkedIn) is given.
 $page_ids = 'page_ids_example'; // string | Meta only. Comma-separated Facebook Page ids (max 10) whose ads to list.
 $advertiser = 'advertiser_example'; // string | LinkedIn only. Advertiser (Page) name to search.
@@ -67,7 +67,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **platform** | **string**| Which archive to search. &#x60;meta&#x60; needs no accountId. Required unless accountId is given. | [optional] |
-| **account_id** | **string**| Zernio SocialAccount id. Required for LinkedIn (linkedin / linkedinads: its token searches). Optional for Meta, where any facebook / instagram / metaads account just selects the platform. | [optional] |
+| **account_id** | **string**| Zernio SocialAccount id. Required for LinkedIn (linkedin / linkedinads: its token searches). Optional for Meta, where any facebook / instagram / metaads account only selects the platform. | [optional] |
 | **q** | **string**| Keyword search. Meta does not translate it, so write it in the ads&#39; language. Required unless pageIds (Meta) or advertiser (LinkedIn) is given. | [optional] |
 | **page_ids** | **string**| Meta only. Comma-separated Facebook Page ids (max 10) whose ads to list. | [optional] |
 | **advertiser** | **string**| LinkedIn only. Advertiser (Page) name to search. | [optional] |

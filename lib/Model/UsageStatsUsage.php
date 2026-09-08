@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * UsageStatsUsage Class Doc Comment
  *
  * @category Class
- * @description Per-period usage counts. Fields present depend on &#x60;billingSystem&#x60;: Stripe returns &#x60;uploads&#x60; / &#x60;profiles&#x60; / &#x60;lastReset&#x60;; Metronome returns &#x60;connectedAccounts&#x60; / &#x60;xApiCalls&#x60; / &#x60;xApiCallsByOperation&#x60;.
+ * @description Per-period usage counts. Fields present depend on &#x60;billingSystem&#x60;: Stripe returns &#x60;uploads&#x60; / &#x60;profiles&#x60; / &#x60;lastReset&#x60;; usage-based billing returns &#x60;connectedAccounts&#x60; / &#x60;xApiCalls&#x60; / &#x60;xApiCallsByOperation&#x60;.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -420,7 +420,7 @@ class UsageStatsUsage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets connected_accounts
      *
-     * @param int|null $connected_accounts Metronome users only. Accounts currently connected across the team.
+     * @param int|null $connected_accounts Usage-based billing only. Accounts currently connected across the team.
      *
      * @return self
      */
@@ -476,7 +476,7 @@ class UsageStatsUsage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_api_calls_by_operation
      *
-     * @param array<string,int>|null $x_api_calls_by_operation Metronome users only. Per-operation X API call counts keyed by operation (e.g. `posts_read`, `content_create`, `content_create_with_url`). Resolve each key to price and metadata via `GET /v1/billing/x-pricing`. This is the canonical source — covers every price tier including the $0.200 URL tier that `xApiCalls` excludes.
+     * @param array<string,int>|null $x_api_calls_by_operation Usage-based billing only. Per-operation X API call counts keyed by operation (e.g. `posts_read`, `content_create`, `content_create_with_url`). Resolve each key to price and metadata via `GET /v1/billing/x-pricing`. This is the canonical source: it covers every price tier including the $0.200 URL tier that `xApiCalls` excludes.
      *
      * @return self
      */

@@ -499,7 +499,7 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets account_id
      *
-     * @param string|null $account_id Zernio social account ID (required for direct mode, ignored for post-based mode)
+     * @param string|null $account_id Zernio account ID (required for direct mode, ignored for post-based mode)
      *
      * @return self
      */

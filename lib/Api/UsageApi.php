@@ -1097,9 +1097,9 @@ class UsageApi
      * @param  string|null $range Window to report. &#x60;cycle&#x60; / &#x60;prev-cycle&#x60; resolve to the customer&#39;s real billing-period bounds (falling back to a trailing 30 days when no invoice exists yet); &#x60;7d&#x60;…&#x60;12mo&#x60; are trailing windows; &#x60;custom&#x60; uses &#x60;from&#x60; / &#x60;to&#x60;. (optional, default to 'cycle')
      * @param  \DateTime|null $from Inclusive start (UTC date). Required when &#x60;range&#x3D;custom&#x60;. (optional)
      * @param  \DateTime|null $to Inclusive end (UTC date). Required when &#x60;range&#x3D;custom&#x60;. Max span 366 days. (optional)
-     * @param  string|null $granularity Bucketing of the &#x60;days&#x60; series: &#x60;day&#x60; (one row per UTC day), &#x60;month&#x60; (one row per calendar month, dated to the 1st), or &#x60;total&#x60; (no series — read &#x60;totals&#x60;). Does not affect &#x60;totals&#x60;. (optional, default to 'day')
+     * @param  string|null $granularity Bucketing of the &#x60;days&#x60; series: &#x60;day&#x60; (one row per UTC day), &#x60;month&#x60; (one row per calendar month, dated to the 1st), or &#x60;total&#x60; (no series, read &#x60;totals&#x60;). Does not affect &#x60;totals&#x60;. (optional, default to 'day')
      * @param  string|null $group_by Metering mode. Adds &#x60;attribution&#x60;: the window&#39;s spend split per profile or per account (keys are ids; resolve names via &#x60;GET /v1/profiles&#x60; / &#x60;GET /v1/accounts&#x60;). (optional)
-     * @param  string|null $profile_id Metering mode (pair with &#x60;range&#x60;). Project the payload onto this profile&#39;s attributed share. Mutually exclusive with &#x60;accountId&#x60;, and &#x60;groupBy&#x60; (if given) must be &#x60;profile&#x60;; 404 when the profile is not in your workspace (or outside a scoped key&#39;s profiles). (optional)
+     * @param  string|null $profile_id Metering mode (pair with &#x60;range&#x60;). Project the payload onto this profile&#39;s attributed share. Mutually exclusive with &#x60;accountId&#x60;, and &#x60;groupBy&#x60; (if given) must be &#x60;profile&#x60;; 404 when the profile is not in your team (or outside a scoped key&#39;s profiles). (optional)
      * @param  string|null $account_id Metering mode (pair with &#x60;range&#x60;). Project the payload onto this account&#39;s attributed share. Mutually exclusive with &#x60;profileId&#x60;, and &#x60;groupBy&#x60; (if given) must be &#x60;account&#x60;; 404 when the account is not visible to the caller. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsage'] to see the possible values for this operation
      *
@@ -1122,9 +1122,9 @@ class UsageApi
      * @param  string|null $range Window to report. &#x60;cycle&#x60; / &#x60;prev-cycle&#x60; resolve to the customer&#39;s real billing-period bounds (falling back to a trailing 30 days when no invoice exists yet); &#x60;7d&#x60;…&#x60;12mo&#x60; are trailing windows; &#x60;custom&#x60; uses &#x60;from&#x60; / &#x60;to&#x60;. (optional, default to 'cycle')
      * @param  \DateTime|null $from Inclusive start (UTC date). Required when &#x60;range&#x3D;custom&#x60;. (optional)
      * @param  \DateTime|null $to Inclusive end (UTC date). Required when &#x60;range&#x3D;custom&#x60;. Max span 366 days. (optional)
-     * @param  string|null $granularity Bucketing of the &#x60;days&#x60; series: &#x60;day&#x60; (one row per UTC day), &#x60;month&#x60; (one row per calendar month, dated to the 1st), or &#x60;total&#x60; (no series — read &#x60;totals&#x60;). Does not affect &#x60;totals&#x60;. (optional, default to 'day')
+     * @param  string|null $granularity Bucketing of the &#x60;days&#x60; series: &#x60;day&#x60; (one row per UTC day), &#x60;month&#x60; (one row per calendar month, dated to the 1st), or &#x60;total&#x60; (no series, read &#x60;totals&#x60;). Does not affect &#x60;totals&#x60;. (optional, default to 'day')
      * @param  string|null $group_by Metering mode. Adds &#x60;attribution&#x60;: the window&#39;s spend split per profile or per account (keys are ids; resolve names via &#x60;GET /v1/profiles&#x60; / &#x60;GET /v1/accounts&#x60;). (optional)
-     * @param  string|null $profile_id Metering mode (pair with &#x60;range&#x60;). Project the payload onto this profile&#39;s attributed share. Mutually exclusive with &#x60;accountId&#x60;, and &#x60;groupBy&#x60; (if given) must be &#x60;profile&#x60;; 404 when the profile is not in your workspace (or outside a scoped key&#39;s profiles). (optional)
+     * @param  string|null $profile_id Metering mode (pair with &#x60;range&#x60;). Project the payload onto this profile&#39;s attributed share. Mutually exclusive with &#x60;accountId&#x60;, and &#x60;groupBy&#x60; (if given) must be &#x60;profile&#x60;; 404 when the profile is not in your team (or outside a scoped key&#39;s profiles). (optional)
      * @param  string|null $account_id Metering mode (pair with &#x60;range&#x60;). Project the payload onto this account&#39;s attributed share. Mutually exclusive with &#x60;profileId&#x60;, and &#x60;groupBy&#x60; (if given) must be &#x60;account&#x60;; 404 when the account is not visible to the caller. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsage'] to see the possible values for this operation
      *
@@ -1242,9 +1242,9 @@ class UsageApi
      * @param  string|null $range Window to report. &#x60;cycle&#x60; / &#x60;prev-cycle&#x60; resolve to the customer&#39;s real billing-period bounds (falling back to a trailing 30 days when no invoice exists yet); &#x60;7d&#x60;…&#x60;12mo&#x60; are trailing windows; &#x60;custom&#x60; uses &#x60;from&#x60; / &#x60;to&#x60;. (optional, default to 'cycle')
      * @param  \DateTime|null $from Inclusive start (UTC date). Required when &#x60;range&#x3D;custom&#x60;. (optional)
      * @param  \DateTime|null $to Inclusive end (UTC date). Required when &#x60;range&#x3D;custom&#x60;. Max span 366 days. (optional)
-     * @param  string|null $granularity Bucketing of the &#x60;days&#x60; series: &#x60;day&#x60; (one row per UTC day), &#x60;month&#x60; (one row per calendar month, dated to the 1st), or &#x60;total&#x60; (no series — read &#x60;totals&#x60;). Does not affect &#x60;totals&#x60;. (optional, default to 'day')
+     * @param  string|null $granularity Bucketing of the &#x60;days&#x60; series: &#x60;day&#x60; (one row per UTC day), &#x60;month&#x60; (one row per calendar month, dated to the 1st), or &#x60;total&#x60; (no series, read &#x60;totals&#x60;). Does not affect &#x60;totals&#x60;. (optional, default to 'day')
      * @param  string|null $group_by Metering mode. Adds &#x60;attribution&#x60;: the window&#39;s spend split per profile or per account (keys are ids; resolve names via &#x60;GET /v1/profiles&#x60; / &#x60;GET /v1/accounts&#x60;). (optional)
-     * @param  string|null $profile_id Metering mode (pair with &#x60;range&#x60;). Project the payload onto this profile&#39;s attributed share. Mutually exclusive with &#x60;accountId&#x60;, and &#x60;groupBy&#x60; (if given) must be &#x60;profile&#x60;; 404 when the profile is not in your workspace (or outside a scoped key&#39;s profiles). (optional)
+     * @param  string|null $profile_id Metering mode (pair with &#x60;range&#x60;). Project the payload onto this profile&#39;s attributed share. Mutually exclusive with &#x60;accountId&#x60;, and &#x60;groupBy&#x60; (if given) must be &#x60;profile&#x60;; 404 when the profile is not in your team (or outside a scoped key&#39;s profiles). (optional)
      * @param  string|null $account_id Metering mode (pair with &#x60;range&#x60;). Project the payload onto this account&#39;s attributed share. Mutually exclusive with &#x60;profileId&#x60;, and &#x60;groupBy&#x60; (if given) must be &#x60;account&#x60;; 404 when the account is not visible to the caller. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsage'] to see the possible values for this operation
      *
@@ -1270,9 +1270,9 @@ class UsageApi
      * @param  string|null $range Window to report. &#x60;cycle&#x60; / &#x60;prev-cycle&#x60; resolve to the customer&#39;s real billing-period bounds (falling back to a trailing 30 days when no invoice exists yet); &#x60;7d&#x60;…&#x60;12mo&#x60; are trailing windows; &#x60;custom&#x60; uses &#x60;from&#x60; / &#x60;to&#x60;. (optional, default to 'cycle')
      * @param  \DateTime|null $from Inclusive start (UTC date). Required when &#x60;range&#x3D;custom&#x60;. (optional)
      * @param  \DateTime|null $to Inclusive end (UTC date). Required when &#x60;range&#x3D;custom&#x60;. Max span 366 days. (optional)
-     * @param  string|null $granularity Bucketing of the &#x60;days&#x60; series: &#x60;day&#x60; (one row per UTC day), &#x60;month&#x60; (one row per calendar month, dated to the 1st), or &#x60;total&#x60; (no series — read &#x60;totals&#x60;). Does not affect &#x60;totals&#x60;. (optional, default to 'day')
+     * @param  string|null $granularity Bucketing of the &#x60;days&#x60; series: &#x60;day&#x60; (one row per UTC day), &#x60;month&#x60; (one row per calendar month, dated to the 1st), or &#x60;total&#x60; (no series, read &#x60;totals&#x60;). Does not affect &#x60;totals&#x60;. (optional, default to 'day')
      * @param  string|null $group_by Metering mode. Adds &#x60;attribution&#x60;: the window&#39;s spend split per profile or per account (keys are ids; resolve names via &#x60;GET /v1/profiles&#x60; / &#x60;GET /v1/accounts&#x60;). (optional)
-     * @param  string|null $profile_id Metering mode (pair with &#x60;range&#x60;). Project the payload onto this profile&#39;s attributed share. Mutually exclusive with &#x60;accountId&#x60;, and &#x60;groupBy&#x60; (if given) must be &#x60;profile&#x60;; 404 when the profile is not in your workspace (or outside a scoped key&#39;s profiles). (optional)
+     * @param  string|null $profile_id Metering mode (pair with &#x60;range&#x60;). Project the payload onto this profile&#39;s attributed share. Mutually exclusive with &#x60;accountId&#x60;, and &#x60;groupBy&#x60; (if given) must be &#x60;profile&#x60;; 404 when the profile is not in your team (or outside a scoped key&#39;s profiles). (optional)
      * @param  string|null $account_id Metering mode (pair with &#x60;range&#x60;). Project the payload onto this account&#39;s attributed share. Mutually exclusive with &#x60;profileId&#x60;, and &#x60;groupBy&#x60; (if given) must be &#x60;account&#x60;; 404 when the account is not visible to the caller. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsage'] to see the possible values for this operation
      *
@@ -1327,9 +1327,9 @@ class UsageApi
      * @param  string|null $range Window to report. &#x60;cycle&#x60; / &#x60;prev-cycle&#x60; resolve to the customer&#39;s real billing-period bounds (falling back to a trailing 30 days when no invoice exists yet); &#x60;7d&#x60;…&#x60;12mo&#x60; are trailing windows; &#x60;custom&#x60; uses &#x60;from&#x60; / &#x60;to&#x60;. (optional, default to 'cycle')
      * @param  \DateTime|null $from Inclusive start (UTC date). Required when &#x60;range&#x3D;custom&#x60;. (optional)
      * @param  \DateTime|null $to Inclusive end (UTC date). Required when &#x60;range&#x3D;custom&#x60;. Max span 366 days. (optional)
-     * @param  string|null $granularity Bucketing of the &#x60;days&#x60; series: &#x60;day&#x60; (one row per UTC day), &#x60;month&#x60; (one row per calendar month, dated to the 1st), or &#x60;total&#x60; (no series — read &#x60;totals&#x60;). Does not affect &#x60;totals&#x60;. (optional, default to 'day')
+     * @param  string|null $granularity Bucketing of the &#x60;days&#x60; series: &#x60;day&#x60; (one row per UTC day), &#x60;month&#x60; (one row per calendar month, dated to the 1st), or &#x60;total&#x60; (no series, read &#x60;totals&#x60;). Does not affect &#x60;totals&#x60;. (optional, default to 'day')
      * @param  string|null $group_by Metering mode. Adds &#x60;attribution&#x60;: the window&#39;s spend split per profile or per account (keys are ids; resolve names via &#x60;GET /v1/profiles&#x60; / &#x60;GET /v1/accounts&#x60;). (optional)
-     * @param  string|null $profile_id Metering mode (pair with &#x60;range&#x60;). Project the payload onto this profile&#39;s attributed share. Mutually exclusive with &#x60;accountId&#x60;, and &#x60;groupBy&#x60; (if given) must be &#x60;profile&#x60;; 404 when the profile is not in your workspace (or outside a scoped key&#39;s profiles). (optional)
+     * @param  string|null $profile_id Metering mode (pair with &#x60;range&#x60;). Project the payload onto this profile&#39;s attributed share. Mutually exclusive with &#x60;accountId&#x60;, and &#x60;groupBy&#x60; (if given) must be &#x60;profile&#x60;; 404 when the profile is not in your team (or outside a scoped key&#39;s profiles). (optional)
      * @param  string|null $account_id Metering mode (pair with &#x60;range&#x60;). Project the payload onto this account&#39;s attributed share. Mutually exclusive with &#x60;profileId&#x60;, and &#x60;groupBy&#x60; (if given) must be &#x60;account&#x60;; 404 when the account is not visible to the caller. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsage'] to see the possible values for this operation
      *
@@ -1791,7 +1791,7 @@ class UsageApi
     /**
      * Operation getXApiPricing
      *
-     * Get X/Twitter API pricing table
+     * Get X API pricing table
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getXApiPricing'] to see the possible values for this operation
      *
@@ -1808,7 +1808,7 @@ class UsageApi
     /**
      * Operation getXApiPricingWithHttpInfo
      *
-     * Get X/Twitter API pricing table
+     * Get X API pricing table
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getXApiPricing'] to see the possible values for this operation
      *
@@ -1906,7 +1906,7 @@ class UsageApi
     /**
      * Operation getXApiPricingAsync
      *
-     * Get X/Twitter API pricing table
+     * Get X API pricing table
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getXApiPricing'] to see the possible values for this operation
      *
@@ -1926,7 +1926,7 @@ class UsageApi
     /**
      * Operation getXApiPricingAsyncWithHttpInfo
      *
-     * Get X/Twitter API pricing table
+     * Get X API pricing table
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getXApiPricing'] to see the possible values for this operation
      *
