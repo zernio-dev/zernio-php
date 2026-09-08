@@ -12,12 +12,12 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `searchAdLibrary()`
 
 ```php
-searchAdLibrary($account_id, $q, $page_ids, $advertiser, $countries, $ad_type, $status, $platforms, $media_type, $languages, $since, $until, $search_type, $fields, $limit, $after): \Zernio\Model\SearchAdLibrary200Response
+searchAdLibrary($platform, $account_id, $q, $page_ids, $advertiser, $countries, $ad_type, $status, $platforms, $media_type, $languages, $since, $until, $search_type, $fields, $limit, $after): \Zernio\Model\SearchAdLibrary200Response
 ```
 
 Search the public Ad Library
 
-Competitor and market research over the platform's public ad archive, searched with the customer's own connected token (no extra scope): Meta's Ad Library (`GET /ads_archive`) for a `facebook` / `instagram` / `metaads` account, LinkedIn's Ad Library (`GET /rest/adLibrary`) for a `linkedin` / `linkedinads` account. Rows are returned in the platform's raw shape under `data`; `paging.after` is an opaque cursor on both (`null` when exhausted).  **Meta coverage.** Political and social-issue ads are searchable worldwide. Every other ad is in the archive only if it was delivered to the EU or UK within the last year, so a US-only commercial advertiser is invisible. Spend, impressions and demographics are political-only fields and are left out of the default projection; request them via `fields`. Meta serves the archive only to people who confirmed their identity and location at facebook.com/ID: until the Facebook user behind the connection has done so, the call fails with `meta_identity_confirmation_required` (403).  **LinkedIn coverage.** Ads served after June 1 2023, worldwide, kept for a year after their last impression. EU-delivered ads carry impression ranges and the disclosed targeting facets. Pages are capped at 25 ads (`limit` > 25 is a 400); `after` is the next offset.  Which params apply: `q`, `countries`, `since`, `until`, `limit`, `after` on both; `pageIds`, `adType`, `status`, `platforms`, `mediaType`, `languages`, `searchType`, `fields` are Meta-only; `advertiser` is LinkedIn-only. Passing a param the account's platform does not support is a 400 naming the param.
+Competitor and market research over the public ad archives. Meta's Ad Library (`GET /ads_archive`) is searched with Zernio's own developer access, so `platform=meta` needs no connected account at all. LinkedIn's Ad Library (`GET /rest/adLibrary`) runs on a connected `linkedin` / `linkedinads` account, passed as `accountId`. Passing a Meta account as `accountId` also selects Meta. Rows are returned in the platform's raw shape under `data`; `paging.after` is an opaque cursor on both (`null` when exhausted).  **Meta coverage.** Political and social-issue ads are searchable worldwide. Every other ad is in the archive only if it was delivered to the EU or UK within the last year, so a US-only commercial advertiser is invisible. Spend, impressions and demographics are political-only fields and are left out of the default projection; request them via `fields`. All customers share Zernio's Meta quota, so a `429` means back off for a minute.  **LinkedIn coverage.** Ads served after June 1 2023, worldwide, kept for a year after their last impression. EU-delivered ads carry impression ranges and the disclosed targeting facets. Pages are capped at 25 ads (`limit` > 25 is a 400); `after` is the next offset.  Which params apply: `q`, `countries`, `since`, `until`, `limit`, `after` on both; `pageIds`, `adType`, `status`, `platforms`, `mediaType`, `languages`, `searchType`, `fields` are Meta-only; `advertiser` is LinkedIn-only. Passing a param the account's platform does not support is a 400 naming the param.
 
 ### Example
 
@@ -36,7 +36,8 @@ $apiInstance = new Zernio\Api\AdLibraryApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | Zernio SocialAccount id (facebook / instagram / metaads for Meta, linkedin / linkedinads for LinkedIn). Its token is the one that searches.
+$platform = 'platform_example'; // string | Which archive to search. `meta` needs no accountId. Required unless accountId is given.
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id. Required for LinkedIn (linkedin / linkedinads: its token searches). Optional for Meta, where any facebook / instagram / metaads account just selects the platform.
 $q = 'q_example'; // string | Keyword search. Meta does not translate it, so write it in the ads' language. Required unless pageIds (Meta) or advertiser (LinkedIn) is given.
 $page_ids = 'page_ids_example'; // string | Meta only. Comma-separated Facebook Page ids (max 10) whose ads to list.
 $advertiser = 'advertiser_example'; // string | LinkedIn only. Advertiser (Page) name to search.
@@ -54,7 +55,7 @@ $limit = 25; // int | Rows per page. LinkedIn accepts at most 25.
 $after = 'after_example'; // string | paging.after of the previous page.
 
 try {
-    $result = $apiInstance->searchAdLibrary($account_id, $q, $page_ids, $advertiser, $countries, $ad_type, $status, $platforms, $media_type, $languages, $since, $until, $search_type, $fields, $limit, $after);
+    $result = $apiInstance->searchAdLibrary($platform, $account_id, $q, $page_ids, $advertiser, $countries, $ad_type, $status, $platforms, $media_type, $languages, $since, $until, $search_type, $fields, $limit, $after);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdLibraryApi->searchAdLibrary: ', $e->getMessage(), PHP_EOL;
@@ -65,7 +66,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| Zernio SocialAccount id (facebook / instagram / metaads for Meta, linkedin / linkedinads for LinkedIn). Its token is the one that searches. | |
+| **platform** | **string**| Which archive to search. &#x60;meta&#x60; needs no accountId. Required unless accountId is given. | [optional] |
+| **account_id** | **string**| Zernio SocialAccount id. Required for LinkedIn (linkedin / linkedinads: its token searches). Optional for Meta, where any facebook / instagram / metaads account just selects the platform. | [optional] |
 | **q** | **string**| Keyword search. Meta does not translate it, so write it in the ads&#39; language. Required unless pageIds (Meta) or advertiser (LinkedIn) is given. | [optional] |
 | **page_ids** | **string**| Meta only. Comma-separated Facebook Page ids (max 10) whose ads to list. | [optional] |
 | **advertiser** | **string**| LinkedIn only. Advertiser (Page) name to search. | [optional] |

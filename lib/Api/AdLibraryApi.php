@@ -131,7 +131,8 @@ class AdLibraryApi
      *
      * Search the public Ad Library
      *
-     * @param  string $account_id Zernio SocialAccount id (facebook / instagram / metaads for Meta, linkedin / linkedinads for LinkedIn). Its token is the one that searches. (required)
+     * @param  string|null $platform Which archive to search. &#x60;meta&#x60; needs no accountId. Required unless accountId is given. (optional)
+     * @param  string|null $account_id Zernio SocialAccount id. Required for LinkedIn (linkedin / linkedinads: its token searches). Optional for Meta, where any facebook / instagram / metaads account just selects the platform. (optional)
      * @param  string|null $q Keyword search. Meta does not translate it, so write it in the ads&#39; language. Required unless pageIds (Meta) or advertiser (LinkedIn) is given. (optional)
      * @param  string|null $page_ids Meta only. Comma-separated Facebook Page ids (max 10) whose ads to list. (optional)
      * @param  string|null $advertiser LinkedIn only. Advertiser (Page) name to search. (optional)
@@ -153,9 +154,9 @@ class AdLibraryApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\SearchAdLibrary200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
      */
-    public function searchAdLibrary($account_id, $q = null, $page_ids = null, $advertiser = null, $countries = null, $ad_type = 'ALL', $status = 'ACTIVE', $platforms = null, $media_type = null, $languages = null, $since = null, $until = null, $search_type = 'KEYWORD_UNORDERED', $fields = null, $limit = 25, $after = null, string $contentType = self::contentTypes['searchAdLibrary'][0])
+    public function searchAdLibrary($platform = null, $account_id = null, $q = null, $page_ids = null, $advertiser = null, $countries = null, $ad_type = 'ALL', $status = 'ACTIVE', $platforms = null, $media_type = null, $languages = null, $since = null, $until = null, $search_type = 'KEYWORD_UNORDERED', $fields = null, $limit = 25, $after = null, string $contentType = self::contentTypes['searchAdLibrary'][0])
     {
-        list($response) = $this->searchAdLibraryWithHttpInfo($account_id, $q, $page_ids, $advertiser, $countries, $ad_type, $status, $platforms, $media_type, $languages, $since, $until, $search_type, $fields, $limit, $after, $contentType);
+        list($response) = $this->searchAdLibraryWithHttpInfo($platform, $account_id, $q, $page_ids, $advertiser, $countries, $ad_type, $status, $platforms, $media_type, $languages, $since, $until, $search_type, $fields, $limit, $after, $contentType);
         return $response;
     }
 
@@ -164,7 +165,8 @@ class AdLibraryApi
      *
      * Search the public Ad Library
      *
-     * @param  string $account_id Zernio SocialAccount id (facebook / instagram / metaads for Meta, linkedin / linkedinads for LinkedIn). Its token is the one that searches. (required)
+     * @param  string|null $platform Which archive to search. &#x60;meta&#x60; needs no accountId. Required unless accountId is given. (optional)
+     * @param  string|null $account_id Zernio SocialAccount id. Required for LinkedIn (linkedin / linkedinads: its token searches). Optional for Meta, where any facebook / instagram / metaads account just selects the platform. (optional)
      * @param  string|null $q Keyword search. Meta does not translate it, so write it in the ads&#39; language. Required unless pageIds (Meta) or advertiser (LinkedIn) is given. (optional)
      * @param  string|null $page_ids Meta only. Comma-separated Facebook Page ids (max 10) whose ads to list. (optional)
      * @param  string|null $advertiser LinkedIn only. Advertiser (Page) name to search. (optional)
@@ -186,9 +188,9 @@ class AdLibraryApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\SearchAdLibrary200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchAdLibraryWithHttpInfo($account_id, $q = null, $page_ids = null, $advertiser = null, $countries = null, $ad_type = 'ALL', $status = 'ACTIVE', $platforms = null, $media_type = null, $languages = null, $since = null, $until = null, $search_type = 'KEYWORD_UNORDERED', $fields = null, $limit = 25, $after = null, string $contentType = self::contentTypes['searchAdLibrary'][0])
+    public function searchAdLibraryWithHttpInfo($platform = null, $account_id = null, $q = null, $page_ids = null, $advertiser = null, $countries = null, $ad_type = 'ALL', $status = 'ACTIVE', $platforms = null, $media_type = null, $languages = null, $since = null, $until = null, $search_type = 'KEYWORD_UNORDERED', $fields = null, $limit = 25, $after = null, string $contentType = self::contentTypes['searchAdLibrary'][0])
     {
-        $request = $this->searchAdLibraryRequest($account_id, $q, $page_ids, $advertiser, $countries, $ad_type, $status, $platforms, $media_type, $languages, $since, $until, $search_type, $fields, $limit, $after, $contentType);
+        $request = $this->searchAdLibraryRequest($platform, $account_id, $q, $page_ids, $advertiser, $countries, $ad_type, $status, $platforms, $media_type, $languages, $since, $until, $search_type, $fields, $limit, $after, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -292,7 +294,8 @@ class AdLibraryApi
      *
      * Search the public Ad Library
      *
-     * @param  string $account_id Zernio SocialAccount id (facebook / instagram / metaads for Meta, linkedin / linkedinads for LinkedIn). Its token is the one that searches. (required)
+     * @param  string|null $platform Which archive to search. &#x60;meta&#x60; needs no accountId. Required unless accountId is given. (optional)
+     * @param  string|null $account_id Zernio SocialAccount id. Required for LinkedIn (linkedin / linkedinads: its token searches). Optional for Meta, where any facebook / instagram / metaads account just selects the platform. (optional)
      * @param  string|null $q Keyword search. Meta does not translate it, so write it in the ads&#39; language. Required unless pageIds (Meta) or advertiser (LinkedIn) is given. (optional)
      * @param  string|null $page_ids Meta only. Comma-separated Facebook Page ids (max 10) whose ads to list. (optional)
      * @param  string|null $advertiser LinkedIn only. Advertiser (Page) name to search. (optional)
@@ -313,9 +316,9 @@ class AdLibraryApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchAdLibraryAsync($account_id, $q = null, $page_ids = null, $advertiser = null, $countries = null, $ad_type = 'ALL', $status = 'ACTIVE', $platforms = null, $media_type = null, $languages = null, $since = null, $until = null, $search_type = 'KEYWORD_UNORDERED', $fields = null, $limit = 25, $after = null, string $contentType = self::contentTypes['searchAdLibrary'][0])
+    public function searchAdLibraryAsync($platform = null, $account_id = null, $q = null, $page_ids = null, $advertiser = null, $countries = null, $ad_type = 'ALL', $status = 'ACTIVE', $platforms = null, $media_type = null, $languages = null, $since = null, $until = null, $search_type = 'KEYWORD_UNORDERED', $fields = null, $limit = 25, $after = null, string $contentType = self::contentTypes['searchAdLibrary'][0])
     {
-        return $this->searchAdLibraryAsyncWithHttpInfo($account_id, $q, $page_ids, $advertiser, $countries, $ad_type, $status, $platforms, $media_type, $languages, $since, $until, $search_type, $fields, $limit, $after, $contentType)
+        return $this->searchAdLibraryAsyncWithHttpInfo($platform, $account_id, $q, $page_ids, $advertiser, $countries, $ad_type, $status, $platforms, $media_type, $languages, $since, $until, $search_type, $fields, $limit, $after, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -328,7 +331,8 @@ class AdLibraryApi
      *
      * Search the public Ad Library
      *
-     * @param  string $account_id Zernio SocialAccount id (facebook / instagram / metaads for Meta, linkedin / linkedinads for LinkedIn). Its token is the one that searches. (required)
+     * @param  string|null $platform Which archive to search. &#x60;meta&#x60; needs no accountId. Required unless accountId is given. (optional)
+     * @param  string|null $account_id Zernio SocialAccount id. Required for LinkedIn (linkedin / linkedinads: its token searches). Optional for Meta, where any facebook / instagram / metaads account just selects the platform. (optional)
      * @param  string|null $q Keyword search. Meta does not translate it, so write it in the ads&#39; language. Required unless pageIds (Meta) or advertiser (LinkedIn) is given. (optional)
      * @param  string|null $page_ids Meta only. Comma-separated Facebook Page ids (max 10) whose ads to list. (optional)
      * @param  string|null $advertiser LinkedIn only. Advertiser (Page) name to search. (optional)
@@ -349,10 +353,10 @@ class AdLibraryApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchAdLibraryAsyncWithHttpInfo($account_id, $q = null, $page_ids = null, $advertiser = null, $countries = null, $ad_type = 'ALL', $status = 'ACTIVE', $platforms = null, $media_type = null, $languages = null, $since = null, $until = null, $search_type = 'KEYWORD_UNORDERED', $fields = null, $limit = 25, $after = null, string $contentType = self::contentTypes['searchAdLibrary'][0])
+    public function searchAdLibraryAsyncWithHttpInfo($platform = null, $account_id = null, $q = null, $page_ids = null, $advertiser = null, $countries = null, $ad_type = 'ALL', $status = 'ACTIVE', $platforms = null, $media_type = null, $languages = null, $since = null, $until = null, $search_type = 'KEYWORD_UNORDERED', $fields = null, $limit = 25, $after = null, string $contentType = self::contentTypes['searchAdLibrary'][0])
     {
         $returnType = '\Zernio\Model\SearchAdLibrary200Response';
-        $request = $this->searchAdLibraryRequest($account_id, $q, $page_ids, $advertiser, $countries, $ad_type, $status, $platforms, $media_type, $languages, $since, $until, $search_type, $fields, $limit, $after, $contentType);
+        $request = $this->searchAdLibraryRequest($platform, $account_id, $q, $page_ids, $advertiser, $countries, $ad_type, $status, $platforms, $media_type, $languages, $since, $until, $search_type, $fields, $limit, $after, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -393,7 +397,8 @@ class AdLibraryApi
     /**
      * Create request for operation 'searchAdLibrary'
      *
-     * @param  string $account_id Zernio SocialAccount id (facebook / instagram / metaads for Meta, linkedin / linkedinads for LinkedIn). Its token is the one that searches. (required)
+     * @param  string|null $platform Which archive to search. &#x60;meta&#x60; needs no accountId. Required unless accountId is given. (optional)
+     * @param  string|null $account_id Zernio SocialAccount id. Required for LinkedIn (linkedin / linkedinads: its token searches). Optional for Meta, where any facebook / instagram / metaads account just selects the platform. (optional)
      * @param  string|null $q Keyword search. Meta does not translate it, so write it in the ads&#39; language. Required unless pageIds (Meta) or advertiser (LinkedIn) is given. (optional)
      * @param  string|null $page_ids Meta only. Comma-separated Facebook Page ids (max 10) whose ads to list. (optional)
      * @param  string|null $advertiser LinkedIn only. Advertiser (Page) name to search. (optional)
@@ -414,15 +419,10 @@ class AdLibraryApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function searchAdLibraryRequest($account_id, $q = null, $page_ids = null, $advertiser = null, $countries = null, $ad_type = 'ALL', $status = 'ACTIVE', $platforms = null, $media_type = null, $languages = null, $since = null, $until = null, $search_type = 'KEYWORD_UNORDERED', $fields = null, $limit = 25, $after = null, string $contentType = self::contentTypes['searchAdLibrary'][0])
+    public function searchAdLibraryRequest($platform = null, $account_id = null, $q = null, $page_ids = null, $advertiser = null, $countries = null, $ad_type = 'ALL', $status = 'ACTIVE', $platforms = null, $media_type = null, $languages = null, $since = null, $until = null, $search_type = 'KEYWORD_UNORDERED', $fields = null, $limit = 25, $after = null, string $contentType = self::contentTypes['searchAdLibrary'][0])
     {
 
-        // verify the required parameter 'account_id' is set
-        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling searchAdLibrary'
-            );
-        }
+
 
         if ($q !== null && strlen($q) > 100) {
             throw new \InvalidArgumentException('invalid length for "$q" when calling AdLibraryApi.searchAdLibrary, must be smaller than or equal to 100.');
@@ -461,12 +461,21 @@ class AdLibraryApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $platform,
+            'platform', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $account_id,
             'accountId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(

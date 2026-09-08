@@ -3825,5 +3825,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/UpdateCampaignTargeting200ResponseDevicesInnerTest.php
-test/Model/UpdateCampaignTargeting200ResponseLanguagesInnerTest.php
