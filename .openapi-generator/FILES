@@ -1586,6 +1586,7 @@ docs/Model/UpdateBroadcastRequestTemplateVariableMappingValue.md
 docs/Model/UpdateCampaignTargeting200Response.md
 docs/Model/UpdateCampaignTargeting200ResponseDevicesInner.md
 docs/Model/UpdateCampaignTargeting200ResponseLanguagesInner.md
+docs/Model/UpdateCampaignTargeting200ResponseLocationsInner.md
 docs/Model/UpdateCampaignTargetingRequest.md
 docs/Model/UpdateCampaignTargetingRequestTargeting.md
 docs/Model/UpdateCampaignTargetingRequestTargetingDevicesInner.md
@@ -3500,6 +3501,7 @@ lib/Model/UpdateBroadcastRequestTemplateVariableMappingValue.php
 lib/Model/UpdateCampaignTargeting200Response.php
 lib/Model/UpdateCampaignTargeting200ResponseDevicesInner.php
 lib/Model/UpdateCampaignTargeting200ResponseLanguagesInner.php
+lib/Model/UpdateCampaignTargeting200ResponseLocationsInner.php
 lib/Model/UpdateCampaignTargetingRequest.php
 lib/Model/UpdateCampaignTargetingRequestTargeting.php
 lib/Model/UpdateCampaignTargetingRequestTargetingDevicesInner.php
@@ -3827,3 +3829,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/UpdateCampaignTargeting200ResponseLocationsInnerTest.php

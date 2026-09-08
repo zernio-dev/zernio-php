@@ -2207,6 +2207,7 @@ Class | Method | HTTP request | Description
 - [UpdateCampaignTargeting200Response](docs/Model/UpdateCampaignTargeting200Response.md)
 - [UpdateCampaignTargeting200ResponseDevicesInner](docs/Model/UpdateCampaignTargeting200ResponseDevicesInner.md)
 - [UpdateCampaignTargeting200ResponseLanguagesInner](docs/Model/UpdateCampaignTargeting200ResponseLanguagesInner.md)
+- [UpdateCampaignTargeting200ResponseLocationsInner](docs/Model/UpdateCampaignTargeting200ResponseLocationsInner.md)
 - [UpdateCampaignTargetingRequest](docs/Model/UpdateCampaignTargetingRequest.md)
 - [UpdateCampaignTargetingRequestTargeting](docs/Model/UpdateCampaignTargetingRequestTargeting.md)
 - [UpdateCampaignTargetingRequestTargetingDevicesInner](docs/Model/UpdateCampaignTargetingRequestTargetingDevicesInner.md)

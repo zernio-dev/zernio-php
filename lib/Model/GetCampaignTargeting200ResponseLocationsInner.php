@@ -59,7 +59,11 @@ class GetCampaignTargeting200ResponseLocationsInner implements ModelInterface, A
       */
     protected static $openAPITypes = [
         'geo_target_id' => 'string',
-        'negative' => 'bool'
+        'negative' => 'bool',
+        'name' => 'string',
+        'canonical_name' => 'string',
+        'type' => 'string',
+        'country_code' => 'string'
     ];
 
     /**
@@ -71,7 +75,11 @@ class GetCampaignTargeting200ResponseLocationsInner implements ModelInterface, A
       */
     protected static $openAPIFormats = [
         'geo_target_id' => null,
-        'negative' => null
+        'negative' => null,
+        'name' => null,
+        'canonical_name' => null,
+        'type' => null,
+        'country_code' => null
     ];
 
     /**
@@ -81,7 +89,11 @@ class GetCampaignTargeting200ResponseLocationsInner implements ModelInterface, A
       */
     protected static array $openAPINullables = [
         'geo_target_id' => false,
-        'negative' => false
+        'negative' => false,
+        'name' => true,
+        'canonical_name' => true,
+        'type' => true,
+        'country_code' => true
     ];
 
     /**
@@ -171,7 +183,11 @@ class GetCampaignTargeting200ResponseLocationsInner implements ModelInterface, A
      */
     protected static $attributeMap = [
         'geo_target_id' => 'geoTargetId',
-        'negative' => 'negative'
+        'negative' => 'negative',
+        'name' => 'name',
+        'canonical_name' => 'canonicalName',
+        'type' => 'type',
+        'country_code' => 'countryCode'
     ];
 
     /**
@@ -181,7 +197,11 @@ class GetCampaignTargeting200ResponseLocationsInner implements ModelInterface, A
      */
     protected static $setters = [
         'geo_target_id' => 'setGeoTargetId',
-        'negative' => 'setNegative'
+        'negative' => 'setNegative',
+        'name' => 'setName',
+        'canonical_name' => 'setCanonicalName',
+        'type' => 'setType',
+        'country_code' => 'setCountryCode'
     ];
 
     /**
@@ -191,7 +211,11 @@ class GetCampaignTargeting200ResponseLocationsInner implements ModelInterface, A
      */
     protected static $getters = [
         'geo_target_id' => 'getGeoTargetId',
-        'negative' => 'getNegative'
+        'negative' => 'getNegative',
+        'name' => 'getName',
+        'canonical_name' => 'getCanonicalName',
+        'type' => 'getType',
+        'country_code' => 'getCountryCode'
     ];
 
     /**
@@ -253,6 +277,10 @@ class GetCampaignTargeting200ResponseLocationsInner implements ModelInterface, A
     {
         $this->setIfExists('geo_target_id', $data ?? [], null);
         $this->setIfExists('negative', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('canonical_name', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('country_code', $data ?? [], null);
     }
 
     /**
@@ -347,6 +375,142 @@ class GetCampaignTargeting200ResponseLocationsInner implements ModelInterface, A
             throw new \InvalidArgumentException('non-nullable negative cannot be null');
         }
         $this->container['negative'] = $negative;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Google's geo_target_constant.name, e.g. \"United States\"; null when the id could not be resolved.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets canonical_name
+     *
+     * @return string|null
+     */
+    public function getCanonicalName()
+    {
+        return $this->container['canonical_name'];
+    }
+
+    /**
+     * Sets canonical_name
+     *
+     * @param string|null $canonical_name Google's geo_target_constant.canonical_name, e.g. \"California, United States\"; null when the id could not be resolved.
+     *
+     * @return self
+     */
+    public function setCanonicalName($canonical_name)
+    {
+        if (is_null($canonical_name)) {
+            array_push($this->openAPINullablesSetToNull, 'canonical_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('canonical_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['canonical_name'] = $canonical_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type Google's geo_target_constant.target_type, e.g. \"Country\", \"Region\", \"City\"; null when the id could not be resolved.
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets country_code
+     *
+     * @return string|null
+     */
+    public function getCountryCode()
+    {
+        return $this->container['country_code'];
+    }
+
+    /**
+     * Sets country_code
+     *
+     * @param string|null $country_code Google's geo_target_constant.country_code, an ISO 3166-1 alpha-2 code; null when the id could not be resolved.
+     *
+     * @return self
+     */
+    public function setCountryCode($country_code)
+    {
+        if (is_null($country_code)) {
+            array_push($this->openAPINullablesSetToNull, 'country_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('country_code', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['country_code'] = $country_code;
 
         return $this;
     }

@@ -473,7 +473,7 @@ class MetaLeadFormPlatformDataContextCard implements ModelInterface, ArrayAccess
     /**
      * Sets cover_photo
      *
-     * @param string|null $cover_photo Direct public JPEG or PNG image URL, up to 5 MB. Redirects, Ad Image hashes and IDs are not supported.
+     * @param string|null $cover_photo Direct public JPEG or PNG image URL, up to 5 MB. Uploaded as an unpublished Page photo and attached to the form. Redirects, Ad Image hashes and IDs are not supported.
      *
      * @return self
      */

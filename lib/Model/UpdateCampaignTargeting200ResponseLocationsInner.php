@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateCampaignTargeting200Response
+ * UpdateCampaignTargeting200ResponseLocationsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UpdateCampaignTargeting200Response Class Doc Comment
+ * UpdateCampaignTargeting200ResponseLocationsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateCampaignTargeting200ResponseLocationsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updateCampaignTargeting_200_response';
+    protected static $openAPIModelName = 'updateCampaignTargeting_200_response_locations_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,12 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'campaign_id' => 'string',
-        'updated' => 'string[]',
-        'devices' => '\Zernio\Model\UpdateCampaignTargeting200ResponseDevicesInner[]',
-        'locations' => '\Zernio\Model\UpdateCampaignTargeting200ResponseLocationsInner[]',
-        'languages' => '\Zernio\Model\UpdateCampaignTargeting200ResponseLanguagesInner[]'
+        'geo_target_id' => 'string',
+        'negative' => 'bool',
+        'name' => 'string',
+        'canonical_name' => 'string',
+        'type' => 'string',
+        'country_code' => 'string'
     ];
 
     /**
@@ -73,11 +74,12 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'campaign_id' => null,
-        'updated' => null,
-        'devices' => null,
-        'locations' => null,
-        'languages' => null
+        'geo_target_id' => null,
+        'negative' => null,
+        'name' => null,
+        'canonical_name' => null,
+        'type' => null,
+        'country_code' => null
     ];
 
     /**
@@ -86,11 +88,12 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'campaign_id' => false,
-        'updated' => false,
-        'devices' => false,
-        'locations' => false,
-        'languages' => false
+        'geo_target_id' => false,
+        'negative' => false,
+        'name' => true,
+        'canonical_name' => true,
+        'type' => true,
+        'country_code' => true
     ];
 
     /**
@@ -179,11 +182,12 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'campaign_id' => 'campaignId',
-        'updated' => 'updated',
-        'devices' => 'devices',
-        'locations' => 'locations',
-        'languages' => 'languages'
+        'geo_target_id' => 'geoTargetId',
+        'negative' => 'negative',
+        'name' => 'name',
+        'canonical_name' => 'canonicalName',
+        'type' => 'type',
+        'country_code' => 'countryCode'
     ];
 
     /**
@@ -192,11 +196,12 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'campaign_id' => 'setCampaignId',
-        'updated' => 'setUpdated',
-        'devices' => 'setDevices',
-        'locations' => 'setLocations',
-        'languages' => 'setLanguages'
+        'geo_target_id' => 'setGeoTargetId',
+        'negative' => 'setNegative',
+        'name' => 'setName',
+        'canonical_name' => 'setCanonicalName',
+        'type' => 'setType',
+        'country_code' => 'setCountryCode'
     ];
 
     /**
@@ -205,11 +210,12 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'campaign_id' => 'getCampaignId',
-        'updated' => 'getUpdated',
-        'devices' => 'getDevices',
-        'locations' => 'getLocations',
-        'languages' => 'getLanguages'
+        'geo_target_id' => 'getGeoTargetId',
+        'negative' => 'getNegative',
+        'name' => 'getName',
+        'canonical_name' => 'getCanonicalName',
+        'type' => 'getType',
+        'country_code' => 'getCountryCode'
     ];
 
     /**
@@ -253,23 +259,6 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
-    public const UPDATED_DEVICES = 'devices';
-    public const UPDATED_LOCATIONS = 'locations';
-    public const UPDATED_LANGUAGES = 'languages';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getUpdatedAllowableValues()
-    {
-        return [
-            self::UPDATED_DEVICES,
-            self::UPDATED_LOCATIONS,
-            self::UPDATED_LANGUAGES,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -286,11 +275,12 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('campaign_id', $data ?? [], null);
-        $this->setIfExists('updated', $data ?? [], null);
-        $this->setIfExists('devices', $data ?? [], null);
-        $this->setIfExists('locations', $data ?? [], null);
-        $this->setIfExists('languages', $data ?? [], null);
+        $this->setIfExists('geo_target_id', $data ?? [], null);
+        $this->setIfExists('negative', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('canonical_name', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('country_code', $data ?? [], null);
     }
 
     /**
@@ -336,145 +326,191 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets campaign_id
+     * Gets geo_target_id
      *
      * @return string|null
      */
-    public function getCampaignId()
+    public function getGeoTargetId()
     {
-        return $this->container['campaign_id'];
+        return $this->container['geo_target_id'];
     }
 
     /**
-     * Sets campaign_id
+     * Sets geo_target_id
      *
-     * @param string|null $campaign_id campaign_id
+     * @param string|null $geo_target_id Numeric id from Google's geoTargetConstants/{id}.
      *
      * @return self
      */
-    public function setCampaignId($campaign_id)
+    public function setGeoTargetId($geo_target_id)
     {
-        if (is_null($campaign_id)) {
-            throw new \InvalidArgumentException('non-nullable campaign_id cannot be null');
+        if (is_null($geo_target_id)) {
+            throw new \InvalidArgumentException('non-nullable geo_target_id cannot be null');
         }
-        $this->container['campaign_id'] = $campaign_id;
+        $this->container['geo_target_id'] = $geo_target_id;
 
         return $this;
     }
 
     /**
-     * Gets updated
+     * Gets negative
      *
-     * @return string[]|null
+     * @return bool|null
      */
-    public function getUpdated()
+    public function getNegative()
     {
-        return $this->container['updated'];
+        return $this->container['negative'];
     }
 
     /**
-     * Sets updated
+     * Sets negative
      *
-     * @param string[]|null $updated Which targeting fields were applied.
+     * @param bool|null $negative true = excluded location.
      *
      * @return self
      */
-    public function setUpdated($updated)
+    public function setNegative($negative)
     {
-        if (is_null($updated)) {
-            throw new \InvalidArgumentException('non-nullable updated cannot be null');
+        if (is_null($negative)) {
+            throw new \InvalidArgumentException('non-nullable negative cannot be null');
         }
-        $allowedValues = $this->getUpdatedAllowableValues();
-        if (array_diff($updated, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'updated', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['updated'] = $updated;
+        $this->container['negative'] = $negative;
 
         return $this;
     }
 
     /**
-     * Gets devices
+     * Gets name
      *
-     * @return \Zernio\Model\UpdateCampaignTargeting200ResponseDevicesInner[]|null
+     * @return string|null
      */
-    public function getDevices()
+    public function getName()
     {
-        return $this->container['devices'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets devices
+     * Sets name
      *
-     * @param \Zernio\Model\UpdateCampaignTargeting200ResponseDevicesInner[]|null $devices devices
+     * @param string|null $name Google's geo_target_constant.name; see GET's description.
      *
      * @return self
      */
-    public function setDevices($devices)
+    public function setName($name)
     {
-        if (is_null($devices)) {
-            throw new \InvalidArgumentException('non-nullable devices cannot be null');
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['devices'] = $devices;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets locations
+     * Gets canonical_name
      *
-     * @return \Zernio\Model\UpdateCampaignTargeting200ResponseLocationsInner[]|null
+     * @return string|null
      */
-    public function getLocations()
+    public function getCanonicalName()
     {
-        return $this->container['locations'];
+        return $this->container['canonical_name'];
     }
 
     /**
-     * Sets locations
+     * Sets canonical_name
      *
-     * @param \Zernio\Model\UpdateCampaignTargeting200ResponseLocationsInner[]|null $locations locations
+     * @param string|null $canonical_name Google's geo_target_constant.canonical_name; see GET's description.
      *
      * @return self
      */
-    public function setLocations($locations)
+    public function setCanonicalName($canonical_name)
     {
-        if (is_null($locations)) {
-            throw new \InvalidArgumentException('non-nullable locations cannot be null');
+        if (is_null($canonical_name)) {
+            array_push($this->openAPINullablesSetToNull, 'canonical_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('canonical_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['locations'] = $locations;
+        $this->container['canonical_name'] = $canonical_name;
 
         return $this;
     }
 
     /**
-     * Gets languages
+     * Gets type
      *
-     * @return \Zernio\Model\UpdateCampaignTargeting200ResponseLanguagesInner[]|null
+     * @return string|null
      */
-    public function getLanguages()
+    public function getType()
     {
-        return $this->container['languages'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets languages
+     * Sets type
      *
-     * @param \Zernio\Model\UpdateCampaignTargeting200ResponseLanguagesInner[]|null $languages languages
+     * @param string|null $type Google's geo_target_constant.target_type; see GET's description.
      *
      * @return self
      */
-    public function setLanguages($languages)
+    public function setType($type)
     {
-        if (is_null($languages)) {
-            throw new \InvalidArgumentException('non-nullable languages cannot be null');
+        if (is_null($type)) {
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['languages'] = $languages;
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets country_code
+     *
+     * @return string|null
+     */
+    public function getCountryCode()
+    {
+        return $this->container['country_code'];
+    }
+
+    /**
+     * Sets country_code
+     *
+     * @param string|null $country_code Google's geo_target_constant.country_code; see GET's description.
+     *
+     * @return self
+     */
+    public function setCountryCode($country_code)
+    {
+        if (is_null($country_code)) {
+            array_push($this->openAPINullablesSetToNull, 'country_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('country_code', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['country_code'] = $country_code;
 
         return $this;
     }
