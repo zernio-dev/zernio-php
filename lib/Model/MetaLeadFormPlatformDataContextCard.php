@@ -77,7 +77,7 @@ class MetaLeadFormPlatformDataContextCard implements ModelInterface, ArrayAccess
         'content' => null,
         'style' => null,
         'button_text' => null,
-        'cover_photo' => null
+        'cover_photo' => 'uri'
     ];
 
     /**
@@ -473,7 +473,7 @@ class MetaLeadFormPlatformDataContextCard implements ModelInterface, ArrayAccess
     /**
      * Sets cover_photo
      *
-     * @param string|null $cover_photo cover_photo
+     * @param string|null $cover_photo Direct public JPEG or PNG image URL, up to 5 MB. Redirects, Ad Image hashes and IDs are not supported.
      *
      * @return self
      */

@@ -393,7 +393,7 @@ class UpdateAdRequestTargeting implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets keywords
      *
-     * @param \Zernio\Model\UpdateAdRequestTargetingKeywordsInner[]|null $keywords Google only. The FULL new set of positive keywords for the ad group; live keywords not listed are removed. Entries are strings (BROAD) or { text, matchType } with matchType exact | phrase | broad. Mirrored to GET /v1/ads/keywords immediately.
+     * @param \Zernio\Model\UpdateAdRequestTargetingKeywordsInner[]|null $keywords Google only. The FULL desired set of positive keywords for the entire ad group. Omit to leave positives unchanged; [] removes all positives. Negatives are independent. Entries are strings (BROAD) or { text, matchType } with matchType exact | phrase | broad; an omitted matchType also defaults to BROAD. Matching case-insensitive text AND match type retains the existing criterion ID, status, bid overrides, labels and history without a mutation. A changed text or match type uses remove/create, without transferring the old criterion's attributes or history. See Google keyword replacement above for an EXACT-to-BROAD example. Mirrored to GET /v1/ads/keywords immediately.
      *
      * @return self
      */
@@ -420,7 +420,7 @@ class UpdateAdRequestTargeting implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets negative_keywords
      *
-     * @param \Zernio\Model\UpdateAdRequestTargetingKeywordsInner[]|null $negative_keywords Google only. Same declarative contract as keywords, for the ad group's negative keywords.
+     * @param \Zernio\Model\UpdateAdRequestTargetingKeywordsInner[]|null $negative_keywords Google only. The FULL desired set of negative keywords for the entire ad group, independent of positives. Omit to leave negatives unchanged; [] removes all negatives. Uses the same text/match-type identity and preservation contract as keywords above. Strings and objects without matchType default to BROAD, so resending an EXACT or PHRASE negative as a bare string requests a different criterion. Campaign negatives are separate: use /v1/ads/campaigns/{campaignId}/negative-keywords to manage those.
      *
      * @return self
      */

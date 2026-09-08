@@ -2020,6 +2020,7 @@ Class | Method | HTTP request | Description
 - [SendInboxMessage200ResponseDataAttachmentsInner](docs/Model/SendInboxMessage200ResponseDataAttachmentsInner.md)
 - [SendInboxMessage200ResponseDataPartialFailure](docs/Model/SendInboxMessage200ResponseDataPartialFailure.md)
 - [SendInboxMessage200ResponseDataPartialFailurePlatformError](docs/Model/SendInboxMessage200ResponseDataPartialFailurePlatformError.md)
+- [SendInboxMessage200ResponseWarningsInner](docs/Model/SendInboxMessage200ResponseWarningsInner.md)
 - [SendInboxMessage400Response](docs/Model/SendInboxMessage400Response.md)
 - [SendInboxMessage400ResponsePlatformError](docs/Model/SendInboxMessage400ResponsePlatformError.md)
 - [SendInboxMessageRequest](docs/Model/SendInboxMessageRequest.md)

@@ -1,6 +1,6 @@
 <?php
 /**
- * SendInboxMessage200Response
+ * SendInboxMessage200ResponseWarningsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SendInboxMessage200Response Class Doc Comment
+ * SendInboxMessage200ResponseWarningsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SendInboxMessage200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class SendInboxMessage200ResponseWarningsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SendInboxMessage200Response implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'sendInboxMessage_200_response';
+    protected static $openAPIModelName = 'sendInboxMessage_200_response_warnings_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,9 @@ class SendInboxMessage200Response implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'success' => 'bool',
-        'warnings' => '\Zernio\Model\SendInboxMessage200ResponseWarningsInner[]',
-        'data' => '\Zernio\Model\SendInboxMessage200ResponseData'
+        'code' => 'string',
+        'param' => 'string',
+        'message' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class SendInboxMessage200Response implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'success' => null,
-        'warnings' => null,
-        'data' => null
+        'code' => null,
+        'param' => null,
+        'message' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class SendInboxMessage200Response implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'success' => false,
-        'warnings' => false,
-        'data' => false
+        'code' => false,
+        'param' => false,
+        'message' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class SendInboxMessage200Response implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'success' => 'success',
-        'warnings' => 'warnings',
-        'data' => 'data'
+        'code' => 'code',
+        'param' => 'param',
+        'message' => 'message'
     ];
 
     /**
@@ -184,9 +184,9 @@ class SendInboxMessage200Response implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'success' => 'setSuccess',
-        'warnings' => 'setWarnings',
-        'data' => 'setData'
+        'code' => 'setCode',
+        'param' => 'setParam',
+        'message' => 'setMessage'
     ];
 
     /**
@@ -195,9 +195,9 @@ class SendInboxMessage200Response implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'success' => 'getSuccess',
-        'warnings' => 'getWarnings',
-        'data' => 'getData'
+        'code' => 'getCode',
+        'param' => 'getParam',
+        'message' => 'getMessage'
     ];
 
     /**
@@ -241,6 +241,32 @@ class SendInboxMessage200Response implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
+    public const CODE_IGNORED_FIELD = 'ignored_field';
+    public const PARAM_REPLY_TO = 'replyTo';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCodeAllowableValues()
+    {
+        return [
+            self::CODE_IGNORED_FIELD,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getParamAllowableValues()
+    {
+        return [
+            self::PARAM_REPLY_TO,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -257,9 +283,9 @@ class SendInboxMessage200Response implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('success', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
-        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('param', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
     }
 
     /**
@@ -289,6 +315,33 @@ class SendInboxMessage200Response implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
+        }
+        $allowedValues = $this->getCodeAllowableValues();
+        if (!is_null($this->container['code']) && !in_array($this->container['code'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'code', must be one of '%s'",
+                $this->container['code'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['param'] === null) {
+            $invalidProperties[] = "'param' can't be null";
+        }
+        $allowedValues = $this->getParamAllowableValues();
+        if (!is_null($this->container['param']) && !in_array($this->container['param'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'param', must be one of '%s'",
+                $this->container['param'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -305,82 +358,102 @@ class SendInboxMessage200Response implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets success
+     * Gets code
      *
-     * @return bool|null
+     * @return string
      */
-    public function getSuccess()
+    public function getCode()
     {
-        return $this->container['success'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets success
+     * Sets code
      *
-     * @param bool|null $success success
+     * @param string $code code
      *
      * @return self
      */
-    public function setSuccess($success)
+    public function setCode($code)
     {
-        if (is_null($success)) {
-            throw new \InvalidArgumentException('non-nullable success cannot be null');
+        if (is_null($code)) {
+            throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
-        $this->container['success'] = $success;
+        $allowedValues = $this->getCodeAllowableValues();
+        if (!in_array($code, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'code', must be one of '%s'",
+                    $code,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['code'] = $code;
 
         return $this;
     }
 
     /**
-     * Gets warnings
+     * Gets param
      *
-     * @return \Zernio\Model\SendInboxMessage200ResponseWarningsInner[]|null
+     * @return string
      */
-    public function getWarnings()
+    public function getParam()
     {
-        return $this->container['warnings'];
+        return $this->container['param'];
     }
 
     /**
-     * Sets warnings
+     * Sets param
      *
-     * @param \Zernio\Model\SendInboxMessage200ResponseWarningsInner[]|null $warnings Present when a successful send ignored replyTo on Instagram or Facebook Messenger. The message was sent without a quote; do not retry it to apply the reply.
+     * @param string $param param
      *
      * @return self
      */
-    public function setWarnings($warnings)
+    public function setParam($param)
     {
-        if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
+        if (is_null($param)) {
+            throw new \InvalidArgumentException('non-nullable param cannot be null');
         }
-        $this->container['warnings'] = $warnings;
+        $allowedValues = $this->getParamAllowableValues();
+        if (!in_array($param, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'param', must be one of '%s'",
+                    $param,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['param'] = $param;
 
         return $this;
     }
 
     /**
-     * Gets data
+     * Gets message
      *
-     * @return \Zernio\Model\SendInboxMessage200ResponseData|null
+     * @return string
      */
-    public function getData()
+    public function getMessage()
     {
-        return $this->container['data'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets data
+     * Sets message
      *
-     * @param \Zernio\Model\SendInboxMessage200ResponseData|null $data data
+     * @param string $message Human-readable explanation of the ignored field.
      *
      * @return self
      */
-    public function setData($data)
+    public function setMessage($message)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($message)) {
+            throw new \InvalidArgumentException('non-nullable message cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['message'] = $message;
 
         return $this;
     }

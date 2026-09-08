@@ -2370,7 +2370,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets bodies
      *
-     * @param string[]|null $bodies Meta only. Multiple Text Options (Advantage+ Flexible Format): supply 1-5 primary-text variations and Meta optimises delivery across them, WITHOUT enabling full Dynamic Creative (`dynamicCreative`). Uses `optimization_type: DEGREES_OF_FREEDOM` on the asset feed, so multiple ads per ad set are allowed (unlike `dynamicCreative` which is limited to one). Requires `imageUrl` or `video`, `linkUrl`, and `callToAction`. When set, the top-level `body` field is used as the `object_story_spec.link_data.message` (the preview text) and `headlines` must also be present. Mutually exclusive with `dynamicCreative`, `placementAssets`, `carouselCards`, and `creatives[]`.
+     * @param string[]|null $bodies Meta only. Multiple Text Options (Advantage+ Flexible Format): supply 1-5 primary-text variations and Meta optimises delivery across them, WITHOUT enabling full Dynamic Creative (`dynamicCreative`). Uses `optimization_type: DEGREES_OF_FREEDOM` on the asset feed, so multiple ads per ad set are allowed (unlike `dynamicCreative` which is limited to one). Requires `imageUrl` or `video`, `linkUrl`, and `callToAction`. When set, the top-level `body` field is used as the `object_story_spec.link_data.message` (the preview text) and `headlines` must also be present. On a video creative the copy lands in `video_data.message` / `video_data.title` instead of `link_data`. Mutually exclusive with `dynamicCreative`, `placementAssets`, `carouselCards`, and `creatives[]`.
      *
      * @return self
      */
@@ -2404,7 +2404,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets headlines
      *
-     * @param string[]|null $headlines Meta only. Headline variations for Multiple Text Options. Must be sent alongside `bodies`. The top-level `headline` field is used as the `object_story_spec.link_data.name`.
+     * @param string[]|null $headlines Meta only. Headline variations for Multiple Text Options. Must be sent alongside `bodies`. The top-level `headline` field is used as the `object_story_spec.link_data.name` (`video_data.title` on a video creative).
      *
      * @return self
      */

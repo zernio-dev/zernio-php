@@ -1399,6 +1399,7 @@ docs/Model/SendInboxMessage200ResponseData.md
 docs/Model/SendInboxMessage200ResponseDataAttachmentsInner.md
 docs/Model/SendInboxMessage200ResponseDataPartialFailure.md
 docs/Model/SendInboxMessage200ResponseDataPartialFailurePlatformError.md
+docs/Model/SendInboxMessage200ResponseWarningsInner.md
 docs/Model/SendInboxMessage400Response.md
 docs/Model/SendInboxMessage400ResponsePlatformError.md
 docs/Model/SendInboxMessageRequest.md
@@ -3312,6 +3313,7 @@ lib/Model/SendInboxMessage200ResponseData.php
 lib/Model/SendInboxMessage200ResponseDataAttachmentsInner.php
 lib/Model/SendInboxMessage200ResponseDataPartialFailure.php
 lib/Model/SendInboxMessage200ResponseDataPartialFailurePlatformError.php
+lib/Model/SendInboxMessage200ResponseWarningsInner.php
 lib/Model/SendInboxMessage400Response.php
 lib/Model/SendInboxMessage400ResponsePlatformError.php
 lib/Model/SendInboxMessageRequest.php
@@ -3825,3 +3827,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/SendInboxMessage200ResponseWarningsInnerTest.php
