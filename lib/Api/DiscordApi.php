@@ -208,7 +208,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\AddDiscordMemberRole200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\AddDiscordMemberRole200Response|\Zernio\Model\InlineObject1
      */
     public function addDiscordMemberRole($guild_id, $user_id, $role_id, $account_id, string $contentType = self::contentTypes['addDiscordMemberRole'][0])
     {
@@ -229,7 +229,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\AddDiscordMemberRole200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\AddDiscordMemberRole200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function addDiscordMemberRoleWithHttpInfo($guild_id, $user_id, $role_id, $account_id, string $contentType = self::contentTypes['addDiscordMemberRole'][0])
     {
@@ -267,7 +267,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -306,7 +306,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -554,7 +554,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateDiscordGuildRole201Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CreateDiscordGuildRole201Response|\Zernio\Model\InlineObject1
      */
     public function createDiscordGuildRole($guild_id, $account_id, $create_discord_guild_role_request, string $contentType = self::contentTypes['createDiscordGuildRole'][0])
     {
@@ -574,7 +574,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateDiscordGuildRole201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateDiscordGuildRole201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function createDiscordGuildRoleWithHttpInfo($guild_id, $account_id, $create_discord_guild_role_request, string $contentType = self::contentTypes['createDiscordGuildRole'][0])
     {
@@ -612,7 +612,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -651,7 +651,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -879,7 +879,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateDiscordScheduledEvent200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CreateDiscordScheduledEvent200Response|\Zernio\Model\InlineObject1
      */
     public function createDiscordScheduledEvent($guild_id, $create_discord_scheduled_event_request, string $contentType = self::contentTypes['createDiscordScheduledEvent'][0])
     {
@@ -898,7 +898,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateDiscordScheduledEvent200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateDiscordScheduledEvent200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function createDiscordScheduledEventWithHttpInfo($guild_id, $create_discord_scheduled_event_request, string $contentType = self::contentTypes['createDiscordScheduledEvent'][0])
     {
@@ -936,7 +936,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -975,7 +975,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1185,7 +1185,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateDiscordThread200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CreateDiscordThread200Response|\Zernio\Model\InlineObject1
      */
     public function createDiscordThread($channel_id, $account_id, $create_discord_thread_request, string $contentType = self::contentTypes['createDiscordThread'][0])
     {
@@ -1205,7 +1205,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateDiscordThread200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateDiscordThread200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function createDiscordThreadWithHttpInfo($channel_id, $account_id, $create_discord_thread_request, string $contentType = self::contentTypes['createDiscordThread'][0])
     {
@@ -1243,7 +1243,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1282,7 +1282,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1511,7 +1511,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CrosspostDiscordMessage200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CrosspostDiscordMessage200Response|\Zernio\Model\InlineObject1
      */
     public function crosspostDiscordMessage($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['crosspostDiscordMessage'][0])
     {
@@ -1531,7 +1531,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CrosspostDiscordMessage200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CrosspostDiscordMessage200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function crosspostDiscordMessageWithHttpInfo($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['crosspostDiscordMessage'][0])
     {
@@ -1569,7 +1569,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1608,7 +1608,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1838,7 +1838,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject1
      */
     public function deleteDiscordGuildRole($guild_id, $role_id, $account_id, string $contentType = self::contentTypes['deleteDiscordGuildRole'][0])
     {
@@ -1858,7 +1858,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteDiscordGuildRoleWithHttpInfo($guild_id, $role_id, $account_id, string $contentType = self::contentTypes['deleteDiscordGuildRole'][0])
     {
@@ -1896,7 +1896,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1935,7 +1935,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2165,7 +2165,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject1
      */
     public function deleteDiscordMessage($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['deleteDiscordMessage'][0])
     {
@@ -2185,7 +2185,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteDiscordMessageWithHttpInfo($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['deleteDiscordMessage'][0])
     {
@@ -2223,7 +2223,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2262,7 +2262,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2492,7 +2492,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\DeleteDiscordScheduledEvent200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\DeleteDiscordScheduledEvent200Response|\Zernio\Model\InlineObject1
      */
     public function deleteDiscordScheduledEvent($guild_id, $event_id, $account_id, string $contentType = self::contentTypes['deleteDiscordScheduledEvent'][0])
     {
@@ -2512,7 +2512,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\DeleteDiscordScheduledEvent200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\DeleteDiscordScheduledEvent200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteDiscordScheduledEventWithHttpInfo($guild_id, $event_id, $account_id, string $contentType = self::contentTypes['deleteDiscordScheduledEvent'][0])
     {
@@ -2550,7 +2550,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2589,7 +2589,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2820,7 +2820,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateDiscordGuildRole201Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CreateDiscordGuildRole201Response|\Zernio\Model\InlineObject1
      */
     public function editDiscordGuildRole($guild_id, $role_id, $account_id, $edit_discord_guild_role_request, string $contentType = self::contentTypes['editDiscordGuildRole'][0])
     {
@@ -2841,7 +2841,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateDiscordGuildRole201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateDiscordGuildRole201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function editDiscordGuildRoleWithHttpInfo($guild_id, $role_id, $account_id, $edit_discord_guild_role_request, string $contentType = self::contentTypes['editDiscordGuildRole'][0])
     {
@@ -2879,7 +2879,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2918,7 +2918,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3163,7 +3163,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetDiscordChannels200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetDiscordChannels200Response|\Zernio\Model\InlineObject1
      */
     public function getDiscordChannels($account_id, string $contentType = self::contentTypes['getDiscordChannels'][0])
     {
@@ -3181,7 +3181,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetDiscordChannels200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetDiscordChannels200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDiscordChannelsWithHttpInfo($account_id, string $contentType = self::contentTypes['getDiscordChannels'][0])
     {
@@ -3219,7 +3219,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -3258,7 +3258,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3451,7 +3451,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetDiscordGuildMember200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetDiscordGuildMember200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function getDiscordGuildMember($guild_id, $user_id, $account_id, string $contentType = self::contentTypes['getDiscordGuildMember'][0])
     {
@@ -3471,7 +3471,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetDiscordGuildMember200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetDiscordGuildMember200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDiscordGuildMemberWithHttpInfo($guild_id, $user_id, $account_id, string $contentType = self::contentTypes['getDiscordGuildMember'][0])
     {
@@ -3515,7 +3515,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -3562,7 +3562,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3792,7 +3792,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateDiscordScheduledEvent200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CreateDiscordScheduledEvent200Response|\Zernio\Model\InlineObject1
      */
     public function getDiscordScheduledEvent($guild_id, $event_id, $account_id, string $contentType = self::contentTypes['getDiscordScheduledEvent'][0])
     {
@@ -3812,7 +3812,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateDiscordScheduledEvent200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateDiscordScheduledEvent200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDiscordScheduledEventWithHttpInfo($guild_id, $event_id, $account_id, string $contentType = self::contentTypes['getDiscordScheduledEvent'][0])
     {
@@ -3850,7 +3850,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -3889,7 +3889,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4117,7 +4117,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetDiscordSettings200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetDiscordSettings200Response|\Zernio\Model\InlineObject1
      */
     public function getDiscordSettings($account_id, string $contentType = self::contentTypes['getDiscordSettings'][0])
     {
@@ -4135,7 +4135,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetDiscordSettings200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetDiscordSettings200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDiscordSettingsWithHttpInfo($account_id, string $contentType = self::contentTypes['getDiscordSettings'][0])
     {
@@ -4173,7 +4173,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -4212,7 +4212,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4406,7 +4406,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListDiscordGuildMembers200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListDiscordGuildMembers200Response|\Zernio\Model\InlineObject1
      */
     public function listDiscordGuildMembers($guild_id, $account_id, $limit = 100, $after = null, string $contentType = self::contentTypes['listDiscordGuildMembers'][0])
     {
@@ -4427,7 +4427,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListDiscordGuildMembers200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListDiscordGuildMembers200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listDiscordGuildMembersWithHttpInfo($guild_id, $account_id, $limit = 100, $after = null, string $contentType = self::contentTypes['listDiscordGuildMembers'][0])
     {
@@ -4465,7 +4465,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -4504,7 +4504,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4747,7 +4747,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListDiscordGuildRoles200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListDiscordGuildRoles200Response|\Zernio\Model\InlineObject1
      */
     public function listDiscordGuildRoles($guild_id, $account_id, string $contentType = self::contentTypes['listDiscordGuildRoles'][0])
     {
@@ -4766,7 +4766,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListDiscordGuildRoles200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListDiscordGuildRoles200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listDiscordGuildRolesWithHttpInfo($guild_id, $account_id, string $contentType = self::contentTypes['listDiscordGuildRoles'][0])
     {
@@ -4804,7 +4804,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -4843,7 +4843,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5054,7 +5054,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListDiscordPinnedMessages200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListDiscordPinnedMessages200Response|\Zernio\Model\InlineObject1
      */
     public function listDiscordPinnedMessages($channel_id, $account_id, string $contentType = self::contentTypes['listDiscordPinnedMessages'][0])
     {
@@ -5073,7 +5073,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListDiscordPinnedMessages200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListDiscordPinnedMessages200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listDiscordPinnedMessagesWithHttpInfo($channel_id, $account_id, string $contentType = self::contentTypes['listDiscordPinnedMessages'][0])
     {
@@ -5111,7 +5111,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -5150,7 +5150,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5362,7 +5362,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListDiscordScheduledEvents200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListDiscordScheduledEvents200Response|\Zernio\Model\InlineObject1
      */
     public function listDiscordScheduledEvents($guild_id, $account_id, $with_user_count = null, string $contentType = self::contentTypes['listDiscordScheduledEvents'][0])
     {
@@ -5382,7 +5382,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListDiscordScheduledEvents200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListDiscordScheduledEvents200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listDiscordScheduledEventsWithHttpInfo($guild_id, $account_id, $with_user_count = null, string $contentType = self::contentTypes['listDiscordScheduledEvents'][0])
     {
@@ -5420,7 +5420,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -5459,7 +5459,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5684,7 +5684,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\PinDiscordMessage200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\PinDiscordMessage200Response|\Zernio\Model\InlineObject1
      */
     public function pinDiscordMessage($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['pinDiscordMessage'][0])
     {
@@ -5704,7 +5704,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\PinDiscordMessage200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\PinDiscordMessage200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function pinDiscordMessageWithHttpInfo($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['pinDiscordMessage'][0])
     {
@@ -5742,7 +5742,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -5781,7 +5781,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6012,7 +6012,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\RemoveDiscordMemberRole200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\RemoveDiscordMemberRole200Response|\Zernio\Model\InlineObject1
      */
     public function removeDiscordMemberRole($guild_id, $user_id, $role_id, $account_id, string $contentType = self::contentTypes['removeDiscordMemberRole'][0])
     {
@@ -6033,7 +6033,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\RemoveDiscordMemberRole200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\RemoveDiscordMemberRole200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function removeDiscordMemberRoleWithHttpInfo($guild_id, $user_id, $role_id, $account_id, string $contentType = self::contentTypes['removeDiscordMemberRole'][0])
     {
@@ -6071,7 +6071,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -6110,7 +6110,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6359,7 +6359,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\SearchDiscordGuildMembers200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\SearchDiscordGuildMembers200Response|\Zernio\Model\InlineObject1
      */
     public function searchDiscordGuildMembers($guild_id, $account_id, $query, $limit = 25, string $contentType = self::contentTypes['searchDiscordGuildMembers'][0])
     {
@@ -6380,7 +6380,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\SearchDiscordGuildMembers200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SearchDiscordGuildMembers200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchDiscordGuildMembersWithHttpInfo($guild_id, $account_id, $query, $limit = 25, string $contentType = self::contentTypes['searchDiscordGuildMembers'][0])
     {
@@ -6418,7 +6418,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -6457,7 +6457,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6711,7 +6711,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\SendDiscordDirectMessage200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\SendDiscordDirectMessage200Response|\Zernio\Model\InlineObject1
      */
     public function sendDiscordDirectMessage($send_discord_direct_message_request, string $contentType = self::contentTypes['sendDiscordDirectMessage'][0])
     {
@@ -6729,7 +6729,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\SendDiscordDirectMessage200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SendDiscordDirectMessage200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendDiscordDirectMessageWithHttpInfo($send_discord_direct_message_request, string $contentType = self::contentTypes['sendDiscordDirectMessage'][0])
     {
@@ -6767,7 +6767,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -6806,7 +6806,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6998,7 +6998,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UnpinDiscordMessage200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UnpinDiscordMessage200Response|\Zernio\Model\InlineObject1
      */
     public function unpinDiscordMessage($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['unpinDiscordMessage'][0])
     {
@@ -7018,7 +7018,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UnpinDiscordMessage200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UnpinDiscordMessage200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function unpinDiscordMessageWithHttpInfo($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['unpinDiscordMessage'][0])
     {
@@ -7056,7 +7056,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -7095,7 +7095,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7325,7 +7325,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateDiscordScheduledEvent200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CreateDiscordScheduledEvent200Response|\Zernio\Model\InlineObject1
      */
     public function updateDiscordScheduledEvent($guild_id, $event_id, $update_discord_scheduled_event_request, string $contentType = self::contentTypes['updateDiscordScheduledEvent'][0])
     {
@@ -7345,7 +7345,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateDiscordScheduledEvent200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateDiscordScheduledEvent200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateDiscordScheduledEventWithHttpInfo($guild_id, $event_id, $update_discord_scheduled_event_request, string $contentType = self::contentTypes['updateDiscordScheduledEvent'][0])
     {
@@ -7383,7 +7383,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -7422,7 +7422,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7649,7 +7649,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UpdateDiscordSettings200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UpdateDiscordSettings200Response|\Zernio\Model\InlineObject1
      */
     public function updateDiscordSettings($account_id, $update_discord_settings_request, string $contentType = self::contentTypes['updateDiscordSettings'][0])
     {
@@ -7668,7 +7668,7 @@ class DiscordApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UpdateDiscordSettings200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateDiscordSettings200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateDiscordSettingsWithHttpInfo($account_id, $update_discord_settings_request, string $contentType = self::contentTypes['updateDiscordSettings'][0])
     {
@@ -7706,7 +7706,7 @@ class DiscordApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -7745,7 +7745,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

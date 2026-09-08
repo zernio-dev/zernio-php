@@ -148,7 +148,7 @@ class GMBVerificationsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\StartGoogleBusinessVerification200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\StartGoogleBusinessVerification200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject2
      */
     public function completeGoogleBusinessVerification($account_id, $verification_id, $complete_google_business_verification_request, $location_id = null, string $contentType = self::contentTypes['completeGoogleBusinessVerification'][0])
     {
@@ -169,7 +169,7 @@ class GMBVerificationsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\StartGoogleBusinessVerification200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\StartGoogleBusinessVerification200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
      */
     public function completeGoogleBusinessVerificationWithHttpInfo($account_id, $verification_id, $complete_google_business_verification_request, $location_id = null, string $contentType = self::contentTypes['completeGoogleBusinessVerification'][0])
     {
@@ -219,7 +219,7 @@ class GMBVerificationsApi
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $request,
                         $response,
                     );
@@ -274,7 +274,7 @@ class GMBVerificationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -518,7 +518,7 @@ class GMBVerificationsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\FetchGoogleBusinessVerificationOptions200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\FetchGoogleBusinessVerificationOptions200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject2
      */
     public function fetchGoogleBusinessVerificationOptions($account_id, $fetch_google_business_verification_options_request, $location_id = null, string $contentType = self::contentTypes['fetchGoogleBusinessVerificationOptions'][0])
     {
@@ -538,7 +538,7 @@ class GMBVerificationsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\FetchGoogleBusinessVerificationOptions200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\FetchGoogleBusinessVerificationOptions200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
      */
     public function fetchGoogleBusinessVerificationOptionsWithHttpInfo($account_id, $fetch_google_business_verification_options_request, $location_id = null, string $contentType = self::contentTypes['fetchGoogleBusinessVerificationOptions'][0])
     {
@@ -588,7 +588,7 @@ class GMBVerificationsApi
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $request,
                         $response,
                     );
@@ -643,7 +643,7 @@ class GMBVerificationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -868,7 +868,7 @@ class GMBVerificationsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetGoogleBusinessVerifications200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\GetGoogleBusinessVerifications200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject2
      */
     public function getGoogleBusinessVerifications($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessVerifications'][0])
     {
@@ -887,7 +887,7 @@ class GMBVerificationsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetGoogleBusinessVerifications200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetGoogleBusinessVerifications200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
      */
     public function getGoogleBusinessVerificationsWithHttpInfo($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessVerifications'][0])
     {
@@ -937,7 +937,7 @@ class GMBVerificationsApi
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $request,
                         $response,
                     );
@@ -992,7 +992,7 @@ class GMBVerificationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1198,7 +1198,7 @@ class GMBVerificationsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\StartGoogleBusinessVerification200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\StartGoogleBusinessVerification200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject2
      */
     public function startGoogleBusinessVerification($account_id, $start_google_business_verification_request, $location_id = null, string $contentType = self::contentTypes['startGoogleBusinessVerification'][0])
     {
@@ -1218,7 +1218,7 @@ class GMBVerificationsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\StartGoogleBusinessVerification200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\StartGoogleBusinessVerification200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
      */
     public function startGoogleBusinessVerificationWithHttpInfo($account_id, $start_google_business_verification_request, $location_id = null, string $contentType = self::contentTypes['startGoogleBusinessVerification'][0])
     {
@@ -1268,7 +1268,7 @@ class GMBVerificationsApi
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $request,
                         $response,
                     );
@@ -1323,7 +1323,7 @@ class GMBVerificationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

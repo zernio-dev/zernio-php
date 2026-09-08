@@ -141,7 +141,7 @@ class GMBLocationDetailsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetGoogleBusinessLocationDetails200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\GetGoogleBusinessLocationDetails200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject2
      */
     public function getGoogleBusinessLocationDetails($account_id, $location_id = null, $read_mask = null, string $contentType = self::contentTypes['getGoogleBusinessLocationDetails'][0])
     {
@@ -161,7 +161,7 @@ class GMBLocationDetailsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetGoogleBusinessLocationDetails200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetGoogleBusinessLocationDetails200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
      */
     public function getGoogleBusinessLocationDetailsWithHttpInfo($account_id, $location_id = null, $read_mask = null, string $contentType = self::contentTypes['getGoogleBusinessLocationDetails'][0])
     {
@@ -211,7 +211,7 @@ class GMBLocationDetailsApi
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $request,
                         $response,
                     );
@@ -266,7 +266,7 @@ class GMBLocationDetailsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -485,7 +485,7 @@ class GMBLocationDetailsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UpdateGoogleBusinessLocationDetails200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\UpdateGoogleBusinessLocationDetails200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject2
      */
     public function updateGoogleBusinessLocationDetails($account_id, $update_google_business_location_details_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessLocationDetails'][0])
     {
@@ -505,7 +505,7 @@ class GMBLocationDetailsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UpdateGoogleBusinessLocationDetails200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateGoogleBusinessLocationDetails200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateGoogleBusinessLocationDetailsWithHttpInfo($account_id, $update_google_business_location_details_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessLocationDetails'][0])
     {
@@ -555,7 +555,7 @@ class GMBLocationDetailsApi
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $request,
                         $response,
                     );
@@ -610,7 +610,7 @@ class GMBLocationDetailsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

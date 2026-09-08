@@ -175,7 +175,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\DeleteAccountGroup200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\DeleteAccountGroup200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
      */
     public function deleteAccount($account_id, string $contentType = self::contentTypes['deleteAccount'][0])
     {
@@ -193,7 +193,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\DeleteAccountGroup200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\DeleteAccountGroup200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteAccountWithHttpInfo($account_id, string $contentType = self::contentTypes['deleteAccount'][0])
     {
@@ -231,13 +231,13 @@ class AccountsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $request,
                         $response,
                     );
@@ -276,7 +276,7 @@ class AccountsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -284,7 +284,7 @@ class AccountsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -475,7 +475,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetAccountHealth200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\GetAccountHealth200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
      */
     public function getAccountHealth($account_id, string $contentType = self::contentTypes['getAccountHealth'][0])
     {
@@ -493,7 +493,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetAccountHealth200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetAccountHealth200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAccountHealthWithHttpInfo($account_id, string $contentType = self::contentTypes['getAccountHealth'][0])
     {
@@ -537,13 +537,13 @@ class AccountsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $request,
                         $response,
                     );
@@ -590,7 +590,7 @@ class AccountsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -598,7 +598,7 @@ class AccountsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -789,7 +789,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetAccountPosts200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\GetAccountPosts200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
      */
     public function getAccountPosts($account_id, string $contentType = self::contentTypes['getAccountPosts'][0])
     {
@@ -807,7 +807,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetAccountPosts200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetAccountPosts200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAccountPostsWithHttpInfo($account_id, string $contentType = self::contentTypes['getAccountPosts'][0])
     {
@@ -845,13 +845,13 @@ class AccountsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $request,
                         $response,
                     );
@@ -890,7 +890,7 @@ class AccountsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -898,7 +898,7 @@ class AccountsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1091,7 +1091,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetAllAccountsHealth200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetAllAccountsHealth200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function getAllAccountsHealth($profile_id = null, $platform = null, $status = null, string $contentType = self::contentTypes['getAllAccountsHealth'][0])
     {
@@ -1111,7 +1111,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetAllAccountsHealth200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetAllAccountsHealth200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAllAccountsHealthWithHttpInfo($profile_id = null, $platform = null, $status = null, string $contentType = self::contentTypes['getAllAccountsHealth'][0])
     {
@@ -1155,7 +1155,7 @@ class AccountsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1202,7 +1202,7 @@ class AccountsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1414,7 +1414,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetBlueskySettings200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetBlueskySettings200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function getBlueskySettings($account_id, string $contentType = self::contentTypes['getBlueskySettings'][0])
     {
@@ -1432,7 +1432,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetBlueskySettings200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetBlueskySettings200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getBlueskySettingsWithHttpInfo($account_id, string $contentType = self::contentTypes['getBlueskySettings'][0])
     {
@@ -1476,7 +1476,7 @@ class AccountsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1523,7 +1523,7 @@ class AccountsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1718,7 +1718,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\FollowerStatsResponse|\Zernio\Model\InlineObject|\Zernio\Model\GetFollowerStats403Response
+     * @return \Zernio\Model\FollowerStatsResponse|\Zernio\Model\InlineObject1|\Zernio\Model\GetFollowerStats403Response
      */
     public function getFollowerStats($account_ids = null, $profile_id = null, $from_date = null, $to_date = null, $granularity = 'daily', string $contentType = self::contentTypes['getFollowerStats'][0])
     {
@@ -1740,7 +1740,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\FollowerStatsResponse|\Zernio\Model\InlineObject|\Zernio\Model\GetFollowerStats403Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\FollowerStatsResponse|\Zernio\Model\InlineObject1|\Zernio\Model\GetFollowerStats403Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFollowerStatsWithHttpInfo($account_ids = null, $profile_id = null, $from_date = null, $to_date = null, $granularity = 'daily', string $contentType = self::contentTypes['getFollowerStats'][0])
     {
@@ -1778,7 +1778,7 @@ class AccountsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1823,7 +1823,7 @@ class AccountsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2071,7 +2071,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetInstagramFollowStatus200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\GetInstagramFollowStatus200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
      */
     public function getInstagramFollowStatus($account_id, $user_id, $refresh = null, string $contentType = self::contentTypes['getInstagramFollowStatus'][0])
     {
@@ -2091,7 +2091,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetInstagramFollowStatus200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetInstagramFollowStatus200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInstagramFollowStatusWithHttpInfo($account_id, $user_id, $refresh = null, string $contentType = self::contentTypes['getInstagramFollowStatus'][0])
     {
@@ -2135,13 +2135,13 @@ class AccountsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $request,
                         $response,
                     );
@@ -2188,7 +2188,7 @@ class AccountsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2196,7 +2196,7 @@ class AccountsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2418,7 +2418,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetSlackSettings200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetSlackSettings200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function getSlackSettings($account_id, string $contentType = self::contentTypes['getSlackSettings'][0])
     {
@@ -2436,7 +2436,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetSlackSettings200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetSlackSettings200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSlackSettingsWithHttpInfo($account_id, string $contentType = self::contentTypes['getSlackSettings'][0])
     {
@@ -2480,7 +2480,7 @@ class AccountsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2527,7 +2527,7 @@ class AccountsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2719,7 +2719,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetTikTokCreatorInfo200Response|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1|\Zernio\Model\GetYouTubeDailyViews400Response
+     * @return \Zernio\Model\GetTikTokCreatorInfo200Response|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2|\Zernio\Model\GetYouTubeDailyViews400Response
      */
     public function getTikTokCreatorInfo($account_id, $media_type = 'video', string $contentType = self::contentTypes['getTikTokCreatorInfo'][0])
     {
@@ -2738,7 +2738,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetTikTokCreatorInfo200Response|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1|\Zernio\Model\GetYouTubeDailyViews400Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetTikTokCreatorInfo200Response|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2|\Zernio\Model\GetYouTubeDailyViews400Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTikTokCreatorInfoWithHttpInfo($account_id, $media_type = 'video', string $contentType = self::contentTypes['getTikTokCreatorInfo'][0])
     {
@@ -2782,13 +2782,13 @@ class AccountsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $request,
                         $response,
                     );
@@ -2841,7 +2841,7 @@ class AccountsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2849,7 +2849,7 @@ class AccountsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3066,7 +3066,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\AccountsListResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\AccountsListResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function listAccounts($profile_id = null, $platform = null, $status = null, $include_over_limit = false, $page = null, $limit = null, string $contentType = self::contentTypes['listAccounts'][0])
     {
@@ -3089,7 +3089,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\AccountsListResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\AccountsListResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listAccountsWithHttpInfo($profile_id = null, $platform = null, $status = null, $include_over_limit = false, $page = null, $limit = null, string $contentType = self::contentTypes['listAccounts'][0])
     {
@@ -3133,7 +3133,7 @@ class AccountsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -3180,7 +3180,7 @@ class AccountsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3441,7 +3441,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\MoveAccountToProfile200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\MoveAccountToProfile200Response|\Zernio\Model\InlineObject1
      */
     public function moveAccountToProfile($account_id, $move_account_to_profile_request, string $contentType = self::contentTypes['moveAccountToProfile'][0])
     {
@@ -3460,7 +3460,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\MoveAccountToProfile200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\MoveAccountToProfile200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function moveAccountToProfileWithHttpInfo($account_id, $move_account_to_profile_request, string $contentType = self::contentTypes['moveAccountToProfile'][0])
     {
@@ -3498,7 +3498,7 @@ class AccountsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -3537,7 +3537,7 @@ class AccountsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3746,7 +3746,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UpdateAccount200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\UpdateAccount200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
      */
     public function updateAccount($account_id, $update_account_request, string $contentType = self::contentTypes['updateAccount'][0])
     {
@@ -3765,7 +3765,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UpdateAccount200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateAccount200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateAccountWithHttpInfo($account_id, $update_account_request, string $contentType = self::contentTypes['updateAccount'][0])
     {
@@ -3803,13 +3803,13 @@ class AccountsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $request,
                         $response,
                     );
@@ -3848,7 +3848,7 @@ class AccountsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3856,7 +3856,7 @@ class AccountsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4126,7 +4126,7 @@ class AccountsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4383,7 +4383,7 @@ class AccountsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

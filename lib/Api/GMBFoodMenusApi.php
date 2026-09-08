@@ -140,7 +140,7 @@ class GMBFoodMenusApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetGoogleBusinessFoodMenus200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
+     * @return \Zernio\Model\GetGoogleBusinessFoodMenus200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject2|\Zernio\Model\ErrorResponse
      */
     public function getGoogleBusinessFoodMenus($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessFoodMenus'][0])
     {
@@ -159,7 +159,7 @@ class GMBFoodMenusApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetGoogleBusinessFoodMenus200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetGoogleBusinessFoodMenus200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject2|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getGoogleBusinessFoodMenusWithHttpInfo($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessFoodMenus'][0])
     {
@@ -215,7 +215,7 @@ class GMBFoodMenusApi
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $request,
                         $response,
                     );
@@ -284,7 +284,7 @@ class GMBFoodMenusApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -498,7 +498,7 @@ class GMBFoodMenusApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UpdateGoogleBusinessFoodMenus200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
+     * @return \Zernio\Model\UpdateGoogleBusinessFoodMenus200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject2|\Zernio\Model\ErrorResponse
      */
     public function updateGoogleBusinessFoodMenus($account_id, $update_google_business_food_menus_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessFoodMenus'][0])
     {
@@ -518,7 +518,7 @@ class GMBFoodMenusApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UpdateGoogleBusinessFoodMenus200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateGoogleBusinessFoodMenus200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject2|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateGoogleBusinessFoodMenusWithHttpInfo($account_id, $update_google_business_food_menus_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessFoodMenus'][0])
     {
@@ -574,7 +574,7 @@ class GMBFoodMenusApi
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $request,
                         $response,
                     );
@@ -643,7 +643,7 @@ class GMBFoodMenusApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

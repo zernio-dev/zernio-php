@@ -157,7 +157,7 @@ class TwitterEngagementApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\BookmarkPost200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\BookmarkPost200Response|\Zernio\Model\InlineObject1
      */
     public function bookmarkPost($bookmark_post_request, string $contentType = self::contentTypes['bookmarkPost'][0])
     {
@@ -175,7 +175,7 @@ class TwitterEngagementApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\BookmarkPost200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\BookmarkPost200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function bookmarkPostWithHttpInfo($bookmark_post_request, string $contentType = self::contentTypes['bookmarkPost'][0])
     {
@@ -213,7 +213,7 @@ class TwitterEngagementApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -252,7 +252,7 @@ class TwitterEngagementApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -442,7 +442,7 @@ class TwitterEngagementApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\FollowUser200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\FollowUser200Response|\Zernio\Model\InlineObject1
      */
     public function followUser($follow_user_request, string $contentType = self::contentTypes['followUser'][0])
     {
@@ -460,7 +460,7 @@ class TwitterEngagementApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\FollowUser200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\FollowUser200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function followUserWithHttpInfo($follow_user_request, string $contentType = self::contentTypes['followUser'][0])
     {
@@ -498,7 +498,7 @@ class TwitterEngagementApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -537,7 +537,7 @@ class TwitterEngagementApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -728,7 +728,7 @@ class TwitterEngagementApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetTweet200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetTweet200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function getTweet($account_id, $id, string $contentType = self::contentTypes['getTweet'][0])
     {
@@ -747,7 +747,7 @@ class TwitterEngagementApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetTweet200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetTweet200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTweetWithHttpInfo($account_id, $id, string $contentType = self::contentTypes['getTweet'][0])
     {
@@ -791,7 +791,7 @@ class TwitterEngagementApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -838,7 +838,7 @@ class TwitterEngagementApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1050,7 +1050,7 @@ class TwitterEngagementApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\RemoveBookmark200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\RemoveBookmark200Response|\Zernio\Model\InlineObject1
      */
     public function removeBookmark($account_id, $tweet_id, string $contentType = self::contentTypes['removeBookmark'][0])
     {
@@ -1069,7 +1069,7 @@ class TwitterEngagementApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\RemoveBookmark200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\RemoveBookmark200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function removeBookmarkWithHttpInfo($account_id, $tweet_id, string $contentType = self::contentTypes['removeBookmark'][0])
     {
@@ -1107,7 +1107,7 @@ class TwitterEngagementApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1146,7 +1146,7 @@ class TwitterEngagementApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1357,7 +1357,7 @@ class TwitterEngagementApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\RetweetPost200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\RetweetPost200Response|\Zernio\Model\InlineObject1
      */
     public function retweetPost($retweet_post_request, string $contentType = self::contentTypes['retweetPost'][0])
     {
@@ -1375,7 +1375,7 @@ class TwitterEngagementApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\RetweetPost200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\RetweetPost200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function retweetPostWithHttpInfo($retweet_post_request, string $contentType = self::contentTypes['retweetPost'][0])
     {
@@ -1413,7 +1413,7 @@ class TwitterEngagementApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1452,7 +1452,7 @@ class TwitterEngagementApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1650,7 +1650,7 @@ class TwitterEngagementApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\SearchTweets200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\SearchTweets200Response|\Zernio\Model\InlineObject1
      */
     public function searchTweets($account_id, $query, $limit = 10, $since_id = null, $until_id = null, $start_time = null, $end_time = null, $cursor = null, $sort_order = 'recency', string $contentType = self::contentTypes['searchTweets'][0])
     {
@@ -1676,7 +1676,7 @@ class TwitterEngagementApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\SearchTweets200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SearchTweets200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchTweetsWithHttpInfo($account_id, $query, $limit = 10, $since_id = null, $until_id = null, $start_time = null, $end_time = null, $cursor = null, $sort_order = 'recency', string $contentType = self::contentTypes['searchTweets'][0])
     {
@@ -1714,7 +1714,7 @@ class TwitterEngagementApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1753,7 +1753,7 @@ class TwitterEngagementApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2074,7 +2074,7 @@ class TwitterEngagementApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UndoRetweet200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UndoRetweet200Response|\Zernio\Model\InlineObject1
      */
     public function undoRetweet($account_id, $tweet_id, string $contentType = self::contentTypes['undoRetweet'][0])
     {
@@ -2093,7 +2093,7 @@ class TwitterEngagementApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UndoRetweet200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UndoRetweet200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function undoRetweetWithHttpInfo($account_id, $tweet_id, string $contentType = self::contentTypes['undoRetweet'][0])
     {
@@ -2131,7 +2131,7 @@ class TwitterEngagementApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2170,7 +2170,7 @@ class TwitterEngagementApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2382,7 +2382,7 @@ class TwitterEngagementApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UnfollowUser200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UnfollowUser200Response|\Zernio\Model\InlineObject1
      */
     public function unfollowUser($account_id, $target_user_id, string $contentType = self::contentTypes['unfollowUser'][0])
     {
@@ -2401,7 +2401,7 @@ class TwitterEngagementApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UnfollowUser200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UnfollowUser200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function unfollowUserWithHttpInfo($account_id, $target_user_id, string $contentType = self::contentTypes['unfollowUser'][0])
     {
@@ -2439,7 +2439,7 @@ class TwitterEngagementApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2478,7 +2478,7 @@ class TwitterEngagementApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

@@ -30,7 +30,6 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getShopifyConnectUrl()**](ConnectApi.md#getShopifyConnectUrl) | **GET** /v1/connect/shopify | Get Shopify OAuth connect URL |
 | [**getSubredditRules()**](ConnectApi.md#getSubredditRules) | **GET** /v1/accounts/{accountId}/reddit-subreddits/{subreddit}/rules | Get subreddit rules |
 | [**getTelegramConnectStatus()**](ConnectApi.md#getTelegramConnectStatus) | **GET** /v1/connect/telegram | Generate Telegram code |
-| [**getWhatsAppSdkConfig()**](ConnectApi.md#getWhatsAppSdkConfig) | **GET** /v1/connect/whatsapp/sdk-config | Get Embedded Signup SDK config |
 | [**getYoutubeCaptions()**](ConnectApi.md#getYoutubeCaptions) | **GET** /v1/accounts/{accountId}/youtube-captions | Get a YouTube video transcript |
 | [**getYoutubePlaylists()**](ConnectApi.md#getYoutubePlaylists) | **GET** /v1/accounts/{accountId}/youtube-playlists | List YouTube playlists |
 | [**handleOAuthCallback()**](ConnectApi.md#handleOAuthCallback) | **POST** /v1/connect/{platform} | Complete OAuth callback |
@@ -743,7 +742,7 @@ connectWhatsAppEmbeddedSignup($connect_whats_app_embedded_signup_request)
 
 Connect WhatsApp from Embedded Signup
 
-Finish a WhatsApp connection started with Meta's Embedded Signup in your own page (Facebook JavaScript SDK). The code never passes through a `redirect_url`, so `POST /v1/connect/{platform}` cannot accept it.  The flow: call `GET /v1/connect/whatsapp/sdk-config`, run `FB.login` with that `configId`, `response_type: 'code'`, `override_default_response_type: true` and `extras: { sessionInfoVersion: '3' }`, read `waba_id` and `phone_number_id` from the `WA_EMBEDDED_SIGNUP` message event Meta posts to your window, then send the `code` from the login response here together with those ids.  Always forward `wabaId` and `phoneNumberId`: Zernio connects exactly that number and no picker is shown. Without them Zernio falls back to the first number of the first WhatsApp Business Account the token can reach, which may not be the one the user picked.  The Zernio Meta app must list the domain that hosts the popup before `FB.login` will open there. Available on request: send the domains to support.
+Exchange the authorization code Meta Embedded Signup returns to your browser SDK. This is the headless completion path for WhatsApp: the code never passes through a redirect_uri, so POST /v1/connect/{platform} cannot accept it.
 
 ### Example
 
@@ -1528,63 +1527,6 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetTelegramConnectStatus200Response**](../Model/GetTelegramConnectStatus200Response.md)
-
-### Authorization
-
-[bearerAuth](../../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getWhatsAppSdkConfig()`
-
-```php
-getWhatsAppSdkConfig(): \Zernio\Model\GetWhatsAppSdkConfig200Response
-```
-
-Get Embedded Signup SDK config
-
-The public values needed to run Meta's Embedded Signup inside your own page with the Facebook JavaScript SDK instead of the redirect flow: pass `appId` and `graphApiVersion` to `FB.init`, and `configId` as `config_id` to `FB.login`. The popup then reports the WhatsApp Business Account and phone number the user picked through the `WA_EMBEDDED_SIGNUP` message event, and you finish the connection with `POST /v1/connect/whatsapp/embedded-signup`. Because the number comes back from the popup, the user never sees a second number picker.  Available on request: `FB.login` only opens on HTTPS domains listed in the Zernio Meta app, so send the domains that will host the popup to support before going live.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer (JWT) authorization: bearerAuth
-$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Zernio\Api\ConnectApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-
-try {
-    $result = $apiInstance->getWhatsAppSdkConfig();
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ConnectApi->getWhatsAppSdkConfig: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**\Zernio\Model\GetWhatsAppSdkConfig200Response**](../Model/GetWhatsAppSdkConfig200Response.md)
 
 ### Authorization
 

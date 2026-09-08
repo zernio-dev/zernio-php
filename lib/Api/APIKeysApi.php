@@ -145,7 +145,7 @@ class APIKeysApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateApiKey201Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2
+     * @return \Zernio\Model\CreateApiKey201Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3
      */
     public function createApiKey($create_api_key_request, string $contentType = self::contentTypes['createApiKey'][0])
     {
@@ -163,7 +163,7 @@ class APIKeysApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateApiKey201Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateApiKey201Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3, HTTP status code, HTTP response headers (array of strings)
      */
     public function createApiKeyWithHttpInfo($create_api_key_request, string $contentType = self::contentTypes['createApiKey'][0])
     {
@@ -201,13 +201,13 @@ class APIKeysApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $request,
                         $response,
                     );
@@ -246,7 +246,7 @@ class APIKeysApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -254,7 +254,7 @@ class APIKeysApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -444,7 +444,7 @@ class APIKeysApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\DeleteAccountGroup200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\DeleteAccountGroup200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3|\Zernio\Model\InlineObject2
      */
     public function deleteApiKey($key_id, string $contentType = self::contentTypes['deleteApiKey'][0])
     {
@@ -462,7 +462,7 @@ class APIKeysApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\DeleteAccountGroup200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\DeleteAccountGroup200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteApiKeyWithHttpInfo($key_id, string $contentType = self::contentTypes['deleteApiKey'][0])
     {
@@ -500,19 +500,19 @@ class APIKeysApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $request,
                         $response,
                     );
@@ -551,7 +551,7 @@ class APIKeysApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -559,7 +559,7 @@ class APIKeysApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -567,7 +567,7 @@ class APIKeysApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -757,7 +757,7 @@ class APIKeysApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListApiKeys200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2
+     * @return \Zernio\Model\ListApiKeys200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3
      */
     public function listApiKeys(string $contentType = self::contentTypes['listApiKeys'][0])
     {
@@ -774,7 +774,7 @@ class APIKeysApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListApiKeys200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListApiKeys200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3, HTTP status code, HTTP response headers (array of strings)
      */
     public function listApiKeysWithHttpInfo(string $contentType = self::contentTypes['listApiKeys'][0])
     {
@@ -812,13 +812,13 @@ class APIKeysApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $request,
                         $response,
                     );
@@ -857,7 +857,7 @@ class APIKeysApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -865,7 +865,7 @@ class APIKeysApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1037,7 +1037,7 @@ class APIKeysApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\VerifyCredential200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\VerifyCredential200Response|\Zernio\Model\InlineObject1
      */
     public function verifyCredential(string $contentType = self::contentTypes['verifyCredential'][0])
     {
@@ -1054,7 +1054,7 @@ class APIKeysApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\VerifyCredential200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\VerifyCredential200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function verifyCredentialWithHttpInfo(string $contentType = self::contentTypes['verifyCredential'][0])
     {
@@ -1092,7 +1092,7 @@ class APIKeysApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1131,7 +1131,7 @@ class APIKeysApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

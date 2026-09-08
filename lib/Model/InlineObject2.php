@@ -58,9 +58,7 @@ class InlineObject2 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'error' => 'string',
-        'code' => 'string',
-        'required_group' => 'string'
+        'error' => 'string'
     ];
 
     /**
@@ -71,9 +69,7 @@ class InlineObject2 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'error' => null,
-        'code' => null,
-        'required_group' => null
+        'error' => null
     ];
 
     /**
@@ -82,9 +78,7 @@ class InlineObject2 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'error' => false,
-        'code' => false,
-        'required_group' => false
+        'error' => false
     ];
 
     /**
@@ -173,9 +167,7 @@ class InlineObject2 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'error' => 'error',
-        'code' => 'code',
-        'required_group' => 'required_group'
+        'error' => 'error'
     ];
 
     /**
@@ -184,9 +176,7 @@ class InlineObject2 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'error' => 'setError',
-        'code' => 'setCode',
-        'required_group' => 'setRequiredGroup'
+        'error' => 'setError'
     ];
 
     /**
@@ -195,9 +185,7 @@ class InlineObject2 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'error' => 'getError',
-        'code' => 'getCode',
-        'required_group' => 'getRequiredGroup'
+        'error' => 'getError'
     ];
 
     /**
@@ -241,52 +229,6 @@ class InlineObject2 implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const CODE_INSUFFICIENT_PERMISSIONS = 'insufficient_permissions';
-    public const CODE_UNCLASSIFIED_RESOURCE = 'unclassified_resource';
-    public const REQUIRED_GROUP_PUBLISHING = 'publishing';
-    public const REQUIRED_GROUP_ENGAGEMENT = 'engagement';
-    public const REQUIRED_GROUP_MESSAGES = 'messages';
-    public const REQUIRED_GROUP_CONTACTS = 'contacts';
-    public const REQUIRED_GROUP_ANALYTICS = 'analytics';
-    public const REQUIRED_GROUP_ADS = 'ads';
-    public const REQUIRED_GROUP_TELEPHONY = 'telephony';
-    public const REQUIRED_GROUP_ACCOUNTS = 'accounts';
-    public const REQUIRED_GROUP_BILLING = 'billing';
-    public const REQUIRED_GROUP_WEBHOOKS = 'webhooks';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getCodeAllowableValues()
-    {
-        return [
-            self::CODE_INSUFFICIENT_PERMISSIONS,
-            self::CODE_UNCLASSIFIED_RESOURCE,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getRequiredGroupAllowableValues()
-    {
-        return [
-            self::REQUIRED_GROUP_PUBLISHING,
-            self::REQUIRED_GROUP_ENGAGEMENT,
-            self::REQUIRED_GROUP_MESSAGES,
-            self::REQUIRED_GROUP_CONTACTS,
-            self::REQUIRED_GROUP_ANALYTICS,
-            self::REQUIRED_GROUP_ADS,
-            self::REQUIRED_GROUP_TELEPHONY,
-            self::REQUIRED_GROUP_ACCOUNTS,
-            self::REQUIRED_GROUP_BILLING,
-            self::REQUIRED_GROUP_WEBHOOKS,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -304,8 +246,6 @@ class InlineObject2 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('error', $data ?? [], null);
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('required_group', $data ?? [], null);
     }
 
     /**
@@ -334,24 +274,6 @@ class InlineObject2 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getCodeAllowableValues();
-        if (!is_null($this->container['code']) && !in_array($this->container['code'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'code', must be one of '%s'",
-                $this->container['code'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getRequiredGroupAllowableValues();
-        if (!is_null($this->container['required_group']) && !in_array($this->container['required_group'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'required_group', must be one of '%s'",
-                $this->container['required_group'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -391,80 +313,6 @@ class InlineObject2 implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable error cannot be null');
         }
         $this->container['error'] = $error;
-
-        return $this;
-    }
-
-    /**
-     * Gets code
-     *
-     * @return string|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param string|null $code code
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $allowedValues = $this->getCodeAllowableValues();
-        if (!in_array($code, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'code', must be one of '%s'",
-                    $code,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets required_group
-     *
-     * @return string|null
-     */
-    public function getRequiredGroup()
-    {
-        return $this->container['required_group'];
-    }
-
-    /**
-     * Sets required_group
-     *
-     * @param string|null $required_group The resource group the key needs for this operation. Absent on admin-plane and unclassified-path denials.
-     *
-     * @return self
-     */
-    public function setRequiredGroup($required_group)
-    {
-        if (is_null($required_group)) {
-            throw new \InvalidArgumentException('non-nullable required_group cannot be null');
-        }
-        $allowedValues = $this->getRequiredGroupAllowableValues();
-        if (!in_array($required_group, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'required_group', must be one of '%s'",
-                    $required_group,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['required_group'] = $required_group;
 
         return $this;
     }

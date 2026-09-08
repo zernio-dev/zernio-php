@@ -136,7 +136,7 @@ class InvitesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateInviteToken201Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2
+     * @return \Zernio\Model\CreateInviteToken201Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3
      */
     public function createInviteToken($create_invite_token_request, string $contentType = self::contentTypes['createInviteToken'][0])
     {
@@ -154,7 +154,7 @@ class InvitesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateInviteToken201Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateInviteToken201Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3, HTTP status code, HTTP response headers (array of strings)
      */
     public function createInviteTokenWithHttpInfo($create_invite_token_request, string $contentType = self::contentTypes['createInviteToken'][0])
     {
@@ -192,13 +192,13 @@ class InvitesApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $request,
                         $response,
                     );
@@ -237,7 +237,7 @@ class InvitesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -245,7 +245,7 @@ class InvitesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

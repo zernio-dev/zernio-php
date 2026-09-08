@@ -152,7 +152,7 @@ class AdLibraryApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\SearchAdLibrary200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\SearchAdLibrary200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function searchAdLibrary($platform = null, $account_id = null, $q = null, $page_ids = null, $advertiser = null, $countries = null, $ad_type = 'ALL', $status = 'ACTIVE', $platforms = null, $media_type = null, $languages = null, $since = null, $until = null, $search_type = 'KEYWORD_UNORDERED', $fields = null, $limit = 25, $after = null, string $contentType = self::contentTypes['searchAdLibrary'][0])
     {
@@ -186,7 +186,7 @@ class AdLibraryApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\SearchAdLibrary200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SearchAdLibrary200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchAdLibraryWithHttpInfo($platform = null, $account_id = null, $q = null, $page_ids = null, $advertiser = null, $countries = null, $ad_type = 'ALL', $status = 'ACTIVE', $platforms = null, $media_type = null, $languages = null, $since = null, $until = null, $search_type = 'KEYWORD_UNORDERED', $fields = null, $limit = 25, $after = null, string $contentType = self::contentTypes['searchAdLibrary'][0])
     {
@@ -230,7 +230,7 @@ class AdLibraryApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -277,7 +277,7 @@ class AdLibraryApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

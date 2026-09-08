@@ -163,7 +163,7 @@ class AdInsightsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateAdInsightsReport202Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CreateAdInsightsReport202Response|\Zernio\Model\InlineObject1
      */
     public function createAdInsightsReport($create_ad_insights_report_request, string $contentType = self::contentTypes['createAdInsightsReport'][0])
     {
@@ -181,7 +181,7 @@ class AdInsightsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateAdInsightsReport202Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateAdInsightsReport202Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function createAdInsightsReportWithHttpInfo($create_ad_insights_report_request, string $contentType = self::contentTypes['createAdInsightsReport'][0])
     {
@@ -219,7 +219,7 @@ class AdInsightsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -258,7 +258,7 @@ class AdInsightsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -448,7 +448,7 @@ class AdInsightsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GenerateKeywordHistoricalMetrics200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GenerateKeywordHistoricalMetrics200Response|\Zernio\Model\InlineObject1
      */
     public function generateKeywordHistoricalMetrics($generate_keyword_historical_metrics_request, string $contentType = self::contentTypes['generateKeywordHistoricalMetrics'][0])
     {
@@ -466,7 +466,7 @@ class AdInsightsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GenerateKeywordHistoricalMetrics200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GenerateKeywordHistoricalMetrics200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function generateKeywordHistoricalMetricsWithHttpInfo($generate_keyword_historical_metrics_request, string $contentType = self::contentTypes['generateKeywordHistoricalMetrics'][0])
     {
@@ -504,7 +504,7 @@ class AdInsightsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -543,7 +543,7 @@ class AdInsightsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -733,7 +733,7 @@ class AdInsightsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GenerateKeywordIdeas200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GenerateKeywordIdeas200Response|\Zernio\Model\InlineObject1
      */
     public function generateKeywordIdeas($generate_keyword_ideas_request, string $contentType = self::contentTypes['generateKeywordIdeas'][0])
     {
@@ -751,7 +751,7 @@ class AdInsightsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GenerateKeywordIdeas200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GenerateKeywordIdeas200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function generateKeywordIdeasWithHttpInfo($generate_keyword_ideas_request, string $contentType = self::contentTypes['generateKeywordIdeas'][0])
     {
@@ -789,7 +789,7 @@ class AdInsightsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -828,7 +828,7 @@ class AdInsightsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1021,7 +1021,7 @@ class AdInsightsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\AdAnalyticsResponse|\Zernio\Model\GetAdAnalytics202Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\AdAnalyticsResponse|\Zernio\Model\GetAdAnalytics202Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
      */
     public function getAdAnalytics($ad_id, $from_date = null, $to_date = null, $breakdowns = null, string $contentType = self::contentTypes['getAdAnalytics'][0])
     {
@@ -1042,7 +1042,7 @@ class AdInsightsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\AdAnalyticsResponse|\Zernio\Model\GetAdAnalytics202Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\AdAnalyticsResponse|\Zernio\Model\GetAdAnalytics202Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAdAnalyticsWithHttpInfo($ad_id, $from_date = null, $to_date = null, $breakdowns = null, string $contentType = self::contentTypes['getAdAnalytics'][0])
     {
@@ -1092,13 +1092,13 @@ class AdInsightsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $request,
                         $response,
                     );
@@ -1153,7 +1153,7 @@ class AdInsightsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1161,7 +1161,7 @@ class AdInsightsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1394,7 +1394,7 @@ class AdInsightsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetAdInsightsReport200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetAdInsightsReport200Response|\Zernio\Model\InlineObject1
      */
     public function getAdInsightsReport($report_run_id, $account_id, $limit = 25, $after = null, string $contentType = self::contentTypes['getAdInsightsReport'][0])
     {
@@ -1415,7 +1415,7 @@ class AdInsightsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetAdInsightsReport200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetAdInsightsReport200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAdInsightsReportWithHttpInfo($report_run_id, $account_id, $limit = 25, $after = null, string $contentType = self::contentTypes['getAdInsightsReport'][0])
     {
@@ -1453,7 +1453,7 @@ class AdInsightsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1492,7 +1492,7 @@ class AdInsightsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1740,7 +1740,7 @@ class AdInsightsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetAdsSearchTerms200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetAdsSearchTerms200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function getAdsSearchTerms($account_id, $customer_id = null, $from_date = null, $to_date = null, $campaign_id = null, $ad_group_id = null, $page_token = null, string $contentType = self::contentTypes['getAdsSearchTerms'][0])
     {
@@ -1764,7 +1764,7 @@ class AdInsightsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetAdsSearchTerms200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetAdsSearchTerms200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAdsSearchTermsWithHttpInfo($account_id, $customer_id = null, $from_date = null, $to_date = null, $campaign_id = null, $ad_group_id = null, $page_token = null, string $contentType = self::contentTypes['getAdsSearchTerms'][0])
     {
@@ -1808,7 +1808,7 @@ class AdInsightsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1855,7 +1855,7 @@ class AdInsightsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2129,7 +2129,7 @@ class AdInsightsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CampaignAnalyticsResponse|\Zernio\Model\GetCampaignAnalytics202Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\CampaignAnalyticsResponse|\Zernio\Model\GetCampaignAnalytics202Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
      */
     public function getCampaignAnalytics($campaign_id, $platform = null, $from_date = null, $to_date = null, $breakdowns = null, string $contentType = self::contentTypes['getCampaignAnalytics'][0])
     {
@@ -2151,7 +2151,7 @@ class AdInsightsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CampaignAnalyticsResponse|\Zernio\Model\GetCampaignAnalytics202Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CampaignAnalyticsResponse|\Zernio\Model\GetCampaignAnalytics202Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCampaignAnalyticsWithHttpInfo($campaign_id, $platform = null, $from_date = null, $to_date = null, $breakdowns = null, string $contentType = self::contentTypes['getCampaignAnalytics'][0])
     {
@@ -2201,13 +2201,13 @@ class AdInsightsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $request,
                         $response,
                     );
@@ -2262,7 +2262,7 @@ class AdInsightsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2270,7 +2270,7 @@ class AdInsightsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2516,7 +2516,7 @@ class AdInsightsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListLocalServicesLeadConversations200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListLocalServicesLeadConversations200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function listLocalServicesLeadConversations($lead_id, $account_id, $customer_id = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeadConversations'][0])
     {
@@ -2537,7 +2537,7 @@ class AdInsightsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListLocalServicesLeadConversations200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListLocalServicesLeadConversations200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listLocalServicesLeadConversationsWithHttpInfo($lead_id, $account_id, $customer_id = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeadConversations'][0])
     {
@@ -2581,7 +2581,7 @@ class AdInsightsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2628,7 +2628,7 @@ class AdInsightsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2871,7 +2871,7 @@ class AdInsightsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListLocalServicesLeads200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListLocalServicesLeads200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function listLocalServicesLeads($account_id, $customer_id = null, $from_date = null, $to_date = null, $lead_type = null, $lead_status = null, $charged_only = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeads'][0])
     {
@@ -2896,7 +2896,7 @@ class AdInsightsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListLocalServicesLeads200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListLocalServicesLeads200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listLocalServicesLeadsWithHttpInfo($account_id, $customer_id = null, $from_date = null, $to_date = null, $lead_type = null, $lead_status = null, $charged_only = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeads'][0])
     {
@@ -2940,7 +2940,7 @@ class AdInsightsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2987,7 +2987,7 @@ class AdInsightsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3288,7 +3288,7 @@ class AdInsightsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\QueryAdInsights200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\QueryAdInsights200Response|\Zernio\Model\InlineObject1
      */
     public function queryAdInsights($account_id, $object_id = null, $query = null, $customer_id = null, $page_token = null, $level = null, $fields = null, $breakdowns = null, $action_breakdowns = null, $action_attribution_windows = null, $action_report_time = null, $use_unified_attribution_setting = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
     {
@@ -3324,7 +3324,7 @@ class AdInsightsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\QueryAdInsights200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\QueryAdInsights200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function queryAdInsightsWithHttpInfo($account_id, $object_id = null, $query = null, $customer_id = null, $page_token = null, $level = null, $fields = null, $breakdowns = null, $action_breakdowns = null, $action_attribution_windows = null, $action_report_time = null, $use_unified_attribution_setting = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
     {
@@ -3362,7 +3362,7 @@ class AdInsightsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -3401,7 +3401,7 @@ class AdInsightsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

@@ -148,7 +148,7 @@ class AdTargetingApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\EstimateAdReach200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\EstimateAdReach200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
      */
     public function estimateAdReach($estimate_ad_reach_request, string $contentType = self::contentTypes['estimateAdReach'][0])
     {
@@ -166,7 +166,7 @@ class AdTargetingApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\EstimateAdReach200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\EstimateAdReach200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
      */
     public function estimateAdReachWithHttpInfo($estimate_ad_reach_request, string $contentType = self::contentTypes['estimateAdReach'][0])
     {
@@ -204,13 +204,13 @@ class AdTargetingApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $request,
                         $response,
                     );
@@ -249,7 +249,7 @@ class AdTargetingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -257,7 +257,7 @@ class AdTargetingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -447,7 +447,7 @@ class AdTargetingApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetLinkedInBidPricing200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\GetLinkedInBidPricing200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
      */
     public function getLinkedInBidPricing($get_linked_in_bid_pricing_request, string $contentType = self::contentTypes['getLinkedInBidPricing'][0])
     {
@@ -465,7 +465,7 @@ class AdTargetingApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetLinkedInBidPricing200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetLinkedInBidPricing200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
      */
     public function getLinkedInBidPricingWithHttpInfo($get_linked_in_bid_pricing_request, string $contentType = self::contentTypes['getLinkedInBidPricing'][0])
     {
@@ -503,13 +503,13 @@ class AdTargetingApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $request,
                         $response,
                     );
@@ -548,7 +548,7 @@ class AdTargetingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -556,7 +556,7 @@ class AdTargetingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -746,7 +746,7 @@ class AdTargetingApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetLinkedInSupplyForecast200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\GetLinkedInSupplyForecast200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
      */
     public function getLinkedInSupplyForecast($get_linked_in_supply_forecast_request, string $contentType = self::contentTypes['getLinkedInSupplyForecast'][0])
     {
@@ -764,7 +764,7 @@ class AdTargetingApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetLinkedInSupplyForecast200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetLinkedInSupplyForecast200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
      */
     public function getLinkedInSupplyForecastWithHttpInfo($get_linked_in_supply_forecast_request, string $contentType = self::contentTypes['getLinkedInSupplyForecast'][0])
     {
@@ -802,13 +802,13 @@ class AdTargetingApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $request,
                         $response,
                     );
@@ -847,7 +847,7 @@ class AdTargetingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -855,7 +855,7 @@ class AdTargetingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1046,7 +1046,7 @@ class AdTargetingApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\SearchAdInterests200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\SearchAdInterests200Response|\Zernio\Model\InlineObject1
      * @deprecated
      */
     public function searchAdInterests($q, $account_id, string $contentType = self::contentTypes['searchAdInterests'][0])
@@ -1066,7 +1066,7 @@ class AdTargetingApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\SearchAdInterests200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SearchAdInterests200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
     public function searchAdInterestsWithHttpInfo($q, $account_id, string $contentType = self::contentTypes['searchAdInterests'][0])
@@ -1105,7 +1105,7 @@ class AdTargetingApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1144,7 +1144,7 @@ class AdTargetingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1363,7 +1363,7 @@ class AdTargetingApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\SearchAdTargeting200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\SearchAdTargeting200Response|\Zernio\Model\InlineObject1
      */
     public function searchAdTargeting($account_id, $q, $dimension = 'interest', $geo_type = 'city', $country_code = null, $limit = 25, string $contentType = self::contentTypes['searchAdTargeting'][0])
     {
@@ -1386,7 +1386,7 @@ class AdTargetingApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\SearchAdTargeting200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SearchAdTargeting200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchAdTargetingWithHttpInfo($account_id, $q, $dimension = 'interest', $geo_type = 'city', $country_code = null, $limit = 25, string $contentType = self::contentTypes['searchAdTargeting'][0])
     {
@@ -1424,7 +1424,7 @@ class AdTargetingApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1463,7 +1463,7 @@ class AdTargetingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

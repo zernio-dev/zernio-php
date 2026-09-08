@@ -58,7 +58,7 @@ class InlineObject implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'error' => 'string'
+        'success' => 'bool'
     ];
 
     /**
@@ -69,7 +69,7 @@ class InlineObject implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'error' => null
+        'success' => null
     ];
 
     /**
@@ -78,7 +78,7 @@ class InlineObject implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'error' => false
+        'success' => false
     ];
 
     /**
@@ -167,7 +167,7 @@ class InlineObject implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'error' => 'error'
+        'success' => 'success'
     ];
 
     /**
@@ -176,7 +176,7 @@ class InlineObject implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'error' => 'setError'
+        'success' => 'setSuccess'
     ];
 
     /**
@@ -185,7 +185,7 @@ class InlineObject implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'error' => 'getError'
+        'success' => 'getSuccess'
     ];
 
     /**
@@ -245,7 +245,7 @@ class InlineObject implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('error', $data ?? [], null);
+        $this->setIfExists('success', $data ?? [], null);
     }
 
     /**
@@ -275,6 +275,9 @@ class InlineObject implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['success'] === null) {
+            $invalidProperties[] = "'success' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -291,28 +294,28 @@ class InlineObject implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets error
+     * Gets success
      *
-     * @return string|null
+     * @return bool
      */
-    public function getError()
+    public function getSuccess()
     {
-        return $this->container['error'];
+        return $this->container['success'];
     }
 
     /**
-     * Sets error
+     * Sets success
      *
-     * @param string|null $error error
+     * @param bool $success success
      *
      * @return self
      */
-    public function setError($error)
+    public function setSuccess($success)
     {
-        if (is_null($error)) {
-            throw new \InvalidArgumentException('non-nullable error cannot be null');
+        if (is_null($success)) {
+            throw new \InvalidArgumentException('non-nullable success cannot be null');
         }
-        $this->container['error'] = $error;
+        $this->container['success'] = $success;
 
         return $this;
     }

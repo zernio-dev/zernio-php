@@ -138,7 +138,7 @@ class ConnectedAppsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListConnectedApps200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2
+     * @return \Zernio\Model\ListConnectedApps200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3
      */
     public function listConnectedApps(string $contentType = self::contentTypes['listConnectedApps'][0])
     {
@@ -155,7 +155,7 @@ class ConnectedAppsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListConnectedApps200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListConnectedApps200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3, HTTP status code, HTTP response headers (array of strings)
      */
     public function listConnectedAppsWithHttpInfo(string $contentType = self::contentTypes['listConnectedApps'][0])
     {
@@ -193,13 +193,13 @@ class ConnectedAppsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $request,
                         $response,
                     );
@@ -238,7 +238,7 @@ class ConnectedAppsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -246,7 +246,7 @@ class ConnectedAppsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -419,7 +419,7 @@ class ConnectedAppsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\RevokeConnectedApp200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2|\Zernio\Model\ErrorResponse
+     * @return \Zernio\Model\RevokeConnectedApp200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3|\Zernio\Model\ErrorResponse
      */
     public function revokeConnectedApp($client_id, string $contentType = self::contentTypes['revokeConnectedApp'][0])
     {
@@ -437,7 +437,7 @@ class ConnectedAppsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\RevokeConnectedApp200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\RevokeConnectedApp200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function revokeConnectedAppWithHttpInfo($client_id, string $contentType = self::contentTypes['revokeConnectedApp'][0])
     {
@@ -481,13 +481,13 @@ class ConnectedAppsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $request,
                         $response,
                     );
@@ -540,7 +540,7 @@ class ConnectedAppsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -548,7 +548,7 @@ class ConnectedAppsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

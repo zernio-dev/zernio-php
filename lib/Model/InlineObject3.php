@@ -60,10 +60,7 @@ class InlineObject3 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'error' => 'string',
         'code' => 'string',
-        'reason' => 'string',
-        'documentation_url' => 'string',
-        'dashboard_url' => 'string',
-        'details' => '\Zernio\Model\InlineObject3Details'
+        'required_group' => 'string'
     ];
 
     /**
@@ -76,10 +73,7 @@ class InlineObject3 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'error' => null,
         'code' => null,
-        'reason' => null,
-        'documentation_url' => 'uri',
-        'dashboard_url' => 'uri',
-        'details' => null
+        'required_group' => null
     ];
 
     /**
@@ -90,10 +84,7 @@ class InlineObject3 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'error' => false,
         'code' => false,
-        'reason' => false,
-        'documentation_url' => false,
-        'dashboard_url' => false,
-        'details' => false
+        'required_group' => false
     ];
 
     /**
@@ -184,10 +175,7 @@ class InlineObject3 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'error' => 'error',
         'code' => 'code',
-        'reason' => 'reason',
-        'documentation_url' => 'documentation_url',
-        'dashboard_url' => 'dashboard_url',
-        'details' => 'details'
+        'required_group' => 'required_group'
     ];
 
     /**
@@ -198,10 +186,7 @@ class InlineObject3 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'error' => 'setError',
         'code' => 'setCode',
-        'reason' => 'setReason',
-        'documentation_url' => 'setDocumentationUrl',
-        'dashboard_url' => 'setDashboardUrl',
-        'details' => 'setDetails'
+        'required_group' => 'setRequiredGroup'
     ];
 
     /**
@@ -212,10 +197,7 @@ class InlineObject3 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'error' => 'getError',
         'code' => 'getCode',
-        'reason' => 'getReason',
-        'documentation_url' => 'getDocumentationUrl',
-        'dashboard_url' => 'getDashboardUrl',
-        'details' => 'getDetails'
+        'required_group' => 'getRequiredGroup'
     ];
 
     /**
@@ -259,10 +241,18 @@ class InlineObject3 implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const CODE_PAYMENT_REQUIRED = 'PAYMENT_REQUIRED';
-    public const REASON_FREE_TIER_EXCEEDED = 'free_tier_exceeded';
-    public const REASON_TWITTER_PASSTHROUGH = 'twitter_passthrough';
-    public const REASON_ENTERPRISE_REQUIRED = 'enterprise_required';
+    public const CODE_INSUFFICIENT_PERMISSIONS = 'insufficient_permissions';
+    public const CODE_UNCLASSIFIED_RESOURCE = 'unclassified_resource';
+    public const REQUIRED_GROUP_PUBLISHING = 'publishing';
+    public const REQUIRED_GROUP_ENGAGEMENT = 'engagement';
+    public const REQUIRED_GROUP_MESSAGES = 'messages';
+    public const REQUIRED_GROUP_CONTACTS = 'contacts';
+    public const REQUIRED_GROUP_ANALYTICS = 'analytics';
+    public const REQUIRED_GROUP_ADS = 'ads';
+    public const REQUIRED_GROUP_TELEPHONY = 'telephony';
+    public const REQUIRED_GROUP_ACCOUNTS = 'accounts';
+    public const REQUIRED_GROUP_BILLING = 'billing';
+    public const REQUIRED_GROUP_WEBHOOKS = 'webhooks';
 
     /**
      * Gets allowable values of the enum
@@ -272,7 +262,8 @@ class InlineObject3 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getCodeAllowableValues()
     {
         return [
-            self::CODE_PAYMENT_REQUIRED,
+            self::CODE_INSUFFICIENT_PERMISSIONS,
+            self::CODE_UNCLASSIFIED_RESOURCE,
         ];
     }
 
@@ -281,12 +272,19 @@ class InlineObject3 implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return string[]
      */
-    public function getReasonAllowableValues()
+    public function getRequiredGroupAllowableValues()
     {
         return [
-            self::REASON_FREE_TIER_EXCEEDED,
-            self::REASON_TWITTER_PASSTHROUGH,
-            self::REASON_ENTERPRISE_REQUIRED,
+            self::REQUIRED_GROUP_PUBLISHING,
+            self::REQUIRED_GROUP_ENGAGEMENT,
+            self::REQUIRED_GROUP_MESSAGES,
+            self::REQUIRED_GROUP_CONTACTS,
+            self::REQUIRED_GROUP_ANALYTICS,
+            self::REQUIRED_GROUP_ADS,
+            self::REQUIRED_GROUP_TELEPHONY,
+            self::REQUIRED_GROUP_ACCOUNTS,
+            self::REQUIRED_GROUP_BILLING,
+            self::REQUIRED_GROUP_WEBHOOKS,
         ];
     }
 
@@ -307,10 +305,7 @@ class InlineObject3 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('error', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('reason', $data ?? [], null);
-        $this->setIfExists('documentation_url', $data ?? [], null);
-        $this->setIfExists('dashboard_url', $data ?? [], null);
-        $this->setIfExists('details', $data ?? [], null);
+        $this->setIfExists('required_group', $data ?? [], null);
     }
 
     /**
@@ -340,12 +335,6 @@ class InlineObject3 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['error'] === null) {
-            $invalidProperties[] = "'error' can't be null";
-        }
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
-        }
         $allowedValues = $this->getCodeAllowableValues();
         if (!is_null($this->container['code']) && !in_array($this->container['code'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -355,14 +344,11 @@ class InlineObject3 implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        if ($this->container['reason'] === null) {
-            $invalidProperties[] = "'reason' can't be null";
-        }
-        $allowedValues = $this->getReasonAllowableValues();
-        if (!is_null($this->container['reason']) && !in_array($this->container['reason'], $allowedValues, true)) {
+        $allowedValues = $this->getRequiredGroupAllowableValues();
+        if (!is_null($this->container['required_group']) && !in_array($this->container['required_group'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'reason', must be one of '%s'",
-                $this->container['reason'],
+                "invalid value '%s' for 'required_group', must be one of '%s'",
+                $this->container['required_group'],
                 implode("', '", $allowedValues)
             );
         }
@@ -385,7 +371,7 @@ class InlineObject3 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets error
      *
-     * @return string
+     * @return string|null
      */
     public function getError()
     {
@@ -395,7 +381,7 @@ class InlineObject3 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets error
      *
-     * @param string $error Human-readable error message suitable for end-user display.
+     * @param string|null $error error
      *
      * @return self
      */
@@ -412,7 +398,7 @@ class InlineObject3 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets code
      *
-     * @return string
+     * @return string|null
      */
     public function getCode()
     {
@@ -422,7 +408,7 @@ class InlineObject3 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets code
      *
-     * @param string $code Machine-readable error code. Stable across versions.
+     * @param string|null $code code
      *
      * @return self
      */
@@ -447,119 +433,38 @@ class InlineObject3 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets reason
+     * Gets required_group
      *
-     * @return string
+     * @return string|null
      */
-    public function getReason()
+    public function getRequiredGroup()
     {
-        return $this->container['reason'];
+        return $this->container['required_group'];
     }
 
     /**
-     * Sets reason
+     * Sets required_group
      *
-     * @param string $reason Discriminator for which gate fired.
+     * @param string|null $required_group The resource group the key needs for this operation. Absent on admin-plane and unclassified-path denials.
      *
      * @return self
      */
-    public function setReason($reason)
+    public function setRequiredGroup($required_group)
     {
-        if (is_null($reason)) {
-            throw new \InvalidArgumentException('non-nullable reason cannot be null');
+        if (is_null($required_group)) {
+            throw new \InvalidArgumentException('non-nullable required_group cannot be null');
         }
-        $allowedValues = $this->getReasonAllowableValues();
-        if (!in_array($reason, $allowedValues, true)) {
+        $allowedValues = $this->getRequiredGroupAllowableValues();
+        if (!in_array($required_group, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'reason', must be one of '%s'",
-                    $reason,
+                    "Invalid value '%s' for 'required_group', must be one of '%s'",
+                    $required_group,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['reason'] = $reason;
-
-        return $this;
-    }
-
-    /**
-     * Gets documentation_url
-     *
-     * @return string|null
-     */
-    public function getDocumentationUrl()
-    {
-        return $this->container['documentation_url'];
-    }
-
-    /**
-     * Sets documentation_url
-     *
-     * @param string|null $documentation_url Link to the relevant documentation page.
-     *
-     * @return self
-     */
-    public function setDocumentationUrl($documentation_url)
-    {
-        if (is_null($documentation_url)) {
-            throw new \InvalidArgumentException('non-nullable documentation_url cannot be null');
-        }
-        $this->container['documentation_url'] = $documentation_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets dashboard_url
-     *
-     * @return string|null
-     */
-    public function getDashboardUrl()
-    {
-        return $this->container['dashboard_url'];
-    }
-
-    /**
-     * Sets dashboard_url
-     *
-     * @param string|null $dashboard_url Deep-link to send the end-user to. For `free_tier_exceeded` and `twitter_passthrough` this is the Zernio billing tab. For `enterprise_required` this is the Zernio enterprise contact page.
-     *
-     * @return self
-     */
-    public function setDashboardUrl($dashboard_url)
-    {
-        if (is_null($dashboard_url)) {
-            throw new \InvalidArgumentException('non-nullable dashboard_url cannot be null');
-        }
-        $this->container['dashboard_url'] = $dashboard_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets details
-     *
-     * @return \Zernio\Model\InlineObject3Details|null
-     */
-    public function getDetails()
-    {
-        return $this->container['details'];
-    }
-
-    /**
-     * Sets details
-     *
-     * @param \Zernio\Model\InlineObject3Details|null $details details
-     *
-     * @return self
-     */
-    public function setDetails($details)
-    {
-        if (is_null($details)) {
-            throw new \InvalidArgumentException('non-nullable details cannot be null');
-        }
-        $this->container['details'] = $details;
+        $this->container['required_group'] = $required_group;
 
         return $this;
     }

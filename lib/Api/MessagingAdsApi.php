@@ -194,7 +194,7 @@ class MessagingAdsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -371,7 +371,7 @@ class MessagingAdsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateCtwaAd201Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CreateCtwaAd201Response|\Zernio\Model\InlineObject1
      * @deprecated
      */
     public function createCtwaAd($ctwa_ad_request_body, string $contentType = self::contentTypes['createCtwaAd'][0])
@@ -390,7 +390,7 @@ class MessagingAdsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateCtwaAd201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateCtwaAd201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
     public function createCtwaAdWithHttpInfo($ctwa_ad_request_body, string $contentType = self::contentTypes['createCtwaAd'][0])
@@ -429,7 +429,7 @@ class MessagingAdsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -468,7 +468,7 @@ class MessagingAdsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -713,7 +713,7 @@ class MessagingAdsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

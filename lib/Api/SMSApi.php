@@ -200,7 +200,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\AppealSmsRegistration200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\AppealSmsRegistration200Response|\Zernio\Model\InlineObject1
      */
     public function appealSmsRegistration($id, $appeal_sms_registration_request, string $contentType = self::contentTypes['appealSmsRegistration'][0])
     {
@@ -219,7 +219,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\AppealSmsRegistration200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\AppealSmsRegistration200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function appealSmsRegistrationWithHttpInfo($id, $appeal_sms_registration_request, string $contentType = self::contentTypes['appealSmsRegistration'][0])
     {
@@ -257,7 +257,7 @@ class SMSApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -296,7 +296,7 @@ class SMSApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -504,7 +504,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateSmsSenderId200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CreateSmsSenderId200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function createSmsSenderId($create_sms_sender_id_request, string $contentType = self::contentTypes['createSmsSenderId'][0])
     {
@@ -522,7 +522,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateSmsSenderId200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateSmsSenderId200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function createSmsSenderIdWithHttpInfo($create_sms_sender_id_request, string $contentType = self::contentTypes['createSmsSenderId'][0])
     {
@@ -566,7 +566,7 @@ class SMSApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -613,7 +613,7 @@ class SMSApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -803,7 +803,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\DeactivateSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\DeactivateSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function deactivateSmsRegistration($id, string $contentType = self::contentTypes['deactivateSmsRegistration'][0])
     {
@@ -821,7 +821,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\DeactivateSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\DeactivateSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function deactivateSmsRegistrationWithHttpInfo($id, string $contentType = self::contentTypes['deactivateSmsRegistration'][0])
     {
@@ -865,7 +865,7 @@ class SMSApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -912,7 +912,7 @@ class SMSApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1103,7 +1103,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\DeleteSmsSenderId200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\DeleteSmsSenderId200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function deleteSmsSenderId($id, string $contentType = self::contentTypes['deleteSmsSenderId'][0])
     {
@@ -1121,7 +1121,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\DeleteSmsSenderId200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\DeleteSmsSenderId200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteSmsSenderIdWithHttpInfo($id, string $contentType = self::contentTypes['deleteSmsSenderId'][0])
     {
@@ -1165,7 +1165,7 @@ class SMSApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1212,7 +1212,7 @@ class SMSApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1403,7 +1403,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\DisableSmsOnNumber200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\DisableSmsOnNumber200Response|\Zernio\Model\InlineObject1
      */
     public function disableSmsOnNumber($id, string $contentType = self::contentTypes['disableSmsOnNumber'][0])
     {
@@ -1421,7 +1421,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\DisableSmsOnNumber200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\DisableSmsOnNumber200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function disableSmsOnNumberWithHttpInfo($id, string $contentType = self::contentTypes['disableSmsOnNumber'][0])
     {
@@ -1459,7 +1459,7 @@ class SMSApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1498,7 +1498,7 @@ class SMSApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1689,7 +1689,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\EnableSmsOnNumber200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\EnableSmsOnNumber200Response|\Zernio\Model\InlineObject1
      */
     public function enableSmsOnNumber($id, string $contentType = self::contentTypes['enableSmsOnNumber'][0])
     {
@@ -1707,7 +1707,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\EnableSmsOnNumber200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\EnableSmsOnNumber200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function enableSmsOnNumberWithHttpInfo($id, string $contentType = self::contentTypes['enableSmsOnNumber'][0])
     {
@@ -1745,7 +1745,7 @@ class SMSApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1784,7 +1784,7 @@ class SMSApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1975,7 +1975,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function getSmsRegistration($id, string $contentType = self::contentTypes['getSmsRegistration'][0])
     {
@@ -1993,7 +1993,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSmsRegistrationWithHttpInfo($id, string $contentType = self::contentTypes['getSmsRegistration'][0])
     {
@@ -2037,7 +2037,7 @@ class SMSApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2084,7 +2084,7 @@ class SMSApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2276,7 +2276,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListSmsOptOuts200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListSmsOptOuts200Response|\Zernio\Model\InlineObject1
      */
     public function listSmsOptOuts($format = 'json', $limit = 500, string $contentType = self::contentTypes['listSmsOptOuts'][0])
     {
@@ -2295,7 +2295,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListSmsOptOuts200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListSmsOptOuts200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listSmsOptOutsWithHttpInfo($format = 'json', $limit = 500, string $contentType = self::contentTypes['listSmsOptOuts'][0])
     {
@@ -2333,7 +2333,7 @@ class SMSApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2372,7 +2372,7 @@ class SMSApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2577,7 +2577,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListSmsRegistrations200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListSmsRegistrations200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function listSmsRegistrations($include_deactivated = null, string $contentType = self::contentTypes['listSmsRegistrations'][0])
     {
@@ -2595,7 +2595,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListSmsRegistrations200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListSmsRegistrations200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listSmsRegistrationsWithHttpInfo($include_deactivated = null, string $contentType = self::contentTypes['listSmsRegistrations'][0])
     {
@@ -2639,7 +2639,7 @@ class SMSApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2686,7 +2686,7 @@ class SMSApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2871,7 +2871,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListSmsSenderIds200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListSmsSenderIds200Response|\Zernio\Model\InlineObject1
      */
     public function listSmsSenderIds(string $contentType = self::contentTypes['listSmsSenderIds'][0])
     {
@@ -2888,7 +2888,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListSmsSenderIds200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListSmsSenderIds200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listSmsSenderIdsWithHttpInfo(string $contentType = self::contentTypes['listSmsSenderIds'][0])
     {
@@ -2926,7 +2926,7 @@ class SMSApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2965,7 +2965,7 @@ class SMSApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3138,7 +3138,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\LookupSmsNumber200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\LookupSmsNumber200Response|\Zernio\Model\InlineObject1
      */
     public function lookupSmsNumber($number, string $contentType = self::contentTypes['lookupSmsNumber'][0])
     {
@@ -3156,7 +3156,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\LookupSmsNumber200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\LookupSmsNumber200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function lookupSmsNumberWithHttpInfo($number, string $contentType = self::contentTypes['lookupSmsNumber'][0])
     {
@@ -3194,7 +3194,7 @@ class SMSApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -3233,7 +3233,7 @@ class SMSApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3428,7 +3428,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\PreflightSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\PreflightSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function preflightSmsRegistration($preflight_sms_registration_request, string $contentType = self::contentTypes['preflightSmsRegistration'][0])
     {
@@ -3446,7 +3446,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\PreflightSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\PreflightSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function preflightSmsRegistrationWithHttpInfo($preflight_sms_registration_request, string $contentType = self::contentTypes['preflightSmsRegistration'][0])
     {
@@ -3490,7 +3490,7 @@ class SMSApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -3537,7 +3537,7 @@ class SMSApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3727,7 +3727,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\RequestSmsSenderIdLimitIncrease200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\RequestSmsSenderIdLimitIncrease200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function requestSmsSenderIdLimitIncrease($request_sms_sender_id_limit_increase_request, string $contentType = self::contentTypes['requestSmsSenderIdLimitIncrease'][0])
     {
@@ -3745,7 +3745,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\RequestSmsSenderIdLimitIncrease200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\RequestSmsSenderIdLimitIncrease200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function requestSmsSenderIdLimitIncreaseWithHttpInfo($request_sms_sender_id_limit_increase_request, string $contentType = self::contentTypes['requestSmsSenderIdLimitIncrease'][0])
     {
@@ -3789,7 +3789,7 @@ class SMSApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -3836,7 +3836,7 @@ class SMSApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4026,7 +4026,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ResendSmsRegistrationOtp200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ResendSmsRegistrationOtp200Response|\Zernio\Model\InlineObject1
      */
     public function resendSmsRegistrationOtp($id, string $contentType = self::contentTypes['resendSmsRegistrationOtp'][0])
     {
@@ -4044,7 +4044,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ResendSmsRegistrationOtp200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ResendSmsRegistrationOtp200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function resendSmsRegistrationOtpWithHttpInfo($id, string $contentType = self::contentTypes['resendSmsRegistrationOtp'][0])
     {
@@ -4082,7 +4082,7 @@ class SMSApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -4121,7 +4121,7 @@ class SMSApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4313,7 +4313,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\RespondToSmsRegistrationReview200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\RespondToSmsRegistrationReview200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function respondToSmsRegistrationReview($id, $respond_to_sms_registration_review_request, string $contentType = self::contentTypes['respondToSmsRegistrationReview'][0])
     {
@@ -4332,7 +4332,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\RespondToSmsRegistrationReview200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\RespondToSmsRegistrationReview200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function respondToSmsRegistrationReviewWithHttpInfo($id, $respond_to_sms_registration_review_request, string $contentType = self::contentTypes['respondToSmsRegistrationReview'][0])
     {
@@ -4376,7 +4376,7 @@ class SMSApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -4423,7 +4423,7 @@ class SMSApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4631,7 +4631,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ReuseSmsRegistrationForNumber200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ReuseSmsRegistrationForNumber200Response|\Zernio\Model\InlineObject1
      */
     public function reuseSmsRegistrationForNumber($id, string $contentType = self::contentTypes['reuseSmsRegistrationForNumber'][0])
     {
@@ -4649,7 +4649,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ReuseSmsRegistrationForNumber200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ReuseSmsRegistrationForNumber200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function reuseSmsRegistrationForNumberWithHttpInfo($id, string $contentType = self::contentTypes['reuseSmsRegistrationForNumber'][0])
     {
@@ -4687,7 +4687,7 @@ class SMSApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -4726,7 +4726,7 @@ class SMSApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4918,7 +4918,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\SendSms200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\SendSms200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function sendSms($send_sms_request, $idempotency_key = null, string $contentType = self::contentTypes['sendSms'][0])
     {
@@ -4937,7 +4937,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\SendSms200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SendSms200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendSmsWithHttpInfo($send_sms_request, $idempotency_key = null, string $contentType = self::contentTypes['sendSms'][0])
     {
@@ -4981,7 +4981,7 @@ class SMSApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -5028,7 +5028,7 @@ class SMSApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5229,7 +5229,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ShareSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ShareSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function shareSmsRegistration($share_sms_registration_request, string $contentType = self::contentTypes['shareSmsRegistration'][0])
     {
@@ -5247,7 +5247,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ShareSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ShareSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function shareSmsRegistrationWithHttpInfo($share_sms_registration_request, string $contentType = self::contentTypes['shareSmsRegistration'][0])
     {
@@ -5291,7 +5291,7 @@ class SMSApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -5338,7 +5338,7 @@ class SMSApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5528,7 +5528,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\StartSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\StartSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function startSmsRegistration($start_sms_registration_request, string $contentType = self::contentTypes['startSmsRegistration'][0])
     {
@@ -5546,7 +5546,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\StartSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\StartSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function startSmsRegistrationWithHttpInfo($start_sms_registration_request, string $contentType = self::contentTypes['startSmsRegistration'][0])
     {
@@ -5590,7 +5590,7 @@ class SMSApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -5637,7 +5637,7 @@ class SMSApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5828,7 +5828,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UploadSmsOptInProofFile200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UploadSmsOptInProofFile200Response|\Zernio\Model\InlineObject1
      */
     public function uploadSmsOptInProof($id, $file, string $contentType = self::contentTypes['uploadSmsOptInProof'][0])
     {
@@ -5847,7 +5847,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UploadSmsOptInProofFile200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UploadSmsOptInProofFile200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadSmsOptInProofWithHttpInfo($id, $file, string $contentType = self::contentTypes['uploadSmsOptInProof'][0])
     {
@@ -5885,7 +5885,7 @@ class SMSApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -5924,7 +5924,7 @@ class SMSApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6135,7 +6135,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UploadSmsOptInProofFile200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UploadSmsOptInProofFile200Response|\Zernio\Model\InlineObject1
      */
     public function uploadSmsOptInProofFile($file, string $contentType = self::contentTypes['uploadSmsOptInProofFile'][0])
     {
@@ -6153,7 +6153,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UploadSmsOptInProofFile200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UploadSmsOptInProofFile200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadSmsOptInProofFileWithHttpInfo($file, string $contentType = self::contentTypes['uploadSmsOptInProofFile'][0])
     {
@@ -6191,7 +6191,7 @@ class SMSApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -6230,7 +6230,7 @@ class SMSApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6424,7 +6424,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\VerifySmsRegistrationOtp200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\VerifySmsRegistrationOtp200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function verifySmsRegistrationOtp($id, $verify_sms_registration_otp_request, string $contentType = self::contentTypes['verifySmsRegistrationOtp'][0])
     {
@@ -6443,7 +6443,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\VerifySmsRegistrationOtp200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\VerifySmsRegistrationOtp200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function verifySmsRegistrationOtpWithHttpInfo($id, $verify_sms_registration_otp_request, string $contentType = self::contentTypes['verifySmsRegistrationOtp'][0])
     {
@@ -6487,7 +6487,7 @@ class SMSApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -6534,7 +6534,7 @@ class SMSApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

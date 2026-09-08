@@ -142,7 +142,7 @@ class WhatsAppSandboxApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateWhatsAppSandboxSession200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CreateWhatsAppSandboxSession200Response|\Zernio\Model\InlineObject1
      */
     public function createWhatsAppSandboxSession($create_whats_app_sandbox_session_request, string $contentType = self::contentTypes['createWhatsAppSandboxSession'][0])
     {
@@ -160,7 +160,7 @@ class WhatsAppSandboxApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateWhatsAppSandboxSession200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateWhatsAppSandboxSession200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWhatsAppSandboxSessionWithHttpInfo($create_whats_app_sandbox_session_request, string $contentType = self::contentTypes['createWhatsAppSandboxSession'][0])
     {
@@ -198,7 +198,7 @@ class WhatsAppSandboxApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -237,7 +237,7 @@ class WhatsAppSandboxApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -427,7 +427,7 @@ class WhatsAppSandboxApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject1
      */
     public function deleteWhatsAppSandboxSession($session_id, string $contentType = self::contentTypes['deleteWhatsAppSandboxSession'][0])
     {
@@ -445,7 +445,7 @@ class WhatsAppSandboxApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteWhatsAppSandboxSessionWithHttpInfo($session_id, string $contentType = self::contentTypes['deleteWhatsAppSandboxSession'][0])
     {
@@ -483,7 +483,7 @@ class WhatsAppSandboxApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -522,7 +522,7 @@ class WhatsAppSandboxApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -712,7 +712,7 @@ class WhatsAppSandboxApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListWhatsAppSandboxSessions200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListWhatsAppSandboxSessions200Response|\Zernio\Model\InlineObject1
      */
     public function listWhatsAppSandboxSessions(string $contentType = self::contentTypes['listWhatsAppSandboxSessions'][0])
     {
@@ -729,7 +729,7 @@ class WhatsAppSandboxApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListWhatsAppSandboxSessions200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListWhatsAppSandboxSessions200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listWhatsAppSandboxSessionsWithHttpInfo(string $contentType = self::contentTypes['listWhatsAppSandboxSessions'][0])
     {
@@ -767,7 +767,7 @@ class WhatsAppSandboxApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -806,7 +806,7 @@ class WhatsAppSandboxApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

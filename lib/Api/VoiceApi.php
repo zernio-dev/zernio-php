@@ -188,7 +188,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\AttachNumberToSipTrunk200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\AttachNumberToSipTrunk200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function attachNumberToSipTrunk($id, $attach_number_to_sip_trunk_request, string $contentType = self::contentTypes['attachNumberToSipTrunk'][0])
     {
@@ -207,7 +207,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\AttachNumberToSipTrunk200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\AttachNumberToSipTrunk200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function attachNumberToSipTrunkWithHttpInfo($id, $attach_number_to_sip_trunk_request, string $contentType = self::contentTypes['attachNumberToSipTrunk'][0])
     {
@@ -251,7 +251,7 @@ class VoiceApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -298,7 +298,7 @@ class VoiceApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -506,7 +506,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateSipTrunk201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CreateSipTrunk201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function createSipTrunk($create_sip_trunk_request, string $contentType = self::contentTypes['createSipTrunk'][0])
     {
@@ -524,7 +524,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateSipTrunk201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateSipTrunk201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function createSipTrunkWithHttpInfo($create_sip_trunk_request, string $contentType = self::contentTypes['createSipTrunk'][0])
     {
@@ -568,7 +568,7 @@ class VoiceApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -615,7 +615,7 @@ class VoiceApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -806,7 +806,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateVoiceCall200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CreateVoiceCall200Response|\Zernio\Model\InlineObject1
      */
     public function createVoiceCall($create_voice_call_request, $idempotency_key = null, string $contentType = self::contentTypes['createVoiceCall'][0])
     {
@@ -825,7 +825,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateVoiceCall200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateVoiceCall200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function createVoiceCallWithHttpInfo($create_voice_call_request, $idempotency_key = null, string $contentType = self::contentTypes['createVoiceCall'][0])
     {
@@ -863,7 +863,7 @@ class VoiceApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -902,7 +902,7 @@ class VoiceApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1102,7 +1102,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateVoiceWebSession200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CreateVoiceWebSession200Response|\Zernio\Model\InlineObject1
      */
     public function createVoiceWebSession(string $contentType = self::contentTypes['createVoiceWebSession'][0])
     {
@@ -1119,7 +1119,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateVoiceWebSession200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateVoiceWebSession200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function createVoiceWebSessionWithHttpInfo(string $contentType = self::contentTypes['createVoiceWebSession'][0])
     {
@@ -1157,7 +1157,7 @@ class VoiceApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1196,7 +1196,7 @@ class VoiceApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1369,7 +1369,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\DeleteSmsSenderId200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\DeleteSmsSenderId200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function deleteSipTrunk($id, string $contentType = self::contentTypes['deleteSipTrunk'][0])
     {
@@ -1387,7 +1387,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\DeleteSmsSenderId200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\DeleteSmsSenderId200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteSipTrunkWithHttpInfo($id, string $contentType = self::contentTypes['deleteSipTrunk'][0])
     {
@@ -1431,7 +1431,7 @@ class VoiceApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1478,7 +1478,7 @@ class VoiceApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1669,7 +1669,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\DetachNumberFromSipTrunk200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\DetachNumberFromSipTrunk200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function detachNumberFromSipTrunk($id, string $contentType = self::contentTypes['detachNumberFromSipTrunk'][0])
     {
@@ -1687,7 +1687,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\DetachNumberFromSipTrunk200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\DetachNumberFromSipTrunk200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function detachNumberFromSipTrunkWithHttpInfo($id, string $contentType = self::contentTypes['detachNumberFromSipTrunk'][0])
     {
@@ -1731,7 +1731,7 @@ class VoiceApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1778,7 +1778,7 @@ class VoiceApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1969,7 +1969,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\DialVoiceWebCall200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\DialVoiceWebCall200Response|\Zernio\Model\InlineObject1
      */
     public function dialVoiceWebCall($dial_voice_web_call_request, string $contentType = self::contentTypes['dialVoiceWebCall'][0])
     {
@@ -1987,7 +1987,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\DialVoiceWebCall200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\DialVoiceWebCall200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function dialVoiceWebCallWithHttpInfo($dial_voice_web_call_request, string $contentType = self::contentTypes['dialVoiceWebCall'][0])
     {
@@ -2025,7 +2025,7 @@ class VoiceApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2064,7 +2064,7 @@ class VoiceApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2254,7 +2254,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\DisableVoiceOnNumber200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\DisableVoiceOnNumber200Response|\Zernio\Model\InlineObject1
      */
     public function disableVoiceOnNumber($id, string $contentType = self::contentTypes['disableVoiceOnNumber'][0])
     {
@@ -2272,7 +2272,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\DisableVoiceOnNumber200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\DisableVoiceOnNumber200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function disableVoiceOnNumberWithHttpInfo($id, string $contentType = self::contentTypes['disableVoiceOnNumber'][0])
     {
@@ -2310,7 +2310,7 @@ class VoiceApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2349,7 +2349,7 @@ class VoiceApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2541,7 +2541,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\EnableVoiceOnNumber200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\EnableVoiceOnNumber200Response|\Zernio\Model\InlineObject1
      */
     public function enableVoiceOnNumber($id, $enable_voice_on_number_request = null, string $contentType = self::contentTypes['enableVoiceOnNumber'][0])
     {
@@ -2560,7 +2560,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\EnableVoiceOnNumber200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\EnableVoiceOnNumber200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function enableVoiceOnNumberWithHttpInfo($id, $enable_voice_on_number_request = null, string $contentType = self::contentTypes['enableVoiceOnNumber'][0])
     {
@@ -2598,7 +2598,7 @@ class VoiceApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2637,7 +2637,7 @@ class VoiceApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2839,7 +2839,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\EndVoiceCall200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\EndVoiceCall200Response|\Zernio\Model\InlineObject1
      */
     public function endVoiceCall($id, string $contentType = self::contentTypes['endVoiceCall'][0])
     {
@@ -2857,7 +2857,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\EndVoiceCall200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\EndVoiceCall200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function endVoiceCallWithHttpInfo($id, string $contentType = self::contentTypes['endVoiceCall'][0])
     {
@@ -2895,7 +2895,7 @@ class VoiceApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2934,7 +2934,7 @@ class VoiceApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3125,7 +3125,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetSipTrunk200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetSipTrunk200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function getSipTrunk($id, string $contentType = self::contentTypes['getSipTrunk'][0])
     {
@@ -3143,7 +3143,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetSipTrunk200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetSipTrunk200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSipTrunkWithHttpInfo($id, string $contentType = self::contentTypes['getSipTrunk'][0])
     {
@@ -3187,7 +3187,7 @@ class VoiceApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -3234,7 +3234,7 @@ class VoiceApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3425,7 +3425,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetVoiceCall200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetVoiceCall200Response|\Zernio\Model\InlineObject1
      */
     public function getVoiceCall($id, string $contentType = self::contentTypes['getVoiceCall'][0])
     {
@@ -3443,7 +3443,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetVoiceCall200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetVoiceCall200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getVoiceCallWithHttpInfo($id, string $contentType = self::contentTypes['getVoiceCall'][0])
     {
@@ -3481,7 +3481,7 @@ class VoiceApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -3520,7 +3520,7 @@ class VoiceApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3714,7 +3714,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetVoiceCallEstimate200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetVoiceCallEstimate200Response|\Zernio\Model\InlineObject1
      */
     public function getVoiceCallEstimate($to, $minutes = 1, $recording = null, $transcription = null, string $contentType = self::contentTypes['getVoiceCallEstimate'][0])
     {
@@ -3735,7 +3735,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetVoiceCallEstimate200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetVoiceCallEstimate200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getVoiceCallEstimateWithHttpInfo($to, $minutes = 1, $recording = null, $transcription = null, string $contentType = self::contentTypes['getVoiceCallEstimate'][0])
     {
@@ -3773,7 +3773,7 @@ class VoiceApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -3812,7 +3812,7 @@ class VoiceApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4050,7 +4050,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return |\Zernio\Model\GetWhatsAppCallRecording200Response|\Zernio\Model\InlineObject
+     * @return |\Zernio\Model\GetWhatsAppCallRecording200Response|\Zernio\Model\InlineObject1
      */
     public function getVoiceCallRecording($id, $as = null, string $contentType = self::contentTypes['getVoiceCallRecording'][0])
     {
@@ -4069,7 +4069,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of |\Zernio\Model\GetWhatsAppCallRecording200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of |\Zernio\Model\GetWhatsAppCallRecording200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getVoiceCallRecordingWithHttpInfo($id, $as = null, string $contentType = self::contentTypes['getVoiceCallRecording'][0])
     {
@@ -4107,7 +4107,7 @@ class VoiceApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -4146,7 +4146,7 @@ class VoiceApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4349,7 +4349,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListSipTrunks200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListSipTrunks200Response|\Zernio\Model\InlineObject1
      */
     public function listSipTrunks(string $contentType = self::contentTypes['listSipTrunks'][0])
     {
@@ -4366,7 +4366,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListSipTrunks200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListSipTrunks200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listSipTrunksWithHttpInfo(string $contentType = self::contentTypes['listSipTrunks'][0])
     {
@@ -4404,7 +4404,7 @@ class VoiceApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -4443,7 +4443,7 @@ class VoiceApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4620,7 +4620,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListVoiceCalls200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListVoiceCalls200Response|\Zernio\Model\InlineObject1
      */
     public function listVoiceCalls($status = null, $direction = null, $number = null, $before = null, $limit = 50, string $contentType = self::contentTypes['listVoiceCalls'][0])
     {
@@ -4642,7 +4642,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListVoiceCalls200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListVoiceCalls200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listVoiceCallsWithHttpInfo($status = null, $direction = null, $number = null, $before = null, $limit = 50, string $contentType = self::contentTypes['listVoiceCalls'][0])
     {
@@ -4680,7 +4680,7 @@ class VoiceApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -4719,7 +4719,7 @@ class VoiceApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4963,7 +4963,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\RotateSipTrunkCredentials200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\RotateSipTrunkCredentials200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function rotateSipTrunkCredentials($id, string $contentType = self::contentTypes['rotateSipTrunkCredentials'][0])
     {
@@ -4981,7 +4981,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\RotateSipTrunkCredentials200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\RotateSipTrunkCredentials200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function rotateSipTrunkCredentialsWithHttpInfo($id, string $contentType = self::contentTypes['rotateSipTrunkCredentials'][0])
     {
@@ -5025,7 +5025,7 @@ class VoiceApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -5072,7 +5072,7 @@ class VoiceApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5264,7 +5264,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\TransferVoiceCall200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\TransferVoiceCall200Response|\Zernio\Model\InlineObject1
      */
     public function transferVoiceCall($id, $transfer_voice_call_request, string $contentType = self::contentTypes['transferVoiceCall'][0])
     {
@@ -5283,7 +5283,7 @@ class VoiceApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\TransferVoiceCall200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\TransferVoiceCall200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function transferVoiceCallWithHttpInfo($id, $transfer_voice_call_request, string $contentType = self::contentTypes['transferVoiceCall'][0])
     {
@@ -5321,7 +5321,7 @@ class VoiceApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -5360,7 +5360,7 @@ class VoiceApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

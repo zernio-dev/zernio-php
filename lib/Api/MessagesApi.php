@@ -185,7 +185,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\AddMessageReaction200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\AddMessageReaction200Response|\Zernio\Model\InlineObject1
      */
     public function addMessageReaction($conversation_id, $message_id, $add_message_reaction_request, string $contentType = self::contentTypes['addMessageReaction'][0])
     {
@@ -205,7 +205,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\AddMessageReaction200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\AddMessageReaction200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function addMessageReactionWithHttpInfo($conversation_id, $message_id, $add_message_reaction_request, string $contentType = self::contentTypes['addMessageReaction'][0])
     {
@@ -243,7 +243,7 @@ class MessagesApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -282,7 +282,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -508,7 +508,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateInboxConversation201Response|\Zernio\Model\CreateInboxConversation400Response|\Zernio\Model\InlineObject|\Zernio\Model\CreateInboxConversation404Response|\Zernio\Model\CreateInboxConversation422Response|\Zernio\Model\CreateInboxConversation429Response
+     * @return \Zernio\Model\CreateInboxConversation201Response|\Zernio\Model\CreateInboxConversation400Response|\Zernio\Model\InlineObject1|\Zernio\Model\CreateInboxConversation404Response|\Zernio\Model\CreateInboxConversation422Response|\Zernio\Model\CreateInboxConversation429Response
      */
     public function createInboxConversation($create_inbox_conversation_request, string $contentType = self::contentTypes['createInboxConversation'][0])
     {
@@ -526,7 +526,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateInboxConversation201Response|\Zernio\Model\CreateInboxConversation400Response|\Zernio\Model\InlineObject|\Zernio\Model\CreateInboxConversation404Response|\Zernio\Model\CreateInboxConversation422Response|\Zernio\Model\CreateInboxConversation429Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateInboxConversation201Response|\Zernio\Model\CreateInboxConversation400Response|\Zernio\Model\InlineObject1|\Zernio\Model\CreateInboxConversation404Response|\Zernio\Model\CreateInboxConversation422Response|\Zernio\Model\CreateInboxConversation429Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function createInboxConversationWithHttpInfo($create_inbox_conversation_request, string $contentType = self::contentTypes['createInboxConversation'][0])
     {
@@ -570,7 +570,7 @@ class MessagesApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -635,7 +635,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -851,7 +851,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject1
      */
     public function deleteInboxMessage($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['deleteInboxMessage'][0])
     {
@@ -871,7 +871,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteInboxMessageWithHttpInfo($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['deleteInboxMessage'][0])
     {
@@ -909,7 +909,7 @@ class MessagesApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -948,7 +948,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1178,7 +1178,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\EditInboxMessage200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\EditInboxMessage200Response|\Zernio\Model\InlineObject1
      */
     public function editInboxMessage($conversation_id, $message_id, $edit_inbox_message_request, string $contentType = self::contentTypes['editInboxMessage'][0])
     {
@@ -1198,7 +1198,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\EditInboxMessage200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\EditInboxMessage200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function editInboxMessageWithHttpInfo($conversation_id, $message_id, $edit_inbox_message_request, string $contentType = self::contentTypes['editInboxMessage'][0])
     {
@@ -1236,7 +1236,7 @@ class MessagesApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1275,7 +1275,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1502,7 +1502,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetInboxConversation200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetInboxConversation200Response|\Zernio\Model\InlineObject1
      */
     public function getInboxConversation($conversation_id, $account_id, string $contentType = self::contentTypes['getInboxConversation'][0])
     {
@@ -1521,7 +1521,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetInboxConversation200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetInboxConversation200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInboxConversationWithHttpInfo($conversation_id, $account_id, string $contentType = self::contentTypes['getInboxConversation'][0])
     {
@@ -1559,7 +1559,7 @@ class MessagesApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1598,7 +1598,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1812,7 +1812,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetInboxConversationMessages200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetInboxConversationMessages200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function getInboxConversationMessages($conversation_id, $account_id, $limit = 100, $cursor = null, $sort_order = 'asc', string $contentType = self::contentTypes['getInboxConversationMessages'][0])
     {
@@ -1834,7 +1834,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetInboxConversationMessages200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetInboxConversationMessages200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInboxConversationMessagesWithHttpInfo($conversation_id, $account_id, $limit = 100, $cursor = null, $sort_order = 'asc', string $contentType = self::contentTypes['getInboxConversationMessages'][0])
     {
@@ -1878,7 +1878,7 @@ class MessagesApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1925,7 +1925,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2184,7 +2184,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetMessageAttachment200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetMessageAttachment200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function getMessageAttachment($conversation_id, $message_id, $index, $account_id, $format = 'redirect', string $contentType = self::contentTypes['getMessageAttachment'][0])
     {
@@ -2206,7 +2206,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetMessageAttachment200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetMessageAttachment200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getMessageAttachmentWithHttpInfo($conversation_id, $message_id, $index, $account_id, $format = 'redirect', string $contentType = self::contentTypes['getMessageAttachment'][0])
     {
@@ -2250,7 +2250,7 @@ class MessagesApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2297,7 +2297,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2565,7 +2565,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListInboxConversations200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListInboxConversations200Response|\Zernio\Model\InlineObject1
      */
     public function listInboxConversations($profile_id = null, $platform = null, $status = null, $sort_order = 'desc', $limit = 50, $cursor = null, $account_id = null, string $contentType = self::contentTypes['listInboxConversations'][0])
     {
@@ -2589,7 +2589,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListInboxConversations200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListInboxConversations200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listInboxConversationsWithHttpInfo($profile_id = null, $platform = null, $status = null, $sort_order = 'desc', $limit = 50, $cursor = null, $account_id = null, string $contentType = self::contentTypes['listInboxConversations'][0])
     {
@@ -2627,7 +2627,7 @@ class MessagesApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2666,7 +2666,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2937,7 +2937,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\MarkConversationRead200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\MarkConversationRead200Response|\Zernio\Model\InlineObject1
      */
     public function markConversationRead($conversation_id, $send_typing_indicator_request, string $contentType = self::contentTypes['markConversationRead'][0])
     {
@@ -2956,7 +2956,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\MarkConversationRead200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\MarkConversationRead200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function markConversationReadWithHttpInfo($conversation_id, $send_typing_indicator_request, string $contentType = self::contentTypes['markConversationRead'][0])
     {
@@ -2994,7 +2994,7 @@ class MessagesApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -3033,7 +3033,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3243,7 +3243,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\RemoveMessageReaction200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\RemoveMessageReaction200Response|\Zernio\Model\InlineObject1
      */
     public function removeMessageReaction($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['removeMessageReaction'][0])
     {
@@ -3263,7 +3263,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\RemoveMessageReaction200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\RemoveMessageReaction200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function removeMessageReactionWithHttpInfo($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['removeMessageReaction'][0])
     {
@@ -3301,7 +3301,7 @@ class MessagesApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -3340,7 +3340,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3574,7 +3574,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\SearchInboxConversations200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\SearchInboxConversations200Response|\Zernio\Model\InlineObject1
      */
     public function searchInboxConversations($query, $direction = null, $profile_id = null, $platform = null, $account_id = null, $limit = 20, $cursor = null, string $contentType = self::contentTypes['searchInboxConversations'][0])
     {
@@ -3598,7 +3598,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\SearchInboxConversations200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SearchInboxConversations200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchInboxConversationsWithHttpInfo($query, $direction = null, $profile_id = null, $platform = null, $account_id = null, $limit = 20, $cursor = null, string $contentType = self::contentTypes['searchInboxConversations'][0])
     {
@@ -3636,7 +3636,7 @@ class MessagesApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -3675,7 +3675,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3959,7 +3959,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\SendInboxMessage200Response|\Zernio\Model\SendInboxMessage400Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\SendInboxMessage200Response|\Zernio\Model\SendInboxMessage400Response|\Zernio\Model\InlineObject1
      */
     public function sendInboxMessage($conversation_id, $send_inbox_message_request, $idempotency_key = null, string $contentType = self::contentTypes['sendInboxMessage'][0])
     {
@@ -3979,7 +3979,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\SendInboxMessage200Response|\Zernio\Model\SendInboxMessage400Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SendInboxMessage200Response|\Zernio\Model\SendInboxMessage400Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendInboxMessageWithHttpInfo($conversation_id, $send_inbox_message_request, $idempotency_key = null, string $contentType = self::contentTypes['sendInboxMessage'][0])
     {
@@ -4023,7 +4023,7 @@ class MessagesApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -4070,7 +4070,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4290,7 +4290,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function sendTypingIndicator($conversation_id, $send_typing_indicator_request, string $contentType = self::contentTypes['sendTypingIndicator'][0])
     {
@@ -4309,7 +4309,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendTypingIndicatorWithHttpInfo($conversation_id, $send_typing_indicator_request, string $contentType = self::contentTypes['sendTypingIndicator'][0])
     {
@@ -4353,7 +4353,7 @@ class MessagesApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -4400,7 +4400,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4609,7 +4609,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\SetConversationThreadControl200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\SetConversationThreadControl200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function setConversationThreadControl($conversation_id, $set_conversation_thread_control_request, string $contentType = self::contentTypes['setConversationThreadControl'][0])
     {
@@ -4628,7 +4628,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\SetConversationThreadControl200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SetConversationThreadControl200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function setConversationThreadControlWithHttpInfo($conversation_id, $set_conversation_thread_control_request, string $contentType = self::contentTypes['setConversationThreadControl'][0])
     {
@@ -4672,7 +4672,7 @@ class MessagesApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -4719,7 +4719,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4928,7 +4928,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UpdateInboxConversation200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UpdateInboxConversation200Response|\Zernio\Model\InlineObject1
      */
     public function updateInboxConversation($conversation_id, $update_inbox_conversation_request, string $contentType = self::contentTypes['updateInboxConversation'][0])
     {
@@ -4947,7 +4947,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UpdateInboxConversation200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateInboxConversation200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateInboxConversationWithHttpInfo($conversation_id, $update_inbox_conversation_request, string $contentType = self::contentTypes['updateInboxConversation'][0])
     {
@@ -4985,7 +4985,7 @@ class MessagesApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -5024,7 +5024,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5233,7 +5233,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UploadMediaDirect200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UploadMediaDirect200Response|\Zernio\Model\InlineObject1
      */
     public function uploadMediaDirect($file, $content_type = null, string $contentType = self::contentTypes['uploadMediaDirect'][0])
     {
@@ -5252,7 +5252,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UploadMediaDirect200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UploadMediaDirect200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadMediaDirectWithHttpInfo($file, $content_type = null, string $contentType = self::contentTypes['uploadMediaDirect'][0])
     {
@@ -5290,7 +5290,7 @@ class MessagesApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -5329,7 +5329,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

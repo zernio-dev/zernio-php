@@ -165,7 +165,7 @@ class TrackingTagsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\AddTrackingTagSharedAccount201Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\AddTrackingTagSharedAccount201Response|\Zernio\Model\InlineObject1
      */
     public function addTrackingTagSharedAccount($account_id, $tag_id, $add_tracking_tag_shared_account_request, string $contentType = self::contentTypes['addTrackingTagSharedAccount'][0])
     {
@@ -185,7 +185,7 @@ class TrackingTagsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\AddTrackingTagSharedAccount201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\AddTrackingTagSharedAccount201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function addTrackingTagSharedAccountWithHttpInfo($account_id, $tag_id, $add_tracking_tag_shared_account_request, string $contentType = self::contentTypes['addTrackingTagSharedAccount'][0])
     {
@@ -223,7 +223,7 @@ class TrackingTagsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -262,7 +262,7 @@ class TrackingTagsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -489,7 +489,7 @@ class TrackingTagsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateTrackingTag201Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CreateTrackingTag201Response|\Zernio\Model\InlineObject1
      */
     public function createTrackingTag($account_id, $create_tracking_tag_request, string $contentType = self::contentTypes['createTrackingTag'][0])
     {
@@ -508,7 +508,7 @@ class TrackingTagsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateTrackingTag201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateTrackingTag201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function createTrackingTagWithHttpInfo($account_id, $create_tracking_tag_request, string $contentType = self::contentTypes['createTrackingTag'][0])
     {
@@ -546,7 +546,7 @@ class TrackingTagsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -585,7 +585,7 @@ class TrackingTagsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -793,7 +793,7 @@ class TrackingTagsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetAdTrackingTags200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetAdTrackingTags200Response|\Zernio\Model\InlineObject1
      */
     public function getAdTrackingTags($ad_id, string $contentType = self::contentTypes['getAdTrackingTags'][0])
     {
@@ -811,7 +811,7 @@ class TrackingTagsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetAdTrackingTags200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetAdTrackingTags200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAdTrackingTagsWithHttpInfo($ad_id, string $contentType = self::contentTypes['getAdTrackingTags'][0])
     {
@@ -849,7 +849,7 @@ class TrackingTagsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -888,7 +888,7 @@ class TrackingTagsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1080,7 +1080,7 @@ class TrackingTagsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetTrackingTag200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetTrackingTag200Response|\Zernio\Model\InlineObject1
      */
     public function getTrackingTag($account_id, $tag_id, string $contentType = self::contentTypes['getTrackingTag'][0])
     {
@@ -1099,7 +1099,7 @@ class TrackingTagsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetTrackingTag200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetTrackingTag200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrackingTagWithHttpInfo($account_id, $tag_id, string $contentType = self::contentTypes['getTrackingTag'][0])
     {
@@ -1137,7 +1137,7 @@ class TrackingTagsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1176,7 +1176,7 @@ class TrackingTagsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1389,7 +1389,7 @@ class TrackingTagsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetTrackingTagStats200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetTrackingTagStats200Response|\Zernio\Model\InlineObject1
      */
     public function getTrackingTagStats($account_id, $tag_id, $aggregation = 'event', $start_time = null, $end_time = null, string $contentType = self::contentTypes['getTrackingTagStats'][0])
     {
@@ -1411,7 +1411,7 @@ class TrackingTagsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetTrackingTagStats200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetTrackingTagStats200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrackingTagStatsWithHttpInfo($account_id, $tag_id, $aggregation = 'event', $start_time = null, $end_time = null, string $contentType = self::contentTypes['getTrackingTagStats'][0])
     {
@@ -1449,7 +1449,7 @@ class TrackingTagsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1488,7 +1488,7 @@ class TrackingTagsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1737,7 +1737,7 @@ class TrackingTagsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListTrackingTagSharedAccounts200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListTrackingTagSharedAccounts200Response|\Zernio\Model\InlineObject1
      */
     public function listTrackingTagSharedAccounts($account_id, $tag_id, string $contentType = self::contentTypes['listTrackingTagSharedAccounts'][0])
     {
@@ -1756,7 +1756,7 @@ class TrackingTagsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListTrackingTagSharedAccounts200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListTrackingTagSharedAccounts200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listTrackingTagSharedAccountsWithHttpInfo($account_id, $tag_id, string $contentType = self::contentTypes['listTrackingTagSharedAccounts'][0])
     {
@@ -1794,7 +1794,7 @@ class TrackingTagsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1833,7 +1833,7 @@ class TrackingTagsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2043,7 +2043,7 @@ class TrackingTagsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListTrackingTags200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListTrackingTags200Response|\Zernio\Model\InlineObject1
      */
     public function listTrackingTags($account_id, $ad_account_id = null, string $contentType = self::contentTypes['listTrackingTags'][0])
     {
@@ -2062,7 +2062,7 @@ class TrackingTagsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListTrackingTags200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListTrackingTags200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listTrackingTagsWithHttpInfo($account_id, $ad_account_id = null, string $contentType = self::contentTypes['listTrackingTags'][0])
     {
@@ -2100,7 +2100,7 @@ class TrackingTagsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2139,7 +2139,7 @@ class TrackingTagsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2399,7 +2399,7 @@ class TrackingTagsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2662,7 +2662,7 @@ class TrackingTagsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2859,7 +2859,7 @@ class TrackingTagsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetTrackingTag200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetTrackingTag200Response|\Zernio\Model\InlineObject1
      */
     public function updateTrackingTag($account_id, $tag_id, $update_tracking_tag_request, string $contentType = self::contentTypes['updateTrackingTag'][0])
     {
@@ -2879,7 +2879,7 @@ class TrackingTagsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetTrackingTag200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetTrackingTag200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateTrackingTagWithHttpInfo($account_id, $tag_id, $update_tracking_tag_request, string $contentType = self::contentTypes['updateTrackingTag'][0])
     {
@@ -2917,7 +2917,7 @@ class TrackingTagsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2956,7 +2956,7 @@ class TrackingTagsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

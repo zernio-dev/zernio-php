@@ -138,7 +138,7 @@ class SlackApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListSlackMembers200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListSlackMembers200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function listSlackMembers($account_id, $query = null, $limit = 50, string $contentType = self::contentTypes['listSlackMembers'][0])
     {
@@ -158,7 +158,7 @@ class SlackApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListSlackMembers200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListSlackMembers200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listSlackMembersWithHttpInfo($account_id, $query = null, $limit = 50, string $contentType = self::contentTypes['listSlackMembers'][0])
     {
@@ -202,7 +202,7 @@ class SlackApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -249,7 +249,7 @@ class SlackApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

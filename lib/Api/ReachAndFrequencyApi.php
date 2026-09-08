@@ -201,7 +201,7 @@ class ReachAndFrequencyApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -417,7 +417,7 @@ class ReachAndFrequencyApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateRfPrediction201Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CreateRfPrediction201Response|\Zernio\Model\InlineObject1
      */
     public function createRfPrediction($create_rf_prediction_request, string $contentType = self::contentTypes['createRfPrediction'][0])
     {
@@ -435,7 +435,7 @@ class ReachAndFrequencyApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateRfPrediction201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateRfPrediction201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function createRfPredictionWithHttpInfo($create_rf_prediction_request, string $contentType = self::contentTypes['createRfPrediction'][0])
     {
@@ -473,7 +473,7 @@ class ReachAndFrequencyApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -512,7 +512,7 @@ class ReachAndFrequencyApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -704,7 +704,7 @@ class ReachAndFrequencyApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateRfPrediction201Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CreateRfPrediction201Response|\Zernio\Model\InlineObject1
      */
     public function getRfPrediction($prediction_id, $account_id, $ad_account_id, string $contentType = self::contentTypes['getRfPrediction'][0])
     {
@@ -724,7 +724,7 @@ class ReachAndFrequencyApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateRfPrediction201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateRfPrediction201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRfPredictionWithHttpInfo($prediction_id, $account_id, $ad_account_id, string $contentType = self::contentTypes['getRfPrediction'][0])
     {
@@ -762,7 +762,7 @@ class ReachAndFrequencyApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -801,7 +801,7 @@ class ReachAndFrequencyApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1031,7 +1031,7 @@ class ReachAndFrequencyApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ReserveRfPrediction201Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ReserveRfPrediction201Response|\Zernio\Model\InlineObject1
      */
     public function reserveRfPrediction($prediction_id, $reserve_rf_prediction_request, string $contentType = self::contentTypes['reserveRfPrediction'][0])
     {
@@ -1050,7 +1050,7 @@ class ReachAndFrequencyApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ReserveRfPrediction201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ReserveRfPrediction201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function reserveRfPredictionWithHttpInfo($prediction_id, $reserve_rf_prediction_request, string $contentType = self::contentTypes['reserveRfPrediction'][0])
     {
@@ -1088,7 +1088,7 @@ class ReachAndFrequencyApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1127,7 +1127,7 @@ class ReachAndFrequencyApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

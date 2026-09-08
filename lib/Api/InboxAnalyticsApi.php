@@ -156,7 +156,7 @@ class InboxAnalyticsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetInboxConversationAnalytics200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetInboxConversationAnalytics404Response|\Zernio\Model\ErrorResponse
+     * @return \Zernio\Model\GetInboxConversationAnalytics200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject1|\Zernio\Model\GetInboxConversationAnalytics404Response|\Zernio\Model\ErrorResponse
      */
     public function getInboxConversationAnalytics($conversation_id, $from_date, $to_date = null, string $contentType = self::contentTypes['getInboxConversationAnalytics'][0])
     {
@@ -176,7 +176,7 @@ class InboxAnalyticsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetInboxConversationAnalytics200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetInboxConversationAnalytics404Response|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetInboxConversationAnalytics200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject1|\Zernio\Model\GetInboxConversationAnalytics404Response|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInboxConversationAnalyticsWithHttpInfo($conversation_id, $from_date, $to_date = null, string $contentType = self::contentTypes['getInboxConversationAnalytics'][0])
     {
@@ -220,7 +220,7 @@ class InboxAnalyticsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -279,7 +279,7 @@ class InboxAnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -524,7 +524,7 @@ class InboxAnalyticsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetInboxHeatmap200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse
+     * @return \Zernio\Model\GetInboxHeatmap200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function getInboxHeatmap($from_date, $to_date = null, $profile_id = null, $platform = null, $account_id = null, $source = null, $action = null, string $contentType = self::contentTypes['getInboxHeatmap'][0])
     {
@@ -548,7 +548,7 @@ class InboxAnalyticsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetInboxHeatmap200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetInboxHeatmap200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInboxHeatmapWithHttpInfo($from_date, $to_date = null, $profile_id = null, $platform = null, $account_id = null, $source = null, $action = null, string $contentType = self::contentTypes['getInboxHeatmap'][0])
     {
@@ -592,7 +592,7 @@ class InboxAnalyticsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -645,7 +645,7 @@ class InboxAnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -927,7 +927,7 @@ class InboxAnalyticsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetInboxResponseTime200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse
+     * @return \Zernio\Model\GetInboxResponseTime200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function getInboxResponseTime($from_date, $to_date = null, $profile_id = null, $platform = null, $account_id = null, string $contentType = self::contentTypes['getInboxResponseTime'][0])
     {
@@ -949,7 +949,7 @@ class InboxAnalyticsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetInboxResponseTime200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetInboxResponseTime200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInboxResponseTimeWithHttpInfo($from_date, $to_date = null, $profile_id = null, $platform = null, $account_id = null, string $contentType = self::contentTypes['getInboxResponseTime'][0])
     {
@@ -993,7 +993,7 @@ class InboxAnalyticsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1046,7 +1046,7 @@ class InboxAnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1302,7 +1302,7 @@ class InboxAnalyticsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetInboxSourceBreakdown200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse
+     * @return \Zernio\Model\GetInboxSourceBreakdown200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function getInboxSourceBreakdown($from_date, $to_date = null, $profile_id = null, $platform = null, $account_id = null, string $contentType = self::contentTypes['getInboxSourceBreakdown'][0])
     {
@@ -1324,7 +1324,7 @@ class InboxAnalyticsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetInboxSourceBreakdown200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetInboxSourceBreakdown200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInboxSourceBreakdownWithHttpInfo($from_date, $to_date = null, $profile_id = null, $platform = null, $account_id = null, string $contentType = self::contentTypes['getInboxSourceBreakdown'][0])
     {
@@ -1368,7 +1368,7 @@ class InboxAnalyticsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1421,7 +1421,7 @@ class InboxAnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1678,7 +1678,7 @@ class InboxAnalyticsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetInboxTopAccounts200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse
+     * @return \Zernio\Model\GetInboxTopAccounts200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function getInboxTopAccounts($from_date, $to_date = null, $profile_id = null, $platform = null, $source = null, $limit = 10, string $contentType = self::contentTypes['getInboxTopAccounts'][0])
     {
@@ -1701,7 +1701,7 @@ class InboxAnalyticsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetInboxTopAccounts200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetInboxTopAccounts200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInboxTopAccountsWithHttpInfo($from_date, $to_date = null, $profile_id = null, $platform = null, $source = null, $limit = 10, string $contentType = self::contentTypes['getInboxTopAccounts'][0])
     {
@@ -1745,7 +1745,7 @@ class InboxAnalyticsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1798,7 +1798,7 @@ class InboxAnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2074,7 +2074,7 @@ class InboxAnalyticsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetInboxVolume200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse
+     * @return \Zernio\Model\GetInboxVolume200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function getInboxVolume($from_date, $to_date = null, $profile_id = null, $platform = null, $account_id = null, $source = null, string $contentType = self::contentTypes['getInboxVolume'][0])
     {
@@ -2097,7 +2097,7 @@ class InboxAnalyticsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetInboxVolume200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetInboxVolume200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInboxVolumeWithHttpInfo($from_date, $to_date = null, $profile_id = null, $platform = null, $account_id = null, $source = null, string $contentType = self::contentTypes['getInboxVolume'][0])
     {
@@ -2141,7 +2141,7 @@ class InboxAnalyticsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2194,7 +2194,7 @@ class InboxAnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2468,7 +2468,7 @@ class InboxAnalyticsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListInboxConversationAnalytics200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse
+     * @return \Zernio\Model\ListInboxConversationAnalytics200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function listInboxConversationAnalytics($from_date, $to_date = null, $profile_id = null, $platform = null, $account_id = null, $source = null, $limit = 50, $page = 1, $sort_by = 'lastMessageAt', $order = 'desc', string $contentType = self::contentTypes['listInboxConversationAnalytics'][0])
     {
@@ -2495,7 +2495,7 @@ class InboxAnalyticsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListInboxConversationAnalytics200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListInboxConversationAnalytics200Response|\Zernio\Model\GetInboxVolume400Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listInboxConversationAnalyticsWithHttpInfo($from_date, $to_date = null, $profile_id = null, $platform = null, $account_id = null, $source = null, $limit = 50, $page = 1, $sort_by = 'lastMessageAt', $order = 'desc', string $contentType = self::contentTypes['listInboxConversationAnalytics'][0])
     {
@@ -2539,7 +2539,7 @@ class InboxAnalyticsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2592,7 +2592,7 @@ class InboxAnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

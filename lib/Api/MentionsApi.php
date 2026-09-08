@@ -143,7 +143,7 @@ class MentionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListInboxMentions200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListInboxMentions200Response|\Zernio\Model\InlineObject1
      */
     public function listInboxMentions($account_id = null, $profile_id = null, $sort_order = 'desc', $limit = 25, $cursor = null, string $contentType = self::contentTypes['listInboxMentions'][0])
     {
@@ -165,7 +165,7 @@ class MentionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListInboxMentions200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListInboxMentions200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listInboxMentionsWithHttpInfo($account_id = null, $profile_id = null, $sort_order = 'desc', $limit = 25, $cursor = null, string $contentType = self::contentTypes['listInboxMentions'][0])
     {
@@ -203,7 +203,7 @@ class MentionsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -242,7 +242,7 @@ class MentionsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -486,7 +486,7 @@ class MentionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ReplyToMention200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ReplyToMention200Response|\Zernio\Model\InlineObject1
      */
     public function replyToMention($reply_to_mention_request, string $contentType = self::contentTypes['replyToMention'][0])
     {
@@ -504,7 +504,7 @@ class MentionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ReplyToMention200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ReplyToMention200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function replyToMentionWithHttpInfo($reply_to_mention_request, string $contentType = self::contentTypes['replyToMention'][0])
     {
@@ -542,7 +542,7 @@ class MentionsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -581,7 +581,7 @@ class MentionsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

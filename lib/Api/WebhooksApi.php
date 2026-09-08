@@ -154,7 +154,7 @@ class WebhooksApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UpdateWebhookSettings200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2
+     * @return \Zernio\Model\UpdateWebhookSettings200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3
      */
     public function createWebhookSettings($create_webhook_settings_request, string $contentType = self::contentTypes['createWebhookSettings'][0])
     {
@@ -172,7 +172,7 @@ class WebhooksApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UpdateWebhookSettings200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateWebhookSettings200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWebhookSettingsWithHttpInfo($create_webhook_settings_request, string $contentType = self::contentTypes['createWebhookSettings'][0])
     {
@@ -210,13 +210,13 @@ class WebhooksApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $request,
                         $response,
                     );
@@ -255,7 +255,7 @@ class WebhooksApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -263,7 +263,7 @@ class WebhooksApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -453,7 +453,7 @@ class WebhooksApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3
      */
     public function deleteWebhookSettings($id, string $contentType = self::contentTypes['deleteWebhookSettings'][0])
     {
@@ -471,7 +471,7 @@ class WebhooksApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteWebhookSettingsWithHttpInfo($id, string $contentType = self::contentTypes['deleteWebhookSettings'][0])
     {
@@ -509,13 +509,13 @@ class WebhooksApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $request,
                         $response,
                     );
@@ -554,7 +554,7 @@ class WebhooksApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -562,7 +562,7 @@ class WebhooksApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -762,7 +762,7 @@ class WebhooksApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetWebhookLogs200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2
+     * @return \Zernio\Model\GetWebhookLogs200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3
      */
     public function getWebhookLogs($limit = 50, $skip = 0, $status = null, $event = null, $webhook_id = null, $event_id = null, string $contentType = self::contentTypes['getWebhookLogs'][0])
     {
@@ -785,7 +785,7 @@ class WebhooksApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetWebhookLogs200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetWebhookLogs200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWebhookLogsWithHttpInfo($limit = 50, $skip = 0, $status = null, $event = null, $webhook_id = null, $event_id = null, string $contentType = self::contentTypes['getWebhookLogs'][0])
     {
@@ -823,13 +823,13 @@ class WebhooksApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $request,
                         $response,
                     );
@@ -868,7 +868,7 @@ class WebhooksApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -876,7 +876,7 @@ class WebhooksApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1156,7 +1156,7 @@ class WebhooksApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetWebhookSettings200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2
+     * @return \Zernio\Model\GetWebhookSettings200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3
      */
     public function getWebhookSettings(string $contentType = self::contentTypes['getWebhookSettings'][0])
     {
@@ -1173,7 +1173,7 @@ class WebhooksApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetWebhookSettings200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetWebhookSettings200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWebhookSettingsWithHttpInfo(string $contentType = self::contentTypes['getWebhookSettings'][0])
     {
@@ -1211,13 +1211,13 @@ class WebhooksApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $request,
                         $response,
                     );
@@ -1256,7 +1256,7 @@ class WebhooksApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1264,7 +1264,7 @@ class WebhooksApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1437,7 +1437,7 @@ class WebhooksApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UnpublishPost200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2|\Zernio\Model\UnpublishPost200Response
+     * @return \Zernio\Model\UnpublishPost200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3|\Zernio\Model\UnpublishPost200Response
      */
     public function redeliverWebhookEvent($redeliver_webhook_event_request, string $contentType = self::contentTypes['redeliverWebhookEvent'][0])
     {
@@ -1455,7 +1455,7 @@ class WebhooksApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UnpublishPost200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2|\Zernio\Model\UnpublishPost200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UnpublishPost200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3|\Zernio\Model\UnpublishPost200Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function redeliverWebhookEventWithHttpInfo($redeliver_webhook_event_request, string $contentType = self::contentTypes['redeliverWebhookEvent'][0])
     {
@@ -1493,13 +1493,13 @@ class WebhooksApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $request,
                         $response,
                     );
@@ -1544,7 +1544,7 @@ class WebhooksApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1552,7 +1552,7 @@ class WebhooksApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1750,7 +1750,7 @@ class WebhooksApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UnpublishPost200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2|\Zernio\Model\UnpublishPost200Response
+     * @return \Zernio\Model\UnpublishPost200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3|\Zernio\Model\UnpublishPost200Response
      */
     public function testWebhook($test_webhook_request, string $contentType = self::contentTypes['testWebhook'][0])
     {
@@ -1768,7 +1768,7 @@ class WebhooksApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UnpublishPost200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2|\Zernio\Model\UnpublishPost200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UnpublishPost200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3|\Zernio\Model\UnpublishPost200Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function testWebhookWithHttpInfo($test_webhook_request, string $contentType = self::contentTypes['testWebhook'][0])
     {
@@ -1806,13 +1806,13 @@ class WebhooksApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $request,
                         $response,
                     );
@@ -1857,7 +1857,7 @@ class WebhooksApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1865,7 +1865,7 @@ class WebhooksApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2063,7 +2063,7 @@ class WebhooksApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UpdateWebhookSettings200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2
+     * @return \Zernio\Model\UpdateWebhookSettings200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3
      */
     public function updateWebhookSettings($update_webhook_settings_request, string $contentType = self::contentTypes['updateWebhookSettings'][0])
     {
@@ -2081,7 +2081,7 @@ class WebhooksApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UpdateWebhookSettings200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateWebhookSettings200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateWebhookSettingsWithHttpInfo($update_webhook_settings_request, string $contentType = self::contentTypes['updateWebhookSettings'][0])
     {
@@ -2119,13 +2119,13 @@ class WebhooksApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $request,
                         $response,
                     );
@@ -2164,7 +2164,7 @@ class WebhooksApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2172,7 +2172,7 @@ class WebhooksApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

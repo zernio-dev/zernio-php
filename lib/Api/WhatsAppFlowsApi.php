@@ -178,7 +178,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateWhatsAppFlow200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\CreateWhatsAppFlow200Response|\Zernio\Model\InlineObject1
      */
     public function createWhatsAppFlow($create_whats_app_flow_request, string $contentType = self::contentTypes['createWhatsAppFlow'][0])
     {
@@ -196,7 +196,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateWhatsAppFlow200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateWhatsAppFlow200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWhatsAppFlowWithHttpInfo($create_whats_app_flow_request, string $contentType = self::contentTypes['createWhatsAppFlow'][0])
     {
@@ -234,7 +234,7 @@ class WhatsAppFlowsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -273,7 +273,7 @@ class WhatsAppFlowsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -464,7 +464,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject1
      */
     public function deleteWhatsAppFlow($flow_id, $account_id, string $contentType = self::contentTypes['deleteWhatsAppFlow'][0])
     {
@@ -483,7 +483,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteWhatsAppFlowWithHttpInfo($flow_id, $account_id, string $contentType = self::contentTypes['deleteWhatsAppFlow'][0])
     {
@@ -521,7 +521,7 @@ class WhatsAppFlowsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -560,7 +560,7 @@ class WhatsAppFlowsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -771,7 +771,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject1
      */
     public function deprecateWhatsAppFlow($flow_id, $delete_whatsapp_business_username_request, string $contentType = self::contentTypes['deprecateWhatsAppFlow'][0])
     {
@@ -790,7 +790,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function deprecateWhatsAppFlowWithHttpInfo($flow_id, $delete_whatsapp_business_username_request, string $contentType = self::contentTypes['deprecateWhatsAppFlow'][0])
     {
@@ -828,7 +828,7 @@ class WhatsAppFlowsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -867,7 +867,7 @@ class WhatsAppFlowsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1077,7 +1077,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetWhatsAppFlow200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetWhatsAppFlow200Response|\Zernio\Model\InlineObject1
      */
     public function getWhatsAppFlow($flow_id, $account_id, $fields = null, string $contentType = self::contentTypes['getWhatsAppFlow'][0])
     {
@@ -1097,7 +1097,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetWhatsAppFlow200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetWhatsAppFlow200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWhatsAppFlowWithHttpInfo($flow_id, $account_id, $fields = null, string $contentType = self::contentTypes['getWhatsAppFlow'][0])
     {
@@ -1135,7 +1135,7 @@ class WhatsAppFlowsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1174,7 +1174,7 @@ class WhatsAppFlowsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1398,7 +1398,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetWhatsAppFlowJson200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetWhatsAppFlowJson200Response|\Zernio\Model\InlineObject1
      */
     public function getWhatsAppFlowJson($flow_id, $account_id, string $contentType = self::contentTypes['getWhatsAppFlowJson'][0])
     {
@@ -1417,7 +1417,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetWhatsAppFlowJson200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetWhatsAppFlowJson200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWhatsAppFlowJsonWithHttpInfo($flow_id, $account_id, string $contentType = self::contentTypes['getWhatsAppFlowJson'][0])
     {
@@ -1455,7 +1455,7 @@ class WhatsAppFlowsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1494,7 +1494,7 @@ class WhatsAppFlowsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1706,7 +1706,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetWhatsAppFlowPreview200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetWhatsAppFlowPreview200Response|\Zernio\Model\InlineObject1
      */
     public function getWhatsAppFlowPreview($flow_id, $account_id, $invalidate = null, string $contentType = self::contentTypes['getWhatsAppFlowPreview'][0])
     {
@@ -1726,7 +1726,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetWhatsAppFlowPreview200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetWhatsAppFlowPreview200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWhatsAppFlowPreviewWithHttpInfo($flow_id, $account_id, $invalidate = null, string $contentType = self::contentTypes['getWhatsAppFlowPreview'][0])
     {
@@ -1764,7 +1764,7 @@ class WhatsAppFlowsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1803,7 +1803,7 @@ class WhatsAppFlowsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2026,7 +2026,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetWhatsAppFlowsEncryptionKey200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2
+     * @return \Zernio\Model\GetWhatsAppFlowsEncryptionKey200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3
      */
     public function getWhatsAppFlowsEncryptionKey($account_id, string $contentType = self::contentTypes['getWhatsAppFlowsEncryptionKey'][0])
     {
@@ -2044,7 +2044,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetWhatsAppFlowsEncryptionKey200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetWhatsAppFlowsEncryptionKey200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWhatsAppFlowsEncryptionKeyWithHttpInfo($account_id, string $contentType = self::contentTypes['getWhatsAppFlowsEncryptionKey'][0])
     {
@@ -2088,13 +2088,13 @@ class WhatsAppFlowsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $request,
                         $response,
                     );
@@ -2141,7 +2141,7 @@ class WhatsAppFlowsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2149,7 +2149,7 @@ class WhatsAppFlowsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2343,7 +2343,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListWhatsAppFlowResponses200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListWhatsAppFlowResponses200Response|\Zernio\Model\InlineObject1
      */
     public function listWhatsAppFlowResponses($account_id, $flow_id = null, $limit = 50, string $contentType = self::contentTypes['listWhatsAppFlowResponses'][0])
     {
@@ -2363,7 +2363,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListWhatsAppFlowResponses200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListWhatsAppFlowResponses200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listWhatsAppFlowResponsesWithHttpInfo($account_id, $flow_id = null, $limit = 50, string $contentType = self::contentTypes['listWhatsAppFlowResponses'][0])
     {
@@ -2401,7 +2401,7 @@ class WhatsAppFlowsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2440,7 +2440,7 @@ class WhatsAppFlowsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2662,7 +2662,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListWhatsAppFlowVersions200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListWhatsAppFlowVersions200Response|\Zernio\Model\InlineObject1
      */
     public function listWhatsAppFlowVersions($flow_id, $account_id, string $contentType = self::contentTypes['listWhatsAppFlowVersions'][0])
     {
@@ -2681,7 +2681,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListWhatsAppFlowVersions200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListWhatsAppFlowVersions200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listWhatsAppFlowVersionsWithHttpInfo($flow_id, $account_id, string $contentType = self::contentTypes['listWhatsAppFlowVersions'][0])
     {
@@ -2719,7 +2719,7 @@ class WhatsAppFlowsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2758,7 +2758,7 @@ class WhatsAppFlowsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2968,7 +2968,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListWhatsAppFlows200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\ListWhatsAppFlows200Response|\Zernio\Model\InlineObject1
      */
     public function listWhatsAppFlows($account_id, string $contentType = self::contentTypes['listWhatsAppFlows'][0])
     {
@@ -2986,7 +2986,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListWhatsAppFlows200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListWhatsAppFlows200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listWhatsAppFlowsWithHttpInfo($account_id, string $contentType = self::contentTypes['listWhatsAppFlows'][0])
     {
@@ -3024,7 +3024,7 @@ class WhatsAppFlowsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -3063,7 +3063,7 @@ class WhatsAppFlowsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3256,7 +3256,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject1
      */
     public function publishWhatsAppFlow($flow_id, $delete_whatsapp_business_username_request, string $contentType = self::contentTypes['publishWhatsAppFlow'][0])
     {
@@ -3275,7 +3275,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function publishWhatsAppFlowWithHttpInfo($flow_id, $delete_whatsapp_business_username_request, string $contentType = self::contentTypes['publishWhatsAppFlow'][0])
     {
@@ -3313,7 +3313,7 @@ class WhatsAppFlowsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -3352,7 +3352,7 @@ class WhatsAppFlowsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3560,7 +3560,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\SendWhatsAppFlowMessage200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\SendWhatsAppFlowMessage200Response|\Zernio\Model\InlineObject1
      */
     public function sendWhatsAppFlowMessage($send_whats_app_flow_message_request, string $contentType = self::contentTypes['sendWhatsAppFlowMessage'][0])
     {
@@ -3578,7 +3578,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\SendWhatsAppFlowMessage200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SendWhatsAppFlowMessage200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendWhatsAppFlowMessageWithHttpInfo($send_whats_app_flow_message_request, string $contentType = self::contentTypes['sendWhatsAppFlowMessage'][0])
     {
@@ -3616,7 +3616,7 @@ class WhatsAppFlowsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -3655,7 +3655,7 @@ class WhatsAppFlowsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3845,7 +3845,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3
      */
     public function setWhatsAppFlowsEncryptionKey($set_whats_app_flows_encryption_key_request, string $contentType = self::contentTypes['setWhatsAppFlowsEncryptionKey'][0])
     {
@@ -3863,7 +3863,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject3, HTTP status code, HTTP response headers (array of strings)
      */
     public function setWhatsAppFlowsEncryptionKeyWithHttpInfo($set_whats_app_flows_encryption_key_request, string $contentType = self::contentTypes['setWhatsAppFlowsEncryptionKey'][0])
     {
@@ -3907,13 +3907,13 @@ class WhatsAppFlowsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $request,
                         $response,
                     );
@@ -3960,7 +3960,7 @@ class WhatsAppFlowsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3968,7 +3968,7 @@ class WhatsAppFlowsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\InlineObject3',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4159,7 +4159,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject1
      */
     public function updateWhatsAppFlow($flow_id, $update_whats_app_flow_request, string $contentType = self::contentTypes['updateWhatsAppFlow'][0])
     {
@@ -4178,7 +4178,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateWhatsAppFlowWithHttpInfo($flow_id, $update_whats_app_flow_request, string $contentType = self::contentTypes['updateWhatsAppFlow'][0])
     {
@@ -4216,7 +4216,7 @@ class WhatsAppFlowsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -4255,7 +4255,7 @@ class WhatsAppFlowsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4464,7 +4464,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UploadWhatsAppFlowJson200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UploadWhatsAppFlowJson200Response|\Zernio\Model\InlineObject1
      */
     public function uploadWhatsAppFlowJson($flow_id, $upload_whats_app_flow_json_request, string $contentType = self::contentTypes['uploadWhatsAppFlowJson'][0])
     {
@@ -4483,7 +4483,7 @@ class WhatsAppFlowsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UploadWhatsAppFlowJson200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UploadWhatsAppFlowJson200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadWhatsAppFlowJsonWithHttpInfo($flow_id, $upload_whats_app_flow_json_request, string $contentType = self::contentTypes['uploadWhatsAppFlowJson'][0])
     {
@@ -4521,7 +4521,7 @@ class WhatsAppFlowsApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -4560,7 +4560,7 @@ class WhatsAppFlowsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
