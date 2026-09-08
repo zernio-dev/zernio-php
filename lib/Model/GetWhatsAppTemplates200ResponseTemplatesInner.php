@@ -63,6 +63,7 @@ class GetWhatsAppTemplates200ResponseTemplatesInner implements ModelInterface, A
         'status' => 'string',
         'category' => 'string',
         'language' => 'string',
+        'message_send_ttl_seconds' => 'int',
         'components' => 'object[]'
     ];
 
@@ -79,6 +80,7 @@ class GetWhatsAppTemplates200ResponseTemplatesInner implements ModelInterface, A
         'status' => null,
         'category' => null,
         'language' => null,
+        'message_send_ttl_seconds' => null,
         'components' => null
     ];
 
@@ -93,6 +95,7 @@ class GetWhatsAppTemplates200ResponseTemplatesInner implements ModelInterface, A
         'status' => false,
         'category' => false,
         'language' => false,
+        'message_send_ttl_seconds' => false,
         'components' => false
     ];
 
@@ -187,6 +190,7 @@ class GetWhatsAppTemplates200ResponseTemplatesInner implements ModelInterface, A
         'status' => 'status',
         'category' => 'category',
         'language' => 'language',
+        'message_send_ttl_seconds' => 'message_send_ttl_seconds',
         'components' => 'components'
     ];
 
@@ -201,6 +205,7 @@ class GetWhatsAppTemplates200ResponseTemplatesInner implements ModelInterface, A
         'status' => 'setStatus',
         'category' => 'setCategory',
         'language' => 'setLanguage',
+        'message_send_ttl_seconds' => 'setMessageSendTtlSeconds',
         'components' => 'setComponents'
     ];
 
@@ -215,6 +220,7 @@ class GetWhatsAppTemplates200ResponseTemplatesInner implements ModelInterface, A
         'status' => 'getStatus',
         'category' => 'getCategory',
         'language' => 'getLanguage',
+        'message_send_ttl_seconds' => 'getMessageSendTtlSeconds',
         'components' => 'getComponents'
     ];
 
@@ -314,6 +320,7 @@ class GetWhatsAppTemplates200ResponseTemplatesInner implements ModelInterface, A
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('category', $data ?? [], null);
         $this->setIfExists('language', $data ?? [], null);
+        $this->setIfExists('message_send_ttl_seconds', $data ?? [], null);
         $this->setIfExists('components', $data ?? [], null);
     }
 
@@ -528,6 +535,33 @@ class GetWhatsAppTemplates200ResponseTemplatesInner implements ModelInterface, A
             throw new \InvalidArgumentException('non-nullable language cannot be null');
         }
         $this->container['language'] = $language;
+
+        return $this;
+    }
+
+    /**
+     * Gets message_send_ttl_seconds
+     *
+     * @return int|null
+     */
+    public function getMessageSendTtlSeconds()
+    {
+        return $this->container['message_send_ttl_seconds'];
+    }
+
+    /**
+     * Sets message_send_ttl_seconds
+     *
+     * @param int|null $message_send_ttl_seconds Only when a custom TTL is set; absent while the category default applies.
+     *
+     * @return self
+     */
+    public function setMessageSendTtlSeconds($message_send_ttl_seconds)
+    {
+        if (is_null($message_send_ttl_seconds)) {
+            throw new \InvalidArgumentException('non-nullable message_send_ttl_seconds cannot be null');
+        }
+        $this->container['message_send_ttl_seconds'] = $message_send_ttl_seconds;
 
         return $this;
     }

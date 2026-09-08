@@ -66,7 +66,8 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'components' => '\Zernio\Model\WhatsAppTemplateComponent[]',
         'library_template_name' => 'string',
         'library_template_body_inputs' => 'object',
-        'library_template_button_inputs' => '\Zernio\Model\CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner[]'
+        'library_template_button_inputs' => '\Zernio\Model\CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner[]',
+        'message_send_ttl_seconds' => 'int'
     ];
 
     /**
@@ -85,7 +86,8 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'components' => null,
         'library_template_name' => null,
         'library_template_body_inputs' => null,
-        'library_template_button_inputs' => null
+        'library_template_button_inputs' => null,
+        'message_send_ttl_seconds' => null
     ];
 
     /**
@@ -102,7 +104,8 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'components' => false,
         'library_template_name' => false,
         'library_template_body_inputs' => false,
-        'library_template_button_inputs' => false
+        'library_template_button_inputs' => false,
+        'message_send_ttl_seconds' => false
     ];
 
     /**
@@ -199,7 +202,8 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'components' => 'components',
         'library_template_name' => 'library_template_name',
         'library_template_body_inputs' => 'library_template_body_inputs',
-        'library_template_button_inputs' => 'library_template_button_inputs'
+        'library_template_button_inputs' => 'library_template_button_inputs',
+        'message_send_ttl_seconds' => 'message_send_ttl_seconds'
     ];
 
     /**
@@ -216,7 +220,8 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'components' => 'setComponents',
         'library_template_name' => 'setLibraryTemplateName',
         'library_template_body_inputs' => 'setLibraryTemplateBodyInputs',
-        'library_template_button_inputs' => 'setLibraryTemplateButtonInputs'
+        'library_template_button_inputs' => 'setLibraryTemplateButtonInputs',
+        'message_send_ttl_seconds' => 'setMessageSendTtlSeconds'
     ];
 
     /**
@@ -233,7 +238,8 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'components' => 'getComponents',
         'library_template_name' => 'getLibraryTemplateName',
         'library_template_body_inputs' => 'getLibraryTemplateBodyInputs',
-        'library_template_button_inputs' => 'getLibraryTemplateButtonInputs'
+        'library_template_button_inputs' => 'getLibraryTemplateButtonInputs',
+        'message_send_ttl_seconds' => 'getMessageSendTtlSeconds'
     ];
 
     /**
@@ -338,6 +344,7 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('library_template_name', $data ?? [], null);
         $this->setIfExists('library_template_body_inputs', $data ?? [], null);
         $this->setIfExists('library_template_button_inputs', $data ?? [], null);
+        $this->setIfExists('message_send_ttl_seconds', $data ?? [], null);
     }
 
     /**
@@ -689,6 +696,33 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable library_template_button_inputs cannot be null');
         }
         $this->container['library_template_button_inputs'] = $library_template_button_inputs;
+
+        return $this;
+    }
+
+    /**
+     * Gets message_send_ttl_seconds
+     *
+     * @return int|null
+     */
+    public function getMessageSendTtlSeconds()
+    {
+        return $this->container['message_send_ttl_seconds'];
+    }
+
+    /**
+     * Sets message_send_ttl_seconds
+     *
+     * @param int|null $message_send_ttl_seconds Delivery validity window in seconds: a message not delivered within it is dropped. Range depends on category: AUTHENTICATION 30 to 900, UTILITY 30 to 43200 (12h), MARKETING 43200 to 2592000 (30 days); -1 restores the 30-day default on AUTHENTICATION and UTILITY. Meta defaults to 600 for AUTHENTICATION and 30 days otherwise. If Meta later recategorises the template, it clears the TTL (read it back to check).
+     *
+     * @return self
+     */
+    public function setMessageSendTtlSeconds($message_send_ttl_seconds)
+    {
+        if (is_null($message_send_ttl_seconds)) {
+            throw new \InvalidArgumentException('non-nullable message_send_ttl_seconds cannot be null');
+        }
+        $this->container['message_send_ttl_seconds'] = $message_send_ttl_seconds;
 
         return $this;
     }

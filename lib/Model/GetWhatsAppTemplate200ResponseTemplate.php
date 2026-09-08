@@ -64,6 +64,7 @@ class GetWhatsAppTemplate200ResponseTemplate implements ModelInterface, ArrayAcc
         'category' => 'string',
         'language' => 'string',
         'components' => 'object[]',
+        'message_send_ttl_seconds' => 'int',
         'rejected_reason' => 'string',
         'quality_score' => 'object'
     ];
@@ -82,6 +83,7 @@ class GetWhatsAppTemplate200ResponseTemplate implements ModelInterface, ArrayAcc
         'category' => null,
         'language' => null,
         'components' => null,
+        'message_send_ttl_seconds' => null,
         'rejected_reason' => null,
         'quality_score' => null
     ];
@@ -98,6 +100,7 @@ class GetWhatsAppTemplate200ResponseTemplate implements ModelInterface, ArrayAcc
         'category' => false,
         'language' => false,
         'components' => false,
+        'message_send_ttl_seconds' => false,
         'rejected_reason' => false,
         'quality_score' => false
     ];
@@ -194,6 +197,7 @@ class GetWhatsAppTemplate200ResponseTemplate implements ModelInterface, ArrayAcc
         'category' => 'category',
         'language' => 'language',
         'components' => 'components',
+        'message_send_ttl_seconds' => 'message_send_ttl_seconds',
         'rejected_reason' => 'rejected_reason',
         'quality_score' => 'quality_score'
     ];
@@ -210,6 +214,7 @@ class GetWhatsAppTemplate200ResponseTemplate implements ModelInterface, ArrayAcc
         'category' => 'setCategory',
         'language' => 'setLanguage',
         'components' => 'setComponents',
+        'message_send_ttl_seconds' => 'setMessageSendTtlSeconds',
         'rejected_reason' => 'setRejectedReason',
         'quality_score' => 'setQualityScore'
     ];
@@ -226,6 +231,7 @@ class GetWhatsAppTemplate200ResponseTemplate implements ModelInterface, ArrayAcc
         'category' => 'getCategory',
         'language' => 'getLanguage',
         'components' => 'getComponents',
+        'message_send_ttl_seconds' => 'getMessageSendTtlSeconds',
         'rejected_reason' => 'getRejectedReason',
         'quality_score' => 'getQualityScore'
     ];
@@ -293,6 +299,7 @@ class GetWhatsAppTemplate200ResponseTemplate implements ModelInterface, ArrayAcc
         $this->setIfExists('category', $data ?? [], null);
         $this->setIfExists('language', $data ?? [], null);
         $this->setIfExists('components', $data ?? [], null);
+        $this->setIfExists('message_send_ttl_seconds', $data ?? [], null);
         $this->setIfExists('rejected_reason', $data ?? [], null);
         $this->setIfExists('quality_score', $data ?? [], null);
     }
@@ -497,6 +504,33 @@ class GetWhatsAppTemplate200ResponseTemplate implements ModelInterface, ArrayAcc
             throw new \InvalidArgumentException('non-nullable components cannot be null');
         }
         $this->container['components'] = $components;
+
+        return $this;
+    }
+
+    /**
+     * Gets message_send_ttl_seconds
+     *
+     * @return int|null
+     */
+    public function getMessageSendTtlSeconds()
+    {
+        return $this->container['message_send_ttl_seconds'];
+    }
+
+    /**
+     * Sets message_send_ttl_seconds
+     *
+     * @param int|null $message_send_ttl_seconds Only when a custom TTL is set; absent while the category default applies.
+     *
+     * @return self
+     */
+    public function setMessageSendTtlSeconds($message_send_ttl_seconds)
+    {
+        if (is_null($message_send_ttl_seconds)) {
+            throw new \InvalidArgumentException('non-nullable message_send_ttl_seconds cannot be null');
+        }
+        $this->container['message_send_ttl_seconds'] = $message_send_ttl_seconds;
 
         return $this;
     }

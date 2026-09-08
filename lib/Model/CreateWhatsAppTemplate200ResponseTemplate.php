@@ -62,7 +62,8 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
         'name' => 'string',
         'status' => 'string',
         'category' => 'string',
-        'language' => 'string'
+        'language' => 'string',
+        'message_send_ttl_seconds' => 'int'
     ];
 
     /**
@@ -77,7 +78,8 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
         'name' => null,
         'status' => null,
         'category' => null,
-        'language' => null
+        'language' => null,
+        'message_send_ttl_seconds' => null
     ];
 
     /**
@@ -90,7 +92,8 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
         'name' => false,
         'status' => false,
         'category' => false,
-        'language' => false
+        'language' => false,
+        'message_send_ttl_seconds' => false
     ];
 
     /**
@@ -183,7 +186,8 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
         'name' => 'name',
         'status' => 'status',
         'category' => 'category',
-        'language' => 'language'
+        'language' => 'language',
+        'message_send_ttl_seconds' => 'message_send_ttl_seconds'
     ];
 
     /**
@@ -196,7 +200,8 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
         'name' => 'setName',
         'status' => 'setStatus',
         'category' => 'setCategory',
-        'language' => 'setLanguage'
+        'language' => 'setLanguage',
+        'message_send_ttl_seconds' => 'setMessageSendTtlSeconds'
     ];
 
     /**
@@ -209,7 +214,8 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
         'name' => 'getName',
         'status' => 'getStatus',
         'category' => 'getCategory',
-        'language' => 'getLanguage'
+        'language' => 'getLanguage',
+        'message_send_ttl_seconds' => 'getMessageSendTtlSeconds'
     ];
 
     /**
@@ -274,6 +280,7 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('category', $data ?? [], null);
         $this->setIfExists('language', $data ?? [], null);
+        $this->setIfExists('message_send_ttl_seconds', $data ?? [], null);
     }
 
     /**
@@ -449,6 +456,33 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
             throw new \InvalidArgumentException('non-nullable language cannot be null');
         }
         $this->container['language'] = $language;
+
+        return $this;
+    }
+
+    /**
+     * Gets message_send_ttl_seconds
+     *
+     * @return int|null
+     */
+    public function getMessageSendTtlSeconds()
+    {
+        return $this->container['message_send_ttl_seconds'];
+    }
+
+    /**
+     * Sets message_send_ttl_seconds
+     *
+     * @param int|null $message_send_ttl_seconds Echoed when supplied on the request.
+     *
+     * @return self
+     */
+    public function setMessageSendTtlSeconds($message_send_ttl_seconds)
+    {
+        if (is_null($message_send_ttl_seconds)) {
+            throw new \InvalidArgumentException('non-nullable message_send_ttl_seconds cannot be null');
+        }
+        $this->container['message_send_ttl_seconds'] = $message_send_ttl_seconds;
 
         return $this;
     }

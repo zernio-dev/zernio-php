@@ -59,7 +59,8 @@ class UpdateWhatsAppTemplateByIdRequest implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPITypes = [
         'account_id' => 'string',
-        'components' => '\Zernio\Model\WhatsAppTemplateComponent[]'
+        'components' => '\Zernio\Model\WhatsAppTemplateComponent[]',
+        'message_send_ttl_seconds' => 'int'
     ];
 
     /**
@@ -71,7 +72,8 @@ class UpdateWhatsAppTemplateByIdRequest implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPIFormats = [
         'account_id' => null,
-        'components' => null
+        'components' => null,
+        'message_send_ttl_seconds' => null
     ];
 
     /**
@@ -81,7 +83,8 @@ class UpdateWhatsAppTemplateByIdRequest implements ModelInterface, ArrayAccess, 
       */
     protected static array $openAPINullables = [
         'account_id' => false,
-        'components' => false
+        'components' => false,
+        'message_send_ttl_seconds' => false
     ];
 
     /**
@@ -171,7 +174,8 @@ class UpdateWhatsAppTemplateByIdRequest implements ModelInterface, ArrayAccess, 
      */
     protected static $attributeMap = [
         'account_id' => 'accountId',
-        'components' => 'components'
+        'components' => 'components',
+        'message_send_ttl_seconds' => 'message_send_ttl_seconds'
     ];
 
     /**
@@ -181,7 +185,8 @@ class UpdateWhatsAppTemplateByIdRequest implements ModelInterface, ArrayAccess, 
      */
     protected static $setters = [
         'account_id' => 'setAccountId',
-        'components' => 'setComponents'
+        'components' => 'setComponents',
+        'message_send_ttl_seconds' => 'setMessageSendTtlSeconds'
     ];
 
     /**
@@ -191,7 +196,8 @@ class UpdateWhatsAppTemplateByIdRequest implements ModelInterface, ArrayAccess, 
      */
     protected static $getters = [
         'account_id' => 'getAccountId',
-        'components' => 'getComponents'
+        'components' => 'getComponents',
+        'message_send_ttl_seconds' => 'getMessageSendTtlSeconds'
     ];
 
     /**
@@ -253,6 +259,7 @@ class UpdateWhatsAppTemplateByIdRequest implements ModelInterface, ArrayAccess, 
     {
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('components', $data ?? [], null);
+        $this->setIfExists('message_send_ttl_seconds', $data ?? [], null);
     }
 
     /**
@@ -285,10 +292,7 @@ class UpdateWhatsAppTemplateByIdRequest implements ModelInterface, ArrayAccess, 
         if ($this->container['account_id'] === null) {
             $invalidProperties[] = "'account_id' can't be null";
         }
-        if ($this->container['components'] === null) {
-            $invalidProperties[] = "'components' can't be null";
-        }
-        if ((count($this->container['components']) < 1)) {
+        if (!is_null($this->container['components']) && (count($this->container['components']) < 1)) {
             $invalidProperties[] = "invalid value for 'components', number of items must be greater than or equal to 1.";
         }
 
@@ -337,7 +341,7 @@ class UpdateWhatsAppTemplateByIdRequest implements ModelInterface, ArrayAccess, 
     /**
      * Gets components
      *
-     * @return \Zernio\Model\WhatsAppTemplateComponent[]
+     * @return \Zernio\Model\WhatsAppTemplateComponent[]|null
      */
     public function getComponents()
     {
@@ -347,7 +351,7 @@ class UpdateWhatsAppTemplateByIdRequest implements ModelInterface, ArrayAccess, 
     /**
      * Sets components
      *
-     * @param \Zernio\Model\WhatsAppTemplateComponent[] $components Updated template components
+     * @param \Zernio\Model\WhatsAppTemplateComponent[]|null $components Updated template components. Optional when only message_send_ttl_seconds changes; at least one of the two is required.
      *
      * @return self
      */
@@ -362,6 +366,33 @@ class UpdateWhatsAppTemplateByIdRequest implements ModelInterface, ArrayAccess, 
             throw new \InvalidArgumentException('invalid length for $components when calling UpdateWhatsAppTemplateByIdRequest., number of items must be greater than or equal to 1.');
         }
         $this->container['components'] = $components;
+
+        return $this;
+    }
+
+    /**
+     * Gets message_send_ttl_seconds
+     *
+     * @return int|null
+     */
+    public function getMessageSendTtlSeconds()
+    {
+        return $this->container['message_send_ttl_seconds'];
+    }
+
+    /**
+     * Sets message_send_ttl_seconds
+     *
+     * @param int|null $message_send_ttl_seconds Delivery validity window in seconds: a message not delivered within it is dropped. Range depends on category: AUTHENTICATION 30 to 900, UTILITY 30 to 43200 (12h), MARKETING 43200 to 2592000 (30 days); -1 restores the 30-day default on AUTHENTICATION and UTILITY. Meta defaults to 600 for AUTHENTICATION and 30 days otherwise. If Meta later recategorises the template, it clears the TTL (read it back to check).
+     *
+     * @return self
+     */
+    public function setMessageSendTtlSeconds($message_send_ttl_seconds)
+    {
+        if (is_null($message_send_ttl_seconds)) {
+            throw new \InvalidArgumentException('non-nullable message_send_ttl_seconds cannot be null');
+        }
+        $this->container['message_send_ttl_seconds'] = $message_send_ttl_seconds;
 
         return $this;
     }

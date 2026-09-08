@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **category** | **string** |  | [optional]
 **language** | **string** | The variant actually returned. | [optional]
 **components** | **object[]** |  | [optional]
+**message_send_ttl_seconds** | **int** | Only when a custom TTL is set; absent while the category default applies. | [optional]
 **rejected_reason** | **string** | Only when status is REJECTED. | [optional]
 **quality_score** | **object** | Post-approval quality (GREEN/YELLOW/RED), when Meta reports one. | [optional]
 
