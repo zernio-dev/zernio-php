@@ -3100,7 +3100,7 @@ class PostsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\PostUpdateResponse|\Zernio\Model\PostPublishIncompleteResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\PostUpdateResponse|\Zernio\Model\PostPublishIncompleteResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function updatePost($post_id, $update_post_request, string $contentType = self::contentTypes['updatePost'][0])
     {
@@ -3119,7 +3119,7 @@ class PostsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\PostUpdateResponse|\Zernio\Model\PostPublishIncompleteResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\PostUpdateResponse|\Zernio\Model\PostPublishIncompleteResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updatePostWithHttpInfo($post_id, $update_post_request, string $contentType = self::contentTypes['updatePost'][0])
     {
@@ -3182,6 +3182,12 @@ class PostsApi
                 case 404:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -3253,6 +3259,14 @@ class PostsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
