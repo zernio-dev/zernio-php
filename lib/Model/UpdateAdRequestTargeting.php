@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * UpdateAdRequestTargeting Class Doc Comment
  *
  * @category Class
- * @description Meta + TikTok (demographics/interests), Google (keyword and device bid adjustment edits only), and LinkedIn (geo countries). Pinterest / X return 501.
+ * @description Meta + TikTok (demographics/interests), Google (keyword and device bid adjustment edits only), and LinkedIn (countries or regions required). Pinterest / X return 501.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

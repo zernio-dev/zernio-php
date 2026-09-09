@@ -59,7 +59,9 @@ class SendInboxMessage400Response implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPITypes = [
         'error' => 'string',
+        'type' => 'string',
         'code' => 'string',
+        'platform' => 'string',
         'platform_error' => '\Zernio\Model\SendInboxMessage400ResponsePlatformError'
     ];
 
@@ -72,7 +74,9 @@ class SendInboxMessage400Response implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPIFormats = [
         'error' => null,
+        'type' => null,
         'code' => null,
+        'platform' => null,
         'platform_error' => null
     ];
 
@@ -83,7 +87,9 @@ class SendInboxMessage400Response implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static array $openAPINullables = [
         'error' => false,
+        'type' => false,
         'code' => false,
+        'platform' => false,
         'platform_error' => false
     ];
 
@@ -174,7 +180,9 @@ class SendInboxMessage400Response implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $attributeMap = [
         'error' => 'error',
+        'type' => 'type',
         'code' => 'code',
+        'platform' => 'platform',
         'platform_error' => 'platformError'
     ];
 
@@ -185,7 +193,9 @@ class SendInboxMessage400Response implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $setters = [
         'error' => 'setError',
+        'type' => 'setType',
         'code' => 'setCode',
+        'platform' => 'setPlatform',
         'platform_error' => 'setPlatformError'
     ];
 
@@ -196,7 +206,9 @@ class SendInboxMessage400Response implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $getters = [
         'error' => 'getError',
+        'type' => 'getType',
         'code' => 'getCode',
+        'platform' => 'getPlatform',
         'platform_error' => 'getPlatformError'
     ];
 
@@ -241,11 +253,27 @@ class SendInboxMessage400Response implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
+    public const TYPE_PLATFORM_ERROR = 'platform_error';
+    public const TYPE_INVALID_REQUEST_ERROR = 'invalid_request_error';
     public const CODE_PLATFORM_LIMITATION = 'PLATFORM_LIMITATION';
     public const CODE_MISSING_PARTICIPANT = 'MISSING_PARTICIPANT';
     public const CODE_DIRECT_SEND_NOT_ELIGIBLE = 'DIRECT_SEND_NOT_ELIGIBLE';
     public const CODE_DIRECT_SEND_LIMITED = 'DIRECT_SEND_LIMITED';
     public const CODE_DIRECT_SEND_BLOCKED = 'DIRECT_SEND_BLOCKED';
+    public const CODE_PLATFORM_API_ERROR = 'platform_api_error';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_PLATFORM_ERROR,
+            self::TYPE_INVALID_REQUEST_ERROR,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -260,6 +288,7 @@ class SendInboxMessage400Response implements ModelInterface, ArrayAccess, \JsonS
             self::CODE_DIRECT_SEND_NOT_ELIGIBLE,
             self::CODE_DIRECT_SEND_LIMITED,
             self::CODE_DIRECT_SEND_BLOCKED,
+            self::CODE_PLATFORM_API_ERROR,
         ];
     }
 
@@ -279,7 +308,9 @@ class SendInboxMessage400Response implements ModelInterface, ArrayAccess, \JsonS
     public function __construct(?array $data = null)
     {
         $this->setIfExists('error', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('platform_error', $data ?? [], null);
     }
 
@@ -309,6 +340,15 @@ class SendInboxMessage400Response implements ModelInterface, ArrayAccess, \JsonS
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         $allowedValues = $this->getCodeAllowableValues();
         if (!is_null($this->container['code']) && !in_array($this->container['code'], $allowedValues, true)) {
@@ -362,6 +402,43 @@ class SendInboxMessage400Response implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type Present on Meta pass-through rejections: platform_error when Meta rejected the send (see platform/platformError below), invalid_request_error for validation failures.
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
      * Gets code
      *
      * @return string|null
@@ -374,7 +451,7 @@ class SendInboxMessage400Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets code
      *
-     * @param string|null $code Stable machine-readable reason. PLATFORM_LIMITATION covers a capability the platform does not offer (e.g. Bluesky and Reddit DMs reject media); MISSING_PARTICIPANT means the stored conversation has no recipient to send to; DIRECT_SEND_NOT_ELIGIBLE and DIRECT_SEND_BLOCKED mean the WhatsApp Business Account needs Meta to grant or restore Direct Send access; DIRECT_SEND_LIMITED is temporary, Meta lifts it on its own.
+     * @param string|null $code Stable machine-readable reason. PLATFORM_LIMITATION covers a capability the platform does not offer (e.g. Bluesky and Reddit DMs reject media); MISSING_PARTICIPANT means the stored conversation has no recipient to send to; DIRECT_SEND_NOT_ELIGIBLE and DIRECT_SEND_BLOCKED mean the WhatsApp Business Account needs Meta to grant or restore Direct Send access; DIRECT_SEND_LIMITED is temporary, Meta lifts it on its own; platform_api_error means Meta itself rejected the send (see platformError).
      *
      * @return self
      */
@@ -394,6 +471,33 @@ class SendInboxMessage400Response implements ModelInterface, ArrayAccess, \JsonS
             );
         }
         $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform
+     *
+     * @return string|null
+     */
+    public function getPlatform()
+    {
+        return $this->container['platform'];
+    }
+
+    /**
+     * Sets platform
+     *
+     * @param string|null $platform Present alongside code platform_api_error. The platform that rejected the send (e.g. instagram, facebook).
+     *
+     * @return self
+     */
+    public function setPlatform($platform)
+    {
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
+        }
+        $this->container['platform'] = $platform;
 
         return $this;
     }
