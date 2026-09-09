@@ -1,6 +1,6 @@
 <?php
 /**
- * WebhookPayloadConversationStarted
+ * InboxWebhookConversationDetail
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * WebhookPayloadConversationStarted Class Doc Comment
+ * InboxWebhookConversationDetail Class Doc Comment
  *
  * @category Class
- * @description Fired once when a new conversation begins, in either direction. A conversation starts the first time an account and a contact exchange a message on any DM platform (Instagram, Messenger/Facebook, Telegram, WhatsApp, X, Reddit, Bluesky, SMS). Platform-agnostic: one subscription covers every DM platform.
+ * @description The conversation object included in conversation lifecycle webhook payloads (conversation.started, conversation.control_changed).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WebhookPayloadConversationStarted implements ModelInterface, ArrayAccess, \JsonSerializable
+class InboxWebhookConversationDetail implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WebhookPayloadConversationStarted implements ModelInterface, ArrayAccess, 
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WebhookPayloadConversationStarted';
+    protected static $openAPIModelName = 'InboxWebhookConversationDetail';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,11 +60,14 @@ class WebhookPayloadConversationStarted implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'event' => 'string',
-        'conversation' => '\Zernio\Model\InboxWebhookConversationDetail',
-        'account' => '\Zernio\Model\InboxWebhookAccount',
-        'started_at' => '\DateTime',
-        'timestamp' => '\DateTime'
+        'platform' => 'string',
+        'platform_conversation_id' => 'string',
+        'participant_id' => 'string',
+        'participant_name' => 'string',
+        'participant_username' => 'string',
+        'participant_picture' => 'string',
+        'status' => 'string',
+        'contact_id' => 'string'
     ];
 
     /**
@@ -76,11 +79,14 @@ class WebhookPayloadConversationStarted implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'event' => null,
-        'conversation' => null,
-        'account' => null,
-        'started_at' => 'date-time',
-        'timestamp' => 'date-time'
+        'platform' => null,
+        'platform_conversation_id' => null,
+        'participant_id' => null,
+        'participant_name' => null,
+        'participant_username' => null,
+        'participant_picture' => null,
+        'status' => null,
+        'contact_id' => null
     ];
 
     /**
@@ -90,11 +96,14 @@ class WebhookPayloadConversationStarted implements ModelInterface, ArrayAccess, 
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'event' => false,
-        'conversation' => false,
-        'account' => false,
-        'started_at' => false,
-        'timestamp' => false
+        'platform' => false,
+        'platform_conversation_id' => false,
+        'participant_id' => false,
+        'participant_name' => false,
+        'participant_username' => false,
+        'participant_picture' => false,
+        'status' => false,
+        'contact_id' => false
     ];
 
     /**
@@ -184,11 +193,14 @@ class WebhookPayloadConversationStarted implements ModelInterface, ArrayAccess, 
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'event' => 'event',
-        'conversation' => 'conversation',
-        'account' => 'account',
-        'started_at' => 'startedAt',
-        'timestamp' => 'timestamp'
+        'platform' => 'platform',
+        'platform_conversation_id' => 'platformConversationId',
+        'participant_id' => 'participantId',
+        'participant_name' => 'participantName',
+        'participant_username' => 'participantUsername',
+        'participant_picture' => 'participantPicture',
+        'status' => 'status',
+        'contact_id' => 'contactId'
     ];
 
     /**
@@ -198,11 +210,14 @@ class WebhookPayloadConversationStarted implements ModelInterface, ArrayAccess, 
      */
     protected static $setters = [
         'id' => 'setId',
-        'event' => 'setEvent',
-        'conversation' => 'setConversation',
-        'account' => 'setAccount',
-        'started_at' => 'setStartedAt',
-        'timestamp' => 'setTimestamp'
+        'platform' => 'setPlatform',
+        'platform_conversation_id' => 'setPlatformConversationId',
+        'participant_id' => 'setParticipantId',
+        'participant_name' => 'setParticipantName',
+        'participant_username' => 'setParticipantUsername',
+        'participant_picture' => 'setParticipantPicture',
+        'status' => 'setStatus',
+        'contact_id' => 'setContactId'
     ];
 
     /**
@@ -212,11 +227,14 @@ class WebhookPayloadConversationStarted implements ModelInterface, ArrayAccess, 
      */
     protected static $getters = [
         'id' => 'getId',
-        'event' => 'getEvent',
-        'conversation' => 'getConversation',
-        'account' => 'getAccount',
-        'started_at' => 'getStartedAt',
-        'timestamp' => 'getTimestamp'
+        'platform' => 'getPlatform',
+        'platform_conversation_id' => 'getPlatformConversationId',
+        'participant_id' => 'getParticipantId',
+        'participant_name' => 'getParticipantName',
+        'participant_username' => 'getParticipantUsername',
+        'participant_picture' => 'getParticipantPicture',
+        'status' => 'getStatus',
+        'contact_id' => 'getContactId'
     ];
 
     /**
@@ -260,17 +278,48 @@ class WebhookPayloadConversationStarted implements ModelInterface, ArrayAccess, 
         return self::$openAPIModelName;
     }
 
-    public const EVENT_CONVERSATION_STARTED = 'conversation.started';
+    public const PLATFORM_INSTAGRAM = 'instagram';
+    public const PLATFORM_FACEBOOK = 'facebook';
+    public const PLATFORM_TELEGRAM = 'telegram';
+    public const PLATFORM_WHATSAPP = 'whatsapp';
+    public const PLATFORM_TWITTER = 'twitter';
+    public const PLATFORM_REDDIT = 'reddit';
+    public const PLATFORM_BLUESKY = 'bluesky';
+    public const PLATFORM_SMS = 'sms';
+    public const PLATFORM_SLACK = 'slack';
+    public const STATUS_ACTIVE = 'active';
+    public const STATUS_ARCHIVED = 'archived';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getEventAllowableValues()
+    public function getPlatformAllowableValues()
     {
         return [
-            self::EVENT_CONVERSATION_STARTED,
+            self::PLATFORM_INSTAGRAM,
+            self::PLATFORM_FACEBOOK,
+            self::PLATFORM_TELEGRAM,
+            self::PLATFORM_WHATSAPP,
+            self::PLATFORM_TWITTER,
+            self::PLATFORM_REDDIT,
+            self::PLATFORM_BLUESKY,
+            self::PLATFORM_SMS,
+            self::PLATFORM_SLACK,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_ACTIVE,
+            self::STATUS_ARCHIVED,
         ];
     }
 
@@ -290,11 +339,14 @@ class WebhookPayloadConversationStarted implements ModelInterface, ArrayAccess, 
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('event', $data ?? [], null);
-        $this->setIfExists('conversation', $data ?? [], null);
-        $this->setIfExists('account', $data ?? [], null);
-        $this->setIfExists('started_at', $data ?? [], null);
-        $this->setIfExists('timestamp', $data ?? [], null);
+        $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('platform_conversation_id', $data ?? [], null);
+        $this->setIfExists('participant_id', $data ?? [], null);
+        $this->setIfExists('participant_name', $data ?? [], null);
+        $this->setIfExists('participant_username', $data ?? [], null);
+        $this->setIfExists('participant_picture', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('contact_id', $data ?? [], null);
     }
 
     /**
@@ -327,30 +379,36 @@ class WebhookPayloadConversationStarted implements ModelInterface, ArrayAccess, 
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['event'] === null) {
-            $invalidProperties[] = "'event' can't be null";
+        if ($this->container['platform'] === null) {
+            $invalidProperties[] = "'platform' can't be null";
         }
-        $allowedValues = $this->getEventAllowableValues();
-        if (!is_null($this->container['event']) && !in_array($this->container['event'], $allowedValues, true)) {
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!is_null($this->container['platform']) && !in_array($this->container['platform'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'event', must be one of '%s'",
-                $this->container['event'],
+                "invalid value '%s' for 'platform', must be one of '%s'",
+                $this->container['platform'],
                 implode("', '", $allowedValues)
             );
         }
 
-        if ($this->container['conversation'] === null) {
-            $invalidProperties[] = "'conversation' can't be null";
+        if ($this->container['platform_conversation_id'] === null) {
+            $invalidProperties[] = "'platform_conversation_id' can't be null";
         }
-        if ($this->container['account'] === null) {
-            $invalidProperties[] = "'account' can't be null";
+        if ($this->container['participant_name'] === null) {
+            $invalidProperties[] = "'participant_name' can't be null";
         }
-        if ($this->container['started_at'] === null) {
-            $invalidProperties[] = "'started_at' can't be null";
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
         }
-        if ($this->container['timestamp'] === null) {
-            $invalidProperties[] = "'timestamp' can't be null";
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
         }
+
         return $invalidProperties;
     }
 
@@ -379,7 +437,7 @@ class WebhookPayloadConversationStarted implements ModelInterface, ArrayAccess, 
     /**
      * Sets id
      *
-     * @param string $id Stable webhook event ID
+     * @param string $id Internal conversation ID
      *
      * @return self
      */
@@ -394,146 +452,237 @@ class WebhookPayloadConversationStarted implements ModelInterface, ArrayAccess, 
     }
 
     /**
-     * Gets event
+     * Gets platform
      *
      * @return string
      */
-    public function getEvent()
+    public function getPlatform()
     {
-        return $this->container['event'];
+        return $this->container['platform'];
     }
 
     /**
-     * Sets event
+     * Sets platform
      *
-     * @param string $event event
+     * @param string $platform platform
      *
      * @return self
      */
-    public function setEvent($event)
+    public function setPlatform($platform)
     {
-        if (is_null($event)) {
-            throw new \InvalidArgumentException('non-nullable event cannot be null');
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
         }
-        $allowedValues = $this->getEventAllowableValues();
-        if (!in_array($event, $allowedValues, true)) {
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!in_array($platform, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'event', must be one of '%s'",
-                    $event,
+                    "Invalid value '%s' for 'platform', must be one of '%s'",
+                    $platform,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['event'] = $event;
+        $this->container['platform'] = $platform;
 
         return $this;
     }
 
     /**
-     * Gets conversation
+     * Gets platform_conversation_id
      *
-     * @return \Zernio\Model\InboxWebhookConversationDetail
+     * @return string
      */
-    public function getConversation()
+    public function getPlatformConversationId()
     {
-        return $this->container['conversation'];
+        return $this->container['platform_conversation_id'];
     }
 
     /**
-     * Sets conversation
+     * Sets platform_conversation_id
      *
-     * @param \Zernio\Model\InboxWebhookConversationDetail $conversation conversation
+     * @param string $platform_conversation_id platform_conversation_id
      *
      * @return self
      */
-    public function setConversation($conversation)
+    public function setPlatformConversationId($platform_conversation_id)
     {
-        if (is_null($conversation)) {
-            throw new \InvalidArgumentException('non-nullable conversation cannot be null');
+        if (is_null($platform_conversation_id)) {
+            throw new \InvalidArgumentException('non-nullable platform_conversation_id cannot be null');
         }
-        $this->container['conversation'] = $conversation;
+        $this->container['platform_conversation_id'] = $platform_conversation_id;
 
         return $this;
     }
 
     /**
-     * Gets account
+     * Gets participant_id
      *
-     * @return \Zernio\Model\InboxWebhookAccount
+     * @return string|null
      */
-    public function getAccount()
+    public function getParticipantId()
     {
-        return $this->container['account'];
+        return $this->container['participant_id'];
     }
 
     /**
-     * Sets account
+     * Sets participant_id
      *
-     * @param \Zernio\Model\InboxWebhookAccount $account account
+     * @param string|null $participant_id Contact's platform identifier (IGSID, PSID, wa_id, etc.)
      *
      * @return self
      */
-    public function setAccount($account)
+    public function setParticipantId($participant_id)
     {
-        if (is_null($account)) {
-            throw new \InvalidArgumentException('non-nullable account cannot be null');
+        if (is_null($participant_id)) {
+            throw new \InvalidArgumentException('non-nullable participant_id cannot be null');
         }
-        $this->container['account'] = $account;
+        $this->container['participant_id'] = $participant_id;
 
         return $this;
     }
 
     /**
-     * Gets started_at
+     * Gets participant_name
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getStartedAt()
+    public function getParticipantName()
     {
-        return $this->container['started_at'];
+        return $this->container['participant_name'];
     }
 
     /**
-     * Sets started_at
+     * Sets participant_name
      *
-     * @param \DateTime $started_at When the conversation document was created.
+     * @param string $participant_name participant_name
      *
      * @return self
      */
-    public function setStartedAt($started_at)
+    public function setParticipantName($participant_name)
     {
-        if (is_null($started_at)) {
-            throw new \InvalidArgumentException('non-nullable started_at cannot be null');
+        if (is_null($participant_name)) {
+            throw new \InvalidArgumentException('non-nullable participant_name cannot be null');
         }
-        $this->container['started_at'] = $started_at;
+        $this->container['participant_name'] = $participant_name;
 
         return $this;
     }
 
     /**
-     * Gets timestamp
+     * Gets participant_username
      *
-     * @return \DateTime
+     * @return string|null
      */
-    public function getTimestamp()
+    public function getParticipantUsername()
     {
-        return $this->container['timestamp'];
+        return $this->container['participant_username'];
     }
 
     /**
-     * Sets timestamp
+     * Sets participant_username
      *
-     * @param \DateTime $timestamp UTC time at which Zernio generated this event (set once when the event payload is built, before delivery is queued). Retries and redeliveries keep the original value, so it reflects the event, not the delivery attempt.
+     * @param string|null $participant_username Contact's handle when the platform exposes one
      *
      * @return self
      */
-    public function setTimestamp($timestamp)
+    public function setParticipantUsername($participant_username)
     {
-        if (is_null($timestamp)) {
-            throw new \InvalidArgumentException('non-nullable timestamp cannot be null');
+        if (is_null($participant_username)) {
+            throw new \InvalidArgumentException('non-nullable participant_username cannot be null');
         }
-        $this->container['timestamp'] = $timestamp;
+        $this->container['participant_username'] = $participant_username;
+
+        return $this;
+    }
+
+    /**
+     * Gets participant_picture
+     *
+     * @return string|null
+     */
+    public function getParticipantPicture()
+    {
+        return $this->container['participant_picture'];
+    }
+
+    /**
+     * Sets participant_picture
+     *
+     * @param string|null $participant_picture participant_picture
+     *
+     * @return self
+     */
+    public function setParticipantPicture($participant_picture)
+    {
+        if (is_null($participant_picture)) {
+            throw new \InvalidArgumentException('non-nullable participant_picture cannot be null');
+        }
+        $this->container['participant_picture'] = $participant_picture;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact_id
+     *
+     * @return string|null
+     */
+    public function getContactId()
+    {
+        return $this->container['contact_id'];
+    }
+
+    /**
+     * Sets contact_id
+     *
+     * @param string|null $contact_id Zernio CRM Contact ID for the participant, when one exists. Resolved by joining `participantId` to the ContactChannel collection (same join used by message.*, reaction.received, and call.* webhooks). Best-effort: omitted when no channel matches or `participantId` is absent. Lets integrators seed the CRM straight from `conversation.started` without waiting for the first `message.*` event.
+     *
+     * @return self
+     */
+    public function setContactId($contact_id)
+    {
+        if (is_null($contact_id)) {
+            throw new \InvalidArgumentException('non-nullable contact_id cannot be null');
+        }
+        $this->container['contact_id'] = $contact_id;
 
         return $this;
     }

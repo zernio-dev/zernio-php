@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Stable webhook event ID |
 **event** | **string** |  |
-**conversation** | [**\Zernio\Model\WebhookPayloadConversationStartedConversation**](WebhookPayloadConversationStartedConversation.md) |  |
+**conversation** | [**\Zernio\Model\InboxWebhookConversationDetail**](InboxWebhookConversationDetail.md) |  |
 **account** | [**\Zernio\Model\InboxWebhookAccount**](InboxWebhookAccount.md) |  |
 **control** | [**\Zernio\Model\WebhookPayloadConversationControlChangedControl**](WebhookPayloadConversationControlChangedControl.md) |  |
 **changed_at** | **\DateTime** |  |

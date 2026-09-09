@@ -291,7 +291,6 @@ docs/Model/ConnectWhatsAppEmbeddedSignupRequest.md
 docs/Model/Connected.md
 docs/Model/ConnectedAccount.md
 docs/Model/ConnectedApp.md
-docs/Model/Conversation.md
 docs/Model/ConversionAction.md
 docs/Model/ConversionActionTagSnippetsInner.md
 docs/Model/ConversionDestination.md
@@ -966,6 +965,7 @@ docs/Model/InboxMessageEditAttachment.md
 docs/Model/InboxMessageEditHistoryEntry.md
 docs/Model/InboxWebhookAccount.md
 docs/Model/InboxWebhookConversation.md
+docs/Model/InboxWebhookConversationDetail.md
 docs/Model/InboxWebhookMessage.md
 docs/Model/InboxWebhookMessageAttachmentsInner.md
 docs/Model/InboxWebhookMessageSender.md
@@ -1881,7 +1881,6 @@ docs/Model/WebhookPayloadCommentPost.md
 docs/Model/WebhookPayloadConversationControlChanged.md
 docs/Model/WebhookPayloadConversationControlChangedControl.md
 docs/Model/WebhookPayloadConversationStarted.md
-docs/Model/WebhookPayloadConversationStartedConversation.md
 docs/Model/WebhookPayloadExternalPost.md
 docs/Model/WebhookPayloadLead.md
 docs/Model/WebhookPayloadLeadAccount.md
@@ -2292,7 +2291,6 @@ lib/Model/ConnectWhatsAppEmbeddedSignupRequest.php
 lib/Model/Connected.php
 lib/Model/ConnectedAccount.php
 lib/Model/ConnectedApp.php
-lib/Model/Conversation.php
 lib/Model/ConversionAction.php
 lib/Model/ConversionActionTagSnippetsInner.php
 lib/Model/ConversionDestination.php
@@ -2967,6 +2965,7 @@ lib/Model/InboxMessageEditAttachment.php
 lib/Model/InboxMessageEditHistoryEntry.php
 lib/Model/InboxWebhookAccount.php
 lib/Model/InboxWebhookConversation.php
+lib/Model/InboxWebhookConversationDetail.php
 lib/Model/InboxWebhookMessage.php
 lib/Model/InboxWebhookMessageAttachmentsInner.php
 lib/Model/InboxWebhookMessageSender.php
@@ -3883,7 +3882,6 @@ lib/Model/WebhookPayloadCommentPost.php
 lib/Model/WebhookPayloadConversationControlChanged.php
 lib/Model/WebhookPayloadConversationControlChangedControl.php
 lib/Model/WebhookPayloadConversationStarted.php
-lib/Model/WebhookPayloadConversationStartedConversation.php
 lib/Model/WebhookPayloadExternalPost.php
 lib/Model/WebhookPayloadLead.php
 lib/Model/WebhookPayloadLeadAccount.php
@@ -4003,3 +4001,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/InboxWebhookConversationDetailTest.php

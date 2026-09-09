@@ -61,7 +61,7 @@ class WebhookPayloadConversationControlChanged implements ModelInterface, ArrayA
     protected static $openAPITypes = [
         'id' => 'string',
         'event' => 'string',
-        'conversation' => '\Zernio\Model\WebhookPayloadConversationStartedConversation',
+        'conversation' => '\Zernio\Model\InboxWebhookConversationDetail',
         'account' => '\Zernio\Model\InboxWebhookAccount',
         'control' => '\Zernio\Model\WebhookPayloadConversationControlChangedControl',
         'changed_at' => '\DateTime',
@@ -443,7 +443,7 @@ class WebhookPayloadConversationControlChanged implements ModelInterface, ArrayA
     /**
      * Gets conversation
      *
-     * @return \Zernio\Model\WebhookPayloadConversationStartedConversation
+     * @return \Zernio\Model\InboxWebhookConversationDetail
      */
     public function getConversation()
     {
@@ -453,7 +453,7 @@ class WebhookPayloadConversationControlChanged implements ModelInterface, ArrayA
     /**
      * Sets conversation
      *
-     * @param \Zernio\Model\WebhookPayloadConversationStartedConversation $conversation conversation
+     * @param \Zernio\Model\InboxWebhookConversationDetail $conversation conversation
      *
      * @return self
      */
