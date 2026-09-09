@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**user_os** | **string[]** | Meta only. Operating systems and version ranges, such as iOS_ver_14.0_and_above or Android. Emitted as user_os. May also be supplied inside targeting. | [optional]
+**user_device** | **string[]** | Meta only. Device models such as iPhone. Emitted as user_device. May also be supplied inside targeting. | [optional]
 **countries** | **string[]** | ISO 3166-1 alpha-2 country codes (e.g. [&#39;US&#39;]). | [optional]
 **regions** | [**\Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]**](UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner.md) | Region/state targeting. &#x60;key&#x60; is the platform location ID from /v1/ads/targeting/search?dimension&#x3D;geo&amp;geoType&#x3D;region. | [optional]
 **cities** | [**\Zernio\Model\TargetingSpecCitiesInner[]**](TargetingSpecCitiesInner.md) | City targeting. Optional &#x60;radius&#x60; + &#x60;distanceUnit&#x60; extend beyond the city limits; both must be set together or both omitted. &#x60;radius&#x60; is only honoured on platforms whose capability map allows city radius (Meta). | [optional]

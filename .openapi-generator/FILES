@@ -97,6 +97,7 @@ docs/Model/AdPromotedObject.md
 docs/Model/AdReviewStatus.md
 docs/Model/AdSchedule.md
 docs/Model/AdStatus.md
+docs/Model/AdTracking.md
 docs/Model/AdTreeAdSet.md
 docs/Model/AdTreeAdSetAdSetBudget.md
 docs/Model/AdTreeAdSetBudget.md
@@ -307,6 +308,7 @@ docs/Model/CreateAccountGroup201ResponseGroup.md
 docs/Model/CreateAccountGroupRequest.md
 docs/Model/CreateAdAudience201Response.md
 docs/Model/CreateAdAudienceRequest.md
+docs/Model/CreateAdCampaign200Response.md
 docs/Model/CreateAdCampaign201Response.md
 docs/Model/CreateAdCampaignRequest.md
 docs/Model/CreateAdCreative201Response.md
@@ -448,11 +450,9 @@ docs/Model/CreateStandaloneAdRequestPlacementAssetsRulesInner.md
 docs/Model/CreateStandaloneAdRequestPlacementAssetsRulesInnerPlacements.md
 docs/Model/CreateStandaloneAdRequestPlacements.md
 docs/Model/CreateStandaloneAdRequestPlatformSpecificData.md
-docs/Model/CreateStandaloneAdRequestPromotedObject.md
 docs/Model/CreateStandaloneAdRequestRegionsInner.md
 docs/Model/CreateStandaloneAdRequestSitelinksInner.md
 docs/Model/CreateStandaloneAdRequestStructuredSnippetsInner.md
-docs/Model/CreateStandaloneAdRequestTracking.md
 docs/Model/CreateStandaloneAdRequestTranslationsInner.md
 docs/Model/CreateStandaloneAdRequestVideo.md
 docs/Model/CreateTestLead200Response.md
@@ -792,6 +792,8 @@ docs/Model/GetInstagramPublishingLimit200Response.md
 docs/Model/GetInstagramStoryInsights200Response.md
 docs/Model/GetInstagramStoryInsights200ResponseData.md
 docs/Model/GetInstagramStoryInsights200ResponseDataMetrics.md
+docs/Model/GetIosFourteenCampaignLimits200Response.md
+docs/Model/GetIosFourteenCampaignLimits200ResponseLimits.md
 docs/Model/GetLeadForm200Response.md
 docs/Model/GetLinkedInAggregateAnalytics200Response.md
 docs/Model/GetLinkedInAggregateAnalytics400Response.md
@@ -968,6 +970,8 @@ docs/Model/GoogleBusinessReview.md
 docs/Model/GoogleBusinessReviewReviewReply.md
 docs/Model/GoogleBusinessReviewReviewer.md
 docs/Model/HandleOAuthCallbackRequest.md
+docs/Model/HideAdComment200Response.md
+docs/Model/HideAdCommentRequest.md
 docs/Model/HideInboxComment200Response.md
 docs/Model/HideInboxCommentRequest.md
 docs/Model/InboxMessageEditAttachment.md
@@ -1063,6 +1067,12 @@ docs/Model/ListAdStudies200Response.md
 docs/Model/ListAdVideos200Response.md
 docs/Model/ListAds202Response.md
 docs/Model/ListAdsBusinessCenters200Response.md
+docs/Model/ListAdsInstagramAccounts200Response.md
+docs/Model/ListAdsInstagramAccounts200ResponseAccountsInner.md
+docs/Model/ListAdsInstagramAccounts200ResponsePagesInner.md
+docs/Model/ListAdsInstagramAccounts200ResponseResolved.md
+docs/Model/ListAdvertisableApplications200Response.md
+docs/Model/ListAdvertisableApplications200ResponseApplicationsInner.md
 docs/Model/ListApiKeys200Response.md
 docs/Model/ListBidStrategies200Response.md
 docs/Model/ListBlogArticles200Response.md
@@ -1250,6 +1260,7 @@ docs/Model/MediaContentType.md
 docs/Model/MediaItem.md
 docs/Model/MediaUploadResponse.md
 docs/Model/MetaAdsPlatformData.md
+docs/Model/MetaInstagramIdentityRef.md
 docs/Model/MetaLeadFormPlatformData.md
 docs/Model/MetaLeadFormPlatformDataContextCard.md
 docs/Model/MetaPromotion.md
@@ -1361,6 +1372,8 @@ docs/Model/ReplaceAdNegativeKeywordListKeywordsRequest.md
 docs/Model/ReplaceCampaignNegativeKeywordListsRequest.md
 docs/Model/ReplaceCampaignNegativeKeywords200Response.md
 docs/Model/ReplaceCampaignNegativeKeywordsRequest.md
+docs/Model/ReplyToAdComment200Response.md
+docs/Model/ReplyToAdCommentRequest.md
 docs/Model/ReplyToGoogleBusinessReview200Response.md
 docs/Model/ReplyToGoogleBusinessReviewRequest.md
 docs/Model/ReplyToInboxPost200Response.md
@@ -2114,6 +2127,7 @@ lib/Model/AdPromotedObject.php
 lib/Model/AdReviewStatus.php
 lib/Model/AdSchedule.php
 lib/Model/AdStatus.php
+lib/Model/AdTracking.php
 lib/Model/AdTreeAdSet.php
 lib/Model/AdTreeAdSetAdSetBudget.php
 lib/Model/AdTreeAdSetBudget.php
@@ -2324,6 +2338,7 @@ lib/Model/CreateAccountGroup201ResponseGroup.php
 lib/Model/CreateAccountGroupRequest.php
 lib/Model/CreateAdAudience201Response.php
 lib/Model/CreateAdAudienceRequest.php
+lib/Model/CreateAdCampaign200Response.php
 lib/Model/CreateAdCampaign201Response.php
 lib/Model/CreateAdCampaignRequest.php
 lib/Model/CreateAdCreative201Response.php
@@ -2465,11 +2480,9 @@ lib/Model/CreateStandaloneAdRequestPlacementAssetsRulesInner.php
 lib/Model/CreateStandaloneAdRequestPlacementAssetsRulesInnerPlacements.php
 lib/Model/CreateStandaloneAdRequestPlacements.php
 lib/Model/CreateStandaloneAdRequestPlatformSpecificData.php
-lib/Model/CreateStandaloneAdRequestPromotedObject.php
 lib/Model/CreateStandaloneAdRequestRegionsInner.php
 lib/Model/CreateStandaloneAdRequestSitelinksInner.php
 lib/Model/CreateStandaloneAdRequestStructuredSnippetsInner.php
-lib/Model/CreateStandaloneAdRequestTracking.php
 lib/Model/CreateStandaloneAdRequestTranslationsInner.php
 lib/Model/CreateStandaloneAdRequestVideo.php
 lib/Model/CreateTestLead200Response.php
@@ -2809,6 +2822,8 @@ lib/Model/GetInstagramPublishingLimit200Response.php
 lib/Model/GetInstagramStoryInsights200Response.php
 lib/Model/GetInstagramStoryInsights200ResponseData.php
 lib/Model/GetInstagramStoryInsights200ResponseDataMetrics.php
+lib/Model/GetIosFourteenCampaignLimits200Response.php
+lib/Model/GetIosFourteenCampaignLimits200ResponseLimits.php
 lib/Model/GetLeadForm200Response.php
 lib/Model/GetLinkedInAggregateAnalytics200Response.php
 lib/Model/GetLinkedInAggregateAnalytics400Response.php
@@ -2985,6 +3000,8 @@ lib/Model/GoogleBusinessReview.php
 lib/Model/GoogleBusinessReviewReviewReply.php
 lib/Model/GoogleBusinessReviewReviewer.php
 lib/Model/HandleOAuthCallbackRequest.php
+lib/Model/HideAdComment200Response.php
+lib/Model/HideAdCommentRequest.php
 lib/Model/HideInboxComment200Response.php
 lib/Model/HideInboxCommentRequest.php
 lib/Model/InboxMessageEditAttachment.php
@@ -3080,6 +3097,12 @@ lib/Model/ListAdStudies200Response.php
 lib/Model/ListAdVideos200Response.php
 lib/Model/ListAds202Response.php
 lib/Model/ListAdsBusinessCenters200Response.php
+lib/Model/ListAdsInstagramAccounts200Response.php
+lib/Model/ListAdsInstagramAccounts200ResponseAccountsInner.php
+lib/Model/ListAdsInstagramAccounts200ResponsePagesInner.php
+lib/Model/ListAdsInstagramAccounts200ResponseResolved.php
+lib/Model/ListAdvertisableApplications200Response.php
+lib/Model/ListAdvertisableApplications200ResponseApplicationsInner.php
 lib/Model/ListApiKeys200Response.php
 lib/Model/ListBidStrategies200Response.php
 lib/Model/ListBlogArticles200Response.php
@@ -3267,6 +3290,7 @@ lib/Model/MediaContentType.php
 lib/Model/MediaItem.php
 lib/Model/MediaUploadResponse.php
 lib/Model/MetaAdsPlatformData.php
+lib/Model/MetaInstagramIdentityRef.php
 lib/Model/MetaLeadFormPlatformData.php
 lib/Model/MetaLeadFormPlatformDataContextCard.php
 lib/Model/MetaPromotion.php
@@ -3379,6 +3403,8 @@ lib/Model/ReplaceAdNegativeKeywordListKeywordsRequest.php
 lib/Model/ReplaceCampaignNegativeKeywordListsRequest.php
 lib/Model/ReplaceCampaignNegativeKeywords200Response.php
 lib/Model/ReplaceCampaignNegativeKeywordsRequest.php
+lib/Model/ReplyToAdComment200Response.php
+lib/Model/ReplyToAdCommentRequest.php
 lib/Model/ReplyToGoogleBusinessReview200Response.php
 lib/Model/ReplyToGoogleBusinessReviewRequest.php
 lib/Model/ReplyToInboxPost200Response.php
@@ -4035,3 +4061,18 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AdTrackingTest.php
+test/Model/CreateAdCampaign200ResponseTest.php
+test/Model/GetIosFourteenCampaignLimits200ResponseLimitsTest.php
+test/Model/GetIosFourteenCampaignLimits200ResponseTest.php
+test/Model/HideAdComment200ResponseTest.php
+test/Model/HideAdCommentRequestTest.php
+test/Model/ListAdsInstagramAccounts200ResponseAccountsInnerTest.php
+test/Model/ListAdsInstagramAccounts200ResponsePagesInnerTest.php
+test/Model/ListAdsInstagramAccounts200ResponseResolvedTest.php
+test/Model/ListAdsInstagramAccounts200ResponseTest.php
+test/Model/ListAdvertisableApplications200ResponseApplicationsInnerTest.php
+test/Model/ListAdvertisableApplications200ResponseTest.php
+test/Model/MetaInstagramIdentityRefTest.php
+test/Model/ReplyToAdComment200ResponseTest.php
+test/Model/ReplyToAdCommentRequestTest.php

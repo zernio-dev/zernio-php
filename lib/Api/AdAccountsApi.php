@@ -90,6 +90,9 @@ class AdAccountsApi
         'createValueRuleSet' => [
             'application/json',
         ],
+        'deleteAdComment' => [
+            'application/json',
+        ],
         'deleteAdNegativeKeywordList' => [
             'application/json',
         ],
@@ -114,7 +117,13 @@ class AdAccountsApi
         'getDsaRecommendations' => [
             'application/json',
         ],
+        'getIosFourteenCampaignLimits' => [
+            'application/json',
+        ],
         'getValueRuleSet' => [
+            'application/json',
+        ],
+        'hideAdComment' => [
             'application/json',
         ],
         'listAccountCallouts' => [
@@ -135,6 +144,12 @@ class AdAccountsApi
         'listAdsBusinessCenters' => [
             'application/json',
         ],
+        'listAdsInstagramAccounts' => [
+            'application/json',
+        ],
+        'listAdvertisableApplications' => [
+            'application/json',
+        ],
         'listCustomConversions' => [
             'application/json',
         ],
@@ -151,6 +166,9 @@ class AdAccountsApi
             'application/json',
         ],
         'replaceAdNegativeKeywordListKeywords' => [
+            'application/json',
+        ],
+        'replyToAdComment' => [
             'application/json',
         ],
         'updateAdAccount' => [
@@ -1726,6 +1744,359 @@ class AdAccountsApi
     }
 
     /**
+     * Operation deleteAdComment
+     *
+     * Delete an ad comment
+     *
+     * @param  string $ad_id Internal Zernio ad ID or indexed platform ad ID. (required)
+     * @param  string $comment_id TikTok comment ID from the ad comment listing. (required)
+     * @param  \DateTime|null $since Start date of the comment lookup window. Defaults to 30 days before until. (optional)
+     * @param  \DateTime|null $until End date of the comment lookup window. Defaults to today in UTC. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdComment'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ReplyToAdComment200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     */
+    public function deleteAdComment($ad_id, $comment_id, $since = null, $until = null, string $contentType = self::contentTypes['deleteAdComment'][0])
+    {
+        list($response) = $this->deleteAdCommentWithHttpInfo($ad_id, $comment_id, $since, $until, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation deleteAdCommentWithHttpInfo
+     *
+     * Delete an ad comment
+     *
+     * @param  string $ad_id Internal Zernio ad ID or indexed platform ad ID. (required)
+     * @param  string $comment_id TikTok comment ID from the ad comment listing. (required)
+     * @param  \DateTime|null $since Start date of the comment lookup window. Defaults to 30 days before until. (optional)
+     * @param  \DateTime|null $until End date of the comment lookup window. Defaults to today in UTC. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdComment'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ReplyToAdComment200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteAdCommentWithHttpInfo($ad_id, $comment_id, $since = null, $until = null, string $contentType = self::contentTypes['deleteAdComment'][0])
+    {
+        $request = $this->deleteAdCommentRequest($ad_id, $comment_id, $since, $until, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ReplyToAdComment200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ReplyToAdComment200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ReplyToAdComment200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteAdCommentAsync
+     *
+     * Delete an ad comment
+     *
+     * @param  string $ad_id Internal Zernio ad ID or indexed platform ad ID. (required)
+     * @param  string $comment_id TikTok comment ID from the ad comment listing. (required)
+     * @param  \DateTime|null $since Start date of the comment lookup window. Defaults to 30 days before until. (optional)
+     * @param  \DateTime|null $until End date of the comment lookup window. Defaults to today in UTC. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdComment'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteAdCommentAsync($ad_id, $comment_id, $since = null, $until = null, string $contentType = self::contentTypes['deleteAdComment'][0])
+    {
+        return $this->deleteAdCommentAsyncWithHttpInfo($ad_id, $comment_id, $since, $until, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteAdCommentAsyncWithHttpInfo
+     *
+     * Delete an ad comment
+     *
+     * @param  string $ad_id Internal Zernio ad ID or indexed platform ad ID. (required)
+     * @param  string $comment_id TikTok comment ID from the ad comment listing. (required)
+     * @param  \DateTime|null $since Start date of the comment lookup window. Defaults to 30 days before until. (optional)
+     * @param  \DateTime|null $until End date of the comment lookup window. Defaults to today in UTC. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdComment'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteAdCommentAsyncWithHttpInfo($ad_id, $comment_id, $since = null, $until = null, string $contentType = self::contentTypes['deleteAdComment'][0])
+    {
+        $returnType = '\Zernio\Model\ReplyToAdComment200Response';
+        $request = $this->deleteAdCommentRequest($ad_id, $comment_id, $since, $until, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteAdComment'
+     *
+     * @param  string $ad_id Internal Zernio ad ID or indexed platform ad ID. (required)
+     * @param  string $comment_id TikTok comment ID from the ad comment listing. (required)
+     * @param  \DateTime|null $since Start date of the comment lookup window. Defaults to 30 days before until. (optional)
+     * @param  \DateTime|null $until End date of the comment lookup window. Defaults to today in UTC. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdComment'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteAdCommentRequest($ad_id, $comment_id, $since = null, $until = null, string $contentType = self::contentTypes['deleteAdComment'][0])
+    {
+
+        // verify the required parameter 'ad_id' is set
+        if ($ad_id === null || (is_array($ad_id) && count($ad_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ad_id when calling deleteAdComment'
+            );
+        }
+
+        // verify the required parameter 'comment_id' is set
+        if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $comment_id when calling deleteAdComment'
+            );
+        }
+        if (!preg_match("/^\\d+$/", $comment_id)) {
+            throw new \InvalidArgumentException("invalid value for \"comment_id\" when calling AdAccountsApi.deleteAdComment, must conform to the pattern /^\\d+$/.");
+        }
+        
+
+
+
+        $resourcePath = '/v1/ads/{adId}/comments/{commentId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $since,
+            'since', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $until,
+            'until', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($ad_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'adId' . '}',
+                ObjectSerializer::toPathValue($ad_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($comment_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'commentId' . '}',
+                ObjectSerializer::toPathValue($comment_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation deleteAdNegativeKeywordList
      *
      * Delete a negative keyword list
@@ -2719,9 +3090,11 @@ class AdAccountsApi
      *
      * List comments on an ad
      *
-     * @param  string $ad_id Internal Zernio ad ID (ObjectId). (required)
+     * @param  string $ad_id Internal Zernio ad ID or indexed platform ad/post ID. (required)
      * @param  string|null $placement Which side of the ad to return comments for. Omit to default to the Instagram side when present, else Facebook. Returns ad_not_commentable if the ad has no such placement. (optional)
      * @param  int|null $limit limit (optional, default to 25)
+     * @param  \DateTime|null $since TikTok-only start date. Defaults to 30 days before until. Maximum window is 30 days. (optional)
+     * @param  \DateTime|null $until TikTok-only end date. Defaults to today in UTC. (optional)
      * @param  string|null $cursor Pagination cursor from a previous response. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdComments'] to see the possible values for this operation
      *
@@ -2729,9 +3102,9 @@ class AdAccountsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetAdComments200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
      */
-    public function getAdComments($ad_id, $placement = null, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getAdComments'][0])
+    public function getAdComments($ad_id, $placement = null, $limit = 25, $since = null, $until = null, $cursor = null, string $contentType = self::contentTypes['getAdComments'][0])
     {
-        list($response) = $this->getAdCommentsWithHttpInfo($ad_id, $placement, $limit, $cursor, $contentType);
+        list($response) = $this->getAdCommentsWithHttpInfo($ad_id, $placement, $limit, $since, $until, $cursor, $contentType);
         return $response;
     }
 
@@ -2740,9 +3113,11 @@ class AdAccountsApi
      *
      * List comments on an ad
      *
-     * @param  string $ad_id Internal Zernio ad ID (ObjectId). (required)
+     * @param  string $ad_id Internal Zernio ad ID or indexed platform ad/post ID. (required)
      * @param  string|null $placement Which side of the ad to return comments for. Omit to default to the Instagram side when present, else Facebook. Returns ad_not_commentable if the ad has no such placement. (optional)
      * @param  int|null $limit (optional, default to 25)
+     * @param  \DateTime|null $since TikTok-only start date. Defaults to 30 days before until. Maximum window is 30 days. (optional)
+     * @param  \DateTime|null $until TikTok-only end date. Defaults to today in UTC. (optional)
      * @param  string|null $cursor Pagination cursor from a previous response. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdComments'] to see the possible values for this operation
      *
@@ -2750,9 +3125,9 @@ class AdAccountsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetAdComments200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAdCommentsWithHttpInfo($ad_id, $placement = null, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getAdComments'][0])
+    public function getAdCommentsWithHttpInfo($ad_id, $placement = null, $limit = 25, $since = null, $until = null, $cursor = null, string $contentType = self::contentTypes['getAdComments'][0])
     {
-        $request = $this->getAdCommentsRequest($ad_id, $placement, $limit, $cursor, $contentType);
+        $request = $this->getAdCommentsRequest($ad_id, $placement, $limit, $since, $until, $cursor, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2856,18 +3231,20 @@ class AdAccountsApi
      *
      * List comments on an ad
      *
-     * @param  string $ad_id Internal Zernio ad ID (ObjectId). (required)
+     * @param  string $ad_id Internal Zernio ad ID or indexed platform ad/post ID. (required)
      * @param  string|null $placement Which side of the ad to return comments for. Omit to default to the Instagram side when present, else Facebook. Returns ad_not_commentable if the ad has no such placement. (optional)
      * @param  int|null $limit (optional, default to 25)
+     * @param  \DateTime|null $since TikTok-only start date. Defaults to 30 days before until. Maximum window is 30 days. (optional)
+     * @param  \DateTime|null $until TikTok-only end date. Defaults to today in UTC. (optional)
      * @param  string|null $cursor Pagination cursor from a previous response. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdComments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdCommentsAsync($ad_id, $placement = null, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getAdComments'][0])
+    public function getAdCommentsAsync($ad_id, $placement = null, $limit = 25, $since = null, $until = null, $cursor = null, string $contentType = self::contentTypes['getAdComments'][0])
     {
-        return $this->getAdCommentsAsyncWithHttpInfo($ad_id, $placement, $limit, $cursor, $contentType)
+        return $this->getAdCommentsAsyncWithHttpInfo($ad_id, $placement, $limit, $since, $until, $cursor, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2880,19 +3257,21 @@ class AdAccountsApi
      *
      * List comments on an ad
      *
-     * @param  string $ad_id Internal Zernio ad ID (ObjectId). (required)
+     * @param  string $ad_id Internal Zernio ad ID or indexed platform ad/post ID. (required)
      * @param  string|null $placement Which side of the ad to return comments for. Omit to default to the Instagram side when present, else Facebook. Returns ad_not_commentable if the ad has no such placement. (optional)
      * @param  int|null $limit (optional, default to 25)
+     * @param  \DateTime|null $since TikTok-only start date. Defaults to 30 days before until. Maximum window is 30 days. (optional)
+     * @param  \DateTime|null $until TikTok-only end date. Defaults to today in UTC. (optional)
      * @param  string|null $cursor Pagination cursor from a previous response. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdComments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdCommentsAsyncWithHttpInfo($ad_id, $placement = null, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getAdComments'][0])
+    public function getAdCommentsAsyncWithHttpInfo($ad_id, $placement = null, $limit = 25, $since = null, $until = null, $cursor = null, string $contentType = self::contentTypes['getAdComments'][0])
     {
         $returnType = '\Zernio\Model\GetAdComments200Response';
-        $request = $this->getAdCommentsRequest($ad_id, $placement, $limit, $cursor, $contentType);
+        $request = $this->getAdCommentsRequest($ad_id, $placement, $limit, $since, $until, $cursor, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2933,16 +3312,18 @@ class AdAccountsApi
     /**
      * Create request for operation 'getAdComments'
      *
-     * @param  string $ad_id Internal Zernio ad ID (ObjectId). (required)
+     * @param  string $ad_id Internal Zernio ad ID or indexed platform ad/post ID. (required)
      * @param  string|null $placement Which side of the ad to return comments for. Omit to default to the Instagram side when present, else Facebook. Returns ad_not_commentable if the ad has no such placement. (optional)
      * @param  int|null $limit (optional, default to 25)
+     * @param  \DateTime|null $since TikTok-only start date. Defaults to 30 days before until. Maximum window is 30 days. (optional)
+     * @param  \DateTime|null $until TikTok-only end date. Defaults to today in UTC. (optional)
      * @param  string|null $cursor Pagination cursor from a previous response. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdComments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAdCommentsRequest($ad_id, $placement = null, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getAdComments'][0])
+    public function getAdCommentsRequest($ad_id, $placement = null, $limit = 25, $since = null, $until = null, $cursor = null, string $contentType = self::contentTypes['getAdComments'][0])
     {
 
         // verify the required parameter 'ad_id' is set
@@ -2960,6 +3341,8 @@ class AdAccountsApi
             throw new \InvalidArgumentException('invalid value for "$limit" when calling AdAccountsApi.getAdComments, must be bigger than or equal to 1.');
         }
         
+
+
 
 
         $resourcePath = '/v1/ads/{adId}/comments';
@@ -2983,6 +3366,24 @@ class AdAccountsApi
             $limit,
             'limit', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $since,
+            'since', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $until,
+            'until', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -4445,6 +4846,369 @@ class AdAccountsApi
     }
 
     /**
+     * Operation getIosFourteenCampaignLimits
+     *
+     * Get iOS 14 campaign limits
+     *
+     * @param  string $account_id Zernio Meta Ads or Facebook SocialAccount ID. (required)
+     * @param  string $ad_account_id Meta ad account ID including the act_ prefix. (required)
+     * @param  string $application_id Meta application ID from advertisable-applications. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIosFourteenCampaignLimits'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetIosFourteenCampaignLimits200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function getIosFourteenCampaignLimits($account_id, $ad_account_id, $application_id, string $contentType = self::contentTypes['getIosFourteenCampaignLimits'][0])
+    {
+        list($response) = $this->getIosFourteenCampaignLimitsWithHttpInfo($account_id, $ad_account_id, $application_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getIosFourteenCampaignLimitsWithHttpInfo
+     *
+     * Get iOS 14 campaign limits
+     *
+     * @param  string $account_id Zernio Meta Ads or Facebook SocialAccount ID. (required)
+     * @param  string $ad_account_id Meta ad account ID including the act_ prefix. (required)
+     * @param  string $application_id Meta application ID from advertisable-applications. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIosFourteenCampaignLimits'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetIosFourteenCampaignLimits200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getIosFourteenCampaignLimitsWithHttpInfo($account_id, $ad_account_id, $application_id, string $contentType = self::contentTypes['getIosFourteenCampaignLimits'][0])
+    {
+        $request = $this->getIosFourteenCampaignLimitsRequest($account_id, $ad_account_id, $application_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetIosFourteenCampaignLimits200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetIosFourteenCampaignLimits200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetIosFourteenCampaignLimits200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getIosFourteenCampaignLimitsAsync
+     *
+     * Get iOS 14 campaign limits
+     *
+     * @param  string $account_id Zernio Meta Ads or Facebook SocialAccount ID. (required)
+     * @param  string $ad_account_id Meta ad account ID including the act_ prefix. (required)
+     * @param  string $application_id Meta application ID from advertisable-applications. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIosFourteenCampaignLimits'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getIosFourteenCampaignLimitsAsync($account_id, $ad_account_id, $application_id, string $contentType = self::contentTypes['getIosFourteenCampaignLimits'][0])
+    {
+        return $this->getIosFourteenCampaignLimitsAsyncWithHttpInfo($account_id, $ad_account_id, $application_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getIosFourteenCampaignLimitsAsyncWithHttpInfo
+     *
+     * Get iOS 14 campaign limits
+     *
+     * @param  string $account_id Zernio Meta Ads or Facebook SocialAccount ID. (required)
+     * @param  string $ad_account_id Meta ad account ID including the act_ prefix. (required)
+     * @param  string $application_id Meta application ID from advertisable-applications. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIosFourteenCampaignLimits'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getIosFourteenCampaignLimitsAsyncWithHttpInfo($account_id, $ad_account_id, $application_id, string $contentType = self::contentTypes['getIosFourteenCampaignLimits'][0])
+    {
+        $returnType = '\Zernio\Model\GetIosFourteenCampaignLimits200Response';
+        $request = $this->getIosFourteenCampaignLimitsRequest($account_id, $ad_account_id, $application_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getIosFourteenCampaignLimits'
+     *
+     * @param  string $account_id Zernio Meta Ads or Facebook SocialAccount ID. (required)
+     * @param  string $ad_account_id Meta ad account ID including the act_ prefix. (required)
+     * @param  string $application_id Meta application ID from advertisable-applications. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIosFourteenCampaignLimits'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getIosFourteenCampaignLimitsRequest($account_id, $ad_account_id, $application_id, string $contentType = self::contentTypes['getIosFourteenCampaignLimits'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getIosFourteenCampaignLimits'
+            );
+        }
+
+        // verify the required parameter 'ad_account_id' is set
+        if ($ad_account_id === null || (is_array($ad_account_id) && count($ad_account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ad_account_id when calling getIosFourteenCampaignLimits'
+            );
+        }
+        if (!preg_match("/^act_[0-9]+$/", $ad_account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"ad_account_id\" when calling AdAccountsApi.getIosFourteenCampaignLimits, must conform to the pattern /^act_[0-9]+$/.");
+        }
+        
+        // verify the required parameter 'application_id' is set
+        if ($application_id === null || (is_array($application_id) && count($application_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $application_id when calling getIosFourteenCampaignLimits'
+            );
+        }
+        if (!preg_match("/^[0-9]+$/", $application_id)) {
+            throw new \InvalidArgumentException("invalid value for \"application_id\" when calling AdAccountsApi.getIosFourteenCampaignLimits, must conform to the pattern /^[0-9]+$/.");
+        }
+        
+
+        $resourcePath = '/v1/ads/ios-fourteen-campaign-limits';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $application_id,
+            'applicationId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getValueRuleSet
      *
      * Read a value rule set
@@ -4745,6 +5509,378 @@ class AdAccountsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation hideAdComment
+     *
+     * Hide or unhide an ad comment
+     *
+     * @param  string $ad_id Internal Zernio ad ID or indexed platform ad ID. (required)
+     * @param  string $comment_id TikTok comment ID from the ad comment listing. (required)
+     * @param  \Zernio\Model\HideAdCommentRequest $hide_ad_comment_request hide_ad_comment_request (required)
+     * @param  \DateTime|null $since Start date of the comment lookup window. Defaults to 30 days before until. (optional)
+     * @param  \DateTime|null $until End date of the comment lookup window. Defaults to today in UTC. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hideAdComment'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\HideAdComment200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     */
+    public function hideAdComment($ad_id, $comment_id, $hide_ad_comment_request, $since = null, $until = null, string $contentType = self::contentTypes['hideAdComment'][0])
+    {
+        list($response) = $this->hideAdCommentWithHttpInfo($ad_id, $comment_id, $hide_ad_comment_request, $since, $until, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation hideAdCommentWithHttpInfo
+     *
+     * Hide or unhide an ad comment
+     *
+     * @param  string $ad_id Internal Zernio ad ID or indexed platform ad ID. (required)
+     * @param  string $comment_id TikTok comment ID from the ad comment listing. (required)
+     * @param  \Zernio\Model\HideAdCommentRequest $hide_ad_comment_request (required)
+     * @param  \DateTime|null $since Start date of the comment lookup window. Defaults to 30 days before until. (optional)
+     * @param  \DateTime|null $until End date of the comment lookup window. Defaults to today in UTC. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hideAdComment'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\HideAdComment200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function hideAdCommentWithHttpInfo($ad_id, $comment_id, $hide_ad_comment_request, $since = null, $until = null, string $contentType = self::contentTypes['hideAdComment'][0])
+    {
+        $request = $this->hideAdCommentRequest($ad_id, $comment_id, $hide_ad_comment_request, $since, $until, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\HideAdComment200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\HideAdComment200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\HideAdComment200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation hideAdCommentAsync
+     *
+     * Hide or unhide an ad comment
+     *
+     * @param  string $ad_id Internal Zernio ad ID or indexed platform ad ID. (required)
+     * @param  string $comment_id TikTok comment ID from the ad comment listing. (required)
+     * @param  \Zernio\Model\HideAdCommentRequest $hide_ad_comment_request (required)
+     * @param  \DateTime|null $since Start date of the comment lookup window. Defaults to 30 days before until. (optional)
+     * @param  \DateTime|null $until End date of the comment lookup window. Defaults to today in UTC. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hideAdComment'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function hideAdCommentAsync($ad_id, $comment_id, $hide_ad_comment_request, $since = null, $until = null, string $contentType = self::contentTypes['hideAdComment'][0])
+    {
+        return $this->hideAdCommentAsyncWithHttpInfo($ad_id, $comment_id, $hide_ad_comment_request, $since, $until, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation hideAdCommentAsyncWithHttpInfo
+     *
+     * Hide or unhide an ad comment
+     *
+     * @param  string $ad_id Internal Zernio ad ID or indexed platform ad ID. (required)
+     * @param  string $comment_id TikTok comment ID from the ad comment listing. (required)
+     * @param  \Zernio\Model\HideAdCommentRequest $hide_ad_comment_request (required)
+     * @param  \DateTime|null $since Start date of the comment lookup window. Defaults to 30 days before until. (optional)
+     * @param  \DateTime|null $until End date of the comment lookup window. Defaults to today in UTC. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hideAdComment'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function hideAdCommentAsyncWithHttpInfo($ad_id, $comment_id, $hide_ad_comment_request, $since = null, $until = null, string $contentType = self::contentTypes['hideAdComment'][0])
+    {
+        $returnType = '\Zernio\Model\HideAdComment200Response';
+        $request = $this->hideAdCommentRequest($ad_id, $comment_id, $hide_ad_comment_request, $since, $until, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'hideAdComment'
+     *
+     * @param  string $ad_id Internal Zernio ad ID or indexed platform ad ID. (required)
+     * @param  string $comment_id TikTok comment ID from the ad comment listing. (required)
+     * @param  \Zernio\Model\HideAdCommentRequest $hide_ad_comment_request (required)
+     * @param  \DateTime|null $since Start date of the comment lookup window. Defaults to 30 days before until. (optional)
+     * @param  \DateTime|null $until End date of the comment lookup window. Defaults to today in UTC. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hideAdComment'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function hideAdCommentRequest($ad_id, $comment_id, $hide_ad_comment_request, $since = null, $until = null, string $contentType = self::contentTypes['hideAdComment'][0])
+    {
+
+        // verify the required parameter 'ad_id' is set
+        if ($ad_id === null || (is_array($ad_id) && count($ad_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ad_id when calling hideAdComment'
+            );
+        }
+
+        // verify the required parameter 'comment_id' is set
+        if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $comment_id when calling hideAdComment'
+            );
+        }
+        if (!preg_match("/^\\d+$/", $comment_id)) {
+            throw new \InvalidArgumentException("invalid value for \"comment_id\" when calling AdAccountsApi.hideAdComment, must conform to the pattern /^\\d+$/.");
+        }
+        
+        // verify the required parameter 'hide_ad_comment_request' is set
+        if ($hide_ad_comment_request === null || (is_array($hide_ad_comment_request) && count($hide_ad_comment_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $hide_ad_comment_request when calling hideAdComment'
+            );
+        }
+
+
+
+
+        $resourcePath = '/v1/ads/{adId}/comments/{commentId}/hide';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $since,
+            'since', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $until,
+            'until', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($ad_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'adId' . '}',
+                ObjectSerializer::toPathValue($ad_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($comment_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'commentId' . '}',
+                ObjectSerializer::toPathValue($comment_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($hide_ad_comment_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($hide_ad_comment_request));
+            } else {
+                $httpBody = $hide_ad_comment_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -6707,6 +7843,684 @@ class AdAccountsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $account_id,
             'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listAdsInstagramAccounts
+     *
+     * List Instagram ad identities
+     *
+     * @param  string $account_id Zernio Meta Ads or Facebook SocialAccount ID. (required)
+     * @param  string $ad_account_id Meta ad account ID including the act_ prefix. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdsInstagramAccounts'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListAdsInstagramAccounts200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function listAdsInstagramAccounts($account_id, $ad_account_id, string $contentType = self::contentTypes['listAdsInstagramAccounts'][0])
+    {
+        list($response) = $this->listAdsInstagramAccountsWithHttpInfo($account_id, $ad_account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listAdsInstagramAccountsWithHttpInfo
+     *
+     * List Instagram ad identities
+     *
+     * @param  string $account_id Zernio Meta Ads or Facebook SocialAccount ID. (required)
+     * @param  string $ad_account_id Meta ad account ID including the act_ prefix. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdsInstagramAccounts'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListAdsInstagramAccounts200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listAdsInstagramAccountsWithHttpInfo($account_id, $ad_account_id, string $contentType = self::contentTypes['listAdsInstagramAccounts'][0])
+    {
+        $request = $this->listAdsInstagramAccountsRequest($account_id, $ad_account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListAdsInstagramAccounts200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListAdsInstagramAccounts200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListAdsInstagramAccounts200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listAdsInstagramAccountsAsync
+     *
+     * List Instagram ad identities
+     *
+     * @param  string $account_id Zernio Meta Ads or Facebook SocialAccount ID. (required)
+     * @param  string $ad_account_id Meta ad account ID including the act_ prefix. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdsInstagramAccounts'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAdsInstagramAccountsAsync($account_id, $ad_account_id, string $contentType = self::contentTypes['listAdsInstagramAccounts'][0])
+    {
+        return $this->listAdsInstagramAccountsAsyncWithHttpInfo($account_id, $ad_account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listAdsInstagramAccountsAsyncWithHttpInfo
+     *
+     * List Instagram ad identities
+     *
+     * @param  string $account_id Zernio Meta Ads or Facebook SocialAccount ID. (required)
+     * @param  string $ad_account_id Meta ad account ID including the act_ prefix. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdsInstagramAccounts'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAdsInstagramAccountsAsyncWithHttpInfo($account_id, $ad_account_id, string $contentType = self::contentTypes['listAdsInstagramAccounts'][0])
+    {
+        $returnType = '\Zernio\Model\ListAdsInstagramAccounts200Response';
+        $request = $this->listAdsInstagramAccountsRequest($account_id, $ad_account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listAdsInstagramAccounts'
+     *
+     * @param  string $account_id Zernio Meta Ads or Facebook SocialAccount ID. (required)
+     * @param  string $ad_account_id Meta ad account ID including the act_ prefix. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdsInstagramAccounts'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listAdsInstagramAccountsRequest($account_id, $ad_account_id, string $contentType = self::contentTypes['listAdsInstagramAccounts'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling listAdsInstagramAccounts'
+            );
+        }
+
+        // verify the required parameter 'ad_account_id' is set
+        if ($ad_account_id === null || (is_array($ad_account_id) && count($ad_account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ad_account_id when calling listAdsInstagramAccounts'
+            );
+        }
+        if (!preg_match("/^act_[0-9]+$/", $ad_account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"ad_account_id\" when calling AdAccountsApi.listAdsInstagramAccounts, must conform to the pattern /^act_[0-9]+$/.");
+        }
+        
+
+        $resourcePath = '/v1/ads/instagram-accounts';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listAdvertisableApplications
+     *
+     * List advertisable apps
+     *
+     * @param  string $account_id Zernio Meta Ads or Facebook SocialAccount ID. (required)
+     * @param  string $ad_account_id Meta ad account ID including the act_ prefix. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdvertisableApplications'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListAdvertisableApplications200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function listAdvertisableApplications($account_id, $ad_account_id, string $contentType = self::contentTypes['listAdvertisableApplications'][0])
+    {
+        list($response) = $this->listAdvertisableApplicationsWithHttpInfo($account_id, $ad_account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listAdvertisableApplicationsWithHttpInfo
+     *
+     * List advertisable apps
+     *
+     * @param  string $account_id Zernio Meta Ads or Facebook SocialAccount ID. (required)
+     * @param  string $ad_account_id Meta ad account ID including the act_ prefix. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdvertisableApplications'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListAdvertisableApplications200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listAdvertisableApplicationsWithHttpInfo($account_id, $ad_account_id, string $contentType = self::contentTypes['listAdvertisableApplications'][0])
+    {
+        $request = $this->listAdvertisableApplicationsRequest($account_id, $ad_account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListAdvertisableApplications200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListAdvertisableApplications200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListAdvertisableApplications200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listAdvertisableApplicationsAsync
+     *
+     * List advertisable apps
+     *
+     * @param  string $account_id Zernio Meta Ads or Facebook SocialAccount ID. (required)
+     * @param  string $ad_account_id Meta ad account ID including the act_ prefix. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdvertisableApplications'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAdvertisableApplicationsAsync($account_id, $ad_account_id, string $contentType = self::contentTypes['listAdvertisableApplications'][0])
+    {
+        return $this->listAdvertisableApplicationsAsyncWithHttpInfo($account_id, $ad_account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listAdvertisableApplicationsAsyncWithHttpInfo
+     *
+     * List advertisable apps
+     *
+     * @param  string $account_id Zernio Meta Ads or Facebook SocialAccount ID. (required)
+     * @param  string $ad_account_id Meta ad account ID including the act_ prefix. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdvertisableApplications'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAdvertisableApplicationsAsyncWithHttpInfo($account_id, $ad_account_id, string $contentType = self::contentTypes['listAdvertisableApplications'][0])
+    {
+        $returnType = '\Zernio\Model\ListAdvertisableApplications200Response';
+        $request = $this->listAdvertisableApplicationsRequest($account_id, $ad_account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listAdvertisableApplications'
+     *
+     * @param  string $account_id Zernio Meta Ads or Facebook SocialAccount ID. (required)
+     * @param  string $ad_account_id Meta ad account ID including the act_ prefix. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdvertisableApplications'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listAdvertisableApplicationsRequest($account_id, $ad_account_id, string $contentType = self::contentTypes['listAdvertisableApplications'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling listAdvertisableApplications'
+            );
+        }
+
+        // verify the required parameter 'ad_account_id' is set
+        if ($ad_account_id === null || (is_array($ad_account_id) && count($ad_account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ad_account_id when calling listAdvertisableApplications'
+            );
+        }
+        if (!preg_match("/^act_[0-9]+$/", $ad_account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"ad_account_id\" when calling AdAccountsApi.listAdvertisableApplications, must conform to the pattern /^act_[0-9]+$/.");
+        }
+        
+
+        $resourcePath = '/v1/ads/advertisable-applications';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -8743,6 +10557,378 @@ class AdAccountsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation replyToAdComment
+     *
+     * Reply to an ad comment
+     *
+     * @param  string $ad_id Internal Zernio ad ID or indexed platform ad ID. (required)
+     * @param  string $comment_id TikTok comment ID from the ad comment listing. (required)
+     * @param  \Zernio\Model\ReplyToAdCommentRequest $reply_to_ad_comment_request reply_to_ad_comment_request (required)
+     * @param  \DateTime|null $since Start date of the comment lookup window. Defaults to 30 days before until. (optional)
+     * @param  \DateTime|null $until End date of the comment lookup window. Defaults to today in UTC. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToAdComment'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ReplyToAdComment200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     */
+    public function replyToAdComment($ad_id, $comment_id, $reply_to_ad_comment_request, $since = null, $until = null, string $contentType = self::contentTypes['replyToAdComment'][0])
+    {
+        list($response) = $this->replyToAdCommentWithHttpInfo($ad_id, $comment_id, $reply_to_ad_comment_request, $since, $until, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation replyToAdCommentWithHttpInfo
+     *
+     * Reply to an ad comment
+     *
+     * @param  string $ad_id Internal Zernio ad ID or indexed platform ad ID. (required)
+     * @param  string $comment_id TikTok comment ID from the ad comment listing. (required)
+     * @param  \Zernio\Model\ReplyToAdCommentRequest $reply_to_ad_comment_request (required)
+     * @param  \DateTime|null $since Start date of the comment lookup window. Defaults to 30 days before until. (optional)
+     * @param  \DateTime|null $until End date of the comment lookup window. Defaults to today in UTC. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToAdComment'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ReplyToAdComment200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function replyToAdCommentWithHttpInfo($ad_id, $comment_id, $reply_to_ad_comment_request, $since = null, $until = null, string $contentType = self::contentTypes['replyToAdComment'][0])
+    {
+        $request = $this->replyToAdCommentRequest($ad_id, $comment_id, $reply_to_ad_comment_request, $since, $until, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ReplyToAdComment200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ReplyToAdComment200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ReplyToAdComment200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation replyToAdCommentAsync
+     *
+     * Reply to an ad comment
+     *
+     * @param  string $ad_id Internal Zernio ad ID or indexed platform ad ID. (required)
+     * @param  string $comment_id TikTok comment ID from the ad comment listing. (required)
+     * @param  \Zernio\Model\ReplyToAdCommentRequest $reply_to_ad_comment_request (required)
+     * @param  \DateTime|null $since Start date of the comment lookup window. Defaults to 30 days before until. (optional)
+     * @param  \DateTime|null $until End date of the comment lookup window. Defaults to today in UTC. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToAdComment'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function replyToAdCommentAsync($ad_id, $comment_id, $reply_to_ad_comment_request, $since = null, $until = null, string $contentType = self::contentTypes['replyToAdComment'][0])
+    {
+        return $this->replyToAdCommentAsyncWithHttpInfo($ad_id, $comment_id, $reply_to_ad_comment_request, $since, $until, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation replyToAdCommentAsyncWithHttpInfo
+     *
+     * Reply to an ad comment
+     *
+     * @param  string $ad_id Internal Zernio ad ID or indexed platform ad ID. (required)
+     * @param  string $comment_id TikTok comment ID from the ad comment listing. (required)
+     * @param  \Zernio\Model\ReplyToAdCommentRequest $reply_to_ad_comment_request (required)
+     * @param  \DateTime|null $since Start date of the comment lookup window. Defaults to 30 days before until. (optional)
+     * @param  \DateTime|null $until End date of the comment lookup window. Defaults to today in UTC. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToAdComment'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function replyToAdCommentAsyncWithHttpInfo($ad_id, $comment_id, $reply_to_ad_comment_request, $since = null, $until = null, string $contentType = self::contentTypes['replyToAdComment'][0])
+    {
+        $returnType = '\Zernio\Model\ReplyToAdComment200Response';
+        $request = $this->replyToAdCommentRequest($ad_id, $comment_id, $reply_to_ad_comment_request, $since, $until, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'replyToAdComment'
+     *
+     * @param  string $ad_id Internal Zernio ad ID or indexed platform ad ID. (required)
+     * @param  string $comment_id TikTok comment ID from the ad comment listing. (required)
+     * @param  \Zernio\Model\ReplyToAdCommentRequest $reply_to_ad_comment_request (required)
+     * @param  \DateTime|null $since Start date of the comment lookup window. Defaults to 30 days before until. (optional)
+     * @param  \DateTime|null $until End date of the comment lookup window. Defaults to today in UTC. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToAdComment'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function replyToAdCommentRequest($ad_id, $comment_id, $reply_to_ad_comment_request, $since = null, $until = null, string $contentType = self::contentTypes['replyToAdComment'][0])
+    {
+
+        // verify the required parameter 'ad_id' is set
+        if ($ad_id === null || (is_array($ad_id) && count($ad_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ad_id when calling replyToAdComment'
+            );
+        }
+
+        // verify the required parameter 'comment_id' is set
+        if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $comment_id when calling replyToAdComment'
+            );
+        }
+        if (!preg_match("/^\\d+$/", $comment_id)) {
+            throw new \InvalidArgumentException("invalid value for \"comment_id\" when calling AdAccountsApi.replyToAdComment, must conform to the pattern /^\\d+$/.");
+        }
+        
+        // verify the required parameter 'reply_to_ad_comment_request' is set
+        if ($reply_to_ad_comment_request === null || (is_array($reply_to_ad_comment_request) && count($reply_to_ad_comment_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $reply_to_ad_comment_request when calling replyToAdComment'
+            );
+        }
+
+
+
+
+        $resourcePath = '/v1/ads/{adId}/comments/{commentId}/reply';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $since,
+            'since', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $until,
+            'until', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($ad_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'adId' . '}',
+                ObjectSerializer::toPathValue($ad_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($comment_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'commentId' . '}',
+                ObjectSerializer::toPathValue($comment_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($reply_to_ad_comment_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($reply_to_ad_comment_request));
+            } else {
+                $httpBody = $reply_to_ad_comment_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

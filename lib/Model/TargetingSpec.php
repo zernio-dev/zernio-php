@@ -59,6 +59,8 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'user_os' => 'string[]',
+        'user_device' => 'string[]',
         'countries' => 'string[]',
         'regions' => '\Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]',
         'cities' => '\Zernio\Model\TargetingSpecCitiesInner[]',
@@ -92,6 +94,8 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'user_os' => null,
+        'user_device' => null,
         'countries' => null,
         'regions' => null,
         'cities' => null,
@@ -123,6 +127,8 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'user_os' => false,
+        'user_device' => false,
         'countries' => false,
         'regions' => false,
         'cities' => false,
@@ -234,6 +240,8 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'user_os' => 'userOs',
+        'user_device' => 'userDevice',
         'countries' => 'countries',
         'regions' => 'regions',
         'cities' => 'cities',
@@ -265,6 +273,8 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'user_os' => 'setUserOs',
+        'user_device' => 'setUserDevice',
         'countries' => 'setCountries',
         'regions' => 'setRegions',
         'cities' => 'setCities',
@@ -296,6 +306,8 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'user_os' => 'getUserOs',
+        'user_device' => 'getUserDevice',
         'countries' => 'getCountries',
         'regions' => 'getRegions',
         'cities' => 'getCities',
@@ -414,6 +426,8 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('user_os', $data ?? [], null);
+        $this->setIfExists('user_device', $data ?? [], null);
         $this->setIfExists('countries', $data ?? [], null);
         $this->setIfExists('regions', $data ?? [], null);
         $this->setIfExists('cities', $data ?? [], null);
@@ -466,6 +480,14 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['user_os']) && (count($this->container['user_os']) < 1)) {
+            $invalidProperties[] = "invalid value for 'user_os', number of items must be greater than or equal to 1.";
+        }
+
+        if (!is_null($this->container['user_device']) && (count($this->container['user_device']) < 1)) {
+            $invalidProperties[] = "invalid value for 'user_device', number of items must be greater than or equal to 1.";
+        }
+
         if (!is_null($this->container['age_min']) && ($this->container['age_min'] > 100)) {
             $invalidProperties[] = "invalid value for 'age_min', must be smaller than or equal to 100.";
         }
@@ -514,6 +536,70 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets user_os
+     *
+     * @return string[]|null
+     */
+    public function getUserOs()
+    {
+        return $this->container['user_os'];
+    }
+
+    /**
+     * Sets user_os
+     *
+     * @param string[]|null $user_os Meta only. Operating systems and version ranges, such as iOS_ver_14.0_and_above or Android. Emitted as user_os. May also be supplied inside targeting.
+     *
+     * @return self
+     */
+    public function setUserOs($user_os)
+    {
+        if (is_null($user_os)) {
+            throw new \InvalidArgumentException('non-nullable user_os cannot be null');
+        }
+
+
+        if ((count($user_os) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $user_os when calling TargetingSpec., number of items must be greater than or equal to 1.');
+        }
+        $this->container['user_os'] = $user_os;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_device
+     *
+     * @return string[]|null
+     */
+    public function getUserDevice()
+    {
+        return $this->container['user_device'];
+    }
+
+    /**
+     * Sets user_device
+     *
+     * @param string[]|null $user_device Meta only. Device models such as iPhone. Emitted as user_device. May also be supplied inside targeting.
+     *
+     * @return self
+     */
+    public function setUserDevice($user_device)
+    {
+        if (is_null($user_device)) {
+            throw new \InvalidArgumentException('non-nullable user_device cannot be null');
+        }
+
+
+        if ((count($user_device) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $user_device when calling TargetingSpec., number of items must be greater than or equal to 1.');
+        }
+        $this->container['user_device'] = $user_device;
+
+        return $this;
+    }
 
     /**
      * Gets countries

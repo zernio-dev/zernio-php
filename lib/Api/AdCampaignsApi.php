@@ -1438,7 +1438,7 @@ class AdCampaignsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateAdCampaign201Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\CreateAdCampaign200Response|\Zernio\Model\CreateAdCampaign201Response|\Zernio\Model\InlineObject1
      */
     public function createAdCampaign($create_ad_campaign_request, $idempotency_key = null, string $contentType = self::contentTypes['createAdCampaign'][0])
     {
@@ -1457,7 +1457,7 @@ class AdCampaignsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateAdCampaign201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateAdCampaign200Response|\Zernio\Model\CreateAdCampaign201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function createAdCampaignWithHttpInfo($create_ad_campaign_request, $idempotency_key = null, string $contentType = self::contentTypes['createAdCampaign'][0])
     {
@@ -1487,6 +1487,12 @@ class AdCampaignsApi
 
 
             switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreateAdCampaign200Response',
+                        $request,
+                        $response,
+                    );
                 case 201:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\CreateAdCampaign201Response',
@@ -1517,12 +1523,20 @@ class AdCampaignsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\CreateAdCampaign201Response',
+                '\Zernio\Model\CreateAdCampaign200Response',
                 $request,
                 $response,
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreateAdCampaign200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1582,7 +1596,7 @@ class AdCampaignsApi
      */
     public function createAdCampaignAsyncWithHttpInfo($create_ad_campaign_request, $idempotency_key = null, string $contentType = self::contentTypes['createAdCampaign'][0])
     {
-        $returnType = '\Zernio\Model\CreateAdCampaign201Response';
+        $returnType = '\Zernio\Model\CreateAdCampaign200Response';
         $request = $this->createAdCampaignRequest($create_ad_campaign_request, $idempotency_key, $contentType);
 
         return $this->client

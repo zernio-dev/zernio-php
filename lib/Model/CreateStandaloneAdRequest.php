@@ -64,7 +64,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'campaign_name' => 'string',
         'ad_set_name' => 'string',
         'ad_name' => 'string',
-        'tracking' => '\Zernio\Model\CreateStandaloneAdRequestTracking',
+        'tracking' => '\Zernio\Model\AdTracking',
         'goal' => 'string',
         'optimization_goal' => 'string',
         'billing_event' => 'string',
@@ -156,7 +156,11 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'brand_identity' => '\Zernio\Model\CreateStandaloneAdRequestBrandIdentity',
         'identity_type' => 'string',
         'smart_plus' => 'bool',
-        'promoted_object' => '\Zernio\Model\CreateStandaloneAdRequestPromotedObject'
+        'user_os' => 'string[]',
+        'user_device' => 'string[]',
+        'is_skadnetwork_attribution' => 'bool',
+        'campaign_attribution' => 'string',
+        'promoted_object' => '\Zernio\Model\AdPromotedObject'
     ];
 
     /**
@@ -265,6 +269,10 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'brand_identity' => null,
         'identity_type' => null,
         'smart_plus' => null,
+        'user_os' => null,
+        'user_device' => null,
+        'is_skadnetwork_attribution' => null,
+        'campaign_attribution' => null,
         'promoted_object' => null
     ];
 
@@ -372,6 +380,10 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'brand_identity' => false,
         'identity_type' => false,
         'smart_plus' => false,
+        'user_os' => false,
+        'user_device' => false,
+        'is_skadnetwork_attribution' => false,
+        'campaign_attribution' => false,
         'promoted_object' => false
     ];
 
@@ -559,6 +571,10 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'brand_identity' => 'brandIdentity',
         'identity_type' => 'identityType',
         'smart_plus' => 'smartPlus',
+        'user_os' => 'userOs',
+        'user_device' => 'userDevice',
+        'is_skadnetwork_attribution' => 'isSkadnetworkAttribution',
+        'campaign_attribution' => 'campaignAttribution',
         'promoted_object' => 'promotedObject'
     ];
 
@@ -666,6 +682,10 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'brand_identity' => 'setBrandIdentity',
         'identity_type' => 'setIdentityType',
         'smart_plus' => 'setSmartPlus',
+        'user_os' => 'setUserOs',
+        'user_device' => 'setUserDevice',
+        'is_skadnetwork_attribution' => 'setIsSkadnetworkAttribution',
+        'campaign_attribution' => 'setCampaignAttribution',
         'promoted_object' => 'setPromotedObject'
     ];
 
@@ -773,6 +793,10 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'brand_identity' => 'getBrandIdentity',
         'identity_type' => 'getIdentityType',
         'smart_plus' => 'getSmartPlus',
+        'user_os' => 'getUserOs',
+        'user_device' => 'getUserDevice',
+        'is_skadnetwork_attribution' => 'getIsSkadnetworkAttribution',
+        'campaign_attribution' => 'getCampaignAttribution',
         'promoted_object' => 'getPromotedObject'
     ];
 
@@ -895,6 +919,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     public const GENDER_FEMALE = 'female';
     public const IDENTITY_TYPE_TT_USER = 'TT_USER';
     public const IDENTITY_TYPE_CUSTOMIZED_USER = 'CUSTOMIZED_USER';
+    public const CAMPAIGN_ATTRIBUTION_AEM = 'AEM';
+    public const CAMPAIGN_ATTRIBUTION_SKADNETWORK = 'SKADNETWORK';
 
     /**
      * Gets allowable values of the enum
@@ -1140,6 +1166,19 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCampaignAttributionAllowableValues()
+    {
+        return [
+            self::CAMPAIGN_ATTRIBUTION_AEM,
+            self::CAMPAIGN_ATTRIBUTION_SKADNETWORK,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -1252,6 +1291,10 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('brand_identity', $data ?? [], null);
         $this->setIfExists('identity_type', $data ?? [], null);
         $this->setIfExists('smart_plus', $data ?? [], null);
+        $this->setIfExists('user_os', $data ?? [], null);
+        $this->setIfExists('user_device', $data ?? [], null);
+        $this->setIfExists('is_skadnetwork_attribution', $data ?? [], null);
+        $this->setIfExists('campaign_attribution', $data ?? [], null);
         $this->setIfExists('promoted_object', $data ?? [], null);
     }
 
@@ -1564,6 +1607,23 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
 
+        if (!is_null($this->container['user_os']) && (count($this->container['user_os']) < 1)) {
+            $invalidProperties[] = "invalid value for 'user_os', number of items must be greater than or equal to 1.";
+        }
+
+        if (!is_null($this->container['user_device']) && (count($this->container['user_device']) < 1)) {
+            $invalidProperties[] = "invalid value for 'user_device', number of items must be greater than or equal to 1.";
+        }
+
+        $allowedValues = $this->getCampaignAttributionAllowableValues();
+        if (!is_null($this->container['campaign_attribution']) && !in_array($this->container['campaign_attribution'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'campaign_attribution', must be one of '%s'",
+                $this->container['campaign_attribution'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -1760,7 +1820,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets tracking
      *
-     * @return \Zernio\Model\CreateStandaloneAdRequestTracking|null
+     * @return \Zernio\Model\AdTracking|null
      */
     public function getTracking()
     {
@@ -1770,7 +1830,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets tracking
      *
-     * @param \Zernio\Model\CreateStandaloneAdRequestTracking|null $tracking tracking
+     * @param \Zernio\Model\AdTracking|null $tracking tracking
      *
      * @return self
      */
@@ -2052,7 +2112,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets validate_only
      *
-     * @param bool|null $validate_only Meta only, single standalone shape only (no creatives[], adSetId, or RESERVED). Dry-run: each node runs Meta's execution_options validate_only and NOTHING is created or persisted. Children need real parents, so a fresh tree validates the campaign + creative (the ad set needs its campaign to exist, so pass existingCampaignId to validate it too; the ad itself is never validatable pre-create). A Meta validation failure returns the 400 verbatim; success returns 200 with per-node results instead of an ad.
+     * @param bool|null $validate_only Meta only. Validates the complete inline campaign, ad set, creative and ad with execution_options validate_only. Nothing is uploaded or created, and validation bypasses Idempotency-Key storage. Supports a single image, existing video.id or existingCreativeId; media pools, new video uploads, creatives[], adSetId and RESERVED buying return 400. Existing campaign or creative nodes are marked skipped. Success returns 200 with per-node results; Meta rejection returns an error.
      *
      * @return self
      */
@@ -4529,9 +4589,137 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets user_os
+     *
+     * @return string[]|null
+     */
+    public function getUserOs()
+    {
+        return $this->container['user_os'];
+    }
+
+    /**
+     * Sets user_os
+     *
+     * @param string[]|null $user_os Meta only. Operating systems and version ranges, such as iOS_ver_14.0_and_above or Android. Emitted as user_os. May also be supplied inside targeting.
+     *
+     * @return self
+     */
+    public function setUserOs($user_os)
+    {
+        if (is_null($user_os)) {
+            throw new \InvalidArgumentException('non-nullable user_os cannot be null');
+        }
+
+
+        if ((count($user_os) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $user_os when calling CreateStandaloneAdRequest., number of items must be greater than or equal to 1.');
+        }
+        $this->container['user_os'] = $user_os;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_device
+     *
+     * @return string[]|null
+     */
+    public function getUserDevice()
+    {
+        return $this->container['user_device'];
+    }
+
+    /**
+     * Sets user_device
+     *
+     * @param string[]|null $user_device Meta only. Device models such as iPhone. Emitted as user_device. May also be supplied inside targeting.
+     *
+     * @return self
+     */
+    public function setUserDevice($user_device)
+    {
+        if (is_null($user_device)) {
+            throw new \InvalidArgumentException('non-nullable user_device cannot be null');
+        }
+
+
+        if ((count($user_device) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $user_device when calling CreateStandaloneAdRequest., number of items must be greater than or equal to 1.');
+        }
+        $this->container['user_device'] = $user_device;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_skadnetwork_attribution
+     *
+     * @return bool|null
+     */
+    public function getIsSkadnetworkAttribution()
+    {
+        return $this->container['is_skadnetwork_attribution'];
+    }
+
+    /**
+     * Sets is_skadnetwork_attribution
+     *
+     * @param bool|null $is_skadnetwork_attribution Meta app promotion only. Immutable campaign flag. Set true for iOS 14+ SKAdNetwork campaigns and supply promotedObject.applicationId plus promotedObject.objectStoreUrl. The campaign receives promotedObject only when this flag is true. Cannot be changed on an existing campaign.
+     *
+     * @return self
+     */
+    public function setIsSkadnetworkAttribution($is_skadnetwork_attribution)
+    {
+        if (is_null($is_skadnetwork_attribution)) {
+            throw new \InvalidArgumentException('non-nullable is_skadnetwork_attribution cannot be null');
+        }
+        $this->container['is_skadnetwork_attribution'] = $is_skadnetwork_attribution;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_attribution
+     *
+     * @return string|null
+     */
+    public function getCampaignAttribution()
+    {
+        return $this->container['campaign_attribution'];
+    }
+
+    /**
+     * Sets campaign_attribution
+     *
+     * @param string|null $campaign_attribution Meta ad-set attribution. Required as SKADNETWORK for iOS 14+ app promotion or a SKAdNetwork campaign. Requires AUCTION buying. Standalone Meta ad-set creation is not supported; use this field on /v1/ads/create.
+     *
+     * @return self
+     */
+    public function setCampaignAttribution($campaign_attribution)
+    {
+        if (is_null($campaign_attribution)) {
+            throw new \InvalidArgumentException('non-nullable campaign_attribution cannot be null');
+        }
+        $allowedValues = $this->getCampaignAttributionAllowableValues();
+        if (!in_array($campaign_attribution, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'campaign_attribution', must be one of '%s'",
+                    $campaign_attribution,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['campaign_attribution'] = $campaign_attribution;
+
+        return $this;
+    }
+
+    /**
      * Gets promoted_object
      *
-     * @return \Zernio\Model\CreateStandaloneAdRequestPromotedObject|null
+     * @return \Zernio\Model\AdPromotedObject|null
      */
     public function getPromotedObject()
     {
@@ -4541,7 +4729,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets promoted_object
      *
-     * @param \Zernio\Model\CreateStandaloneAdRequestPromotedObject|null $promoted_object promoted_object
+     * @param \Zernio\Model\AdPromotedObject|null $promoted_object promoted_object
      *
      * @return self
      */

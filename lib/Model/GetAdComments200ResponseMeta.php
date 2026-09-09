@@ -63,6 +63,9 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         'ad_id' => 'string',
         'platform_ad_id' => 'string',
         'effective_story_id' => 'string',
+        'tiktok_item_id' => 'string',
+        'since' => '\DateTime',
+        'until' => '\DateTime',
         'facebook_account_id' => 'string',
         'instagram_user_id' => 'string',
         'instagram_permalink' => 'string',
@@ -84,6 +87,9 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         'ad_id' => null,
         'platform_ad_id' => null,
         'effective_story_id' => null,
+        'tiktok_item_id' => null,
+        'since' => 'date',
+        'until' => 'date',
         'facebook_account_id' => null,
         'instagram_user_id' => null,
         'instagram_permalink' => null,
@@ -103,6 +109,9 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         'ad_id' => false,
         'platform_ad_id' => false,
         'effective_story_id' => false,
+        'tiktok_item_id' => true,
+        'since' => false,
+        'until' => false,
         'facebook_account_id' => true,
         'instagram_user_id' => false,
         'instagram_permalink' => false,
@@ -202,6 +211,9 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         'ad_id' => 'adId',
         'platform_ad_id' => 'platformAdId',
         'effective_story_id' => 'effectiveStoryId',
+        'tiktok_item_id' => 'tiktokItemId',
+        'since' => 'since',
+        'until' => 'until',
         'facebook_account_id' => 'facebookAccountId',
         'instagram_user_id' => 'instagramUserId',
         'instagram_permalink' => 'instagramPermalink',
@@ -221,6 +233,9 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         'ad_id' => 'setAdId',
         'platform_ad_id' => 'setPlatformAdId',
         'effective_story_id' => 'setEffectiveStoryId',
+        'tiktok_item_id' => 'setTiktokItemId',
+        'since' => 'setSince',
+        'until' => 'setUntil',
         'facebook_account_id' => 'setFacebookAccountId',
         'instagram_user_id' => 'setInstagramUserId',
         'instagram_permalink' => 'setInstagramPermalink',
@@ -240,6 +255,9 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         'ad_id' => 'getAdId',
         'platform_ad_id' => 'getPlatformAdId',
         'effective_story_id' => 'getEffectiveStoryId',
+        'tiktok_item_id' => 'getTiktokItemId',
+        'since' => 'getSince',
+        'until' => 'getUntil',
         'facebook_account_id' => 'getFacebookAccountId',
         'instagram_user_id' => 'getInstagramUserId',
         'instagram_permalink' => 'getInstagramPermalink',
@@ -291,6 +309,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
 
     public const PLATFORM_FACEBOOK = 'facebook';
     public const PLATFORM_INSTAGRAM = 'instagram';
+    public const PLATFORM_TIKTOK = 'tiktok';
     public const PLACEMENT_FACEBOOK = 'facebook';
     public const PLACEMENT_INSTAGRAM = 'instagram';
 
@@ -304,6 +323,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         return [
             self::PLATFORM_FACEBOOK,
             self::PLATFORM_INSTAGRAM,
+            self::PLATFORM_TIKTOK,
         ];
     }
 
@@ -340,6 +360,9 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         $this->setIfExists('ad_id', $data ?? [], null);
         $this->setIfExists('platform_ad_id', $data ?? [], null);
         $this->setIfExists('effective_story_id', $data ?? [], null);
+        $this->setIfExists('tiktok_item_id', $data ?? [], null);
+        $this->setIfExists('since', $data ?? [], null);
+        $this->setIfExists('until', $data ?? [], null);
         $this->setIfExists('facebook_account_id', $data ?? [], null);
         $this->setIfExists('instagram_user_id', $data ?? [], null);
         $this->setIfExists('instagram_permalink', $data ?? [], null);
@@ -387,9 +410,6 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
             );
         }
 
-        if ($this->container['placement'] === null) {
-            $invalidProperties[] = "'placement' can't be null";
-        }
         $allowedValues = $this->getPlacementAllowableValues();
         if (!is_null($this->container['placement']) && !in_array($this->container['placement'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -401,12 +421,6 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
 
         if ($this->container['ad_id'] === null) {
             $invalidProperties[] = "'ad_id' can't be null";
-        }
-        if ($this->container['platform_ad_id'] === null) {
-            $invalidProperties[] = "'platform_ad_id' can't be null";
-        }
-        if ($this->container['effective_story_id'] === null) {
-            $invalidProperties[] = "'effective_story_id' can't be null";
         }
         if ($this->container['account_id'] === null) {
             $invalidProperties[] = "'account_id' can't be null";
@@ -442,7 +456,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets platform
      *
-     * @param string $platform Which side these comments are on (same as `placement`).
+     * @param string $platform Platform of the comments.
      *
      * @return self
      */
@@ -469,7 +483,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets placement
      *
-     * @return string
+     * @return string|null
      */
     public function getPlacement()
     {
@@ -479,7 +493,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets placement
      *
-     * @param string $placement The placement these comments are for, useful when you didn't pass ?placement= and want to know which one you got.
+     * @param string|null $placement The placement these comments are for, useful when you didn't pass ?placement= and want to know which one you got.
      *
      * @return self
      */
@@ -533,7 +547,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets platform_ad_id
      *
-     * @return string
+     * @return string|null
      */
     public function getPlatformAdId()
     {
@@ -543,7 +557,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets platform_ad_id
      *
-     * @param string $platform_ad_id Meta ad ID.
+     * @param string|null $platform_ad_id Platform ad ID.
      *
      * @return self
      */
@@ -560,7 +574,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets effective_story_id
      *
-     * @return string
+     * @return string|null
      */
     public function getEffectiveStoryId()
     {
@@ -570,7 +584,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets effective_story_id
      *
-     * @param string $effective_story_id Underlying post ID the comments belong to. effective_object_story_id for the Facebook side, effective_instagram_media_id for the Instagram side.
+     * @param string|null $effective_story_id Underlying post ID the comments belong to. effective_object_story_id for the Facebook side, effective_instagram_media_id for the Instagram side.
      *
      * @return self
      */
@@ -580,6 +594,94 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable effective_story_id cannot be null');
         }
         $this->container['effective_story_id'] = $effective_story_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets tiktok_item_id
+     *
+     * @return string|null
+     */
+    public function getTiktokItemId()
+    {
+        return $this->container['tiktok_item_id'];
+    }
+
+    /**
+     * Sets tiktok_item_id
+     *
+     * @param string|null $tiktok_item_id TikTok-only video item ID. Null when the ad and comments do not expose it.
+     *
+     * @return self
+     */
+    public function setTiktokItemId($tiktok_item_id)
+    {
+        if (is_null($tiktok_item_id)) {
+            array_push($this->openAPINullablesSetToNull, 'tiktok_item_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tiktok_item_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tiktok_item_id'] = $tiktok_item_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets since
+     *
+     * @return \DateTime|null
+     */
+    public function getSince()
+    {
+        return $this->container['since'];
+    }
+
+    /**
+     * Sets since
+     *
+     * @param \DateTime|null $since TikTok-only resolved start date.
+     *
+     * @return self
+     */
+    public function setSince($since)
+    {
+        if (is_null($since)) {
+            throw new \InvalidArgumentException('non-nullable since cannot be null');
+        }
+        $this->container['since'] = $since;
+
+        return $this;
+    }
+
+    /**
+     * Gets until
+     *
+     * @return \DateTime|null
+     */
+    public function getUntil()
+    {
+        return $this->container['until'];
+    }
+
+    /**
+     * Sets until
+     *
+     * @param \DateTime|null $until TikTok-only resolved end date.
+     *
+     * @return self
+     */
+    public function setUntil($until)
+    {
+        if (is_null($until)) {
+            throw new \InvalidArgumentException('non-nullable until cannot be null');
+        }
+        $this->container['until'] = $until;
 
         return $this;
     }

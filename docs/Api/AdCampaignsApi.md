@@ -294,7 +294,7 @@ try {
 ## `createAdCampaign()`
 
 ```php
-createAdCampaign($create_ad_campaign_request, $idempotency_key): \Zernio\Model\CreateAdCampaign201Response
+createAdCampaign($create_ad_campaign_request, $idempotency_key): \Zernio\Model\CreateAdCampaign200Response
 ```
 
 Create a standalone campaign
@@ -318,7 +318,7 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_ad_campaign_request = new \Zernio\Model\CreateAdCampaignRequest(); // \Zernio\Model\CreateAdCampaignRequest
+$create_ad_campaign_request = {"accountId":"69fc524892b3d8e85f893e73","adAccountId":"act_757082720485182","name":"iOS app campaign","goal":"app_promotion","isSkadnetworkAttribution":true,"promotedObject":{"applicationId":"123456789","objectStoreUrl":"https://apps.apple.com/us/app/id123456789"},"buyingType":"AUCTION","status":"PAUSED","validateOnly":true}; // \Zernio\Model\CreateAdCampaignRequest
 $idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. Only 2xx responses are stored, so a request that failed with a 4xx can be retried with a corrected body under the SAME key.
 
 try {
@@ -338,7 +338,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\CreateAdCampaign201Response**](../Model/CreateAdCampaign201Response.md)
+[**\Zernio\Model\CreateAdCampaign200Response**](../Model/CreateAdCampaign200Response.md)
 
 ### Authorization
 
@@ -502,7 +502,7 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_standalone_ad_request = {"accountId":"69fc524892b3d8e85f893e73","adAccountId":"act_123456789","name":"Autumn promotion","goal":"traffic","budgetAmount":5,"budgetType":"daily","status":"PAUSED","headline":"Save on your next order","body":"Use SAVE20 at checkout.","callToAction":"SHOP_NOW","linkUrl":"https://example.com/shop","imageUrl":"https://example.com/ad.jpg","promotion":{"type":"PERCENTAGE_OFF","value":20,"code":"SAVE20"},"creativeFeatures":{"auto_promotion_tag":"OPT_OUT"}}; // \Zernio\Model\CreateStandaloneAdRequest
+$create_standalone_ad_request = {"accountId":"69fc524892b3d8e85f893e73","adAccountId":"act_757082720485182","name":"iOS app installs","goal":"app_promotion","isSkadnetworkAttribution":true,"campaignAttribution":"SKADNETWORK","buyingType":"AUCTION","billingEvent":"IMPRESSIONS","optimizationGoal":"APP_INSTALLS","promotedObject":{"applicationId":"123456789","objectStoreUrl":"https://apps.apple.com/us/app/id123456789"},"linkUrl":"https://apps.apple.com/us/app/id123456789","headline":"Install our app","body":"Get started today.","callToAction":"INSTALL_MOBILE_APP","imageUrl":"https://example.com/app.jpg","targeting":{"countries":["US"],"userOs":["iOS_ver_14.0_and_above"]},"tracking":{"urlTags":[{"key":"utm_content","value":"{{ad.id}}"}]},"budgetAmount":1,"budgetType":"daily","status":"PAUSED","validateOnly":true}; // \Zernio\Model\CreateStandaloneAdRequest
 $idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409.
 
 try {

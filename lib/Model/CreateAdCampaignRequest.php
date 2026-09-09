@@ -62,6 +62,10 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'ad_account_id' => 'string',
         'name' => 'string',
         'goal' => 'string',
+        'is_skadnetwork_attribution' => 'bool',
+        'promoted_object' => '\Zernio\Model\AdPromotedObject',
+        'buying_type' => 'string',
+        'validate_only' => 'bool',
         'special_ad_categories' => 'string[]',
         'budget_amount' => 'float',
         'budget_type' => 'string',
@@ -84,6 +88,10 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'ad_account_id' => null,
         'name' => null,
         'goal' => null,
+        'is_skadnetwork_attribution' => null,
+        'promoted_object' => null,
+        'buying_type' => null,
+        'validate_only' => null,
         'special_ad_categories' => null,
         'budget_amount' => null,
         'budget_type' => null,
@@ -104,6 +112,10 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'ad_account_id' => false,
         'name' => false,
         'goal' => false,
+        'is_skadnetwork_attribution' => false,
+        'promoted_object' => false,
+        'buying_type' => false,
+        'validate_only' => false,
         'special_ad_categories' => false,
         'budget_amount' => false,
         'budget_type' => false,
@@ -204,6 +216,10 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'ad_account_id' => 'adAccountId',
         'name' => 'name',
         'goal' => 'goal',
+        'is_skadnetwork_attribution' => 'isSkadnetworkAttribution',
+        'promoted_object' => 'promotedObject',
+        'buying_type' => 'buyingType',
+        'validate_only' => 'validateOnly',
         'special_ad_categories' => 'specialAdCategories',
         'budget_amount' => 'budgetAmount',
         'budget_type' => 'budgetType',
@@ -224,6 +240,10 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'ad_account_id' => 'setAdAccountId',
         'name' => 'setName',
         'goal' => 'setGoal',
+        'is_skadnetwork_attribution' => 'setIsSkadnetworkAttribution',
+        'promoted_object' => 'setPromotedObject',
+        'buying_type' => 'setBuyingType',
+        'validate_only' => 'setValidateOnly',
         'special_ad_categories' => 'setSpecialAdCategories',
         'budget_amount' => 'setBudgetAmount',
         'budget_type' => 'setBudgetType',
@@ -244,6 +264,10 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'ad_account_id' => 'getAdAccountId',
         'name' => 'getName',
         'goal' => 'getGoal',
+        'is_skadnetwork_attribution' => 'getIsSkadnetworkAttribution',
+        'promoted_object' => 'getPromotedObject',
+        'buying_type' => 'getBuyingType',
+        'validate_only' => 'getValidateOnly',
         'special_ad_categories' => 'getSpecialAdCategories',
         'budget_amount' => 'getBudgetAmount',
         'budget_type' => 'getBudgetType',
@@ -306,6 +330,8 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public const GOAL_APP_PROMOTION = 'app_promotion';
     public const GOAL_CATALOG_SALES = 'catalog_sales';
     public const GOAL_PAGE_LIKES = 'page_likes';
+    public const BUYING_TYPE_AUCTION = 'AUCTION';
+    public const BUYING_TYPE_RESERVED = 'RESERVED';
     public const SPECIAL_AD_CATEGORIES_HOUSING = 'HOUSING';
     public const SPECIAL_AD_CATEGORIES_EMPLOYMENT = 'EMPLOYMENT';
     public const SPECIAL_AD_CATEGORIES_CREDIT = 'CREDIT';
@@ -340,6 +366,19 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
             self::GOAL_APP_PROMOTION,
             self::GOAL_CATALOG_SALES,
             self::GOAL_PAGE_LIKES,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBuyingTypeAllowableValues()
+    {
+        return [
+            self::BUYING_TYPE_AUCTION,
+            self::BUYING_TYPE_RESERVED,
         ];
     }
 
@@ -420,6 +459,10 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('ad_account_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('goal', $data ?? [], null);
+        $this->setIfExists('is_skadnetwork_attribution', $data ?? [], null);
+        $this->setIfExists('promoted_object', $data ?? [], null);
+        $this->setIfExists('buying_type', $data ?? [], null);
+        $this->setIfExists('validate_only', $data ?? [], null);
         $this->setIfExists('special_ad_categories', $data ?? [], null);
         $this->setIfExists('budget_amount', $data ?? [], null);
         $this->setIfExists('budget_type', $data ?? [], null);
@@ -478,6 +521,15 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'goal', must be one of '%s'",
                 $this->container['goal'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getBuyingTypeAllowableValues();
+        if (!is_null($this->container['buying_type']) && !in_array($this->container['buying_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'buying_type', must be one of '%s'",
+                $this->container['buying_type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -646,6 +698,124 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
             );
         }
         $this->container['goal'] = $goal;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_skadnetwork_attribution
+     *
+     * @return bool|null
+     */
+    public function getIsSkadnetworkAttribution()
+    {
+        return $this->container['is_skadnetwork_attribution'];
+    }
+
+    /**
+     * Sets is_skadnetwork_attribution
+     *
+     * @param bool|null $is_skadnetwork_attribution Meta app promotion only. Immutable campaign flag. Set true for iOS 14+ SKAdNetwork campaigns and supply promotedObject.applicationId plus promotedObject.objectStoreUrl. The campaign receives promotedObject only when this flag is true. Cannot be changed on an existing campaign.
+     *
+     * @return self
+     */
+    public function setIsSkadnetworkAttribution($is_skadnetwork_attribution)
+    {
+        if (is_null($is_skadnetwork_attribution)) {
+            throw new \InvalidArgumentException('non-nullable is_skadnetwork_attribution cannot be null');
+        }
+        $this->container['is_skadnetwork_attribution'] = $is_skadnetwork_attribution;
+
+        return $this;
+    }
+
+    /**
+     * Gets promoted_object
+     *
+     * @return \Zernio\Model\AdPromotedObject|null
+     */
+    public function getPromotedObject()
+    {
+        return $this->container['promoted_object'];
+    }
+
+    /**
+     * Sets promoted_object
+     *
+     * @param \Zernio\Model\AdPromotedObject|null $promoted_object promoted_object
+     *
+     * @return self
+     */
+    public function setPromotedObject($promoted_object)
+    {
+        if (is_null($promoted_object)) {
+            throw new \InvalidArgumentException('non-nullable promoted_object cannot be null');
+        }
+        $this->container['promoted_object'] = $promoted_object;
+
+        return $this;
+    }
+
+    /**
+     * Gets buying_type
+     *
+     * @return string|null
+     */
+    public function getBuyingType()
+    {
+        return $this->container['buying_type'];
+    }
+
+    /**
+     * Sets buying_type
+     *
+     * @param string|null $buying_type Meta only. SKAdNetwork app promotion requires AUCTION.
+     *
+     * @return self
+     */
+    public function setBuyingType($buying_type)
+    {
+        if (is_null($buying_type)) {
+            throw new \InvalidArgumentException('non-nullable buying_type cannot be null');
+        }
+        $allowedValues = $this->getBuyingTypeAllowableValues();
+        if (!in_array($buying_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'buying_type', must be one of '%s'",
+                    $buying_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['buying_type'] = $buying_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets validate_only
+     *
+     * @return bool|null
+     */
+    public function getValidateOnly()
+    {
+        return $this->container['validate_only'];
+    }
+
+    /**
+     * Sets validate_only
+     *
+     * @param bool|null $validate_only Meta only. Runs campaign validation without creating or persisting a campaign; Idempotency-Key storage is bypassed. Returns HTTP 200 with validateOnly true and status VALIDATED.
+     *
+     * @return self
+     */
+    public function setValidateOnly($validate_only)
+    {
+        if (is_null($validate_only)) {
+            throw new \InvalidArgumentException('non-nullable validate_only cannot be null');
+        }
+        $this->container['validate_only'] = $validate_only;
 
         return $this;
     }

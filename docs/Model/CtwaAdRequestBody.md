@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **creative_features** | **array<string,string>** | Meta enhancement settings for single or attached ads, and defaults for creatives[]. An item replaces the entire map, including with an empty object. | [optional]
+**tracking** | [**\Zernio\Model\AdTracking**](AdTracking.md) |  | [optional]
 **account_id** | **string** | Facebook or Instagram SocialAccount ID. |
 **ad_account_id** | **string** | Meta ad account ID, e.g. &#x60;act_123456789&#x60;. |
 **name** | **string** | Ad display name. Used to derive campaign / ad set names. On the multi-creative shape, each ad&#39;s Meta name gets a \&quot; #N\&quot; suffix (1-indexed) so Ads Manager shows them as a numbered batch. |

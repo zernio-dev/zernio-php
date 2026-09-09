@@ -60,6 +60,7 @@ class CtwaAdRequestBody implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static $openAPITypes = [
         'creative_features' => 'array<string,string>',
+        'tracking' => '\Zernio\Model\AdTracking',
         'account_id' => 'string',
         'ad_account_id' => 'string',
         'name' => 'string',
@@ -110,6 +111,7 @@ class CtwaAdRequestBody implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static $openAPIFormats = [
         'creative_features' => null,
+        'tracking' => null,
         'account_id' => null,
         'ad_account_id' => null,
         'name' => null,
@@ -158,6 +160,7 @@ class CtwaAdRequestBody implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static array $openAPINullables = [
         'creative_features' => false,
+        'tracking' => false,
         'account_id' => false,
         'ad_account_id' => false,
         'name' => false,
@@ -286,6 +289,7 @@ class CtwaAdRequestBody implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $attributeMap = [
         'creative_features' => 'creativeFeatures',
+        'tracking' => 'tracking',
         'account_id' => 'accountId',
         'ad_account_id' => 'adAccountId',
         'name' => 'name',
@@ -334,6 +338,7 @@ class CtwaAdRequestBody implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $setters = [
         'creative_features' => 'setCreativeFeatures',
+        'tracking' => 'setTracking',
         'account_id' => 'setAccountId',
         'ad_account_id' => 'setAdAccountId',
         'name' => 'setName',
@@ -382,6 +387,7 @@ class CtwaAdRequestBody implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $getters = [
         'creative_features' => 'getCreativeFeatures',
+        'tracking' => 'getTracking',
         'account_id' => 'getAccountId',
         'ad_account_id' => 'getAdAccountId',
         'name' => 'getName',
@@ -592,6 +598,7 @@ class CtwaAdRequestBody implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function __construct(?array $data = null)
     {
         $this->setIfExists('creative_features', $data ?? [], null);
+        $this->setIfExists('tracking', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('ad_account_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
@@ -842,6 +849,33 @@ class CtwaAdRequestBody implements ModelInterface, ArrayAccess, \JsonSerializabl
             );
         }
         $this->container['creative_features'] = $creative_features;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracking
+     *
+     * @return \Zernio\Model\AdTracking|null
+     */
+    public function getTracking()
+    {
+        return $this->container['tracking'];
+    }
+
+    /**
+     * Sets tracking
+     *
+     * @param \Zernio\Model\AdTracking|null $tracking tracking
+     *
+     * @return self
+     */
+    public function setTracking($tracking)
+    {
+        if (is_null($tracking)) {
+            throw new \InvalidArgumentException('non-nullable tracking cannot be null');
+        }
+        $this->container['tracking'] = $tracking;
 
         return $this;
     }

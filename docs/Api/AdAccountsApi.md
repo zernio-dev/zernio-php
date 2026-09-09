@@ -11,6 +11,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createCustomConversion()**](AdAccountsApi.md#createCustomConversion) | **POST** /v1/accounts/{accountId}/custom-conversions | Create or reuse a custom conversion |
 | [**createHighDemandPeriod()**](AdAccountsApi.md#createHighDemandPeriod) | **POST** /v1/ads/high-demand-periods | Schedule a budget increase |
 | [**createValueRuleSet()**](AdAccountsApi.md#createValueRuleSet) | **POST** /v1/ads/value-rule-sets | Create a value rule set |
+| [**deleteAdComment()**](AdAccountsApi.md#deleteAdComment) | **DELETE** /v1/ads/{adId}/comments/{commentId} | Delete an ad comment |
 | [**deleteAdNegativeKeywordList()**](AdAccountsApi.md#deleteAdNegativeKeywordList) | **DELETE** /v1/ads/accounts/negative-keyword-lists/{listId} | Delete a negative keyword list |
 | [**deleteValueRuleSet()**](AdAccountsApi.md#deleteValueRuleSet) | **DELETE** /v1/ads/value-rule-sets/{valueRuleSetId} | Delete a value rule set |
 | [**getAdAccountFinance()**](AdAccountsApi.md#getAdAccountFinance) | **GET** /v1/ads/accounts/finance | Ad account finances |
@@ -19,19 +20,24 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getAdsActivityLog()**](AdAccountsApi.md#getAdsActivityLog) | **GET** /v1/ads/activity | Ad account change / audit log |
 | [**getDsaDefaults()**](AdAccountsApi.md#getDsaDefaults) | **GET** /v1/ads/dsa-defaults | Get ad account DSA defaults |
 | [**getDsaRecommendations()**](AdAccountsApi.md#getDsaRecommendations) | **GET** /v1/ads/dsa-recommendations | List DSA beneficiary/payor suggestions |
+| [**getIosFourteenCampaignLimits()**](AdAccountsApi.md#getIosFourteenCampaignLimits) | **GET** /v1/ads/ios-fourteen-campaign-limits | Get iOS 14 campaign limits |
 | [**getValueRuleSet()**](AdAccountsApi.md#getValueRuleSet) | **GET** /v1/ads/value-rule-sets/{valueRuleSetId} | Read a value rule set |
+| [**hideAdComment()**](AdAccountsApi.md#hideAdComment) | **POST** /v1/ads/{adId}/comments/{commentId}/hide | Hide or unhide an ad comment |
 | [**listAccountCallouts()**](AdAccountsApi.md#listAccountCallouts) | **GET** /v1/ads/accounts/callouts | List account-level callout extensions |
 | [**listAdAccounts()**](AdAccountsApi.md#listAdAccounts) | **GET** /v1/ads/accounts | List ad accounts |
 | [**listAdLabels()**](AdAccountsApi.md#listAdLabels) | **GET** /v1/ads/labels | Ad labels |
 | [**listAdNegativeKeywordLists()**](AdAccountsApi.md#listAdNegativeKeywordLists) | **GET** /v1/ads/accounts/negative-keyword-lists | List negative keyword lists |
 | [**listAdStudies()**](AdAccountsApi.md#listAdStudies) | **GET** /v1/ads/studies | A/B tests and lift studies |
 | [**listAdsBusinessCenters()**](AdAccountsApi.md#listAdsBusinessCenters) | **GET** /v1/ads/business-centers | List TikTok Business Centers |
+| [**listAdsInstagramAccounts()**](AdAccountsApi.md#listAdsInstagramAccounts) | **GET** /v1/ads/instagram-accounts | List Instagram ad identities |
+| [**listAdvertisableApplications()**](AdAccountsApi.md#listAdvertisableApplications) | **GET** /v1/ads/advertisable-applications | List advertisable apps |
 | [**listCustomConversions()**](AdAccountsApi.md#listCustomConversions) | **GET** /v1/accounts/{accountId}/custom-conversions | List custom conversions |
 | [**listHighDemandPeriods()**](AdAccountsApi.md#listHighDemandPeriods) | **GET** /v1/ads/high-demand-periods | High demand periods / budget schedules |
 | [**listMetaBusinesses()**](AdAccountsApi.md#listMetaBusinesses) | **GET** /v1/ads/businesses | Businesses list |
 | [**listValueRuleSets()**](AdAccountsApi.md#listValueRuleSets) | **GET** /v1/ads/value-rule-sets | List value rule sets |
 | [**removeAccountCallout()**](AdAccountsApi.md#removeAccountCallout) | **DELETE** /v1/ads/accounts/callouts | Remove an account-level callout extension |
 | [**replaceAdNegativeKeywordListKeywords()**](AdAccountsApi.md#replaceAdNegativeKeywordListKeywords) | **PUT** /v1/ads/accounts/negative-keyword-lists/{listId}/keywords | Replace negative list keywords |
+| [**replyToAdComment()**](AdAccountsApi.md#replyToAdComment) | **POST** /v1/ads/{adId}/comments/{commentId}/reply | Reply to an ad comment |
 | [**updateAdAccount()**](AdAccountsApi.md#updateAdAccount) | **PATCH** /v1/ads/accounts | Update ad account settings |
 | [**updateAdNegativeKeywordList()**](AdAccountsApi.md#updateAdNegativeKeywordList) | **PUT** /v1/ads/accounts/negative-keyword-lists/{listId} | Rename a negative keyword list |
 | [**updateValueRuleSet()**](AdAccountsApi.md#updateValueRuleSet) | **PUT** /v1/ads/value-rule-sets/{valueRuleSetId} | Replace a value rule set |
@@ -339,6 +345,72 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `deleteAdComment()`
+
+```php
+deleteAdComment($ad_id, $comment_id, $since, $until): \Zernio\Model\ReplyToAdComment200Response
+```
+
+Delete an ad comment
+
+Delete your own TikTok ad comment or reply. TikTok must return can_delete=true for the comment. Other users' comments can be hidden instead.  Requires Ads access. The ad is resolved within the caller's accessible profiles. Before moderation, Zernio verifies that the comment belongs to this ad using TikTok's ad-group comment listing. The default search window is the last 30 days. Use since/until for older comments, with at most 30 days between the dates. Lookups scan at most 2,000 ad-group comments; narrow the date window if exceeded. Meta returns 501 feature_not_available with guidance to use the existing inbox comment endpoints and the account/post IDs from GET /v1/ads/{adId}/comments.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$ad_id = 'ad_id_example'; // string | Internal Zernio ad ID or indexed platform ad ID.
+$comment_id = 'comment_id_example'; // string | TikTok comment ID from the ad comment listing.
+$since = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start date of the comment lookup window. Defaults to 30 days before until.
+$until = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date of the comment lookup window. Defaults to today in UTC.
+
+try {
+    $result = $apiInstance->deleteAdComment($ad_id, $comment_id, $since, $until);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->deleteAdComment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ad_id** | **string**| Internal Zernio ad ID or indexed platform ad ID. | |
+| **comment_id** | **string**| TikTok comment ID from the ad comment listing. | |
+| **since** | **\DateTime**| Start date of the comment lookup window. Defaults to 30 days before until. | [optional] |
+| **until** | **\DateTime**| End date of the comment lookup window. Defaults to today in UTC. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ReplyToAdComment200Response**](../Model/ReplyToAdComment200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteAdNegativeKeywordList()`
 
 ```php
@@ -532,12 +604,12 @@ try {
 ## `getAdComments()`
 
 ```php
-getAdComments($ad_id, $placement, $limit, $cursor): \Zernio\Model\GetAdComments200Response
+getAdComments($ad_id, $placement, $limit, $since, $until, $cursor): \Zernio\Model\GetAdComments200Response
 ```
 
 List comments on an ad
 
-Returns comments on an ad's underlying creative post. Useful for moderating or analyzing engagement on dark posts (ad creatives that never went live organically), which the regular GET /v1/inbox/comments/{postId} endpoint cannot serve because dark posts are not in Zernio's post database.  An ad that runs on both Facebook feed and Instagram feed has two separate underlying posts with separate comment threads (the creative's effective_object_story_id and effective_instagram_media_id). Use the `placement` query param to pick one; with no param the Instagram side is returned when it exists, otherwise Facebook. The identifiers are read from the ad record (persisted during sync) with a Marketing-API fallback for ads that predate the field.  For Instagram-placed comments, the Instagram account that runs the ad must be connected to Zernio, because those comments are read through that account's token. If no connected Instagram account on the profile can read the ad's media, the call returns ads_connection_required (the Facebook side, if any, is still readable via ?placement=facebook).  Meta-only for now. Other ad platforms (TikTok, LinkedIn, Pinterest, Google, X) are not wired to this endpoint and return feature_not_available.  Requires the Ads add-on. Response shape matches GET /v1/inbox/comments/{postId}.  The `{adId}` path segment accepts any identifier dialect Zernio indexes for the ad: Zernio internal `_id` (24-char hex), Meta's numeric `platformAdId` (the value shipped in `comment.received` webhooks as `comment.ad.id`), or the creative's `effective_object_story_id` / `effective_instagram_media_id`. Caller doesn't need a translation step.
+Returns comments on an ad's underlying creative post. Useful for moderating or analyzing engagement on dark posts (ad creatives that never went live organically), which the regular GET /v1/inbox/comments/{postId} endpoint cannot serve because dark posts are not in Zernio's post database.  An ad that runs on both Facebook feed and Instagram feed has two separate underlying posts with separate comment threads (the creative's effective_object_story_id and effective_instagram_media_id). Use the `placement` query param to pick one; with no param the Instagram side is returned when it exists, otherwise Facebook. The identifiers are read from the ad record (persisted during sync) with a Marketing-API fallback for ads that predate the field.  For Instagram-placed comments, the Instagram account that runs the ad must be connected to Zernio, because those comments are read through that account's token. If no connected Instagram account on the profile can read the ad's media, the call returns ads_connection_required (the Facebook side, if any, is still readable via ?placement=facebook).  TikTok uses the connected TikTok Ads advertiser token and supports both paid video ads and Spark Ads. `since` and `until` select a date window of at most 30 days; the default is the last 30 days. TikTok searches by ad group, so Zernio filters each page to this ad. A page can be empty while `pagination.hasMore` is true. Reuse `pagination.cursor` with the same `limit`; the cursor retains the date window. `placement` is Meta-only and returns a 400 for TikTok.  TikTok returns replies as separate comments with `parentId`; nested reply fetching is not supported. `canReply` requires a first-level comment and an identity with comment-management permission. `canDelete` reflects TikTok's own-comment deletion capability. `canHide` is supported and `canLike` is false. Use the ad comment reply, hide and delete operations below to moderate TikTok comments. Other platforms return feature_not_available.  Requires the Ads add-on. Response shape matches GET /v1/inbox/comments/{postId}.  The `{adId}` path segment accepts any identifier dialect Zernio indexes for the ad: Zernio internal `_id` (24-char hex), the numeric `platformAdId` (the value shipped in `comment.received` webhooks as `comment.ad.id`), or the creative's `effective_object_story_id` / `effective_instagram_media_id`. Caller doesn't need a translation step.
 
 ### Example
 
@@ -556,13 +628,15 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$ad_id = 'ad_id_example'; // string | Internal Zernio ad ID (ObjectId).
+$ad_id = 'ad_id_example'; // string | Internal Zernio ad ID or indexed platform ad/post ID.
 $placement = 'placement_example'; // string | Which side of the ad to return comments for. Omit to default to the Instagram side when present, else Facebook. Returns ad_not_commentable if the ad has no such placement.
 $limit = 25; // int
+$since = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | TikTok-only start date. Defaults to 30 days before until. Maximum window is 30 days.
+$until = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | TikTok-only end date. Defaults to today in UTC.
 $cursor = 'cursor_example'; // string | Pagination cursor from a previous response.
 
 try {
-    $result = $apiInstance->getAdComments($ad_id, $placement, $limit, $cursor);
+    $result = $apiInstance->getAdComments($ad_id, $placement, $limit, $since, $until, $cursor);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->getAdComments: ', $e->getMessage(), PHP_EOL;
@@ -573,9 +647,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ad_id** | **string**| Internal Zernio ad ID (ObjectId). | |
+| **ad_id** | **string**| Internal Zernio ad ID or indexed platform ad/post ID. | |
 | **placement** | **string**| Which side of the ad to return comments for. Omit to default to the Instagram side when present, else Facebook. Returns ad_not_commentable if the ad has no such placement. | [optional] |
 | **limit** | **int**|  | [optional] [default to 25] |
+| **since** | **\DateTime**| TikTok-only start date. Defaults to 30 days before until. Maximum window is 30 days. | [optional] |
+| **until** | **\DateTime**| TikTok-only end date. Defaults to today in UTC. | [optional] |
 | **cursor** | **string**| Pagination cursor from a previous response. | [optional] |
 
 ### Return type
@@ -857,6 +933,70 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getIosFourteenCampaignLimits()`
+
+```php
+getIosFourteenCampaignLimits($account_id, $ad_account_id, $application_id): \Zernio\Model\GetIosFourteenCampaignLimits200Response
+```
+
+Get iOS 14 campaign limits
+
+Reads Meta iOS 14 campaign limits for an application on an ad account. applicationId is sent as Meta app_id. This read does not establish that the application is configured for iOS promotion.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio Meta Ads or Facebook SocialAccount ID.
+$ad_account_id = 'ad_account_id_example'; // string | Meta ad account ID including the act_ prefix.
+$application_id = 'application_id_example'; // string | Meta application ID from advertisable-applications.
+
+try {
+    $result = $apiInstance->getIosFourteenCampaignLimits($account_id, $ad_account_id, $application_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->getIosFourteenCampaignLimits: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio Meta Ads or Facebook SocialAccount ID. | |
+| **ad_account_id** | **string**| Meta ad account ID including the act_ prefix. | |
+| **application_id** | **string**| Meta application ID from advertisable-applications. | |
+
+### Return type
+
+[**\Zernio\Model\GetIosFourteenCampaignLimits200Response**](../Model/GetIosFourteenCampaignLimits200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getValueRuleSet()`
 
 ```php
@@ -913,6 +1053,74 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `hideAdComment()`
+
+```php
+hideAdComment($ad_id, $comment_id, $hide_ad_comment_request, $since, $until): \Zernio\Model\HideAdComment200Response
+```
+
+Hide or unhide an ad comment
+
+Hide or restore a TikTok ad comment. Send hidden=true to hide it or hidden=false to make it public again.  Requires Ads access. The ad is resolved within the caller's accessible profiles. Before moderation, Zernio verifies that the comment belongs to this ad using TikTok's ad-group comment listing. The default search window is the last 30 days. Use since/until for older comments, with at most 30 days between the dates. Lookups scan at most 2,000 ad-group comments; narrow the date window if exceeded. Meta returns 501 feature_not_available with guidance to use the existing inbox comment endpoints and the account/post IDs from GET /v1/ads/{adId}/comments.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$ad_id = 'ad_id_example'; // string | Internal Zernio ad ID or indexed platform ad ID.
+$comment_id = 'comment_id_example'; // string | TikTok comment ID from the ad comment listing.
+$hide_ad_comment_request = {"hidden":true}; // \Zernio\Model\HideAdCommentRequest
+$since = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start date of the comment lookup window. Defaults to 30 days before until.
+$until = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date of the comment lookup window. Defaults to today in UTC.
+
+try {
+    $result = $apiInstance->hideAdComment($ad_id, $comment_id, $hide_ad_comment_request, $since, $until);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->hideAdComment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ad_id** | **string**| Internal Zernio ad ID or indexed platform ad ID. | |
+| **comment_id** | **string**| TikTok comment ID from the ad comment listing. | |
+| **hide_ad_comment_request** | [**\Zernio\Model\HideAdCommentRequest**](../Model/HideAdCommentRequest.md)|  | |
+| **since** | **\DateTime**| Start date of the comment lookup window. Defaults to 30 days before until. | [optional] |
+| **until** | **\DateTime**| End date of the comment lookup window. Defaults to today in UTC. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\HideAdComment200Response**](../Model/HideAdComment200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -1303,6 +1511,130 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listAdsInstagramAccounts()`
+
+```php
+listAdsInstagramAccounts($account_id, $ad_account_id): \Zernio\Model\ListAdsInstagramAccounts200Response
+```
+
+List Instagram ad identities
+
+Discovers identities through connected_instagram_accounts, Page linkage and Page-backed identities, with a best-effort business fallback. Business permission errors do not fail discovery. The resolved object uses the same profile-scoped resolver as ad creation; null means no identity was resolved. Format-specific observed-actor fallbacks at creative creation are not predicted.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio Meta Ads or Facebook SocialAccount ID.
+$ad_account_id = 'ad_account_id_example'; // string | Meta ad account ID including the act_ prefix.
+
+try {
+    $result = $apiInstance->listAdsInstagramAccounts($account_id, $ad_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->listAdsInstagramAccounts: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio Meta Ads or Facebook SocialAccount ID. | |
+| **ad_account_id** | **string**| Meta ad account ID including the act_ prefix. | |
+
+### Return type
+
+[**\Zernio\Model\ListAdsInstagramAccounts200Response**](../Model/ListAdsInstagramAccounts200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listAdvertisableApplications()`
+
+```php
+listAdvertisableApplications($account_id, $ad_account_id): \Zernio\Model\ListAdvertisableApplications200Response
+```
+
+List advertisable apps
+
+Lists applications available to a Meta ad account, their supported platforms and unmodified object store URLs. A listed app still needs a configured mobile platform and store URL to run install promotion.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio Meta Ads or Facebook SocialAccount ID.
+$ad_account_id = 'ad_account_id_example'; // string | Meta ad account ID including the act_ prefix.
+
+try {
+    $result = $apiInstance->listAdvertisableApplications($account_id, $ad_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->listAdvertisableApplications: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio Meta Ads or Facebook SocialAccount ID. | |
+| **ad_account_id** | **string**| Meta ad account ID including the act_ prefix. | |
+
+### Return type
+
+[**\Zernio\Model\ListAdvertisableApplications200Response**](../Model/ListAdvertisableApplications200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listCustomConversions()`
 
 ```php
@@ -1671,6 +2003,74 @@ try {
 ### Return type
 
 [**\Zernio\Model\ReplaceAdNegativeKeywordListKeywords200Response**](../Model/ReplaceAdNegativeKeywordListKeywords200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `replyToAdComment()`
+
+```php
+replyToAdComment($ad_id, $comment_id, $reply_to_ad_comment_request, $since, $until): \Zernio\Model\ReplyToAdComment200Response
+```
+
+Reply to an ad comment
+
+Reply to a first-level TikTok ad comment. Requires a TT_USER or CUSTOMIZED_USER identity with comment-management permission. Replies to replies are rejected. The response commentId identifies the new reply. This operation is not idempotent; do not blindly retry an uncertain response.  Requires Ads access. The ad is resolved within the caller's accessible profiles. Before moderation, Zernio verifies that the comment belongs to this ad using TikTok's ad-group comment listing. The default search window is the last 30 days. Use since/until for older comments, with at most 30 days between the dates. Lookups scan at most 2,000 ad-group comments; narrow the date window if exceeded. Meta returns 501 feature_not_available with guidance to use the existing inbox comment endpoints and the account/post IDs from GET /v1/ads/{adId}/comments.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$ad_id = 'ad_id_example'; // string | Internal Zernio ad ID or indexed platform ad ID.
+$comment_id = 'comment_id_example'; // string | TikTok comment ID from the ad comment listing.
+$reply_to_ad_comment_request = {"text":"Thanks for your question!"}; // \Zernio\Model\ReplyToAdCommentRequest
+$since = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start date of the comment lookup window. Defaults to 30 days before until.
+$until = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date of the comment lookup window. Defaults to today in UTC.
+
+try {
+    $result = $apiInstance->replyToAdComment($ad_id, $comment_id, $reply_to_ad_comment_request, $since, $until);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->replyToAdComment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ad_id** | **string**| Internal Zernio ad ID or indexed platform ad ID. | |
+| **comment_id** | **string**| TikTok comment ID from the ad comment listing. | |
+| **reply_to_ad_comment_request** | [**\Zernio\Model\ReplyToAdCommentRequest**](../Model/ReplyToAdCommentRequest.md)|  | |
+| **since** | **\DateTime**| Start date of the comment lookup window. Defaults to 30 days before until. | [optional] |
+| **until** | **\DateTime**| End date of the comment lookup window. Defaults to today in UTC. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ReplyToAdComment200Response**](../Model/ReplyToAdComment200Response.md)
 
 ### Authorization
 
