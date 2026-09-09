@@ -402,7 +402,7 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param string|null $id The Zernio audience id. Pass this as audienceId on GET /v1/ads/audiences/{audienceId} and the companies/users upload endpoints. Null when the audience was not created through Zernio.
      *
      * @return self
      */

@@ -59,7 +59,7 @@ class GetAdAudience200Response implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPITypes = [
         'audience' => 'object',
-        'meta_data' => 'object'
+        'platform_data' => 'object'
     ];
 
     /**
@@ -71,7 +71,7 @@ class GetAdAudience200Response implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPIFormats = [
         'audience' => null,
-        'meta_data' => null
+        'platform_data' => null
     ];
 
     /**
@@ -81,7 +81,7 @@ class GetAdAudience200Response implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static array $openAPINullables = [
         'audience' => false,
-        'meta_data' => true
+        'platform_data' => true
     ];
 
     /**
@@ -171,7 +171,7 @@ class GetAdAudience200Response implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $attributeMap = [
         'audience' => 'audience',
-        'meta_data' => 'metaData'
+        'platform_data' => 'platformData'
     ];
 
     /**
@@ -181,7 +181,7 @@ class GetAdAudience200Response implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $setters = [
         'audience' => 'setAudience',
-        'meta_data' => 'setMetaData'
+        'platform_data' => 'setPlatformData'
     ];
 
     /**
@@ -191,7 +191,7 @@ class GetAdAudience200Response implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $getters = [
         'audience' => 'getAudience',
-        'meta_data' => 'getMetaData'
+        'platform_data' => 'getPlatformData'
     ];
 
     /**
@@ -252,7 +252,7 @@ class GetAdAudience200Response implements ModelInterface, ArrayAccess, \JsonSeri
     public function __construct(?array $data = null)
     {
         $this->setIfExists('audience', $data ?? [], null);
-        $this->setIfExists('meta_data', $data ?? [], null);
+        $this->setIfExists('platform_data', $data ?? [], null);
     }
 
     /**
@@ -325,35 +325,35 @@ class GetAdAudience200Response implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets meta_data
+     * Gets platform_data
      *
      * @return object|null
      */
-    public function getMetaData()
+    public function getPlatformData()
     {
-        return $this->container['meta_data'];
+        return $this->container['platform_data'];
     }
 
     /**
-     * Sets meta_data
+     * Sets platform_data
      *
-     * @param object|null $meta_data Fresh data from Meta API
+     * @param object|null $platform_data Fresh data from the platform API
      *
      * @return self
      */
-    public function setMetaData($meta_data)
+    public function setPlatformData($platform_data)
     {
-        if (is_null($meta_data)) {
-            array_push($this->openAPINullablesSetToNull, 'meta_data');
+        if (is_null($platform_data)) {
+            array_push($this->openAPINullablesSetToNull, 'platform_data');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('meta_data', $nullablesSetToNull);
+            $index = array_search('platform_data', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['meta_data'] = $meta_data;
+        $this->container['platform_data'] = $platform_data;
 
         return $this;
     }

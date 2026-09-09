@@ -42,7 +42,7 @@ $apiInstance = new Zernio\Api\AdAudiencesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$audience_id = 'audience_id_example'; // string
+$audience_id = 'audience_id_example'; // string | The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id.
 $add_users_to_ad_audience_request = new \Zernio\Model\AddUsersToAdAudienceRequest(); // \Zernio\Model\AddUsersToAdAudienceRequest
 
 try {
@@ -57,7 +57,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **audience_id** | **string**|  | |
+| **audience_id** | **string**| The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id. | |
 | **add_users_to_ad_audience_request** | [**\Zernio\Model\AddUsersToAdAudienceRequest**](../Model/AddUsersToAdAudienceRequest.md)|  | |
 
 ### Return type
@@ -224,7 +224,7 @@ $apiInstance = new Zernio\Api\AdAudiencesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$audience_id = 'audience_id_example'; // string
+$audience_id = 'audience_id_example'; // string | The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id.
 
 try {
     $result = $apiInstance->getAdAudience($audience_id);
@@ -238,7 +238,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **audience_id** | **string**|  | |
+| **audience_id** | **string**| The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id. | |
 
 ### Return type
 
@@ -350,7 +350,7 @@ $apiInstance = new Zernio\Api\AdAudiencesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$audience_id = 'audience_id_example'; // string
+$audience_id = 'audience_id_example'; // string | The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id.
 $replace_ad_audience_companies_request = new \Zernio\Model\ReplaceAdAudienceCompaniesRequest(); // \Zernio\Model\ReplaceAdAudienceCompaniesRequest
 
 try {
@@ -365,7 +365,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **audience_id** | **string**|  | |
+| **audience_id** | **string**| The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id. | |
 | **replace_ad_audience_companies_request** | [**\Zernio\Model\ReplaceAdAudienceCompaniesRequest**](../Model/ReplaceAdAudienceCompaniesRequest.md)|  | |
 
 ### Return type

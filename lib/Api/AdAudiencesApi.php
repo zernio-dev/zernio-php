@@ -149,7 +149,7 @@ class AdAudiencesApi
      *
      * Add users to audience
      *
-     * @param  string $audience_id audience_id (required)
+     * @param  string $audience_id The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id. (required)
      * @param  \Zernio\Model\AddUsersToAdAudienceRequest $add_users_to_ad_audience_request add_users_to_ad_audience_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addUsersToAdAudience'] to see the possible values for this operation
      *
@@ -168,7 +168,7 @@ class AdAudiencesApi
      *
      * Add users to audience
      *
-     * @param  string $audience_id (required)
+     * @param  string $audience_id The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id. (required)
      * @param  \Zernio\Model\AddUsersToAdAudienceRequest $add_users_to_ad_audience_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addUsersToAdAudience'] to see the possible values for this operation
      *
@@ -282,7 +282,7 @@ class AdAudiencesApi
      *
      * Add users to audience
      *
-     * @param  string $audience_id (required)
+     * @param  string $audience_id The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id. (required)
      * @param  \Zernio\Model\AddUsersToAdAudienceRequest $add_users_to_ad_audience_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addUsersToAdAudience'] to see the possible values for this operation
      *
@@ -304,7 +304,7 @@ class AdAudiencesApi
      *
      * Add users to audience
      *
-     * @param  string $audience_id (required)
+     * @param  string $audience_id The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id. (required)
      * @param  \Zernio\Model\AddUsersToAdAudienceRequest $add_users_to_ad_audience_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addUsersToAdAudience'] to see the possible values for this operation
      *
@@ -355,7 +355,7 @@ class AdAudiencesApi
     /**
      * Create request for operation 'addUsersToAdAudience'
      *
-     * @param  string $audience_id (required)
+     * @param  string $audience_id The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id. (required)
      * @param  \Zernio\Model\AddUsersToAdAudienceRequest $add_users_to_ad_audience_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addUsersToAdAudience'] to see the possible values for this operation
      *
@@ -1053,7 +1053,7 @@ class AdAudiencesApi
      *
      * Get audience details
      *
-     * @param  string $audience_id audience_id (required)
+     * @param  string $audience_id The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdAudience'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1071,7 +1071,7 @@ class AdAudiencesApi
      *
      * Get audience details
      *
-     * @param  string $audience_id (required)
+     * @param  string $audience_id The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdAudience'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1184,7 +1184,7 @@ class AdAudiencesApi
      *
      * Get audience details
      *
-     * @param  string $audience_id (required)
+     * @param  string $audience_id The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdAudience'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1205,7 +1205,7 @@ class AdAudiencesApi
      *
      * Get audience details
      *
-     * @param  string $audience_id (required)
+     * @param  string $audience_id The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdAudience'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1255,7 +1255,7 @@ class AdAudiencesApi
     /**
      * Create request for operation 'getAdAudience'
      *
-     * @param  string $audience_id (required)
+     * @param  string $audience_id The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdAudience'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1691,7 +1691,7 @@ class AdAudiencesApi
      *
      * Replace audience companies
      *
-     * @param  string $audience_id audience_id (required)
+     * @param  string $audience_id The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id. (required)
      * @param  \Zernio\Model\ReplaceAdAudienceCompaniesRequest $replace_ad_audience_companies_request replace_ad_audience_companies_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceAdAudienceCompanies'] to see the possible values for this operation
      *
@@ -1710,7 +1710,7 @@ class AdAudiencesApi
      *
      * Replace audience companies
      *
-     * @param  string $audience_id (required)
+     * @param  string $audience_id The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id. (required)
      * @param  \Zernio\Model\ReplaceAdAudienceCompaniesRequest $replace_ad_audience_companies_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceAdAudienceCompanies'] to see the possible values for this operation
      *
@@ -1824,7 +1824,7 @@ class AdAudiencesApi
      *
      * Replace audience companies
      *
-     * @param  string $audience_id (required)
+     * @param  string $audience_id The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id. (required)
      * @param  \Zernio\Model\ReplaceAdAudienceCompaniesRequest $replace_ad_audience_companies_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceAdAudienceCompanies'] to see the possible values for this operation
      *
@@ -1846,7 +1846,7 @@ class AdAudiencesApi
      *
      * Replace audience companies
      *
-     * @param  string $audience_id (required)
+     * @param  string $audience_id The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id. (required)
      * @param  \Zernio\Model\ReplaceAdAudienceCompaniesRequest $replace_ad_audience_companies_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceAdAudienceCompanies'] to see the possible values for this operation
      *
@@ -1897,7 +1897,7 @@ class AdAudiencesApi
     /**
      * Create request for operation 'replaceAdAudienceCompanies'
      *
-     * @param  string $audience_id (required)
+     * @param  string $audience_id The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id. (required)
      * @param  \Zernio\Model\ReplaceAdAudienceCompaniesRequest $replace_ad_audience_companies_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceAdAudienceCompanies'] to see the possible values for this operation
      *
