@@ -1,6 +1,6 @@
 <?php
 /**
- * CreatePost200Response
+ * UpdateGoogleBusinessLocationDetailsRequestStorefrontAddress
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreatePost200Response Class Doc Comment
+ * UpdateGoogleBusinessLocationDetailsRequestStorefrontAddress Class Doc Comment
  *
  * @category Class
+ * @description Postal address of the storefront. Use updateMask&#x3D;&#39;storefrontAddress&#39;. Omit for service-area-only businesses.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateGoogleBusinessLocationDetailsRequestStorefrontAddress implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createPost_200_response';
+    protected static $openAPIModelName = 'updateGoogleBusinessLocationDetails_request_storefrontAddress';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +59,12 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'dry_run' => 'bool',
-        'can_publish' => 'bool',
-        'tiktok' => '\Zernio\Model\TikTokDryRunVerdictTiktokInner[]',
-        'message' => 'string',
-        'post' => '\Zernio\Model\Post',
-        'warnings' => 'string[]'
+        'region_code' => 'string',
+        'language_code' => 'string',
+        'postal_code' => 'string',
+        'administrative_area' => 'string',
+        'locality' => 'string',
+        'address_lines' => 'string[]'
     ];
 
     /**
@@ -74,12 +75,12 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'dry_run' => null,
-        'can_publish' => null,
-        'tiktok' => null,
-        'message' => null,
-        'post' => null,
-        'warnings' => null
+        'region_code' => null,
+        'language_code' => null,
+        'postal_code' => null,
+        'administrative_area' => null,
+        'locality' => null,
+        'address_lines' => null
     ];
 
     /**
@@ -88,12 +89,12 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'dry_run' => false,
-        'can_publish' => false,
-        'tiktok' => false,
-        'message' => false,
-        'post' => false,
-        'warnings' => false
+        'region_code' => false,
+        'language_code' => false,
+        'postal_code' => false,
+        'administrative_area' => false,
+        'locality' => false,
+        'address_lines' => false
     ];
 
     /**
@@ -182,12 +183,12 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'dry_run' => 'dryRun',
-        'can_publish' => 'canPublish',
-        'tiktok' => 'tiktok',
-        'message' => 'message',
-        'post' => 'post',
-        'warnings' => 'warnings'
+        'region_code' => 'regionCode',
+        'language_code' => 'languageCode',
+        'postal_code' => 'postalCode',
+        'administrative_area' => 'administrativeArea',
+        'locality' => 'locality',
+        'address_lines' => 'addressLines'
     ];
 
     /**
@@ -196,12 +197,12 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'dry_run' => 'setDryRun',
-        'can_publish' => 'setCanPublish',
-        'tiktok' => 'setTiktok',
-        'message' => 'setMessage',
-        'post' => 'setPost',
-        'warnings' => 'setWarnings'
+        'region_code' => 'setRegionCode',
+        'language_code' => 'setLanguageCode',
+        'postal_code' => 'setPostalCode',
+        'administrative_area' => 'setAdministrativeArea',
+        'locality' => 'setLocality',
+        'address_lines' => 'setAddressLines'
     ];
 
     /**
@@ -210,12 +211,12 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'dry_run' => 'getDryRun',
-        'can_publish' => 'getCanPublish',
-        'tiktok' => 'getTiktok',
-        'message' => 'getMessage',
-        'post' => 'getPost',
-        'warnings' => 'getWarnings'
+        'region_code' => 'getRegionCode',
+        'language_code' => 'getLanguageCode',
+        'postal_code' => 'getPostalCode',
+        'administrative_area' => 'getAdministrativeArea',
+        'locality' => 'getLocality',
+        'address_lines' => 'getAddressLines'
     ];
 
     /**
@@ -275,12 +276,12 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('dry_run', $data ?? [], null);
-        $this->setIfExists('can_publish', $data ?? [], null);
-        $this->setIfExists('tiktok', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('post', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('region_code', $data ?? [], null);
+        $this->setIfExists('language_code', $data ?? [], null);
+        $this->setIfExists('postal_code', $data ?? [], null);
+        $this->setIfExists('administrative_area', $data ?? [], null);
+        $this->setIfExists('locality', $data ?? [], null);
+        $this->setIfExists('address_lines', $data ?? [], null);
     }
 
     /**
@@ -310,15 +311,6 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if ($this->container['dry_run'] === null) {
-            $invalidProperties[] = "'dry_run' can't be null";
-        }
-        if ($this->container['can_publish'] === null) {
-            $invalidProperties[] = "'can_publish' can't be null";
-        }
-        if ($this->container['tiktok'] === null) {
-            $invalidProperties[] = "'tiktok' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -335,163 +327,163 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets dry_run
-     *
-     * @return bool
-     */
-    public function getDryRun()
-    {
-        return $this->container['dry_run'];
-    }
-
-    /**
-     * Sets dry_run
-     *
-     * @param bool $dry_run Always true on this response
-     *
-     * @return self
-     */
-    public function setDryRun($dry_run)
-    {
-        if (is_null($dry_run)) {
-            throw new \InvalidArgumentException('non-nullable dry_run cannot be null');
-        }
-        $this->container['dry_run'] = $dry_run;
-
-        return $this;
-    }
-
-    /**
-     * Gets can_publish
-     *
-     * @return bool
-     */
-    public function getCanPublish()
-    {
-        return $this->container['can_publish'];
-    }
-
-    /**
-     * Sets can_publish
-     *
-     * @param bool $can_publish True only when every evaluated TikTok account can publish now
-     *
-     * @return self
-     */
-    public function setCanPublish($can_publish)
-    {
-        if (is_null($can_publish)) {
-            throw new \InvalidArgumentException('non-nullable can_publish cannot be null');
-        }
-        $this->container['can_publish'] = $can_publish;
-
-        return $this;
-    }
-
-    /**
-     * Gets tiktok
-     *
-     * @return \Zernio\Model\TikTokDryRunVerdictTiktokInner[]
-     */
-    public function getTiktok()
-    {
-        return $this->container['tiktok'];
-    }
-
-    /**
-     * Sets tiktok
-     *
-     * @param \Zernio\Model\TikTokDryRunVerdictTiktokInner[] $tiktok One verdict per `tiktok` entry in the request, in request order
-     *
-     * @return self
-     */
-    public function setTiktok($tiktok)
-    {
-        if (is_null($tiktok)) {
-            throw new \InvalidArgumentException('non-nullable tiktok cannot be null');
-        }
-        $this->container['tiktok'] = $tiktok;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
+     * Gets region_code
      *
      * @return string|null
      */
-    public function getMessage()
+    public function getRegionCode()
     {
-        return $this->container['message'];
+        return $this->container['region_code'];
     }
 
     /**
-     * Sets message
+     * Sets region_code
      *
-     * @param string|null $message message
+     * @param string|null $region_code ISO 3166-1 alpha-2 country code (e.g. 'BR')
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setRegionCode($region_code)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($region_code)) {
+            throw new \InvalidArgumentException('non-nullable region_code cannot be null');
         }
-        $this->container['message'] = $message;
+        $this->container['region_code'] = $region_code;
 
         return $this;
     }
 
     /**
-     * Gets post
+     * Gets language_code
      *
-     * @return \Zernio\Model\Post|null
+     * @return string|null
      */
-    public function getPost()
+    public function getLanguageCode()
     {
-        return $this->container['post'];
+        return $this->container['language_code'];
     }
 
     /**
-     * Sets post
+     * Sets language_code
      *
-     * @param \Zernio\Model\Post|null $post post
+     * @param string|null $language_code language_code
      *
      * @return self
      */
-    public function setPost($post)
+    public function setLanguageCode($language_code)
     {
-        if (is_null($post)) {
-            throw new \InvalidArgumentException('non-nullable post cannot be null');
+        if (is_null($language_code)) {
+            throw new \InvalidArgumentException('non-nullable language_code cannot be null');
         }
-        $this->container['post'] = $post;
+        $this->container['language_code'] = $language_code;
 
         return $this;
     }
 
     /**
-     * Gets warnings
+     * Gets postal_code
+     *
+     * @return string|null
+     */
+    public function getPostalCode()
+    {
+        return $this->container['postal_code'];
+    }
+
+    /**
+     * Sets postal_code
+     *
+     * @param string|null $postal_code postal_code
+     *
+     * @return self
+     */
+    public function setPostalCode($postal_code)
+    {
+        if (is_null($postal_code)) {
+            throw new \InvalidArgumentException('non-nullable postal_code cannot be null');
+        }
+        $this->container['postal_code'] = $postal_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets administrative_area
+     *
+     * @return string|null
+     */
+    public function getAdministrativeArea()
+    {
+        return $this->container['administrative_area'];
+    }
+
+    /**
+     * Sets administrative_area
+     *
+     * @param string|null $administrative_area State or province
+     *
+     * @return self
+     */
+    public function setAdministrativeArea($administrative_area)
+    {
+        if (is_null($administrative_area)) {
+            throw new \InvalidArgumentException('non-nullable administrative_area cannot be null');
+        }
+        $this->container['administrative_area'] = $administrative_area;
+
+        return $this;
+    }
+
+    /**
+     * Gets locality
+     *
+     * @return string|null
+     */
+    public function getLocality()
+    {
+        return $this->container['locality'];
+    }
+
+    /**
+     * Sets locality
+     *
+     * @param string|null $locality City
+     *
+     * @return self
+     */
+    public function setLocality($locality)
+    {
+        if (is_null($locality)) {
+            throw new \InvalidArgumentException('non-nullable locality cannot be null');
+        }
+        $this->container['locality'] = $locality;
+
+        return $this;
+    }
+
+    /**
+     * Gets address_lines
      *
      * @return string[]|null
      */
-    public function getWarnings()
+    public function getAddressLines()
     {
-        return $this->container['warnings'];
+        return $this->container['address_lines'];
     }
 
     /**
-     * Sets warnings
+     * Sets address_lines
      *
-     * @param string[]|null $warnings Advisory notices about a post that was still created: media truncated for a platform, a recycling caveat, or a field that was ignored because it sat outside platforms[].platformSpecificData. Absent when there are none.
+     * @param string[]|null $address_lines address_lines
      *
      * @return self
      */
-    public function setWarnings($warnings)
+    public function setAddressLines($address_lines)
     {
-        if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
+        if (is_null($address_lines)) {
+            throw new \InvalidArgumentException('non-nullable address_lines cannot be null');
         }
-        $this->container['warnings'] = $warnings;
+        $this->container['address_lines'] = $address_lines;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * CreatePost200Response
+ * TikTokDryRunVerdictTiktokInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreatePost200Response Class Doc Comment
+ * TikTokDryRunVerdictTiktokInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class TikTokDryRunVerdictTiktokInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createPost_200_response';
+    protected static $openAPIModelName = 'TikTokDryRunVerdict_tiktok_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +58,10 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'dry_run' => 'bool',
+        'account_id' => 'string',
         'can_publish' => 'bool',
-        'tiktok' => '\Zernio\Model\TikTokDryRunVerdictTiktokInner[]',
-        'message' => 'string',
-        'post' => '\Zernio\Model\Post',
-        'warnings' => 'string[]'
+        'already_posted_today' => 'bool',
+        'reason' => 'string'
     ];
 
     /**
@@ -74,12 +72,10 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'dry_run' => null,
+        'account_id' => null,
         'can_publish' => null,
-        'tiktok' => null,
-        'message' => null,
-        'post' => null,
-        'warnings' => null
+        'already_posted_today' => null,
+        'reason' => null
     ];
 
     /**
@@ -88,12 +84,10 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'dry_run' => false,
+        'account_id' => false,
         'can_publish' => false,
-        'tiktok' => false,
-        'message' => false,
-        'post' => false,
-        'warnings' => false
+        'already_posted_today' => false,
+        'reason' => false
     ];
 
     /**
@@ -182,12 +176,10 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'dry_run' => 'dryRun',
+        'account_id' => 'accountId',
         'can_publish' => 'canPublish',
-        'tiktok' => 'tiktok',
-        'message' => 'message',
-        'post' => 'post',
-        'warnings' => 'warnings'
+        'already_posted_today' => 'alreadyPostedToday',
+        'reason' => 'reason'
     ];
 
     /**
@@ -196,12 +188,10 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'dry_run' => 'setDryRun',
+        'account_id' => 'setAccountId',
         'can_publish' => 'setCanPublish',
-        'tiktok' => 'setTiktok',
-        'message' => 'setMessage',
-        'post' => 'setPost',
-        'warnings' => 'setWarnings'
+        'already_posted_today' => 'setAlreadyPostedToday',
+        'reason' => 'setReason'
     ];
 
     /**
@@ -210,12 +200,10 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'dry_run' => 'getDryRun',
+        'account_id' => 'getAccountId',
         'can_publish' => 'getCanPublish',
-        'tiktok' => 'getTiktok',
-        'message' => 'getMessage',
-        'post' => 'getPost',
-        'warnings' => 'getWarnings'
+        'already_posted_today' => 'getAlreadyPostedToday',
+        'reason' => 'getReason'
     ];
 
     /**
@@ -275,12 +263,10 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('dry_run', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('can_publish', $data ?? [], null);
-        $this->setIfExists('tiktok', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('post', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('already_posted_today', $data ?? [], null);
+        $this->setIfExists('reason', $data ?? [], null);
     }
 
     /**
@@ -310,14 +296,14 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if ($this->container['dry_run'] === null) {
-            $invalidProperties[] = "'dry_run' can't be null";
+        if ($this->container['account_id'] === null) {
+            $invalidProperties[] = "'account_id' can't be null";
         }
         if ($this->container['can_publish'] === null) {
             $invalidProperties[] = "'can_publish' can't be null";
         }
-        if ($this->container['tiktok'] === null) {
-            $invalidProperties[] = "'tiktok' can't be null";
+        if ($this->container['reason'] === null) {
+            $invalidProperties[] = "'reason' can't be null";
         }
         return $invalidProperties;
     }
@@ -335,28 +321,28 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets dry_run
+     * Gets account_id
      *
-     * @return bool
+     * @return string
      */
-    public function getDryRun()
+    public function getAccountId()
     {
-        return $this->container['dry_run'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets dry_run
+     * Sets account_id
      *
-     * @param bool $dry_run Always true on this response
+     * @param string $account_id account_id
      *
      * @return self
      */
-    public function setDryRun($dry_run)
+    public function setAccountId($account_id)
     {
-        if (is_null($dry_run)) {
-            throw new \InvalidArgumentException('non-nullable dry_run cannot be null');
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
-        $this->container['dry_run'] = $dry_run;
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }
@@ -374,7 +360,7 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets can_publish
      *
-     * @param bool $can_publish True only when every evaluated TikTok account can publish now
+     * @param bool $can_publish can_publish
      *
      * @return self
      */
@@ -389,109 +375,55 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets tiktok
+     * Gets already_posted_today
      *
-     * @return \Zernio\Model\TikTokDryRunVerdictTiktokInner[]
+     * @return bool|null
      */
-    public function getTiktok()
+    public function getAlreadyPostedToday()
     {
-        return $this->container['tiktok'];
+        return $this->container['already_posted_today'];
     }
 
     /**
-     * Sets tiktok
+     * Sets already_posted_today
      *
-     * @param \Zernio\Model\TikTokDryRunVerdictTiktokInner[] $tiktok One verdict per `tiktok` entry in the request, in request order
+     * @param bool|null $already_posted_today Whether this account already published a Direct Post today (an account that did can keep publishing). Absent for Creator Inbox drafts and when no per-user limit applies.
      *
      * @return self
      */
-    public function setTiktok($tiktok)
+    public function setAlreadyPostedToday($already_posted_today)
     {
-        if (is_null($tiktok)) {
-            throw new \InvalidArgumentException('non-nullable tiktok cannot be null');
+        if (is_null($already_posted_today)) {
+            throw new \InvalidArgumentException('non-nullable already_posted_today cannot be null');
         }
-        $this->container['tiktok'] = $tiktok;
+        $this->container['already_posted_today'] = $already_posted_today;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets reason
      *
-     * @return string|null
+     * @return string
      */
-    public function getMessage()
+    public function getReason()
     {
-        return $this->container['message'];
+        return $this->container['reason'];
     }
 
     /**
-     * Sets message
+     * Sets reason
      *
-     * @param string|null $message message
+     * @param string $reason Human-readable explanation of the verdict
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setReason($reason)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($reason)) {
+            throw new \InvalidArgumentException('non-nullable reason cannot be null');
         }
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets post
-     *
-     * @return \Zernio\Model\Post|null
-     */
-    public function getPost()
-    {
-        return $this->container['post'];
-    }
-
-    /**
-     * Sets post
-     *
-     * @param \Zernio\Model\Post|null $post post
-     *
-     * @return self
-     */
-    public function setPost($post)
-    {
-        if (is_null($post)) {
-            throw new \InvalidArgumentException('non-nullable post cannot be null');
-        }
-        $this->container['post'] = $post;
-
-        return $this;
-    }
-
-    /**
-     * Gets warnings
-     *
-     * @return string[]|null
-     */
-    public function getWarnings()
-    {
-        return $this->container['warnings'];
-    }
-
-    /**
-     * Sets warnings
-     *
-     * @param string[]|null $warnings Advisory notices about a post that was still created: media truncated for a platform, a recycling caveat, or a field that was ignored because it sat outside platforms[].platformSpecificData. Absent when there are none.
-     *
-     * @return self
-     */
-    public function setWarnings($warnings)
-    {
-        if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
-        }
-        $this->container['warnings'] = $warnings;
+        $this->container['reason'] = $reason;
 
         return $this;
     }

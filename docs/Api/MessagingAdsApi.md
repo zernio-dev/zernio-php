@@ -14,7 +14,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `createCallAd()`
 
 ```php
-createCallAd($create_call_ad_request)
+createCallAd($create_call_ad_request): \Zernio\Model\CreateMessagingAd201Response
 ```
 
 Create Click-to-Call ad
@@ -41,7 +41,8 @@ $apiInstance = new Zernio\Api\MessagingAdsApi(
 $create_call_ad_request = new \Zernio\Model\CreateCallAdRequest(); // \Zernio\Model\CreateCallAdRequest
 
 try {
-    $apiInstance->createCallAd($create_call_ad_request);
+    $result = $apiInstance->createCallAd($create_call_ad_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MessagingAdsApi->createCallAd: ', $e->getMessage(), PHP_EOL;
 }
@@ -55,7 +56,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Zernio\Model\CreateMessagingAd201Response**](../Model/CreateMessagingAd201Response.md)
 
 ### Authorization
 
@@ -73,7 +74,7 @@ void (empty response body)
 ## `createCtwaAd()`
 
 ```php
-createCtwaAd($ctwa_ad_request_body): \Zernio\Model\CreateCtwaAd201Response
+createCtwaAd($ctwa_ad_request_body): \Zernio\Model\CreateMessagingAd201Response
 ```
 
 Create Click-to-WhatsApp ad (deprecated)
@@ -115,7 +116,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\CreateCtwaAd201Response**](../Model/CreateCtwaAd201Response.md)
+[**\Zernio\Model\CreateMessagingAd201Response**](../Model/CreateMessagingAd201Response.md)
 
 ### Authorization
 
@@ -133,7 +134,7 @@ try {
 ## `createMessagingAd()`
 
 ```php
-createMessagingAd($create_messaging_ad_request)
+createMessagingAd($create_messaging_ad_request): \Zernio\Model\CreateMessagingAd201Response
 ```
 
 Create click-to-message ad (WhatsApp / Messenger / Instagram Direct)
@@ -160,7 +161,8 @@ $apiInstance = new Zernio\Api\MessagingAdsApi(
 $create_messaging_ad_request = new \Zernio\Model\CreateMessagingAdRequest(); // \Zernio\Model\CreateMessagingAdRequest
 
 try {
-    $apiInstance->createMessagingAd($create_messaging_ad_request);
+    $result = $apiInstance->createMessagingAd($create_messaging_ad_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MessagingAdsApi->createMessagingAd: ', $e->getMessage(), PHP_EOL;
 }
@@ -174,7 +176,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Zernio\Model\CreateMessagingAd201Response**](../Model/CreateMessagingAd201Response.md)
 
 ### Authorization
 

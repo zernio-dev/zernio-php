@@ -524,7 +524,7 @@ void (empty response body)
 ## `updateAdTrackingTags()`
 
 ```php
-updateAdTrackingTags($ad_id, $update_ad_tracking_tags_request)
+updateAdTrackingTags($ad_id, $update_ad_tracking_tags_request): \Zernio\Model\UpdateAdTrackingTags200Response
 ```
 
 Set ad tracking tags
@@ -552,7 +552,8 @@ $ad_id = 'ad_id_example'; // string
 $update_ad_tracking_tags_request = new \Zernio\Model\UpdateAdTrackingTagsRequest(); // \Zernio\Model\UpdateAdTrackingTagsRequest
 
 try {
-    $apiInstance->updateAdTrackingTags($ad_id, $update_ad_tracking_tags_request);
+    $result = $apiInstance->updateAdTrackingTags($ad_id, $update_ad_tracking_tags_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TrackingTagsApi->updateAdTrackingTags: ', $e->getMessage(), PHP_EOL;
 }
@@ -567,7 +568,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Zernio\Model\UpdateAdTrackingTags200Response**](../Model/UpdateAdTrackingTags200Response.md)
 
 ### Authorization
 

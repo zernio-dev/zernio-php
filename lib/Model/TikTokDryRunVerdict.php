@@ -1,6 +1,6 @@
 <?php
 /**
- * CreatePost200Response
+ * TikTokDryRunVerdict
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreatePost200Response Class Doc Comment
+ * TikTokDryRunVerdict Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class TikTokDryRunVerdict implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createPost_200_response';
+    protected static $openAPIModelName = 'TikTokDryRunVerdict';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,10 +60,7 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $openAPITypes = [
         'dry_run' => 'bool',
         'can_publish' => 'bool',
-        'tiktok' => '\Zernio\Model\TikTokDryRunVerdictTiktokInner[]',
-        'message' => 'string',
-        'post' => '\Zernio\Model\Post',
-        'warnings' => 'string[]'
+        'tiktok' => '\Zernio\Model\TikTokDryRunVerdictTiktokInner[]'
     ];
 
     /**
@@ -76,10 +73,7 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $openAPIFormats = [
         'dry_run' => null,
         'can_publish' => null,
-        'tiktok' => null,
-        'message' => null,
-        'post' => null,
-        'warnings' => null
+        'tiktok' => null
     ];
 
     /**
@@ -90,10 +84,7 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static array $openAPINullables = [
         'dry_run' => false,
         'can_publish' => false,
-        'tiktok' => false,
-        'message' => false,
-        'post' => false,
-        'warnings' => false
+        'tiktok' => false
     ];
 
     /**
@@ -184,10 +175,7 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $attributeMap = [
         'dry_run' => 'dryRun',
         'can_publish' => 'canPublish',
-        'tiktok' => 'tiktok',
-        'message' => 'message',
-        'post' => 'post',
-        'warnings' => 'warnings'
+        'tiktok' => 'tiktok'
     ];
 
     /**
@@ -198,10 +186,7 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $setters = [
         'dry_run' => 'setDryRun',
         'can_publish' => 'setCanPublish',
-        'tiktok' => 'setTiktok',
-        'message' => 'setMessage',
-        'post' => 'setPost',
-        'warnings' => 'setWarnings'
+        'tiktok' => 'setTiktok'
     ];
 
     /**
@@ -212,10 +197,7 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $getters = [
         'dry_run' => 'getDryRun',
         'can_publish' => 'getCanPublish',
-        'tiktok' => 'getTiktok',
-        'message' => 'getMessage',
-        'post' => 'getPost',
-        'warnings' => 'getWarnings'
+        'tiktok' => 'getTiktok'
     ];
 
     /**
@@ -278,9 +260,6 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('dry_run', $data ?? [], null);
         $this->setIfExists('can_publish', $data ?? [], null);
         $this->setIfExists('tiktok', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('post', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -411,87 +390,6 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable tiktok cannot be null');
         }
         $this->container['tiktok'] = $tiktok;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
-     *
-     * @return string|null
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param string|null $message message
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
-        }
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets post
-     *
-     * @return \Zernio\Model\Post|null
-     */
-    public function getPost()
-    {
-        return $this->container['post'];
-    }
-
-    /**
-     * Sets post
-     *
-     * @param \Zernio\Model\Post|null $post post
-     *
-     * @return self
-     */
-    public function setPost($post)
-    {
-        if (is_null($post)) {
-            throw new \InvalidArgumentException('non-nullable post cannot be null');
-        }
-        $this->container['post'] = $post;
-
-        return $this;
-    }
-
-    /**
-     * Gets warnings
-     *
-     * @return string[]|null
-     */
-    public function getWarnings()
-    {
-        return $this->container['warnings'];
-    }
-
-    /**
-     * Sets warnings
-     *
-     * @param string[]|null $warnings Advisory notices about a post that was still created: media truncated for a platform, a recycling caveat, or a field that was ignored because it sat outside platforms[].platformSpecificData. Absent when there are none.
-     *
-     * @return self
-     */
-    public function setWarnings($warnings)
-    {
-        if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
-        }
-        $this->container['warnings'] = $warnings;
 
         return $this;
     }

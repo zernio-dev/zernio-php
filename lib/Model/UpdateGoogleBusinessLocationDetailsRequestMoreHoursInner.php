@@ -1,6 +1,6 @@
 <?php
 /**
- * CreatePost200Response
+ * UpdateGoogleBusinessLocationDetailsRequestMoreHoursInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreatePost200Response Class Doc Comment
+ * UpdateGoogleBusinessLocationDetailsRequestMoreHoursInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateGoogleBusinessLocationDetailsRequestMoreHoursInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createPost_200_response';
+    protected static $openAPIModelName = 'updateGoogleBusinessLocationDetails_request_moreHours_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +58,8 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'dry_run' => 'bool',
-        'can_publish' => 'bool',
-        'tiktok' => '\Zernio\Model\TikTokDryRunVerdictTiktokInner[]',
-        'message' => 'string',
-        'post' => '\Zernio\Model\Post',
-        'warnings' => 'string[]'
+        'hours_type_id' => 'string',
+        'periods' => '\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestRegularHoursPeriodsInner[]'
     ];
 
     /**
@@ -74,12 +70,8 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'dry_run' => null,
-        'can_publish' => null,
-        'tiktok' => null,
-        'message' => null,
-        'post' => null,
-        'warnings' => null
+        'hours_type_id' => null,
+        'periods' => null
     ];
 
     /**
@@ -88,12 +80,8 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'dry_run' => false,
-        'can_publish' => false,
-        'tiktok' => false,
-        'message' => false,
-        'post' => false,
-        'warnings' => false
+        'hours_type_id' => false,
+        'periods' => false
     ];
 
     /**
@@ -182,12 +170,8 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'dry_run' => 'dryRun',
-        'can_publish' => 'canPublish',
-        'tiktok' => 'tiktok',
-        'message' => 'message',
-        'post' => 'post',
-        'warnings' => 'warnings'
+        'hours_type_id' => 'hoursTypeId',
+        'periods' => 'periods'
     ];
 
     /**
@@ -196,12 +180,8 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'dry_run' => 'setDryRun',
-        'can_publish' => 'setCanPublish',
-        'tiktok' => 'setTiktok',
-        'message' => 'setMessage',
-        'post' => 'setPost',
-        'warnings' => 'setWarnings'
+        'hours_type_id' => 'setHoursTypeId',
+        'periods' => 'setPeriods'
     ];
 
     /**
@@ -210,12 +190,8 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'dry_run' => 'getDryRun',
-        'can_publish' => 'getCanPublish',
-        'tiktok' => 'getTiktok',
-        'message' => 'getMessage',
-        'post' => 'getPost',
-        'warnings' => 'getWarnings'
+        'hours_type_id' => 'getHoursTypeId',
+        'periods' => 'getPeriods'
     ];
 
     /**
@@ -275,12 +251,8 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('dry_run', $data ?? [], null);
-        $this->setIfExists('can_publish', $data ?? [], null);
-        $this->setIfExists('tiktok', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('post', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('hours_type_id', $data ?? [], null);
+        $this->setIfExists('periods', $data ?? [], null);
     }
 
     /**
@@ -310,15 +282,6 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if ($this->container['dry_run'] === null) {
-            $invalidProperties[] = "'dry_run' can't be null";
-        }
-        if ($this->container['can_publish'] === null) {
-            $invalidProperties[] = "'can_publish' can't be null";
-        }
-        if ($this->container['tiktok'] === null) {
-            $invalidProperties[] = "'tiktok' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -335,163 +298,55 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets dry_run
-     *
-     * @return bool
-     */
-    public function getDryRun()
-    {
-        return $this->container['dry_run'];
-    }
-
-    /**
-     * Sets dry_run
-     *
-     * @param bool $dry_run Always true on this response
-     *
-     * @return self
-     */
-    public function setDryRun($dry_run)
-    {
-        if (is_null($dry_run)) {
-            throw new \InvalidArgumentException('non-nullable dry_run cannot be null');
-        }
-        $this->container['dry_run'] = $dry_run;
-
-        return $this;
-    }
-
-    /**
-     * Gets can_publish
-     *
-     * @return bool
-     */
-    public function getCanPublish()
-    {
-        return $this->container['can_publish'];
-    }
-
-    /**
-     * Sets can_publish
-     *
-     * @param bool $can_publish True only when every evaluated TikTok account can publish now
-     *
-     * @return self
-     */
-    public function setCanPublish($can_publish)
-    {
-        if (is_null($can_publish)) {
-            throw new \InvalidArgumentException('non-nullable can_publish cannot be null');
-        }
-        $this->container['can_publish'] = $can_publish;
-
-        return $this;
-    }
-
-    /**
-     * Gets tiktok
-     *
-     * @return \Zernio\Model\TikTokDryRunVerdictTiktokInner[]
-     */
-    public function getTiktok()
-    {
-        return $this->container['tiktok'];
-    }
-
-    /**
-     * Sets tiktok
-     *
-     * @param \Zernio\Model\TikTokDryRunVerdictTiktokInner[] $tiktok One verdict per `tiktok` entry in the request, in request order
-     *
-     * @return self
-     */
-    public function setTiktok($tiktok)
-    {
-        if (is_null($tiktok)) {
-            throw new \InvalidArgumentException('non-nullable tiktok cannot be null');
-        }
-        $this->container['tiktok'] = $tiktok;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
+     * Gets hours_type_id
      *
      * @return string|null
      */
-    public function getMessage()
+    public function getHoursTypeId()
     {
-        return $this->container['message'];
+        return $this->container['hours_type_id'];
     }
 
     /**
-     * Sets message
+     * Sets hours_type_id
      *
-     * @param string|null $message message
+     * @param string|null $hours_type_id Hours type from Google's catalog (e.g. 'DELIVERY', 'DRIVE_THROUGH')
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setHoursTypeId($hours_type_id)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($hours_type_id)) {
+            throw new \InvalidArgumentException('non-nullable hours_type_id cannot be null');
         }
-        $this->container['message'] = $message;
+        $this->container['hours_type_id'] = $hours_type_id;
 
         return $this;
     }
 
     /**
-     * Gets post
+     * Gets periods
      *
-     * @return \Zernio\Model\Post|null
+     * @return \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestRegularHoursPeriodsInner[]|null
      */
-    public function getPost()
+    public function getPeriods()
     {
-        return $this->container['post'];
+        return $this->container['periods'];
     }
 
     /**
-     * Sets post
+     * Sets periods
      *
-     * @param \Zernio\Model\Post|null $post post
+     * @param \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestRegularHoursPeriodsInner[]|null $periods periods
      *
      * @return self
      */
-    public function setPost($post)
+    public function setPeriods($periods)
     {
-        if (is_null($post)) {
-            throw new \InvalidArgumentException('non-nullable post cannot be null');
+        if (is_null($periods)) {
+            throw new \InvalidArgumentException('non-nullable periods cannot be null');
         }
-        $this->container['post'] = $post;
-
-        return $this;
-    }
-
-    /**
-     * Gets warnings
-     *
-     * @return string[]|null
-     */
-    public function getWarnings()
-    {
-        return $this->container['warnings'];
-    }
-
-    /**
-     * Sets warnings
-     *
-     * @param string[]|null $warnings Advisory notices about a post that was still created: media truncated for a platform, a recycling caveat, or a field that was ignored because it sat outside platforms[].platformSpecificData. Absent when there are none.
-     *
-     * @return self
-     */
-    public function setWarnings($warnings)
-    {
-        if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
-        }
-        $this->container['warnings'] = $warnings;
+        $this->container['periods'] = $periods;
 
         return $this;
     }

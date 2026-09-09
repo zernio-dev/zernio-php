@@ -1,6 +1,6 @@
 <?php
 /**
- * CreatePost200Response
+ * CreateMessagingAd201Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreatePost200Response Class Doc Comment
+ * CreateMessagingAd201Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,16 +41,16 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateMessagingAd201Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = 'ad_type';
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createPost_200_response';
+    protected static $openAPIModelName = 'createMessagingAd_201_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +58,12 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'dry_run' => 'bool',
-        'can_publish' => 'bool',
-        'tiktok' => '\Zernio\Model\TikTokDryRunVerdictTiktokInner[]',
+        'ad_type' => 'string',
+        'ad' => 'object',
         'message' => 'string',
-        'post' => '\Zernio\Model\Post',
-        'warnings' => 'string[]'
+        'ads' => 'object[]',
+        'platform_campaign_id' => 'string',
+        'platform_ad_set_id' => 'string'
     ];
 
     /**
@@ -74,12 +74,12 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'dry_run' => null,
-        'can_publish' => null,
-        'tiktok' => null,
+        'ad_type' => null,
+        'ad' => null,
         'message' => null,
-        'post' => null,
-        'warnings' => null
+        'ads' => null,
+        'platform_campaign_id' => null,
+        'platform_ad_set_id' => null
     ];
 
     /**
@@ -88,12 +88,12 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'dry_run' => false,
-        'can_publish' => false,
-        'tiktok' => false,
+        'ad_type' => false,
+        'ad' => false,
         'message' => false,
-        'post' => false,
-        'warnings' => false
+        'ads' => false,
+        'platform_campaign_id' => false,
+        'platform_ad_set_id' => false
     ];
 
     /**
@@ -182,12 +182,12 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'dry_run' => 'dryRun',
-        'can_publish' => 'canPublish',
-        'tiktok' => 'tiktok',
+        'ad_type' => 'adType',
+        'ad' => 'ad',
         'message' => 'message',
-        'post' => 'post',
-        'warnings' => 'warnings'
+        'ads' => 'ads',
+        'platform_campaign_id' => 'platformCampaignId',
+        'platform_ad_set_id' => 'platformAdSetId'
     ];
 
     /**
@@ -196,12 +196,12 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'dry_run' => 'setDryRun',
-        'can_publish' => 'setCanPublish',
-        'tiktok' => 'setTiktok',
+        'ad_type' => 'setAdType',
+        'ad' => 'setAd',
         'message' => 'setMessage',
-        'post' => 'setPost',
-        'warnings' => 'setWarnings'
+        'ads' => 'setAds',
+        'platform_campaign_id' => 'setPlatformCampaignId',
+        'platform_ad_set_id' => 'setPlatformAdSetId'
     ];
 
     /**
@@ -210,12 +210,12 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'dry_run' => 'getDryRun',
-        'can_publish' => 'getCanPublish',
-        'tiktok' => 'getTiktok',
+        'ad_type' => 'getAdType',
+        'ad' => 'getAd',
         'message' => 'getMessage',
-        'post' => 'getPost',
-        'warnings' => 'getWarnings'
+        'ads' => 'getAds',
+        'platform_campaign_id' => 'getPlatformCampaignId',
+        'platform_ad_set_id' => 'getPlatformAdSetId'
     ];
 
     /**
@@ -259,6 +259,19 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$openAPIModelName;
     }
 
+    public const AD_TYPE_MULTI = 'multi';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAdTypeAllowableValues()
+    {
+        return [
+            self::AD_TYPE_MULTI,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -275,12 +288,15 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('dry_run', $data ?? [], null);
-        $this->setIfExists('can_publish', $data ?? [], null);
-        $this->setIfExists('tiktok', $data ?? [], null);
+        $this->setIfExists('ad_type', $data ?? [], null);
+        $this->setIfExists('ad', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('post', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('ads', $data ?? [], null);
+        $this->setIfExists('platform_campaign_id', $data ?? [], null);
+        $this->setIfExists('platform_ad_set_id', $data ?? [], null);
+
+        // Initialize discriminator property with the model name.
+        $this->container['ad_type'] = static::$openAPIModelName;
     }
 
     /**
@@ -310,14 +326,32 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if ($this->container['dry_run'] === null) {
-            $invalidProperties[] = "'dry_run' can't be null";
+        if ($this->container['ad_type'] === null) {
+            $invalidProperties[] = "'ad_type' can't be null";
         }
-        if ($this->container['can_publish'] === null) {
-            $invalidProperties[] = "'can_publish' can't be null";
+        $allowedValues = $this->getAdTypeAllowableValues();
+        if (!is_null($this->container['ad_type']) && !in_array($this->container['ad_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'ad_type', must be one of '%s'",
+                $this->container['ad_type'],
+                implode("', '", $allowedValues)
+            );
         }
-        if ($this->container['tiktok'] === null) {
-            $invalidProperties[] = "'tiktok' can't be null";
+
+        if ($this->container['ad'] === null) {
+            $invalidProperties[] = "'ad' can't be null";
+        }
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
+        }
+        if ($this->container['ads'] === null) {
+            $invalidProperties[] = "'ads' can't be null";
+        }
+        if ($this->container['platform_campaign_id'] === null) {
+            $invalidProperties[] = "'platform_campaign_id' can't be null";
+        }
+        if ($this->container['platform_ad_set_id'] === null) {
+            $invalidProperties[] = "'platform_ad_set_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -335,82 +369,65 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets dry_run
+     * Gets ad_type
      *
-     * @return bool
+     * @return string
      */
-    public function getDryRun()
+    public function getAdType()
     {
-        return $this->container['dry_run'];
+        return $this->container['ad_type'];
     }
 
     /**
-     * Sets dry_run
+     * Sets ad_type
      *
-     * @param bool $dry_run Always true on this response
+     * @param string $ad_type ad_type
      *
      * @return self
      */
-    public function setDryRun($dry_run)
+    public function setAdType($ad_type)
     {
-        if (is_null($dry_run)) {
-            throw new \InvalidArgumentException('non-nullable dry_run cannot be null');
+        if (is_null($ad_type)) {
+            throw new \InvalidArgumentException('non-nullable ad_type cannot be null');
         }
-        $this->container['dry_run'] = $dry_run;
+        $allowedValues = $this->getAdTypeAllowableValues();
+        if (!in_array($ad_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'ad_type', must be one of '%s'",
+                    $ad_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['ad_type'] = $ad_type;
 
         return $this;
     }
 
     /**
-     * Gets can_publish
+     * Gets ad
      *
-     * @return bool
+     * @return object
      */
-    public function getCanPublish()
+    public function getAd()
     {
-        return $this->container['can_publish'];
+        return $this->container['ad'];
     }
 
     /**
-     * Sets can_publish
+     * Sets ad
      *
-     * @param bool $can_publish True only when every evaluated TikTok account can publish now
+     * @param object $ad The persisted Ad document.
      *
      * @return self
      */
-    public function setCanPublish($can_publish)
+    public function setAd($ad)
     {
-        if (is_null($can_publish)) {
-            throw new \InvalidArgumentException('non-nullable can_publish cannot be null');
+        if (is_null($ad)) {
+            throw new \InvalidArgumentException('non-nullable ad cannot be null');
         }
-        $this->container['can_publish'] = $can_publish;
-
-        return $this;
-    }
-
-    /**
-     * Gets tiktok
-     *
-     * @return \Zernio\Model\TikTokDryRunVerdictTiktokInner[]
-     */
-    public function getTiktok()
-    {
-        return $this->container['tiktok'];
-    }
-
-    /**
-     * Sets tiktok
-     *
-     * @param \Zernio\Model\TikTokDryRunVerdictTiktokInner[] $tiktok One verdict per `tiktok` entry in the request, in request order
-     *
-     * @return self
-     */
-    public function setTiktok($tiktok)
-    {
-        if (is_null($tiktok)) {
-            throw new \InvalidArgumentException('non-nullable tiktok cannot be null');
-        }
-        $this->container['tiktok'] = $tiktok;
+        $this->container['ad'] = $ad;
 
         return $this;
     }
@@ -418,7 +435,7 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets message
      *
-     * @return string|null
+     * @return string
      */
     public function getMessage()
     {
@@ -428,7 +445,7 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets message
      *
-     * @param string|null $message message
+     * @param string $message message
      *
      * @return self
      */
@@ -443,55 +460,82 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets post
+     * Gets ads
      *
-     * @return \Zernio\Model\Post|null
+     * @return object[]
      */
-    public function getPost()
+    public function getAds()
     {
-        return $this->container['post'];
+        return $this->container['ads'];
     }
 
     /**
-     * Sets post
+     * Sets ads
      *
-     * @param \Zernio\Model\Post|null $post post
+     * @param object[] $ads The persisted Ad documents (one per creative), all sharing the same `platformCampaignId` and `platformAdSetId`.
      *
      * @return self
      */
-    public function setPost($post)
+    public function setAds($ads)
     {
-        if (is_null($post)) {
-            throw new \InvalidArgumentException('non-nullable post cannot be null');
+        if (is_null($ads)) {
+            throw new \InvalidArgumentException('non-nullable ads cannot be null');
         }
-        $this->container['post'] = $post;
+        $this->container['ads'] = $ads;
 
         return $this;
     }
 
     /**
-     * Gets warnings
+     * Gets platform_campaign_id
      *
-     * @return string[]|null
+     * @return string
      */
-    public function getWarnings()
+    public function getPlatformCampaignId()
     {
-        return $this->container['warnings'];
+        return $this->container['platform_campaign_id'];
     }
 
     /**
-     * Sets warnings
+     * Sets platform_campaign_id
      *
-     * @param string[]|null $warnings Advisory notices about a post that was still created: media truncated for a platform, a recycling caveat, or a field that was ignored because it sat outside platforms[].platformSpecificData. Absent when there are none.
+     * @param string $platform_campaign_id platform_campaign_id
      *
      * @return self
      */
-    public function setWarnings($warnings)
+    public function setPlatformCampaignId($platform_campaign_id)
     {
-        if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
+        if (is_null($platform_campaign_id)) {
+            throw new \InvalidArgumentException('non-nullable platform_campaign_id cannot be null');
         }
-        $this->container['warnings'] = $warnings;
+        $this->container['platform_campaign_id'] = $platform_campaign_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_ad_set_id
+     *
+     * @return string
+     */
+    public function getPlatformAdSetId()
+    {
+        return $this->container['platform_ad_set_id'];
+    }
+
+    /**
+     * Sets platform_ad_set_id
+     *
+     * @param string $platform_ad_set_id platform_ad_set_id
+     *
+     * @return self
+     */
+    public function setPlatformAdSetId($platform_ad_set_id)
+    {
+        if (is_null($platform_ad_set_id)) {
+            throw new \InvalidArgumentException('non-nullable platform_ad_set_id cannot be null');
+        }
+        $this->container['platform_ad_set_id'] = $platform_ad_set_id;
 
         return $this;
     }

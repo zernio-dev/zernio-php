@@ -65,7 +65,16 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
         'website_uri' => 'string',
         'phone_numbers' => '\Zernio\Model\GetGoogleBusinessLocationDetails200ResponsePhoneNumbers',
         'categories' => '\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestCategories',
-        'service_items' => '\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInner[]'
+        'service_items' => '\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInner[]',
+        'title' => 'string',
+        'store_code' => 'string',
+        'labels' => 'string[]',
+        'storefront_address' => '\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestStorefrontAddress',
+        'service_area' => '\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceArea',
+        'open_info' => '\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestOpenInfo',
+        'more_hours' => '\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestMoreHoursInner[]',
+        'latlng' => '\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestLatlng',
+        'ad_words_location_extensions' => '\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestAdWordsLocationExtensions'
     ];
 
     /**
@@ -83,7 +92,16 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
         'website_uri' => null,
         'phone_numbers' => null,
         'categories' => null,
-        'service_items' => null
+        'service_items' => null,
+        'title' => null,
+        'store_code' => null,
+        'labels' => null,
+        'storefront_address' => null,
+        'service_area' => null,
+        'open_info' => null,
+        'more_hours' => null,
+        'latlng' => null,
+        'ad_words_location_extensions' => null
     ];
 
     /**
@@ -99,7 +117,16 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
         'website_uri' => false,
         'phone_numbers' => false,
         'categories' => false,
-        'service_items' => false
+        'service_items' => false,
+        'title' => false,
+        'store_code' => false,
+        'labels' => false,
+        'storefront_address' => false,
+        'service_area' => false,
+        'open_info' => false,
+        'more_hours' => false,
+        'latlng' => false,
+        'ad_words_location_extensions' => false
     ];
 
     /**
@@ -195,7 +222,16 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
         'website_uri' => 'websiteUri',
         'phone_numbers' => 'phoneNumbers',
         'categories' => 'categories',
-        'service_items' => 'serviceItems'
+        'service_items' => 'serviceItems',
+        'title' => 'title',
+        'store_code' => 'storeCode',
+        'labels' => 'labels',
+        'storefront_address' => 'storefrontAddress',
+        'service_area' => 'serviceArea',
+        'open_info' => 'openInfo',
+        'more_hours' => 'moreHours',
+        'latlng' => 'latlng',
+        'ad_words_location_extensions' => 'adWordsLocationExtensions'
     ];
 
     /**
@@ -211,7 +247,16 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
         'website_uri' => 'setWebsiteUri',
         'phone_numbers' => 'setPhoneNumbers',
         'categories' => 'setCategories',
-        'service_items' => 'setServiceItems'
+        'service_items' => 'setServiceItems',
+        'title' => 'setTitle',
+        'store_code' => 'setStoreCode',
+        'labels' => 'setLabels',
+        'storefront_address' => 'setStorefrontAddress',
+        'service_area' => 'setServiceArea',
+        'open_info' => 'setOpenInfo',
+        'more_hours' => 'setMoreHours',
+        'latlng' => 'setLatlng',
+        'ad_words_location_extensions' => 'setAdWordsLocationExtensions'
     ];
 
     /**
@@ -227,7 +272,16 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
         'website_uri' => 'getWebsiteUri',
         'phone_numbers' => 'getPhoneNumbers',
         'categories' => 'getCategories',
-        'service_items' => 'getServiceItems'
+        'service_items' => 'getServiceItems',
+        'title' => 'getTitle',
+        'store_code' => 'getStoreCode',
+        'labels' => 'getLabels',
+        'storefront_address' => 'getStorefrontAddress',
+        'service_area' => 'getServiceArea',
+        'open_info' => 'getOpenInfo',
+        'more_hours' => 'getMoreHours',
+        'latlng' => 'getLatlng',
+        'ad_words_location_extensions' => 'getAdWordsLocationExtensions'
     ];
 
     /**
@@ -295,6 +349,15 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
         $this->setIfExists('phone_numbers', $data ?? [], null);
         $this->setIfExists('categories', $data ?? [], null);
         $this->setIfExists('service_items', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('store_code', $data ?? [], null);
+        $this->setIfExists('labels', $data ?? [], null);
+        $this->setIfExists('storefront_address', $data ?? [], null);
+        $this->setIfExists('service_area', $data ?? [], null);
+        $this->setIfExists('open_info', $data ?? [], null);
+        $this->setIfExists('more_hours', $data ?? [], null);
+        $this->setIfExists('latlng', $data ?? [], null);
+        $this->setIfExists('ad_words_location_extensions', $data ?? [], null);
     }
 
     /**
@@ -554,6 +617,249 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
             throw new \InvalidArgumentException('non-nullable service_items cannot be null');
         }
         $this->container['service_items'] = $service_items;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title Business name. Use updateMask='title'.
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
+        }
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets store_code
+     *
+     * @return string|null
+     */
+    public function getStoreCode()
+    {
+        return $this->container['store_code'];
+    }
+
+    /**
+     * Sets store_code
+     *
+     * @param string|null $store_code External store identifier, unique within the account. Use updateMask='storeCode'.
+     *
+     * @return self
+     */
+    public function setStoreCode($store_code)
+    {
+        if (is_null($store_code)) {
+            throw new \InvalidArgumentException('non-nullable store_code cannot be null');
+        }
+        $this->container['store_code'] = $store_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets labels
+     *
+     * @return string[]|null
+     */
+    public function getLabels()
+    {
+        return $this->container['labels'];
+    }
+
+    /**
+     * Sets labels
+     *
+     * @param string[]|null $labels Free-form, internal-only labels for grouping (1-255 characters each). Use updateMask='labels'.
+     *
+     * @return self
+     */
+    public function setLabels($labels)
+    {
+        if (is_null($labels)) {
+            throw new \InvalidArgumentException('non-nullable labels cannot be null');
+        }
+        $this->container['labels'] = $labels;
+
+        return $this;
+    }
+
+    /**
+     * Gets storefront_address
+     *
+     * @return \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestStorefrontAddress|null
+     */
+    public function getStorefrontAddress()
+    {
+        return $this->container['storefront_address'];
+    }
+
+    /**
+     * Sets storefront_address
+     *
+     * @param \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestStorefrontAddress|null $storefront_address storefront_address
+     *
+     * @return self
+     */
+    public function setStorefrontAddress($storefront_address)
+    {
+        if (is_null($storefront_address)) {
+            throw new \InvalidArgumentException('non-nullable storefront_address cannot be null');
+        }
+        $this->container['storefront_address'] = $storefront_address;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_area
+     *
+     * @return \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceArea|null
+     */
+    public function getServiceArea()
+    {
+        return $this->container['service_area'];
+    }
+
+    /**
+     * Sets service_area
+     *
+     * @param \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceArea|null $service_area service_area
+     *
+     * @return self
+     */
+    public function setServiceArea($service_area)
+    {
+        if (is_null($service_area)) {
+            throw new \InvalidArgumentException('non-nullable service_area cannot be null');
+        }
+        $this->container['service_area'] = $service_area;
+
+        return $this;
+    }
+
+    /**
+     * Gets open_info
+     *
+     * @return \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestOpenInfo|null
+     */
+    public function getOpenInfo()
+    {
+        return $this->container['open_info'];
+    }
+
+    /**
+     * Sets open_info
+     *
+     * @param \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestOpenInfo|null $open_info open_info
+     *
+     * @return self
+     */
+    public function setOpenInfo($open_info)
+    {
+        if (is_null($open_info)) {
+            throw new \InvalidArgumentException('non-nullable open_info cannot be null');
+        }
+        $this->container['open_info'] = $open_info;
+
+        return $this;
+    }
+
+    /**
+     * Gets more_hours
+     *
+     * @return \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestMoreHoursInner[]|null
+     */
+    public function getMoreHours()
+    {
+        return $this->container['more_hours'];
+    }
+
+    /**
+     * Sets more_hours
+     *
+     * @param \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestMoreHoursInner[]|null $more_hours Additional hours for specific services (delivery, drive-through, etc.). Use updateMask='moreHours'.
+     *
+     * @return self
+     */
+    public function setMoreHours($more_hours)
+    {
+        if (is_null($more_hours)) {
+            throw new \InvalidArgumentException('non-nullable more_hours cannot be null');
+        }
+        $this->container['more_hours'] = $more_hours;
+
+        return $this;
+    }
+
+    /**
+     * Gets latlng
+     *
+     * @return \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestLatlng|null
+     */
+    public function getLatlng()
+    {
+        return $this->container['latlng'];
+    }
+
+    /**
+     * Sets latlng
+     *
+     * @param \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestLatlng|null $latlng latlng
+     *
+     * @return self
+     */
+    public function setLatlng($latlng)
+    {
+        if (is_null($latlng)) {
+            throw new \InvalidArgumentException('non-nullable latlng cannot be null');
+        }
+        $this->container['latlng'] = $latlng;
+
+        return $this;
+    }
+
+    /**
+     * Gets ad_words_location_extensions
+     *
+     * @return \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestAdWordsLocationExtensions|null
+     */
+    public function getAdWordsLocationExtensions()
+    {
+        return $this->container['ad_words_location_extensions'];
+    }
+
+    /**
+     * Sets ad_words_location_extensions
+     *
+     * @param \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestAdWordsLocationExtensions|null $ad_words_location_extensions ad_words_location_extensions
+     *
+     * @return self
+     */
+    public function setAdWordsLocationExtensions($ad_words_location_extensions)
+    {
+        if (is_null($ad_words_location_extensions)) {
+            throw new \InvalidArgumentException('non-nullable ad_words_location_extensions cannot be null');
+        }
+        $this->container['ad_words_location_extensions'] = $ad_words_location_extensions;
 
         return $this;
     }

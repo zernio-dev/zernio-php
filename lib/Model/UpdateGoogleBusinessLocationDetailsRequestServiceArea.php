@@ -1,6 +1,6 @@
 <?php
 /**
- * CreatePost200Response
+ * UpdateGoogleBusinessLocationDetailsRequestServiceArea
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreatePost200Response Class Doc Comment
+ * UpdateGoogleBusinessLocationDetailsRequestServiceArea Class Doc Comment
  *
  * @category Class
+ * @description Areas the business serves. Use updateMask&#x3D;&#39;serviceArea&#39;. Full replacement: send every place you want to keep.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateGoogleBusinessLocationDetailsRequestServiceArea implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createPost_200_response';
+    protected static $openAPIModelName = 'updateGoogleBusinessLocationDetails_request_serviceArea';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +59,9 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'dry_run' => 'bool',
-        'can_publish' => 'bool',
-        'tiktok' => '\Zernio\Model\TikTokDryRunVerdictTiktokInner[]',
-        'message' => 'string',
-        'post' => '\Zernio\Model\Post',
-        'warnings' => 'string[]'
+        'business_type' => 'string',
+        'places' => '\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceAreaPlaces',
+        'region_code' => 'string'
     ];
 
     /**
@@ -74,12 +72,9 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'dry_run' => null,
-        'can_publish' => null,
-        'tiktok' => null,
-        'message' => null,
-        'post' => null,
-        'warnings' => null
+        'business_type' => null,
+        'places' => null,
+        'region_code' => null
     ];
 
     /**
@@ -88,12 +83,9 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'dry_run' => false,
-        'can_publish' => false,
-        'tiktok' => false,
-        'message' => false,
-        'post' => false,
-        'warnings' => false
+        'business_type' => false,
+        'places' => false,
+        'region_code' => false
     ];
 
     /**
@@ -182,12 +174,9 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'dry_run' => 'dryRun',
-        'can_publish' => 'canPublish',
-        'tiktok' => 'tiktok',
-        'message' => 'message',
-        'post' => 'post',
-        'warnings' => 'warnings'
+        'business_type' => 'businessType',
+        'places' => 'places',
+        'region_code' => 'regionCode'
     ];
 
     /**
@@ -196,12 +185,9 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'dry_run' => 'setDryRun',
-        'can_publish' => 'setCanPublish',
-        'tiktok' => 'setTiktok',
-        'message' => 'setMessage',
-        'post' => 'setPost',
-        'warnings' => 'setWarnings'
+        'business_type' => 'setBusinessType',
+        'places' => 'setPlaces',
+        'region_code' => 'setRegionCode'
     ];
 
     /**
@@ -210,12 +196,9 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'dry_run' => 'getDryRun',
-        'can_publish' => 'getCanPublish',
-        'tiktok' => 'getTiktok',
-        'message' => 'getMessage',
-        'post' => 'getPost',
-        'warnings' => 'getWarnings'
+        'business_type' => 'getBusinessType',
+        'places' => 'getPlaces',
+        'region_code' => 'getRegionCode'
     ];
 
     /**
@@ -259,6 +242,21 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$openAPIModelName;
     }
 
+    public const BUSINESS_TYPE_CUSTOMER_LOCATION_ONLY = 'CUSTOMER_LOCATION_ONLY';
+    public const BUSINESS_TYPE_CUSTOMER_AND_BUSINESS_LOCATION = 'CUSTOMER_AND_BUSINESS_LOCATION';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBusinessTypeAllowableValues()
+    {
+        return [
+            self::BUSINESS_TYPE_CUSTOMER_LOCATION_ONLY,
+            self::BUSINESS_TYPE_CUSTOMER_AND_BUSINESS_LOCATION,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -275,12 +273,9 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('dry_run', $data ?? [], null);
-        $this->setIfExists('can_publish', $data ?? [], null);
-        $this->setIfExists('tiktok', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('post', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('business_type', $data ?? [], null);
+        $this->setIfExists('places', $data ?? [], null);
+        $this->setIfExists('region_code', $data ?? [], null);
     }
 
     /**
@@ -310,15 +305,15 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if ($this->container['dry_run'] === null) {
-            $invalidProperties[] = "'dry_run' can't be null";
+        $allowedValues = $this->getBusinessTypeAllowableValues();
+        if (!is_null($this->container['business_type']) && !in_array($this->container['business_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'business_type', must be one of '%s'",
+                $this->container['business_type'],
+                implode("', '", $allowedValues)
+            );
         }
-        if ($this->container['can_publish'] === null) {
-            $invalidProperties[] = "'can_publish' can't be null";
-        }
-        if ($this->container['tiktok'] === null) {
-            $invalidProperties[] = "'tiktok' can't be null";
-        }
+
         return $invalidProperties;
     }
 
@@ -335,163 +330,92 @@ class CreatePost200Response implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets dry_run
-     *
-     * @return bool
-     */
-    public function getDryRun()
-    {
-        return $this->container['dry_run'];
-    }
-
-    /**
-     * Sets dry_run
-     *
-     * @param bool $dry_run Always true on this response
-     *
-     * @return self
-     */
-    public function setDryRun($dry_run)
-    {
-        if (is_null($dry_run)) {
-            throw new \InvalidArgumentException('non-nullable dry_run cannot be null');
-        }
-        $this->container['dry_run'] = $dry_run;
-
-        return $this;
-    }
-
-    /**
-     * Gets can_publish
-     *
-     * @return bool
-     */
-    public function getCanPublish()
-    {
-        return $this->container['can_publish'];
-    }
-
-    /**
-     * Sets can_publish
-     *
-     * @param bool $can_publish True only when every evaluated TikTok account can publish now
-     *
-     * @return self
-     */
-    public function setCanPublish($can_publish)
-    {
-        if (is_null($can_publish)) {
-            throw new \InvalidArgumentException('non-nullable can_publish cannot be null');
-        }
-        $this->container['can_publish'] = $can_publish;
-
-        return $this;
-    }
-
-    /**
-     * Gets tiktok
-     *
-     * @return \Zernio\Model\TikTokDryRunVerdictTiktokInner[]
-     */
-    public function getTiktok()
-    {
-        return $this->container['tiktok'];
-    }
-
-    /**
-     * Sets tiktok
-     *
-     * @param \Zernio\Model\TikTokDryRunVerdictTiktokInner[] $tiktok One verdict per `tiktok` entry in the request, in request order
-     *
-     * @return self
-     */
-    public function setTiktok($tiktok)
-    {
-        if (is_null($tiktok)) {
-            throw new \InvalidArgumentException('non-nullable tiktok cannot be null');
-        }
-        $this->container['tiktok'] = $tiktok;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
+     * Gets business_type
      *
      * @return string|null
      */
-    public function getMessage()
+    public function getBusinessType()
     {
-        return $this->container['message'];
+        return $this->container['business_type'];
     }
 
     /**
-     * Sets message
+     * Sets business_type
      *
-     * @param string|null $message message
+     * @param string|null $business_type business_type
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setBusinessType($business_type)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($business_type)) {
+            throw new \InvalidArgumentException('non-nullable business_type cannot be null');
         }
-        $this->container['message'] = $message;
+        $allowedValues = $this->getBusinessTypeAllowableValues();
+        if (!in_array($business_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'business_type', must be one of '%s'",
+                    $business_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['business_type'] = $business_type;
 
         return $this;
     }
 
     /**
-     * Gets post
+     * Gets places
      *
-     * @return \Zernio\Model\Post|null
+     * @return \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceAreaPlaces|null
      */
-    public function getPost()
+    public function getPlaces()
     {
-        return $this->container['post'];
+        return $this->container['places'];
     }
 
     /**
-     * Sets post
+     * Sets places
      *
-     * @param \Zernio\Model\Post|null $post post
+     * @param \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceAreaPlaces|null $places places
      *
      * @return self
      */
-    public function setPost($post)
+    public function setPlaces($places)
     {
-        if (is_null($post)) {
-            throw new \InvalidArgumentException('non-nullable post cannot be null');
+        if (is_null($places)) {
+            throw new \InvalidArgumentException('non-nullable places cannot be null');
         }
-        $this->container['post'] = $post;
+        $this->container['places'] = $places;
 
         return $this;
     }
 
     /**
-     * Gets warnings
+     * Gets region_code
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getWarnings()
+    public function getRegionCode()
     {
-        return $this->container['warnings'];
+        return $this->container['region_code'];
     }
 
     /**
-     * Sets warnings
+     * Sets region_code
      *
-     * @param string[]|null $warnings Advisory notices about a post that was still created: media truncated for a platform, a recycling caveat, or a field that was ignored because it sat outside platforms[].platformSpecificData. Absent when there are none.
+     * @param string|null $region_code Immutable. CLDR region code of the country the business is based in (e.g. 'BR')
      *
      * @return self
      */
-    public function setWarnings($warnings)
+    public function setRegionCode($region_code)
     {
-        if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
+        if (is_null($region_code)) {
+            throw new \InvalidArgumentException('non-nullable region_code cannot be null');
         }
-        $this->container['warnings'] = $warnings;
+        $this->container['region_code'] = $region_code;
 
         return $this;
     }

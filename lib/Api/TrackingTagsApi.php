@@ -2609,11 +2609,12 @@ class TrackingTagsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Zernio\Model\UpdateAdTrackingTags200Response|\Zernio\Model\InlineObject1
      */
     public function updateAdTrackingTags($ad_id, $update_ad_tracking_tags_request, string $contentType = self::contentTypes['updateAdTrackingTags'][0])
     {
-        $this->updateAdTrackingTagsWithHttpInfo($ad_id, $update_ad_tracking_tags_request, $contentType);
+        list($response) = $this->updateAdTrackingTagsWithHttpInfo($ad_id, $update_ad_tracking_tags_request, $contentType);
+        return $response;
     }
 
     /**
@@ -2627,7 +2628,7 @@ class TrackingTagsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateAdTrackingTags200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateAdTrackingTagsWithHttpInfo($ad_id, $update_ad_tracking_tags_request, string $contentType = self::contentTypes['updateAdTrackingTags'][0])
     {
@@ -2656,9 +2657,51 @@ class TrackingTagsApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\UpdateAdTrackingTags200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\UpdateAdTrackingTags200Response',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\UpdateAdTrackingTags200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2710,14 +2753,27 @@ class TrackingTagsApi
      */
     public function updateAdTrackingTagsAsyncWithHttpInfo($ad_id, $update_ad_tracking_tags_request, string $contentType = self::contentTypes['updateAdTrackingTags'][0])
     {
-        $returnType = '';
+        $returnType = '\Zernio\Model\UpdateAdTrackingTags200Response';
         $request = $this->updateAdTrackingTagsRequest($ad_id, $update_ad_tracking_tags_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
