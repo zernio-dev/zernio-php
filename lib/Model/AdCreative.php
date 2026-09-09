@@ -78,6 +78,7 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         'google_headline' => 'string',
         'google_description' => 'string',
         'link_url' => 'string',
+        'whatsapp_phone_number' => 'string',
         'pinterest_image_url' => 'string',
         'pinterest_title' => 'string',
         'pinterest_description' => 'string'
@@ -110,6 +111,7 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         'google_headline' => null,
         'google_description' => null,
         'link_url' => null,
+        'whatsapp_phone_number' => null,
         'pinterest_image_url' => null,
         'pinterest_title' => null,
         'pinterest_description' => null
@@ -140,6 +142,7 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         'google_headline' => false,
         'google_description' => false,
         'link_url' => false,
+        'whatsapp_phone_number' => false,
         'pinterest_image_url' => false,
         'pinterest_title' => false,
         'pinterest_description' => false
@@ -250,6 +253,7 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         'google_headline' => 'googleHeadline',
         'google_description' => 'googleDescription',
         'link_url' => 'linkUrl',
+        'whatsapp_phone_number' => 'whatsappPhoneNumber',
         'pinterest_image_url' => 'pinterestImageUrl',
         'pinterest_title' => 'pinterestTitle',
         'pinterest_description' => 'pinterestDescription'
@@ -280,6 +284,7 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         'google_headline' => 'setGoogleHeadline',
         'google_description' => 'setGoogleDescription',
         'link_url' => 'setLinkUrl',
+        'whatsapp_phone_number' => 'setWhatsappPhoneNumber',
         'pinterest_image_url' => 'setPinterestImageUrl',
         'pinterest_title' => 'setPinterestTitle',
         'pinterest_description' => 'setPinterestDescription'
@@ -310,6 +315,7 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         'google_headline' => 'getGoogleHeadline',
         'google_description' => 'getGoogleDescription',
         'link_url' => 'getLinkUrl',
+        'whatsapp_phone_number' => 'getWhatsappPhoneNumber',
         'pinterest_image_url' => 'getPinterestImageUrl',
         'pinterest_title' => 'getPinterestTitle',
         'pinterest_description' => 'getPinterestDescription'
@@ -391,6 +397,7 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('google_headline', $data ?? [], null);
         $this->setIfExists('google_description', $data ?? [], null);
         $this->setIfExists('link_url', $data ?? [], null);
+        $this->setIfExists('whatsapp_phone_number', $data ?? [], null);
         $this->setIfExists('pinterest_image_url', $data ?? [], null);
         $this->setIfExists('pinterest_title', $data ?? [], null);
         $this->setIfExists('pinterest_description', $data ?? [], null);
@@ -1024,6 +1031,33 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable link_url cannot be null');
         }
         $this->container['link_url'] = $link_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets whatsapp_phone_number
+     *
+     * @return string|null
+     */
+    public function getWhatsappPhoneNumber()
+    {
+        return $this->container['whatsapp_phone_number'];
+    }
+
+    /**
+     * Sets whatsapp_phone_number
+     *
+     * @param string|null $whatsapp_phone_number Explicit E.164 WhatsApp number supplied when creating a Meta boost or messaging ad. Absent when omitted by the caller or on older records.
+     *
+     * @return self
+     */
+    public function setWhatsappPhoneNumber($whatsapp_phone_number)
+    {
+        if (is_null($whatsapp_phone_number)) {
+            throw new \InvalidArgumentException('non-nullable whatsapp_phone_number cannot be null');
+        }
+        $this->container['whatsapp_phone_number'] = $whatsapp_phone_number;
 
         return $this;
     }

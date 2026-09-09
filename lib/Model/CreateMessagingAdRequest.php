@@ -996,7 +996,7 @@ class CreateMessagingAdRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets whatsapp_phone_number
      *
-     * @param string|null $whatsapp_phone_number WhatsApp only. Optional E.164 number already paired with the Facebook Page. Omit to let Meta select the paired number. Sent to the creative CTA and, when creating a new ad set, its promoted_object. Attach requests do not change the existing ad set.
+     * @param string|null $whatsapp_phone_number WhatsApp only. Optional E.164 number already paired with the Facebook Page. Omit to let Meta select the paired number. Sent to the creative CTA and, when creating a new ad set, its promoted_object. Attach requests do not change the existing ad set. Stored as creative.whatsappPhoneNumber on every created ad.
      *
      * @return self
      */

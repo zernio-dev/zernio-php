@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **google_headline** | **string** | Google Ads headline | [optional]
 **google_description** | **string** | Google Ads description | [optional]
 **link_url** | **string** | Destination URL | [optional]
+**whatsapp_phone_number** | **string** | Explicit E.164 WhatsApp number supplied when creating a Meta boost or messaging ad. Absent when omitted by the caller or on older records. | [optional]
 **pinterest_image_url** | **string** |  | [optional]
 **pinterest_title** | **string** |  | [optional]
 **pinterest_description** | **string** |  | [optional]
