@@ -136,8 +136,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'keywords' => '\Zernio\Model\KeywordEntry[]',
         'negative_keywords' => '\Zernio\Model\KeywordEntry[]',
         'campaign_negative_keywords' => '\Zernio\Model\KeywordEntry[]',
-        'additional_headlines' => 'string[]',
-        'additional_descriptions' => 'string[]',
+        'additional_headlines' => '\Zernio\Model\CreateStandaloneAdRequestAdditionalHeadlinesInner[]',
+        'additional_descriptions' => '\Zernio\Model\CreateStandaloneAdRequestAdditionalDescriptionsInner[]',
         'sitelinks' => '\Zernio\Model\CreateStandaloneAdRequestSitelinksInner[]',
         'callouts' => 'string[]',
         'structured_snippets' => '\Zernio\Model\CreateStandaloneAdRequestStructuredSnippetsInner[]',
@@ -3969,7 +3969,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets additional_headlines
      *
-     * @return string[]|null
+     * @return \Zernio\Model\CreateStandaloneAdRequestAdditionalHeadlinesInner[]|null
      */
     public function getAdditionalHeadlines()
     {
@@ -3979,7 +3979,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets additional_headlines
      *
-     * @param string[]|null $additional_headlines Google Search RSA only. Extra headlines.
+     * @param \Zernio\Model\CreateStandaloneAdRequestAdditionalHeadlinesInner[]|null $additional_headlines Google Search RSA only. Extra text assets as strings or objects with text and optional pinnedField. Existing string input remains supported. The effective create lists, including primary text and deduplication, must contain 3-15 headlines and 2-4 descriptions; excess entries return 400.
      *
      * @return self
      */
@@ -3996,7 +3996,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets additional_descriptions
      *
-     * @return string[]|null
+     * @return \Zernio\Model\CreateStandaloneAdRequestAdditionalDescriptionsInner[]|null
      */
     public function getAdditionalDescriptions()
     {
@@ -4006,7 +4006,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets additional_descriptions
      *
-     * @param string[]|null $additional_descriptions Google Search RSA only. Extra descriptions.
+     * @param \Zernio\Model\CreateStandaloneAdRequestAdditionalDescriptionsInner[]|null $additional_descriptions Google Search RSA only. Extra text assets as strings or objects with text and optional pinnedField. Existing string input remains supported. The effective create lists, including primary text and deduplication, must contain 3-15 headlines and 2-4 descriptions; excess entries return 400.
      *
      * @return self
      */

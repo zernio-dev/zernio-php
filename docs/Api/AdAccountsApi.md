@@ -6,7 +6,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**addAccountCallouts()**](AdAccountsApi.md#addAccountCallouts) | **POST** /v1/ads/accounts/callouts | Add account-level callout extensions |
+| [**addAccountCallouts()**](AdAccountsApi.md#addAccountCallouts) | **POST** /v1/ads/accounts/callouts | Add account callouts |
+| [**addAccountSitelinks()**](AdAccountsApi.md#addAccountSitelinks) | **POST** /v1/ads/accounts/sitelinks | Add account sitelinks |
+| [**addAccountStructuredSnippets()**](AdAccountsApi.md#addAccountStructuredSnippets) | **POST** /v1/ads/accounts/structured-snippets | Add account snippets |
 | [**createAdNegativeKeywordList()**](AdAccountsApi.md#createAdNegativeKeywordList) | **POST** /v1/ads/accounts/negative-keyword-lists | Create a negative keyword list |
 | [**createCustomConversion()**](AdAccountsApi.md#createCustomConversion) | **POST** /v1/accounts/{accountId}/custom-conversions | Create or reuse a custom conversion |
 | [**createHighDemandPeriod()**](AdAccountsApi.md#createHighDemandPeriod) | **POST** /v1/ads/high-demand-periods | Schedule a budget increase |
@@ -23,7 +25,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getIosFourteenCampaignLimits()**](AdAccountsApi.md#getIosFourteenCampaignLimits) | **GET** /v1/ads/ios-fourteen-campaign-limits | Get iOS 14 campaign limits |
 | [**getValueRuleSet()**](AdAccountsApi.md#getValueRuleSet) | **GET** /v1/ads/value-rule-sets/{valueRuleSetId} | Read a value rule set |
 | [**hideAdComment()**](AdAccountsApi.md#hideAdComment) | **POST** /v1/ads/{adId}/comments/{commentId}/hide | Hide or unhide an ad comment |
-| [**listAccountCallouts()**](AdAccountsApi.md#listAccountCallouts) | **GET** /v1/ads/accounts/callouts | List account-level callout extensions |
+| [**listAccountCallouts()**](AdAccountsApi.md#listAccountCallouts) | **GET** /v1/ads/accounts/callouts | List account callouts |
+| [**listAccountSitelinks()**](AdAccountsApi.md#listAccountSitelinks) | **GET** /v1/ads/accounts/sitelinks | List account sitelinks |
+| [**listAccountStructuredSnippets()**](AdAccountsApi.md#listAccountStructuredSnippets) | **GET** /v1/ads/accounts/structured-snippets | List account snippets |
 | [**listAdAccounts()**](AdAccountsApi.md#listAdAccounts) | **GET** /v1/ads/accounts | List ad accounts |
 | [**listAdLabels()**](AdAccountsApi.md#listAdLabels) | **GET** /v1/ads/labels | Ad labels |
 | [**listAdNegativeKeywordLists()**](AdAccountsApi.md#listAdNegativeKeywordLists) | **GET** /v1/ads/accounts/negative-keyword-lists | List negative keyword lists |
@@ -35,9 +39,14 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listHighDemandPeriods()**](AdAccountsApi.md#listHighDemandPeriods) | **GET** /v1/ads/high-demand-periods | High demand periods / budget schedules |
 | [**listMetaBusinesses()**](AdAccountsApi.md#listMetaBusinesses) | **GET** /v1/ads/businesses | Businesses list |
 | [**listValueRuleSets()**](AdAccountsApi.md#listValueRuleSets) | **GET** /v1/ads/value-rule-sets | List value rule sets |
-| [**removeAccountCallout()**](AdAccountsApi.md#removeAccountCallout) | **DELETE** /v1/ads/accounts/callouts | Remove an account-level callout extension |
+| [**removeAccountCallout()**](AdAccountsApi.md#removeAccountCallout) | **DELETE** /v1/ads/accounts/callouts | Remove account callout |
+| [**removeAccountSitelink()**](AdAccountsApi.md#removeAccountSitelink) | **DELETE** /v1/ads/accounts/sitelinks | Remove account sitelink |
+| [**removeAccountStructuredSnippet()**](AdAccountsApi.md#removeAccountStructuredSnippet) | **DELETE** /v1/ads/accounts/structured-snippets | Remove account snippet |
 | [**replaceAdNegativeKeywordListKeywords()**](AdAccountsApi.md#replaceAdNegativeKeywordListKeywords) | **PUT** /v1/ads/accounts/negative-keyword-lists/{listId}/keywords | Replace negative list keywords |
 | [**replyToAdComment()**](AdAccountsApi.md#replyToAdComment) | **POST** /v1/ads/{adId}/comments/{commentId}/reply | Reply to an ad comment |
+| [**updateAccountCallouts()**](AdAccountsApi.md#updateAccountCallouts) | **PUT** /v1/ads/accounts/callouts | Update account callouts |
+| [**updateAccountSitelinks()**](AdAccountsApi.md#updateAccountSitelinks) | **PUT** /v1/ads/accounts/sitelinks | Update account sitelinks |
+| [**updateAccountStructuredSnippets()**](AdAccountsApi.md#updateAccountStructuredSnippets) | **PUT** /v1/ads/accounts/structured-snippets | Update account snippets |
 | [**updateAdAccount()**](AdAccountsApi.md#updateAdAccount) | **PATCH** /v1/ads/accounts | Update ad account settings |
 | [**updateAdNegativeKeywordList()**](AdAccountsApi.md#updateAdNegativeKeywordList) | **PUT** /v1/ads/accounts/negative-keyword-lists/{listId} | Rename a negative keyword list |
 | [**updateValueRuleSet()**](AdAccountsApi.md#updateValueRuleSet) | **PUT** /v1/ads/value-rule-sets/{valueRuleSetId} | Replace a value rule set |
@@ -49,9 +58,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 addAccountCallouts($add_account_callouts_request): \Zernio\Model\AddAccountCallouts201Response
 ```
 
-Add account-level callout extensions
+Add account callouts
 
-Creates one asset plus one `customerAsset` link (field type CALLOUT) per callout text, in a single mutate. Google only; every other platform returns 501.
+Creates assets and customer_asset links for this Google customer. Links apply at account level.
 
 ### Example
 
@@ -70,7 +79,7 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$add_account_callouts_request = new \Zernio\Model\AddAccountCalloutsRequest(); // \Zernio\Model\AddAccountCalloutsRequest
+$add_account_callouts_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","customerId":"1234567890","callouts":["Fast setup"]}; // \Zernio\Model\AddAccountCalloutsRequest
 
 try {
     $result = $apiInstance->addAccountCallouts($add_account_callouts_request);
@@ -89,6 +98,126 @@ try {
 ### Return type
 
 [**\Zernio\Model\AddAccountCallouts201Response**](../Model/AddAccountCallouts201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `addAccountSitelinks()`
+
+```php
+addAccountSitelinks($add_account_sitelinks_request): \Zernio\Model\AddAccountSitelinks201Response
+```
+
+Add account sitelinks
+
+Creates assets and customer_asset links for this Google customer. Links apply at account level.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$add_account_sitelinks_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","customerId":"1234567890","sitelinks":[{"text":"Pricing","linkUrl":"https://zernio.com/pricing"}]}; // \Zernio\Model\AddAccountSitelinksRequest
+
+try {
+    $result = $apiInstance->addAccountSitelinks($add_account_sitelinks_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->addAccountSitelinks: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **add_account_sitelinks_request** | [**\Zernio\Model\AddAccountSitelinksRequest**](../Model/AddAccountSitelinksRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\AddAccountSitelinks201Response**](../Model/AddAccountSitelinks201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `addAccountStructuredSnippets()`
+
+```php
+addAccountStructuredSnippets($add_account_structured_snippets_request): \Zernio\Model\AddAccountStructuredSnippets201Response
+```
+
+Add account snippets
+
+Creates assets and customer_asset links for this Google customer. Links apply at account level.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$add_account_structured_snippets_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","customerId":"1234567890","structuredSnippets":[{"header":"Types","values":["Scheduling","Analytics","Messaging"]}]}; // \Zernio\Model\AddAccountStructuredSnippetsRequest
+
+try {
+    $result = $apiInstance->addAccountStructuredSnippets($add_account_structured_snippets_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->addAccountStructuredSnippets: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **add_account_structured_snippets_request** | [**\Zernio\Model\AddAccountStructuredSnippetsRequest**](../Model/AddAccountStructuredSnippetsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\AddAccountStructuredSnippets201Response**](../Model/AddAccountStructuredSnippets201Response.md)
 
 ### Authorization
 
@@ -1133,9 +1262,9 @@ try {
 listAccountCallouts($account_id, $customer_id): \Zernio\Model\ListAccountCallouts200Response
 ```
 
-List account-level callout extensions
+List account callouts
 
-Google Ads compliance row C.75: callout assets linked at the CUSTOMER level via `customer_asset` (not a campaign or ad group), so they serve fleet-wide across the account. Google only; every other platform returns 501. Cached for the quota window (10 minutes fresh, up to 7 days last-good), and gated by the shared Google Ads operations budget on a cache miss. The response carries `cachedAt` and `stale`, set when a quota-exhausted call falls back to the last-good copy instead of a live read.
+Lists directly attached Google assets. Fresh reads are cached for 10 minutes; exhausted quota may return the last successful read with stale=true. Inherited assets are not included. Preserves Google RMF C.75 account-level callouts.
 
 ### Example
 
@@ -1154,8 +1283,8 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | Google ads SocialAccount id.
-$customer_id = 'customer_id_example'; // string | Numeric Google Ads customer id (no dashes). Defaults to the account's connected customer.
+$account_id = 'account_id_example'; // string
+$customer_id = 'customer_id_example'; // string
 
 try {
     $result = $apiInstance->listAccountCallouts($account_id, $customer_id);
@@ -1169,12 +1298,136 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| Google ads SocialAccount id. | |
-| **customer_id** | **string**| Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. | [optional] |
+| **account_id** | **string**|  | |
+| **customer_id** | **string**|  | [optional] |
 
 ### Return type
 
 [**\Zernio\Model\ListAccountCallouts200Response**](../Model/ListAccountCallouts200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listAccountSitelinks()`
+
+```php
+listAccountSitelinks($account_id, $customer_id): \Zernio\Model\ListAccountSitelinks200Response
+```
+
+List account sitelinks
+
+Lists directly attached Google assets. Fresh reads are cached for 10 minutes; exhausted quota may return the last successful read with stale=true. Inherited assets are not included.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$customer_id = 'customer_id_example'; // string
+
+try {
+    $result = $apiInstance->listAccountSitelinks($account_id, $customer_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->listAccountSitelinks: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **customer_id** | **string**|  | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListAccountSitelinks200Response**](../Model/ListAccountSitelinks200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listAccountStructuredSnippets()`
+
+```php
+listAccountStructuredSnippets($account_id, $customer_id): \Zernio\Model\ListAccountStructuredSnippets200Response
+```
+
+List account snippets
+
+Lists directly attached Google assets. Fresh reads are cached for 10 minutes; exhausted quota may return the last successful read with stale=true. Inherited assets are not included.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$customer_id = 'customer_id_example'; // string
+
+try {
+    $result = $apiInstance->listAccountStructuredSnippets($account_id, $customer_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->listAccountStructuredSnippets: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **customer_id** | **string**|  | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListAccountStructuredSnippets200Response**](../Model/ListAccountStructuredSnippets200Response.md)
 
 ### Authorization
 
@@ -1901,9 +2154,9 @@ try {
 removeAccountCallout($remove_account_callout_request): \Zernio\Model\RemoveAccountCallout200Response
 ```
 
-Remove an account-level callout extension
+Remove account callout
 
-Removes the `customerAsset` link (`customers/{cid}/customerAssets/{assetId}~CALLOUT`). Google only; every other platform returns 501.
+Removes the customer_asset attachment only. The underlying shared asset and its campaign or ad-group attachments remain.
 
 ### Example
 
@@ -1922,13 +2175,133 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$remove_account_callout_request = new \Zernio\Model\RemoveAccountCalloutRequest(); // \Zernio\Model\RemoveAccountCalloutRequest
+$remove_account_callout_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","customerId":"1234567890","assetId":"123"}; // \Zernio\Model\RemoveAccountCalloutRequest
 
 try {
     $result = $apiInstance->removeAccountCallout($remove_account_callout_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->removeAccountCallout: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **remove_account_callout_request** | [**\Zernio\Model\RemoveAccountCalloutRequest**](../Model/RemoveAccountCalloutRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\RemoveAccountCallout200Response**](../Model/RemoveAccountCallout200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `removeAccountSitelink()`
+
+```php
+removeAccountSitelink($remove_account_callout_request): \Zernio\Model\RemoveAccountCallout200Response
+```
+
+Remove account sitelink
+
+Removes the customer_asset attachment only. The underlying shared asset and its campaign or ad-group attachments remain.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$remove_account_callout_request = {accountId=64b1f0c8a1b2c3d4e5f60718, customerId=1234567890, assetId=123}; // \Zernio\Model\RemoveAccountCalloutRequest
+
+try {
+    $result = $apiInstance->removeAccountSitelink($remove_account_callout_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->removeAccountSitelink: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **remove_account_callout_request** | [**\Zernio\Model\RemoveAccountCalloutRequest**](../Model/RemoveAccountCalloutRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\RemoveAccountCallout200Response**](../Model/RemoveAccountCallout200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `removeAccountStructuredSnippet()`
+
+```php
+removeAccountStructuredSnippet($remove_account_callout_request): \Zernio\Model\RemoveAccountCallout200Response
+```
+
+Remove account snippet
+
+Removes the customer_asset attachment only. The underlying shared asset and its campaign or ad-group attachments remain.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$remove_account_callout_request = {accountId=64b1f0c8a1b2c3d4e5f60718, customerId=1234567890, assetId=123}; // \Zernio\Model\RemoveAccountCalloutRequest
+
+try {
+    $result = $apiInstance->removeAccountStructuredSnippet($remove_account_callout_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->removeAccountStructuredSnippet: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -2071,6 +2444,186 @@ try {
 ### Return type
 
 [**\Zernio\Model\ReplyToAdComment200Response**](../Model/ReplyToAdComment200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateAccountCallouts()`
+
+```php
+updateAccountCallouts($update_account_callouts_request): \Zernio\Model\UpdateAccountCallouts200Response
+```
+
+Update account callouts
+
+Edits existing Google assets in place. Send updates with assetResourceName and the fields to change. An asset is shared: changes affect every attachment using it. Omitted fields stay unchanged. The operation consumes the Google operations budget and invalidates affected cached lists.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$update_account_callouts_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","customerId":"1234567890","updates":[{"assetResourceName":"customers/1234567890/assets/123","calloutAsset":{"calloutText":"Simple integration"}}]}; // \Zernio\Model\UpdateAccountCalloutsRequest
+
+try {
+    $result = $apiInstance->updateAccountCallouts($update_account_callouts_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->updateAccountCallouts: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **update_account_callouts_request** | [**\Zernio\Model\UpdateAccountCalloutsRequest**](../Model/UpdateAccountCalloutsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateAccountCallouts200Response**](../Model/UpdateAccountCallouts200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateAccountSitelinks()`
+
+```php
+updateAccountSitelinks($update_account_sitelinks_request): \Zernio\Model\UpdateAccountCallouts200Response
+```
+
+Update account sitelinks
+
+Edits existing Google assets in place. Send updates with assetResourceName and the fields to change. An asset is shared: changes affect every attachment using it. Omitted fields stay unchanged. The operation consumes the Google operations budget and invalidates affected cached lists.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$update_account_sitelinks_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","customerId":"1234567890","updates":[{"assetResourceName":"customers/1234567890/assets/123","sitelinkAsset":{"linkText":"Explore pricing"},"finalUrls":["https://zernio.com/pricing"]}]}; // \Zernio\Model\UpdateAccountSitelinksRequest
+
+try {
+    $result = $apiInstance->updateAccountSitelinks($update_account_sitelinks_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->updateAccountSitelinks: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **update_account_sitelinks_request** | [**\Zernio\Model\UpdateAccountSitelinksRequest**](../Model/UpdateAccountSitelinksRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateAccountCallouts200Response**](../Model/UpdateAccountCallouts200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateAccountStructuredSnippets()`
+
+```php
+updateAccountStructuredSnippets($update_account_structured_snippets_request): \Zernio\Model\UpdateAccountCallouts200Response
+```
+
+Update account snippets
+
+Edits existing Google assets in place. Send updates with assetResourceName and the fields to change. An asset is shared: changes affect every attachment using it. Omitted fields stay unchanged. The operation consumes the Google operations budget and invalidates affected cached lists.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$update_account_structured_snippets_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","customerId":"1234567890","updates":[{"assetResourceName":"customers/1234567890/assets/123","structuredSnippetAsset":{"header":"Types","values":["Scheduling","Reporting","Messaging"]}}]}; // \Zernio\Model\UpdateAccountStructuredSnippetsRequest
+
+try {
+    $result = $apiInstance->updateAccountStructuredSnippets($update_account_structured_snippets_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->updateAccountStructuredSnippets: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **update_account_structured_snippets_request** | [**\Zernio\Model\UpdateAccountStructuredSnippetsRequest**](../Model/UpdateAccountStructuredSnippetsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateAccountCallouts200Response**](../Model/UpdateAccountCallouts200Response.md)
 
 ### Authorization
 

@@ -78,6 +78,12 @@ class AdAccountsApi
         'addAccountCallouts' => [
             'application/json',
         ],
+        'addAccountSitelinks' => [
+            'application/json',
+        ],
+        'addAccountStructuredSnippets' => [
+            'application/json',
+        ],
         'createAdNegativeKeywordList' => [
             'application/json',
         ],
@@ -129,6 +135,12 @@ class AdAccountsApi
         'listAccountCallouts' => [
             'application/json',
         ],
+        'listAccountSitelinks' => [
+            'application/json',
+        ],
+        'listAccountStructuredSnippets' => [
+            'application/json',
+        ],
         'listAdAccounts' => [
             'application/json',
         ],
@@ -165,10 +177,25 @@ class AdAccountsApi
         'removeAccountCallout' => [
             'application/json',
         ],
+        'removeAccountSitelink' => [
+            'application/json',
+        ],
+        'removeAccountStructuredSnippet' => [
+            'application/json',
+        ],
         'replaceAdNegativeKeywordListKeywords' => [
             'application/json',
         ],
         'replyToAdComment' => [
+            'application/json',
+        ],
+        'updateAccountCallouts' => [
+            'application/json',
+        ],
+        'updateAccountSitelinks' => [
+            'application/json',
+        ],
+        'updateAccountStructuredSnippets' => [
             'application/json',
         ],
         'updateAdAccount' => [
@@ -231,7 +258,7 @@ class AdAccountsApi
     /**
      * Operation addAccountCallouts
      *
-     * Add account-level callout extensions
+     * Add account callouts
      *
      * @param  \Zernio\Model\AddAccountCalloutsRequest $add_account_callouts_request add_account_callouts_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAccountCallouts'] to see the possible values for this operation
@@ -249,7 +276,7 @@ class AdAccountsApi
     /**
      * Operation addAccountCalloutsWithHttpInfo
      *
-     * Add account-level callout extensions
+     * Add account callouts
      *
      * @param  \Zernio\Model\AddAccountCalloutsRequest $add_account_callouts_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAccountCallouts'] to see the possible values for this operation
@@ -376,7 +403,7 @@ class AdAccountsApi
     /**
      * Operation addAccountCalloutsAsync
      *
-     * Add account-level callout extensions
+     * Add account callouts
      *
      * @param  \Zernio\Model\AddAccountCalloutsRequest $add_account_callouts_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAccountCallouts'] to see the possible values for this operation
@@ -397,7 +424,7 @@ class AdAccountsApi
     /**
      * Operation addAccountCalloutsAsyncWithHttpInfo
      *
-     * Add account-level callout extensions
+     * Add account callouts
      *
      * @param  \Zernio\Model\AddAccountCalloutsRequest $add_account_callouts_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAccountCallouts'] to see the possible values for this operation
@@ -490,6 +517,632 @@ class AdAccountsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($add_account_callouts_request));
             } else {
                 $httpBody = $add_account_callouts_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation addAccountSitelinks
+     *
+     * Add account sitelinks
+     *
+     * @param  \Zernio\Model\AddAccountSitelinksRequest $add_account_sitelinks_request add_account_sitelinks_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAccountSitelinks'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\AddAccountSitelinks201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function addAccountSitelinks($add_account_sitelinks_request, string $contentType = self::contentTypes['addAccountSitelinks'][0])
+    {
+        list($response) = $this->addAccountSitelinksWithHttpInfo($add_account_sitelinks_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation addAccountSitelinksWithHttpInfo
+     *
+     * Add account sitelinks
+     *
+     * @param  \Zernio\Model\AddAccountSitelinksRequest $add_account_sitelinks_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAccountSitelinks'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\AddAccountSitelinks201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function addAccountSitelinksWithHttpInfo($add_account_sitelinks_request, string $contentType = self::contentTypes['addAccountSitelinks'][0])
+    {
+        $request = $this->addAccountSitelinksRequest($add_account_sitelinks_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\AddAccountSitelinks201Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\AddAccountSitelinks201Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\AddAccountSitelinks201Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation addAccountSitelinksAsync
+     *
+     * Add account sitelinks
+     *
+     * @param  \Zernio\Model\AddAccountSitelinksRequest $add_account_sitelinks_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAccountSitelinks'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addAccountSitelinksAsync($add_account_sitelinks_request, string $contentType = self::contentTypes['addAccountSitelinks'][0])
+    {
+        return $this->addAccountSitelinksAsyncWithHttpInfo($add_account_sitelinks_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation addAccountSitelinksAsyncWithHttpInfo
+     *
+     * Add account sitelinks
+     *
+     * @param  \Zernio\Model\AddAccountSitelinksRequest $add_account_sitelinks_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAccountSitelinks'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addAccountSitelinksAsyncWithHttpInfo($add_account_sitelinks_request, string $contentType = self::contentTypes['addAccountSitelinks'][0])
+    {
+        $returnType = '\Zernio\Model\AddAccountSitelinks201Response';
+        $request = $this->addAccountSitelinksRequest($add_account_sitelinks_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'addAccountSitelinks'
+     *
+     * @param  \Zernio\Model\AddAccountSitelinksRequest $add_account_sitelinks_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAccountSitelinks'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function addAccountSitelinksRequest($add_account_sitelinks_request, string $contentType = self::contentTypes['addAccountSitelinks'][0])
+    {
+
+        // verify the required parameter 'add_account_sitelinks_request' is set
+        if ($add_account_sitelinks_request === null || (is_array($add_account_sitelinks_request) && count($add_account_sitelinks_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $add_account_sitelinks_request when calling addAccountSitelinks'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/accounts/sitelinks';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($add_account_sitelinks_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($add_account_sitelinks_request));
+            } else {
+                $httpBody = $add_account_sitelinks_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation addAccountStructuredSnippets
+     *
+     * Add account snippets
+     *
+     * @param  \Zernio\Model\AddAccountStructuredSnippetsRequest $add_account_structured_snippets_request add_account_structured_snippets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAccountStructuredSnippets'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\AddAccountStructuredSnippets201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function addAccountStructuredSnippets($add_account_structured_snippets_request, string $contentType = self::contentTypes['addAccountStructuredSnippets'][0])
+    {
+        list($response) = $this->addAccountStructuredSnippetsWithHttpInfo($add_account_structured_snippets_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation addAccountStructuredSnippetsWithHttpInfo
+     *
+     * Add account snippets
+     *
+     * @param  \Zernio\Model\AddAccountStructuredSnippetsRequest $add_account_structured_snippets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAccountStructuredSnippets'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\AddAccountStructuredSnippets201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function addAccountStructuredSnippetsWithHttpInfo($add_account_structured_snippets_request, string $contentType = self::contentTypes['addAccountStructuredSnippets'][0])
+    {
+        $request = $this->addAccountStructuredSnippetsRequest($add_account_structured_snippets_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\AddAccountStructuredSnippets201Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\AddAccountStructuredSnippets201Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\AddAccountStructuredSnippets201Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation addAccountStructuredSnippetsAsync
+     *
+     * Add account snippets
+     *
+     * @param  \Zernio\Model\AddAccountStructuredSnippetsRequest $add_account_structured_snippets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAccountStructuredSnippets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addAccountStructuredSnippetsAsync($add_account_structured_snippets_request, string $contentType = self::contentTypes['addAccountStructuredSnippets'][0])
+    {
+        return $this->addAccountStructuredSnippetsAsyncWithHttpInfo($add_account_structured_snippets_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation addAccountStructuredSnippetsAsyncWithHttpInfo
+     *
+     * Add account snippets
+     *
+     * @param  \Zernio\Model\AddAccountStructuredSnippetsRequest $add_account_structured_snippets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAccountStructuredSnippets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addAccountStructuredSnippetsAsyncWithHttpInfo($add_account_structured_snippets_request, string $contentType = self::contentTypes['addAccountStructuredSnippets'][0])
+    {
+        $returnType = '\Zernio\Model\AddAccountStructuredSnippets201Response';
+        $request = $this->addAccountStructuredSnippetsRequest($add_account_structured_snippets_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'addAccountStructuredSnippets'
+     *
+     * @param  \Zernio\Model\AddAccountStructuredSnippetsRequest $add_account_structured_snippets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAccountStructuredSnippets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function addAccountStructuredSnippetsRequest($add_account_structured_snippets_request, string $contentType = self::contentTypes['addAccountStructuredSnippets'][0])
+    {
+
+        // verify the required parameter 'add_account_structured_snippets_request' is set
+        if ($add_account_structured_snippets_request === null || (is_array($add_account_structured_snippets_request) && count($add_account_structured_snippets_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $add_account_structured_snippets_request when calling addAccountStructuredSnippets'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/accounts/structured-snippets';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($add_account_structured_snippets_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($add_account_structured_snippets_request));
+            } else {
+                $httpBody = $add_account_structured_snippets_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -5890,10 +6543,10 @@ class AdAccountsApi
     /**
      * Operation listAccountCallouts
      *
-     * List account-level callout extensions
+     * List account callouts
      *
-     * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string $account_id account_id (required)
+     * @param  string|null $customer_id customer_id (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountCallouts'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5909,10 +6562,10 @@ class AdAccountsApi
     /**
      * Operation listAccountCalloutsWithHttpInfo
      *
-     * List account-level callout extensions
+     * List account callouts
      *
-     * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountCallouts'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6037,10 +6690,10 @@ class AdAccountsApi
     /**
      * Operation listAccountCalloutsAsync
      *
-     * List account-level callout extensions
+     * List account callouts
      *
-     * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountCallouts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6059,10 +6712,10 @@ class AdAccountsApi
     /**
      * Operation listAccountCalloutsAsyncWithHttpInfo
      *
-     * List account-level callout extensions
+     * List account callouts
      *
-     * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountCallouts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6112,8 +6765,8 @@ class AdAccountsApi
     /**
      * Create request for operation 'listAccountCallouts'
      *
-     * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountCallouts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6128,10 +6781,688 @@ class AdAccountsApi
                 'Missing the required parameter $account_id when calling listAccountCallouts'
             );
         }
-
-
+        if (!preg_match("/^[a-fA-F0-9]{24}$/", $account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"account_id\" when calling AdAccountsApi.listAccountCallouts, must conform to the pattern /^[a-fA-F0-9]{24}$/.");
+        }
+        
+        if ($customer_id !== null && !preg_match("/^\\d+$/", $customer_id)) {
+            throw new \InvalidArgumentException("invalid value for \"customer_id\" when calling AdAccountsApi.listAccountCallouts, must conform to the pattern /^\\d+$/.");
+        }
+        
 
         $resourcePath = '/v1/ads/accounts/callouts';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $customer_id,
+            'customerId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listAccountSitelinks
+     *
+     * List account sitelinks
+     *
+     * @param  string $account_id account_id (required)
+     * @param  string|null $customer_id customer_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountSitelinks'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListAccountSitelinks200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function listAccountSitelinks($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountSitelinks'][0])
+    {
+        list($response) = $this->listAccountSitelinksWithHttpInfo($account_id, $customer_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listAccountSitelinksWithHttpInfo
+     *
+     * List account sitelinks
+     *
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountSitelinks'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListAccountSitelinks200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listAccountSitelinksWithHttpInfo($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountSitelinks'][0])
+    {
+        $request = $this->listAccountSitelinksRequest($account_id, $customer_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListAccountSitelinks200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListAccountSitelinks200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListAccountSitelinks200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listAccountSitelinksAsync
+     *
+     * List account sitelinks
+     *
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountSitelinks'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAccountSitelinksAsync($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountSitelinks'][0])
+    {
+        return $this->listAccountSitelinksAsyncWithHttpInfo($account_id, $customer_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listAccountSitelinksAsyncWithHttpInfo
+     *
+     * List account sitelinks
+     *
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountSitelinks'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAccountSitelinksAsyncWithHttpInfo($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountSitelinks'][0])
+    {
+        $returnType = '\Zernio\Model\ListAccountSitelinks200Response';
+        $request = $this->listAccountSitelinksRequest($account_id, $customer_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listAccountSitelinks'
+     *
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountSitelinks'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listAccountSitelinksRequest($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountSitelinks'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling listAccountSitelinks'
+            );
+        }
+        if (!preg_match("/^[a-fA-F0-9]{24}$/", $account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"account_id\" when calling AdAccountsApi.listAccountSitelinks, must conform to the pattern /^[a-fA-F0-9]{24}$/.");
+        }
+        
+        if ($customer_id !== null && !preg_match("/^\\d+$/", $customer_id)) {
+            throw new \InvalidArgumentException("invalid value for \"customer_id\" when calling AdAccountsApi.listAccountSitelinks, must conform to the pattern /^\\d+$/.");
+        }
+        
+
+        $resourcePath = '/v1/ads/accounts/sitelinks';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $customer_id,
+            'customerId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listAccountStructuredSnippets
+     *
+     * List account snippets
+     *
+     * @param  string $account_id account_id (required)
+     * @param  string|null $customer_id customer_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountStructuredSnippets'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListAccountStructuredSnippets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function listAccountStructuredSnippets($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountStructuredSnippets'][0])
+    {
+        list($response) = $this->listAccountStructuredSnippetsWithHttpInfo($account_id, $customer_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listAccountStructuredSnippetsWithHttpInfo
+     *
+     * List account snippets
+     *
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountStructuredSnippets'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListAccountStructuredSnippets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listAccountStructuredSnippetsWithHttpInfo($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountStructuredSnippets'][0])
+    {
+        $request = $this->listAccountStructuredSnippetsRequest($account_id, $customer_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListAccountStructuredSnippets200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListAccountStructuredSnippets200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListAccountStructuredSnippets200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listAccountStructuredSnippetsAsync
+     *
+     * List account snippets
+     *
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountStructuredSnippets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAccountStructuredSnippetsAsync($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountStructuredSnippets'][0])
+    {
+        return $this->listAccountStructuredSnippetsAsyncWithHttpInfo($account_id, $customer_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listAccountStructuredSnippetsAsyncWithHttpInfo
+     *
+     * List account snippets
+     *
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountStructuredSnippets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAccountStructuredSnippetsAsyncWithHttpInfo($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountStructuredSnippets'][0])
+    {
+        $returnType = '\Zernio\Model\ListAccountStructuredSnippets200Response';
+        $request = $this->listAccountStructuredSnippetsRequest($account_id, $customer_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listAccountStructuredSnippets'
+     *
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountStructuredSnippets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listAccountStructuredSnippetsRequest($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountStructuredSnippets'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling listAccountStructuredSnippets'
+            );
+        }
+        if (!preg_match("/^[a-fA-F0-9]{24}$/", $account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"account_id\" when calling AdAccountsApi.listAccountStructuredSnippets, must conform to the pattern /^[a-fA-F0-9]{24}$/.");
+        }
+        
+        if ($customer_id !== null && !preg_match("/^\\d+$/", $customer_id)) {
+            throw new \InvalidArgumentException("invalid value for \"customer_id\" when calling AdAccountsApi.listAccountStructuredSnippets, must conform to the pattern /^\\d+$/.");
+        }
+        
+
+        $resourcePath = '/v1/ads/accounts/structured-snippets';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -9917,7 +11248,7 @@ class AdAccountsApi
     /**
      * Operation removeAccountCallout
      *
-     * Remove an account-level callout extension
+     * Remove account callout
      *
      * @param  \Zernio\Model\RemoveAccountCalloutRequest $remove_account_callout_request remove_account_callout_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAccountCallout'] to see the possible values for this operation
@@ -9935,7 +11266,7 @@ class AdAccountsApi
     /**
      * Operation removeAccountCalloutWithHttpInfo
      *
-     * Remove an account-level callout extension
+     * Remove account callout
      *
      * @param  \Zernio\Model\RemoveAccountCalloutRequest $remove_account_callout_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAccountCallout'] to see the possible values for this operation
@@ -10062,7 +11393,7 @@ class AdAccountsApi
     /**
      * Operation removeAccountCalloutAsync
      *
-     * Remove an account-level callout extension
+     * Remove account callout
      *
      * @param  \Zernio\Model\RemoveAccountCalloutRequest $remove_account_callout_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAccountCallout'] to see the possible values for this operation
@@ -10083,7 +11414,7 @@ class AdAccountsApi
     /**
      * Operation removeAccountCalloutAsyncWithHttpInfo
      *
-     * Remove an account-level callout extension
+     * Remove account callout
      *
      * @param  \Zernio\Model\RemoveAccountCalloutRequest $remove_account_callout_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAccountCallout'] to see the possible values for this operation
@@ -10153,6 +11484,632 @@ class AdAccountsApi
 
 
         $resourcePath = '/v1/ads/accounts/callouts';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($remove_account_callout_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($remove_account_callout_request));
+            } else {
+                $httpBody = $remove_account_callout_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation removeAccountSitelink
+     *
+     * Remove account sitelink
+     *
+     * @param  \Zernio\Model\RemoveAccountCalloutRequest $remove_account_callout_request remove_account_callout_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAccountSitelink'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\RemoveAccountCallout200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function removeAccountSitelink($remove_account_callout_request, string $contentType = self::contentTypes['removeAccountSitelink'][0])
+    {
+        list($response) = $this->removeAccountSitelinkWithHttpInfo($remove_account_callout_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation removeAccountSitelinkWithHttpInfo
+     *
+     * Remove account sitelink
+     *
+     * @param  \Zernio\Model\RemoveAccountCalloutRequest $remove_account_callout_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAccountSitelink'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\RemoveAccountCallout200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function removeAccountSitelinkWithHttpInfo($remove_account_callout_request, string $contentType = self::contentTypes['removeAccountSitelink'][0])
+    {
+        $request = $this->removeAccountSitelinkRequest($remove_account_callout_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\RemoveAccountCallout200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\RemoveAccountCallout200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\RemoveAccountCallout200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation removeAccountSitelinkAsync
+     *
+     * Remove account sitelink
+     *
+     * @param  \Zernio\Model\RemoveAccountCalloutRequest $remove_account_callout_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAccountSitelink'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeAccountSitelinkAsync($remove_account_callout_request, string $contentType = self::contentTypes['removeAccountSitelink'][0])
+    {
+        return $this->removeAccountSitelinkAsyncWithHttpInfo($remove_account_callout_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation removeAccountSitelinkAsyncWithHttpInfo
+     *
+     * Remove account sitelink
+     *
+     * @param  \Zernio\Model\RemoveAccountCalloutRequest $remove_account_callout_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAccountSitelink'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeAccountSitelinkAsyncWithHttpInfo($remove_account_callout_request, string $contentType = self::contentTypes['removeAccountSitelink'][0])
+    {
+        $returnType = '\Zernio\Model\RemoveAccountCallout200Response';
+        $request = $this->removeAccountSitelinkRequest($remove_account_callout_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'removeAccountSitelink'
+     *
+     * @param  \Zernio\Model\RemoveAccountCalloutRequest $remove_account_callout_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAccountSitelink'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function removeAccountSitelinkRequest($remove_account_callout_request, string $contentType = self::contentTypes['removeAccountSitelink'][0])
+    {
+
+        // verify the required parameter 'remove_account_callout_request' is set
+        if ($remove_account_callout_request === null || (is_array($remove_account_callout_request) && count($remove_account_callout_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $remove_account_callout_request when calling removeAccountSitelink'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/accounts/sitelinks';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($remove_account_callout_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($remove_account_callout_request));
+            } else {
+                $httpBody = $remove_account_callout_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation removeAccountStructuredSnippet
+     *
+     * Remove account snippet
+     *
+     * @param  \Zernio\Model\RemoveAccountCalloutRequest $remove_account_callout_request remove_account_callout_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAccountStructuredSnippet'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\RemoveAccountCallout200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function removeAccountStructuredSnippet($remove_account_callout_request, string $contentType = self::contentTypes['removeAccountStructuredSnippet'][0])
+    {
+        list($response) = $this->removeAccountStructuredSnippetWithHttpInfo($remove_account_callout_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation removeAccountStructuredSnippetWithHttpInfo
+     *
+     * Remove account snippet
+     *
+     * @param  \Zernio\Model\RemoveAccountCalloutRequest $remove_account_callout_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAccountStructuredSnippet'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\RemoveAccountCallout200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function removeAccountStructuredSnippetWithHttpInfo($remove_account_callout_request, string $contentType = self::contentTypes['removeAccountStructuredSnippet'][0])
+    {
+        $request = $this->removeAccountStructuredSnippetRequest($remove_account_callout_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\RemoveAccountCallout200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\RemoveAccountCallout200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\RemoveAccountCallout200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation removeAccountStructuredSnippetAsync
+     *
+     * Remove account snippet
+     *
+     * @param  \Zernio\Model\RemoveAccountCalloutRequest $remove_account_callout_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAccountStructuredSnippet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeAccountStructuredSnippetAsync($remove_account_callout_request, string $contentType = self::contentTypes['removeAccountStructuredSnippet'][0])
+    {
+        return $this->removeAccountStructuredSnippetAsyncWithHttpInfo($remove_account_callout_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation removeAccountStructuredSnippetAsyncWithHttpInfo
+     *
+     * Remove account snippet
+     *
+     * @param  \Zernio\Model\RemoveAccountCalloutRequest $remove_account_callout_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAccountStructuredSnippet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeAccountStructuredSnippetAsyncWithHttpInfo($remove_account_callout_request, string $contentType = self::contentTypes['removeAccountStructuredSnippet'][0])
+    {
+        $returnType = '\Zernio\Model\RemoveAccountCallout200Response';
+        $request = $this->removeAccountStructuredSnippetRequest($remove_account_callout_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'removeAccountStructuredSnippet'
+     *
+     * @param  \Zernio\Model\RemoveAccountCalloutRequest $remove_account_callout_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAccountStructuredSnippet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function removeAccountStructuredSnippetRequest($remove_account_callout_request, string $contentType = self::contentTypes['removeAccountStructuredSnippet'][0])
+    {
+
+        // verify the required parameter 'remove_account_callout_request' is set
+        if ($remove_account_callout_request === null || (is_array($remove_account_callout_request) && count($remove_account_callout_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $remove_account_callout_request when calling removeAccountStructuredSnippet'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/accounts/structured-snippets';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -10929,6 +12886,945 @@ class AdAccountsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateAccountCallouts
+     *
+     * Update account callouts
+     *
+     * @param  \Zernio\Model\UpdateAccountCalloutsRequest $update_account_callouts_request update_account_callouts_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountCallouts'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\UpdateAccountCallouts200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function updateAccountCallouts($update_account_callouts_request, string $contentType = self::contentTypes['updateAccountCallouts'][0])
+    {
+        list($response) = $this->updateAccountCalloutsWithHttpInfo($update_account_callouts_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateAccountCalloutsWithHttpInfo
+     *
+     * Update account callouts
+     *
+     * @param  \Zernio\Model\UpdateAccountCalloutsRequest $update_account_callouts_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountCallouts'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\UpdateAccountCallouts200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateAccountCalloutsWithHttpInfo($update_account_callouts_request, string $contentType = self::contentTypes['updateAccountCallouts'][0])
+    {
+        $request = $this->updateAccountCalloutsRequest($update_account_callouts_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\UpdateAccountCallouts200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\UpdateAccountCallouts200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\UpdateAccountCallouts200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateAccountCalloutsAsync
+     *
+     * Update account callouts
+     *
+     * @param  \Zernio\Model\UpdateAccountCalloutsRequest $update_account_callouts_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountCallouts'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAccountCalloutsAsync($update_account_callouts_request, string $contentType = self::contentTypes['updateAccountCallouts'][0])
+    {
+        return $this->updateAccountCalloutsAsyncWithHttpInfo($update_account_callouts_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateAccountCalloutsAsyncWithHttpInfo
+     *
+     * Update account callouts
+     *
+     * @param  \Zernio\Model\UpdateAccountCalloutsRequest $update_account_callouts_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountCallouts'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAccountCalloutsAsyncWithHttpInfo($update_account_callouts_request, string $contentType = self::contentTypes['updateAccountCallouts'][0])
+    {
+        $returnType = '\Zernio\Model\UpdateAccountCallouts200Response';
+        $request = $this->updateAccountCalloutsRequest($update_account_callouts_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateAccountCallouts'
+     *
+     * @param  \Zernio\Model\UpdateAccountCalloutsRequest $update_account_callouts_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountCallouts'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateAccountCalloutsRequest($update_account_callouts_request, string $contentType = self::contentTypes['updateAccountCallouts'][0])
+    {
+
+        // verify the required parameter 'update_account_callouts_request' is set
+        if ($update_account_callouts_request === null || (is_array($update_account_callouts_request) && count($update_account_callouts_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_account_callouts_request when calling updateAccountCallouts'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/accounts/callouts';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_account_callouts_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_account_callouts_request));
+            } else {
+                $httpBody = $update_account_callouts_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateAccountSitelinks
+     *
+     * Update account sitelinks
+     *
+     * @param  \Zernio\Model\UpdateAccountSitelinksRequest $update_account_sitelinks_request update_account_sitelinks_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountSitelinks'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\UpdateAccountCallouts200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function updateAccountSitelinks($update_account_sitelinks_request, string $contentType = self::contentTypes['updateAccountSitelinks'][0])
+    {
+        list($response) = $this->updateAccountSitelinksWithHttpInfo($update_account_sitelinks_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateAccountSitelinksWithHttpInfo
+     *
+     * Update account sitelinks
+     *
+     * @param  \Zernio\Model\UpdateAccountSitelinksRequest $update_account_sitelinks_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountSitelinks'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\UpdateAccountCallouts200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateAccountSitelinksWithHttpInfo($update_account_sitelinks_request, string $contentType = self::contentTypes['updateAccountSitelinks'][0])
+    {
+        $request = $this->updateAccountSitelinksRequest($update_account_sitelinks_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\UpdateAccountCallouts200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\UpdateAccountCallouts200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\UpdateAccountCallouts200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateAccountSitelinksAsync
+     *
+     * Update account sitelinks
+     *
+     * @param  \Zernio\Model\UpdateAccountSitelinksRequest $update_account_sitelinks_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountSitelinks'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAccountSitelinksAsync($update_account_sitelinks_request, string $contentType = self::contentTypes['updateAccountSitelinks'][0])
+    {
+        return $this->updateAccountSitelinksAsyncWithHttpInfo($update_account_sitelinks_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateAccountSitelinksAsyncWithHttpInfo
+     *
+     * Update account sitelinks
+     *
+     * @param  \Zernio\Model\UpdateAccountSitelinksRequest $update_account_sitelinks_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountSitelinks'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAccountSitelinksAsyncWithHttpInfo($update_account_sitelinks_request, string $contentType = self::contentTypes['updateAccountSitelinks'][0])
+    {
+        $returnType = '\Zernio\Model\UpdateAccountCallouts200Response';
+        $request = $this->updateAccountSitelinksRequest($update_account_sitelinks_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateAccountSitelinks'
+     *
+     * @param  \Zernio\Model\UpdateAccountSitelinksRequest $update_account_sitelinks_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountSitelinks'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateAccountSitelinksRequest($update_account_sitelinks_request, string $contentType = self::contentTypes['updateAccountSitelinks'][0])
+    {
+
+        // verify the required parameter 'update_account_sitelinks_request' is set
+        if ($update_account_sitelinks_request === null || (is_array($update_account_sitelinks_request) && count($update_account_sitelinks_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_account_sitelinks_request when calling updateAccountSitelinks'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/accounts/sitelinks';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_account_sitelinks_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_account_sitelinks_request));
+            } else {
+                $httpBody = $update_account_sitelinks_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateAccountStructuredSnippets
+     *
+     * Update account snippets
+     *
+     * @param  \Zernio\Model\UpdateAccountStructuredSnippetsRequest $update_account_structured_snippets_request update_account_structured_snippets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountStructuredSnippets'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\UpdateAccountCallouts200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function updateAccountStructuredSnippets($update_account_structured_snippets_request, string $contentType = self::contentTypes['updateAccountStructuredSnippets'][0])
+    {
+        list($response) = $this->updateAccountStructuredSnippetsWithHttpInfo($update_account_structured_snippets_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateAccountStructuredSnippetsWithHttpInfo
+     *
+     * Update account snippets
+     *
+     * @param  \Zernio\Model\UpdateAccountStructuredSnippetsRequest $update_account_structured_snippets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountStructuredSnippets'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\UpdateAccountCallouts200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateAccountStructuredSnippetsWithHttpInfo($update_account_structured_snippets_request, string $contentType = self::contentTypes['updateAccountStructuredSnippets'][0])
+    {
+        $request = $this->updateAccountStructuredSnippetsRequest($update_account_structured_snippets_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\UpdateAccountCallouts200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\UpdateAccountCallouts200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\UpdateAccountCallouts200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateAccountStructuredSnippetsAsync
+     *
+     * Update account snippets
+     *
+     * @param  \Zernio\Model\UpdateAccountStructuredSnippetsRequest $update_account_structured_snippets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountStructuredSnippets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAccountStructuredSnippetsAsync($update_account_structured_snippets_request, string $contentType = self::contentTypes['updateAccountStructuredSnippets'][0])
+    {
+        return $this->updateAccountStructuredSnippetsAsyncWithHttpInfo($update_account_structured_snippets_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateAccountStructuredSnippetsAsyncWithHttpInfo
+     *
+     * Update account snippets
+     *
+     * @param  \Zernio\Model\UpdateAccountStructuredSnippetsRequest $update_account_structured_snippets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountStructuredSnippets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAccountStructuredSnippetsAsyncWithHttpInfo($update_account_structured_snippets_request, string $contentType = self::contentTypes['updateAccountStructuredSnippets'][0])
+    {
+        $returnType = '\Zernio\Model\UpdateAccountCallouts200Response';
+        $request = $this->updateAccountStructuredSnippetsRequest($update_account_structured_snippets_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateAccountStructuredSnippets'
+     *
+     * @param  \Zernio\Model\UpdateAccountStructuredSnippetsRequest $update_account_structured_snippets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountStructuredSnippets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateAccountStructuredSnippetsRequest($update_account_structured_snippets_request, string $contentType = self::contentTypes['updateAccountStructuredSnippets'][0])
+    {
+
+        // verify the required parameter 'update_account_structured_snippets_request' is set
+        if ($update_account_structured_snippets_request === null || (is_array($update_account_structured_snippets_request) && count($update_account_structured_snippets_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_account_structured_snippets_request when calling updateAccountStructuredSnippets'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/accounts/structured-snippets';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_account_structured_snippets_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_account_structured_snippets_request));
+            } else {
+                $httpBody = $update_account_structured_snippets_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

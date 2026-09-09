@@ -59,6 +59,9 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'headlines' => '\Zernio\Model\GoogleRsaHeadline[]',
+        'descriptions' => '\Zernio\Model\GoogleRsaDescription[]',
+        'final_urls' => 'string[]',
         'thumbnail_url' => 'string',
         'image_url' => 'string',
         'video_id' => 'string',
@@ -94,6 +97,9 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'headlines' => null,
+        'descriptions' => null,
+        'final_urls' => 'uri',
         'thumbnail_url' => null,
         'image_url' => null,
         'video_id' => null,
@@ -127,6 +133,9 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'headlines' => false,
+        'descriptions' => false,
+        'final_urls' => false,
         'thumbnail_url' => true,
         'image_url' => false,
         'video_id' => true,
@@ -240,6 +249,9 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'headlines' => 'headlines',
+        'descriptions' => 'descriptions',
+        'final_urls' => 'finalUrls',
         'thumbnail_url' => 'thumbnailUrl',
         'image_url' => 'imageUrl',
         'video_id' => 'videoId',
@@ -273,6 +285,9 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'headlines' => 'setHeadlines',
+        'descriptions' => 'setDescriptions',
+        'final_urls' => 'setFinalUrls',
         'thumbnail_url' => 'setThumbnailUrl',
         'image_url' => 'setImageUrl',
         'video_id' => 'setVideoId',
@@ -306,6 +321,9 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'headlines' => 'getHeadlines',
+        'descriptions' => 'getDescriptions',
+        'final_urls' => 'getFinalUrls',
         'thumbnail_url' => 'getThumbnailUrl',
         'image_url' => 'getImageUrl',
         'video_id' => 'getVideoId',
@@ -390,6 +408,9 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('headlines', $data ?? [], null);
+        $this->setIfExists('descriptions', $data ?? [], null);
+        $this->setIfExists('final_urls', $data ?? [], null);
         $this->setIfExists('thumbnail_url', $data ?? [], null);
         $this->setIfExists('image_url', $data ?? [], null);
         $this->setIfExists('video_id', $data ?? [], null);
@@ -444,6 +465,26 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['headlines']) && (count($this->container['headlines']) > 15)) {
+            $invalidProperties[] = "invalid value for 'headlines', number of items must be less than or equal to 15.";
+        }
+
+        if (!is_null($this->container['headlines']) && (count($this->container['headlines']) < 3)) {
+            $invalidProperties[] = "invalid value for 'headlines', number of items must be greater than or equal to 3.";
+        }
+
+        if (!is_null($this->container['descriptions']) && (count($this->container['descriptions']) > 4)) {
+            $invalidProperties[] = "invalid value for 'descriptions', number of items must be less than or equal to 4.";
+        }
+
+        if (!is_null($this->container['descriptions']) && (count($this->container['descriptions']) < 2)) {
+            $invalidProperties[] = "invalid value for 'descriptions', number of items must be greater than or equal to 2.";
+        }
+
+        if (!is_null($this->container['final_urls']) && (count($this->container['final_urls']) < 1)) {
+            $invalidProperties[] = "invalid value for 'final_urls', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -458,6 +499,106 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets headlines
+     *
+     * @return \Zernio\Model\GoogleRsaHeadline[]|null
+     */
+    public function getHeadlines()
+    {
+        return $this->container['headlines'];
+    }
+
+    /**
+     * Sets headlines
+     *
+     * @param \Zernio\Model\GoogleRsaHeadline[]|null $headlines Google RSA only. Replaces the complete headline list. No padding or truncation on update.
+     *
+     * @return self
+     */
+    public function setHeadlines($headlines)
+    {
+        if (is_null($headlines)) {
+            throw new \InvalidArgumentException('non-nullable headlines cannot be null');
+        }
+
+        if ((count($headlines) > 15)) {
+            throw new \InvalidArgumentException('invalid value for $headlines when calling AdCreative., number of items must be less than or equal to 15.');
+        }
+        if ((count($headlines) < 3)) {
+            throw new \InvalidArgumentException('invalid length for $headlines when calling AdCreative., number of items must be greater than or equal to 3.');
+        }
+        $this->container['headlines'] = $headlines;
+
+        return $this;
+    }
+
+    /**
+     * Gets descriptions
+     *
+     * @return \Zernio\Model\GoogleRsaDescription[]|null
+     */
+    public function getDescriptions()
+    {
+        return $this->container['descriptions'];
+    }
+
+    /**
+     * Sets descriptions
+     *
+     * @param \Zernio\Model\GoogleRsaDescription[]|null $descriptions Google RSA only. Replaces the complete description list. No padding or truncation on update.
+     *
+     * @return self
+     */
+    public function setDescriptions($descriptions)
+    {
+        if (is_null($descriptions)) {
+            throw new \InvalidArgumentException('non-nullable descriptions cannot be null');
+        }
+
+        if ((count($descriptions) > 4)) {
+            throw new \InvalidArgumentException('invalid value for $descriptions when calling AdCreative., number of items must be less than or equal to 4.');
+        }
+        if ((count($descriptions) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $descriptions when calling AdCreative., number of items must be greater than or equal to 2.');
+        }
+        $this->container['descriptions'] = $descriptions;
+
+        return $this;
+    }
+
+    /**
+     * Gets final_urls
+     *
+     * @return string[]|null
+     */
+    public function getFinalUrls()
+    {
+        return $this->container['final_urls'];
+    }
+
+    /**
+     * Sets final_urls
+     *
+     * @param string[]|null $final_urls Google RSA only. Replaces final URLs. Omitted lists stay unchanged.
+     *
+     * @return self
+     */
+    public function setFinalUrls($final_urls)
+    {
+        if (is_null($final_urls)) {
+            throw new \InvalidArgumentException('non-nullable final_urls cannot be null');
+        }
+
+
+        if ((count($final_urls) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $final_urls when calling AdCreative., number of items must be greater than or equal to 1.');
+        }
+        $this->container['final_urls'] = $final_urls;
+
+        return $this;
+    }
 
     /**
      * Gets thumbnail_url

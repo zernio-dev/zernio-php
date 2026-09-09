@@ -378,7 +378,7 @@ class ListAccountCallouts200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets cached_at
      *
-     * @param \DateTime|null $cached_at When this list was fetched from Google. Null when it was never served from cache.
+     * @param \DateTime|null $cached_at Time of the cached Google read. Null when no cache was used.
      *
      * @return self
      */
@@ -412,7 +412,7 @@ class ListAccountCallouts200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets stale
      *
-     * @param bool|null $stale True when Google's daily API quota was exhausted and this is the last successful fetch, not a live read.
+     * @param bool|null $stale True when exhausted quota required returning the last successful read.
      *
      * @return self
      */

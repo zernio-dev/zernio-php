@@ -36,6 +36,7 @@ use \Zernio\ObjectSerializer;
  * AttachCampaignAssetsRequest Class Doc Comment
  *
  * @category Class
+ * @description Provide at least one of sitelinks, callouts or structuredSnippets. Sitelink description1 and description2 must be supplied together.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,9 +61,9 @@ class AttachCampaignAssetsRequest implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPITypes = [
         'account_id' => 'string',
         'customer_id' => 'string',
-        'sitelinks' => '\Zernio\Model\AttachCampaignAssetsRequestSitelinksInner[]',
+        'sitelinks' => '\Zernio\Model\GoogleSitelink[]',
         'callouts' => 'string[]',
-        'structured_snippets' => '\Zernio\Model\AttachCampaignAssetsRequestStructuredSnippetsInner[]'
+        'structured_snippets' => '\Zernio\Model\GoogleStructuredSnippet[]'
     ];
 
     /**
@@ -306,6 +307,14 @@ class AttachCampaignAssetsRequest implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['account_id'] === null) {
             $invalidProperties[] = "'account_id' can't be null";
         }
+        if (!preg_match("/^[a-fA-F0-9]{24}$/", $this->container['account_id'])) {
+            $invalidProperties[] = "invalid value for 'account_id', must be conform to the pattern /^[a-fA-F0-9]{24}$/.";
+        }
+
+        if (!is_null($this->container['customer_id']) && !preg_match("/^\\d+$/", $this->container['customer_id'])) {
+            $invalidProperties[] = "invalid value for 'customer_id', must be conform to the pattern /^\\d+$/.";
+        }
+
         if (!is_null($this->container['sitelinks']) && (count($this->container['sitelinks']) > 20)) {
             $invalidProperties[] = "invalid value for 'sitelinks', number of items must be less than or equal to 20.";
         }
@@ -358,7 +367,7 @@ class AttachCampaignAssetsRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets account_id
      *
-     * @param string $account_id Zernio Google Ads SocialAccount id. Resolves the customer id + refresh token.
+     * @param string $account_id Zernio Google Ads connection id.
      *
      * @return self
      */
@@ -367,6 +376,11 @@ class AttachCampaignAssetsRequest implements ModelInterface, ArrayAccess, \JsonS
         if (is_null($account_id)) {
             throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
+
+        if ((!preg_match("/^[a-fA-F0-9]{24}$/", ObjectSerializer::toString($account_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$account_id when calling AttachCampaignAssetsRequest., must conform to the pattern /^[a-fA-F0-9]{24}$/.");
+        }
+
         $this->container['account_id'] = $account_id;
 
         return $this;
@@ -385,7 +399,7 @@ class AttachCampaignAssetsRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets customer_id
      *
-     * @param string|null $customer_id Numeric Google Ads customer id. Required when the connection has multiple Google Ads accounts; optional (and inferred) when it has only one.
+     * @param string|null $customer_id Google customer id without dashes. Required when the connection has multiple customers.
      *
      * @return self
      */
@@ -394,6 +408,11 @@ class AttachCampaignAssetsRequest implements ModelInterface, ArrayAccess, \JsonS
         if (is_null($customer_id)) {
             throw new \InvalidArgumentException('non-nullable customer_id cannot be null');
         }
+
+        if ((!preg_match("/^\\d+$/", ObjectSerializer::toString($customer_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$customer_id when calling AttachCampaignAssetsRequest., must conform to the pattern /^\\d+$/.");
+        }
+
         $this->container['customer_id'] = $customer_id;
 
         return $this;
@@ -402,7 +421,7 @@ class AttachCampaignAssetsRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets sitelinks
      *
-     * @return \Zernio\Model\AttachCampaignAssetsRequestSitelinksInner[]|null
+     * @return \Zernio\Model\GoogleSitelink[]|null
      */
     public function getSitelinks()
     {
@@ -412,7 +431,7 @@ class AttachCampaignAssetsRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets sitelinks
      *
-     * @param \Zernio\Model\AttachCampaignAssetsRequestSitelinksInner[]|null $sitelinks See POST /v1/ads/create sitelinks, same shape.
+     * @param \Zernio\Model\GoogleSitelink[]|null $sitelinks sitelinks
      *
      * @return self
      */
@@ -470,7 +489,7 @@ class AttachCampaignAssetsRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets structured_snippets
      *
-     * @return \Zernio\Model\AttachCampaignAssetsRequestStructuredSnippetsInner[]|null
+     * @return \Zernio\Model\GoogleStructuredSnippet[]|null
      */
     public function getStructuredSnippets()
     {
@@ -480,7 +499,7 @@ class AttachCampaignAssetsRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets structured_snippets
      *
-     * @param \Zernio\Model\AttachCampaignAssetsRequestStructuredSnippetsInner[]|null $structured_snippets structured_snippets
+     * @param \Zernio\Model\GoogleStructuredSnippet[]|null $structured_snippets structured_snippets
      *
      * @return self
      */

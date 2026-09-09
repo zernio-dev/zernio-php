@@ -4,6 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**headlines** | [**\Zernio\Model\GoogleRsaHeadline[]**](GoogleRsaHeadline.md) | Google RSA only. Replaces the complete headline list. No padding or truncation on update. | [optional]
+**descriptions** | [**\Zernio\Model\GoogleRsaDescription[]**](GoogleRsaDescription.md) | Google RSA only. Replaces the complete description list. No padding or truncation on update. | [optional]
+**final_urls** | **string[]** | Google RSA only. Replaces final URLs. Omitted lists stay unchanged. | [optional]
 **thumbnail_url** | **string** | Primary thumbnail/image URL | [optional]
 **image_url** | **string** | Alternative image URL | [optional]
 **video_id** | **string** | Meta video ID for VIDEO-type ads. Null for non-video ads. Callers that need an embeddable MP4 can call GET /{videoId}?fields&#x3D;source with the page access token. | [optional]

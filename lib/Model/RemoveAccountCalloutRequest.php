@@ -292,9 +292,21 @@ class RemoveAccountCalloutRequest implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['account_id'] === null) {
             $invalidProperties[] = "'account_id' can't be null";
         }
+        if (!preg_match("/^[a-fA-F0-9]{24}$/", $this->container['account_id'])) {
+            $invalidProperties[] = "invalid value for 'account_id', must be conform to the pattern /^[a-fA-F0-9]{24}$/.";
+        }
+
+        if (!is_null($this->container['customer_id']) && !preg_match("/^\\d+$/", $this->container['customer_id'])) {
+            $invalidProperties[] = "invalid value for 'customer_id', must be conform to the pattern /^\\d+$/.";
+        }
+
         if ($this->container['asset_id'] === null) {
             $invalidProperties[] = "'asset_id' can't be null";
         }
+        if (!preg_match("/^\\d+$/", $this->container['asset_id'])) {
+            $invalidProperties[] = "invalid value for 'asset_id', must be conform to the pattern /^\\d+$/.";
+        }
+
         return $invalidProperties;
     }
 
@@ -323,7 +335,7 @@ class RemoveAccountCalloutRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets account_id
      *
-     * @param string $account_id Zernio SocialAccount id owning the Google Ads connection.
+     * @param string $account_id Zernio Google Ads connection id.
      *
      * @return self
      */
@@ -332,6 +344,11 @@ class RemoveAccountCalloutRequest implements ModelInterface, ArrayAccess, \JsonS
         if (is_null($account_id)) {
             throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
+
+        if ((!preg_match("/^[a-fA-F0-9]{24}$/", ObjectSerializer::toString($account_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$account_id when calling RemoveAccountCalloutRequest., must conform to the pattern /^[a-fA-F0-9]{24}$/.");
+        }
+
         $this->container['account_id'] = $account_id;
 
         return $this;
@@ -350,7 +367,7 @@ class RemoveAccountCalloutRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets customer_id
      *
-     * @param string|null $customer_id Numeric Google Ads customer id. Only required when the connection has more than one.
+     * @param string|null $customer_id Google customer id without dashes. Required when the connection has multiple customers.
      *
      * @return self
      */
@@ -359,6 +376,11 @@ class RemoveAccountCalloutRequest implements ModelInterface, ArrayAccess, \JsonS
         if (is_null($customer_id)) {
             throw new \InvalidArgumentException('non-nullable customer_id cannot be null');
         }
+
+        if ((!preg_match("/^\\d+$/", ObjectSerializer::toString($customer_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$customer_id when calling RemoveAccountCalloutRequest., must conform to the pattern /^\\d+$/.");
+        }
+
         $this->container['customer_id'] = $customer_id;
 
         return $this;
@@ -377,7 +399,7 @@ class RemoveAccountCalloutRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets asset_id
      *
-     * @param string $asset_id Numeric asset id from GET /v1/ads/accounts/callouts.
+     * @param string $asset_id asset_id
      *
      * @return self
      */
@@ -386,6 +408,11 @@ class RemoveAccountCalloutRequest implements ModelInterface, ArrayAccess, \JsonS
         if (is_null($asset_id)) {
             throw new \InvalidArgumentException('non-nullable asset_id cannot be null');
         }
+
+        if ((!preg_match("/^\\d+$/", ObjectSerializer::toString($asset_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$asset_id when calling RemoveAccountCalloutRequest., must conform to the pattern /^\\d+$/.");
+        }
+
         $this->container['asset_id'] = $asset_id;
 
         return $this;

@@ -59,8 +59,8 @@ class ListAccountCallouts200ResponseCalloutsInner implements ModelInterface, Arr
       */
     protected static $openAPITypes = [
         'asset_id' => 'string',
-        'text' => 'string',
-        'status' => 'string'
+        'status' => 'string',
+        'text' => 'string'
     ];
 
     /**
@@ -72,8 +72,8 @@ class ListAccountCallouts200ResponseCalloutsInner implements ModelInterface, Arr
       */
     protected static $openAPIFormats = [
         'asset_id' => null,
-        'text' => null,
-        'status' => null
+        'status' => null,
+        'text' => null
     ];
 
     /**
@@ -83,8 +83,8 @@ class ListAccountCallouts200ResponseCalloutsInner implements ModelInterface, Arr
       */
     protected static array $openAPINullables = [
         'asset_id' => false,
-        'text' => false,
-        'status' => false
+        'status' => false,
+        'text' => false
     ];
 
     /**
@@ -174,8 +174,8 @@ class ListAccountCallouts200ResponseCalloutsInner implements ModelInterface, Arr
      */
     protected static $attributeMap = [
         'asset_id' => 'assetId',
-        'text' => 'text',
-        'status' => 'status'
+        'status' => 'status',
+        'text' => 'text'
     ];
 
     /**
@@ -185,8 +185,8 @@ class ListAccountCallouts200ResponseCalloutsInner implements ModelInterface, Arr
      */
     protected static $setters = [
         'asset_id' => 'setAssetId',
-        'text' => 'setText',
-        'status' => 'setStatus'
+        'status' => 'setStatus',
+        'text' => 'setText'
     ];
 
     /**
@@ -196,8 +196,8 @@ class ListAccountCallouts200ResponseCalloutsInner implements ModelInterface, Arr
      */
     protected static $getters = [
         'asset_id' => 'getAssetId',
-        'text' => 'getText',
-        'status' => 'getStatus'
+        'status' => 'getStatus',
+        'text' => 'getText'
     ];
 
     /**
@@ -258,8 +258,8 @@ class ListAccountCallouts200ResponseCalloutsInner implements ModelInterface, Arr
     public function __construct(?array $data = null)
     {
         $this->setIfExists('asset_id', $data ?? [], null);
-        $this->setIfExists('text', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('text', $data ?? [], null);
     }
 
     /**
@@ -332,6 +332,33 @@ class ListAccountCallouts200ResponseCalloutsInner implements ModelInterface, Arr
     }
 
     /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
      * Gets text
      *
      * @return string|null
@@ -354,33 +381,6 @@ class ListAccountCallouts200ResponseCalloutsInner implements ModelInterface, Arr
             throw new \InvalidArgumentException('non-nullable text cannot be null');
         }
         $this->container['text'] = $text;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status customer_asset.status, e.g. ENABLED, REMOVED, PAUSED.
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $this->container['status'] = $status;
 
         return $this;
     }

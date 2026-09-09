@@ -292,6 +292,14 @@ class AddAccountCalloutsRequest implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['account_id'] === null) {
             $invalidProperties[] = "'account_id' can't be null";
         }
+        if (!preg_match("/^[a-fA-F0-9]{24}$/", $this->container['account_id'])) {
+            $invalidProperties[] = "invalid value for 'account_id', must be conform to the pattern /^[a-fA-F0-9]{24}$/.";
+        }
+
+        if (!is_null($this->container['customer_id']) && !preg_match("/^\\d+$/", $this->container['customer_id'])) {
+            $invalidProperties[] = "invalid value for 'customer_id', must be conform to the pattern /^\\d+$/.";
+        }
+
         if ($this->container['callouts'] === null) {
             $invalidProperties[] = "'callouts' can't be null";
         }
@@ -331,7 +339,7 @@ class AddAccountCalloutsRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets account_id
      *
-     * @param string $account_id Zernio SocialAccount id owning the Google Ads connection.
+     * @param string $account_id Zernio Google Ads connection id.
      *
      * @return self
      */
@@ -340,6 +348,11 @@ class AddAccountCalloutsRequest implements ModelInterface, ArrayAccess, \JsonSer
         if (is_null($account_id)) {
             throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
+
+        if ((!preg_match("/^[a-fA-F0-9]{24}$/", ObjectSerializer::toString($account_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$account_id when calling AddAccountCalloutsRequest., must conform to the pattern /^[a-fA-F0-9]{24}$/.");
+        }
+
         $this->container['account_id'] = $account_id;
 
         return $this;
@@ -358,7 +371,7 @@ class AddAccountCalloutsRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets customer_id
      *
-     * @param string|null $customer_id Numeric Google Ads customer id. Only required when the connection has more than one.
+     * @param string|null $customer_id Google customer id without dashes. Required when the connection has multiple customers.
      *
      * @return self
      */
@@ -367,6 +380,11 @@ class AddAccountCalloutsRequest implements ModelInterface, ArrayAccess, \JsonSer
         if (is_null($customer_id)) {
             throw new \InvalidArgumentException('non-nullable customer_id cannot be null');
         }
+
+        if ((!preg_match("/^\\d+$/", ObjectSerializer::toString($customer_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$customer_id when calling AddAccountCalloutsRequest., must conform to the pattern /^\\d+$/.");
+        }
+
         $this->container['customer_id'] = $customer_id;
 
         return $this;
@@ -385,7 +403,7 @@ class AddAccountCalloutsRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets callouts
      *
-     * @param string[] $callouts Callout text, 1-25 characters each; up to 20 per request (Google's CalloutAsset limits).
+     * @param string[] $callouts callouts
      *
      * @return self
      */

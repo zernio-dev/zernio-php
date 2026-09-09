@@ -78,6 +78,9 @@ class AdCampaignsApi
         'addAdKeywords' => [
             'application/json',
         ],
+        'attachAdGroupAssets' => [
+            'application/json',
+        ],
         'attachCampaignAssets' => [
             'application/json',
         ],
@@ -138,6 +141,9 @@ class AdCampaignsApi
         'listAdCampaigns' => [
             'application/json',
         ],
+        'listAdGroupAssets' => [
+            'application/json',
+        ],
         'listAdKeywords' => [
             'application/json',
         ],
@@ -150,13 +156,22 @@ class AdCampaignsApi
         'listBidStrategies' => [
             'application/json',
         ],
+        'listCampaignAssets' => [
+            'application/json',
+        ],
         'listCampaignNegativeKeywordLists' => [
             'application/json',
         ],
         'listCampaignNegativeKeywords' => [
             'application/json',
         ],
+        'removeAdGroupAssets' => [
+            'application/json',
+        ],
         'removeAdKeyword' => [
+            'application/json',
+        ],
+        'removeCampaignAssets' => [
             'application/json',
         ],
         'replaceCampaignNegativeKeywordLists' => [
@@ -174,6 +189,9 @@ class AdCampaignsApi
         'updateAdCampaignStatus' => [
             'application/json',
         ],
+        'updateAdGroupAssets' => [
+            'application/json',
+        ],
         'updateAdKeyword' => [
             'application/json',
         ],
@@ -187,6 +205,9 @@ class AdCampaignsApi
             'application/json',
         ],
         'updateBidStrategy' => [
+            'application/json',
+        ],
+        'updateCampaignAssets' => [
             'application/json',
         ],
         'updateCampaignTargeting' => [
@@ -540,17 +561,353 @@ class AdCampaignsApi
     }
 
     /**
+     * Operation attachAdGroupAssets
+     *
+     * Attach ad-group assets
+     *
+     * @param  string $ad_set_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\AttachCampaignAssetsRequest $attach_campaign_assets_request attach_campaign_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachAdGroupAssets'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\AttachAdGroupAssets201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function attachAdGroupAssets($ad_set_id, $attach_campaign_assets_request, string $contentType = self::contentTypes['attachAdGroupAssets'][0])
+    {
+        list($response) = $this->attachAdGroupAssetsWithHttpInfo($ad_set_id, $attach_campaign_assets_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation attachAdGroupAssetsWithHttpInfo
+     *
+     * Attach ad-group assets
+     *
+     * @param  string $ad_set_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\AttachCampaignAssetsRequest $attach_campaign_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachAdGroupAssets'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\AttachAdGroupAssets201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function attachAdGroupAssetsWithHttpInfo($ad_set_id, $attach_campaign_assets_request, string $contentType = self::contentTypes['attachAdGroupAssets'][0])
+    {
+        $request = $this->attachAdGroupAssetsRequest($ad_set_id, $attach_campaign_assets_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\AttachAdGroupAssets201Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\AttachAdGroupAssets201Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\AttachAdGroupAssets201Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation attachAdGroupAssetsAsync
+     *
+     * Attach ad-group assets
+     *
+     * @param  string $ad_set_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\AttachCampaignAssetsRequest $attach_campaign_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachAdGroupAssets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function attachAdGroupAssetsAsync($ad_set_id, $attach_campaign_assets_request, string $contentType = self::contentTypes['attachAdGroupAssets'][0])
+    {
+        return $this->attachAdGroupAssetsAsyncWithHttpInfo($ad_set_id, $attach_campaign_assets_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation attachAdGroupAssetsAsyncWithHttpInfo
+     *
+     * Attach ad-group assets
+     *
+     * @param  string $ad_set_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\AttachCampaignAssetsRequest $attach_campaign_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachAdGroupAssets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function attachAdGroupAssetsAsyncWithHttpInfo($ad_set_id, $attach_campaign_assets_request, string $contentType = self::contentTypes['attachAdGroupAssets'][0])
+    {
+        $returnType = '\Zernio\Model\AttachAdGroupAssets201Response';
+        $request = $this->attachAdGroupAssetsRequest($ad_set_id, $attach_campaign_assets_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'attachAdGroupAssets'
+     *
+     * @param  string $ad_set_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\AttachCampaignAssetsRequest $attach_campaign_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachAdGroupAssets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function attachAdGroupAssetsRequest($ad_set_id, $attach_campaign_assets_request, string $contentType = self::contentTypes['attachAdGroupAssets'][0])
+    {
+
+        // verify the required parameter 'ad_set_id' is set
+        if ($ad_set_id === null || (is_array($ad_set_id) && count($ad_set_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ad_set_id when calling attachAdGroupAssets'
+            );
+        }
+        if (!preg_match("/^\\d+$/", $ad_set_id)) {
+            throw new \InvalidArgumentException("invalid value for \"ad_set_id\" when calling AdCampaignsApi.attachAdGroupAssets, must conform to the pattern /^\\d+$/.");
+        }
+        
+        // verify the required parameter 'attach_campaign_assets_request' is set
+        if ($attach_campaign_assets_request === null || (is_array($attach_campaign_assets_request) && count($attach_campaign_assets_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $attach_campaign_assets_request when calling attachAdGroupAssets'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/ad-sets/{adSetId}/assets';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($ad_set_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'adSetId' . '}',
+                ObjectSerializer::toPathValue($ad_set_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($attach_campaign_assets_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($attach_campaign_assets_request));
+            } else {
+                $httpBody = $attach_campaign_assets_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation attachCampaignAssets
      *
-     * Attach extension assets to a Google Search campaign
+     * Attach campaign assets
      *
-     * @param  string $campaign_id Numeric Google platform campaign id. (required)
+     * @param  string $campaign_id Numeric Google platform id. (required)
      * @param  \Zernio\Model\AttachCampaignAssetsRequest $attach_campaign_assets_request attach_campaign_assets_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachCampaignAssets'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\AttachCampaignAssets201Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\AttachCampaignAssets201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
      */
     public function attachCampaignAssets($campaign_id, $attach_campaign_assets_request, string $contentType = self::contentTypes['attachCampaignAssets'][0])
     {
@@ -561,15 +918,15 @@ class AdCampaignsApi
     /**
      * Operation attachCampaignAssetsWithHttpInfo
      *
-     * Attach extension assets to a Google Search campaign
+     * Attach campaign assets
      *
-     * @param  string $campaign_id Numeric Google platform campaign id. (required)
+     * @param  string $campaign_id Numeric Google platform id. (required)
      * @param  \Zernio\Model\AttachCampaignAssetsRequest $attach_campaign_assets_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachCampaignAssets'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\AttachCampaignAssets201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\AttachCampaignAssets201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
      */
     public function attachCampaignAssetsWithHttpInfo($campaign_id, $attach_campaign_assets_request, string $contentType = self::contentTypes['attachCampaignAssets'][0])
     {
@@ -605,9 +962,21 @@ class AdCampaignsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
                         $request,
                         $response,
                     );
@@ -643,10 +1012,26 @@ class AdCampaignsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -661,9 +1046,9 @@ class AdCampaignsApi
     /**
      * Operation attachCampaignAssetsAsync
      *
-     * Attach extension assets to a Google Search campaign
+     * Attach campaign assets
      *
-     * @param  string $campaign_id Numeric Google platform campaign id. (required)
+     * @param  string $campaign_id Numeric Google platform id. (required)
      * @param  \Zernio\Model\AttachCampaignAssetsRequest $attach_campaign_assets_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachCampaignAssets'] to see the possible values for this operation
      *
@@ -683,9 +1068,9 @@ class AdCampaignsApi
     /**
      * Operation attachCampaignAssetsAsyncWithHttpInfo
      *
-     * Attach extension assets to a Google Search campaign
+     * Attach campaign assets
      *
-     * @param  string $campaign_id Numeric Google platform campaign id. (required)
+     * @param  string $campaign_id Numeric Google platform id. (required)
      * @param  \Zernio\Model\AttachCampaignAssetsRequest $attach_campaign_assets_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachCampaignAssets'] to see the possible values for this operation
      *
@@ -736,7 +1121,7 @@ class AdCampaignsApi
     /**
      * Create request for operation 'attachCampaignAssets'
      *
-     * @param  string $campaign_id Numeric Google platform campaign id. (required)
+     * @param  string $campaign_id Numeric Google platform id. (required)
      * @param  \Zernio\Model\AttachCampaignAssetsRequest $attach_campaign_assets_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachCampaignAssets'] to see the possible values for this operation
      *
@@ -752,7 +1137,10 @@ class AdCampaignsApi
                 'Missing the required parameter $campaign_id when calling attachCampaignAssets'
             );
         }
-
+        if (!preg_match("/^\\d+$/", $campaign_id)) {
+            throw new \InvalidArgumentException("invalid value for \"campaign_id\" when calling AdCampaignsApi.attachCampaignAssets, must conform to the pattern /^\\d+$/.");
+        }
+        
         // verify the required parameter 'attach_campaign_assets_request' is set
         if ($attach_campaign_assets_request === null || (is_array($attach_campaign_assets_request) && count($attach_campaign_assets_request) === 0)) {
             throw new \InvalidArgumentException(
@@ -7235,6 +7623,365 @@ class AdCampaignsApi
     }
 
     /**
+     * Operation listAdGroupAssets
+     *
+     * List ad-group assets
+     *
+     * @param  string $ad_set_id Numeric Google platform id. (required)
+     * @param  string $account_id account_id (required)
+     * @param  string|null $customer_id customer_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdGroupAssets'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListAdGroupAssets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function listAdGroupAssets($ad_set_id, $account_id, $customer_id = null, string $contentType = self::contentTypes['listAdGroupAssets'][0])
+    {
+        list($response) = $this->listAdGroupAssetsWithHttpInfo($ad_set_id, $account_id, $customer_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listAdGroupAssetsWithHttpInfo
+     *
+     * List ad-group assets
+     *
+     * @param  string $ad_set_id Numeric Google platform id. (required)
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdGroupAssets'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListAdGroupAssets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listAdGroupAssetsWithHttpInfo($ad_set_id, $account_id, $customer_id = null, string $contentType = self::contentTypes['listAdGroupAssets'][0])
+    {
+        $request = $this->listAdGroupAssetsRequest($ad_set_id, $account_id, $customer_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListAdGroupAssets200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListAdGroupAssets200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListAdGroupAssets200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listAdGroupAssetsAsync
+     *
+     * List ad-group assets
+     *
+     * @param  string $ad_set_id Numeric Google platform id. (required)
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdGroupAssets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAdGroupAssetsAsync($ad_set_id, $account_id, $customer_id = null, string $contentType = self::contentTypes['listAdGroupAssets'][0])
+    {
+        return $this->listAdGroupAssetsAsyncWithHttpInfo($ad_set_id, $account_id, $customer_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listAdGroupAssetsAsyncWithHttpInfo
+     *
+     * List ad-group assets
+     *
+     * @param  string $ad_set_id Numeric Google platform id. (required)
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdGroupAssets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAdGroupAssetsAsyncWithHttpInfo($ad_set_id, $account_id, $customer_id = null, string $contentType = self::contentTypes['listAdGroupAssets'][0])
+    {
+        $returnType = '\Zernio\Model\ListAdGroupAssets200Response';
+        $request = $this->listAdGroupAssetsRequest($ad_set_id, $account_id, $customer_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listAdGroupAssets'
+     *
+     * @param  string $ad_set_id Numeric Google platform id. (required)
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdGroupAssets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listAdGroupAssetsRequest($ad_set_id, $account_id, $customer_id = null, string $contentType = self::contentTypes['listAdGroupAssets'][0])
+    {
+
+        // verify the required parameter 'ad_set_id' is set
+        if ($ad_set_id === null || (is_array($ad_set_id) && count($ad_set_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ad_set_id when calling listAdGroupAssets'
+            );
+        }
+        if (!preg_match("/^\\d+$/", $ad_set_id)) {
+            throw new \InvalidArgumentException("invalid value for \"ad_set_id\" when calling AdCampaignsApi.listAdGroupAssets, must conform to the pattern /^\\d+$/.");
+        }
+        
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling listAdGroupAssets'
+            );
+        }
+        if (!preg_match("/^[a-fA-F0-9]{24}$/", $account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"account_id\" when calling AdCampaignsApi.listAdGroupAssets, must conform to the pattern /^[a-fA-F0-9]{24}$/.");
+        }
+        
+        if ($customer_id !== null && !preg_match("/^\\d+$/", $customer_id)) {
+            throw new \InvalidArgumentException("invalid value for \"customer_id\" when calling AdCampaignsApi.listAdGroupAssets, must conform to the pattern /^\\d+$/.");
+        }
+        
+
+        $resourcePath = '/v1/ads/ad-sets/{adSetId}/assets';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $customer_id,
+            'customerId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($ad_set_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'adSetId' . '}',
+                ObjectSerializer::toPathValue($ad_set_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation listAdKeywords
      *
      * List Search keywords
@@ -8920,6 +9667,365 @@ class AdCampaignsApi
     }
 
     /**
+     * Operation listCampaignAssets
+     *
+     * List campaign assets
+     *
+     * @param  string $campaign_id Numeric Google platform id. (required)
+     * @param  string $account_id account_id (required)
+     * @param  string|null $customer_id customer_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCampaignAssets'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListCampaignAssets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function listCampaignAssets($campaign_id, $account_id, $customer_id = null, string $contentType = self::contentTypes['listCampaignAssets'][0])
+    {
+        list($response) = $this->listCampaignAssetsWithHttpInfo($campaign_id, $account_id, $customer_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listCampaignAssetsWithHttpInfo
+     *
+     * List campaign assets
+     *
+     * @param  string $campaign_id Numeric Google platform id. (required)
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCampaignAssets'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListCampaignAssets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listCampaignAssetsWithHttpInfo($campaign_id, $account_id, $customer_id = null, string $contentType = self::contentTypes['listCampaignAssets'][0])
+    {
+        $request = $this->listCampaignAssetsRequest($campaign_id, $account_id, $customer_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListCampaignAssets200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListCampaignAssets200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListCampaignAssets200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listCampaignAssetsAsync
+     *
+     * List campaign assets
+     *
+     * @param  string $campaign_id Numeric Google platform id. (required)
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCampaignAssets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listCampaignAssetsAsync($campaign_id, $account_id, $customer_id = null, string $contentType = self::contentTypes['listCampaignAssets'][0])
+    {
+        return $this->listCampaignAssetsAsyncWithHttpInfo($campaign_id, $account_id, $customer_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listCampaignAssetsAsyncWithHttpInfo
+     *
+     * List campaign assets
+     *
+     * @param  string $campaign_id Numeric Google platform id. (required)
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCampaignAssets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listCampaignAssetsAsyncWithHttpInfo($campaign_id, $account_id, $customer_id = null, string $contentType = self::contentTypes['listCampaignAssets'][0])
+    {
+        $returnType = '\Zernio\Model\ListCampaignAssets200Response';
+        $request = $this->listCampaignAssetsRequest($campaign_id, $account_id, $customer_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listCampaignAssets'
+     *
+     * @param  string $campaign_id Numeric Google platform id. (required)
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCampaignAssets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listCampaignAssetsRequest($campaign_id, $account_id, $customer_id = null, string $contentType = self::contentTypes['listCampaignAssets'][0])
+    {
+
+        // verify the required parameter 'campaign_id' is set
+        if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaign_id when calling listCampaignAssets'
+            );
+        }
+        if (!preg_match("/^\\d+$/", $campaign_id)) {
+            throw new \InvalidArgumentException("invalid value for \"campaign_id\" when calling AdCampaignsApi.listCampaignAssets, must conform to the pattern /^\\d+$/.");
+        }
+        
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling listCampaignAssets'
+            );
+        }
+        if (!preg_match("/^[a-fA-F0-9]{24}$/", $account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"account_id\" when calling AdCampaignsApi.listCampaignAssets, must conform to the pattern /^[a-fA-F0-9]{24}$/.");
+        }
+        
+        if ($customer_id !== null && !preg_match("/^\\d+$/", $customer_id)) {
+            throw new \InvalidArgumentException("invalid value for \"customer_id\" when calling AdCampaignsApi.listCampaignAssets, must conform to the pattern /^\\d+$/.");
+        }
+        
+
+        $resourcePath = '/v1/ads/campaigns/{campaignId}/assets';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $customer_id,
+            'customerId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($campaign_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'campaignId' . '}',
+                ObjectSerializer::toPathValue($campaign_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation listCampaignNegativeKeywordLists
      *
      * List campaign negative lists
@@ -9553,6 +10659,342 @@ class AdCampaignsApi
     }
 
     /**
+     * Operation removeAdGroupAssets
+     *
+     * Remove ad-group assets
+     *
+     * @param  string $ad_set_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\RemoveAdGroupAssetsRequest $remove_ad_group_assets_request remove_ad_group_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAdGroupAssets'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\RemoveCampaignAssets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function removeAdGroupAssets($ad_set_id, $remove_ad_group_assets_request, string $contentType = self::contentTypes['removeAdGroupAssets'][0])
+    {
+        list($response) = $this->removeAdGroupAssetsWithHttpInfo($ad_set_id, $remove_ad_group_assets_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation removeAdGroupAssetsWithHttpInfo
+     *
+     * Remove ad-group assets
+     *
+     * @param  string $ad_set_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\RemoveAdGroupAssetsRequest $remove_ad_group_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAdGroupAssets'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\RemoveCampaignAssets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function removeAdGroupAssetsWithHttpInfo($ad_set_id, $remove_ad_group_assets_request, string $contentType = self::contentTypes['removeAdGroupAssets'][0])
+    {
+        $request = $this->removeAdGroupAssetsRequest($ad_set_id, $remove_ad_group_assets_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\RemoveCampaignAssets200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\RemoveCampaignAssets200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\RemoveCampaignAssets200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation removeAdGroupAssetsAsync
+     *
+     * Remove ad-group assets
+     *
+     * @param  string $ad_set_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\RemoveAdGroupAssetsRequest $remove_ad_group_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAdGroupAssets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeAdGroupAssetsAsync($ad_set_id, $remove_ad_group_assets_request, string $contentType = self::contentTypes['removeAdGroupAssets'][0])
+    {
+        return $this->removeAdGroupAssetsAsyncWithHttpInfo($ad_set_id, $remove_ad_group_assets_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation removeAdGroupAssetsAsyncWithHttpInfo
+     *
+     * Remove ad-group assets
+     *
+     * @param  string $ad_set_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\RemoveAdGroupAssetsRequest $remove_ad_group_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAdGroupAssets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeAdGroupAssetsAsyncWithHttpInfo($ad_set_id, $remove_ad_group_assets_request, string $contentType = self::contentTypes['removeAdGroupAssets'][0])
+    {
+        $returnType = '\Zernio\Model\RemoveCampaignAssets200Response';
+        $request = $this->removeAdGroupAssetsRequest($ad_set_id, $remove_ad_group_assets_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'removeAdGroupAssets'
+     *
+     * @param  string $ad_set_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\RemoveAdGroupAssetsRequest $remove_ad_group_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAdGroupAssets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function removeAdGroupAssetsRequest($ad_set_id, $remove_ad_group_assets_request, string $contentType = self::contentTypes['removeAdGroupAssets'][0])
+    {
+
+        // verify the required parameter 'ad_set_id' is set
+        if ($ad_set_id === null || (is_array($ad_set_id) && count($ad_set_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ad_set_id when calling removeAdGroupAssets'
+            );
+        }
+        if (!preg_match("/^\\d+$/", $ad_set_id)) {
+            throw new \InvalidArgumentException("invalid value for \"ad_set_id\" when calling AdCampaignsApi.removeAdGroupAssets, must conform to the pattern /^\\d+$/.");
+        }
+        
+        // verify the required parameter 'remove_ad_group_assets_request' is set
+        if ($remove_ad_group_assets_request === null || (is_array($remove_ad_group_assets_request) && count($remove_ad_group_assets_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $remove_ad_group_assets_request when calling removeAdGroupAssets'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/ad-sets/{adSetId}/assets';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($ad_set_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'adSetId' . '}',
+                ObjectSerializer::toPathValue($ad_set_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($remove_ad_group_assets_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($remove_ad_group_assets_request));
+            } else {
+                $httpBody = $remove_ad_group_assets_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation removeAdKeyword
      *
      * Remove a Search keyword
@@ -9803,6 +11245,342 @@ class AdCampaignsApi
 
         // for model (json/xml)
         if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation removeCampaignAssets
+     *
+     * Remove campaign assets
+     *
+     * @param  string $campaign_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\RemoveCampaignAssetsRequest $remove_campaign_assets_request remove_campaign_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeCampaignAssets'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\RemoveCampaignAssets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function removeCampaignAssets($campaign_id, $remove_campaign_assets_request, string $contentType = self::contentTypes['removeCampaignAssets'][0])
+    {
+        list($response) = $this->removeCampaignAssetsWithHttpInfo($campaign_id, $remove_campaign_assets_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation removeCampaignAssetsWithHttpInfo
+     *
+     * Remove campaign assets
+     *
+     * @param  string $campaign_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\RemoveCampaignAssetsRequest $remove_campaign_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeCampaignAssets'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\RemoveCampaignAssets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function removeCampaignAssetsWithHttpInfo($campaign_id, $remove_campaign_assets_request, string $contentType = self::contentTypes['removeCampaignAssets'][0])
+    {
+        $request = $this->removeCampaignAssetsRequest($campaign_id, $remove_campaign_assets_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\RemoveCampaignAssets200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\RemoveCampaignAssets200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\RemoveCampaignAssets200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation removeCampaignAssetsAsync
+     *
+     * Remove campaign assets
+     *
+     * @param  string $campaign_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\RemoveCampaignAssetsRequest $remove_campaign_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeCampaignAssets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeCampaignAssetsAsync($campaign_id, $remove_campaign_assets_request, string $contentType = self::contentTypes['removeCampaignAssets'][0])
+    {
+        return $this->removeCampaignAssetsAsyncWithHttpInfo($campaign_id, $remove_campaign_assets_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation removeCampaignAssetsAsyncWithHttpInfo
+     *
+     * Remove campaign assets
+     *
+     * @param  string $campaign_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\RemoveCampaignAssetsRequest $remove_campaign_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeCampaignAssets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeCampaignAssetsAsyncWithHttpInfo($campaign_id, $remove_campaign_assets_request, string $contentType = self::contentTypes['removeCampaignAssets'][0])
+    {
+        $returnType = '\Zernio\Model\RemoveCampaignAssets200Response';
+        $request = $this->removeCampaignAssetsRequest($campaign_id, $remove_campaign_assets_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'removeCampaignAssets'
+     *
+     * @param  string $campaign_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\RemoveCampaignAssetsRequest $remove_campaign_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeCampaignAssets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function removeCampaignAssetsRequest($campaign_id, $remove_campaign_assets_request, string $contentType = self::contentTypes['removeCampaignAssets'][0])
+    {
+
+        // verify the required parameter 'campaign_id' is set
+        if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaign_id when calling removeCampaignAssets'
+            );
+        }
+        if (!preg_match("/^\\d+$/", $campaign_id)) {
+            throw new \InvalidArgumentException("invalid value for \"campaign_id\" when calling AdCampaignsApi.removeCampaignAssets, must conform to the pattern /^\\d+$/.");
+        }
+        
+        // verify the required parameter 'remove_campaign_assets_request' is set
+        if ($remove_campaign_assets_request === null || (is_array($remove_campaign_assets_request) && count($remove_campaign_assets_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $remove_campaign_assets_request when calling removeCampaignAssets'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/campaigns/{campaignId}/assets';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($campaign_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'campaignId' . '}',
+                ObjectSerializer::toPathValue($campaign_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($remove_campaign_assets_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($remove_campaign_assets_request));
+            } else {
+                $httpBody = $remove_campaign_assets_request;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -11437,6 +13215,342 @@ class AdCampaignsApi
     }
 
     /**
+     * Operation updateAdGroupAssets
+     *
+     * Update ad-group assets
+     *
+     * @param  string $ad_set_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\UpdateCampaignAssetsRequest $update_campaign_assets_request update_campaign_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdGroupAssets'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\UpdateCampaignAssets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function updateAdGroupAssets($ad_set_id, $update_campaign_assets_request, string $contentType = self::contentTypes['updateAdGroupAssets'][0])
+    {
+        list($response) = $this->updateAdGroupAssetsWithHttpInfo($ad_set_id, $update_campaign_assets_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateAdGroupAssetsWithHttpInfo
+     *
+     * Update ad-group assets
+     *
+     * @param  string $ad_set_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\UpdateCampaignAssetsRequest $update_campaign_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdGroupAssets'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\UpdateCampaignAssets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateAdGroupAssetsWithHttpInfo($ad_set_id, $update_campaign_assets_request, string $contentType = self::contentTypes['updateAdGroupAssets'][0])
+    {
+        $request = $this->updateAdGroupAssetsRequest($ad_set_id, $update_campaign_assets_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\UpdateCampaignAssets200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\UpdateCampaignAssets200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\UpdateCampaignAssets200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateAdGroupAssetsAsync
+     *
+     * Update ad-group assets
+     *
+     * @param  string $ad_set_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\UpdateCampaignAssetsRequest $update_campaign_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdGroupAssets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAdGroupAssetsAsync($ad_set_id, $update_campaign_assets_request, string $contentType = self::contentTypes['updateAdGroupAssets'][0])
+    {
+        return $this->updateAdGroupAssetsAsyncWithHttpInfo($ad_set_id, $update_campaign_assets_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateAdGroupAssetsAsyncWithHttpInfo
+     *
+     * Update ad-group assets
+     *
+     * @param  string $ad_set_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\UpdateCampaignAssetsRequest $update_campaign_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdGroupAssets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAdGroupAssetsAsyncWithHttpInfo($ad_set_id, $update_campaign_assets_request, string $contentType = self::contentTypes['updateAdGroupAssets'][0])
+    {
+        $returnType = '\Zernio\Model\UpdateCampaignAssets200Response';
+        $request = $this->updateAdGroupAssetsRequest($ad_set_id, $update_campaign_assets_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateAdGroupAssets'
+     *
+     * @param  string $ad_set_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\UpdateCampaignAssetsRequest $update_campaign_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdGroupAssets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateAdGroupAssetsRequest($ad_set_id, $update_campaign_assets_request, string $contentType = self::contentTypes['updateAdGroupAssets'][0])
+    {
+
+        // verify the required parameter 'ad_set_id' is set
+        if ($ad_set_id === null || (is_array($ad_set_id) && count($ad_set_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ad_set_id when calling updateAdGroupAssets'
+            );
+        }
+        if (!preg_match("/^\\d+$/", $ad_set_id)) {
+            throw new \InvalidArgumentException("invalid value for \"ad_set_id\" when calling AdCampaignsApi.updateAdGroupAssets, must conform to the pattern /^\\d+$/.");
+        }
+        
+        // verify the required parameter 'update_campaign_assets_request' is set
+        if ($update_campaign_assets_request === null || (is_array($update_campaign_assets_request) && count($update_campaign_assets_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_campaign_assets_request when calling updateAdGroupAssets'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/ad-sets/{adSetId}/assets';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($ad_set_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'adSetId' . '}',
+                ObjectSerializer::toPathValue($ad_set_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_campaign_assets_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_campaign_assets_request));
+            } else {
+                $httpBody = $update_campaign_assets_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation updateAdKeyword
      *
      * Pause or enable a Search keyword
@@ -12997,6 +15111,342 @@ class AdCampaignsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PATCH',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateCampaignAssets
+     *
+     * Update campaign assets
+     *
+     * @param  string $campaign_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\UpdateCampaignAssetsRequest $update_campaign_assets_request update_campaign_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaignAssets'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\UpdateCampaignAssets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function updateCampaignAssets($campaign_id, $update_campaign_assets_request, string $contentType = self::contentTypes['updateCampaignAssets'][0])
+    {
+        list($response) = $this->updateCampaignAssetsWithHttpInfo($campaign_id, $update_campaign_assets_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateCampaignAssetsWithHttpInfo
+     *
+     * Update campaign assets
+     *
+     * @param  string $campaign_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\UpdateCampaignAssetsRequest $update_campaign_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaignAssets'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\UpdateCampaignAssets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateCampaignAssetsWithHttpInfo($campaign_id, $update_campaign_assets_request, string $contentType = self::contentTypes['updateCampaignAssets'][0])
+    {
+        $request = $this->updateCampaignAssetsRequest($campaign_id, $update_campaign_assets_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\UpdateCampaignAssets200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\UpdateCampaignAssets200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\UpdateCampaignAssets200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateCampaignAssetsAsync
+     *
+     * Update campaign assets
+     *
+     * @param  string $campaign_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\UpdateCampaignAssetsRequest $update_campaign_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaignAssets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateCampaignAssetsAsync($campaign_id, $update_campaign_assets_request, string $contentType = self::contentTypes['updateCampaignAssets'][0])
+    {
+        return $this->updateCampaignAssetsAsyncWithHttpInfo($campaign_id, $update_campaign_assets_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateCampaignAssetsAsyncWithHttpInfo
+     *
+     * Update campaign assets
+     *
+     * @param  string $campaign_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\UpdateCampaignAssetsRequest $update_campaign_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaignAssets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateCampaignAssetsAsyncWithHttpInfo($campaign_id, $update_campaign_assets_request, string $contentType = self::contentTypes['updateCampaignAssets'][0])
+    {
+        $returnType = '\Zernio\Model\UpdateCampaignAssets200Response';
+        $request = $this->updateCampaignAssetsRequest($campaign_id, $update_campaign_assets_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateCampaignAssets'
+     *
+     * @param  string $campaign_id Numeric Google platform id. (required)
+     * @param  \Zernio\Model\UpdateCampaignAssetsRequest $update_campaign_assets_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaignAssets'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateCampaignAssetsRequest($campaign_id, $update_campaign_assets_request, string $contentType = self::contentTypes['updateCampaignAssets'][0])
+    {
+
+        // verify the required parameter 'campaign_id' is set
+        if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaign_id when calling updateCampaignAssets'
+            );
+        }
+        if (!preg_match("/^\\d+$/", $campaign_id)) {
+            throw new \InvalidArgumentException("invalid value for \"campaign_id\" when calling AdCampaignsApi.updateCampaignAssets, must conform to the pattern /^\\d+$/.");
+        }
+        
+        // verify the required parameter 'update_campaign_assets_request' is set
+        if ($update_campaign_assets_request === null || (is_array($update_campaign_assets_request) && count($update_campaign_assets_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_campaign_assets_request when calling updateCampaignAssets'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/campaigns/{campaignId}/assets';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($campaign_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'campaignId' . '}',
+                ObjectSerializer::toPathValue($campaign_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_campaign_assets_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_campaign_assets_request));
+            } else {
+                $httpBody = $update_campaign_assets_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

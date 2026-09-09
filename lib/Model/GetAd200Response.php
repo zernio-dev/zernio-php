@@ -58,7 +58,9 @@ class GetAd200Response implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'ad' => '\Zernio\Model\Ad'
+        'ad' => '\Zernio\Model\Ad',
+        'cached_at' => '\DateTime',
+        'stale' => 'bool'
     ];
 
     /**
@@ -69,7 +71,9 @@ class GetAd200Response implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'ad' => null
+        'ad' => null,
+        'cached_at' => 'date-time',
+        'stale' => null
     ];
 
     /**
@@ -78,7 +82,9 @@ class GetAd200Response implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ad' => false
+        'ad' => false,
+        'cached_at' => true,
+        'stale' => false
     ];
 
     /**
@@ -167,7 +173,9 @@ class GetAd200Response implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'ad' => 'ad'
+        'ad' => 'ad',
+        'cached_at' => 'cachedAt',
+        'stale' => 'stale'
     ];
 
     /**
@@ -176,7 +184,9 @@ class GetAd200Response implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'ad' => 'setAd'
+        'ad' => 'setAd',
+        'cached_at' => 'setCachedAt',
+        'stale' => 'setStale'
     ];
 
     /**
@@ -185,7 +195,9 @@ class GetAd200Response implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'ad' => 'getAd'
+        'ad' => 'getAd',
+        'cached_at' => 'getCachedAt',
+        'stale' => 'getStale'
     ];
 
     /**
@@ -246,6 +258,8 @@ class GetAd200Response implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('ad', $data ?? [], null);
+        $this->setIfExists('cached_at', $data ?? [], null);
+        $this->setIfExists('stale', $data ?? [], null);
     }
 
     /**
@@ -313,6 +327,67 @@ class GetAd200Response implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable ad cannot be null');
         }
         $this->container['ad'] = $ad;
+
+        return $this;
+    }
+
+    /**
+     * Gets cached_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCachedAt()
+    {
+        return $this->container['cached_at'];
+    }
+
+    /**
+     * Sets cached_at
+     *
+     * @param \DateTime|null $cached_at Google RSA details cache timestamp.
+     *
+     * @return self
+     */
+    public function setCachedAt($cached_at)
+    {
+        if (is_null($cached_at)) {
+            array_push($this->openAPINullablesSetToNull, 'cached_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cached_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cached_at'] = $cached_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets stale
+     *
+     * @return bool|null
+     */
+    public function getStale()
+    {
+        return $this->container['stale'];
+    }
+
+    /**
+     * Sets stale
+     *
+     * @param bool|null $stale Whether Google RSA details use the last successful cached response.
+     *
+     * @return self
+     */
+    public function setStale($stale)
+    {
+        if (is_null($stale)) {
+            throw new \InvalidArgumentException('non-nullable stale cannot be null');
+        }
+        $this->container['stale'] = $stale;
 
         return $this;
     }
