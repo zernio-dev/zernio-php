@@ -60,7 +60,7 @@ class GetWhatsAppSdkConfig200Response implements ModelInterface, ArrayAccess, \J
     protected static $openAPITypes = [
         'app_id' => 'string',
         'config_id' => 'string',
-        'graph_api_version' => 'string'
+        'branding' => '\Zernio\Model\GetWhatsAppSdkConfig200ResponseBranding'
     ];
 
     /**
@@ -73,7 +73,7 @@ class GetWhatsAppSdkConfig200Response implements ModelInterface, ArrayAccess, \J
     protected static $openAPIFormats = [
         'app_id' => null,
         'config_id' => null,
-        'graph_api_version' => null
+        'branding' => null
     ];
 
     /**
@@ -84,7 +84,7 @@ class GetWhatsAppSdkConfig200Response implements ModelInterface, ArrayAccess, \J
     protected static array $openAPINullables = [
         'app_id' => false,
         'config_id' => false,
-        'graph_api_version' => false
+        'branding' => false
     ];
 
     /**
@@ -175,7 +175,7 @@ class GetWhatsAppSdkConfig200Response implements ModelInterface, ArrayAccess, \J
     protected static $attributeMap = [
         'app_id' => 'appId',
         'config_id' => 'configId',
-        'graph_api_version' => 'graphApiVersion'
+        'branding' => 'branding'
     ];
 
     /**
@@ -186,7 +186,7 @@ class GetWhatsAppSdkConfig200Response implements ModelInterface, ArrayAccess, \J
     protected static $setters = [
         'app_id' => 'setAppId',
         'config_id' => 'setConfigId',
-        'graph_api_version' => 'setGraphApiVersion'
+        'branding' => 'setBranding'
     ];
 
     /**
@@ -197,7 +197,7 @@ class GetWhatsAppSdkConfig200Response implements ModelInterface, ArrayAccess, \J
     protected static $getters = [
         'app_id' => 'getAppId',
         'config_id' => 'getConfigId',
-        'graph_api_version' => 'getGraphApiVersion'
+        'branding' => 'getBranding'
     ];
 
     /**
@@ -259,7 +259,7 @@ class GetWhatsAppSdkConfig200Response implements ModelInterface, ArrayAccess, \J
     {
         $this->setIfExists('app_id', $data ?? [], null);
         $this->setIfExists('config_id', $data ?? [], null);
-        $this->setIfExists('graph_api_version', $data ?? [], null);
+        $this->setIfExists('branding', $data ?? [], null);
     }
 
     /**
@@ -295,8 +295,8 @@ class GetWhatsAppSdkConfig200Response implements ModelInterface, ArrayAccess, \J
         if ($this->container['config_id'] === null) {
             $invalidProperties[] = "'config_id' can't be null";
         }
-        if ($this->container['graph_api_version'] === null) {
-            $invalidProperties[] = "'graph_api_version' can't be null";
+        if ($this->container['branding'] === null) {
+            $invalidProperties[] = "'branding' can't be null";
         }
         return $invalidProperties;
     }
@@ -326,7 +326,7 @@ class GetWhatsAppSdkConfig200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Sets app_id
      *
-     * @param string $app_id Meta app id for FB.init
+     * @param string $app_id Meta app id
      *
      * @return self
      */
@@ -353,7 +353,7 @@ class GetWhatsAppSdkConfig200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Sets config_id
      *
-     * @param string $config_id Embedded Signup configuration id for the config_id option of FB.login
+     * @param string $config_id Embedded Signup configuration id
      *
      * @return self
      */
@@ -368,28 +368,28 @@ class GetWhatsAppSdkConfig200Response implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets graph_api_version
+     * Gets branding
      *
-     * @return string
+     * @return \Zernio\Model\GetWhatsAppSdkConfig200ResponseBranding
      */
-    public function getGraphApiVersion()
+    public function getBranding()
     {
-        return $this->container['graph_api_version'];
+        return $this->container['branding'];
     }
 
     /**
-     * Sets graph_api_version
+     * Sets branding
      *
-     * @param string $graph_api_version Graph API version to pass to FB.init (for example v22.0)
+     * @param \Zernio\Model\GetWhatsAppSdkConfig200ResponseBranding $branding branding
      *
      * @return self
      */
-    public function setGraphApiVersion($graph_api_version)
+    public function setBranding($branding)
     {
-        if (is_null($graph_api_version)) {
-            throw new \InvalidArgumentException('non-nullable graph_api_version cannot be null');
+        if (is_null($branding)) {
+            throw new \InvalidArgumentException('non-nullable branding cannot be null');
         }
-        $this->container['graph_api_version'] = $graph_api_version;
+        $this->container['branding'] = $branding;
 
         return $this;
     }

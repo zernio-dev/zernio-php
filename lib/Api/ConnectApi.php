@@ -147,6 +147,9 @@ class ConnectApi
         'getTelegramConnectStatus' => [
             'application/json',
         ],
+        'getWhatsAppSdkConfig' => [
+            'application/json',
+        ],
         'getYoutubeCaptions' => [
             'application/json',
         ],
@@ -3548,15 +3551,17 @@ class ConnectApi
      * Connect WhatsApp from Embedded Signup
      *
      * @param  \Zernio\Model\ConnectWhatsAppEmbeddedSignupRequest $connect_whats_app_embedded_signup_request connect_whats_app_embedded_signup_request (required)
+     * @param  string|null $x_connect_token Connect token issued by the hosted signup flow, accepted instead of an API key. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectWhatsAppEmbeddedSignup'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Zernio\Model\ConnectWhatsAppEmbeddedSignup200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject4
      */
-    public function connectWhatsAppEmbeddedSignup($connect_whats_app_embedded_signup_request, string $contentType = self::contentTypes['connectWhatsAppEmbeddedSignup'][0])
+    public function connectWhatsAppEmbeddedSignup($connect_whats_app_embedded_signup_request, $x_connect_token = null, string $contentType = self::contentTypes['connectWhatsAppEmbeddedSignup'][0])
     {
-        $this->connectWhatsAppEmbeddedSignupWithHttpInfo($connect_whats_app_embedded_signup_request, $contentType);
+        list($response) = $this->connectWhatsAppEmbeddedSignupWithHttpInfo($connect_whats_app_embedded_signup_request, $x_connect_token, $contentType);
+        return $response;
     }
 
     /**
@@ -3565,15 +3570,16 @@ class ConnectApi
      * Connect WhatsApp from Embedded Signup
      *
      * @param  \Zernio\Model\ConnectWhatsAppEmbeddedSignupRequest $connect_whats_app_embedded_signup_request (required)
+     * @param  string|null $x_connect_token Connect token issued by the hosted signup flow, accepted instead of an API key. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectWhatsAppEmbeddedSignup'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ConnectWhatsAppEmbeddedSignup200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject4, HTTP status code, HTTP response headers (array of strings)
      */
-    public function connectWhatsAppEmbeddedSignupWithHttpInfo($connect_whats_app_embedded_signup_request, string $contentType = self::contentTypes['connectWhatsAppEmbeddedSignup'][0])
+    public function connectWhatsAppEmbeddedSignupWithHttpInfo($connect_whats_app_embedded_signup_request, $x_connect_token = null, string $contentType = self::contentTypes['connectWhatsAppEmbeddedSignup'][0])
     {
-        $request = $this->connectWhatsAppEmbeddedSignupRequest($connect_whats_app_embedded_signup_request, $contentType);
+        $request = $this->connectWhatsAppEmbeddedSignupRequest($connect_whats_app_embedded_signup_request, $x_connect_token, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3598,9 +3604,63 @@ class ConnectApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ConnectWhatsAppEmbeddedSignup200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject4',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ConnectWhatsAppEmbeddedSignup200Response',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ConnectWhatsAppEmbeddedSignup200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3638,14 +3698,15 @@ class ConnectApi
      * Connect WhatsApp from Embedded Signup
      *
      * @param  \Zernio\Model\ConnectWhatsAppEmbeddedSignupRequest $connect_whats_app_embedded_signup_request (required)
+     * @param  string|null $x_connect_token Connect token issued by the hosted signup flow, accepted instead of an API key. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectWhatsAppEmbeddedSignup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function connectWhatsAppEmbeddedSignupAsync($connect_whats_app_embedded_signup_request, string $contentType = self::contentTypes['connectWhatsAppEmbeddedSignup'][0])
+    public function connectWhatsAppEmbeddedSignupAsync($connect_whats_app_embedded_signup_request, $x_connect_token = null, string $contentType = self::contentTypes['connectWhatsAppEmbeddedSignup'][0])
     {
-        return $this->connectWhatsAppEmbeddedSignupAsyncWithHttpInfo($connect_whats_app_embedded_signup_request, $contentType)
+        return $this->connectWhatsAppEmbeddedSignupAsyncWithHttpInfo($connect_whats_app_embedded_signup_request, $x_connect_token, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3659,21 +3720,35 @@ class ConnectApi
      * Connect WhatsApp from Embedded Signup
      *
      * @param  \Zernio\Model\ConnectWhatsAppEmbeddedSignupRequest $connect_whats_app_embedded_signup_request (required)
+     * @param  string|null $x_connect_token Connect token issued by the hosted signup flow, accepted instead of an API key. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectWhatsAppEmbeddedSignup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function connectWhatsAppEmbeddedSignupAsyncWithHttpInfo($connect_whats_app_embedded_signup_request, string $contentType = self::contentTypes['connectWhatsAppEmbeddedSignup'][0])
+    public function connectWhatsAppEmbeddedSignupAsyncWithHttpInfo($connect_whats_app_embedded_signup_request, $x_connect_token = null, string $contentType = self::contentTypes['connectWhatsAppEmbeddedSignup'][0])
     {
-        $returnType = '';
-        $request = $this->connectWhatsAppEmbeddedSignupRequest($connect_whats_app_embedded_signup_request, $contentType);
+        $returnType = '\Zernio\Model\ConnectWhatsAppEmbeddedSignup200Response';
+        $request = $this->connectWhatsAppEmbeddedSignupRequest($connect_whats_app_embedded_signup_request, $x_connect_token, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -3696,12 +3771,13 @@ class ConnectApi
      * Create request for operation 'connectWhatsAppEmbeddedSignup'
      *
      * @param  \Zernio\Model\ConnectWhatsAppEmbeddedSignupRequest $connect_whats_app_embedded_signup_request (required)
+     * @param  string|null $x_connect_token Connect token issued by the hosted signup flow, accepted instead of an API key. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectWhatsAppEmbeddedSignup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function connectWhatsAppEmbeddedSignupRequest($connect_whats_app_embedded_signup_request, string $contentType = self::contentTypes['connectWhatsAppEmbeddedSignup'][0])
+    public function connectWhatsAppEmbeddedSignupRequest($connect_whats_app_embedded_signup_request, $x_connect_token = null, string $contentType = self::contentTypes['connectWhatsAppEmbeddedSignup'][0])
     {
 
         // verify the required parameter 'connect_whats_app_embedded_signup_request' is set
@@ -3712,6 +3788,7 @@ class ConnectApi
         }
 
 
+
         $resourcePath = '/v1/connect/whatsapp/embedded-signup';
         $formParams = [];
         $queryParams = [];
@@ -3720,6 +3797,10 @@ class ConnectApi
         $multipart = false;
 
 
+        // header params
+        if ($x_connect_token !== null) {
+            $headerParams['X-Connect-Token'] = ObjectSerializer::toHeaderValue($x_connect_token);
+        }
 
 
 
@@ -4103,15 +4184,19 @@ class ConnectApi
      * @param  bool|null $headless When true, the user is redirected to your redirect_url with raw OAuth data (code, state) instead of Zernio&#39;s default account selection UI. Use this to build a custom connect experience. (optional, default to false)
      * @param  string|null $login_method Instagram only. Which of the two Instagram connection methods to use. Ignored for every other platform.  &#x60;instagram_login&#x60; (the default, and what you get if you omit this): the Instagram Login dialog. The user authorizes their Instagram professional account directly, no Facebook Page required.  &#x60;facebook_login&#x60;: the Facebook Login dialog, i.e. \&quot;Instagram API with Facebook Login\&quot;. The user authorizes a Facebook Page that has a linked Instagram professional account, and every API call for that account then runs through the Page. Use this when the customer manages Instagram through a Page and expects the Facebook consent screen. Because the user has to pick which Page to connect, the callback continues at the account-selection step, &#x60;/v1/connect/instagram/select-account&#x60;.  &#x60;facebook_login&#x60; supports &#x60;headless&#x3D;true&#x60; like the other selection platforms: the callback redirects to your &#x60;redirect_url&#x60; with &#x60;profileId&#x60;, &#x60;tempToken&#x60;, &#x60;platform&#x3D;instagram&#x60;, &#x60;step&#x3D;select_account&#x60; and &#x60;connect_token&#x60;, which you pass into the select-account endpoints to finish. The default &#x60;instagram_login&#x60; has no selection step, so it connects the account directly. (optional, default to 'instagram_login')
      * @param  string|null $onboarding WhatsApp only. Ignored for every other platform. Controls which screen Meta&#39;s Embedded Signup popup shows.  If omitted, the connection defaults to coexistence (same as &#x60;business_app&#x60; below), preserving existing behavior for numbers already on the WhatsApp Business app.  &#x60;api&#x60;: standard Embedded Signup, showing Meta&#39;s WABA/number picker. Use this to connect a phone number already on Cloud API elsewhere.  &#x60;business_app&#x60;: coexistence, i.e. &#39;Connect existing WhatsApp Business app&#39; (a number shared between Cloud API and the consumer WhatsApp Business app). (optional)
+     * @param  string|null $signup WhatsApp only. Rejected with 400 &#x60;INVALID_FIELD_VALUE&#x60; on any other platform.  &#x60;hosted&#x60;: &#x60;authUrl&#x60; points at a Zernio-hosted page on zernio.com instead of Meta&#39;s OAuth dialog, and the response carries &#x60;authUrl&#x60; only (no &#x60;state&#x60;). That page opens Meta&#39;s Embedded Signup popup itself, so it learns which WhatsApp Business Account and number the user picked inside the popup and connects exactly that one. Use it when your users&#39; Facebook logins manage several WhatsApp accounts: on the default redirect flow Meta only returns an authorization code, so when that login can see more than one number the user lands on Zernio&#39;s number picker and has to choose again. Nothing to embed on your side and no domain setup: send the user to &#x60;authUrl&#x60;, and they come back to &#x60;redirect_url&#x60; with the same params as the redirect flow. Success: &#x60;connected&#x3D;whatsapp&#x60;, &#x60;profileId&#x60;, &#x60;accountId&#x60;, &#x60;username&#x60; (plus &#x60;connect_token&#x60; for API-key callers). Failure: &#x60;error&#x60; and &#x60;platform&#x3D;whatsapp&#x60;, with the same values and extras as the redirect flow (&#x60;one_whatsapp_per_profile&#x60;, &#x60;whatsapp_number_already_connected&#x60; and &#x60;whatsapp_number_pinned_to_profile&#x60; with &#x60;is_user_fixable&#x3D;true&#x60;; &#x60;payment_required&#x60; with &#x60;reason&#x60; and &#x60;dashboard_url&#x60;; &#x60;whatsapp_error&#x60; with &#x60;error_message&#x60; when Meta reported one), plus two of its own: &#x60;connection_cancelled&#x60; when the popup was closed before finishing (&#x60;error_message&#x60; carries Meta&#39;s last reported step or error when there is one) and &#x60;session_expired&#x60; when the user took longer than the 60 minute window the hosted page is valid for; restart the flow with a new call in that case. &#x60;onboarding&#x60; is carried through and a pre-verified Zernio-provisioned number is attached like on the redirect flow. &#x60;headless&#x60; has no effect here because there is no selection step left to hand you. When a previously disconnected account for this profile can simply be re-enabled, this endpoint re-enables it and returns the account directly instead of a URL, exactly like the redirect flow. The page shows the same guidance as the Zernio dashboard: a pre-verified Zernio-provisioned number is called out by name (\&quot;choose it in Meta&#39;s list, no code will be asked\&quot;), coexistence and standard signups get their explainer video, and a step-by-step follow-along checklist stays visible while Meta&#39;s popup is open. Skin it with &#x60;brandName&#x60;, &#x60;primaryColor&#x60; and &#x60;language&#x60; below. (optional)
+     * @param  string|null $brand_name Hosted signup page only (&#x60;signup&#x3D;hosted&#x60;, WhatsApp): name shown in the page title (\&quot;Connect your WhatsApp number to &lt;brandName&gt;\&quot;) instead of Zernio. The Zernio logo stays: the page is co-branded, not white-label. Trimmed; 1 to 60 characters. Rejected with 400 &#x60;INVALID_FIELD_VALUE&#x60; without &#x60;signup&#x3D;hosted&#x60;. Stored on the signup session at issue time, so the page URL cannot change it. (optional)
+     * @param  string|null $primary_color Hosted signup page only (&#x60;signup&#x3D;hosted&#x60;, WhatsApp): hex colour (&#x60;#RRGGBB&#x60;) for the primary button and step accents. Validated server-side; anything else is a 400 &#x60;INVALID_FIELD_VALUE&#x60;. Rejected without &#x60;signup&#x3D;hosted&#x60;. (optional)
+     * @param  string|null $language Hosted signup page only (&#x60;signup&#x3D;hosted&#x60;, WhatsApp): language of the page and its follow-along guide. Explainer videos stay in English. Default &#x60;en&#x60;. Rejected without &#x60;signup&#x3D;hosted&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConnectUrl'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetConnectUrl200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject4
      */
-    public function getConnectUrl($platform, $profile_id, $redirect_url = null, $headless = false, $login_method = 'instagram_login', $onboarding = null, string $contentType = self::contentTypes['getConnectUrl'][0])
+    public function getConnectUrl($platform, $profile_id, $redirect_url = null, $headless = false, $login_method = 'instagram_login', $onboarding = null, $signup = null, $brand_name = null, $primary_color = null, $language = null, string $contentType = self::contentTypes['getConnectUrl'][0])
     {
-        list($response) = $this->getConnectUrlWithHttpInfo($platform, $profile_id, $redirect_url, $headless, $login_method, $onboarding, $contentType);
+        list($response) = $this->getConnectUrlWithHttpInfo($platform, $profile_id, $redirect_url, $headless, $login_method, $onboarding, $signup, $brand_name, $primary_color, $language, $contentType);
         return $response;
     }
 
@@ -4126,15 +4211,19 @@ class ConnectApi
      * @param  bool|null $headless When true, the user is redirected to your redirect_url with raw OAuth data (code, state) instead of Zernio&#39;s default account selection UI. Use this to build a custom connect experience. (optional, default to false)
      * @param  string|null $login_method Instagram only. Which of the two Instagram connection methods to use. Ignored for every other platform.  &#x60;instagram_login&#x60; (the default, and what you get if you omit this): the Instagram Login dialog. The user authorizes their Instagram professional account directly, no Facebook Page required.  &#x60;facebook_login&#x60;: the Facebook Login dialog, i.e. \&quot;Instagram API with Facebook Login\&quot;. The user authorizes a Facebook Page that has a linked Instagram professional account, and every API call for that account then runs through the Page. Use this when the customer manages Instagram through a Page and expects the Facebook consent screen. Because the user has to pick which Page to connect, the callback continues at the account-selection step, &#x60;/v1/connect/instagram/select-account&#x60;.  &#x60;facebook_login&#x60; supports &#x60;headless&#x3D;true&#x60; like the other selection platforms: the callback redirects to your &#x60;redirect_url&#x60; with &#x60;profileId&#x60;, &#x60;tempToken&#x60;, &#x60;platform&#x3D;instagram&#x60;, &#x60;step&#x3D;select_account&#x60; and &#x60;connect_token&#x60;, which you pass into the select-account endpoints to finish. The default &#x60;instagram_login&#x60; has no selection step, so it connects the account directly. (optional, default to 'instagram_login')
      * @param  string|null $onboarding WhatsApp only. Ignored for every other platform. Controls which screen Meta&#39;s Embedded Signup popup shows.  If omitted, the connection defaults to coexistence (same as &#x60;business_app&#x60; below), preserving existing behavior for numbers already on the WhatsApp Business app.  &#x60;api&#x60;: standard Embedded Signup, showing Meta&#39;s WABA/number picker. Use this to connect a phone number already on Cloud API elsewhere.  &#x60;business_app&#x60;: coexistence, i.e. &#39;Connect existing WhatsApp Business app&#39; (a number shared between Cloud API and the consumer WhatsApp Business app). (optional)
+     * @param  string|null $signup WhatsApp only. Rejected with 400 &#x60;INVALID_FIELD_VALUE&#x60; on any other platform.  &#x60;hosted&#x60;: &#x60;authUrl&#x60; points at a Zernio-hosted page on zernio.com instead of Meta&#39;s OAuth dialog, and the response carries &#x60;authUrl&#x60; only (no &#x60;state&#x60;). That page opens Meta&#39;s Embedded Signup popup itself, so it learns which WhatsApp Business Account and number the user picked inside the popup and connects exactly that one. Use it when your users&#39; Facebook logins manage several WhatsApp accounts: on the default redirect flow Meta only returns an authorization code, so when that login can see more than one number the user lands on Zernio&#39;s number picker and has to choose again. Nothing to embed on your side and no domain setup: send the user to &#x60;authUrl&#x60;, and they come back to &#x60;redirect_url&#x60; with the same params as the redirect flow. Success: &#x60;connected&#x3D;whatsapp&#x60;, &#x60;profileId&#x60;, &#x60;accountId&#x60;, &#x60;username&#x60; (plus &#x60;connect_token&#x60; for API-key callers). Failure: &#x60;error&#x60; and &#x60;platform&#x3D;whatsapp&#x60;, with the same values and extras as the redirect flow (&#x60;one_whatsapp_per_profile&#x60;, &#x60;whatsapp_number_already_connected&#x60; and &#x60;whatsapp_number_pinned_to_profile&#x60; with &#x60;is_user_fixable&#x3D;true&#x60;; &#x60;payment_required&#x60; with &#x60;reason&#x60; and &#x60;dashboard_url&#x60;; &#x60;whatsapp_error&#x60; with &#x60;error_message&#x60; when Meta reported one), plus two of its own: &#x60;connection_cancelled&#x60; when the popup was closed before finishing (&#x60;error_message&#x60; carries Meta&#39;s last reported step or error when there is one) and &#x60;session_expired&#x60; when the user took longer than the 60 minute window the hosted page is valid for; restart the flow with a new call in that case. &#x60;onboarding&#x60; is carried through and a pre-verified Zernio-provisioned number is attached like on the redirect flow. &#x60;headless&#x60; has no effect here because there is no selection step left to hand you. When a previously disconnected account for this profile can simply be re-enabled, this endpoint re-enables it and returns the account directly instead of a URL, exactly like the redirect flow. The page shows the same guidance as the Zernio dashboard: a pre-verified Zernio-provisioned number is called out by name (\&quot;choose it in Meta&#39;s list, no code will be asked\&quot;), coexistence and standard signups get their explainer video, and a step-by-step follow-along checklist stays visible while Meta&#39;s popup is open. Skin it with &#x60;brandName&#x60;, &#x60;primaryColor&#x60; and &#x60;language&#x60; below. (optional)
+     * @param  string|null $brand_name Hosted signup page only (&#x60;signup&#x3D;hosted&#x60;, WhatsApp): name shown in the page title (\&quot;Connect your WhatsApp number to &lt;brandName&gt;\&quot;) instead of Zernio. The Zernio logo stays: the page is co-branded, not white-label. Trimmed; 1 to 60 characters. Rejected with 400 &#x60;INVALID_FIELD_VALUE&#x60; without &#x60;signup&#x3D;hosted&#x60;. Stored on the signup session at issue time, so the page URL cannot change it. (optional)
+     * @param  string|null $primary_color Hosted signup page only (&#x60;signup&#x3D;hosted&#x60;, WhatsApp): hex colour (&#x60;#RRGGBB&#x60;) for the primary button and step accents. Validated server-side; anything else is a 400 &#x60;INVALID_FIELD_VALUE&#x60;. Rejected without &#x60;signup&#x3D;hosted&#x60;. (optional)
+     * @param  string|null $language Hosted signup page only (&#x60;signup&#x3D;hosted&#x60;, WhatsApp): language of the page and its follow-along guide. Explainer videos stay in English. Default &#x60;en&#x60;. Rejected without &#x60;signup&#x3D;hosted&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConnectUrl'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetConnectUrl200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject4, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getConnectUrlWithHttpInfo($platform, $profile_id, $redirect_url = null, $headless = false, $login_method = 'instagram_login', $onboarding = null, string $contentType = self::contentTypes['getConnectUrl'][0])
+    public function getConnectUrlWithHttpInfo($platform, $profile_id, $redirect_url = null, $headless = false, $login_method = 'instagram_login', $onboarding = null, $signup = null, $brand_name = null, $primary_color = null, $language = null, string $contentType = self::contentTypes['getConnectUrl'][0])
     {
-        $request = $this->getConnectUrlRequest($platform, $profile_id, $redirect_url, $headless, $login_method, $onboarding, $contentType);
+        $request = $this->getConnectUrlRequest($platform, $profile_id, $redirect_url, $headless, $login_method, $onboarding, $signup, $brand_name, $primary_color, $language, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4244,14 +4333,18 @@ class ConnectApi
      * @param  bool|null $headless When true, the user is redirected to your redirect_url with raw OAuth data (code, state) instead of Zernio&#39;s default account selection UI. Use this to build a custom connect experience. (optional, default to false)
      * @param  string|null $login_method Instagram only. Which of the two Instagram connection methods to use. Ignored for every other platform.  &#x60;instagram_login&#x60; (the default, and what you get if you omit this): the Instagram Login dialog. The user authorizes their Instagram professional account directly, no Facebook Page required.  &#x60;facebook_login&#x60;: the Facebook Login dialog, i.e. \&quot;Instagram API with Facebook Login\&quot;. The user authorizes a Facebook Page that has a linked Instagram professional account, and every API call for that account then runs through the Page. Use this when the customer manages Instagram through a Page and expects the Facebook consent screen. Because the user has to pick which Page to connect, the callback continues at the account-selection step, &#x60;/v1/connect/instagram/select-account&#x60;.  &#x60;facebook_login&#x60; supports &#x60;headless&#x3D;true&#x60; like the other selection platforms: the callback redirects to your &#x60;redirect_url&#x60; with &#x60;profileId&#x60;, &#x60;tempToken&#x60;, &#x60;platform&#x3D;instagram&#x60;, &#x60;step&#x3D;select_account&#x60; and &#x60;connect_token&#x60;, which you pass into the select-account endpoints to finish. The default &#x60;instagram_login&#x60; has no selection step, so it connects the account directly. (optional, default to 'instagram_login')
      * @param  string|null $onboarding WhatsApp only. Ignored for every other platform. Controls which screen Meta&#39;s Embedded Signup popup shows.  If omitted, the connection defaults to coexistence (same as &#x60;business_app&#x60; below), preserving existing behavior for numbers already on the WhatsApp Business app.  &#x60;api&#x60;: standard Embedded Signup, showing Meta&#39;s WABA/number picker. Use this to connect a phone number already on Cloud API elsewhere.  &#x60;business_app&#x60;: coexistence, i.e. &#39;Connect existing WhatsApp Business app&#39; (a number shared between Cloud API and the consumer WhatsApp Business app). (optional)
+     * @param  string|null $signup WhatsApp only. Rejected with 400 &#x60;INVALID_FIELD_VALUE&#x60; on any other platform.  &#x60;hosted&#x60;: &#x60;authUrl&#x60; points at a Zernio-hosted page on zernio.com instead of Meta&#39;s OAuth dialog, and the response carries &#x60;authUrl&#x60; only (no &#x60;state&#x60;). That page opens Meta&#39;s Embedded Signup popup itself, so it learns which WhatsApp Business Account and number the user picked inside the popup and connects exactly that one. Use it when your users&#39; Facebook logins manage several WhatsApp accounts: on the default redirect flow Meta only returns an authorization code, so when that login can see more than one number the user lands on Zernio&#39;s number picker and has to choose again. Nothing to embed on your side and no domain setup: send the user to &#x60;authUrl&#x60;, and they come back to &#x60;redirect_url&#x60; with the same params as the redirect flow. Success: &#x60;connected&#x3D;whatsapp&#x60;, &#x60;profileId&#x60;, &#x60;accountId&#x60;, &#x60;username&#x60; (plus &#x60;connect_token&#x60; for API-key callers). Failure: &#x60;error&#x60; and &#x60;platform&#x3D;whatsapp&#x60;, with the same values and extras as the redirect flow (&#x60;one_whatsapp_per_profile&#x60;, &#x60;whatsapp_number_already_connected&#x60; and &#x60;whatsapp_number_pinned_to_profile&#x60; with &#x60;is_user_fixable&#x3D;true&#x60;; &#x60;payment_required&#x60; with &#x60;reason&#x60; and &#x60;dashboard_url&#x60;; &#x60;whatsapp_error&#x60; with &#x60;error_message&#x60; when Meta reported one), plus two of its own: &#x60;connection_cancelled&#x60; when the popup was closed before finishing (&#x60;error_message&#x60; carries Meta&#39;s last reported step or error when there is one) and &#x60;session_expired&#x60; when the user took longer than the 60 minute window the hosted page is valid for; restart the flow with a new call in that case. &#x60;onboarding&#x60; is carried through and a pre-verified Zernio-provisioned number is attached like on the redirect flow. &#x60;headless&#x60; has no effect here because there is no selection step left to hand you. When a previously disconnected account for this profile can simply be re-enabled, this endpoint re-enables it and returns the account directly instead of a URL, exactly like the redirect flow. The page shows the same guidance as the Zernio dashboard: a pre-verified Zernio-provisioned number is called out by name (\&quot;choose it in Meta&#39;s list, no code will be asked\&quot;), coexistence and standard signups get their explainer video, and a step-by-step follow-along checklist stays visible while Meta&#39;s popup is open. Skin it with &#x60;brandName&#x60;, &#x60;primaryColor&#x60; and &#x60;language&#x60; below. (optional)
+     * @param  string|null $brand_name Hosted signup page only (&#x60;signup&#x3D;hosted&#x60;, WhatsApp): name shown in the page title (\&quot;Connect your WhatsApp number to &lt;brandName&gt;\&quot;) instead of Zernio. The Zernio logo stays: the page is co-branded, not white-label. Trimmed; 1 to 60 characters. Rejected with 400 &#x60;INVALID_FIELD_VALUE&#x60; without &#x60;signup&#x3D;hosted&#x60;. Stored on the signup session at issue time, so the page URL cannot change it. (optional)
+     * @param  string|null $primary_color Hosted signup page only (&#x60;signup&#x3D;hosted&#x60;, WhatsApp): hex colour (&#x60;#RRGGBB&#x60;) for the primary button and step accents. Validated server-side; anything else is a 400 &#x60;INVALID_FIELD_VALUE&#x60;. Rejected without &#x60;signup&#x3D;hosted&#x60;. (optional)
+     * @param  string|null $language Hosted signup page only (&#x60;signup&#x3D;hosted&#x60;, WhatsApp): language of the page and its follow-along guide. Explainer videos stay in English. Default &#x60;en&#x60;. Rejected without &#x60;signup&#x3D;hosted&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConnectUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getConnectUrlAsync($platform, $profile_id, $redirect_url = null, $headless = false, $login_method = 'instagram_login', $onboarding = null, string $contentType = self::contentTypes['getConnectUrl'][0])
+    public function getConnectUrlAsync($platform, $profile_id, $redirect_url = null, $headless = false, $login_method = 'instagram_login', $onboarding = null, $signup = null, $brand_name = null, $primary_color = null, $language = null, string $contentType = self::contentTypes['getConnectUrl'][0])
     {
-        return $this->getConnectUrlAsyncWithHttpInfo($platform, $profile_id, $redirect_url, $headless, $login_method, $onboarding, $contentType)
+        return $this->getConnectUrlAsyncWithHttpInfo($platform, $profile_id, $redirect_url, $headless, $login_method, $onboarding, $signup, $brand_name, $primary_color, $language, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4270,15 +4363,19 @@ class ConnectApi
      * @param  bool|null $headless When true, the user is redirected to your redirect_url with raw OAuth data (code, state) instead of Zernio&#39;s default account selection UI. Use this to build a custom connect experience. (optional, default to false)
      * @param  string|null $login_method Instagram only. Which of the two Instagram connection methods to use. Ignored for every other platform.  &#x60;instagram_login&#x60; (the default, and what you get if you omit this): the Instagram Login dialog. The user authorizes their Instagram professional account directly, no Facebook Page required.  &#x60;facebook_login&#x60;: the Facebook Login dialog, i.e. \&quot;Instagram API with Facebook Login\&quot;. The user authorizes a Facebook Page that has a linked Instagram professional account, and every API call for that account then runs through the Page. Use this when the customer manages Instagram through a Page and expects the Facebook consent screen. Because the user has to pick which Page to connect, the callback continues at the account-selection step, &#x60;/v1/connect/instagram/select-account&#x60;.  &#x60;facebook_login&#x60; supports &#x60;headless&#x3D;true&#x60; like the other selection platforms: the callback redirects to your &#x60;redirect_url&#x60; with &#x60;profileId&#x60;, &#x60;tempToken&#x60;, &#x60;platform&#x3D;instagram&#x60;, &#x60;step&#x3D;select_account&#x60; and &#x60;connect_token&#x60;, which you pass into the select-account endpoints to finish. The default &#x60;instagram_login&#x60; has no selection step, so it connects the account directly. (optional, default to 'instagram_login')
      * @param  string|null $onboarding WhatsApp only. Ignored for every other platform. Controls which screen Meta&#39;s Embedded Signup popup shows.  If omitted, the connection defaults to coexistence (same as &#x60;business_app&#x60; below), preserving existing behavior for numbers already on the WhatsApp Business app.  &#x60;api&#x60;: standard Embedded Signup, showing Meta&#39;s WABA/number picker. Use this to connect a phone number already on Cloud API elsewhere.  &#x60;business_app&#x60;: coexistence, i.e. &#39;Connect existing WhatsApp Business app&#39; (a number shared between Cloud API and the consumer WhatsApp Business app). (optional)
+     * @param  string|null $signup WhatsApp only. Rejected with 400 &#x60;INVALID_FIELD_VALUE&#x60; on any other platform.  &#x60;hosted&#x60;: &#x60;authUrl&#x60; points at a Zernio-hosted page on zernio.com instead of Meta&#39;s OAuth dialog, and the response carries &#x60;authUrl&#x60; only (no &#x60;state&#x60;). That page opens Meta&#39;s Embedded Signup popup itself, so it learns which WhatsApp Business Account and number the user picked inside the popup and connects exactly that one. Use it when your users&#39; Facebook logins manage several WhatsApp accounts: on the default redirect flow Meta only returns an authorization code, so when that login can see more than one number the user lands on Zernio&#39;s number picker and has to choose again. Nothing to embed on your side and no domain setup: send the user to &#x60;authUrl&#x60;, and they come back to &#x60;redirect_url&#x60; with the same params as the redirect flow. Success: &#x60;connected&#x3D;whatsapp&#x60;, &#x60;profileId&#x60;, &#x60;accountId&#x60;, &#x60;username&#x60; (plus &#x60;connect_token&#x60; for API-key callers). Failure: &#x60;error&#x60; and &#x60;platform&#x3D;whatsapp&#x60;, with the same values and extras as the redirect flow (&#x60;one_whatsapp_per_profile&#x60;, &#x60;whatsapp_number_already_connected&#x60; and &#x60;whatsapp_number_pinned_to_profile&#x60; with &#x60;is_user_fixable&#x3D;true&#x60;; &#x60;payment_required&#x60; with &#x60;reason&#x60; and &#x60;dashboard_url&#x60;; &#x60;whatsapp_error&#x60; with &#x60;error_message&#x60; when Meta reported one), plus two of its own: &#x60;connection_cancelled&#x60; when the popup was closed before finishing (&#x60;error_message&#x60; carries Meta&#39;s last reported step or error when there is one) and &#x60;session_expired&#x60; when the user took longer than the 60 minute window the hosted page is valid for; restart the flow with a new call in that case. &#x60;onboarding&#x60; is carried through and a pre-verified Zernio-provisioned number is attached like on the redirect flow. &#x60;headless&#x60; has no effect here because there is no selection step left to hand you. When a previously disconnected account for this profile can simply be re-enabled, this endpoint re-enables it and returns the account directly instead of a URL, exactly like the redirect flow. The page shows the same guidance as the Zernio dashboard: a pre-verified Zernio-provisioned number is called out by name (\&quot;choose it in Meta&#39;s list, no code will be asked\&quot;), coexistence and standard signups get their explainer video, and a step-by-step follow-along checklist stays visible while Meta&#39;s popup is open. Skin it with &#x60;brandName&#x60;, &#x60;primaryColor&#x60; and &#x60;language&#x60; below. (optional)
+     * @param  string|null $brand_name Hosted signup page only (&#x60;signup&#x3D;hosted&#x60;, WhatsApp): name shown in the page title (\&quot;Connect your WhatsApp number to &lt;brandName&gt;\&quot;) instead of Zernio. The Zernio logo stays: the page is co-branded, not white-label. Trimmed; 1 to 60 characters. Rejected with 400 &#x60;INVALID_FIELD_VALUE&#x60; without &#x60;signup&#x3D;hosted&#x60;. Stored on the signup session at issue time, so the page URL cannot change it. (optional)
+     * @param  string|null $primary_color Hosted signup page only (&#x60;signup&#x3D;hosted&#x60;, WhatsApp): hex colour (&#x60;#RRGGBB&#x60;) for the primary button and step accents. Validated server-side; anything else is a 400 &#x60;INVALID_FIELD_VALUE&#x60;. Rejected without &#x60;signup&#x3D;hosted&#x60;. (optional)
+     * @param  string|null $language Hosted signup page only (&#x60;signup&#x3D;hosted&#x60;, WhatsApp): language of the page and its follow-along guide. Explainer videos stay in English. Default &#x60;en&#x60;. Rejected without &#x60;signup&#x3D;hosted&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConnectUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getConnectUrlAsyncWithHttpInfo($platform, $profile_id, $redirect_url = null, $headless = false, $login_method = 'instagram_login', $onboarding = null, string $contentType = self::contentTypes['getConnectUrl'][0])
+    public function getConnectUrlAsyncWithHttpInfo($platform, $profile_id, $redirect_url = null, $headless = false, $login_method = 'instagram_login', $onboarding = null, $signup = null, $brand_name = null, $primary_color = null, $language = null, string $contentType = self::contentTypes['getConnectUrl'][0])
     {
         $returnType = '\Zernio\Model\GetConnectUrl200Response';
-        $request = $this->getConnectUrlRequest($platform, $profile_id, $redirect_url, $headless, $login_method, $onboarding, $contentType);
+        $request = $this->getConnectUrlRequest($platform, $profile_id, $redirect_url, $headless, $login_method, $onboarding, $signup, $brand_name, $primary_color, $language, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4325,12 +4422,16 @@ class ConnectApi
      * @param  bool|null $headless When true, the user is redirected to your redirect_url with raw OAuth data (code, state) instead of Zernio&#39;s default account selection UI. Use this to build a custom connect experience. (optional, default to false)
      * @param  string|null $login_method Instagram only. Which of the two Instagram connection methods to use. Ignored for every other platform.  &#x60;instagram_login&#x60; (the default, and what you get if you omit this): the Instagram Login dialog. The user authorizes their Instagram professional account directly, no Facebook Page required.  &#x60;facebook_login&#x60;: the Facebook Login dialog, i.e. \&quot;Instagram API with Facebook Login\&quot;. The user authorizes a Facebook Page that has a linked Instagram professional account, and every API call for that account then runs through the Page. Use this when the customer manages Instagram through a Page and expects the Facebook consent screen. Because the user has to pick which Page to connect, the callback continues at the account-selection step, &#x60;/v1/connect/instagram/select-account&#x60;.  &#x60;facebook_login&#x60; supports &#x60;headless&#x3D;true&#x60; like the other selection platforms: the callback redirects to your &#x60;redirect_url&#x60; with &#x60;profileId&#x60;, &#x60;tempToken&#x60;, &#x60;platform&#x3D;instagram&#x60;, &#x60;step&#x3D;select_account&#x60; and &#x60;connect_token&#x60;, which you pass into the select-account endpoints to finish. The default &#x60;instagram_login&#x60; has no selection step, so it connects the account directly. (optional, default to 'instagram_login')
      * @param  string|null $onboarding WhatsApp only. Ignored for every other platform. Controls which screen Meta&#39;s Embedded Signup popup shows.  If omitted, the connection defaults to coexistence (same as &#x60;business_app&#x60; below), preserving existing behavior for numbers already on the WhatsApp Business app.  &#x60;api&#x60;: standard Embedded Signup, showing Meta&#39;s WABA/number picker. Use this to connect a phone number already on Cloud API elsewhere.  &#x60;business_app&#x60;: coexistence, i.e. &#39;Connect existing WhatsApp Business app&#39; (a number shared between Cloud API and the consumer WhatsApp Business app). (optional)
+     * @param  string|null $signup WhatsApp only. Rejected with 400 &#x60;INVALID_FIELD_VALUE&#x60; on any other platform.  &#x60;hosted&#x60;: &#x60;authUrl&#x60; points at a Zernio-hosted page on zernio.com instead of Meta&#39;s OAuth dialog, and the response carries &#x60;authUrl&#x60; only (no &#x60;state&#x60;). That page opens Meta&#39;s Embedded Signup popup itself, so it learns which WhatsApp Business Account and number the user picked inside the popup and connects exactly that one. Use it when your users&#39; Facebook logins manage several WhatsApp accounts: on the default redirect flow Meta only returns an authorization code, so when that login can see more than one number the user lands on Zernio&#39;s number picker and has to choose again. Nothing to embed on your side and no domain setup: send the user to &#x60;authUrl&#x60;, and they come back to &#x60;redirect_url&#x60; with the same params as the redirect flow. Success: &#x60;connected&#x3D;whatsapp&#x60;, &#x60;profileId&#x60;, &#x60;accountId&#x60;, &#x60;username&#x60; (plus &#x60;connect_token&#x60; for API-key callers). Failure: &#x60;error&#x60; and &#x60;platform&#x3D;whatsapp&#x60;, with the same values and extras as the redirect flow (&#x60;one_whatsapp_per_profile&#x60;, &#x60;whatsapp_number_already_connected&#x60; and &#x60;whatsapp_number_pinned_to_profile&#x60; with &#x60;is_user_fixable&#x3D;true&#x60;; &#x60;payment_required&#x60; with &#x60;reason&#x60; and &#x60;dashboard_url&#x60;; &#x60;whatsapp_error&#x60; with &#x60;error_message&#x60; when Meta reported one), plus two of its own: &#x60;connection_cancelled&#x60; when the popup was closed before finishing (&#x60;error_message&#x60; carries Meta&#39;s last reported step or error when there is one) and &#x60;session_expired&#x60; when the user took longer than the 60 minute window the hosted page is valid for; restart the flow with a new call in that case. &#x60;onboarding&#x60; is carried through and a pre-verified Zernio-provisioned number is attached like on the redirect flow. &#x60;headless&#x60; has no effect here because there is no selection step left to hand you. When a previously disconnected account for this profile can simply be re-enabled, this endpoint re-enables it and returns the account directly instead of a URL, exactly like the redirect flow. The page shows the same guidance as the Zernio dashboard: a pre-verified Zernio-provisioned number is called out by name (\&quot;choose it in Meta&#39;s list, no code will be asked\&quot;), coexistence and standard signups get their explainer video, and a step-by-step follow-along checklist stays visible while Meta&#39;s popup is open. Skin it with &#x60;brandName&#x60;, &#x60;primaryColor&#x60; and &#x60;language&#x60; below. (optional)
+     * @param  string|null $brand_name Hosted signup page only (&#x60;signup&#x3D;hosted&#x60;, WhatsApp): name shown in the page title (\&quot;Connect your WhatsApp number to &lt;brandName&gt;\&quot;) instead of Zernio. The Zernio logo stays: the page is co-branded, not white-label. Trimmed; 1 to 60 characters. Rejected with 400 &#x60;INVALID_FIELD_VALUE&#x60; without &#x60;signup&#x3D;hosted&#x60;. Stored on the signup session at issue time, so the page URL cannot change it. (optional)
+     * @param  string|null $primary_color Hosted signup page only (&#x60;signup&#x3D;hosted&#x60;, WhatsApp): hex colour (&#x60;#RRGGBB&#x60;) for the primary button and step accents. Validated server-side; anything else is a 400 &#x60;INVALID_FIELD_VALUE&#x60;. Rejected without &#x60;signup&#x3D;hosted&#x60;. (optional)
+     * @param  string|null $language Hosted signup page only (&#x60;signup&#x3D;hosted&#x60;, WhatsApp): language of the page and its follow-along guide. Explainer videos stay in English. Default &#x60;en&#x60;. Rejected without &#x60;signup&#x3D;hosted&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConnectUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getConnectUrlRequest($platform, $profile_id, $redirect_url = null, $headless = false, $login_method = 'instagram_login', $onboarding = null, string $contentType = self::contentTypes['getConnectUrl'][0])
+    public function getConnectUrlRequest($platform, $profile_id, $redirect_url = null, $headless = false, $login_method = 'instagram_login', $onboarding = null, $signup = null, $brand_name = null, $primary_color = null, $language = null, string $contentType = self::contentTypes['getConnectUrl'][0])
     {
 
         // verify the required parameter 'platform' is set
@@ -4350,6 +4451,19 @@ class ConnectApi
 
 
 
+
+
+        if ($brand_name !== null && strlen($brand_name) > 60) {
+            throw new \InvalidArgumentException('invalid length for "$brand_name" when calling ConnectApi.getConnectUrl, must be smaller than or equal to 60.');
+        }
+        if ($brand_name !== null && strlen($brand_name) < 1) {
+            throw new \InvalidArgumentException('invalid length for "$brand_name" when calling ConnectApi.getConnectUrl, must be bigger than or equal to 1.');
+        }
+        
+        if ($primary_color !== null && !preg_match("/^#[0-9a-fA-F]{6}$/", $primary_color)) {
+            throw new \InvalidArgumentException("invalid value for \"primary_color\" when calling ConnectApi.getConnectUrl, must conform to the pattern /^#[0-9a-fA-F]{6}$/.");
+        }
+        
 
 
         $resourcePath = '/v1/connect/{platform}';
@@ -4399,6 +4513,42 @@ class ConnectApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $onboarding,
             'onboarding', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $signup,
+            'signup', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $brand_name,
+            'brandName', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $primary_color,
+            'primaryColor', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $language,
+            'language', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -7450,6 +7600,282 @@ class ConnectApi
             true // required
         ) ?? []);
 
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getWhatsAppSdkConfig
+     *
+     * Get Embedded Signup SDK config
+     *
+     * @param  string|null $x_connect_token Connect token issued by the hosted signup flow, accepted instead of an API key. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppSdkConfig'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetWhatsAppSdkConfig200Response|\Zernio\Model\InlineObject1
+     */
+    public function getWhatsAppSdkConfig($x_connect_token = null, string $contentType = self::contentTypes['getWhatsAppSdkConfig'][0])
+    {
+        list($response) = $this->getWhatsAppSdkConfigWithHttpInfo($x_connect_token, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getWhatsAppSdkConfigWithHttpInfo
+     *
+     * Get Embedded Signup SDK config
+     *
+     * @param  string|null $x_connect_token Connect token issued by the hosted signup flow, accepted instead of an API key. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppSdkConfig'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetWhatsAppSdkConfig200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getWhatsAppSdkConfigWithHttpInfo($x_connect_token = null, string $contentType = self::contentTypes['getWhatsAppSdkConfig'][0])
+    {
+        $request = $this->getWhatsAppSdkConfigRequest($x_connect_token, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetWhatsAppSdkConfig200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetWhatsAppSdkConfig200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetWhatsAppSdkConfig200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getWhatsAppSdkConfigAsync
+     *
+     * Get Embedded Signup SDK config
+     *
+     * @param  string|null $x_connect_token Connect token issued by the hosted signup flow, accepted instead of an API key. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppSdkConfig'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsAppSdkConfigAsync($x_connect_token = null, string $contentType = self::contentTypes['getWhatsAppSdkConfig'][0])
+    {
+        return $this->getWhatsAppSdkConfigAsyncWithHttpInfo($x_connect_token, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getWhatsAppSdkConfigAsyncWithHttpInfo
+     *
+     * Get Embedded Signup SDK config
+     *
+     * @param  string|null $x_connect_token Connect token issued by the hosted signup flow, accepted instead of an API key. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppSdkConfig'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsAppSdkConfigAsyncWithHttpInfo($x_connect_token = null, string $contentType = self::contentTypes['getWhatsAppSdkConfig'][0])
+    {
+        $returnType = '\Zernio\Model\GetWhatsAppSdkConfig200Response';
+        $request = $this->getWhatsAppSdkConfigRequest($x_connect_token, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getWhatsAppSdkConfig'
+     *
+     * @param  string|null $x_connect_token Connect token issued by the hosted signup flow, accepted instead of an API key. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppSdkConfig'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getWhatsAppSdkConfigRequest($x_connect_token = null, string $contentType = self::contentTypes['getWhatsAppSdkConfig'][0])
+    {
+
+
+
+        $resourcePath = '/v1/connect/whatsapp/sdk-config';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // header params
+        if ($x_connect_token !== null) {
+            $headerParams['X-Connect-Token'] = ObjectSerializer::toHeaderValue($x_connect_token);
+        }
 
 
 

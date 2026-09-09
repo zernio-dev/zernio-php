@@ -1,6 +1,6 @@
 <?php
 /**
- * ConnectWhatsAppEmbeddedSignupRequest
+ * ConnectWhatsAppEmbeddedSignup200ResponseAccount
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ConnectWhatsAppEmbeddedSignupRequest Class Doc Comment
+ * ConnectWhatsAppEmbeddedSignup200ResponseAccount Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ConnectWhatsAppEmbeddedSignupRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class ConnectWhatsAppEmbeddedSignup200ResponseAccount implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ConnectWhatsAppEmbeddedSignupRequest implements ModelInterface, ArrayAcces
       *
       * @var string
       */
-    protected static $openAPIModelName = 'connectWhatsAppEmbeddedSignup_request';
+    protected static $openAPIModelName = 'connectWhatsAppEmbeddedSignup_200_response_account';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,14 +58,12 @@ class ConnectWhatsAppEmbeddedSignupRequest implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'string',
-        'profile_id' => 'string',
-        'waba_id' => 'string',
-        'phone_number_id' => 'string',
-        'is_coexistence' => 'bool',
-        'expected_phone_number' => 'string',
-        'redirect_url' => 'string',
-        'echo_connect_token' => 'bool'
+        'account_id' => 'string',
+        'platform' => 'string',
+        'username' => 'string',
+        'display_name' => 'string',
+        'is_active' => 'bool',
+        'selected_phone_number' => 'string'
     ];
 
     /**
@@ -76,14 +74,12 @@ class ConnectWhatsAppEmbeddedSignupRequest implements ModelInterface, ArrayAcces
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'profile_id' => null,
-        'waba_id' => null,
-        'phone_number_id' => null,
-        'is_coexistence' => null,
-        'expected_phone_number' => null,
-        'redirect_url' => null,
-        'echo_connect_token' => null
+        'account_id' => null,
+        'platform' => null,
+        'username' => null,
+        'display_name' => null,
+        'is_active' => null,
+        'selected_phone_number' => null
     ];
 
     /**
@@ -92,14 +88,12 @@ class ConnectWhatsAppEmbeddedSignupRequest implements ModelInterface, ArrayAcces
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
-        'profile_id' => false,
-        'waba_id' => false,
-        'phone_number_id' => false,
-        'is_coexistence' => false,
-        'expected_phone_number' => false,
-        'redirect_url' => false,
-        'echo_connect_token' => false
+        'account_id' => false,
+        'platform' => false,
+        'username' => false,
+        'display_name' => false,
+        'is_active' => false,
+        'selected_phone_number' => false
     ];
 
     /**
@@ -188,14 +182,12 @@ class ConnectWhatsAppEmbeddedSignupRequest implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'profile_id' => 'profileId',
-        'waba_id' => 'wabaId',
-        'phone_number_id' => 'phoneNumberId',
-        'is_coexistence' => 'isCoexistence',
-        'expected_phone_number' => 'expectedPhoneNumber',
-        'redirect_url' => 'redirectUrl',
-        'echo_connect_token' => 'echoConnectToken'
+        'account_id' => 'accountId',
+        'platform' => 'platform',
+        'username' => 'username',
+        'display_name' => 'displayName',
+        'is_active' => 'isActive',
+        'selected_phone_number' => 'selectedPhoneNumber'
     ];
 
     /**
@@ -204,14 +196,12 @@ class ConnectWhatsAppEmbeddedSignupRequest implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'profile_id' => 'setProfileId',
-        'waba_id' => 'setWabaId',
-        'phone_number_id' => 'setPhoneNumberId',
-        'is_coexistence' => 'setIsCoexistence',
-        'expected_phone_number' => 'setExpectedPhoneNumber',
-        'redirect_url' => 'setRedirectUrl',
-        'echo_connect_token' => 'setEchoConnectToken'
+        'account_id' => 'setAccountId',
+        'platform' => 'setPlatform',
+        'username' => 'setUsername',
+        'display_name' => 'setDisplayName',
+        'is_active' => 'setIsActive',
+        'selected_phone_number' => 'setSelectedPhoneNumber'
     ];
 
     /**
@@ -220,14 +210,12 @@ class ConnectWhatsAppEmbeddedSignupRequest implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'profile_id' => 'getProfileId',
-        'waba_id' => 'getWabaId',
-        'phone_number_id' => 'getPhoneNumberId',
-        'is_coexistence' => 'getIsCoexistence',
-        'expected_phone_number' => 'getExpectedPhoneNumber',
-        'redirect_url' => 'getRedirectUrl',
-        'echo_connect_token' => 'getEchoConnectToken'
+        'account_id' => 'getAccountId',
+        'platform' => 'getPlatform',
+        'username' => 'getUsername',
+        'display_name' => 'getDisplayName',
+        'is_active' => 'getIsActive',
+        'selected_phone_number' => 'getSelectedPhoneNumber'
     ];
 
     /**
@@ -271,6 +259,19 @@ class ConnectWhatsAppEmbeddedSignupRequest implements ModelInterface, ArrayAcces
         return self::$openAPIModelName;
     }
 
+    public const PLATFORM_WHATSAPP = 'whatsapp';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPlatformAllowableValues()
+    {
+        return [
+            self::PLATFORM_WHATSAPP,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -287,14 +288,12 @@ class ConnectWhatsAppEmbeddedSignupRequest implements ModelInterface, ArrayAcces
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('profile_id', $data ?? [], null);
-        $this->setIfExists('waba_id', $data ?? [], null);
-        $this->setIfExists('phone_number_id', $data ?? [], null);
-        $this->setIfExists('is_coexistence', $data ?? [], null);
-        $this->setIfExists('expected_phone_number', $data ?? [], null);
-        $this->setIfExists('redirect_url', $data ?? [], null);
-        $this->setIfExists('echo_connect_token', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('username', $data ?? [], null);
+        $this->setIfExists('display_name', $data ?? [], null);
+        $this->setIfExists('is_active', $data ?? [], null);
+        $this->setIfExists('selected_phone_number', $data ?? [], null);
     }
 
     /**
@@ -324,12 +323,15 @@ class ConnectWhatsAppEmbeddedSignupRequest implements ModelInterface, ArrayAcces
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!is_null($this->container['platform']) && !in_array($this->container['platform'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'platform', must be one of '%s'",
+                $this->container['platform'],
+                implode("', '", $allowedValues)
+            );
         }
-        if ($this->container['profile_id'] === null) {
-            $invalidProperties[] = "'profile_id' can't be null";
-        }
+
         return $invalidProperties;
     }
 
@@ -346,217 +348,173 @@ class ConnectWhatsAppEmbeddedSignupRequest implements ModelInterface, ArrayAcces
 
 
     /**
-     * Gets code
-     *
-     * @return string
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param string $code Authorization code from the WA_EMBEDDED_SIGNUP postMessage
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets profile_id
-     *
-     * @return string
-     */
-    public function getProfileId()
-    {
-        return $this->container['profile_id'];
-    }
-
-    /**
-     * Sets profile_id
-     *
-     * @param string $profile_id profile_id
-     *
-     * @return self
-     */
-    public function setProfileId($profile_id)
-    {
-        if (is_null($profile_id)) {
-            throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
-        }
-        $this->container['profile_id'] = $profile_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets waba_id
+     * Gets account_id
      *
      * @return string|null
      */
-    public function getWabaId()
+    public function getAccountId()
     {
-        return $this->container['waba_id'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets waba_id
+     * Sets account_id
      *
-     * @param string|null $waba_id WhatsApp Business Account id, when the SDK reported one
+     * @param string|null $account_id account_id
      *
      * @return self
      */
-    public function setWabaId($waba_id)
+    public function setAccountId($account_id)
     {
-        if (is_null($waba_id)) {
-            throw new \InvalidArgumentException('non-nullable waba_id cannot be null');
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
-        $this->container['waba_id'] = $waba_id;
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }
 
     /**
-     * Gets phone_number_id
+     * Gets platform
      *
      * @return string|null
      */
-    public function getPhoneNumberId()
+    public function getPlatform()
     {
-        return $this->container['phone_number_id'];
+        return $this->container['platform'];
     }
 
     /**
-     * Sets phone_number_id
+     * Sets platform
      *
-     * @param string|null $phone_number_id phone_number_id
+     * @param string|null $platform platform
      *
      * @return self
      */
-    public function setPhoneNumberId($phone_number_id)
+    public function setPlatform($platform)
     {
-        if (is_null($phone_number_id)) {
-            throw new \InvalidArgumentException('non-nullable phone_number_id cannot be null');
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
         }
-        $this->container['phone_number_id'] = $phone_number_id;
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!in_array($platform, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'platform', must be one of '%s'",
+                    $platform,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['platform'] = $platform;
 
         return $this;
     }
 
     /**
-     * Gets is_coexistence
+     * Gets username
+     *
+     * @return string|null
+     */
+    public function getUsername()
+    {
+        return $this->container['username'];
+    }
+
+    /**
+     * Sets username
+     *
+     * @param string|null $username username
+     *
+     * @return self
+     */
+    public function setUsername($username)
+    {
+        if (is_null($username)) {
+            throw new \InvalidArgumentException('non-nullable username cannot be null');
+        }
+        $this->container['username'] = $username;
+
+        return $this;
+    }
+
+    /**
+     * Gets display_name
+     *
+     * @return string|null
+     */
+    public function getDisplayName()
+    {
+        return $this->container['display_name'];
+    }
+
+    /**
+     * Sets display_name
+     *
+     * @param string|null $display_name display_name
+     *
+     * @return self
+     */
+    public function setDisplayName($display_name)
+    {
+        if (is_null($display_name)) {
+            throw new \InvalidArgumentException('non-nullable display_name cannot be null');
+        }
+        $this->container['display_name'] = $display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_active
      *
      * @return bool|null
      */
-    public function getIsCoexistence()
+    public function getIsActive()
     {
-        return $this->container['is_coexistence'];
+        return $this->container['is_active'];
     }
 
     /**
-     * Sets is_coexistence
+     * Sets is_active
      *
-     * @param bool|null $is_coexistence Number is also live in the WhatsApp Business app
+     * @param bool|null $is_active is_active
      *
      * @return self
      */
-    public function setIsCoexistence($is_coexistence)
+    public function setIsActive($is_active)
     {
-        if (is_null($is_coexistence)) {
-            throw new \InvalidArgumentException('non-nullable is_coexistence cannot be null');
+        if (is_null($is_active)) {
+            throw new \InvalidArgumentException('non-nullable is_active cannot be null');
         }
-        $this->container['is_coexistence'] = $is_coexistence;
+        $this->container['is_active'] = $is_active;
 
         return $this;
     }
 
     /**
-     * Gets expected_phone_number
+     * Gets selected_phone_number
      *
      * @return string|null
      */
-    public function getExpectedPhoneNumber()
+    public function getSelectedPhoneNumber()
     {
-        return $this->container['expected_phone_number'];
+        return $this->container['selected_phone_number'];
     }
 
     /**
-     * Sets expected_phone_number
+     * Sets selected_phone_number
      *
-     * @param string|null $expected_phone_number Rejects the connect when Meta returns a different number
+     * @param string|null $selected_phone_number selected_phone_number
      *
      * @return self
      */
-    public function setExpectedPhoneNumber($expected_phone_number)
+    public function setSelectedPhoneNumber($selected_phone_number)
     {
-        if (is_null($expected_phone_number)) {
-            throw new \InvalidArgumentException('non-nullable expected_phone_number cannot be null');
+        if (is_null($selected_phone_number)) {
+            throw new \InvalidArgumentException('non-nullable selected_phone_number cannot be null');
         }
-        $this->container['expected_phone_number'] = $expected_phone_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets redirect_url
-     *
-     * @return string|null
-     */
-    public function getRedirectUrl()
-    {
-        return $this->container['redirect_url'];
-    }
-
-    /**
-     * Sets redirect_url
-     *
-     * @param string|null $redirect_url Hosted signup page only. When present, the response also carries `redirectUrl`, the URL the user should land on, with the outcome mapped exactly like the redirect flow (success params, or `error` and `platform` with the same values). Must be an absolute http(s) URL or a custom app scheme.
-     *
-     * @return self
-     */
-    public function setRedirectUrl($redirect_url)
-    {
-        if (is_null($redirect_url)) {
-            throw new \InvalidArgumentException('non-nullable redirect_url cannot be null');
-        }
-        $this->container['redirect_url'] = $redirect_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets echo_connect_token
-     *
-     * @return bool|null
-     */
-    public function getEchoConnectToken()
-    {
-        return $this->container['echo_connect_token'];
-    }
-
-    /**
-     * Sets echo_connect_token
-     *
-     * @param bool|null $echo_connect_token Hosted signup page only. Append the connect token to the success redirect, as the redirect flow does for API-key callers.
-     *
-     * @return self
-     */
-    public function setEchoConnectToken($echo_connect_token)
-    {
-        if (is_null($echo_connect_token)) {
-            throw new \InvalidArgumentException('non-nullable echo_connect_token cannot be null');
-        }
-        $this->container['echo_connect_token'] = $echo_connect_token;
+        $this->container['selected_phone_number'] = $selected_phone_number;
 
         return $this;
     }

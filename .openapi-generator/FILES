@@ -285,6 +285,8 @@ docs/Model/ConnectSlackChannelRequest.md
 docs/Model/ConnectWhatsAppCredentials200Response.md
 docs/Model/ConnectWhatsAppCredentials200ResponseAccount.md
 docs/Model/ConnectWhatsAppCredentialsRequest.md
+docs/Model/ConnectWhatsAppEmbeddedSignup200Response.md
+docs/Model/ConnectWhatsAppEmbeddedSignup200ResponseAccount.md
 docs/Model/ConnectWhatsAppEmbeddedSignupRequest.md
 docs/Model/Connected.md
 docs/Model/ConnectedAccount.md
@@ -921,6 +923,8 @@ docs/Model/GetWhatsAppNumberInfo200ResponseWaba.md
 docs/Model/GetWhatsAppNumberKycForm200Response.md
 docs/Model/GetWhatsAppNumberKycForm200ResponseFieldsInner.md
 docs/Model/GetWhatsAppNumberRemediation200Response.md
+docs/Model/GetWhatsAppSdkConfig200Response.md
+docs/Model/GetWhatsAppSdkConfig200ResponseBranding.md
 docs/Model/GetWhatsAppTemplate200Response.md
 docs/Model/GetWhatsAppTemplate200ResponseTemplate.md
 docs/Model/GetWhatsAppTemplate409Response.md
@@ -2268,6 +2272,8 @@ lib/Model/ConnectSlackChannelRequest.php
 lib/Model/ConnectWhatsAppCredentials200Response.php
 lib/Model/ConnectWhatsAppCredentials200ResponseAccount.php
 lib/Model/ConnectWhatsAppCredentialsRequest.php
+lib/Model/ConnectWhatsAppEmbeddedSignup200Response.php
+lib/Model/ConnectWhatsAppEmbeddedSignup200ResponseAccount.php
 lib/Model/ConnectWhatsAppEmbeddedSignupRequest.php
 lib/Model/Connected.php
 lib/Model/ConnectedAccount.php
@@ -2904,6 +2910,8 @@ lib/Model/GetWhatsAppNumberInfo200ResponseWaba.php
 lib/Model/GetWhatsAppNumberKycForm200Response.php
 lib/Model/GetWhatsAppNumberKycForm200ResponseFieldsInner.php
 lib/Model/GetWhatsAppNumberRemediation200Response.php
+lib/Model/GetWhatsAppSdkConfig200Response.php
+lib/Model/GetWhatsAppSdkConfig200ResponseBranding.php
 lib/Model/GetWhatsAppTemplate200Response.php
 lib/Model/GetWhatsAppTemplate200ResponseTemplate.php
 lib/Model/GetWhatsAppTemplate409Response.php
@@ -3967,3 +3975,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ConnectWhatsAppEmbeddedSignup200ResponseAccountTest.php
+test/Model/ConnectWhatsAppEmbeddedSignup200ResponseTest.php
+test/Model/GetWhatsAppSdkConfig200ResponseBrandingTest.php
