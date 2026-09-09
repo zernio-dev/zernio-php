@@ -1360,6 +1360,8 @@ docs/Model/ReplyToPhoneNumberReviewerRequest.md
 docs/Model/ReplyToPhoneNumberReviewerRequestAttachmentsInner.md
 docs/Model/RequestSmsSenderIdLimitIncrease200Response.md
 docs/Model/RequestSmsSenderIdLimitIncreaseRequest.md
+docs/Model/RequestWhatsAppVerificationCode200Response.md
+docs/Model/RequestWhatsAppVerificationCodeRequest.md
 docs/Model/ResendSmsRegistrationOtp200Response.md
 docs/Model/ReserveRfPrediction201Response.md
 docs/Model/ReserveRfPredictionRequest.md
@@ -1839,6 +1841,8 @@ docs/Model/VerifyCredential200Response.md
 docs/Model/VerifySmsRegistrationOtp200Response.md
 docs/Model/VerifySmsRegistrationOtpRequest.md
 docs/Model/VerifyWhatsAppCallerIdRequest.md
+docs/Model/VerifyWhatsAppNumber200Response.md
+docs/Model/VerifyWhatsAppNumberRequest.md
 docs/Model/VoteRedditThingRequest.md
 docs/Model/Webhook.md
 docs/Model/WebhookLog.md
@@ -3358,6 +3362,8 @@ lib/Model/ReplyToPhoneNumberReviewerRequest.php
 lib/Model/ReplyToPhoneNumberReviewerRequestAttachmentsInner.php
 lib/Model/RequestSmsSenderIdLimitIncrease200Response.php
 lib/Model/RequestSmsSenderIdLimitIncreaseRequest.php
+lib/Model/RequestWhatsAppVerificationCode200Response.php
+lib/Model/RequestWhatsAppVerificationCodeRequest.php
 lib/Model/ResendSmsRegistrationOtp200Response.php
 lib/Model/ReserveRfPrediction201Response.php
 lib/Model/ReserveRfPredictionRequest.php
@@ -3837,6 +3843,8 @@ lib/Model/VerifyCredential200Response.php
 lib/Model/VerifySmsRegistrationOtp200Response.php
 lib/Model/VerifySmsRegistrationOtpRequest.php
 lib/Model/VerifyWhatsAppCallerIdRequest.php
+lib/Model/VerifyWhatsAppNumber200Response.php
+lib/Model/VerifyWhatsAppNumberRequest.php
 lib/Model/VoteRedditThingRequest.php
 lib/Model/Webhook.php
 lib/Model/WebhookLog.php
@@ -3995,3 +4003,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/VerifyWhatsAppNumber200ResponseTest.php
+test/Model/VerifyWhatsAppNumberRequestTest.php

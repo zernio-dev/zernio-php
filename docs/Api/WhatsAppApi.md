@@ -36,6 +36,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**registerWhatsAppNumber()**](WhatsAppApi.md#registerWhatsAppNumber) | **POST** /v1/accounts/{accountId}/whatsapp/register | Register a connected WhatsApp number on the Cloud API |
 | [**rejectWhatsAppGroupJoinRequests()**](WhatsAppApi.md#rejectWhatsAppGroupJoinRequests) | **DELETE** /v1/whatsapp/wa-groups/{groupId}/join-requests | Reject join requests |
 | [**removeWhatsAppGroupParticipants()**](WhatsAppApi.md#removeWhatsAppGroupParticipants) | **DELETE** /v1/whatsapp/wa-groups/{groupId}/participants | Remove participants |
+| [**requestWhatsAppVerificationCode()**](WhatsAppApi.md#requestWhatsAppVerificationCode) | **POST** /v1/accounts/{accountId}/whatsapp/request-code | Request a Meta re-verification code for a BYO WhatsApp number |
 | [**sendWhatsAppConversion()**](WhatsAppApi.md#sendWhatsAppConversion) | **POST** /v1/whatsapp/conversions | Send WhatsApp conversion event |
 | [**setWhatsappBusinessUsername()**](WhatsAppApi.md#setWhatsappBusinessUsername) | **POST** /v1/whatsapp/business-profile/username | Set business username |
 | [**unblockWhatsAppUsers()**](WhatsAppApi.md#unblockWhatsAppUsers) | **DELETE** /v1/whatsapp/block-users | Unblock users |
@@ -45,6 +46,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**updateWhatsAppTemplate()**](WhatsAppApi.md#updateWhatsAppTemplate) | **PATCH** /v1/whatsapp/templates/{templateName} | Update template |
 | [**updateWhatsAppTemplateById()**](WhatsAppApi.md#updateWhatsAppTemplateById) | **PATCH** /v1/whatsapp/templates/id/{templateId} | Update template by id |
 | [**uploadWhatsAppProfilePhoto()**](WhatsAppApi.md#uploadWhatsAppProfilePhoto) | **POST** /v1/whatsapp/business-profile/photo | Upload profile picture |
+| [**verifyWhatsAppNumber()**](WhatsAppApi.md#verifyWhatsAppNumber) | **POST** /v1/accounts/{accountId}/whatsapp/verify-code | Verify the Meta re-verification code for a BYO WhatsApp number |
 
 
 ## `addWhatsAppGroupParticipants()`
@@ -1907,6 +1909,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `requestWhatsAppVerificationCode()`
+
+```php
+requestWhatsAppVerificationCode($account_id, $request_whats_app_verification_code_request): \Zernio\Model\RequestWhatsAppVerificationCode200Response
+```
+
+Request a Meta re-verification code for a BYO WhatsApp number
+
+For a bring-your-own WhatsApp number (its own WABA, migrated off another BSP) that Meta demoted to re-verification, this requests a new OTP from Meta. The code lands on the customer's own handset, so verifying it is necessarily self-service; call POST /v1/accounts/{accountId}/whatsapp/verify-code with the code once it arrives. Rate-limited to one request per 10 minutes per account, and Meta enforces its own cooldown on top of that.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The WhatsApp account ID
+$request_whats_app_verification_code_request = new \Zernio\Model\RequestWhatsAppVerificationCodeRequest(); // \Zernio\Model\RequestWhatsAppVerificationCodeRequest
+
+try {
+    $result = $apiInstance->requestWhatsAppVerificationCode($account_id, $request_whats_app_verification_code_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->requestWhatsAppVerificationCode: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The WhatsApp account ID | |
+| **request_whats_app_verification_code_request** | [**\Zernio\Model\RequestWhatsAppVerificationCodeRequest**](../Model/RequestWhatsAppVerificationCodeRequest.md)|  | [optional] |
+
+### Return type
+
+[**\Zernio\Model\RequestWhatsAppVerificationCode200Response**](../Model/RequestWhatsAppVerificationCode200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `sendWhatsAppConversion()`
 
 ```php
@@ -2451,6 +2515,68 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `multipart/form-data`, `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `verifyWhatsAppNumber()`
+
+```php
+verifyWhatsAppNumber($account_id, $verify_whats_app_number_request): \Zernio\Model\VerifyWhatsAppNumber200Response
+```
+
+Verify the Meta re-verification code for a BYO WhatsApp number
+
+Submits the OTP Meta sent in response to POST /v1/accounts/{accountId}/whatsapp/request-code. This only verifies the number with Meta; it does not register it on the Cloud API. Call POST /v1/accounts/{accountId}/whatsapp/register afterward to complete activation.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The WhatsApp account ID
+$verify_whats_app_number_request = {"code":"749456"}; // \Zernio\Model\VerifyWhatsAppNumberRequest
+
+try {
+    $result = $apiInstance->verifyWhatsAppNumber($account_id, $verify_whats_app_number_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->verifyWhatsAppNumber: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The WhatsApp account ID | |
+| **verify_whats_app_number_request** | [**\Zernio\Model\VerifyWhatsAppNumberRequest**](../Model/VerifyWhatsAppNumberRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\VerifyWhatsAppNumber200Response**](../Model/VerifyWhatsAppNumber200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

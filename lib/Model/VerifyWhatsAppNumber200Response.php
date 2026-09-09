@@ -1,6 +1,6 @@
 <?php
 /**
- * RegisterWhatsAppNumberRequest
+ * VerifyWhatsAppNumber200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * RegisterWhatsAppNumberRequest Class Doc Comment
+ * VerifyWhatsAppNumber200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RegisterWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class VerifyWhatsAppNumber200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RegisterWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'registerWhatsAppNumber_request';
+    protected static $openAPIModelName = 'verifyWhatsAppNumber_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,9 @@ class RegisterWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'pin' => 'string'
+        'verified' => 'bool',
+        'account_id' => 'string',
+        'phone_number_id' => 'string'
     ];
 
     /**
@@ -69,7 +71,9 @@ class RegisterWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'pin' => null
+        'verified' => null,
+        'account_id' => null,
+        'phone_number_id' => null
     ];
 
     /**
@@ -78,7 +82,9 @@ class RegisterWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'pin' => false
+        'verified' => false,
+        'account_id' => false,
+        'phone_number_id' => false
     ];
 
     /**
@@ -167,7 +173,9 @@ class RegisterWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'pin' => 'pin'
+        'verified' => 'verified',
+        'account_id' => 'accountId',
+        'phone_number_id' => 'phoneNumberId'
     ];
 
     /**
@@ -176,7 +184,9 @@ class RegisterWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'pin' => 'setPin'
+        'verified' => 'setVerified',
+        'account_id' => 'setAccountId',
+        'phone_number_id' => 'setPhoneNumberId'
     ];
 
     /**
@@ -185,7 +195,9 @@ class RegisterWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'pin' => 'getPin'
+        'verified' => 'getVerified',
+        'account_id' => 'getAccountId',
+        'phone_number_id' => 'getPhoneNumberId'
     ];
 
     /**
@@ -245,7 +257,9 @@ class RegisterWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('pin', $data ?? [], null);
+        $this->setIfExists('verified', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('phone_number_id', $data ?? [], null);
     }
 
     /**
@@ -275,10 +289,6 @@ class RegisterWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['pin']) && !preg_match("/^\\d{6}$/", $this->container['pin'])) {
-            $invalidProperties[] = "invalid value for 'pin', must be conform to the pattern /^\\d{6}$/.";
-        }
-
         return $invalidProperties;
     }
 
@@ -295,33 +305,82 @@ class RegisterWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets pin
+     * Gets verified
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getPin()
+    public function getVerified()
     {
-        return $this->container['pin'];
+        return $this->container['verified'];
     }
 
     /**
-     * Sets pin
+     * Sets verified
      *
-     * @param string|null $pin The 6-digit two-step verification PIN set on the number. Omitting it applies Zernio's managed default registration PIN, the same one every Embedded Signup connect sets automatically.
+     * @param bool|null $verified verified
      *
      * @return self
      */
-    public function setPin($pin)
+    public function setVerified($verified)
     {
-        if (is_null($pin)) {
-            throw new \InvalidArgumentException('non-nullable pin cannot be null');
+        if (is_null($verified)) {
+            throw new \InvalidArgumentException('non-nullable verified cannot be null');
         }
+        $this->container['verified'] = $verified;
 
-        if ((!preg_match("/^\\d{6}$/", ObjectSerializer::toString($pin)))) {
-            throw new \InvalidArgumentException("invalid value for \$pin when calling RegisterWhatsAppNumberRequest., must conform to the pattern /^\\d{6}$/.");
+        return $this;
+    }
+
+    /**
+     * Gets account_id
+     *
+     * @return string|null
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id account_id
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
+        $this->container['account_id'] = $account_id;
 
-        $this->container['pin'] = $pin;
+        return $this;
+    }
+
+    /**
+     * Gets phone_number_id
+     *
+     * @return string|null
+     */
+    public function getPhoneNumberId()
+    {
+        return $this->container['phone_number_id'];
+    }
+
+    /**
+     * Sets phone_number_id
+     *
+     * @param string|null $phone_number_id phone_number_id
+     *
+     * @return self
+     */
+    public function setPhoneNumberId($phone_number_id)
+    {
+        if (is_null($phone_number_id)) {
+            throw new \InvalidArgumentException('non-nullable phone_number_id cannot be null');
+        }
+        $this->container['phone_number_id'] = $phone_number_id;
 
         return $this;
     }

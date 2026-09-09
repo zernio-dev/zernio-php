@@ -1,12 +1,10 @@
-# # RequestWhatsAppVerificationCode200Response
+# # VerifyWhatsAppNumber200Response
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**requested** | **bool** |  | [optional]
-**already_active** | **bool** |  | [optional]
-**method** | **string** |  | [optional]
+**verified** | **bool** |  | [optional]
 **account_id** | **string** |  | [optional]
 **phone_number_id** | **string** |  | [optional]
 

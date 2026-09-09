@@ -1,6 +1,6 @@
 <?php
 /**
- * RegisterWhatsAppNumberRequest
+ * VerifyWhatsAppNumberRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * RegisterWhatsAppNumberRequest Class Doc Comment
+ * VerifyWhatsAppNumberRequest Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RegisterWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class VerifyWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RegisterWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'registerWhatsAppNumber_request';
+    protected static $openAPIModelName = 'verifyWhatsAppNumber_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class RegisterWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'pin' => 'string'
+        'code' => 'string'
     ];
 
     /**
@@ -69,7 +69,7 @@ class RegisterWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'pin' => null
+        'code' => null
     ];
 
     /**
@@ -78,7 +78,7 @@ class RegisterWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'pin' => false
+        'code' => false
     ];
 
     /**
@@ -167,7 +167,7 @@ class RegisterWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'pin' => 'pin'
+        'code' => 'code'
     ];
 
     /**
@@ -176,7 +176,7 @@ class RegisterWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'pin' => 'setPin'
+        'code' => 'setCode'
     ];
 
     /**
@@ -185,7 +185,7 @@ class RegisterWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'pin' => 'getPin'
+        'code' => 'getCode'
     ];
 
     /**
@@ -245,7 +245,7 @@ class RegisterWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('pin', $data ?? [], null);
+        $this->setIfExists('code', $data ?? [], null);
     }
 
     /**
@@ -275,10 +275,9 @@ class RegisterWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['pin']) && !preg_match("/^\\d{6}$/", $this->container['pin'])) {
-            $invalidProperties[] = "invalid value for 'pin', must be conform to the pattern /^\\d{6}$/.";
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
         }
-
         return $invalidProperties;
     }
 
@@ -295,33 +294,28 @@ class RegisterWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets pin
+     * Gets code
      *
-     * @return string|null
+     * @return string
      */
-    public function getPin()
+    public function getCode()
     {
-        return $this->container['pin'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets pin
+     * Sets code
      *
-     * @param string|null $pin The 6-digit two-step verification PIN set on the number. Omitting it applies Zernio's managed default registration PIN, the same one every Embedded Signup connect sets automatically.
+     * @param string $code The 6-digit code Meta sent to the phone. Non-digit separators (e.g. \"749-456\") are stripped automatically.
      *
      * @return self
      */
-    public function setPin($pin)
+    public function setCode($code)
     {
-        if (is_null($pin)) {
-            throw new \InvalidArgumentException('non-nullable pin cannot be null');
+        if (is_null($code)) {
+            throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
-
-        if ((!preg_match("/^\\d{6}$/", ObjectSerializer::toString($pin)))) {
-            throw new \InvalidArgumentException("invalid value for \$pin when calling RegisterWhatsAppNumberRequest., must conform to the pattern /^\\d{6}$/.");
-        }
-
-        $this->container['pin'] = $pin;
+        $this->container['code'] = $code;
 
         return $this;
     }

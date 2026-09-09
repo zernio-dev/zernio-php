@@ -671,6 +671,7 @@ Class | Method | HTTP request | Description
 *WhatsAppApi* | [**registerWhatsAppNumber**](docs/Api/WhatsAppApi.md#registerwhatsappnumber) | **POST** /v1/accounts/{accountId}/whatsapp/register | Register a connected WhatsApp number on the Cloud API
 *WhatsAppApi* | [**rejectWhatsAppGroupJoinRequests**](docs/Api/WhatsAppApi.md#rejectwhatsappgroupjoinrequests) | **DELETE** /v1/whatsapp/wa-groups/{groupId}/join-requests | Reject join requests
 *WhatsAppApi* | [**removeWhatsAppGroupParticipants**](docs/Api/WhatsAppApi.md#removewhatsappgroupparticipants) | **DELETE** /v1/whatsapp/wa-groups/{groupId}/participants | Remove participants
+*WhatsAppApi* | [**requestWhatsAppVerificationCode**](docs/Api/WhatsAppApi.md#requestwhatsappverificationcode) | **POST** /v1/accounts/{accountId}/whatsapp/request-code | Request a Meta re-verification code for a BYO WhatsApp number
 *WhatsAppApi* | [**sendWhatsAppConversion**](docs/Api/WhatsAppApi.md#sendwhatsappconversion) | **POST** /v1/whatsapp/conversions | Send WhatsApp conversion event
 *WhatsAppApi* | [**setWhatsappBusinessUsername**](docs/Api/WhatsAppApi.md#setwhatsappbusinessusername) | **POST** /v1/whatsapp/business-profile/username | Set business username
 *WhatsAppApi* | [**unblockWhatsAppUsers**](docs/Api/WhatsAppApi.md#unblockwhatsappusers) | **DELETE** /v1/whatsapp/block-users | Unblock users
@@ -680,6 +681,7 @@ Class | Method | HTTP request | Description
 *WhatsAppApi* | [**updateWhatsAppTemplate**](docs/Api/WhatsAppApi.md#updatewhatsapptemplate) | **PATCH** /v1/whatsapp/templates/{templateName} | Update template
 *WhatsAppApi* | [**updateWhatsAppTemplateById**](docs/Api/WhatsAppApi.md#updatewhatsapptemplatebyid) | **PATCH** /v1/whatsapp/templates/id/{templateId} | Update template by id
 *WhatsAppApi* | [**uploadWhatsAppProfilePhoto**](docs/Api/WhatsAppApi.md#uploadwhatsappprofilephoto) | **POST** /v1/whatsapp/business-profile/photo | Upload profile picture
+*WhatsAppApi* | [**verifyWhatsAppNumber**](docs/Api/WhatsAppApi.md#verifywhatsappnumber) | **POST** /v1/accounts/{accountId}/whatsapp/verify-code | Verify the Meta re-verification code for a BYO WhatsApp number
 *WhatsAppCallingApi* | [**disableWhatsAppCalling**](docs/Api/WhatsAppCallingApi.md#disablewhatsappcalling) | **DELETE** /v1/phone-numbers/{id}/whatsapp/calling | Disable calling on a number
 *WhatsAppCallingApi* | [**disableWhatsAppCallingLegacy**](docs/Api/WhatsAppCallingApi.md#disablewhatsappcallinglegacy) | **DELETE** /v1/whatsapp/phone-numbers/{id}/calling | Disable calling on a number
 *WhatsAppCallingApi* | [**enableWhatsAppCalling**](docs/Api/WhatsAppCallingApi.md#enablewhatsappcalling) | **POST** /v1/phone-numbers/{id}/whatsapp/calling | Enable calling on a number
@@ -2037,6 +2039,8 @@ Class | Method | HTTP request | Description
 - [ReplyToPhoneNumberReviewerRequestAttachmentsInner](docs/Model/ReplyToPhoneNumberReviewerRequestAttachmentsInner.md)
 - [RequestSmsSenderIdLimitIncrease200Response](docs/Model/RequestSmsSenderIdLimitIncrease200Response.md)
 - [RequestSmsSenderIdLimitIncreaseRequest](docs/Model/RequestSmsSenderIdLimitIncreaseRequest.md)
+- [RequestWhatsAppVerificationCode200Response](docs/Model/RequestWhatsAppVerificationCode200Response.md)
+- [RequestWhatsAppVerificationCodeRequest](docs/Model/RequestWhatsAppVerificationCodeRequest.md)
 - [ResendSmsRegistrationOtp200Response](docs/Model/ResendSmsRegistrationOtp200Response.md)
 - [ReserveRfPrediction201Response](docs/Model/ReserveRfPrediction201Response.md)
 - [ReserveRfPredictionRequest](docs/Model/ReserveRfPredictionRequest.md)
@@ -2516,6 +2520,8 @@ Class | Method | HTTP request | Description
 - [VerifySmsRegistrationOtp200Response](docs/Model/VerifySmsRegistrationOtp200Response.md)
 - [VerifySmsRegistrationOtpRequest](docs/Model/VerifySmsRegistrationOtpRequest.md)
 - [VerifyWhatsAppCallerIdRequest](docs/Model/VerifyWhatsAppCallerIdRequest.md)
+- [VerifyWhatsAppNumber200Response](docs/Model/VerifyWhatsAppNumber200Response.md)
+- [VerifyWhatsAppNumberRequest](docs/Model/VerifyWhatsAppNumberRequest.md)
 - [VoteRedditThingRequest](docs/Model/VoteRedditThingRequest.md)
 - [Webhook](docs/Model/Webhook.md)
 - [WebhookLog](docs/Model/WebhookLog.md)

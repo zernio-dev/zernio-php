@@ -672,7 +672,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets post_id
      *
-     * @param string|null $post_id Zernio post ID. Required only when also targeting a specific post via platformPostId.
+     * @param string|null $post_id Zernio post ID. Optional and never required. Use it INSTEAD of platformPostId to bind a per-post automation to a not-yet-published Zernio post: the automation stays pending and arms itself when that post publishes. For a post already live on the platform, pass platformPostId alone and omit this.
      *
      * @return self
      */
