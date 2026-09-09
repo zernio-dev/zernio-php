@@ -420,7 +420,7 @@ class MessagingAdsApi
     /**
      * Operation createCtwaAd
      *
-     * Create Click-to-WhatsApp ad (deprecated)
+     * Create CTWA ad (deprecated)
      *
      * @param  \Zernio\Model\CtwaAdRequestBody $ctwa_ad_request_body ctwa_ad_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
@@ -439,7 +439,7 @@ class MessagingAdsApi
     /**
      * Operation createCtwaAdWithHttpInfo
      *
-     * Create Click-to-WhatsApp ad (deprecated)
+     * Create CTWA ad (deprecated)
      *
      * @param  \Zernio\Model\CtwaAdRequestBody $ctwa_ad_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
@@ -539,7 +539,7 @@ class MessagingAdsApi
     /**
      * Operation createCtwaAdAsync
      *
-     * Create Click-to-WhatsApp ad (deprecated)
+     * Create CTWA ad (deprecated)
      *
      * @param  \Zernio\Model\CtwaAdRequestBody $ctwa_ad_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
@@ -561,7 +561,7 @@ class MessagingAdsApi
     /**
      * Operation createCtwaAdAsyncWithHttpInfo
      *
-     * Create Click-to-WhatsApp ad (deprecated)
+     * Create CTWA ad (deprecated)
      *
      * @param  \Zernio\Model\CtwaAdRequestBody $ctwa_ad_request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
@@ -710,7 +710,7 @@ class MessagingAdsApi
     /**
      * Operation createMessagingAd
      *
-     * Create click-to-message ad (WhatsApp / Messenger / Instagram Direct)
+     * Create messaging ad
      *
      * @param  \Zernio\Model\CreateMessagingAdRequest $create_messaging_ad_request create_messaging_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createMessagingAd'] to see the possible values for this operation
@@ -728,7 +728,7 @@ class MessagingAdsApi
     /**
      * Operation createMessagingAdWithHttpInfo
      *
-     * Create click-to-message ad (WhatsApp / Messenger / Instagram Direct)
+     * Create messaging ad
      *
      * @param  \Zernio\Model\CreateMessagingAdRequest $create_messaging_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createMessagingAd'] to see the possible values for this operation
@@ -827,7 +827,7 @@ class MessagingAdsApi
     /**
      * Operation createMessagingAdAsync
      *
-     * Create click-to-message ad (WhatsApp / Messenger / Instagram Direct)
+     * Create messaging ad
      *
      * @param  \Zernio\Model\CreateMessagingAdRequest $create_messaging_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createMessagingAd'] to see the possible values for this operation
@@ -848,7 +848,7 @@ class MessagingAdsApi
     /**
      * Operation createMessagingAdAsyncWithHttpInfo
      *
-     * Create click-to-message ad (WhatsApp / Messenger / Instagram Direct)
+     * Create messaging ad
      *
      * @param  \Zernio\Model\CreateMessagingAdRequest $create_messaging_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createMessagingAd'] to see the possible values for this operation

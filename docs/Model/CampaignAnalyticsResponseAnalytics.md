@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**summary** | [**\Zernio\Model\AdMetrics**](AdMetrics.md) |  | [optional]
+**summary** | [**\Zernio\Model\CampaignAnalyticsResponseAnalyticsSummary**](CampaignAnalyticsResponseAnalyticsSummary.md) |  | [optional]
+**impression_share_cache** | [**\Zernio\Model\CampaignAnalyticsResponseAnalyticsImpressionShareCache**](CampaignAnalyticsResponseAnalyticsImpressionShareCache.md) |  | [optional]
 **daily** | [**\Zernio\Model\CampaignAnalyticsResponseAnalyticsDailyInner[]**](CampaignAnalyticsResponseAnalyticsDailyInner.md) |  | [optional]
 **breakdowns** | **array<string,object[]>** |  | [optional]
 

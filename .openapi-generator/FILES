@@ -80,10 +80,10 @@ docs/Model/ActivateWorkflow200ResponseWorkflow.md
 docs/Model/Ad.md
 docs/Model/AdAnalyticsResponse.md
 docs/Model/AdAnalyticsResponseAd.md
+docs/Model/AdAnalyticsResponseAnalytics.md
 docs/Model/AdBudget.md
 docs/Model/AdCampaign.md
 docs/Model/AdCampaignBudget.md
-docs/Model/AdCampaignCampaignBudget.md
 docs/Model/AdCreative.md
 docs/Model/AdDailyMetrics.md
 docs/Model/AdEngagementCounts.md
@@ -91,6 +91,8 @@ docs/Model/AdFunnelCounts.md
 docs/Model/AdKeyword.md
 docs/Model/AdKeywordMetrics.md
 docs/Model/AdMetrics.md
+docs/Model/AdNegativeKeywordList.md
+docs/Model/AdNegativeKeywordListKeyword.md
 docs/Model/AdPromotedObject.md
 docs/Model/AdReviewStatus.md
 docs/Model/AdSchedule.md
@@ -242,6 +244,8 @@ docs/Model/CallRecordTranscriptInner.md
 docs/Model/CampaignAnalyticsResponse.md
 docs/Model/CampaignAnalyticsResponseAnalytics.md
 docs/Model/CampaignAnalyticsResponseAnalyticsDailyInner.md
+docs/Model/CampaignAnalyticsResponseAnalyticsImpressionShareCache.md
+docs/Model/CampaignAnalyticsResponseAnalyticsSummary.md
 docs/Model/CampaignAnalyticsResponseCampaign.md
 docs/Model/CampaignBidding.md
 docs/Model/CampaignBiddingBidSpec.md
@@ -312,6 +316,8 @@ docs/Model/CreateAdInsightsReport202Response.md
 docs/Model/CreateAdInsightsReportRequest.md
 docs/Model/CreateAdInsightsReportRequestFilteringInner.md
 docs/Model/CreateAdInsightsReportRequestTimeIncrement.md
+docs/Model/CreateAdNegativeKeywordList201Response.md
+docs/Model/CreateAdNegativeKeywordListRequest.md
 docs/Model/CreateAdSet201Response.md
 docs/Model/CreateAdSetRequest.md
 docs/Model/CreateApiKey201Response.md
@@ -500,6 +506,7 @@ docs/Model/DeleteAccountGroup200Response.md
 docs/Model/DeleteAdCampaign200Response.md
 docs/Model/DeleteAdCampaignRequest.md
 docs/Model/DeleteAdCreative200Response.md
+docs/Model/DeleteAdNegativeKeywordList200Response.md
 docs/Model/DeleteAdSet200Response.md
 docs/Model/DeleteAdVideo200Response.md
 docs/Model/DeleteDiscordScheduledEvent200Response.md
@@ -625,6 +632,8 @@ docs/Model/GetAdInsightsReport200Response.md
 docs/Model/GetAdInsightsReport200ResponsePaging.md
 docs/Model/GetAdMedia200Response.md
 docs/Model/GetAdMedia200ResponseMediaInner.md
+docs/Model/GetAdNegativeKeywordList200Response.md
+docs/Model/GetAdNegativeKeywordList200ResponseList.md
 docs/Model/GetAdPreviews200Response.md
 docs/Model/GetAdSetDetails200Response.md
 docs/Model/GetAdTrackingTags200Response.md
@@ -1047,6 +1056,7 @@ docs/Model/ListAdCreatives200Response.md
 docs/Model/ListAdImages200Response.md
 docs/Model/ListAdKeywords200Response.md
 docs/Model/ListAdLabels200Response.md
+docs/Model/ListAdNegativeKeywordLists200Response.md
 docs/Model/ListAdSets200Response.md
 docs/Model/ListAdSets200ResponseAdSetsInner.md
 docs/Model/ListAdStudies200Response.md
@@ -1344,6 +1354,9 @@ docs/Model/RemoveWhatsAppGroupParticipantsRequest.md
 docs/Model/ReplaceAdAudienceCompanies200Response.md
 docs/Model/ReplaceAdAudienceCompaniesRequest.md
 docs/Model/ReplaceAdAudienceCompaniesRequestCompaniesInner.md
+docs/Model/ReplaceAdNegativeKeywordListKeywords200Response.md
+docs/Model/ReplaceAdNegativeKeywordListKeywordsRequest.md
+docs/Model/ReplaceCampaignNegativeKeywordListsRequest.md
 docs/Model/ReplaceCampaignNegativeKeywords200Response.md
 docs/Model/ReplaceCampaignNegativeKeywordsRequest.md
 docs/Model/ReplyToGoogleBusinessReview200Response.md
@@ -1621,6 +1634,8 @@ docs/Model/UpdateAdCreative200Response.md
 docs/Model/UpdateAdCreativeRequest.md
 docs/Model/UpdateAdKeyword200Response.md
 docs/Model/UpdateAdKeywordRequest.md
+docs/Model/UpdateAdNegativeKeywordList200Response.md
+docs/Model/UpdateAdNegativeKeywordListRequest.md
 docs/Model/UpdateAdRequest.md
 docs/Model/UpdateAdRequestBudget.md
 docs/Model/UpdateAdRequestCreative.md
@@ -2080,10 +2095,10 @@ lib/Model/ActivateWorkflow200ResponseWorkflow.php
 lib/Model/Ad.php
 lib/Model/AdAnalyticsResponse.php
 lib/Model/AdAnalyticsResponseAd.php
+lib/Model/AdAnalyticsResponseAnalytics.php
 lib/Model/AdBudget.php
 lib/Model/AdCampaign.php
 lib/Model/AdCampaignBudget.php
-lib/Model/AdCampaignCampaignBudget.php
 lib/Model/AdCreative.php
 lib/Model/AdDailyMetrics.php
 lib/Model/AdEngagementCounts.php
@@ -2091,6 +2106,8 @@ lib/Model/AdFunnelCounts.php
 lib/Model/AdKeyword.php
 lib/Model/AdKeywordMetrics.php
 lib/Model/AdMetrics.php
+lib/Model/AdNegativeKeywordList.php
+lib/Model/AdNegativeKeywordListKeyword.php
 lib/Model/AdPromotedObject.php
 lib/Model/AdReviewStatus.php
 lib/Model/AdSchedule.php
@@ -2242,6 +2259,8 @@ lib/Model/CallRecordTranscriptInner.php
 lib/Model/CampaignAnalyticsResponse.php
 lib/Model/CampaignAnalyticsResponseAnalytics.php
 lib/Model/CampaignAnalyticsResponseAnalyticsDailyInner.php
+lib/Model/CampaignAnalyticsResponseAnalyticsImpressionShareCache.php
+lib/Model/CampaignAnalyticsResponseAnalyticsSummary.php
 lib/Model/CampaignAnalyticsResponseCampaign.php
 lib/Model/CampaignBidding.php
 lib/Model/CampaignBiddingBidSpec.php
@@ -2312,6 +2331,8 @@ lib/Model/CreateAdInsightsReport202Response.php
 lib/Model/CreateAdInsightsReportRequest.php
 lib/Model/CreateAdInsightsReportRequestFilteringInner.php
 lib/Model/CreateAdInsightsReportRequestTimeIncrement.php
+lib/Model/CreateAdNegativeKeywordList201Response.php
+lib/Model/CreateAdNegativeKeywordListRequest.php
 lib/Model/CreateAdSet201Response.php
 lib/Model/CreateAdSetRequest.php
 lib/Model/CreateApiKey201Response.php
@@ -2500,6 +2521,7 @@ lib/Model/DeleteAccountGroup200Response.php
 lib/Model/DeleteAdCampaign200Response.php
 lib/Model/DeleteAdCampaignRequest.php
 lib/Model/DeleteAdCreative200Response.php
+lib/Model/DeleteAdNegativeKeywordList200Response.php
 lib/Model/DeleteAdSet200Response.php
 lib/Model/DeleteAdVideo200Response.php
 lib/Model/DeleteDiscordScheduledEvent200Response.php
@@ -2625,6 +2647,8 @@ lib/Model/GetAdInsightsReport200Response.php
 lib/Model/GetAdInsightsReport200ResponsePaging.php
 lib/Model/GetAdMedia200Response.php
 lib/Model/GetAdMedia200ResponseMediaInner.php
+lib/Model/GetAdNegativeKeywordList200Response.php
+lib/Model/GetAdNegativeKeywordList200ResponseList.php
 lib/Model/GetAdPreviews200Response.php
 lib/Model/GetAdSetDetails200Response.php
 lib/Model/GetAdTrackingTags200Response.php
@@ -3047,6 +3071,7 @@ lib/Model/ListAdCreatives200Response.php
 lib/Model/ListAdImages200Response.php
 lib/Model/ListAdKeywords200Response.php
 lib/Model/ListAdLabels200Response.php
+lib/Model/ListAdNegativeKeywordLists200Response.php
 lib/Model/ListAdSets200Response.php
 lib/Model/ListAdSets200ResponseAdSetsInner.php
 lib/Model/ListAdStudies200Response.php
@@ -3345,6 +3370,9 @@ lib/Model/RemoveWhatsAppGroupParticipantsRequest.php
 lib/Model/ReplaceAdAudienceCompanies200Response.php
 lib/Model/ReplaceAdAudienceCompaniesRequest.php
 lib/Model/ReplaceAdAudienceCompaniesRequestCompaniesInner.php
+lib/Model/ReplaceAdNegativeKeywordListKeywords200Response.php
+lib/Model/ReplaceAdNegativeKeywordListKeywordsRequest.php
+lib/Model/ReplaceCampaignNegativeKeywordListsRequest.php
 lib/Model/ReplaceCampaignNegativeKeywords200Response.php
 lib/Model/ReplaceCampaignNegativeKeywordsRequest.php
 lib/Model/ReplyToGoogleBusinessReview200Response.php
@@ -3622,6 +3650,8 @@ lib/Model/UpdateAdCreative200Response.php
 lib/Model/UpdateAdCreativeRequest.php
 lib/Model/UpdateAdKeyword200Response.php
 lib/Model/UpdateAdKeywordRequest.php
+lib/Model/UpdateAdNegativeKeywordList200Response.php
+lib/Model/UpdateAdNegativeKeywordListRequest.php
 lib/Model/UpdateAdRequest.php
 lib/Model/UpdateAdRequestBudget.php
 lib/Model/UpdateAdRequestCreative.php
@@ -4001,3 +4031,19 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AdAnalyticsResponseAnalyticsTest.php
+test/Model/AdNegativeKeywordListKeywordTest.php
+test/Model/AdNegativeKeywordListTest.php
+test/Model/CampaignAnalyticsResponseAnalyticsImpressionShareCacheTest.php
+test/Model/CampaignAnalyticsResponseAnalyticsSummaryTest.php
+test/Model/CreateAdNegativeKeywordList201ResponseTest.php
+test/Model/CreateAdNegativeKeywordListRequestTest.php
+test/Model/DeleteAdNegativeKeywordList200ResponseTest.php
+test/Model/GetAdNegativeKeywordList200ResponseListTest.php
+test/Model/GetAdNegativeKeywordList200ResponseTest.php
+test/Model/ListAdNegativeKeywordLists200ResponseTest.php
+test/Model/ReplaceAdNegativeKeywordListKeywords200ResponseTest.php
+test/Model/ReplaceAdNegativeKeywordListKeywordsRequestTest.php
+test/Model/ReplaceCampaignNegativeKeywordListsRequestTest.php
+test/Model/UpdateAdNegativeKeywordList200ResponseTest.php
+test/Model/UpdateAdNegativeKeywordListRequestTest.php

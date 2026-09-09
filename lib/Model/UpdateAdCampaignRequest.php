@@ -64,6 +64,7 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'bid_amount' => 'float',
         'roas_average_floor' => 'float',
         'portfolio_bid_strategy_id' => 'string',
+        'allow_shared_budget_update' => 'bool',
         'budget' => '\Zernio\Model\UpdateAdCampaignRequestBudget',
         'name' => 'string',
         'platform_specific_data' => '\Zernio\Model\UpdateAdCampaignRequestPlatformSpecificData'
@@ -83,6 +84,7 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'bid_amount' => null,
         'roas_average_floor' => null,
         'portfolio_bid_strategy_id' => null,
+        'allow_shared_budget_update' => null,
         'budget' => null,
         'name' => null,
         'platform_specific_data' => null
@@ -100,6 +102,7 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'bid_amount' => false,
         'roas_average_floor' => false,
         'portfolio_bid_strategy_id' => false,
+        'allow_shared_budget_update' => false,
         'budget' => false,
         'name' => false,
         'platform_specific_data' => false
@@ -197,6 +200,7 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'bid_amount' => 'bidAmount',
         'roas_average_floor' => 'roasAverageFloor',
         'portfolio_bid_strategy_id' => 'portfolioBidStrategyId',
+        'allow_shared_budget_update' => 'allowSharedBudgetUpdate',
         'budget' => 'budget',
         'name' => 'name',
         'platform_specific_data' => 'platformSpecificData'
@@ -214,6 +218,7 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'bid_amount' => 'setBidAmount',
         'roas_average_floor' => 'setRoasAverageFloor',
         'portfolio_bid_strategy_id' => 'setPortfolioBidStrategyId',
+        'allow_shared_budget_update' => 'setAllowSharedBudgetUpdate',
         'budget' => 'setBudget',
         'name' => 'setName',
         'platform_specific_data' => 'setPlatformSpecificData'
@@ -231,6 +236,7 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'bid_amount' => 'getBidAmount',
         'roas_average_floor' => 'getRoasAverageFloor',
         'portfolio_bid_strategy_id' => 'getPortfolioBidStrategyId',
+        'allow_shared_budget_update' => 'getAllowSharedBudgetUpdate',
         'budget' => 'getBudget',
         'name' => 'getName',
         'platform_specific_data' => 'getPlatformSpecificData'
@@ -316,6 +322,7 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('bid_amount', $data ?? [], null);
         $this->setIfExists('roas_average_floor', $data ?? [], null);
         $this->setIfExists('portfolio_bid_strategy_id', $data ?? [], null);
+        $this->setIfExists('allow_shared_budget_update', $data ?? [], false);
         $this->setIfExists('budget', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('platform_specific_data', $data ?? [], null);
@@ -556,6 +563,33 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         }
 
         $this->container['portfolio_bid_strategy_id'] = $portfolio_bid_strategy_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_shared_budget_update
+     *
+     * @return bool|null
+     */
+    public function getAllowSharedBudgetUpdate()
+    {
+        return $this->container['allow_shared_budget_update'];
+    }
+
+    /**
+     * Sets allow_shared_budget_update
+     *
+     * @param bool|null $allow_shared_budget_update Google only. Explicitly allow changing a shared campaign budget, affecting every campaign that uses it. Does not bypass an unknown sharing state.
+     *
+     * @return self
+     */
+    public function setAllowSharedBudgetUpdate($allow_shared_budget_update)
+    {
+        if (is_null($allow_shared_budget_update)) {
+            throw new \InvalidArgumentException('non-nullable allow_shared_budget_update cannot be null');
+        }
+        $this->container['allow_shared_budget_update'] = $allow_shared_budget_update;
 
         return $this;
     }

@@ -7,12 +7,15 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**addAccountCallouts()**](AdAccountsApi.md#addAccountCallouts) | **POST** /v1/ads/accounts/callouts | Add account-level callout extensions |
+| [**createAdNegativeKeywordList()**](AdAccountsApi.md#createAdNegativeKeywordList) | **POST** /v1/ads/accounts/negative-keyword-lists | Create a negative keyword list |
 | [**createCustomConversion()**](AdAccountsApi.md#createCustomConversion) | **POST** /v1/accounts/{accountId}/custom-conversions | Create or reuse a custom conversion |
 | [**createHighDemandPeriod()**](AdAccountsApi.md#createHighDemandPeriod) | **POST** /v1/ads/high-demand-periods | Schedule a budget increase |
 | [**createValueRuleSet()**](AdAccountsApi.md#createValueRuleSet) | **POST** /v1/ads/value-rule-sets | Create a value rule set |
+| [**deleteAdNegativeKeywordList()**](AdAccountsApi.md#deleteAdNegativeKeywordList) | **DELETE** /v1/ads/accounts/negative-keyword-lists/{listId} | Delete a negative keyword list |
 | [**deleteValueRuleSet()**](AdAccountsApi.md#deleteValueRuleSet) | **DELETE** /v1/ads/value-rule-sets/{valueRuleSetId} | Delete a value rule set |
 | [**getAdAccountFinance()**](AdAccountsApi.md#getAdAccountFinance) | **GET** /v1/ads/accounts/finance | Ad account finances |
 | [**getAdComments()**](AdAccountsApi.md#getAdComments) | **GET** /v1/ads/{adId}/comments | List comments on an ad |
+| [**getAdNegativeKeywordList()**](AdAccountsApi.md#getAdNegativeKeywordList) | **GET** /v1/ads/accounts/negative-keyword-lists/{listId} | Get a negative keyword list |
 | [**getAdsActivityLog()**](AdAccountsApi.md#getAdsActivityLog) | **GET** /v1/ads/activity | Ad account change / audit log |
 | [**getDsaDefaults()**](AdAccountsApi.md#getDsaDefaults) | **GET** /v1/ads/dsa-defaults | Get ad account DSA defaults |
 | [**getDsaRecommendations()**](AdAccountsApi.md#getDsaRecommendations) | **GET** /v1/ads/dsa-recommendations | List DSA beneficiary/payor suggestions |
@@ -20,6 +23,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listAccountCallouts()**](AdAccountsApi.md#listAccountCallouts) | **GET** /v1/ads/accounts/callouts | List account-level callout extensions |
 | [**listAdAccounts()**](AdAccountsApi.md#listAdAccounts) | **GET** /v1/ads/accounts | List ad accounts |
 | [**listAdLabels()**](AdAccountsApi.md#listAdLabels) | **GET** /v1/ads/labels | Ad labels |
+| [**listAdNegativeKeywordLists()**](AdAccountsApi.md#listAdNegativeKeywordLists) | **GET** /v1/ads/accounts/negative-keyword-lists | List negative keyword lists |
 | [**listAdStudies()**](AdAccountsApi.md#listAdStudies) | **GET** /v1/ads/studies | A/B tests and lift studies |
 | [**listAdsBusinessCenters()**](AdAccountsApi.md#listAdsBusinessCenters) | **GET** /v1/ads/business-centers | List TikTok Business Centers |
 | [**listCustomConversions()**](AdAccountsApi.md#listCustomConversions) | **GET** /v1/accounts/{accountId}/custom-conversions | List custom conversions |
@@ -27,7 +31,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listMetaBusinesses()**](AdAccountsApi.md#listMetaBusinesses) | **GET** /v1/ads/businesses | Businesses list |
 | [**listValueRuleSets()**](AdAccountsApi.md#listValueRuleSets) | **GET** /v1/ads/value-rule-sets | List value rule sets |
 | [**removeAccountCallout()**](AdAccountsApi.md#removeAccountCallout) | **DELETE** /v1/ads/accounts/callouts | Remove an account-level callout extension |
+| [**replaceAdNegativeKeywordListKeywords()**](AdAccountsApi.md#replaceAdNegativeKeywordListKeywords) | **PUT** /v1/ads/accounts/negative-keyword-lists/{listId}/keywords | Replace negative list keywords |
 | [**updateAdAccount()**](AdAccountsApi.md#updateAdAccount) | **PATCH** /v1/ads/accounts | Update ad account settings |
+| [**updateAdNegativeKeywordList()**](AdAccountsApi.md#updateAdNegativeKeywordList) | **PUT** /v1/ads/accounts/negative-keyword-lists/{listId} | Rename a negative keyword list |
 | [**updateValueRuleSet()**](AdAccountsApi.md#updateValueRuleSet) | **PUT** /v1/ads/value-rule-sets/{valueRuleSetId} | Replace a value rule set |
 
 
@@ -77,6 +83,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\AddAccountCallouts201Response**](../Model/AddAccountCallouts201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createAdNegativeKeywordList()`
+
+```php
+createAdNegativeKeywordList($create_ad_negative_keyword_list_request): \Zernio\Model\CreateAdNegativeKeywordList201Response
+```
+
+Create a negative keyword list
+
+Creates one Google Ads shared negative keyword list with optional initial keywords in a single atomic mutation. Daily quota is reserved for every mutate item, so large batches may return 429 before any change. This operation is not idempotent. The list is not attached to any campaign.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_ad_negative_keyword_list_request = {"accountId":"69ce75d483e990e1c01ccfe4","customerId":"9122445560","name":"Excluded searches","keywords":["free",{"text":"jobs","matchType":"phrase"}]}; // \Zernio\Model\CreateAdNegativeKeywordListRequest
+
+try {
+    $result = $apiInstance->createAdNegativeKeywordList($create_ad_negative_keyword_list_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->createAdNegativeKeywordList: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_ad_negative_keyword_list_request** | [**\Zernio\Model\CreateAdNegativeKeywordListRequest**](../Model/CreateAdNegativeKeywordListRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateAdNegativeKeywordList201Response**](../Model/CreateAdNegativeKeywordList201Response.md)
 
 ### Authorization
 
@@ -273,6 +339,72 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `deleteAdNegativeKeywordList()`
+
+```php
+deleteAdNegativeKeywordList($list_id, $account_id, $customer_id, $platform): \Zernio\Model\DeleteAdNegativeKeywordList200Response
+```
+
+Delete a negative keyword list
+
+Removes the Google shared negative keyword list. Detach it from all campaigns first; an in-use list is rejected. Only NEGATIVE_KEYWORDS shared sets are supported.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$list_id = 'list_id_example'; // string
+$account_id = 'account_id_example'; // string
+$customer_id = 'customer_id_example'; // string
+$platform = 'platform_example'; // string
+
+try {
+    $result = $apiInstance->deleteAdNegativeKeywordList($list_id, $account_id, $customer_id, $platform);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->deleteAdNegativeKeywordList: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **list_id** | **string**|  | |
+| **account_id** | **string**|  | |
+| **customer_id** | **string**|  | [optional] |
+| **platform** | **string**|  | [optional] |
+
+### Return type
+
+[**\Zernio\Model\DeleteAdNegativeKeywordList200Response**](../Model/DeleteAdNegativeKeywordList200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteValueRuleSet()`
 
 ```php
@@ -449,6 +581,72 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetAdComments200Response**](../Model/GetAdComments200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getAdNegativeKeywordList()`
+
+```php
+getAdNegativeKeywordList($list_id, $account_id, $customer_id, $platform): \Zernio\Model\GetAdNegativeKeywordList200Response
+```
+
+Get a negative keyword list
+
+Google Ads shared negative keyword lists (shared_set type NEGATIVE_KEYWORDS). Reads are cached for 10 minutes; quota exhaustion may return the last successful result for up to 7 days with stale=true. Customer selection is limited to this connection and its account scope. Includes the keywords and their criterion ids.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$list_id = 'list_id_example'; // string
+$account_id = 'account_id_example'; // string
+$customer_id = 'customer_id_example'; // string
+$platform = 'platform_example'; // string
+
+try {
+    $result = $apiInstance->getAdNegativeKeywordList($list_id, $account_id, $customer_id, $platform);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->getAdNegativeKeywordList: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **list_id** | **string**|  | |
+| **account_id** | **string**|  | |
+| **customer_id** | **string**|  | [optional] |
+| **platform** | **string**|  | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetAdNegativeKeywordList200Response**](../Model/GetAdNegativeKeywordList200Response.md)
 
 ### Authorization
 
@@ -913,6 +1111,70 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listAdNegativeKeywordLists()`
+
+```php
+listAdNegativeKeywordLists($account_id, $customer_id, $platform): \Zernio\Model\ListAdNegativeKeywordLists200Response
+```
+
+List negative keyword lists
+
+Google Ads shared negative keyword lists (shared_set type NEGATIVE_KEYWORDS). Reads are cached for 10 minutes; quota exhaustion may return the last successful result for up to 7 days with stale=true. Customer selection is limited to this connection and its account scope.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$customer_id = 'customer_id_example'; // string
+$platform = 'platform_example'; // string
+
+try {
+    $result = $apiInstance->listAdNegativeKeywordLists($account_id, $customer_id, $platform);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->listAdNegativeKeywordLists: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **customer_id** | **string**|  | [optional] |
+| **platform** | **string**|  | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListAdNegativeKeywordLists200Response**](../Model/ListAdNegativeKeywordLists200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listAdStudies()`
 
 ```php
@@ -1361,6 +1623,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `replaceAdNegativeKeywordListKeywords()`
+
+```php
+replaceAdNegativeKeywordListKeywords($list_id, $replace_ad_negative_keyword_list_keywords_request): \Zernio\Model\ReplaceAdNegativeKeywordListKeywords200Response
+```
+
+Replace negative list keywords
+
+Replaces the full desired keyword set. Existing keywords are diffed by normalized text and match type; creates and removals are applied atomically in one mutation. Unchanged criteria retain their ids. Send an empty keywords array to clear the list. Changes affect every campaign using this list. Each create or removal consumes one daily operation; the entire batch must fit the remaining quota.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$list_id = 'list_id_example'; // string
+$replace_ad_negative_keyword_list_keywords_request = {"accountId":"69ce75d483e990e1c01ccfe4","customerId":"9122445560","keywords":["free",{"text":"jobs","matchType":"phrase"}]}; // \Zernio\Model\ReplaceAdNegativeKeywordListKeywordsRequest
+
+try {
+    $result = $apiInstance->replaceAdNegativeKeywordListKeywords($list_id, $replace_ad_negative_keyword_list_keywords_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->replaceAdNegativeKeywordListKeywords: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **list_id** | **string**|  | |
+| **replace_ad_negative_keyword_list_keywords_request** | [**\Zernio\Model\ReplaceAdNegativeKeywordListKeywordsRequest**](../Model/ReplaceAdNegativeKeywordListKeywordsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ReplaceAdNegativeKeywordListKeywords200Response**](../Model/ReplaceAdNegativeKeywordListKeywords200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `updateAdAccount()`
 
 ```php
@@ -1407,6 +1731,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\UpdateAdAccount200Response**](../Model/UpdateAdAccount200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateAdNegativeKeywordList()`
+
+```php
+updateAdNegativeKeywordList($list_id, $update_ad_negative_keyword_list_request): \Zernio\Model\UpdateAdNegativeKeywordList200Response
+```
+
+Rename a negative keyword list
+
+Renames a shared negative keyword list. Keywords and campaign associations are unchanged. Use the keywords endpoint to edit the desired keyword set.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$list_id = 'list_id_example'; // string
+$update_ad_negative_keyword_list_request = {"accountId":"69ce75d483e990e1c01ccfe4","customerId":"9122445560","name":"Excluded searches renamed"}; // \Zernio\Model\UpdateAdNegativeKeywordListRequest
+
+try {
+    $result = $apiInstance->updateAdNegativeKeywordList($list_id, $update_ad_negative_keyword_list_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->updateAdNegativeKeywordList: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **list_id** | **string**|  | |
+| **update_ad_negative_keyword_list_request** | [**\Zernio\Model\UpdateAdNegativeKeywordListRequest**](../Model/UpdateAdNegativeKeywordListRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateAdNegativeKeywordList200Response**](../Model/UpdateAdNegativeKeywordList200Response.md)
 
 ### Authorization
 

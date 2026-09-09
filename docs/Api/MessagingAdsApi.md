@@ -7,8 +7,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**createCallAd()**](MessagingAdsApi.md#createCallAd) | **POST** /v1/ads/call | Create Click-to-Call ad |
-| [**createCtwaAd()**](MessagingAdsApi.md#createCtwaAd) | **POST** /v1/ads/ctwa | Create Click-to-WhatsApp ad (deprecated) |
-| [**createMessagingAd()**](MessagingAdsApi.md#createMessagingAd) | **POST** /v1/ads/messaging | Create click-to-message ad (WhatsApp / Messenger / Instagram Direct) |
+| [**createCtwaAd()**](MessagingAdsApi.md#createCtwaAd) | **POST** /v1/ads/ctwa | Create CTWA ad (deprecated) |
+| [**createMessagingAd()**](MessagingAdsApi.md#createMessagingAd) | **POST** /v1/ads/messaging | Create messaging ad |
 
 
 ## `createCallAd()`
@@ -77,9 +77,9 @@ try {
 createCtwaAd($ctwa_ad_request_body): \Zernio\Model\CreateMessagingAd201Response
 ```
 
-Create Click-to-WhatsApp ad (deprecated)
+Create CTWA ad (deprecated)
 
-Deprecated: use POST /v1/ads/messaging with `destination: whatsapp`. This endpoint stays available for back-compat; no removal planned.  Creates one or more Click-to-WhatsApp (CTWA) ads on Meta under a single campaign and ad set. When tapped, each ad opens a WhatsApp conversation with the business attached to the supplied Facebook Page. The full hierarchy (campaign, ad set, creative(s), ad(s)) is created and activated in one call. The CTA is locked to WHATSAPP_MESSAGE and the destination is hard-coded to api.whatsapp.com/send; Meta resolves the actual WhatsApp number from the Page-to-WA pairing configured in Page settings or Business Manager.  Supports two mutually-exclusive shapes:  - **Single-creative**: supply top-level `headline`, `body`, and one of `imageUrl` / `video`. Creates 1 campaign + 1 ad set + 1 ad.  - **Multi-creative**: supply a `creatives[]` array with N entries (each carrying its own headline, body, and image/video). Creates 1 campaign + 1 ad set + N ads sharing budget and targeting so Meta A/Bs the creatives inside a single auction instead of fragmenting budget across N parallel campaigns. Recommended when launching multiple creative variants for the same campaign.  **Attach shape.** Send `adSetId` (with either creative shape) to add the ads to an EXISTING messaging ad set instead of building a campaign, so the ad set keeps its learning phase, the way to refresh a CTWA creative without resetting delivery. The ad set then owns budget, targeting and schedule, so `budgetAmount`, `budgetType`, `endDate`, `objective`, `countries`, `interests` and `audienceId` are rejected with a 400 alongside it rather than silently dropped. The target ad set's `destination_type` must match the ad's destination (a WhatsApp ad needs a `WHATSAPP` ad set), otherwise Meta would accept an ad that never delivers.  Prerequisites enforced by Meta (surfaced as platform_error on failure): the Facebook Page must be paired with a verified WhatsApp Business number, the WhatsApp Business Account must be business-verified, and the Meta access token must carry ads_management.
+Deprecated: use POST /v1/ads/messaging with `destination: whatsapp`. This endpoint stays available for back-compat; no removal planned.  Creates one or more Click-to-WhatsApp (CTWA) ads on Meta under a single campaign and ad set. When tapped, each ad opens a WhatsApp conversation with the business attached to the supplied Facebook Page. The full hierarchy (campaign, ad set, creative(s), ad(s)) is created and activated in one call. The CTA is locked to WHATSAPP_MESSAGE and the destination is hard-coded to api.whatsapp.com/send; Meta resolves the actual WhatsApp number from the Page-to-WA pairing configured in Page settings or Business Manager.  Supports two mutually-exclusive shapes:  - **Single-creative**: supply top-level `headline`, `body`, and one of `imageUrl` / `video`, or an `existingPostId` / `objectStoryId` reference. Creates 1 campaign + 1 ad set + 1 ad.  - **Multi-creative**: supply a `creatives[]` array with N entries (each carrying fresh media and copy or an existing post reference). Creates 1 campaign + 1 ad set + N ads sharing budget and targeting so Meta A/Bs the creatives inside a single auction instead of fragmenting budget across N parallel campaigns. Recommended when launching multiple creative variants for the same campaign.  **Attach shape.** Send `adSetId` (with either creative shape) to add the ads to an EXISTING messaging ad set instead of building a campaign, so the ad set keeps its learning phase, the way to refresh a CTWA creative without resetting delivery. The ad set then owns budget, targeting and schedule, so `budgetAmount`, `budgetType`, `endDate`, `objective`, `countries`, `interests` and `audienceId` are rejected with a 400 alongside it rather than silently dropped. The target ad set's `destination_type` must match the ad's destination (a WhatsApp ad needs a `WHATSAPP` ad set), otherwise Meta would accept an ad that never delivers.  Prerequisites enforced by Meta (surfaced as platform_error on failure): the Facebook Page must be paired with a verified WhatsApp Business number, the WhatsApp Business Account must be business-verified, and the Meta access token must carry ads_management. Existing posts and reels are supported through `existingPostId` or `objectStoryId`, either per creative or at the top level. Omit fresh media and copy for that creative. Optional `whatsappPhoneNumber` selects a number already paired with the Page (WhatsApp destination only).
 
 ### Example
 
@@ -98,7 +98,7 @@ $apiInstance = new Zernio\Api\MessagingAdsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$ctwa_ad_request_body = new \Zernio\Model\CtwaAdRequestBody(); // \Zernio\Model\CtwaAdRequestBody
+$ctwa_ad_request_body = {"accountId":"69ca62446cb7b8cf4cb13603","adAccountId":"act_757082720485182","name":"WhatsApp existing post","creatives":[{"objectStoryId":"811889972008357_123456789"}],"budgetAmount":2.61,"budgetType":"daily","status":"PAUSED"}; // \Zernio\Model\CtwaAdRequestBody
 
 try {
     $result = $apiInstance->createCtwaAd($ctwa_ad_request_body);
@@ -137,9 +137,9 @@ try {
 createMessagingAd($create_messaging_ad_request): \Zernio\Model\CreateMessagingAd201Response
 ```
 
-Create click-to-message ad (WhatsApp / Messenger / Instagram Direct)
+Create messaging ad
 
-Creates a click-to-message ad; `destination` selects where the tapped ad opens a conversation: WhatsApp, the Page's Messenger inbox or the linked Instagram account's Direct inbox. The ad set is created with the matching destination_type and CONVERSATIONS optimization; the campaign objective defaults to OUTCOME_ENGAGEMENT. Supports single-creative and multi-creative shapes. Supersedes POST /v1/ads/ctwa (deprecated, equivalent to `destination: whatsapp`).
+Creates a click-to-message ad; `destination` selects where the tapped ad opens a conversation: WhatsApp, the Page's Messenger inbox or the linked Instagram account's Direct inbox. The ad set is created with the matching destination_type and CONVERSATIONS optimization; the campaign objective defaults to OUTCOME_ENGAGEMENT. Supports single-creative and multi-creative shapes. Supersedes POST /v1/ads/ctwa (deprecated, equivalent to `destination: whatsapp`). Existing posts and reels are supported through `existingPostId` or `objectStoryId`, either per creative or at the top level. Omit fresh media and copy for that creative. Optional `whatsappPhoneNumber` selects a number already paired with the Page (WhatsApp destination only).
 
 ### Example
 
@@ -158,7 +158,7 @@ $apiInstance = new Zernio\Api\MessagingAdsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_messaging_ad_request = new \Zernio\Model\CreateMessagingAdRequest(); // \Zernio\Model\CreateMessagingAdRequest
+$create_messaging_ad_request = {"accountId":"69ca62446cb7b8cf4cb13603","adAccountId":"act_757082720485182","name":"WhatsApp existing post","destination":"whatsapp","creatives":[{"objectStoryId":"811889972008357_123456789"}],"budgetAmount":2.61,"budgetType":"daily","status":"PAUSED"}; // \Zernio\Model\CreateMessagingAdRequest
 
 try {
     $result = $apiInstance->createMessagingAd($create_messaging_ad_request);

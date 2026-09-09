@@ -60,7 +60,7 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPITypes = [
         'updated' => 'int',
-        'budget' => '\Zernio\Model\AdBudget',
+        'budget' => '\Zernio\Model\AdCampaignBudget',
         'budget_level' => 'string',
         'bid_strategy' => '\Zernio\Model\BidStrategy',
         'bid_amount' => 'float',
@@ -392,7 +392,7 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets budget
      *
-     * @return \Zernio\Model\AdBudget|null
+     * @return \Zernio\Model\AdCampaignBudget|null
      */
     public function getBudget()
     {
@@ -402,7 +402,7 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets budget
      *
-     * @param \Zernio\Model\AdBudget|null $budget budget
+     * @param \Zernio\Model\AdCampaignBudget|null $budget budget
      *
      * @return self
      */

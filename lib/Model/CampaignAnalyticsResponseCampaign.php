@@ -62,6 +62,7 @@ class CampaignAnalyticsResponseCampaign implements ModelInterface, ArrayAccess, 
         'name' => 'string',
         'platform' => 'string',
         'status' => 'string',
+        'budget' => '\Zernio\Model\AdCampaignBudget',
         'currency' => 'string'
     ];
 
@@ -77,6 +78,7 @@ class CampaignAnalyticsResponseCampaign implements ModelInterface, ArrayAccess, 
         'name' => null,
         'platform' => null,
         'status' => null,
+        'budget' => null,
         'currency' => null
     ];
 
@@ -90,6 +92,7 @@ class CampaignAnalyticsResponseCampaign implements ModelInterface, ArrayAccess, 
         'name' => true,
         'platform' => false,
         'status' => true,
+        'budget' => true,
         'currency' => true
     ];
 
@@ -183,6 +186,7 @@ class CampaignAnalyticsResponseCampaign implements ModelInterface, ArrayAccess, 
         'name' => 'name',
         'platform' => 'platform',
         'status' => 'status',
+        'budget' => 'budget',
         'currency' => 'currency'
     ];
 
@@ -196,6 +200,7 @@ class CampaignAnalyticsResponseCampaign implements ModelInterface, ArrayAccess, 
         'name' => 'setName',
         'platform' => 'setPlatform',
         'status' => 'setStatus',
+        'budget' => 'setBudget',
         'currency' => 'setCurrency'
     ];
 
@@ -209,6 +214,7 @@ class CampaignAnalyticsResponseCampaign implements ModelInterface, ArrayAccess, 
         'name' => 'getName',
         'platform' => 'getPlatform',
         'status' => 'getStatus',
+        'budget' => 'getBudget',
         'currency' => 'getCurrency'
     ];
 
@@ -273,6 +279,7 @@ class CampaignAnalyticsResponseCampaign implements ModelInterface, ArrayAccess, 
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('budget', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
     }
 
@@ -436,6 +443,40 @@ class CampaignAnalyticsResponseCampaign implements ModelInterface, ArrayAccess, 
             }
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets budget
+     *
+     * @return \Zernio\Model\AdCampaignBudget|null
+     */
+    public function getBudget()
+    {
+        return $this->container['budget'];
+    }
+
+    /**
+     * Sets budget
+     *
+     * @param \Zernio\Model\AdCampaignBudget|null $budget budget
+     *
+     * @return self
+     */
+    public function setBudget($budget)
+    {
+        if (is_null($budget)) {
+            array_push($this->openAPINullablesSetToNull, 'budget');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('budget', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['budget'] = $budget;
 
         return $this;
     }

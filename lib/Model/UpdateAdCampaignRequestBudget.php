@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * UpdateAdCampaignRequestBudget Class Doc Comment
  *
  * @category Class
- * @description **Meta only.** The CBO budget.
+ * @description Meta CBO or Google daily campaign budget, in whole currency units.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

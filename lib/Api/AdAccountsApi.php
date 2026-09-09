@@ -78,6 +78,9 @@ class AdAccountsApi
         'addAccountCallouts' => [
             'application/json',
         ],
+        'createAdNegativeKeywordList' => [
+            'application/json',
+        ],
         'createCustomConversion' => [
             'application/json',
         ],
@@ -87,6 +90,9 @@ class AdAccountsApi
         'createValueRuleSet' => [
             'application/json',
         ],
+        'deleteAdNegativeKeywordList' => [
+            'application/json',
+        ],
         'deleteValueRuleSet' => [
             'application/json',
         ],
@@ -94,6 +100,9 @@ class AdAccountsApi
             'application/json',
         ],
         'getAdComments' => [
+            'application/json',
+        ],
+        'getAdNegativeKeywordList' => [
             'application/json',
         ],
         'getAdsActivityLog' => [
@@ -117,6 +126,9 @@ class AdAccountsApi
         'listAdLabels' => [
             'application/json',
         ],
+        'listAdNegativeKeywordLists' => [
+            'application/json',
+        ],
         'listAdStudies' => [
             'application/json',
         ],
@@ -138,7 +150,13 @@ class AdAccountsApi
         'removeAccountCallout' => [
             'application/json',
         ],
+        'replaceAdNegativeKeywordListKeywords' => [
+            'application/json',
+        ],
         'updateAdAccount' => [
+            'application/json',
+        ],
+        'updateAdNegativeKeywordList' => [
             'application/json',
         ],
         'updateValueRuleSet' => [
@@ -454,6 +472,319 @@ class AdAccountsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($add_account_callouts_request));
             } else {
                 $httpBody = $add_account_callouts_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createAdNegativeKeywordList
+     *
+     * Create a negative keyword list
+     *
+     * @param  \Zernio\Model\CreateAdNegativeKeywordListRequest $create_ad_negative_keyword_list_request create_ad_negative_keyword_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdNegativeKeywordList'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CreateAdNegativeKeywordList201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function createAdNegativeKeywordList($create_ad_negative_keyword_list_request, string $contentType = self::contentTypes['createAdNegativeKeywordList'][0])
+    {
+        list($response) = $this->createAdNegativeKeywordListWithHttpInfo($create_ad_negative_keyword_list_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createAdNegativeKeywordListWithHttpInfo
+     *
+     * Create a negative keyword list
+     *
+     * @param  \Zernio\Model\CreateAdNegativeKeywordListRequest $create_ad_negative_keyword_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdNegativeKeywordList'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CreateAdNegativeKeywordList201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createAdNegativeKeywordListWithHttpInfo($create_ad_negative_keyword_list_request, string $contentType = self::contentTypes['createAdNegativeKeywordList'][0])
+    {
+        $request = $this->createAdNegativeKeywordListRequest($create_ad_negative_keyword_list_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreateAdNegativeKeywordList201Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CreateAdNegativeKeywordList201Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreateAdNegativeKeywordList201Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createAdNegativeKeywordListAsync
+     *
+     * Create a negative keyword list
+     *
+     * @param  \Zernio\Model\CreateAdNegativeKeywordListRequest $create_ad_negative_keyword_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdNegativeKeywordList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAdNegativeKeywordListAsync($create_ad_negative_keyword_list_request, string $contentType = self::contentTypes['createAdNegativeKeywordList'][0])
+    {
+        return $this->createAdNegativeKeywordListAsyncWithHttpInfo($create_ad_negative_keyword_list_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createAdNegativeKeywordListAsyncWithHttpInfo
+     *
+     * Create a negative keyword list
+     *
+     * @param  \Zernio\Model\CreateAdNegativeKeywordListRequest $create_ad_negative_keyword_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdNegativeKeywordList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAdNegativeKeywordListAsyncWithHttpInfo($create_ad_negative_keyword_list_request, string $contentType = self::contentTypes['createAdNegativeKeywordList'][0])
+    {
+        $returnType = '\Zernio\Model\CreateAdNegativeKeywordList201Response';
+        $request = $this->createAdNegativeKeywordListRequest($create_ad_negative_keyword_list_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createAdNegativeKeywordList'
+     *
+     * @param  \Zernio\Model\CreateAdNegativeKeywordListRequest $create_ad_negative_keyword_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdNegativeKeywordList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createAdNegativeKeywordListRequest($create_ad_negative_keyword_list_request, string $contentType = self::contentTypes['createAdNegativeKeywordList'][0])
+    {
+
+        // verify the required parameter 'create_ad_negative_keyword_list_request' is set
+        if ($create_ad_negative_keyword_list_request === null || (is_array($create_ad_negative_keyword_list_request) && count($create_ad_negative_keyword_list_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_ad_negative_keyword_list_request when calling createAdNegativeKeywordList'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/accounts/negative-keyword-lists';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_ad_negative_keyword_list_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_ad_negative_keyword_list_request));
+            } else {
+                $httpBody = $create_ad_negative_keyword_list_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1395,6 +1726,380 @@ class AdAccountsApi
     }
 
     /**
+     * Operation deleteAdNegativeKeywordList
+     *
+     * Delete a negative keyword list
+     *
+     * @param  string $list_id list_id (required)
+     * @param  string $account_id account_id (required)
+     * @param  string|null $customer_id customer_id (optional)
+     * @param  string|null $platform platform (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdNegativeKeywordList'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\DeleteAdNegativeKeywordList200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function deleteAdNegativeKeywordList($list_id, $account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['deleteAdNegativeKeywordList'][0])
+    {
+        list($response) = $this->deleteAdNegativeKeywordListWithHttpInfo($list_id, $account_id, $customer_id, $platform, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation deleteAdNegativeKeywordListWithHttpInfo
+     *
+     * Delete a negative keyword list
+     *
+     * @param  string $list_id (required)
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string|null $platform (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdNegativeKeywordList'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\DeleteAdNegativeKeywordList200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteAdNegativeKeywordListWithHttpInfo($list_id, $account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['deleteAdNegativeKeywordList'][0])
+    {
+        $request = $this->deleteAdNegativeKeywordListRequest($list_id, $account_id, $customer_id, $platform, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\DeleteAdNegativeKeywordList200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\DeleteAdNegativeKeywordList200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\DeleteAdNegativeKeywordList200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteAdNegativeKeywordListAsync
+     *
+     * Delete a negative keyword list
+     *
+     * @param  string $list_id (required)
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string|null $platform (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdNegativeKeywordList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteAdNegativeKeywordListAsync($list_id, $account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['deleteAdNegativeKeywordList'][0])
+    {
+        return $this->deleteAdNegativeKeywordListAsyncWithHttpInfo($list_id, $account_id, $customer_id, $platform, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteAdNegativeKeywordListAsyncWithHttpInfo
+     *
+     * Delete a negative keyword list
+     *
+     * @param  string $list_id (required)
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string|null $platform (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdNegativeKeywordList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteAdNegativeKeywordListAsyncWithHttpInfo($list_id, $account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['deleteAdNegativeKeywordList'][0])
+    {
+        $returnType = '\Zernio\Model\DeleteAdNegativeKeywordList200Response';
+        $request = $this->deleteAdNegativeKeywordListRequest($list_id, $account_id, $customer_id, $platform, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteAdNegativeKeywordList'
+     *
+     * @param  string $list_id (required)
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string|null $platform (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdNegativeKeywordList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteAdNegativeKeywordListRequest($list_id, $account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['deleteAdNegativeKeywordList'][0])
+    {
+
+        // verify the required parameter 'list_id' is set
+        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_id when calling deleteAdNegativeKeywordList'
+            );
+        }
+        if (!preg_match("/^\\d+$/", $list_id)) {
+            throw new \InvalidArgumentException("invalid value for \"list_id\" when calling AdAccountsApi.deleteAdNegativeKeywordList, must conform to the pattern /^\\d+$/.");
+        }
+        
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling deleteAdNegativeKeywordList'
+            );
+        }
+        if (!preg_match("/^[a-fA-F0-9]{24}$/", $account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"account_id\" when calling AdAccountsApi.deleteAdNegativeKeywordList, must conform to the pattern /^[a-fA-F0-9]{24}$/.");
+        }
+        
+        if ($customer_id !== null && !preg_match("/^\\d+$/", $customer_id)) {
+            throw new \InvalidArgumentException("invalid value for \"customer_id\" when calling AdAccountsApi.deleteAdNegativeKeywordList, must conform to the pattern /^\\d+$/.");
+        }
+        
+
+
+        $resourcePath = '/v1/ads/accounts/negative-keyword-lists/{listId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $customer_id,
+            'customerId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $platform,
+            'platform', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($list_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'listId' . '}',
+                ObjectSerializer::toPathValue($list_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation deleteValueRuleSet
      *
      * Delete a value rule set
@@ -2298,6 +3003,380 @@ class AdAccountsApi
             $resourcePath = str_replace(
                 '{' . 'adId' . '}',
                 ObjectSerializer::toPathValue($ad_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAdNegativeKeywordList
+     *
+     * Get a negative keyword list
+     *
+     * @param  string $list_id list_id (required)
+     * @param  string $account_id account_id (required)
+     * @param  string|null $customer_id customer_id (optional)
+     * @param  string|null $platform platform (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdNegativeKeywordList'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetAdNegativeKeywordList200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function getAdNegativeKeywordList($list_id, $account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['getAdNegativeKeywordList'][0])
+    {
+        list($response) = $this->getAdNegativeKeywordListWithHttpInfo($list_id, $account_id, $customer_id, $platform, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getAdNegativeKeywordListWithHttpInfo
+     *
+     * Get a negative keyword list
+     *
+     * @param  string $list_id (required)
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string|null $platform (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdNegativeKeywordList'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetAdNegativeKeywordList200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAdNegativeKeywordListWithHttpInfo($list_id, $account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['getAdNegativeKeywordList'][0])
+    {
+        $request = $this->getAdNegativeKeywordListRequest($list_id, $account_id, $customer_id, $platform, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetAdNegativeKeywordList200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetAdNegativeKeywordList200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetAdNegativeKeywordList200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAdNegativeKeywordListAsync
+     *
+     * Get a negative keyword list
+     *
+     * @param  string $list_id (required)
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string|null $platform (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdNegativeKeywordList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAdNegativeKeywordListAsync($list_id, $account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['getAdNegativeKeywordList'][0])
+    {
+        return $this->getAdNegativeKeywordListAsyncWithHttpInfo($list_id, $account_id, $customer_id, $platform, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAdNegativeKeywordListAsyncWithHttpInfo
+     *
+     * Get a negative keyword list
+     *
+     * @param  string $list_id (required)
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string|null $platform (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdNegativeKeywordList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAdNegativeKeywordListAsyncWithHttpInfo($list_id, $account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['getAdNegativeKeywordList'][0])
+    {
+        $returnType = '\Zernio\Model\GetAdNegativeKeywordList200Response';
+        $request = $this->getAdNegativeKeywordListRequest($list_id, $account_id, $customer_id, $platform, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAdNegativeKeywordList'
+     *
+     * @param  string $list_id (required)
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string|null $platform (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdNegativeKeywordList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAdNegativeKeywordListRequest($list_id, $account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['getAdNegativeKeywordList'][0])
+    {
+
+        // verify the required parameter 'list_id' is set
+        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_id when calling getAdNegativeKeywordList'
+            );
+        }
+        if (!preg_match("/^\\d+$/", $list_id)) {
+            throw new \InvalidArgumentException("invalid value for \"list_id\" when calling AdAccountsApi.getAdNegativeKeywordList, must conform to the pattern /^\\d+$/.");
+        }
+        
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getAdNegativeKeywordList'
+            );
+        }
+        if (!preg_match("/^[a-fA-F0-9]{24}$/", $account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"account_id\" when calling AdAccountsApi.getAdNegativeKeywordList, must conform to the pattern /^[a-fA-F0-9]{24}$/.");
+        }
+        
+        if ($customer_id !== null && !preg_match("/^\\d+$/", $customer_id)) {
+            throw new \InvalidArgumentException("invalid value for \"customer_id\" when calling AdAccountsApi.getAdNegativeKeywordList, must conform to the pattern /^\\d+$/.");
+        }
+        
+
+
+        $resourcePath = '/v1/ads/accounts/negative-keyword-lists/{listId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $customer_id,
+            'customerId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $platform,
+            'platform', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($list_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'listId' . '}',
+                ObjectSerializer::toPathValue($list_id),
                 $resourcePath
             );
         }
@@ -4684,6 +5763,357 @@ class AdAccountsApi
     }
 
     /**
+     * Operation listAdNegativeKeywordLists
+     *
+     * List negative keyword lists
+     *
+     * @param  string $account_id account_id (required)
+     * @param  string|null $customer_id customer_id (optional)
+     * @param  string|null $platform platform (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdNegativeKeywordLists'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListAdNegativeKeywordLists200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function listAdNegativeKeywordLists($account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['listAdNegativeKeywordLists'][0])
+    {
+        list($response) = $this->listAdNegativeKeywordListsWithHttpInfo($account_id, $customer_id, $platform, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listAdNegativeKeywordListsWithHttpInfo
+     *
+     * List negative keyword lists
+     *
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string|null $platform (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdNegativeKeywordLists'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListAdNegativeKeywordLists200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listAdNegativeKeywordListsWithHttpInfo($account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['listAdNegativeKeywordLists'][0])
+    {
+        $request = $this->listAdNegativeKeywordListsRequest($account_id, $customer_id, $platform, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListAdNegativeKeywordLists200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListAdNegativeKeywordLists200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListAdNegativeKeywordLists200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listAdNegativeKeywordListsAsync
+     *
+     * List negative keyword lists
+     *
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string|null $platform (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdNegativeKeywordLists'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAdNegativeKeywordListsAsync($account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['listAdNegativeKeywordLists'][0])
+    {
+        return $this->listAdNegativeKeywordListsAsyncWithHttpInfo($account_id, $customer_id, $platform, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listAdNegativeKeywordListsAsyncWithHttpInfo
+     *
+     * List negative keyword lists
+     *
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string|null $platform (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdNegativeKeywordLists'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAdNegativeKeywordListsAsyncWithHttpInfo($account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['listAdNegativeKeywordLists'][0])
+    {
+        $returnType = '\Zernio\Model\ListAdNegativeKeywordLists200Response';
+        $request = $this->listAdNegativeKeywordListsRequest($account_id, $customer_id, $platform, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listAdNegativeKeywordLists'
+     *
+     * @param  string $account_id (required)
+     * @param  string|null $customer_id (optional)
+     * @param  string|null $platform (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdNegativeKeywordLists'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listAdNegativeKeywordListsRequest($account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['listAdNegativeKeywordLists'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling listAdNegativeKeywordLists'
+            );
+        }
+        if (!preg_match("/^[a-fA-F0-9]{24}$/", $account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"account_id\" when calling AdAccountsApi.listAdNegativeKeywordLists, must conform to the pattern /^[a-fA-F0-9]{24}$/.");
+        }
+        
+        if ($customer_id !== null && !preg_match("/^\\d+$/", $customer_id)) {
+            throw new \InvalidArgumentException("invalid value for \"customer_id\" when calling AdAccountsApi.listAdNegativeKeywordLists, must conform to the pattern /^\\d+$/.");
+        }
+        
+
+
+        $resourcePath = '/v1/ads/accounts/negative-keyword-lists';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $customer_id,
+            'customerId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $platform,
+            'platform', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation listAdStudies
      *
      * A/B tests and lift studies
@@ -6984,6 +8414,342 @@ class AdAccountsApi
     }
 
     /**
+     * Operation replaceAdNegativeKeywordListKeywords
+     *
+     * Replace negative list keywords
+     *
+     * @param  string $list_id list_id (required)
+     * @param  \Zernio\Model\ReplaceAdNegativeKeywordListKeywordsRequest $replace_ad_negative_keyword_list_keywords_request replace_ad_negative_keyword_list_keywords_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceAdNegativeKeywordListKeywords'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ReplaceAdNegativeKeywordListKeywords200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function replaceAdNegativeKeywordListKeywords($list_id, $replace_ad_negative_keyword_list_keywords_request, string $contentType = self::contentTypes['replaceAdNegativeKeywordListKeywords'][0])
+    {
+        list($response) = $this->replaceAdNegativeKeywordListKeywordsWithHttpInfo($list_id, $replace_ad_negative_keyword_list_keywords_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation replaceAdNegativeKeywordListKeywordsWithHttpInfo
+     *
+     * Replace negative list keywords
+     *
+     * @param  string $list_id (required)
+     * @param  \Zernio\Model\ReplaceAdNegativeKeywordListKeywordsRequest $replace_ad_negative_keyword_list_keywords_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceAdNegativeKeywordListKeywords'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ReplaceAdNegativeKeywordListKeywords200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function replaceAdNegativeKeywordListKeywordsWithHttpInfo($list_id, $replace_ad_negative_keyword_list_keywords_request, string $contentType = self::contentTypes['replaceAdNegativeKeywordListKeywords'][0])
+    {
+        $request = $this->replaceAdNegativeKeywordListKeywordsRequest($list_id, $replace_ad_negative_keyword_list_keywords_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ReplaceAdNegativeKeywordListKeywords200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ReplaceAdNegativeKeywordListKeywords200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ReplaceAdNegativeKeywordListKeywords200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation replaceAdNegativeKeywordListKeywordsAsync
+     *
+     * Replace negative list keywords
+     *
+     * @param  string $list_id (required)
+     * @param  \Zernio\Model\ReplaceAdNegativeKeywordListKeywordsRequest $replace_ad_negative_keyword_list_keywords_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceAdNegativeKeywordListKeywords'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function replaceAdNegativeKeywordListKeywordsAsync($list_id, $replace_ad_negative_keyword_list_keywords_request, string $contentType = self::contentTypes['replaceAdNegativeKeywordListKeywords'][0])
+    {
+        return $this->replaceAdNegativeKeywordListKeywordsAsyncWithHttpInfo($list_id, $replace_ad_negative_keyword_list_keywords_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation replaceAdNegativeKeywordListKeywordsAsyncWithHttpInfo
+     *
+     * Replace negative list keywords
+     *
+     * @param  string $list_id (required)
+     * @param  \Zernio\Model\ReplaceAdNegativeKeywordListKeywordsRequest $replace_ad_negative_keyword_list_keywords_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceAdNegativeKeywordListKeywords'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function replaceAdNegativeKeywordListKeywordsAsyncWithHttpInfo($list_id, $replace_ad_negative_keyword_list_keywords_request, string $contentType = self::contentTypes['replaceAdNegativeKeywordListKeywords'][0])
+    {
+        $returnType = '\Zernio\Model\ReplaceAdNegativeKeywordListKeywords200Response';
+        $request = $this->replaceAdNegativeKeywordListKeywordsRequest($list_id, $replace_ad_negative_keyword_list_keywords_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'replaceAdNegativeKeywordListKeywords'
+     *
+     * @param  string $list_id (required)
+     * @param  \Zernio\Model\ReplaceAdNegativeKeywordListKeywordsRequest $replace_ad_negative_keyword_list_keywords_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceAdNegativeKeywordListKeywords'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function replaceAdNegativeKeywordListKeywordsRequest($list_id, $replace_ad_negative_keyword_list_keywords_request, string $contentType = self::contentTypes['replaceAdNegativeKeywordListKeywords'][0])
+    {
+
+        // verify the required parameter 'list_id' is set
+        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_id when calling replaceAdNegativeKeywordListKeywords'
+            );
+        }
+        if (!preg_match("/^\\d+$/", $list_id)) {
+            throw new \InvalidArgumentException("invalid value for \"list_id\" when calling AdAccountsApi.replaceAdNegativeKeywordListKeywords, must conform to the pattern /^\\d+$/.");
+        }
+        
+        // verify the required parameter 'replace_ad_negative_keyword_list_keywords_request' is set
+        if ($replace_ad_negative_keyword_list_keywords_request === null || (is_array($replace_ad_negative_keyword_list_keywords_request) && count($replace_ad_negative_keyword_list_keywords_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $replace_ad_negative_keyword_list_keywords_request when calling replaceAdNegativeKeywordListKeywords'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/accounts/negative-keyword-lists/{listId}/keywords';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($list_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'listId' . '}',
+                ObjectSerializer::toPathValue($list_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($replace_ad_negative_keyword_list_keywords_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($replace_ad_negative_keyword_list_keywords_request));
+            } else {
+                $httpBody = $replace_ad_negative_keyword_list_keywords_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation updateAdAccount
      *
      * Update ad account settings
@@ -7262,6 +9028,342 @@ class AdAccountsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PATCH',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateAdNegativeKeywordList
+     *
+     * Rename a negative keyword list
+     *
+     * @param  string $list_id list_id (required)
+     * @param  \Zernio\Model\UpdateAdNegativeKeywordListRequest $update_ad_negative_keyword_list_request update_ad_negative_keyword_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdNegativeKeywordList'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\UpdateAdNegativeKeywordList200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     */
+    public function updateAdNegativeKeywordList($list_id, $update_ad_negative_keyword_list_request, string $contentType = self::contentTypes['updateAdNegativeKeywordList'][0])
+    {
+        list($response) = $this->updateAdNegativeKeywordListWithHttpInfo($list_id, $update_ad_negative_keyword_list_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateAdNegativeKeywordListWithHttpInfo
+     *
+     * Rename a negative keyword list
+     *
+     * @param  string $list_id (required)
+     * @param  \Zernio\Model\UpdateAdNegativeKeywordListRequest $update_ad_negative_keyword_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdNegativeKeywordList'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\UpdateAdNegativeKeywordList200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateAdNegativeKeywordListWithHttpInfo($list_id, $update_ad_negative_keyword_list_request, string $contentType = self::contentTypes['updateAdNegativeKeywordList'][0])
+    {
+        $request = $this->updateAdNegativeKeywordListRequest($list_id, $update_ad_negative_keyword_list_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\UpdateAdNegativeKeywordList200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\UpdateAdNegativeKeywordList200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\UpdateAdNegativeKeywordList200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateAdNegativeKeywordListAsync
+     *
+     * Rename a negative keyword list
+     *
+     * @param  string $list_id (required)
+     * @param  \Zernio\Model\UpdateAdNegativeKeywordListRequest $update_ad_negative_keyword_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdNegativeKeywordList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAdNegativeKeywordListAsync($list_id, $update_ad_negative_keyword_list_request, string $contentType = self::contentTypes['updateAdNegativeKeywordList'][0])
+    {
+        return $this->updateAdNegativeKeywordListAsyncWithHttpInfo($list_id, $update_ad_negative_keyword_list_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateAdNegativeKeywordListAsyncWithHttpInfo
+     *
+     * Rename a negative keyword list
+     *
+     * @param  string $list_id (required)
+     * @param  \Zernio\Model\UpdateAdNegativeKeywordListRequest $update_ad_negative_keyword_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdNegativeKeywordList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAdNegativeKeywordListAsyncWithHttpInfo($list_id, $update_ad_negative_keyword_list_request, string $contentType = self::contentTypes['updateAdNegativeKeywordList'][0])
+    {
+        $returnType = '\Zernio\Model\UpdateAdNegativeKeywordList200Response';
+        $request = $this->updateAdNegativeKeywordListRequest($list_id, $update_ad_negative_keyword_list_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateAdNegativeKeywordList'
+     *
+     * @param  string $list_id (required)
+     * @param  \Zernio\Model\UpdateAdNegativeKeywordListRequest $update_ad_negative_keyword_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdNegativeKeywordList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateAdNegativeKeywordListRequest($list_id, $update_ad_negative_keyword_list_request, string $contentType = self::contentTypes['updateAdNegativeKeywordList'][0])
+    {
+
+        // verify the required parameter 'list_id' is set
+        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_id when calling updateAdNegativeKeywordList'
+            );
+        }
+        if (!preg_match("/^\\d+$/", $list_id)) {
+            throw new \InvalidArgumentException("invalid value for \"list_id\" when calling AdAccountsApi.updateAdNegativeKeywordList, must conform to the pattern /^\\d+$/.");
+        }
+        
+        // verify the required parameter 'update_ad_negative_keyword_list_request' is set
+        if ($update_ad_negative_keyword_list_request === null || (is_array($update_ad_negative_keyword_list_request) && count($update_ad_negative_keyword_list_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_ad_negative_keyword_list_request when calling updateAdNegativeKeywordList'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/accounts/negative-keyword-lists/{listId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($list_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'listId' . '}',
+                ObjectSerializer::toPathValue($list_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_ad_negative_keyword_list_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_ad_negative_keyword_list_request));
+            } else {
+                $httpBody = $update_ad_negative_keyword_list_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

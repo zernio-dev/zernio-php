@@ -68,6 +68,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'budget' => '\Zernio\Model\BoostPostRequestBudget',
         'instagram_account_id' => 'string',
         'destination_type' => 'string',
+        'whatsapp_phone_number' => 'string',
         'currency' => 'string',
         'schedule' => '\Zernio\Model\BoostPostRequestSchedule',
         'targeting' => '\Zernio\Model\BoostPostRequestTargeting',
@@ -109,6 +110,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'budget' => null,
         'instagram_account_id' => null,
         'destination_type' => null,
+        'whatsapp_phone_number' => null,
         'currency' => null,
         'schedule' => null,
         'targeting' => null,
@@ -148,6 +150,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'budget' => false,
         'instagram_account_id' => false,
         'destination_type' => false,
+        'whatsapp_phone_number' => false,
         'currency' => false,
         'schedule' => false,
         'targeting' => false,
@@ -267,6 +270,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'budget' => 'budget',
         'instagram_account_id' => 'instagramAccountId',
         'destination_type' => 'destinationType',
+        'whatsapp_phone_number' => 'whatsappPhoneNumber',
         'currency' => 'currency',
         'schedule' => 'schedule',
         'targeting' => 'targeting',
@@ -306,6 +310,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'budget' => 'setBudget',
         'instagram_account_id' => 'setInstagramAccountId',
         'destination_type' => 'setDestinationType',
+        'whatsapp_phone_number' => 'setWhatsappPhoneNumber',
         'currency' => 'setCurrency',
         'schedule' => 'setSchedule',
         'targeting' => 'setTargeting',
@@ -345,6 +350,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'budget' => 'getBudget',
         'instagram_account_id' => 'getInstagramAccountId',
         'destination_type' => 'getDestinationType',
+        'whatsapp_phone_number' => 'getWhatsappPhoneNumber',
         'currency' => 'getCurrency',
         'schedule' => 'getSchedule',
         'targeting' => 'getTargeting',
@@ -421,6 +427,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public const DESTINATION_TYPE_ON_AD = 'ON_AD';
     public const DESTINATION_TYPE_MESSENGER = 'MESSENGER';
     public const DESTINATION_TYPE_WHATSAPP = 'WHATSAPP';
+    public const DESTINATION_TYPE_INSTAGRAM_DIRECT = 'INSTAGRAM_DIRECT';
     public const SPECIAL_AD_CATEGORIES_HOUSING = 'HOUSING';
     public const SPECIAL_AD_CATEGORIES_EMPLOYMENT = 'EMPLOYMENT';
     public const SPECIAL_AD_CATEGORIES_CREDIT = 'CREDIT';
@@ -461,6 +468,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             self::DESTINATION_TYPE_ON_AD,
             self::DESTINATION_TYPE_MESSENGER,
             self::DESTINATION_TYPE_WHATSAPP,
+            self::DESTINATION_TYPE_INSTAGRAM_DIRECT,
         ];
     }
 
@@ -519,6 +527,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('budget', $data ?? [], null);
         $this->setIfExists('instagram_account_id', $data ?? [], null);
         $this->setIfExists('destination_type', $data ?? [], null);
+        $this->setIfExists('whatsapp_phone_number', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('schedule', $data ?? [], null);
         $this->setIfExists('targeting', $data ?? [], null);
@@ -601,6 +610,10 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->container['destination_type'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['whatsapp_phone_number']) && !preg_match("/^\\+[1-9]\\d{6,14}$/", $this->container['whatsapp_phone_number'])) {
+            $invalidProperties[] = "invalid value for 'whatsapp_phone_number', must be conform to the pattern /^\\+[1-9]\\d{6,14}$/.";
         }
 
         if (!is_null($this->container['currency']) && (mb_strlen($this->container['currency']) > 3)) {
@@ -913,7 +926,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets destination_type
      *
-     * @param string|null $destination_type Meta only. Ad-set destination_type: where the click LANDS, as opposed to instagramAccountId which is who the ad runs as. Lead ads force ON_AD and ignore this.
+     * @param string|null $destination_type Meta only. Ad-set destination_type: where the click LANDS, as opposed to instagramAccountId which is who the ad runs as. Messaging destinations imply their matching CTA and require goal engagement. Lead ads use ON_AD; combining an instant form with a messaging destination is rejected.
      *
      * @return self
      */
@@ -933,6 +946,38 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['destination_type'] = $destination_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets whatsapp_phone_number
+     *
+     * @return string|null
+     */
+    public function getWhatsappPhoneNumber()
+    {
+        return $this->container['whatsapp_phone_number'];
+    }
+
+    /**
+     * Sets whatsapp_phone_number
+     *
+     * @param string|null $whatsapp_phone_number Meta WhatsApp only. E.164 number already paired with the Page. Omit to use the default pairing. Requires WHATSAPP destinationType or WHATSAPP_MESSAGE callToAction.
+     *
+     * @return self
+     */
+    public function setWhatsappPhoneNumber($whatsapp_phone_number)
+    {
+        if (is_null($whatsapp_phone_number)) {
+            throw new \InvalidArgumentException('non-nullable whatsapp_phone_number cannot be null');
+        }
+
+        if ((!preg_match("/^\\+[1-9]\\d{6,14}$/", ObjectSerializer::toString($whatsapp_phone_number)))) {
+            throw new \InvalidArgumentException("invalid value for \$whatsapp_phone_number when calling BoostPostRequest., must conform to the pattern /^\\+[1-9]\\d{6,14}$/.");
+        }
+
+        $this->container['whatsapp_phone_number'] = $whatsapp_phone_number;
 
         return $this;
     }
@@ -1323,7 +1368,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets link_url
      *
-     * @param string|null $link_url Destination URL for the CTA button. Send it together with `callToAction`.  **Meta**: adds a top-level `call_to_action` to the post-reference creative. This is what gives a `traffic` boost a clickable destination without replacing the creative and losing the post's social proof. Ignored when `leadGenFormId` is set, which supplies its own destination. Live-verified against a Page-post creative.  **TikTok**: maps to `landing_page_url` on the Spark Ad creative (`AdcreateCreatives.landing_page_url`); Spark Ads have no clickable destination without it.  Ignored on LinkedIn / Pinterest / X / Google, which infer the destination from the boosted post.
+     * @param string|null $link_url Website URL for non-messaging CTA buttons. Send it with `callToAction`. Omit for messaging boosts.  **Meta**: adds a top-level `call_to_action` to the post-reference creative. This is what gives a `traffic` boost a clickable destination without replacing the creative and losing the post's social proof. Ignored when `leadGenFormId` is set, which supplies its own destination. Live-verified against a Page-post creative.  **TikTok**: maps to `landing_page_url` on the Spark Ad creative (`AdcreateCreatives.landing_page_url`); Spark Ads have no clickable destination without it.  Ignored on LinkedIn / Pinterest / X / Google, which infer the destination from the boosted post.
      *
      * @return self
      */
@@ -1350,7 +1395,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets call_to_action
      *
-     * @param string|null $call_to_action CTA button label. Send it together with `linkUrl`: a CTA without a destination produces a button that goes nowhere, so sending one alone is a 400.  **Meta**: the CTA enum of POST /v1/ads/create plus `VIEW_INSTAGRAM_PROFILE`, which is accepted on boost only. For that value `linkUrl` is typically the Instagram profile URL.  **TikTok**: pass-through to `call_to_action` on the Spark Ad creative; the platform validates the value. See TikTok's \"Enumeration - Call-to-Action\".
+     * @param string|null $call_to_action CTA button label. Non-messaging CTAs require `linkUrl`. WHATSAPP_MESSAGE, MESSAGE_PAGE, and INSTAGRAM_MESSAGE do not require a URL and reject linkUrl.  **Meta**: the CTA enum of POST /v1/ads/create plus `VIEW_INSTAGRAM_PROFILE`, `WHATSAPP_MESSAGE`, `MESSAGE_PAGE`, and `INSTAGRAM_MESSAGE`. VIEW_INSTAGRAM_PROFILE requires linkUrl; the messaging CTAs select their destination automatically.  **TikTok**: pass-through to `call_to_action` on the Spark Ad creative; the platform validates the value. See TikTok's \"Enumeration - Call-to-Action\".
      *
      * @return self
      */
@@ -1530,7 +1575,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets optimization_goal
      *
-     * @param string|null $optimization_goal Meta only. Explicit ad-set `optimization_goal` override. When omitted, defaults to the value derived from `goal`. The value must be compatible with the objective Meta derives from `goal`, not with the objective used by `POST /v1/ads/create` for the same `goal` name: boost maps `goal: \"engagement\"` to objective `OUTCOME_AWARENESS`, which accepts `REACH`, `IMPRESSIONS`, `AD_RECALL_LIFT`, or THRUPLAY-class values, and rejects `POST_ENGAGEMENT` (that value is only valid under `OUTCOME_ENGAGEMENT`, which create uses for the same goal name).
+     * @param string|null $optimization_goal Meta only. Explicit ad-set `optimization_goal` override. When omitted, defaults to the value derived from `goal`. Messaging boosts always use CONVERSATIONS and reject another optimizationGoal. Otherwise the value must be compatible with the objective Meta derives from `goal`, not with the objective used by `POST /v1/ads/create` for the same `goal` name: boost maps `goal: \"engagement\"` to objective `OUTCOME_AWARENESS`, which accepts `REACH`, `IMPRESSIONS`, `AD_RECALL_LIFT`, or THRUPLAY-class values, and rejects `POST_ENGAGEMENT` (that value is only valid under `OUTCOME_ENGAGEMENT`, which create uses for the same goal name).
      *
      * @return self
      */

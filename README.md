@@ -99,12 +99,15 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**updateBlueskySettings**](docs/Api/AccountsApi.md#updateblueskysettings) | **PATCH** /v1/accounts/{accountId}/bluesky-settings | Update Bluesky account settings
 *AccountsApi* | [**updateSlackSettings**](docs/Api/AccountsApi.md#updateslacksettings) | **PATCH** /v1/accounts/{accountId}/slack-settings | Update Slack account settings
 *AdAccountsApi* | [**addAccountCallouts**](docs/Api/AdAccountsApi.md#addaccountcallouts) | **POST** /v1/ads/accounts/callouts | Add account-level callout extensions
+*AdAccountsApi* | [**createAdNegativeKeywordList**](docs/Api/AdAccountsApi.md#createadnegativekeywordlist) | **POST** /v1/ads/accounts/negative-keyword-lists | Create a negative keyword list
 *AdAccountsApi* | [**createCustomConversion**](docs/Api/AdAccountsApi.md#createcustomconversion) | **POST** /v1/accounts/{accountId}/custom-conversions | Create or reuse a custom conversion
 *AdAccountsApi* | [**createHighDemandPeriod**](docs/Api/AdAccountsApi.md#createhighdemandperiod) | **POST** /v1/ads/high-demand-periods | Schedule a budget increase
 *AdAccountsApi* | [**createValueRuleSet**](docs/Api/AdAccountsApi.md#createvalueruleset) | **POST** /v1/ads/value-rule-sets | Create a value rule set
+*AdAccountsApi* | [**deleteAdNegativeKeywordList**](docs/Api/AdAccountsApi.md#deleteadnegativekeywordlist) | **DELETE** /v1/ads/accounts/negative-keyword-lists/{listId} | Delete a negative keyword list
 *AdAccountsApi* | [**deleteValueRuleSet**](docs/Api/AdAccountsApi.md#deletevalueruleset) | **DELETE** /v1/ads/value-rule-sets/{valueRuleSetId} | Delete a value rule set
 *AdAccountsApi* | [**getAdAccountFinance**](docs/Api/AdAccountsApi.md#getadaccountfinance) | **GET** /v1/ads/accounts/finance | Ad account finances
 *AdAccountsApi* | [**getAdComments**](docs/Api/AdAccountsApi.md#getadcomments) | **GET** /v1/ads/{adId}/comments | List comments on an ad
+*AdAccountsApi* | [**getAdNegativeKeywordList**](docs/Api/AdAccountsApi.md#getadnegativekeywordlist) | **GET** /v1/ads/accounts/negative-keyword-lists/{listId} | Get a negative keyword list
 *AdAccountsApi* | [**getAdsActivityLog**](docs/Api/AdAccountsApi.md#getadsactivitylog) | **GET** /v1/ads/activity | Ad account change / audit log
 *AdAccountsApi* | [**getDsaDefaults**](docs/Api/AdAccountsApi.md#getdsadefaults) | **GET** /v1/ads/dsa-defaults | Get ad account DSA defaults
 *AdAccountsApi* | [**getDsaRecommendations**](docs/Api/AdAccountsApi.md#getdsarecommendations) | **GET** /v1/ads/dsa-recommendations | List DSA beneficiary/payor suggestions
@@ -112,6 +115,7 @@ Class | Method | HTTP request | Description
 *AdAccountsApi* | [**listAccountCallouts**](docs/Api/AdAccountsApi.md#listaccountcallouts) | **GET** /v1/ads/accounts/callouts | List account-level callout extensions
 *AdAccountsApi* | [**listAdAccounts**](docs/Api/AdAccountsApi.md#listadaccounts) | **GET** /v1/ads/accounts | List ad accounts
 *AdAccountsApi* | [**listAdLabels**](docs/Api/AdAccountsApi.md#listadlabels) | **GET** /v1/ads/labels | Ad labels
+*AdAccountsApi* | [**listAdNegativeKeywordLists**](docs/Api/AdAccountsApi.md#listadnegativekeywordlists) | **GET** /v1/ads/accounts/negative-keyword-lists | List negative keyword lists
 *AdAccountsApi* | [**listAdStudies**](docs/Api/AdAccountsApi.md#listadstudies) | **GET** /v1/ads/studies | A/B tests and lift studies
 *AdAccountsApi* | [**listAdsBusinessCenters**](docs/Api/AdAccountsApi.md#listadsbusinesscenters) | **GET** /v1/ads/business-centers | List TikTok Business Centers
 *AdAccountsApi* | [**listCustomConversions**](docs/Api/AdAccountsApi.md#listcustomconversions) | **GET** /v1/accounts/{accountId}/custom-conversions | List custom conversions
@@ -119,7 +123,9 @@ Class | Method | HTTP request | Description
 *AdAccountsApi* | [**listMetaBusinesses**](docs/Api/AdAccountsApi.md#listmetabusinesses) | **GET** /v1/ads/businesses | Businesses list
 *AdAccountsApi* | [**listValueRuleSets**](docs/Api/AdAccountsApi.md#listvaluerulesets) | **GET** /v1/ads/value-rule-sets | List value rule sets
 *AdAccountsApi* | [**removeAccountCallout**](docs/Api/AdAccountsApi.md#removeaccountcallout) | **DELETE** /v1/ads/accounts/callouts | Remove an account-level callout extension
+*AdAccountsApi* | [**replaceAdNegativeKeywordListKeywords**](docs/Api/AdAccountsApi.md#replaceadnegativekeywordlistkeywords) | **PUT** /v1/ads/accounts/negative-keyword-lists/{listId}/keywords | Replace negative list keywords
 *AdAccountsApi* | [**updateAdAccount**](docs/Api/AdAccountsApi.md#updateadaccount) | **PATCH** /v1/ads/accounts | Update ad account settings
+*AdAccountsApi* | [**updateAdNegativeKeywordList**](docs/Api/AdAccountsApi.md#updateadnegativekeywordlist) | **PUT** /v1/ads/accounts/negative-keyword-lists/{listId} | Rename a negative keyword list
 *AdAccountsApi* | [**updateValueRuleSet**](docs/Api/AdAccountsApi.md#updatevalueruleset) | **PUT** /v1/ads/value-rule-sets/{valueRuleSetId} | Replace a value rule set
 *AdAudiencesApi* | [**addUsersToAdAudience**](docs/Api/AdAudiencesApi.md#adduserstoadaudience) | **POST** /v1/ads/audiences/{audienceId}/users | Add users to audience
 *AdAudiencesApi* | [**createAdAudience**](docs/Api/AdAudiencesApi.md#createadaudience) | **POST** /v1/ads/audiences | Create custom audience
@@ -153,8 +159,10 @@ Class | Method | HTTP request | Description
 *AdCampaignsApi* | [**listAdSets**](docs/Api/AdCampaignsApi.md#listadsets) | **GET** /v1/ads/ad-sets | List ad sets
 *AdCampaignsApi* | [**listAds**](docs/Api/AdCampaignsApi.md#listads) | **GET** /v1/ads | List ads
 *AdCampaignsApi* | [**listBidStrategies**](docs/Api/AdCampaignsApi.md#listbidstrategies) | **GET** /v1/ads/bid-strategies | List Google Ads portfolio bid strategies
+*AdCampaignsApi* | [**listCampaignNegativeKeywordLists**](docs/Api/AdCampaignsApi.md#listcampaignnegativekeywordlists) | **GET** /v1/ads/campaigns/{campaignId}/negative-keyword-lists | List campaign negative lists
 *AdCampaignsApi* | [**listCampaignNegativeKeywords**](docs/Api/AdCampaignsApi.md#listcampaignnegativekeywords) | **GET** /v1/ads/campaigns/{campaignId}/negative-keywords | List campaign-level negative keywords
 *AdCampaignsApi* | [**removeAdKeyword**](docs/Api/AdCampaignsApi.md#removeadkeyword) | **DELETE** /v1/ads/keywords/{keywordId} | Remove a Search keyword
+*AdCampaignsApi* | [**replaceCampaignNegativeKeywordLists**](docs/Api/AdCampaignsApi.md#replacecampaignnegativekeywordlists) | **PUT** /v1/ads/campaigns/{campaignId}/negative-keyword-lists | Replace campaign negative lists
 *AdCampaignsApi* | [**replaceCampaignNegativeKeywords**](docs/Api/AdCampaignsApi.md#replacecampaignnegativekeywords) | **PUT** /v1/ads/campaigns/{campaignId}/negative-keywords | Replace campaign-level negative keywords
 *AdCampaignsApi* | [**updateAd**](docs/Api/AdCampaignsApi.md#updatead) | **PUT** /v1/ads/{adId} | Update ad
 *AdCampaignsApi* | [**updateAdCampaign**](docs/Api/AdCampaignsApi.md#updateadcampaign) | **PUT** /v1/ads/campaigns/{campaignId} | Update a campaign
@@ -490,8 +498,8 @@ Class | Method | HTTP request | Description
 *MessagesApi* | [**updateInboxConversation**](docs/Api/MessagesApi.md#updateinboxconversation) | **PUT** /v1/inbox/conversations/{conversationId} | Update conversation status
 *MessagesApi* | [**uploadMediaDirect**](docs/Api/MessagesApi.md#uploadmediadirect) | **POST** /v1/media/upload-direct | Upload media file
 *MessagingAdsApi* | [**createCallAd**](docs/Api/MessagingAdsApi.md#createcallad) | **POST** /v1/ads/call | Create Click-to-Call ad
-*MessagingAdsApi* | [**createCtwaAd**](docs/Api/MessagingAdsApi.md#createctwaad) | **POST** /v1/ads/ctwa | Create Click-to-WhatsApp ad (deprecated)
-*MessagingAdsApi* | [**createMessagingAd**](docs/Api/MessagingAdsApi.md#createmessagingad) | **POST** /v1/ads/messaging | Create click-to-message ad (WhatsApp / Messenger / Instagram Direct)
+*MessagingAdsApi* | [**createCtwaAd**](docs/Api/MessagingAdsApi.md#createctwaad) | **POST** /v1/ads/ctwa | Create CTWA ad (deprecated)
+*MessagingAdsApi* | [**createMessagingAd**](docs/Api/MessagingAdsApi.md#createmessagingad) | **POST** /v1/ads/messaging | Create messaging ad
 *PhoneNumbersApi* | [**cancelPhoneNumberPortIn**](docs/Api/PhoneNumbersApi.md#cancelphonenumberportin) | **DELETE** /v1/phone-numbers/port-in/{id} | Cancel a port-in
 *PhoneNumbersApi* | [**checkPhoneNumberAvailability**](docs/Api/PhoneNumbersApi.md#checkphonenumberavailability) | **GET** /v1/phone-numbers/availability | Check country availability
 *PhoneNumbersApi* | [**checkPhoneNumberPortability**](docs/Api/PhoneNumbersApi.md#checkphonenumberportability) | **POST** /v1/phone-numbers/port-in/check | Check portability
@@ -759,10 +767,10 @@ Class | Method | HTTP request | Description
 - [Ad](docs/Model/Ad.md)
 - [AdAnalyticsResponse](docs/Model/AdAnalyticsResponse.md)
 - [AdAnalyticsResponseAd](docs/Model/AdAnalyticsResponseAd.md)
+- [AdAnalyticsResponseAnalytics](docs/Model/AdAnalyticsResponseAnalytics.md)
 - [AdBudget](docs/Model/AdBudget.md)
 - [AdCampaign](docs/Model/AdCampaign.md)
 - [AdCampaignBudget](docs/Model/AdCampaignBudget.md)
-- [AdCampaignCampaignBudget](docs/Model/AdCampaignCampaignBudget.md)
 - [AdCreative](docs/Model/AdCreative.md)
 - [AdDailyMetrics](docs/Model/AdDailyMetrics.md)
 - [AdEngagementCounts](docs/Model/AdEngagementCounts.md)
@@ -770,6 +778,8 @@ Class | Method | HTTP request | Description
 - [AdKeyword](docs/Model/AdKeyword.md)
 - [AdKeywordMetrics](docs/Model/AdKeywordMetrics.md)
 - [AdMetrics](docs/Model/AdMetrics.md)
+- [AdNegativeKeywordList](docs/Model/AdNegativeKeywordList.md)
+- [AdNegativeKeywordListKeyword](docs/Model/AdNegativeKeywordListKeyword.md)
 - [AdPromotedObject](docs/Model/AdPromotedObject.md)
 - [AdReviewStatus](docs/Model/AdReviewStatus.md)
 - [AdSchedule](docs/Model/AdSchedule.md)
@@ -921,6 +931,8 @@ Class | Method | HTTP request | Description
 - [CampaignAnalyticsResponse](docs/Model/CampaignAnalyticsResponse.md)
 - [CampaignAnalyticsResponseAnalytics](docs/Model/CampaignAnalyticsResponseAnalytics.md)
 - [CampaignAnalyticsResponseAnalyticsDailyInner](docs/Model/CampaignAnalyticsResponseAnalyticsDailyInner.md)
+- [CampaignAnalyticsResponseAnalyticsImpressionShareCache](docs/Model/CampaignAnalyticsResponseAnalyticsImpressionShareCache.md)
+- [CampaignAnalyticsResponseAnalyticsSummary](docs/Model/CampaignAnalyticsResponseAnalyticsSummary.md)
 - [CampaignAnalyticsResponseCampaign](docs/Model/CampaignAnalyticsResponseCampaign.md)
 - [CampaignBidding](docs/Model/CampaignBidding.md)
 - [CampaignBiddingBidSpec](docs/Model/CampaignBiddingBidSpec.md)
@@ -991,6 +1003,8 @@ Class | Method | HTTP request | Description
 - [CreateAdInsightsReportRequest](docs/Model/CreateAdInsightsReportRequest.md)
 - [CreateAdInsightsReportRequestFilteringInner](docs/Model/CreateAdInsightsReportRequestFilteringInner.md)
 - [CreateAdInsightsReportRequestTimeIncrement](docs/Model/CreateAdInsightsReportRequestTimeIncrement.md)
+- [CreateAdNegativeKeywordList201Response](docs/Model/CreateAdNegativeKeywordList201Response.md)
+- [CreateAdNegativeKeywordListRequest](docs/Model/CreateAdNegativeKeywordListRequest.md)
 - [CreateAdSet201Response](docs/Model/CreateAdSet201Response.md)
 - [CreateAdSetRequest](docs/Model/CreateAdSetRequest.md)
 - [CreateApiKey201Response](docs/Model/CreateApiKey201Response.md)
@@ -1179,6 +1193,7 @@ Class | Method | HTTP request | Description
 - [DeleteAdCampaign200Response](docs/Model/DeleteAdCampaign200Response.md)
 - [DeleteAdCampaignRequest](docs/Model/DeleteAdCampaignRequest.md)
 - [DeleteAdCreative200Response](docs/Model/DeleteAdCreative200Response.md)
+- [DeleteAdNegativeKeywordList200Response](docs/Model/DeleteAdNegativeKeywordList200Response.md)
 - [DeleteAdSet200Response](docs/Model/DeleteAdSet200Response.md)
 - [DeleteAdVideo200Response](docs/Model/DeleteAdVideo200Response.md)
 - [DeleteDiscordScheduledEvent200Response](docs/Model/DeleteDiscordScheduledEvent200Response.md)
@@ -1304,6 +1319,8 @@ Class | Method | HTTP request | Description
 - [GetAdInsightsReport200ResponsePaging](docs/Model/GetAdInsightsReport200ResponsePaging.md)
 - [GetAdMedia200Response](docs/Model/GetAdMedia200Response.md)
 - [GetAdMedia200ResponseMediaInner](docs/Model/GetAdMedia200ResponseMediaInner.md)
+- [GetAdNegativeKeywordList200Response](docs/Model/GetAdNegativeKeywordList200Response.md)
+- [GetAdNegativeKeywordList200ResponseList](docs/Model/GetAdNegativeKeywordList200ResponseList.md)
 - [GetAdPreviews200Response](docs/Model/GetAdPreviews200Response.md)
 - [GetAdSetDetails200Response](docs/Model/GetAdSetDetails200Response.md)
 - [GetAdTrackingTags200Response](docs/Model/GetAdTrackingTags200Response.md)
@@ -1726,6 +1743,7 @@ Class | Method | HTTP request | Description
 - [ListAdImages200Response](docs/Model/ListAdImages200Response.md)
 - [ListAdKeywords200Response](docs/Model/ListAdKeywords200Response.md)
 - [ListAdLabels200Response](docs/Model/ListAdLabels200Response.md)
+- [ListAdNegativeKeywordLists200Response](docs/Model/ListAdNegativeKeywordLists200Response.md)
 - [ListAdSets200Response](docs/Model/ListAdSets200Response.md)
 - [ListAdSets200ResponseAdSetsInner](docs/Model/ListAdSets200ResponseAdSetsInner.md)
 - [ListAdStudies200Response](docs/Model/ListAdStudies200Response.md)
@@ -2023,6 +2041,9 @@ Class | Method | HTTP request | Description
 - [ReplaceAdAudienceCompanies200Response](docs/Model/ReplaceAdAudienceCompanies200Response.md)
 - [ReplaceAdAudienceCompaniesRequest](docs/Model/ReplaceAdAudienceCompaniesRequest.md)
 - [ReplaceAdAudienceCompaniesRequestCompaniesInner](docs/Model/ReplaceAdAudienceCompaniesRequestCompaniesInner.md)
+- [ReplaceAdNegativeKeywordListKeywords200Response](docs/Model/ReplaceAdNegativeKeywordListKeywords200Response.md)
+- [ReplaceAdNegativeKeywordListKeywordsRequest](docs/Model/ReplaceAdNegativeKeywordListKeywordsRequest.md)
+- [ReplaceCampaignNegativeKeywordListsRequest](docs/Model/ReplaceCampaignNegativeKeywordListsRequest.md)
 - [ReplaceCampaignNegativeKeywords200Response](docs/Model/ReplaceCampaignNegativeKeywords200Response.md)
 - [ReplaceCampaignNegativeKeywordsRequest](docs/Model/ReplaceCampaignNegativeKeywordsRequest.md)
 - [ReplyToGoogleBusinessReview200Response](docs/Model/ReplyToGoogleBusinessReview200Response.md)
@@ -2300,6 +2321,8 @@ Class | Method | HTTP request | Description
 - [UpdateAdCreativeRequest](docs/Model/UpdateAdCreativeRequest.md)
 - [UpdateAdKeyword200Response](docs/Model/UpdateAdKeyword200Response.md)
 - [UpdateAdKeywordRequest](docs/Model/UpdateAdKeywordRequest.md)
+- [UpdateAdNegativeKeywordList200Response](docs/Model/UpdateAdNegativeKeywordList200Response.md)
+- [UpdateAdNegativeKeywordListRequest](docs/Model/UpdateAdNegativeKeywordListRequest.md)
 - [UpdateAdRequest](docs/Model/UpdateAdRequest.md)
 - [UpdateAdRequestBudget](docs/Model/UpdateAdRequestBudget.md)
 - [UpdateAdRequestCreative](docs/Model/UpdateAdRequestCreative.md)

@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * CtwaAdRequestBodyCreativesInnerVideo Class Doc Comment
  *
  * @category Class
- * @description Video creative. Mutually exclusive with this entry&#39;s &#x60;imageUrl&#x60;. Required if &#x60;imageUrl&#x60; is not supplied.
+ * @description Video creative. Mutually exclusive with this entry&#39;s &#x60;imageUrl&#x60;. Required if neither &#x60;imageUrl&#x60; nor an existing post reference is supplied.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

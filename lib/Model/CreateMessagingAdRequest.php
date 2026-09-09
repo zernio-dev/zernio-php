@@ -61,6 +61,9 @@ class CreateMessagingAdRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'account_id' => 'string',
         'ad_account_id' => 'string',
         'name' => 'string',
+        'existing_post_id' => 'string',
+        'object_story_id' => 'string',
+        'whatsapp_phone_number' => 'string',
         'headline' => 'string',
         'body' => 'string',
         'image_url' => 'string',
@@ -108,6 +111,9 @@ class CreateMessagingAdRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'account_id' => null,
         'ad_account_id' => null,
         'name' => null,
+        'existing_post_id' => null,
+        'object_story_id' => null,
+        'whatsapp_phone_number' => null,
         'headline' => null,
         'body' => null,
         'image_url' => 'uri',
@@ -153,6 +159,9 @@ class CreateMessagingAdRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'account_id' => false,
         'ad_account_id' => false,
         'name' => false,
+        'existing_post_id' => false,
+        'object_story_id' => false,
+        'whatsapp_phone_number' => false,
         'headline' => false,
         'body' => false,
         'image_url' => false,
@@ -278,6 +287,9 @@ class CreateMessagingAdRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'account_id' => 'accountId',
         'ad_account_id' => 'adAccountId',
         'name' => 'name',
+        'existing_post_id' => 'existingPostId',
+        'object_story_id' => 'objectStoryId',
+        'whatsapp_phone_number' => 'whatsappPhoneNumber',
         'headline' => 'headline',
         'body' => 'body',
         'image_url' => 'imageUrl',
@@ -323,6 +335,9 @@ class CreateMessagingAdRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'account_id' => 'setAccountId',
         'ad_account_id' => 'setAdAccountId',
         'name' => 'setName',
+        'existing_post_id' => 'setExistingPostId',
+        'object_story_id' => 'setObjectStoryId',
+        'whatsapp_phone_number' => 'setWhatsappPhoneNumber',
         'headline' => 'setHeadline',
         'body' => 'setBody',
         'image_url' => 'setImageUrl',
@@ -368,6 +383,9 @@ class CreateMessagingAdRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'account_id' => 'getAccountId',
         'ad_account_id' => 'getAdAccountId',
         'name' => 'getName',
+        'existing_post_id' => 'getExistingPostId',
+        'object_story_id' => 'getObjectStoryId',
+        'whatsapp_phone_number' => 'getWhatsappPhoneNumber',
         'headline' => 'getHeadline',
         'body' => 'getBody',
         'image_url' => 'getImageUrl',
@@ -577,6 +595,9 @@ class CreateMessagingAdRequest implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('ad_account_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('existing_post_id', $data ?? [], null);
+        $this->setIfExists('object_story_id', $data ?? [], null);
+        $this->setIfExists('whatsapp_phone_number', $data ?? [], null);
         $this->setIfExists('headline', $data ?? [], null);
         $this->setIfExists('body', $data ?? [], null);
         $this->setIfExists('image_url', $data ?? [], null);
@@ -659,6 +680,18 @@ class CreateMessagingAdRequest implements ModelInterface, ArrayAccess, \JsonSeri
         }
         if ((mb_strlen($this->container['name']) < 1)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['existing_post_id']) && (mb_strlen($this->container['existing_post_id']) < 1)) {
+            $invalidProperties[] = "invalid value for 'existing_post_id', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['object_story_id']) && !preg_match("/^\\d+_\\d+$/", $this->container['object_story_id'])) {
+            $invalidProperties[] = "invalid value for 'object_story_id', must be conform to the pattern /^\\d+_\\d+$/.";
+        }
+
+        if (!is_null($this->container['whatsapp_phone_number']) && !preg_match("/^\\+[1-9]\\d{6,14}$/", $this->container['whatsapp_phone_number'])) {
+            $invalidProperties[] = "invalid value for 'whatsapp_phone_number', must be conform to the pattern /^\\+[1-9]\\d{6,14}$/.";
         }
 
         if (!is_null($this->container['headline']) && (mb_strlen($this->container['headline']) > 255)) {
@@ -887,6 +920,102 @@ class CreateMessagingAdRequest implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
+     * Gets existing_post_id
+     *
+     * @return string|null
+     */
+    public function getExistingPostId()
+    {
+        return $this->container['existing_post_id'];
+    }
+
+    /**
+     * Sets existing_post_id
+     *
+     * @param string|null $existing_post_id Messaging and CTWA only. Platform post or reel ID, resolved like boost platformPostId. Facebook IDs become object_story_id; Instagram IDs become source_instagram_media_id using the connected Instagram identity. Mutually exclusive with objectStoryId and fresh creative fields.
+     *
+     * @return self
+     */
+    public function setExistingPostId($existing_post_id)
+    {
+        if (is_null($existing_post_id)) {
+            throw new \InvalidArgumentException('non-nullable existing_post_id cannot be null');
+        }
+
+        if ((mb_strlen($existing_post_id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $existing_post_id when calling CreateMessagingAdRequest., must be bigger than or equal to 1.');
+        }
+
+        $this->container['existing_post_id'] = $existing_post_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_story_id
+     *
+     * @return string|null
+     */
+    public function getObjectStoryId()
+    {
+        return $this->container['object_story_id'];
+    }
+
+    /**
+     * Sets object_story_id
+     *
+     * @param string|null $object_story_id Messaging and CTWA only. Raw Facebook pageId_postId reference, used as object_story_id even with an Instagram account. Mutually exclusive with existingPostId and fresh creative fields.
+     *
+     * @return self
+     */
+    public function setObjectStoryId($object_story_id)
+    {
+        if (is_null($object_story_id)) {
+            throw new \InvalidArgumentException('non-nullable object_story_id cannot be null');
+        }
+
+        if ((!preg_match("/^\\d+_\\d+$/", ObjectSerializer::toString($object_story_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$object_story_id when calling CreateMessagingAdRequest., must conform to the pattern /^\\d+_\\d+$/.");
+        }
+
+        $this->container['object_story_id'] = $object_story_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets whatsapp_phone_number
+     *
+     * @return string|null
+     */
+    public function getWhatsappPhoneNumber()
+    {
+        return $this->container['whatsapp_phone_number'];
+    }
+
+    /**
+     * Sets whatsapp_phone_number
+     *
+     * @param string|null $whatsapp_phone_number WhatsApp only. Optional E.164 number already paired with the Facebook Page. Omit to let Meta select the paired number. Sent to the creative CTA and, when creating a new ad set, its promoted_object. Attach requests do not change the existing ad set.
+     *
+     * @return self
+     */
+    public function setWhatsappPhoneNumber($whatsapp_phone_number)
+    {
+        if (is_null($whatsapp_phone_number)) {
+            throw new \InvalidArgumentException('non-nullable whatsapp_phone_number cannot be null');
+        }
+
+        if ((!preg_match("/^\\+[1-9]\\d{6,14}$/", ObjectSerializer::toString($whatsapp_phone_number)))) {
+            throw new \InvalidArgumentException("invalid value for \$whatsapp_phone_number when calling CreateMessagingAdRequest., must conform to the pattern /^\\+[1-9]\\d{6,14}$/.");
+        }
+
+        $this->container['whatsapp_phone_number'] = $whatsapp_phone_number;
+
+        return $this;
+    }
+
+    /**
      * Gets headline
      *
      * @return string|null
@@ -965,7 +1094,7 @@ class CreateMessagingAdRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets image_url
      *
-     * @param string|null $image_url Image asset for single-creative shape. Mutually exclusive with `video` and with `creatives[]`. Required on the single-creative shape if `video` is not supplied.
+     * @param string|null $image_url Image asset for single-creative shape. Mutually exclusive with `video` and with `creatives[]`. Required on the single-creative shape if neither `video` nor an existing post reference is supplied.
      *
      * @return self
      */
@@ -1046,7 +1175,7 @@ class CreateMessagingAdRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets creatives
      *
-     * @param \Zernio\Model\CtwaAdRequestBodyCreativesInner[]|null $creatives Multi-creative shape: N CTWA ads under one campaign + one ad set, sharing budget and targeting. Mutually exclusive with the top-level single-creative fields (`headline` / `body` / `imageUrl` / `video`): setting both is a 400, unlike `POST /v1/ads/create` where the top-level fields are silently ignored in multi-creative mode. Each entry must supply its own headline, body, and exactly one of `imageUrl` / `video`.
+     * @param \Zernio\Model\CtwaAdRequestBodyCreativesInner[]|null $creatives Multi-creative shape: N CTWA ads under one campaign + one ad set, sharing budget and targeting. Mutually exclusive with the top-level single-creative fields (`headline` / `body` / `imageUrl` / `video`): setting both is a 400, unlike `POST /v1/ads/create` where the top-level fields are silently ignored in multi-creative mode. Each entry supplies headline, body, and image/video, or an existingPostId or objectStoryId reference. Fresh and existing creatives can be mixed.
      *
      * @return self
      */

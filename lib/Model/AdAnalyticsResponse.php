@@ -60,7 +60,7 @@ class AdAnalyticsResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $openAPITypes = [
         'backfill_pending' => 'bool',
         'ad' => '\Zernio\Model\AdAnalyticsResponseAd',
-        'analytics' => '\Zernio\Model\CampaignAnalyticsResponseAnalytics'
+        'analytics' => '\Zernio\Model\AdAnalyticsResponseAnalytics'
     ];
 
     /**
@@ -361,7 +361,7 @@ class AdAnalyticsResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets analytics
      *
-     * @return \Zernio\Model\CampaignAnalyticsResponseAnalytics|null
+     * @return \Zernio\Model\AdAnalyticsResponseAnalytics|null
      */
     public function getAnalytics()
     {
@@ -371,7 +371,7 @@ class AdAnalyticsResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets analytics
      *
-     * @param \Zernio\Model\CampaignAnalyticsResponseAnalytics|null $analytics analytics
+     * @param \Zernio\Model\AdAnalyticsResponseAnalytics|null $analytics analytics
      *
      * @return self
      */

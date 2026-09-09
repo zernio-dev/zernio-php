@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **campaign_issues_info** | **object[]** | Platform-reported campaign issues (Meta &#x60;issues_info[]&#x60;). | [optional]
 **ad_count** | **int** |  | [optional]
 **budget** | [**\Zernio\Model\AdCampaignBudget**](AdCampaignBudget.md) |  | [optional]
-**campaign_budget** | [**\Zernio\Model\AdCampaignCampaignBudget**](AdCampaignCampaignBudget.md) |  | [optional]
+**campaign_budget** | [**\Zernio\Model\AdCampaignBudget**](AdCampaignBudget.md) |  | [optional]
 **budget_level** | **string** | Canonical CBO/ABO indicator. See AdTreeCampaign.budgetLevel. | [optional]
 **is_budget_schedule_enabled** | **bool** | Meta-only. Mirrors Campaign.is_budget_schedule_enabled. | [optional] [default to false]
 **currency** | **string** | ISO 4217 currency code for all budget amounts. Budgets are NOT normalized to USD. | [optional]

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **updated** | **int** | Local Ad documents mirrored. 0 on the empty-campaign path. | [optional]
-**budget** | [**\Zernio\Model\AdBudget**](AdBudget.md) |  | [optional]
+**budget** | [**\Zernio\Model\AdCampaignBudget**](AdCampaignBudget.md) |  | [optional]
 **budget_level** | **string** |  | [optional]
 **bid_strategy** | [**\Zernio\Model\BidStrategy**](BidStrategy.md) |  | [optional]
 **bid_amount** | **float** |  | [optional]

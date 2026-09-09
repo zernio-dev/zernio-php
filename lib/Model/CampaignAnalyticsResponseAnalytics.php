@@ -58,7 +58,8 @@ class CampaignAnalyticsResponseAnalytics implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'summary' => '\Zernio\Model\AdMetrics',
+        'summary' => '\Zernio\Model\CampaignAnalyticsResponseAnalyticsSummary',
+        'impression_share_cache' => '\Zernio\Model\CampaignAnalyticsResponseAnalyticsImpressionShareCache',
         'daily' => '\Zernio\Model\CampaignAnalyticsResponseAnalyticsDailyInner[]',
         'breakdowns' => 'array<string,object[]>'
     ];
@@ -72,6 +73,7 @@ class CampaignAnalyticsResponseAnalytics implements ModelInterface, ArrayAccess,
       */
     protected static $openAPIFormats = [
         'summary' => null,
+        'impression_share_cache' => null,
         'daily' => null,
         'breakdowns' => null
     ];
@@ -83,6 +85,7 @@ class CampaignAnalyticsResponseAnalytics implements ModelInterface, ArrayAccess,
       */
     protected static array $openAPINullables = [
         'summary' => false,
+        'impression_share_cache' => false,
         'daily' => false,
         'breakdowns' => false
     ];
@@ -174,6 +177,7 @@ class CampaignAnalyticsResponseAnalytics implements ModelInterface, ArrayAccess,
      */
     protected static $attributeMap = [
         'summary' => 'summary',
+        'impression_share_cache' => 'impressionShareCache',
         'daily' => 'daily',
         'breakdowns' => 'breakdowns'
     ];
@@ -185,6 +189,7 @@ class CampaignAnalyticsResponseAnalytics implements ModelInterface, ArrayAccess,
      */
     protected static $setters = [
         'summary' => 'setSummary',
+        'impression_share_cache' => 'setImpressionShareCache',
         'daily' => 'setDaily',
         'breakdowns' => 'setBreakdowns'
     ];
@@ -196,6 +201,7 @@ class CampaignAnalyticsResponseAnalytics implements ModelInterface, ArrayAccess,
      */
     protected static $getters = [
         'summary' => 'getSummary',
+        'impression_share_cache' => 'getImpressionShareCache',
         'daily' => 'getDaily',
         'breakdowns' => 'getBreakdowns'
     ];
@@ -258,6 +264,7 @@ class CampaignAnalyticsResponseAnalytics implements ModelInterface, ArrayAccess,
     public function __construct(?array $data = null)
     {
         $this->setIfExists('summary', $data ?? [], null);
+        $this->setIfExists('impression_share_cache', $data ?? [], null);
         $this->setIfExists('daily', $data ?? [], null);
         $this->setIfExists('breakdowns', $data ?? [], null);
     }
@@ -307,7 +314,7 @@ class CampaignAnalyticsResponseAnalytics implements ModelInterface, ArrayAccess,
     /**
      * Gets summary
      *
-     * @return \Zernio\Model\AdMetrics|null
+     * @return \Zernio\Model\CampaignAnalyticsResponseAnalyticsSummary|null
      */
     public function getSummary()
     {
@@ -317,7 +324,7 @@ class CampaignAnalyticsResponseAnalytics implements ModelInterface, ArrayAccess,
     /**
      * Sets summary
      *
-     * @param \Zernio\Model\AdMetrics|null $summary summary
+     * @param \Zernio\Model\CampaignAnalyticsResponseAnalyticsSummary|null $summary summary
      *
      * @return self
      */
@@ -327,6 +334,33 @@ class CampaignAnalyticsResponseAnalytics implements ModelInterface, ArrayAccess,
             throw new \InvalidArgumentException('non-nullable summary cannot be null');
         }
         $this->container['summary'] = $summary;
+
+        return $this;
+    }
+
+    /**
+     * Gets impression_share_cache
+     *
+     * @return \Zernio\Model\CampaignAnalyticsResponseAnalyticsImpressionShareCache|null
+     */
+    public function getImpressionShareCache()
+    {
+        return $this->container['impression_share_cache'];
+    }
+
+    /**
+     * Sets impression_share_cache
+     *
+     * @param \Zernio\Model\CampaignAnalyticsResponseAnalyticsImpressionShareCache|null $impression_share_cache impression_share_cache
+     *
+     * @return self
+     */
+    public function setImpressionShareCache($impression_share_cache)
+    {
+        if (is_null($impression_share_cache)) {
+            throw new \InvalidArgumentException('non-nullable impression_share_cache cannot be null');
+        }
+        $this->container['impression_share_cache'] = $impression_share_cache;
 
         return $this;
     }

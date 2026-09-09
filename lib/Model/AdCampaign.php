@@ -67,7 +67,7 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'campaign_issues_info' => 'object[]',
         'ad_count' => 'int',
         'budget' => '\Zernio\Model\AdCampaignBudget',
-        'campaign_budget' => '\Zernio\Model\AdCampaignCampaignBudget',
+        'campaign_budget' => '\Zernio\Model\AdCampaignBudget',
         'budget_level' => 'string',
         'is_budget_schedule_enabled' => 'bool',
         'currency' => 'string',
@@ -138,8 +138,8 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_campaign_status' => true,
         'campaign_issues_info' => true,
         'ad_count' => false,
-        'budget' => false,
-        'campaign_budget' => false,
+        'budget' => true,
+        'campaign_budget' => true,
         'budget_level' => true,
         'is_budget_schedule_enabled' => false,
         'currency' => true,
@@ -799,7 +799,14 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBudget($budget)
     {
         if (is_null($budget)) {
-            throw new \InvalidArgumentException('non-nullable budget cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'budget');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('budget', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['budget'] = $budget;
 
@@ -809,7 +816,7 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets campaign_budget
      *
-     * @return \Zernio\Model\AdCampaignCampaignBudget|null
+     * @return \Zernio\Model\AdCampaignBudget|null
      */
     public function getCampaignBudget()
     {
@@ -819,14 +826,21 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets campaign_budget
      *
-     * @param \Zernio\Model\AdCampaignCampaignBudget|null $campaign_budget campaign_budget
+     * @param \Zernio\Model\AdCampaignBudget|null $campaign_budget campaign_budget
      *
      * @return self
      */
     public function setCampaignBudget($campaign_budget)
     {
         if (is_null($campaign_budget)) {
-            throw new \InvalidArgumentException('non-nullable campaign_budget cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'campaign_budget');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('campaign_budget', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['campaign_budget'] = $campaign_budget;
 

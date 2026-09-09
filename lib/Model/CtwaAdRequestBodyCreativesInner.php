@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * CtwaAdRequestBodyCreativesInner Class Doc Comment
  *
  * @category Class
- * @description Each entry must also include exactly one of &#x60;imageUrl&#x60; or &#x60;video&#x60;.
+ * @description Supply headline, body, and image/video, or exactly one existing post reference. References cannot be combined with fresh creative fields.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,6 +59,8 @@ class CtwaAdRequestBodyCreativesInner implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
+        'existing_post_id' => 'string',
+        'object_story_id' => 'string',
         'headline' => 'string',
         'body' => 'string',
         'image_url' => 'string',
@@ -74,6 +76,8 @@ class CtwaAdRequestBodyCreativesInner implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'existing_post_id' => null,
+        'object_story_id' => null,
         'headline' => null,
         'body' => null,
         'image_url' => 'uri',
@@ -87,6 +91,8 @@ class CtwaAdRequestBodyCreativesInner implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'existing_post_id' => false,
+        'object_story_id' => false,
         'headline' => false,
         'body' => false,
         'image_url' => false,
@@ -180,6 +186,8 @@ class CtwaAdRequestBodyCreativesInner implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
+        'existing_post_id' => 'existingPostId',
+        'object_story_id' => 'objectStoryId',
         'headline' => 'headline',
         'body' => 'body',
         'image_url' => 'imageUrl',
@@ -193,6 +201,8 @@ class CtwaAdRequestBodyCreativesInner implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
+        'existing_post_id' => 'setExistingPostId',
+        'object_story_id' => 'setObjectStoryId',
         'headline' => 'setHeadline',
         'body' => 'setBody',
         'image_url' => 'setImageUrl',
@@ -206,6 +216,8 @@ class CtwaAdRequestBodyCreativesInner implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
+        'existing_post_id' => 'getExistingPostId',
+        'object_story_id' => 'getObjectStoryId',
         'headline' => 'getHeadline',
         'body' => 'getBody',
         'image_url' => 'getImageUrl',
@@ -270,6 +282,8 @@ class CtwaAdRequestBodyCreativesInner implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('existing_post_id', $data ?? [], null);
+        $this->setIfExists('object_story_id', $data ?? [], null);
         $this->setIfExists('headline', $data ?? [], null);
         $this->setIfExists('body', $data ?? [], null);
         $this->setIfExists('image_url', $data ?? [], null);
@@ -304,21 +318,23 @@ class CtwaAdRequestBodyCreativesInner implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
-        if ($this->container['headline'] === null) {
-            $invalidProperties[] = "'headline' can't be null";
+        if (!is_null($this->container['existing_post_id']) && (mb_strlen($this->container['existing_post_id']) < 1)) {
+            $invalidProperties[] = "invalid value for 'existing_post_id', the character length must be bigger than or equal to 1.";
         }
-        if ((mb_strlen($this->container['headline']) > 255)) {
+
+        if (!is_null($this->container['object_story_id']) && !preg_match("/^\\d+_\\d+$/", $this->container['object_story_id'])) {
+            $invalidProperties[] = "invalid value for 'object_story_id', must be conform to the pattern /^\\d+_\\d+$/.";
+        }
+
+        if (!is_null($this->container['headline']) && (mb_strlen($this->container['headline']) > 255)) {
             $invalidProperties[] = "invalid value for 'headline', the character length must be smaller than or equal to 255.";
         }
 
-        if ((mb_strlen($this->container['headline']) < 1)) {
+        if (!is_null($this->container['headline']) && (mb_strlen($this->container['headline']) < 1)) {
             $invalidProperties[] = "invalid value for 'headline', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['body'] === null) {
-            $invalidProperties[] = "'body' can't be null";
-        }
-        if ((mb_strlen($this->container['body']) < 1)) {
+        if (!is_null($this->container['body']) && (mb_strlen($this->container['body']) < 1)) {
             $invalidProperties[] = "invalid value for 'body', the character length must be bigger than or equal to 1.";
         }
 
@@ -338,9 +354,73 @@ class CtwaAdRequestBodyCreativesInner implements ModelInterface, ArrayAccess, \J
 
 
     /**
+     * Gets existing_post_id
+     *
+     * @return string|null
+     */
+    public function getExistingPostId()
+    {
+        return $this->container['existing_post_id'];
+    }
+
+    /**
+     * Sets existing_post_id
+     *
+     * @param string|null $existing_post_id Messaging and CTWA only. Platform post or reel ID, resolved like boost platformPostId. Facebook IDs become object_story_id; Instagram IDs become source_instagram_media_id using the connected Instagram identity. Mutually exclusive with objectStoryId and fresh creative fields.
+     *
+     * @return self
+     */
+    public function setExistingPostId($existing_post_id)
+    {
+        if (is_null($existing_post_id)) {
+            throw new \InvalidArgumentException('non-nullable existing_post_id cannot be null');
+        }
+
+        if ((mb_strlen($existing_post_id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $existing_post_id when calling CtwaAdRequestBodyCreativesInner., must be bigger than or equal to 1.');
+        }
+
+        $this->container['existing_post_id'] = $existing_post_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_story_id
+     *
+     * @return string|null
+     */
+    public function getObjectStoryId()
+    {
+        return $this->container['object_story_id'];
+    }
+
+    /**
+     * Sets object_story_id
+     *
+     * @param string|null $object_story_id Messaging and CTWA only. Raw Facebook pageId_postId reference, used as object_story_id even with an Instagram account. Mutually exclusive with existingPostId and fresh creative fields.
+     *
+     * @return self
+     */
+    public function setObjectStoryId($object_story_id)
+    {
+        if (is_null($object_story_id)) {
+            throw new \InvalidArgumentException('non-nullable object_story_id cannot be null');
+        }
+
+        if ((!preg_match("/^\\d+_\\d+$/", ObjectSerializer::toString($object_story_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$object_story_id when calling CtwaAdRequestBodyCreativesInner., must conform to the pattern /^\\d+_\\d+$/.");
+        }
+
+        $this->container['object_story_id'] = $object_story_id;
+
+        return $this;
+    }
+
+    /**
      * Gets headline
      *
-     * @return string
+     * @return string|null
      */
     public function getHeadline()
     {
@@ -350,7 +430,7 @@ class CtwaAdRequestBodyCreativesInner implements ModelInterface, ArrayAccess, \J
     /**
      * Sets headline
      *
-     * @param string $headline headline
+     * @param string|null $headline headline
      *
      * @return self
      */
@@ -374,7 +454,7 @@ class CtwaAdRequestBodyCreativesInner implements ModelInterface, ArrayAccess, \J
     /**
      * Gets body
      *
-     * @return string
+     * @return string|null
      */
     public function getBody()
     {
@@ -384,7 +464,7 @@ class CtwaAdRequestBodyCreativesInner implements ModelInterface, ArrayAccess, \J
     /**
      * Sets body
      *
-     * @param string $body Primary text shown above the image / video.
+     * @param string|null $body Primary text shown above the image / video.
      *
      * @return self
      */
@@ -416,7 +496,7 @@ class CtwaAdRequestBodyCreativesInner implements ModelInterface, ArrayAccess, \J
     /**
      * Sets image_url
      *
-     * @param string|null $image_url Image asset. Mutually exclusive with this entry's `video`. Required if `video` is not supplied.
+     * @param string|null $image_url Image asset. Mutually exclusive with this entry's `video`. Required if neither `video` nor an existing post reference is supplied.
      *
      * @return self
      */

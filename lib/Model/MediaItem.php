@@ -432,7 +432,7 @@ class MediaItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets url
      *
-     * @param string|null $url url
+     * @param string|null $url A media item with a null, missing or empty url is dropped from non-draft posts (drafts keep it as a pending-upload placeholder).
      *
      * @return self
      */

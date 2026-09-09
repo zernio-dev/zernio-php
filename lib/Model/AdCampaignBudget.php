@@ -36,7 +36,6 @@ use \Zernio\ObjectSerializer;
  * AdCampaignBudget Class Doc Comment
  *
  * @category Class
- * @description Effective budget (back-compat). Use &#x60;budgetLevel&#x60; to disambiguate CBO vs ABO.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -51,7 +50,7 @@ class AdCampaignBudget implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AdCampaign_budget';
+    protected static $openAPIModelName = 'AdCampaignBudget';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +59,11 @@ class AdCampaignBudget implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'amount' => 'float',
-        'type' => 'string'
+        'type' => 'string',
+        'amount_micros' => 'string',
+        'explicitly_shared' => 'bool',
+        'resource_name' => 'string',
+        'delivery_method' => 'string'
     ];
 
     /**
@@ -72,7 +75,11 @@ class AdCampaignBudget implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'amount' => null,
-        'type' => null
+        'type' => null,
+        'amount_micros' => null,
+        'explicitly_shared' => null,
+        'resource_name' => null,
+        'delivery_method' => null
     ];
 
     /**
@@ -82,7 +89,11 @@ class AdCampaignBudget implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'amount' => false,
-        'type' => false
+        'type' => false,
+        'amount_micros' => false,
+        'explicitly_shared' => true,
+        'resource_name' => true,
+        'delivery_method' => true
     ];
 
     /**
@@ -172,7 +183,11 @@ class AdCampaignBudget implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'amount' => 'amount',
-        'type' => 'type'
+        'type' => 'type',
+        'amount_micros' => 'amountMicros',
+        'explicitly_shared' => 'explicitlyShared',
+        'resource_name' => 'resourceName',
+        'delivery_method' => 'deliveryMethod'
     ];
 
     /**
@@ -182,7 +197,11 @@ class AdCampaignBudget implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'amount' => 'setAmount',
-        'type' => 'setType'
+        'type' => 'setType',
+        'amount_micros' => 'setAmountMicros',
+        'explicitly_shared' => 'setExplicitlyShared',
+        'resource_name' => 'setResourceName',
+        'delivery_method' => 'setDeliveryMethod'
     ];
 
     /**
@@ -192,7 +211,11 @@ class AdCampaignBudget implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'amount' => 'getAmount',
-        'type' => 'getType'
+        'type' => 'getType',
+        'amount_micros' => 'getAmountMicros',
+        'explicitly_shared' => 'getExplicitlyShared',
+        'resource_name' => 'getResourceName',
+        'delivery_method' => 'getDeliveryMethod'
     ];
 
     /**
@@ -269,6 +292,10 @@ class AdCampaignBudget implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('amount_micros', $data ?? [], null);
+        $this->setIfExists('explicitly_shared', $data ?? [], null);
+        $this->setIfExists('resource_name', $data ?? [], null);
+        $this->setIfExists('delivery_method', $data ?? [], null);
     }
 
     /**
@@ -298,6 +325,12 @@ class AdCampaignBudget implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['amount'] === null) {
+            $invalidProperties[] = "'amount' can't be null";
+        }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
         $allowedValues = $this->getTypeAllowableValues();
         if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -305,6 +338,10 @@ class AdCampaignBudget implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->container['type'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['amount_micros']) && !preg_match("/^\\d+$/", $this->container['amount_micros'])) {
+            $invalidProperties[] = "invalid value for 'amount_micros', must be conform to the pattern /^\\d+$/.";
         }
 
         return $invalidProperties;
@@ -325,7 +362,7 @@ class AdCampaignBudget implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets amount
      *
-     * @return float|null
+     * @return float
      */
     public function getAmount()
     {
@@ -335,7 +372,7 @@ class AdCampaignBudget implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amount
      *
-     * @param float|null $amount amount
+     * @param float $amount amount
      *
      * @return self
      */
@@ -352,7 +389,7 @@ class AdCampaignBudget implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets type
      *
-     * @return string|null
+     * @return string
      */
     public function getType()
     {
@@ -362,7 +399,7 @@ class AdCampaignBudget implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string|null $type type
+     * @param string $type type
      *
      * @return self
      */
@@ -382,6 +419,140 @@ class AdCampaignBudget implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_micros
+     *
+     * @return string|null
+     */
+    public function getAmountMicros()
+    {
+        return $this->container['amount_micros'];
+    }
+
+    /**
+     * Sets amount_micros
+     *
+     * @param string|null $amount_micros Google only. Exact decimal micros; DAILY uses amount_micros and CUSTOM_PERIOD uses total_amount_micros.
+     *
+     * @return self
+     */
+    public function setAmountMicros($amount_micros)
+    {
+        if (is_null($amount_micros)) {
+            throw new \InvalidArgumentException('non-nullable amount_micros cannot be null');
+        }
+
+        if ((!preg_match("/^\\d+$/", ObjectSerializer::toString($amount_micros)))) {
+            throw new \InvalidArgumentException("invalid value for \$amount_micros when calling AdCampaignBudget., must conform to the pattern /^\\d+$/.");
+        }
+
+        $this->container['amount_micros'] = $amount_micros;
+
+        return $this;
+    }
+
+    /**
+     * Gets explicitly_shared
+     *
+     * @return bool|null
+     */
+    public function getExplicitlyShared()
+    {
+        return $this->container['explicitly_shared'];
+    }
+
+    /**
+     * Sets explicitly_shared
+     *
+     * @param bool|null $explicitly_shared Google only. True for a shared budget; null when unavailable. Shared writes require allowSharedBudgetUpdate=true; unknown sharing status cannot be overridden.
+     *
+     * @return self
+     */
+    public function setExplicitlyShared($explicitly_shared)
+    {
+        if (is_null($explicitly_shared)) {
+            array_push($this->openAPINullablesSetToNull, 'explicitly_shared');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('explicitly_shared', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['explicitly_shared'] = $explicitly_shared;
+
+        return $this;
+    }
+
+    /**
+     * Gets resource_name
+     *
+     * @return string|null
+     */
+    public function getResourceName()
+    {
+        return $this->container['resource_name'];
+    }
+
+    /**
+     * Sets resource_name
+     *
+     * @param string|null $resource_name Google only. campaign_budget.resource_name, or null when unavailable.
+     *
+     * @return self
+     */
+    public function setResourceName($resource_name)
+    {
+        if (is_null($resource_name)) {
+            array_push($this->openAPINullablesSetToNull, 'resource_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('resource_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['resource_name'] = $resource_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_method
+     *
+     * @return string|null
+     */
+    public function getDeliveryMethod()
+    {
+        return $this->container['delivery_method'];
+    }
+
+    /**
+     * Sets delivery_method
+     *
+     * @param string|null $delivery_method Google only. campaign_budget.delivery_method, typically STANDARD, or null when unavailable.
+     *
+     * @return self
+     */
+    public function setDeliveryMethod($delivery_method)
+    {
+        if (is_null($delivery_method)) {
+            array_push($this->openAPINullablesSetToNull, 'delivery_method');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('delivery_method', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['delivery_method'] = $delivery_method;
 
         return $this;
     }
