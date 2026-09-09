@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **image_url** | **string** | Card image; uploaded to the ad account and referenced by hash. |
-**link_url** | **string** | Card destination URL. Defaults to the top-level linkUrl. | [optional]
+**link_url** | **string** | Card destination URL. Defaults to the top-level linkUrl, or Meta&#39;s lead-form link when leadGenFormId is set and neither is provided. | [optional]
 **headline** | **string** | Card headline, shown below the card image. | [optional]
 **description** | **string** | Card description, shown under the headline. | [optional]
 **call_to_action** | **string** | Card CTA override. Defaults to the top-level callToAction; same enum. | [optional]

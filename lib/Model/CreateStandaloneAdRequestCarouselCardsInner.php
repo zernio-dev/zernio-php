@@ -369,7 +369,7 @@ class CreateStandaloneAdRequestCarouselCardsInner implements ModelInterface, Arr
     /**
      * Sets link_url
      *
-     * @param string|null $link_url Card destination URL. Defaults to the top-level linkUrl.
+     * @param string|null $link_url Card destination URL. Defaults to the top-level linkUrl, or Meta's lead-form link when leadGenFormId is set and neither is provided.
      *
      * @return self
      */
