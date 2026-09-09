@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**promotion** | [**\Zernio\Model\MetaPromotion**](MetaPromotion.md) | Overrides the top-level offer for this item. Omit to inherit; null disables the inherited offer. | [optional]
+**creative_features** | **array<string,string>** | Replaces the entire top-level creativeFeatures map for this item. Omit to inherit; an empty map clears these defaults. | [optional]
 **name** | **string** | Exact name for this ad. Falls back to &#x60;&lt;name&gt; #N&#x60; (N &#x3D; 1-based position). | [optional]
 **headline** | **string** |  |
 **body** | **string** |  |

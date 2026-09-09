@@ -1939,6 +1939,8 @@ Class | Method | HTTP request | Description
 - [MetaAdsPlatformData](docs/Model/MetaAdsPlatformData.md)
 - [MetaLeadFormPlatformData](docs/Model/MetaLeadFormPlatformData.md)
 - [MetaLeadFormPlatformDataContextCard](docs/Model/MetaLeadFormPlatformDataContextCard.md)
+- [MetaPromotion](docs/Model/MetaPromotion.md)
+- [MetaPromotionStatus](docs/Model/MetaPromotionStatus.md)
 - [Money](docs/Model/Money.md)
 - [MoneyAmount](docs/Model/MoneyAmount.md)
 - [MoveAccountToProfile200Response](docs/Model/MoveAccountToProfile200Response.md)

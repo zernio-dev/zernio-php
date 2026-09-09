@@ -59,6 +59,8 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
+        'promotion' => '\Zernio\Model\MetaPromotion',
+        'creative_features' => 'array<string,string>',
         'name' => 'string',
         'headline' => 'string',
         'body' => 'string',
@@ -77,6 +79,8 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'promotion' => null,
+        'creative_features' => null,
         'name' => null,
         'headline' => null,
         'body' => null,
@@ -93,6 +97,8 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'promotion' => false,
+        'creative_features' => false,
         'name' => false,
         'headline' => false,
         'body' => false,
@@ -189,6 +195,8 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
+        'promotion' => 'promotion',
+        'creative_features' => 'creativeFeatures',
         'name' => 'name',
         'headline' => 'headline',
         'body' => 'body',
@@ -205,6 +213,8 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
+        'promotion' => 'setPromotion',
+        'creative_features' => 'setCreativeFeatures',
         'name' => 'setName',
         'headline' => 'setHeadline',
         'body' => 'setBody',
@@ -221,6 +231,8 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
+        'promotion' => 'getPromotion',
+        'creative_features' => 'getCreativeFeatures',
         'name' => 'getName',
         'headline' => 'getHeadline',
         'body' => 'getBody',
@@ -272,6 +284,8 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
         return self::$openAPIModelName;
     }
 
+    public const CREATIVE_FEATURES_OPT_IN = 'OPT_IN';
+    public const CREATIVE_FEATURES_OPT_OUT = 'OPT_OUT';
     public const CALL_TO_ACTION_LEARN_MORE = 'LEARN_MORE';
     public const CALL_TO_ACTION_SHOP_NOW = 'SHOP_NOW';
     public const CALL_TO_ACTION_SIGN_UP = 'SIGN_UP';
@@ -298,6 +312,19 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
     public const CALL_TO_ACTION_START_ORDER = 'START_ORDER';
     public const CALL_TO_ACTION_INSTALL_MOBILE_APP = 'INSTALL_MOBILE_APP';
     public const CALL_TO_ACTION_USE_APP = 'USE_APP';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCreativeFeaturesAllowableValues()
+    {
+        return [
+            self::CREATIVE_FEATURES_OPT_IN,
+            self::CREATIVE_FEATURES_OPT_OUT,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -351,6 +378,8 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('promotion', $data ?? [], null);
+        $this->setIfExists('creative_features', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('headline', $data ?? [], null);
         $this->setIfExists('body', $data ?? [], null);
@@ -435,6 +464,69 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets promotion
+     *
+     * @return \Zernio\Model\MetaPromotion|null
+     */
+    public function getPromotion()
+    {
+        return $this->container['promotion'];
+    }
+
+    /**
+     * Sets promotion
+     *
+     * @param \Zernio\Model\MetaPromotion|null $promotion Overrides the top-level offer for this item. Omit to inherit; null disables the inherited offer.
+     *
+     * @return self
+     */
+    public function setPromotion($promotion)
+    {
+        if (is_null($promotion)) {
+            throw new \InvalidArgumentException('non-nullable promotion cannot be null');
+        }
+        $this->container['promotion'] = $promotion;
+
+        return $this;
+    }
+
+    /**
+     * Gets creative_features
+     *
+     * @return array<string,string>|null
+     */
+    public function getCreativeFeatures()
+    {
+        return $this->container['creative_features'];
+    }
+
+    /**
+     * Sets creative_features
+     *
+     * @param array<string,string>|null $creative_features Replaces the entire top-level creativeFeatures map for this item. Omit to inherit; an empty map clears these defaults.
+     *
+     * @return self
+     */
+    public function setCreativeFeatures($creative_features)
+    {
+        if (is_null($creative_features)) {
+            throw new \InvalidArgumentException('non-nullable creative_features cannot be null');
+        }
+        $allowedValues = $this->getCreativeFeaturesAllowableValues();
+        if (array_diff($creative_features, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'creative_features', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['creative_features'] = $creative_features;
+
+        return $this;
+    }
 
     /**
      * Gets name

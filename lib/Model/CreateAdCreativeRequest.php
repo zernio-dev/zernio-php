@@ -69,6 +69,7 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'image_hash' => 'string',
         'carousel_cards' => '\Zernio\Model\CreateAdCreativeRequestCarouselCardsInner[]',
         'url_tags' => 'string',
+        'promotion' => '\Zernio\Model\MetaPromotion',
         'creative_features' => 'array<string,string>',
         'multi_advertiser' => 'string'
     ];
@@ -92,6 +93,7 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'image_hash' => null,
         'carousel_cards' => null,
         'url_tags' => null,
+        'promotion' => null,
         'creative_features' => null,
         'multi_advertiser' => null
     ];
@@ -113,6 +115,7 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'image_hash' => false,
         'carousel_cards' => false,
         'url_tags' => false,
+        'promotion' => false,
         'creative_features' => false,
         'multi_advertiser' => false
     ];
@@ -214,6 +217,7 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'image_hash' => 'imageHash',
         'carousel_cards' => 'carouselCards',
         'url_tags' => 'urlTags',
+        'promotion' => 'promotion',
         'creative_features' => 'creativeFeatures',
         'multi_advertiser' => 'multiAdvertiser'
     ];
@@ -235,6 +239,7 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'image_hash' => 'setImageHash',
         'carousel_cards' => 'setCarouselCards',
         'url_tags' => 'setUrlTags',
+        'promotion' => 'setPromotion',
         'creative_features' => 'setCreativeFeatures',
         'multi_advertiser' => 'setMultiAdvertiser'
     ];
@@ -256,6 +261,7 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'image_hash' => 'getImageHash',
         'carousel_cards' => 'getCarouselCards',
         'url_tags' => 'getUrlTags',
+        'promotion' => 'getPromotion',
         'creative_features' => 'getCreativeFeatures',
         'multi_advertiser' => 'getMultiAdvertiser'
     ];
@@ -358,6 +364,7 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('image_hash', $data ?? [], null);
         $this->setIfExists('carousel_cards', $data ?? [], null);
         $this->setIfExists('url_tags', $data ?? [], null);
+        $this->setIfExists('promotion', $data ?? [], null);
         $this->setIfExists('creative_features', $data ?? [], null);
         $this->setIfExists('multi_advertiser', $data ?? [], null);
     }
@@ -757,6 +764,33 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
+     * Gets promotion
+     *
+     * @return \Zernio\Model\MetaPromotion|null
+     */
+    public function getPromotion()
+    {
+        return $this->container['promotion'];
+    }
+
+    /**
+     * Sets promotion
+     *
+     * @param \Zernio\Model\MetaPromotion|null $promotion promotion
+     *
+     * @return self
+     */
+    public function setPromotion($promotion)
+    {
+        if (is_null($promotion)) {
+            throw new \InvalidArgumentException('non-nullable promotion cannot be null');
+        }
+        $this->container['promotion'] = $promotion;
+
+        return $this;
+    }
+
+    /**
      * Gets creative_features
      *
      * @return array<string,string>|null
@@ -769,7 +803,7 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets creative_features
      *
-     * @param array<string,string>|null $creative_features Advantage+ creative enhancements: partial map of Meta creative feature keys (snake_case) to enroll status, forwarded as degrees_of_freedom_spec.creative_features_spec. Unspecified features default to OPT_OUT.
+     * @param array<string,string>|null $creative_features Meta only. Applied to each new creative, including standalone and attach shapes. With creatives[], these are defaults; an item replaces the whole feature map, including an empty map. auto_promotion_tag is an enhancement; an explicit offer uses promotion.
      *
      * @return self
      */

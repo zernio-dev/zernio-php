@@ -58,6 +58,7 @@ class CreateMessagingAdRequest implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
+        'creative_features' => 'array<string,string>',
         'account_id' => 'string',
         'ad_account_id' => 'string',
         'name' => 'string',
@@ -108,6 +109,7 @@ class CreateMessagingAdRequest implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'creative_features' => null,
         'account_id' => null,
         'ad_account_id' => null,
         'name' => null,
@@ -156,6 +158,7 @@ class CreateMessagingAdRequest implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'creative_features' => false,
         'account_id' => false,
         'ad_account_id' => false,
         'name' => false,
@@ -284,6 +287,7 @@ class CreateMessagingAdRequest implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
+        'creative_features' => 'creativeFeatures',
         'account_id' => 'accountId',
         'ad_account_id' => 'adAccountId',
         'name' => 'name',
@@ -332,6 +336,7 @@ class CreateMessagingAdRequest implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
+        'creative_features' => 'setCreativeFeatures',
         'account_id' => 'setAccountId',
         'ad_account_id' => 'setAdAccountId',
         'name' => 'setName',
@@ -380,6 +385,7 @@ class CreateMessagingAdRequest implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
+        'creative_features' => 'getCreativeFeatures',
         'account_id' => 'getAccountId',
         'ad_account_id' => 'getAdAccountId',
         'name' => 'getName',
@@ -463,6 +469,8 @@ class CreateMessagingAdRequest implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$openAPIModelName;
     }
 
+    public const CREATIVE_FEATURES_OPT_IN = 'OPT_IN';
+    public const CREATIVE_FEATURES_OPT_OUT = 'OPT_OUT';
     public const BUDGET_TYPE_DAILY = 'daily';
     public const BUDGET_TYPE_LIFETIME = 'lifetime';
     public const ADVANTAGE_AUDIENCE_NUMBER_0 = 0;
@@ -481,6 +489,19 @@ class CreateMessagingAdRequest implements ModelInterface, ArrayAccess, \JsonSeri
     public const DESTINATION_WHATSAPP = 'whatsapp';
     public const DESTINATION_MESSENGER = 'messenger';
     public const DESTINATION_INSTAGRAM_DIRECT = 'instagram_direct';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCreativeFeaturesAllowableValues()
+    {
+        return [
+            self::CREATIVE_FEATURES_OPT_IN,
+            self::CREATIVE_FEATURES_OPT_OUT,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -592,6 +613,7 @@ class CreateMessagingAdRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('creative_features', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('ad_account_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
@@ -822,6 +844,42 @@ class CreateMessagingAdRequest implements ModelInterface, ArrayAccess, \JsonSeri
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets creative_features
+     *
+     * @return array<string,string>|null
+     */
+    public function getCreativeFeatures()
+    {
+        return $this->container['creative_features'];
+    }
+
+    /**
+     * Sets creative_features
+     *
+     * @param array<string,string>|null $creative_features Meta enhancement settings for single or attached ads, and defaults for creatives[]. An item replaces the entire map, including with an empty object.
+     *
+     * @return self
+     */
+    public function setCreativeFeatures($creative_features)
+    {
+        if (is_null($creative_features)) {
+            throw new \InvalidArgumentException('non-nullable creative_features cannot be null');
+        }
+        $allowedValues = $this->getCreativeFeaturesAllowableValues();
+        if (array_diff($creative_features, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'creative_features', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['creative_features'] = $creative_features;
+
+        return $this;
+    }
 
     /**
      * Gets account_id

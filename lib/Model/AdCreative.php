@@ -63,6 +63,8 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         'image_url' => 'string',
         'video_id' => 'string',
         'video_url' => 'string',
+        'promotion' => '\Zernio\Model\MetaPromotion',
+        'promotion_status' => '\Zernio\Model\MetaPromotionStatus',
         'creative_id' => 'string',
         'object_type' => 'string',
         'object_story_id' => 'string',
@@ -96,6 +98,8 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         'image_url' => null,
         'video_id' => null,
         'video_url' => null,
+        'promotion' => null,
+        'promotion_status' => null,
         'creative_id' => null,
         'object_type' => null,
         'object_story_id' => null,
@@ -127,6 +131,8 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         'image_url' => false,
         'video_id' => true,
         'video_url' => true,
+        'promotion' => false,
+        'promotion_status' => false,
         'creative_id' => true,
         'object_type' => false,
         'object_story_id' => true,
@@ -238,6 +244,8 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         'image_url' => 'imageUrl',
         'video_id' => 'videoId',
         'video_url' => 'videoUrl',
+        'promotion' => 'promotion',
+        'promotion_status' => 'promotionStatus',
         'creative_id' => 'creativeId',
         'object_type' => 'objectType',
         'object_story_id' => 'objectStoryId',
@@ -269,6 +277,8 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         'image_url' => 'setImageUrl',
         'video_id' => 'setVideoId',
         'video_url' => 'setVideoUrl',
+        'promotion' => 'setPromotion',
+        'promotion_status' => 'setPromotionStatus',
         'creative_id' => 'setCreativeId',
         'object_type' => 'setObjectType',
         'object_story_id' => 'setObjectStoryId',
@@ -300,6 +310,8 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         'image_url' => 'getImageUrl',
         'video_id' => 'getVideoId',
         'video_url' => 'getVideoUrl',
+        'promotion' => 'getPromotion',
+        'promotion_status' => 'getPromotionStatus',
         'creative_id' => 'getCreativeId',
         'object_type' => 'getObjectType',
         'object_story_id' => 'getObjectStoryId',
@@ -382,6 +394,8 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('image_url', $data ?? [], null);
         $this->setIfExists('video_id', $data ?? [], null);
         $this->setIfExists('video_url', $data ?? [], null);
+        $this->setIfExists('promotion', $data ?? [], null);
+        $this->setIfExists('promotion_status', $data ?? [], null);
         $this->setIfExists('creative_id', $data ?? [], null);
         $this->setIfExists('object_type', $data ?? [], null);
         $this->setIfExists('object_story_id', $data ?? [], null);
@@ -570,6 +584,60 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['video_url'] = $video_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets promotion
+     *
+     * @return \Zernio\Model\MetaPromotion|null
+     */
+    public function getPromotion()
+    {
+        return $this->container['promotion'];
+    }
+
+    /**
+     * Sets promotion
+     *
+     * @param \Zernio\Model\MetaPromotion|null $promotion Meta offer read from the live creative on creation or GET /v1/ads/{adId}. Null when metadata is not returned or cannot be read. Requested values are never echoed as applied.
+     *
+     * @return self
+     */
+    public function setPromotion($promotion)
+    {
+        if (is_null($promotion)) {
+            throw new \InvalidArgumentException('non-nullable promotion cannot be null');
+        }
+        $this->container['promotion'] = $promotion;
+
+        return $this;
+    }
+
+    /**
+     * Gets promotion_status
+     *
+     * @return \Zernio\Model\MetaPromotionStatus|null
+     */
+    public function getPromotionStatus()
+    {
+        return $this->container['promotion_status'];
+    }
+
+    /**
+     * Sets promotion_status
+     *
+     * @param \Zernio\Model\MetaPromotionStatus|null $promotion_status promotion_status
+     *
+     * @return self
+     */
+    public function setPromotionStatus($promotion_status)
+    {
+        if (is_null($promotion_status)) {
+            throw new \InvalidArgumentException('non-nullable promotion_status cannot be null');
+        }
+        $this->container['promotion_status'] = $promotion_status;
 
         return $this;
     }

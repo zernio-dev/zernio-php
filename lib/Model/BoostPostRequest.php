@@ -58,6 +58,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'creative_features' => 'array<string,string>',
         'post_id' => 'string',
         'platform_post_id' => 'string',
         'account_id' => 'string',
@@ -100,6 +101,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'creative_features' => null,
         'post_id' => null,
         'platform_post_id' => null,
         'account_id' => null,
@@ -140,6 +142,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'creative_features' => false,
         'post_id' => false,
         'platform_post_id' => false,
         'account_id' => false,
@@ -260,6 +263,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'creative_features' => 'creativeFeatures',
         'post_id' => 'postId',
         'platform_post_id' => 'platformPostId',
         'account_id' => 'accountId',
@@ -300,6 +304,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'creative_features' => 'setCreativeFeatures',
         'post_id' => 'setPostId',
         'platform_post_id' => 'setPlatformPostId',
         'account_id' => 'setAccountId',
@@ -340,6 +345,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'creative_features' => 'getCreativeFeatures',
         'post_id' => 'getPostId',
         'platform_post_id' => 'getPlatformPostId',
         'account_id' => 'getAccountId',
@@ -415,6 +421,8 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const CREATIVE_FEATURES_OPT_IN = 'OPT_IN';
+    public const CREATIVE_FEATURES_OPT_OUT = 'OPT_OUT';
     public const GOAL_ENGAGEMENT = 'engagement';
     public const GOAL_TRAFFIC = 'traffic';
     public const GOAL_AWARENESS = 'awareness';
@@ -436,6 +444,19 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public const SPECIAL_AD_CATEGORIES_ONLINE_GAMBLING_AND_GAMING = 'ONLINE_GAMBLING_AND_GAMING';
     public const STATUS_ACTIVE = 'ACTIVE';
     public const STATUS_PAUSED = 'PAUSED';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCreativeFeaturesAllowableValues()
+    {
+        return [
+            self::CREATIVE_FEATURES_OPT_IN,
+            self::CREATIVE_FEATURES_OPT_OUT,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -517,6 +538,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('creative_features', $data ?? [], null);
         $this->setIfExists('post_id', $data ?? [], null);
         $this->setIfExists('platform_post_id', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
@@ -655,6 +677,42 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets creative_features
+     *
+     * @return array<string,string>|null
+     */
+    public function getCreativeFeatures()
+    {
+        return $this->container['creative_features'];
+    }
+
+    /**
+     * Sets creative_features
+     *
+     * @param array<string,string>|null $creative_features Meta Advantage+ creative enhancements. Map snake_case feature names to OPT_IN or OPT_OUT; Meta validates supported keys and unspecified features default to OPT_OUT. auto_promotion_tag is an enhancement; use the separate promotion field for an explicit offer. The deprecated standard_enhancements bundle is rejected by Meta.
+     *
+     * @return self
+     */
+    public function setCreativeFeatures($creative_features)
+    {
+        if (is_null($creative_features)) {
+            throw new \InvalidArgumentException('non-nullable creative_features cannot be null');
+        }
+        $allowedValues = $this->getCreativeFeaturesAllowableValues();
+        if (array_diff($creative_features, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'creative_features', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['creative_features'] = $creative_features;
+
+        return $this;
+    }
 
     /**
      * Gets post_id

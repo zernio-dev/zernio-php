@@ -61,6 +61,7 @@ class CtwaAdRequestBodyCreativesInner implements ModelInterface, ArrayAccess, \J
     protected static $openAPITypes = [
         'existing_post_id' => 'string',
         'object_story_id' => 'string',
+        'creative_features' => 'array<string,string>',
         'headline' => 'string',
         'body' => 'string',
         'image_url' => 'string',
@@ -78,6 +79,7 @@ class CtwaAdRequestBodyCreativesInner implements ModelInterface, ArrayAccess, \J
     protected static $openAPIFormats = [
         'existing_post_id' => null,
         'object_story_id' => null,
+        'creative_features' => null,
         'headline' => null,
         'body' => null,
         'image_url' => 'uri',
@@ -93,6 +95,7 @@ class CtwaAdRequestBodyCreativesInner implements ModelInterface, ArrayAccess, \J
     protected static array $openAPINullables = [
         'existing_post_id' => false,
         'object_story_id' => false,
+        'creative_features' => false,
         'headline' => false,
         'body' => false,
         'image_url' => false,
@@ -188,6 +191,7 @@ class CtwaAdRequestBodyCreativesInner implements ModelInterface, ArrayAccess, \J
     protected static $attributeMap = [
         'existing_post_id' => 'existingPostId',
         'object_story_id' => 'objectStoryId',
+        'creative_features' => 'creativeFeatures',
         'headline' => 'headline',
         'body' => 'body',
         'image_url' => 'imageUrl',
@@ -203,6 +207,7 @@ class CtwaAdRequestBodyCreativesInner implements ModelInterface, ArrayAccess, \J
     protected static $setters = [
         'existing_post_id' => 'setExistingPostId',
         'object_story_id' => 'setObjectStoryId',
+        'creative_features' => 'setCreativeFeatures',
         'headline' => 'setHeadline',
         'body' => 'setBody',
         'image_url' => 'setImageUrl',
@@ -218,6 +223,7 @@ class CtwaAdRequestBodyCreativesInner implements ModelInterface, ArrayAccess, \J
     protected static $getters = [
         'existing_post_id' => 'getExistingPostId',
         'object_story_id' => 'getObjectStoryId',
+        'creative_features' => 'getCreativeFeatures',
         'headline' => 'getHeadline',
         'body' => 'getBody',
         'image_url' => 'getImageUrl',
@@ -266,6 +272,21 @@ class CtwaAdRequestBodyCreativesInner implements ModelInterface, ArrayAccess, \J
         return self::$openAPIModelName;
     }
 
+    public const CREATIVE_FEATURES_OPT_IN = 'OPT_IN';
+    public const CREATIVE_FEATURES_OPT_OUT = 'OPT_OUT';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCreativeFeaturesAllowableValues()
+    {
+        return [
+            self::CREATIVE_FEATURES_OPT_IN,
+            self::CREATIVE_FEATURES_OPT_OUT,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -284,6 +305,7 @@ class CtwaAdRequestBodyCreativesInner implements ModelInterface, ArrayAccess, \J
     {
         $this->setIfExists('existing_post_id', $data ?? [], null);
         $this->setIfExists('object_story_id', $data ?? [], null);
+        $this->setIfExists('creative_features', $data ?? [], null);
         $this->setIfExists('headline', $data ?? [], null);
         $this->setIfExists('body', $data ?? [], null);
         $this->setIfExists('image_url', $data ?? [], null);
@@ -413,6 +435,42 @@ class CtwaAdRequestBodyCreativesInner implements ModelInterface, ArrayAccess, \J
         }
 
         $this->container['object_story_id'] = $object_story_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets creative_features
+     *
+     * @return array<string,string>|null
+     */
+    public function getCreativeFeatures()
+    {
+        return $this->container['creative_features'];
+    }
+
+    /**
+     * Sets creative_features
+     *
+     * @param array<string,string>|null $creative_features Replaces the top-level creativeFeatures map for this item. Omit to inherit; an empty object clears inherited enrollment choices.
+     *
+     * @return self
+     */
+    public function setCreativeFeatures($creative_features)
+    {
+        if (is_null($creative_features)) {
+            throw new \InvalidArgumentException('non-nullable creative_features cannot be null');
+        }
+        $allowedValues = $this->getCreativeFeaturesAllowableValues();
+        if (array_diff($creative_features, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'creative_features', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['creative_features'] = $creative_features;
 
         return $this;
     }

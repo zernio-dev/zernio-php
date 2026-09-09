@@ -563,7 +563,7 @@ class CreateStandaloneAdRequestPromotedObject implements ModelInterface, ArrayAc
     /**
      * Sets product_catalog_id
      *
-     * @param string|null $product_catalog_id Catalog ID for catalog/Advantage+ Shopping campaigns.
+     * @param string|null $product_catalog_id Optional catalog ID. If supplied with productSetId, the set must belong to this catalog. A catalog ID cannot replace productSetId.
      *
      * @return self
      */
@@ -590,7 +590,7 @@ class CreateStandaloneAdRequestPromotedObject implements ModelInterface, ArrayAc
     /**
      * Sets product_set_id
      *
-     * @param string|null $product_set_id Product Set ID inside the catalog.
+     * @param string|null $product_set_id Meta product SET ID from GET /v1/ads/catalogs/{catalogId}/product-sets. Zernio checks that the token can read the set and its product_catalog before creation. A catalog ID or inaccessible set returns a precise 400 naming promotedObject.productSetId. A mismatch with productCatalogId names promotedObject.productCatalogId.
      *
      * @return self
      */

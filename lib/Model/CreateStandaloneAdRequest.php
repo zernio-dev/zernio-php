@@ -70,6 +70,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'billing_event' => 'string',
         'buying_type' => 'string',
         'rf_prediction_id' => 'string',
+        'promotion' => '\Zernio\Model\MetaPromotion',
         'creative_features' => 'array<string,string>',
         'multi_advertiser' => 'string',
         'validate_only' => 'bool',
@@ -178,6 +179,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'billing_event' => null,
         'buying_type' => null,
         'rf_prediction_id' => null,
+        'promotion' => null,
         'creative_features' => null,
         'multi_advertiser' => null,
         'validate_only' => null,
@@ -284,6 +286,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'billing_event' => false,
         'buying_type' => false,
         'rf_prediction_id' => false,
+        'promotion' => false,
         'creative_features' => false,
         'multi_advertiser' => false,
         'validate_only' => false,
@@ -470,6 +473,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'billing_event' => 'billingEvent',
         'buying_type' => 'buyingType',
         'rf_prediction_id' => 'rfPredictionId',
+        'promotion' => 'promotion',
         'creative_features' => 'creativeFeatures',
         'multi_advertiser' => 'multiAdvertiser',
         'validate_only' => 'validateOnly',
@@ -576,6 +580,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'billing_event' => 'setBillingEvent',
         'buying_type' => 'setBuyingType',
         'rf_prediction_id' => 'setRfPredictionId',
+        'promotion' => 'setPromotion',
         'creative_features' => 'setCreativeFeatures',
         'multi_advertiser' => 'setMultiAdvertiser',
         'validate_only' => 'setValidateOnly',
@@ -682,6 +687,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'billing_event' => 'getBillingEvent',
         'buying_type' => 'getBuyingType',
         'rf_prediction_id' => 'getRfPredictionId',
+        'promotion' => 'getPromotion',
         'creative_features' => 'getCreativeFeatures',
         'multi_advertiser' => 'getMultiAdvertiser',
         'validate_only' => 'getValidateOnly',
@@ -1160,6 +1166,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('billing_event', $data ?? [], null);
         $this->setIfExists('buying_type', $data ?? [], null);
         $this->setIfExists('rf_prediction_id', $data ?? [], null);
+        $this->setIfExists('promotion', $data ?? [], null);
         $this->setIfExists('creative_features', $data ?? [], null);
         $this->setIfExists('multi_advertiser', $data ?? [], null);
         $this->setIfExists('validate_only', $data ?? [], null);
@@ -1933,6 +1940,33 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets promotion
+     *
+     * @return \Zernio\Model\MetaPromotion|null
+     */
+    public function getPromotion()
+    {
+        return $this->container['promotion'];
+    }
+
+    /**
+     * Sets promotion
+     *
+     * @param \Zernio\Model\MetaPromotion|null $promotion promotion
+     *
+     * @return self
+     */
+    public function setPromotion($promotion)
+    {
+        if (is_null($promotion)) {
+            throw new \InvalidArgumentException('non-nullable promotion cannot be null');
+        }
+        $this->container['promotion'] = $promotion;
+
+        return $this;
+    }
+
+    /**
      * Gets creative_features
      *
      * @return array<string,string>|null
@@ -1945,7 +1979,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets creative_features
      *
-     * @param array<string,string>|null $creative_features Meta only. Advantage+ creative enhancements: a partial map of Meta creative feature keys (snake_case, e.g. enhance_cta, image_brightness_and_contrast, text_optimizations) to enroll status, forwarded as degrees_of_freedom_spec.creative_features_spec. Meta validates the keys; unspecified features default to OPT_OUT. The legacy standard_enhancements bundle is deprecated by Meta and rejected.
+     * @param array<string,string>|null $creative_features Meta only. Applied to each new creative, including standalone and attach shapes. With creatives[], these are defaults; an item replaces the whole feature map, including an empty map. auto_promotion_tag is an enhancement; an explicit offer uses promotion.
      *
      * @return self
      */
@@ -2676,7 +2710,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets ad_set_id
      *
-     * @param string|null $ad_set_id When present, switches to the attach shape: adds one new ad to this existing ad set without creating a new campaign. Budget, targeting, goal, schedule, AND bid strategy are inherited from the ad set on Meta, and passing `bidStrategy` in attach mode returns 400. To change an existing ad set's bid, use `PUT /v1/ads/ad-sets/{adSetId}`. Mutually exclusive with `creatives[]`.  The attached ad takes the full single-creative surface: `headline`/`body`/`description`/`callToAction` plus either `imageUrl`/`video` OR `placementAssets` (its own per-placement Feed/Story assets) OR `translations`/`defaultLocale` (its own per-locale asset feed, Meta only), and `leadGenFormId` when the target is a lead ad set (the parent must be ON_AD, true for ad sets created via goal `lead_generation`; Meta rejects a formless ad there, so pass the form on EVERY attached ad). This is the way to build N full ads sharing one ad set: create the first ad via the normal shape, then attach the rest one call each.  Supported on Meta (facebook, instagram), Google Ads, TikTok, and LinkedIn. On TikTok the `adSetId` is the ad group ID; the new ad inherits the ad group's bid + budget + targeting. On LinkedIn the `adSetId` is the LinkedIn Campaign ID (numeric); we attach a new Creative to that Campaign, so the Campaign's `platformSpecificData` bidding, targeting, budget and schedule are inherited (passing those fields returns 400).  On Google Ads the `adSetId` is the AD GROUP id. `goal` is still REQUIRED even though budget and targeting are inherited from the ad group. Send `campaignType: \"search\"` to attach into a Search ad group, including one created by `POST /v1/ads/ad-sets` (always SEARCH_STANDARD): without it the request is treated as Display and requires `images.landscape` + `images.square` + `businessName`, and the resulting display creative does not match a Search ad group. `budgetAmount`/`budgetType` and bidding fields (`bidStrategy`, `bidAmount`, `portfolioBidStrategyId`) return 400 on this shape; the ad group already owns them.
+     * @param string|null $ad_set_id When present, switches to the attach shape: adds one new ad to this existing ad set without creating a new campaign. Budget, targeting, goal, schedule, AND bid strategy are inherited from the ad set on Meta, and passing `bidStrategy` in attach mode returns 400. To change an existing ad set's bid, use `PUT /v1/ads/ad-sets/{adSetId}`. Mutually exclusive with `creatives[]`. `dynamicCreative` returns 400 in attach mode: create a new dynamic ad set by omitting `adSetId` instead.  The attached ad takes the full single-creative surface: `headline`/`body`/`description`/`callToAction` plus either `imageUrl`/`video` OR `placementAssets` (its own per-placement Feed/Story assets) OR `translations`/`defaultLocale` (its own per-locale asset feed, Meta only), and `leadGenFormId` when the target is a lead ad set (the parent must be ON_AD, true for ad sets created via goal `lead_generation`; Meta rejects a formless ad there, so pass the form on EVERY attached ad). This is the way to build N full ads sharing one ad set: create the first ad via the normal shape, then attach the rest one call each.  Supported on Meta (facebook, instagram), Google Ads, TikTok, and LinkedIn. On TikTok the `adSetId` is the ad group ID; the new ad inherits the ad group's bid + budget + targeting. On LinkedIn the `adSetId` is the LinkedIn Campaign ID (numeric); we attach a new Creative to that Campaign, so the Campaign's `platformSpecificData` bidding, targeting, budget and schedule are inherited (passing those fields returns 400).  On Google Ads the `adSetId` is the AD GROUP id. `goal` is still REQUIRED even though budget and targeting are inherited from the ad group. Send `campaignType: \"search\"` to attach into a Search ad group, including one created by `POST /v1/ads/ad-sets` (always SEARCH_STANDARD): without it the request is treated as Display and requires `images.landscape` + `images.square` + `businessName`, and the resulting display creative does not match a Search ad group. `budgetAmount`/`budgetType` and bidding fields (`bidStrategy`, `bidAmount`, `portfolioBidStrategyId`) return 400 on this shape; the ad group already owns them.
      *
      * @return self
      */

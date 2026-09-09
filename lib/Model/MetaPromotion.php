@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateAdCreative201Response
+ * MetaPromotion
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateAdCreative201Response Class Doc Comment
+ * MetaPromotion Class Doc Comment
  *
  * @category Class
+ * @description Meta explicit Promotion offer. Maps to creative_sourcing_spec.promotion_metadata_spec with promotion_source ADVERTISER_INPUT. Dates become Unix seconds. Send null to omit an explicit offer on a new creative or remove it when rebuilding. Creation success alone does not confirm application: inspect promotionStatus in the response.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateAdCreative201Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class MetaPromotion implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class CreateAdCreative201Response implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createAdCreative_201_response';
+    protected static $openAPIModelName = 'MetaPromotion';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +59,11 @@ class CreateAdCreative201Response implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'ad_account_id' => 'string',
-        'creative_id' => 'string',
-        'promotion' => '\Zernio\Model\MetaPromotion',
-        'promotion_status' => '\Zernio\Model\MetaPromotionStatus'
+        'type' => 'string',
+        'value' => 'float',
+        'code' => 'string',
+        'start_date' => '\DateTime',
+        'end_date' => '\DateTime'
     ];
 
     /**
@@ -72,10 +74,11 @@ class CreateAdCreative201Response implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'ad_account_id' => null,
-        'creative_id' => null,
-        'promotion' => null,
-        'promotion_status' => null
+        'type' => null,
+        'value' => null,
+        'code' => null,
+        'start_date' => 'date-time',
+        'end_date' => 'date-time'
     ];
 
     /**
@@ -84,10 +87,11 @@ class CreateAdCreative201Response implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ad_account_id' => false,
-        'creative_id' => false,
-        'promotion' => false,
-        'promotion_status' => false
+        'type' => false,
+        'value' => false,
+        'code' => false,
+        'start_date' => false,
+        'end_date' => false
     ];
 
     /**
@@ -176,10 +180,11 @@ class CreateAdCreative201Response implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'ad_account_id' => 'adAccountId',
-        'creative_id' => 'creativeId',
-        'promotion' => 'promotion',
-        'promotion_status' => 'promotionStatus'
+        'type' => 'type',
+        'value' => 'value',
+        'code' => 'code',
+        'start_date' => 'startDate',
+        'end_date' => 'endDate'
     ];
 
     /**
@@ -188,10 +193,11 @@ class CreateAdCreative201Response implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'ad_account_id' => 'setAdAccountId',
-        'creative_id' => 'setCreativeId',
-        'promotion' => 'setPromotion',
-        'promotion_status' => 'setPromotionStatus'
+        'type' => 'setType',
+        'value' => 'setValue',
+        'code' => 'setCode',
+        'start_date' => 'setStartDate',
+        'end_date' => 'setEndDate'
     ];
 
     /**
@@ -200,10 +206,11 @@ class CreateAdCreative201Response implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'ad_account_id' => 'getAdAccountId',
-        'creative_id' => 'getCreativeId',
-        'promotion' => 'getPromotion',
-        'promotion_status' => 'getPromotionStatus'
+        'type' => 'getType',
+        'value' => 'getValue',
+        'code' => 'getCode',
+        'start_date' => 'getStartDate',
+        'end_date' => 'getEndDate'
     ];
 
     /**
@@ -247,6 +254,27 @@ class CreateAdCreative201Response implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
+    public const TYPE_AMOUNT_OFF = 'AMOUNT_OFF';
+    public const TYPE_FREE_RETURN = 'FREE_RETURN';
+    public const TYPE_FREE_SHIPPING = 'FREE_SHIPPING';
+    public const TYPE_PERCENTAGE_OFF = 'PERCENTAGE_OFF';
+    public const TYPE_PROMO_CODE = 'PROMO_CODE';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_AMOUNT_OFF,
+            self::TYPE_FREE_RETURN,
+            self::TYPE_FREE_SHIPPING,
+            self::TYPE_PERCENTAGE_OFF,
+            self::TYPE_PROMO_CODE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -263,10 +291,11 @@ class CreateAdCreative201Response implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('ad_account_id', $data ?? [], null);
-        $this->setIfExists('creative_id', $data ?? [], null);
-        $this->setIfExists('promotion', $data ?? [], null);
-        $this->setIfExists('promotion_status', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('value', $data ?? [], null);
+        $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('start_date', $data ?? [], null);
+        $this->setIfExists('end_date', $data ?? [], null);
     }
 
     /**
@@ -296,6 +325,29 @@ class CreateAdCreative201Response implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
+        }
+        if (($this->container['value'] < 0)) {
+            $invalidProperties[] = "invalid value for 'value', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['code']) && (mb_strlen($this->container['code']) < 1)) {
+            $invalidProperties[] = "invalid value for 'code', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -312,109 +364,156 @@ class CreateAdCreative201Response implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets ad_account_id
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type Promotion type accepted by Meta. PERCENTAGE_OFF values cannot exceed 100.
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets value
+     *
+     * @return float
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     *
+     * @param float $value Nonnegative promotion value passed to Meta unchanged. AMOUNT_OFF units are not confirmed, including major versus minor currency units. For PERCENTAGE_OFF this is the percentage discount, at most 100.
+     *
+     * @return self
+     */
+    public function setValue($value)
+    {
+        if (is_null($value)) {
+            throw new \InvalidArgumentException('non-nullable value cannot be null');
+        }
+
+        if (($value < 0)) {
+            throw new \InvalidArgumentException('invalid value for $value when calling MetaPromotion., must be bigger than or equal to 0.');
+        }
+
+        $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets code
      *
      * @return string|null
      */
-    public function getAdAccountId()
+    public function getCode()
     {
-        return $this->container['ad_account_id'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets ad_account_id
+     * Sets code
      *
-     * @param string|null $ad_account_id ad_account_id
+     * @param string|null $code Optional promotion code.
      *
      * @return self
      */
-    public function setAdAccountId($ad_account_id)
+    public function setCode($code)
     {
-        if (is_null($ad_account_id)) {
-            throw new \InvalidArgumentException('non-nullable ad_account_id cannot be null');
+        if (is_null($code)) {
+            throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
-        $this->container['ad_account_id'] = $ad_account_id;
+
+        if ((mb_strlen($code) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $code when calling MetaPromotion., must be bigger than or equal to 1.');
+        }
+
+        $this->container['code'] = $code;
 
         return $this;
     }
 
     /**
-     * Gets creative_id
+     * Gets start_date
      *
-     * @return string|null
+     * @return \DateTime|null
      */
-    public function getCreativeId()
+    public function getStartDate()
     {
-        return $this->container['creative_id'];
+        return $this->container['start_date'];
     }
 
     /**
-     * Sets creative_id
+     * Sets start_date
      *
-     * @param string|null $creative_id Platform creative id, reusable via existingCreativeId.
+     * @param \DateTime|null $start_date Optional ISO 8601 start timestamp with a timezone offset or Z.
      *
      * @return self
      */
-    public function setCreativeId($creative_id)
+    public function setStartDate($start_date)
     {
-        if (is_null($creative_id)) {
-            throw new \InvalidArgumentException('non-nullable creative_id cannot be null');
+        if (is_null($start_date)) {
+            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
         }
-        $this->container['creative_id'] = $creative_id;
+        $this->container['start_date'] = $start_date;
 
         return $this;
     }
 
     /**
-     * Gets promotion
+     * Gets end_date
      *
-     * @return \Zernio\Model\MetaPromotion|null
+     * @return \DateTime|null
      */
-    public function getPromotion()
+    public function getEndDate()
     {
-        return $this->container['promotion'];
+        return $this->container['end_date'];
     }
 
     /**
-     * Sets promotion
+     * Sets end_date
      *
-     * @param \Zernio\Model\MetaPromotion|null $promotion promotion
+     * @param \DateTime|null $end_date Optional ISO 8601 end timestamp with a timezone offset or Z. Must be after startDate when both are set.
      *
      * @return self
      */
-    public function setPromotion($promotion)
+    public function setEndDate($end_date)
     {
-        if (is_null($promotion)) {
-            throw new \InvalidArgumentException('non-nullable promotion cannot be null');
+        if (is_null($end_date)) {
+            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
         }
-        $this->container['promotion'] = $promotion;
-
-        return $this;
-    }
-
-    /**
-     * Gets promotion_status
-     *
-     * @return \Zernio\Model\MetaPromotionStatus|null
-     */
-    public function getPromotionStatus()
-    {
-        return $this->container['promotion_status'];
-    }
-
-    /**
-     * Sets promotion_status
-     *
-     * @param \Zernio\Model\MetaPromotionStatus|null $promotion_status promotion_status
-     *
-     * @return self
-     */
-    public function setPromotionStatus($promotion_status)
-    {
-        if (is_null($promotion_status)) {
-            throw new \InvalidArgumentException('non-nullable promotion_status cannot be null');
-        }
-        $this->container['promotion_status'] = $promotion_status;
+        $this->container['end_date'] = $end_date;
 
         return $this;
     }
