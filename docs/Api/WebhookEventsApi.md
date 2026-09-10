@@ -1721,7 +1721,7 @@ onPostPlatformFailed($webhook_payload_post_platform)
 
 Post platform failed event
 
-Fired once per platform target inside a post as that platform fails permanently. Temporary/retryable failures do NOT fire this event, only permanent ones do, so retry loops stay quiet. The envelope event (`post.failed` / `post.partial`) fires separately AFTER all platforms have terminated.
+Fired once per platform target inside a post as that platform fails permanently. Temporary/retryable failures do NOT fire this event, only permanent ones do, so retry loops stay quiet. The envelope event (`post.failed` / `post.partial`) fires separately AFTER all platforms have terminated. Can also fire a second time for a target that already emitted `post.platform.published`, if background reconciliation later discovers the publish never actually completed.
 
 ### Example
 
@@ -1780,7 +1780,7 @@ onPostPlatformPublished($webhook_payload_post_platform)
 
 Post platform published event
 
-Fired once per platform target inside a post as that platform finishes publishing successfully. Does NOT wait for the post-level rollup, so consumers building incremental UIs get notified immediately, even when other platforms on the same post are still processing. The envelope event (`post.published` / `post.partial`) fires separately AFTER all platforms have terminated.
+Fired once per platform target inside a post as that platform finishes publishing successfully. Does NOT wait for the post-level rollup, so consumers building incremental UIs get notified immediately, even when other platforms on the same post are still processing. The envelope event (`post.published` / `post.partial`) fires separately AFTER all platforms have terminated. A target that later fails background reconciliation (e.g. a Facebook video Meta accepted but never actually published) emits `post.platform.failed` for the same target afterward.
 
 ### Example
 
