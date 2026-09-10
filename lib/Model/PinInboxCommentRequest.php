@@ -1,6 +1,6 @@
 <?php
 /**
- * SyncExternalPosts200ResponseSynced
+ * PinInboxCommentRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SyncExternalPosts200ResponseSynced Class Doc Comment
+ * PinInboxCommentRequest Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SyncExternalPosts200ResponseSynced implements ModelInterface, ArrayAccess, \JsonSerializable
+class PinInboxCommentRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SyncExternalPosts200ResponseSynced implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'syncExternalPosts_200_response_synced';
+    protected static $openAPIModelName = 'pinInboxComment_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,7 @@ class SyncExternalPosts200ResponseSynced implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'posts_found' => 'int',
-        'posts_synced' => 'int',
-        'skipped' => 'bool'
+        'account_id' => 'string'
     ];
 
     /**
@@ -71,9 +69,7 @@ class SyncExternalPosts200ResponseSynced implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'posts_found' => null,
-        'posts_synced' => null,
-        'skipped' => null
+        'account_id' => null
     ];
 
     /**
@@ -82,9 +78,7 @@ class SyncExternalPosts200ResponseSynced implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'posts_found' => false,
-        'posts_synced' => false,
-        'skipped' => false
+        'account_id' => false
     ];
 
     /**
@@ -173,9 +167,7 @@ class SyncExternalPosts200ResponseSynced implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'posts_found' => 'postsFound',
-        'posts_synced' => 'postsSynced',
-        'skipped' => 'skipped'
+        'account_id' => 'accountId'
     ];
 
     /**
@@ -184,9 +176,7 @@ class SyncExternalPosts200ResponseSynced implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'posts_found' => 'setPostsFound',
-        'posts_synced' => 'setPostsSynced',
-        'skipped' => 'setSkipped'
+        'account_id' => 'setAccountId'
     ];
 
     /**
@@ -195,9 +185,7 @@ class SyncExternalPosts200ResponseSynced implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'posts_found' => 'getPostsFound',
-        'posts_synced' => 'getPostsSynced',
-        'skipped' => 'getSkipped'
+        'account_id' => 'getAccountId'
     ];
 
     /**
@@ -257,9 +245,7 @@ class SyncExternalPosts200ResponseSynced implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('posts_found', $data ?? [], null);
-        $this->setIfExists('posts_synced', $data ?? [], null);
-        $this->setIfExists('skipped', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
     }
 
     /**
@@ -289,6 +275,9 @@ class SyncExternalPosts200ResponseSynced implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
+        if ($this->container['account_id'] === null) {
+            $invalidProperties[] = "'account_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -305,82 +294,28 @@ class SyncExternalPosts200ResponseSynced implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets posts_found
+     * Gets account_id
      *
-     * @return int|null
+     * @return string
      */
-    public function getPostsFound()
+    public function getAccountId()
     {
-        return $this->container['posts_found'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets posts_found
+     * Sets account_id
      *
-     * @param int|null $posts_found Posts returned by the platform listing during the on-demand sync
+     * @param string $account_id The social account ID
      *
      * @return self
      */
-    public function setPostsFound($posts_found)
+    public function setAccountId($account_id)
     {
-        if (is_null($posts_found)) {
-            throw new \InvalidArgumentException('non-nullable posts_found cannot be null');
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
-        $this->container['posts_found'] = $posts_found;
-
-        return $this;
-    }
-
-    /**
-     * Gets posts_synced
-     *
-     * @return int|null
-     */
-    public function getPostsSynced()
-    {
-        return $this->container['posts_synced'];
-    }
-
-    /**
-     * Sets posts_synced
-     *
-     * @param int|null $posts_synced Posts inserted or updated in Zernio
-     *
-     * @return self
-     */
-    public function setPostsSynced($posts_synced)
-    {
-        if (is_null($posts_synced)) {
-            throw new \InvalidArgumentException('non-nullable posts_synced cannot be null');
-        }
-        $this->container['posts_synced'] = $posts_synced;
-
-        return $this;
-    }
-
-    /**
-     * Gets skipped
-     *
-     * @return bool|null
-     */
-    public function getSkipped()
-    {
-        return $this->container['skipped'];
-    }
-
-    /**
-     * Sets skipped
-     *
-     * @param bool|null $skipped True when the account was synced within the debounce window and no live fetch ran.
-     *
-     * @return self
-     */
-    public function setSkipped($skipped)
-    {
-        if (is_null($skipped)) {
-            throw new \InvalidArgumentException('non-nullable skipped cannot be null');
-        }
-        $this->container['skipped'] = $skipped;
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }

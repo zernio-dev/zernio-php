@@ -349,12 +349,14 @@ Class | Method | HTTP request | Description
 *CommentsApi* | [**likeInboxComment**](docs/Api/CommentsApi.md#likeinboxcomment) | **POST** /v1/inbox/comments/{postId}/{commentId}/like | Like comment
 *CommentsApi* | [**likePost**](docs/Api/CommentsApi.md#likepost) | **POST** /v1/inbox/posts/{postId}/like | Like post
 *CommentsApi* | [**listInboxComments**](docs/Api/CommentsApi.md#listinboxcomments) | **GET** /v1/inbox/comments | List commented posts
+*CommentsApi* | [**pinInboxComment**](docs/Api/CommentsApi.md#pininboxcomment) | **POST** /v1/inbox/comments/{postId}/{commentId}/pin | Pin comment
 *CommentsApi* | [**replyToInboxPost**](docs/Api/CommentsApi.md#replytoinboxpost) | **POST** /v1/inbox/comments/{postId} | Reply to comment
 *CommentsApi* | [**sendPrivateReplyToComment**](docs/Api/CommentsApi.md#sendprivatereplytocomment) | **POST** /v1/inbox/comments/{postId}/{commentId}/private-reply | Send private reply
 *CommentsApi* | [**setCommentModeration**](docs/Api/CommentsApi.md#setcommentmoderation) | **POST** /v1/inbox/comments/{postId}/{commentId}/moderation | Set comment moderation status
 *CommentsApi* | [**unhideInboxComment**](docs/Api/CommentsApi.md#unhideinboxcomment) | **DELETE** /v1/inbox/comments/{postId}/{commentId}/hide | Unhide comment
 *CommentsApi* | [**unlikeInboxComment**](docs/Api/CommentsApi.md#unlikeinboxcomment) | **DELETE** /v1/inbox/comments/{postId}/{commentId}/like | Unlike comment
 *CommentsApi* | [**unlikePost**](docs/Api/CommentsApi.md#unlikepost) | **DELETE** /v1/inbox/posts/{postId}/like | Unlike post
+*CommentsApi* | [**unpinInboxComment**](docs/Api/CommentsApi.md#unpininboxcomment) | **DELETE** /v1/inbox/comments/{postId}/{commentId}/pin | Unpin comment
 *ConnectApi* | [**assignGoogleBusinessLocation**](docs/Api/ConnectApi.md#assigngooglebusinesslocation) | **POST** /v1/accounts/{accountId}/gmb-locations/assign | Assign Google Business Profile location to another profile
 *ConnectApi* | [**completeMetaAdsBusinessLogin**](docs/Api/ConnectApi.md#completemetaadsbusinesslogin) | **GET** /v1/connect/meta-ads/callback | Complete Meta business login
 *ConnectApi* | [**completeTelegramConnect**](docs/Api/ConnectApi.md#completetelegramconnect) | **PATCH** /v1/connect/telegram | Check Telegram status
@@ -2050,6 +2052,8 @@ Class | Method | HTTP request | Description
 - [Pending](docs/Model/Pending.md)
 - [PhoneNumberStockWatch](docs/Model/PhoneNumberStockWatch.md)
 - [PinDiscordMessage200Response](docs/Model/PinDiscordMessage200Response.md)
+- [PinInboxComment200Response](docs/Model/PinInboxComment200Response.md)
+- [PinInboxCommentRequest](docs/Model/PinInboxCommentRequest.md)
 - [PinterestPlatformData](docs/Model/PinterestPlatformData.md)
 - [PlatformAnalytics](docs/Model/PlatformAnalytics.md)
 - [PlatformTarget](docs/Model/PlatformTarget.md)

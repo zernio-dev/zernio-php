@@ -2687,7 +2687,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets privacy_level
      *
-     * @param string|null $privacy_level One of the values returned by the TikTok creator info API for the account
+     * @param string|null $privacy_level One of the values returned by the TikTok creator info API for the account. Accounts connected through the TikTok for Business app publish videos as public only: a non-public value on a video post is rejected at creation unless draft is true (photo posts keep every level).
      *
      * @return self
      */

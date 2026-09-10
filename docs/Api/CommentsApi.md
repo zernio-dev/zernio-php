@@ -13,12 +13,14 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**likeInboxComment()**](CommentsApi.md#likeInboxComment) | **POST** /v1/inbox/comments/{postId}/{commentId}/like | Like comment |
 | [**likePost()**](CommentsApi.md#likePost) | **POST** /v1/inbox/posts/{postId}/like | Like post |
 | [**listInboxComments()**](CommentsApi.md#listInboxComments) | **GET** /v1/inbox/comments | List commented posts |
+| [**pinInboxComment()**](CommentsApi.md#pinInboxComment) | **POST** /v1/inbox/comments/{postId}/{commentId}/pin | Pin comment |
 | [**replyToInboxPost()**](CommentsApi.md#replyToInboxPost) | **POST** /v1/inbox/comments/{postId} | Reply to comment |
 | [**sendPrivateReplyToComment()**](CommentsApi.md#sendPrivateReplyToComment) | **POST** /v1/inbox/comments/{postId}/{commentId}/private-reply | Send private reply |
 | [**setCommentModeration()**](CommentsApi.md#setCommentModeration) | **POST** /v1/inbox/comments/{postId}/{commentId}/moderation | Set comment moderation status |
 | [**unhideInboxComment()**](CommentsApi.md#unhideInboxComment) | **DELETE** /v1/inbox/comments/{postId}/{commentId}/hide | Unhide comment |
 | [**unlikeInboxComment()**](CommentsApi.md#unlikeInboxComment) | **DELETE** /v1/inbox/comments/{postId}/{commentId}/like | Unlike comment |
 | [**unlikePost()**](CommentsApi.md#unlikePost) | **DELETE** /v1/inbox/posts/{postId}/like | Unlike post |
+| [**unpinInboxComment()**](CommentsApi.md#unpinInboxComment) | **DELETE** /v1/inbox/comments/{postId}/{commentId}/pin | Unpin comment |
 
 
 ## `deleteInboxComment()`
@@ -157,7 +159,7 @@ getInboxPostComments($post_id, $account_id, $subreddit, $limit, $cursor, $commen
 
 Get post comments
 
-Fetch comments for a specific post. Requires accountId query parameter.  On Facebook and Instagram, passing a COMMENT id as `postId` is also supported and returns that comment's replies instead of the post's top-level comments. This is not available on YouTube, where `postId` must be a video id.  Responses are cached for up to 10 minutes, so a page may lag new comments by that window. Do not poll this endpoint for real-time updates: subscribe to the `comment.received` webhook, which delivers new comments as they arrive. Your own writes (creating, replying to, or deleting a comment) refresh the cache immediately.
+Fetch comments for a specific post. Requires accountId query parameter.  On Facebook and Instagram, passing a COMMENT id as `postId` is also supported and returns that comment's replies instead of the post's top-level comments. This is not available on YouTube, where `postId` must be a video id.  Responses are cached for up to 10 minutes, so a page may lag new comments by that window. Do not poll this endpoint for real-time updates: subscribe to the `comment.received` webhook, which delivers new comments as they arrive. Your own writes (creating, replying to, or deleting a comment) refresh the cache immediately.  TikTok is served for accounts connected through the TikTok for Business app: `postId` is the TikTok video id, each top-level comment carries up to three inline replies, and `commentId` pages the full reply list of one comment. Developer-app TikTok accounts return 400 with code `PLATFORM_LIMITATION`.
 
 ### Example
 
@@ -181,7 +183,7 @@ $account_id = 'account_id_example'; // string
 $subreddit = 'subreddit_example'; // string | (Reddit only) Subreddit name
 $limit = 25; // int | Maximum number of comments to return
 $cursor = 'cursor_example'; // string | Pagination cursor, returned by a previous call as `pagination.cursor`. This is the platform's own opaque paging value passed through verbatim: never construct, decode or validate it client-side.
-$comment_id = 'comment_id_example'; // string | (Reddit only) Get replies to a specific comment
+$comment_id = 'comment_id_example'; // string | (Reddit and TikTok only) Get replies to a specific comment
 
 try {
     $result = $apiInstance->getInboxPostComments($post_id, $account_id, $subreddit, $limit, $cursor, $comment_id);
@@ -200,7 +202,7 @@ try {
 | **subreddit** | **string**| (Reddit only) Subreddit name | [optional] |
 | **limit** | **int**| Maximum number of comments to return | [optional] [default to 25] |
 | **cursor** | **string**| Pagination cursor, returned by a previous call as &#x60;pagination.cursor&#x60;. This is the platform&#39;s own opaque paging value passed through verbatim: never construct, decode or validate it client-side. | [optional] |
-| **comment_id** | **string**| (Reddit only) Get replies to a specific comment | [optional] |
+| **comment_id** | **string**| (Reddit and TikTok only) Get replies to a specific comment | [optional] |
 
 ### Return type
 
@@ -227,7 +229,7 @@ hideInboxComment($post_id, $comment_id, $hide_inbox_comment_request): \Zernio\Mo
 
 Hide comment
 
-Hide a comment on a post. Supported by Facebook, Instagram, Threads, and X. Hidden comments are only visible to the commenter and page admin. For X, the reply must belong to a conversation started by the authenticated user.
+Hide a comment on a post. Supported by Facebook, Instagram, Threads, X, and TikTok (accounts connected through the TikTok for Business app). Hidden comments are only visible to the commenter and page admin. For X, the reply must belong to a conversation started by the authenticated user.
 
 ### Example
 
@@ -485,6 +487,70 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `pinInboxComment()`
+
+```php
+pinInboxComment($post_id, $comment_id, $pin_inbox_comment_request): \Zernio\Model\PinInboxComment200Response
+```
+
+Pin comment
+
+Pin a top-level comment to the top of a post's comment section. TikTok accounts connected through the TikTok for Business app only; every other platform returns 400.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CommentsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$post_id = 'post_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$pin_inbox_comment_request = new \Zernio\Model\PinInboxCommentRequest(); // \Zernio\Model\PinInboxCommentRequest
+
+try {
+    $result = $apiInstance->pinInboxComment($post_id, $comment_id, $pin_inbox_comment_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommentsApi->pinInboxComment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **post_id** | **string**|  | |
+| **comment_id** | **string**|  | |
+| **pin_inbox_comment_request** | [**\Zernio\Model\PinInboxCommentRequest**](../Model/PinInboxCommentRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\PinInboxComment200Response**](../Model/PinInboxComment200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `replyToInboxPost()`
 
 ```php
@@ -685,7 +751,7 @@ unhideInboxComment($post_id, $comment_id, $account_id): \Zernio\Model\HideInboxC
 
 Unhide comment
 
-Unhide a previously hidden comment. Supported by Facebook, Instagram, Threads, and X.
+Unhide a previously hidden comment. Supported by Facebook, Instagram, Threads, X, and TikTok (accounts connected through the TikTok for Business app).
 
 ### Example
 
@@ -857,6 +923,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\UnlikePost200Response**](../Model/UnlikePost200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `unpinInboxComment()`
+
+```php
+unpinInboxComment($post_id, $comment_id, $account_id): \Zernio\Model\PinInboxComment200Response
+```
+
+Unpin comment
+
+Unpin a previously pinned comment. TikTok accounts connected through the TikTok for Business app only.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CommentsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$post_id = 'post_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$account_id = 'account_id_example'; // string
+
+try {
+    $result = $apiInstance->unpinInboxComment($post_id, $comment_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommentsApi->unpinInboxComment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **post_id** | **string**|  | |
+| **comment_id** | **string**|  | |
+| **account_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\PinInboxComment200Response**](../Model/PinInboxComment200Response.md)
 
 ### Authorization
 

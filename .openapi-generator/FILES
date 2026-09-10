@@ -1334,6 +1334,8 @@ docs/Model/PauseWorkflow200Response.md
 docs/Model/Pending.md
 docs/Model/PhoneNumberStockWatch.md
 docs/Model/PinDiscordMessage200Response.md
+docs/Model/PinInboxComment200Response.md
+docs/Model/PinInboxCommentRequest.md
 docs/Model/PinterestPlatformData.md
 docs/Model/PlatformAnalytics.md
 docs/Model/PlatformTarget.md
@@ -3424,6 +3426,8 @@ lib/Model/PauseWorkflow200Response.php
 lib/Model/Pending.php
 lib/Model/PhoneNumberStockWatch.php
 lib/Model/PinDiscordMessage200Response.php
+lib/Model/PinInboxComment200Response.php
+lib/Model/PinInboxCommentRequest.php
 lib/Model/PinterestPlatformData.php
 lib/Model/PlatformAnalytics.php
 lib/Model/PlatformTarget.php
@@ -4179,3 +4183,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/PinInboxComment200ResponseTest.php
+test/Model/PinInboxCommentRequestTest.php

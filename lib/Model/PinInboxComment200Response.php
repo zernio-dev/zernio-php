@@ -1,6 +1,6 @@
 <?php
 /**
- * SyncExternalPosts200ResponseSynced
+ * PinInboxComment200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SyncExternalPosts200ResponseSynced Class Doc Comment
+ * PinInboxComment200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SyncExternalPosts200ResponseSynced implements ModelInterface, ArrayAccess, \JsonSerializable
+class PinInboxComment200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SyncExternalPosts200ResponseSynced implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'syncExternalPosts_200_response_synced';
+    protected static $openAPIModelName = 'pinInboxComment_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,10 @@ class SyncExternalPosts200ResponseSynced implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'posts_found' => 'int',
-        'posts_synced' => 'int',
-        'skipped' => 'bool'
+        'status' => 'string',
+        'comment_id' => 'string',
+        'pinned' => 'bool',
+        'platform' => 'string'
     ];
 
     /**
@@ -71,9 +72,10 @@ class SyncExternalPosts200ResponseSynced implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'posts_found' => null,
-        'posts_synced' => null,
-        'skipped' => null
+        'status' => null,
+        'comment_id' => null,
+        'pinned' => null,
+        'platform' => null
     ];
 
     /**
@@ -82,9 +84,10 @@ class SyncExternalPosts200ResponseSynced implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'posts_found' => false,
-        'posts_synced' => false,
-        'skipped' => false
+        'status' => false,
+        'comment_id' => false,
+        'pinned' => false,
+        'platform' => false
     ];
 
     /**
@@ -173,9 +176,10 @@ class SyncExternalPosts200ResponseSynced implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'posts_found' => 'postsFound',
-        'posts_synced' => 'postsSynced',
-        'skipped' => 'skipped'
+        'status' => 'status',
+        'comment_id' => 'commentId',
+        'pinned' => 'pinned',
+        'platform' => 'platform'
     ];
 
     /**
@@ -184,9 +188,10 @@ class SyncExternalPosts200ResponseSynced implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'posts_found' => 'setPostsFound',
-        'posts_synced' => 'setPostsSynced',
-        'skipped' => 'setSkipped'
+        'status' => 'setStatus',
+        'comment_id' => 'setCommentId',
+        'pinned' => 'setPinned',
+        'platform' => 'setPlatform'
     ];
 
     /**
@@ -195,9 +200,10 @@ class SyncExternalPosts200ResponseSynced implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'posts_found' => 'getPostsFound',
-        'posts_synced' => 'getPostsSynced',
-        'skipped' => 'getSkipped'
+        'status' => 'getStatus',
+        'comment_id' => 'getCommentId',
+        'pinned' => 'getPinned',
+        'platform' => 'getPlatform'
     ];
 
     /**
@@ -257,9 +263,10 @@ class SyncExternalPosts200ResponseSynced implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('posts_found', $data ?? [], null);
-        $this->setIfExists('posts_synced', $data ?? [], null);
-        $this->setIfExists('skipped', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('comment_id', $data ?? [], null);
+        $this->setIfExists('pinned', $data ?? [], null);
+        $this->setIfExists('platform', $data ?? [], null);
     }
 
     /**
@@ -305,82 +312,109 @@ class SyncExternalPosts200ResponseSynced implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets posts_found
+     * Gets status
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getPostsFound()
+    public function getStatus()
     {
-        return $this->container['posts_found'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets posts_found
+     * Sets status
      *
-     * @param int|null $posts_found Posts returned by the platform listing during the on-demand sync
+     * @param string|null $status status
      *
      * @return self
      */
-    public function setPostsFound($posts_found)
+    public function setStatus($status)
     {
-        if (is_null($posts_found)) {
-            throw new \InvalidArgumentException('non-nullable posts_found cannot be null');
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['posts_found'] = $posts_found;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets posts_synced
+     * Gets comment_id
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getPostsSynced()
+    public function getCommentId()
     {
-        return $this->container['posts_synced'];
+        return $this->container['comment_id'];
     }
 
     /**
-     * Sets posts_synced
+     * Sets comment_id
      *
-     * @param int|null $posts_synced Posts inserted or updated in Zernio
+     * @param string|null $comment_id comment_id
      *
      * @return self
      */
-    public function setPostsSynced($posts_synced)
+    public function setCommentId($comment_id)
     {
-        if (is_null($posts_synced)) {
-            throw new \InvalidArgumentException('non-nullable posts_synced cannot be null');
+        if (is_null($comment_id)) {
+            throw new \InvalidArgumentException('non-nullable comment_id cannot be null');
         }
-        $this->container['posts_synced'] = $posts_synced;
+        $this->container['comment_id'] = $comment_id;
 
         return $this;
     }
 
     /**
-     * Gets skipped
+     * Gets pinned
      *
      * @return bool|null
      */
-    public function getSkipped()
+    public function getPinned()
     {
-        return $this->container['skipped'];
+        return $this->container['pinned'];
     }
 
     /**
-     * Sets skipped
+     * Sets pinned
      *
-     * @param bool|null $skipped True when the account was synced within the debounce window and no live fetch ran.
+     * @param bool|null $pinned pinned
      *
      * @return self
      */
-    public function setSkipped($skipped)
+    public function setPinned($pinned)
     {
-        if (is_null($skipped)) {
-            throw new \InvalidArgumentException('non-nullable skipped cannot be null');
+        if (is_null($pinned)) {
+            throw new \InvalidArgumentException('non-nullable pinned cannot be null');
         }
-        $this->container['skipped'] = $skipped;
+        $this->container['pinned'] = $pinned;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform
+     *
+     * @return string|null
+     */
+    public function getPlatform()
+    {
+        return $this->container['platform'];
+    }
+
+    /**
+     * Sets platform
+     *
+     * @param string|null $platform platform
+     *
+     * @return self
+     */
+    public function setPlatform($platform)
+    {
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
+        }
+        $this->container['platform'] = $platform;
 
         return $this;
     }

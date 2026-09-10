@@ -296,6 +296,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     public const PLATFORM_LINKEDIN = 'linkedin';
     public const PLATFORM_BLUESKY = 'bluesky';
     public const PLATFORM_REDDIT = 'reddit';
+    public const PLATFORM_TIKTOK = 'tiktok';
 
     /**
      * Gets allowable values of the enum
@@ -312,6 +313,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
             self::PLATFORM_LINKEDIN,
             self::PLATFORM_BLUESKY,
             self::PLATFORM_REDDIT,
+            self::PLATFORM_TIKTOK,
         ];
     }
 
