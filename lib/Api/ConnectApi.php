@@ -78,6 +78,9 @@ class ConnectApi
         'assignGoogleBusinessLocation' => [
             'application/json',
         ],
+        'completeMetaAdsBusinessLogin' => [
+            'application/json',
+        ],
         'completeTelegramConnect' => [
             'application/json',
         ],
@@ -575,6 +578,263 @@ class ConnectApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation completeMetaAdsBusinessLogin
+     *
+     * Complete Meta business login
+     *
+     * @param  string $state Authenticated state from the initial connectAds response. (required)
+     * @param  string|null $code Single-use authorization code returned by Meta. (optional)
+     * @param  string|null $error Meta authorization error when the user declines the dialog. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['completeMetaAdsBusinessLogin'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function completeMetaAdsBusinessLogin($state, $code = null, $error = null, string $contentType = self::contentTypes['completeMetaAdsBusinessLogin'][0])
+    {
+        $this->completeMetaAdsBusinessLoginWithHttpInfo($state, $code, $error, $contentType);
+    }
+
+    /**
+     * Operation completeMetaAdsBusinessLoginWithHttpInfo
+     *
+     * Complete Meta business login
+     *
+     * @param  string $state Authenticated state from the initial connectAds response. (required)
+     * @param  string|null $code Single-use authorization code returned by Meta. (optional)
+     * @param  string|null $error Meta authorization error when the user declines the dialog. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['completeMetaAdsBusinessLogin'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function completeMetaAdsBusinessLoginWithHttpInfo($state, $code = null, $error = null, string $contentType = self::contentTypes['completeMetaAdsBusinessLogin'][0])
+    {
+        $request = $this->completeMetaAdsBusinessLoginRequest($state, $code, $error, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation completeMetaAdsBusinessLoginAsync
+     *
+     * Complete Meta business login
+     *
+     * @param  string $state Authenticated state from the initial connectAds response. (required)
+     * @param  string|null $code Single-use authorization code returned by Meta. (optional)
+     * @param  string|null $error Meta authorization error when the user declines the dialog. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['completeMetaAdsBusinessLogin'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function completeMetaAdsBusinessLoginAsync($state, $code = null, $error = null, string $contentType = self::contentTypes['completeMetaAdsBusinessLogin'][0])
+    {
+        return $this->completeMetaAdsBusinessLoginAsyncWithHttpInfo($state, $code, $error, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation completeMetaAdsBusinessLoginAsyncWithHttpInfo
+     *
+     * Complete Meta business login
+     *
+     * @param  string $state Authenticated state from the initial connectAds response. (required)
+     * @param  string|null $code Single-use authorization code returned by Meta. (optional)
+     * @param  string|null $error Meta authorization error when the user declines the dialog. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['completeMetaAdsBusinessLogin'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function completeMetaAdsBusinessLoginAsyncWithHttpInfo($state, $code = null, $error = null, string $contentType = self::contentTypes['completeMetaAdsBusinessLogin'][0])
+    {
+        $returnType = '';
+        $request = $this->completeMetaAdsBusinessLoginRequest($state, $code, $error, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'completeMetaAdsBusinessLogin'
+     *
+     * @param  string $state Authenticated state from the initial connectAds response. (required)
+     * @param  string|null $code Single-use authorization code returned by Meta. (optional)
+     * @param  string|null $error Meta authorization error when the user declines the dialog. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['completeMetaAdsBusinessLogin'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function completeMetaAdsBusinessLoginRequest($state, $code = null, $error = null, string $contentType = self::contentTypes['completeMetaAdsBusinessLogin'][0])
+    {
+
+        // verify the required parameter 'state' is set
+        if ($state === null || (is_array($state) && count($state) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $state when calling completeMetaAdsBusinessLogin'
+            );
+        }
+
+
+
+
+        $resourcePath = '/v1/connect/meta-ads/callback';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $state,
+            'state', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $code,
+            'code', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $error,
+            'error', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -1509,13 +1769,15 @@ class ConnectApi
      *
      * Connect ads for a platform
      *
-     * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted.  &#x60;instagram&#x60; requires an Instagram account connected with loginMethod&#x3D;facebook_login whose token carries ads_management and ads_read. With an account connected through the default instagram_login flow no ads account can be created; do not use this value for those accounts. (required)
+     * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted.  In classic mode, &#x60;instagram&#x60; requires an Instagram account connected with loginMethod&#x3D;facebook_login whose token carries ads_management and ads_read. With an account connected through the default instagram_login flow no ads account can be created; do not use this value for those accounts. (required)
      * @param  string $profile_id Your Zernio profile ID (required)
+     * @param  string|null $login_mode Meta ads authorization mode. Business login is opt-in for Facebook and Instagram; classic preserves the posting-account flow. (optional, default to 'classic')
+     * @param  string|null $page_id Business login only. Facebook Page ID to select from the token grants for ad creatives and lead forms. (optional)
      * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60;: omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
      * @param  string|null $redirect_url Custom URL the browser is sent to once the OAuth flow finishes. Honored on every ads platform, including the separate-token (&#x60;tiktok&#x60;, &#x60;twitter&#x60;) and standalone (&#x60;googleads&#x60;) flows. MUST be an absolute http(s) URL or a custom app scheme for mobile deeplinks (e.g. myapp://callback); a relative path is rejected with 400 INVALID_REDIRECT_URL. On success &#x60;tiktok&#x60;, &#x60;twitter&#x60; and &#x60;googleads&#x60; land on the URL unchanged, while the same-token platforms (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) append &#x60;connected&#x60;, &#x60;profileId&#x60;, &#x60;accountId&#x60;, &#x60;username&#x60; and, on API-key calls, &#x60;connect_token&#x60;. On failure the same error contract applies as on GET /v1/connect/{platform}: &#x60;error&#x60; and &#x60;platform&#x60; are always appended, other params are optional, and the value list there is not exhaustive. On the tiktok, twitter and googleads flows &#x60;platform&#x60; carries the ads platform id (&#x60;tiktokads&#x60;, &#x60;xads&#x60;, &#x60;googleads&#x60;), not the value used in the request path. When omitted, the browser lands on the Zernio dashboard. (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
      * @param  bool|null $force Force a fresh OAuth even when an account already exists. Normally the endpoint returns &#x60;alreadyConnected: true&#x60; whenever a connected account is found, keying off its active state rather than token liveness. Set &#x60;force&#x3D;true&#x60; to bypass that and always receivean &#x60;authUrl&#x60;. Completing the returned OAuth refreshes the stored token on the existing posting and ads accounts in place. (optional, default to false)
-     * @param  string|null $ad_account_id Scope ad sync to a single platform ad account. Without this param, sync covers every ad account the connected token can see. Supported on &#x60;facebook&#x60;/&#x60;instagram&#x60; (Meta, &#x60;act_&lt;digits&gt;&#x60;), &#x60;linkedin&#x60; (bare numeric sponsored-account id), &#x60;googleads&#x60; (bare customer id digits) and &#x60;twitter&#x60; (X Ads, base36 account id). &#x60;tiktok&#x60; scopes advertisers at OAuth and &#x60;pinterest&#x60; has no ads discovery, so both ignore it. Meta ids are additionally validated against the connected token; unreachable IDs return 400. Setting a scope also removes already synced ads from de-scoped ad accounts. For multiple accounts use &#x60;adAccountIds&#x60; instead. (optional)
+     * @param  string|null $ad_account_id Scope ad sync to a single platform ad account. Without this param, sync covers every ad account the connected token can see. Business-login reconnects preserve the existing scope; supplied IDs are checked against the new grant. To change that scope after migration, call this endpoint with the IDs and omit loginMode. Supported on &#x60;facebook&#x60;/&#x60;instagram&#x60; (Meta, &#x60;act_&lt;digits&gt;&#x60;), &#x60;linkedin&#x60; (bare numeric sponsored-account id), &#x60;googleads&#x60; (bare customer id digits) and &#x60;twitter&#x60; (X Ads, base36 account id). &#x60;tiktok&#x60; scopes advertisers at OAuth and &#x60;pinterest&#x60; has no ads discovery, so both ignore it. Meta ids are additionally validated against the connected token; unreachable IDs return 400. Setting a scope also removes already synced ads from de-scoped ad accounts. For multiple accounts use &#x60;adAccountIds&#x60; instead. (optional)
      * @param  string[]|null $ad_account_ids Scope ad sync to multiple platform ad accounts (same platform support and id shapes as &#x60;adAccountId&#x60;). Repeat the param (&#x60;?adAccountIds&#x3D;act_1&amp;adAccountIds&#x3D;act_2&#x60;) or comma-separate (&#x60;?adAccountIds&#x3D;act_1,act_2&#x60;). Persisted server-side; latest call wins, and de-scoped ad accounts have their synced ads removed. Omitting both &#x60;adAccountId&#x60; and &#x60;adAccountIds&#x60; keeps any previously persisted scope unchanged. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
      *
@@ -1523,9 +1785,9 @@ class ConnectApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ConnectAds200Response|\Zernio\Model\InlineObject1
      */
-    public function connectAds($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, $force = false, $ad_account_id = null, $ad_account_ids = null, string $contentType = self::contentTypes['connectAds'][0])
+    public function connectAds($platform, $profile_id, $login_mode = 'classic', $page_id = null, $account_id = null, $redirect_url = null, $headless = false, $force = false, $ad_account_id = null, $ad_account_ids = null, string $contentType = self::contentTypes['connectAds'][0])
     {
-        list($response) = $this->connectAdsWithHttpInfo($platform, $profile_id, $account_id, $redirect_url, $headless, $force, $ad_account_id, $ad_account_ids, $contentType);
+        list($response) = $this->connectAdsWithHttpInfo($platform, $profile_id, $login_mode, $page_id, $account_id, $redirect_url, $headless, $force, $ad_account_id, $ad_account_ids, $contentType);
         return $response;
     }
 
@@ -1534,13 +1796,15 @@ class ConnectApi
      *
      * Connect ads for a platform
      *
-     * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted.  &#x60;instagram&#x60; requires an Instagram account connected with loginMethod&#x3D;facebook_login whose token carries ads_management and ads_read. With an account connected through the default instagram_login flow no ads account can be created; do not use this value for those accounts. (required)
+     * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted.  In classic mode, &#x60;instagram&#x60; requires an Instagram account connected with loginMethod&#x3D;facebook_login whose token carries ads_management and ads_read. With an account connected through the default instagram_login flow no ads account can be created; do not use this value for those accounts. (required)
      * @param  string $profile_id Your Zernio profile ID (required)
+     * @param  string|null $login_mode Meta ads authorization mode. Business login is opt-in for Facebook and Instagram; classic preserves the posting-account flow. (optional, default to 'classic')
+     * @param  string|null $page_id Business login only. Facebook Page ID to select from the token grants for ad creatives and lead forms. (optional)
      * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60;: omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
      * @param  string|null $redirect_url Custom URL the browser is sent to once the OAuth flow finishes. Honored on every ads platform, including the separate-token (&#x60;tiktok&#x60;, &#x60;twitter&#x60;) and standalone (&#x60;googleads&#x60;) flows. MUST be an absolute http(s) URL or a custom app scheme for mobile deeplinks (e.g. myapp://callback); a relative path is rejected with 400 INVALID_REDIRECT_URL. On success &#x60;tiktok&#x60;, &#x60;twitter&#x60; and &#x60;googleads&#x60; land on the URL unchanged, while the same-token platforms (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) append &#x60;connected&#x60;, &#x60;profileId&#x60;, &#x60;accountId&#x60;, &#x60;username&#x60; and, on API-key calls, &#x60;connect_token&#x60;. On failure the same error contract applies as on GET /v1/connect/{platform}: &#x60;error&#x60; and &#x60;platform&#x60; are always appended, other params are optional, and the value list there is not exhaustive. On the tiktok, twitter and googleads flows &#x60;platform&#x60; carries the ads platform id (&#x60;tiktokads&#x60;, &#x60;xads&#x60;, &#x60;googleads&#x60;), not the value used in the request path. When omitted, the browser lands on the Zernio dashboard. (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
      * @param  bool|null $force Force a fresh OAuth even when an account already exists. Normally the endpoint returns &#x60;alreadyConnected: true&#x60; whenever a connected account is found, keying off its active state rather than token liveness. Set &#x60;force&#x3D;true&#x60; to bypass that and always receivean &#x60;authUrl&#x60;. Completing the returned OAuth refreshes the stored token on the existing posting and ads accounts in place. (optional, default to false)
-     * @param  string|null $ad_account_id Scope ad sync to a single platform ad account. Without this param, sync covers every ad account the connected token can see. Supported on &#x60;facebook&#x60;/&#x60;instagram&#x60; (Meta, &#x60;act_&lt;digits&gt;&#x60;), &#x60;linkedin&#x60; (bare numeric sponsored-account id), &#x60;googleads&#x60; (bare customer id digits) and &#x60;twitter&#x60; (X Ads, base36 account id). &#x60;tiktok&#x60; scopes advertisers at OAuth and &#x60;pinterest&#x60; has no ads discovery, so both ignore it. Meta ids are additionally validated against the connected token; unreachable IDs return 400. Setting a scope also removes already synced ads from de-scoped ad accounts. For multiple accounts use &#x60;adAccountIds&#x60; instead. (optional)
+     * @param  string|null $ad_account_id Scope ad sync to a single platform ad account. Without this param, sync covers every ad account the connected token can see. Business-login reconnects preserve the existing scope; supplied IDs are checked against the new grant. To change that scope after migration, call this endpoint with the IDs and omit loginMode. Supported on &#x60;facebook&#x60;/&#x60;instagram&#x60; (Meta, &#x60;act_&lt;digits&gt;&#x60;), &#x60;linkedin&#x60; (bare numeric sponsored-account id), &#x60;googleads&#x60; (bare customer id digits) and &#x60;twitter&#x60; (X Ads, base36 account id). &#x60;tiktok&#x60; scopes advertisers at OAuth and &#x60;pinterest&#x60; has no ads discovery, so both ignore it. Meta ids are additionally validated against the connected token; unreachable IDs return 400. Setting a scope also removes already synced ads from de-scoped ad accounts. For multiple accounts use &#x60;adAccountIds&#x60; instead. (optional)
      * @param  string[]|null $ad_account_ids Scope ad sync to multiple platform ad accounts (same platform support and id shapes as &#x60;adAccountId&#x60;). Repeat the param (&#x60;?adAccountIds&#x3D;act_1&amp;adAccountIds&#x3D;act_2&#x60;) or comma-separate (&#x60;?adAccountIds&#x3D;act_1,act_2&#x60;). Persisted server-side; latest call wins, and de-scoped ad accounts have their synced ads removed. Omitting both &#x60;adAccountId&#x60; and &#x60;adAccountIds&#x60; keeps any previously persisted scope unchanged. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
      *
@@ -1548,9 +1812,9 @@ class ConnectApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ConnectAds200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
-    public function connectAdsWithHttpInfo($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, $force = false, $ad_account_id = null, $ad_account_ids = null, string $contentType = self::contentTypes['connectAds'][0])
+    public function connectAdsWithHttpInfo($platform, $profile_id, $login_mode = 'classic', $page_id = null, $account_id = null, $redirect_url = null, $headless = false, $force = false, $ad_account_id = null, $ad_account_ids = null, string $contentType = self::contentTypes['connectAds'][0])
     {
-        $request = $this->connectAdsRequest($platform, $profile_id, $account_id, $redirect_url, $headless, $force, $ad_account_id, $ad_account_ids, $contentType);
+        $request = $this->connectAdsRequest($platform, $profile_id, $login_mode, $page_id, $account_id, $redirect_url, $headless, $force, $ad_account_id, $ad_account_ids, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1640,22 +1904,24 @@ class ConnectApi
      *
      * Connect ads for a platform
      *
-     * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted.  &#x60;instagram&#x60; requires an Instagram account connected with loginMethod&#x3D;facebook_login whose token carries ads_management and ads_read. With an account connected through the default instagram_login flow no ads account can be created; do not use this value for those accounts. (required)
+     * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted.  In classic mode, &#x60;instagram&#x60; requires an Instagram account connected with loginMethod&#x3D;facebook_login whose token carries ads_management and ads_read. With an account connected through the default instagram_login flow no ads account can be created; do not use this value for those accounts. (required)
      * @param  string $profile_id Your Zernio profile ID (required)
+     * @param  string|null $login_mode Meta ads authorization mode. Business login is opt-in for Facebook and Instagram; classic preserves the posting-account flow. (optional, default to 'classic')
+     * @param  string|null $page_id Business login only. Facebook Page ID to select from the token grants for ad creatives and lead forms. (optional)
      * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60;: omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
      * @param  string|null $redirect_url Custom URL the browser is sent to once the OAuth flow finishes. Honored on every ads platform, including the separate-token (&#x60;tiktok&#x60;, &#x60;twitter&#x60;) and standalone (&#x60;googleads&#x60;) flows. MUST be an absolute http(s) URL or a custom app scheme for mobile deeplinks (e.g. myapp://callback); a relative path is rejected with 400 INVALID_REDIRECT_URL. On success &#x60;tiktok&#x60;, &#x60;twitter&#x60; and &#x60;googleads&#x60; land on the URL unchanged, while the same-token platforms (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) append &#x60;connected&#x60;, &#x60;profileId&#x60;, &#x60;accountId&#x60;, &#x60;username&#x60; and, on API-key calls, &#x60;connect_token&#x60;. On failure the same error contract applies as on GET /v1/connect/{platform}: &#x60;error&#x60; and &#x60;platform&#x60; are always appended, other params are optional, and the value list there is not exhaustive. On the tiktok, twitter and googleads flows &#x60;platform&#x60; carries the ads platform id (&#x60;tiktokads&#x60;, &#x60;xads&#x60;, &#x60;googleads&#x60;), not the value used in the request path. When omitted, the browser lands on the Zernio dashboard. (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
      * @param  bool|null $force Force a fresh OAuth even when an account already exists. Normally the endpoint returns &#x60;alreadyConnected: true&#x60; whenever a connected account is found, keying off its active state rather than token liveness. Set &#x60;force&#x3D;true&#x60; to bypass that and always receivean &#x60;authUrl&#x60;. Completing the returned OAuth refreshes the stored token on the existing posting and ads accounts in place. (optional, default to false)
-     * @param  string|null $ad_account_id Scope ad sync to a single platform ad account. Without this param, sync covers every ad account the connected token can see. Supported on &#x60;facebook&#x60;/&#x60;instagram&#x60; (Meta, &#x60;act_&lt;digits&gt;&#x60;), &#x60;linkedin&#x60; (bare numeric sponsored-account id), &#x60;googleads&#x60; (bare customer id digits) and &#x60;twitter&#x60; (X Ads, base36 account id). &#x60;tiktok&#x60; scopes advertisers at OAuth and &#x60;pinterest&#x60; has no ads discovery, so both ignore it. Meta ids are additionally validated against the connected token; unreachable IDs return 400. Setting a scope also removes already synced ads from de-scoped ad accounts. For multiple accounts use &#x60;adAccountIds&#x60; instead. (optional)
+     * @param  string|null $ad_account_id Scope ad sync to a single platform ad account. Without this param, sync covers every ad account the connected token can see. Business-login reconnects preserve the existing scope; supplied IDs are checked against the new grant. To change that scope after migration, call this endpoint with the IDs and omit loginMode. Supported on &#x60;facebook&#x60;/&#x60;instagram&#x60; (Meta, &#x60;act_&lt;digits&gt;&#x60;), &#x60;linkedin&#x60; (bare numeric sponsored-account id), &#x60;googleads&#x60; (bare customer id digits) and &#x60;twitter&#x60; (X Ads, base36 account id). &#x60;tiktok&#x60; scopes advertisers at OAuth and &#x60;pinterest&#x60; has no ads discovery, so both ignore it. Meta ids are additionally validated against the connected token; unreachable IDs return 400. Setting a scope also removes already synced ads from de-scoped ad accounts. For multiple accounts use &#x60;adAccountIds&#x60; instead. (optional)
      * @param  string[]|null $ad_account_ids Scope ad sync to multiple platform ad accounts (same platform support and id shapes as &#x60;adAccountId&#x60;). Repeat the param (&#x60;?adAccountIds&#x3D;act_1&amp;adAccountIds&#x3D;act_2&#x60;) or comma-separate (&#x60;?adAccountIds&#x3D;act_1,act_2&#x60;). Persisted server-side; latest call wins, and de-scoped ad accounts have their synced ads removed. Omitting both &#x60;adAccountId&#x60; and &#x60;adAccountIds&#x60; keeps any previously persisted scope unchanged. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function connectAdsAsync($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, $force = false, $ad_account_id = null, $ad_account_ids = null, string $contentType = self::contentTypes['connectAds'][0])
+    public function connectAdsAsync($platform, $profile_id, $login_mode = 'classic', $page_id = null, $account_id = null, $redirect_url = null, $headless = false, $force = false, $ad_account_id = null, $ad_account_ids = null, string $contentType = self::contentTypes['connectAds'][0])
     {
-        return $this->connectAdsAsyncWithHttpInfo($platform, $profile_id, $account_id, $redirect_url, $headless, $force, $ad_account_id, $ad_account_ids, $contentType)
+        return $this->connectAdsAsyncWithHttpInfo($platform, $profile_id, $login_mode, $page_id, $account_id, $redirect_url, $headless, $force, $ad_account_id, $ad_account_ids, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1668,23 +1934,25 @@ class ConnectApi
      *
      * Connect ads for a platform
      *
-     * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted.  &#x60;instagram&#x60; requires an Instagram account connected with loginMethod&#x3D;facebook_login whose token carries ads_management and ads_read. With an account connected through the default instagram_login flow no ads account can be created; do not use this value for those accounts. (required)
+     * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted.  In classic mode, &#x60;instagram&#x60; requires an Instagram account connected with loginMethod&#x3D;facebook_login whose token carries ads_management and ads_read. With an account connected through the default instagram_login flow no ads account can be created; do not use this value for those accounts. (required)
      * @param  string $profile_id Your Zernio profile ID (required)
+     * @param  string|null $login_mode Meta ads authorization mode. Business login is opt-in for Facebook and Instagram; classic preserves the posting-account flow. (optional, default to 'classic')
+     * @param  string|null $page_id Business login only. Facebook Page ID to select from the token grants for ad creatives and lead forms. (optional)
      * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60;: omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
      * @param  string|null $redirect_url Custom URL the browser is sent to once the OAuth flow finishes. Honored on every ads platform, including the separate-token (&#x60;tiktok&#x60;, &#x60;twitter&#x60;) and standalone (&#x60;googleads&#x60;) flows. MUST be an absolute http(s) URL or a custom app scheme for mobile deeplinks (e.g. myapp://callback); a relative path is rejected with 400 INVALID_REDIRECT_URL. On success &#x60;tiktok&#x60;, &#x60;twitter&#x60; and &#x60;googleads&#x60; land on the URL unchanged, while the same-token platforms (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) append &#x60;connected&#x60;, &#x60;profileId&#x60;, &#x60;accountId&#x60;, &#x60;username&#x60; and, on API-key calls, &#x60;connect_token&#x60;. On failure the same error contract applies as on GET /v1/connect/{platform}: &#x60;error&#x60; and &#x60;platform&#x60; are always appended, other params are optional, and the value list there is not exhaustive. On the tiktok, twitter and googleads flows &#x60;platform&#x60; carries the ads platform id (&#x60;tiktokads&#x60;, &#x60;xads&#x60;, &#x60;googleads&#x60;), not the value used in the request path. When omitted, the browser lands on the Zernio dashboard. (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
      * @param  bool|null $force Force a fresh OAuth even when an account already exists. Normally the endpoint returns &#x60;alreadyConnected: true&#x60; whenever a connected account is found, keying off its active state rather than token liveness. Set &#x60;force&#x3D;true&#x60; to bypass that and always receivean &#x60;authUrl&#x60;. Completing the returned OAuth refreshes the stored token on the existing posting and ads accounts in place. (optional, default to false)
-     * @param  string|null $ad_account_id Scope ad sync to a single platform ad account. Without this param, sync covers every ad account the connected token can see. Supported on &#x60;facebook&#x60;/&#x60;instagram&#x60; (Meta, &#x60;act_&lt;digits&gt;&#x60;), &#x60;linkedin&#x60; (bare numeric sponsored-account id), &#x60;googleads&#x60; (bare customer id digits) and &#x60;twitter&#x60; (X Ads, base36 account id). &#x60;tiktok&#x60; scopes advertisers at OAuth and &#x60;pinterest&#x60; has no ads discovery, so both ignore it. Meta ids are additionally validated against the connected token; unreachable IDs return 400. Setting a scope also removes already synced ads from de-scoped ad accounts. For multiple accounts use &#x60;adAccountIds&#x60; instead. (optional)
+     * @param  string|null $ad_account_id Scope ad sync to a single platform ad account. Without this param, sync covers every ad account the connected token can see. Business-login reconnects preserve the existing scope; supplied IDs are checked against the new grant. To change that scope after migration, call this endpoint with the IDs and omit loginMode. Supported on &#x60;facebook&#x60;/&#x60;instagram&#x60; (Meta, &#x60;act_&lt;digits&gt;&#x60;), &#x60;linkedin&#x60; (bare numeric sponsored-account id), &#x60;googleads&#x60; (bare customer id digits) and &#x60;twitter&#x60; (X Ads, base36 account id). &#x60;tiktok&#x60; scopes advertisers at OAuth and &#x60;pinterest&#x60; has no ads discovery, so both ignore it. Meta ids are additionally validated against the connected token; unreachable IDs return 400. Setting a scope also removes already synced ads from de-scoped ad accounts. For multiple accounts use &#x60;adAccountIds&#x60; instead. (optional)
      * @param  string[]|null $ad_account_ids Scope ad sync to multiple platform ad accounts (same platform support and id shapes as &#x60;adAccountId&#x60;). Repeat the param (&#x60;?adAccountIds&#x3D;act_1&amp;adAccountIds&#x3D;act_2&#x60;) or comma-separate (&#x60;?adAccountIds&#x3D;act_1,act_2&#x60;). Persisted server-side; latest call wins, and de-scoped ad accounts have their synced ads removed. Omitting both &#x60;adAccountId&#x60; and &#x60;adAccountIds&#x60; keeps any previously persisted scope unchanged. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function connectAdsAsyncWithHttpInfo($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, $force = false, $ad_account_id = null, $ad_account_ids = null, string $contentType = self::contentTypes['connectAds'][0])
+    public function connectAdsAsyncWithHttpInfo($platform, $profile_id, $login_mode = 'classic', $page_id = null, $account_id = null, $redirect_url = null, $headless = false, $force = false, $ad_account_id = null, $ad_account_ids = null, string $contentType = self::contentTypes['connectAds'][0])
     {
         $returnType = '\Zernio\Model\ConnectAds200Response';
-        $request = $this->connectAdsRequest($platform, $profile_id, $account_id, $redirect_url, $headless, $force, $ad_account_id, $ad_account_ids, $contentType);
+        $request = $this->connectAdsRequest($platform, $profile_id, $login_mode, $page_id, $account_id, $redirect_url, $headless, $force, $ad_account_id, $ad_account_ids, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1725,20 +1993,22 @@ class ConnectApi
     /**
      * Create request for operation 'connectAds'
      *
-     * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted.  &#x60;instagram&#x60; requires an Instagram account connected with loginMethod&#x3D;facebook_login whose token carries ads_management and ads_read. With an account connected through the default instagram_login flow no ads account can be created; do not use this value for those accounts. (required)
+     * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted.  In classic mode, &#x60;instagram&#x60; requires an Instagram account connected with loginMethod&#x3D;facebook_login whose token carries ads_management and ads_read. With an account connected through the default instagram_login flow no ads account can be created; do not use this value for those accounts. (required)
      * @param  string $profile_id Your Zernio profile ID (required)
+     * @param  string|null $login_mode Meta ads authorization mode. Business login is opt-in for Facebook and Instagram; classic preserves the posting-account flow. (optional, default to 'classic')
+     * @param  string|null $page_id Business login only. Facebook Page ID to select from the token grants for ad creatives and lead forms. (optional)
      * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60;: omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
      * @param  string|null $redirect_url Custom URL the browser is sent to once the OAuth flow finishes. Honored on every ads platform, including the separate-token (&#x60;tiktok&#x60;, &#x60;twitter&#x60;) and standalone (&#x60;googleads&#x60;) flows. MUST be an absolute http(s) URL or a custom app scheme for mobile deeplinks (e.g. myapp://callback); a relative path is rejected with 400 INVALID_REDIRECT_URL. On success &#x60;tiktok&#x60;, &#x60;twitter&#x60; and &#x60;googleads&#x60; land on the URL unchanged, while the same-token platforms (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) append &#x60;connected&#x60;, &#x60;profileId&#x60;, &#x60;accountId&#x60;, &#x60;username&#x60; and, on API-key calls, &#x60;connect_token&#x60;. On failure the same error contract applies as on GET /v1/connect/{platform}: &#x60;error&#x60; and &#x60;platform&#x60; are always appended, other params are optional, and the value list there is not exhaustive. On the tiktok, twitter and googleads flows &#x60;platform&#x60; carries the ads platform id (&#x60;tiktokads&#x60;, &#x60;xads&#x60;, &#x60;googleads&#x60;), not the value used in the request path. When omitted, the browser lands on the Zernio dashboard. (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
      * @param  bool|null $force Force a fresh OAuth even when an account already exists. Normally the endpoint returns &#x60;alreadyConnected: true&#x60; whenever a connected account is found, keying off its active state rather than token liveness. Set &#x60;force&#x3D;true&#x60; to bypass that and always receivean &#x60;authUrl&#x60;. Completing the returned OAuth refreshes the stored token on the existing posting and ads accounts in place. (optional, default to false)
-     * @param  string|null $ad_account_id Scope ad sync to a single platform ad account. Without this param, sync covers every ad account the connected token can see. Supported on &#x60;facebook&#x60;/&#x60;instagram&#x60; (Meta, &#x60;act_&lt;digits&gt;&#x60;), &#x60;linkedin&#x60; (bare numeric sponsored-account id), &#x60;googleads&#x60; (bare customer id digits) and &#x60;twitter&#x60; (X Ads, base36 account id). &#x60;tiktok&#x60; scopes advertisers at OAuth and &#x60;pinterest&#x60; has no ads discovery, so both ignore it. Meta ids are additionally validated against the connected token; unreachable IDs return 400. Setting a scope also removes already synced ads from de-scoped ad accounts. For multiple accounts use &#x60;adAccountIds&#x60; instead. (optional)
+     * @param  string|null $ad_account_id Scope ad sync to a single platform ad account. Without this param, sync covers every ad account the connected token can see. Business-login reconnects preserve the existing scope; supplied IDs are checked against the new grant. To change that scope after migration, call this endpoint with the IDs and omit loginMode. Supported on &#x60;facebook&#x60;/&#x60;instagram&#x60; (Meta, &#x60;act_&lt;digits&gt;&#x60;), &#x60;linkedin&#x60; (bare numeric sponsored-account id), &#x60;googleads&#x60; (bare customer id digits) and &#x60;twitter&#x60; (X Ads, base36 account id). &#x60;tiktok&#x60; scopes advertisers at OAuth and &#x60;pinterest&#x60; has no ads discovery, so both ignore it. Meta ids are additionally validated against the connected token; unreachable IDs return 400. Setting a scope also removes already synced ads from de-scoped ad accounts. For multiple accounts use &#x60;adAccountIds&#x60; instead. (optional)
      * @param  string[]|null $ad_account_ids Scope ad sync to multiple platform ad accounts (same platform support and id shapes as &#x60;adAccountId&#x60;). Repeat the param (&#x60;?adAccountIds&#x3D;act_1&amp;adAccountIds&#x3D;act_2&#x60;) or comma-separate (&#x60;?adAccountIds&#x3D;act_1,act_2&#x60;). Persisted server-side; latest call wins, and de-scoped ad accounts have their synced ads removed. Omitting both &#x60;adAccountId&#x60; and &#x60;adAccountIds&#x60; keeps any previously persisted scope unchanged. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function connectAdsRequest($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, $force = false, $ad_account_id = null, $ad_account_ids = null, string $contentType = self::contentTypes['connectAds'][0])
+    public function connectAdsRequest($platform, $profile_id, $login_mode = 'classic', $page_id = null, $account_id = null, $redirect_url = null, $headless = false, $force = false, $ad_account_id = null, $ad_account_ids = null, string $contentType = self::contentTypes['connectAds'][0])
     {
 
         // verify the required parameter 'platform' is set
@@ -1756,6 +2026,11 @@ class ConnectApi
         }
 
 
+        if ($page_id !== null && !preg_match("/^\\d+$/", $page_id)) {
+            throw new \InvalidArgumentException("invalid value for \"page_id\" when calling ConnectApi.connectAds, must conform to the pattern /^\\d+$/.");
+        }
+        
+
 
 
 
@@ -1769,6 +2044,24 @@ class ConnectApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $login_mode,
+            'loginMode', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_id,
+            'pageId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $profile_id,

@@ -64,6 +64,7 @@ class ConnectAds200ResponseOneOf implements ModelInterface, ArrayAccess, \JsonSe
         'platform' => 'string',
         'username' => 'string',
         'display_name' => 'string',
+        'token_type' => 'string',
         'scoped_ad_account_ids' => 'string[]'
     ];
 
@@ -80,6 +81,7 @@ class ConnectAds200ResponseOneOf implements ModelInterface, ArrayAccess, \JsonSe
         'platform' => null,
         'username' => null,
         'display_name' => null,
+        'token_type' => null,
         'scoped_ad_account_ids' => null
     ];
 
@@ -94,6 +96,7 @@ class ConnectAds200ResponseOneOf implements ModelInterface, ArrayAccess, \JsonSe
         'platform' => false,
         'username' => false,
         'display_name' => false,
+        'token_type' => false,
         'scoped_ad_account_ids' => false
     ];
 
@@ -188,6 +191,7 @@ class ConnectAds200ResponseOneOf implements ModelInterface, ArrayAccess, \JsonSe
         'platform' => 'platform',
         'username' => 'username',
         'display_name' => 'displayName',
+        'token_type' => 'tokenType',
         'scoped_ad_account_ids' => 'scopedAdAccountIds'
     ];
 
@@ -202,6 +206,7 @@ class ConnectAds200ResponseOneOf implements ModelInterface, ArrayAccess, \JsonSe
         'platform' => 'setPlatform',
         'username' => 'setUsername',
         'display_name' => 'setDisplayName',
+        'token_type' => 'setTokenType',
         'scoped_ad_account_ids' => 'setScopedAdAccountIds'
     ];
 
@@ -216,6 +221,7 @@ class ConnectAds200ResponseOneOf implements ModelInterface, ArrayAccess, \JsonSe
         'platform' => 'getPlatform',
         'username' => 'getUsername',
         'display_name' => 'getDisplayName',
+        'token_type' => 'getTokenType',
         'scoped_ad_account_ids' => 'getScopedAdAccountIds'
     ];
 
@@ -260,6 +266,19 @@ class ConnectAds200ResponseOneOf implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
+    public const TOKEN_TYPE_SYSTEM_USER = 'system-user';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTokenTypeAllowableValues()
+    {
+        return [
+            self::TOKEN_TYPE_SYSTEM_USER,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -281,6 +300,7 @@ class ConnectAds200ResponseOneOf implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('username', $data ?? [], null);
         $this->setIfExists('display_name', $data ?? [], null);
+        $this->setIfExists('token_type', $data ?? [], null);
         $this->setIfExists('scoped_ad_account_ids', $data ?? [], null);
     }
 
@@ -310,6 +330,15 @@ class ConnectAds200ResponseOneOf implements ModelInterface, ArrayAccess, \JsonSe
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getTokenTypeAllowableValues();
+        if (!is_null($this->container['token_type']) && !in_array($this->container['token_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'token_type', must be one of '%s'",
+                $this->container['token_type'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -457,6 +486,43 @@ class ConnectAds200ResponseOneOf implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable display_name cannot be null');
         }
         $this->container['display_name'] = $display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets token_type
+     *
+     * @return string|null
+     */
+    public function getTokenType()
+    {
+        return $this->container['token_type'];
+    }
+
+    /**
+     * Sets token_type
+     *
+     * @param string|null $token_type Present for an existing business-login connection.
+     *
+     * @return self
+     */
+    public function setTokenType($token_type)
+    {
+        if (is_null($token_type)) {
+            throw new \InvalidArgumentException('non-nullable token_type cannot be null');
+        }
+        $allowedValues = $this->getTokenTypeAllowableValues();
+        if (!in_array($token_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'token_type', must be one of '%s'",
+                    $token_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['token_type'] = $token_type;
 
         return $this;
     }

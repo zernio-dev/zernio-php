@@ -61,6 +61,8 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'id' => 'string',
         'name' => 'string',
         'currency' => 'string',
+        'business_id' => 'string',
+        'business_name' => 'string',
         'status' => 'string',
         'account_status' => 'mixed',
         'approval_status' => 'string',
@@ -83,6 +85,8 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'id' => null,
         'name' => null,
         'currency' => null,
+        'business_id' => null,
+        'business_name' => null,
         'status' => null,
         'account_status' => null,
         'approval_status' => null,
@@ -103,6 +107,8 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'id' => false,
         'name' => false,
         'currency' => false,
+        'business_id' => false,
+        'business_name' => false,
         'status' => false,
         'account_status' => true,
         'approval_status' => false,
@@ -203,6 +209,8 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'id' => 'id',
         'name' => 'name',
         'currency' => 'currency',
+        'business_id' => 'businessId',
+        'business_name' => 'businessName',
         'status' => 'status',
         'account_status' => 'accountStatus',
         'approval_status' => 'approvalStatus',
@@ -223,6 +231,8 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'id' => 'setId',
         'name' => 'setName',
         'currency' => 'setCurrency',
+        'business_id' => 'setBusinessId',
+        'business_name' => 'setBusinessName',
         'status' => 'setStatus',
         'account_status' => 'setAccountStatus',
         'approval_status' => 'setApprovalStatus',
@@ -243,6 +253,8 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'id' => 'getId',
         'name' => 'getName',
         'currency' => 'getCurrency',
+        'business_id' => 'getBusinessId',
+        'business_name' => 'getBusinessName',
         'status' => 'getStatus',
         'account_status' => 'getAccountStatus',
         'approval_status' => 'getApprovalStatus',
@@ -314,6 +326,8 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
+        $this->setIfExists('business_id', $data ?? [], null);
+        $this->setIfExists('business_name', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('account_status', $data ?? [], null);
         $this->setIfExists('approval_status', $data ?? [], null);
@@ -444,6 +458,60 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
             throw new \InvalidArgumentException('non-nullable currency cannot be null');
         }
         $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_id
+     *
+     * @return string|null
+     */
+    public function getBusinessId()
+    {
+        return $this->container['business_id'];
+    }
+
+    /**
+     * Sets business_id
+     *
+     * @param string|null $business_id Meta only. Owning Business Manager ID when available on the grant.
+     *
+     * @return self
+     */
+    public function setBusinessId($business_id)
+    {
+        if (is_null($business_id)) {
+            throw new \InvalidArgumentException('non-nullable business_id cannot be null');
+        }
+        $this->container['business_id'] = $business_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_name
+     *
+     * @return string|null
+     */
+    public function getBusinessName()
+    {
+        return $this->container['business_name'];
+    }
+
+    /**
+     * Sets business_name
+     *
+     * @param string|null $business_name Owning business name when supplied by the platform.
+     *
+     * @return self
+     */
+    public function setBusinessName($business_name)
+    {
+        if (is_null($business_name)) {
+            throw new \InvalidArgumentException('non-nullable business_name cannot be null');
+        }
+        $this->container['business_name'] = $business_name;
 
         return $this;
     }

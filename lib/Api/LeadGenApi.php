@@ -1781,7 +1781,7 @@ class LeadGenApi
      *
      * List lead forms
      *
-     * @param  string $account_id Connected facebook or linkedin ads account id. (required)
+     * @param  string $account_id Connected Facebook, Meta ads business-login or LinkedIn ads account ID. (required)
      * @param  string|null $ad_account_id LinkedIn only: the LinkedIn ad account id (used to resolve the owning organization). Required for LinkedIn. (optional)
      * @param  int|null $limit limit (optional, default to 25)
      * @param  string|null $cursor cursor (optional)
@@ -1802,7 +1802,7 @@ class LeadGenApi
      *
      * List lead forms
      *
-     * @param  string $account_id Connected facebook or linkedin ads account id. (required)
+     * @param  string $account_id Connected Facebook, Meta ads business-login or LinkedIn ads account ID. (required)
      * @param  string|null $ad_account_id LinkedIn only: the LinkedIn ad account id (used to resolve the owning organization). Required for LinkedIn. (optional)
      * @param  int|null $limit (optional, default to 25)
      * @param  string|null $cursor (optional)
@@ -1918,7 +1918,7 @@ class LeadGenApi
      *
      * List lead forms
      *
-     * @param  string $account_id Connected facebook or linkedin ads account id. (required)
+     * @param  string $account_id Connected Facebook, Meta ads business-login or LinkedIn ads account ID. (required)
      * @param  string|null $ad_account_id LinkedIn only: the LinkedIn ad account id (used to resolve the owning organization). Required for LinkedIn. (optional)
      * @param  int|null $limit (optional, default to 25)
      * @param  string|null $cursor (optional)
@@ -1942,7 +1942,7 @@ class LeadGenApi
      *
      * List lead forms
      *
-     * @param  string $account_id Connected facebook or linkedin ads account id. (required)
+     * @param  string $account_id Connected Facebook, Meta ads business-login or LinkedIn ads account ID. (required)
      * @param  string|null $ad_account_id LinkedIn only: the LinkedIn ad account id (used to resolve the owning organization). Required for LinkedIn. (optional)
      * @param  int|null $limit (optional, default to 25)
      * @param  string|null $cursor (optional)
@@ -1995,7 +1995,7 @@ class LeadGenApi
     /**
      * Create request for operation 'listLeadForms'
      *
-     * @param  string $account_id Connected facebook or linkedin ads account id. (required)
+     * @param  string $account_id Connected Facebook, Meta ads business-login or LinkedIn ads account ID. (required)
      * @param  string|null $ad_account_id LinkedIn only: the LinkedIn ad account id (used to resolve the owning organization). Required for LinkedIn. (optional)
      * @param  int|null $limit (optional, default to 25)
      * @param  string|null $cursor (optional)
