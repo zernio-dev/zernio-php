@@ -61,6 +61,7 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
         'country' => 'string',
         'number_type' => 'string',
         'available' => 'bool',
+        'pre_orderable' => 'bool',
         'address_constraint' => 'string',
         'areas' => 'string[]',
         'area_options' => '\Zernio\Model\CheckPhoneNumberAvailability200ResponseAreaOptionsInner[]'
@@ -77,6 +78,7 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
         'country' => null,
         'number_type' => null,
         'available' => null,
+        'pre_orderable' => null,
         'address_constraint' => null,
         'areas' => null,
         'area_options' => null
@@ -91,6 +93,7 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
         'country' => false,
         'number_type' => false,
         'available' => false,
+        'pre_orderable' => false,
         'address_constraint' => false,
         'areas' => false,
         'area_options' => false
@@ -185,6 +188,7 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
         'country' => 'country',
         'number_type' => 'numberType',
         'available' => 'available',
+        'pre_orderable' => 'preOrderable',
         'address_constraint' => 'addressConstraint',
         'areas' => 'areas',
         'area_options' => 'areaOptions'
@@ -199,6 +203,7 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
         'country' => 'setCountry',
         'number_type' => 'setNumberType',
         'available' => 'setAvailable',
+        'pre_orderable' => 'setPreOrderable',
         'address_constraint' => 'setAddressConstraint',
         'areas' => 'setAreas',
         'area_options' => 'setAreaOptions'
@@ -213,6 +218,7 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
         'country' => 'getCountry',
         'number_type' => 'getNumberType',
         'available' => 'getAvailable',
+        'pre_orderable' => 'getPreOrderable',
         'address_constraint' => 'getAddressConstraint',
         'areas' => 'getAreas',
         'area_options' => 'getAreaOptions'
@@ -295,6 +301,7 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
         $this->setIfExists('country', $data ?? [], null);
         $this->setIfExists('number_type', $data ?? [], null);
         $this->setIfExists('available', $data ?? [], null);
+        $this->setIfExists('pre_orderable', $data ?? [], null);
         $this->setIfExists('address_constraint', $data ?? [], null);
         $this->setIfExists('areas', $data ?? [], null);
         $this->setIfExists('area_options', $data ?? [], null);
@@ -428,6 +435,33 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
             throw new \InvalidArgumentException('non-nullable available cannot be null');
         }
         $this->container['available'] = $available;
+
+        return $this;
+    }
+
+    /**
+     * Gets pre_orderable
+     *
+     * @return bool|null
+     */
+    public function getPreOrderable()
+    {
+        return $this->container['pre_orderable'];
+    }
+
+    /**
+     * Sets pre_orderable
+     *
+     * @param bool|null $pre_orderable Nothing deliverable now, but this pair can be pre-ordered: submit KYC as usual and the carrier sources the number after review (usually about 3 weeks, never guaranteed). Only document tiers (3/4) qualify.
+     *
+     * @return self
+     */
+    public function setPreOrderable($pre_orderable)
+    {
+        if (is_null($pre_orderable)) {
+            throw new \InvalidArgumentException('non-nullable pre_orderable cannot be null');
+        }
+        $this->container['pre_orderable'] = $pre_orderable;
 
         return $this;
     }

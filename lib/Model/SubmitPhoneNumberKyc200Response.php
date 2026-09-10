@@ -59,6 +59,7 @@ class SubmitPhoneNumberKyc200Response implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPITypes = [
         'status' => 'string',
+        'pre_order' => 'bool',
         'phone_number' => '\Zernio\Model\SubmitPhoneNumberKyc200ResponsePhoneNumber',
         'numbers' => '\Zernio\Model\SubmitPhoneNumberKyc200ResponseNumbersInner[]'
     ];
@@ -72,6 +73,7 @@ class SubmitPhoneNumberKyc200Response implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPIFormats = [
         'status' => null,
+        'pre_order' => null,
         'phone_number' => null,
         'numbers' => null
     ];
@@ -83,6 +85,7 @@ class SubmitPhoneNumberKyc200Response implements ModelInterface, ArrayAccess, \J
       */
     protected static array $openAPINullables = [
         'status' => false,
+        'pre_order' => false,
         'phone_number' => false,
         'numbers' => false
     ];
@@ -174,6 +177,7 @@ class SubmitPhoneNumberKyc200Response implements ModelInterface, ArrayAccess, \J
      */
     protected static $attributeMap = [
         'status' => 'status',
+        'pre_order' => 'preOrder',
         'phone_number' => 'phoneNumber',
         'numbers' => 'numbers'
     ];
@@ -185,6 +189,7 @@ class SubmitPhoneNumberKyc200Response implements ModelInterface, ArrayAccess, \J
      */
     protected static $setters = [
         'status' => 'setStatus',
+        'pre_order' => 'setPreOrder',
         'phone_number' => 'setPhoneNumber',
         'numbers' => 'setNumbers'
     ];
@@ -196,6 +201,7 @@ class SubmitPhoneNumberKyc200Response implements ModelInterface, ArrayAccess, \J
      */
     protected static $getters = [
         'status' => 'getStatus',
+        'pre_order' => 'getPreOrder',
         'phone_number' => 'getPhoneNumber',
         'numbers' => 'getNumbers'
     ];
@@ -275,6 +281,7 @@ class SubmitPhoneNumberKyc200Response implements ModelInterface, ArrayAccess, \J
     public function __construct(?array $data = null)
     {
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('pre_order', $data ?? [], null);
         $this->setIfExists('phone_number', $data ?? [], null);
         $this->setIfExists('numbers', $data ?? [], null);
     }
@@ -363,6 +370,33 @@ class SubmitPhoneNumberKyc200Response implements ModelInterface, ArrayAccess, \J
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets pre_order
+     *
+     * @return bool|null
+     */
+    public function getPreOrder()
+    {
+        return $this->container['pre_order'];
+    }
+
+    /**
+     * Sets pre_order
+     *
+     * @param bool|null $pre_order True when nothing was in stock and this submission placed a pre-order. The number stays `pending_regulatory` until the carrier sources it (usually about 3 weeks) and is not billed until active. A pre-order is one number: `quantity` above 1 is rejected with 400.
+     *
+     * @return self
+     */
+    public function setPreOrder($pre_order)
+    {
+        if (is_null($pre_order)) {
+            throw new \InvalidArgumentException('non-nullable pre_order cannot be null');
+        }
+        $this->container['pre_order'] = $pre_order;
 
         return $this;
     }

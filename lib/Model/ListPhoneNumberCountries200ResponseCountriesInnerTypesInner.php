@@ -65,7 +65,9 @@ class ListPhoneNumberCountries200ResponseCountriesInnerTypesInner implements Mod
         'whatsapp_available' => 'bool',
         'sms_available' => 'bool',
         'calls_available' => 'bool',
-        'in_stock' => 'bool'
+        'in_stock' => 'bool',
+        'fulfilment' => 'string',
+        'pre_orderable' => 'bool'
     ];
 
     /**
@@ -83,7 +85,9 @@ class ListPhoneNumberCountries200ResponseCountriesInnerTypesInner implements Mod
         'whatsapp_available' => null,
         'sms_available' => null,
         'calls_available' => null,
-        'in_stock' => null
+        'in_stock' => null,
+        'fulfilment' => null,
+        'pre_orderable' => null
     ];
 
     /**
@@ -93,13 +97,15 @@ class ListPhoneNumberCountries200ResponseCountriesInnerTypesInner implements Mod
       */
     protected static array $openAPINullables = [
         'number_type' => false,
-        'tier' => false,
+        'tier' => true,
         'needs_kyc' => false,
         'monthly_cents' => false,
         'whatsapp_available' => false,
         'sms_available' => false,
         'calls_available' => false,
-        'in_stock' => false
+        'in_stock' => false,
+        'fulfilment' => false,
+        'pre_orderable' => false
     ];
 
     /**
@@ -195,7 +201,9 @@ class ListPhoneNumberCountries200ResponseCountriesInnerTypesInner implements Mod
         'whatsapp_available' => 'whatsappAvailable',
         'sms_available' => 'smsAvailable',
         'calls_available' => 'callsAvailable',
-        'in_stock' => 'inStock'
+        'in_stock' => 'inStock',
+        'fulfilment' => 'fulfilment',
+        'pre_orderable' => 'preOrderable'
     ];
 
     /**
@@ -211,7 +219,9 @@ class ListPhoneNumberCountries200ResponseCountriesInnerTypesInner implements Mod
         'whatsapp_available' => 'setWhatsappAvailable',
         'sms_available' => 'setSmsAvailable',
         'calls_available' => 'setCallsAvailable',
-        'in_stock' => 'setInStock'
+        'in_stock' => 'setInStock',
+        'fulfilment' => 'setFulfilment',
+        'pre_orderable' => 'setPreOrderable'
     ];
 
     /**
@@ -227,7 +237,9 @@ class ListPhoneNumberCountries200ResponseCountriesInnerTypesInner implements Mod
         'whatsapp_available' => 'getWhatsappAvailable',
         'sms_available' => 'getSmsAvailable',
         'calls_available' => 'getCallsAvailable',
-        'in_stock' => 'getInStock'
+        'in_stock' => 'getInStock',
+        'fulfilment' => 'getFulfilment',
+        'pre_orderable' => 'getPreOrderable'
     ];
 
     /**
@@ -279,6 +291,8 @@ class ListPhoneNumberCountries200ResponseCountriesInnerTypesInner implements Mod
     public const TIER_NUMBER_2 = 2;
     public const TIER_NUMBER_3 = 3;
     public const TIER_NUMBER_4 = 4;
+    public const FULFILMENT_INSTANT = 'instant';
+    public const FULFILMENT_REQUEST = 'request';
 
     /**
      * Gets allowable values of the enum
@@ -311,6 +325,19 @@ class ListPhoneNumberCountries200ResponseCountriesInnerTypesInner implements Mod
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFulfilmentAllowableValues()
+    {
+        return [
+            self::FULFILMENT_INSTANT,
+            self::FULFILMENT_REQUEST,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -333,6 +360,8 @@ class ListPhoneNumberCountries200ResponseCountriesInnerTypesInner implements Mod
         $this->setIfExists('sms_available', $data ?? [], null);
         $this->setIfExists('calls_available', $data ?? [], null);
         $this->setIfExists('in_stock', $data ?? [], null);
+        $this->setIfExists('fulfilment', $data ?? [], null);
+        $this->setIfExists('pre_orderable', $data ?? [], null);
     }
 
     /**
@@ -376,6 +405,15 @@ class ListPhoneNumberCountries200ResponseCountriesInnerTypesInner implements Mod
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'tier', must be one of '%s'",
                 $this->container['tier'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getFulfilmentAllowableValues();
+        if (!is_null($this->container['fulfilment']) && !in_array($this->container['fulfilment'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'fulfilment', must be one of '%s'",
+                $this->container['fulfilment'],
                 implode("', '", $allowedValues)
             );
         }
@@ -445,17 +483,24 @@ class ListPhoneNumberCountries200ResponseCountriesInnerTypesInner implements Mod
     /**
      * Sets tier
      *
-     * @param int|null $tier tier
+     * @param int|null $tier Null on a `fulfilment: request` type, whose document tier is only known once its requirements are read.
      *
      * @return self
      */
     public function setTier($tier)
     {
         if (is_null($tier)) {
-            throw new \InvalidArgumentException('non-nullable tier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tier', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getTierAllowableValues();
-        if (!in_array($tier, $allowedValues, true)) {
+        if (!is_null($tier) && !in_array($tier, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'tier', must be one of '%s'",
@@ -627,6 +672,70 @@ class ListPhoneNumberCountries200ResponseCountriesInnerTypesInner implements Mod
             throw new \InvalidArgumentException('non-nullable in_stock cannot be null');
         }
         $this->container['in_stock'] = $in_stock;
+
+        return $this;
+    }
+
+    /**
+     * Gets fulfilment
+     *
+     * @return string|null
+     */
+    public function getFulfilment()
+    {
+        return $this->container['fulfilment'];
+    }
+
+    /**
+     * Sets fulfilment
+     *
+     * @param string|null $fulfilment `request`: the carrier stocks this type nowhere and only sources it to order, so it is always a pre-order.
+     *
+     * @return self
+     */
+    public function setFulfilment($fulfilment)
+    {
+        if (is_null($fulfilment)) {
+            throw new \InvalidArgumentException('non-nullable fulfilment cannot be null');
+        }
+        $allowedValues = $this->getFulfilmentAllowableValues();
+        if (!in_array($fulfilment, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'fulfilment', must be one of '%s'",
+                    $fulfilment,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['fulfilment'] = $fulfilment;
+
+        return $this;
+    }
+
+    /**
+     * Gets pre_orderable
+     *
+     * @return bool|null
+     */
+    public function getPreOrderable()
+    {
+        return $this->container['pre_orderable'];
+    }
+
+    /**
+     * Sets pre_orderable
+     *
+     * @param bool|null $pre_orderable Out of stock but orderable anyway. Submit KYC as usual (POST /v1/phone-numbers/kyc) and the carrier sources the number after review, usually about 3 weeks and never guaranteed. Only document tiers (3/4) qualify, and nothing is billed until the number is active.
+     *
+     * @return self
+     */
+    public function setPreOrderable($pre_orderable)
+    {
+        if (is_null($pre_orderable)) {
+            throw new \InvalidArgumentException('non-nullable pre_orderable cannot be null');
+        }
+        $this->container['pre_orderable'] = $pre_orderable;
 
         return $this;
     }

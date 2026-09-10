@@ -67,6 +67,7 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
         'sms_available' => 'bool',
         'outbound_calling_available' => 'bool',
         'in_stock' => 'bool',
+        'pre_orderable' => 'bool',
         'types' => '\Zernio\Model\ListPhoneNumberCountries200ResponseCountriesInnerTypesInner[]'
     ];
 
@@ -87,6 +88,7 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
         'sms_available' => null,
         'outbound_calling_available' => null,
         'in_stock' => null,
+        'pre_orderable' => null,
         'types' => null
     ];
 
@@ -105,6 +107,7 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
         'sms_available' => false,
         'outbound_calling_available' => false,
         'in_stock' => false,
+        'pre_orderable' => false,
         'types' => false
     ];
 
@@ -203,6 +206,7 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
         'sms_available' => 'smsAvailable',
         'outbound_calling_available' => 'outboundCallingAvailable',
         'in_stock' => 'inStock',
+        'pre_orderable' => 'preOrderable',
         'types' => 'types'
     ];
 
@@ -221,6 +225,7 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
         'sms_available' => 'setSmsAvailable',
         'outbound_calling_available' => 'setOutboundCallingAvailable',
         'in_stock' => 'setInStock',
+        'pre_orderable' => 'setPreOrderable',
         'types' => 'setTypes'
     ];
 
@@ -239,6 +244,7 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
         'sms_available' => 'getSmsAvailable',
         'outbound_calling_available' => 'getOutboundCallingAvailable',
         'in_stock' => 'getInStock',
+        'pre_orderable' => 'getPreOrderable',
         'types' => 'getTypes'
     ];
 
@@ -327,6 +333,7 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
         $this->setIfExists('sms_available', $data ?? [], null);
         $this->setIfExists('outbound_calling_available', $data ?? [], null);
         $this->setIfExists('in_stock', $data ?? [], null);
+        $this->setIfExists('pre_orderable', $data ?? [], null);
         $this->setIfExists('types', $data ?? [], null);
     }
 
@@ -630,6 +637,33 @@ class ListPhoneNumberCountries200ResponseCountriesInner implements ModelInterfac
             throw new \InvalidArgumentException('non-nullable in_stock cannot be null');
         }
         $this->container['in_stock'] = $in_stock;
+
+        return $this;
+    }
+
+    /**
+     * Gets pre_orderable
+     *
+     * @return bool|null
+     */
+    public function getPreOrderable()
+    {
+        return $this->container['pre_orderable'];
+    }
+
+    /**
+     * Sets pre_orderable
+     *
+     * @param bool|null $pre_orderable At least one out-of-stock type here can be pre-ordered (see `types[].preOrderable`).
+     *
+     * @return self
+     */
+    public function setPreOrderable($pre_orderable)
+    {
+        if (is_null($pre_orderable)) {
+            throw new \InvalidArgumentException('non-nullable pre_orderable cannot be null');
+        }
+        $this->container['pre_orderable'] = $pre_orderable;
 
         return $this;
     }
