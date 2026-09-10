@@ -101,6 +101,7 @@ Class | Method | HTTP request | Description
 *AdAccountsApi* | [**addAccountCallouts**](docs/Api/AdAccountsApi.md#addaccountcallouts) | **POST** /v1/ads/accounts/callouts | Add account callouts
 *AdAccountsApi* | [**addAccountSitelinks**](docs/Api/AdAccountsApi.md#addaccountsitelinks) | **POST** /v1/ads/accounts/sitelinks | Add account sitelinks
 *AdAccountsApi* | [**addAccountStructuredSnippets**](docs/Api/AdAccountsApi.md#addaccountstructuredsnippets) | **POST** /v1/ads/accounts/structured-snippets | Add account snippets
+*AdAccountsApi* | [**createAdAccount**](docs/Api/AdAccountsApi.md#createadaccount) | **POST** /v1/ads/accounts | Create Meta ad account
 *AdAccountsApi* | [**createAdNegativeKeywordList**](docs/Api/AdAccountsApi.md#createadnegativekeywordlist) | **POST** /v1/ads/accounts/negative-keyword-lists | Create a negative keyword list
 *AdAccountsApi* | [**createCustomConversion**](docs/Api/AdAccountsApi.md#createcustomconversion) | **POST** /v1/accounts/{accountId}/custom-conversions | Create or reuse a custom conversion
 *AdAccountsApi* | [**createHighDemandPeriod**](docs/Api/AdAccountsApi.md#createhighdemandperiod) | **POST** /v1/ads/high-demand-periods | Schedule a budget increase
@@ -1020,6 +1021,8 @@ Class | Method | HTTP request | Description
 - [CreateAccountGroup201Response](docs/Model/CreateAccountGroup201Response.md)
 - [CreateAccountGroup201ResponseGroup](docs/Model/CreateAccountGroup201ResponseGroup.md)
 - [CreateAccountGroupRequest](docs/Model/CreateAccountGroupRequest.md)
+- [CreateAdAccount201Response](docs/Model/CreateAdAccount201Response.md)
+- [CreateAdAccountRequest](docs/Model/CreateAdAccountRequest.md)
 - [CreateAdAudience201Response](docs/Model/CreateAdAudience201Response.md)
 - [CreateAdAudienceRequest](docs/Model/CreateAdAudienceRequest.md)
 - [CreateAdCampaign200Response](docs/Model/CreateAdCampaign200Response.md)

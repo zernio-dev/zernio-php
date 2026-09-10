@@ -311,6 +311,8 @@ docs/Model/ConversionEventUserClickIds.md
 docs/Model/CreateAccountGroup201Response.md
 docs/Model/CreateAccountGroup201ResponseGroup.md
 docs/Model/CreateAccountGroupRequest.md
+docs/Model/CreateAdAccount201Response.md
+docs/Model/CreateAdAccountRequest.md
 docs/Model/CreateAdAudience201Response.md
 docs/Model/CreateAdAudienceRequest.md
 docs/Model/CreateAdCampaign200Response.md
@@ -2381,6 +2383,8 @@ lib/Model/ConversionEventUserClickIds.php
 lib/Model/CreateAccountGroup201Response.php
 lib/Model/CreateAccountGroup201ResponseGroup.php
 lib/Model/CreateAccountGroupRequest.php
+lib/Model/CreateAdAccount201Response.php
+lib/Model/CreateAdAccountRequest.php
 lib/Model/CreateAdAudience201Response.php
 lib/Model/CreateAdAudienceRequest.php
 lib/Model/CreateAdCampaign200Response.php
@@ -4141,3 +4145,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateAdAccount201ResponseTest.php
+test/Model/CreateAdAccountRequestTest.php
