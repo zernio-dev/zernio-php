@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateStandaloneAd200ResponseResultsInner
+ * GooglePmaxAssetGroupAssetsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateStandaloneAd200ResponseResultsInner Class Doc Comment
+ * GooglePmaxAssetGroupAssetsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class GooglePmaxAssetGroupAssetsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createStandaloneAd_200_response_results_inner';
+    protected static $openAPIModelName = 'GooglePmaxAssetGroup_assets_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,12 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
-        'node' => 'string',
+        'resource_name' => 'string',
+        'field_type' => 'string',
         'status' => 'string',
-        'reason' => 'string'
+        'text' => 'string',
+        'image_url' => 'string',
+        'youtube_video_id' => 'string'
     ];
 
     /**
@@ -71,9 +74,12 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'node' => null,
+        'resource_name' => null,
+        'field_type' => null,
         'status' => null,
-        'reason' => null
+        'text' => null,
+        'image_url' => 'uri',
+        'youtube_video_id' => null
     ];
 
     /**
@@ -82,9 +88,12 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'node' => false,
+        'resource_name' => false,
+        'field_type' => false,
         'status' => false,
-        'reason' => false
+        'text' => false,
+        'image_url' => false,
+        'youtube_video_id' => false
     ];
 
     /**
@@ -173,9 +182,12 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
      * @var string[]
      */
     protected static $attributeMap = [
-        'node' => 'node',
+        'resource_name' => 'resourceName',
+        'field_type' => 'fieldType',
         'status' => 'status',
-        'reason' => 'reason'
+        'text' => 'text',
+        'image_url' => 'imageUrl',
+        'youtube_video_id' => 'youtubeVideoId'
     ];
 
     /**
@@ -184,9 +196,12 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
      * @var string[]
      */
     protected static $setters = [
-        'node' => 'setNode',
+        'resource_name' => 'setResourceName',
+        'field_type' => 'setFieldType',
         'status' => 'setStatus',
-        'reason' => 'setReason'
+        'text' => 'setText',
+        'image_url' => 'setImageUrl',
+        'youtube_video_id' => 'setYoutubeVideoId'
     ];
 
     /**
@@ -195,9 +210,12 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
      * @var string[]
      */
     protected static $getters = [
-        'node' => 'getNode',
+        'resource_name' => 'getResourceName',
+        'field_type' => 'getFieldType',
         'status' => 'getStatus',
-        'reason' => 'getReason'
+        'text' => 'getText',
+        'image_url' => 'getImageUrl',
+        'youtube_video_id' => 'getYoutubeVideoId'
     ];
 
     /**
@@ -241,42 +259,6 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
         return self::$openAPIModelName;
     }
 
-    public const NODE_CAMPAIGN = 'campaign';
-    public const NODE_AD_SET = 'adSet';
-    public const NODE_CREATIVE = 'creative';
-    public const NODE_AD = 'ad';
-    public const NODE_PERFORMANCE_MAX_CAMPAIGN = 'performanceMaxCampaign';
-    public const STATUS_VALIDATED = 'validated';
-    public const STATUS_SKIPPED = 'skipped';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getNodeAllowableValues()
-    {
-        return [
-            self::NODE_CAMPAIGN,
-            self::NODE_AD_SET,
-            self::NODE_CREATIVE,
-            self::NODE_AD,
-            self::NODE_PERFORMANCE_MAX_CAMPAIGN,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_VALIDATED,
-            self::STATUS_SKIPPED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -293,9 +275,12 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('node', $data ?? [], null);
+        $this->setIfExists('resource_name', $data ?? [], null);
+        $this->setIfExists('field_type', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('reason', $data ?? [], null);
+        $this->setIfExists('text', $data ?? [], null);
+        $this->setIfExists('image_url', $data ?? [], null);
+        $this->setIfExists('youtube_video_id', $data ?? [], null);
     }
 
     /**
@@ -325,24 +310,15 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getNodeAllowableValues();
-        if (!is_null($this->container['node']) && !in_array($this->container['node'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'node', must be one of '%s'",
-                $this->container['node'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['resource_name'] === null) {
+            $invalidProperties[] = "'resource_name' can't be null";
         }
-
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['field_type'] === null) {
+            $invalidProperties[] = "'field_type' can't be null";
         }
-
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -359,38 +335,55 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
 
 
     /**
-     * Gets node
+     * Gets resource_name
      *
-     * @return string|null
+     * @return string
      */
-    public function getNode()
+    public function getResourceName()
     {
-        return $this->container['node'];
+        return $this->container['resource_name'];
     }
 
     /**
-     * Sets node
+     * Sets resource_name
      *
-     * @param string|null $node node
+     * @param string $resource_name resource_name
      *
      * @return self
      */
-    public function setNode($node)
+    public function setResourceName($resource_name)
     {
-        if (is_null($node)) {
-            throw new \InvalidArgumentException('non-nullable node cannot be null');
+        if (is_null($resource_name)) {
+            throw new \InvalidArgumentException('non-nullable resource_name cannot be null');
         }
-        $allowedValues = $this->getNodeAllowableValues();
-        if (!in_array($node, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'node', must be one of '%s'",
-                    $node,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['resource_name'] = $resource_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets field_type
+     *
+     * @return string
+     */
+    public function getFieldType()
+    {
+        return $this->container['field_type'];
+    }
+
+    /**
+     * Sets field_type
+     *
+     * @param string $field_type Google asset role, such as HEADLINE or LOGO.
+     *
+     * @return self
+     */
+    public function setFieldType($field_type)
+    {
+        if (is_null($field_type)) {
+            throw new \InvalidArgumentException('non-nullable field_type cannot be null');
         }
-        $this->container['node'] = $node;
+        $this->container['field_type'] = $field_type;
 
         return $this;
     }
@@ -398,7 +391,7 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
     /**
      * Gets status
      *
-     * @return string|null
+     * @return string
      */
     public function getStatus()
     {
@@ -408,7 +401,7 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
     /**
      * Sets status
      *
-     * @param string|null $status status
+     * @param string $status status
      *
      * @return self
      */
@@ -417,44 +410,88 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
         if (is_null($status)) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets reason
+     * Gets text
      *
      * @return string|null
      */
-    public function getReason()
+    public function getText()
     {
-        return $this->container['reason'];
+        return $this->container['text'];
     }
 
     /**
-     * Sets reason
+     * Sets text
      *
-     * @param string|null $reason Why the node could not be validated (only on skipped).
+     * @param string|null $text text
      *
      * @return self
      */
-    public function setReason($reason)
+    public function setText($text)
     {
-        if (is_null($reason)) {
-            throw new \InvalidArgumentException('non-nullable reason cannot be null');
+        if (is_null($text)) {
+            throw new \InvalidArgumentException('non-nullable text cannot be null');
         }
-        $this->container['reason'] = $reason;
+        $this->container['text'] = $text;
+
+        return $this;
+    }
+
+    /**
+     * Gets image_url
+     *
+     * @return string|null
+     */
+    public function getImageUrl()
+    {
+        return $this->container['image_url'];
+    }
+
+    /**
+     * Sets image_url
+     *
+     * @param string|null $image_url image_url
+     *
+     * @return self
+     */
+    public function setImageUrl($image_url)
+    {
+        if (is_null($image_url)) {
+            throw new \InvalidArgumentException('non-nullable image_url cannot be null');
+        }
+        $this->container['image_url'] = $image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets youtube_video_id
+     *
+     * @return string|null
+     */
+    public function getYoutubeVideoId()
+    {
+        return $this->container['youtube_video_id'];
+    }
+
+    /**
+     * Sets youtube_video_id
+     *
+     * @param string|null $youtube_video_id youtube_video_id
+     *
+     * @return self
+     */
+    public function setYoutubeVideoId($youtube_video_id)
+    {
+        if (is_null($youtube_video_id)) {
+            throw new \InvalidArgumentException('non-nullable youtube_video_id cannot be null');
+        }
+        $this->container['youtube_video_id'] = $youtube_video_id;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateStandaloneAd200ResponseResultsInner
+ * GooglePmaxAssetGroup
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateStandaloneAd200ResponseResultsInner Class Doc Comment
+ * GooglePmaxAssetGroup Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class GooglePmaxAssetGroup implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createStandaloneAd_200_response_results_inner';
+    protected static $openAPIModelName = 'GooglePmaxAssetGroup';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,12 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
-        'node' => 'string',
+        'id' => 'string',
+        'resource_name' => 'string',
+        'name' => 'string',
         'status' => 'string',
-        'reason' => 'string'
+        'final_urls' => 'string[]',
+        'assets' => '\Zernio\Model\GooglePmaxAssetGroupAssetsInner[]'
     ];
 
     /**
@@ -71,9 +74,12 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'node' => null,
+        'id' => null,
+        'resource_name' => null,
+        'name' => null,
         'status' => null,
-        'reason' => null
+        'final_urls' => 'uri',
+        'assets' => null
     ];
 
     /**
@@ -82,9 +88,12 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'node' => false,
+        'id' => false,
+        'resource_name' => false,
+        'name' => false,
         'status' => false,
-        'reason' => false
+        'final_urls' => false,
+        'assets' => false
     ];
 
     /**
@@ -173,9 +182,12 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
      * @var string[]
      */
     protected static $attributeMap = [
-        'node' => 'node',
+        'id' => 'id',
+        'resource_name' => 'resourceName',
+        'name' => 'name',
         'status' => 'status',
-        'reason' => 'reason'
+        'final_urls' => 'finalUrls',
+        'assets' => 'assets'
     ];
 
     /**
@@ -184,9 +196,12 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
      * @var string[]
      */
     protected static $setters = [
-        'node' => 'setNode',
+        'id' => 'setId',
+        'resource_name' => 'setResourceName',
+        'name' => 'setName',
         'status' => 'setStatus',
-        'reason' => 'setReason'
+        'final_urls' => 'setFinalUrls',
+        'assets' => 'setAssets'
     ];
 
     /**
@@ -195,9 +210,12 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
      * @var string[]
      */
     protected static $getters = [
-        'node' => 'getNode',
+        'id' => 'getId',
+        'resource_name' => 'getResourceName',
+        'name' => 'getName',
         'status' => 'getStatus',
-        'reason' => 'getReason'
+        'final_urls' => 'getFinalUrls',
+        'assets' => 'getAssets'
     ];
 
     /**
@@ -241,42 +259,6 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
         return self::$openAPIModelName;
     }
 
-    public const NODE_CAMPAIGN = 'campaign';
-    public const NODE_AD_SET = 'adSet';
-    public const NODE_CREATIVE = 'creative';
-    public const NODE_AD = 'ad';
-    public const NODE_PERFORMANCE_MAX_CAMPAIGN = 'performanceMaxCampaign';
-    public const STATUS_VALIDATED = 'validated';
-    public const STATUS_SKIPPED = 'skipped';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getNodeAllowableValues()
-    {
-        return [
-            self::NODE_CAMPAIGN,
-            self::NODE_AD_SET,
-            self::NODE_CREATIVE,
-            self::NODE_AD,
-            self::NODE_PERFORMANCE_MAX_CAMPAIGN,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_VALIDATED,
-            self::STATUS_SKIPPED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -293,9 +275,12 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('node', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('resource_name', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('reason', $data ?? [], null);
+        $this->setIfExists('final_urls', $data ?? [], null);
+        $this->setIfExists('assets', $data ?? [], null);
     }
 
     /**
@@ -325,24 +310,24 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getNodeAllowableValues();
-        if (!is_null($this->container['node']) && !in_array($this->container['node'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'node', must be one of '%s'",
-                $this->container['node'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
-
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['resource_name'] === null) {
+            $invalidProperties[] = "'resource_name' can't be null";
         }
-
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        if ($this->container['final_urls'] === null) {
+            $invalidProperties[] = "'final_urls' can't be null";
+        }
+        if ($this->container['assets'] === null) {
+            $invalidProperties[] = "'assets' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -359,38 +344,82 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
 
 
     /**
-     * Gets node
+     * Gets id
      *
-     * @return string|null
+     * @return string
      */
-    public function getNode()
+    public function getId()
     {
-        return $this->container['node'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets node
+     * Sets id
      *
-     * @param string|null $node node
+     * @param string $id id
      *
      * @return self
      */
-    public function setNode($node)
+    public function setId($id)
     {
-        if (is_null($node)) {
-            throw new \InvalidArgumentException('non-nullable node cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $allowedValues = $this->getNodeAllowableValues();
-        if (!in_array($node, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'node', must be one of '%s'",
-                    $node,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets resource_name
+     *
+     * @return string
+     */
+    public function getResourceName()
+    {
+        return $this->container['resource_name'];
+    }
+
+    /**
+     * Sets resource_name
+     *
+     * @param string $resource_name resource_name
+     *
+     * @return self
+     */
+    public function setResourceName($resource_name)
+    {
+        if (is_null($resource_name)) {
+            throw new \InvalidArgumentException('non-nullable resource_name cannot be null');
         }
-        $this->container['node'] = $node;
+        $this->container['resource_name'] = $resource_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -398,7 +427,7 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
     /**
      * Gets status
      *
-     * @return string|null
+     * @return string
      */
     public function getStatus()
     {
@@ -408,7 +437,7 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
     /**
      * Sets status
      *
-     * @param string|null $status status
+     * @param string $status Asset-group status on Google. Campaign status independently controls delivery.
      *
      * @return self
      */
@@ -417,44 +446,61 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
         if (is_null($status)) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets reason
+     * Gets final_urls
      *
-     * @return string|null
+     * @return string[]
      */
-    public function getReason()
+    public function getFinalUrls()
     {
-        return $this->container['reason'];
+        return $this->container['final_urls'];
     }
 
     /**
-     * Sets reason
+     * Sets final_urls
      *
-     * @param string|null $reason Why the node could not be validated (only on skipped).
+     * @param string[] $final_urls final_urls
      *
      * @return self
      */
-    public function setReason($reason)
+    public function setFinalUrls($final_urls)
     {
-        if (is_null($reason)) {
-            throw new \InvalidArgumentException('non-nullable reason cannot be null');
+        if (is_null($final_urls)) {
+            throw new \InvalidArgumentException('non-nullable final_urls cannot be null');
         }
-        $this->container['reason'] = $reason;
+        $this->container['final_urls'] = $final_urls;
+
+        return $this;
+    }
+
+    /**
+     * Gets assets
+     *
+     * @return \Zernio\Model\GooglePmaxAssetGroupAssetsInner[]
+     */
+    public function getAssets()
+    {
+        return $this->container['assets'];
+    }
+
+    /**
+     * Sets assets
+     *
+     * @param \Zernio\Model\GooglePmaxAssetGroupAssetsInner[] $assets assets
+     *
+     * @return self
+     */
+    public function setAssets($assets)
+    {
+        if (is_null($assets)) {
+            throw new \InvalidArgumentException('non-nullable assets cannot be null');
+        }
+        $this->container['assets'] = $assets;
 
         return $this;
     }

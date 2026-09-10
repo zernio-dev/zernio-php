@@ -979,6 +979,10 @@ docs/Model/GoogleBusinessPlatformDataOffer.md
 docs/Model/GoogleBusinessReview.md
 docs/Model/GoogleBusinessReviewReviewReply.md
 docs/Model/GoogleBusinessReviewReviewer.md
+docs/Model/GooglePmaxAssetGroup.md
+docs/Model/GooglePmaxAssetGroupAssetsInner.md
+docs/Model/GooglePmaxAssetGroupInput.md
+docs/Model/GooglePmaxAssetGroupInputImages.md
 docs/Model/GoogleRsaDescription.md
 docs/Model/GoogleRsaHeadline.md
 docs/Model/GoogleSitelink.md
@@ -1151,6 +1155,7 @@ docs/Model/ListFacebookPages200Response.md
 docs/Model/ListFacebookPages200ResponsePagesInner.md
 docs/Model/ListFormLeads200Response.md
 docs/Model/ListFormLeads200ResponseLeadsInner.md
+docs/Model/ListGoogleAssetGroups200Response.md
 docs/Model/ListGoogleBusinessLocations200Response.md
 docs/Model/ListGoogleBusinessLocations200ResponseLocationsInner.md
 docs/Model/ListGoogleBusinessMedia200Response.md
@@ -3051,6 +3056,10 @@ lib/Model/GoogleBusinessPlatformDataOffer.php
 lib/Model/GoogleBusinessReview.php
 lib/Model/GoogleBusinessReviewReviewReply.php
 lib/Model/GoogleBusinessReviewReviewer.php
+lib/Model/GooglePmaxAssetGroup.php
+lib/Model/GooglePmaxAssetGroupAssetsInner.php
+lib/Model/GooglePmaxAssetGroupInput.php
+lib/Model/GooglePmaxAssetGroupInputImages.php
 lib/Model/GoogleRsaDescription.php
 lib/Model/GoogleRsaHeadline.php
 lib/Model/GoogleSitelink.php
@@ -3223,6 +3232,7 @@ lib/Model/ListFacebookPages200Response.php
 lib/Model/ListFacebookPages200ResponsePagesInner.php
 lib/Model/ListFormLeads200Response.php
 lib/Model/ListFormLeads200ResponseLeadsInner.php
+lib/Model/ListGoogleAssetGroups200Response.php
 lib/Model/ListGoogleBusinessLocations200Response.php
 lib/Model/ListGoogleBusinessLocations200ResponseLocationsInner.php
 lib/Model/ListGoogleBusinessMedia200Response.php
@@ -4145,5 +4155,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateAdAccount201ResponseTest.php
-test/Model/CreateAdAccountRequestTest.php
+test/Model/GooglePmaxAssetGroupAssetsInnerTest.php
+test/Model/GooglePmaxAssetGroupInputImagesTest.php
+test/Model/GooglePmaxAssetGroupInputTest.php
+test/Model/GooglePmaxAssetGroupTest.php
+test/Model/ListGoogleAssetGroups200ResponseTest.php

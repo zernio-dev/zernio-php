@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateStandaloneAd200ResponseResultsInner
+ * GooglePmaxAssetGroupInputImages
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateStandaloneAd200ResponseResultsInner Class Doc Comment
+ * GooglePmaxAssetGroupInputImages Class Doc Comment
  *
  * @category Class
+ * @description Public HTTP(S) image URLs. GIF, JPEG or PNG, at most 5120 KB per image. Google validates dimensions and aspect ratios.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class GooglePmaxAssetGroupInputImages implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createStandaloneAd_200_response_results_inner';
+    protected static $openAPIModelName = 'GooglePmaxAssetGroupInput_images';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +59,9 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
-        'node' => 'string',
-        'status' => 'string',
-        'reason' => 'string'
+        'landscape' => 'string[]',
+        'square' => 'string[]',
+        'logo' => 'string[]'
     ];
 
     /**
@@ -71,9 +72,9 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'node' => null,
-        'status' => null,
-        'reason' => null
+        'landscape' => 'uri',
+        'square' => 'uri',
+        'logo' => 'uri'
     ];
 
     /**
@@ -82,9 +83,9 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'node' => false,
-        'status' => false,
-        'reason' => false
+        'landscape' => false,
+        'square' => false,
+        'logo' => false
     ];
 
     /**
@@ -173,9 +174,9 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
      * @var string[]
      */
     protected static $attributeMap = [
-        'node' => 'node',
-        'status' => 'status',
-        'reason' => 'reason'
+        'landscape' => 'landscape',
+        'square' => 'square',
+        'logo' => 'logo'
     ];
 
     /**
@@ -184,9 +185,9 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
      * @var string[]
      */
     protected static $setters = [
-        'node' => 'setNode',
-        'status' => 'setStatus',
-        'reason' => 'setReason'
+        'landscape' => 'setLandscape',
+        'square' => 'setSquare',
+        'logo' => 'setLogo'
     ];
 
     /**
@@ -195,9 +196,9 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
      * @var string[]
      */
     protected static $getters = [
-        'node' => 'getNode',
-        'status' => 'getStatus',
-        'reason' => 'getReason'
+        'landscape' => 'getLandscape',
+        'square' => 'getSquare',
+        'logo' => 'getLogo'
     ];
 
     /**
@@ -241,42 +242,6 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
         return self::$openAPIModelName;
     }
 
-    public const NODE_CAMPAIGN = 'campaign';
-    public const NODE_AD_SET = 'adSet';
-    public const NODE_CREATIVE = 'creative';
-    public const NODE_AD = 'ad';
-    public const NODE_PERFORMANCE_MAX_CAMPAIGN = 'performanceMaxCampaign';
-    public const STATUS_VALIDATED = 'validated';
-    public const STATUS_SKIPPED = 'skipped';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getNodeAllowableValues()
-    {
-        return [
-            self::NODE_CAMPAIGN,
-            self::NODE_AD_SET,
-            self::NODE_CREATIVE,
-            self::NODE_AD,
-            self::NODE_PERFORMANCE_MAX_CAMPAIGN,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_VALIDATED,
-            self::STATUS_SKIPPED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -293,9 +258,9 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('node', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('reason', $data ?? [], null);
+        $this->setIfExists('landscape', $data ?? [], null);
+        $this->setIfExists('square', $data ?? [], null);
+        $this->setIfExists('logo', $data ?? [], null);
     }
 
     /**
@@ -325,22 +290,37 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getNodeAllowableValues();
-        if (!is_null($this->container['node']) && !in_array($this->container['node'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'node', must be one of '%s'",
-                $this->container['node'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['landscape'] === null) {
+            $invalidProperties[] = "'landscape' can't be null";
+        }
+        if ((count($this->container['landscape']) > 20)) {
+            $invalidProperties[] = "invalid value for 'landscape', number of items must be less than or equal to 20.";
         }
 
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
-                implode("', '", $allowedValues)
-            );
+        if ((count($this->container['landscape']) < 1)) {
+            $invalidProperties[] = "invalid value for 'landscape', number of items must be greater than or equal to 1.";
+        }
+
+        if ($this->container['square'] === null) {
+            $invalidProperties[] = "'square' can't be null";
+        }
+        if ((count($this->container['square']) > 20)) {
+            $invalidProperties[] = "invalid value for 'square', number of items must be less than or equal to 20.";
+        }
+
+        if ((count($this->container['square']) < 1)) {
+            $invalidProperties[] = "invalid value for 'square', number of items must be greater than or equal to 1.";
+        }
+
+        if ($this->container['logo'] === null) {
+            $invalidProperties[] = "'logo' can't be null";
+        }
+        if ((count($this->container['logo']) > 5)) {
+            $invalidProperties[] = "invalid value for 'logo', number of items must be less than or equal to 5.";
+        }
+
+        if ((count($this->container['logo']) < 1)) {
+            $invalidProperties[] = "invalid value for 'logo', number of items must be greater than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -359,102 +339,103 @@ class CreateStandaloneAd200ResponseResultsInner implements ModelInterface, Array
 
 
     /**
-     * Gets node
+     * Gets landscape
      *
-     * @return string|null
+     * @return string[]
      */
-    public function getNode()
+    public function getLandscape()
     {
-        return $this->container['node'];
+        return $this->container['landscape'];
     }
 
     /**
-     * Sets node
+     * Sets landscape
      *
-     * @param string|null $node node
+     * @param string[] $landscape Landscape marketing images. Aspect ratio 1.91:1, minimum 600 x 314 pixels.
      *
      * @return self
      */
-    public function setNode($node)
+    public function setLandscape($landscape)
     {
-        if (is_null($node)) {
-            throw new \InvalidArgumentException('non-nullable node cannot be null');
+        if (is_null($landscape)) {
+            throw new \InvalidArgumentException('non-nullable landscape cannot be null');
         }
-        $allowedValues = $this->getNodeAllowableValues();
-        if (!in_array($node, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'node', must be one of '%s'",
-                    $node,
-                    implode("', '", $allowedValues)
-                )
-            );
+
+        if ((count($landscape) > 20)) {
+            throw new \InvalidArgumentException('invalid value for $landscape when calling GooglePmaxAssetGroupInputImages., number of items must be less than or equal to 20.');
         }
-        $this->container['node'] = $node;
+        if ((count($landscape) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $landscape when calling GooglePmaxAssetGroupInputImages., number of items must be greater than or equal to 1.');
+        }
+        $this->container['landscape'] = $landscape;
 
         return $this;
     }
 
     /**
-     * Gets status
+     * Gets square
      *
-     * @return string|null
+     * @return string[]
      */
-    public function getStatus()
+    public function getSquare()
     {
-        return $this->container['status'];
+        return $this->container['square'];
     }
 
     /**
-     * Sets status
+     * Sets square
      *
-     * @param string|null $status status
+     * @param string[] $square Square marketing images. Aspect ratio 1:1, minimum 300 x 300 pixels.
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setSquare($square)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($square)) {
+            throw new \InvalidArgumentException('non-nullable square cannot be null');
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
+
+        if ((count($square) > 20)) {
+            throw new \InvalidArgumentException('invalid value for $square when calling GooglePmaxAssetGroupInputImages., number of items must be less than or equal to 20.');
         }
-        $this->container['status'] = $status;
+        if ((count($square) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $square when calling GooglePmaxAssetGroupInputImages., number of items must be greater than or equal to 1.');
+        }
+        $this->container['square'] = $square;
 
         return $this;
     }
 
     /**
-     * Gets reason
+     * Gets logo
      *
-     * @return string|null
+     * @return string[]
      */
-    public function getReason()
+    public function getLogo()
     {
-        return $this->container['reason'];
+        return $this->container['logo'];
     }
 
     /**
-     * Sets reason
+     * Sets logo
      *
-     * @param string|null $reason Why the node could not be validated (only on skipped).
+     * @param string[] $logo Required square logos. Aspect ratio 1:1, minimum 128 x 128 pixels.
      *
      * @return self
      */
-    public function setReason($reason)
+    public function setLogo($logo)
     {
-        if (is_null($reason)) {
-            throw new \InvalidArgumentException('non-nullable reason cannot be null');
+        if (is_null($logo)) {
+            throw new \InvalidArgumentException('non-nullable logo cannot be null');
         }
-        $this->container['reason'] = $reason;
+
+        if ((count($logo) > 5)) {
+            throw new \InvalidArgumentException('invalid value for $logo when calling GooglePmaxAssetGroupInputImages., number of items must be less than or equal to 5.');
+        }
+        if ((count($logo) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $logo when calling GooglePmaxAssetGroupInputImages., number of items must be greater than or equal to 1.');
+        }
+        $this->container['logo'] = $logo;
 
         return $this;
     }

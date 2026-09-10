@@ -59,6 +59,8 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'asset_group' => '\Zernio\Model\GooglePmaxAssetGroupInput',
+        'asset_group_resource_name' => 'string',
         'headlines' => '\Zernio\Model\GoogleRsaHeadline[]',
         'descriptions' => '\Zernio\Model\GoogleRsaDescription[]',
         'final_urls' => 'string[]',
@@ -97,6 +99,8 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'asset_group' => null,
+        'asset_group_resource_name' => null,
         'headlines' => null,
         'descriptions' => null,
         'final_urls' => 'uri',
@@ -133,6 +137,8 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'asset_group' => false,
+        'asset_group_resource_name' => false,
         'headlines' => false,
         'descriptions' => false,
         'final_urls' => false,
@@ -249,6 +255,8 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'asset_group' => 'assetGroup',
+        'asset_group_resource_name' => 'assetGroupResourceName',
         'headlines' => 'headlines',
         'descriptions' => 'descriptions',
         'final_urls' => 'finalUrls',
@@ -285,6 +293,8 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'asset_group' => 'setAssetGroup',
+        'asset_group_resource_name' => 'setAssetGroupResourceName',
         'headlines' => 'setHeadlines',
         'descriptions' => 'setDescriptions',
         'final_urls' => 'setFinalUrls',
@@ -321,6 +331,8 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'asset_group' => 'getAssetGroup',
+        'asset_group_resource_name' => 'getAssetGroupResourceName',
         'headlines' => 'getHeadlines',
         'descriptions' => 'getDescriptions',
         'final_urls' => 'getFinalUrls',
@@ -408,6 +420,8 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('asset_group', $data ?? [], null);
+        $this->setIfExists('asset_group_resource_name', $data ?? [], null);
         $this->setIfExists('headlines', $data ?? [], null);
         $this->setIfExists('descriptions', $data ?? [], null);
         $this->setIfExists('final_urls', $data ?? [], null);
@@ -499,6 +513,60 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets asset_group
+     *
+     * @return \Zernio\Model\GooglePmaxAssetGroupInput|null
+     */
+    public function getAssetGroup()
+    {
+        return $this->container['asset_group'];
+    }
+
+    /**
+     * Sets asset_group
+     *
+     * @param \Zernio\Model\GooglePmaxAssetGroupInput|null $asset_group Initial Performance Max asset group input. Use the asset-groups endpoint for current Google assets.
+     *
+     * @return self
+     */
+    public function setAssetGroup($asset_group)
+    {
+        if (is_null($asset_group)) {
+            throw new \InvalidArgumentException('non-nullable asset_group cannot be null');
+        }
+        $this->container['asset_group'] = $asset_group;
+
+        return $this;
+    }
+
+    /**
+     * Gets asset_group_resource_name
+     *
+     * @return string|null
+     */
+    public function getAssetGroupResourceName()
+    {
+        return $this->container['asset_group_resource_name'];
+    }
+
+    /**
+     * Sets asset_group_resource_name
+     *
+     * @param string|null $asset_group_resource_name Google resource name of the created Performance Max asset group.
+     *
+     * @return self
+     */
+    public function setAssetGroupResourceName($asset_group_resource_name)
+    {
+        if (is_null($asset_group_resource_name)) {
+            throw new \InvalidArgumentException('non-nullable asset_group_resource_name cannot be null');
+        }
+        $this->container['asset_group_resource_name'] = $asset_group_resource_name;
+
+        return $this;
+    }
 
     /**
      * Gets headlines

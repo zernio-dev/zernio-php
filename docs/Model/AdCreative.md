@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**asset_group** | [**\Zernio\Model\GooglePmaxAssetGroupInput**](GooglePmaxAssetGroupInput.md) | Initial Performance Max asset group input. Use the asset-groups endpoint for current Google assets. | [optional]
+**asset_group_resource_name** | **string** | Google resource name of the created Performance Max asset group. | [optional]
 **headlines** | [**\Zernio\Model\GoogleRsaHeadline[]**](GoogleRsaHeadline.md) | Google RSA only. Replaces the complete headline list. No padding or truncation on update. | [optional]
 **descriptions** | [**\Zernio\Model\GoogleRsaDescription[]**](GoogleRsaDescription.md) | Google RSA only. Replaces the complete description list. No padding or truncation on update. | [optional]
 **final_urls** | **string[]** | Google RSA only. Replaces final URLs. Omitted lists stay unchanged. | [optional]

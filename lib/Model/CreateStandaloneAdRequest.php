@@ -133,6 +133,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'placement_assets' => '\Zernio\Model\CreateStandaloneAdRequestPlacementAssets',
         'audience_id' => 'string',
         'campaign_type' => 'string',
+        'asset_group' => '\Zernio\Model\GooglePmaxAssetGroupInput',
         'keywords' => '\Zernio\Model\KeywordEntry[]',
         'negative_keywords' => '\Zernio\Model\KeywordEntry[]',
         'campaign_negative_keywords' => '\Zernio\Model\KeywordEntry[]',
@@ -246,6 +247,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'placement_assets' => null,
         'audience_id' => null,
         'campaign_type' => null,
+        'asset_group' => null,
         'keywords' => null,
         'negative_keywords' => null,
         'campaign_negative_keywords' => null,
@@ -357,6 +359,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'placement_assets' => false,
         'audience_id' => false,
         'campaign_type' => false,
+        'asset_group' => false,
         'keywords' => false,
         'negative_keywords' => false,
         'campaign_negative_keywords' => false,
@@ -548,6 +551,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'placement_assets' => 'placementAssets',
         'audience_id' => 'audienceId',
         'campaign_type' => 'campaignType',
+        'asset_group' => 'assetGroup',
         'keywords' => 'keywords',
         'negative_keywords' => 'negativeKeywords',
         'campaign_negative_keywords' => 'campaignNegativeKeywords',
@@ -659,6 +663,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'placement_assets' => 'setPlacementAssets',
         'audience_id' => 'setAudienceId',
         'campaign_type' => 'setCampaignType',
+        'asset_group' => 'setAssetGroup',
         'keywords' => 'setKeywords',
         'negative_keywords' => 'setNegativeKeywords',
         'campaign_negative_keywords' => 'setCampaignNegativeKeywords',
@@ -770,6 +775,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'placement_assets' => 'getPlacementAssets',
         'audience_id' => 'getAudienceId',
         'campaign_type' => 'getCampaignType',
+        'asset_group' => 'getAssetGroup',
         'keywords' => 'getKeywords',
         'negative_keywords' => 'getNegativeKeywords',
         'campaign_negative_keywords' => 'getCampaignNegativeKeywords',
@@ -912,6 +918,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     public const SPECIAL_AD_CATEGORIES_ONLINE_GAMBLING_AND_GAMING = 'ONLINE_GAMBLING_AND_GAMING';
     public const CAMPAIGN_TYPE_DISPLAY = 'display';
     public const CAMPAIGN_TYPE_SEARCH = 'search';
+    public const CAMPAIGN_TYPE_PMAX = 'pmax';
     public const ADVANTAGE_AUDIENCE_NUMBER_0 = 0;
     public const ADVANTAGE_AUDIENCE_NUMBER_1 = 1;
     public const GENDER_ALL = 'all';
@@ -1122,6 +1129,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         return [
             self::CAMPAIGN_TYPE_DISPLAY,
             self::CAMPAIGN_TYPE_SEARCH,
+            self::CAMPAIGN_TYPE_PMAX,
         ];
     }
 
@@ -1268,6 +1276,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('placement_assets', $data ?? [], null);
         $this->setIfExists('audience_id', $data ?? [], null);
         $this->setIfExists('campaign_type', $data ?? [], 'display');
+        $this->setIfExists('asset_group', $data ?? [], null);
         $this->setIfExists('keywords', $data ?? [], null);
         $this->setIfExists('negative_keywords', $data ?? [], null);
         $this->setIfExists('campaign_negative_keywords', $data ?? [], null);
@@ -2112,7 +2121,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets validate_only
      *
-     * @param bool|null $validate_only Meta only. Validates the complete inline campaign, ad set, creative and ad with execution_options validate_only. Nothing is uploaded or created, and validation bypasses Idempotency-Key storage. Supports a single image, existing video.id or existingCreativeId; media pools, new video uploads, creatives[], adSetId and RESERVED buying return 400. Existing campaign or creative nodes are marked skipped. Success returns 200 with per-node results; Meta rejection returns an error.
+     * @param bool|null $validate_only Google Performance Max validates the complete atomic campaign and asset group with no resource creation or local persistence. Google validation still downloads image URLs and consumes quota. On Meta, validates the complete inline campaign, ad set, creative and ad with execution_options validate_only. Nothing is uploaded or created, and validation bypasses Idempotency-Key storage. Supports a single image, existing video.id or existingCreativeId; media pools, new video uploads, creatives[], adSetId and RESERVED buying return 400. Existing campaign or creative nodes are marked skipped. Success returns 200 with per-node results; Meta rejection returns an error.
      *
      * @return self
      */
@@ -2139,7 +2148,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets budget_amount
      *
-     * @param float|null $budget_amount Budget in WHOLE currency units (USD: 50 = $50.00), NOT cents. Meta's own Marketing API takes this same number in minor units, so it is an easy and expensive mix-up. Required on legacy + multi-creative shapes. Inherited on attach. OpenAI Ads requires a $1 minimum (its budget is lifetime-only, see budgetType).
+     * @param float|null $budget_amount Budget in WHOLE currency units (USD: 50 = $50.00), NOT cents. Meta's own Marketing API takes this same number in minor units, so it is an easy and expensive mix-up. Required on legacy, multi-creative and Performance Max shapes. Inherited on attach. OpenAI Ads requires a $1 minimum (its budget is lifetime-only, see budgetType).
      *
      * @return self
      */
@@ -2166,7 +2175,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets budget_type
      *
-     * @param string|null $budget_type Required on legacy + multi-creative shapes. Inherited on attach. OpenAI Ads accepts lifetime only (no daily-budget concept on the platform); sending daily returns 422. OpenAI Ads lifetime budgets require `endDate` to give the lifetime cap a spend window.
+     * @param string|null $budget_type Required on legacy, multi-creative and Performance Max shapes. Inherited on attach. OpenAI Ads accepts lifetime only (no daily-budget concept on the platform); sending daily returns 422. OpenAI Ads lifetime budgets require `endDate` to give the lifetime cap a spend window.
      *
      * @return self
      */
@@ -2203,7 +2212,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets status
      *
-     * @param string|null $status Meta, TikTok, and LinkedIn. Publish state of the created entities. Omitted or ACTIVE publishes live (default, back-compat); PAUSED creates them paused so you can review before they spend. On Meta the pause is held on the campaign this call creates, leaving the ad set and ad switched on, so a single PUT /v1/ads/campaigns/{campaignId}/status with `active` brings the whole thing live. It is held at every level instead when the pause cannot rely on the campaign: `existingCampaignId` (that campaign may be running and is never touched) or `campaignStatus: ACTIVE`. On TikTok the whole campaign > ad group > ad hierarchy stays paused. On LinkedIn the whole campaign group, campaign, and creative hierarchy stays PAUSED (intendedStatus PAUSED on each).
+     * @param string|null $status Google Performance Max accepts PAUSED only and always creates a paused campaign. Meta, TikTok, and LinkedIn: publish state of the created entities. Omitted or ACTIVE publishes live (default, back-compat); PAUSED creates them paused so you can review before they spend. On Meta the pause is held on the campaign this call creates, leaving the ad set and ad switched on, so a single PUT /v1/ads/campaigns/{campaignId}/status with `active` brings the whole thing live. It is held at every level instead when the pause cannot rely on the campaign: `existingCampaignId` (that campaign may be running and is never touched) or `campaignStatus: ACTIVE`. On TikTok the whole campaign > ad group > ad hierarchy stays paused. On LinkedIn the whole campaign group, campaign, and creative hierarchy stays PAUSED (intendedStatus PAUSED on each).
      *
      * @return self
      */
@@ -3849,7 +3858,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets campaign_type
      *
-     * @param string|null $campaign_type Google only
+     * @param string|null $campaign_type Google only. Performance Max requires assetGroup and is always created PAUSED.
      *
      * @return self
      */
@@ -3869,6 +3878,33 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
         $this->container['campaign_type'] = $campaign_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets asset_group
+     *
+     * @return \Zernio\Model\GooglePmaxAssetGroupInput|null
+     */
+    public function getAssetGroup()
+    {
+        return $this->container['asset_group'];
+    }
+
+    /**
+     * Sets asset_group
+     *
+     * @param \Zernio\Model\GooglePmaxAssetGroupInput|null $asset_group asset_group
+     *
+     * @return self
+     */
+    public function setAssetGroup($asset_group)
+    {
+        if (is_null($asset_group)) {
+            throw new \InvalidArgumentException('non-nullable asset_group cannot be null');
+        }
+        $this->container['asset_group'] = $asset_group;
 
         return $this;
     }
@@ -4330,7 +4366,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets portfolio_bid_strategy_id
      *
-     * @param string|null $portfolio_bid_strategy_id Google only. Attach an existing portfolio bid strategy (numeric id from GET /v1/ads/bid-strategies) to the new campaign instead of a standard one. Exclusive with bidStrategy.
+     * @param string|null $portfolio_bid_strategy_id Google Search and Display only. Performance Max rejects portfolio bidding. Attach an existing portfolio bid strategy (numeric id from GET /v1/ads/bid-strategies) to the new campaign instead of a standard one. Exclusive with bidStrategy.
      *
      * @return self
      */
