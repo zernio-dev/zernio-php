@@ -726,7 +726,7 @@ class ListPhoneNumberCountries200ResponseCountriesInnerTypesInner implements Mod
     /**
      * Sets pre_orderable
      *
-     * @param bool|null $pre_orderable Out of stock but orderable anyway. Submit KYC as usual (POST /v1/phone-numbers/kyc) and the carrier sources the number after review, usually about 3 weeks and never guaranteed. Only document tiers (3/4) qualify, and nothing is billed until the number is active.
+     * @param bool|null $pre_orderable Out of stock but orderable anyway. Submit KYC as usual (POST /v1/phone-numbers/kyc): we buy regular stock the moment it returns, otherwise the carrier sources the number. Usually 2 to 4 weeks, never guaranteed. Only document tiers (3/4) qualify, and nothing is billed until the number is active.
      *
      * @return self
      */

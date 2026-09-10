@@ -611,7 +611,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets tiktok_item_id
      *
-     * @param string|null $tiktok_item_id TikTok-only video item ID. Null when the ad and comments do not expose it.
+     * @param string|null $tiktok_item_id TikTok-only video item ID from stored ad fields or returned comments. Null does not prevent listing; ad details are not fetched to populate it.
      *
      * @return self
      */

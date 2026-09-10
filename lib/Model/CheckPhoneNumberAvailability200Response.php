@@ -452,7 +452,7 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
     /**
      * Sets pre_orderable
      *
-     * @param bool|null $pre_orderable Nothing deliverable now, but this pair can be pre-ordered: submit KYC as usual and the carrier sources the number after review (usually about 3 weeks, never guaranteed). Only document tiers (3/4) qualify.
+     * @param bool|null $pre_orderable Nothing deliverable now, but this pair can be pre-ordered: submit KYC as usual and we buy regular stock the moment it returns, otherwise the carrier sources the number (usually 2 to 4 weeks, never guaranteed). Only document tiers (3/4) qualify.
      *
      * @return self
      */
