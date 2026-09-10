@@ -4195,6 +4195,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateInboxConversationRequestTemplateCardsInnerButtonsInnerTest.php
-test/Model/CreateInboxConversationRequestTemplateCardsInnerHeaderMediaTest.php
-test/Model/CreateInboxConversationRequestTemplateCardsInnerTest.php
