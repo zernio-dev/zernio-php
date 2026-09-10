@@ -215,7 +215,7 @@ class AnalyticsApi
      * @param  \DateTime|null $to_date Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted. (optional)
      * @param  int|null $limit Page size (default 50) (optional, default to 50)
      * @param  int|null $page Page number (default 1) (optional, default to 1)
-     * @param  string|null $sort_by Sort by date, engagement, or a specific metric. Instagram-only metrics (follows, reposts, reels_skip_rate, ig_reels_*) sort a null value as 0. (optional, default to 'date')
+     * @param  string|null $sort_by Sort by date, engagement, or a specific metric. Platform-specific metrics (follows, reposts, reels_skip_rate, ig_reels_*, completion_rate, profile_views) sort a null value as 0. (optional, default to 'date')
      * @param  string|null $order Sort order (optional, default to 'desc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAnalytics'] to see the possible values for this operation
      *
@@ -243,7 +243,7 @@ class AnalyticsApi
      * @param  \DateTime|null $to_date Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted. (optional)
      * @param  int|null $limit Page size (default 50) (optional, default to 50)
      * @param  int|null $page Page number (default 1) (optional, default to 1)
-     * @param  string|null $sort_by Sort by date, engagement, or a specific metric. Instagram-only metrics (follows, reposts, reels_skip_rate, ig_reels_*) sort a null value as 0. (optional, default to 'date')
+     * @param  string|null $sort_by Sort by date, engagement, or a specific metric. Platform-specific metrics (follows, reposts, reels_skip_rate, ig_reels_*, completion_rate, profile_views) sort a null value as 0. (optional, default to 'date')
      * @param  string|null $order Sort order (optional, default to 'desc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAnalytics'] to see the possible values for this operation
      *
@@ -436,7 +436,7 @@ class AnalyticsApi
      * @param  \DateTime|null $to_date Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted. (optional)
      * @param  int|null $limit Page size (default 50) (optional, default to 50)
      * @param  int|null $page Page number (default 1) (optional, default to 1)
-     * @param  string|null $sort_by Sort by date, engagement, or a specific metric. Instagram-only metrics (follows, reposts, reels_skip_rate, ig_reels_*) sort a null value as 0. (optional, default to 'date')
+     * @param  string|null $sort_by Sort by date, engagement, or a specific metric. Platform-specific metrics (follows, reposts, reels_skip_rate, ig_reels_*, completion_rate, profile_views) sort a null value as 0. (optional, default to 'date')
      * @param  string|null $order Sort order (optional, default to 'desc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAnalytics'] to see the possible values for this operation
      *
@@ -467,7 +467,7 @@ class AnalyticsApi
      * @param  \DateTime|null $to_date Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted. (optional)
      * @param  int|null $limit Page size (default 50) (optional, default to 50)
      * @param  int|null $page Page number (default 1) (optional, default to 1)
-     * @param  string|null $sort_by Sort by date, engagement, or a specific metric. Instagram-only metrics (follows, reposts, reels_skip_rate, ig_reels_*) sort a null value as 0. (optional, default to 'date')
+     * @param  string|null $sort_by Sort by date, engagement, or a specific metric. Platform-specific metrics (follows, reposts, reels_skip_rate, ig_reels_*, completion_rate, profile_views) sort a null value as 0. (optional, default to 'date')
      * @param  string|null $order Sort order (optional, default to 'desc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAnalytics'] to see the possible values for this operation
      *
@@ -527,7 +527,7 @@ class AnalyticsApi
      * @param  \DateTime|null $to_date Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted. (optional)
      * @param  int|null $limit Page size (default 50) (optional, default to 50)
      * @param  int|null $page Page number (default 1) (optional, default to 1)
-     * @param  string|null $sort_by Sort by date, engagement, or a specific metric. Instagram-only metrics (follows, reposts, reels_skip_rate, ig_reels_*) sort a null value as 0. (optional, default to 'date')
+     * @param  string|null $sort_by Sort by date, engagement, or a specific metric. Platform-specific metrics (follows, reposts, reels_skip_rate, ig_reels_*, completion_rate, profile_views) sort a null value as 0. (optional, default to 'date')
      * @param  string|null $order Sort order (optional, default to 'desc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAnalytics'] to see the possible values for this operation
      *

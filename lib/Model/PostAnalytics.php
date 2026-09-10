@@ -70,6 +70,8 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
         'ig_reels_avg_watch_time' => 'int',
         'ig_reels_video_view_total_time' => 'int',
         'reels_skip_rate' => 'float',
+        'completion_rate' => 'float',
+        'profile_views' => 'int',
         'reposts' => 'int',
         'video_duration_seconds' => 'int',
         'engagement_rate' => 'float',
@@ -96,6 +98,8 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
         'ig_reels_avg_watch_time' => null,
         'ig_reels_video_view_total_time' => null,
         'reels_skip_rate' => null,
+        'completion_rate' => null,
+        'profile_views' => null,
         'reposts' => null,
         'video_duration_seconds' => null,
         'engagement_rate' => null,
@@ -120,6 +124,8 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
         'ig_reels_avg_watch_time' => false,
         'ig_reels_video_view_total_time' => false,
         'reels_skip_rate' => false,
+        'completion_rate' => false,
+        'profile_views' => false,
         'reposts' => false,
         'video_duration_seconds' => true,
         'engagement_rate' => false,
@@ -224,6 +230,8 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
         'ig_reels_avg_watch_time' => 'igReelsAvgWatchTime',
         'ig_reels_video_view_total_time' => 'igReelsVideoViewTotalTime',
         'reels_skip_rate' => 'reelsSkipRate',
+        'completion_rate' => 'completionRate',
+        'profile_views' => 'profileViews',
         'reposts' => 'reposts',
         'video_duration_seconds' => 'videoDurationSeconds',
         'engagement_rate' => 'engagementRate',
@@ -248,6 +256,8 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
         'ig_reels_avg_watch_time' => 'setIgReelsAvgWatchTime',
         'ig_reels_video_view_total_time' => 'setIgReelsVideoViewTotalTime',
         'reels_skip_rate' => 'setReelsSkipRate',
+        'completion_rate' => 'setCompletionRate',
+        'profile_views' => 'setProfileViews',
         'reposts' => 'setReposts',
         'video_duration_seconds' => 'setVideoDurationSeconds',
         'engagement_rate' => 'setEngagementRate',
@@ -272,6 +282,8 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
         'ig_reels_avg_watch_time' => 'getIgReelsAvgWatchTime',
         'ig_reels_video_view_total_time' => 'getIgReelsVideoViewTotalTime',
         'reels_skip_rate' => 'getReelsSkipRate',
+        'completion_rate' => 'getCompletionRate',
+        'profile_views' => 'getProfileViews',
         'reposts' => 'getReposts',
         'video_duration_seconds' => 'getVideoDurationSeconds',
         'engagement_rate' => 'getEngagementRate',
@@ -347,6 +359,8 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('ig_reels_avg_watch_time', $data ?? [], null);
         $this->setIfExists('ig_reels_video_view_total_time', $data ?? [], null);
         $this->setIfExists('reels_skip_rate', $data ?? [], null);
+        $this->setIfExists('completion_rate', $data ?? [], null);
+        $this->setIfExists('profile_views', $data ?? [], null);
         $this->setIfExists('reposts', $data ?? [], null);
         $this->setIfExists('video_duration_seconds', $data ?? [], null);
         $this->setIfExists('engagement_rate', $data ?? [], null);
@@ -722,6 +736,60 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable reels_skip_rate cannot be null');
         }
         $this->container['reels_skip_rate'] = $reels_skip_rate;
+
+        return $this;
+    }
+
+    /**
+     * Gets completion_rate
+     *
+     * @return float|null
+     */
+    public function getCompletionRate()
+    {
+        return $this->container['completion_rate'];
+    }
+
+    /**
+     * Sets completion_rate
+     *
+     * @param float|null $completion_rate TikTok accounts connected through the TikTok for Business app only: share of viewers who watched the video to the end, 0 to 1, as TikTok reports it (T+24-48h, only for posts active in the last 7 days). 0 for other platforms. When a post is published to several accounts, the aggregate is weighted by views.
+     *
+     * @return self
+     */
+    public function setCompletionRate($completion_rate)
+    {
+        if (is_null($completion_rate)) {
+            throw new \InvalidArgumentException('non-nullable completion_rate cannot be null');
+        }
+        $this->container['completion_rate'] = $completion_rate;
+
+        return $this;
+    }
+
+    /**
+     * Gets profile_views
+     *
+     * @return int|null
+     */
+    public function getProfileViews()
+    {
+        return $this->container['profile_views'];
+    }
+
+    /**
+     * Sets profile_views
+     *
+     * @param int|null $profile_views TikTok accounts connected through the TikTok for Business app only: profile views from users who reached the profile through this post (T+24-48h). 0 for other platforms.
+     *
+     * @return self
+     */
+    public function setProfileViews($profile_views)
+    {
+        if (is_null($profile_views)) {
+            throw new \InvalidArgumentException('non-nullable profile_views cannot be null');
+        }
+        $this->container['profile_views'] = $profile_views;
 
         return $this;
     }
