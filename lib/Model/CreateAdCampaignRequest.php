@@ -461,7 +461,7 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('goal', $data ?? [], null);
         $this->setIfExists('is_skadnetwork_attribution', $data ?? [], null);
         $this->setIfExists('promoted_object', $data ?? [], null);
-        $this->setIfExists('buying_type', $data ?? [], null);
+        $this->setIfExists('buying_type', $data ?? [], 'AUCTION');
         $this->setIfExists('validate_only', $data ?? [], null);
         $this->setIfExists('special_ad_categories', $data ?? [], null);
         $this->setIfExists('budget_amount', $data ?? [], null);
@@ -769,7 +769,7 @@ class CreateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets buying_type
      *
-     * @param string|null $buying_type Meta only. SKAdNetwork app promotion requires AUCTION.
+     * @param string|null $buying_type Meta only. Defaults to AUCTION and is explicitly sent on new campaigns, including validateOnly. SKAdNetwork app promotion requires AUCTION.
      *
      * @return self
      */

@@ -1211,7 +1211,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('goal', $data ?? [], null);
         $this->setIfExists('optimization_goal', $data ?? [], null);
         $this->setIfExists('billing_event', $data ?? [], null);
-        $this->setIfExists('buying_type', $data ?? [], null);
+        $this->setIfExists('buying_type', $data ?? [], 'AUCTION');
         $this->setIfExists('rf_prediction_id', $data ?? [], null);
         $this->setIfExists('promotion', $data ?? [], null);
         $this->setIfExists('creative_features', $data ?? [], null);
@@ -1957,7 +1957,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets buying_type
      *
-     * @param string|null $buying_type Meta only. RESERVED = Reach & Frequency: requires `rfPredictionId` (a RESERVED prediction from /v1/ads/rf-predictions + /reserve). Budget, schedule and pricing come from the reservation, so budgetAmount/budgetType are not required and bid fields are ignored. Only the plain single-ad shape (no creatives[], adSetId, existingCampaignId or dynamicCreative).
+     * @param string|null $buying_type Meta only. Defaults to AUCTION and is explicitly sent on new campaigns, including validateOnly. Reusing existingCampaignId does not change the campaign. RESERVED = Reach & Frequency: requires `rfPredictionId` (a RESERVED prediction from /v1/ads/rf-predictions + /reserve). Budget, schedule and pricing come from the reservation, so budgetAmount/budgetType are not required and bid fields are ignored. Only the plain single-ad shape (no creatives[], adSetId, existingCampaignId or dynamicCreative).
      *
      * @return self
      */
