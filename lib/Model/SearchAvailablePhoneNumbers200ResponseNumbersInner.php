@@ -59,7 +59,9 @@ class SearchAvailablePhoneNumbers200ResponseNumbersInner implements ModelInterfa
       */
     protected static $openAPITypes = [
         'phone_number' => 'string',
-        'features' => 'string[]'
+        'features' => 'string[]',
+        'locality' => 'string',
+        'best_effort' => 'bool'
     ];
 
     /**
@@ -71,7 +73,9 @@ class SearchAvailablePhoneNumbers200ResponseNumbersInner implements ModelInterfa
       */
     protected static $openAPIFormats = [
         'phone_number' => null,
-        'features' => null
+        'features' => null,
+        'locality' => null,
+        'best_effort' => null
     ];
 
     /**
@@ -81,7 +85,9 @@ class SearchAvailablePhoneNumbers200ResponseNumbersInner implements ModelInterfa
       */
     protected static array $openAPINullables = [
         'phone_number' => false,
-        'features' => false
+        'features' => false,
+        'locality' => false,
+        'best_effort' => false
     ];
 
     /**
@@ -171,7 +177,9 @@ class SearchAvailablePhoneNumbers200ResponseNumbersInner implements ModelInterfa
      */
     protected static $attributeMap = [
         'phone_number' => 'phoneNumber',
-        'features' => 'features'
+        'features' => 'features',
+        'locality' => 'locality',
+        'best_effort' => 'bestEffort'
     ];
 
     /**
@@ -181,7 +189,9 @@ class SearchAvailablePhoneNumbers200ResponseNumbersInner implements ModelInterfa
      */
     protected static $setters = [
         'phone_number' => 'setPhoneNumber',
-        'features' => 'setFeatures'
+        'features' => 'setFeatures',
+        'locality' => 'setLocality',
+        'best_effort' => 'setBestEffort'
     ];
 
     /**
@@ -191,7 +201,9 @@ class SearchAvailablePhoneNumbers200ResponseNumbersInner implements ModelInterfa
      */
     protected static $getters = [
         'phone_number' => 'getPhoneNumber',
-        'features' => 'getFeatures'
+        'features' => 'getFeatures',
+        'locality' => 'getLocality',
+        'best_effort' => 'getBestEffort'
     ];
 
     /**
@@ -253,6 +265,8 @@ class SearchAvailablePhoneNumbers200ResponseNumbersInner implements ModelInterfa
     {
         $this->setIfExists('phone_number', $data ?? [], null);
         $this->setIfExists('features', $data ?? [], null);
+        $this->setIfExists('locality', $data ?? [], null);
+        $this->setIfExists('best_effort', $data ?? [], null);
     }
 
     /**
@@ -310,7 +324,7 @@ class SearchAvailablePhoneNumbers200ResponseNumbersInner implements ModelInterfa
     /**
      * Sets phone_number
      *
-     * @param string|null $phone_number phone_number
+     * @param string|null $phone_number E.164. Pass it as `phoneNumber` on POST /v1/phone-numbers/purchase to buy this exact number.
      *
      * @return self
      */
@@ -347,6 +361,60 @@ class SearchAvailablePhoneNumbers200ResponseNumbersInner implements ModelInterfa
             throw new \InvalidArgumentException('non-nullable features cannot be null');
         }
         $this->container['features'] = $features;
+
+        return $this;
+    }
+
+    /**
+     * Gets locality
+     *
+     * @return string|null
+     */
+    public function getLocality()
+    {
+        return $this->container['locality'];
+    }
+
+    /**
+     * Sets locality
+     *
+     * @param string|null $locality Town or rate center the number belongs to, as the carrier names it (e.g. WACO).
+     *
+     * @return self
+     */
+    public function setLocality($locality)
+    {
+        if (is_null($locality)) {
+            throw new \InvalidArgumentException('non-nullable locality cannot be null');
+        }
+        $this->container['locality'] = $locality;
+
+        return $this;
+    }
+
+    /**
+     * Gets best_effort
+     *
+     * @return bool|null
+     */
+    public function getBestEffort()
+    {
+        return $this->container['best_effort'];
+    }
+
+    /**
+     * Sets best_effort
+     *
+     * @param bool|null $best_effort true when the carrier added this number because too few matched your filters, so it may be outside the requested prefix or locality.
+     *
+     * @return self
+     */
+    public function setBestEffort($best_effort)
+    {
+        if (is_null($best_effort)) {
+            throw new \InvalidArgumentException('non-nullable best_effort cannot be null');
+        }
+        $this->container['best_effort'] = $best_effort;
 
         return $this;
     }

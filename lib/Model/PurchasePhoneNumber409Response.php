@@ -237,6 +237,7 @@ class PurchasePhoneNumber409Response implements ModelInterface, ArrayAccess, \Js
 
     public const CODE_PURCHASE_VELOCITY = 'PURCHASE_VELOCITY';
     public const CODE_AREA_CODE_UNAVAILABLE = 'AREA_CODE_UNAVAILABLE';
+    public const CODE_PHONE_NUMBER_UNAVAILABLE = 'PHONE_NUMBER_UNAVAILABLE';
 
     /**
      * Gets allowable values of the enum
@@ -248,6 +249,7 @@ class PurchasePhoneNumber409Response implements ModelInterface, ArrayAccess, \Js
         return [
             self::CODE_PURCHASE_VELOCITY,
             self::CODE_AREA_CODE_UNAVAILABLE,
+            self::CODE_PHONE_NUMBER_UNAVAILABLE,
         ];
     }
 

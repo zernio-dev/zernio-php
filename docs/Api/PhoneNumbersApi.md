@@ -1001,7 +1001,7 @@ purchasePhoneNumber($purchase_phone_number_request): \Zernio\Model\PurchasePhone
 
 Purchase phone number
 
-Payment-first: you do not pick a specific number, the system provisions one and auto-assigns it. With usage-based billing active and a payment method on file, the number provisions inline and bills per month on your usage-based invoice (there is no checkout redirect). No payment method on file returns `402 PAYMENT_REQUIRED`; a regulated country returns `202` with `status: \"kyc_required\"` and a `kycUrl`.  The monthly price is the one `GET /v1/phone-numbers/countries` quotes for that country and `numberType` at the time of purchase, and it is stamped on the number: later rate-card changes never move a number you already own.  Requires usage-based billing (the Usage plan). The maximum number of phone numbers is determined by the user's plan.
+Payment-first: the system provisions a number and auto-assigns it, unless you pass `phoneNumber` to buy one exact number from `GET /v1/phone-numbers/available`. With usage-based billing active and a payment method on file, the number provisions inline and bills per month on your usage-based invoice (there is no checkout redirect). No payment method on file returns `402 PAYMENT_REQUIRED`; a regulated country returns `202` with `status: \"kyc_required\"` and a `kycUrl`.  The monthly price is the one `GET /v1/phone-numbers/countries` quotes for that country and `numberType` at the time of purchase, and it is stamped on the number: later rate-card changes never move a number you already own.  Requires usage-based billing (the Usage plan). The maximum number of phone numbers is determined by the user's plan.
 
 ### Example
 
@@ -1367,7 +1367,7 @@ searchAvailablePhoneNumbers($country, $type, $prefix, $locality, $contains, $sms
 
 Search available numbers
 
-Search the provider's inventory for numbers available to purchase in a country (default US). Optional filters narrow the results. The country must be offerable (see GET /v1/phone-numbers/countries). Voice capability is always required; pass `sms=true` to only see numbers that can also text (SMS support is per-number, not per-country).
+Search the provider's inventory for numbers available to purchase in a country (default US). Optional filters narrow the results. The country must be offerable (see GET /v1/phone-numbers/countries). Voice capability is always required; pass `sms=true` to only see numbers that can also text (SMS support is per-number, not per-country). Numbers a purchase would refuse are left out, and any result's `phoneNumber` can be bought exactly by passing it to POST /v1/phone-numbers/purchase.
 
 ### Example
 

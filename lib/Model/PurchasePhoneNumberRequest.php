@@ -62,6 +62,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'country' => 'string',
         'number_type' => 'string',
         'area_code' => 'string',
+        'phone_number' => 'string',
         'connect_whatsapp' => 'bool',
         'wants_sms' => 'bool',
         'wants_whatsapp' => 'bool',
@@ -81,6 +82,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'country' => null,
         'number_type' => null,
         'area_code' => null,
+        'phone_number' => null,
         'connect_whatsapp' => null,
         'wants_sms' => null,
         'wants_whatsapp' => null,
@@ -98,6 +100,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'country' => false,
         'number_type' => false,
         'area_code' => false,
+        'phone_number' => false,
         'connect_whatsapp' => false,
         'wants_sms' => false,
         'wants_whatsapp' => false,
@@ -195,6 +198,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'country' => 'country',
         'number_type' => 'numberType',
         'area_code' => 'areaCode',
+        'phone_number' => 'phoneNumber',
         'connect_whatsapp' => 'connectWhatsapp',
         'wants_sms' => 'wantsSms',
         'wants_whatsapp' => 'wantsWhatsapp',
@@ -212,6 +216,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'country' => 'setCountry',
         'number_type' => 'setNumberType',
         'area_code' => 'setAreaCode',
+        'phone_number' => 'setPhoneNumber',
         'connect_whatsapp' => 'setConnectWhatsapp',
         'wants_sms' => 'setWantsSms',
         'wants_whatsapp' => 'setWantsWhatsapp',
@@ -229,6 +234,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'country' => 'getCountry',
         'number_type' => 'getNumberType',
         'area_code' => 'getAreaCode',
+        'phone_number' => 'getPhoneNumber',
         'connect_whatsapp' => 'getConnectWhatsapp',
         'wants_sms' => 'getWantsSms',
         'wants_whatsapp' => 'getWantsWhatsapp',
@@ -316,6 +322,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('country', $data ?? [], 'US');
         $this->setIfExists('number_type', $data ?? [], null);
         $this->setIfExists('area_code', $data ?? [], null);
+        $this->setIfExists('phone_number', $data ?? [], null);
         $this->setIfExists('connect_whatsapp', $data ?? [], true);
         $this->setIfExists('wants_sms', $data ?? [], false);
         $this->setIfExists('wants_whatsapp', $data ?? [], false);
@@ -364,6 +371,10 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
 
         if (!is_null($this->container['area_code']) && !preg_match("/^\\d{1,4}$/", $this->container['area_code'])) {
             $invalidProperties[] = "invalid value for 'area_code', must be conform to the pattern /^\\d{1,4}$/.";
+        }
+
+        if (!is_null($this->container['phone_number']) && !preg_match("/^\\+[1-9]\\d{6,14}$/", $this->container['phone_number'])) {
+            $invalidProperties[] = "invalid value for 'phone_number', must be conform to the pattern /^\\+[1-9]\\d{6,14}$/.";
         }
 
         if (!is_null($this->container['purchase_intent_id']) && (mb_strlen($this->container['purchase_intent_id']) > 100)) {
@@ -504,6 +515,38 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         }
 
         $this->container['area_code'] = $area_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets phone_number
+     *
+     * @return string|null
+     */
+    public function getPhoneNumber()
+    {
+        return $this->container['phone_number'];
+    }
+
+    /**
+     * Sets phone_number
+     *
+     * @param string|null $phone_number One exact number to buy, in E.164, taken from GET /v1/phone-numbers/available. Hard constraint: when it is no longer available (bought by someone else, or WhatsApp's buy-time check rejects it) the purchase fails with 409 code PHONE_NUMBER_UNAVAILABLE instead of assigning another number; search again and pick another. Only for countries and types that activate instantly: a regulated one (202 kyc_required) returns 400 when phoneNumber is set.
+     *
+     * @return self
+     */
+    public function setPhoneNumber($phone_number)
+    {
+        if (is_null($phone_number)) {
+            throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
+        }
+
+        if ((!preg_match("/^\\+[1-9]\\d{6,14}$/", ObjectSerializer::toString($phone_number)))) {
+            throw new \InvalidArgumentException("invalid value for \$phone_number when calling PurchasePhoneNumberRequest., must conform to the pattern /^\\+[1-9]\\d{6,14}$/.");
+        }
+
+        $this->container['phone_number'] = $phone_number;
 
         return $this;
     }

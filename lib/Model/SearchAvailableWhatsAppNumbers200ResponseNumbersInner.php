@@ -58,7 +58,9 @@ class SearchAvailableWhatsAppNumbers200ResponseNumbersInner implements ModelInte
       * @var string[]
       */
     protected static $openAPITypes = [
-        'phone_number' => 'string'
+        'phone_number' => 'string',
+        'locality' => 'string',
+        'best_effort' => 'bool'
     ];
 
     /**
@@ -69,7 +71,9 @@ class SearchAvailableWhatsAppNumbers200ResponseNumbersInner implements ModelInte
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'phone_number' => null
+        'phone_number' => null,
+        'locality' => null,
+        'best_effort' => null
     ];
 
     /**
@@ -78,7 +82,9 @@ class SearchAvailableWhatsAppNumbers200ResponseNumbersInner implements ModelInte
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'phone_number' => false
+        'phone_number' => false,
+        'locality' => false,
+        'best_effort' => false
     ];
 
     /**
@@ -167,7 +173,9 @@ class SearchAvailableWhatsAppNumbers200ResponseNumbersInner implements ModelInte
      * @var string[]
      */
     protected static $attributeMap = [
-        'phone_number' => 'phoneNumber'
+        'phone_number' => 'phoneNumber',
+        'locality' => 'locality',
+        'best_effort' => 'bestEffort'
     ];
 
     /**
@@ -176,7 +184,9 @@ class SearchAvailableWhatsAppNumbers200ResponseNumbersInner implements ModelInte
      * @var string[]
      */
     protected static $setters = [
-        'phone_number' => 'setPhoneNumber'
+        'phone_number' => 'setPhoneNumber',
+        'locality' => 'setLocality',
+        'best_effort' => 'setBestEffort'
     ];
 
     /**
@@ -185,7 +195,9 @@ class SearchAvailableWhatsAppNumbers200ResponseNumbersInner implements ModelInte
      * @var string[]
      */
     protected static $getters = [
-        'phone_number' => 'getPhoneNumber'
+        'phone_number' => 'getPhoneNumber',
+        'locality' => 'getLocality',
+        'best_effort' => 'getBestEffort'
     ];
 
     /**
@@ -246,6 +258,8 @@ class SearchAvailableWhatsAppNumbers200ResponseNumbersInner implements ModelInte
     public function __construct(?array $data = null)
     {
         $this->setIfExists('phone_number', $data ?? [], null);
+        $this->setIfExists('locality', $data ?? [], null);
+        $this->setIfExists('best_effort', $data ?? [], null);
     }
 
     /**
@@ -313,6 +327,60 @@ class SearchAvailableWhatsAppNumbers200ResponseNumbersInner implements ModelInte
             throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
         }
         $this->container['phone_number'] = $phone_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets locality
+     *
+     * @return string|null
+     */
+    public function getLocality()
+    {
+        return $this->container['locality'];
+    }
+
+    /**
+     * Sets locality
+     *
+     * @param string|null $locality locality
+     *
+     * @return self
+     */
+    public function setLocality($locality)
+    {
+        if (is_null($locality)) {
+            throw new \InvalidArgumentException('non-nullable locality cannot be null');
+        }
+        $this->container['locality'] = $locality;
+
+        return $this;
+    }
+
+    /**
+     * Gets best_effort
+     *
+     * @return bool|null
+     */
+    public function getBestEffort()
+    {
+        return $this->container['best_effort'];
+    }
+
+    /**
+     * Sets best_effort
+     *
+     * @param bool|null $best_effort best_effort
+     *
+     * @return self
+     */
+    public function setBestEffort($best_effort)
+    {
+        if (is_null($best_effort)) {
+            throw new \InvalidArgumentException('non-nullable best_effort cannot be null');
+        }
+        $this->container['best_effort'] = $best_effort;
 
         return $this;
     }

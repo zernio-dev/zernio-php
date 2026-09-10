@@ -60,6 +60,7 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
     protected static $openAPITypes = [
         'profile_id' => 'string',
         'country' => 'string',
+        'phone_number' => 'string',
         'purchase_intent_id' => 'string',
         'allow_multiple' => 'bool'
     ];
@@ -74,6 +75,7 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
     protected static $openAPIFormats = [
         'profile_id' => null,
         'country' => null,
+        'phone_number' => null,
         'purchase_intent_id' => null,
         'allow_multiple' => null
     ];
@@ -86,6 +88,7 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
     protected static array $openAPINullables = [
         'profile_id' => false,
         'country' => false,
+        'phone_number' => false,
         'purchase_intent_id' => false,
         'allow_multiple' => false
     ];
@@ -178,6 +181,7 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
     protected static $attributeMap = [
         'profile_id' => 'profileId',
         'country' => 'country',
+        'phone_number' => 'phoneNumber',
         'purchase_intent_id' => 'purchaseIntentId',
         'allow_multiple' => 'allowMultiple'
     ];
@@ -190,6 +194,7 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
     protected static $setters = [
         'profile_id' => 'setProfileId',
         'country' => 'setCountry',
+        'phone_number' => 'setPhoneNumber',
         'purchase_intent_id' => 'setPurchaseIntentId',
         'allow_multiple' => 'setAllowMultiple'
     ];
@@ -202,6 +207,7 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
     protected static $getters = [
         'profile_id' => 'getProfileId',
         'country' => 'getCountry',
+        'phone_number' => 'getPhoneNumber',
         'purchase_intent_id' => 'getPurchaseIntentId',
         'allow_multiple' => 'getAllowMultiple'
     ];
@@ -265,6 +271,7 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
     {
         $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('country', $data ?? [], 'US');
+        $this->setIfExists('phone_number', $data ?? [], null);
         $this->setIfExists('purchase_intent_id', $data ?? [], null);
         $this->setIfExists('allow_multiple', $data ?? [], false);
     }
@@ -299,6 +306,10 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
         if ($this->container['profile_id'] === null) {
             $invalidProperties[] = "'profile_id' can't be null";
         }
+        if (!is_null($this->container['phone_number']) && !preg_match("/^\\+[1-9]\\d{6,14}$/", $this->container['phone_number'])) {
+            $invalidProperties[] = "invalid value for 'phone_number', must be conform to the pattern /^\\+[1-9]\\d{6,14}$/.";
+        }
+
         if (!is_null($this->container['purchase_intent_id']) && (mb_strlen($this->container['purchase_intent_id']) > 100)) {
             $invalidProperties[] = "invalid value for 'purchase_intent_id', the character length must be smaller than or equal to 100.";
         }
@@ -368,6 +379,38 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
             throw new \InvalidArgumentException('non-nullable country cannot be null');
         }
         $this->container['country'] = $country;
+
+        return $this;
+    }
+
+    /**
+     * Gets phone_number
+     *
+     * @return string|null
+     */
+    public function getPhoneNumber()
+    {
+        return $this->container['phone_number'];
+    }
+
+    /**
+     * Sets phone_number
+     *
+     * @param string|null $phone_number One exact number to buy, in E.164, taken from GET /v1/phone-numbers/available. Fails with 409 code PHONE_NUMBER_UNAVAILABLE when it is no longer available.
+     *
+     * @return self
+     */
+    public function setPhoneNumber($phone_number)
+    {
+        if (is_null($phone_number)) {
+            throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
+        }
+
+        if ((!preg_match("/^\\+[1-9]\\d{6,14}$/", ObjectSerializer::toString($phone_number)))) {
+            throw new \InvalidArgumentException("invalid value for \$phone_number when calling PurchaseWhatsAppPhoneNumberRequest., must conform to the pattern /^\\+[1-9]\\d{6,14}$/.");
+        }
+
+        $this->container['phone_number'] = $phone_number;
 
         return $this;
     }
