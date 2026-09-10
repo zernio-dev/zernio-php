@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateInboxConversation400Response
+ * CreateInboxConversationRequestTemplateCardsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateInboxConversation400Response Class Doc Comment
+ * CreateInboxConversationRequestTemplateCardsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateInboxConversation400Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateInboxConversationRequestTemplateCardsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createInboxConversation_400_response';
+    protected static $openAPIModelName = 'createInboxConversation_request_templateCards_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,10 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'error' => 'string',
-        'code' => 'string'
+        'card_index' => 'int',
+        'params' => 'string[]',
+        'header_media' => '\Zernio\Model\CreateInboxConversationRequestTemplateCardsInnerHeaderMedia',
+        'buttons' => '\Zernio\Model\CreateInboxConversationRequestTemplateCardsInnerButtonsInner[]'
     ];
 
     /**
@@ -70,8 +72,10 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'error' => null,
-        'code' => null
+        'card_index' => null,
+        'params' => null,
+        'header_media' => null,
+        'buttons' => null
     ];
 
     /**
@@ -80,8 +84,10 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'error' => false,
-        'code' => false
+        'card_index' => false,
+        'params' => false,
+        'header_media' => false,
+        'buttons' => false
     ];
 
     /**
@@ -170,8 +176,10 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'error' => 'error',
-        'code' => 'code'
+        'card_index' => 'cardIndex',
+        'params' => 'params',
+        'header_media' => 'headerMedia',
+        'buttons' => 'buttons'
     ];
 
     /**
@@ -180,8 +188,10 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'error' => 'setError',
-        'code' => 'setCode'
+        'card_index' => 'setCardIndex',
+        'params' => 'setParams',
+        'header_media' => 'setHeaderMedia',
+        'buttons' => 'setButtons'
     ];
 
     /**
@@ -190,8 +200,10 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'error' => 'getError',
-        'code' => 'getCode'
+        'card_index' => 'getCardIndex',
+        'params' => 'getParams',
+        'header_media' => 'getHeaderMedia',
+        'buttons' => 'getButtons'
     ];
 
     /**
@@ -235,35 +247,6 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
-    public const CODE_PLATFORM_NOT_SUPPORTED = 'PLATFORM_NOT_SUPPORTED';
-    public const CODE_PLATFORM_LIMITATION = 'PLATFORM_LIMITATION';
-    public const CODE_TEMPLATE_REQUIRED = 'TEMPLATE_REQUIRED';
-    public const CODE_INVALID_TEMPLATE_PARAMS = 'INVALID_TEMPLATE_PARAMS';
-    public const CODE_INVALID_TEMPLATE_BUTTON_PARAM = 'INVALID_TEMPLATE_BUTTON_PARAM';
-    public const CODE_INVALID_TEMPLATE_CARD_PARAM = 'INVALID_TEMPLATE_CARD_PARAM';
-    public const CODE_DIRECT_SEND_NOT_ELIGIBLE = 'DIRECT_SEND_NOT_ELIGIBLE';
-    public const CODE_DIRECT_SEND_LIMITED = 'DIRECT_SEND_LIMITED';
-    public const CODE_DIRECT_SEND_BLOCKED = 'DIRECT_SEND_BLOCKED';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getCodeAllowableValues()
-    {
-        return [
-            self::CODE_PLATFORM_NOT_SUPPORTED,
-            self::CODE_PLATFORM_LIMITATION,
-            self::CODE_TEMPLATE_REQUIRED,
-            self::CODE_INVALID_TEMPLATE_PARAMS,
-            self::CODE_INVALID_TEMPLATE_BUTTON_PARAM,
-            self::CODE_INVALID_TEMPLATE_CARD_PARAM,
-            self::CODE_DIRECT_SEND_NOT_ELIGIBLE,
-            self::CODE_DIRECT_SEND_LIMITED,
-            self::CODE_DIRECT_SEND_BLOCKED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -280,8 +263,10 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('error', $data ?? [], null);
-        $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('card_index', $data ?? [], null);
+        $this->setIfExists('params', $data ?? [], null);
+        $this->setIfExists('header_media', $data ?? [], null);
+        $this->setIfExists('buttons', $data ?? [], null);
     }
 
     /**
@@ -311,13 +296,19 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getCodeAllowableValues();
-        if (!is_null($this->container['code']) && !in_array($this->container['code'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'code', must be one of '%s'",
-                $this->container['code'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['card_index'] === null) {
+            $invalidProperties[] = "'card_index' can't be null";
+        }
+        if (($this->container['card_index'] > 9)) {
+            $invalidProperties[] = "invalid value for 'card_index', must be smaller than or equal to 9.";
+        }
+
+        if (($this->container['card_index'] < 0)) {
+            $invalidProperties[] = "invalid value for 'card_index', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['buttons']) && (count($this->container['buttons']) > 2)) {
+            $invalidProperties[] = "invalid value for 'buttons', number of items must be less than or equal to 2.";
         }
 
         return $invalidProperties;
@@ -336,65 +327,121 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets error
+     * Gets card_index
      *
-     * @return string|null
+     * @return int
      */
-    public function getError()
+    public function getCardIndex()
     {
-        return $this->container['error'];
+        return $this->container['card_index'];
     }
 
     /**
-     * Sets error
+     * Sets card_index
      *
-     * @param string|null $error error
+     * @param int $card_index The card's card_index in the approved template.
      *
      * @return self
      */
-    public function setError($error)
+    public function setCardIndex($card_index)
     {
-        if (is_null($error)) {
-            throw new \InvalidArgumentException('non-nullable error cannot be null');
+        if (is_null($card_index)) {
+            throw new \InvalidArgumentException('non-nullable card_index cannot be null');
         }
-        $this->container['error'] = $error;
+
+        if (($card_index > 9)) {
+            throw new \InvalidArgumentException('invalid value for $card_index when calling CreateInboxConversationRequestTemplateCardsInner., must be smaller than or equal to 9.');
+        }
+        if (($card_index < 0)) {
+            throw new \InvalidArgumentException('invalid value for $card_index when calling CreateInboxConversationRequestTemplateCardsInner., must be bigger than or equal to 0.');
+        }
+
+        $this->container['card_index'] = $card_index;
 
         return $this;
     }
 
     /**
-     * Gets code
+     * Gets params
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getCode()
+    public function getParams()
     {
-        return $this->container['code'];
+        return $this->container['params'];
     }
 
     /**
-     * Sets code
+     * Sets params
      *
-     * @param string|null $code code
+     * @param string[]|null $params Values for this card's own body variables, in the card's own {{1}}, {{2}}, ... order (or named-slot order of appearance).
      *
      * @return self
      */
-    public function setCode($code)
+    public function setParams($params)
     {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
+        if (is_null($params)) {
+            throw new \InvalidArgumentException('non-nullable params cannot be null');
         }
-        $allowedValues = $this->getCodeAllowableValues();
-        if (!in_array($code, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'code', must be one of '%s'",
-                    $code,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['params'] = $params;
+
+        return $this;
+    }
+
+    /**
+     * Gets header_media
+     *
+     * @return \Zernio\Model\CreateInboxConversationRequestTemplateCardsInnerHeaderMedia|null
+     */
+    public function getHeaderMedia()
+    {
+        return $this->container['header_media'];
+    }
+
+    /**
+     * Sets header_media
+     *
+     * @param \Zernio\Model\CreateInboxConversationRequestTemplateCardsInnerHeaderMedia|null $header_media header_media
+     *
+     * @return self
+     */
+    public function setHeaderMedia($header_media)
+    {
+        if (is_null($header_media)) {
+            throw new \InvalidArgumentException('non-nullable header_media cannot be null');
         }
-        $this->container['code'] = $code;
+        $this->container['header_media'] = $header_media;
+
+        return $this;
+    }
+
+    /**
+     * Gets buttons
+     *
+     * @return \Zernio\Model\CreateInboxConversationRequestTemplateCardsInnerButtonsInner[]|null
+     */
+    public function getButtons()
+    {
+        return $this->container['buttons'];
+    }
+
+    /**
+     * Sets buttons
+     *
+     * @param \Zernio\Model\CreateInboxConversationRequestTemplateCardsInnerButtonsInner[]|null $buttons Values for this card's own buttons, each addressed by the button's index within the card.
+     *
+     * @return self
+     */
+    public function setButtons($buttons)
+    {
+        if (is_null($buttons)) {
+            throw new \InvalidArgumentException('non-nullable buttons cannot be null');
+        }
+
+        if ((count($buttons) > 2)) {
+            throw new \InvalidArgumentException('invalid value for $buttons when calling CreateInboxConversationRequestTemplateCardsInner., number of items must be less than or equal to 2.');
+        }
+        $this->container['buttons'] = $buttons;
 
         return $this;
     }

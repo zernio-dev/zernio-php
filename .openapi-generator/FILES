@@ -393,6 +393,9 @@ docs/Model/CreateInboxConversationRequest.md
 docs/Model/CreateInboxConversationRequestHeaderLocation.md
 docs/Model/CreateInboxConversationRequestHeaderMedia.md
 docs/Model/CreateInboxConversationRequestTemplateButtonParamsInner.md
+docs/Model/CreateInboxConversationRequestTemplateCardsInner.md
+docs/Model/CreateInboxConversationRequestTemplateCardsInnerButtonsInner.md
+docs/Model/CreateInboxConversationRequestTemplateCardsInnerHeaderMedia.md
 docs/Model/CreateInviteToken201Response.md
 docs/Model/CreateInviteTokenRequest.md
 docs/Model/CreateLeadForm200Response.md
@@ -2487,6 +2490,9 @@ lib/Model/CreateInboxConversationRequest.php
 lib/Model/CreateInboxConversationRequestHeaderLocation.php
 lib/Model/CreateInboxConversationRequestHeaderMedia.php
 lib/Model/CreateInboxConversationRequestTemplateButtonParamsInner.php
+lib/Model/CreateInboxConversationRequestTemplateCardsInner.php
+lib/Model/CreateInboxConversationRequestTemplateCardsInnerButtonsInner.php
+lib/Model/CreateInboxConversationRequestTemplateCardsInnerHeaderMedia.php
 lib/Model/CreateInviteToken201Response.php
 lib/Model/CreateInviteTokenRequest.php
 lib/Model/CreateLeadForm200Response.php
@@ -4189,7 +4195,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/SelectFacebookPageRequestOneOf1Test.php
-test/Model/SelectFacebookPageRequestOneOfNotTest.php
-test/Model/SelectFacebookPageRequestOneOfTest.php
-test/Model/SelectFacebookPageRequestOneOfUserProfileTest.php
+test/Model/CreateInboxConversationRequestTemplateCardsInnerButtonsInnerTest.php
+test/Model/CreateInboxConversationRequestTemplateCardsInnerHeaderMediaTest.php
+test/Model/CreateInboxConversationRequestTemplateCardsInnerTest.php

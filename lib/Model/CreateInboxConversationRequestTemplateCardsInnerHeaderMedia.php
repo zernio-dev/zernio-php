@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateInboxConversation400Response
+ * CreateInboxConversationRequestTemplateCardsInnerHeaderMedia
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateInboxConversation400Response Class Doc Comment
+ * CreateInboxConversationRequestTemplateCardsInnerHeaderMedia Class Doc Comment
  *
  * @category Class
+ * @description Overrides this card&#39;s header asset for THIS send. Without it, the card&#39;s approved sample asset is sent.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateInboxConversation400Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateInboxConversationRequestTemplateCardsInnerHeaderMedia implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createInboxConversation_400_response';
+    protected static $openAPIModelName = 'createInboxConversation_request_templateCards_inner_headerMedia';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,9 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'error' => 'string',
-        'code' => 'string'
+        'type' => 'string',
+        'link' => 'string',
+        'id' => 'string'
     ];
 
     /**
@@ -70,8 +72,9 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'error' => null,
-        'code' => null
+        'type' => null,
+        'link' => null,
+        'id' => null
     ];
 
     /**
@@ -80,8 +83,9 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'error' => false,
-        'code' => false
+        'type' => false,
+        'link' => false,
+        'id' => false
     ];
 
     /**
@@ -170,8 +174,9 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'error' => 'error',
-        'code' => 'code'
+        'type' => 'type',
+        'link' => 'link',
+        'id' => 'id'
     ];
 
     /**
@@ -180,8 +185,9 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'error' => 'setError',
-        'code' => 'setCode'
+        'type' => 'setType',
+        'link' => 'setLink',
+        'id' => 'setId'
     ];
 
     /**
@@ -190,8 +196,9 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'error' => 'getError',
-        'code' => 'getCode'
+        'type' => 'getType',
+        'link' => 'getLink',
+        'id' => 'getId'
     ];
 
     /**
@@ -235,33 +242,21 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
-    public const CODE_PLATFORM_NOT_SUPPORTED = 'PLATFORM_NOT_SUPPORTED';
-    public const CODE_PLATFORM_LIMITATION = 'PLATFORM_LIMITATION';
-    public const CODE_TEMPLATE_REQUIRED = 'TEMPLATE_REQUIRED';
-    public const CODE_INVALID_TEMPLATE_PARAMS = 'INVALID_TEMPLATE_PARAMS';
-    public const CODE_INVALID_TEMPLATE_BUTTON_PARAM = 'INVALID_TEMPLATE_BUTTON_PARAM';
-    public const CODE_INVALID_TEMPLATE_CARD_PARAM = 'INVALID_TEMPLATE_CARD_PARAM';
-    public const CODE_DIRECT_SEND_NOT_ELIGIBLE = 'DIRECT_SEND_NOT_ELIGIBLE';
-    public const CODE_DIRECT_SEND_LIMITED = 'DIRECT_SEND_LIMITED';
-    public const CODE_DIRECT_SEND_BLOCKED = 'DIRECT_SEND_BLOCKED';
+    public const TYPE_IMAGE = 'image';
+    public const TYPE_VIDEO = 'video';
+    public const TYPE_DOCUMENT = 'document';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getCodeAllowableValues()
+    public function getTypeAllowableValues()
     {
         return [
-            self::CODE_PLATFORM_NOT_SUPPORTED,
-            self::CODE_PLATFORM_LIMITATION,
-            self::CODE_TEMPLATE_REQUIRED,
-            self::CODE_INVALID_TEMPLATE_PARAMS,
-            self::CODE_INVALID_TEMPLATE_BUTTON_PARAM,
-            self::CODE_INVALID_TEMPLATE_CARD_PARAM,
-            self::CODE_DIRECT_SEND_NOT_ELIGIBLE,
-            self::CODE_DIRECT_SEND_LIMITED,
-            self::CODE_DIRECT_SEND_BLOCKED,
+            self::TYPE_IMAGE,
+            self::TYPE_VIDEO,
+            self::TYPE_DOCUMENT,
         ];
     }
 
@@ -280,8 +275,9 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('error', $data ?? [], null);
-        $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('link', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
     }
 
     /**
@@ -311,11 +307,14 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getCodeAllowableValues();
-        if (!is_null($this->container['code']) && !in_array($this->container['code'], $allowedValues, true)) {
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'code', must be one of '%s'",
-                $this->container['code'],
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -336,65 +335,92 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets error
+     * Gets type
      *
-     * @return string|null
+     * @return string
      */
-    public function getError()
+    public function getType()
     {
-        return $this->container['error'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets error
+     * Sets type
      *
-     * @param string|null $error error
+     * @param string $type Must match the card header's media type.
      *
      * @return self
      */
-    public function setError($error)
+    public function setType($type)
     {
-        if (is_null($error)) {
-            throw new \InvalidArgumentException('non-nullable error cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['error'] = $error;
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets code
+     * Gets link
      *
      * @return string|null
      */
-    public function getCode()
+    public function getLink()
     {
-        return $this->container['code'];
+        return $this->container['link'];
     }
 
     /**
-     * Sets code
+     * Sets link
      *
-     * @param string|null $code code
+     * @param string|null $link Public URL of the asset to send. Must be reachable without auth.
      *
      * @return self
      */
-    public function setCode($code)
+    public function setLink($link)
     {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
+        if (is_null($link)) {
+            throw new \InvalidArgumentException('non-nullable link cannot be null');
         }
-        $allowedValues = $this->getCodeAllowableValues();
-        if (!in_array($code, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'code', must be one of '%s'",
-                    $code,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['link'] = $link;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id A Meta media id (from the media upload endpoint), as an alternative to link.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['code'] = $code;
+        $this->container['id'] = $id;
 
         return $this;
     }

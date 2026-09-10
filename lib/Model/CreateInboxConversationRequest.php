@@ -69,6 +69,7 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
         'template_language' => 'string',
         'template_params' => 'string[]',
         'template_button_params' => '\Zernio\Model\CreateInboxConversationRequestTemplateButtonParamsInner[]',
+        'template_cards' => '\Zernio\Model\CreateInboxConversationRequestTemplateCardsInner[]',
         'header_media' => '\Zernio\Model\CreateInboxConversationRequestHeaderMedia',
         'header_location' => '\Zernio\Model\CreateInboxConversationRequestHeaderLocation'
     ];
@@ -92,6 +93,7 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
         'template_language' => null,
         'template_params' => null,
         'template_button_params' => null,
+        'template_cards' => null,
         'header_media' => null,
         'header_location' => null
     ];
@@ -113,6 +115,7 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
         'template_language' => false,
         'template_params' => false,
         'template_button_params' => false,
+        'template_cards' => false,
         'header_media' => false,
         'header_location' => false
     ];
@@ -214,6 +217,7 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
         'template_language' => 'templateLanguage',
         'template_params' => 'templateParams',
         'template_button_params' => 'templateButtonParams',
+        'template_cards' => 'templateCards',
         'header_media' => 'headerMedia',
         'header_location' => 'headerLocation'
     ];
@@ -235,6 +239,7 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
         'template_language' => 'setTemplateLanguage',
         'template_params' => 'setTemplateParams',
         'template_button_params' => 'setTemplateButtonParams',
+        'template_cards' => 'setTemplateCards',
         'header_media' => 'setHeaderMedia',
         'header_location' => 'setHeaderLocation'
     ];
@@ -256,6 +261,7 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
         'template_language' => 'getTemplateLanguage',
         'template_params' => 'getTemplateParams',
         'template_button_params' => 'getTemplateButtonParams',
+        'template_cards' => 'getTemplateCards',
         'header_media' => 'getHeaderMedia',
         'header_location' => 'getHeaderLocation'
     ];
@@ -341,6 +347,7 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('template_language', $data ?? [], null);
         $this->setIfExists('template_params', $data ?? [], null);
         $this->setIfExists('template_button_params', $data ?? [], null);
+        $this->setIfExists('template_cards', $data ?? [], null);
         $this->setIfExists('header_media', $data ?? [], null);
         $this->setIfExists('header_location', $data ?? [], null);
     }
@@ -386,6 +393,10 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
 
         if (!is_null($this->container['template_button_params']) && (count($this->container['template_button_params']) > 10)) {
             $invalidProperties[] = "invalid value for 'template_button_params', number of items must be less than or equal to 10.";
+        }
+
+        if (!is_null($this->container['template_cards']) && (count($this->container['template_cards']) > 10)) {
+            $invalidProperties[] = "invalid value for 'template_cards', number of items must be less than or equal to 10.";
         }
 
         return $invalidProperties;
@@ -710,6 +721,37 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('invalid value for $template_button_params when calling CreateInboxConversationRequest., number of items must be less than or equal to 10.');
         }
         $this->container['template_button_params'] = $template_button_params;
+
+        return $this;
+    }
+
+    /**
+     * Gets template_cards
+     *
+     * @return \Zernio\Model\CreateInboxConversationRequestTemplateCardsInner[]|null
+     */
+    public function getTemplateCards()
+    {
+        return $this->container['template_cards'];
+    }
+
+    /**
+     * Sets template_cards
+     *
+     * @param \Zernio\Model\CreateInboxConversationRequestTemplateCardsInner[]|null $template_cards WhatsApp only. Per-card overrides for a CAROUSEL template, each addressed by the card's card_index. Carousel card body variables restart at {{1}} per card, so they cannot be expressed in the flat templateParams slot order; use this instead. A cardIndex naming a card the approved template does not have, a duplicate cardIndex, or a params count that does not match the card body's token count is rejected with 400 (INVALID_TEMPLATE_CARD_PARAM).
+     *
+     * @return self
+     */
+    public function setTemplateCards($template_cards)
+    {
+        if (is_null($template_cards)) {
+            throw new \InvalidArgumentException('non-nullable template_cards cannot be null');
+        }
+
+        if ((count($template_cards) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $template_cards when calling CreateInboxConversationRequest., number of items must be less than or equal to 10.');
+        }
+        $this->container['template_cards'] = $template_cards;
 
         return $this;
     }
