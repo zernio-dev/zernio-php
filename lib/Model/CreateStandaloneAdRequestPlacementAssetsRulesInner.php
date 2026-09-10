@@ -61,6 +61,9 @@ class CreateStandaloneAdRequestPlacementAssetsRulesInner implements ModelInterfa
         'image_url' => 'string',
         'video_url' => 'string',
         'thumbnail_url' => 'string',
+        'headline' => 'string',
+        'body' => 'string',
+        'description' => 'string',
         'placements' => '\Zernio\Model\CreateStandaloneAdRequestPlacementAssetsRulesInnerPlacements'
     ];
 
@@ -75,6 +78,9 @@ class CreateStandaloneAdRequestPlacementAssetsRulesInner implements ModelInterfa
         'image_url' => 'uri',
         'video_url' => 'uri',
         'thumbnail_url' => 'uri',
+        'headline' => null,
+        'body' => null,
+        'description' => null,
         'placements' => null
     ];
 
@@ -87,6 +93,9 @@ class CreateStandaloneAdRequestPlacementAssetsRulesInner implements ModelInterfa
         'image_url' => false,
         'video_url' => false,
         'thumbnail_url' => false,
+        'headline' => false,
+        'body' => false,
+        'description' => false,
         'placements' => false
     ];
 
@@ -179,6 +188,9 @@ class CreateStandaloneAdRequestPlacementAssetsRulesInner implements ModelInterfa
         'image_url' => 'imageUrl',
         'video_url' => 'videoUrl',
         'thumbnail_url' => 'thumbnailUrl',
+        'headline' => 'headline',
+        'body' => 'body',
+        'description' => 'description',
         'placements' => 'placements'
     ];
 
@@ -191,6 +203,9 @@ class CreateStandaloneAdRequestPlacementAssetsRulesInner implements ModelInterfa
         'image_url' => 'setImageUrl',
         'video_url' => 'setVideoUrl',
         'thumbnail_url' => 'setThumbnailUrl',
+        'headline' => 'setHeadline',
+        'body' => 'setBody',
+        'description' => 'setDescription',
         'placements' => 'setPlacements'
     ];
 
@@ -203,6 +218,9 @@ class CreateStandaloneAdRequestPlacementAssetsRulesInner implements ModelInterfa
         'image_url' => 'getImageUrl',
         'video_url' => 'getVideoUrl',
         'thumbnail_url' => 'getThumbnailUrl',
+        'headline' => 'getHeadline',
+        'body' => 'getBody',
+        'description' => 'getDescription',
         'placements' => 'getPlacements'
     ];
 
@@ -266,6 +284,9 @@ class CreateStandaloneAdRequestPlacementAssetsRulesInner implements ModelInterfa
         $this->setIfExists('image_url', $data ?? [], null);
         $this->setIfExists('video_url', $data ?? [], null);
         $this->setIfExists('thumbnail_url', $data ?? [], null);
+        $this->setIfExists('headline', $data ?? [], null);
+        $this->setIfExists('body', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('placements', $data ?? [], null);
     }
 
@@ -295,6 +316,26 @@ class CreateStandaloneAdRequestPlacementAssetsRulesInner implements ModelInterfa
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['headline']) && (mb_strlen($this->container['headline']) > 255)) {
+            $invalidProperties[] = "invalid value for 'headline', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['headline']) && (mb_strlen($this->container['headline']) < 1)) {
+            $invalidProperties[] = "invalid value for 'headline', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['body']) && (mb_strlen($this->container['body']) < 1)) {
+            $invalidProperties[] = "invalid value for 'body', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 255)) {
+            $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) < 1)) {
+            $invalidProperties[] = "invalid value for 'description', the character length must be bigger than or equal to 1.";
+        }
 
         if ($this->container['placements'] === null) {
             $invalidProperties[] = "'placements' can't be null";
@@ -391,6 +432,106 @@ class CreateStandaloneAdRequestPlacementAssetsRulesInner implements ModelInterfa
             throw new \InvalidArgumentException('non-nullable thumbnail_url cannot be null');
         }
         $this->container['thumbnail_url'] = $thumbnail_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets headline
+     *
+     * @return string|null
+     */
+    public function getHeadline()
+    {
+        return $this->container['headline'];
+    }
+
+    /**
+     * Sets headline
+     *
+     * @param string|null $headline One headline pinned to this rule. Omit to inherit the top-level headline.
+     *
+     * @return self
+     */
+    public function setHeadline($headline)
+    {
+        if (is_null($headline)) {
+            throw new \InvalidArgumentException('non-nullable headline cannot be null');
+        }
+        if ((mb_strlen($headline) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $headline when calling CreateStandaloneAdRequestPlacementAssetsRulesInner., must be smaller than or equal to 255.');
+        }
+        if ((mb_strlen($headline) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $headline when calling CreateStandaloneAdRequestPlacementAssetsRulesInner., must be bigger than or equal to 1.');
+        }
+
+        $this->container['headline'] = $headline;
+
+        return $this;
+    }
+
+    /**
+     * Gets body
+     *
+     * @return string|null
+     */
+    public function getBody()
+    {
+        return $this->container['body'];
+    }
+
+    /**
+     * Sets body
+     *
+     * @param string|null $body One primary text pinned to this rule. Omit to inherit the top-level body.
+     *
+     * @return self
+     */
+    public function setBody($body)
+    {
+        if (is_null($body)) {
+            throw new \InvalidArgumentException('non-nullable body cannot be null');
+        }
+
+        if ((mb_strlen($body) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $body when calling CreateStandaloneAdRequestPlacementAssetsRulesInner., must be bigger than or equal to 1.');
+        }
+
+        $this->container['body'] = $body;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description One link description pinned to this rule. Omit to inherit the top-level description.
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        }
+        if ((mb_strlen($description) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $description when calling CreateStandaloneAdRequestPlacementAssetsRulesInner., must be smaller than or equal to 255.');
+        }
+        if ((mb_strlen($description) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $description when calling CreateStandaloneAdRequestPlacementAssetsRulesInner., must be bigger than or equal to 1.');
+        }
+
+        $this->container['description'] = $description;
 
         return $this;
     }
