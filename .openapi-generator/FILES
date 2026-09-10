@@ -1963,6 +1963,7 @@ docs/Model/WebhookPayloadMessageMessageAttachmentsInner.md
 docs/Model/WebhookPayloadMessageMessageSender.md
 docs/Model/WebhookPayloadMessageMessageSenderInstagramProfile.md
 docs/Model/WebhookPayloadMessageMetadata.md
+docs/Model/WebhookPayloadMessageMetadataLocation.md
 docs/Model/WebhookPayloadMessageMetadataOrder.md
 docs/Model/WebhookPayloadMessageMetadataOrderProductItemsInner.md
 docs/Model/WebhookPayloadMessageMetadataQuotedMessage.md
@@ -1976,6 +1977,7 @@ docs/Model/WebhookPayloadMessageSentMessage.md
 docs/Model/WebhookPayloadMessageSentMessageAttachmentsInner.md
 docs/Model/WebhookPayloadMessageSentMessageSender.md
 docs/Model/WebhookPayloadMessageSentMetadata.md
+docs/Model/WebhookPayloadMessageSentMetadataLocation.md
 docs/Model/WebhookPayloadPhoneNumberStockAvailable.md
 docs/Model/WebhookPayloadPhoneNumberStockAvailableStock.md
 docs/Model/WebhookPayloadPhoneNumberStockAvailableStockTypesInner.md
@@ -4032,6 +4034,7 @@ lib/Model/WebhookPayloadMessageMessageAttachmentsInner.php
 lib/Model/WebhookPayloadMessageMessageSender.php
 lib/Model/WebhookPayloadMessageMessageSenderInstagramProfile.php
 lib/Model/WebhookPayloadMessageMetadata.php
+lib/Model/WebhookPayloadMessageMetadataLocation.php
 lib/Model/WebhookPayloadMessageMetadataOrder.php
 lib/Model/WebhookPayloadMessageMetadataOrderProductItemsInner.php
 lib/Model/WebhookPayloadMessageMetadataQuotedMessage.php
@@ -4045,6 +4048,7 @@ lib/Model/WebhookPayloadMessageSentMessage.php
 lib/Model/WebhookPayloadMessageSentMessageAttachmentsInner.php
 lib/Model/WebhookPayloadMessageSentMessageSender.php
 lib/Model/WebhookPayloadMessageSentMetadata.php
+lib/Model/WebhookPayloadMessageSentMetadataLocation.php
 lib/Model/WebhookPayloadPhoneNumberStockAvailable.php
 lib/Model/WebhookPayloadPhoneNumberStockAvailableStock.php
 lib/Model/WebhookPayloadPhoneNumberStockAvailableStockTypesInner.php
@@ -4137,3 +4141,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/WebhookPayloadMessageMetadataLocationTest.php
+test/Model/WebhookPayloadMessageSentMetadataLocationTest.php

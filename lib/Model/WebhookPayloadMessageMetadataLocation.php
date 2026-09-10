@@ -1,6 +1,6 @@
 <?php
 /**
- * WebhookPayloadMessageSentMetadata
+ * WebhookPayloadMessageMetadataLocation
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * WebhookPayloadMessageSentMetadata Class Doc Comment
+ * WebhookPayloadMessageMetadataLocation Class Doc Comment
  *
  * @category Class
- * @description Platform-specific context for the sent message: a quote-reply reference, a WhatsApp location pin or WhatsApp contact cards. The key is present only when the send carried some context, and absent otherwise: it is never null and never an empty object. Read it to tell a location or contact-card message from a text one without a GET on the message.
+ * @description WhatsApp only. The location pin the user shared, forwarded verbatim from Meta. The message &#x60;text&#x60; is only the emoji preview (&#x60;📍 &lt;name&gt;&#x60;); the coordinates live here.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WebhookPayloadMessageSentMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
+class WebhookPayloadMessageMetadataLocation implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WebhookPayloadMessageSentMetadata implements ModelInterface, ArrayAccess, 
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WebhookPayloadMessageSent_metadata';
+    protected static $openAPIModelName = 'WebhookPayloadMessage_metadata_location';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +59,10 @@ class WebhookPayloadMessageSentMetadata implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'location' => '\Zernio\Model\WebhookPayloadMessageSentMetadataLocation',
-        'contacts' => 'array<string,mixed>[]',
-        'quoted_message_id' => 'string',
-        'thread_ts' => 'string'
+        'latitude' => 'float',
+        'longitude' => 'float',
+        'name' => 'string',
+        'address' => 'string'
     ];
 
     /**
@@ -73,10 +73,10 @@ class WebhookPayloadMessageSentMetadata implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'location' => null,
-        'contacts' => null,
-        'quoted_message_id' => null,
-        'thread_ts' => null
+        'latitude' => null,
+        'longitude' => null,
+        'name' => null,
+        'address' => null
     ];
 
     /**
@@ -85,10 +85,10 @@ class WebhookPayloadMessageSentMetadata implements ModelInterface, ArrayAccess, 
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'location' => false,
-        'contacts' => false,
-        'quoted_message_id' => false,
-        'thread_ts' => false
+        'latitude' => false,
+        'longitude' => false,
+        'name' => false,
+        'address' => false
     ];
 
     /**
@@ -177,10 +177,10 @@ class WebhookPayloadMessageSentMetadata implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'location' => 'location',
-        'contacts' => 'contacts',
-        'quoted_message_id' => 'quotedMessageId',
-        'thread_ts' => 'threadTs'
+        'latitude' => 'latitude',
+        'longitude' => 'longitude',
+        'name' => 'name',
+        'address' => 'address'
     ];
 
     /**
@@ -189,10 +189,10 @@ class WebhookPayloadMessageSentMetadata implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $setters = [
-        'location' => 'setLocation',
-        'contacts' => 'setContacts',
-        'quoted_message_id' => 'setQuotedMessageId',
-        'thread_ts' => 'setThreadTs'
+        'latitude' => 'setLatitude',
+        'longitude' => 'setLongitude',
+        'name' => 'setName',
+        'address' => 'setAddress'
     ];
 
     /**
@@ -201,10 +201,10 @@ class WebhookPayloadMessageSentMetadata implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $getters = [
-        'location' => 'getLocation',
-        'contacts' => 'getContacts',
-        'quoted_message_id' => 'getQuotedMessageId',
-        'thread_ts' => 'getThreadTs'
+        'latitude' => 'getLatitude',
+        'longitude' => 'getLongitude',
+        'name' => 'getName',
+        'address' => 'getAddress'
     ];
 
     /**
@@ -264,10 +264,10 @@ class WebhookPayloadMessageSentMetadata implements ModelInterface, ArrayAccess, 
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('location', $data ?? [], null);
-        $this->setIfExists('contacts', $data ?? [], null);
-        $this->setIfExists('quoted_message_id', $data ?? [], null);
-        $this->setIfExists('thread_ts', $data ?? [], null);
+        $this->setIfExists('latitude', $data ?? [], null);
+        $this->setIfExists('longitude', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('address', $data ?? [], null);
     }
 
     /**
@@ -313,109 +313,109 @@ class WebhookPayloadMessageSentMetadata implements ModelInterface, ArrayAccess, 
 
 
     /**
-     * Gets location
+     * Gets latitude
      *
-     * @return \Zernio\Model\WebhookPayloadMessageSentMetadataLocation|null
+     * @return float|null
      */
-    public function getLocation()
+    public function getLatitude()
     {
-        return $this->container['location'];
+        return $this->container['latitude'];
     }
 
     /**
-     * Sets location
+     * Sets latitude
      *
-     * @param \Zernio\Model\WebhookPayloadMessageSentMetadataLocation|null $location location
+     * @param float|null $latitude Latitude in decimal degrees.
      *
      * @return self
      */
-    public function setLocation($location)
+    public function setLatitude($latitude)
     {
-        if (is_null($location)) {
-            throw new \InvalidArgumentException('non-nullable location cannot be null');
+        if (is_null($latitude)) {
+            throw new \InvalidArgumentException('non-nullable latitude cannot be null');
         }
-        $this->container['location'] = $location;
+        $this->container['latitude'] = $latitude;
 
         return $this;
     }
 
     /**
-     * Gets contacts
+     * Gets longitude
      *
-     * @return array<string,mixed>[]|null
+     * @return float|null
      */
-    public function getContacts()
+    public function getLongitude()
     {
-        return $this->container['contacts'];
+        return $this->container['longitude'];
     }
 
     /**
-     * Sets contacts
+     * Sets longitude
      *
-     * @param array<string,mixed>[]|null $contacts WhatsApp only. The contact cards this message carries. On API sends this is the `contacts` array exactly as given to the inbox send API (`name`, `phones[].phone` / `type`, `emails[]`); on Coexistence echoes of a card shared from the WhatsApp Business app it is Meta's shape (`phones[].wa_id`, `vcard`). The message `text` is only the emoji preview (`👤 <name>`); the cards live here.
+     * @param float|null $longitude Longitude in decimal degrees.
      *
      * @return self
      */
-    public function setContacts($contacts)
+    public function setLongitude($longitude)
     {
-        if (is_null($contacts)) {
-            throw new \InvalidArgumentException('non-nullable contacts cannot be null');
+        if (is_null($longitude)) {
+            throw new \InvalidArgumentException('non-nullable longitude cannot be null');
         }
-        $this->container['contacts'] = $contacts;
+        $this->container['longitude'] = $longitude;
 
         return $this;
     }
 
     /**
-     * Gets quoted_message_id
+     * Gets name
      *
      * @return string|null
      */
-    public function getQuotedMessageId()
+    public function getName()
     {
-        return $this->container['quoted_message_id'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets quoted_message_id
+     * Sets name
      *
-     * @param string|null $quoted_message_id `platformMessageId` of the message this send is a quote-reply to.  Present when the reply was sent through Zernio with `replyTo` on the inbox send API (WhatsApp and Telegram). A WhatsApp API send fires its `message.sent` off the delivery status, and the quote reference is forwarded from the stored send there, so it arrives on the same `message.sent` as any other WhatsApp send.  Not delivered on Instagram echoes. Zernio forwards `reply_to.mid` whenever Meta puts it on an echo, but on Instagram Meta does not send it, so a reply the operator quoted in the Instagram app arrives with no `quotedMessageId`. Facebook Messenger rides a separate subscription (`message_echoes`) and has not been measured, so treat it as unverified rather than supported.  Absent on WhatsApp Coexistence echoes. Meta omits the quote context from `smb_message_echoes`, so a reply the operator sent from the WhatsApp Business app arrives with no `quotedMessageId` even though WhatsApp shows it as a quote-reply. Do not read the absence of this field as \"not a reply\".
+     * @param string|null $name Location name, when the user shared a named place.
      *
      * @return self
      */
-    public function setQuotedMessageId($quoted_message_id)
+    public function setName($name)
     {
-        if (is_null($quoted_message_id)) {
-            throw new \InvalidArgumentException('non-nullable quoted_message_id cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['quoted_message_id'] = $quoted_message_id;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets thread_ts
+     * Gets address
      *
      * @return string|null
      */
-    public function getThreadTs()
+    public function getAddress()
     {
-        return $this->container['thread_ts'];
+        return $this->container['address'];
     }
 
     /**
-     * Sets thread_ts
+     * Sets address
      *
-     * @param string|null $thread_ts Slack only. Parent thread ts of the sent message. Pass it back as `replyTo` on the inbox send API to keep replying inside the thread.
+     * @param string|null $address Street address, when Meta sends one.
      *
      * @return self
      */
-    public function setThreadTs($thread_ts)
+    public function setAddress($address)
     {
-        if (is_null($thread_ts)) {
-            throw new \InvalidArgumentException('non-nullable thread_ts cannot be null');
+        if (is_null($address)) {
+            throw new \InvalidArgumentException('non-nullable address cannot be null');
         }
-        $this->container['thread_ts'] = $thread_ts;
+        $this->container['address'] = $address;
 
         return $this;
     }

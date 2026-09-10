@@ -74,6 +74,7 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'nfm_reply_name' => 'string',
         'order' => '\Zernio\Model\WebhookPayloadMessageMetadataOrder',
         'referred_product' => '\Zernio\Model\WebhookPayloadMessageMetadataReferredProduct',
+        'location' => '\Zernio\Model\WebhookPayloadMessageMetadataLocation',
         'contacts' => 'array<string,mixed>[]',
         'contacts_origin' => 'string',
         'story_reply' => '\Zernio\Model\WebhookPayloadMessageMetadataStoryReply',
@@ -106,6 +107,7 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'nfm_reply_name' => null,
         'order' => null,
         'referred_product' => null,
+        'location' => null,
         'contacts' => null,
         'contacts_origin' => null,
         'story_reply' => null,
@@ -136,6 +138,7 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'nfm_reply_name' => false,
         'order' => false,
         'referred_product' => false,
+        'location' => false,
         'contacts' => false,
         'contacts_origin' => false,
         'story_reply' => false,
@@ -246,6 +249,7 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'nfm_reply_name' => 'nfmReplyName',
         'order' => 'order',
         'referred_product' => 'referredProduct',
+        'location' => 'location',
         'contacts' => 'contacts',
         'contacts_origin' => 'contactsOrigin',
         'story_reply' => 'storyReply',
@@ -276,6 +280,7 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'nfm_reply_name' => 'setNfmReplyName',
         'order' => 'setOrder',
         'referred_product' => 'setReferredProduct',
+        'location' => 'setLocation',
         'contacts' => 'setContacts',
         'contacts_origin' => 'setContactsOrigin',
         'story_reply' => 'setStoryReply',
@@ -306,6 +311,7 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'nfm_reply_name' => 'getNfmReplyName',
         'order' => 'getOrder',
         'referred_product' => 'getReferredProduct',
+        'location' => 'getLocation',
         'contacts' => 'getContacts',
         'contacts_origin' => 'getContactsOrigin',
         'story_reply' => 'getStoryReply',
@@ -419,6 +425,7 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('nfm_reply_name', $data ?? [], null);
         $this->setIfExists('order', $data ?? [], null);
         $this->setIfExists('referred_product', $data ?? [], null);
+        $this->setIfExists('location', $data ?? [], null);
         $this->setIfExists('contacts', $data ?? [], null);
         $this->setIfExists('contacts_origin', $data ?? [], null);
         $this->setIfExists('story_reply', $data ?? [], null);
@@ -899,6 +906,33 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable referred_product cannot be null');
         }
         $this->container['referred_product'] = $referred_product;
+
+        return $this;
+    }
+
+    /**
+     * Gets location
+     *
+     * @return \Zernio\Model\WebhookPayloadMessageMetadataLocation|null
+     */
+    public function getLocation()
+    {
+        return $this->container['location'];
+    }
+
+    /**
+     * Sets location
+     *
+     * @param \Zernio\Model\WebhookPayloadMessageMetadataLocation|null $location location
+     *
+     * @return self
+     */
+    public function setLocation($location)
+    {
+        if (is_null($location)) {
+            throw new \InvalidArgumentException('non-nullable location cannot be null');
+        }
+        $this->container['location'] = $location;
 
         return $this;
     }
