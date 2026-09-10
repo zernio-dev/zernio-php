@@ -55,6 +55,7 @@ docs/Api/ReviewsApi.md
 docs/Api/SMSApi.md
 docs/Api/SequencesApi.md
 docs/Api/SlackApi.md
+docs/Api/ToolsApi.md
 docs/Api/TrackingTagsApi.md
 docs/Api/TwitterEngagementApi.md
 docs/Api/UsageApi.md
@@ -551,6 +552,8 @@ docs/Model/DiscordRole.md
 docs/Model/DiscordScheduledEvent.md
 docs/Model/DiscordScheduledEventEntityMetadata.md
 docs/Model/DmButton.md
+docs/Model/DownloadTikTokVideo200Response.md
+docs/Model/DownloadTikTokVideo200ResponseFormatsInner.md
 docs/Model/DuplicateAd200Response.md
 docs/Model/DuplicateAdCampaign200Response.md
 docs/Model/DuplicateAdCampaignRequest.md
@@ -2137,6 +2140,7 @@ lib/Api/ReviewsApi.php
 lib/Api/SMSApi.php
 lib/Api/SequencesApi.php
 lib/Api/SlackApi.php
+lib/Api/ToolsApi.php
 lib/Api/TrackingTagsApi.php
 lib/Api/TwitterEngagementApi.php
 lib/Api/UsageApi.php
@@ -2637,6 +2641,8 @@ lib/Model/DiscordRole.php
 lib/Model/DiscordScheduledEvent.php
 lib/Model/DiscordScheduledEventEntityMetadata.php
 lib/Model/DmButton.php
+lib/Model/DownloadTikTokVideo200Response.php
+lib/Model/DownloadTikTokVideo200ResponseFormatsInner.php
 lib/Model/DuplicateAd200Response.php
 lib/Model/DuplicateAdCampaign200Response.php
 lib/Model/DuplicateAdCampaignRequest.php
@@ -4173,12 +4179,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ListPartnershipAdContent200ResponseMediaInnerTest.php
-test/Model/ListPartnershipAdContent200ResponseTest.php
-test/Model/ListPartnershipAdPermissions200ResponsePermissionsInnerTest.php
-test/Model/ListPartnershipAdPermissions200ResponseTest.php
-test/Model/ListTikTokAdPixels200ResponsePixelsInnerEventDetailsInnerTest.php
-test/Model/ListTikTokAdPixels200ResponsePixelsInnerTest.php
-test/Model/ListTikTokAdPixels200ResponseTest.php
-test/Model/SetPartnershipAdPermission200ResponseTest.php
-test/Model/SetPartnershipAdPermissionRequestTest.php

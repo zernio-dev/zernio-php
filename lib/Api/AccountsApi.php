@@ -789,7 +789,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetAccountPosts200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     * @return \Zernio\Model\GetAccountPosts200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
     public function getAccountPosts($account_id, string $contentType = self::contentTypes['getAccountPosts'][0])
     {
@@ -807,7 +807,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetAccountPosts200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetAccountPosts200Response|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAccountPostsWithHttpInfo($account_id, string $contentType = self::contentTypes['getAccountPosts'][0])
     {
@@ -855,6 +855,18 @@ class AccountsApi
                         $request,
                         $response,
                     );
+                case 503:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 502:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -899,6 +911,22 @@ class AccountsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 503:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 502:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3066,7 +3094,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\AccountsListResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\AccountsListResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function listAccounts($profile_id = null, $platform = null, $status = null, $include_over_limit = false, $page = null, $limit = null, string $contentType = self::contentTypes['listAccounts'][0])
     {
@@ -3089,7 +3117,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\AccountsListResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\AccountsListResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listAccountsWithHttpInfo($profile_id = null, $platform = null, $status = null, $include_over_limit = false, $page = null, $limit = null, string $contentType = self::contentTypes['listAccounts'][0])
     {
@@ -3137,6 +3165,12 @@ class AccountsApi
                         $request,
                         $response,
                     );
+                case 503:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -3181,6 +3215,14 @@ class AccountsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 503:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

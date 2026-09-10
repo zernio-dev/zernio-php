@@ -151,7 +151,7 @@ class CommentAutomationsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateCommentAutomation200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\CreateCommentAutomation200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function createCommentAutomation($create_comment_automation_request, string $contentType = self::contentTypes['createCommentAutomation'][0])
     {
@@ -169,7 +169,7 @@ class CommentAutomationsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateCommentAutomation200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateCommentAutomation200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createCommentAutomationWithHttpInfo($create_comment_automation_request, string $contentType = self::contentTypes['createCommentAutomation'][0])
     {
@@ -211,6 +211,12 @@ class CommentAutomationsApi
                         $request,
                         $response,
                     );
+                case 503:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -247,6 +253,14 @@ class CommentAutomationsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 503:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1342,7 +1356,7 @@ class CommentAutomationsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListCommentAutomations200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ListCommentAutomations200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function listCommentAutomations($profile_id = null, string $contentType = self::contentTypes['listCommentAutomations'][0])
     {
@@ -1360,7 +1374,7 @@ class CommentAutomationsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListCommentAutomations200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListCommentAutomations200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listCommentAutomationsWithHttpInfo($profile_id = null, string $contentType = self::contentTypes['listCommentAutomations'][0])
     {
@@ -1402,6 +1416,12 @@ class CommentAutomationsApi
                         $request,
                         $response,
                     );
+                case 503:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -1438,6 +1458,14 @@ class CommentAutomationsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 503:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

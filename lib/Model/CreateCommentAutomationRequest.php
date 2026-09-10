@@ -483,6 +483,10 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
             );
         }
 
+        if (!is_null($this->container['post_id']) && !preg_match("/^[a-fA-F0-9]{24}$/", $this->container['post_id'])) {
+            $invalidProperties[] = "invalid value for 'post_id', must be conform to the pattern /^[a-fA-F0-9]{24}$/.";
+        }
+
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
@@ -672,7 +676,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets post_id
      *
-     * @param string|null $post_id Zernio post ID. Optional and never required. Use it INSTEAD of platformPostId to bind a per-post automation to a not-yet-published Zernio post: the automation stays pending and arms itself when that post publishes. For a post already live on the platform, pass platformPostId alone and omit this.
+     * @param string|null $post_id Zernio post ID (24 hexadecimal characters); platform IDs return 400. Optional and never required. Use it INSTEAD of platformPostId to bind a per-post automation to a not-yet-published Zernio post: the automation stays pending and arms itself when that post publishes. For a post already live on the platform, pass platformPostId alone and omit this.
      *
      * @return self
      */
@@ -681,6 +685,11 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         if (is_null($post_id)) {
             throw new \InvalidArgumentException('non-nullable post_id cannot be null');
         }
+
+        if ((!preg_match("/^[a-fA-F0-9]{24}$/", ObjectSerializer::toString($post_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$post_id when calling CreateCommentAutomationRequest., must conform to the pattern /^[a-fA-F0-9]{24}$/.");
+        }
+
         $this->container['post_id'] = $post_id;
 
         return $this;

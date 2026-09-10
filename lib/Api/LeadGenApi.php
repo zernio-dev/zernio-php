@@ -2165,13 +2165,13 @@ class LeadGenApi
      * @param  string|null $account_id Filter to a single connected account. LinkedIn ads accounts switch to the live fetch. (optional)
      * @param  string|null $ad_account_id LinkedIn only: the LinkedIn ad account id whose responses to read (owner-scoped finder). (optional)
      * @param  int|null $limit limit (optional, default to 25)
-     * @param  int|null $since Unix seconds; only leads created at/after this timestamp. (optional)
+     * @param  int|null $since Unix seconds; only leads created at/after this timestamp. Millisecond timestamps return 400 with instructions to divide by 1000. (optional)
      * @param  string|null $cursor Keyset cursor from a previous response&#39;s pagination.cursor (Meta: AdLead id; LinkedIn: numeric start offset). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLeads'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListLeads200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ListLeads200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
     public function listLeads($form_id = null, $account_id = null, $ad_account_id = null, $limit = 25, $since = null, $cursor = null, string $contentType = self::contentTypes['listLeads'][0])
     {
@@ -2188,13 +2188,13 @@ class LeadGenApi
      * @param  string|null $account_id Filter to a single connected account. LinkedIn ads accounts switch to the live fetch. (optional)
      * @param  string|null $ad_account_id LinkedIn only: the LinkedIn ad account id whose responses to read (owner-scoped finder). (optional)
      * @param  int|null $limit (optional, default to 25)
-     * @param  int|null $since Unix seconds; only leads created at/after this timestamp. (optional)
+     * @param  int|null $since Unix seconds; only leads created at/after this timestamp. Millisecond timestamps return 400 with instructions to divide by 1000. (optional)
      * @param  string|null $cursor Keyset cursor from a previous response&#39;s pagination.cursor (Meta: AdLead id; LinkedIn: numeric start offset). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLeads'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListLeads200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListLeads200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listLeadsWithHttpInfo($form_id = null, $account_id = null, $ad_account_id = null, $limit = 25, $since = null, $cursor = null, string $contentType = self::contentTypes['listLeads'][0])
     {
@@ -2239,6 +2239,18 @@ class LeadGenApi
                 case 401:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 503:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 502:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -2290,6 +2302,22 @@ class LeadGenApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 503:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 502:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -2306,7 +2334,7 @@ class LeadGenApi
      * @param  string|null $account_id Filter to a single connected account. LinkedIn ads accounts switch to the live fetch. (optional)
      * @param  string|null $ad_account_id LinkedIn only: the LinkedIn ad account id whose responses to read (owner-scoped finder). (optional)
      * @param  int|null $limit (optional, default to 25)
-     * @param  int|null $since Unix seconds; only leads created at/after this timestamp. (optional)
+     * @param  int|null $since Unix seconds; only leads created at/after this timestamp. Millisecond timestamps return 400 with instructions to divide by 1000. (optional)
      * @param  string|null $cursor Keyset cursor from a previous response&#39;s pagination.cursor (Meta: AdLead id; LinkedIn: numeric start offset). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLeads'] to see the possible values for this operation
      *
@@ -2332,7 +2360,7 @@ class LeadGenApi
      * @param  string|null $account_id Filter to a single connected account. LinkedIn ads accounts switch to the live fetch. (optional)
      * @param  string|null $ad_account_id LinkedIn only: the LinkedIn ad account id whose responses to read (owner-scoped finder). (optional)
      * @param  int|null $limit (optional, default to 25)
-     * @param  int|null $since Unix seconds; only leads created at/after this timestamp. (optional)
+     * @param  int|null $since Unix seconds; only leads created at/after this timestamp. Millisecond timestamps return 400 with instructions to divide by 1000. (optional)
      * @param  string|null $cursor Keyset cursor from a previous response&#39;s pagination.cursor (Meta: AdLead id; LinkedIn: numeric start offset). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLeads'] to see the possible values for this operation
      *
@@ -2387,7 +2415,7 @@ class LeadGenApi
      * @param  string|null $account_id Filter to a single connected account. LinkedIn ads accounts switch to the live fetch. (optional)
      * @param  string|null $ad_account_id LinkedIn only: the LinkedIn ad account id whose responses to read (owner-scoped finder). (optional)
      * @param  int|null $limit (optional, default to 25)
-     * @param  int|null $since Unix seconds; only leads created at/after this timestamp. (optional)
+     * @param  int|null $since Unix seconds; only leads created at/after this timestamp. Millisecond timestamps return 400 with instructions to divide by 1000. (optional)
      * @param  string|null $cursor Keyset cursor from a previous response&#39;s pagination.cursor (Meta: AdLead id; LinkedIn: numeric start offset). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLeads'] to see the possible values for this operation
      *
@@ -2407,7 +2435,13 @@ class LeadGenApi
             throw new \InvalidArgumentException('invalid value for "$limit" when calling LeadGenApi.listLeads, must be bigger than or equal to 1.');
         }
         
-
+        if ($since !== null && $since > 253402300799) {
+            throw new \InvalidArgumentException('invalid value for "$since" when calling LeadGenApi.listLeads, must be smaller than or equal to 253402300799.');
+        }
+        if ($since !== null && $since < 1) {
+            throw new \InvalidArgumentException('invalid value for "$since" when calling LeadGenApi.listLeads, must be bigger than or equal to 1.');
+        }
+        
 
 
         $resourcePath = '/v1/ads/leads';

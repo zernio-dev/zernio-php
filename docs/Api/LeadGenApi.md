@@ -424,7 +424,7 @@ $form_id = 'form_id_example'; // string | Filter to a single lead form.
 $account_id = 'account_id_example'; // string | Filter to a single connected account. LinkedIn ads accounts switch to the live fetch.
 $ad_account_id = 'ad_account_id_example'; // string | LinkedIn only: the LinkedIn ad account id whose responses to read (owner-scoped finder).
 $limit = 25; // int
-$since = 56; // int | Unix seconds; only leads created at/after this timestamp.
+$since = 1757404800; // int | Unix seconds; only leads created at/after this timestamp. Millisecond timestamps return 400 with instructions to divide by 1000.
 $cursor = 'cursor_example'; // string | Keyset cursor from a previous response's pagination.cursor (Meta: AdLead id; LinkedIn: numeric start offset).
 
 try {
@@ -443,7 +443,7 @@ try {
 | **account_id** | **string**| Filter to a single connected account. LinkedIn ads accounts switch to the live fetch. | [optional] |
 | **ad_account_id** | **string**| LinkedIn only: the LinkedIn ad account id whose responses to read (owner-scoped finder). | [optional] |
 | **limit** | **int**|  | [optional] [default to 25] |
-| **since** | **int**| Unix seconds; only leads created at/after this timestamp. | [optional] |
+| **since** | **int**| Unix seconds; only leads created at/after this timestamp. Millisecond timestamps return 400 with instructions to divide by 1000. | [optional] |
 | **cursor** | **string**| Keyset cursor from a previous response&#39;s pagination.cursor (Meta: AdLead id; LinkedIn: numeric start offset). | [optional] |
 
 ### Return type

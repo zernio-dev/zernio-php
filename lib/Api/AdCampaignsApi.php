@@ -2892,7 +2892,7 @@ class AdCampaignsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\CreateStandaloneAd200Response|\Zernio\Model\CreateStandaloneAd201Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\CreateStandaloneAd200Response|\Zernio\Model\CreateStandaloneAd201Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function createStandaloneAd($create_standalone_ad_request, $idempotency_key = null, string $contentType = self::contentTypes['createStandaloneAd'][0])
     {
@@ -2911,7 +2911,7 @@ class AdCampaignsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\CreateStandaloneAd200Response|\Zernio\Model\CreateStandaloneAd201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\CreateStandaloneAd200Response|\Zernio\Model\CreateStandaloneAd201Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createStandaloneAdWithHttpInfo($create_standalone_ad_request, $idempotency_key = null, string $contentType = self::contentTypes['createStandaloneAd'][0])
     {
@@ -2968,6 +2968,12 @@ class AdCampaignsApi
                 case 401:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 503:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -3031,6 +3037,14 @@ class AdCampaignsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 503:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
