@@ -801,7 +801,7 @@ class GetInboxPostComments200ResponseCommentsInner implements ModelInterface, Ar
     /**
      * Sets can_like
      *
-     * @param bool|null $can_like Whether this comment can be liked (Facebook, X, Bluesky, Reddit)
+     * @param bool|null $can_like Whether this comment can be liked (Facebook, X, Bluesky, Reddit, LinkedIn)
      *
      * @return self
      */

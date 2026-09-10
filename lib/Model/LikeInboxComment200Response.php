@@ -62,6 +62,8 @@ class LikeInboxComment200Response implements ModelInterface, ArrayAccess, \JsonS
         'comment_id' => 'string',
         'liked' => 'bool',
         'like_uri' => 'string',
+        'already_reacted' => 'bool',
+        'reaction_type' => 'string',
         'platform' => 'string'
     ];
 
@@ -77,6 +79,8 @@ class LikeInboxComment200Response implements ModelInterface, ArrayAccess, \JsonS
         'comment_id' => null,
         'liked' => null,
         'like_uri' => null,
+        'already_reacted' => null,
+        'reaction_type' => null,
         'platform' => null
     ];
 
@@ -90,6 +94,8 @@ class LikeInboxComment200Response implements ModelInterface, ArrayAccess, \JsonS
         'comment_id' => false,
         'liked' => false,
         'like_uri' => false,
+        'already_reacted' => false,
+        'reaction_type' => false,
         'platform' => false
     ];
 
@@ -183,6 +189,8 @@ class LikeInboxComment200Response implements ModelInterface, ArrayAccess, \JsonS
         'comment_id' => 'commentId',
         'liked' => 'liked',
         'like_uri' => 'likeUri',
+        'already_reacted' => 'alreadyReacted',
+        'reaction_type' => 'reactionType',
         'platform' => 'platform'
     ];
 
@@ -196,6 +204,8 @@ class LikeInboxComment200Response implements ModelInterface, ArrayAccess, \JsonS
         'comment_id' => 'setCommentId',
         'liked' => 'setLiked',
         'like_uri' => 'setLikeUri',
+        'already_reacted' => 'setAlreadyReacted',
+        'reaction_type' => 'setReactionType',
         'platform' => 'setPlatform'
     ];
 
@@ -209,6 +219,8 @@ class LikeInboxComment200Response implements ModelInterface, ArrayAccess, \JsonS
         'comment_id' => 'getCommentId',
         'liked' => 'getLiked',
         'like_uri' => 'getLikeUri',
+        'already_reacted' => 'getAlreadyReacted',
+        'reaction_type' => 'getReactionType',
         'platform' => 'getPlatform'
     ];
 
@@ -273,6 +285,8 @@ class LikeInboxComment200Response implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('comment_id', $data ?? [], null);
         $this->setIfExists('liked', $data ?? [], null);
         $this->setIfExists('like_uri', $data ?? [], null);
+        $this->setIfExists('already_reacted', $data ?? [], null);
+        $this->setIfExists('reaction_type', $data ?? [], null);
         $this->setIfExists('platform', $data ?? [], null);
     }
 
@@ -422,6 +436,60 @@ class LikeInboxComment200Response implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable like_uri cannot be null');
         }
         $this->container['like_uri'] = $like_uri;
+
+        return $this;
+    }
+
+    /**
+     * Gets already_reacted
+     *
+     * @return bool|null
+     */
+    public function getAlreadyReacted()
+    {
+        return $this->container['already_reacted'];
+    }
+
+    /**
+     * Sets already_reacted
+     *
+     * @param bool|null $already_reacted LinkedIn only: the account already had this exact reaction, so nothing was created
+     *
+     * @return self
+     */
+    public function setAlreadyReacted($already_reacted)
+    {
+        if (is_null($already_reacted)) {
+            throw new \InvalidArgumentException('non-nullable already_reacted cannot be null');
+        }
+        $this->container['already_reacted'] = $already_reacted;
+
+        return $this;
+    }
+
+    /**
+     * Gets reaction_type
+     *
+     * @return string|null
+     */
+    public function getReactionType()
+    {
+        return $this->container['reaction_type'];
+    }
+
+    /**
+     * Sets reaction_type
+     *
+     * @param string|null $reaction_type LinkedIn only: the reaction type now in effect
+     *
+     * @return self
+     */
+    public function setReactionType($reaction_type)
+    {
+        if (is_null($reaction_type)) {
+            throw new \InvalidArgumentException('non-nullable reaction_type cannot be null');
+        }
+        $this->container['reaction_type'] = $reaction_type;
 
         return $this;
     }

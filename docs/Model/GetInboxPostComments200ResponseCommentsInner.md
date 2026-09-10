@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **can_reply** | **bool** |  | [optional]
 **can_delete** | **bool** |  | [optional]
 **can_hide** | **bool** | Whether this comment can be hidden (Facebook, Instagram, Threads) | [optional]
-**can_like** | **bool** | Whether this comment can be liked (Facebook, X, Bluesky, Reddit) | [optional]
+**can_like** | **bool** | Whether this comment can be liked (Facebook, X, Bluesky, Reddit, LinkedIn) | [optional]
 **is_hidden** | **bool** | Whether the comment is currently hidden | [optional]
 **is_liked** | **bool** | Whether the current user has liked this comment | [optional]
 **like_uri** | **string** | Bluesky like URI for unliking | [optional]

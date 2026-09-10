@@ -62,7 +62,9 @@ class LikePost200Response implements ModelInterface, ArrayAccess, \JsonSerializa
         'post_id' => 'string',
         'platform' => 'string',
         'liked' => 'bool',
-        'like_uri' => 'string'
+        'like_uri' => 'string',
+        'already_reacted' => 'bool',
+        'reaction_type' => 'string'
     ];
 
     /**
@@ -77,7 +79,9 @@ class LikePost200Response implements ModelInterface, ArrayAccess, \JsonSerializa
         'post_id' => null,
         'platform' => null,
         'liked' => null,
-        'like_uri' => null
+        'like_uri' => null,
+        'already_reacted' => null,
+        'reaction_type' => null
     ];
 
     /**
@@ -90,7 +94,9 @@ class LikePost200Response implements ModelInterface, ArrayAccess, \JsonSerializa
         'post_id' => false,
         'platform' => false,
         'liked' => false,
-        'like_uri' => false
+        'like_uri' => false,
+        'already_reacted' => false,
+        'reaction_type' => false
     ];
 
     /**
@@ -183,7 +189,9 @@ class LikePost200Response implements ModelInterface, ArrayAccess, \JsonSerializa
         'post_id' => 'postId',
         'platform' => 'platform',
         'liked' => 'liked',
-        'like_uri' => 'likeUri'
+        'like_uri' => 'likeUri',
+        'already_reacted' => 'alreadyReacted',
+        'reaction_type' => 'reactionType'
     ];
 
     /**
@@ -196,7 +204,9 @@ class LikePost200Response implements ModelInterface, ArrayAccess, \JsonSerializa
         'post_id' => 'setPostId',
         'platform' => 'setPlatform',
         'liked' => 'setLiked',
-        'like_uri' => 'setLikeUri'
+        'like_uri' => 'setLikeUri',
+        'already_reacted' => 'setAlreadyReacted',
+        'reaction_type' => 'setReactionType'
     ];
 
     /**
@@ -209,7 +219,9 @@ class LikePost200Response implements ModelInterface, ArrayAccess, \JsonSerializa
         'post_id' => 'getPostId',
         'platform' => 'getPlatform',
         'liked' => 'getLiked',
-        'like_uri' => 'getLikeUri'
+        'like_uri' => 'getLikeUri',
+        'already_reacted' => 'getAlreadyReacted',
+        'reaction_type' => 'getReactionType'
     ];
 
     /**
@@ -274,6 +286,8 @@ class LikePost200Response implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('liked', $data ?? [], null);
         $this->setIfExists('like_uri', $data ?? [], null);
+        $this->setIfExists('already_reacted', $data ?? [], null);
+        $this->setIfExists('reaction_type', $data ?? [], null);
     }
 
     /**
@@ -449,6 +463,60 @@ class LikePost200Response implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable like_uri cannot be null');
         }
         $this->container['like_uri'] = $like_uri;
+
+        return $this;
+    }
+
+    /**
+     * Gets already_reacted
+     *
+     * @return bool|null
+     */
+    public function getAlreadyReacted()
+    {
+        return $this->container['already_reacted'];
+    }
+
+    /**
+     * Sets already_reacted
+     *
+     * @param bool|null $already_reacted LinkedIn only: the account already had this exact reaction, so nothing was created
+     *
+     * @return self
+     */
+    public function setAlreadyReacted($already_reacted)
+    {
+        if (is_null($already_reacted)) {
+            throw new \InvalidArgumentException('non-nullable already_reacted cannot be null');
+        }
+        $this->container['already_reacted'] = $already_reacted;
+
+        return $this;
+    }
+
+    /**
+     * Gets reaction_type
+     *
+     * @return string|null
+     */
+    public function getReactionType()
+    {
+        return $this->container['reaction_type'];
+    }
+
+    /**
+     * Sets reaction_type
+     *
+     * @param string|null $reaction_type LinkedIn only: the reaction type now in effect
+     *
+     * @return self
+     */
+    public function setReactionType($reaction_type)
+    {
+        if (is_null($reaction_type)) {
+            throw new \InvalidArgumentException('non-nullable reaction_type cannot be null');
+        }
+        $this->container['reaction_type'] = $reaction_type;
 
         return $this;
     }
