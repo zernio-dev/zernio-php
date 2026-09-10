@@ -149,7 +149,7 @@ class InstagramApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetInstagramAudio200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\GetInstagramAudio200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function getInstagramAudio($account_id, $audio_id, string $contentType = self::contentTypes['getInstagramAudio'][0])
     {
@@ -168,7 +168,7 @@ class InstagramApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetInstagramAudio200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\GetInstagramAudio200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInstagramAudioWithHttpInfo($account_id, $audio_id, string $contentType = self::contentTypes['getInstagramAudio'][0])
     {
@@ -198,6 +198,12 @@ class InstagramApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\GetInstagramAudio200Response',
@@ -213,6 +219,12 @@ class InstagramApi
                 case 401:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -240,6 +252,14 @@ class InstagramApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -260,6 +280,14 @@ class InstagramApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -471,7 +499,7 @@ class InstagramApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetInstagramPublishingLimit200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\GetInstagramPublishingLimit200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function getInstagramPublishingLimit($account_id, string $contentType = self::contentTypes['getInstagramPublishingLimit'][0])
     {
@@ -489,7 +517,7 @@ class InstagramApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetInstagramPublishingLimit200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\GetInstagramPublishingLimit200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInstagramPublishingLimitWithHttpInfo($account_id, string $contentType = self::contentTypes['getInstagramPublishingLimit'][0])
     {
@@ -519,6 +547,12 @@ class InstagramApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\GetInstagramPublishingLimit200Response',
@@ -528,6 +562,12 @@ class InstagramApi
                 case 401:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -555,6 +595,14 @@ class InstagramApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -567,6 +615,14 @@ class InstagramApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -758,7 +814,7 @@ class InstagramApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetInstagramStoryInsights200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\GetInstagramStoryInsights200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function getInstagramStoryInsights($account_id, $story_id, string $contentType = self::contentTypes['getInstagramStoryInsights'][0])
     {
@@ -777,7 +833,7 @@ class InstagramApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetInstagramStoryInsights200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\GetInstagramStoryInsights200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInstagramStoryInsightsWithHttpInfo($account_id, $story_id, string $contentType = self::contentTypes['getInstagramStoryInsights'][0])
     {
@@ -807,6 +863,12 @@ class InstagramApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\GetInstagramStoryInsights200Response',
@@ -816,6 +878,12 @@ class InstagramApi
                 case 401:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -843,6 +911,14 @@ class InstagramApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -855,6 +931,14 @@ class InstagramApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1063,7 +1147,7 @@ class InstagramApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListInstagramStories200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ListInstagramStories200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function listInstagramStories($account_id, string $contentType = self::contentTypes['listInstagramStories'][0])
     {
@@ -1081,7 +1165,7 @@ class InstagramApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListInstagramStories200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ListInstagramStories200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listInstagramStoriesWithHttpInfo($account_id, string $contentType = self::contentTypes['listInstagramStories'][0])
     {
@@ -1111,6 +1195,12 @@ class InstagramApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\ListInstagramStories200Response',
@@ -1120,6 +1210,12 @@ class InstagramApi
                 case 401:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -1147,6 +1243,14 @@ class InstagramApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1159,6 +1263,14 @@ class InstagramApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1351,7 +1463,7 @@ class InstagramApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\SearchInstagramAudio200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\SearchInstagramAudio200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function searchInstagramAudio($account_id, $audio_type, $q = null, string $contentType = self::contentTypes['searchInstagramAudio'][0])
     {
@@ -1371,7 +1483,7 @@ class InstagramApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\SearchInstagramAudio200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\SearchInstagramAudio200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchInstagramAudioWithHttpInfo($account_id, $audio_type, $q = null, string $contentType = self::contentTypes['searchInstagramAudio'][0])
     {
@@ -1401,6 +1513,12 @@ class InstagramApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\SearchInstagramAudio200Response',
@@ -1416,6 +1534,12 @@ class InstagramApi
                 case 401:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -1443,6 +1567,14 @@ class InstagramApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1463,6 +1595,14 @@ class InstagramApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

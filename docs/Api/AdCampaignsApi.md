@@ -6,14 +6,14 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**addAdKeywords()**](AdCampaignsApi.md#addAdKeywords) | **POST** /v1/ads/keywords | Add Search keywords to an ad group |
+| [**addAdKeywords()**](AdCampaignsApi.md#addAdKeywords) | **POST** /v1/ads/keywords | Add Search ad-group keywords |
 | [**attachAdGroupAssets()**](AdCampaignsApi.md#attachAdGroupAssets) | **POST** /v1/ads/ad-sets/{adSetId}/assets | Attach ad-group assets |
 | [**attachCampaignAssets()**](AdCampaignsApi.md#attachCampaignAssets) | **POST** /v1/ads/campaigns/{campaignId}/assets | Attach campaign assets |
 | [**boostPost()**](AdCampaignsApi.md#boostPost) | **POST** /v1/ads/boost | Boost post as ad |
 | [**bulkUpdateAdCampaignStatus()**](AdCampaignsApi.md#bulkUpdateAdCampaignStatus) | **POST** /v1/ads/campaigns/bulk-status | Pause or resume many campaigns |
 | [**createAdCampaign()**](AdCampaignsApi.md#createAdCampaign) | **POST** /v1/ads/campaigns | Create a standalone campaign |
 | [**createAdSet()**](AdCampaignsApi.md#createAdSet) | **POST** /v1/ads/ad-sets | Create a standalone ad group |
-| [**createBidStrategy()**](AdCampaignsApi.md#createBidStrategy) | **POST** /v1/ads/bid-strategies | Create a Google Ads portfolio bid strategy |
+| [**createBidStrategy()**](AdCampaignsApi.md#createBidStrategy) | **POST** /v1/ads/bid-strategies | Create portfolio bid strategy |
 | [**createStandaloneAd()**](AdCampaignsApi.md#createStandaloneAd) | **POST** /v1/ads/create | Create standalone ad |
 | [**deleteAd()**](AdCampaignsApi.md#deleteAd) | **DELETE** /v1/ads/{adId} | Cancel an ad |
 | [**deleteAdCampaign()**](AdCampaignsApi.md#deleteAdCampaign) | **DELETE** /v1/ads/campaigns/{campaignId} | Delete a campaign |
@@ -22,7 +22,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**duplicateAdCampaign()**](AdCampaignsApi.md#duplicateAdCampaign) | **POST** /v1/ads/campaigns/{campaignId}/duplicate | Duplicate a campaign |
 | [**duplicateAdSet()**](AdCampaignsApi.md#duplicateAdSet) | **POST** /v1/ads/ad-sets/{adSetId}/duplicate | Duplicate an ad set |
 | [**getAd()**](AdCampaignsApi.md#getAd) | **GET** /v1/ads/{adId} | Get ad details |
-| [**getAdSetDetails()**](AdCampaignsApi.md#getAdSetDetails) | **GET** /v1/ads/ad-sets/{adSetId} | Live ad-set details incl. learning phase |
+| [**getAdSetDetails()**](AdCampaignsApi.md#getAdSetDetails) | **GET** /v1/ads/ad-sets/{adSetId} | Get live ad-set details |
 | [**getAdTree()**](AdCampaignsApi.md#getAdTree) | **GET** /v1/ads/tree | Get campaign tree |
 | [**getAdsTimeline()**](AdCampaignsApi.md#getAdsTimeline) | **GET** /v1/ads/timeline | Get daily account metrics |
 | [**getCampaignBidding()**](AdCampaignsApi.md#getCampaignBidding) | **GET** /v1/ads/campaigns/{campaignId}/bidding | Read a campaign&#39;s current bidding |
@@ -32,7 +32,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listAdKeywords()**](AdCampaignsApi.md#listAdKeywords) | **GET** /v1/ads/keywords | List Search keywords |
 | [**listAdSets()**](AdCampaignsApi.md#listAdSets) | **GET** /v1/ads/ad-sets | List ad sets |
 | [**listAds()**](AdCampaignsApi.md#listAds) | **GET** /v1/ads | List ads |
-| [**listBidStrategies()**](AdCampaignsApi.md#listBidStrategies) | **GET** /v1/ads/bid-strategies | List Google Ads portfolio bid strategies |
+| [**listBidStrategies()**](AdCampaignsApi.md#listBidStrategies) | **GET** /v1/ads/bid-strategies | List portfolio bid strategies |
 | [**listCampaignAssets()**](AdCampaignsApi.md#listCampaignAssets) | **GET** /v1/ads/campaigns/{campaignId}/assets | List campaign assets |
 | [**listCampaignNegativeKeywordLists()**](AdCampaignsApi.md#listCampaignNegativeKeywordLists) | **GET** /v1/ads/campaigns/{campaignId}/negative-keyword-lists | List campaign negative lists |
 | [**listCampaignNegativeKeywords()**](AdCampaignsApi.md#listCampaignNegativeKeywords) | **GET** /v1/ads/campaigns/{campaignId}/negative-keywords | List campaign-level negative keywords |
@@ -50,7 +50,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**updateAdSet()**](AdCampaignsApi.md#updateAdSet) | **PUT** /v1/ads/ad-sets/{adSetId} | Update an ad set |
 | [**updateAdSetStatus()**](AdCampaignsApi.md#updateAdSetStatus) | **PUT** /v1/ads/ad-sets/{adSetId}/status | Pause or resume a single ad set |
 | [**updateAdStatus()**](AdCampaignsApi.md#updateAdStatus) | **PUT** /v1/ads/{adId}/status | Pause or resume a single ad |
-| [**updateBidStrategy()**](AdCampaignsApi.md#updateBidStrategy) | **PATCH** /v1/ads/bid-strategies/{strategyId} | Update a Google Ads portfolio bid strategy |
+| [**updateBidStrategy()**](AdCampaignsApi.md#updateBidStrategy) | **PATCH** /v1/ads/bid-strategies/{strategyId} | Update portfolio bid strategy |
 | [**updateCampaignAssets()**](AdCampaignsApi.md#updateCampaignAssets) | **PUT** /v1/ads/campaigns/{campaignId}/assets | Update campaign assets |
 | [**updateCampaignTargeting()**](AdCampaignsApi.md#updateCampaignTargeting) | **PUT** /v1/ads/campaigns/{campaignId}/targeting | Edit a Google campaign&#39;s device, location, or language targeting |
 
@@ -61,7 +61,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 addAdKeywords($add_ad_keywords_request): \Zernio\Model\AddAdKeywords201Response
 ```
 
-Add Search keywords to an ad group
+Add Search ad-group keywords
 
 Adds one or more keyword criteria to an existing Google Search ad group, without touching the keywords already there (unlike the whole-set diff on `PUT /v1/ads/{adId}`, `keywords`/`negativeKeywords` in `platformSpecificData`, which replaces the set). Set `negative: true` to add ad-group-level negatives instead of positive keywords.
 
@@ -491,7 +491,7 @@ try {
 createBidStrategy($create_bid_strategy_request): \Zernio\Model\CreateBidStrategy201Response
 ```
 
-Create a Google Ads portfolio bid strategy
+Create portfolio bid strategy
 
 Creates a standalone bid strategy shared across campaigns. Attach it to a campaign with `portfolioBidStrategyId` on POST /v1/ads/create, PUT /v1/ads/campaigns/{campaignId}, or PUT /v1/ads/ad-sets/{adSetId}. Attaching a strategy aligned to a shared budget fails there with a 400 (Google's `BIDDING_STRATEGY_AND_BUDGET_MUST_BE_ALIGNED`); this is not retryable.
 
@@ -1049,7 +1049,7 @@ try {
 getAdSetDetails($ad_set_id, $account_id, $fields): \Zernio\Model\GetAdSetDetails200Response
 ```
 
-Live ad-set details incl. learning phase
+Get live ad-set details
 
 Reads the ad set live from Meta, returned verbatim. The default projection includes `learning_stage_info` (learning-phase status: LEARNING / SUCCESS / FAIL / WAIVING; Meta omits its `status` key on paused ad sets), delivery settings, budgets, schedule and targeting. `fields` is a raw-passthrough override; unknown fields return Meta's 400 verbatim.
 
@@ -1785,7 +1785,7 @@ try {
 listBidStrategies($account_id, $customer_id, $from_date, $to_date): \Zernio\Model\ListBidStrategies200Response
 ```
 
-List Google Ads portfolio bid strategies
+List portfolio bid strategies
 
 Bidding strategy report: type, status, campaign count, clicks, cost, cost per conversion, impressions, average CPC and conversions over the date range (default last 30 days). Reads Google's `bidding_strategy` resource, cached for the quota window. Draws on the shared Google Ads operations budget. The response carries `cachedAt` and `stale`, set when a quota-exhausted call falls back to the last-good copy instead of a live read.
 
@@ -2903,7 +2903,7 @@ try {
 updateBidStrategy($strategy_id, $update_bid_strategy_request): \Zernio\Model\UpdateBidStrategy200Response
 ```
 
-Update a Google Ads portfolio bid strategy
+Update portfolio bid strategy
 
 Renames or retargets a portfolio bid strategy. The strategy's status is output only on Google's side, so it cannot be changed here; remove a strategy in Google Ads. `type` is only needed alongside `targetCpa`/`targetRoas` to disambiguate the field Google writes to (TARGET_CPA and MAXIMIZE_CONVERSIONS both take a target CPA; TARGET_ROAS and MAXIMIZE_CONVERSION_VALUE both take a target ROAS); the strategy's family is otherwise immutable once created.
 

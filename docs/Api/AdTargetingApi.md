@@ -8,7 +8,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | ------------- | ------------- | ------------- |
 | [**estimateAdReach()**](AdTargetingApi.md#estimateAdReach) | **POST** /v1/ads/targeting/reach-estimate | Estimate audience reach |
 | [**getLinkedInBidPricing()**](AdTargetingApi.md#getLinkedInBidPricing) | **POST** /v1/ads/targeting/bid-pricing | Suggested bid and budget bounds |
-| [**getLinkedInSupplyForecast()**](AdTargetingApi.md#getLinkedInSupplyForecast) | **POST** /v1/ads/targeting/supply-forecast | Impressions, clicks and spend forecast |
+| [**getLinkedInSupplyForecast()**](AdTargetingApi.md#getLinkedInSupplyForecast) | **POST** /v1/ads/targeting/supply-forecast | Forecast ad delivery |
 | [**searchAdInterests()**](AdTargetingApi.md#searchAdInterests) | **GET** /v1/ads/interests | Search targeting interests |
 | [**searchAdTargeting()**](AdTargetingApi.md#searchAdTargeting) | **GET** /v1/ads/targeting/search | Search targeting options |
 
@@ -139,7 +139,7 @@ try {
 getLinkedInSupplyForecast($get_linked_in_supply_forecast_request): \Zernio\Model\GetLinkedInSupplyForecast200Response
 ```
 
-Impressions, clicks and spend forecast
+Forecast ad delivery
 
 LinkedIn-only. Forecasted impressions, clicks, spend and ~20 other metrics for a targeting spec over a time range. Wraps LinkedIn's `adSupplyForecasts` finder.  Each returned series carries a `metricType` (IMPRESSION, CLICK, SPENDING, MAX_POTENTIAL_BUDGET, COST_PER_MILLION_IMPRESSIONS, ...) and a `granularity` (DAILY, SEVEN_DAY, THIRTY_DAY, CUSTOM). LinkedIn caps the daily spending forecast at 1.2x the daily budget and returns 0 once the total budget is exhausted.  Non-LinkedIn accounts return `available: false`.
 

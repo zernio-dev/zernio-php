@@ -152,7 +152,7 @@ class AdLibraryApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\SearchAdLibrary200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\SearchAdLibrary200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function searchAdLibrary($platform = null, $account_id = null, $q = null, $page_ids = null, $advertiser = null, $countries = null, $ad_type = 'ALL', $status = 'ACTIVE', $platforms = null, $media_type = null, $languages = null, $since = null, $until = null, $search_type = 'KEYWORD_UNORDERED', $fields = null, $limit = 25, $after = null, string $contentType = self::contentTypes['searchAdLibrary'][0])
     {
@@ -186,7 +186,7 @@ class AdLibraryApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\SearchAdLibrary200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\SearchAdLibrary200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchAdLibraryWithHttpInfo($platform = null, $account_id = null, $q = null, $page_ids = null, $advertiser = null, $countries = null, $ad_type = 'ALL', $status = 'ACTIVE', $platforms = null, $media_type = null, $languages = null, $since = null, $until = null, $search_type = 'KEYWORD_UNORDERED', $fields = null, $limit = 25, $after = null, string $contentType = self::contentTypes['searchAdLibrary'][0])
     {
@@ -216,6 +216,12 @@ class AdLibraryApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\SearchAdLibrary200Response',
@@ -231,6 +237,12 @@ class AdLibraryApi
                 case 401:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -258,6 +270,14 @@ class AdLibraryApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -278,6 +298,14 @@ class AdLibraryApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

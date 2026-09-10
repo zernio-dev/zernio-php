@@ -111,6 +111,15 @@ class AdCreativesApi
         'listAdVideos' => [
             'application/json',
         ],
+        'listPartnershipAdContent' => [
+            'application/json',
+        ],
+        'listPartnershipAdPermissions' => [
+            'application/json',
+        ],
+        'setPartnershipAdPermission' => [
+            'application/json',
+        ],
         'updateAdCreative' => [
             'application/json',
         ],
@@ -178,7 +187,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateAdCreative201Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\CreateAdCreative201Response|\Zernio\Model\InlineObject1
      */
     public function createAdCreative($create_ad_creative_request, string $contentType = self::contentTypes['createAdCreative'][0])
     {
@@ -196,7 +205,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateAdCreative201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\CreateAdCreative201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function createAdCreativeWithHttpInfo($create_ad_creative_request, string $contentType = self::contentTypes['createAdCreative'][0])
     {
@@ -226,6 +235,18 @@ class AdCreativesApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 201:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\CreateAdCreative201Response',
@@ -262,6 +283,22 @@ class AdCreativesApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -464,7 +501,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\DeleteAdCreative200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\DeleteAdCreative200Response|\Zernio\Model\InlineObject1
      */
     public function deleteAdCreative($creative_id, $account_id, string $contentType = self::contentTypes['deleteAdCreative'][0])
     {
@@ -483,7 +520,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\DeleteAdCreative200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\DeleteAdCreative200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteAdCreativeWithHttpInfo($creative_id, $account_id, string $contentType = self::contentTypes['deleteAdCreative'][0])
     {
@@ -513,6 +550,18 @@ class AdCreativesApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\DeleteAdCreative200Response',
@@ -549,6 +598,22 @@ class AdCreativesApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -772,7 +837,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\DeleteAdVideo200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\DeleteAdVideo200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function deleteAdVideo($video_id, $account_id, $ad_account_id, string $contentType = self::contentTypes['deleteAdVideo'][0])
     {
@@ -792,7 +857,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\DeleteAdVideo200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\DeleteAdVideo200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteAdVideoWithHttpInfo($video_id, $account_id, $ad_account_id, string $contentType = self::contentTypes['deleteAdVideo'][0])
     {
@@ -822,6 +887,18 @@ class AdCreativesApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\DeleteAdVideo200Response',
@@ -864,6 +941,22 @@ class AdCreativesApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1112,7 +1205,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GenerateAdPreviews200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\GenerateAdPreviews200Response|\Zernio\Model\InlineObject1
      */
     public function generateAdPreviews($generate_ad_previews_request, string $contentType = self::contentTypes['generateAdPreviews'][0])
     {
@@ -1130,7 +1223,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GenerateAdPreviews200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\GenerateAdPreviews200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function generateAdPreviewsWithHttpInfo($generate_ad_previews_request, string $contentType = self::contentTypes['generateAdPreviews'][0])
     {
@@ -1160,6 +1253,18 @@ class AdCreativesApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\GenerateAdPreviews200Response',
@@ -1196,6 +1301,22 @@ class AdCreativesApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1399,7 +1520,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetAdCreative200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\GetAdCreative200Response|\Zernio\Model\InlineObject1
      */
     public function getAdCreative($creative_id, $account_id, $fields = null, string $contentType = self::contentTypes['getAdCreative'][0])
     {
@@ -1419,7 +1540,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetAdCreative200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\GetAdCreative200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAdCreativeWithHttpInfo($creative_id, $account_id, $fields = null, string $contentType = self::contentTypes['getAdCreative'][0])
     {
@@ -1449,6 +1570,18 @@ class AdCreativesApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\GetAdCreative200Response',
@@ -1485,6 +1618,22 @@ class AdCreativesApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2307,7 +2456,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListAdCatalogProductSets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ListAdCatalogProductSets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function listAdCatalogProductSets($catalog_id, $account_id, string $contentType = self::contentTypes['listAdCatalogProductSets'][0])
     {
@@ -2326,7 +2475,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListAdCatalogProductSets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ListAdCatalogProductSets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listAdCatalogProductSetsWithHttpInfo($catalog_id, $account_id, string $contentType = self::contentTypes['listAdCatalogProductSets'][0])
     {
@@ -2356,6 +2505,18 @@ class AdCreativesApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\ListAdCatalogProductSets200Response',
@@ -2398,6 +2559,22 @@ class AdCreativesApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2628,7 +2805,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListAdCatalogs200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ListAdCatalogs200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function listAdCatalogs($account_id, $ad_account_id, string $contentType = self::contentTypes['listAdCatalogs'][0])
     {
@@ -2647,7 +2824,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListAdCatalogs200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ListAdCatalogs200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listAdCatalogsWithHttpInfo($account_id, $ad_account_id, string $contentType = self::contentTypes['listAdCatalogs'][0])
     {
@@ -2677,6 +2854,18 @@ class AdCreativesApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\ListAdCatalogs200Response',
@@ -2719,6 +2908,22 @@ class AdCreativesApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2953,7 +3158,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListAdCreatives200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ListAdCreatives200Response|\Zernio\Model\InlineObject1
      */
     public function listAdCreatives($account_id, $ad_account_id, $fields = null, $limit = 25, $after = null, string $contentType = self::contentTypes['listAdCreatives'][0])
     {
@@ -2975,7 +3180,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListAdCreatives200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ListAdCreatives200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listAdCreativesWithHttpInfo($account_id, $ad_account_id, $fields = null, $limit = 25, $after = null, string $contentType = self::contentTypes['listAdCreatives'][0])
     {
@@ -3005,6 +3210,18 @@ class AdCreativesApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\ListAdCreatives200Response',
@@ -3041,6 +3258,22 @@ class AdCreativesApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3312,7 +3545,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListAdImages200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ListAdImages200Response|\Zernio\Model\InlineObject1
      */
     public function listAdImages($account_id, $ad_account_id, $fields = null, $limit = 25, $after = null, string $contentType = self::contentTypes['listAdImages'][0])
     {
@@ -3334,7 +3567,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListAdImages200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ListAdImages200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listAdImagesWithHttpInfo($account_id, $ad_account_id, $fields = null, $limit = 25, $after = null, string $contentType = self::contentTypes['listAdImages'][0])
     {
@@ -3364,6 +3597,18 @@ class AdCreativesApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\ListAdImages200Response',
@@ -3400,6 +3645,22 @@ class AdCreativesApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3671,7 +3932,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListAdVideos200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ListAdVideos200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function listAdVideos($account_id, $ad_account_id, $fields = null, $limit = 25, $after = null, string $contentType = self::contentTypes['listAdVideos'][0])
     {
@@ -3693,7 +3954,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListAdVideos200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ListAdVideos200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listAdVideosWithHttpInfo($account_id, $ad_account_id, $fields = null, $limit = 25, $after = null, string $contentType = self::contentTypes['listAdVideos'][0])
     {
@@ -3723,6 +3984,18 @@ class AdCreativesApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\ListAdVideos200Response',
@@ -3765,6 +4038,22 @@ class AdCreativesApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4031,6 +4320,1071 @@ class AdCreativesApi
     }
 
     /**
+     * Operation listPartnershipAdContent
+     *
+     * List partnership ad content
+     *
+     * @param  string $account_id Zernio SocialAccount ID. (required)
+     * @param  string|null $creator_username Creator username. Required unless postUrl is supplied. (optional)
+     * @param  string|null $post_url Instagram post permalink. Required unless creatorUsername is supplied. (optional)
+     * @param  bool|null $only_allowlisted Return only creators with account-level permission. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPartnershipAdContent'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListPartnershipAdContent200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
+     */
+    public function listPartnershipAdContent($account_id, $creator_username = null, $post_url = null, $only_allowlisted = null, string $contentType = self::contentTypes['listPartnershipAdContent'][0])
+    {
+        list($response) = $this->listPartnershipAdContentWithHttpInfo($account_id, $creator_username, $post_url, $only_allowlisted, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listPartnershipAdContentWithHttpInfo
+     *
+     * List partnership ad content
+     *
+     * @param  string $account_id Zernio SocialAccount ID. (required)
+     * @param  string|null $creator_username Creator username. Required unless postUrl is supplied. (optional)
+     * @param  string|null $post_url Instagram post permalink. Required unless creatorUsername is supplied. (optional)
+     * @param  bool|null $only_allowlisted Return only creators with account-level permission. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPartnershipAdContent'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListPartnershipAdContent200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listPartnershipAdContentWithHttpInfo($account_id, $creator_username = null, $post_url = null, $only_allowlisted = null, string $contentType = self::contentTypes['listPartnershipAdContent'][0])
+    {
+        $request = $this->listPartnershipAdContentRequest($account_id, $creator_username, $post_url, $only_allowlisted, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListPartnershipAdContent200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListPartnershipAdContent200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListPartnershipAdContent200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listPartnershipAdContentAsync
+     *
+     * List partnership ad content
+     *
+     * @param  string $account_id Zernio SocialAccount ID. (required)
+     * @param  string|null $creator_username Creator username. Required unless postUrl is supplied. (optional)
+     * @param  string|null $post_url Instagram post permalink. Required unless creatorUsername is supplied. (optional)
+     * @param  bool|null $only_allowlisted Return only creators with account-level permission. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPartnershipAdContent'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listPartnershipAdContentAsync($account_id, $creator_username = null, $post_url = null, $only_allowlisted = null, string $contentType = self::contentTypes['listPartnershipAdContent'][0])
+    {
+        return $this->listPartnershipAdContentAsyncWithHttpInfo($account_id, $creator_username, $post_url, $only_allowlisted, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listPartnershipAdContentAsyncWithHttpInfo
+     *
+     * List partnership ad content
+     *
+     * @param  string $account_id Zernio SocialAccount ID. (required)
+     * @param  string|null $creator_username Creator username. Required unless postUrl is supplied. (optional)
+     * @param  string|null $post_url Instagram post permalink. Required unless creatorUsername is supplied. (optional)
+     * @param  bool|null $only_allowlisted Return only creators with account-level permission. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPartnershipAdContent'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listPartnershipAdContentAsyncWithHttpInfo($account_id, $creator_username = null, $post_url = null, $only_allowlisted = null, string $contentType = self::contentTypes['listPartnershipAdContent'][0])
+    {
+        $returnType = '\Zernio\Model\ListPartnershipAdContent200Response';
+        $request = $this->listPartnershipAdContentRequest($account_id, $creator_username, $post_url, $only_allowlisted, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listPartnershipAdContent'
+     *
+     * @param  string $account_id Zernio SocialAccount ID. (required)
+     * @param  string|null $creator_username Creator username. Required unless postUrl is supplied. (optional)
+     * @param  string|null $post_url Instagram post permalink. Required unless creatorUsername is supplied. (optional)
+     * @param  bool|null $only_allowlisted Return only creators with account-level permission. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPartnershipAdContent'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listPartnershipAdContentRequest($account_id, $creator_username = null, $post_url = null, $only_allowlisted = null, string $contentType = self::contentTypes['listPartnershipAdContent'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling listPartnershipAdContent'
+            );
+        }
+        if (!preg_match("/^[a-fA-F0-9]{24}$/", $account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"account_id\" when calling AdCreativesApi.listPartnershipAdContent, must conform to the pattern /^[a-fA-F0-9]{24}$/.");
+        }
+        
+
+
+
+
+        $resourcePath = '/v1/ads/partnership-content';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $creator_username,
+            'creatorUsername', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $post_url,
+            'postUrl', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $only_allowlisted,
+            'onlyAllowlisted', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listPartnershipAdPermissions
+     *
+     * List partnership permissions
+     *
+     * @param  string $account_id Zernio SocialAccount ID. (required)
+     * @param  string|null $creator_username Filter by creator username. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPartnershipAdPermissions'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListPartnershipAdPermissions200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
+     */
+    public function listPartnershipAdPermissions($account_id, $creator_username = null, string $contentType = self::contentTypes['listPartnershipAdPermissions'][0])
+    {
+        list($response) = $this->listPartnershipAdPermissionsWithHttpInfo($account_id, $creator_username, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listPartnershipAdPermissionsWithHttpInfo
+     *
+     * List partnership permissions
+     *
+     * @param  string $account_id Zernio SocialAccount ID. (required)
+     * @param  string|null $creator_username Filter by creator username. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPartnershipAdPermissions'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListPartnershipAdPermissions200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listPartnershipAdPermissionsWithHttpInfo($account_id, $creator_username = null, string $contentType = self::contentTypes['listPartnershipAdPermissions'][0])
+    {
+        $request = $this->listPartnershipAdPermissionsRequest($account_id, $creator_username, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListPartnershipAdPermissions200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListPartnershipAdPermissions200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListPartnershipAdPermissions200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listPartnershipAdPermissionsAsync
+     *
+     * List partnership permissions
+     *
+     * @param  string $account_id Zernio SocialAccount ID. (required)
+     * @param  string|null $creator_username Filter by creator username. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPartnershipAdPermissions'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listPartnershipAdPermissionsAsync($account_id, $creator_username = null, string $contentType = self::contentTypes['listPartnershipAdPermissions'][0])
+    {
+        return $this->listPartnershipAdPermissionsAsyncWithHttpInfo($account_id, $creator_username, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listPartnershipAdPermissionsAsyncWithHttpInfo
+     *
+     * List partnership permissions
+     *
+     * @param  string $account_id Zernio SocialAccount ID. (required)
+     * @param  string|null $creator_username Filter by creator username. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPartnershipAdPermissions'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listPartnershipAdPermissionsAsyncWithHttpInfo($account_id, $creator_username = null, string $contentType = self::contentTypes['listPartnershipAdPermissions'][0])
+    {
+        $returnType = '\Zernio\Model\ListPartnershipAdPermissions200Response';
+        $request = $this->listPartnershipAdPermissionsRequest($account_id, $creator_username, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listPartnershipAdPermissions'
+     *
+     * @param  string $account_id Zernio SocialAccount ID. (required)
+     * @param  string|null $creator_username Filter by creator username. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPartnershipAdPermissions'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listPartnershipAdPermissionsRequest($account_id, $creator_username = null, string $contentType = self::contentTypes['listPartnershipAdPermissions'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling listPartnershipAdPermissions'
+            );
+        }
+        if (!preg_match("/^[a-fA-F0-9]{24}$/", $account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"account_id\" when calling AdCreativesApi.listPartnershipAdPermissions, must conform to the pattern /^[a-fA-F0-9]{24}$/.");
+        }
+        
+
+
+        $resourcePath = '/v1/ads/partnership-permissions';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $creator_username,
+            'creatorUsername', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation setPartnershipAdPermission
+     *
+     * Set partnership permission
+     *
+     * @param  \Zernio\Model\SetPartnershipAdPermissionRequest $set_partnership_ad_permission_request set_partnership_ad_permission_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setPartnershipAdPermission'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\SetPartnershipAdPermission200Response|\Zernio\Model\SetPartnershipAdPermission200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
+     */
+    public function setPartnershipAdPermission($set_partnership_ad_permission_request, string $contentType = self::contentTypes['setPartnershipAdPermission'][0])
+    {
+        list($response) = $this->setPartnershipAdPermissionWithHttpInfo($set_partnership_ad_permission_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation setPartnershipAdPermissionWithHttpInfo
+     *
+     * Set partnership permission
+     *
+     * @param  \Zernio\Model\SetPartnershipAdPermissionRequest $set_partnership_ad_permission_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setPartnershipAdPermission'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\SetPartnershipAdPermission200Response|\Zernio\Model\SetPartnershipAdPermission200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function setPartnershipAdPermissionWithHttpInfo($set_partnership_ad_permission_request, string $contentType = self::contentTypes['setPartnershipAdPermission'][0])
+    {
+        $request = $this->setPartnershipAdPermissionRequest($set_partnership_ad_permission_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\SetPartnershipAdPermission200Response',
+                        $request,
+                        $response,
+                    );
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\SetPartnershipAdPermission200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\SetPartnershipAdPermission200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\SetPartnershipAdPermission200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\SetPartnershipAdPermission200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation setPartnershipAdPermissionAsync
+     *
+     * Set partnership permission
+     *
+     * @param  \Zernio\Model\SetPartnershipAdPermissionRequest $set_partnership_ad_permission_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setPartnershipAdPermission'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function setPartnershipAdPermissionAsync($set_partnership_ad_permission_request, string $contentType = self::contentTypes['setPartnershipAdPermission'][0])
+    {
+        return $this->setPartnershipAdPermissionAsyncWithHttpInfo($set_partnership_ad_permission_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation setPartnershipAdPermissionAsyncWithHttpInfo
+     *
+     * Set partnership permission
+     *
+     * @param  \Zernio\Model\SetPartnershipAdPermissionRequest $set_partnership_ad_permission_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setPartnershipAdPermission'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function setPartnershipAdPermissionAsyncWithHttpInfo($set_partnership_ad_permission_request, string $contentType = self::contentTypes['setPartnershipAdPermission'][0])
+    {
+        $returnType = '\Zernio\Model\SetPartnershipAdPermission200Response';
+        $request = $this->setPartnershipAdPermissionRequest($set_partnership_ad_permission_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'setPartnershipAdPermission'
+     *
+     * @param  \Zernio\Model\SetPartnershipAdPermissionRequest $set_partnership_ad_permission_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setPartnershipAdPermission'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function setPartnershipAdPermissionRequest($set_partnership_ad_permission_request, string $contentType = self::contentTypes['setPartnershipAdPermission'][0])
+    {
+
+        // verify the required parameter 'set_partnership_ad_permission_request' is set
+        if ($set_partnership_ad_permission_request === null || (is_array($set_partnership_ad_permission_request) && count($set_partnership_ad_permission_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $set_partnership_ad_permission_request when calling setPartnershipAdPermission'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/partnership-permissions';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($set_partnership_ad_permission_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($set_partnership_ad_permission_request));
+            } else {
+                $httpBody = $set_partnership_ad_permission_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation updateAdCreative
      *
      * Rename a creative
@@ -4041,7 +5395,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UpdateAdCreative200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\UpdateAdCreative200Response|\Zernio\Model\InlineObject1
      */
     public function updateAdCreative($creative_id, $update_ad_creative_request, string $contentType = self::contentTypes['updateAdCreative'][0])
     {
@@ -4060,7 +5414,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UpdateAdCreative200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\UpdateAdCreative200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateAdCreativeWithHttpInfo($creative_id, $update_ad_creative_request, string $contentType = self::contentTypes['updateAdCreative'][0])
     {
@@ -4090,6 +5444,18 @@ class AdCreativesApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\UpdateAdCreative200Response',
@@ -4126,6 +5492,22 @@ class AdCreativesApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4345,7 +5727,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UploadAdImage201Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\UploadAdImage201Response|\Zernio\Model\InlineObject1
      */
     public function uploadAdImage($upload_ad_image_request, string $contentType = self::contentTypes['uploadAdImage'][0])
     {
@@ -4363,7 +5745,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UploadAdImage201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\UploadAdImage201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadAdImageWithHttpInfo($upload_ad_image_request, string $contentType = self::contentTypes['uploadAdImage'][0])
     {
@@ -4393,6 +5775,18 @@ class AdCreativesApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 201:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\UploadAdImage201Response',
@@ -4429,6 +5823,22 @@ class AdCreativesApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4630,7 +6040,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UploadAdVideo201Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\UploadAdVideo201Response|\Zernio\Model\InlineObject1
      */
     public function uploadAdVideo($upload_ad_video_request, string $contentType = self::contentTypes['uploadAdVideo'][0])
     {
@@ -4648,7 +6058,7 @@ class AdCreativesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UploadAdVideo201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\UploadAdVideo201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadAdVideoWithHttpInfo($upload_ad_video_request, string $contentType = self::contentTypes['uploadAdVideo'][0])
     {
@@ -4678,6 +6088,18 @@ class AdCreativesApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 201:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\UploadAdVideo201Response',
@@ -4714,6 +6136,22 @@ class AdCreativesApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),

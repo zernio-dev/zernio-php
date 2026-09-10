@@ -1418,7 +1418,7 @@ class LeadGenApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListFormLeads200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ListFormLeads200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function listFormLeads($form_id, $account_id, $limit = 25, $cursor = null, $since = null, string $contentType = self::contentTypes['listFormLeads'][0])
     {
@@ -1440,7 +1440,7 @@ class LeadGenApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListFormLeads200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ListFormLeads200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listFormLeadsWithHttpInfo($form_id, $account_id, $limit = 25, $cursor = null, $since = null, string $contentType = self::contentTypes['listFormLeads'][0])
     {
@@ -1470,6 +1470,18 @@ class LeadGenApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\ListFormLeads200Response',
@@ -1512,6 +1524,22 @@ class LeadGenApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),

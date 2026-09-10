@@ -177,7 +177,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\AddConversionAssociations200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\AddConversionAssociations200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function addConversionAssociations($account_id, $destination_id, $add_conversion_associations_request, string $contentType = self::contentTypes['addConversionAssociations'][0])
     {
@@ -197,7 +197,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\AddConversionAssociations200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\AddConversionAssociations200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function addConversionAssociationsWithHttpInfo($account_id, $destination_id, $add_conversion_associations_request, string $contentType = self::contentTypes['addConversionAssociations'][0])
     {
@@ -227,6 +227,12 @@ class ConversionsApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\AddConversionAssociations200Response',
@@ -236,6 +242,12 @@ class ConversionsApi
                 case 401:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -263,6 +275,14 @@ class ConversionsApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -275,6 +295,14 @@ class ConversionsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -500,7 +528,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\AdjustConversions200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\AdjustConversions200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function adjustConversions($adjust_conversions_request, string $contentType = self::contentTypes['adjustConversions'][0])
     {
@@ -518,7 +546,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\AdjustConversions200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\AdjustConversions200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function adjustConversionsWithHttpInfo($adjust_conversions_request, string $contentType = self::contentTypes['adjustConversions'][0])
     {
@@ -548,6 +576,12 @@ class ConversionsApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\AdjustConversions200Response',
@@ -557,6 +591,12 @@ class ConversionsApi
                 case 401:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -584,6 +624,14 @@ class ConversionsApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -596,6 +644,14 @@ class ConversionsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -778,14 +834,14 @@ class ConversionsApi
     /**
      * Operation createConversionAction
      *
-     * Create a website conversion action
+     * Create website conversion action
      *
      * @param  \Zernio\Model\CreateConversionActionRequest $create_conversion_action_request create_conversion_action_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createConversionAction'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateConversionAction201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\CreateConversionAction201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function createConversionAction($create_conversion_action_request, string $contentType = self::contentTypes['createConversionAction'][0])
     {
@@ -796,14 +852,14 @@ class ConversionsApi
     /**
      * Operation createConversionActionWithHttpInfo
      *
-     * Create a website conversion action
+     * Create website conversion action
      *
      * @param  \Zernio\Model\CreateConversionActionRequest $create_conversion_action_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createConversionAction'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateConversionAction201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\CreateConversionAction201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createConversionActionWithHttpInfo($create_conversion_action_request, string $contentType = self::contentTypes['createConversionAction'][0])
     {
@@ -833,6 +889,12 @@ class ConversionsApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 201:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\CreateConversionAction201Response',
@@ -853,7 +915,7 @@ class ConversionsApi
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -881,6 +943,14 @@ class ConversionsApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -908,7 +978,7 @@ class ConversionsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -923,7 +993,7 @@ class ConversionsApi
     /**
      * Operation createConversionActionAsync
      *
-     * Create a website conversion action
+     * Create website conversion action
      *
      * @param  \Zernio\Model\CreateConversionActionRequest $create_conversion_action_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createConversionAction'] to see the possible values for this operation
@@ -944,7 +1014,7 @@ class ConversionsApi
     /**
      * Operation createConversionActionAsyncWithHttpInfo
      *
-     * Create a website conversion action
+     * Create website conversion action
      *
      * @param  \Zernio\Model\CreateConversionActionRequest $create_conversion_action_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createConversionAction'] to see the possible values for this operation
@@ -1099,7 +1169,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateConversionDestination201Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\CreateConversionDestination201Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function createConversionDestination($account_id, $create_conversion_destination_request, string $contentType = self::contentTypes['createConversionDestination'][0])
     {
@@ -1118,7 +1188,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateConversionDestination201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateConversionDestination201Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createConversionDestinationWithHttpInfo($account_id, $create_conversion_destination_request, string $contentType = self::contentTypes['createConversionDestination'][0])
     {
@@ -1160,6 +1230,12 @@ class ConversionsApi
                         $request,
                         $response,
                     );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -1196,6 +1272,14 @@ class ConversionsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1456,10 +1540,26 @@ class ConversionsApi
             return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1670,7 +1770,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetConversionDestination200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\GetConversionDestination200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function getConversionDestination($account_id, $destination_id, $ad_account_id, string $contentType = self::contentTypes['getConversionDestination'][0])
     {
@@ -1690,7 +1790,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetConversionDestination200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\GetConversionDestination200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getConversionDestinationWithHttpInfo($account_id, $destination_id, $ad_account_id, string $contentType = self::contentTypes['getConversionDestination'][0])
     {
@@ -1720,6 +1820,12 @@ class ConversionsApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\GetConversionDestination200Response',
@@ -1729,6 +1835,12 @@ class ConversionsApi
                 case 401:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -1756,6 +1868,14 @@ class ConversionsApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1768,6 +1888,14 @@ class ConversionsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2000,7 +2128,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetConversionMetrics200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\GetConversionMetrics200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function getConversionMetrics($account_id, $destination_id, $ad_account_id, $start_date, $end_date = null, $granularity = 'DAILY', string $contentType = self::contentTypes['getConversionMetrics'][0])
     {
@@ -2023,7 +2151,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetConversionMetrics200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\GetConversionMetrics200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getConversionMetricsWithHttpInfo($account_id, $destination_id, $ad_account_id, $start_date, $end_date = null, $granularity = 'DAILY', string $contentType = self::contentTypes['getConversionMetrics'][0])
     {
@@ -2053,6 +2181,12 @@ class ConversionsApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\GetConversionMetrics200Response',
@@ -2062,6 +2196,12 @@ class ConversionsApi
                 case 401:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -2089,6 +2229,14 @@ class ConversionsApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2101,6 +2249,14 @@ class ConversionsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2380,7 +2536,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetConversionsQuality200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\GetConversionsQuality200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function getConversionsQuality($account_id, $destination_id, string $contentType = self::contentTypes['getConversionsQuality'][0])
     {
@@ -2399,7 +2555,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetConversionsQuality200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\GetConversionsQuality200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getConversionsQualityWithHttpInfo($account_id, $destination_id, string $contentType = self::contentTypes['getConversionsQuality'][0])
     {
@@ -2429,6 +2585,18 @@ class ConversionsApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\GetConversionsQuality200Response',
@@ -2471,6 +2639,22 @@ class ConversionsApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2694,7 +2878,7 @@ class ConversionsApi
     /**
      * Operation listConversionActions
      *
-     * List conversion actions and their tag snippets
+     * List conversion actions
      *
      * @param  string $account_id SocialAccount _id (must be a googleads account). (required)
      * @param  string|null $customer_id Google Ads customer id (digits only). Resolved automatically when the connection has exactly one accessible customer. (optional)
@@ -2703,7 +2887,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListConversionActions200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ListConversionActions200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function listConversionActions($account_id, $customer_id = null, $type = null, string $contentType = self::contentTypes['listConversionActions'][0])
     {
@@ -2714,7 +2898,7 @@ class ConversionsApi
     /**
      * Operation listConversionActionsWithHttpInfo
      *
-     * List conversion actions and their tag snippets
+     * List conversion actions
      *
      * @param  string $account_id SocialAccount _id (must be a googleads account). (required)
      * @param  string|null $customer_id Google Ads customer id (digits only). Resolved automatically when the connection has exactly one accessible customer. (optional)
@@ -2723,7 +2907,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListConversionActions200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ListConversionActions200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listConversionActionsWithHttpInfo($account_id, $customer_id = null, $type = null, string $contentType = self::contentTypes['listConversionActions'][0])
     {
@@ -2753,6 +2937,12 @@ class ConversionsApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\ListConversionActions200Response',
@@ -2773,7 +2963,7 @@ class ConversionsApi
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -2801,6 +2991,14 @@ class ConversionsApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2828,7 +3026,7 @@ class ConversionsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject2',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2843,7 +3041,7 @@ class ConversionsApi
     /**
      * Operation listConversionActionsAsync
      *
-     * List conversion actions and their tag snippets
+     * List conversion actions
      *
      * @param  string $account_id SocialAccount _id (must be a googleads account). (required)
      * @param  string|null $customer_id Google Ads customer id (digits only). Resolved automatically when the connection has exactly one accessible customer. (optional)
@@ -2866,7 +3064,7 @@ class ConversionsApi
     /**
      * Operation listConversionActionsAsyncWithHttpInfo
      *
-     * List conversion actions and their tag snippets
+     * List conversion actions
      *
      * @param  string $account_id SocialAccount _id (must be a googleads account). (required)
      * @param  string|null $customer_id Google Ads customer id (digits only). Resolved automatically when the connection has exactly one accessible customer. (optional)
@@ -3048,7 +3246,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListConversionAssociations200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ListConversionAssociations200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function listConversionAssociations($account_id, $destination_id, $ad_account_id, string $contentType = self::contentTypes['listConversionAssociations'][0])
     {
@@ -3068,7 +3266,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListConversionAssociations200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ListConversionAssociations200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listConversionAssociationsWithHttpInfo($account_id, $destination_id, $ad_account_id, string $contentType = self::contentTypes['listConversionAssociations'][0])
     {
@@ -3098,6 +3296,12 @@ class ConversionsApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\ListConversionAssociations200Response',
@@ -3107,6 +3311,12 @@ class ConversionsApi
                 case 401:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -3134,6 +3344,14 @@ class ConversionsApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3146,6 +3364,14 @@ class ConversionsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3373,7 +3599,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListConversionDestinations200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ListConversionDestinations200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function listConversionDestinations($account_id, string $contentType = self::contentTypes['listConversionDestinations'][0])
     {
@@ -3391,7 +3617,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListConversionDestinations200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ListConversionDestinations200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listConversionDestinationsWithHttpInfo($account_id, string $contentType = self::contentTypes['listConversionDestinations'][0])
     {
@@ -3421,6 +3647,12 @@ class ConversionsApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\ListConversionDestinations200Response',
@@ -3430,6 +3662,12 @@ class ConversionsApi
                 case 401:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -3457,6 +3695,14 @@ class ConversionsApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3469,6 +3715,14 @@ class ConversionsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3662,7 +3916,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\RemoveConversionAssociations200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\RemoveConversionAssociations200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function removeConversionAssociations($account_id, $destination_id, $ad_account_id, $campaign_ids, string $contentType = self::contentTypes['removeConversionAssociations'][0])
     {
@@ -3683,7 +3937,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\RemoveConversionAssociations200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\RemoveConversionAssociations200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function removeConversionAssociationsWithHttpInfo($account_id, $destination_id, $ad_account_id, $campaign_ids, string $contentType = self::contentTypes['removeConversionAssociations'][0])
     {
@@ -3713,6 +3967,12 @@ class ConversionsApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\RemoveConversionAssociations200Response',
@@ -3722,6 +3982,12 @@ class ConversionsApi
                 case 401:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -3749,6 +4015,14 @@ class ConversionsApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3761,6 +4035,14 @@ class ConversionsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4007,7 +4289,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\SendConversions200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\SendConversions200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function sendConversions($send_conversions_request, string $contentType = self::contentTypes['sendConversions'][0])
     {
@@ -4025,7 +4307,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\SendConversions200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\SendConversions200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendConversionsWithHttpInfo($send_conversions_request, string $contentType = self::contentTypes['sendConversions'][0])
     {
@@ -4055,6 +4337,12 @@ class ConversionsApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\SendConversions200Response',
@@ -4064,6 +4352,12 @@ class ConversionsApi
                 case 401:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -4091,6 +4385,14 @@ class ConversionsApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4103,6 +4405,14 @@ class ConversionsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4294,7 +4604,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetConversionDestination200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\GetConversionDestination200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function updateConversionDestination($account_id, $destination_id, $update_conversion_destination_request, string $contentType = self::contentTypes['updateConversionDestination'][0])
     {
@@ -4314,7 +4624,7 @@ class ConversionsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetConversionDestination200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\GetConversionDestination200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateConversionDestinationWithHttpInfo($account_id, $destination_id, $update_conversion_destination_request, string $contentType = self::contentTypes['updateConversionDestination'][0])
     {
@@ -4344,6 +4654,12 @@ class ConversionsApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\GetConversionDestination200Response',
@@ -4353,6 +4669,12 @@ class ConversionsApi
                 case 401:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -4380,6 +4702,14 @@ class ConversionsApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4392,6 +4722,14 @@ class ConversionsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

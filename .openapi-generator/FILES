@@ -1209,6 +1209,10 @@ docs/Model/ListLogs200Response.md
 docs/Model/ListLogs200ResponseLogsInner.md
 docs/Model/ListLogs200ResponsePagination.md
 docs/Model/ListMetaBusinesses200Response.md
+docs/Model/ListPartnershipAdContent200Response.md
+docs/Model/ListPartnershipAdContent200ResponseMediaInner.md
+docs/Model/ListPartnershipAdPermissions200Response.md
+docs/Model/ListPartnershipAdPermissions200ResponsePermissionsInner.md
 docs/Model/ListPhoneNumberCountries200Response.md
 docs/Model/ListPhoneNumberCountries200ResponseCountriesInner.md
 docs/Model/ListPhoneNumberCountries200ResponseCountriesInnerTypesInner.md
@@ -1245,6 +1249,9 @@ docs/Model/ListSmsSenderIds200ResponseBudgetPendingRequest.md
 docs/Model/ListSmsSenderIds200ResponseSenderIdsInner.md
 docs/Model/ListSnapchatProfiles200Response.md
 docs/Model/ListSnapchatProfiles200ResponsePublicProfilesInner.md
+docs/Model/ListTikTokAdPixels200Response.md
+docs/Model/ListTikTokAdPixels200ResponsePixelsInner.md
+docs/Model/ListTikTokAdPixels200ResponsePixelsInnerEventDetailsInner.md
 docs/Model/ListTrackingTagSharedAccounts200Response.md
 docs/Model/ListTrackingTags200Response.md
 docs/Model/ListUsers200Response.md
@@ -1591,6 +1598,8 @@ docs/Model/SetConversationThreadControlRequest.md
 docs/Model/SetInstagramIceBreakersRequest.md
 docs/Model/SetInstagramIceBreakersRequestIceBreakersInner.md
 docs/Model/SetMessengerMenuRequest.md
+docs/Model/SetPartnershipAdPermission200Response.md
+docs/Model/SetPartnershipAdPermissionRequest.md
 docs/Model/SetRedditPostFlairRequest.md
 docs/Model/SetTelegramCommandsRequest.md
 docs/Model/SetTelegramCommandsRequestCommandsInner.md
@@ -3286,6 +3295,10 @@ lib/Model/ListLogs200Response.php
 lib/Model/ListLogs200ResponseLogsInner.php
 lib/Model/ListLogs200ResponsePagination.php
 lib/Model/ListMetaBusinesses200Response.php
+lib/Model/ListPartnershipAdContent200Response.php
+lib/Model/ListPartnershipAdContent200ResponseMediaInner.php
+lib/Model/ListPartnershipAdPermissions200Response.php
+lib/Model/ListPartnershipAdPermissions200ResponsePermissionsInner.php
 lib/Model/ListPhoneNumberCountries200Response.php
 lib/Model/ListPhoneNumberCountries200ResponseCountriesInner.php
 lib/Model/ListPhoneNumberCountries200ResponseCountriesInnerTypesInner.php
@@ -3322,6 +3335,9 @@ lib/Model/ListSmsSenderIds200ResponseBudgetPendingRequest.php
 lib/Model/ListSmsSenderIds200ResponseSenderIdsInner.php
 lib/Model/ListSnapchatProfiles200Response.php
 lib/Model/ListSnapchatProfiles200ResponsePublicProfilesInner.php
+lib/Model/ListTikTokAdPixels200Response.php
+lib/Model/ListTikTokAdPixels200ResponsePixelsInner.php
+lib/Model/ListTikTokAdPixels200ResponsePixelsInnerEventDetailsInner.php
 lib/Model/ListTrackingTagSharedAccounts200Response.php
 lib/Model/ListTrackingTags200Response.php
 lib/Model/ListUsers200Response.php
@@ -3669,6 +3685,8 @@ lib/Model/SetConversationThreadControlRequest.php
 lib/Model/SetInstagramIceBreakersRequest.php
 lib/Model/SetInstagramIceBreakersRequestIceBreakersInner.php
 lib/Model/SetMessengerMenuRequest.php
+lib/Model/SetPartnershipAdPermission200Response.php
+lib/Model/SetPartnershipAdPermissionRequest.php
 lib/Model/SetRedditPostFlairRequest.php
 lib/Model/SetTelegramCommandsRequest.php
 lib/Model/SetTelegramCommandsRequestCommandsInner.php
@@ -4155,3 +4173,12 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ListPartnershipAdContent200ResponseMediaInnerTest.php
+test/Model/ListPartnershipAdContent200ResponseTest.php
+test/Model/ListPartnershipAdPermissions200ResponsePermissionsInnerTest.php
+test/Model/ListPartnershipAdPermissions200ResponseTest.php
+test/Model/ListTikTokAdPixels200ResponsePixelsInnerEventDetailsInnerTest.php
+test/Model/ListTikTokAdPixels200ResponsePixelsInnerTest.php
+test/Model/ListTikTokAdPixels200ResponseTest.php
+test/Model/SetPartnershipAdPermission200ResponseTest.php
+test/Model/SetPartnershipAdPermissionRequestTest.php

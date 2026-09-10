@@ -8,13 +8,13 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | ------------- | ------------- | ------------- |
 | [**addConversionAssociations()**](ConversionsApi.md#addConversionAssociations) | **POST** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Associate campaigns |
 | [**adjustConversions()**](ConversionsApi.md#adjustConversions) | **POST** /v1/ads/conversions/adjustments | Adjust uploaded conversions |
-| [**createConversionAction()**](ConversionsApi.md#createConversionAction) | **POST** /v1/ads/conversions/actions | Create a website conversion action |
+| [**createConversionAction()**](ConversionsApi.md#createConversionAction) | **POST** /v1/ads/conversions/actions | Create website conversion action |
 | [**createConversionDestination()**](ConversionsApi.md#createConversionDestination) | **POST** /v1/accounts/{accountId}/conversion-destinations | Create a conversion destination |
 | [**deleteConversionDestination()**](ConversionsApi.md#deleteConversionDestination) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Delete a conversion destination |
 | [**getConversionDestination()**](ConversionsApi.md#getConversionDestination) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Get a conversion destination |
 | [**getConversionMetrics()**](ConversionsApi.md#getConversionMetrics) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/metrics | Get attribution metrics |
 | [**getConversionsQuality()**](ConversionsApi.md#getConversionsQuality) | **GET** /v1/ads/conversions/quality | Get Event Match Quality |
-| [**listConversionActions()**](ConversionsApi.md#listConversionActions) | **GET** /v1/ads/conversions/actions | List conversion actions and their tag snippets |
+| [**listConversionActions()**](ConversionsApi.md#listConversionActions) | **GET** /v1/ads/conversions/actions | List conversion actions |
 | [**listConversionAssociations()**](ConversionsApi.md#listConversionAssociations) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | List associated campaigns |
 | [**listConversionDestinations()**](ConversionsApi.md#listConversionDestinations) | **GET** /v1/accounts/{accountId}/conversion-destinations | List conversion destinations |
 | [**removeConversionAssociations()**](ConversionsApi.md#removeConversionAssociations) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Remove associated campaigns |
@@ -152,7 +152,7 @@ try {
 createConversionAction($create_conversion_action_request): \Zernio\Model\CreateConversionAction201Response
 ```
 
-Create a website conversion action
+Create website conversion action
 
 Creates a `WEBPAGE` conversion action (category `DEFAULT`) and returns it with its tag snippets, read back after creation since Google never returns them on the create response itself. Invalidates the cached list `GET` on this resource would otherwise keep serving. Google-only; other platforms return `501`. Requires the Ads add-on.
 
@@ -533,7 +533,7 @@ try {
 listConversionActions($account_id, $customer_id, $type): \Zernio\Model\ListConversionActions200Response
 ```
 
-List conversion actions and their tag snippets
+List conversion actions
 
 Lists Google Ads conversion actions on the resolved customer, all types by default. Each action's `tagSnippets` (global site tag + event snippet) is included when Google has them for that action's type, e.g. `WEBPAGE`. Google-only; other platforms return `501`. Requires the Ads add-on.  `customerId` is optional: when omitted, it is resolved from the connection's accessible Google Ads customers, and the call fails with `400` when more than one is accessible (pass `customerId` to disambiguate).  The list itself is cached for the quota window (1 hour fresh, up to 7 days last-good; the cache key does not vary on `type`). The response carries `cachedAt` and `stale`, set when a quota-exhausted call falls back to the last-good copy instead of a live read.
 

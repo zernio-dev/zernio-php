@@ -11,7 +11,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**addAccountStructuredSnippets()**](AdAccountsApi.md#addAccountStructuredSnippets) | **POST** /v1/ads/accounts/structured-snippets | Add account snippets |
 | [**createAdAccount()**](AdAccountsApi.md#createAdAccount) | **POST** /v1/ads/accounts | Create Meta ad account |
 | [**createAdNegativeKeywordList()**](AdAccountsApi.md#createAdNegativeKeywordList) | **POST** /v1/ads/accounts/negative-keyword-lists | Create a negative keyword list |
-| [**createCustomConversion()**](AdAccountsApi.md#createCustomConversion) | **POST** /v1/accounts/{accountId}/custom-conversions | Create or reuse a custom conversion |
+| [**createCustomConversion()**](AdAccountsApi.md#createCustomConversion) | **POST** /v1/accounts/{accountId}/custom-conversions | Create custom conversion |
 | [**createHighDemandPeriod()**](AdAccountsApi.md#createHighDemandPeriod) | **POST** /v1/ads/high-demand-periods | Schedule a budget increase |
 | [**createValueRuleSet()**](AdAccountsApi.md#createValueRuleSet) | **POST** /v1/ads/value-rule-sets | Create a value rule set |
 | [**deleteAdComment()**](AdAccountsApi.md#deleteAdComment) | **DELETE** /v1/ads/{adId}/comments/{commentId} | Delete an ad comment |
@@ -22,7 +22,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getAdNegativeKeywordList()**](AdAccountsApi.md#getAdNegativeKeywordList) | **GET** /v1/ads/accounts/negative-keyword-lists/{listId} | Get a negative keyword list |
 | [**getAdsActivityLog()**](AdAccountsApi.md#getAdsActivityLog) | **GET** /v1/ads/activity | Ad account change / audit log |
 | [**getDsaDefaults()**](AdAccountsApi.md#getDsaDefaults) | **GET** /v1/ads/dsa-defaults | Get ad account DSA defaults |
-| [**getDsaRecommendations()**](AdAccountsApi.md#getDsaRecommendations) | **GET** /v1/ads/dsa-recommendations | List DSA beneficiary/payor suggestions |
+| [**getDsaRecommendations()**](AdAccountsApi.md#getDsaRecommendations) | **GET** /v1/ads/dsa-recommendations | Get DSA recommendations |
 | [**getIosFourteenCampaignLimits()**](AdAccountsApi.md#getIosFourteenCampaignLimits) | **GET** /v1/ads/ios-fourteen-campaign-limits | Get iOS 14 campaign limits |
 | [**getValueRuleSet()**](AdAccountsApi.md#getValueRuleSet) | **GET** /v1/ads/value-rule-sets/{valueRuleSetId} | Read a value rule set |
 | [**hideAdComment()**](AdAccountsApi.md#hideAdComment) | **POST** /v1/ads/{adId}/comments/{commentId}/hide | Hide or unhide an ad comment |
@@ -37,8 +37,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listAdsInstagramAccounts()**](AdAccountsApi.md#listAdsInstagramAccounts) | **GET** /v1/ads/instagram-accounts | List Instagram ad identities |
 | [**listAdvertisableApplications()**](AdAccountsApi.md#listAdvertisableApplications) | **GET** /v1/ads/advertisable-applications | List advertisable apps |
 | [**listCustomConversions()**](AdAccountsApi.md#listCustomConversions) | **GET** /v1/accounts/{accountId}/custom-conversions | List custom conversions |
-| [**listHighDemandPeriods()**](AdAccountsApi.md#listHighDemandPeriods) | **GET** /v1/ads/high-demand-periods | High demand periods / budget schedules |
+| [**listHighDemandPeriods()**](AdAccountsApi.md#listHighDemandPeriods) | **GET** /v1/ads/high-demand-periods | List high-demand periods |
 | [**listMetaBusinesses()**](AdAccountsApi.md#listMetaBusinesses) | **GET** /v1/ads/businesses | Businesses list |
+| [**listTikTokAdPixels()**](AdAccountsApi.md#listTikTokAdPixels) | **GET** /v1/ads/pixels | List TikTok ad pixels |
 | [**listValueRuleSets()**](AdAccountsApi.md#listValueRuleSets) | **GET** /v1/ads/value-rule-sets | List value rule sets |
 | [**removeAccountCallout()**](AdAccountsApi.md#removeAccountCallout) | **DELETE** /v1/ads/accounts/callouts | Remove account callout |
 | [**removeAccountSitelink()**](AdAccountsApi.md#removeAccountSitelink) | **DELETE** /v1/ads/accounts/sitelinks | Remove account sitelink |
@@ -359,7 +360,7 @@ try {
 createCustomConversion($account_id, $create_custom_conversion_request): \Zernio\Model\CustomConversionResult
 ```
 
-Create or reuse a custom conversion
+Create custom conversion
 
 Provision the Meta custom conversion an ads flow optimises toward, and hand back the `customConversionId` for `promotedObject.customConversionId` on POST /v1/ads/create. Removes the manual \"create it in Ads Manager first\" step.  **Reuse is ours, not Meta's.** Meta's create is not idempotent, so a retried request would otherwise mint a duplicate carrying none of the original's optimisation history. A non-archived conversion with the same `name` on the same `pixelId` is returned instead of created, with `reused: true` and a 200 rather than a 201.  `rule` is forwarded verbatim in Meta's own grammar (e.g. `{\"url\": {\"i_contains\": \"thank-you\"}}`); Meta validates it and rejects a malformed one with \"A conversion rule is required at creation time\".
 
@@ -1067,7 +1068,7 @@ try {
 getDsaRecommendations($account_id, $ad_account_id): \Zernio\Model\GetDsaRecommendations200Response
 ```
 
-List DSA beneficiary/payor suggestions
+Get DSA recommendations
 
 Returns Meta's suggested beneficiary/payor names for an ad account, derived by Meta from the account's recent activity. Useful for prefilling `dsaBeneficiary`/`dsaPayor` inputs, or the defaults sent to `PATCH /v1/ads/accounts`, in your own UI.  Meta returns a single flat list. Entries are not labeled as beneficiary or payor, and since these are legal disclosures Zernio never applies them automatically: let your user pick the right entity. The list may be empty for accounts with little activity. Meta accounts only.
 
@@ -2017,7 +2018,7 @@ try {
 listHighDemandPeriods($account_id, $campaign_id, $ad_set_id, $limit, $after): \Zernio\Model\ListHighDemandPeriods200Response
 ```
 
-High demand periods / budget schedules
+List high-demand periods
 
 Scheduled budget increases (Meta's budget-scheduling API). The Graph edge lives on the campaign and ad-set nodes only, so exactly one of `campaignId` / `adSetId` (platform ids) is required. Rows returned verbatim (budget_value, budget_value_type, time window, recurrence).
 
@@ -2129,6 +2130,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListMetaBusinesses200Response**](../Model/ListMetaBusinesses200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listTikTokAdPixels()`
+
+```php
+listTikTokAdPixels($account_id, $advertiser_id, $code): \Zernio\Model\ListTikTokAdPixels200Response
+```
+
+List TikTok ad pixels
+
+Lists pixels and their supported optimization events for a connected TikTok Ads account. The advertiser defaults to the first advertiser on the connection. Reconnect if Pixel Management permission has not been granted.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio SocialAccount ID.
+$advertiser_id = 'advertiser_id_example'; // string | Advertiser belonging to this connection.
+$code = 'code_example'; // string | Filter by a Pixel Code.
+
+try {
+    $result = $apiInstance->listTikTokAdPixels($account_id, $advertiser_id, $code);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->listTikTokAdPixels: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio SocialAccount ID. | |
+| **advertiser_id** | **string**| Advertiser belonging to this connection. | [optional] |
+| **code** | **string**| Filter by a Pixel Code. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListTikTokAdPixels200Response**](../Model/ListTikTokAdPixels200Response.md)
 
 ### Authorization
 

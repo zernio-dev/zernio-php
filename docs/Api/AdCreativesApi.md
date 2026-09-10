@@ -18,6 +18,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listAdCreatives()**](AdCreativesApi.md#listAdCreatives) | **GET** /v1/ads/creatives | Creative library |
 | [**listAdImages()**](AdCreativesApi.md#listAdImages) | **GET** /v1/ads/images | Ad image library |
 | [**listAdVideos()**](AdCreativesApi.md#listAdVideos) | **GET** /v1/ads/videos | Ad video library |
+| [**listPartnershipAdContent()**](AdCreativesApi.md#listPartnershipAdContent) | **GET** /v1/ads/partnership-content | List partnership ad content |
+| [**listPartnershipAdPermissions()**](AdCreativesApi.md#listPartnershipAdPermissions) | **GET** /v1/ads/partnership-permissions | List partnership permissions |
+| [**setPartnershipAdPermission()**](AdCreativesApi.md#setPartnershipAdPermission) | **POST** /v1/ads/partnership-permissions | Set partnership permission |
 | [**updateAdCreative()**](AdCreativesApi.md#updateAdCreative) | **PUT** /v1/ads/creatives/{creativeId} | Rename a creative |
 | [**uploadAdImage()**](AdCreativesApi.md#uploadAdImage) | **POST** /v1/ads/images | Upload an ad image from base64 |
 | [**uploadAdVideo()**](AdCreativesApi.md#uploadAdVideo) | **POST** /v1/ads/videos | Upload an ad video |
@@ -777,6 +780,194 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listPartnershipAdContent()`
+
+```php
+listPartnershipAdContent($account_id, $creator_username, $post_url, $only_allowlisted): \Zernio\Model\ListPartnershipAdContent200Response
+```
+
+List partnership ad content
+
+Private beta. Lists creator Instagram posts available to the advertiser for Partnership Ads. Supply creatorUsername or postUrl. Requires instagram_branded_content_ads_brand permission and an advertiser Instagram Business Account.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCreativesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio SocialAccount ID.
+$creator_username = 'creator_username_example'; // string | Creator username. Required unless postUrl is supplied.
+$post_url = 'post_url_example'; // string | Instagram post permalink. Required unless creatorUsername is supplied.
+$only_allowlisted = True; // bool | Return only creators with account-level permission.
+
+try {
+    $result = $apiInstance->listPartnershipAdContent($account_id, $creator_username, $post_url, $only_allowlisted);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCreativesApi->listPartnershipAdContent: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio SocialAccount ID. | |
+| **creator_username** | **string**| Creator username. Required unless postUrl is supplied. | [optional] |
+| **post_url** | **string**| Instagram post permalink. Required unless creatorUsername is supplied. | [optional] |
+| **only_allowlisted** | **bool**| Return only creators with account-level permission. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListPartnershipAdContent200Response**](../Model/ListPartnershipAdContent200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listPartnershipAdPermissions()`
+
+```php
+listPartnershipAdPermissions($account_id, $creator_username): \Zernio\Model\ListPartnershipAdPermissions200Response
+```
+
+List partnership permissions
+
+Private beta. Lists granted or pending creator permissions for the advertiser Instagram Business Account. Requires instagram_branded_content_ads_brand permission.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCreativesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio SocialAccount ID.
+$creator_username = 'creator_username_example'; // string | Filter by creator username.
+
+try {
+    $result = $apiInstance->listPartnershipAdPermissions($account_id, $creator_username);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCreativesApi->listPartnershipAdPermissions: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio SocialAccount ID. | |
+| **creator_username** | **string**| Filter by creator username. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListPartnershipAdPermissions200Response**](../Model/ListPartnershipAdPermissions200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `setPartnershipAdPermission()`
+
+```php
+setPartnershipAdPermission($set_partnership_ad_permission_request): \Zernio\Model\SetPartnershipAdPermission200Response
+```
+
+Set partnership permission
+
+Private beta. Requests permission from a creator or revokes it when revoke is true. Requests require the creator to approve in Instagram. Requires instagram_branded_content_ads_brand permission.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCreativesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$set_partnership_ad_permission_request = {"accountId":"507f1f77bcf86cd799439011","creatorUsername":"example_creator","revoke":false}; // \Zernio\Model\SetPartnershipAdPermissionRequest
+
+try {
+    $result = $apiInstance->setPartnershipAdPermission($set_partnership_ad_permission_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCreativesApi->setPartnershipAdPermission: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **set_partnership_ad_permission_request** | [**\Zernio\Model\SetPartnershipAdPermissionRequest**](../Model/SetPartnershipAdPermissionRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\SetPartnershipAdPermission200Response**](../Model/SetPartnershipAdPermission200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

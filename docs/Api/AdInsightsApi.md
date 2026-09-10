@@ -6,14 +6,14 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createAdInsightsReport()**](AdInsightsApi.md#createAdInsightsReport) | **POST** /v1/ads/insights/reports | Submit an async insights report run |
-| [**generateKeywordHistoricalMetrics()**](AdInsightsApi.md#generateKeywordHistoricalMetrics) | **POST** /v1/ads/keywords/historical-metrics | Historical keyword metrics (Google Keyword Planner) |
-| [**generateKeywordIdeas()**](AdInsightsApi.md#generateKeywordIdeas) | **POST** /v1/ads/keywords/ideas | Generate keyword ideas (Google Keyword Planner) |
+| [**createAdInsightsReport()**](AdInsightsApi.md#createAdInsightsReport) | **POST** /v1/ads/insights/reports | Submit async insights report |
+| [**generateKeywordHistoricalMetrics()**](AdInsightsApi.md#generateKeywordHistoricalMetrics) | **POST** /v1/ads/keywords/historical-metrics | Get historical keyword metrics |
+| [**generateKeywordIdeas()**](AdInsightsApi.md#generateKeywordIdeas) | **POST** /v1/ads/keywords/ideas | Generate keyword ideas |
 | [**getAdAnalytics()**](AdInsightsApi.md#getAdAnalytics) | **GET** /v1/ads/{adId}/analytics | Get ad analytics |
 | [**getAdInsightsReport()**](AdInsightsApi.md#getAdInsightsReport) | **GET** /v1/ads/insights/reports/{reportRunId} | Poll an async insights report run |
 | [**getAdsSearchTerms()**](AdInsightsApi.md#getAdsSearchTerms) | **GET** /v1/ads/search-terms | Google Ads search terms report |
 | [**getCampaignAnalytics()**](AdInsightsApi.md#getCampaignAnalytics) | **GET** /v1/ads/campaigns/{campaignId}/analytics | Get campaign analytics |
-| [**listLocalServicesLeadConversations()**](AdInsightsApi.md#listLocalServicesLeadConversations) | **GET** /v1/ads/local-services/leads/{leadId}/conversations | Conversations of a Local Services lead |
+| [**listLocalServicesLeadConversations()**](AdInsightsApi.md#listLocalServicesLeadConversations) | **GET** /v1/ads/local-services/leads/{leadId}/conversations | List lead conversations |
 | [**listLocalServicesLeads()**](AdInsightsApi.md#listLocalServicesLeads) | **GET** /v1/ads/local-services/leads | Google Local Services Ads leads |
 | [**queryAdInsights()**](AdInsightsApi.md#queryAdInsights) | **GET** /v1/ads/insights | Flexible live insights query |
 
@@ -24,7 +24,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 createAdInsightsReport($create_ad_insights_report_request): \Zernio\Model\CreateAdInsightsReport202Response
 ```
 
-Submit an async insights report run
+Submit async insights report
 
 Submits an asynchronous Meta insights report. Same query surface as GET /v1/ads/insights, but in the JSON body; Meta processes the report server-side, which is the right choice for long ranges or large accounts where the sync query is slow or rate-limited. Returns a `reportRunId` to poll via GET /v1/ads/insights/reports/{reportRunId}.
 
@@ -84,7 +84,7 @@ try {
 generateKeywordHistoricalMetrics($generate_keyword_historical_metrics_request): \Zernio\Model\GenerateKeywordHistoricalMetrics200Response
 ```
 
-Historical keyword metrics (Google Keyword Planner)
+Get historical keyword metrics
 
 Google Ads only. Runs Keyword Planner's generateKeywordHistoricalMetrics for up to 1,000 exact keywords: historical search volume, competition and top-of-page bid ranges, plus averageCpcMicros when includeAverageCpc is set. Rows come back verbatim; counters are int64s encoded as strings, bid/CPC values are micros of the account currency.
 
@@ -144,7 +144,7 @@ try {
 generateKeywordIdeas($generate_keyword_ideas_request): \Zernio\Model\GenerateKeywordIdeas200Response
 ```
 
-Generate keyword ideas (Google Keyword Planner)
+Generate keyword ideas
 
 Google Ads only. Runs Keyword Planner's generateKeywordIdeas from seed keywords, a seed URL, or both, returning idea rows verbatim (avgMonthlySearches, competition, competitionIndex, top-of-page bid micros, monthlySearchVolumes). Counters are int64s encoded as strings; bid values are micros of the account currency. Omitting `countries` targets worldwide.
 
@@ -476,7 +476,7 @@ try {
 listLocalServicesLeadConversations($lead_id, $account_id, $customer_id, $page_token): \Zernio\Model\ListLocalServicesLeadConversations200Response
 ```
 
-Conversations of a Local Services lead
+List lead conversations
 
 Conversation entries of one Local Services lead: phone calls (duration, recording URL) and messages (text, attachment URLs), oldest first. Read live from `local_services_lead_conversation`, always scoped to a single lead. Call-recording URLs require read access on the Google Ads account. Draws on the shared Google Ads operations budget.
 

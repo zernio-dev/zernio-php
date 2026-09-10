@@ -138,7 +138,7 @@ class ReachAndFrequencyApi
     /**
      * Operation cancelRfReservation
      *
-     * Cancel a Reach &amp; Frequency reservation
+     * Cancel reach-frequency booking
      *
      * @param  string $prediction_id prediction_id (required)
      * @param  string $account_id account_id (required)
@@ -157,7 +157,7 @@ class ReachAndFrequencyApi
     /**
      * Operation cancelRfReservationWithHttpInfo
      *
-     * Cancel a Reach &amp; Frequency reservation
+     * Cancel reach-frequency booking
      *
      * @param  string $prediction_id (required)
      * @param  string $account_id (required)
@@ -198,6 +198,22 @@ class ReachAndFrequencyApi
             return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -216,7 +232,7 @@ class ReachAndFrequencyApi
     /**
      * Operation cancelRfReservationAsync
      *
-     * Cancel a Reach &amp; Frequency reservation
+     * Cancel reach-frequency booking
      *
      * @param  string $prediction_id (required)
      * @param  string $account_id (required)
@@ -239,7 +255,7 @@ class ReachAndFrequencyApi
     /**
      * Operation cancelRfReservationAsyncWithHttpInfo
      *
-     * Cancel a Reach &amp; Frequency reservation
+     * Cancel reach-frequency booking
      *
      * @param  string $prediction_id (required)
      * @param  string $account_id (required)
@@ -410,14 +426,14 @@ class ReachAndFrequencyApi
     /**
      * Operation createRfPrediction
      *
-     * Create a Reach &amp; Frequency prediction
+     * Create reach-frequency prediction
      *
      * @param  \Zernio\Model\CreateRfPredictionRequest $create_rf_prediction_request create_rf_prediction_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRfPrediction'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateRfPrediction201Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\CreateRfPrediction201Response|\Zernio\Model\InlineObject1
      */
     public function createRfPrediction($create_rf_prediction_request, string $contentType = self::contentTypes['createRfPrediction'][0])
     {
@@ -428,14 +444,14 @@ class ReachAndFrequencyApi
     /**
      * Operation createRfPredictionWithHttpInfo
      *
-     * Create a Reach &amp; Frequency prediction
+     * Create reach-frequency prediction
      *
      * @param  \Zernio\Model\CreateRfPredictionRequest $create_rf_prediction_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRfPrediction'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateRfPrediction201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\CreateRfPrediction201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function createRfPredictionWithHttpInfo($create_rf_prediction_request, string $contentType = self::contentTypes['createRfPrediction'][0])
     {
@@ -465,6 +481,18 @@ class ReachAndFrequencyApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 201:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\CreateRfPrediction201Response',
@@ -501,6 +529,22 @@ class ReachAndFrequencyApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -527,7 +571,7 @@ class ReachAndFrequencyApi
     /**
      * Operation createRfPredictionAsync
      *
-     * Create a Reach &amp; Frequency prediction
+     * Create reach-frequency prediction
      *
      * @param  \Zernio\Model\CreateRfPredictionRequest $create_rf_prediction_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRfPrediction'] to see the possible values for this operation
@@ -548,7 +592,7 @@ class ReachAndFrequencyApi
     /**
      * Operation createRfPredictionAsyncWithHttpInfo
      *
-     * Create a Reach &amp; Frequency prediction
+     * Create reach-frequency prediction
      *
      * @param  \Zernio\Model\CreateRfPredictionRequest $create_rf_prediction_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRfPrediction'] to see the possible values for this operation
@@ -695,7 +739,7 @@ class ReachAndFrequencyApi
     /**
      * Operation getRfPrediction
      *
-     * Read a Reach &amp; Frequency prediction
+     * Get reach-frequency prediction
      *
      * @param  string $prediction_id prediction_id (required)
      * @param  string $account_id account_id (required)
@@ -704,7 +748,7 @@ class ReachAndFrequencyApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateRfPrediction201Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\CreateRfPrediction201Response|\Zernio\Model\InlineObject1
      */
     public function getRfPrediction($prediction_id, $account_id, $ad_account_id, string $contentType = self::contentTypes['getRfPrediction'][0])
     {
@@ -715,7 +759,7 @@ class ReachAndFrequencyApi
     /**
      * Operation getRfPredictionWithHttpInfo
      *
-     * Read a Reach &amp; Frequency prediction
+     * Get reach-frequency prediction
      *
      * @param  string $prediction_id (required)
      * @param  string $account_id (required)
@@ -724,7 +768,7 @@ class ReachAndFrequencyApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateRfPrediction201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\CreateRfPrediction201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRfPredictionWithHttpInfo($prediction_id, $account_id, $ad_account_id, string $contentType = self::contentTypes['getRfPrediction'][0])
     {
@@ -754,6 +798,18 @@ class ReachAndFrequencyApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\CreateRfPrediction201Response',
@@ -790,6 +846,22 @@ class ReachAndFrequencyApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -816,7 +888,7 @@ class ReachAndFrequencyApi
     /**
      * Operation getRfPredictionAsync
      *
-     * Read a Reach &amp; Frequency prediction
+     * Get reach-frequency prediction
      *
      * @param  string $prediction_id (required)
      * @param  string $account_id (required)
@@ -839,7 +911,7 @@ class ReachAndFrequencyApi
     /**
      * Operation getRfPredictionAsyncWithHttpInfo
      *
-     * Read a Reach &amp; Frequency prediction
+     * Get reach-frequency prediction
      *
      * @param  string $prediction_id (required)
      * @param  string $account_id (required)
@@ -1023,7 +1095,7 @@ class ReachAndFrequencyApi
     /**
      * Operation reserveRfPrediction
      *
-     * Reserve a Reach &amp; Frequency prediction
+     * Reserve reach-frequency inventory
      *
      * @param  string $prediction_id prediction_id (required)
      * @param  \Zernio\Model\ReserveRfPredictionRequest $reserve_rf_prediction_request reserve_rf_prediction_request (required)
@@ -1031,7 +1103,7 @@ class ReachAndFrequencyApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ReserveRfPrediction201Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ReserveRfPrediction201Response|\Zernio\Model\InlineObject1
      */
     public function reserveRfPrediction($prediction_id, $reserve_rf_prediction_request, string $contentType = self::contentTypes['reserveRfPrediction'][0])
     {
@@ -1042,7 +1114,7 @@ class ReachAndFrequencyApi
     /**
      * Operation reserveRfPredictionWithHttpInfo
      *
-     * Reserve a Reach &amp; Frequency prediction
+     * Reserve reach-frequency inventory
      *
      * @param  string $prediction_id (required)
      * @param  \Zernio\Model\ReserveRfPredictionRequest $reserve_rf_prediction_request (required)
@@ -1050,7 +1122,7 @@ class ReachAndFrequencyApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ReserveRfPrediction201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ReserveRfPrediction201Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function reserveRfPredictionWithHttpInfo($prediction_id, $reserve_rf_prediction_request, string $contentType = self::contentTypes['reserveRfPrediction'][0])
     {
@@ -1080,6 +1152,18 @@ class ReachAndFrequencyApi
 
 
             switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 201:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\ReserveRfPrediction201Response',
@@ -1116,6 +1200,22 @@ class ReachAndFrequencyApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1142,7 +1242,7 @@ class ReachAndFrequencyApi
     /**
      * Operation reserveRfPredictionAsync
      *
-     * Reserve a Reach &amp; Frequency prediction
+     * Reserve reach-frequency inventory
      *
      * @param  string $prediction_id (required)
      * @param  \Zernio\Model\ReserveRfPredictionRequest $reserve_rf_prediction_request (required)
@@ -1164,7 +1264,7 @@ class ReachAndFrequencyApi
     /**
      * Operation reserveRfPredictionAsyncWithHttpInfo
      *
-     * Reserve a Reach &amp; Frequency prediction
+     * Reserve reach-frequency inventory
      *
      * @param  string $prediction_id (required)
      * @param  \Zernio\Model\ReserveRfPredictionRequest $reserve_rf_prediction_request (required)
