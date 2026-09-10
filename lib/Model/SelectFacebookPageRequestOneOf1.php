@@ -1,6 +1,6 @@
 <?php
 /**
- * SelectFacebookPage200Response
+ * SelectFacebookPageRequestOneOf1
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SelectFacebookPage200Response Class Doc Comment
+ * SelectFacebookPageRequestOneOf1 Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class SelectFacebookPageRequestOneOf1 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'selectFacebookPage_200_response';
+    protected static $openAPIModelName = 'selectFacebookPage_request_oneOf_1';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,8 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'message' => 'string',
-        'redirect_url' => 'string',
-        'account' => '\Zernio\Model\SelectFacebookPage200ResponseAccount'
+        'selection_token' => 'string',
+        'page_id' => 'string'
     ];
 
     /**
@@ -71,9 +70,8 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'message' => null,
-        'redirect_url' => null,
-        'account' => null
+        'selection_token' => null,
+        'page_id' => null
     ];
 
     /**
@@ -82,9 +80,8 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'message' => false,
-        'redirect_url' => false,
-        'account' => false
+        'selection_token' => false,
+        'page_id' => false
     ];
 
     /**
@@ -173,9 +170,8 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'message' => 'message',
-        'redirect_url' => 'redirect_url',
-        'account' => 'account'
+        'selection_token' => 'selectionToken',
+        'page_id' => 'pageId'
     ];
 
     /**
@@ -184,9 +180,8 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'message' => 'setMessage',
-        'redirect_url' => 'setRedirectUrl',
-        'account' => 'setAccount'
+        'selection_token' => 'setSelectionToken',
+        'page_id' => 'setPageId'
     ];
 
     /**
@@ -195,9 +190,8 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'message' => 'getMessage',
-        'redirect_url' => 'getRedirectUrl',
-        'account' => 'getAccount'
+        'selection_token' => 'getSelectionToken',
+        'page_id' => 'getPageId'
     ];
 
     /**
@@ -257,9 +251,8 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('redirect_url', $data ?? [], null);
-        $this->setIfExists('account', $data ?? [], null);
+        $this->setIfExists('selection_token', $data ?? [], null);
+        $this->setIfExists('page_id', $data ?? [], null);
     }
 
     /**
@@ -289,6 +282,16 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
+        if ($this->container['selection_token'] === null) {
+            $invalidProperties[] = "'selection_token' can't be null";
+        }
+        if ($this->container['page_id'] === null) {
+            $invalidProperties[] = "'page_id' can't be null";
+        }
+        if (!preg_match("/^\\d+$/", $this->container['page_id'])) {
+            $invalidProperties[] = "invalid value for 'page_id', must be conform to the pattern /^\\d+$/.";
+        }
+
         return $invalidProperties;
     }
 
@@ -305,82 +308,60 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets message
+     * Gets selection_token
      *
-     * @return string|null
+     * @return string
      */
-    public function getMessage()
+    public function getSelectionToken()
     {
-        return $this->container['message'];
+        return $this->container['selection_token'];
     }
 
     /**
-     * Sets message
+     * Sets selection_token
      *
-     * @param string|null $message message
+     * @param string $selection_token Encrypted dashboard business-login grant. Expires after ten minutes.
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setSelectionToken($selection_token)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($selection_token)) {
+            throw new \InvalidArgumentException('non-nullable selection_token cannot be null');
         }
-        $this->container['message'] = $message;
+        $this->container['selection_token'] = $selection_token;
 
         return $this;
     }
 
     /**
-     * Gets redirect_url
+     * Gets page_id
      *
-     * @return string|null
+     * @return string
      */
-    public function getRedirectUrl()
+    public function getPageId()
     {
-        return $this->container['redirect_url'];
+        return $this->container['page_id'];
     }
 
     /**
-     * Sets redirect_url
+     * Sets page_id
      *
-     * @param string|null $redirect_url Redirect URL when a custom redirect_url was provided or a business Page was selected.
+     * @param string $page_id A Page ID from the granted Pages returned by listFacebookPages.
      *
      * @return self
      */
-    public function setRedirectUrl($redirect_url)
+    public function setPageId($page_id)
     {
-        if (is_null($redirect_url)) {
-            throw new \InvalidArgumentException('non-nullable redirect_url cannot be null');
+        if (is_null($page_id)) {
+            throw new \InvalidArgumentException('non-nullable page_id cannot be null');
         }
-        $this->container['redirect_url'] = $redirect_url;
 
-        return $this;
-    }
-
-    /**
-     * Gets account
-     *
-     * @return \Zernio\Model\SelectFacebookPage200ResponseAccount|null
-     */
-    public function getAccount()
-    {
-        return $this->container['account'];
-    }
-
-    /**
-     * Sets account
-     *
-     * @param \Zernio\Model\SelectFacebookPage200ResponseAccount|null $account account
-     *
-     * @return self
-     */
-    public function setAccount($account)
-    {
-        if (is_null($account)) {
-            throw new \InvalidArgumentException('non-nullable account cannot be null');
+        if ((!preg_match("/^\\d+$/", ObjectSerializer::toString($page_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$page_id when calling SelectFacebookPageRequestOneOf1., must conform to the pattern /^\\d+$/.");
         }
-        $this->container['account'] = $account;
+
+        $this->container['page_id'] = $page_id;
 
         return $this;
     }

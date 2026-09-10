@@ -1,6 +1,6 @@
 <?php
 /**
- * SelectFacebookPage200Response
+ * SelectFacebookPageRequestOneOfUserProfile
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SelectFacebookPage200Response Class Doc Comment
+ * SelectFacebookPageRequestOneOfUserProfile Class Doc Comment
  *
  * @category Class
+ * @description Decoded user profile object from the OAuth callback.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class SelectFacebookPageRequestOneOfUserProfile implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'selectFacebookPage_200_response';
+    protected static $openAPIModelName = 'selectFacebookPage_request_oneOf_userProfile';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +59,9 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'message' => 'string',
-        'redirect_url' => 'string',
-        'account' => '\Zernio\Model\SelectFacebookPage200ResponseAccount'
+        'id' => 'string',
+        'name' => 'string',
+        'profile_picture' => 'string'
     ];
 
     /**
@@ -71,9 +72,9 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'message' => null,
-        'redirect_url' => null,
-        'account' => null
+        'id' => null,
+        'name' => null,
+        'profile_picture' => null
     ];
 
     /**
@@ -82,9 +83,9 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'message' => false,
-        'redirect_url' => false,
-        'account' => false
+        'id' => false,
+        'name' => false,
+        'profile_picture' => false
     ];
 
     /**
@@ -173,9 +174,9 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'message' => 'message',
-        'redirect_url' => 'redirect_url',
-        'account' => 'account'
+        'id' => 'id',
+        'name' => 'name',
+        'profile_picture' => 'profilePicture'
     ];
 
     /**
@@ -184,9 +185,9 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'message' => 'setMessage',
-        'redirect_url' => 'setRedirectUrl',
-        'account' => 'setAccount'
+        'id' => 'setId',
+        'name' => 'setName',
+        'profile_picture' => 'setProfilePicture'
     ];
 
     /**
@@ -195,9 +196,9 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'message' => 'getMessage',
-        'redirect_url' => 'getRedirectUrl',
-        'account' => 'getAccount'
+        'id' => 'getId',
+        'name' => 'getName',
+        'profile_picture' => 'getProfilePicture'
     ];
 
     /**
@@ -257,9 +258,9 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('redirect_url', $data ?? [], null);
-        $this->setIfExists('account', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('profile_picture', $data ?? [], null);
     }
 
     /**
@@ -305,82 +306,82 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets message
+     * Gets id
      *
      * @return string|null
      */
-    public function getMessage()
+    public function getId()
     {
-        return $this->container['message'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets message
+     * Sets id
      *
-     * @param string|null $message message
+     * @param string|null $id id
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setId($id)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['message'] = $message;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets redirect_url
+     * Gets name
      *
      * @return string|null
      */
-    public function getRedirectUrl()
+    public function getName()
     {
-        return $this->container['redirect_url'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets redirect_url
+     * Sets name
      *
-     * @param string|null $redirect_url Redirect URL when a custom redirect_url was provided or a business Page was selected.
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setRedirectUrl($redirect_url)
+    public function setName($name)
     {
-        if (is_null($redirect_url)) {
-            throw new \InvalidArgumentException('non-nullable redirect_url cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['redirect_url'] = $redirect_url;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets account
+     * Gets profile_picture
      *
-     * @return \Zernio\Model\SelectFacebookPage200ResponseAccount|null
+     * @return string|null
      */
-    public function getAccount()
+    public function getProfilePicture()
     {
-        return $this->container['account'];
+        return $this->container['profile_picture'];
     }
 
     /**
-     * Sets account
+     * Sets profile_picture
      *
-     * @param \Zernio\Model\SelectFacebookPage200ResponseAccount|null $account account
+     * @param string|null $profile_picture profile_picture
      *
      * @return self
      */
-    public function setAccount($account)
+    public function setProfilePicture($profile_picture)
     {
-        if (is_null($account)) {
-            throw new \InvalidArgumentException('non-nullable account cannot be null');
+        if (is_null($profile_picture)) {
+            throw new \InvalidArgumentException('non-nullable profile_picture cannot be null');
         }
-        $this->container['account'] = $account;
+        $this->container['profile_picture'] = $profile_picture;
 
         return $this;
     }

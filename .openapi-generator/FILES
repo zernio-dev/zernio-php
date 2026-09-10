@@ -1493,7 +1493,10 @@ docs/Model/SelectFacebookPage200Response.md
 docs/Model/SelectFacebookPage200ResponseAccount.md
 docs/Model/SelectFacebookPage409Response.md
 docs/Model/SelectFacebookPageRequest.md
-docs/Model/SelectFacebookPageRequestUserProfile.md
+docs/Model/SelectFacebookPageRequestOneOf.md
+docs/Model/SelectFacebookPageRequestOneOf1.md
+docs/Model/SelectFacebookPageRequestOneOfNot.md
+docs/Model/SelectFacebookPageRequestOneOfUserProfile.md
 docs/Model/SelectGoogleBusinessLocation200Response.md
 docs/Model/SelectGoogleBusinessLocation200ResponseAccount.md
 docs/Model/SelectGoogleBusinessLocationRequest.md
@@ -3585,7 +3588,10 @@ lib/Model/SelectFacebookPage200Response.php
 lib/Model/SelectFacebookPage200ResponseAccount.php
 lib/Model/SelectFacebookPage409Response.php
 lib/Model/SelectFacebookPageRequest.php
-lib/Model/SelectFacebookPageRequestUserProfile.php
+lib/Model/SelectFacebookPageRequestOneOf.php
+lib/Model/SelectFacebookPageRequestOneOf1.php
+lib/Model/SelectFacebookPageRequestOneOfNot.php
+lib/Model/SelectFacebookPageRequestOneOfUserProfile.php
 lib/Model/SelectGoogleBusinessLocation200Response.php
 lib/Model/SelectGoogleBusinessLocation200ResponseAccount.php
 lib/Model/SelectGoogleBusinessLocationRequest.php
@@ -4183,3 +4189,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/SelectFacebookPageRequestOneOf1Test.php
+test/Model/SelectFacebookPageRequestOneOfNotTest.php
+test/Model/SelectFacebookPageRequestOneOfTest.php
+test/Model/SelectFacebookPageRequestOneOfUserProfileTest.php

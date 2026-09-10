@@ -1,6 +1,6 @@
 <?php
 /**
- * SelectFacebookPage200Response
+ * SelectFacebookPageRequestOneOfNot
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SelectFacebookPage200Response Class Doc Comment
+ * SelectFacebookPageRequestOneOfNot Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class SelectFacebookPageRequestOneOfNot implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'selectFacebookPage_200_response';
+    protected static $openAPIModelName = 'selectFacebookPage_request_oneOf_not';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,7 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'message' => 'string',
-        'redirect_url' => 'string',
-        'account' => '\Zernio\Model\SelectFacebookPage200ResponseAccount'
+        'selection_token' => 'mixed'
     ];
 
     /**
@@ -71,9 +69,7 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'message' => null,
-        'redirect_url' => null,
-        'account' => null
+        'selection_token' => null
     ];
 
     /**
@@ -82,9 +78,7 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'message' => false,
-        'redirect_url' => false,
-        'account' => false
+        'selection_token' => true
     ];
 
     /**
@@ -173,9 +167,7 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'message' => 'message',
-        'redirect_url' => 'redirect_url',
-        'account' => 'account'
+        'selection_token' => 'selectionToken'
     ];
 
     /**
@@ -184,9 +176,7 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'message' => 'setMessage',
-        'redirect_url' => 'setRedirectUrl',
-        'account' => 'setAccount'
+        'selection_token' => 'setSelectionToken'
     ];
 
     /**
@@ -195,9 +185,7 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'message' => 'getMessage',
-        'redirect_url' => 'getRedirectUrl',
-        'account' => 'getAccount'
+        'selection_token' => 'getSelectionToken'
     ];
 
     /**
@@ -257,9 +245,7 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('redirect_url', $data ?? [], null);
-        $this->setIfExists('account', $data ?? [], null);
+        $this->setIfExists('selection_token', $data ?? [], null);
     }
 
     /**
@@ -289,6 +275,9 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
+        if ($this->container['selection_token'] === null && !$this->isNullableSetToNull('selection_token')) {
+            $invalidProperties[] = "'selection_token' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -305,82 +294,35 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets message
+     * Gets selection_token
      *
-     * @return string|null
+     * @return mixed|null
      */
-    public function getMessage()
+    public function getSelectionToken()
     {
-        return $this->container['message'];
+        return $this->container['selection_token'];
     }
 
     /**
-     * Sets message
+     * Sets selection_token
      *
-     * @param string|null $message message
+     * @param mixed|null $selection_token selection_token
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setSelectionToken($selection_token)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($selection_token)) {
+            array_push($this->openAPINullablesSetToNull, 'selection_token');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('selection_token', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets redirect_url
-     *
-     * @return string|null
-     */
-    public function getRedirectUrl()
-    {
-        return $this->container['redirect_url'];
-    }
-
-    /**
-     * Sets redirect_url
-     *
-     * @param string|null $redirect_url Redirect URL when a custom redirect_url was provided or a business Page was selected.
-     *
-     * @return self
-     */
-    public function setRedirectUrl($redirect_url)
-    {
-        if (is_null($redirect_url)) {
-            throw new \InvalidArgumentException('non-nullable redirect_url cannot be null');
-        }
-        $this->container['redirect_url'] = $redirect_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets account
-     *
-     * @return \Zernio\Model\SelectFacebookPage200ResponseAccount|null
-     */
-    public function getAccount()
-    {
-        return $this->container['account'];
-    }
-
-    /**
-     * Sets account
-     *
-     * @param \Zernio\Model\SelectFacebookPage200ResponseAccount|null $account account
-     *
-     * @return self
-     */
-    public function setAccount($account)
-    {
-        if (is_null($account)) {
-            throw new \InvalidArgumentException('non-nullable account cannot be null');
-        }
-        $this->container['account'] = $account;
+        $this->container['selection_token'] = $selection_token;
 
         return $this;
     }

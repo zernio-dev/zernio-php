@@ -61,8 +61,9 @@ class SelectFacebookPageRequest implements ModelInterface, ArrayAccess, \JsonSer
         'profile_id' => 'string',
         'page_id' => 'string',
         'temp_token' => 'string',
-        'user_profile' => '\Zernio\Model\SelectFacebookPageRequestUserProfile',
-        'redirect_url' => 'string'
+        'user_profile' => '\Zernio\Model\SelectFacebookPageRequestOneOfUserProfile',
+        'redirect_url' => 'string',
+        'selection_token' => 'string'
     ];
 
     /**
@@ -77,7 +78,8 @@ class SelectFacebookPageRequest implements ModelInterface, ArrayAccess, \JsonSer
         'page_id' => null,
         'temp_token' => null,
         'user_profile' => null,
-        'redirect_url' => 'uri'
+        'redirect_url' => 'uri',
+        'selection_token' => null
     ];
 
     /**
@@ -90,7 +92,8 @@ class SelectFacebookPageRequest implements ModelInterface, ArrayAccess, \JsonSer
         'page_id' => false,
         'temp_token' => false,
         'user_profile' => false,
-        'redirect_url' => false
+        'redirect_url' => false,
+        'selection_token' => false
     ];
 
     /**
@@ -183,7 +186,8 @@ class SelectFacebookPageRequest implements ModelInterface, ArrayAccess, \JsonSer
         'page_id' => 'pageId',
         'temp_token' => 'tempToken',
         'user_profile' => 'userProfile',
-        'redirect_url' => 'redirect_url'
+        'redirect_url' => 'redirect_url',
+        'selection_token' => 'selectionToken'
     ];
 
     /**
@@ -196,7 +200,8 @@ class SelectFacebookPageRequest implements ModelInterface, ArrayAccess, \JsonSer
         'page_id' => 'setPageId',
         'temp_token' => 'setTempToken',
         'user_profile' => 'setUserProfile',
-        'redirect_url' => 'setRedirectUrl'
+        'redirect_url' => 'setRedirectUrl',
+        'selection_token' => 'setSelectionToken'
     ];
 
     /**
@@ -209,7 +214,8 @@ class SelectFacebookPageRequest implements ModelInterface, ArrayAccess, \JsonSer
         'page_id' => 'getPageId',
         'temp_token' => 'getTempToken',
         'user_profile' => 'getUserProfile',
-        'redirect_url' => 'getRedirectUrl'
+        'redirect_url' => 'getRedirectUrl',
+        'selection_token' => 'getSelectionToken'
     ];
 
     /**
@@ -274,6 +280,7 @@ class SelectFacebookPageRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('temp_token', $data ?? [], null);
         $this->setIfExists('user_profile', $data ?? [], null);
         $this->setIfExists('redirect_url', $data ?? [], null);
+        $this->setIfExists('selection_token', $data ?? [], null);
     }
 
     /**
@@ -309,11 +316,18 @@ class SelectFacebookPageRequest implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['page_id'] === null) {
             $invalidProperties[] = "'page_id' can't be null";
         }
+        if (!preg_match("/^\\d+$/", $this->container['page_id'])) {
+            $invalidProperties[] = "invalid value for 'page_id', must be conform to the pattern /^\\d+$/.";
+        }
+
         if ($this->container['temp_token'] === null) {
             $invalidProperties[] = "'temp_token' can't be null";
         }
         if ($this->container['user_profile'] === null) {
             $invalidProperties[] = "'user_profile' can't be null";
+        }
+        if ($this->container['selection_token'] === null) {
+            $invalidProperties[] = "'selection_token' can't be null";
         }
         return $invalidProperties;
     }
@@ -343,7 +357,7 @@ class SelectFacebookPageRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets profile_id
      *
-     * @param string $profile_id Profile ID from your connection flow
+     * @param string $profile_id Profile ID from your classic connection flow.
      *
      * @return self
      */
@@ -370,7 +384,7 @@ class SelectFacebookPageRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets page_id
      *
-     * @param string $page_id The Facebook Page ID selected by the user
+     * @param string $page_id A Page ID from the granted Pages returned by listFacebookPages.
      *
      * @return self
      */
@@ -379,6 +393,11 @@ class SelectFacebookPageRequest implements ModelInterface, ArrayAccess, \JsonSer
         if (is_null($page_id)) {
             throw new \InvalidArgumentException('non-nullable page_id cannot be null');
         }
+
+        if ((!preg_match("/^\\d+$/", ObjectSerializer::toString($page_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$page_id when calling SelectFacebookPageRequest., must conform to the pattern /^\\d+$/.");
+        }
+
         $this->container['page_id'] = $page_id;
 
         return $this;
@@ -397,7 +416,7 @@ class SelectFacebookPageRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets temp_token
      *
-     * @param string $temp_token Temporary Facebook access token from OAuth
+     * @param string $temp_token Temporary Facebook access token from OAuth.
      *
      * @return self
      */
@@ -414,7 +433,7 @@ class SelectFacebookPageRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets user_profile
      *
-     * @return \Zernio\Model\SelectFacebookPageRequestUserProfile
+     * @return \Zernio\Model\SelectFacebookPageRequestOneOfUserProfile
      */
     public function getUserProfile()
     {
@@ -424,7 +443,7 @@ class SelectFacebookPageRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets user_profile
      *
-     * @param \Zernio\Model\SelectFacebookPageRequestUserProfile $user_profile user_profile
+     * @param \Zernio\Model\SelectFacebookPageRequestOneOfUserProfile $user_profile user_profile
      *
      * @return self
      */
@@ -451,7 +470,7 @@ class SelectFacebookPageRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets redirect_url
      *
-     * @param string|null $redirect_url Optional custom redirect URL to return to after selection
+     * @param string|null $redirect_url Optional custom redirect URL to return to after selection.
      *
      * @return self
      */
@@ -461,6 +480,33 @@ class SelectFacebookPageRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable redirect_url cannot be null');
         }
         $this->container['redirect_url'] = $redirect_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets selection_token
+     *
+     * @return string
+     */
+    public function getSelectionToken()
+    {
+        return $this->container['selection_token'];
+    }
+
+    /**
+     * Sets selection_token
+     *
+     * @param string $selection_token Encrypted dashboard business-login grant. Expires after ten minutes.
+     *
+     * @return self
+     */
+    public function setSelectionToken($selection_token)
+    {
+        if (is_null($selection_token)) {
+            throw new \InvalidArgumentException('non-nullable selection_token cannot be null');
+        }
+        $this->container['selection_token'] = $selection_token;
 
         return $this;
     }

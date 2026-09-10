@@ -1,14 +1,13 @@
-# # SelectFacebookPageRequest
+# # SelectFacebookPageRequestOneOf
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **profile_id** | **string** | Profile ID from your classic connection flow. |
-**page_id** | **string** | A Page ID from the granted Pages returned by listFacebookPages. |
+**page_id** | **string** | The Facebook Page ID selected by the user. |
 **temp_token** | **string** | Temporary Facebook access token from OAuth. |
 **user_profile** | [**\Zernio\Model\SelectFacebookPageRequestOneOfUserProfile**](SelectFacebookPageRequestOneOfUserProfile.md) |  |
 **redirect_url** | **string** | Optional custom redirect URL to return to after selection. | [optional]
-**selection_token** | **string** | Encrypted dashboard business-login grant. Expires after ten minutes. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

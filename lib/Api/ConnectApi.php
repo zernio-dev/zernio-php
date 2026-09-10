@@ -9442,17 +9442,18 @@ class ConnectApi
      *
      * List Facebook pages
      *
-     * @param  string $profile_id Profile ID from your connection flow (required)
-     * @param  string $temp_token Temporary Facebook access token from the OAuth callback redirect (required)
+     * @param  string|null $profile_id Profile ID from your classic connection flow. Required with tempToken. (optional)
+     * @param  string|null $temp_token Temporary Facebook access token from the classic OAuth callback. Required with profileId. (optional)
+     * @param  string|null $selection_token Encrypted dashboard business-login grant. Send alone instead of profileId and tempToken. Expires after ten minutes. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listFacebookPages'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListFacebookPages200Response|\Zernio\Model\InlineObject1|\Zernio\Model\GetYouTubeDailyViews400Response
      */
-    public function listFacebookPages($profile_id, $temp_token, string $contentType = self::contentTypes['listFacebookPages'][0])
+    public function listFacebookPages($profile_id = null, $temp_token = null, $selection_token = null, string $contentType = self::contentTypes['listFacebookPages'][0])
     {
-        list($response) = $this->listFacebookPagesWithHttpInfo($profile_id, $temp_token, $contentType);
+        list($response) = $this->listFacebookPagesWithHttpInfo($profile_id, $temp_token, $selection_token, $contentType);
         return $response;
     }
 
@@ -9461,17 +9462,18 @@ class ConnectApi
      *
      * List Facebook pages
      *
-     * @param  string $profile_id Profile ID from your connection flow (required)
-     * @param  string $temp_token Temporary Facebook access token from the OAuth callback redirect (required)
+     * @param  string|null $profile_id Profile ID from your classic connection flow. Required with tempToken. (optional)
+     * @param  string|null $temp_token Temporary Facebook access token from the classic OAuth callback. Required with profileId. (optional)
+     * @param  string|null $selection_token Encrypted dashboard business-login grant. Send alone instead of profileId and tempToken. Expires after ten minutes. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listFacebookPages'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListFacebookPages200Response|\Zernio\Model\InlineObject1|\Zernio\Model\GetYouTubeDailyViews400Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listFacebookPagesWithHttpInfo($profile_id, $temp_token, string $contentType = self::contentTypes['listFacebookPages'][0])
+    public function listFacebookPagesWithHttpInfo($profile_id = null, $temp_token = null, $selection_token = null, string $contentType = self::contentTypes['listFacebookPages'][0])
     {
-        $request = $this->listFacebookPagesRequest($profile_id, $temp_token, $contentType);
+        $request = $this->listFacebookPagesRequest($profile_id, $temp_token, $selection_token, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9575,16 +9577,17 @@ class ConnectApi
      *
      * List Facebook pages
      *
-     * @param  string $profile_id Profile ID from your connection flow (required)
-     * @param  string $temp_token Temporary Facebook access token from the OAuth callback redirect (required)
+     * @param  string|null $profile_id Profile ID from your classic connection flow. Required with tempToken. (optional)
+     * @param  string|null $temp_token Temporary Facebook access token from the classic OAuth callback. Required with profileId. (optional)
+     * @param  string|null $selection_token Encrypted dashboard business-login grant. Send alone instead of profileId and tempToken. Expires after ten minutes. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listFacebookPages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listFacebookPagesAsync($profile_id, $temp_token, string $contentType = self::contentTypes['listFacebookPages'][0])
+    public function listFacebookPagesAsync($profile_id = null, $temp_token = null, $selection_token = null, string $contentType = self::contentTypes['listFacebookPages'][0])
     {
-        return $this->listFacebookPagesAsyncWithHttpInfo($profile_id, $temp_token, $contentType)
+        return $this->listFacebookPagesAsyncWithHttpInfo($profile_id, $temp_token, $selection_token, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9597,17 +9600,18 @@ class ConnectApi
      *
      * List Facebook pages
      *
-     * @param  string $profile_id Profile ID from your connection flow (required)
-     * @param  string $temp_token Temporary Facebook access token from the OAuth callback redirect (required)
+     * @param  string|null $profile_id Profile ID from your classic connection flow. Required with tempToken. (optional)
+     * @param  string|null $temp_token Temporary Facebook access token from the classic OAuth callback. Required with profileId. (optional)
+     * @param  string|null $selection_token Encrypted dashboard business-login grant. Send alone instead of profileId and tempToken. Expires after ten minutes. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listFacebookPages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listFacebookPagesAsyncWithHttpInfo($profile_id, $temp_token, string $contentType = self::contentTypes['listFacebookPages'][0])
+    public function listFacebookPagesAsyncWithHttpInfo($profile_id = null, $temp_token = null, $selection_token = null, string $contentType = self::contentTypes['listFacebookPages'][0])
     {
         $returnType = '\Zernio\Model\ListFacebookPages200Response';
-        $request = $this->listFacebookPagesRequest($profile_id, $temp_token, $contentType);
+        $request = $this->listFacebookPagesRequest($profile_id, $temp_token, $selection_token, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9648,29 +9652,19 @@ class ConnectApi
     /**
      * Create request for operation 'listFacebookPages'
      *
-     * @param  string $profile_id Profile ID from your connection flow (required)
-     * @param  string $temp_token Temporary Facebook access token from the OAuth callback redirect (required)
+     * @param  string|null $profile_id Profile ID from your classic connection flow. Required with tempToken. (optional)
+     * @param  string|null $temp_token Temporary Facebook access token from the classic OAuth callback. Required with profileId. (optional)
+     * @param  string|null $selection_token Encrypted dashboard business-login grant. Send alone instead of profileId and tempToken. Expires after ten minutes. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listFacebookPages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listFacebookPagesRequest($profile_id, $temp_token, string $contentType = self::contentTypes['listFacebookPages'][0])
+    public function listFacebookPagesRequest($profile_id = null, $temp_token = null, $selection_token = null, string $contentType = self::contentTypes['listFacebookPages'][0])
     {
 
-        // verify the required parameter 'profile_id' is set
-        if ($profile_id === null || (is_array($profile_id) && count($profile_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $profile_id when calling listFacebookPages'
-            );
-        }
 
-        // verify the required parameter 'temp_token' is set
-        if ($temp_token === null || (is_array($temp_token) && count($temp_token) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $temp_token when calling listFacebookPages'
-            );
-        }
+
 
 
         $resourcePath = '/v1/connect/facebook/select-page';
@@ -9687,7 +9681,7 @@ class ConnectApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -9696,7 +9690,16 @@ class ConnectApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $selection_token,
+            'selectionToken', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
 
 
