@@ -291,7 +291,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
 
     public const PLATFORM_INSTAGRAM = 'instagram';
     public const PLATFORM_FACEBOOK = 'facebook';
-    public const PLATFORM_TWITTER = 'twitter';
+    public const PLATFORM_THREADS = 'threads';
     public const PLATFORM_YOUTUBE = 'youtube';
     public const PLATFORM_LINKEDIN = 'linkedin';
     public const PLATFORM_BLUESKY = 'bluesky';
@@ -308,7 +308,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
         return [
             self::PLATFORM_INSTAGRAM,
             self::PLATFORM_FACEBOOK,
-            self::PLATFORM_TWITTER,
+            self::PLATFORM_THREADS,
             self::PLATFORM_YOUTUBE,
             self::PLATFORM_LINKEDIN,
             self::PLATFORM_BLUESKY,
