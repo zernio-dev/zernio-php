@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * UpdateAdRequestCreative Class Doc Comment
  *
  * @category Class
- * @description Replace or patch the ad&#39;s creative. Meta, TikTok, and LinkedIn.  - **Meta**: patch-style. Pass any subset: fields you omit are preserved from the   live creative, including media (&#x60;image_hash&#x60;/&#x60;video_id&#x60; are reused, no re-upload)   and &#x60;url_tags&#x60;. Sending the full set (&#x60;headline&#x60;, &#x60;body&#x60;, &#x60;callToAction&#x60;,   &#x60;linkUrl&#x60;, &#x60;imageUrl&#x60;) rebuilds the creative from scratch instead. Partial   patching reads the live &#x60;object_story_spec&#x60;, which Meta strips on SHARE /   page-post / dark / asset_feed creatives. Those return 422 asking for the full   set. A &#x60;videoUrl&#x60;/&#x60;videoId&#x60; on an image creative is a type change and also   needs the full set. &#x60;existingCreativeId&#x60; repoints the ad at a creative from   GET /v1/ads/creatives and ignores every other field. Meta creatives are   immutable, so any change creates a new creative and repoints the ad; the old   creative is retained on the ad account for historical reporting.   &#x60;promotion&#x60; and &#x60;creativeFeatures&#x60; are Meta-only. Omitted settings are   preserved from the live creative, including full rebuilds. Send   &#x60;promotion: null&#x60; to remove the explicit offer from the replacement.   A supplied creativeFeatures map overrides individual existing keys. - **TikTok**: patch-style. Pass any subset; &#x60;headline&#x60; is ignored (TikTok creatives   have no headline slot). &#x60;body&#x60; becomes the in-feed &#x60;ad_text&#x60;; &#x60;linkUrl&#x60; becomes   &#x60;landing_page_url&#x60;; &#x60;videoUrl&#x60; triggers a fresh upload. &#x60;description&#x60;, &#x60;videoId&#x60;   and &#x60;existingCreativeId&#x60; are Meta-only and return 400. - **LinkedIn**: requires new media (image via &#x60;imageUrl&#x60; or video via &#x60;videoUrl&#x60;);   a text-only creative update returns 400. Uploads the media, creates a new inline   media creative on the same campaign, and pauses the old creative (best-effort).   The old creative is retained for historical reporting. &#x60;videoId&#x60; and   &#x60;existingCreativeId&#x60; are Meta-only and return 400.
+ * @description Replace or patch the ad&#39;s creative. Meta, TikTok, and LinkedIn.  - **Meta**: patch-style. Pass any subset: fields you omit are preserved from the   live creative, including media (&#x60;image_hash&#x60;/&#x60;video_id&#x60; are reused, no re-upload)   and &#x60;url_tags&#x60;. Sending the full set (&#x60;headline&#x60;, &#x60;body&#x60;, &#x60;callToAction&#x60;,   &#x60;linkUrl&#x60;, &#x60;imageUrl&#x60;) rebuilds the creative from scratch instead. Partial   patching reads the live &#x60;object_story_spec&#x60;, which Meta strips on SHARE /   page-post / dark / asset_feed creatives. Those return 422 asking for the full   set. A &#x60;videoUrl&#x60;/&#x60;videoId&#x60; on an image creative is a type change and also   needs the full set. &#x60;existingCreativeId&#x60; repoints the ad at a creative from   GET /v1/ads/creatives and ignores every other field. Meta creatives are   immutable, so any change creates a new creative and repoints the ad; the old   creative is retained on the ad account for historical reporting.   &#x60;creativeFeatures&#x60; is Meta-only. Omitted settings are preserved from the   live creative, including full rebuilds. A supplied creativeFeatures map   overrides individual existing keys. - **TikTok**: patch-style. Pass any subset; &#x60;headline&#x60; is ignored (TikTok creatives   have no headline slot). &#x60;body&#x60; becomes the in-feed &#x60;ad_text&#x60;; &#x60;linkUrl&#x60; becomes   &#x60;landing_page_url&#x60;; &#x60;videoUrl&#x60; triggers a fresh upload. &#x60;description&#x60;, &#x60;videoId&#x60;   and &#x60;existingCreativeId&#x60; are Meta-only and return 400. - **LinkedIn**: requires new media (image via &#x60;imageUrl&#x60; or video via &#x60;videoUrl&#x60;);   a text-only creative update returns 400. Uploads the media, creates a new inline   media creative on the same campaign, and pauses the old creative (best-effort).   The old creative is retained for historical reporting. &#x60;videoId&#x60; and   &#x60;existingCreativeId&#x60; are Meta-only and return 400.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,7 +59,7 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'promotion' => '\Zernio\Model\MetaPromotion',
+        'promotion' => 'Null',
         'creative_features' => 'array<string,string>',
         'headline' => 'string',
         'long_headline' => 'string',
@@ -420,7 +420,7 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets promotion
      *
-     * @return \Zernio\Model\MetaPromotion|null
+     * @return Null|null
      */
     public function getPromotion()
     {
@@ -430,7 +430,7 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets promotion
      *
-     * @param \Zernio\Model\MetaPromotion|null $promotion promotion
+     * @param Null|null $promotion Not supported. Meta validates creative_sourcing_spec.promotion_metadata_spec on the create call and then discards it, so a Promotion set through the Marketing API never reaches the creative. Any object is rejected with 400 invalid_field_value. Send null or omit the field, and set the Promotion on the ad in Ads Manager. Verified on 2026-09-11 across Graph v19.0 to v25.0 and every write path.
      *
      * @return self
      */
@@ -457,7 +457,7 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets creative_features
      *
-     * @param array<string,string>|null $creative_features Meta Advantage+ creative enhancements. Map snake_case feature names to OPT_IN or OPT_OUT; Meta validates supported keys and unspecified features default to OPT_OUT. auto_promotion_tag is an enhancement; use the separate promotion field for an explicit offer. The deprecated standard_enhancements bundle is rejected by Meta.
+     * @param array<string,string>|null $creative_features Meta Advantage+ creative enhancements. Map snake_case feature names to OPT_IN or OPT_OUT; Meta validates supported keys and unspecified features default to OPT_OUT. auto_promotion_tag is an Advantage+ enhancement, not the Ads Manager Promotion setting. The deprecated standard_enhancements bundle is rejected by Meta.
      *
      * @return self
      */

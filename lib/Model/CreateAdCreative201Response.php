@@ -59,9 +59,7 @@ class CreateAdCreative201Response implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPITypes = [
         'ad_account_id' => 'string',
-        'creative_id' => 'string',
-        'promotion' => '\Zernio\Model\MetaPromotion',
-        'promotion_status' => '\Zernio\Model\MetaPromotionStatus'
+        'creative_id' => 'string'
     ];
 
     /**
@@ -73,9 +71,7 @@ class CreateAdCreative201Response implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPIFormats = [
         'ad_account_id' => null,
-        'creative_id' => null,
-        'promotion' => null,
-        'promotion_status' => null
+        'creative_id' => null
     ];
 
     /**
@@ -85,9 +81,7 @@ class CreateAdCreative201Response implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static array $openAPINullables = [
         'ad_account_id' => false,
-        'creative_id' => false,
-        'promotion' => false,
-        'promotion_status' => false
+        'creative_id' => false
     ];
 
     /**
@@ -177,9 +171,7 @@ class CreateAdCreative201Response implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $attributeMap = [
         'ad_account_id' => 'adAccountId',
-        'creative_id' => 'creativeId',
-        'promotion' => 'promotion',
-        'promotion_status' => 'promotionStatus'
+        'creative_id' => 'creativeId'
     ];
 
     /**
@@ -189,9 +181,7 @@ class CreateAdCreative201Response implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $setters = [
         'ad_account_id' => 'setAdAccountId',
-        'creative_id' => 'setCreativeId',
-        'promotion' => 'setPromotion',
-        'promotion_status' => 'setPromotionStatus'
+        'creative_id' => 'setCreativeId'
     ];
 
     /**
@@ -201,9 +191,7 @@ class CreateAdCreative201Response implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $getters = [
         'ad_account_id' => 'getAdAccountId',
-        'creative_id' => 'getCreativeId',
-        'promotion' => 'getPromotion',
-        'promotion_status' => 'getPromotionStatus'
+        'creative_id' => 'getCreativeId'
     ];
 
     /**
@@ -265,8 +253,6 @@ class CreateAdCreative201Response implements ModelInterface, ArrayAccess, \JsonS
     {
         $this->setIfExists('ad_account_id', $data ?? [], null);
         $this->setIfExists('creative_id', $data ?? [], null);
-        $this->setIfExists('promotion', $data ?? [], null);
-        $this->setIfExists('promotion_status', $data ?? [], null);
     }
 
     /**
@@ -361,60 +347,6 @@ class CreateAdCreative201Response implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable creative_id cannot be null');
         }
         $this->container['creative_id'] = $creative_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets promotion
-     *
-     * @return \Zernio\Model\MetaPromotion|null
-     */
-    public function getPromotion()
-    {
-        return $this->container['promotion'];
-    }
-
-    /**
-     * Sets promotion
-     *
-     * @param \Zernio\Model\MetaPromotion|null $promotion promotion
-     *
-     * @return self
-     */
-    public function setPromotion($promotion)
-    {
-        if (is_null($promotion)) {
-            throw new \InvalidArgumentException('non-nullable promotion cannot be null');
-        }
-        $this->container['promotion'] = $promotion;
-
-        return $this;
-    }
-
-    /**
-     * Gets promotion_status
-     *
-     * @return \Zernio\Model\MetaPromotionStatus|null
-     */
-    public function getPromotionStatus()
-    {
-        return $this->container['promotion_status'];
-    }
-
-    /**
-     * Sets promotion_status
-     *
-     * @param \Zernio\Model\MetaPromotionStatus|null $promotion_status promotion_status
-     *
-     * @return self
-     */
-    public function setPromotionStatus($promotion_status)
-    {
-        if (is_null($promotion_status)) {
-            throw new \InvalidArgumentException('non-nullable promotion_status cannot be null');
-        }
-        $this->container['promotion_status'] = $promotion_status;
 
         return $this;
     }

@@ -69,7 +69,7 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'image_hash' => 'string',
         'carousel_cards' => '\Zernio\Model\CreateAdCreativeRequestCarouselCardsInner[]',
         'url_tags' => 'string',
-        'promotion' => '\Zernio\Model\MetaPromotion',
+        'promotion' => 'Null',
         'creative_features' => 'array<string,string>',
         'multi_advertiser' => 'string'
     ];
@@ -766,7 +766,7 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets promotion
      *
-     * @return \Zernio\Model\MetaPromotion|null
+     * @return Null|null
      */
     public function getPromotion()
     {
@@ -776,7 +776,7 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets promotion
      *
-     * @param \Zernio\Model\MetaPromotion|null $promotion promotion
+     * @param Null|null $promotion Not supported. Meta validates creative_sourcing_spec.promotion_metadata_spec on the create call and then discards it, so a Promotion set through the Marketing API never reaches the creative. Any object is rejected with 400 invalid_field_value. Send null or omit the field, and set the Promotion on the ad in Ads Manager. Verified on 2026-09-11 across Graph v19.0 to v25.0 and every write path.
      *
      * @return self
      */
@@ -803,7 +803,7 @@ class CreateAdCreativeRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets creative_features
      *
-     * @param array<string,string>|null $creative_features Meta only. Applied to each new creative, including standalone and attach shapes. With creatives[], these are defaults; an item replaces the whole feature map, including an empty map. auto_promotion_tag is an enhancement; an explicit offer uses promotion.
+     * @param array<string,string>|null $creative_features Meta only. Applied to each new creative, including standalone and attach shapes. With creatives[], these are defaults; an item replaces the whole feature map, including an empty map. auto_promotion_tag is an Advantage+ enhancement, not the Ads Manager Promotion setting.
      *
      * @return self
      */

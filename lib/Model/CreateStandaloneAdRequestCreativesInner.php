@@ -59,7 +59,6 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'promotion' => '\Zernio\Model\MetaPromotion',
         'creative_features' => 'array<string,string>',
         'name' => 'string',
         'headline' => 'string',
@@ -79,7 +78,6 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'promotion' => null,
         'creative_features' => null,
         'name' => null,
         'headline' => null,
@@ -97,7 +95,6 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'promotion' => false,
         'creative_features' => false,
         'name' => false,
         'headline' => false,
@@ -195,7 +192,6 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'promotion' => 'promotion',
         'creative_features' => 'creativeFeatures',
         'name' => 'name',
         'headline' => 'headline',
@@ -213,7 +209,6 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'promotion' => 'setPromotion',
         'creative_features' => 'setCreativeFeatures',
         'name' => 'setName',
         'headline' => 'setHeadline',
@@ -231,7 +226,6 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'promotion' => 'getPromotion',
         'creative_features' => 'getCreativeFeatures',
         'name' => 'getName',
         'headline' => 'getHeadline',
@@ -378,7 +372,6 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('promotion', $data ?? [], null);
         $this->setIfExists('creative_features', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('headline', $data ?? [], null);
@@ -464,33 +457,6 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets promotion
-     *
-     * @return \Zernio\Model\MetaPromotion|null
-     */
-    public function getPromotion()
-    {
-        return $this->container['promotion'];
-    }
-
-    /**
-     * Sets promotion
-     *
-     * @param \Zernio\Model\MetaPromotion|null $promotion Overrides the top-level offer for this item. Omit to inherit; null disables the inherited offer.
-     *
-     * @return self
-     */
-    public function setPromotion($promotion)
-    {
-        if (is_null($promotion)) {
-            throw new \InvalidArgumentException('non-nullable promotion cannot be null');
-        }
-        $this->container['promotion'] = $promotion;
-
-        return $this;
-    }
 
     /**
      * Gets creative_features

@@ -5122,16 +5122,15 @@ class AdCampaignsApi
      * Get ad details
      *
      * @param  string $ad_id Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. See description for details. (required)
-     * @param  bool|null $refresh_promotion Meta only. Read current promotion metadata from Meta and include promotionStatus. Omit for stored creative settings with no promotion-specific Graph call. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAd'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetAd200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2
      */
-    public function getAd($ad_id, $refresh_promotion = false, string $contentType = self::contentTypes['getAd'][0])
+    public function getAd($ad_id, string $contentType = self::contentTypes['getAd'][0])
     {
-        list($response) = $this->getAdWithHttpInfo($ad_id, $refresh_promotion, $contentType);
+        list($response) = $this->getAdWithHttpInfo($ad_id, $contentType);
         return $response;
     }
 
@@ -5141,16 +5140,15 @@ class AdCampaignsApi
      * Get ad details
      *
      * @param  string $ad_id Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. See description for details. (required)
-     * @param  bool|null $refresh_promotion Meta only. Read current promotion metadata from Meta and include promotionStatus. Omit for stored creative settings with no promotion-specific Graph call. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAd'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetAd200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAdWithHttpInfo($ad_id, $refresh_promotion = false, string $contentType = self::contentTypes['getAd'][0])
+    public function getAdWithHttpInfo($ad_id, string $contentType = self::contentTypes['getAd'][0])
     {
-        $request = $this->getAdRequest($ad_id, $refresh_promotion, $contentType);
+        $request = $this->getAdRequest($ad_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5269,15 +5267,14 @@ class AdCampaignsApi
      * Get ad details
      *
      * @param  string $ad_id Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. See description for details. (required)
-     * @param  bool|null $refresh_promotion Meta only. Read current promotion metadata from Meta and include promotionStatus. Omit for stored creative settings with no promotion-specific Graph call. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAd'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdAsync($ad_id, $refresh_promotion = false, string $contentType = self::contentTypes['getAd'][0])
+    public function getAdAsync($ad_id, string $contentType = self::contentTypes['getAd'][0])
     {
-        return $this->getAdAsyncWithHttpInfo($ad_id, $refresh_promotion, $contentType)
+        return $this->getAdAsyncWithHttpInfo($ad_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5291,16 +5288,15 @@ class AdCampaignsApi
      * Get ad details
      *
      * @param  string $ad_id Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. See description for details. (required)
-     * @param  bool|null $refresh_promotion Meta only. Read current promotion metadata from Meta and include promotionStatus. Omit for stored creative settings with no promotion-specific Graph call. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAd'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdAsyncWithHttpInfo($ad_id, $refresh_promotion = false, string $contentType = self::contentTypes['getAd'][0])
+    public function getAdAsyncWithHttpInfo($ad_id, string $contentType = self::contentTypes['getAd'][0])
     {
         $returnType = '\Zernio\Model\GetAd200Response';
-        $request = $this->getAdRequest($ad_id, $refresh_promotion, $contentType);
+        $request = $this->getAdRequest($ad_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5342,13 +5338,12 @@ class AdCampaignsApi
      * Create request for operation 'getAd'
      *
      * @param  string $ad_id Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. See description for details. (required)
-     * @param  bool|null $refresh_promotion Meta only. Read current promotion metadata from Meta and include promotionStatus. Omit for stored creative settings with no promotion-specific Graph call. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAd'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAdRequest($ad_id, $refresh_promotion = false, string $contentType = self::contentTypes['getAd'][0])
+    public function getAdRequest($ad_id, string $contentType = self::contentTypes['getAd'][0])
     {
 
         // verify the required parameter 'ad_id' is set
@@ -5359,7 +5354,6 @@ class AdCampaignsApi
         }
 
 
-
         $resourcePath = '/v1/ads/{adId}';
         $formParams = [];
         $queryParams = [];
@@ -5367,15 +5361,6 @@ class AdCampaignsApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $refresh_promotion,
-            'refreshPromotion', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
 
 
         // path params

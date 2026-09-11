@@ -1309,8 +1309,6 @@ docs/Model/MetaAdsPlatformData.md
 docs/Model/MetaInstagramIdentityRef.md
 docs/Model/MetaLeadFormPlatformData.md
 docs/Model/MetaLeadFormPlatformDataContextCard.md
-docs/Model/MetaPromotion.md
-docs/Model/MetaPromotionStatus.md
 docs/Model/Money.md
 docs/Model/MoneyAmount.md
 docs/Model/MoveAccountToProfile200Response.md
@@ -3410,8 +3408,6 @@ lib/Model/MetaAdsPlatformData.php
 lib/Model/MetaInstagramIdentityRef.php
 lib/Model/MetaLeadFormPlatformData.php
 lib/Model/MetaLeadFormPlatformDataContextCard.php
-lib/Model/MetaPromotion.php
-lib/Model/MetaPromotionStatus.php
 lib/Model/ModelInterface.php
 lib/Model/Money.php
 lib/Model/MoneyAmount.php
