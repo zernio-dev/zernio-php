@@ -1322,6 +1322,7 @@ docs/Model/OnVerificationFailedRequestVerification.md
 docs/Model/OnWhatsAppAutomaticEventRequest.md
 docs/Model/OnWhatsAppAutomaticEventRequestCustomData.md
 docs/Model/OnWhatsAppNumberActionRequiredRequest.md
+docs/Model/OnWhatsAppNumberActionRequiredRequestRequirementsInner.md
 docs/Model/OnWhatsAppNumberActivatedRequest.md
 docs/Model/OnWhatsAppNumberActivatedRequestNumber.md
 docs/Model/OnWhatsAppNumberDeclinedRequest.md
@@ -3420,6 +3421,7 @@ lib/Model/OnVerificationFailedRequestVerification.php
 lib/Model/OnWhatsAppAutomaticEventRequest.php
 lib/Model/OnWhatsAppAutomaticEventRequestCustomData.php
 lib/Model/OnWhatsAppNumberActionRequiredRequest.php
+lib/Model/OnWhatsAppNumberActionRequiredRequestRequirementsInner.php
 lib/Model/OnWhatsAppNumberActivatedRequest.php
 lib/Model/OnWhatsAppNumberActivatedRequestNumber.php
 lib/Model/OnWhatsAppNumberDeclinedRequest.php
@@ -4195,3 +4197,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/OnWhatsAppNumberActionRequiredRequestRequirementsInnerTest.php

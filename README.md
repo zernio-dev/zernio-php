@@ -2040,6 +2040,7 @@ Class | Method | HTTP request | Description
 - [OnWhatsAppAutomaticEventRequest](docs/Model/OnWhatsAppAutomaticEventRequest.md)
 - [OnWhatsAppAutomaticEventRequestCustomData](docs/Model/OnWhatsAppAutomaticEventRequestCustomData.md)
 - [OnWhatsAppNumberActionRequiredRequest](docs/Model/OnWhatsAppNumberActionRequiredRequest.md)
+- [OnWhatsAppNumberActionRequiredRequestRequirementsInner](docs/Model/OnWhatsAppNumberActionRequiredRequestRequirementsInner.md)
 - [OnWhatsAppNumberActivatedRequest](docs/Model/OnWhatsAppNumberActivatedRequest.md)
 - [OnWhatsAppNumberActivatedRequestNumber](docs/Model/OnWhatsAppNumberActivatedRequestNumber.md)
 - [OnWhatsAppNumberDeclinedRequest](docs/Model/OnWhatsAppNumberDeclinedRequest.md)

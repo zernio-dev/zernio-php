@@ -1,6 +1,6 @@
 <?php
 /**
- * OnWhatsAppNumberActionRequiredRequest
+ * OnWhatsAppNumberActionRequiredRequestRequirementsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * OnWhatsAppNumberActionRequiredRequest Class Doc Comment
+ * OnWhatsAppNumberActionRequiredRequestRequirementsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class OnWhatsAppNumberActionRequiredRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class OnWhatsAppNumberActionRequiredRequestRequirementsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class OnWhatsAppNumberActionRequiredRequest implements ModelInterface, ArrayAcce
       *
       * @var string
       */
-    protected static $openAPIModelName = 'onWhatsAppNumberActionRequired_request';
+    protected static $openAPIModelName = 'onWhatsAppNumberActionRequired_request_requirements_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,13 +58,9 @@ class OnWhatsAppNumberActionRequiredRequest implements ModelInterface, ArrayAcce
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'event' => 'string',
-        'timestamp' => '\DateTime',
-        'reason' => 'string',
-        'requirements' => '\Zernio\Model\OnWhatsAppNumberActionRequiredRequestRequirementsInner[]',
-        'reviewed_at' => '\DateTime',
-        'number' => '\Zernio\Model\OnWhatsAppNumberDeclinedRequestNumber'
+        'requirement_id' => 'string',
+        'label' => 'string',
+        'status' => 'string'
     ];
 
     /**
@@ -75,13 +71,9 @@ class OnWhatsAppNumberActionRequiredRequest implements ModelInterface, ArrayAcce
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'event' => null,
-        'timestamp' => 'date-time',
-        'reason' => null,
-        'requirements' => null,
-        'reviewed_at' => 'date-time',
-        'number' => null
+        'requirement_id' => null,
+        'label' => null,
+        'status' => null
     ];
 
     /**
@@ -90,13 +82,9 @@ class OnWhatsAppNumberActionRequiredRequest implements ModelInterface, ArrayAcce
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'event' => false,
-        'timestamp' => false,
-        'reason' => false,
-        'requirements' => false,
-        'reviewed_at' => false,
-        'number' => false
+        'requirement_id' => false,
+        'label' => false,
+        'status' => false
     ];
 
     /**
@@ -185,13 +173,9 @@ class OnWhatsAppNumberActionRequiredRequest implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'event' => 'event',
-        'timestamp' => 'timestamp',
-        'reason' => 'reason',
-        'requirements' => 'requirements',
-        'reviewed_at' => 'reviewedAt',
-        'number' => 'number'
+        'requirement_id' => 'requirementId',
+        'label' => 'label',
+        'status' => 'status'
     ];
 
     /**
@@ -200,13 +184,9 @@ class OnWhatsAppNumberActionRequiredRequest implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'event' => 'setEvent',
-        'timestamp' => 'setTimestamp',
-        'reason' => 'setReason',
-        'requirements' => 'setRequirements',
-        'reviewed_at' => 'setReviewedAt',
-        'number' => 'setNumber'
+        'requirement_id' => 'setRequirementId',
+        'label' => 'setLabel',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -215,13 +195,9 @@ class OnWhatsAppNumberActionRequiredRequest implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'event' => 'getEvent',
-        'timestamp' => 'getTimestamp',
-        'reason' => 'getReason',
-        'requirements' => 'getRequirements',
-        'reviewed_at' => 'getReviewedAt',
-        'number' => 'getNumber'
+        'requirement_id' => 'getRequirementId',
+        'label' => 'getLabel',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -265,17 +241,21 @@ class OnWhatsAppNumberActionRequiredRequest implements ModelInterface, ArrayAcce
         return self::$openAPIModelName;
     }
 
-    public const EVENT_WHATSAPP_NUMBER_ACTION_REQUIRED = 'whatsapp.number.action_required';
+    public const STATUS_APPROVED = 'approved';
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_DECLINED = 'declined';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getEventAllowableValues()
+    public function getStatusAllowableValues()
     {
         return [
-            self::EVENT_WHATSAPP_NUMBER_ACTION_REQUIRED,
+            self::STATUS_APPROVED,
+            self::STATUS_PENDING,
+            self::STATUS_DECLINED,
         ];
     }
 
@@ -294,13 +274,9 @@ class OnWhatsAppNumberActionRequiredRequest implements ModelInterface, ArrayAcce
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('event', $data ?? [], null);
-        $this->setIfExists('timestamp', $data ?? [], null);
-        $this->setIfExists('reason', $data ?? [], null);
-        $this->setIfExists('requirements', $data ?? [], null);
-        $this->setIfExists('reviewed_at', $data ?? [], null);
-        $this->setIfExists('number', $data ?? [], null);
+        $this->setIfExists('requirement_id', $data ?? [], null);
+        $this->setIfExists('label', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
     }
 
     /**
@@ -330,11 +306,11 @@ class OnWhatsAppNumberActionRequiredRequest implements ModelInterface, ArrayAcce
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getEventAllowableValues();
-        if (!is_null($this->container['event']) && !in_array($this->container['event'], $allowedValues, true)) {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'event', must be one of '%s'",
-                $this->container['event'],
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
                 implode("', '", $allowedValues)
             );
         }
@@ -355,200 +331,92 @@ class OnWhatsAppNumberActionRequiredRequest implements ModelInterface, ArrayAcce
 
 
     /**
-     * Gets id
+     * Gets requirement_id
      *
      * @return string|null
      */
-    public function getId()
+    public function getRequirementId()
     {
-        return $this->container['id'];
+        return $this->container['requirement_id'];
     }
 
     /**
-     * Sets id
+     * Sets requirement_id
      *
-     * @param string|null $id id
+     * @param string|null $requirement_id Same id as fields[].requirementId on the remediation endpoint.
      *
      * @return self
      */
-    public function setId($id)
+    public function setRequirementId($requirement_id)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($requirement_id)) {
+            throw new \InvalidArgumentException('non-nullable requirement_id cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['requirement_id'] = $requirement_id;
 
         return $this;
     }
 
     /**
-     * Gets event
+     * Gets label
      *
      * @return string|null
      */
-    public function getEvent()
+    public function getLabel()
     {
-        return $this->container['event'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets event
+     * Sets label
      *
-     * @param string|null $event event
+     * @param string|null $label label
      *
      * @return self
      */
-    public function setEvent($event)
+    public function setLabel($label)
     {
-        if (is_null($event)) {
-            throw new \InvalidArgumentException('non-nullable event cannot be null');
+        if (is_null($label)) {
+            throw new \InvalidArgumentException('non-nullable label cannot be null');
         }
-        $allowedValues = $this->getEventAllowableValues();
-        if (!in_array($event, $allowedValues, true)) {
+        $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'event', must be one of '%s'",
-                    $event,
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['event'] = $event;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp
-     *
-     * @return \DateTime|null
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     *
-     * @param \DateTime|null $timestamp UTC time at which Zernio generated this event (set once when the event payload is built, before delivery is queued). Retries and redeliveries keep the original value, so it reflects the event, not the delivery attempt.
-     *
-     * @return self
-     */
-    public function setTimestamp($timestamp)
-    {
-        if (is_null($timestamp)) {
-            throw new \InvalidArgumentException('non-nullable timestamp cannot be null');
-        }
-        $this->container['timestamp'] = $timestamp;
-
-        return $this;
-    }
-
-    /**
-     * Gets reason
-     *
-     * @return string|null
-     */
-    public function getReason()
-    {
-        return $this->container['reason'];
-    }
-
-    /**
-     * Sets reason
-     *
-     * @param string|null $reason reason
-     *
-     * @return self
-     */
-    public function setReason($reason)
-    {
-        if (is_null($reason)) {
-            throw new \InvalidArgumentException('non-nullable reason cannot be null');
-        }
-        $this->container['reason'] = $reason;
-
-        return $this;
-    }
-
-    /**
-     * Gets requirements
-     *
-     * @return \Zernio\Model\OnWhatsAppNumberActionRequiredRequestRequirementsInner[]|null
-     */
-    public function getRequirements()
-    {
-        return $this->container['requirements'];
-    }
-
-    /**
-     * Sets requirements
-     *
-     * @param \Zernio\Model\OnWhatsAppNumberActionRequiredRequestRequirementsInner[]|null $requirements Every requirement on the order with the reviewer's current verdict. Omitted when the order's requirements could not be read.
-     *
-     * @return self
-     */
-    public function setRequirements($requirements)
-    {
-        if (is_null($requirements)) {
-            throw new \InvalidArgumentException('non-nullable requirements cannot be null');
-        }
-        $this->container['requirements'] = $requirements;
-
-        return $this;
-    }
-
-    /**
-     * Gets reviewed_at
-     *
-     * @return \DateTime|null
-     */
-    public function getReviewedAt()
-    {
-        return $this->container['reviewed_at'];
-    }
-
-    /**
-     * Sets reviewed_at
-     *
-     * @param \DateTime|null $reviewed_at When the reviewer last commented on the order. Omitted when there is no reviewer comment.
-     *
-     * @return self
-     */
-    public function setReviewedAt($reviewed_at)
-    {
-        if (is_null($reviewed_at)) {
-            throw new \InvalidArgumentException('non-nullable reviewed_at cannot be null');
-        }
-        $this->container['reviewed_at'] = $reviewed_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets number
-     *
-     * @return \Zernio\Model\OnWhatsAppNumberDeclinedRequestNumber|null
-     */
-    public function getNumber()
-    {
-        return $this->container['number'];
-    }
-
-    /**
-     * Sets number
-     *
-     * @param \Zernio\Model\OnWhatsAppNumberDeclinedRequestNumber|null $number number
-     *
-     * @return self
-     */
-    public function setNumber($number)
-    {
-        if (is_null($number)) {
-            throw new \InvalidArgumentException('non-nullable number cannot be null');
-        }
-        $this->container['number'] = $number;
+        $this->container['status'] = $status;
 
         return $this;
     }
