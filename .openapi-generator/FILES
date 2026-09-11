@@ -989,6 +989,8 @@ docs/Model/GooglePmaxAssetGroup.md
 docs/Model/GooglePmaxAssetGroupAssetsInner.md
 docs/Model/GooglePmaxAssetGroupInput.md
 docs/Model/GooglePmaxAssetGroupInputImages.md
+docs/Model/GooglePmaxAssetGroupUpdate.md
+docs/Model/GooglePmaxAssetGroupUpdateImages.md
 docs/Model/GoogleRsaDescription.md
 docs/Model/GoogleRsaHeadline.md
 docs/Model/GoogleSitelink.md
@@ -3088,6 +3090,8 @@ lib/Model/GooglePmaxAssetGroup.php
 lib/Model/GooglePmaxAssetGroupAssetsInner.php
 lib/Model/GooglePmaxAssetGroupInput.php
 lib/Model/GooglePmaxAssetGroupInputImages.php
+lib/Model/GooglePmaxAssetGroupUpdate.php
+lib/Model/GooglePmaxAssetGroupUpdateImages.php
 lib/Model/GoogleRsaDescription.php
 lib/Model/GoogleRsaHeadline.php
 lib/Model/GoogleSitelink.php
@@ -4199,4 +4203,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/UpdateAdRequestTargetingLocationsTest.php
+test/Model/GooglePmaxAssetGroupUpdateImagesTest.php
+test/Model/GooglePmaxAssetGroupUpdateTest.php

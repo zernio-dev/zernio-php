@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateAdRequest
+ * GooglePmaxAssetGroupUpdate
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UpdateAdRequest Class Doc Comment
+ * GooglePmaxAssetGroupUpdate Class Doc Comment
  *
  * @category Class
+ * @description Replacement assets for an existing Performance Max asset group, sent on PUT /v1/ads/{adId}. Google assets are immutable (AssetService only creates), so each field you send becomes new assets linked to the asset group, and the assets that role held are unlinked in the same atomic request. Send one field or many; a field you omit is left untouched. Re-sending a value the asset group already carries is a no-op for that asset, not a re-upload. Unlinked assets stay in the account&#39;s asset library: Google has no asset delete. At least one description must be 60 characters or fewer. Texts within each list must be distinct.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class GooglePmaxAssetGroupUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updateAd_request';
+    protected static $openAPIModelName = 'GooglePmaxAssetGroupUpdate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,15 +59,13 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'headlines' => '\Zernio\Model\GoogleRsaHeadline[]',
-        'descriptions' => '\Zernio\Model\GoogleRsaDescription[]',
-        'final_urls' => 'string[]',
-        'asset_group' => '\Zernio\Model\GooglePmaxAssetGroupUpdate',
-        'status' => 'string',
-        'budget' => '\Zernio\Model\UpdateAdRequestBudget',
-        'targeting' => '\Zernio\Model\UpdateAdRequestTargeting',
-        'creative' => '\Zernio\Model\UpdateAdRequestCreative',
-        'name' => 'string'
+        'final_url' => 'string',
+        'headlines' => 'string[]',
+        'long_headline' => 'string',
+        'descriptions' => 'string[]',
+        'business_name' => 'string',
+        'images' => '\Zernio\Model\GooglePmaxAssetGroupUpdateImages',
+        'youtube_video_ids' => 'string[]'
     ];
 
     /**
@@ -77,15 +76,13 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'final_url' => 'uri',
         'headlines' => null,
+        'long_headline' => null,
         'descriptions' => null,
-        'final_urls' => 'uri',
-        'asset_group' => null,
-        'status' => null,
-        'budget' => null,
-        'targeting' => null,
-        'creative' => null,
-        'name' => null
+        'business_name' => null,
+        'images' => null,
+        'youtube_video_ids' => null
     ];
 
     /**
@@ -94,15 +91,13 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'final_url' => false,
         'headlines' => false,
+        'long_headline' => false,
         'descriptions' => false,
-        'final_urls' => false,
-        'asset_group' => false,
-        'status' => false,
-        'budget' => false,
-        'targeting' => false,
-        'creative' => false,
-        'name' => false
+        'business_name' => false,
+        'images' => false,
+        'youtube_video_ids' => false
     ];
 
     /**
@@ -191,15 +186,13 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'final_url' => 'finalUrl',
         'headlines' => 'headlines',
+        'long_headline' => 'longHeadline',
         'descriptions' => 'descriptions',
-        'final_urls' => 'finalUrls',
-        'asset_group' => 'assetGroup',
-        'status' => 'status',
-        'budget' => 'budget',
-        'targeting' => 'targeting',
-        'creative' => 'creative',
-        'name' => 'name'
+        'business_name' => 'businessName',
+        'images' => 'images',
+        'youtube_video_ids' => 'youtubeVideoIds'
     ];
 
     /**
@@ -208,15 +201,13 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'final_url' => 'setFinalUrl',
         'headlines' => 'setHeadlines',
+        'long_headline' => 'setLongHeadline',
         'descriptions' => 'setDescriptions',
-        'final_urls' => 'setFinalUrls',
-        'asset_group' => 'setAssetGroup',
-        'status' => 'setStatus',
-        'budget' => 'setBudget',
-        'targeting' => 'setTargeting',
-        'creative' => 'setCreative',
-        'name' => 'setName'
+        'business_name' => 'setBusinessName',
+        'images' => 'setImages',
+        'youtube_video_ids' => 'setYoutubeVideoIds'
     ];
 
     /**
@@ -225,15 +216,13 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'final_url' => 'getFinalUrl',
         'headlines' => 'getHeadlines',
+        'long_headline' => 'getLongHeadline',
         'descriptions' => 'getDescriptions',
-        'final_urls' => 'getFinalUrls',
-        'asset_group' => 'getAssetGroup',
-        'status' => 'getStatus',
-        'budget' => 'getBudget',
-        'targeting' => 'getTargeting',
-        'creative' => 'getCreative',
-        'name' => 'getName'
+        'business_name' => 'getBusinessName',
+        'images' => 'getImages',
+        'youtube_video_ids' => 'getYoutubeVideoIds'
     ];
 
     /**
@@ -277,21 +266,6 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const STATUS_ACTIVE = 'active';
-    public const STATUS_PAUSED = 'paused';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_ACTIVE,
-            self::STATUS_PAUSED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -308,15 +282,13 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('final_url', $data ?? [], null);
         $this->setIfExists('headlines', $data ?? [], null);
+        $this->setIfExists('long_headline', $data ?? [], null);
         $this->setIfExists('descriptions', $data ?? [], null);
-        $this->setIfExists('final_urls', $data ?? [], null);
-        $this->setIfExists('asset_group', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('budget', $data ?? [], null);
-        $this->setIfExists('targeting', $data ?? [], null);
-        $this->setIfExists('creative', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('business_name', $data ?? [], null);
+        $this->setIfExists('images', $data ?? [], null);
+        $this->setIfExists('youtube_video_ids', $data ?? [], null);
     }
 
     /**
@@ -346,37 +318,48 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['final_url']) && !preg_match("/^https?:\/\//", $this->container['final_url'])) {
+            $invalidProperties[] = "invalid value for 'final_url', must be conform to the pattern /^https?:\/\//.";
+        }
+
         if (!is_null($this->container['headlines']) && (count($this->container['headlines']) > 15)) {
             $invalidProperties[] = "invalid value for 'headlines', number of items must be less than or equal to 15.";
         }
 
-        if (!is_null($this->container['headlines']) && (count($this->container['headlines']) < 1)) {
-            $invalidProperties[] = "invalid value for 'headlines', number of items must be greater than or equal to 1.";
+        if (!is_null($this->container['headlines']) && (count($this->container['headlines']) < 3)) {
+            $invalidProperties[] = "invalid value for 'headlines', number of items must be greater than or equal to 3.";
+        }
+
+        if (!is_null($this->container['long_headline']) && (mb_strlen($this->container['long_headline']) > 90)) {
+            $invalidProperties[] = "invalid value for 'long_headline', the character length must be smaller than or equal to 90.";
+        }
+
+        if (!is_null($this->container['long_headline']) && (mb_strlen($this->container['long_headline']) < 1)) {
+            $invalidProperties[] = "invalid value for 'long_headline', the character length must be bigger than or equal to 1.";
         }
 
         if (!is_null($this->container['descriptions']) && (count($this->container['descriptions']) > 5)) {
             $invalidProperties[] = "invalid value for 'descriptions', number of items must be less than or equal to 5.";
         }
 
-        if (!is_null($this->container['descriptions']) && (count($this->container['descriptions']) < 1)) {
-            $invalidProperties[] = "invalid value for 'descriptions', number of items must be greater than or equal to 1.";
+        if (!is_null($this->container['descriptions']) && (count($this->container['descriptions']) < 2)) {
+            $invalidProperties[] = "invalid value for 'descriptions', number of items must be greater than or equal to 2.";
         }
 
-        if (!is_null($this->container['final_urls']) && (count($this->container['final_urls']) < 1)) {
-            $invalidProperties[] = "invalid value for 'final_urls', number of items must be greater than or equal to 1.";
+        if (!is_null($this->container['business_name']) && (mb_strlen($this->container['business_name']) > 25)) {
+            $invalidProperties[] = "invalid value for 'business_name', the character length must be smaller than or equal to 25.";
         }
 
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
-                implode("', '", $allowedValues)
-            );
+        if (!is_null($this->container['business_name']) && (mb_strlen($this->container['business_name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'business_name', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
+        if (!is_null($this->container['youtube_video_ids']) && (count($this->container['youtube_video_ids']) > 5)) {
+            $invalidProperties[] = "invalid value for 'youtube_video_ids', number of items must be less than or equal to 5.";
+        }
+
+        if (!is_null($this->container['youtube_video_ids']) && (count($this->container['youtube_video_ids']) < 1)) {
+            $invalidProperties[] = "invalid value for 'youtube_video_ids', number of items must be greater than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -395,9 +378,41 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
+     * Gets final_url
+     *
+     * @return string|null
+     */
+    public function getFinalUrl()
+    {
+        return $this->container['final_url'];
+    }
+
+    /**
+     * Sets final_url
+     *
+     * @param string|null $final_url Replaces the asset group's final URL.
+     *
+     * @return self
+     */
+    public function setFinalUrl($final_url)
+    {
+        if (is_null($final_url)) {
+            throw new \InvalidArgumentException('non-nullable final_url cannot be null');
+        }
+
+        if ((!preg_match("/^https?:\/\//", ObjectSerializer::toString($final_url)))) {
+            throw new \InvalidArgumentException("invalid value for \$final_url when calling GooglePmaxAssetGroupUpdate., must conform to the pattern /^https?:\/\//.");
+        }
+
+        $this->container['final_url'] = $final_url;
+
+        return $this;
+    }
+
+    /**
      * Gets headlines
      *
-     * @return \Zernio\Model\GoogleRsaHeadline[]|null
+     * @return string[]|null
      */
     public function getHeadlines()
     {
@@ -407,7 +422,7 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets headlines
      *
-     * @param \Zernio\Model\GoogleRsaHeadline[]|null $headlines Google Search and Display only. Replaces the complete headline list. Search takes 3-15, Display 1-5 and rejects pinnedField; the count is checked once the ad's channel is known. No padding or truncation on update.
+     * @param string[]|null $headlines Replaces every HEADLINE asset on the group.
      *
      * @return self
      */
@@ -418,10 +433,10 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         if ((count($headlines) > 15)) {
-            throw new \InvalidArgumentException('invalid value for $headlines when calling UpdateAdRequest., number of items must be less than or equal to 15.');
+            throw new \InvalidArgumentException('invalid value for $headlines when calling GooglePmaxAssetGroupUpdate., number of items must be less than or equal to 15.');
         }
-        if ((count($headlines) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $headlines when calling UpdateAdRequest., number of items must be greater than or equal to 1.');
+        if ((count($headlines) < 3)) {
+            throw new \InvalidArgumentException('invalid length for $headlines when calling GooglePmaxAssetGroupUpdate., number of items must be greater than or equal to 3.');
         }
         $this->container['headlines'] = $headlines;
 
@@ -429,9 +444,43 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets long_headline
+     *
+     * @return string|null
+     */
+    public function getLongHeadline()
+    {
+        return $this->container['long_headline'];
+    }
+
+    /**
+     * Sets long_headline
+     *
+     * @param string|null $long_headline Replaces the LONG_HEADLINE asset.
+     *
+     * @return self
+     */
+    public function setLongHeadline($long_headline)
+    {
+        if (is_null($long_headline)) {
+            throw new \InvalidArgumentException('non-nullable long_headline cannot be null');
+        }
+        if ((mb_strlen($long_headline) > 90)) {
+            throw new \InvalidArgumentException('invalid length for $long_headline when calling GooglePmaxAssetGroupUpdate., must be smaller than or equal to 90.');
+        }
+        if ((mb_strlen($long_headline) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $long_headline when calling GooglePmaxAssetGroupUpdate., must be bigger than or equal to 1.');
+        }
+
+        $this->container['long_headline'] = $long_headline;
+
+        return $this;
+    }
+
+    /**
      * Gets descriptions
      *
-     * @return \Zernio\Model\GoogleRsaDescription[]|null
+     * @return string[]|null
      */
     public function getDescriptions()
     {
@@ -441,7 +490,7 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets descriptions
      *
-     * @param \Zernio\Model\GoogleRsaDescription[]|null $descriptions Google Search and Display only. Replaces the complete description list. Search takes 2-4, Display 1-5 and rejects pinnedField. No padding or truncation on update.
+     * @param string[]|null $descriptions Replaces every DESCRIPTION asset. At least one must be 60 characters or fewer.
      *
      * @return self
      */
@@ -452,10 +501,10 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         if ((count($descriptions) > 5)) {
-            throw new \InvalidArgumentException('invalid value for $descriptions when calling UpdateAdRequest., number of items must be less than or equal to 5.');
+            throw new \InvalidArgumentException('invalid value for $descriptions when calling GooglePmaxAssetGroupUpdate., number of items must be less than or equal to 5.');
         }
-        if ((count($descriptions) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $descriptions when calling UpdateAdRequest., number of items must be greater than or equal to 1.');
+        if ((count($descriptions) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $descriptions when calling GooglePmaxAssetGroupUpdate., number of items must be greater than or equal to 2.');
         }
         $this->container['descriptions'] = $descriptions;
 
@@ -463,209 +512,96 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets final_urls
+     * Gets business_name
+     *
+     * @return string|null
+     */
+    public function getBusinessName()
+    {
+        return $this->container['business_name'];
+    }
+
+    /**
+     * Sets business_name
+     *
+     * @param string|null $business_name Replaces the BUSINESS_NAME asset.
+     *
+     * @return self
+     */
+    public function setBusinessName($business_name)
+    {
+        if (is_null($business_name)) {
+            throw new \InvalidArgumentException('non-nullable business_name cannot be null');
+        }
+        if ((mb_strlen($business_name) > 25)) {
+            throw new \InvalidArgumentException('invalid length for $business_name when calling GooglePmaxAssetGroupUpdate., must be smaller than or equal to 25.');
+        }
+        if ((mb_strlen($business_name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $business_name when calling GooglePmaxAssetGroupUpdate., must be bigger than or equal to 1.');
+        }
+
+        $this->container['business_name'] = $business_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets images
+     *
+     * @return \Zernio\Model\GooglePmaxAssetGroupUpdateImages|null
+     */
+    public function getImages()
+    {
+        return $this->container['images'];
+    }
+
+    /**
+     * Sets images
+     *
+     * @param \Zernio\Model\GooglePmaxAssetGroupUpdateImages|null $images images
+     *
+     * @return self
+     */
+    public function setImages($images)
+    {
+        if (is_null($images)) {
+            throw new \InvalidArgumentException('non-nullable images cannot be null');
+        }
+        $this->container['images'] = $images;
+
+        return $this;
+    }
+
+    /**
+     * Gets youtube_video_ids
      *
      * @return string[]|null
      */
-    public function getFinalUrls()
+    public function getYoutubeVideoIds()
     {
-        return $this->container['final_urls'];
+        return $this->container['youtube_video_ids'];
     }
 
     /**
-     * Sets final_urls
+     * Sets youtube_video_ids
      *
-     * @param string[]|null $final_urls Google Search and Display only. Replaces final URLs. Omitted lists stay unchanged. For Performance Max use assetGroup.finalUrl.
+     * @param string[]|null $youtube_video_ids Replaces YOUTUBE_VIDEO assets with existing YouTube video ids. Video uploads and arbitrary video URLs are not supported.
      *
      * @return self
      */
-    public function setFinalUrls($final_urls)
+    public function setYoutubeVideoIds($youtube_video_ids)
     {
-        if (is_null($final_urls)) {
-            throw new \InvalidArgumentException('non-nullable final_urls cannot be null');
+        if (is_null($youtube_video_ids)) {
+            throw new \InvalidArgumentException('non-nullable youtube_video_ids cannot be null');
         }
 
-
-        if ((count($final_urls) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $final_urls when calling UpdateAdRequest., number of items must be greater than or equal to 1.');
+        if ((count($youtube_video_ids) > 5)) {
+            throw new \InvalidArgumentException('invalid value for $youtube_video_ids when calling GooglePmaxAssetGroupUpdate., number of items must be less than or equal to 5.');
         }
-        $this->container['final_urls'] = $final_urls;
-
-        return $this;
-    }
-
-    /**
-     * Gets asset_group
-     *
-     * @return \Zernio\Model\GooglePmaxAssetGroupUpdate|null
-     */
-    public function getAssetGroup()
-    {
-        return $this->container['asset_group'];
-    }
-
-    /**
-     * Sets asset_group
-     *
-     * @param \Zernio\Model\GooglePmaxAssetGroupUpdate|null $asset_group Google Performance Max only. Replaces whole asset roles on the ad's asset group. Returns 422 on any other platform or channel.
-     *
-     * @return self
-     */
-    public function setAssetGroup($asset_group)
-    {
-        if (is_null($asset_group)) {
-            throw new \InvalidArgumentException('non-nullable asset_group cannot be null');
+        if ((count($youtube_video_ids) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $youtube_video_ids when calling GooglePmaxAssetGroupUpdate., number of items must be greater than or equal to 1.');
         }
-        $this->container['asset_group'] = $asset_group;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets budget
-     *
-     * @return \Zernio\Model\UpdateAdRequestBudget|null
-     */
-    public function getBudget()
-    {
-        return $this->container['budget'];
-    }
-
-    /**
-     * Sets budget
-     *
-     * @param \Zernio\Model\UpdateAdRequestBudget|null $budget budget
-     *
-     * @return self
-     */
-    public function setBudget($budget)
-    {
-        if (is_null($budget)) {
-            throw new \InvalidArgumentException('non-nullable budget cannot be null');
-        }
-        $this->container['budget'] = $budget;
-
-        return $this;
-    }
-
-    /**
-     * Gets targeting
-     *
-     * @return \Zernio\Model\UpdateAdRequestTargeting|null
-     */
-    public function getTargeting()
-    {
-        return $this->container['targeting'];
-    }
-
-    /**
-     * Sets targeting
-     *
-     * @param \Zernio\Model\UpdateAdRequestTargeting|null $targeting targeting
-     *
-     * @return self
-     */
-    public function setTargeting($targeting)
-    {
-        if (is_null($targeting)) {
-            throw new \InvalidArgumentException('non-nullable targeting cannot be null');
-        }
-        $this->container['targeting'] = $targeting;
-
-        return $this;
-    }
-
-    /**
-     * Gets creative
-     *
-     * @return \Zernio\Model\UpdateAdRequestCreative|null
-     */
-    public function getCreative()
-    {
-        return $this->container['creative'];
-    }
-
-    /**
-     * Sets creative
-     *
-     * @param \Zernio\Model\UpdateAdRequestCreative|null $creative creative
-     *
-     * @return self
-     */
-    public function setCreative($creative)
-    {
-        if (is_null($creative)) {
-            throw new \InvalidArgumentException('non-nullable creative cannot be null');
-        }
-        $this->container['creative'] = $creative;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name Rename the ad. Now propagated to Meta (POST /{ad-id}); non-Meta platforms return 501.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling UpdateAdRequest., must be smaller than or equal to 255.');
-        }
-
-        $this->container['name'] = $name;
+        $this->container['youtube_video_ids'] = $youtube_video_ids;
 
         return $this;
     }

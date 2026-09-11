@@ -1707,6 +1707,8 @@ Class | Method | HTTP request | Description
 - [GooglePmaxAssetGroupAssetsInner](docs/Model/GooglePmaxAssetGroupAssetsInner.md)
 - [GooglePmaxAssetGroupInput](docs/Model/GooglePmaxAssetGroupInput.md)
 - [GooglePmaxAssetGroupInputImages](docs/Model/GooglePmaxAssetGroupInputImages.md)
+- [GooglePmaxAssetGroupUpdate](docs/Model/GooglePmaxAssetGroupUpdate.md)
+- [GooglePmaxAssetGroupUpdateImages](docs/Model/GooglePmaxAssetGroupUpdateImages.md)
 - [GoogleRsaDescription](docs/Model/GoogleRsaDescription.md)
 - [GoogleRsaHeadline](docs/Model/GoogleRsaHeadline.md)
 - [GoogleSitelink](docs/Model/GoogleSitelink.md)

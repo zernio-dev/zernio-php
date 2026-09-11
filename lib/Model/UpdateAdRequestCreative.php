@@ -62,6 +62,9 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
         'promotion' => '\Zernio\Model\MetaPromotion',
         'creative_features' => 'array<string,string>',
         'headline' => 'string',
+        'long_headline' => 'string',
+        'business_name' => 'string',
+        'square_image_url' => 'string',
         'body' => 'string',
         'description' => 'string',
         'call_to_action' => 'string',
@@ -83,6 +86,9 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
         'promotion' => null,
         'creative_features' => null,
         'headline' => null,
+        'long_headline' => null,
+        'business_name' => null,
+        'square_image_url' => 'uri',
         'body' => null,
         'description' => null,
         'call_to_action' => null,
@@ -102,6 +108,9 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
         'promotion' => false,
         'creative_features' => false,
         'headline' => false,
+        'long_headline' => false,
+        'business_name' => false,
+        'square_image_url' => false,
         'body' => false,
         'description' => false,
         'call_to_action' => false,
@@ -201,6 +210,9 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
         'promotion' => 'promotion',
         'creative_features' => 'creativeFeatures',
         'headline' => 'headline',
+        'long_headline' => 'longHeadline',
+        'business_name' => 'businessName',
+        'square_image_url' => 'squareImageUrl',
         'body' => 'body',
         'description' => 'description',
         'call_to_action' => 'callToAction',
@@ -220,6 +232,9 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
         'promotion' => 'setPromotion',
         'creative_features' => 'setCreativeFeatures',
         'headline' => 'setHeadline',
+        'long_headline' => 'setLongHeadline',
+        'business_name' => 'setBusinessName',
+        'square_image_url' => 'setSquareImageUrl',
         'body' => 'setBody',
         'description' => 'setDescription',
         'call_to_action' => 'setCallToAction',
@@ -239,6 +254,9 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
         'promotion' => 'getPromotion',
         'creative_features' => 'getCreativeFeatures',
         'headline' => 'getHeadline',
+        'long_headline' => 'getLongHeadline',
+        'business_name' => 'getBusinessName',
+        'square_image_url' => 'getSquareImageUrl',
         'body' => 'getBody',
         'description' => 'getDescription',
         'call_to_action' => 'getCallToAction',
@@ -324,6 +342,9 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('promotion', $data ?? [], null);
         $this->setIfExists('creative_features', $data ?? [], null);
         $this->setIfExists('headline', $data ?? [], null);
+        $this->setIfExists('long_headline', $data ?? [], null);
+        $this->setIfExists('business_name', $data ?? [], null);
+        $this->setIfExists('square_image_url', $data ?? [], null);
         $this->setIfExists('body', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('call_to_action', $data ?? [], null);
@@ -360,6 +381,22 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['long_headline']) && (mb_strlen($this->container['long_headline']) > 90)) {
+            $invalidProperties[] = "invalid value for 'long_headline', the character length must be smaller than or equal to 90.";
+        }
+
+        if (!is_null($this->container['long_headline']) && (mb_strlen($this->container['long_headline']) < 1)) {
+            $invalidProperties[] = "invalid value for 'long_headline', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['business_name']) && (mb_strlen($this->container['business_name']) > 25)) {
+            $invalidProperties[] = "invalid value for 'business_name', the character length must be smaller than or equal to 25.";
+        }
+
+        if (!is_null($this->container['business_name']) && (mb_strlen($this->container['business_name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'business_name', the character length must be bigger than or equal to 1.";
+        }
 
         if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 255)) {
             $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 255.";
@@ -466,6 +503,101 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable headline cannot be null');
         }
         $this->container['headline'] = $headline;
+
+        return $this;
+    }
+
+    /**
+     * Gets long_headline
+     *
+     * @return string|null
+     */
+    public function getLongHeadline()
+    {
+        return $this->container['long_headline'];
+    }
+
+    /**
+     * Sets long_headline
+     *
+     * @param string|null $long_headline Google Display only. Replaces the responsive display ad's long headline.
+     *
+     * @return self
+     */
+    public function setLongHeadline($long_headline)
+    {
+        if (is_null($long_headline)) {
+            throw new \InvalidArgumentException('non-nullable long_headline cannot be null');
+        }
+        if ((mb_strlen($long_headline) > 90)) {
+            throw new \InvalidArgumentException('invalid length for $long_headline when calling UpdateAdRequestCreative., must be smaller than or equal to 90.');
+        }
+        if ((mb_strlen($long_headline) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $long_headline when calling UpdateAdRequestCreative., must be bigger than or equal to 1.');
+        }
+
+        $this->container['long_headline'] = $long_headline;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_name
+     *
+     * @return string|null
+     */
+    public function getBusinessName()
+    {
+        return $this->container['business_name'];
+    }
+
+    /**
+     * Sets business_name
+     *
+     * @param string|null $business_name Google Display only. Replaces the responsive display ad's business name.
+     *
+     * @return self
+     */
+    public function setBusinessName($business_name)
+    {
+        if (is_null($business_name)) {
+            throw new \InvalidArgumentException('non-nullable business_name cannot be null');
+        }
+        if ((mb_strlen($business_name) > 25)) {
+            throw new \InvalidArgumentException('invalid length for $business_name when calling UpdateAdRequestCreative., must be smaller than or equal to 25.');
+        }
+        if ((mb_strlen($business_name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $business_name when calling UpdateAdRequestCreative., must be bigger than or equal to 1.');
+        }
+
+        $this->container['business_name'] = $business_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets square_image_url
+     *
+     * @return string|null
+     */
+    public function getSquareImageUrl()
+    {
+        return $this->container['square_image_url'];
+    }
+
+    /**
+     * Sets square_image_url
+     *
+     * @param string|null $square_image_url Google Display only. Uploaded as a new square (1:1) marketing image asset that replaces the current one.
+     *
+     * @return self
+     */
+    public function setSquareImageUrl($square_image_url)
+    {
+        if (is_null($square_image_url)) {
+            throw new \InvalidArgumentException('non-nullable square_image_url cannot be null');
+        }
+        $this->container['square_image_url'] = $square_image_url;
 
         return $this;
     }
