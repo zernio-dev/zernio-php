@@ -1,6 +1,6 @@
 <?php
 /**
- * GetLeadForm200ResponseForm
+ * MetaLeadForm
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetLeadForm200ResponseForm Class Doc Comment
+ * MetaLeadForm Class Doc Comment
  *
  * @category Class
+ * @description A Meta Lead Gen form as Graph returns it, in Meta&#39;s own snake_case. Read through GET /v1/ads/lead-forms/{formId}. Every setting POST /v1/ads/lead-forms writes is present here, so a form can be diffed against what was created and drift from edits made in Meta&#39;s form builder is detectable. A compound field is omitted entirely when the form has no value for it, and &#x60;fields&#x60; narrows the selection.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetLeadForm200ResponseForm implements ModelInterface, ArrayAccess, \JsonSerializable
+class MetaLeadForm implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class GetLeadForm200ResponseForm implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getLeadForm_200_response_form';
+    protected static $openAPIModelName = 'MetaLeadForm';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

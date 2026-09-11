@@ -1090,15 +1090,16 @@ class LeadGenApi
      *
      * @param  string $form_id Numeric form id (Meta leadgen_form id or LinkedIn leadForm id). (required)
      * @param  string $account_id Connected facebook or linkedin ads account id (selects the platform). (required)
+     * @param  string|null $fields Meta only. A Graph field selection passed through verbatim to GET /{form-id}, replacing the default projection, so fields Meta adds later are reachable without an API change. Field names, commas and {} expansion only; anything else (Graph field modifiers such as .limit(), or characters that could open another query parameter) is a 400. Ownership of the form is verified before the selection runs, so this cannot reach any Page but the one accountId manages. Unknown field names are rejected by Meta as a 400. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLeadForm'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetLeadForm200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
-    public function getLeadForm($form_id, $account_id, string $contentType = self::contentTypes['getLeadForm'][0])
+    public function getLeadForm($form_id, $account_id, $fields = null, string $contentType = self::contentTypes['getLeadForm'][0])
     {
-        list($response) = $this->getLeadFormWithHttpInfo($form_id, $account_id, $contentType);
+        list($response) = $this->getLeadFormWithHttpInfo($form_id, $account_id, $fields, $contentType);
         return $response;
     }
 
@@ -1109,15 +1110,16 @@ class LeadGenApi
      *
      * @param  string $form_id Numeric form id (Meta leadgen_form id or LinkedIn leadForm id). (required)
      * @param  string $account_id Connected facebook or linkedin ads account id (selects the platform). (required)
+     * @param  string|null $fields Meta only. A Graph field selection passed through verbatim to GET /{form-id}, replacing the default projection, so fields Meta adds later are reachable without an API change. Field names, commas and {} expansion only; anything else (Graph field modifiers such as .limit(), or characters that could open another query parameter) is a 400. Ownership of the form is verified before the selection runs, so this cannot reach any Page but the one accountId manages. Unknown field names are rejected by Meta as a 400. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLeadForm'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetLeadForm200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getLeadFormWithHttpInfo($form_id, $account_id, string $contentType = self::contentTypes['getLeadForm'][0])
+    public function getLeadFormWithHttpInfo($form_id, $account_id, $fields = null, string $contentType = self::contentTypes['getLeadForm'][0])
     {
-        $request = $this->getLeadFormRequest($form_id, $account_id, $contentType);
+        $request = $this->getLeadFormRequest($form_id, $account_id, $fields, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1223,14 +1225,15 @@ class LeadGenApi
      *
      * @param  string $form_id Numeric form id (Meta leadgen_form id or LinkedIn leadForm id). (required)
      * @param  string $account_id Connected facebook or linkedin ads account id (selects the platform). (required)
+     * @param  string|null $fields Meta only. A Graph field selection passed through verbatim to GET /{form-id}, replacing the default projection, so fields Meta adds later are reachable without an API change. Field names, commas and {} expansion only; anything else (Graph field modifiers such as .limit(), or characters that could open another query parameter) is a 400. Ownership of the form is verified before the selection runs, so this cannot reach any Page but the one accountId manages. Unknown field names are rejected by Meta as a 400. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLeadForm'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getLeadFormAsync($form_id, $account_id, string $contentType = self::contentTypes['getLeadForm'][0])
+    public function getLeadFormAsync($form_id, $account_id, $fields = null, string $contentType = self::contentTypes['getLeadForm'][0])
     {
-        return $this->getLeadFormAsyncWithHttpInfo($form_id, $account_id, $contentType)
+        return $this->getLeadFormAsyncWithHttpInfo($form_id, $account_id, $fields, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1245,15 +1248,16 @@ class LeadGenApi
      *
      * @param  string $form_id Numeric form id (Meta leadgen_form id or LinkedIn leadForm id). (required)
      * @param  string $account_id Connected facebook or linkedin ads account id (selects the platform). (required)
+     * @param  string|null $fields Meta only. A Graph field selection passed through verbatim to GET /{form-id}, replacing the default projection, so fields Meta adds later are reachable without an API change. Field names, commas and {} expansion only; anything else (Graph field modifiers such as .limit(), or characters that could open another query parameter) is a 400. Ownership of the form is verified before the selection runs, so this cannot reach any Page but the one accountId manages. Unknown field names are rejected by Meta as a 400. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLeadForm'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getLeadFormAsyncWithHttpInfo($form_id, $account_id, string $contentType = self::contentTypes['getLeadForm'][0])
+    public function getLeadFormAsyncWithHttpInfo($form_id, $account_id, $fields = null, string $contentType = self::contentTypes['getLeadForm'][0])
     {
         $returnType = '\Zernio\Model\GetLeadForm200Response';
-        $request = $this->getLeadFormRequest($form_id, $account_id, $contentType);
+        $request = $this->getLeadFormRequest($form_id, $account_id, $fields, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1296,12 +1300,13 @@ class LeadGenApi
      *
      * @param  string $form_id Numeric form id (Meta leadgen_form id or LinkedIn leadForm id). (required)
      * @param  string $account_id Connected facebook or linkedin ads account id (selects the platform). (required)
+     * @param  string|null $fields Meta only. A Graph field selection passed through verbatim to GET /{form-id}, replacing the default projection, so fields Meta adds later are reachable without an API change. Field names, commas and {} expansion only; anything else (Graph field modifiers such as .limit(), or characters that could open another query parameter) is a 400. Ownership of the form is verified before the selection runs, so this cannot reach any Page but the one accountId manages. Unknown field names are rejected by Meta as a 400. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLeadForm'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getLeadFormRequest($form_id, $account_id, string $contentType = self::contentTypes['getLeadForm'][0])
+    public function getLeadFormRequest($form_id, $account_id, $fields = null, string $contentType = self::contentTypes['getLeadForm'][0])
     {
 
         // verify the required parameter 'form_id' is set
@@ -1318,6 +1323,10 @@ class LeadGenApi
             );
         }
 
+        if ($fields !== null && strlen($fields) > 2000) {
+            throw new \InvalidArgumentException('invalid length for "$fields" when calling LeadGenApi.getLeadForm, must be smaller than or equal to 2000.');
+        }
+        
 
         $resourcePath = '/v1/ads/lead-forms/{formId}';
         $formParams = [];
@@ -1334,6 +1343,15 @@ class LeadGenApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
 
 

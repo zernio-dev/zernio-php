@@ -810,6 +810,7 @@ docs/Model/GetInstagramStoryInsights200ResponseDataMetrics.md
 docs/Model/GetIosFourteenCampaignLimits200Response.md
 docs/Model/GetIosFourteenCampaignLimits200ResponseLimits.md
 docs/Model/GetLeadForm200Response.md
+docs/Model/GetLeadForm200ResponseForm.md
 docs/Model/GetLinkedInAggregateAnalytics200Response.md
 docs/Model/GetLinkedInAggregateAnalytics400Response.md
 docs/Model/GetLinkedInAggregateAnalytics402Response.md
@@ -1308,8 +1309,14 @@ docs/Model/MediaItem.md
 docs/Model/MediaUploadResponse.md
 docs/Model/MetaAdsPlatformData.md
 docs/Model/MetaInstagramIdentityRef.md
+docs/Model/MetaLeadForm.md
+docs/Model/MetaLeadFormContextCard.md
+docs/Model/MetaLeadFormLegalContent.md
+docs/Model/MetaLeadFormLegalContentPrivacyPolicy.md
 docs/Model/MetaLeadFormPlatformData.md
 docs/Model/MetaLeadFormPlatformDataContextCard.md
+docs/Model/MetaLeadFormQuestionsInner.md
+docs/Model/MetaLeadFormThankYouPage.md
 docs/Model/Money.md
 docs/Model/MoneyAmount.md
 docs/Model/MoveAccountToProfile200Response.md
@@ -2911,6 +2918,7 @@ lib/Model/GetInstagramStoryInsights200ResponseDataMetrics.php
 lib/Model/GetIosFourteenCampaignLimits200Response.php
 lib/Model/GetIosFourteenCampaignLimits200ResponseLimits.php
 lib/Model/GetLeadForm200Response.php
+lib/Model/GetLeadForm200ResponseForm.php
 lib/Model/GetLinkedInAggregateAnalytics200Response.php
 lib/Model/GetLinkedInAggregateAnalytics400Response.php
 lib/Model/GetLinkedInAggregateAnalytics402Response.php
@@ -3409,8 +3417,14 @@ lib/Model/MediaItem.php
 lib/Model/MediaUploadResponse.php
 lib/Model/MetaAdsPlatformData.php
 lib/Model/MetaInstagramIdentityRef.php
+lib/Model/MetaLeadForm.php
+lib/Model/MetaLeadFormContextCard.php
+lib/Model/MetaLeadFormLegalContent.php
+lib/Model/MetaLeadFormLegalContentPrivacyPolicy.php
 lib/Model/MetaLeadFormPlatformData.php
 lib/Model/MetaLeadFormPlatformDataContextCard.php
+lib/Model/MetaLeadFormQuestionsInner.php
+lib/Model/MetaLeadFormThankYouPage.php
 lib/Model/ModelInterface.php
 lib/Model/Money.php
 lib/Model/MoneyAmount.php
@@ -4203,3 +4217,9 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/MetaLeadFormContextCardTest.php
+test/Model/MetaLeadFormLegalContentPrivacyPolicyTest.php
+test/Model/MetaLeadFormLegalContentTest.php
+test/Model/MetaLeadFormQuestionsInnerTest.php
+test/Model/MetaLeadFormTest.php
+test/Model/MetaLeadFormThankYouPageTest.php

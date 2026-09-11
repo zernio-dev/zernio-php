@@ -1,6 +1,6 @@
 <?php
 /**
- * GetLeadForm200Response
+ * MetaLeadFormLegalContentPrivacyPolicy
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetLeadForm200Response Class Doc Comment
+ * MetaLeadFormLegalContentPrivacyPolicy Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class MetaLeadFormLegalContentPrivacyPolicy implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getLeadForm_200_response';
+    protected static $openAPIModelName = 'MetaLeadForm_legal_content_privacy_policy';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'form' => '\Zernio\Model\GetLeadForm200ResponseForm'
+        'url' => 'string',
+        'link_text' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'form' => null
+        'url' => 'uri',
+        'link_text' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-        'form' => false
+        'url' => false,
+        'link_text' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'form' => 'form'
+        'url' => 'url',
+        'link_text' => 'link_text'
     ];
 
     /**
@@ -180,8 +180,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'form' => 'setForm'
+        'url' => 'setUrl',
+        'link_text' => 'setLinkText'
     ];
 
     /**
@@ -190,8 +190,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'form' => 'getForm'
+        'url' => 'getUrl',
+        'link_text' => 'getLinkText'
     ];
 
     /**
@@ -251,8 +251,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('form', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
+        $this->setIfExists('link_text', $data ?? [], null);
     }
 
     /**
@@ -298,55 +298,55 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets status
+     * Gets url
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getUrl()
     {
-        return $this->container['status'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets status
+     * Sets url
      *
-     * @param string|null $status status
+     * @param string|null $url url
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setUrl($url)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
-        $this->container['status'] = $status;
+        $this->container['url'] = $url;
 
         return $this;
     }
 
     /**
-     * Gets form
+     * Gets link_text
      *
-     * @return \Zernio\Model\GetLeadForm200ResponseForm|null
+     * @return string|null
      */
-    public function getForm()
+    public function getLinkText()
     {
-        return $this->container['form'];
+        return $this->container['link_text'];
     }
 
     /**
-     * Sets form
+     * Sets link_text
      *
-     * @param \Zernio\Model\GetLeadForm200ResponseForm|null $form form
+     * @param string|null $link_text link_text
      *
      * @return self
      */
-    public function setForm($form)
+    public function setLinkText($link_text)
     {
-        if (is_null($form)) {
-            throw new \InvalidArgumentException('non-nullable form cannot be null');
+        if (is_null($link_text)) {
+            throw new \InvalidArgumentException('non-nullable link_text cannot be null');
         }
-        $this->container['form'] = $form;
+        $this->container['link_text'] = $link_text;
 
         return $this;
     }

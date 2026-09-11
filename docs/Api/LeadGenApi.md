@@ -23,7 +23,7 @@ archiveLeadForm($form_id, $account_id): \Zernio\Model\ArchiveLeadForm200Response
 
 Archive a lead form
 
-Neither platform hard-deletes a form; this archives it (Meta status=ARCHIVED; LinkedIn state=ARCHIVED via PARTIAL_UPDATE).
+Neither platform hard-deletes a form; this archives it (Meta status=ARCHIVED; LinkedIn state=ARCHIVED via PARTIAL_UPDATE). Meta forms must belong to the Page the accountId manages.
 
 ### Example
 
@@ -202,10 +202,12 @@ try {
 ## `getLeadForm()`
 
 ```php
-getLeadForm($form_id, $account_id): \Zernio\Model\GetLeadForm200Response
+getLeadForm($form_id, $account_id, $fields): \Zernio\Model\GetLeadForm200Response
 ```
 
 Get a lead form
+
+Returns the full form, including the thank-you page, so a form can be diffed against what was created. Meta forms are scoped to the Page the accountId manages: a form on any other Page is a 404, never a read.
 
 ### Example
 
@@ -226,9 +228,10 @@ $apiInstance = new Zernio\Api\LeadGenApi(
 );
 $form_id = 'form_id_example'; // string | Numeric form id (Meta leadgen_form id or LinkedIn leadForm id).
 $account_id = 'account_id_example'; // string | Connected facebook or linkedin ads account id (selects the platform).
+$fields = name,thank_you_page{title,body,button_type,website_url}; // string | Meta only. A Graph field selection passed through verbatim to GET /{form-id}, replacing the default projection, so fields Meta adds later are reachable without an API change. Field names, commas and {} expansion only; anything else (Graph field modifiers such as .limit(), or characters that could open another query parameter) is a 400. Ownership of the form is verified before the selection runs, so this cannot reach any Page but the one accountId manages. Unknown field names are rejected by Meta as a 400.
 
 try {
-    $result = $apiInstance->getLeadForm($form_id, $account_id);
+    $result = $apiInstance->getLeadForm($form_id, $account_id, $fields);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadGenApi->getLeadForm: ', $e->getMessage(), PHP_EOL;
@@ -241,6 +244,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **form_id** | **string**| Numeric form id (Meta leadgen_form id or LinkedIn leadForm id). | |
 | **account_id** | **string**| Connected facebook or linkedin ads account id (selects the platform). | |
+| **fields** | **string**| Meta only. A Graph field selection passed through verbatim to GET /{form-id}, replacing the default projection, so fields Meta adds later are reachable without an API change. Field names, commas and {} expansion only; anything else (Graph field modifiers such as .limit(), or characters that could open another query parameter) is a 400. Ownership of the form is verified before the selection runs, so this cannot reach any Page but the one accountId manages. Unknown field names are rejected by Meta as a 400. | [optional] |
 
 ### Return type
 

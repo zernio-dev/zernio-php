@@ -1,6 +1,6 @@
 <?php
 /**
- * GetLeadForm200Response
+ * MetaLeadFormThankYouPage
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetLeadForm200Response Class Doc Comment
+ * MetaLeadFormThankYouPage Class Doc Comment
  *
  * @category Class
+ * @description The form&#39;s single ending page, mirroring the thankYou* create fields. Meta has exactly one per form; there is no multiple-ending-page API (thank_you_pages and ending_pages are not Graph fields).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class MetaLeadFormThankYouPage implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getLeadForm_200_response';
+    protected static $openAPIModelName = 'MetaLeadForm_thank_you_page';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,17 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'string',
+        'title' => 'string',
+        'body' => 'string',
+        'button_text' => 'string',
+        'button_type' => 'string',
+        'website_url' => 'string',
+        'enable_messenger' => 'bool',
         'status' => 'string',
-        'form' => '\Zernio\Model\GetLeadForm200ResponseForm'
+        'lead_gen_use_case' => 'string',
+        'business_phone_number' => 'string',
+        'country_code' => 'string'
     ];
 
     /**
@@ -70,8 +80,17 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => null,
+        'title' => null,
+        'body' => null,
+        'button_text' => null,
+        'button_type' => null,
+        'website_url' => 'uri',
+        'enable_messenger' => null,
         'status' => null,
-        'form' => null
+        'lead_gen_use_case' => null,
+        'business_phone_number' => null,
+        'country_code' => null
     ];
 
     /**
@@ -80,8 +99,17 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'id' => false,
+        'title' => false,
+        'body' => false,
+        'button_text' => false,
+        'button_type' => false,
+        'website_url' => false,
+        'enable_messenger' => false,
         'status' => false,
-        'form' => false
+        'lead_gen_use_case' => false,
+        'business_phone_number' => false,
+        'country_code' => false
     ];
 
     /**
@@ -170,8 +198,17 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
+        'title' => 'title',
+        'body' => 'body',
+        'button_text' => 'button_text',
+        'button_type' => 'button_type',
+        'website_url' => 'website_url',
+        'enable_messenger' => 'enable_messenger',
         'status' => 'status',
-        'form' => 'form'
+        'lead_gen_use_case' => 'lead_gen_use_case',
+        'business_phone_number' => 'business_phone_number',
+        'country_code' => 'country_code'
     ];
 
     /**
@@ -180,8 +217,17 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
+        'title' => 'setTitle',
+        'body' => 'setBody',
+        'button_text' => 'setButtonText',
+        'button_type' => 'setButtonType',
+        'website_url' => 'setWebsiteUrl',
+        'enable_messenger' => 'setEnableMessenger',
         'status' => 'setStatus',
-        'form' => 'setForm'
+        'lead_gen_use_case' => 'setLeadGenUseCase',
+        'business_phone_number' => 'setBusinessPhoneNumber',
+        'country_code' => 'setCountryCode'
     ];
 
     /**
@@ -190,8 +236,17 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
+        'title' => 'getTitle',
+        'body' => 'getBody',
+        'button_text' => 'getButtonText',
+        'button_type' => 'getButtonType',
+        'website_url' => 'getWebsiteUrl',
+        'enable_messenger' => 'getEnableMessenger',
         'status' => 'getStatus',
-        'form' => 'getForm'
+        'lead_gen_use_case' => 'getLeadGenUseCase',
+        'business_phone_number' => 'getBusinessPhoneNumber',
+        'country_code' => 'getCountryCode'
     ];
 
     /**
@@ -251,8 +306,17 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('body', $data ?? [], null);
+        $this->setIfExists('button_text', $data ?? [], null);
+        $this->setIfExists('button_type', $data ?? [], null);
+        $this->setIfExists('website_url', $data ?? [], null);
+        $this->setIfExists('enable_messenger', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('form', $data ?? [], null);
+        $this->setIfExists('lead_gen_use_case', $data ?? [], null);
+        $this->setIfExists('business_phone_number', $data ?? [], null);
+        $this->setIfExists('country_code', $data ?? [], null);
     }
 
     /**
@@ -298,6 +362,195 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title title
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
+        }
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets body
+     *
+     * @return string|null
+     */
+    public function getBody()
+    {
+        return $this->container['body'];
+    }
+
+    /**
+     * Sets body
+     *
+     * @param string|null $body body
+     *
+     * @return self
+     */
+    public function setBody($body)
+    {
+        if (is_null($body)) {
+            throw new \InvalidArgumentException('non-nullable body cannot be null');
+        }
+        $this->container['body'] = $body;
+
+        return $this;
+    }
+
+    /**
+     * Gets button_text
+     *
+     * @return string|null
+     */
+    public function getButtonText()
+    {
+        return $this->container['button_text'];
+    }
+
+    /**
+     * Sets button_text
+     *
+     * @param string|null $button_text button_text
+     *
+     * @return self
+     */
+    public function setButtonText($button_text)
+    {
+        if (is_null($button_text)) {
+            throw new \InvalidArgumentException('non-nullable button_text cannot be null');
+        }
+        $this->container['button_text'] = $button_text;
+
+        return $this;
+    }
+
+    /**
+     * Gets button_type
+     *
+     * @return string|null
+     */
+    public function getButtonType()
+    {
+        return $this->container['button_type'];
+    }
+
+    /**
+     * Sets button_type
+     *
+     * @param string|null $button_type button_type
+     *
+     * @return self
+     */
+    public function setButtonType($button_type)
+    {
+        if (is_null($button_type)) {
+            throw new \InvalidArgumentException('non-nullable button_type cannot be null');
+        }
+        $this->container['button_type'] = $button_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets website_url
+     *
+     * @return string|null
+     */
+    public function getWebsiteUrl()
+    {
+        return $this->container['website_url'];
+    }
+
+    /**
+     * Sets website_url
+     *
+     * @param string|null $website_url website_url
+     *
+     * @return self
+     */
+    public function setWebsiteUrl($website_url)
+    {
+        if (is_null($website_url)) {
+            throw new \InvalidArgumentException('non-nullable website_url cannot be null');
+        }
+        $this->container['website_url'] = $website_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_messenger
+     *
+     * @return bool|null
+     */
+    public function getEnableMessenger()
+    {
+        return $this->container['enable_messenger'];
+    }
+
+    /**
+     * Sets enable_messenger
+     *
+     * @param bool|null $enable_messenger enable_messenger
+     *
+     * @return self
+     */
+    public function setEnableMessenger($enable_messenger)
+    {
+        if (is_null($enable_messenger)) {
+            throw new \InvalidArgumentException('non-nullable enable_messenger cannot be null');
+        }
+        $this->container['enable_messenger'] = $enable_messenger;
+
+        return $this;
+    }
+
+    /**
      * Gets status
      *
      * @return string|null
@@ -325,28 +578,82 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets form
+     * Gets lead_gen_use_case
      *
-     * @return \Zernio\Model\GetLeadForm200ResponseForm|null
+     * @return string|null
      */
-    public function getForm()
+    public function getLeadGenUseCase()
     {
-        return $this->container['form'];
+        return $this->container['lead_gen_use_case'];
     }
 
     /**
-     * Sets form
+     * Sets lead_gen_use_case
      *
-     * @param \Zernio\Model\GetLeadForm200ResponseForm|null $form form
+     * @param string|null $lead_gen_use_case lead_gen_use_case
      *
      * @return self
      */
-    public function setForm($form)
+    public function setLeadGenUseCase($lead_gen_use_case)
     {
-        if (is_null($form)) {
-            throw new \InvalidArgumentException('non-nullable form cannot be null');
+        if (is_null($lead_gen_use_case)) {
+            throw new \InvalidArgumentException('non-nullable lead_gen_use_case cannot be null');
         }
-        $this->container['form'] = $form;
+        $this->container['lead_gen_use_case'] = $lead_gen_use_case;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_phone_number
+     *
+     * @return string|null
+     */
+    public function getBusinessPhoneNumber()
+    {
+        return $this->container['business_phone_number'];
+    }
+
+    /**
+     * Sets business_phone_number
+     *
+     * @param string|null $business_phone_number business_phone_number
+     *
+     * @return self
+     */
+    public function setBusinessPhoneNumber($business_phone_number)
+    {
+        if (is_null($business_phone_number)) {
+            throw new \InvalidArgumentException('non-nullable business_phone_number cannot be null');
+        }
+        $this->container['business_phone_number'] = $business_phone_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets country_code
+     *
+     * @return string|null
+     */
+    public function getCountryCode()
+    {
+        return $this->container['country_code'];
+    }
+
+    /**
+     * Sets country_code
+     *
+     * @param string|null $country_code country_code
+     *
+     * @return self
+     */
+    public function setCountryCode($country_code)
+    {
+        if (is_null($country_code)) {
+            throw new \InvalidArgumentException('non-nullable country_code cannot be null');
+        }
+        $this->container['country_code'] = $country_code;
 
         return $this;
     }

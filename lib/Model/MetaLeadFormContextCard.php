@@ -1,6 +1,6 @@
 <?php
 /**
- * GetLeadForm200Response
+ * MetaLeadFormContextCard
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetLeadForm200Response Class Doc Comment
+ * MetaLeadFormContextCard Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class MetaLeadFormContextCard implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getLeadForm_200_response';
+    protected static $openAPIModelName = 'MetaLeadForm_context_card';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,12 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'form' => '\Zernio\Model\GetLeadForm200ResponseForm'
+        'id' => 'string',
+        'title' => 'string',
+        'style' => 'string',
+        'content' => 'string[]',
+        'button_text' => 'string',
+        'cover_photo' => '\Zernio\Model\CreateTestLead200ResponseTestLead'
     ];
 
     /**
@@ -70,8 +74,12 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'form' => null
+        'id' => null,
+        'title' => null,
+        'style' => null,
+        'content' => null,
+        'button_text' => null,
+        'cover_photo' => null
     ];
 
     /**
@@ -80,8 +88,12 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-        'form' => false
+        'id' => false,
+        'title' => false,
+        'style' => false,
+        'content' => false,
+        'button_text' => false,
+        'cover_photo' => false
     ];
 
     /**
@@ -170,8 +182,12 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'form' => 'form'
+        'id' => 'id',
+        'title' => 'title',
+        'style' => 'style',
+        'content' => 'content',
+        'button_text' => 'button_text',
+        'cover_photo' => 'cover_photo'
     ];
 
     /**
@@ -180,8 +196,12 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'form' => 'setForm'
+        'id' => 'setId',
+        'title' => 'setTitle',
+        'style' => 'setStyle',
+        'content' => 'setContent',
+        'button_text' => 'setButtonText',
+        'cover_photo' => 'setCoverPhoto'
     ];
 
     /**
@@ -190,8 +210,12 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'form' => 'getForm'
+        'id' => 'getId',
+        'title' => 'getTitle',
+        'style' => 'getStyle',
+        'content' => 'getContent',
+        'button_text' => 'getButtonText',
+        'cover_photo' => 'getCoverPhoto'
     ];
 
     /**
@@ -235,6 +259,21 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$openAPIModelName;
     }
 
+    public const STYLE_LIST_STYLE = 'LIST_STYLE';
+    public const STYLE_PARAGRAPH_STYLE = 'PARAGRAPH_STYLE';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStyleAllowableValues()
+    {
+        return [
+            self::STYLE_LIST_STYLE,
+            self::STYLE_PARAGRAPH_STYLE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -251,8 +290,12 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('form', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('style', $data ?? [], null);
+        $this->setIfExists('content', $data ?? [], null);
+        $this->setIfExists('button_text', $data ?? [], null);
+        $this->setIfExists('cover_photo', $data ?? [], null);
     }
 
     /**
@@ -282,6 +325,15 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getStyleAllowableValues();
+        if (!is_null($this->container['style']) && !in_array($this->container['style'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'style', must be one of '%s'",
+                $this->container['style'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -298,55 +350,173 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets status
+     * Gets id
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getId()
     {
-        return $this->container['status'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets status
+     * Sets id
      *
-     * @param string|null $status status
+     * @param string|null $id id
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setId($id)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['status'] = $status;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets form
+     * Gets title
      *
-     * @return \Zernio\Model\GetLeadForm200ResponseForm|null
+     * @return string|null
      */
-    public function getForm()
+    public function getTitle()
     {
-        return $this->container['form'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets form
+     * Sets title
      *
-     * @param \Zernio\Model\GetLeadForm200ResponseForm|null $form form
+     * @param string|null $title title
      *
      * @return self
      */
-    public function setForm($form)
+    public function setTitle($title)
     {
-        if (is_null($form)) {
-            throw new \InvalidArgumentException('non-nullable form cannot be null');
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
         }
-        $this->container['form'] = $form;
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets style
+     *
+     * @return string|null
+     */
+    public function getStyle()
+    {
+        return $this->container['style'];
+    }
+
+    /**
+     * Sets style
+     *
+     * @param string|null $style style
+     *
+     * @return self
+     */
+    public function setStyle($style)
+    {
+        if (is_null($style)) {
+            throw new \InvalidArgumentException('non-nullable style cannot be null');
+        }
+        $allowedValues = $this->getStyleAllowableValues();
+        if (!in_array($style, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'style', must be one of '%s'",
+                    $style,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['style'] = $style;
+
+        return $this;
+    }
+
+    /**
+     * Gets content
+     *
+     * @return string[]|null
+     */
+    public function getContent()
+    {
+        return $this->container['content'];
+    }
+
+    /**
+     * Sets content
+     *
+     * @param string[]|null $content content
+     *
+     * @return self
+     */
+    public function setContent($content)
+    {
+        if (is_null($content)) {
+            throw new \InvalidArgumentException('non-nullable content cannot be null');
+        }
+        $this->container['content'] = $content;
+
+        return $this;
+    }
+
+    /**
+     * Gets button_text
+     *
+     * @return string|null
+     */
+    public function getButtonText()
+    {
+        return $this->container['button_text'];
+    }
+
+    /**
+     * Sets button_text
+     *
+     * @param string|null $button_text button_text
+     *
+     * @return self
+     */
+    public function setButtonText($button_text)
+    {
+        if (is_null($button_text)) {
+            throw new \InvalidArgumentException('non-nullable button_text cannot be null');
+        }
+        $this->container['button_text'] = $button_text;
+
+        return $this;
+    }
+
+    /**
+     * Gets cover_photo
+     *
+     * @return \Zernio\Model\CreateTestLead200ResponseTestLead|null
+     */
+    public function getCoverPhoto()
+    {
+        return $this->container['cover_photo'];
+    }
+
+    /**
+     * Sets cover_photo
+     *
+     * @param \Zernio\Model\CreateTestLead200ResponseTestLead|null $cover_photo cover_photo
+     *
+     * @return self
+     */
+    public function setCoverPhoto($cover_photo)
+    {
+        if (is_null($cover_photo)) {
+            throw new \InvalidArgumentException('non-nullable cover_photo cannot be null');
+        }
+        $this->container['cover_photo'] = $cover_photo;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * GetLeadForm200Response
+ * MetaLeadFormQuestionsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetLeadForm200Response Class Doc Comment
+ * MetaLeadFormQuestionsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class MetaLeadFormQuestionsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getLeadForm_200_response';
+    protected static $openAPIModelName = 'MetaLeadForm_questions_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,15 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'form' => '\Zernio\Model\GetLeadForm200ResponseForm'
+        'id' => 'string',
+        'key' => 'string',
+        'label' => 'string',
+        'type' => 'string',
+        'inline_context' => 'string',
+        'options' => '\Zernio\Model\BoostPostRequestTrackingUrlTagsInner[]',
+        'conditional_questions_group_id' => 'string',
+        'conditional_questions_choices' => 'object[]',
+        'dependent_conditional_questions' => 'object[]'
     ];
 
     /**
@@ -70,8 +77,15 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'form' => null
+        'id' => null,
+        'key' => null,
+        'label' => null,
+        'type' => null,
+        'inline_context' => null,
+        'options' => null,
+        'conditional_questions_group_id' => null,
+        'conditional_questions_choices' => null,
+        'dependent_conditional_questions' => null
     ];
 
     /**
@@ -80,8 +94,15 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-        'form' => false
+        'id' => false,
+        'key' => false,
+        'label' => false,
+        'type' => false,
+        'inline_context' => false,
+        'options' => false,
+        'conditional_questions_group_id' => false,
+        'conditional_questions_choices' => false,
+        'dependent_conditional_questions' => false
     ];
 
     /**
@@ -170,8 +191,15 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'form' => 'form'
+        'id' => 'id',
+        'key' => 'key',
+        'label' => 'label',
+        'type' => 'type',
+        'inline_context' => 'inline_context',
+        'options' => 'options',
+        'conditional_questions_group_id' => 'conditional_questions_group_id',
+        'conditional_questions_choices' => 'conditional_questions_choices',
+        'dependent_conditional_questions' => 'dependent_conditional_questions'
     ];
 
     /**
@@ -180,8 +208,15 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'form' => 'setForm'
+        'id' => 'setId',
+        'key' => 'setKey',
+        'label' => 'setLabel',
+        'type' => 'setType',
+        'inline_context' => 'setInlineContext',
+        'options' => 'setOptions',
+        'conditional_questions_group_id' => 'setConditionalQuestionsGroupId',
+        'conditional_questions_choices' => 'setConditionalQuestionsChoices',
+        'dependent_conditional_questions' => 'setDependentConditionalQuestions'
     ];
 
     /**
@@ -190,8 +225,15 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'form' => 'getForm'
+        'id' => 'getId',
+        'key' => 'getKey',
+        'label' => 'getLabel',
+        'type' => 'getType',
+        'inline_context' => 'getInlineContext',
+        'options' => 'getOptions',
+        'conditional_questions_group_id' => 'getConditionalQuestionsGroupId',
+        'conditional_questions_choices' => 'getConditionalQuestionsChoices',
+        'dependent_conditional_questions' => 'getDependentConditionalQuestions'
     ];
 
     /**
@@ -251,8 +293,15 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('form', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('key', $data ?? [], null);
+        $this->setIfExists('label', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('inline_context', $data ?? [], null);
+        $this->setIfExists('options', $data ?? [], null);
+        $this->setIfExists('conditional_questions_group_id', $data ?? [], null);
+        $this->setIfExists('conditional_questions_choices', $data ?? [], null);
+        $this->setIfExists('dependent_conditional_questions', $data ?? [], null);
     }
 
     /**
@@ -298,55 +347,244 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets status
+     * Gets id
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getId()
     {
-        return $this->container['status'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets status
+     * Sets id
      *
-     * @param string|null $status status
+     * @param string|null $id id
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setId($id)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['status'] = $status;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets form
+     * Gets key
      *
-     * @return \Zernio\Model\GetLeadForm200ResponseForm|null
+     * @return string|null
      */
-    public function getForm()
+    public function getKey()
     {
-        return $this->container['form'];
+        return $this->container['key'];
     }
 
     /**
-     * Sets form
+     * Sets key
      *
-     * @param \Zernio\Model\GetLeadForm200ResponseForm|null $form form
+     * @param string|null $key key
      *
      * @return self
      */
-    public function setForm($form)
+    public function setKey($key)
     {
-        if (is_null($form)) {
-            throw new \InvalidArgumentException('non-nullable form cannot be null');
+        if (is_null($key)) {
+            throw new \InvalidArgumentException('non-nullable key cannot be null');
         }
-        $this->container['form'] = $form;
+        $this->container['key'] = $key;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string|null
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string|null $label label
+     *
+     * @return self
+     */
+    public function setLabel($label)
+    {
+        if (is_null($label)) {
+            throw new \InvalidArgumentException('non-nullable label cannot be null');
+        }
+        $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type EMAIL, PHONE, FULL_NAME, CUSTOM, ...
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets inline_context
+     *
+     * @return string|null
+     */
+    public function getInlineContext()
+    {
+        return $this->container['inline_context'];
+    }
+
+    /**
+     * Sets inline_context
+     *
+     * @param string|null $inline_context inline_context
+     *
+     * @return self
+     */
+    public function setInlineContext($inline_context)
+    {
+        if (is_null($inline_context)) {
+            throw new \InvalidArgumentException('non-nullable inline_context cannot be null');
+        }
+        $this->container['inline_context'] = $inline_context;
+
+        return $this;
+    }
+
+    /**
+     * Gets options
+     *
+     * @return \Zernio\Model\BoostPostRequestTrackingUrlTagsInner[]|null
+     */
+    public function getOptions()
+    {
+        return $this->container['options'];
+    }
+
+    /**
+     * Sets options
+     *
+     * @param \Zernio\Model\BoostPostRequestTrackingUrlTagsInner[]|null $options options
+     *
+     * @return self
+     */
+    public function setOptions($options)
+    {
+        if (is_null($options)) {
+            throw new \InvalidArgumentException('non-nullable options cannot be null');
+        }
+        $this->container['options'] = $options;
+
+        return $this;
+    }
+
+    /**
+     * Gets conditional_questions_group_id
+     *
+     * @return string|null
+     */
+    public function getConditionalQuestionsGroupId()
+    {
+        return $this->container['conditional_questions_group_id'];
+    }
+
+    /**
+     * Sets conditional_questions_group_id
+     *
+     * @param string|null $conditional_questions_group_id READ-ONLY. Conditional logic can only be authored in Meta form builder; Meta has no create parameter for it.
+     *
+     * @return self
+     */
+    public function setConditionalQuestionsGroupId($conditional_questions_group_id)
+    {
+        if (is_null($conditional_questions_group_id)) {
+            throw new \InvalidArgumentException('non-nullable conditional_questions_group_id cannot be null');
+        }
+        $this->container['conditional_questions_group_id'] = $conditional_questions_group_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets conditional_questions_choices
+     *
+     * @return object[]|null
+     */
+    public function getConditionalQuestionsChoices()
+    {
+        return $this->container['conditional_questions_choices'];
+    }
+
+    /**
+     * Sets conditional_questions_choices
+     *
+     * @param object[]|null $conditional_questions_choices READ-ONLY. Which answers reveal the conditional group.
+     *
+     * @return self
+     */
+    public function setConditionalQuestionsChoices($conditional_questions_choices)
+    {
+        if (is_null($conditional_questions_choices)) {
+            throw new \InvalidArgumentException('non-nullable conditional_questions_choices cannot be null');
+        }
+        $this->container['conditional_questions_choices'] = $conditional_questions_choices;
+
+        return $this;
+    }
+
+    /**
+     * Gets dependent_conditional_questions
+     *
+     * @return object[]|null
+     */
+    public function getDependentConditionalQuestions()
+    {
+        return $this->container['dependent_conditional_questions'];
+    }
+
+    /**
+     * Sets dependent_conditional_questions
+     *
+     * @param object[]|null $dependent_conditional_questions READ-ONLY. Questions revealed by the conditional group.
+     *
+     * @return self
+     */
+    public function setDependentConditionalQuestions($dependent_conditional_questions)
+    {
+        if (is_null($dependent_conditional_questions)) {
+            throw new \InvalidArgumentException('non-nullable dependent_conditional_questions cannot be null');
+        }
+        $this->container['dependent_conditional_questions'] = $dependent_conditional_questions;
 
         return $this;
     }

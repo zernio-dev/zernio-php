@@ -1,6 +1,6 @@
 <?php
 /**
- * GetLeadForm200Response
+ * MetaLeadFormLegalContent
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetLeadForm200Response Class Doc Comment
+ * MetaLeadFormLegalContent Class Doc Comment
  *
  * @category Class
+ * @description Privacy policy and custom disclaimer as Meta stores them.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class MetaLeadFormLegalContent implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getLeadForm_200_response';
+    protected static $openAPIModelName = 'MetaLeadForm_legal_content';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,9 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'form' => '\Zernio\Model\GetLeadForm200ResponseForm'
+        'id' => 'string',
+        'privacy_policy' => '\Zernio\Model\MetaLeadFormLegalContentPrivacyPolicy',
+        'custom_disclaimer' => 'object'
     ];
 
     /**
@@ -70,8 +72,9 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'form' => null
+        'id' => null,
+        'privacy_policy' => null,
+        'custom_disclaimer' => null
     ];
 
     /**
@@ -80,8 +83,9 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-        'form' => false
+        'id' => false,
+        'privacy_policy' => false,
+        'custom_disclaimer' => false
     ];
 
     /**
@@ -170,8 +174,9 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'form' => 'form'
+        'id' => 'id',
+        'privacy_policy' => 'privacy_policy',
+        'custom_disclaimer' => 'custom_disclaimer'
     ];
 
     /**
@@ -180,8 +185,9 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'form' => 'setForm'
+        'id' => 'setId',
+        'privacy_policy' => 'setPrivacyPolicy',
+        'custom_disclaimer' => 'setCustomDisclaimer'
     ];
 
     /**
@@ -190,8 +196,9 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'form' => 'getForm'
+        'id' => 'getId',
+        'privacy_policy' => 'getPrivacyPolicy',
+        'custom_disclaimer' => 'getCustomDisclaimer'
     ];
 
     /**
@@ -251,8 +258,9 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('form', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('privacy_policy', $data ?? [], null);
+        $this->setIfExists('custom_disclaimer', $data ?? [], null);
     }
 
     /**
@@ -298,55 +306,82 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets status
+     * Gets id
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getId()
     {
-        return $this->container['status'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets status
+     * Sets id
      *
-     * @param string|null $status status
+     * @param string|null $id id
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setId($id)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['status'] = $status;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets form
+     * Gets privacy_policy
      *
-     * @return \Zernio\Model\GetLeadForm200ResponseForm|null
+     * @return \Zernio\Model\MetaLeadFormLegalContentPrivacyPolicy|null
      */
-    public function getForm()
+    public function getPrivacyPolicy()
     {
-        return $this->container['form'];
+        return $this->container['privacy_policy'];
     }
 
     /**
-     * Sets form
+     * Sets privacy_policy
      *
-     * @param \Zernio\Model\GetLeadForm200ResponseForm|null $form form
+     * @param \Zernio\Model\MetaLeadFormLegalContentPrivacyPolicy|null $privacy_policy privacy_policy
      *
      * @return self
      */
-    public function setForm($form)
+    public function setPrivacyPolicy($privacy_policy)
     {
-        if (is_null($form)) {
-            throw new \InvalidArgumentException('non-nullable form cannot be null');
+        if (is_null($privacy_policy)) {
+            throw new \InvalidArgumentException('non-nullable privacy_policy cannot be null');
         }
-        $this->container['form'] = $form;
+        $this->container['privacy_policy'] = $privacy_policy;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_disclaimer
+     *
+     * @return object|null
+     */
+    public function getCustomDisclaimer()
+    {
+        return $this->container['custom_disclaimer'];
+    }
+
+    /**
+     * Sets custom_disclaimer
+     *
+     * @param object|null $custom_disclaimer Set in Meta form builder only; there is no create parameter for it.
+     *
+     * @return self
+     */
+    public function setCustomDisclaimer($custom_disclaimer)
+    {
+        if (is_null($custom_disclaimer)) {
+            throw new \InvalidArgumentException('non-nullable custom_disclaimer cannot be null');
+        }
+        $this->container['custom_disclaimer'] = $custom_disclaimer;
 
         return $this;
     }
