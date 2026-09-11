@@ -4203,5 +4203,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetPageWebhookSubscription200ResponseTest.php
-test/Model/ResyncPageWebhookSubscription200ResponseTest.php
