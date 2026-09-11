@@ -65,6 +65,8 @@ class UpdateAdRequestTargeting implements ModelInterface, ArrayAccess, \JsonSeri
         'age_min' => 'int',
         'age_max' => 'int',
         'countries' => 'string[]',
+        'locations' => '\Zernio\Model\UpdateAdRequestTargetingLocations',
+        'languages' => 'string[]',
         'interests' => '\Zernio\Model\UpdateAdRequestTargetingInterestsInner[]',
         'advantage_audience' => 'int'
     ];
@@ -83,6 +85,8 @@ class UpdateAdRequestTargeting implements ModelInterface, ArrayAccess, \JsonSeri
         'age_min' => null,
         'age_max' => null,
         'countries' => null,
+        'locations' => null,
+        'languages' => null,
         'interests' => null,
         'advantage_audience' => null
     ];
@@ -99,6 +103,8 @@ class UpdateAdRequestTargeting implements ModelInterface, ArrayAccess, \JsonSeri
         'age_min' => false,
         'age_max' => false,
         'countries' => false,
+        'locations' => false,
+        'languages' => false,
         'interests' => false,
         'advantage_audience' => false
     ];
@@ -195,6 +201,8 @@ class UpdateAdRequestTargeting implements ModelInterface, ArrayAccess, \JsonSeri
         'age_min' => 'ageMin',
         'age_max' => 'ageMax',
         'countries' => 'countries',
+        'locations' => 'locations',
+        'languages' => 'languages',
         'interests' => 'interests',
         'advantage_audience' => 'advantage_audience'
     ];
@@ -211,6 +219,8 @@ class UpdateAdRequestTargeting implements ModelInterface, ArrayAccess, \JsonSeri
         'age_min' => 'setAgeMin',
         'age_max' => 'setAgeMax',
         'countries' => 'setCountries',
+        'locations' => 'setLocations',
+        'languages' => 'setLanguages',
         'interests' => 'setInterests',
         'advantage_audience' => 'setAdvantageAudience'
     ];
@@ -227,6 +237,8 @@ class UpdateAdRequestTargeting implements ModelInterface, ArrayAccess, \JsonSeri
         'age_min' => 'getAgeMin',
         'age_max' => 'getAgeMax',
         'countries' => 'getCountries',
+        'locations' => 'getLocations',
+        'languages' => 'getLanguages',
         'interests' => 'getInterests',
         'advantage_audience' => 'getAdvantageAudience'
     ];
@@ -309,6 +321,8 @@ class UpdateAdRequestTargeting implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('age_min', $data ?? [], null);
         $this->setIfExists('age_max', $data ?? [], null);
         $this->setIfExists('countries', $data ?? [], null);
+        $this->setIfExists('locations', $data ?? [], null);
+        $this->setIfExists('languages', $data ?? [], null);
         $this->setIfExists('interests', $data ?? [], null);
         $this->setIfExists('advantage_audience', $data ?? [], null);
     }
@@ -544,7 +558,7 @@ class UpdateAdRequestTargeting implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets countries
      *
-     * @param string[]|null $countries countries
+     * @param string[]|null $countries ISO 3166-1 alpha-2 codes. On Google this is the FULL new country set for the campaign (same contract as `locations`); on LinkedIn it replaces the campaign's geo criteria.
      *
      * @return self
      */
@@ -554,6 +568,60 @@ class UpdateAdRequestTargeting implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable countries cannot be null');
         }
         $this->container['countries'] = $countries;
+
+        return $this;
+    }
+
+    /**
+     * Gets locations
+     *
+     * @return \Zernio\Model\UpdateAdRequestTargetingLocations|null
+     */
+    public function getLocations()
+    {
+        return $this->container['locations'];
+    }
+
+    /**
+     * Sets locations
+     *
+     * @param \Zernio\Model\UpdateAdRequestTargetingLocations|null $locations locations
+     *
+     * @return self
+     */
+    public function setLocations($locations)
+    {
+        if (is_null($locations)) {
+            throw new \InvalidArgumentException('non-nullable locations cannot be null');
+        }
+        $this->container['locations'] = $locations;
+
+        return $this;
+    }
+
+    /**
+     * Gets languages
+     *
+     * @return string[]|null
+     */
+    public function getLanguages()
+    {
+        return $this->container['languages'];
+    }
+
+    /**
+     * Sets languages
+     *
+     * @param string[]|null $languages Google only. The FULL new language set for the campaign, as Google language codes (ISO 639-1, plus variants such as `zh_CN`). An unknown code returns 400.
+     *
+     * @return self
+     */
+    public function setLanguages($languages)
+    {
+        if (is_null($languages)) {
+            throw new \InvalidArgumentException('non-nullable languages cannot be null');
+        }
+        $this->container['languages'] = $languages;
 
         return $this;
     }

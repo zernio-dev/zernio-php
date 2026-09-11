@@ -1724,6 +1724,7 @@ docs/Model/UpdateAdRequestTargetingDevicesInnerOneOf.md
 docs/Model/UpdateAdRequestTargetingInterestsInner.md
 docs/Model/UpdateAdRequestTargetingKeywordsInner.md
 docs/Model/UpdateAdRequestTargetingKeywordsInnerOneOf.md
+docs/Model/UpdateAdRequestTargetingLocations.md
 docs/Model/UpdateAdSet200Response.md
 docs/Model/UpdateAdSetRequest.md
 docs/Model/UpdateAdSetRequestBudget.md
@@ -3823,6 +3824,7 @@ lib/Model/UpdateAdRequestTargetingDevicesInnerOneOf.php
 lib/Model/UpdateAdRequestTargetingInterestsInner.php
 lib/Model/UpdateAdRequestTargetingKeywordsInner.php
 lib/Model/UpdateAdRequestTargetingKeywordsInnerOneOf.php
+lib/Model/UpdateAdRequestTargetingLocations.php
 lib/Model/UpdateAdSet200Response.php
 lib/Model/UpdateAdSetRequest.php
 lib/Model/UpdateAdSetRequestBudget.php
@@ -4197,3 +4199,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/UpdateAdRequestTargetingLocationsTest.php
