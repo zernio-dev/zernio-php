@@ -394,7 +394,7 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
     /**
      * Sets type
      *
-     * @param string $type What the result is (e.g. city, region, country, zip, metro, location, interest, behavior, income).
+     * @param string $type What the result is (e.g. city, region, country, zip, metro, location, interest, behavior, income, industry, jobFunction, seniority, companySize).
      *
      * @return self
      */

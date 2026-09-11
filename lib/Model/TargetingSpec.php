@@ -1109,7 +1109,7 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets industries
      *
-     * @param string[]|null $industries LinkedIn B2B only. Industry URN id fragments.
+     * @param string[]|null $industries LinkedIn B2B only. Industry URN id fragments, or the full urn:li:industry:* URN from /v1/ads/targeting/search?dimension=industry.
      *
      * @return self
      */
@@ -1136,7 +1136,7 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets company_sizes
      *
-     * @param string[]|null $company_sizes LinkedIn B2B only.
+     * @param string[]|null $company_sizes LinkedIn B2B only. Single-letter size codes (A to I), or the full urn:li:staffCountRange:* URN from /v1/ads/targeting/search?dimension=companySize.
      *
      * @return self
      */
@@ -1163,7 +1163,7 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets seniorities
      *
-     * @param string[]|null $seniorities LinkedIn B2B only.
+     * @param string[]|null $seniorities LinkedIn B2B only. Seniority URN id fragments, or the full urn:li:seniority:* URN from /v1/ads/targeting/search?dimension=seniority.
      *
      * @return self
      */
@@ -1190,7 +1190,7 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets job_functions
      *
-     * @param string[]|null $job_functions LinkedIn B2B only.
+     * @param string[]|null $job_functions LinkedIn B2B only. Function URN id fragments, or the full urn:li:function:* URN from /v1/ads/targeting/search?dimension=jobFunction.
      *
      * @return self
      */

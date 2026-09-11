@@ -4197,4 +4197,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/OnWhatsAppNumberActionRequiredRequestRequirementsInnerTest.php
