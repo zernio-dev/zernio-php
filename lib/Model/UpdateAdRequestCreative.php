@@ -59,7 +59,7 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'promotion' => 'Null',
+        'promotion' => 'object',
         'creative_features' => 'array<string,string>',
         'headline' => 'string',
         'long_headline' => 'string',
@@ -105,7 +105,7 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'promotion' => false,
+        'promotion' => true,
         'creative_features' => false,
         'headline' => false,
         'long_headline' => false,
@@ -420,7 +420,7 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets promotion
      *
-     * @return Null|null
+     * @return object|null
      */
     public function getPromotion()
     {
@@ -430,14 +430,21 @@ class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets promotion
      *
-     * @param Null|null $promotion Not supported. Meta validates creative_sourcing_spec.promotion_metadata_spec on the create call and then discards it, so a Promotion set through the Marketing API never reaches the creative. Any object is rejected with 400 invalid_field_value. Send null or omit the field, and set the Promotion on the ad in Ads Manager. Verified on 2026-09-11 across Graph v19.0 to v25.0 and every write path.
+     * @param object|null $promotion Not supported. Meta validates creative_sourcing_spec.promotion_metadata_spec on the create call and then discards it, so a Promotion set through the Marketing API never reaches the creative. Any object is rejected with 400 invalid_field_value. Send null or omit the field, and set the Promotion on the ad in Ads Manager. Verified on 2026-09-11 across Graph v19.0 to v25.0 and every write path.
      *
      * @return self
      */
     public function setPromotion($promotion)
     {
         if (is_null($promotion)) {
-            throw new \InvalidArgumentException('non-nullable promotion cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'promotion');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('promotion', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['promotion'] = $promotion;
 
