@@ -639,6 +639,7 @@ docs/Model/GetAdAccountFinance200Response.md
 docs/Model/GetAdAccountFinance200ResponseFundingSource.md
 docs/Model/GetAdAnalytics202Response.md
 docs/Model/GetAdAudience200Response.md
+docs/Model/GetAdCampaignDetails200Response.md
 docs/Model/GetAdComments200Response.md
 docs/Model/GetAdComments200ResponseMeta.md
 docs/Model/GetAdComments200ResponsePagination.md
@@ -2747,6 +2748,7 @@ lib/Model/GetAdAccountFinance200Response.php
 lib/Model/GetAdAccountFinance200ResponseFundingSource.php
 lib/Model/GetAdAnalytics202Response.php
 lib/Model/GetAdAudience200Response.php
+lib/Model/GetAdCampaignDetails200Response.php
 lib/Model/GetAdComments200Response.php
 lib/Model/GetAdComments200ResponseMeta.php
 lib/Model/GetAdComments200ResponsePagination.php
@@ -4217,9 +4219,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/MetaLeadFormContextCardTest.php
-test/Model/MetaLeadFormLegalContentPrivacyPolicyTest.php
-test/Model/MetaLeadFormLegalContentTest.php
-test/Model/MetaLeadFormQuestionsInnerTest.php
-test/Model/MetaLeadFormTest.php
-test/Model/MetaLeadFormThankYouPageTest.php
+test/Model/GetAdCampaignDetails200ResponseTest.php

@@ -150,7 +150,7 @@ class LeadGenApi
      * Archive a lead form
      *
      * @param  string $form_id Numeric form id (Meta leadgen_form id or LinkedIn leadForm id). (required)
-     * @param  string $account_id Connected facebook or linkedin ads account id (selects the platform). (required)
+     * @param  string $account_id Connected Meta ads, facebook or linkedin ads account id (selects the platform). A Meta ads connection resolves its Page through the Facebook account linked to the same profile. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveLeadForm'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -169,7 +169,7 @@ class LeadGenApi
      * Archive a lead form
      *
      * @param  string $form_id Numeric form id (Meta leadgen_form id or LinkedIn leadForm id). (required)
-     * @param  string $account_id Connected facebook or linkedin ads account id (selects the platform). (required)
+     * @param  string $account_id Connected Meta ads, facebook or linkedin ads account id (selects the platform). A Meta ads connection resolves its Page through the Facebook account linked to the same profile. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveLeadForm'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -283,7 +283,7 @@ class LeadGenApi
      * Archive a lead form
      *
      * @param  string $form_id Numeric form id (Meta leadgen_form id or LinkedIn leadForm id). (required)
-     * @param  string $account_id Connected facebook or linkedin ads account id (selects the platform). (required)
+     * @param  string $account_id Connected Meta ads, facebook or linkedin ads account id (selects the platform). A Meta ads connection resolves its Page through the Facebook account linked to the same profile. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveLeadForm'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -305,7 +305,7 @@ class LeadGenApi
      * Archive a lead form
      *
      * @param  string $form_id Numeric form id (Meta leadgen_form id or LinkedIn leadForm id). (required)
-     * @param  string $account_id Connected facebook or linkedin ads account id (selects the platform). (required)
+     * @param  string $account_id Connected Meta ads, facebook or linkedin ads account id (selects the platform). A Meta ads connection resolves its Page through the Facebook account linked to the same profile. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveLeadForm'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -356,7 +356,7 @@ class LeadGenApi
      * Create request for operation 'archiveLeadForm'
      *
      * @param  string $form_id Numeric form id (Meta leadgen_form id or LinkedIn leadForm id). (required)
-     * @param  string $account_id Connected facebook or linkedin ads account id (selects the platform). (required)
+     * @param  string $account_id Connected Meta ads, facebook or linkedin ads account id (selects the platform). A Meta ads connection resolves its Page through the Facebook account linked to the same profile. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveLeadForm'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1089,7 +1089,7 @@ class LeadGenApi
      * Get a lead form
      *
      * @param  string $form_id Numeric form id (Meta leadgen_form id or LinkedIn leadForm id). (required)
-     * @param  string $account_id Connected facebook or linkedin ads account id (selects the platform). (required)
+     * @param  string $account_id Connected Meta ads, facebook or linkedin ads account id (selects the platform). A Meta ads connection resolves its Page through the Facebook account linked to the same profile. (required)
      * @param  string|null $fields Meta only. A Graph field selection passed through verbatim to GET /{form-id}, replacing the default projection, so fields Meta adds later are reachable without an API change. Field names, commas and {} expansion only; anything else (Graph field modifiers such as .limit(), or characters that could open another query parameter) is a 400. Ownership of the form is verified before the selection runs, so this cannot reach any Page but the one accountId manages. Unknown field names are rejected by Meta as a 400. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLeadForm'] to see the possible values for this operation
      *
@@ -1109,7 +1109,7 @@ class LeadGenApi
      * Get a lead form
      *
      * @param  string $form_id Numeric form id (Meta leadgen_form id or LinkedIn leadForm id). (required)
-     * @param  string $account_id Connected facebook or linkedin ads account id (selects the platform). (required)
+     * @param  string $account_id Connected Meta ads, facebook or linkedin ads account id (selects the platform). A Meta ads connection resolves its Page through the Facebook account linked to the same profile. (required)
      * @param  string|null $fields Meta only. A Graph field selection passed through verbatim to GET /{form-id}, replacing the default projection, so fields Meta adds later are reachable without an API change. Field names, commas and {} expansion only; anything else (Graph field modifiers such as .limit(), or characters that could open another query parameter) is a 400. Ownership of the form is verified before the selection runs, so this cannot reach any Page but the one accountId manages. Unknown field names are rejected by Meta as a 400. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLeadForm'] to see the possible values for this operation
      *
@@ -1224,7 +1224,7 @@ class LeadGenApi
      * Get a lead form
      *
      * @param  string $form_id Numeric form id (Meta leadgen_form id or LinkedIn leadForm id). (required)
-     * @param  string $account_id Connected facebook or linkedin ads account id (selects the platform). (required)
+     * @param  string $account_id Connected Meta ads, facebook or linkedin ads account id (selects the platform). A Meta ads connection resolves its Page through the Facebook account linked to the same profile. (required)
      * @param  string|null $fields Meta only. A Graph field selection passed through verbatim to GET /{form-id}, replacing the default projection, so fields Meta adds later are reachable without an API change. Field names, commas and {} expansion only; anything else (Graph field modifiers such as .limit(), or characters that could open another query parameter) is a 400. Ownership of the form is verified before the selection runs, so this cannot reach any Page but the one accountId manages. Unknown field names are rejected by Meta as a 400. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLeadForm'] to see the possible values for this operation
      *
@@ -1247,7 +1247,7 @@ class LeadGenApi
      * Get a lead form
      *
      * @param  string $form_id Numeric form id (Meta leadgen_form id or LinkedIn leadForm id). (required)
-     * @param  string $account_id Connected facebook or linkedin ads account id (selects the platform). (required)
+     * @param  string $account_id Connected Meta ads, facebook or linkedin ads account id (selects the platform). A Meta ads connection resolves its Page through the Facebook account linked to the same profile. (required)
      * @param  string|null $fields Meta only. A Graph field selection passed through verbatim to GET /{form-id}, replacing the default projection, so fields Meta adds later are reachable without an API change. Field names, commas and {} expansion only; anything else (Graph field modifiers such as .limit(), or characters that could open another query parameter) is a 400. Ownership of the form is verified before the selection runs, so this cannot reach any Page but the one accountId manages. Unknown field names are rejected by Meta as a 400. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLeadForm'] to see the possible values for this operation
      *
@@ -1299,7 +1299,7 @@ class LeadGenApi
      * Create request for operation 'getLeadForm'
      *
      * @param  string $form_id Numeric form id (Meta leadgen_form id or LinkedIn leadForm id). (required)
-     * @param  string $account_id Connected facebook or linkedin ads account id (selects the platform). (required)
+     * @param  string $account_id Connected Meta ads, facebook or linkedin ads account id (selects the platform). A Meta ads connection resolves its Page through the Facebook account linked to the same profile. (required)
      * @param  string|null $fields Meta only. A Graph field selection passed through verbatim to GET /{form-id}, replacing the default projection, so fields Meta adds later are reachable without an API change. Field names, commas and {} expansion only; anything else (Graph field modifiers such as .limit(), or characters that could open another query parameter) is a 400. Ownership of the form is verified before the selection runs, so this cannot reach any Page but the one accountId manages. Unknown field names are rejected by Meta as a 400. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLeadForm'] to see the possible values for this operation
      *
@@ -1827,7 +1827,7 @@ class LeadGenApi
      *
      * List lead forms
      *
-     * @param  string $account_id Connected Facebook, Meta ads business-login or LinkedIn ads account ID. (required)
+     * @param  string $account_id Connected Meta ads, Facebook or LinkedIn ads account ID. A Meta ads connection resolves its Page through the Facebook account linked to the same profile. (required)
      * @param  string|null $ad_account_id LinkedIn only: the LinkedIn ad account id (used to resolve the owning organization). Required for LinkedIn. (optional)
      * @param  int|null $limit limit (optional, default to 25)
      * @param  string|null $cursor cursor (optional)
@@ -1848,7 +1848,7 @@ class LeadGenApi
      *
      * List lead forms
      *
-     * @param  string $account_id Connected Facebook, Meta ads business-login or LinkedIn ads account ID. (required)
+     * @param  string $account_id Connected Meta ads, Facebook or LinkedIn ads account ID. A Meta ads connection resolves its Page through the Facebook account linked to the same profile. (required)
      * @param  string|null $ad_account_id LinkedIn only: the LinkedIn ad account id (used to resolve the owning organization). Required for LinkedIn. (optional)
      * @param  int|null $limit (optional, default to 25)
      * @param  string|null $cursor (optional)
@@ -1964,7 +1964,7 @@ class LeadGenApi
      *
      * List lead forms
      *
-     * @param  string $account_id Connected Facebook, Meta ads business-login or LinkedIn ads account ID. (required)
+     * @param  string $account_id Connected Meta ads, Facebook or LinkedIn ads account ID. A Meta ads connection resolves its Page through the Facebook account linked to the same profile. (required)
      * @param  string|null $ad_account_id LinkedIn only: the LinkedIn ad account id (used to resolve the owning organization). Required for LinkedIn. (optional)
      * @param  int|null $limit (optional, default to 25)
      * @param  string|null $cursor (optional)
@@ -1988,7 +1988,7 @@ class LeadGenApi
      *
      * List lead forms
      *
-     * @param  string $account_id Connected Facebook, Meta ads business-login or LinkedIn ads account ID. (required)
+     * @param  string $account_id Connected Meta ads, Facebook or LinkedIn ads account ID. A Meta ads connection resolves its Page through the Facebook account linked to the same profile. (required)
      * @param  string|null $ad_account_id LinkedIn only: the LinkedIn ad account id (used to resolve the owning organization). Required for LinkedIn. (optional)
      * @param  int|null $limit (optional, default to 25)
      * @param  string|null $cursor (optional)
@@ -2041,7 +2041,7 @@ class LeadGenApi
     /**
      * Create request for operation 'listLeadForms'
      *
-     * @param  string $account_id Connected Facebook, Meta ads business-login or LinkedIn ads account ID. (required)
+     * @param  string $account_id Connected Meta ads, Facebook or LinkedIn ads account ID. A Meta ads connection resolves its Page through the Facebook account linked to the same profile. (required)
      * @param  string|null $ad_account_id LinkedIn only: the LinkedIn ad account id (used to resolve the owning organization). Required for LinkedIn. (optional)
      * @param  int|null $limit (optional, default to 25)
      * @param  string|null $cursor (optional)

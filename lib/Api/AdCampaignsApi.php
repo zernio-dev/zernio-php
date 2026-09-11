@@ -123,6 +123,9 @@ class AdCampaignsApi
         'getAd' => [
             'application/json',
         ],
+        'getAdCampaignDetails' => [
+            'application/json',
+        ],
         'getAdSetDetails' => [
             'application/json',
         ],
@@ -5368,6 +5371,370 @@ class AdCampaignsApi
             $resourcePath = str_replace(
                 '{' . 'adId' . '}',
                 ObjectSerializer::toPathValue($ad_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAdCampaignDetails
+     *
+     * Get live campaign details
+     *
+     * @param  string $campaign_id Meta campaign id (platformCampaignId). (required)
+     * @param  string $account_id Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. (required)
+     * @param  string|null $fields Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdCampaignDetails'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\GetAdCampaignDetails200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     */
+    public function getAdCampaignDetails($campaign_id, $account_id, $fields = null, string $contentType = self::contentTypes['getAdCampaignDetails'][0])
+    {
+        list($response) = $this->getAdCampaignDetailsWithHttpInfo($campaign_id, $account_id, $fields, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getAdCampaignDetailsWithHttpInfo
+     *
+     * Get live campaign details
+     *
+     * @param  string $campaign_id Meta campaign id (platformCampaignId). (required)
+     * @param  string $account_id Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. (required)
+     * @param  string|null $fields Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdCampaignDetails'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\GetAdCampaignDetails200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAdCampaignDetailsWithHttpInfo($campaign_id, $account_id, $fields = null, string $contentType = self::contentTypes['getAdCampaignDetails'][0])
+    {
+        $request = $this->getAdCampaignDetailsRequest($campaign_id, $account_id, $fields, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetAdCampaignDetails200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetAdCampaignDetails200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetAdCampaignDetails200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAdCampaignDetailsAsync
+     *
+     * Get live campaign details
+     *
+     * @param  string $campaign_id Meta campaign id (platformCampaignId). (required)
+     * @param  string $account_id Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. (required)
+     * @param  string|null $fields Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdCampaignDetails'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAdCampaignDetailsAsync($campaign_id, $account_id, $fields = null, string $contentType = self::contentTypes['getAdCampaignDetails'][0])
+    {
+        return $this->getAdCampaignDetailsAsyncWithHttpInfo($campaign_id, $account_id, $fields, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAdCampaignDetailsAsyncWithHttpInfo
+     *
+     * Get live campaign details
+     *
+     * @param  string $campaign_id Meta campaign id (platformCampaignId). (required)
+     * @param  string $account_id Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. (required)
+     * @param  string|null $fields Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdCampaignDetails'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAdCampaignDetailsAsyncWithHttpInfo($campaign_id, $account_id, $fields = null, string $contentType = self::contentTypes['getAdCampaignDetails'][0])
+    {
+        $returnType = '\Zernio\Model\GetAdCampaignDetails200Response';
+        $request = $this->getAdCampaignDetailsRequest($campaign_id, $account_id, $fields, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAdCampaignDetails'
+     *
+     * @param  string $campaign_id Meta campaign id (platformCampaignId). (required)
+     * @param  string $account_id Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. (required)
+     * @param  string|null $fields Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdCampaignDetails'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAdCampaignDetailsRequest($campaign_id, $account_id, $fields = null, string $contentType = self::contentTypes['getAdCampaignDetails'][0])
+    {
+
+        // verify the required parameter 'campaign_id' is set
+        if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaign_id when calling getAdCampaignDetails'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getAdCampaignDetails'
+            );
+        }
+
+
+
+        $resourcePath = '/v1/ads/campaigns/{campaignId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($campaign_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'campaignId' . '}',
+                ObjectSerializer::toPathValue($campaign_id),
                 $resourcePath
             );
         }

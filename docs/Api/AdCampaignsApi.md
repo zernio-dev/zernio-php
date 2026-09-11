@@ -22,6 +22,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**duplicateAdCampaign()**](AdCampaignsApi.md#duplicateAdCampaign) | **POST** /v1/ads/campaigns/{campaignId}/duplicate | Duplicate a campaign |
 | [**duplicateAdSet()**](AdCampaignsApi.md#duplicateAdSet) | **POST** /v1/ads/ad-sets/{adSetId}/duplicate | Duplicate an ad set |
 | [**getAd()**](AdCampaignsApi.md#getAd) | **GET** /v1/ads/{adId} | Get ad details |
+| [**getAdCampaignDetails()**](AdCampaignsApi.md#getAdCampaignDetails) | **GET** /v1/ads/campaigns/{campaignId} | Get live campaign details |
 | [**getAdSetDetails()**](AdCampaignsApi.md#getAdSetDetails) | **GET** /v1/ads/ad-sets/{adSetId} | Get live ad-set details |
 | [**getAdTree()**](AdCampaignsApi.md#getAdTree) | **GET** /v1/ads/tree | Get campaign tree |
 | [**getAdsTimeline()**](AdCampaignsApi.md#getAdsTimeline) | **GET** /v1/ads/timeline | Get daily account metrics |
@@ -1027,6 +1028,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetAd200Response**](../Model/GetAd200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getAdCampaignDetails()`
+
+```php
+getAdCampaignDetails($campaign_id, $account_id, $fields): \Zernio\Model\GetAdCampaignDetails200Response
+```
+
+Get live campaign details
+
+Reads one campaign live from Meta, returned verbatim, so a caller that knows a campaign id no longer has to page `GET /v1/ads/campaigns` to find it. The default projection covers name, status, objective, buying type, bid strategy, budgets, spend cap, schedule and `issues_info`. `fields` is a raw-passthrough override; unknown fields return Meta's 400 verbatim. A campaign the resolved connection cannot see comes back as Meta's own 400, not a 404.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Meta campaign id (platformCampaignId).
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token.
+$fields = id,name,status,daily_budget; // string | Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers.
+
+try {
+    $result = $apiInstance->getAdCampaignDetails($campaign_id, $account_id, $fields);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->getAdCampaignDetails: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Meta campaign id (platformCampaignId). | |
+| **account_id** | **string**| Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. | |
+| **fields** | **string**| Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetAdCampaignDetails200Response**](../Model/GetAdCampaignDetails200Response.md)
 
 ### Authorization
 
