@@ -24,6 +24,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getFacebookPages()**](ConnectApi.md#getFacebookPages) | **GET** /v1/accounts/{accountId}/facebook-page | List Facebook pages |
 | [**getGmbLocations()**](ConnectApi.md#getGmbLocations) | **GET** /v1/accounts/{accountId}/gmb-locations | List Google Business Profile locations |
 | [**getLinkedInOrganizations()**](ConnectApi.md#getLinkedInOrganizations) | **GET** /v1/accounts/{accountId}/linkedin-organizations | List LinkedIn orgs |
+| [**getPageWebhookSubscription()**](ConnectApi.md#getPageWebhookSubscription) | **GET** /v1/accounts/{accountId}/webhook-subscription | Read a Facebook Page&#39;s webhook subscription |
 | [**getPendingOAuthData()**](ConnectApi.md#getPendingOAuthData) | **GET** /v1/connect/pending-data | Get pending OAuth data |
 | [**getPinterestBoards()**](ConnectApi.md#getPinterestBoards) | **GET** /v1/accounts/{accountId}/pinterest-boards | List Pinterest boards |
 | [**getRedditFlairs()**](ConnectApi.md#getRedditFlairs) | **GET** /v1/accounts/{accountId}/reddit-flairs | List subreddit flairs |
@@ -44,6 +45,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listSlackChannels()**](ConnectApi.md#listSlackChannels) | **GET** /v1/connect/slack | List Slack channels for the channel picker |
 | [**listSnapchatProfiles()**](ConnectApi.md#listSnapchatProfiles) | **GET** /v1/connect/snapchat/select-profile | List Snapchat profiles |
 | [**listWhatsAppPhoneNumbers()**](ConnectApi.md#listWhatsAppPhoneNumbers) | **GET** /v1/connect/whatsapp/select-phone-number | List numbers for selection |
+| [**resyncPageWebhookSubscription()**](ConnectApi.md#resyncPageWebhookSubscription) | **POST** /v1/accounts/{accountId}/webhook-subscription | Re-subscribe a Facebook Page to Zernio&#39;s webhooks |
 | [**selectFacebookPage()**](ConnectApi.md#selectFacebookPage) | **POST** /v1/connect/facebook/select-page | Select Facebook page |
 | [**selectGoogleBusinessLocation()**](ConnectApi.md#selectGoogleBusinessLocation) | **POST** /v1/connect/googlebusiness/select-location | Select Google Business Profile location |
 | [**selectInstagramAccount()**](ConnectApi.md#selectInstagramAccount) | **POST** /v1/connect/instagram/select-account | Select the Page whose Instagram account to connect |
@@ -1175,6 +1177,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetLinkedInOrganizations200Response**](../Model/GetLinkedInOrganizations200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getPageWebhookSubscription()`
+
+```php
+getPageWebhookSubscription($account_id): \Zernio\Model\GetPageWebhookSubscription200Response
+```
+
+Read a Facebook Page's webhook subscription
+
+Returns the webhook fields Zernio's app is subscribed to on the connected Page, read live from Meta. Use it to confirm `leadgen` is present: a Page missing it keeps delivering every other event while lead ads stop arriving, with nothing to indicate it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+
+try {
+    $result = $apiInstance->getPageWebhookSubscription($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->getPageWebhookSubscription: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\GetPageWebhookSubscription200Response**](../Model/GetPageWebhookSubscription200Response.md)
 
 ### Authorization
 
@@ -2441,6 +2503,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListWhatsAppPhoneNumbers200Response**](../Model/ListWhatsAppPhoneNumbers200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `resyncPageWebhookSubscription()`
+
+```php
+resyncPageWebhookSubscription($account_id): \Zernio\Model\ResyncPageWebhookSubscription200Response
+```
+
+Re-subscribe a Facebook Page to Zernio's webhooks
+
+Re-sends the full field set to Meta and returns the subscription read back afterwards. Meta only honours the field set sent at subscribe time, so a Page connected before a field existed stays without it until this runs. The response reflects what Meta actually granted, not what was requested.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+
+try {
+    $result = $apiInstance->resyncPageWebhookSubscription($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->resyncPageWebhookSubscription: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\ResyncPageWebhookSubscription200Response**](../Model/ResyncPageWebhookSubscription200Response.md)
 
 ### Authorization
 

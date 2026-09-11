@@ -840,6 +840,7 @@ docs/Model/GetMediaPresignedUrl200Response.md
 docs/Model/GetMediaPresignedUrlRequest.md
 docs/Model/GetMessageAttachment200Response.md
 docs/Model/GetMessengerMenu200Response.md
+docs/Model/GetPageWebhookSubscription200Response.md
 docs/Model/GetPendingOAuthData200Response.md
 docs/Model/GetPendingOAuthData200ResponseOrganizationsInner.md
 docs/Model/GetPhoneNumber200Response.md
@@ -1450,6 +1451,7 @@ docs/Model/RespondToSmsRegistrationReview200Response.md
 docs/Model/RespondToSmsRegistrationReviewRequest.md
 docs/Model/RestoreWorkflowVersion200Response.md
 docs/Model/RestoreWorkflowVersion200ResponseWorkflow.md
+docs/Model/ResyncPageWebhookSubscription200Response.md
 docs/Model/RetryPost207Response.md
 docs/Model/RetweetPost200Response.md
 docs/Model/RetweetPostRequest.md
@@ -2939,6 +2941,7 @@ lib/Model/GetMediaPresignedUrl200Response.php
 lib/Model/GetMediaPresignedUrlRequest.php
 lib/Model/GetMessageAttachment200Response.php
 lib/Model/GetMessengerMenu200Response.php
+lib/Model/GetPageWebhookSubscription200Response.php
 lib/Model/GetPendingOAuthData200Response.php
 lib/Model/GetPendingOAuthData200ResponseOrganizationsInner.php
 lib/Model/GetPhoneNumber200Response.php
@@ -3550,6 +3553,7 @@ lib/Model/RespondToSmsRegistrationReview200Response.php
 lib/Model/RespondToSmsRegistrationReviewRequest.php
 lib/Model/RestoreWorkflowVersion200Response.php
 lib/Model/RestoreWorkflowVersion200ResponseWorkflow.php
+lib/Model/ResyncPageWebhookSubscription200Response.php
 lib/Model/RetryPost207Response.php
 lib/Model/RetweetPost200Response.php
 lib/Model/RetweetPostRequest.php
@@ -4199,3 +4203,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetPageWebhookSubscription200ResponseTest.php
+test/Model/ResyncPageWebhookSubscription200ResponseTest.php

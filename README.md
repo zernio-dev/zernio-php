@@ -375,6 +375,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**getFacebookPages**](docs/Api/ConnectApi.md#getfacebookpages) | **GET** /v1/accounts/{accountId}/facebook-page | List Facebook pages
 *ConnectApi* | [**getGmbLocations**](docs/Api/ConnectApi.md#getgmblocations) | **GET** /v1/accounts/{accountId}/gmb-locations | List Google Business Profile locations
 *ConnectApi* | [**getLinkedInOrganizations**](docs/Api/ConnectApi.md#getlinkedinorganizations) | **GET** /v1/accounts/{accountId}/linkedin-organizations | List LinkedIn orgs
+*ConnectApi* | [**getPageWebhookSubscription**](docs/Api/ConnectApi.md#getpagewebhooksubscription) | **GET** /v1/accounts/{accountId}/webhook-subscription | Read a Facebook Page&#39;s webhook subscription
 *ConnectApi* | [**getPendingOAuthData**](docs/Api/ConnectApi.md#getpendingoauthdata) | **GET** /v1/connect/pending-data | Get pending OAuth data
 *ConnectApi* | [**getPinterestBoards**](docs/Api/ConnectApi.md#getpinterestboards) | **GET** /v1/accounts/{accountId}/pinterest-boards | List Pinterest boards
 *ConnectApi* | [**getRedditFlairs**](docs/Api/ConnectApi.md#getredditflairs) | **GET** /v1/accounts/{accountId}/reddit-flairs | List subreddit flairs
@@ -395,6 +396,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**listSlackChannels**](docs/Api/ConnectApi.md#listslackchannels) | **GET** /v1/connect/slack | List Slack channels for the channel picker
 *ConnectApi* | [**listSnapchatProfiles**](docs/Api/ConnectApi.md#listsnapchatprofiles) | **GET** /v1/connect/snapchat/select-profile | List Snapchat profiles
 *ConnectApi* | [**listWhatsAppPhoneNumbers**](docs/Api/ConnectApi.md#listwhatsappphonenumbers) | **GET** /v1/connect/whatsapp/select-phone-number | List numbers for selection
+*ConnectApi* | [**resyncPageWebhookSubscription**](docs/Api/ConnectApi.md#resyncpagewebhooksubscription) | **POST** /v1/accounts/{accountId}/webhook-subscription | Re-subscribe a Facebook Page to Zernio&#39;s webhooks
 *ConnectApi* | [**selectFacebookPage**](docs/Api/ConnectApi.md#selectfacebookpage) | **POST** /v1/connect/facebook/select-page | Select Facebook page
 *ConnectApi* | [**selectGoogleBusinessLocation**](docs/Api/ConnectApi.md#selectgooglebusinesslocation) | **POST** /v1/connect/googlebusiness/select-location | Select Google Business Profile location
 *ConnectApi* | [**selectInstagramAccount**](docs/Api/ConnectApi.md#selectinstagramaccount) | **POST** /v1/connect/instagram/select-account | Select the Page whose Instagram account to connect
@@ -1558,6 +1560,7 @@ Class | Method | HTTP request | Description
 - [GetMediaPresignedUrlRequest](docs/Model/GetMediaPresignedUrlRequest.md)
 - [GetMessageAttachment200Response](docs/Model/GetMessageAttachment200Response.md)
 - [GetMessengerMenu200Response](docs/Model/GetMessengerMenu200Response.md)
+- [GetPageWebhookSubscription200Response](docs/Model/GetPageWebhookSubscription200Response.md)
 - [GetPendingOAuthData200Response](docs/Model/GetPendingOAuthData200Response.md)
 - [GetPendingOAuthData200ResponseOrganizationsInner](docs/Model/GetPendingOAuthData200ResponseOrganizationsInner.md)
 - [GetPhoneNumber200Response](docs/Model/GetPhoneNumber200Response.md)
@@ -2168,6 +2171,7 @@ Class | Method | HTTP request | Description
 - [RespondToSmsRegistrationReviewRequest](docs/Model/RespondToSmsRegistrationReviewRequest.md)
 - [RestoreWorkflowVersion200Response](docs/Model/RestoreWorkflowVersion200Response.md)
 - [RestoreWorkflowVersion200ResponseWorkflow](docs/Model/RestoreWorkflowVersion200ResponseWorkflow.md)
+- [ResyncPageWebhookSubscription200Response](docs/Model/ResyncPageWebhookSubscription200Response.md)
 - [RetryPost207Response](docs/Model/RetryPost207Response.md)
 - [RetweetPost200Response](docs/Model/RetweetPost200Response.md)
 - [RetweetPostRequest](docs/Model/RetweetPostRequest.md)
