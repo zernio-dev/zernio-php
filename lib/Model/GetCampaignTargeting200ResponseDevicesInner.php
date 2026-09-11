@@ -409,7 +409,7 @@ class GetCampaignTargeting200ResponseDevicesInner implements ModelInterface, Arr
     /**
      * Sets bid_modifier
      *
-     * @param float|null $bid_modifier Always null on this read (see description).
+     * @param float|null $bid_modifier Google's bid adjustment for this device: null when it has none, 0 when the device is switched off, otherwise 0.1 to 10.
      *
      * @return self
      */

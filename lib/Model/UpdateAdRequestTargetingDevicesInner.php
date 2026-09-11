@@ -317,8 +317,8 @@ class UpdateAdRequestTargetingDevicesInner implements ModelInterface, ArrayAcces
             $invalidProperties[] = "invalid value for 'bid_modifier', must be smaller than or equal to 10.";
         }
 
-        if (!is_null($this->container['bid_modifier']) && ($this->container['bid_modifier'] < 0.1)) {
-            $invalidProperties[] = "invalid value for 'bid_modifier', must be bigger than or equal to 0.1.";
+        if (!is_null($this->container['bid_modifier']) && ($this->container['bid_modifier'] < 0)) {
+            $invalidProperties[] = "invalid value for 'bid_modifier', must be bigger than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -386,7 +386,7 @@ class UpdateAdRequestTargetingDevicesInner implements ModelInterface, ArrayAcces
     /**
      * Sets bid_modifier
      *
-     * @param float|null $bid_modifier Google device bid modifier, 0.1 to 10 (minus 90% to plus 900%). Omit a device to exclude it.
+     * @param float|null $bid_modifier Google device bid modifier. 0 switches the device off (minus 100%); otherwise 0.1 to 10 (minus 90% to plus 900%). Google rejects any value between 0 and 0.1.
      *
      * @return self
      */
@@ -399,8 +399,8 @@ class UpdateAdRequestTargetingDevicesInner implements ModelInterface, ArrayAcces
         if (($bid_modifier > 10)) {
             throw new \InvalidArgumentException('invalid value for $bid_modifier when calling UpdateAdRequestTargetingDevicesInner., must be smaller than or equal to 10.');
         }
-        if (($bid_modifier < 0.1)) {
-            throw new \InvalidArgumentException('invalid value for $bid_modifier when calling UpdateAdRequestTargetingDevicesInner., must be bigger than or equal to 0.1.');
+        if (($bid_modifier < 0)) {
+            throw new \InvalidArgumentException('invalid value for $bid_modifier when calling UpdateAdRequestTargetingDevicesInner., must be bigger than or equal to 0.');
         }
 
         $this->container['bid_modifier'] = $bid_modifier;
