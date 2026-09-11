@@ -9368,7 +9368,7 @@ class AdAccountsApi
      *
      * @param  string $account_id Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. (required)
      * @param  string $ad_account_id Meta ad account id (act_&lt;n&gt;). (required)
-     * @param  string|null $fields Comma-separated Graph field override (supports nested {} projections). (optional)
+     * @param  string|null $fields Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers, so a nested edge can be paged explicitly: without a .limit() modifier the expansion runs at the Meta default page size and the tail is dropped silently. (optional)
      * @param  int|null $limit Rows per page (optional, default to 25)
      * @param  string|null $after Cursor from paging.after of the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdStudies'] to see the possible values for this operation
@@ -9390,7 +9390,7 @@ class AdAccountsApi
      *
      * @param  string $account_id Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. (required)
      * @param  string $ad_account_id Meta ad account id (act_&lt;n&gt;). (required)
-     * @param  string|null $fields Comma-separated Graph field override (supports nested {} projections). (optional)
+     * @param  string|null $fields Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers, so a nested edge can be paged explicitly: without a .limit() modifier the expansion runs at the Meta default page size and the tail is dropped silently. (optional)
      * @param  int|null $limit Rows per page (optional, default to 25)
      * @param  string|null $after Cursor from paging.after of the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdStudies'] to see the possible values for this operation
@@ -9521,7 +9521,7 @@ class AdAccountsApi
      *
      * @param  string $account_id Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. (required)
      * @param  string $ad_account_id Meta ad account id (act_&lt;n&gt;). (required)
-     * @param  string|null $fields Comma-separated Graph field override (supports nested {} projections). (optional)
+     * @param  string|null $fields Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers, so a nested edge can be paged explicitly: without a .limit() modifier the expansion runs at the Meta default page size and the tail is dropped silently. (optional)
      * @param  int|null $limit Rows per page (optional, default to 25)
      * @param  string|null $after Cursor from paging.after of the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdStudies'] to see the possible values for this operation
@@ -9546,7 +9546,7 @@ class AdAccountsApi
      *
      * @param  string $account_id Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. (required)
      * @param  string $ad_account_id Meta ad account id (act_&lt;n&gt;). (required)
-     * @param  string|null $fields Comma-separated Graph field override (supports nested {} projections). (optional)
+     * @param  string|null $fields Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers, so a nested edge can be paged explicitly: without a .limit() modifier the expansion runs at the Meta default page size and the tail is dropped silently. (optional)
      * @param  int|null $limit Rows per page (optional, default to 25)
      * @param  string|null $after Cursor from paging.after of the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdStudies'] to see the possible values for this operation
@@ -9600,7 +9600,7 @@ class AdAccountsApi
      *
      * @param  string $account_id Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. (required)
      * @param  string $ad_account_id Meta ad account id (act_&lt;n&gt;). (required)
-     * @param  string|null $fields Comma-separated Graph field override (supports nested {} projections). (optional)
+     * @param  string|null $fields Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers, so a nested edge can be paged explicitly: without a .limit() modifier the expansion runs at the Meta default page size and the tail is dropped silently. (optional)
      * @param  int|null $limit Rows per page (optional, default to 25)
      * @param  string|null $after Cursor from paging.after of the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdStudies'] to see the possible values for this operation

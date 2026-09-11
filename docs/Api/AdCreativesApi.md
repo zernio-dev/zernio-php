@@ -301,7 +301,7 @@ $apiInstance = new Zernio\Api\AdCreativesApi(
 );
 $creative_id = 'creative_id_example'; // string | Platform creative id
 $account_id = 'account_id_example'; // string | Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token.
-$fields = 'fields_example'; // string | Comma-separated Graph field override (supports nested {} projections).
+$fields = id,name,status,object_story_spec{page_id,link_data{link,message}}; // string | Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers, so a nested edge can be paged explicitly: without a .limit() modifier the expansion runs at the Meta default page size and the tail is dropped silently.
 
 try {
     $result = $apiInstance->getAdCreative($creative_id, $account_id, $fields);
@@ -317,7 +317,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **creative_id** | **string**| Platform creative id | |
 | **account_id** | **string**| Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. | |
-| **fields** | **string**| Comma-separated Graph field override (supports nested {} projections). | [optional] |
+| **fields** | **string**| Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers, so a nested edge can be paged explicitly: without a .limit() modifier the expansion runs at the Meta default page size and the tail is dropped silently. | [optional] |
 
 ### Return type
 
@@ -611,7 +611,7 @@ $apiInstance = new Zernio\Api\AdCreativesApi(
 );
 $account_id = 'account_id_example'; // string | Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token.
 $ad_account_id = 'ad_account_id_example'; // string | Meta ad account id (act_<n>).
-$fields = 'fields_example'; // string | Comma-separated Graph field override (supports nested {} projections).
+$fields = id,name,status,object_story_spec{page_id,link_data{link,message}}; // string | Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers, so a nested edge can be paged explicitly: without a .limit() modifier the expansion runs at the Meta default page size and the tail is dropped silently.
 $limit = 25; // int | Rows per page
 $after = 'after_example'; // string | Cursor from paging.after of the previous page.
 
@@ -629,7 +629,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. | |
 | **ad_account_id** | **string**| Meta ad account id (act_&lt;n&gt;). | |
-| **fields** | **string**| Comma-separated Graph field override (supports nested {} projections). | [optional] |
+| **fields** | **string**| Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers, so a nested edge can be paged explicitly: without a .limit() modifier the expansion runs at the Meta default page size and the tail is dropped silently. | [optional] |
 | **limit** | **int**| Rows per page | [optional] [default to 25] |
 | **after** | **string**| Cursor from paging.after of the previous page. | [optional] |
 
@@ -679,7 +679,7 @@ $apiInstance = new Zernio\Api\AdCreativesApi(
 );
 $account_id = 'account_id_example'; // string | Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token.
 $ad_account_id = 'ad_account_id_example'; // string | Meta ad account id (act_<n>).
-$fields = 'fields_example'; // string | Comma-separated Graph field override (supports nested {} projections).
+$fields = hash,url,name,width,height,status; // string | Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers, so a nested edge can be paged explicitly: without a .limit() modifier the expansion runs at the Meta default page size and the tail is dropped silently.
 $limit = 25; // int | Rows per page
 $after = 'after_example'; // string | Cursor from paging.after of the previous page.
 
@@ -697,7 +697,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. | |
 | **ad_account_id** | **string**| Meta ad account id (act_&lt;n&gt;). | |
-| **fields** | **string**| Comma-separated Graph field override (supports nested {} projections). | [optional] |
+| **fields** | **string**| Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers, so a nested edge can be paged explicitly: without a .limit() modifier the expansion runs at the Meta default page size and the tail is dropped silently. | [optional] |
 | **limit** | **int**| Rows per page | [optional] [default to 25] |
 | **after** | **string**| Cursor from paging.after of the previous page. | [optional] |
 
@@ -747,7 +747,7 @@ $apiInstance = new Zernio\Api\AdCreativesApi(
 );
 $account_id = 'account_id_example'; // string | Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token.
 $ad_account_id = 'ad_account_id_example'; // string | Meta ad account id (act_<n>).
-$fields = 'fields_example'; // string | Comma-separated Graph field override (supports nested {} projections).
+$fields = id,title,status,thumbnails,length; // string | Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers, so a nested edge can be paged explicitly: without a .limit() modifier the expansion runs at the Meta default page size and the tail is dropped silently.
 $limit = 25; // int | Rows per page
 $after = 'after_example'; // string | Cursor from paging.after of the previous page.
 
@@ -765,7 +765,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. | |
 | **ad_account_id** | **string**| Meta ad account id (act_&lt;n&gt;). | |
-| **fields** | **string**| Comma-separated Graph field override (supports nested {} projections). | [optional] |
+| **fields** | **string**| Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers, so a nested edge can be paged explicitly: without a .limit() modifier the expansion runs at the Meta default page size and the tail is dropped silently. | [optional] |
 | **limit** | **int**| Rows per page | [optional] [default to 25] |
 | **after** | **string**| Cursor from paging.after of the previous page. | [optional] |
 

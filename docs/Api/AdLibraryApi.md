@@ -50,7 +50,7 @@ $languages = 'languages_example'; // string | Meta only. Comma-separated ISO 639
 $since = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Earliest delivery date (YYYY-MM-DD).
 $until = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Latest delivery date (YYYY-MM-DD).
 $search_type = 'KEYWORD_UNORDERED'; // string | Meta only. Whether q matches words in any order or as an exact phrase (comma-separate phrases to match all of them).
-$fields = 'fields_example'; // string | Meta only. Raw Graph projection override, e.g. add spend,impressions,demographic_distribution for political ads.
+$fields = id,page_name,ad_delivery_start_time,ad_creative_bodies; // string | Meta only. Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers, so a nested edge can be paged explicitly: without a .limit() modifier the expansion runs at the Meta default page size and the tail is dropped silently.
 $limit = 25; // int | Rows per page. LinkedIn accepts at most 25.
 $after = 'after_example'; // string | paging.after of the previous page.
 
@@ -80,7 +80,7 @@ try {
 | **since** | **\DateTime**| Earliest delivery date (YYYY-MM-DD). | [optional] |
 | **until** | **\DateTime**| Latest delivery date (YYYY-MM-DD). | [optional] |
 | **search_type** | **string**| Meta only. Whether q matches words in any order or as an exact phrase (comma-separate phrases to match all of them). | [optional] [default to &#39;KEYWORD_UNORDERED&#39;] |
-| **fields** | **string**| Meta only. Raw Graph projection override, e.g. add spend,impressions,demographic_distribution for political ads. | [optional] |
+| **fields** | **string**| Meta only. Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers, so a nested edge can be paged explicitly: without a .limit() modifier the expansion runs at the Meta default page size and the tail is dropped silently. | [optional] |
 | **limit** | **int**| Rows per page. LinkedIn accepts at most 25. | [optional] [default to 25] |
 | **after** | **string**| paging.after of the previous page. | [optional] |
 

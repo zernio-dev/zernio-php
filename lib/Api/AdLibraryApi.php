@@ -145,7 +145,7 @@ class AdLibraryApi
      * @param  \DateTime|null $since Earliest delivery date (YYYY-MM-DD). (optional)
      * @param  \DateTime|null $until Latest delivery date (YYYY-MM-DD). (optional)
      * @param  string|null $search_type Meta only. Whether q matches words in any order or as an exact phrase (comma-separate phrases to match all of them). (optional, default to 'KEYWORD_UNORDERED')
-     * @param  string|null $fields Meta only. Raw Graph projection override, e.g. add spend,impressions,demographic_distribution for political ads. (optional)
+     * @param  string|null $fields Meta only. Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers, so a nested edge can be paged explicitly: without a .limit() modifier the expansion runs at the Meta default page size and the tail is dropped silently. (optional)
      * @param  int|null $limit Rows per page. LinkedIn accepts at most 25. (optional, default to 25)
      * @param  string|null $after paging.after of the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdLibrary'] to see the possible values for this operation
@@ -179,7 +179,7 @@ class AdLibraryApi
      * @param  \DateTime|null $since Earliest delivery date (YYYY-MM-DD). (optional)
      * @param  \DateTime|null $until Latest delivery date (YYYY-MM-DD). (optional)
      * @param  string|null $search_type Meta only. Whether q matches words in any order or as an exact phrase (comma-separate phrases to match all of them). (optional, default to 'KEYWORD_UNORDERED')
-     * @param  string|null $fields Meta only. Raw Graph projection override, e.g. add spend,impressions,demographic_distribution for political ads. (optional)
+     * @param  string|null $fields Meta only. Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers, so a nested edge can be paged explicitly: without a .limit() modifier the expansion runs at the Meta default page size and the tail is dropped silently. (optional)
      * @param  int|null $limit Rows per page. LinkedIn accepts at most 25. (optional, default to 25)
      * @param  string|null $after paging.after of the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdLibrary'] to see the possible values for this operation
@@ -336,7 +336,7 @@ class AdLibraryApi
      * @param  \DateTime|null $since Earliest delivery date (YYYY-MM-DD). (optional)
      * @param  \DateTime|null $until Latest delivery date (YYYY-MM-DD). (optional)
      * @param  string|null $search_type Meta only. Whether q matches words in any order or as an exact phrase (comma-separate phrases to match all of them). (optional, default to 'KEYWORD_UNORDERED')
-     * @param  string|null $fields Meta only. Raw Graph projection override, e.g. add spend,impressions,demographic_distribution for political ads. (optional)
+     * @param  string|null $fields Meta only. Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers, so a nested edge can be paged explicitly: without a .limit() modifier the expansion runs at the Meta default page size and the tail is dropped silently. (optional)
      * @param  int|null $limit Rows per page. LinkedIn accepts at most 25. (optional, default to 25)
      * @param  string|null $after paging.after of the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdLibrary'] to see the possible values for this operation
@@ -373,7 +373,7 @@ class AdLibraryApi
      * @param  \DateTime|null $since Earliest delivery date (YYYY-MM-DD). (optional)
      * @param  \DateTime|null $until Latest delivery date (YYYY-MM-DD). (optional)
      * @param  string|null $search_type Meta only. Whether q matches words in any order or as an exact phrase (comma-separate phrases to match all of them). (optional, default to 'KEYWORD_UNORDERED')
-     * @param  string|null $fields Meta only. Raw Graph projection override, e.g. add spend,impressions,demographic_distribution for political ads. (optional)
+     * @param  string|null $fields Meta only. Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers, so a nested edge can be paged explicitly: without a .limit() modifier the expansion runs at the Meta default page size and the tail is dropped silently. (optional)
      * @param  int|null $limit Rows per page. LinkedIn accepts at most 25. (optional, default to 25)
      * @param  string|null $after paging.after of the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdLibrary'] to see the possible values for this operation
@@ -439,7 +439,7 @@ class AdLibraryApi
      * @param  \DateTime|null $since Earliest delivery date (YYYY-MM-DD). (optional)
      * @param  \DateTime|null $until Latest delivery date (YYYY-MM-DD). (optional)
      * @param  string|null $search_type Meta only. Whether q matches words in any order or as an exact phrase (comma-separate phrases to match all of them). (optional, default to 'KEYWORD_UNORDERED')
-     * @param  string|null $fields Meta only. Raw Graph projection override, e.g. add spend,impressions,demographic_distribution for political ads. (optional)
+     * @param  string|null $fields Meta only. Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers, so a nested edge can be paged explicitly: without a .limit() modifier the expansion runs at the Meta default page size and the tail is dropped silently. (optional)
      * @param  int|null $limit Rows per page. LinkedIn accepts at most 25. (optional, default to 25)
      * @param  string|null $after paging.after of the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdLibrary'] to see the possible values for this operation
