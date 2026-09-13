@@ -499,6 +499,9 @@ docs/Model/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl.md
 docs/Model/CreateWorkflow200Response.md
 docs/Model/CreateWorkflow200ResponseWorkflow.md
 docs/Model/CreateWorkflowRequest.md
+docs/Model/CreateYoutubePlaylist201Response.md
+docs/Model/CreateYoutubePlaylist201ResponsePlaylist.md
+docs/Model/CreateYoutubePlaylistRequest.md
 docs/Model/CrosspostDiscordMessage200Response.md
 docs/Model/CtwaAdRequestBody.md
 docs/Model/CtwaAdRequestBodyCitiesInner.md
@@ -2608,6 +2611,9 @@ lib/Model/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl.php
 lib/Model/CreateWorkflow200Response.php
 lib/Model/CreateWorkflow200ResponseWorkflow.php
 lib/Model/CreateWorkflowRequest.php
+lib/Model/CreateYoutubePlaylist201Response.php
+lib/Model/CreateYoutubePlaylist201ResponsePlaylist.php
+lib/Model/CreateYoutubePlaylistRequest.php
 lib/Model/CrosspostDiscordMessage200Response.php
 lib/Model/CtwaAdRequestBody.php
 lib/Model/CtwaAdRequestBodyCitiesInner.php
@@ -4219,4 +4225,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetAdCampaignDetails200ResponseTest.php
+test/Model/CreateYoutubePlaylist201ResponsePlaylistTest.php
+test/Model/CreateYoutubePlaylist201ResponseTest.php
+test/Model/CreateYoutubePlaylistRequestTest.php

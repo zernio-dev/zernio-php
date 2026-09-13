@@ -20,6 +20,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**connectWhatsAppCredentials()**](ConnectApi.md#connectWhatsAppCredentials) | **POST** /v1/connect/whatsapp/credentials | Connect WhatsApp via credentials |
 | [**connectWhatsAppEmbeddedSignup()**](ConnectApi.md#connectWhatsAppEmbeddedSignup) | **POST** /v1/connect/whatsapp/embedded-signup | Connect WhatsApp from Embedded Signup |
 | [**createPinterestBoard()**](ConnectApi.md#createPinterestBoard) | **POST** /v1/accounts/{accountId}/pinterest-boards | Create Pinterest board |
+| [**createYoutubePlaylist()**](ConnectApi.md#createYoutubePlaylist) | **POST** /v1/accounts/{accountId}/youtube-playlists | Create YouTube playlist |
 | [**getConnectUrl()**](ConnectApi.md#getConnectUrl) | **GET** /v1/connect/{platform} | Get OAuth connect URL |
 | [**getFacebookPages()**](ConnectApi.md#getFacebookPages) | **GET** /v1/accounts/{accountId}/facebook-page | List Facebook pages |
 | [**getGmbLocations()**](ConnectApi.md#getGmbLocations) | **GET** /v1/accounts/{accountId}/gmb-locations | List Google Business Profile locations |
@@ -911,6 +912,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreatePinterestBoard201Response**](../Model/CreatePinterestBoard201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createYoutubePlaylist()`
+
+```php
+createYoutubePlaylist($account_id, $create_youtube_playlist_request): \Zernio\Model\CreateYoutubePlaylist201Response
+```
+
+Create YouTube playlist
+
+Creates an empty playlist on the connected YouTube channel. Requires a title; privacy defaults to private. Returns the same playlist shape as the list endpoint. Pass the returned playlist.id as platformSpecificData.playlistId when publishing a video. Does not change the account's default playlist. Requires the youtube or youtube.force-ssl OAuth scope. Costs 50 YouTube quota units. This operation is not idempotent and is not automatically retried: repeating a request can create another playlist, including after a timeout. List playlists before retrying an ambiguous failure. Official series settings are not exposed by YouTube's public API and must be enabled manually in YouTube's desktop playlist settings.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$create_youtube_playlist_request = {"title":"Tutorials","description":"Step-by-step video tutorials","privacy":"private"}; // \Zernio\Model\CreateYoutubePlaylistRequest
+
+try {
+    $result = $apiInstance->createYoutubePlaylist($account_id, $create_youtube_playlist_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->createYoutubePlaylist: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **create_youtube_playlist_request** | [**\Zernio\Model\CreateYoutubePlaylistRequest**](../Model/CreateYoutubePlaylistRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateYoutubePlaylist201Response**](../Model/CreateYoutubePlaylist201Response.md)
 
 ### Authorization
 

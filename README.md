@@ -372,6 +372,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**connectWhatsAppCredentials**](docs/Api/ConnectApi.md#connectwhatsappcredentials) | **POST** /v1/connect/whatsapp/credentials | Connect WhatsApp via credentials
 *ConnectApi* | [**connectWhatsAppEmbeddedSignup**](docs/Api/ConnectApi.md#connectwhatsappembeddedsignup) | **POST** /v1/connect/whatsapp/embedded-signup | Connect WhatsApp from Embedded Signup
 *ConnectApi* | [**createPinterestBoard**](docs/Api/ConnectApi.md#createpinterestboard) | **POST** /v1/accounts/{accountId}/pinterest-boards | Create Pinterest board
+*ConnectApi* | [**createYoutubePlaylist**](docs/Api/ConnectApi.md#createyoutubeplaylist) | **POST** /v1/accounts/{accountId}/youtube-playlists | Create YouTube playlist
 *ConnectApi* | [**getConnectUrl**](docs/Api/ConnectApi.md#getconnecturl) | **GET** /v1/connect/{platform} | Get OAuth connect URL
 *ConnectApi* | [**getFacebookPages**](docs/Api/ConnectApi.md#getfacebookpages) | **GET** /v1/accounts/{accountId}/facebook-page | List Facebook pages
 *ConnectApi* | [**getGmbLocations**](docs/Api/ConnectApi.md#getgmblocations) | **GET** /v1/accounts/{accountId}/gmb-locations | List Google Business Profile locations
@@ -1220,6 +1221,9 @@ Class | Method | HTTP request | Description
 - [CreateWorkflow200Response](docs/Model/CreateWorkflow200Response.md)
 - [CreateWorkflow200ResponseWorkflow](docs/Model/CreateWorkflow200ResponseWorkflow.md)
 - [CreateWorkflowRequest](docs/Model/CreateWorkflowRequest.md)
+- [CreateYoutubePlaylist201Response](docs/Model/CreateYoutubePlaylist201Response.md)
+- [CreateYoutubePlaylist201ResponsePlaylist](docs/Model/CreateYoutubePlaylist201ResponsePlaylist.md)
+- [CreateYoutubePlaylistRequest](docs/Model/CreateYoutubePlaylistRequest.md)
 - [CrosspostDiscordMessage200Response](docs/Model/CrosspostDiscordMessage200Response.md)
 - [CtwaAdRequestBody](docs/Model/CtwaAdRequestBody.md)
 - [CtwaAdRequestBodyCitiesInner](docs/Model/CtwaAdRequestBodyCitiesInner.md)
