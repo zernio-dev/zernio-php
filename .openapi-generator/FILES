@@ -4225,6 +4225,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateYoutubePlaylist201ResponsePlaylistTest.php
-test/Model/CreateYoutubePlaylist201ResponseTest.php
-test/Model/CreateYoutubePlaylistRequestTest.php

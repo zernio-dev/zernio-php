@@ -2672,7 +2672,7 @@ $apiInstance = new Zernio\Api\ConnectApi(
     new GuzzleHttp\Client(),
     $config
 );
-$select_facebook_page_request = {"profileId":"507f1f77bcf86cd799439011","pageId":"123456789","tempToken":"EAAxxxxx...","userProfile":{"id":"987654321","name":"John Doe","profilePicture":"https://..."},"redirect_url":"https://yourdomain.com/integrations/callback"}; // \Zernio\Model\SelectFacebookPageRequest
+$select_facebook_page_request = {"profileId":"507f1f77bcf86cd799439011","pageId":"123456789","tempToken":"EAAxxxxx...","userProfile":{"id":"987654321","username":"john.doe","displayName":"John Doe","profilePicture":"https://...","profileUrl":"https://facebook.com/987654321","bio":null},"redirect_url":"https://yourdomain.com/integrations/callback"}; // \Zernio\Model\SelectFacebookPageRequest
 
 try {
     $result = $apiInstance->selectFacebookPage($select_facebook_page_request);

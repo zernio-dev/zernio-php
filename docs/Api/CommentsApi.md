@@ -439,7 +439,7 @@ $apiInstance = new Zernio\Api\CommentsApi(
     $config
 );
 $profile_id = 'profile_id_example'; // string | Filter by profile ID
-$platform = 'platform_example'; // string | Filter by platform. `metaads` is a synthetic value meaning the user's ads (boosted/dark posts) only; `facebook`/`instagram` return organic posts only.
+$platform = 'platform_example'; // string | Filter by platform. `metaads` is a synthetic value meaning the user's ads (boosted/dark posts) only; `facebook`/`instagram` return organic posts only. `tiktok` covers accounts connected through the TikTok Business app only; developer-app TikTok accounts are returned under `meta.accountsSkipped`.
 $min_comments = 56; // int | Minimum comment count
 $since = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Posts created after this date
 $sort_by = 'date'; // string | Sort field
@@ -461,7 +461,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **profile_id** | **string**| Filter by profile ID | [optional] |
-| **platform** | **string**| Filter by platform. &#x60;metaads&#x60; is a synthetic value meaning the user&#39;s ads (boosted/dark posts) only; &#x60;facebook&#x60;/&#x60;instagram&#x60; return organic posts only. | [optional] |
+| **platform** | **string**| Filter by platform. &#x60;metaads&#x60; is a synthetic value meaning the user&#39;s ads (boosted/dark posts) only; &#x60;facebook&#x60;/&#x60;instagram&#x60; return organic posts only. &#x60;tiktok&#x60; covers accounts connected through the TikTok Business app only; developer-app TikTok accounts are returned under &#x60;meta.accountsSkipped&#x60;. | [optional] |
 | **min_comments** | **int**| Minimum comment count | [optional] |
 | **since** | **\DateTime**| Posts created after this date | [optional] |
 | **sort_by** | **string**| Sort field | [optional] [default to &#39;date&#39;] |

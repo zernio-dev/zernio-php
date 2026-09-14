@@ -2211,7 +2211,7 @@ class CommentsApi
      * List commented posts
      *
      * @param  string|null $profile_id Filter by profile ID (optional)
-     * @param  string|null $platform Filter by platform. &#x60;metaads&#x60; is a synthetic value meaning the user&#39;s ads (boosted/dark posts) only; &#x60;facebook&#x60;/&#x60;instagram&#x60; return organic posts only. (optional)
+     * @param  string|null $platform Filter by platform. &#x60;metaads&#x60; is a synthetic value meaning the user&#39;s ads (boosted/dark posts) only; &#x60;facebook&#x60;/&#x60;instagram&#x60; return organic posts only. &#x60;tiktok&#x60; covers accounts connected through the TikTok Business app only; developer-app TikTok accounts are returned under &#x60;meta.accountsSkipped&#x60;. (optional)
      * @param  int|null $min_comments Minimum comment count (optional)
      * @param  \DateTime|null $since Posts created after this date (optional)
      * @param  string|null $sort_by Sort field (optional, default to 'date')
@@ -2237,7 +2237,7 @@ class CommentsApi
      * List commented posts
      *
      * @param  string|null $profile_id Filter by profile ID (optional)
-     * @param  string|null $platform Filter by platform. &#x60;metaads&#x60; is a synthetic value meaning the user&#39;s ads (boosted/dark posts) only; &#x60;facebook&#x60;/&#x60;instagram&#x60; return organic posts only. (optional)
+     * @param  string|null $platform Filter by platform. &#x60;metaads&#x60; is a synthetic value meaning the user&#39;s ads (boosted/dark posts) only; &#x60;facebook&#x60;/&#x60;instagram&#x60; return organic posts only. &#x60;tiktok&#x60; covers accounts connected through the TikTok Business app only; developer-app TikTok accounts are returned under &#x60;meta.accountsSkipped&#x60;. (optional)
      * @param  int|null $min_comments Minimum comment count (optional)
      * @param  \DateTime|null $since Posts created after this date (optional)
      * @param  string|null $sort_by Sort field (optional, default to 'date')
@@ -2344,7 +2344,7 @@ class CommentsApi
      * List commented posts
      *
      * @param  string|null $profile_id Filter by profile ID (optional)
-     * @param  string|null $platform Filter by platform. &#x60;metaads&#x60; is a synthetic value meaning the user&#39;s ads (boosted/dark posts) only; &#x60;facebook&#x60;/&#x60;instagram&#x60; return organic posts only. (optional)
+     * @param  string|null $platform Filter by platform. &#x60;metaads&#x60; is a synthetic value meaning the user&#39;s ads (boosted/dark posts) only; &#x60;facebook&#x60;/&#x60;instagram&#x60; return organic posts only. &#x60;tiktok&#x60; covers accounts connected through the TikTok Business app only; developer-app TikTok accounts are returned under &#x60;meta.accountsSkipped&#x60;. (optional)
      * @param  int|null $min_comments Minimum comment count (optional)
      * @param  \DateTime|null $since Posts created after this date (optional)
      * @param  string|null $sort_by Sort field (optional, default to 'date')
@@ -2373,7 +2373,7 @@ class CommentsApi
      * List commented posts
      *
      * @param  string|null $profile_id Filter by profile ID (optional)
-     * @param  string|null $platform Filter by platform. &#x60;metaads&#x60; is a synthetic value meaning the user&#39;s ads (boosted/dark posts) only; &#x60;facebook&#x60;/&#x60;instagram&#x60; return organic posts only. (optional)
+     * @param  string|null $platform Filter by platform. &#x60;metaads&#x60; is a synthetic value meaning the user&#39;s ads (boosted/dark posts) only; &#x60;facebook&#x60;/&#x60;instagram&#x60; return organic posts only. &#x60;tiktok&#x60; covers accounts connected through the TikTok Business app only; developer-app TikTok accounts are returned under &#x60;meta.accountsSkipped&#x60;. (optional)
      * @param  int|null $min_comments Minimum comment count (optional)
      * @param  \DateTime|null $since Posts created after this date (optional)
      * @param  string|null $sort_by Sort field (optional, default to 'date')
@@ -2431,7 +2431,7 @@ class CommentsApi
      * Create request for operation 'listInboxComments'
      *
      * @param  string|null $profile_id Filter by profile ID (optional)
-     * @param  string|null $platform Filter by platform. &#x60;metaads&#x60; is a synthetic value meaning the user&#39;s ads (boosted/dark posts) only; &#x60;facebook&#x60;/&#x60;instagram&#x60; return organic posts only. (optional)
+     * @param  string|null $platform Filter by platform. &#x60;metaads&#x60; is a synthetic value meaning the user&#39;s ads (boosted/dark posts) only; &#x60;facebook&#x60;/&#x60;instagram&#x60; return organic posts only. &#x60;tiktok&#x60; covers accounts connected through the TikTok Business app only; developer-app TikTok accounts are returned under &#x60;meta.accountsSkipped&#x60;. (optional)
      * @param  int|null $min_comments Minimum comment count (optional)
      * @param  \DateTime|null $since Posts created after this date (optional)
      * @param  string|null $sort_by Sort field (optional, default to 'date')
