@@ -4235,7 +4235,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ListTikTokCommercialMusic200ResponseTest.php
-test/Model/ListTikTokCommercialMusic200ResponseTracksInnerClipTest.php
-test/Model/ListTikTokCommercialMusic200ResponseTracksInnerTest.php
-test/Model/TikTokPlatformDataMusicSoundInfoTest.php
