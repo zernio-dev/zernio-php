@@ -62,6 +62,8 @@ class WebhookPayloadMessageDeliveryStatusError implements ModelInterface, ArrayA
         'code' => 'int',
         'title' => 'string',
         'message' => 'string',
+        'details' => 'string',
+        'href' => 'string',
         'explanation' => 'string'
     ];
 
@@ -76,6 +78,8 @@ class WebhookPayloadMessageDeliveryStatusError implements ModelInterface, ArrayA
         'code' => null,
         'title' => null,
         'message' => null,
+        'details' => null,
+        'href' => 'uri',
         'explanation' => null
     ];
 
@@ -88,6 +92,8 @@ class WebhookPayloadMessageDeliveryStatusError implements ModelInterface, ArrayA
         'code' => false,
         'title' => false,
         'message' => false,
+        'details' => false,
+        'href' => false,
         'explanation' => true
     ];
 
@@ -180,6 +186,8 @@ class WebhookPayloadMessageDeliveryStatusError implements ModelInterface, ArrayA
         'code' => 'code',
         'title' => 'title',
         'message' => 'message',
+        'details' => 'details',
+        'href' => 'href',
         'explanation' => 'explanation'
     ];
 
@@ -192,6 +200,8 @@ class WebhookPayloadMessageDeliveryStatusError implements ModelInterface, ArrayA
         'code' => 'setCode',
         'title' => 'setTitle',
         'message' => 'setMessage',
+        'details' => 'setDetails',
+        'href' => 'setHref',
         'explanation' => 'setExplanation'
     ];
 
@@ -204,6 +214,8 @@ class WebhookPayloadMessageDeliveryStatusError implements ModelInterface, ArrayA
         'code' => 'getCode',
         'title' => 'getTitle',
         'message' => 'getMessage',
+        'details' => 'getDetails',
+        'href' => 'getHref',
         'explanation' => 'getExplanation'
     ];
 
@@ -267,6 +279,8 @@ class WebhookPayloadMessageDeliveryStatusError implements ModelInterface, ArrayA
         $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('details', $data ?? [], null);
+        $this->setIfExists('href', $data ?? [], null);
         $this->setIfExists('explanation', $data ?? [], null);
     }
 
@@ -394,6 +408,60 @@ class WebhookPayloadMessageDeliveryStatusError implements ModelInterface, ArrayA
     }
 
     /**
+     * Gets details
+     *
+     * @return string|null
+     */
+    public function getDetails()
+    {
+        return $this->container['details'];
+    }
+
+    /**
+     * Sets details
+     *
+     * @param string|null $details Platform's extended detail for `code` (WhatsApp: Meta's `error_data.details`), when the platform sent one. Absent on SMS.
+     *
+     * @return self
+     */
+    public function setDetails($details)
+    {
+        if (is_null($details)) {
+            throw new \InvalidArgumentException('non-nullable details cannot be null');
+        }
+        $this->container['details'] = $details;
+
+        return $this;
+    }
+
+    /**
+     * Gets href
+     *
+     * @return string|null
+     */
+    public function getHref()
+    {
+        return $this->container['href'];
+    }
+
+    /**
+     * Sets href
+     *
+     * @param string|null $href Link to the platform's documentation for `code`, when the platform sent one.
+     *
+     * @return self
+     */
+    public function setHref($href)
+    {
+        if (is_null($href)) {
+            throw new \InvalidArgumentException('non-nullable href cannot be null');
+        }
+        $this->container['href'] = $href;
+
+        return $this;
+    }
+
+    /**
      * Gets explanation
      *
      * @return string|null
@@ -406,7 +474,7 @@ class WebhookPayloadMessageDeliveryStatusError implements ModelInterface, ArrayA
     /**
      * Sets explanation
      *
-     * @param string|null $explanation Plain-language translation of `code` (e.g. for 131026, that the recipient has likely opted out of marketing messages while utility templates are unaffected). Null for unmapped codes; fall back to title/message.
+     * @param string|null $explanation Plain-language translation of `code` (e.g. for 131026, that the recipient has likely opted out of marketing messages while utility templates are unaffected, or for 131031, that Meta restricted the WhatsApp Business Account). Null for unmapped codes; fall back to title/message.
      *
      * @return self
      */

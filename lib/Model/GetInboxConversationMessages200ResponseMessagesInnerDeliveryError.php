@@ -61,7 +61,9 @@ class GetInboxConversationMessages200ResponseMessagesInnerDeliveryError implemen
     protected static $openAPITypes = [
         'code' => 'int',
         'title' => 'string',
-        'message' => 'string'
+        'message' => 'string',
+        'details' => 'string',
+        'href' => 'string'
     ];
 
     /**
@@ -74,7 +76,9 @@ class GetInboxConversationMessages200ResponseMessagesInnerDeliveryError implemen
     protected static $openAPIFormats = [
         'code' => null,
         'title' => null,
-        'message' => null
+        'message' => null,
+        'details' => null,
+        'href' => 'uri'
     ];
 
     /**
@@ -85,7 +89,9 @@ class GetInboxConversationMessages200ResponseMessagesInnerDeliveryError implemen
     protected static array $openAPINullables = [
         'code' => false,
         'title' => false,
-        'message' => false
+        'message' => false,
+        'details' => false,
+        'href' => false
     ];
 
     /**
@@ -176,7 +182,9 @@ class GetInboxConversationMessages200ResponseMessagesInnerDeliveryError implemen
     protected static $attributeMap = [
         'code' => 'code',
         'title' => 'title',
-        'message' => 'message'
+        'message' => 'message',
+        'details' => 'details',
+        'href' => 'href'
     ];
 
     /**
@@ -187,7 +195,9 @@ class GetInboxConversationMessages200ResponseMessagesInnerDeliveryError implemen
     protected static $setters = [
         'code' => 'setCode',
         'title' => 'setTitle',
-        'message' => 'setMessage'
+        'message' => 'setMessage',
+        'details' => 'setDetails',
+        'href' => 'setHref'
     ];
 
     /**
@@ -198,7 +208,9 @@ class GetInboxConversationMessages200ResponseMessagesInnerDeliveryError implemen
     protected static $getters = [
         'code' => 'getCode',
         'title' => 'getTitle',
-        'message' => 'getMessage'
+        'message' => 'getMessage',
+        'details' => 'getDetails',
+        'href' => 'getHref'
     ];
 
     /**
@@ -261,6 +273,8 @@ class GetInboxConversationMessages200ResponseMessagesInnerDeliveryError implemen
         $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('details', $data ?? [], null);
+        $this->setIfExists('href', $data ?? [], null);
     }
 
     /**
@@ -382,6 +396,60 @@ class GetInboxConversationMessages200ResponseMessagesInnerDeliveryError implemen
             throw new \InvalidArgumentException('non-nullable message cannot be null');
         }
         $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets details
+     *
+     * @return string|null
+     */
+    public function getDetails()
+    {
+        return $this->container['details'];
+    }
+
+    /**
+     * Sets details
+     *
+     * @param string|null $details Platform's extended detail for `code` (WhatsApp: Meta's `error_data.details`), when the platform sent one. Absent on SMS.
+     *
+     * @return self
+     */
+    public function setDetails($details)
+    {
+        if (is_null($details)) {
+            throw new \InvalidArgumentException('non-nullable details cannot be null');
+        }
+        $this->container['details'] = $details;
+
+        return $this;
+    }
+
+    /**
+     * Gets href
+     *
+     * @return string|null
+     */
+    public function getHref()
+    {
+        return $this->container['href'];
+    }
+
+    /**
+     * Sets href
+     *
+     * @param string|null $href Link to the platform's documentation for `code`, when the platform sent one.
+     *
+     * @return self
+     */
+    public function setHref($href)
+    {
+        if (is_null($href)) {
+            throw new \InvalidArgumentException('non-nullable href cannot be null');
+        }
+        $this->container['href'] = $href;
 
         return $this;
     }
