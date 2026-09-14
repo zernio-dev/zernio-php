@@ -60,6 +60,7 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
       */
     protected static $openAPITypes = [
         'countries' => 'string[]',
+        'country_groups' => 'string[]',
         'regions' => '\Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]',
         'cities' => '\Zernio\Model\TargetingSpecExcludedLocationsCitiesInner[]',
         'zips' => '\Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]',
@@ -77,6 +78,7 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
       */
     protected static $openAPIFormats = [
         'countries' => null,
+        'country_groups' => null,
         'regions' => null,
         'cities' => null,
         'zips' => null,
@@ -92,6 +94,7 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
       */
     protected static array $openAPINullables = [
         'countries' => false,
+        'country_groups' => false,
         'regions' => false,
         'cities' => false,
         'zips' => false,
@@ -187,6 +190,7 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
      */
     protected static $attributeMap = [
         'countries' => 'countries',
+        'country_groups' => 'countryGroups',
         'regions' => 'regions',
         'cities' => 'cities',
         'zips' => 'zips',
@@ -202,6 +206,7 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
      */
     protected static $setters = [
         'countries' => 'setCountries',
+        'country_groups' => 'setCountryGroups',
         'regions' => 'setRegions',
         'cities' => 'setCities',
         'zips' => 'setZips',
@@ -217,6 +222,7 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
      */
     protected static $getters = [
         'countries' => 'getCountries',
+        'country_groups' => 'getCountryGroups',
         'regions' => 'getRegions',
         'cities' => 'getCities',
         'zips' => 'getZips',
@@ -266,6 +272,57 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
+    public const COUNTRY_GROUPS_AFRICA = 'africa';
+    public const COUNTRY_GROUPS_ASIA = 'asia';
+    public const COUNTRY_GROUPS_EUROPE = 'europe';
+    public const COUNTRY_GROUPS_NORTH_AMERICA = 'north_america';
+    public const COUNTRY_GROUPS_SOUTH_AMERICA = 'south_america';
+    public const COUNTRY_GROUPS_OCEANIA = 'oceania';
+    public const COUNTRY_GROUPS_CENTRAL_AMERICA = 'central_america';
+    public const COUNTRY_GROUPS_CARIBBEAN = 'caribbean';
+    public const COUNTRY_GROUPS_EEA = 'eea';
+    public const COUNTRY_GROUPS_EURO_AREA = 'euro_area';
+    public const COUNTRY_GROUPS_NAFTA = 'nafta';
+    public const COUNTRY_GROUPS_MERCOSUR = 'mercosur';
+    public const COUNTRY_GROUPS_AFTA = 'afta';
+    public const COUNTRY_GROUPS_APEC = 'apec';
+    public const COUNTRY_GROUPS_GCC = 'gcc';
+    public const COUNTRY_GROUPS_CISFTA = 'cisfta';
+    public const COUNTRY_GROUPS_EMERGING_MARKETS = 'emerging_markets';
+    public const COUNTRY_GROUPS_ITUNES_APP_STORE = 'itunes_app_store';
+    public const COUNTRY_GROUPS_ANDROID_FREE_STORE = 'android_free_store';
+    public const COUNTRY_GROUPS_ANDROID_PAID_STORE = 'android_paid_store';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCountryGroupsAllowableValues()
+    {
+        return [
+            self::COUNTRY_GROUPS_AFRICA,
+            self::COUNTRY_GROUPS_ASIA,
+            self::COUNTRY_GROUPS_EUROPE,
+            self::COUNTRY_GROUPS_NORTH_AMERICA,
+            self::COUNTRY_GROUPS_SOUTH_AMERICA,
+            self::COUNTRY_GROUPS_OCEANIA,
+            self::COUNTRY_GROUPS_CENTRAL_AMERICA,
+            self::COUNTRY_GROUPS_CARIBBEAN,
+            self::COUNTRY_GROUPS_EEA,
+            self::COUNTRY_GROUPS_EURO_AREA,
+            self::COUNTRY_GROUPS_NAFTA,
+            self::COUNTRY_GROUPS_MERCOSUR,
+            self::COUNTRY_GROUPS_AFTA,
+            self::COUNTRY_GROUPS_APEC,
+            self::COUNTRY_GROUPS_GCC,
+            self::COUNTRY_GROUPS_CISFTA,
+            self::COUNTRY_GROUPS_EMERGING_MARKETS,
+            self::COUNTRY_GROUPS_ITUNES_APP_STORE,
+            self::COUNTRY_GROUPS_ANDROID_FREE_STORE,
+            self::COUNTRY_GROUPS_ANDROID_PAID_STORE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -283,6 +340,7 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
     public function __construct(?array $data = null)
     {
         $this->setIfExists('countries', $data ?? [], null);
+        $this->setIfExists('country_groups', $data ?? [], null);
         $this->setIfExists('regions', $data ?? [], null);
         $this->setIfExists('cities', $data ?? [], null);
         $this->setIfExists('zips', $data ?? [], null);
@@ -356,6 +414,42 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable countries cannot be null');
         }
         $this->container['countries'] = $countries;
+
+        return $this;
+    }
+
+    /**
+     * Gets country_groups
+     *
+     * @return string[]|null
+     */
+    public function getCountryGroups()
+    {
+        return $this->container['country_groups'];
+    }
+
+    /**
+     * Sets country_groups
+     *
+     * @param string[]|null $country_groups Meta only. Continents and trade blocs to exclude (`excluded_geo_locations.country_groups`).
+     *
+     * @return self
+     */
+    public function setCountryGroups($country_groups)
+    {
+        if (is_null($country_groups)) {
+            throw new \InvalidArgumentException('non-nullable country_groups cannot be null');
+        }
+        $allowedValues = $this->getCountryGroupsAllowableValues();
+        if (array_diff($country_groups, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'country_groups', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['country_groups'] = $country_groups;
 
         return $this;
     }
