@@ -59,7 +59,11 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
       */
     protected static $openAPITypes = [
         'error' => 'string',
-        'code' => 'string'
+        'code' => 'string',
+        'type' => 'string',
+        'platform' => 'string',
+        'platform_error' => '\Zernio\Model\WhatsAppTemplateLookupErrorPlatformError',
+        'details' => '\Zernio\Model\WhatsAppTemplateLookupErrorDetails'
     ];
 
     /**
@@ -71,7 +75,11 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
       */
     protected static $openAPIFormats = [
         'error' => null,
-        'code' => null
+        'code' => null,
+        'type' => null,
+        'platform' => null,
+        'platform_error' => null,
+        'details' => null
     ];
 
     /**
@@ -81,7 +89,11 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
       */
     protected static array $openAPINullables = [
         'error' => false,
-        'code' => false
+        'code' => false,
+        'type' => false,
+        'platform' => false,
+        'platform_error' => false,
+        'details' => false
     ];
 
     /**
@@ -171,7 +183,11 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
      */
     protected static $attributeMap = [
         'error' => 'error',
-        'code' => 'code'
+        'code' => 'code',
+        'type' => 'type',
+        'platform' => 'platform',
+        'platform_error' => 'platformError',
+        'details' => 'details'
     ];
 
     /**
@@ -181,7 +197,11 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
      */
     protected static $setters = [
         'error' => 'setError',
-        'code' => 'setCode'
+        'code' => 'setCode',
+        'type' => 'setType',
+        'platform' => 'setPlatform',
+        'platform_error' => 'setPlatformError',
+        'details' => 'setDetails'
     ];
 
     /**
@@ -191,7 +211,11 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
      */
     protected static $getters = [
         'error' => 'getError',
-        'code' => 'getCode'
+        'code' => 'getCode',
+        'type' => 'getType',
+        'platform' => 'getPlatform',
+        'platform_error' => 'getPlatformError',
+        'details' => 'getDetails'
     ];
 
     /**
@@ -235,15 +259,9 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
-    public const CODE_PLATFORM_NOT_SUPPORTED = 'PLATFORM_NOT_SUPPORTED';
-    public const CODE_PLATFORM_LIMITATION = 'PLATFORM_LIMITATION';
-    public const CODE_TEMPLATE_REQUIRED = 'TEMPLATE_REQUIRED';
-    public const CODE_INVALID_TEMPLATE_PARAMS = 'INVALID_TEMPLATE_PARAMS';
-    public const CODE_INVALID_TEMPLATE_BUTTON_PARAM = 'INVALID_TEMPLATE_BUTTON_PARAM';
-    public const CODE_INVALID_TEMPLATE_CARD_PARAM = 'INVALID_TEMPLATE_CARD_PARAM';
-    public const CODE_DIRECT_SEND_NOT_ELIGIBLE = 'DIRECT_SEND_NOT_ELIGIBLE';
-    public const CODE_DIRECT_SEND_LIMITED = 'DIRECT_SEND_LIMITED';
-    public const CODE_DIRECT_SEND_BLOCKED = 'DIRECT_SEND_BLOCKED';
+    public const CODE_PLATFORM_API_ERROR = 'platform_api_error';
+    public const TYPE_PLATFORM_ERROR = 'platform_error';
+    public const PLATFORM_WHATSAPP = 'whatsapp';
 
     /**
      * Gets allowable values of the enum
@@ -253,15 +271,31 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
     public function getCodeAllowableValues()
     {
         return [
-            self::CODE_PLATFORM_NOT_SUPPORTED,
-            self::CODE_PLATFORM_LIMITATION,
-            self::CODE_TEMPLATE_REQUIRED,
-            self::CODE_INVALID_TEMPLATE_PARAMS,
-            self::CODE_INVALID_TEMPLATE_BUTTON_PARAM,
-            self::CODE_INVALID_TEMPLATE_CARD_PARAM,
-            self::CODE_DIRECT_SEND_NOT_ELIGIBLE,
-            self::CODE_DIRECT_SEND_LIMITED,
-            self::CODE_DIRECT_SEND_BLOCKED,
+            self::CODE_PLATFORM_API_ERROR,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_PLATFORM_ERROR,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPlatformAllowableValues()
+    {
+        return [
+            self::PLATFORM_WHATSAPP,
         ];
     }
 
@@ -282,6 +316,10 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
     {
         $this->setIfExists('error', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('platform_error', $data ?? [], null);
+        $this->setIfExists('details', $data ?? [], null);
     }
 
     /**
@@ -311,6 +349,12 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
+        if ($this->container['error'] === null) {
+            $invalidProperties[] = "'error' can't be null";
+        }
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
+        }
         $allowedValues = $this->getCodeAllowableValues();
         if (!is_null($this->container['code']) && !in_array($this->container['code'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -320,6 +364,33 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
             );
         }
 
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['platform'] === null) {
+            $invalidProperties[] = "'platform' can't be null";
+        }
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!is_null($this->container['platform']) && !in_array($this->container['platform'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'platform', must be one of '%s'",
+                $this->container['platform'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['details'] === null) {
+            $invalidProperties[] = "'details' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -338,7 +409,7 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
     /**
      * Gets error
      *
-     * @return string|null
+     * @return string
      */
     public function getError()
     {
@@ -348,7 +419,7 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
     /**
      * Sets error
      *
-     * @param string|null $error error
+     * @param string $error error
      *
      * @return self
      */
@@ -365,7 +436,7 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
     /**
      * Gets code
      *
-     * @return string|null
+     * @return string
      */
     public function getCode()
     {
@@ -375,7 +446,7 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
     /**
      * Sets code
      *
-     * @param string|null $code code
+     * @param string $code code
      *
      * @return self
      */
@@ -395,6 +466,134 @@ class CreateInboxConversation400Response implements ModelInterface, ArrayAccess,
             );
         }
         $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform
+     *
+     * @return string
+     */
+    public function getPlatform()
+    {
+        return $this->container['platform'];
+    }
+
+    /**
+     * Sets platform
+     *
+     * @param string $platform platform
+     *
+     * @return self
+     */
+    public function setPlatform($platform)
+    {
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
+        }
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!in_array($platform, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'platform', must be one of '%s'",
+                    $platform,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['platform'] = $platform;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_error
+     *
+     * @return \Zernio\Model\WhatsAppTemplateLookupErrorPlatformError|null
+     */
+    public function getPlatformError()
+    {
+        return $this->container['platform_error'];
+    }
+
+    /**
+     * Sets platform_error
+     *
+     * @param \Zernio\Model\WhatsAppTemplateLookupErrorPlatformError|null $platform_error platform_error
+     *
+     * @return self
+     */
+    public function setPlatformError($platform_error)
+    {
+        if (is_null($platform_error)) {
+            throw new \InvalidArgumentException('non-nullable platform_error cannot be null');
+        }
+        $this->container['platform_error'] = $platform_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets details
+     *
+     * @return \Zernio\Model\WhatsAppTemplateLookupErrorDetails
+     */
+    public function getDetails()
+    {
+        return $this->container['details'];
+    }
+
+    /**
+     * Sets details
+     *
+     * @param \Zernio\Model\WhatsAppTemplateLookupErrorDetails $details details
+     *
+     * @return self
+     */
+    public function setDetails($details)
+    {
+        if (is_null($details)) {
+            throw new \InvalidArgumentException('non-nullable details cannot be null');
+        }
+        $this->container['details'] = $details;
 
         return $this;
     }

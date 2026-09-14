@@ -257,6 +257,7 @@ class SendInboxMessage400Response implements ModelInterface, ArrayAccess, \JsonS
     public const TYPE_INVALID_REQUEST_ERROR = 'invalid_request_error';
     public const CODE_PLATFORM_LIMITATION = 'PLATFORM_LIMITATION';
     public const CODE_MISSING_PARTICIPANT = 'MISSING_PARTICIPANT';
+    public const CODE_INVALID_TEMPLATE_HEADER = 'INVALID_TEMPLATE_HEADER';
     public const CODE_DIRECT_SEND_NOT_ELIGIBLE = 'DIRECT_SEND_NOT_ELIGIBLE';
     public const CODE_DIRECT_SEND_LIMITED = 'DIRECT_SEND_LIMITED';
     public const CODE_DIRECT_SEND_BLOCKED = 'DIRECT_SEND_BLOCKED';
@@ -285,6 +286,7 @@ class SendInboxMessage400Response implements ModelInterface, ArrayAccess, \JsonS
         return [
             self::CODE_PLATFORM_LIMITATION,
             self::CODE_MISSING_PARTICIPANT,
+            self::CODE_INVALID_TEMPLATE_HEADER,
             self::CODE_DIRECT_SEND_NOT_ELIGIBLE,
             self::CODE_DIRECT_SEND_LIMITED,
             self::CODE_DIRECT_SEND_BLOCKED,
@@ -488,7 +490,7 @@ class SendInboxMessage400Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets platform
      *
-     * @param string|null $platform Present alongside code platform_api_error. The platform that rejected the send (e.g. instagram, facebook).
+     * @param string|null $platform Present alongside code platform_api_error. The platform that rejected the send (e.g. instagram, facebook, whatsapp).
      *
      * @return self
      */

@@ -1,6 +1,6 @@
 <?php
 /**
- * SendInboxMessage400ResponsePlatformError
+ * WhatsAppTemplateLookupErrorDetailsProviderHeaders
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SendInboxMessage400ResponsePlatformError Class Doc Comment
+ * WhatsAppTemplateLookupErrorDetailsProviderHeaders Class Doc Comment
  *
  * @category Class
- * @description Instagram, Facebook, or WhatsApp. Meta&#39;s diagnostic fields for the rejected send or template lookup. WhatsApp lookup errors retain only code, message, and error_data.details. Absent when the failure did not come from Meta.
+ * @description Safe provider headers retained from the lookup response.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsAppTemplateLookupErrorDetailsProviderHeaders implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
       *
       * @var string
       */
-    protected static $openAPIModelName = 'sendInboxMessage_400_response_platformError';
+    protected static $openAPIModelName = 'WhatsAppTemplateLookupError_details_providerHeaders';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +59,9 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
-        'subcode' => 'int',
-        'fbtrace_id' => 'string',
-        'type' => 'string'
+        'retry_after' => 'string',
+        'x_app_usage' => 'string',
+        'x_business_use_case_usage' => 'string'
     ];
 
     /**
@@ -73,10 +72,9 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'subcode' => null,
-        'fbtrace_id' => null,
-        'type' => null
+        'retry_after' => null,
+        'x_app_usage' => null,
+        'x_business_use_case_usage' => null
     ];
 
     /**
@@ -85,10 +83,9 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
-        'subcode' => false,
-        'fbtrace_id' => false,
-        'type' => false
+        'retry_after' => false,
+        'x_app_usage' => false,
+        'x_business_use_case_usage' => false
     ];
 
     /**
@@ -177,10 +174,9 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'subcode' => 'subcode',
-        'fbtrace_id' => 'fbtraceId',
-        'type' => 'type'
+        'retry_after' => 'retry-after',
+        'x_app_usage' => 'x-app-usage',
+        'x_business_use_case_usage' => 'x-business-use-case-usage'
     ];
 
     /**
@@ -189,10 +185,9 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'subcode' => 'setSubcode',
-        'fbtrace_id' => 'setFbtraceId',
-        'type' => 'setType'
+        'retry_after' => 'setRetryAfter',
+        'x_app_usage' => 'setXAppUsage',
+        'x_business_use_case_usage' => 'setXBusinessUseCaseUsage'
     ];
 
     /**
@@ -201,10 +196,9 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'subcode' => 'getSubcode',
-        'fbtrace_id' => 'getFbtraceId',
-        'type' => 'getType'
+        'retry_after' => 'getRetryAfter',
+        'x_app_usage' => 'getXAppUsage',
+        'x_business_use_case_usage' => 'getXBusinessUseCaseUsage'
     ];
 
     /**
@@ -264,10 +258,9 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('subcode', $data ?? [], null);
-        $this->setIfExists('fbtrace_id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('retry_after', $data ?? [], null);
+        $this->setIfExists('x_app_usage', $data ?? [], null);
+        $this->setIfExists('x_business_use_case_usage', $data ?? [], null);
     }
 
     /**
@@ -313,109 +306,82 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
 
 
     /**
-     * Gets code
-     *
-     * @return int|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int|null $code Meta error code
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets subcode
-     *
-     * @return int|null
-     */
-    public function getSubcode()
-    {
-        return $this->container['subcode'];
-    }
-
-    /**
-     * Sets subcode
-     *
-     * @param int|null $subcode Meta error_subcode
-     *
-     * @return self
-     */
-    public function setSubcode($subcode)
-    {
-        if (is_null($subcode)) {
-            throw new \InvalidArgumentException('non-nullable subcode cannot be null');
-        }
-        $this->container['subcode'] = $subcode;
-
-        return $this;
-    }
-
-    /**
-     * Gets fbtrace_id
+     * Gets retry_after
      *
      * @return string|null
      */
-    public function getFbtraceId()
+    public function getRetryAfter()
     {
-        return $this->container['fbtrace_id'];
+        return $this->container['retry_after'];
     }
 
     /**
-     * Sets fbtrace_id
+     * Sets retry_after
      *
-     * @param string|null $fbtrace_id Meta fbtrace_id, quote this in a Meta bug report
+     * @param string|null $retry_after retry_after
      *
      * @return self
      */
-    public function setFbtraceId($fbtrace_id)
+    public function setRetryAfter($retry_after)
     {
-        if (is_null($fbtrace_id)) {
-            throw new \InvalidArgumentException('non-nullable fbtrace_id cannot be null');
+        if (is_null($retry_after)) {
+            throw new \InvalidArgumentException('non-nullable retry_after cannot be null');
         }
-        $this->container['fbtrace_id'] = $fbtrace_id;
+        $this->container['retry_after'] = $retry_after;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets x_app_usage
      *
      * @return string|null
      */
-    public function getType()
+    public function getXAppUsage()
     {
-        return $this->container['type'];
+        return $this->container['x_app_usage'];
     }
 
     /**
-     * Sets type
+     * Sets x_app_usage
      *
-     * @param string|null $type Meta error type (e.g. OAuthException)
+     * @param string|null $x_app_usage x_app_usage
      *
      * @return self
      */
-    public function setType($type)
+    public function setXAppUsage($x_app_usage)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($x_app_usage)) {
+            throw new \InvalidArgumentException('non-nullable x_app_usage cannot be null');
         }
-        $this->container['type'] = $type;
+        $this->container['x_app_usage'] = $x_app_usage;
+
+        return $this;
+    }
+
+    /**
+     * Gets x_business_use_case_usage
+     *
+     * @return string|null
+     */
+    public function getXBusinessUseCaseUsage()
+    {
+        return $this->container['x_business_use_case_usage'];
+    }
+
+    /**
+     * Sets x_business_use_case_usage
+     *
+     * @param string|null $x_business_use_case_usage x_business_use_case_usage
+     *
+     * @return self
+     */
+    public function setXBusinessUseCaseUsage($x_business_use_case_usage)
+    {
+        if (is_null($x_business_use_case_usage)) {
+            throw new \InvalidArgumentException('non-nullable x_business_use_case_usage cannot be null');
+        }
+        $this->container['x_business_use_case_usage'] = $x_business_use_case_usage;
 
         return $this;
     }

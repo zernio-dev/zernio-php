@@ -1,6 +1,6 @@
 <?php
 /**
- * SendInboxMessage400ResponsePlatformError
+ * WhatsAppTemplateLookupErrorPlatformErrorErrorData
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SendInboxMessage400ResponsePlatformError Class Doc Comment
+ * WhatsAppTemplateLookupErrorPlatformErrorErrorData Class Doc Comment
  *
  * @category Class
- * @description Instagram, Facebook, or WhatsApp. Meta&#39;s diagnostic fields for the rejected send or template lookup. WhatsApp lookup errors retain only code, message, and error_data.details. Absent when the failure did not come from Meta.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsAppTemplateLookupErrorPlatformErrorErrorData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
       *
       * @var string
       */
-    protected static $openAPIModelName = 'sendInboxMessage_400_response_platformError';
+    protected static $openAPIModelName = 'WhatsAppTemplateLookupError_platformError_error_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +58,7 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
-        'subcode' => 'int',
-        'fbtrace_id' => 'string',
-        'type' => 'string'
+        'details' => 'string'
     ];
 
     /**
@@ -73,10 +69,7 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'subcode' => null,
-        'fbtrace_id' => null,
-        'type' => null
+        'details' => null
     ];
 
     /**
@@ -85,10 +78,7 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
-        'subcode' => false,
-        'fbtrace_id' => false,
-        'type' => false
+        'details' => false
     ];
 
     /**
@@ -177,10 +167,7 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'subcode' => 'subcode',
-        'fbtrace_id' => 'fbtraceId',
-        'type' => 'type'
+        'details' => 'details'
     ];
 
     /**
@@ -189,10 +176,7 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'subcode' => 'setSubcode',
-        'fbtrace_id' => 'setFbtraceId',
-        'type' => 'setType'
+        'details' => 'setDetails'
     ];
 
     /**
@@ -201,10 +185,7 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'subcode' => 'getSubcode',
-        'fbtrace_id' => 'getFbtraceId',
-        'type' => 'getType'
+        'details' => 'getDetails'
     ];
 
     /**
@@ -264,10 +245,7 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('subcode', $data ?? [], null);
-        $this->setIfExists('fbtrace_id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('details', $data ?? [], null);
     }
 
     /**
@@ -313,109 +291,28 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
 
 
     /**
-     * Gets code
-     *
-     * @return int|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int|null $code Meta error code
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets subcode
-     *
-     * @return int|null
-     */
-    public function getSubcode()
-    {
-        return $this->container['subcode'];
-    }
-
-    /**
-     * Sets subcode
-     *
-     * @param int|null $subcode Meta error_subcode
-     *
-     * @return self
-     */
-    public function setSubcode($subcode)
-    {
-        if (is_null($subcode)) {
-            throw new \InvalidArgumentException('non-nullable subcode cannot be null');
-        }
-        $this->container['subcode'] = $subcode;
-
-        return $this;
-    }
-
-    /**
-     * Gets fbtrace_id
+     * Gets details
      *
      * @return string|null
      */
-    public function getFbtraceId()
+    public function getDetails()
     {
-        return $this->container['fbtrace_id'];
+        return $this->container['details'];
     }
 
     /**
-     * Sets fbtrace_id
+     * Sets details
      *
-     * @param string|null $fbtrace_id Meta fbtrace_id, quote this in a Meta bug report
+     * @param string|null $details details
      *
      * @return self
      */
-    public function setFbtraceId($fbtrace_id)
+    public function setDetails($details)
     {
-        if (is_null($fbtrace_id)) {
-            throw new \InvalidArgumentException('non-nullable fbtrace_id cannot be null');
+        if (is_null($details)) {
+            throw new \InvalidArgumentException('non-nullable details cannot be null');
         }
-        $this->container['fbtrace_id'] = $fbtrace_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type Meta error type (e.g. OAuthException)
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $this->container['type'] = $type;
+        $this->container['details'] = $details;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * SendInboxMessage400ResponsePlatformError
+ * WhatsAppTemplateLookupErrorDetails
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SendInboxMessage400ResponsePlatformError Class Doc Comment
+ * WhatsAppTemplateLookupErrorDetails Class Doc Comment
  *
  * @category Class
- * @description Instagram, Facebook, or WhatsApp. Meta&#39;s diagnostic fields for the rejected send or template lookup. WhatsApp lookup errors retain only code, message, and error_data.details. Absent when the failure did not come from Meta.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsAppTemplateLookupErrorDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
       *
       * @var string
       */
-    protected static $openAPIModelName = 'sendInboxMessage_400_response_platformError';
+    protected static $openAPIModelName = 'WhatsAppTemplateLookupError_details';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +58,10 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
-        'subcode' => 'int',
-        'fbtrace_id' => 'string',
-        'type' => 'string'
+        'phase' => 'string',
+        'endpoint' => 'string',
+        'upstream_status' => 'int',
+        'provider_headers' => '\Zernio\Model\WhatsAppTemplateLookupErrorDetailsProviderHeaders'
     ];
 
     /**
@@ -73,10 +72,10 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'subcode' => null,
-        'fbtrace_id' => null,
-        'type' => null
+        'phase' => null,
+        'endpoint' => null,
+        'upstream_status' => null,
+        'provider_headers' => null
     ];
 
     /**
@@ -85,10 +84,10 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
-        'subcode' => false,
-        'fbtrace_id' => false,
-        'type' => false
+        'phase' => false,
+        'endpoint' => false,
+        'upstream_status' => false,
+        'provider_headers' => false
     ];
 
     /**
@@ -177,10 +176,10 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'subcode' => 'subcode',
-        'fbtrace_id' => 'fbtraceId',
-        'type' => 'type'
+        'phase' => 'phase',
+        'endpoint' => 'endpoint',
+        'upstream_status' => 'upstreamStatus',
+        'provider_headers' => 'providerHeaders'
     ];
 
     /**
@@ -189,10 +188,10 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'subcode' => 'setSubcode',
-        'fbtrace_id' => 'setFbtraceId',
-        'type' => 'setType'
+        'phase' => 'setPhase',
+        'endpoint' => 'setEndpoint',
+        'upstream_status' => 'setUpstreamStatus',
+        'provider_headers' => 'setProviderHeaders'
     ];
 
     /**
@@ -201,10 +200,10 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'subcode' => 'getSubcode',
-        'fbtrace_id' => 'getFbtraceId',
-        'type' => 'getType'
+        'phase' => 'getPhase',
+        'endpoint' => 'getEndpoint',
+        'upstream_status' => 'getUpstreamStatus',
+        'provider_headers' => 'getProviderHeaders'
     ];
 
     /**
@@ -248,6 +247,19 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
         return self::$openAPIModelName;
     }
 
+    public const PHASE_TEMPLATE_LOOKUP = 'template_lookup';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPhaseAllowableValues()
+    {
+        return [
+            self::PHASE_TEMPLATE_LOOKUP,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -264,10 +276,10 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('subcode', $data ?? [], null);
-        $this->setIfExists('fbtrace_id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('phase', $data ?? [], null);
+        $this->setIfExists('endpoint', $data ?? [], null);
+        $this->setIfExists('upstream_status', $data ?? [], null);
+        $this->setIfExists('provider_headers', $data ?? [], null);
     }
 
     /**
@@ -297,6 +309,21 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
     {
         $invalidProperties = [];
 
+        if ($this->container['phase'] === null) {
+            $invalidProperties[] = "'phase' can't be null";
+        }
+        $allowedValues = $this->getPhaseAllowableValues();
+        if (!is_null($this->container['phase']) && !in_array($this->container['phase'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'phase', must be one of '%s'",
+                $this->container['phase'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['endpoint'] === null) {
+            $invalidProperties[] = "'endpoint' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -313,109 +340,119 @@ class SendInboxMessage400ResponsePlatformError implements ModelInterface, ArrayA
 
 
     /**
-     * Gets code
+     * Gets phase
+     *
+     * @return string
+     */
+    public function getPhase()
+    {
+        return $this->container['phase'];
+    }
+
+    /**
+     * Sets phase
+     *
+     * @param string $phase phase
+     *
+     * @return self
+     */
+    public function setPhase($phase)
+    {
+        if (is_null($phase)) {
+            throw new \InvalidArgumentException('non-nullable phase cannot be null');
+        }
+        $allowedValues = $this->getPhaseAllowableValues();
+        if (!in_array($phase, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'phase', must be one of '%s'",
+                    $phase,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['phase'] = $phase;
+
+        return $this;
+    }
+
+    /**
+     * Gets endpoint
+     *
+     * @return string
+     */
+    public function getEndpoint()
+    {
+        return $this->container['endpoint'];
+    }
+
+    /**
+     * Sets endpoint
+     *
+     * @param string $endpoint Meta endpoint path without query parameters or access tokens
+     *
+     * @return self
+     */
+    public function setEndpoint($endpoint)
+    {
+        if (is_null($endpoint)) {
+            throw new \InvalidArgumentException('non-nullable endpoint cannot be null');
+        }
+        $this->container['endpoint'] = $endpoint;
+
+        return $this;
+    }
+
+    /**
+     * Gets upstream_status
      *
      * @return int|null
      */
-    public function getCode()
+    public function getUpstreamStatus()
     {
-        return $this->container['code'];
+        return $this->container['upstream_status'];
     }
 
     /**
-     * Sets code
+     * Sets upstream_status
      *
-     * @param int|null $code Meta error code
+     * @param int|null $upstream_status upstream_status
      *
      * @return self
      */
-    public function setCode($code)
+    public function setUpstreamStatus($upstream_status)
     {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
+        if (is_null($upstream_status)) {
+            throw new \InvalidArgumentException('non-nullable upstream_status cannot be null');
         }
-        $this->container['code'] = $code;
+        $this->container['upstream_status'] = $upstream_status;
 
         return $this;
     }
 
     /**
-     * Gets subcode
+     * Gets provider_headers
      *
-     * @return int|null
+     * @return \Zernio\Model\WhatsAppTemplateLookupErrorDetailsProviderHeaders|null
      */
-    public function getSubcode()
+    public function getProviderHeaders()
     {
-        return $this->container['subcode'];
+        return $this->container['provider_headers'];
     }
 
     /**
-     * Sets subcode
+     * Sets provider_headers
      *
-     * @param int|null $subcode Meta error_subcode
+     * @param \Zernio\Model\WhatsAppTemplateLookupErrorDetailsProviderHeaders|null $provider_headers provider_headers
      *
      * @return self
      */
-    public function setSubcode($subcode)
+    public function setProviderHeaders($provider_headers)
     {
-        if (is_null($subcode)) {
-            throw new \InvalidArgumentException('non-nullable subcode cannot be null');
+        if (is_null($provider_headers)) {
+            throw new \InvalidArgumentException('non-nullable provider_headers cannot be null');
         }
-        $this->container['subcode'] = $subcode;
-
-        return $this;
-    }
-
-    /**
-     * Gets fbtrace_id
-     *
-     * @return string|null
-     */
-    public function getFbtraceId()
-    {
-        return $this->container['fbtrace_id'];
-    }
-
-    /**
-     * Sets fbtrace_id
-     *
-     * @param string|null $fbtrace_id Meta fbtrace_id, quote this in a Meta bug report
-     *
-     * @return self
-     */
-    public function setFbtraceId($fbtrace_id)
-    {
-        if (is_null($fbtrace_id)) {
-            throw new \InvalidArgumentException('non-nullable fbtrace_id cannot be null');
-        }
-        $this->container['fbtrace_id'] = $fbtrace_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type Meta error type (e.g. OAuthException)
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $this->container['type'] = $type;
+        $this->container['provider_headers'] = $provider_headers;
 
         return $this;
     }

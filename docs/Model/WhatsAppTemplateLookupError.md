@@ -1,12 +1,12 @@
-# # CreateInboxConversation400Response
+# # WhatsAppTemplateLookupError
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **error** | **string** |  |
-**code** | **string** |  |
 **type** | **string** |  |
+**code** | **string** |  |
 **platform** | **string** |  |
 **platform_error** | [**\Zernio\Model\WhatsAppTemplateLookupErrorPlatformError**](WhatsAppTemplateLookupErrorPlatformError.md) |  | [optional]
 **details** | [**\Zernio\Model\WhatsAppTemplateLookupErrorDetails**](WhatsAppTemplateLookupErrorDetails.md) |  |
