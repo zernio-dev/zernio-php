@@ -66,6 +66,7 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
         'cities' => '\Zernio\Model\TargetingSpecCitiesInner[]',
         'zips' => '\Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]',
         'metros' => '\Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]',
+        'country_groups' => 'string[]',
         'custom_locations' => '\Zernio\Model\TargetingSpecCustomLocationsInner[]',
         'excluded_locations' => '\Zernio\Model\TargetingSpecExcludedLocations',
         'age_min' => 'int',
@@ -101,6 +102,7 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
         'cities' => null,
         'zips' => null,
         'metros' => null,
+        'country_groups' => null,
         'custom_locations' => null,
         'excluded_locations' => null,
         'age_min' => null,
@@ -134,6 +136,7 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
         'cities' => false,
         'zips' => false,
         'metros' => false,
+        'country_groups' => false,
         'custom_locations' => false,
         'excluded_locations' => false,
         'age_min' => false,
@@ -247,6 +250,7 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
         'cities' => 'cities',
         'zips' => 'zips',
         'metros' => 'metros',
+        'country_groups' => 'countryGroups',
         'custom_locations' => 'customLocations',
         'excluded_locations' => 'excludedLocations',
         'age_min' => 'ageMin',
@@ -280,6 +284,7 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
         'cities' => 'setCities',
         'zips' => 'setZips',
         'metros' => 'setMetros',
+        'country_groups' => 'setCountryGroups',
         'custom_locations' => 'setCustomLocations',
         'excluded_locations' => 'setExcludedLocations',
         'age_min' => 'setAgeMin',
@@ -313,6 +318,7 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
         'cities' => 'getCities',
         'zips' => 'getZips',
         'metros' => 'getMetros',
+        'country_groups' => 'getCountryGroups',
         'custom_locations' => 'getCustomLocations',
         'excluded_locations' => 'getExcludedLocations',
         'age_min' => 'getAgeMin',
@@ -374,6 +380,26 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const COUNTRY_GROUPS_AFRICA = 'africa';
+    public const COUNTRY_GROUPS_ASIA = 'asia';
+    public const COUNTRY_GROUPS_EUROPE = 'europe';
+    public const COUNTRY_GROUPS_NORTH_AMERICA = 'north_america';
+    public const COUNTRY_GROUPS_SOUTH_AMERICA = 'south_america';
+    public const COUNTRY_GROUPS_OCEANIA = 'oceania';
+    public const COUNTRY_GROUPS_CENTRAL_AMERICA = 'central_america';
+    public const COUNTRY_GROUPS_CARIBBEAN = 'caribbean';
+    public const COUNTRY_GROUPS_EEA = 'eea';
+    public const COUNTRY_GROUPS_EURO_AREA = 'euro_area';
+    public const COUNTRY_GROUPS_NAFTA = 'nafta';
+    public const COUNTRY_GROUPS_MERCOSUR = 'mercosur';
+    public const COUNTRY_GROUPS_AFTA = 'afta';
+    public const COUNTRY_GROUPS_APEC = 'apec';
+    public const COUNTRY_GROUPS_GCC = 'gcc';
+    public const COUNTRY_GROUPS_CISFTA = 'cisfta';
+    public const COUNTRY_GROUPS_EMERGING_MARKETS = 'emerging_markets';
+    public const COUNTRY_GROUPS_ITUNES_APP_STORE = 'itunes_app_store';
+    public const COUNTRY_GROUPS_ANDROID_FREE_STORE = 'android_free_store';
+    public const COUNTRY_GROUPS_ANDROID_PAID_STORE = 'android_paid_store';
     public const GENDER_ALL = 'all';
     public const GENDER_MALE = 'male';
     public const GENDER_FEMALE = 'female';
@@ -381,6 +407,37 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     public const INCOME_TIER_TOP_10 = 'top_10';
     public const INCOME_TIER_TOP_10_25 = 'top_10_25';
     public const INCOME_TIER_TOP_25_50 = 'top_25_50';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCountryGroupsAllowableValues()
+    {
+        return [
+            self::COUNTRY_GROUPS_AFRICA,
+            self::COUNTRY_GROUPS_ASIA,
+            self::COUNTRY_GROUPS_EUROPE,
+            self::COUNTRY_GROUPS_NORTH_AMERICA,
+            self::COUNTRY_GROUPS_SOUTH_AMERICA,
+            self::COUNTRY_GROUPS_OCEANIA,
+            self::COUNTRY_GROUPS_CENTRAL_AMERICA,
+            self::COUNTRY_GROUPS_CARIBBEAN,
+            self::COUNTRY_GROUPS_EEA,
+            self::COUNTRY_GROUPS_EURO_AREA,
+            self::COUNTRY_GROUPS_NAFTA,
+            self::COUNTRY_GROUPS_MERCOSUR,
+            self::COUNTRY_GROUPS_AFTA,
+            self::COUNTRY_GROUPS_APEC,
+            self::COUNTRY_GROUPS_GCC,
+            self::COUNTRY_GROUPS_CISFTA,
+            self::COUNTRY_GROUPS_EMERGING_MARKETS,
+            self::COUNTRY_GROUPS_ITUNES_APP_STORE,
+            self::COUNTRY_GROUPS_ANDROID_FREE_STORE,
+            self::COUNTRY_GROUPS_ANDROID_PAID_STORE,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -433,6 +490,7 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('cities', $data ?? [], null);
         $this->setIfExists('zips', $data ?? [], null);
         $this->setIfExists('metros', $data ?? [], null);
+        $this->setIfExists('country_groups', $data ?? [], null);
         $this->setIfExists('custom_locations', $data ?? [], null);
         $this->setIfExists('excluded_locations', $data ?? [], null);
         $this->setIfExists('age_min', $data ?? [], null);
@@ -732,6 +790,42 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable metros cannot be null');
         }
         $this->container['metros'] = $metros;
+
+        return $this;
+    }
+
+    /**
+     * Gets country_groups
+     *
+     * @return string[]|null
+     */
+    public function getCountryGroups()
+    {
+        return $this->container['country_groups'];
+    }
+
+    /**
+     * Sets country_groups
+     *
+     * @param string[]|null $country_groups Meta only. Continents and trade blocs (`geo_locations.country_groups`), for targeting a whole region without listing its countries. Combines with `countries` rather than replacing it, and is also accepted under `excludedLocations`. Discoverable via `GET /v1/ads/targeting/search?dimension=geo&geoType=country_group`.
+     *
+     * @return self
+     */
+    public function setCountryGroups($country_groups)
+    {
+        if (is_null($country_groups)) {
+            throw new \InvalidArgumentException('non-nullable country_groups cannot be null');
+        }
+        $allowedValues = $this->getCountryGroupsAllowableValues();
+        if (array_diff($country_groups, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'country_groups', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['country_groups'] = $country_groups;
 
         return $this;
     }
