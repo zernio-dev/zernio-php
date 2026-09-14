@@ -19,7 +19,8 @@ Name | Type | Description | Notes
 **match_type** | **string** |  | [optional]
 **status** | **string** |  | [optional]
 **negative** | **bool** |  | [optional]
-**quality_score** | **int** | Google Quality Score, 1-10. Null when unrated. | [optional]
+**quality_score** | **int** | Deprecated, use &#x60;quality.score&#x60;. Google Quality Score, 1-10. Null when unrated. | [optional]
+**quality** | [**\Zernio\Model\AdKeywordQuality**](AdKeywordQuality.md) |  | [optional]
 **synced_at** | **\DateTime** |  | [optional]
 **metrics** | [**\Zernio\Model\AdKeywordMetrics**](AdKeywordMetrics.md) |  | [optional]
 

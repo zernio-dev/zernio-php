@@ -172,6 +172,7 @@ Class | Method | HTTP request | Description
 *AdCampaignsApi* | [**getAdSetDetails**](docs/Api/AdCampaignsApi.md#getadsetdetails) | **GET** /v1/ads/ad-sets/{adSetId} | Get live ad-set details
 *AdCampaignsApi* | [**getAdTree**](docs/Api/AdCampaignsApi.md#getadtree) | **GET** /v1/ads/tree | Get campaign tree
 *AdCampaignsApi* | [**getAdsTimeline**](docs/Api/AdCampaignsApi.md#getadstimeline) | **GET** /v1/ads/timeline | Get daily account metrics
+*AdCampaignsApi* | [**getCampaignAdSchedule**](docs/Api/AdCampaignsApi.md#getcampaignadschedule) | **GET** /v1/ads/campaigns/{campaignId}/ad-schedule | Read a campaign&#39;s ad schedule (dayparting)
 *AdCampaignsApi* | [**getCampaignBidding**](docs/Api/AdCampaignsApi.md#getcampaignbidding) | **GET** /v1/ads/campaigns/{campaignId}/bidding | Read a campaign&#39;s current bidding
 *AdCampaignsApi* | [**getCampaignTargeting**](docs/Api/AdCampaignsApi.md#getcampaigntargeting) | **GET** /v1/ads/campaigns/{campaignId}/targeting | Read a Google campaign&#39;s device, location, and language targeting
 *AdCampaignsApi* | [**listAdCampaigns**](docs/Api/AdCampaignsApi.md#listadcampaigns) | **GET** /v1/ads/campaigns | List campaigns
@@ -198,6 +199,7 @@ Class | Method | HTTP request | Description
 *AdCampaignsApi* | [**updateAdSetStatus**](docs/Api/AdCampaignsApi.md#updateadsetstatus) | **PUT** /v1/ads/ad-sets/{adSetId}/status | Pause or resume a single ad set
 *AdCampaignsApi* | [**updateAdStatus**](docs/Api/AdCampaignsApi.md#updateadstatus) | **PUT** /v1/ads/{adId}/status | Pause or resume a single ad
 *AdCampaignsApi* | [**updateBidStrategy**](docs/Api/AdCampaignsApi.md#updatebidstrategy) | **PATCH** /v1/ads/bid-strategies/{strategyId} | Update portfolio bid strategy
+*AdCampaignsApi* | [**updateCampaignAdSchedule**](docs/Api/AdCampaignsApi.md#updatecampaignadschedule) | **PUT** /v1/ads/campaigns/{campaignId}/ad-schedule | Replace a campaign&#39;s ad schedule (dayparting)
 *AdCampaignsApi* | [**updateCampaignAssets**](docs/Api/AdCampaignsApi.md#updatecampaignassets) | **PUT** /v1/ads/campaigns/{campaignId}/assets | Update campaign assets
 *AdCampaignsApi* | [**updateCampaignTargeting**](docs/Api/AdCampaignsApi.md#updatecampaigntargeting) | **PUT** /v1/ads/campaigns/{campaignId}/targeting | Edit a Google campaign&#39;s device, location, or language targeting
 *AdCreativesApi* | [**createAdCreative**](docs/Api/AdCreativesApi.md#createadcreative) | **POST** /v1/ads/creatives | Create a standalone creative
@@ -814,12 +816,14 @@ Class | Method | HTTP request | Description
 - [AdFunnelCounts](docs/Model/AdFunnelCounts.md)
 - [AdKeyword](docs/Model/AdKeyword.md)
 - [AdKeywordMetrics](docs/Model/AdKeywordMetrics.md)
+- [AdKeywordQuality](docs/Model/AdKeywordQuality.md)
 - [AdMetrics](docs/Model/AdMetrics.md)
 - [AdNegativeKeywordList](docs/Model/AdNegativeKeywordList.md)
 - [AdNegativeKeywordListKeyword](docs/Model/AdNegativeKeywordListKeyword.md)
 - [AdPromotedObject](docs/Model/AdPromotedObject.md)
 - [AdReviewStatus](docs/Model/AdReviewStatus.md)
 - [AdSchedule](docs/Model/AdSchedule.md)
+- [AdScheduleWindow](docs/Model/AdScheduleWindow.md)
 - [AdStatus](docs/Model/AdStatus.md)
 - [AdTracking](docs/Model/AdTracking.md)
 - [AdTreeAdSet](docs/Model/AdTreeAdSet.md)
@@ -1411,6 +1415,10 @@ Class | Method | HTTP request | Description
 - [GetCallsUsage200Response](docs/Model/GetCallsUsage200Response.md)
 - [GetCallsUsage200ResponseGroupsInner](docs/Model/GetCallsUsage200ResponseGroupsInner.md)
 - [GetCallsUsage200ResponseTotals](docs/Model/GetCallsUsage200ResponseTotals.md)
+- [GetCampaignAdSchedule200Response](docs/Model/GetCampaignAdSchedule200Response.md)
+- [GetCampaignAdSchedule200ResponsePerformance](docs/Model/GetCampaignAdSchedule200ResponsePerformance.md)
+- [GetCampaignAdSchedule200ResponsePerformanceByDayOfWeekInner](docs/Model/GetCampaignAdSchedule200ResponsePerformanceByDayOfWeekInner.md)
+- [GetCampaignAdSchedule200ResponsePerformanceByHourInner](docs/Model/GetCampaignAdSchedule200ResponsePerformanceByHourInner.md)
 - [GetCampaignAnalytics202Response](docs/Model/GetCampaignAnalytics202Response.md)
 - [GetCampaignBidding200Response](docs/Model/GetCampaignBidding200Response.md)
 - [GetCampaignTargeting200Response](docs/Model/GetCampaignTargeting200Response.md)
@@ -2498,6 +2506,9 @@ Class | Method | HTTP request | Description
 - [UpdateBusinessAgentSettingsRequestFollowup](docs/Model/UpdateBusinessAgentSettingsRequestFollowup.md)
 - [UpdateBusinessAgentSettingsRequestHandoff](docs/Model/UpdateBusinessAgentSettingsRequestHandoff.md)
 - [UpdateBusinessAgentSettingsRequestRollout](docs/Model/UpdateBusinessAgentSettingsRequestRollout.md)
+- [UpdateCampaignAdSchedule200Response](docs/Model/UpdateCampaignAdSchedule200Response.md)
+- [UpdateCampaignAdScheduleRequest](docs/Model/UpdateCampaignAdScheduleRequest.md)
+- [UpdateCampaignAdScheduleRequestScheduleInner](docs/Model/UpdateCampaignAdScheduleRequestScheduleInner.md)
 - [UpdateCampaignAssets200Response](docs/Model/UpdateCampaignAssets200Response.md)
 - [UpdateCampaignAssetsRequest](docs/Model/UpdateCampaignAssetsRequest.md)
 - [UpdateCampaignTargeting200Response](docs/Model/UpdateCampaignTargeting200Response.md)

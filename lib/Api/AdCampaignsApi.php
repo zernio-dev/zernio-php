@@ -135,6 +135,9 @@ class AdCampaignsApi
         'getAdsTimeline' => [
             'application/json',
         ],
+        'getCampaignAdSchedule' => [
+            'application/json',
+        ],
         'getCampaignBidding' => [
             'application/json',
         ],
@@ -211,6 +214,9 @@ class AdCampaignsApi
             'application/json',
         ],
         'updateBidStrategy' => [
+            'application/json',
+        ],
+        'updateCampaignAdSchedule' => [
             'application/json',
         ],
         'updateCampaignAssets' => [
@@ -7010,6 +7016,401 @@ class AdCampaignsApi
         ) ?? []);
 
 
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getCampaignAdSchedule
+     *
+     * Read a campaign&#39;s ad schedule (dayparting)
+     *
+     * @param  string $campaign_id Numeric Google platform campaign id. (required)
+     * @param  string|null $platform Disambiguates the campaign id when the connection spans platforms. (optional)
+     * @param  bool|null $include_performance Also return delivery by day of week and by hour. Costs one extra Google call. (optional)
+     * @param  int|null $window_days Trailing window for the performance split. Ignored when fromDate and toDate are both given. (optional, default to 30)
+     * @param  \DateTime|null $from_date Start of an explicit performance range (YYYY-MM-DD). Use together with toDate. (optional)
+     * @param  \DateTime|null $to_date End of an explicit performance range (YYYY-MM-DD). Must be on or after fromDate. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignAdSchedule'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetCampaignAdSchedule200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
+     */
+    public function getCampaignAdSchedule($campaign_id, $platform = null, $include_performance = null, $window_days = 30, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getCampaignAdSchedule'][0])
+    {
+        list($response) = $this->getCampaignAdScheduleWithHttpInfo($campaign_id, $platform, $include_performance, $window_days, $from_date, $to_date, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getCampaignAdScheduleWithHttpInfo
+     *
+     * Read a campaign&#39;s ad schedule (dayparting)
+     *
+     * @param  string $campaign_id Numeric Google platform campaign id. (required)
+     * @param  string|null $platform Disambiguates the campaign id when the connection spans platforms. (optional)
+     * @param  bool|null $include_performance Also return delivery by day of week and by hour. Costs one extra Google call. (optional)
+     * @param  int|null $window_days Trailing window for the performance split. Ignored when fromDate and toDate are both given. (optional, default to 30)
+     * @param  \DateTime|null $from_date Start of an explicit performance range (YYYY-MM-DD). Use together with toDate. (optional)
+     * @param  \DateTime|null $to_date End of an explicit performance range (YYYY-MM-DD). Must be on or after fromDate. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignAdSchedule'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetCampaignAdSchedule200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCampaignAdScheduleWithHttpInfo($campaign_id, $platform = null, $include_performance = null, $window_days = 30, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getCampaignAdSchedule'][0])
+    {
+        $request = $this->getCampaignAdScheduleRequest($campaign_id, $platform, $include_performance, $window_days, $from_date, $to_date, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetCampaignAdSchedule200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetCampaignAdSchedule200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetCampaignAdSchedule200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getCampaignAdScheduleAsync
+     *
+     * Read a campaign&#39;s ad schedule (dayparting)
+     *
+     * @param  string $campaign_id Numeric Google platform campaign id. (required)
+     * @param  string|null $platform Disambiguates the campaign id when the connection spans platforms. (optional)
+     * @param  bool|null $include_performance Also return delivery by day of week and by hour. Costs one extra Google call. (optional)
+     * @param  int|null $window_days Trailing window for the performance split. Ignored when fromDate and toDate are both given. (optional, default to 30)
+     * @param  \DateTime|null $from_date Start of an explicit performance range (YYYY-MM-DD). Use together with toDate. (optional)
+     * @param  \DateTime|null $to_date End of an explicit performance range (YYYY-MM-DD). Must be on or after fromDate. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignAdSchedule'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCampaignAdScheduleAsync($campaign_id, $platform = null, $include_performance = null, $window_days = 30, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getCampaignAdSchedule'][0])
+    {
+        return $this->getCampaignAdScheduleAsyncWithHttpInfo($campaign_id, $platform, $include_performance, $window_days, $from_date, $to_date, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getCampaignAdScheduleAsyncWithHttpInfo
+     *
+     * Read a campaign&#39;s ad schedule (dayparting)
+     *
+     * @param  string $campaign_id Numeric Google platform campaign id. (required)
+     * @param  string|null $platform Disambiguates the campaign id when the connection spans platforms. (optional)
+     * @param  bool|null $include_performance Also return delivery by day of week and by hour. Costs one extra Google call. (optional)
+     * @param  int|null $window_days Trailing window for the performance split. Ignored when fromDate and toDate are both given. (optional, default to 30)
+     * @param  \DateTime|null $from_date Start of an explicit performance range (YYYY-MM-DD). Use together with toDate. (optional)
+     * @param  \DateTime|null $to_date End of an explicit performance range (YYYY-MM-DD). Must be on or after fromDate. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignAdSchedule'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCampaignAdScheduleAsyncWithHttpInfo($campaign_id, $platform = null, $include_performance = null, $window_days = 30, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getCampaignAdSchedule'][0])
+    {
+        $returnType = '\Zernio\Model\GetCampaignAdSchedule200Response';
+        $request = $this->getCampaignAdScheduleRequest($campaign_id, $platform, $include_performance, $window_days, $from_date, $to_date, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getCampaignAdSchedule'
+     *
+     * @param  string $campaign_id Numeric Google platform campaign id. (required)
+     * @param  string|null $platform Disambiguates the campaign id when the connection spans platforms. (optional)
+     * @param  bool|null $include_performance Also return delivery by day of week and by hour. Costs one extra Google call. (optional)
+     * @param  int|null $window_days Trailing window for the performance split. Ignored when fromDate and toDate are both given. (optional, default to 30)
+     * @param  \DateTime|null $from_date Start of an explicit performance range (YYYY-MM-DD). Use together with toDate. (optional)
+     * @param  \DateTime|null $to_date End of an explicit performance range (YYYY-MM-DD). Must be on or after fromDate. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignAdSchedule'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getCampaignAdScheduleRequest($campaign_id, $platform = null, $include_performance = null, $window_days = 30, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getCampaignAdSchedule'][0])
+    {
+
+        // verify the required parameter 'campaign_id' is set
+        if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaign_id when calling getCampaignAdSchedule'
+            );
+        }
+
+
+
+        if ($window_days !== null && $window_days > 90) {
+            throw new \InvalidArgumentException('invalid value for "$window_days" when calling AdCampaignsApi.getCampaignAdSchedule, must be smaller than or equal to 90.');
+        }
+        if ($window_days !== null && $window_days < 1) {
+            throw new \InvalidArgumentException('invalid value for "$window_days" when calling AdCampaignsApi.getCampaignAdSchedule, must be bigger than or equal to 1.');
+        }
+        
+
+
+
+        $resourcePath = '/v1/ads/campaigns/{campaignId}/ad-schedule';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $platform,
+            'platform', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $include_performance,
+            'includePerformance', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $window_days,
+            'windowDays', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from_date,
+            'fromDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to_date,
+            'toDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($campaign_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'campaignId' . '}',
+                ObjectSerializer::toPathValue($campaign_id),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -16259,6 +16660,339 @@ class AdCampaignsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PATCH',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateCampaignAdSchedule
+     *
+     * Replace a campaign&#39;s ad schedule (dayparting)
+     *
+     * @param  string $campaign_id Numeric Google platform campaign id. (required)
+     * @param  \Zernio\Model\UpdateCampaignAdScheduleRequest $update_campaign_ad_schedule_request update_campaign_ad_schedule_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaignAdSchedule'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\UpdateCampaignAdSchedule200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
+     */
+    public function updateCampaignAdSchedule($campaign_id, $update_campaign_ad_schedule_request, string $contentType = self::contentTypes['updateCampaignAdSchedule'][0])
+    {
+        list($response) = $this->updateCampaignAdScheduleWithHttpInfo($campaign_id, $update_campaign_ad_schedule_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateCampaignAdScheduleWithHttpInfo
+     *
+     * Replace a campaign&#39;s ad schedule (dayparting)
+     *
+     * @param  string $campaign_id Numeric Google platform campaign id. (required)
+     * @param  \Zernio\Model\UpdateCampaignAdScheduleRequest $update_campaign_ad_schedule_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaignAdSchedule'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\UpdateCampaignAdSchedule200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateCampaignAdScheduleWithHttpInfo($campaign_id, $update_campaign_ad_schedule_request, string $contentType = self::contentTypes['updateCampaignAdSchedule'][0])
+    {
+        $request = $this->updateCampaignAdScheduleRequest($campaign_id, $update_campaign_ad_schedule_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\UpdateCampaignAdSchedule200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\UpdateCampaignAdSchedule200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\UpdateCampaignAdSchedule200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateCampaignAdScheduleAsync
+     *
+     * Replace a campaign&#39;s ad schedule (dayparting)
+     *
+     * @param  string $campaign_id Numeric Google platform campaign id. (required)
+     * @param  \Zernio\Model\UpdateCampaignAdScheduleRequest $update_campaign_ad_schedule_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaignAdSchedule'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateCampaignAdScheduleAsync($campaign_id, $update_campaign_ad_schedule_request, string $contentType = self::contentTypes['updateCampaignAdSchedule'][0])
+    {
+        return $this->updateCampaignAdScheduleAsyncWithHttpInfo($campaign_id, $update_campaign_ad_schedule_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateCampaignAdScheduleAsyncWithHttpInfo
+     *
+     * Replace a campaign&#39;s ad schedule (dayparting)
+     *
+     * @param  string $campaign_id Numeric Google platform campaign id. (required)
+     * @param  \Zernio\Model\UpdateCampaignAdScheduleRequest $update_campaign_ad_schedule_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaignAdSchedule'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateCampaignAdScheduleAsyncWithHttpInfo($campaign_id, $update_campaign_ad_schedule_request, string $contentType = self::contentTypes['updateCampaignAdSchedule'][0])
+    {
+        $returnType = '\Zernio\Model\UpdateCampaignAdSchedule200Response';
+        $request = $this->updateCampaignAdScheduleRequest($campaign_id, $update_campaign_ad_schedule_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateCampaignAdSchedule'
+     *
+     * @param  string $campaign_id Numeric Google platform campaign id. (required)
+     * @param  \Zernio\Model\UpdateCampaignAdScheduleRequest $update_campaign_ad_schedule_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaignAdSchedule'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateCampaignAdScheduleRequest($campaign_id, $update_campaign_ad_schedule_request, string $contentType = self::contentTypes['updateCampaignAdSchedule'][0])
+    {
+
+        // verify the required parameter 'campaign_id' is set
+        if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaign_id when calling updateCampaignAdSchedule'
+            );
+        }
+
+        // verify the required parameter 'update_campaign_ad_schedule_request' is set
+        if ($update_campaign_ad_schedule_request === null || (is_array($update_campaign_ad_schedule_request) && count($update_campaign_ad_schedule_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_campaign_ad_schedule_request when calling updateCampaignAdSchedule'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/campaigns/{campaignId}/ad-schedule';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($campaign_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'campaignId' . '}',
+                ObjectSerializer::toPathValue($campaign_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_campaign_ad_schedule_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_campaign_ad_schedule_request));
+            } else {
+                $httpBody = $update_campaign_ad_schedule_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

@@ -74,6 +74,7 @@ class AdKeyword implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => 'string',
         'negative' => 'bool',
         'quality_score' => 'int',
+        'quality' => '\Zernio\Model\AdKeywordQuality',
         'synced_at' => '\DateTime',
         'metrics' => '\Zernio\Model\AdKeywordMetrics'
     ];
@@ -102,6 +103,7 @@ class AdKeyword implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => null,
         'negative' => null,
         'quality_score' => null,
+        'quality' => null,
         'synced_at' => 'date-time',
         'metrics' => null
     ];
@@ -128,6 +130,7 @@ class AdKeyword implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => false,
         'negative' => false,
         'quality_score' => true,
+        'quality' => false,
         'synced_at' => true,
         'metrics' => false
     ];
@@ -234,6 +237,7 @@ class AdKeyword implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => 'status',
         'negative' => 'negative',
         'quality_score' => 'qualityScore',
+        'quality' => 'quality',
         'synced_at' => 'syncedAt',
         'metrics' => 'metrics'
     ];
@@ -260,6 +264,7 @@ class AdKeyword implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => 'setStatus',
         'negative' => 'setNegative',
         'quality_score' => 'setQualityScore',
+        'quality' => 'setQuality',
         'synced_at' => 'setSyncedAt',
         'metrics' => 'setMetrics'
     ];
@@ -286,6 +291,7 @@ class AdKeyword implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => 'getStatus',
         'negative' => 'getNegative',
         'quality_score' => 'getQualityScore',
+        'quality' => 'getQuality',
         'synced_at' => 'getSyncedAt',
         'metrics' => 'getMetrics'
     ];
@@ -410,6 +416,7 @@ class AdKeyword implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('negative', $data ?? [], null);
         $this->setIfExists('quality_score', $data ?? [], null);
+        $this->setIfExists('quality', $data ?? [], null);
         $this->setIfExists('synced_at', $data ?? [], null);
         $this->setIfExists('metrics', $data ?? [], null);
     }
@@ -959,7 +966,7 @@ class AdKeyword implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets quality_score
      *
-     * @param int|null $quality_score Google Quality Score, 1-10. Null when unrated.
+     * @param int|null $quality_score Deprecated, use `quality.score`. Google Quality Score, 1-10. Null when unrated.
      *
      * @return self
      */
@@ -976,6 +983,33 @@ class AdKeyword implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['quality_score'] = $quality_score;
+
+        return $this;
+    }
+
+    /**
+     * Gets quality
+     *
+     * @return \Zernio\Model\AdKeywordQuality|null
+     */
+    public function getQuality()
+    {
+        return $this->container['quality'];
+    }
+
+    /**
+     * Sets quality
+     *
+     * @param \Zernio\Model\AdKeywordQuality|null $quality quality
+     *
+     * @return self
+     */
+    public function setQuality($quality)
+    {
+        if (is_null($quality)) {
+            throw new \InvalidArgumentException('non-nullable quality cannot be null');
+        }
+        $this->container['quality'] = $quality;
 
         return $this;
     }

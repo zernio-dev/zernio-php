@@ -26,6 +26,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getAdSetDetails()**](AdCampaignsApi.md#getAdSetDetails) | **GET** /v1/ads/ad-sets/{adSetId} | Get live ad-set details |
 | [**getAdTree()**](AdCampaignsApi.md#getAdTree) | **GET** /v1/ads/tree | Get campaign tree |
 | [**getAdsTimeline()**](AdCampaignsApi.md#getAdsTimeline) | **GET** /v1/ads/timeline | Get daily account metrics |
+| [**getCampaignAdSchedule()**](AdCampaignsApi.md#getCampaignAdSchedule) | **GET** /v1/ads/campaigns/{campaignId}/ad-schedule | Read a campaign&#39;s ad schedule (dayparting) |
 | [**getCampaignBidding()**](AdCampaignsApi.md#getCampaignBidding) | **GET** /v1/ads/campaigns/{campaignId}/bidding | Read a campaign&#39;s current bidding |
 | [**getCampaignTargeting()**](AdCampaignsApi.md#getCampaignTargeting) | **GET** /v1/ads/campaigns/{campaignId}/targeting | Read a Google campaign&#39;s device, location, and language targeting |
 | [**listAdCampaigns()**](AdCampaignsApi.md#listAdCampaigns) | **GET** /v1/ads/campaigns | List campaigns |
@@ -52,6 +53,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**updateAdSetStatus()**](AdCampaignsApi.md#updateAdSetStatus) | **PUT** /v1/ads/ad-sets/{adSetId}/status | Pause or resume a single ad set |
 | [**updateAdStatus()**](AdCampaignsApi.md#updateAdStatus) | **PUT** /v1/ads/{adId}/status | Pause or resume a single ad |
 | [**updateBidStrategy()**](AdCampaignsApi.md#updateBidStrategy) | **PATCH** /v1/ads/bid-strategies/{strategyId} | Update portfolio bid strategy |
+| [**updateCampaignAdSchedule()**](AdCampaignsApi.md#updateCampaignAdSchedule) | **PUT** /v1/ads/campaigns/{campaignId}/ad-schedule | Replace a campaign&#39;s ad schedule (dayparting) |
 | [**updateCampaignAssets()**](AdCampaignsApi.md#updateCampaignAssets) | **PUT** /v1/ads/campaigns/{campaignId}/assets | Update campaign assets |
 | [**updateCampaignTargeting()**](AdCampaignsApi.md#updateCampaignTargeting) | **PUT** /v1/ads/campaigns/{campaignId}/targeting | Edit a Google campaign&#39;s device, location, or language targeting |
 
@@ -1316,6 +1318,76 @@ try {
 ### Return type
 
 [**\Zernio\Model\AdsTimelineResponse**](../Model/AdsTimelineResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getCampaignAdSchedule()`
+
+```php
+getCampaignAdSchedule($campaign_id, $platform, $include_performance, $window_days, $from_date, $to_date): \Zernio\Model\GetCampaignAdSchedule200Response
+```
+
+Read a campaign's ad schedule (dayparting)
+
+The windows a Google campaign serves in, with the bid modifier on each, plus the criterion ids Google minted for them.  An EMPTY `schedule` is meaningful and is not a failed lookup: Google has no \"all day\" criterion, so a campaign with no ad schedule serves around the clock. `servesAroundTheClock` states that explicitly.  Set `includePerformance=true` to also get delivery split by day of week and by hour, which is the evidence for deciding what the schedule should be. It is one extra Google call segmented by both dimensions at once, so the two views always agree.  Google Ads only. The response carries `cachedAt` and `stale`, set when a quota-exhausted call falls back to the last-good copy instead of a live read.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Numeric Google platform campaign id.
+$platform = 'platform_example'; // string | Disambiguates the campaign id when the connection spans platforms.
+$include_performance = True; // bool | Also return delivery by day of week and by hour. Costs one extra Google call.
+$window_days = 30; // int | Trailing window for the performance split. Ignored when fromDate and toDate are both given.
+$from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start of an explicit performance range (YYYY-MM-DD). Use together with toDate.
+$to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End of an explicit performance range (YYYY-MM-DD). Must be on or after fromDate.
+
+try {
+    $result = $apiInstance->getCampaignAdSchedule($campaign_id, $platform, $include_performance, $window_days, $from_date, $to_date);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->getCampaignAdSchedule: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Numeric Google platform campaign id. | |
+| **platform** | **string**| Disambiguates the campaign id when the connection spans platforms. | [optional] |
+| **include_performance** | **bool**| Also return delivery by day of week and by hour. Costs one extra Google call. | [optional] |
+| **window_days** | **int**| Trailing window for the performance split. Ignored when fromDate and toDate are both given. | [optional] [default to 30] |
+| **from_date** | **\DateTime**| Start of an explicit performance range (YYYY-MM-DD). Use together with toDate. | [optional] |
+| **to_date** | **\DateTime**| End of an explicit performance range (YYYY-MM-DD). Must be on or after fromDate. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetCampaignAdSchedule200Response**](../Model/GetCampaignAdSchedule200Response.md)
 
 ### Authorization
 
@@ -3008,6 +3080,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\UpdateBidStrategy200Response**](../Model/UpdateBidStrategy200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateCampaignAdSchedule()`
+
+```php
+updateCampaignAdSchedule($campaign_id, $update_campaign_ad_schedule_request): \Zernio\Model\UpdateCampaignAdSchedule200Response
+```
+
+Replace a campaign's ad schedule (dayparting)
+
+Replaces the campaign's whole ad schedule with the windows you send. This is a REPLACE, not a merge: windows you leave out stop serving.  Send `schedule: []` to clear dayparting, which returns the campaign to serving around the clock.  Google rules enforced here, so you get a named field instead of a criterion error: at most 6 windows per day, a window must end after it starts, windows on the same day may not overlap, `endHour` 24 is midnight and cannot carry minutes, and minutes are quarter-hours only (0, 15, 30, 45). `bidModifier` is 0.1-10.0; Google's 0 means \"off\" for devices only, so a window is switched off by leaving it out.  Windows are half-open (Google is exclusive of the end minute), so 09:00-12:00 and 12:00-17:00 on the same day are adjacent and both valid.  Google cannot edit an ad schedule in place (every AdScheduleInfo field is prohibited on update), so this removes the live criteria and creates the new ones in a single atomic mutate. The response is read back from Google and carries the new criterion ids.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Numeric Google platform campaign id.
+$update_campaign_ad_schedule_request = {"schedule":[{"dayOfWeek":"MONDAY","startHour":9,"endHour":17},{"dayOfWeek":"TUESDAY","startHour":9,"endHour":17},{"dayOfWeek":"WEDNESDAY","startHour":9,"endHour":12,"bidModifier":1.5},{"dayOfWeek":"WEDNESDAY","startHour":12,"endHour":17}]}; // \Zernio\Model\UpdateCampaignAdScheduleRequest
+
+try {
+    $result = $apiInstance->updateCampaignAdSchedule($campaign_id, $update_campaign_ad_schedule_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->updateCampaignAdSchedule: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Numeric Google platform campaign id. | |
+| **update_campaign_ad_schedule_request** | [**\Zernio\Model\UpdateCampaignAdScheduleRequest**](../Model/UpdateCampaignAdScheduleRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateCampaignAdSchedule200Response**](../Model/UpdateCampaignAdSchedule200Response.md)
 
 ### Authorization
 
