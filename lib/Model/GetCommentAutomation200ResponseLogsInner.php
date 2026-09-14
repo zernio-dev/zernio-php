@@ -69,6 +69,8 @@ class GetCommentAutomation200ResponseLogsInner implements ModelInterface, ArrayA
         'commenter_is_follower' => 'bool',
         'commenter_follower_count' => 'int',
         'error' => 'string',
+        'platform_error' => '\Zernio\Model\GetCommentAutomation200ResponseLogsInnerPlatformError',
+        'private_reply_consumed' => 'bool',
         'comment_reply_status' => 'string',
         'comment_reply_error' => 'string',
         'next_due_at' => '\DateTime',
@@ -94,6 +96,8 @@ class GetCommentAutomation200ResponseLogsInner implements ModelInterface, ArrayA
         'commenter_is_follower' => null,
         'commenter_follower_count' => null,
         'error' => null,
+        'platform_error' => null,
+        'private_reply_consumed' => null,
         'comment_reply_status' => null,
         'comment_reply_error' => null,
         'next_due_at' => 'date-time',
@@ -117,6 +121,8 @@ class GetCommentAutomation200ResponseLogsInner implements ModelInterface, ArrayA
         'commenter_is_follower' => false,
         'commenter_follower_count' => false,
         'error' => false,
+        'platform_error' => false,
+        'private_reply_consumed' => false,
         'comment_reply_status' => false,
         'comment_reply_error' => false,
         'next_due_at' => false,
@@ -220,6 +226,8 @@ class GetCommentAutomation200ResponseLogsInner implements ModelInterface, ArrayA
         'commenter_is_follower' => 'commenterIsFollower',
         'commenter_follower_count' => 'commenterFollowerCount',
         'error' => 'error',
+        'platform_error' => 'platformError',
+        'private_reply_consumed' => 'privateReplyConsumed',
         'comment_reply_status' => 'commentReplyStatus',
         'comment_reply_error' => 'commentReplyError',
         'next_due_at' => 'nextDueAt',
@@ -243,6 +251,8 @@ class GetCommentAutomation200ResponseLogsInner implements ModelInterface, ArrayA
         'commenter_is_follower' => 'setCommenterIsFollower',
         'commenter_follower_count' => 'setCommenterFollowerCount',
         'error' => 'setError',
+        'platform_error' => 'setPlatformError',
+        'private_reply_consumed' => 'setPrivateReplyConsumed',
         'comment_reply_status' => 'setCommentReplyStatus',
         'comment_reply_error' => 'setCommentReplyError',
         'next_due_at' => 'setNextDueAt',
@@ -266,6 +276,8 @@ class GetCommentAutomation200ResponseLogsInner implements ModelInterface, ArrayA
         'commenter_is_follower' => 'getCommenterIsFollower',
         'commenter_follower_count' => 'getCommenterFollowerCount',
         'error' => 'getError',
+        'platform_error' => 'getPlatformError',
+        'private_reply_consumed' => 'getPrivateReplyConsumed',
         'comment_reply_status' => 'getCommentReplyStatus',
         'comment_reply_error' => 'getCommentReplyError',
         'next_due_at' => 'getNextDueAt',
@@ -416,6 +428,8 @@ class GetCommentAutomation200ResponseLogsInner implements ModelInterface, ArrayA
         $this->setIfExists('commenter_is_follower', $data ?? [], null);
         $this->setIfExists('commenter_follower_count', $data ?? [], null);
         $this->setIfExists('error', $data ?? [], null);
+        $this->setIfExists('platform_error', $data ?? [], null);
+        $this->setIfExists('private_reply_consumed', $data ?? [], null);
         $this->setIfExists('comment_reply_status', $data ?? [], null);
         $this->setIfExists('comment_reply_error', $data ?? [], null);
         $this->setIfExists('next_due_at', $data ?? [], null);
@@ -823,6 +837,60 @@ class GetCommentAutomation200ResponseLogsInner implements ModelInterface, ArrayA
             throw new \InvalidArgumentException('non-nullable error cannot be null');
         }
         $this->container['error'] = $error;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_error
+     *
+     * @return \Zernio\Model\GetCommentAutomation200ResponseLogsInnerPlatformError|null
+     */
+    public function getPlatformError()
+    {
+        return $this->container['platform_error'];
+    }
+
+    /**
+     * Sets platform_error
+     *
+     * @param \Zernio\Model\GetCommentAutomation200ResponseLogsInnerPlatformError|null $platform_error platform_error
+     *
+     * @return self
+     */
+    public function setPlatformError($platform_error)
+    {
+        if (is_null($platform_error)) {
+            throw new \InvalidArgumentException('non-nullable platform_error cannot be null');
+        }
+        $this->container['platform_error'] = $platform_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets private_reply_consumed
+     *
+     * @return bool|null
+     */
+    public function getPrivateReplyConsumed()
+    {
+        return $this->container['private_reply_consumed'];
+    }
+
+    /**
+     * Sets private_reply_consumed
+     *
+     * @param bool|null $private_reply_consumed True when the failed send spent the comment's single Instagram private reply (subcode 1545133 or 2534023), the same rule as `details.privateReplyConsumed` on the private-reply endpoint. Absent on direct DMs, on Facebook, and on rows written before this field existed.
+     *
+     * @return self
+     */
+    public function setPrivateReplyConsumed($private_reply_consumed)
+    {
+        if (is_null($private_reply_consumed)) {
+            throw new \InvalidArgumentException('non-nullable private_reply_consumed cannot be null');
+        }
+        $this->container['private_reply_consumed'] = $private_reply_consumed;
 
         return $this;
     }

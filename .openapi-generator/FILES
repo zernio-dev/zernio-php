@@ -693,6 +693,7 @@ docs/Model/GetCampaignTargeting200ResponseLocationsInner.md
 docs/Model/GetCommentAutomation200Response.md
 docs/Model/GetCommentAutomation200ResponseAutomation.md
 docs/Model/GetCommentAutomation200ResponseLogsInner.md
+docs/Model/GetCommentAutomation200ResponseLogsInnerPlatformError.md
 docs/Model/GetConnectUrl200Response.md
 docs/Model/GetContact200Response.md
 docs/Model/GetContact200ResponseChannelsInner.md
@@ -2805,6 +2806,7 @@ lib/Model/GetCampaignTargeting200ResponseLocationsInner.php
 lib/Model/GetCommentAutomation200Response.php
 lib/Model/GetCommentAutomation200ResponseAutomation.php
 lib/Model/GetCommentAutomation200ResponseLogsInner.php
+lib/Model/GetCommentAutomation200ResponseLogsInnerPlatformError.php
 lib/Model/GetConnectUrl200Response.php
 lib/Model/GetContact200Response.php
 lib/Model/GetContact200ResponseChannelsInner.php
@@ -4225,3 +4227,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetCommentAutomation200ResponseLogsInnerPlatformErrorTest.php
