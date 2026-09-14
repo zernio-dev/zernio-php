@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * ListTikTokCommercialMusic200ResponseTracksInnerClip Class Doc Comment
  *
  * @category Class
- * @description The trending excerpt of the track, when TikTok provides one
+ * @description The trending excerpt of the track, when TikTok provides one. Its id is also accepted as musicSoundId.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,6 +59,7 @@ class ListTikTokCommercialMusic200ResponseTracksInnerClip implements ModelInterf
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'string',
         'duration_sec' => 'int',
         'preview_url' => 'string'
     ];
@@ -71,6 +72,7 @@ class ListTikTokCommercialMusic200ResponseTracksInnerClip implements ModelInterf
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => null,
         'duration_sec' => null,
         'preview_url' => null
     ];
@@ -81,6 +83,7 @@ class ListTikTokCommercialMusic200ResponseTracksInnerClip implements ModelInterf
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'id' => false,
         'duration_sec' => false,
         'preview_url' => false
     ];
@@ -171,6 +174,7 @@ class ListTikTokCommercialMusic200ResponseTracksInnerClip implements ModelInterf
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'duration_sec' => 'durationSec',
         'preview_url' => 'previewUrl'
     ];
@@ -181,6 +185,7 @@ class ListTikTokCommercialMusic200ResponseTracksInnerClip implements ModelInterf
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'duration_sec' => 'setDurationSec',
         'preview_url' => 'setPreviewUrl'
     ];
@@ -191,6 +196,7 @@ class ListTikTokCommercialMusic200ResponseTracksInnerClip implements ModelInterf
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'duration_sec' => 'getDurationSec',
         'preview_url' => 'getPreviewUrl'
     ];
@@ -252,6 +258,7 @@ class ListTikTokCommercialMusic200ResponseTracksInnerClip implements ModelInterf
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('duration_sec', $data ?? [], null);
         $this->setIfExists('preview_url', $data ?? [], null);
     }
@@ -297,6 +304,33 @@ class ListTikTokCommercialMusic200ResponseTracksInnerClip implements ModelInterf
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
 
     /**
      * Gets duration_sec

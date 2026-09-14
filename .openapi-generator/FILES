@@ -4255,13 +4255,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateInboxConversation400ResponseAnyOfTest.php
-test/Model/CreateInboxConversation404ResponseAnyOfTest.php
-test/Model/CreateInboxConversation422ResponseAnyOfTest.php
-test/Model/CreateInboxConversation429ResponseAnyOfTest.php
-test/Model/SendInboxMessage502ResponseTest.php
-test/Model/WhatsAppTemplateLookupErrorDetailsProviderHeadersTest.php
-test/Model/WhatsAppTemplateLookupErrorDetailsTest.php
-test/Model/WhatsAppTemplateLookupErrorPlatformErrorErrorDataTest.php
-test/Model/WhatsAppTemplateLookupErrorPlatformErrorTest.php
-test/Model/WhatsAppTemplateLookupErrorTest.php

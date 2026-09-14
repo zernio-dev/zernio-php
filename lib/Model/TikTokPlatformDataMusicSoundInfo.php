@@ -344,7 +344,7 @@ class TikTokPlatformDataMusicSoundInfo implements ModelInterface, ArrayAccess, \
     /**
      * Sets music_sound_id
      *
-     * @param string $music_sound_id The commercial_music_id of the track.
+     * @param string $music_sound_id The id field of a track from GET /v1/accounts/{accountId}/tiktok/commercial-music (a song clip id). TikTok fails the publish with a generic 51065 when given the commercial music id instead.
      *
      * @return self
      */

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **string** |  | [optional]
 **duration_sec** | **int** |  | [optional]
 **preview_url** | **string** |  | [optional]
 

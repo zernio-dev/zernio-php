@@ -59,6 +59,7 @@ class ListTikTokCommercialMusic200ResponseTracksInner implements ModelInterface,
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'commercial_music_id' => 'string',
         'name' => 'string',
         'artist' => 'string',
         'duration_sec' => 'int',
@@ -78,6 +79,7 @@ class ListTikTokCommercialMusic200ResponseTracksInner implements ModelInterface,
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'commercial_music_id' => null,
         'name' => null,
         'artist' => null,
         'duration_sec' => null,
@@ -95,6 +97,7 @@ class ListTikTokCommercialMusic200ResponseTracksInner implements ModelInterface,
       */
     protected static array $openAPINullables = [
         'id' => false,
+        'commercial_music_id' => false,
         'name' => false,
         'artist' => false,
         'duration_sec' => false,
@@ -192,6 +195,7 @@ class ListTikTokCommercialMusic200ResponseTracksInner implements ModelInterface,
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'commercial_music_id' => 'commercialMusicId',
         'name' => 'name',
         'artist' => 'artist',
         'duration_sec' => 'durationSec',
@@ -209,6 +213,7 @@ class ListTikTokCommercialMusic200ResponseTracksInner implements ModelInterface,
      */
     protected static $setters = [
         'id' => 'setId',
+        'commercial_music_id' => 'setCommercialMusicId',
         'name' => 'setName',
         'artist' => 'setArtist',
         'duration_sec' => 'setDurationSec',
@@ -226,6 +231,7 @@ class ListTikTokCommercialMusic200ResponseTracksInner implements ModelInterface,
      */
     protected static $getters = [
         'id' => 'getId',
+        'commercial_music_id' => 'getCommercialMusicId',
         'name' => 'getName',
         'artist' => 'getArtist',
         'duration_sec' => 'getDurationSec',
@@ -294,6 +300,7 @@ class ListTikTokCommercialMusic200ResponseTracksInner implements ModelInterface,
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('commercial_music_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('artist', $data ?? [], null);
         $this->setIfExists('duration_sec', $data ?? [], null);
@@ -359,7 +366,7 @@ class ListTikTokCommercialMusic200ResponseTracksInner implements ModelInterface,
     /**
      * Sets id
      *
-     * @param string|null $id The commercial_music_id to send as musicSoundId
+     * @param string|null $id The id to send as musicSoundId (the full track's song clip id). TikTok rejects the commercial music id itself at publish time.
      *
      * @return self
      */
@@ -369,6 +376,33 @@ class ListTikTokCommercialMusic200ResponseTracksInner implements ModelInterface,
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets commercial_music_id
+     *
+     * @return string|null
+     */
+    public function getCommercialMusicId()
+    {
+        return $this->container['commercial_music_id'];
+    }
+
+    /**
+     * Sets commercial_music_id
+     *
+     * @param string|null $commercial_music_id TikTok's commercial_music_id, for reference only
+     *
+     * @return self
+     */
+    public function setCommercialMusicId($commercial_music_id)
+    {
+        if (is_null($commercial_music_id)) {
+            throw new \InvalidArgumentException('non-nullable commercial_music_id cannot be null');
+        }
+        $this->container['commercial_music_id'] = $commercial_music_id;
 
         return $this;
     }
