@@ -124,6 +124,8 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'video_cover_image_url' => 'string',
         'photo_cover_index' => 'int',
         'auto_add_music' => 'bool',
+        'music_sound_info' => '\Zernio\Model\TikTokPlatformDataMusicSoundInfo',
+        'video_original_sound_volume' => 'int',
         'video_made_with_ai' => 'bool',
         'description' => 'string',
         'parse_mode' => 'string',
@@ -232,6 +234,8 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'video_cover_image_url' => 'uri',
         'photo_cover_index' => null,
         'auto_add_music' => null,
+        'music_sound_info' => null,
+        'video_original_sound_volume' => null,
         'video_made_with_ai' => null,
         'description' => null,
         'parse_mode' => null,
@@ -338,6 +342,8 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'video_cover_image_url' => false,
         'photo_cover_index' => false,
         'auto_add_music' => false,
+        'music_sound_info' => false,
+        'video_original_sound_volume' => false,
         'video_made_with_ai' => false,
         'description' => false,
         'parse_mode' => false,
@@ -524,6 +530,8 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'video_cover_image_url' => 'videoCoverImageUrl',
         'photo_cover_index' => 'photoCoverIndex',
         'auto_add_music' => 'autoAddMusic',
+        'music_sound_info' => 'musicSoundInfo',
+        'video_original_sound_volume' => 'videoOriginalSoundVolume',
         'video_made_with_ai' => 'videoMadeWithAi',
         'description' => 'description',
         'parse_mode' => 'parseMode',
@@ -630,6 +638,8 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'video_cover_image_url' => 'setVideoCoverImageUrl',
         'photo_cover_index' => 'setPhotoCoverIndex',
         'auto_add_music' => 'setAutoAddMusic',
+        'music_sound_info' => 'setMusicSoundInfo',
+        'video_original_sound_volume' => 'setVideoOriginalSoundVolume',
         'video_made_with_ai' => 'setVideoMadeWithAi',
         'description' => 'setDescription',
         'parse_mode' => 'setParseMode',
@@ -736,6 +746,8 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'video_cover_image_url' => 'getVideoCoverImageUrl',
         'photo_cover_index' => 'getPhotoCoverIndex',
         'auto_add_music' => 'getAutoAddMusic',
+        'music_sound_info' => 'getMusicSoundInfo',
+        'video_original_sound_volume' => 'getVideoOriginalSoundVolume',
         'video_made_with_ai' => 'getVideoMadeWithAi',
         'description' => 'getDescription',
         'parse_mode' => 'getParseMode',
@@ -1012,6 +1024,8 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         $this->setIfExists('video_cover_image_url', $data ?? [], null);
         $this->setIfExists('photo_cover_index', $data ?? [], null);
         $this->setIfExists('auto_add_music', $data ?? [], null);
+        $this->setIfExists('music_sound_info', $data ?? [], null);
+        $this->setIfExists('video_original_sound_volume', $data ?? [], null);
         $this->setIfExists('video_made_with_ai', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('parse_mode', $data ?? [], null);
@@ -1157,6 +1171,14 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
 
         if (!is_null($this->container['photo_cover_index']) && ($this->container['photo_cover_index'] < 0)) {
             $invalidProperties[] = "invalid value for 'photo_cover_index', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['video_original_sound_volume']) && ($this->container['video_original_sound_volume'] > 100)) {
+            $invalidProperties[] = "invalid value for 'video_original_sound_volume', must be smaller than or equal to 100.";
+        }
+
+        if (!is_null($this->container['video_original_sound_volume']) && ($this->container['video_original_sound_volume'] < 0)) {
+            $invalidProperties[] = "invalid value for 'video_original_sound_volume', must be bigger than or equal to 0.";
         }
 
         if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 4000)) {
@@ -3068,7 +3090,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets auto_add_music
      *
-     * @param bool|null $auto_add_music When true, TikTok may add recommended music (photos only)
+     * @param bool|null $auto_add_music When true, TikTok may add recommended music (photos only). With the brand-organic or branded-content toggle on, TikTok allows Commercial Music Library tracks only, so this attaches nothing there; use musicSoundInfo instead.
      *
      * @return self
      */
@@ -3078,6 +3100,68 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
             throw new \InvalidArgumentException('non-nullable auto_add_music cannot be null');
         }
         $this->container['auto_add_music'] = $auto_add_music;
+
+        return $this;
+    }
+
+    /**
+     * Gets music_sound_info
+     *
+     * @return \Zernio\Model\TikTokPlatformDataMusicSoundInfo|null
+     */
+    public function getMusicSoundInfo()
+    {
+        return $this->container['music_sound_info'];
+    }
+
+    /**
+     * Sets music_sound_info
+     *
+     * @param \Zernio\Model\TikTokPlatformDataMusicSoundInfo|null $music_sound_info music_sound_info
+     *
+     * @return self
+     */
+    public function setMusicSoundInfo($music_sound_info)
+    {
+        if (is_null($music_sound_info)) {
+            throw new \InvalidArgumentException('non-nullable music_sound_info cannot be null');
+        }
+        $this->container['music_sound_info'] = $music_sound_info;
+
+        return $this;
+    }
+
+    /**
+     * Gets video_original_sound_volume
+     *
+     * @return int|null
+     */
+    public function getVideoOriginalSoundVolume()
+    {
+        return $this->container['video_original_sound_volume'];
+    }
+
+    /**
+     * Sets video_original_sound_volume
+     *
+     * @param int|null $video_original_sound_volume Volume of the video's own sound when a commercial track is attached (0 to 100). Requires musicSoundInfo. Video posts only.
+     *
+     * @return self
+     */
+    public function setVideoOriginalSoundVolume($video_original_sound_volume)
+    {
+        if (is_null($video_original_sound_volume)) {
+            throw new \InvalidArgumentException('non-nullable video_original_sound_volume cannot be null');
+        }
+
+        if (($video_original_sound_volume > 100)) {
+            throw new \InvalidArgumentException('invalid value for $video_original_sound_volume when calling CreatePostRequestPlatformsInnerPlatformSpecificData., must be smaller than or equal to 100.');
+        }
+        if (($video_original_sound_volume < 0)) {
+            throw new \InvalidArgumentException('invalid value for $video_original_sound_volume when calling CreatePostRequestPlatformsInnerPlatformSpecificData., must be bigger than or equal to 0.');
+        }
+
+        $this->container['video_original_sound_volume'] = $video_original_sound_volume;
 
         return $this;
     }

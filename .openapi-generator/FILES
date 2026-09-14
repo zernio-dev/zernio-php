@@ -1267,6 +1267,9 @@ docs/Model/ListSnapchatProfiles200ResponsePublicProfilesInner.md
 docs/Model/ListTikTokAdPixels200Response.md
 docs/Model/ListTikTokAdPixels200ResponsePixelsInner.md
 docs/Model/ListTikTokAdPixels200ResponsePixelsInnerEventDetailsInner.md
+docs/Model/ListTikTokCommercialMusic200Response.md
+docs/Model/ListTikTokCommercialMusic200ResponseTracksInner.md
+docs/Model/ListTikTokCommercialMusic200ResponseTracksInnerClip.md
 docs/Model/ListTrackingTagSharedAccounts200Response.md
 docs/Model/ListTrackingTags200Response.md
 docs/Model/ListUsers200Response.md
@@ -1678,6 +1681,7 @@ docs/Model/ThreadsPlatformData.md
 docs/Model/TikTokDryRunVerdict.md
 docs/Model/TikTokDryRunVerdictTiktokInner.md
 docs/Model/TikTokPlatformData.md
+docs/Model/TikTokPlatformDataMusicSoundInfo.md
 docs/Model/TrackingTag.md
 docs/Model/TransferVoiceCall200Response.md
 docs/Model/TransferVoiceCallRequest.md
@@ -3380,6 +3384,9 @@ lib/Model/ListSnapchatProfiles200ResponsePublicProfilesInner.php
 lib/Model/ListTikTokAdPixels200Response.php
 lib/Model/ListTikTokAdPixels200ResponsePixelsInner.php
 lib/Model/ListTikTokAdPixels200ResponsePixelsInnerEventDetailsInner.php
+lib/Model/ListTikTokCommercialMusic200Response.php
+lib/Model/ListTikTokCommercialMusic200ResponseTracksInner.php
+lib/Model/ListTikTokCommercialMusic200ResponseTracksInnerClip.php
 lib/Model/ListTrackingTagSharedAccounts200Response.php
 lib/Model/ListTrackingTags200Response.php
 lib/Model/ListUsers200Response.php
@@ -3792,6 +3799,7 @@ lib/Model/ThreadsPlatformData.php
 lib/Model/TikTokDryRunVerdict.php
 lib/Model/TikTokDryRunVerdictTiktokInner.php
 lib/Model/TikTokPlatformData.php
+lib/Model/TikTokPlatformDataMusicSoundInfo.php
 lib/Model/TrackingTag.php
 lib/Model/TransferVoiceCall200Response.php
 lib/Model/TransferVoiceCallRequest.php
@@ -4227,4 +4235,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetCommentAutomation200ResponseLogsInnerPlatformErrorTest.php
+test/Model/ListTikTokCommercialMusic200ResponseTest.php
+test/Model/ListTikTokCommercialMusic200ResponseTracksInnerClipTest.php
+test/Model/ListTikTokCommercialMusic200ResponseTracksInnerTest.php
+test/Model/TikTokPlatformDataMusicSoundInfoTest.php

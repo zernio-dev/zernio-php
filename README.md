@@ -94,6 +94,7 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**getSlackSettings**](docs/Api/AccountsApi.md#getslacksettings) | **GET** /v1/accounts/{accountId}/slack-settings | Get Slack account settings
 *AccountsApi* | [**getTikTokCreatorInfo**](docs/Api/AccountsApi.md#gettiktokcreatorinfo) | **GET** /v1/accounts/{accountId}/tiktok/creator-info | Get TikTok creator info
 *AccountsApi* | [**listAccounts**](docs/Api/AccountsApi.md#listaccounts) | **GET** /v1/accounts | List accounts
+*AccountsApi* | [**listTikTokCommercialMusic**](docs/Api/AccountsApi.md#listtiktokcommercialmusic) | **GET** /v1/accounts/{accountId}/tiktok/commercial-music | List trending commercial music
 *AccountsApi* | [**moveAccountToProfile**](docs/Api/AccountsApi.md#moveaccounttoprofile) | **PATCH** /v1/accounts/{accountId} | Move account to another profile
 *AccountsApi* | [**updateAccount**](docs/Api/AccountsApi.md#updateaccount) | **PUT** /v1/accounts/{accountId} | Update account
 *AccountsApi* | [**updateBlueskySettings**](docs/Api/AccountsApi.md#updateblueskysettings) | **PATCH** /v1/accounts/{accountId}/bluesky-settings | Update Bluesky account settings
@@ -1989,6 +1990,9 @@ Class | Method | HTTP request | Description
 - [ListTikTokAdPixels200Response](docs/Model/ListTikTokAdPixels200Response.md)
 - [ListTikTokAdPixels200ResponsePixelsInner](docs/Model/ListTikTokAdPixels200ResponsePixelsInner.md)
 - [ListTikTokAdPixels200ResponsePixelsInnerEventDetailsInner](docs/Model/ListTikTokAdPixels200ResponsePixelsInnerEventDetailsInner.md)
+- [ListTikTokCommercialMusic200Response](docs/Model/ListTikTokCommercialMusic200Response.md)
+- [ListTikTokCommercialMusic200ResponseTracksInner](docs/Model/ListTikTokCommercialMusic200ResponseTracksInner.md)
+- [ListTikTokCommercialMusic200ResponseTracksInnerClip](docs/Model/ListTikTokCommercialMusic200ResponseTracksInnerClip.md)
 - [ListTrackingTagSharedAccounts200Response](docs/Model/ListTrackingTagSharedAccounts200Response.md)
 - [ListTrackingTags200Response](docs/Model/ListTrackingTags200Response.md)
 - [ListUsers200Response](docs/Model/ListUsers200Response.md)
@@ -2400,6 +2404,7 @@ Class | Method | HTTP request | Description
 - [TikTokDryRunVerdict](docs/Model/TikTokDryRunVerdict.md)
 - [TikTokDryRunVerdictTiktokInner](docs/Model/TikTokDryRunVerdictTiktokInner.md)
 - [TikTokPlatformData](docs/Model/TikTokPlatformData.md)
+- [TikTokPlatformDataMusicSoundInfo](docs/Model/TikTokPlatformDataMusicSoundInfo.md)
 - [TrackingTag](docs/Model/TrackingTag.md)
 - [TransferVoiceCall200Response](docs/Model/TransferVoiceCall200Response.md)
 - [TransferVoiceCallRequest](docs/Model/TransferVoiceCallRequest.md)
