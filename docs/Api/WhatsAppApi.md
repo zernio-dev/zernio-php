@@ -57,7 +57,7 @@ addWhatsAppGroupParticipants($group_id, $account_id, $add_whats_app_group_partic
 
 Add participants
 
-Add participants to a WhatsApp group. Maximum 8 participants per request.  Not available on [Coexistence](/platforms/whatsapp/connection#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
+Add participants to a WhatsApp group. Maximum 8 participants per request. A group holds at most 8 participants in total (a Meta limit), so later requests cannot grow a group past 8. Meta documents groups as invite-only, so people normally join through the group's invite link.  Not available on [Coexistence](/platforms/whatsapp/connection#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
 
 ### Example
 
