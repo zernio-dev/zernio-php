@@ -883,7 +883,7 @@ class ReviewsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ReplyToInboxReview200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ReplyToInboxReview200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function replyToInboxReview($review_id, $reply_to_inbox_review_request, $idempotency_key = null, string $contentType = self::contentTypes['replyToInboxReview'][0])
     {
@@ -903,7 +903,7 @@ class ReviewsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ReplyToInboxReview200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ReplyToInboxReview200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function replyToInboxReviewWithHttpInfo($review_id, $reply_to_inbox_review_request, $idempotency_key = null, string $contentType = self::contentTypes['replyToInboxReview'][0])
     {
@@ -936,6 +936,12 @@ class ReviewsApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\ReplyToInboxReview200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -973,6 +979,14 @@ class ReviewsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\ReplyToInboxReview200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
