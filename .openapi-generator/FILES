@@ -1516,6 +1516,8 @@ docs/Model/SearchInboxConversations200ResponseMeta.md
 docs/Model/SearchInboxConversations200ResponseMetaFailedAccountsInner.md
 docs/Model/SearchInstagramAudio200Response.md
 docs/Model/SearchReddit200Response.md
+docs/Model/SearchTikTokLocations200Response.md
+docs/Model/SearchTikTokLocations200ResponseLocationsInner.md
 docs/Model/SearchTweets200Response.md
 docs/Model/SearchTweets200ResponseMeta.md
 docs/Model/SearchTweets200ResponsePagination.md
@@ -3654,6 +3656,8 @@ lib/Model/SearchInboxConversations200ResponseMeta.php
 lib/Model/SearchInboxConversations200ResponseMetaFailedAccountsInner.php
 lib/Model/SearchInstagramAudio200Response.php
 lib/Model/SearchReddit200Response.php
+lib/Model/SearchTikTokLocations200Response.php
+lib/Model/SearchTikTokLocations200ResponseLocationsInner.php
 lib/Model/SearchTweets200Response.php
 lib/Model/SearchTweets200ResponseMeta.php
 lib/Model/SearchTweets200ResponsePagination.php
@@ -4275,3 +4279,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/SearchTikTokLocations200ResponseLocationsInnerTest.php
+test/Model/SearchTikTokLocations200ResponseTest.php

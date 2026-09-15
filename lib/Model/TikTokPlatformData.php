@@ -77,6 +77,9 @@ class TikTokPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
         'music_sound_info' => '\Zernio\Model\TikTokPlatformDataMusicSoundInfo',
         'video_original_sound_volume' => 'int',
         'video_made_with_ai' => 'bool',
+        'location_id' => 'string',
+        'location_name' => 'string',
+        'is_ads_only' => 'bool',
         'description' => 'string'
     ];
 
@@ -106,6 +109,9 @@ class TikTokPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
         'music_sound_info' => null,
         'video_original_sound_volume' => null,
         'video_made_with_ai' => null,
+        'location_id' => null,
+        'location_name' => null,
+        'is_ads_only' => null,
         'description' => null
     ];
 
@@ -133,6 +139,9 @@ class TikTokPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
         'music_sound_info' => false,
         'video_original_sound_volume' => false,
         'video_made_with_ai' => false,
+        'location_id' => false,
+        'location_name' => false,
+        'is_ads_only' => false,
         'description' => false
     ];
 
@@ -240,6 +249,9 @@ class TikTokPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
         'music_sound_info' => 'musicSoundInfo',
         'video_original_sound_volume' => 'videoOriginalSoundVolume',
         'video_made_with_ai' => 'videoMadeWithAi',
+        'location_id' => 'locationId',
+        'location_name' => 'locationName',
+        'is_ads_only' => 'isAdsOnly',
         'description' => 'description'
     ];
 
@@ -267,6 +279,9 @@ class TikTokPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
         'music_sound_info' => 'setMusicSoundInfo',
         'video_original_sound_volume' => 'setVideoOriginalSoundVolume',
         'video_made_with_ai' => 'setVideoMadeWithAi',
+        'location_id' => 'setLocationId',
+        'location_name' => 'setLocationName',
+        'is_ads_only' => 'setIsAdsOnly',
         'description' => 'setDescription'
     ];
 
@@ -294,6 +309,9 @@ class TikTokPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
         'music_sound_info' => 'getMusicSoundInfo',
         'video_original_sound_volume' => 'getVideoOriginalSoundVolume',
         'video_made_with_ai' => 'getVideoMadeWithAi',
+        'location_id' => 'getLocationId',
+        'location_name' => 'getLocationName',
+        'is_ads_only' => 'getIsAdsOnly',
         'description' => 'getDescription'
     ];
 
@@ -404,6 +422,9 @@ class TikTokPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('music_sound_info', $data ?? [], null);
         $this->setIfExists('video_original_sound_volume', $data ?? [], null);
         $this->setIfExists('video_made_with_ai', $data ?? [], null);
+        $this->setIfExists('location_id', $data ?? [], null);
+        $this->setIfExists('location_name', $data ?? [], null);
+        $this->setIfExists('is_ads_only', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
     }
 
@@ -1007,6 +1028,87 @@ class TikTokPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable video_made_with_ai cannot be null');
         }
         $this->container['video_made_with_ai'] = $video_made_with_ai;
+
+        return $this;
+    }
+
+    /**
+     * Gets location_id
+     *
+     * @return string|null
+     */
+    public function getLocationId()
+    {
+        return $this->container['location_id'];
+    }
+
+    /**
+     * Sets location_id
+     *
+     * @param string|null $location_id Location tag to attach, as the id of a result from GET /v1/accounts/{accountId}/tiktok/locations. Accounts connected through the TikTok for Business app and video posts only: a developer-app account rejects the post at publish time with a message that says so, and a direct photo post is rejected at creation since the business photo endpoint has no location field. Requires locationName. Ignored on drafts, where TikTok ignores every post_info field.
+     *
+     * @return self
+     */
+    public function setLocationId($location_id)
+    {
+        if (is_null($location_id)) {
+            throw new \InvalidArgumentException('non-nullable location_id cannot be null');
+        }
+        $this->container['location_id'] = $location_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets location_name
+     *
+     * @return string|null
+     */
+    public function getLocationName()
+    {
+        return $this->container['location_name'];
+    }
+
+    /**
+     * Sets location_name
+     *
+     * @param string|null $location_name Display name of the location tag, as returned next to its id. Required with locationId; a locationId without it is rejected at creation.
+     *
+     * @return self
+     */
+    public function setLocationName($location_name)
+    {
+        if (is_null($location_name)) {
+            throw new \InvalidArgumentException('non-nullable location_name cannot be null');
+        }
+        $this->container['location_name'] = $location_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_ads_only
+     *
+     * @return bool|null
+     */
+    public function getIsAdsOnly()
+    {
+        return $this->container['is_ads_only'];
+    }
+
+    /**
+     * Sets is_ads_only
+     *
+     * @param bool|null $is_ads_only Set true to publish the video as an \"Only show in ads\" post: it is kept off the profile and exists to be used as a Spark Ad. Accounts connected through the TikTok for Business app and video posts only, with the same rejections as locationId. Ignored on drafts.
+     *
+     * @return self
+     */
+    public function setIsAdsOnly($is_ads_only)
+    {
+        if (is_null($is_ads_only)) {
+            throw new \InvalidArgumentException('non-nullable is_ads_only cannot be null');
+        }
+        $this->container['is_ads_only'] = $is_ads_only;
 
         return $this;
     }
