@@ -921,6 +921,7 @@ Class | Method | HTTP request | Description
 - [BoostPostRequest](docs/Model/BoostPostRequest.md)
 - [BoostPostRequestBudget](docs/Model/BoostPostRequestBudget.md)
 - [BoostPostRequestPlatformSpecificData](docs/Model/BoostPostRequestPlatformSpecificData.md)
+- [BoostPostRequestPromotedObject](docs/Model/BoostPostRequestPromotedObject.md)
 - [BoostPostRequestSchedule](docs/Model/BoostPostRequestSchedule.md)
 - [BoostPostRequestTargeting](docs/Model/BoostPostRequestTargeting.md)
 - [BoostPostRequestTargetingCitiesInner](docs/Model/BoostPostRequestTargetingCitiesInner.md)

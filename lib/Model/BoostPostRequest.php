@@ -86,6 +86,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'link_url' => 'string',
         'call_to_action' => 'string',
         'spark_auth_code' => 'string',
+        'promoted_object' => '\Zernio\Model\BoostPostRequestPromotedObject',
         'dsa_beneficiary' => 'string',
         'dsa_payor' => 'string',
         'lead_gen_form_id' => 'string',
@@ -129,6 +130,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'link_url' => 'uri',
         'call_to_action' => null,
         'spark_auth_code' => null,
+        'promoted_object' => null,
         'dsa_beneficiary' => null,
         'dsa_payor' => null,
         'lead_gen_form_id' => null,
@@ -170,6 +172,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'link_url' => false,
         'call_to_action' => false,
         'spark_auth_code' => false,
+        'promoted_object' => false,
         'dsa_beneficiary' => false,
         'dsa_payor' => false,
         'lead_gen_form_id' => false,
@@ -291,6 +294,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'link_url' => 'linkUrl',
         'call_to_action' => 'callToAction',
         'spark_auth_code' => 'sparkAuthCode',
+        'promoted_object' => 'promotedObject',
         'dsa_beneficiary' => 'dsaBeneficiary',
         'dsa_payor' => 'dsaPayor',
         'lead_gen_form_id' => 'leadGenFormId',
@@ -332,6 +336,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'link_url' => 'setLinkUrl',
         'call_to_action' => 'setCallToAction',
         'spark_auth_code' => 'setSparkAuthCode',
+        'promoted_object' => 'setPromotedObject',
         'dsa_beneficiary' => 'setDsaBeneficiary',
         'dsa_payor' => 'setDsaPayor',
         'lead_gen_form_id' => 'setLeadGenFormId',
@@ -373,6 +378,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'link_url' => 'getLinkUrl',
         'call_to_action' => 'getCallToAction',
         'spark_auth_code' => 'getSparkAuthCode',
+        'promoted_object' => 'getPromotedObject',
         'dsa_beneficiary' => 'getDsaBeneficiary',
         'dsa_payor' => 'getDsaPayor',
         'lead_gen_form_id' => 'getLeadGenFormId',
@@ -566,6 +572,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('link_url', $data ?? [], null);
         $this->setIfExists('call_to_action', $data ?? [], null);
         $this->setIfExists('spark_auth_code', $data ?? [], null);
+        $this->setIfExists('promoted_object', $data ?? [], null);
         $this->setIfExists('dsa_beneficiary', $data ?? [], null);
         $this->setIfExists('dsa_payor', $data ?? [], null);
         $this->setIfExists('lead_gen_form_id', $data ?? [], null);
@@ -1490,6 +1497,33 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable spark_auth_code cannot be null');
         }
         $this->container['spark_auth_code'] = $spark_auth_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets promoted_object
+     *
+     * @return \Zernio\Model\BoostPostRequestPromotedObject|null
+     */
+    public function getPromotedObject()
+    {
+        return $this->container['promoted_object'];
+    }
+
+    /**
+     * Sets promoted_object
+     *
+     * @param \Zernio\Model\BoostPostRequestPromotedObject|null $promoted_object promoted_object
+     *
+     * @return self
+     */
+    public function setPromotedObject($promoted_object)
+    {
+        if (is_null($promoted_object)) {
+            throw new \InvalidArgumentException('non-nullable promoted_object cannot be null');
+        }
+        $this->container['promoted_object'] = $promoted_object;
 
         return $this;
     }
