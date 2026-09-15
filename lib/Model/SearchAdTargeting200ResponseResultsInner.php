@@ -340,7 +340,7 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
     /**
      * Sets id
      *
-     * @param string $id The platform's opaque id. Use as a geo `key` (regions/cities/zips/metros) or an entity `id` (interests/behaviors) in TargetingSpec.
+     * @param string $id The platform's opaque id. Use as a geo `key` (regions/cities/zips/metros) or an entity `id` (interests/behaviors) in TargetingSpec. A `country` result is the exception on every platform: its id is the ISO 3166-1 alpha-2 code, which is what `targeting.countries` takes.
      *
      * @return self
      */
