@@ -4279,5 +4279,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/SearchTikTokLocations200ResponseLocationsInnerTest.php
-test/Model/SearchTikTokLocations200ResponseTest.php
