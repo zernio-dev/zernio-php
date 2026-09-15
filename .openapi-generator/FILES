@@ -600,6 +600,7 @@ docs/Model/EnrollContacts200Response.md
 docs/Model/EnrollContacts200ResponseResultsInner.md
 docs/Model/EnrollContactsRequest.md
 docs/Model/ErrorResponse.md
+docs/Model/ErrorResponseDetails.md
 docs/Model/EstimateAdReach200Response.md
 docs/Model/EstimateAdReachRequest.md
 docs/Model/Expired.md
@@ -2739,6 +2740,7 @@ lib/Model/EnrollContacts200Response.php
 lib/Model/EnrollContacts200ResponseResultsInner.php
 lib/Model/EnrollContactsRequest.php
 lib/Model/ErrorResponse.php
+lib/Model/ErrorResponseDetails.php
 lib/Model/EstimateAdReach200Response.php
 lib/Model/EstimateAdReachRequest.php
 lib/Model/Expired.php
@@ -4279,3 +4281,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ErrorResponseDetailsTest.php

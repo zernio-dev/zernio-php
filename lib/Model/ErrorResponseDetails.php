@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorResponse
+ * ErrorResponseDetails
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ErrorResponse Class Doc Comment
+ * ErrorResponseDetails Class Doc Comment
  *
  * @category Class
- * @description Canonical error envelope. &#x60;error&#x60; is the human-readable message; &#x60;type&#x60;, &#x60;code&#x60;, &#x60;param&#x60;, &#x60;platform&#x60;, and &#x60;platformError&#x60; are top-level siblings for programmatic handling. For upstream platform failures (&#x60;type: platform_error&#x60;), &#x60;platformError&#x60; carries the provider&#39;s raw payload verbatim (for Meta: &#x60;error_subcode&#x60;, &#x60;error_user_title&#x60;, &#x60;error_user_msg&#x60;).
+ * @description Additional structured context (e.g. field-level validation errors), for example &#x60;privateReplyConsumed&#x60; on the private-reply endpoint&#39;s 400 when the comment&#39;s single reply is already spent.  On a Google Ads 429 it carries &#x60;quotaExhausted: true&#x60;, which marks the failure as Google&#39;s own ads quota rather than a Zernio rate limit, so you can keep calling other platforms instead of backing off everywhere. When Google names the scope it also carries &#x60;quotaScope&#x60;: &#x60;DEVELOPER&#x60; means the shared developer-token budget (every Google account is affected and there is nothing to change on your side), &#x60;ACCOUNT&#x60; means your own ad account. A Meta 429 carries neither field.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class ErrorResponseDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ErrorResponse';
+    protected static $openAPIModelName = 'ErrorResponse_details';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,13 +59,8 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'error' => 'string',
-        'type' => 'string',
-        'code' => 'string',
-        'param' => 'string',
-        'platform' => 'string',
-        'platform_error' => 'array<string,mixed>',
-        'details' => '\Zernio\Model\ErrorResponseDetails'
+        'quota_exhausted' => 'bool',
+        'quota_scope' => 'string'
     ];
 
     /**
@@ -76,13 +71,8 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'error' => null,
-        'type' => null,
-        'code' => null,
-        'param' => null,
-        'platform' => null,
-        'platform_error' => null,
-        'details' => null
+        'quota_exhausted' => null,
+        'quota_scope' => null
     ];
 
     /**
@@ -91,13 +81,8 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'error' => false,
-        'type' => false,
-        'code' => false,
-        'param' => false,
-        'platform' => false,
-        'platform_error' => false,
-        'details' => false
+        'quota_exhausted' => false,
+        'quota_scope' => false
     ];
 
     /**
@@ -186,13 +171,8 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'error' => 'error',
-        'type' => 'type',
-        'code' => 'code',
-        'param' => 'param',
-        'platform' => 'platform',
-        'platform_error' => 'platformError',
-        'details' => 'details'
+        'quota_exhausted' => 'quotaExhausted',
+        'quota_scope' => 'quotaScope'
     ];
 
     /**
@@ -201,13 +181,8 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'error' => 'setError',
-        'type' => 'setType',
-        'code' => 'setCode',
-        'param' => 'setParam',
-        'platform' => 'setPlatform',
-        'platform_error' => 'setPlatformError',
-        'details' => 'setDetails'
+        'quota_exhausted' => 'setQuotaExhausted',
+        'quota_scope' => 'setQuotaScope'
     ];
 
     /**
@@ -216,13 +191,8 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'error' => 'getError',
-        'type' => 'getType',
-        'code' => 'getCode',
-        'param' => 'getParam',
-        'platform' => 'getPlatform',
-        'platform_error' => 'getPlatformError',
-        'details' => 'getDetails'
+        'quota_exhausted' => 'getQuotaExhausted',
+        'quota_scope' => 'getQuotaScope'
     ];
 
     /**
@@ -266,29 +236,19 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const TYPE_INVALID_REQUEST_ERROR = 'invalid_request_error';
-    public const TYPE_AUTHENTICATION_ERROR = 'authentication_error';
-    public const TYPE_PERMISSION_ERROR = 'permission_error';
-    public const TYPE_NOT_FOUND = 'not_found';
-    public const TYPE_RATE_LIMIT_ERROR = 'rate_limit_error';
-    public const TYPE_PLATFORM_ERROR = 'platform_error';
-    public const TYPE_API_ERROR = 'api_error';
+    public const QUOTA_SCOPE_DEVELOPER = 'DEVELOPER';
+    public const QUOTA_SCOPE_ACCOUNT = 'ACCOUNT';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getTypeAllowableValues()
+    public function getQuotaScopeAllowableValues()
     {
         return [
-            self::TYPE_INVALID_REQUEST_ERROR,
-            self::TYPE_AUTHENTICATION_ERROR,
-            self::TYPE_PERMISSION_ERROR,
-            self::TYPE_NOT_FOUND,
-            self::TYPE_RATE_LIMIT_ERROR,
-            self::TYPE_PLATFORM_ERROR,
-            self::TYPE_API_ERROR,
+            self::QUOTA_SCOPE_DEVELOPER,
+            self::QUOTA_SCOPE_ACCOUNT,
         ];
     }
 
@@ -307,13 +267,8 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('error', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('param', $data ?? [], null);
-        $this->setIfExists('platform', $data ?? [], null);
-        $this->setIfExists('platform_error', $data ?? [], null);
-        $this->setIfExists('details', $data ?? [], null);
+        $this->setIfExists('quota_exhausted', $data ?? [], null);
+        $this->setIfExists('quota_scope', $data ?? [], null);
     }
 
     /**
@@ -343,11 +298,11 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        $allowedValues = $this->getQuotaScopeAllowableValues();
+        if (!is_null($this->container['quota_scope']) && !in_array($this->container['quota_scope'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
+                "invalid value '%s' for 'quota_scope', must be one of '%s'",
+                $this->container['quota_scope'],
                 implode("', '", $allowedValues)
             );
         }
@@ -368,200 +323,65 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets error
+     * Gets quota_exhausted
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getError()
+    public function getQuotaExhausted()
     {
-        return $this->container['error'];
+        return $this->container['quota_exhausted'];
     }
 
     /**
-     * Sets error
+     * Sets quota_exhausted
      *
-     * @param string|null $error Human-readable error message.
+     * @param bool|null $quota_exhausted Google Ads 429 only. True when the upstream Google Ads quota is spent rather than a Zernio limit.
      *
      * @return self
      */
-    public function setError($error)
+    public function setQuotaExhausted($quota_exhausted)
     {
-        if (is_null($error)) {
-            throw new \InvalidArgumentException('non-nullable error cannot be null');
+        if (is_null($quota_exhausted)) {
+            throw new \InvalidArgumentException('non-nullable quota_exhausted cannot be null');
         }
-        $this->container['error'] = $error;
+        $this->container['quota_exhausted'] = $quota_exhausted;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets quota_scope
      *
      * @return string|null
      */
-    public function getType()
+    public function getQuotaScope()
     {
-        return $this->container['type'];
+        return $this->container['quota_scope'];
     }
 
     /**
-     * Sets type
+     * Sets quota_scope
      *
-     * @param string|null $type Error class for programmatic handling.
+     * @param string|null $quota_scope Google Ads 429 only, when Google names the scope. DEVELOPER is the shared developer-token budget; ACCOUNT is your ad account.
      *
      * @return self
      */
-    public function setType($type)
+    public function setQuotaScope($quota_scope)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($quota_scope)) {
+            throw new \InvalidArgumentException('non-nullable quota_scope cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
+        $allowedValues = $this->getQuotaScopeAllowableValues();
+        if (!in_array($quota_scope, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
+                    "Invalid value '%s' for 'quota_scope', must be one of '%s'",
+                    $quota_scope,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets code
-     *
-     * @return string|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param string|null $code Stable machine-readable error code.
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets param
-     *
-     * @return string|null
-     */
-    public function getParam()
-    {
-        return $this->container['param'];
-    }
-
-    /**
-     * Sets param
-     *
-     * @param string|null $param The request field that caused the error, when applicable.
-     *
-     * @return self
-     */
-    public function setParam($param)
-    {
-        if (is_null($param)) {
-            throw new \InvalidArgumentException('non-nullable param cannot be null');
-        }
-        $this->container['param'] = $param;
-
-        return $this;
-    }
-
-    /**
-     * Gets platform
-     *
-     * @return string|null
-     */
-    public function getPlatform()
-    {
-        return $this->container['platform'];
-    }
-
-    /**
-     * Sets platform
-     *
-     * @param string|null $platform Upstream platform (e.g. meta, google, tiktok), present when type is platform_error.
-     *
-     * @return self
-     */
-    public function setPlatform($platform)
-    {
-        if (is_null($platform)) {
-            throw new \InvalidArgumentException('non-nullable platform cannot be null');
-        }
-        $this->container['platform'] = $platform;
-
-        return $this;
-    }
-
-    /**
-     * Gets platform_error
-     *
-     * @return array<string,mixed>|null
-     */
-    public function getPlatformError()
-    {
-        return $this->container['platform_error'];
-    }
-
-    /**
-     * Sets platform_error
-     *
-     * @param array<string,mixed>|null $platform_error Raw error payload from the upstream platform, passed through verbatim so integrators can read provider-specific codes. For Meta this includes error_subcode, error_user_title, and error_user_msg.
-     *
-     * @return self
-     */
-    public function setPlatformError($platform_error)
-    {
-        if (is_null($platform_error)) {
-            throw new \InvalidArgumentException('non-nullable platform_error cannot be null');
-        }
-        $this->container['platform_error'] = $platform_error;
-
-        return $this;
-    }
-
-    /**
-     * Gets details
-     *
-     * @return \Zernio\Model\ErrorResponseDetails|null
-     */
-    public function getDetails()
-    {
-        return $this->container['details'];
-    }
-
-    /**
-     * Sets details
-     *
-     * @param \Zernio\Model\ErrorResponseDetails|null $details details
-     *
-     * @return self
-     */
-    public function setDetails($details)
-    {
-        if (is_null($details)) {
-            throw new \InvalidArgumentException('non-nullable details cannot be null');
-        }
-        $this->container['details'] = $details;
+        $this->container['quota_scope'] = $quota_scope;
 
         return $this;
     }
