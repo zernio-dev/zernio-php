@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * BoostPostRequestPromotedObject Class Doc Comment
  *
  * @category Class
- * @description TikTok-only on this endpoint. The pixel a Website Conversion ad group optimizes toward, so a Spark Ad built from an existing organic post can optimize for a conversion instead of only engagement or traffic. Required when &#x60;goal&#x60; is &#x60;conversions&#x60;; ignored on every other goal, because only a WEB_CONVERSIONS ad group accepts these fields.  Combine freely with &#x60;platformPostId&#x60; + &#x60;sparkAuthCode&#x60;: the pixel lives on the ad group and the Spark item on the creative, so they never conflict.
+ * @description TikTok-only on this endpoint. The pixel a Website Conversion ad group optimizes toward, so a Spark Ad built from an existing organic post can optimize for a conversion instead of only engagement or traffic.  Required when &#x60;goal&#x60; is &#x60;conversions&#x60;, and BOTH fields are required: TikTok refuses a conversion ad group with no pixel (\&quot;Please select a pixel\&quot;) and equally one that has a pixel but no event (\&quot;Select a pixel event.\&quot;), because the event is what the ad group optimizes toward. Ignored on every other goal, since only a WEB_CONVERSIONS ad group accepts them.  Combine freely with &#x60;platformPostId&#x60; + &#x60;sparkAuthCode&#x60;: the pixel lives on the ad group and the Spark item on the creative, so they never conflict.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -283,6 +283,12 @@ class BoostPostRequestPromotedObject implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
+        if ($this->container['pixel_id'] === null) {
+            $invalidProperties[] = "'pixel_id' can't be null";
+        }
+        if ($this->container['custom_event_type'] === null) {
+            $invalidProperties[] = "'custom_event_type' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -301,7 +307,7 @@ class BoostPostRequestPromotedObject implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets pixel_id
      *
-     * @return string|null
+     * @return string
      */
     public function getPixelId()
     {
@@ -311,7 +317,7 @@ class BoostPostRequestPromotedObject implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets pixel_id
      *
-     * @param string|null $pixel_id TikTok Pixel. Either the numeric pixel id or the alphanumeric pixel code from Events Manager, which is resolved for you.
+     * @param string $pixel_id TikTok Pixel. Either the numeric pixel id or the alphanumeric pixel code from Events Manager, which is resolved for you.
      *
      * @return self
      */
@@ -328,7 +334,7 @@ class BoostPostRequestPromotedObject implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets custom_event_type
      *
-     * @return string|null
+     * @return string
      */
     public function getCustomEventType()
     {
@@ -338,7 +344,7 @@ class BoostPostRequestPromotedObject implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets custom_event_type
      *
-     * @param string|null $custom_event_type Optimization event, as a TikTok optimization_event code (e.g. ON_WEB_ORDER, SHOPPING, FORM) or the exact event name shown in Events Manager, which is resolved to its code. Omit to let TikTok optimize for the ad group default.
+     * @param string $custom_event_type Optimization event, as a TikTok optimization_event code (e.g. ON_WEB_ORDER, SHOPPING, FORM) or the exact event name shown in Events Manager, which is resolved to its code. The event must already exist on that pixel, or TikTok rejects the ad group.
      *
      * @return self
      */
