@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * ErrorResponseDetails Class Doc Comment
  *
  * @category Class
- * @description Additional structured context (e.g. field-level validation errors), for example &#x60;privateReplyConsumed&#x60; on the private-reply endpoint&#39;s 400 when the comment&#39;s single reply is already spent.  On a Google Ads 429 it carries &#x60;quotaExhausted: true&#x60;, which marks the failure as Google&#39;s own ads quota rather than a Zernio rate limit, so you can keep calling other platforms instead of backing off everywhere. When Google names the scope it also carries &#x60;quotaScope&#x60;: &#x60;DEVELOPER&#x60; means the shared developer-token budget (every Google account is affected and there is nothing to change on your side), &#x60;ACCOUNT&#x60; means your own ad account. A Meta 429 carries neither field.
+ * @description Additional structured context (e.g. field-level validation errors), for example &#x60;privateReplyConsumed&#x60; on the private-reply endpoint&#39;s 400 when the comment&#39;s single reply is already spent.  On a Google Ads 429 it carries &#x60;quotaExhausted: true&#x60;, which marks the failure as Google&#39;s own ads quota rather than a Zernio rate limit, so you can keep calling other platforms instead of backing off everywhere. When Google names the scope it also carries &#x60;quotaScope&#x60;: &#x60;DEVELOPER&#x60; means the shared developer-token budget (every Google account is affected and there is nothing to change on your side), &#x60;ACCOUNT&#x60; means your own ad account. A Meta 429 carries neither field.  A Zernio Google Ads budget 429 carries &#x60;budgetScope&#x60; instead, and never &#x60;quotaExhausted&#x60;: these are Zernio&#39;s own limits, applied before the call reaches Google. &#x60;user&#x60; is your own burst or daily allowance, so the work is yours to reschedule; &#x60;platform&#x60; is the fleet-wide daily budget shared with every other customer, so only waiting for the reset clears it. The two scopes are separate axes from &#x60;quotaScope&#x60;, not the same pool named twice.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,7 +60,8 @@ class ErrorResponseDetails implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'quota_exhausted' => 'bool',
-        'quota_scope' => 'string'
+        'quota_scope' => 'string',
+        'budget_scope' => 'string'
     ];
 
     /**
@@ -72,7 +73,8 @@ class ErrorResponseDetails implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPIFormats = [
         'quota_exhausted' => null,
-        'quota_scope' => null
+        'quota_scope' => null,
+        'budget_scope' => null
     ];
 
     /**
@@ -82,7 +84,8 @@ class ErrorResponseDetails implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPINullables = [
         'quota_exhausted' => false,
-        'quota_scope' => false
+        'quota_scope' => false,
+        'budget_scope' => false
     ];
 
     /**
@@ -172,7 +175,8 @@ class ErrorResponseDetails implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'quota_exhausted' => 'quotaExhausted',
-        'quota_scope' => 'quotaScope'
+        'quota_scope' => 'quotaScope',
+        'budget_scope' => 'budgetScope'
     ];
 
     /**
@@ -182,7 +186,8 @@ class ErrorResponseDetails implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'quota_exhausted' => 'setQuotaExhausted',
-        'quota_scope' => 'setQuotaScope'
+        'quota_scope' => 'setQuotaScope',
+        'budget_scope' => 'setBudgetScope'
     ];
 
     /**
@@ -192,7 +197,8 @@ class ErrorResponseDetails implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'quota_exhausted' => 'getQuotaExhausted',
-        'quota_scope' => 'getQuotaScope'
+        'quota_scope' => 'getQuotaScope',
+        'budget_scope' => 'getBudgetScope'
     ];
 
     /**
@@ -238,6 +244,8 @@ class ErrorResponseDetails implements ModelInterface, ArrayAccess, \JsonSerializ
 
     public const QUOTA_SCOPE_DEVELOPER = 'DEVELOPER';
     public const QUOTA_SCOPE_ACCOUNT = 'ACCOUNT';
+    public const BUDGET_SCOPE_USER = 'user';
+    public const BUDGET_SCOPE_PLATFORM = 'platform';
 
     /**
      * Gets allowable values of the enum
@@ -249,6 +257,19 @@ class ErrorResponseDetails implements ModelInterface, ArrayAccess, \JsonSerializ
         return [
             self::QUOTA_SCOPE_DEVELOPER,
             self::QUOTA_SCOPE_ACCOUNT,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBudgetScopeAllowableValues()
+    {
+        return [
+            self::BUDGET_SCOPE_USER,
+            self::BUDGET_SCOPE_PLATFORM,
         ];
     }
 
@@ -269,6 +290,7 @@ class ErrorResponseDetails implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $this->setIfExists('quota_exhausted', $data ?? [], null);
         $this->setIfExists('quota_scope', $data ?? [], null);
+        $this->setIfExists('budget_scope', $data ?? [], null);
     }
 
     /**
@@ -303,6 +325,15 @@ class ErrorResponseDetails implements ModelInterface, ArrayAccess, \JsonSerializ
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'quota_scope', must be one of '%s'",
                 $this->container['quota_scope'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getBudgetScopeAllowableValues();
+        if (!is_null($this->container['budget_scope']) && !in_array($this->container['budget_scope'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'budget_scope', must be one of '%s'",
+                $this->container['budget_scope'],
                 implode("', '", $allowedValues)
             );
         }
@@ -382,6 +413,43 @@ class ErrorResponseDetails implements ModelInterface, ArrayAccess, \JsonSerializ
             );
         }
         $this->container['quota_scope'] = $quota_scope;
+
+        return $this;
+    }
+
+    /**
+     * Gets budget_scope
+     *
+     * @return string|null
+     */
+    public function getBudgetScope()
+    {
+        return $this->container['budget_scope'];
+    }
+
+    /**
+     * Sets budget_scope
+     *
+     * @param string|null $budget_scope Zernio Google Ads operations-budget 429 only (never set alongside `quotaExhausted`). `user` is your own burst/daily allowance; `platform` is the fleet-wide daily budget shared across customers.
+     *
+     * @return self
+     */
+    public function setBudgetScope($budget_scope)
+    {
+        if (is_null($budget_scope)) {
+            throw new \InvalidArgumentException('non-nullable budget_scope cannot be null');
+        }
+        $allowedValues = $this->getBudgetScopeAllowableValues();
+        if (!in_array($budget_scope, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'budget_scope', must be one of '%s'",
+                    $budget_scope,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['budget_scope'] = $budget_scope;
 
         return $this;
     }
