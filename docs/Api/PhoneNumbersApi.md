@@ -348,7 +348,7 @@ createPhoneNumberStockWatch($create_phone_number_stock_watch_request): \Zernio\M
 
 Watch an out-of-stock country
 
-Get notified the first time an out-of-stock country has deliverable numbers again: an email to the account holder plus the `phone_number.stock_available` webhook. Stock is re-checked every 6h. One watch per country and number type; a repeat request returns the existing watch (200). The watch is consumed when it fires, so re-create it if you miss the stock. Up to 20 watches at once.  Countries and types marked `fulfilment: request` by GET /v1/phone-numbers/countries can also be watched, but anything with `preOrderable: true` does not need a watch: submit KYC and the carrier sources the number to order.
+Get notified the first time an out-of-stock country has deliverable numbers again: an email to the account holder plus the `phone_number.stock_available` webhook. Stock is re-checked every 6h. One watch per country and number type; a repeat request returns the existing watch (200). The watch is consumed when it fires, so re-create it if you miss the stock. Up to 20 watches at once.  Countries and types marked `fulfilment: request` by GET /v1/phone-numbers/countries can also be watched, but anything with `preOrderable: true` does not need a watch: submit KYC and the carrier sources the number to order.  Pass `areaCode` (with `numberType`) to watch one sold-out area, for example an entry of `soldOutAreas` from GET /v1/phone-numbers/availability. Area stock is checked live on the same 6h cadence.
 
 ### Example
 

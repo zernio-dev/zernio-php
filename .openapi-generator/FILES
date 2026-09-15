@@ -267,6 +267,7 @@ docs/Model/ChannelPickerChannelsInner.md
 docs/Model/ChannelPickerTeam.md
 docs/Model/CheckPhoneNumberAvailability200Response.md
 docs/Model/CheckPhoneNumberAvailability200ResponseAreaOptionsInner.md
+docs/Model/CheckPhoneNumberAvailability200ResponseSoldOutAreasInner.md
 docs/Model/CheckPhoneNumberPortability200Response.md
 docs/Model/CheckPhoneNumberPortability200ResponseResultsInner.md
 docs/Model/CheckPhoneNumberPortabilityRequest.md
@@ -2407,6 +2408,7 @@ lib/Model/ChannelPickerChannelsInner.php
 lib/Model/ChannelPickerTeam.php
 lib/Model/CheckPhoneNumberAvailability200Response.php
 lib/Model/CheckPhoneNumberAvailability200ResponseAreaOptionsInner.php
+lib/Model/CheckPhoneNumberAvailability200ResponseSoldOutAreasInner.php
 lib/Model/CheckPhoneNumberPortability200Response.php
 lib/Model/CheckPhoneNumberPortability200ResponseResultsInner.php
 lib/Model/CheckPhoneNumberPortabilityRequest.php
@@ -4281,3 +4283,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CheckPhoneNumberAvailability200ResponseSoldOutAreasInnerTest.php

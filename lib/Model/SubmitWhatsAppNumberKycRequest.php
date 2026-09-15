@@ -66,6 +66,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'reuse_option_id' => 'string',
         'reuse_from' => 'string',
         'area_code' => 'string',
+        'pre_order' => 'bool',
         'end_user_first_name' => 'string',
         'end_user_last_name' => 'string',
         'values' => 'array<string,string>',
@@ -89,6 +90,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'reuse_option_id' => null,
         'reuse_from' => null,
         'area_code' => null,
+        'pre_order' => null,
         'end_user_first_name' => null,
         'end_user_last_name' => null,
         'values' => null,
@@ -110,6 +112,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'reuse_option_id' => false,
         'reuse_from' => false,
         'area_code' => false,
+        'pre_order' => false,
         'end_user_first_name' => false,
         'end_user_last_name' => false,
         'values' => false,
@@ -211,6 +214,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'reuse_option_id' => 'reuseOptionId',
         'reuse_from' => 'reuseFrom',
         'area_code' => 'areaCode',
+        'pre_order' => 'preOrder',
         'end_user_first_name' => 'endUserFirstName',
         'end_user_last_name' => 'endUserLastName',
         'values' => 'values',
@@ -232,6 +236,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'reuse_option_id' => 'setReuseOptionId',
         'reuse_from' => 'setReuseFrom',
         'area_code' => 'setAreaCode',
+        'pre_order' => 'setPreOrder',
         'end_user_first_name' => 'setEndUserFirstName',
         'end_user_last_name' => 'setEndUserLastName',
         'values' => 'setValues',
@@ -253,6 +258,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'reuse_option_id' => 'getReuseOptionId',
         'reuse_from' => 'getReuseFrom',
         'area_code' => 'getAreaCode',
+        'pre_order' => 'getPreOrder',
         'end_user_first_name' => 'getEndUserFirstName',
         'end_user_last_name' => 'getEndUserLastName',
         'values' => 'getValues',
@@ -325,6 +331,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('reuse_option_id', $data ?? [], null);
         $this->setIfExists('reuse_from', $data ?? [], null);
         $this->setIfExists('area_code', $data ?? [], null);
+        $this->setIfExists('pre_order', $data ?? [], null);
         $this->setIfExists('end_user_first_name', $data ?? [], null);
         $this->setIfExists('end_user_last_name', $data ?? [], null);
         $this->setIfExists('values', $data ?? [], null);
@@ -617,6 +624,33 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         }
 
         $this->container['area_code'] = $area_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets pre_order
+     *
+     * @return bool|null
+     */
+    public function getPreOrder()
+    {
+        return $this->container['pre_order'];
+    }
+
+    /**
+     * Sets pre_order
+     *
+     * @param bool|null $pre_order With areaCode: pre-order that area when it has no stock (an area listed in soldOutAreas with preOrderable true) instead of failing with AREA_CODE_UNAVAILABLE. The carrier sources a number in that area.
+     *
+     * @return self
+     */
+    public function setPreOrder($pre_order)
+    {
+        if (is_null($pre_order)) {
+            throw new \InvalidArgumentException('non-nullable pre_order cannot be null');
+        }
+        $this->container['pre_order'] = $pre_order;
 
         return $this;
     }

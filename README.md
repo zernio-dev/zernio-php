@@ -993,6 +993,7 @@ Class | Method | HTTP request | Description
 - [ChannelPickerTeam](docs/Model/ChannelPickerTeam.md)
 - [CheckPhoneNumberAvailability200Response](docs/Model/CheckPhoneNumberAvailability200Response.md)
 - [CheckPhoneNumberAvailability200ResponseAreaOptionsInner](docs/Model/CheckPhoneNumberAvailability200ResponseAreaOptionsInner.md)
+- [CheckPhoneNumberAvailability200ResponseSoldOutAreasInner](docs/Model/CheckPhoneNumberAvailability200ResponseSoldOutAreasInner.md)
 - [CheckPhoneNumberPortability200Response](docs/Model/CheckPhoneNumberPortability200Response.md)
 - [CheckPhoneNumberPortability200ResponseResultsInner](docs/Model/CheckPhoneNumberPortability200ResponseResultsInner.md)
 - [CheckPhoneNumberPortabilityRequest](docs/Model/CheckPhoneNumberPortabilityRequest.md)

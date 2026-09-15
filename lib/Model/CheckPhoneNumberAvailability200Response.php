@@ -64,7 +64,8 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
         'pre_orderable' => 'bool',
         'address_constraint' => 'string',
         'areas' => 'string[]',
-        'area_options' => '\Zernio\Model\CheckPhoneNumberAvailability200ResponseAreaOptionsInner[]'
+        'area_options' => '\Zernio\Model\CheckPhoneNumberAvailability200ResponseAreaOptionsInner[]',
+        'sold_out_areas' => '\Zernio\Model\CheckPhoneNumberAvailability200ResponseSoldOutAreasInner[]'
     ];
 
     /**
@@ -81,7 +82,8 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
         'pre_orderable' => null,
         'address_constraint' => null,
         'areas' => null,
-        'area_options' => null
+        'area_options' => null,
+        'sold_out_areas' => null
     ];
 
     /**
@@ -96,7 +98,8 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
         'pre_orderable' => false,
         'address_constraint' => false,
         'areas' => false,
-        'area_options' => false
+        'area_options' => false,
+        'sold_out_areas' => false
     ];
 
     /**
@@ -191,7 +194,8 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
         'pre_orderable' => 'preOrderable',
         'address_constraint' => 'addressConstraint',
         'areas' => 'areas',
-        'area_options' => 'areaOptions'
+        'area_options' => 'areaOptions',
+        'sold_out_areas' => 'soldOutAreas'
     ];
 
     /**
@@ -206,7 +210,8 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
         'pre_orderable' => 'setPreOrderable',
         'address_constraint' => 'setAddressConstraint',
         'areas' => 'setAreas',
-        'area_options' => 'setAreaOptions'
+        'area_options' => 'setAreaOptions',
+        'sold_out_areas' => 'setSoldOutAreas'
     ];
 
     /**
@@ -221,7 +226,8 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
         'pre_orderable' => 'getPreOrderable',
         'address_constraint' => 'getAddressConstraint',
         'areas' => 'getAreas',
-        'area_options' => 'getAreaOptions'
+        'area_options' => 'getAreaOptions',
+        'sold_out_areas' => 'getSoldOutAreas'
     ];
 
     /**
@@ -305,6 +311,7 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
         $this->setIfExists('address_constraint', $data ?? [], null);
         $this->setIfExists('areas', $data ?? [], null);
         $this->setIfExists('area_options', $data ?? [], null);
+        $this->setIfExists('sold_out_areas', $data ?? [], null);
     }
 
     /**
@@ -553,6 +560,33 @@ class CheckPhoneNumberAvailability200Response implements ModelInterface, ArrayAc
             throw new \InvalidArgumentException('non-nullable area_options cannot be null');
         }
         $this->container['area_options'] = $area_options;
+
+        return $this;
+    }
+
+    /**
+     * Gets sold_out_areas
+     *
+     * @return \Zernio\Model\CheckPhoneNumberAvailability200ResponseSoldOutAreasInner[]|null
+     */
+    public function getSoldOutAreas()
+    {
+        return $this->container['sold_out_areas'];
+    }
+
+    /**
+     * Sets sold_out_areas
+     *
+     * @param \Zernio\Model\CheckPhoneNumberAvailability200ResponseSoldOutAreasInner[]|null $sold_out_areas Areas that had stock in the last 90 days and have none now. Pass one as `areaCode` with `preOrder: true` on the KYC submit when `preOrderable` is true, or watch it with POST /v1/phone-numbers/stock-watches.
+     *
+     * @return self
+     */
+    public function setSoldOutAreas($sold_out_areas)
+    {
+        if (is_null($sold_out_areas)) {
+            throw new \InvalidArgumentException('non-nullable sold_out_areas cannot be null');
+        }
+        $this->container['sold_out_areas'] = $sold_out_areas;
 
         return $this;
     }

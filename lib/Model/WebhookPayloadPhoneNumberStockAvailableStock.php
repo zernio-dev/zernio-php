@@ -59,7 +59,9 @@ class WebhookPayloadPhoneNumberStockAvailableStock implements ModelInterface, Ar
       */
     protected static $openAPITypes = [
         'country' => 'string',
-        'types' => '\Zernio\Model\WebhookPayloadPhoneNumberStockAvailableStockTypesInner[]'
+        'types' => '\Zernio\Model\WebhookPayloadPhoneNumberStockAvailableStockTypesInner[]',
+        'area_code' => 'string',
+        'area_name' => 'string'
     ];
 
     /**
@@ -71,7 +73,9 @@ class WebhookPayloadPhoneNumberStockAvailableStock implements ModelInterface, Ar
       */
     protected static $openAPIFormats = [
         'country' => null,
-        'types' => null
+        'types' => null,
+        'area_code' => null,
+        'area_name' => null
     ];
 
     /**
@@ -81,7 +85,9 @@ class WebhookPayloadPhoneNumberStockAvailableStock implements ModelInterface, Ar
       */
     protected static array $openAPINullables = [
         'country' => false,
-        'types' => false
+        'types' => false,
+        'area_code' => false,
+        'area_name' => false
     ];
 
     /**
@@ -171,7 +177,9 @@ class WebhookPayloadPhoneNumberStockAvailableStock implements ModelInterface, Ar
      */
     protected static $attributeMap = [
         'country' => 'country',
-        'types' => 'types'
+        'types' => 'types',
+        'area_code' => 'areaCode',
+        'area_name' => 'areaName'
     ];
 
     /**
@@ -181,7 +189,9 @@ class WebhookPayloadPhoneNumberStockAvailableStock implements ModelInterface, Ar
      */
     protected static $setters = [
         'country' => 'setCountry',
-        'types' => 'setTypes'
+        'types' => 'setTypes',
+        'area_code' => 'setAreaCode',
+        'area_name' => 'setAreaName'
     ];
 
     /**
@@ -191,7 +201,9 @@ class WebhookPayloadPhoneNumberStockAvailableStock implements ModelInterface, Ar
      */
     protected static $getters = [
         'country' => 'getCountry',
-        'types' => 'getTypes'
+        'types' => 'getTypes',
+        'area_code' => 'getAreaCode',
+        'area_name' => 'getAreaName'
     ];
 
     /**
@@ -253,6 +265,8 @@ class WebhookPayloadPhoneNumberStockAvailableStock implements ModelInterface, Ar
     {
         $this->setIfExists('country', $data ?? [], null);
         $this->setIfExists('types', $data ?? [], null);
+        $this->setIfExists('area_code', $data ?? [], null);
+        $this->setIfExists('area_name', $data ?? [], null);
     }
 
     /**
@@ -353,6 +367,60 @@ class WebhookPayloadPhoneNumberStockAvailableStock implements ModelInterface, Ar
             throw new \InvalidArgumentException('non-nullable types cannot be null');
         }
         $this->container['types'] = $types;
+
+        return $this;
+    }
+
+    /**
+     * Gets area_code
+     *
+     * @return string|null
+     */
+    public function getAreaCode()
+    {
+        return $this->container['area_code'];
+    }
+
+    /**
+     * Sets area_code
+     *
+     * @param string|null $area_code Set when the watch named an area: the area code (NDC) that is back in stock.
+     *
+     * @return self
+     */
+    public function setAreaCode($area_code)
+    {
+        if (is_null($area_code)) {
+            throw new \InvalidArgumentException('non-nullable area_code cannot be null');
+        }
+        $this->container['area_code'] = $area_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets area_name
+     *
+     * @return string|null
+     */
+    public function getAreaName()
+    {
+        return $this->container['area_name'];
+    }
+
+    /**
+     * Sets area_name
+     *
+     * @param string|null $area_name The name of that area, when known.
+     *
+     * @return self
+     */
+    public function setAreaName($area_name)
+    {
+        if (is_null($area_name)) {
+            throw new \InvalidArgumentException('non-nullable area_name cannot be null');
+        }
+        $this->container['area_name'] = $area_name;
 
         return $this;
     }

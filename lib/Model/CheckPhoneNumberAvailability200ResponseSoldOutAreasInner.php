@@ -1,6 +1,6 @@
 <?php
 /**
- * CreatePhoneNumberStockWatchRequest
+ * CheckPhoneNumberAvailability200ResponseSoldOutAreasInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreatePhoneNumberStockWatchRequest Class Doc Comment
+ * CheckPhoneNumberAvailability200ResponseSoldOutAreasInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreatePhoneNumberStockWatchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class CheckPhoneNumberAvailability200ResponseSoldOutAreasInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreatePhoneNumberStockWatchRequest implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createPhoneNumberStockWatch_request';
+    protected static $openAPIModelName = 'checkPhoneNumberAvailability_200_response_soldOutAreas_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,9 @@ class CreatePhoneNumberStockWatchRequest implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'country' => 'string',
-        'number_type' => 'string',
-        'area_code' => 'string'
+        'ndc' => 'string',
+        'name' => 'string',
+        'pre_orderable' => 'bool'
     ];
 
     /**
@@ -71,9 +71,9 @@ class CreatePhoneNumberStockWatchRequest implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'country' => null,
-        'number_type' => null,
-        'area_code' => null
+        'ndc' => null,
+        'name' => null,
+        'pre_orderable' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class CreatePhoneNumberStockWatchRequest implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'country' => false,
-        'number_type' => false,
-        'area_code' => false
+        'ndc' => false,
+        'name' => false,
+        'pre_orderable' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class CreatePhoneNumberStockWatchRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'country' => 'country',
-        'number_type' => 'numberType',
-        'area_code' => 'areaCode'
+        'ndc' => 'ndc',
+        'name' => 'name',
+        'pre_orderable' => 'preOrderable'
     ];
 
     /**
@@ -184,9 +184,9 @@ class CreatePhoneNumberStockWatchRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'country' => 'setCountry',
-        'number_type' => 'setNumberType',
-        'area_code' => 'setAreaCode'
+        'ndc' => 'setNdc',
+        'name' => 'setName',
+        'pre_orderable' => 'setPreOrderable'
     ];
 
     /**
@@ -195,9 +195,9 @@ class CreatePhoneNumberStockWatchRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'country' => 'getCountry',
-        'number_type' => 'getNumberType',
-        'area_code' => 'getAreaCode'
+        'ndc' => 'getNdc',
+        'name' => 'getName',
+        'pre_orderable' => 'getPreOrderable'
     ];
 
     /**
@@ -241,25 +241,6 @@ class CreatePhoneNumberStockWatchRequest implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
-    public const NUMBER_TYPE_LOCAL = 'local';
-    public const NUMBER_TYPE_MOBILE = 'mobile';
-    public const NUMBER_TYPE_NATIONAL = 'national';
-    public const NUMBER_TYPE_TOLL_FREE = 'toll_free';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getNumberTypeAllowableValues()
-    {
-        return [
-            self::NUMBER_TYPE_LOCAL,
-            self::NUMBER_TYPE_MOBILE,
-            self::NUMBER_TYPE_NATIONAL,
-            self::NUMBER_TYPE_TOLL_FREE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -276,9 +257,9 @@ class CreatePhoneNumberStockWatchRequest implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('country', $data ?? [], null);
-        $this->setIfExists('number_type', $data ?? [], null);
-        $this->setIfExists('area_code', $data ?? [], null);
+        $this->setIfExists('ndc', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('pre_orderable', $data ?? [], null);
     }
 
     /**
@@ -308,30 +289,6 @@ class CreatePhoneNumberStockWatchRequest implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        if ($this->container['country'] === null) {
-            $invalidProperties[] = "'country' can't be null";
-        }
-        if ((mb_strlen($this->container['country']) > 2)) {
-            $invalidProperties[] = "invalid value for 'country', the character length must be smaller than or equal to 2.";
-        }
-
-        if ((mb_strlen($this->container['country']) < 2)) {
-            $invalidProperties[] = "invalid value for 'country', the character length must be bigger than or equal to 2.";
-        }
-
-        $allowedValues = $this->getNumberTypeAllowableValues();
-        if (!is_null($this->container['number_type']) && !in_array($this->container['number_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'number_type', must be one of '%s'",
-                $this->container['number_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if (!is_null($this->container['area_code']) && !preg_match("/^\\d{1,4}$/", $this->container['area_code'])) {
-            $invalidProperties[] = "invalid value for 'area_code', must be conform to the pattern /^\\d{1,4}$/.";
-        }
-
         return $invalidProperties;
     }
 
@@ -348,104 +305,82 @@ class CreatePhoneNumberStockWatchRequest implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets country
+     * Gets ndc
      *
-     * @return string
+     * @return string|null
      */
-    public function getCountry()
+    public function getNdc()
     {
-        return $this->container['country'];
+        return $this->container['ndc'];
     }
 
     /**
-     * Sets country
+     * Sets ndc
      *
-     * @param string $country ISO 3166-1 alpha-2 code of a country listed by GET /v1/phone-numbers/countries.
+     * @param string|null $ndc Area code (national destination code).
      *
      * @return self
      */
-    public function setCountry($country)
+    public function setNdc($ndc)
     {
-        if (is_null($country)) {
-            throw new \InvalidArgumentException('non-nullable country cannot be null');
+        if (is_null($ndc)) {
+            throw new \InvalidArgumentException('non-nullable ndc cannot be null');
         }
-        if ((mb_strlen($country) > 2)) {
-            throw new \InvalidArgumentException('invalid length for $country when calling CreatePhoneNumberStockWatchRequest., must be smaller than or equal to 2.');
-        }
-        if ((mb_strlen($country) < 2)) {
-            throw new \InvalidArgumentException('invalid length for $country when calling CreatePhoneNumberStockWatchRequest., must be bigger than or equal to 2.');
-        }
-
-        $this->container['country'] = $country;
+        $this->container['ndc'] = $ndc;
 
         return $this;
     }
 
     /**
-     * Gets number_type
+     * Gets name
      *
      * @return string|null
      */
-    public function getNumberType()
+    public function getName()
     {
-        return $this->container['number_type'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets number_type
+     * Sets name
      *
-     * @param string|null $number_type Narrow the watch to one number type. Omit to be notified when any type in the country is back.
+     * @param string|null $name Area name.
      *
      * @return self
      */
-    public function setNumberType($number_type)
+    public function setName($name)
     {
-        if (is_null($number_type)) {
-            throw new \InvalidArgumentException('non-nullable number_type cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $allowedValues = $this->getNumberTypeAllowableValues();
-        if (!in_array($number_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'number_type', must be one of '%s'",
-                    $number_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['number_type'] = $number_type;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets area_code
+     * Gets pre_orderable
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getAreaCode()
+    public function getPreOrderable()
     {
-        return $this->container['area_code'];
+        return $this->container['pre_orderable'];
     }
 
     /**
-     * Sets area_code
+     * Sets pre_orderable
      *
-     * @param string|null $area_code Narrow the watch to one area code (NDC). Requires numberType.
+     * @param bool|null $pre_orderable Whether this area can be pre-ordered: the carrier sources a number in it (usually 2 to 4 weeks, never guaranteed).
      *
      * @return self
      */
-    public function setAreaCode($area_code)
+    public function setPreOrderable($pre_orderable)
     {
-        if (is_null($area_code)) {
-            throw new \InvalidArgumentException('non-nullable area_code cannot be null');
+        if (is_null($pre_orderable)) {
+            throw new \InvalidArgumentException('non-nullable pre_orderable cannot be null');
         }
-
-        if ((!preg_match("/^\\d{1,4}$/", ObjectSerializer::toString($area_code)))) {
-            throw new \InvalidArgumentException("invalid value for \$area_code when calling CreatePhoneNumberStockWatchRequest., must conform to the pattern /^\\d{1,4}$/.");
-        }
-
-        $this->container['area_code'] = $area_code;
+        $this->container['pre_orderable'] = $pre_orderable;
 
         return $this;
     }

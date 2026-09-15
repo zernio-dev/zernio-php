@@ -62,6 +62,7 @@ class PhoneNumberStockWatch implements ModelInterface, ArrayAccess, \JsonSeriali
         'country' => 'string',
         'country_name' => 'string',
         'number_type' => 'string',
+        'area_code' => 'string',
         'created_at' => '\DateTime'
     ];
 
@@ -77,6 +78,7 @@ class PhoneNumberStockWatch implements ModelInterface, ArrayAccess, \JsonSeriali
         'country' => null,
         'country_name' => null,
         'number_type' => null,
+        'area_code' => null,
         'created_at' => 'date-time'
     ];
 
@@ -90,6 +92,7 @@ class PhoneNumberStockWatch implements ModelInterface, ArrayAccess, \JsonSeriali
         'country' => false,
         'country_name' => false,
         'number_type' => true,
+        'area_code' => true,
         'created_at' => false
     ];
 
@@ -183,6 +186,7 @@ class PhoneNumberStockWatch implements ModelInterface, ArrayAccess, \JsonSeriali
         'country' => 'country',
         'country_name' => 'countryName',
         'number_type' => 'numberType',
+        'area_code' => 'areaCode',
         'created_at' => 'createdAt'
     ];
 
@@ -196,6 +200,7 @@ class PhoneNumberStockWatch implements ModelInterface, ArrayAccess, \JsonSeriali
         'country' => 'setCountry',
         'country_name' => 'setCountryName',
         'number_type' => 'setNumberType',
+        'area_code' => 'setAreaCode',
         'created_at' => 'setCreatedAt'
     ];
 
@@ -209,6 +214,7 @@ class PhoneNumberStockWatch implements ModelInterface, ArrayAccess, \JsonSeriali
         'country' => 'getCountry',
         'country_name' => 'getCountryName',
         'number_type' => 'getNumberType',
+        'area_code' => 'getAreaCode',
         'created_at' => 'getCreatedAt'
     ];
 
@@ -292,6 +298,7 @@ class PhoneNumberStockWatch implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('country', $data ?? [], null);
         $this->setIfExists('country_name', $data ?? [], null);
         $this->setIfExists('number_type', $data ?? [], null);
+        $this->setIfExists('area_code', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
     }
 
@@ -482,6 +489,40 @@ class PhoneNumberStockWatch implements ModelInterface, ArrayAccess, \JsonSeriali
             );
         }
         $this->container['number_type'] = $number_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets area_code
+     *
+     * @return string|null
+     */
+    public function getAreaCode()
+    {
+        return $this->container['area_code'];
+    }
+
+    /**
+     * Sets area_code
+     *
+     * @param string|null $area_code The watched area code (NDC), or null when the watch covers every area.
+     *
+     * @return self
+     */
+    public function setAreaCode($area_code)
+    {
+        if (is_null($area_code)) {
+            array_push($this->openAPINullablesSetToNull, 'area_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('area_code', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['area_code'] = $area_code;
 
         return $this;
     }
