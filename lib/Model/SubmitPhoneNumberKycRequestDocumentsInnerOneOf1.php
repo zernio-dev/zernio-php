@@ -59,7 +59,8 @@ class SubmitPhoneNumberKycRequestDocumentsInnerOneOf1 implements ModelInterface,
       */
     protected static $openAPITypes = [
         'requirement_id' => 'string',
-        'document_id' => 'string'
+        'document_id' => 'string',
+        'issued_at' => '\DateTime'
     ];
 
     /**
@@ -71,7 +72,8 @@ class SubmitPhoneNumberKycRequestDocumentsInnerOneOf1 implements ModelInterface,
       */
     protected static $openAPIFormats = [
         'requirement_id' => null,
-        'document_id' => null
+        'document_id' => null,
+        'issued_at' => 'date'
     ];
 
     /**
@@ -81,7 +83,8 @@ class SubmitPhoneNumberKycRequestDocumentsInnerOneOf1 implements ModelInterface,
       */
     protected static array $openAPINullables = [
         'requirement_id' => false,
-        'document_id' => false
+        'document_id' => false,
+        'issued_at' => false
     ];
 
     /**
@@ -171,7 +174,8 @@ class SubmitPhoneNumberKycRequestDocumentsInnerOneOf1 implements ModelInterface,
      */
     protected static $attributeMap = [
         'requirement_id' => 'requirementId',
-        'document_id' => 'documentId'
+        'document_id' => 'documentId',
+        'issued_at' => 'issuedAt'
     ];
 
     /**
@@ -181,7 +185,8 @@ class SubmitPhoneNumberKycRequestDocumentsInnerOneOf1 implements ModelInterface,
      */
     protected static $setters = [
         'requirement_id' => 'setRequirementId',
-        'document_id' => 'setDocumentId'
+        'document_id' => 'setDocumentId',
+        'issued_at' => 'setIssuedAt'
     ];
 
     /**
@@ -191,7 +196,8 @@ class SubmitPhoneNumberKycRequestDocumentsInnerOneOf1 implements ModelInterface,
      */
     protected static $getters = [
         'requirement_id' => 'getRequirementId',
-        'document_id' => 'getDocumentId'
+        'document_id' => 'getDocumentId',
+        'issued_at' => 'getIssuedAt'
     ];
 
     /**
@@ -253,6 +259,7 @@ class SubmitPhoneNumberKycRequestDocumentsInnerOneOf1 implements ModelInterface,
     {
         $this->setIfExists('requirement_id', $data ?? [], null);
         $this->setIfExists('document_id', $data ?? [], null);
+        $this->setIfExists('issued_at', $data ?? [], null);
     }
 
     /**
@@ -353,6 +360,33 @@ class SubmitPhoneNumberKycRequestDocumentsInnerOneOf1 implements ModelInterface,
             throw new \InvalidArgumentException('non-nullable document_id cannot be null');
         }
         $this->container['document_id'] = $document_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets issued_at
+     *
+     * @return \DateTime|null
+     */
+    public function getIssuedAt()
+    {
+        return $this->container['issued_at'];
+    }
+
+    /**
+     * Sets issued_at
+     *
+     * @param \DateTime|null $issued_at Date printed on the document (YYYY-MM-DD), for slots the regulator windows such as proof of address. The pre-submit review trusts it over its own read of the PDF.
+     *
+     * @return self
+     */
+    public function setIssuedAt($issued_at)
+    {
+        if (is_null($issued_at)) {
+            throw new \InvalidArgumentException('non-nullable issued_at cannot be null');
+        }
+        $this->container['issued_at'] = $issued_at;
 
         return $this;
     }
