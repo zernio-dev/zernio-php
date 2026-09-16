@@ -4313,17 +4313,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/ProductsApiTest.php
-test/Model/GetProduct200ResponseTest.php
-test/Model/ListProducts200ResponseTest.php
-test/Model/ProductImageTest.php
-test/Model/ProductOptionsInnerTest.php
-test/Model/ProductSeoTest.php
-test/Model/ProductTest.php
-test/Model/ProductVariantSelectedOptionsInnerTest.php
-test/Model/ProductVariantTest.php
-test/Model/UpdateProductRequestSeoTest.php
-test/Model/UpdateProductRequestTest.php
-test/Model/UpdateProductRequestVariantsInnerCompareAtPriceTest.php
-test/Model/UpdateProductRequestVariantsInnerPriceTest.php
-test/Model/UpdateProductRequestVariantsInnerTest.php
