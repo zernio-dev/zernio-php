@@ -633,7 +633,7 @@ connectShopifyWithToken($connect_shopify_with_token_request): \Zernio\Model\Conn
 
 Connect a Shopify store with a custom-app Admin token
 
-Token-paste alternative to the OAuth flow: connect a store using the Admin API access token of a custom app the merchant created in their own Shopify admin (Settings → Apps and sales channels → Develop apps, with the `read_content`/`write_content` scopes). Use this when the one-click OAuth connect is unavailable or when your users prefer not to install a third-party app on their store. The token is validated against the store before anything is saved; custom-app tokens do not expire. Connecting the same profile to a store again replaces the stored token in place.
+Token-paste alternative to the OAuth flow: connect a store using the Admin API access token of a custom app the merchant created in their own Shopify admin (Settings → Apps and sales channels → Develop apps, with the `read_content`, `write_content`, `read_products` and `write_products` scopes). Use this when the one-click OAuth connect is unavailable or when your users prefer not to install a third-party app on their store. The token is validated against the store before anything is saved; custom-app tokens do not expire. Connecting the same profile to a store again replaces the stored token in place.
 
 ### Example
 
@@ -1566,7 +1566,7 @@ getShopifyConnectUrl($profile_id, $shop, $redirect_url): \Zernio\Model\GetConnec
 
 Get Shopify OAuth connect URL
 
-Initiate the Shopify OAuth flow for a store. Shopify is a connect-only platform: the connected account does not publish social posts, it powers the Blogs API (`/v1/accounts/{accountId}/blogs`). Returns an `authUrl` to redirect the merchant to; after they approve the install, Shopify redirects their browser to Zernio's callback, the account is created on the profile (platform `shopify`), and the browser is redirected to `redirect_url` (or the Zernio dashboard when omitted). Requested scopes are `read_content` and `write_content` (content only; no customer or order data). Connecting the same profile to a store again refreshes the stored token in place.
+Initiate the Shopify OAuth flow for a store. Shopify is a connect-only platform: the connected account does not publish social posts, it powers the Blogs API (`/v1/accounts/{accountId}/blogs`) and the Products API (`/v1/accounts/{accountId}/products`). Returns an `authUrl` to redirect the merchant to; after they approve the install, Shopify redirects their browser to Zernio's callback, the account is created on the profile (platform `shopify`), and the browser is redirected to `redirect_url` (or the Zernio dashboard when omitted). Requested scopes are `read_content`, `write_content`, `read_products` and `write_products` (content and products only; no customer or order data). Connecting the same profile to a store again refreshes the stored token in place, and is how a store connected under the older content-only grant picks up product access.
 
 ### Example
 

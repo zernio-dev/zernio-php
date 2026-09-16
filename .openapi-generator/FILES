@@ -47,6 +47,7 @@ docs/Api/MessagesApi.md
 docs/Api/MessagingAdsApi.md
 docs/Api/PhoneNumbersApi.md
 docs/Api/PostsApi.md
+docs/Api/ProductsApi.md
 docs/Api/ProfilesApi.md
 docs/Api/QueueApi.md
 docs/Api/ReachAndFrequencyApi.md
@@ -884,6 +885,7 @@ docs/Model/GetPostTimeline403Response.md
 docs/Model/GetPostTimeline404Response.md
 docs/Model/GetPostingFrequency200Response.md
 docs/Model/GetPostingFrequency200ResponseFrequencyInner.md
+docs/Model/GetProduct200Response.md
 docs/Model/GetRedditFlairs200Response.md
 docs/Model/GetRedditFlairs200ResponseFlairsInner.md
 docs/Model/GetRedditSubreddits200Response.md
@@ -1254,6 +1256,7 @@ docs/Model/ListPhoneNumbers200ResponseSandbox.md
 docs/Model/ListPhoneNumbers200ResponseSandboxTemplate.md
 docs/Model/ListPinterestBoardsForSelection200Response.md
 docs/Model/ListPinterestBoardsForSelection200ResponseBoardsInner.md
+docs/Model/ListProducts200Response.md
 docs/Model/ListQueueSlots200Response.md
 docs/Model/ListQueueSlots200ResponseOneOf.md
 docs/Model/ListSequenceEnrollments200Response.md
@@ -1389,6 +1392,12 @@ docs/Model/PreflightSmsRegistration200Response.md
 docs/Model/PreflightSmsRegistration200ResponseAdvisoriesInner.md
 docs/Model/PreflightSmsRegistration200ResponseComposed.md
 docs/Model/PreflightSmsRegistrationRequest.md
+docs/Model/Product.md
+docs/Model/ProductImage.md
+docs/Model/ProductOptionsInner.md
+docs/Model/ProductSeo.md
+docs/Model/ProductVariant.md
+docs/Model/ProductVariantSelectedOptionsInner.md
 docs/Model/Profile.md
 docs/Model/ProfileCreateResponse.md
 docs/Model/ProfileDeleteResponse.md
@@ -1869,6 +1878,11 @@ docs/Model/UpdatePostMetadata200Response.md
 docs/Model/UpdatePostMetadataRequest.md
 docs/Model/UpdatePostRequest.md
 docs/Model/UpdatePostRequestPlatformsInner.md
+docs/Model/UpdateProductRequest.md
+docs/Model/UpdateProductRequestSeo.md
+docs/Model/UpdateProductRequestVariantsInner.md
+docs/Model/UpdateProductRequestVariantsInnerCompareAtPrice.md
+docs/Model/UpdateProductRequestVariantsInnerPrice.md
 docs/Model/UpdateProfileRequest.md
 docs/Model/UpdateQueueSlotRequest.md
 docs/Model/UpdateRedditSubredditsRequest.md
@@ -2185,6 +2199,7 @@ lib/Api/MessagesApi.php
 lib/Api/MessagingAdsApi.php
 lib/Api/PhoneNumbersApi.php
 lib/Api/PostsApi.php
+lib/Api/ProductsApi.php
 lib/Api/ProfilesApi.php
 lib/Api/QueueApi.php
 lib/Api/ReachAndFrequencyApi.php
@@ -3026,6 +3041,7 @@ lib/Model/GetPostTimeline403Response.php
 lib/Model/GetPostTimeline404Response.php
 lib/Model/GetPostingFrequency200Response.php
 lib/Model/GetPostingFrequency200ResponseFrequencyInner.php
+lib/Model/GetProduct200Response.php
 lib/Model/GetRedditFlairs200Response.php
 lib/Model/GetRedditFlairs200ResponseFlairsInner.php
 lib/Model/GetRedditSubreddits200Response.php
@@ -3396,6 +3412,7 @@ lib/Model/ListPhoneNumbers200ResponseSandbox.php
 lib/Model/ListPhoneNumbers200ResponseSandboxTemplate.php
 lib/Model/ListPinterestBoardsForSelection200Response.php
 lib/Model/ListPinterestBoardsForSelection200ResponseBoardsInner.php
+lib/Model/ListProducts200Response.php
 lib/Model/ListQueueSlots200Response.php
 lib/Model/ListQueueSlots200ResponseOneOf.php
 lib/Model/ListSequenceEnrollments200Response.php
@@ -3532,6 +3549,12 @@ lib/Model/PreflightSmsRegistration200Response.php
 lib/Model/PreflightSmsRegistration200ResponseAdvisoriesInner.php
 lib/Model/PreflightSmsRegistration200ResponseComposed.php
 lib/Model/PreflightSmsRegistrationRequest.php
+lib/Model/Product.php
+lib/Model/ProductImage.php
+lib/Model/ProductOptionsInner.php
+lib/Model/ProductSeo.php
+lib/Model/ProductVariant.php
+lib/Model/ProductVariantSelectedOptionsInner.php
 lib/Model/Profile.php
 lib/Model/ProfileCreateResponse.php
 lib/Model/ProfileDeleteResponse.php
@@ -4012,6 +4035,11 @@ lib/Model/UpdatePostMetadata200Response.php
 lib/Model/UpdatePostMetadataRequest.php
 lib/Model/UpdatePostRequest.php
 lib/Model/UpdatePostRequestPlatformsInner.php
+lib/Model/UpdateProductRequest.php
+lib/Model/UpdateProductRequestSeo.php
+lib/Model/UpdateProductRequestVariantsInner.php
+lib/Model/UpdateProductRequestVariantsInnerCompareAtPrice.php
+lib/Model/UpdateProductRequestVariantsInnerPrice.php
 lib/Model/UpdateProfileRequest.php
 lib/Model/UpdateQueueSlotRequest.php
 lib/Model/UpdateRedditSubredditsRequest.php
@@ -4285,3 +4313,17 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Api/ProductsApiTest.php
+test/Model/GetProduct200ResponseTest.php
+test/Model/ListProducts200ResponseTest.php
+test/Model/ProductImageTest.php
+test/Model/ProductOptionsInnerTest.php
+test/Model/ProductSeoTest.php
+test/Model/ProductTest.php
+test/Model/ProductVariantSelectedOptionsInnerTest.php
+test/Model/ProductVariantTest.php
+test/Model/UpdateProductRequestSeoTest.php
+test/Model/UpdateProductRequestTest.php
+test/Model/UpdateProductRequestVariantsInnerCompareAtPriceTest.php
+test/Model/UpdateProductRequestVariantsInnerPriceTest.php
+test/Model/UpdateProductRequestVariantsInnerTest.php
