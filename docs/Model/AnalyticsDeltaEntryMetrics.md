@@ -20,5 +20,8 @@ Name | Type | Description | Notes
 **reels_skip_rate** | **float** | Instagram Reels skip rate, 0 to 1 |
 **completion_rate** | **float** | TikTok business lane: share of viewers who watched to the end, 0 to 1 |
 **profile_views** | **int** | TikTok business lane: profile views attributed to the post |
+**website_clicks** | **int** | TikTok business lane: website-link clicks attributed to the post (also inside clicks) |
+**impression_sources** | **array<string,float>** | TikTok business lane: share of views by surface (forYou, follow, search, personalProfile, sound, directMessage, other), fractions 0 to 1. Empty object elsewhere. |
+**audience_types** | **array<string,float>** | TikTok business lane: follower / nonFollower and newViewer / returnViewer shares, fractions 0 to 1. Empty object elsewhere. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
