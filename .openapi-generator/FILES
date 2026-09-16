@@ -1402,6 +1402,7 @@ docs/Model/PurchasePhoneNumber200ResponseOneOf1PhoneNumber.md
 docs/Model/PurchasePhoneNumber200ResponseOneOf2.md
 docs/Model/PurchasePhoneNumber202Response.md
 docs/Model/PurchasePhoneNumber409Response.md
+docs/Model/PurchasePhoneNumber503Response.md
 docs/Model/PurchasePhoneNumberRequest.md
 docs/Model/PurchaseWhatsAppPhoneNumber200Response.md
 docs/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf.md
@@ -3544,6 +3545,7 @@ lib/Model/PurchasePhoneNumber200ResponseOneOf1PhoneNumber.php
 lib/Model/PurchasePhoneNumber200ResponseOneOf2.php
 lib/Model/PurchasePhoneNumber202Response.php
 lib/Model/PurchasePhoneNumber409Response.php
+lib/Model/PurchasePhoneNumber503Response.php
 lib/Model/PurchasePhoneNumberRequest.php
 lib/Model/PurchaseWhatsAppPhoneNumber200Response.php
 lib/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf.php
@@ -4283,3 +4285,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/PurchasePhoneNumber503ResponseTest.php

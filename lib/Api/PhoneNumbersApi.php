@@ -4906,7 +4906,7 @@ class PhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\PurchasePhoneNumber200Response|\Zernio\Model\InlineObject1|\Zernio\Model\PurchasePhoneNumber409Response|\Zernio\Model\PurchasePhoneNumber202Response
+     * @return \Zernio\Model\PurchasePhoneNumber200Response|\Zernio\Model\InlineObject1|\Zernio\Model\PurchasePhoneNumber409Response|\Zernio\Model\PurchasePhoneNumber503Response|\Zernio\Model\PurchasePhoneNumber202Response
      */
     public function purchasePhoneNumber($purchase_phone_number_request, string $contentType = self::contentTypes['purchasePhoneNumber'][0])
     {
@@ -4924,7 +4924,7 @@ class PhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\PurchasePhoneNumber200Response|\Zernio\Model\InlineObject1|\Zernio\Model\PurchasePhoneNumber409Response|\Zernio\Model\PurchasePhoneNumber202Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\PurchasePhoneNumber200Response|\Zernio\Model\InlineObject1|\Zernio\Model\PurchasePhoneNumber409Response|\Zernio\Model\PurchasePhoneNumber503Response|\Zernio\Model\PurchasePhoneNumber202Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function purchasePhoneNumberWithHttpInfo($purchase_phone_number_request, string $contentType = self::contentTypes['purchasePhoneNumber'][0])
     {
@@ -4969,6 +4969,12 @@ class PhoneNumbersApi
                 case 409:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\PurchasePhoneNumber409Response',
+                        $request,
+                        $response,
+                    );
+                case 503:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\PurchasePhoneNumber503Response',
                         $request,
                         $response,
                     );
@@ -5022,6 +5028,14 @@ class PhoneNumbersApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\PurchasePhoneNumber409Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 503:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\PurchasePhoneNumber503Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
