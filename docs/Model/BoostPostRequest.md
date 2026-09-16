@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **account_id** | **string** | Account ID |
 **ad_account_id** | **string** | Platform ad account ID |
 **name** | **string** |  |
+**campaign_name** | **string** | Exact name for the campaign this boost provisions. Omitted keeps the default &#x60;&lt;name&gt; - Campaign&#x60;. Every platform: on LinkedIn it names the campaign group. Ignored on the Meta attach shape (&#x60;adSetId&#x60;), which creates no campaign. | [optional]
+**ad_set_name** | **string** | Exact name for the ad-group level this boost provisions. Omitted keeps the default &#x60;&lt;name&gt; - Ad Group&#x60;. Meta: ad set; TikTok, Pinterest, Google: ad group; X: line item; LinkedIn: the campaign under the campaign group. Ignored on the Meta attach shape. | [optional]
 **goal** | **string** | Available goals vary by platform. Meta (Facebook/Instagram) and TikTok support all 7. LinkedIn supports all except app_promotion. X supports engagement, traffic, awareness, video_views, app_promotion. Pinterest and Google Ads support only engagement, traffic, awareness, video_views. |
 **ad_set_id** | **string** | Meta only. Attach the boosted post to this existing ad set instead of creating a campaign. The ad set then owns budget, schedule and targeting; sending those too is a 400. | [optional]
 **budget** | [**\Zernio\Model\BoostPostRequestBudget**](BoostPostRequestBudget.md) |  | [optional]
