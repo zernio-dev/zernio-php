@@ -197,6 +197,7 @@ docs/Model/BookmarkPostRequest.md
 docs/Model/BoostPostRequest.md
 docs/Model/BoostPostRequestBudget.md
 docs/Model/BoostPostRequestPlatformSpecificData.md
+docs/Model/BoostPostRequestPromoCodesInner.md
 docs/Model/BoostPostRequestPromotedObject.md
 docs/Model/BoostPostRequestSchedule.md
 docs/Model/BoostPostRequestSparkPostsInner.md
@@ -2360,6 +2361,7 @@ lib/Model/BookmarkPostRequest.php
 lib/Model/BoostPostRequest.php
 lib/Model/BoostPostRequestBudget.php
 lib/Model/BoostPostRequestPlatformSpecificData.php
+lib/Model/BoostPostRequestPromoCodesInner.php
 lib/Model/BoostPostRequestPromotedObject.php
 lib/Model/BoostPostRequestSchedule.php
 lib/Model/BoostPostRequestSparkPostsInner.php
@@ -4327,4 +4329,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/BoostPostRequestSparkPostsInnerTest.php
+test/Model/BoostPostRequestPromoCodesInnerTest.php
