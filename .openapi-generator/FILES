@@ -199,6 +199,7 @@ docs/Model/BoostPostRequestBudget.md
 docs/Model/BoostPostRequestPlatformSpecificData.md
 docs/Model/BoostPostRequestPromotedObject.md
 docs/Model/BoostPostRequestSchedule.md
+docs/Model/BoostPostRequestSparkPostsInner.md
 docs/Model/BoostPostRequestTargeting.md
 docs/Model/BoostPostRequestTargetingCitiesInner.md
 docs/Model/BoostPostRequestTargetingCustomLocationsInner.md
@@ -2361,6 +2362,7 @@ lib/Model/BoostPostRequestBudget.php
 lib/Model/BoostPostRequestPlatformSpecificData.php
 lib/Model/BoostPostRequestPromotedObject.php
 lib/Model/BoostPostRequestSchedule.php
+lib/Model/BoostPostRequestSparkPostsInner.php
 lib/Model/BoostPostRequestTargeting.php
 lib/Model/BoostPostRequestTargetingCitiesInner.php
 lib/Model/BoostPostRequestTargetingCustomLocationsInner.php
@@ -4325,3 +4327,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/BoostPostRequestSparkPostsInnerTest.php
