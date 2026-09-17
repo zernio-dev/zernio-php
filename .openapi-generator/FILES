@@ -1097,6 +1097,8 @@ docs/Model/LinkedInLeadFormPlatformDataQuestionsInnerOneOf.md
 docs/Model/LinkedInLeadFormPlatformDataQuestionsInnerOneOf1.md
 docs/Model/LinkedInLeadFormPlatformDataQuestionsInnerOneOf1ChoicesInner.md
 docs/Model/LinkedInPlatformData.md
+docs/Model/LinkedInPlatformDataAudience.md
+docs/Model/LinkedInPlatformDataAudienceInterfaceLocalesInner.md
 docs/Model/LinkedInPlatformDataPoll.md
 docs/Model/ListAccountCallouts200Response.md
 docs/Model/ListAccountCallouts200ResponseCalloutsInner.md
@@ -3261,6 +3263,8 @@ lib/Model/LinkedInLeadFormPlatformDataQuestionsInnerOneOf.php
 lib/Model/LinkedInLeadFormPlatformDataQuestionsInnerOneOf1.php
 lib/Model/LinkedInLeadFormPlatformDataQuestionsInnerOneOf1ChoicesInner.php
 lib/Model/LinkedInPlatformData.php
+lib/Model/LinkedInPlatformDataAudience.php
+lib/Model/LinkedInPlatformDataAudienceInterfaceLocalesInner.php
 lib/Model/LinkedInPlatformDataPoll.php
 lib/Model/ListAccountCallouts200Response.php
 lib/Model/ListAccountCallouts200ResponseCalloutsInner.php
@@ -4329,3 +4333,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/LinkedInPlatformDataAudienceInterfaceLocalesInnerTest.php
+test/Model/LinkedInPlatformDataAudienceTest.php
