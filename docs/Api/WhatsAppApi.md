@@ -20,6 +20,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getWhatsAppBlockStatus()**](WhatsAppApi.md#getWhatsAppBlockStatus) | **GET** /v1/whatsapp/block-users/status | Check if a user is blocked |
 | [**getWhatsAppBlockedUsers()**](WhatsAppApi.md#getWhatsAppBlockedUsers) | **GET** /v1/whatsapp/block-users | List blocked users |
 | [**getWhatsAppBusinessProfile()**](WhatsAppApi.md#getWhatsAppBusinessProfile) | **GET** /v1/whatsapp/business-profile | Get business profile |
+| [**getWhatsAppCommerceSettings()**](WhatsAppApi.md#getWhatsAppCommerceSettings) | **GET** /v1/whatsapp/commerce-settings | Get a number&#39;s commerce settings |
 | [**getWhatsAppDataset()**](WhatsAppApi.md#getWhatsAppDataset) | **GET** /v1/whatsapp/dataset | Get CTWA conversions dataset |
 | [**getWhatsAppDisplayName()**](WhatsAppApi.md#getWhatsAppDisplayName) | **GET** /v1/whatsapp/business-profile/display-name | Get display name status |
 | [**getWhatsAppGroupChat()**](WhatsAppApi.md#getWhatsAppGroupChat) | **GET** /v1/whatsapp/wa-groups/{groupId} | Get group info |
@@ -29,7 +30,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getWhatsAppTemplates()**](WhatsAppApi.md#getWhatsAppTemplates) | **GET** /v1/whatsapp/templates | List templates |
 | [**getWhatsappBusinessUsername()**](WhatsAppApi.md#getWhatsappBusinessUsername) | **GET** /v1/whatsapp/business-profile/username | Get business username |
 | [**getWhatsappBusinessUsernameSuggestions()**](WhatsAppApi.md#getWhatsappBusinessUsernameSuggestions) | **GET** /v1/whatsapp/business-profile/username/suggestions | Get username suggestions |
+| [**linkWhatsAppCatalog()**](WhatsAppApi.md#linkWhatsAppCatalog) | **POST** /v1/whatsapp/catalogs | Link a catalog to a WhatsApp number |
 | [**listWhatsAppAccountEvents()**](WhatsAppApi.md#listWhatsAppAccountEvents) | **GET** /v1/whatsapp/account-events | List account notifications |
+| [**listWhatsAppCatalogs()**](WhatsAppApi.md#listWhatsAppCatalogs) | **GET** /v1/whatsapp/catalogs | List the catalogs linked to a WhatsApp number |
 | [**listWhatsAppConversions()**](WhatsAppApi.md#listWhatsAppConversions) | **GET** /v1/whatsapp/conversions | List conversion events |
 | [**listWhatsAppGroupChats()**](WhatsAppApi.md#listWhatsAppGroupChats) | **GET** /v1/whatsapp/wa-groups | List active groups |
 | [**listWhatsAppGroupJoinRequests()**](WhatsAppApi.md#listWhatsAppGroupJoinRequests) | **GET** /v1/whatsapp/wa-groups/{groupId}/join-requests | List join requests |
@@ -40,7 +43,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**sendWhatsAppConversion()**](WhatsAppApi.md#sendWhatsAppConversion) | **POST** /v1/whatsapp/conversions | Send WhatsApp conversion event |
 | [**setWhatsappBusinessUsername()**](WhatsAppApi.md#setWhatsappBusinessUsername) | **POST** /v1/whatsapp/business-profile/username | Set business username |
 | [**unblockWhatsAppUsers()**](WhatsAppApi.md#unblockWhatsAppUsers) | **DELETE** /v1/whatsapp/block-users | Unblock users |
+| [**unlinkWhatsAppCatalog()**](WhatsAppApi.md#unlinkWhatsAppCatalog) | **DELETE** /v1/whatsapp/catalogs | Unlink a catalog from a WhatsApp number |
 | [**updateWhatsAppBusinessProfile()**](WhatsAppApi.md#updateWhatsAppBusinessProfile) | **POST** /v1/whatsapp/business-profile | Update business profile |
+| [**updateWhatsAppCommerceSettings()**](WhatsAppApi.md#updateWhatsAppCommerceSettings) | **PUT** /v1/whatsapp/commerce-settings | Update a number&#39;s commerce settings |
 | [**updateWhatsAppDisplayName()**](WhatsAppApi.md#updateWhatsAppDisplayName) | **POST** /v1/whatsapp/business-profile/display-name | Request display name change |
 | [**updateWhatsAppGroupChat()**](WhatsAppApi.md#updateWhatsAppGroupChat) | **POST** /v1/whatsapp/wa-groups/{groupId} | Update group settings |
 | [**updateWhatsAppTemplate()**](WhatsAppApi.md#updateWhatsAppTemplate) | **PATCH** /v1/whatsapp/templates/{templateName} | Update template |
@@ -913,6 +918,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getWhatsAppCommerceSettings()`
+
+```php
+getWhatsAppCommerceSettings($account_id, $catalog_account_id): \Zernio\Model\GetWhatsAppCommerceSettings200Response
+```
+
+Get a number's commerce settings
+
+Whether the linked catalog is shown on the business profile (`isCatalogVisible`) and whether customers can build a cart (`isCartEnabled`).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | WhatsApp account ID
+$catalog_account_id = 'catalog_account_id_example'; // string | A facebook, instagram or metaads account whose Meta login carries catalog_management; its token performs the call instead of the account's own
+
+try {
+    $result = $apiInstance->getWhatsAppCommerceSettings($account_id, $catalog_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->getWhatsAppCommerceSettings: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| WhatsApp account ID | |
+| **catalog_account_id** | **string**| A facebook, instagram or metaads account whose Meta login carries catalog_management; its token performs the call instead of the account&#39;s own | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetWhatsAppCommerceSettings200Response**](../Model/GetWhatsAppCommerceSettings200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getWhatsAppDataset()`
 
 ```php
@@ -1469,6 +1536,66 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `linkWhatsAppCatalog()`
+
+```php
+linkWhatsAppCatalog($link_whats_app_catalog_request): \Zernio\Model\ListWhatsAppCatalogs200Response
+```
+
+Link a catalog to a WhatsApp number
+
+Connects a Meta Commerce catalog (owned by the same business portfolio as the WhatsApp Business Account) to the number's WABA. The WhatsApp connection's own token cannot do this, so pass `catalogAccountId` naming a facebook, instagram or metaads account whose Meta login carries catalog_management.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$link_whats_app_catalog_request = new \Zernio\Model\LinkWhatsAppCatalogRequest(); // \Zernio\Model\LinkWhatsAppCatalogRequest
+
+try {
+    $result = $apiInstance->linkWhatsAppCatalog($link_whats_app_catalog_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->linkWhatsAppCatalog: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **link_whats_app_catalog_request** | [**\Zernio\Model\LinkWhatsAppCatalogRequest**](../Model/LinkWhatsAppCatalogRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ListWhatsAppCatalogs200Response**](../Model/ListWhatsAppCatalogs200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listWhatsAppAccountEvents()`
 
 ```php
@@ -1517,6 +1644,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListWhatsAppAccountEvents200Response**](../Model/ListWhatsAppAccountEvents200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listWhatsAppCatalogs()`
+
+```php
+listWhatsAppCatalogs($account_id, $catalog_account_id): \Zernio\Model\ListWhatsAppCatalogs200Response
+```
+
+List the catalogs linked to a WhatsApp number
+
+The Meta Commerce catalogs connected to the number's WhatsApp Business Account. A linked catalog is what product, product_list and catalog_message interactive messages sell from (see POST /v1/inbox/conversations/{conversationId}/messages) and what customers browse in the WhatsApp app. Create and fill catalogs with the /v1/ads/catalogs endpoints.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | WhatsApp account ID
+$catalog_account_id = 'catalog_account_id_example'; // string | A facebook, instagram or metaads account whose Meta login carries catalog_management; its token performs the call instead of the account's own
+
+try {
+    $result = $apiInstance->listWhatsAppCatalogs($account_id, $catalog_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->listWhatsAppCatalogs: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| WhatsApp account ID | |
+| **catalog_account_id** | **string**| A facebook, instagram or metaads account whose Meta login carries catalog_management; its token performs the call instead of the account&#39;s own | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListWhatsAppCatalogs200Response**](../Model/ListWhatsAppCatalogs200Response.md)
 
 ### Authorization
 
@@ -2151,6 +2340,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `unlinkWhatsAppCatalog()`
+
+```php
+unlinkWhatsAppCatalog($account_id, $catalog_id, $catalog_account_id): \Zernio\Model\UnlinkWhatsAppCatalog200Response
+```
+
+Unlink a catalog from a WhatsApp number
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | WhatsApp account ID
+$catalog_id = 'catalog_id_example'; // string | Meta catalog ID
+$catalog_account_id = 'catalog_account_id_example'; // string | A facebook, instagram or metaads account whose Meta login carries catalog_management; its token performs the call instead of the account's own
+
+try {
+    $result = $apiInstance->unlinkWhatsAppCatalog($account_id, $catalog_id, $catalog_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->unlinkWhatsAppCatalog: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| WhatsApp account ID | |
+| **catalog_id** | **string**| Meta catalog ID | |
+| **catalog_account_id** | **string**| A facebook, instagram or metaads account whose Meta login carries catalog_management; its token performs the call instead of the account&#39;s own | [optional] |
+
+### Return type
+
+[**\Zernio\Model\UnlinkWhatsAppCatalog200Response**](../Model/UnlinkWhatsAppCatalog200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `updateWhatsAppBusinessProfile()`
 
 ```php
@@ -2197,6 +2448,64 @@ try {
 ### Return type
 
 [**\Zernio\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateWhatsAppCommerceSettings()`
+
+```php
+updateWhatsAppCommerceSettings($update_whats_app_commerce_settings_request): \Zernio\Model\GetWhatsAppCommerceSettings200Response
+```
+
+Update a number's commerce settings
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$update_whats_app_commerce_settings_request = new \Zernio\Model\UpdateWhatsAppCommerceSettingsRequest(); // \Zernio\Model\UpdateWhatsAppCommerceSettingsRequest
+
+try {
+    $result = $apiInstance->updateWhatsAppCommerceSettings($update_whats_app_commerce_settings_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->updateWhatsAppCommerceSettings: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **update_whats_app_commerce_settings_request** | [**\Zernio\Model\UpdateWhatsAppCommerceSettingsRequest**](../Model/UpdateWhatsAppCommerceSettingsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\GetWhatsAppCommerceSettings200Response**](../Model/GetWhatsAppCommerceSettings200Response.md)
 
 ### Authorization
 
