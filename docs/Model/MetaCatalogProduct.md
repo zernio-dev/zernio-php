@@ -20,7 +20,6 @@ Name | Type | Description | Notes
 **category** | **string** |  | [optional]
 **product_type** | **string** |  | [optional]
 **gtin** | **string** |  | [optional]
-**mpn** | **string** |  | [optional]
 **inventory** | **int** |  | [optional]
 **visibility** | **string** |  | [optional]
 **color** | **string** |  | [optional]
