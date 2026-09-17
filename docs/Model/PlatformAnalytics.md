@@ -12,6 +12,6 @@ Name | Type | Description | Notes
 **analytics** | [**\Zernio\Model\PostAnalytics**](PostAnalytics.md) |  | [optional]
 **sync_status** | **string** | Sync state of analytics for this platform | [optional]
 **platform_post_url** | **string** |  | [optional]
-**error_message** | **string** | Error details when status is failed, or why analytics are unavailable for a published entry (e.g. Google Business Profile, a TikTok upload that never received a video id) | [optional]
+**error_message** | **string** | Failure detail. On failed entries, why the post failed to publish. On unavailable entries, why analytics cannot be synced (e.g. Google Business Profile, a TikTok upload that never received a video id). On pending entries, the most recent analytics sync error for the account (null while no sync has failed), cleared after the next successful sync. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
