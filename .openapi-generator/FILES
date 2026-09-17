@@ -4325,9 +4325,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ConnectWordPressWithApplicationPassword200ResponseAccountTest.php
-test/Model/ConnectWordPressWithApplicationPassword200ResponseTest.php
-test/Model/ConnectWordPressWithApplicationPasswordRequestTest.php
-test/Model/GetBlog200ResponseTest.php
-test/Model/GetWordPressAuthUrl200ResponseTest.php
-test/Model/UpdateBlogArticleRequestImageTest.php

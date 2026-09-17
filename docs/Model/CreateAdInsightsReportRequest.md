@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **level** | **string** |  | [optional]
 **fields** | **string** | Comma-separated Graph insights fields. | [optional]
 **breakdowns** | **string** | Comma-separated Graph breakdowns. | [optional]
-**action_breakdowns** | **string** | Comma-separated Graph action breakdowns (e.g. action_type,action_destination). | [optional]
+**action_breakdowns** | **string** | Comma-separated Graph action breakdowns (e.g. action_type,action_destination). Pass &#x60;none&#x60; to clear Meta&#39;s default action_type breakdown, needed for some non-action breakdowns such as instagram_ads_follow_type. | [optional]
 **action_attribution_windows** | **string[]** | Meta attribution windows (e.g. [\&quot;7d_click\&quot;, \&quot;1d_view\&quot;]). Action values are returned keyed per window. | [optional]
 **action_report_time** | **string** | When actions are counted: impression, conversion or mixed. | [optional]
 **use_unified_attribution_setting** | **bool** | Use the ad sets&#39; own attribution settings for action counting. | [optional]
