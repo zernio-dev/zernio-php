@@ -19,6 +19,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**connectSlackChannel()**](ConnectApi.md#connectSlackChannel) | **POST** /v1/connect/slack | Connect a Slack channel |
 | [**connectWhatsAppCredentials()**](ConnectApi.md#connectWhatsAppCredentials) | **POST** /v1/connect/whatsapp/credentials | Connect WhatsApp via credentials |
 | [**connectWhatsAppEmbeddedSignup()**](ConnectApi.md#connectWhatsAppEmbeddedSignup) | **POST** /v1/connect/whatsapp/embedded-signup | Connect WhatsApp from Embedded Signup |
+| [**connectWordPressWithApplicationPassword()**](ConnectApi.md#connectWordPressWithApplicationPassword) | **POST** /v1/connect/wordpress/token | Connect self-hosted WordPress with an application password |
 | [**createPinterestBoard()**](ConnectApi.md#createPinterestBoard) | **POST** /v1/accounts/{accountId}/pinterest-boards | Create Pinterest board |
 | [**createYoutubePlaylist()**](ConnectApi.md#createYoutubePlaylist) | **POST** /v1/accounts/{accountId}/youtube-playlists | Create YouTube playlist |
 | [**getConnectUrl()**](ConnectApi.md#getConnectUrl) | **GET** /v1/connect/{platform} | Get OAuth connect URL |
@@ -34,6 +35,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getSubredditRules()**](ConnectApi.md#getSubredditRules) | **GET** /v1/accounts/{accountId}/reddit-subreddits/{subreddit}/rules | Get subreddit rules |
 | [**getTelegramConnectStatus()**](ConnectApi.md#getTelegramConnectStatus) | **GET** /v1/connect/telegram | Generate Telegram code |
 | [**getWhatsAppSdkConfig()**](ConnectApi.md#getWhatsAppSdkConfig) | **GET** /v1/connect/whatsapp/sdk-config | Get Embedded Signup SDK config |
+| [**getWordPressAuthUrl()**](ConnectApi.md#getWordPressAuthUrl) | **GET** /v1/connect/wordpress | Get WordPress.com OAuth connect URL |
 | [**getYoutubeCaptions()**](ConnectApi.md#getYoutubeCaptions) | **GET** /v1/accounts/{accountId}/youtube-captions | Get a YouTube video transcript |
 | [**getYoutubePlaylists()**](ConnectApi.md#getYoutubePlaylists) | **GET** /v1/accounts/{accountId}/youtube-playlists | List YouTube playlists |
 | [**handleOAuthCallback()**](ConnectApi.md#handleOAuthCallback) | **POST** /v1/connect/{platform} | Complete OAuth callback |
@@ -856,6 +858,71 @@ try {
 ### Authorization
 
 [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `connectWordPressWithApplicationPassword()`
+
+```php
+connectWordPressWithApplicationPassword($connect_word_press_with_application_password_request): \Zernio\Model\ConnectWordPressWithApplicationPassword200Response
+```
+
+Connect self-hosted WordPress with an application password
+
+Connects one self-hosted WordPress site using a WordPress username and application password. `siteUrl` must use HTTPS and may include the path where WordPress is installed. Zernio discovers the REST API, verifies the credentials and required post/media/taxonomy capabilities, then stores the password encrypted. Create an application password in the WordPress user's profile; do not send the user's login password. Reconnecting the same site and profile updates the connection in place.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: connectToken
+$config = Zernio\Configuration::getDefaultConfiguration()->setApiKey('X-Connect-Token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Zernio\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Connect-Token', 'Bearer');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$connect_word_press_with_application_password_request = new \Zernio\Model\ConnectWordPressWithApplicationPasswordRequest(); // \Zernio\Model\ConnectWordPressWithApplicationPasswordRequest
+
+try {
+    $result = $apiInstance->connectWordPressWithApplicationPassword($connect_word_press_with_application_password_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->connectWordPressWithApplicationPassword: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **connect_word_press_with_application_password_request** | [**\Zernio\Model\ConnectWordPressWithApplicationPasswordRequest**](../Model/ConnectWordPressWithApplicationPasswordRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ConnectWordPressWithApplicationPassword200Response**](../Model/ConnectWordPressWithApplicationPassword200Response.md)
+
+### Authorization
+
+[connectToken](../../README.md#connectToken), [bearerAuth](../../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -1794,6 +1861,73 @@ try {
 ### Authorization
 
 [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getWordPressAuthUrl()`
+
+```php
+getWordPressAuthUrl($profile_id, $redirect_url): \Zernio\Model\GetWordPressAuthUrl200Response
+```
+
+Get WordPress.com OAuth connect URL
+
+Initiates OAuth for a WordPress.com site or a Jetpack-connected site. WordPress is a connect-only blog platform: the connected account powers the Blogs API (`/v1/accounts/{accountId}/blogs`) and does not support social posts, inbox, analytics, ads, or Shopify product operations. Redirect the user to `authUrl`; after authorization, WordPress returns the browser to Zernio's internal callback and Zernio redirects to `redirect_url` (or the dashboard when omitted). Reconnecting the same site and profile updates the stored connection in place. The consent request omits `scope` to use WordPress.com's default single-site grant. Granular scopes cannot access the `/wp/v2` article API. Zernio checks that API before saving the connection and does not request explicit `global` authorization across all sites.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: connectToken
+$config = Zernio\Configuration::getDefaultConfiguration()->setApiKey('X-Connect-Token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Zernio\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Connect-Token', 'Bearer');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$profile_id = 'profile_id_example'; // string | Your Zernio profile ID (get from /v1/profiles).
+$redirect_url = 'redirect_url_example'; // string | Custom redirect after connection. Must be an absolute http(s) URL or custom app scheme such as `myapp://callback`; relative and unsafe URLs return 400.
+
+try {
+    $result = $apiInstance->getWordPressAuthUrl($profile_id, $redirect_url);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->getWordPressAuthUrl: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profile_id** | **string**| Your Zernio profile ID (get from /v1/profiles). | |
+| **redirect_url** | **string**| Custom redirect after connection. Must be an absolute http(s) URL or custom app scheme such as &#x60;myapp://callback&#x60;; relative and unsafe URLs return 400. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetWordPressAuthUrl200Response**](../Model/GetWordPressAuthUrl200Response.md)
+
+### Authorization
+
+[connectToken](../../README.md#connectToken), [bearerAuth](../../README.md#bearerAuth)
 
 ### HTTP request headers
 

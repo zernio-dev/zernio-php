@@ -375,6 +375,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**connectSlackChannel**](docs/Api/ConnectApi.md#connectslackchannel) | **POST** /v1/connect/slack | Connect a Slack channel
 *ConnectApi* | [**connectWhatsAppCredentials**](docs/Api/ConnectApi.md#connectwhatsappcredentials) | **POST** /v1/connect/whatsapp/credentials | Connect WhatsApp via credentials
 *ConnectApi* | [**connectWhatsAppEmbeddedSignup**](docs/Api/ConnectApi.md#connectwhatsappembeddedsignup) | **POST** /v1/connect/whatsapp/embedded-signup | Connect WhatsApp from Embedded Signup
+*ConnectApi* | [**connectWordPressWithApplicationPassword**](docs/Api/ConnectApi.md#connectwordpresswithapplicationpassword) | **POST** /v1/connect/wordpress/token | Connect self-hosted WordPress with an application password
 *ConnectApi* | [**createPinterestBoard**](docs/Api/ConnectApi.md#createpinterestboard) | **POST** /v1/accounts/{accountId}/pinterest-boards | Create Pinterest board
 *ConnectApi* | [**createYoutubePlaylist**](docs/Api/ConnectApi.md#createyoutubeplaylist) | **POST** /v1/accounts/{accountId}/youtube-playlists | Create YouTube playlist
 *ConnectApi* | [**getConnectUrl**](docs/Api/ConnectApi.md#getconnecturl) | **GET** /v1/connect/{platform} | Get OAuth connect URL
@@ -390,6 +391,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**getSubredditRules**](docs/Api/ConnectApi.md#getsubredditrules) | **GET** /v1/accounts/{accountId}/reddit-subreddits/{subreddit}/rules | Get subreddit rules
 *ConnectApi* | [**getTelegramConnectStatus**](docs/Api/ConnectApi.md#gettelegramconnectstatus) | **GET** /v1/connect/telegram | Generate Telegram code
 *ConnectApi* | [**getWhatsAppSdkConfig**](docs/Api/ConnectApi.md#getwhatsappsdkconfig) | **GET** /v1/connect/whatsapp/sdk-config | Get Embedded Signup SDK config
+*ConnectApi* | [**getWordPressAuthUrl**](docs/Api/ConnectApi.md#getwordpressauthurl) | **GET** /v1/connect/wordpress | Get WordPress.com OAuth connect URL
 *ConnectApi* | [**getYoutubeCaptions**](docs/Api/ConnectApi.md#getyoutubecaptions) | **GET** /v1/accounts/{accountId}/youtube-captions | Get a YouTube video transcript
 *ConnectApi* | [**getYoutubePlaylists**](docs/Api/ConnectApi.md#getyoutubeplaylists) | **GET** /v1/accounts/{accountId}/youtube-playlists | List YouTube playlists
 *ConnectApi* | [**handleOAuthCallback**](docs/Api/ConnectApi.md#handleoauthcallback) | **POST** /v1/connect/{platform} | Complete OAuth callback
@@ -1032,6 +1034,9 @@ Class | Method | HTTP request | Description
 - [ConnectWhatsAppEmbeddedSignup200Response](docs/Model/ConnectWhatsAppEmbeddedSignup200Response.md)
 - [ConnectWhatsAppEmbeddedSignup200ResponseAccount](docs/Model/ConnectWhatsAppEmbeddedSignup200ResponseAccount.md)
 - [ConnectWhatsAppEmbeddedSignupRequest](docs/Model/ConnectWhatsAppEmbeddedSignupRequest.md)
+- [ConnectWordPressWithApplicationPassword200Response](docs/Model/ConnectWordPressWithApplicationPassword200Response.md)
+- [ConnectWordPressWithApplicationPassword200ResponseAccount](docs/Model/ConnectWordPressWithApplicationPassword200ResponseAccount.md)
+- [ConnectWordPressWithApplicationPasswordRequest](docs/Model/ConnectWordPressWithApplicationPasswordRequest.md)
 - [Connected](docs/Model/Connected.md)
 - [ConnectedAccount](docs/Model/ConnectedAccount.md)
 - [ConnectedApp](docs/Model/ConnectedApp.md)
@@ -1411,6 +1416,7 @@ Class | Method | HTTP request | Description
 - [GetBestTimeToPost200Response](docs/Model/GetBestTimeToPost200Response.md)
 - [GetBestTimeToPost200ResponseSlotsInner](docs/Model/GetBestTimeToPost200ResponseSlotsInner.md)
 - [GetBestTimeToPost403Response](docs/Model/GetBestTimeToPost403Response.md)
+- [GetBlog200Response](docs/Model/GetBlog200Response.md)
 - [GetBlueskySettings200Response](docs/Model/GetBlueskySettings200Response.md)
 - [GetBroadcast200Response](docs/Model/GetBroadcast200Response.md)
 - [GetBroadcast200ResponseBroadcast](docs/Model/GetBroadcast200ResponseBroadcast.md)
@@ -1707,6 +1713,7 @@ Class | Method | HTTP request | Description
 - [GetWhatsAppTemplates200ResponseTemplatesInner](docs/Model/GetWhatsAppTemplates200ResponseTemplatesInner.md)
 - [GetWhatsappBusinessUsername200Response](docs/Model/GetWhatsappBusinessUsername200Response.md)
 - [GetWhatsappBusinessUsernameSuggestions200Response](docs/Model/GetWhatsappBusinessUsernameSuggestions200Response.md)
+- [GetWordPressAuthUrl200Response](docs/Model/GetWordPressAuthUrl200Response.md)
 - [GetWorkflow200Response](docs/Model/GetWorkflow200Response.md)
 - [GetWorkflow200ResponseWorkflow](docs/Model/GetWorkflow200ResponseWorkflow.md)
 - [GetWorkflowVersion200Response](docs/Model/GetWorkflowVersion200Response.md)
@@ -2512,6 +2519,7 @@ Class | Method | HTTP request | Description
 - [UpdateBidStrategy200ResponseStrategy](docs/Model/UpdateBidStrategy200ResponseStrategy.md)
 - [UpdateBidStrategyRequest](docs/Model/UpdateBidStrategyRequest.md)
 - [UpdateBlogArticleRequest](docs/Model/UpdateBlogArticleRequest.md)
+- [UpdateBlogArticleRequestImage](docs/Model/UpdateBlogArticleRequestImage.md)
 - [UpdateBlogRequest](docs/Model/UpdateBlogRequest.md)
 - [UpdateBlueskySettingsRequest](docs/Model/UpdateBlueskySettingsRequest.md)
 - [UpdateBroadcast200Response](docs/Model/UpdateBroadcast200Response.md)
@@ -2914,6 +2922,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.10.0`
+- API version: `1.11.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

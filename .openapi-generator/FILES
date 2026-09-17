@@ -304,6 +304,9 @@ docs/Model/ConnectWhatsAppCredentialsRequest.md
 docs/Model/ConnectWhatsAppEmbeddedSignup200Response.md
 docs/Model/ConnectWhatsAppEmbeddedSignup200ResponseAccount.md
 docs/Model/ConnectWhatsAppEmbeddedSignupRequest.md
+docs/Model/ConnectWordPressWithApplicationPassword200Response.md
+docs/Model/ConnectWordPressWithApplicationPassword200ResponseAccount.md
+docs/Model/ConnectWordPressWithApplicationPasswordRequest.md
 docs/Model/Connected.md
 docs/Model/ConnectedAccount.md
 docs/Model/ConnectedApp.md
@@ -683,6 +686,7 @@ docs/Model/GetAnalytics402Response.md
 docs/Model/GetBestTimeToPost200Response.md
 docs/Model/GetBestTimeToPost200ResponseSlotsInner.md
 docs/Model/GetBestTimeToPost403Response.md
+docs/Model/GetBlog200Response.md
 docs/Model/GetBlueskySettings200Response.md
 docs/Model/GetBroadcast200Response.md
 docs/Model/GetBroadcast200ResponseBroadcast.md
@@ -979,6 +983,7 @@ docs/Model/GetWhatsAppTemplates200Response.md
 docs/Model/GetWhatsAppTemplates200ResponseTemplatesInner.md
 docs/Model/GetWhatsappBusinessUsername200Response.md
 docs/Model/GetWhatsappBusinessUsernameSuggestions200Response.md
+docs/Model/GetWordPressAuthUrl200Response.md
 docs/Model/GetWorkflow200Response.md
 docs/Model/GetWorkflow200ResponseWorkflow.md
 docs/Model/GetWorkflowVersion200Response.md
@@ -1784,6 +1789,7 @@ docs/Model/UpdateBidStrategy200Response.md
 docs/Model/UpdateBidStrategy200ResponseStrategy.md
 docs/Model/UpdateBidStrategyRequest.md
 docs/Model/UpdateBlogArticleRequest.md
+docs/Model/UpdateBlogArticleRequestImage.md
 docs/Model/UpdateBlogRequest.md
 docs/Model/UpdateBlueskySettingsRequest.md
 docs/Model/UpdateBroadcast200Response.md
@@ -2460,6 +2466,9 @@ lib/Model/ConnectWhatsAppCredentialsRequest.php
 lib/Model/ConnectWhatsAppEmbeddedSignup200Response.php
 lib/Model/ConnectWhatsAppEmbeddedSignup200ResponseAccount.php
 lib/Model/ConnectWhatsAppEmbeddedSignupRequest.php
+lib/Model/ConnectWordPressWithApplicationPassword200Response.php
+lib/Model/ConnectWordPressWithApplicationPassword200ResponseAccount.php
+lib/Model/ConnectWordPressWithApplicationPasswordRequest.php
 lib/Model/Connected.php
 lib/Model/ConnectedAccount.php
 lib/Model/ConnectedApp.php
@@ -2839,6 +2848,7 @@ lib/Model/GetAnalytics402Response.php
 lib/Model/GetBestTimeToPost200Response.php
 lib/Model/GetBestTimeToPost200ResponseSlotsInner.php
 lib/Model/GetBestTimeToPost403Response.php
+lib/Model/GetBlog200Response.php
 lib/Model/GetBlueskySettings200Response.php
 lib/Model/GetBroadcast200Response.php
 lib/Model/GetBroadcast200ResponseBroadcast.php
@@ -3135,6 +3145,7 @@ lib/Model/GetWhatsAppTemplates200Response.php
 lib/Model/GetWhatsAppTemplates200ResponseTemplatesInner.php
 lib/Model/GetWhatsappBusinessUsername200Response.php
 lib/Model/GetWhatsappBusinessUsernameSuggestions200Response.php
+lib/Model/GetWordPressAuthUrl200Response.php
 lib/Model/GetWorkflow200Response.php
 lib/Model/GetWorkflow200ResponseWorkflow.php
 lib/Model/GetWorkflowVersion200Response.php
@@ -3941,6 +3952,7 @@ lib/Model/UpdateBidStrategy200Response.php
 lib/Model/UpdateBidStrategy200ResponseStrategy.php
 lib/Model/UpdateBidStrategyRequest.php
 lib/Model/UpdateBlogArticleRequest.php
+lib/Model/UpdateBlogArticleRequestImage.php
 lib/Model/UpdateBlogRequest.php
 lib/Model/UpdateBlueskySettingsRequest.php
 lib/Model/UpdateBroadcast200Response.php
@@ -4313,3 +4325,9 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ConnectWordPressWithApplicationPassword200ResponseAccountTest.php
+test/Model/ConnectWordPressWithApplicationPassword200ResponseTest.php
+test/Model/ConnectWordPressWithApplicationPasswordRequestTest.php
+test/Model/GetBlog200ResponseTest.php
+test/Model/GetWordPressAuthUrl200ResponseTest.php
+test/Model/UpdateBlogArticleRequestImageTest.php
