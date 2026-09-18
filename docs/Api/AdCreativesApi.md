@@ -16,6 +16,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listAdCreatives()**](AdCreativesApi.md#listAdCreatives) | **GET** /v1/ads/creatives | Creative library |
 | [**listAdImages()**](AdCreativesApi.md#listAdImages) | **GET** /v1/ads/images | Ad image library |
 | [**listAdVideos()**](AdCreativesApi.md#listAdVideos) | **GET** /v1/ads/videos | Ad video library |
+| [**listAdsTikTokIdentities()**](AdCreativesApi.md#listAdsTikTokIdentities) | **GET** /v1/ads/tiktok-identities | List TikTok ad identities |
 | [**listPartnershipAdContent()**](AdCreativesApi.md#listPartnershipAdContent) | **GET** /v1/ads/partnership-content | List partnership ad content |
 | [**listPartnershipAdPermissions()**](AdCreativesApi.md#listPartnershipAdPermissions) | **GET** /v1/ads/partnership-permissions | List partnership permissions |
 | [**setPartnershipAdPermission()**](AdCreativesApi.md#setPartnershipAdPermission) | **POST** /v1/ads/partnership-permissions | Set partnership permission |
@@ -646,6 +647,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListAdVideos200Response**](../Model/ListAdVideos200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listAdsTikTokIdentities()`
+
+```php
+listAdsTikTokIdentities($account_id, $ad_account_id): \Zernio\Model\ListAdsTikTokIdentities200Response
+```
+
+List TikTok ad identities
+
+The identities an ad on this TikTok advertiser may run as (the profile shown on the ad): the advertiser's own TikTok accounts (TT_USER), Business Center authorized accounts (BC_AUTH_TT) and custom brand identities (CUSTOMIZED_USER). Pass the chosen `identityId` on POST /v1/ads/create or POST /v1/ads/boost. Spark-post identities (AUTH_CODE) are not listed; a Spark code creates its own.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCreativesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | A tiktok or tiktokads account ID
+$ad_account_id = 'ad_account_id_example'; // string | TikTok advertiser ID
+
+try {
+    $result = $apiInstance->listAdsTikTokIdentities($account_id, $ad_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCreativesApi->listAdsTikTokIdentities: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| A tiktok or tiktokads account ID | |
+| **ad_account_id** | **string**| TikTok advertiser ID | |
+
+### Return type
+
+[**\Zernio\Model\ListAdsTikTokIdentities200Response**](../Model/ListAdsTikTokIdentities200Response.md)
 
 ### Authorization
 
