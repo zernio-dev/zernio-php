@@ -4417,5 +4417,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ListAdsTikTokIdentities200ResponseIdentitiesInnerTest.php
-test/Model/ListAdsTikTokIdentities200ResponseTest.php

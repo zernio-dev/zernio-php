@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  |
-**platform_conversation_id** | **string** |  |
+**id** | **string** | Zernio&#39;s internal conversation id (also the message&#39;s conversationId). Accepted by every /v1/inbox/conversations/{conversationId} endpoint. |
+**platform_conversation_id** | **string** | The platform&#39;s conversation id. This is the &#x60;id&#x60; GET /v1/inbox/conversations returns for the same conversation (on Instagram and Messenger it is the participant&#39;s IGSID / PSID), so key your records on it to match webhooks with list rows. Also accepted by the conversation endpoints. |
 **participant_id** | **string** |  | [optional]
 **participant_name** | **string** |  | [optional]
 **participant_username** | **string** |  | [optional]
