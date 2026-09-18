@@ -1295,6 +1295,7 @@ Class | Method | HTTP request | Description
 - [CtwaAdRequestBodyRegionsInner](docs/Model/CtwaAdRequestBodyRegionsInner.md)
 - [CtwaAdRequestBodyVideo](docs/Model/CtwaAdRequestBodyVideo.md)
 - [CtwaAdRequestBodyWelcomeMessage](docs/Model/CtwaAdRequestBodyWelcomeMessage.md)
+- [CtwaAdRequestBodyWelcomeMessageQuickRepliesInner](docs/Model/CtwaAdRequestBodyWelcomeMessageQuickRepliesInner.md)
 - [CtwaAdRequestBodyZipsInner](docs/Model/CtwaAdRequestBodyZipsInner.md)
 - [CtwaMultiResponse](docs/Model/CtwaMultiResponse.md)
 - [CtwaSingleResponse](docs/Model/CtwaSingleResponse.md)

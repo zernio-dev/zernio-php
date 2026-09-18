@@ -1,6 +1,6 @@
 <?php
 /**
- * CtwaAdRequestBodyWelcomeMessage
+ * CtwaAdRequestBodyWelcomeMessageQuickRepliesInner
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CtwaAdRequestBodyWelcomeMessage Class Doc Comment
+ * CtwaAdRequestBodyWelcomeMessageQuickRepliesInner Class Doc Comment
  *
  * @category Class
- * @description Custom chat welcome message (Meta&#39;s &#x60;page_welcome_message&#x60;, \&quot;Mensaje de bienvenida\&quot; / \&quot;Mensaje predefinido\&quot; in Ads Manager). Single-creative shape only; for &#x60;creatives[]&#x60; set it per entry.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CtwaAdRequestBodyWelcomeMessage implements ModelInterface, ArrayAccess, \JsonSerializable
+class CtwaAdRequestBodyWelcomeMessageQuickRepliesInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class CtwaAdRequestBodyWelcomeMessage implements ModelInterface, ArrayAccess, \J
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CtwaAdRequestBody_welcomeMessage';
+    protected static $openAPIModelName = 'CtwaAdRequestBody_welcomeMessage_quickReplies_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +58,8 @@ class CtwaAdRequestBodyWelcomeMessage implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'text' => 'string',
-        'prefill_text' => 'string',
-        'quick_replies' => '\Zernio\Model\CtwaAdRequestBodyWelcomeMessageQuickRepliesInner[]'
+        'title' => 'string',
+        'payload' => 'string'
     ];
 
     /**
@@ -72,9 +70,8 @@ class CtwaAdRequestBodyWelcomeMessage implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'text' => null,
-        'prefill_text' => null,
-        'quick_replies' => null
+        'title' => null,
+        'payload' => null
     ];
 
     /**
@@ -83,9 +80,8 @@ class CtwaAdRequestBodyWelcomeMessage implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'text' => false,
-        'prefill_text' => false,
-        'quick_replies' => false
+        'title' => false,
+        'payload' => false
     ];
 
     /**
@@ -174,9 +170,8 @@ class CtwaAdRequestBodyWelcomeMessage implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'text' => 'text',
-        'prefill_text' => 'prefillText',
-        'quick_replies' => 'quickReplies'
+        'title' => 'title',
+        'payload' => 'payload'
     ];
 
     /**
@@ -185,9 +180,8 @@ class CtwaAdRequestBodyWelcomeMessage implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'text' => 'setText',
-        'prefill_text' => 'setPrefillText',
-        'quick_replies' => 'setQuickReplies'
+        'title' => 'setTitle',
+        'payload' => 'setPayload'
     ];
 
     /**
@@ -196,9 +190,8 @@ class CtwaAdRequestBodyWelcomeMessage implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'text' => 'getText',
-        'prefill_text' => 'getPrefillText',
-        'quick_replies' => 'getQuickReplies'
+        'title' => 'getTitle',
+        'payload' => 'getPayload'
     ];
 
     /**
@@ -258,9 +251,8 @@ class CtwaAdRequestBodyWelcomeMessage implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('text', $data ?? [], null);
-        $this->setIfExists('prefill_text', $data ?? [], null);
-        $this->setIfExists('quick_replies', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('payload', $data ?? [], null);
     }
 
     /**
@@ -290,23 +282,26 @@ class CtwaAdRequestBodyWelcomeMessage implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
-        if ($this->container['text'] === null) {
-            $invalidProperties[] = "'text' can't be null";
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
         }
-        if ((mb_strlen($this->container['text']) < 1)) {
-            $invalidProperties[] = "invalid value for 'text', the character length must be bigger than or equal to 1.";
-        }
-
-        if (!is_null($this->container['prefill_text']) && (mb_strlen($this->container['prefill_text']) < 1)) {
-            $invalidProperties[] = "invalid value for 'prefill_text', the character length must be bigger than or equal to 1.";
+        if ((mb_strlen($this->container['title']) > 20)) {
+            $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 20.";
         }
 
-        if (!is_null($this->container['quick_replies']) && (count($this->container['quick_replies']) > 13)) {
-            $invalidProperties[] = "invalid value for 'quick_replies', number of items must be less than or equal to 13.";
+        if ((mb_strlen($this->container['title']) < 1)) {
+            $invalidProperties[] = "invalid value for 'title', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['quick_replies']) && (count($this->container['quick_replies']) < 1)) {
-            $invalidProperties[] = "invalid value for 'quick_replies', number of items must be greater than or equal to 1.";
+        if ($this->container['payload'] === null) {
+            $invalidProperties[] = "'payload' can't be null";
+        }
+        if ((mb_strlen($this->container['payload']) > 1000)) {
+            $invalidProperties[] = "invalid value for 'payload', the character length must be smaller than or equal to 1000.";
+        }
+
+        if ((mb_strlen($this->container['payload']) < 1)) {
+            $invalidProperties[] = "invalid value for 'payload', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -325,99 +320,69 @@ class CtwaAdRequestBodyWelcomeMessage implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets text
+     * Gets title
      *
      * @return string
      */
-    public function getText()
+    public function getTitle()
     {
-        return $this->container['text'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets text
+     * Sets title
      *
-     * @param string $text Greeting shown when the chat opens. Replaces Meta's default (\"Hi! Can we help you?\").
+     * @param string $title Chip label the person taps.
      *
      * @return self
      */
-    public function setText($text)
+    public function setTitle($title)
     {
-        if (is_null($text)) {
-            throw new \InvalidArgumentException('non-nullable text cannot be null');
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
+        }
+        if ((mb_strlen($title) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $title when calling CtwaAdRequestBodyWelcomeMessageQuickRepliesInner., must be smaller than or equal to 20.');
+        }
+        if ((mb_strlen($title) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $title when calling CtwaAdRequestBodyWelcomeMessageQuickRepliesInner., must be bigger than or equal to 1.');
         }
 
-        if ((mb_strlen($text) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $text when calling CtwaAdRequestBodyWelcomeMessage., must be bigger than or equal to 1.');
-        }
-
-        $this->container['text'] = $text;
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets prefill_text
+     * Gets payload
      *
-     * @return string|null
+     * @return string
      */
-    public function getPrefillText()
+    public function getPayload()
     {
-        return $this->container['prefill_text'];
+        return $this->container['payload'];
     }
 
     /**
-     * Sets prefill_text
+     * Sets payload
      *
-     * @param string|null $prefill_text Message put into the user's text input, ready to send. Replaces Meta's default (\"Hi! I want more info.\"). Lets one ad steer the opening message toward what it promotes (e.g. a specific product). Exactly one of prefillText or quickReplies.
+     * @param string $payload Opaque string you choose; delivered on the message.received webhook as interactiveMetadata.quickReplyPayload when the chip is tapped.
      *
      * @return self
      */
-    public function setPrefillText($prefill_text)
+    public function setPayload($payload)
     {
-        if (is_null($prefill_text)) {
-            throw new \InvalidArgumentException('non-nullable prefill_text cannot be null');
+        if (is_null($payload)) {
+            throw new \InvalidArgumentException('non-nullable payload cannot be null');
+        }
+        if ((mb_strlen($payload) > 1000)) {
+            throw new \InvalidArgumentException('invalid length for $payload when calling CtwaAdRequestBodyWelcomeMessageQuickRepliesInner., must be smaller than or equal to 1000.');
+        }
+        if ((mb_strlen($payload) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $payload when calling CtwaAdRequestBodyWelcomeMessageQuickRepliesInner., must be bigger than or equal to 1.');
         }
 
-        if ((mb_strlen($prefill_text) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $prefill_text when calling CtwaAdRequestBodyWelcomeMessage., must be bigger than or equal to 1.');
-        }
-
-        $this->container['prefill_text'] = $prefill_text;
-
-        return $this;
-    }
-
-    /**
-     * Gets quick_replies
-     *
-     * @return \Zernio\Model\CtwaAdRequestBodyWelcomeMessageQuickRepliesInner[]|null
-     */
-    public function getQuickReplies()
-    {
-        return $this->container['quick_replies'];
-    }
-
-    /**
-     * Sets quick_replies
-     *
-     * @param \Zernio\Model\CtwaAdRequestBodyWelcomeMessageQuickRepliesInner[]|null $quick_replies Tappable chips under the greeting instead of a prefilled message. Exactly one of prefillText or quickReplies. Put your own campaign or ad key in each payload: the tap arrives on the messages webhook with that payload even where Meta delivers no ad referral (Pages owned by an EU business under the Europe/Japan Messenger restrictions).
-     *
-     * @return self
-     */
-    public function setQuickReplies($quick_replies)
-    {
-        if (is_null($quick_replies)) {
-            throw new \InvalidArgumentException('non-nullable quick_replies cannot be null');
-        }
-
-        if ((count($quick_replies) > 13)) {
-            throw new \InvalidArgumentException('invalid value for $quick_replies when calling CtwaAdRequestBodyWelcomeMessage., number of items must be less than or equal to 13.');
-        }
-        if ((count($quick_replies) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $quick_replies when calling CtwaAdRequestBodyWelcomeMessage., number of items must be greater than or equal to 1.');
-        }
-        $this->container['quick_replies'] = $quick_replies;
+        $this->container['payload'] = $payload;
 
         return $this;
     }
