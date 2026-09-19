@@ -97,11 +97,12 @@ class Configuration
     protected $host = 'https://zernio.com/api';
 
     /**
-     * User agent of the HTTP request, set to "OpenAPI-Generator/{version}/PHP" by default
+     * User agent of the HTTP request. Defaults to "zernio-php/{composer.json version}/PHP",
+     * resolved lazily the first time getUserAgent() is called.
      *
-     * @var string
+     * @var string|null
      */
-    protected $userAgent = 'OpenAPI-Generator/1.0.0/PHP';
+    protected $userAgent = null;
 
     /**
      * Debug switch (default set to false)
@@ -339,7 +340,32 @@ class Configuration
      */
     public function getUserAgent()
     {
+        if ($this->userAgent === null) {
+            $this->userAgent = self::defaultUserAgent();
+        }
         return $this->userAgent;
+    }
+
+    /**
+     * Builds the default user agent string from the package's composer.json version.
+     *
+     * @return string
+     */
+    private static function defaultUserAgent()
+    {
+        static $cached = null;
+        if ($cached !== null) {
+            return $cached;
+        }
+        $version = 'unknown';
+        $composerPath = __DIR__ . '/../composer.json';
+        if (is_file($composerPath)) {
+            $data = json_decode((string) file_get_contents($composerPath), true);
+            if (is_array($data) && isset($data['version']) && is_string($data['version'])) {
+                $version = $data['version'];
+            }
+        }
+        return $cached = 'zernio-php/' . $version . '/PHP';
     }
 
     /**
