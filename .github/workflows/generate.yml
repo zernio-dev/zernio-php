@@ -47,7 +47,7 @@ jobs:
 
       - name: Fetch latest OpenAPI spec
         run: |
-          curl -f --retry 5 --retry-delay 2 --retry-all-errors --max-time 60 -o openapi.yaml https://zernio.com/openapi.yaml
+          curl -f --retry 5 --retry-delay 2 --retry-all-errors --max-time 60 -o openapi.yaml https://zernio.com/openapi.json
           echo "Fetched OpenAPI spec"
 
       - name: Generate SDK
