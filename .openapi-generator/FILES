@@ -1152,6 +1152,7 @@ docs/Model/ListAccountStructuredSnippets200Response.md
 docs/Model/ListAccountStructuredSnippets200ResponseStructuredSnippetsInner.md
 docs/Model/ListAdAccounts200Response.md
 docs/Model/ListAdAccounts200ResponseAccountsInner.md
+docs/Model/ListAdAccounts200ResponseAccountsInnerFundingSourceDetails.md
 docs/Model/ListAdAudiences200Response.md
 docs/Model/ListAdAudiences200ResponseAudiencesInner.md
 docs/Model/ListAdCampaigns200Response.md
@@ -3400,6 +3401,7 @@ lib/Model/ListAccountStructuredSnippets200Response.php
 lib/Model/ListAccountStructuredSnippets200ResponseStructuredSnippetsInner.php
 lib/Model/ListAdAccounts200Response.php
 lib/Model/ListAdAccounts200ResponseAccountsInner.php
+lib/Model/ListAdAccounts200ResponseAccountsInnerFundingSourceDetails.php
 lib/Model/ListAdAudiences200Response.php
 lib/Model/ListAdAudiences200ResponseAudiencesInner.php
 lib/Model/ListAdCampaigns200Response.php
@@ -4497,6 +4499,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ListAdsInstagramPosts200ResponsePagingTest.php
-test/Model/ListAdsInstagramPosts200ResponsePostsInnerTest.php
-test/Model/ListAdsInstagramPosts200ResponseTest.php
+test/Model/ListAdAccounts200ResponseAccountsInnerFundingSourceDetailsTest.php
