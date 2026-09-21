@@ -14,7 +14,9 @@ Name | Type | Description | Notes
 **account_id** | **string** |  | [optional]
 **profile_id** | **string** |  | [optional]
 **currency** | **string** |  | [optional]
-**budget** | **object** |  | [optional]
+**budget** | [**\Zernio\Model\ListAdSets200ResponseAdSetsInnerBudget**](ListAdSets200ResponseAdSetsInnerBudget.md) |  | [optional]
+**schedule** | [**\Zernio\Model\ListAdSets200ResponseAdSetsInnerSchedule**](ListAdSets200ResponseAdSetsInnerSchedule.md) |  | [optional]
+**targeting** | [**\Zernio\Model\ListAdSets200ResponseAdSetsInnerTargeting**](ListAdSets200ResponseAdSetsInnerTargeting.md) |  | [optional]
 **is_external** | **bool** |  | [optional]
 **platform_created_at** | **\DateTime** |  | [optional]
 
