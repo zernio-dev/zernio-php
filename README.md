@@ -496,6 +496,23 @@ Class | Method | HTTP request | Description
 *GMBVerificationsApi* | [**fetchGoogleBusinessVerificationOptions**](docs/Api/GMBVerificationsApi.md#fetchgooglebusinessverificationoptions) | **POST** /v1/accounts/{accountId}/gmb-verifications/options | Fetch verification options
 *GMBVerificationsApi* | [**getGoogleBusinessVerifications**](docs/Api/GMBVerificationsApi.md#getgooglebusinessverifications) | **GET** /v1/accounts/{accountId}/gmb-verifications | Get verification state
 *GMBVerificationsApi* | [**startGoogleBusinessVerification**](docs/Api/GMBVerificationsApi.md#startgooglebusinessverification) | **POST** /v1/accounts/{accountId}/gmb-verifications | Start a verification
+*IMessageApi* | [**addImessageGroupParticipant**](docs/Api/IMessageApi.md#addimessagegroupparticipant) | **POST** /v1/imessage/groups/{conversationId}/participants | Add a participant to an iMessage group
+*IMessageApi* | [**cancelImessageSender**](docs/Api/IMessageApi.md#cancelimessagesender) | **DELETE** /v1/imessage/senders/{senderId} | Cancel an iMessage sender
+*IMessageApi* | [**createImessageGroup**](docs/Api/IMessageApi.md#createimessagegroup) | **POST** /v1/imessage/groups | Start an iMessage group chat
+*IMessageApi* | [**createImessageOptInLink**](docs/Api/IMessageApi.md#createimessageoptinlink) | **POST** /v1/imessage/senders/{senderId}/opt-in-links | Create a tracked iMessage opt-in link
+*IMessageApi* | [**getImessageGroup**](docs/Api/IMessageApi.md#getimessagegroup) | **GET** /v1/imessage/groups/{conversationId} | Get an iMessage group
+*IMessageApi* | [**getImessageSender**](docs/Api/IMessageApi.md#getimessagesender) | **GET** /v1/imessage/senders/{senderId} | Get iMessage sender status
+*IMessageApi* | [**listImessageAudience**](docs/Api/IMessageApi.md#listimessageaudience) | **GET** /v1/imessage/audience | List iMessage audience
+*IMessageApi* | [**listImessageAvailableNumbers**](docs/Api/IMessageApi.md#listimessageavailablenumbers) | **GET** /v1/imessage/senders/available-numbers | List instantly available iMessage numbers
+*IMessageApi* | [**listImessageSenderOrders**](docs/Api/IMessageApi.md#listimessagesenderorders) | **GET** /v1/imessage/senders/order | List iMessage sender orders
+*IMessageApi* | [**listImessageSenders**](docs/Api/IMessageApi.md#listimessagesenders) | **GET** /v1/imessage/senders | List iMessage senders
+*IMessageApi* | [**orderImessageSender**](docs/Api/IMessageApi.md#orderimessagesender) | **POST** /v1/imessage/senders/order | Order a new iMessage sender
+*IMessageApi* | [**registerImessageSender**](docs/Api/IMessageApi.md#registerimessagesender) | **POST** /v1/imessage/senders | Register an iMessage sender
+*IMessageApi* | [**removeImessageGroupParticipant**](docs/Api/IMessageApi.md#removeimessagegroupparticipant) | **DELETE** /v1/imessage/groups/{conversationId}/participants | Remove a participant from an iMessage group
+*IMessageApi* | [**reserveImessageAvailableNumber**](docs/Api/IMessageApi.md#reserveimessageavailablenumber) | **POST** /v1/imessage/senders/available-numbers/{numberId}/reserve | Reserve an available iMessage number
+*IMessageApi* | [**setImessageSubscription**](docs/Api/IMessageApi.md#setimessagesubscription) | **POST** /v1/imessage/audience/subscription | Subscribe or opt out an iMessage contact
+*IMessageApi* | [**updateImessageGroup**](docs/Api/IMessageApi.md#updateimessagegroup) | **PATCH** /v1/imessage/groups/{conversationId} | Rename an iMessage group or change its photo
+*IMessageApi* | [**updateImessageSender**](docs/Api/IMessageApi.md#updateimessagesender) | **PATCH** /v1/imessage/senders/{senderId} | Update an iMessage sender
 *InboxAnalyticsApi* | [**getInboxConversationAnalytics**](docs/Api/InboxAnalyticsApi.md#getinboxconversationanalytics) | **GET** /v1/analytics/inbox/conversations/{conversationId} | Get conversation analytics
 *InboxAnalyticsApi* | [**getInboxHeatmap**](docs/Api/InboxAnalyticsApi.md#getinboxheatmap) | **GET** /v1/analytics/inbox/heatmap | Get day × hour heatmap
 *InboxAnalyticsApi* | [**getInboxResponseTime**](docs/Api/InboxAnalyticsApi.md#getinboxresponsetime) | **GET** /v1/analytics/inbox/response-time | Get inbox response-time stats
@@ -885,6 +902,8 @@ Class | Method | HTTP request | Description
 - [AddConversionAssociations200ResponseFailedInner](docs/Model/AddConversionAssociations200ResponseFailedInner.md)
 - [AddConversionAssociationsRequest](docs/Model/AddConversionAssociationsRequest.md)
 - [AddDiscordMemberRole200Response](docs/Model/AddDiscordMemberRole200Response.md)
+- [AddImessageGroupParticipant200Response](docs/Model/AddImessageGroupParticipant200Response.md)
+- [AddImessageGroupParticipantRequest](docs/Model/AddImessageGroupParticipantRequest.md)
 - [AddMessageReaction200Response](docs/Model/AddMessageReaction200Response.md)
 - [AddMessageReactionRequest](docs/Model/AddMessageReactionRequest.md)
 - [AddTrackingTagSharedAccount201Response](docs/Model/AddTrackingTagSharedAccount201Response.md)
@@ -1162,6 +1181,11 @@ Class | Method | HTTP request | Description
 - [CreateGoogleBusinessPlaceActionRequest](docs/Model/CreateGoogleBusinessPlaceActionRequest.md)
 - [CreateHighDemandPeriod201Response](docs/Model/CreateHighDemandPeriod201Response.md)
 - [CreateHighDemandPeriodRequest](docs/Model/CreateHighDemandPeriodRequest.md)
+- [CreateImessageGroup202Response](docs/Model/CreateImessageGroup202Response.md)
+- [CreateImessageGroupRequest](docs/Model/CreateImessageGroupRequest.md)
+- [CreateImessageOptInLink200Response](docs/Model/CreateImessageOptInLink200Response.md)
+- [CreateImessageOptInLink200ResponseLink](docs/Model/CreateImessageOptInLink200ResponseLink.md)
+- [CreateImessageOptInLinkRequest](docs/Model/CreateImessageOptInLinkRequest.md)
 - [CreateInboxConversation201Response](docs/Model/CreateInboxConversation201Response.md)
 - [CreateInboxConversation201ResponseData](docs/Model/CreateInboxConversation201ResponseData.md)
 - [CreateInboxConversation400Response](docs/Model/CreateInboxConversation400Response.md)
@@ -1566,6 +1590,10 @@ Class | Method | HTTP request | Description
 - [GetGoogleBusinessVerifications200ResponseVerificationsInner](docs/Model/GetGoogleBusinessVerifications200ResponseVerificationsInner.md)
 - [GetGoogleBusinessVerifications200ResponseVoiceOfMerchantState](docs/Model/GetGoogleBusinessVerifications200ResponseVoiceOfMerchantState.md)
 - [GetGoogleBusinessVerifications200ResponseVoiceOfMerchantStateVerify](docs/Model/GetGoogleBusinessVerifications200ResponseVoiceOfMerchantStateVerify.md)
+- [GetImessageGroup200Response](docs/Model/GetImessageGroup200Response.md)
+- [GetImessageGroup200ResponseGroup](docs/Model/GetImessageGroup200ResponseGroup.md)
+- [GetImessageSender200Response](docs/Model/GetImessageSender200Response.md)
+- [GetImessageSender200ResponseHealth](docs/Model/GetImessageSender200ResponseHealth.md)
 - [GetInboxConversation200Response](docs/Model/GetInboxConversation200Response.md)
 - [GetInboxConversation200ResponseData](docs/Model/GetInboxConversation200ResponseData.md)
 - [GetInboxConversation200ResponseDataMetadata](docs/Model/GetInboxConversation200ResponseDataMetadata.md)
@@ -1806,6 +1834,10 @@ Class | Method | HTTP request | Description
 - [HideAdCommentRequest](docs/Model/HideAdCommentRequest.md)
 - [HideInboxComment200Response](docs/Model/HideInboxComment200Response.md)
 - [HideInboxCommentRequest](docs/Model/HideInboxCommentRequest.md)
+- [ImessageAudienceContact](docs/Model/ImessageAudienceContact.md)
+- [ImessageAudienceContactOptIn](docs/Model/ImessageAudienceContactOptIn.md)
+- [ImessageSender](docs/Model/ImessageSender.md)
+- [ImessageSenderLifecycle](docs/Model/ImessageSenderLifecycle.md)
 - [InboxMessageEditAttachment](docs/Model/InboxMessageEditAttachment.md)
 - [InboxMessageEditHistoryEntry](docs/Model/InboxMessageEditHistoryEntry.md)
 - [InboxWebhookAccount](docs/Model/InboxWebhookAccount.md)
@@ -1988,6 +2020,11 @@ Class | Method | HTTP request | Description
 - [ListGoogleBusinessPlaceActions200Response](docs/Model/ListGoogleBusinessPlaceActions200Response.md)
 - [ListGoogleBusinessPlaceActions200ResponsePlaceActionLinksInner](docs/Model/ListGoogleBusinessPlaceActions200ResponsePlaceActionLinksInner.md)
 - [ListHighDemandPeriods200Response](docs/Model/ListHighDemandPeriods200Response.md)
+- [ListImessageAudience200Response](docs/Model/ListImessageAudience200Response.md)
+- [ListImessageAvailableNumbers200Response](docs/Model/ListImessageAvailableNumbers200Response.md)
+- [ListImessageAvailableNumbers200ResponseNumbersInner](docs/Model/ListImessageAvailableNumbers200ResponseNumbersInner.md)
+- [ListImessageSenderOrders200Response](docs/Model/ListImessageSenderOrders200Response.md)
+- [ListImessageSenders200Response](docs/Model/ListImessageSenders200Response.md)
 - [ListInboxComments200Response](docs/Model/ListInboxComments200Response.md)
 - [ListInboxComments200ResponseDataInner](docs/Model/ListInboxComments200ResponseDataInner.md)
 - [ListInboxComments200ResponseMeta](docs/Model/ListInboxComments200ResponseMeta.md)
@@ -2167,6 +2204,9 @@ Class | Method | HTTP request | Description
 - [OnWhatsAppNumberSuspendedRequest](docs/Model/OnWhatsAppNumberSuspendedRequest.md)
 - [OnWhatsAppNumberVerificationRequiredRequest](docs/Model/OnWhatsAppNumberVerificationRequiredRequest.md)
 - [OnboardBusinessAgent201Response](docs/Model/OnboardBusinessAgent201Response.md)
+- [OrderImessageSender202Response](docs/Model/OrderImessageSender202Response.md)
+- [OrderImessageSenderRequest](docs/Model/OrderImessageSenderRequest.md)
+- [OrderImessageSenderRequestContact](docs/Model/OrderImessageSenderRequestContact.md)
 - [Pagination](docs/Model/Pagination.md)
 - [PauseWorkflow200Response](docs/Model/PauseWorkflow200Response.md)
 - [Pending](docs/Model/Pending.md)
@@ -2234,6 +2274,8 @@ Class | Method | HTTP request | Description
 - [RedditPlatformData](docs/Model/RedditPlatformData.md)
 - [RedditPost](docs/Model/RedditPost.md)
 - [RedeliverWebhookEventRequest](docs/Model/RedeliverWebhookEventRequest.md)
+- [RegisterImessageSender200Response](docs/Model/RegisterImessageSender200Response.md)
+- [RegisterImessageSenderRequest](docs/Model/RegisterImessageSenderRequest.md)
 - [RegisterWhatsAppNumber200Response](docs/Model/RegisterWhatsAppNumber200Response.md)
 - [RegisterWhatsAppNumberRequest](docs/Model/RegisterWhatsAppNumberRequest.md)
 - [RejectWhatsAppGroupJoinRequestsRequest](docs/Model/RejectWhatsAppGroupJoinRequestsRequest.md)
@@ -2282,6 +2324,7 @@ Class | Method | HTTP request | Description
 - [RequestWhatsAppVerificationCode200Response](docs/Model/RequestWhatsAppVerificationCode200Response.md)
 - [RequestWhatsAppVerificationCodeRequest](docs/Model/RequestWhatsAppVerificationCodeRequest.md)
 - [ResendSmsRegistrationOtp200Response](docs/Model/ResendSmsRegistrationOtp200Response.md)
+- [ReserveImessageAvailableNumber200Response](docs/Model/ReserveImessageAvailableNumber200Response.md)
 - [ReserveRfPrediction201Response](docs/Model/ReserveRfPrediction201Response.md)
 - [ReserveRfPredictionRequest](docs/Model/ReserveRfPredictionRequest.md)
 - [RespondToPhoneNumberReviewer200Response](docs/Model/RespondToPhoneNumberReviewer200Response.md)
@@ -2452,6 +2495,8 @@ Class | Method | HTTP request | Description
 - [SetConversationThreadControl200Response](docs/Model/SetConversationThreadControl200Response.md)
 - [SetConversationThreadControl200ResponseControl](docs/Model/SetConversationThreadControl200ResponseControl.md)
 - [SetConversationThreadControlRequest](docs/Model/SetConversationThreadControlRequest.md)
+- [SetImessageSubscription200Response](docs/Model/SetImessageSubscription200Response.md)
+- [SetImessageSubscriptionRequest](docs/Model/SetImessageSubscriptionRequest.md)
 - [SetInstagramIceBreakersRequest](docs/Model/SetInstagramIceBreakersRequest.md)
 - [SetInstagramIceBreakersRequestIceBreakersInner](docs/Model/SetInstagramIceBreakersRequestIceBreakersInner.md)
 - [SetMessengerMenuRequest](docs/Model/SetMessengerMenuRequest.md)
@@ -2674,6 +2719,10 @@ Class | Method | HTTP request | Description
 - [UpdateGoogleBusinessServicesRequestServiceItemsInnerFreeFormServiceItemLabel](docs/Model/UpdateGoogleBusinessServicesRequestServiceItemsInnerFreeFormServiceItemLabel.md)
 - [UpdateGoogleBusinessServicesRequestServiceItemsInnerPrice](docs/Model/UpdateGoogleBusinessServicesRequestServiceItemsInnerPrice.md)
 - [UpdateGoogleBusinessServicesRequestServiceItemsInnerStructuredServiceItem](docs/Model/UpdateGoogleBusinessServicesRequestServiceItemsInnerStructuredServiceItem.md)
+- [UpdateImessageGroup200Response](docs/Model/UpdateImessageGroup200Response.md)
+- [UpdateImessageGroupRequest](docs/Model/UpdateImessageGroupRequest.md)
+- [UpdateImessageSenderRequest](docs/Model/UpdateImessageSenderRequest.md)
+- [UpdateImessageSenderRequestContact](docs/Model/UpdateImessageSenderRequestContact.md)
 - [UpdateInboxConversation200Response](docs/Model/UpdateInboxConversation200Response.md)
 - [UpdateInboxConversation200ResponseData](docs/Model/UpdateInboxConversation200ResponseData.md)
 - [UpdateInboxConversationRequest](docs/Model/UpdateInboxConversationRequest.md)
@@ -2994,6 +3043,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.26.0`
+- API version: `1.28.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
