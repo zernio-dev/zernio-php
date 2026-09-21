@@ -1183,6 +1183,9 @@ docs/Model/ListAdsInstagramAccounts200Response.md
 docs/Model/ListAdsInstagramAccounts200ResponseAccountsInner.md
 docs/Model/ListAdsInstagramAccounts200ResponsePagesInner.md
 docs/Model/ListAdsInstagramAccounts200ResponseResolved.md
+docs/Model/ListAdsInstagramPosts200Response.md
+docs/Model/ListAdsInstagramPosts200ResponsePaging.md
+docs/Model/ListAdsInstagramPosts200ResponsePostsInner.md
 docs/Model/ListAdsTikTokIdentities200Response.md
 docs/Model/ListAdsTikTokIdentities200ResponseIdentitiesInner.md
 docs/Model/ListAdvertisableApplications200Response.md
@@ -3428,6 +3431,9 @@ lib/Model/ListAdsInstagramAccounts200Response.php
 lib/Model/ListAdsInstagramAccounts200ResponseAccountsInner.php
 lib/Model/ListAdsInstagramAccounts200ResponsePagesInner.php
 lib/Model/ListAdsInstagramAccounts200ResponseResolved.php
+lib/Model/ListAdsInstagramPosts200Response.php
+lib/Model/ListAdsInstagramPosts200ResponsePaging.php
+lib/Model/ListAdsInstagramPosts200ResponsePostsInner.php
 lib/Model/ListAdsTikTokIdentities200Response.php
 lib/Model/ListAdsTikTokIdentities200ResponseIdentitiesInner.php
 lib/Model/ListAdvertisableApplications200Response.php
@@ -4491,3 +4497,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ListAdsInstagramPosts200ResponsePagingTest.php
+test/Model/ListAdsInstagramPosts200ResponsePostsInnerTest.php
+test/Model/ListAdsInstagramPosts200ResponseTest.php

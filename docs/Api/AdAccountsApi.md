@@ -35,6 +35,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listAdStudies()**](AdAccountsApi.md#listAdStudies) | **GET** /v1/ads/studies | A/B tests and lift studies |
 | [**listAdsBusinessCenters()**](AdAccountsApi.md#listAdsBusinessCenters) | **GET** /v1/ads/business-centers | List TikTok Business Centers |
 | [**listAdsInstagramAccounts()**](AdAccountsApi.md#listAdsInstagramAccounts) | **GET** /v1/ads/instagram-accounts | List Instagram ad identities |
+| [**listAdsInstagramPosts()**](AdAccountsApi.md#listAdsInstagramPosts) | **GET** /v1/ads/instagram-posts | List Instagram posts to boost |
 | [**listAdvertisableApplications()**](AdAccountsApi.md#listAdvertisableApplications) | **GET** /v1/ads/advertisable-applications | List advertisable apps |
 | [**listCustomConversions()**](AdAccountsApi.md#listCustomConversions) | **GET** /v1/accounts/{accountId}/custom-conversions | List custom conversions |
 | [**listHighDemandPeriods()**](AdAccountsApi.md#listHighDemandPeriods) | **GET** /v1/ads/high-demand-periods | List high-demand periods |
@@ -1874,6 +1875,74 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListAdsInstagramAccounts200Response**](../Model/ListAdsInstagramAccounts200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listAdsInstagramPosts()`
+
+```php
+listAdsInstagramPosts($account_id, $ad_account_id, $ig_user_id, $limit, $after): \Zernio\Model\ListAdsInstagramPosts200Response
+```
+
+List Instagram posts to boost
+
+Lists the media of the Instagram account this Meta connection can reach, so an existing Instagram post can be boosted without connecting the Instagram account separately. Each `posts[].id` is the existing-post id to send as `platformPostId` when creating the ad; Meta turns it into `source_instagram_media_id` on the creative. Identity resolution reuses the same resolver as `/v1/ads/instagram-accounts`. `igUserId` is always checked against the identities the connection can reach and is never trusted as sent. When no identity is reachable the endpoint fails instead of returning an empty list, and the two causes stay apart: `403 reconnect_required` means the connection predates Instagram access (Meta then omits `instagram_business_account` from the Page read rather than erroring, so it looks identical to having no data) and the account must be reconnected granting Instagram access, while `422 instagram_business_account_unresolved` means the Page genuinely has no Instagram professional account linked.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio Meta Ads, Facebook or Instagram SocialAccount ID.
+$ad_account_id = 'ad_account_id_example'; // string | Meta ad account ID including the act_ prefix. Narrows identity resolution to the Instagram accounts reachable from this ad account.
+$ig_user_id = 'ig_user_id_example'; // string | Instagram identity to list. Must be one this connection can reach, otherwise the request is rejected with a 400.
+$limit = 25; // int | Number of posts to return per page.
+$after = 'after_example'; // string | Opaque Meta cursor from a previous response's paging.after.
+
+try {
+    $result = $apiInstance->listAdsInstagramPosts($account_id, $ad_account_id, $ig_user_id, $limit, $after);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->listAdsInstagramPosts: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio Meta Ads, Facebook or Instagram SocialAccount ID. | |
+| **ad_account_id** | **string**| Meta ad account ID including the act_ prefix. Narrows identity resolution to the Instagram accounts reachable from this ad account. | [optional] |
+| **ig_user_id** | **string**| Instagram identity to list. Must be one this connection can reach, otherwise the request is rejected with a 400. | [optional] |
+| **limit** | **int**| Number of posts to return per page. | [optional] [default to 25] |
+| **after** | **string**| Opaque Meta cursor from a previous response&#39;s paging.after. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListAdsInstagramPosts200Response**](../Model/ListAdsInstagramPosts200Response.md)
 
 ### Authorization
 
