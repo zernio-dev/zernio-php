@@ -1,6 +1,6 @@
 # Zernio\IMessageApi
 
-Two-way iMessage on provider-provisioned senders. Register a sender on a profile, then send and receive through the inbox conversation endpoints (&#39;platform: imessage&#39;). Replies only; broadcasts are not supported on this channel. Private beta: returns 403 unless your account is enrolled.
+Two-way iMessage on provider-provisioned senders. Order or register a sender on a profile, then send and receive through the inbox conversation endpoints (&#39;platform: imessage&#39;).
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
