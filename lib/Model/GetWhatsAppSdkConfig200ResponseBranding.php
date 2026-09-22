@@ -244,6 +244,7 @@ class GetWhatsAppSdkConfig200ResponseBranding implements ModelInterface, ArrayAc
 
     public const LANGUAGE_EN = 'en';
     public const LANGUAGE_ES = 'es';
+    public const LANGUAGE_PT_BR = 'pt-BR';
 
     /**
      * Gets allowable values of the enum
@@ -255,6 +256,7 @@ class GetWhatsAppSdkConfig200ResponseBranding implements ModelInterface, ArrayAc
         return [
             self::LANGUAGE_EN,
             self::LANGUAGE_ES,
+            self::LANGUAGE_PT_BR,
         ];
     }
 

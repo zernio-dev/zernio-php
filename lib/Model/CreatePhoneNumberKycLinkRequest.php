@@ -61,6 +61,7 @@ class CreatePhoneNumberKycLinkRequest implements ModelInterface, ArrayAccess, \J
         'profile_id' => 'string',
         'country' => 'string',
         'area_code' => 'string',
+        'language' => 'string',
         'branding' => '\Zernio\Model\CreatePhoneNumberKycLinkRequestBranding',
         'redirect_url' => 'string'
     ];
@@ -76,6 +77,7 @@ class CreatePhoneNumberKycLinkRequest implements ModelInterface, ArrayAccess, \J
         'profile_id' => null,
         'country' => null,
         'area_code' => null,
+        'language' => null,
         'branding' => null,
         'redirect_url' => 'uri'
     ];
@@ -89,6 +91,7 @@ class CreatePhoneNumberKycLinkRequest implements ModelInterface, ArrayAccess, \J
         'profile_id' => false,
         'country' => false,
         'area_code' => false,
+        'language' => false,
         'branding' => false,
         'redirect_url' => false
     ];
@@ -182,6 +185,7 @@ class CreatePhoneNumberKycLinkRequest implements ModelInterface, ArrayAccess, \J
         'profile_id' => 'profileId',
         'country' => 'country',
         'area_code' => 'areaCode',
+        'language' => 'language',
         'branding' => 'branding',
         'redirect_url' => 'redirect_url'
     ];
@@ -195,6 +199,7 @@ class CreatePhoneNumberKycLinkRequest implements ModelInterface, ArrayAccess, \J
         'profile_id' => 'setProfileId',
         'country' => 'setCountry',
         'area_code' => 'setAreaCode',
+        'language' => 'setLanguage',
         'branding' => 'setBranding',
         'redirect_url' => 'setRedirectUrl'
     ];
@@ -208,6 +213,7 @@ class CreatePhoneNumberKycLinkRequest implements ModelInterface, ArrayAccess, \J
         'profile_id' => 'getProfileId',
         'country' => 'getCountry',
         'area_code' => 'getAreaCode',
+        'language' => 'getLanguage',
         'branding' => 'getBranding',
         'redirect_url' => 'getRedirectUrl'
     ];
@@ -253,6 +259,23 @@ class CreatePhoneNumberKycLinkRequest implements ModelInterface, ArrayAccess, \J
         return self::$openAPIModelName;
     }
 
+    public const LANGUAGE_EN = 'en';
+    public const LANGUAGE_ES = 'es';
+    public const LANGUAGE_PT_BR = 'pt-BR';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getLanguageAllowableValues()
+    {
+        return [
+            self::LANGUAGE_EN,
+            self::LANGUAGE_ES,
+            self::LANGUAGE_PT_BR,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -272,6 +295,7 @@ class CreatePhoneNumberKycLinkRequest implements ModelInterface, ArrayAccess, \J
         $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('country', $data ?? [], null);
         $this->setIfExists('area_code', $data ?? [], null);
+        $this->setIfExists('language', $data ?? [], null);
         $this->setIfExists('branding', $data ?? [], null);
         $this->setIfExists('redirect_url', $data ?? [], null);
     }
@@ -319,6 +343,15 @@ class CreatePhoneNumberKycLinkRequest implements ModelInterface, ArrayAccess, \J
 
         if (!is_null($this->container['area_code']) && !preg_match("/^\\d{1,4}$/", $this->container['area_code'])) {
             $invalidProperties[] = "invalid value for 'area_code', must be conform to the pattern /^\\d{1,4}$/.";
+        }
+
+        $allowedValues = $this->getLanguageAllowableValues();
+        if (!is_null($this->container['language']) && !in_array($this->container['language'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'language', must be one of '%s'",
+                $this->container['language'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -425,6 +458,43 @@ class CreatePhoneNumberKycLinkRequest implements ModelInterface, ArrayAccess, \J
         }
 
         $this->container['area_code'] = $area_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets language
+     *
+     * @return string|null
+     */
+    public function getLanguage()
+    {
+        return $this->container['language'];
+    }
+
+    /**
+     * Sets language
+     *
+     * @param string|null $language Language of the hosted page: its copy, the carrier requirement texts (translated once per country and cached), the pre-submit review notes and the status emails to the end customer. Omitted: the browser language of the end customer, falling back to English. The end customer can also switch with `?lang=` on the page.
+     *
+     * @return self
+     */
+    public function setLanguage($language)
+    {
+        if (is_null($language)) {
+            throw new \InvalidArgumentException('non-nullable language cannot be null');
+        }
+        $allowedValues = $this->getLanguageAllowableValues();
+        if (!in_array($language, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'language', must be one of '%s'",
+                    $language,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['language'] = $language;
 
         return $this;
     }
