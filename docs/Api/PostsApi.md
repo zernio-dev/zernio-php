@@ -327,12 +327,12 @@ try {
 ## `listPosts()`
 
 ```php
-listPosts($page, $limit, $source, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by, $account_id): \Zernio\Model\PostsListResponse
+listPosts($page, $limit, $offset, $source, $status, $platform, $profile_id, $created_by, $from_date, $to_date, $date_from, $date_to, $include_hidden, $search, $sort_by, $account_id): \Zernio\Model\PostsListResponse
 ```
 
 List posts
 
-Returns a paginated list of posts. Published posts include platformPostUrl with the public URL on each platform.
+Returns a paginated list of posts. Published posts include platformPostUrl with the public URL on each platform. A query parameter that is not listed here returns 400 naming it and the accepted parameters, so a misspelled filter never silently returns the unfiltered list.
 
 ### Example
 
@@ -353,20 +353,23 @@ $apiInstance = new Zernio\Api\PostsApi(
 );
 $page = 1; // int | Page number (1-based)
 $limit = 10; // int | Page size. Values above the maximum return 400 rather than being clamped.
+$offset = 56; // int | Row offset. Takes precedence over page when both are sent; the response pagination.page is derived from it.
 $source = 'zernio'; // string | Which collection to read. `zernio` (default) returns posts authored through Zernio. `external` returns posts synced from the platform (existing/historical posts that were published outside Zernio). Combine with `accountId` and paginate via `page`/`limit` to walk the full synced history (we keep up to the last ~12 months per account).
 $status = 'status_example'; // string
 $platform = twitter; // string
 $profile_id = 'profile_id_example'; // string | Filter posts to a specific profile (24-char hex ObjectId). Omit it, or send `all` or an empty value, to list posts across every profile.
 $created_by = 'created_by_example'; // string | Filter posts to those created by a specific team user (24-char hex ObjectId).
-$date_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Zero-padded YYYY-MM-DD, or a full ISO 8601 datetime. An empty value means no date filter; any other malformed value returns 400.
-$date_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Zero-padded YYYY-MM-DD, or a full ISO 8601 datetime. An empty value means no date filter; any other malformed value returns 400.
+$from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Zero-padded YYYY-MM-DD, or a full ISO 8601 datetime. An empty value means no date filter; any other malformed value returns 400. The same name the other date-window filters use (ads, analytics).
+$to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Zero-padded YYYY-MM-DD, or a full ISO 8601 datetime. An empty value means no date filter; any other malformed value returns 400. The same name the other date-window filters use (ads, analytics).
+$date_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Alias of fromDate, kept for existing callers
+$date_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Alias of toDate, kept for existing callers
 $include_hidden = false; // bool
 $search = 'search_example'; // string | Search posts by text content.
 $sort_by = 'scheduled-desc'; // string | Sort order for results.
 $account_id = 'account_id_example'; // string | Filter posts to those published via a specific account (24-char hex ObjectId).
 
 try {
-    $result = $apiInstance->listPosts($page, $limit, $source, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by, $account_id);
+    $result = $apiInstance->listPosts($page, $limit, $offset, $source, $status, $platform, $profile_id, $created_by, $from_date, $to_date, $date_from, $date_to, $include_hidden, $search, $sort_by, $account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PostsApi->listPosts: ', $e->getMessage(), PHP_EOL;
@@ -379,13 +382,16 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **page** | **int**| Page number (1-based) | [optional] [default to 1] |
 | **limit** | **int**| Page size. Values above the maximum return 400 rather than being clamped. | [optional] [default to 10] |
+| **offset** | **int**| Row offset. Takes precedence over page when both are sent; the response pagination.page is derived from it. | [optional] |
 | **source** | **string**| Which collection to read. &#x60;zernio&#x60; (default) returns posts authored through Zernio. &#x60;external&#x60; returns posts synced from the platform (existing/historical posts that were published outside Zernio). Combine with &#x60;accountId&#x60; and paginate via &#x60;page&#x60;/&#x60;limit&#x60; to walk the full synced history (we keep up to the last ~12 months per account). | [optional] [default to &#39;zernio&#39;] |
 | **status** | **string**|  | [optional] |
 | **platform** | **string**|  | [optional] |
 | **profile_id** | **string**| Filter posts to a specific profile (24-char hex ObjectId). Omit it, or send &#x60;all&#x60; or an empty value, to list posts across every profile. | [optional] |
 | **created_by** | **string**| Filter posts to those created by a specific team user (24-char hex ObjectId). | [optional] |
-| **date_from** | **\DateTime**| Zero-padded YYYY-MM-DD, or a full ISO 8601 datetime. An empty value means no date filter; any other malformed value returns 400. | [optional] |
-| **date_to** | **\DateTime**| Zero-padded YYYY-MM-DD, or a full ISO 8601 datetime. An empty value means no date filter; any other malformed value returns 400. | [optional] |
+| **from_date** | **\DateTime**| Zero-padded YYYY-MM-DD, or a full ISO 8601 datetime. An empty value means no date filter; any other malformed value returns 400. The same name the other date-window filters use (ads, analytics). | [optional] |
+| **to_date** | **\DateTime**| Zero-padded YYYY-MM-DD, or a full ISO 8601 datetime. An empty value means no date filter; any other malformed value returns 400. The same name the other date-window filters use (ads, analytics). | [optional] |
+| **date_from** | **\DateTime**| Alias of fromDate, kept for existing callers | [optional] |
+| **date_to** | **\DateTime**| Alias of toDate, kept for existing callers | [optional] |
 | **include_hidden** | **bool**|  | [optional] [default to false] |
 | **search** | **string**| Search posts by text content. | [optional] |
 | **sort_by** | **string**| Sort order for results. | [optional] [default to &#39;scheduled-desc&#39;] |
