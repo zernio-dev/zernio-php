@@ -139,7 +139,7 @@ try {
 ## `getTweet()`
 
 ```php
-getTweet($account_id, $id): \Zernio\Model\GetTweet200Response
+getTweet($account_id, $tweet_id, $id): \Zernio\Model\GetTweet200Response
 ```
 
 Look up a tweet
@@ -164,10 +164,11 @@ $apiInstance = new Zernio\Api\TwitterEngagementApi(
     $config
 );
 $account_id = 'account_id_example'; // string | The account ID whose X token is used for the lookup
-$id = 'id_example'; // string | Numeric tweet ID or a tweet URL (e.g. https://x.com/user/status/123...)
+$tweet_id = 'tweet_id_example'; // string | Numeric tweet ID or a tweet URL (e.g. https://x.com/user/status/123...). The same name the other /v1/twitter operations use (retweet, bookmark).
+$id = 'id_example'; // string | Alias of tweetId, kept for existing callers
 
 try {
-    $result = $apiInstance->getTweet($account_id, $id);
+    $result = $apiInstance->getTweet($account_id, $tweet_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TwitterEngagementApi->getTweet: ', $e->getMessage(), PHP_EOL;
@@ -179,7 +180,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The account ID whose X token is used for the lookup | |
-| **id** | **string**| Numeric tweet ID or a tweet URL (e.g. https://x.com/user/status/123...) | |
+| **tweet_id** | **string**| Numeric tweet ID or a tweet URL (e.g. https://x.com/user/status/123...). The same name the other /v1/twitter operations use (retweet, bookmark). | |
+| **id** | **string**| Alias of tweetId, kept for existing callers | [optional] |
 
 ### Return type
 
