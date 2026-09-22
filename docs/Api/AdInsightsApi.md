@@ -333,7 +333,7 @@ try {
 ## `getAdsSearchTerms()`
 
 ```php
-getAdsSearchTerms($account_id, $customer_id, $from_date, $to_date, $campaign_id, $ad_group_id, $page_token): \Zernio\Model\GetAdsSearchTerms200Response
+getAdsSearchTerms($account_id, $customer_id, $from_date, $to_date, $campaign_id, $ad_set_id, $ad_group_id, $page_token): \Zernio\Model\GetAdsSearchTerms200Response
 ```
 
 Google Ads search terms report
@@ -362,11 +362,12 @@ $customer_id = 'customer_id_example'; // string | Numeric Google Ads customer id
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Defaults to 30 days ago.
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Defaults to today.
 $campaign_id = 'campaign_id_example'; // string | Numeric Google campaign id filter.
-$ad_group_id = 'ad_group_id_example'; // string | Numeric Google ad group id filter.
+$ad_set_id = 'ad_set_id_example'; // string | Platform ad set ID (Google ad group). Same value as adSetId on listAdKeywords and /ad-sets/{adSetId}/assets.
+$ad_group_id = 'ad_group_id_example'; // string | Alias of adSetId, kept for existing callers.
 $page_token = 'page_token_example'; // string | Cursor from paging.nextPageToken of the previous page.
 
 try {
-    $result = $apiInstance->getAdsSearchTerms($account_id, $customer_id, $from_date, $to_date, $campaign_id, $ad_group_id, $page_token);
+    $result = $apiInstance->getAdsSearchTerms($account_id, $customer_id, $from_date, $to_date, $campaign_id, $ad_set_id, $ad_group_id, $page_token);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdInsightsApi->getAdsSearchTerms: ', $e->getMessage(), PHP_EOL;
@@ -382,7 +383,8 @@ try {
 | **from_date** | **\DateTime**| Defaults to 30 days ago. | [optional] |
 | **to_date** | **\DateTime**| Defaults to today. | [optional] |
 | **campaign_id** | **string**| Numeric Google campaign id filter. | [optional] |
-| **ad_group_id** | **string**| Numeric Google ad group id filter. | [optional] |
+| **ad_set_id** | **string**| Platform ad set ID (Google ad group). Same value as adSetId on listAdKeywords and /ad-sets/{adSetId}/assets. | [optional] |
+| **ad_group_id** | **string**| Alias of adSetId, kept for existing callers. | [optional] |
 | **page_token** | **string**| Cursor from paging.nextPageToken of the previous page. | [optional] |
 
 ### Return type
