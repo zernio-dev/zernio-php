@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **location_name** | **string** | Human-readable Google Business Profile location display name. Google Business Profile only; absent for other platforms. | [optional]
 **reviewer** | [**\Zernio\Model\ListInboxReviews200ResponseDataInnerReviewer**](ListInboxReviews200ResponseDataInnerReviewer.md) |  | [optional]
 **rating** | **int** |  | [optional]
+**recommendation_type** | **string** | Facebook recommendation: positive means recommends, negative means does not recommend. Null or absent when unavailable; absent for other platforms. Independent of the numeric rating. | [optional]
 **text** | **string** |  | [optional]
 **created** | **\DateTime** |  | [optional]
 **has_reply** | **bool** |  | [optional]
