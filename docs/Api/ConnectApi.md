@@ -475,7 +475,7 @@ $apiInstance = new Zernio\Api\ConnectApi(
     new GuzzleHttp\Client(),
     $config
 );
-$connect_bluesky_credentials_request = {"identifier":"yourhandle.bsky.social","appPassword":"xxxx-xxxx-xxxx-xxxx","state":"6507a1b2c3d4e5f6a7b8c9d0-6507a1b2c3d4e5f6a7b8c9d1","redirectUri":"https://yourapp.com/connected"}; // \Zernio\Model\ConnectBlueskyCredentialsRequest
+$connect_bluesky_credentials_request = {"identifier":"yourhandle.bsky.social","appPassword":"xxxx-xxxx-xxxx-xxxx","state":"6507a1b2c3d4e5f6a7b8c9d0-6507a1b2c3d4e5f6a7b8c9d1","redirect_url":"https://yourapp.com/connected"}; // \Zernio\Model\ConnectBlueskyCredentialsRequest
 
 try {
     $result = $apiInstance->connectBlueskyCredentials($connect_bluesky_credentials_request);
@@ -594,7 +594,7 @@ $apiInstance = new Zernio\Api\ConnectApi(
     new GuzzleHttp\Client(),
     $config
 );
-$connect_open_ai_ads_credentials_request = {"apiKey":"sk-ads-xxxxxxxxxxxxxxxxxxxx","profileId":"6507a1b2c3d4e5f6a7b8c9d0"}; // \Zernio\Model\ConnectOpenAIAdsCredentialsRequest
+$connect_open_ai_ads_credentials_request = {"apiKey":"sk-ads-xxxxxxxxxxxxxxxxxxxx","profileId":"6507a1b2c3d4e5f6a7b8c9d0","redirect_url":"https://yourapp.com/connected"}; // \Zernio\Model\ConnectOpenAIAdsCredentialsRequest
 
 try {
     $result = $apiInstance->connectOpenAIAdsCredentials($connect_open_ai_ads_credentials_request);
