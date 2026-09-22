@@ -82,7 +82,7 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$add_account_callouts_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","customerId":"1234567890","callouts":["Fast setup"]}; // \Zernio\Model\AddAccountCalloutsRequest
+$add_account_callouts_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","adAccountId":"1234567890","callouts":["Fast setup"]}; // \Zernio\Model\AddAccountCalloutsRequest
 
 try {
     $result = $apiInstance->addAccountCallouts($add_account_callouts_request);
@@ -142,7 +142,7 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$add_account_sitelinks_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","customerId":"1234567890","sitelinks":[{"text":"Pricing","linkUrl":"https://zernio.com/pricing"}]}; // \Zernio\Model\AddAccountSitelinksRequest
+$add_account_sitelinks_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","adAccountId":"1234567890","sitelinks":[{"text":"Pricing","linkUrl":"https://zernio.com/pricing"}]}; // \Zernio\Model\AddAccountSitelinksRequest
 
 try {
     $result = $apiInstance->addAccountSitelinks($add_account_sitelinks_request);
@@ -202,7 +202,7 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$add_account_structured_snippets_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","customerId":"1234567890","structuredSnippets":[{"header":"Types","values":["Scheduling","Analytics","Messaging"]}]}; // \Zernio\Model\AddAccountStructuredSnippetsRequest
+$add_account_structured_snippets_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","adAccountId":"1234567890","structuredSnippets":[{"header":"Types","values":["Scheduling","Analytics","Messaging"]}]}; // \Zernio\Model\AddAccountStructuredSnippetsRequest
 
 try {
     $result = $apiInstance->addAccountStructuredSnippets($add_account_structured_snippets_request);
@@ -322,7 +322,7 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_ad_negative_keyword_list_request = {"accountId":"69ce75d483e990e1c01ccfe4","customerId":"9122445560","name":"Excluded searches","keywords":["free",{"text":"jobs","matchType":"phrase"}]}; // \Zernio\Model\CreateAdNegativeKeywordListRequest
+$create_ad_negative_keyword_list_request = {"accountId":"69ce75d483e990e1c01ccfe4","adAccountId":"9122445560","name":"Excluded searches","keywords":["free",{"text":"jobs","matchType":"phrase"}]}; // \Zernio\Model\CreateAdNegativeKeywordListRequest
 
 try {
     $result = $apiInstance->createAdNegativeKeywordList($create_ad_negative_keyword_list_request);
@@ -606,7 +606,7 @@ try {
 ## `deleteAdNegativeKeywordList()`
 
 ```php
-deleteAdNegativeKeywordList($list_id, $account_id, $customer_id, $platform): \Zernio\Model\DeleteAdNegativeKeywordList200Response
+deleteAdNegativeKeywordList($list_id, $account_id, $ad_account_id, $customer_id, $platform): \Zernio\Model\DeleteAdNegativeKeywordList200Response
 ```
 
 Delete a negative keyword list
@@ -632,11 +632,12 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
 );
 $list_id = 'list_id_example'; // string
 $account_id = 'account_id_example'; // string
+$ad_account_id = 'ad_account_id_example'; // string
 $customer_id = 'customer_id_example'; // string
 $platform = 'platform_example'; // string
 
 try {
-    $result = $apiInstance->deleteAdNegativeKeywordList($list_id, $account_id, $customer_id, $platform);
+    $result = $apiInstance->deleteAdNegativeKeywordList($list_id, $account_id, $ad_account_id, $customer_id, $platform);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->deleteAdNegativeKeywordList: ', $e->getMessage(), PHP_EOL;
@@ -649,6 +650,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **list_id** | **string**|  | |
 | **account_id** | **string**|  | |
+| **ad_account_id** | **string**|  | [optional] |
 | **customer_id** | **string**|  | [optional] |
 | **platform** | **string**|  | [optional] |
 
@@ -866,7 +868,7 @@ try {
 ## `getAdNegativeKeywordList()`
 
 ```php
-getAdNegativeKeywordList($list_id, $account_id, $customer_id, $platform): \Zernio\Model\GetAdNegativeKeywordList200Response
+getAdNegativeKeywordList($list_id, $account_id, $ad_account_id, $customer_id, $platform): \Zernio\Model\GetAdNegativeKeywordList200Response
 ```
 
 Get a negative keyword list
@@ -892,11 +894,12 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
 );
 $list_id = 'list_id_example'; // string
 $account_id = 'account_id_example'; // string
+$ad_account_id = 'ad_account_id_example'; // string
 $customer_id = 'customer_id_example'; // string
 $platform = 'platform_example'; // string
 
 try {
-    $result = $apiInstance->getAdNegativeKeywordList($list_id, $account_id, $customer_id, $platform);
+    $result = $apiInstance->getAdNegativeKeywordList($list_id, $account_id, $ad_account_id, $customer_id, $platform);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->getAdNegativeKeywordList: ', $e->getMessage(), PHP_EOL;
@@ -909,6 +912,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **list_id** | **string**|  | |
 | **account_id** | **string**|  | |
+| **ad_account_id** | **string**|  | [optional] |
 | **customer_id** | **string**|  | [optional] |
 | **platform** | **string**|  | [optional] |
 
@@ -1322,7 +1326,7 @@ try {
 ## `listAccountCallouts()`
 
 ```php
-listAccountCallouts($account_id, $customer_id): \Zernio\Model\ListAccountCallouts200Response
+listAccountCallouts($account_id, $ad_account_id, $customer_id): \Zernio\Model\ListAccountCallouts200Response
 ```
 
 List account callouts
@@ -1347,10 +1351,11 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     $config
 );
 $account_id = 'account_id_example'; // string
+$ad_account_id = 'ad_account_id_example'; // string
 $customer_id = 'customer_id_example'; // string
 
 try {
-    $result = $apiInstance->listAccountCallouts($account_id, $customer_id);
+    $result = $apiInstance->listAccountCallouts($account_id, $ad_account_id, $customer_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->listAccountCallouts: ', $e->getMessage(), PHP_EOL;
@@ -1362,6 +1367,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
+| **ad_account_id** | **string**|  | [optional] |
 | **customer_id** | **string**|  | [optional] |
 
 ### Return type
@@ -1384,7 +1390,7 @@ try {
 ## `listAccountSitelinks()`
 
 ```php
-listAccountSitelinks($account_id, $customer_id): \Zernio\Model\ListAccountSitelinks200Response
+listAccountSitelinks($account_id, $ad_account_id, $customer_id): \Zernio\Model\ListAccountSitelinks200Response
 ```
 
 List account sitelinks
@@ -1409,10 +1415,11 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     $config
 );
 $account_id = 'account_id_example'; // string
+$ad_account_id = 'ad_account_id_example'; // string
 $customer_id = 'customer_id_example'; // string
 
 try {
-    $result = $apiInstance->listAccountSitelinks($account_id, $customer_id);
+    $result = $apiInstance->listAccountSitelinks($account_id, $ad_account_id, $customer_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->listAccountSitelinks: ', $e->getMessage(), PHP_EOL;
@@ -1424,6 +1431,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
+| **ad_account_id** | **string**|  | [optional] |
 | **customer_id** | **string**|  | [optional] |
 
 ### Return type
@@ -1446,7 +1454,7 @@ try {
 ## `listAccountStructuredSnippets()`
 
 ```php
-listAccountStructuredSnippets($account_id, $customer_id): \Zernio\Model\ListAccountStructuredSnippets200Response
+listAccountStructuredSnippets($account_id, $ad_account_id, $customer_id): \Zernio\Model\ListAccountStructuredSnippets200Response
 ```
 
 List account snippets
@@ -1471,10 +1479,11 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     $config
 );
 $account_id = 'account_id_example'; // string
+$ad_account_id = 'ad_account_id_example'; // string
 $customer_id = 'customer_id_example'; // string
 
 try {
-    $result = $apiInstance->listAccountStructuredSnippets($account_id, $customer_id);
+    $result = $apiInstance->listAccountStructuredSnippets($account_id, $ad_account_id, $customer_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->listAccountStructuredSnippets: ', $e->getMessage(), PHP_EOL;
@@ -1486,6 +1495,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
+| **ad_account_id** | **string**|  | [optional] |
 | **customer_id** | **string**|  | [optional] |
 
 ### Return type
@@ -1638,7 +1648,7 @@ try {
 ## `listAdNegativeKeywordLists()`
 
 ```php
-listAdNegativeKeywordLists($account_id, $customer_id, $platform): \Zernio\Model\ListAdNegativeKeywordLists200Response
+listAdNegativeKeywordLists($account_id, $ad_account_id, $customer_id, $platform): \Zernio\Model\ListAdNegativeKeywordLists200Response
 ```
 
 List negative keyword lists
@@ -1663,11 +1673,12 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     $config
 );
 $account_id = 'account_id_example'; // string
+$ad_account_id = 'ad_account_id_example'; // string
 $customer_id = 'customer_id_example'; // string
 $platform = 'platform_example'; // string
 
 try {
-    $result = $apiInstance->listAdNegativeKeywordLists($account_id, $customer_id, $platform);
+    $result = $apiInstance->listAdNegativeKeywordLists($account_id, $ad_account_id, $customer_id, $platform);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->listAdNegativeKeywordLists: ', $e->getMessage(), PHP_EOL;
@@ -1679,6 +1690,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
+| **ad_account_id** | **string**|  | [optional] |
 | **customer_id** | **string**|  | [optional] |
 | **platform** | **string**|  | [optional] |
 
@@ -2216,7 +2228,7 @@ try {
 ## `listTikTokAdPixels()`
 
 ```php
-listTikTokAdPixels($account_id, $advertiser_id, $code): \Zernio\Model\ListTikTokAdPixels200Response
+listTikTokAdPixels($account_id, $ad_account_id, $advertiser_id, $code): \Zernio\Model\ListTikTokAdPixels200Response
 ```
 
 List TikTok ad pixels
@@ -2241,11 +2253,12 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     $config
 );
 $account_id = 'account_id_example'; // string | Zernio SocialAccount ID.
-$advertiser_id = 'advertiser_id_example'; // string | Advertiser belonging to this connection.
+$ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID (TikTok advertiser id, digits only). Defaults to the first advertiser on the connection.
+$advertiser_id = 'advertiser_id_example'; // string | Alias of adAccountId, kept for existing callers
 $code = 'code_example'; // string | Filter by a Pixel Code.
 
 try {
-    $result = $apiInstance->listTikTokAdPixels($account_id, $advertiser_id, $code);
+    $result = $apiInstance->listTikTokAdPixels($account_id, $ad_account_id, $advertiser_id, $code);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->listTikTokAdPixels: ', $e->getMessage(), PHP_EOL;
@@ -2257,7 +2270,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Zernio SocialAccount ID. | |
-| **advertiser_id** | **string**| Advertiser belonging to this connection. | [optional] |
+| **ad_account_id** | **string**| Platform ad account ID (TikTok advertiser id, digits only). Defaults to the first advertiser on the connection. | [optional] |
+| **advertiser_id** | **string**| Alias of adAccountId, kept for existing callers | [optional] |
 | **code** | **string**| Filter by a Pixel Code. | [optional] |
 
 ### Return type
@@ -2370,7 +2384,7 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$remove_account_callout_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","customerId":"1234567890","assetId":"123"}; // \Zernio\Model\RemoveAccountCalloutRequest
+$remove_account_callout_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","adAccountId":"1234567890","assetId":"123"}; // \Zernio\Model\RemoveAccountCalloutRequest
 
 try {
     $result = $apiInstance->removeAccountCallout($remove_account_callout_request);
@@ -2430,7 +2444,7 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$remove_account_callout_request = {accountId=64b1f0c8a1b2c3d4e5f60718, customerId=1234567890, assetId=123}; // \Zernio\Model\RemoveAccountCalloutRequest
+$remove_account_callout_request = {accountId=64b1f0c8a1b2c3d4e5f60718, adAccountId=1234567890, assetId=123}; // \Zernio\Model\RemoveAccountCalloutRequest
 
 try {
     $result = $apiInstance->removeAccountSitelink($remove_account_callout_request);
@@ -2490,7 +2504,7 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$remove_account_callout_request = {accountId=64b1f0c8a1b2c3d4e5f60718, customerId=1234567890, assetId=123}; // \Zernio\Model\RemoveAccountCalloutRequest
+$remove_account_callout_request = {accountId=64b1f0c8a1b2c3d4e5f60718, adAccountId=1234567890, assetId=123}; // \Zernio\Model\RemoveAccountCalloutRequest
 
 try {
     $result = $apiInstance->removeAccountStructuredSnippet($remove_account_callout_request);
@@ -2551,7 +2565,7 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     $config
 );
 $list_id = 'list_id_example'; // string
-$replace_ad_negative_keyword_list_keywords_request = {"accountId":"69ce75d483e990e1c01ccfe4","customerId":"9122445560","keywords":["free",{"text":"jobs","matchType":"phrase"}]}; // \Zernio\Model\ReplaceAdNegativeKeywordListKeywordsRequest
+$replace_ad_negative_keyword_list_keywords_request = {"accountId":"69ce75d483e990e1c01ccfe4","adAccountId":"9122445560","keywords":["free",{"text":"jobs","matchType":"phrase"}]}; // \Zernio\Model\ReplaceAdNegativeKeywordListKeywordsRequest
 
 try {
     $result = $apiInstance->replaceAdNegativeKeywordListKeywords($list_id, $replace_ad_negative_keyword_list_keywords_request);
@@ -2680,7 +2694,7 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$update_account_callouts_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","customerId":"1234567890","updates":[{"assetResourceName":"customers/1234567890/assets/123","calloutAsset":{"calloutText":"Simple integration"}}]}; // \Zernio\Model\UpdateAccountCalloutsRequest
+$update_account_callouts_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","adAccountId":"1234567890","updates":[{"assetResourceName":"customers/1234567890/assets/123","calloutAsset":{"calloutText":"Simple integration"}}]}; // \Zernio\Model\UpdateAccountCalloutsRequest
 
 try {
     $result = $apiInstance->updateAccountCallouts($update_account_callouts_request);
@@ -2740,7 +2754,7 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$update_account_sitelinks_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","customerId":"1234567890","updates":[{"assetResourceName":"customers/1234567890/assets/123","sitelinkAsset":{"linkText":"Explore pricing"},"finalUrls":["https://zernio.com/pricing"]}]}; // \Zernio\Model\UpdateAccountSitelinksRequest
+$update_account_sitelinks_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","adAccountId":"1234567890","updates":[{"assetResourceName":"customers/1234567890/assets/123","sitelinkAsset":{"linkText":"Explore pricing"},"finalUrls":["https://zernio.com/pricing"]}]}; // \Zernio\Model\UpdateAccountSitelinksRequest
 
 try {
     $result = $apiInstance->updateAccountSitelinks($update_account_sitelinks_request);
@@ -2800,7 +2814,7 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$update_account_structured_snippets_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","customerId":"1234567890","updates":[{"assetResourceName":"customers/1234567890/assets/123","structuredSnippetAsset":{"header":"Types","values":["Scheduling","Reporting","Messaging"]}}]}; // \Zernio\Model\UpdateAccountStructuredSnippetsRequest
+$update_account_structured_snippets_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","adAccountId":"1234567890","updates":[{"assetResourceName":"customers/1234567890/assets/123","structuredSnippetAsset":{"header":"Types","values":["Scheduling","Reporting","Messaging"]}}]}; // \Zernio\Model\UpdateAccountStructuredSnippetsRequest
 
 try {
     $result = $apiInstance->updateAccountStructuredSnippets($update_account_structured_snippets_request);
@@ -2921,7 +2935,7 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     $config
 );
 $list_id = 'list_id_example'; // string
-$update_ad_negative_keyword_list_request = {"accountId":"69ce75d483e990e1c01ccfe4","customerId":"9122445560","name":"Excluded searches renamed"}; // \Zernio\Model\UpdateAdNegativeKeywordListRequest
+$update_ad_negative_keyword_list_request = {"accountId":"69ce75d483e990e1c01ccfe4","adAccountId":"9122445560","name":"Excluded searches renamed"}; // \Zernio\Model\UpdateAdNegativeKeywordListRequest
 
 try {
     $result = $apiInstance->updateAdNegativeKeywordList($list_id, $update_ad_negative_keyword_list_request);

@@ -7478,16 +7478,17 @@ class AdCampaignsApi
      * @param  string $campaign_id Numeric Google platform campaign id. (required)
      * @param  string $account_id Zernio Google Ads SocialAccount id: resolves the customer id + refresh token. (required)
      * @param  string $platform Required: campaign IDs are not globally unique. Only \&quot;google\&quot; is supported today. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Required when the connection has multiple Google Ads accounts; optional (and inferred) when it has only one. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple Google Ads accounts; optional (and inferred) when it has only one. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignBidding'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetCampaignBidding200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
-    public function getCampaignBidding($campaign_id, $account_id, $platform, $customer_id = null, string $contentType = self::contentTypes['getCampaignBidding'][0])
+    public function getCampaignBidding($campaign_id, $account_id, $platform, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['getCampaignBidding'][0])
     {
-        list($response) = $this->getCampaignBiddingWithHttpInfo($campaign_id, $account_id, $platform, $customer_id, $contentType);
+        list($response) = $this->getCampaignBiddingWithHttpInfo($campaign_id, $account_id, $platform, $ad_account_id, $customer_id, $contentType);
         return $response;
     }
 
@@ -7499,16 +7500,17 @@ class AdCampaignsApi
      * @param  string $campaign_id Numeric Google platform campaign id. (required)
      * @param  string $account_id Zernio Google Ads SocialAccount id: resolves the customer id + refresh token. (required)
      * @param  string $platform Required: campaign IDs are not globally unique. Only \&quot;google\&quot; is supported today. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Required when the connection has multiple Google Ads accounts; optional (and inferred) when it has only one. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple Google Ads accounts; optional (and inferred) when it has only one. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignBidding'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetCampaignBidding200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCampaignBiddingWithHttpInfo($campaign_id, $account_id, $platform, $customer_id = null, string $contentType = self::contentTypes['getCampaignBidding'][0])
+    public function getCampaignBiddingWithHttpInfo($campaign_id, $account_id, $platform, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['getCampaignBidding'][0])
     {
-        $request = $this->getCampaignBiddingRequest($campaign_id, $account_id, $platform, $customer_id, $contentType);
+        $request = $this->getCampaignBiddingRequest($campaign_id, $account_id, $platform, $ad_account_id, $customer_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7629,15 +7631,16 @@ class AdCampaignsApi
      * @param  string $campaign_id Numeric Google platform campaign id. (required)
      * @param  string $account_id Zernio Google Ads SocialAccount id: resolves the customer id + refresh token. (required)
      * @param  string $platform Required: campaign IDs are not globally unique. Only \&quot;google\&quot; is supported today. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Required when the connection has multiple Google Ads accounts; optional (and inferred) when it has only one. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple Google Ads accounts; optional (and inferred) when it has only one. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignBidding'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCampaignBiddingAsync($campaign_id, $account_id, $platform, $customer_id = null, string $contentType = self::contentTypes['getCampaignBidding'][0])
+    public function getCampaignBiddingAsync($campaign_id, $account_id, $platform, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['getCampaignBidding'][0])
     {
-        return $this->getCampaignBiddingAsyncWithHttpInfo($campaign_id, $account_id, $platform, $customer_id, $contentType)
+        return $this->getCampaignBiddingAsyncWithHttpInfo($campaign_id, $account_id, $platform, $ad_account_id, $customer_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7653,16 +7656,17 @@ class AdCampaignsApi
      * @param  string $campaign_id Numeric Google platform campaign id. (required)
      * @param  string $account_id Zernio Google Ads SocialAccount id: resolves the customer id + refresh token. (required)
      * @param  string $platform Required: campaign IDs are not globally unique. Only \&quot;google\&quot; is supported today. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Required when the connection has multiple Google Ads accounts; optional (and inferred) when it has only one. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple Google Ads accounts; optional (and inferred) when it has only one. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignBidding'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCampaignBiddingAsyncWithHttpInfo($campaign_id, $account_id, $platform, $customer_id = null, string $contentType = self::contentTypes['getCampaignBidding'][0])
+    public function getCampaignBiddingAsyncWithHttpInfo($campaign_id, $account_id, $platform, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['getCampaignBidding'][0])
     {
         $returnType = '\Zernio\Model\GetCampaignBidding200Response';
-        $request = $this->getCampaignBiddingRequest($campaign_id, $account_id, $platform, $customer_id, $contentType);
+        $request = $this->getCampaignBiddingRequest($campaign_id, $account_id, $platform, $ad_account_id, $customer_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7706,13 +7710,14 @@ class AdCampaignsApi
      * @param  string $campaign_id Numeric Google platform campaign id. (required)
      * @param  string $account_id Zernio Google Ads SocialAccount id: resolves the customer id + refresh token. (required)
      * @param  string $platform Required: campaign IDs are not globally unique. Only \&quot;google\&quot; is supported today. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Required when the connection has multiple Google Ads accounts; optional (and inferred) when it has only one. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple Google Ads accounts; optional (and inferred) when it has only one. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignBidding'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCampaignBiddingRequest($campaign_id, $account_id, $platform, $customer_id = null, string $contentType = self::contentTypes['getCampaignBidding'][0])
+    public function getCampaignBiddingRequest($campaign_id, $account_id, $platform, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['getCampaignBidding'][0])
     {
 
         // verify the required parameter 'campaign_id' is set
@@ -7735,6 +7740,7 @@ class AdCampaignsApi
                 'Missing the required parameter $platform when calling getCampaignBidding'
             );
         }
+
 
 
 
@@ -7762,6 +7768,15 @@ class AdCampaignsApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -8693,16 +8708,17 @@ class AdCampaignsApi
      *
      * @param  string $ad_set_id Numeric Google platform id. (required)
      * @param  string $account_id account_id (required)
-     * @param  string|null $customer_id customer_id (optional)
+     * @param  string|null $ad_account_id ad_account_id (optional)
+     * @param  string|null $customer_id customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdGroupAssets'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListAdGroupAssets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
-    public function listAdGroupAssets($ad_set_id, $account_id, $customer_id = null, string $contentType = self::contentTypes['listAdGroupAssets'][0])
+    public function listAdGroupAssets($ad_set_id, $account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listAdGroupAssets'][0])
     {
-        list($response) = $this->listAdGroupAssetsWithHttpInfo($ad_set_id, $account_id, $customer_id, $contentType);
+        list($response) = $this->listAdGroupAssetsWithHttpInfo($ad_set_id, $account_id, $ad_account_id, $customer_id, $contentType);
         return $response;
     }
 
@@ -8713,16 +8729,17 @@ class AdCampaignsApi
      *
      * @param  string $ad_set_id Numeric Google platform id. (required)
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdGroupAssets'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListAdGroupAssets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAdGroupAssetsWithHttpInfo($ad_set_id, $account_id, $customer_id = null, string $contentType = self::contentTypes['listAdGroupAssets'][0])
+    public function listAdGroupAssetsWithHttpInfo($ad_set_id, $account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listAdGroupAssets'][0])
     {
-        $request = $this->listAdGroupAssetsRequest($ad_set_id, $account_id, $customer_id, $contentType);
+        $request = $this->listAdGroupAssetsRequest($ad_set_id, $account_id, $ad_account_id, $customer_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8856,15 +8873,16 @@ class AdCampaignsApi
      *
      * @param  string $ad_set_id Numeric Google platform id. (required)
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdGroupAssets'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdGroupAssetsAsync($ad_set_id, $account_id, $customer_id = null, string $contentType = self::contentTypes['listAdGroupAssets'][0])
+    public function listAdGroupAssetsAsync($ad_set_id, $account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listAdGroupAssets'][0])
     {
-        return $this->listAdGroupAssetsAsyncWithHttpInfo($ad_set_id, $account_id, $customer_id, $contentType)
+        return $this->listAdGroupAssetsAsyncWithHttpInfo($ad_set_id, $account_id, $ad_account_id, $customer_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8879,16 +8897,17 @@ class AdCampaignsApi
      *
      * @param  string $ad_set_id Numeric Google platform id. (required)
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdGroupAssets'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdGroupAssetsAsyncWithHttpInfo($ad_set_id, $account_id, $customer_id = null, string $contentType = self::contentTypes['listAdGroupAssets'][0])
+    public function listAdGroupAssetsAsyncWithHttpInfo($ad_set_id, $account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listAdGroupAssets'][0])
     {
         $returnType = '\Zernio\Model\ListAdGroupAssets200Response';
-        $request = $this->listAdGroupAssetsRequest($ad_set_id, $account_id, $customer_id, $contentType);
+        $request = $this->listAdGroupAssetsRequest($ad_set_id, $account_id, $ad_account_id, $customer_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8931,13 +8950,14 @@ class AdCampaignsApi
      *
      * @param  string $ad_set_id Numeric Google platform id. (required)
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdGroupAssets'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAdGroupAssetsRequest($ad_set_id, $account_id, $customer_id = null, string $contentType = self::contentTypes['listAdGroupAssets'][0])
+    public function listAdGroupAssetsRequest($ad_set_id, $account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listAdGroupAssets'][0])
     {
 
         // verify the required parameter 'ad_set_id' is set
@@ -8960,6 +8980,10 @@ class AdCampaignsApi
             throw new \InvalidArgumentException("invalid value for \"account_id\" when calling AdCampaignsApi.listAdGroupAssets, must conform to the pattern /^[a-fA-F0-9]{24}$/.");
         }
         
+        if ($ad_account_id !== null && !preg_match("/^\\d+$/", $ad_account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"ad_account_id\" when calling AdCampaignsApi.listAdGroupAssets, must conform to the pattern /^\\d+$/.");
+        }
+        
         if ($customer_id !== null && !preg_match("/^\\d+$/", $customer_id)) {
             throw new \InvalidArgumentException("invalid value for \"customer_id\" when calling AdCampaignsApi.listAdGroupAssets, must conform to the pattern /^\\d+$/.");
         }
@@ -8980,6 +9004,15 @@ class AdCampaignsApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -10390,7 +10423,8 @@ class AdCampaignsApi
      * List portfolio bid strategies
      *
      * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  \DateTime|null $from_date Defaults to 30 days ago. (optional)
      * @param  \DateTime|null $to_date Defaults to today. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBidStrategies'] to see the possible values for this operation
@@ -10399,9 +10433,9 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListBidStrategies200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
-    public function listBidStrategies($account_id, $customer_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listBidStrategies'][0])
+    public function listBidStrategies($account_id, $ad_account_id = null, $customer_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listBidStrategies'][0])
     {
-        list($response) = $this->listBidStrategiesWithHttpInfo($account_id, $customer_id, $from_date, $to_date, $contentType);
+        list($response) = $this->listBidStrategiesWithHttpInfo($account_id, $ad_account_id, $customer_id, $from_date, $to_date, $contentType);
         return $response;
     }
 
@@ -10411,7 +10445,8 @@ class AdCampaignsApi
      * List portfolio bid strategies
      *
      * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  \DateTime|null $from_date Defaults to 30 days ago. (optional)
      * @param  \DateTime|null $to_date Defaults to today. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBidStrategies'] to see the possible values for this operation
@@ -10420,9 +10455,9 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListBidStrategies200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listBidStrategiesWithHttpInfo($account_id, $customer_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listBidStrategies'][0])
+    public function listBidStrategiesWithHttpInfo($account_id, $ad_account_id = null, $customer_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listBidStrategies'][0])
     {
-        $request = $this->listBidStrategiesRequest($account_id, $customer_id, $from_date, $to_date, $contentType);
+        $request = $this->listBidStrategiesRequest($account_id, $ad_account_id, $customer_id, $from_date, $to_date, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10555,7 +10590,8 @@ class AdCampaignsApi
      * List portfolio bid strategies
      *
      * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  \DateTime|null $from_date Defaults to 30 days ago. (optional)
      * @param  \DateTime|null $to_date Defaults to today. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBidStrategies'] to see the possible values for this operation
@@ -10563,9 +10599,9 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listBidStrategiesAsync($account_id, $customer_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listBidStrategies'][0])
+    public function listBidStrategiesAsync($account_id, $ad_account_id = null, $customer_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listBidStrategies'][0])
     {
-        return $this->listBidStrategiesAsyncWithHttpInfo($account_id, $customer_id, $from_date, $to_date, $contentType)
+        return $this->listBidStrategiesAsyncWithHttpInfo($account_id, $ad_account_id, $customer_id, $from_date, $to_date, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10579,7 +10615,8 @@ class AdCampaignsApi
      * List portfolio bid strategies
      *
      * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  \DateTime|null $from_date Defaults to 30 days ago. (optional)
      * @param  \DateTime|null $to_date Defaults to today. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBidStrategies'] to see the possible values for this operation
@@ -10587,10 +10624,10 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listBidStrategiesAsyncWithHttpInfo($account_id, $customer_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listBidStrategies'][0])
+    public function listBidStrategiesAsyncWithHttpInfo($account_id, $ad_account_id = null, $customer_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listBidStrategies'][0])
     {
         $returnType = '\Zernio\Model\ListBidStrategies200Response';
-        $request = $this->listBidStrategiesRequest($account_id, $customer_id, $from_date, $to_date, $contentType);
+        $request = $this->listBidStrategiesRequest($account_id, $ad_account_id, $customer_id, $from_date, $to_date, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10632,7 +10669,8 @@ class AdCampaignsApi
      * Create request for operation 'listBidStrategies'
      *
      * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  \DateTime|null $from_date Defaults to 30 days ago. (optional)
      * @param  \DateTime|null $to_date Defaults to today. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBidStrategies'] to see the possible values for this operation
@@ -10640,7 +10678,7 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listBidStrategiesRequest($account_id, $customer_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listBidStrategies'][0])
+    public function listBidStrategiesRequest($account_id, $ad_account_id = null, $customer_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listBidStrategies'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -10649,6 +10687,7 @@ class AdCampaignsApi
                 'Missing the required parameter $account_id when calling listBidStrategies'
             );
         }
+
 
 
 
@@ -10669,6 +10708,15 @@ class AdCampaignsApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -10765,16 +10813,17 @@ class AdCampaignsApi
      *
      * @param  string $campaign_id Numeric Google platform id. (required)
      * @param  string $account_id account_id (required)
-     * @param  string|null $customer_id customer_id (optional)
+     * @param  string|null $ad_account_id ad_account_id (optional)
+     * @param  string|null $customer_id customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCampaignAssets'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListCampaignAssets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
-    public function listCampaignAssets($campaign_id, $account_id, $customer_id = null, string $contentType = self::contentTypes['listCampaignAssets'][0])
+    public function listCampaignAssets($campaign_id, $account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listCampaignAssets'][0])
     {
-        list($response) = $this->listCampaignAssetsWithHttpInfo($campaign_id, $account_id, $customer_id, $contentType);
+        list($response) = $this->listCampaignAssetsWithHttpInfo($campaign_id, $account_id, $ad_account_id, $customer_id, $contentType);
         return $response;
     }
 
@@ -10785,16 +10834,17 @@ class AdCampaignsApi
      *
      * @param  string $campaign_id Numeric Google platform id. (required)
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCampaignAssets'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListCampaignAssets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listCampaignAssetsWithHttpInfo($campaign_id, $account_id, $customer_id = null, string $contentType = self::contentTypes['listCampaignAssets'][0])
+    public function listCampaignAssetsWithHttpInfo($campaign_id, $account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listCampaignAssets'][0])
     {
-        $request = $this->listCampaignAssetsRequest($campaign_id, $account_id, $customer_id, $contentType);
+        $request = $this->listCampaignAssetsRequest($campaign_id, $account_id, $ad_account_id, $customer_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10928,15 +10978,16 @@ class AdCampaignsApi
      *
      * @param  string $campaign_id Numeric Google platform id. (required)
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCampaignAssets'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCampaignAssetsAsync($campaign_id, $account_id, $customer_id = null, string $contentType = self::contentTypes['listCampaignAssets'][0])
+    public function listCampaignAssetsAsync($campaign_id, $account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listCampaignAssets'][0])
     {
-        return $this->listCampaignAssetsAsyncWithHttpInfo($campaign_id, $account_id, $customer_id, $contentType)
+        return $this->listCampaignAssetsAsyncWithHttpInfo($campaign_id, $account_id, $ad_account_id, $customer_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10951,16 +11002,17 @@ class AdCampaignsApi
      *
      * @param  string $campaign_id Numeric Google platform id. (required)
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCampaignAssets'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCampaignAssetsAsyncWithHttpInfo($campaign_id, $account_id, $customer_id = null, string $contentType = self::contentTypes['listCampaignAssets'][0])
+    public function listCampaignAssetsAsyncWithHttpInfo($campaign_id, $account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listCampaignAssets'][0])
     {
         $returnType = '\Zernio\Model\ListCampaignAssets200Response';
-        $request = $this->listCampaignAssetsRequest($campaign_id, $account_id, $customer_id, $contentType);
+        $request = $this->listCampaignAssetsRequest($campaign_id, $account_id, $ad_account_id, $customer_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11003,13 +11055,14 @@ class AdCampaignsApi
      *
      * @param  string $campaign_id Numeric Google platform id. (required)
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCampaignAssets'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listCampaignAssetsRequest($campaign_id, $account_id, $customer_id = null, string $contentType = self::contentTypes['listCampaignAssets'][0])
+    public function listCampaignAssetsRequest($campaign_id, $account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listCampaignAssets'][0])
     {
 
         // verify the required parameter 'campaign_id' is set
@@ -11032,6 +11085,10 @@ class AdCampaignsApi
             throw new \InvalidArgumentException("invalid value for \"account_id\" when calling AdCampaignsApi.listCampaignAssets, must conform to the pattern /^[a-fA-F0-9]{24}$/.");
         }
         
+        if ($ad_account_id !== null && !preg_match("/^\\d+$/", $ad_account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"ad_account_id\" when calling AdCampaignsApi.listCampaignAssets, must conform to the pattern /^\\d+$/.");
+        }
+        
         if ($customer_id !== null && !preg_match("/^\\d+$/", $customer_id)) {
             throw new \InvalidArgumentException("invalid value for \"customer_id\" when calling AdCampaignsApi.listCampaignAssets, must conform to the pattern /^\\d+$/.");
         }
@@ -11052,6 +11109,15 @@ class AdCampaignsApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(

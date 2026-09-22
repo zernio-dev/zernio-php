@@ -530,12 +530,12 @@ try {
 ## `listConversionActions()`
 
 ```php
-listConversionActions($account_id, $customer_id, $type): \Zernio\Model\ListConversionActions200Response
+listConversionActions($account_id, $ad_account_id, $customer_id, $type): \Zernio\Model\ListConversionActions200Response
 ```
 
 List conversion actions
 
-Lists Google Ads conversion actions on the resolved customer, all types by default. Each action's `tagSnippets` (global site tag + event snippet) is included when Google has them for that action's type, e.g. `WEBPAGE`. Google-only; other platforms return `501`. Requires the Ads add-on.  `customerId` is optional: when omitted, it is resolved from the connection's accessible Google Ads customers, and the call fails with `400` when more than one is accessible (pass `customerId` to disambiguate).  The list itself is cached for the quota window (1 hour fresh, up to 7 days last-good; the cache key does not vary on `type`). The response carries `cachedAt` and `stale`, set when a quota-exhausted call falls back to the last-good copy instead of a live read.
+Lists Google Ads conversion actions on the resolved customer, all types by default. Each action's `tagSnippets` (global site tag + event snippet) is included when Google has them for that action's type, e.g. `WEBPAGE`. Google-only; other platforms return `501`. Requires the Ads add-on.  `adAccountId` (alias `customerId`) is optional: when omitted, it is resolved from the connection's accessible Google Ads customers, and the call fails with `400` when more than one is accessible (pass `adAccountId` to disambiguate).  The list itself is cached for the quota window (1 hour fresh, up to 7 days last-good; the cache key does not vary on `type`). The response carries `cachedAt` and `stale`, set when a quota-exhausted call falls back to the last-good copy instead of a live read.
 
 ### Example
 
@@ -555,11 +555,12 @@ $apiInstance = new Zernio\Api\ConversionsApi(
     $config
 );
 $account_id = 'account_id_example'; // string | SocialAccount _id (must be a googleads account).
-$customer_id = 'customer_id_example'; // string | Google Ads customer id (digits only). Resolved automatically when the connection has exactly one accessible customer.
+$ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID (Google customer ID, digits only). Resolved automatically when the connection has exactly one accessible customer.
+$customer_id = 'customer_id_example'; // string | Alias of adAccountId, kept for existing callers
 $type = 'type_example'; // string | Filter by Google's ConversionActionType enum (e.g. WEBPAGE, UPLOAD_CLICKS).
 
 try {
-    $result = $apiInstance->listConversionActions($account_id, $customer_id, $type);
+    $result = $apiInstance->listConversionActions($account_id, $ad_account_id, $customer_id, $type);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConversionsApi->listConversionActions: ', $e->getMessage(), PHP_EOL;
@@ -571,7 +572,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| SocialAccount _id (must be a googleads account). | |
-| **customer_id** | **string**| Google Ads customer id (digits only). Resolved automatically when the connection has exactly one accessible customer. | [optional] |
+| **ad_account_id** | **string**| Platform ad account ID (Google customer ID, digits only). Resolved automatically when the connection has exactly one accessible customer. | [optional] |
+| **customer_id** | **string**| Alias of adAccountId, kept for existing callers | [optional] |
 | **type** | **string**| Filter by Google&#39;s ConversionActionType enum (e.g. WEBPAGE, UPLOAD_CLICKS). | [optional] |
 
 ### Return type

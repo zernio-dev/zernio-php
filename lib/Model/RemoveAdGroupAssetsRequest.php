@@ -59,6 +59,7 @@ class RemoveAdGroupAssetsRequest implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'account_id' => 'string',
+        'ad_account_id' => 'string',
         'customer_id' => 'string',
         'asset_resource_names' => 'string[]',
         'ad_group_asset_resource_names' => 'string[]'
@@ -73,6 +74,7 @@ class RemoveAdGroupAssetsRequest implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPIFormats = [
         'account_id' => null,
+        'ad_account_id' => null,
         'customer_id' => null,
         'asset_resource_names' => null,
         'ad_group_asset_resource_names' => null
@@ -85,6 +87,7 @@ class RemoveAdGroupAssetsRequest implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static array $openAPINullables = [
         'account_id' => false,
+        'ad_account_id' => false,
         'customer_id' => false,
         'asset_resource_names' => false,
         'ad_group_asset_resource_names' => false
@@ -177,6 +180,7 @@ class RemoveAdGroupAssetsRequest implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $attributeMap = [
         'account_id' => 'accountId',
+        'ad_account_id' => 'adAccountId',
         'customer_id' => 'customerId',
         'asset_resource_names' => 'assetResourceNames',
         'ad_group_asset_resource_names' => 'adGroupAssetResourceNames'
@@ -189,6 +193,7 @@ class RemoveAdGroupAssetsRequest implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $setters = [
         'account_id' => 'setAccountId',
+        'ad_account_id' => 'setAdAccountId',
         'customer_id' => 'setCustomerId',
         'asset_resource_names' => 'setAssetResourceNames',
         'ad_group_asset_resource_names' => 'setAdGroupAssetResourceNames'
@@ -201,6 +206,7 @@ class RemoveAdGroupAssetsRequest implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $getters = [
         'account_id' => 'getAccountId',
+        'ad_account_id' => 'getAdAccountId',
         'customer_id' => 'getCustomerId',
         'asset_resource_names' => 'getAssetResourceNames',
         'ad_group_asset_resource_names' => 'getAdGroupAssetResourceNames'
@@ -264,6 +270,7 @@ class RemoveAdGroupAssetsRequest implements ModelInterface, ArrayAccess, \JsonSe
     public function __construct(?array $data = null)
     {
         $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('ad_account_id', $data ?? [], null);
         $this->setIfExists('customer_id', $data ?? [], null);
         $this->setIfExists('asset_resource_names', $data ?? [], null);
         $this->setIfExists('ad_group_asset_resource_names', $data ?? [], null);
@@ -301,6 +308,10 @@ class RemoveAdGroupAssetsRequest implements ModelInterface, ArrayAccess, \JsonSe
         }
         if (!preg_match("/^[a-fA-F0-9]{24}$/", $this->container['account_id'])) {
             $invalidProperties[] = "invalid value for 'account_id', must be conform to the pattern /^[a-fA-F0-9]{24}$/.";
+        }
+
+        if (!is_null($this->container['ad_account_id']) && !preg_match("/^\\d+$/", $this->container['ad_account_id'])) {
+            $invalidProperties[] = "invalid value for 'ad_account_id', must be conform to the pattern /^\\d+$/.";
         }
 
         if (!is_null($this->container['customer_id']) && !preg_match("/^\\d+$/", $this->container['customer_id'])) {
@@ -369,9 +380,42 @@ class RemoveAdGroupAssetsRequest implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
+     * Gets ad_account_id
+     *
+     * @return string|null
+     */
+    public function getAdAccountId()
+    {
+        return $this->container['ad_account_id'];
+    }
+
+    /**
+     * Sets ad_account_id
+     *
+     * @param string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers.
+     *
+     * @return self
+     */
+    public function setAdAccountId($ad_account_id)
+    {
+        if (is_null($ad_account_id)) {
+            throw new \InvalidArgumentException('non-nullable ad_account_id cannot be null');
+        }
+
+        if ((!preg_match("/^\\d+$/", ObjectSerializer::toString($ad_account_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$ad_account_id when calling RemoveAdGroupAssetsRequest., must conform to the pattern /^\\d+$/.");
+        }
+
+        $this->container['ad_account_id'] = $ad_account_id;
+
+        return $this;
+    }
+
+    /**
      * Gets customer_id
      *
      * @return string|null
+     * @deprecated
      */
     public function getCustomerId()
     {
@@ -381,9 +425,10 @@ class RemoveAdGroupAssetsRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets customer_id
      *
-     * @param string|null $customer_id Google customer id without dashes. Required when the connection has multiple customers.
+     * @param string|null $customer_id Alias of adAccountId, kept for existing callers
      *
      * @return self
+     * @deprecated
      */
     public function setCustomerId($customer_id)
     {

@@ -59,6 +59,7 @@ class GenerateKeywordHistoricalMetricsRequest implements ModelInterface, ArrayAc
       */
     protected static $openAPITypes = [
         'account_id' => 'string',
+        'ad_account_id' => 'string',
         'customer_id' => 'string',
         'keywords' => 'string[]',
         'countries' => 'string[]',
@@ -77,6 +78,7 @@ class GenerateKeywordHistoricalMetricsRequest implements ModelInterface, ArrayAc
       */
     protected static $openAPIFormats = [
         'account_id' => null,
+        'ad_account_id' => null,
         'customer_id' => null,
         'keywords' => null,
         'countries' => null,
@@ -93,6 +95,7 @@ class GenerateKeywordHistoricalMetricsRequest implements ModelInterface, ArrayAc
       */
     protected static array $openAPINullables = [
         'account_id' => false,
+        'ad_account_id' => false,
         'customer_id' => false,
         'keywords' => false,
         'countries' => false,
@@ -189,6 +192,7 @@ class GenerateKeywordHistoricalMetricsRequest implements ModelInterface, ArrayAc
      */
     protected static $attributeMap = [
         'account_id' => 'accountId',
+        'ad_account_id' => 'adAccountId',
         'customer_id' => 'customerId',
         'keywords' => 'keywords',
         'countries' => 'countries',
@@ -205,6 +209,7 @@ class GenerateKeywordHistoricalMetricsRequest implements ModelInterface, ArrayAc
      */
     protected static $setters = [
         'account_id' => 'setAccountId',
+        'ad_account_id' => 'setAdAccountId',
         'customer_id' => 'setCustomerId',
         'keywords' => 'setKeywords',
         'countries' => 'setCountries',
@@ -221,6 +226,7 @@ class GenerateKeywordHistoricalMetricsRequest implements ModelInterface, ArrayAc
      */
     protected static $getters = [
         'account_id' => 'getAccountId',
+        'ad_account_id' => 'getAdAccountId',
         'customer_id' => 'getCustomerId',
         'keywords' => 'getKeywords',
         'countries' => 'getCountries',
@@ -303,6 +309,7 @@ class GenerateKeywordHistoricalMetricsRequest implements ModelInterface, ArrayAc
     public function __construct(?array $data = null)
     {
         $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('ad_account_id', $data ?? [], null);
         $this->setIfExists('customer_id', $data ?? [], null);
         $this->setIfExists('keywords', $data ?? [], null);
         $this->setIfExists('countries', $data ?? [], null);
@@ -413,9 +420,37 @@ class GenerateKeywordHistoricalMetricsRequest implements ModelInterface, ArrayAc
     }
 
     /**
+     * Gets ad_account_id
+     *
+     * @return string|null
+     */
+    public function getAdAccountId()
+    {
+        return $this->container['ad_account_id'];
+    }
+
+    /**
+     * Sets ad_account_id
+     *
+     * @param string|null $ad_account_id Platform ad account ID (Google customer ID, digits only).
+     *
+     * @return self
+     */
+    public function setAdAccountId($ad_account_id)
+    {
+        if (is_null($ad_account_id)) {
+            throw new \InvalidArgumentException('non-nullable ad_account_id cannot be null');
+        }
+        $this->container['ad_account_id'] = $ad_account_id;
+
+        return $this;
+    }
+
+    /**
      * Gets customer_id
      *
      * @return string|null
+     * @deprecated
      */
     public function getCustomerId()
     {
@@ -425,9 +460,10 @@ class GenerateKeywordHistoricalMetricsRequest implements ModelInterface, ArrayAc
     /**
      * Sets customer_id
      *
-     * @param string|null $customer_id Numeric Google Ads customer id (no dashes); only needed when the connection has several accounts.
+     * @param string|null $customer_id Alias of adAccountId, kept for existing callers
      *
      * @return self
+     * @deprecated
      */
     public function setCustomerId($customer_id)
     {

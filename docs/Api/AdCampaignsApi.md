@@ -146,7 +146,7 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
     $config
 );
 $ad_set_id = 'ad_set_id_example'; // string | Numeric Google platform id.
-$attach_campaign_assets_request = {accountId=64b1f0c8a1b2c3d4e5f60718, customerId=1234567890, sitelinks=[{text=Pricing, linkUrl=https://zernio.com/pricing}, {text=Documentation, linkUrl=https://zernio.com/docs}], callouts=[Fast setup], structuredSnippets=[{header=Types, values=[Scheduling, Analytics, Messaging]}]}; // \Zernio\Model\AttachCampaignAssetsRequest
+$attach_campaign_assets_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","customerId":"1234567890","sitelinks":[{"text":"Pricing","linkUrl":"https://zernio.com/pricing"},{"text":"Documentation","linkUrl":"https://zernio.com/docs"}],"callouts":["Fast setup"],"structuredSnippets":[{"header":"Types","values":["Scheduling","Analytics","Messaging"]}]}; // \Zernio\Model\AttachCampaignAssetsRequest
 
 try {
     $result = $apiInstance->attachAdGroupAssets($ad_set_id, $attach_campaign_assets_request);
@@ -208,7 +208,7 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
     $config
 );
 $campaign_id = 'campaign_id_example'; // string | Numeric Google platform id.
-$attach_campaign_assets_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","customerId":"1234567890","sitelinks":[{"text":"Pricing","linkUrl":"https://zernio.com/pricing"},{"text":"Documentation","linkUrl":"https://zernio.com/docs"}],"callouts":["Fast setup"],"structuredSnippets":[{"header":"Types","values":["Scheduling","Analytics","Messaging"]}]}; // \Zernio\Model\AttachCampaignAssetsRequest
+$attach_campaign_assets_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","adAccountId":"1234567890","sitelinks":[{"text":"Pricing","linkUrl":"https://zernio.com/pricing"},{"text":"Documentation","linkUrl":"https://zernio.com/docs"}],"callouts":["Fast setup"],"structuredSnippets":[{"header":"Types","values":["Scheduling","Analytics","Messaging"]}]}; // \Zernio\Model\AttachCampaignAssetsRequest
 
 try {
     $result = $apiInstance->attachCampaignAssets($campaign_id, $attach_campaign_assets_request);
@@ -1405,7 +1405,7 @@ try {
 ## `getCampaignBidding()`
 
 ```php
-getCampaignBidding($campaign_id, $account_id, $platform, $customer_id): \Zernio\Model\GetCampaignBidding200Response
+getCampaignBidding($campaign_id, $account_id, $platform, $ad_account_id, $customer_id): \Zernio\Model\GetCampaignBidding200Response
 ```
 
 Read a campaign's current bidding
@@ -1432,10 +1432,11 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
 $campaign_id = 'campaign_id_example'; // string | Numeric Google platform campaign id.
 $account_id = 'account_id_example'; // string | Zernio Google Ads SocialAccount id: resolves the customer id + refresh token.
 $platform = 'platform_example'; // string | Required: campaign IDs are not globally unique. Only \"google\" is supported today.
-$customer_id = 'customer_id_example'; // string | Numeric Google Ads customer id (no dashes). Required when the connection has multiple Google Ads accounts; optional (and inferred) when it has only one.
+$ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple Google Ads accounts; optional (and inferred) when it has only one.
+$customer_id = 'customer_id_example'; // string | Alias of adAccountId, kept for existing callers
 
 try {
-    $result = $apiInstance->getCampaignBidding($campaign_id, $account_id, $platform, $customer_id);
+    $result = $apiInstance->getCampaignBidding($campaign_id, $account_id, $platform, $ad_account_id, $customer_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->getCampaignBidding: ', $e->getMessage(), PHP_EOL;
@@ -1449,7 +1450,8 @@ try {
 | **campaign_id** | **string**| Numeric Google platform campaign id. | |
 | **account_id** | **string**| Zernio Google Ads SocialAccount id: resolves the customer id + refresh token. | |
 | **platform** | **string**| Required: campaign IDs are not globally unique. Only \&quot;google\&quot; is supported today. | |
-| **customer_id** | **string**| Numeric Google Ads customer id (no dashes). Required when the connection has multiple Google Ads accounts; optional (and inferred) when it has only one. | [optional] |
+| **ad_account_id** | **string**| Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple Google Ads accounts; optional (and inferred) when it has only one. | [optional] |
+| **customer_id** | **string**| Alias of adAccountId, kept for existing callers | [optional] |
 
 ### Return type
 
@@ -1619,7 +1621,7 @@ try {
 ## `listAdGroupAssets()`
 
 ```php
-listAdGroupAssets($ad_set_id, $account_id, $customer_id): \Zernio\Model\ListAdGroupAssets200Response
+listAdGroupAssets($ad_set_id, $account_id, $ad_account_id, $customer_id): \Zernio\Model\ListAdGroupAssets200Response
 ```
 
 List ad-group assets
@@ -1645,10 +1647,11 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
 );
 $ad_set_id = 'ad_set_id_example'; // string | Numeric Google platform id.
 $account_id = 'account_id_example'; // string
+$ad_account_id = 'ad_account_id_example'; // string
 $customer_id = 'customer_id_example'; // string
 
 try {
-    $result = $apiInstance->listAdGroupAssets($ad_set_id, $account_id, $customer_id);
+    $result = $apiInstance->listAdGroupAssets($ad_set_id, $account_id, $ad_account_id, $customer_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->listAdGroupAssets: ', $e->getMessage(), PHP_EOL;
@@ -1661,6 +1664,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_set_id** | **string**| Numeric Google platform id. | |
 | **account_id** | **string**|  | |
+| **ad_account_id** | **string**|  | [optional] |
 | **customer_id** | **string**|  | [optional] |
 
 ### Return type
@@ -1917,7 +1921,7 @@ try {
 ## `listBidStrategies()`
 
 ```php
-listBidStrategies($account_id, $customer_id, $from_date, $to_date): \Zernio\Model\ListBidStrategies200Response
+listBidStrategies($account_id, $ad_account_id, $customer_id, $from_date, $to_date): \Zernio\Model\ListBidStrategies200Response
 ```
 
 List portfolio bid strategies
@@ -1942,12 +1946,13 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
     $config
 );
 $account_id = 'account_id_example'; // string | Google ads SocialAccount id.
-$customer_id = 'customer_id_example'; // string | Numeric Google Ads customer id (no dashes). Defaults to the account's connected customer.
+$ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID (Google customer ID, digits only). Defaults to the account's connected customer.
+$customer_id = 'customer_id_example'; // string | Alias of adAccountId, kept for existing callers
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Defaults to 30 days ago.
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Defaults to today.
 
 try {
-    $result = $apiInstance->listBidStrategies($account_id, $customer_id, $from_date, $to_date);
+    $result = $apiInstance->listBidStrategies($account_id, $ad_account_id, $customer_id, $from_date, $to_date);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->listBidStrategies: ', $e->getMessage(), PHP_EOL;
@@ -1959,7 +1964,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Google ads SocialAccount id. | |
-| **customer_id** | **string**| Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. | [optional] |
+| **ad_account_id** | **string**| Platform ad account ID (Google customer ID, digits only). Defaults to the account&#39;s connected customer. | [optional] |
+| **customer_id** | **string**| Alias of adAccountId, kept for existing callers | [optional] |
 | **from_date** | **\DateTime**| Defaults to 30 days ago. | [optional] |
 | **to_date** | **\DateTime**| Defaults to today. | [optional] |
 
@@ -1983,7 +1989,7 @@ try {
 ## `listCampaignAssets()`
 
 ```php
-listCampaignAssets($campaign_id, $account_id, $customer_id): \Zernio\Model\ListCampaignAssets200Response
+listCampaignAssets($campaign_id, $account_id, $ad_account_id, $customer_id): \Zernio\Model\ListCampaignAssets200Response
 ```
 
 List campaign assets
@@ -2009,10 +2015,11 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
 );
 $campaign_id = 'campaign_id_example'; // string | Numeric Google platform id.
 $account_id = 'account_id_example'; // string
+$ad_account_id = 'ad_account_id_example'; // string
 $customer_id = 'customer_id_example'; // string
 
 try {
-    $result = $apiInstance->listCampaignAssets($campaign_id, $account_id, $customer_id);
+    $result = $apiInstance->listCampaignAssets($campaign_id, $account_id, $ad_account_id, $customer_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->listCampaignAssets: ', $e->getMessage(), PHP_EOL;
@@ -2025,6 +2032,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **campaign_id** | **string**| Numeric Google platform id. | |
 | **account_id** | **string**|  | |
+| **ad_account_id** | **string**|  | [optional] |
 | **customer_id** | **string**|  | [optional] |
 
 ### Return type
@@ -2378,7 +2386,7 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
     $config
 );
 $campaign_id = 'campaign_id_example'; // string | Numeric Google platform id.
-$remove_campaign_assets_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","customerId":"1234567890","assetResourceNames":["customers/1234567890/assets/123"],"campaignAssetResourceNames":["customers/1234567890/campaignAssets/456~123~CALLOUT"]}; // \Zernio\Model\RemoveCampaignAssetsRequest
+$remove_campaign_assets_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","adAccountId":"1234567890","assetResourceNames":["customers/1234567890/assets/123"],"campaignAssetResourceNames":["customers/1234567890/campaignAssets/456~123~CALLOUT"]}; // \Zernio\Model\RemoveCampaignAssetsRequest
 
 try {
     $result = $apiInstance->removeCampaignAssets($campaign_id, $remove_campaign_assets_request);
@@ -2750,7 +2758,7 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
     $config
 );
 $ad_set_id = 'ad_set_id_example'; // string | Numeric Google platform id.
-$update_campaign_assets_request = {accountId=64b1f0c8a1b2c3d4e5f60718, customerId=1234567890, updates=[{assetResourceName=customers/1234567890/assets/123, calloutAsset={calloutText=Simple integration}}]}; // \Zernio\Model\UpdateCampaignAssetsRequest
+$update_campaign_assets_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","customerId":"1234567890","updates":[{"assetResourceName":"customers/1234567890/assets/123","calloutAsset":{"calloutText":"Simple integration"}}]}; // \Zernio\Model\UpdateCampaignAssetsRequest
 
 try {
     $result = $apiInstance->updateAdGroupAssets($ad_set_id, $update_campaign_assets_request);
@@ -3184,7 +3192,7 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
     $config
 );
 $campaign_id = 'campaign_id_example'; // string | Numeric Google platform id.
-$update_campaign_assets_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","customerId":"1234567890","updates":[{"assetResourceName":"customers/1234567890/assets/123","calloutAsset":{"calloutText":"Simple integration"}}]}; // \Zernio\Model\UpdateCampaignAssetsRequest
+$update_campaign_assets_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","adAccountId":"1234567890","updates":[{"assetResourceName":"customers/1234567890/assets/123","calloutAsset":{"calloutText":"Simple integration"}}]}; // \Zernio\Model\UpdateCampaignAssetsRequest
 
 try {
     $result = $apiInstance->updateCampaignAssets($campaign_id, $update_campaign_assets_request);

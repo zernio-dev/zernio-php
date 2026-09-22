@@ -59,6 +59,7 @@ class CreateConversionActionRequest implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'account_id' => 'string',
+        'ad_account_id' => 'string',
         'customer_id' => 'string',
         'name' => 'string',
         'type' => 'string',
@@ -75,6 +76,7 @@ class CreateConversionActionRequest implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPIFormats = [
         'account_id' => null,
+        'ad_account_id' => null,
         'customer_id' => null,
         'name' => null,
         'type' => null,
@@ -89,6 +91,7 @@ class CreateConversionActionRequest implements ModelInterface, ArrayAccess, \Jso
       */
     protected static array $openAPINullables = [
         'account_id' => false,
+        'ad_account_id' => false,
         'customer_id' => false,
         'name' => false,
         'type' => false,
@@ -183,6 +186,7 @@ class CreateConversionActionRequest implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $attributeMap = [
         'account_id' => 'accountId',
+        'ad_account_id' => 'adAccountId',
         'customer_id' => 'customerId',
         'name' => 'name',
         'type' => 'type',
@@ -197,6 +201,7 @@ class CreateConversionActionRequest implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $setters = [
         'account_id' => 'setAccountId',
+        'ad_account_id' => 'setAdAccountId',
         'customer_id' => 'setCustomerId',
         'name' => 'setName',
         'type' => 'setType',
@@ -211,6 +216,7 @@ class CreateConversionActionRequest implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $getters = [
         'account_id' => 'getAccountId',
+        'ad_account_id' => 'getAdAccountId',
         'customer_id' => 'getCustomerId',
         'name' => 'getName',
         'type' => 'getType',
@@ -289,6 +295,7 @@ class CreateConversionActionRequest implements ModelInterface, ArrayAccess, \Jso
     public function __construct(?array $data = null)
     {
         $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('ad_account_id', $data ?? [], null);
         $this->setIfExists('customer_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
@@ -396,9 +403,37 @@ class CreateConversionActionRequest implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
+     * Gets ad_account_id
+     *
+     * @return string|null
+     */
+    public function getAdAccountId()
+    {
+        return $this->container['ad_account_id'];
+    }
+
+    /**
+     * Sets ad_account_id
+     *
+     * @param string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Resolved automatically when the connection has exactly one accessible customer.
+     *
+     * @return self
+     */
+    public function setAdAccountId($ad_account_id)
+    {
+        if (is_null($ad_account_id)) {
+            throw new \InvalidArgumentException('non-nullable ad_account_id cannot be null');
+        }
+        $this->container['ad_account_id'] = $ad_account_id;
+
+        return $this;
+    }
+
+    /**
      * Gets customer_id
      *
      * @return string|null
+     * @deprecated
      */
     public function getCustomerId()
     {
@@ -408,9 +443,10 @@ class CreateConversionActionRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets customer_id
      *
-     * @param string|null $customer_id Google Ads customer id (digits only). Resolved automatically when the connection has exactly one accessible customer.
+     * @param string|null $customer_id Alias of adAccountId, kept for existing callers
      *
      * @return self
+     * @deprecated
      */
     public function setCustomerId($customer_id)
     {

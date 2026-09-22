@@ -3246,7 +3246,8 @@ class AdAccountsApi
      *
      * @param  string $list_id list_id (required)
      * @param  string $account_id account_id (required)
-     * @param  string|null $customer_id customer_id (optional)
+     * @param  string|null $ad_account_id ad_account_id (optional)
+     * @param  string|null $customer_id customer_id (optional) (deprecated)
      * @param  string|null $platform platform (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdNegativeKeywordList'] to see the possible values for this operation
      *
@@ -3254,9 +3255,9 @@ class AdAccountsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\DeleteAdNegativeKeywordList200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
-    public function deleteAdNegativeKeywordList($list_id, $account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['deleteAdNegativeKeywordList'][0])
+    public function deleteAdNegativeKeywordList($list_id, $account_id, $ad_account_id = null, $customer_id = null, $platform = null, string $contentType = self::contentTypes['deleteAdNegativeKeywordList'][0])
     {
-        list($response) = $this->deleteAdNegativeKeywordListWithHttpInfo($list_id, $account_id, $customer_id, $platform, $contentType);
+        list($response) = $this->deleteAdNegativeKeywordListWithHttpInfo($list_id, $account_id, $ad_account_id, $customer_id, $platform, $contentType);
         return $response;
     }
 
@@ -3267,7 +3268,8 @@ class AdAccountsApi
      *
      * @param  string $list_id (required)
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string|null $platform (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdNegativeKeywordList'] to see the possible values for this operation
      *
@@ -3275,9 +3277,9 @@ class AdAccountsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\DeleteAdNegativeKeywordList200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteAdNegativeKeywordListWithHttpInfo($list_id, $account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['deleteAdNegativeKeywordList'][0])
+    public function deleteAdNegativeKeywordListWithHttpInfo($list_id, $account_id, $ad_account_id = null, $customer_id = null, $platform = null, string $contentType = self::contentTypes['deleteAdNegativeKeywordList'][0])
     {
-        $request = $this->deleteAdNegativeKeywordListRequest($list_id, $account_id, $customer_id, $platform, $contentType);
+        $request = $this->deleteAdNegativeKeywordListRequest($list_id, $account_id, $ad_account_id, $customer_id, $platform, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3397,16 +3399,17 @@ class AdAccountsApi
      *
      * @param  string $list_id (required)
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string|null $platform (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdNegativeKeywordList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteAdNegativeKeywordListAsync($list_id, $account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['deleteAdNegativeKeywordList'][0])
+    public function deleteAdNegativeKeywordListAsync($list_id, $account_id, $ad_account_id = null, $customer_id = null, $platform = null, string $contentType = self::contentTypes['deleteAdNegativeKeywordList'][0])
     {
-        return $this->deleteAdNegativeKeywordListAsyncWithHttpInfo($list_id, $account_id, $customer_id, $platform, $contentType)
+        return $this->deleteAdNegativeKeywordListAsyncWithHttpInfo($list_id, $account_id, $ad_account_id, $customer_id, $platform, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3421,17 +3424,18 @@ class AdAccountsApi
      *
      * @param  string $list_id (required)
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string|null $platform (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdNegativeKeywordList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteAdNegativeKeywordListAsyncWithHttpInfo($list_id, $account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['deleteAdNegativeKeywordList'][0])
+    public function deleteAdNegativeKeywordListAsyncWithHttpInfo($list_id, $account_id, $ad_account_id = null, $customer_id = null, $platform = null, string $contentType = self::contentTypes['deleteAdNegativeKeywordList'][0])
     {
         $returnType = '\Zernio\Model\DeleteAdNegativeKeywordList200Response';
-        $request = $this->deleteAdNegativeKeywordListRequest($list_id, $account_id, $customer_id, $platform, $contentType);
+        $request = $this->deleteAdNegativeKeywordListRequest($list_id, $account_id, $ad_account_id, $customer_id, $platform, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3474,14 +3478,15 @@ class AdAccountsApi
      *
      * @param  string $list_id (required)
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string|null $platform (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdNegativeKeywordList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteAdNegativeKeywordListRequest($list_id, $account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['deleteAdNegativeKeywordList'][0])
+    public function deleteAdNegativeKeywordListRequest($list_id, $account_id, $ad_account_id = null, $customer_id = null, $platform = null, string $contentType = self::contentTypes['deleteAdNegativeKeywordList'][0])
     {
 
         // verify the required parameter 'list_id' is set
@@ -3502,6 +3507,10 @@ class AdAccountsApi
         }
         if (!preg_match("/^[a-fA-F0-9]{24}$/", $account_id)) {
             throw new \InvalidArgumentException("invalid value for \"account_id\" when calling AdAccountsApi.deleteAdNegativeKeywordList, must conform to the pattern /^[a-fA-F0-9]{24}$/.");
+        }
+        
+        if ($ad_account_id !== null && !preg_match("/^\\d+$/", $ad_account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"ad_account_id\" when calling AdAccountsApi.deleteAdNegativeKeywordList, must conform to the pattern /^\\d+$/.");
         }
         
         if ($customer_id !== null && !preg_match("/^\\d+$/", $customer_id)) {
@@ -3525,6 +3534,15 @@ class AdAccountsApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -4672,7 +4690,8 @@ class AdAccountsApi
      *
      * @param  string $list_id list_id (required)
      * @param  string $account_id account_id (required)
-     * @param  string|null $customer_id customer_id (optional)
+     * @param  string|null $ad_account_id ad_account_id (optional)
+     * @param  string|null $customer_id customer_id (optional) (deprecated)
      * @param  string|null $platform platform (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdNegativeKeywordList'] to see the possible values for this operation
      *
@@ -4680,9 +4699,9 @@ class AdAccountsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetAdNegativeKeywordList200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
-    public function getAdNegativeKeywordList($list_id, $account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['getAdNegativeKeywordList'][0])
+    public function getAdNegativeKeywordList($list_id, $account_id, $ad_account_id = null, $customer_id = null, $platform = null, string $contentType = self::contentTypes['getAdNegativeKeywordList'][0])
     {
-        list($response) = $this->getAdNegativeKeywordListWithHttpInfo($list_id, $account_id, $customer_id, $platform, $contentType);
+        list($response) = $this->getAdNegativeKeywordListWithHttpInfo($list_id, $account_id, $ad_account_id, $customer_id, $platform, $contentType);
         return $response;
     }
 
@@ -4693,7 +4712,8 @@ class AdAccountsApi
      *
      * @param  string $list_id (required)
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string|null $platform (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdNegativeKeywordList'] to see the possible values for this operation
      *
@@ -4701,9 +4721,9 @@ class AdAccountsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetAdNegativeKeywordList200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAdNegativeKeywordListWithHttpInfo($list_id, $account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['getAdNegativeKeywordList'][0])
+    public function getAdNegativeKeywordListWithHttpInfo($list_id, $account_id, $ad_account_id = null, $customer_id = null, $platform = null, string $contentType = self::contentTypes['getAdNegativeKeywordList'][0])
     {
-        $request = $this->getAdNegativeKeywordListRequest($list_id, $account_id, $customer_id, $platform, $contentType);
+        $request = $this->getAdNegativeKeywordListRequest($list_id, $account_id, $ad_account_id, $customer_id, $platform, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4823,16 +4843,17 @@ class AdAccountsApi
      *
      * @param  string $list_id (required)
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string|null $platform (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdNegativeKeywordList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdNegativeKeywordListAsync($list_id, $account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['getAdNegativeKeywordList'][0])
+    public function getAdNegativeKeywordListAsync($list_id, $account_id, $ad_account_id = null, $customer_id = null, $platform = null, string $contentType = self::contentTypes['getAdNegativeKeywordList'][0])
     {
-        return $this->getAdNegativeKeywordListAsyncWithHttpInfo($list_id, $account_id, $customer_id, $platform, $contentType)
+        return $this->getAdNegativeKeywordListAsyncWithHttpInfo($list_id, $account_id, $ad_account_id, $customer_id, $platform, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4847,17 +4868,18 @@ class AdAccountsApi
      *
      * @param  string $list_id (required)
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string|null $platform (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdNegativeKeywordList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdNegativeKeywordListAsyncWithHttpInfo($list_id, $account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['getAdNegativeKeywordList'][0])
+    public function getAdNegativeKeywordListAsyncWithHttpInfo($list_id, $account_id, $ad_account_id = null, $customer_id = null, $platform = null, string $contentType = self::contentTypes['getAdNegativeKeywordList'][0])
     {
         $returnType = '\Zernio\Model\GetAdNegativeKeywordList200Response';
-        $request = $this->getAdNegativeKeywordListRequest($list_id, $account_id, $customer_id, $platform, $contentType);
+        $request = $this->getAdNegativeKeywordListRequest($list_id, $account_id, $ad_account_id, $customer_id, $platform, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4900,14 +4922,15 @@ class AdAccountsApi
      *
      * @param  string $list_id (required)
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string|null $platform (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdNegativeKeywordList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAdNegativeKeywordListRequest($list_id, $account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['getAdNegativeKeywordList'][0])
+    public function getAdNegativeKeywordListRequest($list_id, $account_id, $ad_account_id = null, $customer_id = null, $platform = null, string $contentType = self::contentTypes['getAdNegativeKeywordList'][0])
     {
 
         // verify the required parameter 'list_id' is set
@@ -4928,6 +4951,10 @@ class AdAccountsApi
         }
         if (!preg_match("/^[a-fA-F0-9]{24}$/", $account_id)) {
             throw new \InvalidArgumentException("invalid value for \"account_id\" when calling AdAccountsApi.getAdNegativeKeywordList, must conform to the pattern /^[a-fA-F0-9]{24}$/.");
+        }
+        
+        if ($ad_account_id !== null && !preg_match("/^\\d+$/", $ad_account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"ad_account_id\" when calling AdAccountsApi.getAdNegativeKeywordList, must conform to the pattern /^\\d+$/.");
         }
         
         if ($customer_id !== null && !preg_match("/^\\d+$/", $customer_id)) {
@@ -4951,6 +4978,15 @@ class AdAccountsApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -7218,16 +7254,17 @@ class AdAccountsApi
      * List account callouts
      *
      * @param  string $account_id account_id (required)
-     * @param  string|null $customer_id customer_id (optional)
+     * @param  string|null $ad_account_id ad_account_id (optional)
+     * @param  string|null $customer_id customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountCallouts'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListAccountCallouts200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
-    public function listAccountCallouts($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountCallouts'][0])
+    public function listAccountCallouts($account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listAccountCallouts'][0])
     {
-        list($response) = $this->listAccountCalloutsWithHttpInfo($account_id, $customer_id, $contentType);
+        list($response) = $this->listAccountCalloutsWithHttpInfo($account_id, $ad_account_id, $customer_id, $contentType);
         return $response;
     }
 
@@ -7237,16 +7274,17 @@ class AdAccountsApi
      * List account callouts
      *
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountCallouts'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListAccountCallouts200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAccountCalloutsWithHttpInfo($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountCallouts'][0])
+    public function listAccountCalloutsWithHttpInfo($account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listAccountCallouts'][0])
     {
-        $request = $this->listAccountCalloutsRequest($account_id, $customer_id, $contentType);
+        $request = $this->listAccountCalloutsRequest($account_id, $ad_account_id, $customer_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7379,15 +7417,16 @@ class AdAccountsApi
      * List account callouts
      *
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountCallouts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAccountCalloutsAsync($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountCallouts'][0])
+    public function listAccountCalloutsAsync($account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listAccountCallouts'][0])
     {
-        return $this->listAccountCalloutsAsyncWithHttpInfo($account_id, $customer_id, $contentType)
+        return $this->listAccountCalloutsAsyncWithHttpInfo($account_id, $ad_account_id, $customer_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7401,16 +7440,17 @@ class AdAccountsApi
      * List account callouts
      *
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountCallouts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAccountCalloutsAsyncWithHttpInfo($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountCallouts'][0])
+    public function listAccountCalloutsAsyncWithHttpInfo($account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listAccountCallouts'][0])
     {
         $returnType = '\Zernio\Model\ListAccountCallouts200Response';
-        $request = $this->listAccountCalloutsRequest($account_id, $customer_id, $contentType);
+        $request = $this->listAccountCalloutsRequest($account_id, $ad_account_id, $customer_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7452,13 +7492,14 @@ class AdAccountsApi
      * Create request for operation 'listAccountCallouts'
      *
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountCallouts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAccountCalloutsRequest($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountCallouts'][0])
+    public function listAccountCalloutsRequest($account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listAccountCallouts'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -7469,6 +7510,10 @@ class AdAccountsApi
         }
         if (!preg_match("/^[a-fA-F0-9]{24}$/", $account_id)) {
             throw new \InvalidArgumentException("invalid value for \"account_id\" when calling AdAccountsApi.listAccountCallouts, must conform to the pattern /^[a-fA-F0-9]{24}$/.");
+        }
+        
+        if ($ad_account_id !== null && !preg_match("/^\\d+$/", $ad_account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"ad_account_id\" when calling AdAccountsApi.listAccountCallouts, must conform to the pattern /^\\d+$/.");
         }
         
         if ($customer_id !== null && !preg_match("/^\\d+$/", $customer_id)) {
@@ -7491,6 +7536,15 @@ class AdAccountsApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -7568,16 +7622,17 @@ class AdAccountsApi
      * List account sitelinks
      *
      * @param  string $account_id account_id (required)
-     * @param  string|null $customer_id customer_id (optional)
+     * @param  string|null $ad_account_id ad_account_id (optional)
+     * @param  string|null $customer_id customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountSitelinks'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListAccountSitelinks200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
-    public function listAccountSitelinks($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountSitelinks'][0])
+    public function listAccountSitelinks($account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listAccountSitelinks'][0])
     {
-        list($response) = $this->listAccountSitelinksWithHttpInfo($account_id, $customer_id, $contentType);
+        list($response) = $this->listAccountSitelinksWithHttpInfo($account_id, $ad_account_id, $customer_id, $contentType);
         return $response;
     }
 
@@ -7587,16 +7642,17 @@ class AdAccountsApi
      * List account sitelinks
      *
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountSitelinks'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListAccountSitelinks200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAccountSitelinksWithHttpInfo($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountSitelinks'][0])
+    public function listAccountSitelinksWithHttpInfo($account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listAccountSitelinks'][0])
     {
-        $request = $this->listAccountSitelinksRequest($account_id, $customer_id, $contentType);
+        $request = $this->listAccountSitelinksRequest($account_id, $ad_account_id, $customer_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7729,15 +7785,16 @@ class AdAccountsApi
      * List account sitelinks
      *
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountSitelinks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAccountSitelinksAsync($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountSitelinks'][0])
+    public function listAccountSitelinksAsync($account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listAccountSitelinks'][0])
     {
-        return $this->listAccountSitelinksAsyncWithHttpInfo($account_id, $customer_id, $contentType)
+        return $this->listAccountSitelinksAsyncWithHttpInfo($account_id, $ad_account_id, $customer_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7751,16 +7808,17 @@ class AdAccountsApi
      * List account sitelinks
      *
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountSitelinks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAccountSitelinksAsyncWithHttpInfo($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountSitelinks'][0])
+    public function listAccountSitelinksAsyncWithHttpInfo($account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listAccountSitelinks'][0])
     {
         $returnType = '\Zernio\Model\ListAccountSitelinks200Response';
-        $request = $this->listAccountSitelinksRequest($account_id, $customer_id, $contentType);
+        $request = $this->listAccountSitelinksRequest($account_id, $ad_account_id, $customer_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7802,13 +7860,14 @@ class AdAccountsApi
      * Create request for operation 'listAccountSitelinks'
      *
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountSitelinks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAccountSitelinksRequest($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountSitelinks'][0])
+    public function listAccountSitelinksRequest($account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listAccountSitelinks'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -7819,6 +7878,10 @@ class AdAccountsApi
         }
         if (!preg_match("/^[a-fA-F0-9]{24}$/", $account_id)) {
             throw new \InvalidArgumentException("invalid value for \"account_id\" when calling AdAccountsApi.listAccountSitelinks, must conform to the pattern /^[a-fA-F0-9]{24}$/.");
+        }
+        
+        if ($ad_account_id !== null && !preg_match("/^\\d+$/", $ad_account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"ad_account_id\" when calling AdAccountsApi.listAccountSitelinks, must conform to the pattern /^\\d+$/.");
         }
         
         if ($customer_id !== null && !preg_match("/^\\d+$/", $customer_id)) {
@@ -7841,6 +7904,15 @@ class AdAccountsApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -7918,16 +7990,17 @@ class AdAccountsApi
      * List account snippets
      *
      * @param  string $account_id account_id (required)
-     * @param  string|null $customer_id customer_id (optional)
+     * @param  string|null $ad_account_id ad_account_id (optional)
+     * @param  string|null $customer_id customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountStructuredSnippets'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListAccountStructuredSnippets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
-    public function listAccountStructuredSnippets($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountStructuredSnippets'][0])
+    public function listAccountStructuredSnippets($account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listAccountStructuredSnippets'][0])
     {
-        list($response) = $this->listAccountStructuredSnippetsWithHttpInfo($account_id, $customer_id, $contentType);
+        list($response) = $this->listAccountStructuredSnippetsWithHttpInfo($account_id, $ad_account_id, $customer_id, $contentType);
         return $response;
     }
 
@@ -7937,16 +8010,17 @@ class AdAccountsApi
      * List account snippets
      *
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountStructuredSnippets'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListAccountStructuredSnippets200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAccountStructuredSnippetsWithHttpInfo($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountStructuredSnippets'][0])
+    public function listAccountStructuredSnippetsWithHttpInfo($account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listAccountStructuredSnippets'][0])
     {
-        $request = $this->listAccountStructuredSnippetsRequest($account_id, $customer_id, $contentType);
+        $request = $this->listAccountStructuredSnippetsRequest($account_id, $ad_account_id, $customer_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8079,15 +8153,16 @@ class AdAccountsApi
      * List account snippets
      *
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountStructuredSnippets'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAccountStructuredSnippetsAsync($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountStructuredSnippets'][0])
+    public function listAccountStructuredSnippetsAsync($account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listAccountStructuredSnippets'][0])
     {
-        return $this->listAccountStructuredSnippetsAsyncWithHttpInfo($account_id, $customer_id, $contentType)
+        return $this->listAccountStructuredSnippetsAsyncWithHttpInfo($account_id, $ad_account_id, $customer_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8101,16 +8176,17 @@ class AdAccountsApi
      * List account snippets
      *
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountStructuredSnippets'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAccountStructuredSnippetsAsyncWithHttpInfo($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountStructuredSnippets'][0])
+    public function listAccountStructuredSnippetsAsyncWithHttpInfo($account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listAccountStructuredSnippets'][0])
     {
         $returnType = '\Zernio\Model\ListAccountStructuredSnippets200Response';
-        $request = $this->listAccountStructuredSnippetsRequest($account_id, $customer_id, $contentType);
+        $request = $this->listAccountStructuredSnippetsRequest($account_id, $ad_account_id, $customer_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8152,13 +8228,14 @@ class AdAccountsApi
      * Create request for operation 'listAccountStructuredSnippets'
      *
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountStructuredSnippets'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAccountStructuredSnippetsRequest($account_id, $customer_id = null, string $contentType = self::contentTypes['listAccountStructuredSnippets'][0])
+    public function listAccountStructuredSnippetsRequest($account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['listAccountStructuredSnippets'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -8169,6 +8246,10 @@ class AdAccountsApi
         }
         if (!preg_match("/^[a-fA-F0-9]{24}$/", $account_id)) {
             throw new \InvalidArgumentException("invalid value for \"account_id\" when calling AdAccountsApi.listAccountStructuredSnippets, must conform to the pattern /^[a-fA-F0-9]{24}$/.");
+        }
+        
+        if ($ad_account_id !== null && !preg_match("/^\\d+$/", $ad_account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"ad_account_id\" when calling AdAccountsApi.listAccountStructuredSnippets, must conform to the pattern /^\\d+$/.");
         }
         
         if ($customer_id !== null && !preg_match("/^\\d+$/", $customer_id)) {
@@ -8191,6 +8272,15 @@ class AdAccountsApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -9019,7 +9109,8 @@ class AdAccountsApi
      * List negative keyword lists
      *
      * @param  string $account_id account_id (required)
-     * @param  string|null $customer_id customer_id (optional)
+     * @param  string|null $ad_account_id ad_account_id (optional)
+     * @param  string|null $customer_id customer_id (optional) (deprecated)
      * @param  string|null $platform platform (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdNegativeKeywordLists'] to see the possible values for this operation
      *
@@ -9027,9 +9118,9 @@ class AdAccountsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListAdNegativeKeywordLists200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
-    public function listAdNegativeKeywordLists($account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['listAdNegativeKeywordLists'][0])
+    public function listAdNegativeKeywordLists($account_id, $ad_account_id = null, $customer_id = null, $platform = null, string $contentType = self::contentTypes['listAdNegativeKeywordLists'][0])
     {
-        list($response) = $this->listAdNegativeKeywordListsWithHttpInfo($account_id, $customer_id, $platform, $contentType);
+        list($response) = $this->listAdNegativeKeywordListsWithHttpInfo($account_id, $ad_account_id, $customer_id, $platform, $contentType);
         return $response;
     }
 
@@ -9039,7 +9130,8 @@ class AdAccountsApi
      * List negative keyword lists
      *
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string|null $platform (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdNegativeKeywordLists'] to see the possible values for this operation
      *
@@ -9047,9 +9139,9 @@ class AdAccountsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListAdNegativeKeywordLists200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAdNegativeKeywordListsWithHttpInfo($account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['listAdNegativeKeywordLists'][0])
+    public function listAdNegativeKeywordListsWithHttpInfo($account_id, $ad_account_id = null, $customer_id = null, $platform = null, string $contentType = self::contentTypes['listAdNegativeKeywordLists'][0])
     {
-        $request = $this->listAdNegativeKeywordListsRequest($account_id, $customer_id, $platform, $contentType);
+        $request = $this->listAdNegativeKeywordListsRequest($account_id, $ad_account_id, $customer_id, $platform, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9168,16 +9260,17 @@ class AdAccountsApi
      * List negative keyword lists
      *
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string|null $platform (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdNegativeKeywordLists'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdNegativeKeywordListsAsync($account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['listAdNegativeKeywordLists'][0])
+    public function listAdNegativeKeywordListsAsync($account_id, $ad_account_id = null, $customer_id = null, $platform = null, string $contentType = self::contentTypes['listAdNegativeKeywordLists'][0])
     {
-        return $this->listAdNegativeKeywordListsAsyncWithHttpInfo($account_id, $customer_id, $platform, $contentType)
+        return $this->listAdNegativeKeywordListsAsyncWithHttpInfo($account_id, $ad_account_id, $customer_id, $platform, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9191,17 +9284,18 @@ class AdAccountsApi
      * List negative keyword lists
      *
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string|null $platform (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdNegativeKeywordLists'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdNegativeKeywordListsAsyncWithHttpInfo($account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['listAdNegativeKeywordLists'][0])
+    public function listAdNegativeKeywordListsAsyncWithHttpInfo($account_id, $ad_account_id = null, $customer_id = null, $platform = null, string $contentType = self::contentTypes['listAdNegativeKeywordLists'][0])
     {
         $returnType = '\Zernio\Model\ListAdNegativeKeywordLists200Response';
-        $request = $this->listAdNegativeKeywordListsRequest($account_id, $customer_id, $platform, $contentType);
+        $request = $this->listAdNegativeKeywordListsRequest($account_id, $ad_account_id, $customer_id, $platform, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9243,14 +9337,15 @@ class AdAccountsApi
      * Create request for operation 'listAdNegativeKeywordLists'
      *
      * @param  string $account_id (required)
-     * @param  string|null $customer_id (optional)
+     * @param  string|null $ad_account_id (optional)
+     * @param  string|null $customer_id (optional) (deprecated)
      * @param  string|null $platform (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdNegativeKeywordLists'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAdNegativeKeywordListsRequest($account_id, $customer_id = null, $platform = null, string $contentType = self::contentTypes['listAdNegativeKeywordLists'][0])
+    public function listAdNegativeKeywordListsRequest($account_id, $ad_account_id = null, $customer_id = null, $platform = null, string $contentType = self::contentTypes['listAdNegativeKeywordLists'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -9261,6 +9356,10 @@ class AdAccountsApi
         }
         if (!preg_match("/^[a-fA-F0-9]{24}$/", $account_id)) {
             throw new \InvalidArgumentException("invalid value for \"account_id\" when calling AdAccountsApi.listAdNegativeKeywordLists, must conform to the pattern /^[a-fA-F0-9]{24}$/.");
+        }
+        
+        if ($ad_account_id !== null && !preg_match("/^\\d+$/", $ad_account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"ad_account_id\" when calling AdAccountsApi.listAdNegativeKeywordLists, must conform to the pattern /^\\d+$/.");
         }
         
         if ($customer_id !== null && !preg_match("/^\\d+$/", $customer_id)) {
@@ -9284,6 +9383,15 @@ class AdAccountsApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -12257,7 +12365,8 @@ class AdAccountsApi
      * List TikTok ad pixels
      *
      * @param  string $account_id Zernio SocialAccount ID. (required)
-     * @param  string|null $advertiser_id Advertiser belonging to this connection. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (TikTok advertiser id, digits only). Defaults to the first advertiser on the connection. (optional)
+     * @param  string|null $advertiser_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string|null $code Filter by a Pixel Code. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTikTokAdPixels'] to see the possible values for this operation
      *
@@ -12265,9 +12374,9 @@ class AdAccountsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListTikTokAdPixels200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
-    public function listTikTokAdPixels($account_id, $advertiser_id = null, $code = null, string $contentType = self::contentTypes['listTikTokAdPixels'][0])
+    public function listTikTokAdPixels($account_id, $ad_account_id = null, $advertiser_id = null, $code = null, string $contentType = self::contentTypes['listTikTokAdPixels'][0])
     {
-        list($response) = $this->listTikTokAdPixelsWithHttpInfo($account_id, $advertiser_id, $code, $contentType);
+        list($response) = $this->listTikTokAdPixelsWithHttpInfo($account_id, $ad_account_id, $advertiser_id, $code, $contentType);
         return $response;
     }
 
@@ -12277,7 +12386,8 @@ class AdAccountsApi
      * List TikTok ad pixels
      *
      * @param  string $account_id Zernio SocialAccount ID. (required)
-     * @param  string|null $advertiser_id Advertiser belonging to this connection. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (TikTok advertiser id, digits only). Defaults to the first advertiser on the connection. (optional)
+     * @param  string|null $advertiser_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string|null $code Filter by a Pixel Code. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTikTokAdPixels'] to see the possible values for this operation
      *
@@ -12285,9 +12395,9 @@ class AdAccountsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListTikTokAdPixels200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listTikTokAdPixelsWithHttpInfo($account_id, $advertiser_id = null, $code = null, string $contentType = self::contentTypes['listTikTokAdPixels'][0])
+    public function listTikTokAdPixelsWithHttpInfo($account_id, $ad_account_id = null, $advertiser_id = null, $code = null, string $contentType = self::contentTypes['listTikTokAdPixels'][0])
     {
-        $request = $this->listTikTokAdPixelsRequest($account_id, $advertiser_id, $code, $contentType);
+        $request = $this->listTikTokAdPixelsRequest($account_id, $ad_account_id, $advertiser_id, $code, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -12420,16 +12530,17 @@ class AdAccountsApi
      * List TikTok ad pixels
      *
      * @param  string $account_id Zernio SocialAccount ID. (required)
-     * @param  string|null $advertiser_id Advertiser belonging to this connection. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (TikTok advertiser id, digits only). Defaults to the first advertiser on the connection. (optional)
+     * @param  string|null $advertiser_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string|null $code Filter by a Pixel Code. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTikTokAdPixels'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listTikTokAdPixelsAsync($account_id, $advertiser_id = null, $code = null, string $contentType = self::contentTypes['listTikTokAdPixels'][0])
+    public function listTikTokAdPixelsAsync($account_id, $ad_account_id = null, $advertiser_id = null, $code = null, string $contentType = self::contentTypes['listTikTokAdPixels'][0])
     {
-        return $this->listTikTokAdPixelsAsyncWithHttpInfo($account_id, $advertiser_id, $code, $contentType)
+        return $this->listTikTokAdPixelsAsyncWithHttpInfo($account_id, $ad_account_id, $advertiser_id, $code, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -12443,17 +12554,18 @@ class AdAccountsApi
      * List TikTok ad pixels
      *
      * @param  string $account_id Zernio SocialAccount ID. (required)
-     * @param  string|null $advertiser_id Advertiser belonging to this connection. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (TikTok advertiser id, digits only). Defaults to the first advertiser on the connection. (optional)
+     * @param  string|null $advertiser_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string|null $code Filter by a Pixel Code. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTikTokAdPixels'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listTikTokAdPixelsAsyncWithHttpInfo($account_id, $advertiser_id = null, $code = null, string $contentType = self::contentTypes['listTikTokAdPixels'][0])
+    public function listTikTokAdPixelsAsyncWithHttpInfo($account_id, $ad_account_id = null, $advertiser_id = null, $code = null, string $contentType = self::contentTypes['listTikTokAdPixels'][0])
     {
         $returnType = '\Zernio\Model\ListTikTokAdPixels200Response';
-        $request = $this->listTikTokAdPixelsRequest($account_id, $advertiser_id, $code, $contentType);
+        $request = $this->listTikTokAdPixelsRequest($account_id, $ad_account_id, $advertiser_id, $code, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -12495,14 +12607,15 @@ class AdAccountsApi
      * Create request for operation 'listTikTokAdPixels'
      *
      * @param  string $account_id Zernio SocialAccount ID. (required)
-     * @param  string|null $advertiser_id Advertiser belonging to this connection. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (TikTok advertiser id, digits only). Defaults to the first advertiser on the connection. (optional)
+     * @param  string|null $advertiser_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string|null $code Filter by a Pixel Code. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listTikTokAdPixels'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listTikTokAdPixelsRequest($account_id, $advertiser_id = null, $code = null, string $contentType = self::contentTypes['listTikTokAdPixels'][0])
+    public function listTikTokAdPixelsRequest($account_id, $ad_account_id = null, $advertiser_id = null, $code = null, string $contentType = self::contentTypes['listTikTokAdPixels'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -12515,6 +12628,7 @@ class AdAccountsApi
             throw new \InvalidArgumentException("invalid value for \"account_id\" when calling AdAccountsApi.listTikTokAdPixels, must conform to the pattern /^[a-fA-F0-9]{24}$/.");
         }
         
+
 
 
 
@@ -12533,6 +12647,15 @@ class AdAccountsApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(

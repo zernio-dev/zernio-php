@@ -2881,7 +2881,8 @@ class ConversionsApi
      * List conversion actions
      *
      * @param  string $account_id SocialAccount _id (must be a googleads account). (required)
-     * @param  string|null $customer_id Google Ads customer id (digits only). Resolved automatically when the connection has exactly one accessible customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Resolved automatically when the connection has exactly one accessible customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string|null $type Filter by Google&#39;s ConversionActionType enum (e.g. WEBPAGE, UPLOAD_CLICKS). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionActions'] to see the possible values for this operation
      *
@@ -2889,9 +2890,9 @@ class ConversionsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListConversionActions200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
-    public function listConversionActions($account_id, $customer_id = null, $type = null, string $contentType = self::contentTypes['listConversionActions'][0])
+    public function listConversionActions($account_id, $ad_account_id = null, $customer_id = null, $type = null, string $contentType = self::contentTypes['listConversionActions'][0])
     {
-        list($response) = $this->listConversionActionsWithHttpInfo($account_id, $customer_id, $type, $contentType);
+        list($response) = $this->listConversionActionsWithHttpInfo($account_id, $ad_account_id, $customer_id, $type, $contentType);
         return $response;
     }
 
@@ -2901,7 +2902,8 @@ class ConversionsApi
      * List conversion actions
      *
      * @param  string $account_id SocialAccount _id (must be a googleads account). (required)
-     * @param  string|null $customer_id Google Ads customer id (digits only). Resolved automatically when the connection has exactly one accessible customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Resolved automatically when the connection has exactly one accessible customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string|null $type Filter by Google&#39;s ConversionActionType enum (e.g. WEBPAGE, UPLOAD_CLICKS). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionActions'] to see the possible values for this operation
      *
@@ -2909,9 +2911,9 @@ class ConversionsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListConversionActions200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listConversionActionsWithHttpInfo($account_id, $customer_id = null, $type = null, string $contentType = self::contentTypes['listConversionActions'][0])
+    public function listConversionActionsWithHttpInfo($account_id, $ad_account_id = null, $customer_id = null, $type = null, string $contentType = self::contentTypes['listConversionActions'][0])
     {
-        $request = $this->listConversionActionsRequest($account_id, $customer_id, $type, $contentType);
+        $request = $this->listConversionActionsRequest($account_id, $ad_account_id, $customer_id, $type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3044,16 +3046,17 @@ class ConversionsApi
      * List conversion actions
      *
      * @param  string $account_id SocialAccount _id (must be a googleads account). (required)
-     * @param  string|null $customer_id Google Ads customer id (digits only). Resolved automatically when the connection has exactly one accessible customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Resolved automatically when the connection has exactly one accessible customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string|null $type Filter by Google&#39;s ConversionActionType enum (e.g. WEBPAGE, UPLOAD_CLICKS). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionActions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listConversionActionsAsync($account_id, $customer_id = null, $type = null, string $contentType = self::contentTypes['listConversionActions'][0])
+    public function listConversionActionsAsync($account_id, $ad_account_id = null, $customer_id = null, $type = null, string $contentType = self::contentTypes['listConversionActions'][0])
     {
-        return $this->listConversionActionsAsyncWithHttpInfo($account_id, $customer_id, $type, $contentType)
+        return $this->listConversionActionsAsyncWithHttpInfo($account_id, $ad_account_id, $customer_id, $type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3067,17 +3070,18 @@ class ConversionsApi
      * List conversion actions
      *
      * @param  string $account_id SocialAccount _id (must be a googleads account). (required)
-     * @param  string|null $customer_id Google Ads customer id (digits only). Resolved automatically when the connection has exactly one accessible customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Resolved automatically when the connection has exactly one accessible customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string|null $type Filter by Google&#39;s ConversionActionType enum (e.g. WEBPAGE, UPLOAD_CLICKS). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionActions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listConversionActionsAsyncWithHttpInfo($account_id, $customer_id = null, $type = null, string $contentType = self::contentTypes['listConversionActions'][0])
+    public function listConversionActionsAsyncWithHttpInfo($account_id, $ad_account_id = null, $customer_id = null, $type = null, string $contentType = self::contentTypes['listConversionActions'][0])
     {
         $returnType = '\Zernio\Model\ListConversionActions200Response';
-        $request = $this->listConversionActionsRequest($account_id, $customer_id, $type, $contentType);
+        $request = $this->listConversionActionsRequest($account_id, $ad_account_id, $customer_id, $type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3119,14 +3123,15 @@ class ConversionsApi
      * Create request for operation 'listConversionActions'
      *
      * @param  string $account_id SocialAccount _id (must be a googleads account). (required)
-     * @param  string|null $customer_id Google Ads customer id (digits only). Resolved automatically when the connection has exactly one accessible customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Resolved automatically when the connection has exactly one accessible customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string|null $type Filter by Google&#39;s ConversionActionType enum (e.g. WEBPAGE, UPLOAD_CLICKS). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionActions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listConversionActionsRequest($account_id, $customer_id = null, $type = null, string $contentType = self::contentTypes['listConversionActions'][0])
+    public function listConversionActionsRequest($account_id, $ad_account_id = null, $customer_id = null, $type = null, string $contentType = self::contentTypes['listConversionActions'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -3135,6 +3140,7 @@ class ConversionsApi
                 'Missing the required parameter $account_id when calling listConversionActions'
             );
         }
+
 
 
 
@@ -3154,6 +3160,15 @@ class ConversionsApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(

@@ -1842,7 +1842,8 @@ class AdInsightsApi
      * Google Ads search terms report
      *
      * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  \DateTime|null $from_date Defaults to 30 days ago. (optional)
      * @param  \DateTime|null $to_date Defaults to today. (optional)
      * @param  string|null $campaign_id Numeric Google campaign id filter. (optional)
@@ -1855,9 +1856,9 @@ class AdInsightsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetAdsSearchTerms200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
-    public function getAdsSearchTerms($account_id, $customer_id = null, $from_date = null, $to_date = null, $campaign_id = null, $ad_set_id = null, $ad_group_id = null, $page_token = null, string $contentType = self::contentTypes['getAdsSearchTerms'][0])
+    public function getAdsSearchTerms($account_id, $ad_account_id = null, $customer_id = null, $from_date = null, $to_date = null, $campaign_id = null, $ad_set_id = null, $ad_group_id = null, $page_token = null, string $contentType = self::contentTypes['getAdsSearchTerms'][0])
     {
-        list($response) = $this->getAdsSearchTermsWithHttpInfo($account_id, $customer_id, $from_date, $to_date, $campaign_id, $ad_set_id, $ad_group_id, $page_token, $contentType);
+        list($response) = $this->getAdsSearchTermsWithHttpInfo($account_id, $ad_account_id, $customer_id, $from_date, $to_date, $campaign_id, $ad_set_id, $ad_group_id, $page_token, $contentType);
         return $response;
     }
 
@@ -1867,7 +1868,8 @@ class AdInsightsApi
      * Google Ads search terms report
      *
      * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  \DateTime|null $from_date Defaults to 30 days ago. (optional)
      * @param  \DateTime|null $to_date Defaults to today. (optional)
      * @param  string|null $campaign_id Numeric Google campaign id filter. (optional)
@@ -1880,9 +1882,9 @@ class AdInsightsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetAdsSearchTerms200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAdsSearchTermsWithHttpInfo($account_id, $customer_id = null, $from_date = null, $to_date = null, $campaign_id = null, $ad_set_id = null, $ad_group_id = null, $page_token = null, string $contentType = self::contentTypes['getAdsSearchTerms'][0])
+    public function getAdsSearchTermsWithHttpInfo($account_id, $ad_account_id = null, $customer_id = null, $from_date = null, $to_date = null, $campaign_id = null, $ad_set_id = null, $ad_group_id = null, $page_token = null, string $contentType = self::contentTypes['getAdsSearchTerms'][0])
     {
-        $request = $this->getAdsSearchTermsRequest($account_id, $customer_id, $from_date, $to_date, $campaign_id, $ad_set_id, $ad_group_id, $page_token, $contentType);
+        $request = $this->getAdsSearchTermsRequest($account_id, $ad_account_id, $customer_id, $from_date, $to_date, $campaign_id, $ad_set_id, $ad_group_id, $page_token, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2015,7 +2017,8 @@ class AdInsightsApi
      * Google Ads search terms report
      *
      * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  \DateTime|null $from_date Defaults to 30 days ago. (optional)
      * @param  \DateTime|null $to_date Defaults to today. (optional)
      * @param  string|null $campaign_id Numeric Google campaign id filter. (optional)
@@ -2027,9 +2030,9 @@ class AdInsightsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdsSearchTermsAsync($account_id, $customer_id = null, $from_date = null, $to_date = null, $campaign_id = null, $ad_set_id = null, $ad_group_id = null, $page_token = null, string $contentType = self::contentTypes['getAdsSearchTerms'][0])
+    public function getAdsSearchTermsAsync($account_id, $ad_account_id = null, $customer_id = null, $from_date = null, $to_date = null, $campaign_id = null, $ad_set_id = null, $ad_group_id = null, $page_token = null, string $contentType = self::contentTypes['getAdsSearchTerms'][0])
     {
-        return $this->getAdsSearchTermsAsyncWithHttpInfo($account_id, $customer_id, $from_date, $to_date, $campaign_id, $ad_set_id, $ad_group_id, $page_token, $contentType)
+        return $this->getAdsSearchTermsAsyncWithHttpInfo($account_id, $ad_account_id, $customer_id, $from_date, $to_date, $campaign_id, $ad_set_id, $ad_group_id, $page_token, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2043,7 +2046,8 @@ class AdInsightsApi
      * Google Ads search terms report
      *
      * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  \DateTime|null $from_date Defaults to 30 days ago. (optional)
      * @param  \DateTime|null $to_date Defaults to today. (optional)
      * @param  string|null $campaign_id Numeric Google campaign id filter. (optional)
@@ -2055,10 +2059,10 @@ class AdInsightsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdsSearchTermsAsyncWithHttpInfo($account_id, $customer_id = null, $from_date = null, $to_date = null, $campaign_id = null, $ad_set_id = null, $ad_group_id = null, $page_token = null, string $contentType = self::contentTypes['getAdsSearchTerms'][0])
+    public function getAdsSearchTermsAsyncWithHttpInfo($account_id, $ad_account_id = null, $customer_id = null, $from_date = null, $to_date = null, $campaign_id = null, $ad_set_id = null, $ad_group_id = null, $page_token = null, string $contentType = self::contentTypes['getAdsSearchTerms'][0])
     {
         $returnType = '\Zernio\Model\GetAdsSearchTerms200Response';
-        $request = $this->getAdsSearchTermsRequest($account_id, $customer_id, $from_date, $to_date, $campaign_id, $ad_set_id, $ad_group_id, $page_token, $contentType);
+        $request = $this->getAdsSearchTermsRequest($account_id, $ad_account_id, $customer_id, $from_date, $to_date, $campaign_id, $ad_set_id, $ad_group_id, $page_token, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2100,7 +2104,8 @@ class AdInsightsApi
      * Create request for operation 'getAdsSearchTerms'
      *
      * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  \DateTime|null $from_date Defaults to 30 days ago. (optional)
      * @param  \DateTime|null $to_date Defaults to today. (optional)
      * @param  string|null $campaign_id Numeric Google campaign id filter. (optional)
@@ -2112,7 +2117,7 @@ class AdInsightsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAdsSearchTermsRequest($account_id, $customer_id = null, $from_date = null, $to_date = null, $campaign_id = null, $ad_set_id = null, $ad_group_id = null, $page_token = null, string $contentType = self::contentTypes['getAdsSearchTerms'][0])
+    public function getAdsSearchTermsRequest($account_id, $ad_account_id = null, $customer_id = null, $from_date = null, $to_date = null, $campaign_id = null, $ad_set_id = null, $ad_group_id = null, $page_token = null, string $contentType = self::contentTypes['getAdsSearchTerms'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -2121,6 +2126,7 @@ class AdInsightsApi
                 'Missing the required parameter $account_id when calling getAdsSearchTerms'
             );
         }
+
 
 
 
@@ -2145,6 +2151,15 @@ class AdInsightsApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -2665,7 +2680,8 @@ class AdInsightsApi
      *
      * @param  string $lead_id Numeric lead id from /v1/ads/local-services/leads. (required)
      * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string|null $page_token Cursor from paging.nextPageToken of the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLocalServicesLeadConversations'] to see the possible values for this operation
      *
@@ -2673,9 +2689,9 @@ class AdInsightsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListLocalServicesLeadConversations200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
-    public function listLocalServicesLeadConversations($lead_id, $account_id, $customer_id = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeadConversations'][0])
+    public function listLocalServicesLeadConversations($lead_id, $account_id, $ad_account_id = null, $customer_id = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeadConversations'][0])
     {
-        list($response) = $this->listLocalServicesLeadConversationsWithHttpInfo($lead_id, $account_id, $customer_id, $page_token, $contentType);
+        list($response) = $this->listLocalServicesLeadConversationsWithHttpInfo($lead_id, $account_id, $ad_account_id, $customer_id, $page_token, $contentType);
         return $response;
     }
 
@@ -2686,7 +2702,8 @@ class AdInsightsApi
      *
      * @param  string $lead_id Numeric lead id from /v1/ads/local-services/leads. (required)
      * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string|null $page_token Cursor from paging.nextPageToken of the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLocalServicesLeadConversations'] to see the possible values for this operation
      *
@@ -2694,9 +2711,9 @@ class AdInsightsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListLocalServicesLeadConversations200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listLocalServicesLeadConversationsWithHttpInfo($lead_id, $account_id, $customer_id = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeadConversations'][0])
+    public function listLocalServicesLeadConversationsWithHttpInfo($lead_id, $account_id, $ad_account_id = null, $customer_id = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeadConversations'][0])
     {
-        $request = $this->listLocalServicesLeadConversationsRequest($lead_id, $account_id, $customer_id, $page_token, $contentType);
+        $request = $this->listLocalServicesLeadConversationsRequest($lead_id, $account_id, $ad_account_id, $customer_id, $page_token, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2830,16 +2847,17 @@ class AdInsightsApi
      *
      * @param  string $lead_id Numeric lead id from /v1/ads/local-services/leads. (required)
      * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string|null $page_token Cursor from paging.nextPageToken of the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLocalServicesLeadConversations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listLocalServicesLeadConversationsAsync($lead_id, $account_id, $customer_id = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeadConversations'][0])
+    public function listLocalServicesLeadConversationsAsync($lead_id, $account_id, $ad_account_id = null, $customer_id = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeadConversations'][0])
     {
-        return $this->listLocalServicesLeadConversationsAsyncWithHttpInfo($lead_id, $account_id, $customer_id, $page_token, $contentType)
+        return $this->listLocalServicesLeadConversationsAsyncWithHttpInfo($lead_id, $account_id, $ad_account_id, $customer_id, $page_token, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2854,17 +2872,18 @@ class AdInsightsApi
      *
      * @param  string $lead_id Numeric lead id from /v1/ads/local-services/leads. (required)
      * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string|null $page_token Cursor from paging.nextPageToken of the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLocalServicesLeadConversations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listLocalServicesLeadConversationsAsyncWithHttpInfo($lead_id, $account_id, $customer_id = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeadConversations'][0])
+    public function listLocalServicesLeadConversationsAsyncWithHttpInfo($lead_id, $account_id, $ad_account_id = null, $customer_id = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeadConversations'][0])
     {
         $returnType = '\Zernio\Model\ListLocalServicesLeadConversations200Response';
-        $request = $this->listLocalServicesLeadConversationsRequest($lead_id, $account_id, $customer_id, $page_token, $contentType);
+        $request = $this->listLocalServicesLeadConversationsRequest($lead_id, $account_id, $ad_account_id, $customer_id, $page_token, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2907,14 +2926,15 @@ class AdInsightsApi
      *
      * @param  string $lead_id Numeric lead id from /v1/ads/local-services/leads. (required)
      * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string|null $page_token Cursor from paging.nextPageToken of the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLocalServicesLeadConversations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listLocalServicesLeadConversationsRequest($lead_id, $account_id, $customer_id = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeadConversations'][0])
+    public function listLocalServicesLeadConversationsRequest($lead_id, $account_id, $ad_account_id = null, $customer_id = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeadConversations'][0])
     {
 
         // verify the required parameter 'lead_id' is set
@@ -2934,6 +2954,7 @@ class AdInsightsApi
 
 
 
+
         $resourcePath = '/v1/ads/local-services/leads/{leadId}/conversations';
         $formParams = [];
         $queryParams = [];
@@ -2949,6 +2970,15 @@ class AdInsightsApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -3043,7 +3073,8 @@ class AdInsightsApi
      * Google Local Services Ads leads
      *
      * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  \DateTime|null $from_date Leads created at/after this day. (optional)
      * @param  \DateTime|null $to_date Leads created at/before this day. (optional)
      * @param  string|null $lead_type lead_type (optional)
@@ -3056,9 +3087,9 @@ class AdInsightsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListLocalServicesLeads200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
-    public function listLocalServicesLeads($account_id, $customer_id = null, $from_date = null, $to_date = null, $lead_type = null, $lead_status = null, $charged_only = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeads'][0])
+    public function listLocalServicesLeads($account_id, $ad_account_id = null, $customer_id = null, $from_date = null, $to_date = null, $lead_type = null, $lead_status = null, $charged_only = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeads'][0])
     {
-        list($response) = $this->listLocalServicesLeadsWithHttpInfo($account_id, $customer_id, $from_date, $to_date, $lead_type, $lead_status, $charged_only, $page_token, $contentType);
+        list($response) = $this->listLocalServicesLeadsWithHttpInfo($account_id, $ad_account_id, $customer_id, $from_date, $to_date, $lead_type, $lead_status, $charged_only, $page_token, $contentType);
         return $response;
     }
 
@@ -3068,7 +3099,8 @@ class AdInsightsApi
      * Google Local Services Ads leads
      *
      * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  \DateTime|null $from_date Leads created at/after this day. (optional)
      * @param  \DateTime|null $to_date Leads created at/before this day. (optional)
      * @param  string|null $lead_type (optional)
@@ -3081,9 +3113,9 @@ class AdInsightsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListLocalServicesLeads200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listLocalServicesLeadsWithHttpInfo($account_id, $customer_id = null, $from_date = null, $to_date = null, $lead_type = null, $lead_status = null, $charged_only = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeads'][0])
+    public function listLocalServicesLeadsWithHttpInfo($account_id, $ad_account_id = null, $customer_id = null, $from_date = null, $to_date = null, $lead_type = null, $lead_status = null, $charged_only = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeads'][0])
     {
-        $request = $this->listLocalServicesLeadsRequest($account_id, $customer_id, $from_date, $to_date, $lead_type, $lead_status, $charged_only, $page_token, $contentType);
+        $request = $this->listLocalServicesLeadsRequest($account_id, $ad_account_id, $customer_id, $from_date, $to_date, $lead_type, $lead_status, $charged_only, $page_token, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3216,7 +3248,8 @@ class AdInsightsApi
      * Google Local Services Ads leads
      *
      * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  \DateTime|null $from_date Leads created at/after this day. (optional)
      * @param  \DateTime|null $to_date Leads created at/before this day. (optional)
      * @param  string|null $lead_type (optional)
@@ -3228,9 +3261,9 @@ class AdInsightsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listLocalServicesLeadsAsync($account_id, $customer_id = null, $from_date = null, $to_date = null, $lead_type = null, $lead_status = null, $charged_only = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeads'][0])
+    public function listLocalServicesLeadsAsync($account_id, $ad_account_id = null, $customer_id = null, $from_date = null, $to_date = null, $lead_type = null, $lead_status = null, $charged_only = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeads'][0])
     {
-        return $this->listLocalServicesLeadsAsyncWithHttpInfo($account_id, $customer_id, $from_date, $to_date, $lead_type, $lead_status, $charged_only, $page_token, $contentType)
+        return $this->listLocalServicesLeadsAsyncWithHttpInfo($account_id, $ad_account_id, $customer_id, $from_date, $to_date, $lead_type, $lead_status, $charged_only, $page_token, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3244,7 +3277,8 @@ class AdInsightsApi
      * Google Local Services Ads leads
      *
      * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  \DateTime|null $from_date Leads created at/after this day. (optional)
      * @param  \DateTime|null $to_date Leads created at/before this day. (optional)
      * @param  string|null $lead_type (optional)
@@ -3256,10 +3290,10 @@ class AdInsightsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listLocalServicesLeadsAsyncWithHttpInfo($account_id, $customer_id = null, $from_date = null, $to_date = null, $lead_type = null, $lead_status = null, $charged_only = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeads'][0])
+    public function listLocalServicesLeadsAsyncWithHttpInfo($account_id, $ad_account_id = null, $customer_id = null, $from_date = null, $to_date = null, $lead_type = null, $lead_status = null, $charged_only = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeads'][0])
     {
         $returnType = '\Zernio\Model\ListLocalServicesLeads200Response';
-        $request = $this->listLocalServicesLeadsRequest($account_id, $customer_id, $from_date, $to_date, $lead_type, $lead_status, $charged_only, $page_token, $contentType);
+        $request = $this->listLocalServicesLeadsRequest($account_id, $ad_account_id, $customer_id, $from_date, $to_date, $lead_type, $lead_status, $charged_only, $page_token, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3301,7 +3335,8 @@ class AdInsightsApi
      * Create request for operation 'listLocalServicesLeads'
      *
      * @param  string $account_id Google ads SocialAccount id. (required)
-     * @param  string|null $customer_id Numeric Google Ads customer id (no dashes). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (Google customer ID, digits only). Defaults to the account&#39;s connected customer. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  \DateTime|null $from_date Leads created at/after this day. (optional)
      * @param  \DateTime|null $to_date Leads created at/before this day. (optional)
      * @param  string|null $lead_type (optional)
@@ -3313,7 +3348,7 @@ class AdInsightsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listLocalServicesLeadsRequest($account_id, $customer_id = null, $from_date = null, $to_date = null, $lead_type = null, $lead_status = null, $charged_only = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeads'][0])
+    public function listLocalServicesLeadsRequest($account_id, $ad_account_id = null, $customer_id = null, $from_date = null, $to_date = null, $lead_type = null, $lead_status = null, $charged_only = null, $page_token = null, string $contentType = self::contentTypes['listLocalServicesLeads'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -3322,6 +3357,7 @@ class AdInsightsApi
                 'Missing the required parameter $account_id when calling listLocalServicesLeads'
             );
         }
+
 
 
 
@@ -3346,6 +3382,15 @@ class AdInsightsApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -3479,7 +3524,8 @@ class AdInsightsApi
      * @param  string $account_id Zernio SocialAccount id (posting or ads variant); its platform selects the Meta or Google contract. (required)
      * @param  string|null $object_id Meta only (required there): insights node (act_&lt;n&gt;, campaign id, ad set id or ad id). (optional)
      * @param  string|null $query Google only (required there): the GAQL SELECT statement to run. (optional)
-     * @param  string|null $customer_id Google only: numeric customer id (no dashes) when the connection has several Google Ads accounts. (optional)
+     * @param  string|null $ad_account_id Google only: platform ad account ID (Google customer ID, digits only) when the connection has several Google Ads accounts. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string|null $page_token Google only: cursor from paging.nextPageToken of the previous page. (optional)
      * @param  string|null $level Row granularity (optional)
      * @param  string|null $fields Comma-separated Graph insights fields (e.g. spend,impressions,frequency,website_purchase_roas). Omitted &#x3D; Meta&#39;s default set. (optional)
@@ -3501,9 +3547,9 @@ class AdInsightsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\QueryAdInsights200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
-    public function queryAdInsights($account_id, $object_id = null, $query = null, $customer_id = null, $page_token = null, $level = null, $fields = null, $breakdowns = null, $action_breakdowns = null, $action_attribution_windows = null, $action_report_time = null, $use_unified_attribution_setting = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
+    public function queryAdInsights($account_id, $object_id = null, $query = null, $ad_account_id = null, $customer_id = null, $page_token = null, $level = null, $fields = null, $breakdowns = null, $action_breakdowns = null, $action_attribution_windows = null, $action_report_time = null, $use_unified_attribution_setting = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
     {
-        list($response) = $this->queryAdInsightsWithHttpInfo($account_id, $object_id, $query, $customer_id, $page_token, $level, $fields, $breakdowns, $action_breakdowns, $action_attribution_windows, $action_report_time, $use_unified_attribution_setting, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after, $contentType);
+        list($response) = $this->queryAdInsightsWithHttpInfo($account_id, $object_id, $query, $ad_account_id, $customer_id, $page_token, $level, $fields, $breakdowns, $action_breakdowns, $action_attribution_windows, $action_report_time, $use_unified_attribution_setting, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after, $contentType);
         return $response;
     }
 
@@ -3515,7 +3561,8 @@ class AdInsightsApi
      * @param  string $account_id Zernio SocialAccount id (posting or ads variant); its platform selects the Meta or Google contract. (required)
      * @param  string|null $object_id Meta only (required there): insights node (act_&lt;n&gt;, campaign id, ad set id or ad id). (optional)
      * @param  string|null $query Google only (required there): the GAQL SELECT statement to run. (optional)
-     * @param  string|null $customer_id Google only: numeric customer id (no dashes) when the connection has several Google Ads accounts. (optional)
+     * @param  string|null $ad_account_id Google only: platform ad account ID (Google customer ID, digits only) when the connection has several Google Ads accounts. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string|null $page_token Google only: cursor from paging.nextPageToken of the previous page. (optional)
      * @param  string|null $level Row granularity (optional)
      * @param  string|null $fields Comma-separated Graph insights fields (e.g. spend,impressions,frequency,website_purchase_roas). Omitted &#x3D; Meta&#39;s default set. (optional)
@@ -3537,9 +3584,9 @@ class AdInsightsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\QueryAdInsights200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function queryAdInsightsWithHttpInfo($account_id, $object_id = null, $query = null, $customer_id = null, $page_token = null, $level = null, $fields = null, $breakdowns = null, $action_breakdowns = null, $action_attribution_windows = null, $action_report_time = null, $use_unified_attribution_setting = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
+    public function queryAdInsightsWithHttpInfo($account_id, $object_id = null, $query = null, $ad_account_id = null, $customer_id = null, $page_token = null, $level = null, $fields = null, $breakdowns = null, $action_breakdowns = null, $action_attribution_windows = null, $action_report_time = null, $use_unified_attribution_setting = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
     {
-        $request = $this->queryAdInsightsRequest($account_id, $object_id, $query, $customer_id, $page_token, $level, $fields, $breakdowns, $action_breakdowns, $action_attribution_windows, $action_report_time, $use_unified_attribution_setting, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after, $contentType);
+        $request = $this->queryAdInsightsRequest($account_id, $object_id, $query, $ad_account_id, $customer_id, $page_token, $level, $fields, $breakdowns, $action_breakdowns, $action_attribution_windows, $action_report_time, $use_unified_attribution_setting, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3660,7 +3707,8 @@ class AdInsightsApi
      * @param  string $account_id Zernio SocialAccount id (posting or ads variant); its platform selects the Meta or Google contract. (required)
      * @param  string|null $object_id Meta only (required there): insights node (act_&lt;n&gt;, campaign id, ad set id or ad id). (optional)
      * @param  string|null $query Google only (required there): the GAQL SELECT statement to run. (optional)
-     * @param  string|null $customer_id Google only: numeric customer id (no dashes) when the connection has several Google Ads accounts. (optional)
+     * @param  string|null $ad_account_id Google only: platform ad account ID (Google customer ID, digits only) when the connection has several Google Ads accounts. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string|null $page_token Google only: cursor from paging.nextPageToken of the previous page. (optional)
      * @param  string|null $level Row granularity (optional)
      * @param  string|null $fields Comma-separated Graph insights fields (e.g. spend,impressions,frequency,website_purchase_roas). Omitted &#x3D; Meta&#39;s default set. (optional)
@@ -3681,9 +3729,9 @@ class AdInsightsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function queryAdInsightsAsync($account_id, $object_id = null, $query = null, $customer_id = null, $page_token = null, $level = null, $fields = null, $breakdowns = null, $action_breakdowns = null, $action_attribution_windows = null, $action_report_time = null, $use_unified_attribution_setting = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
+    public function queryAdInsightsAsync($account_id, $object_id = null, $query = null, $ad_account_id = null, $customer_id = null, $page_token = null, $level = null, $fields = null, $breakdowns = null, $action_breakdowns = null, $action_attribution_windows = null, $action_report_time = null, $use_unified_attribution_setting = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
     {
-        return $this->queryAdInsightsAsyncWithHttpInfo($account_id, $object_id, $query, $customer_id, $page_token, $level, $fields, $breakdowns, $action_breakdowns, $action_attribution_windows, $action_report_time, $use_unified_attribution_setting, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after, $contentType)
+        return $this->queryAdInsightsAsyncWithHttpInfo($account_id, $object_id, $query, $ad_account_id, $customer_id, $page_token, $level, $fields, $breakdowns, $action_breakdowns, $action_attribution_windows, $action_report_time, $use_unified_attribution_setting, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3699,7 +3747,8 @@ class AdInsightsApi
      * @param  string $account_id Zernio SocialAccount id (posting or ads variant); its platform selects the Meta or Google contract. (required)
      * @param  string|null $object_id Meta only (required there): insights node (act_&lt;n&gt;, campaign id, ad set id or ad id). (optional)
      * @param  string|null $query Google only (required there): the GAQL SELECT statement to run. (optional)
-     * @param  string|null $customer_id Google only: numeric customer id (no dashes) when the connection has several Google Ads accounts. (optional)
+     * @param  string|null $ad_account_id Google only: platform ad account ID (Google customer ID, digits only) when the connection has several Google Ads accounts. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string|null $page_token Google only: cursor from paging.nextPageToken of the previous page. (optional)
      * @param  string|null $level Row granularity (optional)
      * @param  string|null $fields Comma-separated Graph insights fields (e.g. spend,impressions,frequency,website_purchase_roas). Omitted &#x3D; Meta&#39;s default set. (optional)
@@ -3720,10 +3769,10 @@ class AdInsightsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function queryAdInsightsAsyncWithHttpInfo($account_id, $object_id = null, $query = null, $customer_id = null, $page_token = null, $level = null, $fields = null, $breakdowns = null, $action_breakdowns = null, $action_attribution_windows = null, $action_report_time = null, $use_unified_attribution_setting = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
+    public function queryAdInsightsAsyncWithHttpInfo($account_id, $object_id = null, $query = null, $ad_account_id = null, $customer_id = null, $page_token = null, $level = null, $fields = null, $breakdowns = null, $action_breakdowns = null, $action_attribution_windows = null, $action_report_time = null, $use_unified_attribution_setting = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
     {
         $returnType = '\Zernio\Model\QueryAdInsights200Response';
-        $request = $this->queryAdInsightsRequest($account_id, $object_id, $query, $customer_id, $page_token, $level, $fields, $breakdowns, $action_breakdowns, $action_attribution_windows, $action_report_time, $use_unified_attribution_setting, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after, $contentType);
+        $request = $this->queryAdInsightsRequest($account_id, $object_id, $query, $ad_account_id, $customer_id, $page_token, $level, $fields, $breakdowns, $action_breakdowns, $action_attribution_windows, $action_report_time, $use_unified_attribution_setting, $filtering, $date_preset, $from_date, $to_date, $time_increment, $limit, $after, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3767,7 +3816,8 @@ class AdInsightsApi
      * @param  string $account_id Zernio SocialAccount id (posting or ads variant); its platform selects the Meta or Google contract. (required)
      * @param  string|null $object_id Meta only (required there): insights node (act_&lt;n&gt;, campaign id, ad set id or ad id). (optional)
      * @param  string|null $query Google only (required there): the GAQL SELECT statement to run. (optional)
-     * @param  string|null $customer_id Google only: numeric customer id (no dashes) when the connection has several Google Ads accounts. (optional)
+     * @param  string|null $ad_account_id Google only: platform ad account ID (Google customer ID, digits only) when the connection has several Google Ads accounts. (optional)
+     * @param  string|null $customer_id Alias of adAccountId, kept for existing callers (optional) (deprecated)
      * @param  string|null $page_token Google only: cursor from paging.nextPageToken of the previous page. (optional)
      * @param  string|null $level Row granularity (optional)
      * @param  string|null $fields Comma-separated Graph insights fields (e.g. spend,impressions,frequency,website_purchase_roas). Omitted &#x3D; Meta&#39;s default set. (optional)
@@ -3788,7 +3838,7 @@ class AdInsightsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function queryAdInsightsRequest($account_id, $object_id = null, $query = null, $customer_id = null, $page_token = null, $level = null, $fields = null, $breakdowns = null, $action_breakdowns = null, $action_attribution_windows = null, $action_report_time = null, $use_unified_attribution_setting = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
+    public function queryAdInsightsRequest($account_id, $object_id = null, $query = null, $ad_account_id = null, $customer_id = null, $page_token = null, $level = null, $fields = null, $breakdowns = null, $action_breakdowns = null, $action_attribution_windows = null, $action_report_time = null, $use_unified_attribution_setting = null, $filtering = null, $date_preset = null, $from_date = null, $to_date = null, $time_increment = null, $limit = 25, $after = null, string $contentType = self::contentTypes['queryAdInsights'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -3803,6 +3853,7 @@ class AdInsightsApi
             throw new \InvalidArgumentException('invalid length for "$query" when calling AdInsightsApi.queryAdInsights, must be smaller than or equal to 10000.');
         }
         
+
 
 
 
@@ -3855,6 +3906,15 @@ class AdInsightsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $query,
             'query', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
