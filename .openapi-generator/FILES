@@ -163,6 +163,7 @@ docs/Model/AnalyticsOverviewDataStaleness.md
 docs/Model/AnalyticsSinglePostResponse.md
 docs/Model/AnalyticsSinglePostResponseMediaItemsInner.md
 docs/Model/ApiKey.md
+docs/Model/ApiKeyCreatedBy.md
 docs/Model/ApiKeyProfileIdsInner.md
 docs/Model/AppealSmsRegistration200Response.md
 docs/Model/AppealSmsRegistrationRequest.md
@@ -2412,6 +2413,7 @@ lib/Model/AnalyticsOverviewDataStaleness.php
 lib/Model/AnalyticsSinglePostResponse.php
 lib/Model/AnalyticsSinglePostResponseMediaItemsInner.php
 lib/Model/ApiKey.php
+lib/Model/ApiKeyCreatedBy.php
 lib/Model/ApiKeyProfileIdsInner.php
 lib/Model/AppealSmsRegistration200Response.php
 lib/Model/AppealSmsRegistrationRequest.php
@@ -4499,3 +4501,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ApiKeyCreatedByTest.php
