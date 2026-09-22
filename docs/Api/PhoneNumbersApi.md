@@ -1362,7 +1362,7 @@ try {
 ## `searchAvailablePhoneNumbers()`
 
 ```php
-searchAvailablePhoneNumbers($country, $type, $prefix, $locality, $contains, $sms, $limit): \Zernio\Model\SearchAvailablePhoneNumbers200Response
+searchAvailablePhoneNumbers($country, $number_type, $area_code, $type, $prefix, $locality, $contains, $sms, $limit): \Zernio\Model\SearchAvailablePhoneNumbers200Response
 ```
 
 Search available numbers
@@ -1387,15 +1387,17 @@ $apiInstance = new Zernio\Api\PhoneNumbersApi(
     $config
 );
 $country = 'US'; // string
-$type = 'type_example'; // string | Number type; defaults to the country's WhatsApp-safe type
-$prefix = 'prefix_example'; // string | Area code
+$number_type = 'number_type_example'; // string | Number type; defaults to the country's WhatsApp-safe type (the same name as on purchase, availability and kyc)
+$area_code = 'area_code_example'; // string | Area code or national dialing code the number must start with, e.g. 415 or 91
+$type = 'type_example'; // string | Alias of numberType, kept for existing callers
+$prefix = 'prefix_example'; // string | Alias of areaCode, kept for existing callers
 $locality = 'locality_example'; // string | City
 $contains = 'contains_example'; // string | Pattern to match within the number
 $sms = True; // bool | true narrows the pool to SMS-capable numbers. Each result still carries its full `features` list for per-number capability badging.
 $limit = 20; // int
 
 try {
-    $result = $apiInstance->searchAvailablePhoneNumbers($country, $type, $prefix, $locality, $contains, $sms, $limit);
+    $result = $apiInstance->searchAvailablePhoneNumbers($country, $number_type, $area_code, $type, $prefix, $locality, $contains, $sms, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PhoneNumbersApi->searchAvailablePhoneNumbers: ', $e->getMessage(), PHP_EOL;
@@ -1407,8 +1409,10 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **country** | **string**|  | [optional] [default to &#39;US&#39;] |
-| **type** | **string**| Number type; defaults to the country&#39;s WhatsApp-safe type | [optional] |
-| **prefix** | **string**| Area code | [optional] |
+| **number_type** | **string**| Number type; defaults to the country&#39;s WhatsApp-safe type (the same name as on purchase, availability and kyc) | [optional] |
+| **area_code** | **string**| Area code or national dialing code the number must start with, e.g. 415 or 91 | [optional] |
+| **type** | **string**| Alias of numberType, kept for existing callers | [optional] |
+| **prefix** | **string**| Alias of areaCode, kept for existing callers | [optional] |
 | **locality** | **string**| City | [optional] |
 | **contains** | **string**| Pattern to match within the number | [optional] |
 | **sms** | **bool**| true narrows the pool to SMS-capable numbers. Each result still carries its full &#x60;features&#x60; list for per-number capability badging. | [optional] |
