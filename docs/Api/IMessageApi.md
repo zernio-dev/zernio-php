@@ -215,7 +215,7 @@ createImessageOptInLink($sender_id, $create_imessage_opt_in_link_request): \Zern
 
 Create a tracked iMessage opt-in link
 
-Generates a per-campaign link that opens Messages on this sender with `body` prefilled. iMessage is send-first: a sender can only message a contact who has written to it (a send to anyone else fails with `recipient_must_message_first`), and the contact's tap-and-send is what opens that door.  Each link carries a unique code in place of the `[opt-in-code]` placeholder; when the contact sends it, the resulting `message.received` webhook (and the stored inbox message's `metadata`) has `optIn: true` and your `parameters` under `optInParameters`, so you can attribute the conversation to the campaign or lead that produced it.  For an untracked link, use the sender's `optInLink` instead.
+Generates a per-campaign link that opens Messages on this sender with `body` prefilled. A thread the contact opens skips the pacing and the first-message content rule that apply when the sender writes first, and it is the only way in for senders without the add-on for new contacts (their sends to anyone else fail with `recipient_must_message_first`).  Each link carries a unique code in place of the `[opt-in-code]` placeholder; when the contact sends it, the resulting `message.received` webhook (and the stored inbox message's `metadata`) has `optIn: true` and your `parameters` under `optInParameters`, so you can attribute the conversation to the campaign or lead that produced it.  For an untracked link, use the sender's `optInLink` instead.
 
 ### Example
 

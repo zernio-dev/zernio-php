@@ -426,6 +426,7 @@ docs/Model/CreateInboxConversation400Response.md
 docs/Model/CreateInboxConversation400ResponseAnyOf.md
 docs/Model/CreateInboxConversation404Response.md
 docs/Model/CreateInboxConversation404ResponseAnyOf.md
+docs/Model/CreateInboxConversation409Response.md
 docs/Model/CreateInboxConversation422Response.md
 docs/Model/CreateInboxConversation422ResponseAnyOf.md
 docs/Model/CreateInboxConversation429Response.md
@@ -2677,6 +2678,7 @@ lib/Model/CreateInboxConversation400Response.php
 lib/Model/CreateInboxConversation400ResponseAnyOf.php
 lib/Model/CreateInboxConversation404Response.php
 lib/Model/CreateInboxConversation404ResponseAnyOf.php
+lib/Model/CreateInboxConversation409Response.php
 lib/Model/CreateInboxConversation422Response.php
 lib/Model/CreateInboxConversation422ResponseAnyOf.php
 lib/Model/CreateInboxConversation429Response.php
@@ -4503,3 +4505,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateInboxConversation409ResponseTest.php
