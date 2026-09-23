@@ -9,6 +9,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**archiveLeadForm()**](LeadGenApi.md#archiveLeadForm) | **DELETE** /v1/ads/lead-forms/{formId} | Archive a lead form |
 | [**createLeadForm()**](LeadGenApi.md#createLeadForm) | **POST** /v1/ads/lead-forms | Create a lead form |
 | [**createTestLead()**](LeadGenApi.md#createTestLead) | **POST** /v1/ads/lead-forms/{formId}/test-leads | Create a test lead |
+| [**deleteTestLead()**](LeadGenApi.md#deleteTestLead) | **DELETE** /v1/ads/lead-forms/{formId}/test-leads | Delete a test lead |
 | [**getLeadForm()**](LeadGenApi.md#getLeadForm) | **GET** /v1/ads/lead-forms/{formId} | Get a lead form |
 | [**listFormLeads()**](LeadGenApi.md#listFormLeads) | **GET** /v1/ads/lead-forms/{formId}/leads | List leads for a single form |
 | [**listLeadForms()**](LeadGenApi.md#listLeadForms) | **GET** /v1/ads/lead-forms | List lead forms |
@@ -193,6 +194,70 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteTestLead()`
+
+```php
+deleteTestLead($form_id, $account_id, $lead_id): \Zernio\Model\DeleteTestLead200Response
+```
+
+Delete a test lead
+
+Removes a test lead created for the form (DELETE /{leadgen_id}), so a new one can be submitted: Meta keeps one test lead per form and refuses a second until the first is gone. The same test lead appears in Meta's Lead Ads Testing Tool. Meta only deletes test leads; a real lead is refused.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\LeadGenApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$form_id = 'form_id_example'; // string
+$account_id = 'account_id_example'; // string | The facebook or metaads account whose Page owns the form.
+$lead_id = 'lead_id_example'; // string | The test lead id returned by createTestLead (or shown in the Testing Tool). Omitted = the test lead currently on the form.
+
+try {
+    $result = $apiInstance->deleteTestLead($form_id, $account_id, $lead_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling LeadGenApi->deleteTestLead: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **form_id** | **string**|  | |
+| **account_id** | **string**| The facebook or metaads account whose Page owns the form. | |
+| **lead_id** | **string**| The test lead id returned by createTestLead (or shown in the Testing Tool). Omitted &#x3D; the test lead currently on the form. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\DeleteTestLead200Response**](../Model/DeleteTestLead200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

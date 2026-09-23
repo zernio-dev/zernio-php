@@ -577,6 +577,7 @@ docs/Model/DeleteInboxComment200Response.md
 docs/Model/DeleteInboxReviewReply200Response.md
 docs/Model/DeleteInboxReviewReplyRequest.md
 docs/Model/DeleteSmsSenderId200Response.md
+docs/Model/DeleteTestLead200Response.md
 docs/Model/DeleteValueRuleSet200Response.md
 docs/Model/DeleteWhatsAppTemplate200Response.md
 docs/Model/DeleteWhatsAppTemplateById200Response.md
@@ -2827,6 +2828,7 @@ lib/Model/DeleteInboxComment200Response.php
 lib/Model/DeleteInboxReviewReply200Response.php
 lib/Model/DeleteInboxReviewReplyRequest.php
 lib/Model/DeleteSmsSenderId200Response.php
+lib/Model/DeleteTestLead200Response.php
 lib/Model/DeleteValueRuleSet200Response.php
 lib/Model/DeleteWhatsAppTemplate200Response.php
 lib/Model/DeleteWhatsAppTemplateById200Response.php
@@ -4501,4 +4503,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/BoostPostRequestAttributionSpecInnerTest.php
+test/Model/DeleteTestLead200ResponseTest.php
