@@ -263,6 +263,7 @@ class InlineObject4 implements ModelInterface, ArrayAccess, \JsonSerializable
     public const REASON_FREE_TIER_EXCEEDED = 'free_tier_exceeded';
     public const REASON_TWITTER_PASSTHROUGH = 'twitter_passthrough';
     public const REASON_ENTERPRISE_REQUIRED = 'enterprise_required';
+    public const REASON_CARD_VERIFICATION_REQUIRED = 'card_verification_required';
 
     /**
      * Gets allowable values of the enum
@@ -287,6 +288,7 @@ class InlineObject4 implements ModelInterface, ArrayAccess, \JsonSerializable
             self::REASON_FREE_TIER_EXCEEDED,
             self::REASON_TWITTER_PASSTHROUGH,
             self::REASON_ENTERPRISE_REQUIRED,
+            self::REASON_CARD_VERIFICATION_REQUIRED,
         ];
     }
 

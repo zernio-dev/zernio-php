@@ -62,6 +62,7 @@ class InlineObject4Details implements ModelInterface, ArrayAccess, \JsonSerializ
         'free_tier_account_limit' => 'int',
         'current_account_count' => 'int',
         'has_payment_method' => 'bool',
+        'verification_amount_cents' => 'int',
         'effective_account_limit' => 'int'
     ];
 
@@ -76,6 +77,7 @@ class InlineObject4Details implements ModelInterface, ArrayAccess, \JsonSerializ
         'free_tier_account_limit' => null,
         'current_account_count' => null,
         'has_payment_method' => null,
+        'verification_amount_cents' => null,
         'effective_account_limit' => null
     ];
 
@@ -88,6 +90,7 @@ class InlineObject4Details implements ModelInterface, ArrayAccess, \JsonSerializ
         'free_tier_account_limit' => false,
         'current_account_count' => false,
         'has_payment_method' => false,
+        'verification_amount_cents' => false,
         'effective_account_limit' => false
     ];
 
@@ -180,6 +183,7 @@ class InlineObject4Details implements ModelInterface, ArrayAccess, \JsonSerializ
         'free_tier_account_limit' => 'free_tier_account_limit',
         'current_account_count' => 'current_account_count',
         'has_payment_method' => 'has_payment_method',
+        'verification_amount_cents' => 'verification_amount_cents',
         'effective_account_limit' => 'effective_account_limit'
     ];
 
@@ -192,6 +196,7 @@ class InlineObject4Details implements ModelInterface, ArrayAccess, \JsonSerializ
         'free_tier_account_limit' => 'setFreeTierAccountLimit',
         'current_account_count' => 'setCurrentAccountCount',
         'has_payment_method' => 'setHasPaymentMethod',
+        'verification_amount_cents' => 'setVerificationAmountCents',
         'effective_account_limit' => 'setEffectiveAccountLimit'
     ];
 
@@ -204,6 +209,7 @@ class InlineObject4Details implements ModelInterface, ArrayAccess, \JsonSerializ
         'free_tier_account_limit' => 'getFreeTierAccountLimit',
         'current_account_count' => 'getCurrentAccountCount',
         'has_payment_method' => 'getHasPaymentMethod',
+        'verification_amount_cents' => 'getVerificationAmountCents',
         'effective_account_limit' => 'getEffectiveAccountLimit'
     ];
 
@@ -267,6 +273,7 @@ class InlineObject4Details implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('free_tier_account_limit', $data ?? [], null);
         $this->setIfExists('current_account_count', $data ?? [], null);
         $this->setIfExists('has_payment_method', $data ?? [], null);
+        $this->setIfExists('verification_amount_cents', $data ?? [], null);
         $this->setIfExists('effective_account_limit', $data ?? [], null);
     }
 
@@ -389,6 +396,33 @@ class InlineObject4Details implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable has_payment_method cannot be null');
         }
         $this->container['has_payment_method'] = $has_payment_method;
+
+        return $this;
+    }
+
+    /**
+     * Gets verification_amount_cents
+     *
+     * @return int|null
+     */
+    public function getVerificationAmountCents()
+    {
+        return $this->container['verification_amount_cents'];
+    }
+
+    /**
+     * Sets verification_amount_cents
+     *
+     * @param int|null $verification_amount_cents One-time card verification charge in USD cents, credited to usage. Only set when reason=card_verification_required.
+     *
+     * @return self
+     */
+    public function setVerificationAmountCents($verification_amount_cents)
+    {
+        if (is_null($verification_amount_cents)) {
+            throw new \InvalidArgumentException('non-nullable verification_amount_cents cannot be null');
+        }
+        $this->container['verification_amount_cents'] = $verification_amount_cents;
 
         return $this;
     }
