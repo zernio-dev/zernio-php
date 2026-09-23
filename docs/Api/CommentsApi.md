@@ -159,7 +159,7 @@ getInboxPostComments($post_id, $account_id, $subreddit, $limit, $cursor, $commen
 
 Get post comments
 
-Fetch comments for a specific post. Requires accountId query parameter.  On Facebook and Instagram, passing a COMMENT id as `postId` is also supported and returns that comment's replies instead of the post's top-level comments. This is not available on YouTube, where `postId` must be a video id.  Responses are cached for up to 10 minutes, so a page may lag new comments by that window. Do not poll this endpoint for real-time updates: subscribe to the `comment.received` webhook, which delivers new comments as they arrive. Your own writes (creating, replying to, or deleting a comment) refresh the cache immediately.  TikTok is served for accounts connected through the TikTok for Business app: `postId` is the TikTok video id, each top-level comment carries up to three inline replies, and `commentId` pages the full reply list of one comment. Developer-app TikTok accounts return 400 with code `PLATFORM_LIMITATION`.
+Fetch comments for a specific post. Requires accountId query parameter.  On Facebook, passing a COMMENT id as `postId` is also supported and returns that comment's replies instead of the post's top-level comments. Instagram does not support this and returns 400: its replies come nested in each comment's `replies` array, with no separate paging. YouTube does not support it either, `postId` must be a video id.  Responses are cached for up to 10 minutes, so a page may lag new comments by that window. Do not poll this endpoint for real-time updates: subscribe to the `comment.received` webhook, which delivers new comments as they arrive. Your own writes (creating, replying to, or deleting a comment) refresh the cache immediately.  TikTok is served for accounts connected through the TikTok for Business app: `postId` is the TikTok video id, each top-level comment carries up to three inline replies, and `commentId` pages the full reply list of one comment. Developer-app TikTok accounts return 400 with code `PLATFORM_LIMITATION`.  Hidden comments: Facebook Pages and Instagram accounts connected through Instagram Login return them with `isHidden: true`. Instagram accounts connected through Facebook Login do not return them at all (Meta omits them, together with their replies), so a hidden comment and a deleted one look the same on this read.
 
 ### Example
 
@@ -178,7 +178,7 @@ $apiInstance = new Zernio\Api\CommentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$post_id = 'post_id_example'; // string | Zernio post ID or platform-specific post ID. Zernio IDs are auto-resolved. LinkedIn third-party posts accept full activity URN or numeric ID. On Facebook and Instagram, a comment ID is also accepted here and returns that comment's replies.
+$post_id = 'post_id_example'; // string | Zernio post ID or platform-specific post ID. Zernio IDs are auto-resolved. LinkedIn third-party posts accept full activity URN or numeric ID. On Facebook, a comment ID is also accepted here and returns that comment's replies (not supported on Instagram).
 $account_id = 'account_id_example'; // string
 $subreddit = 'subreddit_example'; // string | (Reddit only) Subreddit name
 $limit = 25; // int | Maximum number of comments to return
@@ -197,7 +197,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **post_id** | **string**| Zernio post ID or platform-specific post ID. Zernio IDs are auto-resolved. LinkedIn third-party posts accept full activity URN or numeric ID. On Facebook and Instagram, a comment ID is also accepted here and returns that comment&#39;s replies. | |
+| **post_id** | **string**| Zernio post ID or platform-specific post ID. Zernio IDs are auto-resolved. LinkedIn third-party posts accept full activity URN or numeric ID. On Facebook, a comment ID is also accepted here and returns that comment&#39;s replies (not supported on Instagram). | |
 | **account_id** | **string**|  | |
 | **subreddit** | **string**| (Reddit only) Subreddit name | [optional] |
 | **limit** | **int**| Maximum number of comments to return | [optional] [default to 25] |
