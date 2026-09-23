@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **creative_features** | **array<string,string>** | Meta Advantage+ creative enhancements. Map snake_case feature names to OPT_IN or OPT_OUT; Meta validates supported keys and unspecified features default to OPT_OUT. auto_promotion_tag is an Advantage+ enhancement, not the Ads Manager Promotion setting. The deprecated standard_enhancements bundle is rejected by Meta. | [optional]
 **post_id** | **string** | Zernio post ID (provide this or platformPostId) | [optional]
-**platform_post_id** | **string** | Platform post ID (alternative to postId) | [optional]
+**platform_post_id** | **string** | Platform post ID (alternative to postId). Meta: a Page post id (&#x60;&lt;pageId&gt;_&lt;postId&gt;&#x60; or the bare post id) or an Instagram media id. On a Meta Ads business-login connection (platform metaads) the id is resolved live: an Instagram media id is boosted as that media, running as the Instagram account that owns it. | [optional]
 **account_id** | **string** | Zernio account id. Normally the connected posting account (facebook, instagram, tiktok, linkedin, pinterest, twitter) or a googleads account. TikTok: the TikTok Ads connection (platform tiktokads) is accepted too when the post brings its own authorization (sparkAuthCode or sparkPosts), so Spark ads need no organic TikTok account connected; such a call must use platformPostId, not postId. |
 **ad_account_id** | **string** | Platform ad account ID |
 **name** | **string** |  |
