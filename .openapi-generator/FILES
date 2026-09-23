@@ -204,6 +204,7 @@ docs/Model/BlueskyPlatformData.md
 docs/Model/BookmarkPost200Response.md
 docs/Model/BookmarkPostRequest.md
 docs/Model/BoostPostRequest.md
+docs/Model/BoostPostRequestAttributionSpecInner.md
 docs/Model/BoostPostRequestBudget.md
 docs/Model/BoostPostRequestPlatformSpecificData.md
 docs/Model/BoostPostRequestPromoCodesInner.md
@@ -488,7 +489,6 @@ docs/Model/CreateStandaloneAd201ResponseOneOf1.md
 docs/Model/CreateStandaloneAdRequest.md
 docs/Model/CreateStandaloneAdRequestAdditionalDescriptionsInner.md
 docs/Model/CreateStandaloneAdRequestAdditionalHeadlinesInner.md
-docs/Model/CreateStandaloneAdRequestAttributionSpecInner.md
 docs/Model/CreateStandaloneAdRequestBehaviorsInner.md
 docs/Model/CreateStandaloneAdRequestBrandIdentity.md
 docs/Model/CreateStandaloneAdRequestCarouselCardsInner.md
@@ -2454,6 +2454,7 @@ lib/Model/BlueskyPlatformData.php
 lib/Model/BookmarkPost200Response.php
 lib/Model/BookmarkPostRequest.php
 lib/Model/BoostPostRequest.php
+lib/Model/BoostPostRequestAttributionSpecInner.php
 lib/Model/BoostPostRequestBudget.php
 lib/Model/BoostPostRequestPlatformSpecificData.php
 lib/Model/BoostPostRequestPromoCodesInner.php
@@ -2738,7 +2739,6 @@ lib/Model/CreateStandaloneAd201ResponseOneOf1.php
 lib/Model/CreateStandaloneAdRequest.php
 lib/Model/CreateStandaloneAdRequestAdditionalDescriptionsInner.php
 lib/Model/CreateStandaloneAdRequestAdditionalHeadlinesInner.php
-lib/Model/CreateStandaloneAdRequestAttributionSpecInner.php
 lib/Model/CreateStandaloneAdRequestBehaviorsInner.php
 lib/Model/CreateStandaloneAdRequestBrandIdentity.php
 lib/Model/CreateStandaloneAdRequestCarouselCardsInner.php
@@ -4501,3 +4501,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/BoostPostRequestAttributionSpecInnerTest.php
