@@ -68,7 +68,8 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_fired_at' => '\DateTime',
         'failure_count' => 'int',
         'custom_headers' => 'array<string,string>',
-        'disabled_resource_groups' => 'string[]'
+        'disabled_resource_groups' => 'string[]',
+        'profile_ids' => 'string[]'
     ];
 
     /**
@@ -88,7 +89,8 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_fired_at' => 'date-time',
         'failure_count' => null,
         'custom_headers' => null,
-        'disabled_resource_groups' => null
+        'disabled_resource_groups' => null,
+        'profile_ids' => null
     ];
 
     /**
@@ -106,7 +108,8 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_fired_at' => false,
         'failure_count' => false,
         'custom_headers' => false,
-        'disabled_resource_groups' => false
+        'disabled_resource_groups' => false,
+        'profile_ids' => false
     ];
 
     /**
@@ -204,7 +207,8 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_fired_at' => 'lastFiredAt',
         'failure_count' => 'failureCount',
         'custom_headers' => 'customHeaders',
-        'disabled_resource_groups' => 'disabledResourceGroups'
+        'disabled_resource_groups' => 'disabledResourceGroups',
+        'profile_ids' => 'profileIds'
     ];
 
     /**
@@ -222,7 +226,8 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_fired_at' => 'setLastFiredAt',
         'failure_count' => 'setFailureCount',
         'custom_headers' => 'setCustomHeaders',
-        'disabled_resource_groups' => 'setDisabledResourceGroups'
+        'disabled_resource_groups' => 'setDisabledResourceGroups',
+        'profile_ids' => 'setProfileIds'
     ];
 
     /**
@@ -240,7 +245,8 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_fired_at' => 'getLastFiredAt',
         'failure_count' => 'getFailureCount',
         'custom_headers' => 'getCustomHeaders',
-        'disabled_resource_groups' => 'getDisabledResourceGroups'
+        'disabled_resource_groups' => 'getDisabledResourceGroups',
+        'profile_ids' => 'getProfileIds'
     ];
 
     /**
@@ -456,6 +462,7 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('failure_count', $data ?? [], null);
         $this->setIfExists('custom_headers', $data ?? [], null);
         $this->setIfExists('disabled_resource_groups', $data ?? [], null);
+        $this->setIfExists('profile_ids', $data ?? [], null);
     }
 
     /**
@@ -792,6 +799,33 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['disabled_resource_groups'] = $disabled_resource_groups;
+
+        return $this;
+    }
+
+    /**
+     * Gets profile_ids
+     *
+     * @return string[]|null
+     */
+    public function getProfileIds()
+    {
+        return $this->container['profile_ids'];
+    }
+
+    /**
+     * Sets profile_ids
+     *
+     * @param string[]|null $profile_ids Profiles this subscription receives events for (allowlist). Absent or empty means every profile, which is how every subscription created before this field existed behaves. A scoped subscription is only sent events attributable to a listed profile; events with no profile behind them (`verification.*`, `phone_number.*`) are not delivered to it. Applied when the event is emitted: a redelivery replays a delivery already made to this endpoint, and a test fire ignores the list.
+     *
+     * @return self
+     */
+    public function setProfileIds($profile_ids)
+    {
+        if (is_null($profile_ids)) {
+            throw new \InvalidArgumentException('non-nullable profile_ids cannot be null');
+        }
+        $this->container['profile_ids'] = $profile_ids;
 
         return $this;
     }

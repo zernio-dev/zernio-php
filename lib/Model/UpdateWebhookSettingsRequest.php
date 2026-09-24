@@ -66,7 +66,8 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
         'events' => 'string[]',
         'is_active' => 'bool',
         'custom_headers' => 'array<string,string>',
-        'disabled_resource_groups' => 'string[]'
+        'disabled_resource_groups' => 'string[]',
+        'profile_ids' => 'string[]'
     ];
 
     /**
@@ -85,7 +86,8 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
         'events' => null,
         'is_active' => null,
         'custom_headers' => null,
-        'disabled_resource_groups' => null
+        'disabled_resource_groups' => null,
+        'profile_ids' => null
     ];
 
     /**
@@ -102,7 +104,8 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
         'events' => false,
         'is_active' => false,
         'custom_headers' => false,
-        'disabled_resource_groups' => false
+        'disabled_resource_groups' => false,
+        'profile_ids' => false
     ];
 
     /**
@@ -199,7 +202,8 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
         'events' => 'events',
         'is_active' => 'isActive',
         'custom_headers' => 'customHeaders',
-        'disabled_resource_groups' => 'disabledResourceGroups'
+        'disabled_resource_groups' => 'disabledResourceGroups',
+        'profile_ids' => 'profileIds'
     ];
 
     /**
@@ -216,7 +220,8 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
         'events' => 'setEvents',
         'is_active' => 'setIsActive',
         'custom_headers' => 'setCustomHeaders',
-        'disabled_resource_groups' => 'setDisabledResourceGroups'
+        'disabled_resource_groups' => 'setDisabledResourceGroups',
+        'profile_ids' => 'setProfileIds'
     ];
 
     /**
@@ -233,7 +238,8 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
         'events' => 'getEvents',
         'is_active' => 'getIsActive',
         'custom_headers' => 'getCustomHeaders',
-        'disabled_resource_groups' => 'getDisabledResourceGroups'
+        'disabled_resource_groups' => 'getDisabledResourceGroups',
+        'profile_ids' => 'getProfileIds'
     ];
 
     /**
@@ -448,6 +454,7 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
         $this->setIfExists('is_active', $data ?? [], null);
         $this->setIfExists('custom_headers', $data ?? [], null);
         $this->setIfExists('disabled_resource_groups', $data ?? [], null);
+        $this->setIfExists('profile_ids', $data ?? [], null);
     }
 
     /**
@@ -487,6 +494,10 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
 
         if (!is_null($this->container['events']) && (count($this->container['events']) < 1)) {
             $invalidProperties[] = "invalid value for 'events', number of items must be greater than or equal to 1.";
+        }
+
+        if (!is_null($this->container['profile_ids']) && (count($this->container['profile_ids']) > 50)) {
+            $invalidProperties[] = "invalid value for 'profile_ids', number of items must be less than or equal to 50.";
         }
 
         return $invalidProperties;
@@ -775,6 +786,37 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
             );
         }
         $this->container['disabled_resource_groups'] = $disabled_resource_groups;
+
+        return $this;
+    }
+
+    /**
+     * Gets profile_ids
+     *
+     * @return string[]|null
+     */
+    public function getProfileIds()
+    {
+        return $this->container['profile_ids'];
+    }
+
+    /**
+     * Sets profile_ids
+     *
+     * @param string[]|null $profile_ids Replaces the subscription's profile allowlist. Send an empty array to receive every profile again. Omitting the field leaves the current list untouched. Every id must be a profile in your team, otherwise the request fails with 404 `profile_not_found` and nothing changes. Applies to events emitted after the update.
+     *
+     * @return self
+     */
+    public function setProfileIds($profile_ids)
+    {
+        if (is_null($profile_ids)) {
+            throw new \InvalidArgumentException('non-nullable profile_ids cannot be null');
+        }
+
+        if ((count($profile_ids) > 50)) {
+            throw new \InvalidArgumentException('invalid value for $profile_ids when calling UpdateWebhookSettingsRequest., number of items must be less than or equal to 50.');
+        }
+        $this->container['profile_ids'] = $profile_ids;
 
         return $this;
     }
