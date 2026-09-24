@@ -13,6 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getAdInsightsReport()**](AdInsightsApi.md#getAdInsightsReport) | **GET** /v1/ads/insights/reports/{reportRunId} | Poll an async insights report run |
 | [**getAdsSearchTerms()**](AdInsightsApi.md#getAdsSearchTerms) | **GET** /v1/ads/search-terms | Google Ads search terms report |
 | [**getCampaignAnalytics()**](AdInsightsApi.md#getCampaignAnalytics) | **GET** /v1/ads/campaigns/{campaignId}/analytics | Get campaign analytics |
+| [**getTikTokSmartPlusMaterialReport()**](AdInsightsApi.md#getTikTokSmartPlusMaterialReport) | **GET** /v1/ads/tiktok-smart-plus-materials | Per-creative performance inside TikTok Smart+ ads |
 | [**listLocalServicesLeadConversations()**](AdInsightsApi.md#listLocalServicesLeadConversations) | **GET** /v1/ads/local-services/leads/{leadId}/conversations | List lead conversations |
 | [**listLocalServicesLeads()**](AdInsightsApi.md#listLocalServicesLeads) | **GET** /v1/ads/local-services/leads | Google Local Services Ads leads |
 | [**queryAdInsights()**](AdInsightsApi.md#queryAdInsights) | **GET** /v1/ads/insights | Flexible live insights query |
@@ -460,6 +461,82 @@ try {
 ### Return type
 
 [**\Zernio\Model\CampaignAnalyticsResponse**](../Model/CampaignAnalyticsResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getTikTokSmartPlusMaterialReport()`
+
+```php
+getTikTokSmartPlusMaterialReport($account_id, $ad_account_id, $start_date, $end_date, $level, $smart_plus_ad_ids, $ad_group_ids, $page, $page_size): \Zernio\Model\GetTikTokSmartPlusMaterialReport200Response
+```
+
+Per-creative performance inside TikTok Smart+ ads
+
+Breaks a Smart+ ad (or ad group) down by creative material, one row per Spark post, video or image, from TikTok's Smart+ material report. For a Spark post `tiktokItemId` is the TikTok post id. Conversion metrics are TikTok web (pixel) events. TikTok allows two dimensions per report, so rows are keyed by the Smart+ ad (`level=ad`) or by the ad group (`level=adGroup`), not both. Metrics TikTok returns empty come back as null.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdInsightsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | A tiktok or tiktokads account ID
+$ad_account_id = 'ad_account_id_example'; // string | TikTok advertiser ID
+$start_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | YYYY-MM-DD, in the advertiser's time zone
+$end_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | YYYY-MM-DD, on or after startDate
+$level = 'ad'; // string | Key each row by Smart+ ad or by ad group
+$smart_plus_ad_ids = 'smart_plus_ad_ids_example'; // string | Comma-separated Smart+ ad ids to filter by (up to 100)
+$ad_group_ids = 'ad_group_ids_example'; // string | Comma-separated ad group ids to filter by (up to 100)
+$page = 1; // int
+$page_size = 100; // int
+
+try {
+    $result = $apiInstance->getTikTokSmartPlusMaterialReport($account_id, $ad_account_id, $start_date, $end_date, $level, $smart_plus_ad_ids, $ad_group_ids, $page, $page_size);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdInsightsApi->getTikTokSmartPlusMaterialReport: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| A tiktok or tiktokads account ID | |
+| **ad_account_id** | **string**| TikTok advertiser ID | |
+| **start_date** | **\DateTime**| YYYY-MM-DD, in the advertiser&#39;s time zone | |
+| **end_date** | **\DateTime**| YYYY-MM-DD, on or after startDate | |
+| **level** | **string**| Key each row by Smart+ ad or by ad group | [optional] [default to &#39;ad&#39;] |
+| **smart_plus_ad_ids** | **string**| Comma-separated Smart+ ad ids to filter by (up to 100) | [optional] |
+| **ad_group_ids** | **string**| Comma-separated ad group ids to filter by (up to 100) | [optional] |
+| **page** | **int**|  | [optional] [default to 1] |
+| **page_size** | **int**|  | [optional] [default to 100] |
+
+### Return type
+
+[**\Zernio\Model\GetTikTokSmartPlusMaterialReport200Response**](../Model/GetTikTokSmartPlusMaterialReport200Response.md)
 
 ### Authorization
 
