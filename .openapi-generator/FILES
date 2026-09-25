@@ -494,6 +494,7 @@ docs/Model/CreateStandaloneAdRequestBehaviorsInner.md
 docs/Model/CreateStandaloneAdRequestBrandIdentity.md
 docs/Model/CreateStandaloneAdRequestCarouselCardsInner.md
 docs/Model/CreateStandaloneAdRequestCitiesInner.md
+docs/Model/CreateStandaloneAdRequestCitiesInnerOneOf.md
 docs/Model/CreateStandaloneAdRequestCreativesInner.md
 docs/Model/CreateStandaloneAdRequestCreativesInnerVideo.md
 docs/Model/CreateStandaloneAdRequestCustomLocationsInner.md
@@ -505,10 +506,12 @@ docs/Model/CreateStandaloneAdRequestPlacementAssetsRulesInnerPlacements.md
 docs/Model/CreateStandaloneAdRequestPlacements.md
 docs/Model/CreateStandaloneAdRequestPlatformSpecificData.md
 docs/Model/CreateStandaloneAdRequestRegionsInner.md
+docs/Model/CreateStandaloneAdRequestRegionsInnerOneOf.md
 docs/Model/CreateStandaloneAdRequestSitelinksInner.md
 docs/Model/CreateStandaloneAdRequestStructuredSnippetsInner.md
 docs/Model/CreateStandaloneAdRequestTranslationsInner.md
 docs/Model/CreateStandaloneAdRequestVideo.md
+docs/Model/CreateStandaloneAdRequestZipsInner.md
 docs/Model/CreateTestLead200Response.md
 docs/Model/CreateTestLead200ResponseTestLead.md
 docs/Model/CreateTestLeadRequest.md
@@ -1063,6 +1066,7 @@ docs/Model/GoogleBusinessPlatformDataOffer.md
 docs/Model/GoogleBusinessReview.md
 docs/Model/GoogleBusinessReviewReviewReply.md
 docs/Model/GoogleBusinessReviewReviewer.md
+docs/Model/GoogleLocationTargetingType.md
 docs/Model/GooglePmaxAssetGroup.md
 docs/Model/GooglePmaxAssetGroupAssetsInner.md
 docs/Model/GooglePmaxAssetGroupInput.md
@@ -1794,6 +1798,7 @@ docs/Model/SyncExternalPosts200ResponseSynced.md
 docs/Model/SyncExternalPostsRequest.md
 docs/Model/TargetingSpec.md
 docs/Model/TargetingSpecCitiesInner.md
+docs/Model/TargetingSpecCitiesInnerOneOf.md
 docs/Model/TargetingSpecCustomLocationsInner.md
 docs/Model/TargetingSpecExcludedLocations.md
 docs/Model/TargetingSpecExcludedLocationsCitiesInner.md
@@ -1869,6 +1874,7 @@ docs/Model/UpdateAdRequestTargetingInterestsInner.md
 docs/Model/UpdateAdRequestTargetingKeywordsInner.md
 docs/Model/UpdateAdRequestTargetingKeywordsInnerOneOf.md
 docs/Model/UpdateAdRequestTargetingLocations.md
+docs/Model/UpdateAdRequestTargetingLocationsOneOf.md
 docs/Model/UpdateAdSet200Response.md
 docs/Model/UpdateAdSetRequest.md
 docs/Model/UpdateAdSetRequestBudget.md
@@ -1913,6 +1919,7 @@ docs/Model/UpdateCampaignTargetingRequestTargetingDevicesInnerOneOf.md
 docs/Model/UpdateCampaignTargetingRequestTargetingLocations.md
 docs/Model/UpdateCampaignTargetingRequestTargetingLocationsOneOf.md
 docs/Model/UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner.md
+docs/Model/UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInnerOneOf.md
 docs/Model/UpdateCommentAutomation200Response.md
 docs/Model/UpdateCommentAutomation200ResponseAutomation.md
 docs/Model/UpdateCommentAutomationRequest.md
@@ -2757,6 +2764,7 @@ lib/Model/CreateStandaloneAdRequestBehaviorsInner.php
 lib/Model/CreateStandaloneAdRequestBrandIdentity.php
 lib/Model/CreateStandaloneAdRequestCarouselCardsInner.php
 lib/Model/CreateStandaloneAdRequestCitiesInner.php
+lib/Model/CreateStandaloneAdRequestCitiesInnerOneOf.php
 lib/Model/CreateStandaloneAdRequestCreativesInner.php
 lib/Model/CreateStandaloneAdRequestCreativesInnerVideo.php
 lib/Model/CreateStandaloneAdRequestCustomLocationsInner.php
@@ -2768,10 +2776,12 @@ lib/Model/CreateStandaloneAdRequestPlacementAssetsRulesInnerPlacements.php
 lib/Model/CreateStandaloneAdRequestPlacements.php
 lib/Model/CreateStandaloneAdRequestPlatformSpecificData.php
 lib/Model/CreateStandaloneAdRequestRegionsInner.php
+lib/Model/CreateStandaloneAdRequestRegionsInnerOneOf.php
 lib/Model/CreateStandaloneAdRequestSitelinksInner.php
 lib/Model/CreateStandaloneAdRequestStructuredSnippetsInner.php
 lib/Model/CreateStandaloneAdRequestTranslationsInner.php
 lib/Model/CreateStandaloneAdRequestVideo.php
+lib/Model/CreateStandaloneAdRequestZipsInner.php
 lib/Model/CreateTestLead200Response.php
 lib/Model/CreateTestLead200ResponseTestLead.php
 lib/Model/CreateTestLeadRequest.php
@@ -3326,6 +3336,7 @@ lib/Model/GoogleBusinessPlatformDataOffer.php
 lib/Model/GoogleBusinessReview.php
 lib/Model/GoogleBusinessReviewReviewReply.php
 lib/Model/GoogleBusinessReviewReviewer.php
+lib/Model/GoogleLocationTargetingType.php
 lib/Model/GooglePmaxAssetGroup.php
 lib/Model/GooglePmaxAssetGroupAssetsInner.php
 lib/Model/GooglePmaxAssetGroupInput.php
@@ -4058,6 +4069,7 @@ lib/Model/SyncExternalPosts200ResponseSynced.php
 lib/Model/SyncExternalPostsRequest.php
 lib/Model/TargetingSpec.php
 lib/Model/TargetingSpecCitiesInner.php
+lib/Model/TargetingSpecCitiesInnerOneOf.php
 lib/Model/TargetingSpecCustomLocationsInner.php
 lib/Model/TargetingSpecExcludedLocations.php
 lib/Model/TargetingSpecExcludedLocationsCitiesInner.php
@@ -4133,6 +4145,7 @@ lib/Model/UpdateAdRequestTargetingInterestsInner.php
 lib/Model/UpdateAdRequestTargetingKeywordsInner.php
 lib/Model/UpdateAdRequestTargetingKeywordsInnerOneOf.php
 lib/Model/UpdateAdRequestTargetingLocations.php
+lib/Model/UpdateAdRequestTargetingLocationsOneOf.php
 lib/Model/UpdateAdSet200Response.php
 lib/Model/UpdateAdSetRequest.php
 lib/Model/UpdateAdSetRequestBudget.php
@@ -4177,6 +4190,7 @@ lib/Model/UpdateCampaignTargetingRequestTargetingDevicesInnerOneOf.php
 lib/Model/UpdateCampaignTargetingRequestTargetingLocations.php
 lib/Model/UpdateCampaignTargetingRequestTargetingLocationsOneOf.php
 lib/Model/UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner.php
+lib/Model/UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInnerOneOf.php
 lib/Model/UpdateCommentAutomation200Response.php
 lib/Model/UpdateCommentAutomation200ResponseAutomation.php
 lib/Model/UpdateCommentAutomationRequest.php
@@ -4527,3 +4541,9 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateStandaloneAdRequestCitiesInnerOneOfTest.php
+test/Model/CreateStandaloneAdRequestRegionsInnerOneOfTest.php
+test/Model/GoogleLocationTargetingTypeTest.php
+test/Model/TargetingSpecCitiesInnerOneOfTest.php
+test/Model/UpdateAdRequestTargetingLocationsOneOfTest.php
+test/Model/UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInnerOneOfTest.php
