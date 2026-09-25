@@ -1626,7 +1626,6 @@ docs/Model/SearchTweets200ResponseTweetsInner.md
 docs/Model/SearchTweets200ResponseTweetsInnerAuthor.md
 docs/Model/SelectFacebookPage200Response.md
 docs/Model/SelectFacebookPage200ResponseAccount.md
-docs/Model/SelectFacebookPage409Response.md
 docs/Model/SelectFacebookPageRequest.md
 docs/Model/SelectFacebookPageRequestOneOf.md
 docs/Model/SelectFacebookPageRequestOneOf1.md
@@ -3884,7 +3883,6 @@ lib/Model/SearchTweets200ResponseTweetsInner.php
 lib/Model/SearchTweets200ResponseTweetsInnerAuthor.php
 lib/Model/SelectFacebookPage200Response.php
 lib/Model/SelectFacebookPage200ResponseAccount.php
-lib/Model/SelectFacebookPage409Response.php
 lib/Model/SelectFacebookPageRequest.php
 lib/Model/SelectFacebookPageRequestOneOf.php
 lib/Model/SelectFacebookPageRequestOneOf1.php
