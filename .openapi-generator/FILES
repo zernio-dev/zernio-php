@@ -1673,7 +1673,7 @@ docs/Model/SendInboxMessage200ResponseDataPartialFailurePlatformError.md
 docs/Model/SendInboxMessage200ResponseWarningsInner.md
 docs/Model/SendInboxMessage400Response.md
 docs/Model/SendInboxMessage400ResponsePlatformError.md
-docs/Model/SendInboxMessage502Response.md
+docs/Model/SendInboxMessage429Response.md
 docs/Model/SendInboxMessageRequest.md
 docs/Model/SendInboxMessageRequestButtonsInner.md
 docs/Model/SendInboxMessageRequestContactsInner.md
@@ -3932,7 +3932,7 @@ lib/Model/SendInboxMessage200ResponseDataPartialFailurePlatformError.php
 lib/Model/SendInboxMessage200ResponseWarningsInner.php
 lib/Model/SendInboxMessage400Response.php
 lib/Model/SendInboxMessage400ResponsePlatformError.php
-lib/Model/SendInboxMessage502Response.php
+lib/Model/SendInboxMessage429Response.php
 lib/Model/SendInboxMessageRequest.php
 lib/Model/SendInboxMessageRequestButtonsInner.php
 lib/Model/SendInboxMessageRequestContactsInner.php
@@ -4517,3 +4517,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/SendInboxMessage429ResponseTest.php
