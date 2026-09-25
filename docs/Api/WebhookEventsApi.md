@@ -45,6 +45,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onReviewNew()**](WebhookEventsApi.md#onReviewNew) | **POST** /review.new | Review new event |
 | [**onReviewUpdated()**](WebhookEventsApi.md#onReviewUpdated) | **POST** /review.updated | Review updated event |
 | [**onSmsRegistrationActionRequired()**](WebhookEventsApi.md#onSmsRegistrationActionRequired) | **POST** /sms.registration.action_required | SMS registration action required event |
+| [**onSmsRegistrationStatusUpdated()**](WebhookEventsApi.md#onSmsRegistrationStatusUpdated) | **POST** /sms.registration.status_updated | SMS registration status updated event |
 | [**onVerificationApproved()**](WebhookEventsApi.md#onVerificationApproved) | **POST** /verification.approved | Verification approved event |
 | [**onVerificationFailed()**](WebhookEventsApi.md#onVerificationFailed) | **POST** /verification.failed | Verification failed event |
 | [**onWebhookTest()**](WebhookEventsApi.md#onWebhookTest) | **POST** /webhook.test | Webhook test event |
@@ -2312,7 +2313,7 @@ onSmsRegistrationActionRequired($on_sms_registration_action_required_request)
 
 SMS registration action required event
 
-Fired when an SMS registration starts waiting on its owner. `reason` says why: `changes_requested` (our review asked for changes; `message` is the reviewer's note, answer with POST /v1/sms/registrations/{id}/respond), `otp_required` (a sole-proprietor brand needs the code texted to its mobile, submit it with POST /v1/sms/registrations/{id}/verify-otp), `carrier_info_required` (the toll-free carrier asked for more information; the request expires after 7 days) or `rejected` (the carriers rejected it; `message` is the reason). Fires once per new request (not on follow-up messages) and once per OTP or carrier request.
+Fired when an SMS registration starts waiting on its owner. `reason` says why: `changes_requested` (we need answers to some points, before submission or to fix a carrier rejection; `message` is the request, answer with POST /v1/sms/registrations/{id}/respond), `otp_required` (a sole-proprietor brand needs the code texted to its mobile, submit it with POST /v1/sms/registrations/{id}/verify-otp) or `carrier_info_required` (the toll-free carrier asked for more information; the request expires after 7 days). A carrier rejection alone does not fire it: we handle the fix, see `sms.registration.status_updated`. Fires once per new request (not on follow-up messages) and once per OTP or carrier request.
 
 ### Example
 
@@ -2345,6 +2346,65 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **on_sms_registration_action_required_request** | [**\Zernio\Model\OnSmsRegistrationActionRequiredRequest**](../Model/OnSmsRegistrationActionRequiredRequest.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onSmsRegistrationStatusUpdated()`
+
+```php
+onSmsRegistrationStatusUpdated($on_sms_registration_status_updated_request)
+```
+
+SMS registration status updated event
+
+Fired on every status change of an SMS registration: `changes_requested` (we need answers, see `sms.registration.action_required`), `requested` (a new submission or resubmit, or your answers are back in our review), `pending` (with the carriers, including after we fixed and resent a rejection), `approved` (live: attach numbers and send), `rejected` (the carriers declined it; `reason` is their words and we handle the fix) and `deactivated`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$on_sms_registration_status_updated_request = new \Zernio\Model\OnSmsRegistrationStatusUpdatedRequest(); // \Zernio\Model\OnSmsRegistrationStatusUpdatedRequest
+
+try {
+    $apiInstance->onSmsRegistrationStatusUpdated($on_sms_registration_status_updated_request);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onSmsRegistrationStatusUpdated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **on_sms_registration_status_updated_request** | [**\Zernio\Model\OnSmsRegistrationStatusUpdatedRequest**](../Model/OnSmsRegistrationStatusUpdatedRequest.md)|  | |
 
 ### Return type
 

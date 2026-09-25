@@ -1440,6 +1440,8 @@ docs/Model/MoveWhatsAppNumberToProfile200Response.md
 docs/Model/MoveWhatsAppNumberToProfileRequest.md
 docs/Model/OnSmsRegistrationActionRequiredRequest.md
 docs/Model/OnSmsRegistrationActionRequiredRequestRegistration.md
+docs/Model/OnSmsRegistrationStatusUpdatedRequest.md
+docs/Model/OnSmsRegistrationStatusUpdatedRequestRegistration.md
 docs/Model/OnVerificationApprovedRequest.md
 docs/Model/OnVerificationApprovedRequestVerification.md
 docs/Model/OnVerificationFailedRequest.md
@@ -3716,6 +3718,8 @@ lib/Model/MoveWhatsAppNumberToProfile200Response.php
 lib/Model/MoveWhatsAppNumberToProfileRequest.php
 lib/Model/OnSmsRegistrationActionRequiredRequest.php
 lib/Model/OnSmsRegistrationActionRequiredRequestRegistration.php
+lib/Model/OnSmsRegistrationStatusUpdatedRequest.php
+lib/Model/OnSmsRegistrationStatusUpdatedRequestRegistration.php
 lib/Model/OnVerificationApprovedRequest.php
 lib/Model/OnVerificationApprovedRequestVerification.php
 lib/Model/OnVerificationFailedRequest.php
@@ -4551,8 +4555,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/OnSmsRegistrationActionRequiredRequestRegistrationTest.php
-test/Model/OnSmsRegistrationActionRequiredRequestTest.php
-test/Model/RespondToSmsRegistrationReviewRequestAnswersInnerTest.php
-test/Model/SmsRegistrationReviewRequestPointsInnerTest.php
-test/Model/SmsRegistrationReviewRequestTest.php
+test/Model/OnSmsRegistrationStatusUpdatedRequestRegistrationTest.php
+test/Model/OnSmsRegistrationStatusUpdatedRequestTest.php
