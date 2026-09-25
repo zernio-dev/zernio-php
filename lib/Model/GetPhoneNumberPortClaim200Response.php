@@ -1,6 +1,6 @@
 <?php
 /**
- * CheckPhoneNumberPortabilityRequest
+ * GetPhoneNumberPortClaim200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CheckPhoneNumberPortabilityRequest Class Doc Comment
+ * GetPhoneNumberPortClaim200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CheckPhoneNumberPortabilityRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetPhoneNumberPortClaim200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CheckPhoneNumberPortabilityRequest implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'checkPhoneNumberPortability_request';
+    protected static $openAPIModelName = 'getPhoneNumberPortClaim_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class CheckPhoneNumberPortabilityRequest implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'phone_numbers' => 'string[]',
-        'claim_links' => 'bool'
+        'phone_number' => 'string',
+        'country_code' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class CheckPhoneNumberPortabilityRequest implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'phone_numbers' => null,
-        'claim_links' => null
+        'phone_number' => null,
+        'country_code' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class CheckPhoneNumberPortabilityRequest implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'phone_numbers' => false,
-        'claim_links' => false
+        'phone_number' => false,
+        'country_code' => true
     ];
 
     /**
@@ -170,8 +170,8 @@ class CheckPhoneNumberPortabilityRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'phone_numbers' => 'phoneNumbers',
-        'claim_links' => 'claimLinks'
+        'phone_number' => 'phoneNumber',
+        'country_code' => 'countryCode'
     ];
 
     /**
@@ -180,8 +180,8 @@ class CheckPhoneNumberPortabilityRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'phone_numbers' => 'setPhoneNumbers',
-        'claim_links' => 'setClaimLinks'
+        'phone_number' => 'setPhoneNumber',
+        'country_code' => 'setCountryCode'
     ];
 
     /**
@@ -190,8 +190,8 @@ class CheckPhoneNumberPortabilityRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'phone_numbers' => 'getPhoneNumbers',
-        'claim_links' => 'getClaimLinks'
+        'phone_number' => 'getPhoneNumber',
+        'country_code' => 'getCountryCode'
     ];
 
     /**
@@ -251,8 +251,8 @@ class CheckPhoneNumberPortabilityRequest implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('phone_numbers', $data ?? [], null);
-        $this->setIfExists('claim_links', $data ?? [], null);
+        $this->setIfExists('phone_number', $data ?? [], null);
+        $this->setIfExists('country_code', $data ?? [], null);
     }
 
     /**
@@ -282,17 +282,6 @@ class CheckPhoneNumberPortabilityRequest implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        if ($this->container['phone_numbers'] === null) {
-            $invalidProperties[] = "'phone_numbers' can't be null";
-        }
-        if ((count($this->container['phone_numbers']) > 50)) {
-            $invalidProperties[] = "invalid value for 'phone_numbers', number of items must be less than or equal to 50.";
-        }
-
-        if ((count($this->container['phone_numbers']) < 1)) {
-            $invalidProperties[] = "invalid value for 'phone_numbers', number of items must be greater than or equal to 1.";
-        }
-
         return $invalidProperties;
     }
 
@@ -309,62 +298,62 @@ class CheckPhoneNumberPortabilityRequest implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets phone_numbers
+     * Gets phone_number
      *
-     * @return string[]
+     * @return string|null
      */
-    public function getPhoneNumbers()
+    public function getPhoneNumber()
     {
-        return $this->container['phone_numbers'];
+        return $this->container['phone_number'];
     }
 
     /**
-     * Sets phone_numbers
+     * Sets phone_number
      *
-     * @param string[] $phone_numbers E.164 numbers to check, e.g. +13035550000. At most one without an API key.
+     * @param string|null $phone_number E.164.
      *
      * @return self
      */
-    public function setPhoneNumbers($phone_numbers)
+    public function setPhoneNumber($phone_number)
     {
-        if (is_null($phone_numbers)) {
-            throw new \InvalidArgumentException('non-nullable phone_numbers cannot be null');
+        if (is_null($phone_number)) {
+            throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
         }
-
-        if ((count($phone_numbers) > 50)) {
-            throw new \InvalidArgumentException('invalid value for $phone_numbers when calling CheckPhoneNumberPortabilityRequest., number of items must be less than or equal to 50.');
-        }
-        if ((count($phone_numbers) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $phone_numbers when calling CheckPhoneNumberPortabilityRequest., number of items must be greater than or equal to 1.');
-        }
-        $this->container['phone_numbers'] = $phone_numbers;
+        $this->container['phone_number'] = $phone_number;
 
         return $this;
     }
 
     /**
-     * Gets claim_links
+     * Gets country_code
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getClaimLinks()
+    public function getCountryCode()
     {
-        return $this->container['claim_links'];
+        return $this->container['country_code'];
     }
 
     /**
-     * Sets claim_links
+     * Sets country_code
      *
-     * @param bool|null $claim_links true adds `claimId` and `claimUrl` to portable results even when you send an API key, e.g. to hand a user a signup link that opens the port form with their number.
+     * @param string|null $country_code ISO country of the number.
      *
      * @return self
      */
-    public function setClaimLinks($claim_links)
+    public function setCountryCode($country_code)
     {
-        if (is_null($claim_links)) {
-            throw new \InvalidArgumentException('non-nullable claim_links cannot be null');
+        if (is_null($country_code)) {
+            array_push($this->openAPINullablesSetToNull, 'country_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('country_code', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['claim_links'] = $claim_links;
+        $this->container['country_code'] = $country_code;
 
         return $this;
     }

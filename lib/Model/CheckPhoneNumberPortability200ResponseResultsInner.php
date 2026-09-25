@@ -61,10 +61,14 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
         'phone_number' => 'string',
         'portable' => 'bool',
         'fast_portable' => 'bool',
+        'messaging_capable' => 'bool',
         'line_type' => 'string',
+        'carrier_name' => 'string',
         'country_code' => 'string',
         'phone_number_type' => 'string',
-        'not_portable_reason' => 'string'
+        'not_portable_reason' => 'string',
+        'claim_id' => 'string',
+        'claim_url' => 'string'
     ];
 
     /**
@@ -78,10 +82,14 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
         'phone_number' => null,
         'portable' => null,
         'fast_portable' => null,
+        'messaging_capable' => null,
         'line_type' => null,
+        'carrier_name' => null,
         'country_code' => null,
         'phone_number_type' => null,
-        'not_portable_reason' => null
+        'not_portable_reason' => null,
+        'claim_id' => null,
+        'claim_url' => null
     ];
 
     /**
@@ -93,10 +101,14 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
         'phone_number' => false,
         'portable' => false,
         'fast_portable' => false,
+        'messaging_capable' => true,
         'line_type' => true,
+        'carrier_name' => true,
         'country_code' => true,
         'phone_number_type' => true,
-        'not_portable_reason' => true
+        'not_portable_reason' => true,
+        'claim_id' => false,
+        'claim_url' => false
     ];
 
     /**
@@ -188,10 +200,14 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
         'phone_number' => 'phoneNumber',
         'portable' => 'portable',
         'fast_portable' => 'fastPortable',
+        'messaging_capable' => 'messagingCapable',
         'line_type' => 'lineType',
+        'carrier_name' => 'carrierName',
         'country_code' => 'countryCode',
         'phone_number_type' => 'phoneNumberType',
-        'not_portable_reason' => 'notPortableReason'
+        'not_portable_reason' => 'notPortableReason',
+        'claim_id' => 'claimId',
+        'claim_url' => 'claimUrl'
     ];
 
     /**
@@ -203,10 +219,14 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
         'phone_number' => 'setPhoneNumber',
         'portable' => 'setPortable',
         'fast_portable' => 'setFastPortable',
+        'messaging_capable' => 'setMessagingCapable',
         'line_type' => 'setLineType',
+        'carrier_name' => 'setCarrierName',
         'country_code' => 'setCountryCode',
         'phone_number_type' => 'setPhoneNumberType',
-        'not_portable_reason' => 'setNotPortableReason'
+        'not_portable_reason' => 'setNotPortableReason',
+        'claim_id' => 'setClaimId',
+        'claim_url' => 'setClaimUrl'
     ];
 
     /**
@@ -218,10 +238,14 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
         'phone_number' => 'getPhoneNumber',
         'portable' => 'getPortable',
         'fast_portable' => 'getFastPortable',
+        'messaging_capable' => 'getMessagingCapable',
         'line_type' => 'getLineType',
+        'carrier_name' => 'getCarrierName',
         'country_code' => 'getCountryCode',
         'phone_number_type' => 'getPhoneNumberType',
-        'not_portable_reason' => 'getNotPortableReason'
+        'not_portable_reason' => 'getNotPortableReason',
+        'claim_id' => 'getClaimId',
+        'claim_url' => 'getClaimUrl'
     ];
 
     /**
@@ -284,10 +308,14 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
         $this->setIfExists('phone_number', $data ?? [], null);
         $this->setIfExists('portable', $data ?? [], null);
         $this->setIfExists('fast_portable', $data ?? [], null);
+        $this->setIfExists('messaging_capable', $data ?? [], null);
         $this->setIfExists('line_type', $data ?? [], null);
+        $this->setIfExists('carrier_name', $data ?? [], null);
         $this->setIfExists('country_code', $data ?? [], null);
         $this->setIfExists('phone_number_type', $data ?? [], null);
         $this->setIfExists('not_portable_reason', $data ?? [], null);
+        $this->setIfExists('claim_id', $data ?? [], null);
+        $this->setIfExists('claim_url', $data ?? [], null);
     }
 
     /**
@@ -414,6 +442,40 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
     }
 
     /**
+     * Gets messaging_capable
+     *
+     * @return bool|null
+     */
+    public function getMessagingCapable()
+    {
+        return $this->container['messaging_capable'];
+    }
+
+    /**
+     * Sets messaging_capable
+     *
+     * @param bool|null $messaging_capable Whether texting can be enabled on the number once ported; null when the carrier does not say.
+     *
+     * @return self
+     */
+    public function setMessagingCapable($messaging_capable)
+    {
+        if (is_null($messaging_capable)) {
+            array_push($this->openAPINullablesSetToNull, 'messaging_capable');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('messaging_capable', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['messaging_capable'] = $messaging_capable;
+
+        return $this;
+    }
+
+    /**
      * Gets line_type
      *
      * @return string|null
@@ -426,7 +488,7 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
     /**
      * Sets line_type
      *
-     * @param string|null $line_type Line type when known (mobile, landline, voip…). A US/CA mobile number requires the transfer PIN at submit.
+     * @param string|null $line_type Line type when known (mobile, landline, voip, toll-free, unknown). US/CA portable numbers only. A US/CA mobile number requires the transfer PIN at submit.
      *
      * @return self
      */
@@ -443,6 +505,40 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
             }
         }
         $this->container['line_type'] = $line_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets carrier_name
+     *
+     * @return string|null
+     */
+    public function getCarrierName()
+    {
+        return $this->container['carrier_name'];
+    }
+
+    /**
+     * Sets carrier_name
+     *
+     * @param string|null $carrier_name The number's current carrier, when the lookup knows it. US/CA portable numbers only.
+     *
+     * @return self
+     */
+    public function setCarrierName($carrier_name)
+    {
+        if (is_null($carrier_name)) {
+            array_push($this->openAPINullablesSetToNull, 'carrier_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['carrier_name'] = $carrier_name;
 
         return $this;
     }
@@ -494,7 +590,7 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
     /**
      * Sets phone_number_type
      *
-     * @param string|null $phone_number_type Carrier number-type classification (local, mobile, national, toll_free…), the numberType for the requirements endpoint.
+     * @param string|null $phone_number_type Carrier number-type classification (local, mobile, national, toll_free...), the numberType for the requirements endpoint.
      *
      * @return self
      */
@@ -545,6 +641,60 @@ class CheckPhoneNumberPortability200ResponseResultsInner implements ModelInterfa
             }
         }
         $this->container['not_portable_reason'] = $not_portable_reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets claim_id
+     *
+     * @return string|null
+     */
+    public function getClaimId()
+    {
+        return $this->container['claim_id'];
+    }
+
+    /**
+     * Sets claim_id
+     *
+     * @param string|null $claim_id Keyless calls and claimLinks=true only, on portable results. Resolve it with GET /v1/phone-numbers/port-in/claims/{claimId}. Expires after 7 days.
+     *
+     * @return self
+     */
+    public function setClaimId($claim_id)
+    {
+        if (is_null($claim_id)) {
+            throw new \InvalidArgumentException('non-nullable claim_id cannot be null');
+        }
+        $this->container['claim_id'] = $claim_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets claim_url
+     *
+     * @return string|null
+     */
+    public function getClaimUrl()
+    {
+        return $this->container['claim_url'];
+    }
+
+    /**
+     * Sets claim_url
+     *
+     * @param string|null $claim_url Keyless calls and claimLinks=true only, on portable results. A signup link that lands on the dashboard's port form with this number filled in.
+     *
+     * @return self
+     */
+    public function setClaimUrl($claim_url)
+    {
+        if (is_null($claim_url)) {
+            throw new \InvalidArgumentException('non-nullable claim_url cannot be null');
+        }
+        $this->container['claim_url'] = $claim_url;
 
         return $this;
     }

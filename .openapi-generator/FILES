@@ -925,6 +925,7 @@ docs/Model/GetPhoneNumberKycForm200ResponseReusable.md
 docs/Model/GetPhoneNumberKycForm200ResponseReusableDetailsInner.md
 docs/Model/GetPhoneNumberKycForm200ResponseReusableOptionsInner.md
 docs/Model/GetPhoneNumberKycForm200ResponseReusableOptionsInnerDetailsInner.md
+docs/Model/GetPhoneNumberPortClaim200Response.md
 docs/Model/GetPhoneNumberPortInOrderRequirements200Response.md
 docs/Model/GetPhoneNumberPortInOrderRequirements200ResponseRequirementsInner.md
 docs/Model/GetPhoneNumberPortInRequirements200Response.md
@@ -3202,6 +3203,7 @@ lib/Model/GetPhoneNumberKycForm200ResponseReusable.php
 lib/Model/GetPhoneNumberKycForm200ResponseReusableDetailsInner.php
 lib/Model/GetPhoneNumberKycForm200ResponseReusableOptionsInner.php
 lib/Model/GetPhoneNumberKycForm200ResponseReusableOptionsInnerDetailsInner.php
+lib/Model/GetPhoneNumberPortClaim200Response.php
 lib/Model/GetPhoneNumberPortInOrderRequirements200Response.php
 lib/Model/GetPhoneNumberPortInOrderRequirements200ResponseRequirementsInner.php
 lib/Model/GetPhoneNumberPortInRequirements200Response.php
@@ -4555,3 +4557,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetPhoneNumberPortClaim200ResponseTest.php

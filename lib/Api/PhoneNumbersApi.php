@@ -105,6 +105,9 @@ class PhoneNumbersApi
         'getPhoneNumberKycForm' => [
             'application/json',
         ],
+        'getPhoneNumberPortClaim' => [
+            'application/json',
+        ],
         'getPhoneNumberPortInOrderRequirements' => [
             'application/json',
         ],
@@ -823,7 +826,7 @@ class PhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CheckPhoneNumberPortability200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\CheckPhoneNumberPortability200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
      */
     public function checkPhoneNumberPortability($check_phone_number_portability_request, string $contentType = self::contentTypes['checkPhoneNumberPortability'][0])
     {
@@ -841,7 +844,7 @@ class PhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CheckPhoneNumberPortability200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CheckPhoneNumberPortability200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function checkPhoneNumberPortabilityWithHttpInfo($check_phone_number_portability_request, string $contentType = self::contentTypes['checkPhoneNumberPortability'][0])
     {
@@ -874,6 +877,12 @@ class PhoneNumbersApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\CheckPhoneNumberPortability200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -911,6 +920,14 @@ class PhoneNumbersApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\CheckPhoneNumberPortability200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3138,6 +3155,306 @@ class PhoneNumbersApi
         ) ?? []);
 
 
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getPhoneNumberPortClaim
+     *
+     * Resolve a port claim
+     *
+     * @param  string $claim_id claim_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberPortClaim'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetPhoneNumberPortClaim200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     */
+    public function getPhoneNumberPortClaim($claim_id, string $contentType = self::contentTypes['getPhoneNumberPortClaim'][0])
+    {
+        list($response) = $this->getPhoneNumberPortClaimWithHttpInfo($claim_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getPhoneNumberPortClaimWithHttpInfo
+     *
+     * Resolve a port claim
+     *
+     * @param  string $claim_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberPortClaim'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetPhoneNumberPortClaim200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getPhoneNumberPortClaimWithHttpInfo($claim_id, string $contentType = self::contentTypes['getPhoneNumberPortClaim'][0])
+    {
+        $request = $this->getPhoneNumberPortClaimRequest($claim_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetPhoneNumberPortClaim200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetPhoneNumberPortClaim200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetPhoneNumberPortClaim200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getPhoneNumberPortClaimAsync
+     *
+     * Resolve a port claim
+     *
+     * @param  string $claim_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberPortClaim'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPhoneNumberPortClaimAsync($claim_id, string $contentType = self::contentTypes['getPhoneNumberPortClaim'][0])
+    {
+        return $this->getPhoneNumberPortClaimAsyncWithHttpInfo($claim_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getPhoneNumberPortClaimAsyncWithHttpInfo
+     *
+     * Resolve a port claim
+     *
+     * @param  string $claim_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberPortClaim'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPhoneNumberPortClaimAsyncWithHttpInfo($claim_id, string $contentType = self::contentTypes['getPhoneNumberPortClaim'][0])
+    {
+        $returnType = '\Zernio\Model\GetPhoneNumberPortClaim200Response';
+        $request = $this->getPhoneNumberPortClaimRequest($claim_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getPhoneNumberPortClaim'
+     *
+     * @param  string $claim_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberPortClaim'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getPhoneNumberPortClaimRequest($claim_id, string $contentType = self::contentTypes['getPhoneNumberPortClaim'][0])
+    {
+
+        // verify the required parameter 'claim_id' is set
+        if ($claim_id === null || (is_array($claim_id) && count($claim_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $claim_id when calling getPhoneNumberPortClaim'
+            );
+        }
+
+
+        $resourcePath = '/v1/phone-numbers/port-in/claims/{claimId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($claim_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'claimId' . '}',
+                ObjectSerializer::toPathValue($claim_id),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(

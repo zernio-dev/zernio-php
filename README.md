@@ -574,6 +574,7 @@ Class | Method | HTTP request | Description
 *PhoneNumbersApi* | [**getPhoneNumber**](docs/Api/PhoneNumbersApi.md#getphonenumber) | **GET** /v1/phone-numbers/{id} | Get phone number
 *PhoneNumbersApi* | [**getPhoneNumberClaim**](docs/Api/PhoneNumbersApi.md#getphonenumberclaim) | **GET** /v1/phone-numbers/claims/{claimId} | Resolve a number claim
 *PhoneNumbersApi* | [**getPhoneNumberKycForm**](docs/Api/PhoneNumbersApi.md#getphonenumberkycform) | **GET** /v1/phone-numbers/kyc | Get KYC form spec
+*PhoneNumbersApi* | [**getPhoneNumberPortClaim**](docs/Api/PhoneNumbersApi.md#getphonenumberportclaim) | **GET** /v1/phone-numbers/port-in/claims/{claimId} | Resolve a port claim
 *PhoneNumbersApi* | [**getPhoneNumberPortInOrderRequirements**](docs/Api/PhoneNumbersApi.md#getphonenumberportinorderrequirements) | **GET** /v1/phone-numbers/port-in/{id}/requirements | A port-in order&#39;s pending requirements
 *PhoneNumbersApi* | [**getPhoneNumberPortInRequirements**](docs/Api/PhoneNumbersApi.md#getphonenumberportinrequirements) | **GET** /v1/phone-numbers/port-in/requirements | Country porting requirements
 *PhoneNumbersApi* | [**getPhoneNumberRemediation**](docs/Api/PhoneNumbersApi.md#getphonenumberremediation) | **GET** /v1/phone-numbers/{id}/remediate | Get declined requirements
@@ -1701,6 +1702,7 @@ Class | Method | HTTP request | Description
 - [GetPhoneNumberKycForm200ResponseReusableDetailsInner](docs/Model/GetPhoneNumberKycForm200ResponseReusableDetailsInner.md)
 - [GetPhoneNumberKycForm200ResponseReusableOptionsInner](docs/Model/GetPhoneNumberKycForm200ResponseReusableOptionsInner.md)
 - [GetPhoneNumberKycForm200ResponseReusableOptionsInnerDetailsInner](docs/Model/GetPhoneNumberKycForm200ResponseReusableOptionsInnerDetailsInner.md)
+- [GetPhoneNumberPortClaim200Response](docs/Model/GetPhoneNumberPortClaim200Response.md)
 - [GetPhoneNumberPortInOrderRequirements200Response](docs/Model/GetPhoneNumberPortInOrderRequirements200Response.md)
 - [GetPhoneNumberPortInOrderRequirements200ResponseRequirementsInner](docs/Model/GetPhoneNumberPortInOrderRequirements200ResponseRequirementsInner.md)
 - [GetPhoneNumberPortInRequirements200Response](docs/Model/GetPhoneNumberPortInRequirements200Response.md)
