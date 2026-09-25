@@ -1467,6 +1467,7 @@ docs/Model/PostAnalytics.md
 docs/Model/PostCreateResponse.md
 docs/Model/PostDeleteResponse.md
 docs/Model/PostGetResponse.md
+docs/Model/PostPlatformError.md
 docs/Model/PostPublishIncompleteResponse.md
 docs/Model/PostPublishIncompleteResponsePlatformResultsInner.md
 docs/Model/PostRetryResponse.md
@@ -3724,6 +3725,7 @@ lib/Model/PostAnalytics.php
 lib/Model/PostCreateResponse.php
 lib/Model/PostDeleteResponse.php
 lib/Model/PostGetResponse.php
+lib/Model/PostPlatformError.php
 lib/Model/PostPublishIncompleteResponse.php
 lib/Model/PostPublishIncompleteResponsePlatformResultsInner.php
 lib/Model/PostRetryResponse.php
@@ -4513,3 +4515,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/PostPlatformErrorTest.php

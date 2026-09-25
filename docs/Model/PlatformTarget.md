@@ -20,5 +20,6 @@ Name | Type | Description | Notes
 **error_message** | **string** | Human-readable error message when status is failed. Contains platform-specific error details explaining why the publish failed. | [optional]
 **error_category** | **string** | Error category for programmatic handling: auth_expired (token expired/revoked), user_content (wrong format/too long), user_abuse (rate limits/spam), account_issue (config problems), platform_rejected (policy violation), platform_error (5xx/maintenance), platform_rate_limit (platform throttling, retried automatically), quota_exhausted (a shared quota pool the integration draws on is empty, including our own capacity gate in front of one; not caused by your content or account, and safe to retry once the pool frees up), system_error (Zernio infra), unknown | [optional]
 **error_source** | **string** | Who caused the error: user (fix content/reconnect), platform (outage/API change), system (Zernio issue, rare) | [optional]
+**platform_error** | [**\Zernio\Model\PostPlatformError**](PostPlatformError.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

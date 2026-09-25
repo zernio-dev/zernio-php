@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **platform_post_id** | **string** |  | [optional]
 **published_url** | **string** |  | [optional]
 **error** | **string** |  | [optional]
+**platform_error** | [**\Zernio\Model\PostPlatformError**](PostPlatformError.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
