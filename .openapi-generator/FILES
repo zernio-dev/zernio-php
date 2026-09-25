@@ -4527,8 +4527,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetPhoneNumberClaim200ResponseAreaTest.php
-test/Model/GetPhoneNumberClaim200ResponseCountryTest.php
-test/Model/GetPhoneNumberClaim200ResponseTest.php
-test/Model/PurchasePhoneNumber401ResponseDetailsTest.php
-test/Model/PurchasePhoneNumber401ResponseTest.php
