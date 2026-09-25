@@ -1,6 +1,6 @@
 <?php
 /**
- * SearchAvailablePhoneNumbers200Response
+ * GetPhoneNumberClaim200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SearchAvailablePhoneNumbers200Response Class Doc Comment
+ * GetPhoneNumberClaim200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SearchAvailablePhoneNumbers200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetPhoneNumberClaim200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SearchAvailablePhoneNumbers200Response implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'searchAvailablePhoneNumbers_200_response';
+    protected static $openAPIModelName = 'getPhoneNumberClaim_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,14 +58,10 @@ class SearchAvailablePhoneNumbers200Response implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'country' => 'string',
-        'number_type' => 'string',
-        'require_sms' => 'bool',
-        'numbers' => '\Zernio\Model\SearchAvailablePhoneNumbers200ResponseNumbersInner[]',
-        'masked' => 'bool',
-        'near' => 'string',
-        'claim_id' => 'string',
-        'claim_url' => 'string'
+        'country' => '\Zernio\Model\GetPhoneNumberClaim200ResponseCountry',
+        'type' => 'object',
+        'area' => '\Zernio\Model\GetPhoneNumberClaim200ResponseArea',
+        'phone_number' => 'string'
     ];
 
     /**
@@ -77,13 +73,9 @@ class SearchAvailablePhoneNumbers200Response implements ModelInterface, ArrayAcc
       */
     protected static $openAPIFormats = [
         'country' => null,
-        'number_type' => null,
-        'require_sms' => null,
-        'numbers' => null,
-        'masked' => null,
-        'near' => null,
-        'claim_id' => null,
-        'claim_url' => null
+        'type' => null,
+        'area' => null,
+        'phone_number' => null
     ];
 
     /**
@@ -93,13 +85,9 @@ class SearchAvailablePhoneNumbers200Response implements ModelInterface, ArrayAcc
       */
     protected static array $openAPINullables = [
         'country' => false,
-        'number_type' => false,
-        'require_sms' => false,
-        'numbers' => false,
-        'masked' => false,
-        'near' => true,
-        'claim_id' => false,
-        'claim_url' => false
+        'type' => false,
+        'area' => false,
+        'phone_number' => true
     ];
 
     /**
@@ -189,13 +177,9 @@ class SearchAvailablePhoneNumbers200Response implements ModelInterface, ArrayAcc
      */
     protected static $attributeMap = [
         'country' => 'country',
-        'number_type' => 'numberType',
-        'require_sms' => 'requireSms',
-        'numbers' => 'numbers',
-        'masked' => 'masked',
-        'near' => 'near',
-        'claim_id' => 'claimId',
-        'claim_url' => 'claimUrl'
+        'type' => 'type',
+        'area' => 'area',
+        'phone_number' => 'phoneNumber'
     ];
 
     /**
@@ -205,13 +189,9 @@ class SearchAvailablePhoneNumbers200Response implements ModelInterface, ArrayAcc
      */
     protected static $setters = [
         'country' => 'setCountry',
-        'number_type' => 'setNumberType',
-        'require_sms' => 'setRequireSms',
-        'numbers' => 'setNumbers',
-        'masked' => 'setMasked',
-        'near' => 'setNear',
-        'claim_id' => 'setClaimId',
-        'claim_url' => 'setClaimUrl'
+        'type' => 'setType',
+        'area' => 'setArea',
+        'phone_number' => 'setPhoneNumber'
     ];
 
     /**
@@ -221,13 +201,9 @@ class SearchAvailablePhoneNumbers200Response implements ModelInterface, ArrayAcc
      */
     protected static $getters = [
         'country' => 'getCountry',
-        'number_type' => 'getNumberType',
-        'require_sms' => 'getRequireSms',
-        'numbers' => 'getNumbers',
-        'masked' => 'getMasked',
-        'near' => 'getNear',
-        'claim_id' => 'getClaimId',
-        'claim_url' => 'getClaimUrl'
+        'type' => 'getType',
+        'area' => 'getArea',
+        'phone_number' => 'getPhoneNumber'
     ];
 
     /**
@@ -288,13 +264,9 @@ class SearchAvailablePhoneNumbers200Response implements ModelInterface, ArrayAcc
     public function __construct(?array $data = null)
     {
         $this->setIfExists('country', $data ?? [], null);
-        $this->setIfExists('number_type', $data ?? [], null);
-        $this->setIfExists('require_sms', $data ?? [], null);
-        $this->setIfExists('numbers', $data ?? [], null);
-        $this->setIfExists('masked', $data ?? [], null);
-        $this->setIfExists('near', $data ?? [], null);
-        $this->setIfExists('claim_id', $data ?? [], null);
-        $this->setIfExists('claim_url', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('area', $data ?? [], null);
+        $this->setIfExists('phone_number', $data ?? [], null);
     }
 
     /**
@@ -342,7 +314,7 @@ class SearchAvailablePhoneNumbers200Response implements ModelInterface, ArrayAcc
     /**
      * Gets country
      *
-     * @return string|null
+     * @return \Zernio\Model\GetPhoneNumberClaim200ResponseCountry|null
      */
     public function getCountry()
     {
@@ -352,7 +324,7 @@ class SearchAvailablePhoneNumbers200Response implements ModelInterface, ArrayAcc
     /**
      * Sets country
      *
-     * @param string|null $country country
+     * @param \Zernio\Model\GetPhoneNumberClaim200ResponseCountry|null $country country
      *
      * @return self
      */
@@ -367,197 +339,89 @@ class SearchAvailablePhoneNumbers200Response implements ModelInterface, ArrayAcc
     }
 
     /**
-     * Gets number_type
+     * Gets type
+     *
+     * @return object|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param object|null $type The claimed number type, in the shape of `types[]` on GET /v1/phone-numbers/countries.
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets area
+     *
+     * @return \Zernio\Model\GetPhoneNumberClaim200ResponseArea|null
+     */
+    public function getArea()
+    {
+        return $this->container['area'];
+    }
+
+    /**
+     * Sets area
+     *
+     * @param \Zernio\Model\GetPhoneNumberClaim200ResponseArea|null $area area
+     *
+     * @return self
+     */
+    public function setArea($area)
+    {
+        if (is_null($area)) {
+            throw new \InvalidArgumentException('non-nullable area cannot be null');
+        }
+        $this->container['area'] = $area;
+
+        return $this;
+    }
+
+    /**
+     * Gets phone_number
      *
      * @return string|null
      */
-    public function getNumberType()
+    public function getPhoneNumber()
     {
-        return $this->container['number_type'];
+        return $this->container['phone_number'];
     }
 
     /**
-     * Sets number_type
+     * Sets phone_number
      *
-     * @param string|null $number_type number_type
+     * @param string|null $phone_number E.164, or null for an any-number claim.
      *
      * @return self
      */
-    public function setNumberType($number_type)
+    public function setPhoneNumber($phone_number)
     {
-        if (is_null($number_type)) {
-            throw new \InvalidArgumentException('non-nullable number_type cannot be null');
-        }
-        $this->container['number_type'] = $number_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets require_sms
-     *
-     * @return bool|null
-     */
-    public function getRequireSms()
-    {
-        return $this->container['require_sms'];
-    }
-
-    /**
-     * Sets require_sms
-     *
-     * @param bool|null $require_sms Echo of the `sms` filter applied to this search.
-     *
-     * @return self
-     */
-    public function setRequireSms($require_sms)
-    {
-        if (is_null($require_sms)) {
-            throw new \InvalidArgumentException('non-nullable require_sms cannot be null');
-        }
-        $this->container['require_sms'] = $require_sms;
-
-        return $this;
-    }
-
-    /**
-     * Gets numbers
-     *
-     * @return \Zernio\Model\SearchAvailablePhoneNumbers200ResponseNumbersInner[]|null
-     */
-    public function getNumbers()
-    {
-        return $this->container['numbers'];
-    }
-
-    /**
-     * Sets numbers
-     *
-     * @param \Zernio\Model\SearchAvailablePhoneNumbers200ResponseNumbersInner[]|null $numbers numbers
-     *
-     * @return self
-     */
-    public function setNumbers($numbers)
-    {
-        if (is_null($numbers)) {
-            throw new \InvalidArgumentException('non-nullable numbers cannot be null');
-        }
-        $this->container['numbers'] = $numbers;
-
-        return $this;
-    }
-
-    /**
-     * Gets masked
-     *
-     * @return bool|null
-     */
-    public function getMasked()
-    {
-        return $this->container['masked'];
-    }
-
-    /**
-     * Sets masked
-     *
-     * @param bool|null $masked true on keyless calls.
-     *
-     * @return self
-     */
-    public function setMasked($masked)
-    {
-        if (is_null($masked)) {
-            throw new \InvalidArgumentException('non-nullable masked cannot be null');
-        }
-        $this->container['masked'] = $masked;
-
-        return $this;
-    }
-
-    /**
-     * Gets near
-     *
-     * @return string|null
-     */
-    public function getNear()
-    {
-        return $this->container['near'];
-    }
-
-    /**
-     * Sets near
-     *
-     * @param string|null $near With `country=auto`: the caller's city the results were narrowed to, or null when there was no stock there.
-     *
-     * @return self
-     */
-    public function setNear($near)
-    {
-        if (is_null($near)) {
-            array_push($this->openAPINullablesSetToNull, 'near');
+        if (is_null($phone_number)) {
+            array_push($this->openAPINullablesSetToNull, 'phone_number');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('near', $nullablesSetToNull);
+            $index = array_search('phone_number', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['near'] = $near;
-
-        return $this;
-    }
-
-    /**
-     * Gets claim_id
-     *
-     * @return string|null
-     */
-    public function getClaimId()
-    {
-        return $this->container['claim_id'];
-    }
-
-    /**
-     * Sets claim_id
-     *
-     * @param string|null $claim_id Keyless calls only: a claim for any number matching this search's country, type and area.
-     *
-     * @return self
-     */
-    public function setClaimId($claim_id)
-    {
-        if (is_null($claim_id)) {
-            throw new \InvalidArgumentException('non-nullable claim_id cannot be null');
-        }
-        $this->container['claim_id'] = $claim_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets claim_url
-     *
-     * @return string|null
-     */
-    public function getClaimUrl()
-    {
-        return $this->container['claim_url'];
-    }
-
-    /**
-     * Sets claim_url
-     *
-     * @param string|null $claim_url Keyless calls only: signup link for any number matching this search.
-     *
-     * @return self
-     */
-    public function setClaimUrl($claim_url)
-    {
-        if (is_null($claim_url)) {
-            throw new \InvalidArgumentException('non-nullable claim_url cannot be null');
-        }
-        $this->container['claim_url'] = $claim_url;
+        $this->container['phone_number'] = $phone_number;
 
         return $this;
     }

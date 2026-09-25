@@ -913,6 +913,9 @@ docs/Model/GetPendingOAuthData200Response.md
 docs/Model/GetPendingOAuthData200ResponseOrganizationsInner.md
 docs/Model/GetPhoneNumber200Response.md
 docs/Model/GetPhoneNumber200ResponsePhoneNumber.md
+docs/Model/GetPhoneNumberClaim200Response.md
+docs/Model/GetPhoneNumberClaim200ResponseArea.md
+docs/Model/GetPhoneNumberClaim200ResponseCountry.md
 docs/Model/GetPhoneNumberKycForm200Response.md
 docs/Model/GetPhoneNumberKycForm200ResponseFieldsInner.md
 docs/Model/GetPhoneNumberKycForm200ResponseReusable.md
@@ -1498,6 +1501,8 @@ docs/Model/PurchasePhoneNumber200ResponseOneOf1.md
 docs/Model/PurchasePhoneNumber200ResponseOneOf1PhoneNumber.md
 docs/Model/PurchasePhoneNumber200ResponseOneOf2.md
 docs/Model/PurchasePhoneNumber202Response.md
+docs/Model/PurchasePhoneNumber401Response.md
+docs/Model/PurchasePhoneNumber401ResponseDetails.md
 docs/Model/PurchasePhoneNumber409Response.md
 docs/Model/PurchasePhoneNumber503Response.md
 docs/Model/PurchasePhoneNumberRequest.md
@@ -3171,6 +3176,9 @@ lib/Model/GetPendingOAuthData200Response.php
 lib/Model/GetPendingOAuthData200ResponseOrganizationsInner.php
 lib/Model/GetPhoneNumber200Response.php
 lib/Model/GetPhoneNumber200ResponsePhoneNumber.php
+lib/Model/GetPhoneNumberClaim200Response.php
+lib/Model/GetPhoneNumberClaim200ResponseArea.php
+lib/Model/GetPhoneNumberClaim200ResponseCountry.php
 lib/Model/GetPhoneNumberKycForm200Response.php
 lib/Model/GetPhoneNumberKycForm200ResponseFieldsInner.php
 lib/Model/GetPhoneNumberKycForm200ResponseReusable.php
@@ -3757,6 +3765,8 @@ lib/Model/PurchasePhoneNumber200ResponseOneOf1.php
 lib/Model/PurchasePhoneNumber200ResponseOneOf1PhoneNumber.php
 lib/Model/PurchasePhoneNumber200ResponseOneOf2.php
 lib/Model/PurchasePhoneNumber202Response.php
+lib/Model/PurchasePhoneNumber401Response.php
+lib/Model/PurchasePhoneNumber401ResponseDetails.php
 lib/Model/PurchasePhoneNumber409Response.php
 lib/Model/PurchasePhoneNumber503Response.php
 lib/Model/PurchasePhoneNumberRequest.php
@@ -4517,3 +4527,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetPhoneNumberClaim200ResponseAreaTest.php
+test/Model/GetPhoneNumberClaim200ResponseCountryTest.php
+test/Model/GetPhoneNumberClaim200ResponseTest.php
+test/Model/PurchasePhoneNumber401ResponseDetailsTest.php
+test/Model/PurchasePhoneNumber401ResponseTest.php

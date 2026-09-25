@@ -61,7 +61,11 @@ class SearchAvailablePhoneNumbers200ResponseNumbersInner implements ModelInterfa
         'phone_number' => 'string',
         'features' => 'string[]',
         'locality' => 'string',
-        'best_effort' => 'bool'
+        'best_effort' => 'bool',
+        'masked_number' => 'string',
+        'number_type' => 'string',
+        'claim_id' => 'string',
+        'claim_url' => 'string'
     ];
 
     /**
@@ -75,7 +79,11 @@ class SearchAvailablePhoneNumbers200ResponseNumbersInner implements ModelInterfa
         'phone_number' => null,
         'features' => null,
         'locality' => null,
-        'best_effort' => null
+        'best_effort' => null,
+        'masked_number' => null,
+        'number_type' => null,
+        'claim_id' => null,
+        'claim_url' => null
     ];
 
     /**
@@ -87,7 +95,11 @@ class SearchAvailablePhoneNumbers200ResponseNumbersInner implements ModelInterfa
         'phone_number' => false,
         'features' => false,
         'locality' => false,
-        'best_effort' => false
+        'best_effort' => false,
+        'masked_number' => false,
+        'number_type' => false,
+        'claim_id' => false,
+        'claim_url' => false
     ];
 
     /**
@@ -179,7 +191,11 @@ class SearchAvailablePhoneNumbers200ResponseNumbersInner implements ModelInterfa
         'phone_number' => 'phoneNumber',
         'features' => 'features',
         'locality' => 'locality',
-        'best_effort' => 'bestEffort'
+        'best_effort' => 'bestEffort',
+        'masked_number' => 'maskedNumber',
+        'number_type' => 'numberType',
+        'claim_id' => 'claimId',
+        'claim_url' => 'claimUrl'
     ];
 
     /**
@@ -191,7 +207,11 @@ class SearchAvailablePhoneNumbers200ResponseNumbersInner implements ModelInterfa
         'phone_number' => 'setPhoneNumber',
         'features' => 'setFeatures',
         'locality' => 'setLocality',
-        'best_effort' => 'setBestEffort'
+        'best_effort' => 'setBestEffort',
+        'masked_number' => 'setMaskedNumber',
+        'number_type' => 'setNumberType',
+        'claim_id' => 'setClaimId',
+        'claim_url' => 'setClaimUrl'
     ];
 
     /**
@@ -203,7 +223,11 @@ class SearchAvailablePhoneNumbers200ResponseNumbersInner implements ModelInterfa
         'phone_number' => 'getPhoneNumber',
         'features' => 'getFeatures',
         'locality' => 'getLocality',
-        'best_effort' => 'getBestEffort'
+        'best_effort' => 'getBestEffort',
+        'masked_number' => 'getMaskedNumber',
+        'number_type' => 'getNumberType',
+        'claim_id' => 'getClaimId',
+        'claim_url' => 'getClaimUrl'
     ];
 
     /**
@@ -267,6 +291,10 @@ class SearchAvailablePhoneNumbers200ResponseNumbersInner implements ModelInterfa
         $this->setIfExists('features', $data ?? [], null);
         $this->setIfExists('locality', $data ?? [], null);
         $this->setIfExists('best_effort', $data ?? [], null);
+        $this->setIfExists('masked_number', $data ?? [], null);
+        $this->setIfExists('number_type', $data ?? [], null);
+        $this->setIfExists('claim_id', $data ?? [], null);
+        $this->setIfExists('claim_url', $data ?? [], null);
     }
 
     /**
@@ -415,6 +443,114 @@ class SearchAvailablePhoneNumbers200ResponseNumbersInner implements ModelInterfa
             throw new \InvalidArgumentException('non-nullable best_effort cannot be null');
         }
         $this->container['best_effort'] = $best_effort;
+
+        return $this;
+    }
+
+    /**
+     * Gets masked_number
+     *
+     * @return string|null
+     */
+    public function getMaskedNumber()
+    {
+        return $this->container['masked_number'];
+    }
+
+    /**
+     * Sets masked_number
+     *
+     * @param string|null $masked_number Keyless calls only, in place of `phoneNumber`: the number with its middle digits masked, e.g. +44 20 •••• 0123.
+     *
+     * @return self
+     */
+    public function setMaskedNumber($masked_number)
+    {
+        if (is_null($masked_number)) {
+            throw new \InvalidArgumentException('non-nullable masked_number cannot be null');
+        }
+        $this->container['masked_number'] = $masked_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_type
+     *
+     * @return string|null
+     */
+    public function getNumberType()
+    {
+        return $this->container['number_type'];
+    }
+
+    /**
+     * Sets number_type
+     *
+     * @param string|null $number_type Keyless calls only. Without a `numberType` filter a keyless search mixes every type the country sells, so each result names its own.
+     *
+     * @return self
+     */
+    public function setNumberType($number_type)
+    {
+        if (is_null($number_type)) {
+            throw new \InvalidArgumentException('non-nullable number_type cannot be null');
+        }
+        $this->container['number_type'] = $number_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets claim_id
+     *
+     * @return string|null
+     */
+    public function getClaimId()
+    {
+        return $this->container['claim_id'];
+    }
+
+    /**
+     * Sets claim_id
+     *
+     * @param string|null $claim_id Keyless calls only. Opaque, expires after 7 days. Pass it as `claimId` on a keyless POST /v1/phone-numbers/purchase.
+     *
+     * @return self
+     */
+    public function setClaimId($claim_id)
+    {
+        if (is_null($claim_id)) {
+            throw new \InvalidArgumentException('non-nullable claim_id cannot be null');
+        }
+        $this->container['claim_id'] = $claim_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets claim_url
+     *
+     * @return string|null
+     */
+    public function getClaimUrl()
+    {
+        return $this->container['claim_url'];
+    }
+
+    /**
+     * Sets claim_url
+     *
+     * @param string|null $claim_url Keyless calls only. Signup link that opens the dashboard's confirm step for this number. The number is not held: if it is gone by then, the buyer picks another in the same area.
+     *
+     * @return self
+     */
+    public function setClaimUrl($claim_url)
+    {
+        if (is_null($claim_url)) {
+            throw new \InvalidArgumentException('non-nullable claim_url cannot be null');
+        }
+        $this->container['claim_url'] = $claim_url;
 
         return $this;
     }

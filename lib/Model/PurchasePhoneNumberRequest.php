@@ -62,6 +62,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'country' => 'string',
         'number_type' => 'string',
         'area_code' => 'string',
+        'claim_id' => 'string',
         'phone_number' => 'string',
         'connect_whatsapp' => 'bool',
         'wants_sms' => 'bool',
@@ -82,6 +83,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'country' => null,
         'number_type' => null,
         'area_code' => null,
+        'claim_id' => null,
         'phone_number' => null,
         'connect_whatsapp' => null,
         'wants_sms' => null,
@@ -100,6 +102,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'country' => false,
         'number_type' => false,
         'area_code' => false,
+        'claim_id' => false,
         'phone_number' => false,
         'connect_whatsapp' => false,
         'wants_sms' => false,
@@ -198,6 +201,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'country' => 'country',
         'number_type' => 'numberType',
         'area_code' => 'areaCode',
+        'claim_id' => 'claimId',
         'phone_number' => 'phoneNumber',
         'connect_whatsapp' => 'connectWhatsapp',
         'wants_sms' => 'wantsSms',
@@ -216,6 +220,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'country' => 'setCountry',
         'number_type' => 'setNumberType',
         'area_code' => 'setAreaCode',
+        'claim_id' => 'setClaimId',
         'phone_number' => 'setPhoneNumber',
         'connect_whatsapp' => 'setConnectWhatsapp',
         'wants_sms' => 'setWantsSms',
@@ -234,6 +239,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         'country' => 'getCountry',
         'number_type' => 'getNumberType',
         'area_code' => 'getAreaCode',
+        'claim_id' => 'getClaimId',
         'phone_number' => 'getPhoneNumber',
         'connect_whatsapp' => 'getConnectWhatsapp',
         'wants_sms' => 'getWantsSms',
@@ -322,6 +328,7 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('country', $data ?? [], 'US');
         $this->setIfExists('number_type', $data ?? [], null);
         $this->setIfExists('area_code', $data ?? [], null);
+        $this->setIfExists('claim_id', $data ?? [], null);
         $this->setIfExists('phone_number', $data ?? [], null);
         $this->setIfExists('connect_whatsapp', $data ?? [], true);
         $this->setIfExists('wants_sms', $data ?? [], false);
@@ -515,6 +522,33 @@ class PurchasePhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSe
         }
 
         $this->container['area_code'] = $area_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets claim_id
+     *
+     * @return string|null
+     */
+    public function getClaimId()
+    {
+        return $this->container['claim_id'];
+    }
+
+    /**
+     * Sets claim_id
+     *
+     * @param string|null $claim_id Keyless calls only: a `claimId` from a keyless GET /v1/phone-numbers/available. The 401 then carries a `claimUrl` for that exact number. Ignored when an API key is sent.
+     *
+     * @return self
+     */
+    public function setClaimId($claim_id)
+    {
+        if (is_null($claim_id)) {
+            throw new \InvalidArgumentException('non-nullable claim_id cannot be null');
+        }
+        $this->container['claim_id'] = $claim_id;
 
         return $this;
     }

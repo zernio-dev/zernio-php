@@ -99,6 +99,9 @@ class PhoneNumbersApi
         'getPhoneNumber' => [
             'application/json',
         ],
+        'getPhoneNumberClaim' => [
+            'application/json',
+        ],
         'getPhoneNumberKycForm' => [
             'application/json',
         ],
@@ -2593,6 +2596,306 @@ class PhoneNumbersApi
     }
 
     /**
+     * Operation getPhoneNumberClaim
+     *
+     * Resolve a number claim
+     *
+     * @param  string $claim_id claim_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberClaim'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetPhoneNumberClaim200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1
+     */
+    public function getPhoneNumberClaim($claim_id, string $contentType = self::contentTypes['getPhoneNumberClaim'][0])
+    {
+        list($response) = $this->getPhoneNumberClaimWithHttpInfo($claim_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getPhoneNumberClaimWithHttpInfo
+     *
+     * Resolve a number claim
+     *
+     * @param  string $claim_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberClaim'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetPhoneNumberClaim200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getPhoneNumberClaimWithHttpInfo($claim_id, string $contentType = self::contentTypes['getPhoneNumberClaim'][0])
+    {
+        $request = $this->getPhoneNumberClaimRequest($claim_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetPhoneNumberClaim200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetPhoneNumberClaim200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetPhoneNumberClaim200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getPhoneNumberClaimAsync
+     *
+     * Resolve a number claim
+     *
+     * @param  string $claim_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberClaim'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPhoneNumberClaimAsync($claim_id, string $contentType = self::contentTypes['getPhoneNumberClaim'][0])
+    {
+        return $this->getPhoneNumberClaimAsyncWithHttpInfo($claim_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getPhoneNumberClaimAsyncWithHttpInfo
+     *
+     * Resolve a number claim
+     *
+     * @param  string $claim_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberClaim'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPhoneNumberClaimAsyncWithHttpInfo($claim_id, string $contentType = self::contentTypes['getPhoneNumberClaim'][0])
+    {
+        $returnType = '\Zernio\Model\GetPhoneNumberClaim200Response';
+        $request = $this->getPhoneNumberClaimRequest($claim_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getPhoneNumberClaim'
+     *
+     * @param  string $claim_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPhoneNumberClaim'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getPhoneNumberClaimRequest($claim_id, string $contentType = self::contentTypes['getPhoneNumberClaim'][0])
+    {
+
+        // verify the required parameter 'claim_id' is set
+        if ($claim_id === null || (is_array($claim_id) && count($claim_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $claim_id when calling getPhoneNumberClaim'
+            );
+        }
+
+
+        $resourcePath = '/v1/phone-numbers/claims/{claimId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($claim_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'claimId' . '}',
+                ObjectSerializer::toPathValue($claim_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getPhoneNumberKycForm
      *
      * Get KYC form spec
@@ -3811,7 +4114,7 @@ class PhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListPhoneNumberCountries200Response|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ListPhoneNumberCountries200Response
      */
     public function listPhoneNumberCountries(string $contentType = self::contentTypes['listPhoneNumberCountries'][0])
     {
@@ -3828,7 +4131,7 @@ class PhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListPhoneNumberCountries200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListPhoneNumberCountries200Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function listPhoneNumberCountriesWithHttpInfo(string $contentType = self::contentTypes['listPhoneNumberCountries'][0])
     {
@@ -3864,12 +4167,6 @@ class PhoneNumbersApi
                         $request,
                         $response,
                     );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject1',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -3898,14 +4195,6 @@ class PhoneNumbersApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\ListPhoneNumberCountries200Response',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4042,10 +4331,6 @@ class PhoneNumbersApi
             }
         }
 
-        // this endpoint requires Bearer (JWT) authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -4906,7 +5191,7 @@ class PhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\PurchasePhoneNumber200Response|\Zernio\Model\PurchasePhoneNumber202Response|\Zernio\Model\InlineObject1|\Zernio\Model\PurchasePhoneNumber409Response|\Zernio\Model\PurchasePhoneNumber503Response
+     * @return \Zernio\Model\PurchasePhoneNumber200Response|\Zernio\Model\PurchasePhoneNumber202Response|\Zernio\Model\PurchasePhoneNumber401Response|\Zernio\Model\PurchasePhoneNumber409Response|\Zernio\Model\PurchasePhoneNumber503Response
      */
     public function purchasePhoneNumber($purchase_phone_number_request, string $contentType = self::contentTypes['purchasePhoneNumber'][0])
     {
@@ -4924,7 +5209,7 @@ class PhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\PurchasePhoneNumber200Response|\Zernio\Model\PurchasePhoneNumber202Response|\Zernio\Model\InlineObject1|\Zernio\Model\PurchasePhoneNumber409Response|\Zernio\Model\PurchasePhoneNumber503Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\PurchasePhoneNumber200Response|\Zernio\Model\PurchasePhoneNumber202Response|\Zernio\Model\PurchasePhoneNumber401Response|\Zernio\Model\PurchasePhoneNumber409Response|\Zernio\Model\PurchasePhoneNumber503Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function purchasePhoneNumberWithHttpInfo($purchase_phone_number_request, string $contentType = self::contentTypes['purchasePhoneNumber'][0])
     {
@@ -4968,7 +5253,7 @@ class PhoneNumbersApi
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\PurchasePhoneNumber401Response',
                         $request,
                         $response,
                     );
@@ -5027,7 +5312,7 @@ class PhoneNumbersApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\InlineObject1',
+                        '\Zernio\Model\PurchasePhoneNumber401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6756,7 +7041,7 @@ class PhoneNumbersApi
      *
      * Search available numbers
      *
-     * @param  string|null $country country (optional, default to 'US')
+     * @param  string|null $country ISO code, or &#x60;auto&#x60; on the keyless shape to search the caller&#39;s own country (from their IP) near their city, falling back to US. (optional, default to 'US')
      * @param  string|null $number_type Number type; defaults to the country&#39;s WhatsApp-safe type (the same name as on purchase, availability and kyc) (optional)
      * @param  string|null $area_code Area code or national dialing code the number must start with, e.g. 415 or 91 (optional)
      * @param  string|null $type Alias of numberType, kept for existing callers (optional) (deprecated)
@@ -6765,15 +7050,16 @@ class PhoneNumbersApi
      * @param  string|null $contains Pattern to match within the number (optional)
      * @param  bool|null $sms true narrows the pool to SMS-capable numbers. Each result still carries its full &#x60;features&#x60; list for per-number capability badging. (optional)
      * @param  int|null $limit limit (optional, default to 20)
+     * @param  bool|null $masked true returns the keyless shape (masked numbers with claimId and claimUrl) even when you send an API key, e.g. to hand a user a signup link for a number. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAvailablePhoneNumbers'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\SearchAvailablePhoneNumbers200Response|\Zernio\Model\InlineObject1
      */
-    public function searchAvailablePhoneNumbers($country = 'US', $number_type = null, $area_code = null, $type = null, $prefix = null, $locality = null, $contains = null, $sms = null, $limit = 20, string $contentType = self::contentTypes['searchAvailablePhoneNumbers'][0])
+    public function searchAvailablePhoneNumbers($country = 'US', $number_type = null, $area_code = null, $type = null, $prefix = null, $locality = null, $contains = null, $sms = null, $limit = 20, $masked = null, string $contentType = self::contentTypes['searchAvailablePhoneNumbers'][0])
     {
-        list($response) = $this->searchAvailablePhoneNumbersWithHttpInfo($country, $number_type, $area_code, $type, $prefix, $locality, $contains, $sms, $limit, $contentType);
+        list($response) = $this->searchAvailablePhoneNumbersWithHttpInfo($country, $number_type, $area_code, $type, $prefix, $locality, $contains, $sms, $limit, $masked, $contentType);
         return $response;
     }
 
@@ -6782,7 +7068,7 @@ class PhoneNumbersApi
      *
      * Search available numbers
      *
-     * @param  string|null $country (optional, default to 'US')
+     * @param  string|null $country ISO code, or &#x60;auto&#x60; on the keyless shape to search the caller&#39;s own country (from their IP) near their city, falling back to US. (optional, default to 'US')
      * @param  string|null $number_type Number type; defaults to the country&#39;s WhatsApp-safe type (the same name as on purchase, availability and kyc) (optional)
      * @param  string|null $area_code Area code or national dialing code the number must start with, e.g. 415 or 91 (optional)
      * @param  string|null $type Alias of numberType, kept for existing callers (optional) (deprecated)
@@ -6791,15 +7077,16 @@ class PhoneNumbersApi
      * @param  string|null $contains Pattern to match within the number (optional)
      * @param  bool|null $sms true narrows the pool to SMS-capable numbers. Each result still carries its full &#x60;features&#x60; list for per-number capability badging. (optional)
      * @param  int|null $limit (optional, default to 20)
+     * @param  bool|null $masked true returns the keyless shape (masked numbers with claimId and claimUrl) even when you send an API key, e.g. to hand a user a signup link for a number. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAvailablePhoneNumbers'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\SearchAvailablePhoneNumbers200Response|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchAvailablePhoneNumbersWithHttpInfo($country = 'US', $number_type = null, $area_code = null, $type = null, $prefix = null, $locality = null, $contains = null, $sms = null, $limit = 20, string $contentType = self::contentTypes['searchAvailablePhoneNumbers'][0])
+    public function searchAvailablePhoneNumbersWithHttpInfo($country = 'US', $number_type = null, $area_code = null, $type = null, $prefix = null, $locality = null, $contains = null, $sms = null, $limit = 20, $masked = null, string $contentType = self::contentTypes['searchAvailablePhoneNumbers'][0])
     {
-        $request = $this->searchAvailablePhoneNumbersRequest($country, $number_type, $area_code, $type, $prefix, $locality, $contains, $sms, $limit, $contentType);
+        $request = $this->searchAvailablePhoneNumbersRequest($country, $number_type, $area_code, $type, $prefix, $locality, $contains, $sms, $limit, $masked, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6889,7 +7176,7 @@ class PhoneNumbersApi
      *
      * Search available numbers
      *
-     * @param  string|null $country (optional, default to 'US')
+     * @param  string|null $country ISO code, or &#x60;auto&#x60; on the keyless shape to search the caller&#39;s own country (from their IP) near their city, falling back to US. (optional, default to 'US')
      * @param  string|null $number_type Number type; defaults to the country&#39;s WhatsApp-safe type (the same name as on purchase, availability and kyc) (optional)
      * @param  string|null $area_code Area code or national dialing code the number must start with, e.g. 415 or 91 (optional)
      * @param  string|null $type Alias of numberType, kept for existing callers (optional) (deprecated)
@@ -6898,14 +7185,15 @@ class PhoneNumbersApi
      * @param  string|null $contains Pattern to match within the number (optional)
      * @param  bool|null $sms true narrows the pool to SMS-capable numbers. Each result still carries its full &#x60;features&#x60; list for per-number capability badging. (optional)
      * @param  int|null $limit (optional, default to 20)
+     * @param  bool|null $masked true returns the keyless shape (masked numbers with claimId and claimUrl) even when you send an API key, e.g. to hand a user a signup link for a number. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAvailablePhoneNumbers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchAvailablePhoneNumbersAsync($country = 'US', $number_type = null, $area_code = null, $type = null, $prefix = null, $locality = null, $contains = null, $sms = null, $limit = 20, string $contentType = self::contentTypes['searchAvailablePhoneNumbers'][0])
+    public function searchAvailablePhoneNumbersAsync($country = 'US', $number_type = null, $area_code = null, $type = null, $prefix = null, $locality = null, $contains = null, $sms = null, $limit = 20, $masked = null, string $contentType = self::contentTypes['searchAvailablePhoneNumbers'][0])
     {
-        return $this->searchAvailablePhoneNumbersAsyncWithHttpInfo($country, $number_type, $area_code, $type, $prefix, $locality, $contains, $sms, $limit, $contentType)
+        return $this->searchAvailablePhoneNumbersAsyncWithHttpInfo($country, $number_type, $area_code, $type, $prefix, $locality, $contains, $sms, $limit, $masked, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6918,7 +7206,7 @@ class PhoneNumbersApi
      *
      * Search available numbers
      *
-     * @param  string|null $country (optional, default to 'US')
+     * @param  string|null $country ISO code, or &#x60;auto&#x60; on the keyless shape to search the caller&#39;s own country (from their IP) near their city, falling back to US. (optional, default to 'US')
      * @param  string|null $number_type Number type; defaults to the country&#39;s WhatsApp-safe type (the same name as on purchase, availability and kyc) (optional)
      * @param  string|null $area_code Area code or national dialing code the number must start with, e.g. 415 or 91 (optional)
      * @param  string|null $type Alias of numberType, kept for existing callers (optional) (deprecated)
@@ -6927,15 +7215,16 @@ class PhoneNumbersApi
      * @param  string|null $contains Pattern to match within the number (optional)
      * @param  bool|null $sms true narrows the pool to SMS-capable numbers. Each result still carries its full &#x60;features&#x60; list for per-number capability badging. (optional)
      * @param  int|null $limit (optional, default to 20)
+     * @param  bool|null $masked true returns the keyless shape (masked numbers with claimId and claimUrl) even when you send an API key, e.g. to hand a user a signup link for a number. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAvailablePhoneNumbers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchAvailablePhoneNumbersAsyncWithHttpInfo($country = 'US', $number_type = null, $area_code = null, $type = null, $prefix = null, $locality = null, $contains = null, $sms = null, $limit = 20, string $contentType = self::contentTypes['searchAvailablePhoneNumbers'][0])
+    public function searchAvailablePhoneNumbersAsyncWithHttpInfo($country = 'US', $number_type = null, $area_code = null, $type = null, $prefix = null, $locality = null, $contains = null, $sms = null, $limit = 20, $masked = null, string $contentType = self::contentTypes['searchAvailablePhoneNumbers'][0])
     {
         $returnType = '\Zernio\Model\SearchAvailablePhoneNumbers200Response';
-        $request = $this->searchAvailablePhoneNumbersRequest($country, $number_type, $area_code, $type, $prefix, $locality, $contains, $sms, $limit, $contentType);
+        $request = $this->searchAvailablePhoneNumbersRequest($country, $number_type, $area_code, $type, $prefix, $locality, $contains, $sms, $limit, $masked, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6976,7 +7265,7 @@ class PhoneNumbersApi
     /**
      * Create request for operation 'searchAvailablePhoneNumbers'
      *
-     * @param  string|null $country (optional, default to 'US')
+     * @param  string|null $country ISO code, or &#x60;auto&#x60; on the keyless shape to search the caller&#39;s own country (from their IP) near their city, falling back to US. (optional, default to 'US')
      * @param  string|null $number_type Number type; defaults to the country&#39;s WhatsApp-safe type (the same name as on purchase, availability and kyc) (optional)
      * @param  string|null $area_code Area code or national dialing code the number must start with, e.g. 415 or 91 (optional)
      * @param  string|null $type Alias of numberType, kept for existing callers (optional) (deprecated)
@@ -6985,12 +7274,13 @@ class PhoneNumbersApi
      * @param  string|null $contains Pattern to match within the number (optional)
      * @param  bool|null $sms true narrows the pool to SMS-capable numbers. Each result still carries its full &#x60;features&#x60; list for per-number capability badging. (optional)
      * @param  int|null $limit (optional, default to 20)
+     * @param  bool|null $masked true returns the keyless shape (masked numbers with claimId and claimUrl) even when you send an API key, e.g. to hand a user a signup link for a number. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAvailablePhoneNumbers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function searchAvailablePhoneNumbersRequest($country = 'US', $number_type = null, $area_code = null, $type = null, $prefix = null, $locality = null, $contains = null, $sms = null, $limit = 20, string $contentType = self::contentTypes['searchAvailablePhoneNumbers'][0])
+    public function searchAvailablePhoneNumbersRequest($country = 'US', $number_type = null, $area_code = null, $type = null, $prefix = null, $locality = null, $contains = null, $sms = null, $limit = 20, $masked = null, string $contentType = self::contentTypes['searchAvailablePhoneNumbers'][0])
     {
 
 
@@ -7005,6 +7295,7 @@ class PhoneNumbersApi
             throw new \InvalidArgumentException('invalid value for "$limit" when calling PhoneNumbersApi.searchAvailablePhoneNumbers, must be smaller than or equal to 100.');
         }
         
+
 
         $resourcePath = '/v1/phone-numbers/available';
         $formParams = [];
@@ -7090,6 +7381,15 @@ class PhoneNumbersApi
             $limit,
             'limit', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $masked,
+            'masked', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required

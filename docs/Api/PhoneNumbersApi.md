@@ -14,6 +14,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createPhoneNumberStockWatch()**](PhoneNumbersApi.md#createPhoneNumberStockWatch) | **POST** /v1/phone-numbers/stock-watches | Watch an out-of-stock country |
 | [**deletePhoneNumberStockWatch()**](PhoneNumbersApi.md#deletePhoneNumberStockWatch) | **DELETE** /v1/phone-numbers/stock-watches/{id} | Stop watching a country |
 | [**getPhoneNumber()**](PhoneNumbersApi.md#getPhoneNumber) | **GET** /v1/phone-numbers/{id} | Get phone number |
+| [**getPhoneNumberClaim()**](PhoneNumbersApi.md#getPhoneNumberClaim) | **GET** /v1/phone-numbers/claims/{claimId} | Resolve a number claim |
 | [**getPhoneNumberKycForm()**](PhoneNumbersApi.md#getPhoneNumberKycForm) | **GET** /v1/phone-numbers/kyc | Get KYC form spec |
 | [**getPhoneNumberPortInOrderRequirements()**](PhoneNumbersApi.md#getPhoneNumberPortInOrderRequirements) | **GET** /v1/phone-numbers/port-in/{id}/requirements | A port-in order&#39;s pending requirements |
 | [**getPhoneNumberPortInRequirements()**](PhoneNumbersApi.md#getPhoneNumberPortInRequirements) | **GET** /v1/phone-numbers/port-in/requirements | Country porting requirements |
@@ -104,7 +105,7 @@ checkPhoneNumberAvailability($country, $number_type, $sms): \Zernio\Model\CheckP
 
 Check country availability
 
-Pre-purchase check, so you can warn BEFORE a customer invests in KYC (regulated review is async, 1-3 days). Tells you whether we have deliverable inventory, and what address the customer needs:   - `addressConstraint: geo`  → the registered address MUST be in one of     the returned `areas` (the only place we have stock). A different-area     address passes pre-approval but the number can never be assigned.   - `addressConstraint: country` → any in-country address works.   - `addressConstraint: none` → field-only / instant country, no address. Call this before starting the KYC form for regulated countries.
+Pre-purchase check, so you can warn BEFORE a customer invests in KYC (regulated review is async, 1-3 days). Tells you whether we have deliverable inventory, and what address the customer needs:   - `addressConstraint: geo`  → the registered address MUST be in one of     the returned `areas` (the only place we have stock). A different-area     address passes pre-approval but the number can never be assigned.   - `addressConstraint: country` → any in-country address works.   - `addressConstraint: none` → field-only / instant country, no address. Call this before starting the KYC form for regulated countries.  Without an API key it answers from cache only and returns just `country`, `numberType` and `areaOptions`, for building an area picker before signup.
 
 ### Example
 
@@ -518,6 +519,66 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getPhoneNumberClaim()`
+
+```php
+getPhoneNumberClaim($claim_id): \Zernio\Model\GetPhoneNumberClaim200Response
+```
+
+Resolve a number claim
+
+Resolves a `claimId` from a keyless search or purchase into the selection it carries (country, number type, area and exact number) priced at today's rate. The dashboard calls it when a person lands from a `claimUrl`. The number is not held, so buying it can still fail with 409 PHONE_NUMBER_UNAVAILABLE.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\PhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$claim_id = 'claim_id_example'; // string
+
+try {
+    $result = $apiInstance->getPhoneNumberClaim($claim_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PhoneNumbersApi->getPhoneNumberClaim: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **claim_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\GetPhoneNumberClaim200Response**](../Model/GetPhoneNumberClaim200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getPhoneNumberKycForm()`
 
 ```php
@@ -770,7 +831,7 @@ listPhoneNumberCountries(): \Zernio\Model\ListPhoneNumberCountries200Response
 
 List offerable number countries
 
-The phone number countries available to purchase, each with its flat monthly price (cents), regulatory tier, whether it needs end-user KYC (Tier 3/4), and per-feature availability (PSTN calls, WhatsApp, SMS, and WhatsApp Business Calling outbound). Drives the country picker. Tier-4 countries appear only when enabled.
+The phone number countries available to purchase, each with its flat monthly price (cents), regulatory tier, whether it needs end-user KYC (Tier 3/4), and per-feature availability (PSTN calls, WhatsApp, SMS, and WhatsApp Business Calling outbound). Drives the country picker. Tier-4 countries appear only when enabled. No API key needed: the catalog is public so you can browse it before you have an account.
 
 ### Example
 
@@ -779,15 +840,11 @@ The phone number countries available to purchase, each with its flat monthly pri
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure Bearer (JWT) authorization: bearerAuth
-$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 $apiInstance = new Zernio\Api\PhoneNumbersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+    new GuzzleHttp\Client()
 );
 
 try {
@@ -808,7 +865,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[bearerAuth](../../README.md#bearerAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -1362,12 +1419,12 @@ try {
 ## `searchAvailablePhoneNumbers()`
 
 ```php
-searchAvailablePhoneNumbers($country, $number_type, $area_code, $type, $prefix, $locality, $contains, $sms, $limit): \Zernio\Model\SearchAvailablePhoneNumbers200Response
+searchAvailablePhoneNumbers($country, $number_type, $area_code, $type, $prefix, $locality, $contains, $sms, $limit, $masked): \Zernio\Model\SearchAvailablePhoneNumbers200Response
 ```
 
 Search available numbers
 
-Search the provider's inventory for numbers available to purchase in a country (default US). Optional filters narrow the results. The country must be offerable (see GET /v1/phone-numbers/countries). Voice capability is always required; pass `sms=true` to only see numbers that can also text (SMS support is per-number, not per-country). Numbers a purchase would refuse are left out, and any result's `phoneNumber` can be bought exactly by passing it to POST /v1/phone-numbers/purchase.
+Search the provider's inventory for numbers available to purchase in a country (default US). Optional filters narrow the results. The country must be offerable (see GET /v1/phone-numbers/countries). Voice capability is always required; pass `sms=true` to only see numbers that can also text (SMS support is per-number, not per-country). Numbers a purchase would refuse are left out, and any result's `phoneNumber` can be bought exactly by passing it to POST /v1/phone-numbers/purchase.  Works without an API key. Keyless calls get up to 12 results with the middle digits masked (`maskedNumber`), each with a `claimId` and a `claimUrl`: a signup link that lands a person on the dashboard's confirm step with that number picked, so an agent can search for a user and hand them one link. Keyless calls are rate limited per IP and results are cached for a few minutes. With an API key you get full numbers and no claim fields.
 
 ### Example
 
@@ -1386,7 +1443,7 @@ $apiInstance = new Zernio\Api\PhoneNumbersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$country = 'US'; // string
+$country = 'US'; // string | ISO code, or `auto` on the keyless shape to search the caller's own country (from their IP) near their city, falling back to US.
 $number_type = 'number_type_example'; // string | Number type; defaults to the country's WhatsApp-safe type (the same name as on purchase, availability and kyc)
 $area_code = 'area_code_example'; // string | Area code or national dialing code the number must start with, e.g. 415 or 91
 $type = 'type_example'; // string | Alias of numberType, kept for existing callers
@@ -1395,9 +1452,10 @@ $locality = 'locality_example'; // string | City
 $contains = 'contains_example'; // string | Pattern to match within the number
 $sms = True; // bool | true narrows the pool to SMS-capable numbers. Each result still carries its full `features` list for per-number capability badging.
 $limit = 20; // int
+$masked = True; // bool | true returns the keyless shape (masked numbers with claimId and claimUrl) even when you send an API key, e.g. to hand a user a signup link for a number.
 
 try {
-    $result = $apiInstance->searchAvailablePhoneNumbers($country, $number_type, $area_code, $type, $prefix, $locality, $contains, $sms, $limit);
+    $result = $apiInstance->searchAvailablePhoneNumbers($country, $number_type, $area_code, $type, $prefix, $locality, $contains, $sms, $limit, $masked);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PhoneNumbersApi->searchAvailablePhoneNumbers: ', $e->getMessage(), PHP_EOL;
@@ -1408,7 +1466,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **country** | **string**|  | [optional] [default to &#39;US&#39;] |
+| **country** | **string**| ISO code, or &#x60;auto&#x60; on the keyless shape to search the caller&#39;s own country (from their IP) near their city, falling back to US. | [optional] [default to &#39;US&#39;] |
 | **number_type** | **string**| Number type; defaults to the country&#39;s WhatsApp-safe type (the same name as on purchase, availability and kyc) | [optional] |
 | **area_code** | **string**| Area code or national dialing code the number must start with, e.g. 415 or 91 | [optional] |
 | **type** | **string**| Alias of numberType, kept for existing callers | [optional] |
@@ -1417,6 +1475,7 @@ try {
 | **contains** | **string**| Pattern to match within the number | [optional] |
 | **sms** | **bool**| true narrows the pool to SMS-capable numbers. Each result still carries its full &#x60;features&#x60; list for per-number capability badging. | [optional] |
 | **limit** | **int**|  | [optional] [default to 20] |
+| **masked** | **bool**| true returns the keyless shape (masked numbers with claimId and claimUrl) even when you send an API key, e.g. to hand a user a signup link for a number. | [optional] |
 
 ### Return type
 
