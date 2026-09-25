@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **decline_reason** | **string** |  | [optional]
 **phone_numbers** | **string[]** |  | [optional]
 **awaiting_otp** | **bool** |  | [optional]
+**admin_review_note** | **string** | The open change request as text (status changes_requested). | [optional]
+**review_request** | [**\Zernio\Model\SmsRegistrationReviewRequest**](SmsRegistrationReviewRequest.md) |  | [optional]
 **campaign_content** | [**\Zernio\Model\GetSmsRegistration200ResponseCampaignContent**](GetSmsRegistration200ResponseCampaignContent.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
