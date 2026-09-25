@@ -1335,7 +1335,6 @@ docs/Model/ListPhoneNumberPortIns200ResponseOrdersInner.md
 docs/Model/ListPhoneNumberStockWatches200Response.md
 docs/Model/ListPhoneNumbers200Response.md
 docs/Model/ListPhoneNumbers200ResponseConnectedInner.md
-docs/Model/ListPhoneNumbers200ResponseNumbersInner.md
 docs/Model/ListPhoneNumbers200ResponseSandbox.md
 docs/Model/ListPhoneNumbers200ResponseSandboxTemplate.md
 docs/Model/ListPinterestBoardsForSelection200Response.md
@@ -1464,6 +1463,10 @@ docs/Model/OnboardBusinessAgent201Response.md
 docs/Model/OrderImessageSender202Response.md
 docs/Model/OrderImessageSenderRequest.md
 docs/Model/OrderImessageSenderRequestContact.md
+docs/Model/OwnedPhoneNumber.md
+docs/Model/OwnedPhoneNumberFeatures.md
+docs/Model/OwnedPhoneNumberProfileId.md
+docs/Model/OwnedPhoneNumberProfileIdOneOf.md
 docs/Model/Pagination.md
 docs/Model/PauseWorkflow200Response.md
 docs/Model/Pending.md
@@ -3613,7 +3616,6 @@ lib/Model/ListPhoneNumberPortIns200ResponseOrdersInner.php
 lib/Model/ListPhoneNumberStockWatches200Response.php
 lib/Model/ListPhoneNumbers200Response.php
 lib/Model/ListPhoneNumbers200ResponseConnectedInner.php
-lib/Model/ListPhoneNumbers200ResponseNumbersInner.php
 lib/Model/ListPhoneNumbers200ResponseSandbox.php
 lib/Model/ListPhoneNumbers200ResponseSandboxTemplate.php
 lib/Model/ListPinterestBoardsForSelection200Response.php
@@ -3743,6 +3745,10 @@ lib/Model/OnboardBusinessAgent201Response.php
 lib/Model/OrderImessageSender202Response.php
 lib/Model/OrderImessageSenderRequest.php
 lib/Model/OrderImessageSenderRequestContact.php
+lib/Model/OwnedPhoneNumber.php
+lib/Model/OwnedPhoneNumberFeatures.php
+lib/Model/OwnedPhoneNumberProfileId.php
+lib/Model/OwnedPhoneNumberProfileIdOneOf.php
 lib/Model/Pagination.php
 lib/Model/PauseWorkflow200Response.php
 lib/Model/Pending.php
@@ -4557,3 +4563,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/OwnedPhoneNumberFeaturesTest.php
+test/Model/OwnedPhoneNumberProfileIdOneOfTest.php
+test/Model/OwnedPhoneNumberProfileIdTest.php
+test/Model/OwnedPhoneNumberTest.php
