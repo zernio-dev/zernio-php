@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **post_id** | **string** |  | [optional]
 **late_post_id** | **string** | Original Zernio post ID if scheduled via Zernio | [optional]
-**status** | **string** | Overall post status. \&quot;partial\&quot; when some platforms published and others failed. | [optional]
+**status** | **string** | Overall post status. \&quot;partial\&quot; when some platforms published and others failed. While any platform is still pending or processing, the post&#39;s own status is returned instead (usually scheduled or publishing), even if another platform already published. | [optional]
 **content** | **string** |  | [optional]
 **scheduled_for** | **\DateTime** |  | [optional]
 **published_at** | **\DateTime** |  | [optional]
