@@ -1250,6 +1250,7 @@ docs/Model/ListConversionAssociations200Response.md
 docs/Model/ListConversionAssociations200ResponseAssociationsInner.md
 docs/Model/ListConversionDestinations200Response.md
 docs/Model/ListConversionDestinations200ResponseDestinationsInner.md
+docs/Model/ListConversionDestinations200ResponseDestinationsInnerConversionEventsInner.md
 docs/Model/ListCustomConversions200Response.md
 docs/Model/ListCustomFields200Response.md
 docs/Model/ListCustomFields200ResponseFieldsInner.md
@@ -3531,6 +3532,7 @@ lib/Model/ListConversionAssociations200Response.php
 lib/Model/ListConversionAssociations200ResponseAssociationsInner.php
 lib/Model/ListConversionDestinations200Response.php
 lib/Model/ListConversionDestinations200ResponseDestinationsInner.php
+lib/Model/ListConversionDestinations200ResponseDestinationsInnerConversionEventsInner.php
 lib/Model/ListCustomConversions200Response.php
 lib/Model/ListCustomFields200Response.php
 lib/Model/ListCustomFields200ResponseFieldsInner.php
@@ -4563,3 +4565,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ListConversionDestinations200ResponseDestinationsInnerConversionEventsInnerTest.php
