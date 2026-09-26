@@ -2077,7 +2077,7 @@ onReactionReceived($webhook_payload_reaction)
 
 Reaction received event
 
-Fired when a participant adds or removes an emoji reaction on a message. Supported on WhatsApp, Telegram, Slack, Instagram and Facebook Messenger. Distinct from message.received so a reaction (e.g. a thumbs-up) is not mistaken for an inbound message. The `reaction.action` field is `added` or `removed`. On WhatsApp and Meta removals the platform does not report which emoji was removed, so `reaction.emoji` may be an empty string. Instagram and Facebook accounts connected before reactions shipped only emit this event after their webhook subscription is refreshed; reconnect the account if reactions never arrive. Requires the Inbox add-on.
+Fired when a participant adds or removes an emoji reaction on a message. Supported on WhatsApp, Telegram, Slack, Instagram, Facebook Messenger and TikTok. Distinct from message.received so a reaction (e.g. a thumbs-up) is not mistaken for an inbound message. On TikTok a like or emoji reaction on a DM arrives only as this event (never as an empty message.received), with `reaction.platformMessageId` set to the TikTok id of the liked message. The `reaction.action` field is `added` or `removed`. On WhatsApp and Meta removals the platform does not report which emoji was removed, so `reaction.emoji` may be an empty string. Instagram and Facebook accounts connected before reactions shipped only emit this event after their webhook subscription is refreshed; reconnect the account if reactions never arrive. Requires the Inbox add-on.
 
 ### Example
 
