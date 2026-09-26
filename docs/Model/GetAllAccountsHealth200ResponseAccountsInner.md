@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **can_fetch_analytics** | **bool** |  | [optional]
 **token_valid** | **bool** |  | [optional]
 **token_expires_at** | **\DateTime** |  | [optional]
-**needs_reconnect** | **bool** |  | [optional]
+**needs_reconnect** | **bool** | True when the token is expired or revoked, permissions are missing, the account is inactive, or the platform rejected its stored credentials (the same flag the account listing reports as needsReconnection). | [optional]
 **issues** | **string[]** |  | [optional]
 **messaging_restriction** | [**\Zernio\Model\GetAllAccountsHealth200ResponseAccountsInnerMessagingRestriction**](GetAllAccountsHealth200ResponseAccountsInnerMessagingRestriction.md) |  | [optional]
 
