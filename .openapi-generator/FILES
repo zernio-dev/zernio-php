@@ -705,6 +705,8 @@ docs/Model/GetAd200Response.md
 docs/Model/GetAdAccountFinance200Response.md
 docs/Model/GetAdAccountFinance200ResponseFundingSource.md
 docs/Model/GetAdAccountHierarchy200Response.md
+docs/Model/GetAdAccountHierarchy200ResponseDirectCustomersInner.md
+docs/Model/GetAdAccountHierarchy200ResponseDirectCustomersInnerPendingInvitationsInner.md
 docs/Model/GetAdAccountHierarchy200ResponseRootsInner.md
 docs/Model/GetAdAccountHierarchy200ResponseRootsInnerManagerLinksInner.md
 docs/Model/GetAdAccountHierarchy200ResponseUnavailableInner.md
@@ -3056,6 +3058,8 @@ lib/Model/GetAd200Response.php
 lib/Model/GetAdAccountFinance200Response.php
 lib/Model/GetAdAccountFinance200ResponseFundingSource.php
 lib/Model/GetAdAccountHierarchy200Response.php
+lib/Model/GetAdAccountHierarchy200ResponseDirectCustomersInner.php
+lib/Model/GetAdAccountHierarchy200ResponseDirectCustomersInnerPendingInvitationsInner.php
 lib/Model/GetAdAccountHierarchy200ResponseRootsInner.php
 lib/Model/GetAdAccountHierarchy200ResponseRootsInnerManagerLinksInner.php
 lib/Model/GetAdAccountHierarchy200ResponseUnavailableInner.php
@@ -4703,7 +4707,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GoogleDemandGenInputAudienceAgeRangesInnerTest.php
-test/Model/GoogleDemandGenInputAudienceTest.php
-test/Model/GoogleDemandGenInputImagesTest.php
-test/Model/GoogleDemandGenInputTest.php
+test/Model/GetAdAccountHierarchy200ResponseDirectCustomersInnerPendingInvitationsInnerTest.php
+test/Model/GetAdAccountHierarchy200ResponseDirectCustomersInnerTest.php

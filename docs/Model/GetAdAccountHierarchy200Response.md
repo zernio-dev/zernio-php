@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **account_id** | **string** |  | [optional]
 **roots** | [**\Zernio\Model\GetAdAccountHierarchy200ResponseRootsInner[]**](GetAdAccountHierarchy200ResponseRootsInner.md) |  | [optional]
+**direct_customers** | [**\Zernio\Model\GetAdAccountHierarchy200ResponseDirectCustomersInner[]**](GetAdAccountHierarchy200ResponseDirectCustomersInner.md) |  | [optional]
 **unavailable** | [**\Zernio\Model\GetAdAccountHierarchy200ResponseUnavailableInner[]**](GetAdAccountHierarchy200ResponseUnavailableInner.md) |  | [optional]
 **truncated** | **bool** |  | [optional]
 **cached_at** | **\DateTime** | When this data was fetched from Google. Null on a live read. | [optional]
