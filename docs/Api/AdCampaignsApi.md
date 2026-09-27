@@ -14,6 +14,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createAdCampaign()**](AdCampaignsApi.md#createAdCampaign) | **POST** /v1/ads/campaigns | Create a standalone campaign |
 | [**createAdSet()**](AdCampaignsApi.md#createAdSet) | **POST** /v1/ads/ad-sets | Create a standalone ad group |
 | [**createBidStrategy()**](AdCampaignsApi.md#createBidStrategy) | **POST** /v1/ads/bid-strategies | Create portfolio bid strategy |
+| [**createGoogleAssetGroup()**](AdCampaignsApi.md#createGoogleAssetGroup) | **POST** /v1/ads/campaigns/{campaignId}/asset-groups | Create a Performance Max asset group |
 | [**createStandaloneAd()**](AdCampaignsApi.md#createStandaloneAd) | **POST** /v1/ads/create | Create standalone ad |
 | [**deleteAd()**](AdCampaignsApi.md#deleteAd) | **DELETE** /v1/ads/{adId} | Cancel an ad |
 | [**deleteAdCampaign()**](AdCampaignsApi.md#deleteAdCampaign) | **DELETE** /v1/ads/campaigns/{campaignId} | Delete a campaign |
@@ -21,6 +22,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**duplicateAd()**](AdCampaignsApi.md#duplicateAd) | **POST** /v1/ads/{adId}/duplicate | Duplicate an ad |
 | [**duplicateAdCampaign()**](AdCampaignsApi.md#duplicateAdCampaign) | **POST** /v1/ads/campaigns/{campaignId}/duplicate | Duplicate a campaign |
 | [**duplicateAdSet()**](AdCampaignsApi.md#duplicateAdSet) | **POST** /v1/ads/ad-sets/{adSetId}/duplicate | Duplicate an ad set |
+| [**editGoogleAssetGroupAssets()**](AdCampaignsApi.md#editGoogleAssetGroupAssets) | **POST** /v1/ads/campaigns/{campaignId}/asset-groups/{assetGroupId}/assets | Link or unlink asset group assets |
 | [**getAd()**](AdCampaignsApi.md#getAd) | **GET** /v1/ads/{adId} | Get ad details |
 | [**getAdCampaignDetails()**](AdCampaignsApi.md#getAdCampaignDetails) | **GET** /v1/ads/campaigns/{campaignId} | Get live campaign details |
 | [**getAdSetDetails()**](AdCampaignsApi.md#getAdSetDetails) | **GET** /v1/ads/ad-sets/{adSetId} | Get live ad-set details |
@@ -29,6 +31,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getCampaignAdSchedule()**](AdCampaignsApi.md#getCampaignAdSchedule) | **GET** /v1/ads/campaigns/{campaignId}/ad-schedule | Read a campaign&#39;s ad schedule (dayparting) |
 | [**getCampaignBidding()**](AdCampaignsApi.md#getCampaignBidding) | **GET** /v1/ads/campaigns/{campaignId}/bidding | Read a campaign&#39;s current bidding |
 | [**getCampaignTargeting()**](AdCampaignsApi.md#getCampaignTargeting) | **GET** /v1/ads/campaigns/{campaignId}/targeting | Read a Google campaign&#39;s device, location, and language targeting |
+| [**getGoogleAssetGroup()**](AdCampaignsApi.md#getGoogleAssetGroup) | **GET** /v1/ads/campaigns/{campaignId}/asset-groups/{assetGroupId} | Get a Performance Max asset group |
 | [**listAdCampaigns()**](AdCampaignsApi.md#listAdCampaigns) | **GET** /v1/ads/campaigns | List campaigns |
 | [**listAdGroupAssets()**](AdCampaignsApi.md#listAdGroupAssets) | **GET** /v1/ads/ad-sets/{adSetId}/assets | List ad-group assets |
 | [**listAdKeywords()**](AdCampaignsApi.md#listAdKeywords) | **GET** /v1/ads/keywords | List Search keywords |
@@ -42,8 +45,10 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**removeAdGroupAssets()**](AdCampaignsApi.md#removeAdGroupAssets) | **DELETE** /v1/ads/ad-sets/{adSetId}/assets | Remove ad-group assets |
 | [**removeAdKeyword()**](AdCampaignsApi.md#removeAdKeyword) | **DELETE** /v1/ads/keywords/{keywordId} | Remove a Search keyword |
 | [**removeCampaignAssets()**](AdCampaignsApi.md#removeCampaignAssets) | **DELETE** /v1/ads/campaigns/{campaignId}/assets | Remove campaign assets |
+| [**removeGoogleAssetGroup()**](AdCampaignsApi.md#removeGoogleAssetGroup) | **DELETE** /v1/ads/campaigns/{campaignId}/asset-groups/{assetGroupId} | Remove a Performance Max asset group |
 | [**replaceCampaignNegativeKeywordLists()**](AdCampaignsApi.md#replaceCampaignNegativeKeywordLists) | **PUT** /v1/ads/campaigns/{campaignId}/negative-keyword-lists | Replace campaign negative lists |
 | [**replaceCampaignNegativeKeywords()**](AdCampaignsApi.md#replaceCampaignNegativeKeywords) | **PUT** /v1/ads/campaigns/{campaignId}/negative-keywords | Replace campaign-level negative keywords |
+| [**replaceGoogleListingGroupFilters()**](AdCampaignsApi.md#replaceGoogleListingGroupFilters) | **PUT** /v1/ads/campaigns/{campaignId}/asset-groups/{assetGroupId}/listing-group-filters | Replace an asset group&#39;s listing-group tree |
 | [**updateAd()**](AdCampaignsApi.md#updateAd) | **PUT** /v1/ads/{adId} | Update ad |
 | [**updateAdCampaign()**](AdCampaignsApi.md#updateAdCampaign) | **PUT** /v1/ads/campaigns/{campaignId} | Update a campaign |
 | [**updateAdCampaignStatus()**](AdCampaignsApi.md#updateAdCampaignStatus) | **PUT** /v1/ads/campaigns/{campaignId}/status | Pause or resume a campaign |
@@ -56,6 +61,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**updateCampaignAdSchedule()**](AdCampaignsApi.md#updateCampaignAdSchedule) | **PUT** /v1/ads/campaigns/{campaignId}/ad-schedule | Replace a campaign&#39;s ad schedule (dayparting) |
 | [**updateCampaignAssets()**](AdCampaignsApi.md#updateCampaignAssets) | **PUT** /v1/ads/campaigns/{campaignId}/assets | Update campaign assets |
 | [**updateCampaignTargeting()**](AdCampaignsApi.md#updateCampaignTargeting) | **PUT** /v1/ads/campaigns/{campaignId}/targeting | Edit a Google campaign&#39;s device, location, or language targeting |
+| [**updateGoogleAssetGroup()**](AdCampaignsApi.md#updateGoogleAssetGroup) | **PATCH** /v1/ads/campaigns/{campaignId}/asset-groups/{assetGroupId} | Update a Performance Max asset group |
 
 
 ## `addAdKeywords()`
@@ -548,6 +554,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createGoogleAssetGroup()`
+
+```php
+createGoogleAssetGroup($campaign_id, $create_google_asset_group_request): \Zernio\Model\CreateGoogleAssetGroup200Response
+```
+
+Create a Performance Max asset group
+
+Add an asset group to an existing Performance Max campaign. The group, any new assets, their links and an optional listing-group tree are created in one atomic request, so Google checks the asset minimums (for non-retail campaigns) against the whole set. Created PAUSED unless status is ENABLED. validateOnly: true runs Google's validation without creating anything.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Google Ads campaign id.
+$create_google_asset_group_request = {"name":"Running shoes","finalUrls":["https://example.com/shoes"],"assets":[{"fieldType":"HEADLINE","text":"Shoes for every run"},{"fieldType":"LOGO","asset":"customers/9122445560/assets/352426364803"}]}; // \Zernio\Model\CreateGoogleAssetGroupRequest
+
+try {
+    $result = $apiInstance->createGoogleAssetGroup($campaign_id, $create_google_asset_group_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->createGoogleAssetGroup: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Google Ads campaign id. | |
+| **create_google_asset_group_request** | [**\Zernio\Model\CreateGoogleAssetGroupRequest**](../Model/CreateGoogleAssetGroupRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateGoogleAssetGroup200Response**](../Model/CreateGoogleAssetGroup200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `createStandaloneAd()`
 
 ```php
@@ -970,6 +1038,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\DuplicateAdSet200Response**](../Model/DuplicateAdSet200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `editGoogleAssetGroupAssets()`
+
+```php
+editGoogleAssetGroupAssets($campaign_id, $asset_group_id, $edit_google_asset_group_assets_request): \Zernio\Model\EditGoogleAssetGroupAssets200Response
+```
+
+Link or unlink asset group assets
+
+Link existing assets or new content to the asset group, and unlink assets, in one atomic request. Links are applied before unlinks, so swapping the last asset of a role does not trip Google's per-role minimum. Unlinking removes the link only; the asset stays in the account library. validateOnly: true validates without writing.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Google Ads campaign id.
+$asset_group_id = 'asset_group_id_example'; // string | Google asset group id.
+$edit_google_asset_group_assets_request = {"link":[{"fieldType":"HEADLINE","text":"Free shipping today"}],"unlink":[{"fieldType":"HEADLINE","asset":"customers/9122445560/assets/419573236135"}]}; // \Zernio\Model\EditGoogleAssetGroupAssetsRequest
+
+try {
+    $result = $apiInstance->editGoogleAssetGroupAssets($campaign_id, $asset_group_id, $edit_google_asset_group_assets_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->editGoogleAssetGroupAssets: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Google Ads campaign id. | |
+| **asset_group_id** | **string**| Google asset group id. | |
+| **edit_google_asset_group_assets_request** | [**\Zernio\Model\EditGoogleAssetGroupAssetsRequest**](../Model/EditGoogleAssetGroupAssetsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\EditGoogleAssetGroupAssets200Response**](../Model/EditGoogleAssetGroupAssets200Response.md)
 
 ### Authorization
 
@@ -1518,6 +1650,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetCampaignTargeting200Response**](../Model/GetCampaignTargeting200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getGoogleAssetGroup()`
+
+```php
+getGoogleAssetGroup($campaign_id, $asset_group_id): \Zernio\Model\GetGoogleAssetGroup200Response
+```
+
+Get a Performance Max asset group
+
+One asset group with its linked assets, ad strength, primary status and listing-group tree. Uses a 10-minute cache, served stale when Google quota is exhausted; any write below clears it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Google Ads campaign id.
+$asset_group_id = 'asset_group_id_example'; // string | Google asset group id.
+
+try {
+    $result = $apiInstance->getGoogleAssetGroup($campaign_id, $asset_group_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->getGoogleAssetGroup: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Google Ads campaign id. | |
+| **asset_group_id** | **string**| Google asset group id. | |
+
+### Return type
+
+[**\Zernio\Model\GetGoogleAssetGroup200Response**](../Model/GetGoogleAssetGroup200Response.md)
 
 ### Authorization
 
@@ -2420,6 +2614,70 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `removeGoogleAssetGroup()`
+
+```php
+removeGoogleAssetGroup($campaign_id, $asset_group_id, $validate_only): \Zernio\Model\RemoveGoogleAssetGroup200Response
+```
+
+Remove a Performance Max asset group
+
+Removes the asset group on Google (status REMOVED, not reversible). Pass validateOnly=true to validate without removing.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string
+$asset_group_id = 'asset_group_id_example'; // string
+$validate_only = false; // bool
+
+try {
+    $result = $apiInstance->removeGoogleAssetGroup($campaign_id, $asset_group_id, $validate_only);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->removeGoogleAssetGroup: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**|  | |
+| **asset_group_id** | **string**|  | |
+| **validate_only** | **bool**|  | [optional] [default to false] |
+
+### Return type
+
+[**\Zernio\Model\RemoveGoogleAssetGroup200Response**](../Model/RemoveGoogleAssetGroup200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `replaceCampaignNegativeKeywordLists()`
 
 ```php
@@ -2530,6 +2788,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\ReplaceCampaignNegativeKeywords200Response**](../Model/ReplaceCampaignNegativeKeywords200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `replaceGoogleListingGroupFilters()`
+
+```php
+replaceGoogleListingGroupFilters($campaign_id, $asset_group_id, $replace_google_listing_group_filters_request): \Zernio\Model\ReplaceGoogleListingGroupFilters200Response
+```
+
+Replace an asset group's listing-group tree
+
+Replace the product (listing-group) tree of a Performance Max retail asset group. The current tree is removed and the new one created in one atomic request. Read the current tree with GET on the asset group. Requires a campaign linked to Merchant Center; other campaigns return 400 LISTING_SOURCE_NOT_ALLOWED from Google. validateOnly: true validates without writing.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Google Ads campaign id.
+$asset_group_id = 'asset_group_id_example'; // string | Google asset group id.
+$replace_google_listing_group_filters_request = new \Zernio\Model\ReplaceGoogleListingGroupFiltersRequest(); // \Zernio\Model\ReplaceGoogleListingGroupFiltersRequest
+
+try {
+    $result = $apiInstance->replaceGoogleListingGroupFilters($campaign_id, $asset_group_id, $replace_google_listing_group_filters_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->replaceGoogleListingGroupFilters: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Google Ads campaign id. | |
+| **asset_group_id** | **string**| Google asset group id. | |
+| **replace_google_listing_group_filters_request** | [**\Zernio\Model\ReplaceGoogleListingGroupFiltersRequest**](../Model/ReplaceGoogleListingGroupFiltersRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ReplaceGoogleListingGroupFilters200Response**](../Model/ReplaceGoogleListingGroupFilters200Response.md)
 
 ### Authorization
 
@@ -3274,6 +3596,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\UpdateCampaignTargeting200Response**](../Model/UpdateCampaignTargeting200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateGoogleAssetGroup()`
+
+```php
+updateGoogleAssetGroup($campaign_id, $asset_group_id, $update_google_asset_group_request): \Zernio\Model\UpdateGoogleAssetGroup200Response
+```
+
+Update a Performance Max asset group
+
+Change the name, status (ENABLED or PAUSED), final URLs or display paths. Only the fields sent are written; null on path1 or path2 clears it. Change assets with the /assets endpoint and product targeting with /listing-group-filters. validateOnly: true validates without writing.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Google Ads campaign id.
+$asset_group_id = 'asset_group_id_example'; // string | Google asset group id.
+$update_google_asset_group_request = {"status":"PAUSED","finalUrls":["https://example.com/sale"]}; // \Zernio\Model\UpdateGoogleAssetGroupRequest
+
+try {
+    $result = $apiInstance->updateGoogleAssetGroup($campaign_id, $asset_group_id, $update_google_asset_group_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->updateGoogleAssetGroup: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Google Ads campaign id. | |
+| **asset_group_id** | **string**| Google asset group id. | |
+| **update_google_asset_group_request** | [**\Zernio\Model\UpdateGoogleAssetGroupRequest**](../Model/UpdateGoogleAssetGroupRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateGoogleAssetGroup200Response**](../Model/UpdateGoogleAssetGroup200Response.md)
 
 ### Authorization
 
