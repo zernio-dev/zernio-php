@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **youtube_video_ids** | **string[]** | Makes the ad a video responsive ad. | [optional]
 **carousel_cards** | [**\Zernio\Model\GoogleDemandGenInputCarouselCardsInner[]**](GoogleDemandGenInputCarouselCardsInner.md) | Makes the ad a carousel ad. Each card needs its own image (no two cards may share one); use the same image shape on every card. Card images are uploaded to the account&#39;s asset library before the campaign is created, validateOnly included (Google checks cards against existing images; identical images are reused, not duplicated). | [optional]
 **channels** | **string[]** | Channel controls on the ad group. Only the listed channels serve; omit to serve on all of them. | [optional]
-**audience** | [**\Zernio\Model\GoogleDemandGenInputAudience**](GoogleDemandGenInputAudience.md) |  | [optional]
+**audience** | [**\Zernio\Model\GoogleDemandGenAudience**](GoogleDemandGenAudience.md) |  | [optional]
 **audience_id** | **string** | Attach an existing Google Audience by numeric id instead of audience. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

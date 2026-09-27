@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **descriptions** | [**\Zernio\Model\GoogleRsaDescription[]**](GoogleRsaDescription.md) | Google Search and Display only. Replaces the complete description list. Search takes 2-4, Display 1-5 and rejects pinnedField. No padding or truncation on update. | [optional]
 **final_urls** | **string[]** | Google Search and Display only. Replaces final URLs. Omitted lists stay unchanged. For Performance Max use assetGroup.finalUrl. | [optional]
 **asset_group** | [**\Zernio\Model\GooglePmaxAssetGroupUpdate**](GooglePmaxAssetGroupUpdate.md) | Google Performance Max only. Replaces whole asset roles on the ad&#39;s asset group. Returns 422 on any other platform or channel. | [optional]
+**demand_gen** | [**\Zernio\Model\GoogleDemandGenUpdate**](GoogleDemandGenUpdate.md) | Google Demand Gen only. Returns 422 on any other platform or channel. | [optional]
 **status** | **string** |  | [optional]
 **budget** | [**\Zernio\Model\UpdateAdRequestBudget**](UpdateAdRequestBudget.md) |  | [optional]
 **targeting** | [**\Zernio\Model\UpdateAdRequestTargeting**](UpdateAdRequestTargeting.md) |  | [optional]
