@@ -1,6 +1,6 @@
 <?php
 /**
- * ListAdLabels200Response
+ * ListAdLabels200ResponseDataInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ListAdLabels200Response Class Doc Comment
+ * ListAdLabels200ResponseDataInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListAdLabels200ResponseDataInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'listAdLabels_200_response';
+    protected static $openAPIModelName = 'listAdLabels_200_response_data_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,12 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'ad_account_id' => 'string',
-        'data' => '\Zernio\Model\ListAdLabels200ResponseDataInner[]',
-        'paging' => '\Zernio\Model\ListAdLabels200ResponsePaging',
-        'cached_at' => '\DateTime',
-        'stale' => 'bool'
+        'id' => 'string',
+        'resource_name' => 'string',
+        'name' => 'string',
+        'status' => 'string',
+        'background_color' => 'string',
+        'description' => 'string'
     ];
 
     /**
@@ -73,11 +74,12 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'ad_account_id' => null,
-        'data' => null,
-        'paging' => null,
-        'cached_at' => 'date-time',
-        'stale' => null
+        'id' => null,
+        'resource_name' => null,
+        'name' => null,
+        'status' => null,
+        'background_color' => null,
+        'description' => null
     ];
 
     /**
@@ -86,11 +88,12 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ad_account_id' => false,
-        'data' => false,
-        'paging' => false,
-        'cached_at' => true,
-        'stale' => false
+        'id' => false,
+        'resource_name' => false,
+        'name' => false,
+        'status' => false,
+        'background_color' => false,
+        'description' => false
     ];
 
     /**
@@ -179,11 +182,12 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'ad_account_id' => 'adAccountId',
-        'data' => 'data',
-        'paging' => 'paging',
-        'cached_at' => 'cachedAt',
-        'stale' => 'stale'
+        'id' => 'id',
+        'resource_name' => 'resourceName',
+        'name' => 'name',
+        'status' => 'status',
+        'background_color' => 'backgroundColor',
+        'description' => 'description'
     ];
 
     /**
@@ -192,11 +196,12 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'ad_account_id' => 'setAdAccountId',
-        'data' => 'setData',
-        'paging' => 'setPaging',
-        'cached_at' => 'setCachedAt',
-        'stale' => 'setStale'
+        'id' => 'setId',
+        'resource_name' => 'setResourceName',
+        'name' => 'setName',
+        'status' => 'setStatus',
+        'background_color' => 'setBackgroundColor',
+        'description' => 'setDescription'
     ];
 
     /**
@@ -205,11 +210,12 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'ad_account_id' => 'getAdAccountId',
-        'data' => 'getData',
-        'paging' => 'getPaging',
-        'cached_at' => 'getCachedAt',
-        'stale' => 'getStale'
+        'id' => 'getId',
+        'resource_name' => 'getResourceName',
+        'name' => 'getName',
+        'status' => 'getStatus',
+        'background_color' => 'getBackgroundColor',
+        'description' => 'getDescription'
     ];
 
     /**
@@ -253,6 +259,23 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
+    public const STATUS_ENABLED = 'ENABLED';
+    public const STATUS_REMOVED = 'REMOVED';
+    public const STATUS_UNKNOWN = 'UNKNOWN';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_ENABLED,
+            self::STATUS_REMOVED,
+            self::STATUS_UNKNOWN,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -269,11 +292,12 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('ad_account_id', $data ?? [], null);
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('paging', $data ?? [], null);
-        $this->setIfExists('cached_at', $data ?? [], null);
-        $this->setIfExists('stale', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('resource_name', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('background_color', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
     }
 
     /**
@@ -303,6 +327,15 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -319,143 +352,173 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets ad_account_id
+     * Gets id
      *
      * @return string|null
      */
-    public function getAdAccountId()
+    public function getId()
     {
-        return $this->container['ad_account_id'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets ad_account_id
+     * Sets id
      *
-     * @param string|null $ad_account_id Meta act_<n>, or the resolved Google customer id
+     * @param string|null $id Google label id
      *
      * @return self
      */
-    public function setAdAccountId($ad_account_id)
+    public function setId($id)
     {
-        if (is_null($ad_account_id)) {
-            throw new \InvalidArgumentException('non-nullable ad_account_id cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['ad_account_id'] = $ad_account_id;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets data
+     * Gets resource_name
      *
-     * @return \Zernio\Model\ListAdLabels200ResponseDataInner[]|null
+     * @return string|null
      */
-    public function getData()
+    public function getResourceName()
     {
-        return $this->container['data'];
+        return $this->container['resource_name'];
     }
 
     /**
-     * Sets data
+     * Sets resource_name
      *
-     * @param \Zernio\Model\ListAdLabels200ResponseDataInner[]|null $data data
+     * @param string|null $resource_name resource_name
      *
      * @return self
      */
-    public function setData($data)
+    public function setResourceName($resource_name)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($resource_name)) {
+            throw new \InvalidArgumentException('non-nullable resource_name cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['resource_name'] = $resource_name;
 
         return $this;
     }
 
     /**
-     * Gets paging
+     * Gets name
      *
-     * @return \Zernio\Model\ListAdLabels200ResponsePaging|null
+     * @return string|null
      */
-    public function getPaging()
+    public function getName()
     {
-        return $this->container['paging'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets paging
+     * Sets name
      *
-     * @param \Zernio\Model\ListAdLabels200ResponsePaging|null $paging paging
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setPaging($paging)
+    public function setName($name)
     {
-        if (is_null($paging)) {
-            throw new \InvalidArgumentException('non-nullable paging cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['paging'] = $paging;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets cached_at
+     * Gets status
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getCachedAt()
+    public function getStatus()
     {
-        return $this->container['cached_at'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets cached_at
+     * Sets status
      *
-     * @param \DateTime|null $cached_at Google only. When the served list was fetched from Google.
+     * @param string|null $status status
      *
      * @return self
      */
-    public function setCachedAt($cached_at)
+    public function setStatus($status)
     {
-        if (is_null($cached_at)) {
-            array_push($this->openAPINullablesSetToNull, 'cached_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cached_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['cached_at'] = $cached_at;
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets stale
+     * Gets background_color
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getStale()
+    public function getBackgroundColor()
     {
-        return $this->container['stale'];
+        return $this->container['background_color'];
     }
 
     /**
-     * Sets stale
+     * Sets background_color
      *
-     * @param bool|null $stale Google only. True when Google quota was exhausted and the last cached list was served.
+     * @param string|null $background_color #RRGGBB
      *
      * @return self
      */
-    public function setStale($stale)
+    public function setBackgroundColor($background_color)
     {
-        if (is_null($stale)) {
-            throw new \InvalidArgumentException('non-nullable stale cannot be null');
+        if (is_null($background_color)) {
+            throw new \InvalidArgumentException('non-nullable background_color cannot be null');
         }
-        $this->container['stale'] = $stale;
+        $this->container['background_color'] = $background_color;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description Null when empty.
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        }
+        $this->container['description'] = $description;
 
         return $this;
     }

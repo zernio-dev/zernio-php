@@ -9,7 +9,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**addAccountCallouts()**](AdAccountsApi.md#addAccountCallouts) | **POST** /v1/ads/accounts/callouts | Add account callouts |
 | [**addAccountSitelinks()**](AdAccountsApi.md#addAccountSitelinks) | **POST** /v1/ads/accounts/sitelinks | Add account sitelinks |
 | [**addAccountStructuredSnippets()**](AdAccountsApi.md#addAccountStructuredSnippets) | **POST** /v1/ads/accounts/structured-snippets | Add account snippets |
+| [**attachAdLabel()**](AdAccountsApi.md#attachAdLabel) | **POST** /v1/ads/labels/{labelId}/assignments | Attach a Google Ads label |
 | [**createAdAccount()**](AdAccountsApi.md#createAdAccount) | **POST** /v1/ads/accounts | Create Meta ad account |
+| [**createAdLabel()**](AdAccountsApi.md#createAdLabel) | **POST** /v1/ads/labels | Create a Google Ads label |
 | [**createAdNegativeKeywordList()**](AdAccountsApi.md#createAdNegativeKeywordList) | **POST** /v1/ads/accounts/negative-keyword-lists | Create a negative keyword list |
 | [**createCustomConversion()**](AdAccountsApi.md#createCustomConversion) | **POST** /v1/accounts/{accountId}/custom-conversions | Create custom conversion |
 | [**createHighDemandPeriod()**](AdAccountsApi.md#createHighDemandPeriod) | **POST** /v1/ads/high-demand-periods | Schedule a budget increase |
@@ -17,6 +19,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**deleteAdComment()**](AdAccountsApi.md#deleteAdComment) | **DELETE** /v1/ads/{adId}/comments/{commentId} | Delete an ad comment |
 | [**deleteAdNegativeKeywordList()**](AdAccountsApi.md#deleteAdNegativeKeywordList) | **DELETE** /v1/ads/accounts/negative-keyword-lists/{listId} | Delete a negative keyword list |
 | [**deleteValueRuleSet()**](AdAccountsApi.md#deleteValueRuleSet) | **DELETE** /v1/ads/value-rule-sets/{valueRuleSetId} | Delete a value rule set |
+| [**detachAdLabel()**](AdAccountsApi.md#detachAdLabel) | **DELETE** /v1/ads/labels/{labelId}/assignments | Detach a Google Ads label |
 | [**getAdAccountFinance()**](AdAccountsApi.md#getAdAccountFinance) | **GET** /v1/ads/accounts/finance | Ad account finances |
 | [**getAdComments()**](AdAccountsApi.md#getAdComments) | **GET** /v1/ads/{adId}/comments | List comments on an ad |
 | [**getAdNegativeKeywordList()**](AdAccountsApi.md#getAdNegativeKeywordList) | **GET** /v1/ads/accounts/negative-keyword-lists/{listId} | Get a negative keyword list |
@@ -30,7 +33,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listAccountSitelinks()**](AdAccountsApi.md#listAccountSitelinks) | **GET** /v1/ads/accounts/sitelinks | List account sitelinks |
 | [**listAccountStructuredSnippets()**](AdAccountsApi.md#listAccountStructuredSnippets) | **GET** /v1/ads/accounts/structured-snippets | List account snippets |
 | [**listAdAccounts()**](AdAccountsApi.md#listAdAccounts) | **GET** /v1/ads/accounts | List ad accounts |
-| [**listAdLabels()**](AdAccountsApi.md#listAdLabels) | **GET** /v1/ads/labels | Ad labels |
+| [**listAdLabels()**](AdAccountsApi.md#listAdLabels) | **GET** /v1/ads/labels | List ad labels |
 | [**listAdNegativeKeywordLists()**](AdAccountsApi.md#listAdNegativeKeywordLists) | **GET** /v1/ads/accounts/negative-keyword-lists | List negative keyword lists |
 | [**listAdStudies()**](AdAccountsApi.md#listAdStudies) | **GET** /v1/ads/studies | A/B tests and lift studies |
 | [**listAdsBusinessCenters()**](AdAccountsApi.md#listAdsBusinessCenters) | **GET** /v1/ads/business-centers | List TikTok Business Centers |
@@ -45,12 +48,14 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**removeAccountCallout()**](AdAccountsApi.md#removeAccountCallout) | **DELETE** /v1/ads/accounts/callouts | Remove account callout |
 | [**removeAccountSitelink()**](AdAccountsApi.md#removeAccountSitelink) | **DELETE** /v1/ads/accounts/sitelinks | Remove account sitelink |
 | [**removeAccountStructuredSnippet()**](AdAccountsApi.md#removeAccountStructuredSnippet) | **DELETE** /v1/ads/accounts/structured-snippets | Remove account snippet |
+| [**removeAdLabel()**](AdAccountsApi.md#removeAdLabel) | **DELETE** /v1/ads/labels/{labelId} | Remove a Google Ads label |
 | [**replaceAdNegativeKeywordListKeywords()**](AdAccountsApi.md#replaceAdNegativeKeywordListKeywords) | **PUT** /v1/ads/accounts/negative-keyword-lists/{listId}/keywords | Replace negative list keywords |
 | [**replyToAdComment()**](AdAccountsApi.md#replyToAdComment) | **POST** /v1/ads/{adId}/comments/{commentId}/reply | Reply to an ad comment |
 | [**updateAccountCallouts()**](AdAccountsApi.md#updateAccountCallouts) | **PUT** /v1/ads/accounts/callouts | Update account callouts |
 | [**updateAccountSitelinks()**](AdAccountsApi.md#updateAccountSitelinks) | **PUT** /v1/ads/accounts/sitelinks | Update account sitelinks |
 | [**updateAccountStructuredSnippets()**](AdAccountsApi.md#updateAccountStructuredSnippets) | **PUT** /v1/ads/accounts/structured-snippets | Update account snippets |
 | [**updateAdAccount()**](AdAccountsApi.md#updateAdAccount) | **PATCH** /v1/ads/accounts | Update ad account settings |
+| [**updateAdLabel()**](AdAccountsApi.md#updateAdLabel) | **PATCH** /v1/ads/labels/{labelId} | Update a Google Ads label |
 | [**updateAdNegativeKeywordList()**](AdAccountsApi.md#updateAdNegativeKeywordList) | **PUT** /v1/ads/accounts/negative-keyword-lists/{listId} | Rename a negative keyword list |
 | [**updateValueRuleSet()**](AdAccountsApi.md#updateValueRuleSet) | **PUT** /v1/ads/value-rule-sets/{valueRuleSetId} | Replace a value rule set |
 
@@ -235,6 +240,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `attachAdLabel()`
+
+```php
+attachAdLabel($label_id, $google_ad_label_assignments): \Zernio\Model\AttachAdLabel200Response
+```
+
+Attach a Google Ads label
+
+Attaches the label to campaigns, ad groups, ads and keywords (Google CampaignLabel, AdGroupLabel, AdGroupAdLabel and AdGroupCriterionLabel) in one mutate. Idempotent: a target that already carries the label is counted in `unchanged` instead of failing the call. All ids are Google's own: ads and keywords use the composite id Google puts in their resource names, `{adGroupId}~{adId}` and `{adGroupId}~{criterionId}` (the keyword form is the tail of `resourceName` on `GET /v1/ads/keywords`).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$label_id = 'label_id_example'; // string | Google label id
+$google_ad_label_assignments = new \Zernio\Model\GoogleAdLabelAssignments(); // \Zernio\Model\GoogleAdLabelAssignments
+
+try {
+    $result = $apiInstance->attachAdLabel($label_id, $google_ad_label_assignments);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->attachAdLabel: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **label_id** | **string**| Google label id | |
+| **google_ad_label_assignments** | [**\Zernio\Model\GoogleAdLabelAssignments**](../Model/GoogleAdLabelAssignments.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\AttachAdLabel200Response**](../Model/AttachAdLabel200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `createAdAccount()`
 
 ```php
@@ -281,6 +348,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreateAdAccount201Response**](../Model/CreateAdAccount201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createAdLabel()`
+
+```php
+createAdLabel($create_ad_label_request): \Zernio\Model\CreateAdLabel201Response
+```
+
+Create a Google Ads label
+
+Creates a label on a Google Ads customer. Attach it to campaigns, ad groups, ads and keywords with `POST /v1/ads/labels/{labelId}/assignments`. Label names are unique per customer; a duplicate is a 400.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_ad_label_request = new \Zernio\Model\CreateAdLabelRequest(); // \Zernio\Model\CreateAdLabelRequest
+
+try {
+    $result = $apiInstance->createAdLabel($create_ad_label_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->createAdLabel: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_ad_label_request** | [**\Zernio\Model\CreateAdLabelRequest**](../Model/CreateAdLabelRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateAdLabel201Response**](../Model/CreateAdLabel201Response.md)
 
 ### Authorization
 
@@ -727,6 +854,68 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `detachAdLabel()`
+
+```php
+detachAdLabel($label_id, $google_ad_label_assignments): \Zernio\Model\DetachAdLabel200Response
+```
+
+Detach a Google Ads label
+
+Removes the label from the given targets. Idempotent; a target without the label is counted in `unchanged`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$label_id = 'label_id_example'; // string | Google label id
+$google_ad_label_assignments = new \Zernio\Model\GoogleAdLabelAssignments(); // \Zernio\Model\GoogleAdLabelAssignments
+
+try {
+    $result = $apiInstance->detachAdLabel($label_id, $google_ad_label_assignments);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->detachAdLabel: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **label_id** | **string**| Google label id | |
+| **google_ad_label_assignments** | [**\Zernio\Model\GoogleAdLabelAssignments**](../Model/GoogleAdLabelAssignments.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\DetachAdLabel200Response**](../Model/DetachAdLabel200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -1582,12 +1771,12 @@ try {
 ## `listAdLabels()`
 
 ```php
-listAdLabels($account_id, $ad_account_id, $limit, $after): \Zernio\Model\ListAdLabels200Response
+listAdLabels($account_id, $ad_account_id, $customer_id, $limit, $after): \Zernio\Model\ListAdLabels200Response
 ```
 
-Ad labels
+List ad labels
 
-Lists the ad account's organizational labels (Meta's `/act_X/adlabels`), rows returned verbatim (id, name, created/updated time).
+Lists the organizational labels on an ad account.  - **Meta**: pass `adAccountId=act_<n>`. Rows are Meta's `/act_X/adlabels` returned verbatim   (id, name, created/updated time), paginated with `limit` / `after`. - **Google Ads**: pass the numeric customer id as `adAccountId` (optional when the   connection has a single customer). Returns every non-removed label as a `GoogleAdLabel`   in one page (`paging.after` is always null). Reads are cached for 10 minutes; when the   shared Google quota is exhausted the last successful result is served with `stale: true`.
 
 ### Example
 
@@ -1606,13 +1795,14 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token.
-$ad_account_id = 'ad_account_id_example'; // string | Meta ad account id (act_<n>).
-$limit = 25; // int | Rows per page
-$after = 'after_example'; // string | Cursor from paging.after of the previous page.
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id. For Meta, the posting or ads variant used to resolve the token.
+$ad_account_id = 'ad_account_id_example'; // string | Meta ad account id (act_<n>), or the Google Ads customer id (digits only).
+$customer_id = 'customer_id_example'; // string | Google only. Alias of adAccountId, kept for existing callers.
+$limit = 25; // int | Meta only. Rows per page.
+$after = 'after_example'; // string | Meta only. Cursor from paging.after of the previous page.
 
 try {
-    $result = $apiInstance->listAdLabels($account_id, $ad_account_id, $limit, $after);
+    $result = $apiInstance->listAdLabels($account_id, $ad_account_id, $customer_id, $limit, $after);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->listAdLabels: ', $e->getMessage(), PHP_EOL;
@@ -1623,10 +1813,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. | |
-| **ad_account_id** | **string**| Meta ad account id (act_&lt;n&gt;). | |
-| **limit** | **int**| Rows per page | [optional] [default to 25] |
-| **after** | **string**| Cursor from paging.after of the previous page. | [optional] |
+| **account_id** | **string**| Zernio SocialAccount id. For Meta, the posting or ads variant used to resolve the token. | |
+| **ad_account_id** | **string**| Meta ad account id (act_&lt;n&gt;), or the Google Ads customer id (digits only). | [optional] |
+| **customer_id** | **string**| Google only. Alias of adAccountId, kept for existing callers. | [optional] |
+| **limit** | **int**| Meta only. Rows per page. | [optional] [default to 25] |
+| **after** | **string**| Meta only. Cursor from paging.after of the previous page. | [optional] |
 
 ### Return type
 
@@ -2537,6 +2728,72 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `removeAdLabel()`
+
+```php
+removeAdLabel($label_id, $account_id, $ad_account_id, $customer_id): \Zernio\Model\RemoveAdLabel200Response
+```
+
+Remove a Google Ads label
+
+Removes the label. Google drops it from every campaign, ad group, ad and keyword it was attached to.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$label_id = 'label_id_example'; // string | Google label id
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id (Google Ads)
+$ad_account_id = 'ad_account_id_example'; // string | Google customer id. Required when the connection has multiple customers.
+$customer_id = 'customer_id_example'; // string | Alias of adAccountId
+
+try {
+    $result = $apiInstance->removeAdLabel($label_id, $account_id, $ad_account_id, $customer_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->removeAdLabel: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **label_id** | **string**| Google label id | |
+| **account_id** | **string**| Zernio SocialAccount id (Google Ads) | |
+| **ad_account_id** | **string**| Google customer id. Required when the connection has multiple customers. | [optional] |
+| **customer_id** | **string**| Alias of adAccountId | [optional] |
+
+### Return type
+
+[**\Zernio\Model\RemoveAdLabel200Response**](../Model/RemoveAdLabel200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `replaceAdNegativeKeywordListKeywords()`
 
 ```php
@@ -2893,6 +3150,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\UpdateAdAccount200Response**](../Model/UpdateAdAccount200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateAdLabel()`
+
+```php
+updateAdLabel($label_id, $update_ad_label_request): \Zernio\Model\UpdateAdLabel200Response
+```
+
+Update a Google Ads label
+
+Changes the name, color or description of a label. Only the fields sent are written.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$label_id = 'label_id_example'; // string | Google label id
+$update_ad_label_request = new \Zernio\Model\UpdateAdLabelRequest(); // \Zernio\Model\UpdateAdLabelRequest
+
+try {
+    $result = $apiInstance->updateAdLabel($label_id, $update_ad_label_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->updateAdLabel: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **label_id** | **string**| Google label id | |
+| **update_ad_label_request** | [**\Zernio\Model\UpdateAdLabelRequest**](../Model/UpdateAdLabelRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateAdLabel200Response**](../Model/UpdateAdLabel200Response.md)
 
 ### Authorization
 

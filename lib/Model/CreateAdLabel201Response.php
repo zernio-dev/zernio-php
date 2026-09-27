@@ -1,6 +1,6 @@
 <?php
 /**
- * ListAdLabels200Response
+ * CreateAdLabel201Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ListAdLabels200Response Class Doc Comment
+ * CreateAdLabel201Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateAdLabel201Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'listAdLabels_200_response';
+    protected static $openAPIModelName = 'createAdLabel_201_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,9 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'ad_account_id' => 'string',
-        'data' => '\Zernio\Model\ListAdLabels200ResponseDataInner[]',
-        'paging' => '\Zernio\Model\ListAdLabels200ResponsePaging',
-        'cached_at' => '\DateTime',
-        'stale' => 'bool'
+        'customer_id' => 'string',
+        'id' => 'string',
+        'resource_name' => 'string'
     ];
 
     /**
@@ -73,11 +71,9 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'ad_account_id' => null,
-        'data' => null,
-        'paging' => null,
-        'cached_at' => 'date-time',
-        'stale' => null
+        'customer_id' => null,
+        'id' => null,
+        'resource_name' => null
     ];
 
     /**
@@ -86,11 +82,9 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ad_account_id' => false,
-        'data' => false,
-        'paging' => false,
-        'cached_at' => true,
-        'stale' => false
+        'customer_id' => false,
+        'id' => false,
+        'resource_name' => false
     ];
 
     /**
@@ -179,11 +173,9 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'ad_account_id' => 'adAccountId',
-        'data' => 'data',
-        'paging' => 'paging',
-        'cached_at' => 'cachedAt',
-        'stale' => 'stale'
+        'customer_id' => 'customerId',
+        'id' => 'id',
+        'resource_name' => 'resourceName'
     ];
 
     /**
@@ -192,11 +184,9 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'ad_account_id' => 'setAdAccountId',
-        'data' => 'setData',
-        'paging' => 'setPaging',
-        'cached_at' => 'setCachedAt',
-        'stale' => 'setStale'
+        'customer_id' => 'setCustomerId',
+        'id' => 'setId',
+        'resource_name' => 'setResourceName'
     ];
 
     /**
@@ -205,11 +195,9 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'ad_account_id' => 'getAdAccountId',
-        'data' => 'getData',
-        'paging' => 'getPaging',
-        'cached_at' => 'getCachedAt',
-        'stale' => 'getStale'
+        'customer_id' => 'getCustomerId',
+        'id' => 'getId',
+        'resource_name' => 'getResourceName'
     ];
 
     /**
@@ -269,11 +257,9 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('ad_account_id', $data ?? [], null);
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('paging', $data ?? [], null);
-        $this->setIfExists('cached_at', $data ?? [], null);
-        $this->setIfExists('stale', $data ?? [], null);
+        $this->setIfExists('customer_id', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('resource_name', $data ?? [], null);
     }
 
     /**
@@ -319,143 +305,82 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets ad_account_id
+     * Gets customer_id
      *
      * @return string|null
      */
-    public function getAdAccountId()
+    public function getCustomerId()
     {
-        return $this->container['ad_account_id'];
+        return $this->container['customer_id'];
     }
 
     /**
-     * Sets ad_account_id
+     * Sets customer_id
      *
-     * @param string|null $ad_account_id Meta act_<n>, or the resolved Google customer id
+     * @param string|null $customer_id customer_id
      *
      * @return self
      */
-    public function setAdAccountId($ad_account_id)
+    public function setCustomerId($customer_id)
     {
-        if (is_null($ad_account_id)) {
-            throw new \InvalidArgumentException('non-nullable ad_account_id cannot be null');
+        if (is_null($customer_id)) {
+            throw new \InvalidArgumentException('non-nullable customer_id cannot be null');
         }
-        $this->container['ad_account_id'] = $ad_account_id;
+        $this->container['customer_id'] = $customer_id;
 
         return $this;
     }
 
     /**
-     * Gets data
+     * Gets id
      *
-     * @return \Zernio\Model\ListAdLabels200ResponseDataInner[]|null
+     * @return string|null
      */
-    public function getData()
+    public function getId()
     {
-        return $this->container['data'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets data
+     * Sets id
      *
-     * @param \Zernio\Model\ListAdLabels200ResponseDataInner[]|null $data data
+     * @param string|null $id Google label id
      *
      * @return self
      */
-    public function setData($data)
+    public function setId($id)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets paging
+     * Gets resource_name
      *
-     * @return \Zernio\Model\ListAdLabels200ResponsePaging|null
+     * @return string|null
      */
-    public function getPaging()
+    public function getResourceName()
     {
-        return $this->container['paging'];
+        return $this->container['resource_name'];
     }
 
     /**
-     * Sets paging
+     * Sets resource_name
      *
-     * @param \Zernio\Model\ListAdLabels200ResponsePaging|null $paging paging
+     * @param string|null $resource_name customers/{customerId}/labels/{id}
      *
      * @return self
      */
-    public function setPaging($paging)
+    public function setResourceName($resource_name)
     {
-        if (is_null($paging)) {
-            throw new \InvalidArgumentException('non-nullable paging cannot be null');
+        if (is_null($resource_name)) {
+            throw new \InvalidArgumentException('non-nullable resource_name cannot be null');
         }
-        $this->container['paging'] = $paging;
-
-        return $this;
-    }
-
-    /**
-     * Gets cached_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCachedAt()
-    {
-        return $this->container['cached_at'];
-    }
-
-    /**
-     * Sets cached_at
-     *
-     * @param \DateTime|null $cached_at Google only. When the served list was fetched from Google.
-     *
-     * @return self
-     */
-    public function setCachedAt($cached_at)
-    {
-        if (is_null($cached_at)) {
-            array_push($this->openAPINullablesSetToNull, 'cached_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cached_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['cached_at'] = $cached_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets stale
-     *
-     * @return bool|null
-     */
-    public function getStale()
-    {
-        return $this->container['stale'];
-    }
-
-    /**
-     * Sets stale
-     *
-     * @param bool|null $stale Google only. True when Google quota was exhausted and the last cached list was served.
-     *
-     * @return self
-     */
-    public function setStale($stale)
-    {
-        if (is_null($stale)) {
-            throw new \InvalidArgumentException('non-nullable stale cannot be null');
-        }
-        $this->container['stale'] = $stale;
+        $this->container['resource_name'] = $resource_name;
 
         return $this;
     }

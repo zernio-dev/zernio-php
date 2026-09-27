@@ -1,6 +1,6 @@
 <?php
 /**
- * ListAdLabels200Response
+ * GoogleAdLabelAssignments
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ListAdLabels200Response Class Doc Comment
+ * GoogleAdLabelAssignments Class Doc Comment
  *
  * @category Class
+ * @description At least one id across the four target lists. Up to 1000 ids per list.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class GoogleAdLabelAssignments implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'listAdLabels_200_response';
+    protected static $openAPIModelName = 'GoogleAdLabelAssignments';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +59,13 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
+        'account_id' => 'string',
         'ad_account_id' => 'string',
-        'data' => '\Zernio\Model\ListAdLabels200ResponseDataInner[]',
-        'paging' => '\Zernio\Model\ListAdLabels200ResponsePaging',
-        'cached_at' => '\DateTime',
-        'stale' => 'bool'
+        'customer_id' => 'string',
+        'campaign_ids' => 'string[]',
+        'ad_set_ids' => 'string[]',
+        'ad_ids' => 'string[]',
+        'keyword_ids' => 'string[]'
     ];
 
     /**
@@ -73,11 +76,13 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'account_id' => null,
         'ad_account_id' => null,
-        'data' => null,
-        'paging' => null,
-        'cached_at' => 'date-time',
-        'stale' => null
+        'customer_id' => null,
+        'campaign_ids' => null,
+        'ad_set_ids' => null,
+        'ad_ids' => null,
+        'keyword_ids' => null
     ];
 
     /**
@@ -86,11 +91,13 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'account_id' => false,
         'ad_account_id' => false,
-        'data' => false,
-        'paging' => false,
-        'cached_at' => true,
-        'stale' => false
+        'customer_id' => false,
+        'campaign_ids' => false,
+        'ad_set_ids' => false,
+        'ad_ids' => false,
+        'keyword_ids' => false
     ];
 
     /**
@@ -179,11 +186,13 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
+        'account_id' => 'accountId',
         'ad_account_id' => 'adAccountId',
-        'data' => 'data',
-        'paging' => 'paging',
-        'cached_at' => 'cachedAt',
-        'stale' => 'stale'
+        'customer_id' => 'customerId',
+        'campaign_ids' => 'campaignIds',
+        'ad_set_ids' => 'adSetIds',
+        'ad_ids' => 'adIds',
+        'keyword_ids' => 'keywordIds'
     ];
 
     /**
@@ -192,11 +201,13 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
+        'account_id' => 'setAccountId',
         'ad_account_id' => 'setAdAccountId',
-        'data' => 'setData',
-        'paging' => 'setPaging',
-        'cached_at' => 'setCachedAt',
-        'stale' => 'setStale'
+        'customer_id' => 'setCustomerId',
+        'campaign_ids' => 'setCampaignIds',
+        'ad_set_ids' => 'setAdSetIds',
+        'ad_ids' => 'setAdIds',
+        'keyword_ids' => 'setKeywordIds'
     ];
 
     /**
@@ -205,11 +216,13 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
+        'account_id' => 'getAccountId',
         'ad_account_id' => 'getAdAccountId',
-        'data' => 'getData',
-        'paging' => 'getPaging',
-        'cached_at' => 'getCachedAt',
-        'stale' => 'getStale'
+        'customer_id' => 'getCustomerId',
+        'campaign_ids' => 'getCampaignIds',
+        'ad_set_ids' => 'getAdSetIds',
+        'ad_ids' => 'getAdIds',
+        'keyword_ids' => 'getKeywordIds'
     ];
 
     /**
@@ -269,11 +282,13 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('ad_account_id', $data ?? [], null);
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('paging', $data ?? [], null);
-        $this->setIfExists('cached_at', $data ?? [], null);
-        $this->setIfExists('stale', $data ?? [], null);
+        $this->setIfExists('customer_id', $data ?? [], null);
+        $this->setIfExists('campaign_ids', $data ?? [], null);
+        $this->setIfExists('ad_set_ids', $data ?? [], null);
+        $this->setIfExists('ad_ids', $data ?? [], null);
+        $this->setIfExists('keyword_ids', $data ?? [], null);
     }
 
     /**
@@ -303,6 +318,33 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
+        if ($this->container['account_id'] === null) {
+            $invalidProperties[] = "'account_id' can't be null";
+        }
+        if (!is_null($this->container['ad_account_id']) && !preg_match("/^\\d+$/", $this->container['ad_account_id'])) {
+            $invalidProperties[] = "invalid value for 'ad_account_id', must be conform to the pattern /^\\d+$/.";
+        }
+
+        if (!is_null($this->container['customer_id']) && !preg_match("/^\\d+$/", $this->container['customer_id'])) {
+            $invalidProperties[] = "invalid value for 'customer_id', must be conform to the pattern /^\\d+$/.";
+        }
+
+        if (!is_null($this->container['campaign_ids']) && (count($this->container['campaign_ids']) > 1000)) {
+            $invalidProperties[] = "invalid value for 'campaign_ids', number of items must be less than or equal to 1000.";
+        }
+
+        if (!is_null($this->container['ad_set_ids']) && (count($this->container['ad_set_ids']) > 1000)) {
+            $invalidProperties[] = "invalid value for 'ad_set_ids', number of items must be less than or equal to 1000.";
+        }
+
+        if (!is_null($this->container['ad_ids']) && (count($this->container['ad_ids']) > 1000)) {
+            $invalidProperties[] = "invalid value for 'ad_ids', number of items must be less than or equal to 1000.";
+        }
+
+        if (!is_null($this->container['keyword_ids']) && (count($this->container['keyword_ids']) > 1000)) {
+            $invalidProperties[] = "invalid value for 'keyword_ids', number of items must be less than or equal to 1000.";
+        }
+
         return $invalidProperties;
     }
 
@@ -319,6 +361,33 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
+     * Gets account_id
+     *
+     * @return string
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string $account_id Zernio SocialAccount id (Google Ads)
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
      * Gets ad_account_id
      *
      * @return string|null
@@ -331,7 +400,7 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets ad_account_id
      *
-     * @param string|null $ad_account_id Meta act_<n>, or the resolved Google customer id
+     * @param string|null $ad_account_id Google customer id. Required when the connection has multiple customers.
      *
      * @return self
      */
@@ -340,122 +409,170 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
         if (is_null($ad_account_id)) {
             throw new \InvalidArgumentException('non-nullable ad_account_id cannot be null');
         }
+
+        if ((!preg_match("/^\\d+$/", ObjectSerializer::toString($ad_account_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$ad_account_id when calling GoogleAdLabelAssignments., must conform to the pattern /^\\d+$/.");
+        }
+
         $this->container['ad_account_id'] = $ad_account_id;
 
         return $this;
     }
 
     /**
-     * Gets data
+     * Gets customer_id
      *
-     * @return \Zernio\Model\ListAdLabels200ResponseDataInner[]|null
+     * @return string|null
+     * @deprecated
      */
-    public function getData()
+    public function getCustomerId()
     {
-        return $this->container['data'];
+        return $this->container['customer_id'];
     }
 
     /**
-     * Sets data
+     * Sets customer_id
      *
-     * @param \Zernio\Model\ListAdLabels200ResponseDataInner[]|null $data data
+     * @param string|null $customer_id Alias of adAccountId
      *
      * @return self
+     * @deprecated
      */
-    public function setData($data)
+    public function setCustomerId($customer_id)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($customer_id)) {
+            throw new \InvalidArgumentException('non-nullable customer_id cannot be null');
         }
-        $this->container['data'] = $data;
+
+        if ((!preg_match("/^\\d+$/", ObjectSerializer::toString($customer_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$customer_id when calling GoogleAdLabelAssignments., must conform to the pattern /^\\d+$/.");
+        }
+
+        $this->container['customer_id'] = $customer_id;
 
         return $this;
     }
 
     /**
-     * Gets paging
+     * Gets campaign_ids
      *
-     * @return \Zernio\Model\ListAdLabels200ResponsePaging|null
+     * @return string[]|null
      */
-    public function getPaging()
+    public function getCampaignIds()
     {
-        return $this->container['paging'];
+        return $this->container['campaign_ids'];
     }
 
     /**
-     * Sets paging
+     * Sets campaign_ids
      *
-     * @param \Zernio\Model\ListAdLabels200ResponsePaging|null $paging paging
+     * @param string[]|null $campaign_ids Google campaign ids
      *
      * @return self
      */
-    public function setPaging($paging)
+    public function setCampaignIds($campaign_ids)
     {
-        if (is_null($paging)) {
-            throw new \InvalidArgumentException('non-nullable paging cannot be null');
+        if (is_null($campaign_ids)) {
+            throw new \InvalidArgumentException('non-nullable campaign_ids cannot be null');
         }
-        $this->container['paging'] = $paging;
+
+        if ((count($campaign_ids) > 1000)) {
+            throw new \InvalidArgumentException('invalid value for $campaign_ids when calling GoogleAdLabelAssignments., number of items must be less than or equal to 1000.');
+        }
+        $this->container['campaign_ids'] = $campaign_ids;
 
         return $this;
     }
 
     /**
-     * Gets cached_at
+     * Gets ad_set_ids
      *
-     * @return \DateTime|null
+     * @return string[]|null
      */
-    public function getCachedAt()
+    public function getAdSetIds()
     {
-        return $this->container['cached_at'];
+        return $this->container['ad_set_ids'];
     }
 
     /**
-     * Sets cached_at
+     * Sets ad_set_ids
      *
-     * @param \DateTime|null $cached_at Google only. When the served list was fetched from Google.
+     * @param string[]|null $ad_set_ids Google ad group ids
      *
      * @return self
      */
-    public function setCachedAt($cached_at)
+    public function setAdSetIds($ad_set_ids)
     {
-        if (is_null($cached_at)) {
-            array_push($this->openAPINullablesSetToNull, 'cached_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cached_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($ad_set_ids)) {
+            throw new \InvalidArgumentException('non-nullable ad_set_ids cannot be null');
         }
-        $this->container['cached_at'] = $cached_at;
+
+        if ((count($ad_set_ids) > 1000)) {
+            throw new \InvalidArgumentException('invalid value for $ad_set_ids when calling GoogleAdLabelAssignments., number of items must be less than or equal to 1000.');
+        }
+        $this->container['ad_set_ids'] = $ad_set_ids;
 
         return $this;
     }
 
     /**
-     * Gets stale
+     * Gets ad_ids
      *
-     * @return bool|null
+     * @return string[]|null
      */
-    public function getStale()
+    public function getAdIds()
     {
-        return $this->container['stale'];
+        return $this->container['ad_ids'];
     }
 
     /**
-     * Sets stale
+     * Sets ad_ids
      *
-     * @param bool|null $stale Google only. True when Google quota was exhausted and the last cached list was served.
+     * @param string[]|null $ad_ids Google ad group ad ids, {adGroupId}~{adId}
      *
      * @return self
      */
-    public function setStale($stale)
+    public function setAdIds($ad_ids)
     {
-        if (is_null($stale)) {
-            throw new \InvalidArgumentException('non-nullable stale cannot be null');
+        if (is_null($ad_ids)) {
+            throw new \InvalidArgumentException('non-nullable ad_ids cannot be null');
         }
-        $this->container['stale'] = $stale;
+
+        if ((count($ad_ids) > 1000)) {
+            throw new \InvalidArgumentException('invalid value for $ad_ids when calling GoogleAdLabelAssignments., number of items must be less than or equal to 1000.');
+        }
+        $this->container['ad_ids'] = $ad_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets keyword_ids
+     *
+     * @return string[]|null
+     */
+    public function getKeywordIds()
+    {
+        return $this->container['keyword_ids'];
+    }
+
+    /**
+     * Sets keyword_ids
+     *
+     * @param string[]|null $keyword_ids Google keyword criterion ids, {adGroupId}~{criterionId}
+     *
+     * @return self
+     */
+    public function setKeywordIds($keyword_ids)
+    {
+        if (is_null($keyword_ids)) {
+            throw new \InvalidArgumentException('non-nullable keyword_ids cannot be null');
+        }
+
+        if ((count($keyword_ids) > 1000)) {
+            throw new \InvalidArgumentException('invalid value for $keyword_ids when calling GoogleAdLabelAssignments., number of items must be less than or equal to 1000.');
+        }
+        $this->container['keyword_ids'] = $keyword_ids;
 
         return $this;
     }

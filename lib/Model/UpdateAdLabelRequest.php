@@ -1,6 +1,6 @@
 <?php
 /**
- * ListAdLabels200Response
+ * UpdateAdLabelRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ListAdLabels200Response Class Doc Comment
+ * UpdateAdLabelRequest Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateAdLabelRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'listAdLabels_200_response';
+    protected static $openAPIModelName = 'updateAdLabel_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,12 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
+        'account_id' => 'string',
         'ad_account_id' => 'string',
-        'data' => '\Zernio\Model\ListAdLabels200ResponseDataInner[]',
-        'paging' => '\Zernio\Model\ListAdLabels200ResponsePaging',
-        'cached_at' => '\DateTime',
-        'stale' => 'bool'
+        'customer_id' => 'string',
+        'name' => 'string',
+        'background_color' => 'string',
+        'description' => 'string'
     ];
 
     /**
@@ -73,11 +74,12 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'account_id' => null,
         'ad_account_id' => null,
-        'data' => null,
-        'paging' => null,
-        'cached_at' => 'date-time',
-        'stale' => null
+        'customer_id' => null,
+        'name' => null,
+        'background_color' => null,
+        'description' => null
     ];
 
     /**
@@ -86,11 +88,12 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'account_id' => false,
         'ad_account_id' => false,
-        'data' => false,
-        'paging' => false,
-        'cached_at' => true,
-        'stale' => false
+        'customer_id' => false,
+        'name' => false,
+        'background_color' => false,
+        'description' => false
     ];
 
     /**
@@ -179,11 +182,12 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
+        'account_id' => 'accountId',
         'ad_account_id' => 'adAccountId',
-        'data' => 'data',
-        'paging' => 'paging',
-        'cached_at' => 'cachedAt',
-        'stale' => 'stale'
+        'customer_id' => 'customerId',
+        'name' => 'name',
+        'background_color' => 'backgroundColor',
+        'description' => 'description'
     ];
 
     /**
@@ -192,11 +196,12 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
+        'account_id' => 'setAccountId',
         'ad_account_id' => 'setAdAccountId',
-        'data' => 'setData',
-        'paging' => 'setPaging',
-        'cached_at' => 'setCachedAt',
-        'stale' => 'setStale'
+        'customer_id' => 'setCustomerId',
+        'name' => 'setName',
+        'background_color' => 'setBackgroundColor',
+        'description' => 'setDescription'
     ];
 
     /**
@@ -205,11 +210,12 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
+        'account_id' => 'getAccountId',
         'ad_account_id' => 'getAdAccountId',
-        'data' => 'getData',
-        'paging' => 'getPaging',
-        'cached_at' => 'getCachedAt',
-        'stale' => 'getStale'
+        'customer_id' => 'getCustomerId',
+        'name' => 'getName',
+        'background_color' => 'getBackgroundColor',
+        'description' => 'getDescription'
     ];
 
     /**
@@ -269,11 +275,12 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('ad_account_id', $data ?? [], null);
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('paging', $data ?? [], null);
-        $this->setIfExists('cached_at', $data ?? [], null);
-        $this->setIfExists('stale', $data ?? [], null);
+        $this->setIfExists('customer_id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('background_color', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
     }
 
     /**
@@ -303,6 +310,33 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
+        if ($this->container['account_id'] === null) {
+            $invalidProperties[] = "'account_id' can't be null";
+        }
+        if (!is_null($this->container['ad_account_id']) && !preg_match("/^\\d+$/", $this->container['ad_account_id'])) {
+            $invalidProperties[] = "invalid value for 'ad_account_id', must be conform to the pattern /^\\d+$/.";
+        }
+
+        if (!is_null($this->container['customer_id']) && !preg_match("/^\\d+$/", $this->container['customer_id'])) {
+            $invalidProperties[] = "invalid value for 'customer_id', must be conform to the pattern /^\\d+$/.";
+        }
+
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 80)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 80.";
+        }
+
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['background_color']) && !preg_match("/^#[0-9a-fA-F]{6}$/", $this->container['background_color'])) {
+            $invalidProperties[] = "invalid value for 'background_color', must be conform to the pattern /^#[0-9a-fA-F]{6}$/.";
+        }
+
+        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 200)) {
+            $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 200.";
+        }
+
         return $invalidProperties;
     }
 
@@ -319,6 +353,33 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
+     * Gets account_id
+     *
+     * @return string
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string $account_id Zernio SocialAccount id (Google Ads)
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
      * Gets ad_account_id
      *
      * @return string|null
@@ -331,7 +392,7 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets ad_account_id
      *
-     * @param string|null $ad_account_id Meta act_<n>, or the resolved Google customer id
+     * @param string|null $ad_account_id Google customer id. Required when the connection has multiple customers.
      *
      * @return self
      */
@@ -340,122 +401,143 @@ class ListAdLabels200Response implements ModelInterface, ArrayAccess, \JsonSeria
         if (is_null($ad_account_id)) {
             throw new \InvalidArgumentException('non-nullable ad_account_id cannot be null');
         }
+
+        if ((!preg_match("/^\\d+$/", ObjectSerializer::toString($ad_account_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$ad_account_id when calling UpdateAdLabelRequest., must conform to the pattern /^\\d+$/.");
+        }
+
         $this->container['ad_account_id'] = $ad_account_id;
 
         return $this;
     }
 
     /**
-     * Gets data
+     * Gets customer_id
      *
-     * @return \Zernio\Model\ListAdLabels200ResponseDataInner[]|null
+     * @return string|null
+     * @deprecated
      */
-    public function getData()
+    public function getCustomerId()
     {
-        return $this->container['data'];
+        return $this->container['customer_id'];
     }
 
     /**
-     * Sets data
+     * Sets customer_id
      *
-     * @param \Zernio\Model\ListAdLabels200ResponseDataInner[]|null $data data
+     * @param string|null $customer_id Alias of adAccountId
      *
      * @return self
+     * @deprecated
      */
-    public function setData($data)
+    public function setCustomerId($customer_id)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($customer_id)) {
+            throw new \InvalidArgumentException('non-nullable customer_id cannot be null');
         }
-        $this->container['data'] = $data;
+
+        if ((!preg_match("/^\\d+$/", ObjectSerializer::toString($customer_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$customer_id when calling UpdateAdLabelRequest., must conform to the pattern /^\\d+$/.");
+        }
+
+        $this->container['customer_id'] = $customer_id;
 
         return $this;
     }
 
     /**
-     * Gets paging
+     * Gets name
      *
-     * @return \Zernio\Model\ListAdLabels200ResponsePaging|null
+     * @return string|null
      */
-    public function getPaging()
+    public function getName()
     {
-        return $this->container['paging'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets paging
+     * Sets name
      *
-     * @param \Zernio\Model\ListAdLabels200ResponsePaging|null $paging paging
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setPaging($paging)
+    public function setName($name)
     {
-        if (is_null($paging)) {
-            throw new \InvalidArgumentException('non-nullable paging cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['paging'] = $paging;
+        if ((mb_strlen($name) > 80)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling UpdateAdLabelRequest., must be smaller than or equal to 80.');
+        }
+        if ((mb_strlen($name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling UpdateAdLabelRequest., must be bigger than or equal to 1.');
+        }
+
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets cached_at
+     * Gets background_color
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getCachedAt()
+    public function getBackgroundColor()
     {
-        return $this->container['cached_at'];
+        return $this->container['background_color'];
     }
 
     /**
-     * Sets cached_at
+     * Sets background_color
      *
-     * @param \DateTime|null $cached_at Google only. When the served list was fetched from Google.
+     * @param string|null $background_color background_color
      *
      * @return self
      */
-    public function setCachedAt($cached_at)
+    public function setBackgroundColor($background_color)
     {
-        if (is_null($cached_at)) {
-            array_push($this->openAPINullablesSetToNull, 'cached_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cached_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($background_color)) {
+            throw new \InvalidArgumentException('non-nullable background_color cannot be null');
         }
-        $this->container['cached_at'] = $cached_at;
+
+        if ((!preg_match("/^#[0-9a-fA-F]{6}$/", ObjectSerializer::toString($background_color)))) {
+            throw new \InvalidArgumentException("invalid value for \$background_color when calling UpdateAdLabelRequest., must conform to the pattern /^#[0-9a-fA-F]{6}$/.");
+        }
+
+        $this->container['background_color'] = $background_color;
 
         return $this;
     }
 
     /**
-     * Gets stale
+     * Gets description
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getStale()
+    public function getDescription()
     {
-        return $this->container['stale'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets stale
+     * Sets description
      *
-     * @param bool|null $stale Google only. True when Google quota was exhausted and the last cached list was served.
+     * @param string|null $description Send \"\" to clear it.
      *
      * @return self
      */
-    public function setStale($stale)
+    public function setDescription($description)
     {
-        if (is_null($stale)) {
-            throw new \InvalidArgumentException('non-nullable stale cannot be null');
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
-        $this->container['stale'] = $stale;
+        if ((mb_strlen($description) > 200)) {
+            throw new \InvalidArgumentException('invalid length for $description when calling UpdateAdLabelRequest., must be smaller than or equal to 200.');
+        }
+
+        $this->container['description'] = $description;
 
         return $this;
     }

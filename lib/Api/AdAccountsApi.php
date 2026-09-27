@@ -84,7 +84,13 @@ class AdAccountsApi
         'addAccountStructuredSnippets' => [
             'application/json',
         ],
+        'attachAdLabel' => [
+            'application/json',
+        ],
         'createAdAccount' => [
+            'application/json',
+        ],
+        'createAdLabel' => [
             'application/json',
         ],
         'createAdNegativeKeywordList' => [
@@ -106,6 +112,9 @@ class AdAccountsApi
             'application/json',
         ],
         'deleteValueRuleSet' => [
+            'application/json',
+        ],
+        'detachAdLabel' => [
             'application/json',
         ],
         'getAdAccountFinance' => [
@@ -192,6 +201,9 @@ class AdAccountsApi
         'removeAccountStructuredSnippet' => [
             'application/json',
         ],
+        'removeAdLabel' => [
+            'application/json',
+        ],
         'replaceAdNegativeKeywordListKeywords' => [
             'application/json',
         ],
@@ -208,6 +220,9 @@ class AdAccountsApi
             'application/json',
         ],
         'updateAdAccount' => [
+            'application/json',
+        ],
+        'updateAdLabel' => [
             'application/json',
         ],
         'updateAdNegativeKeywordList' => [
@@ -1246,6 +1261,342 @@ class AdAccountsApi
     }
 
     /**
+     * Operation attachAdLabel
+     *
+     * Attach a Google Ads label
+     *
+     * @param  string $label_id Google label id (required)
+     * @param  \Zernio\Model\GoogleAdLabelAssignments $google_ad_label_assignments google_ad_label_assignments (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachAdLabel'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\AttachAdLabel200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
+     */
+    public function attachAdLabel($label_id, $google_ad_label_assignments, string $contentType = self::contentTypes['attachAdLabel'][0])
+    {
+        list($response) = $this->attachAdLabelWithHttpInfo($label_id, $google_ad_label_assignments, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation attachAdLabelWithHttpInfo
+     *
+     * Attach a Google Ads label
+     *
+     * @param  string $label_id Google label id (required)
+     * @param  \Zernio\Model\GoogleAdLabelAssignments $google_ad_label_assignments (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachAdLabel'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\AttachAdLabel200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function attachAdLabelWithHttpInfo($label_id, $google_ad_label_assignments, string $contentType = self::contentTypes['attachAdLabel'][0])
+    {
+        $request = $this->attachAdLabelRequest($label_id, $google_ad_label_assignments, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\AttachAdLabel200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\AttachAdLabel200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\AttachAdLabel200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation attachAdLabelAsync
+     *
+     * Attach a Google Ads label
+     *
+     * @param  string $label_id Google label id (required)
+     * @param  \Zernio\Model\GoogleAdLabelAssignments $google_ad_label_assignments (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachAdLabel'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function attachAdLabelAsync($label_id, $google_ad_label_assignments, string $contentType = self::contentTypes['attachAdLabel'][0])
+    {
+        return $this->attachAdLabelAsyncWithHttpInfo($label_id, $google_ad_label_assignments, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation attachAdLabelAsyncWithHttpInfo
+     *
+     * Attach a Google Ads label
+     *
+     * @param  string $label_id Google label id (required)
+     * @param  \Zernio\Model\GoogleAdLabelAssignments $google_ad_label_assignments (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachAdLabel'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function attachAdLabelAsyncWithHttpInfo($label_id, $google_ad_label_assignments, string $contentType = self::contentTypes['attachAdLabel'][0])
+    {
+        $returnType = '\Zernio\Model\AttachAdLabel200Response';
+        $request = $this->attachAdLabelRequest($label_id, $google_ad_label_assignments, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'attachAdLabel'
+     *
+     * @param  string $label_id Google label id (required)
+     * @param  \Zernio\Model\GoogleAdLabelAssignments $google_ad_label_assignments (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachAdLabel'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function attachAdLabelRequest($label_id, $google_ad_label_assignments, string $contentType = self::contentTypes['attachAdLabel'][0])
+    {
+
+        // verify the required parameter 'label_id' is set
+        if ($label_id === null || (is_array($label_id) && count($label_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $label_id when calling attachAdLabel'
+            );
+        }
+        if (!preg_match("/^\\d+$/", $label_id)) {
+            throw new \InvalidArgumentException("invalid value for \"label_id\" when calling AdAccountsApi.attachAdLabel, must conform to the pattern /^\\d+$/.");
+        }
+        
+        // verify the required parameter 'google_ad_label_assignments' is set
+        if ($google_ad_label_assignments === null || (is_array($google_ad_label_assignments) && count($google_ad_label_assignments) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $google_ad_label_assignments when calling attachAdLabel'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/labels/{labelId}/assignments';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($label_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'labelId' . '}',
+                ObjectSerializer::toPathValue($label_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($google_ad_label_assignments)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($google_ad_label_assignments));
+            } else {
+                $httpBody = $google_ad_label_assignments;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation createAdAccount
      *
      * Create Meta ad account
@@ -1549,6 +1900,333 @@ class AdAccountsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_ad_account_request));
             } else {
                 $httpBody = $create_ad_account_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createAdLabel
+     *
+     * Create a Google Ads label
+     *
+     * @param  \Zernio\Model\CreateAdLabelRequest $create_ad_label_request create_ad_label_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdLabel'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CreateAdLabel201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
+     */
+    public function createAdLabel($create_ad_label_request, string $contentType = self::contentTypes['createAdLabel'][0])
+    {
+        list($response) = $this->createAdLabelWithHttpInfo($create_ad_label_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createAdLabelWithHttpInfo
+     *
+     * Create a Google Ads label
+     *
+     * @param  \Zernio\Model\CreateAdLabelRequest $create_ad_label_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdLabel'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CreateAdLabel201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createAdLabelWithHttpInfo($create_ad_label_request, string $contentType = self::contentTypes['createAdLabel'][0])
+    {
+        $request = $this->createAdLabelRequest($create_ad_label_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreateAdLabel201Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CreateAdLabel201Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreateAdLabel201Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createAdLabelAsync
+     *
+     * Create a Google Ads label
+     *
+     * @param  \Zernio\Model\CreateAdLabelRequest $create_ad_label_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdLabel'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAdLabelAsync($create_ad_label_request, string $contentType = self::contentTypes['createAdLabel'][0])
+    {
+        return $this->createAdLabelAsyncWithHttpInfo($create_ad_label_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createAdLabelAsyncWithHttpInfo
+     *
+     * Create a Google Ads label
+     *
+     * @param  \Zernio\Model\CreateAdLabelRequest $create_ad_label_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdLabel'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAdLabelAsyncWithHttpInfo($create_ad_label_request, string $contentType = self::contentTypes['createAdLabel'][0])
+    {
+        $returnType = '\Zernio\Model\CreateAdLabel201Response';
+        $request = $this->createAdLabelRequest($create_ad_label_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createAdLabel'
+     *
+     * @param  \Zernio\Model\CreateAdLabelRequest $create_ad_label_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdLabel'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createAdLabelRequest($create_ad_label_request, string $contentType = self::contentTypes['createAdLabel'][0])
+    {
+
+        // verify the required parameter 'create_ad_label_request' is set
+        if ($create_ad_label_request === null || (is_array($create_ad_label_request) && count($create_ad_label_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_ad_label_request when calling createAdLabel'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/labels';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_ad_label_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_ad_label_request));
+            } else {
+                $httpBody = $create_ad_label_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -3917,6 +4595,342 @@ class AdAccountsApi
 
         // for model (json/xml)
         if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation detachAdLabel
+     *
+     * Detach a Google Ads label
+     *
+     * @param  string $label_id Google label id (required)
+     * @param  \Zernio\Model\GoogleAdLabelAssignments $google_ad_label_assignments google_ad_label_assignments (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachAdLabel'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\DetachAdLabel200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
+     */
+    public function detachAdLabel($label_id, $google_ad_label_assignments, string $contentType = self::contentTypes['detachAdLabel'][0])
+    {
+        list($response) = $this->detachAdLabelWithHttpInfo($label_id, $google_ad_label_assignments, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation detachAdLabelWithHttpInfo
+     *
+     * Detach a Google Ads label
+     *
+     * @param  string $label_id Google label id (required)
+     * @param  \Zernio\Model\GoogleAdLabelAssignments $google_ad_label_assignments (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachAdLabel'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\DetachAdLabel200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function detachAdLabelWithHttpInfo($label_id, $google_ad_label_assignments, string $contentType = self::contentTypes['detachAdLabel'][0])
+    {
+        $request = $this->detachAdLabelRequest($label_id, $google_ad_label_assignments, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\DetachAdLabel200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\DetachAdLabel200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\DetachAdLabel200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation detachAdLabelAsync
+     *
+     * Detach a Google Ads label
+     *
+     * @param  string $label_id Google label id (required)
+     * @param  \Zernio\Model\GoogleAdLabelAssignments $google_ad_label_assignments (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachAdLabel'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function detachAdLabelAsync($label_id, $google_ad_label_assignments, string $contentType = self::contentTypes['detachAdLabel'][0])
+    {
+        return $this->detachAdLabelAsyncWithHttpInfo($label_id, $google_ad_label_assignments, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation detachAdLabelAsyncWithHttpInfo
+     *
+     * Detach a Google Ads label
+     *
+     * @param  string $label_id Google label id (required)
+     * @param  \Zernio\Model\GoogleAdLabelAssignments $google_ad_label_assignments (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachAdLabel'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function detachAdLabelAsyncWithHttpInfo($label_id, $google_ad_label_assignments, string $contentType = self::contentTypes['detachAdLabel'][0])
+    {
+        $returnType = '\Zernio\Model\DetachAdLabel200Response';
+        $request = $this->detachAdLabelRequest($label_id, $google_ad_label_assignments, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'detachAdLabel'
+     *
+     * @param  string $label_id Google label id (required)
+     * @param  \Zernio\Model\GoogleAdLabelAssignments $google_ad_label_assignments (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachAdLabel'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function detachAdLabelRequest($label_id, $google_ad_label_assignments, string $contentType = self::contentTypes['detachAdLabel'][0])
+    {
+
+        // verify the required parameter 'label_id' is set
+        if ($label_id === null || (is_array($label_id) && count($label_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $label_id when calling detachAdLabel'
+            );
+        }
+        if (!preg_match("/^\\d+$/", $label_id)) {
+            throw new \InvalidArgumentException("invalid value for \"label_id\" when calling AdAccountsApi.detachAdLabel, must conform to the pattern /^\\d+$/.");
+        }
+        
+        // verify the required parameter 'google_ad_label_assignments' is set
+        if ($google_ad_label_assignments === null || (is_array($google_ad_label_assignments) && count($google_ad_label_assignments) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $google_ad_label_assignments when calling detachAdLabel'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/labels/{labelId}/assignments';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($label_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'labelId' . '}',
+                ObjectSerializer::toPathValue($label_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($google_ad_label_assignments)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($google_ad_label_assignments));
+            } else {
+                $httpBody = $google_ad_label_assignments;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -8734,42 +9748,44 @@ class AdAccountsApi
     /**
      * Operation listAdLabels
      *
-     * Ad labels
+     * List ad labels
      *
-     * @param  string $account_id Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. (required)
-     * @param  string $ad_account_id Meta ad account id (act_&lt;n&gt;). (required)
-     * @param  int|null $limit Rows per page (optional, default to 25)
-     * @param  string|null $after Cursor from paging.after of the previous page. (optional)
+     * @param  string $account_id Zernio SocialAccount id. For Meta, the posting or ads variant used to resolve the token. (required)
+     * @param  string|null $ad_account_id Meta ad account id (act_&lt;n&gt;), or the Google Ads customer id (digits only). (optional)
+     * @param  string|null $customer_id Google only. Alias of adAccountId, kept for existing callers. (optional) (deprecated)
+     * @param  int|null $limit Meta only. Rows per page. (optional, default to 25)
+     * @param  string|null $after Meta only. Cursor from paging.after of the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdLabels'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\ListAdLabels200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
+     * @return \Zernio\Model\ListAdLabels200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
-    public function listAdLabels($account_id, $ad_account_id, $limit = 25, $after = null, string $contentType = self::contentTypes['listAdLabels'][0])
+    public function listAdLabels($account_id, $ad_account_id = null, $customer_id = null, $limit = 25, $after = null, string $contentType = self::contentTypes['listAdLabels'][0])
     {
-        list($response) = $this->listAdLabelsWithHttpInfo($account_id, $ad_account_id, $limit, $after, $contentType);
+        list($response) = $this->listAdLabelsWithHttpInfo($account_id, $ad_account_id, $customer_id, $limit, $after, $contentType);
         return $response;
     }
 
     /**
      * Operation listAdLabelsWithHttpInfo
      *
-     * Ad labels
+     * List ad labels
      *
-     * @param  string $account_id Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. (required)
-     * @param  string $ad_account_id Meta ad account id (act_&lt;n&gt;). (required)
-     * @param  int|null $limit Rows per page (optional, default to 25)
-     * @param  string|null $after Cursor from paging.after of the previous page. (optional)
+     * @param  string $account_id Zernio SocialAccount id. For Meta, the posting or ads variant used to resolve the token. (required)
+     * @param  string|null $ad_account_id Meta ad account id (act_&lt;n&gt;), or the Google Ads customer id (digits only). (optional)
+     * @param  string|null $customer_id Google only. Alias of adAccountId, kept for existing callers. (optional) (deprecated)
+     * @param  int|null $limit Meta only. Rows per page. (optional, default to 25)
+     * @param  string|null $after Meta only. Cursor from paging.after of the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdLabels'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\ListAdLabels200Response|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListAdLabels200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAdLabelsWithHttpInfo($account_id, $ad_account_id, $limit = 25, $after = null, string $contentType = self::contentTypes['listAdLabels'][0])
+    public function listAdLabelsWithHttpInfo($account_id, $ad_account_id = null, $customer_id = null, $limit = 25, $after = null, string $contentType = self::contentTypes['listAdLabels'][0])
     {
-        $request = $this->listAdLabelsRequest($account_id, $ad_account_id, $limit, $after, $contentType);
+        $request = $this->listAdLabelsRequest($account_id, $ad_account_id, $customer_id, $limit, $after, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8798,6 +9814,12 @@ class AdAccountsApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\ListAdLabels200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -8851,6 +9873,14 @@ class AdAccountsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -8885,20 +9915,21 @@ class AdAccountsApi
     /**
      * Operation listAdLabelsAsync
      *
-     * Ad labels
+     * List ad labels
      *
-     * @param  string $account_id Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. (required)
-     * @param  string $ad_account_id Meta ad account id (act_&lt;n&gt;). (required)
-     * @param  int|null $limit Rows per page (optional, default to 25)
-     * @param  string|null $after Cursor from paging.after of the previous page. (optional)
+     * @param  string $account_id Zernio SocialAccount id. For Meta, the posting or ads variant used to resolve the token. (required)
+     * @param  string|null $ad_account_id Meta ad account id (act_&lt;n&gt;), or the Google Ads customer id (digits only). (optional)
+     * @param  string|null $customer_id Google only. Alias of adAccountId, kept for existing callers. (optional) (deprecated)
+     * @param  int|null $limit Meta only. Rows per page. (optional, default to 25)
+     * @param  string|null $after Meta only. Cursor from paging.after of the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdLabels'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdLabelsAsync($account_id, $ad_account_id, $limit = 25, $after = null, string $contentType = self::contentTypes['listAdLabels'][0])
+    public function listAdLabelsAsync($account_id, $ad_account_id = null, $customer_id = null, $limit = 25, $after = null, string $contentType = self::contentTypes['listAdLabels'][0])
     {
-        return $this->listAdLabelsAsyncWithHttpInfo($account_id, $ad_account_id, $limit, $after, $contentType)
+        return $this->listAdLabelsAsyncWithHttpInfo($account_id, $ad_account_id, $customer_id, $limit, $after, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8909,21 +9940,22 @@ class AdAccountsApi
     /**
      * Operation listAdLabelsAsyncWithHttpInfo
      *
-     * Ad labels
+     * List ad labels
      *
-     * @param  string $account_id Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. (required)
-     * @param  string $ad_account_id Meta ad account id (act_&lt;n&gt;). (required)
-     * @param  int|null $limit Rows per page (optional, default to 25)
-     * @param  string|null $after Cursor from paging.after of the previous page. (optional)
+     * @param  string $account_id Zernio SocialAccount id. For Meta, the posting or ads variant used to resolve the token. (required)
+     * @param  string|null $ad_account_id Meta ad account id (act_&lt;n&gt;), or the Google Ads customer id (digits only). (optional)
+     * @param  string|null $customer_id Google only. Alias of adAccountId, kept for existing callers. (optional) (deprecated)
+     * @param  int|null $limit Meta only. Rows per page. (optional, default to 25)
+     * @param  string|null $after Meta only. Cursor from paging.after of the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdLabels'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdLabelsAsyncWithHttpInfo($account_id, $ad_account_id, $limit = 25, $after = null, string $contentType = self::contentTypes['listAdLabels'][0])
+    public function listAdLabelsAsyncWithHttpInfo($account_id, $ad_account_id = null, $customer_id = null, $limit = 25, $after = null, string $contentType = self::contentTypes['listAdLabels'][0])
     {
         $returnType = '\Zernio\Model\ListAdLabels200Response';
-        $request = $this->listAdLabelsRequest($account_id, $ad_account_id, $limit, $after, $contentType);
+        $request = $this->listAdLabelsRequest($account_id, $ad_account_id, $customer_id, $limit, $after, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8964,16 +9996,17 @@ class AdAccountsApi
     /**
      * Create request for operation 'listAdLabels'
      *
-     * @param  string $account_id Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. (required)
-     * @param  string $ad_account_id Meta ad account id (act_&lt;n&gt;). (required)
-     * @param  int|null $limit Rows per page (optional, default to 25)
-     * @param  string|null $after Cursor from paging.after of the previous page. (optional)
+     * @param  string $account_id Zernio SocialAccount id. For Meta, the posting or ads variant used to resolve the token. (required)
+     * @param  string|null $ad_account_id Meta ad account id (act_&lt;n&gt;), or the Google Ads customer id (digits only). (optional)
+     * @param  string|null $customer_id Google only. Alias of adAccountId, kept for existing callers. (optional) (deprecated)
+     * @param  int|null $limit Meta only. Rows per page. (optional, default to 25)
+     * @param  string|null $after Meta only. Cursor from paging.after of the previous page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdLabels'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAdLabelsRequest($account_id, $ad_account_id, $limit = 25, $after = null, string $contentType = self::contentTypes['listAdLabels'][0])
+    public function listAdLabelsRequest($account_id, $ad_account_id = null, $customer_id = null, $limit = 25, $after = null, string $contentType = self::contentTypes['listAdLabels'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -8983,13 +10016,14 @@ class AdAccountsApi
             );
         }
 
-        // verify the required parameter 'ad_account_id' is set
-        if ($ad_account_id === null || (is_array($ad_account_id) && count($ad_account_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $ad_account_id when calling listAdLabels'
-            );
+        if ($ad_account_id !== null && !preg_match("/^(act_)?\\d+$/", $ad_account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"ad_account_id\" when calling AdAccountsApi.listAdLabels, must conform to the pattern /^(act_)?\\d+$/.");
         }
-
+        
+        if ($customer_id !== null && !preg_match("/^\\d+$/", $customer_id)) {
+            throw new \InvalidArgumentException("invalid value for \"customer_id\" when calling AdAccountsApi.listAdLabels, must conform to the pattern /^\\d+$/.");
+        }
+        
         if ($limit !== null && $limit > 100) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling AdAccountsApi.listAdLabels, must be smaller than or equal to 100.');
         }
@@ -9022,7 +10056,16 @@ class AdAccountsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $customer_id,
+            'customerId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -14090,6 +15133,380 @@ class AdAccountsApi
     }
 
     /**
+     * Operation removeAdLabel
+     *
+     * Remove a Google Ads label
+     *
+     * @param  string $label_id Google label id (required)
+     * @param  string $account_id Zernio SocialAccount id (Google Ads) (required)
+     * @param  string|null $ad_account_id Google customer id. Required when the connection has multiple customers. (optional)
+     * @param  string|null $customer_id Alias of adAccountId (optional) (deprecated)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAdLabel'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\RemoveAdLabel200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
+     */
+    public function removeAdLabel($label_id, $account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['removeAdLabel'][0])
+    {
+        list($response) = $this->removeAdLabelWithHttpInfo($label_id, $account_id, $ad_account_id, $customer_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation removeAdLabelWithHttpInfo
+     *
+     * Remove a Google Ads label
+     *
+     * @param  string $label_id Google label id (required)
+     * @param  string $account_id Zernio SocialAccount id (Google Ads) (required)
+     * @param  string|null $ad_account_id Google customer id. Required when the connection has multiple customers. (optional)
+     * @param  string|null $customer_id Alias of adAccountId (optional) (deprecated)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAdLabel'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\RemoveAdLabel200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function removeAdLabelWithHttpInfo($label_id, $account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['removeAdLabel'][0])
+    {
+        $request = $this->removeAdLabelRequest($label_id, $account_id, $ad_account_id, $customer_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\RemoveAdLabel200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\RemoveAdLabel200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\RemoveAdLabel200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation removeAdLabelAsync
+     *
+     * Remove a Google Ads label
+     *
+     * @param  string $label_id Google label id (required)
+     * @param  string $account_id Zernio SocialAccount id (Google Ads) (required)
+     * @param  string|null $ad_account_id Google customer id. Required when the connection has multiple customers. (optional)
+     * @param  string|null $customer_id Alias of adAccountId (optional) (deprecated)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAdLabel'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeAdLabelAsync($label_id, $account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['removeAdLabel'][0])
+    {
+        return $this->removeAdLabelAsyncWithHttpInfo($label_id, $account_id, $ad_account_id, $customer_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation removeAdLabelAsyncWithHttpInfo
+     *
+     * Remove a Google Ads label
+     *
+     * @param  string $label_id Google label id (required)
+     * @param  string $account_id Zernio SocialAccount id (Google Ads) (required)
+     * @param  string|null $ad_account_id Google customer id. Required when the connection has multiple customers. (optional)
+     * @param  string|null $customer_id Alias of adAccountId (optional) (deprecated)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAdLabel'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeAdLabelAsyncWithHttpInfo($label_id, $account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['removeAdLabel'][0])
+    {
+        $returnType = '\Zernio\Model\RemoveAdLabel200Response';
+        $request = $this->removeAdLabelRequest($label_id, $account_id, $ad_account_id, $customer_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'removeAdLabel'
+     *
+     * @param  string $label_id Google label id (required)
+     * @param  string $account_id Zernio SocialAccount id (Google Ads) (required)
+     * @param  string|null $ad_account_id Google customer id. Required when the connection has multiple customers. (optional)
+     * @param  string|null $customer_id Alias of adAccountId (optional) (deprecated)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAdLabel'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function removeAdLabelRequest($label_id, $account_id, $ad_account_id = null, $customer_id = null, string $contentType = self::contentTypes['removeAdLabel'][0])
+    {
+
+        // verify the required parameter 'label_id' is set
+        if ($label_id === null || (is_array($label_id) && count($label_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $label_id when calling removeAdLabel'
+            );
+        }
+        if (!preg_match("/^\\d+$/", $label_id)) {
+            throw new \InvalidArgumentException("invalid value for \"label_id\" when calling AdAccountsApi.removeAdLabel, must conform to the pattern /^\\d+$/.");
+        }
+        
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling removeAdLabel'
+            );
+        }
+
+        if ($ad_account_id !== null && !preg_match("/^\\d+$/", $ad_account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"ad_account_id\" when calling AdAccountsApi.removeAdLabel, must conform to the pattern /^\\d+$/.");
+        }
+        
+        if ($customer_id !== null && !preg_match("/^\\d+$/", $customer_id)) {
+            throw new \InvalidArgumentException("invalid value for \"customer_id\" when calling AdAccountsApi.removeAdLabel, must conform to the pattern /^\\d+$/.");
+        }
+        
+
+        $resourcePath = '/v1/ads/labels/{labelId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $customer_id,
+            'customerId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($label_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'labelId' . '}',
+                ObjectSerializer::toPathValue($label_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation replaceAdNegativeKeywordListKeywords
      *
      * Replace negative list keywords
@@ -16040,6 +17457,342 @@ class AdAccountsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_ad_account_request));
             } else {
                 $httpBody = $update_ad_account_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateAdLabel
+     *
+     * Update a Google Ads label
+     *
+     * @param  string $label_id Google label id (required)
+     * @param  \Zernio\Model\UpdateAdLabelRequest $update_ad_label_request update_ad_label_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdLabel'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\UpdateAdLabel200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
+     */
+    public function updateAdLabel($label_id, $update_ad_label_request, string $contentType = self::contentTypes['updateAdLabel'][0])
+    {
+        list($response) = $this->updateAdLabelWithHttpInfo($label_id, $update_ad_label_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateAdLabelWithHttpInfo
+     *
+     * Update a Google Ads label
+     *
+     * @param  string $label_id Google label id (required)
+     * @param  \Zernio\Model\UpdateAdLabelRequest $update_ad_label_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdLabel'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\UpdateAdLabel200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateAdLabelWithHttpInfo($label_id, $update_ad_label_request, string $contentType = self::contentTypes['updateAdLabel'][0])
+    {
+        $request = $this->updateAdLabelRequest($label_id, $update_ad_label_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\UpdateAdLabel200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\UpdateAdLabel200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\UpdateAdLabel200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateAdLabelAsync
+     *
+     * Update a Google Ads label
+     *
+     * @param  string $label_id Google label id (required)
+     * @param  \Zernio\Model\UpdateAdLabelRequest $update_ad_label_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdLabel'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAdLabelAsync($label_id, $update_ad_label_request, string $contentType = self::contentTypes['updateAdLabel'][0])
+    {
+        return $this->updateAdLabelAsyncWithHttpInfo($label_id, $update_ad_label_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateAdLabelAsyncWithHttpInfo
+     *
+     * Update a Google Ads label
+     *
+     * @param  string $label_id Google label id (required)
+     * @param  \Zernio\Model\UpdateAdLabelRequest $update_ad_label_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdLabel'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAdLabelAsyncWithHttpInfo($label_id, $update_ad_label_request, string $contentType = self::contentTypes['updateAdLabel'][0])
+    {
+        $returnType = '\Zernio\Model\UpdateAdLabel200Response';
+        $request = $this->updateAdLabelRequest($label_id, $update_ad_label_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateAdLabel'
+     *
+     * @param  string $label_id Google label id (required)
+     * @param  \Zernio\Model\UpdateAdLabelRequest $update_ad_label_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdLabel'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateAdLabelRequest($label_id, $update_ad_label_request, string $contentType = self::contentTypes['updateAdLabel'][0])
+    {
+
+        // verify the required parameter 'label_id' is set
+        if ($label_id === null || (is_array($label_id) && count($label_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $label_id when calling updateAdLabel'
+            );
+        }
+        if (!preg_match("/^\\d+$/", $label_id)) {
+            throw new \InvalidArgumentException("invalid value for \"label_id\" when calling AdAccountsApi.updateAdLabel, must conform to the pattern /^\\d+$/.");
+        }
+        
+        // verify the required parameter 'update_ad_label_request' is set
+        if ($update_ad_label_request === null || (is_array($update_ad_label_request) && count($update_ad_label_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_ad_label_request when calling updateAdLabel'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/labels/{labelId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($label_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'labelId' . '}',
+                ObjectSerializer::toPathValue($label_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_ad_label_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_ad_label_request));
+            } else {
+                $httpBody = $update_ad_label_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
