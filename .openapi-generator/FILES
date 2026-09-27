@@ -1102,6 +1102,8 @@ docs/Model/GoogleCustomerConversionGoalConversionActionsInner.md
 docs/Model/GoogleDemandGenInput.md
 docs/Model/GoogleDemandGenInputAudience.md
 docs/Model/GoogleDemandGenInputAudienceAgeRangesInner.md
+docs/Model/GoogleDemandGenInputCarouselCardsInner.md
+docs/Model/GoogleDemandGenInputCarouselCardsInnerImages.md
 docs/Model/GoogleDemandGenInputImages.md
 docs/Model/GoogleListingGroupDimension.md
 docs/Model/GoogleListingGroupDimensionProductBrand.md
@@ -3455,6 +3457,8 @@ lib/Model/GoogleCustomerConversionGoalConversionActionsInner.php
 lib/Model/GoogleDemandGenInput.php
 lib/Model/GoogleDemandGenInputAudience.php
 lib/Model/GoogleDemandGenInputAudienceAgeRangesInner.php
+lib/Model/GoogleDemandGenInputCarouselCardsInner.php
+lib/Model/GoogleDemandGenInputCarouselCardsInnerImages.php
 lib/Model/GoogleDemandGenInputImages.php
 lib/Model/GoogleListingGroupDimension.php
 lib/Model/GoogleListingGroupDimensionProductBrand.php
@@ -4707,5 +4711,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetAdAccountHierarchy200ResponseDirectCustomersInnerPendingInvitationsInnerTest.php
-test/Model/GetAdAccountHierarchy200ResponseDirectCustomersInnerTest.php
+test/Model/GoogleDemandGenInputCarouselCardsInnerImagesTest.php
+test/Model/GoogleDemandGenInputCarouselCardsInnerTest.php
