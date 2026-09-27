@@ -2325,7 +2325,7 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$keyword_id = 'keyword_id_example'; // string | Zernio keyword ID (not the Google criterion ID)
+$keyword_id = 'keyword_id_example'; // string | Zernio keyword ID (`id`), or Google's native `{adSetId}~{platformCriterionId}` (the tail of `resourceName`, e.g. 1234567890~987654321). A bare criterion id is rejected because it is only unique within its ad group.
 
 try {
     $result = $apiInstance->removeAdKeyword($keyword_id);
@@ -2339,7 +2339,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **keyword_id** | **string**| Zernio keyword ID (not the Google criterion ID) | |
+| **keyword_id** | **string**| Zernio keyword ID (&#x60;id&#x60;), or Google&#39;s native &#x60;{adSetId}~{platformCriterionId}&#x60; (the tail of &#x60;resourceName&#x60;, e.g. 1234567890~987654321). A bare criterion id is rejected because it is only unique within its ad group. | |
 
 ### Return type
 
@@ -2819,7 +2819,7 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$keyword_id = 'keyword_id_example'; // string | Zernio keyword ID (not the Google criterion ID)
+$keyword_id = 'keyword_id_example'; // string | Zernio keyword ID (`id`), or Google's native `{adSetId}~{platformCriterionId}` (the tail of `resourceName`, e.g. 1234567890~987654321). A bare criterion id is rejected because it is only unique within its ad group.
 $update_ad_keyword_request = new \Zernio\Model\UpdateAdKeywordRequest(); // \Zernio\Model\UpdateAdKeywordRequest
 
 try {
@@ -2834,7 +2834,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **keyword_id** | **string**| Zernio keyword ID (not the Google criterion ID) | |
+| **keyword_id** | **string**| Zernio keyword ID (&#x60;id&#x60;), or Google&#39;s native &#x60;{adSetId}~{platformCriterionId}&#x60; (the tail of &#x60;resourceName&#x60;, e.g. 1234567890~987654321). A bare criterion id is rejected because it is only unique within its ad group. | |
 | **update_ad_keyword_request** | [**\Zernio\Model\UpdateAdKeywordRequest**](../Model/UpdateAdKeywordRequest.md)|  | |
 
 ### Return type
