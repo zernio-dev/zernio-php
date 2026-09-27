@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Stable webhook event ID |
+**id** | **string** | Stable webhook event ID: the dedupe key, also sent as the X-Zernio-Event-Id header and identical on every retry and redelivery. It identifies the event only, never an account or other resource. |
 **event** | **string** |  |
 **lead** | [**\Zernio\Model\WebhookPayloadLeadLead**](WebhookPayloadLeadLead.md) |  |
 **account** | [**\Zernio\Model\WebhookPayloadLeadAccount**](WebhookPayloadLeadAccount.md) |  |
