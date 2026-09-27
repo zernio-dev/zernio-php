@@ -706,6 +706,10 @@ docs/Model/GetAccountPosts200ResponsePostsInner.md
 docs/Model/GetAd200Response.md
 docs/Model/GetAdAccountFinance200Response.md
 docs/Model/GetAdAccountFinance200ResponseFundingSource.md
+docs/Model/GetAdAccountHierarchy200Response.md
+docs/Model/GetAdAccountHierarchy200ResponseRootsInner.md
+docs/Model/GetAdAccountHierarchy200ResponseRootsInnerManagerLinksInner.md
+docs/Model/GetAdAccountHierarchy200ResponseUnavailableInner.md
 docs/Model/GetAdAnalytics202Response.md
 docs/Model/GetAdAudience200Response.md
 docs/Model/GetAdCampaignDetails200Response.md
@@ -1071,6 +1075,8 @@ docs/Model/GetYoutubePlaylists200Response.md
 docs/Model/GetYoutubePlaylists200ResponsePlaylistsInner.md
 docs/Model/GoogleAdLabel.md
 docs/Model/GoogleAdLabelAssignments.md
+docs/Model/GoogleAdsHierarchyClient.md
+docs/Model/GoogleAdsManagerLink.md
 docs/Model/GoogleAssetGroupAssetLink.md
 docs/Model/GoogleAssetGroupAssetUnlink.md
 docs/Model/GoogleAssetUpdate.md
@@ -1154,6 +1160,7 @@ docs/Model/InstagramPlatformData.md
 docs/Model/InstagramPlatformDataAudioConfiguration.md
 docs/Model/InstagramPlatformDataTrialParams.md
 docs/Model/InstagramPlatformDataUserTagsInner.md
+docs/Model/InviteAdAccountToManagerRequest.md
 docs/Model/KeywordEntry.md
 docs/Model/LikeInboxComment200Response.md
 docs/Model/LikeInboxCommentRequest.md
@@ -1901,6 +1908,7 @@ docs/Model/UpdateAccountStructuredSnippetsRequestUpdatesInner.md
 docs/Model/UpdateAd200Response.md
 docs/Model/UpdateAdAccount200Response.md
 docs/Model/UpdateAdAccount200ResponseDsaDefaults.md
+docs/Model/UpdateAdAccountManagerLinkRequest.md
 docs/Model/UpdateAdAccountRequest.md
 docs/Model/UpdateAdAudienceRequest.md
 docs/Model/UpdateAdCampaign200Response.md
@@ -3033,6 +3041,10 @@ lib/Model/GetAccountPosts200ResponsePostsInner.php
 lib/Model/GetAd200Response.php
 lib/Model/GetAdAccountFinance200Response.php
 lib/Model/GetAdAccountFinance200ResponseFundingSource.php
+lib/Model/GetAdAccountHierarchy200Response.php
+lib/Model/GetAdAccountHierarchy200ResponseRootsInner.php
+lib/Model/GetAdAccountHierarchy200ResponseRootsInnerManagerLinksInner.php
+lib/Model/GetAdAccountHierarchy200ResponseUnavailableInner.php
 lib/Model/GetAdAnalytics202Response.php
 lib/Model/GetAdAudience200Response.php
 lib/Model/GetAdCampaignDetails200Response.php
@@ -3398,6 +3410,8 @@ lib/Model/GetYoutubePlaylists200Response.php
 lib/Model/GetYoutubePlaylists200ResponsePlaylistsInner.php
 lib/Model/GoogleAdLabel.php
 lib/Model/GoogleAdLabelAssignments.php
+lib/Model/GoogleAdsHierarchyClient.php
+lib/Model/GoogleAdsManagerLink.php
 lib/Model/GoogleAssetGroupAssetLink.php
 lib/Model/GoogleAssetGroupAssetUnlink.php
 lib/Model/GoogleAssetUpdate.php
@@ -3481,6 +3495,7 @@ lib/Model/InstagramPlatformData.php
 lib/Model/InstagramPlatformDataAudioConfiguration.php
 lib/Model/InstagramPlatformDataTrialParams.php
 lib/Model/InstagramPlatformDataUserTagsInner.php
+lib/Model/InviteAdAccountToManagerRequest.php
 lib/Model/KeywordEntry.php
 lib/Model/LikeInboxComment200Response.php
 lib/Model/LikeInboxCommentRequest.php
@@ -4229,6 +4244,7 @@ lib/Model/UpdateAccountStructuredSnippetsRequestUpdatesInner.php
 lib/Model/UpdateAd200Response.php
 lib/Model/UpdateAdAccount200Response.php
 lib/Model/UpdateAdAccount200ResponseDsaDefaults.php
+lib/Model/UpdateAdAccountManagerLinkRequest.php
 lib/Model/UpdateAdAccountRequest.php
 lib/Model/UpdateAdAudienceRequest.php
 lib/Model/UpdateAdCampaign200Response.php
@@ -4655,12 +4671,11 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ApplyGoogleRecommendations200ResponseTest.php
-test/Model/ApplyGoogleRecommendationsRequestRecommendationsInnerTest.php
-test/Model/ApplyGoogleRecommendationsRequestTest.php
-test/Model/DismissGoogleRecommendationsRequestTest.php
-test/Model/GoogleRecommendationImpactTest.php
-test/Model/GoogleRecommendationMetricsTest.php
-test/Model/GoogleRecommendationResultTest.php
-test/Model/GoogleRecommendationTest.php
-test/Model/ListGoogleRecommendations200ResponseTest.php
+test/Model/GetAdAccountHierarchy200ResponseRootsInnerManagerLinksInnerTest.php
+test/Model/GetAdAccountHierarchy200ResponseRootsInnerTest.php
+test/Model/GetAdAccountHierarchy200ResponseTest.php
+test/Model/GetAdAccountHierarchy200ResponseUnavailableInnerTest.php
+test/Model/GoogleAdsHierarchyClientTest.php
+test/Model/GoogleAdsManagerLinkTest.php
+test/Model/InviteAdAccountToManagerRequestTest.php
+test/Model/UpdateAdAccountManagerLinkRequestTest.php

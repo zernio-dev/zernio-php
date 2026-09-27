@@ -21,6 +21,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**deleteValueRuleSet()**](AdAccountsApi.md#deleteValueRuleSet) | **DELETE** /v1/ads/value-rule-sets/{valueRuleSetId} | Delete a value rule set |
 | [**detachAdLabel()**](AdAccountsApi.md#detachAdLabel) | **DELETE** /v1/ads/labels/{labelId}/assignments | Detach a Google Ads label |
 | [**getAdAccountFinance()**](AdAccountsApi.md#getAdAccountFinance) | **GET** /v1/ads/accounts/finance | Ad account finances |
+| [**getAdAccountHierarchy()**](AdAccountsApi.md#getAdAccountHierarchy) | **GET** /v1/ads/accounts/hierarchy | Get manager account hierarchy |
 | [**getAdComments()**](AdAccountsApi.md#getAdComments) | **GET** /v1/ads/{adId}/comments | List comments on an ad |
 | [**getAdNegativeKeywordList()**](AdAccountsApi.md#getAdNegativeKeywordList) | **GET** /v1/ads/accounts/negative-keyword-lists/{listId} | Get a negative keyword list |
 | [**getAdsActivityLog()**](AdAccountsApi.md#getAdsActivityLog) | **GET** /v1/ads/activity | Ad account change / audit log |
@@ -29,6 +30,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getIosFourteenCampaignLimits()**](AdAccountsApi.md#getIosFourteenCampaignLimits) | **GET** /v1/ads/ios-fourteen-campaign-limits | Get iOS 14 campaign limits |
 | [**getValueRuleSet()**](AdAccountsApi.md#getValueRuleSet) | **GET** /v1/ads/value-rule-sets/{valueRuleSetId} | Read a value rule set |
 | [**hideAdComment()**](AdAccountsApi.md#hideAdComment) | **POST** /v1/ads/{adId}/comments/{commentId}/hide | Hide or unhide an ad comment |
+| [**inviteAdAccountToManager()**](AdAccountsApi.md#inviteAdAccountToManager) | **POST** /v1/ads/accounts/manager-links | Invite a client account to a manager |
 | [**listAccountCallouts()**](AdAccountsApi.md#listAccountCallouts) | **GET** /v1/ads/accounts/callouts | List account callouts |
 | [**listAccountSitelinks()**](AdAccountsApi.md#listAccountSitelinks) | **GET** /v1/ads/accounts/sitelinks | List account sitelinks |
 | [**listAccountStructuredSnippets()**](AdAccountsApi.md#listAccountStructuredSnippets) | **GET** /v1/ads/accounts/structured-snippets | List account snippets |
@@ -55,6 +57,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**updateAccountSitelinks()**](AdAccountsApi.md#updateAccountSitelinks) | **PUT** /v1/ads/accounts/sitelinks | Update account sitelinks |
 | [**updateAccountStructuredSnippets()**](AdAccountsApi.md#updateAccountStructuredSnippets) | **PUT** /v1/ads/accounts/structured-snippets | Update account snippets |
 | [**updateAdAccount()**](AdAccountsApi.md#updateAdAccount) | **PATCH** /v1/ads/accounts | Update ad account settings |
+| [**updateAdAccountManagerLink()**](AdAccountsApi.md#updateAdAccountManagerLink) | **PATCH** /v1/ads/accounts/manager-links | Accept, decline, cancel or end a manager link |
 | [**updateAdLabel()**](AdAccountsApi.md#updateAdLabel) | **PATCH** /v1/ads/labels/{labelId} | Update a Google Ads label |
 | [**updateAdNegativeKeywordList()**](AdAccountsApi.md#updateAdNegativeKeywordList) | **PUT** /v1/ads/accounts/negative-keyword-lists/{listId} | Rename a negative keyword list |
 | [**updateValueRuleSet()**](AdAccountsApi.md#updateValueRuleSet) | **PUT** /v1/ads/value-rule-sets/{valueRuleSetId} | Replace a value rule set |
@@ -984,6 +987,70 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getAdAccountHierarchy()`
+
+```php
+getAdAccountHierarchy($account_id, $ad_account_id, $customer_id): \Zernio\Model\GetAdAccountHierarchy200Response
+```
+
+Get manager account hierarchy
+
+Live manager (MCC) and client tree for a Google Ads connection. Starts from every customer the Google user behind the connection can access directly and walks each tree to any depth with `customer_client`, then reads each manager's own client links so every client carries its direct parent, the `managerLinkId` and the link status. Invitations a manager sent that the client has not accepted yet appear as clients with `linkStatus: PENDING` (Google returns no name or currency for them). Refused, canceled and ended links are history and are omitted. `managerLinks` on a root lists the managers linked to that account, including invitations it can still accept with PATCH /v1/ads/accounts/manager-links. A directly accessible account that is also nested in another tree appears only once, inside that tree. Customers Google refuses to read (for example a cancelled account) are listed in `unavailable` with Google's reason instead of failing the call. Up to 50 roots and 50 managers per root are read; `truncated` is true when more exist. Cached for 10 minutes per connection; the response carries `cachedAt` and `stale`. When the connection is scoped to specific ad accounts, client accounts outside that scope are hidden (managers stay visible).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Google ads SocialAccount id.
+$ad_account_id = 'ad_account_id_example'; // string | Only return the tree rooted at this customer id (digits only). It must be an account the Google user accesses directly. Omit to list every tree.
+$customer_id = 'customer_id_example'; // string | Alias of adAccountId, kept for consistency with the other Google Ads account endpoints.
+
+try {
+    $result = $apiInstance->getAdAccountHierarchy($account_id, $ad_account_id, $customer_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->getAdAccountHierarchy: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Google ads SocialAccount id. | |
+| **ad_account_id** | **string**| Only return the tree rooted at this customer id (digits only). It must be an account the Google user accesses directly. Omit to list every tree. | [optional] |
+| **customer_id** | **string**| Alias of adAccountId, kept for consistency with the other Google Ads account endpoints. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetAdAccountHierarchy200Response**](../Model/GetAdAccountHierarchy200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getAdComments()`
 
 ```php
@@ -1498,6 +1565,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\HideAdComment200Response**](../Model/HideAdComment200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `inviteAdAccountToManager()`
+
+```php
+inviteAdAccountToManager($invite_ad_account_to_manager_request): \Zernio\Model\GoogleAdsManagerLink
+```
+
+Invite a client account to a manager
+
+Sends a manager-to-client link invitation from `managerCustomerId` to `clientCustomerId` (Google's CustomerClientLinkService). The manager must be one the connection's Google user reaches, directly or under another manager (see GET /v1/ads/accounts/hierarchy); the client can be any Google Ads account. The link stays `PENDING` until someone with access to the client accepts it in Google Ads or through PATCH on this path. Not idempotent: Google refuses a second invitation while one is pending. Send `validateOnly: true` to have Google check the request without sending anything.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$invite_ad_account_to_manager_request = new \Zernio\Model\InviteAdAccountToManagerRequest(); // \Zernio\Model\InviteAdAccountToManagerRequest
+
+try {
+    $result = $apiInstance->inviteAdAccountToManager($invite_ad_account_to_manager_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->inviteAdAccountToManager: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **invite_ad_account_to_manager_request** | [**\Zernio\Model\InviteAdAccountToManagerRequest**](../Model/InviteAdAccountToManagerRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\GoogleAdsManagerLink**](../Model/GoogleAdsManagerLink.md)
 
 ### Authorization
 
@@ -3150,6 +3277,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\UpdateAdAccount200Response**](../Model/UpdateAdAccount200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateAdAccountManagerLink()`
+
+```php
+updateAdAccountManagerLink($update_ad_account_manager_link_request): \Zernio\Model\GoogleAdsManagerLink
+```
+
+Accept, decline, cancel or end a manager link
+
+Changes one manager-client link, identified by `managerCustomerId`, `clientCustomerId` and `managerLinkId` (all from GET /v1/ads/accounts/hierarchy). `accept` and `decline` answer a pending invitation as the client (CustomerManagerLinkService), so the connection's Google user needs direct access to the client account; access through a manager is not enough, because the link does not exist yet. `cancel` withdraws a pending invitation and `unlink` ends an active link, both as the manager (CustomerClientLinkService). Send `validateOnly: true` to have Google check the change without applying it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$update_ad_account_manager_link_request = new \Zernio\Model\UpdateAdAccountManagerLinkRequest(); // \Zernio\Model\UpdateAdAccountManagerLinkRequest
+
+try {
+    $result = $apiInstance->updateAdAccountManagerLink($update_ad_account_manager_link_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->updateAdAccountManagerLink: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **update_ad_account_manager_link_request** | [**\Zernio\Model\UpdateAdAccountManagerLinkRequest**](../Model/UpdateAdAccountManagerLinkRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\GoogleAdsManagerLink**](../Model/GoogleAdsManagerLink.md)
 
 ### Authorization
 

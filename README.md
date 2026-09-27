@@ -119,6 +119,7 @@ Class | Method | HTTP request | Description
 *AdAccountsApi* | [**deleteValueRuleSet**](docs/Api/AdAccountsApi.md#deletevalueruleset) | **DELETE** /v1/ads/value-rule-sets/{valueRuleSetId} | Delete a value rule set
 *AdAccountsApi* | [**detachAdLabel**](docs/Api/AdAccountsApi.md#detachadlabel) | **DELETE** /v1/ads/labels/{labelId}/assignments | Detach a Google Ads label
 *AdAccountsApi* | [**getAdAccountFinance**](docs/Api/AdAccountsApi.md#getadaccountfinance) | **GET** /v1/ads/accounts/finance | Ad account finances
+*AdAccountsApi* | [**getAdAccountHierarchy**](docs/Api/AdAccountsApi.md#getadaccounthierarchy) | **GET** /v1/ads/accounts/hierarchy | Get manager account hierarchy
 *AdAccountsApi* | [**getAdComments**](docs/Api/AdAccountsApi.md#getadcomments) | **GET** /v1/ads/{adId}/comments | List comments on an ad
 *AdAccountsApi* | [**getAdNegativeKeywordList**](docs/Api/AdAccountsApi.md#getadnegativekeywordlist) | **GET** /v1/ads/accounts/negative-keyword-lists/{listId} | Get a negative keyword list
 *AdAccountsApi* | [**getAdsActivityLog**](docs/Api/AdAccountsApi.md#getadsactivitylog) | **GET** /v1/ads/activity | Ad account change / audit log
@@ -127,6 +128,7 @@ Class | Method | HTTP request | Description
 *AdAccountsApi* | [**getIosFourteenCampaignLimits**](docs/Api/AdAccountsApi.md#getiosfourteencampaignlimits) | **GET** /v1/ads/ios-fourteen-campaign-limits | Get iOS 14 campaign limits
 *AdAccountsApi* | [**getValueRuleSet**](docs/Api/AdAccountsApi.md#getvalueruleset) | **GET** /v1/ads/value-rule-sets/{valueRuleSetId} | Read a value rule set
 *AdAccountsApi* | [**hideAdComment**](docs/Api/AdAccountsApi.md#hideadcomment) | **POST** /v1/ads/{adId}/comments/{commentId}/hide | Hide or unhide an ad comment
+*AdAccountsApi* | [**inviteAdAccountToManager**](docs/Api/AdAccountsApi.md#inviteadaccounttomanager) | **POST** /v1/ads/accounts/manager-links | Invite a client account to a manager
 *AdAccountsApi* | [**listAccountCallouts**](docs/Api/AdAccountsApi.md#listaccountcallouts) | **GET** /v1/ads/accounts/callouts | List account callouts
 *AdAccountsApi* | [**listAccountSitelinks**](docs/Api/AdAccountsApi.md#listaccountsitelinks) | **GET** /v1/ads/accounts/sitelinks | List account sitelinks
 *AdAccountsApi* | [**listAccountStructuredSnippets**](docs/Api/AdAccountsApi.md#listaccountstructuredsnippets) | **GET** /v1/ads/accounts/structured-snippets | List account snippets
@@ -153,6 +155,7 @@ Class | Method | HTTP request | Description
 *AdAccountsApi* | [**updateAccountSitelinks**](docs/Api/AdAccountsApi.md#updateaccountsitelinks) | **PUT** /v1/ads/accounts/sitelinks | Update account sitelinks
 *AdAccountsApi* | [**updateAccountStructuredSnippets**](docs/Api/AdAccountsApi.md#updateaccountstructuredsnippets) | **PUT** /v1/ads/accounts/structured-snippets | Update account snippets
 *AdAccountsApi* | [**updateAdAccount**](docs/Api/AdAccountsApi.md#updateadaccount) | **PATCH** /v1/ads/accounts | Update ad account settings
+*AdAccountsApi* | [**updateAdAccountManagerLink**](docs/Api/AdAccountsApi.md#updateadaccountmanagerlink) | **PATCH** /v1/ads/accounts/manager-links | Accept, decline, cancel or end a manager link
 *AdAccountsApi* | [**updateAdLabel**](docs/Api/AdAccountsApi.md#updateadlabel) | **PATCH** /v1/ads/labels/{labelId} | Update a Google Ads label
 *AdAccountsApi* | [**updateAdNegativeKeywordList**](docs/Api/AdAccountsApi.md#updateadnegativekeywordlist) | **PUT** /v1/ads/accounts/negative-keyword-lists/{listId} | Rename a negative keyword list
 *AdAccountsApi* | [**updateValueRuleSet**](docs/Api/AdAccountsApi.md#updatevalueruleset) | **PUT** /v1/ads/value-rule-sets/{valueRuleSetId} | Replace a value rule set
@@ -1497,6 +1500,10 @@ Class | Method | HTTP request | Description
 - [GetAd200Response](docs/Model/GetAd200Response.md)
 - [GetAdAccountFinance200Response](docs/Model/GetAdAccountFinance200Response.md)
 - [GetAdAccountFinance200ResponseFundingSource](docs/Model/GetAdAccountFinance200ResponseFundingSource.md)
+- [GetAdAccountHierarchy200Response](docs/Model/GetAdAccountHierarchy200Response.md)
+- [GetAdAccountHierarchy200ResponseRootsInner](docs/Model/GetAdAccountHierarchy200ResponseRootsInner.md)
+- [GetAdAccountHierarchy200ResponseRootsInnerManagerLinksInner](docs/Model/GetAdAccountHierarchy200ResponseRootsInnerManagerLinksInner.md)
+- [GetAdAccountHierarchy200ResponseUnavailableInner](docs/Model/GetAdAccountHierarchy200ResponseUnavailableInner.md)
 - [GetAdAnalytics202Response](docs/Model/GetAdAnalytics202Response.md)
 - [GetAdAudience200Response](docs/Model/GetAdAudience200Response.md)
 - [GetAdCampaignDetails200Response](docs/Model/GetAdCampaignDetails200Response.md)
@@ -1862,6 +1869,8 @@ Class | Method | HTTP request | Description
 - [GetYoutubePlaylists200ResponsePlaylistsInner](docs/Model/GetYoutubePlaylists200ResponsePlaylistsInner.md)
 - [GoogleAdLabel](docs/Model/GoogleAdLabel.md)
 - [GoogleAdLabelAssignments](docs/Model/GoogleAdLabelAssignments.md)
+- [GoogleAdsHierarchyClient](docs/Model/GoogleAdsHierarchyClient.md)
+- [GoogleAdsManagerLink](docs/Model/GoogleAdsManagerLink.md)
 - [GoogleAssetGroupAssetLink](docs/Model/GoogleAssetGroupAssetLink.md)
 - [GoogleAssetGroupAssetUnlink](docs/Model/GoogleAssetGroupAssetUnlink.md)
 - [GoogleAssetUpdate](docs/Model/GoogleAssetUpdate.md)
@@ -1945,6 +1954,7 @@ Class | Method | HTTP request | Description
 - [InstagramPlatformDataAudioConfiguration](docs/Model/InstagramPlatformDataAudioConfiguration.md)
 - [InstagramPlatformDataTrialParams](docs/Model/InstagramPlatformDataTrialParams.md)
 - [InstagramPlatformDataUserTagsInner](docs/Model/InstagramPlatformDataUserTagsInner.md)
+- [InviteAdAccountToManagerRequest](docs/Model/InviteAdAccountToManagerRequest.md)
 - [KeywordEntry](docs/Model/KeywordEntry.md)
 - [LikeInboxComment200Response](docs/Model/LikeInboxComment200Response.md)
 - [LikeInboxCommentRequest](docs/Model/LikeInboxCommentRequest.md)
@@ -2692,6 +2702,7 @@ Class | Method | HTTP request | Description
 - [UpdateAd200Response](docs/Model/UpdateAd200Response.md)
 - [UpdateAdAccount200Response](docs/Model/UpdateAdAccount200Response.md)
 - [UpdateAdAccount200ResponseDsaDefaults](docs/Model/UpdateAdAccount200ResponseDsaDefaults.md)
+- [UpdateAdAccountManagerLinkRequest](docs/Model/UpdateAdAccountManagerLinkRequest.md)
 - [UpdateAdAccountRequest](docs/Model/UpdateAdAccountRequest.md)
 - [UpdateAdAudienceRequest](docs/Model/UpdateAdAudienceRequest.md)
 - [UpdateAdCampaign200Response](docs/Model/UpdateAdCampaign200Response.md)
@@ -3148,6 +3159,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.108.0`
+- API version: `1.109.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
