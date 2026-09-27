@@ -7,6 +7,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**addAdKeywords()**](AdCampaignsApi.md#addAdKeywords) | **POST** /v1/ads/keywords | Add Search ad-group keywords |
+| [**applyGoogleRecommendations()**](AdCampaignsApi.md#applyGoogleRecommendations) | **POST** /v1/ads/recommendations/apply | Apply Google Ads recommendations |
 | [**attachAdGroupAssets()**](AdCampaignsApi.md#attachAdGroupAssets) | **POST** /v1/ads/ad-sets/{adSetId}/assets | Attach ad-group assets |
 | [**attachCampaignAssets()**](AdCampaignsApi.md#attachCampaignAssets) | **POST** /v1/ads/campaigns/{campaignId}/assets | Attach campaign assets |
 | [**boostPost()**](AdCampaignsApi.md#boostPost) | **POST** /v1/ads/boost | Boost post as ad |
@@ -19,6 +20,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**deleteAd()**](AdCampaignsApi.md#deleteAd) | **DELETE** /v1/ads/{adId} | Cancel an ad |
 | [**deleteAdCampaign()**](AdCampaignsApi.md#deleteAdCampaign) | **DELETE** /v1/ads/campaigns/{campaignId} | Delete a campaign |
 | [**deleteAdSet()**](AdCampaignsApi.md#deleteAdSet) | **DELETE** /v1/ads/ad-sets/{adSetId} | Delete an ad set |
+| [**dismissGoogleRecommendations()**](AdCampaignsApi.md#dismissGoogleRecommendations) | **POST** /v1/ads/recommendations/dismiss | Dismiss Google Ads recommendations |
 | [**duplicateAd()**](AdCampaignsApi.md#duplicateAd) | **POST** /v1/ads/{adId}/duplicate | Duplicate an ad |
 | [**duplicateAdCampaign()**](AdCampaignsApi.md#duplicateAdCampaign) | **POST** /v1/ads/campaigns/{campaignId}/duplicate | Duplicate a campaign |
 | [**duplicateAdSet()**](AdCampaignsApi.md#duplicateAdSet) | **POST** /v1/ads/ad-sets/{adSetId}/duplicate | Duplicate an ad set |
@@ -42,6 +44,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listCampaignNegativeKeywordLists()**](AdCampaignsApi.md#listCampaignNegativeKeywordLists) | **GET** /v1/ads/campaigns/{campaignId}/negative-keyword-lists | List campaign negative lists |
 | [**listCampaignNegativeKeywords()**](AdCampaignsApi.md#listCampaignNegativeKeywords) | **GET** /v1/ads/campaigns/{campaignId}/negative-keywords | List campaign-level negative keywords |
 | [**listGoogleAssetGroups()**](AdCampaignsApi.md#listGoogleAssetGroups) | **GET** /v1/ads/campaigns/{campaignId}/asset-groups | List Performance Max asset groups |
+| [**listGoogleRecommendations()**](AdCampaignsApi.md#listGoogleRecommendations) | **GET** /v1/ads/recommendations | List Google Ads recommendations |
 | [**removeAdGroupAssets()**](AdCampaignsApi.md#removeAdGroupAssets) | **DELETE** /v1/ads/ad-sets/{adSetId}/assets | Remove ad-group assets |
 | [**removeAdKeyword()**](AdCampaignsApi.md#removeAdKeyword) | **DELETE** /v1/ads/keywords/{keywordId} | Remove a Search keyword |
 | [**removeCampaignAssets()**](AdCampaignsApi.md#removeCampaignAssets) | **DELETE** /v1/ads/campaigns/{campaignId}/assets | Remove campaign assets |
@@ -110,6 +113,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\AddAdKeywords201Response**](../Model/AddAdKeywords201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `applyGoogleRecommendations()`
+
+```php
+applyGoogleRecommendations($apply_google_recommendations_request): \Zernio\Model\ApplyGoogleRecommendations200Response
+```
+
+Apply Google Ads recommendations
+
+Apply up to 100 recommendations. This changes the account (budgets, bidding, keywords, assets) and is not reversible or idempotent; Google offers no validate-only mode for it. Items run in partial-failure mode, so one stale recommendation does not block the rest. `parameters` is optional and takes exactly one key named for the recommendation type, in Google's ApplyRecommendationOperation shape (for example `campaignBudget: { newBudgetAmountMicros }` or `keyword: { matchType, cpcBidMicros }`); omit it to apply Google's suggested values.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$apply_google_recommendations_request = {"accountId":"507f1f77bcf86cd799439011","adAccountId":"9122445560","recommendations":[{"resourceName":"customers/9122445560/recommendations/NjgzMzAxODc4NS0yNDEtMTc5MDQ3NTQyNjU5Ni0rMjM1MjA5NjcxNjctMA"},{"resourceName":"customers/9122445560/recommendations/NjgzMzAxODc4NS0yMjgtMTc5MDQyNDE5NjUwNS0rMTU3NjMyNzU3ODk","parameters":{"campaignBudget":{"newBudgetAmountMicros":"150000000"}}}]}; // \Zernio\Model\ApplyGoogleRecommendationsRequest
+
+try {
+    $result = $apiInstance->applyGoogleRecommendations($apply_google_recommendations_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->applyGoogleRecommendations: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **apply_google_recommendations_request** | [**\Zernio\Model\ApplyGoogleRecommendationsRequest**](../Model/ApplyGoogleRecommendationsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ApplyGoogleRecommendations200Response**](../Model/ApplyGoogleRecommendations200Response.md)
 
 ### Authorization
 
@@ -854,6 +917,66 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `dismissGoogleRecommendations()`
+
+```php
+dismissGoogleRecommendations($dismiss_google_recommendations_request): \Zernio\Model\ApplyGoogleRecommendations200Response
+```
+
+Dismiss Google Ads recommendations
+
+Dismiss up to 100 recommendations so Google stops suggesting them. Items run in partial-failure mode.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$dismiss_google_recommendations_request = new \Zernio\Model\DismissGoogleRecommendationsRequest(); // \Zernio\Model\DismissGoogleRecommendationsRequest
+
+try {
+    $result = $apiInstance->dismissGoogleRecommendations($dismiss_google_recommendations_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->dismissGoogleRecommendations: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **dismiss_google_recommendations_request** | [**\Zernio\Model\DismissGoogleRecommendationsRequest**](../Model/DismissGoogleRecommendationsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ApplyGoogleRecommendations200Response**](../Model/ApplyGoogleRecommendations200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -2416,6 +2539,74 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListGoogleAssetGroups200Response**](../Model/ListGoogleAssetGroups200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listGoogleRecommendations()`
+
+```php
+listGoogleRecommendations($account_id, $ad_account_id, $customer_id, $campaign_id, $types): \Zernio\Model\ListGoogleRecommendations200Response
+```
+
+List Google Ads recommendations
+
+Google's optimization recommendations for one ad account: type, estimated impact (base vs potential metrics, cost in account currency units), the campaign, ad group or budget they target, and the type-specific payload Google returns (`details`, in Google's own shape with micros). Filter by campaignId and types. Cached for 10 minutes and cleared by apply or dismiss; served stale when Google quota is exhausted.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Google ads SocialAccount id.
+$ad_account_id = 'ad_account_id_example'; // string | Google customer id, digits only. Defaults to the connection's only customer.
+$customer_id = 'customer_id_example'; // string | Alias of adAccountId, kept for consistency with other Google endpoints.
+$campaign_id = 'campaign_id_example'; // string | Only recommendations targeting this campaign.
+$types = 'types_example'; // string | Comma-separated Google RecommendationType values, for example CAMPAIGN_BUDGET,KEYWORD,SET_TARGET_CPA.
+
+try {
+    $result = $apiInstance->listGoogleRecommendations($account_id, $ad_account_id, $customer_id, $campaign_id, $types);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->listGoogleRecommendations: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Google ads SocialAccount id. | |
+| **ad_account_id** | **string**| Google customer id, digits only. Defaults to the connection&#39;s only customer. | [optional] |
+| **customer_id** | **string**| Alias of adAccountId, kept for consistency with other Google endpoints. | [optional] |
+| **campaign_id** | **string**| Only recommendations targeting this campaign. | [optional] |
+| **types** | **string**| Comma-separated Google RecommendationType values, for example CAMPAIGN_BUDGET,KEYWORD,SET_TARGET_CPA. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListGoogleRecommendations200Response**](../Model/ListGoogleRecommendations200Response.md)
 
 ### Authorization
 
