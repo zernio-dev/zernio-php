@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **campaign_id** | **string** |  | [optional]
+**ad_group_id** | **string** | Demand Gen only: the ad group that received the locations and languages. | [optional]
 **updated** | **string[]** | Which targeting fields were applied. | [optional]
 **location_targeting_type** | **string** | The value read back from Google after the edit. | [optional]
 **devices** | [**\Zernio\Model\UpdateCampaignTargeting200ResponseDevicesInner[]**](UpdateCampaignTargeting200ResponseDevicesInner.md) |  | [optional]
