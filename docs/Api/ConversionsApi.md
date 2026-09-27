@@ -10,16 +10,23 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**adjustConversions()**](ConversionsApi.md#adjustConversions) | **POST** /v1/ads/conversions/adjustments | Adjust uploaded conversions |
 | [**createConversionAction()**](ConversionsApi.md#createConversionAction) | **POST** /v1/ads/conversions/actions | Create website conversion action |
 | [**createConversionDestination()**](ConversionsApi.md#createConversionDestination) | **POST** /v1/accounts/{accountId}/conversion-destinations | Create a conversion destination |
+| [**createCustomConversionGoal()**](ConversionsApi.md#createCustomConversionGoal) | **POST** /v1/ads/conversions/custom-goals | Create a custom conversion goal |
 | [**deleteConversionDestination()**](ConversionsApi.md#deleteConversionDestination) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Delete a conversion destination |
 | [**getConversionDestination()**](ConversionsApi.md#getConversionDestination) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Get a conversion destination |
 | [**getConversionMetrics()**](ConversionsApi.md#getConversionMetrics) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/metrics | Get attribution metrics |
 | [**getConversionsQuality()**](ConversionsApi.md#getConversionsQuality) | **GET** /v1/ads/conversions/quality | Get Event Match Quality |
+| [**listAdConversionGoals()**](ConversionsApi.md#listAdConversionGoals) | **GET** /v1/ads/conversions/goals | List account conversion goals |
 | [**listConversionActions()**](ConversionsApi.md#listConversionActions) | **GET** /v1/ads/conversions/actions | List conversion actions |
 | [**listConversionAssociations()**](ConversionsApi.md#listConversionAssociations) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | List associated campaigns |
 | [**listConversionDestinations()**](ConversionsApi.md#listConversionDestinations) | **GET** /v1/accounts/{accountId}/conversion-destinations | List conversion destinations |
+| [**listCustomConversionGoals()**](ConversionsApi.md#listCustomConversionGoals) | **GET** /v1/ads/conversions/custom-goals | List custom conversion goals |
 | [**removeConversionAssociations()**](ConversionsApi.md#removeConversionAssociations) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Remove associated campaigns |
+| [**removeCustomConversionGoal()**](ConversionsApi.md#removeCustomConversionGoal) | **DELETE** /v1/ads/conversions/custom-goals/{goalId} | Remove a custom conversion goal |
 | [**sendConversions()**](ConversionsApi.md#sendConversions) | **POST** /v1/ads/conversions | Send conversion events |
+| [**updateAdConversionGoals()**](ConversionsApi.md#updateAdConversionGoals) | **PATCH** /v1/ads/conversions/goals | Update account conversion goals |
+| [**updateConversionAction()**](ConversionsApi.md#updateConversionAction) | **PATCH** /v1/ads/conversions/actions/{actionId} | Set a conversion action primary or secondary |
 | [**updateConversionDestination()**](ConversionsApi.md#updateConversionDestination) | **PATCH** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Update a conversion destination |
+| [**updateCustomConversionGoal()**](ConversionsApi.md#updateCustomConversionGoal) | **PATCH** /v1/ads/conversions/custom-goals/{goalId} | Update a custom conversion goal |
 
 
 ## `addConversionAssociations()`
@@ -254,6 +261,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreateConversionDestination201Response**](../Model/CreateConversionDestination201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createCustomConversionGoal()`
+
+```php
+createCustomConversionGoal($create_custom_conversion_goal_request): \Zernio\Model\CreateCustomConversionGoal201Response
+```
+
+Create a custom conversion goal
+
+Creates a custom conversion goal from conversion action ids. Point a campaign at it with `PATCH /v1/ads/campaigns/{campaignId}/conversion-goals`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_custom_conversion_goal_request = new \Zernio\Model\CreateCustomConversionGoalRequest(); // \Zernio\Model\CreateCustomConversionGoalRequest
+
+try {
+    $result = $apiInstance->createCustomConversionGoal($create_custom_conversion_goal_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->createCustomConversionGoal: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_custom_conversion_goal_request** | [**\Zernio\Model\CreateCustomConversionGoalRequest**](../Model/CreateCustomConversionGoalRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateCustomConversionGoal201Response**](../Model/CreateCustomConversionGoal201Response.md)
 
 ### Authorization
 
@@ -527,6 +594,70 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listAdConversionGoals()`
+
+```php
+listAdConversionGoals($account_id, $ad_account_id, $customer_id): \Zernio\Model\ListAdConversionGoals200Response
+```
+
+List account conversion goals
+
+Google Ads account-default conversion goals (CustomerConversionGoal), one per category and origin, with `biddable` (whether the goal is used for bidding and reported in the Conversions column) and the conversion actions that belong to it, each flagged `primaryForGoal` (primary) or not (secondary). Reads are cached for 10 minutes; when the shared Google quota is exhausted the last successful result is served with `stale: true`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id (Google Ads)
+$ad_account_id = 'ad_account_id_example'; // string | Google customer id. Required when the connection has multiple customers.
+$customer_id = 'customer_id_example'; // string | Alias of adAccountId
+
+try {
+    $result = $apiInstance->listAdConversionGoals($account_id, $ad_account_id, $customer_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->listAdConversionGoals: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio SocialAccount id (Google Ads) | |
+| **ad_account_id** | **string**| Google customer id. Required when the connection has multiple customers. | [optional] |
+| **customer_id** | **string**| Alias of adAccountId | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListAdConversionGoals200Response**](../Model/ListAdConversionGoals200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listConversionActions()`
 
 ```php
@@ -717,6 +848,70 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listCustomConversionGoals()`
+
+```php
+listCustomConversionGoals($account_id, $ad_account_id, $customer_id): \Zernio\Model\ListCustomConversionGoals200Response
+```
+
+List custom conversion goals
+
+Google Ads custom conversion goals (a named set of conversion actions a campaign can bid on). Removed goals are excluded. Cached like the other Google reads.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id (Google Ads)
+$ad_account_id = 'ad_account_id_example'; // string | Google customer id. Required when the connection has multiple customers.
+$customer_id = 'customer_id_example'; // string | Alias of adAccountId
+
+try {
+    $result = $apiInstance->listCustomConversionGoals($account_id, $ad_account_id, $customer_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->listCustomConversionGoals: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio SocialAccount id (Google Ads) | |
+| **ad_account_id** | **string**| Google customer id. Required when the connection has multiple customers. | [optional] |
+| **customer_id** | **string**| Alias of adAccountId | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListCustomConversionGoals200Response**](../Model/ListCustomConversionGoals200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `removeConversionAssociations()`
 
 ```php
@@ -769,6 +964,72 @@ try {
 ### Return type
 
 [**\Zernio\Model\RemoveConversionAssociations200Response**](../Model/RemoveConversionAssociations200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `removeCustomConversionGoal()`
+
+```php
+removeCustomConversionGoal($goal_id, $account_id, $ad_account_id, $customer_id): \Zernio\Model\RemoveCustomConversionGoal200Response
+```
+
+Remove a custom conversion goal
+
+Removes the goal. Google refuses (400) while any campaign still uses it: switch those campaigns to another goal first.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$goal_id = 'goal_id_example'; // string | Google custom conversion goal id
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id (Google Ads)
+$ad_account_id = 'ad_account_id_example'; // string | Google customer id. Required when the connection has multiple customers.
+$customer_id = 'customer_id_example'; // string | Alias of adAccountId
+
+try {
+    $result = $apiInstance->removeCustomConversionGoal($goal_id, $account_id, $ad_account_id, $customer_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->removeCustomConversionGoal: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **goal_id** | **string**| Google custom conversion goal id | |
+| **account_id** | **string**| Zernio SocialAccount id (Google Ads) | |
+| **ad_account_id** | **string**| Google customer id. Required when the connection has multiple customers. | [optional] |
+| **customer_id** | **string**| Alias of adAccountId | [optional] |
+
+### Return type
+
+[**\Zernio\Model\RemoveCustomConversionGoal200Response**](../Model/RemoveCustomConversionGoal200Response.md)
 
 ### Authorization
 
@@ -843,6 +1104,128 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `updateAdConversionGoals()`
+
+```php
+updateAdConversionGoals($update_ad_conversion_goals_request): \Zernio\Model\UpdateAdConversionGoals200Response
+```
+
+Update account conversion goals
+
+Sets `biddable` on one or more account-default goals, addressed by category and origin, in one mutate. Campaigns that use account-level goals (`goalConfigLevel: CUSTOMER`) follow the change. Returns the re-read goal list.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$update_ad_conversion_goals_request = new \Zernio\Model\UpdateAdConversionGoalsRequest(); // \Zernio\Model\UpdateAdConversionGoalsRequest
+
+try {
+    $result = $apiInstance->updateAdConversionGoals($update_ad_conversion_goals_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->updateAdConversionGoals: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **update_ad_conversion_goals_request** | [**\Zernio\Model\UpdateAdConversionGoalsRequest**](../Model/UpdateAdConversionGoalsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateAdConversionGoals200Response**](../Model/UpdateAdConversionGoals200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateConversionAction()`
+
+```php
+updateConversionAction($action_id, $update_conversion_action_request): \Zernio\Model\UpdateConversionAction200Response
+```
+
+Set a conversion action primary or secondary
+
+Sets `primary_for_goal` on a Google Ads conversion action. A primary action counts toward its goal's bidding and the Conversions column; a secondary one is observation-only (All conversions).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$action_id = 'action_id_example'; // string | Google conversion action id
+$update_conversion_action_request = new \Zernio\Model\UpdateConversionActionRequest(); // \Zernio\Model\UpdateConversionActionRequest
+
+try {
+    $result = $apiInstance->updateConversionAction($action_id, $update_conversion_action_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->updateConversionAction: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **action_id** | **string**| Google conversion action id | |
+| **update_conversion_action_request** | [**\Zernio\Model\UpdateConversionActionRequest**](../Model/UpdateConversionActionRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateConversionAction200Response**](../Model/UpdateConversionAction200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `updateConversionDestination()`
 
 ```php
@@ -893,6 +1276,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetConversionDestination200Response**](../Model/GetConversionDestination200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateCustomConversionGoal()`
+
+```php
+updateCustomConversionGoal($goal_id, $update_custom_conversion_goal_request): \Zernio\Model\UpdateCustomConversionGoal200Response
+```
+
+Update a custom conversion goal
+
+Renames the goal and/or replaces its conversion actions. Returns the re-read goal.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$goal_id = 'goal_id_example'; // string | Google custom conversion goal id
+$update_custom_conversion_goal_request = new \Zernio\Model\UpdateCustomConversionGoalRequest(); // \Zernio\Model\UpdateCustomConversionGoalRequest
+
+try {
+    $result = $apiInstance->updateCustomConversionGoal($goal_id, $update_custom_conversion_goal_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->updateCustomConversionGoal: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **goal_id** | **string**| Google custom conversion goal id | |
+| **update_custom_conversion_goal_request** | [**\Zernio\Model\UpdateCustomConversionGoalRequest**](../Model/UpdateCustomConversionGoalRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateCustomConversionGoal200Response**](../Model/UpdateCustomConversionGoal200Response.md)
 
 ### Authorization
 

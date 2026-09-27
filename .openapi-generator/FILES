@@ -167,9 +167,6 @@ docs/Model/ApiKeyCreatedBy.md
 docs/Model/ApiKeyProfileIdsInner.md
 docs/Model/AppealSmsRegistration200Response.md
 docs/Model/AppealSmsRegistrationRequest.md
-docs/Model/ApplyGoogleRecommendations200Response.md
-docs/Model/ApplyGoogleRecommendationsRequest.md
-docs/Model/ApplyGoogleRecommendationsRequestRecommendationsInner.md
 docs/Model/ApproveWhatsAppGroupJoinRequestsRequest.md
 docs/Model/ArchiveLeadForm200Response.md
 docs/Model/AssignGoogleBusinessLocation200Response.md
@@ -401,6 +398,8 @@ docs/Model/CreateConversionActionRequest.md
 docs/Model/CreateConversionDestination201Response.md
 docs/Model/CreateConversionDestinationRequest.md
 docs/Model/CreateConversionDestinationRequestValue.md
+docs/Model/CreateCustomConversionGoal201Response.md
+docs/Model/CreateCustomConversionGoalRequest.md
 docs/Model/CreateCustomConversionRequest.md
 docs/Model/CreateCustomField200Response.md
 docs/Model/CreateCustomFieldRequest.md
@@ -617,7 +616,6 @@ docs/Model/DiscordPlatformDataThreadFromMessage.md
 docs/Model/DiscordRole.md
 docs/Model/DiscordScheduledEvent.md
 docs/Model/DiscordScheduledEventEntityMetadata.md
-docs/Model/DismissGoogleRecommendationsRequest.md
 docs/Model/DmButton.md
 docs/Model/DownloadTikTokVideo200Response.md
 docs/Model/DownloadTikTokVideo200ResponseFormatsInner.md
@@ -764,6 +762,7 @@ docs/Model/GetCampaignAdSchedule200ResponsePerformanceByDayOfWeekInner.md
 docs/Model/GetCampaignAdSchedule200ResponsePerformanceByHourInner.md
 docs/Model/GetCampaignAnalytics202Response.md
 docs/Model/GetCampaignBidding200Response.md
+docs/Model/GetCampaignConversionGoals200Response.md
 docs/Model/GetCampaignTargeting200Response.md
 docs/Model/GetCampaignTargeting200ResponseDevicesInner.md
 docs/Model/GetCampaignTargeting200ResponseLanguagesInner.md
@@ -1080,6 +1079,7 @@ docs/Model/GoogleAdsManagerLink.md
 docs/Model/GoogleAssetGroupAssetLink.md
 docs/Model/GoogleAssetGroupAssetUnlink.md
 docs/Model/GoogleAssetUpdate.md
+docs/Model/GoogleBiddableGoalInput.md
 docs/Model/GoogleBusinessPlatformData.md
 docs/Model/GoogleBusinessPlatformDataCallToAction.md
 docs/Model/GoogleBusinessPlatformDataEvent.md
@@ -1092,6 +1092,11 @@ docs/Model/GoogleBusinessPlatformDataOffer.md
 docs/Model/GoogleBusinessReview.md
 docs/Model/GoogleBusinessReviewReviewReply.md
 docs/Model/GoogleBusinessReviewReviewer.md
+docs/Model/GoogleCampaignConversionGoals.md
+docs/Model/GoogleCampaignConversionGoalsGoalsInner.md
+docs/Model/GoogleCustomConversionGoal.md
+docs/Model/GoogleCustomerConversionGoal.md
+docs/Model/GoogleCustomerConversionGoalConversionActionsInner.md
 docs/Model/GoogleListingGroupDimension.md
 docs/Model/GoogleListingGroupDimensionProductBrand.md
 docs/Model/GoogleListingGroupDimensionProductCategory.md
@@ -1110,10 +1115,6 @@ docs/Model/GooglePmaxAssetGroupInput.md
 docs/Model/GooglePmaxAssetGroupInputImages.md
 docs/Model/GooglePmaxAssetGroupUpdate.md
 docs/Model/GooglePmaxAssetGroupUpdateImages.md
-docs/Model/GoogleRecommendation.md
-docs/Model/GoogleRecommendationImpact.md
-docs/Model/GoogleRecommendationMetrics.md
-docs/Model/GoogleRecommendationResult.md
 docs/Model/GoogleRsaDescription.md
 docs/Model/GoogleRsaHeadline.md
 docs/Model/GoogleSitelink.md
@@ -1220,6 +1221,7 @@ docs/Model/ListAdCatalogProductSets200Response.md
 docs/Model/ListAdCatalogProductSets200ResponseProductSetsInner.md
 docs/Model/ListAdCatalogProducts200Response.md
 docs/Model/ListAdCatalogs200Response.md
+docs/Model/ListAdConversionGoals200Response.md
 docs/Model/ListAdCreatives200Response.md
 docs/Model/ListAdGroupAssets200Response.md
 docs/Model/ListAdGroupAssets200ResponseCalloutsInner.md
@@ -1294,6 +1296,7 @@ docs/Model/ListConversionAssociations200ResponseAssociationsInner.md
 docs/Model/ListConversionDestinations200Response.md
 docs/Model/ListConversionDestinations200ResponseDestinationsInner.md
 docs/Model/ListConversionDestinations200ResponseDestinationsInnerConversionEventsInner.md
+docs/Model/ListCustomConversionGoals200Response.md
 docs/Model/ListCustomConversions200Response.md
 docs/Model/ListCustomFields200Response.md
 docs/Model/ListCustomFields200ResponseFieldsInner.md
@@ -1316,7 +1319,6 @@ docs/Model/ListGoogleBusinessMedia200ResponseMediaItemsInner.md
 docs/Model/ListGoogleBusinessMedia200ResponseMediaItemsInnerLocationAssociation.md
 docs/Model/ListGoogleBusinessPlaceActions200Response.md
 docs/Model/ListGoogleBusinessPlaceActions200ResponsePlaceActionLinksInner.md
-docs/Model/ListGoogleRecommendations200Response.md
 docs/Model/ListHighDemandPeriods200Response.md
 docs/Model/ListImessageAudience200Response.md
 docs/Model/ListImessageAvailableNumbers200Response.md
@@ -1603,6 +1605,7 @@ docs/Model/RemoveBookmark200Response.md
 docs/Model/RemoveCampaignAssets200Response.md
 docs/Model/RemoveCampaignAssetsRequest.md
 docs/Model/RemoveConversionAssociations200Response.md
+docs/Model/RemoveCustomConversionGoal200Response.md
 docs/Model/RemoveDiscordMemberRole200Response.md
 docs/Model/RemoveGoogleAssetGroup200Response.md
 docs/Model/RemoveMessageReaction200Response.md
@@ -1919,6 +1922,8 @@ docs/Model/UpdateAdCampaignStatus200Response.md
 docs/Model/UpdateAdCampaignStatusRequest.md
 docs/Model/UpdateAdCatalogProductRequest.md
 docs/Model/UpdateAdCatalogProductSetRequest.md
+docs/Model/UpdateAdConversionGoals200Response.md
+docs/Model/UpdateAdConversionGoalsRequest.md
 docs/Model/UpdateAdCreative200Response.md
 docs/Model/UpdateAdCreativeRequest.md
 docs/Model/UpdateAdKeyword200Response.md
@@ -1971,6 +1976,8 @@ docs/Model/UpdateCampaignAdScheduleRequest.md
 docs/Model/UpdateCampaignAdScheduleRequestScheduleInner.md
 docs/Model/UpdateCampaignAssets200Response.md
 docs/Model/UpdateCampaignAssetsRequest.md
+docs/Model/UpdateCampaignConversionGoals200Response.md
+docs/Model/UpdateCampaignConversionGoalsRequest.md
 docs/Model/UpdateCampaignTargeting200Response.md
 docs/Model/UpdateCampaignTargeting200ResponseDevicesInner.md
 docs/Model/UpdateCampaignTargeting200ResponseLanguagesInner.md
@@ -1989,8 +1996,13 @@ docs/Model/UpdateCommentAutomationRequest.md
 docs/Model/UpdateContact200Response.md
 docs/Model/UpdateContact200ResponseContact.md
 docs/Model/UpdateContactRequest.md
+docs/Model/UpdateConversionAction200Response.md
+docs/Model/UpdateConversionAction200ResponseAction.md
+docs/Model/UpdateConversionActionRequest.md
 docs/Model/UpdateConversionDestinationRequest.md
 docs/Model/UpdateConversionDestinationRequestValue.md
+docs/Model/UpdateCustomConversionGoal200Response.md
+docs/Model/UpdateCustomConversionGoalRequest.md
 docs/Model/UpdateCustomField200Response.md
 docs/Model/UpdateCustomField200ResponseField.md
 docs/Model/UpdateCustomFieldRequest.md
@@ -2502,9 +2514,6 @@ lib/Model/ApiKeyCreatedBy.php
 lib/Model/ApiKeyProfileIdsInner.php
 lib/Model/AppealSmsRegistration200Response.php
 lib/Model/AppealSmsRegistrationRequest.php
-lib/Model/ApplyGoogleRecommendations200Response.php
-lib/Model/ApplyGoogleRecommendationsRequest.php
-lib/Model/ApplyGoogleRecommendationsRequestRecommendationsInner.php
 lib/Model/ApproveWhatsAppGroupJoinRequestsRequest.php
 lib/Model/ArchiveLeadForm200Response.php
 lib/Model/AssignGoogleBusinessLocation200Response.php
@@ -2736,6 +2745,8 @@ lib/Model/CreateConversionActionRequest.php
 lib/Model/CreateConversionDestination201Response.php
 lib/Model/CreateConversionDestinationRequest.php
 lib/Model/CreateConversionDestinationRequestValue.php
+lib/Model/CreateCustomConversionGoal201Response.php
+lib/Model/CreateCustomConversionGoalRequest.php
 lib/Model/CreateCustomConversionRequest.php
 lib/Model/CreateCustomField200Response.php
 lib/Model/CreateCustomFieldRequest.php
@@ -2952,7 +2963,6 @@ lib/Model/DiscordPlatformDataThreadFromMessage.php
 lib/Model/DiscordRole.php
 lib/Model/DiscordScheduledEvent.php
 lib/Model/DiscordScheduledEventEntityMetadata.php
-lib/Model/DismissGoogleRecommendationsRequest.php
 lib/Model/DmButton.php
 lib/Model/DownloadTikTokVideo200Response.php
 lib/Model/DownloadTikTokVideo200ResponseFormatsInner.php
@@ -3099,6 +3109,7 @@ lib/Model/GetCampaignAdSchedule200ResponsePerformanceByDayOfWeekInner.php
 lib/Model/GetCampaignAdSchedule200ResponsePerformanceByHourInner.php
 lib/Model/GetCampaignAnalytics202Response.php
 lib/Model/GetCampaignBidding200Response.php
+lib/Model/GetCampaignConversionGoals200Response.php
 lib/Model/GetCampaignTargeting200Response.php
 lib/Model/GetCampaignTargeting200ResponseDevicesInner.php
 lib/Model/GetCampaignTargeting200ResponseLanguagesInner.php
@@ -3415,6 +3426,7 @@ lib/Model/GoogleAdsManagerLink.php
 lib/Model/GoogleAssetGroupAssetLink.php
 lib/Model/GoogleAssetGroupAssetUnlink.php
 lib/Model/GoogleAssetUpdate.php
+lib/Model/GoogleBiddableGoalInput.php
 lib/Model/GoogleBusinessPlatformData.php
 lib/Model/GoogleBusinessPlatformDataCallToAction.php
 lib/Model/GoogleBusinessPlatformDataEvent.php
@@ -3427,6 +3439,11 @@ lib/Model/GoogleBusinessPlatformDataOffer.php
 lib/Model/GoogleBusinessReview.php
 lib/Model/GoogleBusinessReviewReviewReply.php
 lib/Model/GoogleBusinessReviewReviewer.php
+lib/Model/GoogleCampaignConversionGoals.php
+lib/Model/GoogleCampaignConversionGoalsGoalsInner.php
+lib/Model/GoogleCustomConversionGoal.php
+lib/Model/GoogleCustomerConversionGoal.php
+lib/Model/GoogleCustomerConversionGoalConversionActionsInner.php
 lib/Model/GoogleListingGroupDimension.php
 lib/Model/GoogleListingGroupDimensionProductBrand.php
 lib/Model/GoogleListingGroupDimensionProductCategory.php
@@ -3445,10 +3462,6 @@ lib/Model/GooglePmaxAssetGroupInput.php
 lib/Model/GooglePmaxAssetGroupInputImages.php
 lib/Model/GooglePmaxAssetGroupUpdate.php
 lib/Model/GooglePmaxAssetGroupUpdateImages.php
-lib/Model/GoogleRecommendation.php
-lib/Model/GoogleRecommendationImpact.php
-lib/Model/GoogleRecommendationMetrics.php
-lib/Model/GoogleRecommendationResult.php
 lib/Model/GoogleRsaDescription.php
 lib/Model/GoogleRsaHeadline.php
 lib/Model/GoogleSitelink.php
@@ -3555,6 +3568,7 @@ lib/Model/ListAdCatalogProductSets200Response.php
 lib/Model/ListAdCatalogProductSets200ResponseProductSetsInner.php
 lib/Model/ListAdCatalogProducts200Response.php
 lib/Model/ListAdCatalogs200Response.php
+lib/Model/ListAdConversionGoals200Response.php
 lib/Model/ListAdCreatives200Response.php
 lib/Model/ListAdGroupAssets200Response.php
 lib/Model/ListAdGroupAssets200ResponseCalloutsInner.php
@@ -3629,6 +3643,7 @@ lib/Model/ListConversionAssociations200ResponseAssociationsInner.php
 lib/Model/ListConversionDestinations200Response.php
 lib/Model/ListConversionDestinations200ResponseDestinationsInner.php
 lib/Model/ListConversionDestinations200ResponseDestinationsInnerConversionEventsInner.php
+lib/Model/ListCustomConversionGoals200Response.php
 lib/Model/ListCustomConversions200Response.php
 lib/Model/ListCustomFields200Response.php
 lib/Model/ListCustomFields200ResponseFieldsInner.php
@@ -3651,7 +3666,6 @@ lib/Model/ListGoogleBusinessMedia200ResponseMediaItemsInner.php
 lib/Model/ListGoogleBusinessMedia200ResponseMediaItemsInnerLocationAssociation.php
 lib/Model/ListGoogleBusinessPlaceActions200Response.php
 lib/Model/ListGoogleBusinessPlaceActions200ResponsePlaceActionLinksInner.php
-lib/Model/ListGoogleRecommendations200Response.php
 lib/Model/ListHighDemandPeriods200Response.php
 lib/Model/ListImessageAudience200Response.php
 lib/Model/ListImessageAvailableNumbers200Response.php
@@ -3939,6 +3953,7 @@ lib/Model/RemoveBookmark200Response.php
 lib/Model/RemoveCampaignAssets200Response.php
 lib/Model/RemoveCampaignAssetsRequest.php
 lib/Model/RemoveConversionAssociations200Response.php
+lib/Model/RemoveCustomConversionGoal200Response.php
 lib/Model/RemoveDiscordMemberRole200Response.php
 lib/Model/RemoveGoogleAssetGroup200Response.php
 lib/Model/RemoveMessageReaction200Response.php
@@ -4255,6 +4270,8 @@ lib/Model/UpdateAdCampaignStatus200Response.php
 lib/Model/UpdateAdCampaignStatusRequest.php
 lib/Model/UpdateAdCatalogProductRequest.php
 lib/Model/UpdateAdCatalogProductSetRequest.php
+lib/Model/UpdateAdConversionGoals200Response.php
+lib/Model/UpdateAdConversionGoalsRequest.php
 lib/Model/UpdateAdCreative200Response.php
 lib/Model/UpdateAdCreativeRequest.php
 lib/Model/UpdateAdKeyword200Response.php
@@ -4307,6 +4324,8 @@ lib/Model/UpdateCampaignAdScheduleRequest.php
 lib/Model/UpdateCampaignAdScheduleRequestScheduleInner.php
 lib/Model/UpdateCampaignAssets200Response.php
 lib/Model/UpdateCampaignAssetsRequest.php
+lib/Model/UpdateCampaignConversionGoals200Response.php
+lib/Model/UpdateCampaignConversionGoalsRequest.php
 lib/Model/UpdateCampaignTargeting200Response.php
 lib/Model/UpdateCampaignTargeting200ResponseDevicesInner.php
 lib/Model/UpdateCampaignTargeting200ResponseLanguagesInner.php
@@ -4325,8 +4344,13 @@ lib/Model/UpdateCommentAutomationRequest.php
 lib/Model/UpdateContact200Response.php
 lib/Model/UpdateContact200ResponseContact.php
 lib/Model/UpdateContactRequest.php
+lib/Model/UpdateConversionAction200Response.php
+lib/Model/UpdateConversionAction200ResponseAction.php
+lib/Model/UpdateConversionActionRequest.php
 lib/Model/UpdateConversionDestinationRequest.php
 lib/Model/UpdateConversionDestinationRequestValue.php
+lib/Model/UpdateCustomConversionGoal200Response.php
+lib/Model/UpdateCustomConversionGoalRequest.php
 lib/Model/UpdateCustomField200Response.php
 lib/Model/UpdateCustomField200ResponseField.php
 lib/Model/UpdateCustomFieldRequest.php
@@ -4671,11 +4695,24 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetAdAccountHierarchy200ResponseRootsInnerManagerLinksInnerTest.php
-test/Model/GetAdAccountHierarchy200ResponseRootsInnerTest.php
-test/Model/GetAdAccountHierarchy200ResponseTest.php
-test/Model/GetAdAccountHierarchy200ResponseUnavailableInnerTest.php
-test/Model/GoogleAdsHierarchyClientTest.php
-test/Model/GoogleAdsManagerLinkTest.php
-test/Model/InviteAdAccountToManagerRequestTest.php
-test/Model/UpdateAdAccountManagerLinkRequestTest.php
+test/Model/CreateCustomConversionGoal201ResponseTest.php
+test/Model/CreateCustomConversionGoalRequestTest.php
+test/Model/GetCampaignConversionGoals200ResponseTest.php
+test/Model/GoogleBiddableGoalInputTest.php
+test/Model/GoogleCampaignConversionGoalsGoalsInnerTest.php
+test/Model/GoogleCampaignConversionGoalsTest.php
+test/Model/GoogleCustomConversionGoalTest.php
+test/Model/GoogleCustomerConversionGoalConversionActionsInnerTest.php
+test/Model/GoogleCustomerConversionGoalTest.php
+test/Model/ListAdConversionGoals200ResponseTest.php
+test/Model/ListCustomConversionGoals200ResponseTest.php
+test/Model/RemoveCustomConversionGoal200ResponseTest.php
+test/Model/UpdateAdConversionGoals200ResponseTest.php
+test/Model/UpdateAdConversionGoalsRequestTest.php
+test/Model/UpdateCampaignConversionGoals200ResponseTest.php
+test/Model/UpdateCampaignConversionGoalsRequestTest.php
+test/Model/UpdateConversionAction200ResponseActionTest.php
+test/Model/UpdateConversionAction200ResponseTest.php
+test/Model/UpdateConversionActionRequestTest.php
+test/Model/UpdateCustomConversionGoal200ResponseTest.php
+test/Model/UpdateCustomConversionGoalRequestTest.php

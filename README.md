@@ -167,7 +167,6 @@ Class | Method | HTTP request | Description
 *AdAudiencesApi* | [**replaceAdAudienceCompanies**](docs/Api/AdAudiencesApi.md#replaceadaudiencecompanies) | **POST** /v1/ads/audiences/{audienceId}/companies | Replace audience companies
 *AdAudiencesApi* | [**updateAdAudience**](docs/Api/AdAudiencesApi.md#updateadaudience) | **PUT** /v1/ads/audiences/{audienceId} | Update an audience
 *AdCampaignsApi* | [**addAdKeywords**](docs/Api/AdCampaignsApi.md#addadkeywords) | **POST** /v1/ads/keywords | Add Search ad-group keywords
-*AdCampaignsApi* | [**applyGoogleRecommendations**](docs/Api/AdCampaignsApi.md#applygooglerecommendations) | **POST** /v1/ads/recommendations/apply | Apply Google Ads recommendations
 *AdCampaignsApi* | [**attachAdGroupAssets**](docs/Api/AdCampaignsApi.md#attachadgroupassets) | **POST** /v1/ads/ad-sets/{adSetId}/assets | Attach ad-group assets
 *AdCampaignsApi* | [**attachCampaignAssets**](docs/Api/AdCampaignsApi.md#attachcampaignassets) | **POST** /v1/ads/campaigns/{campaignId}/assets | Attach campaign assets
 *AdCampaignsApi* | [**boostPost**](docs/Api/AdCampaignsApi.md#boostpost) | **POST** /v1/ads/boost | Boost post as ad
@@ -180,7 +179,6 @@ Class | Method | HTTP request | Description
 *AdCampaignsApi* | [**deleteAd**](docs/Api/AdCampaignsApi.md#deletead) | **DELETE** /v1/ads/{adId} | Cancel an ad
 *AdCampaignsApi* | [**deleteAdCampaign**](docs/Api/AdCampaignsApi.md#deleteadcampaign) | **DELETE** /v1/ads/campaigns/{campaignId} | Delete a campaign
 *AdCampaignsApi* | [**deleteAdSet**](docs/Api/AdCampaignsApi.md#deleteadset) | **DELETE** /v1/ads/ad-sets/{adSetId} | Delete an ad set
-*AdCampaignsApi* | [**dismissGoogleRecommendations**](docs/Api/AdCampaignsApi.md#dismissgooglerecommendations) | **POST** /v1/ads/recommendations/dismiss | Dismiss Google Ads recommendations
 *AdCampaignsApi* | [**duplicateAd**](docs/Api/AdCampaignsApi.md#duplicatead) | **POST** /v1/ads/{adId}/duplicate | Duplicate an ad
 *AdCampaignsApi* | [**duplicateAdCampaign**](docs/Api/AdCampaignsApi.md#duplicateadcampaign) | **POST** /v1/ads/campaigns/{campaignId}/duplicate | Duplicate a campaign
 *AdCampaignsApi* | [**duplicateAdSet**](docs/Api/AdCampaignsApi.md#duplicateadset) | **POST** /v1/ads/ad-sets/{adSetId}/duplicate | Duplicate an ad set
@@ -192,6 +190,7 @@ Class | Method | HTTP request | Description
 *AdCampaignsApi* | [**getAdsTimeline**](docs/Api/AdCampaignsApi.md#getadstimeline) | **GET** /v1/ads/timeline | Get daily account metrics
 *AdCampaignsApi* | [**getCampaignAdSchedule**](docs/Api/AdCampaignsApi.md#getcampaignadschedule) | **GET** /v1/ads/campaigns/{campaignId}/ad-schedule | Read a campaign&#39;s ad schedule (dayparting)
 *AdCampaignsApi* | [**getCampaignBidding**](docs/Api/AdCampaignsApi.md#getcampaignbidding) | **GET** /v1/ads/campaigns/{campaignId}/bidding | Read a campaign&#39;s current bidding
+*AdCampaignsApi* | [**getCampaignConversionGoals**](docs/Api/AdCampaignsApi.md#getcampaignconversiongoals) | **GET** /v1/ads/campaigns/{campaignId}/conversion-goals | Get campaign conversion goals
 *AdCampaignsApi* | [**getCampaignTargeting**](docs/Api/AdCampaignsApi.md#getcampaigntargeting) | **GET** /v1/ads/campaigns/{campaignId}/targeting | Read a Google campaign&#39;s device, location, and language targeting
 *AdCampaignsApi* | [**getGoogleAssetGroup**](docs/Api/AdCampaignsApi.md#getgoogleassetgroup) | **GET** /v1/ads/campaigns/{campaignId}/asset-groups/{assetGroupId} | Get a Performance Max asset group
 *AdCampaignsApi* | [**listAdCampaigns**](docs/Api/AdCampaignsApi.md#listadcampaigns) | **GET** /v1/ads/campaigns | List campaigns
@@ -204,7 +203,6 @@ Class | Method | HTTP request | Description
 *AdCampaignsApi* | [**listCampaignNegativeKeywordLists**](docs/Api/AdCampaignsApi.md#listcampaignnegativekeywordlists) | **GET** /v1/ads/campaigns/{campaignId}/negative-keyword-lists | List campaign negative lists
 *AdCampaignsApi* | [**listCampaignNegativeKeywords**](docs/Api/AdCampaignsApi.md#listcampaignnegativekeywords) | **GET** /v1/ads/campaigns/{campaignId}/negative-keywords | List campaign-level negative keywords
 *AdCampaignsApi* | [**listGoogleAssetGroups**](docs/Api/AdCampaignsApi.md#listgoogleassetgroups) | **GET** /v1/ads/campaigns/{campaignId}/asset-groups | List Performance Max asset groups
-*AdCampaignsApi* | [**listGoogleRecommendations**](docs/Api/AdCampaignsApi.md#listgooglerecommendations) | **GET** /v1/ads/recommendations | List Google Ads recommendations
 *AdCampaignsApi* | [**removeAdGroupAssets**](docs/Api/AdCampaignsApi.md#removeadgroupassets) | **DELETE** /v1/ads/ad-sets/{adSetId}/assets | Remove ad-group assets
 *AdCampaignsApi* | [**removeAdKeyword**](docs/Api/AdCampaignsApi.md#removeadkeyword) | **DELETE** /v1/ads/keywords/{keywordId} | Remove a Search keyword
 *AdCampaignsApi* | [**removeCampaignAssets**](docs/Api/AdCampaignsApi.md#removecampaignassets) | **DELETE** /v1/ads/campaigns/{campaignId}/assets | Remove campaign assets
@@ -223,6 +221,7 @@ Class | Method | HTTP request | Description
 *AdCampaignsApi* | [**updateBidStrategy**](docs/Api/AdCampaignsApi.md#updatebidstrategy) | **PATCH** /v1/ads/bid-strategies/{strategyId} | Update portfolio bid strategy
 *AdCampaignsApi* | [**updateCampaignAdSchedule**](docs/Api/AdCampaignsApi.md#updatecampaignadschedule) | **PUT** /v1/ads/campaigns/{campaignId}/ad-schedule | Replace a campaign&#39;s ad schedule (dayparting)
 *AdCampaignsApi* | [**updateCampaignAssets**](docs/Api/AdCampaignsApi.md#updatecampaignassets) | **PUT** /v1/ads/campaigns/{campaignId}/assets | Update campaign assets
+*AdCampaignsApi* | [**updateCampaignConversionGoals**](docs/Api/AdCampaignsApi.md#updatecampaignconversiongoals) | **PATCH** /v1/ads/campaigns/{campaignId}/conversion-goals | Update campaign conversion goals
 *AdCampaignsApi* | [**updateCampaignTargeting**](docs/Api/AdCampaignsApi.md#updatecampaigntargeting) | **PUT** /v1/ads/campaigns/{campaignId}/targeting | Edit a Google campaign&#39;s device, location, or language targeting
 *AdCampaignsApi* | [**updateGoogleAssetGroup**](docs/Api/AdCampaignsApi.md#updategoogleassetgroup) | **PATCH** /v1/ads/campaigns/{campaignId}/asset-groups/{assetGroupId} | Update a Performance Max asset group
 *AdCreativesApi* | [**createAdCreative**](docs/Api/AdCreativesApi.md#createadcreative) | **POST** /v1/ads/creatives | Create a standalone creative
@@ -454,16 +453,23 @@ Class | Method | HTTP request | Description
 *ConversionsApi* | [**adjustConversions**](docs/Api/ConversionsApi.md#adjustconversions) | **POST** /v1/ads/conversions/adjustments | Adjust uploaded conversions
 *ConversionsApi* | [**createConversionAction**](docs/Api/ConversionsApi.md#createconversionaction) | **POST** /v1/ads/conversions/actions | Create website conversion action
 *ConversionsApi* | [**createConversionDestination**](docs/Api/ConversionsApi.md#createconversiondestination) | **POST** /v1/accounts/{accountId}/conversion-destinations | Create a conversion destination
+*ConversionsApi* | [**createCustomConversionGoal**](docs/Api/ConversionsApi.md#createcustomconversiongoal) | **POST** /v1/ads/conversions/custom-goals | Create a custom conversion goal
 *ConversionsApi* | [**deleteConversionDestination**](docs/Api/ConversionsApi.md#deleteconversiondestination) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Delete a conversion destination
 *ConversionsApi* | [**getConversionDestination**](docs/Api/ConversionsApi.md#getconversiondestination) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Get a conversion destination
 *ConversionsApi* | [**getConversionMetrics**](docs/Api/ConversionsApi.md#getconversionmetrics) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/metrics | Get attribution metrics
 *ConversionsApi* | [**getConversionsQuality**](docs/Api/ConversionsApi.md#getconversionsquality) | **GET** /v1/ads/conversions/quality | Get Event Match Quality
+*ConversionsApi* | [**listAdConversionGoals**](docs/Api/ConversionsApi.md#listadconversiongoals) | **GET** /v1/ads/conversions/goals | List account conversion goals
 *ConversionsApi* | [**listConversionActions**](docs/Api/ConversionsApi.md#listconversionactions) | **GET** /v1/ads/conversions/actions | List conversion actions
 *ConversionsApi* | [**listConversionAssociations**](docs/Api/ConversionsApi.md#listconversionassociations) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | List associated campaigns
 *ConversionsApi* | [**listConversionDestinations**](docs/Api/ConversionsApi.md#listconversiondestinations) | **GET** /v1/accounts/{accountId}/conversion-destinations | List conversion destinations
+*ConversionsApi* | [**listCustomConversionGoals**](docs/Api/ConversionsApi.md#listcustomconversiongoals) | **GET** /v1/ads/conversions/custom-goals | List custom conversion goals
 *ConversionsApi* | [**removeConversionAssociations**](docs/Api/ConversionsApi.md#removeconversionassociations) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Remove associated campaigns
+*ConversionsApi* | [**removeCustomConversionGoal**](docs/Api/ConversionsApi.md#removecustomconversiongoal) | **DELETE** /v1/ads/conversions/custom-goals/{goalId} | Remove a custom conversion goal
 *ConversionsApi* | [**sendConversions**](docs/Api/ConversionsApi.md#sendconversions) | **POST** /v1/ads/conversions | Send conversion events
+*ConversionsApi* | [**updateAdConversionGoals**](docs/Api/ConversionsApi.md#updateadconversiongoals) | **PATCH** /v1/ads/conversions/goals | Update account conversion goals
+*ConversionsApi* | [**updateConversionAction**](docs/Api/ConversionsApi.md#updateconversionaction) | **PATCH** /v1/ads/conversions/actions/{actionId} | Set a conversion action primary or secondary
 *ConversionsApi* | [**updateConversionDestination**](docs/Api/ConversionsApi.md#updateconversiondestination) | **PATCH** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Update a conversion destination
+*ConversionsApi* | [**updateCustomConversionGoal**](docs/Api/ConversionsApi.md#updatecustomconversiongoal) | **PATCH** /v1/ads/conversions/custom-goals/{goalId} | Update a custom conversion goal
 *CustomFieldsApi* | [**clearContactFieldValue**](docs/Api/CustomFieldsApi.md#clearcontactfieldvalue) | **DELETE** /v1/contacts/{contactId}/fields/{slug} | Clear custom field value
 *CustomFieldsApi* | [**createCustomField**](docs/Api/CustomFieldsApi.md#createcustomfield) | **POST** /v1/custom-fields | Create custom field
 *CustomFieldsApi* | [**deleteCustomField**](docs/Api/CustomFieldsApi.md#deletecustomfield) | **DELETE** /v1/custom-fields/{fieldId} | Delete custom field
@@ -961,9 +967,6 @@ Class | Method | HTTP request | Description
 - [ApiKeyProfileIdsInner](docs/Model/ApiKeyProfileIdsInner.md)
 - [AppealSmsRegistration200Response](docs/Model/AppealSmsRegistration200Response.md)
 - [AppealSmsRegistrationRequest](docs/Model/AppealSmsRegistrationRequest.md)
-- [ApplyGoogleRecommendations200Response](docs/Model/ApplyGoogleRecommendations200Response.md)
-- [ApplyGoogleRecommendationsRequest](docs/Model/ApplyGoogleRecommendationsRequest.md)
-- [ApplyGoogleRecommendationsRequestRecommendationsInner](docs/Model/ApplyGoogleRecommendationsRequestRecommendationsInner.md)
 - [ApproveWhatsAppGroupJoinRequestsRequest](docs/Model/ApproveWhatsAppGroupJoinRequestsRequest.md)
 - [ArchiveLeadForm200Response](docs/Model/ArchiveLeadForm200Response.md)
 - [AssignGoogleBusinessLocation200Response](docs/Model/AssignGoogleBusinessLocation200Response.md)
@@ -1195,6 +1198,8 @@ Class | Method | HTTP request | Description
 - [CreateConversionDestination201Response](docs/Model/CreateConversionDestination201Response.md)
 - [CreateConversionDestinationRequest](docs/Model/CreateConversionDestinationRequest.md)
 - [CreateConversionDestinationRequestValue](docs/Model/CreateConversionDestinationRequestValue.md)
+- [CreateCustomConversionGoal201Response](docs/Model/CreateCustomConversionGoal201Response.md)
+- [CreateCustomConversionGoalRequest](docs/Model/CreateCustomConversionGoalRequest.md)
 - [CreateCustomConversionRequest](docs/Model/CreateCustomConversionRequest.md)
 - [CreateCustomField200Response](docs/Model/CreateCustomField200Response.md)
 - [CreateCustomFieldRequest](docs/Model/CreateCustomFieldRequest.md)
@@ -1411,7 +1416,6 @@ Class | Method | HTTP request | Description
 - [DiscordRole](docs/Model/DiscordRole.md)
 - [DiscordScheduledEvent](docs/Model/DiscordScheduledEvent.md)
 - [DiscordScheduledEventEntityMetadata](docs/Model/DiscordScheduledEventEntityMetadata.md)
-- [DismissGoogleRecommendationsRequest](docs/Model/DismissGoogleRecommendationsRequest.md)
 - [DmButton](docs/Model/DmButton.md)
 - [DownloadTikTokVideo200Response](docs/Model/DownloadTikTokVideo200Response.md)
 - [DownloadTikTokVideo200ResponseFormatsInner](docs/Model/DownloadTikTokVideo200ResponseFormatsInner.md)
@@ -1558,6 +1562,7 @@ Class | Method | HTTP request | Description
 - [GetCampaignAdSchedule200ResponsePerformanceByHourInner](docs/Model/GetCampaignAdSchedule200ResponsePerformanceByHourInner.md)
 - [GetCampaignAnalytics202Response](docs/Model/GetCampaignAnalytics202Response.md)
 - [GetCampaignBidding200Response](docs/Model/GetCampaignBidding200Response.md)
+- [GetCampaignConversionGoals200Response](docs/Model/GetCampaignConversionGoals200Response.md)
 - [GetCampaignTargeting200Response](docs/Model/GetCampaignTargeting200Response.md)
 - [GetCampaignTargeting200ResponseDevicesInner](docs/Model/GetCampaignTargeting200ResponseDevicesInner.md)
 - [GetCampaignTargeting200ResponseLanguagesInner](docs/Model/GetCampaignTargeting200ResponseLanguagesInner.md)
@@ -1874,6 +1879,7 @@ Class | Method | HTTP request | Description
 - [GoogleAssetGroupAssetLink](docs/Model/GoogleAssetGroupAssetLink.md)
 - [GoogleAssetGroupAssetUnlink](docs/Model/GoogleAssetGroupAssetUnlink.md)
 - [GoogleAssetUpdate](docs/Model/GoogleAssetUpdate.md)
+- [GoogleBiddableGoalInput](docs/Model/GoogleBiddableGoalInput.md)
 - [GoogleBusinessPlatformData](docs/Model/GoogleBusinessPlatformData.md)
 - [GoogleBusinessPlatformDataCallToAction](docs/Model/GoogleBusinessPlatformDataCallToAction.md)
 - [GoogleBusinessPlatformDataEvent](docs/Model/GoogleBusinessPlatformDataEvent.md)
@@ -1886,6 +1892,11 @@ Class | Method | HTTP request | Description
 - [GoogleBusinessReview](docs/Model/GoogleBusinessReview.md)
 - [GoogleBusinessReviewReviewReply](docs/Model/GoogleBusinessReviewReviewReply.md)
 - [GoogleBusinessReviewReviewer](docs/Model/GoogleBusinessReviewReviewer.md)
+- [GoogleCampaignConversionGoals](docs/Model/GoogleCampaignConversionGoals.md)
+- [GoogleCampaignConversionGoalsGoalsInner](docs/Model/GoogleCampaignConversionGoalsGoalsInner.md)
+- [GoogleCustomConversionGoal](docs/Model/GoogleCustomConversionGoal.md)
+- [GoogleCustomerConversionGoal](docs/Model/GoogleCustomerConversionGoal.md)
+- [GoogleCustomerConversionGoalConversionActionsInner](docs/Model/GoogleCustomerConversionGoalConversionActionsInner.md)
 - [GoogleListingGroupDimension](docs/Model/GoogleListingGroupDimension.md)
 - [GoogleListingGroupDimensionProductBrand](docs/Model/GoogleListingGroupDimensionProductBrand.md)
 - [GoogleListingGroupDimensionProductCategory](docs/Model/GoogleListingGroupDimensionProductCategory.md)
@@ -1904,10 +1915,6 @@ Class | Method | HTTP request | Description
 - [GooglePmaxAssetGroupInputImages](docs/Model/GooglePmaxAssetGroupInputImages.md)
 - [GooglePmaxAssetGroupUpdate](docs/Model/GooglePmaxAssetGroupUpdate.md)
 - [GooglePmaxAssetGroupUpdateImages](docs/Model/GooglePmaxAssetGroupUpdateImages.md)
-- [GoogleRecommendation](docs/Model/GoogleRecommendation.md)
-- [GoogleRecommendationImpact](docs/Model/GoogleRecommendationImpact.md)
-- [GoogleRecommendationMetrics](docs/Model/GoogleRecommendationMetrics.md)
-- [GoogleRecommendationResult](docs/Model/GoogleRecommendationResult.md)
 - [GoogleRsaDescription](docs/Model/GoogleRsaDescription.md)
 - [GoogleRsaHeadline](docs/Model/GoogleRsaHeadline.md)
 - [GoogleSitelink](docs/Model/GoogleSitelink.md)
@@ -2014,6 +2021,7 @@ Class | Method | HTTP request | Description
 - [ListAdCatalogProductSets200ResponseProductSetsInner](docs/Model/ListAdCatalogProductSets200ResponseProductSetsInner.md)
 - [ListAdCatalogProducts200Response](docs/Model/ListAdCatalogProducts200Response.md)
 - [ListAdCatalogs200Response](docs/Model/ListAdCatalogs200Response.md)
+- [ListAdConversionGoals200Response](docs/Model/ListAdConversionGoals200Response.md)
 - [ListAdCreatives200Response](docs/Model/ListAdCreatives200Response.md)
 - [ListAdGroupAssets200Response](docs/Model/ListAdGroupAssets200Response.md)
 - [ListAdGroupAssets200ResponseCalloutsInner](docs/Model/ListAdGroupAssets200ResponseCalloutsInner.md)
@@ -2088,6 +2096,7 @@ Class | Method | HTTP request | Description
 - [ListConversionDestinations200Response](docs/Model/ListConversionDestinations200Response.md)
 - [ListConversionDestinations200ResponseDestinationsInner](docs/Model/ListConversionDestinations200ResponseDestinationsInner.md)
 - [ListConversionDestinations200ResponseDestinationsInnerConversionEventsInner](docs/Model/ListConversionDestinations200ResponseDestinationsInnerConversionEventsInner.md)
+- [ListCustomConversionGoals200Response](docs/Model/ListCustomConversionGoals200Response.md)
 - [ListCustomConversions200Response](docs/Model/ListCustomConversions200Response.md)
 - [ListCustomFields200Response](docs/Model/ListCustomFields200Response.md)
 - [ListCustomFields200ResponseFieldsInner](docs/Model/ListCustomFields200ResponseFieldsInner.md)
@@ -2110,7 +2119,6 @@ Class | Method | HTTP request | Description
 - [ListGoogleBusinessMedia200ResponseMediaItemsInnerLocationAssociation](docs/Model/ListGoogleBusinessMedia200ResponseMediaItemsInnerLocationAssociation.md)
 - [ListGoogleBusinessPlaceActions200Response](docs/Model/ListGoogleBusinessPlaceActions200Response.md)
 - [ListGoogleBusinessPlaceActions200ResponsePlaceActionLinksInner](docs/Model/ListGoogleBusinessPlaceActions200ResponsePlaceActionLinksInner.md)
-- [ListGoogleRecommendations200Response](docs/Model/ListGoogleRecommendations200Response.md)
 - [ListHighDemandPeriods200Response](docs/Model/ListHighDemandPeriods200Response.md)
 - [ListImessageAudience200Response](docs/Model/ListImessageAudience200Response.md)
 - [ListImessageAvailableNumbers200Response](docs/Model/ListImessageAvailableNumbers200Response.md)
@@ -2397,6 +2405,7 @@ Class | Method | HTTP request | Description
 - [RemoveCampaignAssets200Response](docs/Model/RemoveCampaignAssets200Response.md)
 - [RemoveCampaignAssetsRequest](docs/Model/RemoveCampaignAssetsRequest.md)
 - [RemoveConversionAssociations200Response](docs/Model/RemoveConversionAssociations200Response.md)
+- [RemoveCustomConversionGoal200Response](docs/Model/RemoveCustomConversionGoal200Response.md)
 - [RemoveDiscordMemberRole200Response](docs/Model/RemoveDiscordMemberRole200Response.md)
 - [RemoveGoogleAssetGroup200Response](docs/Model/RemoveGoogleAssetGroup200Response.md)
 - [RemoveMessageReaction200Response](docs/Model/RemoveMessageReaction200Response.md)
@@ -2713,6 +2722,8 @@ Class | Method | HTTP request | Description
 - [UpdateAdCampaignStatusRequest](docs/Model/UpdateAdCampaignStatusRequest.md)
 - [UpdateAdCatalogProductRequest](docs/Model/UpdateAdCatalogProductRequest.md)
 - [UpdateAdCatalogProductSetRequest](docs/Model/UpdateAdCatalogProductSetRequest.md)
+- [UpdateAdConversionGoals200Response](docs/Model/UpdateAdConversionGoals200Response.md)
+- [UpdateAdConversionGoalsRequest](docs/Model/UpdateAdConversionGoalsRequest.md)
 - [UpdateAdCreative200Response](docs/Model/UpdateAdCreative200Response.md)
 - [UpdateAdCreativeRequest](docs/Model/UpdateAdCreativeRequest.md)
 - [UpdateAdKeyword200Response](docs/Model/UpdateAdKeyword200Response.md)
@@ -2765,6 +2776,8 @@ Class | Method | HTTP request | Description
 - [UpdateCampaignAdScheduleRequestScheduleInner](docs/Model/UpdateCampaignAdScheduleRequestScheduleInner.md)
 - [UpdateCampaignAssets200Response](docs/Model/UpdateCampaignAssets200Response.md)
 - [UpdateCampaignAssetsRequest](docs/Model/UpdateCampaignAssetsRequest.md)
+- [UpdateCampaignConversionGoals200Response](docs/Model/UpdateCampaignConversionGoals200Response.md)
+- [UpdateCampaignConversionGoalsRequest](docs/Model/UpdateCampaignConversionGoalsRequest.md)
 - [UpdateCampaignTargeting200Response](docs/Model/UpdateCampaignTargeting200Response.md)
 - [UpdateCampaignTargeting200ResponseDevicesInner](docs/Model/UpdateCampaignTargeting200ResponseDevicesInner.md)
 - [UpdateCampaignTargeting200ResponseLanguagesInner](docs/Model/UpdateCampaignTargeting200ResponseLanguagesInner.md)
@@ -2783,8 +2796,13 @@ Class | Method | HTTP request | Description
 - [UpdateContact200Response](docs/Model/UpdateContact200Response.md)
 - [UpdateContact200ResponseContact](docs/Model/UpdateContact200ResponseContact.md)
 - [UpdateContactRequest](docs/Model/UpdateContactRequest.md)
+- [UpdateConversionAction200Response](docs/Model/UpdateConversionAction200Response.md)
+- [UpdateConversionAction200ResponseAction](docs/Model/UpdateConversionAction200ResponseAction.md)
+- [UpdateConversionActionRequest](docs/Model/UpdateConversionActionRequest.md)
 - [UpdateConversionDestinationRequest](docs/Model/UpdateConversionDestinationRequest.md)
 - [UpdateConversionDestinationRequestValue](docs/Model/UpdateConversionDestinationRequestValue.md)
+- [UpdateCustomConversionGoal200Response](docs/Model/UpdateCustomConversionGoal200Response.md)
+- [UpdateCustomConversionGoalRequest](docs/Model/UpdateCustomConversionGoalRequest.md)
 - [UpdateCustomField200Response](docs/Model/UpdateCustomField200Response.md)
 - [UpdateCustomField200ResponseField](docs/Model/UpdateCustomField200ResponseField.md)
 - [UpdateCustomFieldRequest](docs/Model/UpdateCustomFieldRequest.md)
@@ -3159,6 +3177,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.109.0`
+- API version: `1.110.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
