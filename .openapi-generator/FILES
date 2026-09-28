@@ -27,6 +27,7 @@ docs/Api/ContactsApi.md
 docs/Api/ConversionsApi.md
 docs/Api/CustomFieldsApi.md
 docs/Api/DiscordApi.md
+docs/Api/FeedbackApi.md
 docs/Api/GMBAttributesApi.md
 docs/Api/GMBFoodMenusApi.md
 docs/Api/GMBLocationDetailsApi.md
@@ -670,6 +671,7 @@ docs/Model/FacebookPostEarningsResponseMetricsValue.md
 docs/Model/FacebookPostEarningsResponseUnavailableMetricsInner.md
 docs/Model/FacebookSettings.md
 docs/Model/FacebookSettingsCarouselCardsInner.md
+docs/Model/FeedbackReceipt.md
 docs/Model/FetchGoogleBusinessVerificationOptions200Response.md
 docs/Model/FetchGoogleBusinessVerificationOptions200ResponseOptionsInner.md
 docs/Model/FetchGoogleBusinessVerificationOptionsRequest.md
@@ -1855,6 +1857,8 @@ docs/Model/StartSmsRegistrationRequestCampaign.md
 docs/Model/StartSmsRegistrationRequestTollFree.md
 docs/Model/StartWhatsAppCallerIdVerification200Response.md
 docs/Model/StartWhatsAppCallerIdVerificationRequest.md
+docs/Model/SubmitFeedbackRequest.md
+docs/Model/SubmitFeedbackRequestAgent.md
 docs/Model/SubmitPhoneNumberKyc200Response.md
 docs/Model/SubmitPhoneNumberKyc200ResponseNumbersInner.md
 docs/Model/SubmitPhoneNumberKyc200ResponsePhoneNumber.md
@@ -2380,6 +2384,7 @@ lib/Api/ContactsApi.php
 lib/Api/ConversionsApi.php
 lib/Api/CustomFieldsApi.php
 lib/Api/DiscordApi.php
+lib/Api/FeedbackApi.php
 lib/Api/GMBAttributesApi.php
 lib/Api/GMBFoodMenusApi.php
 lib/Api/GMBLocationDetailsApi.php
@@ -3027,6 +3032,7 @@ lib/Model/FacebookPostEarningsResponseMetricsValue.php
 lib/Model/FacebookPostEarningsResponseUnavailableMetricsInner.php
 lib/Model/FacebookSettings.php
 lib/Model/FacebookSettingsCarouselCardsInner.php
+lib/Model/FeedbackReceipt.php
 lib/Model/FetchGoogleBusinessVerificationOptions200Response.php
 lib/Model/FetchGoogleBusinessVerificationOptions200ResponseOptionsInner.php
 lib/Model/FetchGoogleBusinessVerificationOptionsRequest.php
@@ -4213,6 +4219,8 @@ lib/Model/StartSmsRegistrationRequestCampaign.php
 lib/Model/StartSmsRegistrationRequestTollFree.php
 lib/Model/StartWhatsAppCallerIdVerification200Response.php
 lib/Model/StartWhatsAppCallerIdVerificationRequest.php
+lib/Model/SubmitFeedbackRequest.php
+lib/Model/SubmitFeedbackRequestAgent.php
 lib/Model/SubmitPhoneNumberKyc200Response.php
 lib/Model/SubmitPhoneNumberKyc200ResponseNumbersInner.php
 lib/Model/SubmitPhoneNumberKyc200ResponsePhoneNumber.php
@@ -4715,3 +4723,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Api/FeedbackApiTest.php
+test/Model/FeedbackReceiptTest.php
+test/Model/SubmitFeedbackRequestAgentTest.php
+test/Model/SubmitFeedbackRequestTest.php
