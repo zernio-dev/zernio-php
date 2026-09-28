@@ -29,7 +29,7 @@ addTrackingTagSharedAccount($account_id, $tag_id, $add_tracking_tag_shared_accou
 
 Share with an ad account
 
-Shares the pixel with another ad account so campaigns/audiences in that account can use it. Requires that you administer both the pixel's owning Business Manager and the target ad account; a pixel on a personal (non-BM) ad account can't be shared (Meta will reject the call). Meta only (platform `metaads`); other platforms return 405.
+Shares the pixel with another ad account so campaigns/audiences in that account can use it. Requires that you administer both the pixel's owning Business Manager and the target ad account; a pixel on a personal (non-BM) ad account can't be shared (Meta will reject the call). Meta only (platform `metaads`); other platforms return 501.
 
 ### Example
 
@@ -93,7 +93,7 @@ createTrackingTag($account_id, $create_tracking_tag_request): \Zernio\Model\Crea
 
 Create a tracking tag
 
-Meta: creates a Meta Pixel on the given ad account (`POST /act_{id}/adspixels`, where `name` is the only input). Returns the created tag including its install `code`. The pixel is owned by the Business Manager that owns the ad account; a pixel created on a personal (non-BM) ad account ends up with `ownerBusinessId: null` and can't be shared with other ad accounts.  Creating a Meta pixel does NOT install it. Install the returned `code` snippet on the site, or send events server-side via `POST /v1/ads/conversions`. The check `installed` is derived from `lastFiredTime`.  OpenAI Ads: creates an OpenAI pixel AND provisions a Conversions API key for it in the same call (`adAccountId` is required by this endpoint but ignored: one API key maps to exactly one ad account, so there's nothing to select). Returns 422 (`FEATURE_NOT_AVAILABLE`) if the ad account isn't enabled for pixel management; contact your OpenAI partner representative to enable it. There is no delete API for OpenAI pixels. If the pixel is created but the Conversions API key provisioning then fails, the pixel is left live on OpenAI (it cannot be cleaned up) and the error message names the surviving pixel id and warns against retrying, since a retry would create a second, orphaned pixel.  NOT idempotent on either platform: each call creates a new pixel (and, for OpenAI, a new Conversions API key plus, with `defaultEventType`, a new conversion event setting). Do not retry blindly on timeout. Meta (platform `metaads`) and OpenAI Ads (platform `openaiads`); other platforms return 405.
+Meta: creates a Meta Pixel on the given ad account (`POST /act_{id}/adspixels`, where `name` is the only input). Returns the created tag including its install `code`. The pixel is owned by the Business Manager that owns the ad account; a pixel created on a personal (non-BM) ad account ends up with `ownerBusinessId: null` and can't be shared with other ad accounts.  Creating a Meta pixel does NOT install it. Install the returned `code` snippet on the site, or send events server-side via `POST /v1/ads/conversions`. The check `installed` is derived from `lastFiredTime`.  OpenAI Ads: creates an OpenAI pixel AND provisions a Conversions API key for it in the same call (`adAccountId` is required by this endpoint but ignored: one API key maps to exactly one ad account, so there's nothing to select). Returns 422 (`FEATURE_NOT_AVAILABLE`) if the ad account isn't enabled for pixel management; contact your OpenAI partner representative to enable it. There is no delete API for OpenAI pixels. If the pixel is created but the Conversions API key provisioning then fails, the pixel is left live on OpenAI (it cannot be cleaned up) and the error message names the surviving pixel id and warns against retrying, since a retry would create a second, orphaned pixel.  NOT idempotent on either platform: each call creates a new pixel (and, for OpenAI, a new Conversions API key plus, with `defaultEventType`, a new conversion event setting). Do not retry blindly on timeout. Meta (platform `metaads`) and OpenAI Ads (platform `openaiads`); other platforms return 501.
 
 ### Example
 
@@ -210,12 +210,12 @@ try {
 ## `getTrackingTag()`
 
 ```php
-getTrackingTag($account_id, $tag_id): \Zernio\Model\GetTrackingTag200Response
+getTrackingTag($account_id, $tag_id, $ad_account_id): \Zernio\Model\GetTrackingTag200Response
 ```
 
 Get a tracking tag
 
-Returns the full tag record including the base-code `code` snippet, `lastFiredTime`, `ownerBusinessId`, `isUnavailable`, etc. Meta only (platform `metaads`); other platforms return 405. OpenAI Ads has no get-by-id endpoint, so it 405s here too. Use `GET /v1/accounts/{accountId}/tracking-tags` (list) instead.
+Returns the full tag record including the base-code `code` snippet, `lastFiredTime`, `ownerBusinessId`, `isUnavailable`, etc. Meta only (platform `metaads`); other platforms return 501. OpenAI Ads has no get-by-id endpoint, so it answers 501 here too. Use `GET /v1/accounts/{accountId}/tracking-tags` (list) instead.
 
 ### Example
 
@@ -235,10 +235,11 @@ $apiInstance = new Zernio\Api\TrackingTagsApi(
     $config
 );
 $account_id = 'account_id_example'; // string
-$tag_id = 'tag_id_example'; // string | Pixel id.
+$tag_id = 'tag_id_example'; // string | Tag id (`TrackingTag.id`).
+$ad_account_id = 'ad_account_id_example'; // string | Scopes the lookup on platforms whose tag ids live inside an ad account. Ignored elsewhere.
 
 try {
-    $result = $apiInstance->getTrackingTag($account_id, $tag_id);
+    $result = $apiInstance->getTrackingTag($account_id, $tag_id, $ad_account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TrackingTagsApi->getTrackingTag: ', $e->getMessage(), PHP_EOL;
@@ -250,7 +251,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **tag_id** | **string**| Pixel id. | |
+| **tag_id** | **string**| Tag id (&#x60;TrackingTag.id&#x60;). | |
+| **ad_account_id** | **string**| Scopes the lookup on platforms whose tag ids live inside an ad account. Ignored elsewhere. | [optional] |
 
 ### Return type
 
@@ -272,12 +274,12 @@ try {
 ## `getTrackingTagStats()`
 
 ```php
-getTrackingTagStats($account_id, $tag_id, $aggregation, $start_time, $end_time): \Zernio\Model\GetTrackingTagStats200Response
+getTrackingTagStats($account_id, $tag_id, $ad_account_id, $aggregation, $start_time, $end_time): \Zernio\Model\GetTrackingTagStats200Response
 ```
 
 Get aggregated event stats
 
-Returns aggregated event counts for the pixel (`GET /{pixel_id}/stats`). Rows are passed through from Meta as-is; their shape depends on the `aggregation` requested. Meta only (platform `metaads`); other platforms return 405.
+Returns event counts / health for the tag, where the platform exposes them. Meta: aggregated counts (`GET /{pixel_id}/stats`), rows passed through as-is; their shape depends on the `aggregation` requested. Platforms without a stats API answer 501.
 
 ### Example
 
@@ -297,13 +299,14 @@ $apiInstance = new Zernio\Api\TrackingTagsApi(
     $config
 );
 $account_id = 'account_id_example'; // string
-$tag_id = 'tag_id_example'; // string | Pixel id.
-$aggregation = 'event'; // string | Aggregation dimension. Defaults to `event`.
+$tag_id = 'tag_id_example'; // string | Tag id (`TrackingTag.id`).
+$ad_account_id = 'ad_account_id_example'; // string | Scopes the lookup on platforms whose tag ids live inside an ad account. Ignored elsewhere.
+$aggregation = 'event'; // string | Meta only (400 on other platforms): aggregation dimension. Defaults to `event`.
 $start_time = 56; // int | Unix seconds lower bound.
 $end_time = 56; // int | Unix seconds upper bound.
 
 try {
-    $result = $apiInstance->getTrackingTagStats($account_id, $tag_id, $aggregation, $start_time, $end_time);
+    $result = $apiInstance->getTrackingTagStats($account_id, $tag_id, $ad_account_id, $aggregation, $start_time, $end_time);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TrackingTagsApi->getTrackingTagStats: ', $e->getMessage(), PHP_EOL;
@@ -315,8 +318,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **tag_id** | **string**| Pixel id. | |
-| **aggregation** | **string**| Aggregation dimension. Defaults to &#x60;event&#x60;. | [optional] [default to &#39;event&#39;] |
+| **tag_id** | **string**| Tag id (&#x60;TrackingTag.id&#x60;). | |
+| **ad_account_id** | **string**| Scopes the lookup on platforms whose tag ids live inside an ad account. Ignored elsewhere. | [optional] |
+| **aggregation** | **string**| Meta only (400 on other platforms): aggregation dimension. Defaults to &#x60;event&#x60;. | [optional] [default to &#39;event&#39;] |
 | **start_time** | **int**| Unix seconds lower bound. | [optional] |
 | **end_time** | **int**| Unix seconds upper bound. | [optional] |
 
@@ -340,12 +344,12 @@ try {
 ## `getTrackingTagStoreInstall()`
 
 ```php
-getTrackingTagStoreInstall($account_id, $tag_id, $store_account_id): \Zernio\Model\GetTrackingTagStoreInstall200Response
+getTrackingTagStoreInstall($account_id, $tag_id, $store_account_id, $ad_account_id): \Zernio\Model\GetTrackingTagStoreInstall200Response
 ```
 
 Get store install status
 
-Whether this pixel is the one the Shopify store fires. `installedTagId` names the pixel the store currently fires, which can be a different tag. Meta only (platform `metaads`).  WordPress: whether the Zernio widget for this pixel is live (in an active widget area, script intact), plus a read-only `preflight` with the theme's widget areas and, when an install would be blocked, the `reason` POST would return. The preflight reads capabilities only, so `ready: true` is not a guarantee: `DISALLOW_UNFILTERED_HTML` or a multisite admin who is not a Super Admin still strips the script, which POST detects.
+Whether this tag is the one the Shopify store fires for its platform. `installedTagId` names the tag of that platform the store currently fires, which can be a different tag, and `tags` lists every Zernio tag on the store (all platforms).  WordPress: whether the Zernio widget for this pixel is live (in an active widget area, script intact), plus a read-only `preflight` with the theme's widget areas and, when an install would be blocked, the `reason` POST would return. The preflight reads capabilities only, so `ready: true` is not a guarantee: `DISALLOW_UNFILTERED_HTML` or a multisite admin who is not a Super Admin still strips the script, which POST detects. `tags` lists every Zernio widget on the site (all platforms, with `active`).
 
 ### Example
 
@@ -365,11 +369,12 @@ $apiInstance = new Zernio\Api\TrackingTagsApi(
     $config
 );
 $account_id = 'account_id_example'; // string
-$tag_id = 'tag_id_example'; // string | Meta pixel id.
+$tag_id = 'tag_id_example'; // string | Tag id (`TrackingTag.id`).
 $store_account_id = 'store_account_id_example'; // string | The connected Shopify or WordPress account id.
+$ad_account_id = 'ad_account_id_example'; // string | Scopes the tag lookup on platforms whose tag ids live inside an ad account.
 
 try {
-    $result = $apiInstance->getTrackingTagStoreInstall($account_id, $tag_id, $store_account_id);
+    $result = $apiInstance->getTrackingTagStoreInstall($account_id, $tag_id, $store_account_id, $ad_account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TrackingTagsApi->getTrackingTagStoreInstall: ', $e->getMessage(), PHP_EOL;
@@ -381,8 +386,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **tag_id** | **string**| Meta pixel id. | |
+| **tag_id** | **string**| Tag id (&#x60;TrackingTag.id&#x60;). | |
 | **store_account_id** | **string**| The connected Shopify or WordPress account id. | |
+| **ad_account_id** | **string**| Scopes the tag lookup on platforms whose tag ids live inside an ad account. | [optional] |
 
 ### Return type
 
@@ -409,7 +415,7 @@ installTrackingTagOnStore($account_id, $tag_id, $install_tracking_tag_on_store_r
 
 Install on a Shopify store or WordPress site
 
-Puts the Meta pixel on a connected Shopify store's storefront and checkout through Zernio's Shopify web pixel (a Shopify app pixel, no theme edits). The store then sends PageView, ViewContent, AddToCart, Search, InitiateCheckout, AddPaymentInfo and Purchase (with value, currency, content_ids and contents) to the pixel, each with an event id. Purchase uses `shopify_order_{orderId}` as its event id, so a Conversions API Purchase you send for the same order with that `eventId` is deduplicated by Meta.  Idempotent: a store runs one Zernio pixel, so calling it again updates the install and installing a different tag replaces the previous one (reported in `replacedTagId`). Events respect the store's customer privacy settings (marketing consent).  `accountId` is the Meta ads account that owns the pixel (`tagId`); `storeAccountId` is the Shopify account. Stores connected before pixel support must re-approve the Zernio app: the call then answers 409 `reconnect_required` with `details.authUrl` to send the merchant to (the Shopify account id stays the same). Meta only (platform `metaads`); other platforms return 405.  **WordPress** (`storeAccountId` is a connected WordPress.com or self-hosted site): Zernio adds a Custom HTML widget with the Meta pixel base code (fbevents.js, `init`, `PageView`) to a widget area of the active theme (a footer area when there is one, else the first active area; pass `sidebarId` to choose), then reads the widget back to confirm WordPress kept the `<script>` tag. The widget carries a Zernio marker, so the call is idempotent per pixel: repeating it updates or moves the same widget, and pixel code the site owner pasted by hand is never touched. Several pixels can run side by side (one widget each). When the site cannot run the pixel, nothing is left behind and the call answers 422 `tracking_tag_install_blocked` with `details.reason`: - `insufficient_permissions`: the connected user lacks `edit_theme_options` (needs Administrator). - `scripts_stripped`: WordPress removed the script (the user lacks `unfiltered_html`, e.g. a multisite admin who is not a Super Admin, or `DISALLOW_UNFILTERED_HTML` is set). - `wordpress_com_plan`: a WordPress.com plan that strips scripts (plans without plugins). - `no_widget_areas`: the theme has no widget areas (block themes such as Twenty Twenty-Five). - `widgets_api_unavailable`: no widgets REST API (WordPress older than 5.8, or disabled). The `error` message names the manual alternative (Meta's official WordPress plugin). With `verifyHomepage` (default true) the homepage is fetched afterwards and `homepageCheck` says whether the pixel is visible; `not_found` can be a stale page cache, the widget read-back is authoritative.
+Puts the Meta pixel on a connected Shopify store's storefront and checkout through Zernio's Shopify web pixel (a Shopify app pixel, no theme edits). The store then sends PageView, ViewContent, AddToCart, Search, InitiateCheckout, AddPaymentInfo and Purchase (with value, currency, content_ids and contents) to the pixel, each with an event id. Purchase uses `shopify_order_{orderId}` as its event id, so a Conversions API Purchase you send for the same order with that `eventId` is deduplicated by Meta.  Idempotent: a store runs one Zernio web pixel holding one tag per platform, so calling it again updates the install, installing a different tag of the same platform replaces the previous one (reported in `replacedTagId`), and other platforms' tags are kept. Events respect the store's customer privacy settings (marketing consent).  `accountId` is the Meta ads account that owns the pixel (`tagId`); `storeAccountId` is the Shopify account. Stores connected before pixel support must re-approve the Zernio app: the call then answers 409 `reconnect_required` with `details.authUrl` to send the merchant to (the Shopify account id stays the same). Meta only (platform `metaads`); other platforms return 501.  **WordPress** (`storeAccountId` is a connected WordPress.com or self-hosted site): Zernio adds a Custom HTML widget with the Meta pixel base code (fbevents.js, `init`, `PageView`) to a widget area of the active theme (a footer area when there is one, else the first active area; pass `sidebarId` to choose), then reads the widget back to confirm WordPress kept the `<script>` tag. The widget carries a Zernio marker, so the call is idempotent per pixel: repeating it updates or moves the same widget, and pixel code the site owner pasted by hand is never touched. Several pixels can run side by side (one widget each). When the site cannot run the pixel, nothing is left behind and the call answers 422 `tracking_tag_install_blocked` with `details.reason`: - `insufficient_permissions`: the connected user lacks `edit_theme_options` (needs Administrator). - `scripts_stripped`: WordPress removed the script (the user lacks `unfiltered_html`, e.g. a multisite admin who is not a Super Admin, or `DISALLOW_UNFILTERED_HTML` is set). - `wordpress_com_plan`: a WordPress.com plan that strips scripts (plans without plugins). - `no_widget_areas`: the theme has no widget areas (block themes such as Twenty Twenty-Five). - `widgets_api_unavailable`: no widgets REST API (WordPress older than 5.8, or disabled). The `error` message names the manual alternative (Meta's official WordPress plugin). With `verifyHomepage` (default true) the homepage is fetched afterwards and `homepageCheck` says whether the pixel is visible; `not_found` can be a stale page cache, the widget read-back is authoritative.
 
 ### Example
 
@@ -429,7 +435,7 @@ $apiInstance = new Zernio\Api\TrackingTagsApi(
     $config
 );
 $account_id = 'account_id_example'; // string
-$tag_id = 'tag_id_example'; // string | Meta pixel id.
+$tag_id = 'tag_id_example'; // string | Tag id (`TrackingTag.id`).
 $install_tracking_tag_on_store_request = new \Zernio\Model\InstallTrackingTagOnStoreRequest(); // \Zernio\Model\InstallTrackingTagOnStoreRequest
 
 try {
@@ -445,7 +451,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **tag_id** | **string**| Meta pixel id. | |
+| **tag_id** | **string**| Tag id (&#x60;TrackingTag.id&#x60;). | |
 | **install_tracking_tag_on_store_request** | [**\Zernio\Model\InstallTrackingTagOnStoreRequest**](../Model/InstallTrackingTagOnStoreRequest.md)|  | |
 
 ### Return type
@@ -473,7 +479,7 @@ listTrackingTagSharedAccounts($account_id, $tag_id): \Zernio\Model\ListTrackingT
 
 List accounts it is shared with
 
-Meta only (platform `metaads`); other platforms return 405.
+Meta only (platform `metaads`); other platforms return 501.
 
 ### Example
 
@@ -535,7 +541,7 @@ listTrackingTags($account_id, $ad_account_id): \Zernio\Model\ListTrackingTags200
 
 List tracking tags
 
-Returns the tracking tags (Meta Pixels, or OpenAI Ads pixels) the connected ads account can see. Pass `?adAccountId=act_...` (Meta only) to scope the list to a single ad account; omit it to list every pixel reachable by the token (the name is then suffixed with the ad account it was discovered on, for disambiguation). The list view omits `code`. Call `getTrackingTag` for the install snippet and full detail (Meta only; OpenAI Ads has no get-by-id endpoint).  Meta (platform `metaads`) and OpenAI Ads (platform `openaiads`); other platforms return 405. The `accountId` must be the ads SocialAccount created by the Ads add-on connect flow (Meta) or the OpenAI Ads connect flow, not a Facebook/Instagram posting account. Get your Meta `act_...` ids from `GET /v1/ads/accounts`; `adAccountId` is ignored for OpenAI Ads (one API key maps to exactly one ad account).
+Returns the tracking tags (Meta Pixels, or OpenAI Ads pixels) the connected ads account can see. Pass `?adAccountId=act_...` (Meta only) to scope the list to a single ad account; omit it to list every pixel reachable by the token (the name is then suffixed with the ad account it was discovered on, for disambiguation). The list view omits `code`. Call `getTrackingTag` for the install snippet and full detail (Meta only; OpenAI Ads has no get-by-id endpoint).  Meta (platform `metaads`) and OpenAI Ads (platform `openaiads`); other platforms return 501. The `accountId` must be the ads SocialAccount created by the Ads add-on connect flow (Meta) or the OpenAI Ads connect flow, not a Facebook/Instagram posting account. Get your Meta `act_...` ids from `GET /v1/ads/accounts`; `adAccountId` is ignored for OpenAI Ads (one API key maps to exactly one ad account).
 
 ### Example
 
@@ -592,12 +598,12 @@ try {
 ## `removeTrackingTagFromStore()`
 
 ```php
-removeTrackingTagFromStore($account_id, $tag_id, $store_account_id): \Zernio\Model\RemoveTrackingTagFromStore200Response
+removeTrackingTagFromStore($account_id, $tag_id, $store_account_id, $ad_account_id): \Zernio\Model\RemoveTrackingTagFromStore200Response
 ```
 
 Remove from a Shopify store or WordPress site
 
-Removes the pixel from the store. Idempotent: nothing installed returns 200 with `installed: false`. If the store fires a different pixel, nothing is removed and the call answers 409 `invalid_resource_state`. Meta only (platform `metaads`).  WordPress: deletes every widget Zernio created for this pixel and reports how many in `removed` (0 when nothing was installed). Pixel code added by hand is left alone.
+Removes the tag from the store. Idempotent: nothing installed returns 200 with `installed: false`. If the store fires a different tag of the same platform, nothing is removed and the call answers 409 `invalid_resource_state`. Shopify: other platforms' tags stay; the web pixel itself is deleted once no tag remains.  WordPress: deletes every widget Zernio created for this pixel and reports how many in `removed` (0 when nothing was installed). Pixel code added by hand is left alone.
 
 ### Example
 
@@ -617,11 +623,12 @@ $apiInstance = new Zernio\Api\TrackingTagsApi(
     $config
 );
 $account_id = 'account_id_example'; // string
-$tag_id = 'tag_id_example'; // string | Meta pixel id.
+$tag_id = 'tag_id_example'; // string | Tag id (`TrackingTag.id`).
 $store_account_id = 'store_account_id_example'; // string | The connected Shopify or WordPress account id.
+$ad_account_id = 'ad_account_id_example'; // string | Scopes the tag lookup on platforms whose tag ids live inside an ad account.
 
 try {
-    $result = $apiInstance->removeTrackingTagFromStore($account_id, $tag_id, $store_account_id);
+    $result = $apiInstance->removeTrackingTagFromStore($account_id, $tag_id, $store_account_id, $ad_account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TrackingTagsApi->removeTrackingTagFromStore: ', $e->getMessage(), PHP_EOL;
@@ -633,8 +640,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **tag_id** | **string**| Meta pixel id. | |
+| **tag_id** | **string**| Tag id (&#x60;TrackingTag.id&#x60;). | |
 | **store_account_id** | **string**| The connected Shopify or WordPress account id. | |
+| **ad_account_id** | **string**| Scopes the tag lookup on platforms whose tag ids live inside an ad account. | [optional] |
 
 ### Return type
 
@@ -661,7 +669,7 @@ removeTrackingTagSharedAccount($account_id, $tag_id, $ad_account_id)
 
 Stop sharing with an account
 
-`adAccountId` may be passed as a query parameter (recommended) or as a JSON body field for clients that can send DELETE bodies. Meta only (platform `metaads`); other platforms return 405.
+`adAccountId` may be passed as a query parameter (recommended) or as a JSON body field for clients that can send DELETE bodies. Meta only (platform `metaads`); other platforms return 501.
 
 ### Example
 
@@ -786,7 +794,7 @@ updateTrackingTag($account_id, $tag_id, $update_tracking_tag_request): \Zernio\M
 
 Update a tracking tag
 
-Partial-update a pixel. Whitelisted fields: `name` (rename), `enableAutomaticMatching`, `automaticMatchingFields`, `firstPartyCookieStatus`, `dataUseSetting`. At least one is required. Returns the re-fetched canonical tag. Meta only (platform `metaads`); other platforms return 405.  There is no DELETE: Meta has no API to delete a pixel. To stop using one, unshare it from your ad accounts (`DELETE .../tracking-tags/{tagId}/shared-accounts`) or disable it in Events Manager.
+Partial-update a pixel. Whitelisted fields: `name` (rename), `enableAutomaticMatching`, `automaticMatchingFields`, `firstPartyCookieStatus`, `dataUseSetting`. At least one is required. Returns the re-fetched canonical tag. Meta only (platform `metaads`); other platforms return 501.  There is no DELETE: Meta has no API to delete a pixel. To stop using one, unshare it from your ad accounts (`DELETE .../tracking-tags/{tagId}/shared-accounts`) or disable it in Events Manager.
 
 ### Example
 

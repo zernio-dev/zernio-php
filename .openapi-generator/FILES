@@ -1943,6 +1943,7 @@ docs/Model/StartSmsRegistrationRequestTollFree.md
 docs/Model/StartWhatsAppCallerIdVerification200Response.md
 docs/Model/StartWhatsAppCallerIdVerificationRequest.md
 docs/Model/StorePixelInstall.md
+docs/Model/StorePixelInstallTagsInner.md
 docs/Model/SubmitFeedbackRequest.md
 docs/Model/SubmitFeedbackRequestAgent.md
 docs/Model/SubmitPhoneNumberKyc200Response.md
@@ -1974,6 +1975,7 @@ docs/Model/TikTokDryRunVerdictTiktokInner.md
 docs/Model/TikTokPlatformData.md
 docs/Model/TikTokPlatformDataMusicSoundInfo.md
 docs/Model/TrackingTag.md
+docs/Model/TrackingTagEventsInner.md
 docs/Model/TrackingTagInstallBlockedReason.md
 docs/Model/TransferVoiceCall200Response.md
 docs/Model/TransferVoiceCallRequest.md
@@ -4402,6 +4404,7 @@ lib/Model/StartSmsRegistrationRequestTollFree.php
 lib/Model/StartWhatsAppCallerIdVerification200Response.php
 lib/Model/StartWhatsAppCallerIdVerificationRequest.php
 lib/Model/StorePixelInstall.php
+lib/Model/StorePixelInstallTagsInner.php
 lib/Model/SubmitFeedbackRequest.php
 lib/Model/SubmitFeedbackRequestAgent.php
 lib/Model/SubmitPhoneNumberKyc200Response.php
@@ -4433,6 +4436,7 @@ lib/Model/TikTokDryRunVerdictTiktokInner.php
 lib/Model/TikTokPlatformData.php
 lib/Model/TikTokPlatformDataMusicSoundInfo.php
 lib/Model/TrackingTag.php
+lib/Model/TrackingTagEventsInner.php
 lib/Model/TrackingTagInstallBlockedReason.php
 lib/Model/TransferVoiceCall200Response.php
 lib/Model/TransferVoiceCallRequest.php
@@ -4917,3 +4921,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/StorePixelInstallTagsInnerTest.php
+test/Model/TrackingTagEventsInnerTest.php
