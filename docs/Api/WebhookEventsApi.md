@@ -13,6 +13,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onAccountDisconnected()**](WebhookEventsApi.md#onAccountDisconnected) | **POST** /account.disconnected | Account disconnected event |
 | [**onAdStatusChanged()**](WebhookEventsApi.md#onAdStatusChanged) | **POST** /ad.status_changed | Ad status changed event |
 | [**onAnalyticsSynced()**](WebhookEventsApi.md#onAnalyticsSynced) | **POST** /analytics.synced | Analytics synced event |
+| [**onBrandedCallingIdentityActionRequired()**](WebhookEventsApi.md#onBrandedCallingIdentityActionRequired) | **POST** /branded_calling.identity.action_required | Caller identity action required event |
+| [**onBrandedCallingIdentityStatusUpdated()**](WebhookEventsApi.md#onBrandedCallingIdentityStatusUpdated) | **POST** /branded_calling.identity.status_updated | Caller identity status updated event |
+| [**onBrandedCallingNumberStatusUpdated()**](WebhookEventsApi.md#onBrandedCallingNumberStatusUpdated) | **POST** /branded_calling.number.status_updated | Branded number status updated event |
 | [**onCallEnded()**](WebhookEventsApi.md#onCallEnded) | **POST** /call.ended | Call ended event |
 | [**onCallFailed()**](WebhookEventsApi.md#onCallFailed) | **POST** /call.failed | Call failed event |
 | [**onCallPermissionRequest()**](WebhookEventsApi.md#onCallPermissionRequest) | **POST** /call.permission_request | Call permission request reply event |
@@ -460,6 +463,183 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_analytics_synced** | [**\Zernio\Model\WebhookPayloadAnalyticsSynced**](../Model/WebhookPayloadAnalyticsSynced.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onBrandedCallingIdentityActionRequired()`
+
+```php
+onBrandedCallingIdentityActionRequired($on_branded_calling_identity_action_required_request)
+```
+
+Caller identity action required event
+
+Fired when a caller identity waits on you. `reason` says what: `changes_requested` (answer the review with PATCH), `email_code` (the authorizer got a 6-digit code from the carrier; confirm it with the verify-email endpoint), `rejected` (the carrier rejected it; fix and PATCH), `infringement_claim` (a third party disputes the name or logo; reply to our email with evidence) or `expired` (resubmit).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$on_branded_calling_identity_action_required_request = new \Zernio\Model\OnBrandedCallingIdentityActionRequiredRequest(); // \Zernio\Model\OnBrandedCallingIdentityActionRequiredRequest
+
+try {
+    $apiInstance->onBrandedCallingIdentityActionRequired($on_branded_calling_identity_action_required_request);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onBrandedCallingIdentityActionRequired: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **on_branded_calling_identity_action_required_request** | [**\Zernio\Model\OnBrandedCallingIdentityActionRequiredRequest**](../Model/OnBrandedCallingIdentityActionRequiredRequest.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onBrandedCallingIdentityStatusUpdated()`
+
+```php
+onBrandedCallingIdentityStatusUpdated($on_branded_calling_identity_status_updated_request)
+```
+
+Caller identity status updated event
+
+Fired on every status change of a Branded Calling caller identity: `requested` (a new submission or resubmit, in our review), `changes_requested` (we need answers, see `branded_calling.identity.action_required`), `rejected` (by our review or by the carrier; `reason` says why), `pending_email_verification` (filed with the carrier; the authorizer enters the emailed code), `in_review` (carrier vetting), `verified` (live for a year: attach numbers), `suspended` (an infringement claim is open), `expired` and `permanently_rejected`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$on_branded_calling_identity_status_updated_request = new \Zernio\Model\OnBrandedCallingIdentityStatusUpdatedRequest(); // \Zernio\Model\OnBrandedCallingIdentityStatusUpdatedRequest
+
+try {
+    $apiInstance->onBrandedCallingIdentityStatusUpdated($on_branded_calling_identity_status_updated_request);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onBrandedCallingIdentityStatusUpdated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **on_branded_calling_identity_status_updated_request** | [**\Zernio\Model\OnBrandedCallingIdentityStatusUpdatedRequest**](../Model/OnBrandedCallingIdentityStatusUpdatedRequest.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onBrandedCallingNumberStatusUpdated()`
+
+```php
+onBrandedCallingNumberStatusUpdated($on_branded_calling_number_status_updated_request)
+```
+
+Branded number status updated event
+
+Fired when a number attached to a caller identity changes vetting status: `in_review`, `verified` (calls from it now show the identity), `unsuccessful` (refused; detach and re-add to retry), `suspended`, `expired` or `permanently_rejected` (can never be branded again).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$on_branded_calling_number_status_updated_request = new \Zernio\Model\OnBrandedCallingNumberStatusUpdatedRequest(); // \Zernio\Model\OnBrandedCallingNumberStatusUpdatedRequest
+
+try {
+    $apiInstance->onBrandedCallingNumberStatusUpdated($on_branded_calling_number_status_updated_request);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onBrandedCallingNumberStatusUpdated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **on_branded_calling_number_status_updated_request** | [**\Zernio\Model\OnBrandedCallingNumberStatusUpdatedRequest**](../Model/OnBrandedCallingNumberStatusUpdatedRequest.md)|  | |
 
 ### Return type
 
