@@ -1,6 +1,6 @@
 # Zernio\VoiceApi
 
-Regular phone (PSTN) calling on your numbers. Enable voice on a number and route inbound calls to your own AI voice agent (Vapi/Retell), a phone, or a SIP endpoint, with voicemail, business-hours routing, IVR, recording, and transcription. Place outbound calls, manage live ones (end, blind-transfer), resolve recordings, and drive the browser softphone. Private beta: returns 403 unless your account is enrolled.
+Regular phone (PSTN) calling on your numbers. Enable voice on a number and route inbound calls to your own AI voice agent (Vapi/Retell), a phone, or a SIP endpoint, with voicemail, business-hours routing, IVR, recording, and transcription. Place outbound calls, manage live ones (end, blind-transfer), resolve recordings, and drive the browser softphone.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
