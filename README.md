@@ -730,10 +730,10 @@ Class | Method | HTTP request | Description
 *TrackingTagsApi* | [**getTrackingTag**](docs/Api/TrackingTagsApi.md#gettrackingtag) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId} | Get a tracking tag
 *TrackingTagsApi* | [**getTrackingTagStats**](docs/Api/TrackingTagsApi.md#gettrackingtagstats) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/stats | Get aggregated event stats
 *TrackingTagsApi* | [**getTrackingTagStoreInstall**](docs/Api/TrackingTagsApi.md#gettrackingtagstoreinstall) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Get store install status
-*TrackingTagsApi* | [**installTrackingTagOnStore**](docs/Api/TrackingTagsApi.md#installtrackingtagonstore) | **POST** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Install on a Shopify store
+*TrackingTagsApi* | [**installTrackingTagOnStore**](docs/Api/TrackingTagsApi.md#installtrackingtagonstore) | **POST** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Install on a Shopify store or WordPress site
 *TrackingTagsApi* | [**listTrackingTagSharedAccounts**](docs/Api/TrackingTagsApi.md#listtrackingtagsharedaccounts) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/shared-accounts | List accounts it is shared with
 *TrackingTagsApi* | [**listTrackingTags**](docs/Api/TrackingTagsApi.md#listtrackingtags) | **GET** /v1/accounts/{accountId}/tracking-tags | List tracking tags
-*TrackingTagsApi* | [**removeTrackingTagFromStore**](docs/Api/TrackingTagsApi.md#removetrackingtagfromstore) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Remove from a Shopify store
+*TrackingTagsApi* | [**removeTrackingTagFromStore**](docs/Api/TrackingTagsApi.md#removetrackingtagfromstore) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Remove from a Shopify store or WordPress site
 *TrackingTagsApi* | [**removeTrackingTagSharedAccount**](docs/Api/TrackingTagsApi.md#removetrackingtagsharedaccount) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/shared-accounts | Stop sharing with an account
 *TrackingTagsApi* | [**updateAdTrackingTags**](docs/Api/TrackingTagsApi.md#updateadtrackingtags) | **PATCH** /v1/ads/{adId}/tracking-tags | Set ad tracking tags
 *TrackingTagsApi* | [**updateTrackingTag**](docs/Api/TrackingTagsApi.md#updatetrackingtag) | **PATCH** /v1/accounts/{accountId}/tracking-tags/{tagId} | Update a tracking tag
@@ -1848,6 +1848,8 @@ Class | Method | HTTP request | Description
 - [GetTrackingTagStats200Response](docs/Model/GetTrackingTagStats200Response.md)
 - [GetTrackingTagStats200ResponseStats](docs/Model/GetTrackingTagStats200ResponseStats.md)
 - [GetTrackingTagStoreInstall200Response](docs/Model/GetTrackingTagStoreInstall200Response.md)
+- [GetTrackingTagStoreInstall200ResponseInstall](docs/Model/GetTrackingTagStoreInstall200ResponseInstall.md)
+- [GetTrackingTagStoreInstall200ResponseInstallAllOfPreflight](docs/Model/GetTrackingTagStoreInstall200ResponseInstallAllOfPreflight.md)
 - [GetTweet200Response](docs/Model/GetTweet200Response.md)
 - [GetTweet200ResponseTweet](docs/Model/GetTweet200ResponseTweet.md)
 - [GetUsage200Response](docs/Model/GetUsage200Response.md)
@@ -2027,6 +2029,8 @@ Class | Method | HTTP request | Description
 - [InstagramPlatformDataUserTagsInner](docs/Model/InstagramPlatformDataUserTagsInner.md)
 - [InstallTrackingTagOnStore200Response](docs/Model/InstallTrackingTagOnStore200Response.md)
 - [InstallTrackingTagOnStore200ResponseInstall](docs/Model/InstallTrackingTagOnStore200ResponseInstall.md)
+- [InstallTrackingTagOnStore422Response](docs/Model/InstallTrackingTagOnStore422Response.md)
+- [InstallTrackingTagOnStore422ResponseDetails](docs/Model/InstallTrackingTagOnStore422ResponseDetails.md)
 - [InstallTrackingTagOnStoreRequest](docs/Model/InstallTrackingTagOnStoreRequest.md)
 - [InviteAdAccountToManagerRequest](docs/Model/InviteAdAccountToManagerRequest.md)
 - [KeywordEntry](docs/Model/KeywordEntry.md)
@@ -2495,6 +2499,8 @@ Class | Method | HTTP request | Description
 - [RemoveDiscordMemberRole200Response](docs/Model/RemoveDiscordMemberRole200Response.md)
 - [RemoveGoogleAssetGroup200Response](docs/Model/RemoveGoogleAssetGroup200Response.md)
 - [RemoveMessageReaction200Response](docs/Model/RemoveMessageReaction200Response.md)
+- [RemoveTrackingTagFromStore200Response](docs/Model/RemoveTrackingTagFromStore200Response.md)
+- [RemoveTrackingTagFromStore200ResponseInstall](docs/Model/RemoveTrackingTagFromStore200ResponseInstall.md)
 - [RemoveWhatsAppGroupParticipantsRequest](docs/Model/RemoveWhatsAppGroupParticipantsRequest.md)
 - [ReplaceAdAudienceCompanies200Response](docs/Model/ReplaceAdAudienceCompanies200Response.md)
 - [ReplaceAdAudienceCompaniesRequest](docs/Model/ReplaceAdAudienceCompaniesRequest.md)
@@ -2765,6 +2771,7 @@ Class | Method | HTTP request | Description
 - [TikTokPlatformData](docs/Model/TikTokPlatformData.md)
 - [TikTokPlatformDataMusicSoundInfo](docs/Model/TikTokPlatformDataMusicSoundInfo.md)
 - [TrackingTag](docs/Model/TrackingTag.md)
+- [TrackingTagInstallBlockedReason](docs/Model/TrackingTagInstallBlockedReason.md)
 - [TransferVoiceCall200Response](docs/Model/TransferVoiceCall200Response.md)
 - [TransferVoiceCallRequest](docs/Model/TransferVoiceCallRequest.md)
 - [TriggerWorkflow200Response](docs/Model/TriggerWorkflow200Response.md)
@@ -3276,6 +3283,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.127.0`
+- API version: `1.128.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

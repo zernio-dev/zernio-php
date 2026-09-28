@@ -1026,6 +1026,8 @@ docs/Model/GetTrackingTag200Response.md
 docs/Model/GetTrackingTagStats200Response.md
 docs/Model/GetTrackingTagStats200ResponseStats.md
 docs/Model/GetTrackingTagStoreInstall200Response.md
+docs/Model/GetTrackingTagStoreInstall200ResponseInstall.md
+docs/Model/GetTrackingTagStoreInstall200ResponseInstallAllOfPreflight.md
 docs/Model/GetTweet200Response.md
 docs/Model/GetTweet200ResponseTweet.md
 docs/Model/GetUsage200Response.md
@@ -1205,6 +1207,8 @@ docs/Model/InstagramPlatformDataTrialParams.md
 docs/Model/InstagramPlatformDataUserTagsInner.md
 docs/Model/InstallTrackingTagOnStore200Response.md
 docs/Model/InstallTrackingTagOnStore200ResponseInstall.md
+docs/Model/InstallTrackingTagOnStore422Response.md
+docs/Model/InstallTrackingTagOnStore422ResponseDetails.md
 docs/Model/InstallTrackingTagOnStoreRequest.md
 docs/Model/InviteAdAccountToManagerRequest.md
 docs/Model/KeywordEntry.md
@@ -1673,6 +1677,8 @@ docs/Model/RemoveCustomConversionGoal200Response.md
 docs/Model/RemoveDiscordMemberRole200Response.md
 docs/Model/RemoveGoogleAssetGroup200Response.md
 docs/Model/RemoveMessageReaction200Response.md
+docs/Model/RemoveTrackingTagFromStore200Response.md
+docs/Model/RemoveTrackingTagFromStore200ResponseInstall.md
 docs/Model/RemoveWhatsAppGroupParticipantsRequest.md
 docs/Model/ReplaceAdAudienceCompanies200Response.md
 docs/Model/ReplaceAdAudienceCompaniesRequest.md
@@ -1943,6 +1949,7 @@ docs/Model/TikTokDryRunVerdictTiktokInner.md
 docs/Model/TikTokPlatformData.md
 docs/Model/TikTokPlatformDataMusicSoundInfo.md
 docs/Model/TrackingTag.md
+docs/Model/TrackingTagInstallBlockedReason.md
 docs/Model/TransferVoiceCall200Response.md
 docs/Model/TransferVoiceCallRequest.md
 docs/Model/TriggerWorkflow200Response.md
@@ -3450,6 +3457,8 @@ lib/Model/GetTrackingTag200Response.php
 lib/Model/GetTrackingTagStats200Response.php
 lib/Model/GetTrackingTagStats200ResponseStats.php
 lib/Model/GetTrackingTagStoreInstall200Response.php
+lib/Model/GetTrackingTagStoreInstall200ResponseInstall.php
+lib/Model/GetTrackingTagStoreInstall200ResponseInstallAllOfPreflight.php
 lib/Model/GetTweet200Response.php
 lib/Model/GetTweet200ResponseTweet.php
 lib/Model/GetUsage200Response.php
@@ -3629,6 +3638,8 @@ lib/Model/InstagramPlatformDataTrialParams.php
 lib/Model/InstagramPlatformDataUserTagsInner.php
 lib/Model/InstallTrackingTagOnStore200Response.php
 lib/Model/InstallTrackingTagOnStore200ResponseInstall.php
+lib/Model/InstallTrackingTagOnStore422Response.php
+lib/Model/InstallTrackingTagOnStore422ResponseDetails.php
 lib/Model/InstallTrackingTagOnStoreRequest.php
 lib/Model/InviteAdAccountToManagerRequest.php
 lib/Model/KeywordEntry.php
@@ -4098,6 +4109,8 @@ lib/Model/RemoveCustomConversionGoal200Response.php
 lib/Model/RemoveDiscordMemberRole200Response.php
 lib/Model/RemoveGoogleAssetGroup200Response.php
 lib/Model/RemoveMessageReaction200Response.php
+lib/Model/RemoveTrackingTagFromStore200Response.php
+lib/Model/RemoveTrackingTagFromStore200ResponseInstall.php
 lib/Model/RemoveWhatsAppGroupParticipantsRequest.php
 lib/Model/ReplaceAdAudienceCompanies200Response.php
 lib/Model/ReplaceAdAudienceCompaniesRequest.php
@@ -4368,6 +4381,7 @@ lib/Model/TikTokDryRunVerdictTiktokInner.php
 lib/Model/TikTokPlatformData.php
 lib/Model/TikTokPlatformDataMusicSoundInfo.php
 lib/Model/TrackingTag.php
+lib/Model/TrackingTagInstallBlockedReason.php
 lib/Model/TransferVoiceCall200Response.php
 lib/Model/TransferVoiceCallRequest.php
 lib/Model/TriggerWorkflow200Response.php
@@ -4849,5 +4863,10 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ShareBrandedCallingIdentityForm200ResponseTest.php
-test/Model/ShareBrandedCallingIdentityFormRequestTest.php
+test/Model/GetTrackingTagStoreInstall200ResponseInstallAllOfPreflightTest.php
+test/Model/GetTrackingTagStoreInstall200ResponseInstallTest.php
+test/Model/InstallTrackingTagOnStore422ResponseDetailsTest.php
+test/Model/InstallTrackingTagOnStore422ResponseTest.php
+test/Model/RemoveTrackingTagFromStore200ResponseInstallTest.php
+test/Model/RemoveTrackingTagFromStore200ResponseTest.php
+test/Model/TrackingTagInstallBlockedReasonTest.php
