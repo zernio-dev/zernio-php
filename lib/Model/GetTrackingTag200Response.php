@@ -241,6 +241,7 @@ class GetTrackingTag200Response implements ModelInterface, ArrayAccess, \JsonSer
     public const PLATFORM_XADS = 'xads';
     public const PLATFORM_OPENAIADS = 'openaiads';
     public const PLATFORM_LINKEDINADS = 'linkedinads';
+    public const PLATFORM_PINTERESTADS = 'pinterestads';
 
     /**
      * Gets allowable values of the enum
@@ -256,6 +257,7 @@ class GetTrackingTag200Response implements ModelInterface, ArrayAccess, \JsonSer
             self::PLATFORM_XADS,
             self::PLATFORM_OPENAIADS,
             self::PLATFORM_LINKEDINADS,
+            self::PLATFORM_PINTERESTADS,
         ];
     }
 

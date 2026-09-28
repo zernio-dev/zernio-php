@@ -241,6 +241,7 @@ class ListTrackingTags200Response implements ModelInterface, ArrayAccess, \JsonS
     public const PLATFORM_GOOGLEADS = 'googleads';
     public const PLATFORM_XADS = 'xads';
     public const PLATFORM_LINKEDINADS = 'linkedinads';
+    public const PLATFORM_PINTERESTADS = 'pinterestads';
 
     /**
      * Gets allowable values of the enum
@@ -256,6 +257,7 @@ class ListTrackingTags200Response implements ModelInterface, ArrayAccess, \JsonS
             self::PLATFORM_GOOGLEADS,
             self::PLATFORM_XADS,
             self::PLATFORM_LINKEDINADS,
+            self::PLATFORM_PINTERESTADS,
         ];
     }
 

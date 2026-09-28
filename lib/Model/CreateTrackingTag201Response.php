@@ -241,6 +241,7 @@ class CreateTrackingTag201Response implements ModelInterface, ArrayAccess, \Json
     public const PLATFORM_GOOGLEADS = 'googleads';
     public const PLATFORM_XADS = 'xads';
     public const PLATFORM_LINKEDINADS = 'linkedinads';
+    public const PLATFORM_PINTERESTADS = 'pinterestads';
 
     /**
      * Gets allowable values of the enum
@@ -256,6 +257,7 @@ class CreateTrackingTag201Response implements ModelInterface, ArrayAccess, \Json
             self::PLATFORM_GOOGLEADS,
             self::PLATFORM_XADS,
             self::PLATFORM_LINKEDINADS,
+            self::PLATFORM_PINTERESTADS,
         ];
     }
 
