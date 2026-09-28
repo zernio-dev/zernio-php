@@ -21,6 +21,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listBrandedCallingIdentityNumbers()**](BrandedCallingApi.md#listBrandedCallingIdentityNumbers) | **GET** /v1/branded-calling/identities/{id}/numbers | List the numbers on a caller identity |
 | [**preflightBrandedCallingIdentity()**](BrandedCallingApi.md#preflightBrandedCallingIdentity) | **POST** /v1/branded-calling/identities/preflight | Dry-run a caller identity before creating it |
 | [**resendBrandedCallingAuthorizerCode()**](BrandedCallingApi.md#resendBrandedCallingAuthorizerCode) | **POST** /v1/branded-calling/identities/{id}/verify-email | Resend the authorizer&#39;s code |
+| [**shareBrandedCallingIdentityForm()**](BrandedCallingApi.md#shareBrandedCallingIdentityForm) | **POST** /v1/branded-calling/share | Create a caller identity share link |
 | [**updateBrandedCallingIdentity()**](BrandedCallingApi.md#updateBrandedCallingIdentity) | **PATCH** /v1/branded-calling/identities/{id} | Edit or resubmit a caller identity |
 
 
@@ -911,6 +912,66 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `shareBrandedCallingIdentityForm()`
+
+```php
+shareBrandedCallingIdentityForm($share_branded_calling_identity_form_request): \Zernio\Model\ShareBrandedCallingIdentityForm200Response
+```
+
+Create a caller identity share link
+
+Creates a single-use link (valid 7 days) where the end business fills in the caller identity itself, with no Zernio login: display name, logo, call reasons, the authorizer and the three references. What it submits lands under your team as `requested`, the same review as an API submission, and `branded_calling.identity.status_updated` fires. Scope the link with `identityId` (complete an identity that is `requested` or `changes_requested`), with `enterpriseId` (a new identity for a registered business), or with neither (the business registers itself and its first identity). The person opening the link can forward a fresh one to someone else, which retires theirs.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\BrandedCallingApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$share_branded_calling_identity_form_request = new \Zernio\Model\ShareBrandedCallingIdentityFormRequest(); // \Zernio\Model\ShareBrandedCallingIdentityFormRequest
+
+try {
+    $result = $apiInstance->shareBrandedCallingIdentityForm($share_branded_calling_identity_form_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BrandedCallingApi->shareBrandedCallingIdentityForm: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **share_branded_calling_identity_form_request** | [**\Zernio\Model\ShareBrandedCallingIdentityFormRequest**](../Model/ShareBrandedCallingIdentityFormRequest.md)|  | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ShareBrandedCallingIdentityForm200Response**](../Model/ShareBrandedCallingIdentityForm200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

@@ -1054,7 +1054,7 @@ try {
 ## `shareSmsRegistration()`
 
 ```php
-shareSmsRegistration($share_sms_registration_request): \Zernio\Model\ShareSmsRegistration200Response
+shareSmsRegistration($share_sms_registration_request): \Zernio\Model\ShareBrandedCallingIdentityForm200Response
 ```
 
 Create a registration share link
@@ -1096,7 +1096,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\ShareSmsRegistration200Response**](../Model/ShareSmsRegistration200Response.md)
+[**\Zernio\Model\ShareBrandedCallingIdentityForm200Response**](../Model/ShareBrandedCallingIdentityForm200Response.md)
 
 ### Authorization
 

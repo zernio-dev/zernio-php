@@ -1888,7 +1888,8 @@ docs/Model/SetTelegramCommandsRequestCommandsInner.md
 docs/Model/SetWhatsAppFlowsEncryptionKeyRequest.md
 docs/Model/SetWhatsappBusinessUsername200Response.md
 docs/Model/SetWhatsappBusinessUsernameRequest.md
-docs/Model/ShareSmsRegistration200Response.md
+docs/Model/ShareBrandedCallingIdentityForm200Response.md
+docs/Model/ShareBrandedCallingIdentityFormRequest.md
 docs/Model/ShareSmsRegistrationRequest.md
 docs/Model/SharedAdAccount.md
 docs/Model/SlackPlatformData.md
@@ -4312,7 +4313,8 @@ lib/Model/SetTelegramCommandsRequestCommandsInner.php
 lib/Model/SetWhatsAppFlowsEncryptionKeyRequest.php
 lib/Model/SetWhatsappBusinessUsername200Response.php
 lib/Model/SetWhatsappBusinessUsernameRequest.php
-lib/Model/ShareSmsRegistration200Response.php
+lib/Model/ShareBrandedCallingIdentityForm200Response.php
+lib/Model/ShareBrandedCallingIdentityFormRequest.php
 lib/Model/ShareSmsRegistrationRequest.php
 lib/Model/SharedAdAccount.php
 lib/Model/SlackPlatformData.php
@@ -4847,3 +4849,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ShareBrandedCallingIdentityForm200ResponseTest.php
+test/Model/ShareBrandedCallingIdentityFormRequestTest.php
