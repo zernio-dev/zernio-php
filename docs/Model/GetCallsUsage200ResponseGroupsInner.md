@@ -10,5 +10,7 @@ Name | Type | Description | Notes
 **minutes** | **float** |  | [optional]
 **billable_usd** | **float** |  | [optional]
 **meta_usd** | **float** |  | [optional]
+**branded_calls** | **int** |  | [optional]
+**branded_call_usd** | **float** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

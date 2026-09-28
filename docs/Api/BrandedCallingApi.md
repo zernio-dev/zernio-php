@@ -19,6 +19,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listBrandedCallingEnterprises()**](BrandedCallingApi.md#listBrandedCallingEnterprises) | **GET** /v1/branded-calling/enterprises | List registered businesses |
 | [**listBrandedCallingIdentities()**](BrandedCallingApi.md#listBrandedCallingIdentities) | **GET** /v1/branded-calling/identities | List caller identities |
 | [**listBrandedCallingIdentityNumbers()**](BrandedCallingApi.md#listBrandedCallingIdentityNumbers) | **GET** /v1/branded-calling/identities/{id}/numbers | List the numbers on a caller identity |
+| [**preflightBrandedCallingIdentity()**](BrandedCallingApi.md#preflightBrandedCallingIdentity) | **POST** /v1/branded-calling/identities/preflight | Dry-run a caller identity before creating it |
 | [**resendBrandedCallingAuthorizerCode()**](BrandedCallingApi.md#resendBrandedCallingAuthorizerCode) | **POST** /v1/branded-calling/identities/{id}/verify-email | Resend the authorizer&#39;s code |
 | [**updateBrandedCallingIdentity()**](BrandedCallingApi.md#updateBrandedCallingIdentity) | **PATCH** /v1/branded-calling/identities/{id} | Edit or resubmit a caller identity |
 
@@ -150,12 +151,12 @@ try {
 ## `createBrandedCallingEnterprise()`
 
 ```php
-createBrandedCallingEnterprise($create_branded_calling_enterprise_request): \Zernio\Model\BrandedCallingEnterprise
+createBrandedCallingEnterprise($create_branded_calling_enterprise_request, $idempotency_key): \Zernio\Model\BrandedCallingEnterprise
 ```
 
 Register a business for Branded Calling
 
-Stores the legal entity behind your caller identities. Nothing is filed with the carrier until the business's first identity passes review. Only businesses registered in the US or Canada qualify (a FEIN or Canadian equivalent is required); any other country returns `422`.
+Stores the legal entity behind your caller identities. Nothing is filed with the carrier until the business's first identity passes review. Only businesses registered in the US or Canada qualify (a FEIN or Canadian equivalent is required); any other country returns `422`. Send an `Idempotency-Key` so a retry replays the original response instead of registering the business twice.
 
 ### Example
 
@@ -175,9 +176,10 @@ $apiInstance = new Zernio\Api\BrandedCallingApi(
     $config
 );
 $create_branded_calling_enterprise_request = new \Zernio\Model\CreateBrandedCallingEnterpriseRequest(); // \Zernio\Model\CreateBrandedCallingEnterpriseRequest
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409.
 
 try {
-    $result = $apiInstance->createBrandedCallingEnterprise($create_branded_calling_enterprise_request);
+    $result = $apiInstance->createBrandedCallingEnterprise($create_branded_calling_enterprise_request, $idempotency_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BrandedCallingApi->createBrandedCallingEnterprise: ', $e->getMessage(), PHP_EOL;
@@ -189,6 +191,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **create_branded_calling_enterprise_request** | [**\Zernio\Model\CreateBrandedCallingEnterpriseRequest**](../Model/CreateBrandedCallingEnterpriseRequest.md)|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. | [optional] |
 
 ### Return type
 
@@ -210,12 +213,12 @@ try {
 ## `createBrandedCallingIdentity()`
 
 ```php
-createBrandedCallingIdentity($create_branded_calling_identity_request): \Zernio\Model\BrandedCallingIdentity
+createBrandedCallingIdentity($create_branded_calling_identity_request, $idempotency_key): \Zernio\Model\BrandedCallingIdentity
 ```
 
 Create a caller identity
 
-A caller identity is what the callee sees: display name, logo and call reasons, backed by a registered business and three references the carrier vetting team phones. It starts in Zernio review (`requested`). Once approved, the carrier emails the authorizer a 6-digit code; confirm it with the verify-email endpoint and the identity goes into carrier vetting on its own. Track it with `GET` or the `branded_calling.identity.status_updated` webhook.  Billing: $100 per identity per month, the first month charged when the identity is filed with the carrier and not refunded if the carrier rejects it, then monthly while the identity exists. Branded calls add $0.10 each, counted on every outbound call from a verified branded number to a US destination (whether or not the callee's carrier displayed the branding); the surcharge shows as `brandedCallUSD` on the call's billing and in `GET /v1/voice/calls/estimate` when you pass `from`.
+A caller identity is what the callee sees: display name, logo and call reasons, backed by a registered business and three references the carrier vetting team phones. It starts in Zernio review (`requested`). Once approved, the carrier emails the authorizer a 6-digit code; confirm it with the verify-email endpoint and the identity goes into carrier vetting on its own. Track it with `GET` or the `branded_calling.identity.status_updated` webhook.  Billing: $100 per identity per month, the first month charged when the identity is filed with the carrier and not refunded if the carrier rejects it, then monthly while the identity exists. Branded calls add $0.10 each, counted on every outbound call from a verified branded number to a US destination (whether or not the callee's carrier displayed the branding); the surcharge shows as `brandedCallUSD` on the call's billing and in `GET /v1/voice/calls/estimate` when you pass `from`.  Run `POST /v1/branded-calling/identities/preflight` with the same body first to catch what the review would bounce. Send an `Idempotency-Key` so a retry replays the original response instead of creating a second identity.
 
 ### Example
 
@@ -235,9 +238,10 @@ $apiInstance = new Zernio\Api\BrandedCallingApi(
     $config
 );
 $create_branded_calling_identity_request = new \Zernio\Model\CreateBrandedCallingIdentityRequest(); // \Zernio\Model\CreateBrandedCallingIdentityRequest
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409.
 
 try {
-    $result = $apiInstance->createBrandedCallingIdentity($create_branded_calling_identity_request);
+    $result = $apiInstance->createBrandedCallingIdentity($create_branded_calling_identity_request, $idempotency_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BrandedCallingApi->createBrandedCallingIdentity: ', $e->getMessage(), PHP_EOL;
@@ -249,6 +253,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **create_branded_calling_identity_request** | [**\Zernio\Model\CreateBrandedCallingIdentityRequest**](../Model/CreateBrandedCallingIdentityRequest.md)|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. | [optional] |
 
 ### Return type
 
@@ -786,6 +791,66 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `preflightBrandedCallingIdentity()`
+
+```php
+preflightBrandedCallingIdentity($preflight_branded_calling_identity_request): \Zernio\Model\PreflightBrandedCallingIdentity200Response
+```
+
+Dry-run a caller identity before creating it
+
+Validates the exact body `POST /v1/branded-calling/identities` takes and runs the same deterministic lints the review runs on it without creating anything, with the same codes and fields the queued identity's findings carry. A `block` finding is what the review would bounce (two references sharing a phone, a reference inside the business, an invalid timezone); a `warn` finding slows vetting (a display name that does not read as the business, a call reason outside the carrier catalogue, a public-mailbox authorizer, a logo that does not answer). `ok` is true when there is no `block`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\BrandedCallingApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$preflight_branded_calling_identity_request = new \Zernio\Model\PreflightBrandedCallingIdentityRequest(); // \Zernio\Model\PreflightBrandedCallingIdentityRequest
+
+try {
+    $result = $apiInstance->preflightBrandedCallingIdentity($preflight_branded_calling_identity_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BrandedCallingApi->preflightBrandedCallingIdentity: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **preflight_branded_calling_identity_request** | [**\Zernio\Model\PreflightBrandedCallingIdentityRequest**](../Model/PreflightBrandedCallingIdentityRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\PreflightBrandedCallingIdentity200Response**](../Model/PreflightBrandedCallingIdentity200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

@@ -1594,6 +1594,10 @@ docs/Model/PostRetryResponse.md
 docs/Model/PostUpdateResponse.md
 docs/Model/PostUserId.md
 docs/Model/PostsListResponse.md
+docs/Model/PreflightBrandedCallingIdentity200Response.md
+docs/Model/PreflightBrandedCallingIdentity200ResponseFindingsInner.md
+docs/Model/PreflightBrandedCallingIdentityRequest.md
+docs/Model/PreflightBrandedCallingIdentityRequestAuthorizer.md
 docs/Model/PreflightSmsRegistration200Response.md
 docs/Model/PreflightSmsRegistration200ResponseAdvisoriesInner.md
 docs/Model/PreflightSmsRegistration200ResponseComposed.md
@@ -4009,6 +4013,10 @@ lib/Model/PostRetryResponse.php
 lib/Model/PostUpdateResponse.php
 lib/Model/PostUserId.php
 lib/Model/PostsListResponse.php
+lib/Model/PreflightBrandedCallingIdentity200Response.php
+lib/Model/PreflightBrandedCallingIdentity200ResponseFindingsInner.php
+lib/Model/PreflightBrandedCallingIdentityRequest.php
+lib/Model/PreflightBrandedCallingIdentityRequestAuthorizer.php
 lib/Model/PreflightSmsRegistration200Response.php
 lib/Model/PreflightSmsRegistration200ResponseAdvisoriesInner.php
 lib/Model/PreflightSmsRegistration200ResponseComposed.php
@@ -4829,3 +4837,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/PreflightBrandedCallingIdentity200ResponseFindingsInnerTest.php
+test/Model/PreflightBrandedCallingIdentity200ResponseTest.php
+test/Model/PreflightBrandedCallingIdentityRequestAuthorizerTest.php
+test/Model/PreflightBrandedCallingIdentityRequestTest.php

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **logo_url** | **string** | HTTPS URL of a PNG, JPEG, WebP or SVG logo. Zernio converts it to the 256x256 BMP the carriers require and hosts it. | [optional]
 **authorizer** | [**\Zernio\Model\CreateBrandedCallingIdentityRequestAuthorizer**](CreateBrandedCallingIdentityRequestAuthorizer.md) |  | [optional]
 **references** | [**\Zernio\Model\BrandedCallingReferences**](BrandedCallingReferences.md) |  | [optional]
-**review_answers** | [**array<string,\Zernio\Model\UpdateBrandedCallingIdentityRequestReviewAnswersValue>**](UpdateBrandedCallingIdentityRequestReviewAnswersValue.md) | One entry per point id of the open reviewRequest. | [optional]
+**review_answers** | [**array<string,\Zernio\Model\UpdateBrandedCallingIdentityRequestReviewAnswersValue>**](UpdateBrandedCallingIdentityRequestReviewAnswersValue.md) | One entry per point id of the open reviewRequest. A text point takes text; a link point takes url; file and link_or_file points take url set to the URL of a file you uploaded first (POST /v1/media/upload). A point id that is not on the open request is a 422. | [optional]
 **review_note** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
