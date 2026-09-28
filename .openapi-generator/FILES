@@ -4829,8 +4829,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateMessagingAd200ResponseResultsInnerTest.php
-test/Model/CreateMessagingAd200ResponseTest.php
-test/Model/MetaPlacementAssetsRulesInnerPlacementsTest.php
-test/Model/MetaPlacementAssetsRulesInnerTest.php
-test/Model/MetaPlacementAssetsTest.php
