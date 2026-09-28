@@ -7,6 +7,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**addTrackingTagSharedAccount()**](TrackingTagsApi.md#addTrackingTagSharedAccount) | **POST** /v1/accounts/{accountId}/tracking-tags/{tagId}/shared-accounts | Share with an ad account |
+| [**assignTrackingTagUser()**](TrackingTagsApi.md#assignTrackingTagUser) | **POST** /v1/accounts/{accountId}/tracking-tags/{tagId}/users | Assign a user to a tag |
 | [**createTrackingTag()**](TrackingTagsApi.md#createTrackingTag) | **POST** /v1/accounts/{accountId}/tracking-tags | Create a tracking tag |
 | [**createTrackingTagEvent()**](TrackingTagsApi.md#createTrackingTagEvent) | **POST** /v1/accounts/{accountId}/tracking-tags/{tagId}/events | Create a conversion event |
 | [**deleteTrackingTagEvent()**](TrackingTagsApi.md#deleteTrackingTagEvent) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/events/{eventId} | Delete a conversion event |
@@ -17,10 +18,13 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getTrackingTagStoreInstall()**](TrackingTagsApi.md#getTrackingTagStoreInstall) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Get store install status |
 | [**installTrackingTagOnStore()**](TrackingTagsApi.md#installTrackingTagOnStore) | **POST** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Install on a Shopify store or WordPress site |
 | [**listTrackingTagEvents()**](TrackingTagsApi.md#listTrackingTagEvents) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/events | List conversion events |
+| [**listTrackingTagPartners()**](TrackingTagsApi.md#listTrackingTagPartners) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/partners | List partner businesses of a tag |
 | [**listTrackingTagSharedAccounts()**](TrackingTagsApi.md#listTrackingTagSharedAccounts) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/shared-accounts | List accounts it is shared with |
+| [**listTrackingTagUsers()**](TrackingTagsApi.md#listTrackingTagUsers) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/users | List tag users |
 | [**listTrackingTags()**](TrackingTagsApi.md#listTrackingTags) | **GET** /v1/accounts/{accountId}/tracking-tags | List tracking tags |
 | [**removeTrackingTagFromStore()**](TrackingTagsApi.md#removeTrackingTagFromStore) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Remove from a Shopify store or WordPress site |
 | [**removeTrackingTagSharedAccount()**](TrackingTagsApi.md#removeTrackingTagSharedAccount) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/shared-accounts | Stop sharing with an account |
+| [**removeTrackingTagUser()**](TrackingTagsApi.md#removeTrackingTagUser) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/users/{userId} | Remove a user from a tag |
 | [**updateAdTrackingTags()**](TrackingTagsApi.md#updateAdTrackingTags) | **PATCH** /v1/ads/{adId}/tracking-tags | Set ad tracking tags |
 | [**updateTrackingTag()**](TrackingTagsApi.md#updateTrackingTag) | **PATCH** /v1/accounts/{accountId}/tracking-tags/{tagId} | Update a tracking tag |
 | [**updateTrackingTagEvent()**](TrackingTagsApi.md#updateTrackingTagEvent) | **PATCH** /v1/accounts/{accountId}/tracking-tags/{tagId}/events/{eventId} | Update a conversion event |
@@ -76,6 +80,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\AddTrackingTagSharedAccount201Response**](../Model/AddTrackingTagSharedAccount201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `assignTrackingTagUser()`
+
+```php
+assignTrackingTagUser($account_id, $tag_id, $assign_tracking_tag_user_request): \Zernio\Model\AssignTrackingTagUser200Response
+```
+
+Assign a user to a tag
+
+Gives a user of the owning business access to the tag. Assigning an already assigned user replaces their task set.  Meta: `tasks` are `AA_ANALYZE`, `ADVERTISE`, `ANALYZE`, `EDIT`, `UPLOAD`; `userId` is the business-scoped id from `GET /v1/ads/businesses/users`. A pixel on a personal ad account answers 400. Needs `business_management` like the list.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\TrackingTagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$tag_id = 'tag_id_example'; // string | Tag id (`TrackingTag.id`).
+$assign_tracking_tag_user_request = new \Zernio\Model\AssignTrackingTagUserRequest(); // \Zernio\Model\AssignTrackingTagUserRequest
+
+try {
+    $result = $apiInstance->assignTrackingTagUser($account_id, $tag_id, $assign_tracking_tag_user_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TrackingTagsApi->assignTrackingTagUser: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **tag_id** | **string**| Tag id (&#x60;TrackingTag.id&#x60;). | |
+| **assign_tracking_tag_user_request** | [**\Zernio\Model\AssignTrackingTagUserRequest**](../Model/AssignTrackingTagUserRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\AssignTrackingTagUser200Response**](../Model/AssignTrackingTagUser200Response.md)
 
 ### Authorization
 
@@ -732,6 +800,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listTrackingTagPartners()`
+
+```php
+listTrackingTagPartners($account_id, $tag_id): \Zernio\Model\ListTrackingTagPartners200Response
+```
+
+List partner businesses of a tag
+
+Other businesses the tag is shared with. Read-only. Platforms without partner sharing answer 501.  Meta: the pixel's shared agencies. Sharing a pixel with a new partner is not available: `/{pixel}/agencies` answers \"(#3) Application does not have the capability to make this API call\" for our app.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\TrackingTagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$tag_id = 'tag_id_example'; // string | Tag id (`TrackingTag.id`).
+
+try {
+    $result = $apiInstance->listTrackingTagPartners($account_id, $tag_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TrackingTagsApi->listTrackingTagPartners: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **tag_id** | **string**| Tag id (&#x60;TrackingTag.id&#x60;). | |
+
+### Return type
+
+[**\Zernio\Model\ListTrackingTagPartners200Response**](../Model/ListTrackingTagPartners200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listTrackingTagSharedAccounts()`
 
 ```php
@@ -780,6 +910,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListTrackingTagSharedAccounts200Response**](../Model/ListTrackingTagSharedAccounts200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listTrackingTagUsers()`
+
+```php
+listTrackingTagUsers($account_id, $tag_id): \Zernio\Model\ListTrackingTagUsers200Response
+```
+
+List tag users
+
+People and system users of the owning business with access to the tag. Platforms without tag user assignment answer 501.  Meta: the pixel's assigned users in its owning Business Manager. A pixel on a personal ad account has no business and returns an empty list. Needs the `business_management` permission on the connecting Meta user (an admin of the owning business); without it the call answers 403 asking to reconnect.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\TrackingTagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$tag_id = 'tag_id_example'; // string | Tag id (`TrackingTag.id`).
+
+try {
+    $result = $apiInstance->listTrackingTagUsers($account_id, $tag_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TrackingTagsApi->listTrackingTagUsers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **tag_id** | **string**| Tag id (&#x60;TrackingTag.id&#x60;). | |
+
+### Return type
+
+[**\Zernio\Model\ListTrackingTagUsers200Response**](../Model/ListTrackingTagUsers200Response.md)
 
 ### Authorization
 
@@ -971,6 +1163,70 @@ try {
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `removeTrackingTagUser()`
+
+```php
+removeTrackingTagUser($account_id, $tag_id, $user_id): \Zernio\Model\RemoveTrackingTagUser200Response
+```
+
+Remove a user from a tag
+
+Removes a user's access to the tag, on platforms whose API allows it.  Meta answers 501: the Business SDK has no delete on the pixel's assigned users, `DELETE /{pixel}/assigned_users` answers \"Unsupported delete request\" (code 100, subcode 33) and re-assigning with no tasks is refused. Remove the user in Business Settings.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\TrackingTagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$tag_id = 'tag_id_example'; // string
+$user_id = 'user_id_example'; // string | User id (`TrackingTagUser.id`).
+
+try {
+    $result = $apiInstance->removeTrackingTagUser($account_id, $tag_id, $user_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TrackingTagsApi->removeTrackingTagUser: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **tag_id** | **string**|  | |
+| **user_id** | **string**| User id (&#x60;TrackingTagUser.id&#x60;). | |
+
+### Return type
+
+[**\Zernio\Model\RemoveTrackingTagUser200Response**](../Model/RemoveTrackingTagUser200Response.md)
 
 ### Authorization
 

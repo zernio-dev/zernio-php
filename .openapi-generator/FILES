@@ -185,6 +185,8 @@ docs/Model/AssignGoogleBusinessLocationRequest.md
 docs/Model/AssignPageUser201Response.md
 docs/Model/AssignPageUser201ResponseUser.md
 docs/Model/AssignPageUserRequest.md
+docs/Model/AssignTrackingTagUser200Response.md
+docs/Model/AssignTrackingTagUserRequest.md
 docs/Model/AttachAdGroupAssets201Response.md
 docs/Model/AttachAdLabel200Response.md
 docs/Model/AttachBrandedCallingNumbersRequest.md
@@ -1500,7 +1502,9 @@ docs/Model/ListTikTokCommercialMusic200Response.md
 docs/Model/ListTikTokCommercialMusic200ResponseTracksInner.md
 docs/Model/ListTikTokCommercialMusic200ResponseTracksInnerClip.md
 docs/Model/ListTrackingTagEvents200Response.md
+docs/Model/ListTrackingTagPartners200Response.md
 docs/Model/ListTrackingTagSharedAccounts200Response.md
+docs/Model/ListTrackingTagUsers200Response.md
 docs/Model/ListTrackingTags200Response.md
 docs/Model/ListUsers200Response.md
 docs/Model/ListUsers200ResponseUsersInner.md
@@ -1749,6 +1753,7 @@ docs/Model/RemoveMessageReaction200Response.md
 docs/Model/RemovePageUser200Response.md
 docs/Model/RemoveTrackingTagFromStore200Response.md
 docs/Model/RemoveTrackingTagFromStore200ResponseInstall.md
+docs/Model/RemoveTrackingTagUser200Response.md
 docs/Model/RemoveWhatsAppGroupParticipantsRequest.md
 docs/Model/ReplaceAdAudienceCompanies200Response.md
 docs/Model/ReplaceAdAudienceCompaniesRequest.md
@@ -2027,6 +2032,8 @@ docs/Model/TrackingTagDiagnostic.md
 docs/Model/TrackingTagEvent.md
 docs/Model/TrackingTagEventInput.md
 docs/Model/TrackingTagInstallBlockedReason.md
+docs/Model/TrackingTagPartner.md
+docs/Model/TrackingTagUser.md
 docs/Model/TransferVoiceCall200Response.md
 docs/Model/TransferVoiceCallRequest.md
 docs/Model/TriggerWorkflow200Response.md
@@ -2696,6 +2703,8 @@ lib/Model/AssignGoogleBusinessLocationRequest.php
 lib/Model/AssignPageUser201Response.php
 lib/Model/AssignPageUser201ResponseUser.php
 lib/Model/AssignPageUserRequest.php
+lib/Model/AssignTrackingTagUser200Response.php
+lib/Model/AssignTrackingTagUserRequest.php
 lib/Model/AttachAdGroupAssets201Response.php
 lib/Model/AttachAdLabel200Response.php
 lib/Model/AttachBrandedCallingNumbersRequest.php
@@ -4011,7 +4020,9 @@ lib/Model/ListTikTokCommercialMusic200Response.php
 lib/Model/ListTikTokCommercialMusic200ResponseTracksInner.php
 lib/Model/ListTikTokCommercialMusic200ResponseTracksInnerClip.php
 lib/Model/ListTrackingTagEvents200Response.php
+lib/Model/ListTrackingTagPartners200Response.php
 lib/Model/ListTrackingTagSharedAccounts200Response.php
+lib/Model/ListTrackingTagUsers200Response.php
 lib/Model/ListTrackingTags200Response.php
 lib/Model/ListUsers200Response.php
 lib/Model/ListUsers200ResponseUsersInner.php
@@ -4261,6 +4272,7 @@ lib/Model/RemoveMessageReaction200Response.php
 lib/Model/RemovePageUser200Response.php
 lib/Model/RemoveTrackingTagFromStore200Response.php
 lib/Model/RemoveTrackingTagFromStore200ResponseInstall.php
+lib/Model/RemoveTrackingTagUser200Response.php
 lib/Model/RemoveWhatsAppGroupParticipantsRequest.php
 lib/Model/ReplaceAdAudienceCompanies200Response.php
 lib/Model/ReplaceAdAudienceCompaniesRequest.php
@@ -4539,6 +4551,8 @@ lib/Model/TrackingTagDiagnostic.php
 lib/Model/TrackingTagEvent.php
 lib/Model/TrackingTagEventInput.php
 lib/Model/TrackingTagInstallBlockedReason.php
+lib/Model/TrackingTagPartner.php
+lib/Model/TrackingTagUser.php
 lib/Model/TransferVoiceCall200Response.php
 lib/Model/TransferVoiceCallRequest.php
 lib/Model/TriggerWorkflow200Response.php
@@ -5023,3 +5037,10 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AssignTrackingTagUser200ResponseTest.php
+test/Model/AssignTrackingTagUserRequestTest.php
+test/Model/ListTrackingTagPartners200ResponseTest.php
+test/Model/ListTrackingTagUsers200ResponseTest.php
+test/Model/RemoveTrackingTagUser200ResponseTest.php
+test/Model/TrackingTagPartnerTest.php
+test/Model/TrackingTagUserTest.php

@@ -748,6 +748,7 @@ Class | Method | HTTP request | Description
 *SlackApi* | [**listSlackMembers**](docs/Api/SlackApi.md#listslackmembers) | **GET** /v1/accounts/{accountId}/slack-members | List Slack workspace members
 *ToolsApi* | [**downloadTikTokVideo**](docs/Api/ToolsApi.md#downloadtiktokvideo) | **GET** /v1/tools/tiktok/download | Download a TikTok video
 *TrackingTagsApi* | [**addTrackingTagSharedAccount**](docs/Api/TrackingTagsApi.md#addtrackingtagsharedaccount) | **POST** /v1/accounts/{accountId}/tracking-tags/{tagId}/shared-accounts | Share with an ad account
+*TrackingTagsApi* | [**assignTrackingTagUser**](docs/Api/TrackingTagsApi.md#assigntrackingtaguser) | **POST** /v1/accounts/{accountId}/tracking-tags/{tagId}/users | Assign a user to a tag
 *TrackingTagsApi* | [**createTrackingTag**](docs/Api/TrackingTagsApi.md#createtrackingtag) | **POST** /v1/accounts/{accountId}/tracking-tags | Create a tracking tag
 *TrackingTagsApi* | [**createTrackingTagEvent**](docs/Api/TrackingTagsApi.md#createtrackingtagevent) | **POST** /v1/accounts/{accountId}/tracking-tags/{tagId}/events | Create a conversion event
 *TrackingTagsApi* | [**deleteTrackingTagEvent**](docs/Api/TrackingTagsApi.md#deletetrackingtagevent) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/events/{eventId} | Delete a conversion event
@@ -758,10 +759,13 @@ Class | Method | HTTP request | Description
 *TrackingTagsApi* | [**getTrackingTagStoreInstall**](docs/Api/TrackingTagsApi.md#gettrackingtagstoreinstall) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Get store install status
 *TrackingTagsApi* | [**installTrackingTagOnStore**](docs/Api/TrackingTagsApi.md#installtrackingtagonstore) | **POST** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Install on a Shopify store or WordPress site
 *TrackingTagsApi* | [**listTrackingTagEvents**](docs/Api/TrackingTagsApi.md#listtrackingtagevents) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/events | List conversion events
+*TrackingTagsApi* | [**listTrackingTagPartners**](docs/Api/TrackingTagsApi.md#listtrackingtagpartners) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/partners | List partner businesses of a tag
 *TrackingTagsApi* | [**listTrackingTagSharedAccounts**](docs/Api/TrackingTagsApi.md#listtrackingtagsharedaccounts) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/shared-accounts | List accounts it is shared with
+*TrackingTagsApi* | [**listTrackingTagUsers**](docs/Api/TrackingTagsApi.md#listtrackingtagusers) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/users | List tag users
 *TrackingTagsApi* | [**listTrackingTags**](docs/Api/TrackingTagsApi.md#listtrackingtags) | **GET** /v1/accounts/{accountId}/tracking-tags | List tracking tags
 *TrackingTagsApi* | [**removeTrackingTagFromStore**](docs/Api/TrackingTagsApi.md#removetrackingtagfromstore) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Remove from a Shopify store or WordPress site
 *TrackingTagsApi* | [**removeTrackingTagSharedAccount**](docs/Api/TrackingTagsApi.md#removetrackingtagsharedaccount) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/shared-accounts | Stop sharing with an account
+*TrackingTagsApi* | [**removeTrackingTagUser**](docs/Api/TrackingTagsApi.md#removetrackingtaguser) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/users/{userId} | Remove a user from a tag
 *TrackingTagsApi* | [**updateAdTrackingTags**](docs/Api/TrackingTagsApi.md#updateadtrackingtags) | **PATCH** /v1/ads/{adId}/tracking-tags | Set ad tracking tags
 *TrackingTagsApi* | [**updateTrackingTag**](docs/Api/TrackingTagsApi.md#updatetrackingtag) | **PATCH** /v1/accounts/{accountId}/tracking-tags/{tagId} | Update a tracking tag
 *TrackingTagsApi* | [**updateTrackingTagEvent**](docs/Api/TrackingTagsApi.md#updatetrackingtagevent) | **PATCH** /v1/accounts/{accountId}/tracking-tags/{tagId}/events/{eventId} | Update a conversion event
@@ -1034,6 +1038,8 @@ Class | Method | HTTP request | Description
 - [AssignPageUser201Response](docs/Model/AssignPageUser201Response.md)
 - [AssignPageUser201ResponseUser](docs/Model/AssignPageUser201ResponseUser.md)
 - [AssignPageUserRequest](docs/Model/AssignPageUserRequest.md)
+- [AssignTrackingTagUser200Response](docs/Model/AssignTrackingTagUser200Response.md)
+- [AssignTrackingTagUserRequest](docs/Model/AssignTrackingTagUserRequest.md)
 - [AttachAdGroupAssets201Response](docs/Model/AttachAdGroupAssets201Response.md)
 - [AttachAdLabel200Response](docs/Model/AttachAdLabel200Response.md)
 - [AttachBrandedCallingNumbersRequest](docs/Model/AttachBrandedCallingNumbersRequest.md)
@@ -2349,7 +2355,9 @@ Class | Method | HTTP request | Description
 - [ListTikTokCommercialMusic200ResponseTracksInner](docs/Model/ListTikTokCommercialMusic200ResponseTracksInner.md)
 - [ListTikTokCommercialMusic200ResponseTracksInnerClip](docs/Model/ListTikTokCommercialMusic200ResponseTracksInnerClip.md)
 - [ListTrackingTagEvents200Response](docs/Model/ListTrackingTagEvents200Response.md)
+- [ListTrackingTagPartners200Response](docs/Model/ListTrackingTagPartners200Response.md)
 - [ListTrackingTagSharedAccounts200Response](docs/Model/ListTrackingTagSharedAccounts200Response.md)
+- [ListTrackingTagUsers200Response](docs/Model/ListTrackingTagUsers200Response.md)
 - [ListTrackingTags200Response](docs/Model/ListTrackingTags200Response.md)
 - [ListUsers200Response](docs/Model/ListUsers200Response.md)
 - [ListUsers200ResponseUsersInner](docs/Model/ListUsers200ResponseUsersInner.md)
@@ -2598,6 +2606,7 @@ Class | Method | HTTP request | Description
 - [RemovePageUser200Response](docs/Model/RemovePageUser200Response.md)
 - [RemoveTrackingTagFromStore200Response](docs/Model/RemoveTrackingTagFromStore200Response.md)
 - [RemoveTrackingTagFromStore200ResponseInstall](docs/Model/RemoveTrackingTagFromStore200ResponseInstall.md)
+- [RemoveTrackingTagUser200Response](docs/Model/RemoveTrackingTagUser200Response.md)
 - [RemoveWhatsAppGroupParticipantsRequest](docs/Model/RemoveWhatsAppGroupParticipantsRequest.md)
 - [ReplaceAdAudienceCompanies200Response](docs/Model/ReplaceAdAudienceCompanies200Response.md)
 - [ReplaceAdAudienceCompaniesRequest](docs/Model/ReplaceAdAudienceCompaniesRequest.md)
@@ -2876,6 +2885,8 @@ Class | Method | HTTP request | Description
 - [TrackingTagEvent](docs/Model/TrackingTagEvent.md)
 - [TrackingTagEventInput](docs/Model/TrackingTagEventInput.md)
 - [TrackingTagInstallBlockedReason](docs/Model/TrackingTagInstallBlockedReason.md)
+- [TrackingTagPartner](docs/Model/TrackingTagPartner.md)
+- [TrackingTagUser](docs/Model/TrackingTagUser.md)
 - [TransferVoiceCall200Response](docs/Model/TransferVoiceCall200Response.md)
 - [TransferVoiceCallRequest](docs/Model/TransferVoiceCallRequest.md)
 - [TriggerWorkflow200Response](docs/Model/TriggerWorkflow200Response.md)
