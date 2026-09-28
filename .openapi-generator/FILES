@@ -168,6 +168,9 @@ docs/Model/ApiKeyCreatedBy.md
 docs/Model/ApiKeyProfileIdsInner.md
 docs/Model/AppealSmsRegistration200Response.md
 docs/Model/AppealSmsRegistrationRequest.md
+docs/Model/ApplyGoogleRecommendations200Response.md
+docs/Model/ApplyGoogleRecommendationsRequest.md
+docs/Model/ApplyGoogleRecommendationsRequestRecommendationsInner.md
 docs/Model/ApproveWhatsAppGroupJoinRequestsRequest.md
 docs/Model/ArchiveLeadForm200Response.md
 docs/Model/AssignGoogleBusinessLocation200Response.md
@@ -617,6 +620,7 @@ docs/Model/DiscordPlatformDataThreadFromMessage.md
 docs/Model/DiscordRole.md
 docs/Model/DiscordScheduledEvent.md
 docs/Model/DiscordScheduledEventEntityMetadata.md
+docs/Model/DismissGoogleRecommendationsRequest.md
 docs/Model/DmButton.md
 docs/Model/DownloadTikTokVideo200Response.md
 docs/Model/DownloadTikTokVideo200ResponseFormatsInner.md
@@ -1127,6 +1131,10 @@ docs/Model/GooglePmaxAssetGroupInput.md
 docs/Model/GooglePmaxAssetGroupInputImages.md
 docs/Model/GooglePmaxAssetGroupUpdate.md
 docs/Model/GooglePmaxAssetGroupUpdateImages.md
+docs/Model/GoogleRecommendation.md
+docs/Model/GoogleRecommendationImpact.md
+docs/Model/GoogleRecommendationMetrics.md
+docs/Model/GoogleRecommendationResult.md
 docs/Model/GoogleRsaDescription.md
 docs/Model/GoogleRsaHeadline.md
 docs/Model/GoogleSitelink.md
@@ -1331,6 +1339,7 @@ docs/Model/ListGoogleBusinessMedia200ResponseMediaItemsInner.md
 docs/Model/ListGoogleBusinessMedia200ResponseMediaItemsInnerLocationAssociation.md
 docs/Model/ListGoogleBusinessPlaceActions200Response.md
 docs/Model/ListGoogleBusinessPlaceActions200ResponsePlaceActionLinksInner.md
+docs/Model/ListGoogleRecommendations200Response.md
 docs/Model/ListHighDemandPeriods200Response.md
 docs/Model/ListImessageAudience200Response.md
 docs/Model/ListImessageAvailableNumbers200Response.md
@@ -2535,6 +2544,9 @@ lib/Model/ApiKeyCreatedBy.php
 lib/Model/ApiKeyProfileIdsInner.php
 lib/Model/AppealSmsRegistration200Response.php
 lib/Model/AppealSmsRegistrationRequest.php
+lib/Model/ApplyGoogleRecommendations200Response.php
+lib/Model/ApplyGoogleRecommendationsRequest.php
+lib/Model/ApplyGoogleRecommendationsRequestRecommendationsInner.php
 lib/Model/ApproveWhatsAppGroupJoinRequestsRequest.php
 lib/Model/ArchiveLeadForm200Response.php
 lib/Model/AssignGoogleBusinessLocation200Response.php
@@ -2984,6 +2996,7 @@ lib/Model/DiscordPlatformDataThreadFromMessage.php
 lib/Model/DiscordRole.php
 lib/Model/DiscordScheduledEvent.php
 lib/Model/DiscordScheduledEventEntityMetadata.php
+lib/Model/DismissGoogleRecommendationsRequest.php
 lib/Model/DmButton.php
 lib/Model/DownloadTikTokVideo200Response.php
 lib/Model/DownloadTikTokVideo200ResponseFormatsInner.php
@@ -3494,6 +3507,10 @@ lib/Model/GooglePmaxAssetGroupInput.php
 lib/Model/GooglePmaxAssetGroupInputImages.php
 lib/Model/GooglePmaxAssetGroupUpdate.php
 lib/Model/GooglePmaxAssetGroupUpdateImages.php
+lib/Model/GoogleRecommendation.php
+lib/Model/GoogleRecommendationImpact.php
+lib/Model/GoogleRecommendationMetrics.php
+lib/Model/GoogleRecommendationResult.php
 lib/Model/GoogleRsaDescription.php
 lib/Model/GoogleRsaHeadline.php
 lib/Model/GoogleSitelink.php
@@ -3698,6 +3715,7 @@ lib/Model/ListGoogleBusinessMedia200ResponseMediaItemsInner.php
 lib/Model/ListGoogleBusinessMedia200ResponseMediaItemsInnerLocationAssociation.php
 lib/Model/ListGoogleBusinessPlaceActions200Response.php
 lib/Model/ListGoogleBusinessPlaceActions200ResponsePlaceActionLinksInner.php
+lib/Model/ListGoogleRecommendations200Response.php
 lib/Model/ListHighDemandPeriods200Response.php
 lib/Model/ListImessageAudience200Response.php
 lib/Model/ListImessageAvailableNumbers200Response.php
@@ -4735,9 +4753,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/WebhookAdsSyncAccountTest.php
-test/Model/WebhookAdsSyncAdAccountTest.php
-test/Model/WebhookPayloadAccountAdsSyncFailedSyncTest.php
-test/Model/WebhookPayloadAccountAdsSyncFailedTest.php
-test/Model/WebhookPayloadAccountAdsSyncRecoveredSyncTest.php
-test/Model/WebhookPayloadAccountAdsSyncRecoveredTest.php
