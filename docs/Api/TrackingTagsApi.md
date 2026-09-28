@@ -11,8 +11,11 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getAdTrackingTags()**](TrackingTagsApi.md#getAdTrackingTags) | **GET** /v1/ads/{adId}/tracking-tags | Get ad tracking tags |
 | [**getTrackingTag()**](TrackingTagsApi.md#getTrackingTag) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId} | Get a tracking tag |
 | [**getTrackingTagStats()**](TrackingTagsApi.md#getTrackingTagStats) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/stats | Get aggregated event stats |
+| [**getTrackingTagStoreInstall()**](TrackingTagsApi.md#getTrackingTagStoreInstall) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Get store install status |
+| [**installTrackingTagOnStore()**](TrackingTagsApi.md#installTrackingTagOnStore) | **POST** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Install on a Shopify store |
 | [**listTrackingTagSharedAccounts()**](TrackingTagsApi.md#listTrackingTagSharedAccounts) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/shared-accounts | List accounts it is shared with |
 | [**listTrackingTags()**](TrackingTagsApi.md#listTrackingTags) | **GET** /v1/accounts/{accountId}/tracking-tags | List tracking tags |
+| [**removeTrackingTagFromStore()**](TrackingTagsApi.md#removeTrackingTagFromStore) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Remove from a Shopify store |
 | [**removeTrackingTagSharedAccount()**](TrackingTagsApi.md#removeTrackingTagSharedAccount) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/shared-accounts | Stop sharing with an account |
 | [**updateAdTrackingTags()**](TrackingTagsApi.md#updateAdTrackingTags) | **PATCH** /v1/ads/{adId}/tracking-tags | Set ad tracking tags |
 | [**updateTrackingTag()**](TrackingTagsApi.md#updateTrackingTag) | **PATCH** /v1/accounts/{accountId}/tracking-tags/{tagId} | Update a tracking tag |
@@ -334,6 +337,134 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getTrackingTagStoreInstall()`
+
+```php
+getTrackingTagStoreInstall($account_id, $tag_id, $store_account_id): \Zernio\Model\GetTrackingTagStoreInstall200Response
+```
+
+Get store install status
+
+Whether this pixel is the one the Shopify store fires. `installedTagId` names the pixel the store currently fires, which can be a different tag. Meta only (platform `metaads`).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\TrackingTagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$tag_id = 'tag_id_example'; // string | Meta pixel id.
+$store_account_id = 'store_account_id_example'; // string | The connected Shopify account id.
+
+try {
+    $result = $apiInstance->getTrackingTagStoreInstall($account_id, $tag_id, $store_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TrackingTagsApi->getTrackingTagStoreInstall: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **tag_id** | **string**| Meta pixel id. | |
+| **store_account_id** | **string**| The connected Shopify account id. | |
+
+### Return type
+
+[**\Zernio\Model\GetTrackingTagStoreInstall200Response**](../Model/GetTrackingTagStoreInstall200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `installTrackingTagOnStore()`
+
+```php
+installTrackingTagOnStore($account_id, $tag_id, $install_tracking_tag_on_store_request): \Zernio\Model\InstallTrackingTagOnStore200Response
+```
+
+Install on a Shopify store
+
+Puts the Meta pixel on a connected Shopify store's storefront and checkout through Zernio's Shopify web pixel (a Shopify app pixel, no theme edits). The store then sends PageView, ViewContent, AddToCart, Search, InitiateCheckout, AddPaymentInfo and Purchase (with value, currency, content_ids and contents) to the pixel, each with an event id. Purchase uses `shopify_order_{orderId}` as its event id, so a Conversions API Purchase you send for the same order with that `eventId` is deduplicated by Meta.  Idempotent: a store runs one Zernio pixel, so calling it again updates the install and installing a different tag replaces the previous one (reported in `replacedTagId`). Events respect the store's customer privacy settings (marketing consent).  `accountId` is the Meta ads account that owns the pixel (`tagId`); `storeAccountId` is the Shopify account. Stores connected before pixel support must re-approve the Zernio app: the call then answers 409 `reconnect_required` with `details.authUrl` to send the merchant to (the Shopify account id stays the same). Meta only (platform `metaads`); other platforms return 405.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\TrackingTagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$tag_id = 'tag_id_example'; // string | Meta pixel id.
+$install_tracking_tag_on_store_request = new \Zernio\Model\InstallTrackingTagOnStoreRequest(); // \Zernio\Model\InstallTrackingTagOnStoreRequest
+
+try {
+    $result = $apiInstance->installTrackingTagOnStore($account_id, $tag_id, $install_tracking_tag_on_store_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TrackingTagsApi->installTrackingTagOnStore: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **tag_id** | **string**| Meta pixel id. | |
+| **install_tracking_tag_on_store_request** | [**\Zernio\Model\InstallTrackingTagOnStoreRequest**](../Model/InstallTrackingTagOnStoreRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\InstallTrackingTagOnStore200Response**](../Model/InstallTrackingTagOnStore200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listTrackingTagSharedAccounts()`
 
 ```php
@@ -444,6 +575,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListTrackingTags200Response**](../Model/ListTrackingTags200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `removeTrackingTagFromStore()`
+
+```php
+removeTrackingTagFromStore($account_id, $tag_id, $store_account_id): \Zernio\Model\GetTrackingTagStoreInstall200Response
+```
+
+Remove from a Shopify store
+
+Removes the pixel from the store. Idempotent: nothing installed returns 200 with `installed: false`. If the store fires a different pixel, nothing is removed and the call answers 409 `invalid_resource_state`. Meta only (platform `metaads`).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\TrackingTagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$tag_id = 'tag_id_example'; // string | Meta pixel id.
+$store_account_id = 'store_account_id_example'; // string | The connected Shopify account id.
+
+try {
+    $result = $apiInstance->removeTrackingTagFromStore($account_id, $tag_id, $store_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TrackingTagsApi->removeTrackingTagFromStore: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **tag_id** | **string**| Meta pixel id. | |
+| **store_account_id** | **string**| The connected Shopify account id. | |
+
+### Return type
+
+[**\Zernio\Model\GetTrackingTagStoreInstall200Response**](../Model/GetTrackingTagStoreInstall200Response.md)
 
 ### Authorization
 

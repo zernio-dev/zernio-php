@@ -1025,6 +1025,7 @@ docs/Model/GetTikTokSmartPlusMaterialReport200ResponseRowsInnerMetrics.md
 docs/Model/GetTrackingTag200Response.md
 docs/Model/GetTrackingTagStats200Response.md
 docs/Model/GetTrackingTagStats200ResponseStats.md
+docs/Model/GetTrackingTagStoreInstall200Response.md
 docs/Model/GetTweet200Response.md
 docs/Model/GetTweet200ResponseTweet.md
 docs/Model/GetUsage200Response.md
@@ -1202,6 +1203,9 @@ docs/Model/InstagramPlatformData.md
 docs/Model/InstagramPlatformDataAudioConfiguration.md
 docs/Model/InstagramPlatformDataTrialParams.md
 docs/Model/InstagramPlatformDataUserTagsInner.md
+docs/Model/InstallTrackingTagOnStore200Response.md
+docs/Model/InstallTrackingTagOnStore200ResponseInstall.md
+docs/Model/InstallTrackingTagOnStoreRequest.md
 docs/Model/InviteAdAccountToManagerRequest.md
 docs/Model/KeywordEntry.md
 docs/Model/LikeInboxComment200Response.md
@@ -1906,6 +1910,7 @@ docs/Model/StartSmsRegistrationRequestCampaign.md
 docs/Model/StartSmsRegistrationRequestTollFree.md
 docs/Model/StartWhatsAppCallerIdVerification200Response.md
 docs/Model/StartWhatsAppCallerIdVerificationRequest.md
+docs/Model/StorePixelInstall.md
 docs/Model/SubmitFeedbackRequest.md
 docs/Model/SubmitFeedbackRequestAgent.md
 docs/Model/SubmitPhoneNumberKyc200Response.md
@@ -3443,6 +3448,7 @@ lib/Model/GetTikTokSmartPlusMaterialReport200ResponseRowsInnerMetrics.php
 lib/Model/GetTrackingTag200Response.php
 lib/Model/GetTrackingTagStats200Response.php
 lib/Model/GetTrackingTagStats200ResponseStats.php
+lib/Model/GetTrackingTagStoreInstall200Response.php
 lib/Model/GetTweet200Response.php
 lib/Model/GetTweet200ResponseTweet.php
 lib/Model/GetUsage200Response.php
@@ -3620,6 +3626,9 @@ lib/Model/InstagramPlatformData.php
 lib/Model/InstagramPlatformDataAudioConfiguration.php
 lib/Model/InstagramPlatformDataTrialParams.php
 lib/Model/InstagramPlatformDataUserTagsInner.php
+lib/Model/InstallTrackingTagOnStore200Response.php
+lib/Model/InstallTrackingTagOnStore200ResponseInstall.php
+lib/Model/InstallTrackingTagOnStoreRequest.php
 lib/Model/InviteAdAccountToManagerRequest.php
 lib/Model/KeywordEntry.php
 lib/Model/LikeInboxComment200Response.php
@@ -4325,6 +4334,7 @@ lib/Model/StartSmsRegistrationRequestCampaign.php
 lib/Model/StartSmsRegistrationRequestTollFree.php
 lib/Model/StartWhatsAppCallerIdVerification200Response.php
 lib/Model/StartWhatsAppCallerIdVerificationRequest.php
+lib/Model/StorePixelInstall.php
 lib/Model/SubmitFeedbackRequest.php
 lib/Model/SubmitFeedbackRequestAgent.php
 lib/Model/SubmitPhoneNumberKyc200Response.php
@@ -4837,7 +4847,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/PreflightBrandedCallingIdentity200ResponseFindingsInnerTest.php
-test/Model/PreflightBrandedCallingIdentity200ResponseTest.php
-test/Model/PreflightBrandedCallingIdentityRequestAuthorizerTest.php
-test/Model/PreflightBrandedCallingIdentityRequestTest.php
+test/Model/GetTrackingTagStoreInstall200ResponseTest.php
+test/Model/InstallTrackingTagOnStore200ResponseInstallTest.php
+test/Model/InstallTrackingTagOnStore200ResponseTest.php
+test/Model/InstallTrackingTagOnStoreRequestTest.php
+test/Model/StorePixelInstallTest.php
