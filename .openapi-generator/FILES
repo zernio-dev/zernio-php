@@ -4723,7 +4723,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/FeedbackApiTest.php
-test/Model/FeedbackReceiptTest.php
-test/Model/SubmitFeedbackRequestAgentTest.php
-test/Model/SubmitFeedbackRequestTest.php

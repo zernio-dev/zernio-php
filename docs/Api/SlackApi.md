@@ -1,6 +1,6 @@
 # Zernio\SlackApi
 
-
+Slack-specific endpoints for a connected Slack workspace, such as listing its members.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
