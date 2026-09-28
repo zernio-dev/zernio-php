@@ -5037,10 +5037,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AssignTrackingTagUser200ResponseTest.php
-test/Model/AssignTrackingTagUserRequestTest.php
-test/Model/ListTrackingTagPartners200ResponseTest.php
-test/Model/ListTrackingTagUsers200ResponseTest.php
-test/Model/RemoveTrackingTagUser200ResponseTest.php
-test/Model/TrackingTagPartnerTest.php
-test/Model/TrackingTagUserTest.php
