@@ -750,7 +750,7 @@ try {
 ## `getVoiceCallEstimate()`
 
 ```php
-getVoiceCallEstimate($to, $minutes, $recording, $transcription): \Zernio\Model\GetVoiceCallEstimate200Response
+getVoiceCallEstimate($to, $from, $minutes, $recording, $transcription): \Zernio\Model\GetVoiceCallEstimate200Response
 ```
 
 Estimate call cost
@@ -775,12 +775,13 @@ $apiInstance = new Zernio\Api\VoiceApi(
     $config
 );
 $to = 'to_example'; // string | Destination number, E.164 (leading + optional).
+$from = 'from_example'; // string | The number the call would dial from, E.164. When it is verified on a Branded Calling identity and `to` is a US number, the estimate includes the per-call Branded Calling surcharge.
 $minutes = 1; // int
 $recording = True; // bool
 $transcription = True; // bool
 
 try {
-    $result = $apiInstance->getVoiceCallEstimate($to, $minutes, $recording, $transcription);
+    $result = $apiInstance->getVoiceCallEstimate($to, $from, $minutes, $recording, $transcription);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VoiceApi->getVoiceCallEstimate: ', $e->getMessage(), PHP_EOL;
@@ -792,6 +793,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **to** | **string**| Destination number, E.164 (leading + optional). | |
+| **from** | **string**| The number the call would dial from, E.164. When it is verified on a Branded Calling identity and &#x60;to&#x60; is a US number, the estimate includes the per-call Branded Calling surcharge. | [optional] |
 | **minutes** | **int**|  | [optional] [default to 1] |
 | **recording** | **bool**|  | [optional] |
 | **transcription** | **bool**|  | [optional] |
