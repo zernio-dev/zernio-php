@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **platform** | **string** |  | [optional]
 **ad_set_name** | **string** |  | [optional]
 **status** | **string** |  | [optional]
-**platform_ad_set_status** | **string** |  | [optional]
+**platform_ad_set_status** | **string** | Raw platform ad set status. On TikTok the ad group&#39;s own switch &#x60;operation_status&#x60; (ENABLE / DISABLE), independent of its campaign. | [optional]
 **platform_campaign_id** | **string** |  | [optional]
 **platform_ad_account_id** | **string** |  | [optional]
 **account_id** | **string** |  | [optional]
