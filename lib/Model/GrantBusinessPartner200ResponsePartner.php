@@ -1,6 +1,6 @@
 <?php
 /**
- * MetaPagePartner
+ * GrantBusinessPartner200ResponsePartner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * MetaPagePartner Class Doc Comment
+ * GrantBusinessPartner200ResponsePartner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class MetaPagePartner implements ModelInterface, ArrayAccess, \JsonSerializable
+class GrantBusinessPartner200ResponsePartner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class MetaPagePartner implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MetaPagePartner';
+    protected static $openAPIModelName = 'grantBusinessPartner_200_response_partner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,7 +59,6 @@ class MetaPagePartner implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'business_id' => 'string',
-        'name' => 'string',
         'permitted_tasks' => 'string[]'
     ];
 
@@ -72,7 +71,6 @@ class MetaPagePartner implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'business_id' => null,
-        'name' => null,
         'permitted_tasks' => null
     ];
 
@@ -83,7 +81,6 @@ class MetaPagePartner implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'business_id' => false,
-        'name' => false,
         'permitted_tasks' => false
     ];
 
@@ -174,7 +171,6 @@ class MetaPagePartner implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'business_id' => 'businessId',
-        'name' => 'name',
         'permitted_tasks' => 'permittedTasks'
     ];
 
@@ -185,7 +181,6 @@ class MetaPagePartner implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'business_id' => 'setBusinessId',
-        'name' => 'setName',
         'permitted_tasks' => 'setPermittedTasks'
     ];
 
@@ -196,7 +191,6 @@ class MetaPagePartner implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'business_id' => 'getBusinessId',
-        'name' => 'getName',
         'permitted_tasks' => 'getPermittedTasks'
     ];
 
@@ -258,7 +252,6 @@ class MetaPagePartner implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('business_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('permitted_tasks', $data ?? [], null);
     }
 
@@ -332,33 +325,6 @@ class MetaPagePartner implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
      * Gets permitted_tasks
      *
      * @return string[]|null
@@ -371,7 +337,7 @@ class MetaPagePartner implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets permitted_tasks
      *
-     * @param string[]|null $permitted_tasks Tasks the partner holds, in the bare spelling the grant takes (ADVERTISE, ANALYZE, MANAGE, ...). Meta reads them back with a PROFILE_PLUS_ prefix, which is stripped here; partners granted in Business Settings may hold tasks beyond the six the grant accepts, such as MANAGE_LEADS or REVENUE.
+     * @param string[]|null $permitted_tasks Tasks the partner currently holds.
      *
      * @return self
      */

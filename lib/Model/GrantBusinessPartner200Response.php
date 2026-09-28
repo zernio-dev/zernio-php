@@ -1,6 +1,6 @@
 <?php
 /**
- * MetaPagePartner
+ * GrantBusinessPartner200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * MetaPagePartner Class Doc Comment
+ * GrantBusinessPartner200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class MetaPagePartner implements ModelInterface, ArrayAccess, \JsonSerializable
+class GrantBusinessPartner200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class MetaPagePartner implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MetaPagePartner';
+    protected static $openAPIModelName = 'grantBusinessPartner_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,9 @@ class MetaPagePartner implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'business_id' => 'string',
-        'name' => 'string',
-        'permitted_tasks' => 'string[]'
+        'page' => '\Zernio\Model\MetaPageOwnership',
+        'partner' => '\Zernio\Model\GrantBusinessPartner200ResponsePartner',
+        'already_shared' => 'bool'
     ];
 
     /**
@@ -71,9 +71,9 @@ class MetaPagePartner implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'business_id' => null,
-        'name' => null,
-        'permitted_tasks' => null
+        'page' => null,
+        'partner' => null,
+        'already_shared' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class MetaPagePartner implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'business_id' => false,
-        'name' => false,
-        'permitted_tasks' => false
+        'page' => false,
+        'partner' => false,
+        'already_shared' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class MetaPagePartner implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'business_id' => 'businessId',
-        'name' => 'name',
-        'permitted_tasks' => 'permittedTasks'
+        'page' => 'page',
+        'partner' => 'partner',
+        'already_shared' => 'alreadyShared'
     ];
 
     /**
@@ -184,9 +184,9 @@ class MetaPagePartner implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'business_id' => 'setBusinessId',
-        'name' => 'setName',
-        'permitted_tasks' => 'setPermittedTasks'
+        'page' => 'setPage',
+        'partner' => 'setPartner',
+        'already_shared' => 'setAlreadyShared'
     ];
 
     /**
@@ -195,9 +195,9 @@ class MetaPagePartner implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'business_id' => 'getBusinessId',
-        'name' => 'getName',
-        'permitted_tasks' => 'getPermittedTasks'
+        'page' => 'getPage',
+        'partner' => 'getPartner',
+        'already_shared' => 'getAlreadyShared'
     ];
 
     /**
@@ -257,9 +257,9 @@ class MetaPagePartner implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('business_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('permitted_tasks', $data ?? [], null);
+        $this->setIfExists('page', $data ?? [], null);
+        $this->setIfExists('partner', $data ?? [], null);
+        $this->setIfExists('already_shared', $data ?? [], null);
     }
 
     /**
@@ -305,82 +305,82 @@ class MetaPagePartner implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets business_id
+     * Gets page
      *
-     * @return string|null
+     * @return \Zernio\Model\MetaPageOwnership|null
      */
-    public function getBusinessId()
+    public function getPage()
     {
-        return $this->container['business_id'];
+        return $this->container['page'];
     }
 
     /**
-     * Sets business_id
+     * Sets page
      *
-     * @param string|null $business_id business_id
+     * @param \Zernio\Model\MetaPageOwnership|null $page page
      *
      * @return self
      */
-    public function setBusinessId($business_id)
+    public function setPage($page)
     {
-        if (is_null($business_id)) {
-            throw new \InvalidArgumentException('non-nullable business_id cannot be null');
+        if (is_null($page)) {
+            throw new \InvalidArgumentException('non-nullable page cannot be null');
         }
-        $this->container['business_id'] = $business_id;
+        $this->container['page'] = $page;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets partner
      *
-     * @return string|null
+     * @return \Zernio\Model\GrantBusinessPartner200ResponsePartner|null
      */
-    public function getName()
+    public function getPartner()
     {
-        return $this->container['name'];
+        return $this->container['partner'];
     }
 
     /**
-     * Sets name
+     * Sets partner
      *
-     * @param string|null $name name
+     * @param \Zernio\Model\GrantBusinessPartner200ResponsePartner|null $partner partner
      *
      * @return self
      */
-    public function setName($name)
+    public function setPartner($partner)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($partner)) {
+            throw new \InvalidArgumentException('non-nullable partner cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['partner'] = $partner;
 
         return $this;
     }
 
     /**
-     * Gets permitted_tasks
+     * Gets already_shared
      *
-     * @return string[]|null
+     * @return bool|null
      */
-    public function getPermittedTasks()
+    public function getAlreadyShared()
     {
-        return $this->container['permitted_tasks'];
+        return $this->container['already_shared'];
     }
 
     /**
-     * Sets permitted_tasks
+     * Sets already_shared
      *
-     * @param string[]|null $permitted_tasks Tasks the partner holds, in the bare spelling the grant takes (ADVERTISE, ANALYZE, MANAGE, ...). Meta reads them back with a PROFILE_PLUS_ prefix, which is stripped here; partners granted in Business Settings may hold tasks beyond the six the grant accepts, such as MANAGE_LEADS or REVENUE.
+     * @param bool|null $already_shared Always true on this response.
      *
      * @return self
      */
-    public function setPermittedTasks($permitted_tasks)
+    public function setAlreadyShared($already_shared)
     {
-        if (is_null($permitted_tasks)) {
-            throw new \InvalidArgumentException('non-nullable permitted_tasks cannot be null');
+        if (is_null($already_shared)) {
+            throw new \InvalidArgumentException('non-nullable already_shared cannot be null');
         }
-        $this->container['permitted_tasks'] = $permitted_tasks;
+        $this->container['already_shared'] = $already_shared;
 
         return $this;
     }

@@ -3105,7 +3105,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GrantBusinessPartner201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
+     * @return \Zernio\Model\GrantBusinessPartner200Response|\Zernio\Model\GrantBusinessPartner201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function grantBusinessPartner($account_id, $grant_business_partner_request, string $contentType = self::contentTypes['grantBusinessPartner'][0])
     {
@@ -3124,7 +3124,7 @@ class AccountsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GrantBusinessPartner201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GrantBusinessPartner200Response|\Zernio\Model\GrantBusinessPartner201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function grantBusinessPartnerWithHttpInfo($account_id, $grant_business_partner_request, string $contentType = self::contentTypes['grantBusinessPartner'][0])
     {
@@ -3154,6 +3154,12 @@ class AccountsApi
 
 
             switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GrantBusinessPartner200Response',
+                        $request,
+                        $response,
+                    );
                 case 201:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\GrantBusinessPartner201Response',
@@ -3196,12 +3202,20 @@ class AccountsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\GrantBusinessPartner201Response',
+                '\Zernio\Model\GrantBusinessPartner200Response',
                 $request,
                 $response,
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GrantBusinessPartner200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3277,7 +3291,7 @@ class AccountsApi
      */
     public function grantBusinessPartnerAsyncWithHttpInfo($account_id, $grant_business_partner_request, string $contentType = self::contentTypes['grantBusinessPartner'][0])
     {
-        $returnType = '\Zernio\Model\GrantBusinessPartner201Response';
+        $returnType = '\Zernio\Model\GrantBusinessPartner200Response';
         $request = $this->grantBusinessPartnerRequest($account_id, $grant_business_partner_request, $contentType);
 
         return $this->client

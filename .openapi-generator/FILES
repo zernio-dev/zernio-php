@@ -1170,6 +1170,8 @@ docs/Model/GoogleRsaDescription.md
 docs/Model/GoogleRsaHeadline.md
 docs/Model/GoogleSitelink.md
 docs/Model/GoogleStructuredSnippet.md
+docs/Model/GrantBusinessPartner200Response.md
+docs/Model/GrantBusinessPartner200ResponsePartner.md
 docs/Model/GrantBusinessPartner201Response.md
 docs/Model/GrantBusinessPartner201ResponsePartner.md
 docs/Model/GrantBusinessPartnerRequest.md
@@ -3626,6 +3628,8 @@ lib/Model/GoogleRsaDescription.php
 lib/Model/GoogleRsaHeadline.php
 lib/Model/GoogleSitelink.php
 lib/Model/GoogleStructuredSnippet.php
+lib/Model/GrantBusinessPartner200Response.php
+lib/Model/GrantBusinessPartner200ResponsePartner.php
 lib/Model/GrantBusinessPartner201Response.php
 lib/Model/GrantBusinessPartner201ResponsePartner.php
 lib/Model/GrantBusinessPartnerRequest.php
@@ -4913,3 +4917,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GrantBusinessPartner200ResponsePartnerTest.php
+test/Model/GrantBusinessPartner200ResponseTest.php
