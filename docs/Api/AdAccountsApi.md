@@ -9,6 +9,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**addAccountCallouts()**](AdAccountsApi.md#addAccountCallouts) | **POST** /v1/ads/accounts/callouts | Add account callouts |
 | [**addAccountSitelinks()**](AdAccountsApi.md#addAccountSitelinks) | **POST** /v1/ads/accounts/sitelinks | Add account sitelinks |
 | [**addAccountStructuredSnippets()**](AdAccountsApi.md#addAccountStructuredSnippets) | **POST** /v1/ads/accounts/structured-snippets | Add account snippets |
+| [**assignAdAccountUser()**](AdAccountsApi.md#assignAdAccountUser) | **POST** /v1/ads/accounts/users | Assign a user to an ad account |
+| [**assignPageUser()**](AdAccountsApi.md#assignPageUser) | **POST** /v1/ads/page-users | Assign a user to a Page |
 | [**attachAdLabel()**](AdAccountsApi.md#attachAdLabel) | **POST** /v1/ads/labels/{labelId}/assignments | Attach a Google Ads label |
 | [**createAdAccount()**](AdAccountsApi.md#createAdAccount) | **POST** /v1/ads/accounts | Create Meta ad account |
 | [**createAdLabel()**](AdAccountsApi.md#createAdLabel) | **POST** /v1/ads/labels | Create a Google Ads label |
@@ -34,6 +36,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listAccountCallouts()**](AdAccountsApi.md#listAccountCallouts) | **GET** /v1/ads/accounts/callouts | List account callouts |
 | [**listAccountSitelinks()**](AdAccountsApi.md#listAccountSitelinks) | **GET** /v1/ads/accounts/sitelinks | List account sitelinks |
 | [**listAccountStructuredSnippets()**](AdAccountsApi.md#listAccountStructuredSnippets) | **GET** /v1/ads/accounts/structured-snippets | List account snippets |
+| [**listAdAccountUsers()**](AdAccountsApi.md#listAdAccountUsers) | **GET** /v1/ads/accounts/users | Ad account users |
 | [**listAdAccounts()**](AdAccountsApi.md#listAdAccounts) | **GET** /v1/ads/accounts | List ad accounts |
 | [**listAdLabels()**](AdAccountsApi.md#listAdLabels) | **GET** /v1/ads/labels | List ad labels |
 | [**listAdNegativeKeywordLists()**](AdAccountsApi.md#listAdNegativeKeywordLists) | **GET** /v1/ads/accounts/negative-keyword-lists | List negative keyword lists |
@@ -44,13 +47,17 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listAdvertisableApplications()**](AdAccountsApi.md#listAdvertisableApplications) | **GET** /v1/ads/advertisable-applications | List advertisable apps |
 | [**listCustomConversions()**](AdAccountsApi.md#listCustomConversions) | **GET** /v1/accounts/{accountId}/custom-conversions | List custom conversions |
 | [**listHighDemandPeriods()**](AdAccountsApi.md#listHighDemandPeriods) | **GET** /v1/ads/high-demand-periods | List high-demand periods |
+| [**listMetaBusinessUsers()**](AdAccountsApi.md#listMetaBusinessUsers) | **GET** /v1/ads/businesses/users | Business users |
 | [**listMetaBusinesses()**](AdAccountsApi.md#listMetaBusinesses) | **GET** /v1/ads/businesses | Businesses list |
+| [**listPageUsers()**](AdAccountsApi.md#listPageUsers) | **GET** /v1/ads/page-users | Page users of a business |
 | [**listTikTokAdPixels()**](AdAccountsApi.md#listTikTokAdPixels) | **GET** /v1/ads/pixels | List TikTok ad pixels |
 | [**listValueRuleSets()**](AdAccountsApi.md#listValueRuleSets) | **GET** /v1/ads/value-rule-sets | List value rule sets |
 | [**removeAccountCallout()**](AdAccountsApi.md#removeAccountCallout) | **DELETE** /v1/ads/accounts/callouts | Remove account callout |
 | [**removeAccountSitelink()**](AdAccountsApi.md#removeAccountSitelink) | **DELETE** /v1/ads/accounts/sitelinks | Remove account sitelink |
 | [**removeAccountStructuredSnippet()**](AdAccountsApi.md#removeAccountStructuredSnippet) | **DELETE** /v1/ads/accounts/structured-snippets | Remove account snippet |
+| [**removeAdAccountUser()**](AdAccountsApi.md#removeAdAccountUser) | **DELETE** /v1/ads/accounts/users | Remove a user from an ad account |
 | [**removeAdLabel()**](AdAccountsApi.md#removeAdLabel) | **DELETE** /v1/ads/labels/{labelId} | Remove a Google Ads label |
+| [**removePageUser()**](AdAccountsApi.md#removePageUser) | **DELETE** /v1/ads/page-users | Remove a user from a Page |
 | [**replaceAdNegativeKeywordListKeywords()**](AdAccountsApi.md#replaceAdNegativeKeywordListKeywords) | **PUT** /v1/ads/accounts/negative-keyword-lists/{listId}/keywords | Replace negative list keywords |
 | [**replyToAdComment()**](AdAccountsApi.md#replyToAdComment) | **POST** /v1/ads/{adId}/comments/{commentId}/reply | Reply to an ad comment |
 | [**updateAccountCallouts()**](AdAccountsApi.md#updateAccountCallouts) | **PUT** /v1/ads/accounts/callouts | Update account callouts |
@@ -229,6 +236,126 @@ try {
 ### Return type
 
 [**\Zernio\Model\AddAccountStructuredSnippets201Response**](../Model/AddAccountStructuredSnippets201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `assignAdAccountUser()`
+
+```php
+assignAdAccountUser($assign_ad_account_user_request): \Zernio\Model\AssignAdAccountUser201Response
+```
+
+Assign a user to an ad account
+
+Gives a person of the portfolio tasks on the ad account. `MANAGE` is admin, `ADVERTISE` creates and edits ads, `ANALYZE` reads reports, `DRAFT` edits drafts only. Assigning an already assigned user replaces their task set.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$assign_ad_account_user_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","adAccountId":"act_123456789","userId":"1122334455","tasks":["ADVERTISE","ANALYZE"]}; // \Zernio\Model\AssignAdAccountUserRequest
+
+try {
+    $result = $apiInstance->assignAdAccountUser($assign_ad_account_user_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->assignAdAccountUser: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **assign_ad_account_user_request** | [**\Zernio\Model\AssignAdAccountUserRequest**](../Model/AssignAdAccountUserRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\AssignAdAccountUser201Response**](../Model/AssignAdAccountUser201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `assignPageUser()`
+
+```php
+assignPageUser($assign_page_user_request): \Zernio\Model\AssignPageUser201Response
+```
+
+Assign a user to a Page
+
+Gives a person of the portfolio tasks on a Page the portfolio owns or was granted as a partner. Meta does not assign partner admins automatically, so after an owner shares a Page the partner calls this for the people whose tokens will advertise for it. `ADVERTISE` is what ad creation needs. Assigning an already assigned user replaces their task set.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$assign_page_user_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","pageId":"123456789012345","businessId":"1234567890123","userId":"1122334455","tasks":["ADVERTISE","ANALYZE"]}; // \Zernio\Model\AssignPageUserRequest
+
+try {
+    $result = $apiInstance->assignPageUser($assign_page_user_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->assignPageUser: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **assign_page_user_request** | [**\Zernio\Model\AssignPageUserRequest**](../Model/AssignPageUserRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\AssignPageUser201Response**](../Model/AssignPageUser201Response.md)
 
 ### Authorization
 
@@ -1264,7 +1391,7 @@ try {
 ## `getDsaDefaults()`
 
 ```php
-getDsaDefaults($account_id, $ad_account_id): \Zernio\Model\UpdateAdAccount200Response
+getDsaDefaults($account_id, $ad_account_id): \Zernio\Model\GetDsaDefaults200Response
 ```
 
 Get ad account DSA defaults
@@ -1308,7 +1435,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\UpdateAdAccount200Response**](../Model/UpdateAdAccount200Response.md)
+[**\Zernio\Model\GetDsaDefaults200Response**](../Model/GetDsaDefaults200Response.md)
 
 ### Authorization
 
@@ -1817,6 +1944,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListAccountStructuredSnippets200Response**](../Model/ListAccountStructuredSnippets200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listAdAccountUsers()`
+
+```php
+listAdAccountUsers($account_id, $ad_account_id, $business_id): \Zernio\Model\ListAdAccountUsers200Response
+```
+
+Ad account users
+
+People of a business portfolio assigned to a Meta ad account, with their tasks. Ids are business-scoped user ids (see `GET /v1/ads/businesses/users`).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token.
+$ad_account_id = 'ad_account_id_example'; // string | Meta ad account id (act_<n>).
+$business_id = 'business_id_example'; // string | Business portfolio whose people to list.
+
+try {
+    $result = $apiInstance->listAdAccountUsers($account_id, $ad_account_id, $business_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->listAdAccountUsers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. | |
+| **ad_account_id** | **string**| Meta ad account id (act_&lt;n&gt;). | |
+| **business_id** | **string**| Business portfolio whose people to list. | |
+
+### Return type
+
+[**\Zernio\Model\ListAdAccountUsers200Response**](../Model/ListAdAccountUsers200Response.md)
 
 ### Authorization
 
@@ -2479,6 +2670,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listMetaBusinessUsers()`
+
+```php
+listMetaBusinessUsers($account_id, $business_id): \Zernio\Model\ListMetaBusinessUsers200Response
+```
+
+Business users
+
+People and system users of a Meta business portfolio, with the business-scoped ids that `POST /v1/ads/accounts/users` and `POST /v1/ads/page-users` take. The connected Meta user must be an admin of the portfolio.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token.
+$business_id = 'business_id_example'; // string | Meta business portfolio id.
+
+try {
+    $result = $apiInstance->listMetaBusinessUsers($account_id, $business_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->listMetaBusinessUsers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. | |
+| **business_id** | **string**| Meta business portfolio id. | |
+
+### Return type
+
+[**\Zernio\Model\ListMetaBusinessUsers200Response**](../Model/ListMetaBusinessUsers200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listMetaBusinesses()`
 
 ```php
@@ -2529,6 +2782,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListMetaBusinesses200Response**](../Model/ListMetaBusinesses200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listPageUsers()`
+
+```php
+listPageUsers($account_id, $page_id, $business_id): \Zernio\Model\ListPageUsers200Response
+```
+
+Page users of a business
+
+People of a business portfolio assigned to a Facebook Page the portfolio owns or was granted as a partner (`POST /v1/accounts/{accountId}/business-partners` on the owner side).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token.
+$page_id = 'page_id_example'; // string | Facebook Page id.
+$business_id = 'business_id_example'; // string | Business portfolio whose people to list.
+
+try {
+    $result = $apiInstance->listPageUsers($account_id, $page_id, $business_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->listPageUsers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. | |
+| **page_id** | **string**| Facebook Page id. | |
+| **business_id** | **string**| Business portfolio whose people to list. | |
+
+### Return type
+
+[**\Zernio\Model\ListPageUsers200Response**](../Model/ListPageUsers200Response.md)
 
 ### Authorization
 
@@ -2855,6 +3172,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `removeAdAccountUser()`
+
+```php
+removeAdAccountUser($account_id, $ad_account_id, $user_id): \Zernio\Model\RemoveAdAccountUser200Response
+```
+
+Remove a user from an ad account
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id used to resolve the Meta token.
+$ad_account_id = 'ad_account_id_example'; // string | Meta ad account id (act_<n>).
+$user_id = 'user_id_example'; // string | Business-scoped user id.
+
+try {
+    $result = $apiInstance->removeAdAccountUser($account_id, $ad_account_id, $user_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->removeAdAccountUser: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio SocialAccount id used to resolve the Meta token. | |
+| **ad_account_id** | **string**| Meta ad account id (act_&lt;n&gt;). | |
+| **user_id** | **string**| Business-scoped user id. | |
+
+### Return type
+
+[**\Zernio\Model\RemoveAdAccountUser200Response**](../Model/RemoveAdAccountUser200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `removeAdLabel()`
 
 ```php
@@ -2907,6 +3286,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\RemoveAdLabel200Response**](../Model/RemoveAdLabel200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `removePageUser()`
+
+```php
+removePageUser($account_id, $page_id, $user_id): \Zernio\Model\RemovePageUser200Response
+```
+
+Remove a user from a Page
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id used to resolve the Meta token.
+$page_id = 'page_id_example'; // string | Facebook Page id.
+$user_id = 'user_id_example'; // string | Business-scoped user id.
+
+try {
+    $result = $apiInstance->removePageUser($account_id, $page_id, $user_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->removePageUser: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio SocialAccount id used to resolve the Meta token. | |
+| **page_id** | **string**| Facebook Page id. | |
+| **user_id** | **string**| Business-scoped user id. | |
+
+### Return type
+
+[**\Zernio\Model\RemovePageUser200Response**](../Model/RemovePageUser200Response.md)
 
 ### Authorization
 
@@ -3239,7 +3680,7 @@ updateAdAccount($update_ad_account_request): \Zernio\Model\UpdateAdAccount200Res
 
 Update ad account settings
 
-Sets the default DSA beneficiary and payor on a Meta ad account (EU DSA, Article 26). Set them once and every EU-targeted call to `/v1/ads/create`, `/v1/ads/boost` and `/v1/ads/ctwa` on that ad account can omit `dsaBeneficiary`/`dsaPayor`: Meta applies the defaults automatically.  The values are written to the ad account on Meta, the same setting Ads Manager edits. Nothing is stored in Zernio, and defaults already set in Ads Manager work identically. Zernio never guesses these values for you. Beneficiary and payor are legal disclosures shown to EU users, so you must provide the entity names explicitly. Use `GET /v1/ads/dsa-recommendations` to offer suggestions in your UI.  If `defaultDsaPayor` is omitted, the beneficiary is also set as the payor, which covers the common case where the same entity benefits from and pays for the ads. Read the current values back with `GET /v1/ads/dsa-defaults`.  Currently supported for Meta accounts only; other platforms return 400.
+Updates a Meta ad account in place: its name, its account-level spend cap, and its default DSA beneficiary and payor. Pass any combination of fields.  **Spend cap.** `spendCap` is the total the account may spend before Meta pauses every campaign in it, in whole units of the account currency. `spendCap: null` removes the cap and `resetAmountSpent: true` restarts the amount counted against it from zero. When `name`, `spendCap` or `resetAmountSpent` is passed, the response carries `settings`, the account's finances re-read after the write (same shape as `GET /v1/ads/accounts/finance`), so the effective cap can be confirmed in one call.  **DSA defaults.** Sets the default DSA beneficiary and payor on the ad account (EU DSA, Article 26). Set them once and every EU-targeted call to `/v1/ads/create`, `/v1/ads/boost` and `/v1/ads/ctwa` on that ad account can omit `dsaBeneficiary`/`dsaPayor`: Meta applies the defaults automatically.  The values are written to the ad account on Meta, the same setting Ads Manager edits. Nothing is stored in Zernio, and defaults already set in Ads Manager work identically. Zernio never guesses these values for you. Beneficiary and payor are legal disclosures shown to EU users, so you must provide the entity names explicitly. Use `GET /v1/ads/dsa-recommendations` to offer suggestions in your UI.  If `defaultDsaPayor` is omitted, the beneficiary is also set as the payor, which covers the common case where the same entity benefits from and pays for the ads. Read the current values back with `GET /v1/ads/dsa-defaults`.  Currently supported for Meta accounts only; other platforms return 400.
 
 ### Example
 
@@ -3258,7 +3699,7 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$update_ad_account_request = new \Zernio\Model\UpdateAdAccountRequest(); // \Zernio\Model\UpdateAdAccountRequest
+$update_ad_account_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","adAccountId":"act_123456789","spendCap":500}; // \Zernio\Model\UpdateAdAccountRequest
 
 try {
     $result = $apiInstance->updateAdAccount($update_ad_account_request);

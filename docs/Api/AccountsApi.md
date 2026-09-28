@@ -15,9 +15,12 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getInstagramFollowStatus()**](AccountsApi.md#getInstagramFollowStatus) | **GET** /v1/accounts/{accountId}/follow-status/{userId} | Check whether an Instagram user follows the account |
 | [**getSlackSettings()**](AccountsApi.md#getSlackSettings) | **GET** /v1/accounts/{accountId}/slack-settings | Get Slack account settings |
 | [**getTikTokCreatorInfo()**](AccountsApi.md#getTikTokCreatorInfo) | **GET** /v1/accounts/{accountId}/tiktok/creator-info | Get TikTok creator info |
+| [**grantBusinessPartner()**](AccountsApi.md#grantBusinessPartner) | **POST** /v1/accounts/{accountId}/business-partners | Share the Page with a partner business |
 | [**listAccounts()**](AccountsApi.md#listAccounts) | **GET** /v1/accounts | List accounts |
+| [**listBusinessPartners()**](AccountsApi.md#listBusinessPartners) | **GET** /v1/accounts/{accountId}/business-partners | List partner businesses of the Page |
 | [**listTikTokCommercialMusic()**](AccountsApi.md#listTikTokCommercialMusic) | **GET** /v1/accounts/{accountId}/tiktok/commercial-music | List trending commercial music |
 | [**moveAccountToProfile()**](AccountsApi.md#moveAccountToProfile) | **PATCH** /v1/accounts/{accountId} | Move account to another profile |
+| [**revokeBusinessPartner()**](AccountsApi.md#revokeBusinessPartner) | **DELETE** /v1/accounts/{accountId}/business-partners | Revoke a partner business from the Page |
 | [**searchTikTokLocations()**](AccountsApi.md#searchTikTokLocations) | **GET** /v1/accounts/{accountId}/tiktok/locations | Search TikTok location tags |
 | [**updateAccount()**](AccountsApi.md#updateAccount) | **PUT** /v1/accounts/{accountId} | Update account |
 | [**updateBlueskySettings()**](AccountsApi.md#updateBlueskySettings) | **PATCH** /v1/accounts/{accountId}/bluesky-settings | Update Bluesky account settings |
@@ -582,6 +585,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `grantBusinessPartner()`
+
+```php
+grantBusinessPartner($account_id, $grant_business_partner_request): \Zernio\Model\GrantBusinessPartner201Response
+```
+
+Share the Page with a partner business
+
+Grants a partner business portfolio tasks on the Facebook Page behind this account. With `ADVERTISE`, the partner can run ads for the Page from ad accounts in its own portfolio, which is how an integrator advertises for an end user without touching the end user's ad accounts.  Meta only lets a user token share a Page that a business portfolio owns. A Page outside any portfolio must first be claimed into one at business.facebook.com; this endpoint answers `422` until that is done. Granting to a portfolio that already has access replaces its task set, so the call is safe to repeat.  After the grant, the partner assigns its own people to the Page with `POST /v1/ads/page-users`; Meta does not assign partner admins automatically. The Instagram professional account linked to the Page is returned in `page` so the partner can reference it; Meta exposes no API to share Instagram accounts, that is done in Business Settings.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id of the Facebook or Instagram account.
+$grant_business_partner_request = {"businessId":"1234567890123","permittedTasks":["ADVERTISE","ANALYZE"]}; // \Zernio\Model\GrantBusinessPartnerRequest
+
+try {
+    $result = $apiInstance->grantBusinessPartner($account_id, $grant_business_partner_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->grantBusinessPartner: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio SocialAccount id of the Facebook or Instagram account. | |
+| **grant_business_partner_request** | [**\Zernio\Model\GrantBusinessPartnerRequest**](../Model/GrantBusinessPartnerRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\GrantBusinessPartner201Response**](../Model/GrantBusinessPartner201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listAccounts()`
 
 ```php
@@ -638,6 +703,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\AccountsListResponse**](../Model/AccountsListResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listBusinessPartners()`
+
+```php
+listBusinessPartners($account_id): \Zernio\Model\ListBusinessPartners200Response
+```
+
+List partner businesses of the Page
+
+The business portfolios (Meta Business Managers) that may act on the Facebook Page behind this account, plus the Page's owning portfolio and linked Instagram professional account. Works on Facebook accounts and on Instagram accounts connected through Facebook Login.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id of the Facebook or Instagram account.
+
+try {
+    $result = $apiInstance->listBusinessPartners($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->listBusinessPartners: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio SocialAccount id of the Facebook or Instagram account. | |
+
+### Return type
+
+[**\Zernio\Model\ListBusinessPartners200Response**](../Model/ListBusinessPartners200Response.md)
 
 ### Authorization
 
@@ -770,6 +895,68 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `revokeBusinessPartner()`
+
+```php
+revokeBusinessPartner($account_id, $business_id): \Zernio\Model\RevokeBusinessPartner200Response
+```
+
+Revoke a partner business from the Page
+
+Removes every task the partner business portfolio held on the Page.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id of the Facebook or Instagram account.
+$business_id = 'business_id_example'; // string | Meta business portfolio id of the partner (numeric string).
+
+try {
+    $result = $apiInstance->revokeBusinessPartner($account_id, $business_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->revokeBusinessPartner: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio SocialAccount id of the Facebook or Instagram account. | |
+| **business_id** | **string**| Meta business portfolio id of the partner (numeric string). | |
+
+### Return type
+
+[**\Zernio\Model\RevokeBusinessPartner200Response**](../Model/RevokeBusinessPartner200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
