@@ -7,6 +7,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**onAccountAdsInitialSyncCompleted()**](WebhookEventsApi.md#onAccountAdsInitialSyncCompleted) | **POST** /account.ads.initial_sync_completed | Ads initial sync completed event |
+| [**onAccountAdsSyncFailed()**](WebhookEventsApi.md#onAccountAdsSyncFailed) | **POST** /account.ads.sync_failed | Ads sync failed event |
+| [**onAccountAdsSyncRecovered()**](WebhookEventsApi.md#onAccountAdsSyncRecovered) | **POST** /account.ads.sync_recovered | Ads sync recovered event |
 | [**onAccountConnected()**](WebhookEventsApi.md#onAccountConnected) | **POST** /account.connected | Account connected event |
 | [**onAccountDisconnected()**](WebhookEventsApi.md#onAccountDisconnected) | **POST** /account.disconnected | Account disconnected event |
 | [**onAdStatusChanged()**](WebhookEventsApi.md#onAdStatusChanged) | **POST** /ad.status_changed | Ad status changed event |
@@ -104,6 +106,124 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_account_ads_initial_sync_completed** | [**\Zernio\Model\WebhookPayloadAccountAdsInitialSyncCompleted**](../Model/WebhookPayloadAccountAdsInitialSyncCompleted.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onAccountAdsSyncFailed()`
+
+```php
+onAccountAdsSyncFailed($webhook_payload_account_ads_sync_failed)
+```
+
+Ads sync failed event
+
+Fired once per ad account when its ads stop syncing (no successful sync for 24 hours, or every live ad at the retry cap). Checked hourly. Metrics for the ad account are stale until `account.ads.sync_recovered` fires for it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_account_ads_sync_failed = new \Zernio\Model\WebhookPayloadAccountAdsSyncFailed(); // \Zernio\Model\WebhookPayloadAccountAdsSyncFailed
+
+try {
+    $apiInstance->onAccountAdsSyncFailed($webhook_payload_account_ads_sync_failed);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onAccountAdsSyncFailed: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_account_ads_sync_failed** | [**\Zernio\Model\WebhookPayloadAccountAdsSyncFailed**](../Model/WebhookPayloadAccountAdsSyncFailed.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onAccountAdsSyncRecovered()`
+
+```php
+onAccountAdsSyncRecovered($webhook_payload_account_ads_sync_recovered)
+```
+
+Ads sync recovered event
+
+Fired once when an ad account previously reported by `account.ads.sync_failed` syncs successfully again. Checked hourly.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_account_ads_sync_recovered = new \Zernio\Model\WebhookPayloadAccountAdsSyncRecovered(); // \Zernio\Model\WebhookPayloadAccountAdsSyncRecovered
+
+try {
+    $apiInstance->onAccountAdsSyncRecovered($webhook_payload_account_ads_sync_recovered);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onAccountAdsSyncRecovered: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_account_ads_sync_recovered** | [**\Zernio\Model\WebhookPayloadAccountAdsSyncRecovered**](../Model/WebhookPayloadAccountAdsSyncRecovered.md)|  | |
 
 ### Return type
 
