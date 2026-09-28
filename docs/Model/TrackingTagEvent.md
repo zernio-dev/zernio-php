@@ -14,5 +14,6 @@ Name | Type | Description | Notes
 **currency** | **string** |  | [optional]
 **click_window_days** | **int** |  | [optional]
 **view_window_days** | **int** |  | [optional]
+**url_contains** | **string** | Fires only on pages whose URL contains this text (case-insensitive). | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

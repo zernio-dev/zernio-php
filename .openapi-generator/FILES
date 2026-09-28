@@ -1039,6 +1039,7 @@ docs/Model/GetTikTokSmartPlusMaterialReport200Response.md
 docs/Model/GetTikTokSmartPlusMaterialReport200ResponseRowsInner.md
 docs/Model/GetTikTokSmartPlusMaterialReport200ResponseRowsInnerMetrics.md
 docs/Model/GetTrackingTag200Response.md
+docs/Model/GetTrackingTagDiagnostics200Response.md
 docs/Model/GetTrackingTagStats200Response.md
 docs/Model/GetTrackingTagStats200ResponseStats.md
 docs/Model/GetTrackingTagStoreInstall200Response.md
@@ -2022,6 +2023,7 @@ docs/Model/TikTokDryRunVerdictTiktokInner.md
 docs/Model/TikTokPlatformData.md
 docs/Model/TikTokPlatformDataMusicSoundInfo.md
 docs/Model/TrackingTag.md
+docs/Model/TrackingTagDiagnostic.md
 docs/Model/TrackingTagEvent.md
 docs/Model/TrackingTagEventInput.md
 docs/Model/TrackingTagInstallBlockedReason.md
@@ -3548,6 +3550,7 @@ lib/Model/GetTikTokSmartPlusMaterialReport200Response.php
 lib/Model/GetTikTokSmartPlusMaterialReport200ResponseRowsInner.php
 lib/Model/GetTikTokSmartPlusMaterialReport200ResponseRowsInnerMetrics.php
 lib/Model/GetTrackingTag200Response.php
+lib/Model/GetTrackingTagDiagnostics200Response.php
 lib/Model/GetTrackingTagStats200Response.php
 lib/Model/GetTrackingTagStats200ResponseStats.php
 lib/Model/GetTrackingTagStoreInstall200Response.php
@@ -4532,6 +4535,7 @@ lib/Model/TikTokDryRunVerdictTiktokInner.php
 lib/Model/TikTokPlatformData.php
 lib/Model/TikTokPlatformDataMusicSoundInfo.php
 lib/Model/TrackingTag.php
+lib/Model/TrackingTagDiagnostic.php
 lib/Model/TrackingTagEvent.php
 lib/Model/TrackingTagEventInput.php
 lib/Model/TrackingTagInstallBlockedReason.php
@@ -5019,3 +5023,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetTrackingTagDiagnostics200ResponseTest.php
+test/Model/TrackingTagDiagnosticTest.php
