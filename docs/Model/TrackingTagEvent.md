@@ -15,5 +15,8 @@ Name | Type | Description | Notes
 **click_window_days** | **int** |  | [optional]
 **view_window_days** | **int** |  | [optional]
 **url_contains** | **string** | Fires only on pages whose URL contains this text (case-insensitive). | [optional]
+**always_use_default_value** | **bool** | &#x60;defaultValue&#x60; is recorded even when the conversion sends its own value. | [optional]
+**primary** | **bool** | Primary conversions count toward bidding and the Conversions column; secondary ones are observation only (Google &#x60;primary_for_goal&#x60;). | [optional]
+**counting_type** | **string** | &#x60;one&#x60; counts at most one conversion per ad interaction (leads), &#x60;every&#x60; counts each (purchases). | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
