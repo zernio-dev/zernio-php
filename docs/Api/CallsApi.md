@@ -1,6 +1,6 @@
 # Zernio\CallsApi
 
-Unified call history across every number you own: WhatsApp Business Calling and regular phone (PSTN) calls in one list, newest first, without fanning out one request per number. Each row carries &#x60;channel&#x60; and &#x60;accountId&#x60; so you can fetch details and recordings from the matching channel-specific endpoint. Private beta: returns 403 unless your account is enrolled.
+Unified call history across every number you own: WhatsApp Business Calling and regular phone (PSTN) calls in one list, newest first, without fanning out one request per number. Each row carries &#x60;channel&#x60; and &#x60;accountId&#x60; so you can fetch details and recordings from the matching channel-specific endpoint.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 

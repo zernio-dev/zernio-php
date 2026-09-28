@@ -1,6 +1,6 @@
 # Zernio\SMSApi
 
-SMS/MMS on your numbers: enable SMS on a number, send messages, validate recipient numbers, export STOP opt-outs, and complete the US carrier registration (10DLC or toll-free) required before US traffic delivers. Private beta: returns 404 unless your account is enrolled.
+SMS/MMS on your numbers: enable SMS on a number, send messages, validate recipient numbers, export STOP opt-outs, and complete the US carrier registration (10DLC or toll-free) required before US traffic delivers. Enabling SMS on a number, carrier registration and sender IDs require usage-based billing.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
