@@ -476,6 +476,8 @@ docs/Model/CreateLeadForm200Response.md
 docs/Model/CreateLeadFormRequest.md
 docs/Model/CreateLeadFormRequestPlatformSpecificData.md
 docs/Model/CreateLeadFormRequestQuestionsInner.md
+docs/Model/CreateMessagingAd200Response.md
+docs/Model/CreateMessagingAd200ResponseResultsInner.md
 docs/Model/CreateMessagingAd201Response.md
 docs/Model/CreateMessagingAdRequest.md
 docs/Model/CreatePhoneNumberKycLink200Response.md
@@ -532,9 +534,6 @@ docs/Model/CreateStandaloneAdRequestCreativesInnerVideo.md
 docs/Model/CreateStandaloneAdRequestCustomLocationsInner.md
 docs/Model/CreateStandaloneAdRequestDynamicCreative.md
 docs/Model/CreateStandaloneAdRequestImages.md
-docs/Model/CreateStandaloneAdRequestPlacementAssets.md
-docs/Model/CreateStandaloneAdRequestPlacementAssetsRulesInner.md
-docs/Model/CreateStandaloneAdRequestPlacementAssetsRulesInnerPlacements.md
 docs/Model/CreateStandaloneAdRequestPlacements.md
 docs/Model/CreateStandaloneAdRequestPlatformSpecificData.md
 docs/Model/CreateStandaloneAdRequestRegionsInner.md
@@ -1522,6 +1521,9 @@ docs/Model/MetaLeadFormPlatformData.md
 docs/Model/MetaLeadFormPlatformDataContextCard.md
 docs/Model/MetaLeadFormQuestionsInner.md
 docs/Model/MetaLeadFormThankYouPage.md
+docs/Model/MetaPlacementAssets.md
+docs/Model/MetaPlacementAssetsRulesInner.md
+docs/Model/MetaPlacementAssetsRulesInnerPlacements.md
 docs/Model/MetaProductCatalog.md
 docs/Model/MetaProductFeed.md
 docs/Model/MetaProductFeedSchedule.md
@@ -2888,6 +2890,8 @@ lib/Model/CreateLeadForm200Response.php
 lib/Model/CreateLeadFormRequest.php
 lib/Model/CreateLeadFormRequestPlatformSpecificData.php
 lib/Model/CreateLeadFormRequestQuestionsInner.php
+lib/Model/CreateMessagingAd200Response.php
+lib/Model/CreateMessagingAd200ResponseResultsInner.php
 lib/Model/CreateMessagingAd201Response.php
 lib/Model/CreateMessagingAdRequest.php
 lib/Model/CreatePhoneNumberKycLink200Response.php
@@ -2944,9 +2948,6 @@ lib/Model/CreateStandaloneAdRequestCreativesInnerVideo.php
 lib/Model/CreateStandaloneAdRequestCustomLocationsInner.php
 lib/Model/CreateStandaloneAdRequestDynamicCreative.php
 lib/Model/CreateStandaloneAdRequestImages.php
-lib/Model/CreateStandaloneAdRequestPlacementAssets.php
-lib/Model/CreateStandaloneAdRequestPlacementAssetsRulesInner.php
-lib/Model/CreateStandaloneAdRequestPlacementAssetsRulesInnerPlacements.php
 lib/Model/CreateStandaloneAdRequestPlacements.php
 lib/Model/CreateStandaloneAdRequestPlatformSpecificData.php
 lib/Model/CreateStandaloneAdRequestRegionsInner.php
@@ -3934,6 +3935,9 @@ lib/Model/MetaLeadFormPlatformData.php
 lib/Model/MetaLeadFormPlatformDataContextCard.php
 lib/Model/MetaLeadFormQuestionsInner.php
 lib/Model/MetaLeadFormThankYouPage.php
+lib/Model/MetaPlacementAssets.php
+lib/Model/MetaPlacementAssetsRulesInner.php
+lib/Model/MetaPlacementAssetsRulesInnerPlacements.php
 lib/Model/MetaProductCatalog.php
 lib/Model/MetaProductFeed.php
 lib/Model/MetaProductFeedSchedule.php
@@ -4825,3 +4829,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateMessagingAd200ResponseResultsInnerTest.php
+test/Model/CreateMessagingAd200ResponseTest.php
+test/Model/MetaPlacementAssetsRulesInnerPlacementsTest.php
+test/Model/MetaPlacementAssetsRulesInnerTest.php
+test/Model/MetaPlacementAssetsTest.php

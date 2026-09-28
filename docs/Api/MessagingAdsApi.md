@@ -138,7 +138,7 @@ try {
 ## `createMessagingAd()`
 
 ```php
-createMessagingAd($create_messaging_ad_request, $idempotency_key): \Zernio\Model\CreateMessagingAd201Response
+createMessagingAd($create_messaging_ad_request, $idempotency_key): \Zernio\Model\CreateMessagingAd200Response
 ```
 
 Create messaging ad
@@ -182,7 +182,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\CreateMessagingAd201Response**](../Model/CreateMessagingAd201Response.md)
+[**\Zernio\Model\CreateMessagingAd200Response**](../Model/CreateMessagingAd200Response.md)
 
 ### Authorization
 
