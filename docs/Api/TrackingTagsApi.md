@@ -8,17 +8,21 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | ------------- | ------------- | ------------- |
 | [**addTrackingTagSharedAccount()**](TrackingTagsApi.md#addTrackingTagSharedAccount) | **POST** /v1/accounts/{accountId}/tracking-tags/{tagId}/shared-accounts | Share with an ad account |
 | [**createTrackingTag()**](TrackingTagsApi.md#createTrackingTag) | **POST** /v1/accounts/{accountId}/tracking-tags | Create a tracking tag |
+| [**createTrackingTagEvent()**](TrackingTagsApi.md#createTrackingTagEvent) | **POST** /v1/accounts/{accountId}/tracking-tags/{tagId}/events | Create a conversion event |
+| [**deleteTrackingTagEvent()**](TrackingTagsApi.md#deleteTrackingTagEvent) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/events/{eventId} | Delete a conversion event |
 | [**getAdTrackingTags()**](TrackingTagsApi.md#getAdTrackingTags) | **GET** /v1/ads/{adId}/tracking-tags | Get ad tracking tags |
 | [**getTrackingTag()**](TrackingTagsApi.md#getTrackingTag) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId} | Get a tracking tag |
 | [**getTrackingTagStats()**](TrackingTagsApi.md#getTrackingTagStats) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/stats | Get aggregated event stats |
 | [**getTrackingTagStoreInstall()**](TrackingTagsApi.md#getTrackingTagStoreInstall) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Get store install status |
 | [**installTrackingTagOnStore()**](TrackingTagsApi.md#installTrackingTagOnStore) | **POST** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Install on a Shopify store or WordPress site |
+| [**listTrackingTagEvents()**](TrackingTagsApi.md#listTrackingTagEvents) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/events | List conversion events |
 | [**listTrackingTagSharedAccounts()**](TrackingTagsApi.md#listTrackingTagSharedAccounts) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/shared-accounts | List accounts it is shared with |
 | [**listTrackingTags()**](TrackingTagsApi.md#listTrackingTags) | **GET** /v1/accounts/{accountId}/tracking-tags | List tracking tags |
 | [**removeTrackingTagFromStore()**](TrackingTagsApi.md#removeTrackingTagFromStore) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Remove from a Shopify store or WordPress site |
 | [**removeTrackingTagSharedAccount()**](TrackingTagsApi.md#removeTrackingTagSharedAccount) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/shared-accounts | Stop sharing with an account |
 | [**updateAdTrackingTags()**](TrackingTagsApi.md#updateAdTrackingTags) | **PATCH** /v1/ads/{adId}/tracking-tags | Set ad tracking tags |
 | [**updateTrackingTag()**](TrackingTagsApi.md#updateTrackingTag) | **PATCH** /v1/accounts/{accountId}/tracking-tags/{tagId} | Update a tracking tag |
+| [**updateTrackingTagEvent()**](TrackingTagsApi.md#updateTrackingTagEvent) | **PATCH** /v1/accounts/{accountId}/tracking-tags/{tagId}/events/{eventId} | Update a conversion event |
 
 
 ## `addTrackingTagSharedAccount()`
@@ -141,6 +145,136 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createTrackingTagEvent()`
+
+```php
+createTrackingTagEvent($account_id, $tag_id, $create_tracking_tag_event_request): \Zernio\Model\CreateTrackingTagEvent201Response
+```
+
+Create a conversion event
+
+Creates a conversion event tied to the tag. Pass the platform's own event type in `type` (e.g. Google `PURCHASE`, LinkedIn `ADD_TO_CART`, X `CHECKOUT_INITIATED`) or a neutral `siteEvent` the platform maps to its closest type. Each platform stores a subset of the optional fields; sending one it does not store answers 400 naming the supported fields. NOT idempotent unless noted per platform: do not retry blindly.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\TrackingTagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$tag_id = 'tag_id_example'; // string | Tag id (`TrackingTag.id`).
+$create_tracking_tag_event_request = new \Zernio\Model\CreateTrackingTagEventRequest(); // \Zernio\Model\CreateTrackingTagEventRequest
+
+try {
+    $result = $apiInstance->createTrackingTagEvent($account_id, $tag_id, $create_tracking_tag_event_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TrackingTagsApi->createTrackingTagEvent: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **tag_id** | **string**| Tag id (&#x60;TrackingTag.id&#x60;). | |
+| **create_tracking_tag_event_request** | [**\Zernio\Model\CreateTrackingTagEventRequest**](../Model/CreateTrackingTagEventRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateTrackingTagEvent201Response**](../Model/CreateTrackingTagEvent201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteTrackingTagEvent()`
+
+```php
+deleteTrackingTagEvent($account_id, $tag_id, $event_id, $ad_account_id): \Zernio\Model\DeleteTrackingTagEvent200Response
+```
+
+Delete a conversion event
+
+Removes the conversion event. Platforms without a hard delete archive or disable it instead; `state` in the response says which (`deleted`, `archived`, `disabled`).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\TrackingTagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$tag_id = 'tag_id_example'; // string
+$event_id = 'event_id_example'; // string | Event id (`TrackingTagEvent.id`).
+$ad_account_id = 'ad_account_id_example'; // string | Scopes the lookup on platforms whose tag ids live inside an ad account.
+
+try {
+    $result = $apiInstance->deleteTrackingTagEvent($account_id, $tag_id, $event_id, $ad_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TrackingTagsApi->deleteTrackingTagEvent: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **tag_id** | **string**|  | |
+| **event_id** | **string**| Event id (&#x60;TrackingTagEvent.id&#x60;). | |
+| **ad_account_id** | **string**| Scopes the lookup on platforms whose tag ids live inside an ad account. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\DeleteTrackingTagEvent200Response**](../Model/DeleteTrackingTagEvent200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -465,6 +599,70 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listTrackingTagEvents()`
+
+```php
+listTrackingTagEvents($account_id, $tag_id, $ad_account_id): \Zernio\Model\ListTrackingTagEvents200Response
+```
+
+List conversion events
+
+The tag's conversion events, on platforms where each conversion is its own object: Google conversion actions, LinkedIn conversion rules, X web event tags, OpenAI event settings, TikTok pixel events, Meta custom conversions. Platforms where events are just names the site sends (Pinterest) answer 501.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\TrackingTagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$tag_id = 'tag_id_example'; // string | Tag id (`TrackingTag.id`).
+$ad_account_id = 'ad_account_id_example'; // string | Scopes the lookup on platforms whose tag ids live inside an ad account.
+
+try {
+    $result = $apiInstance->listTrackingTagEvents($account_id, $tag_id, $ad_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TrackingTagsApi->listTrackingTagEvents: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **tag_id** | **string**| Tag id (&#x60;TrackingTag.id&#x60;). | |
+| **ad_account_id** | **string**| Scopes the lookup on platforms whose tag ids live inside an ad account. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListTrackingTagEvents200Response**](../Model/ListTrackingTagEvents200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -836,6 +1034,72 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetTrackingTag200Response**](../Model/GetTrackingTag200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateTrackingTagEvent()`
+
+```php
+updateTrackingTagEvent($account_id, $tag_id, $event_id, $tracking_tag_event_input): \Zernio\Model\CreateTrackingTagEvent201Response
+```
+
+Update a conversion event
+
+Partial update; at least one field. A field the platform does not store answers 400.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\TrackingTagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$tag_id = 'tag_id_example'; // string
+$event_id = 'event_id_example'; // string | Event id (`TrackingTagEvent.id`).
+$tracking_tag_event_input = new \Zernio\Model\TrackingTagEventInput(); // \Zernio\Model\TrackingTagEventInput
+
+try {
+    $result = $apiInstance->updateTrackingTagEvent($account_id, $tag_id, $event_id, $tracking_tag_event_input);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TrackingTagsApi->updateTrackingTagEvent: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **tag_id** | **string**|  | |
+| **event_id** | **string**| Event id (&#x60;TrackingTagEvent.id&#x60;). | |
+| **tracking_tag_event_input** | [**\Zernio\Model\TrackingTagEventInput**](../Model/TrackingTagEventInput.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateTrackingTagEvent201Response**](../Model/CreateTrackingTagEvent201Response.md)
 
 ### Authorization
 

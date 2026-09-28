@@ -1,0 +1,9 @@
+# # ListRcsBrands200Response
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**brands** | [**\Zernio\Model\RcsBrand[]**](RcsBrand.md) |  | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

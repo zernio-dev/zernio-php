@@ -691,6 +691,19 @@ Class | Method | HTTP request | Description
 *QueueApi* | [**listQueueSlots**](docs/Api/QueueApi.md#listqueueslots) | **GET** /v1/queue/slots | List schedules
 *QueueApi* | [**previewQueue**](docs/Api/QueueApi.md#previewqueue) | **GET** /v1/queue/preview | Preview upcoming slots
 *QueueApi* | [**updateQueueSlot**](docs/Api/QueueApi.md#updatequeueslot) | **PUT** /v1/queue/slots | Update schedule
+*RCSApi* | [**addRcsTestDevice**](docs/Api/RCSApi.md#addrcstestdevice) | **POST** /v1/rcs/agents/{agentId}/test-devices | Invite an RCS test phone
+*RCSApi* | [**createRcsAgent**](docs/Api/RCSApi.md#creatercsagent) | **POST** /v1/rcs/agents | Request an RCS agent
+*RCSApi* | [**deactivateRcsAgent**](docs/Api/RCSApi.md#deactivatercsagent) | **DELETE** /v1/rcs/agents/{agentId} | Deactivate an RCS agent
+*RCSApi* | [**getRcsAgent**](docs/Api/RCSApi.md#getrcsagent) | **GET** /v1/rcs/agents/{agentId} | Get an RCS agent
+*RCSApi* | [**getRcsCapabilities**](docs/Api/RCSApi.md#getrcscapabilities) | **GET** /v1/rcs/capabilities | Check RCS capability
+*RCSApi* | [**listRcsAgents**](docs/Api/RCSApi.md#listrcsagents) | **GET** /v1/rcs/agents | List RCS agents
+*RCSApi* | [**listRcsBrands**](docs/Api/RCSApi.md#listrcsbrands) | **GET** /v1/rcs/brands | List RCS brands
+*RCSApi* | [**listRcsTestDevices**](docs/Api/RCSApi.md#listrcstestdevices) | **GET** /v1/rcs/agents/{agentId}/test-devices | List RCS test phones
+*RCSApi* | [**removeRcsTestDevice**](docs/Api/RCSApi.md#removercstestdevice) | **DELETE** /v1/rcs/agents/{agentId}/test-devices/{testDeviceId} | Remove an RCS test phone
+*RCSApi* | [**requestRcsAgentLaunch**](docs/Api/RCSApi.md#requestrcsagentlaunch) | **POST** /v1/rcs/agents/{agentId}/launch-request | Send the launch filing
+*RCSApi* | [**sendRcsMessage**](docs/Api/RCSApi.md#sendrcsmessage) | **POST** /v1/rcs/messages | Send an RCS message
+*RCSApi* | [**updateRcsAgent**](docs/Api/RCSApi.md#updatercsagent) | **PATCH** /v1/rcs/agents/{agentId} | Update an RCS agent
+*RCSApi* | [**uploadRcsAsset**](docs/Api/RCSApi.md#uploadrcsasset) | **POST** /v1/rcs/assets | Upload an RCS logo or banner
 *ReachAndFrequencyApi* | [**cancelRfReservation**](docs/Api/ReachAndFrequencyApi.md#cancelrfreservation) | **DELETE** /v1/ads/rf-predictions/{predictionId} | Cancel reach-frequency booking
 *ReachAndFrequencyApi* | [**createRfPrediction**](docs/Api/ReachAndFrequencyApi.md#createrfprediction) | **POST** /v1/ads/rf-predictions | Create reach-frequency prediction
 *ReachAndFrequencyApi* | [**getRfPrediction**](docs/Api/ReachAndFrequencyApi.md#getrfprediction) | **GET** /v1/ads/rf-predictions/{predictionId} | Get reach-frequency prediction
@@ -736,17 +749,21 @@ Class | Method | HTTP request | Description
 *ToolsApi* | [**downloadTikTokVideo**](docs/Api/ToolsApi.md#downloadtiktokvideo) | **GET** /v1/tools/tiktok/download | Download a TikTok video
 *TrackingTagsApi* | [**addTrackingTagSharedAccount**](docs/Api/TrackingTagsApi.md#addtrackingtagsharedaccount) | **POST** /v1/accounts/{accountId}/tracking-tags/{tagId}/shared-accounts | Share with an ad account
 *TrackingTagsApi* | [**createTrackingTag**](docs/Api/TrackingTagsApi.md#createtrackingtag) | **POST** /v1/accounts/{accountId}/tracking-tags | Create a tracking tag
+*TrackingTagsApi* | [**createTrackingTagEvent**](docs/Api/TrackingTagsApi.md#createtrackingtagevent) | **POST** /v1/accounts/{accountId}/tracking-tags/{tagId}/events | Create a conversion event
+*TrackingTagsApi* | [**deleteTrackingTagEvent**](docs/Api/TrackingTagsApi.md#deletetrackingtagevent) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/events/{eventId} | Delete a conversion event
 *TrackingTagsApi* | [**getAdTrackingTags**](docs/Api/TrackingTagsApi.md#getadtrackingtags) | **GET** /v1/ads/{adId}/tracking-tags | Get ad tracking tags
 *TrackingTagsApi* | [**getTrackingTag**](docs/Api/TrackingTagsApi.md#gettrackingtag) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId} | Get a tracking tag
 *TrackingTagsApi* | [**getTrackingTagStats**](docs/Api/TrackingTagsApi.md#gettrackingtagstats) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/stats | Get aggregated event stats
 *TrackingTagsApi* | [**getTrackingTagStoreInstall**](docs/Api/TrackingTagsApi.md#gettrackingtagstoreinstall) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Get store install status
 *TrackingTagsApi* | [**installTrackingTagOnStore**](docs/Api/TrackingTagsApi.md#installtrackingtagonstore) | **POST** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Install on a Shopify store or WordPress site
+*TrackingTagsApi* | [**listTrackingTagEvents**](docs/Api/TrackingTagsApi.md#listtrackingtagevents) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/events | List conversion events
 *TrackingTagsApi* | [**listTrackingTagSharedAccounts**](docs/Api/TrackingTagsApi.md#listtrackingtagsharedaccounts) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/shared-accounts | List accounts it is shared with
 *TrackingTagsApi* | [**listTrackingTags**](docs/Api/TrackingTagsApi.md#listtrackingtags) | **GET** /v1/accounts/{accountId}/tracking-tags | List tracking tags
 *TrackingTagsApi* | [**removeTrackingTagFromStore**](docs/Api/TrackingTagsApi.md#removetrackingtagfromstore) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Remove from a Shopify store or WordPress site
 *TrackingTagsApi* | [**removeTrackingTagSharedAccount**](docs/Api/TrackingTagsApi.md#removetrackingtagsharedaccount) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/shared-accounts | Stop sharing with an account
 *TrackingTagsApi* | [**updateAdTrackingTags**](docs/Api/TrackingTagsApi.md#updateadtrackingtags) | **PATCH** /v1/ads/{adId}/tracking-tags | Set ad tracking tags
 *TrackingTagsApi* | [**updateTrackingTag**](docs/Api/TrackingTagsApi.md#updatetrackingtag) | **PATCH** /v1/accounts/{accountId}/tracking-tags/{tagId} | Update a tracking tag
+*TrackingTagsApi* | [**updateTrackingTagEvent**](docs/Api/TrackingTagsApi.md#updatetrackingtagevent) | **PATCH** /v1/accounts/{accountId}/tracking-tags/{tagId}/events/{eventId} | Update a conversion event
 *TwitterEngagementApi* | [**bookmarkPost**](docs/Api/TwitterEngagementApi.md#bookmarkpost) | **POST** /v1/twitter/bookmark | Bookmark a tweet
 *TwitterEngagementApi* | [**followUser**](docs/Api/TwitterEngagementApi.md#followuser) | **POST** /v1/twitter/follow | Follow a user
 *TwitterEngagementApi* | [**getTweet**](docs/Api/TwitterEngagementApi.md#gettweet) | **GET** /v1/twitter/tweet | Look up a tweet
@@ -972,6 +989,8 @@ Class | Method | HTTP request | Description
 - [AddImessageGroupParticipantRequest](docs/Model/AddImessageGroupParticipantRequest.md)
 - [AddMessageReaction200Response](docs/Model/AddMessageReaction200Response.md)
 - [AddMessageReactionRequest](docs/Model/AddMessageReactionRequest.md)
+- [AddRcsTestDevice201Response](docs/Model/AddRcsTestDevice201Response.md)
+- [AddRcsTestDeviceRequest](docs/Model/AddRcsTestDeviceRequest.md)
 - [AddTrackingTagSharedAccount201Response](docs/Model/AddTrackingTagSharedAccount201Response.md)
 - [AddTrackingTagSharedAccountRequest](docs/Model/AddTrackingTagSharedAccountRequest.md)
 - [AddUsersToAdAudience200Response](docs/Model/AddUsersToAdAudience200Response.md)
@@ -1340,6 +1359,8 @@ Class | Method | HTTP request | Description
 - [CreateProfileRequest](docs/Model/CreateProfileRequest.md)
 - [CreateQueueSlot201Response](docs/Model/CreateQueueSlot201Response.md)
 - [CreateQueueSlotRequest](docs/Model/CreateQueueSlotRequest.md)
+- [CreateRcsAgent201Response](docs/Model/CreateRcsAgent201Response.md)
+- [CreateRcsAgentRequest](docs/Model/CreateRcsAgentRequest.md)
 - [CreateRfPrediction201Response](docs/Model/CreateRfPrediction201Response.md)
 - [CreateRfPredictionRequest](docs/Model/CreateRfPredictionRequest.md)
 - [CreateSequence200Response](docs/Model/CreateSequence200Response.md)
@@ -1385,6 +1406,8 @@ Class | Method | HTTP request | Description
 - [CreateTestLeadRequest](docs/Model/CreateTestLeadRequest.md)
 - [CreateTestLeadRequestFieldDataInner](docs/Model/CreateTestLeadRequestFieldDataInner.md)
 - [CreateTrackingTag201Response](docs/Model/CreateTrackingTag201Response.md)
+- [CreateTrackingTagEvent201Response](docs/Model/CreateTrackingTagEvent201Response.md)
+- [CreateTrackingTagEventRequest](docs/Model/CreateTrackingTagEventRequest.md)
 - [CreateTrackingTagRequest](docs/Model/CreateTrackingTagRequest.md)
 - [CreateValueRuleSet201Response](docs/Model/CreateValueRuleSet201Response.md)
 - [CreateValueRuleSetRequest](docs/Model/CreateValueRuleSetRequest.md)
@@ -1451,6 +1474,7 @@ Class | Method | HTTP request | Description
 - [DeleteInboxReviewReplyRequest](docs/Model/DeleteInboxReviewReplyRequest.md)
 - [DeleteSmsSenderId200Response](docs/Model/DeleteSmsSenderId200Response.md)
 - [DeleteTestLead200Response](docs/Model/DeleteTestLead200Response.md)
+- [DeleteTrackingTagEvent200Response](docs/Model/DeleteTrackingTagEvent200Response.md)
 - [DeleteValueRuleSet200Response](docs/Model/DeleteValueRuleSet200Response.md)
 - [DeleteWhatsAppTemplate200Response](docs/Model/DeleteWhatsAppTemplate200Response.md)
 - [DeleteWhatsAppTemplateById200Response](docs/Model/DeleteWhatsAppTemplateById200Response.md)
@@ -1827,6 +1851,7 @@ Class | Method | HTTP request | Description
 - [GetPostingFrequency200Response](docs/Model/GetPostingFrequency200Response.md)
 - [GetPostingFrequency200ResponseFrequencyInner](docs/Model/GetPostingFrequency200ResponseFrequencyInner.md)
 - [GetProduct200Response](docs/Model/GetProduct200Response.md)
+- [GetRcsCapabilities200Response](docs/Model/GetRcsCapabilities200Response.md)
 - [GetRedditFlairs200Response](docs/Model/GetRedditFlairs200Response.md)
 - [GetRedditFlairs200ResponseFlairsInner](docs/Model/GetRedditFlairs200ResponseFlairsInner.md)
 - [GetRedditSubreddits200Response](docs/Model/GetRedditSubreddits200Response.md)
@@ -2291,6 +2316,9 @@ Class | Method | HTTP request | Description
 - [ListProducts200Response](docs/Model/ListProducts200Response.md)
 - [ListQueueSlots200Response](docs/Model/ListQueueSlots200Response.md)
 - [ListQueueSlots200ResponseOneOf](docs/Model/ListQueueSlots200ResponseOneOf.md)
+- [ListRcsAgents200Response](docs/Model/ListRcsAgents200Response.md)
+- [ListRcsBrands200Response](docs/Model/ListRcsBrands200Response.md)
+- [ListRcsTestDevices200Response](docs/Model/ListRcsTestDevices200Response.md)
 - [ListSequenceEnrollments200Response](docs/Model/ListSequenceEnrollments200Response.md)
 - [ListSequenceEnrollments200ResponseEnrollmentsInner](docs/Model/ListSequenceEnrollments200ResponseEnrollmentsInner.md)
 - [ListSequences200Response](docs/Model/ListSequences200Response.md)
@@ -2318,6 +2346,7 @@ Class | Method | HTTP request | Description
 - [ListTikTokCommercialMusic200Response](docs/Model/ListTikTokCommercialMusic200Response.md)
 - [ListTikTokCommercialMusic200ResponseTracksInner](docs/Model/ListTikTokCommercialMusic200ResponseTracksInner.md)
 - [ListTikTokCommercialMusic200ResponseTracksInnerClip](docs/Model/ListTikTokCommercialMusic200ResponseTracksInnerClip.md)
+- [ListTrackingTagEvents200Response](docs/Model/ListTrackingTagEvents200Response.md)
 - [ListTrackingTagSharedAccounts200Response](docs/Model/ListTrackingTagSharedAccounts200Response.md)
 - [ListTrackingTags200Response](docs/Model/ListTrackingTags200Response.md)
 - [ListUsers200Response](docs/Model/ListUsers200Response.md)
@@ -2403,6 +2432,8 @@ Class | Method | HTTP request | Description
 - [OnBrandedCallingNumberStatusUpdatedRequest](docs/Model/OnBrandedCallingNumberStatusUpdatedRequest.md)
 - [OnBrandedCallingNumberStatusUpdatedRequestIdentity](docs/Model/OnBrandedCallingNumberStatusUpdatedRequestIdentity.md)
 - [OnBrandedCallingNumberStatusUpdatedRequestNumber](docs/Model/OnBrandedCallingNumberStatusUpdatedRequestNumber.md)
+- [OnRcsAgentStatusUpdatedRequest](docs/Model/OnRcsAgentStatusUpdatedRequest.md)
+- [OnRcsAgentStatusUpdatedRequestAgent](docs/Model/OnRcsAgentStatusUpdatedRequestAgent.md)
 - [OnSmsRegistrationActionRequiredRequest](docs/Model/OnSmsRegistrationActionRequiredRequest.md)
 - [OnSmsRegistrationActionRequiredRequestRegistration](docs/Model/OnSmsRegistrationActionRequiredRequestRegistration.md)
 - [OnSmsRegistrationStatusUpdatedRequest](docs/Model/OnSmsRegistrationStatusUpdatedRequest.md)
@@ -2501,6 +2532,36 @@ Class | Method | HTTP request | Description
 - [QueueSlot](docs/Model/QueueSlot.md)
 - [QueueSlotsResponse](docs/Model/QueueSlotsResponse.md)
 - [QueueUpdateResponse](docs/Model/QueueUpdateResponse.md)
+- [RcsAgent](docs/Model/RcsAgent.md)
+- [RcsAgentProfile](docs/Model/RcsAgentProfile.md)
+- [RcsAgentProfileEmail](docs/Model/RcsAgentProfileEmail.md)
+- [RcsAgentProfilePhone](docs/Model/RcsAgentProfilePhone.md)
+- [RcsAgentProfileWebsite](docs/Model/RcsAgentProfileWebsite.md)
+- [RcsBrand](docs/Model/RcsBrand.md)
+- [RcsBrandInput](docs/Model/RcsBrandInput.md)
+- [RcsBrandInputAddress](docs/Model/RcsBrandInputAddress.md)
+- [RcsBrandInputContact](docs/Model/RcsBrandInputContact.md)
+- [RcsCapability](docs/Model/RcsCapability.md)
+- [RcsCard](docs/Model/RcsCard.md)
+- [RcsCarrierApproval](docs/Model/RcsCarrierApproval.md)
+- [RcsContent](docs/Model/RcsContent.md)
+- [RcsContentOneOf](docs/Model/RcsContentOneOf.md)
+- [RcsContentOneOf1](docs/Model/RcsContentOneOf1.md)
+- [RcsContentOneOf2](docs/Model/RcsContentOneOf2.md)
+- [RcsContentOneOf3](docs/Model/RcsContentOneOf3.md)
+- [RcsLaunchRequest](docs/Model/RcsLaunchRequest.md)
+- [RcsLaunchRequestConsent](docs/Model/RcsLaunchRequestConsent.md)
+- [RcsLaunchRequestConsentOptInMethodsInner](docs/Model/RcsLaunchRequestConsentOptInMethodsInner.md)
+- [RcsLaunchRequestInteractionsInner](docs/Model/RcsLaunchRequestInteractionsInner.md)
+- [RcsMedia](docs/Model/RcsMedia.md)
+- [RcsSuggestion](docs/Model/RcsSuggestion.md)
+- [RcsSuggestionOneOf](docs/Model/RcsSuggestionOneOf.md)
+- [RcsSuggestionOneOf1](docs/Model/RcsSuggestionOneOf1.md)
+- [RcsSuggestionOneOf2](docs/Model/RcsSuggestionOneOf2.md)
+- [RcsSuggestionOneOf3](docs/Model/RcsSuggestionOneOf3.md)
+- [RcsSuggestionOneOf4](docs/Model/RcsSuggestionOneOf4.md)
+- [RcsSuggestionOneOf5](docs/Model/RcsSuggestionOneOf5.md)
+- [RcsTestDevice](docs/Model/RcsTestDevice.md)
 - [RecyclingConfig](docs/Model/RecyclingConfig.md)
 - [RecyclingState](docs/Model/RecyclingState.md)
 - [RedditPlatformData](docs/Model/RedditPlatformData.md)
@@ -2720,6 +2781,8 @@ Class | Method | HTTP request | Description
 - [SendPrivateReplyToCommentRequestButtonsInnerOneOf1](docs/Model/SendPrivateReplyToCommentRequestButtonsInnerOneOf1.md)
 - [SendPrivateReplyToCommentRequestButtonsInnerOneOf2](docs/Model/SendPrivateReplyToCommentRequestButtonsInnerOneOf2.md)
 - [SendPrivateReplyToCommentRequestQuickRepliesInner](docs/Model/SendPrivateReplyToCommentRequestQuickRepliesInner.md)
+- [SendRcsMessage200Response](docs/Model/SendRcsMessage200Response.md)
+- [SendRcsMessageRequest](docs/Model/SendRcsMessageRequest.md)
 - [SendSms200Response](docs/Model/SendSms200Response.md)
 - [SendSmsRequest](docs/Model/SendSmsRequest.md)
 - [SendTypingIndicatorRequest](docs/Model/SendTypingIndicatorRequest.md)
@@ -2807,7 +2870,8 @@ Class | Method | HTTP request | Description
 - [TikTokPlatformData](docs/Model/TikTokPlatformData.md)
 - [TikTokPlatformDataMusicSoundInfo](docs/Model/TikTokPlatformDataMusicSoundInfo.md)
 - [TrackingTag](docs/Model/TrackingTag.md)
-- [TrackingTagEventsInner](docs/Model/TrackingTagEventsInner.md)
+- [TrackingTagEvent](docs/Model/TrackingTagEvent.md)
+- [TrackingTagEventInput](docs/Model/TrackingTagEventInput.md)
 - [TrackingTagInstallBlockedReason](docs/Model/TrackingTagInstallBlockedReason.md)
 - [TransferVoiceCall200Response](docs/Model/TransferVoiceCall200Response.md)
 - [TransferVoiceCallRequest](docs/Model/TransferVoiceCallRequest.md)
@@ -3013,6 +3077,7 @@ Class | Method | HTTP request | Description
 - [UpdateProductRequestVariantsInnerPrice](docs/Model/UpdateProductRequestVariantsInnerPrice.md)
 - [UpdateProfileRequest](docs/Model/UpdateProfileRequest.md)
 - [UpdateQueueSlotRequest](docs/Model/UpdateQueueSlotRequest.md)
+- [UpdateRcsAgentRequest](docs/Model/UpdateRcsAgentRequest.md)
 - [UpdateRedditSubredditsRequest](docs/Model/UpdateRedditSubredditsRequest.md)
 - [UpdateSequence200Response](docs/Model/UpdateSequence200Response.md)
 - [UpdateSequence200ResponseSequence](docs/Model/UpdateSequence200ResponseSequence.md)
@@ -3322,6 +3387,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.132.0`
+- API version: `1.134.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

@@ -45,6 +45,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onPostRecycled()**](WebhookEventsApi.md#onPostRecycled) | **POST** /post.recycled | Post recycled event |
 | [**onPostScheduled()**](WebhookEventsApi.md#onPostScheduled) | **POST** /post.scheduled | Post scheduled event |
 | [**onPostTikTokUrlResolved()**](WebhookEventsApi.md#onPostTikTokUrlResolved) | **POST** /post.tiktok.url_resolved | TikTok post URL resolved event |
+| [**onRcsAgentStatusUpdated()**](WebhookEventsApi.md#onRcsAgentStatusUpdated) | **POST** /rcs.agent.status_updated | RCS agent status updated event |
 | [**onReactionReceived()**](WebhookEventsApi.md#onReactionReceived) | **POST** /reaction.received | Reaction received event |
 | [**onReferralReceived()**](WebhookEventsApi.md#onReferralReceived) | **POST** /referral.received | Referral received event |
 | [**onReviewNew()**](WebhookEventsApi.md#onReviewNew) | **POST** /review.new | Review new event |
@@ -1374,7 +1375,7 @@ onMessageRead($webhook_payload_message_delivery_status)
 
 Message read event
 
-Fired when an outgoing message is read by the recipient. Supported on WhatsApp, Facebook Messenger, and Instagram.
+Fired when an outgoing message is read by the recipient. Supported on WhatsApp, Facebook Messenger, Instagram, and RCS.
 
 ### Example
 
@@ -2351,6 +2352,65 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_post_platform** | [**\Zernio\Model\WebhookPayloadPostPlatform**](../Model/WebhookPayloadPostPlatform.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onRcsAgentStatusUpdated()`
+
+```php
+onRcsAgentStatusUpdated($on_rcs_agent_status_updated_request)
+```
+
+RCS agent status updated event
+
+Fired on every customer-visible status change of an RCS agent: `changes_requested` (we need changes before filing, `reason` is our note), `brand_vetting`, `agent_review`, `testing` (add test phones, then send the launch filing; with a `reason` the launch filing bounced), `launch_review`, `launching`, `live` (the agent can message any RCS-capable phone), `rejected` (`reason` says why) and `deactivated`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$on_rcs_agent_status_updated_request = new \Zernio\Model\OnRcsAgentStatusUpdatedRequest(); // \Zernio\Model\OnRcsAgentStatusUpdatedRequest
+
+try {
+    $apiInstance->onRcsAgentStatusUpdated($on_rcs_agent_status_updated_request);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onRcsAgentStatusUpdated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **on_rcs_agent_status_updated_request** | [**\Zernio\Model\OnRcsAgentStatusUpdatedRequest**](../Model/OnRcsAgentStatusUpdatedRequest.md)|  | |
 
 ### Return type
 
