@@ -40,7 +40,7 @@ $apiInstance = new Zernio\Api\ProfilesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_profile_request = {"name":"Marketing Team","description":"Profile for marketing campaigns","color":"#4CAF50"}; // \Zernio\Model\CreateProfileRequest
+$create_profile_request = {"name":"Marketing Team","description":"Profile for marketing campaigns","color":"#4CAF50","timezone":"Europe/Istanbul"}; // \Zernio\Model\CreateProfileRequest
 $idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409.
 
 try {
@@ -269,7 +269,7 @@ updateProfile($profile_id, $update_profile_request): \Zernio\Model\ProfileUpdate
 
 Update profile
 
-Updates a profile's name, description, color, or default status.
+Updates a profile's name, description, color, default timezone, or default status.
 
 ### Example
 

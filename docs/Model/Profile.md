@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **name** | **string** |  | [optional]
 **description** | **string** |  | [optional]
 **color** | **string** |  | [optional]
+**timezone** | **string** | IANA timezone new posts on this profile use when the request names no &#x60;timezone&#x60;. Null means UTC. | [optional]
 **is_default** | **bool** |  | [optional]
 **is_over_limit** | **bool** | Only present when includeOverLimit&#x3D;true. Indicates if this profile exceeds the plan limit. | [optional]
 **created_at** | **\DateTime** |  | [optional]
