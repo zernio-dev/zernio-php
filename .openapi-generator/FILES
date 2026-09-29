@@ -312,19 +312,19 @@ docs/Model/CampaignBiddingBidSpec.md
 docs/Model/CampaignBiddingPortfolio.md
 docs/Model/CancelBroadcast200Response.md
 docs/Model/CancelPhoneNumberPortIn200Response.md
-docs/Model/ChangeCollectionChannels200Response.md
+docs/Model/ChangeCommerceCollectionChannels200Response.md
 docs/Model/ChangeCommerceCollectionProducts200Response.md
 docs/Model/ChangeCommerceCollectionProductsRequest.md
 docs/Model/ChangeCommerceInventoryRequest.md
 docs/Model/ChangeCommerceInventoryRequestChangesInner.md
+docs/Model/ChangeCommerceProductChannels200Response.md
+docs/Model/ChangeCommerceProductChannelsRequest.md
 docs/Model/ChangeCommerceProductState200Response.md
 docs/Model/ChangeCommerceProductState200ResponseFailedInner.md
 docs/Model/ChangeCommerceProductStateRequest.md
 docs/Model/ChangeCommerceProductTags200Response.md
 docs/Model/ChangeCommerceProductTags200ResponseFailedInner.md
 docs/Model/ChangeCommerceProductTagsRequest.md
-docs/Model/ChangeProductChannels200Response.md
-docs/Model/ChangeProductChannelsRequest.md
 docs/Model/ChannelPicker.md
 docs/Model/ChannelPickerChannelsInner.md
 docs/Model/ChannelPickerTeam.md
@@ -706,6 +706,7 @@ docs/Model/DeleteCommerceMenu200Response.md
 docs/Model/DeleteCommerceMetaobject200Response.md
 docs/Model/DeleteCommercePage200Response.md
 docs/Model/DeleteCommercePriceListPrices200Response.md
+docs/Model/DeleteCommerceProductMetafields200Response.md
 docs/Model/DeleteCommerceRedirect200Response.md
 docs/Model/DeleteDiscordScheduledEvent200Response.md
 docs/Model/DeleteGoogleBusinessMedia200Response.md
@@ -714,7 +715,6 @@ docs/Model/DeleteGoogleBusinessReviewReply200Response.md
 docs/Model/DeleteInboxComment200Response.md
 docs/Model/DeleteInboxReviewReply200Response.md
 docs/Model/DeleteInboxReviewReplyRequest.md
-docs/Model/DeleteProductMetafields200Response.md
 docs/Model/DeleteSmsSenderId200Response.md
 docs/Model/DeleteTestLead200Response.md
 docs/Model/DeleteTrackingTagEvent200Response.md
@@ -1470,6 +1470,7 @@ docs/Model/ListCommerceMetaobjectDefinitions200Response.md
 docs/Model/ListCommerceMetaobjects200Response.md
 docs/Model/ListCommercePages200Response.md
 docs/Model/ListCommercePriceLists200Response.md
+docs/Model/ListCommerceProductMetafields200Response.md
 docs/Model/ListCommerceProducts200Response.md
 docs/Model/ListCommerceRedirects200Response.md
 docs/Model/ListConnectedApps200Response.md
@@ -1578,7 +1579,6 @@ docs/Model/ListPhoneNumbers200ResponseSandbox.md
 docs/Model/ListPhoneNumbers200ResponseSandboxTemplate.md
 docs/Model/ListPinterestBoardsForSelection200Response.md
 docs/Model/ListPinterestBoardsForSelection200ResponseBoardsInner.md
-docs/Model/ListProductMetafields200Response.md
 docs/Model/ListProducts200Response.md
 docs/Model/ListQueueSlots200Response.md
 docs/Model/ListQueueSlots200ResponseOneOf.md
@@ -2073,6 +2073,7 @@ docs/Model/SetCommerceDiscountActiveRequest.md
 docs/Model/SetCommercePriceListPrices200Response.md
 docs/Model/SetCommercePriceListPricesRequest.md
 docs/Model/SetCommercePriceListPricesRequestPricesInner.md
+docs/Model/SetCommerceProductMetafieldsRequest.md
 docs/Model/SetContactFieldValueRequest.md
 docs/Model/SetConversationThreadControl200Response.md
 docs/Model/SetConversationThreadControl200ResponseControl.md
@@ -2085,7 +2086,6 @@ docs/Model/SetMessengerGetStartedRequest.md
 docs/Model/SetMessengerMenuRequest.md
 docs/Model/SetPartnershipAdPermission200Response.md
 docs/Model/SetPartnershipAdPermissionRequest.md
-docs/Model/SetProductMetafieldsRequest.md
 docs/Model/SetRedditPostFlairRequest.md
 docs/Model/SetTelegramCommandsRequest.md
 docs/Model/SetTelegramCommandsRequestCommandsInner.md
@@ -2968,19 +2968,19 @@ lib/Model/CampaignBiddingBidSpec.php
 lib/Model/CampaignBiddingPortfolio.php
 lib/Model/CancelBroadcast200Response.php
 lib/Model/CancelPhoneNumberPortIn200Response.php
-lib/Model/ChangeCollectionChannels200Response.php
+lib/Model/ChangeCommerceCollectionChannels200Response.php
 lib/Model/ChangeCommerceCollectionProducts200Response.php
 lib/Model/ChangeCommerceCollectionProductsRequest.php
 lib/Model/ChangeCommerceInventoryRequest.php
 lib/Model/ChangeCommerceInventoryRequestChangesInner.php
+lib/Model/ChangeCommerceProductChannels200Response.php
+lib/Model/ChangeCommerceProductChannelsRequest.php
 lib/Model/ChangeCommerceProductState200Response.php
 lib/Model/ChangeCommerceProductState200ResponseFailedInner.php
 lib/Model/ChangeCommerceProductStateRequest.php
 lib/Model/ChangeCommerceProductTags200Response.php
 lib/Model/ChangeCommerceProductTags200ResponseFailedInner.php
 lib/Model/ChangeCommerceProductTagsRequest.php
-lib/Model/ChangeProductChannels200Response.php
-lib/Model/ChangeProductChannelsRequest.php
 lib/Model/ChannelPicker.php
 lib/Model/ChannelPickerChannelsInner.php
 lib/Model/ChannelPickerTeam.php
@@ -3362,6 +3362,7 @@ lib/Model/DeleteCommerceMenu200Response.php
 lib/Model/DeleteCommerceMetaobject200Response.php
 lib/Model/DeleteCommercePage200Response.php
 lib/Model/DeleteCommercePriceListPrices200Response.php
+lib/Model/DeleteCommerceProductMetafields200Response.php
 lib/Model/DeleteCommerceRedirect200Response.php
 lib/Model/DeleteDiscordScheduledEvent200Response.php
 lib/Model/DeleteGoogleBusinessMedia200Response.php
@@ -3370,7 +3371,6 @@ lib/Model/DeleteGoogleBusinessReviewReply200Response.php
 lib/Model/DeleteInboxComment200Response.php
 lib/Model/DeleteInboxReviewReply200Response.php
 lib/Model/DeleteInboxReviewReplyRequest.php
-lib/Model/DeleteProductMetafields200Response.php
 lib/Model/DeleteSmsSenderId200Response.php
 lib/Model/DeleteTestLead200Response.php
 lib/Model/DeleteTrackingTagEvent200Response.php
@@ -4126,6 +4126,7 @@ lib/Model/ListCommerceMetaobjectDefinitions200Response.php
 lib/Model/ListCommerceMetaobjects200Response.php
 lib/Model/ListCommercePages200Response.php
 lib/Model/ListCommercePriceLists200Response.php
+lib/Model/ListCommerceProductMetafields200Response.php
 lib/Model/ListCommerceProducts200Response.php
 lib/Model/ListCommerceRedirects200Response.php
 lib/Model/ListConnectedApps200Response.php
@@ -4234,7 +4235,6 @@ lib/Model/ListPhoneNumbers200ResponseSandbox.php
 lib/Model/ListPhoneNumbers200ResponseSandboxTemplate.php
 lib/Model/ListPinterestBoardsForSelection200Response.php
 lib/Model/ListPinterestBoardsForSelection200ResponseBoardsInner.php
-lib/Model/ListProductMetafields200Response.php
 lib/Model/ListProducts200Response.php
 lib/Model/ListQueueSlots200Response.php
 lib/Model/ListQueueSlots200ResponseOneOf.php
@@ -4730,6 +4730,7 @@ lib/Model/SetCommerceDiscountActiveRequest.php
 lib/Model/SetCommercePriceListPrices200Response.php
 lib/Model/SetCommercePriceListPricesRequest.php
 lib/Model/SetCommercePriceListPricesRequestPricesInner.php
+lib/Model/SetCommerceProductMetafieldsRequest.php
 lib/Model/SetContactFieldValueRequest.php
 lib/Model/SetConversationThreadControl200Response.php
 lib/Model/SetConversationThreadControl200ResponseControl.php
@@ -4742,7 +4743,6 @@ lib/Model/SetMessengerGetStartedRequest.php
 lib/Model/SetMessengerMenuRequest.php
 lib/Model/SetPartnershipAdPermission200Response.php
 lib/Model/SetPartnershipAdPermissionRequest.php
-lib/Model/SetProductMetafieldsRequest.php
 lib/Model/SetRedditPostFlairRequest.php
 lib/Model/SetTelegramCommandsRequest.php
 lib/Model/SetTelegramCommandsRequestCommandsInner.php
@@ -5313,3 +5313,9 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ChangeCommerceCollectionChannels200ResponseTest.php
+test/Model/ChangeCommerceProductChannels200ResponseTest.php
+test/Model/ChangeCommerceProductChannelsRequestTest.php
+test/Model/DeleteCommerceProductMetafields200ResponseTest.php
+test/Model/ListCommerceProductMetafields200ResponseTest.php
+test/Model/SetCommerceProductMetafieldsRequestTest.php

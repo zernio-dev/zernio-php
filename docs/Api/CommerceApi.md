@@ -9,12 +9,12 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**addCommerceDiscountCodes()**](CommerceApi.md#addCommerceDiscountCodes) | **POST** /v1/commerce/discounts/{discountId}/codes | Add codes to a discount |
 | [**addCommerceMarketingEngagement()**](CommerceApi.md#addCommerceMarketingEngagement) | **POST** /v1/commerce/marketing-activities/{remoteId}/engagements | Report daily engagement |
 | [**addCommerceProductImages()**](CommerceApi.md#addCommerceProductImages) | **POST** /v1/commerce/products/{productId}/images | Add images |
-| [**changeCollectionChannels()**](CommerceApi.md#changeCollectionChannels) | **POST** /v1/commerce/collections/{collectionId}/channels | Publish or unpublish a collection |
+| [**changeCommerceCollectionChannels()**](CommerceApi.md#changeCommerceCollectionChannels) | **POST** /v1/commerce/collections/{collectionId}/channels | Publish or unpublish a collection |
 | [**changeCommerceCollectionProducts()**](CommerceApi.md#changeCommerceCollectionProducts) | **POST** /v1/commerce/collections/{collectionId}/products | Add or remove products in a collection |
 | [**changeCommerceInventory()**](CommerceApi.md#changeCommerceInventory) | **POST** /v1/commerce/products/{productId}/inventory | Set or adjust stock |
+| [**changeCommerceProductChannels()**](CommerceApi.md#changeCommerceProductChannels) | **POST** /v1/commerce/products/{productId}/channels | Publish or unpublish a product |
 | [**changeCommerceProductState()**](CommerceApi.md#changeCommerceProductState) | **POST** /v1/commerce/products/state | Activate, deactivate, archive or delete products |
 | [**changeCommerceProductTags()**](CommerceApi.md#changeCommerceProductTags) | **POST** /v1/commerce/products/tags | Add or remove tags in bulk |
-| [**changeProductChannels()**](CommerceApi.md#changeProductChannels) | **POST** /v1/commerce/products/{productId}/channels | Publish or unpublish a product |
 | [**createCommerceCatalogSync()**](CommerceApi.md#createCommerceCatalogSync) | **POST** /v1/commerce/catalog-syncs | Sync a store into a Meta catalog |
 | [**createCommerceCollection()**](CommerceApi.md#createCommerceCollection) | **POST** /v1/commerce/collections | Create a collection |
 | [**createCommerceDiscount()**](CommerceApi.md#createCommerceDiscount) | **POST** /v1/commerce/discounts | Create a discount |
@@ -25,19 +25,19 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createCommerceProductOptions()**](CommerceApi.md#createCommerceProductOptions) | **POST** /v1/commerce/products/{productId}/options | Add options |
 | [**createCommerceProductVariants()**](CommerceApi.md#createCommerceProductVariants) | **POST** /v1/commerce/products/{productId}/variants | Add variants |
 | [**createCommerceRedirect()**](CommerceApi.md#createCommerceRedirect) | **POST** /v1/commerce/redirects | Create a URL redirect |
-| [**deleteCollectionMetafields()**](CommerceApi.md#deleteCollectionMetafields) | **DELETE** /v1/commerce/collections/{collectionId}/metafields | Delete collection metafields |
 | [**deleteCommerceCatalogSync()**](CommerceApi.md#deleteCommerceCatalogSync) | **DELETE** /v1/commerce/catalog-syncs/{syncId} | Stop a catalog sync |
 | [**deleteCommerceCollection()**](CommerceApi.md#deleteCommerceCollection) | **DELETE** /v1/commerce/collections/{collectionId} | Delete a collection |
+| [**deleteCommerceCollectionMetafields()**](CommerceApi.md#deleteCommerceCollectionMetafields) | **DELETE** /v1/commerce/collections/{collectionId}/metafields | Delete collection metafields |
 | [**deleteCommerceDiscount()**](CommerceApi.md#deleteCommerceDiscount) | **DELETE** /v1/commerce/discounts/{discountId} | Delete a discount |
 | [**deleteCommerceMarketingActivity()**](CommerceApi.md#deleteCommerceMarketingActivity) | **DELETE** /v1/commerce/marketing-activities/{remoteId} | Delete a marketing activity |
 | [**deleteCommerceMenu()**](CommerceApi.md#deleteCommerceMenu) | **DELETE** /v1/commerce/menus/{menuId} | Delete a navigation menu |
 | [**deleteCommerceMetaobject()**](CommerceApi.md#deleteCommerceMetaobject) | **DELETE** /v1/commerce/metaobjects/{metaobjectId} | Delete a metaobject |
 | [**deleteCommercePage()**](CommerceApi.md#deleteCommercePage) | **DELETE** /v1/commerce/pages/{pageId} | Delete a page |
 | [**deleteCommercePriceListPrices()**](CommerceApi.md#deleteCommercePriceListPrices) | **DELETE** /v1/commerce/price-lists/{priceListId}/prices | Remove fixed prices |
+| [**deleteCommerceProductMetafields()**](CommerceApi.md#deleteCommerceProductMetafields) | **DELETE** /v1/commerce/products/{productId}/metafields | Delete product metafields |
 | [**deleteCommerceProductOptions()**](CommerceApi.md#deleteCommerceProductOptions) | **DELETE** /v1/commerce/products/{productId}/options | Delete options |
 | [**deleteCommerceProductVariants()**](CommerceApi.md#deleteCommerceProductVariants) | **DELETE** /v1/commerce/products/{productId}/variants | Delete variants |
 | [**deleteCommerceRedirect()**](CommerceApi.md#deleteCommerceRedirect) | **DELETE** /v1/commerce/redirects/{redirectId} | Delete a URL redirect |
-| [**deleteProductMetafields()**](CommerceApi.md#deleteProductMetafields) | **DELETE** /v1/commerce/products/{productId}/metafields | Delete product metafields |
 | [**duplicateCommerceProduct()**](CommerceApi.md#duplicateCommerceProduct) | **POST** /v1/commerce/products/{productId}/duplicate | Duplicate a product |
 | [**getCommerceCatalogSync()**](CommerceApi.md#getCommerceCatalogSync) | **GET** /v1/commerce/catalog-syncs/{syncId} | Get a catalog sync |
 | [**getCommerceCollection()**](CommerceApi.md#getCommerceCollection) | **GET** /v1/commerce/collections/{collectionId} | Get a collection |
@@ -47,9 +47,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getCommercePage()**](CommerceApi.md#getCommercePage) | **GET** /v1/commerce/pages/{pageId} | Get a page |
 | [**getCommerceProduct()**](CommerceApi.md#getCommerceProduct) | **GET** /v1/commerce/products/{productId} | Get a product |
 | [**getCommerceStore()**](CommerceApi.md#getCommerceStore) | **GET** /v1/commerce/store | Get a store |
-| [**listCollectionMetafields()**](CommerceApi.md#listCollectionMetafields) | **GET** /v1/commerce/collections/{collectionId}/metafields | List collection metafields |
 | [**listCommerceCatalogSyncs()**](CommerceApi.md#listCommerceCatalogSyncs) | **GET** /v1/commerce/catalog-syncs | List catalog syncs |
 | [**listCommerceChannels()**](CommerceApi.md#listCommerceChannels) | **GET** /v1/commerce/channels | List sales channels |
+| [**listCommerceCollectionMetafields()**](CommerceApi.md#listCommerceCollectionMetafields) | **GET** /v1/commerce/collections/{collectionId}/metafields | List collection metafields |
 | [**listCommerceCollections()**](CommerceApi.md#listCommerceCollections) | **GET** /v1/commerce/collections | List collections |
 | [**listCommerceDiscounts()**](CommerceApi.md#listCommerceDiscounts) | **GET** /v1/commerce/discounts | List discounts |
 | [**listCommerceInventory()**](CommerceApi.md#listCommerceInventory) | **GET** /v1/commerce/inventory | Get a product&#39;s stock |
@@ -60,17 +60,17 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listCommerceMetaobjects()**](CommerceApi.md#listCommerceMetaobjects) | **GET** /v1/commerce/metaobjects | List metaobjects of a type |
 | [**listCommercePages()**](CommerceApi.md#listCommercePages) | **GET** /v1/commerce/pages | List pages |
 | [**listCommercePriceLists()**](CommerceApi.md#listCommercePriceLists) | **GET** /v1/commerce/price-lists | List price lists |
+| [**listCommerceProductMetafields()**](CommerceApi.md#listCommerceProductMetafields) | **GET** /v1/commerce/products/{productId}/metafields | List product metafields |
 | [**listCommerceProducts()**](CommerceApi.md#listCommerceProducts) | **GET** /v1/commerce/products | List products |
 | [**listCommerceRedirects()**](CommerceApi.md#listCommerceRedirects) | **GET** /v1/commerce/redirects | List URL redirects |
-| [**listProductMetafields()**](CommerceApi.md#listProductMetafields) | **GET** /v1/commerce/products/{productId}/metafields | List product metafields |
 | [**removeCommerceProductImages()**](CommerceApi.md#removeCommerceProductImages) | **DELETE** /v1/commerce/products/{productId}/images | Remove images |
 | [**reorderCommerceCollectionProducts()**](CommerceApi.md#reorderCommerceCollectionProducts) | **POST** /v1/commerce/collections/{collectionId}/reorder | Reorder products in a collection |
 | [**reorderCommerceProductImages()**](CommerceApi.md#reorderCommerceProductImages) | **POST** /v1/commerce/products/{productId}/images/reorder | Reorder images |
 | [**runCommerceCatalogSync()**](CommerceApi.md#runCommerceCatalogSync) | **POST** /v1/commerce/catalog-syncs/{syncId}/run | Run a catalog sync now |
-| [**setCollectionMetafields()**](CommerceApi.md#setCollectionMetafields) | **PUT** /v1/commerce/collections/{collectionId}/metafields | Set collection metafields |
+| [**setCommerceCollectionMetafields()**](CommerceApi.md#setCommerceCollectionMetafields) | **PUT** /v1/commerce/collections/{collectionId}/metafields | Set collection metafields |
 | [**setCommerceDiscountActive()**](CommerceApi.md#setCommerceDiscountActive) | **POST** /v1/commerce/discounts/{discountId}/state | Activate or deactivate a discount |
 | [**setCommercePriceListPrices()**](CommerceApi.md#setCommercePriceListPrices) | **PUT** /v1/commerce/price-lists/{priceListId}/prices | Set fixed prices |
-| [**setProductMetafields()**](CommerceApi.md#setProductMetafields) | **PUT** /v1/commerce/products/{productId}/metafields | Set product metafields |
+| [**setCommerceProductMetafields()**](CommerceApi.md#setCommerceProductMetafields) | **PUT** /v1/commerce/products/{productId}/metafields | Set product metafields |
 | [**updateCommerceCollection()**](CommerceApi.md#updateCommerceCollection) | **PATCH** /v1/commerce/collections/{collectionId} | Update a collection |
 | [**updateCommerceDiscount()**](CommerceApi.md#updateCommerceDiscount) | **PATCH** /v1/commerce/discounts/{discountId} | Update a discount |
 | [**updateCommerceMenu()**](CommerceApi.md#updateCommerceMenu) | **PUT** /v1/commerce/menus/{menuId} | Replace a navigation menu |
@@ -90,7 +90,7 @@ addCommerceDiscountCodes($discount_id, $add_commerce_discount_codes_request): \Z
 
 Add codes to a discount
 
-Adds up to 250 more codes to a code discount, for example one per influencer. The platform adds them in the background.
+Adds up to 250 more codes to a code discount, for example one per influencer. The platform adds them in the background. Needs discounts.codes, which WooCommerce stores do not have.
 
 ### Example
 
@@ -268,10 +268,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `changeCollectionChannels()`
+## `changeCommerceCollectionChannels()`
 
 ```php
-changeCollectionChannels($collection_id, $change_product_channels_request): \Zernio\Model\ChangeCollectionChannels200Response
+changeCommerceCollectionChannels($collection_id, $change_commerce_product_channels_request): \Zernio\Model\ChangeCommerceCollectionChannels200Response
 ```
 
 Publish or unpublish a collection
@@ -296,13 +296,13 @@ $apiInstance = new Zernio\Api\CommerceApi(
     $config
 );
 $collection_id = 'collection_id_example'; // string | Platform-native id.
-$change_product_channels_request = new \Zernio\Model\ChangeProductChannelsRequest(); // \Zernio\Model\ChangeProductChannelsRequest
+$change_commerce_product_channels_request = new \Zernio\Model\ChangeCommerceProductChannelsRequest(); // \Zernio\Model\ChangeCommerceProductChannelsRequest
 
 try {
-    $result = $apiInstance->changeCollectionChannels($collection_id, $change_product_channels_request);
+    $result = $apiInstance->changeCommerceCollectionChannels($collection_id, $change_commerce_product_channels_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CommerceApi->changeCollectionChannels: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CommerceApi->changeCommerceCollectionChannels: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -311,11 +311,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **collection_id** | **string**| Platform-native id. | |
-| **change_product_channels_request** | [**\Zernio\Model\ChangeProductChannelsRequest**](../Model/ChangeProductChannelsRequest.md)|  | |
+| **change_commerce_product_channels_request** | [**\Zernio\Model\ChangeCommerceProductChannelsRequest**](../Model/ChangeCommerceProductChannelsRequest.md)|  | |
 
 ### Return type
 
-[**\Zernio\Model\ChangeCollectionChannels200Response**](../Model/ChangeCollectionChannels200Response.md)
+[**\Zernio\Model\ChangeCommerceCollectionChannels200Response**](../Model/ChangeCommerceCollectionChannels200Response.md)
 
 ### Authorization
 
@@ -454,6 +454,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `changeCommerceProductChannels()`
+
+```php
+changeCommerceProductChannels($product_id, $change_commerce_product_channels_request): \Zernio\Model\ChangeCommerceProductChannels200Response
+```
+
+Publish or unpublish a product
+
+Publishes to and/or unpublishes from sales channels (the online store, Shop, POS and others). List channels with GET /v1/commerce/channels.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CommerceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$product_id = 'product_id_example'; // string | Platform-native id.
+$change_commerce_product_channels_request = new \Zernio\Model\ChangeCommerceProductChannelsRequest(); // \Zernio\Model\ChangeCommerceProductChannelsRequest
+
+try {
+    $result = $apiInstance->changeCommerceProductChannels($product_id, $change_commerce_product_channels_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommerceApi->changeCommerceProductChannels: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **product_id** | **string**| Platform-native id. | |
+| **change_commerce_product_channels_request** | [**\Zernio\Model\ChangeCommerceProductChannelsRequest**](../Model/ChangeCommerceProductChannelsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ChangeCommerceProductChannels200Response**](../Model/ChangeCommerceProductChannels200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `changeCommerceProductState()`
 
 ```php
@@ -560,68 +622,6 @@ try {
 ### Return type
 
 [**\Zernio\Model\ChangeCommerceProductTags200Response**](../Model/ChangeCommerceProductTags200Response.md)
-
-### Authorization
-
-[bearerAuth](../../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `changeProductChannels()`
-
-```php
-changeProductChannels($product_id, $change_product_channels_request): \Zernio\Model\ChangeProductChannels200Response
-```
-
-Publish or unpublish a product
-
-Publishes to and/or unpublishes from sales channels (the online store, Shop, POS and others). List channels with GET /v1/commerce/channels.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer (JWT) authorization: bearerAuth
-$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Zernio\Api\CommerceApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$product_id = 'product_id_example'; // string | Platform-native id.
-$change_product_channels_request = new \Zernio\Model\ChangeProductChannelsRequest(); // \Zernio\Model\ChangeProductChannelsRequest
-
-try {
-    $result = $apiInstance->changeProductChannels($product_id, $change_product_channels_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CommerceApi->changeProductChannels: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **product_id** | **string**| Platform-native id. | |
-| **change_product_channels_request** | [**\Zernio\Model\ChangeProductChannelsRequest**](../Model/ChangeProductChannelsRequest.md)|  | |
-
-### Return type
-
-[**\Zernio\Model\ChangeProductChannels200Response**](../Model/ChangeProductChannels200Response.md)
 
 ### Authorization
 
@@ -824,6 +824,8 @@ createCommerceMenu($create_commerce_menu_request): \Zernio\Model\CreateCommerceM
 
 Create a navigation menu
 
+Creates a navigation menu from `title`, `handle` and up to 100 `items`, and returns it with status 201. Shopify only. Needs navigation.write.
+
 ### Example
 
 ```php
@@ -882,6 +884,8 @@ createCommerceMetaobject($create_commerce_metaobject_request): \Zernio\Model\Cre
 
 Create a metaobject
 
+Creates a metaobject of `type` with its `fields` (key and string value, up to 100) and an optional `handle`, and returns it with status 201. Shopify only. Needs metaobjects.write.
+
 ### Example
 
 ```php
@@ -939,6 +943,8 @@ createCommercePage($create_commerce_page_request): \Zernio\Model\CreateCommerceP
 ```
 
 Create a page
+
+Creates a content page from `title`, optional `handle`, `bodyHtml` and `isPublished`, and returns it with status 201. Needs pages.write.
 
 ### Example
 
@@ -1182,6 +1188,8 @@ createCommerceRedirect($create_commerce_redirect_request): \Zernio\Model\CreateC
 
 Create a URL redirect
 
+Creates a redirect from `path` (starting with `/`) to `target` (a path or a full URL) and returns it with status 201. Shopify only. Needs navigation.write.
+
 ### Example
 
 ```php
@@ -1226,68 +1234,6 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `deleteCollectionMetafields()`
-
-```php
-deleteCollectionMetafields($collection_id, $account_id, $keys): \Zernio\Model\DeleteProductMetafields200Response
-```
-
-Delete collection metafields
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer (JWT) authorization: bearerAuth
-$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Zernio\Api\CommerceApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$collection_id = 'collection_id_example'; // string | Platform-native id.
-$account_id = 'account_id_example'; // string | Connected store SocialAccount id.
-$keys = 'keys_example'; // string | Comma-separated namespace.key pairs.
-
-try {
-    $result = $apiInstance->deleteCollectionMetafields($collection_id, $account_id, $keys);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CommerceApi->deleteCollectionMetafields: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **collection_id** | **string**| Platform-native id. | |
-| **account_id** | **string**| Connected store SocialAccount id. | |
-| **keys** | **string**| Comma-separated namespace.key pairs. | |
-
-### Return type
-
-[**\Zernio\Model\DeleteProductMetafields200Response**](../Model/DeleteProductMetafields200Response.md)
-
-### Authorization
-
-[bearerAuth](../../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -1416,6 +1362,70 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `deleteCommerceCollectionMetafields()`
+
+```php
+deleteCommerceCollectionMetafields($collection_id, $account_id, $keys): \Zernio\Model\DeleteCommerceProductMetafields200Response
+```
+
+Delete collection metafields
+
+Deletes the collection metafields named in `keys` (comma-separated `namespace.key`, up to 25). Needs collections.metafields: WooCommerce answers 400 platform_not_supported.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CommerceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$collection_id = 'collection_id_example'; // string | Platform-native id.
+$account_id = 'account_id_example'; // string | Connected store SocialAccount id.
+$keys = 'keys_example'; // string | Comma-separated namespace.key pairs.
+
+try {
+    $result = $apiInstance->deleteCommerceCollectionMetafields($collection_id, $account_id, $keys);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommerceApi->deleteCommerceCollectionMetafields: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **collection_id** | **string**| Platform-native id. | |
+| **account_id** | **string**| Connected store SocialAccount id. | |
+| **keys** | **string**| Comma-separated namespace.key pairs. | |
+
+### Return type
+
+[**\Zernio\Model\DeleteCommerceProductMetafields200Response**](../Model/DeleteCommerceProductMetafields200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteCommerceDiscount()`
 
 ```php
@@ -1423,6 +1433,8 @@ deleteCommerceDiscount($discount_id, $account_id): \Zernio\Model\DeleteCommerceD
 ```
 
 Delete a discount
+
+Deletes the discount; its codes stop working at checkout. This cannot be undone. Needs discounts.write.
 
 ### Example
 
@@ -1484,6 +1496,8 @@ deleteCommerceMarketingActivity($remote_id, $account_id): \Zernio\Model\DeleteCo
 
 Delete a marketing activity
 
+Deletes the marketing activity you created with PUT /v1/commerce/marketing-activities, identified by the `remoteId` you gave it. Shopify only. Needs marketing.write.
+
 ### Example
 
 ```php
@@ -1543,6 +1557,8 @@ deleteCommerceMenu($menu_id, $account_id): \Zernio\Model\DeleteCommerceMenu200Re
 ```
 
 Delete a navigation menu
+
+Deletes the navigation menu. Shopify only. Needs navigation.write.
 
 ### Example
 
@@ -1604,6 +1620,8 @@ deleteCommerceMetaobject($metaobject_id, $account_id): \Zernio\Model\DeleteComme
 
 Delete a metaobject
 
+Deletes the metaobject. References to it from metafields stop resolving. Shopify only. Needs metaobjects.write.
+
 ### Example
 
 ```php
@@ -1663,6 +1681,8 @@ deleteCommercePage($page_id, $account_id): \Zernio\Model\DeleteCommercePage200Re
 ```
 
 Delete a page
+
+Deletes the page from the store. This cannot be undone. Needs pages.write.
 
 ### Example
 
@@ -1780,6 +1800,70 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `deleteCommerceProductMetafields()`
+
+```php
+deleteCommerceProductMetafields($product_id, $account_id, $keys): \Zernio\Model\DeleteCommerceProductMetafields200Response
+```
+
+Delete product metafields
+
+Deletes the product custom fields named in `keys` (comma-separated `namespace.key`, up to 25) and returns how many were deleted. Needs metafields.write.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CommerceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$product_id = 'product_id_example'; // string | Platform-native id.
+$account_id = 'account_id_example'; // string | Connected store SocialAccount id.
+$keys = 'keys_example'; // string | Comma-separated namespace.key pairs.
+
+try {
+    $result = $apiInstance->deleteCommerceProductMetafields($product_id, $account_id, $keys);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommerceApi->deleteCommerceProductMetafields: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **product_id** | **string**| Platform-native id. | |
+| **account_id** | **string**| Connected store SocialAccount id. | |
+| **keys** | **string**| Comma-separated namespace.key pairs. | |
+
+### Return type
+
+[**\Zernio\Model\DeleteCommerceProductMetafields200Response**](../Model/DeleteCommerceProductMetafields200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteCommerceProductOptions()`
 
 ```php
@@ -1852,6 +1936,8 @@ deleteCommerceProductVariants($product_id, $account_id, $variant_ids): \Zernio\M
 
 Delete variants
 
+Deletes the variants in `variantIds` (comma-separated, up to 100) and returns the updated product. A product keeps at least one variant, so deleting every variant is refused by the platform. Needs products.variants.
+
 ### Example
 
 ```php
@@ -1914,6 +2000,8 @@ deleteCommerceRedirect($redirect_id, $account_id): \Zernio\Model\DeleteCommerceR
 
 Delete a URL redirect
 
+Deletes the redirect; the old path answers 404 again. Shopify only. Needs navigation.write.
+
 ### Example
 
 ```php
@@ -1952,68 +2040,6 @@ try {
 ### Return type
 
 [**\Zernio\Model\DeleteCommerceRedirect200Response**](../Model/DeleteCommerceRedirect200Response.md)
-
-### Authorization
-
-[bearerAuth](../../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `deleteProductMetafields()`
-
-```php
-deleteProductMetafields($product_id, $account_id, $keys): \Zernio\Model\DeleteProductMetafields200Response
-```
-
-Delete product metafields
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer (JWT) authorization: bearerAuth
-$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Zernio\Api\CommerceApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$product_id = 'product_id_example'; // string | Platform-native id.
-$account_id = 'account_id_example'; // string | Connected store SocialAccount id.
-$keys = 'keys_example'; // string | Comma-separated namespace.key pairs.
-
-try {
-    $result = $apiInstance->deleteProductMetafields($product_id, $account_id, $keys);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CommerceApi->deleteProductMetafields: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **product_id** | **string**| Platform-native id. | |
-| **account_id** | **string**| Connected store SocialAccount id. | |
-| **keys** | **string**| Comma-separated namespace.key pairs. | |
-
-### Return type
-
-[**\Zernio\Model\DeleteProductMetafields200Response**](../Model/DeleteProductMetafields200Response.md)
 
 ### Authorization
 
@@ -2098,6 +2124,8 @@ getCommerceCatalogSync($sync_id): \Zernio\Model\CreateCommerceCatalogSync202Resp
 
 Get a catalog sync
 
+One catalog sync with the status and counts of its last run (`itemsSent`, `itemsSkipped`, `itemsDeleted`, `lastError`). Poll it after POST /v1/commerce/catalog-syncs/{syncId}/run to follow a run.
+
 ### Example
 
 ```php
@@ -2155,6 +2183,8 @@ getCommerceCollection($collection_id, $account_id): \Zernio\Model\CreateCommerce
 ```
 
 Get a collection
+
+One collection (a category on WooCommerce) with its image, sort order and product count. List its products with GET /v1/commerce/products?collectionId=. Needs collections.read.
 
 ### Example
 
@@ -2216,6 +2246,8 @@ getCommerceDiscount($discount_id, $account_id): \Zernio\Model\CreateCommerceDisc
 
 Get a discount
 
+One discount with its value, targets, minimum, usage and schedule. Needs discounts.read.
+
 ### Example
 
 ```php
@@ -2275,6 +2307,8 @@ getCommerceMenu($menu_id, $account_id): \Zernio\Model\CreateCommerceMenu201Respo
 ```
 
 Get a navigation menu
+
+One navigation menu with its nested items. Shopify only. Needs navigation.read.
 
 ### Example
 
@@ -2336,6 +2370,8 @@ getCommerceMetaobject($metaobject_id, $account_id): \Zernio\Model\CreateCommerce
 
 Get a metaobject
 
+One metaobject with its fields. Shopify only. Needs metaobjects.read.
+
 ### Example
 
 ```php
@@ -2396,6 +2432,8 @@ getCommercePage($page_id, $account_id): \Zernio\Model\CreateCommercePage201Respo
 
 Get a page
 
+One content page with its body. Needs pages.read.
+
 ### Example
 
 ```php
@@ -2455,6 +2493,8 @@ getCommerceProduct($product_id, $account_id): \Zernio\Model\CreateCommerceProduc
 ```
 
 Get a product
+
+One product with all its variants, options and images. Needs products.read. 404 product_not_found when the id does not exist in the store.
 
 ### Example
 
@@ -2554,66 +2594,6 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetCommerceStore200Response**](../Model/GetCommerceStore200Response.md)
-
-### Authorization
-
-[bearerAuth](../../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `listCollectionMetafields()`
-
-```php
-listCollectionMetafields($collection_id, $account_id): \Zernio\Model\ListProductMetafields200Response
-```
-
-List collection metafields
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer (JWT) authorization: bearerAuth
-$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Zernio\Api\CommerceApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$collection_id = 'collection_id_example'; // string | Platform-native id.
-$account_id = 'account_id_example'; // string | Connected store SocialAccount id.
-
-try {
-    $result = $apiInstance->listCollectionMetafields($collection_id, $account_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CommerceApi->listCollectionMetafields: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **collection_id** | **string**| Platform-native id. | |
-| **account_id** | **string**| Connected store SocialAccount id. | |
-
-### Return type
-
-[**\Zernio\Model\ListProductMetafields200Response**](../Model/ListProductMetafields200Response.md)
 
 ### Authorization
 
@@ -2748,6 +2728,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listCommerceCollectionMetafields()`
+
+```php
+listCommerceCollectionMetafields($collection_id, $account_id): \Zernio\Model\ListCommerceProductMetafields200Response
+```
+
+List collection metafields
+
+The collection's metafields as namespace, key, type and value. Needs collections.metafields: WooCommerce keeps custom fields on products only and answers 400 platform_not_supported.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CommerceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$collection_id = 'collection_id_example'; // string | Platform-native id.
+$account_id = 'account_id_example'; // string | Connected store SocialAccount id.
+
+try {
+    $result = $apiInstance->listCommerceCollectionMetafields($collection_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommerceApi->listCommerceCollectionMetafields: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **collection_id** | **string**| Platform-native id. | |
+| **account_id** | **string**| Connected store SocialAccount id. | |
+
+### Return type
+
+[**\Zernio\Model\ListCommerceProductMetafields200Response**](../Model/ListCommerceProductMetafields200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listCommerceCollections()`
 
 ```php
@@ -2821,6 +2863,8 @@ listCommerceDiscounts($account_id, $limit, $cursor, $query): \Zernio\Model\ListC
 ```
 
 List discounts
+
+The store's discounts (Shopify code and automatic discounts, WooCommerce coupons), cursor-paginated with `limit`, `cursor` and an optional `query`. Each discount lists its first 10 codes; `codeCount` has the total. Needs discounts.read.
 
 ### Example
 
@@ -3068,6 +3112,8 @@ listCommerceMenus($account_id): \Zernio\Model\ListCommerceMenus200Response
 
 List navigation menus
 
+The store's navigation menus with their items. Shopify only. Needs navigation.read.
+
 ### Example
 
 ```php
@@ -3186,6 +3232,8 @@ listCommerceMetaobjects($account_id, $type, $limit, $cursor): \Zernio\Model\List
 
 List metaobjects of a type
 
+The metaobjects of one `type` (a definition handle from GET /v1/commerce/metaobject-definitions), cursor-paginated with `limit` and `cursor`. Shopify only. Needs metaobjects.read.
+
 ### Example
 
 ```php
@@ -3249,6 +3297,8 @@ listCommercePages($account_id, $limit, $cursor, $query): \Zernio\Model\ListComme
 ```
 
 List pages
+
+The store's content pages (Shopify online store pages, WordPress pages), cursor-paginated with `limit`, `cursor` and an optional `query`. Needs pages.read.
 
 ### Example
 
@@ -3366,6 +3416,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listCommerceProductMetafields()`
+
+```php
+listCommerceProductMetafields($product_id, $account_id): \Zernio\Model\ListCommerceProductMetafields200Response
+```
+
+List product metafields
+
+The product's custom fields (metafields on Shopify, public meta on WooCommerce) as namespace, key, type and value. Needs metafields.read.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CommerceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$product_id = 'product_id_example'; // string | Platform-native id.
+$account_id = 'account_id_example'; // string | Connected store SocialAccount id.
+
+try {
+    $result = $apiInstance->listCommerceProductMetafields($product_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommerceApi->listCommerceProductMetafields: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **product_id** | **string**| Platform-native id. | |
+| **account_id** | **string**| Connected store SocialAccount id. | |
+
+### Return type
+
+[**\Zernio\Model\ListCommerceProductMetafields200Response**](../Model/ListCommerceProductMetafields200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listCommerceProducts()`
 
 ```php
@@ -3444,6 +3556,8 @@ listCommerceRedirects($account_id, $limit, $cursor, $query): \Zernio\Model\ListC
 
 List URL redirects
 
+The store's URL redirects (old path to new target), cursor-paginated with `limit`, `cursor` and an optional `query` on the path. Shopify only. Needs navigation.read.
+
 ### Example
 
 ```php
@@ -3486,66 +3600,6 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListCommerceRedirects200Response**](../Model/ListCommerceRedirects200Response.md)
-
-### Authorization
-
-[bearerAuth](../../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `listProductMetafields()`
-
-```php
-listProductMetafields($product_id, $account_id): \Zernio\Model\ListProductMetafields200Response
-```
-
-List product metafields
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer (JWT) authorization: bearerAuth
-$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Zernio\Api\CommerceApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$product_id = 'product_id_example'; // string | Platform-native id.
-$account_id = 'account_id_example'; // string | Connected store SocialAccount id.
-
-try {
-    $result = $apiInstance->listProductMetafields($product_id, $account_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CommerceApi->listProductMetafields: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **product_id** | **string**| Platform-native id. | |
-| **account_id** | **string**| Connected store SocialAccount id. | |
-
-### Return type
-
-[**\Zernio\Model\ListProductMetafields200Response**](../Model/ListProductMetafields200Response.md)
 
 ### Authorization
 
@@ -3808,15 +3862,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `setCollectionMetafields()`
+## `setCommerceCollectionMetafields()`
 
 ```php
-setCollectionMetafields($collection_id, $set_product_metafields_request): \Zernio\Model\ListProductMetafields200Response
+setCommerceCollectionMetafields($collection_id, $set_commerce_product_metafields_request): \Zernio\Model\ListCommerceProductMetafields200Response
 ```
 
 Set collection metafields
 
-Creates or updates custom fields by namespace and key.
+Creates or updates custom fields by namespace and key. Needs collections.metafields: WooCommerce keeps custom fields on products only and answers 400 platform_not_supported.
 
 ### Example
 
@@ -3836,13 +3890,13 @@ $apiInstance = new Zernio\Api\CommerceApi(
     $config
 );
 $collection_id = 'collection_id_example'; // string | Platform-native id.
-$set_product_metafields_request = new \Zernio\Model\SetProductMetafieldsRequest(); // \Zernio\Model\SetProductMetafieldsRequest
+$set_commerce_product_metafields_request = new \Zernio\Model\SetCommerceProductMetafieldsRequest(); // \Zernio\Model\SetCommerceProductMetafieldsRequest
 
 try {
-    $result = $apiInstance->setCollectionMetafields($collection_id, $set_product_metafields_request);
+    $result = $apiInstance->setCommerceCollectionMetafields($collection_id, $set_commerce_product_metafields_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CommerceApi->setCollectionMetafields: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CommerceApi->setCommerceCollectionMetafields: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -3851,11 +3905,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **collection_id** | **string**| Platform-native id. | |
-| **set_product_metafields_request** | [**\Zernio\Model\SetProductMetafieldsRequest**](../Model/SetProductMetafieldsRequest.md)|  | |
+| **set_commerce_product_metafields_request** | [**\Zernio\Model\SetCommerceProductMetafieldsRequest**](../Model/SetCommerceProductMetafieldsRequest.md)|  | |
 
 ### Return type
 
-[**\Zernio\Model\ListProductMetafields200Response**](../Model/ListProductMetafields200Response.md)
+[**\Zernio\Model\ListCommerceProductMetafields200Response**](../Model/ListCommerceProductMetafields200Response.md)
 
 ### Authorization
 
@@ -3994,10 +4048,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `setProductMetafields()`
+## `setCommerceProductMetafields()`
 
 ```php
-setProductMetafields($product_id, $set_product_metafields_request): \Zernio\Model\ListProductMetafields200Response
+setCommerceProductMetafields($product_id, $set_commerce_product_metafields_request): \Zernio\Model\ListCommerceProductMetafields200Response
 ```
 
 Set product metafields
@@ -4022,13 +4076,13 @@ $apiInstance = new Zernio\Api\CommerceApi(
     $config
 );
 $product_id = 'product_id_example'; // string | Platform-native id.
-$set_product_metafields_request = new \Zernio\Model\SetProductMetafieldsRequest(); // \Zernio\Model\SetProductMetafieldsRequest
+$set_commerce_product_metafields_request = new \Zernio\Model\SetCommerceProductMetafieldsRequest(); // \Zernio\Model\SetCommerceProductMetafieldsRequest
 
 try {
-    $result = $apiInstance->setProductMetafields($product_id, $set_product_metafields_request);
+    $result = $apiInstance->setCommerceProductMetafields($product_id, $set_commerce_product_metafields_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CommerceApi->setProductMetafields: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CommerceApi->setCommerceProductMetafields: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -4037,11 +4091,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **product_id** | **string**| Platform-native id. | |
-| **set_product_metafields_request** | [**\Zernio\Model\SetProductMetafieldsRequest**](../Model/SetProductMetafieldsRequest.md)|  | |
+| **set_commerce_product_metafields_request** | [**\Zernio\Model\SetCommerceProductMetafieldsRequest**](../Model/SetCommerceProductMetafieldsRequest.md)|  | |
 
 ### Return type
 
-[**\Zernio\Model\ListProductMetafields200Response**](../Model/ListProductMetafields200Response.md)
+[**\Zernio\Model\ListCommerceProductMetafields200Response**](../Model/ListCommerceProductMetafields200Response.md)
 
 ### Authorization
 
@@ -4312,6 +4366,8 @@ updateCommercePage($page_id, $update_commerce_page_request): \Zernio\Model\Creat
 
 Update a page
 
+Updates the fields you pass (`title`, `handle`, `bodyHtml`, `isPublished`) and returns the page. Needs pages.write.
+
 ### Example
 
 ```php
@@ -4495,6 +4551,8 @@ updateCommerceRedirect($redirect_id, $update_commerce_redirect_request): \Zernio
 ```
 
 Update a URL redirect
+
+Changes the redirect's `path` and/or `target`. Shopify only. Needs navigation.write.
 
 ### Example
 
