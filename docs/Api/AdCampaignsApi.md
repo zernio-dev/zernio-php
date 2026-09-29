@@ -383,7 +383,7 @@ bulkUpdateAdCampaignStatus($bulk_update_ad_campaign_status_request): \Zernio\Mod
 
 Pause or resume many campaigns
 
-Process up to 50 campaigns in one call. Each campaign is updated concurrently and the response contains a per-campaign result so a single bad row does not fail the whole batch.
+Process up to 50 campaigns in one call. Each campaign is updated concurrently and the response contains a per-campaign result so a single bad row does not fail the whole batch. Each campaign is written, counted and re-read exactly as PUT /v1/ads/campaigns/{campaignId}/status describes, including which child ad sets and ads each platform writes.
 
 ### Example
 
@@ -1244,12 +1244,12 @@ try {
 ## `getAd()`
 
 ```php
-getAd($ad_id): \Zernio\Model\GetAd200Response
+getAd($ad_id, $live): \Zernio\Model\GetAd200Response
 ```
 
 Get ad details
 
-Returns an ad with its creative, targeting, status, and performance metrics. Google Search ads include current creative.headlines, creative.descriptions and creative.finalUrls, preserving pinnedField. Top-level cachedAt and stale report cache freshness. Google mutations invalidate this read. RSA enrichment requires a stored advertisingChannelType of SEARCH. Ads with an unknown or other channel return their stored details without a Google read. If RSA enrichment fails, the stored ad is returned with HTTP 200 and without cache metadata.  The `{adId}` path segment accepts any identifier dialect Zernio indexes for the ad: - the Zernio internal `_id` (24-char hex) - Meta's numeric `platformAdId` (the value shipped in `comment.received` webhooks as `comment.ad.id`) - the creative's `effective_object_story_id` (`{pageId}_{postId}` shape, Facebook side) - the creative's `effective_instagram_media_id` (Instagram side)  Any of the four resolve to the same ad. Caller doesn't need a translation step. `creative.creativeFeatures` holds the stored requested settings, which do not confirm platform application.
+Returns an ad with its creative, targeting, status, and performance metrics. Google Search ads include current creative.headlines, creative.descriptions and creative.finalUrls, preserving pinnedField. Top-level cachedAt and stale report cache freshness. Google mutations invalidate this read. RSA enrichment requires a stored advertisingChannelType of SEARCH. Ads with an unknown or other channel return their stored details without a Google read. If RSA enrichment fails, the stored ad is returned with HTTP 200 and without cache metadata.  The `{adId}` path segment accepts any identifier dialect Zernio indexes for the ad: - the Zernio internal `_id` (24-char hex) - Meta's numeric `platformAdId` (the value shipped in `comment.received` webhooks as `comment.ad.id`) - the creative's `effective_object_story_id` (`{pageId}_{postId}` shape, Facebook side) - the creative's `effective_instagram_media_id` (Instagram side)  Any of the four resolve to the same ad. Caller doesn't need a translation step. `creative.creativeFeatures` holds the stored requested settings, which do not confirm platform application.  **Status freshness.** `status`, `configuredStatus`, `platformStatus`, `platformAdSetStatus` and `platformCampaignStatus` are the values Zernio last stored. Background sync refreshes them, typically within 15 to 60 minutes (Google up to about 3 hours), and ended or long-paused objects may be refreshed less often. Zernio's own status writes re-read the switches they change. A change made in the platform's own ads manager therefore shows up here only after the next sync. Controllers that act on a switch should pass `live=true`, which reads the switches from the platform now, stores them, and returns `statusReadAt` (null when the read failed and the stored values were returned). With `live=true` the ad's own switch (`configuredStatus`), its delivery status (`status`, `platformStatus`) and its ad set and campaign switches (`platformAdSetStatus`, `platformCampaignStatus`) are read live.
 
 ### Example
 
@@ -1269,9 +1269,10 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
     $config
 );
 $ad_id = 'ad_id_example'; // string | Zernio `_id` (hex), Meta `platformAdId` (numeric), or one of the creative's effective story/media IDs. See description for details.
+$live = false; // bool | Read the on/off switches live from the platform instead of returning the synced values. The fresh values are stored (so later reads return them too) and the response carries `statusReadAt`, the time of the read. At most 20 platform objects are read per request. Where a read fails (credentials, platform error, no reader on that platform), the stored values come back with `statusReadAt: null`. See \"Status freshness\" in the operation description.
 
 try {
-    $result = $apiInstance->getAd($ad_id);
+    $result = $apiInstance->getAd($ad_id, $live);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->getAd: ', $e->getMessage(), PHP_EOL;
@@ -1283,6 +1284,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_id** | **string**| Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. See description for details. | |
+| **live** | **bool**| Read the on/off switches live from the platform instead of returning the synced values. The fresh values are stored (so later reads return them too) and the response carries &#x60;statusReadAt&#x60;, the time of the read. At most 20 platform objects are read per request. Where a read fails (credentials, platform error, no reader on that platform), the stored values come back with &#x60;statusReadAt: null&#x60;. See \&quot;Status freshness\&quot; in the operation description. | [optional] [default to false] |
 
 ### Return type
 
@@ -1916,12 +1918,12 @@ try {
 ## `listAdCampaigns()`
 
 ```php
-listAdCampaigns($include_empty, $page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $from_date, $to_date, $has_delivery, $min_spend): \Zernio\Model\ListAdCampaigns200Response
+listAdCampaigns($include_empty, $page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $from_date, $to_date, $has_delivery, $min_spend, $live): \Zernio\Model\ListAdCampaigns200Response
 ```
 
 List campaigns
 
-Returns campaigns as virtual aggregations over ad documents grouped by platform campaign ID. Metrics (spend, impressions, clicks, etc.) are summed across all ads in each campaign. Campaign status is derived from child ad statuses (active > pending_review > paused > error > completed > cancelled > rejected). Google campaign budgets include amountMicros, explicitlyShared, resourceName and deliveryMethod after the next successful sync. This endpoint does not fetch Google live.
+Returns campaigns as virtual aggregations over ad documents grouped by platform campaign ID. Metrics (spend, impressions, clicks, etc.) are summed across all ads in each campaign. Campaign status is derived from child ad statuses (active > pending_review > paused > error > completed > cancelled > rejected). Google campaign budgets include amountMicros, explicitlyShared, resourceName and deliveryMethod after the next successful sync. This endpoint does not fetch Google live.  **Status freshness.** `status`, `configuredStatus`, `platformStatus`, `platformAdSetStatus` and `platformCampaignStatus` are the values Zernio last stored. Background sync refreshes them, typically within 15 to 60 minutes (Google up to about 3 hours), and ended or long-paused objects may be refreshed less often. Zernio's own status writes re-read the switches they change. A change made in the platform's own ads manager therefore shows up here only after the next sync. Controllers that act on a switch should pass `live=true`, which reads the switches from the platform now, stores them, and returns `statusReadAt` (null when the read failed and the stored values were returned). With `live=true` (which needs `limit` of 20 or less) each returned campaign's own switch (`platformCampaignStatus`) is read live. Live reads cover TikTok, Meta, Google and OpenAI. The rolled-up `status` is not re-derived by a live read.
 
 ### Example
 
@@ -1954,9 +1956,10 @@ $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start of
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End of metrics date range (YYYY-MM-DD, inclusive). Defaults to today. Max 730-day range.
 $has_delivery = True; // bool | Return only campaigns that delivered between `fromDate` and `toDate`: spend above zero, or impressions served at zero spend. Unlike `status`, which reads a campaign's CURRENT state, this filters on what happened inside the window. Filters the campaign set itself, so `pagination.total` counts only matching campaigns. Mirrors the same filter on /v1/ads/tree.
 $min_spend = 3.4; // float | Return only campaigns whose spend between `fromDate` and `toDate` reaches this amount, in each campaign's OWN currency (the `currency` field on the campaign). Implies `hasDelivery`; `minSpend=0` applies no filter. Mirrors the same filter on /v1/ads/tree.
+$live = false; // bool | Read the on/off switches live from the platform instead of returning the synced values. The fresh values are stored (so later reads return them too) and the response carries `statusReadAt`, the time of the read. At most 20 platform objects are read per request. Where a read fails (credentials, platform error, no reader on that platform), the stored values come back with `statusReadAt: null`. See \"Status freshness\" in the operation description.
 
 try {
-    $result = $apiInstance->listAdCampaigns($include_empty, $page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $from_date, $to_date, $has_delivery, $min_spend);
+    $result = $apiInstance->listAdCampaigns($include_empty, $page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $from_date, $to_date, $has_delivery, $min_spend, $live);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->listAdCampaigns: ', $e->getMessage(), PHP_EOL;
@@ -1981,6 +1984,7 @@ try {
 | **to_date** | **\DateTime**| End of metrics date range (YYYY-MM-DD, inclusive). Defaults to today. Max 730-day range. | [optional] |
 | **has_delivery** | **bool**| Return only campaigns that delivered between &#x60;fromDate&#x60; and &#x60;toDate&#x60;: spend above zero, or impressions served at zero spend. Unlike &#x60;status&#x60;, which reads a campaign&#39;s CURRENT state, this filters on what happened inside the window. Filters the campaign set itself, so &#x60;pagination.total&#x60; counts only matching campaigns. Mirrors the same filter on /v1/ads/tree. | [optional] |
 | **min_spend** | **float**| Return only campaigns whose spend between &#x60;fromDate&#x60; and &#x60;toDate&#x60; reaches this amount, in each campaign&#39;s OWN currency (the &#x60;currency&#x60; field on the campaign). Implies &#x60;hasDelivery&#x60;; &#x60;minSpend&#x3D;0&#x60; applies no filter. Mirrors the same filter on /v1/ads/tree. | [optional] |
+| **live** | **bool**| Read the on/off switches live from the platform instead of returning the synced values. The fresh values are stored (so later reads return them too) and the response carries &#x60;statusReadAt&#x60;, the time of the read. At most 20 platform objects are read per request. Where a read fails (credentials, platform error, no reader on that platform), the stored values come back with &#x60;statusReadAt: null&#x60;. See \&quot;Status freshness\&quot; in the operation description. | [optional] [default to false] |
 
 ### Return type
 
@@ -2148,12 +2152,12 @@ try {
 ## `listAdSets()`
 
 ```php
-listAdSets($account_id, $campaign_id, $platform): \Zernio\Model\ListAdSets200Response
+listAdSets($account_id, $campaign_id, $ad_set_id, $platform, $live): \Zernio\Model\ListAdSets200Response
 ```
 
 List ad sets
 
-Ad sets (Google ad groups) synced for the connection, optionally filtered by platform and campaignId. Reads the `ad_sets` table directly, independent of the `ads` rollup GET /v1/ads/tree uses, so a newly created standalone ad group with no ad yet (POST /v1/ads/ad-sets, Google only) is visible here even though it is invisible in the tree until an ad joins it via `adSetId` on POST /v1/ads/create. Returns at most 500 rows, newest first.
+Ad sets (Google ad groups) synced for the connection, optionally filtered by platform and campaignId. Reads the `ad_sets` table directly, independent of the `ads` rollup GET /v1/ads/tree uses, so a newly created standalone ad group with no ad yet (POST /v1/ads/ad-sets, Google only) is visible here even though it is invisible in the tree until an ad joins it via `adSetId` on POST /v1/ads/create. Returns at most 500 rows, newest first.  **Status freshness.** `status`, `configuredStatus`, `platformStatus`, `platformAdSetStatus` and `platformCampaignStatus` are the values Zernio last stored. Background sync refreshes them, typically within 15 to 60 minutes (Google up to about 3 hours), and ended or long-paused objects may be refreshed less often. Zernio's own status writes re-read the switches they change. A change made in the platform's own ads manager therefore shows up here only after the next sync. Controllers that act on a switch should pass `live=true`, which reads the switches from the platform now, stores them, and returns `statusReadAt` (null when the read failed and the stored values were returned). With `live=true` (which needs a `campaignId` or `adSetId` filter) each listed ad set's own switch (`platformAdSetStatus`) is read live, for the first 20 rows; later rows keep their synced value with `statusReadAt: null`. Live reads cover TikTok, Meta, Google and OpenAI. The rolled-up `status` is not re-derived by a live read.
 
 ### Example
 
@@ -2174,10 +2178,12 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
 );
 $account_id = 'account_id_example'; // string | Account ID
 $campaign_id = 'campaign_id_example'; // string | Platform campaign ID
+$ad_set_id = 'ad_set_id_example'; // string | Platform ad set ID
 $platform = 'platform_example'; // string
+$live = false; // bool | Read the on/off switches live from the platform instead of returning the synced values. The fresh values are stored (so later reads return them too) and the response carries `statusReadAt`, the time of the read. At most 20 platform objects are read per request. Where a read fails (credentials, platform error, no reader on that platform), the stored values come back with `statusReadAt: null`. See \"Status freshness\" in the operation description.
 
 try {
-    $result = $apiInstance->listAdSets($account_id, $campaign_id, $platform);
+    $result = $apiInstance->listAdSets($account_id, $campaign_id, $ad_set_id, $platform, $live);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->listAdSets: ', $e->getMessage(), PHP_EOL;
@@ -2190,7 +2196,9 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Account ID | [optional] |
 | **campaign_id** | **string**| Platform campaign ID | [optional] |
+| **ad_set_id** | **string**| Platform ad set ID | [optional] |
 | **platform** | **string**|  | [optional] |
+| **live** | **bool**| Read the on/off switches live from the platform instead of returning the synced values. The fresh values are stored (so later reads return them too) and the response carries &#x60;statusReadAt&#x60;, the time of the read. At most 20 platform objects are read per request. Where a read fails (credentials, platform error, no reader on that platform), the stored values come back with &#x60;statusReadAt: null&#x60;. See \&quot;Status freshness\&quot; in the operation description. | [optional] [default to false] |
 
 ### Return type
 
@@ -3253,7 +3261,7 @@ updateAdCampaignStatus($campaign_id, $update_ad_campaign_status_request): \Zerni
 
 Pause or resume a campaign
 
-Writes the campaign's own on/off switch, then lets the platform cascade delivery to its ad sets and ads. Makes one platform API call, not one per ad.  The switch is always written, whatever delivery status the ads underneath report: an ad still in review does not block resuming its campaign. The echoed `status` is the confirmation that it landed.  `updated` / `skipped` describe only the ads whose own stored status CHANGED alongside it, so `updated: 0` is a normal successful response, not a no-op. Ads are skipped when they are in a terminal status (rejected, completed, cancelled), already in the target state, or switched on but not yet delivering. The last group keeps its `pending_review` / `error` status until the platform reports what it became. `skippedReasons` names which case applies.  On Meta this flips the campaign only. An ad set paused in its own right stays paused, so pair this with PUT /v1/ads/ad-sets/{adSetId}/status when you also need the ad set switched back on.  Google keeps an independent on/off switch at campaign, ad group and ad level and the most restrictive one wins, so `active` switches the campaign on TOGETHER with the ad groups and ads Zernio tracks under it, in one mutate. Without that the campaign reads ENABLED while a paused ad group or ad keeps it from serving. `paused` writes the campaign alone, which already stops delivery and leaves each ad's own switch as you set it.
+Writes the campaign's own on/off switch, then lets the platform cascade delivery to its ad sets and ads.  **What the write touches (current semantics, per platform).** TikTok: the campaign, every ad group and every ad under it that is not in a terminal status (rejected, completed, cancelled), on pause and on resume alike, so a resume also switches those ad groups and ads on. LinkedIn: the campaign group plus the campaigns and creatives of its non-terminal ads. Google: `paused` writes the campaign alone; `active` also switches on the ad groups and ads Zernio tracks under it (see below). Pinterest: the campaign plus one tracked ad and its ad group. X: the campaign plus one tracked line item. Meta and ChatGPT (OpenAI): the campaign switch only.  **Counts and readback.** Before the write, each ad's own switch is read live from the platform (up to 20 ads; beyond that the stored switch is used), and `updated` / `skipped` are computed against that live state. After the write each ad's own switch and delivery status are read again and stored, and the campaign switch is re-read and stored, so an immediate GET returns what the platform now reports.  The switch is always written, whatever delivery status the ads underneath report: an ad still in review does not block resuming its campaign. The echoed `status` is the confirmation that it landed.  `updated` / `skipped` describe only the ads whose own status changed alongside it, so `updated: 0` is a normal successful response, not a no-op. Ads are skipped when they are in a terminal status (rejected, completed, cancelled), already in the target state, or switched on but not yet delivering. The last group keeps its `pending_review` / `error` status until the platform reports what it became. `skippedReasons` names which case applies.  On Meta this flips the campaign only. An ad set paused in its own right stays paused, so pair this with PUT /v1/ads/ad-sets/{adSetId}/status when you also need the ad set switched back on.  Google keeps an independent on/off switch at campaign, ad group and ad level and the most restrictive one wins, so `active` switches the campaign on TOGETHER with the ad groups and ads Zernio tracks under it, in one mutate. Without that the campaign reads ENABLED while a paused ad group or ad keeps it from serving. `paused` writes the campaign alone, which already stops delivery and leaves each ad's own switch as you set it.
 
 ### Example
 
@@ -3439,7 +3447,7 @@ updateAdSet($ad_set_id, $update_ad_set_request): \Zernio\Model\UpdateAdSet200Res
 
 Update an ad set
 
-Ad-set-level writes. Use this for ABO budget updates, ad-set-scoped pause/resume, bid-strategy edits, Meta value-rule-set attach/detach, and Meta-only post-launch delivery settings via `platformSpecificData`. At least one updatable field is required.  Value rule sets (Meta only, see `/v1/ads/value-rule-sets`): - ATTACH or REPLACE: send `valueRuleSetId`. Attachment is driven by the id's   presence, so `valueRulesApplied: true` is optional. Sending a different id   replaces the previous association; there is no separate replace call. - DETACH: send `valueRulesApplied: false` and OMIT `valueRuleSetId`. - Sending `valueRulesApplied: false` TOGETHER with `valueRuleSetId` returns 400   `mutually_exclusive_fields`. This is deliberate: Meta attaches the rule set   whenever `value_rule_set_id` is present, even with `value_rules_applied` false,   so echoing stored state while asking to detach would silently keep the bid   adjustments live. - Eligibility: only ad sets on `LOWEST_COST_WITHOUT_CAP` or `COST_CAP`. Meta   rejects the rest server-side. - Read back with `GET /v1/ads/ad-sets/{adSetId}?fields=value_rule_set_id`. Meta   does not document `value_rules_applied` as a readable ad-set field, so the   boolean cannot be read back.  Bid strategy compatibility (per Meta's spec): - `LOWEST_COST_WITHOUT_CAP`: no `bidAmount`, no `roasAverageFloor`. - `LOWEST_COST_WITH_BID_CAP` / `COST_CAP`: `bidAmount` REQUIRED (whole currency units). - `LOWEST_COST_WITH_MIN_ROAS`: `roasAverageFloor` REQUIRED (decimal multiplier, e.g. 2.0 = 2.0x ROAS). - Meta only: send `bidAmount` WITHOUT `bidStrategy` to change the cap amount on an ad set   under a COST_CAP / LOWEST_COST_WITH_BID_CAP parent campaign, leaving the strategy itself   (inherited from the campaign) untouched. `roasAverageFloor` without `bidStrategy` is   rejected (it has no meaning outside LOWEST_COST_WITH_MIN_ROAS).  Delivery settings are validated by Meta against the campaign objective; incompatible combinations (e.g. a billingEvent the optimization goal doesn't allow) surface as 400s from Meta.  When updating `budget` on an ABO campaign: if the parent campaign is CBO, the response is 409 with code BUDGET_LEVEL_MISMATCH. Route to PUT /v1/ads/campaigns/{campaignId} instead.
+Ad-set-level writes. Use this for ABO budget updates, ad-set-scoped pause/resume, bid-strategy edits, Meta value-rule-set attach/detach, and Meta-only post-launch delivery settings via `platformSpecificData`. At least one updatable field is required.  Value rule sets (Meta only, see `/v1/ads/value-rule-sets`): - ATTACH or REPLACE: send `valueRuleSetId`. Attachment is driven by the id's   presence, so `valueRulesApplied: true` is optional. Sending a different id   replaces the previous association; there is no separate replace call. - DETACH: send `valueRulesApplied: false` and OMIT `valueRuleSetId`. - Sending `valueRulesApplied: false` TOGETHER with `valueRuleSetId` returns 400   `mutually_exclusive_fields`. This is deliberate: Meta attaches the rule set   whenever `value_rule_set_id` is present, even with `value_rules_applied` false,   so echoing stored state while asking to detach would silently keep the bid   adjustments live. - Eligibility: only ad sets on `LOWEST_COST_WITHOUT_CAP` or `COST_CAP`. Meta   rejects the rest server-side. - Read back with `GET /v1/ads/ad-sets/{adSetId}?fields=value_rule_set_id`. Meta   does not document `value_rules_applied` as a readable ad-set field, so the   boolean cannot be read back.  Bid strategy compatibility (per Meta's spec): - `LOWEST_COST_WITHOUT_CAP`: no `bidAmount`, no `roasAverageFloor`. - `LOWEST_COST_WITH_BID_CAP` / `COST_CAP`: `bidAmount` REQUIRED (whole currency units). - `LOWEST_COST_WITH_MIN_ROAS`: `roasAverageFloor` REQUIRED (decimal multiplier, e.g. 2.0 = 2.0x ROAS). - Meta only: send `bidAmount` WITHOUT `bidStrategy` to change the cap amount on an ad set   under a COST_CAP / LOWEST_COST_WITH_BID_CAP parent campaign, leaving the strategy itself   (inherited from the campaign) untouched. `roasAverageFloor` without `bidStrategy` is   rejected (it has no meaning outside LOWEST_COST_WITH_MIN_ROAS).  Delivery settings are validated by Meta against the campaign objective; incompatible combinations (e.g. a billingEvent the optimization goal doesn't allow) surface as 400s from Meta.  When updating `budget` on an ABO campaign: if the parent campaign is CBO, the response is 409 with code BUDGET_LEVEL_MISMATCH. Route to PUT /v1/ads/campaigns/{campaignId} instead.  `status` behaves exactly as PUT /v1/ads/ad-sets/{adSetId}/status describes, including which child ads each platform writes with the ad set and how `statusUpdated` / `statusSkipped` are counted against the ads' live switches.
 
 ### Example
 
@@ -3501,7 +3509,7 @@ updateAdSetStatus($ad_set_id, $update_ad_campaign_status_request): \Zernio\Model
 
 Pause or resume a single ad set
 
-Ad-set-scoped pause/resume (doesn't touch sibling ad sets). Thin wrapper over PUT /v1/ads/ad-sets/{adSetId} for callers that only want the status toggle and prefer a symmetric URL to /v1/ads/campaigns/{campaignId}/status.  Writes the ad set's own on/off switch on every platform (Meta `configured_status`, TikTok ad group `operation_status`, Google ad group status, LinkedIn campaign, Pinterest ad group, X line item, OpenAI ad group), whatever delivery status its ads report: an ad still in review or paused by its campaign does not block it. The echoed `status` is the confirmation that it landed. On TikTok, Pinterest and OpenAI the ads whose own switch is not yet in the target state are flipped with it.  `updated` / `skipped` describe only the ads whose own stored status CHANGED alongside the switch, so `updated: 0` is a normal successful response. See `skippedReasons` for which of the three cases applies (terminal, already in the target state, or switched on but not yet delivering).  A campaign created paused needs its campaign resumed as well: pair this with PUT /v1/ads/campaigns/{campaignId}/status.
+Ad-set-scoped pause/resume (doesn't touch sibling ad sets). Thin wrapper over PUT /v1/ads/ad-sets/{adSetId} for callers that only want the status toggle and prefer a symmetric URL to /v1/ads/campaigns/{campaignId}/status.  Writes the ad set's own on/off switch on every platform (Meta `configured_status`, TikTok ad group `operation_status`, Google ad group status, LinkedIn campaign, Pinterest ad group, X line item, OpenAI ad group), whatever delivery status its ads report: an ad still in review or paused by its campaign does not block it. The echoed `status` is the confirmation that it landed.  **What the write touches (current semantics, per platform).** On TikTok the ad group AND every ad under it that is not in a terminal status (rejected, completed, cancelled) are written to the target state, on pause and on resume alike, so a resume also switches those ads on. Pinterest and ChatGPT (OpenAI) do the same with their ads. On Meta, Google, LinkedIn (campaign) and X (line item) only the ad set's own switch is written and each ad keeps its own switch.  **Counts and readback.** Before the write, each ad's own switch is read live from the platform (up to 20 ads; beyond that the stored switch is used), and `updated` / `skipped` are computed against that live state, not against a stored switch a change in the platform's UI may have left stale. After the write each ad's own switch and delivery status are read again and stored, and the ad set switch is re-read and stored, so an immediate GET returns what the platform now reports.  `updated` / `skipped` describe only the ads whose own status changed alongside the switch, so `updated: 0` is a normal successful response. See `skippedReasons` for which of the three cases applies (terminal, own switch already in the target state, or switched on but not yet delivering).  A campaign created paused needs its campaign resumed as well: pair this with PUT /v1/ads/campaigns/{campaignId}/status.
 
 ### Example
 
