@@ -5313,9 +5313,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ChangeCommerceCollectionChannels200ResponseTest.php
-test/Model/ChangeCommerceProductChannels200ResponseTest.php
-test/Model/ChangeCommerceProductChannelsRequestTest.php
-test/Model/DeleteCommerceProductMetafields200ResponseTest.php
-test/Model/ListCommerceProductMetafields200ResponseTest.php
-test/Model/SetCommerceProductMetafieldsRequestTest.php
