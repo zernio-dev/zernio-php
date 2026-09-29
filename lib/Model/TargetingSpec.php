@@ -1095,7 +1095,7 @@ class TargetingSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets behaviors
      *
-     * @param \Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]|null $behaviors Behaviour entities from /v1/ads/targeting/search?dimension=behavior. Supported on Meta and TikTok.
+     * @param \Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]|null $behaviors Behaviour entities from /v1/ads/targeting/search?dimension=behavior. Supported on Meta only (TikTok behaviours are rejected with a 400).
      *
      * @return self
      */

@@ -401,7 +401,7 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
     /**
      * Sets type
      *
-     * @param string $type What the result is (e.g. city, region, country, zip, metro, location, interest, behavior, income, industry, jobFunction, seniority, companySize).
+     * @param string $type What the result is. Equals the requested dimension (interest, behavior, income, language, workPosition, workEmployer, workIndustry, industry, jobFunction, seniority, companySize), or the location level for geo (country, region, city, zip, metro, ...).
      *
      * @return self
      */

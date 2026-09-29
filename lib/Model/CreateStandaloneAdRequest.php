@@ -3432,7 +3432,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets behaviors
      *
-     * @param \Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]|null $behaviors Behaviour entities from /v1/ads/targeting/search?dimension=behavior. Supported on Meta and TikTok. Each must include id.
+     * @param \Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]|null $behaviors Behaviour entities from /v1/ads/targeting/search?dimension=behavior. Supported on Meta only (TikTok behaviours are rejected with a 400). Each must include id.
      *
      * @return self
      */

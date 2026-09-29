@@ -5043,6 +5043,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetMessengerGetStarted200ResponseDataTest.php
-test/Model/GetMessengerGetStarted200ResponseTest.php
-test/Model/SetMessengerGetStartedRequestTest.php
