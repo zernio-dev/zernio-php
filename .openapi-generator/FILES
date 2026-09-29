@@ -677,6 +677,7 @@ docs/Model/CtwaAdRequestBodyCreativesInner.md
 docs/Model/CtwaAdRequestBodyCreativesInnerVideo.md
 docs/Model/CtwaAdRequestBodyCreativesInnerWelcomeMessage.md
 docs/Model/CtwaAdRequestBodyPlacements.md
+docs/Model/CtwaAdRequestBodyPlacesInner.md
 docs/Model/CtwaAdRequestBodyRegionsInner.md
 docs/Model/CtwaAdRequestBodyVideo.md
 docs/Model/CtwaAdRequestBodyWelcomeMessage.md
@@ -2139,7 +2140,6 @@ docs/Model/TargetingSpecCitiesInnerOneOf.md
 docs/Model/TargetingSpecCustomLocationsInner.md
 docs/Model/TargetingSpecExcludedLocations.md
 docs/Model/TargetingSpecExcludedLocationsCitiesInner.md
-docs/Model/TargetingSpecExcludedLocationsPlacesInner.md
 docs/Model/TelegramPlatformData.md
 docs/Model/TestWebhookRequest.md
 docs/Model/ThreadsPlatformData.md
@@ -3333,6 +3333,7 @@ lib/Model/CtwaAdRequestBodyCreativesInner.php
 lib/Model/CtwaAdRequestBodyCreativesInnerVideo.php
 lib/Model/CtwaAdRequestBodyCreativesInnerWelcomeMessage.php
 lib/Model/CtwaAdRequestBodyPlacements.php
+lib/Model/CtwaAdRequestBodyPlacesInner.php
 lib/Model/CtwaAdRequestBodyRegionsInner.php
 lib/Model/CtwaAdRequestBodyVideo.php
 lib/Model/CtwaAdRequestBodyWelcomeMessage.php
@@ -4796,7 +4797,6 @@ lib/Model/TargetingSpecCitiesInnerOneOf.php
 lib/Model/TargetingSpecCustomLocationsInner.php
 lib/Model/TargetingSpecExcludedLocations.php
 lib/Model/TargetingSpecExcludedLocationsCitiesInner.php
-lib/Model/TargetingSpecExcludedLocationsPlacesInner.php
 lib/Model/TelegramPlatformData.php
 lib/Model/TestWebhookRequest.php
 lib/Model/ThreadsPlatformData.php
@@ -5313,3 +5313,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CtwaAdRequestBodyPlacesInnerTest.php
