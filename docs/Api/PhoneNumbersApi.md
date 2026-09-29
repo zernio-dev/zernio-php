@@ -345,7 +345,7 @@ try {
 ## `createPhoneNumberStockWatch()`
 
 ```php
-createPhoneNumberStockWatch($create_phone_number_stock_watch_request): \Zernio\Model\PhoneNumberStockWatch
+createPhoneNumberStockWatch($create_phone_number_stock_watch_request): \Zernio\Model\CreatePhoneNumberStockWatch200Response
 ```
 
 Watch an out-of-stock country
@@ -387,7 +387,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\PhoneNumberStockWatch**](../Model/PhoneNumberStockWatch.md)
+[**\Zernio\Model\CreatePhoneNumberStockWatch200Response**](../Model/CreatePhoneNumberStockWatch200Response.md)
 
 ### Authorization
 
