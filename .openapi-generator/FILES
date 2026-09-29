@@ -144,6 +144,8 @@ docs/Model/AddConversionAssociationsRequest.md
 docs/Model/AddDiscordMemberRole200Response.md
 docs/Model/AddImessageGroupParticipant200Response.md
 docs/Model/AddImessageGroupParticipantRequest.md
+docs/Model/AddImessageSandboxContact201Response.md
+docs/Model/AddImessageSandboxContactRequest.md
 docs/Model/AddMessageReaction200Response.md
 docs/Model/AddMessageReactionRequest.md
 docs/Model/AddRcsTestDevice201Response.md
@@ -1285,6 +1287,7 @@ docs/Model/HideInboxComment200Response.md
 docs/Model/HideInboxCommentRequest.md
 docs/Model/ImessageAudienceContact.md
 docs/Model/ImessageAudienceContactOptIn.md
+docs/Model/ImessageSandboxContact.md
 docs/Model/ImessageSender.md
 docs/Model/ImessageSenderLifecycle.md
 docs/Model/InboxMessageEditAttachment.md
@@ -1508,6 +1511,8 @@ docs/Model/ListHighDemandPeriods200Response.md
 docs/Model/ListImessageAudience200Response.md
 docs/Model/ListImessageAvailableNumbers200Response.md
 docs/Model/ListImessageAvailableNumbers200ResponseNumbersInner.md
+docs/Model/ListImessageSandboxContacts200Response.md
+docs/Model/ListImessageSandboxContacts200ResponseSandbox.md
 docs/Model/ListImessageSenderOrders200Response.md
 docs/Model/ListImessageSenders200Response.md
 docs/Model/ListInboxComments200Response.md
@@ -2795,6 +2800,8 @@ lib/Model/AddConversionAssociationsRequest.php
 lib/Model/AddDiscordMemberRole200Response.php
 lib/Model/AddImessageGroupParticipant200Response.php
 lib/Model/AddImessageGroupParticipantRequest.php
+lib/Model/AddImessageSandboxContact201Response.php
+lib/Model/AddImessageSandboxContactRequest.php
 lib/Model/AddMessageReaction200Response.php
 lib/Model/AddMessageReactionRequest.php
 lib/Model/AddRcsTestDevice201Response.php
@@ -3936,6 +3943,7 @@ lib/Model/HideInboxComment200Response.php
 lib/Model/HideInboxCommentRequest.php
 lib/Model/ImessageAudienceContact.php
 lib/Model/ImessageAudienceContactOptIn.php
+lib/Model/ImessageSandboxContact.php
 lib/Model/ImessageSender.php
 lib/Model/ImessageSenderLifecycle.php
 lib/Model/InboxMessageEditAttachment.php
@@ -4159,6 +4167,8 @@ lib/Model/ListHighDemandPeriods200Response.php
 lib/Model/ListImessageAudience200Response.php
 lib/Model/ListImessageAvailableNumbers200Response.php
 lib/Model/ListImessageAvailableNumbers200ResponseNumbersInner.php
+lib/Model/ListImessageSandboxContacts200Response.php
+lib/Model/ListImessageSandboxContacts200ResponseSandbox.php
 lib/Model/ListImessageSenderOrders200Response.php
 lib/Model/ListImessageSenders200Response.php
 lib/Model/ListInboxComments200Response.php
@@ -5303,3 +5313,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AddImessageSandboxContact201ResponseTest.php
+test/Model/AddImessageSandboxContactRequestTest.php
+test/Model/ImessageSandboxContactTest.php
+test/Model/ListImessageSandboxContacts200ResponseSandboxTest.php
+test/Model/ListImessageSandboxContacts200ResponseTest.php

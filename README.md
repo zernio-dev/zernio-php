@@ -634,6 +634,7 @@ Class | Method | HTTP request | Description
 *GMBVerificationsApi* | [**getGoogleBusinessVerifications**](docs/Api/GMBVerificationsApi.md#getgooglebusinessverifications) | **GET** /v1/accounts/{accountId}/gmb-verifications | Get verification state
 *GMBVerificationsApi* | [**startGoogleBusinessVerification**](docs/Api/GMBVerificationsApi.md#startgooglebusinessverification) | **POST** /v1/accounts/{accountId}/gmb-verifications | Start a verification
 *IMessageApi* | [**addImessageGroupParticipant**](docs/Api/IMessageApi.md#addimessagegroupparticipant) | **POST** /v1/imessage/groups/{conversationId}/participants | Add a participant to an iMessage group
+*IMessageApi* | [**addImessageSandboxContact**](docs/Api/IMessageApi.md#addimessagesandboxcontact) | **POST** /v1/imessage/sandbox/contacts | Add an iMessage sandbox contact
 *IMessageApi* | [**cancelImessageSender**](docs/Api/IMessageApi.md#cancelimessagesender) | **DELETE** /v1/imessage/senders/{senderId} | Cancel an iMessage sender
 *IMessageApi* | [**createImessageGroup**](docs/Api/IMessageApi.md#createimessagegroup) | **POST** /v1/imessage/groups | Start an iMessage group chat
 *IMessageApi* | [**createImessageOptInLink**](docs/Api/IMessageApi.md#createimessageoptinlink) | **POST** /v1/imessage/senders/{senderId}/opt-in-links | Create a tracked iMessage opt-in link
@@ -641,11 +642,13 @@ Class | Method | HTTP request | Description
 *IMessageApi* | [**getImessageSender**](docs/Api/IMessageApi.md#getimessagesender) | **GET** /v1/imessage/senders/{senderId} | Get iMessage sender status
 *IMessageApi* | [**listImessageAudience**](docs/Api/IMessageApi.md#listimessageaudience) | **GET** /v1/imessage/audience | List iMessage audience
 *IMessageApi* | [**listImessageAvailableNumbers**](docs/Api/IMessageApi.md#listimessageavailablenumbers) | **GET** /v1/imessage/senders/available-numbers | List instantly available iMessage numbers
+*IMessageApi* | [**listImessageSandboxContacts**](docs/Api/IMessageApi.md#listimessagesandboxcontacts) | **GET** /v1/imessage/sandbox/contacts | List iMessage sandbox contacts
 *IMessageApi* | [**listImessageSenderOrders**](docs/Api/IMessageApi.md#listimessagesenderorders) | **GET** /v1/imessage/senders/order | List iMessage sender orders
 *IMessageApi* | [**listImessageSenders**](docs/Api/IMessageApi.md#listimessagesenders) | **GET** /v1/imessage/senders | List iMessage senders
 *IMessageApi* | [**orderImessageSender**](docs/Api/IMessageApi.md#orderimessagesender) | **POST** /v1/imessage/senders/order | Order a new iMessage sender
 *IMessageApi* | [**registerImessageSender**](docs/Api/IMessageApi.md#registerimessagesender) | **POST** /v1/imessage/senders | Register an iMessage sender
 *IMessageApi* | [**removeImessageGroupParticipant**](docs/Api/IMessageApi.md#removeimessagegroupparticipant) | **DELETE** /v1/imessage/groups/{conversationId}/participants | Remove a participant from an iMessage group
+*IMessageApi* | [**removeImessageSandboxContact**](docs/Api/IMessageApi.md#removeimessagesandboxcontact) | **DELETE** /v1/imessage/sandbox/contacts/{contactId} | Remove an iMessage sandbox contact
 *IMessageApi* | [**reserveImessageAvailableNumber**](docs/Api/IMessageApi.md#reserveimessageavailablenumber) | **POST** /v1/imessage/senders/available-numbers/{numberId}/reserve | Reserve an available iMessage number
 *IMessageApi* | [**setImessageSubscription**](docs/Api/IMessageApi.md#setimessagesubscription) | **POST** /v1/imessage/audience/subscription | Subscribe or opt out an iMessage contact
 *IMessageApi* | [**updateImessageGroup**](docs/Api/IMessageApi.md#updateimessagegroup) | **PATCH** /v1/imessage/groups/{conversationId} | Rename an iMessage group or change its photo
@@ -1073,6 +1076,8 @@ Class | Method | HTTP request | Description
 - [AddDiscordMemberRole200Response](docs/Model/AddDiscordMemberRole200Response.md)
 - [AddImessageGroupParticipant200Response](docs/Model/AddImessageGroupParticipant200Response.md)
 - [AddImessageGroupParticipantRequest](docs/Model/AddImessageGroupParticipantRequest.md)
+- [AddImessageSandboxContact201Response](docs/Model/AddImessageSandboxContact201Response.md)
+- [AddImessageSandboxContactRequest](docs/Model/AddImessageSandboxContactRequest.md)
 - [AddMessageReaction200Response](docs/Model/AddMessageReaction200Response.md)
 - [AddMessageReactionRequest](docs/Model/AddMessageReactionRequest.md)
 - [AddRcsTestDevice201Response](docs/Model/AddRcsTestDevice201Response.md)
@@ -2214,6 +2219,7 @@ Class | Method | HTTP request | Description
 - [HideInboxCommentRequest](docs/Model/HideInboxCommentRequest.md)
 - [ImessageAudienceContact](docs/Model/ImessageAudienceContact.md)
 - [ImessageAudienceContactOptIn](docs/Model/ImessageAudienceContactOptIn.md)
+- [ImessageSandboxContact](docs/Model/ImessageSandboxContact.md)
 - [ImessageSender](docs/Model/ImessageSender.md)
 - [ImessageSenderLifecycle](docs/Model/ImessageSenderLifecycle.md)
 - [InboxMessageEditAttachment](docs/Model/InboxMessageEditAttachment.md)
@@ -2437,6 +2443,8 @@ Class | Method | HTTP request | Description
 - [ListImessageAudience200Response](docs/Model/ListImessageAudience200Response.md)
 - [ListImessageAvailableNumbers200Response](docs/Model/ListImessageAvailableNumbers200Response.md)
 - [ListImessageAvailableNumbers200ResponseNumbersInner](docs/Model/ListImessageAvailableNumbers200ResponseNumbersInner.md)
+- [ListImessageSandboxContacts200Response](docs/Model/ListImessageSandboxContacts200Response.md)
+- [ListImessageSandboxContacts200ResponseSandbox](docs/Model/ListImessageSandboxContacts200ResponseSandbox.md)
 - [ListImessageSenderOrders200Response](docs/Model/ListImessageSenderOrders200Response.md)
 - [ListImessageSenders200Response](docs/Model/ListImessageSenders200Response.md)
 - [ListInboxComments200Response](docs/Model/ListInboxComments200Response.md)
@@ -3610,6 +3618,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.149.0`
+- API version: `1.150.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

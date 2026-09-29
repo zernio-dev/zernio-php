@@ -7,6 +7,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**addImessageGroupParticipant()**](IMessageApi.md#addImessageGroupParticipant) | **POST** /v1/imessage/groups/{conversationId}/participants | Add a participant to an iMessage group |
+| [**addImessageSandboxContact()**](IMessageApi.md#addImessageSandboxContact) | **POST** /v1/imessage/sandbox/contacts | Add an iMessage sandbox contact |
 | [**cancelImessageSender()**](IMessageApi.md#cancelImessageSender) | **DELETE** /v1/imessage/senders/{senderId} | Cancel an iMessage sender |
 | [**createImessageGroup()**](IMessageApi.md#createImessageGroup) | **POST** /v1/imessage/groups | Start an iMessage group chat |
 | [**createImessageOptInLink()**](IMessageApi.md#createImessageOptInLink) | **POST** /v1/imessage/senders/{senderId}/opt-in-links | Create a tracked iMessage opt-in link |
@@ -14,11 +15,13 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getImessageSender()**](IMessageApi.md#getImessageSender) | **GET** /v1/imessage/senders/{senderId} | Get iMessage sender status |
 | [**listImessageAudience()**](IMessageApi.md#listImessageAudience) | **GET** /v1/imessage/audience | List iMessage audience |
 | [**listImessageAvailableNumbers()**](IMessageApi.md#listImessageAvailableNumbers) | **GET** /v1/imessage/senders/available-numbers | List instantly available iMessage numbers |
+| [**listImessageSandboxContacts()**](IMessageApi.md#listImessageSandboxContacts) | **GET** /v1/imessage/sandbox/contacts | List iMessage sandbox contacts |
 | [**listImessageSenderOrders()**](IMessageApi.md#listImessageSenderOrders) | **GET** /v1/imessage/senders/order | List iMessage sender orders |
 | [**listImessageSenders()**](IMessageApi.md#listImessageSenders) | **GET** /v1/imessage/senders | List iMessage senders |
 | [**orderImessageSender()**](IMessageApi.md#orderImessageSender) | **POST** /v1/imessage/senders/order | Order a new iMessage sender |
 | [**registerImessageSender()**](IMessageApi.md#registerImessageSender) | **POST** /v1/imessage/senders | Register an iMessage sender |
 | [**removeImessageGroupParticipant()**](IMessageApi.md#removeImessageGroupParticipant) | **DELETE** /v1/imessage/groups/{conversationId}/participants | Remove a participant from an iMessage group |
+| [**removeImessageSandboxContact()**](IMessageApi.md#removeImessageSandboxContact) | **DELETE** /v1/imessage/sandbox/contacts/{contactId} | Remove an iMessage sandbox contact |
 | [**reserveImessageAvailableNumber()**](IMessageApi.md#reserveImessageAvailableNumber) | **POST** /v1/imessage/senders/available-numbers/{numberId}/reserve | Reserve an available iMessage number |
 | [**setImessageSubscription()**](IMessageApi.md#setImessageSubscription) | **POST** /v1/imessage/audience/subscription | Subscribe or opt out an iMessage contact |
 | [**updateImessageGroup()**](IMessageApi.md#updateImessageGroup) | **PATCH** /v1/imessage/groups/{conversationId} | Rename an iMessage group or change its photo |
@@ -73,6 +76,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\AddImessageGroupParticipant200Response**](../Model/AddImessageGroupParticipant200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `addImessageSandboxContact()`
+
+```php
+addImessageSandboxContact($add_imessage_sandbox_contact_request): \Zernio\Model\AddImessageSandboxContact201Response
+```
+
+Add an iMessage sandbox contact
+
+Adds your own phone (E.164) or Apple ID email. The contact starts as pending; it becomes active when its joinText arrives at the sandbox line from that handle (joinLink opens Messages with it prefilled). Adding a handle that is already on your list returns it unchanged.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\IMessageApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$add_imessage_sandbox_contact_request = new \Zernio\Model\AddImessageSandboxContactRequest(); // \Zernio\Model\AddImessageSandboxContactRequest
+
+try {
+    $result = $apiInstance->addImessageSandboxContact($add_imessage_sandbox_contact_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling IMessageApi->addImessageSandboxContact: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **add_imessage_sandbox_contact_request** | [**\Zernio\Model\AddImessageSandboxContactRequest**](../Model/AddImessageSandboxContactRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\AddImessageSandboxContact201Response**](../Model/AddImessageSandboxContact201Response.md)
 
 ### Authorization
 
@@ -519,6 +582,63 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listImessageSandboxContacts()`
+
+```php
+listImessageSandboxContacts(): \Zernio\Model\ListImessageSandboxContacts200Response
+```
+
+List iMessage sandbox contacts
+
+The shared sandbox line and your sandbox contacts. The sandbox lets you test iMessage without ordering a sender: add your own phone or Apple ID email, send its join code to the sandbox line from that phone, and your messages reach your inbox and webhooks. Replies are allowed for 24 hours after each message from the contact. Group chats and starting conversations are not supported.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\IMessageApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listImessageSandboxContacts();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling IMessageApi->listImessageSandboxContacts: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Zernio\Model\ListImessageSandboxContacts200Response**](../Model/ListImessageSandboxContacts200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listImessageSenderOrders()`
 
 ```php
@@ -806,6 +926,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\AddImessageGroupParticipant200Response**](../Model/AddImessageGroupParticipant200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `removeImessageSandboxContact()`
+
+```php
+removeImessageSandboxContact($contact_id): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
+```
+
+Remove an iMessage sandbox contact
+
+Removes the contact and its sandbox conversation. Messages from that handle to the sandbox line are no longer delivered to you.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\IMessageApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$contact_id = 'contact_id_example'; // string
+
+try {
+    $result = $apiInstance->removeImessageSandboxContact($contact_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling IMessageApi->removeImessageSandboxContact: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **contact_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
 
 ### Authorization
 
