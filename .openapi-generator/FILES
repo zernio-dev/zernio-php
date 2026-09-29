@@ -5313,8 +5313,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AddImessageSandboxContact201ResponseTest.php
-test/Model/AddImessageSandboxContactRequestTest.php
-test/Model/ImessageSandboxContactTest.php
-test/Model/ListImessageSandboxContacts200ResponseSandboxTest.php
-test/Model/ListImessageSandboxContacts200ResponseTest.php
