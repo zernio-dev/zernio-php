@@ -12,6 +12,6 @@ Name | Type | Description | Notes
 **compare_at_price** | **string** | Strike-through price; null when the variant is not on sale. | [optional]
 **inventory_quantity** | **int** | Units on hand across locations; null when inventory is not tracked. | [optional]
 **available_for_sale** | **bool** |  | [optional]
-**selected_options** | [**\Zernio\Model\ProductVariantSelectedOptionsInner[]**](ProductVariantSelectedOptionsInner.md) |  | [optional]
+**selected_options** | [**\Zernio\Model\CreateCommerceProductVariantsRequestVariantsInnerOptionsInner[]**](CreateCommerceProductVariantsRequestVariantsInnerOptionsInner.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

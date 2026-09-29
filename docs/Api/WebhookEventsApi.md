@@ -21,6 +21,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onCallPermissionRequest()**](WebhookEventsApi.md#onCallPermissionRequest) | **POST** /call.permission_request | Call permission request reply event |
 | [**onCallReceived()**](WebhookEventsApi.md#onCallReceived) | **POST** /call.received | Call received event |
 | [**onCommentReceived()**](WebhookEventsApi.md#onCommentReceived) | **POST** /comment.received | Comment received event |
+| [**onCommerceProductCreated()**](WebhookEventsApi.md#onCommerceProductCreated) | **POST** /commerce.product.created | Commerce product created event |
+| [**onCommerceProductDeleted()**](WebhookEventsApi.md#onCommerceProductDeleted) | **POST** /commerce.product.deleted | Commerce product deleted event |
+| [**onCommerceProductUpdated()**](WebhookEventsApi.md#onCommerceProductUpdated) | **POST** /commerce.product.updated | Commerce product updated event |
 | [**onConversationControlChanged()**](WebhookEventsApi.md#onConversationControlChanged) | **POST** /conversation.control_changed | Conversation control changed event |
 | [**onConversationStarted()**](WebhookEventsApi.md#onConversationStarted) | **POST** /conversation.started | Conversation started event |
 | [**onLeadReceived()**](WebhookEventsApi.md#onLeadReceived) | **POST** /lead.received | Lead received event |
@@ -936,6 +939,183 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_comment** | [**\Zernio\Model\WebhookPayloadComment**](../Model/WebhookPayloadComment.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCommerceProductCreated()`
+
+```php
+onCommerceProductCreated($webhook_payload_commerce_product)
+```
+
+Commerce product created event
+
+Fired when a product is created on a connected store. The payload carries identifiers only; read the product with `GET /v1/commerce/products/{productId}?accountId=...`. Fired once per Zernio account connected to the store.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_commerce_product = new \Zernio\Model\WebhookPayloadCommerceProduct(); // \Zernio\Model\WebhookPayloadCommerceProduct
+
+try {
+    $apiInstance->onCommerceProductCreated($webhook_payload_commerce_product);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCommerceProductCreated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_commerce_product** | [**\Zernio\Model\WebhookPayloadCommerceProduct**](../Model/WebhookPayloadCommerceProduct.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCommerceProductDeleted()`
+
+```php
+onCommerceProductDeleted($webhook_payload_commerce_product)
+```
+
+Commerce product deleted event
+
+Fired when a product is deleted from a connected store. `status` and `platformStatus` are null. The payload carries identifiers only; read the product with `GET /v1/commerce/products/{productId}?accountId=...`. Fired once per Zernio account connected to the store.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_commerce_product = new \Zernio\Model\WebhookPayloadCommerceProduct(); // \Zernio\Model\WebhookPayloadCommerceProduct
+
+try {
+    $apiInstance->onCommerceProductDeleted($webhook_payload_commerce_product);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCommerceProductDeleted: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_commerce_product** | [**\Zernio\Model\WebhookPayloadCommerceProduct**](../Model/WebhookPayloadCommerceProduct.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCommerceProductUpdated()`
+
+```php
+onCommerceProductUpdated($webhook_payload_commerce_product)
+```
+
+Commerce product updated event
+
+Fired when a product on a connected store changes: its fields, status, variants or prices. The payload carries identifiers only; read the product with `GET /v1/commerce/products/{productId}?accountId=...`. Fired once per Zernio account connected to the store.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_commerce_product = new \Zernio\Model\WebhookPayloadCommerceProduct(); // \Zernio\Model\WebhookPayloadCommerceProduct
+
+try {
+    $apiInstance->onCommerceProductUpdated($webhook_payload_commerce_product);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCommerceProductUpdated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_commerce_product** | [**\Zernio\Model\WebhookPayloadCommerceProduct**](../Model/WebhookPayloadCommerceProduct.md)|  | |
 
 ### Return type
 

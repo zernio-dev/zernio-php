@@ -1,6 +1,6 @@
 # Zernio\ProductsApi
 
-Read and edit the product catalog on connected accounts. Currently supported for Shopify accounts (scopes read_products and write_products). Products are listed with their variants, options and images; edits cover the product&#39;s own fields (title, description, handle, tags, vendor, type, status, SEO) and variant prices. No product creation, inventory or orders. All data lives on the platform; Zernio proxies it and stores nothing.
+Deprecated: use the Commerce endpoints (&#x60;/v1/commerce/products&#x60;), which return the same catalog in the platform-neutral shape with prices that carry their currency. These endpoints keep working with their original response for existing integrations.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 

@@ -416,6 +416,80 @@ Class | Method | HTTP request | Description
 *CommentsApi* | [**unlikeInboxComment**](docs/Api/CommentsApi.md#unlikeinboxcomment) | **DELETE** /v1/inbox/comments/{postId}/{commentId}/like | Unlike comment
 *CommentsApi* | [**unlikePost**](docs/Api/CommentsApi.md#unlikepost) | **DELETE** /v1/inbox/posts/{postId}/like | Unlike post
 *CommentsApi* | [**unpinInboxComment**](docs/Api/CommentsApi.md#unpininboxcomment) | **DELETE** /v1/inbox/comments/{postId}/{commentId}/pin | Unpin comment
+*CommerceApi* | [**addCommerceDiscountCodes**](docs/Api/CommerceApi.md#addcommercediscountcodes) | **POST** /v1/commerce/discounts/{discountId}/codes | Add codes to a discount
+*CommerceApi* | [**addCommerceMarketingEngagement**](docs/Api/CommerceApi.md#addcommercemarketingengagement) | **POST** /v1/commerce/marketing-activities/{remoteId}/engagements | Report daily engagement
+*CommerceApi* | [**addCommerceProductImages**](docs/Api/CommerceApi.md#addcommerceproductimages) | **POST** /v1/commerce/products/{productId}/images | Add images
+*CommerceApi* | [**changeCollectionChannels**](docs/Api/CommerceApi.md#changecollectionchannels) | **POST** /v1/commerce/collections/{collectionId}/channels | Publish or unpublish a collection
+*CommerceApi* | [**changeCommerceCollectionProducts**](docs/Api/CommerceApi.md#changecommercecollectionproducts) | **POST** /v1/commerce/collections/{collectionId}/products | Add or remove products in a collection
+*CommerceApi* | [**changeCommerceInventory**](docs/Api/CommerceApi.md#changecommerceinventory) | **POST** /v1/commerce/products/{productId}/inventory | Set or adjust stock
+*CommerceApi* | [**changeCommerceProductState**](docs/Api/CommerceApi.md#changecommerceproductstate) | **POST** /v1/commerce/products/state | Activate, deactivate, archive or delete products
+*CommerceApi* | [**changeCommerceProductTags**](docs/Api/CommerceApi.md#changecommerceproducttags) | **POST** /v1/commerce/products/tags | Add or remove tags in bulk
+*CommerceApi* | [**changeProductChannels**](docs/Api/CommerceApi.md#changeproductchannels) | **POST** /v1/commerce/products/{productId}/channels | Publish or unpublish a product
+*CommerceApi* | [**createCommerceCatalogSync**](docs/Api/CommerceApi.md#createcommercecatalogsync) | **POST** /v1/commerce/catalog-syncs | Sync a store into a Meta catalog
+*CommerceApi* | [**createCommerceCollection**](docs/Api/CommerceApi.md#createcommercecollection) | **POST** /v1/commerce/collections | Create a collection
+*CommerceApi* | [**createCommerceDiscount**](docs/Api/CommerceApi.md#createcommercediscount) | **POST** /v1/commerce/discounts | Create a discount
+*CommerceApi* | [**createCommerceMenu**](docs/Api/CommerceApi.md#createcommercemenu) | **POST** /v1/commerce/menus | Create a navigation menu
+*CommerceApi* | [**createCommerceMetaobject**](docs/Api/CommerceApi.md#createcommercemetaobject) | **POST** /v1/commerce/metaobjects | Create a metaobject
+*CommerceApi* | [**createCommercePage**](docs/Api/CommerceApi.md#createcommercepage) | **POST** /v1/commerce/pages | Create a page
+*CommerceApi* | [**createCommerceProduct**](docs/Api/CommerceApi.md#createcommerceproduct) | **POST** /v1/commerce/products | Create a product
+*CommerceApi* | [**createCommerceProductOptions**](docs/Api/CommerceApi.md#createcommerceproductoptions) | **POST** /v1/commerce/products/{productId}/options | Add options
+*CommerceApi* | [**createCommerceProductVariants**](docs/Api/CommerceApi.md#createcommerceproductvariants) | **POST** /v1/commerce/products/{productId}/variants | Add variants
+*CommerceApi* | [**createCommerceRedirect**](docs/Api/CommerceApi.md#createcommerceredirect) | **POST** /v1/commerce/redirects | Create a URL redirect
+*CommerceApi* | [**deleteCollectionMetafields**](docs/Api/CommerceApi.md#deletecollectionmetafields) | **DELETE** /v1/commerce/collections/{collectionId}/metafields | Delete collection metafields
+*CommerceApi* | [**deleteCommerceCatalogSync**](docs/Api/CommerceApi.md#deletecommercecatalogsync) | **DELETE** /v1/commerce/catalog-syncs/{syncId} | Stop a catalog sync
+*CommerceApi* | [**deleteCommerceCollection**](docs/Api/CommerceApi.md#deletecommercecollection) | **DELETE** /v1/commerce/collections/{collectionId} | Delete a collection
+*CommerceApi* | [**deleteCommerceDiscount**](docs/Api/CommerceApi.md#deletecommercediscount) | **DELETE** /v1/commerce/discounts/{discountId} | Delete a discount
+*CommerceApi* | [**deleteCommerceMarketingActivity**](docs/Api/CommerceApi.md#deletecommercemarketingactivity) | **DELETE** /v1/commerce/marketing-activities/{remoteId} | Delete a marketing activity
+*CommerceApi* | [**deleteCommerceMenu**](docs/Api/CommerceApi.md#deletecommercemenu) | **DELETE** /v1/commerce/menus/{menuId} | Delete a navigation menu
+*CommerceApi* | [**deleteCommerceMetaobject**](docs/Api/CommerceApi.md#deletecommercemetaobject) | **DELETE** /v1/commerce/metaobjects/{metaobjectId} | Delete a metaobject
+*CommerceApi* | [**deleteCommercePage**](docs/Api/CommerceApi.md#deletecommercepage) | **DELETE** /v1/commerce/pages/{pageId} | Delete a page
+*CommerceApi* | [**deleteCommercePriceListPrices**](docs/Api/CommerceApi.md#deletecommercepricelistprices) | **DELETE** /v1/commerce/price-lists/{priceListId}/prices | Remove fixed prices
+*CommerceApi* | [**deleteCommerceProductOptions**](docs/Api/CommerceApi.md#deletecommerceproductoptions) | **DELETE** /v1/commerce/products/{productId}/options | Delete options
+*CommerceApi* | [**deleteCommerceProductVariants**](docs/Api/CommerceApi.md#deletecommerceproductvariants) | **DELETE** /v1/commerce/products/{productId}/variants | Delete variants
+*CommerceApi* | [**deleteCommerceRedirect**](docs/Api/CommerceApi.md#deletecommerceredirect) | **DELETE** /v1/commerce/redirects/{redirectId} | Delete a URL redirect
+*CommerceApi* | [**deleteProductMetafields**](docs/Api/CommerceApi.md#deleteproductmetafields) | **DELETE** /v1/commerce/products/{productId}/metafields | Delete product metafields
+*CommerceApi* | [**duplicateCommerceProduct**](docs/Api/CommerceApi.md#duplicatecommerceproduct) | **POST** /v1/commerce/products/{productId}/duplicate | Duplicate a product
+*CommerceApi* | [**getCommerceCatalogSync**](docs/Api/CommerceApi.md#getcommercecatalogsync) | **GET** /v1/commerce/catalog-syncs/{syncId} | Get a catalog sync
+*CommerceApi* | [**getCommerceCollection**](docs/Api/CommerceApi.md#getcommercecollection) | **GET** /v1/commerce/collections/{collectionId} | Get a collection
+*CommerceApi* | [**getCommerceDiscount**](docs/Api/CommerceApi.md#getcommercediscount) | **GET** /v1/commerce/discounts/{discountId} | Get a discount
+*CommerceApi* | [**getCommerceMenu**](docs/Api/CommerceApi.md#getcommercemenu) | **GET** /v1/commerce/menus/{menuId} | Get a navigation menu
+*CommerceApi* | [**getCommerceMetaobject**](docs/Api/CommerceApi.md#getcommercemetaobject) | **GET** /v1/commerce/metaobjects/{metaobjectId} | Get a metaobject
+*CommerceApi* | [**getCommercePage**](docs/Api/CommerceApi.md#getcommercepage) | **GET** /v1/commerce/pages/{pageId} | Get a page
+*CommerceApi* | [**getCommerceProduct**](docs/Api/CommerceApi.md#getcommerceproduct) | **GET** /v1/commerce/products/{productId} | Get a product
+*CommerceApi* | [**getCommerceStore**](docs/Api/CommerceApi.md#getcommercestore) | **GET** /v1/commerce/store | Get a store
+*CommerceApi* | [**listCollectionMetafields**](docs/Api/CommerceApi.md#listcollectionmetafields) | **GET** /v1/commerce/collections/{collectionId}/metafields | List collection metafields
+*CommerceApi* | [**listCommerceCatalogSyncs**](docs/Api/CommerceApi.md#listcommercecatalogsyncs) | **GET** /v1/commerce/catalog-syncs | List catalog syncs
+*CommerceApi* | [**listCommerceChannels**](docs/Api/CommerceApi.md#listcommercechannels) | **GET** /v1/commerce/channels | List sales channels
+*CommerceApi* | [**listCommerceCollections**](docs/Api/CommerceApi.md#listcommercecollections) | **GET** /v1/commerce/collections | List collections
+*CommerceApi* | [**listCommerceDiscounts**](docs/Api/CommerceApi.md#listcommercediscounts) | **GET** /v1/commerce/discounts | List discounts
+*CommerceApi* | [**listCommerceInventory**](docs/Api/CommerceApi.md#listcommerceinventory) | **GET** /v1/commerce/inventory | Get a product&#39;s stock
+*CommerceApi* | [**listCommerceLocations**](docs/Api/CommerceApi.md#listcommercelocations) | **GET** /v1/commerce/locations | List locations
+*CommerceApi* | [**listCommerceMarkets**](docs/Api/CommerceApi.md#listcommercemarkets) | **GET** /v1/commerce/markets | List markets
+*CommerceApi* | [**listCommerceMenus**](docs/Api/CommerceApi.md#listcommercemenus) | **GET** /v1/commerce/menus | List navigation menus
+*CommerceApi* | [**listCommerceMetaobjectDefinitions**](docs/Api/CommerceApi.md#listcommercemetaobjectdefinitions) | **GET** /v1/commerce/metaobject-definitions | List metaobject definitions
+*CommerceApi* | [**listCommerceMetaobjects**](docs/Api/CommerceApi.md#listcommercemetaobjects) | **GET** /v1/commerce/metaobjects | List metaobjects of a type
+*CommerceApi* | [**listCommercePages**](docs/Api/CommerceApi.md#listcommercepages) | **GET** /v1/commerce/pages | List pages
+*CommerceApi* | [**listCommercePriceLists**](docs/Api/CommerceApi.md#listcommercepricelists) | **GET** /v1/commerce/price-lists | List price lists
+*CommerceApi* | [**listCommerceProducts**](docs/Api/CommerceApi.md#listcommerceproducts) | **GET** /v1/commerce/products | List products
+*CommerceApi* | [**listCommerceRedirects**](docs/Api/CommerceApi.md#listcommerceredirects) | **GET** /v1/commerce/redirects | List URL redirects
+*CommerceApi* | [**listProductMetafields**](docs/Api/CommerceApi.md#listproductmetafields) | **GET** /v1/commerce/products/{productId}/metafields | List product metafields
+*CommerceApi* | [**removeCommerceProductImages**](docs/Api/CommerceApi.md#removecommerceproductimages) | **DELETE** /v1/commerce/products/{productId}/images | Remove images
+*CommerceApi* | [**reorderCommerceCollectionProducts**](docs/Api/CommerceApi.md#reordercommercecollectionproducts) | **POST** /v1/commerce/collections/{collectionId}/reorder | Reorder products in a collection
+*CommerceApi* | [**reorderCommerceProductImages**](docs/Api/CommerceApi.md#reordercommerceproductimages) | **POST** /v1/commerce/products/{productId}/images/reorder | Reorder images
+*CommerceApi* | [**runCommerceCatalogSync**](docs/Api/CommerceApi.md#runcommercecatalogsync) | **POST** /v1/commerce/catalog-syncs/{syncId}/run | Run a catalog sync now
+*CommerceApi* | [**setCollectionMetafields**](docs/Api/CommerceApi.md#setcollectionmetafields) | **PUT** /v1/commerce/collections/{collectionId}/metafields | Set collection metafields
+*CommerceApi* | [**setCommerceDiscountActive**](docs/Api/CommerceApi.md#setcommercediscountactive) | **POST** /v1/commerce/discounts/{discountId}/state | Activate or deactivate a discount
+*CommerceApi* | [**setCommercePriceListPrices**](docs/Api/CommerceApi.md#setcommercepricelistprices) | **PUT** /v1/commerce/price-lists/{priceListId}/prices | Set fixed prices
+*CommerceApi* | [**setProductMetafields**](docs/Api/CommerceApi.md#setproductmetafields) | **PUT** /v1/commerce/products/{productId}/metafields | Set product metafields
+*CommerceApi* | [**updateCommerceCollection**](docs/Api/CommerceApi.md#updatecommercecollection) | **PATCH** /v1/commerce/collections/{collectionId} | Update a collection
+*CommerceApi* | [**updateCommerceDiscount**](docs/Api/CommerceApi.md#updatecommercediscount) | **PATCH** /v1/commerce/discounts/{discountId} | Update a discount
+*CommerceApi* | [**updateCommerceMenu**](docs/Api/CommerceApi.md#updatecommercemenu) | **PUT** /v1/commerce/menus/{menuId} | Replace a navigation menu
+*CommerceApi* | [**updateCommerceMetaobject**](docs/Api/CommerceApi.md#updatecommercemetaobject) | **PATCH** /v1/commerce/metaobjects/{metaobjectId} | Update a metaobject
+*CommerceApi* | [**updateCommercePage**](docs/Api/CommerceApi.md#updatecommercepage) | **PATCH** /v1/commerce/pages/{pageId} | Update a page
+*CommerceApi* | [**updateCommerceProduct**](docs/Api/CommerceApi.md#updatecommerceproduct) | **PATCH** /v1/commerce/products/{productId} | Update a product
+*CommerceApi* | [**updateCommerceProductPrices**](docs/Api/CommerceApi.md#updatecommerceproductprices) | **POST** /v1/commerce/products/{productId}/price | Update variant prices
+*CommerceApi* | [**updateCommerceRedirect**](docs/Api/CommerceApi.md#updatecommerceredirect) | **PATCH** /v1/commerce/redirects/{redirectId} | Update a URL redirect
+*CommerceApi* | [**upsertCommerceMarketingActivity**](docs/Api/CommerceApi.md#upsertcommercemarketingactivity) | **PUT** /v1/commerce/marketing-activities | Record a marketing activity
 *ConnectApi* | [**assignGoogleBusinessLocation**](docs/Api/ConnectApi.md#assigngooglebusinesslocation) | **POST** /v1/accounts/{accountId}/gmb-locations/assign | Assign Google Business Profile location to another profile
 *ConnectApi* | [**completeMetaAdsBusinessLogin**](docs/Api/ConnectApi.md#completemetaadsbusinesslogin) | **GET** /v1/connect/meta-ads/callback | Complete Meta business login
 *ConnectApi* | [**completeTelegramConnect**](docs/Api/ConnectApi.md#completetelegramconnect) | **PATCH** /v1/connect/telegram | Check Telegram status
@@ -989,6 +1063,10 @@ Class | Method | HTTP request | Description
 - [AddBroadcastRecipients200Response](docs/Model/AddBroadcastRecipients200Response.md)
 - [AddBroadcastRecipientsRequest](docs/Model/AddBroadcastRecipientsRequest.md)
 - [AddBusinessAgentAllowlistEntryRequest](docs/Model/AddBusinessAgentAllowlistEntryRequest.md)
+- [AddCommerceDiscountCodesRequest](docs/Model/AddCommerceDiscountCodesRequest.md)
+- [AddCommerceMarketingEngagement201Response](docs/Model/AddCommerceMarketingEngagement201Response.md)
+- [AddCommerceMarketingEngagementRequest](docs/Model/AddCommerceMarketingEngagementRequest.md)
+- [AddCommerceProductImagesRequest](docs/Model/AddCommerceProductImagesRequest.md)
 - [AddConversionAssociations200Response](docs/Model/AddConversionAssociations200Response.md)
 - [AddConversionAssociations200ResponseFailedInner](docs/Model/AddConversionAssociations200ResponseFailedInner.md)
 - [AddConversionAssociationsRequest](docs/Model/AddConversionAssociationsRequest.md)
@@ -1161,6 +1239,19 @@ Class | Method | HTTP request | Description
 - [CampaignBiddingPortfolio](docs/Model/CampaignBiddingPortfolio.md)
 - [CancelBroadcast200Response](docs/Model/CancelBroadcast200Response.md)
 - [CancelPhoneNumberPortIn200Response](docs/Model/CancelPhoneNumberPortIn200Response.md)
+- [ChangeCollectionChannels200Response](docs/Model/ChangeCollectionChannels200Response.md)
+- [ChangeCommerceCollectionProducts200Response](docs/Model/ChangeCommerceCollectionProducts200Response.md)
+- [ChangeCommerceCollectionProductsRequest](docs/Model/ChangeCommerceCollectionProductsRequest.md)
+- [ChangeCommerceInventoryRequest](docs/Model/ChangeCommerceInventoryRequest.md)
+- [ChangeCommerceInventoryRequestChangesInner](docs/Model/ChangeCommerceInventoryRequestChangesInner.md)
+- [ChangeCommerceProductState200Response](docs/Model/ChangeCommerceProductState200Response.md)
+- [ChangeCommerceProductState200ResponseFailedInner](docs/Model/ChangeCommerceProductState200ResponseFailedInner.md)
+- [ChangeCommerceProductStateRequest](docs/Model/ChangeCommerceProductStateRequest.md)
+- [ChangeCommerceProductTags200Response](docs/Model/ChangeCommerceProductTags200Response.md)
+- [ChangeCommerceProductTags200ResponseFailedInner](docs/Model/ChangeCommerceProductTags200ResponseFailedInner.md)
+- [ChangeCommerceProductTagsRequest](docs/Model/ChangeCommerceProductTagsRequest.md)
+- [ChangeProductChannels200Response](docs/Model/ChangeProductChannels200Response.md)
+- [ChangeProductChannelsRequest](docs/Model/ChangeProductChannelsRequest.md)
 - [ChannelPicker](docs/Model/ChannelPicker.md)
 - [ChannelPickerChannelsInner](docs/Model/ChannelPickerChannelsInner.md)
 - [ChannelPickerTeam](docs/Model/ChannelPickerTeam.md)
@@ -1177,6 +1268,38 @@ Class | Method | HTTP request | Description
 - [CommentAutomationTemplate](docs/Model/CommentAutomationTemplate.md)
 - [CommentAutomationTemplateElement](docs/Model/CommentAutomationTemplateElement.md)
 - [CommentAutomationTemplateElementButtonsInner](docs/Model/CommentAutomationTemplateElementButtonsInner.md)
+- [CommerceCapability](docs/Model/CommerceCapability.md)
+- [CommerceCatalogSync](docs/Model/CommerceCatalogSync.md)
+- [CommerceChannel](docs/Model/CommerceChannel.md)
+- [CommerceCollection](docs/Model/CommerceCollection.md)
+- [CommerceDiscount](docs/Model/CommerceDiscount.md)
+- [CommerceDiscountAppliesTo](docs/Model/CommerceDiscountAppliesTo.md)
+- [CommerceDiscountMinimum](docs/Model/CommerceDiscountMinimum.md)
+- [CommerceDiscountValue](docs/Model/CommerceDiscountValue.md)
+- [CommerceDiscountValueOneOf](docs/Model/CommerceDiscountValueOneOf.md)
+- [CommerceDiscountValueOneOf1](docs/Model/CommerceDiscountValueOneOf1.md)
+- [CommerceImage](docs/Model/CommerceImage.md)
+- [CommerceInventoryItem](docs/Model/CommerceInventoryItem.md)
+- [CommerceInventoryItemLevelsInner](docs/Model/CommerceInventoryItemLevelsInner.md)
+- [CommerceLocation](docs/Model/CommerceLocation.md)
+- [CommerceLocationAddress](docs/Model/CommerceLocationAddress.md)
+- [CommerceMarket](docs/Model/CommerceMarket.md)
+- [CommerceMenu](docs/Model/CommerceMenu.md)
+- [CommerceMenuItem](docs/Model/CommerceMenuItem.md)
+- [CommerceMenuItemInput](docs/Model/CommerceMenuItemInput.md)
+- [CommerceMetafield](docs/Model/CommerceMetafield.md)
+- [CommerceMetaobject](docs/Model/CommerceMetaobject.md)
+- [CommerceMetaobjectDefinition](docs/Model/CommerceMetaobjectDefinition.md)
+- [CommerceMetaobjectDefinitionFieldsInner](docs/Model/CommerceMetaobjectDefinitionFieldsInner.md)
+- [CommerceMetaobjectFieldsInner](docs/Model/CommerceMetaobjectFieldsInner.md)
+- [CommerceMoney](docs/Model/CommerceMoney.md)
+- [CommercePage](docs/Model/CommercePage.md)
+- [CommercePriceList](docs/Model/CommercePriceList.md)
+- [CommerceProduct](docs/Model/CommerceProduct.md)
+- [CommerceProductStatus](docs/Model/CommerceProductStatus.md)
+- [CommerceRedirect](docs/Model/CommerceRedirect.md)
+- [CommerceStore](docs/Model/CommerceStore.md)
+- [CommerceVariant](docs/Model/CommerceVariant.md)
 - [CompleteGoogleBusinessVerificationRequest](docs/Model/CompleteGoogleBusinessVerificationRequest.md)
 - [CompleteTelegramConnect200Response](docs/Model/CompleteTelegramConnect200Response.md)
 - [CompleteWhatsAppPhoneSelection200Response](docs/Model/CompleteWhatsAppPhoneSelection200Response.md)
@@ -1278,6 +1401,33 @@ Class | Method | HTTP request | Description
 - [CreateCommentAutomation200ResponseAutomation](docs/Model/CreateCommentAutomation200ResponseAutomation.md)
 - [CreateCommentAutomation200ResponseAutomationStats](docs/Model/CreateCommentAutomation200ResponseAutomationStats.md)
 - [CreateCommentAutomationRequest](docs/Model/CreateCommentAutomationRequest.md)
+- [CreateCommerceCatalogSync202Response](docs/Model/CreateCommerceCatalogSync202Response.md)
+- [CreateCommerceCatalogSyncRequest](docs/Model/CreateCommerceCatalogSyncRequest.md)
+- [CreateCommerceCollection201Response](docs/Model/CreateCommerceCollection201Response.md)
+- [CreateCommerceCollectionRequest](docs/Model/CreateCommerceCollectionRequest.md)
+- [CreateCommerceDiscount201Response](docs/Model/CreateCommerceDiscount201Response.md)
+- [CreateCommerceDiscountRequest](docs/Model/CreateCommerceDiscountRequest.md)
+- [CreateCommerceMenu201Response](docs/Model/CreateCommerceMenu201Response.md)
+- [CreateCommerceMenuRequest](docs/Model/CreateCommerceMenuRequest.md)
+- [CreateCommerceMetaobject201Response](docs/Model/CreateCommerceMetaobject201Response.md)
+- [CreateCommerceMetaobjectRequest](docs/Model/CreateCommerceMetaobjectRequest.md)
+- [CreateCommercePage201Response](docs/Model/CreateCommercePage201Response.md)
+- [CreateCommercePageRequest](docs/Model/CreateCommercePageRequest.md)
+- [CreateCommerceProduct201Response](docs/Model/CreateCommerceProduct201Response.md)
+- [CreateCommerceProductOptionsRequest](docs/Model/CreateCommerceProductOptionsRequest.md)
+- [CreateCommerceProductRequest](docs/Model/CreateCommerceProductRequest.md)
+- [CreateCommerceProductRequestImagesInner](docs/Model/CreateCommerceProductRequestImagesInner.md)
+- [CreateCommerceProductRequestOptionsInner](docs/Model/CreateCommerceProductRequestOptionsInner.md)
+- [CreateCommerceProductRequestSeo](docs/Model/CreateCommerceProductRequestSeo.md)
+- [CreateCommerceProductRequestVariantsInner](docs/Model/CreateCommerceProductRequestVariantsInner.md)
+- [CreateCommerceProductRequestVariantsInnerCompareAtPrice](docs/Model/CreateCommerceProductRequestVariantsInnerCompareAtPrice.md)
+- [CreateCommerceProductRequestVariantsInnerOptionsInner](docs/Model/CreateCommerceProductRequestVariantsInnerOptionsInner.md)
+- [CreateCommerceProductRequestVariantsInnerPrice](docs/Model/CreateCommerceProductRequestVariantsInnerPrice.md)
+- [CreateCommerceProductVariantsRequest](docs/Model/CreateCommerceProductVariantsRequest.md)
+- [CreateCommerceProductVariantsRequestVariantsInner](docs/Model/CreateCommerceProductVariantsRequestVariantsInner.md)
+- [CreateCommerceProductVariantsRequestVariantsInnerOptionsInner](docs/Model/CreateCommerceProductVariantsRequestVariantsInnerOptionsInner.md)
+- [CreateCommerceRedirect201Response](docs/Model/CreateCommerceRedirect201Response.md)
+- [CreateCommerceRedirectRequest](docs/Model/CreateCommerceRedirectRequest.md)
 - [CreateContact200Response](docs/Model/CreateContact200Response.md)
 - [CreateContact200ResponseChannel](docs/Model/CreateContact200ResponseChannel.md)
 - [CreateContact200ResponseContact](docs/Model/CreateContact200ResponseContact.md)
@@ -1475,6 +1625,15 @@ Class | Method | HTTP request | Description
 - [DeleteAdSet200Response](docs/Model/DeleteAdSet200Response.md)
 - [DeleteAdVideo200Response](docs/Model/DeleteAdVideo200Response.md)
 - [DeleteBrandedCallingEnterprise200Response](docs/Model/DeleteBrandedCallingEnterprise200Response.md)
+- [DeleteCommerceCatalogSync200Response](docs/Model/DeleteCommerceCatalogSync200Response.md)
+- [DeleteCommerceCollection200Response](docs/Model/DeleteCommerceCollection200Response.md)
+- [DeleteCommerceDiscount200Response](docs/Model/DeleteCommerceDiscount200Response.md)
+- [DeleteCommerceMarketingActivity200Response](docs/Model/DeleteCommerceMarketingActivity200Response.md)
+- [DeleteCommerceMenu200Response](docs/Model/DeleteCommerceMenu200Response.md)
+- [DeleteCommerceMetaobject200Response](docs/Model/DeleteCommerceMetaobject200Response.md)
+- [DeleteCommercePage200Response](docs/Model/DeleteCommercePage200Response.md)
+- [DeleteCommercePriceListPrices200Response](docs/Model/DeleteCommercePriceListPrices200Response.md)
+- [DeleteCommerceRedirect200Response](docs/Model/DeleteCommerceRedirect200Response.md)
 - [DeleteDiscordScheduledEvent200Response](docs/Model/DeleteDiscordScheduledEvent200Response.md)
 - [DeleteGoogleBusinessMedia200Response](docs/Model/DeleteGoogleBusinessMedia200Response.md)
 - [DeleteGoogleBusinessPlaceAction200Response](docs/Model/DeleteGoogleBusinessPlaceAction200Response.md)
@@ -1482,6 +1641,7 @@ Class | Method | HTTP request | Description
 - [DeleteInboxComment200Response](docs/Model/DeleteInboxComment200Response.md)
 - [DeleteInboxReviewReply200Response](docs/Model/DeleteInboxReviewReply200Response.md)
 - [DeleteInboxReviewReplyRequest](docs/Model/DeleteInboxReviewReplyRequest.md)
+- [DeleteProductMetafields200Response](docs/Model/DeleteProductMetafields200Response.md)
 - [DeleteSmsSenderId200Response](docs/Model/DeleteSmsSenderId200Response.md)
 - [DeleteTestLead200Response](docs/Model/DeleteTestLead200Response.md)
 - [DeleteTrackingTagEvent200Response](docs/Model/DeleteTrackingTagEvent200Response.md)
@@ -1522,6 +1682,7 @@ Class | Method | HTTP request | Description
 - [DuplicateAdRequest](docs/Model/DuplicateAdRequest.md)
 - [DuplicateAdSet200Response](docs/Model/DuplicateAdSet200Response.md)
 - [DuplicateAdSetRequest](docs/Model/DuplicateAdSetRequest.md)
+- [DuplicateCommerceProductRequest](docs/Model/DuplicateCommerceProductRequest.md)
 - [DuplicateWorkflow201Response](docs/Model/DuplicateWorkflow201Response.md)
 - [DuplicateWorkflow201ResponseWorkflow](docs/Model/DuplicateWorkflow201ResponseWorkflow.md)
 - [EditDiscordGuildRoleRequest](docs/Model/EditDiscordGuildRoleRequest.md)
@@ -1671,6 +1832,7 @@ Class | Method | HTTP request | Description
 - [GetCommentAutomation200ResponseAutomation](docs/Model/GetCommentAutomation200ResponseAutomation.md)
 - [GetCommentAutomation200ResponseLogsInner](docs/Model/GetCommentAutomation200ResponseLogsInner.md)
 - [GetCommentAutomation200ResponseLogsInnerPlatformError](docs/Model/GetCommentAutomation200ResponseLogsInnerPlatformError.md)
+- [GetCommerceStore200Response](docs/Model/GetCommerceStore200Response.md)
 - [GetConnectUrl200Response](docs/Model/GetConnectUrl200Response.md)
 - [GetContact200Response](docs/Model/GetContact200Response.md)
 - [GetContact200ResponseChannelsInner](docs/Model/GetContact200ResponseChannelsInner.md)
@@ -2222,6 +2384,20 @@ Class | Method | HTTP request | Description
 - [ListCommentAutomations200Response](docs/Model/ListCommentAutomations200Response.md)
 - [ListCommentAutomations200ResponseAutomationsInner](docs/Model/ListCommentAutomations200ResponseAutomationsInner.md)
 - [ListCommentAutomations200ResponseAutomationsInnerStats](docs/Model/ListCommentAutomations200ResponseAutomationsInnerStats.md)
+- [ListCommerceCatalogSyncs200Response](docs/Model/ListCommerceCatalogSyncs200Response.md)
+- [ListCommerceChannels200Response](docs/Model/ListCommerceChannels200Response.md)
+- [ListCommerceCollections200Response](docs/Model/ListCommerceCollections200Response.md)
+- [ListCommerceDiscounts200Response](docs/Model/ListCommerceDiscounts200Response.md)
+- [ListCommerceInventory200Response](docs/Model/ListCommerceInventory200Response.md)
+- [ListCommerceLocations200Response](docs/Model/ListCommerceLocations200Response.md)
+- [ListCommerceMarkets200Response](docs/Model/ListCommerceMarkets200Response.md)
+- [ListCommerceMenus200Response](docs/Model/ListCommerceMenus200Response.md)
+- [ListCommerceMetaobjectDefinitions200Response](docs/Model/ListCommerceMetaobjectDefinitions200Response.md)
+- [ListCommerceMetaobjects200Response](docs/Model/ListCommerceMetaobjects200Response.md)
+- [ListCommercePages200Response](docs/Model/ListCommercePages200Response.md)
+- [ListCommercePriceLists200Response](docs/Model/ListCommercePriceLists200Response.md)
+- [ListCommerceProducts200Response](docs/Model/ListCommerceProducts200Response.md)
+- [ListCommerceRedirects200Response](docs/Model/ListCommerceRedirects200Response.md)
 - [ListConnectedApps200Response](docs/Model/ListConnectedApps200Response.md)
 - [ListContacts200Response](docs/Model/ListContacts200Response.md)
 - [ListContacts200ResponseContactsInner](docs/Model/ListContacts200ResponseContactsInner.md)
@@ -2326,6 +2502,7 @@ Class | Method | HTTP request | Description
 - [ListPhoneNumbers200ResponseSandboxTemplate](docs/Model/ListPhoneNumbers200ResponseSandboxTemplate.md)
 - [ListPinterestBoardsForSelection200Response](docs/Model/ListPinterestBoardsForSelection200Response.md)
 - [ListPinterestBoardsForSelection200ResponseBoardsInner](docs/Model/ListPinterestBoardsForSelection200ResponseBoardsInner.md)
+- [ListProductMetafields200Response](docs/Model/ListProductMetafields200Response.md)
 - [ListProducts200Response](docs/Model/ListProducts200Response.md)
 - [ListQueueSlots200Response](docs/Model/ListQueueSlots200Response.md)
 - [ListQueueSlots200ResponseOneOf](docs/Model/ListQueueSlots200ResponseOneOf.md)
@@ -2515,7 +2692,6 @@ Class | Method | HTTP request | Description
 - [ProductOptionsInner](docs/Model/ProductOptionsInner.md)
 - [ProductSeo](docs/Model/ProductSeo.md)
 - [ProductVariant](docs/Model/ProductVariant.md)
-- [ProductVariantSelectedOptionsInner](docs/Model/ProductVariantSelectedOptionsInner.md)
 - [Profile](docs/Model/Profile.md)
 - [ProfileCreateResponse](docs/Model/ProfileCreateResponse.md)
 - [ProfileDeleteResponse](docs/Model/ProfileDeleteResponse.md)
@@ -2613,6 +2789,10 @@ Class | Method | HTTP request | Description
 - [RemoveTrackingTagFromStore200ResponseInstall](docs/Model/RemoveTrackingTagFromStore200ResponseInstall.md)
 - [RemoveTrackingTagUser200Response](docs/Model/RemoveTrackingTagUser200Response.md)
 - [RemoveWhatsAppGroupParticipantsRequest](docs/Model/RemoveWhatsAppGroupParticipantsRequest.md)
+- [ReorderCommerceCollectionProductsRequest](docs/Model/ReorderCommerceCollectionProductsRequest.md)
+- [ReorderCommerceCollectionProductsRequestMovesInner](docs/Model/ReorderCommerceCollectionProductsRequestMovesInner.md)
+- [ReorderCommerceProductImages200Response](docs/Model/ReorderCommerceProductImages200Response.md)
+- [ReorderCommerceProductImagesRequest](docs/Model/ReorderCommerceProductImagesRequest.md)
 - [ReplaceAdAudienceCompanies200Response](docs/Model/ReplaceAdAudienceCompanies200Response.md)
 - [ReplaceAdAudienceCompaniesRequest](docs/Model/ReplaceAdAudienceCompaniesRequest.md)
 - [ReplaceAdAudienceCompaniesRequestCompaniesInner](docs/Model/ReplaceAdAudienceCompaniesRequestCompaniesInner.md)
@@ -2813,6 +2993,10 @@ Class | Method | HTTP request | Description
 - [SetBusinessAgentConnectorCredentialsRequestOneOf1](docs/Model/SetBusinessAgentConnectorCredentialsRequestOneOf1.md)
 - [SetBusinessAgentConnectorCredentialsRequestOneOf2](docs/Model/SetBusinessAgentConnectorCredentialsRequestOneOf2.md)
 - [SetCommentModerationRequest](docs/Model/SetCommentModerationRequest.md)
+- [SetCommerceDiscountActiveRequest](docs/Model/SetCommerceDiscountActiveRequest.md)
+- [SetCommercePriceListPrices200Response](docs/Model/SetCommercePriceListPrices200Response.md)
+- [SetCommercePriceListPricesRequest](docs/Model/SetCommercePriceListPricesRequest.md)
+- [SetCommercePriceListPricesRequestPricesInner](docs/Model/SetCommercePriceListPricesRequestPricesInner.md)
 - [SetContactFieldValueRequest](docs/Model/SetContactFieldValueRequest.md)
 - [SetConversationThreadControl200Response](docs/Model/SetConversationThreadControl200Response.md)
 - [SetConversationThreadControl200ResponseControl](docs/Model/SetConversationThreadControl200ResponseControl.md)
@@ -2825,6 +3009,7 @@ Class | Method | HTTP request | Description
 - [SetMessengerMenuRequest](docs/Model/SetMessengerMenuRequest.md)
 - [SetPartnershipAdPermission200Response](docs/Model/SetPartnershipAdPermission200Response.md)
 - [SetPartnershipAdPermissionRequest](docs/Model/SetPartnershipAdPermissionRequest.md)
+- [SetProductMetafieldsRequest](docs/Model/SetProductMetafieldsRequest.md)
 - [SetRedditPostFlairRequest](docs/Model/SetRedditPostFlairRequest.md)
 - [SetTelegramCommandsRequest](docs/Model/SetTelegramCommandsRequest.md)
 - [SetTelegramCommandsRequestCommandsInner](docs/Model/SetTelegramCommandsRequestCommandsInner.md)
@@ -3016,6 +3201,16 @@ Class | Method | HTTP request | Description
 - [UpdateCommentAutomation200Response](docs/Model/UpdateCommentAutomation200Response.md)
 - [UpdateCommentAutomation200ResponseAutomation](docs/Model/UpdateCommentAutomation200ResponseAutomation.md)
 - [UpdateCommentAutomationRequest](docs/Model/UpdateCommentAutomationRequest.md)
+- [UpdateCommerceCollectionRequest](docs/Model/UpdateCommerceCollectionRequest.md)
+- [UpdateCommerceDiscountRequest](docs/Model/UpdateCommerceDiscountRequest.md)
+- [UpdateCommerceMenuRequest](docs/Model/UpdateCommerceMenuRequest.md)
+- [UpdateCommerceMetaobjectRequest](docs/Model/UpdateCommerceMetaobjectRequest.md)
+- [UpdateCommercePageRequest](docs/Model/UpdateCommercePageRequest.md)
+- [UpdateCommerceProductPricesRequest](docs/Model/UpdateCommerceProductPricesRequest.md)
+- [UpdateCommerceProductPricesRequestVariantsInner](docs/Model/UpdateCommerceProductPricesRequestVariantsInner.md)
+- [UpdateCommerceProductPricesRequestVariantsInnerPrice](docs/Model/UpdateCommerceProductPricesRequestVariantsInnerPrice.md)
+- [UpdateCommerceProductRequest](docs/Model/UpdateCommerceProductRequest.md)
+- [UpdateCommerceRedirectRequest](docs/Model/UpdateCommerceRedirectRequest.md)
 - [UpdateContact200Response](docs/Model/UpdateContact200Response.md)
 - [UpdateContact200ResponseContact](docs/Model/UpdateContact200ResponseContact.md)
 - [UpdateContactRequest](docs/Model/UpdateContactRequest.md)
@@ -3151,6 +3346,11 @@ Class | Method | HTTP request | Description
 - [UploadedOrDerivedAudience](docs/Model/UploadedOrDerivedAudience.md)
 - [UploadedOrDerivedAudienceCompaniesInner](docs/Model/UploadedOrDerivedAudienceCompaniesInner.md)
 - [UploadedOrDerivedAudienceMatchRulesInner](docs/Model/UploadedOrDerivedAudienceMatchRulesInner.md)
+- [UpsertCommerceMarketingActivity200Response](docs/Model/UpsertCommerceMarketingActivity200Response.md)
+- [UpsertCommerceMarketingActivity200ResponseMarketingActivity](docs/Model/UpsertCommerceMarketingActivity200ResponseMarketingActivity.md)
+- [UpsertCommerceMarketingActivityRequest](docs/Model/UpsertCommerceMarketingActivityRequest.md)
+- [UpsertCommerceMarketingActivityRequestBudget](docs/Model/UpsertCommerceMarketingActivityRequestBudget.md)
+- [UpsertCommerceMarketingActivityRequestUtm](docs/Model/UpsertCommerceMarketingActivityRequestUtm.md)
 - [UsageAttributionGroup](docs/Model/UsageAttributionGroup.md)
 - [UsageAttributionSlice](docs/Model/UsageAttributionSlice.md)
 - [UsageAttributionSliceByProduct](docs/Model/UsageAttributionSliceByProduct.md)
@@ -3247,6 +3447,9 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadCommentCommentAuthor](docs/Model/WebhookPayloadCommentCommentAuthor.md)
 - [WebhookPayloadCommentCommentAuthorInstagramProfile](docs/Model/WebhookPayloadCommentCommentAuthorInstagramProfile.md)
 - [WebhookPayloadCommentPost](docs/Model/WebhookPayloadCommentPost.md)
+- [WebhookPayloadCommerceProduct](docs/Model/WebhookPayloadCommerceProduct.md)
+- [WebhookPayloadCommerceProductResource](docs/Model/WebhookPayloadCommerceProductResource.md)
+- [WebhookPayloadCommerceProductStore](docs/Model/WebhookPayloadCommerceProductStore.md)
 - [WebhookPayloadConversationControlChanged](docs/Model/WebhookPayloadConversationControlChanged.md)
 - [WebhookPayloadConversationControlChangedControl](docs/Model/WebhookPayloadConversationControlChangedControl.md)
 - [WebhookPayloadConversationStarted](docs/Model/WebhookPayloadConversationStarted.md)
@@ -3407,6 +3610,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.148.2`
+- API version: `1.149.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
