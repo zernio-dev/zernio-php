@@ -58,7 +58,10 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onVerificationApproved()**](WebhookEventsApi.md#onVerificationApproved) | **POST** /verification.approved | Verification approved event |
 | [**onVerificationFailed()**](WebhookEventsApi.md#onVerificationFailed) | **POST** /verification.failed | Verification failed event |
 | [**onWebhookTest()**](WebhookEventsApi.md#onWebhookTest) | **POST** /webhook.test | Webhook test event |
+| [**onWhatsAppAccountAlertReceived()**](WebhookEventsApi.md#onWhatsAppAccountAlertReceived) | **POST** /whatsapp.account.alert_received | WhatsApp account alert received |
 | [**onWhatsAppAccountNameStatusUpdated()**](WebhookEventsApi.md#onWhatsAppAccountNameStatusUpdated) | **POST** /whatsapp.account.name_status_updated | WhatsApp display-name review outcome event |
+| [**onWhatsAppAccountQualityUpdated()**](WebhookEventsApi.md#onWhatsAppAccountQualityUpdated) | **POST** /whatsapp.account.quality_updated | WhatsApp quality rating or messaging limit changed |
+| [**onWhatsAppAccountStatusUpdated()**](WebhookEventsApi.md#onWhatsAppAccountStatusUpdated) | **POST** /whatsapp.account.status_updated | WhatsApp Business Account restricted or reinstated |
 | [**onWhatsAppAutomaticEvent()**](WebhookEventsApi.md#onWhatsAppAutomaticEvent) | **POST** /whatsapp.automatic_event | WhatsApp automatic event detected |
 | [**onWhatsAppContactIdentityChanged()**](WebhookEventsApi.md#onWhatsAppContactIdentityChanged) | **POST** /whatsapp.contact.identity_changed | WhatsApp contact identity changed event |
 | [**onWhatsAppNumberActionRequired()**](WebhookEventsApi.md#onWhatsAppNumberActionRequired) | **POST** /whatsapp.number.action_required | WhatsApp number action required event |
@@ -3141,6 +3144,65 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `onWhatsAppAccountAlertReceived()`
+
+```php
+onWhatsAppAccountAlertReceived($webhook_payload_whats_app_account_alert_received)
+```
+
+WhatsApp account alert received
+
+Fired for each Meta `account_alerts` notification on a connected WhatsApp Business Account.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_whats_app_account_alert_received = new \Zernio\Model\WebhookPayloadWhatsAppAccountAlertReceived(); // \Zernio\Model\WebhookPayloadWhatsAppAccountAlertReceived
+
+try {
+    $apiInstance->onWhatsAppAccountAlertReceived($webhook_payload_whats_app_account_alert_received);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onWhatsAppAccountAlertReceived: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_whats_app_account_alert_received** | [**\Zernio\Model\WebhookPayloadWhatsAppAccountAlertReceived**](../Model/WebhookPayloadWhatsAppAccountAlertReceived.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `onWhatsAppAccountNameStatusUpdated()`
 
 ```php
@@ -3182,6 +3244,124 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_whats_app_account_name_status_updated** | [**\Zernio\Model\WebhookPayloadWhatsAppAccountNameStatusUpdated**](../Model/WebhookPayloadWhatsAppAccountNameStatusUpdated.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onWhatsAppAccountQualityUpdated()`
+
+```php
+onWhatsAppAccountQualityUpdated($webhook_payload_whats_app_account_quality_updated)
+```
+
+WhatsApp quality rating or messaging limit changed
+
+Fired when a connected WhatsApp number's quality rating or messaging limit tier changes. Delivery is at-least-once; dedupe on the event `id`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_whats_app_account_quality_updated = new \Zernio\Model\WebhookPayloadWhatsAppAccountQualityUpdated(); // \Zernio\Model\WebhookPayloadWhatsAppAccountQualityUpdated
+
+try {
+    $apiInstance->onWhatsAppAccountQualityUpdated($webhook_payload_whats_app_account_quality_updated);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onWhatsAppAccountQualityUpdated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_whats_app_account_quality_updated** | [**\Zernio\Model\WebhookPayloadWhatsAppAccountQualityUpdated**](../Model/WebhookPayloadWhatsAppAccountQualityUpdated.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onWhatsAppAccountStatusUpdated()`
+
+```php
+onWhatsAppAccountStatusUpdated($webhook_payload_whats_app_account_status_updated)
+```
+
+WhatsApp Business Account restricted or reinstated
+
+Fired when Meta restricts, disables, deletes or reinstates the WhatsApp Business Account, once per connected number on it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_whats_app_account_status_updated = new \Zernio\Model\WebhookPayloadWhatsAppAccountStatusUpdated(); // \Zernio\Model\WebhookPayloadWhatsAppAccountStatusUpdated
+
+try {
+    $apiInstance->onWhatsAppAccountStatusUpdated($webhook_payload_whats_app_account_status_updated);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onWhatsAppAccountStatusUpdated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_whats_app_account_status_updated** | [**\Zernio\Model\WebhookPayloadWhatsAppAccountStatusUpdated**](../Model/WebhookPayloadWhatsAppAccountStatusUpdated.md)|  | |
 
 ### Return type
 

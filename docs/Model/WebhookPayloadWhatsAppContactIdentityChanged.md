@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Stable webhook event ID: the dedupe key, also sent as the X-Zernio-Event-Id header and identical on every retry and redelivery. It identifies the event only, never an account or other resource. |
 **event** | **string** |  |
-**account** | [**\Zernio\Model\WebhookPayloadWhatsAppContactIdentityChangedAccount**](WebhookPayloadWhatsAppContactIdentityChangedAccount.md) |  |
+**account** | [**\Zernio\Model\WebhookPayloadWhatsAppAccountQualityUpdatedAccount**](WebhookPayloadWhatsAppAccountQualityUpdatedAccount.md) |  |
 **reason** | **string** | Which Meta signal reported the change. &#x60;user_changed_number&#x60;: new phone number. &#x60;user_changed_user_id&#x60; and &#x60;user_id_update&#x60;: new BSUID. |
 **previous** | [**\Zernio\Model\WhatsAppContactIdentity**](WhatsAppContactIdentity.md) |  |
 **current** | [**\Zernio\Model\WhatsAppContactIdentity**](WhatsAppContactIdentity.md) |  |
