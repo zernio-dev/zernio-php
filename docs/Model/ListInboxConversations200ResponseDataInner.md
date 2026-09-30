@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **participant_name** | **string** |  | [optional]
 **participant_picture** | **string** |  | [optional]
 **participant_verified_type** | **string** | X verified badge type. Only present for X conversations. | [optional]
+**business_scoped_user_id** | **string** | WhatsApp only. Meta business-scoped user ID (BSUID), the stable identity anchor; present when Meta has sent it for this participant. | [optional]
+**whatsapp_username** | **string** | WhatsApp only. The participant&#39;s WhatsApp username (e.g. &#x60;jane.shop&#x60;, no leading @). Not a stable identifier, because users can change it: useful for display, not recommended as an identity anchor. Captured from inbound messages, so older threads fill in on their next inbound. | [optional]
 **last_message** | **string** |  | [optional]
 **updated_time** | **\DateTime** |  | [optional]
 **status** | **string** |  | [optional]
