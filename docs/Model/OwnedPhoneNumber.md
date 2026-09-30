@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **meta_verification_status** | **string** |  | [optional]
 **meta_verified_at** | **\DateTime** |  | [optional]
 **meta_verification_expires_at** | **\DateTime** |  | [optional]
+**meta_pool_add_rejected_at** | **\DateTime** | Set when WhatsApp reported the number as registered to another WhatsApp account while connecting it. The number keeps working for Calls and SMS; remove it from the other account and connect again, or replace it with POST /v1/whatsapp/phone-numbers/{id}/replace. Absent once WhatsApp accepts the number. | [optional]
 **social_account_id** | **string** | The WhatsApp account the number is linked to; null when WhatsApp is not connected. | [optional]
 **owner_account_id** | **string** | The telephony account that owns Calls and SMS on the number. | [optional]
 **sip_trunk_id** | **string** | SIP trunk the number is attached to; null when not trunked. While attached, enabling Calls or WhatsApp calling, requesting WhatsApp verification, and releasing the number all return 409. | [optional]
