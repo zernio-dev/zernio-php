@@ -48,7 +48,7 @@ Name | Type | Description | Notes
 **places** | [**\Zernio\Model\CtwaAdRequestBodyPlacesInner[]**](CtwaAdRequestBodyPlacesInner.md) | Meta place keys (from GET /v1/ads/targeting/search). | [optional]
 **neighborhoods** | [**\Zernio\Model\CtwaAdRequestBodyPlacesInner[]**](CtwaAdRequestBodyPlacesInner.md) | Meta neighborhood keys (from GET /v1/ads/targeting/search). | [optional]
 **excluded_locations** | **array<string,mixed>** | Geo to exclude, same shape as POST /v1/ads/create (countries, countryGroups, regions, cities, zips, places, neighborhoods, customLocations). | [optional]
-**behaviors** | [**\Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]**](CreateStandaloneAdRequestBehaviorsInner.md) | Meta behavior ids. Each dimension is its own flexible_spec entry: OR within, AND across. | [optional]
+**behaviors** | [**\Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]**](CreateStandaloneAdRequestBehaviorsInner.md) | Behavior ids from /v1/ads/targeting/search?dimension&#x3D;behavior. Meta: each dimension is its own flexible_spec entry (OR within, AND across). TikTok: video/creator interaction categories, sent as the ad group&#39;s actions. | [optional]
 **work_positions** | [**\Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]**](CreateStandaloneAdRequestBehaviorsInner.md) |  | [optional]
 **work_employers** | [**\Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]**](CreateStandaloneAdRequestBehaviorsInner.md) |  | [optional]
 **work_industries** | [**\Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]**](CreateStandaloneAdRequestBehaviorsInner.md) |  | [optional]
