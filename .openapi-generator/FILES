@@ -1306,6 +1306,7 @@ docs/Model/InboxWebhookConversation.md
 docs/Model/InboxWebhookConversationDetail.md
 docs/Model/InboxWebhookMessage.md
 docs/Model/InboxWebhookMessageAttachmentsInner.md
+docs/Model/InboxWebhookMessageAttachmentsInnerPayload.md
 docs/Model/InboxWebhookMessageSender.md
 docs/Model/InboxWebhookMessageSenderInstagramProfile.md
 docs/Model/InitiateTelegramConnect200Response.md
@@ -2558,6 +2559,7 @@ docs/Model/WebhookPayloadMessageMetadataOrderProductItemsInner.md
 docs/Model/WebhookPayloadMessageMetadataQuotedMessage.md
 docs/Model/WebhookPayloadMessageMetadataReferral.md
 docs/Model/WebhookPayloadMessageMetadataReferralAdsContextData.md
+docs/Model/WebhookPayloadMessageMetadataReferralWelcomeMessage.md
 docs/Model/WebhookPayloadMessageMetadataReferredProduct.md
 docs/Model/WebhookPayloadMessageMetadataStoryReply.md
 docs/Model/WebhookPayloadMessageMetadataUnsupported.md
@@ -3983,6 +3985,7 @@ lib/Model/InboxWebhookConversation.php
 lib/Model/InboxWebhookConversationDetail.php
 lib/Model/InboxWebhookMessage.php
 lib/Model/InboxWebhookMessageAttachmentsInner.php
+lib/Model/InboxWebhookMessageAttachmentsInnerPayload.php
 lib/Model/InboxWebhookMessageSender.php
 lib/Model/InboxWebhookMessageSenderInstagramProfile.php
 lib/Model/InitiateTelegramConnect200Response.php
@@ -5236,6 +5239,7 @@ lib/Model/WebhookPayloadMessageMetadataOrderProductItemsInner.php
 lib/Model/WebhookPayloadMessageMetadataQuotedMessage.php
 lib/Model/WebhookPayloadMessageMetadataReferral.php
 lib/Model/WebhookPayloadMessageMetadataReferralAdsContextData.php
+lib/Model/WebhookPayloadMessageMetadataReferralWelcomeMessage.php
 lib/Model/WebhookPayloadMessageMetadataReferredProduct.php
 lib/Model/WebhookPayloadMessageMetadataStoryReply.php
 lib/Model/WebhookPayloadMessageMetadataUnsupported.php
@@ -5355,3 +5359,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/InboxWebhookMessageAttachmentsInnerPayloadTest.php
+test/Model/WebhookPayloadMessageMetadataReferralWelcomeMessageTest.php

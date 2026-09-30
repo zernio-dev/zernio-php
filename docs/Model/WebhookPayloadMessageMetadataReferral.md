@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **image_url** | **string** |  | [optional]
 **video_url** | **string** |  | [optional]
 **thumbnail_url** | **string** |  | [optional]
+**welcome_message** | [**\Zernio\Model\WebhookPayloadMessageMetadataReferralWelcomeMessage**](WebhookPayloadMessageMetadataReferralWelcomeMessage.md) |  | [optional]
 **ad_id** | **string** | Facebook Messenger CTM / Instagram CTD only. The Meta ad ID the user clicked to start the conversation. | [optional]
 **ref** | **string** | The &#x60;ref&#x60; parameter passed through from the Meta ad creative or from an ig.me / m.me link. Instagram / Facebook Messenger only. | [optional]
 **source** | **string** | Meta-supplied source identifier (&#x60;ADS&#x60; for ad clicks; &#x60;SHORTLINK&#x60;, &#x60;SHORTLINKS&#x60; or &#x60;IGME-SOURCE-LINK&#x60; for ref links). Instagram / Facebook Messenger only. | [optional]
