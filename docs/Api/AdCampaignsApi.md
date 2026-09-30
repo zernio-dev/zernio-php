@@ -1434,7 +1434,7 @@ try {
 ## `getAdTree()`
 
 ```php
-getAdTree($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level): \Zernio\Model\AdTreeResponse
+getAdTree($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $updated_since, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level): \Zernio\Model\AdTreeResponse
 ```
 
 Get campaign tree
@@ -1467,7 +1467,8 @@ $ad_account_id = 'ad_account_id_example'; // string | One or more platform ad ac
 $page_id = 'page_id_example'; // string | Meta only: Facebook Page ID. Prunes the tree to ads whose creative is backed by this Page: campaigns and ad sets with no ad on the Page drop out, and rolled-up metrics cover only the Page's ads. Mirrors the same filter on /v1/ads and /v1/ads/campaigns.
 $account_id = 'account_id_example'; // string | Account ID
 $profile_id = 'profile_id_example'; // string | Profile ID
-$campaign_id = 'campaign_id_example'; // string | Restrict the tree to a single campaign by its platform campaign id (the id the platform assigns, e.g. Meta's numeric campaign id). Filters the campaign set itself, so it works regardless of account size and pagination. Pass this when you already hold a campaign id instead of paging the tree to find it. Mirrors the `campaignId` filter on GET /v1/ads.
+$campaign_id = 'campaign_id_example'; // string | Restrict the tree to one or more campaigns by platform campaign id (the id the platform assigns, e.g. Meta's numeric campaign id). Comma-separate up to 100 ids (`?campaignId=123,456`). Filters the campaign set itself, so it works regardless of account size and pagination. Pass this when you already hold campaign ids (for example from an `ad.status_changed` webhook) instead of paging the whole tree.
+$updated_since = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Return only campaigns with a change stored since this time (ISO 8601 with offset, e.g. `2026-09-30T10:00:00Z`): a new ad, or a change to any ad's status, review status, name, budget or creative. Each matching campaign comes back whole (every ad set and ad). Metrics are not a change: to refresh numbers, filter with `hasDelivery=true` and a date range instead. Combines with every other filter (with `hasDelivery`/`minSpend` a campaign must match both).
 $search = 'search_example'; // string | Case-insensitive substring match on campaign, ad set and ad names (`_`, `%` and spaces match literally), or an exact platform campaign, ad set or ad id. A campaign whose name matches returns with all its ad sets and ads; a match on an ad set or ad name returns only the matching branch. Filters the campaign set itself, so `pagination.total` counts only matching campaigns.
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start of the METRICS date range (YYYY-MM-DD). On its own it affects only the spend/impression numbers overlaid on each node, not which campaigns are returned. Pass `hasDelivery` or `minSpend` to also filter the campaign set to this window. Defaults to 90 days ago.
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range.
@@ -1478,7 +1479,7 @@ $time_increment = 56; // int | Set to `1` to also return a daily breakdown. Mirr
 $daily_level = 'campaign'; // string | Which tree levels get the `daily[]` series when `timeIncrement=1`. `campaign` (default) attaches it on campaign nodes only: the common per-campaign-trend case, and the smallest payload. `adset` adds it on ad sets too; `ad` adds it on every ad in `ads[]` as well (heaviest: a long range × up to 100 ads per ad set). Scope with `campaignId` to keep `ad`-level responses small. Ignored when `timeIncrement` is unset.
 
 try {
-    $result = $apiInstance->getAdTree($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level);
+    $result = $apiInstance->getAdTree($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $updated_since, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->getAdTree: ', $e->getMessage(), PHP_EOL;
@@ -1498,7 +1499,8 @@ try {
 | **page_id** | **string**| Meta only: Facebook Page ID. Prunes the tree to ads whose creative is backed by this Page: campaigns and ad sets with no ad on the Page drop out, and rolled-up metrics cover only the Page&#39;s ads. Mirrors the same filter on /v1/ads and /v1/ads/campaigns. | [optional] |
 | **account_id** | **string**| Account ID | [optional] |
 | **profile_id** | **string**| Profile ID | [optional] |
-| **campaign_id** | **string**| Restrict the tree to a single campaign by its platform campaign id (the id the platform assigns, e.g. Meta&#39;s numeric campaign id). Filters the campaign set itself, so it works regardless of account size and pagination. Pass this when you already hold a campaign id instead of paging the tree to find it. Mirrors the &#x60;campaignId&#x60; filter on GET /v1/ads. | [optional] |
+| **campaign_id** | **string**| Restrict the tree to one or more campaigns by platform campaign id (the id the platform assigns, e.g. Meta&#39;s numeric campaign id). Comma-separate up to 100 ids (&#x60;?campaignId&#x3D;123,456&#x60;). Filters the campaign set itself, so it works regardless of account size and pagination. Pass this when you already hold campaign ids (for example from an &#x60;ad.status_changed&#x60; webhook) instead of paging the whole tree. | [optional] |
+| **updated_since** | **\DateTime**| Return only campaigns with a change stored since this time (ISO 8601 with offset, e.g. &#x60;2026-09-30T10:00:00Z&#x60;): a new ad, or a change to any ad&#39;s status, review status, name, budget or creative. Each matching campaign comes back whole (every ad set and ad). Metrics are not a change: to refresh numbers, filter with &#x60;hasDelivery&#x3D;true&#x60; and a date range instead. Combines with every other filter (with &#x60;hasDelivery&#x60;/&#x60;minSpend&#x60; a campaign must match both). | [optional] |
 | **search** | **string**| Case-insensitive substring match on campaign, ad set and ad names (&#x60;_&#x60;, &#x60;%&#x60; and spaces match literally), or an exact platform campaign, ad set or ad id. A campaign whose name matches returns with all its ad sets and ads; a match on an ad set or ad name returns only the matching branch. Filters the campaign set itself, so &#x60;pagination.total&#x60; counts only matching campaigns. | [optional] |
 | **from_date** | **\DateTime**| Start of the METRICS date range (YYYY-MM-DD). On its own it affects only the spend/impression numbers overlaid on each node, not which campaigns are returned. Pass &#x60;hasDelivery&#x60; or &#x60;minSpend&#x60; to also filter the campaign set to this window. Defaults to 90 days ago. | [optional] |
 | **to_date** | **\DateTime**| End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. | [optional] |
