@@ -1197,6 +1197,8 @@ docs/Model/GetWhatsAppNumberInfo200ResponseWaba.md
 docs/Model/GetWhatsAppNumberKycForm200Response.md
 docs/Model/GetWhatsAppNumberKycForm200ResponseFieldsInner.md
 docs/Model/GetWhatsAppNumberRemediation200Response.md
+docs/Model/GetWhatsAppPricingAnalytics200Response.md
+docs/Model/GetWhatsAppPricingAnalytics200ResponseDataPointsInner.md
 docs/Model/GetWhatsAppSdkConfig200Response.md
 docs/Model/GetWhatsAppSdkConfig200ResponseBranding.md
 docs/Model/GetWhatsAppTemplate200Response.md
@@ -3872,6 +3874,8 @@ lib/Model/GetWhatsAppNumberInfo200ResponseWaba.php
 lib/Model/GetWhatsAppNumberKycForm200Response.php
 lib/Model/GetWhatsAppNumberKycForm200ResponseFieldsInner.php
 lib/Model/GetWhatsAppNumberRemediation200Response.php
+lib/Model/GetWhatsAppPricingAnalytics200Response.php
+lib/Model/GetWhatsAppPricingAnalytics200ResponseDataPointsInner.php
 lib/Model/GetWhatsAppSdkConfig200Response.php
 lib/Model/GetWhatsAppSdkConfig200ResponseBranding.php
 lib/Model/GetWhatsAppTemplate200Response.php
@@ -5351,3 +5355,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetWhatsAppPricingAnalytics200ResponseDataPointsInnerTest.php
+test/Model/GetWhatsAppPricingAnalytics200ResponseTest.php

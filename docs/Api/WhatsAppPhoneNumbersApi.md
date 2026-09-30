@@ -13,6 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getWhatsAppNumberRemediation()**](WhatsAppPhoneNumbersApi.md#getWhatsAppNumberRemediation) | **GET** /v1/whatsapp/phone-numbers/{id}/remediate | Get declined requirements |
 | [**getWhatsAppPhoneNumber()**](WhatsAppPhoneNumbersApi.md#getWhatsAppPhoneNumber) | **GET** /v1/whatsapp/phone-numbers/{phoneNumberId} | Get phone number |
 | [**getWhatsAppPhoneNumbers()**](WhatsAppPhoneNumbersApi.md#getWhatsAppPhoneNumbers) | **GET** /v1/whatsapp/phone-numbers | List phone numbers |
+| [**getWhatsAppPricingAnalytics()**](WhatsAppPhoneNumbersApi.md#getWhatsAppPricingAnalytics) | **GET** /v1/whatsapp/pricing-analytics | Get pricing analytics |
 | [**listWhatsAppNumberCountries()**](WhatsAppPhoneNumbersApi.md#listWhatsAppNumberCountries) | **GET** /v1/whatsapp/phone-numbers/countries | List offerable number countries |
 | [**moveWhatsAppNumberToProfile()**](WhatsAppPhoneNumbersApi.md#moveWhatsAppNumberToProfile) | **PATCH** /v1/whatsapp/phone-numbers/{id}/profile | Move a number to another profile |
 | [**purchaseWhatsAppPhoneNumber()**](WhatsAppPhoneNumbersApi.md#purchaseWhatsAppPhoneNumber) | **POST** /v1/whatsapp/phone-numbers/purchase | Purchase phone number |
@@ -438,6 +439,82 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListPhoneNumbers200Response**](../Model/ListPhoneNumbers200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getWhatsAppPricingAnalytics()`
+
+```php
+getWhatsAppPricingAnalytics($account_id, $start, $end, $granularity, $dimensions, $metric_types, $pricing_types, $pricing_categories, $country_codes): \Zernio\Model\GetWhatsAppPricingAnalytics200Response
+```
+
+Get pricing analytics
+
+Message volume and approximate cost for one connected WhatsApp number, read live from Meta's `pricing_analytics` on the WhatsApp Business Account and scoped to that account's phone number. Meta's figures are approximate and can lag; Meta bills from its own invoice. Meta limits how far back and how fine the data goes (for example HALF_HOUR only over short ranges) and answers out-of-range requests with an error.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppPhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | WhatsApp account ID
+$start = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Range start, ISO 8601 date or date-time.
+$end = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Range end, ISO 8601 date or date-time. Must be after start.
+$granularity = 'granularity_example'; // string
+$dimensions = PRICING_CATEGORY,COUNTRY; // string | Comma-separated breakdowns: COUNTRY, PHONE, PRICING_CATEGORY, PRICING_TYPE, TIER. Without it each data point is a total for the interval.
+$metric_types = COST,VOLUME; // string | Comma-separated: COST, VOLUME. Defaults to both.
+$pricing_types = REGULAR; // string | Comma-separated filter: REGULAR, FREE_CUSTOMER_SERVICE, FREE_ENTRY_POINT.
+$pricing_categories = MARKETING,UTILITY; // string | Comma-separated filter of Meta pricing categories, for example MARKETING, MARKETING_LITE, UTILITY, AUTHENTICATION, AUTHENTICATION_INTERNATIONAL, SERVICE, REFERRAL_CONVERSION.
+$country_codes = ES,MX; // string | Comma-separated ISO 3166-1 alpha-2 country codes to filter on.
+
+try {
+    $result = $apiInstance->getWhatsAppPricingAnalytics($account_id, $start, $end, $granularity, $dimensions, $metric_types, $pricing_types, $pricing_categories, $country_codes);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppPhoneNumbersApi->getWhatsAppPricingAnalytics: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| WhatsApp account ID | |
+| **start** | **\DateTime**| Range start, ISO 8601 date or date-time. | |
+| **end** | **\DateTime**| Range end, ISO 8601 date or date-time. Must be after start. | |
+| **granularity** | **string**|  | |
+| **dimensions** | **string**| Comma-separated breakdowns: COUNTRY, PHONE, PRICING_CATEGORY, PRICING_TYPE, TIER. Without it each data point is a total for the interval. | [optional] |
+| **metric_types** | **string**| Comma-separated: COST, VOLUME. Defaults to both. | [optional] |
+| **pricing_types** | **string**| Comma-separated filter: REGULAR, FREE_CUSTOMER_SERVICE, FREE_ENTRY_POINT. | [optional] |
+| **pricing_categories** | **string**| Comma-separated filter of Meta pricing categories, for example MARKETING, MARKETING_LITE, UTILITY, AUTHENTICATION, AUTHENTICATION_INTERNATIONAL, SERVICE, REFERRAL_CONVERSION. | [optional] |
+| **country_codes** | **string**| Comma-separated ISO 3166-1 alpha-2 country codes to filter on. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetWhatsAppPricingAnalytics200Response**](../Model/GetWhatsAppPricingAnalytics200Response.md)
 
 ### Authorization
 
