@@ -60,6 +60,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onWebhookTest()**](WebhookEventsApi.md#onWebhookTest) | **POST** /webhook.test | Webhook test event |
 | [**onWhatsAppAccountNameStatusUpdated()**](WebhookEventsApi.md#onWhatsAppAccountNameStatusUpdated) | **POST** /whatsapp.account.name_status_updated | WhatsApp display-name review outcome event |
 | [**onWhatsAppAutomaticEvent()**](WebhookEventsApi.md#onWhatsAppAutomaticEvent) | **POST** /whatsapp.automatic_event | WhatsApp automatic event detected |
+| [**onWhatsAppContactIdentityChanged()**](WebhookEventsApi.md#onWhatsAppContactIdentityChanged) | **POST** /whatsapp.contact.identity_changed | WhatsApp contact identity changed event |
 | [**onWhatsAppNumberActionRequired()**](WebhookEventsApi.md#onWhatsAppNumberActionRequired) | **POST** /whatsapp.number.action_required | WhatsApp number action required event |
 | [**onWhatsAppNumberActivated()**](WebhookEventsApi.md#onWhatsAppNumberActivated) | **POST** /whatsapp.number.activated | WhatsApp number activated event |
 | [**onWhatsAppNumberDeclined()**](WebhookEventsApi.md#onWhatsAppNumberDeclined) | **POST** /whatsapp.number.declined | WhatsApp number declined event |
@@ -3240,6 +3241,65 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **on_whats_app_automatic_event_request** | [**\Zernio\Model\OnWhatsAppAutomaticEventRequest**](../Model/OnWhatsAppAutomaticEventRequest.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onWhatsAppContactIdentityChanged()`
+
+```php
+onWhatsAppContactIdentityChanged($webhook_payload_whats_app_contact_identity_changed)
+```
+
+WhatsApp contact identity changed event
+
+Fired when a WhatsApp user changes phone number or Meta regenerates their business-scoped user id (BSUID). Carries the previous and current identifiers so you can re-key records stored against the old phone number or BSUID. Delivery is at-least-once; dedupe on the event `id`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_whats_app_contact_identity_changed = new \Zernio\Model\WebhookPayloadWhatsAppContactIdentityChanged(); // \Zernio\Model\WebhookPayloadWhatsAppContactIdentityChanged
+
+try {
+    $apiInstance->onWhatsAppContactIdentityChanged($webhook_payload_whats_app_contact_identity_changed);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onWhatsAppContactIdentityChanged: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_whats_app_contact_identity_changed** | [**\Zernio\Model\WebhookPayloadWhatsAppContactIdentityChanged**](../Model/WebhookPayloadWhatsAppContactIdentityChanged.md)|  | |
 
 ### Return type
 

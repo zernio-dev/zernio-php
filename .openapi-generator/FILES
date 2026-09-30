@@ -2589,6 +2589,8 @@ docs/Model/WebhookPayloadReviewUpdated.md
 docs/Model/WebhookPayloadTest.md
 docs/Model/WebhookPayloadWhatsAppAccountNameStatusUpdated.md
 docs/Model/WebhookPayloadWhatsAppAccountNameStatusUpdatedName.md
+docs/Model/WebhookPayloadWhatsAppContactIdentityChanged.md
+docs/Model/WebhookPayloadWhatsAppContactIdentityChangedAccount.md
 docs/Model/WebhookPayloadWhatsAppTemplateCategoryUpdated.md
 docs/Model/WebhookPayloadWhatsAppTemplateCategoryUpdatedTemplate.md
 docs/Model/WebhookPayloadWhatsAppTemplateStatusUpdated.md
@@ -2602,6 +2604,7 @@ docs/Model/WhatsAppCarouselCardComponent.md
 docs/Model/WhatsAppCarouselComponent.md
 docs/Model/WhatsAppCarouselComponentCardsInner.md
 docs/Model/WhatsAppCommerceSettings.md
+docs/Model/WhatsAppContactIdentity.md
 docs/Model/WhatsAppFooterComponent.md
 docs/Model/WhatsAppHeaderComponent.md
 docs/Model/WhatsAppHeaderComponentExample.md
@@ -5255,6 +5258,8 @@ lib/Model/WebhookPayloadReviewUpdated.php
 lib/Model/WebhookPayloadTest.php
 lib/Model/WebhookPayloadWhatsAppAccountNameStatusUpdated.php
 lib/Model/WebhookPayloadWhatsAppAccountNameStatusUpdatedName.php
+lib/Model/WebhookPayloadWhatsAppContactIdentityChanged.php
+lib/Model/WebhookPayloadWhatsAppContactIdentityChangedAccount.php
 lib/Model/WebhookPayloadWhatsAppTemplateCategoryUpdated.php
 lib/Model/WebhookPayloadWhatsAppTemplateCategoryUpdatedTemplate.php
 lib/Model/WebhookPayloadWhatsAppTemplateStatusUpdated.php
@@ -5268,6 +5273,7 @@ lib/Model/WhatsAppCarouselCardComponent.php
 lib/Model/WhatsAppCarouselComponent.php
 lib/Model/WhatsAppCarouselComponentCardsInner.php
 lib/Model/WhatsAppCommerceSettings.php
+lib/Model/WhatsAppContactIdentity.php
 lib/Model/WhatsAppFooterComponent.php
 lib/Model/WhatsAppHeaderComponent.php
 lib/Model/WhatsAppHeaderComponentExample.php
@@ -5331,5 +5337,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/WhatsAppBillingConversationTest.php
-test/Model/WhatsAppMessagePricingTest.php
+test/Model/WebhookPayloadWhatsAppContactIdentityChangedAccountTest.php
+test/Model/WebhookPayloadWhatsAppContactIdentityChangedTest.php
+test/Model/WhatsAppContactIdentityTest.php
