@@ -2594,6 +2594,7 @@ docs/Model/WebhookPayloadWhatsAppTemplateCategoryUpdatedTemplate.md
 docs/Model/WebhookPayloadWhatsAppTemplateStatusUpdated.md
 docs/Model/WebhookPayloadWhatsAppTemplateStatusUpdatedAccount.md
 docs/Model/WebhookPayloadWhatsAppTemplateStatusUpdatedTemplate.md
+docs/Model/WhatsAppBillingConversation.md
 docs/Model/WhatsAppBodyComponent.md
 docs/Model/WhatsAppBodyComponentExample.md
 docs/Model/WhatsAppButtonsComponent.md
@@ -2606,6 +2607,7 @@ docs/Model/WhatsAppHeaderComponent.md
 docs/Model/WhatsAppHeaderComponentExample.md
 docs/Model/WhatsAppLimitedTimeOfferComponent.md
 docs/Model/WhatsAppLimitedTimeOfferComponentLimitedTimeOffer.md
+docs/Model/WhatsAppMessagePricing.md
 docs/Model/WhatsAppNamedParamExample.md
 docs/Model/WhatsAppSandboxSession.md
 docs/Model/WhatsAppTemplateButton.md
@@ -5258,6 +5260,7 @@ lib/Model/WebhookPayloadWhatsAppTemplateCategoryUpdatedTemplate.php
 lib/Model/WebhookPayloadWhatsAppTemplateStatusUpdated.php
 lib/Model/WebhookPayloadWhatsAppTemplateStatusUpdatedAccount.php
 lib/Model/WebhookPayloadWhatsAppTemplateStatusUpdatedTemplate.php
+lib/Model/WhatsAppBillingConversation.php
 lib/Model/WhatsAppBodyComponent.php
 lib/Model/WhatsAppBodyComponentExample.php
 lib/Model/WhatsAppButtonsComponent.php
@@ -5270,6 +5273,7 @@ lib/Model/WhatsAppHeaderComponent.php
 lib/Model/WhatsAppHeaderComponentExample.php
 lib/Model/WhatsAppLimitedTimeOfferComponent.php
 lib/Model/WhatsAppLimitedTimeOfferComponentLimitedTimeOffer.php
+lib/Model/WhatsAppMessagePricing.php
 lib/Model/WhatsAppNamedParamExample.php
 lib/Model/WhatsAppSandboxSession.php
 lib/Model/WhatsAppTemplateButton.php
@@ -5327,3 +5331,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/WhatsAppBillingConversationTest.php
+test/Model/WhatsAppMessagePricingTest.php
