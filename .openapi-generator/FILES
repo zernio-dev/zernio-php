@@ -1673,6 +1673,7 @@ docs/Model/MetaAssignedUser.md
 docs/Model/MetaBusinessUser.md
 docs/Model/MetaCatalogProduct.md
 docs/Model/MetaCatalogProductInput.md
+docs/Model/MetaCustomerLifecycle.md
 docs/Model/MetaFeedUpload.md
 docs/Model/MetaInstagramIdentityRef.md
 docs/Model/MetaLeadForm.md
@@ -4335,6 +4336,7 @@ lib/Model/MetaAssignedUser.php
 lib/Model/MetaBusinessUser.php
 lib/Model/MetaCatalogProduct.php
 lib/Model/MetaCatalogProductInput.php
+lib/Model/MetaCustomerLifecycle.php
 lib/Model/MetaFeedUpload.php
 lib/Model/MetaInstagramIdentityRef.php
 lib/Model/MetaLeadForm.php
@@ -5325,3 +5327,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/MetaCustomerLifecycleTest.php
