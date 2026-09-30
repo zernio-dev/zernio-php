@@ -43,7 +43,7 @@ Name | Type | Description | Notes
 **interests** | [**\Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]**](CreateStandaloneAdRequestBehaviorsInner.md) |  | [optional]
 **audience_id** | **string** | Custom audience ID to target. | [optional]
 **placements** | [**\Zernio\Model\CtwaAdRequestBodyPlacements**](CtwaAdRequestBodyPlacements.md) |  | [optional]
-**gender** | **string** | Restrict the audience by gender (Meta &#x60;genders&#x60;). Stored on the ad and read back in &#x60;targeting.gender&#x60;. | [optional] [default to 'all']
+**gender** | **string** | Restrict the audience by gender (Meta &#x60;genders&#x60;). Omit or send all for everyone; all is ignored in adSetId attach mode. Stored on the ad and read back in &#x60;targeting.gender&#x60;. | [optional]
 **languages** | **string[]** | Audience languages (Meta &#x60;locales&#x60;). A bare ISO 639-1 code targets all regional variants (\&quot;en\&quot; &#x3D; all English), a region-qualified code a specific one (\&quot;en_GB\&quot;, \&quot;pt_BR\&quot;); unknown codes are rejected. | [optional]
 **places** | [**\Zernio\Model\CtwaAdRequestBodyPlacesInner[]**](CtwaAdRequestBodyPlacesInner.md) | Meta place keys (from GET /v1/ads/targeting/search). | [optional]
 **neighborhoods** | [**\Zernio\Model\CtwaAdRequestBodyPlacesInner[]**](CtwaAdRequestBodyPlacesInner.md) | Meta neighborhood keys (from GET /v1/ads/targeting/search). | [optional]
