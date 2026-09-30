@@ -31,6 +31,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onMessageDelivered()**](WebhookEventsApi.md#onMessageDelivered) | **POST** /message.delivered | Message delivered event |
 | [**onMessageEdited()**](WebhookEventsApi.md#onMessageEdited) | **POST** /message.edited | Message edited event |
 | [**onMessageFailed()**](WebhookEventsApi.md#onMessageFailed) | **POST** /message.failed | Message delivery failed event |
+| [**onMessagePlayed()**](WebhookEventsApi.md#onMessagePlayed) | **POST** /message.played | Message played event |
 | [**onMessageRead()**](WebhookEventsApi.md#onMessageRead) | **POST** /message.read | Message read event |
 | [**onMessageReceived()**](WebhookEventsApi.md#onMessageReceived) | **POST** /message.received | Message received event |
 | [**onMessageSent()**](WebhookEventsApi.md#onMessageSent) | **POST** /message.sent | Message sent event |
@@ -1525,6 +1526,65 @@ try {
     $apiInstance->onMessageFailed($webhook_payload_message_delivery_status);
 } catch (Exception $e) {
     echo 'Exception when calling WebhookEventsApi->onMessageFailed: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_message_delivery_status** | [**\Zernio\Model\WebhookPayloadMessageDeliveryStatus**](../Model/WebhookPayloadMessageDeliveryStatus.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onMessagePlayed()`
+
+```php
+onMessagePlayed($webhook_payload_message_delivery_status)
+```
+
+Message played event
+
+Fires the first time the recipient plays a voice message you sent on WhatsApp.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_message_delivery_status = new \Zernio\Model\WebhookPayloadMessageDeliveryStatus(); // \Zernio\Model\WebhookPayloadMessageDeliveryStatus
+
+try {
+    $apiInstance->onMessagePlayed($webhook_payload_message_delivery_status);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onMessagePlayed: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
