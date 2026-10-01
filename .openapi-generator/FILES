@@ -1993,8 +1993,10 @@ docs/Model/SelectInstagramAccountRequest.md
 docs/Model/SelectLinkedInOrganization200Response.md
 docs/Model/SelectLinkedInOrganization200ResponseAccount.md
 docs/Model/SelectLinkedInOrganization200ResponseBulkRefresh.md
+docs/Model/SelectLinkedInOrganization200ResponseFailedInner.md
 docs/Model/SelectLinkedInOrganizationRequest.md
 docs/Model/SelectLinkedInOrganizationRequestSelectedOrganization.md
+docs/Model/SelectLinkedInOrganizationRequestSelectionsInner.md
 docs/Model/SelectPinterestBoard200Response.md
 docs/Model/SelectPinterestBoard200ResponseAccount.md
 docs/Model/SelectPinterestBoardRequest.md
@@ -4682,8 +4684,10 @@ lib/Model/SelectInstagramAccountRequest.php
 lib/Model/SelectLinkedInOrganization200Response.php
 lib/Model/SelectLinkedInOrganization200ResponseAccount.php
 lib/Model/SelectLinkedInOrganization200ResponseBulkRefresh.php
+lib/Model/SelectLinkedInOrganization200ResponseFailedInner.php
 lib/Model/SelectLinkedInOrganizationRequest.php
 lib/Model/SelectLinkedInOrganizationRequestSelectedOrganization.php
+lib/Model/SelectLinkedInOrganizationRequestSelectionsInner.php
 lib/Model/SelectPinterestBoard200Response.php
 lib/Model/SelectPinterestBoard200ResponseAccount.php
 lib/Model/SelectPinterestBoardRequest.php
@@ -5377,4 +5381,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/SelectFacebookPage200ResponseFailedInnerTest.php
+test/Model/SelectLinkedInOrganization200ResponseFailedInnerTest.php
+test/Model/SelectLinkedInOrganizationRequestSelectionsInnerTest.php
