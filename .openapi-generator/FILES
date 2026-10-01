@@ -5375,11 +5375,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AnalyticsDashboardFollowersByAccountInnerTest.php
-test/Model/AnalyticsDashboardFollowersTest.php
-test/Model/AnalyticsDashboardPostMetricsTest.php
-test/Model/AnalyticsDashboardPostTest.php
-test/Model/AnalyticsDashboardTotalsTest.php
-test/Model/GetAnalyticsDashboard200ResponseDailyInnerTest.php
-test/Model/GetAnalyticsDashboard200ResponseDateRangeTest.php
-test/Model/GetAnalyticsDashboard200ResponseTest.php
