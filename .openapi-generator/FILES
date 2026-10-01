@@ -5397,11 +5397,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/ChangelogApiTest.php
-test/Model/ApiChangelogEntryChangesEndpointsTest.php
-test/Model/ApiChangelogEntryChangesSchemasTest.php
-test/Model/ApiChangelogEntryChangesTest.php
-test/Model/ApiChangelogEntryTest.php
-test/Model/ApiChangelogOperationRefTest.php
-test/Model/ListChangelog200ResponseTest.php
-test/Model/WebhookPayloadApiChangelogPublishedTest.php
