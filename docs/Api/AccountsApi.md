@@ -650,7 +650,7 @@ try {
 ## `listAccounts()`
 
 ```php
-listAccounts($profile_id, $platform, $status, $include_over_limit, $page, $limit): \Zernio\Model\AccountsListResponse
+listAccounts($profile_id, $platform, $status, $include_over_limit, $page, $limit, $profile_ids, $per_profile): \Zernio\Model\AccountsListResponse
 ```
 
 List accounts
@@ -680,9 +680,11 @@ $status = 'status_example'; // string | Filter accounts by connection status. `c
 $include_over_limit = false; // bool | When true, includes accounts from over-limit profiles.
 $page = 56; // int | Page number (1-based). Must be provided together with limit to enable server-side pagination; sending only one of the two returns 400. Omit both for all accounts.
 $limit = 56; // int | Page size. Must be provided together with page; sending only one of the two returns 400.
+$profile_ids = 'profile_ids_example'; // string | Comma-separated profile IDs (up to 50) to preview, together with perProfile. The response then also carries `profileTotals`.
+$per_profile = 56; // int | Return a preview of each profile in profileIds: the newest account of every platform it has, topped up to at least N. Requires profileIds; cannot be combined with page and limit.
 
 try {
-    $result = $apiInstance->listAccounts($profile_id, $platform, $status, $include_over_limit, $page, $limit);
+    $result = $apiInstance->listAccounts($profile_id, $platform, $status, $include_over_limit, $page, $limit, $profile_ids, $per_profile);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountsApi->listAccounts: ', $e->getMessage(), PHP_EOL;
@@ -699,6 +701,8 @@ try {
 | **include_over_limit** | **bool**| When true, includes accounts from over-limit profiles. | [optional] [default to false] |
 | **page** | **int**| Page number (1-based). Must be provided together with limit to enable server-side pagination; sending only one of the two returns 400. Omit both for all accounts. | [optional] |
 | **limit** | **int**| Page size. Must be provided together with page; sending only one of the two returns 400. | [optional] |
+| **profile_ids** | **string**| Comma-separated profile IDs (up to 50) to preview, together with perProfile. The response then also carries &#x60;profileTotals&#x60;. | [optional] |
+| **per_profile** | **int**| Return a preview of each profile in profileIds: the newest account of every platform it has, topped up to at least N. Requires profileIds; cannot be combined with page and limit. | [optional] |
 
 ### Return type
 
