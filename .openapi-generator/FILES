@@ -164,6 +164,11 @@ docs/Model/AdjustConversionsRequestAdjustmentsInnerUser.md
 docs/Model/AdsListResponse.md
 docs/Model/AdsTimelineResponse.md
 docs/Model/AdsTimelineResponseRowsInner.md
+docs/Model/AnalyticsDashboardFollowers.md
+docs/Model/AnalyticsDashboardFollowersByAccountInner.md
+docs/Model/AnalyticsDashboardPost.md
+docs/Model/AnalyticsDashboardPostMetrics.md
+docs/Model/AnalyticsDashboardTotals.md
 docs/Model/AnalyticsDeltaEntry.md
 docs/Model/AnalyticsDeltaEntryMetrics.md
 docs/Model/AnalyticsDeltaResponse.md
@@ -882,6 +887,9 @@ docs/Model/GetAllAccountsHealth200ResponseSummary.md
 docs/Model/GetAnalytics200Response.md
 docs/Model/GetAnalytics400Response.md
 docs/Model/GetAnalytics402Response.md
+docs/Model/GetAnalyticsDashboard200Response.md
+docs/Model/GetAnalyticsDashboard200ResponseDailyInner.md
+docs/Model/GetAnalyticsDashboard200ResponseDateRange.md
 docs/Model/GetBestTimeToPost200Response.md
 docs/Model/GetBestTimeToPost200ResponseSlotsInner.md
 docs/Model/GetBestTimeToPost403Response.md
@@ -2843,6 +2851,11 @@ lib/Model/AdjustConversionsRequestAdjustmentsInnerUser.php
 lib/Model/AdsListResponse.php
 lib/Model/AdsTimelineResponse.php
 lib/Model/AdsTimelineResponseRowsInner.php
+lib/Model/AnalyticsDashboardFollowers.php
+lib/Model/AnalyticsDashboardFollowersByAccountInner.php
+lib/Model/AnalyticsDashboardPost.php
+lib/Model/AnalyticsDashboardPostMetrics.php
+lib/Model/AnalyticsDashboardTotals.php
 lib/Model/AnalyticsDeltaEntry.php
 lib/Model/AnalyticsDeltaEntryMetrics.php
 lib/Model/AnalyticsDeltaResponse.php
@@ -3561,6 +3574,9 @@ lib/Model/GetAllAccountsHealth200ResponseSummary.php
 lib/Model/GetAnalytics200Response.php
 lib/Model/GetAnalytics400Response.php
 lib/Model/GetAnalytics402Response.php
+lib/Model/GetAnalyticsDashboard200Response.php
+lib/Model/GetAnalyticsDashboard200ResponseDailyInner.php
+lib/Model/GetAnalyticsDashboard200ResponseDateRange.php
 lib/Model/GetBestTimeToPost200Response.php
 lib/Model/GetBestTimeToPost200ResponseSlotsInner.php
 lib/Model/GetBestTimeToPost403Response.php
@@ -5359,3 +5375,11 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AnalyticsDashboardFollowersByAccountInnerTest.php
+test/Model/AnalyticsDashboardFollowersTest.php
+test/Model/AnalyticsDashboardPostMetricsTest.php
+test/Model/AnalyticsDashboardPostTest.php
+test/Model/AnalyticsDashboardTotalsTest.php
+test/Model/GetAnalyticsDashboard200ResponseDailyInnerTest.php
+test/Model/GetAnalyticsDashboard200ResponseDateRangeTest.php
+test/Model/GetAnalyticsDashboard200ResponseTest.php

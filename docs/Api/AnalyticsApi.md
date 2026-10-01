@@ -7,6 +7,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**getAnalytics()**](AnalyticsApi.md#getAnalytics) | **GET** /v1/analytics | Get post analytics |
+| [**getAnalyticsDashboard()**](AnalyticsApi.md#getAnalyticsDashboard) | **GET** /v1/analytics/dashboard | Get an analytics dashboard |
 | [**getAnalyticsDelta()**](AnalyticsApi.md#getAnalyticsDelta) | **GET** /v1/analytics/delta | Analytics changed since a cursor |
 | [**getBestTimeToPost()**](AnalyticsApi.md#getBestTimeToPost) | **GET** /v1/analytics/best-time | Get best times to post |
 | [**getContentDecay()**](AnalyticsApi.md#getContentDecay) | **GET** /v1/analytics/content-decay | Get content performance decay |
@@ -100,6 +101,78 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetAnalytics200Response**](../Model/GetAnalytics200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getAnalyticsDashboard()`
+
+```php
+getAnalyticsDashboard($from_date, $to_date, $profile_id, $platform, $compare, $top_posts, $recent_posts): \Zernio\Model\GetAnalyticsDashboard200Response
+```
+
+Get an analytics dashboard
+
+Everything an analytics dashboard needs in one call: window totals, follower growth, a per-day series, top posts, recent posts and, optionally, the same figures for the previous period. Daily and total metrics use received attribution: each day holds the engagement that arrived that day, on any post, so `totals` is always the sum of `daily`. `topPosts` and `recentPosts` list posts published in the window with their lifetime metrics. A post cross-posted to several platforms appears once per platform. All dates are UTC days. Requires the Analytics add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$from_date = 2026-09-01; // \DateTime | First day of the window (YYYY-MM-DD, inclusive).
+$to_date = 2026-09-30; // \DateTime | Last day of the window (YYYY-MM-DD, inclusive). May equal fromDate. The window covers at most 366 days.
+$profile_id = 'all'; // string | Profile ID, or \"all\" for every profile you can access.
+$platform = 'all'; // string | Platform to cover (e.g. \"instagram\"), or \"all\".
+$compare = 'compare_example'; // string | Set to \"previous_period\" to also return previousTotals and previousFollowers for the window of the same length that ends the day before fromDate.
+$top_posts = 5; // int | How many top posts to return, ranked by engagement (likes, comments, shares and saves, the same sum as daily engagement).
+$recent_posts = 10; // int | How many of the most recently published posts to return.
+
+try {
+    $result = $apiInstance->getAnalyticsDashboard($from_date, $to_date, $profile_id, $platform, $compare, $top_posts, $recent_posts);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->getAnalyticsDashboard: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **from_date** | **\DateTime**| First day of the window (YYYY-MM-DD, inclusive). | |
+| **to_date** | **\DateTime**| Last day of the window (YYYY-MM-DD, inclusive). May equal fromDate. The window covers at most 366 days. | |
+| **profile_id** | **string**| Profile ID, or \&quot;all\&quot; for every profile you can access. | [optional] [default to &#39;all&#39;] |
+| **platform** | **string**| Platform to cover (e.g. \&quot;instagram\&quot;), or \&quot;all\&quot;. | [optional] [default to &#39;all&#39;] |
+| **compare** | **string**| Set to \&quot;previous_period\&quot; to also return previousTotals and previousFollowers for the window of the same length that ends the day before fromDate. | [optional] |
+| **top_posts** | **int**| How many top posts to return, ranked by engagement (likes, comments, shares and saves, the same sum as daily engagement). | [optional] [default to 5] |
+| **recent_posts** | **int**| How many of the most recently published posts to return. | [optional] [default to 10] |
+
+### Return type
+
+[**\Zernio\Model\GetAnalyticsDashboard200Response**](../Model/GetAnalyticsDashboard200Response.md)
 
 ### Authorization
 
