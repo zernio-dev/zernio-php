@@ -1978,6 +1978,7 @@ docs/Model/SearchTweets200ResponseTweetsInner.md
 docs/Model/SearchTweets200ResponseTweetsInnerAuthor.md
 docs/Model/SelectFacebookPage200Response.md
 docs/Model/SelectFacebookPage200ResponseAccount.md
+docs/Model/SelectFacebookPage200ResponseFailedInner.md
 docs/Model/SelectFacebookPageRequest.md
 docs/Model/SelectFacebookPageRequestOneOf.md
 docs/Model/SelectFacebookPageRequestOneOf1.md
@@ -4666,6 +4667,7 @@ lib/Model/SearchTweets200ResponseTweetsInner.php
 lib/Model/SearchTweets200ResponseTweetsInnerAuthor.php
 lib/Model/SelectFacebookPage200Response.php
 lib/Model/SelectFacebookPage200ResponseAccount.php
+lib/Model/SelectFacebookPage200ResponseFailedInner.php
 lib/Model/SelectFacebookPageRequest.php
 lib/Model/SelectFacebookPageRequestOneOf.php
 lib/Model/SelectFacebookPageRequestOneOf1.php
@@ -5375,3 +5377,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/SelectFacebookPage200ResponseFailedInnerTest.php
