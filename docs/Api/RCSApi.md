@@ -91,7 +91,7 @@ createRcsAgent($create_rcs_agent_request, $idempotency_key): \Zernio\Model\Creat
 
 Request an RCS agent
 
-Requests a new agent for a profile, with a new company (`brand`) or an existing one (`brandId`, skips vetting when it is already verified). The request lands in our review: nothing is filed with the carriers or billed until we submit it. One open agent per profile. Requires usage-based billing and a card on file. Send an `Idempotency-Key` header to make retries safe.
+Requests a new agent for a profile, with a new company (`brand`) or an existing one (`brandId`, skips vetting when it is already verified). The request lands in our review: nothing is filed with the carriers or billed until we submit it. A profile can hold several agents. Requires usage-based billing and a card on file. Send an `Idempotency-Key` header to make retries safe.
 
 ### Example
 
