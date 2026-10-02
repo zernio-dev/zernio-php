@@ -650,7 +650,7 @@ try {
 ## `listAccounts()`
 
 ```php
-listAccounts($profile_id, $platform, $status, $include_over_limit, $page, $limit, $profile_ids, $per_profile): \Zernio\Model\AccountsListResponse
+listAccounts($profile_id, $platform, $status, $search, $category, $sort, $order, $include_over_limit, $page, $limit, $profile_ids, $per_profile): \Zernio\Model\AccountsListResponse
 ```
 
 List accounts
@@ -677,6 +677,10 @@ $apiInstance = new Zernio\Api\AccountsApi(
 $profile_id = 'profile_id_example'; // string | Filter accounts by profile ID. Must be a valid ObjectId.
 $platform = 'platform_example'; // string | Filter accounts by platform (e.g. \"instagram\", \"twitter\").
 $status = 'status_example'; // string | Filter accounts by connection status. `connected` returns healthy accounts; `disconnected` returns accounts that need reconnection (per the same reconnection check surfaced in the dashboard). Omit to return accounts in any status. When combined with page/limit, pagination totals reflect the filtered result set.
+$search = 'search_example'; // string | Case-insensitive match on the account username, display name or platform user id, or an exact account id. Combine with page/limit to paginate the matches.
+$category = 'category_example'; // string | Only accounts of this kind. ads = ad accounts (Meta, Google, LinkedIn, Pinterest, TikTok, X, OpenAI), communication = WhatsApp, Telegram, Discord, Slack and iMessage, blogs = Shopify and WordPress, social = every other platform.
+$sort = 'sort_example'; // string | Sort a paginated listing (page/limit) by account name, platform, profile name, status (accounts needing a reconnect first when ascending) or connection date. Ties keep the default order: platform, then newest first.
+$order = 'asc'; // string | Direction for `sort`.
 $include_over_limit = false; // bool | When true, includes accounts from over-limit profiles.
 $page = 56; // int | Page number (1-based). Must be provided together with limit to enable server-side pagination; sending only one of the two returns 400. Omit both for all accounts.
 $limit = 56; // int | Page size. Must be provided together with page; sending only one of the two returns 400.
@@ -684,7 +688,7 @@ $profile_ids = 'profile_ids_example'; // string | Comma-separated profile IDs (u
 $per_profile = 56; // int | Return a preview of each profile in profileIds: the newest account of every platform it has, topped up to at least N. Requires profileIds; cannot be combined with page and limit.
 
 try {
-    $result = $apiInstance->listAccounts($profile_id, $platform, $status, $include_over_limit, $page, $limit, $profile_ids, $per_profile);
+    $result = $apiInstance->listAccounts($profile_id, $platform, $status, $search, $category, $sort, $order, $include_over_limit, $page, $limit, $profile_ids, $per_profile);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountsApi->listAccounts: ', $e->getMessage(), PHP_EOL;
@@ -698,6 +702,10 @@ try {
 | **profile_id** | **string**| Filter accounts by profile ID. Must be a valid ObjectId. | [optional] |
 | **platform** | **string**| Filter accounts by platform (e.g. \&quot;instagram\&quot;, \&quot;twitter\&quot;). | [optional] |
 | **status** | **string**| Filter accounts by connection status. &#x60;connected&#x60; returns healthy accounts; &#x60;disconnected&#x60; returns accounts that need reconnection (per the same reconnection check surfaced in the dashboard). Omit to return accounts in any status. When combined with page/limit, pagination totals reflect the filtered result set. | [optional] |
+| **search** | **string**| Case-insensitive match on the account username, display name or platform user id, or an exact account id. Combine with page/limit to paginate the matches. | [optional] |
+| **category** | **string**| Only accounts of this kind. ads &#x3D; ad accounts (Meta, Google, LinkedIn, Pinterest, TikTok, X, OpenAI), communication &#x3D; WhatsApp, Telegram, Discord, Slack and iMessage, blogs &#x3D; Shopify and WordPress, social &#x3D; every other platform. | [optional] |
+| **sort** | **string**| Sort a paginated listing (page/limit) by account name, platform, profile name, status (accounts needing a reconnect first when ascending) or connection date. Ties keep the default order: platform, then newest first. | [optional] |
+| **order** | **string**| Direction for &#x60;sort&#x60;. | [optional] [default to &#39;asc&#39;] |
 | **include_over_limit** | **bool**| When true, includes accounts from over-limit profiles. | [optional] [default to false] |
 | **page** | **int**| Page number (1-based). Must be provided together with limit to enable server-side pagination; sending only one of the two returns 400. Omit both for all accounts. | [optional] |
 | **limit** | **int**| Page size. Must be provided together with page; sending only one of the two returns 400. | [optional] |
