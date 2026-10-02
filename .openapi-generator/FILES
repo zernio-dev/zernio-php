@@ -1994,7 +1994,9 @@ docs/Model/SelectFacebookPageRequestOneOfNot.md
 docs/Model/SelectFacebookPageRequestOneOfUserProfile.md
 docs/Model/SelectGoogleBusinessLocation200Response.md
 docs/Model/SelectGoogleBusinessLocation200ResponseAccount.md
+docs/Model/SelectGoogleBusinessLocation200ResponseFailedInner.md
 docs/Model/SelectGoogleBusinessLocationRequest.md
+docs/Model/SelectGoogleBusinessLocationRequestLocationsInner.md
 docs/Model/SelectInstagramAccount200Response.md
 docs/Model/SelectInstagramAccount200ResponseAccount.md
 docs/Model/SelectInstagramAccountRequest.md
@@ -4694,7 +4696,9 @@ lib/Model/SelectFacebookPageRequestOneOfNot.php
 lib/Model/SelectFacebookPageRequestOneOfUserProfile.php
 lib/Model/SelectGoogleBusinessLocation200Response.php
 lib/Model/SelectGoogleBusinessLocation200ResponseAccount.php
+lib/Model/SelectGoogleBusinessLocation200ResponseFailedInner.php
 lib/Model/SelectGoogleBusinessLocationRequest.php
+lib/Model/SelectGoogleBusinessLocationRequestLocationsInner.php
 lib/Model/SelectInstagramAccount200Response.php
 lib/Model/SelectInstagramAccount200ResponseAccount.php
 lib/Model/SelectInstagramAccountRequest.php
@@ -5399,3 +5403,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/SelectGoogleBusinessLocation200ResponseFailedInnerTest.php
+test/Model/SelectGoogleBusinessLocationRequestLocationsInnerTest.php
