@@ -1919,6 +1919,8 @@ docs/Model/ReplyToMentionRequest.md
 docs/Model/ReplyToPhoneNumberReviewer200Response.md
 docs/Model/ReplyToPhoneNumberReviewerRequest.md
 docs/Model/ReplyToPhoneNumberReviewerRequestAttachmentsInner.md
+docs/Model/RequestPhoneNumberWhatsAppCode200Response.md
+docs/Model/RequestPhoneNumberWhatsAppCodeRequest.md
 docs/Model/RequestSmsSenderIdLimitIncrease200Response.md
 docs/Model/RequestSmsSenderIdLimitIncreaseRequest.md
 docs/Model/RequestWhatsAppVerificationCode200Response.md
@@ -4618,6 +4620,8 @@ lib/Model/ReplyToMentionRequest.php
 lib/Model/ReplyToPhoneNumberReviewer200Response.php
 lib/Model/ReplyToPhoneNumberReviewerRequest.php
 lib/Model/ReplyToPhoneNumberReviewerRequestAttachmentsInner.php
+lib/Model/RequestPhoneNumberWhatsAppCode200Response.php
+lib/Model/RequestPhoneNumberWhatsAppCodeRequest.php
 lib/Model/RequestSmsSenderIdLimitIncrease200Response.php
 lib/Model/RequestSmsSenderIdLimitIncreaseRequest.php
 lib/Model/RequestWhatsAppVerificationCode200Response.php
@@ -5397,3 +5401,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/RequestPhoneNumberWhatsAppCode200ResponseTest.php
+test/Model/RequestPhoneNumberWhatsAppCodeRequestTest.php

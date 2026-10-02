@@ -28,6 +28,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**releasePhoneNumber()**](PhoneNumbersApi.md#releasePhoneNumber) | **DELETE** /v1/phone-numbers/{id} | Release phone number |
 | [**remediatePhoneNumber()**](PhoneNumbersApi.md#remediatePhoneNumber) | **POST** /v1/phone-numbers/{id}/remediate | Resubmit a declined number |
 | [**replyToPhoneNumberReviewer()**](PhoneNumbersApi.md#replyToPhoneNumberReviewer) | **POST** /v1/phone-numbers/{id}/remediate/reply | Reply to the regulatory reviewer |
+| [**requestPhoneNumberWhatsAppCode()**](PhoneNumbersApi.md#requestPhoneNumberWhatsAppCode) | **POST** /v1/phone-numbers/{id}/whatsapp/request-code | Request the WhatsApp verification code for a number |
 | [**respondToPhoneNumberReviewer()**](PhoneNumbersApi.md#respondToPhoneNumberReviewer) | **POST** /v1/phone-numbers/{id}/remediate/respond | Respond to the regulatory reviewer (message + corrections) |
 | [**reviewPhoneNumberKycPacket()**](PhoneNumbersApi.md#reviewPhoneNumberKycPacket) | **POST** /v1/phone-numbers/kyc/review-packet | Pre-review a KYC packet |
 | [**searchAvailablePhoneNumbers()**](PhoneNumbersApi.md#searchAvailablePhoneNumbers) | **GET** /v1/phone-numbers/available | Search available numbers |
@@ -1341,6 +1342,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\ReplyToPhoneNumberReviewer200Response**](../Model/ReplyToPhoneNumberReviewer200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `requestPhoneNumberWhatsAppCode()`
+
+```php
+requestPhoneNumberWhatsAppCode($id, $request_phone_number_whats_app_code_request): \Zernio\Model\RequestPhoneNumberWhatsAppCode200Response
+```
+
+Request the WhatsApp verification code for a number
+
+Starts (or restarts) WhatsApp verification of a Zernio-hosted number: adds it to Meta's pre-verified pool when needed and asks Meta to send the verification code, which Zernio captures on the number itself. Used to connect WhatsApp on a number bought for calls or SMS. `/v1/whatsapp/phone-numbers/{id}/request-code` is a deprecated alias with the same contract.  When Meta refuses the number for WhatsApp (Meta error 136021): a number that is already live (`active` or `suspended`) is left untouched and keeps working for calls and SMS, and the call answers 409 `number_not_whatsapp_eligible`; buy a new number with WhatsApp enabled instead. A number that was never live (still verifying) is replaced at no extra cost with a WhatsApp-eligible number on the same record, answered as 200 with `replaced: true`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\PhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | Phone number record ID (from GET /v1/phone-numbers).
+$request_phone_number_whats_app_code_request = new \Zernio\Model\RequestPhoneNumberWhatsAppCodeRequest(); // \Zernio\Model\RequestPhoneNumberWhatsAppCodeRequest
+
+try {
+    $result = $apiInstance->requestPhoneNumberWhatsAppCode($id, $request_phone_number_whats_app_code_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PhoneNumbersApi->requestPhoneNumberWhatsAppCode: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| Phone number record ID (from GET /v1/phone-numbers). | |
+| **request_phone_number_whats_app_code_request** | [**\Zernio\Model\RequestPhoneNumberWhatsAppCodeRequest**](../Model/RequestPhoneNumberWhatsAppCodeRequest.md)|  | [optional] |
+
+### Return type
+
+[**\Zernio\Model\RequestPhoneNumberWhatsAppCode200Response**](../Model/RequestPhoneNumberWhatsAppCode200Response.md)
 
 ### Authorization
 
