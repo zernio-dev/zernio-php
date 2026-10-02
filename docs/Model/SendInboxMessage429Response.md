@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **type** | **string** | Error class for programmatic handling. |
 **code** | **string** |  |
 **param** | **string** | The request field that caused the error, when applicable. | [optional]
+**doc_url** | **string** | Documentation page for resolving the error, when one applies. | [optional]
 **platform** | **string** |  |
 **platform_error** | [**\Zernio\Model\WhatsAppTemplateLookupErrorPlatformError**](WhatsAppTemplateLookupErrorPlatformError.md) |  | [optional]
 **details** | [**\Zernio\Model\WhatsAppTemplateLookupErrorDetails**](WhatsAppTemplateLookupErrorDetails.md) |  |

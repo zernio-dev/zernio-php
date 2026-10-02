@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **type** | **string** | Error class for programmatic handling. | [optional]
 **code** | **string** | Stable machine-readable error code. | [optional]
 **param** | **string** | The request field that caused the error, when applicable. | [optional]
+**doc_url** | **string** | Documentation page for resolving the error, when one applies. | [optional]
 **platform** | **string** | Upstream platform (e.g. meta, google, tiktok), present when type is platform_error. | [optional]
 **platform_error** | **array<string,mixed>** | Raw error payload from the upstream platform, passed through verbatim so integrators can read provider-specific codes. For Meta this includes error_subcode, error_user_title, and error_user_msg. | [optional]
 **details** | [**\Zernio\Model\ErrorResponseDetails**](ErrorResponseDetails.md) |  | [optional]
