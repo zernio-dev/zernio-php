@@ -27,6 +27,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**editGoogleAssetGroupAssets()**](AdCampaignsApi.md#editGoogleAssetGroupAssets) | **POST** /v1/ads/campaigns/{campaignId}/asset-groups/{assetGroupId}/assets | Link or unlink asset group assets |
 | [**getAd()**](AdCampaignsApi.md#getAd) | **GET** /v1/ads/{adId} | Get ad details |
 | [**getAdCampaignDetails()**](AdCampaignsApi.md#getAdCampaignDetails) | **GET** /v1/ads/campaigns/{campaignId} | Get live campaign details |
+| [**getAdReview()**](AdCampaignsApi.md#getAdReview) | **GET** /v1/ads/{adId}/review | Read the platform&#39;s review verdict for an ad |
 | [**getAdSetDetails()**](AdCampaignsApi.md#getAdSetDetails) | **GET** /v1/ads/ad-sets/{adSetId} | Get live ad-set details |
 | [**getAdTree()**](AdCampaignsApi.md#getAdTree) | **GET** /v1/ads/tree | Get campaign tree |
 | [**getAdsTimeline()**](AdCampaignsApi.md#getAdsTimeline) | **GET** /v1/ads/timeline | Get daily account metrics |
@@ -1353,6 +1354,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetAdCampaignDetails200Response**](../Model/GetAdCampaignDetails200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getAdReview()`
+
+```php
+getAdReview($ad_id): \Zernio\Model\GetAdReview200Response
+```
+
+Read the platform's review verdict for an ad
+
+Reads the ad's review verdict from the platform now: whether it was approved, where it may not deliver, and every rejection reason with TikTok's suggestion and the piece of content it refers to. Read-only, so it works on a paused ad without re-enabling it.  TikTok only (`/ad/review_info/`); every other platform returns 501. Use it alongside the ad's `platformStatus`: TikTok reports `AD_STATUS_AUDIT` while the ad is in review and `AD_STATUS_AD_PRE_ONLINE` once it passed and is about to deliver (both map to `status: pending_review`); `AD_STATUS_AUDIT_DENY` maps to `rejected`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$ad_id = 'ad_id_example'; // string | Zernio ad id (24-char hex) or the platform ad id.
+
+try {
+    $result = $apiInstance->getAdReview($ad_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->getAdReview: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ad_id** | **string**| Zernio ad id (24-char hex) or the platform ad id. | |
+
+### Return type
+
+[**\Zernio\Model\GetAdReview200Response**](../Model/GetAdReview200Response.md)
 
 ### Authorization
 
