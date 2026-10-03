@@ -246,6 +246,7 @@ docs/Model/BoostPostRequestPlatformSpecificData.md
 docs/Model/BoostPostRequestPromoCodesInner.md
 docs/Model/BoostPostRequestPromotedObject.md
 docs/Model/BoostPostRequestSchedule.md
+docs/Model/BoostPostRequestSmartTargeting.md
 docs/Model/BoostPostRequestSparkPostsInner.md
 docs/Model/BoostPostRequestTargeting.md
 docs/Model/BoostPostRequestTargetingCitiesInner.md
@@ -2265,6 +2266,7 @@ docs/Model/UpdateAdSetRequest.md
 docs/Model/UpdateAdSetRequestBudget.md
 docs/Model/UpdateAdSetRequestPlatformSpecificData.md
 docs/Model/UpdateAdSetRequestPlatformSpecificDataPromotedObject.md
+docs/Model/UpdateAdSetRequestSmartTargeting.md
 docs/Model/UpdateAdSetStatus200Response.md
 docs/Model/UpdateAdStatus200Response.md
 docs/Model/UpdateAdTrackingTags200Response.md
@@ -2951,6 +2953,7 @@ lib/Model/BoostPostRequestPlatformSpecificData.php
 lib/Model/BoostPostRequestPromoCodesInner.php
 lib/Model/BoostPostRequestPromotedObject.php
 lib/Model/BoostPostRequestSchedule.php
+lib/Model/BoostPostRequestSmartTargeting.php
 lib/Model/BoostPostRequestSparkPostsInner.php
 lib/Model/BoostPostRequestTargeting.php
 lib/Model/BoostPostRequestTargetingCitiesInner.php
@@ -4971,6 +4974,7 @@ lib/Model/UpdateAdSetRequest.php
 lib/Model/UpdateAdSetRequestBudget.php
 lib/Model/UpdateAdSetRequestPlatformSpecificData.php
 lib/Model/UpdateAdSetRequestPlatformSpecificDataPromotedObject.php
+lib/Model/UpdateAdSetRequestSmartTargeting.php
 lib/Model/UpdateAdSetStatus200Response.php
 lib/Model/UpdateAdStatus200Response.php
 lib/Model/UpdateAdTrackingTags200Response.php
@@ -5411,3 +5415,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/BoostPostRequestSmartTargetingTest.php
+test/Model/UpdateAdSetRequestSmartTargetingTest.php
