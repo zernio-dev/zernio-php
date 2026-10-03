@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **review_status** | [**\Zernio\Model\AdReviewStatus**](AdReviewStatus.md) |  | [optional]
 **platform_campaign_status** | **string** | Raw platform-level campaign status (Meta &#x60;effective_status&#x60;; ChatGPT (OpenAI): the campaign&#39;s own switch, active / paused / archived; TikTok: the campaign&#39;s own switch &#x60;operation_status&#x60;, ENABLE / DISABLE). | [optional]
 **status_read_at** | **\DateTime** | Only on GET /v1/ads/campaigns with &#x60;live&#x3D;true&#x60;. When &#x60;platformCampaignStatus&#x60; was read from the platform; null when this campaign could not be read live. | [optional]
+**native_settings** | **array<string,mixed>** | TikTok only, only on GET /v1/ads/campaigns with &#x60;live&#x3D;true&#x60; and only on campaigns read live. TikTok&#39;s campaign/get record verbatim: operation_status, objective_type, budget_mode (BUDGET_MODE_INFINITE means no campaign budget, so budget lives on the ad groups), budget, and budget_optimize_on when TikTok returns it. Plus advertiser_currency and advertiser_timezone from TikTok&#39;s advertiser/info. | [optional]
+**config_read_at** | **\DateTime** | Only on GET /v1/ads/campaigns with &#x60;live&#x3D;true&#x60;. When &#x60;nativeSettings&#x60; was read from the platform. Null whenever native settings were not read now. | [optional]
 **campaign_issues_info** | **object[]** | Platform-reported campaign issues (Meta &#x60;issues_info[]&#x60;). | [optional]
 **ad_count** | **int** |  | [optional]
 **budget** | [**\Zernio\Model\AdCampaignBudget**](AdCampaignBudget.md) |  | [optional]

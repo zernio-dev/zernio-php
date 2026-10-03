@@ -5411,7 +5411,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetAdReview200ResponseReviewRejectionsInnerContentTest.php
-test/Model/GetAdReview200ResponseReviewRejectionsInnerTest.php
-test/Model/GetAdReview200ResponseReviewTest.php
-test/Model/GetAdReview200ResponseTest.php
