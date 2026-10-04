@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * UploadedOrDerivedAudience Class Doc Comment
  *
  * @category Class
- * @description customer_list, website, or lookalike audience (uploaded or derived from a source).
+ * @description customer_list, website, lookalike or engagement audience (uploaded or derived from a source).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -78,6 +78,18 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
         'source_audience_id' => 'string',
         'country' => 'string',
         'ratio' => 'float',
+        'size' => 'string',
+        'source' => 'string',
+        'source_ids' => 'string[]',
+        'identity_id' => 'string',
+        'identity_type' => 'string',
+        'identity_authorized_bc_id' => 'string',
+        'engager_type' => 'int',
+        'engagement_type' => 'string',
+        'engagement_domains' => 'string[]',
+        'campaign_ids' => 'string[]',
+        'ad_ids' => 'string[]',
+        'pin_ids' => 'string[]',
         'url_contains' => 'string',
         'rule' => 'object',
         'customer_file_source' => 'string'
@@ -110,6 +122,18 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
         'source_audience_id' => null,
         'country' => null,
         'ratio' => null,
+        'size' => null,
+        'source' => null,
+        'source_ids' => null,
+        'identity_id' => null,
+        'identity_type' => null,
+        'identity_authorized_bc_id' => null,
+        'engager_type' => null,
+        'engagement_type' => null,
+        'engagement_domains' => null,
+        'campaign_ids' => null,
+        'ad_ids' => null,
+        'pin_ids' => null,
         'url_contains' => null,
         'rule' => null,
         'customer_file_source' => null
@@ -140,6 +164,18 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
         'source_audience_id' => false,
         'country' => false,
         'ratio' => false,
+        'size' => false,
+        'source' => false,
+        'source_ids' => false,
+        'identity_id' => false,
+        'identity_type' => false,
+        'identity_authorized_bc_id' => false,
+        'engager_type' => false,
+        'engagement_type' => false,
+        'engagement_domains' => false,
+        'campaign_ids' => false,
+        'ad_ids' => false,
+        'pin_ids' => false,
         'url_contains' => false,
         'rule' => false,
         'customer_file_source' => false
@@ -250,6 +286,18 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
         'source_audience_id' => 'sourceAudienceId',
         'country' => 'country',
         'ratio' => 'ratio',
+        'size' => 'size',
+        'source' => 'source',
+        'source_ids' => 'sourceIds',
+        'identity_id' => 'identityId',
+        'identity_type' => 'identityType',
+        'identity_authorized_bc_id' => 'identityAuthorizedBcId',
+        'engager_type' => 'engagerType',
+        'engagement_type' => 'engagementType',
+        'engagement_domains' => 'engagementDomains',
+        'campaign_ids' => 'campaignIds',
+        'ad_ids' => 'adIds',
+        'pin_ids' => 'pinIds',
         'url_contains' => 'urlContains',
         'rule' => 'rule',
         'customer_file_source' => 'customerFileSource'
@@ -280,6 +328,18 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
         'source_audience_id' => 'setSourceAudienceId',
         'country' => 'setCountry',
         'ratio' => 'setRatio',
+        'size' => 'setSize',
+        'source' => 'setSource',
+        'source_ids' => 'setSourceIds',
+        'identity_id' => 'setIdentityId',
+        'identity_type' => 'setIdentityType',
+        'identity_authorized_bc_id' => 'setIdentityAuthorizedBcId',
+        'engager_type' => 'setEngagerType',
+        'engagement_type' => 'setEngagementType',
+        'engagement_domains' => 'setEngagementDomains',
+        'campaign_ids' => 'setCampaignIds',
+        'ad_ids' => 'setAdIds',
+        'pin_ids' => 'setPinIds',
         'url_contains' => 'setUrlContains',
         'rule' => 'setRule',
         'customer_file_source' => 'setCustomerFileSource'
@@ -310,6 +370,18 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
         'source_audience_id' => 'getSourceAudienceId',
         'country' => 'getCountry',
         'ratio' => 'getRatio',
+        'size' => 'getSize',
+        'source' => 'getSource',
+        'source_ids' => 'getSourceIds',
+        'identity_id' => 'getIdentityId',
+        'identity_type' => 'getIdentityType',
+        'identity_authorized_bc_id' => 'getIdentityAuthorizedBcId',
+        'engager_type' => 'getEngagerType',
+        'engagement_type' => 'getEngagementType',
+        'engagement_domains' => 'getEngagementDomains',
+        'campaign_ids' => 'getCampaignIds',
+        'ad_ids' => 'getAdIds',
+        'pin_ids' => 'getPinIds',
         'url_contains' => 'getUrlContains',
         'rule' => 'getRule',
         'customer_file_source' => 'getCustomerFileSource'
@@ -360,6 +432,8 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
     public const TYPE_COMPANY_LIST = 'company_list';
     public const TYPE_ENGAGEMENT = 'engagement';
     public const TYPE_META_ENGAGEMENT = 'meta_engagement';
+    public const TYPE_TIKTOK_ENGAGEMENT = 'tiktok_engagement';
+    public const TYPE_PINTEREST_ENGAGEMENT = 'pinterest_engagement';
     public const TYPE_WEBSITE = 'website';
     public const TYPE_WEBSITE_RETARGETING = 'website_retargeting';
     public const TYPE_LOOKALIKE = 'lookalike';
@@ -376,6 +450,22 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
     public const ENGAGEMENT_SOURCE_PAGE = 'page';
     public const ENGAGEMENT_SOURCE_INSTAGRAM = 'instagram';
     public const ENGAGEMENT_SOURCE_VIDEO = 'video';
+    public const SIZE_NARROW = 'narrow';
+    public const SIZE_BALANCED = 'balanced';
+    public const SIZE_BROAD = 'broad';
+    public const SOURCE_ADS = 'ads';
+    public const SOURCE_ORGANIC_VIDEO = 'organic_video';
+    public const SOURCE_LIVE_VIDEO = 'live_video';
+    public const SOURCE_BUSINESS_ACCOUNT = 'business_account';
+    public const IDENTITY_TYPE_TT_USER = 'TT_USER';
+    public const IDENTITY_TYPE_BC_AUTH_TT = 'BC_AUTH_TT';
+    public const ENGAGER_TYPE_NUMBER_1 = 1;
+    public const ENGAGER_TYPE_NUMBER_2 = 2;
+    public const ENGAGEMENT_TYPE_CLICK = 'click';
+    public const ENGAGEMENT_TYPE_SAVE = 'save';
+    public const ENGAGEMENT_TYPE_CLOSEUP = 'closeup';
+    public const ENGAGEMENT_TYPE_COMMENT = 'comment';
+    public const ENGAGEMENT_TYPE_LIKE = 'like';
 
     /**
      * Gets allowable values of the enum
@@ -389,6 +479,8 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
             self::TYPE_COMPANY_LIST,
             self::TYPE_ENGAGEMENT,
             self::TYPE_META_ENGAGEMENT,
+            self::TYPE_TIKTOK_ENGAGEMENT,
+            self::TYPE_PINTEREST_ENGAGEMENT,
             self::TYPE_WEBSITE,
             self::TYPE_WEBSITE_RETARGETING,
             self::TYPE_LOOKALIKE,
@@ -442,6 +534,77 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSizeAllowableValues()
+    {
+        return [
+            self::SIZE_NARROW,
+            self::SIZE_BALANCED,
+            self::SIZE_BROAD,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSourceAllowableValues()
+    {
+        return [
+            self::SOURCE_ADS,
+            self::SOURCE_ORGANIC_VIDEO,
+            self::SOURCE_LIVE_VIDEO,
+            self::SOURCE_BUSINESS_ACCOUNT,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getIdentityTypeAllowableValues()
+    {
+        return [
+            self::IDENTITY_TYPE_TT_USER,
+            self::IDENTITY_TYPE_BC_AUTH_TT,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getEngagerTypeAllowableValues()
+    {
+        return [
+            self::ENGAGER_TYPE_NUMBER_1,
+            self::ENGAGER_TYPE_NUMBER_2,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getEngagementTypeAllowableValues()
+    {
+        return [
+            self::ENGAGEMENT_TYPE_CLICK,
+            self::ENGAGEMENT_TYPE_SAVE,
+            self::ENGAGEMENT_TYPE_CLOSEUP,
+            self::ENGAGEMENT_TYPE_COMMENT,
+            self::ENGAGEMENT_TYPE_LIKE,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -475,6 +638,18 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('source_audience_id', $data ?? [], null);
         $this->setIfExists('country', $data ?? [], null);
         $this->setIfExists('ratio', $data ?? [], null);
+        $this->setIfExists('size', $data ?? [], null);
+        $this->setIfExists('source', $data ?? [], null);
+        $this->setIfExists('source_ids', $data ?? [], null);
+        $this->setIfExists('identity_id', $data ?? [], null);
+        $this->setIfExists('identity_type', $data ?? [], null);
+        $this->setIfExists('identity_authorized_bc_id', $data ?? [], null);
+        $this->setIfExists('engager_type', $data ?? [], null);
+        $this->setIfExists('engagement_type', $data ?? [], null);
+        $this->setIfExists('engagement_domains', $data ?? [], null);
+        $this->setIfExists('campaign_ids', $data ?? [], null);
+        $this->setIfExists('ad_ids', $data ?? [], null);
+        $this->setIfExists('pin_ids', $data ?? [], null);
         $this->setIfExists('url_contains', $data ?? [], null);
         $this->setIfExists('rule', $data ?? [], null);
         $this->setIfExists('customer_file_source', $data ?? [], null);
@@ -574,8 +749,8 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
             $invalidProperties[] = "invalid value for 'companies', number of items must be greater than or equal to 1.";
         }
 
-        if (!is_null($this->container['retention_days']) && ($this->container['retention_days'] > 365)) {
-            $invalidProperties[] = "invalid value for 'retention_days', must be smaller than or equal to 365.";
+        if (!is_null($this->container['retention_days']) && ($this->container['retention_days'] > 540)) {
+            $invalidProperties[] = "invalid value for 'retention_days', must be smaller than or equal to 540.";
         }
 
         if (!is_null($this->container['retention_days']) && ($this->container['retention_days'] < 1)) {
@@ -591,12 +766,69 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
 
+        if (!is_null($this->container['event']) && (mb_strlen($this->container['event']) > 100)) {
+            $invalidProperties[] = "invalid value for 'event', the character length must be smaller than or equal to 100.";
+        }
+
         if (!is_null($this->container['ratio']) && ($this->container['ratio'] > 0.2)) {
             $invalidProperties[] = "invalid value for 'ratio', must be smaller than or equal to 0.2.";
         }
 
         if (!is_null($this->container['ratio']) && ($this->container['ratio'] < 0.01)) {
             $invalidProperties[] = "invalid value for 'ratio', must be bigger than or equal to 0.01.";
+        }
+
+        $allowedValues = $this->getSizeAllowableValues();
+        if (!is_null($this->container['size']) && !in_array($this->container['size'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'size', must be one of '%s'",
+                $this->container['size'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getSourceAllowableValues();
+        if (!is_null($this->container['source']) && !in_array($this->container['source'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'source', must be one of '%s'",
+                $this->container['source'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if (!is_null($this->container['source_ids']) && (count($this->container['source_ids']) > 50)) {
+            $invalidProperties[] = "invalid value for 'source_ids', number of items must be less than or equal to 50.";
+        }
+
+        if (!is_null($this->container['source_ids']) && (count($this->container['source_ids']) < 1)) {
+            $invalidProperties[] = "invalid value for 'source_ids', number of items must be greater than or equal to 1.";
+        }
+
+        $allowedValues = $this->getIdentityTypeAllowableValues();
+        if (!is_null($this->container['identity_type']) && !in_array($this->container['identity_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'identity_type', must be one of '%s'",
+                $this->container['identity_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getEngagerTypeAllowableValues();
+        if (!is_null($this->container['engager_type']) && !in_array($this->container['engager_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'engager_type', must be one of '%s'",
+                $this->container['engager_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getEngagementTypeAllowableValues();
+        if (!is_null($this->container['engagement_type']) && !in_array($this->container['engagement_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'engagement_type', must be one of '%s'",
+                $this->container['engagement_type'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -979,7 +1211,7 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets pixel_id
      *
-     * @param string|null $pixel_id Required for website audiences
+     * @param string|null $pixel_id website: the Meta pixel, TikTok pixel or Pinterest tag id. Required on those three, rejected on Google.
      *
      * @return self
      */
@@ -1006,7 +1238,7 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets retention_days
      *
-     * @param int|null $retention_days Required for website (max 180) and meta_engagement (max 365) audiences.
+     * @param int|null $retention_days Required for website (Meta max 180, TikTok 7/14/30/60/90/180, Pinterest and Google max 540), meta_engagement (max 365) and tiktok_engagement (7/14/30/60/90/180; organic and live video and most business-account events only 7/14/30).
      *
      * @return self
      */
@@ -1016,8 +1248,8 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable retention_days cannot be null');
         }
 
-        if (($retention_days > 365)) {
-            throw new \InvalidArgumentException('invalid value for $retention_days when calling UploadedOrDerivedAudience., must be smaller than or equal to 365.');
+        if (($retention_days > 540)) {
+            throw new \InvalidArgumentException('invalid value for $retention_days when calling UploadedOrDerivedAudience., must be smaller than or equal to 540.');
         }
         if (($retention_days < 1)) {
             throw new \InvalidArgumentException('invalid value for $retention_days when calling UploadedOrDerivedAudience., must be bigger than or equal to 1.');
@@ -1105,7 +1337,7 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets event
      *
-     * @param string|null $event meta_engagement only. The engagement event; defaults per source (page → page_engaged, instagram → ig_business_profile_all, video → video_watched). Ignored when `rule` is provided.
+     * @param string|null $event meta_engagement: the engagement event; defaults per source (page → page_engaged, instagram → ig_business_profile_all, video → video_watched). Ignored when `rule` is provided.  website on TikTok: the pixel event (default `PAGE BROWSE`). website on Pinterest: the tag event (`pagevisit`, `signup`, `checkout`, `viewcategory`, `search`, `addtocart`, `watchvideo`, `lead`, `custom` or a partner-defined event).  tiktok_engagement (required): the TikTok engagement event, validated per `source` (TikTok's filter values, spaces included): - ads: `CLICK`, `IMPRESSION`, `PLAY 2S`, `PLAY 6S`, `PLAY 25`, `PLAY 50`, `PLAY 75`,   `PLAY OVER`, and the `ENGAGEMENT APP PROFILE` / `ENGAGEMENT TIKTOK INSTANT` /   `ENGAGEMENT COLLECTION ADS` `CLICK` and `IMPRESSION` events. - organic_video: `ORGANIC VIDEO PLAY 2S`, `ORGANIC VIDEO PLAY 6S`,   `ORGANIC VIDEO PLAY OVER`, `ORGANIC VIDEO ENGAGEMENT`. - live_video: `LIVE VIDEO VIEW`, `LIVE VIDEO ENGAGEMENT`. - business_account: `BUSINESS ACCOUNT PROFILE FOLLOW`, `BUSINESS ACCOUNT PROFILE VISIT`,   `BUSINESS ACCOUNT ENGAGEMENT`, `BUSINESS ACCOUNT PLAY 2S`, `BUSINESS ACCOUNT PLAY 6S`,   `BUSINESS ACCOUNT PLAY OVER` and the rest of TikTok's business-account events. An unknown value is a 400 that lists the valid ones.
      *
      * @return self
      */
@@ -1114,6 +1346,10 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
         if (is_null($event)) {
             throw new \InvalidArgumentException('non-nullable event cannot be null');
         }
+        if ((mb_strlen($event) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $event when calling UploadedOrDerivedAudience., must be smaller than or equal to 100.');
+        }
+
         $this->container['event'] = $event;
 
         return $this;
@@ -1186,7 +1422,7 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets ratio
      *
-     * @param float|null $ratio Required for lookalike audiences
+     * @param float|null $ratio lookalike on Meta (0.01-0.20) and Pinterest (0.01-0.10, whole percents). Rejected on TikTok and Google.
      *
      * @return self
      */
@@ -1209,6 +1445,387 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets size
+     *
+     * @return string|null
+     */
+    public function getSize()
+    {
+        return $this->container['size'];
+    }
+
+    /**
+     * Sets size
+     *
+     * @param string|null $size lookalike on TikTok and Google: audience breadth. Rejected on Meta and Pinterest.
+     *
+     * @return self
+     */
+    public function setSize($size)
+    {
+        if (is_null($size)) {
+            throw new \InvalidArgumentException('non-nullable size cannot be null');
+        }
+        $allowedValues = $this->getSizeAllowableValues();
+        if (!in_array($size, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'size', must be one of '%s'",
+                    $size,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['size'] = $size;
+
+        return $this;
+    }
+
+    /**
+     * Gets source
+     *
+     * @return string|null
+     */
+    public function getSource()
+    {
+        return $this->container['source'];
+    }
+
+    /**
+     * Sets source
+     *
+     * @param string|null $source Required for tiktok_engagement: what people engaged with.
+     *
+     * @return self
+     */
+    public function setSource($source)
+    {
+        if (is_null($source)) {
+            throw new \InvalidArgumentException('non-nullable source cannot be null');
+        }
+        $allowedValues = $this->getSourceAllowableValues();
+        if (!in_array($source, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'source', must be one of '%s'",
+                    $source,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['source'] = $source;
+
+        return $this;
+    }
+
+    /**
+     * Gets source_ids
+     *
+     * @return string[]|null
+     */
+    public function getSourceIds()
+    {
+        return $this->container['source_ids'];
+    }
+
+    /**
+     * Sets source_ids
+     *
+     * @param string[]|null $source_ids tiktok_engagement: ad group / campaign ids for `ads`, video ids for `organic_video` and `live_video` (max 10). Required except for `business_account`.
+     *
+     * @return self
+     */
+    public function setSourceIds($source_ids)
+    {
+        if (is_null($source_ids)) {
+            throw new \InvalidArgumentException('non-nullable source_ids cannot be null');
+        }
+
+        if ((count($source_ids) > 50)) {
+            throw new \InvalidArgumentException('invalid value for $source_ids when calling UploadedOrDerivedAudience., number of items must be less than or equal to 50.');
+        }
+        if ((count($source_ids) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $source_ids when calling UploadedOrDerivedAudience., number of items must be greater than or equal to 1.');
+        }
+        $this->container['source_ids'] = $source_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets identity_id
+     *
+     * @return string|null
+     */
+    public function getIdentityId()
+    {
+        return $this->container['identity_id'];
+    }
+
+    /**
+     * Sets identity_id
+     *
+     * @param string|null $identity_id tiktok_engagement: the TikTok identity that owns the videos or business account. Required for organic_video, live_video and business_account.
+     *
+     * @return self
+     */
+    public function setIdentityId($identity_id)
+    {
+        if (is_null($identity_id)) {
+            throw new \InvalidArgumentException('non-nullable identity_id cannot be null');
+        }
+        $this->container['identity_id'] = $identity_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets identity_type
+     *
+     * @return string|null
+     */
+    public function getIdentityType()
+    {
+        return $this->container['identity_type'];
+    }
+
+    /**
+     * Sets identity_type
+     *
+     * @param string|null $identity_type tiktok_engagement: type of `identityId`.
+     *
+     * @return self
+     */
+    public function setIdentityType($identity_type)
+    {
+        if (is_null($identity_type)) {
+            throw new \InvalidArgumentException('non-nullable identity_type cannot be null');
+        }
+        $allowedValues = $this->getIdentityTypeAllowableValues();
+        if (!in_array($identity_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'identity_type', must be one of '%s'",
+                    $identity_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['identity_type'] = $identity_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets identity_authorized_bc_id
+     *
+     * @return string|null
+     */
+    public function getIdentityAuthorizedBcId()
+    {
+        return $this->container['identity_authorized_bc_id'];
+    }
+
+    /**
+     * Sets identity_authorized_bc_id
+     *
+     * @param string|null $identity_authorized_bc_id tiktok_engagement: required when identityType is BC_AUTH_TT.
+     *
+     * @return self
+     */
+    public function setIdentityAuthorizedBcId($identity_authorized_bc_id)
+    {
+        if (is_null($identity_authorized_bc_id)) {
+            throw new \InvalidArgumentException('non-nullable identity_authorized_bc_id cannot be null');
+        }
+        $this->container['identity_authorized_bc_id'] = $identity_authorized_bc_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets engager_type
+     *
+     * @return int|null
+     */
+    public function getEngagerType()
+    {
+        return $this->container['engager_type'];
+    }
+
+    /**
+     * Sets engager_type
+     *
+     * @param int|null $engager_type pinterest_engagement: Pinterest's `engager_type`, passed through when set.
+     *
+     * @return self
+     */
+    public function setEngagerType($engager_type)
+    {
+        if (is_null($engager_type)) {
+            throw new \InvalidArgumentException('non-nullable engager_type cannot be null');
+        }
+        $allowedValues = $this->getEngagerTypeAllowableValues();
+        if (!in_array($engager_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'engager_type', must be one of '%s'",
+                    $engager_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['engager_type'] = $engager_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets engagement_type
+     *
+     * @return string|null
+     */
+    public function getEngagementType()
+    {
+        return $this->container['engagement_type'];
+    }
+
+    /**
+     * Sets engagement_type
+     *
+     * @param string|null $engagement_type pinterest_engagement: limit to one engagement action.
+     *
+     * @return self
+     */
+    public function setEngagementType($engagement_type)
+    {
+        if (is_null($engagement_type)) {
+            throw new \InvalidArgumentException('non-nullable engagement_type cannot be null');
+        }
+        $allowedValues = $this->getEngagementTypeAllowableValues();
+        if (!in_array($engagement_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'engagement_type', must be one of '%s'",
+                    $engagement_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['engagement_type'] = $engagement_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets engagement_domains
+     *
+     * @return string[]|null
+     */
+    public function getEngagementDomains()
+    {
+        return $this->container['engagement_domains'];
+    }
+
+    /**
+     * Sets engagement_domains
+     *
+     * @param string[]|null $engagement_domains pinterest_engagement: people who engaged with Pins from these domains. The domain must be claimed on the Pinterest account or Pinterest rejects it.
+     *
+     * @return self
+     */
+    public function setEngagementDomains($engagement_domains)
+    {
+        if (is_null($engagement_domains)) {
+            throw new \InvalidArgumentException('non-nullable engagement_domains cannot be null');
+        }
+        $this->container['engagement_domains'] = $engagement_domains;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_ids
+     *
+     * @return string[]|null
+     */
+    public function getCampaignIds()
+    {
+        return $this->container['campaign_ids'];
+    }
+
+    /**
+     * Sets campaign_ids
+     *
+     * @param string[]|null $campaign_ids pinterest_engagement: people who engaged with these campaigns' ads.
+     *
+     * @return self
+     */
+    public function setCampaignIds($campaign_ids)
+    {
+        if (is_null($campaign_ids)) {
+            throw new \InvalidArgumentException('non-nullable campaign_ids cannot be null');
+        }
+        $this->container['campaign_ids'] = $campaign_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets ad_ids
+     *
+     * @return string[]|null
+     */
+    public function getAdIds()
+    {
+        return $this->container['ad_ids'];
+    }
+
+    /**
+     * Sets ad_ids
+     *
+     * @param string[]|null $ad_ids pinterest_engagement: people who engaged with these ads.
+     *
+     * @return self
+     */
+    public function setAdIds($ad_ids)
+    {
+        if (is_null($ad_ids)) {
+            throw new \InvalidArgumentException('non-nullable ad_ids cannot be null');
+        }
+        $this->container['ad_ids'] = $ad_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets pin_ids
+     *
+     * @return string[]|null
+     */
+    public function getPinIds()
+    {
+        return $this->container['pin_ids'];
+    }
+
+    /**
+     * Sets pin_ids
+     *
+     * @param string[]|null $pin_ids pinterest_engagement: people who engaged with these Pins. At least one of engagementDomains, campaignIds, adIds or pinIds is required.
+     *
+     * @return self
+     */
+    public function setPinIds($pin_ids)
+    {
+        if (is_null($pin_ids)) {
+            throw new \InvalidArgumentException('non-nullable pin_ids cannot be null');
+        }
+        $this->container['pin_ids'] = $pin_ids;
+
+        return $this;
+    }
+
+    /**
      * Gets url_contains
      *
      * @return string|null
@@ -1221,7 +1838,7 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets url_contains
      *
-     * @param string|null $url_contains website only. Narrows the audience from all visitors to visitors of URLs containing this substring. Ignored when `rule` is supplied.
+     * @param string|null $url_contains website on Meta, TikTok and Google. Narrows the audience from all visitors to visitors of URLs containing this substring. Ignored when `rule` is supplied. A 400 on Pinterest, which only matches exact URLs.
      *
      * @return self
      */
@@ -1248,7 +1865,7 @@ class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets rule
      *
-     * @param object|null $rule Optional raw Meta rule, replacing the one we build. Omit it for all visitors of `pixelId`, or use `urlContains` for the common page-match case.  For `website` this is Meta's Flexible Audience Rule and is VALIDATED before we call Meta: every entry in `inclusions.rules` (and `exclusions.rules`) must carry `event_sources`, `retention_seconds` AND `filter`. Meta rejects a rule missing any of the three with code 100 / subcode 1713098 (\"Invalid rule JSON format\"), so a bad shape is a 400 here instead. The pre-2018 flat shapes (`{url: ...}`, `{event: ...}`) are not accepted by Meta at all (subcode 1870029).  Example, visitors of /checkout in the last 30 days: `{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"id\":\"<pixelId>\",\"type\":\"pixel\"}],\"retention_seconds\":2592000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"/checkout\"}]}}]}}`  Note Meta DERIVES `retention_days` from `retention_seconds` and stores `event_sources[].id` as a number, so a rule read back will not be byte-identical to the one you sent.  For `meta_engagement` the rule is forwarded verbatim and NOT validated: that type has two dialects (the `video` source uses a legacy flat array), so no single schema covers both.
+     * @param object|null $rule Meta only (a 400 elsewhere). Optional raw Meta rule, replacing the one we build. Omit it for all visitors of `pixelId`, or use `urlContains` for the common page-match case.  For `website` this is Meta's Flexible Audience Rule and is VALIDATED before we call Meta: every entry in `inclusions.rules` (and `exclusions.rules`) must carry `event_sources`, `retention_seconds` AND `filter`. Meta rejects a rule missing any of the three with code 100 / subcode 1713098 (\"Invalid rule JSON format\"), so a bad shape is a 400 here instead. The pre-2018 flat shapes (`{url: ...}`, `{event: ...}`) are not accepted by Meta at all (subcode 1870029).  Example, visitors of /checkout in the last 30 days: `{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"id\":\"<pixelId>\",\"type\":\"pixel\"}],\"retention_seconds\":2592000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"/checkout\"}]}}]}}`  Note Meta DERIVES `retention_days` from `retention_seconds` and stores `event_sources[].id` as a number, so a rule read back will not be byte-identical to the one you sent.  For `meta_engagement` the rule is forwarded verbatim and NOT validated: that type has two dialects (the `video` source uses a legacy flat array), so no single schema covers both.
      *
      * @return self
      */
