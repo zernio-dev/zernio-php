@@ -959,6 +959,9 @@ docs/Model/GetDiscordSettings200ResponseAccount.md
 docs/Model/GetDsaDefaults200Response.md
 docs/Model/GetDsaDefaults200ResponseDsaDefaults.md
 docs/Model/GetDsaRecommendations200Response.md
+docs/Model/GetFacebookDemographics200Response.md
+docs/Model/GetFacebookDemographics200ResponseDemographics.md
+docs/Model/GetFacebookDemographics200ResponseDemographicsCountryInner.md
 docs/Model/GetFacebookPages200Response.md
 docs/Model/GetFacebookPages200ResponsePagesInner.md
 docs/Model/GetFacebookPostReactions200Response.md
@@ -3666,6 +3669,9 @@ lib/Model/GetDiscordSettings200ResponseAccount.php
 lib/Model/GetDsaDefaults200Response.php
 lib/Model/GetDsaDefaults200ResponseDsaDefaults.php
 lib/Model/GetDsaRecommendations200Response.php
+lib/Model/GetFacebookDemographics200Response.php
+lib/Model/GetFacebookDemographics200ResponseDemographics.php
+lib/Model/GetFacebookDemographics200ResponseDemographicsCountryInner.php
 lib/Model/GetFacebookPages200Response.php
 lib/Model/GetFacebookPages200ResponsePagesInner.php
 lib/Model/GetFacebookPostReactions200Response.php
@@ -5415,3 +5421,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetFacebookDemographics200ResponseDemographicsCountryInnerTest.php
+test/Model/GetFacebookDemographics200ResponseDemographicsTest.php
+test/Model/GetFacebookDemographics200ResponseTest.php

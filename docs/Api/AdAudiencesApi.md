@@ -145,7 +145,7 @@ deleteAdAudience($audience_id): \Zernio\Model\DeleteAccountGroup200Response
 
 Delete custom audience
 
-Deletes the audience from both the platform and the local database. `saved_targeting` audiences exist only on Zernio, so only the local record is removed.
+Removes the audience on its ad platform, then deletes the Zernio record. Meta, Google, TikTok, LinkedIn list and engagement segments, and X are deleted; Pinterest audiences and LinkedIn `website_retargeting` segments are archived, which is how those platforms remove them. `saved_targeting` audiences exist only on Zernio, so only the local record is removed.  If the platform refuses, the error is returned and the Zernio record is kept, so a retry is safe. An audience the platform no longer has counts as removed. Google Ads does not allow removing lookalike lists through its API, so those return 422 `FEATURE_NOT_AVAILABLE`.
 
 ### Example
 
