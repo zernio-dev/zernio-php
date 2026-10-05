@@ -1981,7 +1981,7 @@ try {
 ## `listAdCampaigns()`
 
 ```php
-listAdCampaigns($include_empty, $page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $from_date, $to_date, $has_delivery, $min_spend, $live): \Zernio\Model\ListAdCampaigns200Response
+listAdCampaigns($include_empty, $page, $limit, $source, $platform, $status, $ad_account_id, $campaign_id, $page_id, $account_id, $profile_id, $from_date, $to_date, $has_delivery, $min_spend, $live): \Zernio\Model\ListAdCampaigns200Response
 ```
 
 List campaigns
@@ -2012,6 +2012,7 @@ $source = 'all'; // string | `all` (default) returns both Zernio-created ads and
 $platform = 'platform_example'; // string
 $status = new \Zernio\Model\\Zernio\Model\AdStatus(); // \Zernio\Model\AdStatus | Filter by derived campaign status (post-aggregation)
 $ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID (e.g. act_123 for Meta)
+$campaign_id = 'campaign_id_example'; // string | Platform campaign ID (the `platformCampaignId` on each returned campaign). Returns only that campaign, or an empty list when it is not visible to the caller. Mirrors the same filter on /v1/ads and /v1/ads/tree.
 $page_id = 'page_id_example'; // string | Meta only: Facebook Page ID. Campaigns have no Page of their own, so this keeps campaigns having at least one ad backed by this Page, with adCount and metrics computed over those ads only. Mirrors the same filter on /v1/ads and /v1/ads/tree.
 $account_id = 'account_id_example'; // string | Account ID
 $profile_id = 'profile_id_example'; // string | Profile ID
@@ -2022,7 +2023,7 @@ $min_spend = 3.4; // float | Return only campaigns whose spend between `fromDate
 $live = false; // bool | Read the on/off switches live from the platform instead of returning the synced values. The fresh values are stored (so later reads return them too) and the response carries `statusReadAt`, the time of the read. At most 20 platform objects are read per request. Where a read fails (credentials, platform error, no reader on that platform), the stored values come back with `statusReadAt: null`. See \"Status freshness\" in the operation description.
 
 try {
-    $result = $apiInstance->listAdCampaigns($include_empty, $page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $from_date, $to_date, $has_delivery, $min_spend, $live);
+    $result = $apiInstance->listAdCampaigns($include_empty, $page, $limit, $source, $platform, $status, $ad_account_id, $campaign_id, $page_id, $account_id, $profile_id, $from_date, $to_date, $has_delivery, $min_spend, $live);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->listAdCampaigns: ', $e->getMessage(), PHP_EOL;
@@ -2040,6 +2041,7 @@ try {
 | **platform** | **string**|  | [optional] |
 | **status** | [**\Zernio\Model\AdStatus**](../Model/.md)| Filter by derived campaign status (post-aggregation) | [optional] |
 | **ad_account_id** | **string**| Platform ad account ID (e.g. act_123 for Meta) | [optional] |
+| **campaign_id** | **string**| Platform campaign ID (the &#x60;platformCampaignId&#x60; on each returned campaign). Returns only that campaign, or an empty list when it is not visible to the caller. Mirrors the same filter on /v1/ads and /v1/ads/tree. | [optional] |
 | **page_id** | **string**| Meta only: Facebook Page ID. Campaigns have no Page of their own, so this keeps campaigns having at least one ad backed by this Page, with adCount and metrics computed over those ads only. Mirrors the same filter on /v1/ads and /v1/ads/tree. | [optional] |
 | **account_id** | **string**| Account ID | [optional] |
 | **profile_id** | **string**| Profile ID | [optional] |
@@ -3324,7 +3326,7 @@ updateAdCampaignStatus($campaign_id, $update_ad_campaign_status_request): \Zerni
 
 Pause or resume a campaign
 
-Writes the campaign's own on/off switch and nothing else, on every platform (Meta, TikTok, Google, LinkedIn campaign group, Pinterest, X, ChatGPT (OpenAI)). Its ad sets and ads keep their own switches: pausing stops their delivery through the campaign, and resuming lets each of them deliver again only if its own switch is on. An ad set or ad you paused individually stays paused; resume it with PUT /v1/ads/ad-sets/{adSetId}/status or PUT /v1/ads/{adId}/status. See the Status model in the Ad Campaigns tag.  **Live read, then write.** The campaign's switch is read from the platform first. When that live read shows it already in the requested state nothing is written (`updated: 0`, `skipped: 1`, with the reason). Otherwise the switch is written (`updated: 1`), read back and stored, and the delivery status of the ads under it (up to 20) is re-read and stored, so an immediate GET returns what the platform now reports. A stored switch never skips a write, and when the platform cannot be read the write always goes out.
+Writes the campaign's own on/off switch and nothing else, on every platform (Meta, TikTok, Google, LinkedIn campaign group, Pinterest, X, ChatGPT (OpenAI)). Its ad sets and ads keep their own switches: pausing stops their delivery through the campaign, and resuming lets each of them deliver again only if its own switch is on. An ad set or ad you paused individually stays paused; resume it with PUT /v1/ads/ad-sets/{adSetId}/status or PUT /v1/ads/{adId}/status. See the Status model in the Ad Campaigns tag.  **Live read, then write.** The campaign's switch is read from the platform first. When that live read shows it already in the requested state nothing is written (`updated: 0`, `skipped: 1`, with the reason). Otherwise the switch is written (`updated: 1`), read back and stored, and the delivery status of the ads under it (up to 20) is re-read and stored, so an immediate GET returns what the platform now reports. A stored switch never skips a write, and when the platform cannot be read the write always goes out. On Meta the check reads the campaign's own `status`, so a delivery status such as `IN_PROCESS` or `WITH_ISSUES` does not force a write.
 
 ### Example
 
@@ -3572,7 +3574,7 @@ updateAdSetStatus($ad_set_id, $update_ad_campaign_status_request): \Zernio\Model
 
 Pause or resume a single ad set
 
-Ad-set-scoped pause/resume (doesn't touch sibling ad sets). Thin wrapper over PUT /v1/ads/ad-sets/{adSetId} for callers that only want the status toggle and prefer a symmetric URL to /v1/ads/campaigns/{campaignId}/status.  Writes the ad set's own on/off switch and nothing else, on every platform (Meta `configured_status`, TikTok ad group `operation_status`, Google ad group status, LinkedIn campaign, Pinterest ad group, X line item, ChatGPT (OpenAI) ad group). Its ads keep their own switches: an ad you paused individually stays paused when the ad set resumes. The campaign above is not touched either, so an ad set resumed under a paused campaign reads `status: paused` until the campaign is resumed too. See the Status model in the Ad Campaigns tag.  **Live read, then write.** The ad set's switch is read from the platform first. When that live read shows it already in the requested state nothing is written (`updated: 0`, `skipped: 1`, with the reason). Otherwise the switch is written (`updated: 1`), read back and stored, and the delivery status of its ads (up to 20) is re-read and stored, so an immediate GET returns what the platform now reports. A stored switch never skips a write, and when the platform cannot be read the write always goes out.
+Ad-set-scoped pause/resume (doesn't touch sibling ad sets). Thin wrapper over PUT /v1/ads/ad-sets/{adSetId} for callers that only want the status toggle and prefer a symmetric URL to /v1/ads/campaigns/{campaignId}/status.  Writes the ad set's own on/off switch and nothing else, on every platform (Meta `configured_status`, TikTok ad group `operation_status`, Google ad group status, LinkedIn campaign, Pinterest ad group, X line item, ChatGPT (OpenAI) ad group). Its ads keep their own switches: an ad you paused individually stays paused when the ad set resumes. The campaign above is not touched either, so an ad set resumed under a paused campaign reads `status: paused` until the campaign is resumed too. See the Status model in the Ad Campaigns tag.  **Live read, then write.** The ad set's switch is read from the platform first. When that live read shows it already in the requested state nothing is written (`updated: 0`, `skipped: 1`, with the reason). Otherwise the switch is written (`updated: 1`), read back and stored, and the delivery status of its ads (up to 20) is re-read and stored, so an immediate GET returns what the platform now reports. A stored switch never skips a write, and when the platform cannot be read the write always goes out. On Meta the check reads the ad set's own `status`, so a repeated request skips even while `platformAdSetStatus` reads `CAMPAIGN_PAUSED`, `WITH_ISSUES` or `IN_PROCESS`.
 
 ### Example
 
