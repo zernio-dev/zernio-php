@@ -87,6 +87,7 @@ docs/Model/ActivateSequence200Response.md
 docs/Model/ActivateWorkflow200Response.md
 docs/Model/ActivateWorkflow200ResponseWorkflow.md
 docs/Model/Ad.md
+docs/Model/AdActivationStatus.md
 docs/Model/AdAnalyticsResponse.md
 docs/Model/AdAnalyticsResponseAd.md
 docs/Model/AdAnalyticsResponseAnalytics.md
@@ -2801,6 +2802,7 @@ lib/Model/ActivateSequence200Response.php
 lib/Model/ActivateWorkflow200Response.php
 lib/Model/ActivateWorkflow200ResponseWorkflow.php
 lib/Model/Ad.php
+lib/Model/AdActivationStatus.php
 lib/Model/AdAnalyticsResponse.php
 lib/Model/AdAnalyticsResponseAd.php
 lib/Model/AdAnalyticsResponseAnalytics.php
@@ -5429,3 +5431,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AdActivationStatusTest.php
