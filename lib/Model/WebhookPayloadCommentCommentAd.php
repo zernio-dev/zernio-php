@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * WebhookPayloadCommentCommentAd Class Doc Comment
  *
  * @category Class
- * @description Ad context. Present only when the comment was made on paid content. Instagram: populated from the webhook payload&#39;s value.media.ad_id and value.media.ad_title. Facebook: populated via a Graph API lookup of the parent post&#39;s promotion_status. Absent for comments on organic posts that are not currently promoted.
+ * @description Ad context. Present only when the comment was made on paid content. Instagram: populated from the webhook payload&#39;s value.media.ad_id, value.media.ad_title and value.media.original_media_id, each only when Meta includes it. Facebook: populated via a Graph API lookup of the parent post&#39;s promotion_status. Absent for comments on organic posts that are not currently promoted.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -61,6 +61,7 @@ class WebhookPayloadCommentCommentAd implements ModelInterface, ArrayAccess, \Js
     protected static $openAPITypes = [
         'id' => 'string',
         'title' => 'string',
+        'original_media_id' => 'string',
         'promotion_status' => 'string'
     ];
 
@@ -74,6 +75,7 @@ class WebhookPayloadCommentCommentAd implements ModelInterface, ArrayAccess, \Js
     protected static $openAPIFormats = [
         'id' => null,
         'title' => null,
+        'original_media_id' => null,
         'promotion_status' => null
     ];
 
@@ -85,6 +87,7 @@ class WebhookPayloadCommentCommentAd implements ModelInterface, ArrayAccess, \Js
     protected static array $openAPINullables = [
         'id' => false,
         'title' => false,
+        'original_media_id' => false,
         'promotion_status' => false
     ];
 
@@ -176,6 +179,7 @@ class WebhookPayloadCommentCommentAd implements ModelInterface, ArrayAccess, \Js
     protected static $attributeMap = [
         'id' => 'id',
         'title' => 'title',
+        'original_media_id' => 'originalMediaId',
         'promotion_status' => 'promotionStatus'
     ];
 
@@ -187,6 +191,7 @@ class WebhookPayloadCommentCommentAd implements ModelInterface, ArrayAccess, \Js
     protected static $setters = [
         'id' => 'setId',
         'title' => 'setTitle',
+        'original_media_id' => 'setOriginalMediaId',
         'promotion_status' => 'setPromotionStatus'
     ];
 
@@ -198,6 +203,7 @@ class WebhookPayloadCommentCommentAd implements ModelInterface, ArrayAccess, \Js
     protected static $getters = [
         'id' => 'getId',
         'title' => 'getTitle',
+        'original_media_id' => 'getOriginalMediaId',
         'promotion_status' => 'getPromotionStatus'
     ];
 
@@ -260,6 +266,7 @@ class WebhookPayloadCommentCommentAd implements ModelInterface, ArrayAccess, \Js
     {
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('original_media_id', $data ?? [], null);
         $this->setIfExists('promotion_status', $data ?? [], null);
     }
 
@@ -355,6 +362,33 @@ class WebhookPayloadCommentCommentAd implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable title cannot be null');
         }
         $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets original_media_id
+     *
+     * @return string|null
+     */
+    public function getOriginalMediaId()
+    {
+        return $this->container['original_media_id'];
+    }
+
+    /**
+     * Sets original_media_id
+     *
+     * @param string|null $original_media_id Original media ID that Meta reports for the ad (Instagram only).
+     *
+     * @return self
+     */
+    public function setOriginalMediaId($original_media_id)
+    {
+        if (is_null($original_media_id)) {
+            throw new \InvalidArgumentException('non-nullable original_media_id cannot be null');
+        }
+        $this->container['original_media_id'] = $original_media_id;
 
         return $this;
     }
