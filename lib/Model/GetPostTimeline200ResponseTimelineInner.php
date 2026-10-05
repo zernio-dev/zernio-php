@@ -127,7 +127,7 @@ class GetPostTimeline200ResponseTimelineInner implements ModelInterface, ArrayAc
         'saves' => false,
         'clicks' => false,
         'views' => false,
-        'follows' => false,
+        'follows' => true,
         'completion_rate' => false,
         'profile_views' => false,
         'website_clicks' => false,
@@ -733,14 +733,21 @@ class GetPostTimeline200ResponseTimelineInner implements ModelInterface, ArrayAc
     /**
      * Sets follows
      *
-     * @param int|null $follows Follows attributed to the post on this date (Instagram feed and stories, TikTok business lane); 0 elsewhere
+     * @param int|null $follows Follows attributed to the post on this date (Instagram feed and stories, Facebook Reels, TikTok business lane). Null on Instagram Reels and video and on Facebook posts that are not Reels, where Meta has no follows metric; 0 on other platforms.
      *
      * @return self
      */
     public function setFollows($follows)
     {
         if (is_null($follows)) {
-            throw new \InvalidArgumentException('non-nullable follows cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'follows');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('follows', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['follows'] = $follows;
 

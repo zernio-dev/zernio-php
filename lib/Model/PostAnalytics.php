@@ -680,7 +680,7 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets follows
      *
-     * @param int|null $follows Instagram feed posts and stories only: organic accounts that started following from this post. Null on Instagram Reels and non-Reels video, where Meta does not expose this metric for the media. 0 for other platforms.
+     * @param int|null $follows Accounts that started following from this post. Instagram feed posts and stories (organic follows), Facebook Reels (Meta post_video_followers) and the TikTok business lane. Null on Instagram Reels and non-Reels video and on Facebook posts that are not Reels, where Meta does not expose this metric for the media. 0 for other platforms.
      *
      * @return self
      */

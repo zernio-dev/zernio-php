@@ -754,7 +754,7 @@ class AnalyticsDeltaEntryMetrics implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets follows
      *
-     * @param int $follows Follows attributed to this post (Instagram)
+     * @param int $follows Follows attributed to this post (Instagram feed and stories, Facebook Reels, TikTok business lane)
      *
      * @return self
      */
