@@ -149,7 +149,7 @@ class InboxAnalyticsApi
      *
      * Get conversation analytics
      *
-     * @param  string $conversation_id Mongo _id or platformConversationId. (required)
+     * @param  string $conversation_id Zernio conversation id or platformConversationId. (required)
      * @param  \DateTime $from_date from_date (required)
      * @param  \DateTime|null $to_date to_date (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversationAnalytics'] to see the possible values for this operation
@@ -169,7 +169,7 @@ class InboxAnalyticsApi
      *
      * Get conversation analytics
      *
-     * @param  string $conversation_id Mongo _id or platformConversationId. (required)
+     * @param  string $conversation_id Zernio conversation id or platformConversationId. (required)
      * @param  \DateTime $from_date (required)
      * @param  \DateTime|null $to_date (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversationAnalytics'] to see the possible values for this operation
@@ -312,7 +312,7 @@ class InboxAnalyticsApi
      *
      * Get conversation analytics
      *
-     * @param  string $conversation_id Mongo _id or platformConversationId. (required)
+     * @param  string $conversation_id Zernio conversation id or platformConversationId. (required)
      * @param  \DateTime $from_date (required)
      * @param  \DateTime|null $to_date (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversationAnalytics'] to see the possible values for this operation
@@ -335,7 +335,7 @@ class InboxAnalyticsApi
      *
      * Get conversation analytics
      *
-     * @param  string $conversation_id Mongo _id or platformConversationId. (required)
+     * @param  string $conversation_id Zernio conversation id or platformConversationId. (required)
      * @param  \DateTime $from_date (required)
      * @param  \DateTime|null $to_date (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversationAnalytics'] to see the possible values for this operation
@@ -387,7 +387,7 @@ class InboxAnalyticsApi
     /**
      * Create request for operation 'getInboxConversationAnalytics'
      *
-     * @param  string $conversation_id Mongo _id or platformConversationId. (required)
+     * @param  string $conversation_id Zernio conversation id or platformConversationId. (required)
      * @param  \DateTime $from_date (required)
      * @param  \DateTime|null $to_date (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversationAnalytics'] to see the possible values for this operation
@@ -1673,7 +1673,7 @@ class InboxAnalyticsApi
      * @param  string|null $profile_id profile_id (optional)
      * @param  string|null $platform platform (optional)
      * @param  string|null $source source (optional)
-     * @param  int|null $limit Cap on returned rows. Lower than the posting listing&#39;s 100 because each row triggers a SocialAccount Mongo lookup. (optional, default to 10)
+     * @param  int|null $limit Cap on returned rows. Lower than the posting listing&#39;s 100 because each row triggers a social account lookup. (optional, default to 10)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxTopAccounts'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1696,7 +1696,7 @@ class InboxAnalyticsApi
      * @param  string|null $profile_id (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $source (optional)
-     * @param  int|null $limit Cap on returned rows. Lower than the posting listing&#39;s 100 because each row triggers a SocialAccount Mongo lookup. (optional, default to 10)
+     * @param  int|null $limit Cap on returned rows. Lower than the posting listing&#39;s 100 because each row triggers a social account lookup. (optional, default to 10)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxTopAccounts'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1828,7 +1828,7 @@ class InboxAnalyticsApi
      * @param  string|null $profile_id (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $source (optional)
-     * @param  int|null $limit Cap on returned rows. Lower than the posting listing&#39;s 100 because each row triggers a SocialAccount Mongo lookup. (optional, default to 10)
+     * @param  int|null $limit Cap on returned rows. Lower than the posting listing&#39;s 100 because each row triggers a social account lookup. (optional, default to 10)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxTopAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1854,7 +1854,7 @@ class InboxAnalyticsApi
      * @param  string|null $profile_id (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $source (optional)
-     * @param  int|null $limit Cap on returned rows. Lower than the posting listing&#39;s 100 because each row triggers a SocialAccount Mongo lookup. (optional, default to 10)
+     * @param  int|null $limit Cap on returned rows. Lower than the posting listing&#39;s 100 because each row triggers a social account lookup. (optional, default to 10)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxTopAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1909,7 +1909,7 @@ class InboxAnalyticsApi
      * @param  string|null $profile_id (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $source (optional)
-     * @param  int|null $limit Cap on returned rows. Lower than the posting listing&#39;s 100 because each row triggers a SocialAccount Mongo lookup. (optional, default to 10)
+     * @param  int|null $limit Cap on returned rows. Lower than the posting listing&#39;s 100 because each row triggers a social account lookup. (optional, default to 10)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxTopAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

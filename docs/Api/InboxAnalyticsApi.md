@@ -23,7 +23,7 @@ getInboxConversationAnalytics($conversation_id, $from_date, $to_date): \Zernio\M
 
 Get conversation analytics
 
-Per-conversation inbox analytics. The inbox analog of /v1/analytics/post-timeline: one conversation, daily totals, source mix.  The {conversationId} path param accepts EITHER the Mongo `_id` of the Conversation document OR its `platformConversationId` (the same identity used by metadata.conversationId at ingest time). Ownership is verified in MongoDB against the caller's team before the Tinybird query fires.  Max date range is 365 days.
+Per-conversation inbox analytics. The inbox analog of /v1/analytics/post-timeline: one conversation, daily totals, source mix.  The {conversationId} path param accepts EITHER the Zernio conversation id OR its `platformConversationId` (the same identity used by metadata.conversationId at ingest time). Ownership is verified against the caller's team before the Tinybird query fires.  Max date range is 365 days.
 
 ### Example
 
@@ -42,7 +42,7 @@ $apiInstance = new Zernio\Api\InboxAnalyticsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$conversation_id = 'conversation_id_example'; // string | Mongo _id or platformConversationId.
+$conversation_id = 'conversation_id_example'; // string | Zernio conversation id or platformConversationId.
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 
@@ -58,7 +58,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **conversation_id** | **string**| Mongo _id or platformConversationId. | |
+| **conversation_id** | **string**| Zernio conversation id or platformConversationId. | |
 | **from_date** | **\DateTime**|  | |
 | **to_date** | **\DateTime**|  | [optional] |
 
@@ -319,7 +319,7 @@ $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $profile_id = 'profile_id_example'; // string
 $platform = 'platform_example'; // string
 $source = 'source_example'; // string
-$limit = 10; // int | Cap on returned rows. Lower than the posting listing's 100 because each row triggers a SocialAccount Mongo lookup.
+$limit = 10; // int | Cap on returned rows. Lower than the posting listing's 100 because each row triggers a social account lookup.
 
 try {
     $result = $apiInstance->getInboxTopAccounts($from_date, $to_date, $profile_id, $platform, $source, $limit);
@@ -338,7 +338,7 @@ try {
 | **profile_id** | **string**|  | [optional] |
 | **platform** | **string**|  | [optional] |
 | **source** | **string**|  | [optional] |
-| **limit** | **int**| Cap on returned rows. Lower than the posting listing&#39;s 100 because each row triggers a SocialAccount Mongo lookup. | [optional] [default to 10] |
+| **limit** | **int**| Cap on returned rows. Lower than the posting listing&#39;s 100 because each row triggers a social account lookup. | [optional] [default to 10] |
 
 ### Return type
 

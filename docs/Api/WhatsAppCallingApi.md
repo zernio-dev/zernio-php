@@ -235,7 +235,7 @@ $apiInstance = new Zernio\Api\WhatsAppCallingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 'id_example'; // string | WhatsAppPhoneNumber Mongo ID
+$id = 'id_example'; // string | WhatsApp phone number id
 $enable_whats_app_calling_legacy_request = new \Zernio\Model\EnableWhatsAppCallingLegacyRequest(); // \Zernio\Model\EnableWhatsAppCallingLegacyRequest
 
 try {
@@ -250,7 +250,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| WhatsAppPhoneNumber Mongo ID | |
+| **id** | **string**| WhatsApp phone number id | |
 | **enable_whats_app_calling_legacy_request** | [**\Zernio\Model\EnableWhatsAppCallingLegacyRequest**](../Model/EnableWhatsAppCallingLegacyRequest.md)|  | |
 
 ### Return type

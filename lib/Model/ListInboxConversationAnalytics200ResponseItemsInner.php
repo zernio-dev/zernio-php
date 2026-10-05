@@ -428,7 +428,7 @@ class ListInboxConversationAnalytics200ResponseItemsInner implements ModelInterf
     /**
      * Sets mongo_id
      *
-     * @param string|null $mongo_id The Conversation document _id, when a matching doc exists
+     * @param string|null $mongo_id The Zernio conversation id, when a matching conversation exists
      *
      * @return self
      */

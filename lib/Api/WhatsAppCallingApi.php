@@ -988,7 +988,7 @@ class WhatsAppCallingApi
      *
      * Enable calling on a number
      *
-     * @param  string $id WhatsAppPhoneNumber Mongo ID (required)
+     * @param  string $id WhatsApp phone number id (required)
      * @param  \Zernio\Model\EnableWhatsAppCallingLegacyRequest $enable_whats_app_calling_legacy_request enable_whats_app_calling_legacy_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableWhatsAppCallingLegacy'] to see the possible values for this operation
      *
@@ -1008,7 +1008,7 @@ class WhatsAppCallingApi
      *
      * Enable calling on a number
      *
-     * @param  string $id WhatsAppPhoneNumber Mongo ID (required)
+     * @param  string $id WhatsApp phone number id (required)
      * @param  \Zernio\Model\EnableWhatsAppCallingLegacyRequest $enable_whats_app_calling_legacy_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableWhatsAppCallingLegacy'] to see the possible values for this operation
      *
@@ -1109,7 +1109,7 @@ class WhatsAppCallingApi
      *
      * Enable calling on a number
      *
-     * @param  string $id WhatsAppPhoneNumber Mongo ID (required)
+     * @param  string $id WhatsApp phone number id (required)
      * @param  \Zernio\Model\EnableWhatsAppCallingLegacyRequest $enable_whats_app_calling_legacy_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableWhatsAppCallingLegacy'] to see the possible values for this operation
      *
@@ -1132,7 +1132,7 @@ class WhatsAppCallingApi
      *
      * Enable calling on a number
      *
-     * @param  string $id WhatsAppPhoneNumber Mongo ID (required)
+     * @param  string $id WhatsApp phone number id (required)
      * @param  \Zernio\Model\EnableWhatsAppCallingLegacyRequest $enable_whats_app_calling_legacy_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableWhatsAppCallingLegacy'] to see the possible values for this operation
      *
@@ -1184,7 +1184,7 @@ class WhatsAppCallingApi
     /**
      * Create request for operation 'enableWhatsAppCallingLegacy'
      *
-     * @param  string $id WhatsAppPhoneNumber Mongo ID (required)
+     * @param  string $id WhatsApp phone number id (required)
      * @param  \Zernio\Model\EnableWhatsAppCallingLegacyRequest $enable_whats_app_calling_legacy_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableWhatsAppCallingLegacy'] to see the possible values for this operation
      *
