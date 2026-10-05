@@ -13,6 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getAdCreative()**](AdCreativesApi.md#getAdCreative) | **GET** /v1/ads/creatives/{creativeId} | Creative details |
 | [**getAdMedia()**](AdCreativesApi.md#getAdMedia) | **GET** /v1/ads/{adId}/media | Direct video and image URLs for an ad |
 | [**getAdPreviews()**](AdCreativesApi.md#getAdPreviews) | **GET** /v1/ads/{adId}/preview | Render previews of an existing ad |
+| [**getAdVideoStatus()**](AdCreativesApi.md#getAdVideoStatus) | **GET** /v1/ads/videos/{videoId} | Get ad video processing status |
 | [**listAdCreatives()**](AdCreativesApi.md#listAdCreatives) | **GET** /v1/ads/creatives | Creative library |
 | [**listAdImages()**](AdCreativesApi.md#listAdImages) | **GET** /v1/ads/images | Ad image library |
 | [**listAdVideos()**](AdCreativesApi.md#listAdVideos) | **GET** /v1/ads/videos | Ad video library |
@@ -443,6 +444,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetAdPreviews200Response**](../Model/GetAdPreviews200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getAdVideoStatus()`
+
+```php
+getAdVideoStatus($video_id, $account_id, $ad_account_id): \Zernio\Model\GetAdVideoStatus200Response
+```
+
+Get ad video processing status
+
+Reads a video's processing state live from Meta (`GET /{video-id}?fields=status`). Poll this after `POST /v1/ads/videos` with `async: true` until `status` is `ready`; the video is only usable as `video.id` on the create endpoints from then on.  `status` is normalised: `ready`, `error` (Meta's `error` or `expired`), and `processing` for every other Meta state. `platformStatus` carries Meta's raw `video_status` and `processingProgress` Meta's 0-100 percentage when it reports one. Polling every 5 to 10 seconds is plenty.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCreativesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$video_id = 'video_id_example'; // string | Meta ad video id (numeric).
+$account_id = 'account_id_example'; // string | Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token.
+$ad_account_id = 'ad_account_id_example'; // string | Meta ad account id (act_<n>) the video was uploaded to.
+
+try {
+    $result = $apiInstance->getAdVideoStatus($video_id, $account_id, $ad_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCreativesApi->getAdVideoStatus: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **video_id** | **string**| Meta ad video id (numeric). | |
+| **account_id** | **string**| Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. | |
+| **ad_account_id** | **string**| Meta ad account id (act_&lt;n&gt;) the video was uploaded to. | |
+
+### Return type
+
+[**\Zernio\Model\GetAdVideoStatus200Response**](../Model/GetAdVideoStatus200Response.md)
 
 ### Authorization
 
@@ -1041,7 +1106,7 @@ uploadAdVideo($upload_ad_video_request): \Zernio\Model\UploadAdVideo201Response
 
 Upload an ad video
 
-Standalone ad-video upload (parallel to POST /v1/ads/images), so a video creative can be rendered via POST /v1/ads/preview or attached via `video.id` on POST /v1/ads/create before an ad exists.  Accepts either an https `videoUrl` we download server-side (SSRF-guarded) or raw `videoBase64` bytes; exactly one is required. `videoBase64` is capped by Vercel's body limit, around 4.5 MB payload in practice, so larger videos must come via `videoUrl`.  Returns the Meta `video.id` (reusable wherever `video.id` is accepted) plus Meta's auto-generated poster URL when available. The endpoint waits until Meta reports the video ready (chunked upload + transcode can take minutes; the handler runs up to 800 s).
+Standalone ad-video upload (parallel to POST /v1/ads/images), so a video creative can be rendered via POST /v1/ads/preview or attached via `video.id` on POST /v1/ads/create before an ad exists.  Accepts either an https `videoUrl` we download server-side (SSRF-guarded) or raw `videoBase64` bytes; exactly one is required. `videoBase64` is capped by Vercel's body limit, around 4.5 MB payload in practice, so larger videos must come via `videoUrl`.  Returns the Meta `video.id` (reusable wherever `video.id` is accepted) plus Meta's auto-generated poster URL when available. By default the endpoint waits until Meta reports the video ready (chunked upload + transcode can take minutes; the handler runs up to 800 s) and answers 201.  **Async mode.** Send `async: true` to get a 202 as soon as Meta has accepted the bytes, with `video.status: processing`. Then either poll `GET /v1/ads/videos/{videoId}` until `status` is `ready`, or subscribe to the `ad.video.processed` webhook. A create call that references the video while it is still processing waits up to 30 s, then answers 409 `invalid_resource_state` naming the status endpoint. With `videoUrl` the download and byte transfer still happen inside the request; only Meta's transcode is skipped.
 
 ### Example
 

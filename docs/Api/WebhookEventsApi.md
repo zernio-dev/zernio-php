@@ -12,6 +12,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onAccountConnected()**](WebhookEventsApi.md#onAccountConnected) | **POST** /account.connected | Account connected event |
 | [**onAccountDisconnected()**](WebhookEventsApi.md#onAccountDisconnected) | **POST** /account.disconnected | Account disconnected event |
 | [**onAdStatusChanged()**](WebhookEventsApi.md#onAdStatusChanged) | **POST** /ad.status_changed | Ad status changed event |
+| [**onAdVideoProcessed()**](WebhookEventsApi.md#onAdVideoProcessed) | **POST** /ad.video.processed | Ad video processed event |
 | [**onAnalyticsSynced()**](WebhookEventsApi.md#onAnalyticsSynced) | **POST** /analytics.synced | Analytics synced event |
 | [**onApiChangelogPublished()**](WebhookEventsApi.md#onApiChangelogPublished) | **POST** /api.changelog.published | API changelog entry published event |
 | [**onBrandedCallingIdentityActionRequired()**](WebhookEventsApi.md#onBrandedCallingIdentityActionRequired) | **POST** /branded_calling.identity.action_required | Caller identity action required event |
@@ -414,6 +415,65 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_ad_status_changed** | [**\Zernio\Model\WebhookPayloadAdStatusChanged**](../Model/WebhookPayloadAdStatusChanged.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onAdVideoProcessed()`
+
+```php
+onAdVideoProcessed($webhook_payload_ad_video_processed)
+```
+
+Ad video processed event
+
+Fired once per `POST /v1/ads/videos` call made with `async: true`, when Meta finishes processing the uploaded video. `video.status` is `ready` (reference it as `video.id` on the create endpoints) or `error` (Meta could not process it; `video.error` carries the reason).  Zernio watches the video for up to about 13 minutes after the upload request. A video still processing after that sends no event, so keep `GET /v1/ads/videos/{videoId}` as the source of truth for long videos.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_ad_video_processed = {"id":"01J7K3P4N5Q6R7S8T9V0W1X2Z1","event":"ad.video.processed","account":{"accountId":"65c8f7e2a1b3c4d5e6f7a8b9","profileId":"65c8f7e2a1b3c4d5e6f7a800","platform":"metaads","username":"acme-ads","displayName":"Acme Ads"},"video":{"id":"1096002439847708","platformAdAccountId":"act_2129800524463520","status":"ready","error":null,"thumbnailUrl":"https://scontent.xx.fbcdn.net/v/t15.5256-10/poster.jpg"},"timestamp":"2026-10-05T15:25:27.944Z"}; // \Zernio\Model\WebhookPayloadAdVideoProcessed
+
+try {
+    $apiInstance->onAdVideoProcessed($webhook_payload_ad_video_processed);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onAdVideoProcessed: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_ad_video_processed** | [**\Zernio\Model\WebhookPayloadAdVideoProcessed**](../Model/WebhookPayloadAdVideoProcessed.md)|  | |
 
 ### Return type
 

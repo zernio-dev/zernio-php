@@ -886,6 +886,8 @@ docs/Model/GetAdReview200ResponseReviewRejectionsInnerContent.md
 docs/Model/GetAdSetDetails200Response.md
 docs/Model/GetAdTrackingTags200Response.md
 docs/Model/GetAdTree202Response.md
+docs/Model/GetAdVideoStatus200Response.md
+docs/Model/GetAdVideoStatus200ResponseVideo.md
 docs/Model/GetAdsActivityLog200Response.md
 docs/Model/GetAdsActivityLog200ResponsePaging.md
 docs/Model/GetAdsSearchTerms200Response.md
@@ -2450,6 +2452,8 @@ docs/Model/UploadAdImage201ResponseImage.md
 docs/Model/UploadAdImageRequest.md
 docs/Model/UploadAdVideo201Response.md
 docs/Model/UploadAdVideo201ResponseVideo.md
+docs/Model/UploadAdVideo202Response.md
+docs/Model/UploadAdVideo202ResponseVideo.md
 docs/Model/UploadAdVideoRequest.md
 docs/Model/UploadBusinessAgentFileRequest.md
 docs/Model/UploadMediaDirect200Response.md
@@ -2548,6 +2552,9 @@ docs/Model/WebhookPayloadAdStatusChangedAccount.md
 docs/Model/WebhookPayloadAdStatusChangedAdObject.md
 docs/Model/WebhookPayloadAdStatusChangedError.md
 docs/Model/WebhookPayloadAdStatusChangedStatus.md
+docs/Model/WebhookPayloadAdVideoProcessed.md
+docs/Model/WebhookPayloadAdVideoProcessedAccount.md
+docs/Model/WebhookPayloadAdVideoProcessedVideo.md
 docs/Model/WebhookPayloadAnalyticsSynced.md
 docs/Model/WebhookPayloadAnalyticsSyncedAccount.md
 docs/Model/WebhookPayloadAnalyticsSyncedSync.md
@@ -3601,6 +3608,8 @@ lib/Model/GetAdReview200ResponseReviewRejectionsInnerContent.php
 lib/Model/GetAdSetDetails200Response.php
 lib/Model/GetAdTrackingTags200Response.php
 lib/Model/GetAdTree202Response.php
+lib/Model/GetAdVideoStatus200Response.php
+lib/Model/GetAdVideoStatus200ResponseVideo.php
 lib/Model/GetAdsActivityLog200Response.php
 lib/Model/GetAdsActivityLog200ResponsePaging.php
 lib/Model/GetAdsSearchTerms200Response.php
@@ -5166,6 +5175,8 @@ lib/Model/UploadAdImage201ResponseImage.php
 lib/Model/UploadAdImageRequest.php
 lib/Model/UploadAdVideo201Response.php
 lib/Model/UploadAdVideo201ResponseVideo.php
+lib/Model/UploadAdVideo202Response.php
+lib/Model/UploadAdVideo202ResponseVideo.php
 lib/Model/UploadAdVideoRequest.php
 lib/Model/UploadBusinessAgentFileRequest.php
 lib/Model/UploadMediaDirect200Response.php
@@ -5264,6 +5275,9 @@ lib/Model/WebhookPayloadAdStatusChangedAccount.php
 lib/Model/WebhookPayloadAdStatusChangedAdObject.php
 lib/Model/WebhookPayloadAdStatusChangedError.php
 lib/Model/WebhookPayloadAdStatusChangedStatus.php
+lib/Model/WebhookPayloadAdVideoProcessed.php
+lib/Model/WebhookPayloadAdVideoProcessedAccount.php
+lib/Model/WebhookPayloadAdVideoProcessedVideo.php
 lib/Model/WebhookPayloadAnalyticsSynced.php
 lib/Model/WebhookPayloadAnalyticsSyncedAccount.php
 lib/Model/WebhookPayloadAnalyticsSyncedSync.php
@@ -5431,3 +5445,10 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetAdVideoStatus200ResponseTest.php
+test/Model/GetAdVideoStatus200ResponseVideoTest.php
+test/Model/UploadAdVideo202ResponseTest.php
+test/Model/UploadAdVideo202ResponseVideoTest.php
+test/Model/WebhookPayloadAdVideoProcessedAccountTest.php
+test/Model/WebhookPayloadAdVideoProcessedTest.php
+test/Model/WebhookPayloadAdVideoProcessedVideoTest.php
