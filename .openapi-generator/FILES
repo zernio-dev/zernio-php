@@ -964,6 +964,7 @@ docs/Model/GetFacebookDemographics200ResponseDemographics.md
 docs/Model/GetFacebookDemographics200ResponseDemographicsCountryInner.md
 docs/Model/GetFacebookPages200Response.md
 docs/Model/GetFacebookPages200ResponsePagesInner.md
+docs/Model/GetFacebookPages200ResponsePagesInnerInstagramAccount.md
 docs/Model/GetFacebookPostReactions200Response.md
 docs/Model/GetFacebookPostReactions200ResponseBreakdown.md
 docs/Model/GetFollowerStats403Response.md
@@ -3677,6 +3678,7 @@ lib/Model/GetFacebookDemographics200ResponseDemographics.php
 lib/Model/GetFacebookDemographics200ResponseDemographicsCountryInner.php
 lib/Model/GetFacebookPages200Response.php
 lib/Model/GetFacebookPages200ResponsePagesInner.php
+lib/Model/GetFacebookPages200ResponsePagesInnerInstagramAccount.php
 lib/Model/GetFacebookPostReactions200Response.php
 lib/Model/GetFacebookPostReactions200ResponseBreakdown.php
 lib/Model/GetFollowerStats403Response.php
@@ -5427,3 +5429,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetFacebookPages200ResponsePagesInnerInstagramAccountTest.php
