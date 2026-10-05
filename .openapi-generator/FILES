@@ -1348,6 +1348,9 @@ docs/Model/InstagramAccountInsightsResponseMetricsValueBreakdownsInner.md
 docs/Model/InstagramAccountInsightsResponseMetricsValueValuesInner.md
 docs/Model/InstagramAccountInsightsResponseUnavailableMetricsInner.md
 docs/Model/InstagramAudioAsset.md
+docs/Model/InstagramBusinessDiscovery.md
+docs/Model/InstagramBusinessDiscoveryMediaInner.md
+docs/Model/InstagramBusinessDiscoveryProfile.md
 docs/Model/InstagramDemographicsResponse.md
 docs/Model/InstagramDemographicsResponseDemographicsValueInner.md
 docs/Model/InstagramPlatformData.md
@@ -4058,6 +4061,9 @@ lib/Model/InstagramAccountInsightsResponseMetricsValueBreakdownsInner.php
 lib/Model/InstagramAccountInsightsResponseMetricsValueValuesInner.php
 lib/Model/InstagramAccountInsightsResponseUnavailableMetricsInner.php
 lib/Model/InstagramAudioAsset.php
+lib/Model/InstagramBusinessDiscovery.php
+lib/Model/InstagramBusinessDiscoveryMediaInner.php
+lib/Model/InstagramBusinessDiscoveryProfile.php
 lib/Model/InstagramDemographicsResponse.php
 lib/Model/InstagramDemographicsResponseDemographicsValueInner.php
 lib/Model/InstagramPlatformData.php
@@ -5421,3 +5427,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/InstagramBusinessDiscoveryMediaInnerTest.php
+test/Model/InstagramBusinessDiscoveryProfileTest.php
+test/Model/InstagramBusinessDiscoveryTest.php
