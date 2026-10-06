@@ -1706,6 +1706,7 @@ docs/Model/LookupSmsNumber200Response.md
 docs/Model/MarkConversationRead200Response.md
 docs/Model/MediaContentType.md
 docs/Model/MediaItem.md
+docs/Model/MediaSubtitle.md
 docs/Model/MediaUploadResponse.md
 docs/Model/MessagingCarouselCard.md
 docs/Model/MetaAdsPlatformData.md
@@ -4436,6 +4437,7 @@ lib/Model/LookupSmsNumber200Response.php
 lib/Model/MarkConversationRead200Response.php
 lib/Model/MediaContentType.php
 lib/Model/MediaItem.php
+lib/Model/MediaSubtitle.php
 lib/Model/MediaUploadResponse.php
 lib/Model/MessagingCarouselCard.php
 lib/Model/MetaAdsPlatformData.php
@@ -5461,3 +5463,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/MediaSubtitleTest.php
