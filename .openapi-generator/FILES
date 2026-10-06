@@ -98,6 +98,7 @@ docs/Model/AdBudget.md
 docs/Model/AdCampaign.md
 docs/Model/AdCampaignBudget.md
 docs/Model/AdCreative.md
+docs/Model/AdCreativeCarouselCardsInner.md
 docs/Model/AdDailyMetrics.md
 docs/Model/AdEngagementCounts.md
 docs/Model/AdFunnelCounts.md
@@ -2862,6 +2863,7 @@ lib/Model/AdBudget.php
 lib/Model/AdCampaign.php
 lib/Model/AdCampaignBudget.php
 lib/Model/AdCreative.php
+lib/Model/AdCreativeCarouselCardsInner.php
 lib/Model/AdDailyMetrics.php
 lib/Model/AdEngagementCounts.php
 lib/Model/AdFunnelCounts.php
@@ -5529,5 +5531,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ConnectWhopAdsCredentials200ResponseTest.php
-test/Model/ConnectWhopAdsCredentialsRequestTest.php
+test/Model/AdCreativeCarouselCardsInnerTest.php
