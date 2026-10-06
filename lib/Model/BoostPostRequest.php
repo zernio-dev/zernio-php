@@ -104,6 +104,9 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'dsa_payor' => 'string',
         'lead_gen_form_id' => 'string',
         'status' => 'string',
+        'campaign_status' => 'string',
+        'ad_set_status' => 'string',
+        'ad_status' => '\Zernio\Model\AdActivationStatus',
         'budget_level' => 'string',
         'attribution_spec' => '\Zernio\Model\BoostPostRequestAttributionSpecInner[]',
         'bodies' => 'string[]',
@@ -165,6 +168,9 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'dsa_payor' => null,
         'lead_gen_form_id' => null,
         'status' => null,
+        'campaign_status' => null,
+        'ad_set_status' => null,
+        'ad_status' => null,
         'budget_level' => null,
         'attribution_spec' => null,
         'bodies' => null,
@@ -224,6 +230,9 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'dsa_payor' => false,
         'lead_gen_form_id' => false,
         'status' => false,
+        'campaign_status' => false,
+        'ad_set_status' => false,
+        'ad_status' => false,
         'budget_level' => false,
         'attribution_spec' => false,
         'bodies' => false,
@@ -363,6 +372,9 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'dsa_payor' => 'dsaPayor',
         'lead_gen_form_id' => 'leadGenFormId',
         'status' => 'status',
+        'campaign_status' => 'campaignStatus',
+        'ad_set_status' => 'adSetStatus',
+        'ad_status' => 'adStatus',
         'budget_level' => 'budgetLevel',
         'attribution_spec' => 'attributionSpec',
         'bodies' => 'bodies',
@@ -422,6 +434,9 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'dsa_payor' => 'setDsaPayor',
         'lead_gen_form_id' => 'setLeadGenFormId',
         'status' => 'setStatus',
+        'campaign_status' => 'setCampaignStatus',
+        'ad_set_status' => 'setAdSetStatus',
+        'ad_status' => 'setAdStatus',
         'budget_level' => 'setBudgetLevel',
         'attribution_spec' => 'setAttributionSpec',
         'bodies' => 'setBodies',
@@ -481,6 +496,9 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'dsa_payor' => 'getDsaPayor',
         'lead_gen_form_id' => 'getLeadGenFormId',
         'status' => 'getStatus',
+        'campaign_status' => 'getCampaignStatus',
+        'ad_set_status' => 'getAdSetStatus',
+        'ad_status' => 'getAdStatus',
         'budget_level' => 'getBudgetLevel',
         'attribution_spec' => 'getAttributionSpec',
         'bodies' => 'getBodies',
@@ -557,6 +575,10 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public const SPECIAL_AD_CATEGORIES_ONLINE_GAMBLING_AND_GAMING = 'ONLINE_GAMBLING_AND_GAMING';
     public const STATUS_ACTIVE = 'ACTIVE';
     public const STATUS_PAUSED = 'PAUSED';
+    public const CAMPAIGN_STATUS_ACTIVE = 'ACTIVE';
+    public const CAMPAIGN_STATUS_PAUSED = 'PAUSED';
+    public const AD_SET_STATUS_ACTIVE = 'ACTIVE';
+    public const AD_SET_STATUS_PAUSED = 'PAUSED';
     public const BUDGET_LEVEL_ADSET = 'adset';
     public const BUDGET_LEVEL_CAMPAIGN = 'campaign';
 
@@ -670,6 +692,32 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return string[]
      */
+    public function getCampaignStatusAllowableValues()
+    {
+        return [
+            self::CAMPAIGN_STATUS_ACTIVE,
+            self::CAMPAIGN_STATUS_PAUSED,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAdSetStatusAllowableValues()
+    {
+        return [
+            self::AD_SET_STATUS_ACTIVE,
+            self::AD_SET_STATUS_PAUSED,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
     public function getBudgetLevelAllowableValues()
     {
         return [
@@ -739,6 +787,9 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('dsa_payor', $data ?? [], null);
         $this->setIfExists('lead_gen_form_id', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('campaign_status', $data ?? [], null);
+        $this->setIfExists('ad_set_status', $data ?? [], null);
+        $this->setIfExists('ad_status', $data ?? [], null);
         $this->setIfExists('budget_level', $data ?? [], null);
         $this->setIfExists('attribution_spec', $data ?? [], null);
         $this->setIfExists('bodies', $data ?? [], null);
@@ -874,6 +925,24 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'status', must be one of '%s'",
                 $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getCampaignStatusAllowableValues();
+        if (!is_null($this->container['campaign_status']) && !in_array($this->container['campaign_status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'campaign_status', must be one of '%s'",
+                $this->container['campaign_status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getAdSetStatusAllowableValues();
+        if (!is_null($this->container['ad_set_status']) && !in_array($this->container['ad_set_status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'ad_set_status', must be one of '%s'",
+                $this->container['ad_set_status'],
                 implode("', '", $allowedValues)
             );
         }
@@ -2260,7 +2329,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param string|null $status Publish state of the created entities, on every platform. Omitted or ACTIVE publishes live (default); PAUSED pauses only the top-most object this boost creates and switches everything below it on: a new campaign is held paused with its ad set and ad on (one PUT /v1/ads/campaigns/{campaignId}/status with `active` brings it live); into an existing campaign (TikTok `existingCampaignId`) the new ad set is held paused; attached to an existing ad set (`adSetId`) the new ad itself is paused. On LinkedIn the held campaign group is PAUSED, its campaign and creative ACTIVE. X has no per-ad switch, so its lowest level is the line item.
+     * @param string|null $status Publish state of the created entities, on every platform. Omitted or ACTIVE publishes live (default); PAUSED pauses only the top-most object this boost creates and switches everything below it on: a new campaign is held paused with its ad set and ad on (one PUT /v1/ads/campaigns/{campaignId}/status with `active` brings it live); into an existing campaign (TikTok `existingCampaignId`) the new ad set is held paused; attached to an existing ad set (`adSetId`) the new ad itself is paused. On LinkedIn the held campaign group is PAUSED, its campaign and creative ACTIVE. X has no per-ad switch, so its lowest level is the line item. `campaignStatus`, `adSetStatus` and `adStatus` set one level each and always win for that level; `status: PAUSED` adds a hold of its own only when none of them is PAUSED. To create every object paused, send all three as PAUSED.
      *
      * @return self
      */
@@ -2280,6 +2349,107 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_status
+     *
+     * @return string|null
+     */
+    public function getCampaignStatus()
+    {
+        return $this->container['campaign_status'];
+    }
+
+    /**
+     * Sets campaign_status
+     *
+     * @param string|null $campaign_status Every platform, same semantics as POST /v1/ads/create. Sets the switch of the new campaign alone (LinkedIn: the campaign group) and overrides `status` for it. `ACTIVE` with `status: PAUSED` switches the campaign on and holds the new ad set paused (its ad on). Omitted, it follows `status`. Rejected with a 400 alongside `adSetId` or `existingCampaignId`, where no campaign is created (change an existing one with PUT /v1/ads/campaigns/{campaignId}/status).
+     *
+     * @return self
+     */
+    public function setCampaignStatus($campaign_status)
+    {
+        if (is_null($campaign_status)) {
+            throw new \InvalidArgumentException('non-nullable campaign_status cannot be null');
+        }
+        $allowedValues = $this->getCampaignStatusAllowableValues();
+        if (!in_array($campaign_status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'campaign_status', must be one of '%s'",
+                    $campaign_status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['campaign_status'] = $campaign_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets ad_set_status
+     *
+     * @return string|null
+     */
+    public function getAdSetStatus()
+    {
+        return $this->container['ad_set_status'];
+    }
+
+    /**
+     * Sets ad_set_status
+     *
+     * @param string|null $ad_set_status Every platform, same semantics as POST /v1/ads/create. Sets the switch of the new ad set alone (Google, TikTok and Pinterest: the ad group; LinkedIn: the campaign, which stays DRAFT when held; X: the line item) and overrides `status` for it. Omitted, it follows `status`.  Precedence: a level status (`campaignStatus`, `adSetStatus`, `adStatus`) always wins for its level. `status: PAUSED` then holds the top-most new object that has no level status, and only when no level status is PAUSED; every other new object is switched on. So `campaignStatus: ACTIVE` + `adSetStatus: PAUSED` + `adStatus: PAUSED` keeps the campaign on with the new ad set and ad off, and all three PAUSED create the whole tree paused.  Rejected with a 400 alongside `adSetId` (that ad set already exists; change it with PUT /v1/ads/ad-sets/{adSetId}/status).
+     *
+     * @return self
+     */
+    public function setAdSetStatus($ad_set_status)
+    {
+        if (is_null($ad_set_status)) {
+            throw new \InvalidArgumentException('non-nullable ad_set_status cannot be null');
+        }
+        $allowedValues = $this->getAdSetStatusAllowableValues();
+        if (!in_array($ad_set_status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'ad_set_status', must be one of '%s'",
+                    $ad_set_status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['ad_set_status'] = $ad_set_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets ad_status
+     *
+     * @return \Zernio\Model\AdActivationStatus|null
+     */
+    public function getAdStatus()
+    {
+        return $this->container['ad_status'];
+    }
+
+    /**
+     * Sets ad_status
+     *
+     * @param \Zernio\Model\AdActivationStatus|null $ad_status Sets the switch of the new ad alone, also when attaching to an existing ad set with `adSetId` (Meta, TikTok Smart+), and overrides `status` for it. Same precedence as `adSetStatus`. Omitted, it follows `status`.  X returns a 400: a promoted post has no switch of its own, so hold the line item with `adSetStatus`.
+     *
+     * @return self
+     */
+    public function setAdStatus($ad_status)
+    {
+        if (is_null($ad_status)) {
+            throw new \InvalidArgumentException('non-nullable ad_status cannot be null');
+        }
+        $this->container['ad_status'] = $ad_status;
 
         return $this;
     }
