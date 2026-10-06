@@ -22,6 +22,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getInstagramAccountInsights()**](AnalyticsApi.md#getInstagramAccountInsights) | **GET** /v1/analytics/instagram/account-insights | Get Instagram insights |
 | [**getInstagramDemographics()**](AnalyticsApi.md#getInstagramDemographics) | **GET** /v1/analytics/instagram/demographics | Get Instagram demographics |
 | [**getInstagramFollowerHistory()**](AnalyticsApi.md#getInstagramFollowerHistory) | **GET** /v1/analytics/instagram/follower-history | Get Instagram follower history |
+| [**getInstagramOnlineFollowers()**](AnalyticsApi.md#getInstagramOnlineFollowers) | **GET** /v1/analytics/instagram/online-followers | Get Instagram online followers |
 | [**getLinkedInAggregateAnalytics()**](AnalyticsApi.md#getLinkedInAggregateAnalytics) | **GET** /v1/accounts/{accountId}/linkedin-aggregate-analytics | Get LinkedIn aggregate stats |
 | [**getLinkedInOrgAggregateAnalytics()**](AnalyticsApi.md#getLinkedInOrgAggregateAnalytics) | **GET** /v1/analytics/linkedin/org-aggregate-analytics | Get LinkedIn org analytics |
 | [**getLinkedInPostAnalytics()**](AnalyticsApi.md#getLinkedInPostAnalytics) | **GET** /v1/accounts/{accountId}/linkedin-post-analytics | Get LinkedIn post stats |
@@ -1118,6 +1119,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\InstagramAccountInsightsResponse**](../Model/InstagramAccountInsightsResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getInstagramOnlineFollowers()`
+
+```php
+getInstagramOnlineFollowers($account_id): \Zernio\Model\GetInstagramOnlineFollowers200Response
+```
+
+Get Instagram online followers
+
+Returns how many of an Instagram account's followers were online in each hour, for every day of the last 30 days that Meta has data for. Hour keys are \"0\" to \"23\" as Meta returns them. endTime is the end_time Meta returns for that day. Meta does not document the timezone of the hour keys. Data is delayed up to 48 hours, so the most recent days are left out until Meta fills them. Requires at least 100 followers; for smaller accounts days is empty. Requires the Analytics add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The Zernio SocialAccount ID for the Instagram account
+
+try {
+    $result = $apiInstance->getInstagramOnlineFollowers($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->getInstagramOnlineFollowers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The Zernio SocialAccount ID for the Instagram account | |
+
+### Return type
+
+[**\Zernio\Model\GetInstagramOnlineFollowers200Response**](../Model/GetInstagramOnlineFollowers200Response.md)
 
 ### Authorization
 

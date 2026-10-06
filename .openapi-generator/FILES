@@ -1068,6 +1068,8 @@ docs/Model/GetInboxVolume400Response.md
 docs/Model/GetInstagramAccountInsights404Response.md
 docs/Model/GetInstagramAudio200Response.md
 docs/Model/GetInstagramFollowStatus200Response.md
+docs/Model/GetInstagramOnlineFollowers200Response.md
+docs/Model/GetInstagramOnlineFollowers200ResponseDaysInner.md
 docs/Model/GetInstagramPublishingLimit200Response.md
 docs/Model/GetInstagramStoryInsights200Response.md
 docs/Model/GetInstagramStoryInsights200ResponseData.md
@@ -3799,6 +3801,8 @@ lib/Model/GetInboxVolume400Response.php
 lib/Model/GetInstagramAccountInsights404Response.php
 lib/Model/GetInstagramAudio200Response.php
 lib/Model/GetInstagramFollowStatus200Response.php
+lib/Model/GetInstagramOnlineFollowers200Response.php
+lib/Model/GetInstagramOnlineFollowers200ResponseDaysInner.php
 lib/Model/GetInstagramPublishingLimit200Response.php
 lib/Model/GetInstagramStoryInsights200Response.php
 lib/Model/GetInstagramStoryInsights200ResponseData.php
@@ -5463,4 +5467,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/MediaSubtitleTest.php
+test/Model/GetInstagramOnlineFollowers200ResponseDaysInnerTest.php
+test/Model/GetInstagramOnlineFollowers200ResponseTest.php
