@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **created_at** | **\DateTime** |  |
 **is_reply** | **bool** | Whether this is a reply to another comment |
 **parent_comment_id** | **string** | Parent comment ID if this is a reply |
+**is_live** | **bool** | Instagram only: true when the comment was made on a live broadcast (the live_comments webhook field). Absent on every other comment. | [optional]
 **ad** | [**\Zernio\Model\WebhookPayloadCommentCommentAd**](WebhookPayloadCommentCommentAd.md) |  | [optional]
 **attachment** | [**\Zernio\Model\WebhookPayloadCommentCommentAttachment**](WebhookPayloadCommentCommentAttachment.md) |  | [optional]
 

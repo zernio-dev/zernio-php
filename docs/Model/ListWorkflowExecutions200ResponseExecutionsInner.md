@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **waiting_for** | [**\Zernio\Model\ListWorkflowExecutions200ResponseExecutionsInnerWaitingFor**](ListWorkflowExecutions200ResponseExecutionsInnerWaitingFor.md) |  | [optional]
 **variables** | **array<string,mixed>** |  | [optional]
 **platform_identifier** | **string** |  | [optional]
-**conversation_id** | **string** |  | [optional]
+**conversation_id** | **string** | Null only while a comment-triggered run has not sent its private reply yet. | [optional]
 **step_count** | **int** |  | [optional]
 **last_error** | **string** |  | [optional]
 **resume_at** | **\DateTime** |  | [optional]

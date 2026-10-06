@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **account_id** | **string** |  | [optional]
 **message** | [**\Zernio\Model\GetBroadcast200ResponseBroadcastMessage**](GetBroadcast200ResponseBroadcastMessage.md) |  | [optional]
 **template** | [**\Zernio\Model\GetBroadcast200ResponseBroadcastTemplate**](GetBroadcast200ResponseBroadcastTemplate.md) |  | [optional]
-**segment_filters** | [**\Zernio\Model\ListContacts200ResponseFilters**](ListContacts200ResponseFilters.md) |  | [optional]
+**segment_filters** | [**\Zernio\Model\GetBroadcast200ResponseBroadcastSegmentFilters**](GetBroadcast200ResponseBroadcastSegmentFilters.md) |  | [optional]
 **status** | **string** |  | [optional]
 **scheduled_at** | **\DateTime** |  | [optional]
 **started_at** | **\DateTime** |  | [optional]

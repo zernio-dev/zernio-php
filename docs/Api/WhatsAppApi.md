@@ -13,6 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createWhatsAppGroupChat()**](WhatsAppApi.md#createWhatsAppGroupChat) | **POST** /v1/whatsapp/wa-groups | Create group |
 | [**createWhatsAppGroupInviteLink()**](WhatsAppApi.md#createWhatsAppGroupInviteLink) | **POST** /v1/whatsapp/wa-groups/{groupId}/invite-link | Create invite link |
 | [**createWhatsAppTemplate()**](WhatsAppApi.md#createWhatsAppTemplate) | **POST** /v1/whatsapp/templates | Create template |
+| [**deleteWhatsAppConversationalAutomation()**](WhatsAppApi.md#deleteWhatsAppConversationalAutomation) | **DELETE** /v1/whatsapp/conversational-automation | Clear ice breakers and commands |
 | [**deleteWhatsAppGroupChat()**](WhatsAppApi.md#deleteWhatsAppGroupChat) | **DELETE** /v1/whatsapp/wa-groups/{groupId} | Delete group |
 | [**deleteWhatsAppTemplate()**](WhatsAppApi.md#deleteWhatsAppTemplate) | **DELETE** /v1/whatsapp/templates/{templateName} | Delete template |
 | [**deleteWhatsAppTemplateById()**](WhatsAppApi.md#deleteWhatsAppTemplateById) | **DELETE** /v1/whatsapp/templates/id/{templateId} | Delete template by id |
@@ -21,6 +22,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getWhatsAppBlockedUsers()**](WhatsAppApi.md#getWhatsAppBlockedUsers) | **GET** /v1/whatsapp/block-users | List blocked users |
 | [**getWhatsAppBusinessProfile()**](WhatsAppApi.md#getWhatsAppBusinessProfile) | **GET** /v1/whatsapp/business-profile | Get business profile |
 | [**getWhatsAppCommerceSettings()**](WhatsAppApi.md#getWhatsAppCommerceSettings) | **GET** /v1/whatsapp/commerce-settings | Get a number&#39;s commerce settings |
+| [**getWhatsAppConversationalAutomation()**](WhatsAppApi.md#getWhatsAppConversationalAutomation) | **GET** /v1/whatsapp/conversational-automation | Get ice breakers and commands |
 | [**getWhatsAppDataset()**](WhatsAppApi.md#getWhatsAppDataset) | **GET** /v1/whatsapp/dataset | Get CTWA conversions dataset |
 | [**getWhatsAppDisplayName()**](WhatsAppApi.md#getWhatsAppDisplayName) | **GET** /v1/whatsapp/business-profile/display-name | Get display name status |
 | [**getWhatsAppGroupChat()**](WhatsAppApi.md#getWhatsAppGroupChat) | **GET** /v1/whatsapp/wa-groups/{groupId} | Get group info |
@@ -41,6 +43,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**removeWhatsAppGroupParticipants()**](WhatsAppApi.md#removeWhatsAppGroupParticipants) | **DELETE** /v1/whatsapp/wa-groups/{groupId}/participants | Remove participants |
 | [**requestWhatsAppVerificationCode()**](WhatsAppApi.md#requestWhatsAppVerificationCode) | **POST** /v1/accounts/{accountId}/whatsapp/request-code | Request a Meta re-verification code for a BYO WhatsApp number |
 | [**sendWhatsAppConversion()**](WhatsAppApi.md#sendWhatsAppConversion) | **POST** /v1/whatsapp/conversions | Send WhatsApp conversion event |
+| [**setWhatsAppConversationalAutomation()**](WhatsAppApi.md#setWhatsAppConversationalAutomation) | **POST** /v1/whatsapp/conversational-automation | Set ice breakers and commands |
 | [**setWhatsappBusinessUsername()**](WhatsAppApi.md#setWhatsappBusinessUsername) | **POST** /v1/whatsapp/business-profile/username | Set business username |
 | [**unblockWhatsAppUsers()**](WhatsAppApi.md#unblockWhatsAppUsers) | **DELETE** /v1/whatsapp/block-users | Unblock users |
 | [**unlinkWhatsAppCatalog()**](WhatsAppApi.md#unlinkWhatsAppCatalog) | **DELETE** /v1/whatsapp/catalogs | Unlink a catalog from a WhatsApp number |
@@ -478,6 +481,66 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteWhatsAppConversationalAutomation()`
+
+```php
+deleteWhatsAppConversationalAutomation($account_id): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
+```
+
+Clear ice breakers and commands
+
+Remove every prompt and command and turn the welcome message off.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | WhatsApp account ID
+
+try {
+    $result = $apiInstance->deleteWhatsAppConversationalAutomation($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->deleteWhatsAppConversationalAutomation: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| WhatsApp account ID | |
+
+### Return type
+
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -966,6 +1029,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetWhatsAppCommerceSettings200Response**](../Model/GetWhatsAppCommerceSettings200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getWhatsAppConversationalAutomation()`
+
+```php
+getWhatsAppConversationalAutomation($account_id): \Zernio\Model\GetWhatsAppConversationalAutomation200Response
+```
+
+Get ice breakers and commands
+
+Read the number's conversational automation (Meta's `conversational_automation`): ice breaker prompts, slash commands and the welcome-message flag. A number with none set returns the empty configuration.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | WhatsApp account ID
+
+try {
+    $result = $apiInstance->getWhatsAppConversationalAutomation($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->getWhatsAppConversationalAutomation: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| WhatsApp account ID | |
+
+### Return type
+
+[**\Zernio\Model\GetWhatsAppConversationalAutomation200Response**](../Model/GetWhatsAppConversationalAutomation200Response.md)
 
 ### Authorization
 
@@ -2206,6 +2329,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\SendWhatsAppConversion200Response**](../Model/SendWhatsAppConversion200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `setWhatsAppConversationalAutomation()`
+
+```php
+setWhatsAppConversationalAutomation($set_whats_app_conversational_automation_request): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
+```
+
+Set ice breakers and commands
+
+Set ice breaker prompts (up to 3, 80 characters each), slash commands (up to 30) and the welcome-message flag on the number. Only the fields you send are changed. A tapped prompt arrives as a normal `message.received` carrying its text.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$set_whats_app_conversational_automation_request = {"accountId":"64e1f0a9e2b5af0012ab34cd","enable_welcome_message":true,"prompts":["Track my order","Talk to sales"],"commands":[{"command_name":"help","command_description":"Get help with your order"}]}; // \Zernio\Model\SetWhatsAppConversationalAutomationRequest
+
+try {
+    $result = $apiInstance->setWhatsAppConversationalAutomation($set_whats_app_conversational_automation_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->setWhatsAppConversationalAutomation: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **set_whats_app_conversational_automation_request** | [**\Zernio\Model\SetWhatsAppConversationalAutomationRequest**](../Model/SetWhatsAppConversationalAutomationRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
 
 ### Authorization
 

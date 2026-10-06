@@ -8,15 +8,21 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | ------------- | ------------- | ------------- |
 | [**deleteInstagramIceBreakers()**](AccountSettingsApi.md#deleteInstagramIceBreakers) | **DELETE** /v1/accounts/{accountId}/instagram-ice-breakers | Delete IG ice breakers |
 | [**deleteMessengerGetStarted()**](AccountSettingsApi.md#deleteMessengerGetStarted) | **DELETE** /v1/accounts/{accountId}/messenger-get-started | Delete FB Get Started button |
-| [**deleteMessengerMenu()**](AccountSettingsApi.md#deleteMessengerMenu) | **DELETE** /v1/accounts/{accountId}/messenger-menu | Delete FB persistent menu |
+| [**deleteMessengerGreeting()**](AccountSettingsApi.md#deleteMessengerGreeting) | **DELETE** /v1/accounts/{accountId}/messenger-greeting | Delete FB greeting text |
+| [**deleteMessengerIceBreakers()**](AccountSettingsApi.md#deleteMessengerIceBreakers) | **DELETE** /v1/accounts/{accountId}/messenger-ice-breakers | Delete FB ice breakers |
+| [**deleteMessengerMenu()**](AccountSettingsApi.md#deleteMessengerMenu) | **DELETE** /v1/accounts/{accountId}/messenger-menu | Delete persistent menu |
 | [**deleteTelegramCommands()**](AccountSettingsApi.md#deleteTelegramCommands) | **DELETE** /v1/accounts/{accountId}/telegram-commands | Delete TG bot commands |
 | [**getInstagramIceBreakers()**](AccountSettingsApi.md#getInstagramIceBreakers) | **GET** /v1/accounts/{accountId}/instagram-ice-breakers | Get IG ice breakers |
 | [**getMessengerGetStarted()**](AccountSettingsApi.md#getMessengerGetStarted) | **GET** /v1/accounts/{accountId}/messenger-get-started | Get FB Get Started button |
-| [**getMessengerMenu()**](AccountSettingsApi.md#getMessengerMenu) | **GET** /v1/accounts/{accountId}/messenger-menu | Get FB persistent menu |
+| [**getMessengerGreeting()**](AccountSettingsApi.md#getMessengerGreeting) | **GET** /v1/accounts/{accountId}/messenger-greeting | Get FB greeting text |
+| [**getMessengerIceBreakers()**](AccountSettingsApi.md#getMessengerIceBreakers) | **GET** /v1/accounts/{accountId}/messenger-ice-breakers | Get FB ice breakers |
+| [**getMessengerMenu()**](AccountSettingsApi.md#getMessengerMenu) | **GET** /v1/accounts/{accountId}/messenger-menu | Get persistent menu |
 | [**getTelegramCommands()**](AccountSettingsApi.md#getTelegramCommands) | **GET** /v1/accounts/{accountId}/telegram-commands | Get TG bot commands |
 | [**setInstagramIceBreakers()**](AccountSettingsApi.md#setInstagramIceBreakers) | **PUT** /v1/accounts/{accountId}/instagram-ice-breakers | Set IG ice breakers |
 | [**setMessengerGetStarted()**](AccountSettingsApi.md#setMessengerGetStarted) | **PUT** /v1/accounts/{accountId}/messenger-get-started | Set FB Get Started button |
-| [**setMessengerMenu()**](AccountSettingsApi.md#setMessengerMenu) | **PUT** /v1/accounts/{accountId}/messenger-menu | Set FB persistent menu |
+| [**setMessengerGreeting()**](AccountSettingsApi.md#setMessengerGreeting) | **PUT** /v1/accounts/{accountId}/messenger-greeting | Set FB greeting text |
+| [**setMessengerIceBreakers()**](AccountSettingsApi.md#setMessengerIceBreakers) | **PUT** /v1/accounts/{accountId}/messenger-ice-breakers | Set FB ice breakers |
+| [**setMessengerMenu()**](AccountSettingsApi.md#setMessengerMenu) | **PUT** /v1/accounts/{accountId}/messenger-menu | Set persistent menu |
 | [**setTelegramCommands()**](AccountSettingsApi.md#setTelegramCommands) | **PUT** /v1/accounts/{accountId}/telegram-commands | Set TG bot commands |
 
 
@@ -139,15 +145,135 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `deleteMessengerGreeting()`
+
+```php
+deleteMessengerGreeting($account_id): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
+```
+
+Delete FB greeting text
+
+Remove the greeting text from every locale.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountSettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+
+try {
+    $result = $apiInstance->deleteMessengerGreeting($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountSettingsApi->deleteMessengerGreeting: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteMessengerIceBreakers()`
+
+```php
+deleteMessengerIceBreakers($account_id): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
+```
+
+Delete FB ice breakers
+
+Remove the ice breakers from every locale.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountSettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+
+try {
+    $result = $apiInstance->deleteMessengerIceBreakers($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountSettingsApi->deleteMessengerIceBreakers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteMessengerMenu()`
 
 ```php
 deleteMessengerMenu($account_id)
 ```
 
-Delete FB persistent menu
+Delete persistent menu
 
-Removes the persistent menu from Facebook Messenger conversations for this account.
+Removes the persistent menu from this Facebook Messenger or Instagram account.
 
 ### Example
 
@@ -377,15 +503,135 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getMessengerGreeting()`
+
+```php
+getMessengerGreeting($account_id): \Zernio\Model\GetMessengerGreeting200Response
+```
+
+Get FB greeting text
+
+Get the greeting text a Facebook page shows on its Messenger welcome screen, one entry per locale. `data` is empty when the page has none.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountSettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+
+try {
+    $result = $apiInstance->getMessengerGreeting($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountSettingsApi->getMessengerGreeting: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\GetMessengerGreeting200Response**](../Model/GetMessengerGreeting200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getMessengerIceBreakers()`
+
+```php
+getMessengerIceBreakers($account_id): \Zernio\Model\GetMessengerIceBreakers200Response
+```
+
+Get FB ice breakers
+
+Get the ice breakers (FAQ questions shown when a person opens a new Messenger thread) for a Facebook page, one entry per locale. Instagram ice breakers live at /v1/accounts/{accountId}/instagram-ice-breakers.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountSettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+
+try {
+    $result = $apiInstance->getMessengerIceBreakers($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountSettingsApi->getMessengerIceBreakers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\GetMessengerIceBreakers200Response**](../Model/GetMessengerIceBreakers200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getMessengerMenu()`
 
 ```php
 getMessengerMenu($account_id): \Zernio\Model\GetMessengerMenu200Response
 ```
 
-Get FB persistent menu
+Get persistent menu
 
-Get the persistent menu configuration for a Facebook Messenger account.
+Get the persistent menu configuration for a Facebook Messenger or Instagram account. Instagram accounts connected through Facebook Login are read through their linked Page (Meta's `platform=instagram`), Instagram Login accounts through the Instagram API.
 
 ### Example
 
@@ -620,15 +866,139 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `setMessengerGreeting()`
+
+```php
+setMessengerGreeting($account_id, $set_messenger_greeting_request): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
+```
+
+Set FB greeting text
+
+Set the greeting text on a Facebook page's Messenger welcome screen (Meta's `greeting` Messenger Profile field). One entry must use locale `default`; add more for other locales. Meta personalises `{{user_first_name}}`, `{{user_last_name}}` and `{{user_full_name}}`. Replaces every locale already set.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountSettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$set_messenger_greeting_request = {"greeting":[{"locale":"default","text":"Hi {{user_first_name}}, how can we help?"},{"locale":"es_ES","text":"Hola {{user_first_name}}, en que te ayudamos?"}]}; // \Zernio\Model\SetMessengerGreetingRequest
+
+try {
+    $result = $apiInstance->setMessengerGreeting($account_id, $set_messenger_greeting_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountSettingsApi->setMessengerGreeting: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **set_messenger_greeting_request** | [**\Zernio\Model\SetMessengerGreetingRequest**](../Model/SetMessengerGreetingRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `setMessengerIceBreakers()`
+
+```php
+setMessengerIceBreakers($account_id, $set_messenger_ice_breakers_request): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
+```
+
+Set FB ice breakers
+
+Set up to 4 ice breakers per locale for a Facebook page (Meta's `ice_breakers` Messenger Profile field). One entry must use locale `default`. A tap sends a postback with the question's `payload`, which arrives as `message.received` with `metadata.postbackPayload`; use `zernio:workflow:<workflowId>` to start a workflow (it must be active on this account and profile). Replaces every locale already set.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountSettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$set_messenger_ice_breakers_request = {"ice_breakers":[{"locale":"default","call_to_actions":[{"question":"Book a table","payload":"zernio:workflow:5190ac0343606395fce014b0"},{"question":"Opening hours","payload":"HOURS"}]}]}; // \Zernio\Model\SetMessengerIceBreakersRequest
+
+try {
+    $result = $apiInstance->setMessengerIceBreakers($account_id, $set_messenger_ice_breakers_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountSettingsApi->setMessengerIceBreakers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **set_messenger_ice_breakers_request** | [**\Zernio\Model\SetMessengerIceBreakersRequest**](../Model/SetMessengerIceBreakersRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `setMessengerMenu()`
 
 ```php
 setMessengerMenu($account_id, $set_messenger_menu_request)
 ```
 
-Set FB persistent menu
+Set persistent menu
 
-Set the persistent menu for a Facebook Messenger account. Max 3 top-level items, max 5 nested items. Meta only shows a persistent menu on a page that has a Get Started button, so set one first with PUT /v1/accounts/{accountId}/messenger-get-started. A postback button whose payload is `zernio:workflow:<workflowId>` starts that workflow when tapped; the workflow must be active on this account and profile.
+Set the persistent menu for a Facebook Messenger or Instagram account. Max 3 top-level items, max 5 nested items. On Facebook, Meta only shows a persistent menu on a page that has a Get Started button, so set one first with PUT /v1/accounts/{accountId}/messenger-get-started. A postback button whose payload is `zernio:workflow:<workflowId>` starts that workflow when tapped; the workflow must be active on this account and profile.
 
 ### Example
 

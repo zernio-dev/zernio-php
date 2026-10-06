@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**standby** | **bool** | WhatsApp only. true when this inbound arrived while Meta Business Agent held the conversation: the agent answers it, and Zernio only observes. Sending a reply takes control back. See conversation.control_changed. | [optional]
+**standby** | **bool** | true when this inbound arrived on Meta&#39;s standby path because another app owned the conversation: Meta Business Agent on WhatsApp, another handover receiver (such as Page Inbox) on Facebook and Instagram. That app answers it, Zernio only observes, and no automation runs. On WhatsApp sending a reply takes control back; on Facebook and Instagram take control first with POST /v1/inbox/conversations/{conversationId}/thread-control. See conversation.control_changed. | [optional]
 **quoted_message_id** | **string** | Raw platform envelope id (WhatsApp &#x60;context.id&#x60;; Instagram and Facebook Messenger &#x60;reply_to.mid&#x60;) of the message this one is a quote-reply to, forwarded verbatim. It may not equal the stored id of that message (see &#x60;quotedMessage.platformMessageId&#x60;). On outgoing messages the same field appears on &#x60;message.sent&#x60;, but only on some surfaces: see WebhookPayloadMessageSent.metadata.quotedMessageId. | [optional]
 **quoted_message** | [**\Zernio\Model\WebhookPayloadMessageMetadataQuotedMessage**](WebhookPayloadMessageMetadataQuotedMessage.md) |  | [optional]
 **quick_reply_payload** | **string** | Payload from a quick reply tap (Facebook/Instagram Messenger). | [optional]

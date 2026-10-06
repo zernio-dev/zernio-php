@@ -81,15 +81,21 @@ Class | Method | HTTP request | Description
 *AccountGroupsApi* | [**updateAccountGroup**](docs/Api/AccountGroupsApi.md#updateaccountgroup) | **PUT** /v1/account-groups/{groupId} | Update group
 *AccountSettingsApi* | [**deleteInstagramIceBreakers**](docs/Api/AccountSettingsApi.md#deleteinstagramicebreakers) | **DELETE** /v1/accounts/{accountId}/instagram-ice-breakers | Delete IG ice breakers
 *AccountSettingsApi* | [**deleteMessengerGetStarted**](docs/Api/AccountSettingsApi.md#deletemessengergetstarted) | **DELETE** /v1/accounts/{accountId}/messenger-get-started | Delete FB Get Started button
-*AccountSettingsApi* | [**deleteMessengerMenu**](docs/Api/AccountSettingsApi.md#deletemessengermenu) | **DELETE** /v1/accounts/{accountId}/messenger-menu | Delete FB persistent menu
+*AccountSettingsApi* | [**deleteMessengerGreeting**](docs/Api/AccountSettingsApi.md#deletemessengergreeting) | **DELETE** /v1/accounts/{accountId}/messenger-greeting | Delete FB greeting text
+*AccountSettingsApi* | [**deleteMessengerIceBreakers**](docs/Api/AccountSettingsApi.md#deletemessengericebreakers) | **DELETE** /v1/accounts/{accountId}/messenger-ice-breakers | Delete FB ice breakers
+*AccountSettingsApi* | [**deleteMessengerMenu**](docs/Api/AccountSettingsApi.md#deletemessengermenu) | **DELETE** /v1/accounts/{accountId}/messenger-menu | Delete persistent menu
 *AccountSettingsApi* | [**deleteTelegramCommands**](docs/Api/AccountSettingsApi.md#deletetelegramcommands) | **DELETE** /v1/accounts/{accountId}/telegram-commands | Delete TG bot commands
 *AccountSettingsApi* | [**getInstagramIceBreakers**](docs/Api/AccountSettingsApi.md#getinstagramicebreakers) | **GET** /v1/accounts/{accountId}/instagram-ice-breakers | Get IG ice breakers
 *AccountSettingsApi* | [**getMessengerGetStarted**](docs/Api/AccountSettingsApi.md#getmessengergetstarted) | **GET** /v1/accounts/{accountId}/messenger-get-started | Get FB Get Started button
-*AccountSettingsApi* | [**getMessengerMenu**](docs/Api/AccountSettingsApi.md#getmessengermenu) | **GET** /v1/accounts/{accountId}/messenger-menu | Get FB persistent menu
+*AccountSettingsApi* | [**getMessengerGreeting**](docs/Api/AccountSettingsApi.md#getmessengergreeting) | **GET** /v1/accounts/{accountId}/messenger-greeting | Get FB greeting text
+*AccountSettingsApi* | [**getMessengerIceBreakers**](docs/Api/AccountSettingsApi.md#getmessengericebreakers) | **GET** /v1/accounts/{accountId}/messenger-ice-breakers | Get FB ice breakers
+*AccountSettingsApi* | [**getMessengerMenu**](docs/Api/AccountSettingsApi.md#getmessengermenu) | **GET** /v1/accounts/{accountId}/messenger-menu | Get persistent menu
 *AccountSettingsApi* | [**getTelegramCommands**](docs/Api/AccountSettingsApi.md#gettelegramcommands) | **GET** /v1/accounts/{accountId}/telegram-commands | Get TG bot commands
 *AccountSettingsApi* | [**setInstagramIceBreakers**](docs/Api/AccountSettingsApi.md#setinstagramicebreakers) | **PUT** /v1/accounts/{accountId}/instagram-ice-breakers | Set IG ice breakers
 *AccountSettingsApi* | [**setMessengerGetStarted**](docs/Api/AccountSettingsApi.md#setmessengergetstarted) | **PUT** /v1/accounts/{accountId}/messenger-get-started | Set FB Get Started button
-*AccountSettingsApi* | [**setMessengerMenu**](docs/Api/AccountSettingsApi.md#setmessengermenu) | **PUT** /v1/accounts/{accountId}/messenger-menu | Set FB persistent menu
+*AccountSettingsApi* | [**setMessengerGreeting**](docs/Api/AccountSettingsApi.md#setmessengergreeting) | **PUT** /v1/accounts/{accountId}/messenger-greeting | Set FB greeting text
+*AccountSettingsApi* | [**setMessengerIceBreakers**](docs/Api/AccountSettingsApi.md#setmessengericebreakers) | **PUT** /v1/accounts/{accountId}/messenger-ice-breakers | Set FB ice breakers
+*AccountSettingsApi* | [**setMessengerMenu**](docs/Api/AccountSettingsApi.md#setmessengermenu) | **PUT** /v1/accounts/{accountId}/messenger-menu | Set persistent menu
 *AccountSettingsApi* | [**setTelegramCommands**](docs/Api/AccountSettingsApi.md#settelegramcommands) | **PUT** /v1/accounts/{accountId}/telegram-commands | Set TG bot commands
 *AccountsApi* | [**deleteAccount**](docs/Api/AccountsApi.md#deleteaccount) | **DELETE** /v1/accounts/{accountId} | Disconnect account
 *AccountsApi* | [**getAccountHealth**](docs/Api/AccountsApi.md#getaccounthealth) | **GET** /v1/accounts/{accountId}/health | Check account health
@@ -687,6 +693,7 @@ Class | Method | HTTP request | Description
 *MediaApi* | [**getMediaPresignedUrl**](docs/Api/MediaApi.md#getmediapresignedurl) | **POST** /v1/media/presign | Get upload URL
 *MentionsApi* | [**listInboxMentions**](docs/Api/MentionsApi.md#listinboxmentions) | **GET** /v1/inbox/mentions | List mentions
 *MentionsApi* | [**replyToMention**](docs/Api/MentionsApi.md#replytomention) | **POST** /v1/inbox/mentions/reply | Reply to a mention
+*MessagesApi* | [**acceptConversationRequest**](docs/Api/MessagesApi.md#acceptconversationrequest) | **POST** /v1/inbox/conversations/{conversationId}/accept | Accept a message request
 *MessagesApi* | [**addMessageReaction**](docs/Api/MessagesApi.md#addmessagereaction) | **POST** /v1/inbox/conversations/{conversationId}/messages/{messageId}/reactions | Add reaction
 *MessagesApi* | [**createInboxConversation**](docs/Api/MessagesApi.md#createinboxconversation) | **POST** /v1/inbox/conversations | Create conversation
 *MessagesApi* | [**deleteInboxMessage**](docs/Api/MessagesApi.md#deleteinboxmessage) | **DELETE** /v1/inbox/conversations/{conversationId}/messages/{messageId} | Delete message
@@ -700,7 +707,7 @@ Class | Method | HTTP request | Description
 *MessagesApi* | [**searchInboxConversations**](docs/Api/MessagesApi.md#searchinboxconversations) | **GET** /v1/inbox/conversations/search | Search conversations
 *MessagesApi* | [**sendInboxMessage**](docs/Api/MessagesApi.md#sendinboxmessage) | **POST** /v1/inbox/conversations/{conversationId}/messages | Send message
 *MessagesApi* | [**sendTypingIndicator**](docs/Api/MessagesApi.md#sendtypingindicator) | **POST** /v1/inbox/conversations/{conversationId}/typing | Send typing indicator
-*MessagesApi* | [**setConversationThreadControl**](docs/Api/MessagesApi.md#setconversationthreadcontrol) | **POST** /v1/inbox/conversations/{conversationId}/thread-control | Hand a conversation to or from Meta Business Agent
+*MessagesApi* | [**setConversationThreadControl**](docs/Api/MessagesApi.md#setconversationthreadcontrol) | **POST** /v1/inbox/conversations/{conversationId}/thread-control | Change who answers a conversation (handover)
 *MessagesApi* | [**updateInboxConversation**](docs/Api/MessagesApi.md#updateinboxconversation) | **PUT** /v1/inbox/conversations/{conversationId} | Update conversation status
 *MessagesApi* | [**uploadMediaDirect**](docs/Api/MessagesApi.md#uploadmediadirect) | **POST** /v1/media/upload-direct | Upload media file
 *MessagingAdsApi* | [**createCallAd**](docs/Api/MessagingAdsApi.md#createcallad) | **POST** /v1/ads/call | Create Click-to-Call ad
@@ -913,6 +920,7 @@ Class | Method | HTTP request | Description
 *WhatsAppApi* | [**createWhatsAppGroupChat**](docs/Api/WhatsAppApi.md#createwhatsappgroupchat) | **POST** /v1/whatsapp/wa-groups | Create group
 *WhatsAppApi* | [**createWhatsAppGroupInviteLink**](docs/Api/WhatsAppApi.md#createwhatsappgroupinvitelink) | **POST** /v1/whatsapp/wa-groups/{groupId}/invite-link | Create invite link
 *WhatsAppApi* | [**createWhatsAppTemplate**](docs/Api/WhatsAppApi.md#createwhatsapptemplate) | **POST** /v1/whatsapp/templates | Create template
+*WhatsAppApi* | [**deleteWhatsAppConversationalAutomation**](docs/Api/WhatsAppApi.md#deletewhatsappconversationalautomation) | **DELETE** /v1/whatsapp/conversational-automation | Clear ice breakers and commands
 *WhatsAppApi* | [**deleteWhatsAppGroupChat**](docs/Api/WhatsAppApi.md#deletewhatsappgroupchat) | **DELETE** /v1/whatsapp/wa-groups/{groupId} | Delete group
 *WhatsAppApi* | [**deleteWhatsAppTemplate**](docs/Api/WhatsAppApi.md#deletewhatsapptemplate) | **DELETE** /v1/whatsapp/templates/{templateName} | Delete template
 *WhatsAppApi* | [**deleteWhatsAppTemplateById**](docs/Api/WhatsAppApi.md#deletewhatsapptemplatebyid) | **DELETE** /v1/whatsapp/templates/id/{templateId} | Delete template by id
@@ -921,6 +929,7 @@ Class | Method | HTTP request | Description
 *WhatsAppApi* | [**getWhatsAppBlockedUsers**](docs/Api/WhatsAppApi.md#getwhatsappblockedusers) | **GET** /v1/whatsapp/block-users | List blocked users
 *WhatsAppApi* | [**getWhatsAppBusinessProfile**](docs/Api/WhatsAppApi.md#getwhatsappbusinessprofile) | **GET** /v1/whatsapp/business-profile | Get business profile
 *WhatsAppApi* | [**getWhatsAppCommerceSettings**](docs/Api/WhatsAppApi.md#getwhatsappcommercesettings) | **GET** /v1/whatsapp/commerce-settings | Get a number&#39;s commerce settings
+*WhatsAppApi* | [**getWhatsAppConversationalAutomation**](docs/Api/WhatsAppApi.md#getwhatsappconversationalautomation) | **GET** /v1/whatsapp/conversational-automation | Get ice breakers and commands
 *WhatsAppApi* | [**getWhatsAppDataset**](docs/Api/WhatsAppApi.md#getwhatsappdataset) | **GET** /v1/whatsapp/dataset | Get CTWA conversions dataset
 *WhatsAppApi* | [**getWhatsAppDisplayName**](docs/Api/WhatsAppApi.md#getwhatsappdisplayname) | **GET** /v1/whatsapp/business-profile/display-name | Get display name status
 *WhatsAppApi* | [**getWhatsAppGroupChat**](docs/Api/WhatsAppApi.md#getwhatsappgroupchat) | **GET** /v1/whatsapp/wa-groups/{groupId} | Get group info
@@ -941,6 +950,7 @@ Class | Method | HTTP request | Description
 *WhatsAppApi* | [**removeWhatsAppGroupParticipants**](docs/Api/WhatsAppApi.md#removewhatsappgroupparticipants) | **DELETE** /v1/whatsapp/wa-groups/{groupId}/participants | Remove participants
 *WhatsAppApi* | [**requestWhatsAppVerificationCode**](docs/Api/WhatsAppApi.md#requestwhatsappverificationcode) | **POST** /v1/accounts/{accountId}/whatsapp/request-code | Request a Meta re-verification code for a BYO WhatsApp number
 *WhatsAppApi* | [**sendWhatsAppConversion**](docs/Api/WhatsAppApi.md#sendwhatsappconversion) | **POST** /v1/whatsapp/conversions | Send WhatsApp conversion event
+*WhatsAppApi* | [**setWhatsAppConversationalAutomation**](docs/Api/WhatsAppApi.md#setwhatsappconversationalautomation) | **POST** /v1/whatsapp/conversational-automation | Set ice breakers and commands
 *WhatsAppApi* | [**setWhatsappBusinessUsername**](docs/Api/WhatsAppApi.md#setwhatsappbusinessusername) | **POST** /v1/whatsapp/business-profile/username | Set business username
 *WhatsAppApi* | [**unblockWhatsAppUsers**](docs/Api/WhatsAppApi.md#unblockwhatsappusers) | **DELETE** /v1/whatsapp/block-users | Unblock users
 *WhatsAppApi* | [**unlinkWhatsAppCatalog**](docs/Api/WhatsAppApi.md#unlinkwhatsappcatalog) | **DELETE** /v1/whatsapp/catalogs | Unlink a catalog from a WhatsApp number
@@ -1016,11 +1026,15 @@ Class | Method | HTTP request | Description
 *WorkflowsApi* | [**listWorkflows**](docs/Api/WorkflowsApi.md#listworkflows) | **GET** /v1/workflows | List workflows
 *WorkflowsApi* | [**pauseWorkflow**](docs/Api/WorkflowsApi.md#pauseworkflow) | **POST** /v1/workflows/{workflowId}/pause | Pause workflow
 *WorkflowsApi* | [**restoreWorkflowVersion**](docs/Api/WorkflowsApi.md#restoreworkflowversion) | **POST** /v1/workflows/{workflowId}/versions/{version}/restore | Restore a workflow version
+*WorkflowsApi* | [**triggerApiCallWorkflow**](docs/Api/WorkflowsApi.md#triggerapicallworkflow) | **POST** /v1/workflows/{workflowId}/trigger | Start an API-triggered workflow
 *WorkflowsApi* | [**triggerWorkflow**](docs/Api/WorkflowsApi.md#triggerworkflow) | **POST** /v1/workflows/{workflowId}/executions | Manually start a workflow run
 *WorkflowsApi* | [**updateWorkflow**](docs/Api/WorkflowsApi.md#updateworkflow) | **PATCH** /v1/workflows/{workflowId} | Update workflow
 
 ## Models
 
+- [AcceptConversationRequest200Response](docs/Model/AcceptConversationRequest200Response.md)
+- [AcceptConversationRequest200ResponseData](docs/Model/AcceptConversationRequest200ResponseData.md)
+- [AcceptConversationRequestRequest](docs/Model/AcceptConversationRequestRequest.md)
 - [AccountWithFollowerStats](docs/Model/AccountWithFollowerStats.md)
 - [AccountWithFollowerStatsAllOfAccountStats](docs/Model/AccountWithFollowerStatsAllOfAccountStats.md)
 - [AccountsListResponse](docs/Model/AccountsListResponse.md)
@@ -1294,8 +1308,15 @@ Class | Method | HTTP request | Description
 - [CheckPhoneNumberPortabilityRequest](docs/Model/CheckPhoneNumberPortabilityRequest.md)
 - [CheckVerification200Response](docs/Model/CheckVerification200Response.md)
 - [CheckVerificationRequest](docs/Model/CheckVerificationRequest.md)
+- [CommentAutomationActions](docs/Model/CommentAutomationActions.md)
 - [CommentAutomationAudience](docs/Model/CommentAutomationAudience.md)
+- [CommentAutomationDmMedia](docs/Model/CommentAutomationDmMedia.md)
 - [CommentAutomationFollowGate](docs/Model/CommentAutomationFollowGate.md)
+- [CommentAutomationLog](docs/Model/CommentAutomationLog.md)
+- [CommentAutomationLogPlatformError](docs/Model/CommentAutomationLogPlatformError.md)
+- [CommentAutomationQuickReply](docs/Model/CommentAutomationQuickReply.md)
+- [CommentAutomationRepeatPolicy](docs/Model/CommentAutomationRepeatPolicy.md)
+- [CommentAutomationStats](docs/Model/CommentAutomationStats.md)
 - [CommentAutomationTemplate](docs/Model/CommentAutomationTemplate.md)
 - [CommentAutomationTemplateElement](docs/Model/CommentAutomationTemplateElement.md)
 - [CommentAutomationTemplateElementButtonsInner](docs/Model/CommentAutomationTemplateElementButtonsInner.md)
@@ -1430,7 +1451,6 @@ Class | Method | HTTP request | Description
 - [CreateCallAdRequest](docs/Model/CreateCallAdRequest.md)
 - [CreateCommentAutomation200Response](docs/Model/CreateCommentAutomation200Response.md)
 - [CreateCommentAutomation200ResponseAutomation](docs/Model/CreateCommentAutomation200ResponseAutomation.md)
-- [CreateCommentAutomation200ResponseAutomationStats](docs/Model/CreateCommentAutomation200ResponseAutomationStats.md)
 - [CreateCommentAutomationRequest](docs/Model/CreateCommentAutomationRequest.md)
 - [CreateCommerceCatalogSync202Response](docs/Model/CreateCommerceCatalogSync202Response.md)
 - [CreateCommerceCatalogSyncRequest](docs/Model/CreateCommerceCatalogSyncRequest.md)
@@ -1860,6 +1880,7 @@ Class | Method | HTTP request | Description
 - [GetBroadcast200Response](docs/Model/GetBroadcast200Response.md)
 - [GetBroadcast200ResponseBroadcast](docs/Model/GetBroadcast200ResponseBroadcast.md)
 - [GetBroadcast200ResponseBroadcastMessage](docs/Model/GetBroadcast200ResponseBroadcastMessage.md)
+- [GetBroadcast200ResponseBroadcastSegmentFilters](docs/Model/GetBroadcast200ResponseBroadcastSegmentFilters.md)
 - [GetBroadcast200ResponseBroadcastTemplate](docs/Model/GetBroadcast200ResponseBroadcastTemplate.md)
 - [GetBusinessAgentBudget200Response](docs/Model/GetBusinessAgentBudget200Response.md)
 - [GetBusinessAgentConnectorLogs200Response](docs/Model/GetBusinessAgentConnectorLogs200Response.md)
@@ -1880,8 +1901,6 @@ Class | Method | HTTP request | Description
 - [GetCampaignTargeting200ResponseLocationsInner](docs/Model/GetCampaignTargeting200ResponseLocationsInner.md)
 - [GetCommentAutomation200Response](docs/Model/GetCommentAutomation200Response.md)
 - [GetCommentAutomation200ResponseAutomation](docs/Model/GetCommentAutomation200ResponseAutomation.md)
-- [GetCommentAutomation200ResponseLogsInner](docs/Model/GetCommentAutomation200ResponseLogsInner.md)
-- [GetCommentAutomation200ResponseLogsInnerPlatformError](docs/Model/GetCommentAutomation200ResponseLogsInnerPlatformError.md)
 - [GetCommerceStore200Response](docs/Model/GetCommerceStore200Response.md)
 - [GetConnectUrl200Response](docs/Model/GetConnectUrl200Response.md)
 - [GetContact200Response](docs/Model/GetContact200Response.md)
@@ -2050,6 +2069,8 @@ Class | Method | HTTP request | Description
 - [GetMessageAttachment200Response](docs/Model/GetMessageAttachment200Response.md)
 - [GetMessengerGetStarted200Response](docs/Model/GetMessengerGetStarted200Response.md)
 - [GetMessengerGetStarted200ResponseData](docs/Model/GetMessengerGetStarted200ResponseData.md)
+- [GetMessengerGreeting200Response](docs/Model/GetMessengerGreeting200Response.md)
+- [GetMessengerIceBreakers200Response](docs/Model/GetMessengerIceBreakers200Response.md)
 - [GetMessengerMenu200Response](docs/Model/GetMessengerMenu200Response.md)
 - [GetPageWebhookSubscription200Response](docs/Model/GetPageWebhookSubscription200Response.md)
 - [GetPendingOAuthData200Response](docs/Model/GetPendingOAuthData200Response.md)
@@ -2150,6 +2171,7 @@ Class | Method | HTTP request | Description
 - [GetWhatsAppCalling200Response](docs/Model/GetWhatsAppCalling200Response.md)
 - [GetWhatsAppCallingConfig200Response](docs/Model/GetWhatsAppCallingConfig200Response.md)
 - [GetWhatsAppCommerceSettings200Response](docs/Model/GetWhatsAppCommerceSettings200Response.md)
+- [GetWhatsAppConversationalAutomation200Response](docs/Model/GetWhatsAppConversationalAutomation200Response.md)
 - [GetWhatsAppDataset200Response](docs/Model/GetWhatsAppDataset200Response.md)
 - [GetWhatsAppDisplayName200Response](docs/Model/GetWhatsAppDisplayName200Response.md)
 - [GetWhatsAppDisplayName200ResponseDisplayName](docs/Model/GetWhatsAppDisplayName200ResponseDisplayName.md)
@@ -2446,7 +2468,6 @@ Class | Method | HTTP request | Description
 - [ListCommentAutomationLogs200ResponseMissesSamplesInner](docs/Model/ListCommentAutomationLogs200ResponseMissesSamplesInner.md)
 - [ListCommentAutomations200Response](docs/Model/ListCommentAutomations200Response.md)
 - [ListCommentAutomations200ResponseAutomationsInner](docs/Model/ListCommentAutomations200ResponseAutomationsInner.md)
-- [ListCommentAutomations200ResponseAutomationsInnerStats](docs/Model/ListCommentAutomations200ResponseAutomationsInnerStats.md)
 - [ListCommerceCatalogSyncs200Response](docs/Model/ListCommerceCatalogSyncs200Response.md)
 - [ListCommerceChannels200Response](docs/Model/ListCommerceChannels200Response.md)
 - [ListCommerceCollections200Response](docs/Model/ListCommerceCollections200Response.md)
@@ -2652,6 +2673,9 @@ Class | Method | HTTP request | Description
 - [MediaSubtitle](docs/Model/MediaSubtitle.md)
 - [MediaUploadResponse](docs/Model/MediaUploadResponse.md)
 - [MessagingCarouselCard](docs/Model/MessagingCarouselCard.md)
+- [MessengerGreeting](docs/Model/MessengerGreeting.md)
+- [MessengerIceBreakerLocale](docs/Model/MessengerIceBreakerLocale.md)
+- [MessengerIceBreakerLocaleCallToActionsInner](docs/Model/MessengerIceBreakerLocaleCallToActionsInner.md)
 - [MetaAdsPlatformData](docs/Model/MetaAdsPlatformData.md)
 - [MetaAssignedUser](docs/Model/MetaAssignedUser.md)
 - [MetaBusinessUser](docs/Model/MetaBusinessUser.md)
@@ -3082,12 +3106,15 @@ Class | Method | HTTP request | Description
 - [SetInstagramIceBreakersRequest](docs/Model/SetInstagramIceBreakersRequest.md)
 - [SetInstagramIceBreakersRequestIceBreakersInner](docs/Model/SetInstagramIceBreakersRequestIceBreakersInner.md)
 - [SetMessengerGetStartedRequest](docs/Model/SetMessengerGetStartedRequest.md)
+- [SetMessengerGreetingRequest](docs/Model/SetMessengerGreetingRequest.md)
+- [SetMessengerIceBreakersRequest](docs/Model/SetMessengerIceBreakersRequest.md)
 - [SetMessengerMenuRequest](docs/Model/SetMessengerMenuRequest.md)
 - [SetPartnershipAdPermission200Response](docs/Model/SetPartnershipAdPermission200Response.md)
 - [SetPartnershipAdPermissionRequest](docs/Model/SetPartnershipAdPermissionRequest.md)
 - [SetRedditPostFlairRequest](docs/Model/SetRedditPostFlairRequest.md)
 - [SetTelegramCommandsRequest](docs/Model/SetTelegramCommandsRequest.md)
 - [SetTelegramCommandsRequestCommandsInner](docs/Model/SetTelegramCommandsRequestCommandsInner.md)
+- [SetWhatsAppConversationalAutomationRequest](docs/Model/SetWhatsAppConversationalAutomationRequest.md)
 - [SetWhatsAppFlowsEncryptionKeyRequest](docs/Model/SetWhatsAppFlowsEncryptionKeyRequest.md)
 - [SetWhatsappBusinessUsername200Response](docs/Model/SetWhatsappBusinessUsername200Response.md)
 - [SetWhatsappBusinessUsernameRequest](docs/Model/SetWhatsappBusinessUsernameRequest.md)
@@ -3154,6 +3181,8 @@ Class | Method | HTTP request | Description
 - [TrackingTagUser](docs/Model/TrackingTagUser.md)
 - [TransferVoiceCall200Response](docs/Model/TransferVoiceCall200Response.md)
 - [TransferVoiceCallRequest](docs/Model/TransferVoiceCallRequest.md)
+- [TriggerApiCallWorkflow201Response](docs/Model/TriggerApiCallWorkflow201Response.md)
+- [TriggerApiCallWorkflowRequest](docs/Model/TriggerApiCallWorkflowRequest.md)
 - [TriggerWorkflow200Response](docs/Model/TriggerWorkflow200Response.md)
 - [TriggerWorkflow200ResponseExecution](docs/Model/TriggerWorkflow200ResponseExecution.md)
 - [TriggerWorkflowRequest](docs/Model/TriggerWorkflowRequest.md)
@@ -3531,6 +3560,9 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadCommerceProduct](docs/Model/WebhookPayloadCommerceProduct.md)
 - [WebhookPayloadCommerceProductResource](docs/Model/WebhookPayloadCommerceProductResource.md)
 - [WebhookPayloadCommerceProductStore](docs/Model/WebhookPayloadCommerceProductStore.md)
+- [WebhookPayloadContactFieldChanged](docs/Model/WebhookPayloadContactFieldChanged.md)
+- [WebhookPayloadContactTag](docs/Model/WebhookPayloadContactTag.md)
+- [WebhookPayloadContactTagContact](docs/Model/WebhookPayloadContactTagContact.md)
 - [WebhookPayloadConversationControlChanged](docs/Model/WebhookPayloadConversationControlChanged.md)
 - [WebhookPayloadConversationControlChangedControl](docs/Model/WebhookPayloadConversationControlChangedControl.md)
 - [WebhookPayloadConversationStarted](docs/Model/WebhookPayloadConversationStarted.md)
@@ -3585,6 +3617,7 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadReviewNew](docs/Model/WebhookPayloadReviewNew.md)
 - [WebhookPayloadReviewNewAccount](docs/Model/WebhookPayloadReviewNewAccount.md)
 - [WebhookPayloadReviewUpdated](docs/Model/WebhookPayloadReviewUpdated.md)
+- [WebhookPayloadSequenceEnrollment](docs/Model/WebhookPayloadSequenceEnrollment.md)
 - [WebhookPayloadTest](docs/Model/WebhookPayloadTest.md)
 - [WebhookPayloadWhatsAppAccountAlertReceived](docs/Model/WebhookPayloadWhatsAppAccountAlertReceived.md)
 - [WebhookPayloadWhatsAppAccountAlertReceivedAlert](docs/Model/WebhookPayloadWhatsAppAccountAlertReceivedAlert.md)
@@ -3602,6 +3635,11 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadWhatsAppTemplateStatusUpdated](docs/Model/WebhookPayloadWhatsAppTemplateStatusUpdated.md)
 - [WebhookPayloadWhatsAppTemplateStatusUpdatedAccount](docs/Model/WebhookPayloadWhatsAppTemplateStatusUpdatedAccount.md)
 - [WebhookPayloadWhatsAppTemplateStatusUpdatedTemplate](docs/Model/WebhookPayloadWhatsAppTemplateStatusUpdatedTemplate.md)
+- [WebhookPayloadWorkflowRun](docs/Model/WebhookPayloadWorkflowRun.md)
+- [WebhookPayloadWorkflowRunConversation](docs/Model/WebhookPayloadWorkflowRunConversation.md)
+- [WebhookPayloadWorkflowRunExecution](docs/Model/WebhookPayloadWorkflowRunExecution.md)
+- [WebhookPayloadWorkflowRunTrigger](docs/Model/WebhookPayloadWorkflowRunTrigger.md)
+- [WebhookPayloadWorkflowRunWorkflow](docs/Model/WebhookPayloadWorkflowRunWorkflow.md)
 - [WhatsAppBillingConversation](docs/Model/WhatsAppBillingConversation.md)
 - [WhatsAppBodyComponent](docs/Model/WhatsAppBodyComponent.md)
 - [WhatsAppBodyComponentExample](docs/Model/WhatsAppBodyComponentExample.md)
@@ -3611,6 +3649,8 @@ Class | Method | HTTP request | Description
 - [WhatsAppCarouselComponentCardsInner](docs/Model/WhatsAppCarouselComponentCardsInner.md)
 - [WhatsAppCommerceSettings](docs/Model/WhatsAppCommerceSettings.md)
 - [WhatsAppContactIdentity](docs/Model/WhatsAppContactIdentity.md)
+- [WhatsAppConversationalAutomation](docs/Model/WhatsAppConversationalAutomation.md)
+- [WhatsAppConversationalAutomationCommandsInner](docs/Model/WhatsAppConversationalAutomationCommandsInner.md)
 - [WhatsAppFooterComponent](docs/Model/WhatsAppFooterComponent.md)
 - [WhatsAppHeaderComponent](docs/Model/WhatsAppHeaderComponent.md)
 - [WhatsAppHeaderComponentExample](docs/Model/WhatsAppHeaderComponentExample.md)
@@ -3704,6 +3744,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.222.0`
+- API version: `1.223.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

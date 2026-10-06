@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **success** | **bool** |  | [optional]
-**logs** | [**\Zernio\Model\GetCommentAutomation200ResponseLogsInner[]**](GetCommentAutomation200ResponseLogsInner.md) |  | [optional]
+**logs** | [**\Zernio\Model\CommentAutomationLog[]**](CommentAutomationLog.md) |  | [optional]
 **pagination** | [**\Zernio\Model\ListContacts200ResponsePagination**](ListContacts200ResponsePagination.md) |  | [optional]
 **misses** | [**\Zernio\Model\ListCommentAutomationLogs200ResponseMisses**](ListCommentAutomationLogs200ResponseMisses.md) |  | [optional]
 

@@ -19,7 +19,14 @@ Name | Type | Description | Notes
 **audience** | [**\Zernio\Model\CommentAutomationAudience**](CommentAutomationAudience.md) |  | [optional]
 **follow_gate** | [**\Zernio\Model\CommentAutomationFollowGate**](CommentAutomationFollowGate.md) |  | [optional]
 **also_match_in_dms** | **bool** | Whether these keywords also fire on a plain inbound DM. | [optional]
+**repeat_policy** | [**\Zernio\Model\CommentAutomationRepeatPolicy**](CommentAutomationRepeatPolicy.md) |  | [optional]
+**dedupe_same_text_hours** | **int** | Same-text dedupe window in hours. Omitted when off. | [optional]
+**public_reply_policy** | **string** |  | [optional]
+**actions** | [**\Zernio\Model\CommentAutomationActions**](CommentAutomationActions.md) |  | [optional]
+**quick_replies** | [**\Zernio\Model\CommentAutomationQuickReply[]**](CommentAutomationQuickReply.md) |  | [optional]
+**dm_media** | [**\Zernio\Model\CommentAutomationDmMedia**](CommentAutomationDmMedia.md) |  | [optional]
 **is_active** | **bool** |  | [optional]
+**stats** | [**\Zernio\Model\CommentAutomationStats**](CommentAutomationStats.md) |  | [optional]
 **updated_at** | **\DateTime** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  | [optional]
-**trigger** | **string** | What fires the automation. Changing it detaches the automation from its bound post or story (a post id and a story id are different objects), unless this same request sets a new binding. &#39;story_reply&#39; is Instagram only. | [optional]
+**trigger** | **string** | What fires the automation. Changing it detaches the automation from its bound post or story (a post id and a story id are different objects), unless this same request sets a new binding. Every trigger but &#39;comment&#39; is Instagram only; &#39;story_mention&#39; also requires no keywords and no binding. | [optional]
 **keywords** | **string[]** |  | [optional]
 **match_mode** | **string** | How a keyword is compared with the comment. &#39;contains&#39; (default) matches anywhere, even inside another word (keyword &#39;app&#39; fires on &#39;happy&#39;). &#39;word&#39; matches the keyword only as a standalone word. &#39;exact&#39; requires the whole comment to be exactly the keyword. | [optional]
 **exclude_keywords** | **string[]** | Comments containing one of these never trigger the automation, even when a trigger keyword also matches. Compared using the same matchMode. | [optional]
@@ -24,5 +24,11 @@ Name | Type | Description | Notes
 **audience** | [**\Zernio\Model\CommentAutomationAudience**](CommentAutomationAudience.md) |  | [optional]
 **follow_gate** | [**\Zernio\Model\CommentAutomationFollowGate**](CommentAutomationFollowGate.md) |  | [optional]
 **is_active** | **bool** |  | [optional]
+**repeat_policy** | [**\Zernio\Model\CommentAutomationRepeatPolicy**](CommentAutomationRepeatPolicy.md) |  | [optional]
+**dedupe_same_text_hours** | **int** | Skip the DM when this recipient already received identical DM text (after personalisation) from this account, from any automation, within this many hours. The skip is logged with status skipped. Send null to clear. | [optional]
+**public_reply_policy** | **string** | &#39;after_dm&#39; posts commentReply only after a successful DM. &#39;always&#39; posts it whatever the audience rule, dedupe or DM outcome: the moment a comment matches, or after commentReplyDelaySeconds when set (raised to dmDelaySeconds, so it never precedes the DM attempt). | [optional]
+**actions** | [**\Zernio\Model\CommentAutomationActions**](CommentAutomationActions.md) |  | [optional]
+**quick_replies** | [**\Zernio\Model\CommentAutomationQuickReply[]**](CommentAutomationQuickReply.md) | Opt-in quick-reply chips on the DM (up to 13). Chips do not render in Message Requests, where a first DM to a cold commenter lands, so prefer buttons for first contact. Mutually exclusive with buttons and template (400). Send null to clear. | [optional]
+**dm_media** | [**\Zernio\Model\CommentAutomationDmMedia**](CommentAutomationDmMedia.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

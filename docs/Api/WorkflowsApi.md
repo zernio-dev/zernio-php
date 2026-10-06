@@ -1,6 +1,6 @@
 # Zernio\WorkflowsApi
 
-Branching conversation automations. An inbound message matches a workflow&#39;s trigger and walks a directed graph of nodes (send message, wait for reply, condition, set variable, delay, webhook, handoff, end). Unlike Sequences (linear, time-based drips), Workflows are event-driven and interactive. Fully supported on WhatsApp, Instagram, and Messenger; &#x60;send_message&#x60; template and interactive modes are WhatsApp-only.
+Branching conversation automations. An inbound message matches a workflow&#39;s trigger and walks a directed graph of nodes (send message, wait for reply, condition, set variable, delay, webhook, handoff, end). Unlike Sequences (linear, time-based drips), Workflows are event-driven and interactive. Fully supported on WhatsApp, Instagram, and Messenger; &#x60;send_message&#x60; template and interactive modes are WhatsApp-only, while cards, buttons, quick replies and message tags are Instagram and Messenger only.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
@@ -18,6 +18,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listWorkflows()**](WorkflowsApi.md#listWorkflows) | **GET** /v1/workflows | List workflows |
 | [**pauseWorkflow()**](WorkflowsApi.md#pauseWorkflow) | **POST** /v1/workflows/{workflowId}/pause | Pause workflow |
 | [**restoreWorkflowVersion()**](WorkflowsApi.md#restoreWorkflowVersion) | **POST** /v1/workflows/{workflowId}/versions/{version}/restore | Restore a workflow version |
+| [**triggerApiCallWorkflow()**](WorkflowsApi.md#triggerApiCallWorkflow) | **POST** /v1/workflows/{workflowId}/trigger | Start an API-triggered workflow |
 | [**triggerWorkflow()**](WorkflowsApi.md#triggerWorkflow) | **POST** /v1/workflows/{workflowId}/executions | Manually start a workflow run |
 | [**updateWorkflow()**](WorkflowsApi.md#updateWorkflow) | **PATCH** /v1/workflows/{workflowId} | Update workflow |
 
@@ -753,6 +754,68 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `triggerApiCallWorkflow()`
+
+```php
+triggerApiCallWorkflow($workflow_id, $trigger_api_call_workflow_request): \Zernio\Model\TriggerApiCallWorkflow201Response
+```
+
+Start an API-triggered workflow
+
+Starts a run of an active workflow whose trigger type is `api_call`. Pass exactly one target: `conversationId` (a conversation on the workflow's account), `contactId` (resolved to that contact's conversation on the workflow's account), or `to` (WhatsApp workflows only: a phone number, whose conversation is found or created). `variables` are merged over the standard run variables, so each key is available as `{{key}}`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WorkflowsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$workflow_id = 'workflow_id_example'; // string
+$trigger_api_call_workflow_request = new \Zernio\Model\TriggerApiCallWorkflowRequest(); // \Zernio\Model\TriggerApiCallWorkflowRequest
+
+try {
+    $result = $apiInstance->triggerApiCallWorkflow($workflow_id, $trigger_api_call_workflow_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WorkflowsApi->triggerApiCallWorkflow: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **workflow_id** | **string**|  | |
+| **trigger_api_call_workflow_request** | [**\Zernio\Model\TriggerApiCallWorkflowRequest**](../Model/TriggerApiCallWorkflowRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\TriggerApiCallWorkflow201Response**](../Model/TriggerApiCallWorkflow201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

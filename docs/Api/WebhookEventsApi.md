@@ -26,6 +26,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onCommerceProductCreated()**](WebhookEventsApi.md#onCommerceProductCreated) | **POST** /commerce.product.created | Commerce product created event |
 | [**onCommerceProductDeleted()**](WebhookEventsApi.md#onCommerceProductDeleted) | **POST** /commerce.product.deleted | Commerce product deleted event |
 | [**onCommerceProductUpdated()**](WebhookEventsApi.md#onCommerceProductUpdated) | **POST** /commerce.product.updated | Commerce product updated event |
+| [**onContactFieldChanged()**](WebhookEventsApi.md#onContactFieldChanged) | **POST** /contact.field_changed | Contact field changed event |
+| [**onContactTagAdded()**](WebhookEventsApi.md#onContactTagAdded) | **POST** /contact.tag_added | Contact tag added event |
+| [**onContactTagRemoved()**](WebhookEventsApi.md#onContactTagRemoved) | **POST** /contact.tag_removed | Contact tag removed event |
 | [**onConversationControlChanged()**](WebhookEventsApi.md#onConversationControlChanged) | **POST** /conversation.control_changed | Conversation control changed event |
 | [**onConversationStarted()**](WebhookEventsApi.md#onConversationStarted) | **POST** /conversation.started | Conversation started event |
 | [**onLeadReceived()**](WebhookEventsApi.md#onLeadReceived) | **POST** /lead.received | Lead received event |
@@ -56,6 +59,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onReferralReceived()**](WebhookEventsApi.md#onReferralReceived) | **POST** /referral.received | Referral received event |
 | [**onReviewNew()**](WebhookEventsApi.md#onReviewNew) | **POST** /review.new | Review new event |
 | [**onReviewUpdated()**](WebhookEventsApi.md#onReviewUpdated) | **POST** /review.updated | Review updated event |
+| [**onSequenceEnrolled()**](WebhookEventsApi.md#onSequenceEnrolled) | **POST** /sequence.enrolled | Sequence enrolled event |
+| [**onSequenceExited()**](WebhookEventsApi.md#onSequenceExited) | **POST** /sequence.exited | Sequence exited event |
 | [**onSmsRegistrationActionRequired()**](WebhookEventsApi.md#onSmsRegistrationActionRequired) | **POST** /sms.registration.action_required | SMS registration action required event |
 | [**onSmsRegistrationStatusUpdated()**](WebhookEventsApi.md#onSmsRegistrationStatusUpdated) | **POST** /sms.registration.status_updated | SMS registration status updated event |
 | [**onVerificationApproved()**](WebhookEventsApi.md#onVerificationApproved) | **POST** /verification.approved | Verification approved event |
@@ -77,6 +82,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onWhatsAppNumberVerificationRequired()**](WebhookEventsApi.md#onWhatsAppNumberVerificationRequired) | **POST** /whatsapp.number.verification_required | WhatsApp number verification-required event |
 | [**onWhatsAppTemplateCategoryUpdated()**](WebhookEventsApi.md#onWhatsAppTemplateCategoryUpdated) | **POST** /whatsapp.template.category_updated | WhatsApp template category updated event |
 | [**onWhatsAppTemplateStatusUpdated()**](WebhookEventsApi.md#onWhatsAppTemplateStatusUpdated) | **POST** /whatsapp.template.status_updated | WhatsApp template status updated event |
+| [**onWorkflowRunCompleted()**](WebhookEventsApi.md#onWorkflowRunCompleted) | **POST** /workflow.run.completed | Workflow run completed event |
+| [**onWorkflowRunFailed()**](WebhookEventsApi.md#onWorkflowRunFailed) | **POST** /workflow.run.failed | Workflow run failed event |
+| [**onWorkflowRunStarted()**](WebhookEventsApi.md#onWorkflowRunStarted) | **POST** /workflow.run.started | Workflow run started event |
 
 
 ## `onAccountAdsInitialSyncCompleted()`
@@ -1259,6 +1267,183 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `onContactFieldChanged()`
+
+```php
+onContactFieldChanged($webhook_payload_contact_field_changed)
+```
+
+Contact field changed event
+
+Fired once per custom field whose value a write changed, with the previous and new value.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_contact_field_changed = new \Zernio\Model\WebhookPayloadContactFieldChanged(); // \Zernio\Model\WebhookPayloadContactFieldChanged
+
+try {
+    $apiInstance->onContactFieldChanged($webhook_payload_contact_field_changed);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onContactFieldChanged: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_contact_field_changed** | [**\Zernio\Model\WebhookPayloadContactFieldChanged**](../Model/WebhookPayloadContactFieldChanged.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onContactTagAdded()`
+
+```php
+onContactTagAdded($webhook_payload_contact_tag)
+```
+
+Contact tag added event
+
+Fired once per tag a write actually added to a contact, whether the API, a workflow add_tag node or a comment-automation click made it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_contact_tag = new \Zernio\Model\WebhookPayloadContactTag(); // \Zernio\Model\WebhookPayloadContactTag
+
+try {
+    $apiInstance->onContactTagAdded($webhook_payload_contact_tag);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onContactTagAdded: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_contact_tag** | [**\Zernio\Model\WebhookPayloadContactTag**](../Model/WebhookPayloadContactTag.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onContactTagRemoved()`
+
+```php
+onContactTagRemoved($webhook_payload_contact_tag)
+```
+
+Contact tag removed event
+
+Fired once per tag a write actually removed from a contact.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_contact_tag = new \Zernio\Model\WebhookPayloadContactTag(); // \Zernio\Model\WebhookPayloadContactTag
+
+try {
+    $apiInstance->onContactTagRemoved($webhook_payload_contact_tag);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onContactTagRemoved: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_contact_tag** | [**\Zernio\Model\WebhookPayloadContactTag**](../Model/WebhookPayloadContactTag.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `onConversationControlChanged()`
 
 ```php
@@ -1267,7 +1452,7 @@ onConversationControlChanged($webhook_payload_conversation_control_changed)
 
 Conversation control changed event
 
-WhatsApp only. Fired when control of a conversation moves between Meta Business Agent and your app (Meta's `messaging_handovers`), or when the agent is first seen answering a thread. While `control.owner` is `ai_agent`, inbound messages arrive on `message.received` with `metadata.standby: true` and the agent's replies on `message.sent` with `source: meta_business_agent`. Sending any message takes control back; release it with `POST /v1/inbox/conversations/{conversationId}/thread-control`.
+Fired on Meta's handover protocol (`messaging_handovers`). WhatsApp: control moves between Meta Business Agent and your app, or the agent is first seen answering a thread; while `control.owner` is `ai_agent`, inbound messages arrive on `message.received` with `metadata.standby: true` and the agent's replies on `message.sent` with `source: meta_business_agent`, and sending any message takes control back. Facebook and Instagram: another app passed you the thread (`owner: app`) or took or received it (`owner: other`, with `ownerAppId`); while you are not the owner, inbound arrive with `metadata.standby: true`, no automation runs, and sends fail with `not_thread_owner`. Change control with `POST /v1/inbox/conversations/{conversationId}/thread-control`.
 
 ### Example
 
@@ -3029,6 +3214,124 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `onSequenceEnrolled()`
+
+```php
+onSequenceEnrolled($webhook_payload_sequence_enrollment)
+```
+
+Sequence enrolled event
+
+Fired when a contact is enrolled in a sequence.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_sequence_enrollment = new \Zernio\Model\WebhookPayloadSequenceEnrollment(); // \Zernio\Model\WebhookPayloadSequenceEnrollment
+
+try {
+    $apiInstance->onSequenceEnrolled($webhook_payload_sequence_enrollment);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onSequenceEnrolled: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_sequence_enrollment** | [**\Zernio\Model\WebhookPayloadSequenceEnrollment**](../Model/WebhookPayloadSequenceEnrollment.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onSequenceExited()`
+
+```php
+onSequenceExited($webhook_payload_sequence_enrollment)
+```
+
+Sequence exited event
+
+Fired when a contact leaves a sequence, finished or not; exitReason says why.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_sequence_enrollment = new \Zernio\Model\WebhookPayloadSequenceEnrollment(); // \Zernio\Model\WebhookPayloadSequenceEnrollment
+
+try {
+    $apiInstance->onSequenceExited($webhook_payload_sequence_enrollment);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onSequenceExited: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_sequence_enrollment** | [**\Zernio\Model\WebhookPayloadSequenceEnrollment**](../Model/WebhookPayloadSequenceEnrollment.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `onSmsRegistrationActionRequired()`
 
 ```php
@@ -4250,6 +4553,183 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_whats_app_template_status_updated** | [**\Zernio\Model\WebhookPayloadWhatsAppTemplateStatusUpdated**](../Model/WebhookPayloadWhatsAppTemplateStatusUpdated.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onWorkflowRunCompleted()`
+
+```php
+onWorkflowRunCompleted($webhook_payload_workflow_run)
+```
+
+Workflow run completed event
+
+Fired when a workflow run ends; execution.status is completed, or exited for a run ended on purpose before its last node.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_workflow_run = new \Zernio\Model\WebhookPayloadWorkflowRun(); // \Zernio\Model\WebhookPayloadWorkflowRun
+
+try {
+    $apiInstance->onWorkflowRunCompleted($webhook_payload_workflow_run);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onWorkflowRunCompleted: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_workflow_run** | [**\Zernio\Model\WebhookPayloadWorkflowRun**](../Model/WebhookPayloadWorkflowRun.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onWorkflowRunFailed()`
+
+```php
+onWorkflowRunFailed($webhook_payload_workflow_run)
+```
+
+Workflow run failed event
+
+Fired when a workflow run fails; error says which node failed and why.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_workflow_run = new \Zernio\Model\WebhookPayloadWorkflowRun(); // \Zernio\Model\WebhookPayloadWorkflowRun
+
+try {
+    $apiInstance->onWorkflowRunFailed($webhook_payload_workflow_run);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onWorkflowRunFailed: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_workflow_run** | [**\Zernio\Model\WebhookPayloadWorkflowRun**](../Model/WebhookPayloadWorkflowRun.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onWorkflowRunStarted()`
+
+```php
+onWorkflowRunStarted($webhook_payload_workflow_run)
+```
+
+Workflow run started event
+
+Fired when a workflow run starts for a conversation.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_workflow_run = new \Zernio\Model\WebhookPayloadWorkflowRun(); // \Zernio\Model\WebhookPayloadWorkflowRun
+
+try {
+    $apiInstance->onWorkflowRunStarted($webhook_payload_workflow_run);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onWorkflowRunStarted: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_workflow_run** | [**\Zernio\Model\WebhookPayloadWorkflowRun**](../Model/WebhookPayloadWorkflowRun.md)|  | |
 
 ### Return type
 

@@ -6,6 +6,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**acceptConversationRequest()**](MessagesApi.md#acceptConversationRequest) | **POST** /v1/inbox/conversations/{conversationId}/accept | Accept a message request |
 | [**addMessageReaction()**](MessagesApi.md#addMessageReaction) | **POST** /v1/inbox/conversations/{conversationId}/messages/{messageId}/reactions | Add reaction |
 | [**createInboxConversation()**](MessagesApi.md#createInboxConversation) | **POST** /v1/inbox/conversations | Create conversation |
 | [**deleteInboxMessage()**](MessagesApi.md#deleteInboxMessage) | **DELETE** /v1/inbox/conversations/{conversationId}/messages/{messageId} | Delete message |
@@ -19,10 +20,72 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**searchInboxConversations()**](MessagesApi.md#searchInboxConversations) | **GET** /v1/inbox/conversations/search | Search conversations |
 | [**sendInboxMessage()**](MessagesApi.md#sendInboxMessage) | **POST** /v1/inbox/conversations/{conversationId}/messages | Send message |
 | [**sendTypingIndicator()**](MessagesApi.md#sendTypingIndicator) | **POST** /v1/inbox/conversations/{conversationId}/typing | Send typing indicator |
-| [**setConversationThreadControl()**](MessagesApi.md#setConversationThreadControl) | **POST** /v1/inbox/conversations/{conversationId}/thread-control | Hand a conversation to or from Meta Business Agent |
+| [**setConversationThreadControl()**](MessagesApi.md#setConversationThreadControl) | **POST** /v1/inbox/conversations/{conversationId}/thread-control | Change who answers a conversation (handover) |
 | [**updateInboxConversation()**](MessagesApi.md#updateInboxConversation) | **PUT** /v1/inbox/conversations/{conversationId} | Update conversation status |
 | [**uploadMediaDirect()**](MessagesApi.md#uploadMediaDirect) | **POST** /v1/media/upload-direct | Upload media file |
 
+
+## `acceptConversationRequest()`
+
+```php
+acceptConversationRequest($conversation_id, $accept_conversation_request_request): \Zernio\Model\AcceptConversationRequest200Response
+```
+
+Accept a message request
+
+Accept a Facebook or Instagram Message Request (listed with `GET /v1/inbox/conversations?folder=requests`) by replying to it. Meta has no separate accept call: the first reply is what moves the thread into the inbox, so this sends `message` through the same path, checks and webhooks as `POST /v1/inbox/conversations/{conversationId}/messages`, and answers the same way. Supports the `Idempotency-Key` header.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\MessagesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$conversation_id = 'conversation_id_example'; // string | The `id` of the request item from the requests folder.
+$accept_conversation_request_request = {"accountId":"64e1f0a9e2b5af0012ab34cd","message":"Thanks for reaching out! How can we help?"}; // \Zernio\Model\AcceptConversationRequestRequest
+
+try {
+    $result = $apiInstance->acceptConversationRequest($conversation_id, $accept_conversation_request_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MessagesApi->acceptConversationRequest: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **conversation_id** | **string**| The &#x60;id&#x60; of the request item from the requests folder. | |
+| **accept_conversation_request_request** | [**\Zernio\Model\AcceptConversationRequestRequest**](../Model/AcceptConversationRequestRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\AcceptConversationRequest200Response**](../Model/AcceptConversationRequest200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `addMessageReaction()`
 
@@ -477,7 +540,7 @@ try {
 ## `listInboxConversations()`
 
 ```php
-listInboxConversations($profile_id, $platform, $status, $sort_order, $limit, $cursor, $account_id): \Zernio\Model\ListInboxConversations200Response
+listInboxConversations($profile_id, $platform, $status, $folder, $sort_order, $limit, $cursor, $account_id): \Zernio\Model\ListInboxConversations200Response
 ```
 
 List conversations
@@ -504,13 +567,14 @@ $apiInstance = new Zernio\Api\MessagesApi(
 $profile_id = 'profile_id_example'; // string | Filter by profile ID
 $platform = 'platform_example'; // string | Filter by platform
 $status = 'status_example'; // string | Filter by conversation status
+$folder = 'inbox'; // string | requests lists Facebook and Instagram Message Requests (threads from people the account has not accepted) live from Meta, first page only, each item with `folder: requests`. Meta has no accept call: replying moves a thread to the inbox, which is what POST /v1/inbox/conversations/{conversationId}/accept does. When Meta will not list the folder for the one account asked (`accountId`), the call answers 400 PLATFORM_LIMITATION; across several accounts the refusal is reported per account in meta.failedAccounts.
 $sort_order = 'desc'; // string | Sort order by updated time
 $limit = 50; // int | Maximum number of conversations to return
 $cursor = 'cursor_example'; // string | Pagination cursor for next page
 $account_id = 'account_id_example'; // string | Filter by specific account ID
 
 try {
-    $result = $apiInstance->listInboxConversations($profile_id, $platform, $status, $sort_order, $limit, $cursor, $account_id);
+    $result = $apiInstance->listInboxConversations($profile_id, $platform, $status, $folder, $sort_order, $limit, $cursor, $account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MessagesApi->listInboxConversations: ', $e->getMessage(), PHP_EOL;
@@ -524,6 +588,7 @@ try {
 | **profile_id** | **string**| Filter by profile ID | [optional] |
 | **platform** | **string**| Filter by platform | [optional] |
 | **status** | **string**| Filter by conversation status | [optional] |
+| **folder** | **string**| requests lists Facebook and Instagram Message Requests (threads from people the account has not accepted) live from Meta, first page only, each item with &#x60;folder: requests&#x60;. Meta has no accept call: replying moves a thread to the inbox, which is what POST /v1/inbox/conversations/{conversationId}/accept does. When Meta will not list the folder for the one account asked (&#x60;accountId&#x60;), the call answers 400 PLATFORM_LIMITATION; across several accounts the refusal is reported per account in meta.failedAccounts. | [optional] [default to &#39;inbox&#39;] |
 | **sort_order** | **string**| Sort order by updated time | [optional] [default to &#39;desc&#39;] |
 | **limit** | **int**| Maximum number of conversations to return | [optional] [default to 50] |
 | **cursor** | **string**| Pagination cursor for next page | [optional] |
@@ -876,9 +941,9 @@ try {
 setConversationThreadControl($conversation_id, $set_conversation_thread_control_request): \Zernio\Model\SetConversationThreadControl200Response
 ```
 
-Hand a conversation to or from Meta Business Agent
+Change who answers a conversation (handover)
 
-WhatsApp only, on numbers with Meta Business Agent enabled. Wraps Meta's thread control: - `release`: hand the conversation back to the agent so it resumes answering. You must currently hold control (sending any message takes it implicitly). - `take`: take control before sending anything, so the agent stops replying while an operator reads the thread. Meta accepts this only from the business configured as the number's escalation partner; other apps take control by sending a message. - `pass`: transfer control to the number's configured escalation partner, or to the agent with `target: ai_agent`. Meta's Cloud API currently rejects it (\"Pass action is not supported\", verified 2026-09-08); use `release` to hand a thread back to the agent.  The conversation's `threadControl` follows the result; a `conversation.control_changed` webhook fires when Meta later reports the change.
+Meta's handover protocol on WhatsApp, Facebook and Instagram.  **WhatsApp**, on numbers with Meta Business Agent enabled: - `release`: hand the conversation back to the agent so it resumes answering. You must currently hold control (sending any message takes it implicitly). - `take`: take control before sending anything, so the agent stops replying while an operator reads the thread. Meta accepts this only from the business configured as the number's escalation partner; other apps take control by sending a message. - `pass`: transfer control to the number's configured escalation partner, or to the agent with `target: ai_agent`. Meta's Cloud API currently rejects it (\"Pass action is not supported\", verified 2026-09-08); use `release` to hand a thread back to the agent.  **Facebook and Instagram** (Messenger Platform handover between the apps on the Page, such as Page Inbox): - `pass` with `targetAppId`: give the thread to another app (`pass_thread_control`). Page Inbox is 263902037430900. - `take`: take the thread back (`take_thread_control`); Meta allows it only to the Page's primary receiver. - `request`: ask the current owner to pass the thread (`request_thread_control`); nothing changes until it does. - `release`: give the thread back to the primary receiver (`release_thread_control`).  While another app owns a Facebook or Instagram thread, inbound arrive with `metadata.standby: true` and a send answers 409 `not_thread_owner`. The conversation's `threadControl` follows the result; a `conversation.control_changed` webhook fires when Meta later reports the change.
 
 ### Example
 
@@ -898,7 +963,7 @@ $apiInstance = new Zernio\Api\MessagesApi(
     $config
 );
 $conversation_id = 'conversation_id_example'; // string | The conversation ID
-$set_conversation_thread_control_request = new \Zernio\Model\SetConversationThreadControlRequest(); // \Zernio\Model\SetConversationThreadControlRequest
+$set_conversation_thread_control_request = {"accountId":"64e1f0a9e2b5af0012ab34cd","action":"pass","targetAppId":"263902037430900","metadata":"Customer asked for a human"}; // \Zernio\Model\SetConversationThreadControlRequest
 
 try {
     $result = $apiInstance->setConversationThreadControl($conversation_id, $set_conversation_thread_control_request);
