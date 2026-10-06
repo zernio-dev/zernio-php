@@ -327,7 +327,7 @@ updateCommentAutomation($automation_id, $update_comment_automation_request): \Ze
 
 Update automation settings
 
-Update an automation's keywords, DM message, inline buttons, comment reply, or active status. Pass `buttons: []` to clear all buttons. When `buttons` is non-empty, `dmMessage` (the new one if you're changing it, otherwise the stored one) must be 640 characters or less. On a TikTok, Threads, LinkedIn or YouTube automation (public reply only) the DM fields are rejected with a 400 naming the field (`code` invalid_field_value, `param` the field), and `commentReply` cannot be cleared.
+Update an automation's keywords, DM message, inline buttons, comment reply, post binding, or active status. Pass `buttons: []` to clear all buttons. When `buttons` is non-empty, `dmMessage` (the new one if you're changing it, otherwise the stored one) must be 640 characters or less. On a TikTok, Threads, LinkedIn or YouTube automation (public reply only) the DM fields are rejected with a 400 naming the field (`code` invalid_field_value, `param` the field), and `commentReply` cannot be cleared.
 
 ### Example
 
