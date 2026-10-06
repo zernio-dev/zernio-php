@@ -994,12 +994,12 @@ try {
 ## `detachAdLabel()`
 
 ```php
-detachAdLabel($label_id, $google_ad_label_assignments): \Zernio\Model\DetachAdLabel200Response
+detachAdLabel($label_id, $account_id, $ad_account_id, $customer_id, $campaign_ids, $ad_set_ids, $ad_ids, $keyword_ids): \Zernio\Model\DetachAdLabel200Response
 ```
 
 Detach a Google Ads label
 
-Removes the label from the given targets. Idempotent; a target without the label is counted in `unchanged`.
+Removes the label from the given targets. Idempotent; a target without the label is counted in `unchanged`. Fields go in the query string. A JSON body with the same fields is also accepted and, when sent, the query string is ignored.
 
 ### Example
 
@@ -1019,10 +1019,16 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     $config
 );
 $label_id = 'label_id_example'; // string | Google label id
-$google_ad_label_assignments = new \Zernio\Model\GoogleAdLabelAssignments(); // \Zernio\Model\GoogleAdLabelAssignments
+$account_id = 'account_id_example'; // string | Zernio Google Ads connection id.
+$ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers.
+$customer_id = 'customer_id_example'; // string | Alias of adAccountId, kept for existing callers
+$campaign_ids = array('campaign_ids_example'); // string[] | Google campaign ids. Repeat the parameter or pass a comma-separated list.
+$ad_set_ids = array('ad_set_ids_example'); // string[] | Google ad group ids. Repeat the parameter or pass a comma-separated list.
+$ad_ids = array('ad_ids_example'); // string[] | Google ad group ad ids, {adGroupId}~{adId}. Repeat the parameter or pass a comma-separated list.
+$keyword_ids = array('keyword_ids_example'); // string[] | Google keyword criterion ids, {adGroupId}~{criterionId}. Repeat the parameter or pass a comma-separated list.
 
 try {
-    $result = $apiInstance->detachAdLabel($label_id, $google_ad_label_assignments);
+    $result = $apiInstance->detachAdLabel($label_id, $account_id, $ad_account_id, $customer_id, $campaign_ids, $ad_set_ids, $ad_ids, $keyword_ids);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->detachAdLabel: ', $e->getMessage(), PHP_EOL;
@@ -1034,7 +1040,13 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **label_id** | **string**| Google label id | |
-| **google_ad_label_assignments** | [**\Zernio\Model\GoogleAdLabelAssignments**](../Model/GoogleAdLabelAssignments.md)|  | |
+| **account_id** | **string**| Zernio Google Ads connection id. | |
+| **ad_account_id** | **string**| Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers. | [optional] |
+| **customer_id** | **string**| Alias of adAccountId, kept for existing callers | [optional] |
+| **campaign_ids** | [**string[]**](../Model/string.md)| Google campaign ids. Repeat the parameter or pass a comma-separated list. | [optional] |
+| **ad_set_ids** | [**string[]**](../Model/string.md)| Google ad group ids. Repeat the parameter or pass a comma-separated list. | [optional] |
+| **ad_ids** | [**string[]**](../Model/string.md)| Google ad group ad ids, {adGroupId}~{adId}. Repeat the parameter or pass a comma-separated list. | [optional] |
+| **keyword_ids** | [**string[]**](../Model/string.md)| Google keyword criterion ids, {adGroupId}~{criterionId}. Repeat the parameter or pass a comma-separated list. | [optional] |
 
 ### Return type
 
@@ -1046,7 +1058,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json`
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -3066,12 +3078,12 @@ try {
 ## `removeAccountCallout()`
 
 ```php
-removeAccountCallout($remove_account_callout_request): \Zernio\Model\RemoveAccountCallout200Response
+removeAccountCallout($account_id, $asset_id, $ad_account_id, $customer_id): \Zernio\Model\RemoveAccountCallout200Response
 ```
 
 Remove account callout
 
-Removes the customer_asset attachment only. The underlying shared asset and its campaign or ad-group attachments remain.
+Removes the customer_asset attachment only. The underlying shared asset and its campaign or ad-group attachments remain. Fields go in the query string. A JSON body with the same fields is also accepted and, when sent, the query string is ignored.
 
 ### Example
 
@@ -3090,10 +3102,13 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$remove_account_callout_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","adAccountId":"1234567890","assetId":"123"}; // \Zernio\Model\RemoveAccountCalloutRequest
+$account_id = 'account_id_example'; // string | Zernio Google Ads connection id.
+$asset_id = 'asset_id_example'; // string | Numeric Google Ads asset id.
+$ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers.
+$customer_id = 'customer_id_example'; // string | Alias of adAccountId, kept for existing callers
 
 try {
-    $result = $apiInstance->removeAccountCallout($remove_account_callout_request);
+    $result = $apiInstance->removeAccountCallout($account_id, $asset_id, $ad_account_id, $customer_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->removeAccountCallout: ', $e->getMessage(), PHP_EOL;
@@ -3104,7 +3119,10 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **remove_account_callout_request** | [**\Zernio\Model\RemoveAccountCalloutRequest**](../Model/RemoveAccountCalloutRequest.md)|  | |
+| **account_id** | **string**| Zernio Google Ads connection id. | |
+| **asset_id** | **string**| Numeric Google Ads asset id. | |
+| **ad_account_id** | **string**| Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers. | [optional] |
+| **customer_id** | **string**| Alias of adAccountId, kept for existing callers | [optional] |
 
 ### Return type
 
@@ -3116,7 +3134,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json`
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -3126,12 +3144,12 @@ try {
 ## `removeAccountSitelink()`
 
 ```php
-removeAccountSitelink($remove_account_callout_request): \Zernio\Model\RemoveAccountCallout200Response
+removeAccountSitelink($account_id, $asset_id, $ad_account_id, $customer_id): \Zernio\Model\RemoveAccountCallout200Response
 ```
 
 Remove account sitelink
 
-Removes the customer_asset attachment only. The underlying shared asset and its campaign or ad-group attachments remain.
+Removes the customer_asset attachment only. The underlying shared asset and its campaign or ad-group attachments remain. Fields go in the query string. A JSON body with the same fields is also accepted and, when sent, the query string is ignored.
 
 ### Example
 
@@ -3150,10 +3168,13 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$remove_account_callout_request = {accountId=64b1f0c8a1b2c3d4e5f60718, adAccountId=1234567890, assetId=123}; // \Zernio\Model\RemoveAccountCalloutRequest
+$account_id = 'account_id_example'; // string | Zernio Google Ads connection id.
+$asset_id = 'asset_id_example'; // string | Numeric Google Ads asset id.
+$ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers.
+$customer_id = 'customer_id_example'; // string | Alias of adAccountId, kept for existing callers
 
 try {
-    $result = $apiInstance->removeAccountSitelink($remove_account_callout_request);
+    $result = $apiInstance->removeAccountSitelink($account_id, $asset_id, $ad_account_id, $customer_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->removeAccountSitelink: ', $e->getMessage(), PHP_EOL;
@@ -3164,7 +3185,10 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **remove_account_callout_request** | [**\Zernio\Model\RemoveAccountCalloutRequest**](../Model/RemoveAccountCalloutRequest.md)|  | |
+| **account_id** | **string**| Zernio Google Ads connection id. | |
+| **asset_id** | **string**| Numeric Google Ads asset id. | |
+| **ad_account_id** | **string**| Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers. | [optional] |
+| **customer_id** | **string**| Alias of adAccountId, kept for existing callers | [optional] |
 
 ### Return type
 
@@ -3176,7 +3200,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json`
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -3186,12 +3210,12 @@ try {
 ## `removeAccountStructuredSnippet()`
 
 ```php
-removeAccountStructuredSnippet($remove_account_callout_request): \Zernio\Model\RemoveAccountCallout200Response
+removeAccountStructuredSnippet($account_id, $asset_id, $ad_account_id, $customer_id): \Zernio\Model\RemoveAccountCallout200Response
 ```
 
 Remove account snippet
 
-Removes the customer_asset attachment only. The underlying shared asset and its campaign or ad-group attachments remain.
+Removes the customer_asset attachment only. The underlying shared asset and its campaign or ad-group attachments remain. Fields go in the query string. A JSON body with the same fields is also accepted and, when sent, the query string is ignored.
 
 ### Example
 
@@ -3210,10 +3234,13 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$remove_account_callout_request = {accountId=64b1f0c8a1b2c3d4e5f60718, adAccountId=1234567890, assetId=123}; // \Zernio\Model\RemoveAccountCalloutRequest
+$account_id = 'account_id_example'; // string | Zernio Google Ads connection id.
+$asset_id = 'asset_id_example'; // string | Numeric Google Ads asset id.
+$ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers.
+$customer_id = 'customer_id_example'; // string | Alias of adAccountId, kept for existing callers
 
 try {
-    $result = $apiInstance->removeAccountStructuredSnippet($remove_account_callout_request);
+    $result = $apiInstance->removeAccountStructuredSnippet($account_id, $asset_id, $ad_account_id, $customer_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->removeAccountStructuredSnippet: ', $e->getMessage(), PHP_EOL;
@@ -3224,7 +3251,10 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **remove_account_callout_request** | [**\Zernio\Model\RemoveAccountCalloutRequest**](../Model/RemoveAccountCalloutRequest.md)|  | |
+| **account_id** | **string**| Zernio Google Ads connection id. | |
+| **asset_id** | **string**| Numeric Google Ads asset id. | |
+| **ad_account_id** | **string**| Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers. | [optional] |
+| **customer_id** | **string**| Alias of adAccountId, kept for existing callers | [optional] |
 
 ### Return type
 
@@ -3236,7 +3266,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json`
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

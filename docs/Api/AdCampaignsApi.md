@@ -403,7 +403,7 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$bulk_update_ad_campaign_status_request = new \Zernio\Model\BulkUpdateAdCampaignStatusRequest(); // \Zernio\Model\BulkUpdateAdCampaignStatusRequest
+$bulk_update_ad_campaign_status_request = {"status":"paused","campaigns":[{"platformCampaignId":"23456789012","platform":"google"},{"platformCampaignId":"120210000000000000","platform":"facebook"}]}; // \Zernio\Model\BulkUpdateAdCampaignStatusRequest
 
 try {
     $result = $apiInstance->bulkUpdateAdCampaignStatus($bulk_update_ad_campaign_status_request);
@@ -2169,7 +2169,7 @@ $profile_id = 'profile_id_example'; // string | Profile ID
 $campaign_id = 'campaign_id_example'; // string | Platform campaign ID
 $ad_set_id = 'ad_set_id_example'; // string | Platform ad group ID (Google ad group)
 $status = 'status_example'; // string | Keyword criterion status
-$match_type = 'match_type_example'; // string
+$match_type = 'match_type_example'; // string | Accepted in any case.
 $negative = True; // bool | true = negative keywords only, false = positive only. Omit for both.
 $search = 'search_example'; // string | Case-insensitive substring match on the keyword text
 
@@ -2193,7 +2193,7 @@ try {
 | **campaign_id** | **string**| Platform campaign ID | [optional] |
 | **ad_set_id** | **string**| Platform ad group ID (Google ad group) | [optional] |
 | **status** | **string**| Keyword criterion status | [optional] |
-| **match_type** | **string**|  | [optional] |
+| **match_type** | **string**| Accepted in any case. | [optional] |
 | **negative** | **bool**| true &#x3D; negative keywords only, false &#x3D; positive only. Omit for both. | [optional] |
 | **search** | **string**| Case-insensitive substring match on the keyword text | [optional] |
 
@@ -2763,12 +2763,12 @@ try {
 ## `removeAdGroupAssets()`
 
 ```php
-removeAdGroupAssets($ad_set_id, $remove_ad_group_assets_request): \Zernio\Model\RemoveCampaignAssets200Response
+removeAdGroupAssets($ad_set_id, $account_id, $asset_resource_names, $ad_group_asset_resource_names, $ad_account_id, $customer_id): \Zernio\Model\RemoveCampaignAssets200Response
 ```
 
 Remove ad-group assets
 
-Removes the specified attachments only. Google assets cannot be deleted. Other attachments remain. assetResourceNames is retained for compatibility.
+Removes the specified attachments only. Google assets cannot be deleted. Other attachments remain. assetResourceNames is retained for compatibility. Fields go in the query string. A JSON body with the same fields is also accepted and, when sent, the query string is ignored.
 
 ### Example
 
@@ -2788,10 +2788,14 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
     $config
 );
 $ad_set_id = 'ad_set_id_example'; // string | Numeric Google platform id.
-$remove_ad_group_assets_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","customerId":"1234567890","assetResourceNames":["customers/1234567890/assets/123"],"adGroupAssetResourceNames":["customers/1234567890/adGroupAssets/456~123~CALLOUT"]}; // \Zernio\Model\RemoveAdGroupAssetsRequest
+$account_id = 'account_id_example'; // string | Zernio Google Ads connection id.
+$asset_resource_names = array('asset_resource_names_example'); // string[] | Asset resource names, retained for compatibility. Repeat the parameter or pass a comma-separated list.
+$ad_group_asset_resource_names = array('ad_group_asset_resource_names_example'); // string[] | ad_group_asset resource names to remove, e.g. customers/1234567890/adGroupAssets/456~123~CALLOUT. Repeat the parameter or pass a comma-separated list.
+$ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers.
+$customer_id = 'customer_id_example'; // string | Alias of adAccountId, kept for existing callers
 
 try {
-    $result = $apiInstance->removeAdGroupAssets($ad_set_id, $remove_ad_group_assets_request);
+    $result = $apiInstance->removeAdGroupAssets($ad_set_id, $account_id, $asset_resource_names, $ad_group_asset_resource_names, $ad_account_id, $customer_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->removeAdGroupAssets: ', $e->getMessage(), PHP_EOL;
@@ -2803,7 +2807,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_set_id** | **string**| Numeric Google platform id. | |
-| **remove_ad_group_assets_request** | [**\Zernio\Model\RemoveAdGroupAssetsRequest**](../Model/RemoveAdGroupAssetsRequest.md)|  | |
+| **account_id** | **string**| Zernio Google Ads connection id. | |
+| **asset_resource_names** | [**string[]**](../Model/string.md)| Asset resource names, retained for compatibility. Repeat the parameter or pass a comma-separated list. | |
+| **ad_group_asset_resource_names** | [**string[]**](../Model/string.md)| ad_group_asset resource names to remove, e.g. customers/1234567890/adGroupAssets/456~123~CALLOUT. Repeat the parameter or pass a comma-separated list. | |
+| **ad_account_id** | **string**| Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers. | [optional] |
+| **customer_id** | **string**| Alias of adAccountId, kept for existing callers | [optional] |
 
 ### Return type
 
@@ -2815,7 +2823,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json`
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -2885,12 +2893,12 @@ try {
 ## `removeCampaignAssets()`
 
 ```php
-removeCampaignAssets($campaign_id, $remove_campaign_assets_request): \Zernio\Model\RemoveCampaignAssets200Response
+removeCampaignAssets($campaign_id, $account_id, $asset_resource_names, $campaign_asset_resource_names, $ad_account_id, $customer_id): \Zernio\Model\RemoveCampaignAssets200Response
 ```
 
 Remove campaign assets
 
-Removes the specified attachments only. Google assets cannot be deleted. Other attachments remain. assetResourceNames is retained for compatibility.
+Removes the specified attachments only. Google assets cannot be deleted. Other attachments remain. assetResourceNames is retained for compatibility. Fields go in the query string. A JSON body with the same fields is also accepted and, when sent, the query string is ignored.
 
 ### Example
 
@@ -2910,10 +2918,14 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
     $config
 );
 $campaign_id = 'campaign_id_example'; // string | Numeric Google platform id.
-$remove_campaign_assets_request = {"accountId":"64b1f0c8a1b2c3d4e5f60718","adAccountId":"1234567890","assetResourceNames":["customers/1234567890/assets/123"],"campaignAssetResourceNames":["customers/1234567890/campaignAssets/456~123~CALLOUT"]}; // \Zernio\Model\RemoveCampaignAssetsRequest
+$account_id = 'account_id_example'; // string | Zernio Google Ads connection id.
+$asset_resource_names = array('asset_resource_names_example'); // string[] | Asset resource names, retained for compatibility. Repeat the parameter or pass a comma-separated list.
+$campaign_asset_resource_names = array('campaign_asset_resource_names_example'); // string[] | campaign_asset resource names to remove, e.g. customers/1234567890/campaignAssets/456~123~CALLOUT. Repeat the parameter or pass a comma-separated list.
+$ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers.
+$customer_id = 'customer_id_example'; // string | Alias of adAccountId, kept for existing callers
 
 try {
-    $result = $apiInstance->removeCampaignAssets($campaign_id, $remove_campaign_assets_request);
+    $result = $apiInstance->removeCampaignAssets($campaign_id, $account_id, $asset_resource_names, $campaign_asset_resource_names, $ad_account_id, $customer_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->removeCampaignAssets: ', $e->getMessage(), PHP_EOL;
@@ -2925,7 +2937,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaign_id** | **string**| Numeric Google platform id. | |
-| **remove_campaign_assets_request** | [**\Zernio\Model\RemoveCampaignAssetsRequest**](../Model/RemoveCampaignAssetsRequest.md)|  | |
+| **account_id** | **string**| Zernio Google Ads connection id. | |
+| **asset_resource_names** | [**string[]**](../Model/string.md)| Asset resource names, retained for compatibility. Repeat the parameter or pass a comma-separated list. | |
+| **campaign_asset_resource_names** | [**string[]**](../Model/string.md)| campaign_asset resource names to remove, e.g. customers/1234567890/campaignAssets/456~123~CALLOUT. Repeat the parameter or pass a comma-separated list. | |
+| **ad_account_id** | **string**| Platform ad account ID (Google customer ID, digits only). Required when the connection has multiple customers. | [optional] |
+| **customer_id** | **string**| Alias of adAccountId, kept for existing callers | [optional] |
 
 ### Return type
 
@@ -2937,7 +2953,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json`
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

@@ -1391,6 +1391,7 @@ docs/Model/InstallTrackingTagOnStore422ResponseDetails.md
 docs/Model/InstallTrackingTagOnStoreRequest.md
 docs/Model/InviteAdAccountToManagerRequest.md
 docs/Model/KeywordEntry.md
+docs/Model/KeywordEntryOneOf.md
 docs/Model/LikeInboxComment200Response.md
 docs/Model/LikeInboxCommentRequest.md
 docs/Model/LikePost200Response.md
@@ -1914,14 +1915,11 @@ docs/Model/RemediatePhoneNumberRequest.md
 docs/Model/RemediatePhoneNumberRequestDocumentsInner.md
 docs/Model/RemediatePhoneNumberRequestDocumentsInnerOneOf.md
 docs/Model/RemoveAccountCallout200Response.md
-docs/Model/RemoveAccountCalloutRequest.md
 docs/Model/RemoveAdAccountUser200Response.md
-docs/Model/RemoveAdGroupAssetsRequest.md
 docs/Model/RemoveAdKeyword200Response.md
 docs/Model/RemoveAdLabel200Response.md
 docs/Model/RemoveBookmark200Response.md
 docs/Model/RemoveCampaignAssets200Response.md
-docs/Model/RemoveCampaignAssetsRequest.md
 docs/Model/RemoveConversionAssociations200Response.md
 docs/Model/RemoveCustomConversionGoal200Response.md
 docs/Model/RemoveDiscordMemberRole200Response.md
@@ -4156,6 +4154,7 @@ lib/Model/InstallTrackingTagOnStore422ResponseDetails.php
 lib/Model/InstallTrackingTagOnStoreRequest.php
 lib/Model/InviteAdAccountToManagerRequest.php
 lib/Model/KeywordEntry.php
+lib/Model/KeywordEntryOneOf.php
 lib/Model/LikeInboxComment200Response.php
 lib/Model/LikeInboxCommentRequest.php
 lib/Model/LikePost200Response.php
@@ -4680,14 +4679,11 @@ lib/Model/RemediatePhoneNumberRequest.php
 lib/Model/RemediatePhoneNumberRequestDocumentsInner.php
 lib/Model/RemediatePhoneNumberRequestDocumentsInnerOneOf.php
 lib/Model/RemoveAccountCallout200Response.php
-lib/Model/RemoveAccountCalloutRequest.php
 lib/Model/RemoveAdAccountUser200Response.php
-lib/Model/RemoveAdGroupAssetsRequest.php
 lib/Model/RemoveAdKeyword200Response.php
 lib/Model/RemoveAdLabel200Response.php
 lib/Model/RemoveBookmark200Response.php
 lib/Model/RemoveCampaignAssets200Response.php
-lib/Model/RemoveCampaignAssetsRequest.php
 lib/Model/RemoveConversionAssociations200Response.php
 lib/Model/RemoveCustomConversionGoal200Response.php
 lib/Model/RemoveDiscordMemberRole200Response.php
@@ -5531,3 +5527,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/KeywordEntryOneOfTest.php
