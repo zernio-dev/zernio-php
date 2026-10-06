@@ -1,6 +1,6 @@
 <?php
 /**
- * GetTrackingTagStoreInstall200Response
+ * ConnectWhopAdsCredentials200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetTrackingTagStoreInstall200Response Class Doc Comment
+ * ConnectWhopAdsCredentials200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class ConnectWhopAdsCredentials200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAcce
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getTrackingTagStoreInstall_200_response';
+    protected static $openAPIModelName = 'connectWhopAdsCredentials_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,10 @@ class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAcce
       * @var string[]
       */
     protected static $openAPITypes = [
-        'platform' => 'string',
-        'install' => '\Zernio\Model\GetTrackingTagStoreInstall200ResponseInstall'
+        'account_id' => 'string',
+        'whop_account_id' => 'string',
+        'account_name' => 'string',
+        'redirect_url' => 'string'
     ];
 
     /**
@@ -70,8 +72,10 @@ class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAcce
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'platform' => null,
-        'install' => null
+        'account_id' => null,
+        'whop_account_id' => null,
+        'account_name' => null,
+        'redirect_url' => null
     ];
 
     /**
@@ -80,8 +84,10 @@ class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAcce
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'platform' => false,
-        'install' => false
+        'account_id' => false,
+        'whop_account_id' => false,
+        'account_name' => false,
+        'redirect_url' => false
     ];
 
     /**
@@ -170,8 +176,10 @@ class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $attributeMap = [
-        'platform' => 'platform',
-        'install' => 'install'
+        'account_id' => 'accountId',
+        'whop_account_id' => 'whopAccountId',
+        'account_name' => 'accountName',
+        'redirect_url' => 'redirectUrl'
     ];
 
     /**
@@ -180,8 +188,10 @@ class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $setters = [
-        'platform' => 'setPlatform',
-        'install' => 'setInstall'
+        'account_id' => 'setAccountId',
+        'whop_account_id' => 'setWhopAccountId',
+        'account_name' => 'setAccountName',
+        'redirect_url' => 'setRedirectUrl'
     ];
 
     /**
@@ -190,8 +200,10 @@ class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $getters = [
-        'platform' => 'getPlatform',
-        'install' => 'getInstall'
+        'account_id' => 'getAccountId',
+        'whop_account_id' => 'getWhopAccountId',
+        'account_name' => 'getAccountName',
+        'redirect_url' => 'getRedirectUrl'
     ];
 
     /**
@@ -235,33 +247,6 @@ class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAcce
         return self::$openAPIModelName;
     }
 
-    public const PLATFORM_METAADS = 'metaads';
-    public const PLATFORM_TIKTOKADS = 'tiktokads';
-    public const PLATFORM_GOOGLEADS = 'googleads';
-    public const PLATFORM_XADS = 'xads';
-    public const PLATFORM_OPENAIADS = 'openaiads';
-    public const PLATFORM_LINKEDINADS = 'linkedinads';
-    public const PLATFORM_PINTERESTADS = 'pinterestads';
-    public const PLATFORM_WHOPADS = 'whopads';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getPlatformAllowableValues()
-    {
-        return [
-            self::PLATFORM_METAADS,
-            self::PLATFORM_TIKTOKADS,
-            self::PLATFORM_GOOGLEADS,
-            self::PLATFORM_XADS,
-            self::PLATFORM_OPENAIADS,
-            self::PLATFORM_LINKEDINADS,
-            self::PLATFORM_PINTERESTADS,
-            self::PLATFORM_WHOPADS,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -278,8 +263,10 @@ class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAcce
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('platform', $data ?? [], null);
-        $this->setIfExists('install', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('whop_account_id', $data ?? [], null);
+        $this->setIfExists('account_name', $data ?? [], null);
+        $this->setIfExists('redirect_url', $data ?? [], null);
     }
 
     /**
@@ -309,15 +296,6 @@ class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAcce
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getPlatformAllowableValues();
-        if (!is_null($this->container['platform']) && !in_array($this->container['platform'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'platform', must be one of '%s'",
-                $this->container['platform'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -334,65 +312,109 @@ class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAcce
 
 
     /**
-     * Gets platform
+     * Gets account_id
      *
      * @return string|null
      */
-    public function getPlatform()
+    public function getAccountId()
     {
-        return $this->container['platform'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets platform
+     * Sets account_id
      *
-     * @param string|null $platform platform
+     * @param string|null $account_id The Zernio account id (platform `whopads`) to use as `{accountId}` on the tracking-tags routes.
      *
      * @return self
      */
-    public function setPlatform($platform)
+    public function setAccountId($account_id)
     {
-        if (is_null($platform)) {
-            throw new \InvalidArgumentException('non-nullable platform cannot be null');
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
-        $allowedValues = $this->getPlatformAllowableValues();
-        if (!in_array($platform, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'platform', must be one of '%s'",
-                    $platform,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['platform'] = $platform;
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }
 
     /**
-     * Gets install
+     * Gets whop_account_id
      *
-     * @return \Zernio\Model\GetTrackingTagStoreInstall200ResponseInstall|null
+     * @return string|null
      */
-    public function getInstall()
+    public function getWhopAccountId()
     {
-        return $this->container['install'];
+        return $this->container['whop_account_id'];
     }
 
     /**
-     * Sets install
+     * Sets whop_account_id
      *
-     * @param \Zernio\Model\GetTrackingTagStoreInstall200ResponseInstall|null $install install
+     * @param string|null $whop_account_id The Whop account id (`biz_...`), which is also the tracking tag id.
      *
      * @return self
      */
-    public function setInstall($install)
+    public function setWhopAccountId($whop_account_id)
     {
-        if (is_null($install)) {
-            throw new \InvalidArgumentException('non-nullable install cannot be null');
+        if (is_null($whop_account_id)) {
+            throw new \InvalidArgumentException('non-nullable whop_account_id cannot be null');
         }
-        $this->container['install'] = $install;
+        $this->container['whop_account_id'] = $whop_account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_name
+     *
+     * @return string|null
+     */
+    public function getAccountName()
+    {
+        return $this->container['account_name'];
+    }
+
+    /**
+     * Sets account_name
+     *
+     * @param string|null $account_name account_name
+     *
+     * @return self
+     */
+    public function setAccountName($account_name)
+    {
+        if (is_null($account_name)) {
+            throw new \InvalidArgumentException('non-nullable account_name cannot be null');
+        }
+        $this->container['account_name'] = $account_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets redirect_url
+     *
+     * @return string|null
+     */
+    public function getRedirectUrl()
+    {
+        return $this->container['redirect_url'];
+    }
+
+    /**
+     * Sets redirect_url
+     *
+     * @param string|null $redirect_url redirect_url
+     *
+     * @return self
+     */
+    public function setRedirectUrl($redirect_url)
+    {
+        if (is_null($redirect_url)) {
+            throw new \InvalidArgumentException('non-nullable redirect_url cannot be null');
+        }
+        $this->container['redirect_url'] = $redirect_url;
 
         return $this;
     }

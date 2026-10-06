@@ -19,6 +19,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**connectSlackChannel()**](ConnectApi.md#connectSlackChannel) | **POST** /v1/connect/slack | Connect a Slack channel |
 | [**connectWhatsAppCredentials()**](ConnectApi.md#connectWhatsAppCredentials) | **POST** /v1/connect/whatsapp/credentials | Connect WhatsApp via credentials |
 | [**connectWhatsAppEmbeddedSignup()**](ConnectApi.md#connectWhatsAppEmbeddedSignup) | **POST** /v1/connect/whatsapp/embedded-signup | Connect WhatsApp from Embedded Signup |
+| [**connectWhopAdsCredentials()**](ConnectApi.md#connectWhopAdsCredentials) | **POST** /v1/connect/whop-ads/credentials | Connect a Whop account |
 | [**connectWordPressWithApplicationPassword()**](ConnectApi.md#connectWordPressWithApplicationPassword) | **POST** /v1/connect/wordpress/token | Connect self-hosted WordPress with an application password |
 | [**createPinterestBoard()**](ConnectApi.md#createPinterestBoard) | **POST** /v1/accounts/{accountId}/pinterest-boards | Create Pinterest board |
 | [**createYoutubePlaylist()**](ConnectApi.md#createYoutubePlaylist) | **POST** /v1/accounts/{accountId}/youtube-playlists | Create YouTube playlist |
@@ -854,6 +855,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\ConnectWhatsAppEmbeddedSignup200Response**](../Model/ConnectWhatsAppEmbeddedSignup200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `connectWhopAdsCredentials()`
+
+```php
+connectWhopAdsCredentials($connect_whop_ads_credentials_request): \Zernio\Model\ConnectWhopAdsCredentials200Response
+```
+
+Connect a Whop account
+
+Connect a Whop account with an Account API key from the Whop dashboard (Developer > API keys). The key only has to be able to read its own account: Zernio calls `GET /accounts/me` once to learn the account id (`biz_...`) and name, then stores the key.  What the connection unlocks today is the Whop Pixel through the tracking-tags API: the account id is the pixel, so `GET /v1/accounts/{accountId}/tracking-tags` lists it and `POST .../tracking-tags/{biz_...}/install` puts it on a Shopify store or WordPress site. Whop campaigns are not managed through Zernio. One Whop account per profile.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$connect_whop_ads_credentials_request = {"apiKey":"whop_xxxxxxxxxxxxxxxxxxxx","profileId":"6507a1b2c3d4e5f6a7b8c9d0"}; // \Zernio\Model\ConnectWhopAdsCredentialsRequest
+
+try {
+    $result = $apiInstance->connectWhopAdsCredentials($connect_whop_ads_credentials_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->connectWhopAdsCredentials: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **connect_whop_ads_credentials_request** | [**\Zernio\Model\ConnectWhopAdsCredentialsRequest**](../Model/ConnectWhopAdsCredentialsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ConnectWhopAdsCredentials200Response**](../Model/ConnectWhopAdsCredentials200Response.md)
 
 ### Authorization
 

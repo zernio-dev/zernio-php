@@ -327,6 +327,7 @@ class TrackingTag implements ModelInterface, ArrayAccess, \JsonSerializable
     public const PLATFORM_XADS = 'xads';
     public const PLATFORM_LINKEDINADS = 'linkedinads';
     public const PLATFORM_PINTERESTADS = 'pinterestads';
+    public const PLATFORM_WHOPADS = 'whopads';
     public const KIND_PIXEL = 'pixel';
     public const KIND_TAG = 'tag';
     public const KIND_INSIGHT_TAG = 'insight_tag';
@@ -359,6 +360,7 @@ class TrackingTag implements ModelInterface, ArrayAccess, \JsonSerializable
             self::PLATFORM_XADS,
             self::PLATFORM_LINKEDINADS,
             self::PLATFORM_PINTERESTADS,
+            self::PLATFORM_WHOPADS,
         ];
     }
 

@@ -242,6 +242,7 @@ class GetTrackingTagStats200Response implements ModelInterface, ArrayAccess, \Js
     public const PLATFORM_OPENAIADS = 'openaiads';
     public const PLATFORM_LINKEDINADS = 'linkedinads';
     public const PLATFORM_PINTERESTADS = 'pinterestads';
+    public const PLATFORM_WHOPADS = 'whopads';
 
     /**
      * Gets allowable values of the enum
@@ -258,6 +259,7 @@ class GetTrackingTagStats200Response implements ModelInterface, ArrayAccess, \Js
             self::PLATFORM_OPENAIADS,
             self::PLATFORM_LINKEDINADS,
             self::PLATFORM_PINTERESTADS,
+            self::PLATFORM_WHOPADS,
         ];
     }
 

@@ -371,6 +371,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
     public const PLATFORM_SMS = 'sms';
     public const PLATFORM_PHONE = 'phone';
     public const PLATFORM_RCS = 'rcs';
+    public const PLATFORM_WHOPADS = 'whopads';
 
     /**
      * Gets allowable values of the enum
@@ -408,6 +409,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
             self::PLATFORM_SMS,
             self::PLATFORM_PHONE,
             self::PLATFORM_RCS,
+            self::PLATFORM_WHOPADS,
         ];
     }
 

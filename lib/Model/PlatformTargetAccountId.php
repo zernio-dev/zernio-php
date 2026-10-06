@@ -335,6 +335,7 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
     public const PLATFORM_SMS = 'sms';
     public const PLATFORM_PHONE = 'phone';
     public const PLATFORM_RCS = 'rcs';
+    public const PLATFORM_WHOPADS = 'whopads';
 
     /**
      * Gets allowable values of the enum
@@ -372,6 +373,7 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
             self::PLATFORM_SMS,
             self::PLATFORM_PHONE,
             self::PLATFORM_RCS,
+            self::PLATFORM_WHOPADS,
         ];
     }
 

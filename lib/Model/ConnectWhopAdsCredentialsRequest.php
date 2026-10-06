@@ -1,6 +1,6 @@
 <?php
 /**
- * GetTrackingTagStoreInstall200Response
+ * ConnectWhopAdsCredentialsRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetTrackingTagStoreInstall200Response Class Doc Comment
+ * ConnectWhopAdsCredentialsRequest Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class ConnectWhopAdsCredentialsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAcce
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getTrackingTagStoreInstall_200_response';
+    protected static $openAPIModelName = 'connectWhopAdsCredentials_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,10 @@ class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAcce
       * @var string[]
       */
     protected static $openAPITypes = [
-        'platform' => 'string',
-        'install' => '\Zernio\Model\GetTrackingTagStoreInstall200ResponseInstall'
+        'api_key' => 'string',
+        'profile_id' => 'string',
+        'state' => 'string',
+        'redirect_url' => 'string'
     ];
 
     /**
@@ -70,8 +72,10 @@ class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAcce
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'platform' => null,
-        'install' => null
+        'api_key' => null,
+        'profile_id' => null,
+        'state' => null,
+        'redirect_url' => 'uri'
     ];
 
     /**
@@ -80,8 +84,10 @@ class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAcce
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'platform' => false,
-        'install' => false
+        'api_key' => false,
+        'profile_id' => false,
+        'state' => false,
+        'redirect_url' => false
     ];
 
     /**
@@ -170,8 +176,10 @@ class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $attributeMap = [
-        'platform' => 'platform',
-        'install' => 'install'
+        'api_key' => 'apiKey',
+        'profile_id' => 'profileId',
+        'state' => 'state',
+        'redirect_url' => 'redirect_url'
     ];
 
     /**
@@ -180,8 +188,10 @@ class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $setters = [
-        'platform' => 'setPlatform',
-        'install' => 'setInstall'
+        'api_key' => 'setApiKey',
+        'profile_id' => 'setProfileId',
+        'state' => 'setState',
+        'redirect_url' => 'setRedirectUrl'
     ];
 
     /**
@@ -190,8 +200,10 @@ class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $getters = [
-        'platform' => 'getPlatform',
-        'install' => 'getInstall'
+        'api_key' => 'getApiKey',
+        'profile_id' => 'getProfileId',
+        'state' => 'getState',
+        'redirect_url' => 'getRedirectUrl'
     ];
 
     /**
@@ -235,33 +247,6 @@ class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAcce
         return self::$openAPIModelName;
     }
 
-    public const PLATFORM_METAADS = 'metaads';
-    public const PLATFORM_TIKTOKADS = 'tiktokads';
-    public const PLATFORM_GOOGLEADS = 'googleads';
-    public const PLATFORM_XADS = 'xads';
-    public const PLATFORM_OPENAIADS = 'openaiads';
-    public const PLATFORM_LINKEDINADS = 'linkedinads';
-    public const PLATFORM_PINTERESTADS = 'pinterestads';
-    public const PLATFORM_WHOPADS = 'whopads';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getPlatformAllowableValues()
-    {
-        return [
-            self::PLATFORM_METAADS,
-            self::PLATFORM_TIKTOKADS,
-            self::PLATFORM_GOOGLEADS,
-            self::PLATFORM_XADS,
-            self::PLATFORM_OPENAIADS,
-            self::PLATFORM_LINKEDINADS,
-            self::PLATFORM_PINTERESTADS,
-            self::PLATFORM_WHOPADS,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -278,8 +263,10 @@ class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAcce
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('platform', $data ?? [], null);
-        $this->setIfExists('install', $data ?? [], null);
+        $this->setIfExists('api_key', $data ?? [], null);
+        $this->setIfExists('profile_id', $data ?? [], null);
+        $this->setIfExists('state', $data ?? [], null);
+        $this->setIfExists('redirect_url', $data ?? [], null);
     }
 
     /**
@@ -309,15 +296,12 @@ class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAcce
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getPlatformAllowableValues();
-        if (!is_null($this->container['platform']) && !in_array($this->container['platform'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'platform', must be one of '%s'",
-                $this->container['platform'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['api_key'] === null) {
+            $invalidProperties[] = "'api_key' can't be null";
         }
-
+        if ($this->container['profile_id'] === null) {
+            $invalidProperties[] = "'profile_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -334,65 +318,109 @@ class GetTrackingTagStoreInstall200Response implements ModelInterface, ArrayAcce
 
 
     /**
-     * Gets platform
+     * Gets api_key
      *
-     * @return string|null
+     * @return string
      */
-    public function getPlatform()
+    public function getApiKey()
     {
-        return $this->container['platform'];
+        return $this->container['api_key'];
     }
 
     /**
-     * Sets platform
+     * Sets api_key
      *
-     * @param string|null $platform platform
+     * @param string $api_key Account API key from the Whop dashboard.
      *
      * @return self
      */
-    public function setPlatform($platform)
+    public function setApiKey($api_key)
     {
-        if (is_null($platform)) {
-            throw new \InvalidArgumentException('non-nullable platform cannot be null');
+        if (is_null($api_key)) {
+            throw new \InvalidArgumentException('non-nullable api_key cannot be null');
         }
-        $allowedValues = $this->getPlatformAllowableValues();
-        if (!in_array($platform, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'platform', must be one of '%s'",
-                    $platform,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['platform'] = $platform;
+        $this->container['api_key'] = $api_key;
 
         return $this;
     }
 
     /**
-     * Gets install
+     * Gets profile_id
      *
-     * @return \Zernio\Model\GetTrackingTagStoreInstall200ResponseInstall|null
+     * @return string
      */
-    public function getInstall()
+    public function getProfileId()
     {
-        return $this->container['install'];
+        return $this->container['profile_id'];
     }
 
     /**
-     * Sets install
+     * Sets profile_id
      *
-     * @param \Zernio\Model\GetTrackingTagStoreInstall200ResponseInstall|null $install install
+     * @param string $profile_id Your Zernio profile ID
      *
      * @return self
      */
-    public function setInstall($install)
+    public function setProfileId($profile_id)
     {
-        if (is_null($install)) {
-            throw new \InvalidArgumentException('non-nullable install cannot be null');
+        if (is_null($profile_id)) {
+            throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
         }
-        $this->container['install'] = $install;
+        $this->container['profile_id'] = $profile_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets state
+     *
+     * @return string|null
+     */
+    public function getState()
+    {
+        return $this->container['state'];
+    }
+
+    /**
+     * Sets state
+     *
+     * @param string|null $state Optional state passthrough for the connect flow.
+     *
+     * @return self
+     */
+    public function setState($state)
+    {
+        if (is_null($state)) {
+            throw new \InvalidArgumentException('non-nullable state cannot be null');
+        }
+        $this->container['state'] = $state;
+
+        return $this;
+    }
+
+    /**
+     * Gets redirect_url
+     *
+     * @return string|null
+     */
+    public function getRedirectUrl()
+    {
+        return $this->container['redirect_url'];
+    }
+
+    /**
+     * Sets redirect_url
+     *
+     * @param string|null $redirect_url Optional URL to redirect to after successful connection, echoed back as redirectUrl.
+     *
+     * @return self
+     */
+    public function setRedirectUrl($redirect_url)
+    {
+        if (is_null($redirect_url)) {
+            throw new \InvalidArgumentException('non-nullable redirect_url cannot be null');
+        }
+        $this->container['redirect_url'] = $redirect_url;
 
         return $this;
     }
