@@ -63,6 +63,8 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'profile_id' => '\Zernio\Model\SocialAccountProfileId',
         'username' => 'string',
         'display_name' => 'string',
+        'platform_user_id' => 'string',
+        'tiktok_account_type' => 'string',
         'profile_picture' => 'string',
         'profile_url' => 'string',
         'is_active' => 'bool',
@@ -87,6 +89,8 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'profile_id' => null,
         'username' => null,
         'display_name' => null,
+        'platform_user_id' => null,
+        'tiktok_account_type' => null,
         'profile_picture' => null,
         'profile_url' => null,
         'is_active' => null,
@@ -109,6 +113,8 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'profile_id' => false,
         'username' => false,
         'display_name' => false,
+        'platform_user_id' => false,
+        'tiktok_account_type' => false,
         'profile_picture' => true,
         'profile_url' => false,
         'is_active' => false,
@@ -211,6 +217,8 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'profile_id' => 'profileId',
         'username' => 'username',
         'display_name' => 'displayName',
+        'platform_user_id' => 'platformUserId',
+        'tiktok_account_type' => 'tiktokAccountType',
         'profile_picture' => 'profilePicture',
         'profile_url' => 'profileUrl',
         'is_active' => 'isActive',
@@ -233,6 +241,8 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'profile_id' => 'setProfileId',
         'username' => 'setUsername',
         'display_name' => 'setDisplayName',
+        'platform_user_id' => 'setPlatformUserId',
+        'tiktok_account_type' => 'setTiktokAccountType',
         'profile_picture' => 'setProfilePicture',
         'profile_url' => 'setProfileUrl',
         'is_active' => 'setIsActive',
@@ -255,6 +265,8 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'profile_id' => 'getProfileId',
         'username' => 'getUsername',
         'display_name' => 'getDisplayName',
+        'platform_user_id' => 'getPlatformUserId',
+        'tiktok_account_type' => 'getTiktokAccountType',
         'profile_picture' => 'getProfilePicture',
         'profile_url' => 'getProfileUrl',
         'is_active' => 'getIsActive',
@@ -336,6 +348,9 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     public const PLATFORM_PHONE = 'phone';
     public const PLATFORM_RCS = 'rcs';
     public const PLATFORM_WHOPADS = 'whopads';
+    public const TIKTOK_ACCOUNT_TYPE_BUSINESS = 'business';
+    public const TIKTOK_ACCOUNT_TYPE_PERSONAL = 'personal';
+    public const TIKTOK_ACCOUNT_TYPE_UNKNOWN = 'unknown';
 
     /**
      * Gets allowable values of the enum
@@ -378,6 +393,20 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTiktokAccountTypeAllowableValues()
+    {
+        return [
+            self::TIKTOK_ACCOUNT_TYPE_BUSINESS,
+            self::TIKTOK_ACCOUNT_TYPE_PERSONAL,
+            self::TIKTOK_ACCOUNT_TYPE_UNKNOWN,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -397,6 +426,8 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('username', $data ?? [], null);
         $this->setIfExists('display_name', $data ?? [], null);
+        $this->setIfExists('platform_user_id', $data ?? [], null);
+        $this->setIfExists('tiktok_account_type', $data ?? [], null);
         $this->setIfExists('profile_picture', $data ?? [], null);
         $this->setIfExists('profile_url', $data ?? [], null);
         $this->setIfExists('is_active', $data ?? [], null);
@@ -453,6 +484,15 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['profile_id'] === null) {
             $invalidProperties[] = "'profile_id' can't be null";
         }
+        $allowedValues = $this->getTiktokAccountTypeAllowableValues();
+        if (!is_null($this->container['tiktok_account_type']) && !in_array($this->container['tiktok_account_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'tiktok_account_type', must be one of '%s'",
+                $this->container['tiktok_account_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['is_active'] === null) {
             $invalidProperties[] = "'is_active' can't be null";
         }
@@ -612,6 +652,70 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable display_name cannot be null');
         }
         $this->container['display_name'] = $display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_user_id
+     *
+     * @return string|null
+     */
+    public function getPlatformUserId()
+    {
+        return $this->container['platform_user_id'];
+    }
+
+    /**
+     * Sets platform_user_id
+     *
+     * @param string|null $platform_user_id The account's id on its platform as the platform reports it to Zernio; stable across reconnects, so it is the key to match an account against your own records. Instagram: the app-scoped user id on Instagram Login accounts (the professional account id is in `metadata.instagramScopedId`), the professional account id (`17841...`) on Facebook Login accounts. TikTok: the open_id of Zernio's TikTok app, which differs from the open_id any other app sees for the same user. Either value can be passed back as `expectedPlatformUserId` on GET /v1/connect/{platform}.
+     *
+     * @return self
+     */
+    public function setPlatformUserId($platform_user_id)
+    {
+        if (is_null($platform_user_id)) {
+            throw new \InvalidArgumentException('non-nullable platform_user_id cannot be null');
+        }
+        $this->container['platform_user_id'] = $platform_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets tiktok_account_type
+     *
+     * @return string|null
+     */
+    public function getTiktokAccountType()
+    {
+        return $this->container['tiktok_account_type'];
+    }
+
+    /**
+     * Sets tiktok_account_type
+     *
+     * @param string|null $tiktok_account_type TikTok accounts only. The account type TikTok reported when the account was connected. `personal` accounts cannot use TikTok direct messages through the API (TikTok limits Business Messaging to Business Accounts): skip the inbox for them and tell the user to switch to a Business Account in the TikTok app, then reconnect. `business` is the prerequisite, not a guarantee; messaging also needs the messaging scopes granted and TikTok's regional availability. `unknown` on accounts connected before this was captured or whose grant left out the account-type scope.
+     *
+     * @return self
+     */
+    public function setTiktokAccountType($tiktok_account_type)
+    {
+        if (is_null($tiktok_account_type)) {
+            throw new \InvalidArgumentException('non-nullable tiktok_account_type cannot be null');
+        }
+        $allowedValues = $this->getTiktokAccountTypeAllowableValues();
+        if (!in_array($tiktok_account_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'tiktok_account_type', must be one of '%s'",
+                    $tiktok_account_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['tiktok_account_type'] = $tiktok_account_type;
 
         return $this;
     }
@@ -859,7 +963,7 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets metadata
      *
-     * @param object|null $metadata Platform-specific metadata. Fields vary by platform. For WhatsApp accounts, includes: - qualityRating: Phone number quality rating from Meta (GREEN, YELLOW, RED, or UNKNOWN) - nameStatus: Display name review status (APPROVED, PENDING_REVIEW, DECLINED, or NONE). A declined or pending display name does not by itself block sending; sendability is reported separately via health_status (can_send_message). - messagingLimitTier: Maximum unique business-initiated conversations per 24h rolling window (TIER_250, TIER_1K, TIER_10K, TIER_100K, or TIER_UNLIMITED). Scales automatically as quality rating improves. - verifiedName: Meta-verified business display name - displayPhoneNumber: Formatted phone number (e.g., \"+1 555-123-4567\") - wabaId: WhatsApp Business Account ID - phoneNumberId: Meta phone number ID  For Meta ads business-login accounts: - tokenType: system-user - businessId: The owning Business Manager ID when there is one owner; null for multiple owners. - businessIds: Owning Business Manager IDs discovered from granted ad accounts. - grantedAdAccountIds: Ad-account IDs granted to the token. - adAccountBusinesses: Map from ad-account ID to its owning business ID or null. - availablePages: Granted Page IDs and names. No Page tokens are exposed. - selectedPageId: The Page selected for creatives and lead forms, or null. - scopedAdAccountIds: Existing sync scope preserved on reconnect. Non-expiring tokens have no tokenExpiresAt field. Parent posting reconnects do not replace this token.  For LinkedIn accounts, profileData carries the profile details refreshed on each daily snapshot: - profileData.bio: The member's headline for personal accounts, or the organization description for organization accounts. null when the member has not set one. - profileData.extraData.vanityName: The member's profile slug, i.e. the /in/{vanityName} segment of profileUrl. Personal accounts only; an organization's own slug is in metadata.organizationInfo.vanityName.  For Instagram accounts: - loginMethod: \"facebook_login\" when the account was connected through Facebook Login. Absent on accounts connected with Instagram Login. On facebook_login accounts, comment reads leave hidden comments out entirely instead of returning them with isHidden true.  For X (Twitter) accounts: - profileData.extraData.isPremium: Whether X reports a paid subscription (Basic, Premium, Premium+, or a blue verified badge), which raises the post length limit from 280 to 25,000 characters. Read live at connect and reconnect and refreshed by the daily follower snapshot; because X intermittently reports no subscription for subscribed accounts, a cancellation is stored on the fourth consecutive daily snapshot that reports it (about four days). Accounts connected before the extraData layout carry the same flag at profileData.isPremium.
+     * @param object|null $metadata Platform-specific metadata. Fields vary by platform. For WhatsApp accounts, includes: - qualityRating: Phone number quality rating from Meta (GREEN, YELLOW, RED, or UNKNOWN) - nameStatus: Display name review status (APPROVED, PENDING_REVIEW, DECLINED, or NONE). A declined or pending display name does not by itself block sending; sendability is reported separately via health_status (can_send_message). - messagingLimitTier: Maximum unique business-initiated conversations per 24h rolling window (TIER_250, TIER_1K, TIER_10K, TIER_100K, or TIER_UNLIMITED). Scales automatically as quality rating improves. - verifiedName: Meta-verified business display name - displayPhoneNumber: Formatted phone number (e.g., \"+1 555-123-4567\") - wabaId: WhatsApp Business Account ID - phoneNumberId: Meta phone number ID  For Meta ads business-login accounts: - tokenType: system-user - businessId: The owning Business Manager ID when there is one owner; null for multiple owners. - businessIds: Owning Business Manager IDs discovered from granted ad accounts. - grantedAdAccountIds: Ad-account IDs granted to the token. - adAccountBusinesses: Map from ad-account ID to its owning business ID or null. - availablePages: Granted Page IDs and names. No Page tokens are exposed. - selectedPageId: The Page selected for creatives and lead forms, or null. - scopedAdAccountIds: Existing sync scope preserved on reconnect. Non-expiring tokens have no tokenExpiresAt field. Parent posting reconnects do not replace this token.  For LinkedIn accounts, profileData carries the profile details refreshed on each daily snapshot: - profileData.bio: The member's headline for personal accounts, or the organization description for organization accounts. null when the member has not set one. - profileData.extraData.vanityName: The member's profile slug, i.e. the /in/{vanityName} segment of profileUrl. Personal accounts only; an organization's own slug is in metadata.organizationInfo.vanityName.  For Instagram accounts: - loginMethod: \"facebook_login\" when the account was connected through Facebook Login. Absent on accounts connected with Instagram Login. On facebook_login accounts, comment reads leave hidden comments out entirely instead of returning them with isHidden true. - instagramScopedId: the Instagram professional account id (`17841...`). On Instagram Login accounts this is the id that is the same whichever app connected the account, while platformUserId is app-scoped; Facebook Login accounts hold this id as platformUserId.  For X (Twitter) accounts: - profileData.extraData.isPremium: Whether X reports a paid subscription (Basic, Premium, Premium+, or a blue verified badge), which raises the post length limit from 280 to 25,000 characters. Read live at connect and reconnect and refreshed by the daily follower snapshot; because X intermittently reports no subscription for subscribed accounts, a cancellation is stored on the fourth consecutive daily snapshot that reports it (about four days). Accounts connected before the extraData layout carry the same flag at profileData.isPremium.
      *
      * @return self
      */
