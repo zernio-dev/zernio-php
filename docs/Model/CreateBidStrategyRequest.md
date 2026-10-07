@@ -11,5 +11,6 @@ Name | Type | Description | Notes
 **type** | **string** |  |
 **target_cpa** | **float** | Required when type is TARGET_CPA, in the account&#39;s currency units. | [optional]
 **target_roas** | **float** | Required when type is TARGET_ROAS; a multiplier (2.0 &#x3D; 2.0x). | [optional]
+**target_impression_share** | [**\Zernio\Model\GoogleTargetImpressionShare**](GoogleTargetImpressionShare.md) | Required when type is TARGET_IMPRESSION_SHARE, and refused with any other type. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

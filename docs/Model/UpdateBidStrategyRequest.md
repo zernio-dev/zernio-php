@@ -11,5 +11,6 @@ Name | Type | Description | Notes
 **type** | **string** |  | [optional]
 **target_cpa** | **float** |  | [optional]
 **target_roas** | **float** |  | [optional]
+**target_impression_share** | [**\Zernio\Model\GoogleTargetImpressionShare**](GoogleTargetImpressionShare.md) | Retargets a TARGET_IMPRESSION_SHARE strategy; location, percent and maxCpc are all written. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

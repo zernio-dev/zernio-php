@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ad_account_id** | **string** |  | [optional]
+**url_tracking** | [**\Zernio\Model\UpdateAdAccount200ResponseUrlTracking**](UpdateAdAccount200ResponseUrlTracking.md) |  | [optional]
 **dsa_defaults** | [**\Zernio\Model\UpdateAdAccount200ResponseDsaDefaults**](UpdateAdAccount200ResponseDsaDefaults.md) |  | [optional]
 **settings** | [**\Zernio\Model\UpdateAdAccount200ResponseSettings**](UpdateAdAccount200ResponseSettings.md) |  | [optional]
 

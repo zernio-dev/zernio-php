@@ -1319,6 +1319,8 @@ docs/Model/GoogleListingGroupFilterNode.md
 docs/Model/GoogleListingGroupNode.md
 docs/Model/GoogleListingGroupTree.md
 docs/Model/GoogleLocationTargetingType.md
+docs/Model/GoogleManualCpc.md
+docs/Model/GoogleNetworkSettings.md
 docs/Model/GooglePmaxAssetGroup.md
 docs/Model/GooglePmaxAssetGroupAssetsInner.md
 docs/Model/GooglePmaxAssetGroupDetail.md
@@ -1334,6 +1336,7 @@ docs/Model/GoogleRsaDescription.md
 docs/Model/GoogleRsaHeadline.md
 docs/Model/GoogleSitelink.md
 docs/Model/GoogleStructuredSnippet.md
+docs/Model/GoogleTargetImpressionShare.md
 docs/Model/GrantBusinessPartner200Response.md
 docs/Model/GrantBusinessPartner200ResponsePartner.md
 docs/Model/GrantBusinessPartner201Response.md
@@ -2272,6 +2275,7 @@ docs/Model/UpdateAdAccount200Response.md
 docs/Model/UpdateAdAccount200ResponseDsaDefaults.md
 docs/Model/UpdateAdAccount200ResponseSettings.md
 docs/Model/UpdateAdAccount200ResponseSettingsFundingSource.md
+docs/Model/UpdateAdAccount200ResponseUrlTracking.md
 docs/Model/UpdateAdAccountManagerLinkRequest.md
 docs/Model/UpdateAdAccountRequest.md
 docs/Model/UpdateAdAudienceRequest.md
@@ -4088,6 +4092,8 @@ lib/Model/GoogleListingGroupFilterNode.php
 lib/Model/GoogleListingGroupNode.php
 lib/Model/GoogleListingGroupTree.php
 lib/Model/GoogleLocationTargetingType.php
+lib/Model/GoogleManualCpc.php
+lib/Model/GoogleNetworkSettings.php
 lib/Model/GooglePmaxAssetGroup.php
 lib/Model/GooglePmaxAssetGroupAssetsInner.php
 lib/Model/GooglePmaxAssetGroupDetail.php
@@ -4103,6 +4109,7 @@ lib/Model/GoogleRsaDescription.php
 lib/Model/GoogleRsaHeadline.php
 lib/Model/GoogleSitelink.php
 lib/Model/GoogleStructuredSnippet.php
+lib/Model/GoogleTargetImpressionShare.php
 lib/Model/GrantBusinessPartner200Response.php
 lib/Model/GrantBusinessPartner200ResponsePartner.php
 lib/Model/GrantBusinessPartner201Response.php
@@ -5042,6 +5049,7 @@ lib/Model/UpdateAdAccount200Response.php
 lib/Model/UpdateAdAccount200ResponseDsaDefaults.php
 lib/Model/UpdateAdAccount200ResponseSettings.php
 lib/Model/UpdateAdAccount200ResponseSettingsFundingSource.php
+lib/Model/UpdateAdAccount200ResponseUrlTracking.php
 lib/Model/UpdateAdAccountManagerLinkRequest.php
 lib/Model/UpdateAdAccountRequest.php
 lib/Model/UpdateAdAudienceRequest.php
@@ -5539,3 +5547,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GoogleManualCpcTest.php
+test/Model/GoogleNetworkSettingsTest.php
+test/Model/GoogleTargetImpressionShareTest.php
+test/Model/UpdateAdAccount200ResponseUrlTrackingTest.php
