@@ -275,7 +275,7 @@ try {
 ## `getAdCreative()`
 
 ```php
-getAdCreative($creative_id, $account_id, $fields): \Zernio\Model\GetAdCreative200Response
+getAdCreative($creative_id, $account_id, $fields, $thumbnail_width, $thumbnail_height): \Zernio\Model\GetAdCreative200Response
 ```
 
 Creative details
@@ -302,9 +302,11 @@ $apiInstance = new Zernio\Api\AdCreativesApi(
 $creative_id = 'creative_id_example'; // string | Platform creative id
 $account_id = 'account_id_example'; // string | Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token.
 $fields = id,name,status,object_story_spec{page_id,link_data{link,message}}; // string | Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers, so a nested edge can be paged explicitly: without a .limit() modifier the expansion runs at the Meta default page size and the tail is dropped silently.
+$thumbnail_width = 600; // int | Width in pixels of the `thumbnail_url` rendering, forwarded to Meta as `thumbnail_width`. Without it Meta returns a 64x64 thumbnail.
+$thumbnail_height = 600; // int | Height in pixels of the `thumbnail_url` rendering, forwarded to Meta as `thumbnail_height`. Without it Meta returns a 64x64 thumbnail.
 
 try {
-    $result = $apiInstance->getAdCreative($creative_id, $account_id, $fields);
+    $result = $apiInstance->getAdCreative($creative_id, $account_id, $fields, $thumbnail_width, $thumbnail_height);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCreativesApi->getAdCreative: ', $e->getMessage(), PHP_EOL;
@@ -318,6 +320,8 @@ try {
 | **creative_id** | **string**| Platform creative id | |
 | **account_id** | **string**| Zernio SocialAccount id (posting or ads variant) used to resolve the Meta token. | |
 | **fields** | **string**| Comma-separated Graph field override. Supports nested {} projections and Graph field modifiers, so a nested edge can be paged explicitly: without a .limit() modifier the expansion runs at the Meta default page size and the tail is dropped silently. | [optional] |
+| **thumbnail_width** | **int**| Width in pixels of the &#x60;thumbnail_url&#x60; rendering, forwarded to Meta as &#x60;thumbnail_width&#x60;. Without it Meta returns a 64x64 thumbnail. | [optional] |
+| **thumbnail_height** | **int**| Height in pixels of the &#x60;thumbnail_url&#x60; rendering, forwarded to Meta as &#x60;thumbnail_height&#x60;. Without it Meta returns a 64x64 thumbnail. | [optional] |
 
 ### Return type
 
