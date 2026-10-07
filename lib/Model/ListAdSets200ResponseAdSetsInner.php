@@ -952,7 +952,7 @@ class ListAdSets200ResponseAdSetsInner implements ModelInterface, ArrayAccess, \
     /**
      * Sets optimization_goal
      *
-     * @param string|null $optimization_goal The ad set's optimization goal as last synced, in the platform's own enum (Meta `optimization_goal`, for example OFFSITE_CONVERSIONS or LINK_CLICKS). On TikTok with `live=true`, rows read live carry the ad group's `optimization_goal` exactly as TikTok's adgroup/get returns it now (for example ENGAGED_VIEW, ENGAGED_VIEW_FIFTEEN, CLICK, CONVERT).
+     * @param string|null $optimization_goal The ad set's optimization goal as last synced, in the platform's own enum (Meta `optimization_goal`, for example OFFSITE_CONVERSIONS or LINK_CLICKS; TikTok `optimization_goal`; Pinterest the conversion event of `optimization_goal_metadata`, for example CHECKOUT; X the line item `goal`; OpenAI the campaign `bidding_type`). Always null on Google, which has no per-ad-group optimization goal. On TikTok with `live=true`, rows read live carry the ad group's `optimization_goal` exactly as TikTok's adgroup/get returns it now (for example ENGAGED_VIEW, ENGAGED_VIEW_FIFTEEN, CLICK, CONVERT).
      *
      * @return self
      */
@@ -986,7 +986,7 @@ class ListAdSets200ResponseAdSetsInner implements ModelInterface, ArrayAccess, \
     /**
      * Sets billing_event
      *
-     * @param string|null $billing_event The ad set's billing event as last synced, where the platform reports one. On TikTok with `live=true`, rows read live carry the ad group's `billing_event` exactly as TikTok's adgroup/get returns it now (for example CPV, CPC, OCPM).
+     * @param string|null $billing_event The ad set's billing event as last synced, in the platform's own enum (Meta `billing_event`, TikTok `billing_event`, Pinterest `billable_event`, X `pay_by`, OpenAI `bidding_config.billing_event_type`). Always null on Google, which reports none per ad group. On TikTok with `live=true`, rows read live carry the ad group's `billing_event` exactly as TikTok's adgroup/get returns it now (for example CPV, CPC, OCPM).
      *
      * @return self
      */
@@ -1020,7 +1020,7 @@ class ListAdSets200ResponseAdSetsInner implements ModelInterface, ArrayAccess, \
     /**
      * Sets bid_strategy
      *
-     * @param string|null $bid_strategy The bid strategy as last synced, in the platform's own enum (Meta `bid_strategy`, for example LOWEST_COST_WITHOUT_CAP, COST_CAP). On Meta under a campaign budget this is the campaign's strategy.
+     * @param string|null $bid_strategy The bid strategy as last synced, in Meta's vocabulary (LOWEST_COST_WITHOUT_CAP, LOWEST_COST_WITH_BID_CAP, COST_CAP, LOWEST_COST_WITH_MIN_ROAS) on every platform that has an equivalent. On Meta under a campaign budget this is the campaign's strategy. TikTok maps bid_type / deep_bid_type, Pinterest AUTOMATIC_BID / MAX_BID / TARGET_AVG, X AUTO / MAX / TARGET, OpenAI Maximize Results / a max bid. Google bids at the campaign, so an ad group carries its campaign's strategy; one without a Meta equivalent (MANUAL_CPC, TARGET_IMPRESSION_SHARE, or a portfolio strategy's type such as TARGET_CPA) keeps Google's own name. Null on LinkedIn.
      *
      * @return self
      */
@@ -1054,7 +1054,7 @@ class ListAdSets200ResponseAdSetsInner implements ModelInterface, ArrayAccess, \
     /**
      * Sets bid_amount
      *
-     * @param float|null $bid_amount Bid cap or cost target in whole units of `currency`, as last synced. Null when the strategy has none.
+     * @param float|null $bid_amount Bid cap or cost target in whole units of `currency`, as last synced. Null when the strategy has none (automatic bidding, ROAS targets, a Google portfolio strategy). On Google a campaign target CPA, a Maximize clicks ceiling, the ad group's own target CPA override, or its CPC bid under MANUAL_CPC.
      *
      * @return self
      */

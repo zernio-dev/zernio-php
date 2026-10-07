@@ -5547,7 +5547,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GoogleManualCpcTest.php
-test/Model/GoogleNetworkSettingsTest.php
-test/Model/GoogleTargetImpressionShareTest.php
-test/Model/UpdateAdAccount200ResponseUrlTrackingTest.php
