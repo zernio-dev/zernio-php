@@ -1161,6 +1161,7 @@ docs/Model/GetProduct200Response.md
 docs/Model/GetRcsCapabilities200Response.md
 docs/Model/GetRedditFlairs200Response.md
 docs/Model/GetRedditFlairs200ResponseFlairsInner.md
+docs/Model/GetRedditPostComments200Response.md
 docs/Model/GetRedditSubreddits200Response.md
 docs/Model/GetRedditSubreddits200ResponseSubredditsInner.md
 docs/Model/GetSequence200Response.md
@@ -1911,6 +1912,7 @@ docs/Model/RcsSuggestionOneOf5.md
 docs/Model/RcsTestDevice.md
 docs/Model/RecyclingConfig.md
 docs/Model/RecyclingState.md
+docs/Model/RedditComment.md
 docs/Model/RedditPlatformData.md
 docs/Model/RedditPost.md
 docs/Model/RedeliverWebhookEventRequest.md
@@ -3940,6 +3942,7 @@ lib/Model/GetProduct200Response.php
 lib/Model/GetRcsCapabilities200Response.php
 lib/Model/GetRedditFlairs200Response.php
 lib/Model/GetRedditFlairs200ResponseFlairsInner.php
+lib/Model/GetRedditPostComments200Response.php
 lib/Model/GetRedditSubreddits200Response.php
 lib/Model/GetRedditSubreddits200ResponseSubredditsInner.php
 lib/Model/GetSequence200Response.php
@@ -4691,6 +4694,7 @@ lib/Model/RcsSuggestionOneOf5.php
 lib/Model/RcsTestDevice.php
 lib/Model/RecyclingConfig.php
 lib/Model/RecyclingState.php
+lib/Model/RedditComment.php
 lib/Model/RedditPlatformData.php
 lib/Model/RedditPost.php
 lib/Model/RedeliverWebhookEventRequest.php
@@ -5559,3 +5563,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetRedditPostComments200ResponseTest.php
+test/Model/RedditCommentTest.php
