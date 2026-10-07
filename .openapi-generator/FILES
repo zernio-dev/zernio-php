@@ -5563,5 +5563,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetRedditPostComments200ResponseTest.php
-test/Model/RedditCommentTest.php
