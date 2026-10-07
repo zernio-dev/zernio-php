@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **devices** | [**\Zernio\Model\GetCampaignTargeting200ResponseDevicesInner[]**](GetCampaignTargeting200ResponseDevicesInner.md) |  | [optional]
 **locations** | [**\Zernio\Model\GetCampaignTargeting200ResponseLocationsInner[]**](GetCampaignTargeting200ResponseLocationsInner.md) |  | [optional]
+**excluded_locations** | [**\Zernio\Model\GetCampaignTargeting200ResponseExcludedLocationsInner[]**](GetCampaignTargeting200ResponseExcludedLocationsInner.md) | The negative (excluded) location criteria, same item shape as &#x60;locations&#x60; with &#x60;negative: true&#x60;. | [optional]
+**excluded_locations_editable** | **bool** | Whether PUT accepts &#x60;excludedLocations&#x60; for this campaign. False on Demand Gen, which returns 400 for any exclusion. | [optional]
 **languages** | [**\Zernio\Model\GetCampaignTargeting200ResponseLanguagesInner[]**](GetCampaignTargeting200ResponseLanguagesInner.md) |  | [optional]
 **location_targeting_type** | **string** | Who the location targeting reaches, see GoogleLocationTargetingType. Null when Google reports a legacy value (SEARCH_INTEREST) this API does not set. | [optional]
 **cached_at** | **\DateTime** | When this targeting was fetched from Google. Null when it was never served from cache. | [optional]

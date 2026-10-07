@@ -1,6 +1,6 @@
 <?php
 /**
- * GetCampaignTargeting200Response
+ * UpdateCampaignTargeting200ResponseExcludedLocationsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetCampaignTargeting200Response Class Doc Comment
+ * UpdateCampaignTargeting200ResponseExcludedLocationsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetCampaignTargeting200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateCampaignTargeting200ResponseExcludedLocationsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetCampaignTargeting200Response implements ModelInterface, ArrayAccess, \J
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getCampaignTargeting_200_response';
+    protected static $openAPIModelName = 'updateCampaignTargeting_200_response_excludedLocations_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,14 +58,12 @@ class GetCampaignTargeting200Response implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'devices' => '\Zernio\Model\GetCampaignTargeting200ResponseDevicesInner[]',
-        'locations' => '\Zernio\Model\GetCampaignTargeting200ResponseLocationsInner[]',
-        'excluded_locations' => '\Zernio\Model\GetCampaignTargeting200ResponseExcludedLocationsInner[]',
-        'excluded_locations_editable' => 'bool',
-        'languages' => '\Zernio\Model\GetCampaignTargeting200ResponseLanguagesInner[]',
-        'location_targeting_type' => 'string',
-        'cached_at' => '\DateTime',
-        'stale' => 'bool'
+        'geo_target_id' => 'string',
+        'negative' => 'bool',
+        'name' => 'string',
+        'canonical_name' => 'string',
+        'type' => 'string',
+        'country_code' => 'string'
     ];
 
     /**
@@ -76,14 +74,12 @@ class GetCampaignTargeting200Response implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'devices' => null,
-        'locations' => null,
-        'excluded_locations' => null,
-        'excluded_locations_editable' => null,
-        'languages' => null,
-        'location_targeting_type' => null,
-        'cached_at' => 'date-time',
-        'stale' => null
+        'geo_target_id' => null,
+        'negative' => null,
+        'name' => null,
+        'canonical_name' => null,
+        'type' => null,
+        'country_code' => null
     ];
 
     /**
@@ -92,14 +88,12 @@ class GetCampaignTargeting200Response implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'devices' => false,
-        'locations' => false,
-        'excluded_locations' => false,
-        'excluded_locations_editable' => false,
-        'languages' => false,
-        'location_targeting_type' => true,
-        'cached_at' => true,
-        'stale' => false
+        'geo_target_id' => false,
+        'negative' => false,
+        'name' => true,
+        'canonical_name' => true,
+        'type' => true,
+        'country_code' => true
     ];
 
     /**
@@ -188,14 +182,12 @@ class GetCampaignTargeting200Response implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'devices' => 'devices',
-        'locations' => 'locations',
-        'excluded_locations' => 'excludedLocations',
-        'excluded_locations_editable' => 'excludedLocationsEditable',
-        'languages' => 'languages',
-        'location_targeting_type' => 'locationTargetingType',
-        'cached_at' => 'cachedAt',
-        'stale' => 'stale'
+        'geo_target_id' => 'geoTargetId',
+        'negative' => 'negative',
+        'name' => 'name',
+        'canonical_name' => 'canonicalName',
+        'type' => 'type',
+        'country_code' => 'countryCode'
     ];
 
     /**
@@ -204,14 +196,12 @@ class GetCampaignTargeting200Response implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'devices' => 'setDevices',
-        'locations' => 'setLocations',
-        'excluded_locations' => 'setExcludedLocations',
-        'excluded_locations_editable' => 'setExcludedLocationsEditable',
-        'languages' => 'setLanguages',
-        'location_targeting_type' => 'setLocationTargetingType',
-        'cached_at' => 'setCachedAt',
-        'stale' => 'setStale'
+        'geo_target_id' => 'setGeoTargetId',
+        'negative' => 'setNegative',
+        'name' => 'setName',
+        'canonical_name' => 'setCanonicalName',
+        'type' => 'setType',
+        'country_code' => 'setCountryCode'
     ];
 
     /**
@@ -220,14 +210,12 @@ class GetCampaignTargeting200Response implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'devices' => 'getDevices',
-        'locations' => 'getLocations',
-        'excluded_locations' => 'getExcludedLocations',
-        'excluded_locations_editable' => 'getExcludedLocationsEditable',
-        'languages' => 'getLanguages',
-        'location_targeting_type' => 'getLocationTargetingType',
-        'cached_at' => 'getCachedAt',
-        'stale' => 'getStale'
+        'geo_target_id' => 'getGeoTargetId',
+        'negative' => 'getNegative',
+        'name' => 'getName',
+        'canonical_name' => 'getCanonicalName',
+        'type' => 'getType',
+        'country_code' => 'getCountryCode'
     ];
 
     /**
@@ -271,21 +259,6 @@ class GetCampaignTargeting200Response implements ModelInterface, ArrayAccess, \J
         return self::$openAPIModelName;
     }
 
-    public const LOCATION_TARGETING_TYPE_PRESENCE = 'presence';
-    public const LOCATION_TARGETING_TYPE_PRESENCE_OR_INTEREST = 'presence_or_interest';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getLocationTargetingTypeAllowableValues()
-    {
-        return [
-            self::LOCATION_TARGETING_TYPE_PRESENCE,
-            self::LOCATION_TARGETING_TYPE_PRESENCE_OR_INTEREST,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -302,14 +275,12 @@ class GetCampaignTargeting200Response implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('devices', $data ?? [], null);
-        $this->setIfExists('locations', $data ?? [], null);
-        $this->setIfExists('excluded_locations', $data ?? [], null);
-        $this->setIfExists('excluded_locations_editable', $data ?? [], null);
-        $this->setIfExists('languages', $data ?? [], null);
-        $this->setIfExists('location_targeting_type', $data ?? [], null);
-        $this->setIfExists('cached_at', $data ?? [], null);
-        $this->setIfExists('stale', $data ?? [], null);
+        $this->setIfExists('geo_target_id', $data ?? [], null);
+        $this->setIfExists('negative', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('canonical_name', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('country_code', $data ?? [], null);
     }
 
     /**
@@ -339,15 +310,6 @@ class GetCampaignTargeting200Response implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getLocationTargetingTypeAllowableValues();
-        if (!is_null($this->container['location_targeting_type']) && !in_array($this->container['location_targeting_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'location_targeting_type', must be one of '%s'",
-                $this->container['location_targeting_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -364,241 +326,191 @@ class GetCampaignTargeting200Response implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets devices
-     *
-     * @return \Zernio\Model\GetCampaignTargeting200ResponseDevicesInner[]|null
-     */
-    public function getDevices()
-    {
-        return $this->container['devices'];
-    }
-
-    /**
-     * Sets devices
-     *
-     * @param \Zernio\Model\GetCampaignTargeting200ResponseDevicesInner[]|null $devices devices
-     *
-     * @return self
-     */
-    public function setDevices($devices)
-    {
-        if (is_null($devices)) {
-            throw new \InvalidArgumentException('non-nullable devices cannot be null');
-        }
-        $this->container['devices'] = $devices;
-
-        return $this;
-    }
-
-    /**
-     * Gets locations
-     *
-     * @return \Zernio\Model\GetCampaignTargeting200ResponseLocationsInner[]|null
-     */
-    public function getLocations()
-    {
-        return $this->container['locations'];
-    }
-
-    /**
-     * Sets locations
-     *
-     * @param \Zernio\Model\GetCampaignTargeting200ResponseLocationsInner[]|null $locations locations
-     *
-     * @return self
-     */
-    public function setLocations($locations)
-    {
-        if (is_null($locations)) {
-            throw new \InvalidArgumentException('non-nullable locations cannot be null');
-        }
-        $this->container['locations'] = $locations;
-
-        return $this;
-    }
-
-    /**
-     * Gets excluded_locations
-     *
-     * @return \Zernio\Model\GetCampaignTargeting200ResponseExcludedLocationsInner[]|null
-     */
-    public function getExcludedLocations()
-    {
-        return $this->container['excluded_locations'];
-    }
-
-    /**
-     * Sets excluded_locations
-     *
-     * @param \Zernio\Model\GetCampaignTargeting200ResponseExcludedLocationsInner[]|null $excluded_locations The negative (excluded) location criteria, same item shape as `locations` with `negative: true`.
-     *
-     * @return self
-     */
-    public function setExcludedLocations($excluded_locations)
-    {
-        if (is_null($excluded_locations)) {
-            throw new \InvalidArgumentException('non-nullable excluded_locations cannot be null');
-        }
-        $this->container['excluded_locations'] = $excluded_locations;
-
-        return $this;
-    }
-
-    /**
-     * Gets excluded_locations_editable
-     *
-     * @return bool|null
-     */
-    public function getExcludedLocationsEditable()
-    {
-        return $this->container['excluded_locations_editable'];
-    }
-
-    /**
-     * Sets excluded_locations_editable
-     *
-     * @param bool|null $excluded_locations_editable Whether PUT accepts `excludedLocations` for this campaign. False on Demand Gen, which returns 400 for any exclusion.
-     *
-     * @return self
-     */
-    public function setExcludedLocationsEditable($excluded_locations_editable)
-    {
-        if (is_null($excluded_locations_editable)) {
-            throw new \InvalidArgumentException('non-nullable excluded_locations_editable cannot be null');
-        }
-        $this->container['excluded_locations_editable'] = $excluded_locations_editable;
-
-        return $this;
-    }
-
-    /**
-     * Gets languages
-     *
-     * @return \Zernio\Model\GetCampaignTargeting200ResponseLanguagesInner[]|null
-     */
-    public function getLanguages()
-    {
-        return $this->container['languages'];
-    }
-
-    /**
-     * Sets languages
-     *
-     * @param \Zernio\Model\GetCampaignTargeting200ResponseLanguagesInner[]|null $languages languages
-     *
-     * @return self
-     */
-    public function setLanguages($languages)
-    {
-        if (is_null($languages)) {
-            throw new \InvalidArgumentException('non-nullable languages cannot be null');
-        }
-        $this->container['languages'] = $languages;
-
-        return $this;
-    }
-
-    /**
-     * Gets location_targeting_type
+     * Gets geo_target_id
      *
      * @return string|null
      */
-    public function getLocationTargetingType()
+    public function getGeoTargetId()
     {
-        return $this->container['location_targeting_type'];
+        return $this->container['geo_target_id'];
     }
 
     /**
-     * Sets location_targeting_type
+     * Sets geo_target_id
      *
-     * @param string|null $location_targeting_type Who the location targeting reaches, see GoogleLocationTargetingType. Null when Google reports a legacy value (SEARCH_INTEREST) this API does not set.
+     * @param string|null $geo_target_id geo_target_id
      *
      * @return self
      */
-    public function setLocationTargetingType($location_targeting_type)
+    public function setGeoTargetId($geo_target_id)
     {
-        if (is_null($location_targeting_type)) {
-            array_push($this->openAPINullablesSetToNull, 'location_targeting_type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('location_targeting_type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($geo_target_id)) {
+            throw new \InvalidArgumentException('non-nullable geo_target_id cannot be null');
         }
-        $allowedValues = $this->getLocationTargetingTypeAllowableValues();
-        if (!is_null($location_targeting_type) && !in_array($location_targeting_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'location_targeting_type', must be one of '%s'",
-                    $location_targeting_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['location_targeting_type'] = $location_targeting_type;
+        $this->container['geo_target_id'] = $geo_target_id;
 
         return $this;
     }
 
     /**
-     * Gets cached_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCachedAt()
-    {
-        return $this->container['cached_at'];
-    }
-
-    /**
-     * Sets cached_at
-     *
-     * @param \DateTime|null $cached_at When this targeting was fetched from Google. Null when it was never served from cache.
-     *
-     * @return self
-     */
-    public function setCachedAt($cached_at)
-    {
-        if (is_null($cached_at)) {
-            array_push($this->openAPINullablesSetToNull, 'cached_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cached_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['cached_at'] = $cached_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets stale
+     * Gets negative
      *
      * @return bool|null
      */
-    public function getStale()
+    public function getNegative()
     {
-        return $this->container['stale'];
+        return $this->container['negative'];
     }
 
     /**
-     * Sets stale
+     * Sets negative
      *
-     * @param bool|null $stale True when Google's daily API quota was exhausted and this is the last successful fetch, not a live read.
+     * @param bool|null $negative negative
      *
      * @return self
      */
-    public function setStale($stale)
+    public function setNegative($negative)
     {
-        if (is_null($stale)) {
-            throw new \InvalidArgumentException('non-nullable stale cannot be null');
+        if (is_null($negative)) {
+            throw new \InvalidArgumentException('non-nullable negative cannot be null');
         }
-        $this->container['stale'] = $stale;
+        $this->container['negative'] = $negative;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets canonical_name
+     *
+     * @return string|null
+     */
+    public function getCanonicalName()
+    {
+        return $this->container['canonical_name'];
+    }
+
+    /**
+     * Sets canonical_name
+     *
+     * @param string|null $canonical_name canonical_name
+     *
+     * @return self
+     */
+    public function setCanonicalName($canonical_name)
+    {
+        if (is_null($canonical_name)) {
+            array_push($this->openAPINullablesSetToNull, 'canonical_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('canonical_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['canonical_name'] = $canonical_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets country_code
+     *
+     * @return string|null
+     */
+    public function getCountryCode()
+    {
+        return $this->container['country_code'];
+    }
+
+    /**
+     * Sets country_code
+     *
+     * @param string|null $country_code country_code
+     *
+     * @return self
+     */
+    public function setCountryCode($country_code)
+    {
+        if (is_null($country_code)) {
+            array_push($this->openAPINullablesSetToNull, 'country_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('country_code', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['country_code'] = $country_code;
 
         return $this;
     }

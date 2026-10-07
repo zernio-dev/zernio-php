@@ -64,6 +64,7 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
         'location_targeting_type' => 'string',
         'devices' => '\Zernio\Model\UpdateCampaignTargeting200ResponseDevicesInner[]',
         'locations' => '\Zernio\Model\UpdateCampaignTargeting200ResponseLocationsInner[]',
+        'excluded_locations' => '\Zernio\Model\UpdateCampaignTargeting200ResponseExcludedLocationsInner[]',
         'languages' => '\Zernio\Model\UpdateCampaignTargeting200ResponseLanguagesInner[]'
     ];
 
@@ -81,6 +82,7 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
         'location_targeting_type' => null,
         'devices' => null,
         'locations' => null,
+        'excluded_locations' => null,
         'languages' => null
     ];
 
@@ -96,6 +98,7 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
         'location_targeting_type' => true,
         'devices' => false,
         'locations' => false,
+        'excluded_locations' => false,
         'languages' => false
     ];
 
@@ -191,6 +194,7 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
         'location_targeting_type' => 'locationTargetingType',
         'devices' => 'devices',
         'locations' => 'locations',
+        'excluded_locations' => 'excludedLocations',
         'languages' => 'languages'
     ];
 
@@ -206,6 +210,7 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
         'location_targeting_type' => 'setLocationTargetingType',
         'devices' => 'setDevices',
         'locations' => 'setLocations',
+        'excluded_locations' => 'setExcludedLocations',
         'languages' => 'setLanguages'
     ];
 
@@ -221,6 +226,7 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
         'location_targeting_type' => 'getLocationTargetingType',
         'devices' => 'getDevices',
         'locations' => 'getLocations',
+        'excluded_locations' => 'getExcludedLocations',
         'languages' => 'getLanguages'
     ];
 
@@ -267,6 +273,7 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
 
     public const UPDATED_DEVICES = 'devices';
     public const UPDATED_LOCATIONS = 'locations';
+    public const UPDATED_EXCLUDED_LOCATIONS = 'excludedLocations';
     public const UPDATED_LANGUAGES = 'languages';
     public const UPDATED_LOCATION_TARGETING_TYPE = 'locationTargetingType';
     public const LOCATION_TARGETING_TYPE_PRESENCE = 'presence';
@@ -282,6 +289,7 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
         return [
             self::UPDATED_DEVICES,
             self::UPDATED_LOCATIONS,
+            self::UPDATED_EXCLUDED_LOCATIONS,
             self::UPDATED_LANGUAGES,
             self::UPDATED_LOCATION_TARGETING_TYPE,
         ];
@@ -321,6 +329,7 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
         $this->setIfExists('location_targeting_type', $data ?? [], null);
         $this->setIfExists('devices', $data ?? [], null);
         $this->setIfExists('locations', $data ?? [], null);
+        $this->setIfExists('excluded_locations', $data ?? [], null);
         $this->setIfExists('languages', $data ?? [], null);
     }
 
@@ -559,6 +568,33 @@ class UpdateCampaignTargeting200Response implements ModelInterface, ArrayAccess,
             throw new \InvalidArgumentException('non-nullable locations cannot be null');
         }
         $this->container['locations'] = $locations;
+
+        return $this;
+    }
+
+    /**
+     * Gets excluded_locations
+     *
+     * @return \Zernio\Model\UpdateCampaignTargeting200ResponseExcludedLocationsInner[]|null
+     */
+    public function getExcludedLocations()
+    {
+        return $this->container['excluded_locations'];
+    }
+
+    /**
+     * Sets excluded_locations
+     *
+     * @param \Zernio\Model\UpdateCampaignTargeting200ResponseExcludedLocationsInner[]|null $excluded_locations The negative (excluded) location criteria read back after the edit, same item shape as `locations`.
+     *
+     * @return self
+     */
+    public function setExcludedLocations($excluded_locations)
+    {
+        if (is_null($excluded_locations)) {
+            throw new \InvalidArgumentException('non-nullable excluded_locations cannot be null');
+        }
+        $this->container['excluded_locations'] = $excluded_locations;
 
         return $this;
     }

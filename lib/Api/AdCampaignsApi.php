@@ -9909,7 +9909,7 @@ class AdCampaignsApi
     /**
      * Operation getCampaignTargeting
      *
-     * Read a Google campaign&#39;s device, location, and language targeting
+     * Read a Google campaign&#39;s device, location, excluded location, and language targeting
      *
      * @param  string $campaign_id Google platform campaign ID (required)
      * @param  string|null $platform Disambiguates when the same campaignId string exists on more than one connected platform. (optional)
@@ -9928,7 +9928,7 @@ class AdCampaignsApi
     /**
      * Operation getCampaignTargetingWithHttpInfo
      *
-     * Read a Google campaign&#39;s device, location, and language targeting
+     * Read a Google campaign&#39;s device, location, excluded location, and language targeting
      *
      * @param  string $campaign_id Google platform campaign ID (required)
      * @param  string|null $platform Disambiguates when the same campaignId string exists on more than one connected platform. (optional)
@@ -10042,7 +10042,7 @@ class AdCampaignsApi
     /**
      * Operation getCampaignTargetingAsync
      *
-     * Read a Google campaign&#39;s device, location, and language targeting
+     * Read a Google campaign&#39;s device, location, excluded location, and language targeting
      *
      * @param  string $campaign_id Google platform campaign ID (required)
      * @param  string|null $platform Disambiguates when the same campaignId string exists on more than one connected platform. (optional)
@@ -10064,7 +10064,7 @@ class AdCampaignsApi
     /**
      * Operation getCampaignTargetingAsyncWithHttpInfo
      *
-     * Read a Google campaign&#39;s device, location, and language targeting
+     * Read a Google campaign&#39;s device, location, excluded location, and language targeting
      *
      * @param  string $campaign_id Google platform campaign ID (required)
      * @param  string|null $platform Disambiguates when the same campaignId string exists on more than one connected platform. (optional)
@@ -21475,7 +21475,7 @@ class AdCampaignsApi
     /**
      * Operation updateCampaignTargeting
      *
-     * Edit a Google campaign&#39;s device, location, or language targeting
+     * Edit a Google campaign&#39;s device, location, excluded location, or language targeting
      *
      * @param  string $campaign_id Google platform campaign ID (required)
      * @param  \Zernio\Model\UpdateCampaignTargetingRequest $update_campaign_targeting_request update_campaign_targeting_request (required)
@@ -21494,7 +21494,7 @@ class AdCampaignsApi
     /**
      * Operation updateCampaignTargetingWithHttpInfo
      *
-     * Edit a Google campaign&#39;s device, location, or language targeting
+     * Edit a Google campaign&#39;s device, location, excluded location, or language targeting
      *
      * @param  string $campaign_id Google platform campaign ID (required)
      * @param  \Zernio\Model\UpdateCampaignTargetingRequest $update_campaign_targeting_request (required)
@@ -21608,7 +21608,7 @@ class AdCampaignsApi
     /**
      * Operation updateCampaignTargetingAsync
      *
-     * Edit a Google campaign&#39;s device, location, or language targeting
+     * Edit a Google campaign&#39;s device, location, excluded location, or language targeting
      *
      * @param  string $campaign_id Google platform campaign ID (required)
      * @param  \Zernio\Model\UpdateCampaignTargetingRequest $update_campaign_targeting_request (required)
@@ -21630,7 +21630,7 @@ class AdCampaignsApi
     /**
      * Operation updateCampaignTargetingAsyncWithHttpInfo
      *
-     * Edit a Google campaign&#39;s device, location, or language targeting
+     * Edit a Google campaign&#39;s device, location, excluded location, or language targeting
      *
      * @param  string $campaign_id Google platform campaign ID (required)
      * @param  \Zernio\Model\UpdateCampaignTargetingRequest $update_campaign_targeting_request (required)

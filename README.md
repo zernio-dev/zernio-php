@@ -214,7 +214,7 @@ Class | Method | HTTP request | Description
 *AdCampaignsApi* | [**getCampaignAdSchedule**](docs/Api/AdCampaignsApi.md#getcampaignadschedule) | **GET** /v1/ads/campaigns/{campaignId}/ad-schedule | Read a campaign&#39;s ad schedule (dayparting)
 *AdCampaignsApi* | [**getCampaignBidding**](docs/Api/AdCampaignsApi.md#getcampaignbidding) | **GET** /v1/ads/campaigns/{campaignId}/bidding | Read a campaign&#39;s current bidding
 *AdCampaignsApi* | [**getCampaignConversionGoals**](docs/Api/AdCampaignsApi.md#getcampaignconversiongoals) | **GET** /v1/ads/campaigns/{campaignId}/conversion-goals | Get campaign conversion goals
-*AdCampaignsApi* | [**getCampaignTargeting**](docs/Api/AdCampaignsApi.md#getcampaigntargeting) | **GET** /v1/ads/campaigns/{campaignId}/targeting | Read a Google campaign&#39;s device, location, and language targeting
+*AdCampaignsApi* | [**getCampaignTargeting**](docs/Api/AdCampaignsApi.md#getcampaigntargeting) | **GET** /v1/ads/campaigns/{campaignId}/targeting | Read a Google campaign&#39;s device, location, excluded location, and language targeting
 *AdCampaignsApi* | [**getGoogleAssetGroup**](docs/Api/AdCampaignsApi.md#getgoogleassetgroup) | **GET** /v1/ads/campaigns/{campaignId}/asset-groups/{assetGroupId} | Get a Performance Max asset group
 *AdCampaignsApi* | [**listAdCampaigns**](docs/Api/AdCampaignsApi.md#listadcampaigns) | **GET** /v1/ads/campaigns | List campaigns
 *AdCampaignsApi* | [**listAdGroupAssets**](docs/Api/AdCampaignsApi.md#listadgroupassets) | **GET** /v1/ads/ad-sets/{adSetId}/assets | List ad-group assets
@@ -246,7 +246,7 @@ Class | Method | HTTP request | Description
 *AdCampaignsApi* | [**updateCampaignAdSchedule**](docs/Api/AdCampaignsApi.md#updatecampaignadschedule) | **PUT** /v1/ads/campaigns/{campaignId}/ad-schedule | Replace a campaign&#39;s ad schedule (dayparting)
 *AdCampaignsApi* | [**updateCampaignAssets**](docs/Api/AdCampaignsApi.md#updatecampaignassets) | **PUT** /v1/ads/campaigns/{campaignId}/assets | Update campaign assets
 *AdCampaignsApi* | [**updateCampaignConversionGoals**](docs/Api/AdCampaignsApi.md#updatecampaignconversiongoals) | **PATCH** /v1/ads/campaigns/{campaignId}/conversion-goals | Update campaign conversion goals
-*AdCampaignsApi* | [**updateCampaignTargeting**](docs/Api/AdCampaignsApi.md#updatecampaigntargeting) | **PUT** /v1/ads/campaigns/{campaignId}/targeting | Edit a Google campaign&#39;s device, location, or language targeting
+*AdCampaignsApi* | [**updateCampaignTargeting**](docs/Api/AdCampaignsApi.md#updatecampaigntargeting) | **PUT** /v1/ads/campaigns/{campaignId}/targeting | Edit a Google campaign&#39;s device, location, excluded location, or language targeting
 *AdCampaignsApi* | [**updateGoogleAssetGroup**](docs/Api/AdCampaignsApi.md#updategoogleassetgroup) | **PATCH** /v1/ads/campaigns/{campaignId}/asset-groups/{assetGroupId} | Update a Performance Max asset group
 *AdCreativesApi* | [**createAdCreative**](docs/Api/AdCreativesApi.md#createadcreative) | **POST** /v1/ads/creatives | Create a standalone creative
 *AdCreativesApi* | [**deleteAdCreative**](docs/Api/AdCreativesApi.md#deleteadcreative) | **DELETE** /v1/ads/creatives/{creativeId} | Delete a creative
@@ -1901,6 +1901,7 @@ Class | Method | HTTP request | Description
 - [GetCampaignConversionGoals200Response](docs/Model/GetCampaignConversionGoals200Response.md)
 - [GetCampaignTargeting200Response](docs/Model/GetCampaignTargeting200Response.md)
 - [GetCampaignTargeting200ResponseDevicesInner](docs/Model/GetCampaignTargeting200ResponseDevicesInner.md)
+- [GetCampaignTargeting200ResponseExcludedLocationsInner](docs/Model/GetCampaignTargeting200ResponseExcludedLocationsInner.md)
 - [GetCampaignTargeting200ResponseLanguagesInner](docs/Model/GetCampaignTargeting200ResponseLanguagesInner.md)
 - [GetCampaignTargeting200ResponseLocationsInner](docs/Model/GetCampaignTargeting200ResponseLocationsInner.md)
 - [GetCommentAutomation200Response](docs/Model/GetCommentAutomation200Response.md)
@@ -3296,12 +3297,15 @@ Class | Method | HTTP request | Description
 - [UpdateCampaignConversionGoalsRequest](docs/Model/UpdateCampaignConversionGoalsRequest.md)
 - [UpdateCampaignTargeting200Response](docs/Model/UpdateCampaignTargeting200Response.md)
 - [UpdateCampaignTargeting200ResponseDevicesInner](docs/Model/UpdateCampaignTargeting200ResponseDevicesInner.md)
+- [UpdateCampaignTargeting200ResponseExcludedLocationsInner](docs/Model/UpdateCampaignTargeting200ResponseExcludedLocationsInner.md)
 - [UpdateCampaignTargeting200ResponseLanguagesInner](docs/Model/UpdateCampaignTargeting200ResponseLanguagesInner.md)
 - [UpdateCampaignTargeting200ResponseLocationsInner](docs/Model/UpdateCampaignTargeting200ResponseLocationsInner.md)
 - [UpdateCampaignTargetingRequest](docs/Model/UpdateCampaignTargetingRequest.md)
 - [UpdateCampaignTargetingRequestTargeting](docs/Model/UpdateCampaignTargetingRequestTargeting.md)
 - [UpdateCampaignTargetingRequestTargetingDevicesInner](docs/Model/UpdateCampaignTargetingRequestTargetingDevicesInner.md)
 - [UpdateCampaignTargetingRequestTargetingDevicesInnerOneOf](docs/Model/UpdateCampaignTargetingRequestTargetingDevicesInnerOneOf.md)
+- [UpdateCampaignTargetingRequestTargetingExcludedLocations](docs/Model/UpdateCampaignTargetingRequestTargetingExcludedLocations.md)
+- [UpdateCampaignTargetingRequestTargetingExcludedLocationsOneOf](docs/Model/UpdateCampaignTargetingRequestTargetingExcludedLocationsOneOf.md)
 - [UpdateCampaignTargetingRequestTargetingLocations](docs/Model/UpdateCampaignTargetingRequestTargetingLocations.md)
 - [UpdateCampaignTargetingRequestTargetingLocationsOneOf](docs/Model/UpdateCampaignTargetingRequestTargetingLocationsOneOf.md)
 - [UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner](docs/Model/UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner.md)

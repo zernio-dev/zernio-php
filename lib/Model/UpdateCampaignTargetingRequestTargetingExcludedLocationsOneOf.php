@@ -1,6 +1,6 @@
 <?php
 /**
- * TargetingSpecExcludedLocations
+ * UpdateCampaignTargetingRequestTargetingExcludedLocationsOneOf
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * TargetingSpecExcludedLocations Class Doc Comment
+ * UpdateCampaignTargetingRequestTargetingExcludedLocationsOneOf Class Doc Comment
  *
  * @category Class
- * @description Geo to exclude from the audience. Mirrors the inclusion geo shape: excluded cities can carry a radius catchment and excluded custom (lat/lng) pins are supported, both on Meta (excluded_geo_locations). Google (Search, Display, Performance Max) excludes countries, regions, cities and zips as negative location criteria; countryGroups, places, neighborhoods, customLocations and a city radius return 400 there, and Demand Gen returns 400 for any exclusion.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateCampaignTargetingRequestTargetingExcludedLocationsOneOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'TargetingSpec_excludedLocations';
+    protected static $openAPIModelName = 'updateCampaignTargeting_request_targeting_excludedLocations_oneOf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,13 +59,10 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
       */
     protected static $openAPITypes = [
         'countries' => 'string[]',
-        'country_groups' => 'string[]',
-        'regions' => '\Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInnerOneOf[]',
-        'cities' => '\Zernio\Model\TargetingSpecExcludedLocationsCitiesInner[]',
-        'zips' => '\Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInnerOneOf[]',
-        'places' => '\Zernio\Model\CtwaAdRequestBodyPlacesInner[]',
-        'neighborhoods' => '\Zernio\Model\CtwaAdRequestBodyPlacesInner[]',
-        'custom_locations' => '\Zernio\Model\TargetingSpecCustomLocationsInner[]'
+        'regions' => '\Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]',
+        'cities' => '\Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]',
+        'zips' => '\Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]',
+        'metros' => '\Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]'
     ];
 
     /**
@@ -78,13 +74,10 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
       */
     protected static $openAPIFormats = [
         'countries' => null,
-        'country_groups' => null,
         'regions' => null,
         'cities' => null,
         'zips' => null,
-        'places' => null,
-        'neighborhoods' => null,
-        'custom_locations' => null
+        'metros' => null
     ];
 
     /**
@@ -94,13 +87,10 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
       */
     protected static array $openAPINullables = [
         'countries' => false,
-        'country_groups' => false,
         'regions' => false,
         'cities' => false,
         'zips' => false,
-        'places' => false,
-        'neighborhoods' => false,
-        'custom_locations' => false
+        'metros' => false
     ];
 
     /**
@@ -190,13 +180,10 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
      */
     protected static $attributeMap = [
         'countries' => 'countries',
-        'country_groups' => 'countryGroups',
         'regions' => 'regions',
         'cities' => 'cities',
         'zips' => 'zips',
-        'places' => 'places',
-        'neighborhoods' => 'neighborhoods',
-        'custom_locations' => 'customLocations'
+        'metros' => 'metros'
     ];
 
     /**
@@ -206,13 +193,10 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
      */
     protected static $setters = [
         'countries' => 'setCountries',
-        'country_groups' => 'setCountryGroups',
         'regions' => 'setRegions',
         'cities' => 'setCities',
         'zips' => 'setZips',
-        'places' => 'setPlaces',
-        'neighborhoods' => 'setNeighborhoods',
-        'custom_locations' => 'setCustomLocations'
+        'metros' => 'setMetros'
     ];
 
     /**
@@ -222,13 +206,10 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
      */
     protected static $getters = [
         'countries' => 'getCountries',
-        'country_groups' => 'getCountryGroups',
         'regions' => 'getRegions',
         'cities' => 'getCities',
         'zips' => 'getZips',
-        'places' => 'getPlaces',
-        'neighborhoods' => 'getNeighborhoods',
-        'custom_locations' => 'getCustomLocations'
+        'metros' => 'getMetros'
     ];
 
     /**
@@ -272,57 +253,6 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
-    public const COUNTRY_GROUPS_AFRICA = 'africa';
-    public const COUNTRY_GROUPS_ASIA = 'asia';
-    public const COUNTRY_GROUPS_EUROPE = 'europe';
-    public const COUNTRY_GROUPS_NORTH_AMERICA = 'north_america';
-    public const COUNTRY_GROUPS_SOUTH_AMERICA = 'south_america';
-    public const COUNTRY_GROUPS_OCEANIA = 'oceania';
-    public const COUNTRY_GROUPS_CENTRAL_AMERICA = 'central_america';
-    public const COUNTRY_GROUPS_CARIBBEAN = 'caribbean';
-    public const COUNTRY_GROUPS_EEA = 'eea';
-    public const COUNTRY_GROUPS_EURO_AREA = 'euro_area';
-    public const COUNTRY_GROUPS_NAFTA = 'nafta';
-    public const COUNTRY_GROUPS_MERCOSUR = 'mercosur';
-    public const COUNTRY_GROUPS_AFTA = 'afta';
-    public const COUNTRY_GROUPS_APEC = 'apec';
-    public const COUNTRY_GROUPS_GCC = 'gcc';
-    public const COUNTRY_GROUPS_CISFTA = 'cisfta';
-    public const COUNTRY_GROUPS_EMERGING_MARKETS = 'emerging_markets';
-    public const COUNTRY_GROUPS_ITUNES_APP_STORE = 'itunes_app_store';
-    public const COUNTRY_GROUPS_ANDROID_FREE_STORE = 'android_free_store';
-    public const COUNTRY_GROUPS_ANDROID_PAID_STORE = 'android_paid_store';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getCountryGroupsAllowableValues()
-    {
-        return [
-            self::COUNTRY_GROUPS_AFRICA,
-            self::COUNTRY_GROUPS_ASIA,
-            self::COUNTRY_GROUPS_EUROPE,
-            self::COUNTRY_GROUPS_NORTH_AMERICA,
-            self::COUNTRY_GROUPS_SOUTH_AMERICA,
-            self::COUNTRY_GROUPS_OCEANIA,
-            self::COUNTRY_GROUPS_CENTRAL_AMERICA,
-            self::COUNTRY_GROUPS_CARIBBEAN,
-            self::COUNTRY_GROUPS_EEA,
-            self::COUNTRY_GROUPS_EURO_AREA,
-            self::COUNTRY_GROUPS_NAFTA,
-            self::COUNTRY_GROUPS_MERCOSUR,
-            self::COUNTRY_GROUPS_AFTA,
-            self::COUNTRY_GROUPS_APEC,
-            self::COUNTRY_GROUPS_GCC,
-            self::COUNTRY_GROUPS_CISFTA,
-            self::COUNTRY_GROUPS_EMERGING_MARKETS,
-            self::COUNTRY_GROUPS_ITUNES_APP_STORE,
-            self::COUNTRY_GROUPS_ANDROID_FREE_STORE,
-            self::COUNTRY_GROUPS_ANDROID_PAID_STORE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -340,13 +270,10 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
     public function __construct(?array $data = null)
     {
         $this->setIfExists('countries', $data ?? [], null);
-        $this->setIfExists('country_groups', $data ?? [], null);
         $this->setIfExists('regions', $data ?? [], null);
         $this->setIfExists('cities', $data ?? [], null);
         $this->setIfExists('zips', $data ?? [], null);
-        $this->setIfExists('places', $data ?? [], null);
-        $this->setIfExists('neighborhoods', $data ?? [], null);
-        $this->setIfExists('custom_locations', $data ?? [], null);
+        $this->setIfExists('metros', $data ?? [], null);
     }
 
     /**
@@ -419,45 +346,9 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets country_groups
-     *
-     * @return string[]|null
-     */
-    public function getCountryGroups()
-    {
-        return $this->container['country_groups'];
-    }
-
-    /**
-     * Sets country_groups
-     *
-     * @param string[]|null $country_groups Meta only. Continents and trade blocs to exclude (`excluded_geo_locations.country_groups`).
-     *
-     * @return self
-     */
-    public function setCountryGroups($country_groups)
-    {
-        if (is_null($country_groups)) {
-            throw new \InvalidArgumentException('non-nullable country_groups cannot be null');
-        }
-        $allowedValues = $this->getCountryGroupsAllowableValues();
-        if (array_diff($country_groups, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'country_groups', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['country_groups'] = $country_groups;
-
-        return $this;
-    }
-
-    /**
      * Gets regions
      *
-     * @return \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInnerOneOf[]|null
+     * @return \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]|null
      */
     public function getRegions()
     {
@@ -467,7 +358,7 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets regions
      *
-     * @param \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInnerOneOf[]|null $regions regions
+     * @param \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]|null $regions regions
      *
      * @return self
      */
@@ -484,7 +375,7 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets cities
      *
-     * @return \Zernio\Model\TargetingSpecExcludedLocationsCitiesInner[]|null
+     * @return \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]|null
      */
     public function getCities()
     {
@@ -494,7 +385,7 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets cities
      *
-     * @param \Zernio\Model\TargetingSpecExcludedLocationsCitiesInner[]|null $cities Cities to exclude. Optional `radius` + `distanceUnit` exclude a catchment around the city (both must be set together or both omitted); Meta honours the radius on excluded cities.
+     * @param \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]|null $cities cities
      *
      * @return self
      */
@@ -511,7 +402,7 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets zips
      *
-     * @return \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInnerOneOf[]|null
+     * @return \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]|null
      */
     public function getZips()
     {
@@ -521,7 +412,7 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets zips
      *
-     * @param \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInnerOneOf[]|null $zips zips
+     * @param \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]|null $zips zips
      *
      * @return self
      */
@@ -536,82 +427,28 @@ class TargetingSpecExcludedLocations implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets places
+     * Gets metros
      *
-     * @return \Zernio\Model\CtwaAdRequestBodyPlacesInner[]|null
+     * @return \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]|null
      */
-    public function getPlaces()
+    public function getMetros()
     {
-        return $this->container['places'];
+        return $this->container['metros'];
     }
 
     /**
-     * Sets places
+     * Sets metros
      *
-     * @param \Zernio\Model\CtwaAdRequestBodyPlacesInner[]|null $places Named points of interest to exclude. `key` from /v1/ads/targeting/search.
+     * @param \Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInner[]|null $metros metros
      *
      * @return self
      */
-    public function setPlaces($places)
+    public function setMetros($metros)
     {
-        if (is_null($places)) {
-            throw new \InvalidArgumentException('non-nullable places cannot be null');
+        if (is_null($metros)) {
+            throw new \InvalidArgumentException('non-nullable metros cannot be null');
         }
-        $this->container['places'] = $places;
-
-        return $this;
-    }
-
-    /**
-     * Gets neighborhoods
-     *
-     * @return \Zernio\Model\CtwaAdRequestBodyPlacesInner[]|null
-     */
-    public function getNeighborhoods()
-    {
-        return $this->container['neighborhoods'];
-    }
-
-    /**
-     * Sets neighborhoods
-     *
-     * @param \Zernio\Model\CtwaAdRequestBodyPlacesInner[]|null $neighborhoods Named neighbourhood areas to exclude. `key` from /v1/ads/targeting/search.
-     *
-     * @return self
-     */
-    public function setNeighborhoods($neighborhoods)
-    {
-        if (is_null($neighborhoods)) {
-            throw new \InvalidArgumentException('non-nullable neighborhoods cannot be null');
-        }
-        $this->container['neighborhoods'] = $neighborhoods;
-
-        return $this;
-    }
-
-    /**
-     * Gets custom_locations
-     *
-     * @return \Zernio\Model\TargetingSpecCustomLocationsInner[]|null
-     */
-    public function getCustomLocations()
-    {
-        return $this->container['custom_locations'];
-    }
-
-    /**
-     * Sets custom_locations
-     *
-     * @param \Zernio\Model\TargetingSpecCustomLocationsInner[]|null $custom_locations Point-radius (lat/lng) pins to exclude (Meta excluded_geo_locations.custom_locations). Mirrors the inclusion customLocations shape.
-     *
-     * @return self
-     */
-    public function setCustomLocations($custom_locations)
-    {
-        if (is_null($custom_locations)) {
-            throw new \InvalidArgumentException('non-nullable custom_locations cannot be null');
-        }
-        $this->container['custom_locations'] = $custom_locations;
+        $this->container['metros'] = $metros;
 
         return $this;
     }

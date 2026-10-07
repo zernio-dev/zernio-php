@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **location_targeting_type** | **string** | The value read back from Google after the edit. | [optional]
 **devices** | [**\Zernio\Model\UpdateCampaignTargeting200ResponseDevicesInner[]**](UpdateCampaignTargeting200ResponseDevicesInner.md) |  | [optional]
 **locations** | [**\Zernio\Model\UpdateCampaignTargeting200ResponseLocationsInner[]**](UpdateCampaignTargeting200ResponseLocationsInner.md) |  | [optional]
+**excluded_locations** | [**\Zernio\Model\UpdateCampaignTargeting200ResponseExcludedLocationsInner[]**](UpdateCampaignTargeting200ResponseExcludedLocationsInner.md) | The negative (excluded) location criteria read back after the edit, same item shape as &#x60;locations&#x60;. | [optional]
 **languages** | [**\Zernio\Model\UpdateCampaignTargeting200ResponseLanguagesInner[]**](UpdateCampaignTargeting200ResponseLanguagesInner.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

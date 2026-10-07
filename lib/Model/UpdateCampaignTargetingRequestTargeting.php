@@ -61,6 +61,7 @@ class UpdateCampaignTargetingRequestTargeting implements ModelInterface, ArrayAc
         'devices' => '\Zernio\Model\UpdateCampaignTargetingRequestTargetingDevicesInner[]',
         'locations' => '\Zernio\Model\UpdateCampaignTargetingRequestTargetingLocations',
         'languages' => 'string[]',
+        'excluded_locations' => '\Zernio\Model\UpdateCampaignTargetingRequestTargetingExcludedLocations',
         'location_targeting_type' => '\Zernio\Model\GoogleLocationTargetingType'
     ];
 
@@ -75,6 +76,7 @@ class UpdateCampaignTargetingRequestTargeting implements ModelInterface, ArrayAc
         'devices' => null,
         'locations' => null,
         'languages' => null,
+        'excluded_locations' => null,
         'location_targeting_type' => null
     ];
 
@@ -87,6 +89,7 @@ class UpdateCampaignTargetingRequestTargeting implements ModelInterface, ArrayAc
         'devices' => false,
         'locations' => false,
         'languages' => false,
+        'excluded_locations' => false,
         'location_targeting_type' => false
     ];
 
@@ -179,6 +182,7 @@ class UpdateCampaignTargetingRequestTargeting implements ModelInterface, ArrayAc
         'devices' => 'devices',
         'locations' => 'locations',
         'languages' => 'languages',
+        'excluded_locations' => 'excludedLocations',
         'location_targeting_type' => 'locationTargetingType'
     ];
 
@@ -191,6 +195,7 @@ class UpdateCampaignTargetingRequestTargeting implements ModelInterface, ArrayAc
         'devices' => 'setDevices',
         'locations' => 'setLocations',
         'languages' => 'setLanguages',
+        'excluded_locations' => 'setExcludedLocations',
         'location_targeting_type' => 'setLocationTargetingType'
     ];
 
@@ -203,6 +208,7 @@ class UpdateCampaignTargetingRequestTargeting implements ModelInterface, ArrayAc
         'devices' => 'getDevices',
         'locations' => 'getLocations',
         'languages' => 'getLanguages',
+        'excluded_locations' => 'getExcludedLocations',
         'location_targeting_type' => 'getLocationTargetingType'
     ];
 
@@ -266,6 +272,7 @@ class UpdateCampaignTargetingRequestTargeting implements ModelInterface, ArrayAc
         $this->setIfExists('devices', $data ?? [], null);
         $this->setIfExists('locations', $data ?? [], null);
         $this->setIfExists('languages', $data ?? [], null);
+        $this->setIfExists('excluded_locations', $data ?? [], null);
         $this->setIfExists('location_targeting_type', $data ?? [], null);
     }
 
@@ -388,6 +395,33 @@ class UpdateCampaignTargetingRequestTargeting implements ModelInterface, ArrayAc
             throw new \InvalidArgumentException('non-nullable languages cannot be null');
         }
         $this->container['languages'] = $languages;
+
+        return $this;
+    }
+
+    /**
+     * Gets excluded_locations
+     *
+     * @return \Zernio\Model\UpdateCampaignTargetingRequestTargetingExcludedLocations|null
+     */
+    public function getExcludedLocations()
+    {
+        return $this->container['excluded_locations'];
+    }
+
+    /**
+     * Sets excluded_locations
+     *
+     * @param \Zernio\Model\UpdateCampaignTargetingRequestTargetingExcludedLocations|null $excluded_locations excluded_locations
+     *
+     * @return self
+     */
+    public function setExcludedLocations($excluded_locations)
+    {
+        if (is_null($excluded_locations)) {
+            throw new \InvalidArgumentException('non-nullable excluded_locations cannot be null');
+        }
+        $this->container['excluded_locations'] = $excluded_locations;
 
         return $this;
     }
