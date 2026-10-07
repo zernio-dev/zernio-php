@@ -45,6 +45,17 @@ jobs:
       - name: Install OpenAPI Generator
         run: npm install -g @openapitools/openapi-generator-cli
 
+      # The CLI fetches its jar from Maven Central on first use with no retry; a 429/404
+      # blip there failed whole runs (zernio-rust, zernio-php 2026-10-07).
+      - name: Prefetch openapi-generator jar
+        run: |
+          version=$(jq -r '."generator-cli".version' openapitools.json)
+          dir="$(npm root -g)/@openapitools/openapi-generator-cli/versions"
+          mkdir -p "$dir"
+          curl -fsSL --retry 6 --retry-delay 10 --retry-all-errors --retry-max-time 600 --max-time 180 \
+            -o "$dir/$version.jar" \
+            "https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/$version/openapi-generator-cli-$version.jar"
+
       - name: Fetch latest OpenAPI spec
         run: |
           curl -f --retry 5 --retry-delay 2 --retry-all-errors --max-time 60 -o openapi.yaml https://zernio.com/openapi.json
