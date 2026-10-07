@@ -86,6 +86,7 @@ docs/Model/AcceptConversationRequestRequest.md
 docs/Model/AccountWithFollowerStats.md
 docs/Model/AccountWithFollowerStatsAllOfAccountStats.md
 docs/Model/AccountsListResponse.md
+docs/Model/AccountsListResponseStatusCounts.md
 docs/Model/ActivateSequence200Response.md
 docs/Model/ActivateWorkflow200Response.md
 docs/Model/ActivateWorkflow200ResponseWorkflow.md
@@ -2864,6 +2865,7 @@ lib/Model/AcceptConversationRequestRequest.php
 lib/Model/AccountWithFollowerStats.php
 lib/Model/AccountWithFollowerStatsAllOfAccountStats.php
 lib/Model/AccountsListResponse.php
+lib/Model/AccountsListResponseStatusCounts.php
 lib/Model/ActivateSequence200Response.php
 lib/Model/ActivateWorkflow200Response.php
 lib/Model/ActivateWorkflow200ResponseWorkflow.php
@@ -5557,3 +5559,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AccountsListResponseStatusCountsTest.php
