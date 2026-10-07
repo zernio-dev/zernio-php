@@ -902,6 +902,7 @@ docs/Model/GetAdNegativeKeywordList200ResponseList.md
 docs/Model/GetAdPreviews200Response.md
 docs/Model/GetAdReview200Response.md
 docs/Model/GetAdReview200ResponseReview.md
+docs/Model/GetAdReview200ResponseReviewPolicyTopicsInner.md
 docs/Model/GetAdReview200ResponseReviewRejectionsInner.md
 docs/Model/GetAdReview200ResponseReviewRejectionsInnerContent.md
 docs/Model/GetAdSetDetails200Response.md
@@ -3679,6 +3680,7 @@ lib/Model/GetAdNegativeKeywordList200ResponseList.php
 lib/Model/GetAdPreviews200Response.php
 lib/Model/GetAdReview200Response.php
 lib/Model/GetAdReview200ResponseReview.php
+lib/Model/GetAdReview200ResponseReviewPolicyTopicsInner.php
 lib/Model/GetAdReview200ResponseReviewRejectionsInner.php
 lib/Model/GetAdReview200ResponseReviewRejectionsInnerContent.php
 lib/Model/GetAdSetDetails200Response.php
@@ -5555,3 +5557,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetAdReview200ResponseReviewPolicyTopicsInnerTest.php

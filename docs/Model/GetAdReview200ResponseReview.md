@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **forbidden_locations** | **string[]** |  | [optional]
 **forbidden_operating_systems** | **string[]** |  | [optional]
 **rejections** | [**\Zernio\Model\GetAdReview200ResponseReviewRejectionsInner[]**](GetAdReview200ResponseReviewRejectionsInner.md) | One entry per rejected piece of content (TikTok &#x60;reject_info&#x60;). Empty when the ad was approved. | [optional]
-**read_at** | **\DateTime** | When the verdict was read from TikTok. | [optional]
+**approval_status** | **string** | Google only. ad_group_ad.policy_summary.approval_status, verbatim. | [optional]
+**policy_topics** | [**\Zernio\Model\GetAdReview200ResponseReviewPolicyTopicsInner[]**](GetAdReview200ResponseReviewPolicyTopicsInner.md) | Google only. ad_group_ad.policy_summary.policy_topic_entries. | [optional]
+**read_at** | **\DateTime** | When the verdict was read from the platform. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
