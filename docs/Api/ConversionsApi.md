@@ -278,7 +278,7 @@ try {
 ## `createCustomConversionGoal()`
 
 ```php
-createCustomConversionGoal($create_custom_conversion_goal_request): \Zernio\Model\CreateCustomConversionGoal201Response
+createCustomConversionGoal($create_custom_conversion_goal_request): \Zernio\Model\CreateSharedBudget201ResponseBudget
 ```
 
 Create a custom conversion goal
@@ -320,7 +320,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\CreateCustomConversionGoal201Response**](../Model/CreateCustomConversionGoal201Response.md)
+[**\Zernio\Model\CreateSharedBudget201ResponseBudget**](../Model/CreateSharedBudget201ResponseBudget.md)
 
 ### Authorization
 

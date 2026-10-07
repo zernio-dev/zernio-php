@@ -539,7 +539,6 @@ docs/Model/CreateConversionActionRequest.md
 docs/Model/CreateConversionDestination201Response.md
 docs/Model/CreateConversionDestinationRequest.md
 docs/Model/CreateConversionDestinationRequestValue.md
-docs/Model/CreateCustomConversionGoal201Response.md
 docs/Model/CreateCustomConversionGoalRequest.md
 docs/Model/CreateCustomConversionRequest.md
 docs/Model/CreateCustomField200Response.md
@@ -633,6 +632,9 @@ docs/Model/CreateSequenceRequest.md
 docs/Model/CreateSequenceRequestStepsInner.md
 docs/Model/CreateSequenceRequestStepsInnerTemplate.md
 docs/Model/CreateSequenceRequestStepsInnerTemplateVariableMappingValue.md
+docs/Model/CreateSharedBudget201Response.md
+docs/Model/CreateSharedBudget201ResponseBudget.md
+docs/Model/CreateSharedBudgetRequest.md
 docs/Model/CreateSipTrunk201Response.md
 docs/Model/CreateSipTrunk201ResponseTermination.md
 docs/Model/CreateSipTrunkRequest.md
@@ -1657,6 +1659,8 @@ docs/Model/ListSequenceEnrollments200Response.md
 docs/Model/ListSequenceEnrollments200ResponseEnrollmentsInner.md
 docs/Model/ListSequences200Response.md
 docs/Model/ListSequences200ResponseSequencesInner.md
+docs/Model/ListSharedBudgets200Response.md
+docs/Model/ListSharedBudgets200ResponseBudgetsInner.md
 docs/Model/ListSipTrunks200Response.md
 docs/Model/ListSipTrunks200ResponseTrunksInner.md
 docs/Model/ListSipTrunks200ResponseTrunksInnerTermination.md
@@ -3312,7 +3316,6 @@ lib/Model/CreateConversionActionRequest.php
 lib/Model/CreateConversionDestination201Response.php
 lib/Model/CreateConversionDestinationRequest.php
 lib/Model/CreateConversionDestinationRequestValue.php
-lib/Model/CreateCustomConversionGoal201Response.php
 lib/Model/CreateCustomConversionGoalRequest.php
 lib/Model/CreateCustomConversionRequest.php
 lib/Model/CreateCustomField200Response.php
@@ -3406,6 +3409,9 @@ lib/Model/CreateSequenceRequest.php
 lib/Model/CreateSequenceRequestStepsInner.php
 lib/Model/CreateSequenceRequestStepsInnerTemplate.php
 lib/Model/CreateSequenceRequestStepsInnerTemplateVariableMappingValue.php
+lib/Model/CreateSharedBudget201Response.php
+lib/Model/CreateSharedBudget201ResponseBudget.php
+lib/Model/CreateSharedBudgetRequest.php
 lib/Model/CreateSipTrunk201Response.php
 lib/Model/CreateSipTrunk201ResponseTermination.php
 lib/Model/CreateSipTrunkRequest.php
@@ -4430,6 +4436,8 @@ lib/Model/ListSequenceEnrollments200Response.php
 lib/Model/ListSequenceEnrollments200ResponseEnrollmentsInner.php
 lib/Model/ListSequences200Response.php
 lib/Model/ListSequences200ResponseSequencesInner.php
+lib/Model/ListSharedBudgets200Response.php
+lib/Model/ListSharedBudgets200ResponseBudgetsInner.php
 lib/Model/ListSipTrunks200Response.php
 lib/Model/ListSipTrunks200ResponseTrunksInner.php
 lib/Model/ListSipTrunks200ResponseTrunksInnerTermination.php
@@ -5547,3 +5555,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateSharedBudget201ResponseBudgetTest.php
+test/Model/CreateSharedBudget201ResponseTest.php
+test/Model/CreateSharedBudgetRequestTest.php
+test/Model/ListSharedBudgets200ResponseBudgetsInnerTest.php
+test/Model/ListSharedBudgets200ResponseTest.php

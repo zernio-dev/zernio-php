@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **network_settings** | [**\Zernio\Model\GoogleNetworkSettings**](GoogleNetworkSettings.md) |  | [optional]
 **tracking_url_template** | **string** |  | [optional]
 **final_url_suffix** | **string** |  | [optional]
+**shared_budget_id** | **string** | Google only. Echoed back when the campaign moved budgets; &#x60;budget&#x60; is then the budget it now uses. | [optional]
 **platform_specific_data** | **object** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
