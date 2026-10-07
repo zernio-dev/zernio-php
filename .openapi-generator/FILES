@@ -5539,7 +5539,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetCampaignTargeting200ResponseExcludedLocationsInnerTest.php
-test/Model/UpdateCampaignTargeting200ResponseExcludedLocationsInnerTest.php
-test/Model/UpdateCampaignTargetingRequestTargetingExcludedLocationsOneOfTest.php
-test/Model/UpdateCampaignTargetingRequestTargetingExcludedLocationsTest.php
