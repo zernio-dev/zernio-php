@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **sitelinks** | [**\Zernio\Model\ListAdGroupAssets200ResponseSitelinksInner[]**](ListAdGroupAssets200ResponseSitelinksInner.md) |  | [optional]
 **callouts** | [**\Zernio\Model\ListAdGroupAssets200ResponseCalloutsInner[]**](ListAdGroupAssets200ResponseCalloutsInner.md) |  | [optional]
 **structured_snippets** | [**\Zernio\Model\ListAdGroupAssets200ResponseStructuredSnippetsInner[]**](ListAdGroupAssets200ResponseStructuredSnippetsInner.md) |  | [optional]
+**images** | [**\Zernio\Model\ListAdGroupAssets200ResponseImagesInner[]**](ListAdGroupAssets200ResponseImagesInner.md) |  | [optional]
 **cached_at** | **\DateTime** | Time of the cached Google read. Null when no cache was used. | [optional]
 **stale** | **bool** | True when exhausted quota required returning the last successful read. | [optional]
 

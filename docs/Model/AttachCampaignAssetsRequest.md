@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **sitelinks** | [**\Zernio\Model\GoogleSitelink[]**](GoogleSitelink.md) |  | [optional]
 **callouts** | **string[]** |  | [optional]
 **structured_snippets** | [**\Zernio\Model\GoogleStructuredSnippet[]**](GoogleStructuredSnippet.md) |  | [optional]
+**images** | **string[]** | Public image URLs, uploaded to Google as image assets. Landscape 1.91:1 (min 600x314) or square 1:1 (min 300x300), up to 5 MB each. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

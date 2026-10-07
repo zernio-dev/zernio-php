@@ -1455,6 +1455,7 @@ docs/Model/ListAdConversionGoals200Response.md
 docs/Model/ListAdCreatives200Response.md
 docs/Model/ListAdGroupAssets200Response.md
 docs/Model/ListAdGroupAssets200ResponseCalloutsInner.md
+docs/Model/ListAdGroupAssets200ResponseImagesInner.md
 docs/Model/ListAdGroupAssets200ResponseSitelinksInner.md
 docs/Model/ListAdGroupAssets200ResponseStructuredSnippetsInner.md
 docs/Model/ListAdImages200Response.md
@@ -1510,6 +1511,7 @@ docs/Model/ListCalls200Response.md
 docs/Model/ListCalls200ResponseCallsInner.md
 docs/Model/ListCampaignAssets200Response.md
 docs/Model/ListCampaignAssets200ResponseCalloutsInner.md
+docs/Model/ListCampaignAssets200ResponseImagesInner.md
 docs/Model/ListCampaignAssets200ResponseSitelinksInner.md
 docs/Model/ListCampaignAssets200ResponseStructuredSnippetsInner.md
 docs/Model/ListCampaignNegativeKeywords200Response.md
@@ -4218,6 +4220,7 @@ lib/Model/ListAdConversionGoals200Response.php
 lib/Model/ListAdCreatives200Response.php
 lib/Model/ListAdGroupAssets200Response.php
 lib/Model/ListAdGroupAssets200ResponseCalloutsInner.php
+lib/Model/ListAdGroupAssets200ResponseImagesInner.php
 lib/Model/ListAdGroupAssets200ResponseSitelinksInner.php
 lib/Model/ListAdGroupAssets200ResponseStructuredSnippetsInner.php
 lib/Model/ListAdImages200Response.php
@@ -4273,6 +4276,7 @@ lib/Model/ListCalls200Response.php
 lib/Model/ListCalls200ResponseCallsInner.php
 lib/Model/ListCampaignAssets200Response.php
 lib/Model/ListCampaignAssets200ResponseCalloutsInner.php
+lib/Model/ListCampaignAssets200ResponseImagesInner.php
 lib/Model/ListCampaignAssets200ResponseSitelinksInner.php
 lib/Model/ListCampaignAssets200ResponseStructuredSnippetsInner.php
 lib/Model/ListCampaignNegativeKeywords200Response.php
@@ -5527,3 +5531,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ListAdGroupAssets200ResponseImagesInnerTest.php
+test/Model/ListCampaignAssets200ResponseImagesInnerTest.php
