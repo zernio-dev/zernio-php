@@ -307,6 +307,7 @@ class ImessageSenderLifecycle implements ModelInterface, ArrayAccess, \JsonSeria
     public const REGION_US = 'US';
     public const REGION_GB = 'GB';
     public const STATUS_ORDERING = 'ordering';
+    public const STATUS_AWAITING_PAYMENT = 'awaiting_payment';
     public const STATUS_ACTIVATING = 'activating';
     public const STATUS_ACTIVE = 'active';
     public const STATUS_SUSPENDED = 'suspended';
@@ -348,6 +349,7 @@ class ImessageSenderLifecycle implements ModelInterface, ArrayAccess, \JsonSeria
     {
         return [
             self::STATUS_ORDERING,
+            self::STATUS_AWAITING_PAYMENT,
             self::STATUS_ACTIVATING,
             self::STATUS_ACTIVE,
             self::STATUS_SUSPENDED,
@@ -644,7 +646,7 @@ class ImessageSenderLifecycle implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets status
      *
-     * @param string|null $status status
+     * @param string|null $status `awaiting_payment`: the first-month charge is still being confirmed by the card; the number is ordered automatically once it is paid (usually under 5 minutes), or the order fails with `failureReason` when the card declines or nothing confirms within 30 minutes.
      *
      * @return self
      */
