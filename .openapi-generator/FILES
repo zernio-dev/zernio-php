@@ -5555,8 +5555,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateSharedBudget201ResponseBudgetTest.php
-test/Model/CreateSharedBudget201ResponseTest.php
-test/Model/CreateSharedBudgetRequestTest.php
-test/Model/ListSharedBudgets200ResponseBudgetsInnerTest.php
-test/Model/ListSharedBudgets200ResponseTest.php

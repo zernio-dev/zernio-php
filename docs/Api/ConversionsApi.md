@@ -24,7 +24,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**removeCustomConversionGoal()**](ConversionsApi.md#removeCustomConversionGoal) | **DELETE** /v1/ads/conversions/custom-goals/{goalId} | Remove a custom conversion goal |
 | [**sendConversions()**](ConversionsApi.md#sendConversions) | **POST** /v1/ads/conversions | Send conversion events |
 | [**updateAdConversionGoals()**](ConversionsApi.md#updateAdConversionGoals) | **PATCH** /v1/ads/conversions/goals | Update account conversion goals |
-| [**updateConversionAction()**](ConversionsApi.md#updateConversionAction) | **PATCH** /v1/ads/conversions/actions/{actionId} | Set a conversion action primary or secondary |
+| [**updateConversionAction()**](ConversionsApi.md#updateConversionAction) | **PATCH** /v1/ads/conversions/actions/{actionId} | Update a conversion action&#39;s settings |
 | [**updateConversionDestination()**](ConversionsApi.md#updateConversionDestination) | **PATCH** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Update a conversion destination |
 | [**updateCustomConversionGoal()**](ConversionsApi.md#updateCustomConversionGoal) | **PATCH** /v1/ads/conversions/custom-goals/{goalId} | Update a custom conversion goal |
 
@@ -1170,9 +1170,9 @@ try {
 updateConversionAction($action_id, $update_conversion_action_request): \Zernio\Model\UpdateConversionAction200Response
 ```
 
-Set a conversion action primary or secondary
+Update a conversion action's settings
 
-Sets `primary_for_goal` on a Google Ads conversion action. A primary action counts toward its goal's bidding and the Conversions column; a secondary one is observation-only (All conversions).
+Updates a Google Ads conversion action in one mutate, each field sent written on its own update mask leaf so omitted fields keep their value. Send at least one field.  `primaryForGoal` sets `primary_for_goal`: a primary action counts toward its goal's bidding and the Conversions column; a secondary one is observation-only (All conversions). `countingType`, `category`, the value settings (`defaultValue`, `defaultCurrency`, `alwaysUseDefaultValue`) and the click-through / view-through lookback windows map to the same-named conversion_action fields.  `status: REMOVED` removes the action (Google keeps it, with its history, as REMOVED) and must be sent alone; `status: ENABLED` restores a removed action. Google refuses HIDDEN on website actions, so it is not offered.
 
 ### Example
 
