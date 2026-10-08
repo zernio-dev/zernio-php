@@ -63,6 +63,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onSequenceExited()**](WebhookEventsApi.md#onSequenceExited) | **POST** /sequence.exited | Sequence exited event |
 | [**onSmsRegistrationActionRequired()**](WebhookEventsApi.md#onSmsRegistrationActionRequired) | **POST** /sms.registration.action_required | SMS registration action required event |
 | [**onSmsRegistrationStatusUpdated()**](WebhookEventsApi.md#onSmsRegistrationStatusUpdated) | **POST** /sms.registration.status_updated | SMS registration status updated event |
+| [**onSupportRunCompleted()**](WebhookEventsApi.md#onSupportRunCompleted) | **POST** /support.run.completed | Support run completed event |
+| [**onSupportRunFailed()**](WebhookEventsApi.md#onSupportRunFailed) | **POST** /support.run.failed | Support run failed event |
 | [**onVerificationApproved()**](WebhookEventsApi.md#onVerificationApproved) | **POST** /verification.approved | Verification approved event |
 | [**onVerificationFailed()**](WebhookEventsApi.md#onVerificationFailed) | **POST** /verification.failed | Verification failed event |
 | [**onWebhookTest()**](WebhookEventsApi.md#onWebhookTest) | **POST** /webhook.test | Webhook test event |
@@ -3432,6 +3434,124 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **on_sms_registration_status_updated_request** | [**\Zernio\Model\OnSmsRegistrationStatusUpdatedRequest**](../Model/OnSmsRegistrationStatusUpdatedRequest.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onSupportRunCompleted()`
+
+```php
+onSupportRunCompleted($webhook_payload_support_run)
+```
+
+Support run completed event
+
+Fired when an Ana support run finishes (private beta). run.status is completed, or needs_human when Ana handed the question to a person. The run object matches GET /v1/support/runs/{runId}.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_support_run = new \Zernio\Model\WebhookPayloadSupportRun(); // \Zernio\Model\WebhookPayloadSupportRun
+
+try {
+    $apiInstance->onSupportRunCompleted($webhook_payload_support_run);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onSupportRunCompleted: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_support_run** | [**\Zernio\Model\WebhookPayloadSupportRun**](../Model/WebhookPayloadSupportRun.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onSupportRunFailed()`
+
+```php
+onSupportRunFailed($webhook_payload_support_run)
+```
+
+Support run failed event
+
+Fired when an Ana support run fails or expires (private beta). Failed runs are not billed.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_support_run = new \Zernio\Model\WebhookPayloadSupportRun(); // \Zernio\Model\WebhookPayloadSupportRun
+
+try {
+    $apiInstance->onSupportRunFailed($webhook_payload_support_run);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onSupportRunFailed: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_support_run** | [**\Zernio\Model\WebhookPayloadSupportRun**](../Model/WebhookPayloadSupportRun.md)|  | |
 
 ### Return type
 

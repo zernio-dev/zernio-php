@@ -63,6 +63,7 @@ docs/Api/ReviewsApi.md
 docs/Api/SMSApi.md
 docs/Api/SequencesApi.md
 docs/Api/SlackApi.md
+docs/Api/SupportRunsApi.md
 docs/Api/ToolsApi.md
 docs/Api/TrackingTagsApi.md
 docs/Api/TwitterEngagementApi.md
@@ -668,6 +669,9 @@ docs/Model/CreateStandaloneAdRequestStructuredSnippetsInner.md
 docs/Model/CreateStandaloneAdRequestTranslationsInner.md
 docs/Model/CreateStandaloneAdRequestVideo.md
 docs/Model/CreateStandaloneAdRequestZipsInner.md
+docs/Model/CreateSupportRun202Response.md
+docs/Model/CreateSupportRunRequest.md
+docs/Model/CreateSupportRunRequestContext.md
 docs/Model/CreateTestLead200Response.md
 docs/Model/CreateTestLead200ResponseTestLead.md
 docs/Model/CreateTestLeadRequest.md
@@ -2219,6 +2223,8 @@ docs/Model/SubmitPhoneNumberKycRequestDocumentsInnerOneOf1.md
 docs/Model/SubmitWhatsAppNumberKycRequest.md
 docs/Model/SubmitWhatsAppNumberKycRequestDocumentsInner.md
 docs/Model/SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf.md
+docs/Model/SupportRun.md
+docs/Model/SupportRunUsage.md
 docs/Model/SyncExternalPosts200Response.md
 docs/Model/SyncExternalPosts200ResponseSynced.md
 docs/Model/SyncExternalPostsRequest.md
@@ -2685,6 +2691,7 @@ docs/Model/WebhookPayloadReviewNew.md
 docs/Model/WebhookPayloadReviewNewAccount.md
 docs/Model/WebhookPayloadReviewUpdated.md
 docs/Model/WebhookPayloadSequenceEnrollment.md
+docs/Model/WebhookPayloadSupportRun.md
 docs/Model/WebhookPayloadTest.md
 docs/Model/WebhookPayloadWhatsAppAccountAlertReceived.md
 docs/Model/WebhookPayloadWhatsAppAccountAlertReceivedAlert.md
@@ -2840,6 +2847,7 @@ lib/Api/ReviewsApi.php
 lib/Api/SMSApi.php
 lib/Api/SequencesApi.php
 lib/Api/SlackApi.php
+lib/Api/SupportRunsApi.php
 lib/Api/ToolsApi.php
 lib/Api/TrackingTagsApi.php
 lib/Api/TwitterEngagementApi.php
@@ -3449,6 +3457,9 @@ lib/Model/CreateStandaloneAdRequestStructuredSnippetsInner.php
 lib/Model/CreateStandaloneAdRequestTranslationsInner.php
 lib/Model/CreateStandaloneAdRequestVideo.php
 lib/Model/CreateStandaloneAdRequestZipsInner.php
+lib/Model/CreateSupportRun202Response.php
+lib/Model/CreateSupportRunRequest.php
+lib/Model/CreateSupportRunRequestContext.php
 lib/Model/CreateTestLead200Response.php
 lib/Model/CreateTestLead200ResponseTestLead.php
 lib/Model/CreateTestLeadRequest.php
@@ -5001,6 +5012,8 @@ lib/Model/SubmitPhoneNumberKycRequestDocumentsInnerOneOf1.php
 lib/Model/SubmitWhatsAppNumberKycRequest.php
 lib/Model/SubmitWhatsAppNumberKycRequestDocumentsInner.php
 lib/Model/SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf.php
+lib/Model/SupportRun.php
+lib/Model/SupportRunUsage.php
 lib/Model/SyncExternalPosts200Response.php
 lib/Model/SyncExternalPosts200ResponseSynced.php
 lib/Model/SyncExternalPostsRequest.php
@@ -5467,6 +5480,7 @@ lib/Model/WebhookPayloadReviewNew.php
 lib/Model/WebhookPayloadReviewNewAccount.php
 lib/Model/WebhookPayloadReviewUpdated.php
 lib/Model/WebhookPayloadSequenceEnrollment.php
+lib/Model/WebhookPayloadSupportRun.php
 lib/Model/WebhookPayloadTest.php
 lib/Model/WebhookPayloadWhatsAppAccountAlertReceived.php
 lib/Model/WebhookPayloadWhatsAppAccountAlertReceivedAlert.php
@@ -5563,3 +5577,10 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Api/SupportRunsApiTest.php
+test/Model/CreateSupportRun202ResponseTest.php
+test/Model/CreateSupportRunRequestContextTest.php
+test/Model/CreateSupportRunRequestTest.php
+test/Model/SupportRunTest.php
+test/Model/SupportRunUsageTest.php
+test/Model/WebhookPayloadSupportRunTest.php
