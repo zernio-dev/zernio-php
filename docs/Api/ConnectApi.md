@@ -2259,7 +2259,7 @@ try {
 ## `listFacebookPages()`
 
 ```php
-listFacebookPages($profile_id, $temp_token, $selection_token): \Zernio\Model\ListFacebookPages200Response
+listFacebookPages($profile_id, $temp_token, $x_temp_token, $connect_flow, $selection_token): \Zernio\Model\ListFacebookPages200Response
 ```
 
 List Facebook pages
@@ -2289,11 +2289,13 @@ $apiInstance = new Zernio\Api\ConnectApi(
     $config
 );
 $profile_id = 'profile_id_example'; // string | Profile ID from your classic connection flow. Required with tempToken.
-$temp_token = 'temp_token_example'; // string | Temporary Facebook access token from the classic OAuth callback. Required with profileId.
+$temp_token = 'temp_token_example'; // string | Temporary Facebook access token from the classic OAuth callback. Required with profileId unless sent in the X-Temp-Token header.
+$x_temp_token = 'x_temp_token_example'; // string | The OAuth user token, in place of the tempToken query parameter. Prefer it: a query string is written to request logs along the way.
+$connect_flow = 'connect_flow_example'; // string | Set by the Zernio-hosted picker, whose user token stays in an httpOnly cookie. Integrators send tempToken instead.
 $selection_token = ENCRYPTED_SELECTION_TOKEN; // string | Encrypted dashboard business-login grant. Send alone instead of profileId and tempToken. Expires after ten minutes.
 
 try {
-    $result = $apiInstance->listFacebookPages($profile_id, $temp_token, $selection_token);
+    $result = $apiInstance->listFacebookPages($profile_id, $temp_token, $x_temp_token, $connect_flow, $selection_token);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectApi->listFacebookPages: ', $e->getMessage(), PHP_EOL;
@@ -2305,7 +2307,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **profile_id** | **string**| Profile ID from your classic connection flow. Required with tempToken. | [optional] |
-| **temp_token** | **string**| Temporary Facebook access token from the classic OAuth callback. Required with profileId. | [optional] |
+| **temp_token** | **string**| Temporary Facebook access token from the classic OAuth callback. Required with profileId unless sent in the X-Temp-Token header. | [optional] |
+| **x_temp_token** | **string**| The OAuth user token, in place of the tempToken query parameter. Prefer it: a query string is written to request logs along the way. | [optional] |
+| **connect_flow** | **string**| Set by the Zernio-hosted picker, whose user token stays in an httpOnly cookie. Integrators send tempToken instead. | [optional] |
 | **selection_token** | **string**| Encrypted dashboard business-login grant. Send alone instead of profileId and tempToken. Expires after ten minutes. | [optional] |
 
 ### Return type
@@ -2401,7 +2405,7 @@ try {
 ## `listInstagramPages()`
 
 ```php
-listInstagramPages($profile_id, $temp_token): \Zernio\Model\ListInstagramPages200Response
+listInstagramPages($profile_id, $temp_token, $x_temp_token, $connect_flow): \Zernio\Model\ListInstagramPages200Response
 ```
 
 List Pages with a linked Instagram account
@@ -2431,10 +2435,12 @@ $apiInstance = new Zernio\Api\ConnectApi(
     $config
 );
 $profile_id = 'profile_id_example'; // string | Profile ID from your connection flow
-$temp_token = 'temp_token_example'; // string | Long-lived Facebook user access token from the OAuth callback redirect
+$temp_token = 'temp_token_example'; // string | Long-lived Facebook user access token from the OAuth callback redirect. Required unless sent in the X-Temp-Token header.
+$x_temp_token = 'x_temp_token_example'; // string | The OAuth user token, in place of the tempToken query parameter. Prefer it: a query string is written to request logs along the way.
+$connect_flow = 'connect_flow_example'; // string | Set by the Zernio-hosted picker, whose user token stays in an httpOnly cookie. Integrators send tempToken instead.
 
 try {
-    $result = $apiInstance->listInstagramPages($profile_id, $temp_token);
+    $result = $apiInstance->listInstagramPages($profile_id, $temp_token, $x_temp_token, $connect_flow);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectApi->listInstagramPages: ', $e->getMessage(), PHP_EOL;
@@ -2446,7 +2452,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **profile_id** | **string**| Profile ID from your connection flow | |
-| **temp_token** | **string**| Long-lived Facebook user access token from the OAuth callback redirect | |
+| **temp_token** | **string**| Long-lived Facebook user access token from the OAuth callback redirect. Required unless sent in the X-Temp-Token header. | [optional] |
+| **x_temp_token** | **string**| The OAuth user token, in place of the tempToken query parameter. Prefer it: a query string is written to request logs along the way. | [optional] |
+| **connect_flow** | **string**| Set by the Zernio-hosted picker, whose user token stays in an httpOnly cookie. Integrators send tempToken instead. | [optional] |
 
 ### Return type
 
