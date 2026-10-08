@@ -88,6 +88,9 @@ class CampaignAnalyticsResponseAnalyticsDailyInner implements ModelInterface, Ar
         'video_p75_watched_actions' => 'int',
         'video_p95_watched_actions' => 'int',
         'video_p100_watched_actions' => 'int',
+        'video2_sec_watched_actions' => 'int',
+        'video6_sec_watched_actions' => 'int',
+        'video6_sec_focused_views' => 'int',
         'video_avg_time_watched_actions' => 'float',
         'cost_per_thruplay' => 'float',
         'funnel' => '\Zernio\Model\AdFunnelCounts',
@@ -134,6 +137,9 @@ class CampaignAnalyticsResponseAnalyticsDailyInner implements ModelInterface, Ar
         'video_p75_watched_actions' => null,
         'video_p95_watched_actions' => null,
         'video_p100_watched_actions' => null,
+        'video2_sec_watched_actions' => null,
+        'video6_sec_watched_actions' => null,
+        'video6_sec_focused_views' => null,
         'video_avg_time_watched_actions' => null,
         'cost_per_thruplay' => null,
         'funnel' => null,
@@ -178,6 +184,9 @@ class CampaignAnalyticsResponseAnalyticsDailyInner implements ModelInterface, Ar
         'video_p75_watched_actions' => false,
         'video_p95_watched_actions' => false,
         'video_p100_watched_actions' => false,
+        'video2_sec_watched_actions' => false,
+        'video6_sec_watched_actions' => false,
+        'video6_sec_focused_views' => false,
         'video_avg_time_watched_actions' => false,
         'cost_per_thruplay' => false,
         'funnel' => false,
@@ -302,6 +311,9 @@ class CampaignAnalyticsResponseAnalyticsDailyInner implements ModelInterface, Ar
         'video_p75_watched_actions' => 'videoP75WatchedActions',
         'video_p95_watched_actions' => 'videoP95WatchedActions',
         'video_p100_watched_actions' => 'videoP100WatchedActions',
+        'video2_sec_watched_actions' => 'video2SecWatchedActions',
+        'video6_sec_watched_actions' => 'video6SecWatchedActions',
+        'video6_sec_focused_views' => 'video6SecFocusedViews',
         'video_avg_time_watched_actions' => 'videoAvgTimeWatchedActions',
         'cost_per_thruplay' => 'costPerThruplay',
         'funnel' => 'funnel',
@@ -346,6 +358,9 @@ class CampaignAnalyticsResponseAnalyticsDailyInner implements ModelInterface, Ar
         'video_p75_watched_actions' => 'setVideoP75WatchedActions',
         'video_p95_watched_actions' => 'setVideoP95WatchedActions',
         'video_p100_watched_actions' => 'setVideoP100WatchedActions',
+        'video2_sec_watched_actions' => 'setVideo2SecWatchedActions',
+        'video6_sec_watched_actions' => 'setVideo6SecWatchedActions',
+        'video6_sec_focused_views' => 'setVideo6SecFocusedViews',
         'video_avg_time_watched_actions' => 'setVideoAvgTimeWatchedActions',
         'cost_per_thruplay' => 'setCostPerThruplay',
         'funnel' => 'setFunnel',
@@ -390,6 +405,9 @@ class CampaignAnalyticsResponseAnalyticsDailyInner implements ModelInterface, Ar
         'video_p75_watched_actions' => 'getVideoP75WatchedActions',
         'video_p95_watched_actions' => 'getVideoP95WatchedActions',
         'video_p100_watched_actions' => 'getVideoP100WatchedActions',
+        'video2_sec_watched_actions' => 'getVideo2SecWatchedActions',
+        'video6_sec_watched_actions' => 'getVideo6SecWatchedActions',
+        'video6_sec_focused_views' => 'getVideo6SecFocusedViews',
         'video_avg_time_watched_actions' => 'getVideoAvgTimeWatchedActions',
         'cost_per_thruplay' => 'getCostPerThruplay',
         'funnel' => 'getFunnel',
@@ -485,6 +503,9 @@ class CampaignAnalyticsResponseAnalyticsDailyInner implements ModelInterface, Ar
         $this->setIfExists('video_p75_watched_actions', $data ?? [], null);
         $this->setIfExists('video_p95_watched_actions', $data ?? [], null);
         $this->setIfExists('video_p100_watched_actions', $data ?? [], null);
+        $this->setIfExists('video2_sec_watched_actions', $data ?? [], null);
+        $this->setIfExists('video6_sec_watched_actions', $data ?? [], null);
+        $this->setIfExists('video6_sec_focused_views', $data ?? [], null);
         $this->setIfExists('video_avg_time_watched_actions', $data ?? [], null);
         $this->setIfExists('cost_per_thruplay', $data ?? [], null);
         $this->setIfExists('funnel', $data ?? [], null);
@@ -1341,6 +1362,87 @@ class CampaignAnalyticsResponseAnalyticsDailyInner implements ModelInterface, Ar
             throw new \InvalidArgumentException('non-nullable video_p100_watched_actions cannot be null');
         }
         $this->container['video_p100_watched_actions'] = $video_p100_watched_actions;
+
+        return $this;
+    }
+
+    /**
+     * Gets video2_sec_watched_actions
+     *
+     * @return int|null
+     */
+    public function getVideo2SecWatchedActions()
+    {
+        return $this->container['video2_sec_watched_actions'];
+    }
+
+    /**
+     * Sets video2_sec_watched_actions
+     *
+     * @param int|null $video2_sec_watched_actions Plays of at least 2 seconds, replays excluded. Hook rate = video2SecWatchedActions / impressions. Sources: TikTok `video_watched_2s` (TikTok only; Meta's closest field, 2-second continuous plays, is not synced). TikTok history note: added 2026-10, and each sync re-fetches only the last 7 days, so older days read 0.
+     *
+     * @return self
+     */
+    public function setVideo2SecWatchedActions($video2_sec_watched_actions)
+    {
+        if (is_null($video2_sec_watched_actions)) {
+            throw new \InvalidArgumentException('non-nullable video2_sec_watched_actions cannot be null');
+        }
+        $this->container['video2_sec_watched_actions'] = $video2_sec_watched_actions;
+
+        return $this;
+    }
+
+    /**
+     * Gets video6_sec_watched_actions
+     *
+     * @return int|null
+     */
+    public function getVideo6SecWatchedActions()
+    {
+        return $this->container['video6_sec_watched_actions'];
+    }
+
+    /**
+     * Sets video6_sec_watched_actions
+     *
+     * @param int|null $video6_sec_watched_actions Plays of at least 6 seconds, replays excluded. Hold rate = video6SecWatchedActions / video2SecWatchedActions. Sources: TikTok `video_watched_6s` (TikTok only). Same history note as `video2SecWatchedActions`.
+     *
+     * @return self
+     */
+    public function setVideo6SecWatchedActions($video6_sec_watched_actions)
+    {
+        if (is_null($video6_sec_watched_actions)) {
+            throw new \InvalidArgumentException('non-nullable video6_sec_watched_actions cannot be null');
+        }
+        $this->container['video6_sec_watched_actions'] = $video6_sec_watched_actions;
+
+        return $this;
+    }
+
+    /**
+     * Gets video6_sec_focused_views
+     *
+     * @return int|null
+     */
+    public function getVideo6SecFocusedViews()
+    {
+        return $this->container['video6_sec_focused_views'];
+    }
+
+    /**
+     * Sets video6_sec_focused_views
+     *
+     * @param int|null $video6_sec_focused_views TikTok's 6-second focused views: plays of at least 6 seconds (or to the end, for shorter videos) or with an interaction in the first 6 seconds, so it is at least `video6SecWatchedActions`. Sources: TikTok `engaged_view` (TikTok only). Same history note as `video2SecWatchedActions`.
+     *
+     * @return self
+     */
+    public function setVideo6SecFocusedViews($video6_sec_focused_views)
+    {
+        if (is_null($video6_sec_focused_views)) {
+            throw new \InvalidArgumentException('non-nullable video6_sec_focused_views cannot be null');
+        }
+        $this->container['video6_sec_focused_views'] = $video6_sec_focused_views;
 
         return $this;
     }

@@ -5577,10 +5577,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/SupportRunsApiTest.php
-test/Model/CreateSupportRun202ResponseTest.php
-test/Model/CreateSupportRunRequestContextTest.php
-test/Model/CreateSupportRunRequestTest.php
-test/Model/SupportRunTest.php
-test/Model/SupportRunUsageTest.php
-test/Model/WebhookPayloadSupportRunTest.php
