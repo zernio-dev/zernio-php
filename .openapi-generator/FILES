@@ -836,6 +836,7 @@ docs/Model/ExternalPostMediaItem.md
 docs/Model/ExternalPostSummary.md
 docs/Model/ExternalPostSummaryAnalytics.md
 docs/Model/ExternalPostWebhookPost.md
+docs/Model/FacebookOrInstagramPost.md
 docs/Model/FacebookPlatformData.md
 docs/Model/FacebookPostEarningsResponse.md
 docs/Model/FacebookPostEarningsResponseMetricsValue.md
@@ -3626,6 +3627,7 @@ lib/Model/ExternalPostMediaItem.php
 lib/Model/ExternalPostSummary.php
 lib/Model/ExternalPostSummaryAnalytics.php
 lib/Model/ExternalPostWebhookPost.php
+lib/Model/FacebookOrInstagramPost.php
 lib/Model/FacebookPlatformData.php
 lib/Model/FacebookPostEarningsResponse.php
 lib/Model/FacebookPostEarningsResponseMetricsValue.php
@@ -5581,5 +5583,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/BrowseAdTargeting200ResponseNodesInnerTest.php
-test/Model/BrowseAdTargeting200ResponseTest.php
+test/Model/FacebookOrInstagramPostTest.php

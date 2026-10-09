@@ -4,21 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Reddit post ID (without type prefix) | [optional]
-**fullname** | **string** | Reddit fullname (e.g. t3_abc123) | [optional]
+**id** | **string** | Reddit post base36 id (e.g. \&quot;1tjtj26\&quot;) | [optional]
+**fullname** | **string** | Fullname with type prefix (e.g. \&quot;t3_1tjtj26\&quot;) | [optional]
 **title** | **string** |  | [optional]
-**author** | **string** |  | [optional]
-**subreddit** | **string** |  | [optional]
-**url** | **string** | Post URL (may be a gallery URL, external link, or self-post URL) | [optional]
-**permalink** | **string** | Full permalink to the Reddit post | [optional]
-**selftext** | **string** | Self-post body text (empty string for link posts) | [optional]
-**created_utc** | **float** | Unix timestamp of post creation | [optional]
-**score** | **int** |  | [optional]
+**selftext** | **string** | Body text for self-posts (empty for link posts) | [optional]
+**author** | **string** | Reddit username, without the u/ prefix | [optional]
+**subreddit** | **string** | Subreddit name, without the r/ prefix | [optional]
+**permalink** | **string** | Absolute URL to the post on reddit.com | [optional]
+**url** | **string** | For link posts, the external URL; for self-posts, the Reddit permalink | [optional]
+**score** | **int** | Net upvotes (upvotes minus downvotes) | [optional]
 **num_comments** | **int** |  | [optional]
-**over18** | **bool** | Whether the post is marked NSFW | [optional]
+**created_utc** | **int** | Unix timestamp in seconds | [optional]
+**over18** | **bool** |  | [optional]
 **stickied** | **bool** |  | [optional]
-**flair_text** | **string** | Link flair text if set | [optional]
-**is_gallery** | **bool** | Whether the post is a gallery with multiple images | [optional]
-**gallery_images** | **string[]** | Individual image URLs for gallery posts (only present when isGallery is true) | [optional]
+**flair_text** | **string** | Link flair text if any | [optional]
+**is_gallery** | **bool** | True if the post is a Reddit gallery (multiple images) | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
