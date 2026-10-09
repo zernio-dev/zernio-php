@@ -12,12 +12,12 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `listChangelog()`
 
 ```php
-listChangelog($type, $platform, $before, $limit): \Zernio\Model\ListChangelog200Response
+listChangelog($type, $impact, $platform, $before, $limit): \Zernio\Model\ListChangelog200Response
 ```
 
 List API changelog entries
 
-The API changelog, newest first. No API key needed; one address may make 120 requests a minute. Each entry is what the `api.changelog.published` webhook delivered: the announcement in `message`, and in `changes` the deterministic diff of the OpenAPI spec (operations and schemas added, removed and modified) for automation to act on. Page with `before` set to the previous page's `nextCursor`.
+The API changelog, newest first. No API key needed; one address may make 120 requests a minute. Each entry is what the `api.changelog.published` webhook delivered: the announcement in `message`, its `impact` on existing integrations, and in `changes` the deterministic diff of the OpenAPI spec (operations and schemas added, removed and modified) for automation to act on. Page with `before` set to the previous page's `nextCursor`.
 
 ### Example
 
@@ -33,12 +33,13 @@ $apiInstance = new Zernio\Api\ChangelogApi(
     new GuzzleHttp\Client()
 );
 $type = 'type_example'; // string | Only entries of this type.
+$impact = 'impact_example'; // string | Only entries with this impact. `action_required` lists the changes an integration may need to act on.
 $platform = whatsapp; // string | Only entries tagged with this platform or area slug (see `platforms` on the entry). One slug per request.
 $before = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only entries published strictly before this instant. Pass the previous page's `nextCursor`.
 $limit = 20; // int
 
 try {
-    $result = $apiInstance->listChangelog($type, $platform, $before, $limit);
+    $result = $apiInstance->listChangelog($type, $impact, $platform, $before, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ChangelogApi->listChangelog: ', $e->getMessage(), PHP_EOL;
@@ -50,6 +51,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **type** | **string**| Only entries of this type. | [optional] |
+| **impact** | **string**| Only entries with this impact. &#x60;action_required&#x60; lists the changes an integration may need to act on. | [optional] |
 | **platform** | **string**| Only entries tagged with this platform or area slug (see &#x60;platforms&#x60; on the entry). One slug per request. | [optional] |
 | **before** | **\DateTime**| Only entries published strictly before this instant. Pass the previous page&#39;s &#x60;nextCursor&#x60;. | [optional] |
 | **limit** | **int**|  | [optional] [default to 20] |
