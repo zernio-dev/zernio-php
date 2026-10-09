@@ -6,12 +6,81 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**browseAdTargeting()**](AdTargetingApi.md#browseAdTargeting) | **GET** /v1/ads/targeting/browse | Browse targeting categories |
 | [**estimateAdReach()**](AdTargetingApi.md#estimateAdReach) | **POST** /v1/ads/targeting/reach-estimate | Estimate audience reach |
 | [**getLinkedInBidPricing()**](AdTargetingApi.md#getLinkedInBidPricing) | **POST** /v1/ads/targeting/bid-pricing | Suggested bid and budget bounds |
 | [**getLinkedInSupplyForecast()**](AdTargetingApi.md#getLinkedInSupplyForecast) | **POST** /v1/ads/targeting/supply-forecast | Forecast ad delivery |
 | [**searchAdInterests()**](AdTargetingApi.md#searchAdInterests) | **GET** /v1/ads/interests | Search targeting interests |
 | [**searchAdTargeting()**](AdTargetingApi.md#searchAdTargeting) | **GET** /v1/ads/targeting/search | Search targeting options |
 
+
+## `browseAdTargeting()`
+
+```php
+browseAdTargeting($account_id, $ad_account_id, $type, $parent_node_id, $selectable): \Zernio\Model\BrowseAdTargeting200Response
+```
+
+Browse targeting categories
+
+The whole Meta detailed-targeting category tree of one ad account (Meta's `GET /act_{ad_account_id}/targetingbrowse`), as one flat list you can render as a tree. Use it to show what can be targeted without a keyword; use `GET /v1/ads/targeting/search` to find an entry by name.  Every node is one of two kinds:  - **Selectable entity** (`selectable: true`): an interest, behavior or demographic Meta   gives an id. `id` plus `type` is what a targeting spec takes. `interests`, `behaviors`   and `industries` ids go in `TargetingSpec.interests`, `behaviors` and `workIndustries`   on `POST /v1/ads/create`; every other type goes in `rawTargeting.flexible_spec` under   its `type` as the key. `life_events`, `family_statuses` and `income` take objects   (`{ \"flexible_spec\": [{ \"life_events\": [{ \"id\": \"6017476616183\" }] }] }`), while   `education_statuses` and `relationship_statuses` take the bare number   (`{ \"flexible_spec\": [{ \"education_statuses\": [3] }] }`): Meta answers an object   there with a 500. - **Organizational node** (`selectable: false`, `id: null`): a category such as   `Demographics > Financial > Income` that only groups other nodes and cannot be targeted.   A few carry a `type` and have no children (`Schools`, `Employers`, `Job titles`,   `Fields of study`, `Undergrad years`): those are open-ended categories Meta only exposes   through search (`dimension=workEmployer` / `workPosition` on the search endpoint).  `nodeId` identifies a node within this response and `parentNodeId` points at its parent (`null` for the three roots `Demographics`, `Interests`, `Behaviors`). A selectable node's `nodeId` is `{type}:{id}`, because Meta reuses small ids across types (education status 3 and relationship status 3 are different entities). An organizational node's `nodeId` is its full path joined with ` > `. Labels are kept exactly as Meta sends them, including stray leading or trailing spaces, because Meta has sibling nodes that differ only by whitespace.  The interests branch is Meta's curated browse list (a few hundred entries), not every interest Meta can target: search finds the long tail.  **No pagination.** Meta returns the whole catalog in one response (about 770 nodes) and ignores `limit`, so there is no cursor. Narrow it with `type`, `parentNodeId` and `selectable` instead; they are applied by Zernio. The catalog is cached for an hour per ad account and connection.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdTargetingApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | A connected Meta account (metaads, facebook or instagram). Any other ad platform returns 501 platform_not_supported.
+$ad_account_id = 'ad_account_id_example'; // string | The Meta ad account to browse as, in the form \"act_<digits>\".
+$type = 'type_example'; // string | Only the nodes of this Meta type (e.g. interests, behaviors, life_events, income), plus the organizational nodes leading to them. A type that is not in the catalog returns 400.
+$parent_node_id = 'parent_node_id_example'; // string | Only the descendants (every depth) of this organizational node, e.g. `Demographics > Financial`. A nodeId that is not an organizational node of the catalog returns 400.
+$selectable = True; // bool | `true` for selectable entities only, `false` for organizational nodes only.
+
+try {
+    $result = $apiInstance->browseAdTargeting($account_id, $ad_account_id, $type, $parent_node_id, $selectable);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdTargetingApi->browseAdTargeting: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| A connected Meta account (metaads, facebook or instagram). Any other ad platform returns 501 platform_not_supported. | |
+| **ad_account_id** | **string**| The Meta ad account to browse as, in the form \&quot;act_&lt;digits&gt;\&quot;. | |
+| **type** | **string**| Only the nodes of this Meta type (e.g. interests, behaviors, life_events, income), plus the organizational nodes leading to them. A type that is not in the catalog returns 400. | [optional] |
+| **parent_node_id** | **string**| Only the descendants (every depth) of this organizational node, e.g. &#x60;Demographics &gt; Financial&#x60;. A nodeId that is not an organizational node of the catalog returns 400. | [optional] |
+| **selectable** | **bool**| &#x60;true&#x60; for selectable entities only, &#x60;false&#x60; for organizational nodes only. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\BrowseAdTargeting200Response**](../Model/BrowseAdTargeting200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `estimateAdReach()`
 

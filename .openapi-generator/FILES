@@ -272,6 +272,8 @@ docs/Model/BrandedCallingIdentityReviewRequest.md
 docs/Model/BrandedCallingIdentityReviewRequestPointsInner.md
 docs/Model/BrandedCallingReference.md
 docs/Model/BrandedCallingReferences.md
+docs/Model/BrowseAdTargeting200Response.md
+docs/Model/BrowseAdTargeting200ResponseNodesInner.md
 docs/Model/BulkCreateContacts200Response.md
 docs/Model/BulkCreateContactsRequest.md
 docs/Model/BulkCreateContactsRequestContactsInner.md
@@ -3060,6 +3062,8 @@ lib/Model/BrandedCallingIdentityReviewRequest.php
 lib/Model/BrandedCallingIdentityReviewRequestPointsInner.php
 lib/Model/BrandedCallingReference.php
 lib/Model/BrandedCallingReferences.php
+lib/Model/BrowseAdTargeting200Response.php
+lib/Model/BrowseAdTargeting200ResponseNodesInner.php
 lib/Model/BulkCreateContacts200Response.php
 lib/Model/BulkCreateContactsRequest.php
 lib/Model/BulkCreateContactsRequestContactsInner.php
@@ -5577,3 +5581,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/BrowseAdTargeting200ResponseNodesInnerTest.php
+test/Model/BrowseAdTargeting200ResponseTest.php
