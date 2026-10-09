@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Stable webhook event ID: the dedupe key, also sent as the X-Zernio-Event-Id header and identical on every retry and redelivery. |
+**test** | **bool** | Always true when present: only a sample sent by POST /v1/webhooks/test with an event carries it. Real deliveries never do. | [optional]
 **event** | **string** |  |
 **account** | [**\Zernio\Model\WebhookAdsSyncAccount**](WebhookAdsSyncAccount.md) |  |
 **ad_account** | [**\Zernio\Model\WebhookAdsSyncAdAccount**](WebhookAdsSyncAdAccount.md) |  |
