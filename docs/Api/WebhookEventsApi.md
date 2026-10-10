@@ -1454,7 +1454,7 @@ onConversationControlChanged($webhook_payload_conversation_control_changed)
 
 Conversation control changed event
 
-Fired on Meta's handover protocol (`messaging_handovers`). WhatsApp: control moves between Meta Business Agent and your app, or the agent is first seen answering a thread; while `control.owner` is `ai_agent`, inbound messages arrive on `message.received` with `metadata.standby: true` and the agent's replies on `message.sent` with `source: meta_business_agent`, and sending any message takes control back. Facebook and Instagram: another app passed you the thread (`owner: app`) or took or received it (`owner: other`, with `ownerAppId`); while you are not the owner, inbound arrive with `metadata.standby: true`, no automation runs, and sends fail with `not_thread_owner`. Change control with `POST /v1/inbox/conversations/{conversationId}/thread-control`.
+Fired on Meta's handover protocol (`messaging_handovers`). WhatsApp: control moves between Meta Business Agent and your app, or the agent is first seen answering a thread; while `control.owner` is `ai_agent`, inbound messages arrive on `message.received` with `metadata.standby: true` and the agent's replies on `message.sent` with `source: meta_business_agent`, and sending any message takes control back. Facebook and Instagram: another app passed you the thread (`owner: app`) or took or received it (`owner: other`, with `ownerAppId`); while you are not the owner, inbound arrive with `metadata.standby: true`, no automation runs, and sends fail with `not_thread_owner`. Change control with `POST /v1/inbox/conversations/{conversationId}/thread-control`. `take` and `request` answer 400 `platform_not_supported` on Instagram Login connections.
 
 ### Example
 
