@@ -95,7 +95,7 @@ getAccountHealth($account_id): \Zernio\Model\GetAccountHealth200Response
 
 Check account health
 
-Returns detailed health info for a specific account including token status, permissions, and recommendations.  For WhatsApp accounts the response also includes `platformConnection`, a live probe of the Meta link behind the channel (the same read as `GET /v1/whatsapp/number-info`). The OAuth token can be perfectly valid while Meta refuses to serve the phone-number object (for example after a phone-side coexistence disconnect), so `tokenStatus` alone is not a liveness signal for WhatsApp. When the Meta link is dead, `platformConnection.status` is `disconnected` and the overall `status` is `error`. When Meta reports that the number's inbound message webhook does not reach Zernio, `platformConnection.inboundWebhookSubscribed` is `false`, an entry is added to `issues`, and the overall `status` is at least `warning`.
+Returns detailed health info for a specific account including token status, permissions, and recommendations.  A failing or stalled analytics sync (see `analyticsSync`) raises a healthy account to at least `warning`.  For WhatsApp accounts the response also includes `platformConnection`, a live probe of the Meta link behind the channel (the same read as `GET /v1/whatsapp/number-info`). The OAuth token can be perfectly valid while Meta refuses to serve the phone-number object (for example after a phone-side coexistence disconnect), so `tokenStatus` alone is not a liveness signal for WhatsApp. When the Meta link is dead, `platformConnection.status` is `disconnected` and the overall `status` is `error`. When Meta reports that the number's inbound message webhook does not reach Zernio, `platformConnection.inboundWebhookSubscribed` is `false`, an entry is added to `issues`, and the overall `status` is at least `warning`.
 
 ### Example
 
@@ -215,7 +215,7 @@ getAllAccountsHealth($profile_id, $platform, $status): \Zernio\Model\GetAllAccou
 
 Check accounts health
 
-Returns health status of all connected accounts including token validity, permissions, and issues needing attention.
+Returns health status of all connected accounts including token validity, permissions, and issues needing attention. A failing or stalled analytics sync (see `analyticsSync`) raises a healthy account to at least warning.
 
 ### Example
 

@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **token_expires_at** | **\DateTime** |  | [optional]
 **needs_reconnect** | **bool** | True when the token is expired or revoked, permissions are missing, the account is inactive, or the platform rejected its stored credentials (the same flag the account listing reports as needsReconnection). | [optional]
 **issues** | **string[]** |  | [optional]
+**analytics_sync** | [**\Zernio\Model\GetAllAccountsHealth200ResponseAccountsInnerAnalyticsSync**](GetAllAccountsHealth200ResponseAccountsInnerAnalyticsSync.md) |  | [optional]
 **messaging_restriction** | [**\Zernio\Model\GetAllAccountsHealth200ResponseAccountsInnerMessagingRestriction**](GetAllAccountsHealth200ResponseAccountsInnerMessagingRestriction.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
