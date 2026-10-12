@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **run_id** | **string** | Run id, a 24-character hex string. |
 **thread_id** | **string** | Conversation thread id. Send it back as &#x60;threadId&#x60; to ask a follow-up in the same thread. |
-**status** | **string** | queued and running are in progress. needs_human means Ana handed the question to a person instead of answering; when &#x60;supportTicket&#x60; is set, a Zernio teammate has been notified and will follow up by email. |
+**status** | **string** | queued and running are in progress. needs_human means the assistant handed the question to a person instead of answering; when &#x60;supportTicket&#x60; is set, a Zernio teammate has been notified and will follow up by email. |
 **stop_reason** | **string** | Why the run stopped. Null while it is in progress. |
-**answer** | **string** | Ana&#39;s answer. Null while the run is in progress or when it failed. |
+**answer** | **string** | The assistant&#39;s answer. Null while the run is in progress or when it failed. |
 **usage** | [**\Zernio\Model\SupportRunUsage**](SupportRunUsage.md) |  |
 **cost_usd** | **float** | The exact amount charged for the question, in USD, never above &#x60;maxCostUsd&#x60;. 0 for a failed run. |
 **max_cost_usd** | **float** | The cost cap this run was started with, in USD. |
