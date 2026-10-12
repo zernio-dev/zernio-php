@@ -60,6 +60,7 @@ class WebhookPayloadAccountAdsSyncRecovered implements ModelInterface, ArrayAcce
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'profiles' => '\Zernio\Model\WebhookProfilesInner[]',
         'test' => 'bool',
         'event' => 'string',
         'account' => '\Zernio\Model\WebhookAdsSyncAccount',
@@ -77,6 +78,7 @@ class WebhookPayloadAccountAdsSyncRecovered implements ModelInterface, ArrayAcce
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'profiles' => null,
         'test' => null,
         'event' => null,
         'account' => null,
@@ -92,6 +94,7 @@ class WebhookPayloadAccountAdsSyncRecovered implements ModelInterface, ArrayAcce
       */
     protected static array $openAPINullables = [
         'id' => false,
+        'profiles' => false,
         'test' => false,
         'event' => false,
         'account' => false,
@@ -187,6 +190,7 @@ class WebhookPayloadAccountAdsSyncRecovered implements ModelInterface, ArrayAcce
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'profiles' => 'profiles',
         'test' => 'test',
         'event' => 'event',
         'account' => 'account',
@@ -202,6 +206,7 @@ class WebhookPayloadAccountAdsSyncRecovered implements ModelInterface, ArrayAcce
      */
     protected static $setters = [
         'id' => 'setId',
+        'profiles' => 'setProfiles',
         'test' => 'setTest',
         'event' => 'setEvent',
         'account' => 'setAccount',
@@ -217,6 +222,7 @@ class WebhookPayloadAccountAdsSyncRecovered implements ModelInterface, ArrayAcce
      */
     protected static $getters = [
         'id' => 'getId',
+        'profiles' => 'getProfiles',
         'test' => 'getTest',
         'event' => 'getEvent',
         'account' => 'getAccount',
@@ -296,6 +302,7 @@ class WebhookPayloadAccountAdsSyncRecovered implements ModelInterface, ArrayAcce
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('profiles', $data ?? [], null);
         $this->setIfExists('test', $data ?? [], null);
         $this->setIfExists('event', $data ?? [], null);
         $this->setIfExists('account', $data ?? [], null);
@@ -396,6 +403,33 @@ class WebhookPayloadAccountAdsSyncRecovered implements ModelInterface, ArrayAcce
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets profiles
+     *
+     * @return \Zernio\Model\WebhookProfilesInner[]|null
+     */
+    public function getProfiles()
+    {
+        return $this->container['profiles'];
+    }
+
+    /**
+     * Sets profiles
+     *
+     * @param \Zernio\Model\WebhookProfilesInner[]|null $profiles The profiles this event belongs to, each with the externalId you set on it (null when none is set). Present on every event tied to a profile and absent on events that belong to none. Events spanning several profiles (a post published to accounts of different profiles) list each once. Use it to route the event to your tenant without storing Zernio profile ids.
+     *
+     * @return self
+     */
+    public function setProfiles($profiles)
+    {
+        if (is_null($profiles)) {
+            throw new \InvalidArgumentException('non-nullable profiles cannot be null');
+        }
+        $this->container['profiles'] = $profiles;
 
         return $this;
     }

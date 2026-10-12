@@ -60,6 +60,7 @@ class OnWhatsAppNumberActivatedRequest implements ModelInterface, ArrayAccess, \
     protected static $openAPITypes = [
         'test' => 'bool',
         'id' => 'string',
+        'profiles' => '\Zernio\Model\WebhookProfilesInner[]',
         'event' => 'string',
         'timestamp' => '\DateTime',
         'number' => '\Zernio\Model\OnWhatsAppNumberActivatedRequestNumber'
@@ -75,6 +76,7 @@ class OnWhatsAppNumberActivatedRequest implements ModelInterface, ArrayAccess, \
     protected static $openAPIFormats = [
         'test' => null,
         'id' => null,
+        'profiles' => null,
         'event' => null,
         'timestamp' => 'date-time',
         'number' => null
@@ -88,6 +90,7 @@ class OnWhatsAppNumberActivatedRequest implements ModelInterface, ArrayAccess, \
     protected static array $openAPINullables = [
         'test' => false,
         'id' => false,
+        'profiles' => false,
         'event' => false,
         'timestamp' => false,
         'number' => false
@@ -181,6 +184,7 @@ class OnWhatsAppNumberActivatedRequest implements ModelInterface, ArrayAccess, \
     protected static $attributeMap = [
         'test' => 'test',
         'id' => 'id',
+        'profiles' => 'profiles',
         'event' => 'event',
         'timestamp' => 'timestamp',
         'number' => 'number'
@@ -194,6 +198,7 @@ class OnWhatsAppNumberActivatedRequest implements ModelInterface, ArrayAccess, \
     protected static $setters = [
         'test' => 'setTest',
         'id' => 'setId',
+        'profiles' => 'setProfiles',
         'event' => 'setEvent',
         'timestamp' => 'setTimestamp',
         'number' => 'setNumber'
@@ -207,6 +212,7 @@ class OnWhatsAppNumberActivatedRequest implements ModelInterface, ArrayAccess, \
     protected static $getters = [
         'test' => 'getTest',
         'id' => 'getId',
+        'profiles' => 'getProfiles',
         'event' => 'getEvent',
         'timestamp' => 'getTimestamp',
         'number' => 'getNumber'
@@ -284,6 +290,7 @@ class OnWhatsAppNumberActivatedRequest implements ModelInterface, ArrayAccess, \
     {
         $this->setIfExists('test', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('profiles', $data ?? [], null);
         $this->setIfExists('event', $data ?? [], null);
         $this->setIfExists('timestamp', $data ?? [], null);
         $this->setIfExists('number', $data ?? [], null);
@@ -390,6 +397,33 @@ class OnWhatsAppNumberActivatedRequest implements ModelInterface, ArrayAccess, \
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets profiles
+     *
+     * @return \Zernio\Model\WebhookProfilesInner[]|null
+     */
+    public function getProfiles()
+    {
+        return $this->container['profiles'];
+    }
+
+    /**
+     * Sets profiles
+     *
+     * @param \Zernio\Model\WebhookProfilesInner[]|null $profiles The profiles this event belongs to, each with the externalId you set on it (null when none is set). Present on every event tied to a profile and absent on events that belong to none. Events spanning several profiles (a post published to accounts of different profiles) list each once. Use it to route the event to your tenant without storing Zernio profile ids.
+     *
+     * @return self
+     */
+    public function setProfiles($profiles)
+    {
+        if (is_null($profiles)) {
+            throw new \InvalidArgumentException('non-nullable profiles cannot be null');
+        }
+        $this->container['profiles'] = $profiles;
 
         return $this;
     }

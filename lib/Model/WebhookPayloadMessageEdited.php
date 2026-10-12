@@ -61,6 +61,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPITypes = [
         'test' => 'bool',
         'id' => 'string',
+        'profiles' => '\Zernio\Model\WebhookProfilesInner[]',
         'event' => 'string',
         'message' => '\Zernio\Model\InboxWebhookMessage',
         'edit_history' => '\Zernio\Model\InboxMessageEditHistoryEntry[]',
@@ -81,6 +82,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPIFormats = [
         'test' => null,
         'id' => null,
+        'profiles' => null,
         'event' => null,
         'message' => null,
         'edit_history' => null,
@@ -99,6 +101,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     protected static array $openAPINullables = [
         'test' => false,
         'id' => false,
+        'profiles' => false,
         'event' => false,
         'message' => false,
         'edit_history' => false,
@@ -197,6 +200,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     protected static $attributeMap = [
         'test' => 'test',
         'id' => 'id',
+        'profiles' => 'profiles',
         'event' => 'event',
         'message' => 'message',
         'edit_history' => 'editHistory',
@@ -215,6 +219,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     protected static $setters = [
         'test' => 'setTest',
         'id' => 'setId',
+        'profiles' => 'setProfiles',
         'event' => 'setEvent',
         'message' => 'setMessage',
         'edit_history' => 'setEditHistory',
@@ -233,6 +238,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     protected static $getters = [
         'test' => 'getTest',
         'id' => 'getId',
+        'profiles' => 'getProfiles',
         'event' => 'getEvent',
         'message' => 'getMessage',
         'edit_history' => 'getEditHistory',
@@ -315,6 +321,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     {
         $this->setIfExists('test', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('profiles', $data ?? [], null);
         $this->setIfExists('event', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
         $this->setIfExists('edit_history', $data ?? [], null);
@@ -453,6 +460,33 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets profiles
+     *
+     * @return \Zernio\Model\WebhookProfilesInner[]|null
+     */
+    public function getProfiles()
+    {
+        return $this->container['profiles'];
+    }
+
+    /**
+     * Sets profiles
+     *
+     * @param \Zernio\Model\WebhookProfilesInner[]|null $profiles The profiles this event belongs to, each with the externalId you set on it (null when none is set). Present on every event tied to a profile and absent on events that belong to none. Events spanning several profiles (a post published to accounts of different profiles) list each once. Use it to route the event to your tenant without storing Zernio profile ids.
+     *
+     * @return self
+     */
+    public function setProfiles($profiles)
+    {
+        if (is_null($profiles)) {
+            throw new \InvalidArgumentException('non-nullable profiles cannot be null');
+        }
+        $this->container['profiles'] = $profiles;
 
         return $this;
     }

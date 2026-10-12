@@ -61,6 +61,7 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
     protected static $openAPITypes = [
         'test' => 'bool',
         'id' => 'string',
+        'profiles' => '\Zernio\Model\WebhookProfilesInner[]',
         'event' => 'string',
         'message' => '\Zernio\Model\InboxWebhookMessage',
         'deleted_at' => '\DateTime',
@@ -79,6 +80,7 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
     protected static $openAPIFormats = [
         'test' => null,
         'id' => null,
+        'profiles' => null,
         'event' => null,
         'message' => null,
         'deleted_at' => 'date-time',
@@ -95,6 +97,7 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
     protected static array $openAPINullables = [
         'test' => false,
         'id' => false,
+        'profiles' => false,
         'event' => false,
         'message' => false,
         'deleted_at' => false,
@@ -191,6 +194,7 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
     protected static $attributeMap = [
         'test' => 'test',
         'id' => 'id',
+        'profiles' => 'profiles',
         'event' => 'event',
         'message' => 'message',
         'deleted_at' => 'deletedAt',
@@ -207,6 +211,7 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
     protected static $setters = [
         'test' => 'setTest',
         'id' => 'setId',
+        'profiles' => 'setProfiles',
         'event' => 'setEvent',
         'message' => 'setMessage',
         'deleted_at' => 'setDeletedAt',
@@ -223,6 +228,7 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
     protected static $getters = [
         'test' => 'getTest',
         'id' => 'getId',
+        'profiles' => 'getProfiles',
         'event' => 'getEvent',
         'message' => 'getMessage',
         'deleted_at' => 'getDeletedAt',
@@ -303,6 +309,7 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
     {
         $this->setIfExists('test', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('profiles', $data ?? [], null);
         $this->setIfExists('event', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
         $this->setIfExists('deleted_at', $data ?? [], null);
@@ -433,6 +440,33 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets profiles
+     *
+     * @return \Zernio\Model\WebhookProfilesInner[]|null
+     */
+    public function getProfiles()
+    {
+        return $this->container['profiles'];
+    }
+
+    /**
+     * Sets profiles
+     *
+     * @param \Zernio\Model\WebhookProfilesInner[]|null $profiles The profiles this event belongs to, each with the externalId you set on it (null when none is set). Present on every event tied to a profile and absent on events that belong to none. Events spanning several profiles (a post published to accounts of different profiles) list each once. Use it to route the event to your tenant without storing Zernio profile ids.
+     *
+     * @return self
+     */
+    public function setProfiles($profiles)
+    {
+        if (is_null($profiles)) {
+            throw new \InvalidArgumentException('non-nullable profiles cannot be null');
+        }
+        $this->container['profiles'] = $profiles;
 
         return $this;
     }

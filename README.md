@@ -3680,6 +3680,7 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadWorkflowRunExecution](docs/Model/WebhookPayloadWorkflowRunExecution.md)
 - [WebhookPayloadWorkflowRunTrigger](docs/Model/WebhookPayloadWorkflowRunTrigger.md)
 - [WebhookPayloadWorkflowRunWorkflow](docs/Model/WebhookPayloadWorkflowRunWorkflow.md)
+- [WebhookProfilesInner](docs/Model/WebhookProfilesInner.md)
 - [WhatsAppBillingConversation](docs/Model/WhatsAppBillingConversation.md)
 - [WhatsAppBodyComponent](docs/Model/WhatsAppBodyComponent.md)
 - [WhatsAppBodyComponentExample](docs/Model/WhatsAppBodyComponentExample.md)
