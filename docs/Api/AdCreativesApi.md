@@ -34,7 +34,7 @@ createAdCreative($create_ad_creative_request): \Zernio\Model\CreateAdCreative201
 
 Create a standalone creative
 
-Creates a creative in the library WITHOUT an ad, reusable on the create endpoints via `existingCreativeId`. Provide exactly one of `imageUrl` (uploaded server-side), `imageHash` (from POST /v1/ads/images or the library list), or `carouselCards` (2-10 hand-built cards). The Page (and linked Instagram account, when present) is resolved from `accountId` as the story actor. `creativeFeatures` configures Advantage+ enhancements. `promotion` is not supported and any object is rejected with 400.
+Creates a reusable Meta creative from an image or carousel without creating an ad, ready to attach to ads later.  Creates a creative in the library WITHOUT an ad, reusable on the create endpoints via `existingCreativeId`. Provide exactly one of `imageUrl` (uploaded server-side), `imageHash` (from POST /v1/ads/images or the library list), or `carouselCards` (2-10 hand-built cards). The Page (and linked Instagram account, when present) is resolved from `accountId` as the story actor. `creativeFeatures` configures Advantage+ enhancements. `promotion` is not supported and any object is rejected with 400.
 
 ### Example
 
@@ -94,7 +94,7 @@ deleteAdCreative($creative_id, $account_id): \Zernio\Model\DeleteAdCreative200Re
 
 Delete a creative
 
-Deletes a creative from the library. Meta only allows deleting creatives not referenced by any ad; otherwise its 400 surfaces verbatim.
+Deletes a Meta creative from the library, which Meta only allows when no ad uses it.  Meta only allows deleting creatives not referenced by any ad; otherwise its 400 surfaces verbatim.
 
 ### Example
 
@@ -156,7 +156,7 @@ deleteAdVideo($video_id, $account_id, $ad_account_id): \Zernio\Model\DeleteAdVid
 
 Delete an ad video
 
-Removes a video from the ad account's video library. Meta's canonical `DELETE /{video_id}` fails with code 10 / subcode 1363055 for videos uploaded via `/act_X/advideos` even with `ads_management`; this endpoint uses the working account-scoped shape `DELETE /act_X/advideos?video_id=<id>` and returns Meta's `{success: true}` verbatim. Deleting a video that lives in a different ad account, or that Meta has already removed, returns Meta's error verbatim as a 4xx.
+Removes a video from a Meta ad account's video library.  Meta's canonical `DELETE /{video_id}` fails with code 10 / subcode 1363055 for videos uploaded via `/act_X/advideos` even with `ads_management`; this endpoint uses the working account-scoped shape `DELETE /act_X/advideos?video_id=<id>` and returns Meta's `{success: true}` verbatim. Deleting a video that lives in a different ad account, or that Meta has already removed, returns Meta's error verbatim as a 4xx.
 
 ### Example
 
@@ -220,7 +220,7 @@ generateAdPreviews($generate_ad_previews_request): \Zernio\Model\GenerateAdPrevi
 
 Render pre-create ad previews
 
-Renders how a creative would look per placement BEFORE any ad exists, via Meta's `/generatepreviews`. Provide exactly one creative source: `existingCreativeId` or `creativeSpec`. Each preview is an HTML `<iframe>` snippet embeddable directly. Unknown `formats` values return Meta's 400 verbatim.
+Shows how a Meta creative will look in each placement before you create the ad, as embeddable previews.  Renders how a creative would look per placement BEFORE any ad exists, via Meta's `/generatepreviews`. Provide exactly one creative source: `existingCreativeId` or `creativeSpec`. Each preview is an HTML `<iframe>` snippet embeddable directly. Unknown `formats` values return Meta's 400 verbatim.
 
 ### Example
 
@@ -280,7 +280,7 @@ getAdCreative($creative_id, $account_id, $fields, $thumbnail_width, $thumbnail_h
 
 Creative details
 
-One creative's details, verbatim from Meta. `fields` is a raw-passthrough override of the default projection.
+Shows the details of one Meta creative, such as its content, status and thumbnail.  One creative's details, verbatim from Meta. `fields` is a raw-passthrough override of the default projection.
 
 ### Example
 
@@ -348,7 +348,7 @@ getAdMedia($ad_id): \Zernio\Model\GetAdMedia200Response
 
 Direct video and image URLs for an ad
 
-Returns the direct signed URLs for every video and image asset used by an ad's live creative, normalised across shapes: single image/video, carousel, Reels/Story (`object_story_spec.video_data`) and dynamic creative (`asset_feed_spec`). Video items include Meta's poster thumbnail and the video's Meta id when available.  Boosted Instagram posts (creatives with no image of their own) return the original post's media: the image, the video with its cover as `thumbnailUrl`, or every child of a carousel post with `index`. When the connection cannot read the Instagram post, the item is a 1080px rendering of the creative instead.  Reads Meta live rather than the stored creative blob because Meta's signed fbcdn URLs carry an `oe=<hex>` expiration (image_url ~24 h, video source ~12 d). Treat URLs as short-lived: re-fetch this endpoint before serving or downloading assets instead of caching URLs beyond that window.
+Returns fresh, short-lived download links for every image and video a Meta ad uses, including the original media of a boosted Instagram post.  Returns the direct signed URLs for every video and image asset used by an ad's live creative, normalised across shapes: single image/video, carousel, Reels/Story (`object_story_spec.video_data`) and dynamic creative (`asset_feed_spec`). Video items include Meta's poster thumbnail and the video's Meta id when available.  Boosted Instagram posts (creatives with no image of their own) return the original post's media: the image, the video with its cover as `thumbnailUrl`, or every child of a carousel post with `index`. When the connection cannot read the Instagram post, the item is a 1080px rendering of the creative instead.  Reads Meta live rather than the stored creative blob because Meta's signed fbcdn URLs carry an `oe=<hex>` expiration (image_url ~24 h, video source ~12 d). Treat URLs as short-lived: re-fetch this endpoint before serving or downloading assets instead of caching URLs beyond that window.
 
 ### Example
 
@@ -408,7 +408,7 @@ getAdPreviews($ad_id, $formats): \Zernio\Model\GetAdPreviews200Response
 
 Render previews of an existing ad
 
-Renders an EXISTING ad per placement via Meta's `/{ad_id}/previews`. Each preview is an HTML `<iframe>` snippet embeddable directly. Unknown `formats` values return Meta's 400 verbatim.
+Shows how an existing Meta ad looks in each placement, as embeddable previews.  Renders an EXISTING ad per placement via Meta's `/{ad_id}/previews`. Each preview is an HTML `<iframe>` snippet embeddable directly. Unknown `formats` values return Meta's 400 verbatim.
 
 ### Example
 
@@ -470,7 +470,7 @@ getAdVideoStatus($video_id, $account_id, $ad_account_id): \Zernio\Model\GetAdVid
 
 Get ad video processing status
 
-Reads a video's processing state live from Meta (`GET /{video-id}?fields=status`). Poll this after `POST /v1/ads/videos` with `async: true` until `status` is `ready`; the video is only usable as `video.id` on the create endpoints from then on.  `status` is normalised: `ready`, `error` (Meta's `error` or `expired`), and `processing` for every other Meta state. `platformStatus` carries Meta's raw `video_status` and `processingProgress` Meta's 0-100 percentage when it reports one. Polling every 5 to 10 seconds is plenty.
+Checks whether an uploaded Meta ad video has finished processing and is ready to use in an ad.  Reads a video's processing state live from Meta (`GET /{video-id}?fields=status`). Poll this after `POST /v1/ads/videos` with `async: true` until `status` is `ready`; the video is only usable as `video.id` on the create endpoints from then on.  `status` is normalised: `ready`, `error` (Meta's `error` or `expired`), and `processing` for every other Meta state. `platformStatus` carries Meta's raw `video_status` and `processingProgress` Meta's 0-100 percentage when it reports one. Polling every 5 to 10 seconds is plenty.
 
 ### Example
 
@@ -534,7 +534,7 @@ listAdCreatives($account_id, $ad_account_id, $fields, $limit, $after): \Zernio\M
 
 Creative library
 
-Lists the ad account's creative library (Meta's `/act_X/adcreatives`), rows returned verbatim. The default projection covers id, name, status, object type, thumbnail, object_story_spec / asset_feed_spec and url_tags; `fields` is a raw-passthrough override. Any creative id here is reusable on the create endpoints via `existingCreativeId`.
+Lists the creatives saved in a Meta ad account so you can reuse one in a new ad.  Lists the ad account's creative library (Meta's `/act_X/adcreatives`), rows returned verbatim. The default projection covers id, name, status, object type, thumbnail, object_story_spec / asset_feed_spec and url_tags; `fields` is a raw-passthrough override. Any creative id here is reusable on the create endpoints via `existingCreativeId`.
 
 ### Example
 
@@ -602,7 +602,7 @@ listAdImages($account_id, $ad_account_id, $fields, $limit, $after): \Zernio\Mode
 
 Ad image library
 
-Lists the ad account's image library (Meta's `/act_X/adimages`), rows returned verbatim. The default projection covers hash, url, name, dimensions and status; `fields` is a raw-passthrough override. Any `hash` here is reusable wherever Meta accepts `image_hash` (e.g. `imageHash` on POST /v1/ads/creatives).
+Lists the images in a Meta ad account's library so you can reuse one in a creative.  Lists the ad account's image library (Meta's `/act_X/adimages`), rows returned verbatim. The default projection covers hash, url, name, dimensions and status; `fields` is a raw-passthrough override. Any `hash` here is reusable wherever Meta accepts `image_hash` (e.g. `imageHash` on POST /v1/ads/creatives).
 
 ### Example
 
@@ -670,7 +670,7 @@ listAdVideos($account_id, $ad_account_id, $fields, $limit, $after): \Zernio\Mode
 
 Ad video library
 
-Lists the ad account's video library (Meta's `/act_X/advideos`), rows returned verbatim. The default projection covers id, title, status, poster frames, length and `source` (the playable MP4); `fields` is a raw-passthrough override. Any `id` here is reusable as `video.id` on the create endpoints, so N ads that differ only in copy share one upload.  `source` lets you PLAY a video before picking it, which a poster frame alone can't settle when several videos share a first frame. It is a signed CDN URL that EXPIRES, so treat it as good for preview at selection time only. Never persist it; re-list to get a fresh one.  This is the only way to reach a video uploaded OUTSIDE Zernio (Ads Manager, another tool); videos we uploaded also come back as `creative.videoId` on GET /v1/ads.  Meta transcodes asynchronously, so a row is only usable once `status.video_status` reads `ready`. Upload a new video via POST /v1/ads/videos, or inline via `video.url` on POST /v1/ads/create.
+Lists the videos in a Meta ad account's library, including ones uploaded elsewhere, so you can reuse one across ads.  Lists the ad account's video library (Meta's `/act_X/advideos`), rows returned verbatim. The default projection covers id, title, status, poster frames, length and `source` (the playable MP4); `fields` is a raw-passthrough override. Any `id` here is reusable as `video.id` on the create endpoints, so N ads that differ only in copy share one upload.  `source` lets you PLAY a video before picking it, which a poster frame alone can't settle when several videos share a first frame. It is a signed CDN URL that EXPIRES, so treat it as good for preview at selection time only. Never persist it; re-list to get a fresh one.  This is the only way to reach a video uploaded OUTSIDE Zernio (Ads Manager, another tool); videos we uploaded also come back as `creative.videoId` on GET /v1/ads.  Meta transcodes asynchronously, so a row is only usable once `status.video_status` reads `ready`. Upload a new video via POST /v1/ads/videos, or inline via `video.url` on POST /v1/ads/create.
 
 ### Example
 
@@ -800,7 +800,7 @@ listPartnershipAdContent($account_id, $creator_username, $post_url, $only_allowl
 
 List partnership ad content
 
-Private beta. Lists creator Instagram posts available to the advertiser for Partnership Ads. Supply creatorUsername or postUrl. Requires instagram_branded_content_ads_brand permission and an advertiser Instagram Business Account.
+Lists a creator's Instagram posts you can run as Partnership Ads, looked up by creator or post link (private beta).  Lists creator Instagram posts available to the advertiser for Partnership Ads. Supply creatorUsername or postUrl. Requires instagram_branded_content_ads_brand permission and an advertiser Instagram Business Account.
 
 ### Example
 
@@ -866,7 +866,7 @@ listPartnershipAdPermissions($account_id, $creator_username): \Zernio\Model\List
 
 List partnership permissions
 
-Private beta. Lists granted or pending creator permissions for the advertiser Instagram Business Account. Requires instagram_branded_content_ads_brand permission.
+Lists the creators who have granted, or have pending, permission for your Instagram account to run Partnership Ads with them (private beta).  Lists granted or pending creator permissions for the advertiser Instagram Business Account. Requires instagram_branded_content_ads_brand permission.
 
 ### Example
 
@@ -928,7 +928,7 @@ setPartnershipAdPermission($set_partnership_ad_permission_request): \Zernio\Mode
 
 Set partnership permission
 
-Private beta. Requests permission from a creator or revokes it when revoke is true. Requests require the creator to approve in Instagram. Requires instagram_branded_content_ads_brand permission.
+Asks a creator for permission to run Partnership Ads with their content, or revokes it (private beta).  Requests permission from a creator or revokes it when revoke is true. Requests require the creator to approve in Instagram. Requires instagram_branded_content_ads_brand permission.
 
 ### Example
 
@@ -988,7 +988,7 @@ updateAdCreative($creative_id, $update_ad_creative_request): \Zernio\Model\Updat
 
 Rename a creative
 
-Renames a creative. Creatives are immutable on Meta beyond `name`. For content changes create a new creative (POST /v1/ads/creatives) and swap it onto the ad (PUT /v1/ads/{adId} with `creative`).
+Renames a Meta creative (Meta does not allow other changes, so make a new creative to change its content).  Creatives are immutable on Meta beyond `name`. For content changes create a new creative (POST /v1/ads/creatives) and swap it onto the ad (PUT /v1/ads/{adId} with `creative`).
 
 ### Example
 
@@ -1050,7 +1050,7 @@ uploadAdImage($upload_ad_image_request): \Zernio\Model\UploadAdImage201Response
 
 Upload an ad image from base64
 
-Uploads raw image bytes to the Meta ad account's image library, for callers whose creatives aren't hosted at a public URL. Returns the image `hash` (Meta's identifier for the asset) and the Meta-hosted `url`, which can be used directly as `imageUrl` on the create endpoints. Max 30 MB decoded.
+Uploads an image file to a Meta ad account's library, for creatives that are not hosted at a public URL.  Returns the image `hash` (Meta's identifier for the asset) and the Meta-hosted `url`, which can be used directly as `imageUrl` on the create endpoints. Max 30 MB decoded.
 
 ### Example
 
@@ -1110,7 +1110,7 @@ uploadAdVideo($upload_ad_video_request): \Zernio\Model\UploadAdVideo201Response
 
 Upload an ad video
 
-Standalone ad-video upload (parallel to POST /v1/ads/images), so a video creative can be rendered via POST /v1/ads/preview or attached via `video.id` on POST /v1/ads/create before an ad exists.  Accepts either an https `videoUrl` we download server-side (SSRF-guarded) or raw `videoBase64` bytes; exactly one is required. `videoBase64` is capped by Vercel's body limit, around 4.5 MB payload in practice, so larger videos must come via `videoUrl`.  Returns the Meta `video.id` (reusable wherever `video.id` is accepted) plus Meta's auto-generated poster URL when available. By default the endpoint waits until Meta reports the video ready (chunked upload + transcode can take minutes; the handler runs up to 800 s) and answers 201.  **Async mode.** Send `async: true` to get a 202 as soon as Meta has accepted the bytes, with `video.status: processing`. Then either poll `GET /v1/ads/videos/{videoId}` until `status` is `ready`, or subscribe to the `ad.video.processed` webhook. A create call that references the video while it is still processing waits up to 30 s, then answers 409 `invalid_resource_state` naming the status endpoint. With `videoUrl` the download and byte transfer still happen inside the request; only Meta's transcode is skipped.
+Uploads a video to a Meta ad account from a URL or file, so you can preview it or use it in ads before any ad exists.  Standalone ad-video upload (parallel to POST /v1/ads/images), so a video creative can be rendered via POST /v1/ads/preview or attached via `video.id` on POST /v1/ads/create before an ad exists.  Accepts either an https `videoUrl` we download server-side (SSRF-guarded) or raw `videoBase64` bytes; exactly one is required. `videoBase64` is capped by Vercel's body limit, around 4.5 MB payload in practice, so larger videos must come via `videoUrl`.  Returns the Meta `video.id` (reusable wherever `video.id` is accepted) plus Meta's auto-generated poster URL when available. By default the endpoint waits until Meta reports the video ready (chunked upload + transcode can take minutes; the handler runs up to 800 s) and answers 201.  **Async mode.** Send `async: true` to get a 202 as soon as Meta has accepted the bytes, with `video.status: processing`. Then either poll `GET /v1/ads/videos/{videoId}` until `status` is `ready`, or subscribe to the `ad.video.processed` webhook. A create call that references the video while it is still processing waits up to 30 s, then answers 409 `invalid_resource_state` naming the status endpoint. With `videoUrl` the download and byte transfer still happen inside the request; only Meta's transcode is skipped.
 
 ### Example
 

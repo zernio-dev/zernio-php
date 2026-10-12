@@ -23,7 +23,7 @@ addUsersToAdAudience($audience_id, $add_users_to_ad_audience_request): \Zernio\M
 
 Add users to audience
 
-Upload user data to a customer_list audience. Data is SHA256-hashed server-side before sending to the platform. Email is used on every platform; phone is used on Meta only (other platforms ignore it). On TikTok and Pinterest, the first upload also provisions the audience (deferred create). LinkedIn uploads are full-replace. Max 10,000 users per request.  customer_list only. A LinkedIn `company_list` audience takes company rows, not people: send those to `POST /v1/ads/audiences/{audienceId}/companies`. This endpoint 422s for every other audience type.
+Uploads customer emails (and phone numbers on Meta) to a customer list audience, hashed before they are sent.  Data is SHA256-hashed server-side before sending to the platform. Email is used on every platform; phone is used on Meta only (other platforms ignore it). On TikTok and Pinterest, the first upload also provisions the audience (deferred create). LinkedIn uploads are full-replace. Max 10,000 users per request.  customer_list only. A LinkedIn `company_list` audience takes company rows, not people: send those to `POST /v1/ads/audiences/{audienceId}/companies`. This endpoint 422s for every other audience type.
 
 ### Example
 
@@ -85,7 +85,7 @@ createAdAudience($create_ad_audience_request): \Zernio\Model\CreateAdAudience201
 
 Create custom audience
 
-Create a custom audience. `customer_list` is supported on Meta, Google, X, LinkedIn, TikTok, and Pinterest. `website` (pixel/tag visitors) and `lookalike` are supported on Meta, TikTok, Pinterest and Google. `meta_engagement` is Meta-only, `tiktok_engagement` TikTok-only, `pinterest_engagement` Pinterest-only; `company_list`, `engagement` and `website_retargeting` are LinkedIn-only. A type sent to a platform that does not support it is a 422 `FEATURE_NOT_AVAILABLE`.  Per-platform rules for `website`:  - Meta: `pixelId` required, `retentionDays` 1-180, optional `urlContains` or raw `rule`. `event` is not accepted. - TikTok: `pixelId` required, `retentionDays` one of 7, 14, 30, 60, 90, 180. `event` is a TikTok pixel event   (default `PAGE BROWSE`; also `CLICK BUTTON`, `PIXEL SUBMIT FORM`, `CONTACT`, `DOWNLOAD`,   `PIXEL ADD PAYMENT INFO`, `COMPLETE PAYMENT`, `INITIATE CHECKOUT`, `COMPLETE REGISTRATION`,   `PRODUCT DETAIL PAGE BROWSE`, `PIXEL SEARCH`, `PIXEL ADD TO CART`, `PLACE AN ORDER`,   `PIXEL ADD TO WISHLIST`, `PIXEL SUBSCRIBE`), optional `urlContains`. - Pinterest: `pixelId` is the Pinterest tag id, `retentionDays` 1-540, optional `event` (e.g. `checkout`, `addtocart`).   Pinterest matches URLs exactly, so `urlContains` is a 400 there. - Google: no `pixelId` (the account's Google tag is used), `retentionDays` 1-540, `urlContains`   defaults to `/` (all visitors). Built as a rule-based user list with prepopulation requested.  Per-platform rules for `lookalike`: Meta takes `ratio` (0.01-0.20); Pinterest takes `ratio` in whole percents (0.01-0.10) and `country` US, CA or GB; TikTok and Google take `size` (narrow, balanced, broad) instead of `ratio`. TikTok needs a seed with at least 1,000 matched people. `saved_targeting` stores a reusable TargetingSpec (no member upload, no adAccountId) that you reference later via `savedTargetingId` on `POST /v1/ads/create`.  How the audience gets filled depends on the type:  - `customer_list` is created empty. Add members with `POST /v1/ads/audiences/{audienceId}/users`.   On TikTok and Pinterest the audience is provisioned lazily on that first upload (until then its status is `pending`). - `company_list` is filled AT CREATION from the `companies` array below, which is required. To change the list   afterwards send the new full list to `POST /v1/ads/audiences/{audienceId}/companies` (a replace, not a merge).   The `/users` endpoint rejects these audiences with a 422. - `website`, `website_retargeting`, `engagement`, `meta_engagement`, `tiktok_engagement`, `pinterest_engagement`   and `lookalike` fill themselves from the pixel,   engagement source or seed audience you point them at. They take no member upload at all.  Create is not idempotent, never auto-retry.
+Creates a custom audience from a customer list, website visitors, a lookalike, or people who engaged with your content.  `customer_list` is supported on Meta, Google, X, LinkedIn, TikTok, and Pinterest. `website` (pixel/tag visitors) and `lookalike` are supported on Meta, TikTok, Pinterest and Google. `meta_engagement` is Meta-only, `tiktok_engagement` TikTok-only, `pinterest_engagement` Pinterest-only; `company_list`, `engagement` and `website_retargeting` are LinkedIn-only. A type sent to a platform that does not support it is a 422 `FEATURE_NOT_AVAILABLE`.  Per-platform rules for `website`:  - Meta: `pixelId` required, `retentionDays` 1-180, optional `urlContains` or raw `rule`. `event` is not accepted. - TikTok: `pixelId` required, `retentionDays` one of 7, 14, 30, 60, 90, 180. `event` is a TikTok pixel event   (default `PAGE BROWSE`; also `CLICK BUTTON`, `PIXEL SUBMIT FORM`, `CONTACT`, `DOWNLOAD`,   `PIXEL ADD PAYMENT INFO`, `COMPLETE PAYMENT`, `INITIATE CHECKOUT`, `COMPLETE REGISTRATION`,   `PRODUCT DETAIL PAGE BROWSE`, `PIXEL SEARCH`, `PIXEL ADD TO CART`, `PLACE AN ORDER`,   `PIXEL ADD TO WISHLIST`, `PIXEL SUBSCRIBE`), optional `urlContains`. - Pinterest: `pixelId` is the Pinterest tag id, `retentionDays` 1-540, optional `event` (e.g. `checkout`, `addtocart`).   Pinterest matches URLs exactly, so `urlContains` is a 400 there. - Google: no `pixelId` (the account's Google tag is used), `retentionDays` 1-540, `urlContains`   defaults to `/` (all visitors). Built as a rule-based user list with prepopulation requested.  Per-platform rules for `lookalike`: Meta takes `ratio` (0.01-0.20); Pinterest takes `ratio` in whole percents (0.01-0.10) and `country` US, CA or GB; TikTok and Google take `size` (narrow, balanced, broad) instead of `ratio`. TikTok needs a seed with at least 1,000 matched people. `saved_targeting` stores a reusable TargetingSpec (no member upload, no adAccountId) that you reference later via `savedTargetingId` on `POST /v1/ads/create`.  How the audience gets filled depends on the type:  - `customer_list` is created empty. Add members with `POST /v1/ads/audiences/{audienceId}/users`.   On TikTok and Pinterest the audience is provisioned lazily on that first upload (until then its status is `pending`). - `company_list` is filled AT CREATION from the `companies` array below, which is required. To change the list   afterwards send the new full list to `POST /v1/ads/audiences/{audienceId}/companies` (a replace, not a merge).   The `/users` endpoint rejects these audiences with a 422. - `website`, `website_retargeting`, `engagement`, `meta_engagement`, `tiktok_engagement`, `pinterest_engagement`   and `lookalike` fill themselves from the pixel,   engagement source or seed audience you point them at. They take no member upload at all.  Create is not idempotent, never auto-retry.
 
 ### Example
 
@@ -145,7 +145,7 @@ deleteAdAudience($audience_id): \Zernio\Model\DeleteAccountGroup200Response
 
 Delete custom audience
 
-Removes the audience on its ad platform, then deletes the Zernio record. Meta, Google, TikTok, LinkedIn list and engagement segments, and X are deleted; Pinterest audiences and LinkedIn `website_retargeting` segments are archived, which is how those platforms remove them. `saved_targeting` audiences exist only on Zernio, so only the local record is removed.  If the platform refuses, the error is returned and the Zernio record is kept, so a retry is safe. An audience the platform no longer has counts as removed. Google Ads does not allow removing lookalike lists through its API, so those return 422 `FEATURE_NOT_AVAILABLE`.
+Removes a custom audience from its ad platform (archiving it where the platform does not delete).  Removes the audience on its ad platform, then deletes the Zernio record. Meta, Google, TikTok, LinkedIn list and engagement segments, and X are deleted; Pinterest audiences and LinkedIn `website_retargeting` segments are archived, which is how those platforms remove them. `saved_targeting` audiences exist only on Zernio, so only the local record is removed.  If the platform refuses, the error is returned and the Zernio record is kept, so a retry is safe. An audience the platform no longer has counts as removed. Google Ads does not allow removing lookalike lists through its API, so those return 422 `FEATURE_NOT_AVAILABLE`.
 
 ### Example
 
@@ -205,7 +205,7 @@ getAdAudience($audience_id): \Zernio\Model\GetAdAudience200Response
 
 Get audience details
 
-Returns the local audience record and fresh data from Meta (if available).
+Shows a custom audience's details, including its latest data from the ad platform when available.  Returns the local audience record and fresh data from Meta (if available).
 
 ### Example
 
@@ -265,7 +265,7 @@ listAdAudiences($account_id, $ad_account_id, $platform, $type): \Zernio\Model\Li
 
 List custom audiences
 
-Returns custom audiences for the given ad account. Supports Meta, Google, TikTok, Pinterest, LinkedIn, and X.
+Lists the custom audiences in an ad account so you can reuse them for targeting.  Supports Meta, Google, TikTok, Pinterest, LinkedIn, and X.
 
 ### Example
 
@@ -393,7 +393,7 @@ updateAdAudience($audience_id, $update_ad_audience_request): \Zernio\Model\Creat
 
 Update an audience
 
-Update an audience. `saved_targeting` audiences accept `name`, `description`, and `spec` (full replacement, no merge, Zernio-only, no platform call). Platform audiences (uploaded/website/lookalike) accept `name` and `description` only, updated on the platform first and then mirrored locally; their rules are immutable, so `spec` returns 400 for them. Platform audience updates are Meta-only for now (other platforms return 501). Ads already created from a saved_targeting audience are unaffected, they snapshot the targeting at creation.
+Renames or redescribes an audience, or replaces a saved targeting audience's rules; platform audience rules cannot change.  `saved_targeting` audiences accept `name`, `description`, and `spec` (full replacement, no merge, Zernio-only, no platform call). Platform audiences (uploaded/website/lookalike) accept `name` and `description` only, updated on the platform first and then mirrored locally; their rules are immutable, so `spec` returns 400 for them. Platform audience updates are Meta-only for now (other platforms return 501). Ads already created from a saved_targeting audience are unaffected, they snapshot the targeting at creation.
 
 ### Example
 

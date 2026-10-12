@@ -35,7 +35,7 @@ batchAdCatalogProducts($catalog_id, $batch_ad_catalog_products_request): \Zernio
 
 Create, update or delete products in bulk
 
-Up to 5000 CREATE / UPDATE / DELETE requests keyed by `retailerId`, processed asynchronously by Meta. Returns handles; poll GET /v1/ads/catalogs/{catalogId}/batches/{handle} for the outcome and per-item errors. CREATE requests need name, url, imageUrl, price and currency.
+Creates, updates or deletes up to 5,000 catalog products in one request, processed in the background by Meta.  Up to 5000 CREATE / UPDATE / DELETE requests keyed by `retailerId`, processed asynchronously by Meta. Returns handles; poll GET /v1/ads/catalogs/{catalogId}/batches/{handle} for the outcome and per-item errors. CREATE requests need name, url, imageUrl, price and currency.
 
 ### Example
 
@@ -97,7 +97,7 @@ createAdCatalog($create_ad_catalog_request): \Zernio\Model\CreateAdCatalog201Res
 
 Create a Meta product catalog
 
-Creates a Meta Commerce catalog in the business portfolio (resolved like GET). The same catalog serves Advantage+ catalog ads, Instagram/Facebook Shops and the WhatsApp Business catalog: link it to a WhatsApp number with POST /v1/whatsapp/catalogs. Needs catalog_management on the Meta login.
+Creates a Meta product catalog that can power catalog ads, Instagram and Facebook Shops, and a WhatsApp Business catalog.  Creates a Meta Commerce catalog in the business portfolio (resolved like GET). The same catalog serves Advantage+ catalog ads, Instagram/Facebook Shops and the WhatsApp Business catalog: link it to a WhatsApp number with POST /v1/whatsapp/catalogs. Needs catalog_management on the Meta login.
 
 ### Example
 
@@ -157,7 +157,7 @@ createAdCatalogFeed($catalog_id, $create_ad_catalog_feed_request): \Zernio\Model
 
 Create a product feed
 
-A feed pulls a CSV/TSV/XML product file from a URL. With `schedule` Meta fetches it on a cadence; without it, trigger fetches with POST /v1/ads/catalogs/{catalogId}/feeds/{feedId}/uploads.
+Creates a product feed that imports a CSV, TSV or XML product file into a Meta catalog, on a schedule or on demand.  A feed pulls a CSV/TSV/XML product file from a URL. With `schedule` Meta fetches it on a cadence; without it, trigger fetches with POST /v1/ads/catalogs/{catalogId}/feeds/{feedId}/uploads.
 
 ### Example
 
@@ -219,7 +219,7 @@ createAdCatalogFeedUpload($catalog_id, $feed_id, $create_ad_catalog_feed_upload_
 
 Fetch a feed file now
 
-Asks Meta to fetch the product file at `url` into the feed. Processing is asynchronous: read the outcome with GET uploads.
+Asks Meta to import a product file into a feed right away instead of waiting for its schedule.  Asks Meta to fetch the product file at `url` into the feed. Processing is asynchronous: read the outcome with GET uploads.
 
 ### Example
 
@@ -283,7 +283,7 @@ createAdCatalogProduct($catalog_id, $create_ad_catalog_product_request): \Zernio
 
 Add a product to a catalog
 
-Adds one product. `retailerId` is your SKU and stays the handle for later lookups and batch updates. For many products at once use POST /v1/ads/catalogs/{catalogId}/products/batch. Needs catalog_management on the Meta login.
+Adds a single product to a Meta catalog, keyed by your own SKU for later lookups and updates.  `retailerId` is your SKU and stays the handle for later lookups and batch updates. For many products at once use POST /v1/ads/catalogs/{catalogId}/products/batch. Needs catalog_management on the Meta login.
 
 ### Example
 
@@ -345,7 +345,7 @@ createAdCatalogProductSet($catalog_id, $create_ad_catalog_product_set_request): 
 
 Create a product set
 
-A product set is a filter over the catalog, e.g. `{\"retailer_id\": {\"is_any\": [\"sku-1\", \"sku-2\"]}}` or `{\"brand\": {\"i_contains\": \"acme\"}}` (Meta's product set filter syntax).
+Creates a product set, a filtered group of catalog products (by SKU, brand and so on) to promote in catalog ads.  A product set is a filter over the catalog, e.g. `{\"retailer_id\": {\"is_any\": [\"sku-1\", \"sku-2\"]}}` or `{\"brand\": {\"i_contains\": \"acme\"}}` (Meta's product set filter syntax).
 
 ### Example
 
@@ -407,7 +407,7 @@ deleteAdCatalog($catalog_id, $account_id, $catalog_account_id): \Zernio\Model\De
 
 Delete a product catalog
 
-Deletes the catalog and every product in it on Meta. Ads and WhatsApp numbers that use it lose their catalog.
+Deletes a Meta product catalog and all its products, removing it from any ads or WhatsApp numbers that use it.  Ads and WhatsApp numbers that use it lose their catalog.
 
 ### Example
 
@@ -470,6 +470,8 @@ deleteAdCatalogProduct($catalog_id, $product_id, $account_id, $catalog_account_i
 ```
 
 Delete a product
+
+Removes one product from a Meta catalog.
 
 ### Example
 
@@ -535,6 +537,8 @@ deleteAdCatalogProductSet($catalog_id, $product_set_id, $account_id, $catalog_ac
 
 Delete a product set
 
+Deletes a product set from a Meta catalog.
+
 ### Example
 
 ```php
@@ -599,6 +603,8 @@ getAdCatalog($catalog_id, $account_id, $catalog_account_id): \Zernio\Model\Creat
 
 Get a product catalog
 
+Shows one Meta product catalog and its details.
+
 ### Example
 
 ```php
@@ -660,6 +666,8 @@ getAdCatalogBatch($catalog_id, $handle, $account_id, $catalog_account_id): \Zern
 ```
 
 Get a bulk request's status
+
+Shows whether a bulk catalog product request has finished, with any per-product errors.
 
 ### Example
 
@@ -725,6 +733,8 @@ getAdCatalogProduct($catalog_id, $product_id, $account_id, $catalog_account_id):
 
 Get a product
 
+Shows one product from a Meta catalog.
+
 ### Example
 
 ```php
@@ -788,6 +798,8 @@ listAdCatalogFeedUploads($catalog_id, $feed_id, $account_id, $catalog_account_id
 ```
 
 List a feed's uploads
+
+Lists a product feed's past file imports so you can check how each one went.
 
 ### Example
 
@@ -853,6 +865,8 @@ listAdCatalogFeeds($catalog_id, $account_id, $catalog_account_id): \Zernio\Model
 
 List a catalog's product feeds
 
+Lists the product feeds that keep a Meta catalog filled from your product files.
+
 ### Example
 
 ```php
@@ -915,7 +929,7 @@ listAdCatalogProductSets($catalog_id, $account_id, $catalog_account_id): \Zernio
 
 List a catalog's product sets
 
-Lists a Meta product catalog's product sets, the unit a catalog ad promotes. Pass the chosen set id, not the parent catalog id, as `promotedObject.productSetId` on POST /v1/ads/create with `goal: catalog_sales`.
+Lists a Meta catalog's product sets, the groups of products a catalog ad promotes.  Pass the chosen set id, not the parent catalog id, as `promotedObject.productSetId` on POST /v1/ads/create with `goal: catalog_sales`.
 
 ### Example
 
@@ -979,7 +993,7 @@ listAdCatalogProducts($catalog_id, $account_id, $catalog_account_id, $limit, $af
 
 List a catalog's products
 
-Pages through the catalog's products. Filter by your own `retailerId` to look one up. `price` and `salePrice` come back formatted by Meta (for example \"€49.90\").
+Lists the products in a Meta catalog, or looks one up by your own SKU.  Filter by your own `retailerId` to look one up. `price` and `salePrice` come back formatted by Meta (for example \"€49.90\").
 
 ### Example
 
@@ -1049,7 +1063,7 @@ listAdCatalogs($account_id, $catalog_account_id, $ad_account_id, $business_id): 
 
 List Meta product catalogs
 
-Lists the Meta Commerce catalogs of a business portfolio (owned + agency-shared). The business comes from `businessId`, else the ad account's owner (`adAccountId`), else the WhatsApp Business Account's owner when `accountId` is a WhatsApp connection, else the only business the Meta login can see. Reads work with scopes customers already granted.
+Lists the Meta product catalogs a business portfolio owns or has been shared, for catalog and shopping ads.  The business comes from `businessId`, else the ad account's owner (`adAccountId`), else the WhatsApp Business Account's owner when `accountId` is a WhatsApp connection, else the only business the Meta login can see. Reads work with scopes customers already granted.
 
 ### Example
 
@@ -1115,7 +1129,7 @@ updateAdCatalogProduct($catalog_id, $product_id, $update_ad_catalog_product_requ
 
 Update a product
 
-Partial update: only the fields sent change. `retailerId` cannot change.
+Changes some fields of a catalog product, such as its price or image, leaving the rest as they are.  `retailerId` cannot change.
 
 ### Example
 
@@ -1178,6 +1192,8 @@ updateAdCatalogProductSet($catalog_id, $product_set_id, $update_ad_catalog_produ
 ```
 
 Update a product set
+
+Changes a product set's name or the filter that decides which products it includes.
 
 ### Example
 

@@ -27,7 +27,7 @@ createAdInsightsReport($create_ad_insights_report_request): \Zernio\Model\Create
 
 Submit async insights report
 
-Submits an asynchronous Meta insights report. Same query surface as GET /v1/ads/insights, but in the JSON body; Meta processes the report server-side, which is the right choice for long ranges or large accounts where the sync query is slow or rate-limited. Returns a `reportRunId` to poll via GET /v1/ads/insights/reports/{reportRunId}.
+Starts a background Meta insights report for long date ranges or large accounts where a live query would be too slow.  Same query surface as GET /v1/ads/insights, but in the JSON body; Meta processes the report server-side, which is the right choice for long ranges or large accounts where the sync query is slow or rate-limited. Returns a `reportRunId` to poll via GET /v1/ads/insights/reports/{reportRunId}.
 
 ### Example
 
@@ -87,7 +87,7 @@ generateKeywordHistoricalMetrics($generate_keyword_historical_metrics_request): 
 
 Get historical keyword metrics
 
-Google Ads only. Runs Keyword Planner's generateKeywordHistoricalMetrics for up to 1,000 exact keywords: historical search volume, competition and top-of-page bid ranges, plus averageCpcMicros when includeAverageCpc is set. Rows come back verbatim; counters are int64s encoded as strings, bid/CPC values are micros of the account currency.
+Gets historical search volume, competition and bid ranges for up to 1,000 keywords from Google Keyword Planner.  Google Ads only. Runs Keyword Planner's generateKeywordHistoricalMetrics for up to 1,000 exact keywords: historical search volume, competition and top-of-page bid ranges, plus averageCpcMicros when includeAverageCpc is set. Rows come back verbatim; counters are int64s encoded as strings, bid/CPC values are micros of the account currency.
 
 ### Example
 
@@ -147,7 +147,7 @@ generateKeywordIdeas($generate_keyword_ideas_request): \Zernio\Model\GenerateKey
 
 Generate keyword ideas
 
-Google Ads only. Runs Keyword Planner's generateKeywordIdeas from seed keywords, a seed URL, or both, returning idea rows verbatim (avgMonthlySearches, competition, competitionIndex, top-of-page bid micros, monthlySearchVolumes). Counters are int64s encoded as strings; bid values are micros of the account currency. Omitting `countries` targets worldwide.
+Suggests new keywords from seed keywords or a website using Google Keyword Planner, with search volume, competition and bid estimates.  Google Ads only. Runs Keyword Planner's generateKeywordIdeas from seed keywords, a seed URL, or both, returning idea rows verbatim (avgMonthlySearches, competition, competitionIndex, top-of-page bid micros, monthlySearchVolumes). Counters are int64s encoded as strings; bid values are micros of the account currency. Omitting `countries` targets worldwide.
 
 ### Example
 
@@ -207,7 +207,7 @@ getAdAnalytics($ad_id, $from_date, $to_date, $breakdowns): \Zernio\Model\AdAnaly
 
 Get ad analytics
 
-Returns detailed performance analytics for an ad. Includes summary metrics, a daily timeline over the requested date range, and optional demographic breakdowns (Meta and TikTok only). If no date range is provided, defaults to the last 90 days. Date range is capped at 730 days max.
+Returns one ad's performance summary and daily timeline, with optional audience breakdowns on Meta and TikTok.  Includes summary metrics, a daily timeline over the requested date range, and optional demographic breakdowns (Meta and TikTok only). If no date range is provided, defaults to the last 90 days. Date range is capped at 730 days max.
 
 ### Example
 
@@ -273,7 +273,7 @@ getAdInsightsReport($report_run_id, $account_id, $limit, $after): \Zernio\Model\
 
 Poll an async insights report run
 
-Status and results for a report run created via POST /v1/ads/insights/reports. While the job runs, returns `status` and `percentCompletion`. Once `status` is \"Job Completed\" the response also carries a `data` page, cursor-paginated via `limit` / `after`.
+Checks progress of a background Meta insights report and returns its results once it has finished.  Status and results for a report run created via POST /v1/ads/insights/reports. While the job runs, returns `status` and `percentCompletion`. Once `status` is \"Job Completed\" the response also carries a `data` page, cursor-paginated via `limit` / `after`.
 
 ### Example
 
@@ -339,7 +339,7 @@ getAdsSearchTerms($account_id, $ad_account_id, $customer_id, $from_date, $to_dat
 
 Google Ads search terms report
 
-The actual search queries that triggered your ads, with matched-keyword status and spend metrics, the raw material for wasted-spend analysis and negative-keyword lists. Reads Google's `search_term_view`, cached for the quota window; defaults to the last 30 days. Rows are ordered by cost, descending. Draws on the shared Google Ads operations budget. The response carries `cachedAt` and `stale`, set when a quota-exhausted call falls back to the last-good copy instead of a live read.
+Shows the actual Google searches that triggered your ads, with spend and results, so you can spot wasted spend and add negative keywords.  The actual search queries that triggered your ads, with matched-keyword status and spend metrics, the raw material for wasted-spend analysis and negative-keyword lists. Reads Google's `search_term_view`, cached for the quota window; defaults to the last 30 days. Rows are ordered by cost, descending. Draws on the shared Google Ads operations budget. The response carries `cachedAt` and `stale`, set when a quota-exhausted call falls back to the last-good copy instead of a live read.
 
 ### Example
 
@@ -415,7 +415,7 @@ getCampaignAnalytics($campaign_id, $platform, $from_date, $to_date, $breakdowns)
 
 Get campaign analytics
 
-Returns performance analytics for a whole campaign in one call: summary metrics, a daily timeline over the requested date range (summed across the campaign's ads), and optional demographic breakdowns. Breakdowns are fetched live from Meta at the campaign level (one call per dimension, no per-ad fan-out), so an agency dashboard gets campaign-level age/gender/etc. without summing thousands of per-ad reads. `campaignId` is the platform campaign id; pass `platform` when a campaign id could be ambiguous across platforms. If no date range is provided, defaults to the last 90 days. Date range is capped at 730 days max. Google adds searchImpressionShare, searchBudgetLostImpressionShare, searchRankLostImpressionShare, searchTopImpressionShare and searchAbsoluteTopImpressionShare under analytics.summary for the requested inclusive range. These ratios are queried together without daily segmentation and cached for 10 minutes. Unavailable values are null. analytics.impressionShareCache reports cachedAt and stale independently of synced metrics.
+Returns a campaign's performance summary and daily timeline, with optional breakdowns by age, gender and other audience dimensions.  Returns performance analytics for a whole campaign in one call: summary metrics, a daily timeline over the requested date range (summed across the campaign's ads), and optional demographic breakdowns. Breakdowns are fetched live from Meta at the campaign level (one call per dimension, no per-ad fan-out), so an agency dashboard gets campaign-level age/gender/etc. without summing thousands of per-ad reads. `campaignId` is the platform campaign id; pass `platform` when a campaign id could be ambiguous across platforms. If no date range is provided, defaults to the last 90 days. Date range is capped at 730 days max. Google adds searchImpressionShare, searchBudgetLostImpressionShare, searchRankLostImpressionShare, searchTopImpressionShare and searchAbsoluteTopImpressionShare under analytics.summary for the requested inclusive range. These ratios are queried together without daily segmentation and cached for 10 minutes. Unavailable values are null. analytics.impressionShareCache reports cachedAt and stale independently of synced metrics.
 
 ### Example
 
@@ -559,7 +559,7 @@ listLocalServicesLeadConversations($lead_id, $account_id, $ad_account_id, $custo
 
 List lead conversations
 
-Conversation entries of one Local Services lead: phone calls (duration, recording URL) and messages (text, attachment URLs), oldest first. Read live from `local_services_lead_conversation`, always scoped to a single lead. Call-recording URLs require read access on the Google Ads account. Draws on the shared Google Ads operations budget.
+Shows the calls (with recordings) and messages exchanged with one Google Local Services lead, oldest first.  Conversation entries of one Local Services lead: phone calls (duration, recording URL) and messages (text, attachment URLs), oldest first. Read live from `local_services_lead_conversation`, always scoped to a single lead. Call-recording URLs require read access on the Google Ads account. Draws on the shared Google Ads operations budget.
 
 ### Example
 
@@ -627,7 +627,7 @@ listLocalServicesLeads($account_id, $ad_account_id, $customer_id, $from_date, $t
 
 Google Local Services Ads leads
 
-Leads generated by Local Services Ads (phone calls, messages, bookings), read live from Google's `local_services_lead` resource, newest first. No persistence: Google is the source of truth and lead/credit statuses keep changing server-side. Google never returns healthcare-category leads, and `WIPED_OUT` leads arrive with contact erased (`contact` is null). Draws on the shared Google Ads operations budget.
+Lists the calls, messages and bookings your Google Local Services Ads generated, newest first.  Leads generated by Local Services Ads (phone calls, messages, bookings), read live from Google's `local_services_lead` resource, newest first. No persistence: Google is the source of truth and lead/credit statuses keep changing server-side. Google never returns healthcare-category leads, and `WIPED_OUT` leads arrive with contact erased (`contact` is null). Draws on the shared Google Ads operations budget.
 
 ### Example
 
@@ -703,7 +703,7 @@ queryAdInsights($account_id, $object_id, $query, $ad_account_id, $report_type, $
 
 Flexible live insights query
 
-Live, flexible insights query. The account's platform picks the contract:  **Meta (facebook/instagram)**: forwards caller-chosen `fields`, `breakdowns` and `filtering` to any Meta insights node and returns Meta's rows verbatim. `objectId` (required) selects the node; `level` sets row granularity. Semantic validation is Meta's: an unknown field or invalid breakdown combination returns a 400 carrying Meta's message. For long ranges or agency-scale accounts prefer the async variant (POST /v1/ads/insights/reports).  **Google Ads (googleads)**: raw GAQL passthrough. Send any read-only GAQL SELECT via `query` (campaign/keyword/search-term/geo/demographic/asset/shopping resources, `change_event`, any `segments.*`) and rows come back verbatim (camelCase, counters as strings). Results are paged at a fixed 10,000 rows; follow `paging.nextPageToken` with `pageToken`. `adAccountId` (alias `customerId`) is only needed when the connection has several Google Ads accounts. Semantic validation is Google's: an invalid query returns a 400 carrying Google's message (note: selecting `segments.date` requires a finite date filter).  Queries run against Google Ads API **v25**, so write GAQL against the v25 field reference. One exception is translated for backward compatibility: the legacy `campaign.start_date` / `campaign.end_date` (removed by Google in v23) are rewritten to `campaign.start_date_time` / `campaign.end_date_time`, and rows still carry `campaign.startDate` / `campaign.endDate` as `YYYY-MM-DD`. In WHERE, `=`, `<`, `<=`, `>`, `>=`, `BETWEEN` and `IS [NOT] NULL` against a `'YYYY-MM-DD'` literal are translated; any other form returns Google's 400. New code should select the `_date_time` fields directly.  **TikTok (tiktok/tiktokads)**: passthrough of TikTok's synchronous report (`/report/integrated/get/`). Send `adAccountId`, `dataLevel`, `dimensions`, `metrics`, `fromDate`/`toDate` (TikTok caps the span at 365 days) and optionally `filtering` in the same `[{\"field\", \"operator\", \"value\"}]` shape as Meta (operator is TikTok's `filter_type`, e.g. `IN`; array values are JSON-encoded for TikTok). Rows come back verbatim as `{ dimensions, metrics }` with page-number paging.  *De-duplicated reach across a set of campaigns, ad groups or ads*: filter the set and group by `country_code` instead of the entity id. TikTok then counts each person once across the whole set and range, per country. Example, two campaigns for a month: `dataLevel=AUCTION_CAMPAIGN&dimensions=country_code&metrics=reach,impressions,frequency&fromDate=2026-09-01&toDate=2026-09-30&filtering=[{\"field\":\"campaign_ids\",\"operator\":\"IN\",\"value\":[\"1876574798182050\",\"1876575504573650\"]}]`. For a set of ads use `dataLevel=AUCTION_AD` with `ad_ids`. A filter on a finer entity than `dataLevel` (e.g. `ad_ids` at `AUCTION_CAMPAIGN`) returns 400: TikTok would otherwise widen it to every parent entity containing those ids. When the set delivers in several countries, reach is per country; summing the rows counts a person reached in two countries twice. `AUCTION_ADVERTISER` rejects entity filters.
+Runs a custom performance query against Meta, Google Ads or TikTok and returns the platform's rows as is, for reports the fixed endpoints don't cover.  The account's platform picks the contract:  **Meta (facebook/instagram)**: forwards caller-chosen `fields`, `breakdowns` and `filtering` to any Meta insights node and returns Meta's rows verbatim. `objectId` (required) selects the node; `level` sets row granularity. Semantic validation is Meta's: an unknown field or invalid breakdown combination returns a 400 carrying Meta's message. For long ranges or agency-scale accounts prefer the async variant (POST /v1/ads/insights/reports).  **Google Ads (googleads)**: raw GAQL passthrough. Send any read-only GAQL SELECT via `query` (campaign/keyword/search-term/geo/demographic/asset/shopping resources, `change_event`, any `segments.*`) and rows come back verbatim (camelCase, counters as strings). Results are paged at a fixed 10,000 rows; follow `paging.nextPageToken` with `pageToken`. `adAccountId` (alias `customerId`) is only needed when the connection has several Google Ads accounts. Semantic validation is Google's: an invalid query returns a 400 carrying Google's message (note: selecting `segments.date` requires a finite date filter).  Queries run against Google Ads API **v25**, so write GAQL against the v25 field reference. One exception is translated for backward compatibility: the legacy `campaign.start_date` / `campaign.end_date` (removed by Google in v23) are rewritten to `campaign.start_date_time` / `campaign.end_date_time`, and rows still carry `campaign.startDate` / `campaign.endDate` as `YYYY-MM-DD`. In WHERE, `=`, `<`, `<=`, `>`, `>=`, `BETWEEN` and `IS [NOT] NULL` against a `'YYYY-MM-DD'` literal are translated; any other form returns Google's 400. New code should select the `_date_time` fields directly.  **TikTok (tiktok/tiktokads)**: passthrough of TikTok's synchronous report (`/report/integrated/get/`). Send `adAccountId`, `dataLevel`, `dimensions`, `metrics`, `fromDate`/`toDate` (TikTok caps the span at 365 days) and optionally `filtering` in the same `[{\"field\", \"operator\", \"value\"}]` shape as Meta (operator is TikTok's `filter_type`, e.g. `IN`; array values are JSON-encoded for TikTok). Rows come back verbatim as `{ dimensions, metrics }` with page-number paging.  *De-duplicated reach across a set of campaigns, ad groups or ads*: filter the set and group by `country_code` instead of the entity id. TikTok then counts each person once across the whole set and range, per country. Example, two campaigns for a month: `dataLevel=AUCTION_CAMPAIGN&dimensions=country_code&metrics=reach,impressions,frequency&fromDate=2026-09-01&toDate=2026-09-30&filtering=[{\"field\":\"campaign_ids\",\"operator\":\"IN\",\"value\":[\"1876574798182050\",\"1876575504573650\"]}]`. For a set of ads use `dataLevel=AUCTION_AD` with `ad_ids`. A filter on a finer entity than `dataLevel` (e.g. `ad_ids` at `AUCTION_CAMPAIGN`) returns 400: TikTok would otherwise widen it to every parent entity containing those ids. When the set delivers in several countries, reach is per country; summing the rows counts a person reached in two countries twice. `AUCTION_ADVERTISER` rejects entity filters.
 
 ### Example
 

@@ -79,7 +79,7 @@ addAccountCallouts($add_account_callouts_request): \Zernio\Model\AddAccountCallo
 
 Add account callouts
 
-Creates assets and customer_asset links for this Google customer. Links apply at account level.
+Creates callouts and attaches them at account level in Google Ads so they can show on ads across all campaigns.  Creates assets and customer_asset links for this Google customer. Links apply at account level.
 
 ### Example
 
@@ -139,7 +139,7 @@ addAccountSitelinks($add_account_sitelinks_request): \Zernio\Model\AddAccountSit
 
 Add account sitelinks
 
-Creates assets and customer_asset links for this Google customer. Links apply at account level.
+Creates sitelinks and attaches them at account level in Google Ads so they can show on ads across all campaigns.  Creates assets and customer_asset links for this Google customer. Links apply at account level.
 
 ### Example
 
@@ -199,7 +199,7 @@ addAccountStructuredSnippets($add_account_structured_snippets_request): \Zernio\
 
 Add account snippets
 
-Creates assets and customer_asset links for this Google customer. Links apply at account level.
+Creates structured snippets and attaches them at account level in Google Ads so they can show on ads across all campaigns.  Creates assets and customer_asset links for this Google customer. Links apply at account level.
 
 ### Example
 
@@ -259,7 +259,7 @@ assignAdAccountUser($assign_ad_account_user_request): \Zernio\Model\AssignAdAcco
 
 Assign a user to an ad account
 
-Gives a person of the portfolio tasks on the ad account. `MANAGE` is admin, `ADVERTISE` creates and edits ads, `ANALYZE` reads reports, `DRAFT` edits drafts only. Assigning an already assigned user replaces their task set.
+Gives a person in your business portfolio access to a Meta ad account, as admin, advertiser, analyst or draft editor.  `MANAGE` is admin, `ADVERTISE` creates and edits ads, `ANALYZE` reads reports, `DRAFT` edits drafts only. Assigning an already assigned user replaces their task set.
 
 ### Example
 
@@ -319,7 +319,7 @@ assignPageUser($assign_page_user_request): \Zernio\Model\AssignPageUser201Respon
 
 Assign a user to a Page
 
-Gives a person of the portfolio tasks on a Page the portfolio owns or was granted as a partner. Meta does not assign partner admins automatically, so after an owner shares a Page the partner calls this for the people whose tokens will advertise for it. `ADVERTISE` is what ad creation needs. Assigning an already assigned user replaces their task set.
+Gives a person in your business portfolio tasks on a Facebook Page, such as advertising, so they can run ads for it.  Gives a person of the portfolio tasks on a Page the portfolio owns or was granted as a partner. Meta does not assign partner admins automatically, so after an owner shares a Page the partner calls this for the people whose tokens will advertise for it. `ADVERTISE` is what ad creation needs. Assigning an already assigned user replaces their task set.
 
 ### Example
 
@@ -379,7 +379,7 @@ attachAdLabel($label_id, $google_ad_label_assignments): \Zernio\Model\AttachAdLa
 
 Attach a Google Ads label
 
-Attaches the label to campaigns, ad groups, ads and keywords (Google CampaignLabel, AdGroupLabel, AdGroupAdLabel and AdGroupCriterionLabel) in one mutate. Idempotent: a target that already carries the label is counted in `unchanged` instead of failing the call. All ids are Google's own: ads and keywords use the composite id Google puts in their resource names, `{adGroupId}~{adId}` and `{adGroupId}~{criterionId}` (the keyword form is the tail of `resourceName` on `GET /v1/ads/keywords`).
+Attaches a Google Ads label to campaigns, ad groups, ads and keywords in one call, skipping any that already have it.  Attaches the label to campaigns, ad groups, ads and keywords (Google CampaignLabel, AdGroupLabel, AdGroupAdLabel and AdGroupCriterionLabel) in one mutate. Idempotent: a target that already carries the label is counted in `unchanged` instead of failing the call. All ids are Google's own: ads and keywords use the composite id Google puts in their resource names, `{adGroupId}~{adId}` and `{adGroupId}~{criterionId}` (the keyword form is the tail of `resourceName` on `GET /v1/ads/keywords`).
 
 ### Example
 
@@ -441,7 +441,7 @@ createAdAccount($create_ad_account_request): \Zernio\Model\CreateAdAccount201Res
 
 Create Meta ad account
 
-Creates a durable Meta ad account in the end user's own business portfolio using their connected Meta Ads token. Requires an active metaads accountId, Ads access, business_management permission and business admin access. Discover portfolios with GET /v1/ads/businesses. System-user tokens may return an empty businesses list; supply the known business ID in that case.  The self-serve account starts without a payment method. The user must add a payment method in Ads Manager before ads can deliver. Zernio cannot add payment methods. Meta may require business verification and limits how many accounts a business can create. Closing an account does not guarantee more capacity. An ad account cannot truly be deleted, even after closing it and removing it from a business.  timezoneId is Meta's numeric ID, not an IANA timezone name. Select it from https://developers.facebook.com/docs/marketing-api/reference/ad-account/timezone-ids/. For example, 1 is America/Los_Angeles. Meta validates supported currencies and IDs. endAdvertiser, mediaAgency and partner default to NONE for the self-serve flow.  The new account is added atomically to an existing scoped ad-account allowlist. Unrestricted connections stay unrestricted. Reconnecting the same Meta identity preserves this scope unless a caller explicitly replaces it. Discovery is nudged immediately. Use the returned adAccountId with the existing ads endpoints.  This operation is not idempotent and Zernio never automatically retries it. Unknown body fields are rejected. No validateOnly or dry-run option is supported. After a timeout or a 502 with details.creationStatus=unknown, check the business in Ads Manager before attempting another creation. A 201 with connectionUpdated=false means the account exists but needs reconnecting with adAccountIds containing the returned ID and the previous scoped IDs via GET /v1/connect/facebook/ads. Do not repeat the create call.
+Creates a new Meta ad account in the user's own business portfolio (a payment method must then be added in Ads Manager).  Creates a durable Meta ad account in the end user's own business portfolio using their connected Meta Ads token. Requires an active metaads accountId, Ads access, business_management permission and business admin access. Discover portfolios with GET /v1/ads/businesses. System-user tokens may return an empty businesses list; supply the known business ID in that case.  The self-serve account starts without a payment method. The user must add a payment method in Ads Manager before ads can deliver. Zernio cannot add payment methods. Meta may require business verification and limits how many accounts a business can create. Closing an account does not guarantee more capacity. An ad account cannot truly be deleted, even after closing it and removing it from a business.  timezoneId is Meta's numeric ID, not an IANA timezone name. Select it from https://developers.facebook.com/docs/marketing-api/reference/ad-account/timezone-ids/. For example, 1 is America/Los_Angeles. Meta validates supported currencies and IDs. endAdvertiser, mediaAgency and partner default to NONE for the self-serve flow.  The new account is added atomically to an existing scoped ad-account allowlist. Unrestricted connections stay unrestricted. Reconnecting the same Meta identity preserves this scope unless a caller explicitly replaces it. Discovery is nudged immediately. Use the returned adAccountId with the existing ads endpoints.  This operation is not idempotent and Zernio never automatically retries it. Unknown body fields are rejected. No validateOnly or dry-run option is supported. After a timeout or a 502 with details.creationStatus=unknown, check the business in Ads Manager before attempting another creation. A 201 with connectionUpdated=false means the account exists but needs reconnecting with adAccountIds containing the returned ID and the previous scoped IDs via GET /v1/connect/facebook/ads. Do not repeat the create call.
 
 ### Example
 
@@ -501,7 +501,7 @@ createAdLabel($create_ad_label_request): \Zernio\Model\CreateAdLabel201Response
 
 Create a Google Ads label
 
-Creates a label on a Google Ads customer. Attach it to campaigns, ad groups, ads and keywords with `POST /v1/ads/labels/{labelId}/assignments`. Label names are unique per customer; a duplicate is a 400.
+Creates a Google Ads label you can then attach to campaigns, ad groups, ads and keywords to organize and filter them.  Attach it to campaigns, ad groups, ads and keywords with `POST /v1/ads/labels/{labelId}/assignments`. Label names are unique per customer; a duplicate is a 400.
 
 ### Example
 
@@ -561,7 +561,7 @@ createAdNegativeKeywordList($create_ad_negative_keyword_list_request): \Zernio\M
 
 Create a negative keyword list
 
-Creates one Google Ads shared negative keyword list with optional initial keywords in a single atomic mutation. Daily quota is reserved for every mutate item, so large batches may return 429 before any change. This operation is not idempotent. The list is not attached to any campaign.
+Creates a shared Google Ads negative keyword list, optionally with starting keywords; it is not attached to any campaign yet.  Creates one Google Ads shared negative keyword list with optional initial keywords in a single atomic mutation. Daily quota is reserved for every mutate item, so large batches may return 429 before any change. This operation is not idempotent. The list is not attached to any campaign.
 
 ### Example
 
@@ -621,7 +621,7 @@ createCustomConversion($account_id, $create_custom_conversion_request): \Zernio\
 
 Create custom conversion
 
-Provision the Meta custom conversion an ads flow optimises toward, and hand back the `customConversionId` for `promotedObject.customConversionId` on POST /v1/ads/create. Removes the manual \"create it in Ads Manager first\" step.  **Reuse is ours, not Meta's.** Meta's create is not idempotent, so a retried request would otherwise mint a duplicate carrying none of the original's optimisation history. A non-archived conversion with the same `name` on the same `pixelId` is returned instead of created, with `reused: true` and a 200 rather than a 201.  `rule` is forwarded verbatim in Meta's own grammar (e.g. `{\"url\": {\"i_contains\": \"thank-you\"}}`); Meta validates it and rejects a malformed one with \"A conversion rule is required at creation time\".
+Creates a Meta custom conversion for ads to optimise toward, reusing an existing one with the same name and pixel.  Provision the Meta custom conversion an ads flow optimises toward, and hand back the `customConversionId` for `promotedObject.customConversionId` on POST /v1/ads/create. Removes the manual \"create it in Ads Manager first\" step.  **Reuse is ours, not Meta's.** Meta's create is not idempotent, so a retried request would otherwise mint a duplicate carrying none of the original's optimisation history. A non-archived conversion with the same `name` on the same `pixelId` is returned instead of created, with `reused: true` and a 200 rather than a 201.  `rule` is forwarded verbatim in Meta's own grammar (e.g. `{\"url\": {\"i_contains\": \"thank-you\"}}`); Meta validates it and rejects a malformed one with \"A conversion rule is required at creation time\".
 
 ### Example
 
@@ -683,7 +683,7 @@ createHighDemandPeriod($create_high_demand_period_request): \Zernio\Model\Create
 
 Schedule a budget increase
 
-Pre-schedule a temporary budget increase (Black Friday, a launch, a sale) instead of editing the budget by hand on the day. Same target rule as the GET: exactly one of `campaignId` / `adSetId`.  Two Meta constraints worth knowing before you call it. `timeStart` / `timeEnd` must fall on a 15-minute boundary, and a campaign cannot mix `ABSOLUTE` and `MULTIPLIER` across its schedules; the second type is rejected with \"Can't mix your budget scaling selection\". Window rules (must sit inside the campaign's run dates, minimum lead time, no overlap) are Meta's and its message is forwarded verbatim.
+Schedules a temporary budget increase on a Meta campaign or ad set for a busy period, like Black Friday or a launch.  Same target rule as the GET: exactly one of `campaignId` / `adSetId`.  Two Meta constraints worth knowing before you call it. `timeStart` / `timeEnd` must fall on a 15-minute boundary, and a campaign cannot mix `ABSOLUTE` and `MULTIPLIER` across its schedules; the second type is rejected with \"Can't mix your budget scaling selection\". Window rules (must sit inside the campaign's run dates, minimum lead time, no overlap) are Meta's and its message is forwarded verbatim.
 
 ### Example
 
@@ -743,7 +743,7 @@ createValueRuleSet($create_value_rule_set_request): \Zernio\Model\CreateValueRul
 
 Create a value rule set
 
-Creates a value rule set on the ad account (Meta's `POST /act_X/value_rule_set`). Attach the returned id to an ad set with `valueRuleSetId` on `POST /v1/ads/create` or `PUT /v1/ads/ad-sets/{adSetId}`.  **Rule order is semantic**: rules are evaluated in array order and only the first matching rule adjusts the bid for an overlapping audience.  `adjustValue` is an unsigned magnitude in percent; the direction lives in `adjustSign`. `INCREASE` accepts 1-1000, `DECREASE` accepts 1-90. There is no signed field and 0 is out of range.  `criteriaValueTypes` is positionally paired with `criteriaValues` (same length, same order). Every type is the literal `\"NONE\"` except on `LOCATION`, which uses `LOCATION_COUNTRY` / `LOCATION_REGION` / `LOCATION_CITY` / `LOCATION_COMSCORE_MARKET` and may mix them within one criterion. Location values are Targeting-Search keys: a two-letter country code for `LOCATION_COUNTRY`, a numeric key for the rest.  `LOCATION_DMA` was replaced by `LOCATION_COMSCORE_MARKET` on 2026-06-22 and rules using DMAs are no longer active, so this API rejects it.  `AUDIENCE_LABEL` values (e.g. `HIGH_VALUE`) are applied to a Custom Audience in Ads Manager. There is no API to provision them, so label strings are passed through unvalidated and a typo produces a rule that never fires.  Ads Manager turns a rule set read-only (this API stays editable) when a rule uses more than 2 criteria, a custom age range, or the placements `FB_MARKETPLACE`, `FB_SEARCH`, `FB_VIDEO` or `IG_EXPLORE`.  Limits: 6 rule sets per ad account, 10 rules per set, 4 criteria per rule. The per-account cap is enforced by Meta, not here.
+Creates a Meta value rule set that raises or lowers bids for chosen audience segments, ready to attach to ad sets.  Creates a value rule set on the ad account (Meta's `POST /act_X/value_rule_set`). Attach the returned id to an ad set with `valueRuleSetId` on `POST /v1/ads/create` or `PUT /v1/ads/ad-sets/{adSetId}`.  **Rule order is semantic**: rules are evaluated in array order and only the first matching rule adjusts the bid for an overlapping audience.  `adjustValue` is an unsigned magnitude in percent; the direction lives in `adjustSign`. `INCREASE` accepts 1-1000, `DECREASE` accepts 1-90. There is no signed field and 0 is out of range.  `criteriaValueTypes` is positionally paired with `criteriaValues` (same length, same order). Every type is the literal `\"NONE\"` except on `LOCATION`, which uses `LOCATION_COUNTRY` / `LOCATION_REGION` / `LOCATION_CITY` / `LOCATION_COMSCORE_MARKET` and may mix them within one criterion. Location values are Targeting-Search keys: a two-letter country code for `LOCATION_COUNTRY`, a numeric key for the rest.  `LOCATION_DMA` was replaced by `LOCATION_COMSCORE_MARKET` on 2026-06-22 and rules using DMAs are no longer active, so this API rejects it.  `AUDIENCE_LABEL` values (e.g. `HIGH_VALUE`) are applied to a Custom Audience in Ads Manager. There is no API to provision them, so label strings are passed through unvalidated and a typo produces a rule that never fires.  Ads Manager turns a rule set read-only (this API stays editable) when a rule uses more than 2 criteria, a custom age range, or the placements `FB_MARKETPLACE`, `FB_SEARCH`, `FB_VIDEO` or `IG_EXPLORE`.  Limits: 6 rule sets per ad account, 10 rules per set, 4 criteria per rule. The per-account cap is enforced by Meta, not here.
 
 ### Example
 
@@ -869,7 +869,7 @@ deleteAdNegativeKeywordList($list_id, $account_id, $ad_account_id, $customer_id,
 
 Delete a negative keyword list
 
-Removes the Google shared negative keyword list. Detach it from all campaigns first; an in-use list is rejected. Only NEGATIVE_KEYWORDS shared sets are supported.
+Deletes a shared Google Ads negative keyword list; detach it from every campaign first.  Detach it from all campaigns first; an in-use list is rejected. Only NEGATIVE_KEYWORDS shared sets are supported.
 
 ### Example
 
@@ -937,7 +937,7 @@ deleteValueRuleSet($value_rule_set_id, $account_id): \Zernio\Model\DeleteValueRu
 
 Delete a value rule set
 
-Deletes the rule set (Meta's `POST /{value-rule-set-id}/delete_rule_set`, a custom action edge rather than an HTTP DELETE on its side). Ad sets pointing at it are not modified here; detach them first with `valueRulesApplied: false` on `PUT /v1/ads/ad-sets/{adSetId}`.
+Deletes a Meta value rule set (detach it from ad sets first, since they are not changed here).  Deletes the rule set (Meta's `POST /{value-rule-set-id}/delete_rule_set`, a custom action edge rather than an HTTP DELETE on its side). Ad sets pointing at it are not modified here; detach them first with `valueRulesApplied: false` on `PUT /v1/ads/ad-sets/{adSetId}`.
 
 ### Example
 
@@ -999,7 +999,7 @@ detachAdLabel($label_id, $account_id, $ad_account_id, $customer_id, $campaign_id
 
 Detach a Google Ads label
 
-Removes the label from the given targets. Idempotent; a target without the label is counted in `unchanged`. Fields go in the query string. A JSON body with the same fields is also accepted and, when sent, the query string is ignored.
+Removes a Google Ads label from the campaigns, ad groups, ads or keywords you name, skipping any that do not have it.  Idempotent; a target without the label is counted in `unchanged`. Fields go in the query string. A JSON body with the same fields is also accepted and, when sent, the query string is ignored.
 
 ### Example
 
@@ -1073,7 +1073,7 @@ getAdAccountFinance($account_id, $ad_account_id): \Zernio\Model\GetAdAccountFina
 
 Ad account finances
 
-Finances of one Meta ad account: prepaid `balance`, lifetime `amountSpent`, account `spendCap` (null = no cap) and the `fundingSource`. Money values are converted from Meta's minor units to whole units of `currency`.
+Shows a Meta ad account's balance, total spend, spend cap and funding source.  Finances of one Meta ad account: prepaid `balance`, lifetime `amountSpent`, account `spendCap` (null = no cap) and the `fundingSource`. Money values are converted from Meta's minor units to whole units of `currency`.
 
 ### Example
 
@@ -1135,7 +1135,7 @@ getAdAccountHierarchy($account_id, $ad_account_id, $customer_id): \Zernio\Model\
 
 Get manager account hierarchy
 
-Live manager (MCC) and client tree for a Google Ads connection. Starts from every customer the Google user behind the connection can access directly and walks each tree to any depth with `customer_client`, then reads each manager's own client links so every client carries its direct parent, the `managerLinkId` and the link status. Invitations a manager sent that the client has not accepted yet appear as clients with `linkStatus: PENDING` (Google returns no name or currency for them). Refused, canceled and ended links are history and are omitted. `managerLinks` on a root lists the managers linked to that account, including invitations it can still accept with PATCH /v1/ads/accounts/manager-links. A directly accessible account that is also nested in another tree appears only once, inside that tree. `directCustomers` lists every account the Google user accesses directly (the ones this connection can accept or decline invitations for) with their pending invitations, including accounts that are also nested in a tree. Customers Google refuses to read (for example a cancelled account) are listed in `unavailable` with Google's reason instead of failing the call. Up to 50 roots and 50 managers per root are read; `truncated` is true when more exist. Cached for 10 minutes per connection; the response carries `cachedAt` and `stale`. When the connection is scoped to specific ad accounts, client accounts outside that scope are hidden (managers stay visible).
+Shows the Google Ads manager (MCC) and client account tree for a connection, including pending invitations and link status.  Live manager (MCC) and client tree for a Google Ads connection. Starts from every customer the Google user behind the connection can access directly and walks each tree to any depth with `customer_client`, then reads each manager's own client links so every client carries its direct parent, the `managerLinkId` and the link status. Invitations a manager sent that the client has not accepted yet appear as clients with `linkStatus: PENDING` (Google returns no name or currency for them). Refused, canceled and ended links are history and are omitted. `managerLinks` on a root lists the managers linked to that account, including invitations it can still accept with PATCH /v1/ads/accounts/manager-links. A directly accessible account that is also nested in another tree appears only once, inside that tree. `directCustomers` lists every account the Google user accesses directly (the ones this connection can accept or decline invitations for) with their pending invitations, including accounts that are also nested in a tree. Customers Google refuses to read (for example a cancelled account) are listed in `unavailable` with Google's reason instead of failing the call. Up to 50 roots and 50 managers per root are read; `truncated` is true when more exist. Cached for 10 minutes per connection; the response carries `cachedAt` and `stale`. When the connection is scoped to specific ad accounts, client accounts outside that scope are hidden (managers stay visible).
 
 ### Example
 
@@ -1199,7 +1199,7 @@ getAdAccountLiveEntities($account_id, $ad_account_id, $status, $level, $limit, $
 
 Read an ad account's campaigns and ad sets live
 
-Reads the campaigns and ad sets of one Meta ad account or TikTok advertiser **live from the platform**, so it is cheap enough to run before every write: for example a per-ad-account spend ceiling that must see the current daily / lifetime budget rather than the synced copy. On Meta it is a single Graph call per request (the account's `/campaigns` and `/adsets` edges, filtered by `effective_status`); on TikTok one `campaign/get` and one `adgroup/get` page (TikTok ad groups are returned as `adSets`).  **Live vs synced.** GET /v1/ads/campaigns and GET /v1/ads/ad-sets serve Zernio's synced store, refreshed by background sync (typically 15 to 60 minutes behind Meta), and their `live=true` re-reads only the on/off switches of at most 20 objects. This endpoint returns what Meta reports at `readAt`, for every matching campaign and ad set, and stores nothing.  Budgets and bid amounts are in whole units of `currency`, the same units as the synced rows (Meta's minor units are converted; TikTok already reports whole units). A campaign with a campaign budget (Meta Advantage+ campaign budget, TikTok campaign budget optimization) carries `budget`; otherwise each ad set carries its own.  Each level returns at most `limit` rows. When more match, `paging.<level>.after` is a cursor: pass it back as `after` together with `level` to read the next page of that level only. TikTok pages by number, so a TikTok cursor must be sent with the same `limit` that produced it (another `limit` is a 400). Other platforms answer 501 rather than serving synced data.  **TikTok specifics.** `status` maps to TikTok's `primary_status` filter, which takes one value: ACTIVE = delivering (`STATUS_DELIVERY_OK`), PAUSED = switched off (`STATUS_DISABLE`), DELETED = `STATUS_DELETE`; omitted = every status except deleted (`STATUS_NOT_DELETE`, which includes enabled entities that are not delivering, such as an ad group in review). Several values, or IN_PROCESS, WITH_ISSUES, CAMPAIGN_PAUSED and ARCHIVED, are a 400. `budgetRemaining` and `spendCap` are always null (TikTok reports neither), campaign `bidStrategy` is null (TikTok bids per ad group), ad set `bidStrategy` is normalized to the Meta vocabulary like GET /v1/ads, `promotedObject` is `{ pixelId, customEventType, applicationId, customConversionId }` (the keys TikTok has set, as POST /v1/ads/create takes them), and `targeting` holds TikTok's targeting fields verbatim.
+Reads an ad account's campaigns and ad sets straight from Meta or TikTok, so checks like budget limits see current values.  Reads the campaigns and ad sets of one Meta ad account or TikTok advertiser **live from the platform**, so it is cheap enough to run before every write: for example a per-ad-account spend ceiling that must see the current daily / lifetime budget rather than the synced copy. On Meta it is a single Graph call per request (the account's `/campaigns` and `/adsets` edges, filtered by `effective_status`); on TikTok one `campaign/get` and one `adgroup/get` page (TikTok ad groups are returned as `adSets`).  **Live vs synced.** GET /v1/ads/campaigns and GET /v1/ads/ad-sets serve Zernio's synced store, refreshed by background sync (typically 15 to 60 minutes behind Meta), and their `live=true` re-reads only the on/off switches of at most 20 objects. This endpoint returns what Meta reports at `readAt`, for every matching campaign and ad set, and stores nothing.  Budgets and bid amounts are in whole units of `currency`, the same units as the synced rows (Meta's minor units are converted; TikTok already reports whole units). A campaign with a campaign budget (Meta Advantage+ campaign budget, TikTok campaign budget optimization) carries `budget`; otherwise each ad set carries its own.  Each level returns at most `limit` rows. When more match, `paging.<level>.after` is a cursor: pass it back as `after` together with `level` to read the next page of that level only. TikTok pages by number, so a TikTok cursor must be sent with the same `limit` that produced it (another `limit` is a 400). Other platforms answer 501 rather than serving synced data.  **TikTok specifics.** `status` maps to TikTok's `primary_status` filter, which takes one value: ACTIVE = delivering (`STATUS_DELIVERY_OK`), PAUSED = switched off (`STATUS_DISABLE`), DELETED = `STATUS_DELETE`; omitted = every status except deleted (`STATUS_NOT_DELETE`, which includes enabled entities that are not delivering, such as an ad group in review). Several values, or IN_PROCESS, WITH_ISSUES, CAMPAIGN_PAUSED and ARCHIVED, are a 400. `budgetRemaining` and `spendCap` are always null (TikTok reports neither), campaign `bidStrategy` is null (TikTok bids per ad group), ad set `bidStrategy` is normalized to the Meta vocabulary like GET /v1/ads, `promotedObject` is `{ pixelId, customEventType, applicationId, customConversionId }` (the keys TikTok has set, as POST /v1/ads/create takes them), and `targeting` holds TikTok's targeting fields verbatim.
 
 ### Example
 
@@ -1269,7 +1269,7 @@ getAdComments($ad_id, $placement, $limit, $since, $until, $cursor): \Zernio\Mode
 
 List comments on an ad
 
-Returns comments on an ad's underlying creative post. Useful for moderating or analyzing engagement on dark posts (ad creatives that never went live organically), which the regular GET /v1/inbox/comments/{postId} endpoint cannot serve because dark posts are not in Zernio's post database.  An ad that runs on both Facebook feed and Instagram feed has two separate underlying posts with separate comment threads (the creative's effective_object_story_id and effective_instagram_media_id). Use the `placement` query param to pick one; with no param the Instagram side is returned when it exists, otherwise Facebook. The identifiers are read from the ad record (persisted during sync) with a Marketing-API fallback for ads that predate the field.  For Instagram-placed comments, the Instagram account that runs the ad must be connected to Zernio, because those comments are read through that account's token. If no connected Instagram account on the profile can read the ad's media, the call returns ads_connection_required (the Facebook side, if any, is still readable via ?placement=facebook).  TikTok uses the connected TikTok Ads advertiser token and supports both paid video ads and Spark Ads. `since` and `until` select a date window of at most 30 days; the default is the last 30 days. TikTok searches by ad group, so Zernio filters each page to this ad. A page can be empty while `pagination.hasMore` is true. Reuse `pagination.cursor` with the same `limit`; the cursor retains the date window. `placement` is Meta-only and returns a 400 for TikTok. Listing needs no identity or video item ID. When the ad group is stored, each page makes one comment-list call and no ad-detail lookup, including for external ads that TikTok no longer returns from ad details. `meta.tiktokItemId: null` does not prevent listing. If the ad group is missing, Zernio fetches ad details; unavailable details return 404 ad_not_found, and no ad group returns 400 ad_not_commentable.  TikTok returns replies as separate comments with `parentId`; nested reply fetching is not supported. `canReply` requires a first-level comment, comment-management permission, a video item ID and a supported TT_USER or CUSTOMIZED_USER identity. `canDelete` requires TikTok's own-comment deletion capability, a video item ID and a supported identity. Both flags are false when identity or item is unknown. Listing uses stored and comment-specific fields without fetching identity. A direct reply or delete request can lazily resolve missing fields and succeed even after a false flag. `canHide` is true because visibility changes need only advertiser and comment IDs. `canLike` is false. Use the ad comment reply, hide and delete operations below to moderate TikTok comments. Other platforms return feature_not_available.  Requires the Ads add-on. Response shape matches GET /v1/inbox/comments/{postId}.  The `{adId}` path segment accepts any identifier dialect Zernio indexes for the ad: Zernio internal `_id` (24-char hex), the numeric `platformAdId` (the value shipped in `comment.received` webhooks as `comment.ad.id`), or the creative's `effective_object_story_id` / `effective_instagram_media_id`. Caller doesn't need a translation step.
+Lists the comments on an ad's post, including dark posts that never ran organically, so you can moderate ad engagement.  Useful for moderating or analyzing engagement on dark posts (ad creatives that never went live organically), which the regular GET /v1/inbox/comments/{postId} endpoint cannot serve because dark posts are not in Zernio's post database.  An ad that runs on both Facebook feed and Instagram feed has two separate underlying posts with separate comment threads (the creative's effective_object_story_id and effective_instagram_media_id). Use the `placement` query param to pick one; with no param the Instagram side is returned when it exists, otherwise Facebook. The identifiers are read from the ad record (persisted during sync) with a Marketing-API fallback for ads that predate the field.  For Instagram-placed comments, the Instagram account that runs the ad must be connected to Zernio, because those comments are read through that account's token. If no connected Instagram account on the profile can read the ad's media, the call returns ads_connection_required (the Facebook side, if any, is still readable via ?placement=facebook).  TikTok uses the connected TikTok Ads advertiser token and supports both paid video ads and Spark Ads. `since` and `until` select a date window of at most 30 days; the default is the last 30 days. TikTok searches by ad group, so Zernio filters each page to this ad. A page can be empty while `pagination.hasMore` is true. Reuse `pagination.cursor` with the same `limit`; the cursor retains the date window. `placement` is Meta-only and returns a 400 for TikTok. Listing needs no identity or video item ID. When the ad group is stored, each page makes one comment-list call and no ad-detail lookup, including for external ads that TikTok no longer returns from ad details. `meta.tiktokItemId: null` does not prevent listing. If the ad group is missing, Zernio fetches ad details; unavailable details return 404 ad_not_found, and no ad group returns 400 ad_not_commentable.  TikTok returns replies as separate comments with `parentId`; nested reply fetching is not supported. `canReply` requires a first-level comment, comment-management permission, a video item ID and a supported TT_USER or CUSTOMIZED_USER identity. `canDelete` requires TikTok's own-comment deletion capability, a video item ID and a supported identity. Both flags are false when identity or item is unknown. Listing uses stored and comment-specific fields without fetching identity. A direct reply or delete request can lazily resolve missing fields and succeed even after a false flag. `canHide` is true because visibility changes need only advertiser and comment IDs. `canLike` is false. Use the ad comment reply, hide and delete operations below to moderate TikTok comments. Other platforms return feature_not_available.  Requires the Ads add-on. Response shape matches GET /v1/inbox/comments/{postId}.  The `{adId}` path segment accepts any identifier dialect Zernio indexes for the ad: Zernio internal `_id` (24-char hex), the numeric `platformAdId` (the value shipped in `comment.received` webhooks as `comment.ad.id`), or the creative's `effective_object_story_id` / `effective_instagram_media_id`. Caller doesn't need a translation step.
 
 ### Example
 
@@ -1339,7 +1339,7 @@ getAdNegativeKeywordList($list_id, $account_id, $ad_account_id, $customer_id, $p
 
 Get a negative keyword list
 
-Google Ads shared negative keyword lists (shared_set type NEGATIVE_KEYWORDS). Reads are cached for 10 minutes; quota exhaustion may return the last successful result for up to 7 days with stale=true. Customer selection is limited to this connection and its account scope. Includes the keywords and their criterion ids.
+Shows one shared Google Ads negative keyword list with all of its keywords.  Google Ads shared negative keyword lists (shared_set type NEGATIVE_KEYWORDS). Reads are cached for 10 minutes; quota exhaustion may return the last successful result for up to 7 days with stale=true. Customer selection is limited to this connection and its account scope. Includes the keywords and their criterion ids.
 
 ### Example
 
@@ -1407,7 +1407,7 @@ getAdsActivityLog($account_id, $ad_account_id, $since, $until, $object_id, $limi
 
 Ad account change / audit log
 
-**Google**: reads the customer's `change_event` history, newest first. Google keeps 30 days of it, so `since` defaults to 29 days ago and an older `since` returns 400; `until` defaults to today. Each change is mapped onto the Meta row shape: `event_type` = resource_change_operation (CREATE, UPDATE, REMOVE), `event_time` = change_date_time, `actor_name` = user_email, `object_type` = change_resource_type, `object_id` = the last numeric id of `object_resource_name`, `application_name` = client_type, `changed_fields` (array), and `extra_data` = a JSON string `{ old, new }` with Google's old and new resource. Pass `paging.after` back as `after` for the next page; it is null when nothing older is left. A page never splits a change batch (the changes of one request share an `event_time`), so a page can hold fewer rows than `limit` while more follow, or more when one batch is larger than `limit`. `adAccountId` is the numeric customer id.  **Meta**: Account-level audit log from Meta's `/act_X/activities`: who changed what and when (creates, edits, status flips, budget changes...) with Meta's translated event names and the structured before/after in `extra_data`. Rows are returned verbatim. Meta has no server-side per-object filter on this edge, so `objectId` filters the returned page client-side (combine with paging to walk history for one campaign/ad set/ad).
+Shows who changed what in an ad account and when, as an audit log of edits to campaigns, ad sets and ads.  **Google**: reads the customer's `change_event` history, newest first. Google keeps 30 days of it, so `since` defaults to 29 days ago and an older `since` returns 400; `until` defaults to today. Each change is mapped onto the Meta row shape: `event_type` = resource_change_operation (CREATE, UPDATE, REMOVE), `event_time` = change_date_time, `actor_name` = user_email, `object_type` = change_resource_type, `object_id` = the last numeric id of `object_resource_name`, `application_name` = client_type, `changed_fields` (array), and `extra_data` = a JSON string `{ old, new }` with Google's old and new resource. Pass `paging.after` back as `after` for the next page; it is null when nothing older is left. A page never splits a change batch (the changes of one request share an `event_time`), so a page can hold fewer rows than `limit` while more follow, or more when one batch is larger than `limit`. `adAccountId` is the numeric customer id.  **Meta**: Account-level audit log from Meta's `/act_X/activities`: who changed what and when (creates, edits, status flips, budget changes...) with Meta's translated event names and the structured before/after in `extra_data`. Rows are returned verbatim. Meta has no server-side per-object filter on this edge, so `objectId` filters the returned page client-side (combine with paging to walk history for one campaign/ad set/ad).
 
 ### Example
 
@@ -1479,7 +1479,7 @@ getDsaDefaults($account_id, $ad_account_id): \Zernio\Model\GetDsaDefaults200Resp
 
 Get ad account DSA defaults
 
-Returns the default DSA beneficiary and payor currently set on a Meta ad account, whether they were set via `PATCH /v1/ads/accounts` or in Meta Ads Manager. Fields are omitted when no default is configured. Meta accounts only.
+Shows the default EU DSA beneficiary and payor set on a Meta ad account.  Returns the default DSA beneficiary and payor currently set on a Meta ad account, whether they were set via `PATCH /v1/ads/accounts` or in Meta Ads Manager. Fields are omitted when no default is configured. Meta accounts only.
 
 ### Example
 
@@ -1541,7 +1541,7 @@ getDsaRecommendations($account_id, $ad_account_id): \Zernio\Model\GetDsaRecommen
 
 Get DSA recommendations
 
-Returns Meta's suggested beneficiary/payor names for an ad account, derived by Meta from the account's recent activity. Useful for prefilling `dsaBeneficiary`/`dsaPayor` inputs, or the defaults sent to `PATCH /v1/ads/accounts`, in your own UI.  Meta returns a single flat list. Entries are not labeled as beneficiary or payor, and since these are legal disclosures Zernio never applies them automatically: let your user pick the right entity. The list may be empty for accounts with little activity. Meta accounts only.
+Suggests beneficiary and payor names for a Meta ad account's EU DSA disclosures, for your user to pick from.  Returns Meta's suggested beneficiary/payor names for an ad account, derived by Meta from the account's recent activity. Useful for prefilling `dsaBeneficiary`/`dsaPayor` inputs, or the defaults sent to `PATCH /v1/ads/accounts`, in your own UI.  Meta returns a single flat list. Entries are not labeled as beneficiary or payor, and since these are legal disclosures Zernio never applies them automatically: let your user pick the right entity. The list may be empty for accounts with little activity. Meta accounts only.
 
 ### Example
 
@@ -1603,7 +1603,7 @@ getIosFourteenCampaignLimits($account_id, $ad_account_id, $application_id): \Zer
 
 Get iOS 14 campaign limits
 
-Reads Meta iOS 14 campaign limits for an application on an ad account. applicationId is sent as Meta app_id. This read does not establish that the application is configured for iOS promotion.
+Shows Meta's iOS 14 campaign limits for an app on an ad account (it does not confirm the app is set up for iOS promotion).  applicationId is sent as Meta app_id. This read does not establish that the application is configured for iOS promotion.
 
 ### Example
 
@@ -1667,7 +1667,7 @@ getValueRuleSet($value_rule_set_id, $account_id): \Zernio\Model\GetValueRuleSet2
 
 Read a value rule set
 
-Reads one value rule set including every nested rule id and criterion id. This is step one of any edit: `PUT` is a full replace, so you need the ids before you can keep the objects you are not changing.  Meta's own read returns `GENDER` values lowercase (`\"male\"`) while writes require `\"MALE\"`. Values are passed through untouched, so never case-compare a stored rule against a fetched one.
+Shows one Meta value rule set with all its rules and criteria, the first step before editing it.  Reads one value rule set including every nested rule id and criterion id. This is step one of any edit: `PUT` is a full replace, so you need the ids before you can keep the objects you are not changing.  Meta's own read returns `GENDER` values lowercase (`\"male\"`) while writes require `\"MALE\"`. Values are passed through untouched, so never case-compare a stored rule against a fetched one.
 
 ### Example
 
@@ -1797,7 +1797,7 @@ inviteAdAccountToManager($invite_ad_account_to_manager_request): \Zernio\Model\G
 
 Invite a client account to a manager
 
-Sends a manager-to-client link invitation from `managerCustomerId` to `clientCustomerId` (Google's CustomerClientLinkService). The manager must be one the connection's Google user reaches, directly or under another manager (see GET /v1/ads/accounts/hierarchy); the client can be any Google Ads account. The link stays `PENDING` until someone with access to the client accepts it in Google Ads or through PATCH on this path. Not idempotent: Google refuses a second invitation while one is pending. Send `validateOnly: true` to have Google check the request without sending anything.
+Invites a Google Ads account to be managed by one of your manager accounts; the link stays pending until the client accepts.  Sends a manager-to-client link invitation from `managerCustomerId` to `clientCustomerId` (Google's CustomerClientLinkService). The manager must be one the connection's Google user reaches, directly or under another manager (see GET /v1/ads/accounts/hierarchy); the client can be any Google Ads account. The link stays `PENDING` until someone with access to the client accepts it in Google Ads or through PATCH on this path. Not idempotent: Google refuses a second invitation while one is pending. Send `validateOnly: true` to have Google check the request without sending anything.
 
 ### Example
 
@@ -1857,7 +1857,7 @@ listAccountCallouts($account_id, $ad_account_id, $customer_id): \Zernio\Model\Li
 
 List account callouts
 
-Lists directly attached Google assets. Fresh reads are cached for 10 minutes; exhausted quota may return the last successful read with stale=true. Inherited assets are not included. Preserves Google RMF C.75 account-level callouts.
+Lists the callouts attached at account level in Google Ads, which can show on ads across all campaigns.  Fresh reads are cached for 10 minutes; exhausted quota may return the last successful read with stale=true. Inherited assets are not included. Preserves Google RMF C.75 account-level callouts.
 
 ### Example
 
@@ -1921,7 +1921,7 @@ listAccountSitelinks($account_id, $ad_account_id, $customer_id): \Zernio\Model\L
 
 List account sitelinks
 
-Lists directly attached Google assets. Fresh reads are cached for 10 minutes; exhausted quota may return the last successful read with stale=true. Inherited assets are not included.
+Lists the sitelinks attached at account level in Google Ads, which can show on ads across all campaigns.  Fresh reads are cached for 10 minutes; exhausted quota may return the last successful read with stale=true. Inherited assets are not included.
 
 ### Example
 
@@ -1985,7 +1985,7 @@ listAccountStructuredSnippets($account_id, $ad_account_id, $customer_id): \Zerni
 
 List account snippets
 
-Lists directly attached Google assets. Fresh reads are cached for 10 minutes; exhausted quota may return the last successful read with stale=true. Inherited assets are not included.
+Lists the structured snippets attached at account level in Google Ads, which can show on ads across all campaigns.  Fresh reads are cached for 10 minutes; exhausted quota may return the last successful read with stale=true. Inherited assets are not included.
 
 ### Example
 
@@ -2049,7 +2049,7 @@ listAdAccountUsers($account_id, $ad_account_id, $business_id): \Zernio\Model\Lis
 
 Ad account users
 
-People of a business portfolio assigned to a Meta ad account, with their tasks. Ids are business-scoped user ids (see `GET /v1/ads/businesses/users`).
+Lists the people in a business portfolio assigned to a Meta ad account, with what each can do.  Ids are business-scoped user ids (see `GET /v1/ads/businesses/users`).
 
 ### Example
 
@@ -2113,7 +2113,7 @@ listAdAccounts($account_id, $ad_account_id, $limit): \Zernio\Model\ListAdAccount
 
 List ad accounts
 
-Returns the platform ad accounts available for the given account (e.g. Meta ad accounts, TikTok advertiser IDs, Google Ads customer IDs). Meta business-login accounts use their own system-user token. Fresh Meta discovery includes businessId and businessName from the owning Business Manager when available; cached entries gain these fields after the next discovery refresh.  For TikTok agencies: enumerates every advertiser under every Business Center the token can read (paginated server-side), then chunks the lookup against TikTok's `/advertiser/info/` endpoint (which has a per-call cap of ≤100 IDs). Solo advertisers without a BC fall back to the OAuth-time `advertiser_ids` list. Cached for 1h on the SocialAccount; lazy-refreshed on first call after expiry.  For Google Ads: responds `429` when Google's API quota is temporarily exhausted (instead of an empty list). Retry after a delay.
+Lists the ad accounts a connection can manage, such as Meta ad accounts, TikTok advertisers or Google Ads customers.  Returns the platform ad accounts available for the given account (e.g. Meta ad accounts, TikTok advertiser IDs, Google Ads customer IDs). Meta business-login accounts use their own system-user token. Fresh Meta discovery includes businessId and businessName from the owning Business Manager when available; cached entries gain these fields after the next discovery refresh.  For TikTok agencies: enumerates every advertiser under every Business Center the token can read (paginated server-side), then chunks the lookup against TikTok's `/advertiser/info/` endpoint (which has a per-call cap of ≤100 IDs). Solo advertisers without a BC fall back to the OAuth-time `advertiser_ids` list. Cached for 1h on the SocialAccount; lazy-refreshed on first call after expiry.  For Google Ads: responds `429` when Google's API quota is temporarily exhausted (instead of an empty list). Retry after a delay.
 
 ### Example
 
@@ -2177,7 +2177,7 @@ listAdLabels($account_id, $ad_account_id, $customer_id, $limit, $after): \Zernio
 
 List ad labels
 
-Lists the organizational labels on an ad account.  - **Meta**: pass `adAccountId=act_<n>`. Rows are Meta's `/act_X/adlabels` returned verbatim   (id, name, created/updated time), paginated with `limit` / `after`. - **Google Ads**: pass the numeric customer id as `adAccountId` (optional when the   connection has a single customer). Returns every non-removed label as a `GoogleAdLabel`   in one page (`paging.after` is always null). Reads are cached for 10 minutes; when the   shared Google quota is exhausted the last successful result is served with `stale: true`.
+Lists the labels used to organise campaigns and ads in an ad account.  - **Meta**: pass `adAccountId=act_<n>`. Rows are Meta's `/act_X/adlabels` returned verbatim   (id, name, created/updated time), paginated with `limit` / `after`. - **Google Ads**: pass the numeric customer id as `adAccountId` (optional when the   connection has a single customer). Returns every non-removed label as a `GoogleAdLabel`   in one page (`paging.after` is always null). Reads are cached for 10 minutes; when the   shared Google quota is exhausted the last successful result is served with `stale: true`.
 
 ### Example
 
@@ -2245,7 +2245,7 @@ listAdNegativeKeywordLists($account_id, $ad_account_id, $customer_id, $platform)
 
 List negative keyword lists
 
-Google Ads shared negative keyword lists (shared_set type NEGATIVE_KEYWORDS). Reads are cached for 10 minutes; quota exhaustion may return the last successful result for up to 7 days with stale=true. Customer selection is limited to this connection and its account scope.
+Lists the shared negative keyword lists in a Google Ads account, which you can apply to many campaigns at once.  Google Ads shared negative keyword lists (shared_set type NEGATIVE_KEYWORDS). Reads are cached for 10 minutes; quota exhaustion may return the last successful result for up to 7 days with stale=true. Customer selection is limited to this connection and its account scope.
 
 ### Example
 
@@ -2311,7 +2311,7 @@ listAdStudies($account_id, $ad_account_id, $fields, $limit, $after): \Zernio\Mod
 
 A/B tests and lift studies
 
-Lists the ad account's A/B tests and lift studies (Meta's `/act_X/ad_studies`), rows returned verbatim. The default projection covers id, name, type, timing and cells with split percentages; `fields` is a raw-passthrough override.
+Lists the A/B tests and lift studies on a Meta ad account, with their timing and test groups.  Lists the ad account's A/B tests and lift studies (Meta's `/act_X/ad_studies`), rows returned verbatim. The default projection covers id, name, type, timing and cells with split percentages; `fields` is a raw-passthrough override.
 
 ### Example
 
@@ -2439,7 +2439,7 @@ listAdsInstagramAccounts($account_id, $ad_account_id): \Zernio\Model\ListAdsInst
 
 List Instagram ad identities
 
-Discovers identities through connected_instagram_accounts, Page linkage and Page-backed identities, with a best-effort business fallback. Business permission errors do not fail discovery. The resolved object uses the same profile-scoped resolver as ad creation; null means no identity was resolved. Format-specific observed-actor fallbacks at creative creation are not predicted.
+Lists the Instagram accounts a Meta ad connection can run ads as, so you can pick the identity for a new ad.  Discovers identities through connected_instagram_accounts, Page linkage and Page-backed identities, with a best-effort business fallback. Business permission errors do not fail discovery. The resolved object uses the same profile-scoped resolver as ad creation; null means no identity was resolved. Format-specific observed-actor fallbacks at creative creation are not predicted.
 
 ### Example
 
@@ -2501,7 +2501,7 @@ listAdsInstagramPosts($account_id, $ad_account_id, $ig_user_id, $limit, $after):
 
 List Instagram posts to boost
 
-Lists the media of the Instagram account this Meta connection can reach, so an existing Instagram post can be boosted without connecting the Instagram account separately. Each `posts[].id` is the existing-post id to send as `platformPostId` when creating the ad; Meta turns it into `source_instagram_media_id` on the creative. Identity resolution reuses the same resolver as `/v1/ads/instagram-accounts`. `igUserId` is always checked against the identities the connection can reach and is never trusted as sent. When no identity is reachable the endpoint fails instead of returning an empty list, and the two causes stay apart: `403 reconnect_required` means the connection predates Instagram access (Meta then omits `instagram_business_account` from the Page read rather than erroring, so it looks identical to having no data) and the account must be reconnected granting Instagram access, while `422 instagram_business_account_unresolved` means the Page genuinely has no Instagram professional account linked.
+Lists posts from the Instagram account a Meta ad connection can reach, so you can boost one as an ad.  Lists the media of the Instagram account this Meta connection can reach, so an existing Instagram post can be boosted without connecting the Instagram account separately. Each `posts[].id` is the existing-post id to send as `platformPostId` when creating the ad; Meta turns it into `source_instagram_media_id` on the creative. Identity resolution reuses the same resolver as `/v1/ads/instagram-accounts`. `igUserId` is always checked against the identities the connection can reach and is never trusted as sent. When no identity is reachable the endpoint fails instead of returning an empty list, and the two causes stay apart: `403 reconnect_required` means the connection predates Instagram access (Meta then omits `instagram_business_account` from the Page read rather than erroring, so it looks identical to having no data) and the account must be reconnected granting Instagram access, while `422 instagram_business_account_unresolved` means the Page genuinely has no Instagram professional account linked.
 
 ### Example
 
@@ -2569,7 +2569,7 @@ listAdvertisableApplications($account_id, $ad_account_id): \Zernio\Model\ListAdv
 
 List advertisable apps
 
-Lists applications available to a Meta ad account, their supported platforms and unmodified object store URLs. A listed app still needs a configured mobile platform and store URL to run install promotion.
+Lists the mobile apps a Meta ad account can promote, with their platforms and store links, for app install campaigns.  Lists applications available to a Meta ad account, their supported platforms and unmodified object store URLs. A listed app still needs a configured mobile platform and store URL to run install promotion.
 
 ### Example
 
@@ -2631,7 +2631,7 @@ listCustomConversions($account_id, $ad_account_id): \Zernio\Model\ListCustomConv
 
 List custom conversions
 
-The ad account's Meta custom conversions, including archived ones (`isArchived`).
+Lists a Meta ad account's custom conversions, including archived ones.  The ad account's Meta custom conversions, including archived ones (`isArchived`).
 
 ### Example
 
@@ -2693,7 +2693,7 @@ listHighDemandPeriods($account_id, $campaign_id, $ad_set_id, $limit, $after): \Z
 
 List high-demand periods
 
-Scheduled budget increases (Meta's budget-scheduling API). The Graph edge lives on the campaign and ad-set nodes only, so exactly one of `campaignId` / `adSetId` (platform ids) is required. Rows returned verbatim (budget_value, budget_value_type, time window, recurrence).
+Lists the scheduled budget increases set on a Meta campaign or ad set.  Scheduled budget increases (Meta's budget-scheduling API). The Graph edge lives on the campaign and ad-set nodes only, so exactly one of `campaignId` / `adSetId` (platform ids) is required. Rows returned verbatim (budget_value, budget_value_type, time window, recurrence).
 
 ### Example
 
@@ -2761,7 +2761,7 @@ listMetaBusinessUsers($account_id, $business_id): \Zernio\Model\ListMetaBusiness
 
 Business users
 
-People and system users of a Meta business portfolio, with the business-scoped ids that `POST /v1/ads/accounts/users` and `POST /v1/ads/page-users` take. The connected Meta user must be an admin of the portfolio.
+Lists the people and system users of a Meta business portfolio, with the ids you need to assign them to Pages or ad accounts.  People and system users of a Meta business portfolio, with the business-scoped ids that `POST /v1/ads/accounts/users` and `POST /v1/ads/page-users` take. The connected Meta user must be an admin of the portfolio.
 
 ### Example
 
@@ -2823,7 +2823,7 @@ listMetaBusinesses($account_id, $limit, $after): \Zernio\Model\ListMetaBusinesse
 
 Businesses list
 
-Business Manager portfolios the connected Meta user belongs to (Meta's `/me/businesses`), rows returned verbatim (id, name, verification_status, created_time). Token-scoped, so no `adAccountId` is needed. For TikTok Business Centers use `GET /v1/ads/business-centers`.
+Lists the Meta business portfolios the connected user belongs to, with their verification status.  Business Manager portfolios the connected Meta user belongs to (Meta's `/me/businesses`), rows returned verbatim (id, name, verification_status, created_time). Token-scoped, so no `adAccountId` is needed. For TikTok Business Centers use `GET /v1/ads/business-centers`.
 
 ### Example
 
@@ -2887,7 +2887,7 @@ listPageUsers($account_id, $page_id, $business_id): \Zernio\Model\ListPageUsers2
 
 Page users of a business
 
-People of a business portfolio assigned to a Facebook Page the portfolio owns or was granted as a partner (`POST /v1/accounts/{accountId}/business-partners` on the owner side).
+Lists the people in a business portfolio who are assigned to a Facebook Page it owns or was shared as a partner.  People of a business portfolio assigned to a Facebook Page the portfolio owns or was granted as a partner (`POST /v1/accounts/{accountId}/business-partners` on the owner side).
 
 ### Example
 
@@ -3017,7 +3017,7 @@ listValueRuleSets($account_id, $ad_account_id, $limit, $after): \Zernio\Model\Li
 
 List value rule sets
 
-Lists the ad account's value rule sets (Meta's `/act_X/value_rule_set`). A value rule set adjusts the auction bid up or down for audience segments you value differently; attach one to an ad set with `valueRuleSetId` on `POST /v1/ads/create` or `PUT /v1/ads/ad-sets/{adSetId}`.  Rows are returned in the same camelCase shape the `PUT` body takes, ids included, so a set round-trips 1:1: **the update is a full replace, not a patch**, so you GET, mutate and send the whole thing back.  Limits: 6 rule sets per ad account, 10 rules per set, 4 criteria per rule.  **Rule order is semantic.** Rules are evaluated in array order and only the FIRST matching rule adjusts the bid for an overlapping audience. The order you send is the order that is stored and returned.  Eligibility: value rule sets apply only to ad sets on the `LOWEST_COST_WITHOUT_CAP` (auto-bid) or `COST_CAP` bid strategies. Meta rejects the rest server-side.
+Lists a Meta ad account's value rule sets, which raise or lower bids for audience segments you value differently.  Lists the ad account's value rule sets (Meta's `/act_X/value_rule_set`). A value rule set adjusts the auction bid up or down for audience segments you value differently; attach one to an ad set with `valueRuleSetId` on `POST /v1/ads/create` or `PUT /v1/ads/ad-sets/{adSetId}`.  Rows are returned in the same camelCase shape the `PUT` body takes, ids included, so a set round-trips 1:1: **the update is a full replace, not a patch**, so you GET, mutate and send the whole thing back.  Limits: 6 rule sets per ad account, 10 rules per set, 4 criteria per rule.  **Rule order is semantic.** Rules are evaluated in array order and only the FIRST matching rule adjusts the bid for an overlapping audience. The order you send is the order that is stored and returned.  Eligibility: value rule sets apply only to ad sets on the `LOWEST_COST_WITHOUT_CAP` (auto-bid) or `COST_CAP` bid strategies. Meta rejects the rest server-side.
 
 ### Example
 
@@ -3083,7 +3083,7 @@ removeAccountCallout($account_id, $asset_id, $ad_account_id, $customer_id): \Zer
 
 Remove account callout
 
-Removes the customer_asset attachment only. The underlying shared asset and its campaign or ad-group attachments remain. Fields go in the query string. A JSON body with the same fields is also accepted and, when sent, the query string is ignored.
+Detaches a callout from the Google Ads account level, leaving it on any campaigns or ad groups that still use it.  Removes the customer_asset attachment only. The underlying shared asset and its campaign or ad-group attachments remain. Fields go in the query string. A JSON body with the same fields is also accepted and, when sent, the query string is ignored.
 
 ### Example
 
@@ -3149,7 +3149,7 @@ removeAccountSitelink($account_id, $asset_id, $ad_account_id, $customer_id): \Ze
 
 Remove account sitelink
 
-Removes the customer_asset attachment only. The underlying shared asset and its campaign or ad-group attachments remain. Fields go in the query string. A JSON body with the same fields is also accepted and, when sent, the query string is ignored.
+Detaches a sitelink from the Google Ads account level, leaving it on any campaigns or ad groups that still use it.  Removes the customer_asset attachment only. The underlying shared asset and its campaign or ad-group attachments remain. Fields go in the query string. A JSON body with the same fields is also accepted and, when sent, the query string is ignored.
 
 ### Example
 
@@ -3215,7 +3215,7 @@ removeAccountStructuredSnippet($account_id, $asset_id, $ad_account_id, $customer
 
 Remove account snippet
 
-Removes the customer_asset attachment only. The underlying shared asset and its campaign or ad-group attachments remain. Fields go in the query string. A JSON body with the same fields is also accepted and, when sent, the query string is ignored.
+Detaches a structured snippet from the Google Ads account level, leaving it on any campaigns or ad groups that still use it.  Removes the customer_asset attachment only. The underlying shared asset and its campaign or ad-group attachments remain. Fields go in the query string. A JSON body with the same fields is also accepted and, when sent, the query string is ignored.
 
 ### Example
 
@@ -3281,6 +3281,8 @@ removeAdAccountUser($account_id, $ad_account_id, $user_id): \Zernio\Model\Remove
 
 Remove a user from an ad account
 
+Removes a person's access to a Meta ad account assigned through your business portfolio.
+
 ### Example
 
 ```php
@@ -3343,7 +3345,7 @@ removeAdLabel($label_id, $account_id, $ad_account_id, $customer_id): \Zernio\Mod
 
 Remove a Google Ads label
 
-Removes the label. Google drops it from every campaign, ad group, ad and keyword it was attached to.
+Deletes a Google Ads label and removes it from everything it was attached to.  Google drops it from every campaign, ad group, ad and keyword it was attached to.
 
 ### Example
 
@@ -3409,6 +3411,8 @@ removePageUser($account_id, $page_id, $user_id): \Zernio\Model\RemovePageUser200
 
 Remove a user from a Page
 
+Removes a person's access to a Facebook Page assigned through your business portfolio.
+
 ### Example
 
 ```php
@@ -3471,7 +3475,7 @@ replaceAdNegativeKeywordListKeywords($list_id, $replace_ad_negative_keyword_list
 
 Replace negative list keywords
 
-Replaces the full desired keyword set. Existing keywords are diffed by normalized text and match type; creates and removals are applied atomically in one mutation. Unchanged criteria retain their ids. Send an empty keywords array to clear the list. Changes affect every campaign using this list. Each create or removal consumes one daily operation; the entire batch must fit the remaining quota.
+Replaces all keywords in a shared Google Ads negative keyword list (or clears it), affecting every campaign that uses the list.  Existing keywords are diffed by normalized text and match type; creates and removals are applied atomically in one mutation. Unchanged criteria retain their ids. Send an empty keywords array to clear the list. Changes affect every campaign using this list. Each create or removal consumes one daily operation; the entire batch must fit the remaining quota.
 
 ### Example
 
@@ -3601,7 +3605,7 @@ updateAccountCallouts($update_account_callouts_request): \Zernio\Model\UpdateAcc
 
 Update account callouts
 
-Edits existing Google assets in place. Send updates with assetResourceName and the fields to change. An asset is shared: changes affect every attachment using it. Omitted fields stay unchanged. The operation consumes the Google operations budget and invalidates affected cached lists.
+Edits existing Google Ads callouts in place; the change applies everywhere that callout is used.  Send updates with assetResourceName and the fields to change. An asset is shared: changes affect every attachment using it. Omitted fields stay unchanged. The operation consumes the Google operations budget and invalidates affected cached lists.
 
 ### Example
 
@@ -3661,7 +3665,7 @@ updateAccountSitelinks($update_account_sitelinks_request): \Zernio\Model\UpdateA
 
 Update account sitelinks
 
-Edits existing Google assets in place. Send updates with assetResourceName and the fields to change. An asset is shared: changes affect every attachment using it. Omitted fields stay unchanged. The operation consumes the Google operations budget and invalidates affected cached lists.
+Edits existing Google Ads sitelinks in place; the change applies everywhere that sitelink is used.  Send updates with assetResourceName and the fields to change. An asset is shared: changes affect every attachment using it. Omitted fields stay unchanged. The operation consumes the Google operations budget and invalidates affected cached lists.
 
 ### Example
 
@@ -3721,7 +3725,7 @@ updateAccountStructuredSnippets($update_account_structured_snippets_request): \Z
 
 Update account snippets
 
-Edits existing Google assets in place. Send updates with assetResourceName and the fields to change. An asset is shared: changes affect every attachment using it. Omitted fields stay unchanged. The operation consumes the Google operations budget and invalidates affected cached lists.
+Edits existing Google Ads structured snippets in place; the change applies everywhere that snippet is used.  Send updates with assetResourceName and the fields to change. An asset is shared: changes affect every attachment using it. Omitted fields stay unchanged. The operation consumes the Google operations budget and invalidates affected cached lists.
 
 ### Example
 
@@ -3781,7 +3785,7 @@ updateAdAccount($update_ad_account_request): \Zernio\Model\UpdateAdAccount200Res
 
 Update ad account settings
 
-Updates a Meta ad account in place: its name, its account-level spend cap, and its default DSA beneficiary and payor. Pass any combination of fields.  **Spend cap.** `spendCap` is the total the account may spend before Meta pauses every campaign in it, in whole units of the account currency. `spendCap: null` removes the cap and `resetAmountSpent: true` restarts the amount counted against it from zero. When `name`, `spendCap` or `resetAmountSpent` is passed, the response carries `settings`, the account's finances re-read after the write (same shape as `GET /v1/ads/accounts/finance`), so the effective cap can be confirmed in one call.  **DSA defaults.** Sets the default DSA beneficiary and payor on the ad account (EU DSA, Article 26). Set them once and every EU-targeted call to `/v1/ads/create`, `/v1/ads/boost` and `/v1/ads/ctwa` on that ad account can omit `dsaBeneficiary`/`dsaPayor`: Meta applies the defaults automatically.  The values are written to the ad account on Meta, the same setting Ads Manager edits. Nothing is stored in Zernio, and defaults already set in Ads Manager work identically. Zernio never guesses these values for you. Beneficiary and payor are legal disclosures shown to EU users, so you must provide the entity names explicitly. Use `GET /v1/ads/dsa-recommendations` to offer suggestions in your UI.  If `defaultDsaPayor` is omitted, the beneficiary is also set as the payor, which covers the common case where the same entity benefits from and pays for the ads. Read the current values back with `GET /v1/ads/dsa-defaults`.  **Google: account-level URL tracking.** On a Google Ads connection, `adAccountId` is the customer id and only `trackingUrlTemplate` / `finalUrlSuffix` are accepted (the Meta fields return 400). They write `customer.tracking_url_template` and `customer.final_url_suffix`, one update mask leaf per field sent; an empty string clears the field. The response carries `urlTracking` with the values written. For one campaign, send the same fields to PUT /v1/ads/campaigns/{campaignId}.  Other platforms return 400.
+Changes a Meta ad account's name, spend cap or default EU DSA beneficiary and payor.  Pass any combination of fields.  **Spend cap.** `spendCap` is the total the account may spend before Meta pauses every campaign in it, in whole units of the account currency. `spendCap: null` removes the cap and `resetAmountSpent: true` restarts the amount counted against it from zero. When `name`, `spendCap` or `resetAmountSpent` is passed, the response carries `settings`, the account's finances re-read after the write (same shape as `GET /v1/ads/accounts/finance`), so the effective cap can be confirmed in one call.  **DSA defaults.** Sets the default DSA beneficiary and payor on the ad account (EU DSA, Article 26). Set them once and every EU-targeted call to `/v1/ads/create`, `/v1/ads/boost` and `/v1/ads/ctwa` on that ad account can omit `dsaBeneficiary`/`dsaPayor`: Meta applies the defaults automatically.  The values are written to the ad account on Meta, the same setting Ads Manager edits. Nothing is stored in Zernio, and defaults already set in Ads Manager work identically. Zernio never guesses these values for you. Beneficiary and payor are legal disclosures shown to EU users, so you must provide the entity names explicitly. Use `GET /v1/ads/dsa-recommendations` to offer suggestions in your UI.  If `defaultDsaPayor` is omitted, the beneficiary is also set as the payor, which covers the common case where the same entity benefits from and pays for the ads. Read the current values back with `GET /v1/ads/dsa-defaults`.  **Google: account-level URL tracking.** On a Google Ads connection, `adAccountId` is the customer id and only `trackingUrlTemplate` / `finalUrlSuffix` are accepted (the Meta fields return 400). They write `customer.tracking_url_template` and `customer.final_url_suffix`, one update mask leaf per field sent; an empty string clears the field. The response carries `urlTracking` with the values written. For one campaign, send the same fields to PUT /v1/ads/campaigns/{campaignId}.  Other platforms return 400.
 
 ### Example
 
@@ -3841,7 +3845,7 @@ updateAdAccountManagerLink($update_ad_account_manager_link_request): \Zernio\Mod
 
 Accept, decline, cancel or end a manager link
 
-Changes one manager-client link, identified by `managerCustomerId`, `clientCustomerId` and `managerLinkId` (all from GET /v1/ads/accounts/hierarchy). `accept` and `decline` answer a pending invitation as the client (CustomerManagerLinkService), so the connection's Google user needs direct access to the client account; access through a manager is not enough, because the link does not exist yet. `cancel` withdraws a pending invitation and `unlink` ends an active link, both as the manager (CustomerClientLinkService). Send `validateOnly: true` to have Google check the change without applying it.
+Accepts, declines or cancels a Google Ads manager invitation, or ends an existing manager-client link.  Changes one manager-client link, identified by `managerCustomerId`, `clientCustomerId` and `managerLinkId` (all from GET /v1/ads/accounts/hierarchy). `accept` and `decline` answer a pending invitation as the client (CustomerManagerLinkService), so the connection's Google user needs direct access to the client account; access through a manager is not enough, because the link does not exist yet. `cancel` withdraws a pending invitation and `unlink` ends an active link, both as the manager (CustomerClientLinkService). Send `validateOnly: true` to have Google check the change without applying it.
 
 ### Example
 
@@ -3901,7 +3905,7 @@ updateAdLabel($label_id, $update_ad_label_request): \Zernio\Model\UpdateAdLabel2
 
 Update a Google Ads label
 
-Changes the name, color or description of a label. Only the fields sent are written.
+Changes a Google Ads label's name, color or description.  Only the fields sent are written.
 
 ### Example
 
@@ -3963,7 +3967,7 @@ updateAdNegativeKeywordList($list_id, $update_ad_negative_keyword_list_request):
 
 Rename a negative keyword list
 
-Renames a shared negative keyword list. Keywords and campaign associations are unchanged. Use the keywords endpoint to edit the desired keyword set.
+Renames a shared Google Ads negative keyword list without changing its keywords or the campaigns using it.  Keywords and campaign associations are unchanged. Use the keywords endpoint to edit the desired keyword set.
 
 ### Example
 
@@ -4025,7 +4029,7 @@ updateValueRuleSet($value_rule_set_id, $update_value_rule_set_request): \Zernio\
 
 Replace a value rule set
 
-**THIS IS A FULL REPLACE, NOT A PATCH.** Meta's update is declarative: the body you send becomes the rule set.  - `GET /v1/ads/value-rule-sets/{valueRuleSetId}` FIRST. - Keep a rule or criterion by echoing its `id`. - Create one by including the object WITHOUT an `id`. - Delete one by OMITTING it from the array. There is no warning and no undo.  `name` and `rules` are both required for exactly this reason: a partial body would silently destroy every rule left out.  **Rule order is semantic**: the array order you send is the evaluation order, and only the first matching rule adjusts the bid for an overlapping audience.  Existing rule sets created elsewhere may contain `LOCATION_DMA` criteria. Those went inert on 2026-06-22 and are rejected here; migrate them to `LOCATION_COMSCORE_MARKET`.
+Replaces a Meta value rule set with the rules you send, so any rule left out is deleted.  **THIS IS A FULL REPLACE, NOT A PATCH.** Meta's update is declarative: the body you send becomes the rule set.  - `GET /v1/ads/value-rule-sets/{valueRuleSetId}` FIRST. - Keep a rule or criterion by echoing its `id`. - Create one by including the object WITHOUT an `id`. - Delete one by OMITTING it from the array. There is no warning and no undo.  `name` and `rules` are both required for exactly this reason: a partial body would silently destroy every rule left out.  **Rule order is semantic**: the array order you send is the evaluation order, and only the first matching rule adjusts the bid for an overlapping audience.  Existing rule sets created elsewhere may contain `LOCATION_DMA` criteria. Those went inert on 2026-06-22 and are rejected here; migrate them to `LOCATION_COMSCORE_MARKET`.
 
 ### Example
 
