@@ -2228,6 +2228,7 @@ docs/Model/SubmitWhatsAppNumberKycRequest.md
 docs/Model/SubmitWhatsAppNumberKycRequestDocumentsInner.md
 docs/Model/SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf.md
 docs/Model/SupportRun.md
+docs/Model/SupportRunSupportTicket.md
 docs/Model/SupportRunUsage.md
 docs/Model/SyncExternalPosts200Response.md
 docs/Model/SyncExternalPosts200ResponseSynced.md
@@ -5021,6 +5022,7 @@ lib/Model/SubmitWhatsAppNumberKycRequest.php
 lib/Model/SubmitWhatsAppNumberKycRequestDocumentsInner.php
 lib/Model/SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf.php
 lib/Model/SupportRun.php
+lib/Model/SupportRunSupportTicket.php
 lib/Model/SupportRunUsage.php
 lib/Model/SyncExternalPosts200Response.php
 lib/Model/SyncExternalPosts200ResponseSynced.php
@@ -5585,3 +5587,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/SupportRunSupportTicketTest.php
