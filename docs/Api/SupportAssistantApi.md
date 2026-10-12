@@ -8,6 +8,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | ------------- | ------------- | ------------- |
 | [**askSupportQuestion()**](SupportAssistantApi.md#askSupportQuestion) | **POST** /v1/support/runs | Ask a support question |
 | [**getSupportAnswer()**](SupportAssistantApi.md#getSupportAnswer) | **GET** /v1/support/runs/{runId} | Get a support answer |
+| [**listSupportAnswers()**](SupportAssistantApi.md#listSupportAnswers) | **GET** /v1/support/runs | List a thread&#39;s support answers |
 
 
 ## `askSupportQuestion()`
@@ -118,6 +119,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\SupportRun**](../Model/SupportRun.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listSupportAnswers()`
+
+```php
+listSupportAnswers($thread_id, $limit, $cursor): \Zernio\Model\ListSupportAnswers200Response
+```
+
+List a thread's support answers
+
+Lists the runs of one thread that your team started, with Ana's answers, oldest first. Replies from the Zernio team after a support ticket arrive by email and are not included. Runs are kept for 90 days. Page through a long thread with `limit` and `cursor`: pass `nextCursor` as `cursor` until it is null.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\SupportAssistantApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$thread_id = 'thread_id_example'; // string | The thread to list, as returned by `POST /v1/support/runs`.
+$limit = 20; // int | Runs per page.
+$cursor = 'cursor_example'; // string | Pass `nextCursor` from the previous page.
+
+try {
+    $result = $apiInstance->listSupportAnswers($thread_id, $limit, $cursor);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SupportAssistantApi->listSupportAnswers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **thread_id** | **string**| The thread to list, as returned by &#x60;POST /v1/support/runs&#x60;. | |
+| **limit** | **int**| Runs per page. | [optional] [default to 20] |
+| **cursor** | **string**| Pass &#x60;nextCursor&#x60; from the previous page. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListSupportAnswers200Response**](../Model/ListSupportAnswers200Response.md)
 
 ### Authorization
 

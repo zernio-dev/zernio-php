@@ -1690,6 +1690,7 @@ docs/Model/ListSmsSenderIds200ResponseBudgetPendingRequest.md
 docs/Model/ListSmsSenderIds200ResponseSenderIdsInner.md
 docs/Model/ListSnapchatProfiles200Response.md
 docs/Model/ListSnapchatProfiles200ResponsePublicProfilesInner.md
+docs/Model/ListSupportAnswers200Response.md
 docs/Model/ListTikTokAdPixels200Response.md
 docs/Model/ListTikTokAdPixels200ResponsePixelsInner.md
 docs/Model/ListTikTokAdPixels200ResponsePixelsInnerEventDetailsInner.md
@@ -4484,6 +4485,7 @@ lib/Model/ListSmsSenderIds200ResponseBudgetPendingRequest.php
 lib/Model/ListSmsSenderIds200ResponseSenderIdsInner.php
 lib/Model/ListSnapchatProfiles200Response.php
 lib/Model/ListSnapchatProfiles200ResponsePublicProfilesInner.php
+lib/Model/ListSupportAnswers200Response.php
 lib/Model/ListTikTokAdPixels200Response.php
 lib/Model/ListTikTokAdPixels200ResponsePixelsInner.php
 lib/Model/ListTikTokAdPixels200ResponsePixelsInnerEventDetailsInner.php
@@ -5589,3 +5591,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ListSupportAnswers200ResponseTest.php
