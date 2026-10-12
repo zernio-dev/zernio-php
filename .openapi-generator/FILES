@@ -5589,7 +5589,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/SupportAssistantApiTest.php
-test/Model/AskSupportQuestion202ResponseTest.php
-test/Model/AskSupportQuestionRequestContextTest.php
-test/Model/AskSupportQuestionRequestTest.php
