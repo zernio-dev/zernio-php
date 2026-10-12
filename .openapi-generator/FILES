@@ -63,7 +63,7 @@ docs/Api/ReviewsApi.md
 docs/Api/SMSApi.md
 docs/Api/SequencesApi.md
 docs/Api/SlackApi.md
-docs/Api/SupportRunsApi.md
+docs/Api/SupportAssistantApi.md
 docs/Api/ToolsApi.md
 docs/Api/TrackingTagsApi.md
 docs/Api/TwitterEngagementApi.md
@@ -202,6 +202,9 @@ docs/Model/ApplyGoogleRecommendationsRequest.md
 docs/Model/ApplyGoogleRecommendationsRequestRecommendationsInner.md
 docs/Model/ApproveWhatsAppGroupJoinRequestsRequest.md
 docs/Model/ArchiveLeadForm200Response.md
+docs/Model/AskSupportQuestion202Response.md
+docs/Model/AskSupportQuestionRequest.md
+docs/Model/AskSupportQuestionRequestContext.md
 docs/Model/AssignAdAccountUser201Response.md
 docs/Model/AssignAdAccountUserRequest.md
 docs/Model/AssignGoogleBusinessLocation200Response.md
@@ -671,9 +674,6 @@ docs/Model/CreateStandaloneAdRequestStructuredSnippetsInner.md
 docs/Model/CreateStandaloneAdRequestTranslationsInner.md
 docs/Model/CreateStandaloneAdRequestVideo.md
 docs/Model/CreateStandaloneAdRequestZipsInner.md
-docs/Model/CreateSupportRun202Response.md
-docs/Model/CreateSupportRunRequest.md
-docs/Model/CreateSupportRunRequestContext.md
 docs/Model/CreateTestLead200Response.md
 docs/Model/CreateTestLead200ResponseTestLead.md
 docs/Model/CreateTestLeadRequest.md
@@ -2853,7 +2853,7 @@ lib/Api/ReviewsApi.php
 lib/Api/SMSApi.php
 lib/Api/SequencesApi.php
 lib/Api/SlackApi.php
-lib/Api/SupportRunsApi.php
+lib/Api/SupportAssistantApi.php
 lib/Api/ToolsApi.php
 lib/Api/TrackingTagsApi.php
 lib/Api/TwitterEngagementApi.php
@@ -2996,6 +2996,9 @@ lib/Model/ApplyGoogleRecommendationsRequest.php
 lib/Model/ApplyGoogleRecommendationsRequestRecommendationsInner.php
 lib/Model/ApproveWhatsAppGroupJoinRequestsRequest.php
 lib/Model/ArchiveLeadForm200Response.php
+lib/Model/AskSupportQuestion202Response.php
+lib/Model/AskSupportQuestionRequest.php
+lib/Model/AskSupportQuestionRequestContext.php
 lib/Model/AssignAdAccountUser201Response.php
 lib/Model/AssignAdAccountUserRequest.php
 lib/Model/AssignGoogleBusinessLocation200Response.php
@@ -3465,9 +3468,6 @@ lib/Model/CreateStandaloneAdRequestStructuredSnippetsInner.php
 lib/Model/CreateStandaloneAdRequestTranslationsInner.php
 lib/Model/CreateStandaloneAdRequestVideo.php
 lib/Model/CreateStandaloneAdRequestZipsInner.php
-lib/Model/CreateSupportRun202Response.php
-lib/Model/CreateSupportRunRequest.php
-lib/Model/CreateSupportRunRequestContext.php
 lib/Model/CreateTestLead200Response.php
 lib/Model/CreateTestLead200ResponseTestLead.php
 lib/Model/CreateTestLeadRequest.php
@@ -5589,4 +5589,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetAdReview200ResponseReviewReviewFeedbackTest.php
+test/Api/SupportAssistantApiTest.php
+test/Model/AskSupportQuestion202ResponseTest.php
+test/Model/AskSupportQuestionRequestContextTest.php
+test/Model/AskSupportQuestionRequestTest.php

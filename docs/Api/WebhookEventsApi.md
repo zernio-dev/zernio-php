@@ -63,8 +63,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onSequenceExited()**](WebhookEventsApi.md#onSequenceExited) | **POST** /sequence.exited | Sequence exited event |
 | [**onSmsRegistrationActionRequired()**](WebhookEventsApi.md#onSmsRegistrationActionRequired) | **POST** /sms.registration.action_required | SMS registration action required event |
 | [**onSmsRegistrationStatusUpdated()**](WebhookEventsApi.md#onSmsRegistrationStatusUpdated) | **POST** /sms.registration.status_updated | SMS registration status updated event |
-| [**onSupportRunCompleted()**](WebhookEventsApi.md#onSupportRunCompleted) | **POST** /support.run.completed | Support run completed event |
-| [**onSupportRunFailed()**](WebhookEventsApi.md#onSupportRunFailed) | **POST** /support.run.failed | Support run failed event |
+| [**onSupportRunCompleted()**](WebhookEventsApi.md#onSupportRunCompleted) | **POST** /support.run.completed | Support Assistant finished event |
+| [**onSupportRunFailed()**](WebhookEventsApi.md#onSupportRunFailed) | **POST** /support.run.failed | Support Assistant failed event |
 | [**onVerificationApproved()**](WebhookEventsApi.md#onVerificationApproved) | **POST** /verification.approved | Verification approved event |
 | [**onVerificationFailed()**](WebhookEventsApi.md#onVerificationFailed) | **POST** /verification.failed | Verification failed event |
 | [**onWebhookTest()**](WebhookEventsApi.md#onWebhookTest) | **POST** /webhook.test | Webhook test event |
@@ -3458,9 +3458,9 @@ void (empty response body)
 onSupportRunCompleted($webhook_payload_support_run)
 ```
 
-Support run completed event
+Support Assistant finished event
 
-Fired when an Ana support run finishes (private beta). run.status is completed, or needs_human when Ana handed the question to a person. The run object matches GET /v1/support/runs/{runId}.
+Fired when the Support Assistant finishes a question (private beta). run.status is completed, or needs_human when Ana handed the question to a person. The run object matches GET /v1/support/runs/{runId}.
 
 ### Example
 
@@ -3517,9 +3517,9 @@ void (empty response body)
 onSupportRunFailed($webhook_payload_support_run)
 ```
 
-Support run failed event
+Support Assistant failed event
 
-Fired when an Ana support run fails or expires (private beta). Failed runs are not billed.
+Fired when a Support Assistant question fails or expires (private beta). Failed runs are not billed.
 
 ### Example
 
