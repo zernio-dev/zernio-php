@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **stop_reason** | **string** | Why the run stopped. Null while it is in progress. |
 **answer** | **string** | Ana&#39;s answer. Null while the run is in progress or when it failed. |
 **usage** | [**\Zernio\Model\SupportRunUsage**](SupportRunUsage.md) |  |
-**cost_usd** | **float** | The amount billed for the run, in USD: the tokens in &#x60;usage&#x60; at the Support Assistant rates (see Ask a support question), never above &#x60;maxCostUsd&#x60;. 0 for a failed run. |
+**cost_usd** | **float** | The exact amount charged for the question, in USD, never above &#x60;maxCostUsd&#x60;. 0 for a failed run. |
 **max_cost_usd** | **float** | The cost cap this run was started with, in USD. |
 **created_at** | **\DateTime** |  |
 **started_at** | **\DateTime** |  |
