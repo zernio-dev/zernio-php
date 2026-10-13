@@ -111,7 +111,7 @@ $apiInstance = new Zernio\Api\RCSApi(
     $config
 );
 $create_rcs_agent_request = new \Zernio\Model\CreateRcsAgentRequest(); // \Zernio\Model\CreateRcsAgentRequest
-$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
 
 try {
     $result = $apiInstance->createRcsAgent($create_rcs_agent_request, $idempotency_key);
@@ -126,7 +126,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **create_rcs_agent_request** | [**\Zernio\Model\CreateRcsAgentRequest**](../Model/CreateRcsAgentRequest.md)|  | |
-| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. | [optional] |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
 
 ### Return type
 
@@ -648,7 +648,7 @@ $apiInstance = new Zernio\Api\RCSApi(
     $config
 );
 $send_rcs_message_request = new \Zernio\Model\SendRcsMessageRequest(); // \Zernio\Model\SendRcsMessageRequest
-$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
 
 try {
     $result = $apiInstance->sendRcsMessage($send_rcs_message_request, $idempotency_key);
@@ -663,7 +663,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **send_rcs_message_request** | [**\Zernio\Model\SendRcsMessageRequest**](../Model/SendRcsMessageRequest.md)|  | |
-| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. | [optional] |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
 
 ### Return type
 

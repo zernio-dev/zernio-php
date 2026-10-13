@@ -838,7 +838,7 @@ $apiInstance = new Zernio\Api\MessagesApi(
 );
 $conversation_id = 'conversation_id_example'; // string | Opaque conversation identifier, accepted verbatim from the list endpoint or from the conversationId on inbox webhooks. Format not to be assumed.
 $send_inbox_message_request = {"accountId":"6a7adc04d0fe733d1a1bed76","message":"Reply yes to continue.","attachmentUrl":"https://cdn.example.com/property.jpg","attachmentType":"image","buttons":[{"type":"postback","title":"Yes","payload":"btn_0"},{"type":"postback","title":"No","payload":"btn_1"}]}; // \Zernio\Model\SendInboxMessageRequest
-$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
 
 try {
     $result = $apiInstance->sendInboxMessage($conversation_id, $send_inbox_message_request, $idempotency_key);
@@ -854,7 +854,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **conversation_id** | **string**| Opaque conversation identifier, accepted verbatim from the list endpoint or from the conversationId on inbox webhooks. Format not to be assumed. | |
 | **send_inbox_message_request** | [**\Zernio\Model\SendInboxMessageRequest**](../Model/SendInboxMessageRequest.md)|  | |
-| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. | [optional] |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
 
 ### Return type
 
@@ -1067,7 +1067,7 @@ uploadMediaDirect($file, $content_type): \Zernio\Model\UploadMediaDirect200Respo
 
 Upload media file
 
-Upload a media file using API key authentication and get back a publicly accessible URL. The URL can be used as attachmentUrl when sending inbox messages.  Files are stored in temporary storage and auto-delete after 7 days. Maximum file size is 25MB.  Unlike /v1/media/upload (which uses upload tokens for end-user flows), this endpoint takes your API key in the Authorization header, for programmatic use.
+Upload a media file using API key authentication and get back a publicly accessible URL. The URL can be used as attachmentUrl when sending inbox messages.  Files are stored in temporary storage and auto-delete after 7 days. The effective maximum is about 4.5 MB: the multipart body goes through the hosting platform's request body limit, which answers 413 before the endpoint's own 25 MB check is reached. For larger files use POST /v1/media/presign and upload straight to storage.  Unlike /v1/media/upload (which uses upload tokens for end-user flows), this endpoint takes your API key in the Authorization header, for programmatic use.
 
 ### Example
 
@@ -1086,7 +1086,7 @@ $apiInstance = new Zernio\Api\MessagesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$file = '/path/to/file.txt'; // \SplFileObject | The file to upload (max 25MB)
+$file = '/path/to/file.txt'; // \SplFileObject | The file to upload (about 4.5 MB at most in practice; use POST /v1/media/presign for larger files)
 $content_type = 'content_type_example'; // string | Override MIME type (e.g. \\\"image/jpeg\\\"). Auto-detected from file if not provided.
 
 try {
@@ -1101,7 +1101,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **file** | **\SplFileObject****\SplFileObject**| The file to upload (max 25MB) | |
+| **file** | **\SplFileObject****\SplFileObject**| The file to upload (about 4.5 MB at most in practice; use POST /v1/media/presign for larger files) | |
 | **content_type** | **string**| Override MIME type (e.g. \\\&quot;image/jpeg\\\&quot;). Auto-detected from file if not provided. | [optional] |
 
 ### Return type

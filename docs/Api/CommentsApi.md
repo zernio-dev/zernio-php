@@ -580,7 +580,7 @@ $apiInstance = new Zernio\Api\CommentsApi(
 );
 $post_id = 'post_id_example'; // string | Zernio post ID or platform-specific post ID. LinkedIn third-party posts accept full activity URN or numeric ID.
 $reply_to_inbox_post_request = new \Zernio\Model\ReplyToInboxPostRequest(); // \Zernio\Model\ReplyToInboxPostRequest
-$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
 
 try {
     $result = $apiInstance->replyToInboxPost($post_id, $reply_to_inbox_post_request, $idempotency_key);
@@ -596,7 +596,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **post_id** | **string**| Zernio post ID or platform-specific post ID. LinkedIn third-party posts accept full activity URN or numeric ID. | |
 | **reply_to_inbox_post_request** | [**\Zernio\Model\ReplyToInboxPostRequest**](../Model/ReplyToInboxPostRequest.md)|  | |
-| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. | [optional] |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
 
 ### Return type
 

@@ -39,7 +39,7 @@ $apiInstance = new Zernio\Api\SupportAssistantApi(
     $config
 );
 $ask_support_question_request = {"message":"Why did my Instagram post fail to publish?","context":{"postId":"64f0a1b2c3d4e5f6a7b8c9d0"}}; // \Zernio\Model\AskSupportQuestionRequest
-$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
 
 try {
     $result = $apiInstance->askSupportQuestion($ask_support_question_request, $idempotency_key);
@@ -54,7 +54,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ask_support_question_request** | [**\Zernio\Model\AskSupportQuestionRequest**](../Model/AskSupportQuestionRequest.md)|  | |
-| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. | [optional] |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
 
 ### Return type
 
