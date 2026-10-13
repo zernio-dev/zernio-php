@@ -3189,6 +3189,7 @@ Class | Method | HTTP request | Description
 - [SubmitWhatsAppNumberKycRequestDocumentsInner](docs/Model/SubmitWhatsAppNumberKycRequestDocumentsInner.md)
 - [SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf](docs/Model/SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf.md)
 - [SupportRun](docs/Model/SupportRun.md)
+- [SupportRunDiagnosis](docs/Model/SupportRunDiagnosis.md)
 - [SupportRunSupportTicket](docs/Model/SupportRunSupportTicket.md)
 - [SupportRunUsage](docs/Model/SupportRunUsage.md)
 - [SyncExternalPosts200Response](docs/Model/SyncExternalPosts200Response.md)

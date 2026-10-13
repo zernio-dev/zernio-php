@@ -64,6 +64,7 @@ class SupportRun implements ModelInterface, ArrayAccess, \JsonSerializable
         'stop_reason' => 'string',
         'question' => 'string',
         'answer' => 'string',
+        'diagnosis' => '\Zernio\Model\SupportRunDiagnosis',
         'usage' => '\Zernio\Model\SupportRunUsage',
         'cost_usd' => 'float',
         'max_cost_usd' => 'float',
@@ -88,6 +89,7 @@ class SupportRun implements ModelInterface, ArrayAccess, \JsonSerializable
         'stop_reason' => null,
         'question' => null,
         'answer' => null,
+        'diagnosis' => null,
         'usage' => null,
         'cost_usd' => null,
         'max_cost_usd' => null,
@@ -110,6 +112,7 @@ class SupportRun implements ModelInterface, ArrayAccess, \JsonSerializable
         'stop_reason' => true,
         'question' => true,
         'answer' => true,
+        'diagnosis' => true,
         'usage' => false,
         'cost_usd' => false,
         'max_cost_usd' => false,
@@ -212,6 +215,7 @@ class SupportRun implements ModelInterface, ArrayAccess, \JsonSerializable
         'stop_reason' => 'stopReason',
         'question' => 'question',
         'answer' => 'answer',
+        'diagnosis' => 'diagnosis',
         'usage' => 'usage',
         'cost_usd' => 'costUsd',
         'max_cost_usd' => 'maxCostUsd',
@@ -234,6 +238,7 @@ class SupportRun implements ModelInterface, ArrayAccess, \JsonSerializable
         'stop_reason' => 'setStopReason',
         'question' => 'setQuestion',
         'answer' => 'setAnswer',
+        'diagnosis' => 'setDiagnosis',
         'usage' => 'setUsage',
         'cost_usd' => 'setCostUsd',
         'max_cost_usd' => 'setMaxCostUsd',
@@ -256,6 +261,7 @@ class SupportRun implements ModelInterface, ArrayAccess, \JsonSerializable
         'stop_reason' => 'getStopReason',
         'question' => 'getQuestion',
         'answer' => 'getAnswer',
+        'diagnosis' => 'getDiagnosis',
         'usage' => 'getUsage',
         'cost_usd' => 'getCostUsd',
         'max_cost_usd' => 'getMaxCostUsd',
@@ -375,6 +381,7 @@ class SupportRun implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('stop_reason', $data ?? [], null);
         $this->setIfExists('question', $data ?? [], null);
         $this->setIfExists('answer', $data ?? [], null);
+        $this->setIfExists('diagnosis', $data ?? [], null);
         $this->setIfExists('usage', $data ?? [], null);
         $this->setIfExists('cost_usd', $data ?? [], null);
         $this->setIfExists('max_cost_usd', $data ?? [], null);
@@ -447,6 +454,9 @@ class SupportRun implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['answer'] === null && !$this->isNullableSetToNull('answer')) {
             $invalidProperties[] = "'answer' can't be null";
+        }
+        if ($this->container['diagnosis'] === null && !$this->isNullableSetToNull('diagnosis')) {
+            $invalidProperties[] = "'diagnosis' can't be null";
         }
         if ($this->container['usage'] === null) {
             $invalidProperties[] = "'usage' can't be null";
@@ -683,6 +693,40 @@ class SupportRun implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['answer'] = $answer;
+
+        return $this;
+    }
+
+    /**
+     * Gets diagnosis
+     *
+     * @return \Zernio\Model\SupportRunDiagnosis|null
+     */
+    public function getDiagnosis()
+    {
+        return $this->container['diagnosis'];
+    }
+
+    /**
+     * Sets diagnosis
+     *
+     * @param \Zernio\Model\SupportRunDiagnosis|null $diagnosis diagnosis
+     *
+     * @return self
+     */
+    public function setDiagnosis($diagnosis)
+    {
+        if (is_null($diagnosis)) {
+            array_push($this->openAPINullablesSetToNull, 'diagnosis');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('diagnosis', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['diagnosis'] = $diagnosis;
 
         return $this;
     }

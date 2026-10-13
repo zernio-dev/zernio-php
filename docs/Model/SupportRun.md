@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **stop_reason** | **string** | Why the run stopped. Null while it is in progress. |
 **question** | **string** | The question as asked, with leading and trailing whitespace trimmed. Null only on runs created before this field was added. |
 **answer** | **string** | The assistant&#39;s answer. Null while the run is in progress or when it failed. |
+**diagnosis** | [**\Zernio\Model\SupportRunDiagnosis**](SupportRunDiagnosis.md) |  |
 **usage** | [**\Zernio\Model\SupportRunUsage**](SupportRunUsage.md) |  |
 **cost_usd** | **float** | The exact amount charged for the question, in USD, never above &#x60;maxCostUsd&#x60;. 0 for a failed run. |
 **max_cost_usd** | **float** | The cost cap this run was started with, in USD. |
