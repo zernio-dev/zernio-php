@@ -40,7 +40,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `getAnalytics()`
 
 ```php
-getAnalytics($post_id, $platform, $profile_id, $account_id, $source, $from_date, $to_date, $limit, $page, $sort_by, $order): \Zernio\Model\GetAnalytics200Response
+getAnalytics($post_id, $platform, $profile_id, $account_id, $source, $from_date, $to_date, $limit, $page, $sort_by, $order, $tags): \Zernio\Model\GetAnalytics200Response
 ```
 
 Get post analytics
@@ -75,9 +75,10 @@ $limit = 50; // int | Page size (default 50)
 $page = 1; // int | Page number (default 1)
 $sort_by = 'date'; // string | Sort by date, engagement, or a specific metric. Platform-specific metrics (follows, reposts, reels_skip_rate, ig_reels_*, completion_rate, profile_views, website_clicks) sort a null value as 0.
 $order = 'desc'; // string | Sort order
+$tags = job; // string | Comma-separated tags (at most 20). Lists only posts created through Zernio that carry every listed tag, matched exactly and case-sensitively. Up to 200 published posts can match within the date range; more returns 400 asking to narrow fromDate and toDate. Ignored when postId is set.
 
 try {
-    $result = $apiInstance->getAnalytics($post_id, $platform, $profile_id, $account_id, $source, $from_date, $to_date, $limit, $page, $sort_by, $order);
+    $result = $apiInstance->getAnalytics($post_id, $platform, $profile_id, $account_id, $source, $from_date, $to_date, $limit, $page, $sort_by, $order, $tags);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AnalyticsApi->getAnalytics: ', $e->getMessage(), PHP_EOL;
@@ -99,6 +100,7 @@ try {
 | **page** | **int**| Page number (default 1) | [optional] [default to 1] |
 | **sort_by** | **string**| Sort by date, engagement, or a specific metric. Platform-specific metrics (follows, reposts, reels_skip_rate, ig_reels_*, completion_rate, profile_views, website_clicks) sort a null value as 0. | [optional] [default to &#39;date&#39;] |
 | **order** | **string**| Sort order | [optional] [default to &#39;desc&#39;] |
+| **tags** | **string**| Comma-separated tags (at most 20). Lists only posts created through Zernio that carry every listed tag, matched exactly and case-sensitively. Up to 200 published posts can match within the date range; more returns 400 asking to narrow fromDate and toDate. Ignored when postId is set. | [optional] |
 
 ### Return type
 
