@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **age_min** | **int** |  | [optional]
 **age_max** | **int** |  | [optional]
-**gender** | **string** | Applied on Meta, TikTok and Pinterest. Ignored on Google, LinkedIn and X. | [optional]
-**languages** | **string[]** | Meta locale ids (numeric), passed through as given. | [optional]
+**gender** | **string** | Applied on Meta, TikTok, Pinterest and Reddit. Ignored on Google, LinkedIn and X. | [optional]
+**languages** | **string[]** | Meta locale ids (numeric), passed through as given. Reddit: language codes (e.g. &#x60;en&#x60;). | [optional]
 **countries** | **string[]** | ISO country codes. Required for TikTok boosts (TikTok&#39;s ad group requires location_ids); optional on other platforms. | [optional]
 **regions** | [**\Zernio\Model\UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInnerOneOf[]**](UpdateCampaignTargetingRequestTargetingLocationsOneOfRegionsInnerOneOf.md) | Region/state targeting. &#x60;key&#x60; from /v1/ads/targeting/search?dimension&#x3D;geo&amp;geoType&#x3D;region. | [optional]
 **cities** | [**\Zernio\Model\BoostPostRequestTargetingCitiesInner[]**](BoostPostRequestTargetingCitiesInner.md) | City targeting. Optional &#x60;radius&#x60; + &#x60;distanceUnit&#x60; extend beyond the city limits (both set together, Meta only). | [optional]
