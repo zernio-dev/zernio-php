@@ -327,6 +327,8 @@ docs/Model/CallRecordCallErrorsInner.md
 docs/Model/CallRecordTranscriptInner.md
 docs/Model/CampaignAnalyticsResponse.md
 docs/Model/CampaignAnalyticsResponseAnalytics.md
+docs/Model/CampaignAnalyticsResponseAnalyticsBreakdownErrorsInner.md
+docs/Model/CampaignAnalyticsResponseAnalyticsBreakdownsRange.md
 docs/Model/CampaignAnalyticsResponseAnalyticsDailyInner.md
 docs/Model/CampaignAnalyticsResponseAnalyticsImpressionShareCache.md
 docs/Model/CampaignAnalyticsResponseAnalyticsSummary.md
@@ -3124,6 +3126,8 @@ lib/Model/CallRecordCallErrorsInner.php
 lib/Model/CallRecordTranscriptInner.php
 lib/Model/CampaignAnalyticsResponse.php
 lib/Model/CampaignAnalyticsResponseAnalytics.php
+lib/Model/CampaignAnalyticsResponseAnalyticsBreakdownErrorsInner.php
+lib/Model/CampaignAnalyticsResponseAnalyticsBreakdownsRange.php
 lib/Model/CampaignAnalyticsResponseAnalyticsDailyInner.php
 lib/Model/CampaignAnalyticsResponseAnalyticsImpressionShareCache.php
 lib/Model/CampaignAnalyticsResponseAnalyticsSummary.php
@@ -5595,3 +5599,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CampaignAnalyticsResponseAnalyticsBreakdownErrorsInnerTest.php
+test/Model/CampaignAnalyticsResponseAnalyticsBreakdownsRangeTest.php

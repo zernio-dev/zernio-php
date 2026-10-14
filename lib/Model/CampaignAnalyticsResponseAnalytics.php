@@ -61,7 +61,12 @@ class CampaignAnalyticsResponseAnalytics implements ModelInterface, ArrayAccess,
         'summary' => '\Zernio\Model\CampaignAnalyticsResponseAnalyticsSummary',
         'impression_share_cache' => '\Zernio\Model\CampaignAnalyticsResponseAnalyticsImpressionShareCache',
         'daily' => '\Zernio\Model\CampaignAnalyticsResponseAnalyticsDailyInner[]',
-        'breakdowns' => 'array<string,object[]>'
+        'breakdowns' => 'array<string,object[]>',
+        'unsupported_breakdowns' => 'string[]',
+        'breakdown_hints' => 'array<string,string>',
+        'breakdown_errors' => '\Zernio\Model\CampaignAnalyticsResponseAnalyticsBreakdownErrorsInner[]',
+        'breakdown_dropped_metrics' => 'array<string,string[]>',
+        'breakdowns_range' => '\Zernio\Model\CampaignAnalyticsResponseAnalyticsBreakdownsRange'
     ];
 
     /**
@@ -75,7 +80,12 @@ class CampaignAnalyticsResponseAnalytics implements ModelInterface, ArrayAccess,
         'summary' => null,
         'impression_share_cache' => null,
         'daily' => null,
-        'breakdowns' => null
+        'breakdowns' => null,
+        'unsupported_breakdowns' => null,
+        'breakdown_hints' => null,
+        'breakdown_errors' => null,
+        'breakdown_dropped_metrics' => null,
+        'breakdowns_range' => null
     ];
 
     /**
@@ -87,7 +97,12 @@ class CampaignAnalyticsResponseAnalytics implements ModelInterface, ArrayAccess,
         'summary' => false,
         'impression_share_cache' => false,
         'daily' => false,
-        'breakdowns' => false
+        'breakdowns' => false,
+        'unsupported_breakdowns' => false,
+        'breakdown_hints' => false,
+        'breakdown_errors' => false,
+        'breakdown_dropped_metrics' => false,
+        'breakdowns_range' => false
     ];
 
     /**
@@ -179,7 +194,12 @@ class CampaignAnalyticsResponseAnalytics implements ModelInterface, ArrayAccess,
         'summary' => 'summary',
         'impression_share_cache' => 'impressionShareCache',
         'daily' => 'daily',
-        'breakdowns' => 'breakdowns'
+        'breakdowns' => 'breakdowns',
+        'unsupported_breakdowns' => 'unsupportedBreakdowns',
+        'breakdown_hints' => 'breakdownHints',
+        'breakdown_errors' => 'breakdownErrors',
+        'breakdown_dropped_metrics' => 'breakdownDroppedMetrics',
+        'breakdowns_range' => 'breakdownsRange'
     ];
 
     /**
@@ -191,7 +211,12 @@ class CampaignAnalyticsResponseAnalytics implements ModelInterface, ArrayAccess,
         'summary' => 'setSummary',
         'impression_share_cache' => 'setImpressionShareCache',
         'daily' => 'setDaily',
-        'breakdowns' => 'setBreakdowns'
+        'breakdowns' => 'setBreakdowns',
+        'unsupported_breakdowns' => 'setUnsupportedBreakdowns',
+        'breakdown_hints' => 'setBreakdownHints',
+        'breakdown_errors' => 'setBreakdownErrors',
+        'breakdown_dropped_metrics' => 'setBreakdownDroppedMetrics',
+        'breakdowns_range' => 'setBreakdownsRange'
     ];
 
     /**
@@ -203,7 +228,12 @@ class CampaignAnalyticsResponseAnalytics implements ModelInterface, ArrayAccess,
         'summary' => 'getSummary',
         'impression_share_cache' => 'getImpressionShareCache',
         'daily' => 'getDaily',
-        'breakdowns' => 'getBreakdowns'
+        'breakdowns' => 'getBreakdowns',
+        'unsupported_breakdowns' => 'getUnsupportedBreakdowns',
+        'breakdown_hints' => 'getBreakdownHints',
+        'breakdown_errors' => 'getBreakdownErrors',
+        'breakdown_dropped_metrics' => 'getBreakdownDroppedMetrics',
+        'breakdowns_range' => 'getBreakdownsRange'
     ];
 
     /**
@@ -267,6 +297,11 @@ class CampaignAnalyticsResponseAnalytics implements ModelInterface, ArrayAccess,
         $this->setIfExists('impression_share_cache', $data ?? [], null);
         $this->setIfExists('daily', $data ?? [], null);
         $this->setIfExists('breakdowns', $data ?? [], null);
+        $this->setIfExists('unsupported_breakdowns', $data ?? [], null);
+        $this->setIfExists('breakdown_hints', $data ?? [], null);
+        $this->setIfExists('breakdown_errors', $data ?? [], null);
+        $this->setIfExists('breakdown_dropped_metrics', $data ?? [], null);
+        $this->setIfExists('breakdowns_range', $data ?? [], null);
     }
 
     /**
@@ -405,7 +440,7 @@ class CampaignAnalyticsResponseAnalytics implements ModelInterface, ArrayAccess,
     /**
      * Sets breakdowns
      *
-     * @param array<string,object[]>|null $breakdowns Requested demographic breakdowns, keyed by dimension. Fetched live from the platform per request and never stored, so these rows can carry fields the stored `summary` and `daily` series do not.  LinkedIn rows carry `value` (the pivot URN), `name` (resolved label where LinkedIn provides one), the usual spend/impressions/clicks/ctr/cpc/cpm/engagement figures, plus two reach fields:  - `reach`: the segment's `approximateMemberReach`. - `audiencePenetration`: LinkedIn's own ratio of members reached to the size of   the targeted audience, passed through verbatim.  LinkedIn withholds both below its audience privacy threshold, in which case the keys are ABSENT rather than 0. `audiencePenetration` is available here only: it is not part of the stored metrics series.
+     * @param array<string,object[]>|null $breakdowns Requested demographic breakdowns, keyed by dimension. Fetched live from the platform per request and never stored, so these rows can carry fields the stored `summary` and `daily` series do not.  LinkedIn rows carry `value` (the pivot URN), `name` (resolved label where LinkedIn provides one), the usual spend/impressions/clicks/ctr/cpc/cpm/engagement figures, plus two reach fields:  - `reach`: the segment's `approximateMemberReach`. - `audiencePenetration`: LinkedIn's own ratio of members reached to the size of   the targeted audience, passed through verbatim.  LinkedIn withholds both below its audience privacy threshold, in which case the keys are ABSENT rather than 0. `audiencePenetration` is available here only: it is not part of the stored metrics series.  TikTok rows are keyed by TikTok's own dimension name (`country_code` for `country`, `platform` for `publisher_platform`). `placement` rows carry the label TikTok Ads Manager shows (`TikTok`, `TikTok Ad Network`, `News Feed App Series`) in `placement` and TikTok's API value (`PLACEMENT_TIKTOK`, `PLACEMENT_PANGLE`, `PLACEMENT_GLOBAL_APP_BUNDLE`) in `placementRaw`; a value without a known label carries the raw value in both.  A requested dimension with no data in the range is an empty array.
      *
      * @return self
      */
@@ -415,6 +450,141 @@ class CampaignAnalyticsResponseAnalytics implements ModelInterface, ArrayAccess,
             throw new \InvalidArgumentException('non-nullable breakdowns cannot be null');
         }
         $this->container['breakdowns'] = $breakdowns;
+
+        return $this;
+    }
+
+    /**
+     * Gets unsupported_breakdowns
+     *
+     * @return string[]|null
+     */
+    public function getUnsupportedBreakdowns()
+    {
+        return $this->container['unsupported_breakdowns'];
+    }
+
+    /**
+     * Sets unsupported_breakdowns
+     *
+     * @param string[]|null $unsupported_breakdowns Requested breakdowns this platform cannot break down by (e.g. region on TikTok, any breakdown on Google). Absent when every requested breakdown is supported.
+     *
+     * @return self
+     */
+    public function setUnsupportedBreakdowns($unsupported_breakdowns)
+    {
+        if (is_null($unsupported_breakdowns)) {
+            throw new \InvalidArgumentException('non-nullable unsupported_breakdowns cannot be null');
+        }
+        $this->container['unsupported_breakdowns'] = $unsupported_breakdowns;
+
+        return $this;
+    }
+
+    /**
+     * Gets breakdown_hints
+     *
+     * @return array<string,string>|null
+     */
+    public function getBreakdownHints()
+    {
+        return $this->container['breakdown_hints'];
+    }
+
+    /**
+     * Sets breakdown_hints
+     *
+     * @param array<string,string>|null $breakdown_hints Guidance for some names in unsupportedBreakdowns, keyed by that name (e.g. placement on Meta points at publisher_platform and platform_position; platform_position on TikTok points at placement). Absent when no unsupported name has a hint.
+     *
+     * @return self
+     */
+    public function setBreakdownHints($breakdown_hints)
+    {
+        if (is_null($breakdown_hints)) {
+            throw new \InvalidArgumentException('non-nullable breakdown_hints cannot be null');
+        }
+        $this->container['breakdown_hints'] = $breakdown_hints;
+
+        return $this;
+    }
+
+    /**
+     * Gets breakdown_errors
+     *
+     * @return \Zernio\Model\CampaignAnalyticsResponseAnalyticsBreakdownErrorsInner[]|null
+     */
+    public function getBreakdownErrors()
+    {
+        return $this->container['breakdown_errors'];
+    }
+
+    /**
+     * Sets breakdown_errors
+     *
+     * @param \Zernio\Model\CampaignAnalyticsResponseAnalyticsBreakdownErrorsInner[]|null $breakdown_errors TikTok only: breakdowns the platform failed to return (rate limit, permission, rejected query). Each one is an empty array under breakdowns; summary and daily are unaffected. Absent when every breakdown answered.
+     *
+     * @return self
+     */
+    public function setBreakdownErrors($breakdown_errors)
+    {
+        if (is_null($breakdown_errors)) {
+            throw new \InvalidArgumentException('non-nullable breakdown_errors cannot be null');
+        }
+        $this->container['breakdown_errors'] = $breakdown_errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets breakdown_dropped_metrics
+     *
+     * @return array<string,string[]>|null
+     */
+    public function getBreakdownDroppedMetrics()
+    {
+        return $this->container['breakdown_dropped_metrics'];
+    }
+
+    /**
+     * Sets breakdown_dropped_metrics
+     *
+     * @param array<string,string[]>|null $breakdown_dropped_metrics TikTok only: TikTok metric names TikTok refused for a breakdown, keyed by the requested breakdown (e.g. total_purchase and total_purchase_value have no relation to platform, ac or language). Every row value derived from a refused metric is null in that breakdown (purchaseValue and roas, or the matching actions and actionValues entries), never a number computed without it. Absent when no metric was refused.
+     *
+     * @return self
+     */
+    public function setBreakdownDroppedMetrics($breakdown_dropped_metrics)
+    {
+        if (is_null($breakdown_dropped_metrics)) {
+            throw new \InvalidArgumentException('non-nullable breakdown_dropped_metrics cannot be null');
+        }
+        $this->container['breakdown_dropped_metrics'] = $breakdown_dropped_metrics;
+
+        return $this;
+    }
+
+    /**
+     * Gets breakdowns_range
+     *
+     * @return \Zernio\Model\CampaignAnalyticsResponseAnalyticsBreakdownsRange|null
+     */
+    public function getBreakdownsRange()
+    {
+        return $this->container['breakdowns_range'];
+    }
+
+    /**
+     * Sets breakdowns_range
+     *
+     * @param \Zernio\Model\CampaignAnalyticsResponseAnalyticsBreakdownsRange|null $breakdowns_range breakdowns_range
+     *
+     * @return self
+     */
+    public function setBreakdownsRange($breakdowns_range)
+    {
+        if (is_null($breakdowns_range)) {
+            throw new \InvalidArgumentException('non-nullable breakdowns_range cannot be null');
+        }
+        $this->container['breakdowns_range'] = $breakdowns_range;
 
         return $this;
     }
