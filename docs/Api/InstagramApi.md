@@ -84,7 +84,7 @@ getInstagramBusinessDiscovery($account_id, $username, $limit): \Zernio\Model\Ins
 
 Look up a public Instagram Business account
 
-Returns the public profile and most recent media of any Instagram Business or Creator account, looked up by username through one of your connected Instagram accounts. Useful for competitor and market research. Personal accounts and private accounts cannot be looked up.  Requires an Instagram account connected via **Facebook Login**. Meta serves business discovery on graph.facebook.com only, so accounts connected with classic Instagram Login receive a 400 (`instagram_business_discovery_requires_facebook_login`) and must be reconnected choosing the Facebook option. Any one such account can look up any public Business or Creator handle.  `likeCount` is null when the owner hides like counts.
+Returns the public profile and most recent media of any Instagram Business or Creator account, looked up by username through one of your connected Instagram accounts. Useful for competitor and market research. Personal accounts and private accounts cannot be looked up.  Requires an Instagram account connected via **Facebook Login**. Meta serves business discovery on graph.facebook.com only, so accounts connected with classic Instagram Login receive a 400 (`instagram_business_discovery_requires_facebook_login`) and must be reconnected choosing the Facebook option. Any one such account can look up any public Business or Creator handle.  `likeCount` is null when the owner hides like counts.  Media URLs are temporary, and fields Meta does not return come back as null, never omitted.
 
 ### Example
 
