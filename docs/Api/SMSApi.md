@@ -635,7 +635,7 @@ lookupSmsNumber($number): \Zernio\Model\LookupSmsNumber200Response
 
 Look up carrier + line type
 
-Carrier name and line type (mobile / landline / voip / toll-free) for a number, plus `smsReachable` (landlines can't receive SMS). Use it to validate recipients before sending. Each lookup is billed by the carrier-data provider, so call it explicitly (e.g. pre-validating an opt-in list), not on every send.
+Carrier name and line type (mobile / landline / voip / toll-free) for a number, plus `smsReachable`. Use it to validate recipients before sending. Each lookup is billed by the carrier-data provider, so call it explicitly (e.g. pre-validating an opt-in list), not on every send.
 
 ### Example
 
