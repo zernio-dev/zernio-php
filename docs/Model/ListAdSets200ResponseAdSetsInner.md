@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **platform_campaign_id** | **string** |  | [optional]
 **platform_ad_account_id** | **string** |  | [optional]
 **account_id** | **string** |  | [optional]
-**profile_id** | **string** |  | [optional]
+**profile_id** | **string** | Profile the row belongs to: the profile of its owning connection (&#x60;accountId&#x60;); when that connection no longer exists, the requested profile (&#x60;profileId&#x60; filter) that reaches the row ad account, else the profile of the oldest connection of the row owner that reaches it. | [optional]
 **currency** | **string** |  | [optional]
 **budget** | [**\Zernio\Model\ListAdSets200ResponseAdSetsInnerBudget**](ListAdSets200ResponseAdSetsInnerBudget.md) |  | [optional]
 **schedule** | [**\Zernio\Model\ListAdSets200ResponseAdSetsInnerSchedule**](ListAdSets200ResponseAdSetsInnerSchedule.md) |  | [optional]
