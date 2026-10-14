@@ -878,6 +878,7 @@ docs/Model/GetAccountHealth200ResponseTokenStatus.md
 docs/Model/GetAccountPosts200Response.md
 docs/Model/GetAccountPosts200ResponsePostsInner.md
 docs/Model/GetAd200Response.md
+docs/Model/GetAd200ResponseDarkPost.md
 docs/Model/GetAdAccountFinance200Response.md
 docs/Model/GetAdAccountFinance200ResponseFundingSource.md
 docs/Model/GetAdAccountHierarchy200Response.md
@@ -3678,6 +3679,7 @@ lib/Model/GetAccountHealth200ResponseTokenStatus.php
 lib/Model/GetAccountPosts200Response.php
 lib/Model/GetAccountPosts200ResponsePostsInner.php
 lib/Model/GetAd200Response.php
+lib/Model/GetAd200ResponseDarkPost.php
 lib/Model/GetAdAccountFinance200Response.php
 lib/Model/GetAdAccountFinance200ResponseFundingSource.php
 lib/Model/GetAdAccountHierarchy200Response.php
@@ -5601,3 +5603,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetAd200ResponseDarkPostTest.php
