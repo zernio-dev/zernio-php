@@ -1063,7 +1063,7 @@ listAdCatalogs($account_id, $catalog_account_id, $ad_account_id, $business_id): 
 
 List Meta product catalogs
 
-Lists the Meta product catalogs a business portfolio owns or has been shared, for catalog and shopping ads.  The business comes from `businessId`, else the ad account's owner (`adAccountId`), else the WhatsApp Business Account's owner when `accountId` is a WhatsApp connection, else the only business the Meta login can see. Reads work with scopes customers already granted.
+Lists the Meta product catalogs a business portfolio owns or has been shared, for catalog and shopping ads.  The business comes from `businessId`, else the ad account's owner (`adAccountId`), else the WhatsApp Business Account's owner when `accountId` is a WhatsApp connection, else the only business the Meta login can see.  Listing catalogs needs catalog_management on the Meta login. The permission is pending Meta App Review and is not requested on connect yet, so most logins get the 403 below (Meta's code 100 \"This application has not been approved to use this api\"); pass catalogAccountId naming a facebook, instagram or metaads connection whose Meta login already holds it. Creating a catalog_sales ad from a known product set ID does not need it (see promotedObject.productSetId on POST /v1/ads/create).
 
 ### Example
 
