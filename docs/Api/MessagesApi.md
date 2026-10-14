@@ -567,9 +567,9 @@ $apiInstance = new Zernio\Api\MessagesApi(
 $profile_id = 'profile_id_example'; // string | Filter by profile ID
 $platform = 'platform_example'; // string | Filter by platform
 $status = 'status_example'; // string | Filter by conversation status
-$folder = 'inbox'; // string | requests lists Facebook and Instagram Message Requests (threads from people the account has not accepted) live from Meta, first page only, each item with `folder: requests`. Meta has no accept call: replying moves a thread to the inbox, which is what POST /v1/inbox/conversations/{conversationId}/accept does. When Meta will not list the folder for the one account asked (`accountId`), the call answers 400 PLATFORM_LIMITATION; across several accounts the refusal is reported per account in meta.failedAccounts.
+$folder = 'inbox'; // string | requests lists Facebook and Instagram Message Requests (threads from people the account has not accepted) live from Meta, each item with `folder: requests`. Meta has no accept call: replying moves a thread to the inbox, which is what POST /v1/inbox/conversations/{conversationId}/accept does. When Meta will not list the folder for the one account asked (`accountId`), the call answers 400 PLATFORM_LIMITATION; across several accounts the refusal is reported per account in meta.failedAccounts. Instagram accounts connected with Instagram Login answer PLATFORM_LIMITATION (Meta does not expose the folder on that login); Facebook and Instagram via Facebook Login are served. One page of up to `limit` threads; `pagination.hasMore` is true when threads past `limit` were cut (narrow with `accountId`), `pagination.nextCursor` is always null and a `cursor` answers 400.
 $sort_order = 'desc'; // string | Sort order by updated time
-$limit = 50; // int | Maximum number of conversations to return
+$limit = 50; // int | Maximum number of conversations to return; values above 100 are served as 100.
 $cursor = 'cursor_example'; // string | Pagination cursor for next page
 $account_id = 'account_id_example'; // string | Filter by specific account ID
 
@@ -588,9 +588,9 @@ try {
 | **profile_id** | **string**| Filter by profile ID | [optional] |
 | **platform** | **string**| Filter by platform | [optional] |
 | **status** | **string**| Filter by conversation status | [optional] |
-| **folder** | **string**| requests lists Facebook and Instagram Message Requests (threads from people the account has not accepted) live from Meta, first page only, each item with &#x60;folder: requests&#x60;. Meta has no accept call: replying moves a thread to the inbox, which is what POST /v1/inbox/conversations/{conversationId}/accept does. When Meta will not list the folder for the one account asked (&#x60;accountId&#x60;), the call answers 400 PLATFORM_LIMITATION; across several accounts the refusal is reported per account in meta.failedAccounts. | [optional] [default to &#39;inbox&#39;] |
+| **folder** | **string**| requests lists Facebook and Instagram Message Requests (threads from people the account has not accepted) live from Meta, each item with &#x60;folder: requests&#x60;. Meta has no accept call: replying moves a thread to the inbox, which is what POST /v1/inbox/conversations/{conversationId}/accept does. When Meta will not list the folder for the one account asked (&#x60;accountId&#x60;), the call answers 400 PLATFORM_LIMITATION; across several accounts the refusal is reported per account in meta.failedAccounts. Instagram accounts connected with Instagram Login answer PLATFORM_LIMITATION (Meta does not expose the folder on that login); Facebook and Instagram via Facebook Login are served. One page of up to &#x60;limit&#x60; threads; &#x60;pagination.hasMore&#x60; is true when threads past &#x60;limit&#x60; were cut (narrow with &#x60;accountId&#x60;), &#x60;pagination.nextCursor&#x60; is always null and a &#x60;cursor&#x60; answers 400. | [optional] [default to &#39;inbox&#39;] |
 | **sort_order** | **string**| Sort order by updated time | [optional] [default to &#39;desc&#39;] |
-| **limit** | **int**| Maximum number of conversations to return | [optional] [default to 50] |
+| **limit** | **int**| Maximum number of conversations to return; values above 100 are served as 100. | [optional] [default to 50] |
 | **cursor** | **string**| Pagination cursor for next page | [optional] |
 | **account_id** | **string**| Filter by specific account ID | [optional] |
 
