@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **budget** | [**\Zernio\Model\AdBudget**](AdBudget.md) |  | [optional]
 **budget_level** | **string** |  | [optional]
 **status** | **string** | As in PUT /v1/ads/ad-sets/{adSetId}/status: delivery derived from the switches read back. | [optional]
-**platform_ad_set_status** | **string** | The ad set&#39;s own switch read back from the platform; null when it could not be read. | [optional]
+**platform_ad_set_status** | **string** | The ad set&#39;s status read back from the platform, as in PUT /v1/ads/ad-sets/{adSetId}/status (Meta and Reddit return the ad set&#39;s effective_status); null when it could not be read. | [optional]
 **platform_campaign_status** | **string** |  | [optional]
 **status_read_at** | **\DateTime** |  | [optional]
 **status_updated** | **int** | 1 when the ad set&#39;s switch was written. | [optional]
