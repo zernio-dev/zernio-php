@@ -756,6 +756,8 @@ docs/Model/DeleteGoogleBusinessMedia200Response.md
 docs/Model/DeleteGoogleBusinessPlaceAction200Response.md
 docs/Model/DeleteGoogleBusinessReviewReply200Response.md
 docs/Model/DeleteInboxComment200Response.md
+docs/Model/DeleteInboxConversation200Response.md
+docs/Model/DeleteInboxConversation200ResponseData.md
 docs/Model/DeleteInboxReviewReply200Response.md
 docs/Model/DeleteInboxReviewReplyRequest.md
 docs/Model/DeleteSmsSenderId200Response.md
@@ -3557,6 +3559,8 @@ lib/Model/DeleteGoogleBusinessMedia200Response.php
 lib/Model/DeleteGoogleBusinessPlaceAction200Response.php
 lib/Model/DeleteGoogleBusinessReviewReply200Response.php
 lib/Model/DeleteInboxComment200Response.php
+lib/Model/DeleteInboxConversation200Response.php
+lib/Model/DeleteInboxConversation200ResponseData.php
 lib/Model/DeleteInboxReviewReply200Response.php
 lib/Model/DeleteInboxReviewReplyRequest.php
 lib/Model/DeleteSmsSenderId200Response.php
@@ -5603,3 +5607,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/DeleteInboxConversation200ResponseDataTest.php
+test/Model/DeleteInboxConversation200ResponseTest.php
