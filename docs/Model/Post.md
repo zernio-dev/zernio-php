@@ -23,6 +23,6 @@ Name | Type | Description | Notes
 **queued_from_profile** | **string** | Profile ID if the post was scheduled via the queue | [optional]
 **queue_id** | **string** | Queue ID if the post was scheduled via a specific queue | [optional]
 **created_at** | **\DateTime** |  | [optional]
-**updated_at** | **\DateTime** |  | [optional]
+**updated_at** | **\DateTime** | Last change to the post or to any of its platforms (a publish, a failure, a resolved URL). | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
