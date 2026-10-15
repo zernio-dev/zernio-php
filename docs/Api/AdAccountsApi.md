@@ -2108,7 +2108,7 @@ try {
 ## `listAdAccounts()`
 
 ```php
-listAdAccounts($account_id, $ad_account_id, $limit): \Zernio\Model\ListAdAccounts200Response
+listAdAccounts($account_id, $ad_account_id, $limit, $in_scope_only): \Zernio\Model\ListAdAccounts200Response
 ```
 
 List ad accounts
@@ -2135,9 +2135,10 @@ $apiInstance = new Zernio\Api\AdAccountsApi(
 $account_id = 'account_id_example'; // string | Account ID
 $ad_account_id = 'ad_account_id_example'; // string | Filter response to a single platform ad account ID (e.g. `act_123` for Meta, advertiser_id for TikTok). Returns at most one item.
 $limit = 56; // int | Clamp the returned `accounts[]` length. Useful for typeahead pickers on agency tokens with hundreds of advertisers.
+$in_scope_only = false; // bool | Google Ads only. `true` returns only the customers this connection accepts as `adAccountId` (or `customerId`) on the other /v1/ads endpoints, i.e. those inside its ad-account selection. Without it every customer the Google login can reach is listed, including ones selected on another connection of the same login, which those endpoints answer with a 400. Ignored on other platforms.
 
 try {
-    $result = $apiInstance->listAdAccounts($account_id, $ad_account_id, $limit);
+    $result = $apiInstance->listAdAccounts($account_id, $ad_account_id, $limit, $in_scope_only);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAccountsApi->listAdAccounts: ', $e->getMessage(), PHP_EOL;
@@ -2151,6 +2152,7 @@ try {
 | **account_id** | **string**| Account ID | |
 | **ad_account_id** | **string**| Filter response to a single platform ad account ID (e.g. &#x60;act_123&#x60; for Meta, advertiser_id for TikTok). Returns at most one item. | [optional] |
 | **limit** | **int**| Clamp the returned &#x60;accounts[]&#x60; length. Useful for typeahead pickers on agency tokens with hundreds of advertisers. | [optional] |
+| **in_scope_only** | **bool**| Google Ads only. &#x60;true&#x60; returns only the customers this connection accepts as &#x60;adAccountId&#x60; (or &#x60;customerId&#x60;) on the other /v1/ads endpoints, i.e. those inside its ad-account selection. Without it every customer the Google login can reach is listed, including ones selected on another connection of the same login, which those endpoints answer with a 400. Ignored on other platforms. | [optional] [default to false] |
 
 ### Return type
 
