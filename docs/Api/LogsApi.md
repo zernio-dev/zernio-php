@@ -12,7 +12,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `listLogs()`
 
 ```php
-listLogs($type, $status, $platform, $action, $search, $days, $limit, $skip, $account_id, $event, $request_id, $from, $to, $status_code, $api_key_id, $include_read_receipts): \Zernio\Model\ListLogs200Response
+listLogs($type, $status, $platform, $action, $search, $days, $limit, $skip, $account_id, $event, $request_id, $from, $to, $status_code, $api_key_id, $profile_id, $include_read_receipts): \Zernio\Model\ListLogs200Response
 ```
 
 List activity logs
@@ -51,10 +51,11 @@ $from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Precise start
 $to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Precise end instant (ISO 8601)
 $status_code = 56; // int | Filter by exact HTTP status code (api_request logs)
 $api_key_id = 'api_key_id_example'; // string | Filter by the API key that made the request (api_request logs)
+$profile_id = 'profile_id_example'; // string | Filter by profile: every log type carries the profile it belongs to, and an API request log carries the profileId the call named
 $include_read_receipts = false; // bool | Include message.read / message.delivered events (hidden by default for messaging logs)
 
 try {
-    $result = $apiInstance->listLogs($type, $status, $platform, $action, $search, $days, $limit, $skip, $account_id, $event, $request_id, $from, $to, $status_code, $api_key_id, $include_read_receipts);
+    $result = $apiInstance->listLogs($type, $status, $platform, $action, $search, $days, $limit, $skip, $account_id, $event, $request_id, $from, $to, $status_code, $api_key_id, $profile_id, $include_read_receipts);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LogsApi->listLogs: ', $e->getMessage(), PHP_EOL;
@@ -80,6 +81,7 @@ try {
 | **to** | **\DateTime**| Precise end instant (ISO 8601) | [optional] |
 | **status_code** | **int**| Filter by exact HTTP status code (api_request logs) | [optional] |
 | **api_key_id** | **string**| Filter by the API key that made the request (api_request logs) | [optional] |
+| **profile_id** | **string**| Filter by profile: every log type carries the profile it belongs to, and an API request log carries the profileId the call named | [optional] |
 | **include_read_receipts** | **bool**| Include message.read / message.delivered events (hidden by default for messaging logs) | [optional] [default to false] |
 
 ### Return type
