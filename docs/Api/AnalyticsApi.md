@@ -24,6 +24,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getInstagramFollowerHistory()**](AnalyticsApi.md#getInstagramFollowerHistory) | **GET** /v1/analytics/instagram/follower-history | Get Instagram follower history |
 | [**getInstagramOnlineFollowers()**](AnalyticsApi.md#getInstagramOnlineFollowers) | **GET** /v1/analytics/instagram/online-followers | Get Instagram online followers |
 | [**getLinkedInAggregateAnalytics()**](AnalyticsApi.md#getLinkedInAggregateAnalytics) | **GET** /v1/accounts/{accountId}/linkedin-aggregate-analytics | Get LinkedIn aggregate stats |
+| [**getLinkedInDemographics()**](AnalyticsApi.md#getLinkedInDemographics) | **GET** /v1/analytics/linkedin/demographics | Get LinkedIn organization follower demographics |
 | [**getLinkedInOrgAggregateAnalytics()**](AnalyticsApi.md#getLinkedInOrgAggregateAnalytics) | **GET** /v1/analytics/linkedin/org-aggregate-analytics | Get LinkedIn org analytics |
 | [**getLinkedInPostAnalytics()**](AnalyticsApi.md#getLinkedInPostAnalytics) | **GET** /v1/accounts/{accountId}/linkedin-post-analytics | Get LinkedIn post stats |
 | [**getLinkedInPostReactions()**](AnalyticsApi.md#getLinkedInPostReactions) | **GET** /v1/accounts/{accountId}/linkedin-post-reactions | Get LinkedIn post reactions |
@@ -1253,6 +1254,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetLinkedInAggregateAnalytics200Response**](../Model/GetLinkedInAggregateAnalytics200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getLinkedInDemographics()`
+
+```php
+getLinkedInDemographics($account_id, $breakdown): \Zernio\Model\GetLinkedInDemographics200Response
+```
+
+Get LinkedIn organization follower demographics
+
+Returns the lifetime follower breakdown of a connected LinkedIn organization page by job function, seniority, industry and company size. Function, seniority and industry are labelled with LinkedIn's standardized names (English) and keep the LinkedIn URN in `id`. Company size is labelled as a range such as `2-10` or `10001+`. LinkedIn returns at most the top 100 values per breakdown and leaves out followers whose profile lacks that field, so a breakdown does not add up to the follower count. Organization accounts only: a personal LinkedIn account answers 400 `personal_account_not_supported`. Requires the r_organization_social, r_organization_followers and r_organization_admin scopes (412 otherwise) and the Analytics add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The Zernio SocialAccount ID of the LinkedIn organization account
+$breakdown = 'breakdown_example'; // string | Comma-separated list of demographic dimensions: function, seniority, industry, company_size. Defaults to all four if omitted.
+
+try {
+    $result = $apiInstance->getLinkedInDemographics($account_id, $breakdown);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->getLinkedInDemographics: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The Zernio SocialAccount ID of the LinkedIn organization account | |
+| **breakdown** | **string**| Comma-separated list of demographic dimensions: function, seniority, industry, company_size. Defaults to all four if omitted. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetLinkedInDemographics200Response**](../Model/GetLinkedInDemographics200Response.md)
 
 ### Authorization
 
