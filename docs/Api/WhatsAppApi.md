@@ -1547,7 +1547,7 @@ getWhatsappBusinessUsername($account_id): \Zernio\Model\GetWhatsappBusinessUsern
 
 Get business username
 
-Fetch the current WhatsApp Business username and its approval status. Username status can be `approved` (active), `reserved` (pending activation), or `none` (no username set).
+Fetch the current WhatsApp Business username and its approval status. Username status can be `approved` (active), `reserved` (pending activation), or `none` (no username set). If Meta has not granted username management for the WhatsApp Business Account, the API returns the standard error envelope with code `insufficient_permissions`.
 
 ### Example
 
@@ -2411,7 +2411,7 @@ setWhatsappBusinessUsername($set_whatsapp_business_username_request): \Zernio\Mo
 
 Set business username
 
-Claim or transfer a WhatsApp Business username for the account.  Username rules: 3-35 characters, letters/digits/period/underscore only, must contain at least one letter, no leading or trailing periods, no consecutive periods, no `www` prefix, no domain TLD suffix (e.g. `.com`).  If the desired username is currently held by another account, pass `transferAction: \"force_transfer\"` to request a transfer. On failure the API returns a standard error envelope with one of these codes: `whatsapp_username_unavailable` (already taken and transfer not requested), `whatsapp_username_ineligible` (account not eligible to claim a username), or `whatsapp_username_transfer_required` (username is held elsewhere; retry with `force_transfer`).
+Claim or transfer a WhatsApp Business username for the account.  Username rules: 3-35 characters, letters/digits/period/underscore only, must contain at least one letter, no leading or trailing periods, no consecutive periods, no `www` prefix, no domain TLD suffix (e.g. `.com`).  If the desired username is currently held by another account, pass `transferAction: \"force_transfer\"` to request a transfer. On failure the API returns a standard error envelope with one of these codes: `whatsapp_username_unavailable` (already taken and transfer not requested), `whatsapp_username_ineligible` (account not eligible to claim a username), `whatsapp_username_transfer_required` (username is held elsewhere; retry with `force_transfer`), or `insufficient_permissions` (Meta has not granted username management for this WhatsApp Business Account).
 
 ### Example
 
