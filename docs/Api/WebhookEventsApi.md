@@ -23,6 +23,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onCallPermissionRequest()**](WebhookEventsApi.md#onCallPermissionRequest) | **POST** /call.permission_request | Call permission request reply event |
 | [**onCallReceived()**](WebhookEventsApi.md#onCallReceived) | **POST** /call.received | Call received event |
 | [**onCommentReceived()**](WebhookEventsApi.md#onCommentReceived) | **POST** /comment.received | Comment received event |
+| [**onCommerceOrderCreated()**](WebhookEventsApi.md#onCommerceOrderCreated) | **POST** /commerce.order.created | Commerce order created event |
+| [**onCommerceOrderRefunded()**](WebhookEventsApi.md#onCommerceOrderRefunded) | **POST** /commerce.order.refunded | Commerce order refunded event |
+| [**onCommerceOrderUpdated()**](WebhookEventsApi.md#onCommerceOrderUpdated) | **POST** /commerce.order.updated | Commerce order updated event |
 | [**onCommerceProductCreated()**](WebhookEventsApi.md#onCommerceProductCreated) | **POST** /commerce.product.created | Commerce product created event |
 | [**onCommerceProductDeleted()**](WebhookEventsApi.md#onCommerceProductDeleted) | **POST** /commerce.product.deleted | Commerce product deleted event |
 | [**onCommerceProductUpdated()**](WebhookEventsApi.md#onCommerceProductUpdated) | **POST** /commerce.product.updated | Commerce product updated event |
@@ -1074,6 +1077,183 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_comment** | [**\Zernio\Model\WebhookPayloadComment**](../Model/WebhookPayloadComment.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCommerceOrderCreated()`
+
+```php
+onCommerceOrderCreated($webhook_payload_commerce_order)
+```
+
+Commerce order created event
+
+Fired when an order is placed on a connected store. The payload carries identifiers only; read the order with `GET /v1/commerce/orders/{orderId}?accountId=...`. Fired once per Zernio account connected to the store.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_commerce_order = new \Zernio\Model\WebhookPayloadCommerceOrder(); // \Zernio\Model\WebhookPayloadCommerceOrder
+
+try {
+    $apiInstance->onCommerceOrderCreated($webhook_payload_commerce_order);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCommerceOrderCreated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_commerce_order** | [**\Zernio\Model\WebhookPayloadCommerceOrder**](../Model/WebhookPayloadCommerceOrder.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCommerceOrderRefunded()`
+
+```php
+onCommerceOrderRefunded($webhook_payload_commerce_order)
+```
+
+Commerce order refunded event
+
+Fired when a refund is issued on an order of a connected store. A commerce.order.updated usually follows for the same change. The payload carries identifiers only; read the order with `GET /v1/commerce/orders/{orderId}?accountId=...`. Fired once per Zernio account connected to the store.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_commerce_order = new \Zernio\Model\WebhookPayloadCommerceOrder(); // \Zernio\Model\WebhookPayloadCommerceOrder
+
+try {
+    $apiInstance->onCommerceOrderRefunded($webhook_payload_commerce_order);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCommerceOrderRefunded: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_commerce_order** | [**\Zernio\Model\WebhookPayloadCommerceOrder**](../Model/WebhookPayloadCommerceOrder.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCommerceOrderUpdated()`
+
+```php
+onCommerceOrderUpdated($webhook_payload_commerce_order)
+```
+
+Commerce order updated event
+
+Fired when an order on a connected store changes: payment, fulfilment, cancellation, edits, and refunds too. The payload carries identifiers only; read the order with `GET /v1/commerce/orders/{orderId}?accountId=...`. Fired once per Zernio account connected to the store.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_commerce_order = new \Zernio\Model\WebhookPayloadCommerceOrder(); // \Zernio\Model\WebhookPayloadCommerceOrder
+
+try {
+    $apiInstance->onCommerceOrderUpdated($webhook_payload_commerce_order);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCommerceOrderUpdated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_commerce_order** | [**\Zernio\Model\WebhookPayloadCommerceOrder**](../Model/WebhookPayloadCommerceOrder.md)|  | |
 
 ### Return type
 

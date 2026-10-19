@@ -44,6 +44,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getCommerceDiscount()**](CommerceApi.md#getCommerceDiscount) | **GET** /v1/commerce/discounts/{discountId} | Get a discount |
 | [**getCommerceMenu()**](CommerceApi.md#getCommerceMenu) | **GET** /v1/commerce/menus/{menuId} | Get a navigation menu |
 | [**getCommerceMetaobject()**](CommerceApi.md#getCommerceMetaobject) | **GET** /v1/commerce/metaobjects/{metaobjectId} | Get a metaobject |
+| [**getCommerceOrder()**](CommerceApi.md#getCommerceOrder) | **GET** /v1/commerce/orders/{orderId} | Get an order |
 | [**getCommercePage()**](CommerceApi.md#getCommercePage) | **GET** /v1/commerce/pages/{pageId} | Get a page |
 | [**getCommerceProduct()**](CommerceApi.md#getCommerceProduct) | **GET** /v1/commerce/products/{productId} | Get a product |
 | [**getCommerceStore()**](CommerceApi.md#getCommerceStore) | **GET** /v1/commerce/store | Get a store |
@@ -58,6 +59,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listCommerceMenus()**](CommerceApi.md#listCommerceMenus) | **GET** /v1/commerce/menus | List navigation menus |
 | [**listCommerceMetaobjectDefinitions()**](CommerceApi.md#listCommerceMetaobjectDefinitions) | **GET** /v1/commerce/metaobject-definitions | List metaobject definitions |
 | [**listCommerceMetaobjects()**](CommerceApi.md#listCommerceMetaobjects) | **GET** /v1/commerce/metaobjects | List metaobjects of a type |
+| [**listCommerceOrders()**](CommerceApi.md#listCommerceOrders) | **GET** /v1/commerce/orders | List orders |
 | [**listCommercePages()**](CommerceApi.md#listCommercePages) | **GET** /v1/commerce/pages | List pages |
 | [**listCommercePriceLists()**](CommerceApi.md#listCommercePriceLists) | **GET** /v1/commerce/price-lists | List price lists |
 | [**listCommerceProductMetafields()**](CommerceApi.md#listCommerceProductMetafields) | **GET** /v1/commerce/products/{productId}/metafields | List product metafields |
@@ -2424,6 +2426,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getCommerceOrder()`
+
+```php
+getCommerceOrder($order_id, $account_id): \Zernio\Model\GetCommerceOrder200Response
+```
+
+Get an order
+
+One order with every line item, tax line and refund. Needs orders.read.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CommerceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$order_id = 'order_id_example'; // string | Platform-native order id.
+$account_id = 'account_id_example'; // string | Connected store SocialAccount id.
+
+try {
+    $result = $apiInstance->getCommerceOrder($order_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommerceApi->getCommerceOrder: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **order_id** | **string**| Platform-native order id. | |
+| **account_id** | **string**| Connected store SocialAccount id. | |
+
+### Return type
+
+[**\Zernio\Model\GetCommerceOrder200Response**](../Model/GetCommerceOrder200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getCommercePage()`
 
 ```php
@@ -3276,6 +3340,76 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListCommerceMetaobjects200Response**](../Model/ListCommerceMetaobjects200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listCommerceOrders()`
+
+```php
+listCommerceOrders($account_id, $limit, $cursor, $created_after, $created_before, $updated_after): \Zernio\Model\ListCommerceOrders200Response
+```
+
+List orders
+
+The store's orders in one format for every platform, with what an invoice needs: line items with unit prices, discounts and tax per line, shipping and fee lines, billing details, payment status and refunds. Newest order first; with `updatedAfter`, oldest change first, so a sync can page forward from its last seen `updatedAt`. Start each sync a few minutes before the last `updatedAt` you saw and drop duplicates by `id`, since an order edited while you page can shift the list. Shopify returns at most 25 orders per page and, unless the store was granted access to all orders, only the last 60 days. Buyer fields (`customer` and addresses) are null when the store's approval does not cover buyer data. Needs orders.read.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CommerceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Connected store SocialAccount id.
+$limit = 20; // int
+$cursor = 'cursor_example'; // string
+$created_after = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$created_before = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$updated_after = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only orders changed after this time, oldest change first.
+
+try {
+    $result = $apiInstance->listCommerceOrders($account_id, $limit, $cursor, $created_after, $created_before, $updated_after);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommerceApi->listCommerceOrders: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Connected store SocialAccount id. | |
+| **limit** | **int**|  | [optional] [default to 20] |
+| **cursor** | **string**|  | [optional] |
+| **created_after** | **\DateTime**|  | [optional] |
+| **created_before** | **\DateTime**|  | [optional] |
+| **updated_after** | **\DateTime**| Only orders changed after this time, oldest change first. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListCommerceOrders200Response**](../Model/ListCommerceOrders200Response.md)
 
 ### Authorization
 

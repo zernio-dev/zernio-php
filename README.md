@@ -471,6 +471,7 @@ Class | Method | HTTP request | Description
 *CommerceApi* | [**getCommerceDiscount**](docs/Api/CommerceApi.md#getcommercediscount) | **GET** /v1/commerce/discounts/{discountId} | Get a discount
 *CommerceApi* | [**getCommerceMenu**](docs/Api/CommerceApi.md#getcommercemenu) | **GET** /v1/commerce/menus/{menuId} | Get a navigation menu
 *CommerceApi* | [**getCommerceMetaobject**](docs/Api/CommerceApi.md#getcommercemetaobject) | **GET** /v1/commerce/metaobjects/{metaobjectId} | Get a metaobject
+*CommerceApi* | [**getCommerceOrder**](docs/Api/CommerceApi.md#getcommerceorder) | **GET** /v1/commerce/orders/{orderId} | Get an order
 *CommerceApi* | [**getCommercePage**](docs/Api/CommerceApi.md#getcommercepage) | **GET** /v1/commerce/pages/{pageId} | Get a page
 *CommerceApi* | [**getCommerceProduct**](docs/Api/CommerceApi.md#getcommerceproduct) | **GET** /v1/commerce/products/{productId} | Get a product
 *CommerceApi* | [**getCommerceStore**](docs/Api/CommerceApi.md#getcommercestore) | **GET** /v1/commerce/store | Get a store
@@ -485,6 +486,7 @@ Class | Method | HTTP request | Description
 *CommerceApi* | [**listCommerceMenus**](docs/Api/CommerceApi.md#listcommercemenus) | **GET** /v1/commerce/menus | List navigation menus
 *CommerceApi* | [**listCommerceMetaobjectDefinitions**](docs/Api/CommerceApi.md#listcommercemetaobjectdefinitions) | **GET** /v1/commerce/metaobject-definitions | List metaobject definitions
 *CommerceApi* | [**listCommerceMetaobjects**](docs/Api/CommerceApi.md#listcommercemetaobjects) | **GET** /v1/commerce/metaobjects | List metaobjects of a type
+*CommerceApi* | [**listCommerceOrders**](docs/Api/CommerceApi.md#listcommerceorders) | **GET** /v1/commerce/orders | List orders
 *CommerceApi* | [**listCommercePages**](docs/Api/CommerceApi.md#listcommercepages) | **GET** /v1/commerce/pages | List pages
 *CommerceApi* | [**listCommercePriceLists**](docs/Api/CommerceApi.md#listcommercepricelists) | **GET** /v1/commerce/price-lists | List price lists
 *CommerceApi* | [**listCommerceProductMetafields**](docs/Api/CommerceApi.md#listcommerceproductmetafields) | **GET** /v1/commerce/products/{productId}/metafields | List product metafields
@@ -1341,6 +1343,7 @@ Class | Method | HTTP request | Description
 - [CommentAutomationTemplate](docs/Model/CommentAutomationTemplate.md)
 - [CommentAutomationTemplateElement](docs/Model/CommentAutomationTemplateElement.md)
 - [CommentAutomationTemplateElementButtonsInner](docs/Model/CommentAutomationTemplateElementButtonsInner.md)
+- [CommerceAddress](docs/Model/CommerceAddress.md)
 - [CommerceCapability](docs/Model/CommerceCapability.md)
 - [CommerceCatalogSync](docs/Model/CommerceCatalogSync.md)
 - [CommerceChannel](docs/Model/CommerceChannel.md)
@@ -1366,12 +1369,21 @@ Class | Method | HTTP request | Description
 - [CommerceMetaobjectDefinitionFieldsInner](docs/Model/CommerceMetaobjectDefinitionFieldsInner.md)
 - [CommerceMetaobjectFieldsInner](docs/Model/CommerceMetaobjectFieldsInner.md)
 - [CommerceMoney](docs/Model/CommerceMoney.md)
+- [CommerceOrder](docs/Model/CommerceOrder.md)
+- [CommerceOrderChargeLine](docs/Model/CommerceOrderChargeLine.md)
+- [CommerceOrderCustomer](docs/Model/CommerceOrderCustomer.md)
+- [CommerceOrderFulfillmentsInner](docs/Model/CommerceOrderFulfillmentsInner.md)
+- [CommerceOrderLineItemsInner](docs/Model/CommerceOrderLineItemsInner.md)
+- [CommerceOrderRefundsInner](docs/Model/CommerceOrderRefundsInner.md)
+- [CommerceOrderRefundsInnerLineItemsInner](docs/Model/CommerceOrderRefundsInnerLineItemsInner.md)
+- [CommerceOrderStatus](docs/Model/CommerceOrderStatus.md)
 - [CommercePage](docs/Model/CommercePage.md)
 - [CommercePriceList](docs/Model/CommercePriceList.md)
 - [CommerceProduct](docs/Model/CommerceProduct.md)
 - [CommerceProductStatus](docs/Model/CommerceProductStatus.md)
 - [CommerceRedirect](docs/Model/CommerceRedirect.md)
 - [CommerceStore](docs/Model/CommerceStore.md)
+- [CommerceTaxLine](docs/Model/CommerceTaxLine.md)
 - [CommerceVariant](docs/Model/CommerceVariant.md)
 - [CompleteGoogleBusinessVerificationRequest](docs/Model/CompleteGoogleBusinessVerificationRequest.md)
 - [CompleteTelegramConnect200Response](docs/Model/CompleteTelegramConnect200Response.md)
@@ -1934,6 +1946,7 @@ Class | Method | HTTP request | Description
 - [GetCampaignTargeting200ResponseLocationsInner](docs/Model/GetCampaignTargeting200ResponseLocationsInner.md)
 - [GetCommentAutomation200Response](docs/Model/GetCommentAutomation200Response.md)
 - [GetCommentAutomation200ResponseAutomation](docs/Model/GetCommentAutomation200ResponseAutomation.md)
+- [GetCommerceOrder200Response](docs/Model/GetCommerceOrder200Response.md)
 - [GetCommerceStore200Response](docs/Model/GetCommerceStore200Response.md)
 - [GetConnectUrl200Response](docs/Model/GetConnectUrl200Response.md)
 - [GetContact200Response](docs/Model/GetContact200Response.md)
@@ -2522,6 +2535,7 @@ Class | Method | HTTP request | Description
 - [ListCommerceMenus200Response](docs/Model/ListCommerceMenus200Response.md)
 - [ListCommerceMetaobjectDefinitions200Response](docs/Model/ListCommerceMetaobjectDefinitions200Response.md)
 - [ListCommerceMetaobjects200Response](docs/Model/ListCommerceMetaobjects200Response.md)
+- [ListCommerceOrders200Response](docs/Model/ListCommerceOrders200Response.md)
 - [ListCommercePages200Response](docs/Model/ListCommercePages200Response.md)
 - [ListCommercePriceLists200Response](docs/Model/ListCommercePriceLists200Response.md)
 - [ListCommerceProductMetafields200Response](docs/Model/ListCommerceProductMetafields200Response.md)
@@ -3611,6 +3625,8 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadCommentCommentAuthor](docs/Model/WebhookPayloadCommentCommentAuthor.md)
 - [WebhookPayloadCommentCommentAuthorInstagramProfile](docs/Model/WebhookPayloadCommentCommentAuthorInstagramProfile.md)
 - [WebhookPayloadCommentPost](docs/Model/WebhookPayloadCommentPost.md)
+- [WebhookPayloadCommerceOrder](docs/Model/WebhookPayloadCommerceOrder.md)
+- [WebhookPayloadCommerceOrderResource](docs/Model/WebhookPayloadCommerceOrderResource.md)
 - [WebhookPayloadCommerceProduct](docs/Model/WebhookPayloadCommerceProduct.md)
 - [WebhookPayloadCommerceProductResource](docs/Model/WebhookPayloadCommerceProductResource.md)
 - [WebhookPayloadCommerceProductStore](docs/Model/WebhookPayloadCommerceProductStore.md)
@@ -3800,6 +3816,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.297.2`
+- API version: `1.298.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
