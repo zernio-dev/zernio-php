@@ -5619,6 +5619,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetLinkedInDemographics200ResponseDemographicsValueInnerTest.php
-test/Model/GetLinkedInDemographics200ResponseTest.php
-test/Model/GetLinkedInDemographics412ResponseTest.php
