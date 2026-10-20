@@ -5647,17 +5647,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CommerceAddressTest.php
-test/Model/CommerceOrderChargeLineTest.php
-test/Model/CommerceOrderCustomerTest.php
-test/Model/CommerceOrderFulfillmentsInnerTest.php
-test/Model/CommerceOrderLineItemsInnerTest.php
-test/Model/CommerceOrderRefundsInnerLineItemsInnerTest.php
-test/Model/CommerceOrderRefundsInnerTest.php
-test/Model/CommerceOrderStatusTest.php
-test/Model/CommerceOrderTest.php
-test/Model/CommerceTaxLineTest.php
-test/Model/GetCommerceOrder200ResponseTest.php
-test/Model/ListCommerceOrders200ResponseTest.php
-test/Model/WebhookPayloadCommerceOrderResourceTest.php
-test/Model/WebhookPayloadCommerceOrderTest.php
