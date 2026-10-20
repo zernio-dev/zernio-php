@@ -799,7 +799,7 @@ class GoogleDemandGenInput implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets channels
      *
-     * @param string[]|null $channels Channel controls on the ad group. Only the listed channels serve; omit to serve on all of them.
+     * @param string[]|null $channels Channel controls on the new ad group. Only the listed channels serve; Google Maps, which this list cannot select, is turned off. Omit to send no channel controls, so Google applies its default for a new ad group: all Demand Gen channels, Google Maps included.
      *
      * @return self
      */
