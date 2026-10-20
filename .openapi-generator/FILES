@@ -464,6 +464,7 @@ docs/Model/ConversionActionTagSnippetsInner.md
 docs/Model/ConversionDestination.md
 docs/Model/ConversionEvent.md
 docs/Model/ConversionEventItemsInner.md
+docs/Model/ConversionEventMessaging.md
 docs/Model/ConversionEventUser.md
 docs/Model/ConversionEventUserClickIds.md
 docs/Model/CreateAccountGroup201Response.md
@@ -3306,6 +3307,7 @@ lib/Model/ConversionActionTagSnippetsInner.php
 lib/Model/ConversionDestination.php
 lib/Model/ConversionEvent.php
 lib/Model/ConversionEventItemsInner.php
+lib/Model/ConversionEventMessaging.php
 lib/Model/ConversionEventUser.php
 lib/Model/ConversionEventUserClickIds.php
 lib/Model/CreateAccountGroup201Response.php
@@ -5685,5 +5687,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/InstagramMediaCollaboratorTest.php
-test/Model/ListInstagramMediaCollaborators200ResponseTest.php
+test/Model/ConversionEventMessagingTest.php

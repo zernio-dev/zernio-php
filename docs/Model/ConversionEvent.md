@@ -12,7 +12,8 @@ Name | Type | Description | Notes
 **user** | [**\Zernio\Model\ConversionEventUser**](ConversionEventUser.md) |  |
 **items** | [**\Zernio\Model\ConversionEventItemsInner[]**](ConversionEventItemsInner.md) | Item-level detail for ecommerce events. | [optional]
 **source_url** | **string** | URL where the conversion originated (used by Meta). | [optional]
-**action_source** | **string** | Where the conversion happened. Used by Meta. Google also requires an event source internally; omitting this field sends OTHER to Google. Send an explicit value for accurate origin reporting. | [optional]
+**action_source** | **string** | Where the conversion happened. Used by Meta. Google also requires an event source internally; omitting this field sends OTHER to Google. Send an explicit value for accurate origin reporting. &#x60;business_messaging&#x60; (Meta) marks an event from a WhatsApp, Messenger or Instagram Direct conversation and needs &#x60;messaging&#x60;. | [optional]
+**messaging** | [**\Zernio\Model\ConversionEventMessaging**](ConversionEventMessaging.md) |  | [optional]
 **platform_data** | **array<string,mixed>** | Escape hatch for platform-specific fields we haven&#39;t normalized. On Meta, keys are shallow-merged into &#x60;custom_data&#x60; only: fields Zernio already builds (&#x60;value&#x60;, &#x60;currency&#x60;, &#x60;contents&#x60;, &#x60;num_items&#x60;) always win on collision, and &#x60;user_data&#x60; (hashed match keys) is never touched. Use first-class fields (e.g. &#x60;user.leadId&#x60;) for anything that must reach &#x60;user_data&#x60;. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
