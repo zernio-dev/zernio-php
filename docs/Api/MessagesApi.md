@@ -682,7 +682,7 @@ markConversationRead($conversation_id, $send_typing_indicator_request): \Zernio\
 
 Mark a conversation as read
 
-Marks all unread incoming messages in the conversation as read.  For WhatsApp, this also sends read receipts (blue ticks) to the contact, EXCEPT on coexistence accounts (where the WhatsApp Business app on the customer's phone owns read state and we never override it).  For iMessage, this also marks the conversation read with the contact (1:1 conversations only). Best-effort.  This is the explicit, human-driven counterpart to `GET .../messages`, which is side-effect-free and does NOT mark anything read. Call this when a user actually views the conversation.
+Marks all unread incoming messages in the conversation as read.  For WhatsApp, this also sends read receipts (blue ticks) to the contact, EXCEPT on coexistence accounts (where the WhatsApp Business app on the customer's phone owns read state and we never override it).  For iMessage, this also marks the conversation read with the contact (1:1 conversations only). Best-effort.  For Instagram (Instagram Login and Facebook Login) and Facebook Messenger, this also sends a `mark_seen` read receipt to the contact, so they see the conversation as seen. Best-effort: a Meta failure never fails the request.  This is the explicit, human-driven counterpart to `GET .../messages`, which is side-effect-free and does NOT mark anything read. Call this when a user actually views the conversation.
 
 ### Example
 
