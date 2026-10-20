@@ -1608,6 +1608,7 @@ docs/Model/ListFacebookPages200Response.md
 docs/Model/ListFacebookPages200ResponsePagesInner.md
 docs/Model/ListFormLeads200Response.md
 docs/Model/ListFormLeads200ResponseLeadsInner.md
+docs/Model/ListFormLeads200ResponseMeta.md
 docs/Model/ListGoogleAssetGroups200Response.md
 docs/Model/ListGoogleBusinessLocations200Response.md
 docs/Model/ListGoogleBusinessLocations200ResponseLocationsInner.md
@@ -1657,6 +1658,7 @@ docs/Model/ListInstagramStories200ResponseDataInner.md
 docs/Model/ListLeadForms200Response.md
 docs/Model/ListLeads200Response.md
 docs/Model/ListLeads200ResponseLeadsInner.md
+docs/Model/ListLeads200ResponseMeta.md
 docs/Model/ListLinkedInOrganizations200Response.md
 docs/Model/ListLinkedInOrganizations200ResponseOrganizationsInner.md
 docs/Model/ListLocalServicesLeadConversations200Response.md
@@ -4436,6 +4438,7 @@ lib/Model/ListFacebookPages200Response.php
 lib/Model/ListFacebookPages200ResponsePagesInner.php
 lib/Model/ListFormLeads200Response.php
 lib/Model/ListFormLeads200ResponseLeadsInner.php
+lib/Model/ListFormLeads200ResponseMeta.php
 lib/Model/ListGoogleAssetGroups200Response.php
 lib/Model/ListGoogleBusinessLocations200Response.php
 lib/Model/ListGoogleBusinessLocations200ResponseLocationsInner.php
@@ -4485,6 +4488,7 @@ lib/Model/ListInstagramStories200ResponseDataInner.php
 lib/Model/ListLeadForms200Response.php
 lib/Model/ListLeads200Response.php
 lib/Model/ListLeads200ResponseLeadsInner.php
+lib/Model/ListLeads200ResponseMeta.php
 lib/Model/ListLinkedInOrganizations200Response.php
 lib/Model/ListLinkedInOrganizations200ResponseOrganizationsInner.php
 lib/Model/ListLocalServicesLeadConversations200Response.php
@@ -5657,3 +5661,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ListFormLeads200ResponseMetaTest.php
+test/Model/ListLeads200ResponseMetaTest.php
