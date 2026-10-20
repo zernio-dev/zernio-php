@@ -5681,8 +5681,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateAdAccount200ResponseTest.php
-test/Model/CreateGoogleAdAccountRequestTest.php
-test/Model/CreateMetaAdAccountRequestTest.php
-test/Model/CreatedGoogleAdAccountTest.php
-test/Model/CreatedMetaAdAccountTest.php

@@ -1843,7 +1843,7 @@ getSubredditRules($account_id, $subreddit): \Zernio\Model\GetSubredditRules200Re
 
 Get subreddit rules
 
-Temporarily unavailable: Reddit has blocked third-party apps from its API, so this endpoint returns 503 `PLATFORM_DISABLED` until Reddit restores access. Reddit Ads is not affected.  Returns a subreddit's posting rules plus Reddit's site-wide rules, so you can check them before submitting and avoid a removal.  Use this alongside `POST /v1/tools/validate/subreddit`, which only confirms that a subreddit exists and reports its basic posting settings.
+Temporarily unavailable: Reddit has blocked third-party apps from its API, so this endpoint returns 503 `PLATFORM_DISABLED` until Reddit restores access. Reddit Ads is not affected.  Returns a subreddit's posting rules plus Reddit's site-wide rules, so you can check them before submitting and avoid a removal.  Use this alongside `GET /v1/tools/validate/subreddit`, which only confirms that a subreddit exists and reports its basic posting settings.
 
 ### Example
 
