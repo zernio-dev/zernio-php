@@ -1873,6 +1873,7 @@ docs/Model/PostRetryResponse.md
 docs/Model/PostUpdateResponse.md
 docs/Model/PostUserId.md
 docs/Model/PostsListResponse.md
+docs/Model/PostsListResponsePagination.md
 docs/Model/PreflightBrandedCallingIdentity200Response.md
 docs/Model/PreflightBrandedCallingIdentity200ResponseFindingsInner.md
 docs/Model/PreflightBrandedCallingIdentityRequest.md
@@ -4701,6 +4702,7 @@ lib/Model/PostRetryResponse.php
 lib/Model/PostUpdateResponse.php
 lib/Model/PostUserId.php
 lib/Model/PostsListResponse.php
+lib/Model/PostsListResponsePagination.php
 lib/Model/PreflightBrandedCallingIdentity200Response.php
 lib/Model/PreflightBrandedCallingIdentity200ResponseFindingsInner.php
 lib/Model/PreflightBrandedCallingIdentityRequest.php
@@ -5655,3 +5657,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/PostsListResponsePaginationTest.php

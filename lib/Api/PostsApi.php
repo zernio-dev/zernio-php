@@ -1909,6 +1909,8 @@ class PostsApi
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Page size. Values above the maximum return 400 rather than being clamped. (optional, default to 10)
      * @param  int|null $offset Row offset. Takes precedence over page when both are sent; the response pagination.page is derived from it. (optional)
+     * @param  string|null $cursor Opaque cursor from a previous response&#39;s &#x60;pagination.nextCursor&#x60;. Returns the page that follows it in the same &#x60;sortBy&#x60; order, and takes precedence over &#x60;page&#x60; and &#x60;offset&#x60;. Each cursor page costs the same however deep it is, unlike &#x60;page&#x60;/&#x60;offset&#x60;, which get slower the further you go; prefer it to walk a long history. Send the same filters and &#x60;sortBy&#x60; as the request that issued it: a cursor from another &#x60;sortBy&#x60; returns 400. Not available with &#x60;sortBy&#x3D;status&#x60; or &#x60;sortBy&#x3D;platform&#x60;, or with &#x60;source&#x3D;external&#x60;. (optional)
+     * @param  string|null $fields Comma-separated list of post fields to return. Each post then carries &#x60;_id&#x60; plus only these fields, which makes large pages much cheaper: leave out &#x60;platforms&#x60;, &#x60;content&#x60;, &#x60;mediaItems&#x60; or &#x60;metadata&#x60; when you do not need them. Accepted: &#x60;userId&#x60;, &#x60;title&#x60;, &#x60;content&#x60;, &#x60;mediaItems&#x60;, &#x60;platforms&#x60;, &#x60;scheduledFor&#x60;, &#x60;timezone&#x60;, &#x60;status&#x60;, &#x60;tags&#x60;, &#x60;hashtags&#x60;, &#x60;mentions&#x60;, &#x60;visibility&#x60;, &#x60;metadata&#x60;, &#x60;recycling&#x60;, &#x60;recycledFromPostId&#x60;, &#x60;queuedFromProfile&#x60;, &#x60;queueId&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;. An unknown field returns 400 naming it. &#x60;fields&#x3D;_id&#x60; returns ids only. Omit it (or send it empty) for the full post. Not available with &#x60;source&#x3D;external&#x60;. (optional)
      * @param  string|null $source Which collection to read. &#x60;zernio&#x60; (default) returns posts authored through Zernio. &#x60;external&#x60; returns posts synced from the platform (existing/historical posts that were published outside Zernio). Combine with &#x60;accountId&#x60; and paginate via &#x60;page&#x60;/&#x60;limit&#x60; to walk the full synced history (we keep up to the last ~12 months per account). (optional, default to 'zernio')
      * @param  string|null $status status (optional)
      * @param  string|null $platform platform (optional)
@@ -1929,9 +1931,9 @@ class PostsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\PostsListResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
-    public function listPosts($page = 1, $limit = 10, $offset = null, $source = 'zernio', $status = null, $platform = null, $profile_id = null, $created_by = null, $from_date = null, $to_date = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $tags = null, $sort_by = 'scheduled-desc', $account_id = null, string $contentType = self::contentTypes['listPosts'][0])
+    public function listPosts($page = 1, $limit = 10, $offset = null, $cursor = null, $fields = null, $source = 'zernio', $status = null, $platform = null, $profile_id = null, $created_by = null, $from_date = null, $to_date = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $tags = null, $sort_by = 'scheduled-desc', $account_id = null, string $contentType = self::contentTypes['listPosts'][0])
     {
-        list($response) = $this->listPostsWithHttpInfo($page, $limit, $offset, $source, $status, $platform, $profile_id, $created_by, $from_date, $to_date, $date_from, $date_to, $include_hidden, $search, $tags, $sort_by, $account_id, $contentType);
+        list($response) = $this->listPostsWithHttpInfo($page, $limit, $offset, $cursor, $fields, $source, $status, $platform, $profile_id, $created_by, $from_date, $to_date, $date_from, $date_to, $include_hidden, $search, $tags, $sort_by, $account_id, $contentType);
         return $response;
     }
 
@@ -1943,6 +1945,8 @@ class PostsApi
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Page size. Values above the maximum return 400 rather than being clamped. (optional, default to 10)
      * @param  int|null $offset Row offset. Takes precedence over page when both are sent; the response pagination.page is derived from it. (optional)
+     * @param  string|null $cursor Opaque cursor from a previous response&#39;s &#x60;pagination.nextCursor&#x60;. Returns the page that follows it in the same &#x60;sortBy&#x60; order, and takes precedence over &#x60;page&#x60; and &#x60;offset&#x60;. Each cursor page costs the same however deep it is, unlike &#x60;page&#x60;/&#x60;offset&#x60;, which get slower the further you go; prefer it to walk a long history. Send the same filters and &#x60;sortBy&#x60; as the request that issued it: a cursor from another &#x60;sortBy&#x60; returns 400. Not available with &#x60;sortBy&#x3D;status&#x60; or &#x60;sortBy&#x3D;platform&#x60;, or with &#x60;source&#x3D;external&#x60;. (optional)
+     * @param  string|null $fields Comma-separated list of post fields to return. Each post then carries &#x60;_id&#x60; plus only these fields, which makes large pages much cheaper: leave out &#x60;platforms&#x60;, &#x60;content&#x60;, &#x60;mediaItems&#x60; or &#x60;metadata&#x60; when you do not need them. Accepted: &#x60;userId&#x60;, &#x60;title&#x60;, &#x60;content&#x60;, &#x60;mediaItems&#x60;, &#x60;platforms&#x60;, &#x60;scheduledFor&#x60;, &#x60;timezone&#x60;, &#x60;status&#x60;, &#x60;tags&#x60;, &#x60;hashtags&#x60;, &#x60;mentions&#x60;, &#x60;visibility&#x60;, &#x60;metadata&#x60;, &#x60;recycling&#x60;, &#x60;recycledFromPostId&#x60;, &#x60;queuedFromProfile&#x60;, &#x60;queueId&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;. An unknown field returns 400 naming it. &#x60;fields&#x3D;_id&#x60; returns ids only. Omit it (or send it empty) for the full post. Not available with &#x60;source&#x3D;external&#x60;. (optional)
      * @param  string|null $source Which collection to read. &#x60;zernio&#x60; (default) returns posts authored through Zernio. &#x60;external&#x60; returns posts synced from the platform (existing/historical posts that were published outside Zernio). Combine with &#x60;accountId&#x60; and paginate via &#x60;page&#x60;/&#x60;limit&#x60; to walk the full synced history (we keep up to the last ~12 months per account). (optional, default to 'zernio')
      * @param  string|null $status (optional)
      * @param  string|null $platform (optional)
@@ -1963,9 +1967,9 @@ class PostsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\PostsListResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listPostsWithHttpInfo($page = 1, $limit = 10, $offset = null, $source = 'zernio', $status = null, $platform = null, $profile_id = null, $created_by = null, $from_date = null, $to_date = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $tags = null, $sort_by = 'scheduled-desc', $account_id = null, string $contentType = self::contentTypes['listPosts'][0])
+    public function listPostsWithHttpInfo($page = 1, $limit = 10, $offset = null, $cursor = null, $fields = null, $source = 'zernio', $status = null, $platform = null, $profile_id = null, $created_by = null, $from_date = null, $to_date = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $tags = null, $sort_by = 'scheduled-desc', $account_id = null, string $contentType = self::contentTypes['listPosts'][0])
     {
-        $request = $this->listPostsRequest($page, $limit, $offset, $source, $status, $platform, $profile_id, $created_by, $from_date, $to_date, $date_from, $date_to, $include_hidden, $search, $tags, $sort_by, $account_id, $contentType);
+        $request = $this->listPostsRequest($page, $limit, $offset, $cursor, $fields, $source, $status, $platform, $profile_id, $created_by, $from_date, $to_date, $date_from, $date_to, $include_hidden, $search, $tags, $sort_by, $account_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2072,6 +2076,8 @@ class PostsApi
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Page size. Values above the maximum return 400 rather than being clamped. (optional, default to 10)
      * @param  int|null $offset Row offset. Takes precedence over page when both are sent; the response pagination.page is derived from it. (optional)
+     * @param  string|null $cursor Opaque cursor from a previous response&#39;s &#x60;pagination.nextCursor&#x60;. Returns the page that follows it in the same &#x60;sortBy&#x60; order, and takes precedence over &#x60;page&#x60; and &#x60;offset&#x60;. Each cursor page costs the same however deep it is, unlike &#x60;page&#x60;/&#x60;offset&#x60;, which get slower the further you go; prefer it to walk a long history. Send the same filters and &#x60;sortBy&#x60; as the request that issued it: a cursor from another &#x60;sortBy&#x60; returns 400. Not available with &#x60;sortBy&#x3D;status&#x60; or &#x60;sortBy&#x3D;platform&#x60;, or with &#x60;source&#x3D;external&#x60;. (optional)
+     * @param  string|null $fields Comma-separated list of post fields to return. Each post then carries &#x60;_id&#x60; plus only these fields, which makes large pages much cheaper: leave out &#x60;platforms&#x60;, &#x60;content&#x60;, &#x60;mediaItems&#x60; or &#x60;metadata&#x60; when you do not need them. Accepted: &#x60;userId&#x60;, &#x60;title&#x60;, &#x60;content&#x60;, &#x60;mediaItems&#x60;, &#x60;platforms&#x60;, &#x60;scheduledFor&#x60;, &#x60;timezone&#x60;, &#x60;status&#x60;, &#x60;tags&#x60;, &#x60;hashtags&#x60;, &#x60;mentions&#x60;, &#x60;visibility&#x60;, &#x60;metadata&#x60;, &#x60;recycling&#x60;, &#x60;recycledFromPostId&#x60;, &#x60;queuedFromProfile&#x60;, &#x60;queueId&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;. An unknown field returns 400 naming it. &#x60;fields&#x3D;_id&#x60; returns ids only. Omit it (or send it empty) for the full post. Not available with &#x60;source&#x3D;external&#x60;. (optional)
      * @param  string|null $source Which collection to read. &#x60;zernio&#x60; (default) returns posts authored through Zernio. &#x60;external&#x60; returns posts synced from the platform (existing/historical posts that were published outside Zernio). Combine with &#x60;accountId&#x60; and paginate via &#x60;page&#x60;/&#x60;limit&#x60; to walk the full synced history (we keep up to the last ~12 months per account). (optional, default to 'zernio')
      * @param  string|null $status (optional)
      * @param  string|null $platform (optional)
@@ -2091,9 +2097,9 @@ class PostsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPostsAsync($page = 1, $limit = 10, $offset = null, $source = 'zernio', $status = null, $platform = null, $profile_id = null, $created_by = null, $from_date = null, $to_date = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $tags = null, $sort_by = 'scheduled-desc', $account_id = null, string $contentType = self::contentTypes['listPosts'][0])
+    public function listPostsAsync($page = 1, $limit = 10, $offset = null, $cursor = null, $fields = null, $source = 'zernio', $status = null, $platform = null, $profile_id = null, $created_by = null, $from_date = null, $to_date = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $tags = null, $sort_by = 'scheduled-desc', $account_id = null, string $contentType = self::contentTypes['listPosts'][0])
     {
-        return $this->listPostsAsyncWithHttpInfo($page, $limit, $offset, $source, $status, $platform, $profile_id, $created_by, $from_date, $to_date, $date_from, $date_to, $include_hidden, $search, $tags, $sort_by, $account_id, $contentType)
+        return $this->listPostsAsyncWithHttpInfo($page, $limit, $offset, $cursor, $fields, $source, $status, $platform, $profile_id, $created_by, $from_date, $to_date, $date_from, $date_to, $include_hidden, $search, $tags, $sort_by, $account_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2109,6 +2115,8 @@ class PostsApi
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Page size. Values above the maximum return 400 rather than being clamped. (optional, default to 10)
      * @param  int|null $offset Row offset. Takes precedence over page when both are sent; the response pagination.page is derived from it. (optional)
+     * @param  string|null $cursor Opaque cursor from a previous response&#39;s &#x60;pagination.nextCursor&#x60;. Returns the page that follows it in the same &#x60;sortBy&#x60; order, and takes precedence over &#x60;page&#x60; and &#x60;offset&#x60;. Each cursor page costs the same however deep it is, unlike &#x60;page&#x60;/&#x60;offset&#x60;, which get slower the further you go; prefer it to walk a long history. Send the same filters and &#x60;sortBy&#x60; as the request that issued it: a cursor from another &#x60;sortBy&#x60; returns 400. Not available with &#x60;sortBy&#x3D;status&#x60; or &#x60;sortBy&#x3D;platform&#x60;, or with &#x60;source&#x3D;external&#x60;. (optional)
+     * @param  string|null $fields Comma-separated list of post fields to return. Each post then carries &#x60;_id&#x60; plus only these fields, which makes large pages much cheaper: leave out &#x60;platforms&#x60;, &#x60;content&#x60;, &#x60;mediaItems&#x60; or &#x60;metadata&#x60; when you do not need them. Accepted: &#x60;userId&#x60;, &#x60;title&#x60;, &#x60;content&#x60;, &#x60;mediaItems&#x60;, &#x60;platforms&#x60;, &#x60;scheduledFor&#x60;, &#x60;timezone&#x60;, &#x60;status&#x60;, &#x60;tags&#x60;, &#x60;hashtags&#x60;, &#x60;mentions&#x60;, &#x60;visibility&#x60;, &#x60;metadata&#x60;, &#x60;recycling&#x60;, &#x60;recycledFromPostId&#x60;, &#x60;queuedFromProfile&#x60;, &#x60;queueId&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;. An unknown field returns 400 naming it. &#x60;fields&#x3D;_id&#x60; returns ids only. Omit it (or send it empty) for the full post. Not available with &#x60;source&#x3D;external&#x60;. (optional)
      * @param  string|null $source Which collection to read. &#x60;zernio&#x60; (default) returns posts authored through Zernio. &#x60;external&#x60; returns posts synced from the platform (existing/historical posts that were published outside Zernio). Combine with &#x60;accountId&#x60; and paginate via &#x60;page&#x60;/&#x60;limit&#x60; to walk the full synced history (we keep up to the last ~12 months per account). (optional, default to 'zernio')
      * @param  string|null $status (optional)
      * @param  string|null $platform (optional)
@@ -2128,10 +2136,10 @@ class PostsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPostsAsyncWithHttpInfo($page = 1, $limit = 10, $offset = null, $source = 'zernio', $status = null, $platform = null, $profile_id = null, $created_by = null, $from_date = null, $to_date = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $tags = null, $sort_by = 'scheduled-desc', $account_id = null, string $contentType = self::contentTypes['listPosts'][0])
+    public function listPostsAsyncWithHttpInfo($page = 1, $limit = 10, $offset = null, $cursor = null, $fields = null, $source = 'zernio', $status = null, $platform = null, $profile_id = null, $created_by = null, $from_date = null, $to_date = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $tags = null, $sort_by = 'scheduled-desc', $account_id = null, string $contentType = self::contentTypes['listPosts'][0])
     {
         $returnType = '\Zernio\Model\PostsListResponse';
-        $request = $this->listPostsRequest($page, $limit, $offset, $source, $status, $platform, $profile_id, $created_by, $from_date, $to_date, $date_from, $date_to, $include_hidden, $search, $tags, $sort_by, $account_id, $contentType);
+        $request = $this->listPostsRequest($page, $limit, $offset, $cursor, $fields, $source, $status, $platform, $profile_id, $created_by, $from_date, $to_date, $date_from, $date_to, $include_hidden, $search, $tags, $sort_by, $account_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2175,6 +2183,8 @@ class PostsApi
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Page size. Values above the maximum return 400 rather than being clamped. (optional, default to 10)
      * @param  int|null $offset Row offset. Takes precedence over page when both are sent; the response pagination.page is derived from it. (optional)
+     * @param  string|null $cursor Opaque cursor from a previous response&#39;s &#x60;pagination.nextCursor&#x60;. Returns the page that follows it in the same &#x60;sortBy&#x60; order, and takes precedence over &#x60;page&#x60; and &#x60;offset&#x60;. Each cursor page costs the same however deep it is, unlike &#x60;page&#x60;/&#x60;offset&#x60;, which get slower the further you go; prefer it to walk a long history. Send the same filters and &#x60;sortBy&#x60; as the request that issued it: a cursor from another &#x60;sortBy&#x60; returns 400. Not available with &#x60;sortBy&#x3D;status&#x60; or &#x60;sortBy&#x3D;platform&#x60;, or with &#x60;source&#x3D;external&#x60;. (optional)
+     * @param  string|null $fields Comma-separated list of post fields to return. Each post then carries &#x60;_id&#x60; plus only these fields, which makes large pages much cheaper: leave out &#x60;platforms&#x60;, &#x60;content&#x60;, &#x60;mediaItems&#x60; or &#x60;metadata&#x60; when you do not need them. Accepted: &#x60;userId&#x60;, &#x60;title&#x60;, &#x60;content&#x60;, &#x60;mediaItems&#x60;, &#x60;platforms&#x60;, &#x60;scheduledFor&#x60;, &#x60;timezone&#x60;, &#x60;status&#x60;, &#x60;tags&#x60;, &#x60;hashtags&#x60;, &#x60;mentions&#x60;, &#x60;visibility&#x60;, &#x60;metadata&#x60;, &#x60;recycling&#x60;, &#x60;recycledFromPostId&#x60;, &#x60;queuedFromProfile&#x60;, &#x60;queueId&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;. An unknown field returns 400 naming it. &#x60;fields&#x3D;_id&#x60; returns ids only. Omit it (or send it empty) for the full post. Not available with &#x60;source&#x3D;external&#x60;. (optional)
      * @param  string|null $source Which collection to read. &#x60;zernio&#x60; (default) returns posts authored through Zernio. &#x60;external&#x60; returns posts synced from the platform (existing/historical posts that were published outside Zernio). Combine with &#x60;accountId&#x60; and paginate via &#x60;page&#x60;/&#x60;limit&#x60; to walk the full synced history (we keep up to the last ~12 months per account). (optional, default to 'zernio')
      * @param  string|null $status (optional)
      * @param  string|null $platform (optional)
@@ -2194,7 +2204,7 @@ class PostsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listPostsRequest($page = 1, $limit = 10, $offset = null, $source = 'zernio', $status = null, $platform = null, $profile_id = null, $created_by = null, $from_date = null, $to_date = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $tags = null, $sort_by = 'scheduled-desc', $account_id = null, string $contentType = self::contentTypes['listPosts'][0])
+    public function listPostsRequest($page = 1, $limit = 10, $offset = null, $cursor = null, $fields = null, $source = 'zernio', $status = null, $platform = null, $profile_id = null, $created_by = null, $from_date = null, $to_date = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $tags = null, $sort_by = 'scheduled-desc', $account_id = null, string $contentType = self::contentTypes['listPosts'][0])
     {
 
         if ($page !== null && $page < 1) {
@@ -2212,6 +2222,8 @@ class PostsApi
             throw new \InvalidArgumentException('invalid value for "$offset" when calling PostsApi.listPosts, must be bigger than or equal to 0.');
         }
         
+
+
 
 
 
@@ -2257,6 +2269,24 @@ class PostsApi
             $offset,
             'offset', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $cursor,
+            'cursor', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fields,
+            'fields', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required

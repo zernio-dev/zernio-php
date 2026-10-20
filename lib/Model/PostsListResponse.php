@@ -59,7 +59,7 @@ class PostsListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static $openAPITypes = [
         'posts' => '\Zernio\Model\Post[]',
-        'pagination' => '\Zernio\Model\Pagination'
+        'pagination' => '\Zernio\Model\PostsListResponsePagination'
     ];
 
     /**
@@ -327,7 +327,7 @@ class PostsListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets pagination
      *
-     * @return \Zernio\Model\Pagination|null
+     * @return \Zernio\Model\PostsListResponsePagination|null
      */
     public function getPagination()
     {
@@ -337,7 +337,7 @@ class PostsListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets pagination
      *
-     * @param \Zernio\Model\Pagination|null $pagination pagination
+     * @param \Zernio\Model\PostsListResponsePagination|null $pagination pagination
      *
      * @return self
      */
