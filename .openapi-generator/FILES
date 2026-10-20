@@ -5655,6 +5655,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AdCreativeAssetsMarketingImagesInnerTest.php
-test/Model/AdCreativeAssetsSquareMarketingImagesInnerTest.php
-test/Model/AdCreativeAssetsTest.php
