@@ -1071,6 +1071,8 @@ docs/Model/GetGoogleBusinessVerifications200Response.md
 docs/Model/GetGoogleBusinessVerifications200ResponseVerificationsInner.md
 docs/Model/GetGoogleBusinessVerifications200ResponseVoiceOfMerchantState.md
 docs/Model/GetGoogleBusinessVerifications200ResponseVoiceOfMerchantStateVerify.md
+docs/Model/GetHubSpotConnectUrl200Response.md
+docs/Model/GetHubSpotSettings200Response.md
 docs/Model/GetImessageGroup200Response.md
 docs/Model/GetImessageGroup200ResponseGroup.md
 docs/Model/GetImessageSender200Response.md
@@ -1386,6 +1388,7 @@ docs/Model/HideAdComment200Response.md
 docs/Model/HideAdCommentRequest.md
 docs/Model/HideInboxComment200Response.md
 docs/Model/HideInboxCommentRequest.md
+docs/Model/HubSpotSettings.md
 docs/Model/ImessageAudienceContact.md
 docs/Model/ImessageAudienceContactOptIn.md
 docs/Model/ImessageSandboxContact.md
@@ -2487,6 +2490,8 @@ docs/Model/UpdateGoogleBusinessServicesRequestServiceItemsInnerFreeFormServiceIt
 docs/Model/UpdateGoogleBusinessServicesRequestServiceItemsInnerFreeFormServiceItemLabel.md
 docs/Model/UpdateGoogleBusinessServicesRequestServiceItemsInnerPrice.md
 docs/Model/UpdateGoogleBusinessServicesRequestServiceItemsInnerStructuredServiceItem.md
+docs/Model/UpdateHubSpotSettings200Response.md
+docs/Model/UpdateHubSpotSettingsRequest.md
 docs/Model/UpdateImessageGroup200Response.md
 docs/Model/UpdateImessageGroupRequest.md
 docs/Model/UpdateImessageSenderRequest.md
@@ -3901,6 +3906,8 @@ lib/Model/GetGoogleBusinessVerifications200Response.php
 lib/Model/GetGoogleBusinessVerifications200ResponseVerificationsInner.php
 lib/Model/GetGoogleBusinessVerifications200ResponseVoiceOfMerchantState.php
 lib/Model/GetGoogleBusinessVerifications200ResponseVoiceOfMerchantStateVerify.php
+lib/Model/GetHubSpotConnectUrl200Response.php
+lib/Model/GetHubSpotSettings200Response.php
 lib/Model/GetImessageGroup200Response.php
 lib/Model/GetImessageGroup200ResponseGroup.php
 lib/Model/GetImessageSender200Response.php
@@ -4216,6 +4223,7 @@ lib/Model/HideAdComment200Response.php
 lib/Model/HideAdCommentRequest.php
 lib/Model/HideInboxComment200Response.php
 lib/Model/HideInboxCommentRequest.php
+lib/Model/HubSpotSettings.php
 lib/Model/ImessageAudienceContact.php
 lib/Model/ImessageAudienceContactOptIn.php
 lib/Model/ImessageSandboxContact.php
@@ -5318,6 +5326,8 @@ lib/Model/UpdateGoogleBusinessServicesRequestServiceItemsInnerFreeFormServiceIte
 lib/Model/UpdateGoogleBusinessServicesRequestServiceItemsInnerFreeFormServiceItemLabel.php
 lib/Model/UpdateGoogleBusinessServicesRequestServiceItemsInnerPrice.php
 lib/Model/UpdateGoogleBusinessServicesRequestServiceItemsInnerStructuredServiceItem.php
+lib/Model/UpdateHubSpotSettings200Response.php
+lib/Model/UpdateHubSpotSettingsRequest.php
 lib/Model/UpdateImessageGroup200Response.php
 lib/Model/UpdateImessageGroupRequest.php
 lib/Model/UpdateImessageSenderRequest.php
@@ -5661,3 +5671,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetHubSpotConnectUrl200ResponseTest.php
+test/Model/GetHubSpotSettings200ResponseTest.php
+test/Model/HubSpotSettingsTest.php
+test/Model/UpdateHubSpotSettings200ResponseTest.php
+test/Model/UpdateHubSpotSettingsRequestTest.php

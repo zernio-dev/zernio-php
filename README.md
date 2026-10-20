@@ -103,6 +103,7 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**getAllAccountsHealth**](docs/Api/AccountsApi.md#getallaccountshealth) | **GET** /v1/accounts/health | Check accounts health
 *AccountsApi* | [**getBlueskySettings**](docs/Api/AccountsApi.md#getblueskysettings) | **GET** /v1/accounts/{accountId}/bluesky-settings | Get Bluesky account settings
 *AccountsApi* | [**getFollowerStats**](docs/Api/AccountsApi.md#getfollowerstats) | **GET** /v1/accounts/follower-stats | Get follower stats
+*AccountsApi* | [**getHubSpotSettings**](docs/Api/AccountsApi.md#gethubspotsettings) | **GET** /v1/accounts/{accountId}/hubspot-settings | Get HubSpot account settings
 *AccountsApi* | [**getInstagramFollowStatus**](docs/Api/AccountsApi.md#getinstagramfollowstatus) | **GET** /v1/accounts/{accountId}/follow-status/{userId} | Check whether an Instagram user follows the account
 *AccountsApi* | [**getSlackSettings**](docs/Api/AccountsApi.md#getslacksettings) | **GET** /v1/accounts/{accountId}/slack-settings | Get Slack account settings
 *AccountsApi* | [**getTikTokCreatorInfo**](docs/Api/AccountsApi.md#gettiktokcreatorinfo) | **GET** /v1/accounts/{accountId}/tiktok/creator-info | Get TikTok creator info
@@ -115,6 +116,7 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**searchTikTokLocations**](docs/Api/AccountsApi.md#searchtiktoklocations) | **GET** /v1/accounts/{accountId}/tiktok/locations | Search TikTok location tags
 *AccountsApi* | [**updateAccount**](docs/Api/AccountsApi.md#updateaccount) | **PUT** /v1/accounts/{accountId} | Update account
 *AccountsApi* | [**updateBlueskySettings**](docs/Api/AccountsApi.md#updateblueskysettings) | **PATCH** /v1/accounts/{accountId}/bluesky-settings | Update Bluesky account settings
+*AccountsApi* | [**updateHubSpotSettings**](docs/Api/AccountsApi.md#updatehubspotsettings) | **PATCH** /v1/accounts/{accountId}/hubspot-settings | Update HubSpot account settings
 *AccountsApi* | [**updateSlackSettings**](docs/Api/AccountsApi.md#updateslacksettings) | **PATCH** /v1/accounts/{accountId}/slack-settings | Update Slack account settings
 *AdAccountsApi* | [**addAccountCallouts**](docs/Api/AdAccountsApi.md#addaccountcallouts) | **POST** /v1/ads/accounts/callouts | Add account callouts
 *AdAccountsApi* | [**addAccountSitelinks**](docs/Api/AdAccountsApi.md#addaccountsitelinks) | **POST** /v1/ads/accounts/sitelinks | Add account sitelinks
@@ -529,6 +531,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**getConnectUrl**](docs/Api/ConnectApi.md#getconnecturl) | **GET** /v1/connect/{platform} | Get OAuth connect URL
 *ConnectApi* | [**getFacebookPages**](docs/Api/ConnectApi.md#getfacebookpages) | **GET** /v1/accounts/{accountId}/facebook-page | List Facebook pages
 *ConnectApi* | [**getGmbLocations**](docs/Api/ConnectApi.md#getgmblocations) | **GET** /v1/accounts/{accountId}/gmb-locations | List Google Business Profile locations
+*ConnectApi* | [**getHubSpotConnectUrl**](docs/Api/ConnectApi.md#gethubspotconnecturl) | **GET** /v1/connect/hubspot | Get HubSpot OAuth connect URL
 *ConnectApi* | [**getLinkedInOrganizations**](docs/Api/ConnectApi.md#getlinkedinorganizations) | **GET** /v1/accounts/{accountId}/linkedin-organizations | List LinkedIn orgs
 *ConnectApi* | [**getPageWebhookSubscription**](docs/Api/ConnectApi.md#getpagewebhooksubscription) | **GET** /v1/accounts/{accountId}/webhook-subscription | Read a Facebook Page&#39;s webhook subscription
 *ConnectApi* | [**getPendingOAuthData**](docs/Api/ConnectApi.md#getpendingoauthdata) | **GET** /v1/connect/pending-data | Get pending OAuth data
@@ -2035,6 +2038,8 @@ Class | Method | HTTP request | Description
 - [GetGoogleBusinessVerifications200ResponseVerificationsInner](docs/Model/GetGoogleBusinessVerifications200ResponseVerificationsInner.md)
 - [GetGoogleBusinessVerifications200ResponseVoiceOfMerchantState](docs/Model/GetGoogleBusinessVerifications200ResponseVoiceOfMerchantState.md)
 - [GetGoogleBusinessVerifications200ResponseVoiceOfMerchantStateVerify](docs/Model/GetGoogleBusinessVerifications200ResponseVoiceOfMerchantStateVerify.md)
+- [GetHubSpotConnectUrl200Response](docs/Model/GetHubSpotConnectUrl200Response.md)
+- [GetHubSpotSettings200Response](docs/Model/GetHubSpotSettings200Response.md)
 - [GetImessageGroup200Response](docs/Model/GetImessageGroup200Response.md)
 - [GetImessageGroup200ResponseGroup](docs/Model/GetImessageGroup200ResponseGroup.md)
 - [GetImessageSender200Response](docs/Model/GetImessageSender200Response.md)
@@ -2350,6 +2355,7 @@ Class | Method | HTTP request | Description
 - [HideAdCommentRequest](docs/Model/HideAdCommentRequest.md)
 - [HideInboxComment200Response](docs/Model/HideInboxComment200Response.md)
 - [HideInboxCommentRequest](docs/Model/HideInboxCommentRequest.md)
+- [HubSpotSettings](docs/Model/HubSpotSettings.md)
 - [ImessageAudienceContact](docs/Model/ImessageAudienceContact.md)
 - [ImessageAudienceContactOptIn](docs/Model/ImessageAudienceContactOptIn.md)
 - [ImessageSandboxContact](docs/Model/ImessageSandboxContact.md)
@@ -3451,6 +3457,8 @@ Class | Method | HTTP request | Description
 - [UpdateGoogleBusinessServicesRequestServiceItemsInnerFreeFormServiceItemLabel](docs/Model/UpdateGoogleBusinessServicesRequestServiceItemsInnerFreeFormServiceItemLabel.md)
 - [UpdateGoogleBusinessServicesRequestServiceItemsInnerPrice](docs/Model/UpdateGoogleBusinessServicesRequestServiceItemsInnerPrice.md)
 - [UpdateGoogleBusinessServicesRequestServiceItemsInnerStructuredServiceItem](docs/Model/UpdateGoogleBusinessServicesRequestServiceItemsInnerStructuredServiceItem.md)
+- [UpdateHubSpotSettings200Response](docs/Model/UpdateHubSpotSettings200Response.md)
+- [UpdateHubSpotSettingsRequest](docs/Model/UpdateHubSpotSettingsRequest.md)
 - [UpdateImessageGroup200Response](docs/Model/UpdateImessageGroup200Response.md)
 - [UpdateImessageGroupRequest](docs/Model/UpdateImessageGroupRequest.md)
 - [UpdateImessageSenderRequest](docs/Model/UpdateImessageSenderRequest.md)
@@ -3824,6 +3832,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.308.1`
+- API version: `1.309.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

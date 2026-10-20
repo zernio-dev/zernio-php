@@ -12,6 +12,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getAllAccountsHealth()**](AccountsApi.md#getAllAccountsHealth) | **GET** /v1/accounts/health | Check accounts health |
 | [**getBlueskySettings()**](AccountsApi.md#getBlueskySettings) | **GET** /v1/accounts/{accountId}/bluesky-settings | Get Bluesky account settings |
 | [**getFollowerStats()**](AccountsApi.md#getFollowerStats) | **GET** /v1/accounts/follower-stats | Get follower stats |
+| [**getHubSpotSettings()**](AccountsApi.md#getHubSpotSettings) | **GET** /v1/accounts/{accountId}/hubspot-settings | Get HubSpot account settings |
 | [**getInstagramFollowStatus()**](AccountsApi.md#getInstagramFollowStatus) | **GET** /v1/accounts/{accountId}/follow-status/{userId} | Check whether an Instagram user follows the account |
 | [**getSlackSettings()**](AccountsApi.md#getSlackSettings) | **GET** /v1/accounts/{accountId}/slack-settings | Get Slack account settings |
 | [**getTikTokCreatorInfo()**](AccountsApi.md#getTikTokCreatorInfo) | **GET** /v1/accounts/{accountId}/tiktok/creator-info | Get TikTok creator info |
@@ -24,6 +25,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**searchTikTokLocations()**](AccountsApi.md#searchTikTokLocations) | **GET** /v1/accounts/{accountId}/tiktok/locations | Search TikTok location tags |
 | [**updateAccount()**](AccountsApi.md#updateAccount) | **PUT** /v1/accounts/{accountId} | Update account |
 | [**updateBlueskySettings()**](AccountsApi.md#updateBlueskySettings) | **PATCH** /v1/accounts/{accountId}/bluesky-settings | Update Bluesky account settings |
+| [**updateHubSpotSettings()**](AccountsApi.md#updateHubSpotSettings) | **PATCH** /v1/accounts/{accountId}/hubspot-settings | Update HubSpot account settings |
 | [**updateSlackSettings()**](AccountsApi.md#updateSlackSettings) | **PATCH** /v1/accounts/{accountId}/slack-settings | Update Slack account settings |
 
 
@@ -399,6 +401,66 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getHubSpotSettings()`
+
+```php
+getHubSpotSettings($account_id): \Zernio\Model\GetHubSpotSettings200Response
+```
+
+Get HubSpot account settings
+
+Read a connected HubSpot portal and what Zernio syncs to it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+
+try {
+    $result = $apiInstance->getHubSpotSettings($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->getHubSpotSettings: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\GetHubSpotSettings200Response**](../Model/GetHubSpotSettings200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getInstagramFollowStatus()`
 
 ```php
@@ -678,7 +740,7 @@ $profile_id = 'profile_id_example'; // string | Filter accounts by profile ID. M
 $platform = 'platform_example'; // string | Filter accounts by platform (e.g. \"instagram\", \"twitter\").
 $status = 'status_example'; // string | Filter accounts by connection status. `connected` returns healthy accounts; `disconnected` returns accounts that need reconnection (per the same reconnection check surfaced in the dashboard). Omit to return accounts in any status. When combined with page/limit, pagination totals reflect the filtered result set.
 $search = 'search_example'; // string | Case-insensitive match on the account username, display name or platform user id, or an exact account id. Combine with page/limit to paginate the matches.
-$category = 'category_example'; // string | Only accounts of this kind. ads = ad accounts (Meta, Google, LinkedIn, Pinterest, TikTok, X, OpenAI, Reddit), communication = WhatsApp, Telegram, Discord, Slack and iMessage, blogs = Shopify and WordPress, social = every other platform.
+$category = 'category_example'; // string | Only accounts of this kind. ads = ad accounts (Meta, Google, LinkedIn, Pinterest, TikTok, X, OpenAI, Reddit), communication = WhatsApp, Telegram, Discord, Slack and iMessage, blogs = Shopify and WordPress, crm = HubSpot, social = every other platform.
 $sort = 'sort_example'; // string | Sort a paginated listing (page/limit) by account name, platform, profile name, status (accounts needing a reconnect first when ascending) or connection date. Ties keep the default order: platform, then newest first.
 $order = 'asc'; // string | Direction for `sort`.
 $include_over_limit = false; // bool | When true, includes accounts from over-limit profiles.
@@ -706,7 +768,7 @@ try {
 | **platform** | **string**| Filter accounts by platform (e.g. \&quot;instagram\&quot;, \&quot;twitter\&quot;). | [optional] |
 | **status** | **string**| Filter accounts by connection status. &#x60;connected&#x60; returns healthy accounts; &#x60;disconnected&#x60; returns accounts that need reconnection (per the same reconnection check surfaced in the dashboard). Omit to return accounts in any status. When combined with page/limit, pagination totals reflect the filtered result set. | [optional] |
 | **search** | **string**| Case-insensitive match on the account username, display name or platform user id, or an exact account id. Combine with page/limit to paginate the matches. | [optional] |
-| **category** | **string**| Only accounts of this kind. ads &#x3D; ad accounts (Meta, Google, LinkedIn, Pinterest, TikTok, X, OpenAI, Reddit), communication &#x3D; WhatsApp, Telegram, Discord, Slack and iMessage, blogs &#x3D; Shopify and WordPress, social &#x3D; every other platform. | [optional] |
+| **category** | **string**| Only accounts of this kind. ads &#x3D; ad accounts (Meta, Google, LinkedIn, Pinterest, TikTok, X, OpenAI, Reddit), communication &#x3D; WhatsApp, Telegram, Discord, Slack and iMessage, blogs &#x3D; Shopify and WordPress, crm &#x3D; HubSpot, social &#x3D; every other platform. | [optional] |
 | **sort** | **string**| Sort a paginated listing (page/limit) by account name, platform, profile name, status (accounts needing a reconnect first when ascending) or connection date. Ties keep the default order: platform, then newest first. | [optional] |
 | **order** | **string**| Direction for &#x60;sort&#x60;. | [optional] [default to &#39;asc&#39;] |
 | **include_over_limit** | **bool**| When true, includes accounts from over-limit profiles. | [optional] [default to false] |
@@ -1152,6 +1214,68 @@ try {
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateHubSpotSettings()`
+
+```php
+updateHubSpotSettings($account_id, $update_hub_spot_settings_request): \Zernio\Model\UpdateHubSpotSettings200Response
+```
+
+Update HubSpot account settings
+
+Turn contact sync or message logging on or off for a connected HubSpot portal. Send at least one field; omitted fields keep their value. Settings survive reconnecting the same portal.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$update_hub_spot_settings_request = new \Zernio\Model\UpdateHubSpotSettingsRequest(); // \Zernio\Model\UpdateHubSpotSettingsRequest
+
+try {
+    $result = $apiInstance->updateHubSpotSettings($account_id, $update_hub_spot_settings_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->updateHubSpotSettings: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **update_hub_spot_settings_request** | [**\Zernio\Model\UpdateHubSpotSettingsRequest**](../Model/UpdateHubSpotSettingsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateHubSpotSettings200Response**](../Model/UpdateHubSpotSettings200Response.md)
 
 ### Authorization
 
