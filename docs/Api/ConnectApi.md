@@ -36,6 +36,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getSubredditRules()**](ConnectApi.md#getSubredditRules) | **GET** /v1/accounts/{accountId}/reddit-subreddits/{subreddit}/rules | Get subreddit rules |
 | [**getTelegramConnectStatus()**](ConnectApi.md#getTelegramConnectStatus) | **GET** /v1/connect/telegram | Generate Telegram code |
 | [**getWhatsAppSdkConfig()**](ConnectApi.md#getWhatsAppSdkConfig) | **GET** /v1/connect/whatsapp/sdk-config | Get Embedded Signup SDK config |
+| [**getWixConnectUrl()**](ConnectApi.md#getWixConnectUrl) | **GET** /v1/connect/wix | Get Wix site install URL |
 | [**getWordPressAuthUrl()**](ConnectApi.md#getWordPressAuthUrl) | **GET** /v1/connect/wordpress | Get WordPress.com OAuth connect URL |
 | [**getYoutubeCaptions()**](ConnectApi.md#getYoutubeCaptions) | **GET** /v1/accounts/{accountId}/youtube-captions | Get a YouTube video transcript |
 | [**getYoutubePlaylists()**](ConnectApi.md#getYoutubePlaylists) | **GET** /v1/accounts/{accountId}/youtube-playlists | List YouTube playlists |
@@ -1938,6 +1939,73 @@ try {
 ### Authorization
 
 [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getWixConnectUrl()`
+
+```php
+getWixConnectUrl($profile_id, $redirect_url): \Zernio\Model\GetWixConnectUrl200Response
+```
+
+Get Wix site install URL
+
+Returns the Wix installer link for the Zernio app. The user picks one of their Wix sites there and approves the app; Wix then returns the browser to Zernio's internal callback, which connects that site and redirects to `redirect_url` (or the dashboard when omitted). Wix is a connect-only blog platform: the connected account powers the Blogs API (`/v1/accounts/{accountId}/blogs`) and does not support social posts, inbox, analytics or ads. The site needs the Wix Blog app. Access tokens renew by themselves; removing the Zernio app from the site in Wix disconnects the account.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: connectToken
+$config = Zernio\Configuration::getDefaultConfiguration()->setApiKey('X-Connect-Token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Zernio\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Connect-Token', 'Bearer');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$profile_id = 'profile_id_example'; // string | Your Zernio profile ID (get from /v1/profiles).
+$redirect_url = 'redirect_url_example'; // string | Custom redirect after connection. Must be an absolute http(s) URL or custom app scheme such as `myapp://callback`; relative and unsafe URLs return 400.
+
+try {
+    $result = $apiInstance->getWixConnectUrl($profile_id, $redirect_url);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->getWixConnectUrl: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profile_id** | **string**| Your Zernio profile ID (get from /v1/profiles). | |
+| **redirect_url** | **string**| Custom redirect after connection. Must be an absolute http(s) URL or custom app scheme such as &#x60;myapp://callback&#x60;; relative and unsafe URLs return 400. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetWixConnectUrl200Response**](../Model/GetWixConnectUrl200Response.md)
+
+### Authorization
+
+[connectToken](../../README.md#connectToken), [bearerAuth](../../README.md#bearerAuth)
 
 ### HTTP request headers
 

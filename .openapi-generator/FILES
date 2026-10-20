@@ -1294,6 +1294,7 @@ docs/Model/GetWhatsAppTemplates200Response.md
 docs/Model/GetWhatsAppTemplates200ResponseTemplatesInner.md
 docs/Model/GetWhatsappBusinessUsername200Response.md
 docs/Model/GetWhatsappBusinessUsernameSuggestions200Response.md
+docs/Model/GetWixConnectUrl200Response.md
 docs/Model/GetWordPressAuthUrl200Response.md
 docs/Model/GetWorkflow200Response.md
 docs/Model/GetWorkflow200ResponseWorkflow.md
@@ -4117,6 +4118,7 @@ lib/Model/GetWhatsAppTemplates200Response.php
 lib/Model/GetWhatsAppTemplates200ResponseTemplatesInner.php
 lib/Model/GetWhatsappBusinessUsername200Response.php
 lib/Model/GetWhatsappBusinessUsernameSuggestions200Response.php
+lib/Model/GetWixConnectUrl200Response.php
 lib/Model/GetWordPressAuthUrl200Response.php
 lib/Model/GetWorkflow200Response.php
 lib/Model/GetWorkflow200ResponseWorkflow.php
@@ -5647,3 +5649,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetWixConnectUrl200ResponseTest.php
