@@ -64,7 +64,10 @@ class CreateAdAccount201Response implements ModelInterface, ArrayAccess, \JsonSe
         'payment_method_required' => 'bool',
         'ads_manager_url' => 'string',
         'next_steps' => 'string',
-        'warnings' => 'string[]'
+        'warnings' => 'string[]',
+        'platform' => 'string',
+        'manager_customer_id' => 'string',
+        'validate_only' => 'bool'
     ];
 
     /**
@@ -81,7 +84,10 @@ class CreateAdAccount201Response implements ModelInterface, ArrayAccess, \JsonSe
         'payment_method_required' => null,
         'ads_manager_url' => 'uri',
         'next_steps' => null,
-        'warnings' => null
+        'warnings' => null,
+        'platform' => null,
+        'manager_customer_id' => null,
+        'validate_only' => null
     ];
 
     /**
@@ -96,7 +102,10 @@ class CreateAdAccount201Response implements ModelInterface, ArrayAccess, \JsonSe
         'payment_method_required' => false,
         'ads_manager_url' => false,
         'next_steps' => false,
-        'warnings' => false
+        'warnings' => false,
+        'platform' => false,
+        'manager_customer_id' => false,
+        'validate_only' => false
     ];
 
     /**
@@ -191,7 +200,10 @@ class CreateAdAccount201Response implements ModelInterface, ArrayAccess, \JsonSe
         'payment_method_required' => 'paymentMethodRequired',
         'ads_manager_url' => 'adsManagerUrl',
         'next_steps' => 'nextSteps',
-        'warnings' => 'warnings'
+        'warnings' => 'warnings',
+        'platform' => 'platform',
+        'manager_customer_id' => 'managerCustomerId',
+        'validate_only' => 'validateOnly'
     ];
 
     /**
@@ -206,7 +218,10 @@ class CreateAdAccount201Response implements ModelInterface, ArrayAccess, \JsonSe
         'payment_method_required' => 'setPaymentMethodRequired',
         'ads_manager_url' => 'setAdsManagerUrl',
         'next_steps' => 'setNextSteps',
-        'warnings' => 'setWarnings'
+        'warnings' => 'setWarnings',
+        'platform' => 'setPlatform',
+        'manager_customer_id' => 'setManagerCustomerId',
+        'validate_only' => 'setValidateOnly'
     ];
 
     /**
@@ -221,7 +236,10 @@ class CreateAdAccount201Response implements ModelInterface, ArrayAccess, \JsonSe
         'payment_method_required' => 'getPaymentMethodRequired',
         'ads_manager_url' => 'getAdsManagerUrl',
         'next_steps' => 'getNextSteps',
-        'warnings' => 'getWarnings'
+        'warnings' => 'getWarnings',
+        'platform' => 'getPlatform',
+        'manager_customer_id' => 'getManagerCustomerId',
+        'validate_only' => 'getValidateOnly'
     ];
 
     /**
@@ -265,6 +283,19 @@ class CreateAdAccount201Response implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
+    public const PLATFORM_GOOGLE = 'google';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPlatformAllowableValues()
+    {
+        return [
+            self::PLATFORM_GOOGLE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -288,6 +319,9 @@ class CreateAdAccount201Response implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('ads_manager_url', $data ?? [], null);
         $this->setIfExists('next_steps', $data ?? [], null);
         $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('manager_customer_id', $data ?? [], null);
+        $this->setIfExists('validate_only', $data ?? [], null);
     }
 
     /**
@@ -320,8 +354,8 @@ class CreateAdAccount201Response implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['ad_account_id'] === null) {
             $invalidProperties[] = "'ad_account_id' can't be null";
         }
-        if (!preg_match("/^act_[0-9]+$/", $this->container['ad_account_id'])) {
-            $invalidProperties[] = "invalid value for 'ad_account_id', must be conform to the pattern /^act_[0-9]+$/.";
+        if (!preg_match("/^[0-9]+$/", $this->container['ad_account_id'])) {
+            $invalidProperties[] = "invalid value for 'ad_account_id', must be conform to the pattern /^[0-9]+$/.";
         }
 
         if ($this->container['business_id'] === null) {
@@ -341,6 +375,24 @@ class CreateAdAccount201Response implements ModelInterface, ArrayAccess, \JsonSe
         }
         if ($this->container['warnings'] === null) {
             $invalidProperties[] = "'warnings' can't be null";
+        }
+        if ($this->container['platform'] === null) {
+            $invalidProperties[] = "'platform' can't be null";
+        }
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!is_null($this->container['platform']) && !in_array($this->container['platform'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'platform', must be one of '%s'",
+                $this->container['platform'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['manager_customer_id'] === null) {
+            $invalidProperties[] = "'manager_customer_id' can't be null";
+        }
+        if ($this->container['validate_only'] === null) {
+            $invalidProperties[] = "'validate_only' can't be null";
         }
         return $invalidProperties;
     }
@@ -370,7 +422,7 @@ class CreateAdAccount201Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets ad_account_id
      *
-     * @param string $ad_account_id New Meta ad account ID for subsequent ads calls.
+     * @param string $ad_account_id New Google Ads customer id for subsequent ads calls.
      *
      * @return self
      */
@@ -380,8 +432,8 @@ class CreateAdAccount201Response implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable ad_account_id cannot be null');
         }
 
-        if ((!preg_match("/^act_[0-9]+$/", ObjectSerializer::toString($ad_account_id)))) {
-            throw new \InvalidArgumentException("invalid value for \$ad_account_id when calling CreateAdAccount201Response., must conform to the pattern /^act_[0-9]+$/.");
+        if ((!preg_match("/^[0-9]+$/", ObjectSerializer::toString($ad_account_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$ad_account_id when calling CreateAdAccount201Response., must conform to the pattern /^[0-9]+$/.");
         }
 
         $this->container['ad_account_id'] = $ad_account_id;
@@ -429,7 +481,7 @@ class CreateAdAccount201Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets connection_updated
      *
-     * @param bool $connection_updated Whether the connection scope and discovery schedule were updated.
+     * @param bool $connection_updated Whether the customer was added to the connection and discovery was scheduled. When false the account exists: reconnect Google Ads instead of creating it again.
      *
      * @return self
      */
@@ -456,7 +508,7 @@ class CreateAdAccount201Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets payment_method_required
      *
-     * @param bool $payment_method_required Always true as a delivery prerequisite. This is not a live funding-source check. Confirm payment or invoicing in Ads Manager.
+     * @param bool $payment_method_required Always true. The account has no billing until it is set up in Google Ads.
      *
      * @return self
      */
@@ -510,7 +562,7 @@ class CreateAdAccount201Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets next_steps
      *
-     * @param string $next_steps Payment setup instructions for the user.
+     * @param string $next_steps Billing setup instructions for the user.
      *
      * @return self
      */
@@ -547,6 +599,97 @@ class CreateAdAccount201Response implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable warnings cannot be null');
         }
         $this->container['warnings'] = $warnings;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform
+     *
+     * @return string
+     */
+    public function getPlatform()
+    {
+        return $this->container['platform'];
+    }
+
+    /**
+     * Sets platform
+     *
+     * @param string $platform platform
+     *
+     * @return self
+     */
+    public function setPlatform($platform)
+    {
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
+        }
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!in_array($platform, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'platform', must be one of '%s'",
+                    $platform,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['platform'] = $platform;
+
+        return $this;
+    }
+
+    /**
+     * Gets manager_customer_id
+     *
+     * @return string
+     */
+    public function getManagerCustomerId()
+    {
+        return $this->container['manager_customer_id'];
+    }
+
+    /**
+     * Sets manager_customer_id
+     *
+     * @param string $manager_customer_id Manager the account was created under.
+     *
+     * @return self
+     */
+    public function setManagerCustomerId($manager_customer_id)
+    {
+        if (is_null($manager_customer_id)) {
+            throw new \InvalidArgumentException('non-nullable manager_customer_id cannot be null');
+        }
+        $this->container['manager_customer_id'] = $manager_customer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets validate_only
+     *
+     * @return bool
+     */
+    public function getValidateOnly()
+    {
+        return $this->container['validate_only'];
+    }
+
+    /**
+     * Sets validate_only
+     *
+     * @param bool $validate_only Always false on a 201.
+     *
+     * @return self
+     */
+    public function setValidateOnly($validate_only)
+    {
+        if (is_null($validate_only)) {
+            throw new \InvalidArgumentException('non-nullable validate_only cannot be null');
+        }
+        $this->container['validate_only'] = $validate_only;
 
         return $this;
     }

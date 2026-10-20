@@ -2272,14 +2272,14 @@ class AdAccountsApi
     /**
      * Operation createAdAccount
      *
-     * Create Meta ad account
+     * Create ad account
      *
      * @param  \Zernio\Model\CreateAdAccountRequest $create_ad_account_request create_ad_account_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdAccount'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateAdAccount201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
+     * @return \Zernio\Model\CreateAdAccount200Response|\Zernio\Model\CreateAdAccount201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
     public function createAdAccount($create_ad_account_request, string $contentType = self::contentTypes['createAdAccount'][0])
     {
@@ -2290,14 +2290,14 @@ class AdAccountsApi
     /**
      * Operation createAdAccountWithHttpInfo
      *
-     * Create Meta ad account
+     * Create ad account
      *
      * @param  \Zernio\Model\CreateAdAccountRequest $create_ad_account_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdAccount'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateAdAccount201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateAdAccount200Response|\Zernio\Model\CreateAdAccount201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createAdAccountWithHttpInfo($create_ad_account_request, string $contentType = self::contentTypes['createAdAccount'][0])
     {
@@ -2327,6 +2327,12 @@ class AdAccountsApi
 
 
             switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreateAdAccount200Response',
+                        $request,
+                        $response,
+                    );
                 case 201:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\CreateAdAccount201Response',
@@ -2358,6 +2364,18 @@ class AdAccountsApi
                         $response,
                     );
                 case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 501:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\ErrorResponse',
                         $request,
@@ -2387,12 +2405,20 @@ class AdAccountsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\CreateAdAccount201Response',
+                '\Zernio\Model\CreateAdAccount200Response',
                 $request,
                 $response,
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreateAdAccount200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2441,6 +2467,22 @@ class AdAccountsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 502:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2459,7 +2501,7 @@ class AdAccountsApi
     /**
      * Operation createAdAccountAsync
      *
-     * Create Meta ad account
+     * Create ad account
      *
      * @param  \Zernio\Model\CreateAdAccountRequest $create_ad_account_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdAccount'] to see the possible values for this operation
@@ -2480,7 +2522,7 @@ class AdAccountsApi
     /**
      * Operation createAdAccountAsyncWithHttpInfo
      *
-     * Create Meta ad account
+     * Create ad account
      *
      * @param  \Zernio\Model\CreateAdAccountRequest $create_ad_account_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdAccount'] to see the possible values for this operation
@@ -2490,7 +2532,7 @@ class AdAccountsApi
      */
     public function createAdAccountAsyncWithHttpInfo($create_ad_account_request, string $contentType = self::contentTypes['createAdAccount'][0])
     {
-        $returnType = '\Zernio\Model\CreateAdAccount201Response';
+        $returnType = '\Zernio\Model\CreateAdAccount200Response';
         $request = $this->createAdAccountRequest($create_ad_account_request, $contentType);
 
         return $this->client

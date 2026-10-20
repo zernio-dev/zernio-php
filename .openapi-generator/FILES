@@ -469,6 +469,7 @@ docs/Model/ConversionEventUserClickIds.md
 docs/Model/CreateAccountGroup201Response.md
 docs/Model/CreateAccountGroup201ResponseGroup.md
 docs/Model/CreateAccountGroupRequest.md
+docs/Model/CreateAdAccount200Response.md
 docs/Model/CreateAdAccount201Response.md
 docs/Model/CreateAdAccountRequest.md
 docs/Model/CreateAdAudience201Response.md
@@ -578,6 +579,7 @@ docs/Model/CreateDiscordScheduledEventRequestEntityOneOf2.md
 docs/Model/CreateDiscordThread200Response.md
 docs/Model/CreateDiscordThread200ResponseData.md
 docs/Model/CreateDiscordThreadRequest.md
+docs/Model/CreateGoogleAdAccountRequest.md
 docs/Model/CreateGoogleAssetGroup200Response.md
 docs/Model/CreateGoogleAssetGroup201Response.md
 docs/Model/CreateGoogleAssetGroup201ResponseAssetGroup.md
@@ -621,6 +623,7 @@ docs/Model/CreateMessagingAd200Response.md
 docs/Model/CreateMessagingAd200ResponseResultsInner.md
 docs/Model/CreateMessagingAd201Response.md
 docs/Model/CreateMessagingAdRequest.md
+docs/Model/CreateMetaAdAccountRequest.md
 docs/Model/CreatePhoneNumberKycLink200Response.md
 docs/Model/CreatePhoneNumberKycLinkRequest.md
 docs/Model/CreatePhoneNumberKycLinkRequestBranding.md
@@ -727,6 +730,8 @@ docs/Model/CreateWorkflowRequest.md
 docs/Model/CreateYoutubePlaylist201Response.md
 docs/Model/CreateYoutubePlaylist201ResponsePlaylist.md
 docs/Model/CreateYoutubePlaylistRequest.md
+docs/Model/CreatedGoogleAdAccount.md
+docs/Model/CreatedMetaAdAccount.md
 docs/Model/CrosspostDiscordMessage200Response.md
 docs/Model/CtwaAdRequestBody.md
 docs/Model/CtwaAdRequestBodyCitiesInner.md
@@ -3304,6 +3309,7 @@ lib/Model/ConversionEventUserClickIds.php
 lib/Model/CreateAccountGroup201Response.php
 lib/Model/CreateAccountGroup201ResponseGroup.php
 lib/Model/CreateAccountGroupRequest.php
+lib/Model/CreateAdAccount200Response.php
 lib/Model/CreateAdAccount201Response.php
 lib/Model/CreateAdAccountRequest.php
 lib/Model/CreateAdAudience201Response.php
@@ -3413,6 +3419,7 @@ lib/Model/CreateDiscordScheduledEventRequestEntityOneOf2.php
 lib/Model/CreateDiscordThread200Response.php
 lib/Model/CreateDiscordThread200ResponseData.php
 lib/Model/CreateDiscordThreadRequest.php
+lib/Model/CreateGoogleAdAccountRequest.php
 lib/Model/CreateGoogleAssetGroup200Response.php
 lib/Model/CreateGoogleAssetGroup201Response.php
 lib/Model/CreateGoogleAssetGroup201ResponseAssetGroup.php
@@ -3456,6 +3463,7 @@ lib/Model/CreateMessagingAd200Response.php
 lib/Model/CreateMessagingAd200ResponseResultsInner.php
 lib/Model/CreateMessagingAd201Response.php
 lib/Model/CreateMessagingAdRequest.php
+lib/Model/CreateMetaAdAccountRequest.php
 lib/Model/CreatePhoneNumberKycLink200Response.php
 lib/Model/CreatePhoneNumberKycLinkRequest.php
 lib/Model/CreatePhoneNumberKycLinkRequestBranding.php
@@ -3562,6 +3570,8 @@ lib/Model/CreateWorkflowRequest.php
 lib/Model/CreateYoutubePlaylist201Response.php
 lib/Model/CreateYoutubePlaylist201ResponsePlaylist.php
 lib/Model/CreateYoutubePlaylistRequest.php
+lib/Model/CreatedGoogleAdAccount.php
+lib/Model/CreatedMetaAdAccount.php
 lib/Model/CrosspostDiscordMessage200Response.php
 lib/Model/CtwaAdRequestBody.php
 lib/Model/CtwaAdRequestBodyCitiesInner.php
@@ -5671,8 +5681,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetHubSpotConnectUrl200ResponseTest.php
-test/Model/GetHubSpotSettings200ResponseTest.php
-test/Model/HubSpotSettingsTest.php
-test/Model/UpdateHubSpotSettings200ResponseTest.php
-test/Model/UpdateHubSpotSettingsRequestTest.php
+test/Model/CreateAdAccount200ResponseTest.php
+test/Model/CreateGoogleAdAccountRequestTest.php
+test/Model/CreateMetaAdAccountRequestTest.php
+test/Model/CreatedGoogleAdAccountTest.php
+test/Model/CreatedMetaAdAccountTest.php

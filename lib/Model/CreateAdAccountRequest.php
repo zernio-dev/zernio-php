@@ -58,6 +58,7 @@ class CreateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
+        'platform' => 'string',
         'account_id' => 'string',
         'business_id' => 'string',
         'name' => 'string',
@@ -72,7 +73,10 @@ class CreateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'io' => 'bool',
         'po_number' => 'string',
         'funding_id' => 'string',
-        'ad_account_created_from_bm_flag' => 'bool'
+        'ad_account_created_from_bm_flag' => 'bool',
+        'manager_customer_id' => 'string',
+        'time_zone' => 'string',
+        'validate_only' => 'bool'
     ];
 
     /**
@@ -83,6 +87,7 @@ class CreateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'platform' => null,
         'account_id' => null,
         'business_id' => null,
         'name' => null,
@@ -97,7 +102,10 @@ class CreateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'io' => null,
         'po_number' => null,
         'funding_id' => null,
-        'ad_account_created_from_bm_flag' => null
+        'ad_account_created_from_bm_flag' => null,
+        'manager_customer_id' => null,
+        'time_zone' => null,
+        'validate_only' => null
     ];
 
     /**
@@ -106,6 +114,7 @@ class CreateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'platform' => false,
         'account_id' => false,
         'business_id' => false,
         'name' => false,
@@ -120,7 +129,10 @@ class CreateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'io' => false,
         'po_number' => false,
         'funding_id' => false,
-        'ad_account_created_from_bm_flag' => false
+        'ad_account_created_from_bm_flag' => false,
+        'manager_customer_id' => false,
+        'time_zone' => false,
+        'validate_only' => false
     ];
 
     /**
@@ -209,6 +221,7 @@ class CreateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
+        'platform' => 'platform',
         'account_id' => 'accountId',
         'business_id' => 'businessId',
         'name' => 'name',
@@ -223,7 +236,10 @@ class CreateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'io' => 'io',
         'po_number' => 'poNumber',
         'funding_id' => 'fundingId',
-        'ad_account_created_from_bm_flag' => 'adAccountCreatedFromBmFlag'
+        'ad_account_created_from_bm_flag' => 'adAccountCreatedFromBmFlag',
+        'manager_customer_id' => 'managerCustomerId',
+        'time_zone' => 'timeZone',
+        'validate_only' => 'validateOnly'
     ];
 
     /**
@@ -232,6 +248,7 @@ class CreateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
+        'platform' => 'setPlatform',
         'account_id' => 'setAccountId',
         'business_id' => 'setBusinessId',
         'name' => 'setName',
@@ -246,7 +263,10 @@ class CreateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'io' => 'setIo',
         'po_number' => 'setPoNumber',
         'funding_id' => 'setFundingId',
-        'ad_account_created_from_bm_flag' => 'setAdAccountCreatedFromBmFlag'
+        'ad_account_created_from_bm_flag' => 'setAdAccountCreatedFromBmFlag',
+        'manager_customer_id' => 'setManagerCustomerId',
+        'time_zone' => 'setTimeZone',
+        'validate_only' => 'setValidateOnly'
     ];
 
     /**
@@ -255,6 +275,7 @@ class CreateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
+        'platform' => 'getPlatform',
         'account_id' => 'getAccountId',
         'business_id' => 'getBusinessId',
         'name' => 'getName',
@@ -269,7 +290,10 @@ class CreateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'io' => 'getIo',
         'po_number' => 'getPoNumber',
         'funding_id' => 'getFundingId',
-        'ad_account_created_from_bm_flag' => 'getAdAccountCreatedFromBmFlag'
+        'ad_account_created_from_bm_flag' => 'getAdAccountCreatedFromBmFlag',
+        'manager_customer_id' => 'getManagerCustomerId',
+        'time_zone' => 'getTimeZone',
+        'validate_only' => 'getValidateOnly'
     ];
 
     /**
@@ -313,6 +337,19 @@ class CreateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$openAPIModelName;
     }
 
+    public const PLATFORM_GOOGLE = 'google';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPlatformAllowableValues()
+    {
+        return [
+            self::PLATFORM_GOOGLE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -329,6 +366,7 @@ class CreateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('business_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
@@ -344,6 +382,9 @@ class CreateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('po_number', $data ?? [], null);
         $this->setIfExists('funding_id', $data ?? [], null);
         $this->setIfExists('ad_account_created_from_bm_flag', $data ?? [], null);
+        $this->setIfExists('manager_customer_id', $data ?? [], null);
+        $this->setIfExists('time_zone', $data ?? [], null);
+        $this->setIfExists('validate_only', $data ?? [], false);
     }
 
     /**
@@ -372,6 +413,18 @@ class CreateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if ($this->container['platform'] === null) {
+            $invalidProperties[] = "'platform' can't be null";
+        }
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!is_null($this->container['platform']) && !in_array($this->container['platform'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'platform', must be one of '%s'",
+                $this->container['platform'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         if ($this->container['account_id'] === null) {
             $invalidProperties[] = "'account_id' can't be null";
@@ -452,6 +505,16 @@ class CreateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
             $invalidProperties[] = "invalid value for 'funding_id', must be conform to the pattern /^[1-9][0-9]*$/.";
         }
 
+        if ($this->container['manager_customer_id'] === null) {
+            $invalidProperties[] = "'manager_customer_id' can't be null";
+        }
+        if (!preg_match("/^[0-9]+$/", $this->container['manager_customer_id'])) {
+            $invalidProperties[] = "invalid value for 'manager_customer_id', must be conform to the pattern /^[0-9]+$/.";
+        }
+
+        if ($this->container['time_zone'] === null) {
+            $invalidProperties[] = "'time_zone' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -468,6 +531,43 @@ class CreateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
+     * Gets platform
+     *
+     * @return string
+     */
+    public function getPlatform()
+    {
+        return $this->container['platform'];
+    }
+
+    /**
+     * Sets platform
+     *
+     * @param string $platform platform
+     *
+     * @return self
+     */
+    public function setPlatform($platform)
+    {
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
+        }
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!in_array($platform, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'platform', must be one of '%s'",
+                    $platform,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['platform'] = $platform;
+
+        return $this;
+    }
+
+    /**
      * Gets account_id
      *
      * @return string
@@ -480,7 +580,7 @@ class CreateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets account_id
      *
-     * @param string $account_id Zernio metaads SocialAccount ID.
+     * @param string $account_id Zernio googleads SocialAccount ID whose Google user reaches the manager.
      *
      * @return self
      */
@@ -544,7 +644,7 @@ class CreateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets name
      *
-     * @param string $name Ad account name. Whitespace is trimmed.
+     * @param string $name Account name. Whitespace is trimmed.
      *
      * @return self
      */
@@ -578,7 +678,7 @@ class CreateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets currency
      *
-     * @param string $currency Uppercase ISO 4217 currency supported by Meta.
+     * @param string $currency Uppercase ISO 4217 currency. Cannot be changed after creation.
      *
      * @return self
      */
@@ -937,6 +1037,92 @@ class CreateAdAccountRequest implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable ad_account_created_from_bm_flag cannot be null');
         }
         $this->container['ad_account_created_from_bm_flag'] = $ad_account_created_from_bm_flag;
+
+        return $this;
+    }
+
+    /**
+     * Gets manager_customer_id
+     *
+     * @return string
+     */
+    public function getManagerCustomerId()
+    {
+        return $this->container['manager_customer_id'];
+    }
+
+    /**
+     * Sets manager_customer_id
+     *
+     * @param string $manager_customer_id Manager (MCC) customer id without dashes. The new account is created under it. List reachable managers with GET /v1/ads/accounts/hierarchy.
+     *
+     * @return self
+     */
+    public function setManagerCustomerId($manager_customer_id)
+    {
+        if (is_null($manager_customer_id)) {
+            throw new \InvalidArgumentException('non-nullable manager_customer_id cannot be null');
+        }
+
+        if ((!preg_match("/^[0-9]+$/", ObjectSerializer::toString($manager_customer_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$manager_customer_id when calling CreateAdAccountRequest., must conform to the pattern /^[0-9]+$/.");
+        }
+
+        $this->container['manager_customer_id'] = $manager_customer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets time_zone
+     *
+     * @return string
+     */
+    public function getTimeZone()
+    {
+        return $this->container['time_zone'];
+    }
+
+    /**
+     * Sets time_zone
+     *
+     * @param string $time_zone IANA time zone name, for example Europe/Madrid. Cannot be changed after creation.
+     *
+     * @return self
+     */
+    public function setTimeZone($time_zone)
+    {
+        if (is_null($time_zone)) {
+            throw new \InvalidArgumentException('non-nullable time_zone cannot be null');
+        }
+        $this->container['time_zone'] = $time_zone;
+
+        return $this;
+    }
+
+    /**
+     * Gets validate_only
+     *
+     * @return bool|null
+     */
+    public function getValidateOnly()
+    {
+        return $this->container['validate_only'];
+    }
+
+    /**
+     * Sets validate_only
+     *
+     * @param bool|null $validate_only Ask Google to validate the request without creating the account.
+     *
+     * @return self
+     */
+    public function setValidateOnly($validate_only)
+    {
+        if (is_null($validate_only)) {
+            throw new \InvalidArgumentException('non-nullable validate_only cannot be null');
+        }
+        $this->container['validate_only'] = $validate_only;
 
         return $this;
     }
