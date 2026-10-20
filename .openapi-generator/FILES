@@ -1324,8 +1324,11 @@ docs/Model/GetYoutubePlaylists200Response.md
 docs/Model/GetYoutubePlaylists200ResponsePlaylistsInner.md
 docs/Model/GoogleAdLabel.md
 docs/Model/GoogleAdLabelAssignments.md
+docs/Model/GoogleAdsAccessRole.md
 docs/Model/GoogleAdsHierarchyClient.md
 docs/Model/GoogleAdsManagerLink.md
+docs/Model/GoogleAdsUserAccessInvitation.md
+docs/Model/GoogleAdsUserAccessInvitationResult.md
 docs/Model/GoogleAssetGroupAssetLink.md
 docs/Model/GoogleAssetGroupAssetUnlink.md
 docs/Model/GoogleAssetUpdate.md
@@ -1444,6 +1447,7 @@ docs/Model/InstallTrackingTagOnStore422Response.md
 docs/Model/InstallTrackingTagOnStore422ResponseDetails.md
 docs/Model/InstallTrackingTagOnStoreRequest.md
 docs/Model/InviteAdAccountToManagerRequest.md
+docs/Model/InviteAdAccountUserRequest.md
 docs/Model/KeywordEntry.md
 docs/Model/KeywordEntryOneOf.md
 docs/Model/LikeInboxComment200Response.md
@@ -1492,6 +1496,7 @@ docs/Model/ListAccountSitelinks200Response.md
 docs/Model/ListAccountSitelinks200ResponseSitelinksInner.md
 docs/Model/ListAccountStructuredSnippets200Response.md
 docs/Model/ListAccountStructuredSnippets200ResponseStructuredSnippetsInner.md
+docs/Model/ListAdAccountUserInvitations200Response.md
 docs/Model/ListAdAccountUsers200Response.md
 docs/Model/ListAdAccounts200Response.md
 docs/Model/ListAdAccounts200ResponseAccountsInner.md
@@ -2053,6 +2058,7 @@ docs/Model/ReviewPhoneNumberKycPacketRequest.md
 docs/Model/ReviewWebhookReview.md
 docs/Model/ReviewWebhookReviewReply.md
 docs/Model/ReviewWebhookReviewReviewer.md
+docs/Model/RevokeAdAccountUserInvitation200Response.md
 docs/Model/RevokeBusinessPartner200Response.md
 docs/Model/RevokeConnectedApp200Response.md
 docs/Model/RfPrediction.md
@@ -4167,8 +4173,11 @@ lib/Model/GetYoutubePlaylists200Response.php
 lib/Model/GetYoutubePlaylists200ResponsePlaylistsInner.php
 lib/Model/GoogleAdLabel.php
 lib/Model/GoogleAdLabelAssignments.php
+lib/Model/GoogleAdsAccessRole.php
 lib/Model/GoogleAdsHierarchyClient.php
 lib/Model/GoogleAdsManagerLink.php
+lib/Model/GoogleAdsUserAccessInvitation.php
+lib/Model/GoogleAdsUserAccessInvitationResult.php
 lib/Model/GoogleAssetGroupAssetLink.php
 lib/Model/GoogleAssetGroupAssetUnlink.php
 lib/Model/GoogleAssetUpdate.php
@@ -4287,6 +4296,7 @@ lib/Model/InstallTrackingTagOnStore422Response.php
 lib/Model/InstallTrackingTagOnStore422ResponseDetails.php
 lib/Model/InstallTrackingTagOnStoreRequest.php
 lib/Model/InviteAdAccountToManagerRequest.php
+lib/Model/InviteAdAccountUserRequest.php
 lib/Model/KeywordEntry.php
 lib/Model/KeywordEntryOneOf.php
 lib/Model/LikeInboxComment200Response.php
@@ -4335,6 +4345,7 @@ lib/Model/ListAccountSitelinks200Response.php
 lib/Model/ListAccountSitelinks200ResponseSitelinksInner.php
 lib/Model/ListAccountStructuredSnippets200Response.php
 lib/Model/ListAccountStructuredSnippets200ResponseStructuredSnippetsInner.php
+lib/Model/ListAdAccountUserInvitations200Response.php
 lib/Model/ListAdAccountUsers200Response.php
 lib/Model/ListAdAccounts200Response.php
 lib/Model/ListAdAccounts200ResponseAccountsInner.php
@@ -4897,6 +4908,7 @@ lib/Model/ReviewPhoneNumberKycPacketRequest.php
 lib/Model/ReviewWebhookReview.php
 lib/Model/ReviewWebhookReviewReply.php
 lib/Model/ReviewWebhookReviewReviewer.php
+lib/Model/RevokeAdAccountUserInvitation200Response.php
 lib/Model/RevokeBusinessPartner200Response.php
 lib/Model/RevokeConnectedApp200Response.php
 lib/Model/RfPrediction.php
@@ -5687,3 +5699,9 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GoogleAdsAccessRoleTest.php
+test/Model/GoogleAdsUserAccessInvitationResultTest.php
+test/Model/GoogleAdsUserAccessInvitationTest.php
+test/Model/InviteAdAccountUserRequestTest.php
+test/Model/ListAdAccountUserInvitations200ResponseTest.php
+test/Model/RevokeAdAccountUserInvitation200ResponseTest.php

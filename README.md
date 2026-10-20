@@ -146,9 +146,11 @@ Class | Method | HTTP request | Description
 *AdAccountsApi* | [**getValueRuleSet**](docs/Api/AdAccountsApi.md#getvalueruleset) | **GET** /v1/ads/value-rule-sets/{valueRuleSetId} | Read a value rule set
 *AdAccountsApi* | [**hideAdComment**](docs/Api/AdAccountsApi.md#hideadcomment) | **POST** /v1/ads/{adId}/comments/{commentId}/hide | Hide or unhide an ad comment
 *AdAccountsApi* | [**inviteAdAccountToManager**](docs/Api/AdAccountsApi.md#inviteadaccounttomanager) | **POST** /v1/ads/accounts/manager-links | Invite a client account to a manager
+*AdAccountsApi* | [**inviteAdAccountUser**](docs/Api/AdAccountsApi.md#inviteadaccountuser) | **POST** /v1/ads/accounts/user-invitations | Invite a user to an ad account by email
 *AdAccountsApi* | [**listAccountCallouts**](docs/Api/AdAccountsApi.md#listaccountcallouts) | **GET** /v1/ads/accounts/callouts | List account callouts
 *AdAccountsApi* | [**listAccountSitelinks**](docs/Api/AdAccountsApi.md#listaccountsitelinks) | **GET** /v1/ads/accounts/sitelinks | List account sitelinks
 *AdAccountsApi* | [**listAccountStructuredSnippets**](docs/Api/AdAccountsApi.md#listaccountstructuredsnippets) | **GET** /v1/ads/accounts/structured-snippets | List account snippets
+*AdAccountsApi* | [**listAdAccountUserInvitations**](docs/Api/AdAccountsApi.md#listadaccountuserinvitations) | **GET** /v1/ads/accounts/user-invitations | List user access invitations
 *AdAccountsApi* | [**listAdAccountUsers**](docs/Api/AdAccountsApi.md#listadaccountusers) | **GET** /v1/ads/accounts/users | Ad account users
 *AdAccountsApi* | [**listAdAccounts**](docs/Api/AdAccountsApi.md#listadaccounts) | **GET** /v1/ads/accounts | List ad accounts
 *AdAccountsApi* | [**listAdLabels**](docs/Api/AdAccountsApi.md#listadlabels) | **GET** /v1/ads/labels | List ad labels
@@ -173,6 +175,7 @@ Class | Method | HTTP request | Description
 *AdAccountsApi* | [**removePageUser**](docs/Api/AdAccountsApi.md#removepageuser) | **DELETE** /v1/ads/page-users | Remove a user from a Page
 *AdAccountsApi* | [**replaceAdNegativeKeywordListKeywords**](docs/Api/AdAccountsApi.md#replaceadnegativekeywordlistkeywords) | **PUT** /v1/ads/accounts/negative-keyword-lists/{listId}/keywords | Replace negative list keywords
 *AdAccountsApi* | [**replyToAdComment**](docs/Api/AdAccountsApi.md#replytoadcomment) | **POST** /v1/ads/{adId}/comments/{commentId}/reply | Reply to an ad comment
+*AdAccountsApi* | [**revokeAdAccountUserInvitation**](docs/Api/AdAccountsApi.md#revokeadaccountuserinvitation) | **DELETE** /v1/ads/accounts/user-invitations | Revoke a user access invitation
 *AdAccountsApi* | [**updateAccountCallouts**](docs/Api/AdAccountsApi.md#updateaccountcallouts) | **PUT** /v1/ads/accounts/callouts | Update account callouts
 *AdAccountsApi* | [**updateAccountSitelinks**](docs/Api/AdAccountsApi.md#updateaccountsitelinks) | **PUT** /v1/ads/accounts/sitelinks | Update account sitelinks
 *AdAccountsApi* | [**updateAccountStructuredSnippets**](docs/Api/AdAccountsApi.md#updateaccountstructuredsnippets) | **PUT** /v1/ads/accounts/structured-snippets | Update account snippets
@@ -2292,8 +2295,11 @@ Class | Method | HTTP request | Description
 - [GetYoutubePlaylists200ResponsePlaylistsInner](docs/Model/GetYoutubePlaylists200ResponsePlaylistsInner.md)
 - [GoogleAdLabel](docs/Model/GoogleAdLabel.md)
 - [GoogleAdLabelAssignments](docs/Model/GoogleAdLabelAssignments.md)
+- [GoogleAdsAccessRole](docs/Model/GoogleAdsAccessRole.md)
 - [GoogleAdsHierarchyClient](docs/Model/GoogleAdsHierarchyClient.md)
 - [GoogleAdsManagerLink](docs/Model/GoogleAdsManagerLink.md)
+- [GoogleAdsUserAccessInvitation](docs/Model/GoogleAdsUserAccessInvitation.md)
+- [GoogleAdsUserAccessInvitationResult](docs/Model/GoogleAdsUserAccessInvitationResult.md)
 - [GoogleAssetGroupAssetLink](docs/Model/GoogleAssetGroupAssetLink.md)
 - [GoogleAssetGroupAssetUnlink](docs/Model/GoogleAssetGroupAssetUnlink.md)
 - [GoogleAssetUpdate](docs/Model/GoogleAssetUpdate.md)
@@ -2412,6 +2418,7 @@ Class | Method | HTTP request | Description
 - [InstallTrackingTagOnStore422ResponseDetails](docs/Model/InstallTrackingTagOnStore422ResponseDetails.md)
 - [InstallTrackingTagOnStoreRequest](docs/Model/InstallTrackingTagOnStoreRequest.md)
 - [InviteAdAccountToManagerRequest](docs/Model/InviteAdAccountToManagerRequest.md)
+- [InviteAdAccountUserRequest](docs/Model/InviteAdAccountUserRequest.md)
 - [KeywordEntry](docs/Model/KeywordEntry.md)
 - [KeywordEntryOneOf](docs/Model/KeywordEntryOneOf.md)
 - [LikeInboxComment200Response](docs/Model/LikeInboxComment200Response.md)
@@ -2460,6 +2467,7 @@ Class | Method | HTTP request | Description
 - [ListAccountSitelinks200ResponseSitelinksInner](docs/Model/ListAccountSitelinks200ResponseSitelinksInner.md)
 - [ListAccountStructuredSnippets200Response](docs/Model/ListAccountStructuredSnippets200Response.md)
 - [ListAccountStructuredSnippets200ResponseStructuredSnippetsInner](docs/Model/ListAccountStructuredSnippets200ResponseStructuredSnippetsInner.md)
+- [ListAdAccountUserInvitations200Response](docs/Model/ListAdAccountUserInvitations200Response.md)
 - [ListAdAccountUsers200Response](docs/Model/ListAdAccountUsers200Response.md)
 - [ListAdAccounts200Response](docs/Model/ListAdAccounts200Response.md)
 - [ListAdAccounts200ResponseAccountsInner](docs/Model/ListAdAccounts200ResponseAccountsInner.md)
@@ -3021,6 +3029,7 @@ Class | Method | HTTP request | Description
 - [ReviewWebhookReview](docs/Model/ReviewWebhookReview.md)
 - [ReviewWebhookReviewReply](docs/Model/ReviewWebhookReviewReply.md)
 - [ReviewWebhookReviewReviewer](docs/Model/ReviewWebhookReviewReviewer.md)
+- [RevokeAdAccountUserInvitation200Response](docs/Model/RevokeAdAccountUserInvitation200Response.md)
 - [RevokeBusinessPartner200Response](docs/Model/RevokeBusinessPartner200Response.md)
 - [RevokeConnectedApp200Response](docs/Model/RevokeConnectedApp200Response.md)
 - [RfPrediction](docs/Model/RfPrediction.md)
@@ -3841,6 +3850,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.311.0`
+- API version: `1.312.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

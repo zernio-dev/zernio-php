@@ -34,9 +34,11 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getValueRuleSet()**](AdAccountsApi.md#getValueRuleSet) | **GET** /v1/ads/value-rule-sets/{valueRuleSetId} | Read a value rule set |
 | [**hideAdComment()**](AdAccountsApi.md#hideAdComment) | **POST** /v1/ads/{adId}/comments/{commentId}/hide | Hide or unhide an ad comment |
 | [**inviteAdAccountToManager()**](AdAccountsApi.md#inviteAdAccountToManager) | **POST** /v1/ads/accounts/manager-links | Invite a client account to a manager |
+| [**inviteAdAccountUser()**](AdAccountsApi.md#inviteAdAccountUser) | **POST** /v1/ads/accounts/user-invitations | Invite a user to an ad account by email |
 | [**listAccountCallouts()**](AdAccountsApi.md#listAccountCallouts) | **GET** /v1/ads/accounts/callouts | List account callouts |
 | [**listAccountSitelinks()**](AdAccountsApi.md#listAccountSitelinks) | **GET** /v1/ads/accounts/sitelinks | List account sitelinks |
 | [**listAccountStructuredSnippets()**](AdAccountsApi.md#listAccountStructuredSnippets) | **GET** /v1/ads/accounts/structured-snippets | List account snippets |
+| [**listAdAccountUserInvitations()**](AdAccountsApi.md#listAdAccountUserInvitations) | **GET** /v1/ads/accounts/user-invitations | List user access invitations |
 | [**listAdAccountUsers()**](AdAccountsApi.md#listAdAccountUsers) | **GET** /v1/ads/accounts/users | Ad account users |
 | [**listAdAccounts()**](AdAccountsApi.md#listAdAccounts) | **GET** /v1/ads/accounts | List ad accounts |
 | [**listAdLabels()**](AdAccountsApi.md#listAdLabels) | **GET** /v1/ads/labels | List ad labels |
@@ -61,6 +63,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**removePageUser()**](AdAccountsApi.md#removePageUser) | **DELETE** /v1/ads/page-users | Remove a user from a Page |
 | [**replaceAdNegativeKeywordListKeywords()**](AdAccountsApi.md#replaceAdNegativeKeywordListKeywords) | **PUT** /v1/ads/accounts/negative-keyword-lists/{listId}/keywords | Replace negative list keywords |
 | [**replyToAdComment()**](AdAccountsApi.md#replyToAdComment) | **POST** /v1/ads/{adId}/comments/{commentId}/reply | Reply to an ad comment |
+| [**revokeAdAccountUserInvitation()**](AdAccountsApi.md#revokeAdAccountUserInvitation) | **DELETE** /v1/ads/accounts/user-invitations | Revoke a user access invitation |
 | [**updateAccountCallouts()**](AdAccountsApi.md#updateAccountCallouts) | **PUT** /v1/ads/accounts/callouts | Update account callouts |
 | [**updateAccountSitelinks()**](AdAccountsApi.md#updateAccountSitelinks) | **PUT** /v1/ads/accounts/sitelinks | Update account sitelinks |
 | [**updateAccountStructuredSnippets()**](AdAccountsApi.md#updateAccountStructuredSnippets) | **PUT** /v1/ads/accounts/structured-snippets | Update account snippets |
@@ -1849,6 +1852,66 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `inviteAdAccountUser()`
+
+```php
+inviteAdAccountUser($invite_ad_account_user_request): \Zernio\Model\GoogleAdsUserAccessInvitationResult
+```
+
+Invite a user to an ad account by email
+
+Emails someone an invitation to a Google Ads account with the access role you choose, for example to hand a client account you created under your manager to its owner.  Creates a user access invitation (Google's CustomerUserAccessInvitationService) on `adAccountId`. The connection's Google user needs admin access to that account, directly or through a manager above it, which is the case for an account created with POST /v1/ads/accounts. The recipient accepts from the email, possibly with another Google account. When Google requires multi-party approval, nothing is sent until a second admin of the account approves the request in Google Ads: the response then has `status: PENDING_APPROVAL` and a `multiPartyAuthReviewId` instead of an `invitationId`. Not idempotent: Google refuses a second invitation while the email has one pending or awaiting approval. Google has no server-side check for this call, so `validateOnly: true` reads the account's invitations with the same credentials (proving the account is reachable) and fails if the email already has a pending one, without sending anything.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$invite_ad_account_user_request = new \Zernio\Model\InviteAdAccountUserRequest(); // \Zernio\Model\InviteAdAccountUserRequest
+
+try {
+    $result = $apiInstance->inviteAdAccountUser($invite_ad_account_user_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->inviteAdAccountUser: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **invite_ad_account_user_request** | [**\Zernio\Model\InviteAdAccountUserRequest**](../Model/InviteAdAccountUserRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\GoogleAdsUserAccessInvitationResult**](../Model/GoogleAdsUserAccessInvitationResult.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listAccountCallouts()`
 
 ```php
@@ -2027,6 +2090,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListAccountStructuredSnippets200Response**](../Model/ListAccountStructuredSnippets200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listAdAccountUserInvitations()`
+
+```php
+listAdAccountUserInvitations($account_id, $ad_account_id): \Zernio\Model\ListAdAccountUserInvitations200Response
+```
+
+List user access invitations
+
+Lists the email invitations to a Google Ads account, with their role and status.  Reads Google's `customer_user_access_invitation` resource for one customer: invitations that are `PENDING`, `DECLINED` or `EXPIRED` (Google expires them 20 days after sending). An accepted invitation becomes a user of the account and leaves this list, which can take Google up to 24 hours. An invitation still waiting for multi-party approval is not listed until a second admin approves it. Results are cached for 10 minutes and dropped on every invite or revoke through Zernio.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Google ads SocialAccount id.
+$ad_account_id = 'ad_account_id_example'; // string | Google Ads customer id, digits only. Defaults to the connection's selected customer.
+
+try {
+    $result = $apiInstance->listAdAccountUserInvitations($account_id, $ad_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->listAdAccountUserInvitations: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Google ads SocialAccount id. | |
+| **ad_account_id** | **string**| Google Ads customer id, digits only. Defaults to the connection&#39;s selected customer. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListAdAccountUserInvitations200Response**](../Model/ListAdAccountUserInvitations200Response.md)
 
 ### Authorization
 
@@ -3593,6 +3718,70 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `revokeAdAccountUserInvitation()`
+
+```php
+revokeAdAccountUserInvitation($account_id, $ad_account_id, $invitation_id): \Zernio\Model\RevokeAdAccountUserInvitation200Response
+```
+
+Revoke a user access invitation
+
+Withdraws an email invitation to a Google Ads account that has not been accepted yet.  Removes the invitation `invitationId` (from GET on this path) from `adAccountId`. It no longer works from the email, and the address can be invited again.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Google ads SocialAccount id.
+$ad_account_id = 'ad_account_id_example'; // string | Google Ads customer id, digits only.
+$invitation_id = 'invitation_id_example'; // string | Numeric invitation id from GET /v1/ads/accounts/user-invitations.
+
+try {
+    $result = $apiInstance->revokeAdAccountUserInvitation($account_id, $ad_account_id, $invitation_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->revokeAdAccountUserInvitation: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Google ads SocialAccount id. | |
+| **ad_account_id** | **string**| Google Ads customer id, digits only. | |
+| **invitation_id** | **string**| Numeric invitation id from GET /v1/ads/accounts/user-invitations. | |
+
+### Return type
+
+[**\Zernio\Model\RevokeAdAccountUserInvitation200Response**](../Model/RevokeAdAccountUserInvitation200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
