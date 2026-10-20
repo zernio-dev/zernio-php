@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **platform** | **string** |  | [optional]
 **month_range** | [**\Zernio\Model\GetGoogleBusinessSearchKeywords200ResponseMonthRange**](GetGoogleBusinessSearchKeywords200ResponseMonthRange.md) |  | [optional]
 **keywords** | [**\Zernio\Model\GetGoogleBusinessSearchKeywords200ResponseKeywordsInner[]**](GetGoogleBusinessSearchKeywords200ResponseKeywordsInner.md) |  | [optional]
+**next_page_token** | **string** | Pass as pageToken to fetch the next page. null on the last page. | [optional]
 **note** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
