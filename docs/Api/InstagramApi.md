@@ -10,6 +10,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getInstagramBusinessDiscovery()**](InstagramApi.md#getInstagramBusinessDiscovery) | **GET** /v1/accounts/{accountId}/instagram/business-discovery | Look up a public Instagram Business account |
 | [**getInstagramPublishingLimit()**](InstagramApi.md#getInstagramPublishingLimit) | **GET** /v1/accounts/{accountId}/instagram/publishing-limit | Get Instagram publishing limit |
 | [**getInstagramStoryInsights()**](InstagramApi.md#getInstagramStoryInsights) | **GET** /v1/accounts/{accountId}/instagram/stories/{storyId}/insights | Get Instagram story insights |
+| [**listInstagramMediaCollaborators()**](InstagramApi.md#listInstagramMediaCollaborators) | **GET** /v1/accounts/{accountId}/instagram/media/{mediaId}/collaborators | List the collaborators of an Instagram post |
 | [**listInstagramStories()**](InstagramApi.md#listInstagramStories) | **GET** /v1/accounts/{accountId}/instagram/stories | List active Instagram stories |
 | [**searchInstagramAudio()**](InstagramApi.md#searchInstagramAudio) | **GET** /v1/accounts/{accountId}/instagram/audio | Search Instagram audio |
 
@@ -248,6 +249,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetInstagramStoryInsights200Response**](../Model/GetInstagramStoryInsights200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listInstagramMediaCollaborators()`
+
+```php
+listInstagramMediaCollaborators($account_id, $media_id): \Zernio\Model\ListInstagramMediaCollaborators200Response
+```
+
+List the collaborators of an Instagram post
+
+Returns the accounts invited as collaborators on one of the connected account's own posts (feed image, Reel or carousel), with whether each invitation was accepted or is still pending. Use it to check who accepted a collab post after publishing it.  Requires an Instagram account connected via **Facebook Login**. Meta serves this edge on graph.facebook.com only, so accounts connected with classic Instagram Login receive a 400 (`instagram_collaborators_require_facebook_login`) and must be reconnected choosing the Facebook option.  Meta returns at most 5 collaborators and only those who allow collaborator tagging. A post without collaborators returns an empty list.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\InstagramApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The ID of a connected Instagram account (Facebook Login).
+$media_id = 18063237463112345; // string | Instagram media ID of a post published by this account (digits only, e.g. the platformPostId of a published post).
+
+try {
+    $result = $apiInstance->listInstagramMediaCollaborators($account_id, $media_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InstagramApi->listInstagramMediaCollaborators: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The ID of a connected Instagram account (Facebook Login). | |
+| **media_id** | **string**| Instagram media ID of a post published by this account (digits only, e.g. the platformPostId of a published post). | |
+
+### Return type
+
+[**\Zernio\Model\ListInstagramMediaCollaborators200Response**](../Model/ListInstagramMediaCollaborators200Response.md)
 
 ### Authorization
 
