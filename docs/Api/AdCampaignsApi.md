@@ -37,6 +37,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getCampaignConversionGoals()**](AdCampaignsApi.md#getCampaignConversionGoals) | **GET** /v1/ads/campaigns/{campaignId}/conversion-goals | Get campaign conversion goals |
 | [**getCampaignTargeting()**](AdCampaignsApi.md#getCampaignTargeting) | **GET** /v1/ads/campaigns/{campaignId}/targeting | Read a Google campaign&#39;s device, location, excluded location, and language targeting |
 | [**getGoogleAssetGroup()**](AdCampaignsApi.md#getGoogleAssetGroup) | **GET** /v1/ads/campaigns/{campaignId}/asset-groups/{assetGroupId} | Get a Performance Max asset group |
+| [**getTikTokSmartPlusAdReview()**](AdCampaignsApi.md#getTikTokSmartPlusAdReview) | **GET** /v1/ads/{adId}/tiktok-smart-plus-review | Review status of each creative in a TikTok Smart+ ad |
 | [**listAdCampaigns()**](AdCampaignsApi.md#listAdCampaigns) | **GET** /v1/ads/campaigns | List campaigns |
 | [**listAdGroupAssets()**](AdCampaignsApi.md#listAdGroupAssets) | **GET** /v1/ads/ad-sets/{adSetId}/assets | List ad-group assets |
 | [**listAdKeywords()**](AdCampaignsApi.md#listAdKeywords) | **GET** /v1/ads/keywords | List Search keywords |
@@ -2026,6 +2027,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetGoogleAssetGroup200Response**](../Model/GetGoogleAssetGroup200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getTikTokSmartPlusAdReview()`
+
+```php
+getTikTokSmartPlusAdReview($ad_id): \Zernio\Model\GetTikTokSmartPlusAdReview200Response
+```
+
+Review status of each creative in a TikTok Smart+ ad
+
+Shows which Spark post, video or carousel of an Upgraded Smart+ ad TikTok approved or rejected, with every rejection reason, keyed by the TikTok post id for a Spark post.  Reads TikTok's `/smart_plus/ad/review_info/` live (read-only, works on a paused ad) for the Smart+ ad that holds `adId`, and returns the ad-level verdict plus one entry per creative. `adId` may be the Smart+ ad itself or any creative of it synced as its own ad: Zernio finds the Smart+ ad in the ad's ad group through `/smart_plus/ad/get/`, and uses the ad group's only Smart+ ad when no creative list names the ad.  `materialType`, `tiktokItemId`, `videoId`, `name` and `operationStatus` come from the Smart+ ad's `creative_list`. TikTok leaves out of that list the creatives it added on its own (creator content, authorized TikTok posts, Creative Library content) and lists each image of a carousel under its own material id, so those entries come back with the review verdict and null descriptive fields. TikTok returns no review timestamp; `readAt` is when Zernio read it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$ad_id = 'ad_id_example'; // string | Zernio ad id (24-char hex) or the TikTok ad id: the Smart+ ad id or the ad id of one of its creatives.
+
+try {
+    $result = $apiInstance->getTikTokSmartPlusAdReview($ad_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->getTikTokSmartPlusAdReview: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ad_id** | **string**| Zernio ad id (24-char hex) or the TikTok ad id: the Smart+ ad id or the ad id of one of its creatives. | |
+
+### Return type
+
+[**\Zernio\Model\GetTikTokSmartPlusAdReview200Response**](../Model/GetTikTokSmartPlusAdReview200Response.md)
 
 ### Authorization
 
