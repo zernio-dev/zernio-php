@@ -445,6 +445,7 @@ docs/Model/ConnectShopifyWithToken200Response.md
 docs/Model/ConnectShopifyWithToken200ResponseAccount.md
 docs/Model/ConnectShopifyWithTokenRequest.md
 docs/Model/ConnectSlackChannelRequest.md
+docs/Model/ConnectWelcomeScreen.md
 docs/Model/ConnectWhatsAppCredentials200Response.md
 docs/Model/ConnectWhatsAppCredentials200ResponseAccount.md
 docs/Model/ConnectWhatsAppCredentialsRequest.md
@@ -2444,6 +2445,7 @@ docs/Model/UpdateCommerceProductPricesRequestVariantsInner.md
 docs/Model/UpdateCommerceProductPricesRequestVariantsInnerPrice.md
 docs/Model/UpdateCommerceProductRequest.md
 docs/Model/UpdateCommerceRedirectRequest.md
+docs/Model/UpdateConnectWelcomeScreenRequest.md
 docs/Model/UpdateContact200Response.md
 docs/Model/UpdateContact200ResponseContact.md
 docs/Model/UpdateContactRequest.md
@@ -3294,6 +3296,7 @@ lib/Model/ConnectShopifyWithToken200Response.php
 lib/Model/ConnectShopifyWithToken200ResponseAccount.php
 lib/Model/ConnectShopifyWithTokenRequest.php
 lib/Model/ConnectSlackChannelRequest.php
+lib/Model/ConnectWelcomeScreen.php
 lib/Model/ConnectWhatsAppCredentials200Response.php
 lib/Model/ConnectWhatsAppCredentials200ResponseAccount.php
 lib/Model/ConnectWhatsAppCredentialsRequest.php
@@ -5294,6 +5297,7 @@ lib/Model/UpdateCommerceProductPricesRequestVariantsInner.php
 lib/Model/UpdateCommerceProductPricesRequestVariantsInnerPrice.php
 lib/Model/UpdateCommerceProductRequest.php
 lib/Model/UpdateCommerceRedirectRequest.php
+lib/Model/UpdateConnectWelcomeScreenRequest.php
 lib/Model/UpdateContact200Response.php
 lib/Model/UpdateContact200ResponseContact.php
 lib/Model/UpdateContactRequest.php
@@ -5699,3 +5703,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ConnectWelcomeScreenTest.php
+test/Model/UpdateConnectWelcomeScreenRequestTest.php
