@@ -38,6 +38,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listAccountCallouts()**](AdAccountsApi.md#listAccountCallouts) | **GET** /v1/ads/accounts/callouts | List account callouts |
 | [**listAccountSitelinks()**](AdAccountsApi.md#listAccountSitelinks) | **GET** /v1/ads/accounts/sitelinks | List account sitelinks |
 | [**listAccountStructuredSnippets()**](AdAccountsApi.md#listAccountStructuredSnippets) | **GET** /v1/ads/accounts/structured-snippets | List account snippets |
+| [**listAdAccountUserInvitationApprovals()**](AdAccountsApi.md#listAdAccountUserInvitationApprovals) | **GET** /v1/ads/accounts/user-invitations/pending-approvals | List invitations awaiting multi-party approval |
 | [**listAdAccountUserInvitations()**](AdAccountsApi.md#listAdAccountUserInvitations) | **GET** /v1/ads/accounts/user-invitations | List user access invitations |
 | [**listAdAccountUsers()**](AdAccountsApi.md#listAdAccountUsers) | **GET** /v1/ads/accounts/users | Ad account users |
 | [**listAdAccounts()**](AdAccountsApi.md#listAdAccounts) | **GET** /v1/ads/accounts | List ad accounts |
@@ -72,6 +73,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**updateAdLabel()**](AdAccountsApi.md#updateAdLabel) | **PATCH** /v1/ads/labels/{labelId} | Update a Google Ads label |
 | [**updateAdNegativeKeywordList()**](AdAccountsApi.md#updateAdNegativeKeywordList) | **PUT** /v1/ads/accounts/negative-keyword-lists/{listId} | Rename a negative keyword list |
 | [**updateValueRuleSet()**](AdAccountsApi.md#updateValueRuleSet) | **PUT** /v1/ads/value-rule-sets/{valueRuleSetId} | Replace a value rule set |
+| [**withdrawAdAccountUserInvitationApproval()**](AdAccountsApi.md#withdrawAdAccountUserInvitationApproval) | **DELETE** /v1/ads/accounts/user-invitations/pending-approvals | Withdraw an invitation awaiting multi-party approval |
 
 
 ## `addAccountCallouts()`
@@ -1860,7 +1862,7 @@ inviteAdAccountUser($invite_ad_account_user_request): \Zernio\Model\GoogleAdsUse
 
 Invite a user to an ad account by email
 
-Emails someone an invitation to a Google Ads account with the access role you choose, for example to hand a client account you created under your manager to its owner.  Creates a user access invitation (Google's CustomerUserAccessInvitationService) on `adAccountId`. The connection's Google user needs admin access to that account, directly or through a manager above it, which is the case for an account created with POST /v1/ads/accounts. The recipient accepts from the email, possibly with another Google account. When Google requires multi-party approval, nothing is sent until a second admin of the account approves the request in Google Ads: the response then has `status: PENDING_APPROVAL` and a `multiPartyAuthReviewId` instead of an `invitationId`. Not idempotent: Google refuses a second invitation while the email has one pending or awaiting approval. Google has no server-side check for this call, so `validateOnly: true` reads the account's invitations with the same credentials (proving the account is reachable) and fails if the email already has a pending one, without sending anything.
+Emails someone an invitation to a Google Ads account with the access role you choose, for example to hand a client account you created under your manager to its owner.  Creates a user access invitation (Google's CustomerUserAccessInvitationService) on `adAccountId`. The connection's Google user needs admin access to that account, directly or through a manager above it, which is the case for an account created with POST /v1/ads/accounts. The recipient accepts from the email, possibly with another Google account. When Google requires multi-party approval, nothing is sent until a second admin of the account approves the request in Google Ads: the response then has `status: PENDING_APPROVAL` and a `multiPartyAuthReviewId` instead of an `invitationId`, which DELETE /v1/ads/accounts/user-invitations/pending-approvals withdraws. Not idempotent: Google refuses a second invitation while the email has one pending or awaiting approval. Google has no server-side check for this call, so `validateOnly: true` reads the account's invitations with the same credentials (proving the account is reachable) and fails if the email already has a pending one, without sending anything.
 
 ### Example
 
@@ -2104,6 +2106,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listAdAccountUserInvitationApprovals()`
+
+```php
+listAdAccountUserInvitationApprovals($account_id, $ad_account_id): \Zernio\Model\ListAdAccountUserInvitationApprovals200Response
+```
+
+List invitations awaiting multi-party approval
+
+Lists the email invitations to a Google Ads account that Google is holding until a second admin approves them.  When Google requires multi-party approval, POST /v1/ads/accounts/user-invitations answers `status: PENDING_APPROVAL` and sends nothing. Those requests are not in GET /v1/ads/accounts/user-invitations; this reads Google's `multi_party_auth_review` resource for the ones still `PENDING` that target an invitation. Approved, rejected, revoked and expired reviews are not listed. Results are cached for 10 minutes and dropped on every invite or withdrawal through Zernio, but an approval or rejection made in Google Ads can take that long to show.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Google ads SocialAccount id.
+$ad_account_id = 'ad_account_id_example'; // string | Google Ads customer id, digits only. Defaults to the connection's selected customer.
+
+try {
+    $result = $apiInstance->listAdAccountUserInvitationApprovals($account_id, $ad_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->listAdAccountUserInvitationApprovals: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Google ads SocialAccount id. | |
+| **ad_account_id** | **string**| Google Ads customer id, digits only. Defaults to the connection&#39;s selected customer. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListAdAccountUserInvitationApprovals200Response**](../Model/ListAdAccountUserInvitationApprovals200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listAdAccountUserInvitations()`
 
 ```php
@@ -2112,7 +2176,7 @@ listAdAccountUserInvitations($account_id, $ad_account_id): \Zernio\Model\ListAdA
 
 List user access invitations
 
-Lists the email invitations to a Google Ads account, with their role and status.  Reads Google's `customer_user_access_invitation` resource for one customer: invitations that are `PENDING`, `DECLINED` or `EXPIRED` (Google expires them 20 days after sending). An accepted invitation becomes a user of the account and leaves this list, which can take Google up to 24 hours. An invitation still waiting for multi-party approval is not listed until a second admin approves it. Results are cached for 10 minutes and dropped on every invite or revoke through Zernio.
+Lists the email invitations to a Google Ads account, with their role and status.  Reads Google's `customer_user_access_invitation` resource for one customer: invitations that are `PENDING`, `DECLINED` or `EXPIRED` (Google expires them 20 days after sending). An accepted invitation becomes a user of the account and leaves this list, which can take Google up to 24 hours. An invitation still waiting for multi-party approval is not listed until a second admin approves it; GET /v1/ads/accounts/user-invitations/pending-approvals lists those. Results are cached for 10 minutes and dropped on every invite or revoke through Zernio.
 
 ### Example
 
@@ -4268,6 +4332,70 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `withdrawAdAccountUserInvitationApproval()`
+
+```php
+withdrawAdAccountUserInvitationApproval($account_id, $ad_account_id, $multi_party_auth_review_id): \Zernio\Model\WithdrawAdAccountUserInvitationApproval200Response
+```
+
+Withdraw an invitation awaiting multi-party approval
+
+Cancels an email invitation that Google is still holding for a second admin's approval, so the same address can be invited again right away.  Resolves the review `multiPartyAuthReviewId` (from POST /v1/ads/accounts/user-invitations or GET on this path) to `REVOKED` through Google's MultiPartyAuthReviewService. Only the Google user who sent the invitation can withdraw it, and only while no admin has approved or rejected it; otherwise Google refuses and this returns a 400. Without a withdrawal, Google refuses a new invitation to the address until the review is resolved or expires.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Google ads SocialAccount id.
+$ad_account_id = 'ad_account_id_example'; // string | Google Ads customer id, digits only.
+$multi_party_auth_review_id = 'multi_party_auth_review_id_example'; // string | Numeric review id from POST /v1/ads/accounts/user-invitations or GET /v1/ads/accounts/user-invitations/pending-approvals.
+
+try {
+    $result = $apiInstance->withdrawAdAccountUserInvitationApproval($account_id, $ad_account_id, $multi_party_auth_review_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAccountsApi->withdrawAdAccountUserInvitationApproval: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Google ads SocialAccount id. | |
+| **ad_account_id** | **string**| Google Ads customer id, digits only. | |
+| **multi_party_auth_review_id** | **string**| Numeric review id from POST /v1/ads/accounts/user-invitations or GET /v1/ads/accounts/user-invitations/pending-approvals. | |
+
+### Return type
+
+[**\Zernio\Model\WithdrawAdAccountUserInvitationApproval200Response**](../Model/WithdrawAdAccountUserInvitationApproval200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

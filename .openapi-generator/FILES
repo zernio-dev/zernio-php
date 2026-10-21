@@ -1330,6 +1330,7 @@ docs/Model/GoogleAdsHierarchyClient.md
 docs/Model/GoogleAdsManagerLink.md
 docs/Model/GoogleAdsUserAccessInvitation.md
 docs/Model/GoogleAdsUserAccessInvitationResult.md
+docs/Model/GoogleAdsUserInvitationApproval.md
 docs/Model/GoogleAssetGroupAssetLink.md
 docs/Model/GoogleAssetGroupAssetUnlink.md
 docs/Model/GoogleAssetUpdate.md
@@ -1497,6 +1498,7 @@ docs/Model/ListAccountSitelinks200Response.md
 docs/Model/ListAccountSitelinks200ResponseSitelinksInner.md
 docs/Model/ListAccountStructuredSnippets200Response.md
 docs/Model/ListAccountStructuredSnippets200ResponseStructuredSnippetsInner.md
+docs/Model/ListAdAccountUserInvitationApprovals200Response.md
 docs/Model/ListAdAccountUserInvitations200Response.md
 docs/Model/ListAdAccountUsers200Response.md
 docs/Model/ListAdAccounts200Response.md
@@ -2803,6 +2805,7 @@ docs/Model/WhatsAppTemplateLookupErrorDetails.md
 docs/Model/WhatsAppTemplateLookupErrorDetailsProviderHeaders.md
 docs/Model/WhatsAppTemplateLookupErrorPlatformError.md
 docs/Model/WhatsAppTemplateLookupErrorPlatformErrorErrorData.md
+docs/Model/WithdrawAdAccountUserInvitationApproval200Response.md
 docs/Model/WorkflowEdge.md
 docs/Model/WorkflowExecutionEvent.md
 docs/Model/WorkflowNode.md
@@ -4181,6 +4184,7 @@ lib/Model/GoogleAdsHierarchyClient.php
 lib/Model/GoogleAdsManagerLink.php
 lib/Model/GoogleAdsUserAccessInvitation.php
 lib/Model/GoogleAdsUserAccessInvitationResult.php
+lib/Model/GoogleAdsUserInvitationApproval.php
 lib/Model/GoogleAssetGroupAssetLink.php
 lib/Model/GoogleAssetGroupAssetUnlink.php
 lib/Model/GoogleAssetUpdate.php
@@ -4348,6 +4352,7 @@ lib/Model/ListAccountSitelinks200Response.php
 lib/Model/ListAccountSitelinks200ResponseSitelinksInner.php
 lib/Model/ListAccountStructuredSnippets200Response.php
 lib/Model/ListAccountStructuredSnippets200ResponseStructuredSnippetsInner.php
+lib/Model/ListAdAccountUserInvitationApprovals200Response.php
 lib/Model/ListAdAccountUserInvitations200Response.php
 lib/Model/ListAdAccountUsers200Response.php
 lib/Model/ListAdAccounts200Response.php
@@ -5655,6 +5660,7 @@ lib/Model/WhatsAppTemplateLookupErrorDetails.php
 lib/Model/WhatsAppTemplateLookupErrorDetailsProviderHeaders.php
 lib/Model/WhatsAppTemplateLookupErrorPlatformError.php
 lib/Model/WhatsAppTemplateLookupErrorPlatformErrorErrorData.php
+lib/Model/WithdrawAdAccountUserInvitationApproval200Response.php
 lib/Model/WorkflowEdge.php
 lib/Model/WorkflowExecutionEvent.php
 lib/Model/WorkflowNode.php
@@ -5703,3 +5709,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GoogleAdsUserInvitationApprovalTest.php
+test/Model/ListAdAccountUserInvitationApprovals200ResponseTest.php
+test/Model/WithdrawAdAccountUserInvitationApproval200ResponseTest.php
