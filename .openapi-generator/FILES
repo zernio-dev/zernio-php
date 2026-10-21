@@ -1444,6 +1444,7 @@ docs/Model/InstagramPlatformData.md
 docs/Model/InstagramPlatformDataAudioConfiguration.md
 docs/Model/InstagramPlatformDataTrialParams.md
 docs/Model/InstagramPlatformDataUserTagsInner.md
+docs/Model/InstagramTaggedMedia.md
 docs/Model/InstallTrackingTagOnStore200Response.md
 docs/Model/InstallTrackingTagOnStore200ResponseInstall.md
 docs/Model/InstallTrackingTagOnStore422Response.md
@@ -1676,6 +1677,7 @@ docs/Model/ListInstagramPages200ResponsePagesInner.md
 docs/Model/ListInstagramPages200ResponsePagesInnerInstagramBusinessAccount.md
 docs/Model/ListInstagramStories200Response.md
 docs/Model/ListInstagramStories200ResponseDataInner.md
+docs/Model/ListInstagramTaggedMedia200Response.md
 docs/Model/ListLeadForms200Response.md
 docs/Model/ListLeads200Response.md
 docs/Model/ListLeads200ResponseLeadsInner.md
@@ -4301,6 +4303,7 @@ lib/Model/InstagramPlatformData.php
 lib/Model/InstagramPlatformDataAudioConfiguration.php
 lib/Model/InstagramPlatformDataTrialParams.php
 lib/Model/InstagramPlatformDataUserTagsInner.php
+lib/Model/InstagramTaggedMedia.php
 lib/Model/InstallTrackingTagOnStore200Response.php
 lib/Model/InstallTrackingTagOnStore200ResponseInstall.php
 lib/Model/InstallTrackingTagOnStore422Response.php
@@ -4533,6 +4536,7 @@ lib/Model/ListInstagramPages200ResponsePagesInner.php
 lib/Model/ListInstagramPages200ResponsePagesInnerInstagramBusinessAccount.php
 lib/Model/ListInstagramStories200Response.php
 lib/Model/ListInstagramStories200ResponseDataInner.php
+lib/Model/ListInstagramTaggedMedia200Response.php
 lib/Model/ListLeadForms200Response.php
 lib/Model/ListLeads200Response.php
 lib/Model/ListLeads200ResponseLeadsInner.php
@@ -5715,4 +5719,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/SendWhatsAppConversion200ResponseFailuresInnerTest.php
+test/Model/InstagramTaggedMediaTest.php
+test/Model/ListInstagramTaggedMedia200ResponseTest.php

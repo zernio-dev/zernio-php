@@ -13,6 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listInstagramLiveMedia()**](InstagramApi.md#listInstagramLiveMedia) | **GET** /v1/accounts/{accountId}/instagram/live-media | List the live broadcasts of an Instagram account |
 | [**listInstagramMediaCollaborators()**](InstagramApi.md#listInstagramMediaCollaborators) | **GET** /v1/accounts/{accountId}/instagram/media/{mediaId}/collaborators | List the collaborators of an Instagram post |
 | [**listInstagramStories()**](InstagramApi.md#listInstagramStories) | **GET** /v1/accounts/{accountId}/instagram/stories | List active Instagram stories |
+| [**listInstagramTaggedMedia()**](InstagramApi.md#listInstagramTaggedMedia) | **GET** /v1/accounts/{accountId}/instagram/tags | List the posts an Instagram account is tagged in |
 | [**searchInstagramAudio()**](InstagramApi.md#searchInstagramAudio) | **GET** /v1/accounts/{accountId}/instagram/audio | Search Instagram audio |
 
 
@@ -432,6 +433,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListInstagramStories200Response**](../Model/ListInstagramStories200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listInstagramTaggedMedia()`
+
+```php
+listInstagramTaggedMedia($account_id, $limit, $cursor): \Zernio\Model\ListInstagramTaggedMedia200Response
+```
+
+List the posts an Instagram account is tagged in
+
+Returns the media where other Instagram users photo-tagged the connected account, newest first. Private media is never returned.  Cursor-paginated: pass `nextCursor` from the previous response as `cursor` to read the next page. `nextCursor` is null when there are no more pages. Meta does not say whether a page is the last one, so the final page can come back empty with `nextCursor` null.  Requires an Instagram account connected via **Facebook Login**. Meta does not give Instagram Login access to tagging, so accounts connected with classic Instagram Login receive a 400 (`instagram_tagged_media_requires_facebook_login`) and must be reconnected choosing the Facebook option.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\InstagramApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The ID of a connected Instagram account (Facebook Login).
+$limit = 25; // int | Page size.
+$cursor = 'cursor_example'; // string | The `nextCursor` of the previous page.
+
+try {
+    $result = $apiInstance->listInstagramTaggedMedia($account_id, $limit, $cursor);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InstagramApi->listInstagramTaggedMedia: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The ID of a connected Instagram account (Facebook Login). | |
+| **limit** | **int**| Page size. | [optional] [default to 25] |
+| **cursor** | **string**| The &#x60;nextCursor&#x60; of the previous page. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListInstagramTaggedMedia200Response**](../Model/ListInstagramTaggedMedia200Response.md)
 
 ### Authorization
 
