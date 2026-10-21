@@ -906,6 +906,11 @@ docs/Model/GetAccountPosts200Response.md
 docs/Model/GetAccountPosts200ResponsePostsInner.md
 docs/Model/GetAd200Response.md
 docs/Model/GetAd200ResponseDarkPost.md
+docs/Model/GetAdAccountBilling200Response.md
+docs/Model/GetAdAccountBilling200ResponseAccountBudgetsInner.md
+docs/Model/GetAdAccountBilling200ResponseBillingSetupsInner.md
+docs/Model/GetAdAccountBilling200ResponsePaymentsAccountsInner.md
+docs/Model/GetAdAccountBilling200ResponsePendingBudgetProposalsInner.md
 docs/Model/GetAdAccountFinance200Response.md
 docs/Model/GetAdAccountFinance200ResponseFundingSource.md
 docs/Model/GetAdAccountHierarchy200Response.md
@@ -2248,6 +2253,9 @@ docs/Model/SetPartnershipAdPermissionRequest.md
 docs/Model/SetRedditPostFlairRequest.md
 docs/Model/SetTelegramCommandsRequest.md
 docs/Model/SetTelegramCommandsRequestCommandsInner.md
+docs/Model/SetUpAdAccountBilling200Response.md
+docs/Model/SetUpAdAccountBilling201Response.md
+docs/Model/SetUpAdAccountBillingRequest.md
 docs/Model/SetWhatsAppConversationalAutomationRequest.md
 docs/Model/SetWhatsAppFlowsEncryptionKeyRequest.md
 docs/Model/SetWhatsappBusinessUsername200Response.md
@@ -3774,6 +3782,11 @@ lib/Model/GetAccountPosts200Response.php
 lib/Model/GetAccountPosts200ResponsePostsInner.php
 lib/Model/GetAd200Response.php
 lib/Model/GetAd200ResponseDarkPost.php
+lib/Model/GetAdAccountBilling200Response.php
+lib/Model/GetAdAccountBilling200ResponseAccountBudgetsInner.php
+lib/Model/GetAdAccountBilling200ResponseBillingSetupsInner.php
+lib/Model/GetAdAccountBilling200ResponsePaymentsAccountsInner.php
+lib/Model/GetAdAccountBilling200ResponsePendingBudgetProposalsInner.php
 lib/Model/GetAdAccountFinance200Response.php
 lib/Model/GetAdAccountFinance200ResponseFundingSource.php
 lib/Model/GetAdAccountHierarchy200Response.php
@@ -5117,6 +5130,9 @@ lib/Model/SetPartnershipAdPermissionRequest.php
 lib/Model/SetRedditPostFlairRequest.php
 lib/Model/SetTelegramCommandsRequest.php
 lib/Model/SetTelegramCommandsRequestCommandsInner.php
+lib/Model/SetUpAdAccountBilling200Response.php
+lib/Model/SetUpAdAccountBilling201Response.php
+lib/Model/SetUpAdAccountBillingRequest.php
 lib/Model/SetWhatsAppConversationalAutomationRequest.php
 lib/Model/SetWhatsAppFlowsEncryptionKeyRequest.php
 lib/Model/SetWhatsappBusinessUsername200Response.php
@@ -5737,3 +5753,11 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetAdAccountBilling200ResponseAccountBudgetsInnerTest.php
+test/Model/GetAdAccountBilling200ResponseBillingSetupsInnerTest.php
+test/Model/GetAdAccountBilling200ResponsePaymentsAccountsInnerTest.php
+test/Model/GetAdAccountBilling200ResponsePendingBudgetProposalsInnerTest.php
+test/Model/GetAdAccountBilling200ResponseTest.php
+test/Model/SetUpAdAccountBilling200ResponseTest.php
+test/Model/SetUpAdAccountBilling201ResponseTest.php
+test/Model/SetUpAdAccountBillingRequestTest.php
