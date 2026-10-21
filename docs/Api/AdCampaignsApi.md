@@ -1677,7 +1677,7 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | Account ID. Sibling-expanded to its linked posting↔ads pair.
+$account_id = 'account_id_example'; // string | Account ID. Sibling-expanded to its linked posting↔ads pair. An id that does not exist or sits on a profile the API key cannot reach answers 404 (code: account_not_found).
 $ad_account_id = 'ad_account_id_example'; // string | Optional platform-native ad account ID (e.g. Meta `act_…`, TikTok advertiser ID). Use when the connection wraps multiple platform ad accounts and the chart should show one only. Note: rows ingested before 2026-05-13 don't carry this column; the recurring 7-day re-sync repopulates them naturally.
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago.
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range.
@@ -1695,7 +1695,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| Account ID. Sibling-expanded to its linked posting↔ads pair. | |
+| **account_id** | **string**| Account ID. Sibling-expanded to its linked posting↔ads pair. An id that does not exist or sits on a profile the API key cannot reach answers 404 (code: account_not_found). | |
 | **ad_account_id** | **string**| Optional platform-native ad account ID (e.g. Meta &#x60;act_…&#x60;, TikTok advertiser ID). Use when the connection wraps multiple platform ad accounts and the chart should show one only. Note: rows ingested before 2026-05-13 don&#39;t carry this column; the recurring 7-day re-sync repopulates them naturally. | [optional] |
 | **from_date** | **\DateTime**| Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago. | [optional] |
 | **to_date** | **\DateTime**| Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range. | [optional] |
