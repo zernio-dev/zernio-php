@@ -5731,9 +5731,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetTikTokSmartPlusAdReview200ResponseMaterialsInnerTest.php
-test/Model/GetTikTokSmartPlusAdReview200ResponseReviewTest.php
-test/Model/GetTikTokSmartPlusAdReview200ResponseTest.php
-test/Model/TikTokReviewRejectionContentTest.php
-test/Model/TikTokReviewRejectionTest.php
-test/Model/TikTokSmartPlusReviewStatusTest.php
