@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**backfill_pending** | **bool** | Present and true while historical data is being backfilled. | [optional]
+**backfill_pending** | **bool** | Meta only. Present and true while historical data is being backfilled. | [optional]
 **ad** | [**\Zernio\Model\AdAnalyticsResponseAd**](AdAnalyticsResponseAd.md) |  | [optional]
 **analytics** | [**\Zernio\Model\AdAnalyticsResponseAnalytics**](AdAnalyticsResponseAnalytics.md) |  | [optional]
 
