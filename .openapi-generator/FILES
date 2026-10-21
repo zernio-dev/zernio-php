@@ -1438,6 +1438,7 @@ docs/Model/InstagramBusinessDiscoveryMediaInnerChildrenInner.md
 docs/Model/InstagramBusinessDiscoveryProfile.md
 docs/Model/InstagramDemographicsResponse.md
 docs/Model/InstagramDemographicsResponseDemographicsValueInner.md
+docs/Model/InstagramLiveMedia.md
 docs/Model/InstagramMediaCollaborator.md
 docs/Model/InstagramPlatformData.md
 docs/Model/InstagramPlatformDataAudioConfiguration.md
@@ -1668,6 +1669,7 @@ docs/Model/ListInboxReviews200ResponseDataInnerPhotosInner.md
 docs/Model/ListInboxReviews200ResponseDataInnerReply.md
 docs/Model/ListInboxReviews200ResponseDataInnerReviewer.md
 docs/Model/ListInboxReviews200ResponseSummary.md
+docs/Model/ListInstagramLiveMedia200Response.md
 docs/Model/ListInstagramMediaCollaborators200Response.md
 docs/Model/ListInstagramPages200Response.md
 docs/Model/ListInstagramPages200ResponsePagesInner.md
@@ -4292,6 +4294,7 @@ lib/Model/InstagramBusinessDiscoveryMediaInnerChildrenInner.php
 lib/Model/InstagramBusinessDiscoveryProfile.php
 lib/Model/InstagramDemographicsResponse.php
 lib/Model/InstagramDemographicsResponseDemographicsValueInner.php
+lib/Model/InstagramLiveMedia.php
 lib/Model/InstagramMediaCollaborator.php
 lib/Model/InstagramPlatformData.php
 lib/Model/InstagramPlatformDataAudioConfiguration.php
@@ -4522,6 +4525,7 @@ lib/Model/ListInboxReviews200ResponseDataInnerPhotosInner.php
 lib/Model/ListInboxReviews200ResponseDataInnerReply.php
 lib/Model/ListInboxReviews200ResponseDataInnerReviewer.php
 lib/Model/ListInboxReviews200ResponseSummary.php
+lib/Model/ListInstagramLiveMedia200Response.php
 lib/Model/ListInstagramMediaCollaborators200Response.php
 lib/Model/ListInstagramPages200Response.php
 lib/Model/ListInstagramPages200ResponsePagesInner.php
@@ -5709,6 +5713,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GoogleAdsUserInvitationApprovalTest.php
-test/Model/ListAdAccountUserInvitationApprovals200ResponseTest.php
-test/Model/WithdrawAdAccountUserInvitationApproval200ResponseTest.php
+test/Model/InstagramLiveMediaTest.php
+test/Model/ListInstagramLiveMedia200ResponseTest.php

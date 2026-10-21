@@ -10,6 +10,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getInstagramBusinessDiscovery()**](InstagramApi.md#getInstagramBusinessDiscovery) | **GET** /v1/accounts/{accountId}/instagram/business-discovery | Look up a public Instagram Business account |
 | [**getInstagramPublishingLimit()**](InstagramApi.md#getInstagramPublishingLimit) | **GET** /v1/accounts/{accountId}/instagram/publishing-limit | Get Instagram publishing limit |
 | [**getInstagramStoryInsights()**](InstagramApi.md#getInstagramStoryInsights) | **GET** /v1/accounts/{accountId}/instagram/stories/{storyId}/insights | Get Instagram story insights |
+| [**listInstagramLiveMedia()**](InstagramApi.md#listInstagramLiveMedia) | **GET** /v1/accounts/{accountId}/instagram/live-media | List the live broadcasts of an Instagram account |
 | [**listInstagramMediaCollaborators()**](InstagramApi.md#listInstagramMediaCollaborators) | **GET** /v1/accounts/{accountId}/instagram/media/{mediaId}/collaborators | List the collaborators of an Instagram post |
 | [**listInstagramStories()**](InstagramApi.md#listInstagramStories) | **GET** /v1/accounts/{accountId}/instagram/stories | List active Instagram stories |
 | [**searchInstagramAudio()**](InstagramApi.md#searchInstagramAudio) | **GET** /v1/accounts/{accountId}/instagram/audio | Search Instagram audio |
@@ -249,6 +250,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetInstagramStoryInsights200Response**](../Model/GetInstagramStoryInsights200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listInstagramLiveMedia()`
+
+```php
+listInstagramLiveMedia($account_id): \Zernio\Model\ListInstagramLiveMedia200Response
+```
+
+List the live broadcasts of an Instagram account
+
+Returns the live videos the connected Instagram account is broadcasting right now. Meta only returns broadcasts in progress at the time of the request, so the list is empty when nothing is live (a 200, not an error). Pair the returned `id` with comments flagged as live (the live_comments webhook field) or with a `live_comment` comment automation.  Requires an Instagram account connected via **Facebook Login**. Meta documents the live_media edge on graph.facebook.com only, so accounts connected with classic Instagram Login receive a 400 (`instagram_live_media_requires_facebook_login`) and must be reconnected choosing the Facebook option.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\InstagramApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The ID of a connected Instagram account (Facebook Login).
+
+try {
+    $result = $apiInstance->listInstagramLiveMedia($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InstagramApi->listInstagramLiveMedia: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The ID of a connected Instagram account (Facebook Login). | |
+
+### Return type
+
+[**\Zernio\Model\ListInstagramLiveMedia200Response**](../Model/ListInstagramLiveMedia200Response.md)
 
 ### Authorization
 
