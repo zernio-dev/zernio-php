@@ -5737,6 +5737,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ConnectWebflowWithSiteToken200ResponseAccountTest.php
-test/Model/ConnectWebflowWithSiteToken200ResponseTest.php
-test/Model/ConnectWebflowWithSiteTokenRequestTest.php
