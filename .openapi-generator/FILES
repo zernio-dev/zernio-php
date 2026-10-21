@@ -445,6 +445,9 @@ docs/Model/ConnectShopifyWithToken200Response.md
 docs/Model/ConnectShopifyWithToken200ResponseAccount.md
 docs/Model/ConnectShopifyWithTokenRequest.md
 docs/Model/ConnectSlackChannelRequest.md
+docs/Model/ConnectWebflowWithSiteToken200Response.md
+docs/Model/ConnectWebflowWithSiteToken200ResponseAccount.md
+docs/Model/ConnectWebflowWithSiteTokenRequest.md
 docs/Model/ConnectWelcomeScreen.md
 docs/Model/ConnectWhatsAppCredentials200Response.md
 docs/Model/ConnectWhatsAppCredentials200ResponseAccount.md
@@ -3310,6 +3313,9 @@ lib/Model/ConnectShopifyWithToken200Response.php
 lib/Model/ConnectShopifyWithToken200ResponseAccount.php
 lib/Model/ConnectShopifyWithTokenRequest.php
 lib/Model/ConnectSlackChannelRequest.php
+lib/Model/ConnectWebflowWithSiteToken200Response.php
+lib/Model/ConnectWebflowWithSiteToken200ResponseAccount.php
+lib/Model/ConnectWebflowWithSiteTokenRequest.php
 lib/Model/ConnectWelcomeScreen.php
 lib/Model/ConnectWhatsAppCredentials200Response.php
 lib/Model/ConnectWhatsAppCredentials200ResponseAccount.php
@@ -5731,3 +5737,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ConnectWebflowWithSiteToken200ResponseAccountTest.php
+test/Model/ConnectWebflowWithSiteToken200ResponseTest.php
+test/Model/ConnectWebflowWithSiteTokenRequestTest.php

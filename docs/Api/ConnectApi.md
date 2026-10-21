@@ -17,6 +17,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**connectOpenAIAdsCredentials()**](ConnectApi.md#connectOpenAIAdsCredentials) | **POST** /v1/connect/openai-ads/credentials | Connect an OpenAI Ads account |
 | [**connectShopifyWithToken()**](ConnectApi.md#connectShopifyWithToken) | **POST** /v1/connect/shopify/token | Connect a Shopify store with a custom-app Admin token |
 | [**connectSlackChannel()**](ConnectApi.md#connectSlackChannel) | **POST** /v1/connect/slack | Connect a Slack channel |
+| [**connectWebflowWithSiteToken()**](ConnectApi.md#connectWebflowWithSiteToken) | **POST** /v1/connect/webflow/token | Connect Webflow with a site API token |
 | [**connectWhatsAppCredentials()**](ConnectApi.md#connectWhatsAppCredentials) | **POST** /v1/connect/whatsapp/credentials | Connect WhatsApp via credentials |
 | [**connectWhatsAppEmbeddedSignup()**](ConnectApi.md#connectWhatsAppEmbeddedSignup) | **POST** /v1/connect/whatsapp/embedded-signup | Connect WhatsApp from Embedded Signup |
 | [**connectWhopAdsCredentials()**](ConnectApi.md#connectWhopAdsCredentials) | **POST** /v1/connect/whop-ads/credentials | Connect a Whop account |
@@ -741,6 +742,71 @@ void (empty response body)
 ### Authorization
 
 [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `connectWebflowWithSiteToken()`
+
+```php
+connectWebflowWithSiteToken($connect_webflow_with_site_token_request): \Zernio\Model\ConnectWebflowWithSiteToken200Response
+```
+
+Connect Webflow with a site API token
+
+Connects one Webflow site using a site API token, created in the site's Site settings > Apps & integrations > API access with Sites read-only and CMS read and write access. Zernio checks the token's scopes, reads its site, and stores the token encrypted. Webflow is a connect-only blog platform: each CMS collection with a rich text field is a blog in the Blogs API (`/v1/accounts/{accountId}/blogs`); it does not support social posts, inbox, analytics or ads. Publishing an article needs a site that has been published once. Reconnecting the same site and profile updates the connection in place.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: connectToken
+$config = Zernio\Configuration::getDefaultConfiguration()->setApiKey('X-Connect-Token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Zernio\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Connect-Token', 'Bearer');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$connect_webflow_with_site_token_request = new \Zernio\Model\ConnectWebflowWithSiteTokenRequest(); // \Zernio\Model\ConnectWebflowWithSiteTokenRequest
+
+try {
+    $result = $apiInstance->connectWebflowWithSiteToken($connect_webflow_with_site_token_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->connectWebflowWithSiteToken: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **connect_webflow_with_site_token_request** | [**\Zernio\Model\ConnectWebflowWithSiteTokenRequest**](../Model/ConnectWebflowWithSiteTokenRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ConnectWebflowWithSiteToken200Response**](../Model/ConnectWebflowWithSiteToken200Response.md)
+
+### Authorization
+
+[connectToken](../../README.md#connectToken), [bearerAuth](../../README.md#bearerAuth)
 
 ### HTTP request headers
 
