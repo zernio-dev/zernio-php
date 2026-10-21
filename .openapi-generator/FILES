@@ -5699,9 +5699,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GoogleAdsAccessRoleTest.php
-test/Model/GoogleAdsUserAccessInvitationResultTest.php
-test/Model/GoogleAdsUserAccessInvitationTest.php
-test/Model/InviteAdAccountUserRequestTest.php
-test/Model/ListAdAccountUserInvitations200ResponseTest.php
-test/Model/RevokeAdAccountUserInvitation200ResponseTest.php
