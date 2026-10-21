@@ -2207,6 +2207,7 @@ docs/Model/SendSms200Response.md
 docs/Model/SendSmsRequest.md
 docs/Model/SendTypingIndicatorRequest.md
 docs/Model/SendWhatsAppConversion200Response.md
+docs/Model/SendWhatsAppConversion200ResponseFailuresInner.md
 docs/Model/SendWhatsAppConversionRequest.md
 docs/Model/SendWhatsAppFlowMessage200Response.md
 docs/Model/SendWhatsAppFlowMessageRequest.md
@@ -5064,6 +5065,7 @@ lib/Model/SendSms200Response.php
 lib/Model/SendSmsRequest.php
 lib/Model/SendTypingIndicatorRequest.php
 lib/Model/SendWhatsAppConversion200Response.php
+lib/Model/SendWhatsAppConversion200ResponseFailuresInner.php
 lib/Model/SendWhatsAppConversionRequest.php
 lib/Model/SendWhatsAppFlowMessage200Response.php
 lib/Model/SendWhatsAppFlowMessageRequest.php
@@ -5713,5 +5715,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/InstagramLiveMediaTest.php
-test/Model/ListInstagramLiveMedia200ResponseTest.php
+test/Model/SendWhatsAppConversion200ResponseFailuresInnerTest.php
