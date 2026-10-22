@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **search_term** | **string** |  | [optional]
 **status** | **string** | ADDED / EXCLUDED / ADDED_EXCLUDED / NONE: whether the term is already a keyword or a negative. | [optional]
 **match_type** | **string** | How the term matched (BROAD, PHRASE, EXACT, NEAR_PHRASE, NEAR_EXACT). | [optional]
+**match_source** | **string** | What matched the term: ADVERTISER_PROVIDED_KEYWORD (one of your keywords), AI_MAX_BROAD_MATCH or AI_MAX_KEYWORDLESS (AI Max expansion). | [optional]
 **campaign_id** | **string** |  | [optional]
 **campaign_name** | **string** |  | [optional]
 **ad_group_id** | **string** |  | [optional]
