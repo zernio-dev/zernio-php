@@ -1243,8 +1243,6 @@ docs/Model/GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettingsAllowD
 docs/Model/GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettingsAllowStitch.md
 docs/Model/GetTikTokCreatorInfo200ResponsePrivacyLevelsInner.md
 docs/Model/GetTikTokSmartPlusAdReview200Response.md
-docs/Model/GetTikTokSmartPlusAdReview200ResponseMaterialsInner.md
-docs/Model/GetTikTokSmartPlusAdReview200ResponseReview.md
 docs/Model/GetTikTokSmartPlusMaterialReport200Response.md
 docs/Model/GetTikTokSmartPlusMaterialReport200ResponseRowsInner.md
 docs/Model/GetTikTokSmartPlusMaterialReport200ResponseRowsInnerMetrics.md
@@ -1764,6 +1762,10 @@ docs/Model/ListTikTokAdPixels200ResponsePixelsInnerEventDetailsInner.md
 docs/Model/ListTikTokCommercialMusic200Response.md
 docs/Model/ListTikTokCommercialMusic200ResponseTracksInner.md
 docs/Model/ListTikTokCommercialMusic200ResponseTracksInnerClip.md
+docs/Model/ListTikTokSmartPlusReviews200Response.md
+docs/Model/ListTikTokSmartPlusReviews200ResponseFailedSmartPlusAdsInner.md
+docs/Model/ListTikTokSmartPlusReviews200ResponseFailedSmartPlusAdsInnerError.md
+docs/Model/ListTikTokSmartPlusReviews200ResponseItemsInner.md
 docs/Model/ListTrackingTagEvents200Response.md
 docs/Model/ListTrackingTagPartners200Response.md
 docs/Model/ListTrackingTagSharedAccounts200Response.md
@@ -2329,6 +2331,8 @@ docs/Model/TikTokPlatformData.md
 docs/Model/TikTokPlatformDataMusicSoundInfo.md
 docs/Model/TikTokReviewRejection.md
 docs/Model/TikTokReviewRejectionContent.md
+docs/Model/TikTokSmartPlusAdLevelReview.md
+docs/Model/TikTokSmartPlusMaterialReview.md
 docs/Model/TikTokSmartPlusReviewStatus.md
 docs/Model/TrackingTag.md
 docs/Model/TrackingTagDiagnostic.md
@@ -4130,8 +4134,6 @@ lib/Model/GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettingsAllowDu
 lib/Model/GetTikTokCreatorInfo200ResponsePostingLimitsInteractionSettingsAllowStitch.php
 lib/Model/GetTikTokCreatorInfo200ResponsePrivacyLevelsInner.php
 lib/Model/GetTikTokSmartPlusAdReview200Response.php
-lib/Model/GetTikTokSmartPlusAdReview200ResponseMaterialsInner.php
-lib/Model/GetTikTokSmartPlusAdReview200ResponseReview.php
 lib/Model/GetTikTokSmartPlusMaterialReport200Response.php
 lib/Model/GetTikTokSmartPlusMaterialReport200ResponseRowsInner.php
 lib/Model/GetTikTokSmartPlusMaterialReport200ResponseRowsInnerMetrics.php
@@ -4651,6 +4653,10 @@ lib/Model/ListTikTokAdPixels200ResponsePixelsInnerEventDetailsInner.php
 lib/Model/ListTikTokCommercialMusic200Response.php
 lib/Model/ListTikTokCommercialMusic200ResponseTracksInner.php
 lib/Model/ListTikTokCommercialMusic200ResponseTracksInnerClip.php
+lib/Model/ListTikTokSmartPlusReviews200Response.php
+lib/Model/ListTikTokSmartPlusReviews200ResponseFailedSmartPlusAdsInner.php
+lib/Model/ListTikTokSmartPlusReviews200ResponseFailedSmartPlusAdsInnerError.php
+lib/Model/ListTikTokSmartPlusReviews200ResponseItemsInner.php
 lib/Model/ListTrackingTagEvents200Response.php
 lib/Model/ListTrackingTagPartners200Response.php
 lib/Model/ListTrackingTagSharedAccounts200Response.php
@@ -5217,6 +5223,8 @@ lib/Model/TikTokPlatformData.php
 lib/Model/TikTokPlatformDataMusicSoundInfo.php
 lib/Model/TikTokReviewRejection.php
 lib/Model/TikTokReviewRejectionContent.php
+lib/Model/TikTokSmartPlusAdLevelReview.php
+lib/Model/TikTokSmartPlusMaterialReview.php
 lib/Model/TikTokSmartPlusReviewStatus.php
 lib/Model/TrackingTag.php
 lib/Model/TrackingTagDiagnostic.php
@@ -5775,3 +5783,9 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ListTikTokSmartPlusReviews200ResponseFailedSmartPlusAdsInnerErrorTest.php
+test/Model/ListTikTokSmartPlusReviews200ResponseFailedSmartPlusAdsInnerTest.php
+test/Model/ListTikTokSmartPlusReviews200ResponseItemsInnerTest.php
+test/Model/ListTikTokSmartPlusReviews200ResponseTest.php
+test/Model/TikTokSmartPlusAdLevelReviewTest.php
+test/Model/TikTokSmartPlusMaterialReviewTest.php

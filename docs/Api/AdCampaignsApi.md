@@ -50,6 +50,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listGoogleAssetGroups()**](AdCampaignsApi.md#listGoogleAssetGroups) | **GET** /v1/ads/campaigns/{campaignId}/asset-groups | List Performance Max asset groups |
 | [**listGoogleRecommendations()**](AdCampaignsApi.md#listGoogleRecommendations) | **GET** /v1/ads/recommendations | List Google Ads recommendations |
 | [**listSharedBudgets()**](AdCampaignsApi.md#listSharedBudgets) | **GET** /v1/ads/shared-budgets | List shared budgets |
+| [**listTikTokSmartPlusReviews()**](AdCampaignsApi.md#listTikTokSmartPlusReviews) | **GET** /v1/ads/tiktok-smart-plus-reviews | Review status of every TikTok Smart+ ad of an advertiser |
 | [**removeAdGroupAssets()**](AdCampaignsApi.md#removeAdGroupAssets) | **DELETE** /v1/ads/ad-sets/{adSetId}/assets | Remove ad-group assets |
 | [**removeAdKeyword()**](AdCampaignsApi.md#removeAdKeyword) | **DELETE** /v1/ads/keywords/{keywordId} | Remove a Search keyword |
 | [**removeCampaignAssets()**](AdCampaignsApi.md#removeCampaignAssets) | **DELETE** /v1/ads/campaigns/{campaignId}/assets | Remove campaign assets |
@@ -2931,6 +2932,74 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListSharedBudgets200Response**](../Model/ListSharedBudgets200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listTikTokSmartPlusReviews()`
+
+```php
+listTikTokSmartPlusReviews($account_id, $ad_account_id, $include_deleted, $page, $page_size): \Zernio\Model\ListTikTokSmartPlusReviews200Response
+```
+
+Review status of every TikTok Smart+ ad of an advertiser
+
+Returns the review verdict of every Upgraded Smart+ ad of one TikTok advertiser, with each creative's verdict, in one paginated read. Use it to refresh reviews periodically: one call (plus its pages) per advertiser per refresh, instead of `GET /v1/ads/{adId}/tiktok-smart-plus-review` per ad.  Zernio lists the advertiser's Smart+ ads with `/smart_plus/ad/get/` (deleted ones only with `includeDeleted=true`; the listing is cached for 5 minutes) and reads `/smart_plus/ad/review_info/` for up to 100 Smart+ ads per call, across ad groups, one call after another. A full refresh of N Smart+ ads costs about `ceil(N / 100)` listing calls and `ceil(N / 100)` review calls on TikTok. Each review is cached for 10 minutes per connection, advertiser and Smart+ ad, shared with the single-ad read, so cached reviews are served without calling TikTok and `readAt` can be up to 10 minutes old.  TikTok's review endpoint has a strict quota of its own. When it is over quota (or Zernio is holding review reads for this advertiser and connection after an overage), Zernio stops calling TikTok and answers 200 with the reviews it has: `incomplete: true`, the Smart+ ads still to read in `pendingSmartPlusAdIds`, and `retryAfterSeconds` (also in the `Retry-After` header). Every Smart+ ad of the page is in `items`, `failedSmartPlusAds` or `pendingSmartPlusAdIds`. Wait `retryAfterSeconds` and read the same page again: only the pending ads reach TikTok.  A Smart+ ad whose review TikTok refuses on its own (for example one deleted on TikTok since the listing was cached) is returned in `failedSmartPlusAds` with TikTok's error, and the rest of the page is still read. Zernio finds it by splitting the refused batch in halves, at most 16 extra TikTok calls per page; ads still unresolved after that come back in `failedSmartPlusAds` with the batch error. A refusal of a single ad is remembered for 10 minutes. When both halves of a refused batch are refused with the same TikTok error (for example a permission error), the whole request fails with that error instead.  Items are sorted by `adGroupId`, then `smartPlusAdId`, so pages are stable. Read the pages of one advertiser one after another, not in parallel: parallel pages spend the review quota at the same time and come back incomplete.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | A tiktok or tiktokads account ID
+$ad_account_id = 'ad_account_id_example'; // string | TikTok advertiser ID
+$include_deleted = false; // bool | Also return Smart+ ads deleted on TikTok (listed with `primary_status: STATUS_ALL`).
+$page = 1; // int
+$page_size = 500; // int
+
+try {
+    $result = $apiInstance->listTikTokSmartPlusReviews($account_id, $ad_account_id, $include_deleted, $page, $page_size);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->listTikTokSmartPlusReviews: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| A tiktok or tiktokads account ID | |
+| **ad_account_id** | **string**| TikTok advertiser ID | |
+| **include_deleted** | **bool**| Also return Smart+ ads deleted on TikTok (listed with &#x60;primary_status: STATUS_ALL&#x60;). | [optional] [default to false] |
+| **page** | **int**|  | [optional] [default to 1] |
+| **page_size** | **int**|  | [optional] [default to 500] |
+
+### Return type
+
+[**\Zernio\Model\ListTikTokSmartPlusReviews200Response**](../Model/ListTikTokSmartPlusReviews200Response.md)
 
 ### Authorization
 
