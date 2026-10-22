@@ -112,6 +112,7 @@ docs/Model/AdFunnelCounts.md
 docs/Model/AdKeyword.md
 docs/Model/AdKeywordMetrics.md
 docs/Model/AdKeywordQuality.md
+docs/Model/AdLead.md
 docs/Model/AdMetrics.md
 docs/Model/AdNegativeKeywordList.md
 docs/Model/AdNegativeKeywordListKeyword.md
@@ -1691,7 +1692,6 @@ docs/Model/ListInstagramStories200ResponseDataInner.md
 docs/Model/ListInstagramTaggedMedia200Response.md
 docs/Model/ListLeadForms200Response.md
 docs/Model/ListLeads200Response.md
-docs/Model/ListLeads200ResponseLeadsInner.md
 docs/Model/ListLeads200ResponseMeta.md
 docs/Model/ListLinkedInOrganizations200Response.md
 docs/Model/ListLinkedInOrganizations200ResponseOrganizationsInner.md
@@ -1828,6 +1828,8 @@ docs/Model/MetaLeadFormLegalContent.md
 docs/Model/MetaLeadFormLegalContentPrivacyPolicy.md
 docs/Model/MetaLeadFormPlatformData.md
 docs/Model/MetaLeadFormPlatformDataContextCard.md
+docs/Model/MetaLeadFormPlatformDataCustomDisclaimer.md
+docs/Model/MetaLeadFormPlatformDataCustomDisclaimerCheckboxesInner.md
 docs/Model/MetaLeadFormQuestionsInner.md
 docs/Model/MetaLeadFormThankYouPage.md
 docs/Model/MetaPageOwnership.md
@@ -2539,6 +2541,8 @@ docs/Model/UpdateImessageSenderRequestContact.md
 docs/Model/UpdateInboxConversation200Response.md
 docs/Model/UpdateInboxConversation200ResponseData.md
 docs/Model/UpdateInboxConversationRequest.md
+docs/Model/UpdateLead200Response.md
+docs/Model/UpdateLeadRequest.md
 docs/Model/UpdateLinkedInOrganization200Response.md
 docs/Model/UpdateLinkedInOrganizationRequest.md
 docs/Model/UpdatePinterestBoardsRequest.md
@@ -2988,6 +2992,7 @@ lib/Model/AdFunnelCounts.php
 lib/Model/AdKeyword.php
 lib/Model/AdKeywordMetrics.php
 lib/Model/AdKeywordQuality.php
+lib/Model/AdLead.php
 lib/Model/AdMetrics.php
 lib/Model/AdNegativeKeywordList.php
 lib/Model/AdNegativeKeywordListKeyword.php
@@ -4567,7 +4572,6 @@ lib/Model/ListInstagramStories200ResponseDataInner.php
 lib/Model/ListInstagramTaggedMedia200Response.php
 lib/Model/ListLeadForms200Response.php
 lib/Model/ListLeads200Response.php
-lib/Model/ListLeads200ResponseLeadsInner.php
 lib/Model/ListLeads200ResponseMeta.php
 lib/Model/ListLinkedInOrganizations200Response.php
 lib/Model/ListLinkedInOrganizations200ResponseOrganizationsInner.php
@@ -4704,6 +4708,8 @@ lib/Model/MetaLeadFormLegalContent.php
 lib/Model/MetaLeadFormLegalContentPrivacyPolicy.php
 lib/Model/MetaLeadFormPlatformData.php
 lib/Model/MetaLeadFormPlatformDataContextCard.php
+lib/Model/MetaLeadFormPlatformDataCustomDisclaimer.php
+lib/Model/MetaLeadFormPlatformDataCustomDisclaimerCheckboxesInner.php
 lib/Model/MetaLeadFormQuestionsInner.php
 lib/Model/MetaLeadFormThankYouPage.php
 lib/Model/MetaPageOwnership.php
@@ -5416,6 +5422,8 @@ lib/Model/UpdateImessageSenderRequestContact.php
 lib/Model/UpdateInboxConversation200Response.php
 lib/Model/UpdateInboxConversation200ResponseData.php
 lib/Model/UpdateInboxConversationRequest.php
+lib/Model/UpdateLead200Response.php
+lib/Model/UpdateLeadRequest.php
 lib/Model/UpdateLinkedInOrganization200Response.php
 lib/Model/UpdateLinkedInOrganizationRequest.php
 lib/Model/UpdatePinterestBoardsRequest.php
@@ -5753,11 +5761,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetAdAccountBilling200ResponseAccountBudgetsInnerTest.php
-test/Model/GetAdAccountBilling200ResponseBillingSetupsInnerTest.php
-test/Model/GetAdAccountBilling200ResponsePaymentsAccountsInnerTest.php
-test/Model/GetAdAccountBilling200ResponsePendingBudgetProposalsInnerTest.php
-test/Model/GetAdAccountBilling200ResponseTest.php
-test/Model/SetUpAdAccountBilling200ResponseTest.php
-test/Model/SetUpAdAccountBilling201ResponseTest.php
-test/Model/SetUpAdAccountBillingRequestTest.php
+test/Model/AdLeadTest.php
+test/Model/MetaLeadFormPlatformDataCustomDisclaimerCheckboxesInnerTest.php
+test/Model/MetaLeadFormPlatformDataCustomDisclaimerTest.php
+test/Model/UpdateLead200ResponseTest.php
+test/Model/UpdateLeadRequestTest.php

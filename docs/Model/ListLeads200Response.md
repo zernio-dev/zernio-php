@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **string** |  | [optional]
-**leads** | [**\Zernio\Model\ListLeads200ResponseLeadsInner[]**](ListLeads200ResponseLeadsInner.md) |  | [optional]
+**leads** | [**\Zernio\Model\AdLead[]**](AdLead.md) |  | [optional]
 **pagination** | [**\Zernio\Model\SearchTweets200ResponsePagination**](SearchTweets200ResponsePagination.md) |  | [optional]
 **meta** | [**\Zernio\Model\ListLeads200ResponseMeta**](ListLeads200ResponseMeta.md) |  | [optional]
 

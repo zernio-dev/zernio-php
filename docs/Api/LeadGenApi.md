@@ -14,6 +14,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listFormLeads()**](LeadGenApi.md#listFormLeads) | **GET** /v1/ads/lead-forms/{formId}/leads | List leads for a single form |
 | [**listLeadForms()**](LeadGenApi.md#listLeadForms) | **GET** /v1/ads/lead-forms | List lead forms |
 | [**listLeads()**](LeadGenApi.md#listLeads) | **GET** /v1/ads/leads | List submitted leads |
+| [**updateLead()**](LeadGenApi.md#updateLead) | **PATCH** /v1/ads/leads/{id} | Update a lead&#39;s status |
 
 
 ## `archiveLeadForm()`
@@ -526,6 +527,68 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateLead()`
+
+```php
+updateLead($id, $update_lead_request): \Zernio\Model\UpdateLead200Response
+```
+
+Update a lead's status
+
+Sets the status of a Meta lead (and optionally its value) so you can track it from lead to sale.  `{id}` is the Zernio lead id (`id` on `GET /v1/ads/leads`, `leadId` on `GET /v1/ads/lead-forms/{formId}/leads`) or the Meta `leadgenId` together with `accountId` in the body. Requires the Ads add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\LeadGenApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | Zernio lead id, or the Meta leadgenId (then accountId is required).
+$update_lead_request = new \Zernio\Model\UpdateLeadRequest(); // \Zernio\Model\UpdateLeadRequest
+
+try {
+    $result = $apiInstance->updateLead($id, $update_lead_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling LeadGenApi->updateLead: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| Zernio lead id, or the Meta leadgenId (then accountId is required). | |
+| **update_lead_request** | [**\Zernio\Model\UpdateLeadRequest**](../Model/UpdateLeadRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateLead200Response**](../Model/UpdateLead200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **block_display_for_non_targeted_viewer** | **bool** |  | [optional]
 **question_page_custom_headline** | **string** |  | [optional]
 **context_card** | [**\Zernio\Model\MetaLeadFormPlatformDataContextCard**](MetaLeadFormPlatformDataContextCard.md) |  | [optional]
+**custom_disclaimer** | [**\Zernio\Model\MetaLeadFormPlatformDataCustomDisclaimer**](MetaLeadFormPlatformDataCustomDisclaimer.md) |  | [optional]
 **ad_account_id** | **string** | LinkedIn ad account id (resolves the owning organization). |
 **headline** | **string** |  |
 **description** | **string** |  |
