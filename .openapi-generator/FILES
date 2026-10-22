@@ -1264,6 +1264,7 @@ docs/Model/GetValueRuleSet200Response.md
 docs/Model/GetVoiceCall200Response.md
 docs/Model/GetVoiceCallEstimate200Response.md
 docs/Model/GetVoiceCallEstimate200ResponseBreakdown.md
+docs/Model/GetWebflowConnectUrl200Response.md
 docs/Model/GetWebhookLogs200Response.md
 docs/Model/GetWebhookLogs200ResponsePagination.md
 docs/Model/GetWebhookSettings200Response.md
@@ -4144,6 +4145,7 @@ lib/Model/GetValueRuleSet200Response.php
 lib/Model/GetVoiceCall200Response.php
 lib/Model/GetVoiceCallEstimate200Response.php
 lib/Model/GetVoiceCallEstimate200ResponseBreakdown.php
+lib/Model/GetWebflowConnectUrl200Response.php
 lib/Model/GetWebhookLogs200Response.php
 lib/Model/GetWebhookLogs200ResponsePagination.php
 lib/Model/GetWebhookSettings200Response.php
@@ -5761,8 +5763,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AdLeadTest.php
-test/Model/MetaLeadFormPlatformDataCustomDisclaimerCheckboxesInnerTest.php
-test/Model/MetaLeadFormPlatformDataCustomDisclaimerTest.php
-test/Model/UpdateLead200ResponseTest.php
-test/Model/UpdateLeadRequestTest.php
+test/Model/GetWebflowConnectUrl200ResponseTest.php

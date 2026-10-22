@@ -551,6 +551,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**getShopifyConnectUrl**](docs/Api/ConnectApi.md#getshopifyconnecturl) | **GET** /v1/connect/shopify | Get Shopify OAuth connect URL
 *ConnectApi* | [**getSubredditRules**](docs/Api/ConnectApi.md#getsubredditrules) | **GET** /v1/accounts/{accountId}/reddit-subreddits/{subreddit}/rules | Get subreddit rules
 *ConnectApi* | [**getTelegramConnectStatus**](docs/Api/ConnectApi.md#gettelegramconnectstatus) | **GET** /v1/connect/telegram | Generate Telegram code
+*ConnectApi* | [**getWebflowConnectUrl**](docs/Api/ConnectApi.md#getwebflowconnecturl) | **GET** /v1/connect/webflow | Get Webflow OAuth URL
 *ConnectApi* | [**getWhatsAppSdkConfig**](docs/Api/ConnectApi.md#getwhatsappsdkconfig) | **GET** /v1/connect/whatsapp/sdk-config | Get Embedded Signup SDK config
 *ConnectApi* | [**getWixConnectUrl**](docs/Api/ConnectApi.md#getwixconnecturl) | **GET** /v1/connect/wix | Get Wix site install URL
 *ConnectApi* | [**getWordPressAuthUrl**](docs/Api/ConnectApi.md#getwordpressauthurl) | **GET** /v1/connect/wordpress | Get WordPress.com OAuth connect URL
@@ -884,13 +885,13 @@ Class | Method | HTTP request | Description
 *TrackingTagsApi* | [**getTrackingTagDiagnostics**](docs/Api/TrackingTagsApi.md#gettrackingtagdiagnostics) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/diagnostics | Get tag diagnostics
 *TrackingTagsApi* | [**getTrackingTagStats**](docs/Api/TrackingTagsApi.md#gettrackingtagstats) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/stats | Get aggregated event stats
 *TrackingTagsApi* | [**getTrackingTagStoreInstall**](docs/Api/TrackingTagsApi.md#gettrackingtagstoreinstall) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Get store install status
-*TrackingTagsApi* | [**installTrackingTagOnStore**](docs/Api/TrackingTagsApi.md#installtrackingtagonstore) | **POST** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Install on a Shopify store, WordPress site or Wix site
+*TrackingTagsApi* | [**installTrackingTagOnStore**](docs/Api/TrackingTagsApi.md#installtrackingtagonstore) | **POST** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Install on a Shopify, WordPress, Wix or Webflow site
 *TrackingTagsApi* | [**listTrackingTagEvents**](docs/Api/TrackingTagsApi.md#listtrackingtagevents) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/events | List conversion events
 *TrackingTagsApi* | [**listTrackingTagPartners**](docs/Api/TrackingTagsApi.md#listtrackingtagpartners) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/partners | List partner businesses of a tag
 *TrackingTagsApi* | [**listTrackingTagSharedAccounts**](docs/Api/TrackingTagsApi.md#listtrackingtagsharedaccounts) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/shared-accounts | List accounts it is shared with
 *TrackingTagsApi* | [**listTrackingTagUsers**](docs/Api/TrackingTagsApi.md#listtrackingtagusers) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/users | List tag users
 *TrackingTagsApi* | [**listTrackingTags**](docs/Api/TrackingTagsApi.md#listtrackingtags) | **GET** /v1/accounts/{accountId}/tracking-tags | List tracking tags
-*TrackingTagsApi* | [**removeTrackingTagFromStore**](docs/Api/TrackingTagsApi.md#removetrackingtagfromstore) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Remove from a Shopify store, WordPress site or Wix site
+*TrackingTagsApi* | [**removeTrackingTagFromStore**](docs/Api/TrackingTagsApi.md#removetrackingtagfromstore) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/install | Remove from a Shopify, WordPress, Wix or Webflow site
 *TrackingTagsApi* | [**removeTrackingTagSharedAccount**](docs/Api/TrackingTagsApi.md#removetrackingtagsharedaccount) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/shared-accounts | Stop sharing with an account
 *TrackingTagsApi* | [**removeTrackingTagUser**](docs/Api/TrackingTagsApi.md#removetrackingtaguser) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/users/{userId} | Remove a user from a tag
 *TrackingTagsApi* | [**updateAdTrackingTags**](docs/Api/TrackingTagsApi.md#updateadtrackingtags) | **PATCH** /v1/ads/{adId}/tracking-tags | Set ad tracking tags
@@ -2246,6 +2247,7 @@ Class | Method | HTTP request | Description
 - [GetVoiceCall200Response](docs/Model/GetVoiceCall200Response.md)
 - [GetVoiceCallEstimate200Response](docs/Model/GetVoiceCallEstimate200Response.md)
 - [GetVoiceCallEstimate200ResponseBreakdown](docs/Model/GetVoiceCallEstimate200ResponseBreakdown.md)
+- [GetWebflowConnectUrl200Response](docs/Model/GetWebflowConnectUrl200Response.md)
 - [GetWebhookLogs200Response](docs/Model/GetWebhookLogs200Response.md)
 - [GetWebhookLogs200ResponsePagination](docs/Model/GetWebhookLogs200ResponsePagination.md)
 - [GetWebhookSettings200Response](docs/Model/GetWebhookSettings200Response.md)
@@ -3892,6 +3894,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.325.0`
+- API version: `1.326.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
