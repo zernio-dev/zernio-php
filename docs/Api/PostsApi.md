@@ -13,6 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getPost()**](PostsApi.md#getPost) | **GET** /v1/posts/{postId} | Get post |
 | [**listPosts()**](PostsApi.md#listPosts) | **GET** /v1/posts | List posts |
 | [**retryPost()**](PostsApi.md#retryPost) | **POST** /v1/posts/{postId}/retry | Retry failed post |
+| [**reviewPost()**](PostsApi.md#reviewPost) | **POST** /v1/posts/{postId}/review | Approve or reject a post |
 | [**unpublishPost()**](PostsApi.md#unpublishPost) | **POST** /v1/posts/{postId}/unpublish | Unpublish post |
 | [**updatePost()**](PostsApi.md#updatePost) | **PUT** /v1/posts/{postId} | Update post |
 | [**updatePostMetadata()**](PostsApi.md#updatePostMetadata) | **POST** /v1/posts/{postId}/update-metadata | Update post metadata |
@@ -476,6 +477,68 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `reviewPost()`
+
+```php
+reviewPost($post_id, $review_post_request): \Zernio\Model\PostGetResponse
+```
+
+Approve or reject a post
+
+Approves or rejects a post saved with `requiresApproval: true` (status `pending_approval`). `approve` schedules the post for its `scheduledFor` and fires the `post.scheduled` webhook. When that time has already passed, the post publishes within a couple of minutes. `reject` returns the post to `draft`. Returns 409 when the post is not `pending_approval`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\PostsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$post_id = 'post_id_example'; // string
+$review_post_request = {"decision":"approve"}; // \Zernio\Model\ReviewPostRequest
+
+try {
+    $result = $apiInstance->reviewPost($post_id, $review_post_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PostsApi->reviewPost: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **post_id** | **string**|  | |
+| **review_post_request** | [**\Zernio\Model\ReviewPostRequest**](../Model/ReviewPostRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\PostGetResponse**](../Model/PostGetResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

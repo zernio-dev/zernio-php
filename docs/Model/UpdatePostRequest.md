@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **scheduled_for** | **\DateTime** |  | [optional]
 **publish_now** | **bool** |  | [optional] [default to false]
 **is_draft** | **bool** | When omitted, the post keeps its current draft status. Send &#x60;false&#x60; to promote a draft to scheduled (combined with &#x60;scheduledFor&#x60;, &#x60;publishNow&#x60;, or a queue). | [optional]
+**requires_approval** | **bool** | Send true on a draft to submit it for approval: it becomes pending_approval and publishes only after POST /v1/posts/{postId}/review approves it. Cannot be combined with isDraft, publishNow, queuedFromProfile or queueId. Returns 409 when the post is not a draft. | [optional]
 **timezone** | **string** |  | [optional]
 **visibility** | **string** |  | [optional]
 **tags** | **string[]** |  | [optional]

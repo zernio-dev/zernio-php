@@ -2076,6 +2076,7 @@ docs/Model/ReuseSmsRegistrationForNumber200Response.md
 docs/Model/ReviewPhoneNumberKycPacket200Response.md
 docs/Model/ReviewPhoneNumberKycPacket200ResponseAdvisoriesInner.md
 docs/Model/ReviewPhoneNumberKycPacketRequest.md
+docs/Model/ReviewPostRequest.md
 docs/Model/ReviewWebhookReview.md
 docs/Model/ReviewWebhookReviewReply.md
 docs/Model/ReviewWebhookReviewReviewer.md
@@ -4958,6 +4959,7 @@ lib/Model/ReuseSmsRegistrationForNumber200Response.php
 lib/Model/ReviewPhoneNumberKycPacket200Response.php
 lib/Model/ReviewPhoneNumberKycPacket200ResponseAdvisoriesInner.php
 lib/Model/ReviewPhoneNumberKycPacketRequest.php
+lib/Model/ReviewPostRequest.php
 lib/Model/ReviewWebhookReview.php
 lib/Model/ReviewWebhookReviewReply.php
 lib/Model/ReviewWebhookReviewReviewer.php
@@ -5763,3 +5765,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ReviewPostRequestTest.php
