@@ -2703,6 +2703,11 @@ docs/Model/WebhookPayloadAccountConnected.md
 docs/Model/WebhookPayloadAccountConnectedAccount.md
 docs/Model/WebhookPayloadAccountDisconnected.md
 docs/Model/WebhookPayloadAccountDisconnectedAccount.md
+docs/Model/WebhookPayloadAdReview.md
+docs/Model/WebhookPayloadAdReviewAccount.md
+docs/Model/WebhookPayloadAdReviewAdObject.md
+docs/Model/WebhookPayloadAdReviewReview.md
+docs/Model/WebhookPayloadAdReviewReviewReasonsInner.md
 docs/Model/WebhookPayloadAdStatusChanged.md
 docs/Model/WebhookPayloadAdStatusChangedAccount.md
 docs/Model/WebhookPayloadAdStatusChangedAdObject.md
@@ -5598,6 +5603,11 @@ lib/Model/WebhookPayloadAccountConnected.php
 lib/Model/WebhookPayloadAccountConnectedAccount.php
 lib/Model/WebhookPayloadAccountDisconnected.php
 lib/Model/WebhookPayloadAccountDisconnectedAccount.php
+lib/Model/WebhookPayloadAdReview.php
+lib/Model/WebhookPayloadAdReviewAccount.php
+lib/Model/WebhookPayloadAdReviewAdObject.php
+lib/Model/WebhookPayloadAdReviewReview.php
+lib/Model/WebhookPayloadAdReviewReviewReasonsInner.php
 lib/Model/WebhookPayloadAdStatusChanged.php
 lib/Model/WebhookPayloadAdStatusChangedAccount.php
 lib/Model/WebhookPayloadAdStatusChangedAdObject.php
@@ -5789,3 +5799,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/WebhookPayloadAdReviewAccountTest.php
+test/Model/WebhookPayloadAdReviewAdObjectTest.php
+test/Model/WebhookPayloadAdReviewReviewReasonsInnerTest.php
+test/Model/WebhookPayloadAdReviewReviewTest.php
+test/Model/WebhookPayloadAdReviewTest.php

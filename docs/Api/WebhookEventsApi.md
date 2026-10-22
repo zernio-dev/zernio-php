@@ -11,6 +11,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onAccountAdsSyncRecovered()**](WebhookEventsApi.md#onAccountAdsSyncRecovered) | **POST** /account.ads.sync_recovered | Ads sync recovered event |
 | [**onAccountConnected()**](WebhookEventsApi.md#onAccountConnected) | **POST** /account.connected | Account connected event |
 | [**onAccountDisconnected()**](WebhookEventsApi.md#onAccountDisconnected) | **POST** /account.disconnected | Account disconnected event |
+| [**onAdReviewApproved()**](WebhookEventsApi.md#onAdReviewApproved) | **POST** /ad.review.approved | Ad review approved event |
+| [**onAdReviewRejected()**](WebhookEventsApi.md#onAdReviewRejected) | **POST** /ad.review.rejected | Ad review rejected event |
 | [**onAdStatusChanged()**](WebhookEventsApi.md#onAdStatusChanged) | **POST** /ad.status_changed | Ad status changed event |
 | [**onAdVideoProcessed()**](WebhookEventsApi.md#onAdVideoProcessed) | **POST** /ad.video.processed | Ad video processed event |
 | [**onAnalyticsSynced()**](WebhookEventsApi.md#onAnalyticsSynced) | **POST** /analytics.synced | Analytics synced event |
@@ -369,6 +371,124 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_account_disconnected** | [**\Zernio\Model\WebhookPayloadAccountDisconnected**](../Model/WebhookPayloadAccountDisconnected.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onAdReviewApproved()`
+
+```php
+onAdReviewApproved($webhook_payload_ad_review)
+```
+
+Ad review approved event
+
+Fired when an ad Zernio already tracked passes platform review, or a rejection is overturned on appeal. Every ad network. See `WebhookPayloadAdReview` for when it fires and when it does not.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_ad_review = {"id":"01J7K3P4N5Q6R7S8T9V0W1X2Z2","event":"ad.review.approved","account":{"accountId":"65c8f7e2a1b3c4d5e6f7a8b9","profileId":"65c8f7e2a1b3c4d5e6f7a800","platform":"tiktokads","username":"acme-ads","displayName":"Acme Ads"},"adObject":{"level":"AD","platformId":"1870423675882786","platformAdAccountId":"7505325609036365841","adId":"65c8f7e2a1b3c4d5e6f7a8c1","name":"Spring promo"},"review":{"status":"approved","raw":"ENABLE","reasons":[]},"timestamp":"2026-10-22T09:12:03.120Z"}; // \Zernio\Model\WebhookPayloadAdReview
+
+try {
+    $apiInstance->onAdReviewApproved($webhook_payload_ad_review);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onAdReviewApproved: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_ad_review** | [**\Zernio\Model\WebhookPayloadAdReview**](../Model/WebhookPayloadAdReview.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onAdReviewRejected()`
+
+```php
+onAdReviewRejected($webhook_payload_ad_review)
+```
+
+Ad review rejected event
+
+Fired when the platform rejects an ad Zernio already tracked. Every ad network. See `WebhookPayloadAdReview` for when it fires and when it does not.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_ad_review = {"id":"01J7K3P4N5Q6R7S8T9V0W1X2Z2","event":"ad.review.rejected","account":{"accountId":"65c8f7e2a1b3c4d5e6f7a8b9","profileId":"65c8f7e2a1b3c4d5e6f7a800","platform":"tiktokads","username":"acme-ads","displayName":"Acme Ads"},"adObject":{"level":"AD","platformId":"1870423675882786","platformAdAccountId":"7505325609036365841","adId":"65c8f7e2a1b3c4d5e6f7a8c1","name":"Spring promo"},"review":{"status":"rejected","raw":"DISABLE","reasons":[{"message":"Ad was rejected by TikTok."}]},"timestamp":"2026-10-22T09:12:03.120Z"}; // \Zernio\Model\WebhookPayloadAdReview
+
+try {
+    $apiInstance->onAdReviewRejected($webhook_payload_ad_review);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onAdReviewRejected: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_ad_review** | [**\Zernio\Model\WebhookPayloadAdReview**](../Model/WebhookPayloadAdReview.md)|  | |
 
 ### Return type
 
