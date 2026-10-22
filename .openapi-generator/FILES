@@ -1921,6 +1921,8 @@ docs/Model/PreflightSmsRegistration200Response.md
 docs/Model/PreflightSmsRegistration200ResponseAdvisoriesInner.md
 docs/Model/PreflightSmsRegistration200ResponseComposed.md
 docs/Model/PreflightSmsRegistrationRequest.md
+docs/Model/PrepareMedia200Response.md
+docs/Model/PrepareMediaRequest.md
 docs/Model/Product.md
 docs/Model/ProductImage.md
 docs/Model/ProductOptionsInner.md
@@ -4804,6 +4806,8 @@ lib/Model/PreflightSmsRegistration200Response.php
 lib/Model/PreflightSmsRegistration200ResponseAdvisoriesInner.php
 lib/Model/PreflightSmsRegistration200ResponseComposed.php
 lib/Model/PreflightSmsRegistrationRequest.php
+lib/Model/PrepareMedia200Response.php
+lib/Model/PrepareMediaRequest.php
 lib/Model/Product.php
 lib/Model/ProductImage.php
 lib/Model/ProductOptionsInner.php
@@ -5765,3 +5769,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/PrepareMedia200ResponseTest.php
+test/Model/PrepareMediaRequestTest.php
