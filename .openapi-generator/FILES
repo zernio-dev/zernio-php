@@ -2689,6 +2689,7 @@ docs/Model/VerifyWhatsAppNumber200Response.md
 docs/Model/VerifyWhatsAppNumberRequest.md
 docs/Model/VoteRedditThingRequest.md
 docs/Model/Webhook.md
+docs/Model/WebhookAdsAccount.md
 docs/Model/WebhookAdsSyncAccount.md
 docs/Model/WebhookAdsSyncAdAccount.md
 docs/Model/WebhookLog.md
@@ -2703,8 +2704,12 @@ docs/Model/WebhookPayloadAccountConnected.md
 docs/Model/WebhookPayloadAccountConnectedAccount.md
 docs/Model/WebhookPayloadAccountDisconnected.md
 docs/Model/WebhookPayloadAccountDisconnectedAccount.md
+docs/Model/WebhookPayloadAdAccountStatusChanged.md
+docs/Model/WebhookPayloadAdAccountStatusChangedAdAccount.md
+docs/Model/WebhookPayloadAdAccountStatusChangedStatus.md
+docs/Model/WebhookPayloadAdDeliveryIssue.md
+docs/Model/WebhookPayloadAdDeliveryIssueIssue.md
 docs/Model/WebhookPayloadAdReview.md
-docs/Model/WebhookPayloadAdReviewAccount.md
 docs/Model/WebhookPayloadAdReviewAdObject.md
 docs/Model/WebhookPayloadAdReviewReview.md
 docs/Model/WebhookPayloadAdReviewReviewReasonsInner.md
@@ -2729,6 +2734,9 @@ docs/Model/WebhookPayloadCallPermissionRequest.md
 docs/Model/WebhookPayloadCallPermissionRequestPermission.md
 docs/Model/WebhookPayloadCallReceived.md
 docs/Model/WebhookPayloadCallReceivedCall.md
+docs/Model/WebhookPayloadCampaignBudgetDepleted.md
+docs/Model/WebhookPayloadCampaignBudgetDepletedAdObject.md
+docs/Model/WebhookPayloadCampaignBudgetDepletedBudget.md
 docs/Model/WebhookPayloadComment.md
 docs/Model/WebhookPayloadCommentAccount.md
 docs/Model/WebhookPayloadCommentComment.md
@@ -5589,6 +5597,7 @@ lib/Model/VerifyWhatsAppNumber200Response.php
 lib/Model/VerifyWhatsAppNumberRequest.php
 lib/Model/VoteRedditThingRequest.php
 lib/Model/Webhook.php
+lib/Model/WebhookAdsAccount.php
 lib/Model/WebhookAdsSyncAccount.php
 lib/Model/WebhookAdsSyncAdAccount.php
 lib/Model/WebhookLog.php
@@ -5603,8 +5612,12 @@ lib/Model/WebhookPayloadAccountConnected.php
 lib/Model/WebhookPayloadAccountConnectedAccount.php
 lib/Model/WebhookPayloadAccountDisconnected.php
 lib/Model/WebhookPayloadAccountDisconnectedAccount.php
+lib/Model/WebhookPayloadAdAccountStatusChanged.php
+lib/Model/WebhookPayloadAdAccountStatusChangedAdAccount.php
+lib/Model/WebhookPayloadAdAccountStatusChangedStatus.php
+lib/Model/WebhookPayloadAdDeliveryIssue.php
+lib/Model/WebhookPayloadAdDeliveryIssueIssue.php
 lib/Model/WebhookPayloadAdReview.php
-lib/Model/WebhookPayloadAdReviewAccount.php
 lib/Model/WebhookPayloadAdReviewAdObject.php
 lib/Model/WebhookPayloadAdReviewReview.php
 lib/Model/WebhookPayloadAdReviewReviewReasonsInner.php
@@ -5629,6 +5642,9 @@ lib/Model/WebhookPayloadCallPermissionRequest.php
 lib/Model/WebhookPayloadCallPermissionRequestPermission.php
 lib/Model/WebhookPayloadCallReceived.php
 lib/Model/WebhookPayloadCallReceivedCall.php
+lib/Model/WebhookPayloadCampaignBudgetDepleted.php
+lib/Model/WebhookPayloadCampaignBudgetDepletedAdObject.php
+lib/Model/WebhookPayloadCampaignBudgetDepletedBudget.php
 lib/Model/WebhookPayloadComment.php
 lib/Model/WebhookPayloadCommentAccount.php
 lib/Model/WebhookPayloadCommentComment.php
@@ -5799,3 +5815,12 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/WebhookAdsAccountTest.php
+test/Model/WebhookPayloadAdAccountStatusChangedAdAccountTest.php
+test/Model/WebhookPayloadAdAccountStatusChangedStatusTest.php
+test/Model/WebhookPayloadAdAccountStatusChangedTest.php
+test/Model/WebhookPayloadAdDeliveryIssueIssueTest.php
+test/Model/WebhookPayloadAdDeliveryIssueTest.php
+test/Model/WebhookPayloadCampaignBudgetDepletedAdObjectTest.php
+test/Model/WebhookPayloadCampaignBudgetDepletedBudgetTest.php
+test/Model/WebhookPayloadCampaignBudgetDepletedTest.php
