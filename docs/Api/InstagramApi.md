@@ -8,6 +8,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | ------------- | ------------- | ------------- |
 | [**getInstagramAudio()**](InstagramApi.md#getInstagramAudio) | **GET** /v1/accounts/{accountId}/instagram/audio/{audioId} | Get Instagram audio metadata |
 | [**getInstagramBusinessDiscovery()**](InstagramApi.md#getInstagramBusinessDiscovery) | **GET** /v1/accounts/{accountId}/instagram/business-discovery | Look up a public Instagram Business account |
+| [**getInstagramMentionedComment()**](InstagramApi.md#getInstagramMentionedComment) | **GET** /v1/accounts/{accountId}/instagram/mentions/comments/{commentId} | Get a comment that mentions an Instagram account |
+| [**getInstagramMentionedMedia()**](InstagramApi.md#getInstagramMentionedMedia) | **GET** /v1/accounts/{accountId}/instagram/mentions/media/{mediaId} | Get a post that mentions an Instagram account in its caption |
 | [**getInstagramPublishingLimit()**](InstagramApi.md#getInstagramPublishingLimit) | **GET** /v1/accounts/{accountId}/instagram/publishing-limit | Get Instagram publishing limit |
 | [**getInstagramStoryInsights()**](InstagramApi.md#getInstagramStoryInsights) | **GET** /v1/accounts/{accountId}/instagram/stories/{storyId}/insights | Get Instagram story insights |
 | [**listInstagramLiveMedia()**](InstagramApi.md#listInstagramLiveMedia) | **GET** /v1/accounts/{accountId}/instagram/live-media | List the live broadcasts of an Instagram account |
@@ -129,6 +131,130 @@ try {
 ### Return type
 
 [**\Zernio\Model\InstagramBusinessDiscovery**](../Model/InstagramBusinessDiscovery.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getInstagramMentionedComment()`
+
+```php
+getInstagramMentionedComment($account_id, $comment_id): \Zernio\Model\InstagramMentionedComment
+```
+
+Get a comment that mentions an Instagram account
+
+Returns a comment in which another Instagram user @mentioned the connected account, with the post it was left on. Meta sends the comment ID in its mention notification and offers no list of mentions, so this reads one mention by ID. Meta answers an error when comments are disabled on that post.  Requires an Instagram account connected via **Facebook Login**. Meta serves mentions on graph.facebook.com only, so accounts connected with classic Instagram Login receive a 400 (`instagram_mentions_require_facebook_login`) and must be reconnected choosing the Facebook option.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\InstagramApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The ID of a connected Instagram account (Facebook Login).
+$comment_id = 17894227972186120; // string | Instagram comment ID of the comment that mentions the account (digits only).
+
+try {
+    $result = $apiInstance->getInstagramMentionedComment($account_id, $comment_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InstagramApi->getInstagramMentionedComment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The ID of a connected Instagram account (Facebook Login). | |
+| **comment_id** | **string**| Instagram comment ID of the comment that mentions the account (digits only). | |
+
+### Return type
+
+[**\Zernio\Model\InstagramMentionedComment**](../Model/InstagramMentionedComment.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getInstagramMentionedMedia()`
+
+```php
+getInstagramMentionedMedia($account_id, $media_id): \Zernio\Model\InstagramMentionedMedia
+```
+
+Get a post that mentions an Instagram account in its caption
+
+Returns a post in which another Instagram user @mentioned the connected account in the caption. Meta sends the media ID in its mention notification and offers no list of mentions, so this reads one mention by ID. Mentions in Stories are not supported by Meta.  Requires an Instagram account connected via **Facebook Login**. Meta serves mentions on graph.facebook.com only, so accounts connected with classic Instagram Login receive a 400 (`instagram_mentions_require_facebook_login`) and must be reconnected choosing the Facebook option.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\InstagramApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The ID of a connected Instagram account (Facebook Login).
+$media_id = 18027939643230671; // string | Instagram media ID of the post that mentions the account (digits only).
+
+try {
+    $result = $apiInstance->getInstagramMentionedMedia($account_id, $media_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InstagramApi->getInstagramMentionedMedia: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The ID of a connected Instagram account (Facebook Login). | |
+| **media_id** | **string**| Instagram media ID of the post that mentions the account (digits only). | |
+
+### Return type
+
+[**\Zernio\Model\InstagramMentionedMedia**](../Model/InstagramMentionedMedia.md)
 
 ### Authorization
 

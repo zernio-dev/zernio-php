@@ -1453,6 +1453,9 @@ docs/Model/InstagramDemographicsResponse.md
 docs/Model/InstagramDemographicsResponseDemographicsValueInner.md
 docs/Model/InstagramLiveMedia.md
 docs/Model/InstagramMediaCollaborator.md
+docs/Model/InstagramMentionedComment.md
+docs/Model/InstagramMentionedCommentMedia.md
+docs/Model/InstagramMentionedMedia.md
 docs/Model/InstagramPlatformData.md
 docs/Model/InstagramPlatformDataAudioConfiguration.md
 docs/Model/InstagramPlatformDataTrialParams.md
@@ -4337,6 +4340,9 @@ lib/Model/InstagramDemographicsResponse.php
 lib/Model/InstagramDemographicsResponseDemographicsValueInner.php
 lib/Model/InstagramLiveMedia.php
 lib/Model/InstagramMediaCollaborator.php
+lib/Model/InstagramMentionedComment.php
+lib/Model/InstagramMentionedCommentMedia.php
+lib/Model/InstagramMentionedMedia.php
 lib/Model/InstagramPlatformData.php
 lib/Model/InstagramPlatformDataAudioConfiguration.php
 lib/Model/InstagramPlatformDataTrialParams.php
@@ -5769,5 +5775,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/PrepareMedia200ResponseTest.php
-test/Model/PrepareMediaRequestTest.php
+test/Model/InstagramMentionedCommentMediaTest.php
+test/Model/InstagramMentionedCommentTest.php
+test/Model/InstagramMentionedMediaTest.php
