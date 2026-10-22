@@ -86,6 +86,7 @@ class CommerceOrder implements ModelInterface, ArrayAccess, \JsonSerializable
         'billing_address' => '\Zernio\Model\CommerceAddress',
         'shipping_address' => '\Zernio\Model\CommerceAddress',
         'buyer_note' => 'string',
+        'attribution' => '\Zernio\Model\CommerceOrderAttribution',
         'line_items' => '\Zernio\Model\CommerceOrderLineItemsInner[]',
         'shipping_lines' => '\Zernio\Model\CommerceOrderChargeLine[]',
         'fee_lines' => '\Zernio\Model\CommerceOrderChargeLine[]',
@@ -130,6 +131,7 @@ class CommerceOrder implements ModelInterface, ArrayAccess, \JsonSerializable
         'billing_address' => null,
         'shipping_address' => null,
         'buyer_note' => null,
+        'attribution' => null,
         'line_items' => null,
         'shipping_lines' => null,
         'fee_lines' => null,
@@ -172,6 +174,7 @@ class CommerceOrder implements ModelInterface, ArrayAccess, \JsonSerializable
         'billing_address' => true,
         'shipping_address' => true,
         'buyer_note' => true,
+        'attribution' => false,
         'line_items' => false,
         'shipping_lines' => false,
         'fee_lines' => false,
@@ -294,6 +297,7 @@ class CommerceOrder implements ModelInterface, ArrayAccess, \JsonSerializable
         'billing_address' => 'billingAddress',
         'shipping_address' => 'shippingAddress',
         'buyer_note' => 'buyerNote',
+        'attribution' => 'attribution',
         'line_items' => 'lineItems',
         'shipping_lines' => 'shippingLines',
         'fee_lines' => 'feeLines',
@@ -336,6 +340,7 @@ class CommerceOrder implements ModelInterface, ArrayAccess, \JsonSerializable
         'billing_address' => 'setBillingAddress',
         'shipping_address' => 'setShippingAddress',
         'buyer_note' => 'setBuyerNote',
+        'attribution' => 'setAttribution',
         'line_items' => 'setLineItems',
         'shipping_lines' => 'setShippingLines',
         'fee_lines' => 'setFeeLines',
@@ -378,6 +383,7 @@ class CommerceOrder implements ModelInterface, ArrayAccess, \JsonSerializable
         'billing_address' => 'getBillingAddress',
         'shipping_address' => 'getShippingAddress',
         'buyer_note' => 'getBuyerNote',
+        'attribution' => 'getAttribution',
         'line_items' => 'getLineItems',
         'shipping_lines' => 'getShippingLines',
         'fee_lines' => 'getFeeLines',
@@ -513,6 +519,7 @@ class CommerceOrder implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('billing_address', $data ?? [], null);
         $this->setIfExists('shipping_address', $data ?? [], null);
         $this->setIfExists('buyer_note', $data ?? [], null);
+        $this->setIfExists('attribution', $data ?? [], null);
         $this->setIfExists('line_items', $data ?? [], null);
         $this->setIfExists('shipping_lines', $data ?? [], null);
         $this->setIfExists('fee_lines', $data ?? [], null);
@@ -1383,6 +1390,33 @@ class CommerceOrder implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['buyer_note'] = $buyer_note;
+
+        return $this;
+    }
+
+    /**
+     * Gets attribution
+     *
+     * @return \Zernio\Model\CommerceOrderAttribution|null
+     */
+    public function getAttribution()
+    {
+        return $this->container['attribution'];
+    }
+
+    /**
+     * Sets attribution
+     *
+     * @param \Zernio\Model\CommerceOrderAttribution|null $attribution attribution
+     *
+     * @return self
+     */
+    public function setAttribution($attribution)
+    {
+        if (is_null($attribution)) {
+            throw new \InvalidArgumentException('non-nullable attribution cannot be null');
+        }
+        $this->container['attribution'] = $attribution;
 
         return $this;
     }

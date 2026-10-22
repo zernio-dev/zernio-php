@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **billing_address** | [**\Zernio\Model\CommerceAddress**](CommerceAddress.md) |  | [optional]
 **shipping_address** | [**\Zernio\Model\CommerceAddress**](CommerceAddress.md) |  | [optional]
 **buyer_note** | **string** |  | [optional]
+**attribution** | [**\Zernio\Model\CommerceOrderAttribution**](CommerceOrderAttribution.md) |  | [optional]
 **line_items** | [**\Zernio\Model\CommerceOrderLineItemsInner[]**](CommerceOrderLineItemsInner.md) |  | [optional]
 **shipping_lines** | [**\Zernio\Model\CommerceOrderChargeLine[]**](CommerceOrderChargeLine.md) |  | [optional]
 **fee_lines** | [**\Zernio\Model\CommerceOrderChargeLine[]**](CommerceOrderChargeLine.md) | WooCommerce fees. Always empty on Shopify. | [optional]

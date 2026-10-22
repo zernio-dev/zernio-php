@@ -411,6 +411,7 @@ docs/Model/CommerceMetaobjectDefinitionFieldsInner.md
 docs/Model/CommerceMetaobjectFieldsInner.md
 docs/Model/CommerceMoney.md
 docs/Model/CommerceOrder.md
+docs/Model/CommerceOrderAttribution.md
 docs/Model/CommerceOrderChargeLine.md
 docs/Model/CommerceOrderCustomer.md
 docs/Model/CommerceOrderFulfillmentsInner.md
@@ -418,6 +419,8 @@ docs/Model/CommerceOrderLineItemsInner.md
 docs/Model/CommerceOrderRefundsInner.md
 docs/Model/CommerceOrderRefundsInnerLineItemsInner.md
 docs/Model/CommerceOrderStatus.md
+docs/Model/CommerceOrderVisit.md
+docs/Model/CommerceOrderVisitUtm.md
 docs/Model/CommercePage.md
 docs/Model/CommercePriceList.md
 docs/Model/CommerceProduct.md
@@ -3302,6 +3305,7 @@ lib/Model/CommerceMetaobjectDefinitionFieldsInner.php
 lib/Model/CommerceMetaobjectFieldsInner.php
 lib/Model/CommerceMoney.php
 lib/Model/CommerceOrder.php
+lib/Model/CommerceOrderAttribution.php
 lib/Model/CommerceOrderChargeLine.php
 lib/Model/CommerceOrderCustomer.php
 lib/Model/CommerceOrderFulfillmentsInner.php
@@ -3309,6 +3313,8 @@ lib/Model/CommerceOrderLineItemsInner.php
 lib/Model/CommerceOrderRefundsInner.php
 lib/Model/CommerceOrderRefundsInnerLineItemsInner.php
 lib/Model/CommerceOrderStatus.php
+lib/Model/CommerceOrderVisit.php
+lib/Model/CommerceOrderVisitUtm.php
 lib/Model/CommercePage.php
 lib/Model/CommercePriceList.php
 lib/Model/CommerceProduct.php
@@ -5783,9 +5789,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ListTikTokSmartPlusReviews200ResponseFailedSmartPlusAdsInnerErrorTest.php
-test/Model/ListTikTokSmartPlusReviews200ResponseFailedSmartPlusAdsInnerTest.php
-test/Model/ListTikTokSmartPlusReviews200ResponseItemsInnerTest.php
-test/Model/ListTikTokSmartPlusReviews200ResponseTest.php
-test/Model/TikTokSmartPlusAdLevelReviewTest.php
-test/Model/TikTokSmartPlusMaterialReviewTest.php
+test/Model/CommerceOrderAttributionTest.php
+test/Model/CommerceOrderVisitTest.php
+test/Model/CommerceOrderVisitUtmTest.php
