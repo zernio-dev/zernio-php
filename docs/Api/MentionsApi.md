@@ -18,7 +18,7 @@ listInboxMentions($account_id, $profile_id, $sort_order, $limit, $cursor): \Zern
 
 List mentions
 
-Returns mentions of your connected organization accounts, delivered via platform webhooks. Currently supports LinkedIn organization mentions.  Requires Inbox addon.
+Returns mentions of your connected accounts from the last 7 days.  - **LinkedIn**: organization mentions, delivered by webhooks and a background pull. - **Instagram**: comment mentions (someone tags the account in a comment) and caption mentions   (someone tags it in their media caption), delivered by Meta webhooks. Accounts connected through   Instagram Login receive comment mentions only. Accounts connected through Facebook Login receive   both; their text is read from Instagram in the background after the first request, so `content`   can be empty on the first read. Pass `mediaId` and `commentId` to `POST /v1/inbox/mentions/reply`   to answer one.  Requires Inbox addon.
 
 ### Example
 
@@ -86,7 +86,7 @@ replyToMention($reply_to_mention_request): \Zernio\Model\ReplyToMention200Respon
 
 Reply to a mention
 
-Reply to a mention of the connected account. Supported on Instagram only.  Two shapes, selected by whether `commentId` is present:  - **Comment mention** (someone @mentioned the account inside a comment): pass both   `mediaId` and `commentId`. Instagram posts a reply under that comment. - **Caption mention** (someone @mentioned the account in their media caption, so no   comment exists): pass `mediaId` only. Instagram posts a comment on their media.  Story mentions are not supported by Instagram's API.  `GET /v1/inbox/mentions` currently returns LinkedIn mentions only and does not surface Instagram mentions. Source `mediaId` and `commentId` from Instagram's `comments` webhook, which is where mention notifications are delivered for accounts connected through Instagram Login.
+Reply to a mention of the connected account. Supported on Instagram only.  Two shapes, selected by whether `commentId` is present:  - **Comment mention** (someone @mentioned the account inside a comment): pass both   `mediaId` and `commentId`. Instagram posts a reply under that comment. - **Caption mention** (someone @mentioned the account in their media caption, so no   comment exists): pass `mediaId` only. Instagram posts a comment on their media.  Story mentions are not supported by Instagram's API.  `GET /v1/inbox/mentions` returns Instagram mentions with the `mediaId` and `commentId` to pass here.
 
 ### Example
 
