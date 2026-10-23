@@ -725,7 +725,7 @@ try {
 ## `getFollowerStats()`
 
 ```php
-getFollowerStats($account_ids, $profile_id, $from_date, $to_date, $granularity): \Zernio\Model\FollowerStatsResponse
+getFollowerStats($account_ids, $profile_id, $from_date, $to_date, $granularity, $limit, $cursor): \Zernio\Model\FollowerStatsResponse
 ```
 
 Get follower stats
@@ -754,9 +754,11 @@ $profile_id = 'profile_id_example'; // string | Filter by profile ID
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start date in YYYY-MM-DD format (defaults to 30 days ago)
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date in YYYY-MM-DD format (defaults to today)
 $granularity = 'daily'; // string | Data aggregation level
+$limit = 56; // int | Accounts per page, ordered by account id. Send it to page through accounts; the response then carries `pagination.nextCursor`. Without limit or cursor every matching account is returned.
+$cursor = 'cursor_example'; // string | Opaque cursor from a previous response's `pagination.nextCursor`; returns the next page of `limit` accounts (25 when limit is omitted). A cursor we cannot parse returns 400.
 
 try {
-    $result = $apiInstance->getFollowerStats($account_ids, $profile_id, $from_date, $to_date, $granularity);
+    $result = $apiInstance->getFollowerStats($account_ids, $profile_id, $from_date, $to_date, $granularity, $limit, $cursor);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AnalyticsApi->getFollowerStats: ', $e->getMessage(), PHP_EOL;
@@ -772,6 +774,8 @@ try {
 | **from_date** | **\DateTime**| Start date in YYYY-MM-DD format (defaults to 30 days ago) | [optional] |
 | **to_date** | **\DateTime**| End date in YYYY-MM-DD format (defaults to today) | [optional] |
 | **granularity** | **string**| Data aggregation level | [optional] [default to &#39;daily&#39;] |
+| **limit** | **int**| Accounts per page, ordered by account id. Send it to page through accounts; the response then carries &#x60;pagination.nextCursor&#x60;. Without limit or cursor every matching account is returned. | [optional] |
+| **cursor** | **string**| Opaque cursor from a previous response&#39;s &#x60;pagination.nextCursor&#x60;; returns the next page of &#x60;limit&#x60; accounts (25 when limit is omitted). A cursor we cannot parse returns 400. | [optional] |
 
 ### Return type
 

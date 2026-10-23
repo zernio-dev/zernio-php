@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **stats** | **array<string,\Zernio\Model\FollowerStatsResponseStatsValueInner[]>** |  | [optional]
 **date_range** | [**\Zernio\Model\FollowerStatsResponseDateRange**](FollowerStatsResponseDateRange.md) |  | [optional]
 **granularity** | **string** |  | [optional]
+**pagination** | [**\Zernio\Model\AccountCursorPagination**](AccountCursorPagination.md) | Only present when limit or cursor is sent. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

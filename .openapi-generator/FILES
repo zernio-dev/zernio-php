@@ -84,9 +84,11 @@ docs/Api/WorkflowsApi.md
 docs/Model/AcceptConversationRequest200Response.md
 docs/Model/AcceptConversationRequest200ResponseData.md
 docs/Model/AcceptConversationRequestRequest.md
+docs/Model/AccountCursorPagination.md
 docs/Model/AccountWithFollowerStats.md
 docs/Model/AccountWithFollowerStatsAllOfAccountStats.md
 docs/Model/AccountsListResponse.md
+docs/Model/AccountsListResponsePagination.md
 docs/Model/AccountsListResponseStatusCounts.md
 docs/Model/ActivateSequence200Response.md
 docs/Model/ActivateWorkflow200Response.md
@@ -2995,9 +2997,11 @@ lib/HeaderSelector.php
 lib/Model/AcceptConversationRequest200Response.php
 lib/Model/AcceptConversationRequest200ResponseData.php
 lib/Model/AcceptConversationRequestRequest.php
+lib/Model/AccountCursorPagination.php
 lib/Model/AccountWithFollowerStats.php
 lib/Model/AccountWithFollowerStatsAllOfAccountStats.php
 lib/Model/AccountsListResponse.php
+lib/Model/AccountsListResponsePagination.php
 lib/Model/AccountsListResponseStatusCounts.php
 lib/Model/ActivateSequence200Response.php
 lib/Model/ActivateWorkflow200Response.php
@@ -5823,5 +5827,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/RemoveUsersFromAdAudience200ResponseTest.php
-test/Model/RemoveUsersFromAdAudienceRequestTest.php
+test/Model/AccountCursorPaginationTest.php
+test/Model/AccountsListResponsePaginationTest.php

@@ -336,7 +336,7 @@ try {
 ## `getFollowerStats()`
 
 ```php
-getFollowerStats($account_ids, $profile_id, $from_date, $to_date, $granularity): \Zernio\Model\FollowerStatsResponse
+getFollowerStats($account_ids, $profile_id, $from_date, $to_date, $granularity, $limit, $cursor): \Zernio\Model\FollowerStatsResponse
 ```
 
 Get follower stats
@@ -365,9 +365,11 @@ $profile_id = 'profile_id_example'; // string | Filter by profile ID
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start date in YYYY-MM-DD format (defaults to 30 days ago)
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date in YYYY-MM-DD format (defaults to today)
 $granularity = 'daily'; // string | Data aggregation level
+$limit = 56; // int | Accounts per page, ordered by account id. Send it to page through accounts; the response then carries `pagination.nextCursor`. Without limit or cursor every matching account is returned.
+$cursor = 'cursor_example'; // string | Opaque cursor from a previous response's `pagination.nextCursor`; returns the next page of `limit` accounts (25 when limit is omitted). A cursor we cannot parse returns 400.
 
 try {
-    $result = $apiInstance->getFollowerStats($account_ids, $profile_id, $from_date, $to_date, $granularity);
+    $result = $apiInstance->getFollowerStats($account_ids, $profile_id, $from_date, $to_date, $granularity, $limit, $cursor);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountsApi->getFollowerStats: ', $e->getMessage(), PHP_EOL;
@@ -383,6 +385,8 @@ try {
 | **from_date** | **\DateTime**| Start date in YYYY-MM-DD format (defaults to 30 days ago) | [optional] |
 | **to_date** | **\DateTime**| End date in YYYY-MM-DD format (defaults to today) | [optional] |
 | **granularity** | **string**| Data aggregation level | [optional] [default to &#39;daily&#39;] |
+| **limit** | **int**| Accounts per page, ordered by account id. Send it to page through accounts; the response then carries &#x60;pagination.nextCursor&#x60;. Without limit or cursor every matching account is returned. | [optional] |
+| **cursor** | **string**| Opaque cursor from a previous response&#39;s &#x60;pagination.nextCursor&#x60;; returns the next page of &#x60;limit&#x60; accounts (25 when limit is omitted). A cursor we cannot parse returns 400. | [optional] |
 
 ### Return type
 
@@ -712,12 +716,12 @@ try {
 ## `listAccounts()`
 
 ```php
-listAccounts($profile_id, $platform, $status, $search, $category, $sort, $order, $include_over_limit, $exclude_hidden, $include_sandbox, $include_status_counts, $page, $limit, $profile_ids, $per_profile): \Zernio\Model\AccountsListResponse
+listAccounts($profile_id, $platform, $status, $search, $category, $sort, $order, $include_over_limit, $exclude_hidden, $include_sandbox, $include_status_counts, $page, $limit, $cursor, $profile_ids, $per_profile): \Zernio\Model\AccountsListResponse
 ```
 
 List accounts
 
-Returns connected accounts. Only includes accounts within the plan limit by default. Follower data requires analytics add-on. Supports optional server-side pagination via page/limit params. When omitted, returns all accounts (backward-compatible). page and limit must be supplied together; out-of-range page/limit values are rejected with 400 rather than silently clamped.
+Returns connected accounts. Only includes accounts within the plan limit by default. Follower data requires analytics add-on. Supports optional server-side pagination. When omitted, returns all accounts (backward-compatible). Cursor paging: send `limit` alone for the first page, then pass `pagination.nextCursor` back as `cursor` until it is null. Pages are ordered by account id, so accounts added or removed between calls never shift a page. Cannot be combined with `page`, `sort` or `perProfile`. Offset paging: send `page` and `limit` together. Out-of-range page/limit values are rejected with 400 rather than silently clamped.
 
 ### Example
 
@@ -741,19 +745,20 @@ $platform = 'platform_example'; // string | Filter accounts by platform (e.g. \"
 $status = 'status_example'; // string | Filter accounts by connection status. `connected` returns healthy accounts; `disconnected` returns accounts that need reconnection (per the same reconnection check surfaced in the dashboard). Omit to return accounts in any status. When combined with page/limit, pagination totals reflect the filtered result set.
 $search = 'search_example'; // string | Case-insensitive match on the account username, display name or platform user id, or an exact account id. Combine with page/limit to paginate the matches.
 $category = 'category_example'; // string | Only accounts of this kind. ads = ad accounts (Meta, Google, LinkedIn, Pinterest, TikTok, X, OpenAI, Reddit), communication = WhatsApp, Telegram, Discord, Slack and iMessage, blogs = Shopify and WordPress, crm = HubSpot, social = every other platform.
-$sort = 'sort_example'; // string | Sort a paginated listing (page/limit) by account name, platform, profile name, status (accounts needing a reconnect first when ascending) or connection date. Ties keep the default order: platform, then newest first.
+$sort = 'sort_example'; // string | Sort an offset-paginated listing (page and limit) by account name, platform, profile name, status (accounts needing a reconnect first when ascending) or connection date. Ties keep the default order: platform, then newest first.
 $order = 'asc'; // string | Direction for `sort`.
 $include_over_limit = false; // bool | When true, includes accounts from over-limit profiles.
 $exclude_hidden = false; // bool | When true, leaves out accounts the dashboard does not show as connections: posting accounts with `enabled: false` (ads accounts are always kept, whatever their `enabled` value) and the internal `sms` and `phone` accounts behind each phone number. Applied before pagination, so page totals and `statusCounts` count only the remaining accounts. Sandbox accounts added by `includeSandbox` are appended after this filter. Accepts `true` or `false` in any letter case; any other value returns 400.
-$include_sandbox = false; // bool | When true, appends the shared WhatsApp sandbox account and the iMessage sandbox account to the list when they are active, honouring `platform` but no other filter. Ignored on a paginated request (page/limit) and together with `perProfile`. Accepts `true` or `false` in any letter case; any other value returns 400.
+$include_sandbox = false; // bool | When true, appends the shared WhatsApp sandbox account and the iMessage sandbox account to the list when they are active, honouring `platform` but no other filter. Ignored on a paginated request (page, limit or cursor) and together with `perProfile`. Accepts `true` or `false` in any letter case; any other value returns 400.
 $include_status_counts = false; // bool | When true, the response carries `statusCounts`: how many accounts match every other filter of the request (with `status` lifted) in total and how many of those need a reconnection. Accepts `true` or `false` in any letter case; any other value returns 400.
-$page = 56; // int | Page number (1-based). Must be provided together with limit to enable server-side pagination; sending only one of the two returns 400. Omit both for all accounts.
-$limit = 56; // int | Page size. Must be provided together with page; sending only one of the two returns 400.
+$page = 56; // int | Page number (1-based) for offset paging. Requires limit; omit page, limit and cursor for all accounts.
+$limit = 56; // int | Page size. With page, an offset page; alone or with cursor, a cursor page.
+$cursor = 'cursor_example'; // string | Opaque cursor from a previous response's `pagination.nextCursor`; returns the next page of `limit` accounts (500 when limit is omitted). A cursor we cannot parse returns 400. Cannot be combined with page.
 $profile_ids = 'profile_ids_example'; // string | Comma-separated profile IDs (up to 50) to preview, together with perProfile. The response then also carries `profileTotals`.
-$per_profile = 56; // int | Return a preview of each profile in profileIds: the newest account of every platform it has, topped up to at least N. Requires profileIds; cannot be combined with page and limit.
+$per_profile = 56; // int | Return a preview of each profile in profileIds: the newest account of every platform it has, topped up to at least N. Requires profileIds; cannot be combined with page, limit or cursor.
 
 try {
-    $result = $apiInstance->listAccounts($profile_id, $platform, $status, $search, $category, $sort, $order, $include_over_limit, $exclude_hidden, $include_sandbox, $include_status_counts, $page, $limit, $profile_ids, $per_profile);
+    $result = $apiInstance->listAccounts($profile_id, $platform, $status, $search, $category, $sort, $order, $include_over_limit, $exclude_hidden, $include_sandbox, $include_status_counts, $page, $limit, $cursor, $profile_ids, $per_profile);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountsApi->listAccounts: ', $e->getMessage(), PHP_EOL;
@@ -769,16 +774,17 @@ try {
 | **status** | **string**| Filter accounts by connection status. &#x60;connected&#x60; returns healthy accounts; &#x60;disconnected&#x60; returns accounts that need reconnection (per the same reconnection check surfaced in the dashboard). Omit to return accounts in any status. When combined with page/limit, pagination totals reflect the filtered result set. | [optional] |
 | **search** | **string**| Case-insensitive match on the account username, display name or platform user id, or an exact account id. Combine with page/limit to paginate the matches. | [optional] |
 | **category** | **string**| Only accounts of this kind. ads &#x3D; ad accounts (Meta, Google, LinkedIn, Pinterest, TikTok, X, OpenAI, Reddit), communication &#x3D; WhatsApp, Telegram, Discord, Slack and iMessage, blogs &#x3D; Shopify and WordPress, crm &#x3D; HubSpot, social &#x3D; every other platform. | [optional] |
-| **sort** | **string**| Sort a paginated listing (page/limit) by account name, platform, profile name, status (accounts needing a reconnect first when ascending) or connection date. Ties keep the default order: platform, then newest first. | [optional] |
+| **sort** | **string**| Sort an offset-paginated listing (page and limit) by account name, platform, profile name, status (accounts needing a reconnect first when ascending) or connection date. Ties keep the default order: platform, then newest first. | [optional] |
 | **order** | **string**| Direction for &#x60;sort&#x60;. | [optional] [default to &#39;asc&#39;] |
 | **include_over_limit** | **bool**| When true, includes accounts from over-limit profiles. | [optional] [default to false] |
 | **exclude_hidden** | **bool**| When true, leaves out accounts the dashboard does not show as connections: posting accounts with &#x60;enabled: false&#x60; (ads accounts are always kept, whatever their &#x60;enabled&#x60; value) and the internal &#x60;sms&#x60; and &#x60;phone&#x60; accounts behind each phone number. Applied before pagination, so page totals and &#x60;statusCounts&#x60; count only the remaining accounts. Sandbox accounts added by &#x60;includeSandbox&#x60; are appended after this filter. Accepts &#x60;true&#x60; or &#x60;false&#x60; in any letter case; any other value returns 400. | [optional] [default to false] |
-| **include_sandbox** | **bool**| When true, appends the shared WhatsApp sandbox account and the iMessage sandbox account to the list when they are active, honouring &#x60;platform&#x60; but no other filter. Ignored on a paginated request (page/limit) and together with &#x60;perProfile&#x60;. Accepts &#x60;true&#x60; or &#x60;false&#x60; in any letter case; any other value returns 400. | [optional] [default to false] |
+| **include_sandbox** | **bool**| When true, appends the shared WhatsApp sandbox account and the iMessage sandbox account to the list when they are active, honouring &#x60;platform&#x60; but no other filter. Ignored on a paginated request (page, limit or cursor) and together with &#x60;perProfile&#x60;. Accepts &#x60;true&#x60; or &#x60;false&#x60; in any letter case; any other value returns 400. | [optional] [default to false] |
 | **include_status_counts** | **bool**| When true, the response carries &#x60;statusCounts&#x60;: how many accounts match every other filter of the request (with &#x60;status&#x60; lifted) in total and how many of those need a reconnection. Accepts &#x60;true&#x60; or &#x60;false&#x60; in any letter case; any other value returns 400. | [optional] [default to false] |
-| **page** | **int**| Page number (1-based). Must be provided together with limit to enable server-side pagination; sending only one of the two returns 400. Omit both for all accounts. | [optional] |
-| **limit** | **int**| Page size. Must be provided together with page; sending only one of the two returns 400. | [optional] |
+| **page** | **int**| Page number (1-based) for offset paging. Requires limit; omit page, limit and cursor for all accounts. | [optional] |
+| **limit** | **int**| Page size. With page, an offset page; alone or with cursor, a cursor page. | [optional] |
+| **cursor** | **string**| Opaque cursor from a previous response&#39;s &#x60;pagination.nextCursor&#x60;; returns the next page of &#x60;limit&#x60; accounts (500 when limit is omitted). A cursor we cannot parse returns 400. Cannot be combined with page. | [optional] |
 | **profile_ids** | **string**| Comma-separated profile IDs (up to 50) to preview, together with perProfile. The response then also carries &#x60;profileTotals&#x60;. | [optional] |
-| **per_profile** | **int**| Return a preview of each profile in profileIds: the newest account of every platform it has, topped up to at least N. Requires profileIds; cannot be combined with page and limit. | [optional] |
+| **per_profile** | **int**| Return a preview of each profile in profileIds: the newest account of every platform it has, topped up to at least N. Requires profileIds; cannot be combined with page, limit or cursor. | [optional] |
 
 ### Return type
 
