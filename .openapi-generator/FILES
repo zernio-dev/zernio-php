@@ -467,6 +467,7 @@ docs/Model/ConnectWordPressWithApplicationPasswordRequest.md
 docs/Model/Connected.md
 docs/Model/ConnectedAccount.md
 docs/Model/ConnectedApp.md
+docs/Model/ConversationAdAttribution.md
 docs/Model/ConversionAction.md
 docs/Model/ConversionActionTagSnippetsInner.md
 docs/Model/ConversionDestination.md
@@ -1098,7 +1099,6 @@ docs/Model/GetImessageSender200Response.md
 docs/Model/GetImessageSender200ResponseHealth.md
 docs/Model/GetInboxConversation200Response.md
 docs/Model/GetInboxConversation200ResponseData.md
-docs/Model/GetInboxConversation200ResponseDataMetadata.md
 docs/Model/GetInboxConversationAnalytics200Response.md
 docs/Model/GetInboxConversationAnalytics200ResponseBySourceInner.md
 docs/Model/GetInboxConversationAnalytics200ResponseSummary.md
@@ -1419,6 +1419,7 @@ docs/Model/ImessageAudienceContactOptIn.md
 docs/Model/ImessageSandboxContact.md
 docs/Model/ImessageSender.md
 docs/Model/ImessageSenderLifecycle.md
+docs/Model/InboxConversationAdMetadata.md
 docs/Model/InboxMessageEditAttachment.md
 docs/Model/InboxMessageEditHistoryEntry.md
 docs/Model/InboxWebhookAccount.md
@@ -1673,7 +1674,6 @@ docs/Model/ListInboxConversationAnalytics200ResponsePagination.md
 docs/Model/ListInboxConversations200Response.md
 docs/Model/ListInboxConversations200ResponseDataInner.md
 docs/Model/ListInboxConversations200ResponseDataInnerInstagramProfile.md
-docs/Model/ListInboxConversations200ResponseDataInnerMetadata.md
 docs/Model/ListInboxConversations200ResponseMeta.md
 docs/Model/ListInboxConversations200ResponseMetaAccountsSkippedInner.md
 docs/Model/ListInboxConversations200ResponseMetaFailedAccountsInner.md
@@ -2756,6 +2756,7 @@ docs/Model/WebhookPayloadContactTagContact.md
 docs/Model/WebhookPayloadConversationControlChanged.md
 docs/Model/WebhookPayloadConversationControlChangedControl.md
 docs/Model/WebhookPayloadConversationStarted.md
+docs/Model/WebhookPayloadConversationStartedConversation.md
 docs/Model/WebhookPayloadExternalPost.md
 docs/Model/WebhookPayloadLead.md
 docs/Model/WebhookPayloadLeadAccount.md
@@ -3374,6 +3375,7 @@ lib/Model/ConnectWordPressWithApplicationPasswordRequest.php
 lib/Model/Connected.php
 lib/Model/ConnectedAccount.php
 lib/Model/ConnectedApp.php
+lib/Model/ConversationAdAttribution.php
 lib/Model/ConversionAction.php
 lib/Model/ConversionActionTagSnippetsInner.php
 lib/Model/ConversionDestination.php
@@ -4005,7 +4007,6 @@ lib/Model/GetImessageSender200Response.php
 lib/Model/GetImessageSender200ResponseHealth.php
 lib/Model/GetInboxConversation200Response.php
 lib/Model/GetInboxConversation200ResponseData.php
-lib/Model/GetInboxConversation200ResponseDataMetadata.php
 lib/Model/GetInboxConversationAnalytics200Response.php
 lib/Model/GetInboxConversationAnalytics200ResponseBySourceInner.php
 lib/Model/GetInboxConversationAnalytics200ResponseSummary.php
@@ -4326,6 +4327,7 @@ lib/Model/ImessageAudienceContactOptIn.php
 lib/Model/ImessageSandboxContact.php
 lib/Model/ImessageSender.php
 lib/Model/ImessageSenderLifecycle.php
+lib/Model/InboxConversationAdMetadata.php
 lib/Model/InboxMessageEditAttachment.php
 lib/Model/InboxMessageEditHistoryEntry.php
 lib/Model/InboxWebhookAccount.php
@@ -4580,7 +4582,6 @@ lib/Model/ListInboxConversationAnalytics200ResponsePagination.php
 lib/Model/ListInboxConversations200Response.php
 lib/Model/ListInboxConversations200ResponseDataInner.php
 lib/Model/ListInboxConversations200ResponseDataInnerInstagramProfile.php
-lib/Model/ListInboxConversations200ResponseDataInnerMetadata.php
 lib/Model/ListInboxConversations200ResponseMeta.php
 lib/Model/ListInboxConversations200ResponseMetaAccountsSkippedInner.php
 lib/Model/ListInboxConversations200ResponseMetaFailedAccountsInner.php
@@ -5664,6 +5665,7 @@ lib/Model/WebhookPayloadContactTagContact.php
 lib/Model/WebhookPayloadConversationControlChanged.php
 lib/Model/WebhookPayloadConversationControlChangedControl.php
 lib/Model/WebhookPayloadConversationStarted.php
+lib/Model/WebhookPayloadConversationStartedConversation.php
 lib/Model/WebhookPayloadExternalPost.php
 lib/Model/WebhookPayloadLead.php
 lib/Model/WebhookPayloadLeadAccount.php
@@ -5815,12 +5817,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/WebhookAdsAccountTest.php
-test/Model/WebhookPayloadAdAccountStatusChangedAdAccountTest.php
-test/Model/WebhookPayloadAdAccountStatusChangedStatusTest.php
-test/Model/WebhookPayloadAdAccountStatusChangedTest.php
-test/Model/WebhookPayloadAdDeliveryIssueIssueTest.php
-test/Model/WebhookPayloadAdDeliveryIssueTest.php
-test/Model/WebhookPayloadCampaignBudgetDepletedAdObjectTest.php
-test/Model/WebhookPayloadCampaignBudgetDepletedBudgetTest.php
-test/Model/WebhookPayloadCampaignBudgetDepletedTest.php
+test/Model/ConversationAdAttributionTest.php
+test/Model/InboxConversationAdMetadataTest.php

@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **updated_time** | **\DateTime** |  | [optional]
 **participants** | [**\Zernio\Model\UpdateFacebookPage200ResponseSelectedPage[]**](UpdateFacebookPage200ResponseSelectedPage.md) |  | [optional]
 **instagram_profile** | [**\Zernio\Model\ListInboxConversations200ResponseDataInnerInstagramProfile**](ListInboxConversations200ResponseDataInnerInstagramProfile.md) |  | [optional]
-**metadata** | [**\Zernio\Model\GetInboxConversation200ResponseDataMetadata**](GetInboxConversation200ResponseDataMetadata.md) |  | [optional]
+**metadata** | [**\Zernio\Model\InboxConversationAdMetadata**](InboxConversationAdMetadata.md) |  | [optional]
+**ad_attribution** | [**\Zernio\Model\ConversationAdAttribution**](ConversationAdAttribution.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

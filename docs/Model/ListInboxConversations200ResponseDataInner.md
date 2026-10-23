@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **is_group** | **bool** | iMessage only, true for a group thread. Manage it through the /v1/imessage/groups/{conversationId} endpoints. | [optional]
 **url** | **string** | Direct link to open the conversation on the platform (if available) | [optional]
 **instagram_profile** | [**\Zernio\Model\ListInboxConversations200ResponseDataInnerInstagramProfile**](ListInboxConversations200ResponseDataInnerInstagramProfile.md) |  | [optional]
-**metadata** | [**\Zernio\Model\ListInboxConversations200ResponseDataInnerMetadata**](ListInboxConversations200ResponseDataInnerMetadata.md) |  | [optional]
+**metadata** | [**\Zernio\Model\InboxConversationAdMetadata**](InboxConversationAdMetadata.md) |  | [optional]
+**ad_attribution** | [**\Zernio\Model\ConversationAdAttribution**](ConversationAdAttribution.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
