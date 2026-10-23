@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **page_size** | **int** |  | [optional]
 **total_rows** | **int** |  | [optional]
 **total_pages** | **int** |  | [optional]
+**missing_rows** | **int** | Rows TikTok declared that a read and its retry could not return. 0 when the result is complete. | [optional]
 **rows** | [**\Zernio\Model\GetTikTokSmartPlusMaterialReport200ResponseRowsInner[]**](GetTikTokSmartPlusMaterialReport200ResponseRowsInner.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
