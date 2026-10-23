@@ -11,6 +11,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**deleteAdAudience()**](AdAudiencesApi.md#deleteAdAudience) | **DELETE** /v1/ads/audiences/{audienceId} | Delete custom audience |
 | [**getAdAudience()**](AdAudiencesApi.md#getAdAudience) | **GET** /v1/ads/audiences/{audienceId} | Get audience details |
 | [**listAdAudiences()**](AdAudiencesApi.md#listAdAudiences) | **GET** /v1/ads/audiences | List custom audiences |
+| [**removeUsersFromAdAudience()**](AdAudiencesApi.md#removeUsersFromAdAudience) | **DELETE** /v1/ads/audiences/{audienceId}/users | Remove users from audience |
 | [**replaceAdAudienceCompanies()**](AdAudiencesApi.md#replaceAdAudienceCompanies) | **POST** /v1/ads/audiences/{audienceId}/companies | Replace audience companies |
 | [**updateAdAudience()**](AdAudiencesApi.md#updateAdAudience) | **PUT** /v1/ads/audiences/{audienceId} | Update an audience |
 
@@ -317,6 +318,68 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `removeUsersFromAdAudience()`
+
+```php
+removeUsersFromAdAudience($audience_id, $remove_users_from_ad_audience_request): \Zernio\Model\RemoveUsersFromAdAudience200Response
+```
+
+Remove users from audience
+
+Removes customer emails and phone numbers from a Meta customer list audience. Same body as `POST /v1/ads/audiences/{audienceId}/users`: send plaintext rows, they are normalized and SHA256-hashed server-side exactly like an upload, so a row removes the person it added.  Meta only, customer_list only. Every other platform returns 422 with code `feature_not_available`, and every other audience type returns 422. Max 10,000 users per request. Meta applies the removal asynchronously, so the audience size does not drop immediately.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdAudiencesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$audience_id = 'audience_id_example'; // string | The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id.
+$remove_users_from_ad_audience_request = new \Zernio\Model\RemoveUsersFromAdAudienceRequest(); // \Zernio\Model\RemoveUsersFromAdAudienceRequest
+
+try {
+    $result = $apiInstance->removeUsersFromAdAudience($audience_id, $remove_users_from_ad_audience_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdAudiencesApi->removeUsersFromAdAudience: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **audience_id** | **string**| The Zernio audience id (the id field of GET /v1/ads/audiences), not the platform segment id. | |
+| **remove_users_from_ad_audience_request** | [**\Zernio\Model\RemoveUsersFromAdAudienceRequest**](../Model/RemoveUsersFromAdAudienceRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\RemoveUsersFromAdAudience200Response**](../Model/RemoveUsersFromAdAudience200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

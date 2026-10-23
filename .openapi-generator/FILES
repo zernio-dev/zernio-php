@@ -2031,6 +2031,8 @@ docs/Model/RemovePageUser200Response.md
 docs/Model/RemoveTrackingTagFromStore200Response.md
 docs/Model/RemoveTrackingTagFromStore200ResponseInstall.md
 docs/Model/RemoveTrackingTagUser200Response.md
+docs/Model/RemoveUsersFromAdAudience200Response.md
+docs/Model/RemoveUsersFromAdAudienceRequest.md
 docs/Model/RemoveWhatsAppGroupParticipantsRequest.md
 docs/Model/ReorderCommerceCollectionProductsRequest.md
 docs/Model/ReorderCommerceCollectionProductsRequestMovesInner.md
@@ -4941,6 +4943,8 @@ lib/Model/RemovePageUser200Response.php
 lib/Model/RemoveTrackingTagFromStore200Response.php
 lib/Model/RemoveTrackingTagFromStore200ResponseInstall.php
 lib/Model/RemoveTrackingTagUser200Response.php
+lib/Model/RemoveUsersFromAdAudience200Response.php
+lib/Model/RemoveUsersFromAdAudienceRequest.php
 lib/Model/RemoveWhatsAppGroupParticipantsRequest.php
 lib/Model/ReorderCommerceCollectionProductsRequest.php
 lib/Model/ReorderCommerceCollectionProductsRequestMovesInner.php
@@ -5819,3 +5823,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/RemoveUsersFromAdAudience200ResponseTest.php
+test/Model/RemoveUsersFromAdAudienceRequestTest.php
