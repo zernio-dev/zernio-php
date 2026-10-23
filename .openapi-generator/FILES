@@ -2723,6 +2723,11 @@ docs/Model/WebhookPayloadAdReview.md
 docs/Model/WebhookPayloadAdReviewAdObject.md
 docs/Model/WebhookPayloadAdReviewReview.md
 docs/Model/WebhookPayloadAdReviewReviewReasonsInner.md
+docs/Model/WebhookPayloadAdRuleTriggered.md
+docs/Model/WebhookPayloadAdRuleTriggeredObjectsInner.md
+docs/Model/WebhookPayloadAdRuleTriggeredObjectsInnerConditionsInner.md
+docs/Model/WebhookPayloadAdRuleTriggeredRule.md
+docs/Model/WebhookPayloadAdRuleTriggeredRun.md
 docs/Model/WebhookPayloadAdStatusChanged.md
 docs/Model/WebhookPayloadAdStatusChangedAccount.md
 docs/Model/WebhookPayloadAdStatusChangedAdObject.md
@@ -5642,6 +5647,11 @@ lib/Model/WebhookPayloadAdReview.php
 lib/Model/WebhookPayloadAdReviewAdObject.php
 lib/Model/WebhookPayloadAdReviewReview.php
 lib/Model/WebhookPayloadAdReviewReviewReasonsInner.php
+lib/Model/WebhookPayloadAdRuleTriggered.php
+lib/Model/WebhookPayloadAdRuleTriggeredObjectsInner.php
+lib/Model/WebhookPayloadAdRuleTriggeredObjectsInnerConditionsInner.php
+lib/Model/WebhookPayloadAdRuleTriggeredRule.php
+lib/Model/WebhookPayloadAdRuleTriggeredRun.php
 lib/Model/WebhookPayloadAdStatusChanged.php
 lib/Model/WebhookPayloadAdStatusChangedAccount.php
 lib/Model/WebhookPayloadAdStatusChangedAdObject.php
@@ -5837,3 +5847,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/WebhookPayloadAdRuleTriggeredObjectsInnerConditionsInnerTest.php
+test/Model/WebhookPayloadAdRuleTriggeredObjectsInnerTest.php
+test/Model/WebhookPayloadAdRuleTriggeredRuleTest.php
+test/Model/WebhookPayloadAdRuleTriggeredRunTest.php
+test/Model/WebhookPayloadAdRuleTriggeredTest.php
