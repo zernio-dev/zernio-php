@@ -446,6 +446,10 @@ docs/Model/ConnectAds200ResponseOneOf1.md
 docs/Model/ConnectBlueskyCredentials200Response.md
 docs/Model/ConnectBlueskyCredentialsRequest.md
 docs/Model/ConnectDiscordChannelRequest.md
+docs/Model/ConnectHandoff.md
+docs/Model/ConnectHandoffAccountsInner.md
+docs/Model/ConnectHandoffError.md
+docs/Model/ConnectHandoffLink.md
 docs/Model/ConnectOpenAIAdsCredentials200Response.md
 docs/Model/ConnectOpenAIAdsCredentialsRequest.md
 docs/Model/ConnectShopifyWithToken200Response.md
@@ -1225,6 +1229,7 @@ docs/Model/GetSequence200Response.md
 docs/Model/GetSequence200ResponseSequence.md
 docs/Model/GetSequence200ResponseSequenceStepsInner.md
 docs/Model/GetSequence200ResponseSequenceStepsInnerTemplate.md
+docs/Model/GetShopifyConnectUrl200Response.md
 docs/Model/GetSipTrunk200Response.md
 docs/Model/GetSipTrunk200ResponseNumbersInner.md
 docs/Model/GetSlackSettings200Response.md
@@ -3359,6 +3364,10 @@ lib/Model/ConnectAds200ResponseOneOf1.php
 lib/Model/ConnectBlueskyCredentials200Response.php
 lib/Model/ConnectBlueskyCredentialsRequest.php
 lib/Model/ConnectDiscordChannelRequest.php
+lib/Model/ConnectHandoff.php
+lib/Model/ConnectHandoffAccountsInner.php
+lib/Model/ConnectHandoffError.php
+lib/Model/ConnectHandoffLink.php
 lib/Model/ConnectOpenAIAdsCredentials200Response.php
 lib/Model/ConnectOpenAIAdsCredentialsRequest.php
 lib/Model/ConnectShopifyWithToken200Response.php
@@ -4138,6 +4147,7 @@ lib/Model/GetSequence200Response.php
 lib/Model/GetSequence200ResponseSequence.php
 lib/Model/GetSequence200ResponseSequenceStepsInner.php
 lib/Model/GetSequence200ResponseSequenceStepsInnerTemplate.php
+lib/Model/GetShopifyConnectUrl200Response.php
 lib/Model/GetSipTrunk200Response.php
 lib/Model/GetSipTrunk200ResponseNumbersInner.php
 lib/Model/GetSlackSettings200Response.php
@@ -5827,5 +5837,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AccountCursorPaginationTest.php
-test/Model/AccountsListResponsePaginationTest.php
+test/Model/ConnectHandoffAccountsInnerTest.php
+test/Model/ConnectHandoffErrorTest.php
+test/Model/ConnectHandoffLinkTest.php
+test/Model/ConnectHandoffTest.php
+test/Model/GetShopifyConnectUrl200ResponseTest.php
