@@ -5837,8 +5837,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ConnectHandoffAccountsInnerTest.php
-test/Model/ConnectHandoffErrorTest.php
-test/Model/ConnectHandoffLinkTest.php
-test/Model/ConnectHandoffTest.php
-test/Model/GetShopifyConnectUrl200ResponseTest.php
