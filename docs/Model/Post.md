@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **status** | **string** | &#x60;cancelled&#x60; is set by POST /v1/posts/{postId}/unpublish once every platform entry has been removed from its platform (a post with published entries left becomes &#x60;partial&#x60;); cancelled posts can be edited and rescheduled like drafts. &#x60;pending_approval&#x60; (set by &#x60;requiresApproval: true&#x60;) never publishes until POST /v1/posts/{postId}/review approves it. | [optional]
 **tags** | **string[]** | YouTube constraints: each tag max 100 chars, combined max 500 chars, duplicates removed. | [optional]
 **hashtags** | **string[]** | Stored for reference only. Hashtags are NOT automatically appended to the caption when publishing. Include hashtags directly in the content field (platforms like Instagram only support hashtags as caption text). For YouTube keywords, use the tags field instead. | [optional]
-**mentions** | **string[]** | Stored for reference only. This field does NOT automatically create @mentions when publishing. For LinkedIn @mentions, use the /v1/accounts/{accountId}/linkedin-mentions endpoint to resolve profile URLs to URNs, then embed the returned mentionFormat directly in the post content field. | [optional]
+**mentions** | **string[]** | Stored for reference only. This field does NOT automatically create @mentions when publishing. For LinkedIn @mentions, write them in the post content, for example @[https://www.linkedin.com/in/jane-doe] or @[https://www.linkedin.com/company/acme]. | [optional]
 **visibility** | **string** |  | [optional]
 **metadata** | **array<string,mixed>** |  | [optional]
 **recycling** | [**\Zernio\Model\RecyclingState**](RecyclingState.md) |  | [optional]

@@ -656,6 +656,8 @@ docs/Model/CreatePinterestBoard201Response.md
 docs/Model/CreatePinterestBoard201ResponseBoard.md
 docs/Model/CreatePinterestBoardRequest.md
 docs/Model/CreatePost200Response.md
+docs/Model/CreatePost400Response.md
+docs/Model/CreatePost400ResponseDetails.md
 docs/Model/CreatePost403Response.md
 docs/Model/CreatePost409Response.md
 docs/Model/CreatePost409ResponseDetails.md
@@ -1516,6 +1518,7 @@ docs/Model/LinkedInLeadFormPlatformDataQuestionsInner.md
 docs/Model/LinkedInLeadFormPlatformDataQuestionsInnerOneOf.md
 docs/Model/LinkedInLeadFormPlatformDataQuestionsInnerOneOf1.md
 docs/Model/LinkedInLeadFormPlatformDataQuestionsInnerOneOf1ChoicesInner.md
+docs/Model/LinkedInMentionIssue.md
 docs/Model/LinkedInPlatformData.md
 docs/Model/LinkedInPlatformDataAudience.md
 docs/Model/LinkedInPlatformDataAudienceInterfaceLocalesInner.md
@@ -3577,6 +3580,8 @@ lib/Model/CreatePinterestBoard201Response.php
 lib/Model/CreatePinterestBoard201ResponseBoard.php
 lib/Model/CreatePinterestBoardRequest.php
 lib/Model/CreatePost200Response.php
+lib/Model/CreatePost400Response.php
+lib/Model/CreatePost400ResponseDetails.php
 lib/Model/CreatePost403Response.php
 lib/Model/CreatePost409Response.php
 lib/Model/CreatePost409ResponseDetails.php
@@ -4437,6 +4442,7 @@ lib/Model/LinkedInLeadFormPlatformDataQuestionsInner.php
 lib/Model/LinkedInLeadFormPlatformDataQuestionsInnerOneOf.php
 lib/Model/LinkedInLeadFormPlatformDataQuestionsInnerOneOf1.php
 lib/Model/LinkedInLeadFormPlatformDataQuestionsInnerOneOf1ChoicesInner.php
+lib/Model/LinkedInMentionIssue.php
 lib/Model/LinkedInPlatformData.php
 lib/Model/LinkedInPlatformDataAudience.php
 lib/Model/LinkedInPlatformDataAudienceInterfaceLocalesInner.php
@@ -5843,6 +5849,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/FacebookTaggedPostFromTest.php
-test/Model/FacebookTaggedPostTest.php
-test/Model/ListFacebookTaggedPosts200ResponseTest.php
+test/Model/CreatePost400ResponseDetailsTest.php
+test/Model/CreatePost400ResponseTest.php
+test/Model/LinkedInMentionIssueTest.php
