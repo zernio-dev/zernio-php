@@ -880,6 +880,7 @@ docs/Model/ExternalPostSummary.md
 docs/Model/ExternalPostSummaryAnalytics.md
 docs/Model/ExternalPostWebhookPost.md
 docs/Model/FacebookOrInstagramPost.md
+docs/Model/FacebookPageInfo.md
 docs/Model/FacebookPlatformData.md
 docs/Model/FacebookPostEarningsResponse.md
 docs/Model/FacebookPostEarningsResponseMetricsValue.md
@@ -2528,6 +2529,7 @@ docs/Model/UpdateDiscordSettings200ResponseAccount.md
 docs/Model/UpdateDiscordSettingsRequest.md
 docs/Model/UpdateFacebookPage200Response.md
 docs/Model/UpdateFacebookPage200ResponseSelectedPage.md
+docs/Model/UpdateFacebookPageInfoRequest.md
 docs/Model/UpdateFacebookPageRequest.md
 docs/Model/UpdateGmbLocation200Response.md
 docs/Model/UpdateGmbLocationRequest.md
@@ -3811,6 +3813,7 @@ lib/Model/ExternalPostSummary.php
 lib/Model/ExternalPostSummaryAnalytics.php
 lib/Model/ExternalPostWebhookPost.php
 lib/Model/FacebookOrInstagramPost.php
+lib/Model/FacebookPageInfo.php
 lib/Model/FacebookPlatformData.php
 lib/Model/FacebookPostEarningsResponse.php
 lib/Model/FacebookPostEarningsResponseMetricsValue.php
@@ -5460,6 +5463,7 @@ lib/Model/UpdateDiscordSettings200ResponseAccount.php
 lib/Model/UpdateDiscordSettingsRequest.php
 lib/Model/UpdateFacebookPage200Response.php
 lib/Model/UpdateFacebookPage200ResponseSelectedPage.php
+lib/Model/UpdateFacebookPageInfoRequest.php
 lib/Model/UpdateFacebookPageRequest.php
 lib/Model/UpdateGmbLocation200Response.php
 lib/Model/UpdateGmbLocationRequest.php
@@ -5863,3 +5867,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/FacebookPageInfoTest.php
+test/Model/UpdateFacebookPageInfoRequestTest.php

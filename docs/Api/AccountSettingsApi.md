@@ -12,6 +12,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**deleteMessengerIceBreakers()**](AccountSettingsApi.md#deleteMessengerIceBreakers) | **DELETE** /v1/accounts/{accountId}/messenger-ice-breakers | Delete FB ice breakers |
 | [**deleteMessengerMenu()**](AccountSettingsApi.md#deleteMessengerMenu) | **DELETE** /v1/accounts/{accountId}/messenger-menu | Delete persistent menu |
 | [**deleteTelegramCommands()**](AccountSettingsApi.md#deleteTelegramCommands) | **DELETE** /v1/accounts/{accountId}/telegram-commands | Delete TG bot commands |
+| [**getFacebookPageInfo()**](AccountSettingsApi.md#getFacebookPageInfo) | **GET** /v1/accounts/{accountId}/facebook-page-info | Get a Facebook Page&#39;s public info |
 | [**getInstagramIceBreakers()**](AccountSettingsApi.md#getInstagramIceBreakers) | **GET** /v1/accounts/{accountId}/instagram-ice-breakers | Get IG ice breakers |
 | [**getMessengerGetStarted()**](AccountSettingsApi.md#getMessengerGetStarted) | **GET** /v1/accounts/{accountId}/messenger-get-started | Get FB Get Started button |
 | [**getMessengerGreeting()**](AccountSettingsApi.md#getMessengerGreeting) | **GET** /v1/accounts/{accountId}/messenger-greeting | Get FB greeting text |
@@ -24,6 +25,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**setMessengerIceBreakers()**](AccountSettingsApi.md#setMessengerIceBreakers) | **PUT** /v1/accounts/{accountId}/messenger-ice-breakers | Set FB ice breakers |
 | [**setMessengerMenu()**](AccountSettingsApi.md#setMessengerMenu) | **PUT** /v1/accounts/{accountId}/messenger-menu | Set persistent menu |
 | [**setTelegramCommands()**](AccountSettingsApi.md#setTelegramCommands) | **PUT** /v1/accounts/{accountId}/telegram-commands | Set TG bot commands |
+| [**updateFacebookPageInfo()**](AccountSettingsApi.md#updateFacebookPageInfo) | **PATCH** /v1/accounts/{accountId}/facebook-page-info | Update a Facebook Page&#39;s public info |
 
 
 ## `deleteInstagramIceBreakers()`
@@ -369,6 +371,66 @@ try {
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getFacebookPageInfo()`
+
+```php
+getFacebookPageInfo($account_id): \Zernio\Model\FacebookPageInfo
+```
+
+Get a Facebook Page's public info
+
+Returns the public info of the Page selected on a `facebook` account: about, description, website, phone, emails and opening hours, as Meta returns them from the Page node. Text fields the Page never filled come back as null.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountSettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The ID of a connected Facebook account.
+
+try {
+    $result = $apiInstance->getFacebookPageInfo($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountSettingsApi->getFacebookPageInfo: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The ID of a connected Facebook account. | |
+
+### Return type
+
+[**\Zernio\Model\FacebookPageInfo**](../Model/FacebookPageInfo.md)
 
 ### Authorization
 
@@ -1098,6 +1160,68 @@ try {
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateFacebookPageInfo()`
+
+```php
+updateFacebookPageInfo($account_id, $update_facebook_page_info_request): \Zernio\Model\FacebookPageInfo
+```
+
+Update a Facebook Page's public info
+
+Updates the public info of the Page selected on a `facebook` account. Only the fields in the body are sent to Meta, every other field keeps its value. Send an empty string to clear a text field. Unknown fields are rejected with a 400.  Returns the Page info read back from Meta after the update. Meta needs the `pages_manage_metadata` permission and a Page role that can edit the Page: without them Meta's refusal comes back as `platform_api_error`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountSettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The ID of a connected Facebook account.
+$update_facebook_page_info_request = {"website":"https://zernio.com","hours":{"mon_1_open":"09:00","mon_1_close":"18:00"}}; // \Zernio\Model\UpdateFacebookPageInfoRequest
+
+try {
+    $result = $apiInstance->updateFacebookPageInfo($account_id, $update_facebook_page_info_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountSettingsApi->updateFacebookPageInfo: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The ID of a connected Facebook account. | |
+| **update_facebook_page_info_request** | [**\Zernio\Model\UpdateFacebookPageInfoRequest**](../Model/UpdateFacebookPageInfoRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\FacebookPageInfo**](../Model/FacebookPageInfo.md)
 
 ### Authorization
 
