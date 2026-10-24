@@ -884,6 +884,8 @@ docs/Model/FacebookPostEarningsResponseMetricsValue.md
 docs/Model/FacebookPostEarningsResponseUnavailableMetricsInner.md
 docs/Model/FacebookSettings.md
 docs/Model/FacebookSettingsCarouselCardsInner.md
+docs/Model/FacebookTaggedPost.md
+docs/Model/FacebookTaggedPostFrom.md
 docs/Model/FeedbackReceipt.md
 docs/Model/FetchGoogleBusinessVerificationOptions200Response.md
 docs/Model/FetchGoogleBusinessVerificationOptions200ResponseOptionsInner.md
@@ -1652,6 +1654,7 @@ docs/Model/ListDiscordPinnedMessages200ResponseDataInner.md
 docs/Model/ListDiscordScheduledEvents200Response.md
 docs/Model/ListFacebookPages200Response.md
 docs/Model/ListFacebookPages200ResponsePagesInner.md
+docs/Model/ListFacebookTaggedPosts200Response.md
 docs/Model/ListFormLeads200Response.md
 docs/Model/ListFormLeads200ResponseLeadsInner.md
 docs/Model/ListFormLeads200ResponseMeta.md
@@ -3802,6 +3805,8 @@ lib/Model/FacebookPostEarningsResponseMetricsValue.php
 lib/Model/FacebookPostEarningsResponseUnavailableMetricsInner.php
 lib/Model/FacebookSettings.php
 lib/Model/FacebookSettingsCarouselCardsInner.php
+lib/Model/FacebookTaggedPost.php
+lib/Model/FacebookTaggedPostFrom.php
 lib/Model/FeedbackReceipt.php
 lib/Model/FetchGoogleBusinessVerificationOptions200Response.php
 lib/Model/FetchGoogleBusinessVerificationOptions200ResponseOptionsInner.php
@@ -4570,6 +4575,7 @@ lib/Model/ListDiscordPinnedMessages200ResponseDataInner.php
 lib/Model/ListDiscordScheduledEvents200Response.php
 lib/Model/ListFacebookPages200Response.php
 lib/Model/ListFacebookPages200ResponsePagesInner.php
+lib/Model/ListFacebookTaggedPosts200Response.php
 lib/Model/ListFormLeads200Response.php
 lib/Model/ListFormLeads200ResponseLeadsInner.php
 lib/Model/ListFormLeads200ResponseMeta.php
@@ -5837,3 +5843,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/FacebookTaggedPostFromTest.php
+test/Model/FacebookTaggedPostTest.php
+test/Model/ListFacebookTaggedPosts200ResponseTest.php
