@@ -12,8 +12,10 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**editPost()**](PostsApi.md#editPost) | **POST** /v1/posts/{postId}/edit | Edit published post |
 | [**getPost()**](PostsApi.md#getPost) | **GET** /v1/posts/{postId} | Get post |
 | [**listPosts()**](PostsApi.md#listPosts) | **GET** /v1/posts | List posts |
+| [**pinPost()**](PostsApi.md#pinPost) | **POST** /v1/posts/{postId}/pin | Pin post |
 | [**retryPost()**](PostsApi.md#retryPost) | **POST** /v1/posts/{postId}/retry | Retry failed post |
 | [**reviewPost()**](PostsApi.md#reviewPost) | **POST** /v1/posts/{postId}/review | Approve or reject a post |
+| [**unpinPost()**](PostsApi.md#unpinPost) | **POST** /v1/posts/{postId}/unpin | Unpin post |
 | [**unpublishPost()**](PostsApi.md#unpublishPost) | **POST** /v1/posts/{postId}/unpublish | Unpublish post |
 | [**updatePost()**](PostsApi.md#updatePost) | **PUT** /v1/posts/{postId} | Update post |
 | [**updatePostMetadata()**](PostsApi.md#updatePostMetadata) | **POST** /v1/posts/{postId}/update-metadata | Update post metadata |
@@ -423,6 +425,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `pinPost()`
+
+```php
+pinPost($post_id, $pin_post_request): \Zernio\Model\PinPostResponse
+```
+
+Pin post
+
+Pins a published Facebook Page post to the top of its Page. Only Facebook posts can be pinned; any other platform answers 400 `platform_not_supported`. Works for posts on Pages connected through Facebook Login.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\PostsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$post_id = 'post_id_example'; // string
+$pin_post_request = {"platform":"facebook"}; // \Zernio\Model\PinPostRequest
+
+try {
+    $result = $apiInstance->pinPost($post_id, $pin_post_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PostsApi->pinPost: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **post_id** | **string**|  | |
+| **pin_post_request** | [**\Zernio\Model\PinPostRequest**](../Model/PinPostRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\PinPostResponse**](../Model/PinPostResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `retryPost()`
 
 ```php
@@ -531,6 +595,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\PostGetResponse**](../Model/PostGetResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `unpinPost()`
+
+```php
+unpinPost($post_id, $pin_post_request): \Zernio\Model\PinPostResponse
+```
+
+Unpin post
+
+Unpins a published Facebook Page post from the top of its Page. Only Facebook posts can be unpinned; any other platform answers 400 `platform_not_supported`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\PostsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$post_id = 'post_id_example'; // string
+$pin_post_request = {platform=facebook}; // \Zernio\Model\PinPostRequest
+
+try {
+    $result = $apiInstance->unpinPost($post_id, $pin_post_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PostsApi->unpinPost: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **post_id** | **string**|  | |
+| **pin_post_request** | [**\Zernio\Model\PinPostRequest**](../Model/PinPostRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\PinPostResponse**](../Model/PinPostResponse.md)
 
 ### Authorization
 
