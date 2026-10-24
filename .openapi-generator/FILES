@@ -5859,8 +5859,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/FacebookVisitorPostFromTest.php
-test/Model/FacebookVisitorPostMediaMediaItemsInnerTest.php
-test/Model/FacebookVisitorPostMediaTest.php
-test/Model/FacebookVisitorPostTest.php
-test/Model/ListFacebookVisitorPosts200ResponseTest.php
