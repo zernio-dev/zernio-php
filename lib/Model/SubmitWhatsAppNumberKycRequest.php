@@ -66,6 +66,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'reuse_option_id' => 'string',
         'reuse_from' => 'string',
         'area_code' => 'string',
+        'phone_number' => 'string',
         'pre_order' => 'bool',
         'end_user_first_name' => 'string',
         'end_user_last_name' => 'string',
@@ -90,6 +91,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'reuse_option_id' => null,
         'reuse_from' => null,
         'area_code' => null,
+        'phone_number' => null,
         'pre_order' => null,
         'end_user_first_name' => null,
         'end_user_last_name' => null,
@@ -112,6 +114,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'reuse_option_id' => false,
         'reuse_from' => false,
         'area_code' => false,
+        'phone_number' => false,
         'pre_order' => false,
         'end_user_first_name' => false,
         'end_user_last_name' => false,
@@ -214,6 +217,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'reuse_option_id' => 'reuseOptionId',
         'reuse_from' => 'reuseFrom',
         'area_code' => 'areaCode',
+        'phone_number' => 'phoneNumber',
         'pre_order' => 'preOrder',
         'end_user_first_name' => 'endUserFirstName',
         'end_user_last_name' => 'endUserLastName',
@@ -236,6 +240,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'reuse_option_id' => 'setReuseOptionId',
         'reuse_from' => 'setReuseFrom',
         'area_code' => 'setAreaCode',
+        'phone_number' => 'setPhoneNumber',
         'pre_order' => 'setPreOrder',
         'end_user_first_name' => 'setEndUserFirstName',
         'end_user_last_name' => 'setEndUserLastName',
@@ -258,6 +263,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'reuse_option_id' => 'getReuseOptionId',
         'reuse_from' => 'getReuseFrom',
         'area_code' => 'getAreaCode',
+        'phone_number' => 'getPhoneNumber',
         'pre_order' => 'getPreOrder',
         'end_user_first_name' => 'getEndUserFirstName',
         'end_user_last_name' => 'getEndUserLastName',
@@ -331,6 +337,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('reuse_option_id', $data ?? [], null);
         $this->setIfExists('reuse_from', $data ?? [], null);
         $this->setIfExists('area_code', $data ?? [], null);
+        $this->setIfExists('phone_number', $data ?? [], null);
         $this->setIfExists('pre_order', $data ?? [], null);
         $this->setIfExists('end_user_first_name', $data ?? [], null);
         $this->setIfExists('end_user_last_name', $data ?? [], null);
@@ -382,6 +389,10 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
 
         if (!is_null($this->container['area_code']) && !preg_match("/^\\d{1,4}$/", $this->container['area_code'])) {
             $invalidProperties[] = "invalid value for 'area_code', must be conform to the pattern /^\\d{1,4}$/.";
+        }
+
+        if (!is_null($this->container['phone_number']) && !preg_match("/^\\+[1-9]\\d{6,14}$/", $this->container['phone_number'])) {
+            $invalidProperties[] = "invalid value for 'phone_number', must be conform to the pattern /^\\+[1-9]\\d{6,14}$/.";
         }
 
         return $invalidProperties;
@@ -624,6 +635,38 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         }
 
         $this->container['area_code'] = $area_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets phone_number
+     *
+     * @return string|null
+     */
+    public function getPhoneNumber()
+    {
+        return $this->container['phone_number'];
+    }
+
+    /**
+     * Sets phone_number
+     *
+     * @param string|null $phone_number Exact number to order, in E.164, taken from GET /v1/whatsapp/phone-numbers/available. It is ordered as is or the request fails with 409 code phone_number_unavailable; another number is never substituted and a pre-order is never placed. Requires quantity 1 (or omitted). Omit to let the carrier pick a number in the area.
+     *
+     * @return self
+     */
+    public function setPhoneNumber($phone_number)
+    {
+        if (is_null($phone_number)) {
+            throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
+        }
+
+        if ((!preg_match("/^\\+[1-9]\\d{6,14}$/", ObjectSerializer::toString($phone_number)))) {
+            throw new \InvalidArgumentException("invalid value for \$phone_number when calling SubmitWhatsAppNumberKycRequest., must conform to the pattern /^\\+[1-9]\\d{6,14}$/.");
+        }
+
+        $this->container['phone_number'] = $phone_number;
 
         return $this;
     }
