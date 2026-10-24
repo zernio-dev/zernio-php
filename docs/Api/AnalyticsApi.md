@@ -36,6 +36,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getYouTubeDemographics()**](AnalyticsApi.md#getYouTubeDemographics) | **GET** /v1/analytics/youtube/demographics | Get YouTube demographics |
 | [**getYouTubeVideoRetention()**](AnalyticsApi.md#getYouTubeVideoRetention) | **GET** /v1/analytics/youtube/video-retention | Get YouTube video retention curve |
 | [**listFacebookTaggedPosts()**](AnalyticsApi.md#listFacebookTaggedPosts) | **GET** /v1/accounts/{accountId}/facebook-tagged-posts | List the posts a Facebook Page is tagged in |
+| [**listFacebookVisitorPosts()**](AnalyticsApi.md#listFacebookVisitorPosts) | **GET** /v1/accounts/{accountId}/facebook-visitor-posts | List visitor posts on a Facebook Page |
 | [**syncExternalPosts()**](AnalyticsApi.md#syncExternalPosts) | **POST** /v1/posts/sync-external | Sync an external post |
 
 
@@ -2073,6 +2074,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListFacebookTaggedPosts200Response**](../Model/ListFacebookTaggedPosts200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listFacebookVisitorPosts()`
+
+```php
+listFacebookVisitorPosts($account_id, $limit, $cursor): \Zernio\Model\ListFacebookVisitorPosts200Response
+```
+
+List visitor posts on a Facebook Page
+
+Returns the posts other people published on the connected Facebook Page, newest first. Zernio reads the Page feed (Graph `/{page-id}/feed`, which works on New Pages Experience Pages, unlike the deprecated `visitor_posts` edge) and drops the posts the Page published itself and the posts other people published on their own timeline that only tag the Page. A Page without visitor posts returns an empty `data` array.  Cursor-paginated: pass `nextCursor` from the previous response as `cursor` to read the next page. `limit` sets how many feed entries are scanned, so a page can hold fewer posts than `limit`, or none, while `nextCursor` is not null. `nextCursor` is null when there are no more pages, and the final page can come back empty.  Works on `facebook` accounts with a Page selected. Meta requires the `pages_read_user_content` permission, which Zernio requests with the comments scope: an account connected without it receives Meta's refusal as `platform_api_error`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The ID of a connected Facebook Page account.
+$limit = 25; // int | Number of Page feed entries to scan. The Page's own posts are dropped from them.
+$cursor = 'cursor_example'; // string | The `nextCursor` of the previous page.
+
+try {
+    $result = $apiInstance->listFacebookVisitorPosts($account_id, $limit, $cursor);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->listFacebookVisitorPosts: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The ID of a connected Facebook Page account. | |
+| **limit** | **int**| Number of Page feed entries to scan. The Page&#39;s own posts are dropped from them. | [optional] [default to 25] |
+| **cursor** | **string**| The &#x60;nextCursor&#x60; of the previous page. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListFacebookVisitorPosts200Response**](../Model/ListFacebookVisitorPosts200Response.md)
 
 ### Authorization
 
