@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **currency** | **string** |  | [optional]
 **matched** | [**\Zernio\Model\AdRuleObjectEvaluation[]**](AdRuleObjectEvaluation.md) |  | [optional]
 **actions** | [**\Zernio\Model\AdRuleRunEvaluationActionsInner[]**](AdRuleRunEvaluationActionsInner.md) |  | [optional]
+**notification** | [**\Zernio\Model\AdRuleRunEvaluationNotification**](AdRuleRunEvaluationNotification.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
