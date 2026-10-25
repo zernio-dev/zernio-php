@@ -7,6 +7,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**acceptConversationRequest()**](MessagesApi.md#acceptConversationRequest) | **POST** /v1/inbox/conversations/{conversationId}/accept | Accept a message request |
+| [**addConversationLabel()**](MessagesApi.md#addConversationLabel) | **POST** /v1/inbox/conversations/{conversationId}/labels | Add a label to a conversation |
 | [**addMessageReaction()**](MessagesApi.md#addMessageReaction) | **POST** /v1/inbox/conversations/{conversationId}/messages/{messageId}/reactions | Add reaction |
 | [**createInboxConversation()**](MessagesApi.md#createInboxConversation) | **POST** /v1/inbox/conversations | Create conversation |
 | [**createInboxLabel()**](MessagesApi.md#createInboxLabel) | **POST** /v1/inbox/labels | Create a conversation label |
@@ -17,9 +18,11 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getInboxConversation()**](MessagesApi.md#getInboxConversation) | **GET** /v1/inbox/conversations/{conversationId} | Get conversation |
 | [**getInboxConversationMessages()**](MessagesApi.md#getInboxConversationMessages) | **GET** /v1/inbox/conversations/{conversationId}/messages | List messages |
 | [**getMessageAttachment()**](MessagesApi.md#getMessageAttachment) | **GET** /v1/inbox/conversations/{conversationId}/messages/{messageId}/attachments/{index} | Resolve message attachment |
+| [**listConversationLabels()**](MessagesApi.md#listConversationLabels) | **GET** /v1/inbox/conversations/{conversationId}/labels | List the labels on a conversation |
 | [**listInboxConversations()**](MessagesApi.md#listInboxConversations) | **GET** /v1/inbox/conversations | List conversations |
 | [**listInboxLabels()**](MessagesApi.md#listInboxLabels) | **GET** /v1/inbox/labels | List the Page&#39;s conversation labels |
 | [**markConversationRead()**](MessagesApi.md#markConversationRead) | **POST** /v1/inbox/conversations/{conversationId}/read | Mark a conversation as read |
+| [**removeConversationLabel()**](MessagesApi.md#removeConversationLabel) | **DELETE** /v1/inbox/conversations/{conversationId}/labels/{labelId} | Remove a label from a conversation |
 | [**removeMessageReaction()**](MessagesApi.md#removeMessageReaction) | **DELETE** /v1/inbox/conversations/{conversationId}/messages/{messageId}/reactions | Remove reaction |
 | [**searchInboxConversations()**](MessagesApi.md#searchInboxConversations) | **GET** /v1/inbox/conversations/search | Search conversations |
 | [**sendInboxMessage()**](MessagesApi.md#sendInboxMessage) | **POST** /v1/inbox/conversations/{conversationId}/messages | Send message |
@@ -77,6 +80,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\AcceptConversationRequest200Response**](../Model/AcceptConversationRequest200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `addConversationLabel()`
+
+```php
+addConversationLabel($conversation_id, $add_conversation_label_request): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
+```
+
+Add a label to a conversation
+
+Facebook Messenger only. Applies one of the Page's custom labels to the person in this conversation (Graph `POST /{label-id}/label?user={psid}`). The id must be one of the Page's custom labels, otherwise 404 `resource_not_found`. Other platforms answer 400 `platform_not_supported`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\MessagesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$conversation_id = 'conversation_id_example'; // string | Conversation ID (Zernio id or Meta platform conversation id)
+$add_conversation_label_request = {"accountId":"64e1f0a9e2b5af0012ab34cd","labelId":"1712444532121303"}; // \Zernio\Model\AddConversationLabelRequest
+
+try {
+    $result = $apiInstance->addConversationLabel($conversation_id, $add_conversation_label_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MessagesApi->addConversationLabel: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **conversation_id** | **string**| Conversation ID (Zernio id or Meta platform conversation id) | |
+| **add_conversation_label_request** | [**\Zernio\Model\AddConversationLabelRequest**](../Model/AddConversationLabelRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
 
 ### Authorization
 
@@ -725,6 +790,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listConversationLabels()`
+
+```php
+listConversationLabels($conversation_id, $account_id): \Zernio\Model\ListInboxLabels200Response
+```
+
+List the labels on a conversation
+
+Facebook Messenger only. Lists the Page's custom labels applied to the person in this conversation (Graph `/{psid}/custom_labels`). Other platforms answer 400 `platform_not_supported`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\MessagesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$conversation_id = 'conversation_id_example'; // string | Conversation ID (Zernio id or Meta platform conversation id)
+$account_id = 'account_id_example'; // string | Facebook social account ID
+
+try {
+    $result = $apiInstance->listConversationLabels($conversation_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MessagesApi->listConversationLabels: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **conversation_id** | **string**| Conversation ID (Zernio id or Meta platform conversation id) | |
+| **account_id** | **string**| Facebook social account ID | |
+
+### Return type
+
+[**\Zernio\Model\ListInboxLabels200Response**](../Model/ListInboxLabels200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listInboxConversations()`
 
 ```php
@@ -915,6 +1042,70 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `removeConversationLabel()`
+
+```php
+removeConversationLabel($conversation_id, $label_id, $account_id): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
+```
+
+Remove a label from a conversation
+
+Facebook Messenger only. Removes one of the Page's custom labels from the person in this conversation (Graph `DELETE /{label-id}/label?user={psid}`). The label itself stays on the Page. The id must be one of the Page's custom labels, otherwise 404 `resource_not_found`. Other platforms answer 400 `platform_not_supported`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\MessagesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$conversation_id = 'conversation_id_example'; // string | Conversation ID (Zernio id or Meta platform conversation id)
+$label_id = 'label_id_example'; // string | Meta label id
+$account_id = 'account_id_example'; // string | Facebook social account ID
+
+try {
+    $result = $apiInstance->removeConversationLabel($conversation_id, $label_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MessagesApi->removeConversationLabel: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **conversation_id** | **string**| Conversation ID (Zernio id or Meta platform conversation id) | |
+| **label_id** | **string**| Meta label id | |
+| **account_id** | **string**| Facebook social account ID | |
+
+### Return type
+
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

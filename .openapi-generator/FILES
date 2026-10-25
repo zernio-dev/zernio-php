@@ -154,6 +154,7 @@ docs/Model/AddCommerceDiscountCodesRequest.md
 docs/Model/AddCommerceMarketingEngagement201Response.md
 docs/Model/AddCommerceMarketingEngagementRequest.md
 docs/Model/AddCommerceProductImagesRequest.md
+docs/Model/AddConversationLabelRequest.md
 docs/Model/AddConversionAssociations200Response.md
 docs/Model/AddConversionAssociations200ResponseFailedInner.md
 docs/Model/AddConversionAssociationsRequest.md
@@ -3091,6 +3092,7 @@ lib/Model/AddCommerceDiscountCodesRequest.php
 lib/Model/AddCommerceMarketingEngagement201Response.php
 lib/Model/AddCommerceMarketingEngagementRequest.php
 lib/Model/AddCommerceProductImagesRequest.php
+lib/Model/AddConversationLabelRequest.php
 lib/Model/AddConversionAssociations200Response.php
 lib/Model/AddConversionAssociations200ResponseFailedInner.php
 lib/Model/AddConversionAssociationsRequest.php
@@ -5875,7 +5877,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateInboxLabel201ResponseTest.php
-test/Model/CreateInboxLabelRequestTest.php
-test/Model/ListInboxLabels200ResponseLabelsInnerTest.php
-test/Model/ListInboxLabels200ResponseTest.php
+test/Model/AddConversationLabelRequestTest.php
