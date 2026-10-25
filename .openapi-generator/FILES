@@ -630,6 +630,8 @@ docs/Model/CreateInboxConversationRequestTemplateButtonParamsInner.md
 docs/Model/CreateInboxConversationRequestTemplateCardsInner.md
 docs/Model/CreateInboxConversationRequestTemplateCardsInnerButtonsInner.md
 docs/Model/CreateInboxConversationRequestTemplateCardsInnerHeaderMedia.md
+docs/Model/CreateInboxLabel201Response.md
+docs/Model/CreateInboxLabelRequest.md
 docs/Model/CreateInviteToken201Response.md
 docs/Model/CreateInviteTokenRequest.md
 docs/Model/CreateLeadForm200Response.md
@@ -1698,6 +1700,8 @@ docs/Model/ListInboxConversations200ResponseMeta.md
 docs/Model/ListInboxConversations200ResponseMetaAccountsSkippedInner.md
 docs/Model/ListInboxConversations200ResponseMetaFailedAccountsInner.md
 docs/Model/ListInboxConversations200ResponsePagination.md
+docs/Model/ListInboxLabels200Response.md
+docs/Model/ListInboxLabels200ResponseLabelsInner.md
 docs/Model/ListInboxMentions200Response.md
 docs/Model/ListInboxMentions200ResponseDataInner.md
 docs/Model/ListInboxMentions200ResponseMeta.md
@@ -3563,6 +3567,8 @@ lib/Model/CreateInboxConversationRequestTemplateButtonParamsInner.php
 lib/Model/CreateInboxConversationRequestTemplateCardsInner.php
 lib/Model/CreateInboxConversationRequestTemplateCardsInnerButtonsInner.php
 lib/Model/CreateInboxConversationRequestTemplateCardsInnerHeaderMedia.php
+lib/Model/CreateInboxLabel201Response.php
+lib/Model/CreateInboxLabelRequest.php
 lib/Model/CreateInviteToken201Response.php
 lib/Model/CreateInviteTokenRequest.php
 lib/Model/CreateLeadForm200Response.php
@@ -4631,6 +4637,8 @@ lib/Model/ListInboxConversations200ResponseMeta.php
 lib/Model/ListInboxConversations200ResponseMetaAccountsSkippedInner.php
 lib/Model/ListInboxConversations200ResponseMetaFailedAccountsInner.php
 lib/Model/ListInboxConversations200ResponsePagination.php
+lib/Model/ListInboxLabels200Response.php
+lib/Model/ListInboxLabels200ResponseLabelsInner.php
 lib/Model/ListInboxMentions200Response.php
 lib/Model/ListInboxMentions200ResponseDataInner.php
 lib/Model/ListInboxMentions200ResponseMeta.php
@@ -5867,3 +5875,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateInboxLabel201ResponseTest.php
+test/Model/CreateInboxLabelRequestTest.php
+test/Model/ListInboxLabels200ResponseLabelsInnerTest.php
+test/Model/ListInboxLabels200ResponseTest.php
