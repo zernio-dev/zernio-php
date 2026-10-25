@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **account** | [**\Zernio\Model\WebhookAdsAccount**](WebhookAdsAccount.md) |  |
 **rule** | [**\Zernio\Model\WebhookPayloadAdRuleTriggeredRule**](WebhookPayloadAdRuleTriggeredRule.md) |  |
 **run** | [**\Zernio\Model\WebhookPayloadAdRuleTriggeredRun**](WebhookPayloadAdRuleTriggeredRun.md) |  |
-**objects** | [**\Zernio\Model\WebhookPayloadAdRuleTriggeredObjectsInner[]**](WebhookPayloadAdRuleTriggeredObjectsInner.md) | The campaigns or ad sets this run acted on, at the rule&#39;s &#x60;level&#x60;. Objects still in cooldown are left out. |
+**objects** | [**\Zernio\Model\WebhookPayloadAdRuleTriggeredObjectsInner[]**](WebhookPayloadAdRuleTriggeredObjectsInner.md) | The campaigns or ad sets this run acted on, at the rule&#39;s &#x60;level&#x60;, including those whose action failed. Objects still in cooldown are left out. |
 **timestamp** | **\DateTime** | UTC time at which Zernio generated this event. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

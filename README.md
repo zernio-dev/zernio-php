@@ -294,6 +294,13 @@ Class | Method | HTTP request | Description
 *AdInsightsApi* | [**listLocalServicesLeads**](docs/Api/AdInsightsApi.md#listlocalservicesleads) | **GET** /v1/ads/local-services/leads | Google Local Services Ads leads
 *AdInsightsApi* | [**queryAdInsights**](docs/Api/AdInsightsApi.md#queryadinsights) | **GET** /v1/ads/insights | Flexible live insights query
 *AdLibraryApi* | [**searchAdLibrary**](docs/Api/AdLibraryApi.md#searchadlibrary) | **GET** /v1/ads/library | Search the public Ad Library
+*AdRulesApi* | [**createAdRule**](docs/Api/AdRulesApi.md#createadrule) | **POST** /v1/ads/rules | Create an ad rule
+*AdRulesApi* | [**deleteAdRule**](docs/Api/AdRulesApi.md#deleteadrule) | **DELETE** /v1/ads/rules/{ruleId} | Delete an ad rule
+*AdRulesApi* | [**getAdRule**](docs/Api/AdRulesApi.md#getadrule) | **GET** /v1/ads/rules/{ruleId} | Get an ad rule
+*AdRulesApi* | [**listAdRuleRuns**](docs/Api/AdRulesApi.md#listadruleruns) | **GET** /v1/ads/rules/{ruleId}/runs | List an ad rule&#39;s runs
+*AdRulesApi* | [**listAdRules**](docs/Api/AdRulesApi.md#listadrules) | **GET** /v1/ads/rules | List ad rules
+*AdRulesApi* | [**previewAdRule**](docs/Api/AdRulesApi.md#previewadrule) | **POST** /v1/ads/rules/{ruleId}/preview | Preview an ad rule
+*AdRulesApi* | [**updateAdRule**](docs/Api/AdRulesApi.md#updateadrule) | **PATCH** /v1/ads/rules/{ruleId} | Update an ad rule
 *AdTargetingApi* | [**browseAdTargeting**](docs/Api/AdTargetingApi.md#browseadtargeting) | **GET** /v1/ads/targeting/browse | Browse targeting categories
 *AdTargetingApi* | [**estimateAdReach**](docs/Api/AdTargetingApi.md#estimateadreach) | **POST** /v1/ads/targeting/reach-estimate | Estimate audience reach
 *AdTargetingApi* | [**getLinkedInBidPricing**](docs/Api/AdTargetingApi.md#getlinkedinbidpricing) | **POST** /v1/ads/targeting/bid-pricing | Suggested bid and budget bounds
@@ -1122,6 +1129,22 @@ Class | Method | HTTP request | Description
 - [AdNegativeKeywordListKeyword](docs/Model/AdNegativeKeywordListKeyword.md)
 - [AdPromotedObject](docs/Model/AdPromotedObject.md)
 - [AdReviewStatus](docs/Model/AdReviewStatus.md)
+- [AdRule](docs/Model/AdRule.md)
+- [AdRuleAction](docs/Model/AdRuleAction.md)
+- [AdRuleActionOneOf](docs/Model/AdRuleActionOneOf.md)
+- [AdRuleActionOneOf1](docs/Model/AdRuleActionOneOf1.md)
+- [AdRuleActionOneOf2](docs/Model/AdRuleActionOneOf2.md)
+- [AdRuleActionOneOf3](docs/Model/AdRuleActionOneOf3.md)
+- [AdRuleCondition](docs/Model/AdRuleCondition.md)
+- [AdRuleConditions](docs/Model/AdRuleConditions.md)
+- [AdRuleEvaluation](docs/Model/AdRuleEvaluation.md)
+- [AdRuleLevel](docs/Model/AdRuleLevel.md)
+- [AdRuleObjectEvaluation](docs/Model/AdRuleObjectEvaluation.md)
+- [AdRuleObjectEvaluationConditionsInner](docs/Model/AdRuleObjectEvaluationConditionsInner.md)
+- [AdRuleRun](docs/Model/AdRuleRun.md)
+- [AdRuleRunEvaluation](docs/Model/AdRuleRunEvaluation.md)
+- [AdRuleRunEvaluationActionsInner](docs/Model/AdRuleRunEvaluationActionsInner.md)
+- [AdRuleSchedule](docs/Model/AdRuleSchedule.md)
 - [AdSchedule](docs/Model/AdSchedule.md)
 - [AdScheduleWindow](docs/Model/AdScheduleWindow.md)
 - [AdStatus](docs/Model/AdStatus.md)
@@ -1520,6 +1543,8 @@ Class | Method | HTTP request | Description
 - [CreateAdLabelRequest](docs/Model/CreateAdLabelRequest.md)
 - [CreateAdNegativeKeywordList201Response](docs/Model/CreateAdNegativeKeywordList201Response.md)
 - [CreateAdNegativeKeywordListRequest](docs/Model/CreateAdNegativeKeywordListRequest.md)
+- [CreateAdRule201Response](docs/Model/CreateAdRule201Response.md)
+- [CreateAdRuleRequest](docs/Model/CreateAdRuleRequest.md)
 - [CreateAdSet201Response](docs/Model/CreateAdSet201Response.md)
 - [CreateAdSetRequest](docs/Model/CreateAdSetRequest.md)
 - [CreateApiKey201Response](docs/Model/CreateApiKey201Response.md)
@@ -2569,6 +2594,8 @@ Class | Method | HTTP request | Description
 - [ListAdLabels200ResponseDataInner](docs/Model/ListAdLabels200ResponseDataInner.md)
 - [ListAdLabels200ResponsePaging](docs/Model/ListAdLabels200ResponsePaging.md)
 - [ListAdNegativeKeywordLists200Response](docs/Model/ListAdNegativeKeywordLists200Response.md)
+- [ListAdRuleRuns200Response](docs/Model/ListAdRuleRuns200Response.md)
+- [ListAdRules200Response](docs/Model/ListAdRules200Response.md)
 - [ListAdSets200Response](docs/Model/ListAdSets200Response.md)
 - [ListAdSets200ResponseAdSetsInner](docs/Model/ListAdSets200ResponseAdSetsInner.md)
 - [ListAdSets200ResponseAdSetsInnerBudget](docs/Model/ListAdSets200ResponseAdSetsInnerBudget.md)
@@ -3453,6 +3480,7 @@ Class | Method | HTTP request | Description
 - [UpdateAdRequestTargetingKeywordsInnerOneOf](docs/Model/UpdateAdRequestTargetingKeywordsInnerOneOf.md)
 - [UpdateAdRequestTargetingLocations](docs/Model/UpdateAdRequestTargetingLocations.md)
 - [UpdateAdRequestTargetingLocationsOneOf](docs/Model/UpdateAdRequestTargetingLocationsOneOf.md)
+- [UpdateAdRuleRequest](docs/Model/UpdateAdRuleRequest.md)
 - [UpdateAdSet200Response](docs/Model/UpdateAdSet200Response.md)
 - [UpdateAdSetRequest](docs/Model/UpdateAdSetRequest.md)
 - [UpdateAdSetRequestBudget](docs/Model/UpdateAdSetRequestBudget.md)
@@ -3749,6 +3777,12 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadAdReviewAdObject](docs/Model/WebhookPayloadAdReviewAdObject.md)
 - [WebhookPayloadAdReviewReview](docs/Model/WebhookPayloadAdReviewReview.md)
 - [WebhookPayloadAdReviewReviewReasonsInner](docs/Model/WebhookPayloadAdReviewReviewReasonsInner.md)
+- [WebhookPayloadAdRuleTriggered](docs/Model/WebhookPayloadAdRuleTriggered.md)
+- [WebhookPayloadAdRuleTriggeredObjectsInner](docs/Model/WebhookPayloadAdRuleTriggeredObjectsInner.md)
+- [WebhookPayloadAdRuleTriggeredObjectsInnerActionsInner](docs/Model/WebhookPayloadAdRuleTriggeredObjectsInnerActionsInner.md)
+- [WebhookPayloadAdRuleTriggeredObjectsInnerConditionsInner](docs/Model/WebhookPayloadAdRuleTriggeredObjectsInnerConditionsInner.md)
+- [WebhookPayloadAdRuleTriggeredRule](docs/Model/WebhookPayloadAdRuleTriggeredRule.md)
+- [WebhookPayloadAdRuleTriggeredRun](docs/Model/WebhookPayloadAdRuleTriggeredRun.md)
 - [WebhookPayloadAdStatusChanged](docs/Model/WebhookPayloadAdStatusChanged.md)
 - [WebhookPayloadAdStatusChangedAccount](docs/Model/WebhookPayloadAdStatusChangedAccount.md)
 - [WebhookPayloadAdStatusChangedAdObject](docs/Model/WebhookPayloadAdStatusChangedAdObject.md)
@@ -3974,6 +4008,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.357.0`
+- API version: `1.358.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

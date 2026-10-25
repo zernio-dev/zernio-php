@@ -15,6 +15,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onAdDeliveryIssue()**](WebhookEventsApi.md#onAdDeliveryIssue) | **POST** /ad.delivery_issue | Ad delivery issue event |
 | [**onAdReviewApproved()**](WebhookEventsApi.md#onAdReviewApproved) | **POST** /ad.review.approved | Ad review approved event |
 | [**onAdReviewRejected()**](WebhookEventsApi.md#onAdReviewRejected) | **POST** /ad.review.rejected | Ad review rejected event |
+| [**onAdRuleTriggered()**](WebhookEventsApi.md#onAdRuleTriggered) | **POST** /ad_rule.triggered | Ad rule triggered event |
 | [**onAdStatusChanged()**](WebhookEventsApi.md#onAdStatusChanged) | **POST** /ad.status_changed | Ad status changed event |
 | [**onAdVideoProcessed()**](WebhookEventsApi.md#onAdVideoProcessed) | **POST** /ad.video.processed | Ad video processed event |
 | [**onAnalyticsSynced()**](WebhookEventsApi.md#onAnalyticsSynced) | **POST** /analytics.synced | Analytics synced event |
@@ -610,6 +611,65 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_ad_review** | [**\Zernio\Model\WebhookPayloadAdReview**](../Model/WebhookPayloadAdReview.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onAdRuleTriggered()`
+
+```php
+onAdRuleTriggered($webhook_payload_ad_rule_triggered)
+```
+
+Ad rule triggered event
+
+Fired when a scheduled ad rule run finds campaigns or ad sets meeting every condition, once per object per cooldown. See `WebhookPayloadAdRuleTriggered` for when it fires and when it does not.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_ad_rule_triggered = {"id":"01J7K3P4N5Q6R7S8T9V0W1X2Z3","event":"ad_rule.triggered","account":{"accountId":"65c8f7e2a1b3c4d5e6f7a8b9","profileId":"65c8f7e2a1b3c4d5e6f7a800","platform":"metaads","username":"acme-ads","displayName":"Acme Ads"},"rule":{"id":"65c8f7e2a1b3c4d5e6f7a8c1","name":"Pause watch: CPA over 40","level":"adset","platformAdAccountId":"act_1234567890"},"run":{"id":"65c8f7e2a1b3c4d5e6f7a8c2","ranAt":"2026-10-22T09:10:00.000Z","today":"2026-10-22","timezone":"Europe/Madrid","timezoneAssumed":false,"currency":"EUR"},"objects":[{"platformId":"120210000000000002","name":"Prospecting, broad","platformCampaignId":"120210000000000001","conditions":[{"metric":"cpa","window":"last_3d","op":">","value":40,"actual":52.75}],"actions":[{"type":"pause","status":"done","reason":null,"previousDailyBudget":null,"newDailyBudget":null}]}],"timestamp":"2026-10-22T09:10:04.120Z"}; // \Zernio\Model\WebhookPayloadAdRuleTriggered
+
+try {
+    $apiInstance->onAdRuleTriggered($webhook_payload_ad_rule_triggered);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onAdRuleTriggered: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_ad_rule_triggered** | [**\Zernio\Model\WebhookPayloadAdRuleTriggered**](../Model/WebhookPayloadAdRuleTriggered.md)|  | |
 
 ### Return type
 
