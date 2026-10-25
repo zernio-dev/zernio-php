@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **description** | **string** | Full business description (max 512 characters) | [optional]
 **email** | **string** | Business email | [optional]
 **websites** | **string[]** | Business websites (max 2) | [optional]
-**vertical** | **string** | Business category (e.g., RETAIL, ENTERTAINMENT, etc.) | [optional]
+**vertical** | **string** | Business category, one of Meta&#39;s keys (e.g. AUTO, ENTERTAIN, RETAIL, PROF_SERVICES, OTHER) | [optional]
 **profile_picture_handle** | **string** | Handle from resumable upload for profile picture | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
