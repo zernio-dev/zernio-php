@@ -318,6 +318,7 @@ Class | Method | HTTP request | Description
 *AnalyticsApi* | [**getFacebookPostEarnings**](docs/Api/AnalyticsApi.md#getfacebookpostearnings) | **GET** /v1/analytics/facebook/post-earnings | Get Facebook post monetization earnings
 *AnalyticsApi* | [**getFacebookPostReactions**](docs/Api/AnalyticsApi.md#getfacebookpostreactions) | **GET** /v1/accounts/{accountId}/facebook-post-reactions | Get Facebook post reactions
 *AnalyticsApi* | [**getFollowerStats**](docs/Api/AnalyticsApi.md#getfollowerstats) | **GET** /v1/accounts/follower-stats | Get follower stats
+*AnalyticsApi* | [**getGoogleAnalyticsMetadata**](docs/Api/AnalyticsApi.md#getgoogleanalyticsmetadata) | **GET** /v1/analytics/googleanalytics/metadata | List Google Analytics (GA4) dimensions and metrics
 *AnalyticsApi* | [**getGoogleBusinessPerformance**](docs/Api/AnalyticsApi.md#getgooglebusinessperformance) | **GET** /v1/analytics/googlebusiness/performance | Get Google Business Profile performance metrics
 *AnalyticsApi* | [**getGoogleBusinessSearchKeywords**](docs/Api/AnalyticsApi.md#getgooglebusinesssearchkeywords) | **GET** /v1/analytics/googlebusiness/search-keywords | Get Google Business Profile search keywords
 *AnalyticsApi* | [**getInstagramAccountInsights**](docs/Api/AnalyticsApi.md#getinstagramaccountinsights) | **GET** /v1/analytics/instagram/account-insights | Get Instagram insights
@@ -338,6 +339,8 @@ Class | Method | HTTP request | Description
 *AnalyticsApi* | [**getYouTubeVideoRetention**](docs/Api/AnalyticsApi.md#getyoutubevideoretention) | **GET** /v1/analytics/youtube/video-retention | Get YouTube video retention curve
 *AnalyticsApi* | [**listFacebookTaggedPosts**](docs/Api/AnalyticsApi.md#listfacebooktaggedposts) | **GET** /v1/accounts/{accountId}/facebook-tagged-posts | List the posts a Facebook Page is tagged in
 *AnalyticsApi* | [**listFacebookVisitorPosts**](docs/Api/AnalyticsApi.md#listfacebookvisitorposts) | **GET** /v1/accounts/{accountId}/facebook-visitor-posts | List visitor posts on a Facebook Page
+*AnalyticsApi* | [**runGoogleAnalyticsRealtimeReport**](docs/Api/AnalyticsApi.md#rungoogleanalyticsrealtimereport) | **POST** /v1/analytics/googleanalytics/realtime | Run a Google Analytics (GA4) realtime report
+*AnalyticsApi* | [**runGoogleAnalyticsReport**](docs/Api/AnalyticsApi.md#rungoogleanalyticsreport) | **POST** /v1/analytics/googleanalytics/report | Run a Google Analytics (GA4) report
 *AnalyticsApi* | [**syncExternalPosts**](docs/Api/AnalyticsApi.md#syncexternalposts) | **POST** /v1/posts/sync-external | Sync an external post
 *BlogsApi* | [**createBlog**](docs/Api/BlogsApi.md#createblog) | **POST** /v1/accounts/{accountId}/blogs | Create a blog
 *BlogsApi* | [**createBlogArticle**](docs/Api/BlogsApi.md#createblogarticle) | **POST** /v1/accounts/{accountId}/blogs/{blogId}/articles | Create a blog article
@@ -555,6 +558,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**getConnectWelcomeScreen**](docs/Api/ConnectApi.md#getconnectwelcomescreen) | **GET** /v1/connect/welcome-screen | Get the saved welcome screen
 *ConnectApi* | [**getFacebookPages**](docs/Api/ConnectApi.md#getfacebookpages) | **GET** /v1/accounts/{accountId}/facebook-page | List Facebook pages
 *ConnectApi* | [**getGmbLocations**](docs/Api/ConnectApi.md#getgmblocations) | **GET** /v1/accounts/{accountId}/gmb-locations | List Google Business Profile locations
+*ConnectApi* | [**getGoogleAnalyticsConnectUrl**](docs/Api/ConnectApi.md#getgoogleanalyticsconnecturl) | **GET** /v1/connect/googleanalytics | Get Google Analytics OAuth connect URL
 *ConnectApi* | [**getHubSpotConnectUrl**](docs/Api/ConnectApi.md#gethubspotconnecturl) | **GET** /v1/connect/hubspot | Get HubSpot OAuth connect URL
 *ConnectApi* | [**getLinkedInOrganizations**](docs/Api/ConnectApi.md#getlinkedinorganizations) | **GET** /v1/accounts/{accountId}/linkedin-organizations | List LinkedIn orgs
 *ConnectApi* | [**getPageWebhookSubscription**](docs/Api/ConnectApi.md#getpagewebhooksubscription) | **GET** /v1/accounts/{accountId}/webhook-subscription | Read a Facebook Page&#39;s webhook subscription
@@ -2104,6 +2108,10 @@ Class | Method | HTTP request | Description
 - [GetGmbAttributeMetadata200ResponseAttributeMetadataInnerValueMetadataInner](docs/Model/GetGmbAttributeMetadata200ResponseAttributeMetadataInnerValueMetadataInner.md)
 - [GetGmbLocations200Response](docs/Model/GetGmbLocations200Response.md)
 - [GetGmbLocations200ResponseLocationsInner](docs/Model/GetGmbLocations200ResponseLocationsInner.md)
+- [GetGoogleAnalyticsConnectUrl200Response](docs/Model/GetGoogleAnalyticsConnectUrl200Response.md)
+- [GetGoogleAnalyticsMetadata200Response](docs/Model/GetGoogleAnalyticsMetadata200Response.md)
+- [GetGoogleAnalyticsMetadata200ResponseDimensionsInner](docs/Model/GetGoogleAnalyticsMetadata200ResponseDimensionsInner.md)
+- [GetGoogleAnalyticsMetadata200ResponseMetricsInner](docs/Model/GetGoogleAnalyticsMetadata200ResponseMetricsInner.md)
 - [GetGoogleAssetGroup200Response](docs/Model/GetGoogleAssetGroup200Response.md)
 - [GetGoogleBusinessAttributes200Response](docs/Model/GetGoogleBusinessAttributes200Response.md)
 - [GetGoogleBusinessAttributes200ResponseAttributesInner](docs/Model/GetGoogleBusinessAttributes200ResponseAttributesInner.md)
@@ -2401,6 +2409,12 @@ Class | Method | HTTP request | Description
 - [GoogleAdsUserAccessInvitation](docs/Model/GoogleAdsUserAccessInvitation.md)
 - [GoogleAdsUserAccessInvitationResult](docs/Model/GoogleAdsUserAccessInvitationResult.md)
 - [GoogleAdsUserInvitationApproval](docs/Model/GoogleAdsUserInvitationApproval.md)
+- [GoogleAnalyticsReport](docs/Model/GoogleAnalyticsReport.md)
+- [GoogleAnalyticsReportDimensionHeadersInner](docs/Model/GoogleAnalyticsReportDimensionHeadersInner.md)
+- [GoogleAnalyticsReportFields](docs/Model/GoogleAnalyticsReportFields.md)
+- [GoogleAnalyticsReportMetricHeadersInner](docs/Model/GoogleAnalyticsReportMetricHeadersInner.md)
+- [GoogleAnalyticsReportRowsInner](docs/Model/GoogleAnalyticsReportRowsInner.md)
+- [GoogleAnalyticsReportRowsInnerDimensionValuesInner](docs/Model/GoogleAnalyticsReportRowsInnerDimensionValuesInner.md)
 - [GoogleAssetGroupAssetLink](docs/Model/GoogleAssetGroupAssetLink.md)
 - [GoogleAssetGroupAssetUnlink](docs/Model/GoogleAssetGroupAssetUnlink.md)
 - [GoogleAssetUpdate](docs/Model/GoogleAssetUpdate.md)
@@ -2431,7 +2445,6 @@ Class | Method | HTTP request | Description
 - [GoogleDemandGenUpdate](docs/Model/GoogleDemandGenUpdate.md)
 - [GoogleDemandGenUpdateImages](docs/Model/GoogleDemandGenUpdateImages.md)
 - [GoogleListingGroupDimension](docs/Model/GoogleListingGroupDimension.md)
-- [GoogleListingGroupDimensionProductBrand](docs/Model/GoogleListingGroupDimensionProductBrand.md)
 - [GoogleListingGroupDimensionProductCategory](docs/Model/GoogleListingGroupDimensionProductCategory.md)
 - [GoogleListingGroupDimensionProductChannel](docs/Model/GoogleListingGroupDimensionProductChannel.md)
 - [GoogleListingGroupDimensionProductCondition](docs/Model/GoogleListingGroupDimensionProductCondition.md)
@@ -3171,6 +3184,10 @@ Class | Method | HTTP request | Description
 - [RotateSipTrunkCredentials200Response](docs/Model/RotateSipTrunkCredentials200Response.md)
 - [RunBusinessAgentConnectorTool200Response](docs/Model/RunBusinessAgentConnectorTool200Response.md)
 - [RunBusinessAgentConnectorToolRequest](docs/Model/RunBusinessAgentConnectorToolRequest.md)
+- [RunGoogleAnalyticsRealtimeReportRequest](docs/Model/RunGoogleAnalyticsRealtimeReportRequest.md)
+- [RunGoogleAnalyticsRealtimeReportRequestAllOfMinuteRangesInner](docs/Model/RunGoogleAnalyticsRealtimeReportRequestAllOfMinuteRangesInner.md)
+- [RunGoogleAnalyticsReportRequest](docs/Model/RunGoogleAnalyticsReportRequest.md)
+- [RunGoogleAnalyticsReportRequestAllOfDateRangesInner](docs/Model/RunGoogleAnalyticsReportRequestAllOfDateRangesInner.md)
 - [SavedTargetingAudience](docs/Model/SavedTargetingAudience.md)
 - [ScheduleBroadcast200Response](docs/Model/ScheduleBroadcast200Response.md)
 - [ScheduleBroadcast200ResponseBroadcast](docs/Model/ScheduleBroadcast200ResponseBroadcast.md)
@@ -4026,6 +4043,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.364.0`
+- API version: `1.365.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

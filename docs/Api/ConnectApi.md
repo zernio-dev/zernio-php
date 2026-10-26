@@ -29,6 +29,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getConnectWelcomeScreen()**](ConnectApi.md#getConnectWelcomeScreen) | **GET** /v1/connect/welcome-screen | Get the saved welcome screen |
 | [**getFacebookPages()**](ConnectApi.md#getFacebookPages) | **GET** /v1/accounts/{accountId}/facebook-page | List Facebook pages |
 | [**getGmbLocations()**](ConnectApi.md#getGmbLocations) | **GET** /v1/accounts/{accountId}/gmb-locations | List Google Business Profile locations |
+| [**getGoogleAnalyticsConnectUrl()**](ConnectApi.md#getGoogleAnalyticsConnectUrl) | **GET** /v1/connect/googleanalytics | Get Google Analytics OAuth connect URL |
 | [**getHubSpotConnectUrl()**](ConnectApi.md#getHubSpotConnectUrl) | **GET** /v1/connect/hubspot | Get HubSpot OAuth connect URL |
 | [**getLinkedInOrganizations()**](ConnectApi.md#getLinkedInOrganizations) | **GET** /v1/accounts/{accountId}/linkedin-organizations | List LinkedIn orgs |
 | [**getPageWebhookSubscription()**](ConnectApi.md#getPageWebhookSubscription) | **GET** /v1/accounts/{accountId}/webhook-subscription | Read a Facebook Page&#39;s webhook subscription |
@@ -1521,6 +1522,75 @@ try {
 ### Authorization
 
 [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getGoogleAnalyticsConnectUrl()`
+
+```php
+getGoogleAnalyticsConnectUrl($profile_id, $redirect_url, $reconnect_account_id): \Zernio\Model\GetGoogleAnalyticsConnectUrl200Response
+```
+
+Get Google Analytics OAuth connect URL
+
+Starts OAuth for Google Analytics (GA4). Each connected GA4 property becomes its own account with platform `googleanalytics`; it reads reports and does not post. Redirect the user to `authUrl`. When the Google account can read one property, Zernio connects it and redirects to `redirect_url` (or the dashboard) with `connected=googleanalytics`, `profileId`, `accountId` and `username` (the property name). When it can read several, the user first picks one on a Zernio-hosted page, which then redirects the same way. On failure the redirect carries `error`, `platform=googleanalytics` and `error_message`; errors include `googleanalytics_scope_missing` (the user unticked Analytics access) and `googleanalytics_no_properties`. Requested scope: `https://www.googleapis.com/auth/analytics.readonly`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: connectToken
+$config = Zernio\Configuration::getDefaultConfiguration()->setApiKey('X-Connect-Token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Zernio\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Connect-Token', 'Bearer');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$profile_id = 'profile_id_example'; // string | Your Zernio profile ID (get from /v1/profiles).
+$redirect_url = 'redirect_url_example'; // string | Custom redirect after connection. Must be an absolute http(s) URL or custom app scheme such as `myapp://callback`; relative and unsafe URLs return 400.
+$reconnect_account_id = 'reconnect_account_id_example'; // string | Zernio account ID of the Google Analytics account being reconnected. Picking a different property then fails instead of adding a second account.
+
+try {
+    $result = $apiInstance->getGoogleAnalyticsConnectUrl($profile_id, $redirect_url, $reconnect_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->getGoogleAnalyticsConnectUrl: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profile_id** | **string**| Your Zernio profile ID (get from /v1/profiles). | |
+| **redirect_url** | **string**| Custom redirect after connection. Must be an absolute http(s) URL or custom app scheme such as &#x60;myapp://callback&#x60;; relative and unsafe URLs return 400. | [optional] |
+| **reconnect_account_id** | **string**| Zernio account ID of the Google Analytics account being reconnected. Picking a different property then fails instead of adding a second account. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetGoogleAnalyticsConnectUrl200Response**](../Model/GetGoogleAnalyticsConnectUrl200Response.md)
+
+### Authorization
+
+[connectToken](../../README.md#connectToken), [bearerAuth](../../README.md#bearerAuth)
 
 ### HTTP request headers
 

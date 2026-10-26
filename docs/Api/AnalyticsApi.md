@@ -17,6 +17,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getFacebookPostEarnings()**](AnalyticsApi.md#getFacebookPostEarnings) | **GET** /v1/analytics/facebook/post-earnings | Get Facebook post monetization earnings |
 | [**getFacebookPostReactions()**](AnalyticsApi.md#getFacebookPostReactions) | **GET** /v1/accounts/{accountId}/facebook-post-reactions | Get Facebook post reactions |
 | [**getFollowerStats()**](AnalyticsApi.md#getFollowerStats) | **GET** /v1/accounts/follower-stats | Get follower stats |
+| [**getGoogleAnalyticsMetadata()**](AnalyticsApi.md#getGoogleAnalyticsMetadata) | **GET** /v1/analytics/googleanalytics/metadata | List Google Analytics (GA4) dimensions and metrics |
 | [**getGoogleBusinessPerformance()**](AnalyticsApi.md#getGoogleBusinessPerformance) | **GET** /v1/analytics/googlebusiness/performance | Get Google Business Profile performance metrics |
 | [**getGoogleBusinessSearchKeywords()**](AnalyticsApi.md#getGoogleBusinessSearchKeywords) | **GET** /v1/analytics/googlebusiness/search-keywords | Get Google Business Profile search keywords |
 | [**getInstagramAccountInsights()**](AnalyticsApi.md#getInstagramAccountInsights) | **GET** /v1/analytics/instagram/account-insights | Get Instagram insights |
@@ -37,6 +38,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getYouTubeVideoRetention()**](AnalyticsApi.md#getYouTubeVideoRetention) | **GET** /v1/analytics/youtube/video-retention | Get YouTube video retention curve |
 | [**listFacebookTaggedPosts()**](AnalyticsApi.md#listFacebookTaggedPosts) | **GET** /v1/accounts/{accountId}/facebook-tagged-posts | List the posts a Facebook Page is tagged in |
 | [**listFacebookVisitorPosts()**](AnalyticsApi.md#listFacebookVisitorPosts) | **GET** /v1/accounts/{accountId}/facebook-visitor-posts | List visitor posts on a Facebook Page |
+| [**runGoogleAnalyticsRealtimeReport()**](AnalyticsApi.md#runGoogleAnalyticsRealtimeReport) | **POST** /v1/analytics/googleanalytics/realtime | Run a Google Analytics (GA4) realtime report |
+| [**runGoogleAnalyticsReport()**](AnalyticsApi.md#runGoogleAnalyticsReport) | **POST** /v1/analytics/googleanalytics/report | Run a Google Analytics (GA4) report |
 | [**syncExternalPosts()**](AnalyticsApi.md#syncExternalPosts) | **POST** /v1/posts/sync-external | Sync an external post |
 
 
@@ -782,6 +785,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\FollowerStatsResponse**](../Model/FollowerStatsResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getGoogleAnalyticsMetadata()`
+
+```php
+getGoogleAnalyticsMetadata($account_id): \Zernio\Model\GetGoogleAnalyticsMetadata200Response
+```
+
+List Google Analytics (GA4) dimensions and metrics
+
+Every dimension and metric the connected GA4 property accepts in a report, including its custom definitions. Cached for one hour.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Zernio account ID of the Google Analytics connection.
+
+try {
+    $result = $apiInstance->getGoogleAnalyticsMetadata($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->getGoogleAnalyticsMetadata: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Zernio account ID of the Google Analytics connection. | |
+
+### Return type
+
+[**\Zernio\Model\GetGoogleAnalyticsMetadata200Response**](../Model/GetGoogleAnalyticsMetadata200Response.md)
 
 ### Authorization
 
@@ -2146,6 +2209,126 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `runGoogleAnalyticsRealtimeReport()`
+
+```php
+runGoogleAnalyticsRealtimeReport($run_google_analytics_realtime_report_request): \Zernio\Model\GoogleAnalyticsReport
+```
+
+Run a Google Analytics (GA4) realtime report
+
+Activity on a connected GA4 property in the last 30 minutes (up to 60 for Analytics 360), through Google's `runRealtimeReport`. Not cached. Only realtime dimensions and metrics are accepted, e.g. `country`, `unifiedScreenName` with `activeUsers`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$run_google_analytics_realtime_report_request = {"accountId":"6650f1c2a1b2c3d4e5f60789","dimensions":["country"],"metrics":["activeUsers"]}; // \Zernio\Model\RunGoogleAnalyticsRealtimeReportRequest
+
+try {
+    $result = $apiInstance->runGoogleAnalyticsRealtimeReport($run_google_analytics_realtime_report_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->runGoogleAnalyticsRealtimeReport: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **run_google_analytics_realtime_report_request** | [**\Zernio\Model\RunGoogleAnalyticsRealtimeReportRequest**](../Model/RunGoogleAnalyticsRealtimeReportRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\GoogleAnalyticsReport**](../Model/GoogleAnalyticsReport.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `runGoogleAnalyticsReport()`
+
+```php
+runGoogleAnalyticsReport($run_google_analytics_report_request): \Zernio\Model\GoogleAnalyticsReport
+```
+
+Run a Google Analytics (GA4) report
+
+Runs a report on a connected GA4 property through Google's Data API (`runReport`). Pick any GA4 dimensions and metrics; filters and ordering use Google's own shapes. Identical requests on the same property are cached for 10 minutes. Google meters each property by quota tokens; when it is used up the request returns 429 until Google refills it (hourly quotas within the hour, daily ones at midnight Pacific time).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$run_google_analytics_report_request = {"accountId":"6650f1c2a1b2c3d4e5f60789","dateRanges":[{"startDate":"30daysAgo","endDate":"yesterday"}],"dimensions":["sessionDefaultChannelGroup"],"metrics":["sessions","activeUsers","keyEvents"],"orderBys":[{"metric":{"metricName":"sessions"},"desc":true}]}; // \Zernio\Model\RunGoogleAnalyticsReportRequest
+
+try {
+    $result = $apiInstance->runGoogleAnalyticsReport($run_google_analytics_report_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->runGoogleAnalyticsReport: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **run_google_analytics_report_request** | [**\Zernio\Model\RunGoogleAnalyticsReportRequest**](../Model/RunGoogleAnalyticsReportRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\GoogleAnalyticsReport**](../Model/GoogleAnalyticsReport.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
