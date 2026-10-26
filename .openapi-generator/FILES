@@ -6005,8 +6005,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ListGoogleAnalyticsProperties200ResponsePropertiesInnerTest.php
-test/Model/ListGoogleAnalyticsProperties200ResponseTest.php
-test/Model/SelectGoogleAnalyticsProperty200ResponseAccountTest.php
-test/Model/SelectGoogleAnalyticsProperty200ResponseTest.php
-test/Model/SelectGoogleAnalyticsPropertyRequestTest.php
