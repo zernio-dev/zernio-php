@@ -321,7 +321,7 @@ try {
 ## `boostPost()`
 
 ```php
-boostPost($boost_post_request, $idempotency_key): \Zernio\Model\UpdateAd200Response
+boostPost($boost_post_request, $idempotency_key): \Zernio\Model\BoostPost201Response
 ```
 
 Boost post as ad
@@ -365,7 +365,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\UpdateAd200Response**](../Model/UpdateAd200Response.md)
+[**\Zernio\Model\BoostPost201Response**](../Model/BoostPost201Response.md)
 
 ### Authorization
 

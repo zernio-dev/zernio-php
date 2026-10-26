@@ -276,6 +276,7 @@ docs/Model/BlogArticleImage.md
 docs/Model/BlueskyPlatformData.md
 docs/Model/BookmarkPost200Response.md
 docs/Model/BookmarkPostRequest.md
+docs/Model/BoostPost201Response.md
 docs/Model/BoostPostRequest.md
 docs/Model/BoostPostRequestAttributionSpecInner.md
 docs/Model/BoostPostRequestBudget.md
@@ -1506,6 +1507,8 @@ docs/Model/InstagramPlatformDataAudioConfiguration.md
 docs/Model/InstagramPlatformDataTrialParams.md
 docs/Model/InstagramPlatformDataUserTagsInner.md
 docs/Model/InstagramTaggedMedia.md
+docs/Model/InstagramVideoFallback.md
+docs/Model/InstagramVideoFallbackPlatformError.md
 docs/Model/InstallTrackingTagOnStore200Response.md
 docs/Model/InstallTrackingTagOnStore200ResponseInstall.md
 docs/Model/InstallTrackingTagOnStore422Response.md
@@ -3257,6 +3260,7 @@ lib/Model/BlogArticleImage.php
 lib/Model/BlueskyPlatformData.php
 lib/Model/BookmarkPost200Response.php
 lib/Model/BookmarkPostRequest.php
+lib/Model/BoostPost201Response.php
 lib/Model/BoostPostRequest.php
 lib/Model/BoostPostRequestAttributionSpecInner.php
 lib/Model/BoostPostRequestBudget.php
@@ -4487,6 +4491,8 @@ lib/Model/InstagramPlatformDataAudioConfiguration.php
 lib/Model/InstagramPlatformDataTrialParams.php
 lib/Model/InstagramPlatformDataUserTagsInner.php
 lib/Model/InstagramTaggedMedia.php
+lib/Model/InstagramVideoFallback.php
+lib/Model/InstagramVideoFallbackPlatformError.php
 lib/Model/InstallTrackingTagOnStore200Response.php
 lib/Model/InstallTrackingTagOnStore200ResponseInstall.php
 lib/Model/InstallTrackingTagOnStore422Response.php
@@ -5963,3 +5969,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/BoostPost201ResponseTest.php
+test/Model/InstagramVideoFallbackPlatformErrorTest.php
+test/Model/InstagramVideoFallbackTest.php
