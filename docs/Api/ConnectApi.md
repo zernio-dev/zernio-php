@@ -49,6 +49,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**handleOAuthCallback()**](ConnectApi.md#handleOAuthCallback) | **POST** /v1/connect/{platform} | Complete OAuth callback |
 | [**initiateTelegramConnect()**](ConnectApi.md#initiateTelegramConnect) | **POST** /v1/connect/telegram | Connect Telegram directly |
 | [**listFacebookPages()**](ConnectApi.md#listFacebookPages) | **GET** /v1/connect/facebook/select-page | List Facebook pages |
+| [**listGoogleAnalyticsProperties()**](ConnectApi.md#listGoogleAnalyticsProperties) | **GET** /v1/connect/googleanalytics/properties | List Google Analytics properties for a pending connect |
 | [**listGoogleBusinessLocations()**](ConnectApi.md#listGoogleBusinessLocations) | **GET** /v1/connect/googlebusiness/locations | List Google Business Profile locations |
 | [**listInstagramPages()**](ConnectApi.md#listInstagramPages) | **GET** /v1/connect/instagram/select-account | List Pages with a linked Instagram account |
 | [**listLinkedInOrganizations()**](ConnectApi.md#listLinkedInOrganizations) | **GET** /v1/connect/linkedin/organizations | List LinkedIn orgs |
@@ -58,6 +59,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listWhatsAppPhoneNumbers()**](ConnectApi.md#listWhatsAppPhoneNumbers) | **GET** /v1/connect/whatsapp/select-phone-number | List numbers for selection |
 | [**resyncPageWebhookSubscription()**](ConnectApi.md#resyncPageWebhookSubscription) | **POST** /v1/accounts/{accountId}/webhook-subscription | Re-subscribe a Facebook Page to Zernio&#39;s webhooks |
 | [**selectFacebookPage()**](ConnectApi.md#selectFacebookPage) | **POST** /v1/connect/facebook/select-page | Select Facebook page |
+| [**selectGoogleAnalyticsProperty()**](ConnectApi.md#selectGoogleAnalyticsProperty) | **POST** /v1/connect/googleanalytics/select-property | Connect the chosen Google Analytics property |
 | [**selectGoogleBusinessLocation()**](ConnectApi.md#selectGoogleBusinessLocation) | **POST** /v1/connect/googlebusiness/select-location | Select Google Business Profile location |
 | [**selectInstagramAccount()**](ConnectApi.md#selectInstagramAccount) | **POST** /v1/connect/instagram/select-account | Select the Page whose Instagram account to connect |
 | [**selectLinkedInOrganization()**](ConnectApi.md#selectLinkedInOrganization) | **POST** /v1/connect/linkedin/select-organization | Select LinkedIn org |
@@ -1540,7 +1542,7 @@ getGoogleAnalyticsConnectUrl($profile_id, $redirect_url, $reconnect_account_id):
 
 Get Google Analytics OAuth connect URL
 
-Starts OAuth for Google Analytics (GA4). Each connected GA4 property becomes its own account with platform `googleanalytics`; it reads reports and does not post. Redirect the user to `authUrl`. When the Google account can read one property, Zernio connects it and redirects to `redirect_url` (or the dashboard) with `connected=googleanalytics`, `profileId`, `accountId` and `username` (the property name). When it can read several, the user first picks one on a Zernio-hosted page, which then redirects the same way. On failure the redirect carries `error`, `platform=googleanalytics` and `error_message`; errors include `googleanalytics_scope_missing` (the user unticked Analytics access) and `googleanalytics_no_properties`. Requested scope: `https://www.googleapis.com/auth/analytics.readonly`.
+Starts OAuth for Google Analytics (GA4). Each connected GA4 property becomes its own account with platform `googleanalytics`; it reads reports and does not post. Redirect the user to `authUrl`. When the Google account can read one property, Zernio connects it and redirects to `redirect_url` (or the dashboard) with `connected=googleanalytics`, `profileId`, `accountId` and `username` (the property name). When it can read several, the user first picks one on a Zernio-hosted page, which then redirects the same way. To show your own picker instead, add `headless=true` to `redirect_url`: Zernio then redirects there with `step=select_property`, `profileId`, `platform=googleanalytics` and a `pendingDataToken` for `GET /v1/connect/googleanalytics/properties` and `POST /v1/connect/googleanalytics/select-property`. On failure the redirect carries `error`, `platform=googleanalytics` and `error_message`; errors include `googleanalytics_scope_missing` (the user unticked Analytics access) and `googleanalytics_no_properties`. Requested scope: `https://www.googleapis.com/auth/analytics.readonly`.
 
 ### Example
 
@@ -2799,6 +2801,71 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listGoogleAnalyticsProperties()`
+
+```php
+listGoogleAnalyticsProperties($pending_data_token): \Zernio\Model\ListGoogleAnalyticsProperties200Response
+```
+
+List Google Analytics properties for a pending connect
+
+For headless flows. When the connect started with `redirect_url=...?headless=true` and the Google account can read several GA4 properties, Zernio redirects to your `redirect_url` with `step=select_property`, `profileId`, `platform=googleanalytics` and a `pendingDataToken`. Call this to list the properties and show your own picker, then call `POST /v1/connect/googleanalytics/select-property`. Listing does not consume the token. A headless token passes through your own URLs, so it is honored only together with your API key (or connect token) for the same profile. It expires after one hour.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: connectToken
+$config = Zernio\Configuration::getDefaultConfiguration()->setApiKey('X-Connect-Token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Zernio\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Connect-Token', 'Bearer');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$pending_data_token = 'pending_data_token_example'; // string | Token from the headless redirect.
+
+try {
+    $result = $apiInstance->listGoogleAnalyticsProperties($pending_data_token);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->listGoogleAnalyticsProperties: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **pending_data_token** | **string**| Token from the headless redirect. | |
+
+### Return type
+
+[**\Zernio\Model\ListGoogleAnalyticsProperties200Response**](../Model/ListGoogleAnalyticsProperties200Response.md)
+
+### Authorization
+
+[connectToken](../../README.md#connectToken), [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listGoogleBusinessLocations()`
 
 ```php
@@ -3376,6 +3443,71 @@ try {
 ### Return type
 
 [**\Zernio\Model\SelectFacebookPage200Response**](../Model/SelectFacebookPage200Response.md)
+
+### Authorization
+
+[connectToken](../../README.md#connectToken), [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `selectGoogleAnalyticsProperty()`
+
+```php
+selectGoogleAnalyticsProperty($select_google_analytics_property_request): \Zernio\Model\SelectGoogleAnalyticsProperty200Response
+```
+
+Connect the chosen Google Analytics property
+
+For headless flows. Connects the property the user picked as a `googleanalytics` account and returns where to send the user next: your `redirect_url` with `connected=googleanalytics`, `profileId`, `accountId` and `username`, or an `error` when the connect was refused (for example a billing block). Consumes the `pendingDataToken`; a refused or failed attempt leaves it usable for a retry. Send your API key (or connect token) for the same profile with a headless token.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: connectToken
+$config = Zernio\Configuration::getDefaultConfiguration()->setApiKey('X-Connect-Token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Zernio\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Connect-Token', 'Bearer');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$select_google_analytics_property_request = new \Zernio\Model\SelectGoogleAnalyticsPropertyRequest(); // \Zernio\Model\SelectGoogleAnalyticsPropertyRequest
+
+try {
+    $result = $apiInstance->selectGoogleAnalyticsProperty($select_google_analytics_property_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->selectGoogleAnalyticsProperty: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **select_google_analytics_property_request** | [**\Zernio\Model\SelectGoogleAnalyticsPropertyRequest**](../Model/SelectGoogleAnalyticsPropertyRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\SelectGoogleAnalyticsProperty200Response**](../Model/SelectGoogleAnalyticsProperty200Response.md)
 
 ### Authorization
 

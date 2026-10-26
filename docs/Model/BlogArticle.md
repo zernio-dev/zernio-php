@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **title** | **string** |  | [optional]
 **body_html** | **string** | Article body as HTML. Wix stores rich content, converted from and to HTML; Wix lists return null (get the article for its body). | [optional]
 **handle** | **string** | URL slug of the article. | [optional]
+**url** | **string** | WordPress and Wix. Public URL of the article while it is published; null for drafts and scheduled posts, and on a Wix site that is not published yet. | [optional]
 **tags** | **string[]** | Tag names. On WordPress and Wix, missing tag names are created and matching is case-insensitive. | [optional]
 **author** | **string** | Shopify author display name, numeric WordPress user id serialized as a string, or Wix site member id. Wix posts without one are attributed to the site&#39;s default author. | [optional]
 **excerpt** | **string** | Short summary shown in blog listings. | [optional]
