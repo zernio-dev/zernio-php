@@ -611,7 +611,9 @@ Class | Method | HTTP request | Description
 *ConversionsApi* | [**createConversionAction**](docs/Api/ConversionsApi.md#createconversionaction) | **POST** /v1/ads/conversions/actions | Create website conversion action
 *ConversionsApi* | [**createConversionDestination**](docs/Api/ConversionsApi.md#createconversiondestination) | **POST** /v1/accounts/{accountId}/conversion-destinations | Create a conversion destination
 *ConversionsApi* | [**createCustomConversionGoal**](docs/Api/ConversionsApi.md#createcustomconversiongoal) | **POST** /v1/ads/conversions/custom-goals | Create a custom conversion goal
+*ConversionsApi* | [**createEventDestination**](docs/Api/ConversionsApi.md#createeventdestination) | **POST** /v1/events/destinations | Add an event destination
 *ConversionsApi* | [**deleteConversionDestination**](docs/Api/ConversionsApi.md#deleteconversiondestination) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Delete a conversion destination
+*ConversionsApi* | [**deleteEventDestination**](docs/Api/ConversionsApi.md#deleteeventdestination) | **DELETE** /v1/events/destinations/{destinationId} | Remove an event destination
 *ConversionsApi* | [**getConversionDestination**](docs/Api/ConversionsApi.md#getconversiondestination) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Get a conversion destination
 *ConversionsApi* | [**getConversionMetrics**](docs/Api/ConversionsApi.md#getconversionmetrics) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/metrics | Get attribution metrics
 *ConversionsApi* | [**getConversionsQuality**](docs/Api/ConversionsApi.md#getconversionsquality) | **GET** /v1/ads/conversions/quality | Get Event Match Quality
@@ -620,9 +622,11 @@ Class | Method | HTTP request | Description
 *ConversionsApi* | [**listConversionAssociations**](docs/Api/ConversionsApi.md#listconversionassociations) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | List associated campaigns
 *ConversionsApi* | [**listConversionDestinations**](docs/Api/ConversionsApi.md#listconversiondestinations) | **GET** /v1/accounts/{accountId}/conversion-destinations | List conversion destinations
 *ConversionsApi* | [**listCustomConversionGoals**](docs/Api/ConversionsApi.md#listcustomconversiongoals) | **GET** /v1/ads/conversions/custom-goals | List custom conversion goals
+*ConversionsApi* | [**listEventDestinations**](docs/Api/ConversionsApi.md#listeventdestinations) | **GET** /v1/events/destinations | List event destinations
 *ConversionsApi* | [**removeConversionAssociations**](docs/Api/ConversionsApi.md#removeconversionassociations) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Remove associated campaigns
 *ConversionsApi* | [**removeCustomConversionGoal**](docs/Api/ConversionsApi.md#removecustomconversiongoal) | **DELETE** /v1/ads/conversions/custom-goals/{goalId} | Remove a custom conversion goal
 *ConversionsApi* | [**sendConversions**](docs/Api/ConversionsApi.md#sendconversions) | **POST** /v1/ads/conversions | Send conversion events
+*ConversionsApi* | [**sendEvents**](docs/Api/ConversionsApi.md#sendevents) | **POST** /v1/events | Send events to every destination
 *ConversionsApi* | [**updateAdConversionGoals**](docs/Api/ConversionsApi.md#updateadconversiongoals) | **PATCH** /v1/ads/conversions/goals | Update account conversion goals
 *ConversionsApi* | [**updateConversionAction**](docs/Api/ConversionsApi.md#updateconversionaction) | **PATCH** /v1/ads/conversions/actions/{actionId} | Update a conversion action&#39;s settings
 *ConversionsApi* | [**updateConversionDestination**](docs/Api/ConversionsApi.md#updateconversiondestination) | **PATCH** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Update a conversion destination
@@ -1625,6 +1629,8 @@ Class | Method | HTTP request | Description
 - [CreateDiscordThread200Response](docs/Model/CreateDiscordThread200Response.md)
 - [CreateDiscordThread200ResponseData](docs/Model/CreateDiscordThread200ResponseData.md)
 - [CreateDiscordThreadRequest](docs/Model/CreateDiscordThreadRequest.md)
+- [CreateEventDestination201Response](docs/Model/CreateEventDestination201Response.md)
+- [CreateEventDestinationRequest](docs/Model/CreateEventDestinationRequest.md)
 - [CreateGoogleAdAccountRequest](docs/Model/CreateGoogleAdAccountRequest.md)
 - [CreateGoogleAssetGroup200Response](docs/Model/CreateGoogleAssetGroup200Response.md)
 - [CreateGoogleAssetGroup201Response](docs/Model/CreateGoogleAssetGroup201Response.md)
@@ -1905,6 +1911,7 @@ Class | Method | HTTP request | Description
 - [ErrorResponseDetailsUnconfirmedWrite](docs/Model/ErrorResponseDetailsUnconfirmedWrite.md)
 - [EstimateAdReach200Response](docs/Model/EstimateAdReach200Response.md)
 - [EstimateAdReachRequest](docs/Model/EstimateAdReachRequest.md)
+- [EventDestination](docs/Model/EventDestination.md)
 - [Expired](docs/Model/Expired.md)
 - [ExternalPostMediaItem](docs/Model/ExternalPostMediaItem.md)
 - [ExternalPostSummary](docs/Model/ExternalPostSummary.md)
@@ -2693,6 +2700,7 @@ Class | Method | HTTP request | Description
 - [ListDiscordPinnedMessages200Response](docs/Model/ListDiscordPinnedMessages200Response.md)
 - [ListDiscordPinnedMessages200ResponseDataInner](docs/Model/ListDiscordPinnedMessages200ResponseDataInner.md)
 - [ListDiscordScheduledEvents200Response](docs/Model/ListDiscordScheduledEvents200Response.md)
+- [ListEventDestinations200Response](docs/Model/ListEventDestinations200Response.md)
 - [ListFacebookPages200Response](docs/Model/ListFacebookPages200Response.md)
 - [ListFacebookPages200ResponsePagesInner](docs/Model/ListFacebookPages200ResponsePagesInner.md)
 - [ListFacebookTaggedPosts200Response](docs/Model/ListFacebookTaggedPosts200Response.md)
@@ -3234,6 +3242,12 @@ Class | Method | HTTP request | Description
 - [SendDiscordDirectMessage200ResponseRecipient](docs/Model/SendDiscordDirectMessage200ResponseRecipient.md)
 - [SendDiscordDirectMessageRequest](docs/Model/SendDiscordDirectMessageRequest.md)
 - [SendDiscordDirectMessageRequestAttachmentsInner](docs/Model/SendDiscordDirectMessageRequestAttachmentsInner.md)
+- [SendEvents200Response](docs/Model/SendEvents200Response.md)
+- [SendEvents200ResponseDestinationsInner](docs/Model/SendEvents200ResponseDestinationsInner.md)
+- [SendEvents200ResponseDestinationsInnerFailuresInner](docs/Model/SendEvents200ResponseDestinationsInnerFailuresInner.md)
+- [SendEventsRequest](docs/Model/SendEventsRequest.md)
+- [SendEventsRequestConsent](docs/Model/SendEventsRequestConsent.md)
+- [SendEventsRequestDestinationsInner](docs/Model/SendEventsRequestDestinationsInner.md)
 - [SendInboxMessage200Response](docs/Model/SendInboxMessage200Response.md)
 - [SendInboxMessage200ResponseData](docs/Model/SendInboxMessage200ResponseData.md)
 - [SendInboxMessage200ResponseDataAttachmentsInner](docs/Model/SendInboxMessage200ResponseDataAttachmentsInner.md)
@@ -4009,6 +4023,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.359.1`
+- API version: `1.360.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

@@ -11,7 +11,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createConversionAction()**](ConversionsApi.md#createConversionAction) | **POST** /v1/ads/conversions/actions | Create website conversion action |
 | [**createConversionDestination()**](ConversionsApi.md#createConversionDestination) | **POST** /v1/accounts/{accountId}/conversion-destinations | Create a conversion destination |
 | [**createCustomConversionGoal()**](ConversionsApi.md#createCustomConversionGoal) | **POST** /v1/ads/conversions/custom-goals | Create a custom conversion goal |
+| [**createEventDestination()**](ConversionsApi.md#createEventDestination) | **POST** /v1/events/destinations | Add an event destination |
 | [**deleteConversionDestination()**](ConversionsApi.md#deleteConversionDestination) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Delete a conversion destination |
+| [**deleteEventDestination()**](ConversionsApi.md#deleteEventDestination) | **DELETE** /v1/events/destinations/{destinationId} | Remove an event destination |
 | [**getConversionDestination()**](ConversionsApi.md#getConversionDestination) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Get a conversion destination |
 | [**getConversionMetrics()**](ConversionsApi.md#getConversionMetrics) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/metrics | Get attribution metrics |
 | [**getConversionsQuality()**](ConversionsApi.md#getConversionsQuality) | **GET** /v1/ads/conversions/quality | Get Event Match Quality |
@@ -20,9 +22,11 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listConversionAssociations()**](ConversionsApi.md#listConversionAssociations) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | List associated campaigns |
 | [**listConversionDestinations()**](ConversionsApi.md#listConversionDestinations) | **GET** /v1/accounts/{accountId}/conversion-destinations | List conversion destinations |
 | [**listCustomConversionGoals()**](ConversionsApi.md#listCustomConversionGoals) | **GET** /v1/ads/conversions/custom-goals | List custom conversion goals |
+| [**listEventDestinations()**](ConversionsApi.md#listEventDestinations) | **GET** /v1/events/destinations | List event destinations |
 | [**removeConversionAssociations()**](ConversionsApi.md#removeConversionAssociations) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Remove associated campaigns |
 | [**removeCustomConversionGoal()**](ConversionsApi.md#removeCustomConversionGoal) | **DELETE** /v1/ads/conversions/custom-goals/{goalId} | Remove a custom conversion goal |
 | [**sendConversions()**](ConversionsApi.md#sendConversions) | **POST** /v1/ads/conversions | Send conversion events |
+| [**sendEvents()**](ConversionsApi.md#sendEvents) | **POST** /v1/events | Send events to every destination |
 | [**updateAdConversionGoals()**](ConversionsApi.md#updateAdConversionGoals) | **PATCH** /v1/ads/conversions/goals | Update account conversion goals |
 | [**updateConversionAction()**](ConversionsApi.md#updateConversionAction) | **PATCH** /v1/ads/conversions/actions/{actionId} | Update a conversion action&#39;s settings |
 | [**updateConversionDestination()**](ConversionsApi.md#updateConversionDestination) | **PATCH** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Update a conversion destination |
@@ -335,6 +339,66 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createEventDestination()`
+
+```php
+createEventDestination($create_event_destination_request): \Zernio\Model\CreateEventDestination201Response
+```
+
+Add an event destination
+
+Saves an ad platform destination for a profile, so events sent to `POST /v1/events` for that profile are forwarded to it. Pick `destinationId` from `GET /v1/accounts/{accountId}/conversion-destinations`. Set `eventNames` to forward only those events (for example only `Purchase`); leave it out to forward every event.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_event_destination_request = new \Zernio\Model\CreateEventDestinationRequest(); // \Zernio\Model\CreateEventDestinationRequest
+
+try {
+    $result = $apiInstance->createEventDestination($create_event_destination_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->createEventDestination: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_event_destination_request** | [**\Zernio\Model\CreateEventDestinationRequest**](../Model/CreateEventDestinationRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateEventDestination201Response**](../Model/CreateEventDestination201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteConversionDestination()`
 
 ```php
@@ -384,6 +448,66 @@ try {
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteEventDestination()`
+
+```php
+deleteEventDestination($destination_id): \Zernio\Model\DeleteSmsSenderId200Response
+```
+
+Remove an event destination
+
+Stops forwarding events to this destination. `destinationId` is the event destination `id`, not the platform destination.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$destination_id = 'destination_id_example'; // string
+
+try {
+    $result = $apiInstance->deleteEventDestination($destination_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->deleteEventDestination: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **destination_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\DeleteSmsSenderId200Response**](../Model/DeleteSmsSenderId200Response.md)
 
 ### Authorization
 
@@ -912,6 +1036,66 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listEventDestinations()`
+
+```php
+listEventDestinations($profile_id): \Zernio\Model\ListEventDestinations200Response
+```
+
+List event destinations
+
+Lists the ad platform destinations that receive events sent to `POST /v1/events`, for one profile or every profile you can access.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$profile_id = 'profile_id_example'; // string
+
+try {
+    $result = $apiInstance->listEventDestinations($profile_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->listEventDestinations: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profile_id** | **string**|  | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListEventDestinations200Response**](../Model/ListEventDestinations200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `removeConversionAssociations()`
 
 ```php
@@ -1090,6 +1274,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\SendConversions200Response**](../Model/SendConversions200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `sendEvents()`
+
+```php
+sendEvents($send_events_request): \Zernio\Model\SendEvents200Response
+```
+
+Send events to every destination
+
+Sends conversion events once and forwards them to every ad platform destination saved for the profile (see `POST /v1/events/destinations`), or to the `destinations` given in the request. Each destination receives the events exactly as `POST /v1/ads/conversions` would send them, so the per-platform notes there (hashing, batching, `eventName` semantics, dedup on `eventId`) apply here too. A destination saved with `eventNames` only receives events with those names.  Zernio also stores each event for the profile's reporting. Email, phone and `externalId` are stored only as SHA-256 hashes, and `sourceUrl` keeps only its origin, path and attribution parameters (`utm_*`, `gclid`, `fbclid`, `ttclid`, `li_fat_id`, `epik`, `rdt_cid`, `gbraid`, `wbraid`). Events sent with `testCode` are forwarded but not stored.  One destination failing never blocks the others: each one reports its own result. Requires the Ads add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$send_events_request = new \Zernio\Model\SendEventsRequest(); // \Zernio\Model\SendEventsRequest
+
+try {
+    $result = $apiInstance->sendEvents($send_events_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->sendEvents: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **send_events_request** | [**\Zernio\Model\SendEventsRequest**](../Model/SendEventsRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\SendEvents200Response**](../Model/SendEvents200Response.md)
 
 ### Authorization
 

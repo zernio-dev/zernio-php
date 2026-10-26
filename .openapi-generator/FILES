@@ -617,6 +617,8 @@ docs/Model/CreateDiscordScheduledEventRequestEntityOneOf2.md
 docs/Model/CreateDiscordThread200Response.md
 docs/Model/CreateDiscordThread200ResponseData.md
 docs/Model/CreateDiscordThreadRequest.md
+docs/Model/CreateEventDestination201Response.md
+docs/Model/CreateEventDestinationRequest.md
 docs/Model/CreateGoogleAdAccountRequest.md
 docs/Model/CreateGoogleAssetGroup200Response.md
 docs/Model/CreateGoogleAssetGroup201Response.md
@@ -897,6 +899,7 @@ docs/Model/ErrorResponseDetailsCreatedObjectsInner.md
 docs/Model/ErrorResponseDetailsUnconfirmedWrite.md
 docs/Model/EstimateAdReach200Response.md
 docs/Model/EstimateAdReachRequest.md
+docs/Model/EventDestination.md
 docs/Model/Expired.md
 docs/Model/ExternalPostMediaItem.md
 docs/Model/ExternalPostSummary.md
@@ -1685,6 +1688,7 @@ docs/Model/ListDiscordGuildRoles200ResponseDataInner.md
 docs/Model/ListDiscordPinnedMessages200Response.md
 docs/Model/ListDiscordPinnedMessages200ResponseDataInner.md
 docs/Model/ListDiscordScheduledEvents200Response.md
+docs/Model/ListEventDestinations200Response.md
 docs/Model/ListFacebookPages200Response.md
 docs/Model/ListFacebookPages200ResponsePagesInner.md
 docs/Model/ListFacebookTaggedPosts200Response.md
@@ -2226,6 +2230,12 @@ docs/Model/SendDiscordDirectMessage200ResponseAccount.md
 docs/Model/SendDiscordDirectMessage200ResponseRecipient.md
 docs/Model/SendDiscordDirectMessageRequest.md
 docs/Model/SendDiscordDirectMessageRequestAttachmentsInner.md
+docs/Model/SendEvents200Response.md
+docs/Model/SendEvents200ResponseDestinationsInner.md
+docs/Model/SendEvents200ResponseDestinationsInnerFailuresInner.md
+docs/Model/SendEventsRequest.md
+docs/Model/SendEventsRequestConsent.md
+docs/Model/SendEventsRequestDestinationsInner.md
 docs/Model/SendInboxMessage200Response.md
 docs/Model/SendInboxMessage200ResponseData.md
 docs/Model/SendInboxMessage200ResponseDataAttachmentsInner.md
@@ -3588,6 +3598,8 @@ lib/Model/CreateDiscordScheduledEventRequestEntityOneOf2.php
 lib/Model/CreateDiscordThread200Response.php
 lib/Model/CreateDiscordThread200ResponseData.php
 lib/Model/CreateDiscordThreadRequest.php
+lib/Model/CreateEventDestination201Response.php
+lib/Model/CreateEventDestinationRequest.php
 lib/Model/CreateGoogleAdAccountRequest.php
 lib/Model/CreateGoogleAssetGroup200Response.php
 lib/Model/CreateGoogleAssetGroup201Response.php
@@ -3868,6 +3880,7 @@ lib/Model/ErrorResponseDetailsCreatedObjectsInner.php
 lib/Model/ErrorResponseDetailsUnconfirmedWrite.php
 lib/Model/EstimateAdReach200Response.php
 lib/Model/EstimateAdReachRequest.php
+lib/Model/EventDestination.php
 lib/Model/Expired.php
 lib/Model/ExternalPostMediaItem.php
 lib/Model/ExternalPostSummary.php
@@ -4656,6 +4669,7 @@ lib/Model/ListDiscordGuildRoles200ResponseDataInner.php
 lib/Model/ListDiscordPinnedMessages200Response.php
 lib/Model/ListDiscordPinnedMessages200ResponseDataInner.php
 lib/Model/ListDiscordScheduledEvents200Response.php
+lib/Model/ListEventDestinations200Response.php
 lib/Model/ListFacebookPages200Response.php
 lib/Model/ListFacebookPages200ResponsePagesInner.php
 lib/Model/ListFacebookTaggedPosts200Response.php
@@ -5198,6 +5212,12 @@ lib/Model/SendDiscordDirectMessage200ResponseAccount.php
 lib/Model/SendDiscordDirectMessage200ResponseRecipient.php
 lib/Model/SendDiscordDirectMessageRequest.php
 lib/Model/SendDiscordDirectMessageRequestAttachmentsInner.php
+lib/Model/SendEvents200Response.php
+lib/Model/SendEvents200ResponseDestinationsInner.php
+lib/Model/SendEvents200ResponseDestinationsInnerFailuresInner.php
+lib/Model/SendEventsRequest.php
+lib/Model/SendEventsRequestConsent.php
+lib/Model/SendEventsRequestDestinationsInner.php
 lib/Model/SendInboxMessage200Response.php
 lib/Model/SendInboxMessage200ResponseData.php
 lib/Model/SendInboxMessage200ResponseDataAttachmentsInner.php
@@ -5943,3 +5963,13 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateEventDestination201ResponseTest.php
+test/Model/CreateEventDestinationRequestTest.php
+test/Model/EventDestinationTest.php
+test/Model/ListEventDestinations200ResponseTest.php
+test/Model/SendEvents200ResponseDestinationsInnerFailuresInnerTest.php
+test/Model/SendEvents200ResponseDestinationsInnerTest.php
+test/Model/SendEvents200ResponseTest.php
+test/Model/SendEventsRequestConsentTest.php
+test/Model/SendEventsRequestDestinationsInnerTest.php
+test/Model/SendEventsRequestTest.php
