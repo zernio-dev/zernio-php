@@ -5963,13 +5963,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateEventDestination201ResponseTest.php
-test/Model/CreateEventDestinationRequestTest.php
-test/Model/EventDestinationTest.php
-test/Model/ListEventDestinations200ResponseTest.php
-test/Model/SendEvents200ResponseDestinationsInnerFailuresInnerTest.php
-test/Model/SendEvents200ResponseDestinationsInnerTest.php
-test/Model/SendEvents200ResponseTest.php
-test/Model/SendEventsRequestConsentTest.php
-test/Model/SendEventsRequestDestinationsInnerTest.php
-test/Model/SendEventsRequestTest.php
