@@ -214,6 +214,7 @@ Class | Method | HTTP request | Description
 *AdCampaignsApi* | [**deleteAd**](docs/Api/AdCampaignsApi.md#deletead) | **DELETE** /v1/ads/{adId} | Cancel an ad
 *AdCampaignsApi* | [**deleteAdCampaign**](docs/Api/AdCampaignsApi.md#deleteadcampaign) | **DELETE** /v1/ads/campaigns/{campaignId} | Delete a campaign
 *AdCampaignsApi* | [**deleteAdSet**](docs/Api/AdCampaignsApi.md#deleteadset) | **DELETE** /v1/ads/ad-sets/{adSetId} | Delete an ad set
+*AdCampaignsApi* | [**dismissAdsAlert**](docs/Api/AdCampaignsApi.md#dismissadsalert) | **POST** /v1/ads/alerts/{alertId}/dismiss | Dismiss an ads alert
 *AdCampaignsApi* | [**dismissGoogleRecommendations**](docs/Api/AdCampaignsApi.md#dismissgooglerecommendations) | **POST** /v1/ads/recommendations/dismiss | Dismiss Google Ads recommendations
 *AdCampaignsApi* | [**duplicateAd**](docs/Api/AdCampaignsApi.md#duplicatead) | **POST** /v1/ads/{adId}/duplicate | Duplicate an ad
 *AdCampaignsApi* | [**duplicateAdCampaign**](docs/Api/AdCampaignsApi.md#duplicateadcampaign) | **POST** /v1/ads/campaigns/{campaignId}/duplicate | Duplicate a campaign
@@ -236,6 +237,7 @@ Class | Method | HTTP request | Description
 *AdCampaignsApi* | [**listAdKeywords**](docs/Api/AdCampaignsApi.md#listadkeywords) | **GET** /v1/ads/keywords | List Search keywords
 *AdCampaignsApi* | [**listAdSets**](docs/Api/AdCampaignsApi.md#listadsets) | **GET** /v1/ads/ad-sets | List ad sets
 *AdCampaignsApi* | [**listAds**](docs/Api/AdCampaignsApi.md#listads) | **GET** /v1/ads | List ads
+*AdCampaignsApi* | [**listAdsAlerts**](docs/Api/AdCampaignsApi.md#listadsalerts) | **GET** /v1/ads/alerts | List ads that need attention
 *AdCampaignsApi* | [**listBidStrategies**](docs/Api/AdCampaignsApi.md#listbidstrategies) | **GET** /v1/ads/bid-strategies | List portfolio bid strategies
 *AdCampaignsApi* | [**listCampaignAssets**](docs/Api/AdCampaignsApi.md#listcampaignassets) | **GET** /v1/ads/campaigns/{campaignId}/assets | List campaign assets
 *AdCampaignsApi* | [**listCampaignNegativeKeywordLists**](docs/Api/AdCampaignsApi.md#listcampaignnegativekeywordlists) | **GET** /v1/ads/campaigns/{campaignId}/negative-keyword-lists | List campaign negative lists
@@ -1174,6 +1176,7 @@ Class | Method | HTTP request | Description
 - [AdTreeCampaignOptimizationGoal](docs/Model/AdTreeCampaignOptimizationGoal.md)
 - [AdTreeCampaignPromotedObject](docs/Model/AdTreeCampaignPromotedObject.md)
 - [AdTreeResponse](docs/Model/AdTreeResponse.md)
+- [AdTreeResponsePreviousRange](docs/Model/AdTreeResponsePreviousRange.md)
 - [AddAccountCallouts201Response](docs/Model/AddAccountCallouts201Response.md)
 - [AddAccountCallouts201ResponseCalloutsInner](docs/Model/AddAccountCallouts201ResponseCalloutsInner.md)
 - [AddAccountCalloutsRequest](docs/Model/AddAccountCalloutsRequest.md)
@@ -1218,8 +1221,12 @@ Class | Method | HTTP request | Description
 - [AdjustConversionsRequest](docs/Model/AdjustConversionsRequest.md)
 - [AdjustConversionsRequestAdjustmentsInner](docs/Model/AdjustConversionsRequestAdjustmentsInner.md)
 - [AdjustConversionsRequestAdjustmentsInnerUser](docs/Model/AdjustConversionsRequestAdjustmentsInnerUser.md)
+- [AdsAlert](docs/Model/AdsAlert.md)
+- [AdsAlertEntity](docs/Model/AdsAlertEntity.md)
+- [AdsAlertFix](docs/Model/AdsAlertFix.md)
 - [AdsListResponse](docs/Model/AdsListResponse.md)
 - [AdsTimelineResponse](docs/Model/AdsTimelineResponse.md)
+- [AdsTimelineResponsePreviousRange](docs/Model/AdsTimelineResponsePreviousRange.md)
 - [AdsTimelineResponseRowsInner](docs/Model/AdsTimelineResponseRowsInner.md)
 - [AnalyticsDashboardFollowers](docs/Model/AnalyticsDashboardFollowers.md)
 - [AnalyticsDashboardFollowersByAccountInner](docs/Model/AnalyticsDashboardFollowersByAccountInner.md)
@@ -1881,6 +1888,7 @@ Class | Method | HTTP request | Description
 - [DiscordRole](docs/Model/DiscordRole.md)
 - [DiscordScheduledEvent](docs/Model/DiscordScheduledEvent.md)
 - [DiscordScheduledEventEntityMetadata](docs/Model/DiscordScheduledEventEntityMetadata.md)
+- [DismissAdsAlert200Response](docs/Model/DismissAdsAlert200Response.md)
 - [DismissGoogleRecommendationsRequest](docs/Model/DismissGoogleRecommendationsRequest.md)
 - [DmButton](docs/Model/DmButton.md)
 - [DownloadTikTokVideo200Response](docs/Model/DownloadTikTokVideo200Response.md)
@@ -2641,6 +2649,8 @@ Class | Method | HTTP request | Description
 - [ListAdStudies200Response](docs/Model/ListAdStudies200Response.md)
 - [ListAdVideos200Response](docs/Model/ListAdVideos200Response.md)
 - [ListAds202Response](docs/Model/ListAds202Response.md)
+- [ListAdsAlerts200Response](docs/Model/ListAdsAlerts200Response.md)
+- [ListAdsAlerts200ResponseCounts](docs/Model/ListAdsAlerts200ResponseCounts.md)
 - [ListAdsBusinessCenters200Response](docs/Model/ListAdsBusinessCenters200Response.md)
 - [ListAdsInstagramAccounts200Response](docs/Model/ListAdsInstagramAccounts200Response.md)
 - [ListAdsInstagramAccounts200ResponseAccountsInner](docs/Model/ListAdsInstagramAccounts200ResponseAccountsInner.md)
@@ -4062,6 +4072,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.377.2`
+- API version: `1.378.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

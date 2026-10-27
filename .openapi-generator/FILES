@@ -154,6 +154,7 @@ docs/Model/AdTreeCampaignCampaignBudget.md
 docs/Model/AdTreeCampaignOptimizationGoal.md
 docs/Model/AdTreeCampaignPromotedObject.md
 docs/Model/AdTreeResponse.md
+docs/Model/AdTreeResponsePreviousRange.md
 docs/Model/AddAccountCallouts201Response.md
 docs/Model/AddAccountCallouts201ResponseCalloutsInner.md
 docs/Model/AddAccountCalloutsRequest.md
@@ -198,8 +199,12 @@ docs/Model/AdjustConversions200ResponseFailuresInner.md
 docs/Model/AdjustConversionsRequest.md
 docs/Model/AdjustConversionsRequestAdjustmentsInner.md
 docs/Model/AdjustConversionsRequestAdjustmentsInnerUser.md
+docs/Model/AdsAlert.md
+docs/Model/AdsAlertEntity.md
+docs/Model/AdsAlertFix.md
 docs/Model/AdsListResponse.md
 docs/Model/AdsTimelineResponse.md
+docs/Model/AdsTimelineResponsePreviousRange.md
 docs/Model/AdsTimelineResponseRowsInner.md
 docs/Model/AnalyticsDashboardFollowers.md
 docs/Model/AnalyticsDashboardFollowersByAccountInner.md
@@ -861,6 +866,7 @@ docs/Model/DiscordPlatformDataThreadFromMessage.md
 docs/Model/DiscordRole.md
 docs/Model/DiscordScheduledEvent.md
 docs/Model/DiscordScheduledEventEntityMetadata.md
+docs/Model/DismissAdsAlert200Response.md
 docs/Model/DismissGoogleRecommendationsRequest.md
 docs/Model/DmButton.md
 docs/Model/DownloadTikTokVideo200Response.md
@@ -1621,6 +1627,8 @@ docs/Model/ListAdSets200ResponseAdSetsInnerTargeting.md
 docs/Model/ListAdStudies200Response.md
 docs/Model/ListAdVideos200Response.md
 docs/Model/ListAds202Response.md
+docs/Model/ListAdsAlerts200Response.md
+docs/Model/ListAdsAlerts200ResponseCounts.md
 docs/Model/ListAdsBusinessCenters200Response.md
 docs/Model/ListAdsInstagramAccounts200Response.md
 docs/Model/ListAdsInstagramAccounts200ResponseAccountsInner.md
@@ -3166,6 +3174,7 @@ lib/Model/AdTreeCampaignCampaignBudget.php
 lib/Model/AdTreeCampaignOptimizationGoal.php
 lib/Model/AdTreeCampaignPromotedObject.php
 lib/Model/AdTreeResponse.php
+lib/Model/AdTreeResponsePreviousRange.php
 lib/Model/AddAccountCallouts201Response.php
 lib/Model/AddAccountCallouts201ResponseCalloutsInner.php
 lib/Model/AddAccountCalloutsRequest.php
@@ -3210,8 +3219,12 @@ lib/Model/AdjustConversions200ResponseFailuresInner.php
 lib/Model/AdjustConversionsRequest.php
 lib/Model/AdjustConversionsRequestAdjustmentsInner.php
 lib/Model/AdjustConversionsRequestAdjustmentsInnerUser.php
+lib/Model/AdsAlert.php
+lib/Model/AdsAlertEntity.php
+lib/Model/AdsAlertFix.php
 lib/Model/AdsListResponse.php
 lib/Model/AdsTimelineResponse.php
+lib/Model/AdsTimelineResponsePreviousRange.php
 lib/Model/AdsTimelineResponseRowsInner.php
 lib/Model/AnalyticsDashboardFollowers.php
 lib/Model/AnalyticsDashboardFollowersByAccountInner.php
@@ -3873,6 +3886,7 @@ lib/Model/DiscordPlatformDataThreadFromMessage.php
 lib/Model/DiscordRole.php
 lib/Model/DiscordScheduledEvent.php
 lib/Model/DiscordScheduledEventEntityMetadata.php
+lib/Model/DismissAdsAlert200Response.php
 lib/Model/DismissGoogleRecommendationsRequest.php
 lib/Model/DmButton.php
 lib/Model/DownloadTikTokVideo200Response.php
@@ -4633,6 +4647,8 @@ lib/Model/ListAdSets200ResponseAdSetsInnerTargeting.php
 lib/Model/ListAdStudies200Response.php
 lib/Model/ListAdVideos200Response.php
 lib/Model/ListAds202Response.php
+lib/Model/ListAdsAlerts200Response.php
+lib/Model/ListAdsAlerts200ResponseCounts.php
 lib/Model/ListAdsBusinessCenters200Response.php
 lib/Model/ListAdsInstagramAccounts200Response.php
 lib/Model/ListAdsInstagramAccounts200ResponseAccountsInner.php
@@ -6025,3 +6041,11 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AdTreeResponsePreviousRangeTest.php
+test/Model/AdsAlertEntityTest.php
+test/Model/AdsAlertFixTest.php
+test/Model/AdsAlertTest.php
+test/Model/AdsTimelineResponsePreviousRangeTest.php
+test/Model/DismissAdsAlert200ResponseTest.php
+test/Model/ListAdsAlerts200ResponseCountsTest.php
+test/Model/ListAdsAlerts200ResponseTest.php
