@@ -572,6 +572,7 @@ docs/Model/CreateAdRule201Response.md
 docs/Model/CreateAdRuleRequest.md
 docs/Model/CreateAdSet201Response.md
 docs/Model/CreateAdSetRequest.md
+docs/Model/CreateAdSetRequestPromotedObject.md
 docs/Model/CreateApiKey201Response.md
 docs/Model/CreateApiKeyRequest.md
 docs/Model/CreateBidStrategy201Response.md
@@ -3670,6 +3671,7 @@ lib/Model/CreateAdRule201Response.php
 lib/Model/CreateAdRuleRequest.php
 lib/Model/CreateAdSet201Response.php
 lib/Model/CreateAdSetRequest.php
+lib/Model/CreateAdSetRequestPromotedObject.php
 lib/Model/CreateApiKey201Response.php
 lib/Model/CreateApiKeyRequest.php
 lib/Model/CreateBidStrategy201Response.php
@@ -6197,3 +6199,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateAdSetRequestPromotedObjectTest.php
