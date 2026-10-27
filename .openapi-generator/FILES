@@ -277,6 +277,8 @@ docs/Model/BlogArticleImage.md
 docs/Model/BlueskyPlatformData.md
 docs/Model/BookmarkPost200Response.md
 docs/Model/BookmarkPostRequest.md
+docs/Model/BoostPost200Response.md
+docs/Model/BoostPost200ResponseResultsInner.md
 docs/Model/BoostPost201Response.md
 docs/Model/BoostPostRequest.md
 docs/Model/BoostPostRequestAttributionSpecInner.md
@@ -3281,6 +3283,8 @@ lib/Model/BlogArticleImage.php
 lib/Model/BlueskyPlatformData.php
 lib/Model/BookmarkPost200Response.php
 lib/Model/BookmarkPostRequest.php
+lib/Model/BoostPost200Response.php
+lib/Model/BoostPost200ResponseResultsInner.php
 lib/Model/BoostPost201Response.php
 lib/Model/BoostPostRequest.php
 lib/Model/BoostPostRequestAttributionSpecInner.php
@@ -6009,3 +6013,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/BoostPost200ResponseResultsInnerTest.php
+test/Model/BoostPost200ResponseTest.php
