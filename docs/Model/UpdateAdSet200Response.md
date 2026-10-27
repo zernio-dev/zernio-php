@@ -17,6 +17,8 @@ Name | Type | Description | Notes
 **bid_amount** | **float** |  | [optional]
 **roas_average_floor** | **float** |  | [optional]
 **platform_specific_data** | **object** |  | [optional]
-**targeting** | **object** | Present when &#x60;placements&#x60; or &#x60;targeting&#x60; was sent. The ad set&#39;s full Meta targeting as written (Meta snake_case). The same snake_case object is stored as the ad set&#39;s and its ads&#39; &#x60;targeting&#x60;. | [optional]
+**targeting** | **object** | Present when &#x60;placements&#x60; or &#x60;targeting&#x60; was sent. The ad set&#39;s full targeting as written, in the platform&#39;s own vocabulary (Meta or Reddit snake_case). Stored as the ad set&#39;s &#x60;targeting&#x60;. Meta stores the same object on its ads; Reddit stores it on its ads in the create vocabulary (&#x60;countries&#x60;, &#x60;communities&#x60;, ...), as GET /v1/ads/ad-sets/{adSetId}/targeting returns it. | [optional]
+**start_date** | **string** | Reddit: the start_time written, a UTC instant. Present when &#x60;startDate&#x60; was sent. | [optional]
+**end_date** | **string** | Reddit: the end_time written, a UTC instant, or null when the end date was removed. Present when &#x60;endDate&#x60; was sent. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
