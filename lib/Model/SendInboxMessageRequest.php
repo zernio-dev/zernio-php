@@ -1342,7 +1342,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets message_tag
      *
-     * @param string|null $message_tag Facebook message tag for messaging outside 24h window. Requires messagingType MESSAGE_TAG. Instagram only supports HUMAN_AGENT.
+     * @param string|null $message_tag Facebook and Instagram. To reply after the 24h window, send HUMAN_AGENT with messagingType MESSAGE_TAG: it works up to 7 days after the person's last message, for replies typed by a person only (Meta does not allow it on automated messages). Meta retired the other tags, so they fail.
      *
      * @return self
      */

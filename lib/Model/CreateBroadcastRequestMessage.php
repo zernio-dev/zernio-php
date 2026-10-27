@@ -407,7 +407,7 @@ class CreateBroadcastRequestMessage implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets message_tag
      *
-     * @param string|null $message_tag Instagram and Facebook only. Meta message tag sent with every recipient message (messaging_type MESSAGE_TAG) so the broadcast can reach people outside the 24h window. Instagram accepts HUMAN_AGENT only. Rejected with a 400 on any other platform.
+     * @param string|null $message_tag Not usable: a broadcast only reaches people within the 24h window. HUMAN_AGENT is rejected with a 400 because it is only for replies typed by a person, and Meta retired the other tags.
      *
      * @return self
      */
