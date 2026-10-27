@@ -7,6 +7,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**archiveLeadForm()**](LeadGenApi.md#archiveLeadForm) | **DELETE** /v1/ads/lead-forms/{formId} | Archive a lead form |
+| [**countLeads()**](LeadGenApi.md#countLeads) | **GET** /v1/ads/leads/counts | Count leads by status |
 | [**createLeadForm()**](LeadGenApi.md#createLeadForm) | **POST** /v1/ads/lead-forms | Create a lead form |
 | [**createTestLead()**](LeadGenApi.md#createTestLead) | **POST** /v1/ads/lead-forms/{formId}/test-leads | Create a test lead |
 | [**deleteTestLead()**](LeadGenApi.md#deleteTestLead) | **DELETE** /v1/ads/lead-forms/{formId}/test-leads | Delete a test lead |
@@ -65,6 +66,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\ArchiveLeadForm200Response**](../Model/ArchiveLeadForm200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `countLeads()`
+
+```php
+countLeads($account_id, $campaign_id): \Zernio\Model\CountLeads200Response
+```
+
+Count leads by status
+
+Counts your team's stored Meta leads per status, for a status filter or a \"new leads\" badge.  Every status is present, with 0 when no lead has it. Requires the Ads add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\LeadGenApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Count one connected account only.
+$campaign_id = 'campaign_id_example'; // string | The platform campaign id the leads came from.
+
+try {
+    $result = $apiInstance->countLeads($account_id, $campaign_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling LeadGenApi->countLeads: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Count one connected account only. | [optional] |
+| **campaign_id** | **string**| The platform campaign id the leads came from. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\CountLeads200Response**](../Model/CountLeads200Response.md)
 
 ### Authorization
 
@@ -466,7 +529,7 @@ try {
 ## `listLeads()`
 
 ```php
-listLeads($form_id, $account_id, $ad_account_id, $limit, $since, $cursor): \Zernio\Model\ListLeads200Response
+listLeads($form_id, $account_id, $account_ids, $status, $campaign_id, $platform, $q, $ad_account_id, $limit, $since, $cursor): \Zernio\Model\ListLeads200Response
 ```
 
 List submitted leads
@@ -492,13 +555,18 @@ $apiInstance = new Zernio\Api\LeadGenApi(
 );
 $form_id = 'form_id_example'; // string | Filter to a single lead form.
 $account_id = 'account_id_example'; // string | Filter to a single connected account. LinkedIn ads accounts switch to the live fetch.
+$account_ids = 'account_ids_example'; // string | Meta only. Comma-separated connected account ids, to list several accounts at once. Without accountId or accountIds every account of the team is listed.
+$status = new,contacted; // string | Meta only. Comma-separated lead statuses: new, contacted, unreachable, qualified, converted, disqualified.
+$campaign_id = 'campaign_id_example'; // string | Meta only. The platform campaign id the lead came from.
+$platform = 'platform_example'; // string | meta skips the LinkedIn live fetch; linkedin requires accountId to be a LinkedIn ads connection (400 otherwise).
+$q = 'q_example'; // string | Meta only. Case-insensitive text search over the lead's answers and the form name.
 $ad_account_id = 'ad_account_id_example'; // string | LinkedIn only: the LinkedIn ad account id whose responses to read (owner-scoped finder).
 $limit = 25; // int
 $since = 1757404800; // int | Unix seconds; only leads created at/after this timestamp. Millisecond timestamps return 400 with instructions to divide by 1000.
 $cursor = 'cursor_example'; // string | Keyset cursor from a previous response's pagination.cursor (Meta: AdLead id; LinkedIn: numeric start offset).
 
 try {
-    $result = $apiInstance->listLeads($form_id, $account_id, $ad_account_id, $limit, $since, $cursor);
+    $result = $apiInstance->listLeads($form_id, $account_id, $account_ids, $status, $campaign_id, $platform, $q, $ad_account_id, $limit, $since, $cursor);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LeadGenApi->listLeads: ', $e->getMessage(), PHP_EOL;
@@ -511,6 +579,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **form_id** | **string**| Filter to a single lead form. | [optional] |
 | **account_id** | **string**| Filter to a single connected account. LinkedIn ads accounts switch to the live fetch. | [optional] |
+| **account_ids** | **string**| Meta only. Comma-separated connected account ids, to list several accounts at once. Without accountId or accountIds every account of the team is listed. | [optional] |
+| **status** | **string**| Meta only. Comma-separated lead statuses: new, contacted, unreachable, qualified, converted, disqualified. | [optional] |
+| **campaign_id** | **string**| Meta only. The platform campaign id the lead came from. | [optional] |
+| **platform** | **string**| meta skips the LinkedIn live fetch; linkedin requires accountId to be a LinkedIn ads connection (400 otherwise). | [optional] |
+| **q** | **string**| Meta only. Case-insensitive text search over the lead&#39;s answers and the form name. | [optional] |
 | **ad_account_id** | **string**| LinkedIn only: the LinkedIn ad account id whose responses to read (owner-scoped finder). | [optional] |
 | **limit** | **int**|  | [optional] [default to 25] |
 | **since** | **int**| Unix seconds; only leads created at/after this timestamp. Millisecond timestamps return 400 with instructions to divide by 1000. | [optional] |

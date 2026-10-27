@@ -23,5 +23,7 @@ Name | Type | Description | Notes
 **currency** | **string** |  | [optional]
 **contact_id** | **string** | The contact a lead_received workflow created or matched for this lead. | [optional]
 **first_contacted_at** | **\DateTime** | When the first WhatsApp message to the lead was delivered. | [optional]
+**conversation_id** | **string** | The Inbox conversation a lead_received workflow opened with the lead. | [optional]
+**webhook_delivered_at** | **\DateTime** | Meta leads only. When the &#x60;lead.received&#x60; webhook was delivered; null while it has not been. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

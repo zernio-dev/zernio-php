@@ -506,6 +506,8 @@ docs/Model/ConversionEventItemsInner.md
 docs/Model/ConversionEventMessaging.md
 docs/Model/ConversionEventUser.md
 docs/Model/ConversionEventUserClickIds.md
+docs/Model/CountLeads200Response.md
+docs/Model/CountLeads200ResponseCounts.md
 docs/Model/CreateAccountGroup201Response.md
 docs/Model/CreateAccountGroup201ResponseGroup.md
 docs/Model/CreateAccountGroupRequest.md
@@ -964,6 +966,9 @@ docs/Model/GetAdAccountBilling200ResponsePaymentsAccountsInner.md
 docs/Model/GetAdAccountBilling200ResponsePendingBudgetProposalsInner.md
 docs/Model/GetAdAccountFinance200Response.md
 docs/Model/GetAdAccountFinance200ResponseFundingSource.md
+docs/Model/GetAdAccountHealth200Response.md
+docs/Model/GetAdAccountHealth200ResponseChecksInner.md
+docs/Model/GetAdAccountHealth200ResponseChecksInnerFix.md
 docs/Model/GetAdAccountHierarchy200Response.md
 docs/Model/GetAdAccountHierarchy200ResponseDirectCustomersInner.md
 docs/Model/GetAdAccountHierarchy200ResponseDirectCustomersInnerPendingInvitationsInner.md
@@ -3512,6 +3517,8 @@ lib/Model/ConversionEventItemsInner.php
 lib/Model/ConversionEventMessaging.php
 lib/Model/ConversionEventUser.php
 lib/Model/ConversionEventUserClickIds.php
+lib/Model/CountLeads200Response.php
+lib/Model/CountLeads200ResponseCounts.php
 lib/Model/CreateAccountGroup201Response.php
 lib/Model/CreateAccountGroup201ResponseGroup.php
 lib/Model/CreateAccountGroupRequest.php
@@ -3970,6 +3977,9 @@ lib/Model/GetAdAccountBilling200ResponsePaymentsAccountsInner.php
 lib/Model/GetAdAccountBilling200ResponsePendingBudgetProposalsInner.php
 lib/Model/GetAdAccountFinance200Response.php
 lib/Model/GetAdAccountFinance200ResponseFundingSource.php
+lib/Model/GetAdAccountHealth200Response.php
+lib/Model/GetAdAccountHealth200ResponseChecksInner.php
+lib/Model/GetAdAccountHealth200ResponseChecksInnerFix.php
 lib/Model/GetAdAccountHierarchy200Response.php
 lib/Model/GetAdAccountHierarchy200ResponseDirectCustomersInner.php
 lib/Model/GetAdAccountHierarchy200ResponseDirectCustomersInnerPendingInvitationsInner.php
@@ -6013,3 +6023,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CountLeads200ResponseCountsTest.php
+test/Model/CountLeads200ResponseTest.php
+test/Model/GetAdAccountHealth200ResponseChecksInnerFixTest.php
+test/Model/GetAdAccountHealth200ResponseChecksInnerTest.php
+test/Model/GetAdAccountHealth200ResponseTest.php
