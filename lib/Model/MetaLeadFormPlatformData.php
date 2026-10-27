@@ -66,6 +66,8 @@ class MetaLeadFormPlatformData implements ModelInterface, ArrayAccess, \JsonSeri
         'thank_you_body' => 'string',
         'thank_you_button_text' => 'string',
         'thank_you_button_type' => 'string',
+        'business_phone_number' => 'string',
+        'country_code' => 'string',
         'thank_you_website_url' => 'string',
         'thank_you_enable_messenger' => 'bool',
         'is_optimized_for_quality' => 'bool',
@@ -92,6 +94,8 @@ class MetaLeadFormPlatformData implements ModelInterface, ArrayAccess, \JsonSeri
         'thank_you_body' => null,
         'thank_you_button_text' => null,
         'thank_you_button_type' => null,
+        'business_phone_number' => null,
+        'country_code' => null,
         'thank_you_website_url' => 'uri',
         'thank_you_enable_messenger' => null,
         'is_optimized_for_quality' => null,
@@ -116,6 +120,8 @@ class MetaLeadFormPlatformData implements ModelInterface, ArrayAccess, \JsonSeri
         'thank_you_body' => false,
         'thank_you_button_text' => false,
         'thank_you_button_type' => false,
+        'business_phone_number' => false,
+        'country_code' => false,
         'thank_you_website_url' => false,
         'thank_you_enable_messenger' => false,
         'is_optimized_for_quality' => false,
@@ -220,6 +226,8 @@ class MetaLeadFormPlatformData implements ModelInterface, ArrayAccess, \JsonSeri
         'thank_you_body' => 'thankYouBody',
         'thank_you_button_text' => 'thankYouButtonText',
         'thank_you_button_type' => 'thankYouButtonType',
+        'business_phone_number' => 'businessPhoneNumber',
+        'country_code' => 'countryCode',
         'thank_you_website_url' => 'thankYouWebsiteUrl',
         'thank_you_enable_messenger' => 'thankYouEnableMessenger',
         'is_optimized_for_quality' => 'isOptimizedForQuality',
@@ -244,6 +252,8 @@ class MetaLeadFormPlatformData implements ModelInterface, ArrayAccess, \JsonSeri
         'thank_you_body' => 'setThankYouBody',
         'thank_you_button_text' => 'setThankYouButtonText',
         'thank_you_button_type' => 'setThankYouButtonType',
+        'business_phone_number' => 'setBusinessPhoneNumber',
+        'country_code' => 'setCountryCode',
         'thank_you_website_url' => 'setThankYouWebsiteUrl',
         'thank_you_enable_messenger' => 'setThankYouEnableMessenger',
         'is_optimized_for_quality' => 'setIsOptimizedForQuality',
@@ -268,6 +278,8 @@ class MetaLeadFormPlatformData implements ModelInterface, ArrayAccess, \JsonSeri
         'thank_you_body' => 'getThankYouBody',
         'thank_you_button_text' => 'getThankYouButtonText',
         'thank_you_button_type' => 'getThankYouButtonType',
+        'business_phone_number' => 'getBusinessPhoneNumber',
+        'country_code' => 'getCountryCode',
         'thank_you_website_url' => 'getThankYouWebsiteUrl',
         'thank_you_enable_messenger' => 'getThankYouEnableMessenger',
         'is_optimized_for_quality' => 'getIsOptimizedForQuality',
@@ -343,6 +355,8 @@ class MetaLeadFormPlatformData implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('thank_you_body', $data ?? [], null);
         $this->setIfExists('thank_you_button_text', $data ?? [], null);
         $this->setIfExists('thank_you_button_type', $data ?? [], null);
+        $this->setIfExists('business_phone_number', $data ?? [], null);
+        $this->setIfExists('country_code', $data ?? [], null);
         $this->setIfExists('thank_you_website_url', $data ?? [], null);
         $this->setIfExists('thank_you_enable_messenger', $data ?? [], false);
         $this->setIfExists('is_optimized_for_quality', $data ?? [], null);
@@ -389,6 +403,10 @@ class MetaLeadFormPlatformData implements ModelInterface, ArrayAccess, \JsonSeri
 
         if (!is_null($this->container['privacy_policy_link_text']) && (mb_strlen($this->container['privacy_policy_link_text']) > 70)) {
             $invalidProperties[] = "invalid value for 'privacy_policy_link_text', the character length must be smaller than or equal to 70.";
+        }
+
+        if (!is_null($this->container['country_code']) && !preg_match("/^[A-Za-z]{2}$/", $this->container['country_code'])) {
+            $invalidProperties[] = "invalid value for 'country_code', must be conform to the pattern /^[A-Za-z]{2}$/.";
         }
 
         return $invalidProperties;
@@ -617,7 +635,7 @@ class MetaLeadFormPlatformData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets thank_you_button_type
      *
-     * @param string|null $thank_you_button_type Meta thank_you_page.button_type. Defaults to VIEW_WEBSITE. Meta rejects MESSAGE_BUSINESS on thank-you pages with (#100) This button type is not yet supported for Thank You Page.
+     * @param string|null $thank_you_button_type Meta thank_you_page.button_type. Defaults to VIEW_WEBSITE. Case-insensitive, sent to Meta in uppercase. CALL_BUSINESS requires businessPhoneNumber and countryCode (a 400 otherwise). Meta rejects MESSAGE_BUSINESS on thank-you pages with (#100) This button type is not yet supported for Thank You Page.
      *
      * @return self
      */
@@ -627,6 +645,65 @@ class MetaLeadFormPlatformData implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable thank_you_button_type cannot be null');
         }
         $this->container['thank_you_button_type'] = $thank_you_button_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_phone_number
+     *
+     * @return string|null
+     */
+    public function getBusinessPhoneNumber()
+    {
+        return $this->container['business_phone_number'];
+    }
+
+    /**
+     * Sets business_phone_number
+     *
+     * @param string|null $business_phone_number International E.164 number the CALL_BUSINESS thank-you button dials (Meta thank_you_page.business_phone_number). It must start with + and the country calling code matching countryCode; spaces, dashes, dots and parentheses are stripped, and a local number such as 2025550123 is a 400. Required when thankYouButtonType is CALL_BUSINESS and a 400 with any other button type. Accepted only inside platformSpecificData: a top-level businessPhoneNumber is a 400.
+     *
+     * @return self
+     */
+    public function setBusinessPhoneNumber($business_phone_number)
+    {
+        if (is_null($business_phone_number)) {
+            throw new \InvalidArgumentException('non-nullable business_phone_number cannot be null');
+        }
+        $this->container['business_phone_number'] = $business_phone_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets country_code
+     *
+     * @return string|null
+     */
+    public function getCountryCode()
+    {
+        return $this->container['country_code'];
+    }
+
+    /**
+     * Sets country_code
+     *
+     * @param string|null $country_code ISO 3166-1 alpha-2 country of businessPhoneNumber (Meta thank_you_page.country_code), sent in uppercase. Required when thankYouButtonType is CALL_BUSINESS and a 400 with any other button type. Accepted only inside platformSpecificData: a top-level countryCode is a 400.
+     *
+     * @return self
+     */
+    public function setCountryCode($country_code)
+    {
+        if (is_null($country_code)) {
+            throw new \InvalidArgumentException('non-nullable country_code cannot be null');
+        }
+
+        if ((!preg_match("/^[A-Za-z]{2}$/", ObjectSerializer::toString($country_code)))) {
+            throw new \InvalidArgumentException("invalid value for \$country_code when calling MetaLeadFormPlatformData., must conform to the pattern /^[A-Za-z]{2}$/.");
+        }
+
+        $this->container['country_code'] = $country_code;
 
         return $this;
     }
