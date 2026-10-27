@@ -642,6 +642,7 @@ Class | Method | HTTP request | Description
 *ConversionsApi* | [**listConversionDestinations**](docs/Api/ConversionsApi.md#listconversiondestinations) | **GET** /v1/accounts/{accountId}/conversion-destinations | List conversion destinations
 *ConversionsApi* | [**listCustomConversionGoals**](docs/Api/ConversionsApi.md#listcustomconversiongoals) | **GET** /v1/ads/conversions/custom-goals | List custom conversion goals
 *ConversionsApi* | [**listEventDestinations**](docs/Api/ConversionsApi.md#listeventdestinations) | **GET** /v1/events/destinations | List event destinations
+*ConversionsApi* | [**listEvents**](docs/Api/ConversionsApi.md#listevents) | **GET** /v1/events | List stored events
 *ConversionsApi* | [**removeConversionAssociations**](docs/Api/ConversionsApi.md#removeconversionassociations) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Remove associated campaigns
 *ConversionsApi* | [**removeCustomConversionGoal**](docs/Api/ConversionsApi.md#removecustomconversiongoal) | **DELETE** /v1/ads/conversions/custom-goals/{goalId} | Remove a custom conversion goal
 *ConversionsApi* | [**sendConversions**](docs/Api/ConversionsApi.md#sendconversions) | **POST** /v1/ads/conversions | Send conversion events
@@ -2816,6 +2817,10 @@ Class | Method | HTTP request | Description
 - [ListEmailMessages200Response](docs/Model/ListEmailMessages200Response.md)
 - [ListEmailThreads200Response](docs/Model/ListEmailThreads200Response.md)
 - [ListEventDestinations200Response](docs/Model/ListEventDestinations200Response.md)
+- [ListEvents200Response](docs/Model/ListEvents200Response.md)
+- [ListEvents200ResponseEventsInner](docs/Model/ListEvents200ResponseEventsInner.md)
+- [ListEvents200ResponseEventsInnerClickIds](docs/Model/ListEvents200ResponseEventsInnerClickIds.md)
+- [ListEvents200ResponseEventsInnerUtm](docs/Model/ListEvents200ResponseEventsInnerUtm.md)
 - [ListFacebookPages200Response](docs/Model/ListFacebookPages200Response.md)
 - [ListFacebookPages200ResponsePagesInner](docs/Model/ListFacebookPages200ResponsePagesInner.md)
 - [ListFacebookTaggedPosts200Response](docs/Model/ListFacebookTaggedPosts200Response.md)

@@ -23,6 +23,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listConversionDestinations()**](ConversionsApi.md#listConversionDestinations) | **GET** /v1/accounts/{accountId}/conversion-destinations | List conversion destinations |
 | [**listCustomConversionGoals()**](ConversionsApi.md#listCustomConversionGoals) | **GET** /v1/ads/conversions/custom-goals | List custom conversion goals |
 | [**listEventDestinations()**](ConversionsApi.md#listEventDestinations) | **GET** /v1/events/destinations | List event destinations |
+| [**listEvents()**](ConversionsApi.md#listEvents) | **GET** /v1/events | List stored events |
 | [**removeConversionAssociations()**](ConversionsApi.md#removeConversionAssociations) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Remove associated campaigns |
 | [**removeCustomConversionGoal()**](ConversionsApi.md#removeCustomConversionGoal) | **DELETE** /v1/ads/conversions/custom-goals/{goalId} | Remove a custom conversion goal |
 | [**sendConversions()**](ConversionsApi.md#sendConversions) | **POST** /v1/ads/conversions | Send conversion events |
@@ -1082,6 +1083,76 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListEventDestinations200Response**](../Model/ListEventDestinations200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listEvents()`
+
+```php
+listEvents($profile_id, $limit, $from, $to, $event_name, $cursor): \Zernio\Model\ListEvents200Response
+```
+
+List stored events
+
+Lists the conversion events stored for a profile by `POST /v1/events`, newest first. Personal data is never returned: `hasEmail`, `hasPhone` and `hasExternalId` only say whether the event carried that identifier. Events sent with `testCode` are not stored, so they never appear here.  Paginate with `cursor`: pass the `nextCursor` of the previous page until it comes back `null`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$profile_id = 'profile_id_example'; // string
+$limit = 50; // int
+$from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only events at or after this time (ISO 8601, on the event time).
+$to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only events before this time (ISO 8601, on the event time).
+$event_name = 'event_name_example'; // string | Only events with this name, such as `Purchase`.
+$cursor = 'cursor_example'; // string | `nextCursor` from the previous page.
+
+try {
+    $result = $apiInstance->listEvents($profile_id, $limit, $from, $to, $event_name, $cursor);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->listEvents: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **profile_id** | **string**|  | |
+| **limit** | **int**|  | [optional] [default to 50] |
+| **from** | **\DateTime**| Only events at or after this time (ISO 8601, on the event time). | [optional] |
+| **to** | **\DateTime**| Only events before this time (ISO 8601, on the event time). | [optional] |
+| **event_name** | **string**| Only events with this name, such as &#x60;Purchase&#x60;. | [optional] |
+| **cursor** | **string**| &#x60;nextCursor&#x60; from the previous page. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListEvents200Response**](../Model/ListEvents200Response.md)
 
 ### Authorization
 

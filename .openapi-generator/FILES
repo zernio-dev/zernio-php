@@ -1767,6 +1767,10 @@ docs/Model/ListEmailFolders200Response.md
 docs/Model/ListEmailMessages200Response.md
 docs/Model/ListEmailThreads200Response.md
 docs/Model/ListEventDestinations200Response.md
+docs/Model/ListEvents200Response.md
+docs/Model/ListEvents200ResponseEventsInner.md
+docs/Model/ListEvents200ResponseEventsInnerClickIds.md
+docs/Model/ListEvents200ResponseEventsInnerUtm.md
 docs/Model/ListFacebookPages200Response.md
 docs/Model/ListFacebookPages200ResponsePagesInner.md
 docs/Model/ListFacebookTaggedPosts200Response.md
@@ -4866,6 +4870,10 @@ lib/Model/ListEmailFolders200Response.php
 lib/Model/ListEmailMessages200Response.php
 lib/Model/ListEmailThreads200Response.php
 lib/Model/ListEventDestinations200Response.php
+lib/Model/ListEvents200Response.php
+lib/Model/ListEvents200ResponseEventsInner.php
+lib/Model/ListEvents200ResponseEventsInnerClickIds.php
+lib/Model/ListEvents200ResponseEventsInnerUtm.php
 lib/Model/ListFacebookPages200Response.php
 lib/Model/ListFacebookPages200ResponsePagesInner.php
 lib/Model/ListFacebookTaggedPosts200Response.php
@@ -6199,4 +6207,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateAdSetRequestPromotedObjectTest.php
+test/Model/ListEvents200ResponseEventsInnerClickIdsTest.php
+test/Model/ListEvents200ResponseEventsInnerTest.php
+test/Model/ListEvents200ResponseEventsInnerUtmTest.php
+test/Model/ListEvents200ResponseTest.php
