@@ -6041,11 +6041,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AdTreeResponsePreviousRangeTest.php
-test/Model/AdsAlertEntityTest.php
-test/Model/AdsAlertFixTest.php
-test/Model/AdsAlertTest.php
-test/Model/AdsTimelineResponsePreviousRangeTest.php
-test/Model/DismissAdsAlert200ResponseTest.php
-test/Model/ListAdsAlerts200ResponseCountsTest.php
-test/Model/ListAdsAlerts200ResponseTest.php
