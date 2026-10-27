@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ad** | [**\Zernio\Model\Ad**](Ad.md) |  | [optional]
+**applied_defaults** | [**\Zernio\Model\AdAppliedDefaults**](AdAppliedDefaults.md) |  | [optional]
 **message** | **string** |  | [optional]
 **ads** | [**\Zernio\Model\Ad[]**](Ad.md) |  | [optional]
 **platform_campaign_id** | **string** |  | [optional]
