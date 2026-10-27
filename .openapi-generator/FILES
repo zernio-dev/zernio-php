@@ -6207,7 +6207,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ListEvents200ResponseEventsInnerClickIdsTest.php
-test/Model/ListEvents200ResponseEventsInnerTest.php
-test/Model/ListEvents200ResponseEventsInnerUtmTest.php
-test/Model/ListEvents200ResponseTest.php
