@@ -11,6 +11,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onAccountAdsSyncRecovered()**](WebhookEventsApi.md#onAccountAdsSyncRecovered) | **POST** /account.ads.sync_recovered | Ads sync recovered event |
 | [**onAccountConnected()**](WebhookEventsApi.md#onAccountConnected) | **POST** /account.connected | Account connected event |
 | [**onAccountDisconnected()**](WebhookEventsApi.md#onAccountDisconnected) | **POST** /account.disconnected | Account disconnected event |
+| [**onAccountRateLimited()**](WebhookEventsApi.md#onAccountRateLimited) | **POST** /account.rate_limited | Mailbox sending cooldown started |
 | [**onAdAccountStatusChanged()**](WebhookEventsApi.md#onAdAccountStatusChanged) | **POST** /ad_account.status_changed | Ad account status changed event |
 | [**onAdDeliveryIssue()**](WebhookEventsApi.md#onAdDeliveryIssue) | **POST** /ad.delivery_issue | Ad delivery issue event |
 | [**onAdReviewApproved()**](WebhookEventsApi.md#onAdReviewApproved) | **POST** /ad.review.approved | Ad review approved event |
@@ -23,6 +24,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onBrandedCallingIdentityActionRequired()**](WebhookEventsApi.md#onBrandedCallingIdentityActionRequired) | **POST** /branded_calling.identity.action_required | Caller identity action required event |
 | [**onBrandedCallingIdentityStatusUpdated()**](WebhookEventsApi.md#onBrandedCallingIdentityStatusUpdated) | **POST** /branded_calling.identity.status_updated | Caller identity status updated event |
 | [**onBrandedCallingNumberStatusUpdated()**](WebhookEventsApi.md#onBrandedCallingNumberStatusUpdated) | **POST** /branded_calling.number.status_updated | Branded number status updated event |
+| [**onCalendarEventCreated()**](WebhookEventsApi.md#onCalendarEventCreated) | **POST** /calendar.event.created | Calendar event created |
+| [**onCalendarEventDeleted()**](WebhookEventsApi.md#onCalendarEventDeleted) | **POST** /calendar.event.deleted | Calendar event deleted |
+| [**onCalendarEventUpdated()**](WebhookEventsApi.md#onCalendarEventUpdated) | **POST** /calendar.event.updated | Calendar event updated |
 | [**onCallEnded()**](WebhookEventsApi.md#onCallEnded) | **POST** /call.ended | Call ended event |
 | [**onCallFailed()**](WebhookEventsApi.md#onCallFailed) | **POST** /call.failed | Call failed event |
 | [**onCallPermissionRequest()**](WebhookEventsApi.md#onCallPermissionRequest) | **POST** /call.permission_request | Call permission request reply event |
@@ -35,11 +39,17 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onCommerceProductCreated()**](WebhookEventsApi.md#onCommerceProductCreated) | **POST** /commerce.product.created | Commerce product created event |
 | [**onCommerceProductDeleted()**](WebhookEventsApi.md#onCommerceProductDeleted) | **POST** /commerce.product.deleted | Commerce product deleted event |
 | [**onCommerceProductUpdated()**](WebhookEventsApi.md#onCommerceProductUpdated) | **POST** /commerce.product.updated | Commerce product updated event |
+| [**onContactDeleted()**](WebhookEventsApi.md#onContactDeleted) | **POST** /contact.deleted | Contact deleted |
 | [**onContactFieldChanged()**](WebhookEventsApi.md#onContactFieldChanged) | **POST** /contact.field_changed | Contact field changed event |
 | [**onContactTagAdded()**](WebhookEventsApi.md#onContactTagAdded) | **POST** /contact.tag_added | Contact tag added event |
 | [**onContactTagRemoved()**](WebhookEventsApi.md#onContactTagRemoved) | **POST** /contact.tag_removed | Contact tag removed event |
+| [**onContactUpdated()**](WebhookEventsApi.md#onContactUpdated) | **POST** /contact.updated | Contact updated |
 | [**onConversationControlChanged()**](WebhookEventsApi.md#onConversationControlChanged) | **POST** /conversation.control_changed | Conversation control changed event |
 | [**onConversationStarted()**](WebhookEventsApi.md#onConversationStarted) | **POST** /conversation.started | Conversation started event |
+| [**onFileCreated()**](WebhookEventsApi.md#onFileCreated) | **POST** /file.created | File created |
+| [**onFileDeleted()**](WebhookEventsApi.md#onFileDeleted) | **POST** /file.deleted | File deleted |
+| [**onFilePicked()**](WebhookEventsApi.md#onFilePicked) | **POST** /file.picked | Files picked |
+| [**onFileUpdated()**](WebhookEventsApi.md#onFileUpdated) | **POST** /file.updated | File updated |
 | [**onLeadReceived()**](WebhookEventsApi.md#onLeadReceived) | **POST** /lead.received | Lead received event |
 | [**onMessageDeleted()**](WebhookEventsApi.md#onMessageDeleted) | **POST** /message.deleted | Message deleted event |
 | [**onMessageDelivered()**](WebhookEventsApi.md#onMessageDelivered) | **POST** /message.delivered | Message delivered event |
@@ -375,6 +385,65 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_account_disconnected** | [**\Zernio\Model\WebhookPayloadAccountDisconnected**](../Model/WebhookPayloadAccountDisconnected.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onAccountRateLimited()`
+
+```php
+onAccountRateLimited($webhook_payload_account_rate_limited)
+```
+
+Mailbox sending cooldown started
+
+Fired when a Google or Microsoft mailbox enters a sending cooldown (same body to more than 50 recipients in an hour, or a later trigger). Sends answer 429 until `account.resetsAt`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_account_rate_limited = new \Zernio\Model\WebhookPayloadAccountRateLimited(); // \Zernio\Model\WebhookPayloadAccountRateLimited
+
+try {
+    $apiInstance->onAccountRateLimited($webhook_payload_account_rate_limited);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onAccountRateLimited: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_account_rate_limited** | [**\Zernio\Model\WebhookPayloadAccountRateLimited**](../Model/WebhookPayloadAccountRateLimited.md)|  | |
 
 ### Return type
 
@@ -1101,6 +1170,179 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `onCalendarEventCreated()`
+
+```php
+onCalendarEventCreated($webhook_payload_calendar_event)
+```
+
+Calendar event created
+
+A new event appeared on a connected Microsoft calendar (push, seconds after the change).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_calendar_event = new \Zernio\Model\WebhookPayloadCalendarEvent(); // \Zernio\Model\WebhookPayloadCalendarEvent
+
+try {
+    $apiInstance->onCalendarEventCreated($webhook_payload_calendar_event);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCalendarEventCreated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_calendar_event** | [**\Zernio\Model\WebhookPayloadCalendarEvent**](../Model/WebhookPayloadCalendarEvent.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCalendarEventDeleted()`
+
+```php
+onCalendarEventDeleted($webhook_payload_calendar_event)
+```
+
+Calendar event deleted
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_calendar_event = new \Zernio\Model\WebhookPayloadCalendarEvent(); // \Zernio\Model\WebhookPayloadCalendarEvent
+
+try {
+    $apiInstance->onCalendarEventDeleted($webhook_payload_calendar_event);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCalendarEventDeleted: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_calendar_event** | [**\Zernio\Model\WebhookPayloadCalendarEvent**](../Model/WebhookPayloadCalendarEvent.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCalendarEventUpdated()`
+
+```php
+onCalendarEventUpdated($webhook_payload_calendar_event)
+```
+
+Calendar event updated
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_calendar_event = new \Zernio\Model\WebhookPayloadCalendarEvent(); // \Zernio\Model\WebhookPayloadCalendarEvent
+
+try {
+    $apiInstance->onCalendarEventUpdated($webhook_payload_calendar_event);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCalendarEventUpdated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_calendar_event** | [**\Zernio\Model\WebhookPayloadCalendarEvent**](../Model/WebhookPayloadCalendarEvent.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `onCallEnded()`
 
 ```php
@@ -1809,6 +2051,65 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `onContactDeleted()`
+
+```php
+onContactDeleted($webhook_payload_contact)
+```
+
+Contact deleted
+
+The provider contact was deleted; its email channel is removed, the contact row stays when other channels remain.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_contact = new \Zernio\Model\WebhookPayloadContact(); // \Zernio\Model\WebhookPayloadContact
+
+try {
+    $apiInstance->onContactDeleted($webhook_payload_contact);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onContactDeleted: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_contact** | [**\Zernio\Model\WebhookPayloadContact**](../Model/WebhookPayloadContact.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `onContactFieldChanged()`
 
 ```php
@@ -1986,6 +2287,65 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `onContactUpdated()`
+
+```php
+onContactUpdated($webhook_payload_contact)
+```
+
+Contact updated
+
+A provider contacts sync created or changed a contact.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_contact = new \Zernio\Model\WebhookPayloadContact(); // \Zernio\Model\WebhookPayloadContact
+
+try {
+    $apiInstance->onContactUpdated($webhook_payload_contact);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onContactUpdated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_contact** | [**\Zernio\Model\WebhookPayloadContact**](../Model/WebhookPayloadContact.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `onConversationControlChanged()`
 
 ```php
@@ -2086,6 +2446,240 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_conversation_started** | [**\Zernio\Model\WebhookPayloadConversationStarted**](../Model/WebhookPayloadConversationStarted.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onFileCreated()`
+
+```php
+onFileCreated($webhook_payload_file)
+```
+
+File created
+
+A file or folder appeared in a connected Drive or OneDrive (push, seconds after the change).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_file = new \Zernio\Model\WebhookPayloadFile(); // \Zernio\Model\WebhookPayloadFile
+
+try {
+    $apiInstance->onFileCreated($webhook_payload_file);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onFileCreated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_file** | [**\Zernio\Model\WebhookPayloadFile**](../Model/WebhookPayloadFile.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onFileDeleted()`
+
+```php
+onFileDeleted($webhook_payload_file)
+```
+
+File deleted
+
+The item was trashed or removed on the provider.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_file = new \Zernio\Model\WebhookPayloadFile(); // \Zernio\Model\WebhookPayloadFile
+
+try {
+    $apiInstance->onFileDeleted($webhook_payload_file);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onFileDeleted: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_file** | [**\Zernio\Model\WebhookPayloadFile**](../Model/WebhookPayloadFile.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onFilePicked()`
+
+```php
+onFilePicked($webhook_payload_file_picked)
+```
+
+Files picked
+
+The user finished a hosted picker session (`POST /v1/files/picker-sessions`) and picked at least one file. The app can now open those files. Not sent on cancel.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_file_picked = new \Zernio\Model\WebhookPayloadFilePicked(); // \Zernio\Model\WebhookPayloadFilePicked
+
+try {
+    $apiInstance->onFilePicked($webhook_payload_file_picked);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onFilePicked: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_file_picked** | [**\Zernio\Model\WebhookPayloadFilePicked**](../Model/WebhookPayloadFilePicked.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onFileUpdated()`
+
+```php
+onFileUpdated($webhook_payload_file)
+```
+
+File updated
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_file = new \Zernio\Model\WebhookPayloadFile(); // \Zernio\Model\WebhookPayloadFile
+
+try {
+    $apiInstance->onFileUpdated($webhook_payload_file);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onFileUpdated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_file** | [**\Zernio\Model\WebhookPayloadFile**](../Model/WebhookPayloadFile.md)|  | |
 
 ### Return type
 

@@ -437,6 +437,15 @@ Class | Method | HTTP request | Description
 *BusinessAgentApi* | [**updateBusinessAgentUiSkill**](docs/Api/BusinessAgentApi.md#updatebusinessagentuiskill) | **PUT** /v1/accounts/{accountId}/business-agent/ui-skills/{uiSkillId} | Update a UI skill
 *BusinessAgentApi* | [**updateBusinessAgentWebsite**](docs/Api/BusinessAgentApi.md#updatebusinessagentwebsite) | **PUT** /v1/accounts/{accountId}/business-agent/websites/{websiteId} | Update a crawled website
 *BusinessAgentApi* | [**uploadBusinessAgentFile**](docs/Api/BusinessAgentApi.md#uploadbusinessagentfile) | **POST** /v1/accounts/{accountId}/business-agent/files | Upload a knowledge file
+*CalendarApi* | [**calendarAvailability**](docs/Api/CalendarApi.md#calendaravailability) | **POST** /v1/calendar/availability | Find meeting slots across accounts
+*CalendarApi* | [**calendarFreeBusy**](docs/Api/CalendarApi.md#calendarfreebusy) | **POST** /v1/calendar/free-busy | Busy blocks for one or more accounts
+*CalendarApi* | [**createCalendarEvent**](docs/Api/CalendarApi.md#createcalendarevent) | **POST** /v1/calendar/events | Create an event
+*CalendarApi* | [**deleteCalendarEvent**](docs/Api/CalendarApi.md#deletecalendarevent) | **DELETE** /v1/calendar/events/{eventId} | Delete an event
+*CalendarApi* | [**getCalendarEvent**](docs/Api/CalendarApi.md#getcalendarevent) | **GET** /v1/calendar/events/{eventId} | Get an event
+*CalendarApi* | [**listCalendarEvents**](docs/Api/CalendarApi.md#listcalendarevents) | **GET** /v1/calendar/events | List events in a window
+*CalendarApi* | [**listCalendars**](docs/Api/CalendarApi.md#listcalendars) | **GET** /v1/calendar/calendars | List calendars
+*CalendarApi* | [**rsvpCalendarEvent**](docs/Api/CalendarApi.md#rsvpcalendarevent) | **POST** /v1/calendar/events/{eventId}/rsvp | Respond to an invitation
+*CalendarApi* | [**updateCalendarEvent**](docs/Api/CalendarApi.md#updatecalendarevent) | **PATCH** /v1/calendar/events/{eventId} | Update an event
 *CallsApi* | [**getCall**](docs/Api/CallsApi.md#getcall) | **GET** /v1/calls/{id} | Get a call (any channel)
 *CallsApi* | [**getCallRecording**](docs/Api/CallsApi.md#getcallrecording) | **GET** /v1/calls/{id}/recording | Get a call recording
 *CallsApi* | [**listCalls**](docs/Api/CallsApi.md#listcalls) | **GET** /v1/calls | List all calls (unified history)
@@ -598,6 +607,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**selectPinterestBoard**](docs/Api/ConnectApi.md#selectpinterestboard) | **POST** /v1/connect/pinterest/select-board | Select Pinterest board
 *ConnectApi* | [**selectSnapchatProfile**](docs/Api/ConnectApi.md#selectsnapchatprofile) | **POST** /v1/connect/snapchat/select-profile | Select Snapchat profile
 *ConnectApi* | [**setRedditPostFlair**](docs/Api/ConnectApi.md#setredditpostflair) | **POST** /v1/accounts/{accountId}/reddit-flairs | Set Reddit post flair
+*ConnectApi* | [**startMicrosoftAdminConsent**](docs/Api/ConnectApi.md#startmicrosoftadminconsent) | **GET** /v1/connect/microsoft/admin-consent | Admin-consent link for a Microsoft tenant
 *ConnectApi* | [**updateConnectWelcomeScreen**](docs/Api/ConnectApi.md#updateconnectwelcomescreen) | **PUT** /v1/connect/welcome-screen | Save the welcome screen
 *ConnectApi* | [**updateFacebookPage**](docs/Api/ConnectApi.md#updatefacebookpage) | **PUT** /v1/accounts/{accountId}/facebook-page | Update Facebook page
 *ConnectApi* | [**updateGmbLocation**](docs/Api/ConnectApi.md#updategmblocation) | **PUT** /v1/accounts/{accountId}/gmb-locations | Update Google Business Profile location
@@ -670,7 +680,27 @@ Class | Method | HTTP request | Description
 *DiscordApi* | [**unpinDiscordMessage**](docs/Api/DiscordApi.md#unpindiscordmessage) | **DELETE** /v1/discord/channels/{channelId}/pins/{messageId} | Unpin a Discord message
 *DiscordApi* | [**updateDiscordScheduledEvent**](docs/Api/DiscordApi.md#updatediscordscheduledevent) | **PATCH** /v1/discord/guilds/{guildId}/events/{eventId} | Update a Discord scheduled event
 *DiscordApi* | [**updateDiscordSettings**](docs/Api/DiscordApi.md#updatediscordsettings) | **PATCH** /v1/accounts/{accountId}/discord-settings | Update Discord settings
+*EmailApi* | [**downloadEmailAttachment**](docs/Api/EmailApi.md#downloademailattachment) | **GET** /v1/email/attachments/{attachmentId} | Download an attachment
+*EmailApi* | [**getEmailMessage**](docs/Api/EmailApi.md#getemailmessage) | **GET** /v1/email/messages/{messageId} | Get an email message
+*EmailApi* | [**getEmailThread**](docs/Api/EmailApi.md#getemailthread) | **GET** /v1/email/threads/{threadId} | Get an email thread with its messages
+*EmailApi* | [**listEmailFolders**](docs/Api/EmailApi.md#listemailfolders) | **GET** /v1/email/folders | List mailbox folders
+*EmailApi* | [**listEmailMessages**](docs/Api/EmailApi.md#listemailmessages) | **GET** /v1/email/messages | List email messages
+*EmailApi* | [**listEmailThreads**](docs/Api/EmailApi.md#listemailthreads) | **GET** /v1/email/threads | List email threads
+*EmailApi* | [**replyEmailMessage**](docs/Api/EmailApi.md#replyemailmessage) | **POST** /v1/email/messages/{messageId}/reply | Reply to a message
+*EmailApi* | [**sendEmailMessage**](docs/Api/EmailApi.md#sendemailmessage) | **POST** /v1/email/messages | Send an email
+*EmailApi* | [**trashEmailMessage**](docs/Api/EmailApi.md#trashemailmessage) | **DELETE** /v1/email/messages/{messageId} | Move a message to trash
+*EmailApi* | [**updateEmailMessage**](docs/Api/EmailApi.md#updateemailmessage) | **PATCH** /v1/email/messages/{messageId} | Mark read or starred, or move a message
+*EmailApi* | [**updateEmailThread**](docs/Api/EmailApi.md#updateemailthread) | **PATCH** /v1/email/threads/{threadId} | Update every message in a thread
 *FeedbackApi* | [**submitFeedback**](docs/Api/FeedbackApi.md#submitfeedback) | **POST** /v1/feedback | Submit feedback
+*FilesApi* | [**createFilePickerSession**](docs/Api/FilesApi.md#createfilepickersession) | **POST** /v1/files/picker-sessions | Create a hosted Google Picker session
+*FilesApi* | [**createFolder**](docs/Api/FilesApi.md#createfolder) | **POST** /v1/files/folders | Create a folder
+*FilesApi* | [**downloadFile**](docs/Api/FilesApi.md#downloadfile) | **GET** /v1/files/{fileId}/download | Download a file
+*FilesApi* | [**getFile**](docs/Api/FilesApi.md#getfile) | **GET** /v1/files/{fileId} | Get a file or folder
+*FilesApi* | [**getFileShareLink**](docs/Api/FilesApi.md#getfilesharelink) | **GET** /v1/files/{fileId}/share-link | Get an anyone-with-the-link share link
+*FilesApi* | [**listFiles**](docs/Api/FilesApi.md#listfiles) | **GET** /v1/files | List files in a folder or search the drive
+*FilesApi* | [**trashFile**](docs/Api/FilesApi.md#trashfile) | **DELETE** /v1/files/{fileId} | Move a file to the trash
+*FilesApi* | [**updateFile**](docs/Api/FilesApi.md#updatefile) | **PATCH** /v1/files/{fileId} | Rename or move a file
+*FilesApi* | [**uploadFile**](docs/Api/FilesApi.md#uploadfile) | **POST** /v1/files | Upload a file
 *GMBAttributesApi* | [**getGmbAttributeMetadata**](docs/Api/GMBAttributesApi.md#getgmbattributemetadata) | **GET** /v1/accounts/{accountId}/gmb-attribute-metadata | Get attribute metadata
 *GMBAttributesApi* | [**getGoogleBusinessAttributes**](docs/Api/GMBAttributesApi.md#getgooglebusinessattributes) | **GET** /v1/accounts/{accountId}/gmb-attributes | Get attributes
 *GMBAttributesApi* | [**updateGoogleBusinessAttributes**](docs/Api/GMBAttributesApi.md#updategooglebusinessattributes) | **PUT** /v1/accounts/{accountId}/gmb-attributes | Update attributes
@@ -1381,6 +1411,24 @@ Class | Method | HTTP request | Description
 - [BusinessAgentWebsite](docs/Model/BusinessAgentWebsite.md)
 - [BusinessAgentWebsiteInput](docs/Model/BusinessAgentWebsiteInput.md)
 - [BusinessCenter](docs/Model/BusinessCenter.md)
+- [BusyBlock](docs/Model/BusyBlock.md)
+- [Calendar](docs/Model/Calendar.md)
+- [CalendarAvailability200Response](docs/Model/CalendarAvailability200Response.md)
+- [CalendarAvailability200ResponseData](docs/Model/CalendarAvailability200ResponseData.md)
+- [CalendarAvailability200ResponseDataTimeSlotsInner](docs/Model/CalendarAvailability200ResponseDataTimeSlotsInner.md)
+- [CalendarAvailabilityRequest](docs/Model/CalendarAvailabilityRequest.md)
+- [CalendarAvailabilityRequestBuffer](docs/Model/CalendarAvailabilityRequestBuffer.md)
+- [CalendarAvailabilityRequestParticipantsInner](docs/Model/CalendarAvailabilityRequestParticipantsInner.md)
+- [CalendarEvent](docs/Model/CalendarEvent.md)
+- [CalendarEventConferencing](docs/Model/CalendarEventConferencing.md)
+- [CalendarEventFields](docs/Model/CalendarEventFields.md)
+- [CalendarEventFieldsReminders](docs/Model/CalendarEventFieldsReminders.md)
+- [CalendarEventFieldsRemindersOverridesInner](docs/Model/CalendarEventFieldsRemindersOverridesInner.md)
+- [CalendarEventParticipantsInner](docs/Model/CalendarEventParticipantsInner.md)
+- [CalendarEventReminders](docs/Model/CalendarEventReminders.md)
+- [CalendarFreeBusy200Response](docs/Model/CalendarFreeBusy200Response.md)
+- [CalendarFreeBusy200ResponseDataInner](docs/Model/CalendarFreeBusy200ResponseDataInner.md)
+- [CalendarFreeBusyRequest](docs/Model/CalendarFreeBusyRequest.md)
 - [CallRecord](docs/Model/CallRecord.md)
 - [CallRecordBilling](docs/Model/CallRecordBilling.md)
 - [CallRecordCallErrorsInner](docs/Model/CallRecordCallErrorsInner.md)
@@ -1596,6 +1644,8 @@ Class | Method | HTTP request | Description
 - [CreateBroadcastRequestSegmentFilters](docs/Model/CreateBroadcastRequestSegmentFilters.md)
 - [CreateBroadcastRequestTemplate](docs/Model/CreateBroadcastRequestTemplate.md)
 - [CreateBroadcastRequestTemplateVariableMappingValue](docs/Model/CreateBroadcastRequestTemplateVariableMappingValue.md)
+- [CreateCalendarEvent201Response](docs/Model/CreateCalendarEvent201Response.md)
+- [CreateCalendarEventRequest](docs/Model/CreateCalendarEventRequest.md)
 - [CreateCallAdRequest](docs/Model/CreateCallAdRequest.md)
 - [CreateCommentAutomation200Response](docs/Model/CreateCommentAutomation200Response.md)
 - [CreateCommentAutomation200ResponseAutomation](docs/Model/CreateCommentAutomation200ResponseAutomation.md)
@@ -1653,6 +1703,9 @@ Class | Method | HTTP request | Description
 - [CreateDiscordThreadRequest](docs/Model/CreateDiscordThreadRequest.md)
 - [CreateEventDestination201Response](docs/Model/CreateEventDestination201Response.md)
 - [CreateEventDestinationRequest](docs/Model/CreateEventDestinationRequest.md)
+- [CreateFilePickerSession201Response](docs/Model/CreateFilePickerSession201Response.md)
+- [CreateFilePickerSessionRequest](docs/Model/CreateFilePickerSessionRequest.md)
+- [CreateFolderRequest](docs/Model/CreateFolderRequest.md)
 - [CreateGoogleAdAccountRequest](docs/Model/CreateGoogleAdAccountRequest.md)
 - [CreateGoogleAssetGroup200Response](docs/Model/CreateGoogleAssetGroup200Response.md)
 - [CreateGoogleAssetGroup201Response](docs/Model/CreateGoogleAssetGroup201Response.md)
@@ -1825,6 +1878,7 @@ Class | Method | HTTP request | Description
 - [CtwaAdRequestBodyZipsInner](docs/Model/CtwaAdRequestBodyZipsInner.md)
 - [CtwaMultiResponse](docs/Model/CtwaMultiResponse.md)
 - [CtwaSingleResponse](docs/Model/CtwaSingleResponse.md)
+- [CursorPagination](docs/Model/CursorPagination.md)
 - [CustomConversion](docs/Model/CustomConversion.md)
 - [CustomConversionResult](docs/Model/CustomConversionResult.md)
 - [DeactivateSmsRegistration200Response](docs/Model/DeactivateSmsRegistration200Response.md)
@@ -1839,6 +1893,8 @@ Class | Method | HTTP request | Description
 - [DeleteAdSet200Response](docs/Model/DeleteAdSet200Response.md)
 - [DeleteAdVideo200Response](docs/Model/DeleteAdVideo200Response.md)
 - [DeleteBrandedCallingEnterprise200Response](docs/Model/DeleteBrandedCallingEnterprise200Response.md)
+- [DeleteCalendarEvent200Response](docs/Model/DeleteCalendarEvent200Response.md)
+- [DeleteCalendarEvent200ResponseData](docs/Model/DeleteCalendarEvent200ResponseData.md)
 - [DeleteCommerceCatalogSync200Response](docs/Model/DeleteCommerceCatalogSync200Response.md)
 - [DeleteCommerceCollection200Response](docs/Model/DeleteCommerceCollection200Response.md)
 - [DeleteCommerceDiscount200Response](docs/Model/DeleteCommerceDiscount200Response.md)
@@ -1914,6 +1970,13 @@ Class | Method | HTTP request | Description
 - [EditInboxMessageRequestReplyMarkupKeyboardInnerInner](docs/Model/EditInboxMessageRequestReplyMarkupKeyboardInnerInner.md)
 - [EditPost200Response](docs/Model/EditPost200Response.md)
 - [EditPostRequest](docs/Model/EditPostRequest.md)
+- [EmailAddress](docs/Model/EmailAddress.md)
+- [EmailAttachment](docs/Model/EmailAttachment.md)
+- [EmailFolder](docs/Model/EmailFolder.md)
+- [EmailListMeta](docs/Model/EmailListMeta.md)
+- [EmailMessage](docs/Model/EmailMessage.md)
+- [EmailMessagePatch](docs/Model/EmailMessagePatch.md)
+- [EmailThread](docs/Model/EmailThread.md)
 - [EnableSmsOnNumber200Response](docs/Model/EnableSmsOnNumber200Response.md)
 - [EnableSmsOnNumber200ResponseReusable](docs/Model/EnableSmsOnNumber200ResponseReusable.md)
 - [EnableVoiceOnNumber200Response](docs/Model/EnableVoiceOnNumber200Response.md)
@@ -1958,6 +2021,9 @@ Class | Method | HTTP request | Description
 - [FetchGoogleBusinessVerificationOptions200Response](docs/Model/FetchGoogleBusinessVerificationOptions200Response.md)
 - [FetchGoogleBusinessVerificationOptions200ResponseOptionsInner](docs/Model/FetchGoogleBusinessVerificationOptions200ResponseOptionsInner.md)
 - [FetchGoogleBusinessVerificationOptionsRequest](docs/Model/FetchGoogleBusinessVerificationOptionsRequest.md)
+- [FileItem](docs/Model/FileItem.md)
+- [FilePickerSession](docs/Model/FilePickerSession.md)
+- [FileShareLink](docs/Model/FileShareLink.md)
 - [FollowUser200Response](docs/Model/FollowUser200Response.md)
 - [FollowUserRequest](docs/Model/FollowUserRequest.md)
 - [FollowerStatsResponse](docs/Model/FollowerStatsResponse.md)
@@ -1983,6 +2049,7 @@ Class | Method | HTTP request | Description
 - [GetAccountHealth200ResponsePermissionsPostingInner](docs/Model/GetAccountHealth200ResponsePermissionsPostingInner.md)
 - [GetAccountHealth200ResponsePlatformConnection](docs/Model/GetAccountHealth200ResponsePlatformConnection.md)
 - [GetAccountHealth200ResponsePlatformConnectionMetaError](docs/Model/GetAccountHealth200ResponsePlatformConnectionMetaError.md)
+- [GetAccountHealth200ResponseSendCap](docs/Model/GetAccountHealth200ResponseSendCap.md)
 - [GetAccountHealth200ResponseTokenStatus](docs/Model/GetAccountHealth200ResponseTokenStatus.md)
 - [GetAccountPosts200Response](docs/Model/GetAccountPosts200Response.md)
 - [GetAccountPosts200ResponsePostsInner](docs/Model/GetAccountPosts200ResponsePostsInner.md)
@@ -2115,6 +2182,8 @@ Class | Method | HTTP request | Description
 - [GetDsaDefaults200Response](docs/Model/GetDsaDefaults200Response.md)
 - [GetDsaDefaults200ResponseDsaDefaults](docs/Model/GetDsaDefaults200ResponseDsaDefaults.md)
 - [GetDsaRecommendations200Response](docs/Model/GetDsaRecommendations200Response.md)
+- [GetEmailThread200Response](docs/Model/GetEmailThread200Response.md)
+- [GetEmailThread200ResponseData](docs/Model/GetEmailThread200ResponseData.md)
 - [GetFacebookDemographics200Response](docs/Model/GetFacebookDemographics200Response.md)
 - [GetFacebookDemographics200ResponseDemographics](docs/Model/GetFacebookDemographics200ResponseDemographics.md)
 - [GetFacebookDemographics200ResponseDemographicsCountryInner](docs/Model/GetFacebookDemographics200ResponseDemographicsCountryInner.md)
@@ -2123,6 +2192,7 @@ Class | Method | HTTP request | Description
 - [GetFacebookPages200ResponsePagesInnerInstagramAccount](docs/Model/GetFacebookPages200ResponsePagesInnerInstagramAccount.md)
 - [GetFacebookPostReactions200Response](docs/Model/GetFacebookPostReactions200Response.md)
 - [GetFacebookPostReactions200ResponseBreakdown](docs/Model/GetFacebookPostReactions200ResponseBreakdown.md)
+- [GetFileShareLink200Response](docs/Model/GetFileShareLink200Response.md)
 - [GetFollowerStats403Response](docs/Model/GetFollowerStats403Response.md)
 - [GetGmbAttributeMetadata200Response](docs/Model/GetGmbAttributeMetadata200Response.md)
 - [GetGmbAttributeMetadata200ResponseAttributeMetadataInner](docs/Model/GetGmbAttributeMetadata200ResponseAttributeMetadataInner.md)
@@ -2686,6 +2756,8 @@ Class | Method | HTTP request | Description
 - [ListBusinessAgentUiSkills200Response](docs/Model/ListBusinessAgentUiSkills200Response.md)
 - [ListBusinessAgentWebsites200Response](docs/Model/ListBusinessAgentWebsites200Response.md)
 - [ListBusinessPartners200Response](docs/Model/ListBusinessPartners200Response.md)
+- [ListCalendarEvents200Response](docs/Model/ListCalendarEvents200Response.md)
+- [ListCalendars200Response](docs/Model/ListCalendars200Response.md)
 - [ListCalls200Response](docs/Model/ListCalls200Response.md)
 - [ListCalls200ResponseCallsInner](docs/Model/ListCalls200ResponseCallsInner.md)
 - [ListCampaignAssets200Response](docs/Model/ListCampaignAssets200Response.md)
@@ -2739,11 +2811,16 @@ Class | Method | HTTP request | Description
 - [ListDiscordPinnedMessages200Response](docs/Model/ListDiscordPinnedMessages200Response.md)
 - [ListDiscordPinnedMessages200ResponseDataInner](docs/Model/ListDiscordPinnedMessages200ResponseDataInner.md)
 - [ListDiscordScheduledEvents200Response](docs/Model/ListDiscordScheduledEvents200Response.md)
+- [ListEmailFolders200Response](docs/Model/ListEmailFolders200Response.md)
+- [ListEmailMessages200Response](docs/Model/ListEmailMessages200Response.md)
+- [ListEmailThreads200Response](docs/Model/ListEmailThreads200Response.md)
 - [ListEventDestinations200Response](docs/Model/ListEventDestinations200Response.md)
 - [ListFacebookPages200Response](docs/Model/ListFacebookPages200Response.md)
 - [ListFacebookPages200ResponsePagesInner](docs/Model/ListFacebookPages200ResponsePagesInner.md)
 - [ListFacebookTaggedPosts200Response](docs/Model/ListFacebookTaggedPosts200Response.md)
 - [ListFacebookVisitorPosts200Response](docs/Model/ListFacebookVisitorPosts200Response.md)
+- [ListFiles200Response](docs/Model/ListFiles200Response.md)
+- [ListFiles200ResponsePagination](docs/Model/ListFiles200ResponsePagination.md)
 - [ListFormLeads200Response](docs/Model/ListFormLeads200Response.md)
 - [ListFormLeads200ResponseLeadsInner](docs/Model/ListFormLeads200ResponseLeadsInner.md)
 - [ListFormLeads200ResponseMeta](docs/Model/ListFormLeads200ResponseMeta.md)
@@ -2779,7 +2856,6 @@ Class | Method | HTTP request | Description
 - [ListInboxConversations200ResponseMeta](docs/Model/ListInboxConversations200ResponseMeta.md)
 - [ListInboxConversations200ResponseMetaAccountsSkippedInner](docs/Model/ListInboxConversations200ResponseMetaAccountsSkippedInner.md)
 - [ListInboxConversations200ResponseMetaFailedAccountsInner](docs/Model/ListInboxConversations200ResponseMetaFailedAccountsInner.md)
-- [ListInboxConversations200ResponsePagination](docs/Model/ListInboxConversations200ResponsePagination.md)
 - [ListInboxLabels200Response](docs/Model/ListInboxLabels200Response.md)
 - [ListInboxLabels200ResponseLabelsInner](docs/Model/ListInboxLabels200ResponseLabelsInner.md)
 - [ListInboxMentions200Response](docs/Model/ListInboxMentions200Response.md)
@@ -2998,6 +3074,7 @@ Class | Method | HTTP request | Description
 - [OnWhatsAppNumberSuspendedRequest](docs/Model/OnWhatsAppNumberSuspendedRequest.md)
 - [OnWhatsAppNumberVerificationRequiredRequest](docs/Model/OnWhatsAppNumberVerificationRequiredRequest.md)
 - [OnboardBusinessAgent201Response](docs/Model/OnboardBusinessAgent201Response.md)
+- [OpenHoursInner](docs/Model/OpenHoursInner.md)
 - [OrderImessageSender202Response](docs/Model/OrderImessageSender202Response.md)
 - [OrderImessageSenderRequest](docs/Model/OrderImessageSenderRequest.md)
 - [OrderImessageSenderRequestContact](docs/Model/OrderImessageSenderRequestContact.md)
@@ -3158,6 +3235,7 @@ Class | Method | HTTP request | Description
 - [ReplaceCampaignNegativeKeywordsRequest](docs/Model/ReplaceCampaignNegativeKeywordsRequest.md)
 - [ReplaceGoogleListingGroupFilters200Response](docs/Model/ReplaceGoogleListingGroupFilters200Response.md)
 - [ReplaceGoogleListingGroupFiltersRequest](docs/Model/ReplaceGoogleListingGroupFiltersRequest.md)
+- [ReplyEmailMessageRequest](docs/Model/ReplyEmailMessageRequest.md)
 - [ReplyToAdComment200Response](docs/Model/ReplyToAdComment200Response.md)
 - [ReplyToAdCommentRequest](docs/Model/ReplyToAdCommentRequest.md)
 - [ReplyToGoogleBusinessReview200Response](docs/Model/ReplyToGoogleBusinessReview200Response.md)
@@ -3208,6 +3286,7 @@ Class | Method | HTTP request | Description
 - [RevokeConnectedApp200Response](docs/Model/RevokeConnectedApp200Response.md)
 - [RfPrediction](docs/Model/RfPrediction.md)
 - [RotateSipTrunkCredentials200Response](docs/Model/RotateSipTrunkCredentials200Response.md)
+- [RsvpCalendarEventRequest](docs/Model/RsvpCalendarEventRequest.md)
 - [RunBusinessAgentConnectorTool200Response](docs/Model/RunBusinessAgentConnectorTool200Response.md)
 - [RunBusinessAgentConnectorToolRequest](docs/Model/RunBusinessAgentConnectorToolRequest.md)
 - [RunGoogleAnalyticsRealtimeReportRequest](docs/Model/RunGoogleAnalyticsRealtimeReportRequest.md)
@@ -3291,6 +3370,9 @@ Class | Method | HTTP request | Description
 - [SendDiscordDirectMessage200ResponseRecipient](docs/Model/SendDiscordDirectMessage200ResponseRecipient.md)
 - [SendDiscordDirectMessageRequest](docs/Model/SendDiscordDirectMessageRequest.md)
 - [SendDiscordDirectMessageRequestAttachmentsInner](docs/Model/SendDiscordDirectMessageRequestAttachmentsInner.md)
+- [SendEmailMessage201Response](docs/Model/SendEmailMessage201Response.md)
+- [SendEmailRequest](docs/Model/SendEmailRequest.md)
+- [SendEmailRequestAttachmentsInner](docs/Model/SendEmailRequestAttachmentsInner.md)
 - [SendEvents200Response](docs/Model/SendEvents200Response.md)
 - [SendEvents200ResponseDestinationsInner](docs/Model/SendEvents200ResponseDestinationsInner.md)
 - [SendEvents200ResponseDestinationsInnerFailuresInner](docs/Model/SendEvents200ResponseDestinationsInnerFailuresInner.md)
@@ -3415,6 +3497,8 @@ Class | Method | HTTP request | Description
 - [StartGoogleBusinessVerification200Response](docs/Model/StartGoogleBusinessVerification200Response.md)
 - [StartGoogleBusinessVerification200ResponseVerification](docs/Model/StartGoogleBusinessVerification200ResponseVerification.md)
 - [StartGoogleBusinessVerificationRequest](docs/Model/StartGoogleBusinessVerificationRequest.md)
+- [StartMicrosoftAdminConsent200Response](docs/Model/StartMicrosoftAdminConsent200Response.md)
+- [StartMicrosoftAdminConsent200ResponseData](docs/Model/StartMicrosoftAdminConsent200ResponseData.md)
 - [StartOAuth](docs/Model/StartOAuth.md)
 - [StartSmsRegistration200Response](docs/Model/StartSmsRegistration200Response.md)
 - [StartSmsRegistrationRequest](docs/Model/StartSmsRegistrationRequest.md)
@@ -3472,6 +3556,10 @@ Class | Method | HTTP request | Description
 - [TrackingTagUser](docs/Model/TrackingTagUser.md)
 - [TransferVoiceCall200Response](docs/Model/TransferVoiceCall200Response.md)
 - [TransferVoiceCallRequest](docs/Model/TransferVoiceCallRequest.md)
+- [TrashEmailMessage200Response](docs/Model/TrashEmailMessage200Response.md)
+- [TrashEmailMessage200ResponseData](docs/Model/TrashEmailMessage200ResponseData.md)
+- [TrashFile200Response](docs/Model/TrashFile200Response.md)
+- [TrashFile200ResponseData](docs/Model/TrashFile200ResponseData.md)
 - [TriggerApiCallWorkflow201Response](docs/Model/TriggerApiCallWorkflow201Response.md)
 - [TriggerApiCallWorkflowRequest](docs/Model/TriggerApiCallWorkflowRequest.md)
 - [TriggerWorkflow200Response](docs/Model/TriggerWorkflow200Response.md)
@@ -3577,6 +3665,7 @@ Class | Method | HTTP request | Description
 - [UpdateBusinessAgentSettingsRequestFollowup](docs/Model/UpdateBusinessAgentSettingsRequestFollowup.md)
 - [UpdateBusinessAgentSettingsRequestHandoff](docs/Model/UpdateBusinessAgentSettingsRequestHandoff.md)
 - [UpdateBusinessAgentSettingsRequestRollout](docs/Model/UpdateBusinessAgentSettingsRequestRollout.md)
+- [UpdateCalendarEventRequest](docs/Model/UpdateCalendarEventRequest.md)
 - [UpdateCampaignAdSchedule200Response](docs/Model/UpdateCampaignAdSchedule200Response.md)
 - [UpdateCampaignAdScheduleRequest](docs/Model/UpdateCampaignAdScheduleRequest.md)
 - [UpdateCampaignAdScheduleRequestScheduleInner](docs/Model/UpdateCampaignAdScheduleRequestScheduleInner.md)
@@ -3630,10 +3719,12 @@ Class | Method | HTTP request | Description
 - [UpdateDiscordSettings200Response](docs/Model/UpdateDiscordSettings200Response.md)
 - [UpdateDiscordSettings200ResponseAccount](docs/Model/UpdateDiscordSettings200ResponseAccount.md)
 - [UpdateDiscordSettingsRequest](docs/Model/UpdateDiscordSettingsRequest.md)
+- [UpdateEmailThread200Response](docs/Model/UpdateEmailThread200Response.md)
 - [UpdateFacebookPage200Response](docs/Model/UpdateFacebookPage200Response.md)
 - [UpdateFacebookPage200ResponseSelectedPage](docs/Model/UpdateFacebookPage200ResponseSelectedPage.md)
 - [UpdateFacebookPageInfoRequest](docs/Model/UpdateFacebookPageInfoRequest.md)
 - [UpdateFacebookPageRequest](docs/Model/UpdateFacebookPageRequest.md)
+- [UpdateFileRequest](docs/Model/UpdateFileRequest.md)
 - [UpdateGmbLocation200Response](docs/Model/UpdateGmbLocation200Response.md)
 - [UpdateGmbLocationRequest](docs/Model/UpdateGmbLocationRequest.md)
 - [UpdateGoogleAssetGroup200Response](docs/Model/UpdateGoogleAssetGroup200Response.md)
@@ -3740,6 +3831,8 @@ Class | Method | HTTP request | Description
 - [UploadAdVideo202ResponseVideo](docs/Model/UploadAdVideo202ResponseVideo.md)
 - [UploadAdVideoRequest](docs/Model/UploadAdVideoRequest.md)
 - [UploadBusinessAgentFileRequest](docs/Model/UploadBusinessAgentFileRequest.md)
+- [UploadFile201Response](docs/Model/UploadFile201Response.md)
+- [UploadFileRequest](docs/Model/UploadFileRequest.md)
 - [UploadMediaDirect200Response](docs/Model/UploadMediaDirect200Response.md)
 - [UploadPhoneNumberKycDocument200Response](docs/Model/UploadPhoneNumberKycDocument200Response.md)
 - [UploadPhoneNumberPortInDocument200Response](docs/Model/UploadPhoneNumberPortInDocument200Response.md)
@@ -3832,6 +3925,8 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadAccountConnectedAccount](docs/Model/WebhookPayloadAccountConnectedAccount.md)
 - [WebhookPayloadAccountDisconnected](docs/Model/WebhookPayloadAccountDisconnected.md)
 - [WebhookPayloadAccountDisconnectedAccount](docs/Model/WebhookPayloadAccountDisconnectedAccount.md)
+- [WebhookPayloadAccountRateLimited](docs/Model/WebhookPayloadAccountRateLimited.md)
+- [WebhookPayloadAccountRateLimitedAccount](docs/Model/WebhookPayloadAccountRateLimitedAccount.md)
 - [WebhookPayloadAdAccountStatusChanged](docs/Model/WebhookPayloadAdAccountStatusChanged.md)
 - [WebhookPayloadAdAccountStatusChangedAdAccount](docs/Model/WebhookPayloadAdAccountStatusChangedAdAccount.md)
 - [WebhookPayloadAdAccountStatusChangedStatus](docs/Model/WebhookPayloadAdAccountStatusChangedStatus.md)
@@ -3859,6 +3954,9 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadAnalyticsSyncedAccount](docs/Model/WebhookPayloadAnalyticsSyncedAccount.md)
 - [WebhookPayloadAnalyticsSyncedSync](docs/Model/WebhookPayloadAnalyticsSyncedSync.md)
 - [WebhookPayloadApiChangelogPublished](docs/Model/WebhookPayloadApiChangelogPublished.md)
+- [WebhookPayloadCalendarEvent](docs/Model/WebhookPayloadCalendarEvent.md)
+- [WebhookPayloadCalendarEventAccount](docs/Model/WebhookPayloadCalendarEventAccount.md)
+- [WebhookPayloadCalendarEventCalendarEvent](docs/Model/WebhookPayloadCalendarEventCalendarEvent.md)
 - [WebhookPayloadCallEnded](docs/Model/WebhookPayloadCallEnded.md)
 - [WebhookPayloadCallEndedCall](docs/Model/WebhookPayloadCallEndedCall.md)
 - [WebhookPayloadCallEndedCallBilling](docs/Model/WebhookPayloadCallEndedCallBilling.md)
@@ -3884,6 +3982,8 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadCommerceProduct](docs/Model/WebhookPayloadCommerceProduct.md)
 - [WebhookPayloadCommerceProductResource](docs/Model/WebhookPayloadCommerceProductResource.md)
 - [WebhookPayloadCommerceProductStore](docs/Model/WebhookPayloadCommerceProductStore.md)
+- [WebhookPayloadContact](docs/Model/WebhookPayloadContact.md)
+- [WebhookPayloadContactContact](docs/Model/WebhookPayloadContactContact.md)
 - [WebhookPayloadContactFieldChanged](docs/Model/WebhookPayloadContactFieldChanged.md)
 - [WebhookPayloadContactTag](docs/Model/WebhookPayloadContactTag.md)
 - [WebhookPayloadContactTagContact](docs/Model/WebhookPayloadContactTagContact.md)
@@ -3892,6 +3992,10 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadConversationStarted](docs/Model/WebhookPayloadConversationStarted.md)
 - [WebhookPayloadConversationStartedConversation](docs/Model/WebhookPayloadConversationStartedConversation.md)
 - [WebhookPayloadExternalPost](docs/Model/WebhookPayloadExternalPost.md)
+- [WebhookPayloadFile](docs/Model/WebhookPayloadFile.md)
+- [WebhookPayloadFilePicked](docs/Model/WebhookPayloadFilePicked.md)
+- [WebhookPayloadFilePickedPicker](docs/Model/WebhookPayloadFilePickedPicker.md)
+- [WebhookPayloadFilePickedPickerFilesInner](docs/Model/WebhookPayloadFilePickedPickerFilesInner.md)
 - [WebhookPayloadLead](docs/Model/WebhookPayloadLead.md)
 - [WebhookPayloadLeadAccount](docs/Model/WebhookPayloadLeadAccount.md)
 - [WebhookPayloadLeadLead](docs/Model/WebhookPayloadLeadLead.md)
@@ -4072,6 +4176,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.378.0`
+- API version: `1.379.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

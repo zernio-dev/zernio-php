@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **account_id** | **string** |  | [optional]
 **platform** | **string** |  | [optional]
 **integration_lane** | **string** | TikTok only. The TikTok integration the account is connected through: business (TikTok for Business, Accounts API) or developer (the original integration). Absent on other platforms. | [optional]
+**send_cap** | [**\Zernio\Model\GetAccountHealth200ResponseSendCap**](GetAccountHealth200ResponseSendCap.md) |  | [optional]
+**push** | **string** | Google and Microsoft only: state of the provider change-notification subscriptions behind &#x60;message.received&#x60; and &#x60;calendar.event.*&#x60;. &#x60;pending&#x60; means a granted area has no live subscription yet (retried every 6 hours), &#x60;failed&#x60; that renewals keep failing (reconnect the account). | [optional]
 **username** | **string** |  | [optional]
 **display_name** | **string** |  | [optional]
 **status** | **string** | Overall health status | [optional]
