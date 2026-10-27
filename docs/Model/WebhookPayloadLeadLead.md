@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **adset_id** | **string** |  | [optional]
 **campaign_id** | **string** |  | [optional]
 **fields** | **array<string,string>** | Flattened question key -&gt; answer map. For multiple-choice questions the value is the option key (e.g. \&quot;k1\&quot;), not the display label. |
+**consents** | [**\Zernio\Model\AdLeadConsent[]**](AdLeadConsent.md) | Sent on every delivery since 2026-10-25. Absent when an older event is redelivered, since redeliveries replay the stored payload. | [optional]
 **is_organic** | **bool** | True when the lead came from an organic post rather than a paid ad |
 **created_at** | **\DateTime** | Meta&#39;s lead creation time (ISO 8601) |
 

@@ -116,6 +116,7 @@ docs/Model/AdKeyword.md
 docs/Model/AdKeywordMetrics.md
 docs/Model/AdKeywordQuality.md
 docs/Model/AdLead.md
+docs/Model/AdLeadConsent.md
 docs/Model/AdMetrics.md
 docs/Model/AdNegativeKeywordList.md
 docs/Model/AdNegativeKeywordListKeyword.md
@@ -3119,6 +3120,7 @@ lib/Model/AdKeyword.php
 lib/Model/AdKeywordMetrics.php
 lib/Model/AdKeywordQuality.php
 lib/Model/AdLead.php
+lib/Model/AdLeadConsent.php
 lib/Model/AdMetrics.php
 lib/Model/AdNegativeKeywordList.php
 lib/Model/AdNegativeKeywordListKeyword.php
@@ -6007,4 +6009,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/MetaAdScheduleInnerTest.php
+test/Model/AdLeadConsentTest.php
