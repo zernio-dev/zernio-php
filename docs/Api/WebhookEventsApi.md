@@ -3296,7 +3296,7 @@ onPostCancelled($webhook_payload_post)
 
 Post cancelled event
 
-Fired when a post publishing job is cancelled.
+Fired when a scheduled post is cancelled because its account was disconnected and nothing published. Not sent when a post is deleted.
 
 ### Example
 
