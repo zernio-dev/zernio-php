@@ -1500,7 +1500,7 @@ getAdSetDetails($ad_set_id, $account_id, $fields): \Zernio\Model\GetAdSetDetails
 
 Get live ad-set details
 
-Shows a Meta ad set's current settings straight from Meta, including its learning phase, budget, schedule and targeting.  Reads the ad set live from Meta, returned verbatim. The default projection includes `learning_stage_info` (learning-phase status: LEARNING / SUCCESS / FAIL / WAIVING; Meta omits its `status` key on paused ad sets), delivery settings, budgets, schedule and targeting. `fields` is a raw-passthrough override; unknown fields return Meta's 400 verbatim.
+Shows a Meta ad set's current settings straight from Meta, including its learning phase, budget, schedule and targeting.  Reads the ad set live from Meta, returned verbatim. The default projection includes `learning_stage_info` (learning-phase status: LEARNING / SUCCESS / FAIL / WAIVING; Meta omits its `status` key on paused ad sets), delivery settings, budgets, schedule, dayparting (`adset_schedule`, `pacing_type`) and targeting. `fields` is a raw-passthrough override; unknown fields return Meta's 400 verbatim.
 
 ### Example
 
