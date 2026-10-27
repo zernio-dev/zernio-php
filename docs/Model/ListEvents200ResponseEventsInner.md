@@ -19,5 +19,6 @@ Name | Type | Description | Notes
 **has_email** | **bool** |  | [optional]
 **has_phone** | **bool** |  | [optional]
 **has_external_id** | **bool** |  | [optional]
+**ad** | [**\Zernio\Model\ListEvents200ResponseEventsInnerAd**](ListEvents200ResponseEventsInnerAd.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
