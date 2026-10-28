@@ -2012,6 +2012,7 @@ docs/Model/MoveWhatsAppNumberToProfileRequest.md
 docs/Model/OAuthApp.md
 docs/Model/OAuthAppSetup.md
 docs/Model/OAuthAppSetupScopeAreasInner.md
+docs/Model/OAuthAppWebhook.md
 docs/Model/OnBrandedCallingIdentityActionRequiredRequest.md
 docs/Model/OnBrandedCallingIdentityActionRequiredRequestIdentity.md
 docs/Model/OnBrandedCallingIdentityStatusUpdatedRequest.md
@@ -5132,6 +5133,7 @@ lib/Model/MoveWhatsAppNumberToProfileRequest.php
 lib/Model/OAuthApp.php
 lib/Model/OAuthAppSetup.php
 lib/Model/OAuthAppSetupScopeAreasInner.php
+lib/Model/OAuthAppWebhook.php
 lib/Model/OnBrandedCallingIdentityActionRequiredRequest.php
 lib/Model/OnBrandedCallingIdentityActionRequiredRequestIdentity.php
 lib/Model/OnBrandedCallingIdentityStatusUpdatedRequest.php
@@ -6239,3 +6241,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/OAuthAppWebhookTest.php

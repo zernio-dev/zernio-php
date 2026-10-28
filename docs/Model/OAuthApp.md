@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **last_error** | **string** |  | [optional]
 **account_count** | **int** | Connected accounts currently running on this app. |
 **redirect_uri** | **string** | The OAuth redirect URI to allow in your app&#39;s settings on the platform. |
+**webhook** | [**\Zernio\Model\OAuthAppWebhook**](OAuthAppWebhook.md) |  | [optional]
 **created_at** | **\DateTime** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
