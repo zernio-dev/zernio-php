@@ -565,8 +565,10 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**connectWhatsAppEmbeddedSignup**](docs/Api/ConnectApi.md#connectwhatsappembeddedsignup) | **POST** /v1/connect/whatsapp/embedded-signup | Connect WhatsApp from Embedded Signup
 *ConnectApi* | [**connectWhopAdsCredentials**](docs/Api/ConnectApi.md#connectwhopadscredentials) | **POST** /v1/connect/whop-ads/credentials | Connect a Whop account
 *ConnectApi* | [**connectWordPressWithApplicationPassword**](docs/Api/ConnectApi.md#connectwordpresswithapplicationpassword) | **POST** /v1/connect/wordpress/token | Connect self-hosted WordPress with an application password
+*ConnectApi* | [**createOAuthApp**](docs/Api/ConnectApi.md#createoauthapp) | **POST** /v1/connect/oauth-apps | Add an OAuth app
 *ConnectApi* | [**createPinterestBoard**](docs/Api/ConnectApi.md#createpinterestboard) | **POST** /v1/accounts/{accountId}/pinterest-boards | Create Pinterest board
 *ConnectApi* | [**createYoutubePlaylist**](docs/Api/ConnectApi.md#createyoutubeplaylist) | **POST** /v1/accounts/{accountId}/youtube-playlists | Create YouTube playlist
+*ConnectApi* | [**deleteOAuthApp**](docs/Api/ConnectApi.md#deleteoauthapp) | **DELETE** /v1/connect/oauth-apps/{appId} | Remove an OAuth app
 *ConnectApi* | [**getConnectHandoff**](docs/Api/ConnectApi.md#getconnecthandoff) | **GET** /v1/connect/handoffs/{handoffId} | Get a phone handoff
 *ConnectApi* | [**getConnectUrl**](docs/Api/ConnectApi.md#getconnecturl) | **GET** /v1/connect/{platform} | Get OAuth connect URL
 *ConnectApi* | [**getConnectWelcomeScreen**](docs/Api/ConnectApi.md#getconnectwelcomescreen) | **GET** /v1/connect/welcome-screen | Get the saved welcome screen
@@ -575,6 +577,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**getGoogleAnalyticsConnectUrl**](docs/Api/ConnectApi.md#getgoogleanalyticsconnecturl) | **GET** /v1/connect/googleanalytics | Get Google Analytics OAuth connect URL
 *ConnectApi* | [**getHubSpotConnectUrl**](docs/Api/ConnectApi.md#gethubspotconnecturl) | **GET** /v1/connect/hubspot | Get HubSpot OAuth connect URL
 *ConnectApi* | [**getLinkedInOrganizations**](docs/Api/ConnectApi.md#getlinkedinorganizations) | **GET** /v1/accounts/{accountId}/linkedin-organizations | List LinkedIn orgs
+*ConnectApi* | [**getOAuthApp**](docs/Api/ConnectApi.md#getoauthapp) | **GET** /v1/connect/oauth-apps/{appId} | Get an OAuth app
 *ConnectApi* | [**getPageWebhookSubscription**](docs/Api/ConnectApi.md#getpagewebhooksubscription) | **GET** /v1/accounts/{accountId}/webhook-subscription | Read a Facebook Page&#39;s webhook subscription
 *ConnectApi* | [**getPendingOAuthData**](docs/Api/ConnectApi.md#getpendingoauthdata) | **GET** /v1/connect/pending-data | Get pending OAuth data
 *ConnectApi* | [**getPinterestBoards**](docs/Api/ConnectApi.md#getpinterestboards) | **GET** /v1/accounts/{accountId}/pinterest-boards | List Pinterest boards
@@ -596,6 +599,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**listGoogleBusinessLocations**](docs/Api/ConnectApi.md#listgooglebusinesslocations) | **GET** /v1/connect/googlebusiness/locations | List Google Business Profile locations
 *ConnectApi* | [**listInstagramPages**](docs/Api/ConnectApi.md#listinstagrampages) | **GET** /v1/connect/instagram/select-account | List Pages with a linked Instagram account
 *ConnectApi* | [**listLinkedInOrganizations**](docs/Api/ConnectApi.md#listlinkedinorganizations) | **GET** /v1/connect/linkedin/organizations | List LinkedIn orgs
+*ConnectApi* | [**listOAuthApps**](docs/Api/ConnectApi.md#listoauthapps) | **GET** /v1/connect/oauth-apps | List your OAuth apps
 *ConnectApi* | [**listPinterestBoardsForSelection**](docs/Api/ConnectApi.md#listpinterestboardsforselection) | **GET** /v1/connect/pinterest/select-board | List Pinterest boards
 *ConnectApi* | [**listSlackChannels**](docs/Api/ConnectApi.md#listslackchannels) | **GET** /v1/connect/slack | List Slack channels for the channel picker
 *ConnectApi* | [**listSnapchatProfiles**](docs/Api/ConnectApi.md#listsnapchatprofiles) | **GET** /v1/connect/snapchat/select-profile | List Snapchat profiles
@@ -610,10 +614,12 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**selectSnapchatProfile**](docs/Api/ConnectApi.md#selectsnapchatprofile) | **POST** /v1/connect/snapchat/select-profile | Select Snapchat profile
 *ConnectApi* | [**setRedditPostFlair**](docs/Api/ConnectApi.md#setredditpostflair) | **POST** /v1/accounts/{accountId}/reddit-flairs | Set Reddit post flair
 *ConnectApi* | [**startMicrosoftAdminConsent**](docs/Api/ConnectApi.md#startmicrosoftadminconsent) | **GET** /v1/connect/microsoft/admin-consent | Admin-consent link for a Microsoft tenant
+*ConnectApi* | [**testOAuthApp**](docs/Api/ConnectApi.md#testoauthapp) | **POST** /v1/connect/oauth-apps/{appId}/test | Check an OAuth app&#39;s keys
 *ConnectApi* | [**updateConnectWelcomeScreen**](docs/Api/ConnectApi.md#updateconnectwelcomescreen) | **PUT** /v1/connect/welcome-screen | Save the welcome screen
 *ConnectApi* | [**updateFacebookPage**](docs/Api/ConnectApi.md#updatefacebookpage) | **PUT** /v1/accounts/{accountId}/facebook-page | Update Facebook page
 *ConnectApi* | [**updateGmbLocation**](docs/Api/ConnectApi.md#updategmblocation) | **PUT** /v1/accounts/{accountId}/gmb-locations | Update Google Business Profile location
 *ConnectApi* | [**updateLinkedInOrganization**](docs/Api/ConnectApi.md#updatelinkedinorganization) | **PUT** /v1/accounts/{accountId}/linkedin-organization | Switch LinkedIn account type
+*ConnectApi* | [**updateOAuthApp**](docs/Api/ConnectApi.md#updateoauthapp) | **PATCH** /v1/connect/oauth-apps/{appId} | Update an OAuth app
 *ConnectApi* | [**updatePinterestBoards**](docs/Api/ConnectApi.md#updatepinterestboards) | **PUT** /v1/accounts/{accountId}/pinterest-boards | Set default Pinterest board
 *ConnectApi* | [**updateRedditSubreddits**](docs/Api/ConnectApi.md#updateredditsubreddits) | **PUT** /v1/accounts/{accountId}/reddit-subreddits | Set default subreddit
 *ConnectApi* | [**updateYoutubeDefaultPlaylist**](docs/Api/ConnectApi.md#updateyoutubedefaultplaylist) | **PUT** /v1/accounts/{accountId}/youtube-playlists | Set default YouTube playlist
@@ -1758,6 +1764,8 @@ Class | Method | HTTP request | Description
 - [CreateMessagingAd201Response](docs/Model/CreateMessagingAd201Response.md)
 - [CreateMessagingAdRequest](docs/Model/CreateMessagingAdRequest.md)
 - [CreateMetaAdAccountRequest](docs/Model/CreateMetaAdAccountRequest.md)
+- [CreateOAuthApp201Response](docs/Model/CreateOAuthApp201Response.md)
+- [CreateOAuthAppRequest](docs/Model/CreateOAuthAppRequest.md)
 - [CreatePhoneNumberKycLink200Response](docs/Model/CreatePhoneNumberKycLink200Response.md)
 - [CreatePhoneNumberKycLinkRequest](docs/Model/CreatePhoneNumberKycLinkRequest.md)
 - [CreatePhoneNumberKycLinkRequestBranding](docs/Model/CreatePhoneNumberKycLinkRequestBranding.md)
@@ -1919,6 +1927,7 @@ Class | Method | HTTP request | Description
 - [DeleteInboxConversation200ResponseData](docs/Model/DeleteInboxConversation200ResponseData.md)
 - [DeleteInboxReviewReply200Response](docs/Model/DeleteInboxReviewReply200Response.md)
 - [DeleteInboxReviewReplyRequest](docs/Model/DeleteInboxReviewReplyRequest.md)
+- [DeleteOAuthApp200Response](docs/Model/DeleteOAuthApp200Response.md)
 - [DeleteSmsSenderId200Response](docs/Model/DeleteSmsSenderId200Response.md)
 - [DeleteTestLead200Response](docs/Model/DeleteTestLead200Response.md)
 - [DeleteTrackingTagEvent200Response](docs/Model/DeleteTrackingTagEvent200Response.md)
@@ -2905,6 +2914,8 @@ Class | Method | HTTP request | Description
 - [ListLogs200ResponsePagination](docs/Model/ListLogs200ResponsePagination.md)
 - [ListMetaBusinessUsers200Response](docs/Model/ListMetaBusinessUsers200Response.md)
 - [ListMetaBusinesses200Response](docs/Model/ListMetaBusinesses200Response.md)
+- [ListOAuthApps200Response](docs/Model/ListOAuthApps200Response.md)
+- [ListOAuthApps200ResponsePagination](docs/Model/ListOAuthApps200ResponsePagination.md)
 - [ListPageUsers200Response](docs/Model/ListPageUsers200Response.md)
 - [ListPartnershipAdContent200Response](docs/Model/ListPartnershipAdContent200Response.md)
 - [ListPartnershipAdContent200ResponseMediaInner](docs/Model/ListPartnershipAdContent200ResponseMediaInner.md)
@@ -3056,6 +3067,9 @@ Class | Method | HTTP request | Description
 - [MoveAccountToProfileRequest](docs/Model/MoveAccountToProfileRequest.md)
 - [MoveWhatsAppNumberToProfile200Response](docs/Model/MoveWhatsAppNumberToProfile200Response.md)
 - [MoveWhatsAppNumberToProfileRequest](docs/Model/MoveWhatsAppNumberToProfileRequest.md)
+- [OAuthApp](docs/Model/OAuthApp.md)
+- [OAuthAppSetup](docs/Model/OAuthAppSetup.md)
+- [OAuthAppSetupScopeAreasInner](docs/Model/OAuthAppSetupScopeAreasInner.md)
 - [OnBrandedCallingIdentityActionRequiredRequest](docs/Model/OnBrandedCallingIdentityActionRequiredRequest.md)
 - [OnBrandedCallingIdentityActionRequiredRequestIdentity](docs/Model/OnBrandedCallingIdentityActionRequiredRequestIdentity.md)
 - [OnBrandedCallingIdentityStatusUpdatedRequest](docs/Model/OnBrandedCallingIdentityStatusUpdatedRequest.md)
@@ -3792,6 +3806,7 @@ Class | Method | HTTP request | Description
 - [UpdateLeadRequest](docs/Model/UpdateLeadRequest.md)
 - [UpdateLinkedInOrganization200Response](docs/Model/UpdateLinkedInOrganization200Response.md)
 - [UpdateLinkedInOrganizationRequest](docs/Model/UpdateLinkedInOrganizationRequest.md)
+- [UpdateOAuthAppRequest](docs/Model/UpdateOAuthAppRequest.md)
 - [UpdatePinterestBoardsRequest](docs/Model/UpdatePinterestBoardsRequest.md)
 - [UpdatePostMetadata200Response](docs/Model/UpdatePostMetadata200Response.md)
 - [UpdatePostMetadataRequest](docs/Model/UpdatePostMetadataRequest.md)
@@ -3939,6 +3954,8 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadAccountConnectedAccount](docs/Model/WebhookPayloadAccountConnectedAccount.md)
 - [WebhookPayloadAccountDisconnected](docs/Model/WebhookPayloadAccountDisconnected.md)
 - [WebhookPayloadAccountDisconnectedAccount](docs/Model/WebhookPayloadAccountDisconnectedAccount.md)
+- [WebhookPayloadAccountPermissionsChanged](docs/Model/WebhookPayloadAccountPermissionsChanged.md)
+- [WebhookPayloadAccountPermissionsChangedAccount](docs/Model/WebhookPayloadAccountPermissionsChangedAccount.md)
 - [WebhookPayloadAccountRateLimited](docs/Model/WebhookPayloadAccountRateLimited.md)
 - [WebhookPayloadAccountRateLimitedAccount](docs/Model/WebhookPayloadAccountRateLimitedAccount.md)
 - [WebhookPayloadAdAccountStatusChanged](docs/Model/WebhookPayloadAdAccountStatusChanged.md)
@@ -4190,6 +4207,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.390.0`
+- API version: `1.391.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

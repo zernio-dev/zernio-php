@@ -706,6 +706,8 @@ docs/Model/CreateMessagingAd200ResponseResultsInner.md
 docs/Model/CreateMessagingAd201Response.md
 docs/Model/CreateMessagingAdRequest.md
 docs/Model/CreateMetaAdAccountRequest.md
+docs/Model/CreateOAuthApp201Response.md
+docs/Model/CreateOAuthAppRequest.md
 docs/Model/CreatePhoneNumberKycLink200Response.md
 docs/Model/CreatePhoneNumberKycLinkRequest.md
 docs/Model/CreatePhoneNumberKycLinkRequestBranding.md
@@ -867,6 +869,7 @@ docs/Model/DeleteInboxConversation200Response.md
 docs/Model/DeleteInboxConversation200ResponseData.md
 docs/Model/DeleteInboxReviewReply200Response.md
 docs/Model/DeleteInboxReviewReplyRequest.md
+docs/Model/DeleteOAuthApp200Response.md
 docs/Model/DeleteSmsSenderId200Response.md
 docs/Model/DeleteTestLead200Response.md
 docs/Model/DeleteTrackingTagEvent200Response.md
@@ -1853,6 +1856,8 @@ docs/Model/ListLogs200ResponseLogsInner.md
 docs/Model/ListLogs200ResponsePagination.md
 docs/Model/ListMetaBusinessUsers200Response.md
 docs/Model/ListMetaBusinesses200Response.md
+docs/Model/ListOAuthApps200Response.md
+docs/Model/ListOAuthApps200ResponsePagination.md
 docs/Model/ListPageUsers200Response.md
 docs/Model/ListPartnershipAdContent200Response.md
 docs/Model/ListPartnershipAdContent200ResponseMediaInner.md
@@ -2004,6 +2009,9 @@ docs/Model/MoveAccountToProfile200Response.md
 docs/Model/MoveAccountToProfileRequest.md
 docs/Model/MoveWhatsAppNumberToProfile200Response.md
 docs/Model/MoveWhatsAppNumberToProfileRequest.md
+docs/Model/OAuthApp.md
+docs/Model/OAuthAppSetup.md
+docs/Model/OAuthAppSetupScopeAreasInner.md
 docs/Model/OnBrandedCallingIdentityActionRequiredRequest.md
 docs/Model/OnBrandedCallingIdentityActionRequiredRequestIdentity.md
 docs/Model/OnBrandedCallingIdentityStatusUpdatedRequest.md
@@ -2740,6 +2748,7 @@ docs/Model/UpdateLead200Response.md
 docs/Model/UpdateLeadRequest.md
 docs/Model/UpdateLinkedInOrganization200Response.md
 docs/Model/UpdateLinkedInOrganizationRequest.md
+docs/Model/UpdateOAuthAppRequest.md
 docs/Model/UpdatePinterestBoardsRequest.md
 docs/Model/UpdatePostMetadata200Response.md
 docs/Model/UpdatePostMetadataRequest.md
@@ -2887,6 +2896,8 @@ docs/Model/WebhookPayloadAccountConnected.md
 docs/Model/WebhookPayloadAccountConnectedAccount.md
 docs/Model/WebhookPayloadAccountDisconnected.md
 docs/Model/WebhookPayloadAccountDisconnectedAccount.md
+docs/Model/WebhookPayloadAccountPermissionsChanged.md
+docs/Model/WebhookPayloadAccountPermissionsChangedAccount.md
 docs/Model/WebhookPayloadAccountRateLimited.md
 docs/Model/WebhookPayloadAccountRateLimitedAccount.md
 docs/Model/WebhookPayloadAdAccountStatusChanged.md
@@ -3814,6 +3825,8 @@ lib/Model/CreateMessagingAd200ResponseResultsInner.php
 lib/Model/CreateMessagingAd201Response.php
 lib/Model/CreateMessagingAdRequest.php
 lib/Model/CreateMetaAdAccountRequest.php
+lib/Model/CreateOAuthApp201Response.php
+lib/Model/CreateOAuthAppRequest.php
 lib/Model/CreatePhoneNumberKycLink200Response.php
 lib/Model/CreatePhoneNumberKycLinkRequest.php
 lib/Model/CreatePhoneNumberKycLinkRequestBranding.php
@@ -3975,6 +3988,7 @@ lib/Model/DeleteInboxConversation200Response.php
 lib/Model/DeleteInboxConversation200ResponseData.php
 lib/Model/DeleteInboxReviewReply200Response.php
 lib/Model/DeleteInboxReviewReplyRequest.php
+lib/Model/DeleteOAuthApp200Response.php
 lib/Model/DeleteSmsSenderId200Response.php
 lib/Model/DeleteTestLead200Response.php
 lib/Model/DeleteTrackingTagEvent200Response.php
@@ -4961,6 +4975,8 @@ lib/Model/ListLogs200ResponseLogsInner.php
 lib/Model/ListLogs200ResponsePagination.php
 lib/Model/ListMetaBusinessUsers200Response.php
 lib/Model/ListMetaBusinesses200Response.php
+lib/Model/ListOAuthApps200Response.php
+lib/Model/ListOAuthApps200ResponsePagination.php
 lib/Model/ListPageUsers200Response.php
 lib/Model/ListPartnershipAdContent200Response.php
 lib/Model/ListPartnershipAdContent200ResponseMediaInner.php
@@ -5113,6 +5129,9 @@ lib/Model/MoveAccountToProfile200Response.php
 lib/Model/MoveAccountToProfileRequest.php
 lib/Model/MoveWhatsAppNumberToProfile200Response.php
 lib/Model/MoveWhatsAppNumberToProfileRequest.php
+lib/Model/OAuthApp.php
+lib/Model/OAuthAppSetup.php
+lib/Model/OAuthAppSetupScopeAreasInner.php
 lib/Model/OnBrandedCallingIdentityActionRequiredRequest.php
 lib/Model/OnBrandedCallingIdentityActionRequiredRequestIdentity.php
 lib/Model/OnBrandedCallingIdentityStatusUpdatedRequest.php
@@ -5849,6 +5868,7 @@ lib/Model/UpdateLead200Response.php
 lib/Model/UpdateLeadRequest.php
 lib/Model/UpdateLinkedInOrganization200Response.php
 lib/Model/UpdateLinkedInOrganizationRequest.php
+lib/Model/UpdateOAuthAppRequest.php
 lib/Model/UpdatePinterestBoardsRequest.php
 lib/Model/UpdatePostMetadata200Response.php
 lib/Model/UpdatePostMetadataRequest.php
@@ -5996,6 +6016,8 @@ lib/Model/WebhookPayloadAccountConnected.php
 lib/Model/WebhookPayloadAccountConnectedAccount.php
 lib/Model/WebhookPayloadAccountDisconnected.php
 lib/Model/WebhookPayloadAccountDisconnectedAccount.php
+lib/Model/WebhookPayloadAccountPermissionsChanged.php
+lib/Model/WebhookPayloadAccountPermissionsChangedAccount.php
 lib/Model/WebhookPayloadAccountRateLimited.php
 lib/Model/WebhookPayloadAccountRateLimitedAccount.php
 lib/Model/WebhookPayloadAdAccountStatusChanged.php
@@ -6217,6 +6239,14 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AdRuleActivityEntryTest.php
-test/Model/AdRuleRunEvaluationRuleTest.php
-test/Model/ListAdRuleActivity200ResponseTest.php
+test/Model/CreateOAuthApp201ResponseTest.php
+test/Model/CreateOAuthAppRequestTest.php
+test/Model/DeleteOAuthApp200ResponseTest.php
+test/Model/ListOAuthApps200ResponsePaginationTest.php
+test/Model/ListOAuthApps200ResponseTest.php
+test/Model/OAuthAppSetupScopeAreasInnerTest.php
+test/Model/OAuthAppSetupTest.php
+test/Model/OAuthAppTest.php
+test/Model/UpdateOAuthAppRequestTest.php
+test/Model/WebhookPayloadAccountPermissionsChangedAccountTest.php
+test/Model/WebhookPayloadAccountPermissionsChangedTest.php
