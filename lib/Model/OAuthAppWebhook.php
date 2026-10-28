@@ -61,7 +61,7 @@ class OAuthAppWebhook implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'callback_url' => 'string',
         'verify_token' => 'string',
-        'object' => 'string',
+        'object' => '\Zernio\Model\OAuthAppWebhookObject',
         'fields' => 'string[]'
     ];
 
@@ -248,21 +248,6 @@ class OAuthAppWebhook implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const OBJECT_PAGE = 'page';
-    public const OBJECT_INSTAGRAM = 'instagram';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getObjectAllowableValues()
-    {
-        return [
-            self::OBJECT_PAGE,
-            self::OBJECT_INSTAGRAM,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -321,15 +306,6 @@ class OAuthAppWebhook implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['object'] === null) {
             $invalidProperties[] = "'object' can't be null";
         }
-        $allowedValues = $this->getObjectAllowableValues();
-        if (!is_null($this->container['object']) && !in_array($this->container['object'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'object', must be one of '%s'",
-                $this->container['object'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         if ($this->container['fields'] === null) {
             $invalidProperties[] = "'fields' can't be null";
         }
@@ -405,7 +381,7 @@ class OAuthAppWebhook implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets object
      *
-     * @return string
+     * @return \Zernio\Model\OAuthAppWebhookObject
      */
     public function getObject()
     {
@@ -415,7 +391,7 @@ class OAuthAppWebhook implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets object
      *
-     * @param string $object The webhook object to configure.
+     * @param \Zernio\Model\OAuthAppWebhookObject $object object
      *
      * @return self
      */
@@ -423,16 +399,6 @@ class OAuthAppWebhook implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($object)) {
             throw new \InvalidArgumentException('non-nullable object cannot be null');
-        }
-        $allowedValues = $this->getObjectAllowableValues();
-        if (!in_array($object, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'object', must be one of '%s'",
-                    $object,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['object'] = $object;
 

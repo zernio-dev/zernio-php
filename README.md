@@ -3071,6 +3071,7 @@ Class | Method | HTTP request | Description
 - [OAuthAppSetup](docs/Model/OAuthAppSetup.md)
 - [OAuthAppSetupScopeAreasInner](docs/Model/OAuthAppSetupScopeAreasInner.md)
 - [OAuthAppWebhook](docs/Model/OAuthAppWebhook.md)
+- [OAuthAppWebhookObject](docs/Model/OAuthAppWebhookObject.md)
 - [OnBrandedCallingIdentityActionRequiredRequest](docs/Model/OnBrandedCallingIdentityActionRequiredRequest.md)
 - [OnBrandedCallingIdentityActionRequiredRequestIdentity](docs/Model/OnBrandedCallingIdentityActionRequiredRequestIdentity.md)
 - [OnBrandedCallingIdentityStatusUpdatedRequest](docs/Model/OnBrandedCallingIdentityStatusUpdatedRequest.md)
