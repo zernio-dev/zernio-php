@@ -83,12 +83,12 @@ try {
 ## `createBlogArticle()`
 
 ```php
-createBlogArticle($account_id, $blog_id, $create_blog_article_request): \Zernio\Model\CreateBlogArticle201Response
+createBlogArticle($account_id, $blog_id, $create_blog_article_request, $idempotency_key): \Zernio\Model\CreateBlogArticle201Response
 ```
 
 Create a blog article
 
-Creates an article on the blog. Publishing behavior:  - WordPress, Wix and Webflow default to a draft when both publishing   fields are omitted. - `isPublished: false` keeps the article as a draft and takes priority   over a future `publishDate`. - A future `publishDate` schedules publication natively on the   platform; the platform publishes it at that time with no Zernio   queue involved. - `isPublished: true` publishes immediately when there is no future   `publishDate`. - `seo.title` / `seo.description` map to Shopify's global `title_tag`   and `description_tag` metafields (the fields Shopify themes read for   the page title and meta description), and on Wix to the post's SEO   title and meta description. WordPress and Webflow reject `seo`; SEO   plugin and custom-field writes are not supported. - Webflow has no scheduling API: a future `publishDate` returns 400   unless `isPublished: false` keeps a draft. Fields map to the   collection's own fields by type and slug (the body to its rich text   field, `excerpt` to a summary field, `image` to an image field, `tags`   and `author` to tag and author reference fields); sending a field the   collection does not have returns 400, as does a collection that   requires a field the Blogs API cannot fill. - Wix stores rich content: `bodyHtml` is converted on write (each   top-level HTML element must fit 30,000 characters), and images in   the body are imported into the site's Media Manager.  Supported on Shopify (`shopify`), WordPress (`wordpress`), Wix (`wix`) and Webflow (`webflow`). WordPress native scheduling depends on the site's scheduler/WP-Cron.
+Creates an article on the blog. Publishing behavior:  - WordPress, Wix and Webflow default to a draft when both publishing   fields are omitted. - `isPublished: false` keeps the article as a draft and takes priority   over a future `publishDate`. - A future `publishDate` schedules publication natively on the   platform; the platform publishes it at that time with no Zernio   queue involved. - `isPublished: true` publishes immediately when there is no future   `publishDate`. - `seo.title` / `seo.description` map to Shopify's global `title_tag`   and `description_tag` metafields (the fields Shopify themes read for   the page title and meta description), and on Wix to the post's SEO   title and meta description. WordPress and Webflow reject `seo`; SEO   plugin and custom-field writes are not supported. - Webflow has no scheduling API: a future `publishDate` returns 400   unless `isPublished: false` keeps a draft. Fields map to the   collection's own fields by type and slug (the body to its rich text   field, `excerpt` to a summary field, `image` to an image field, `tags`   and `author` to tag and author reference fields); sending a field the   collection does not have returns 400, as does a collection that   requires a field the Blogs API cannot fill. - Wix stores rich content: `bodyHtml` is converted on write (each   top-level HTML element must fit 30,000 characters), and images in   the body are imported into the site's Media Manager.  Send an Idempotency-Key header to make retries safe: a retry with the same key and body replays the original 201 instead of creating a second article. A retry while the first request is still running returns 409; retry after a short backoff.  Supported on Shopify (`shopify`), WordPress (`wordpress`), Wix (`wix`) and Webflow (`webflow`). WordPress native scheduling depends on the site's scheduler/WP-Cron.
 
 ### Example
 
@@ -110,9 +110,10 @@ $apiInstance = new Zernio\Api\BlogsApi(
 $account_id = 'account_id_example'; // string | Connected Shopify, WordPress, Wix or Webflow account id.
 $blog_id = 'blog_id_example'; // string | Platform-native blog/site id returned by the list operation.
 $create_blog_article_request = new \Zernio\Model\CreateBlogArticleRequest(); // \Zernio\Model\CreateBlogArticleRequest
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
 
 try {
-    $result = $apiInstance->createBlogArticle($account_id, $blog_id, $create_blog_article_request);
+    $result = $apiInstance->createBlogArticle($account_id, $blog_id, $create_blog_article_request, $idempotency_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BlogsApi->createBlogArticle: ', $e->getMessage(), PHP_EOL;
@@ -126,6 +127,7 @@ try {
 | **account_id** | **string**| Connected Shopify, WordPress, Wix or Webflow account id. | |
 | **blog_id** | **string**| Platform-native blog/site id returned by the list operation. | |
 | **create_blog_article_request** | [**\Zernio\Model\CreateBlogArticleRequest**](../Model/CreateBlogArticleRequest.md)|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
 
 ### Return type
 

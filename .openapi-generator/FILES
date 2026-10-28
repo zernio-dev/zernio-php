@@ -6239,14 +6239,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateOAuthApp201ResponseTest.php
-test/Model/CreateOAuthAppRequestTest.php
-test/Model/DeleteOAuthApp200ResponseTest.php
-test/Model/ListOAuthApps200ResponsePaginationTest.php
-test/Model/ListOAuthApps200ResponseTest.php
-test/Model/OAuthAppSetupScopeAreasInnerTest.php
-test/Model/OAuthAppSetupTest.php
-test/Model/OAuthAppTest.php
-test/Model/UpdateOAuthAppRequestTest.php
-test/Model/WebhookPayloadAccountPermissionsChangedAccountTest.php
-test/Model/WebhookPayloadAccountPermissionsChangedTest.php
