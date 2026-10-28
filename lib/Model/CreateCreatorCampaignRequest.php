@@ -611,7 +611,7 @@ class CreateCreatorCampaignRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets caps
      *
-     * @param \Zernio\Model\CreatorCampaignCaps|null $caps caps
+     * @param \Zernio\Model\CreatorCampaignCaps|null $caps Omitted, the campaign starts with authenticityThreshold 40 and no other caps.
      *
      * @return self
      */

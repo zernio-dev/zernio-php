@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **name** | **string** |  |
 **brand_name** | **string** |  |
 **economics** | [**\Zernio\Model\CreatorCampaignEconomics**](CreatorCampaignEconomics.md) |  |
-**caps** | [**\Zernio\Model\CreatorCampaignCaps**](CreatorCampaignCaps.md) |  | [optional]
+**caps** | [**\Zernio\Model\CreatorCampaignCaps**](CreatorCampaignCaps.md) | Omitted, the campaign starts with authenticityThreshold 40 and no other caps. | [optional]
 **platforms** | **string[]** | Platforms creators may post on. At least one is needed to activate. | [optional]
 **content_rules** | **string** |  | [optional]
 **starts_at** | **\DateTime** |  | [optional]
