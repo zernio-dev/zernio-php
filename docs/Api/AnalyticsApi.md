@@ -6,6 +6,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**cancelTrackingWindow()**](AnalyticsApi.md#cancelTrackingWindow) | **DELETE** /v1/analytics/tracking/{windowId} | Cancel a tracking window |
 | [**getAnalytics()**](AnalyticsApi.md#getAnalytics) | **GET** /v1/analytics | Get post analytics |
 | [**getAnalyticsDashboard()**](AnalyticsApi.md#getAnalyticsDashboard) | **GET** /v1/analytics/dashboard | Get an analytics dashboard |
 | [**getAnalyticsDelta()**](AnalyticsApi.md#getAnalyticsDelta) | **GET** /v1/analytics/delta | Analytics changed since a cursor |
@@ -29,19 +30,85 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getLinkedInOrgAggregateAnalytics()**](AnalyticsApi.md#getLinkedInOrgAggregateAnalytics) | **GET** /v1/analytics/linkedin/org-aggregate-analytics | Get LinkedIn org analytics |
 | [**getLinkedInPostAnalytics()**](AnalyticsApi.md#getLinkedInPostAnalytics) | **GET** /v1/accounts/{accountId}/linkedin-post-analytics | Get LinkedIn post stats |
 | [**getLinkedInPostReactions()**](AnalyticsApi.md#getLinkedInPostReactions) | **GET** /v1/accounts/{accountId}/linkedin-post-reactions | Get LinkedIn post reactions |
+| [**getPostAuthenticity()**](AnalyticsApi.md#getPostAuthenticity) | **GET** /v1/posts/{postId}/authenticity | Get a post&#39;s authenticity score |
+| [**getPostSamples()**](AnalyticsApi.md#getPostSamples) | **GET** /v1/analytics/samples | Get post samples |
 | [**getPostTimeline()**](AnalyticsApi.md#getPostTimeline) | **GET** /v1/analytics/post-timeline | Get post analytics timeline |
 | [**getPostingFrequency()**](AnalyticsApi.md#getPostingFrequency) | **GET** /v1/analytics/posting-frequency | Get frequency vs engagement |
 | [**getTikTokAccountInsights()**](AnalyticsApi.md#getTikTokAccountInsights) | **GET** /v1/analytics/tiktok/account-insights | Get TikTok account-level insights |
+| [**getTrackingWindow()**](AnalyticsApi.md#getTrackingWindow) | **GET** /v1/analytics/tracking/{windowId} | Get a tracking window |
 | [**getYouTubeChannelInsights()**](AnalyticsApi.md#getYouTubeChannelInsights) | **GET** /v1/analytics/youtube/channel-insights | Get YouTube channel insights |
 | [**getYouTubeDailyViews()**](AnalyticsApi.md#getYouTubeDailyViews) | **GET** /v1/analytics/youtube/daily-views | Get YouTube daily views |
 | [**getYouTubeDemographics()**](AnalyticsApi.md#getYouTubeDemographics) | **GET** /v1/analytics/youtube/demographics | Get YouTube demographics |
 | [**getYouTubeVideoRetention()**](AnalyticsApi.md#getYouTubeVideoRetention) | **GET** /v1/analytics/youtube/video-retention | Get YouTube video retention curve |
 | [**listFacebookTaggedPosts()**](AnalyticsApi.md#listFacebookTaggedPosts) | **GET** /v1/accounts/{accountId}/facebook-tagged-posts | List the posts a Facebook Page is tagged in |
 | [**listFacebookVisitorPosts()**](AnalyticsApi.md#listFacebookVisitorPosts) | **GET** /v1/accounts/{accountId}/facebook-visitor-posts | List visitor posts on a Facebook Page |
+| [**listPostAuthenticity()**](AnalyticsApi.md#listPostAuthenticity) | **GET** /v1/analytics/authenticity | List authenticity scores |
+| [**listTrackingWindows()**](AnalyticsApi.md#listTrackingWindows) | **GET** /v1/analytics/tracking | List tracking windows |
+| [**openTrackingWindow()**](AnalyticsApi.md#openTrackingWindow) | **POST** /v1/analytics/tracking | Open a tracking window |
 | [**runGoogleAnalyticsRealtimeReport()**](AnalyticsApi.md#runGoogleAnalyticsRealtimeReport) | **POST** /v1/analytics/googleanalytics/realtime | Run a Google Analytics (GA4) realtime report |
 | [**runGoogleAnalyticsReport()**](AnalyticsApi.md#runGoogleAnalyticsReport) | **POST** /v1/analytics/googleanalytics/report | Run a Google Analytics (GA4) report |
 | [**syncExternalPosts()**](AnalyticsApi.md#syncExternalPosts) | **POST** /v1/posts/sync-external | Sync an external post |
 
+
+## `cancelTrackingWindow()`
+
+```php
+cancelTrackingWindow($window_id): \Zernio\Model\TrackingWindowResponse
+```
+
+Cancel a tracking window
+
+Stops tracking and returns the window with its final status. A window that already completed keeps its `completed` status and its final read. A cancelled window gets no final read and fires no `post.tracking_completed` webhook. Requires the Analytics add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$window_id = 'window_id_example'; // string
+
+try {
+    $result = $apiInstance->cancelTrackingWindow($window_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->cancelTrackingWindow: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **window_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\TrackingWindowResponse**](../Model/TrackingWindowResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `getAnalytics()`
 
@@ -1601,6 +1668,132 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getPostAuthenticity()`
+
+```php
+getPostAuthenticity($post_id): \Zernio\Model\PostAuthenticity
+```
+
+Get a post's authenticity score
+
+Returns Zernio's authenticity score for a post: an integer from 0 to 100 where higher means the view pattern looks more like organic viewing. The score is ours. It is computed only from the verified samples we fetched from the platform, never from anything the creator or caller reported, and `reasons` lists each factor that lowered it with its weight in points. `confidence` (0 to 1) says how much data the score rests on. A stored score newer than 30 minutes is returned as is, otherwise it is recomputed. The `post.authenticity_changed` webhook fires when a score crosses 40. Requires the Analytics add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$post_id = 'post_id_example'; // string | An external post id, a platform post id or a Zernio post id.
+
+try {
+    $result = $apiInstance->getPostAuthenticity($post_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->getPostAuthenticity: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **post_id** | **string**| An external post id, a platform post id or a Zernio post id. | |
+
+### Return type
+
+[**\Zernio\Model\PostAuthenticity**](../Model/PostAuthenticity.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getPostSamples()`
+
+```php
+getPostSamples($post_id, $from_date, $to_date, $limit): \Zernio\Model\GetPostSamples200Response
+```
+
+Get post samples
+
+Returns the raw readings behind a post's numbers, oldest first. Each sample is one analytics sync: the views and engagement as the platform reported them at `syncedAt`. Zernio only stores what it fetched from the platform, so nothing here was self-reported. `shares` and `saves` are null on platforms that do not return that counter, which is different from a real zero. `watchSeconds` and `completionRate` are null when the platform gives no watch signal. Requires the Analytics add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$post_id = 'post_id_example'; // string | The post to read samples for. Accepts an external post id, a platform post id or a Zernio post id.
+$from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Earliest sample to return (ISO 8601).
+$to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Latest sample to return (ISO 8601).
+$limit = 500; // int | Maximum number of samples.
+
+try {
+    $result = $apiInstance->getPostSamples($post_id, $from_date, $to_date, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->getPostSamples: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **post_id** | **string**| The post to read samples for. Accepts an external post id, a platform post id or a Zernio post id. | |
+| **from_date** | **\DateTime**| Earliest sample to return (ISO 8601). | [optional] |
+| **to_date** | **\DateTime**| Latest sample to return (ISO 8601). | [optional] |
+| **limit** | **int**| Maximum number of samples. | [optional] [default to 500] |
+
+### Return type
+
+[**\Zernio\Model\GetPostSamples200Response**](../Model/GetPostSamples200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getPostTimeline()`
 
 ```php
@@ -1789,6 +1982,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\InstagramAccountInsightsResponse**](../Model/InstagramAccountInsightsResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getTrackingWindow()`
+
+```php
+getTrackingWindow($window_id): \Zernio\Model\TrackingWindowResponse
+```
+
+Get a tracking window
+
+Returns one tracking window with the latest verified numbers we read from the platform. Once the window has completed, `finalReadAt` and `completionReason` say how it closed. Requires the Analytics add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$window_id = 'window_id_example'; // string
+
+try {
+    $result = $apiInstance->getTrackingWindow($window_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->getTrackingWindow: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **window_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\TrackingWindowResponse**](../Model/TrackingWindowResponse.md)
 
 ### Authorization
 
@@ -2209,6 +2462,204 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listPostAuthenticity()`
+
+```php
+listPostAuthenticity($account_id, $min_score, $max_score, $from, $to, $limit, $skip): \Zernio\Model\ListPostAuthenticity200Response
+```
+
+List authenticity scores
+
+Lists the stored authenticity scores for one connected account, newest first. Scores are 0 to 100 and come from Zernio's own model over verified platform samples. Filter with `minScore` and `maxScore` to find posts that look inflated, and with `from` and `to` to bound when the score was computed. Requires the Analytics add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The connected account to list scores for.
+$min_score = 56; // int | Only scores at or above this value.
+$max_score = 56; // int | Only scores at or below this value.
+$from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only scores computed at or after this time (ISO 8601).
+$to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only scores computed at or before this time (ISO 8601).
+$limit = 50; // int | Page size.
+$skip = 0; // int | Number of scores to skip.
+
+try {
+    $result = $apiInstance->listPostAuthenticity($account_id, $min_score, $max_score, $from, $to, $limit, $skip);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->listPostAuthenticity: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The connected account to list scores for. | |
+| **min_score** | **int**| Only scores at or above this value. | [optional] |
+| **max_score** | **int**| Only scores at or below this value. | [optional] |
+| **from** | **\DateTime**| Only scores computed at or after this time (ISO 8601). | [optional] |
+| **to** | **\DateTime**| Only scores computed at or before this time (ISO 8601). | [optional] |
+| **limit** | **int**| Page size. | [optional] [default to 50] |
+| **skip** | **int**| Number of scores to skip. | [optional] [default to 0] |
+
+### Return type
+
+[**\Zernio\Model\ListPostAuthenticity200Response**](../Model/ListPostAuthenticity200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listTrackingWindows()`
+
+```php
+listTrackingWindows($account_id, $status, $limit, $skip): \Zernio\Model\ListTrackingWindows200Response
+```
+
+List tracking windows
+
+Lists the tracking windows you can see, newest first. Each window carries the latest verified numbers we read from the platform. Requires the Analytics add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Only windows for this connected account.
+$status = 'status_example'; // string | Only windows in this status.
+$limit = 50; // int | Page size.
+$skip = 0; // int | Number of windows to skip.
+
+try {
+    $result = $apiInstance->listTrackingWindows($account_id, $status, $limit, $skip);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->listTrackingWindows: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Only windows for this connected account. | [optional] |
+| **status** | **string**| Only windows in this status. | [optional] |
+| **limit** | **int**| Page size. | [optional] [default to 50] |
+| **skip** | **int**| Number of windows to skip. | [optional] [default to 0] |
+
+### Return type
+
+[**\Zernio\Model\ListTrackingWindows200Response**](../Model/ListTrackingWindows200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `openTrackingWindow()`
+
+```php
+openTrackingWindow($open_tracking_window_request): \Zernio\Model\TrackingWindowResponse
+```
+
+Open a tracking window
+
+Starts watching a post's views and engagement. Zernio fetches the numbers from the platform itself on its regular analytics sync, so every reading is verified: it is a value we read from the platform, never one the creator or the caller reported. The window runs for `trackingDays` (30 by default, 90 at most) and ends with one final read, after which the `post.tracking_completed` webhook fires. Identify the post with `postId` (an external post id from Zernio), or with `accountId` together with the post's `url`. Opening a window for a post that is already tracked returns the existing window with `200`. A new window returns `201`. Requires the Analytics add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$open_tracking_window_request = {"accountId":"6507a1b2c3d4e5f6a7b8c9d0","url":"https://www.tiktok.com/@creator/video/7685731010461371662","trackingDays":30}; // \Zernio\Model\OpenTrackingWindowRequest
+
+try {
+    $result = $apiInstance->openTrackingWindow($open_tracking_window_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->openTrackingWindow: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **open_tracking_window_request** | [**\Zernio\Model\OpenTrackingWindowRequest**](../Model/OpenTrackingWindowRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\TrackingWindowResponse**](../Model/TrackingWindowResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

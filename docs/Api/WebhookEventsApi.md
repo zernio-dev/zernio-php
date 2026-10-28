@@ -33,6 +33,17 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onCallPermissionRequest()**](WebhookEventsApi.md#onCallPermissionRequest) | **POST** /call.permission_request | Call permission request reply event |
 | [**onCallReceived()**](WebhookEventsApi.md#onCallReceived) | **POST** /call.received | Call received event |
 | [**onCampaignBudgetDepleted()**](WebhookEventsApi.md#onCampaignBudgetDepleted) | **POST** /campaign.budget.depleted | Campaign budget depleted event |
+| [**onCampaignParticipantJoined()**](WebhookEventsApi.md#onCampaignParticipantJoined) | **POST** /campaign_participant.joined | Campaign participant joined event |
+| [**onCampaignParticipantRemoved()**](WebhookEventsApi.md#onCampaignParticipantRemoved) | **POST** /campaign_participant.removed | Campaign participant removed event |
+| [**onCampaignParticipantSuspended()**](WebhookEventsApi.md#onCampaignParticipantSuspended) | **POST** /campaign_participant.suspended | Campaign participant suspended event |
+| [**onCampaignPayoutFailed()**](WebhookEventsApi.md#onCampaignPayoutFailed) | **POST** /campaign_payout.failed | Campaign payout failed event |
+| [**onCampaignPayoutPayable()**](WebhookEventsApi.md#onCampaignPayoutPayable) | **POST** /campaign_payout.payable | Campaign payout payable event |
+| [**onCampaignPayoutSettled()**](WebhookEventsApi.md#onCampaignPayoutSettled) | **POST** /campaign_payout.settled | Campaign payout settled event |
+| [**onCampaignSubmissionApproved()**](WebhookEventsApi.md#onCampaignSubmissionApproved) | **POST** /campaign_submission.approved | Campaign submission approved event |
+| [**onCampaignSubmissionFlagged()**](WebhookEventsApi.md#onCampaignSubmissionFlagged) | **POST** /campaign_submission.flagged | Campaign submission flagged event |
+| [**onCampaignSubmissionPendingReview()**](WebhookEventsApi.md#onCampaignSubmissionPendingReview) | **POST** /campaign_submission.pending_review | Campaign submission pending review event |
+| [**onCampaignSubmissionReceived()**](WebhookEventsApi.md#onCampaignSubmissionReceived) | **POST** /campaign_submission.received | Campaign submission received event |
+| [**onCampaignSubmissionRejected()**](WebhookEventsApi.md#onCampaignSubmissionRejected) | **POST** /campaign_submission.rejected | Campaign submission rejected event |
 | [**onCommentReceived()**](WebhookEventsApi.md#onCommentReceived) | **POST** /comment.received | Comment received event |
 | [**onCommerceOrderCreated()**](WebhookEventsApi.md#onCommerceOrderCreated) | **POST** /commerce.order.created | Commerce order created event |
 | [**onCommerceOrderRefunded()**](WebhookEventsApi.md#onCommerceOrderRefunded) | **POST** /commerce.order.refunded | Commerce order refunded event |
@@ -47,6 +58,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onContactUpdated()**](WebhookEventsApi.md#onContactUpdated) | **POST** /contact.updated | Contact updated |
 | [**onConversationControlChanged()**](WebhookEventsApi.md#onConversationControlChanged) | **POST** /conversation.control_changed | Conversation control changed event |
 | [**onConversationStarted()**](WebhookEventsApi.md#onConversationStarted) | **POST** /conversation.started | Conversation started event |
+| [**onCreatorCampaignBudgetExhausted()**](WebhookEventsApi.md#onCreatorCampaignBudgetExhausted) | **POST** /creator_campaign.budget_exhausted | Creator campaign budget exhausted event |
+| [**onCreatorCampaignClosed()**](WebhookEventsApi.md#onCreatorCampaignClosed) | **POST** /creator_campaign.closed | Creator campaign closed event |
 | [**onFileCreated()**](WebhookEventsApi.md#onFileCreated) | **POST** /file.created | File created |
 | [**onFileDeleted()**](WebhookEventsApi.md#onFileDeleted) | **POST** /file.deleted | File deleted |
 | [**onFilePicked()**](WebhookEventsApi.md#onFilePicked) | **POST** /file.picked | Files picked |
@@ -61,6 +74,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onMessageReceived()**](WebhookEventsApi.md#onMessageReceived) | **POST** /message.received | Message received event |
 | [**onMessageSent()**](WebhookEventsApi.md#onMessageSent) | **POST** /message.sent | Message sent event |
 | [**onPhoneNumberStockAvailable()**](WebhookEventsApi.md#onPhoneNumberStockAvailable) | **POST** /phone_number.stock_available | Phone-number stock available event |
+| [**onPostAuthenticityChanged()**](WebhookEventsApi.md#onPostAuthenticityChanged) | **POST** /post.authenticity_changed | Post authenticity changed event |
 | [**onPostCancelled()**](WebhookEventsApi.md#onPostCancelled) | **POST** /post.cancelled | Post cancelled event |
 | [**onPostExternalCreated()**](WebhookEventsApi.md#onPostExternalCreated) | **POST** /post.external.created | External post created event |
 | [**onPostExternalDeleted()**](WebhookEventsApi.md#onPostExternalDeleted) | **POST** /post.external.deleted | External post deleted event |
@@ -74,6 +88,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onPostRecycled()**](WebhookEventsApi.md#onPostRecycled) | **POST** /post.recycled | Post recycled event |
 | [**onPostScheduled()**](WebhookEventsApi.md#onPostScheduled) | **POST** /post.scheduled | Post scheduled event |
 | [**onPostTikTokUrlResolved()**](WebhookEventsApi.md#onPostTikTokUrlResolved) | **POST** /post.tiktok.url_resolved | TikTok post URL resolved event |
+| [**onPostTrackingCompleted()**](WebhookEventsApi.md#onPostTrackingCompleted) | **POST** /post.tracking_completed | Post tracking completed event |
 | [**onRcsAgentStatusUpdated()**](WebhookEventsApi.md#onRcsAgentStatusUpdated) | **POST** /rcs.agent.status_updated | RCS agent status updated event |
 | [**onReactionReceived()**](WebhookEventsApi.md#onReactionReceived) | **POST** /reaction.received | Reaction received event |
 | [**onReferralReceived()**](WebhookEventsApi.md#onReferralReceived) | **POST** /referral.received | Referral received event |
@@ -1698,6 +1713,655 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `onCampaignParticipantJoined()`
+
+```php
+onCampaignParticipantJoined($webhook_payload_campaign_participant)
+```
+
+Campaign participant joined event
+
+Fired once when a creator joins a campaign, from their invite link or the open link.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_participant = new \Zernio\Model\WebhookPayloadCampaignParticipant(); // \Zernio\Model\WebhookPayloadCampaignParticipant
+
+try {
+    $apiInstance->onCampaignParticipantJoined($webhook_payload_campaign_participant);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignParticipantJoined: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_participant** | [**\Zernio\Model\WebhookPayloadCampaignParticipant**](../Model/WebhookPayloadCampaignParticipant.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCampaignParticipantRemoved()`
+
+```php
+onCampaignParticipantRemoved($webhook_payload_campaign_participant)
+```
+
+Campaign participant removed event
+
+Fired when an operator removes a participant.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_participant = new \Zernio\Model\WebhookPayloadCampaignParticipant(); // \Zernio\Model\WebhookPayloadCampaignParticipant
+
+try {
+    $apiInstance->onCampaignParticipantRemoved($webhook_payload_campaign_participant);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignParticipantRemoved: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_participant** | [**\Zernio\Model\WebhookPayloadCampaignParticipant**](../Model/WebhookPayloadCampaignParticipant.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCampaignParticipantSuspended()`
+
+```php
+onCampaignParticipantSuspended($webhook_payload_campaign_participant)
+```
+
+Campaign participant suspended event
+
+Fired when an operator suspends a participant.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_participant = new \Zernio\Model\WebhookPayloadCampaignParticipant(); // \Zernio\Model\WebhookPayloadCampaignParticipant
+
+try {
+    $apiInstance->onCampaignParticipantSuspended($webhook_payload_campaign_participant);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignParticipantSuspended: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_participant** | [**\Zernio\Model\WebhookPayloadCampaignParticipant**](../Model/WebhookPayloadCampaignParticipant.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCampaignPayoutFailed()`
+
+```php
+onCampaignPayoutFailed($webhook_payload_campaign_payout)
+```
+
+Campaign payout failed event
+
+Fired when a treasury payout to a participant is refused, cannot be confirmed, or is reversed. The amount returns to payable, minus anything a rejection claws back.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_payout = new \Zernio\Model\WebhookPayloadCampaignPayout(); // \Zernio\Model\WebhookPayloadCampaignPayout
+
+try {
+    $apiInstance->onCampaignPayoutFailed($webhook_payload_campaign_payout);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignPayoutFailed: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_payout** | [**\Zernio\Model\WebhookPayloadCampaignPayout**](../Model/WebhookPayloadCampaignPayout.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCampaignPayoutPayable()`
+
+```php
+onCampaignPayoutPayable($webhook_payload_campaign_payout)
+```
+
+Campaign payout payable event
+
+Fired when a participant's held earnings mature and become payable.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_payout = new \Zernio\Model\WebhookPayloadCampaignPayout(); // \Zernio\Model\WebhookPayloadCampaignPayout
+
+try {
+    $apiInstance->onCampaignPayoutPayable($webhook_payload_campaign_payout);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignPayoutPayable: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_payout** | [**\Zernio\Model\WebhookPayloadCampaignPayout**](../Model/WebhookPayloadCampaignPayout.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCampaignPayoutSettled()`
+
+```php
+onCampaignPayoutSettled($webhook_payload_campaign_payout)
+```
+
+Campaign payout settled event
+
+Fired when a settlement to a participant is recorded.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_payout = new \Zernio\Model\WebhookPayloadCampaignPayout(); // \Zernio\Model\WebhookPayloadCampaignPayout
+
+try {
+    $apiInstance->onCampaignPayoutSettled($webhook_payload_campaign_payout);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignPayoutSettled: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_payout** | [**\Zernio\Model\WebhookPayloadCampaignPayout**](../Model/WebhookPayloadCampaignPayout.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCampaignSubmissionApproved()`
+
+```php
+onCampaignSubmissionApproved($webhook_payload_campaign_submission)
+```
+
+Campaign submission approved event
+
+Fired when an operator approves a submission.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_submission = new \Zernio\Model\WebhookPayloadCampaignSubmission(); // \Zernio\Model\WebhookPayloadCampaignSubmission
+
+try {
+    $apiInstance->onCampaignSubmissionApproved($webhook_payload_campaign_submission);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignSubmissionApproved: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_submission** | [**\Zernio\Model\WebhookPayloadCampaignSubmission**](../Model/WebhookPayloadCampaignSubmission.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCampaignSubmissionFlagged()`
+
+```php
+onCampaignSubmissionFlagged($webhook_payload_campaign_submission)
+```
+
+Campaign submission flagged event
+
+Fired when a submission gains a fraud flag it did not carry before, at submission or on a later sync.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_submission = new \Zernio\Model\WebhookPayloadCampaignSubmission(); // \Zernio\Model\WebhookPayloadCampaignSubmission
+
+try {
+    $apiInstance->onCampaignSubmissionFlagged($webhook_payload_campaign_submission);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignSubmissionFlagged: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_submission** | [**\Zernio\Model\WebhookPayloadCampaignSubmission**](../Model/WebhookPayloadCampaignSubmission.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCampaignSubmissionPendingReview()`
+
+```php
+onCampaignSubmissionPendingReview($webhook_payload_campaign_submission)
+```
+
+Campaign submission pending review event
+
+Fired when a submission becomes ready for review: a CPM submission reached minViewsToEarn or a pool submission minViewsToQualify; per-post submissions on the first accrual pass after submission.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_submission = new \Zernio\Model\WebhookPayloadCampaignSubmission(); // \Zernio\Model\WebhookPayloadCampaignSubmission
+
+try {
+    $apiInstance->onCampaignSubmissionPendingReview($webhook_payload_campaign_submission);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignSubmissionPendingReview: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_submission** | [**\Zernio\Model\WebhookPayloadCampaignSubmission**](../Model/WebhookPayloadCampaignSubmission.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCampaignSubmissionReceived()`
+
+```php
+onCampaignSubmissionReceived($webhook_payload_campaign_submission)
+```
+
+Campaign submission received event
+
+Fired when a creator submits a post to a campaign and its tracking window opens.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_submission = new \Zernio\Model\WebhookPayloadCampaignSubmission(); // \Zernio\Model\WebhookPayloadCampaignSubmission
+
+try {
+    $apiInstance->onCampaignSubmissionReceived($webhook_payload_campaign_submission);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignSubmissionReceived: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_submission** | [**\Zernio\Model\WebhookPayloadCampaignSubmission**](../Model/WebhookPayloadCampaignSubmission.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCampaignSubmissionRejected()`
+
+```php
+onCampaignSubmissionRejected($webhook_payload_campaign_submission)
+```
+
+Campaign submission rejected event
+
+Fired when an operator rejects a submission.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_submission = new \Zernio\Model\WebhookPayloadCampaignSubmission(); // \Zernio\Model\WebhookPayloadCampaignSubmission
+
+try {
+    $apiInstance->onCampaignSubmissionRejected($webhook_payload_campaign_submission);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignSubmissionRejected: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_submission** | [**\Zernio\Model\WebhookPayloadCampaignSubmission**](../Model/WebhookPayloadCampaignSubmission.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `onCommentReceived()`
 
 ```php
@@ -2506,6 +3170,124 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_conversation_started** | [**\Zernio\Model\WebhookPayloadConversationStarted**](../Model/WebhookPayloadConversationStarted.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCreatorCampaignBudgetExhausted()`
+
+```php
+onCreatorCampaignBudgetExhausted($webhook_payload_creator_campaign)
+```
+
+Creator campaign budget exhausted event
+
+Fired once when a campaign's earnings reach its budget.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_creator_campaign = new \Zernio\Model\WebhookPayloadCreatorCampaign(); // \Zernio\Model\WebhookPayloadCreatorCampaign
+
+try {
+    $apiInstance->onCreatorCampaignBudgetExhausted($webhook_payload_creator_campaign);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCreatorCampaignBudgetExhausted: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_creator_campaign** | [**\Zernio\Model\WebhookPayloadCreatorCampaign**](../Model/WebhookPayloadCreatorCampaign.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCreatorCampaignClosed()`
+
+```php
+onCreatorCampaignClosed($webhook_payload_creator_campaign)
+```
+
+Creator campaign closed event
+
+Fired once when a campaign closes; a pool campaign is split among participants at this moment.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_creator_campaign = new \Zernio\Model\WebhookPayloadCreatorCampaign(); // \Zernio\Model\WebhookPayloadCreatorCampaign
+
+try {
+    $apiInstance->onCreatorCampaignClosed($webhook_payload_creator_campaign);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCreatorCampaignClosed: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_creator_campaign** | [**\Zernio\Model\WebhookPayloadCreatorCampaign**](../Model/WebhookPayloadCreatorCampaign.md)|  | |
 
 ### Return type
 
@@ -3348,6 +4130,65 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `onPostAuthenticityChanged()`
+
+```php
+onPostAuthenticityChanged($webhook_payload_post_authenticity_changed)
+```
+
+Post authenticity changed event
+
+Fired when a tracked post's authenticity score crosses 40 in either direction. Carries the new and previous score, confidence and reasons. A first score never fires it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_post_authenticity_changed = new \Zernio\Model\WebhookPayloadPostAuthenticityChanged(); // \Zernio\Model\WebhookPayloadPostAuthenticityChanged
+
+try {
+    $apiInstance->onPostAuthenticityChanged($webhook_payload_post_authenticity_changed);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onPostAuthenticityChanged: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_post_authenticity_changed** | [**\Zernio\Model\WebhookPayloadPostAuthenticityChanged**](../Model/WebhookPayloadPostAuthenticityChanged.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `onPostCancelled()`
 
 ```php
@@ -4097,6 +4938,65 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_post_platform** | [**\Zernio\Model\WebhookPayloadPostPlatform**](../Model/WebhookPayloadPostPlatform.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onPostTrackingCompleted()`
+
+```php
+onPostTrackingCompleted($webhook_payload_post_tracking_completed)
+```
+
+Post tracking completed event
+
+Fired once when a post's tracking window ends and its final analytics read has run. `final` carries the closing metrics, or null when none could be read, and `window.completionReason` is `final_read`, `unreachable` or `post_deleted`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_post_tracking_completed = new \Zernio\Model\WebhookPayloadPostTrackingCompleted(); // \Zernio\Model\WebhookPayloadPostTrackingCompleted
+
+try {
+    $apiInstance->onPostTrackingCompleted($webhook_payload_post_tracking_completed);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onPostTrackingCompleted: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_post_tracking_completed** | [**\Zernio\Model\WebhookPayloadPostTrackingCompleted**](../Model/WebhookPayloadPostTrackingCompleted.md)|  | |
 
 ### Return type
 
