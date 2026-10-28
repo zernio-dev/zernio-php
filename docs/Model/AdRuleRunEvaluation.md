@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**rule** | [**\Zernio\Model\AdRuleRunEvaluationRule**](AdRuleRunEvaluationRule.md) |  | [optional]
 **today** | **\DateTime** |  | [optional]
 **timezone** | **string** |  | [optional]
 **timezone_assumed** | **bool** |  | [optional]
