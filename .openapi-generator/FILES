@@ -31,7 +31,7 @@ docs/Api/ConnectedAppsApi.md
 docs/Api/ContactsApi.md
 docs/Api/ConversionsApi.md
 docs/Api/CreatorCampaignsApi.md
-docs/Api/CreatorPortalPublicApi.md
+docs/Api/CreatorPortalApi.md
 docs/Api/CustomFieldsApi.md
 docs/Api/DiscordApi.md
 docs/Api/EmailApi.md
@@ -3289,7 +3289,7 @@ lib/Api/ConnectedAppsApi.php
 lib/Api/ContactsApi.php
 lib/Api/ConversionsApi.php
 lib/Api/CreatorCampaignsApi.php
-lib/Api/CreatorPortalPublicApi.php
+lib/Api/CreatorPortalApi.php
 lib/Api/CustomFieldsApi.php
 lib/Api/DiscordApi.php
 lib/Api/EmailApi.php
@@ -6525,3 +6525,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Api/CreatorPortalApiTest.php

@@ -693,15 +693,15 @@ Class | Method | HTTP request | Description
 *CreatorCampaignsApi* | [**settleCampaignParticipant**](docs/Api/CreatorCampaignsApi.md#settlecampaignparticipant) | **POST** /v1/creator-campaigns/{campaignId}/participants/{participantId}/settle | Settle campaign participant
 *CreatorCampaignsApi* | [**suspendCampaignParticipant**](docs/Api/CreatorCampaignsApi.md#suspendcampaignparticipant) | **POST** /v1/creator-campaigns/{campaignId}/participants/{participantId}/suspend | Suspend campaign participant
 *CreatorCampaignsApi* | [**updateCreatorCampaign**](docs/Api/CreatorCampaignsApi.md#updatecreatorcampaign) | **PATCH** /v1/creator-campaigns/{campaignId} | Update creator campaign
-*CreatorPortalPublicApi* | [**createCreatorPayoutLogin**](docs/Api/CreatorPortalPublicApi.md#createcreatorpayoutlogin) | **POST** /public/creator-campaigns/{token}/payout-login | Open the creator&#39;s Stripe dashboard
-*CreatorPortalPublicApi* | [**getCreatorPayoutStatement**](docs/Api/CreatorPortalPublicApi.md#getcreatorpayoutstatement) | **GET** /public/creator-campaigns/{token}/payouts/{transferId}/statement | Download a payout statement
-*CreatorPortalPublicApi* | [**getCreatorPayouts**](docs/Api/CreatorPortalPublicApi.md#getcreatorpayouts) | **GET** /public/creator-campaigns/{token}/payouts | List a creator&#39;s earnings history
-*CreatorPortalPublicApi* | [**getCreatorPortal**](docs/Api/CreatorPortalPublicApi.md#getcreatorportal) | **GET** /public/creator-campaigns/{token} | Read a creator invite or participant page
-*CreatorPortalPublicApi* | [**joinCreatorCampaign**](docs/Api/CreatorPortalPublicApi.md#joincreatorcampaign) | **POST** /public/creator-campaigns/{token} | Join a campaign
-*CreatorPortalPublicApi* | [**recoverCreatorPortalLinks**](docs/Api/CreatorPortalPublicApi.md#recovercreatorportallinks) | **POST** /public/creator-campaigns/recover-link | Email a creator their campaign links
-*CreatorPortalPublicApi* | [**startCreatorConnect**](docs/Api/CreatorPortalPublicApi.md#startcreatorconnect) | **POST** /public/creator-campaigns/{token}/connect | Start connecting a creator account
-*CreatorPortalPublicApi* | [**startCreatorPayouts**](docs/Api/CreatorPortalPublicApi.md#startcreatorpayouts) | **POST** /public/creator-campaigns/{token}/payouts | Start payout onboarding
-*CreatorPortalPublicApi* | [**submitCreatorPost**](docs/Api/CreatorPortalPublicApi.md#submitcreatorpost) | **POST** /public/creator-campaigns/{token}/submissions | Submit a post
+*CreatorPortalApi* | [**createCreatorPayoutLogin**](docs/Api/CreatorPortalApi.md#createcreatorpayoutlogin) | **POST** /public/creator-campaigns/{token}/payout-login | Open the creator&#39;s Stripe dashboard
+*CreatorPortalApi* | [**getCreatorPayoutStatement**](docs/Api/CreatorPortalApi.md#getcreatorpayoutstatement) | **GET** /public/creator-campaigns/{token}/payouts/{transferId}/statement | Download a payout statement
+*CreatorPortalApi* | [**getCreatorPayouts**](docs/Api/CreatorPortalApi.md#getcreatorpayouts) | **GET** /public/creator-campaigns/{token}/payouts | List a creator&#39;s earnings history
+*CreatorPortalApi* | [**getCreatorPortal**](docs/Api/CreatorPortalApi.md#getcreatorportal) | **GET** /public/creator-campaigns/{token} | Read a creator invite or participant page
+*CreatorPortalApi* | [**joinCreatorCampaign**](docs/Api/CreatorPortalApi.md#joincreatorcampaign) | **POST** /public/creator-campaigns/{token} | Join a campaign
+*CreatorPortalApi* | [**recoverCreatorPortalLinks**](docs/Api/CreatorPortalApi.md#recovercreatorportallinks) | **POST** /public/creator-campaigns/recover-link | Email a creator their campaign links
+*CreatorPortalApi* | [**startCreatorConnect**](docs/Api/CreatorPortalApi.md#startcreatorconnect) | **POST** /public/creator-campaigns/{token}/connect | Start connecting a creator account
+*CreatorPortalApi* | [**startCreatorPayouts**](docs/Api/CreatorPortalApi.md#startcreatorpayouts) | **POST** /public/creator-campaigns/{token}/payouts | Start payout onboarding
+*CreatorPortalApi* | [**submitCreatorPost**](docs/Api/CreatorPortalApi.md#submitcreatorpost) | **POST** /public/creator-campaigns/{token}/submissions | Submit a post
 *CustomFieldsApi* | [**clearContactFieldValue**](docs/Api/CustomFieldsApi.md#clearcontactfieldvalue) | **DELETE** /v1/contacts/{contactId}/fields/{slug} | Clear custom field value
 *CustomFieldsApi* | [**createCustomField**](docs/Api/CustomFieldsApi.md#createcustomfield) | **POST** /v1/custom-fields | Create custom field
 *CustomFieldsApi* | [**deleteCustomField**](docs/Api/CustomFieldsApi.md#deletecustomfield) | **DELETE** /v1/custom-fields/{fieldId} | Delete custom field
