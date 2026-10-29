@@ -58,7 +58,7 @@ cancelTrackingWindow($window_id): \Zernio\Model\TrackingWindowResponse
 
 Cancel a tracking window
 
-Stops tracking and returns the window with its final status. A window that already completed keeps its `completed` status and its final read. A cancelled window gets no final read and fires no `post.tracking_completed` webhook. Requires the Analytics add-on.
+Stops tracking and returns the window with its final status. A window that already completed keeps its `completed` status and its final read. A cancelled window gets no final read and fires no `post.tracking_completed` webhook.
 
 ### Example
 
@@ -200,7 +200,7 @@ getAnalyticsDashboard($from_date, $to_date, $profile_id, $platform, $compare, $t
 
 Get an analytics dashboard
 
-Everything an analytics dashboard needs in one call: window totals, follower growth, a per-day series, top posts, recent posts and, optionally, the same figures for the previous period. Daily and total metrics use received attribution: each day holds the engagement that arrived that day, on any post, so `totals` is always the sum of `daily`. `topPosts` and `recentPosts` list posts published in the window with their lifetime metrics. A post cross-posted to several platforms appears once per platform. All dates are UTC days. Requires the Analytics add-on.
+Everything an analytics dashboard needs in one call: window totals, follower growth, a per-day series, top posts, recent posts and, optionally, the same figures for the previous period. Daily and total metrics use received attribution: each day holds the engagement that arrived that day, on any post, so `totals` is always the sum of `daily`. `topPosts` and `recentPosts` list posts published in the window with their lifetime metrics. A post cross-posted to several platforms appears once per platform. All dates are UTC days.
 
 ### Example
 
@@ -338,7 +338,7 @@ getBestTimeToPost($platform, $profile_id, $account_id, $source): \Zernio\Model\G
 
 Get best times to post
 
-Returns the best times to post based on historical engagement data. Groups all published posts by day of week and hour (UTC), calculating average engagement per slot. Use this to auto-schedule posts at optimal times. Requires the Analytics add-on.
+Returns the best times to post based on historical engagement data. Groups all published posts by day of week and hour (UTC), calculating average engagement per slot. Use this to auto-schedule posts at optimal times.
 
 ### Example
 
@@ -404,7 +404,7 @@ getContentDecay($platform, $profile_id, $account_id, $source): \Zernio\Model\Get
 
 Get content performance decay
 
-Returns how engagement accumulates over time after a post is published. Each bucket shows what percentage of the post's total engagement had been reached by that time window. Useful for understanding content lifespan (e.g. \"posts reach 78% of total engagement within 24 hours\"). Requires the Analytics add-on.
+Returns how engagement accumulates over time after a post is published. Each bucket shows what percentage of the post's total engagement had been reached by that time window. Useful for understanding content lifespan (e.g. \"posts reach 78% of total engagement within 24 hours\").
 
 ### Example
 
@@ -470,7 +470,7 @@ getDailyMetrics($platform, $profile_id, $account_id, $from_date, $to_date, $sour
 
 Get daily aggregated metrics
 
-Returns daily aggregated analytics metrics and a per-platform breakdown. Each day includes post count, platform distribution, and summed metrics (impressions, reach, likes, comments, shares, saves, clicks, views). Defaults to the last 180 days. Requires the Analytics add-on.
+Returns daily aggregated analytics metrics and a per-platform breakdown. Each day includes post count, platform distribution, and summed metrics (impressions, reach, likes, comments, shares, saves, clicks, views). Defaults to the last 180 days.
 
 ### Example
 
@@ -542,7 +542,7 @@ getFacebookDemographics($account_id, $breakdown): \Zernio\Model\GetFacebookDemog
 
 Get Facebook Page demographics
 
-Returns the follower breakdown of a connected Facebook Page by country and/or city, from Meta's latest daily snapshot. Country keys are ISO 3166-1 alpha-2 codes; city keys are \"City, Region, Country\" strings as Meta returns them. Meta removed age and gender demographics for Pages (page_fans_gender_age) on November 15 2025 with no replacement, so only country and city are available. Meta reports small counts at a privacy floor, so the long tail can show identical low values. Requires the Analytics add-on.
+Returns the follower breakdown of a connected Facebook Page by country and/or city, from Meta's latest daily snapshot. Country keys are ISO 3166-1 alpha-2 codes; city keys are \"City, Region, Country\" strings as Meta returns them. Meta removed age and gender demographics for Pages (page_fans_gender_age) on November 15 2025 with no replacement, so only country and city are available. Meta reports small counts at a privacy floor, so the long tail can show identical low values.
 
 ### Example
 
@@ -604,7 +604,7 @@ getFacebookPageInsights($account_id, $metrics, $from_date, $to_date, $since, $un
 
 Get Facebook Page insights
 
-Returns page-level Facebook insights (media views, views, post engagements, video metrics, follower counts). Response shape matches /v1/analytics/instagram/account-insights so the same client handling works across platforms.  Metric names track the current (post-November 2025) Meta Graph API. The legacy page_impressions / page_fans / page_fan_adds / page_fan_removes metrics were deprecated by Meta on November 15, 2025 and are NOT accepted by this endpoint. Use the replacements below. Because Meta did not provide direct adds/removes replacements, Zernio synthesizes followers_gained / followers_lost from the daily follower snapshotter.  Max 89 days, defaults to last 30 days. Requires the Analytics add-on.
+Returns page-level Facebook insights (media views, views, post engagements, video metrics, follower counts). Response shape matches /v1/analytics/instagram/account-insights so the same client handling works across platforms.  Metric names track the current (post-November 2025) Meta Graph API. The legacy page_impressions / page_fans / page_fan_adds / page_fan_removes metrics were deprecated by Meta on November 15, 2025 and are NOT accepted by this endpoint. Use the replacements below. Because Meta did not provide direct adds/removes replacements, Zernio synthesizes followers_gained / followers_lost from the daily follower snapshotter.  Max 89 days, defaults to last 30 days.
 
 ### Example
 
@@ -676,7 +676,7 @@ getFacebookPostEarnings($account_id, $post_id, $metrics): \Zernio\Model\Facebook
 
 Get Facebook post monetization earnings
 
-Returns lifetime monetization earnings for ONE Facebook post, read live from Meta on every request. Requires the Analytics add-on.  Earnings are CUMULATIVE since the post was published, not earnings within a date range, so this endpoint takes no since/until and the totals must not be summed across dates or across posts. Page-level daily earnings live on /v1/analytics/facebook/page-insights.  A post on a Page that is not enrolled in monetization, or that earned nothing, returns \"total\": 0 rather than an error: Meta does not distinguish the two. A metric Meta returned no bucket for at all is reported in \"unavailableMetrics\" and omitted from \"metrics\", never as a 0.  Amounts are the platform's raw numbers in the stated \"unit\" and are never rescaled by Zernio. Breakdown dimensions are not exposed and a \"breakdown\" param is rejected with 400. So are \"since\", \"until\", \"period\", and \"metricType\": scoping this endpoint to a window is not possible, and silently returning the lifetime total for one would let a caller sum a year of weekly requests into a figure ~52x the post's real earnings.
+Returns lifetime monetization earnings for ONE Facebook post, read live from Meta on every request.  Earnings are CUMULATIVE since the post was published, not earnings within a date range, so this endpoint takes no since/until and the totals must not be summed across dates or across posts. Page-level daily earnings live on /v1/analytics/facebook/page-insights.  A post on a Page that is not enrolled in monetization, or that earned nothing, returns \"total\": 0 rather than an error: Meta does not distinguish the two. A metric Meta returned no bucket for at all is reported in \"unavailableMetrics\" and omitted from \"metrics\", never as a 0.  Amounts are the platform's raw numbers in the stated \"unit\" and are never rescaled by Zernio. Breakdown dimensions are not exposed and a \"breakdown\" param is rejected with 400. So are \"since\", \"until\", \"period\", and \"metricType\": scoping this endpoint to a window is not possible, and silently returning the lifetime total for one would let a caller sum a year of weekly requests into a figure ~52x the post's real earnings.
 
 ### Example
 
@@ -934,7 +934,7 @@ getGoogleBusinessPerformance($account_id, $metrics, $from_date, $to_date, $start
 
 Get Google Business Profile performance metrics
 
-Returns daily performance metrics for a Google Business Profile location. Metrics include impressions (Maps/Search, desktop/mobile), website clicks, call clicks, direction requests, conversations, bookings, and food orders. Data may be delayed 2-3 days. Max 18 months of historical data. Requires the Analytics add-on.
+Returns daily performance metrics for a Google Business Profile location. Metrics include impressions (Maps/Search, desktop/mobile), website clicks, call clicks, direction requests, conversations, bookings, and food orders. Data may be delayed 2-3 days. Max 18 months of historical data.
 
 ### Example
 
@@ -1004,7 +1004,7 @@ getGoogleBusinessSearchKeywords($account_id, $start_month, $end_month, $page_tok
 
 Get Google Business Profile search keywords
 
-Returns search keywords that triggered impressions for a Google Business Profile location. Data is aggregated monthly. Keywords Google reports only as below a threshold have `impressions` 0 and `impressionsThreshold` set to that threshold. Returns up to 100 keywords per page. When `nextPageToken` is not null, pass it as `pageToken` with the same `startMonth` and `endMonth` to get the next page. Max 18 months of historical data. Requires the Analytics add-on.
+Returns search keywords that triggered impressions for a Google Business Profile location. Data is aggregated monthly. Keywords Google reports only as below a threshold have `impressions` 0 and `impressionsThreshold` set to that threshold. Returns up to 100 keywords per page. When `nextPageToken` is not null, pass it as `pageToken` with the same `startMonth` and `endMonth` to get the next page. Max 18 months of historical data.
 
 ### Example
 
@@ -1070,7 +1070,7 @@ getInstagramAccountInsights($account_id, $metrics, $from_date, $to_date, $since,
 
 Get Instagram insights
 
-Returns account-level Instagram insights such as reach, views, accounts engaged, and total interactions. These metrics reflect the entire account's performance across all content surfaces (feed, stories, explore, profile), and are fundamentally different from post-level metrics. Data may be delayed up to 48 hours. Max 90 days, defaults to last 30 days. Requires the Analytics add-on.
+Returns account-level Instagram insights such as reach, views, accounts engaged, and total interactions. These metrics reflect the entire account's performance across all content surfaces (feed, stories, explore, profile), and are fundamentally different from post-level metrics. Data may be delayed up to 48 hours. Max 90 days, defaults to last 30 days.
 
 ### Example
 
@@ -1144,7 +1144,7 @@ getInstagramDemographics($account_id, $metric, $breakdown, $timeframe): \Zernio\
 
 Get Instagram demographics
 
-Returns audience demographic insights for an Instagram account, broken down by age, city, country, and/or gender. Requires at least 100 followers. Returns top 45 entries per dimension. Data may be delayed up to 48 hours. Requires the Analytics add-on.
+Returns audience demographic insights for an Instagram account, broken down by age, city, country, and/or gender. Requires at least 100 followers. Returns top 45 entries per dimension. Data may be delayed up to 48 hours.
 
 ### Example
 
@@ -1210,7 +1210,7 @@ getInstagramFollowerHistory($account_id, $metrics, $from_date, $to_date, $since,
 
 Get Instagram follower history
 
-Returns a daily running Instagram follower count time series, served from Zernio's cross-platform daily snapshotter. Exists because Meta removed follower_count from the /insights endpoint in Graph API v22+ and never exposed a historical daily series via any public API.  Response envelope matches /v1/analytics/instagram/account-insights so the same client handling works. Max 89 days, defaults to last 30 days. Requires the Analytics add-on.
+Returns a daily running Instagram follower count time series, served from Zernio's cross-platform daily snapshotter. Exists because Meta removed follower_count from the /insights endpoint in Graph API v22+ and never exposed a historical daily series via any public API.  Response envelope matches /v1/analytics/instagram/account-insights so the same client handling works. Max 89 days, defaults to last 30 days.
 
 ### Example
 
@@ -1282,7 +1282,7 @@ getInstagramOnlineFollowers($account_id): \Zernio\Model\GetInstagramOnlineFollow
 
 Get Instagram online followers
 
-Returns how many of an Instagram account's followers were online in each hour, for every day of the last 30 days that Meta has data for. Hour keys are \"0\" to \"23\" as Meta returns them. endTime is the end_time Meta returns for that day. Meta does not document the timezone of the hour keys. Data is delayed up to 48 hours, so the most recent days are left out until Meta fills them. Requires at least 100 followers; for smaller accounts days is empty. Requires the Analytics add-on.
+Returns how many of an Instagram account's followers were online in each hour, for every day of the last 30 days that Meta has data for. Hour keys are \"0\" to \"23\" as Meta returns them. endTime is the end_time Meta returns for that day. Meta does not document the timezone of the hour keys. Data is delayed up to 48 hours, so the most recent days are left out until Meta fills them. Requires at least 100 followers; for smaller accounts days is empty.
 
 ### Example
 
@@ -1476,7 +1476,7 @@ getLinkedInOrgAggregateAnalytics($account_id, $metrics, $from_date, $to_date, $s
 
 Get LinkedIn org analytics
 
-Returns aggregate analytics for a LinkedIn organization page. Parallel to /v1/accounts/{id}/linkedin-aggregate-analytics (which handles personal accounts only). Backed by LinkedIn's organizationalEntityShareStatistics, organizationalEntityFollowerStatistics, and organizationPageStatistics endpoints.  Response shape matches /v1/analytics/instagram/account-insights. Max 89 days, defaults to last 30 days. Requires the Analytics add-on.  Scope requirements: r_organization_social, r_organization_followers, and r_organization_admin must all be present on the account. Accounts connected before these scopes were included in the OAuth flow will return 412 with a reauth hint.  Enforced by this endpoint:   - Page-view metrics accept only metricType=total_value (LinkedIn omits per-day     segmentation even when the API is called with DAY granularity, so a time-series     response would be meaningless).   - Date range capped at 89 days.  LinkedIn-side platform limits (not re-enforced here, but worth knowing for larger ranges in a future release):   - Follower stats: rolling 12-month window, end must be no later than 2 days ago.   - Share stats: rolling 12-month window.
+Returns aggregate analytics for a LinkedIn organization page. Parallel to /v1/accounts/{id}/linkedin-aggregate-analytics (which handles personal accounts only). Backed by LinkedIn's organizationalEntityShareStatistics, organizationalEntityFollowerStatistics, and organizationPageStatistics endpoints.  Response shape matches /v1/analytics/instagram/account-insights. Max 89 days, defaults to last 30 days.  Scope requirements: r_organization_social, r_organization_followers, and r_organization_admin must all be present on the account. Accounts connected before these scopes were included in the OAuth flow will return 412 with a reauth hint.  Enforced by this endpoint:   - Page-view metrics accept only metricType=total_value (LinkedIn omits per-day     segmentation even when the API is called with DAY granularity, so a time-series     response would be meaningless).   - Date range capped at 89 days.  LinkedIn-side platform limits (not re-enforced here, but worth knowing for larger ranges in a future release):   - Follower stats: rolling 12-month window, end must be no later than 2 days ago.   - Share stats: rolling 12-month window.
 
 ### Example
 
@@ -1676,7 +1676,7 @@ getPostAuthenticity($post_id): \Zernio\Model\PostAuthenticity
 
 Get a post's authenticity score
 
-Returns Zernio's authenticity score for a post: an integer from 0 to 100 where higher means the view pattern looks more like organic viewing. The score is ours. It is computed only from the verified samples we fetched from the platform, never from anything the creator or caller reported, and `reasons` lists each factor that lowered it with its weight in points. `confidence` (0 to 1) says how much data the score rests on. A stored score newer than 30 minutes is returned as is, otherwise it is recomputed. The `post.authenticity_changed` webhook fires when a score crosses 40. Requires the Analytics add-on.
+Returns Zernio's authenticity score for a post: an integer from 0 to 100 where higher means the view pattern looks more like organic viewing. The score is ours. It is computed only from the verified samples we fetched from the platform, never from anything the creator or caller reported, and `reasons` lists each factor that lowered it with its weight in points. `confidence` (0 to 1) says how much data the score rests on. A stored score newer than 30 minutes is returned as is, otherwise it is recomputed. The `post.authenticity_changed` webhook fires when a score crosses 40.
 
 ### Example
 
@@ -1736,7 +1736,7 @@ getPostSamples($post_id, $from_date, $to_date, $limit): \Zernio\Model\GetPostSam
 
 Get post samples
 
-Returns the raw readings behind a post's numbers, oldest first. Each sample is one analytics sync: the views and engagement as the platform reported them at `syncedAt`. Zernio only stores what it fetched from the platform, so nothing here was self-reported. `shares` and `saves` are null on platforms that do not return that counter, which is different from a real zero. `watchSeconds` and `completionRate` are null when the platform gives no watch signal. Requires the Analytics add-on.
+Returns the raw readings behind a post's numbers, oldest first. Each sample is one analytics sync: the views and engagement as the platform reported them at `syncedAt`. Zernio only stores what it fetched from the platform, so nothing here was self-reported. `shares` and `saves` are null on platforms that do not return that counter, which is different from a real zero. `watchSeconds` and `completionRate` are null when the platform gives no watch signal.
 
 ### Example
 
@@ -1802,7 +1802,7 @@ getPostTimeline($post_id, $from_date, $to_date): \Zernio\Model\GetPostTimeline20
 
 Get post analytics timeline
 
-Returns a daily timeline of analytics metrics for a specific post, showing how impressions, likes, and other metrics evolved day-by-day since publishing. Each row represents one day of data per platform. For multi-platform Zernio posts, returns separate rows for each platform. Requires the Analytics add-on.
+Returns a daily timeline of analytics metrics for a specific post, showing how impressions, likes, and other metrics evolved day-by-day since publishing. Each row represents one day of data per platform. For multi-platform Zernio posts, returns separate rows for each platform.
 
 ### Example
 
@@ -1866,7 +1866,7 @@ getPostingFrequency($platform, $profile_id, $account_id, $source): \Zernio\Model
 
 Get frequency vs engagement
 
-Returns the correlation between posting frequency (posts per week) and engagement rate, broken down by platform. Helps find the optimal posting cadence for each platform. Each row represents a specific (platform, posts_per_week) combination with the average engagement rate observed across all weeks matching that frequency. Requires the Analytics add-on.
+Returns the correlation between posting frequency (posts per week) and engagement rate, broken down by platform. Helps find the optimal posting cadence for each platform. Each row represents a specific (platform, posts_per_week) combination with the average engagement rate observed across all weeks matching that frequency.
 
 ### Example
 
@@ -1932,7 +1932,7 @@ getTikTokAccountInsights($account_id, $metrics, $from_date, $to_date, $since, $u
 
 Get TikTok account-level insights
 
-Returns account-level TikTok insights from /v2/user/info/ (live) plus historical time series joined from Zernio's daily snapshotter (AccountStats).  Response shape matches /v1/analytics/instagram/account-insights. Max 89 days, defaults to last 30 days. Requires the Analytics add-on and the user.info.stats scope on the account (412 if missing).  Scope intentionally narrow: this ACCOUNT-level endpoint exposes only the four counter metrics below. These account-level figures are not on any public TikTok API, for any account type:   - account-level impressions / reach   - follower inflow / outflow breakdown   - account-level watch time and audience demographics  TikTok's Research API doesn't expose them either, and is restricted to non-commercial academic use per TikTok's eligibility policy.  PER-VIDEO is a different story on the Business lane. An account connected through the TikTok for Business app reports profile views, website clicks, follows, full-watched rate, watch time, impression sources, viewer types and viewer countries per video on GET /v1/analytics?postId=..., roughly 24-48h after publishing and only for posts active in the last 7 days. Accounts on the original TikTok integration get the basic counters there (views, likes, comments, shares) and zeros for the rest; they must reconnect through the Business app.
+Returns account-level TikTok insights from /v2/user/info/ (live) plus historical time series joined from Zernio's daily snapshotter (AccountStats).  Response shape matches /v1/analytics/instagram/account-insights. Max 89 days, defaults to last 30 days. Requires the user.info.stats scope on the account (412 if missing).  Scope intentionally narrow: this ACCOUNT-level endpoint exposes only the four counter metrics below. These account-level figures are not on any public TikTok API, for any account type:   - account-level impressions / reach   - follower inflow / outflow breakdown   - account-level watch time and audience demographics  TikTok's Research API doesn't expose them either, and is restricted to non-commercial academic use per TikTok's eligibility policy.  PER-VIDEO is a different story on the Business lane. An account connected through the TikTok for Business app reports profile views, website clicks, follows, full-watched rate, watch time, impression sources, viewer types and viewer countries per video on GET /v1/analytics?postId=..., roughly 24-48h after publishing and only for posts active in the last 7 days. Accounts on the original TikTok integration get the basic counters there (views, likes, comments, shares) and zeros for the rest; they must reconnect through the Business app.
 
 ### Example
 
@@ -2004,7 +2004,7 @@ getTrackingWindow($window_id): \Zernio\Model\TrackingWindowResponse
 
 Get a tracking window
 
-Returns one tracking window with the latest verified numbers we read from the platform. Once the window has completed, `finalReadAt` and `completionReason` say how it closed. Requires the Analytics add-on.
+Returns one tracking window with the latest verified numbers we read from the platform. Once the window has completed, `finalReadAt` and `completionReason` say how it closed.
 
 ### Example
 
@@ -2064,7 +2064,7 @@ getYouTubeChannelInsights($account_id, $metrics, $from_date, $to_date, $since, $
 
 Get YouTube channel insights
 
-Returns channel-scoped aggregate metrics from YouTube Analytics API v2. Saves you from looping /v1/analytics/youtube/daily-views over every video when you only need channel totals.  Response shape matches /v1/analytics/instagram/account-insights so the same client handling works. Requires yt-analytics.readonly scope (412 with reauthorizeUrl if missing). Data has a 2-3 day delay (endDate is clamped accordingly). Max 89 days, defaults to last 30 days. Requires the Analytics add-on.  NOT exposed: impressions (Studio thumbnail impressions) and impressionsClickThroughRate. YouTube Analytics API v2 does not expose these for any principal type, not channel owners, not Partner Program channels, not content owners with CMS access. The only way to get them is Studio CSV export. This is a Google-side limitation.
+Returns channel-scoped aggregate metrics from YouTube Analytics API v2. Saves you from looping /v1/analytics/youtube/daily-views over every video when you only need channel totals.  Response shape matches /v1/analytics/instagram/account-insights so the same client handling works. Requires yt-analytics.readonly scope (412 with reauthorizeUrl if missing). Data has a 2-3 day delay (endDate is clamped accordingly). Max 89 days, defaults to last 30 days.  NOT exposed: impressions (Studio thumbnail impressions) and impressionsClickThroughRate. YouTube Analytics API v2 does not expose these for any principal type, not channel owners, not Partner Program channels, not content owners with CMS access. The only way to get them is Studio CSV export. This is a Google-side limitation.
 
 ### Example
 
@@ -2206,7 +2206,7 @@ getYouTubeDemographics($account_id, $video_id, $breakdown, $from_date, $to_date,
 
 Get YouTube demographics
 
-Returns audience demographic insights for a YouTube channel, broken down by age, gender, and/or country. Pass videoId to get the audience profile of a single video instead of the whole channel. Age and gender values are viewer percentages (0-100). Country values are view counts. Data is based on signed-in viewers only, with a 2-3 day delay. YouTube suppresses demographics for videos with too few signed-in views, so low-traffic videos can return empty breakdowns. Requires the Analytics add-on.
+Returns audience demographic insights for a YouTube channel, broken down by age, gender, and/or country. Pass videoId to get the audience profile of a single video instead of the whole channel. Age and gender values are viewer percentages (0-100). Country values are view counts. Data is based on signed-in viewers only, with a 2-3 day delay. YouTube suppresses demographics for videos with too few signed-in views, so low-traffic videos can return empty breakdowns.
 
 ### Example
 
@@ -2548,7 +2548,7 @@ listTrackingWindows($account_id, $status, $limit, $skip): \Zernio\Model\ListTrac
 
 List tracking windows
 
-Lists the tracking windows you can see, newest first. Each window carries the latest verified numbers we read from the platform. Requires the Analytics add-on.
+Lists the tracking windows you can see, newest first. Each window carries the latest verified numbers we read from the platform.
 
 ### Example
 
@@ -2614,7 +2614,7 @@ openTrackingWindow($open_tracking_window_request): \Zernio\Model\TrackingWindowR
 
 Open a tracking window
 
-Starts watching a post's views and engagement. Zernio fetches the numbers from the platform itself on its regular analytics sync, so every reading is verified: it is a value we read from the platform, never one the creator or the caller reported. The window runs for `trackingDays` (30 by default, 90 at most) and ends with one final read, after which the `post.tracking_completed` webhook fires. Identify the post with `postId` (an external post id from Zernio), or with `accountId` together with the post's `url`. Opening a window for a post that is already tracked returns the existing window with `200`. A new window returns `201`. Requires the Analytics add-on.
+Starts watching a post's views and engagement. Zernio fetches the numbers from the platform itself on its regular analytics sync, so every reading is verified: it is a value we read from the platform, never one the creator or the caller reported. The window runs for `trackingDays` (30 by default, 90 at most) and ends with one final read, after which the `post.tracking_completed` webhook fires. Identify the post with `postId` (an external post id from Zernio), or with `accountId` together with the post's `url`. Opening a window for a post that is already tracked returns the existing window with `200`. A new window returns `201`.
 
 ### Example
 
