@@ -855,7 +855,7 @@ try {
 ## `listInboxConversations()`
 
 ```php
-listInboxConversations($profile_id, $platform, $status, $folder, $sort_order, $limit, $cursor, $account_id): \Zernio\Model\ListInboxConversations200Response
+listInboxConversations($profile_id, $platform, $status, $folder, $sort_order, $limit, $cursor, $account_id, $tags): \Zernio\Model\ListInboxConversations200Response
 ```
 
 List conversations
@@ -887,9 +887,10 @@ $sort_order = 'desc'; // string | Sort order by updated time
 $limit = 50; // int | Maximum number of conversations to return; values above 100 are served as 100.
 $cursor = 'cursor_example'; // string | Pagination cursor for next page
 $account_id = 'account_id_example'; // string | Filter by specific account ID
+$tags = 'tags_example'; // string | Comma-separated contact tags. Returns only conversations whose contact has any of them. Cannot be combined with folder=requests.
 
 try {
-    $result = $apiInstance->listInboxConversations($profile_id, $platform, $status, $folder, $sort_order, $limit, $cursor, $account_id);
+    $result = $apiInstance->listInboxConversations($profile_id, $platform, $status, $folder, $sort_order, $limit, $cursor, $account_id, $tags);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MessagesApi->listInboxConversations: ', $e->getMessage(), PHP_EOL;
@@ -908,6 +909,7 @@ try {
 | **limit** | **int**| Maximum number of conversations to return; values above 100 are served as 100. | [optional] [default to 50] |
 | **cursor** | **string**| Pagination cursor for next page | [optional] |
 | **account_id** | **string**| Filter by specific account ID | [optional] |
+| **tags** | **string**| Comma-separated contact tags. Returns only conversations whose contact has any of them. Cannot be combined with folder&#x3D;requests. | [optional] |
 
 ### Return type
 
