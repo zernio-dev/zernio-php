@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **platform** | **string** |  |
 **username** | **string** |  |
 **display_name** | **string** |  | [optional]
+**page_id** | **string** | The bare Facebook Page id behind the account, to route inbound messages by Page. Present for Facebook accounts and Instagram accounts connected through Facebook Login; omitted otherwise. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
