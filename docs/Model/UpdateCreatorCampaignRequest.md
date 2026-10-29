@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **ends_at** | **\DateTime** |  | [optional]
 **tracking_days** | **int** |  | [optional]
 **hold_days** | **int** |  | [optional]
-**max_post_age_minutes** | **int** |  | [optional]
+**max_post_age_minutes** | **int** | Null removes the limit. | [optional]
 **settlement** | **string** |  | [optional]
 **economics** | [**\Zernio\Model\CreatorCampaignEconomics**](CreatorCampaignEconomics.md) |  | [optional]
 **caps** | [**\Zernio\Model\CreatorCampaignCaps**](CreatorCampaignCaps.md) |  | [optional]

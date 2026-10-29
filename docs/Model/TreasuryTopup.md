@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **amount_cents** | **int** | Gross amount charged | [optional]
 **stripe_fee_cents** | **int** | Stripe processing fee you paid; null until Stripe reports it, 0 when Zernio covers it | [optional]
 **net_cents** | **int** | Amount credited to your balance: gross minus the Stripe fee, or the whole charge when Zernio covers the fee; null until Stripe reports it | [optional]
-**status** | **string** |  | [optional]
+**status** | **string** | &#x60;pending&#x60; until the card is charged (or 3D Secure is finished) and credited. &#x60;expired&#x60; means it ended unpaid: cancelled, or 3D Secure left unfinished for 30 minutes. Only &#x60;pending&#x60; counts toward pendingTopupCents. | [optional]
 **created_at** | **\DateTime** |  | [optional]
 **succeeded_at** | **\DateTime** |  | [optional]
 

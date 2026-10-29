@@ -641,6 +641,7 @@ docs/Model/CreateCampaignInviteLink201Response.md
 docs/Model/CreateCampaignParticipant201Response.md
 docs/Model/CreateCampaignParticipantRequest.md
 docs/Model/CreateCampaignPayoutBatch201Response.md
+docs/Model/CreateCampaignPayoutBatch201ResponsePayment.md
 docs/Model/CreateCampaignPayoutBatchRequest.md
 docs/Model/CreateCommentAutomation200Response.md
 docs/Model/CreateCommentAutomation200ResponseAutomation.md
@@ -1151,6 +1152,7 @@ docs/Model/GetAnalyticsDashboard200Response.md
 docs/Model/GetAnalyticsDashboard200ResponseDailyInner.md
 docs/Model/GetAnalyticsDashboard200ResponseDateRange.md
 docs/Model/GetBalance200Response.md
+docs/Model/GetBalance200ResponsePayoutLocksInner.md
 docs/Model/GetBalance200ResponsePendingReleasesInner.md
 docs/Model/GetBestTimeToPost200Response.md
 docs/Model/GetBestTimeToPost200ResponseSlotsInner.md
@@ -3913,6 +3915,7 @@ lib/Model/CreateCampaignInviteLink201Response.php
 lib/Model/CreateCampaignParticipant201Response.php
 lib/Model/CreateCampaignParticipantRequest.php
 lib/Model/CreateCampaignPayoutBatch201Response.php
+lib/Model/CreateCampaignPayoutBatch201ResponsePayment.php
 lib/Model/CreateCampaignPayoutBatchRequest.php
 lib/Model/CreateCommentAutomation200Response.php
 lib/Model/CreateCommentAutomation200ResponseAutomation.php
@@ -4423,6 +4426,7 @@ lib/Model/GetAnalyticsDashboard200Response.php
 lib/Model/GetAnalyticsDashboard200ResponseDailyInner.php
 lib/Model/GetAnalyticsDashboard200ResponseDateRange.php
 lib/Model/GetBalance200Response.php
+lib/Model/GetBalance200ResponsePayoutLocksInner.php
 lib/Model/GetBalance200ResponsePendingReleasesInner.php
 lib/Model/GetBestTimeToPost200Response.php
 lib/Model/GetBestTimeToPost200ResponseSlotsInner.php
@@ -6545,3 +6549,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateCampaignPayoutBatch201ResponsePaymentTest.php
+test/Model/GetBalance200ResponsePayoutLocksInnerTest.php

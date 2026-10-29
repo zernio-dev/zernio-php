@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **ends_at** | **\DateTime** |  |
 **currency** | **string** |  |
 **economics** | [**\Zernio\Model\CreatorPortalEconomics**](CreatorPortalEconomics.md) |  |
-**max_post_age_minutes** | **int** | A post must be submitted within this many minutes of publishing. |
+**max_post_age_minutes** | **int** | A post must be submitted within this many minutes of publishing. Null means any age. Either way, only posts published after the campaign started are accepted. |
 **hold_days** | **int** | Days approved earnings stay owed before they become payable. |
 **tracking_days** | **int** | Days each submitted post is tracked for views. |
 

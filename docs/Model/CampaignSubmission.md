@@ -22,9 +22,9 @@ Name | Type | Description | Notes
 **review_round** | **int** | How many times the post was reopened after a reject. 0 until the first reopen. |
 **reviewed_by** | **string** | User id of the reviewer. |
 **reviewed_at** | **\DateTime** |  |
-**views_at_submission** | **int** | Views when the post was submitted; they never count toward earnings. |
+**views_at_submission** | **int** | Views when the post was submitted. They count toward earnings like every later view. |
 **views_latest** | **int** | Latest view count read for the post, frozen at the tracking window end. |
-**views_eligible** | **int** | Views gained after submission that count toward earnings, read at the tracking window end at the latest: once the window completes or is cancelled, the last read at or before its end is final and this value stops moving. |
+**views_eligible** | **int** | Views that count toward earnings: every view the platform reports for the post, including those before submission, read at the tracking window end at the latest: once the window completes or is cancelled, the last read at or before its end is final and this value stops moving. |
 **last_accrued_views** | **int** |  |
 **accrued_cents** | **int** |  |
 **approved_cents** | **int** |  |
