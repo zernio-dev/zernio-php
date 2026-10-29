@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **account_count** | **int** | Connected accounts currently running on this app. |
 **redirect_uri** | **string** | The OAuth redirect URI to allow in your app&#39;s settings on the platform. |
 **webhook** | [**\Zernio\Model\OAuthAppWebhook**](OAuthAppWebhook.md) |  | [optional]
+**shared_webhook_url** | **string** | TikTok only: set this as the webhook callback URL in your TikTok developer app. TikTok uses it to report when a video finishes publishing; Zernio also checks the publish status itself, so posting works without it. Null on other platforms. | [optional]
 **created_at** | **\DateTime** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
