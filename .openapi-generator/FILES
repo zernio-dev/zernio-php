@@ -118,6 +118,8 @@ docs/Model/AdCreativeAssetsSquareMarketingImagesInner.md
 docs/Model/AdCreativeCarouselCardsInner.md
 docs/Model/AdCreativeCatalog.md
 docs/Model/AdCreativeCatalogFormatTransformationSpecInner.md
+docs/Model/AdCreativeDescriptionsInner.md
+docs/Model/AdCreativeHeadlinesInner.md
 docs/Model/AdDailyMetrics.md
 docs/Model/AdEngagementCounts.md
 docs/Model/AdFunnelCounts.md
@@ -3387,6 +3389,8 @@ lib/Model/AdCreativeAssetsSquareMarketingImagesInner.php
 lib/Model/AdCreativeCarouselCardsInner.php
 lib/Model/AdCreativeCatalog.php
 lib/Model/AdCreativeCatalogFormatTransformationSpecInner.php
+lib/Model/AdCreativeDescriptionsInner.php
+lib/Model/AdCreativeHeadlinesInner.php
 lib/Model/AdDailyMetrics.php
 lib/Model/AdEngagementCounts.php
 lib/Model/AdFunnelCounts.php
@@ -6539,3 +6543,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AdCreativeDescriptionsInnerTest.php
+test/Model/AdCreativeHeadlinesInnerTest.php
