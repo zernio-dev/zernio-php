@@ -1487,7 +1487,7 @@ getBusinessAgentStatus($account_id): \Zernio\Model\BusinessAgentStatus
 
 Get agent setup status
 
-One read that says where the merchant is: whether the number is eligible, whether the Meta Business Agent terms are accepted, whether an agent exists, whether it is on, and its settings. `manualSteps` lists what Zernio can verify is still pending (accepting the terms in WhatsApp Manager); `unverifiedSteps` lists what Meta exposes no state for (the payment method in Billing Hub). Never fails for those pre-setup states; it reports them as flags.
+One read that says where the merchant is with the Meta Business Agent. It reports:  - whether the number is eligible - whether the Meta Business Agent terms are accepted - whether an agent exists - whether it is on - its settings  ### Pending steps  - `manualSteps` lists what Zernio can verify is still pending (accepting the terms in WhatsApp Manager). - `unverifiedSteps` lists what Meta exposes no state for (the payment method in Billing Hub).  Never fails for those pre-setup states; it reports them as flags.
 
 ### Example
 
@@ -2207,7 +2207,7 @@ onboardBusinessAgent($account_id): \Zernio\Model\OnboardBusinessAgent201Response
 
 Create the agent
 
-Creates the Meta Business Agent on the number and schedules Meta's data preparation. Requires the terms to be accepted; eligibility is checked first and an ineligible number answers 403 `business_agent_not_eligible`. Not idempotent: call it once, then configure knowledge and skills, then enable it through the settings. Configuration calls made in the first minute can still answer `business_agent_not_found` while Meta prepares the workspace.
+Creates the Meta Business Agent on the number and schedules Meta's data preparation.  Requires the terms to be accepted. Eligibility is checked first, and an ineligible number answers 403 `business_agent_not_eligible`.  ### Setup order  Not idempotent: call it once, then:  1. Configure knowledge and skills. 2. Enable it through the settings.  Configuration calls made in the first minute can still answer `business_agent_not_found` while Meta prepares the workspace.
 
 ### Example
 
@@ -3141,7 +3141,7 @@ updateBusinessAgentSettings($account_id, $update_business_agent_settings_request
 
 Update agent settings
 
-Partial update: fields you omit keep their value. `rollout.enabled: true` turns the agent on for new conversations; `false` stops it on every thread. Turning it on for `EVERYONE` needs a payment method on the Business Agent billable account (Meta accepts the call but delivers nothing without one); `ALLOWLISTED_ONLY` does not, which is how you test with a few numbers before billing. `never_say_phrases` replaces the whole list.
+Partial update: fields you omit keep their value.  - `rollout.enabled: true` turns the agent on for new conversations; `false` stops it on every thread. - Turning it on for `EVERYONE` needs a payment method on the Business Agent billable account (Meta accepts the call but delivers nothing without one). - `ALLOWLISTED_ONLY` does not need one, which is how you test with a few numbers before billing. - `never_say_phrases` replaces the whole list.
 
 ### Example
 
@@ -3391,7 +3391,7 @@ uploadBusinessAgentFile($account_id, $upload_business_agent_file_request): \Zern
 
 Upload a knowledge file
 
-Accepted types: pdf, doc, docx, png, jpg, jpeg, plus csv and xlsx when Meta enabled extraction on the asset. Meta's limit is 100 MB. Two ways to send the file: - JSON `{ url, fileName }`: Zernio downloads the file (public https URL, no redirects,   capped at 100 MB) and forwards it. Use this for anything above a few megabytes. - multipart form-data with a `file` part (and an optional `fileName`): bounded by the   request body limit of about 4.5 MB; larger uploads must use the `url` form. Not idempotent.
+Uploads a knowledge file. Not idempotent.  Accepted types: pdf, doc, docx, png, jpg, jpeg, plus csv and xlsx when Meta enabled extraction on the asset. Meta's limit is 100 MB.  ### Two ways to send the file  - JSON `{ url, fileName }`: Zernio downloads the file (public https URL, no redirects, capped at 100 MB) and forwards it. Use this for anything above a few megabytes. - multipart form-data with a `file` part (and an optional `fileName`): bounded by the request body limit of about 4.5 MB. Larger uploads must use the `url` form.
 
 ### Example
 

@@ -1,6 +1,6 @@
 # Zernio\CommerceApi
 
-One API over every connected store. Write against it once and it works for each supported platform: Shopify, and WooCommerce on self-hosted WordPress sites (a connected WordPress account is the store; commerce objects report &#x60;platform: woocommerce&#x60;). TikTok Shop and more follow. Each operation lists its platforms in &#x60;x-platforms&#x60;. Pick the store with &#x60;accountId&#x60; (a query parameter on reads, a body field on writes).  Conventions shared by every Commerce endpoint: - Money is &#x60;{ amount, currency }&#x60; (CommerceMoney), with the amount as a decimal string   and the currency never null. Write bodies take a bare decimal amount   in the store&#39;s currency. - Timestamps are ISO 8601 UTC. - &#x60;status&#x60; uses the Zernio vocabulary. The platform&#39;s raw value is   always returned next to it as &#x60;platformStatus&#x60;. - Lists return &#x60;{ &lt;resource&gt;, nextCursor }&#x60; with an opaque cursor. - An operation a platform cannot serve answers 400 with code   &#x60;platform_not_supported&#x60;. &#x60;GET /v1/commerce/store&#x60; lists a store&#39;s   &#x60;capabilities&#x60; up front.  All data lives on the platform; Zernio proxies it and stores nothing.
+One API over every connected store: write against it once and it works for each supported platform.  **Platforms:** Shopify, and WooCommerce on self-hosted WordPress sites (a connected WordPress account is the store; commerce objects report &#x60;platform: woocommerce&#x60;). TikTok Shop and more follow. Each operation lists its platforms in &#x60;x-platforms&#x60;.  Pick the store with &#x60;accountId&#x60; (a query parameter on reads, a body field on writes).  **Conventions shared by every Commerce endpoint:**  - Money is &#x60;{ amount, currency }&#x60; (CommerceMoney): amount as a decimal string, currency never null. Write bodies take a bare decimal amount in the store&#39;s currency. - Timestamps are ISO 8601 UTC. - &#x60;status&#x60; uses the Zernio vocabulary; the platform&#39;s raw value is always returned as &#x60;platformStatus&#x60;. - Lists return &#x60;{ &lt;resource&gt;, nextCursor }&#x60; with an opaque cursor. - An operation a platform cannot serve answers 400 with code &#x60;platform_not_supported&#x60;. &#x60;GET /v1/commerce/store&#x60; lists a store&#39;s &#x60;capabilities&#x60; up front.  All data lives on the platform; Zernio proxies it and stores nothing.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
@@ -646,7 +646,7 @@ createCommerceCatalogSync($create_commerce_catalog_sync_request): \Zernio\Model\
 
 Sync a store into a Meta catalog
 
-Keeps a Meta product catalog in sync with the store, for catalog ads (`goal: catalog_sales`) and Shops. The first full run starts right away in the background; `runStatus` and the item counts report its outcome. Every active product variant that is published to the online store and has an image becomes a catalog item, grouped by product (`item_group_id`). After that, product changes on the store update the catalog within minutes, and a daily full run removes items for products or variants the store no longer has. Items are namespaced to the store, so a catalog can take several stores and a run never touches items it did not create.  `catalogAccountId` is a connected facebook, instagram or metaads account whose Meta login can manage the catalog (the catalog_management permission); find catalogs with `GET /v1/ads/catalogs`.
+Keeps a Meta product catalog in sync with the store, for catalog ads (`goal: catalog_sales`) and Shops.  ### How the sync runs  1. The first full run starts right away in the background; `runStatus` and the item counts report its outcome. 2. After that, product changes on the store update the catalog within minutes. 3. A daily full run removes items for products or variants the store no longer has.  Every active product variant that is published to the online store and has an image becomes a catalog item, grouped by product (`item_group_id`).  Items are namespaced to the store, so a catalog can take several stores and a run never touches items it did not create.  ### Catalog account  `catalogAccountId` is a connected facebook, instagram or metaads account whose Meta login can manage the catalog (the catalog_management permission). Find catalogs with `GET /v1/ads/catalogs`.
 
 ### Example
 
@@ -1006,7 +1006,7 @@ createCommerceProduct($create_commerce_product_request): \Zernio\Model\CreateCom
 
 Create a product
 
-Creates a product with its options and variants. `status` defaults to `draft`: no platform offers a sandbox for product writes, so nothing goes on sale unless you ask for `active`. A product without `options` has exactly one variant. Images are fetched by the platform from the given URLs and may appear on the product a few seconds later.
+Creates a product with its options and variants.  - `status` defaults to `draft`: no platform offers a sandbox for product writes, so nothing goes on sale unless you ask for `active`. - A product without `options` has exactly one variant. - Images are fetched by the platform from the given URLs and may appear on the product a few seconds later.
 
 ### Example
 
@@ -2620,7 +2620,7 @@ getCommerceStore($account_id): \Zernio\Model\GetCommerceStore200Response
 
 Get a store
 
-Returns the connected store with its currency, country and the `capabilities` it supports, so an integration can tell up front which Commerce operations the store serves. On Shopify, stock, sales channels, discounts, navigation, metaobjects, markets, marketing and image removal need permissions the store owner approves separately: `missingCapabilities` lists what is not granted yet and `grantPermissionsUrl` is the page where the owner approves it.
+Returns the connected store with its currency, country and the `capabilities` it supports, so an integration can tell up front which Commerce operations the store serves.  ### Shopify permissions  On Shopify, these need permissions the store owner approves separately: stock, sales channels, discounts, navigation, metaobjects, markets, marketing and image removal.  - `missingCapabilities` lists what is not granted yet. - `grantPermissionsUrl` is the page where the owner approves it.
 
 ### Example
 
@@ -3362,7 +3362,7 @@ listCommerceOrders($account_id, $limit, $cursor, $created_after, $created_before
 
 List orders
 
-The store's orders in one format for every platform, with what an invoice needs: line items with unit prices, discounts and tax per line, shipping and fee lines, billing details, payment status and refunds. Newest order first; with `updatedAfter`, oldest change first, so a sync can page forward from its last seen `updatedAt`. Start each sync a few minutes before the last `updatedAt` you saw and drop duplicates by `id`, since an order edited while you page can shift the list. Shopify returns at most 25 orders per page and, unless the store was granted access to all orders, only the last 60 days. Buyer fields (`customer` and addresses) are null when the store's approval does not cover buyer data. Needs orders.read.
+The store's orders in one format for every platform, with what an invoice needs. Needs orders.read.  Each order includes:  - line items with unit prices, discounts and tax per line - shipping and fee lines - billing details - payment status and refunds  ### Ordering and syncing  Newest order first. With `updatedAfter`, oldest change first, so a sync can page forward from its last seen `updatedAt`.  Start each sync a few minutes before the last `updatedAt` you saw and drop duplicates by `id`, since an order edited while you page can shift the list.  ### Limits  - Shopify returns at most 25 orders per page and, unless the store was granted access to all orders, only the last 60 days. - Buyer fields (`customer` and addresses) are null when the store's approval does not cover buyer data.
 
 ### Example
 
@@ -3620,7 +3620,7 @@ listCommerceProducts($account_id, $limit, $cursor, $status, $query, $collection_
 
 List products
 
-Lists the store's products with their variants, options and images. Cursor-paginated: pass `limit` (1-100, default 20) and the `cursor` from a previous response's `nextCursor`, which is null on the last page. Filter with `status` and/or `query` (the platform's product search syntax, passed through verbatim). A status the platform has no equivalent of returns an empty page.
+Lists the store's products with their variants, options and images.  - Cursor-paginated: pass `limit` (1-100, default 20) and the `cursor` from a previous response's `nextCursor`, which is null on the last page. - Filter with `status` and/or `query` (the platform's product search syntax, passed through verbatim). - A status the platform has no equivalent of returns an empty page.
 
 ### Example
 

@@ -21,7 +21,7 @@ batchGetGoogleBusinessReviews($account_id, $batch_get_google_business_reviews_re
 
 Batch get reviews
 
-Fetches reviews across multiple locations in a single request. More efficient than calling GET /gmb-reviews per location for multi-location businesses. Returns a flat locationReviews array (not grouped by location): each item carries the location resource name it belongs to (`name`) plus the review object (`review`), whose identity is `review.reviewId`. Reviews are requested from Google ordered by `orderBy` (default `updateTime desc`, newest first), so callers polling for recent reviews can stop paginating once they cross their date window. Note: this endpoint does not return aggregate metrics (averageRating / totalReviewCount). For those, use the single-location GET /gmb-reviews endpoint.
+Fetches reviews across multiple locations in a single request. More efficient than calling GET /gmb-reviews per location for multi-location businesses.  ### Response  Returns a flat locationReviews array (not grouped by location). Each item carries:  - `name`: the location resource name it belongs to. - `review`: the review object, whose identity is `review.reviewId`.  ### Ordering  Reviews are requested from Google ordered by `orderBy` (default `updateTime desc`, newest first). Callers polling for recent reviews can stop paginating once they cross their date window.  ### Aggregate metrics  This endpoint does not return aggregate metrics (averageRating / totalReviewCount). For those, use the single-location GET /gmb-reviews endpoint.
 
 ### Example
 
@@ -145,7 +145,7 @@ getGoogleBusinessReview($account_id, $review_id, $location_id): \Zernio\Model\Ge
 
 Get a review
 
-Returns one Google Business Profile review, in the same shape as the entries of GET /v1/accounts/{accountId}/gmb-reviews. The review is read from the account's selected location unless locationId overrides it, and Google returns 404 for a review id that belongs to another location. Read the review before replying if a human may have answered it already: replies are overwritten in place and Google keeps no history.
+Returns one Google Business Profile review, in the same shape as the entries of GET /v1/accounts/{accountId}/gmb-reviews.  The review is read from the account's selected location unless locationId overrides it. Google returns 404 for a review id that belongs to another location.  Read the review before replying if a human may have answered it already: replies are overwritten in place and Google keeps no history.
 
 ### Example
 
@@ -275,7 +275,7 @@ replyToGoogleBusinessReview($account_id, $review_id, $reply_to_google_business_r
 
 Reply to a review
 
-Posts (or updates) the business owner reply to a Google Business Profile review. The reply is associated with the account's currently selected location (set via /v1/accounts/{accountId}/gmb-locations). Calling this endpoint a second time on the same review overwrites the previous reply (PUT semantics on Google's side). Google keeps no history, so an automated retry silently replaces a reply someone edited by hand in the Google Business Profile UI. Read the review before retrying if a human may have answered it.
+Posts (or updates) the business owner reply to a Google Business Profile review.  The reply is associated with the account's currently selected location (set via /v1/accounts/{accountId}/gmb-locations).  ### Overwrites  Calling this endpoint a second time on the same review overwrites the previous reply (PUT semantics on Google's side).  Google keeps no history, so an automated retry silently replaces a reply someone edited by hand in the Google Business Profile UI. Read the review before retrying if a human may have answered it.
 
 ### Example
 

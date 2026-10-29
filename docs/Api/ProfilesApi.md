@@ -21,7 +21,7 @@ createProfile($create_profile_request, $idempotency_key): \Zernio\Model\ProfileC
 
 Create profile
 
-Creates a new profile with a name, optional description, and color. Names are unique per team: a duplicate returns a 409 whose details.existingProfileId carries the id of the existing profile. Set externalId to your own tenant or client id to find the profile later without storing its Zernio id. A duplicate externalId returns the same kind of 409, with code profile_external_id_conflict. Send an Idempotency-Key header to make retries safe: a retried create with the same key and body replays the original 201 (same _id) instead of conflicting.
+Creates a new profile with a name, optional description, and color.  ### Uniqueness  - Names are unique per team: a duplicate returns a 409 whose details.existingProfileId carries the id of the existing profile. - Set externalId to your own tenant or client id to find the profile later without storing its Zernio id. A duplicate externalId returns the same kind of 409, with code profile_external_id_conflict.  ### Idempotency  Send an Idempotency-Key header to make retries safe. A retried create with the same key and body replays the original 201 (same _id) instead of conflicting.
 
 ### Example
 
@@ -41,7 +41,7 @@ $apiInstance = new Zernio\Api\ProfilesApi(
     $config
 );
 $create_profile_request = {"name":"Marketing Team","description":"Profile for marketing campaigns","color":"#4CAF50","timezone":"Europe/Istanbul","externalId":"tenant_42"}; // \Zernio\Model\CreateProfileRequest
-$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
 
 try {
     $result = $apiInstance->createProfile($create_profile_request, $idempotency_key);
@@ -56,7 +56,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **create_profile_request** | [**\Zernio\Model\CreateProfileRequest**](../Model/CreateProfileRequest.md)|  | |
-| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
 
 ### Return type
 

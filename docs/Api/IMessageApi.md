@@ -218,7 +218,7 @@ createImessageGroup($create_imessage_group_request): \Zernio\Model\CreateImessag
 
 Start an iMessage group chat
 
-Creates a group chat from one of your senders and sends its first message. The provider processes it asynchronously: the response carries the request id, and the thread appears in the inbox (with its group conversation id) on the first webhook. Starting a group counts as messaging new contacts, so the sender needs the provider's init-conversations add-on and the same sending intervals apply; without it the request fails with 409 `recipient_must_message_first`. WhatsApp groups need a `name`.
+Creates a group chat from one of your senders and sends its first message.  The provider processes it asynchronously: the response carries the request id, and the thread appears in the inbox (with its group conversation id) on the first webhook.  ### Requirements  - Starting a group counts as messaging new contacts, so the sender needs the provider's init-conversations add-on and the same sending intervals apply. Without it the request fails with 409 `recipient_must_message_first`. - WhatsApp groups need a `name`.
 
 ### Example
 
@@ -278,7 +278,7 @@ createImessageOptInLink($sender_id, $create_imessage_opt_in_link_request): \Zern
 
 Create a tracked iMessage opt-in link
 
-Generates a per-campaign link that opens Messages on this sender with `body` prefilled. A thread the contact opens skips the pacing and the first-message content rule that apply when the sender writes first, and it is the only way in for senders without the add-on for new contacts (their sends to anyone else fail with `recipient_must_message_first`).  Each link carries a unique code in place of the `[opt-in-code]` placeholder; when the contact sends it, the resulting `message.received` webhook (and the stored inbox message's `metadata`) has `optIn: true` and your `parameters` under `optInParameters`, so you can attribute the conversation to the campaign or lead that produced it.  For an untracked link, use the sender's `optInLink` instead.
+Generates a per-campaign link that opens Messages on this sender with `body` prefilled.  ### Why use it  A thread the contact opens skips the pacing and the first-message content rule that apply when the sender writes first.  It is also the only way in for senders without the add-on for new contacts. Their sends to anyone else fail with `recipient_must_message_first`.  ### Attribution  Each link carries a unique code in place of the `[opt-in-code]` placeholder. When the contact sends it, the resulting `message.received` webhook (and the stored inbox message's `metadata`) has `optIn: true` and your `parameters` under `optInParameters`.  That lets you attribute the conversation to the campaign or lead that produced it.  For an untracked link, use the sender's `optInLink` instead.
 
 ### Example
 
@@ -530,7 +530,7 @@ listImessageAvailableNumbers($region): \Zernio\Model\ListImessageAvailableNumber
 
 List instantly available iMessage numbers
 
-Phone numbers the provider has already registered and can assign on the spot. Order one by passing its `id` as `availableNumberId` to POST /v1/imessage/senders/order: the sender activates immediately instead of after the usual provisioning wait. Reserve it first with POST /v1/imessage/senders/available-numbers/{numberId}/reserve while the buyer decides. The list is a snapshot; a number can be taken between listing and ordering.
+Phone numbers the provider has already registered and can assign on the spot.  ### Ordering one  1. Reserve it first with POST /v1/imessage/senders/available-numbers/{numberId}/reserve while the buyer decides. 2. Pass its `id` as `availableNumberId` to POST /v1/imessage/senders/order.  The sender activates immediately instead of after the usual provisioning wait.  The list is a snapshot; a number can be taken between listing and ordering.
 
 ### Example
 
@@ -590,7 +590,7 @@ listImessageSandboxContacts(): \Zernio\Model\ListImessageSandboxContacts200Respo
 
 List iMessage sandbox contacts
 
-The shared sandbox line and your sandbox contacts. The sandbox lets you test iMessage without ordering a sender: add your own phone or Apple ID email, send its join code to the sandbox line from that phone, and your messages reach your inbox and webhooks. Replies are allowed for 24 hours after each message from the contact. Group chats and starting conversations are not supported.
+Returns the shared sandbox line and your sandbox contacts.  The sandbox lets you test iMessage without ordering a sender:  1. Add your own phone or Apple ID email. 2. Send its join code to the sandbox line from that phone. 3. Your messages reach your inbox and webhooks.  ### Limits  - Replies are allowed for 24 hours after each message from the contact. - Group chats and starting conversations are not supported.
 
 ### Example
 
@@ -764,7 +764,7 @@ orderImessageSender($order_imessage_sender_request): \Zernio\Model\OrderImessage
 
 Order a new iMessage sender
 
-Orders a NEW dedicated iMessage sender from the delivery provider (compare with POST /v1/imessage/senders, which registers a sender you already own). Activation is asynchronous (minutes to a few hours): the response is 202 with the lifecycle object; poll GET /v1/imessage/senders/{senderId} or subscribe to the account.connected webhook. Billing starts at activation (monthly per sender, no proration); when the account spend threshold is below the sender price, the first month is charged before the number is bought; when the card's answer takes longer than this request, the order is returned as `status: awaiting_payment` and the number is ordered automatically once it is paid (usually under 5 minutes). Requires usage-based billing and a valid payment method. Pass purchaseIntentId to make retries idempotent — the provider-side order is never retried automatically. Ordered phone senders include SMS/RCS fallback with call forwarding and the ability to message contacts who have not written first (sending intervals still apply).
+Orders a NEW dedicated iMessage sender from the delivery provider. Compare with POST /v1/imessage/senders, which registers a sender you already own.  ### Activation  Activation is asynchronous (minutes to a few hours). The response is 202 with the lifecycle object; poll GET /v1/imessage/senders/{senderId} or subscribe to the account.connected webhook.  ### Billing  - Requires usage-based billing and a valid payment method. - Billing starts at activation (monthly per sender, no proration). - When the account spend threshold is below the sender price, the first month is charged before the number is bought. - When the card's answer takes longer than this request, the order is returned as `status: awaiting_payment`. The number is ordered automatically once it is paid (usually under 5 minutes).  ### Retries  Pass purchaseIntentId to make retries idempotent. The provider-side order is never retried automatically.  ### What an ordered sender includes  Ordered phone senders include SMS/RCS fallback with call forwarding, and the ability to message contacts who have not written first (sending intervals still apply).
 
 ### Example
 
@@ -824,7 +824,7 @@ registerImessageSender($register_imessage_sender_request): \Zernio\Model\Registe
 
 Register an iMessage sender
 
-Registers a provider-provisioned iMessage sender (a phone number or an email handle) that YOU already own on a profile, creating an `imessage` account that sends and receives through the inbox conversation endpoints. To have Zernio order a new sender for you, use POST /v1/imessage/senders/order instead. Registration attaches the monthly sender fee (billed while active) and requires a payment method (402 without one). Re-registering the SAME handle refreshes its account; a different handle is added as another sender, and a profile can hold several.
+Registers a provider-provisioned iMessage sender (a phone number or an email handle) that YOU already own on a profile. It creates an `imessage` account that sends and receives through the inbox conversation endpoints.  To have Zernio order a new sender for you, use POST /v1/imessage/senders/order instead.  ### Billing  Registration attaches the monthly sender fee (billed while active) and requires a payment method (402 without one).  ### Re-registering  - Re-registering the SAME handle refreshes its account. - A different handle is added as another sender, and a profile can hold several.
 
 ### Example
 

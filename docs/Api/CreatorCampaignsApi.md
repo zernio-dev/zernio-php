@@ -103,7 +103,7 @@ approveCampaignSubmission($campaign_id, $submission_id, $idempotency_key): \Zern
 
 Approve campaign submission
 
-Approves a `tracking` or `pending_review` submission of an active campaign and fires `campaign_submission.approved`. The Zernio dashboard offers Approve only on `pending_review` (a post that needs a decision) and waits for `tracking` posts to get there; the API accepts `tracking` so an integration can approve early. What the post earned so far moves to owed and is held for the campaign's `holdDays`; later earnings post straight to owed. A per-post campaign pays `perApprovedPostCents` here. Any other state answers 409. The same post approved in another of your campaigns also answers 409 (`invalid_resource_state`, \"This post is already approved in another campaign of yours.\"), so one post never earns twice.
+Approves a `tracking` or `pending_review` submission of an active campaign and fires `campaign_submission.approved`.  The Zernio dashboard offers Approve only on `pending_review` (a post that needs a decision) and waits for `tracking` posts to get there. The API accepts `tracking` so an integration can approve early.  ### Earnings  - What the post earned so far moves to owed and is held for the campaign's `holdDays`. - Later earnings post straight to owed. - A per-post campaign pays `perApprovedPostCents` here.  ### Errors  - 409: the submission is in any other state. - 409 (`invalid_resource_state`, \"This post is already approved in another campaign of yours.\"): the same post was approved in another of your campaigns, so one post never earns twice.
 
 ### Example
 
@@ -124,7 +124,7 @@ $apiInstance = new Zernio\Api\CreatorCampaignsApi(
 );
 $campaign_id = 'campaign_id_example'; // string | Campaign ID.
 $submission_id = 'submission_id_example'; // string | Submission ID.
-$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
 
 try {
     $result = $apiInstance->approveCampaignSubmission($campaign_id, $submission_id, $idempotency_key);
@@ -140,7 +140,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **campaign_id** | **string**| Campaign ID. | |
 | **submission_id** | **string**| Submission ID. | |
-| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
 
 ### Return type
 
@@ -167,7 +167,7 @@ closeCreatorCampaign($campaign_id): \Zernio\Model\CreateCreatorCampaign201Respon
 
 Close creator campaign
 
-Closes an `active` or `paused` campaign for good and fires `creator_campaign.closed`. Open tracking windows are cancelled. A pool campaign is split among participants at this moment by their approved eligible views, so closing a pool campaign answers 409 while any post still awaits review. A campaign also closes by itself once `endsAt` passed and every tracking window had its final read.
+Closes an `active` or `paused` campaign for good and fires `creator_campaign.closed`. Open tracking windows are cancelled.  A pool campaign is split among participants at this moment by their approved eligible views. Closing a pool campaign therefore answers 409 while any post still awaits review.  A campaign also closes by itself once `endsAt` passed and every tracking window had its final read.
 
 ### Example
 
@@ -248,7 +248,7 @@ $apiInstance = new Zernio\Api\CreatorCampaignsApi(
 );
 $campaign_id = 'campaign_id_example'; // string | Campaign ID.
 $create_campaign_adjustment_request = new \Zernio\Model\CreateCampaignAdjustmentRequest(); // \Zernio\Model\CreateCampaignAdjustmentRequest
-$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
 
 try {
     $result = $apiInstance->createCampaignAdjustment($campaign_id, $create_campaign_adjustment_request, $idempotency_key);
@@ -264,7 +264,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **campaign_id** | **string**| Campaign ID. | |
 | **create_campaign_adjustment_request** | [**\Zernio\Model\CreateCampaignAdjustmentRequest**](../Model/CreateCampaignAdjustmentRequest.md)|  | |
-| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
 
 ### Return type
 
@@ -351,7 +351,7 @@ createCampaignParticipant($campaign_id, $create_campaign_participant_request, $i
 
 Invite campaign participant
 
-Invites one creator and returns their personal invite URL. Send it to the creator: on that page they connect their accounts (read-only), submit posts and see their earnings. The URL is returned only here; inviting again creates no second link (409 for a creator already in the campaign). A creator is matched by email within your workspace, so the same person keeps one identity across your campaigns.  Answers 409 on a closed campaign and 403 `feature_not_available` once `caps.maxParticipants` is reached.
+Invites one creator and returns their personal invite URL.  Send the URL to the creator. On that page they connect their accounts (read-only), submit posts and see their earnings.  ### Invite rules  - The URL is returned only here; inviting again creates no second link. - A creator is matched by email within your workspace, so the same person keeps one identity across your campaigns.  ### Errors  - 409: the creator is already in the campaign, or the campaign is closed. - 403 `feature_not_available`: `caps.maxParticipants` is reached.
 
 ### Example
 
@@ -372,7 +372,7 @@ $apiInstance = new Zernio\Api\CreatorCampaignsApi(
 );
 $campaign_id = 'campaign_id_example'; // string | Campaign ID.
 $create_campaign_participant_request = new \Zernio\Model\CreateCampaignParticipantRequest(); // \Zernio\Model\CreateCampaignParticipantRequest
-$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
 
 try {
     $result = $apiInstance->createCampaignParticipant($campaign_id, $create_campaign_participant_request, $idempotency_key);
@@ -388,7 +388,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **campaign_id** | **string**| Campaign ID. | |
 | **create_campaign_participant_request** | [**\Zernio\Model\CreateCampaignParticipantRequest**](../Model/CreateCampaignParticipantRequest.md)|  | |
-| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
 
 ### Return type
 
@@ -415,7 +415,7 @@ createCampaignPayoutBatch($campaign_id, $idempotency_key, $create_campaign_payou
 
 Pay creators with one card payment
 
-Pays exactly what is owed: every payable creator of a `treasury` campaign who finished payout setup (or only `participantIds`, minus `excludeParticipantIds`) is held in `settling`, and the response carries a Stripe Checkout `url` for the total plus the fee (4% per creator, 50 cent minimum). Once the card payment completes, each creator gets a transfer funded by that charge and the batch ends `paid` or `partially_failed`. A creator whose payouts were disabled before the payment landed is skipped and stays payable. If the Checkout expires unpaid (24 hours), every amount is payable again.  Card payouts are limited to $2,000.00 gross per rolling 30 days by default; over it the call answers 402 (\"Over your instant payout limit. Top up your balance to pay more this month, or contact support to raise the limit.\"). Nothing payable answers 400 (\"Nothing is payable.\"). Needs an owner, admin or billing admin, signed in or through a full-access key they created. Send an `Idempotency-Key` so a retry never opens a second batch.
+Pays exactly what is owed to the creators of a `treasury` campaign, through one Stripe Checkout card payment.  ### How it works  1. Every payable creator who finished payout setup (or only `participantIds`, minus `excludeParticipantIds`) is held in `settling`. 2. The response carries a Stripe Checkout `url` for the total plus the fee (4% per creator, 50 cent minimum). 3. Once the card payment completes, each creator gets a transfer funded by that charge, and the batch ends `paid` or `partially_failed`.  A creator whose payouts were disabled before the payment landed is skipped and stays payable. If the Checkout expires unpaid (24 hours), every amount is payable again.  ### Limits and errors  - 402: card payouts are limited to $2,000.00 gross per rolling 30 days by default. Over it the call answers \"Over your instant payout limit. Top up your balance to pay more this month, or contact support to raise the limit.\" - 400: nothing payable (\"Nothing is payable.\").  ### Access and retries  Needs an owner, admin or billing admin, signed in or through a full-access key they created.  Send an `Idempotency-Key` so a retry never opens a second batch.
 
 ### Example
 
@@ -435,7 +435,7 @@ $apiInstance = new Zernio\Api\CreatorCampaignsApi(
     $config
 );
 $campaign_id = 'campaign_id_example'; // string | Campaign ID.
-$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
 $create_campaign_payout_batch_request = new \Zernio\Model\CreateCampaignPayoutBatchRequest(); // \Zernio\Model\CreateCampaignPayoutBatchRequest
 
 try {
@@ -451,7 +451,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaign_id** | **string**| Campaign ID. | |
-| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
 | **create_campaign_payout_batch_request** | [**\Zernio\Model\CreateCampaignPayoutBatchRequest**](../Model/CreateCampaignPayoutBatchRequest.md)|  | [optional] |
 
 ### Return type
@@ -499,7 +499,7 @@ $apiInstance = new Zernio\Api\CreatorCampaignsApi(
     $config
 );
 $create_creator_campaign_request = new \Zernio\Model\CreateCreatorCampaignRequest(); // \Zernio\Model\CreateCreatorCampaignRequest
-$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
 
 try {
     $result = $apiInstance->createCreatorCampaign($create_creator_campaign_request, $idempotency_key);
@@ -514,7 +514,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **create_creator_campaign_request** | [**\Zernio\Model\CreateCreatorCampaignRequest**](../Model/CreateCreatorCampaignRequest.md)|  | |
-| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
 
 ### Return type
 
@@ -785,7 +785,7 @@ listCampaignLedger($campaign_id, $participant_id, $kind, $limit, $skip): \Zernio
 
 List campaign ledger
 
-Lists ledger entries, newest first. Without `participantId` it lists every entry of the campaign: earnings drawn from the budget (accruals, per-post payments, pool shares, adjustments), the approvals, hold releases and settlements that move money between its participants' buckets, and their reversals. Pass `participantId` to narrow the list to one participant's entries.
+Lists ledger entries, newest first.  Without `participantId` it lists every entry of the campaign:  - earnings drawn from the budget (accruals, per-post payments, pool shares, adjustments) - the approvals, hold releases and settlements that move money between its participants' buckets - their reversals  Pass `participantId` to narrow the list to one participant's entries.
 
 ### Example
 
@@ -1253,7 +1253,7 @@ raiseCreatorCampaignBudget($campaign_id, $raise_creator_campaign_budget_request,
 
 Raise creator campaign budget
 
-Raises the budget of a campaign that is `draft`, `active` or `paused`. Only the budget changes; the pay terms stay as creators joined them, which `PATCH` refuses to change once the campaign is live. The new `budgetCents` must be above the current budget, otherwise 400 `invalid_field_value`. When it is also above what the campaign has spent, `budgetExhaustedAt` is cleared and earnings that stopped at the old budget resume. A closed campaign answers 409 `invalid_resource_state`.
+Raises the budget of a campaign that is `draft`, `active` or `paused`.  Only the budget changes. The pay terms stay as creators joined them, which `PATCH` refuses to change once the campaign is live.  - The new `budgetCents` must be above the current budget, otherwise 400 `invalid_field_value`. - When it is also above what the campaign has spent, `budgetExhaustedAt` is cleared and earnings that stopped at the old budget resume. - A closed campaign answers 409 `invalid_resource_state`.
 
 ### Example
 
@@ -1274,7 +1274,7 @@ $apiInstance = new Zernio\Api\CreatorCampaignsApi(
 );
 $campaign_id = 'campaign_id_example'; // string | Campaign ID.
 $raise_creator_campaign_budget_request = new \Zernio\Model\RaiseCreatorCampaignBudgetRequest(); // \Zernio\Model\RaiseCreatorCampaignBudgetRequest
-$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
 
 try {
     $result = $apiInstance->raiseCreatorCampaignBudget($campaign_id, $raise_creator_campaign_budget_request, $idempotency_key);
@@ -1290,7 +1290,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **campaign_id** | **string**| Campaign ID. | |
 | **raise_creator_campaign_budget_request** | [**\Zernio\Model\RaiseCreatorCampaignBudgetRequest**](../Model/RaiseCreatorCampaignBudgetRequest.md)|  | |
-| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
 
 ### Return type
 
@@ -1401,7 +1401,7 @@ $apiInstance = new Zernio\Api\CreatorCampaignsApi(
 $campaign_id = 'campaign_id_example'; // string | Campaign ID.
 $submission_id = 'submission_id_example'; // string | Submission ID.
 $reject_campaign_submission_request = new \Zernio\Model\RejectCampaignSubmissionRequest(); // \Zernio\Model\RejectCampaignSubmissionRequest
-$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
 
 try {
     $result = $apiInstance->rejectCampaignSubmission($campaign_id, $submission_id, $reject_campaign_submission_request, $idempotency_key);
@@ -1418,7 +1418,7 @@ try {
 | **campaign_id** | **string**| Campaign ID. | |
 | **submission_id** | **string**| Submission ID. | |
 | **reject_campaign_submission_request** | [**\Zernio\Model\RejectCampaignSubmissionRequest**](../Model/RejectCampaignSubmissionRequest.md)|  | |
-| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
 
 ### Return type
 
@@ -1507,7 +1507,7 @@ reopenCampaignSubmission($campaign_id, $submission_id, $idempotency_key): \Zerni
 
 Reopen campaign submission
 
-Puts a rejected submission back to `pending_review` so it can be decided again. Its tracking window resumes, so it works only while that window has not ended; otherwise 409 `invalid_resource_state` (\"This post's tracking window has ended.\"). A post that earned money which was already paid out cannot be reopened, and neither can a post of a closed campaign. Reopening a submission that is already `pending_review` returns it unchanged; any other status answers 409. No webhook fires.
+Puts a rejected submission back to `pending_review` so it can be decided again. No webhook fires.  Its tracking window resumes, so it works only while that window has not ended.  ### When it can't be reopened  - The tracking window has ended: 409 `invalid_resource_state` (\"This post's tracking window has ended.\"). - A post that earned money which was already paid out cannot be reopened. - A post of a closed campaign cannot be reopened. - Any status other than rejected or `pending_review` answers 409.  Reopening a submission that is already `pending_review` returns it unchanged.
 
 ### Example
 
@@ -1528,7 +1528,7 @@ $apiInstance = new Zernio\Api\CreatorCampaignsApi(
 );
 $campaign_id = 'campaign_id_example'; // string | Campaign ID.
 $submission_id = 'submission_id_example'; // string | Submission ID.
-$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
 
 try {
     $result = $apiInstance->reopenCampaignSubmission($campaign_id, $submission_id, $idempotency_key);
@@ -1544,7 +1544,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **campaign_id** | **string**| Campaign ID. | |
 | **submission_id** | **string**| Submission ID. | |
-| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
 
 ### Return type
 
@@ -1571,7 +1571,7 @@ settleCampaignParticipant($campaign_id, $participant_id, $settle_campaign_partic
 
 Settle campaign participant
 
-Records a payout of the participant's payable balance and fires `campaign_payout.settled`. Omit `amountCents` to settle the whole payable balance; an amount above it answers 400, and nothing payable answers 409.  - `none` settlement: records a payout you made elsewhere. - `external` settlement: pay from your own rails when `campaign_payout.payable` fires, then   call this with your payout id in `externalReference` (required in this mode). - `treasury` settlement: transfers the amount from your Zernio balance to the creator's   connected Stripe account, then records it with the Stripe transfer id as `externalReference`.   The transfer fee (4%, $0.50 minimum) is added on top: the creator receives the full amount   and your balance is debited `totalCents`. The creator must have finished payout setup from   their campaign page (409 otherwise), and a balance that does not cover the amount plus the   fee answers 402. While Stripe confirms the transfer the amount sits in the participant's   `settling` balance: a reject in that window cannot reverse it. If Stripe refuses the transfer   the amount returns to payable; if Stripe does not answer, the amount stays in `settling` and   the next settle call for this participant finishes that payout first (even with nothing   payable left). A retry asking for a different `amountCents` than the payout in progress   answers 409 with the amount in progress, and a settle while another request is still   waiting on Stripe for the same payout answers 409 (\"This payout is being sent to Stripe   right now. Try again in a minute.\"). A payout Stripe has not confirmed after 24 hours answers   409 (\"This payout is being confirmed with Stripe. Try again after the next reconciliation   (within 24 hours).\") until the daily reconciliation finishes it: settled if Stripe made the   transfer, returned to payable if it did not.   Set `recordOnly: true` to record a payout you made yourself instead of moving money through   the treasury (the webhook then carries `recorded: true`).   A treasury payout needs an owner, admin or billing admin, signed in or through a full-access   key they created (403 otherwise); recording with `recordOnly` does not. A creator held by an unfinished   payout batch answers 409 (\"This creator is in a card payout that is not finished yet.\").  Send an `Idempotency-Key` so a retry never records the payout twice.
+Records a payout of the participant's payable balance and fires `campaign_payout.settled`.  Omit `amountCents` to settle the whole payable balance. An amount above it answers 400, and nothing payable answers 409. Send an `Idempotency-Key` so a retry never records the payout twice.  ### Settlement modes  - `none` settlement: records a payout you made elsewhere. - `external` settlement: pay from your own rails when `campaign_payout.payable` fires, then call this with your payout id in `externalReference` (required in this mode). - `treasury` settlement: transfers the amount from your Zernio balance to the creator's connected Stripe account, then records it with the Stripe transfer id as `externalReference`.  ### Treasury payouts  The transfer fee (4%, $0.50 minimum) is added on top: the creator receives the full amount and your balance is debited `totalCents`.  - The creator must have finished payout setup from their campaign page (409 otherwise). - A balance that does not cover the amount plus the fee answers 402.  Set `recordOnly: true` to record a payout you made yourself instead of moving money through the treasury (the webhook then carries `recorded: true`).  A treasury payout needs an owner, admin or billing admin, signed in or through a full-access key they created (403 otherwise). Recording with `recordOnly` does not.  #### While Stripe confirms the transfer  The amount sits in the participant's `settling` balance; a reject in that window cannot reverse it.  - If Stripe refuses the transfer, the amount returns to payable. - If Stripe does not answer, the amount stays in `settling`. The next settle call for this participant finishes that payout first (even with nothing payable left).  #### Conflicts (409)  - A retry asking for a different `amountCents` than the payout in progress answers 409 with the amount in progress. - A settle while another request is still waiting on Stripe for the same payout answers 409 (\"This payout is being sent to Stripe right now. Try again in a minute.\"). - A payout Stripe has not confirmed after 24 hours answers 409 (\"This payout is being confirmed with Stripe. Try again after the next reconciliation (within 24 hours).\") until the daily reconciliation finishes it: settled if Stripe made the transfer, returned to payable if it did not. - A creator held by an unfinished payout batch answers 409 (\"This creator is in a card payout that is not finished yet.\").
 
 ### Example
 
@@ -1593,7 +1593,7 @@ $apiInstance = new Zernio\Api\CreatorCampaignsApi(
 $campaign_id = 'campaign_id_example'; // string | Campaign ID.
 $participant_id = 'participant_id_example'; // string | Participant ID.
 $settle_campaign_participant_request = new \Zernio\Model\SettleCampaignParticipantRequest(); // \Zernio\Model\SettleCampaignParticipantRequest
-$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
 
 try {
     $result = $apiInstance->settleCampaignParticipant($campaign_id, $participant_id, $settle_campaign_participant_request, $idempotency_key);
@@ -1610,7 +1610,7 @@ try {
 | **campaign_id** | **string**| Campaign ID. | |
 | **participant_id** | **string**| Participant ID. | |
 | **settle_campaign_participant_request** | [**\Zernio\Model\SettleCampaignParticipantRequest**](../Model/SettleCampaignParticipantRequest.md)|  | |
-| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
 
 ### Return type
 

@@ -153,7 +153,7 @@ getInstagramMentionedComment($account_id, $comment_id): \Zernio\Model\InstagramM
 
 Get a comment that mentions an Instagram account
 
-Returns a comment in which another Instagram user @mentioned the connected account, with the post it was left on. Meta sends the comment ID in its mention notification and offers no list of mentions, so this reads one mention by ID. Meta answers an error when comments are disabled on that post.  Requires an Instagram account connected via **Facebook Login**. Meta serves mentions on graph.facebook.com only, so accounts connected with classic Instagram Login receive a 400 (`instagram_mentions_require_facebook_login`) and must be reconnected choosing the Facebook option.
+Returns a comment in which another Instagram user @mentioned the connected account, with the post it was left on.  Meta sends the comment ID in its mention notification and offers no list of mentions, so this reads one mention by ID. Meta answers an error when comments are disabled on that post.  ### Requires Facebook Login  The Instagram account must be connected via **Facebook Login**. Meta serves mentions on graph.facebook.com only.  Accounts connected with classic Instagram Login receive a 400 (`instagram_mentions_require_facebook_login`) and must be reconnected choosing the Facebook option.
 
 ### Example
 
@@ -337,7 +337,7 @@ getInstagramStoryInsights($account_id, $story_id): \Zernio\Model\GetInstagramSto
 
 Get Instagram story insights
 
-Returns metrics for a single story. The `source` field discriminates between three states:  - `live`: fetched from Meta in real time (story is still active) - `cached`: fetched from a persisted `story_insights` webhook payload   (story has expired but we received its final-state metrics from Meta) - `unavailable`: story has expired and Meta sent no `story_insights` webhook for it.   Meta sends it most reliably for accounts connected with Facebook Login or with their   linked Facebook Page connected, so read insights while the story is live if you need   final numbers.  Meta can report an expired story as an empty successful result rather than an error, so an expired story resolves to `cached` or `unavailable` even though the upstream request itself succeeded.  Field semantics follow Meta's API. Counts below 5 may be returned as 0 due to Meta's privacy floor on small audiences. The `navigation` field is the sum of `tapsForward + tapsBack + exits + swipesForward`.
+Returns metrics for a single story. The `source` field discriminates between three states:  - `live`: fetched from Meta in real time (story is still active) - `cached`: fetched from a persisted `story_insights` webhook payload (story has expired but we received its final-state metrics from Meta) - `unavailable`: story has expired and Meta sent no `story_insights` webhook for it  Meta sends that webhook most reliably for accounts connected with Facebook Login or with their linked Facebook Page connected. So read insights while the story is live if you need final numbers.  Meta can report an expired story as an empty successful result rather than an error. So an expired story resolves to `cached` or `unavailable` even though the upstream request itself succeeded.  ### Field semantics  Field semantics follow Meta's API.  - Counts below 5 may be returned as 0 due to Meta's privacy floor on small audiences. - The `navigation` field is the sum of `tapsForward + tapsBack + exits + swipesForward`.
 
 ### Example
 
@@ -399,7 +399,7 @@ listInstagramLiveMedia($account_id): \Zernio\Model\ListInstagramLiveMedia200Resp
 
 List the live broadcasts of an Instagram account
 
-Returns the live videos the connected Instagram account is broadcasting right now. Meta only returns broadcasts in progress at the time of the request, so the list is empty when nothing is live (a 200, not an error). Pair the returned `id` with comments flagged as live (the live_comments webhook field) or with a `live_comment` comment automation.  Requires an Instagram account connected via **Facebook Login**. Meta documents the live_media edge on graph.facebook.com only, so accounts connected with classic Instagram Login receive a 400 (`instagram_live_media_requires_facebook_login`) and must be reconnected choosing the Facebook option.
+Returns the live videos the connected Instagram account is broadcasting right now.  Meta only returns broadcasts in progress at the time of the request, so the list is empty when nothing is live (a 200, not an error).  Pair the returned `id` with comments flagged as live (the live_comments webhook field) or with a `live_comment` comment automation.  ### Requires Facebook Login  The Instagram account must be connected via **Facebook Login**. Meta documents the live_media edge on graph.facebook.com only.  Accounts connected with classic Instagram Login receive a 400 (`instagram_live_media_requires_facebook_login`) and must be reconnected choosing the Facebook option.
 
 ### Example
 

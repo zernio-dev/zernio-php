@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **logo_url** | **string** | The image you sent. Zernio hosts the 256x256 BMP the carriers require. | [optional]
 **authorizer** | [**\Zernio\Model\BrandedCallingIdentityAuthorizer**](BrandedCallingIdentityAuthorizer.md) |  | [optional]
 **references** | [**\Zernio\Model\BrandedCallingReferences**](BrandedCallingReferences.md) |  | [optional]
-**status** | **string** | requested &#x3D; in Zernio review; changes_requested &#x3D; answer the review (PATCH); pending_email_verification &#x3D; confirm the code emailed to the authorizer; in_review &#x3D; with the carrier vetting team; verified &#x3D; attach numbers; rejected &#x3D; fix and PATCH to resubmit; suspended &#x3D; an infringement claim is open; expired &#x3D; the yearly verification lapsed; permanently_rejected &#x3D; terminal. | [optional]
+**status** | **string** | Verification status:  - requested: in Zernio review - changes_requested: answer the review (PATCH) - pending_email_verification: confirm the code emailed to the authorizer - in_review: with the carrier vetting team - verified: attach numbers - rejected: fix and PATCH to resubmit - suspended: an infringement claim is open - expired: the yearly verification lapsed - permanently_rejected: terminal | [optional]
 **rejection_reasons** | [**\Zernio\Model\BrandedCallingIdentityRejectionReasonsInner[]**](BrandedCallingIdentityRejectionReasonsInner.md) |  | [optional]
 **review_note** | **string** | The open change request, as text. | [optional]
 **review_request** | [**\Zernio\Model\BrandedCallingIdentityReviewRequest**](BrandedCallingIdentityReviewRequest.md) |  | [optional]

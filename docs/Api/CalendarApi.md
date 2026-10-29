@@ -143,7 +143,7 @@ createCalendarEvent($create_calendar_event_request): \Zernio\Model\CreateCalenda
 
 Create an event
 
-`conferencing: teams` adds a Teams meeting on Microsoft accounts; the created event comes back with `conferencing: null` when the tenant has no Teams (the EEA Business Basic SKUs ship without it). `google_meet` is rejected there with 400 (`param: conferencing`). On Google accounts `conferencing: google_meet` adds a Meet link, `teams` is rejected with 400, and `recurrence` accepts any RRULE Google Calendar supports. `recurrence` takes one RRULE line with FREQ, INTERVAL, COUNT, UNTIL, BYDAY and BYSETPOS; other parts are rejected with 400 (`param: recurrence`).
+Creates a calendar event. Conferencing and recurrence behave differently on Microsoft and Google accounts.  ### Microsoft accounts  - `conferencing: teams` adds a Teams meeting. The created event comes back with `conferencing: null` when the tenant has no Teams (the EEA Business Basic SKUs ship without it). - `google_meet` is rejected with 400 (`param: conferencing`).  ### Google accounts  - `conferencing: google_meet` adds a Meet link. - `teams` is rejected with 400. - `recurrence` accepts any RRULE Google Calendar supports.  ### Recurrence  `recurrence` takes one RRULE line with FREQ, INTERVAL, COUNT, UNTIL, BYDAY and BYSETPOS. Other parts are rejected with 400 (`param: recurrence`).
 
 ### Example
 

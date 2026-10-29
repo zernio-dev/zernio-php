@@ -18,7 +18,7 @@ getLedgerBalances($scope_type, $scope_id, $currency): \Zernio\Model\GetLedgerBal
 
 Get ledger balances
 
-Returns the balance of each bucket (for example accruing, owed, payable) for one ledger scope. A scope owned by another team returns an empty balances object. A profile-scoped key (or a member limited to some profiles) only reads `campaign` and `participant` scopes of campaigns under its profiles; any other scope returns an empty balances object.
+Returns the balance of each bucket (for example accruing, owed, payable) for one ledger scope.  These return an empty balances object:  - A scope owned by another team. - For a profile-scoped key (or a member limited to some profiles), any scope other than `campaign` and `participant` scopes of campaigns under its profiles.
 
 ### Example
 
@@ -82,7 +82,7 @@ listLedgerEntries($scope_type, $scope_id, $kind, $reference_type, $reference_id,
 
 List ledger entries
 
-Lists ledger entries for your team, newest first. Filter by scope (matches either side of the entry), kind, or the reference that caused the entry. A profile-scoped key (or a member limited to some profiles) only sees entries of campaigns under its profiles and of their participants; operator and platform scopes stay hidden from it.
+Lists ledger entries for your team, newest first.  ### Filters  - scope (matches either side of the entry) - kind - the reference that caused the entry  ### Profile-scoped access  A profile-scoped key (or a member limited to some profiles) only sees entries of campaigns under its profiles and of their participants. Operator and platform scopes stay hidden from it.
 
 ### Example
 

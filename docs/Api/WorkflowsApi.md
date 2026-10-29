@@ -1,6 +1,6 @@
 # Zernio\WorkflowsApi
 
-Branching conversation automations. An inbound message matches a workflow&#39;s trigger and walks a directed graph of nodes (send message, wait for reply, condition, set variable, delay, webhook, handoff, end). Unlike Sequences (linear, time-based drips), Workflows are event-driven and interactive. Fully supported on WhatsApp, Instagram, and Messenger; &#x60;send_message&#x60; template and interactive modes are WhatsApp-only, while cards, buttons, quick replies and message tags are Instagram and Messenger only.
+Branching conversation automations. An inbound message matches a workflow&#39;s trigger and walks a directed graph of nodes (send message, wait for reply, condition, set variable, delay, webhook, handoff, end).  Unlike Sequences (linear, time-based drips), Workflows are event-driven and interactive.  Fully supported on WhatsApp, Instagram, and Messenger. &#x60;send_message&#x60; template and interactive modes are WhatsApp-only; cards, buttons, quick replies and message tags are Instagram and Messenger only.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
@@ -706,7 +706,7 @@ restoreWorkflowVersion($workflow_id, $version): \Zernio\Model\RestoreWorkflowVer
 
 Restore a workflow version
 
-Replace the current graph with the named version's snapshot. Before the swap, the current graph is itself snapshotted as a new version, so a restore is reversible. The workflow must not be `active`: pause it first, then restore. The returned workflow carries `restoredFromVersion` so the UI can surface which version was rolled back to.
+Replace the current graph with the named version's snapshot.  Before the swap, the current graph is itself snapshotted as a new version, so a restore is reversible. The workflow must not be `active`: pause it first, then restore.  The returned workflow carries `restoredFromVersion` so the UI can surface which version was rolled back to.
 
 ### Example
 
@@ -768,7 +768,7 @@ triggerApiCallWorkflow($workflow_id, $trigger_api_call_workflow_request): \Zerni
 
 Start an API-triggered workflow
 
-Starts a run of an active workflow whose trigger type is `api_call`. Pass exactly one target: `conversationId` (a conversation on the workflow's account), `contactId` (resolved to that contact's conversation on the workflow's account), or `to` (WhatsApp workflows only: a phone number, whose conversation is found or created). `variables` are merged over the standard run variables, so each key is available as `{{key}}`.
+Starts a run of an active workflow whose trigger type is `api_call`.  Pass exactly one target:  - `conversationId`: a conversation on the workflow's account. - `contactId`: resolved to that contact's conversation on the workflow's account. - `to` (WhatsApp workflows only): a phone number, whose conversation is found or created.  `variables` are merged over the standard run variables, so each key is available as `{{key}}`.
 
 ### Example
 
@@ -892,7 +892,7 @@ updateWorkflow($workflow_id, $update_workflow_request): \Zernio\Model\UpdateWork
 
 Update workflow
 
-Update name, description, the graph, or reassign to a different account. The graph can be modified in any status, including `active`: a run already in progress reloads the saved graph at its next step, and a run parked on a node the edit removed completes instead of failing. Every graph edit is re-validated and an invalid graph answers 400 regardless of status. `status` is not a field of this request; use the activate and pause endpoints. Account swaps re-validate the graph against the new platform (so e.g. moving from WhatsApp to Facebook surfaces a `start_call` node as an error instead of silently saving an unrunnable graph).
+Update name, description, the graph, or reassign to a different account.  ### Editing the graph  The graph can be modified in any status, including `active`:  - A run already in progress reloads the saved graph at its next step. - A run parked on a node the edit removed completes instead of failing.  Every graph edit is re-validated, and an invalid graph answers 400 regardless of status.  ### Status and account  `status` is not a field of this request; use the activate and pause endpoints.  Account swaps re-validate the graph against the new platform. For example, moving from WhatsApp to Facebook surfaces a `start_call` node as an error instead of silently saving an unrunnable graph.
 
 ### Example
 

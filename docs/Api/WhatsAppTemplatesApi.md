@@ -17,7 +17,7 @@ getWhatsAppLibraryTemplate($account_id, $name, $language): \Zernio\Model\GetWhat
 
 Look up a library template
 
-Look up a single pre-approved Template Library template by its exact name, to introspect its structure before importing it. Most importantly it returns the template's `buttons`: a library template with `URL` / `PHONE_NUMBER` buttons must be created with a matching `library_template_button_inputs` array (see Create Template), or Meta rejects it. Use this to discover which inputs to collect.
+Look up a single pre-approved Template Library template by its exact name, to introspect its structure before importing it.  Most importantly, it returns the template's `buttons`. A library template with `URL` / `PHONE_NUMBER` buttons must be created with a matching `library_template_button_inputs` array (see Create Template), or Meta rejects it. Use this to discover which inputs to collect.
 
 ### Example
 

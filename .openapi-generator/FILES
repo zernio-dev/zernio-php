@@ -110,6 +110,7 @@ docs/Model/AdAppliedDefaults.md
 docs/Model/AdBudget.md
 docs/Model/AdCampaign.md
 docs/Model/AdCampaignBudget.md
+docs/Model/AdCampaignOptimizationGoal.md
 docs/Model/AdCreative.md
 docs/Model/AdCreativeAssets.md
 docs/Model/AdCreativeAssetsMarketingImagesInner.md
@@ -456,6 +457,8 @@ docs/Model/CheckPhoneNumberPortability200ResponseResultsInner.md
 docs/Model/CheckPhoneNumberPortabilityRequest.md
 docs/Model/CheckVerification200Response.md
 docs/Model/CheckVerificationRequest.md
+docs/Model/CheckWhatsAppNumberAvailability200Response.md
+docs/Model/CheckWhatsAppNumberAvailability200ResponseAreaAvailability.md
 docs/Model/CommentAutomationActions.md
 docs/Model/CommentAutomationAudience.md
 docs/Model/CommentAutomationDmMedia.md
@@ -816,6 +819,7 @@ docs/Model/CreateStandaloneAdRequestPlatformSpecificData.md
 docs/Model/CreateStandaloneAdRequestRegionsInner.md
 docs/Model/CreateStandaloneAdRequestRegionsInnerOneOf.md
 docs/Model/CreateStandaloneAdRequestSitelinksInner.md
+docs/Model/CreateStandaloneAdRequestSmartTargeting.md
 docs/Model/CreateStandaloneAdRequestStructuredSnippetsInner.md
 docs/Model/CreateStandaloneAdRequestTranslationsInner.md
 docs/Model/CreateStandaloneAdRequestVideo.md
@@ -847,6 +851,7 @@ docs/Model/CreateWhatsAppGroupChat201Response.md
 docs/Model/CreateWhatsAppGroupChat201ResponseGroup.md
 docs/Model/CreateWhatsAppGroupChatRequest.md
 docs/Model/CreateWhatsAppGroupInviteLink200Response.md
+docs/Model/CreateWhatsAppNumberKycLinkRequest.md
 docs/Model/CreateWhatsAppSandboxSession200Response.md
 docs/Model/CreateWhatsAppSandboxSessionRequest.md
 docs/Model/CreateWhatsAppTemplate200Response.md
@@ -1063,6 +1068,7 @@ docs/Model/GenerateKeywordIdeas200ResponsePaging.md
 docs/Model/GenerateKeywordIdeasRequest.md
 docs/Model/GeoRestriction.md
 docs/Model/GetAccountHealth200Response.md
+docs/Model/GetAccountHealth200ResponseMessagingRestriction.md
 docs/Model/GetAccountHealth200ResponsePermissions.md
 docs/Model/GetAccountHealth200ResponsePermissionsPostingInner.md
 docs/Model/GetAccountHealth200ResponsePlatformConnection.md
@@ -3373,6 +3379,7 @@ lib/Model/AdAppliedDefaults.php
 lib/Model/AdBudget.php
 lib/Model/AdCampaign.php
 lib/Model/AdCampaignBudget.php
+lib/Model/AdCampaignOptimizationGoal.php
 lib/Model/AdCreative.php
 lib/Model/AdCreativeAssets.php
 lib/Model/AdCreativeAssetsMarketingImagesInner.php
@@ -3719,6 +3726,8 @@ lib/Model/CheckPhoneNumberPortability200ResponseResultsInner.php
 lib/Model/CheckPhoneNumberPortabilityRequest.php
 lib/Model/CheckVerification200Response.php
 lib/Model/CheckVerificationRequest.php
+lib/Model/CheckWhatsAppNumberAvailability200Response.php
+lib/Model/CheckWhatsAppNumberAvailability200ResponseAreaAvailability.php
 lib/Model/CommentAutomationActions.php
 lib/Model/CommentAutomationAudience.php
 lib/Model/CommentAutomationDmMedia.php
@@ -4079,6 +4088,7 @@ lib/Model/CreateStandaloneAdRequestPlatformSpecificData.php
 lib/Model/CreateStandaloneAdRequestRegionsInner.php
 lib/Model/CreateStandaloneAdRequestRegionsInnerOneOf.php
 lib/Model/CreateStandaloneAdRequestSitelinksInner.php
+lib/Model/CreateStandaloneAdRequestSmartTargeting.php
 lib/Model/CreateStandaloneAdRequestStructuredSnippetsInner.php
 lib/Model/CreateStandaloneAdRequestTranslationsInner.php
 lib/Model/CreateStandaloneAdRequestVideo.php
@@ -4110,6 +4120,7 @@ lib/Model/CreateWhatsAppGroupChat201Response.php
 lib/Model/CreateWhatsAppGroupChat201ResponseGroup.php
 lib/Model/CreateWhatsAppGroupChatRequest.php
 lib/Model/CreateWhatsAppGroupInviteLink200Response.php
+lib/Model/CreateWhatsAppNumberKycLinkRequest.php
 lib/Model/CreateWhatsAppSandboxSession200Response.php
 lib/Model/CreateWhatsAppSandboxSessionRequest.php
 lib/Model/CreateWhatsAppTemplate200Response.php
@@ -4326,6 +4337,7 @@ lib/Model/GenerateKeywordIdeas200ResponsePaging.php
 lib/Model/GenerateKeywordIdeasRequest.php
 lib/Model/GeoRestriction.php
 lib/Model/GetAccountHealth200Response.php
+lib/Model/GetAccountHealth200ResponseMessagingRestriction.php
 lib/Model/GetAccountHealth200ResponsePermissions.php
 lib/Model/GetAccountHealth200ResponsePermissionsPostingInner.php
 lib/Model/GetAccountHealth200ResponsePlatformConnection.php
@@ -6527,3 +6539,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AdCampaignOptimizationGoalTest.php
+test/Model/CheckWhatsAppNumberAvailability200ResponseAreaAvailabilityTest.php
+test/Model/CreateStandaloneAdRequestSmartTargetingTest.php
+test/Model/GetAccountHealth200ResponseMessagingRestrictionTest.php

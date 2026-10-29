@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **commenter_username** | **string** |  | [optional]
 **comment_text** | **string** |  | [optional]
 **source** | **string** | Which door triggered this send. Null on rows written before this field existed (all of those are comment-triggered). | [optional]
-**status** | **string** | DM outcome. &#39;pending&#39; &#x3D; the automation has a dmDelaySeconds and the response is queued but not sent yet. &#39;gated&#39; &#x3D; the follow-gate confirmation DM went out and we are waiting for the tap; it flips to &#39;sent&#39; or &#39;skipped&#39; when they tap. &#39;skipped&#39; also covers repeatPolicy, cooldown and dedupeSameTextHours suppressions, with the reason in error. | [optional]
+**status** | **string** | DM outcome:  - &#39;pending&#39;: the automation has a dmDelaySeconds and the response is queued but not sent yet. - &#39;gated&#39;: the follow-gate confirmation DM went out and we are waiting for the tap. It flips to &#39;sent&#39; or &#39;skipped&#39; when they tap. - &#39;skipped&#39;: also covers repeatPolicy, cooldown and dedupeSameTextHours suppressions, with the reason in error. | [optional]
 **audience_outcome** | **string** | How the audience rule resolved. Null on automations without one. | [optional]
 **gate_button_status** | **string** | Whether the follow-gate button reached the commenter: &#39;rejected&#39; &#x3D; Meta refused the gate DM, &#39;omitted&#39; &#x3D; the prompt went out as plain text because it was over 640 characters. Null when no gate DM was sent. | [optional]
 **commenter_is_follower** | **bool** | Follow relationship at decision time. Null when Instagram would not tell us (the commenter never messaged the account). | [optional]

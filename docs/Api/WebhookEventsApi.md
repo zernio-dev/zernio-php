@@ -840,7 +840,7 @@ onAdStatusChanged($webhook_payload_ad_status_changed)
 
 Ad status changed event
 
-Fired when a campaign, ad set, or ad on a connected ad platform changes status. Currently emitted only for Meta (`metaads`).  Subscribed to two Meta `ad_account` webhook fields:   - `in_process_ad_objects` - the ad object finished processing and exited     the `IN_PROCESS` state. `status.raw` carries Meta's `status_name`     (e.g. `ACTIVE`, `PAUSED`, `ARCHIVED`, `DELETED`).   - `with_issues_ad_objects` - the ad object entered the `WITH_ISSUES`     state. `status.raw` is set to `WITH_ISSUES` and the `error` block is     populated from Meta's `error_code` / `error_summary` / `error_message`.  `adObject.level` mirrors Meta's `level` and is one of `CAMPAIGN`, `AD_SET`, or `AD`. Creative-level events are not forwarded.  Branch on `status.raw` to handle each transition; use `error.code` (when present) as the stable discriminator, since `error.summary` and `error.message` are localized to the ad-account owner's Meta locale.  The `error` block is optional. It's present on most `WITH_ISSUES` events but can be absent (Meta does not always include diagnostics), and is never present on any other status. Always null-check `error` before reading `error.code`.  **Fan-out:** matching is keyed on `adObject.platformAdAccountId`. When multiple connected Zernio `metaads` accounts are linked to the same Meta ad account, each receives its own delivery.
+Fired when a campaign, ad set, or ad on a connected ad platform changes status. Currently emitted only for Meta (`metaads`).  It subscribes to two Meta `ad_account` webhook fields:  - `in_process_ad_objects`: the ad object finished processing and exited the `IN_PROCESS` state. `status.raw` carries Meta's `status_name` (e.g. `ACTIVE`, `PAUSED`, `ARCHIVED`, `DELETED`). - `with_issues_ad_objects`: the ad object entered the `WITH_ISSUES` state. `status.raw` is `WITH_ISSUES` and the `error` block is populated from Meta's `error_code` / `error_summary` / `error_message`.  `adObject.level` mirrors Meta's `level` and is one of `CAMPAIGN`, `AD_SET`, or `AD`. Creative-level events are not forwarded.  Branch on `status.raw` to handle each transition. Use `error.code` (when present) as the stable discriminator, since `error.summary` and `error.message` are localized to the ad-account owner's Meta locale.  The `error` block is optional:  - It is present on most `WITH_ISSUES` events but can be absent (Meta does not always include diagnostics). - It is never present on any other status. - Always null-check `error` before reading `error.code`.  **Fan-out:** matching is keyed on `adObject.platformAdAccountId`. When multiple connected Zernio `metaads` accounts are linked to the same Meta ad account, each receives its own delivery.
 
 ### Example
 
@@ -1017,7 +1017,7 @@ onApiChangelogPublished($webhook_payload_api_changelog_published)
 
 API changelog entry published event
 
-Fired when an entry is published to the API changelog (https://docs.zernio.com/changelog), which happens when a change to this OpenAPI spec goes live. The event belongs to no profile or account: every active subscription that opted in receives it, scoped subscriptions (`profileIds` / `accountIds`) do not. `entry.changes` is the deterministic diff of the spec (operations and schemas added, removed and modified); `entry.impact` says whether an existing integration must act (`action_required`), only gained something (`additive`) or nothing changed beyond descriptions (`none`); `entry.message` is the written announcement. Act on `impact` and `changes`, read `message` for the why. Entries are listed by `GET /v1/changelog`.
+Fired when an entry is published to the API changelog (https://docs.zernio.com/changelog), which happens when a change to this OpenAPI spec goes live.  The event belongs to no profile or account. Every active subscription that opted in receives it; scoped subscriptions (`profileIds` / `accountIds`) do not.  - `entry.changes` is the deterministic diff of the spec (operations and schemas added, removed and modified). - `entry.impact` says whether an existing integration must act (`action_required`), only gained something (`additive`) or nothing changed beyond descriptions (`none`). - `entry.message` is the written announcement.  Act on `impact` and `changes`; read `message` for the why. Entries are listed by `GET /v1/changelog`.
 
 ### Example
 
@@ -1076,7 +1076,7 @@ onBrandedCallingIdentityActionRequired($on_branded_calling_identity_action_requi
 
 Caller identity action required event
 
-Fired when a caller identity waits on you. `reason` says what: `changes_requested` (answer the review with PATCH), `email_code` (the authorizer got a 6-digit code from the carrier; confirm it with the verify-email endpoint), `rejected` (the carrier rejected it; fix and PATCH), `infringement_claim` (a third party disputes the name or logo; reply to our email with evidence) or `expired` (resubmit).
+Fired when a caller identity waits on you. `reason` says what:  - `changes_requested`: answer the review with PATCH. - `email_code`: the authorizer got a 6-digit code from the carrier. Confirm it with the verify-email endpoint. - `rejected`: the carrier rejected it. Fix and PATCH. - `infringement_claim`: a third party disputes the name or logo. Reply to our email with evidence. - `expired`: resubmit.
 
 ### Example
 
@@ -1135,7 +1135,7 @@ onBrandedCallingIdentityStatusUpdated($on_branded_calling_identity_status_update
 
 Caller identity status updated event
 
-Fired on every status change of a Branded Calling caller identity: `requested` (a new submission or resubmit, in our review), `changes_requested` (we need answers, see `branded_calling.identity.action_required`), `rejected` (by our review or by the carrier; `reason` says why), `pending_email_verification` (filed with the carrier; the authorizer enters the emailed code), `in_review` (carrier vetting), `verified` (live for a year: attach numbers), `suspended` (an infringement claim is open), `expired` and `permanently_rejected`.
+Fired on every status change of a Branded Calling caller identity:  - `requested`: a new submission or resubmit, in our review. - `changes_requested`: we need answers, see `branded_calling.identity.action_required`. - `rejected`: by our review or by the carrier. `reason` says why. - `pending_email_verification`: filed with the carrier; the authorizer enters the emailed code. - `in_review`: carrier vetting. - `verified`: live for a year, attach numbers. - `suspended`: an infringement claim is open. - `expired`. - `permanently_rejected`.
 
 ### Example
 
@@ -2370,7 +2370,7 @@ onCommentReceived($webhook_payload_comment)
 
 Comment received event
 
-Fired when a new comment is received on a tracked post. Delivered for Instagram, Facebook, Threads, YouTube, LinkedIn, Bluesky, Reddit and TikTok. X/Twitter does NOT fire this event. Instagram, Facebook and TikTok arrive in real time from the platform's own webhook; the rest are poll-driven, so delivery is not instant. TikTok needs an account connected through the TikTok for Business app.
+Fired when a new comment is received on a tracked post.  - Delivered for Instagram, Facebook, Threads, YouTube, LinkedIn, Bluesky, Reddit and TikTok. - X/Twitter does NOT fire this event. - Instagram, Facebook and TikTok arrive in real time from the platform's own webhook. The rest are poll-driven, so delivery is not instant. - TikTok needs an account connected through the TikTok for Business app.
 
 ### Example
 
@@ -3078,7 +3078,7 @@ onConversationControlChanged($webhook_payload_conversation_control_changed)
 
 Conversation control changed event
 
-Fired on Meta's handover protocol (`messaging_handovers`). WhatsApp: control moves between Meta Business Agent and your app, or the agent is first seen answering a thread; while `control.owner` is `ai_agent`, inbound messages arrive on `message.received` with `metadata.standby: true` and the agent's replies on `message.sent` with `source: meta_business_agent`, and sending any message takes control back. Facebook and Instagram: another app passed you the thread (`owner: app`) or took or received it (`owner: other`, with `ownerAppId`); while you are not the owner, inbound arrive with `metadata.standby: true`, no automation runs, and sends fail with `not_thread_owner`. Change control with `POST /v1/inbox/conversations/{conversationId}/thread-control`. `take` and `request` answer 400 `platform_not_supported` on Instagram Login connections.
+Fired on Meta's handover protocol (`messaging_handovers`), when control of a conversation thread changes.  WhatsApp: control moves between Meta Business Agent and your app, or the agent is first seen answering a thread. While `control.owner` is `ai_agent`:  - Inbound messages arrive on `message.received` with `metadata.standby: true`. - The agent's replies arrive on `message.sent` with `source: meta_business_agent`. - Sending any message takes control back.  Facebook and Instagram: another app passed you the thread (`owner: app`), or took or received it (`owner: other`, with `ownerAppId`). While you are not the owner:  - Inbound messages arrive with `metadata.standby: true`. - No automation runs. - Sends fail with `not_thread_owner`.  Change control with `POST /v1/inbox/conversations/{conversationId}/thread-control`. `take` and `request` answer 400 `platform_not_supported` on Instagram Login connections.
 
 ### Example
 
@@ -3607,7 +3607,7 @@ onMessageDeleted($webhook_payload_message_deleted)
 
 Message deleted event
 
-Fired when a sender deletes (unsends) a message. Supported on Instagram (incoming unsend) and WhatsApp in both directions: an outgoing message the business deleted (via the Cloud API, or from the WhatsApp Business app on a Coexistence number) and an incoming message the customer deleted. Read `message.direction` to tell the two apart. The payload retains the pre-delete text and attachments so API consumers can access the original content for moderation or compliance; the Zernio dashboard UI hides it.
+Fired when a sender deletes (unsends) a message.  - Instagram: incoming unsend. - WhatsApp, outgoing: a message the business deleted (via the Cloud API, or from the WhatsApp Business app on a Coexistence number). - WhatsApp, incoming: a message the customer deleted.  Read `message.direction` to tell the two directions apart.  The payload retains the pre-delete text and attachments so API consumers can access the original content for moderation or compliance. The Zernio dashboard UI hides it.
 
 ### Example
 
@@ -4020,7 +4020,7 @@ onMessageSent($webhook_payload_message_sent)
 
 Message sent event
 
-Fired when a message is sent via the API, or from the WhatsApp Business app on Coexistence numbers. Sends that carry platform-specific context deliver it under `metadata`, so a quote-reply sent through the API arrives with `metadata.quotedMessageId` and mirroring CRMs can thread it without a lookup. Which surfaces actually carry that reference is documented on `WebhookPayloadMessageSent.metadata.quotedMessageId`; a quote-reply sent from the WhatsApp Business or Instagram app is not one of them.
+Fired when a message is sent via the API, or from the WhatsApp Business app on Coexistence numbers.  Sends that carry platform-specific context deliver it under `metadata`. A quote-reply sent through the API arrives with `metadata.quotedMessageId`, so mirroring CRMs can thread it without a lookup.  Which surfaces carry that reference is documented on `WebhookPayloadMessageSent.metadata.quotedMessageId`. A quote-reply sent from the WhatsApp Business or Instagram app is not one of them.
 
 ### Example
 
@@ -4315,7 +4315,7 @@ onPostExternalDeleted($webhook_payload_external_post)
 
 External post deleted event
 
-Fired when a tracked native post is detected as removed from the platform. `post.deletedAt` carries the detection time. Coverage is bounded to the most recent posts the platform listing returns. Detection is a diff against the posts a prior sync already indexed, so an account for which no post has ever been indexed can never emit this event, no matter how the subscription is configured.
+Fired when a tracked native post is detected as removed from the platform.  - `post.deletedAt` carries the detection time. - Coverage is bounded to the most recent posts the platform listing returns. - Detection diffs against the posts a prior sync already indexed. An account with no indexed post can never emit this event, no matter how the subscription is configured.
 
 ### Example
 
@@ -4551,7 +4551,7 @@ onPostPlatformDeleted($webhook_payload_post_platform)
 
 Post platform deleted event
 
-Fired when Zernio's background sync detects that a platform target published through Zernio was later deleted on the platform (e.g. the user deleted the Instagram post natively). Detection is poll-driven (~hourly), not real-time, and fires once per platform target. `platform.deletedAt` carries the detection time. Detection is listing-based: a false positive self-heals in Zernio's data when the post reappears, but the event is not retracted. Coverage is bounded to the posts the platform listing returns. Detection is a diff against the posts a prior sync already indexed, so an account for which no post has ever been indexed can never emit this event, no matter how the subscription is configured.
+Fired when Zernio's background sync detects that a platform target published through Zernio was later deleted on the platform (e.g. the user deleted the Instagram post natively).  - Detection is poll-driven (~hourly), not real-time, and fires once per platform target. - `platform.deletedAt` carries the detection time. - Detection is listing-based: a false positive self-heals in Zernio's data when the post reappears, but the event is not retracted. - Coverage is bounded to the posts the platform listing returns. - Detection diffs against the posts a prior sync already indexed. An account with no indexed post can never emit this event, no matter how the subscription is configured.
 
 ### Example
 
@@ -4610,7 +4610,7 @@ onPostPlatformFailed($webhook_payload_post_platform)
 
 Post platform failed event
 
-Fired once per platform target inside a post as that platform fails permanently. Temporary/retryable failures do NOT fire this event, only permanent ones do, so retry loops stay quiet. The envelope event (`post.failed` / `post.partial`) fires separately AFTER all platforms have terminated. Can also fire a second time for a target that already emitted `post.platform.published`, if background reconciliation later discovers the publish never actually completed.
+Fired once per platform target inside a post when that platform fails permanently.  - Temporary/retryable failures do NOT fire this event, so retry loops stay quiet. - The envelope event (`post.failed` / `post.partial`) fires separately, AFTER all platforms have terminated. - It can fire for a target that already emitted `post.platform.published`, if background reconciliation later finds the publish never actually completed.
 
 ### Example
 
@@ -4669,7 +4669,7 @@ onPostPlatformPublished($webhook_payload_post_platform)
 
 Post platform published event
 
-Fired once per platform target inside a post as that platform finishes publishing successfully. Does NOT wait for the post-level rollup, so consumers building incremental UIs get notified immediately, even when other platforms on the same post are still processing. The envelope event (`post.published` / `post.partial`) fires separately AFTER all platforms have terminated. A target that later fails background reconciliation (e.g. a Facebook video Meta accepted but never actually published) emits `post.platform.failed` for the same target afterward.
+Fired once per platform target inside a post, as soon as that platform finishes publishing successfully.  It does NOT wait for the post-level rollup, so incremental UIs get notified immediately, even while other platforms on the same post are still processing.  - The envelope event (`post.published` / `post.partial`) fires separately, AFTER all platforms have terminated. - If a target later fails background reconciliation (e.g. a Facebook video Meta accepted but never actually published), `post.platform.failed` fires for the same target afterward.
 
 ### Example
 
@@ -4905,7 +4905,7 @@ onPostTikTokUrlResolved($webhook_payload_post_platform)
 
 TikTok post URL resolved event
 
-Fired when an already-published TikTok platform entry gets its public URL backfilled. TikTok exposes the numeric video id asynchronously (often minutes after PUBLISH_COMPLETE), so the terminal events can carry an empty `publishedUrl` for TikTok. This event delivers `platform.publishedUrl` and the resolved `platform.platformPostId` once available. At most once per platform target; never fires for drafts or private posts (no public URL exists). Payload shape is identical to `post.platform.published`.
+Fired when an already-published TikTok platform entry gets its public URL backfilled.  TikTok exposes the numeric video id asynchronously (often minutes after PUBLISH_COMPLETE), so the terminal events can carry an empty `publishedUrl` for TikTok. This event delivers `platform.publishedUrl` and the resolved `platform.platformPostId` once available.  - Fires at most once per platform target. - Never fires for drafts or private posts (no public URL exists). - The payload shape is identical to `post.platform.published`.
 
 ### Example
 
@@ -5023,7 +5023,7 @@ onRcsAgentStatusUpdated($on_rcs_agent_status_updated_request)
 
 RCS agent status updated event
 
-Fired on every customer-visible status change of an RCS agent: `changes_requested` (we need changes before filing, `reason` is our note), `brand_vetting`, `agent_review`, `testing` (add test phones, then send the launch filing; with a `reason` the launch filing bounced), `launch_review`, `launching`, `live` (the agent can message any RCS-capable phone), `rejected` (`reason` says why) and `deactivated`.
+Fired on every customer-visible status change of an RCS agent:  - `changes_requested`: we need changes before filing. `reason` is our note. - `brand_vetting`. - `agent_review`. - `testing`: add test phones, then send the launch filing. With a `reason`, the launch filing bounced. - `launch_review`. - `launching`. - `live`: the agent can message any RCS-capable phone. - `rejected`: `reason` says why. - `deactivated`.
 
 ### Example
 
@@ -5082,7 +5082,7 @@ onReactionReceived($webhook_payload_reaction)
 
 Reaction received event
 
-Fired when a participant adds or removes an emoji reaction on a message. Supported on WhatsApp, Telegram, Slack, Instagram, Facebook Messenger and TikTok. Distinct from message.received so a reaction (e.g. a thumbs-up) is not mistaken for an inbound message. On TikTok a like or emoji reaction on a DM arrives only as this event (never as an empty message.received), with `reaction.platformMessageId` set to the TikTok id of the liked message. The `reaction.action` field is `added` or `removed`. On WhatsApp and Meta removals the platform does not report which emoji was removed, so `reaction.emoji` may be an empty string. Instagram and Facebook accounts connected before reactions shipped only emit this event after their webhook subscription is refreshed; reconnect the account if reactions never arrive. Requires the Inbox add-on.
+Fired when a participant adds or removes an emoji reaction on a message. Requires the Inbox add-on.  Supported on WhatsApp, Telegram, Slack, Instagram, Facebook Messenger and TikTok. It is distinct from message.received, so a reaction (e.g. a thumbs-up) is not mistaken for an inbound message.  - `reaction.action` is `added` or `removed`. - On WhatsApp and Meta removals, the platform does not report which emoji was removed, so `reaction.emoji` may be an empty string. - On TikTok, a like or emoji reaction on a DM arrives only as this event (never as an empty message.received), with `reaction.platformMessageId` set to the TikTok id of the liked message. - Instagram and Facebook accounts connected before reactions shipped only emit this event after their webhook subscription is refreshed. Reconnect the account if reactions never arrive.
 
 ### Example
 
@@ -5141,7 +5141,7 @@ onReferralReceived($webhook_payload_referral)
 
 Referral received event
 
-Fired when someone opens an EXISTING Instagram or Messenger thread through an attributable entry point - an ig.me / m.me link with a `ref` parameter, or (Messenger) a returning Click-to-Message ad click - which Meta delivers as a standalone referral with no message attached. A referral that rides an inbound message (first message of a thread, icebreaker taps, returning ad clicks on Instagram) arrives on `message.received` under `metadata.referral` instead; the two never fire for the same click. The first referral captured on a conversation is also persisted on it (see `metadata` on `GET /v1/inbox/conversations`). Requires the Inbox add-on.
+Fired when someone opens an EXISTING Instagram or Messenger thread through an attributable entry point, which Meta delivers as a standalone referral with no message attached. Requires the Inbox add-on.  Entry points:  - An ig.me / m.me link with a `ref` parameter. - (Messenger) A returning Click-to-Message ad click.  A referral that rides an inbound message (first message of a thread, icebreaker taps, returning ad clicks on Instagram) arrives on `message.received` under `metadata.referral` instead. The two never fire for the same click.  The first referral captured on a conversation is also persisted on it (see `metadata` on `GET /v1/inbox/conversations`).
 
 ### Example
 
@@ -5436,7 +5436,7 @@ onSmsRegistrationActionRequired($on_sms_registration_action_required_request)
 
 SMS registration action required event
 
-Fired when an SMS registration starts waiting on its owner. `reason` says why: `changes_requested` (we need answers to some points, before submission or to fix a carrier rejection; `message` is the request, answer with POST /v1/sms/registrations/{id}/respond), `otp_required` (a sole-proprietor brand needs the code texted to its mobile, submit it with POST /v1/sms/registrations/{id}/verify-otp) or `carrier_info_required` (the toll-free carrier asked for more information; the request expires after 7 days). A carrier rejection alone does not fire it: we handle the fix, see `sms.registration.status_updated`. Fires once per new request (not on follow-up messages) and once per OTP or carrier request.
+Fired when an SMS registration starts waiting on its owner. `reason` says why:  - `changes_requested`: we need answers to some points, before submission or to fix a carrier rejection. `message` is the request; answer with POST /v1/sms/registrations/{id}/respond. - `otp_required`: a sole-proprietor brand needs the code texted to its mobile. Submit it with POST /v1/sms/registrations/{id}/verify-otp. - `carrier_info_required`: the toll-free carrier asked for more information. The request expires after 7 days.  A carrier rejection alone does not fire it: we handle the fix, see `sms.registration.status_updated`.  It fires once per new request (not on follow-up messages) and once per OTP or carrier request.
 
 ### Example
 
@@ -5495,7 +5495,7 @@ onSmsRegistrationStatusUpdated($on_sms_registration_status_updated_request)
 
 SMS registration status updated event
 
-Fired on every status change of an SMS registration: `changes_requested` (we need answers, see `sms.registration.action_required`), `requested` (a new submission or resubmit, or your answers are back in our review), `pending` (with the carriers, including after we fixed and resent a rejection), `approved` (live: attach numbers and send), `rejected` (the carriers declined it; `reason` is their words and we handle the fix) and `deactivated`.
+Fired on every status change of an SMS registration:  - `changes_requested`: we need answers, see `sms.registration.action_required`. - `requested`: a new submission or resubmit, or your answers are back in our review. - `pending`: with the carriers, including after we fixed and resent a rejection. - `approved`: live, attach numbers and send. - `rejected`: the carriers declined it. `reason` is their words and we handle the fix. - `deactivated`.
 
 ### Example
 
@@ -5908,7 +5908,7 @@ onWhatsAppAccountNameStatusUpdated($webhook_payload_whats_app_account_name_statu
 
 WhatsApp display-name review outcome event
 
-Fired when Meta finishes reviewing a WhatsApp Business display-name change. Forwarded from Meta's `phone_number_name_update` webhook field on the WhatsApp Business Account. Fires only on a review outcome (`name.status` APPROVED, DECLINED, or PENDING_REVIEW); a name applied without review reports `name_status: AVAILABLE_WITHOUT_REVIEW` on the phone node instead and produces no event here. `decision` REJECTED maps to DECLINED and DEFERRED maps to PENDING_REVIEW, matching the `name_status` vocabulary returned by `GET /v1/whatsapp/number-info`. Delivery is at-least-once; dedupe on `(account.accountId, name.status, name.requestedName)`.
+Fired when Meta finishes reviewing a WhatsApp Business display-name change. Forwarded from Meta's `phone_number_name_update` webhook field on the WhatsApp Business Account.  - It fires only on a review outcome: `name.status` APPROVED, DECLINED, or PENDING_REVIEW. - A name applied without review reports `name_status: AVAILABLE_WITHOUT_REVIEW` on the phone node instead, and produces no event here. - `decision` REJECTED maps to DECLINED and DEFERRED maps to PENDING_REVIEW, matching the `name_status` vocabulary returned by `GET /v1/whatsapp/number-info`.  Delivery is at-least-once; dedupe on `(account.accountId, name.status, name.requestedName)`.
 
 ### Example
 
@@ -6085,7 +6085,7 @@ onWhatsAppAutomaticEvent($on_whats_app_automatic_event_request)
 
 WhatsApp automatic event detected
 
-Fired when Meta's automatic event identification (opt-in during Embedded Signup; not available for EU/UK/JP businesses) detects a lead or purchase in a Click-to-WhatsApp conversation. Branch on `eventName` (`LeadSubmitted` | `Purchase`). Carries the `ctwa_clid`. Meta omits that clid on a minority of referrals on any number (coexistence or not, most often WhatsApp Status placements); when it does, this event can supply it and Zernio writes it back onto the conversation, so POST /v1/whatsapp/conversions becomes usable for the thread.
+Fired when Meta's automatic event identification detects a lead or purchase in a Click-to-WhatsApp conversation. The identification is opt-in during Embedded Signup and not available for EU/UK/JP businesses.  - Branch on `eventName` (`LeadSubmitted` | `Purchase`). - It carries the `ctwa_clid`.  Meta omits that clid on a minority of referrals on any number (coexistence or not, most often WhatsApp Status placements). When it does, this event can supply it and Zernio writes it back onto the conversation, so POST /v1/whatsapp/conversions becomes usable for the thread.
 
 ### Example
 
@@ -6203,7 +6203,7 @@ onWhatsAppNumberActionRequired($on_whats_app_number_action_required_request)
 
 WhatsApp number action required event
 
-Fired when the regulator asks for more information on an already-placed regulated number order. The number stays pending (nothing was rejected); the customer can provide the missing information from the dashboard, or via the remediation endpoint. `reason` carries the regulator's request verbatim when available. `requirements` lists every requirement on the order with the reviewer's current verdict; the `declined` ones are what to fix, keyed by the same `requirementId` the remediation endpoint uses. Verdicts only change when a reviewer acts, so they describe the review at `reviewedAt`, the time of the reviewer's last comment.
+Fired when the regulator asks for more information on an already-placed regulated number order.  The number stays pending (nothing was rejected). The customer can provide the missing information from the dashboard, or via the remediation endpoint.  - `reason` carries the regulator's request verbatim when available. - `requirements` lists every requirement on the order with the reviewer's current verdict. The `declined` ones are what to fix, keyed by the same `requirementId` the remediation endpoint uses. - Verdicts only change when a reviewer acts, so they describe the review at `reviewedAt`, the time of the reviewer's last comment.
 
 ### Example
 
@@ -6675,7 +6675,7 @@ onWhatsAppTemplateCategoryUpdated($webhook_payload_whats_app_template_category_u
 
 WhatsApp template category updated event
 
-Fired when Meta reclassifies a WhatsApp Business template's category after approval. Forwarded from Meta's `template_category_update` webhook field on the WhatsApp Business Account. Category drives Meta's per-conversation tariff and whether the template is subject to the recipient's marketing opt-out. `template.changeType` is `scheduled` (24h advance notice) or `applied`; `template.category` is always the category right now.
+Fired when Meta reclassifies a WhatsApp Business template's category after approval.  It is forwarded from Meta's `template_category_update` webhook field on the WhatsApp Business Account. Category drives Meta's per-conversation tariff and whether the template is subject to the recipient's marketing opt-out.  - `template.changeType` is `scheduled` (24h advance notice) or `applied`. - `template.category` is always the category right now.
 
 ### Example
 

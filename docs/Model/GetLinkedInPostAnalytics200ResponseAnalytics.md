@@ -13,6 +13,6 @@ Name | Type | Description | Notes
 **sends** | **int** | Times the post was sent via LinkedIn messaging (personal accounts only; 0 for organization accounts) | [optional]
 **clicks** | **int** | Clicks on the post (organization accounts only) | [optional]
 **views** | **int** | Video views (video posts only) | [optional]
-**engagement_rate** | **float** | Engagement rate, as a percentage rounded to 2 decimals: (likes + comments + shares + clicks + saves + sends) / impressions * 100. Unlike PostAnalytics.engagementRate on GET /v1/analytics, this one DOES count clicks and has no fallback denominator, so it is 0 whenever impressions is 0. For organization accounts the value is the rate LinkedIn returns, not one computed here. | [optional]
+**engagement_rate** | **float** | Engagement rate, as a percentage rounded to 2 decimals: (likes + comments + shares + clicks + saves + sends) / impressions * 100.  Unlike PostAnalytics.engagementRate on GET /v1/analytics, this one DOES count clicks and has no fallback denominator, so it is 0 whenever impressions is 0.  For organization accounts the value is the rate LinkedIn returns, not one computed here. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

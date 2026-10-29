@@ -197,7 +197,7 @@ verifyCredential(): \Zernio\Model\VerifyCredential200Response
 
 Verify credential
 
-Checks whether the bearer credential on this request is valid, without reading any data. Accepts an API key or an OAuth access token. Intended for clients that must validate a credential before use (for example an MCP server verifying an incoming token) so they do not have to call a data endpoint to do it.
+Checks whether the bearer credential on this request is valid, without reading any data. Accepts an API key or an OAuth access token.  Intended for clients that must validate a credential before use (for example an MCP server verifying an incoming token), so they do not have to call a data endpoint to do it.
 
 ### Example
 

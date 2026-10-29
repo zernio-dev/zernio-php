@@ -330,7 +330,7 @@ searchTweets($account_id, $query, $limit, $since_id, $until_id, $start_time, $en
 
 Search recent tweets
 
-Search public tweets from the last 7 days matching an X search query, e.g. to discover tweets to reply to. The query string is passed through to X unchanged and supports X's search operators (`from:user`, `-is:retweet`, `is:reply`, `lang:en`, `\"exact phrase\"`, `conversation_id:123`, boolean `OR`, ...). Standalone operators like `is:` / `has:` / `lang:` must be combined with a keyword or `from:` clause.  To reply to a found tweet, pass its `id` as the twitter platform entry's `platformSpecificData.replyToTweetId` when creating a post.  Rate limit: 300 requests per 15-min window per connected account.
+Search public tweets from the last 7 days matching an X search query, e.g. to discover tweets to reply to.  ### Query syntax  The query string is passed through to X unchanged and supports X's search operators: `from:user`, `-is:retweet`, `is:reply`, `lang:en`, `\"exact phrase\"`, `conversation_id:123`, boolean `OR`, ...  Standalone operators like `is:` / `has:` / `lang:` must be combined with a keyword or `from:` clause.  ### Replying  To reply to a found tweet, pass its `id` as the twitter platform entry's `platformSpecificData.replyToTweetId` when creating a post.  ### Rate limit  300 requests per 15-min window per connected account.
 
 ### Example
 

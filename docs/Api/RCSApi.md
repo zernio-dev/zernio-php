@@ -1,6 +1,6 @@
 # Zernio\RCSApi
 
-Branded, verified RCS messaging. Each agent is a sender with your name, logo, banner and verified tick, owned by a vetted company (brand). The US is self-serve end to end; other markets are filed with the carriers by our team after review.  Lifecycle: &#x60;requested&#x60; (our review, nothing filed or billed) -&gt; &#x60;brand_vetting&#x60; -&gt; &#x60;agent_review&#x60; -&gt; &#x60;testing&#x60; (invite test phones, then send the launch filing) -&gt; &#x60;launch_review&#x60; (our review) -&gt; &#x60;launching&#x60; (carrier review) -&gt; &#x60;live&#x60;. Side exits: &#x60;changes_requested&#x60;, &#x60;rejected&#x60;, &#x60;deactivated&#x60;. Status changes fire &#x60;rcs.agent.status_updated&#x60;.  Pricing per agent in the US: $150 when we submit it to the carriers, $750 when it goes live, then $160/mo month to month from go-live (nothing monthly during carrier review). Other markets: $150 when filed, then $75/mo from go-live. Messages (sent and received) at 1.5x carrier cost. Set &#x60;smsFallbackFrom&#x60; to one of your SMS-enabled numbers and phones without RCS get the message as SMS.
+Branded, verified RCS messaging. Each agent is a sender with your name, logo, banner and verified tick, owned by a vetted company (brand). The US is self-serve end to end; in other markets our team files with the carriers after review.  **Lifecycle:** &#x60;requested&#x60; (our review, nothing filed or billed) -&gt; &#x60;brand_vetting&#x60; -&gt; &#x60;agent_review&#x60; -&gt; &#x60;testing&#x60; (invite test phones, then send the launch filing) -&gt; &#x60;launch_review&#x60; (our review) -&gt; &#x60;launching&#x60; (carrier review) -&gt; &#x60;live&#x60;.  Side exits: &#x60;changes_requested&#x60;, &#x60;rejected&#x60;, &#x60;deactivated&#x60;. Status changes fire &#x60;rcs.agent.status_updated&#x60;.  **Pricing per agent:**  - US: $150 when we submit it to the carriers, $750 when it goes live, then $160/mo month to month from go-live (nothing monthly during carrier review). - Other markets: $150 when filed, then $75/mo from go-live. - Messages (sent and received): 1.5x carrier cost.  Set &#x60;smsFallbackFrom&#x60; to one of your SMS-enabled numbers and phones without RCS get the message as SMS.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
@@ -91,7 +91,7 @@ createRcsAgent($create_rcs_agent_request, $idempotency_key): \Zernio\Model\Creat
 
 Request an RCS agent
 
-Requests a new agent for a profile, with a new company (`brand`) or an existing one (`brandId`, skips vetting when it is already verified). The request lands in our review: nothing is filed with the carriers or billed until we submit it. A profile can hold several agents. Requires usage-based billing and a card on file. Send an `Idempotency-Key` header to make retries safe.
+Requests a new agent for a profile, with a new company (`brand`) or an existing one (`brandId`, skips vetting when it is already verified). A profile can hold several agents.  The request lands in our review: nothing is filed with the carriers or billed until we submit it.  - Requires usage-based billing and a card on file. - Send an `Idempotency-Key` header to make retries safe.
 
 ### Example
 
@@ -111,7 +111,7 @@ $apiInstance = new Zernio\Api\RCSApi(
     $config
 );
 $create_rcs_agent_request = new \Zernio\Model\CreateRcsAgentRequest(); // \Zernio\Model\CreateRcsAgentRequest
-$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
 
 try {
     $result = $apiInstance->createRcsAgent($create_rcs_agent_request, $idempotency_key);
@@ -126,7 +126,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **create_rcs_agent_request** | [**\Zernio\Model\CreateRcsAgentRequest**](../Model/CreateRcsAgentRequest.md)|  | |
-| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
 
 ### Return type
 
@@ -566,7 +566,7 @@ requestRcsAgentLaunch($agent_id, $rcs_launch_request): \Zernio\Model\CreateRcsAg
 
 Send the launch filing
 
-Sends the launch details the carriers review (campaign, consent and a public test video). US agents send them once they are in `testing`; we review them before they reach the carriers. Agents in other markets send them while still in review (`requested`, `changes_requested` or `brand_vetting`), because we file everything with the carriers at once; this saves the details without changing the status.
+Sends the launch details the carriers review (campaign, consent and a public test video).  ### When to send  - **US agents**: send them once they are in `testing`. We review them before they reach the carriers. - **Other markets**: send them while still in review (`requested`, `changes_requested` or `brand_vetting`), because we file everything with the carriers at once. This saves the details without changing the status.
 
 ### Example
 
@@ -628,7 +628,7 @@ sendRcsMessage($send_rcs_message_request, $idempotency_key): \Zernio\Model\SendR
 
 Send an RCS message
 
-Sends from one of your agents. Use `text` for a plain message or `content` for rich content (card, carousel, media, suggestion chips). Before launch an agent only reaches test phones that accepted the invite. With the agent's `smsFallbackFrom` set, phones without RCS get `fallbackText` (default: the message's readable text) as SMS.  Replies and status arrive as webhooks with `platform: \"rcs\"`: `message.received` (a tapped chip carries its postback in `metadata.postbackPayload`), `message.delivered`, `message.read` and `message.failed`. Send an `Idempotency-Key` header to make retries safe.
+Sends an RCS message from one of your agents.  - Use `text` for a plain message or `content` for rich content (card, carousel, media, suggestion chips). - Before launch an agent only reaches test phones that accepted the invite. - With the agent's `smsFallbackFrom` set, phones without RCS get `fallbackText` (default: the message's readable text) as SMS.  Send an `Idempotency-Key` header to make retries safe.  ### Webhooks  Replies and status arrive as webhooks with `platform: \"rcs\"`:  - `message.received` (a tapped chip carries its postback in `metadata.postbackPayload`) - `message.delivered` - `message.read` - `message.failed`
 
 ### Example
 
@@ -648,7 +648,7 @@ $apiInstance = new Zernio\Api\RCSApi(
     $config
 );
 $send_rcs_message_request = new \Zernio\Model\SendRcsMessageRequest(); // \Zernio\Model\SendRcsMessageRequest
-$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
 
 try {
     $result = $apiInstance->sendRcsMessage($send_rcs_message_request, $idempotency_key);
@@ -663,7 +663,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **send_rcs_message_request** | [**\Zernio\Model\SendRcsMessageRequest**](../Model/SendRcsMessageRequest.md)|  | |
-| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. A request cut off mid-handler (for example by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
 
 ### Return type
 

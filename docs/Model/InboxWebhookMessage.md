@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **text** | **string** | Message text content (retained on deleted messages for API consumers; Zernio dashboard UI hides this) |
 **attachments** | [**\Zernio\Model\InboxWebhookMessageAttachmentsInner[]**](InboxWebhookMessageAttachmentsInner.md) |  |
 **sender** | [**\Zernio\Model\InboxWebhookMessageSender**](InboxWebhookMessageSender.md) |  |
-**sent_at** | **\DateTime** | When the message was sent, as reported by the platform and passed through unmodified. Full ISO 8601 date-time: Instagram and Facebook carry millisecond precision, while some platforms (for example WhatsApp and Telegram) report whole seconds. Use this field as the chronological ordering key. If two messages share the same value, fetch the conversation messages with sortOrder&#x3D;desc for the deterministic order. |
+**sent_at** | **\DateTime** | When the message was sent, as reported by the platform and passed through unmodified. Use it as the chronological ordering key.  Full ISO 8601 date-time: Instagram and Facebook carry millisecond precision, while some platforms (for example WhatsApp and Telegram) report whole seconds. If two messages share the same value, fetch the conversation messages with sortOrder&#x3D;desc for the deterministic order. |
 **is_read** | **bool** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

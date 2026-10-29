@@ -11,6 +11,6 @@ Name | Type | Description | Notes
 **shares** | **int** | Total reshares across all posts | [optional]
 **saves** | **int** | Total times posts were saved (personal accounts only) | [optional]
 **sends** | **int** | Total times posts were sent via LinkedIn messaging (personal accounts only) | [optional]
-**engagement_rate** | **float** | Overall engagement rate, as a percentage rounded to 2 decimals: (reactions + comments + shares + saves + sends) / impressions * 100. Clicks are not counted, and there is no fallback denominator, so this is 0 whenever impressions is 0. This is NOT the same formula as PostAnalytics.engagementRate on GET /v1/analytics. | [optional]
+**engagement_rate** | **float** | Overall engagement rate, as a percentage rounded to 2 decimals: (reactions + comments + shares + saves + sends) / impressions * 100.  Clicks are not counted and there is no fallback denominator, so this is 0 whenever impressions is 0. NOT the same formula as PostAnalytics.engagementRate on GET /v1/analytics. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

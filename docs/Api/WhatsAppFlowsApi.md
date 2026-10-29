@@ -405,7 +405,7 @@ getWhatsAppFlowsEncryptionKey($account_id): \Zernio\Model\GetWhatsAppFlowsEncryp
 
 Get Flows encryption key status
 
-Read the RSA business public key registered on the phone number for WhatsApp Flows endpoint encryption. Only one key is active per phone number at a time. Flows that use flow_action: data_exchange (an endpoint-backed flow) stop working at runtime until the endpoint serves the matching private key, and Meta rejects publish with error code 139002 (\"Missing Flows Signed Public Key\") when no key is registered. `registered` reflects whether a key is present, never `signatureStatus` alone: Meta reports an unregistered key as MISMATCH rather than a null/absent value.
+Read the RSA business public key registered on the phone number for WhatsApp Flows endpoint encryption. Only one key is active per phone number at a time.  ### Why the key matters  - Flows that use flow_action: data_exchange (an endpoint-backed flow) stop working at runtime until the endpoint serves the matching private key. - Meta rejects publish with error code 139002 (\"Missing Flows Signed Public Key\") when no key is registered.  ### Reading the status  `registered` reflects whether a key is present, never `signatureStatus` alone. Meta reports an unregistered key as MISMATCH rather than a null/absent value.
 
 ### Example
 
@@ -465,7 +465,7 @@ listWhatsAppFlowResponses($account_id, $flow_id, $limit): \Zernio\Model\ListWhat
 
 List flow responses
 
-List the responses customers submitted when completing a flow (parsed from the nfm_reply messages received via webhook), newest first. Scope to a single flow with `flowId`, which matches responses whose flow_token carries the `<flowId>:` prefix that Zernio stamps on auto-generated tokens at send time. Responses sent with a custom integrator-supplied flow_token are not attributed to a flow.
+List the responses customers submitted when completing a flow (parsed from the nfm_reply messages received via webhook), newest first.  Scope to a single flow with `flowId`. It matches responses whose flow_token carries the `<flowId>:` prefix that Zernio stamps on auto-generated tokens at send time.  Responses sent with a custom integrator-supplied flow_token are not attributed to a flow.
 
 ### Example
 
@@ -773,7 +773,7 @@ setWhatsAppFlowsEncryptionKey($set_whats_app_flows_encryption_key_request): \Zer
 
 Register a Flows encryption key
 
-Register (or replace) the RSA business public key for WhatsApp Flows endpoint encryption on the phone number. Uploading a new key replaces the previous one: only one key is active per phone number. The corresponding private key must be served by the flow's endpoint, or endpoint-backed flows (flow_action: data_exchange) will fail at runtime even though the key is registered.
+Register (or replace) the RSA business public key for WhatsApp Flows endpoint encryption on the phone number.  - Uploading a new key replaces the previous one: only one key is active per phone number. - The corresponding private key must be served by the flow's endpoint. Otherwise endpoint-backed flows (flow_action: data_exchange) will fail at runtime even though the key is registered.
 
 ### Example
 

@@ -81,7 +81,7 @@ listProducts($account_id, $limit, $cursor, $status, $query): \Zernio\Model\ListP
 
 List products
 
-Lists the products on the connected store in the platform's default order, each with its variants, options and images. Cursor-paginated: pass `limit` (1-50, default 20) and the `cursor` from a previous response's `nextCursor`; `nextCursor` is null when there are no more pages. Filter with `status` and/or `query` (the platform's product search syntax, e.g. `title:*shirt* vendor:Acme tag:summer`).  Supported on Shopify (platform `shopify`); accounts on other platforms return 400. A store connected before product access was added answers 403 insufficient_permissions until the merchant reconnects it through `GET /v1/connect/shopify`.
+Lists the products on the connected store in the platform's default order, each with its variants, options and images.  ### Paging and filters  - Cursor-paginated: pass `limit` (1-50, default 20) and the `cursor` from a previous response's `nextCursor`. `nextCursor` is null when there are no more pages. - Filter with `status` and/or `query` (the platform's product search syntax, e.g. `title:*shirt* vendor:Acme tag:summer`).  ### Platforms  Supported on Shopify (platform `shopify`); accounts on other platforms return 400.  A store connected before product access was added answers 403 insufficient_permissions until the merchant reconnects it through `GET /v1/connect/shopify`.
 
 ### Example
 
@@ -149,7 +149,7 @@ updateProduct($account_id, $product_id, $update_product_request): \Zernio\Model\
 
 Update a product
 
-Partial-updates a product. Send any subset of `title`, `descriptionHtml`, `handle`, `vendor`, `productType`, `tags`, `status`, `seo` and `variants`; at least one field is required (an empty body returns 400). `tags` replaces the full tag list. `variants` updates the price and compare-at price of the listed variant ids only; other variants are untouched, and a variant id that does not belong to the product is a 400. Responds with the product as it is after the update.  Supported on Shopify (platform `shopify`); accounts on other platforms return 400. A store connected before product access was added answers 403 insufficient_permissions until the merchant reconnects it through `GET /v1/connect/shopify`.
+Partial-updates a product. Responds with the product as it is after the update.  ### Fields  Send any subset of these; at least one field is required (an empty body returns 400):  - `title` - `descriptionHtml` - `handle` - `vendor` - `productType` - `tags`: replaces the full tag list - `status` - `seo` - `variants`: updates the price and compare-at price of the listed variant ids only. Other variants are untouched, and a variant id that does not belong to the product is a 400.  ### Platform support  Supported on Shopify (platform `shopify`); accounts on other platforms return 400.  A store connected before product access was added answers 403 insufficient_permissions until the merchant reconnects it through `GET /v1/connect/shopify`.
 
 ### Example
 

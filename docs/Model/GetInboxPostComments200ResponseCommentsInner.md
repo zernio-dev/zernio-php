@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **platform** | **string** | The platform this comment is from | [optional]
 **url** | **string** | Direct link to the comment on the platform (if available) | [optional]
 **replies** | **object[]** |  | [optional]
-**replies_has_more** | **bool** | Facebook only. True when replies[] (capped at 10) does not hold the comment&#39;s full reply thread; fetch the rest by passing the comment id as the &#x60;commentId&#x60; query parameter to GET /v1/inbox/comments/{postId} (or, for backwards compatibility, as &#x60;postId&#x60;). Absent (not false) on every other platform, including Instagram, which has no equivalent signal. | [optional]
+**replies_has_more** | **bool** | Facebook only. True when replies[] (capped at 10) does not hold the comment&#39;s full reply thread.  Fetch the rest by passing the comment id as the &#x60;commentId&#x60; query parameter to GET /v1/inbox/comments/{postId} (or, for backwards compatibility, as &#x60;postId&#x60;).  Absent (not false) on every other platform, including Instagram, which has no equivalent signal. | [optional]
 **can_reply** | **bool** |  | [optional]
 **can_delete** | **bool** |  | [optional]
 **can_hide** | **bool** | Whether this comment can be hidden (Facebook, Instagram, Threads) | [optional]
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **is_liked** | **bool** | Whether the current user has liked this comment | [optional]
 **like_uri** | **string** | Bluesky like URI for unliking | [optional]
 **cid** | **string** | Bluesky content identifier | [optional]
-**parent_id** | **string** | ID of the parent comment. Present on entries inside replies[] for Facebook, Instagram and X. On X it is also present on top-level entries, where it holds the ID of the post replied to. Omitted entirely (key absent, not null) on top-level Facebook and Instagram entries and on every other platform, which express the parent relationship only through replies[] nesting. | [optional]
+**parent_id** | **string** | ID of the parent comment.  - Facebook and Instagram: present on entries inside replies[]; omitted on top-level entries. - X: present inside replies[] and on top-level entries, where it holds the ID of the post replied to. - Every other platform: omitted; the parent relationship is expressed only through replies[] nesting.  When omitted, the key is absent, not null. | [optional]
 **root_uri** | **string** | Bluesky root post URI | [optional]
 **root_cid** | **string** | Bluesky root post CID | [optional]
 
