@@ -155,6 +155,7 @@ docs/Model/AdStatus.md
 docs/Model/AdTracking.md
 docs/Model/AdTreeAdSet.md
 docs/Model/AdTreeAdSetAdSetBudget.md
+docs/Model/AdTreeAdSetAttributionSpecInner.md
 docs/Model/AdTreeAdSetBudget.md
 docs/Model/AdTreeAdSetPromotedObject.md
 docs/Model/AdTreeCampaign.md
@@ -3417,6 +3418,7 @@ lib/Model/AdStatus.php
 lib/Model/AdTracking.php
 lib/Model/AdTreeAdSet.php
 lib/Model/AdTreeAdSetAdSetBudget.php
+lib/Model/AdTreeAdSetAttributionSpecInner.php
 lib/Model/AdTreeAdSetBudget.php
 lib/Model/AdTreeAdSetPromotedObject.php
 lib/Model/AdTreeCampaign.php
@@ -6525,3 +6527,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AdTreeAdSetAttributionSpecInnerTest.php
