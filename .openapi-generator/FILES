@@ -3171,8 +3171,11 @@ docs/Model/WebhookPayloadReferral.md
 docs/Model/WebhookPayloadReferralReferral.md
 docs/Model/WebhookPayloadReferralReferralAdsContextData.md
 docs/Model/WebhookPayloadReferralSender.md
+docs/Model/WebhookPayloadReviewDeleted.md
+docs/Model/WebhookPayloadReviewDeletedReview.md
 docs/Model/WebhookPayloadReviewNew.md
 docs/Model/WebhookPayloadReviewNewAccount.md
+docs/Model/WebhookPayloadReviewRestored.md
 docs/Model/WebhookPayloadReviewUpdated.md
 docs/Model/WebhookPayloadSequenceEnrollment.md
 docs/Model/WebhookPayloadSupportRun.md
@@ -6446,8 +6449,11 @@ lib/Model/WebhookPayloadReferral.php
 lib/Model/WebhookPayloadReferralReferral.php
 lib/Model/WebhookPayloadReferralReferralAdsContextData.php
 lib/Model/WebhookPayloadReferralSender.php
+lib/Model/WebhookPayloadReviewDeleted.php
+lib/Model/WebhookPayloadReviewDeletedReview.php
 lib/Model/WebhookPayloadReviewNew.php
 lib/Model/WebhookPayloadReviewNewAccount.php
+lib/Model/WebhookPayloadReviewRestored.php
 lib/Model/WebhookPayloadReviewUpdated.php
 lib/Model/WebhookPayloadSequenceEnrollment.php
 lib/Model/WebhookPayloadSupportRun.php
@@ -6549,3 +6555,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/WebhookPayloadReviewDeletedReviewTest.php
+test/Model/WebhookPayloadReviewDeletedTest.php
+test/Model/WebhookPayloadReviewRestoredTest.php

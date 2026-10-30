@@ -92,7 +92,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onRcsAgentStatusUpdated()**](WebhookEventsApi.md#onRcsAgentStatusUpdated) | **POST** /rcs.agent.status_updated | RCS agent status updated event |
 | [**onReactionReceived()**](WebhookEventsApi.md#onReactionReceived) | **POST** /reaction.received | Reaction received event |
 | [**onReferralReceived()**](WebhookEventsApi.md#onReferralReceived) | **POST** /referral.received | Referral received event |
+| [**onReviewDeleted()**](WebhookEventsApi.md#onReviewDeleted) | **POST** /review.deleted | Review deleted event |
 | [**onReviewNew()**](WebhookEventsApi.md#onReviewNew) | **POST** /review.new | Review new event |
+| [**onReviewRestored()**](WebhookEventsApi.md#onReviewRestored) | **POST** /review.restored | Review restored event |
 | [**onReviewUpdated()**](WebhookEventsApi.md#onReviewUpdated) | **POST** /review.updated | Review updated event |
 | [**onSequenceEnrolled()**](WebhookEventsApi.md#onSequenceEnrolled) | **POST** /sequence.enrolled | Sequence enrolled event |
 | [**onSequenceExited()**](WebhookEventsApi.md#onSequenceExited) | **POST** /sequence.exited | Sequence exited event |
@@ -5192,6 +5194,65 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `onReviewDeleted()`
+
+```php
+onReviewDeleted($webhook_payload_review_deleted)
+```
+
+Review deleted event
+
+Google Business Profile stopped returning this review, for example after Google's spam filter removed it. Detected by polling: fires usually 6 to 12 hours after the review disappears, only for locations covered by a webhook subscribed to review.deleted or review.restored. If the review comes back, review.restored fires. May arrive for a review id you never received review.new for. A review hidden and restored by Google may produce review.deleted followed by review.restored, and a review.updated can arrive for a review previously reported by review.deleted (it is restored on the next check). Requires the Inbox add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_review_deleted = new \Zernio\Model\WebhookPayloadReviewDeleted(); // \Zernio\Model\WebhookPayloadReviewDeleted
+
+try {
+    $apiInstance->onReviewDeleted($webhook_payload_review_deleted);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onReviewDeleted: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_review_deleted** | [**\Zernio\Model\WebhookPayloadReviewDeleted**](../Model/WebhookPayloadReviewDeleted.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `onReviewNew()`
 
 ```php
@@ -5233,6 +5294,65 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_review_new** | [**\Zernio\Model\WebhookPayloadReviewNew**](../Model/WebhookPayloadReviewNew.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onReviewRestored()`
+
+```php
+onReviewRestored($webhook_payload_review_restored)
+```
+
+Review restored event
+
+A review reported by review.deleted is returned by Google again. Same payload as review.new. Requires the Inbox add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_review_restored = new \Zernio\Model\WebhookPayloadReviewRestored(); // \Zernio\Model\WebhookPayloadReviewRestored
+
+try {
+    $apiInstance->onReviewRestored($webhook_payload_review_restored);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onReviewRestored: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_review_restored** | [**\Zernio\Model\WebhookPayloadReviewRestored**](../Model/WebhookPayloadReviewRestored.md)|  | |
 
 ### Return type
 
