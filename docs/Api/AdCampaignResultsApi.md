@@ -6,12 +6,77 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**getCampaignResultsTotals()**](AdCampaignResultsApi.md#getCampaignResultsTotals) | **GET** /v1/ads/campaign-results/totals | Get your results totals |
 | [**getCampaignResultsUpload()**](AdCampaignResultsApi.md#getCampaignResultsUpload) | **GET** /v1/ads/campaign-results/uploads/{uploadId} | Check a results upload |
 | [**listCampaignResultMetrics()**](AdCampaignResultsApi.md#listCampaignResultMetrics) | **GET** /v1/ads/campaign-results/metrics | List your result metrics |
 | [**listCampaignResults()**](AdCampaignResultsApi.md#listCampaignResults) | **GET** /v1/ads/campaign-results | List your results per campaign |
-| [**setCampaignResultMetric()**](AdCampaignResultsApi.md#setCampaignResultMetric) | **PUT** /v1/ads/campaign-results/metrics/{key} | Name a result metric |
+| [**setCampaignResultMetric()**](AdCampaignResultsApi.md#setCampaignResultMetric) | **PUT** /v1/ads/campaign-results/metrics/{key} | Name a result metric or define a formula |
 | [**uploadCampaignResults()**](AdCampaignResultsApi.md#uploadCampaignResults) | **POST** /v1/ads/campaign-results | Upload your results per campaign |
 
+
+## `getCampaignResultsTotals()`
+
+```php
+getCampaignResultsTotals($from_date, $to_date, $ad_account_ids): \Zernio\Model\GetCampaignResultsTotals200Response
+```
+
+Get your results totals
+
+Each metric you send summed over a date range across every campaign of the ad accounts your key can see, or of the ones you name. Each day counts its newest value only.  Formulas are not computed here, since they also read the platform's numbers: apply one to these totals and the account's spend for the same range, or read it per campaign from `GET /v1/ads/tree?results=true`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignResultsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive. At most 400 days after `fromDate`.
+$ad_account_ids = 'ad_account_ids_example'; // string | Comma-separated platform ad account ids, at most 100. Omit for every ad account your key can see.
+
+try {
+    $result = $apiInstance->getCampaignResultsTotals($from_date, $to_date, $ad_account_ids);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignResultsApi->getCampaignResultsTotals: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **from_date** | **\DateTime**|  | |
+| **to_date** | **\DateTime**| Inclusive. At most 400 days after &#x60;fromDate&#x60;. | |
+| **ad_account_ids** | **string**| Comma-separated platform ad account ids, at most 100. Omit for every ad account your key can see. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetCampaignResultsTotals200Response**](../Model/GetCampaignResultsTotals200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `getCampaignResultsUpload()`
 
@@ -81,7 +146,7 @@ listCampaignResultMetrics(): \Zernio\Model\ListCampaignResultMetrics200Response
 
 List your result metrics
 
-The metric keys your team has sent, with their label and kind. A new key appears as a `count` labelled from the key; name it with `PUT /v1/ads/campaign-results/metrics/{key}`.
+The metric keys your team has sent, with their label and kind, then the formulas: your own and the built-in ones (`cac_percent`, `cost_per_sale`, `cost_per_qualified_lead`, `lead_to_sale`). A new key appears as a `count` labelled from the key; name it, or define a formula, with `PUT /v1/ads/campaign-results/metrics/{key}`.
 
 ### Example
 
@@ -204,9 +269,9 @@ try {
 setCampaignResultMetric($key, $set_campaign_result_metric_request): \Zernio\Model\SetCampaignResultMetric200Response
 ```
 
-Name a result metric
+Name a result metric or define a formula
 
-Sets a metric key's label and kind: `count` for things you count (leads, sales) or `money` with its currency (revenue).
+Sets a metric key's label and kind: `count` for things you count (leads, sales), `money` with its currency (revenue), `percent` or `ratio`.  Send `formula` to make it a computed metric: `+ - * /` and parentheses over `spend`, `impressions`, `clicks`, `conversions`, `purchase_value` and the metrics you send, at most 200 characters. A formula cannot read another formula.  It is computed per campaign over the summed values of the range, and has no value when an input is missing or a division is by zero.
 
 ### Example
 

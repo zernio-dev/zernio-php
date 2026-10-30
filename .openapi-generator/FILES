@@ -1181,6 +1181,7 @@ docs/Model/GetCampaignBidding200Response.md
 docs/Model/GetCampaignConversionGoals200Response.md
 docs/Model/GetCampaignParticipant200Response.md
 docs/Model/GetCampaignReport200Response.md
+docs/Model/GetCampaignResultsTotals200Response.md
 docs/Model/GetCampaignResultsUpload200Response.md
 docs/Model/GetCampaignResultsUpload200ResponseUnmatchedInner.md
 docs/Model/GetCampaignSubmission200Response.md
@@ -4472,6 +4473,7 @@ lib/Model/GetCampaignBidding200Response.php
 lib/Model/GetCampaignConversionGoals200Response.php
 lib/Model/GetCampaignParticipant200Response.php
 lib/Model/GetCampaignReport200Response.php
+lib/Model/GetCampaignResultsTotals200Response.php
 lib/Model/GetCampaignResultsUpload200Response.php
 lib/Model/GetCampaignResultsUpload200ResponseUnmatchedInner.php
 lib/Model/GetCampaignSubmission200Response.php
@@ -6583,3 +6585,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetCampaignResultsTotals200ResponseTest.php

@@ -1688,7 +1688,7 @@ try {
 ## `getAdTree()`
 
 ```php
-getAdTree($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $updated_since, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level, $compare): \Zernio\Model\AdTreeResponse
+getAdTree($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $updated_since, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level, $compare, $results): \Zernio\Model\AdTreeResponse
 ```
 
 Get campaign tree
@@ -1732,9 +1732,10 @@ $sort = 'newest'; // string | Campaign-level sort order. `newest` (default) / `o
 $time_increment = 56; // int | Set to `1` to also return a daily breakdown (mirrors Meta Insights' `time_increment=1`). Only `1` (daily) is supported. See `dailyLevel` to control which levels carry it.  Each node gains a `daily[]` array of per-day metrics (same fields as the aggregated `metrics`) next to the range total, so you get per-entity daily trends in ONE call instead of one tree call per day.  The daily series covers the same date range and source data as `metrics`, except `reach` on Meta and TikTok: the range total is the platform's de-duplicated value, so daily reach does not sum to it.
 $daily_level = 'campaign'; // string | Which tree levels get the `daily[]` series when `timeIncrement=1`. Ignored when `timeIncrement` is unset.  - `campaign` (default): on campaign nodes only. The common per-campaign-trend case, and the smallest payload. - `adset`: on ad sets too. - `ad`: on every ad in `ads[]` as well. Heaviest (a long range × up to 100 ads per ad set); scope with `campaignId` to keep responses small.
 $compare = 'compare_example'; // string | Set to `previous` to also read the period of the same length that ends the day before `fromDate`. Every campaign, ad set and ad gains `previousMetrics` (same fields as `metrics`) and the response gains `previousRange`, so a table can show the change against the previous period in one call.
+$results = True; // bool | Set to `true` to add your own results (see [Campaign results](/guides/campaign-results)): every campaign gains `results`, the values you sent for the range plus each formula they allow, and the response gains `resultMetrics` to label them.
 
 try {
-    $result = $apiInstance->getAdTree($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $updated_since, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level, $compare);
+    $result = $apiInstance->getAdTree($page, $limit, $source, $platform, $status, $ad_account_id, $page_id, $account_id, $profile_id, $campaign_id, $updated_since, $search, $from_date, $to_date, $has_delivery, $min_spend, $sort, $time_increment, $daily_level, $compare, $results);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->getAdTree: ', $e->getMessage(), PHP_EOL;
@@ -1765,6 +1766,7 @@ try {
 | **time_increment** | **int**| Set to &#x60;1&#x60; to also return a daily breakdown (mirrors Meta Insights&#39; &#x60;time_increment&#x3D;1&#x60;). Only &#x60;1&#x60; (daily) is supported. See &#x60;dailyLevel&#x60; to control which levels carry it.  Each node gains a &#x60;daily[]&#x60; array of per-day metrics (same fields as the aggregated &#x60;metrics&#x60;) next to the range total, so you get per-entity daily trends in ONE call instead of one tree call per day.  The daily series covers the same date range and source data as &#x60;metrics&#x60;, except &#x60;reach&#x60; on Meta and TikTok: the range total is the platform&#39;s de-duplicated value, so daily reach does not sum to it. | [optional] |
 | **daily_level** | **string**| Which tree levels get the &#x60;daily[]&#x60; series when &#x60;timeIncrement&#x3D;1&#x60;. Ignored when &#x60;timeIncrement&#x60; is unset.  - &#x60;campaign&#x60; (default): on campaign nodes only. The common per-campaign-trend case, and the smallest payload. - &#x60;adset&#x60;: on ad sets too. - &#x60;ad&#x60;: on every ad in &#x60;ads[]&#x60; as well. Heaviest (a long range × up to 100 ads per ad set); scope with &#x60;campaignId&#x60; to keep responses small. | [optional] [default to &#39;campaign&#39;] |
 | **compare** | **string**| Set to &#x60;previous&#x60; to also read the period of the same length that ends the day before &#x60;fromDate&#x60;. Every campaign, ad set and ad gains &#x60;previousMetrics&#x60; (same fields as &#x60;metrics&#x60;) and the response gains &#x60;previousRange&#x60;, so a table can show the change against the previous period in one call. | [optional] |
+| **results** | **bool**| Set to &#x60;true&#x60; to add your own results (see [Campaign results](/guides/campaign-results)): every campaign gains &#x60;results&#x60;, the values you sent for the range plus each formula they allow, and the response gains &#x60;resultMetrics&#x60; to label them. | [optional] |
 
 ### Return type
 
