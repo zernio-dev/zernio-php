@@ -199,6 +199,11 @@ Class | Method | HTTP request | Description
 *AdAudiencesApi* | [**removeUsersFromAdAudience**](docs/Api/AdAudiencesApi.md#removeusersfromadaudience) | **DELETE** /v1/ads/audiences/{audienceId}/users | Remove users from audience
 *AdAudiencesApi* | [**replaceAdAudienceCompanies**](docs/Api/AdAudiencesApi.md#replaceadaudiencecompanies) | **POST** /v1/ads/audiences/{audienceId}/companies | Replace audience companies
 *AdAudiencesApi* | [**updateAdAudience**](docs/Api/AdAudiencesApi.md#updateadaudience) | **PUT** /v1/ads/audiences/{audienceId} | Update an audience
+*AdCampaignResultsApi* | [**getCampaignResultsUpload**](docs/Api/AdCampaignResultsApi.md#getcampaignresultsupload) | **GET** /v1/ads/campaign-results/uploads/{uploadId} | Check a results upload
+*AdCampaignResultsApi* | [**listCampaignResultMetrics**](docs/Api/AdCampaignResultsApi.md#listcampaignresultmetrics) | **GET** /v1/ads/campaign-results/metrics | List your result metrics
+*AdCampaignResultsApi* | [**listCampaignResults**](docs/Api/AdCampaignResultsApi.md#listcampaignresults) | **GET** /v1/ads/campaign-results | List your results per campaign
+*AdCampaignResultsApi* | [**setCampaignResultMetric**](docs/Api/AdCampaignResultsApi.md#setcampaignresultmetric) | **PUT** /v1/ads/campaign-results/metrics/{key} | Name a result metric
+*AdCampaignResultsApi* | [**uploadCampaignResults**](docs/Api/AdCampaignResultsApi.md#uploadcampaignresults) | **POST** /v1/ads/campaign-results | Upload your results per campaign
 *AdCampaignsApi* | [**addAdKeywords**](docs/Api/AdCampaignsApi.md#addadkeywords) | **POST** /v1/ads/keywords | Add Search ad-group keywords
 *AdCampaignsApi* | [**applyGoogleRecommendations**](docs/Api/AdCampaignsApi.md#applygooglerecommendations) | **POST** /v1/ads/recommendations/apply | Apply Google Ads recommendations
 *AdCampaignsApi* | [**attachAdGroupAssets**](docs/Api/AdCampaignsApi.md#attachadgroupassets) | **POST** /v1/ads/ad-sets/{adSetId}/assets | Attach ad-group assets
@@ -1535,6 +1540,7 @@ Class | Method | HTTP request | Description
 - [CampaignReportParticipantsInner](docs/Model/CampaignReportParticipantsInner.md)
 - [CampaignReportSpend](docs/Model/CampaignReportSpend.md)
 - [CampaignReportViews](docs/Model/CampaignReportViews.md)
+- [CampaignResultMetric](docs/Model/CampaignResultMetric.md)
 - [CampaignSettlement](docs/Model/CampaignSettlement.md)
 - [CampaignSubmission](docs/Model/CampaignSubmission.md)
 - [CampaignSubmissionAuthenticity](docs/Model/CampaignSubmissionAuthenticity.md)
@@ -2294,6 +2300,8 @@ Class | Method | HTTP request | Description
 - [GetCampaignConversionGoals200Response](docs/Model/GetCampaignConversionGoals200Response.md)
 - [GetCampaignParticipant200Response](docs/Model/GetCampaignParticipant200Response.md)
 - [GetCampaignReport200Response](docs/Model/GetCampaignReport200Response.md)
+- [GetCampaignResultsUpload200Response](docs/Model/GetCampaignResultsUpload200Response.md)
+- [GetCampaignResultsUpload200ResponseUnmatchedInner](docs/Model/GetCampaignResultsUpload200ResponseUnmatchedInner.md)
 - [GetCampaignSubmission200Response](docs/Model/GetCampaignSubmission200Response.md)
 - [GetCampaignTargeting200Response](docs/Model/GetCampaignTargeting200Response.md)
 - [GetCampaignTargeting200ResponseDevicesInner](docs/Model/GetCampaignTargeting200ResponseDevicesInner.md)
@@ -2934,6 +2942,9 @@ Class | Method | HTTP request | Description
 - [ListCampaignParticipants200Response](docs/Model/ListCampaignParticipants200Response.md)
 - [ListCampaignPayables200Response](docs/Model/ListCampaignPayables200Response.md)
 - [ListCampaignPayoutBatches200Response](docs/Model/ListCampaignPayoutBatches200Response.md)
+- [ListCampaignResultMetrics200Response](docs/Model/ListCampaignResultMetrics200Response.md)
+- [ListCampaignResults200Response](docs/Model/ListCampaignResults200Response.md)
+- [ListCampaignResults200ResponseCampaignsInner](docs/Model/ListCampaignResults200ResponseCampaignsInner.md)
 - [ListCampaignSubmissions200Response](docs/Model/ListCampaignSubmissions200Response.md)
 - [ListChangelog200Response](docs/Model/ListChangelog200Response.md)
 - [ListCommentAutomationLogs200Response](docs/Model/ListCommentAutomationLogs200Response.md)
@@ -3655,6 +3666,8 @@ Class | Method | HTTP request | Description
 - [SetBusinessAgentConnectorCredentialsRequestOneOf](docs/Model/SetBusinessAgentConnectorCredentialsRequestOneOf.md)
 - [SetBusinessAgentConnectorCredentialsRequestOneOf1](docs/Model/SetBusinessAgentConnectorCredentialsRequestOneOf1.md)
 - [SetBusinessAgentConnectorCredentialsRequestOneOf2](docs/Model/SetBusinessAgentConnectorCredentialsRequestOneOf2.md)
+- [SetCampaignResultMetric200Response](docs/Model/SetCampaignResultMetric200Response.md)
+- [SetCampaignResultMetricRequest](docs/Model/SetCampaignResultMetricRequest.md)
 - [SetCommentModerationRequest](docs/Model/SetCommentModerationRequest.md)
 - [SetCommerceDiscountActiveRequest](docs/Model/SetCommerceDiscountActiveRequest.md)
 - [SetCommercePriceListPrices200Response](docs/Model/SetCommercePriceListPrices200Response.md)
@@ -4053,6 +4066,9 @@ Class | Method | HTTP request | Description
 - [UploadAdVideo202ResponseVideo](docs/Model/UploadAdVideo202ResponseVideo.md)
 - [UploadAdVideoRequest](docs/Model/UploadAdVideoRequest.md)
 - [UploadBusinessAgentFileRequest](docs/Model/UploadBusinessAgentFileRequest.md)
+- [UploadCampaignResults202Response](docs/Model/UploadCampaignResults202Response.md)
+- [UploadCampaignResultsRequest](docs/Model/UploadCampaignResultsRequest.md)
+- [UploadCampaignResultsRequestRowsInner](docs/Model/UploadCampaignResultsRequestRowsInner.md)
 - [UploadFile201Response](docs/Model/UploadFile201Response.md)
 - [UploadFileRequest](docs/Model/UploadFileRequest.md)
 - [UploadMediaDirect200Response](docs/Model/UploadMediaDirect200Response.md)
@@ -4424,6 +4440,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.426.0`
+- API version: `1.427.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

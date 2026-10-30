@@ -9,6 +9,7 @@ docs/Api/AccountSettingsApi.md
 docs/Api/AccountsApi.md
 docs/Api/AdAccountsApi.md
 docs/Api/AdAudiencesApi.md
+docs/Api/AdCampaignResultsApi.md
 docs/Api/AdCampaignsApi.md
 docs/Api/AdCreativesApi.md
 docs/Api/AdInsightsApi.md
@@ -420,6 +421,7 @@ docs/Model/CampaignReportAuthenticityInner.md
 docs/Model/CampaignReportParticipantsInner.md
 docs/Model/CampaignReportSpend.md
 docs/Model/CampaignReportViews.md
+docs/Model/CampaignResultMetric.md
 docs/Model/CampaignSettlement.md
 docs/Model/CampaignSubmission.md
 docs/Model/CampaignSubmissionAuthenticity.md
@@ -1179,6 +1181,8 @@ docs/Model/GetCampaignBidding200Response.md
 docs/Model/GetCampaignConversionGoals200Response.md
 docs/Model/GetCampaignParticipant200Response.md
 docs/Model/GetCampaignReport200Response.md
+docs/Model/GetCampaignResultsUpload200Response.md
+docs/Model/GetCampaignResultsUpload200ResponseUnmatchedInner.md
 docs/Model/GetCampaignSubmission200Response.md
 docs/Model/GetCampaignTargeting200Response.md
 docs/Model/GetCampaignTargeting200ResponseDevicesInner.md
@@ -1819,6 +1823,9 @@ docs/Model/ListCampaignNegativeKeywords200ResponseKeywordsInner.md
 docs/Model/ListCampaignParticipants200Response.md
 docs/Model/ListCampaignPayables200Response.md
 docs/Model/ListCampaignPayoutBatches200Response.md
+docs/Model/ListCampaignResultMetrics200Response.md
+docs/Model/ListCampaignResults200Response.md
+docs/Model/ListCampaignResults200ResponseCampaignsInner.md
 docs/Model/ListCampaignSubmissions200Response.md
 docs/Model/ListChangelog200Response.md
 docs/Model/ListCommentAutomationLogs200Response.md
@@ -2540,6 +2547,8 @@ docs/Model/SetBusinessAgentConnectorCredentialsRequest.md
 docs/Model/SetBusinessAgentConnectorCredentialsRequestOneOf.md
 docs/Model/SetBusinessAgentConnectorCredentialsRequestOneOf1.md
 docs/Model/SetBusinessAgentConnectorCredentialsRequestOneOf2.md
+docs/Model/SetCampaignResultMetric200Response.md
+docs/Model/SetCampaignResultMetricRequest.md
 docs/Model/SetCommentModerationRequest.md
 docs/Model/SetCommerceDiscountActiveRequest.md
 docs/Model/SetCommercePriceListPrices200Response.md
@@ -2938,6 +2947,9 @@ docs/Model/UploadAdVideo202Response.md
 docs/Model/UploadAdVideo202ResponseVideo.md
 docs/Model/UploadAdVideoRequest.md
 docs/Model/UploadBusinessAgentFileRequest.md
+docs/Model/UploadCampaignResults202Response.md
+docs/Model/UploadCampaignResultsRequest.md
+docs/Model/UploadCampaignResultsRequestRowsInner.md
 docs/Model/UploadFile201Response.md
 docs/Model/UploadFileRequest.md
 docs/Model/UploadMediaDirect200Response.md
@@ -3284,6 +3296,7 @@ lib/Api/AccountSettingsApi.php
 lib/Api/AccountsApi.php
 lib/Api/AdAccountsApi.php
 lib/Api/AdAudiencesApi.php
+lib/Api/AdCampaignResultsApi.php
 lib/Api/AdCampaignsApi.php
 lib/Api/AdCreativesApi.php
 lib/Api/AdInsightsApi.php
@@ -3699,6 +3712,7 @@ lib/Model/CampaignReportAuthenticityInner.php
 lib/Model/CampaignReportParticipantsInner.php
 lib/Model/CampaignReportSpend.php
 lib/Model/CampaignReportViews.php
+lib/Model/CampaignResultMetric.php
 lib/Model/CampaignSettlement.php
 lib/Model/CampaignSubmission.php
 lib/Model/CampaignSubmissionAuthenticity.php
@@ -4458,6 +4472,8 @@ lib/Model/GetCampaignBidding200Response.php
 lib/Model/GetCampaignConversionGoals200Response.php
 lib/Model/GetCampaignParticipant200Response.php
 lib/Model/GetCampaignReport200Response.php
+lib/Model/GetCampaignResultsUpload200Response.php
+lib/Model/GetCampaignResultsUpload200ResponseUnmatchedInner.php
 lib/Model/GetCampaignSubmission200Response.php
 lib/Model/GetCampaignTargeting200Response.php
 lib/Model/GetCampaignTargeting200ResponseDevicesInner.php
@@ -5098,6 +5114,9 @@ lib/Model/ListCampaignNegativeKeywords200ResponseKeywordsInner.php
 lib/Model/ListCampaignParticipants200Response.php
 lib/Model/ListCampaignPayables200Response.php
 lib/Model/ListCampaignPayoutBatches200Response.php
+lib/Model/ListCampaignResultMetrics200Response.php
+lib/Model/ListCampaignResults200Response.php
+lib/Model/ListCampaignResults200ResponseCampaignsInner.php
 lib/Model/ListCampaignSubmissions200Response.php
 lib/Model/ListChangelog200Response.php
 lib/Model/ListCommentAutomationLogs200Response.php
@@ -5820,6 +5839,8 @@ lib/Model/SetBusinessAgentConnectorCredentialsRequest.php
 lib/Model/SetBusinessAgentConnectorCredentialsRequestOneOf.php
 lib/Model/SetBusinessAgentConnectorCredentialsRequestOneOf1.php
 lib/Model/SetBusinessAgentConnectorCredentialsRequestOneOf2.php
+lib/Model/SetCampaignResultMetric200Response.php
+lib/Model/SetCampaignResultMetricRequest.php
 lib/Model/SetCommentModerationRequest.php
 lib/Model/SetCommerceDiscountActiveRequest.php
 lib/Model/SetCommercePriceListPrices200Response.php
@@ -6218,6 +6239,9 @@ lib/Model/UploadAdVideo202Response.php
 lib/Model/UploadAdVideo202ResponseVideo.php
 lib/Model/UploadAdVideoRequest.php
 lib/Model/UploadBusinessAgentFileRequest.php
+lib/Model/UploadCampaignResults202Response.php
+lib/Model/UploadCampaignResultsRequest.php
+lib/Model/UploadCampaignResultsRequestRowsInner.php
 lib/Model/UploadFile201Response.php
 lib/Model/UploadFileRequest.php
 lib/Model/UploadMediaDirect200Response.php
@@ -6559,3 +6583,15 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Api/AdCampaignResultsApiTest.php
+test/Model/CampaignResultMetricTest.php
+test/Model/GetCampaignResultsUpload200ResponseTest.php
+test/Model/GetCampaignResultsUpload200ResponseUnmatchedInnerTest.php
+test/Model/ListCampaignResultMetrics200ResponseTest.php
+test/Model/ListCampaignResults200ResponseCampaignsInnerTest.php
+test/Model/ListCampaignResults200ResponseTest.php
+test/Model/SetCampaignResultMetric200ResponseTest.php
+test/Model/SetCampaignResultMetricRequestTest.php
+test/Model/UploadCampaignResults202ResponseTest.php
+test/Model/UploadCampaignResultsRequestRowsInnerTest.php
+test/Model/UploadCampaignResultsRequestTest.php
