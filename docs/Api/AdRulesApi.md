@@ -11,6 +11,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getAdRule()**](AdRulesApi.md#getAdRule) | **GET** /v1/ads/rules/{ruleId} | Get an ad rule |
 | [**listAdRuleActivity()**](AdRulesApi.md#listAdRuleActivity) | **GET** /v1/ads/rules/activity | List every change ad rules made |
 | [**listAdRuleRuns()**](AdRulesApi.md#listAdRuleRuns) | **GET** /v1/ads/rules/{ruleId}/runs | List an ad rule&#39;s runs |
+| [**listAdRuleTemplates()**](AdRulesApi.md#listAdRuleTemplates) | **GET** /v1/ads/rules/templates | List ready-made ad rules |
 | [**listAdRules()**](AdRulesApi.md#listAdRules) | **GET** /v1/ads/rules | List ad rules |
 | [**previewAdRule()**](AdRulesApi.md#previewAdRule) | **POST** /v1/ads/rules/{ruleId}/preview | Preview an ad rule |
 | [**updateAdRule()**](AdRulesApi.md#updateAdRule) | **PATCH** /v1/ads/rules/{ruleId} | Update an ad rule |
@@ -318,6 +319,63 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListAdRuleRuns200Response**](../Model/ListAdRuleRuns200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listAdRuleTemplates()`
+
+```php
+listAdRuleTemplates(): \Zernio\Model\ListAdRuleTemplates200Response
+```
+
+List ready-made ad rules
+
+Common rules to start from: stop losers, scale winners, pause ads with no conversions, creative fatigue and spend spike alerts.  Each template is a complete rule body. Add `name`, `accountId` and `adAccountId`, adjust the thresholds to the ad account, and send it to `POST /v1/ads/rules`. Amounts are in the ad account currency. `platforms` lists the networks a template works on, or is null for all of them.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdRulesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listAdRuleTemplates();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdRulesApi->listAdRuleTemplates: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Zernio\Model\ListAdRuleTemplates200Response**](../Model/ListAdRuleTemplates200Response.md)
 
 ### Authorization
 

@@ -1755,6 +1755,8 @@ docs/Model/ListAdLabels200ResponsePaging.md
 docs/Model/ListAdNegativeKeywordLists200Response.md
 docs/Model/ListAdRuleActivity200Response.md
 docs/Model/ListAdRuleRuns200Response.md
+docs/Model/ListAdRuleTemplates200Response.md
+docs/Model/ListAdRuleTemplates200ResponseTemplatesInner.md
 docs/Model/ListAdRules200Response.md
 docs/Model/ListAdSets200Response.md
 docs/Model/ListAdSets200ResponseAdSetsInner.md
@@ -5032,6 +5034,8 @@ lib/Model/ListAdLabels200ResponsePaging.php
 lib/Model/ListAdNegativeKeywordLists200Response.php
 lib/Model/ListAdRuleActivity200Response.php
 lib/Model/ListAdRuleRuns200Response.php
+lib/Model/ListAdRuleTemplates200Response.php
+lib/Model/ListAdRuleTemplates200ResponseTemplatesInner.php
 lib/Model/ListAdRules200Response.php
 lib/Model/ListAdSets200Response.php
 lib/Model/ListAdSets200ResponseAdSetsInner.php
@@ -6555,3 +6559,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ListAdRuleTemplates200ResponseTemplatesInnerTest.php
+test/Model/ListAdRuleTemplates200ResponseTest.php
