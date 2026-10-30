@@ -716,7 +716,7 @@ try {
 ## `listAccounts()`
 
 ```php
-listAccounts($profile_id, $platform, $status, $search, $category, $sort, $order, $include_over_limit, $exclude_hidden, $include_creator_accounts, $include_sandbox, $include_status_counts, $page, $limit, $cursor, $profile_ids, $per_profile): \Zernio\Model\AccountsListResponse
+listAccounts($profile_id, $platform, $status, $search, $category, $sort, $order, $include_over_limit, $exclude_hidden, $ad_account_rows, $include_creator_accounts, $include_sandbox, $include_status_counts, $page, $limit, $cursor, $profile_ids, $per_profile): \Zernio\Model\AccountsListResponse
 ```
 
 List accounts
@@ -749,6 +749,7 @@ $sort = 'sort_example'; // string | Sort an offset-paginated listing (page and l
 $order = 'asc'; // string | Direction for `sort`.
 $include_over_limit = false; // bool | When true, includes accounts from over-limit profiles.
 $exclude_hidden = false; // bool | When true, leaves out accounts the dashboard does not show as connections:  - posting accounts with `enabled: false` (ads accounts are always kept, whatever their `enabled` value); - the internal `sms` and `phone` accounts behind each phone number.  Applied before pagination, so page totals and `statusCounts` count only the remaining accounts. Sandbox accounts added by `includeSandbox` are appended after this filter. Accepts `true` or `false` in any letter case; any other value returns 400.
+$ad_account_rows = false; // bool | When true, lists every ads account row, one per ad account. By default an API key or OAuth app sees each ads login once per profile and platform, as the single ads connection it had before rows per ad account: its oldest row.  Only changes the result once ads are connected as one row per ad account; until then the two shapes are the same. Applied before pagination. Accepts `true` or `false` in any letter case; any other value returns 400.
 $include_creator_accounts = false; // bool | When true, also lists the accounts creators connected to your creator campaigns. They sit on creator profiles, which `GET /v1/profiles` does not list, and are left out by default.  Asking for one creator profile by `profileId` lists its accounts either way. Applied before pagination. Accepts `true` or `false` in any letter case; any other value returns 400.
 $include_sandbox = false; // bool | When true, appends the shared WhatsApp sandbox account and the iMessage sandbox account to the list when they are active, honouring `platform` but no other filter.  Ignored on a paginated request (page, limit or cursor) and together with `perProfile`. Accepts `true` or `false` in any letter case; any other value returns 400.
 $include_status_counts = false; // bool | When true, the response carries `statusCounts`: how many accounts match every other filter of the request (with `status` lifted) in total and how many of those need a reconnection. Accepts `true` or `false` in any letter case; any other value returns 400.
@@ -759,7 +760,7 @@ $profile_ids = 'profile_ids_example'; // string | Comma-separated profile IDs (u
 $per_profile = 56; // int | Return a preview of each profile in profileIds: the newest account of every platform it has, topped up to at least N. Requires profileIds; cannot be combined with page, limit or cursor.
 
 try {
-    $result = $apiInstance->listAccounts($profile_id, $platform, $status, $search, $category, $sort, $order, $include_over_limit, $exclude_hidden, $include_creator_accounts, $include_sandbox, $include_status_counts, $page, $limit, $cursor, $profile_ids, $per_profile);
+    $result = $apiInstance->listAccounts($profile_id, $platform, $status, $search, $category, $sort, $order, $include_over_limit, $exclude_hidden, $ad_account_rows, $include_creator_accounts, $include_sandbox, $include_status_counts, $page, $limit, $cursor, $profile_ids, $per_profile);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountsApi->listAccounts: ', $e->getMessage(), PHP_EOL;
@@ -779,6 +780,7 @@ try {
 | **order** | **string**| Direction for &#x60;sort&#x60;. | [optional] [default to &#39;asc&#39;] |
 | **include_over_limit** | **bool**| When true, includes accounts from over-limit profiles. | [optional] [default to false] |
 | **exclude_hidden** | **bool**| When true, leaves out accounts the dashboard does not show as connections:  - posting accounts with &#x60;enabled: false&#x60; (ads accounts are always kept, whatever their &#x60;enabled&#x60; value); - the internal &#x60;sms&#x60; and &#x60;phone&#x60; accounts behind each phone number.  Applied before pagination, so page totals and &#x60;statusCounts&#x60; count only the remaining accounts. Sandbox accounts added by &#x60;includeSandbox&#x60; are appended after this filter. Accepts &#x60;true&#x60; or &#x60;false&#x60; in any letter case; any other value returns 400. | [optional] [default to false] |
+| **ad_account_rows** | **bool**| When true, lists every ads account row, one per ad account. By default an API key or OAuth app sees each ads login once per profile and platform, as the single ads connection it had before rows per ad account: its oldest row.  Only changes the result once ads are connected as one row per ad account; until then the two shapes are the same. Applied before pagination. Accepts &#x60;true&#x60; or &#x60;false&#x60; in any letter case; any other value returns 400. | [optional] [default to false] |
 | **include_creator_accounts** | **bool**| When true, also lists the accounts creators connected to your creator campaigns. They sit on creator profiles, which &#x60;GET /v1/profiles&#x60; does not list, and are left out by default.  Asking for one creator profile by &#x60;profileId&#x60; lists its accounts either way. Applied before pagination. Accepts &#x60;true&#x60; or &#x60;false&#x60; in any letter case; any other value returns 400. | [optional] [default to false] |
 | **include_sandbox** | **bool**| When true, appends the shared WhatsApp sandbox account and the iMessage sandbox account to the list when they are active, honouring &#x60;platform&#x60; but no other filter.  Ignored on a paginated request (page, limit or cursor) and together with &#x60;perProfile&#x60;. Accepts &#x60;true&#x60; or &#x60;false&#x60; in any letter case; any other value returns 400. | [optional] [default to false] |
 | **include_status_counts** | **bool**| When true, the response carries &#x60;statusCounts&#x60;: how many accounts match every other filter of the request (with &#x60;status&#x60; lifted) in total and how many of those need a reconnection. Accepts &#x60;true&#x60; or &#x60;false&#x60; in any letter case; any other value returns 400. | [optional] [default to false] |
