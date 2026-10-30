@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **submitted_at** | **\DateTime** |  |
 **published_at** | **\DateTime** |  |
 **views** | **int** | Latest view count read for the post. |
+**engagements** | **int** | The campaign engagement types summed at the latest read. Null until the post is read. |
 **earned_cents** | **int** |  |
 **reject_reason** | **string** |  |
 **flags** | **string[]** | Creator-safe flags only. Every other review flag shows as &#x60;under_review&#x60;. |

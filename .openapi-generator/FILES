@@ -6559,5 +6559,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ListAdRuleTemplates200ResponseTemplatesInnerTest.php
-test/Model/ListAdRuleTemplates200ResponseTest.php
