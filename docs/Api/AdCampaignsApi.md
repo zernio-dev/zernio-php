@@ -2640,12 +2640,12 @@ try {
 ## `listAdsAlerts()`
 
 ```php
-listAdsAlerts($account_id, $include_dismissed): \Zernio\Model\ListAdsAlerts200Response
+listAdsAlerts($account_id, $profile_id, $include_dismissed): \Zernio\Model\ListAdsAlerts200Response
 ```
 
 List ads that need attention
 
-Lists what needs attention across your ads, most severe first:  - ads created in the last 90 days that were rejected - campaigns the platform reports delivery issues on - Meta ad accounts with a failed or overdue payment, or disabled while holding live ads - campaigns that spent on 3 or more of the last 7 days without a result (conversion, lead, purchase or conversation goals) - budgets spent to their daily cap yesterday  Built from stored data and the last 7 days of synced metrics, so it costs no platform call.  Each alert has a stable `id`. Dismiss one with `POST /v1/ads/alerts/{alertId}/dismiss` to hide it for 30 days.
+Lists what needs attention across your ads, most severe first:  - ads created in the last 90 days that were rejected - campaigns the platform reports delivery issues on - Meta ad accounts with a failed or overdue payment, or disabled while holding live ads - campaigns that spent on 3 or more of the last 7 days without a result (conversion, lead, purchase or conversation goals) - budgets spent to their daily cap yesterday - ads connections that need reconnecting while they still hold live ads - ad accounts whose sync has been failing  Built from stored data and the last 7 days of synced metrics, so it costs no platform call.  Each alert has a stable `id`. Dismiss one with `POST /v1/ads/alerts/{alertId}/dismiss` to hide it for 30 days.
 
 ### Example
 
@@ -2665,10 +2665,11 @@ $apiInstance = new Zernio\Api\AdCampaignsApi(
     $config
 );
 $account_id = 'account_id_example'; // string | Only alerts of this ads connection (sibling-expanded like /v1/ads/tree). Omit for every ad account the API key can reach.
+$profile_id = 'profile_id_example'; // string | Only alerts of the ads connections on this profile. Omit for every profile the API key can reach.
 $include_dismissed = false; // bool | Also return dismissed alerts, with `dismissed: true`.
 
 try {
-    $result = $apiInstance->listAdsAlerts($account_id, $include_dismissed);
+    $result = $apiInstance->listAdsAlerts($account_id, $profile_id, $include_dismissed);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdCampaignsApi->listAdsAlerts: ', $e->getMessage(), PHP_EOL;
@@ -2680,6 +2681,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Only alerts of this ads connection (sibling-expanded like /v1/ads/tree). Omit for every ad account the API key can reach. | [optional] |
+| **profile_id** | **string**| Only alerts of the ads connections on this profile. Omit for every profile the API key can reach. | [optional] |
 | **include_dismissed** | **bool**| Also return dismissed alerts, with &#x60;dismissed: true&#x60;. | [optional] [default to false] |
 
 ### Return type
