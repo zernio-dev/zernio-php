@@ -6555,6 +6555,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/WebhookPayloadReviewDeletedReviewTest.php
-test/Model/WebhookPayloadReviewDeletedTest.php
-test/Model/WebhookPayloadReviewRestoredTest.php
