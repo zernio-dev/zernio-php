@@ -72,7 +72,6 @@ docs/Api/SMSApi.md
 docs/Api/SequencesApi.md
 docs/Api/SlackApi.md
 docs/Api/SupportAssistantApi.md
-docs/Api/ToolsApi.md
 docs/Api/TrackingTagsApi.md
 docs/Api/TreasuryApi.md
 docs/Api/TwitterEngagementApi.md
@@ -975,8 +974,6 @@ docs/Model/DiscordScheduledEventEntityMetadata.md
 docs/Model/DismissAdsAlert200Response.md
 docs/Model/DismissGoogleRecommendationsRequest.md
 docs/Model/DmButton.md
-docs/Model/DownloadTikTokVideo200Response.md
-docs/Model/DownloadTikTokVideo200ResponseFormatsInner.md
 docs/Model/DuplicateAd200Response.md
 docs/Model/DuplicateAdCampaign200Response.md
 docs/Model/DuplicateAdCampaignRequest.md
@@ -3361,7 +3358,6 @@ lib/Api/SMSApi.php
 lib/Api/SequencesApi.php
 lib/Api/SlackApi.php
 lib/Api/SupportAssistantApi.php
-lib/Api/ToolsApi.php
 lib/Api/TrackingTagsApi.php
 lib/Api/TreasuryApi.php
 lib/Api/TwitterEngagementApi.php
@@ -4268,8 +4264,6 @@ lib/Model/DiscordScheduledEventEntityMetadata.php
 lib/Model/DismissAdsAlert200Response.php
 lib/Model/DismissGoogleRecommendationsRequest.php
 lib/Model/DmButton.php
-lib/Model/DownloadTikTokVideo200Response.php
-lib/Model/DownloadTikTokVideo200ResponseFormatsInner.php
 lib/Model/DuplicateAd200Response.php
 lib/Model/DuplicateAdCampaign200Response.php
 lib/Model/DuplicateAdCampaignRequest.php
