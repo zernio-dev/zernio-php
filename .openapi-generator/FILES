@@ -1091,8 +1091,9 @@ docs/Model/GetAdAccountBilling200ResponsePendingBudgetProposalsInner.md
 docs/Model/GetAdAccountFinance200Response.md
 docs/Model/GetAdAccountFinance200ResponseFundingSource.md
 docs/Model/GetAdAccountHealth200Response.md
+docs/Model/GetAdAccountHealth200ResponseBlockersInner.md
+docs/Model/GetAdAccountHealth200ResponseBlockersInnerFix.md
 docs/Model/GetAdAccountHealth200ResponseChecksInner.md
-docs/Model/GetAdAccountHealth200ResponseChecksInnerFix.md
 docs/Model/GetAdAccountHierarchy200Response.md
 docs/Model/GetAdAccountHierarchy200ResponseDirectCustomersInner.md
 docs/Model/GetAdAccountHierarchy200ResponseDirectCustomersInnerPendingInvitationsInner.md
@@ -4387,8 +4388,9 @@ lib/Model/GetAdAccountBilling200ResponsePendingBudgetProposalsInner.php
 lib/Model/GetAdAccountFinance200Response.php
 lib/Model/GetAdAccountFinance200ResponseFundingSource.php
 lib/Model/GetAdAccountHealth200Response.php
+lib/Model/GetAdAccountHealth200ResponseBlockersInner.php
+lib/Model/GetAdAccountHealth200ResponseBlockersInnerFix.php
 lib/Model/GetAdAccountHealth200ResponseChecksInner.php
-lib/Model/GetAdAccountHealth200ResponseChecksInnerFix.php
 lib/Model/GetAdAccountHierarchy200Response.php
 lib/Model/GetAdAccountHierarchy200ResponseDirectCustomersInner.php
 lib/Model/GetAdAccountHierarchy200ResponseDirectCustomersInnerPendingInvitationsInner.php
@@ -6593,3 +6595,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetAdAccountHealth200ResponseBlockersInnerFixTest.php
+test/Model/GetAdAccountHealth200ResponseBlockersInnerTest.php
