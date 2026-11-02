@@ -1214,6 +1214,7 @@ docs/Model/GetDailyMetrics200Response.md
 docs/Model/GetDailyMetrics200ResponseDailyDataInner.md
 docs/Model/GetDailyMetrics200ResponseDailyDataInnerMetrics.md
 docs/Model/GetDailyMetrics200ResponsePlatformBreakdownInner.md
+docs/Model/GetDailyMetrics200ResponseTotals.md
 docs/Model/GetDiscordChannels200Response.md
 docs/Model/GetDiscordChannels200ResponseChannelsInner.md
 docs/Model/GetDiscordGuildMember200Response.md
@@ -4509,6 +4510,7 @@ lib/Model/GetDailyMetrics200Response.php
 lib/Model/GetDailyMetrics200ResponseDailyDataInner.php
 lib/Model/GetDailyMetrics200ResponseDailyDataInnerMetrics.php
 lib/Model/GetDailyMetrics200ResponsePlatformBreakdownInner.php
+lib/Model/GetDailyMetrics200ResponseTotals.php
 lib/Model/GetDiscordChannels200Response.php
 lib/Model/GetDiscordChannels200ResponseChannelsInner.php
 lib/Model/GetDiscordGuildMember200Response.php
@@ -6591,4 +6593,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CommentAttachmentTest.php
+test/Model/GetDailyMetrics200ResponseTotalsTest.php
