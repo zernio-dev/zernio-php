@@ -24,6 +24,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listCampaignPayoutBatches()**](CreatorCampaignsApi.md#listCampaignPayoutBatches) | **GET** /v1/creator-campaigns/{campaignId}/payout-batches | List payout batches |
 | [**listCampaignSubmissions()**](CreatorCampaignsApi.md#listCampaignSubmissions) | **GET** /v1/creator-campaigns/{campaignId}/submissions | List campaign submissions |
 | [**listCreatorCampaigns()**](CreatorCampaignsApi.md#listCreatorCampaigns) | **GET** /v1/creator-campaigns | List creator campaigns |
+| [**moveCampaignParticipant()**](CreatorCampaignsApi.md#moveCampaignParticipant) | **POST** /v1/creator-campaigns/{campaignId}/participants/{participantId}/move | Move participant to another campaign |
 | [**pauseCreatorCampaign()**](CreatorCampaignsApi.md#pauseCreatorCampaign) | **POST** /v1/creator-campaigns/{campaignId}/pause | Pause creator campaign |
 | [**raiseCreatorCampaignBudget()**](CreatorCampaignsApi.md#raiseCreatorCampaignBudget) | **POST** /v1/creator-campaigns/{campaignId}/budget | Raise creator campaign budget |
 | [**reinstateCampaignParticipant()**](CreatorCampaignsApi.md#reinstateCampaignParticipant) | **POST** /v1/creator-campaigns/{campaignId}/participants/{participantId}/reinstate | Reinstate campaign participant |
@@ -1180,6 +1181,70 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `moveCampaignParticipant()`
+
+```php
+moveCampaignParticipant($campaign_id, $participant_id, $move_campaign_participant_request): \Zernio\Model\MoveCampaignParticipant200Response
+```
+
+Move participant to another campaign
+
+Moves a creator invited or joined into the wrong campaign to another campaign of the same owner. The participant keeps its id, status and portal link, which now opens the target.  Posts that fit the target (platform accepted, published after it started) move with it. Undecided posts that do not fit are rejected in this campaign with the reason; decided ones stay.  Answers 409 when the target is closed or full, the creator is already in it, the participant was removed, or any money touched the participation (ledger entries, a payout batch or a transfer). Money never moves between campaigns.  Fires `campaign_participant.removed` here and, for a creator who joined, `campaign_participant.joined` on the target.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\CreatorCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Campaign the participant is in now.
+$participant_id = 'participant_id_example'; // string | Participant ID.
+$move_campaign_participant_request = new \Zernio\Model\MoveCampaignParticipantRequest(); // \Zernio\Model\MoveCampaignParticipantRequest
+
+try {
+    $result = $apiInstance->moveCampaignParticipant($campaign_id, $participant_id, $move_campaign_participant_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CreatorCampaignsApi->moveCampaignParticipant: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Campaign the participant is in now. | |
+| **participant_id** | **string**| Participant ID. | |
+| **move_campaign_participant_request** | [**\Zernio\Model\MoveCampaignParticipantRequest**](../Model/MoveCampaignParticipantRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\MoveCampaignParticipant200Response**](../Model/MoveCampaignParticipant200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

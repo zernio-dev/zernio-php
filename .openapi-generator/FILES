@@ -2117,6 +2117,9 @@ docs/Model/Money.md
 docs/Model/MoneyAmount.md
 docs/Model/MoveAccountToProfile200Response.md
 docs/Model/MoveAccountToProfileRequest.md
+docs/Model/MoveCampaignParticipant200Response.md
+docs/Model/MoveCampaignParticipant200ResponseSubmissions.md
+docs/Model/MoveCampaignParticipantRequest.md
 docs/Model/MoveWhatsAppNumberToProfile200Response.md
 docs/Model/MoveWhatsAppNumberToProfileRequest.md
 docs/Model/OAuthApp.md
@@ -5410,6 +5413,9 @@ lib/Model/Money.php
 lib/Model/MoneyAmount.php
 lib/Model/MoveAccountToProfile200Response.php
 lib/Model/MoveAccountToProfileRequest.php
+lib/Model/MoveCampaignParticipant200Response.php
+lib/Model/MoveCampaignParticipant200ResponseSubmissions.php
+lib/Model/MoveCampaignParticipantRequest.php
 lib/Model/MoveWhatsAppNumberToProfile200Response.php
 lib/Model/MoveWhatsAppNumberToProfileRequest.php
 lib/Model/OAuthApp.php
@@ -6585,4 +6591,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetTopupCardFee200ResponseTest.php
+test/Model/MoveCampaignParticipant200ResponseSubmissionsTest.php
+test/Model/MoveCampaignParticipant200ResponseTest.php
+test/Model/MoveCampaignParticipantRequestTest.php
