@@ -12,6 +12,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getCreatorPortal()**](CreatorPortalApi.md#getCreatorPortal) | **GET** /public/creator-campaigns/{token} | Read a creator invite or participant page |
 | [**joinCreatorCampaign()**](CreatorPortalApi.md#joinCreatorCampaign) | **POST** /public/creator-campaigns/{token} | Join a campaign |
 | [**recoverCreatorPortalLinks()**](CreatorPortalApi.md#recoverCreatorPortalLinks) | **POST** /public/creator-campaigns/recover-link | Email a creator their campaign links |
+| [**removeCreatorAccount()**](CreatorPortalApi.md#removeCreatorAccount) | **DELETE** /public/creator-campaigns/{token}/accounts/{accountId} | Remove a connected account |
 | [**startCreatorConnect()**](CreatorPortalApi.md#startCreatorConnect) | **POST** /public/creator-campaigns/{token}/connect | Start connecting a creator account |
 | [**startCreatorPayouts()**](CreatorPortalApi.md#startCreatorPayouts) | **POST** /public/creator-campaigns/{token}/payouts | Start payout onboarding |
 | [**submitCreatorPost()**](CreatorPortalApi.md#submitCreatorPost) | **POST** /public/creator-campaigns/{token}/submissions | Submit a post |
@@ -355,6 +356,64 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `removeCreatorAccount()`
+
+```php
+removeCreatorAccount($token, $account_id): \Zernio\Model\RemoveCreatorAccount200Response
+```
+
+Remove a connected account
+
+Disconnects one of the creator's accounts. The account belongs to the creator, not to one campaign, so it stops counting in every campaign of this brand they joined.  What its posts already earned stays: accrued, approved and paid amounts are not touched.  Refused while a post from the account is still counting views, because those views are read through the account. It can be removed once their tracking ends.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Zernio\Api\CreatorPortalApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$token = 'token_example'; // string | A participant token or an open invite token. A malformed token answers 404 like an unknown one.
+$account_id = 'account_id_example'; // string | The `id` of one of the participant's `accounts`.
+
+try {
+    $result = $apiInstance->removeCreatorAccount($token, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CreatorPortalApi->removeCreatorAccount: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **token** | **string**| A participant token or an open invite token. A malformed token answers 404 like an unknown one. | |
+| **account_id** | **string**| The &#x60;id&#x60; of one of the participant&#39;s &#x60;accounts&#x60;. | |
+
+### Return type
+
+[**\Zernio\Model\RemoveCreatorAccount200Response**](../Model/RemoveCreatorAccount200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

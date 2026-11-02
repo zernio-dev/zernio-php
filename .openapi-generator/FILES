@@ -2304,6 +2304,7 @@ docs/Model/RemoveAdLabel200Response.md
 docs/Model/RemoveBookmark200Response.md
 docs/Model/RemoveCampaignAssets200Response.md
 docs/Model/RemoveConversionAssociations200Response.md
+docs/Model/RemoveCreatorAccount200Response.md
 docs/Model/RemoveCustomConversionGoal200Response.md
 docs/Model/RemoveDiscordMemberRole200Response.md
 docs/Model/RemoveGoogleAssetGroup200Response.md
@@ -5595,6 +5596,7 @@ lib/Model/RemoveAdLabel200Response.php
 lib/Model/RemoveBookmark200Response.php
 lib/Model/RemoveCampaignAssets200Response.php
 lib/Model/RemoveConversionAssociations200Response.php
+lib/Model/RemoveCreatorAccount200Response.php
 lib/Model/RemoveCustomConversionGoal200Response.php
 lib/Model/RemoveDiscordMemberRole200Response.php
 lib/Model/RemoveGoogleAssetGroup200Response.php
@@ -6581,3 +6583,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/RemoveCreatorAccount200ResponseTest.php
