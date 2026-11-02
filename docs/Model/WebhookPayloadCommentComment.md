@@ -15,6 +15,6 @@ Name | Type | Description | Notes
 **parent_comment_id** | **string** | Parent comment ID if this is a reply |
 **is_live** | **bool** | Instagram only: true when the comment was made on a live broadcast (the live_comments webhook field). Absent on every other comment. | [optional]
 **ad** | [**\Zernio\Model\WebhookPayloadCommentCommentAd**](WebhookPayloadCommentCommentAd.md) |  | [optional]
-**attachment** | [**\Zernio\Model\WebhookPayloadCommentCommentAttachment**](WebhookPayloadCommentCommentAttachment.md) |  | [optional]
+**attachment** | [**\Zernio\Model\CommentAttachment**](CommentAttachment.md) | Facebook only. Present on graphic-only comments (sticker, GIF, photo) that carry no text: the webhook only includes it when the comment has no text. The REST comments API returns it whenever Facebook returns one, text or not. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

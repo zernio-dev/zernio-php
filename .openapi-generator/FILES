@@ -462,6 +462,7 @@ docs/Model/CheckVerification200Response.md
 docs/Model/CheckVerificationRequest.md
 docs/Model/CheckWhatsAppNumberAvailability200Response.md
 docs/Model/CheckWhatsAppNumberAvailability200ResponseAreaAvailability.md
+docs/Model/CommentAttachment.md
 docs/Model/CommentAutomationActions.md
 docs/Model/CommentAutomationAudience.md
 docs/Model/CommentAutomationDmMedia.md
@@ -3110,7 +3111,6 @@ docs/Model/WebhookPayloadComment.md
 docs/Model/WebhookPayloadCommentAccount.md
 docs/Model/WebhookPayloadCommentComment.md
 docs/Model/WebhookPayloadCommentCommentAd.md
-docs/Model/WebhookPayloadCommentCommentAttachment.md
 docs/Model/WebhookPayloadCommentCommentAuthor.md
 docs/Model/WebhookPayloadCommentCommentAuthorInstagramProfile.md
 docs/Model/WebhookPayloadCommentPost.md
@@ -3757,6 +3757,7 @@ lib/Model/CheckVerification200Response.php
 lib/Model/CheckVerificationRequest.php
 lib/Model/CheckWhatsAppNumberAvailability200Response.php
 lib/Model/CheckWhatsAppNumberAvailability200ResponseAreaAvailability.php
+lib/Model/CommentAttachment.php
 lib/Model/CommentAutomationActions.php
 lib/Model/CommentAutomationAudience.php
 lib/Model/CommentAutomationDmMedia.php
@@ -6406,7 +6407,6 @@ lib/Model/WebhookPayloadComment.php
 lib/Model/WebhookPayloadCommentAccount.php
 lib/Model/WebhookPayloadCommentComment.php
 lib/Model/WebhookPayloadCommentCommentAd.php
-lib/Model/WebhookPayloadCommentCommentAttachment.php
 lib/Model/WebhookPayloadCommentCommentAuthor.php
 lib/Model/WebhookPayloadCommentCommentAuthorInstagramProfile.php
 lib/Model/WebhookPayloadCommentPost.php
@@ -6591,6 +6591,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/MoveCampaignParticipant200ResponseSubmissionsTest.php
-test/Model/MoveCampaignParticipant200ResponseTest.php
-test/Model/MoveCampaignParticipantRequestTest.php
+test/Model/CommentAttachmentTest.php
