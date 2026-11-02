@@ -750,12 +750,12 @@ try {
 ## `getVoiceCallEstimate()`
 
 ```php
-getVoiceCallEstimate($to, $from, $minutes, $recording, $transcription): \Zernio\Model\GetVoiceCallEstimate200Response
+getVoiceCallEstimate($to, $from, $forward_to, $minutes, $recording, $transcription): \Zernio\Model\GetVoiceCallEstimate200Response
 ```
 
 Estimate call cost
 
-Pre-call cost estimate for a PSTN call: the carrier leg plus optional recording and transcription add-ons.  It uses the same billing formula as the post-call invoice, so the quote and the final charge can't disagree. The per-minute figure is deliberately conservative (the real cost comes from the settled carrier record after the call), so estimates trend slightly over the actual invoice.  Parity endpoint of `GET /v1/whatsapp/calls/estimate`, minus the Meta line. PSTN calls have no separate Meta bill, so `totalCostUSD` equals `billableCostUSD`.
+Pre-call cost estimate for a PSTN call: the carrier leg plus optional recording and transcription add-ons.  It uses the same billing formula as the post-call invoice, so the quote and the final charge can't disagree. The carrier figure follows the carrier's per-destination rate card: a call dialed from a number in the destination country uses the local mobile rate, and a `tel:` forward destination is quoted as a second carrier leg billed from the same number. The real cost comes from the settled carrier record after the call.  Parity endpoint of `GET /v1/whatsapp/calls/estimate`, minus the Meta line. PSTN calls have no separate Meta bill, so `totalCostUSD` equals `billableCostUSD`.
 
 ### Example
 
@@ -776,12 +776,13 @@ $apiInstance = new Zernio\Api\VoiceApi(
 );
 $to = 'to_example'; // string | Destination number, E.164 (leading + optional).
 $from = 'from_example'; // string | The number the call would dial from, E.164. When it is verified on a Branded Calling identity and `to` is a US number, the estimate includes the per-call Branded Calling surcharge.
+$forward_to = 'forward_to_example'; // string | Destination the call bridges to: `tel:+E164`, `sip:...` or `wss://...`. Defaults to the dialing number's configured forward. A `tel:` destination adds a second carrier leg to the quote. Encode the `+` as `%2B`.
 $minutes = 1; // int
 $recording = True; // bool
 $transcription = True; // bool
 
 try {
-    $result = $apiInstance->getVoiceCallEstimate($to, $from, $minutes, $recording, $transcription);
+    $result = $apiInstance->getVoiceCallEstimate($to, $from, $forward_to, $minutes, $recording, $transcription);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VoiceApi->getVoiceCallEstimate: ', $e->getMessage(), PHP_EOL;
@@ -794,6 +795,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **to** | **string**| Destination number, E.164 (leading + optional). | |
 | **from** | **string**| The number the call would dial from, E.164. When it is verified on a Branded Calling identity and &#x60;to&#x60; is a US number, the estimate includes the per-call Branded Calling surcharge. | [optional] |
+| **forward_to** | **string**| Destination the call bridges to: &#x60;tel:+E164&#x60;, &#x60;sip:...&#x60; or &#x60;wss://...&#x60;. Defaults to the dialing number&#39;s configured forward. A &#x60;tel:&#x60; destination adds a second carrier leg to the quote. Encode the &#x60;+&#x60; as &#x60;%2B&#x60;. | [optional] |
 | **minutes** | **int**|  | [optional] [default to 1] |
 | **recording** | **bool**|  | [optional] |
 | **transcription** | **bool**|  | [optional] |
