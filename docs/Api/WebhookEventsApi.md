@@ -370,7 +370,7 @@ onAccountDisconnected($webhook_payload_account_disconnected)
 
 Account disconnected event
 
-Fired when a connected account becomes disconnected.
+Fired when a connected account becomes disconnected: deactivated after an auth error, or flagged as needing reconnection (`needsReconnection: true` on GET /v1/accounts).  A flagged account that is later deactivated sends it again with the new reason. A deactivated account does not send it again until it is reconnected.  Requests that need the account answer 409 `account_disconnected` until then. A webhook only receives the events it lists, so subscribe to this one explicitly.
 
 ### Example
 
