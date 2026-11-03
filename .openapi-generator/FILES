@@ -161,11 +161,13 @@ docs/Model/AdTreeAdSetAdSetBudget.md
 docs/Model/AdTreeAdSetAttributionSpecInner.md
 docs/Model/AdTreeAdSetBudget.md
 docs/Model/AdTreeAdSetPromotedObject.md
+docs/Model/AdTreeAdSetSchedule.md
 docs/Model/AdTreeCampaign.md
 docs/Model/AdTreeCampaignBudget.md
 docs/Model/AdTreeCampaignCampaignBudget.md
 docs/Model/AdTreeCampaignOptimizationGoal.md
 docs/Model/AdTreeCampaignPromotedObject.md
+docs/Model/AdTreeCampaignSchedule.md
 docs/Model/AdTreeResponse.md
 docs/Model/AdTreeResponsePreviousRange.md
 docs/Model/AddAccountCallouts201Response.md
@@ -3458,11 +3460,13 @@ lib/Model/AdTreeAdSetAdSetBudget.php
 lib/Model/AdTreeAdSetAttributionSpecInner.php
 lib/Model/AdTreeAdSetBudget.php
 lib/Model/AdTreeAdSetPromotedObject.php
+lib/Model/AdTreeAdSetSchedule.php
 lib/Model/AdTreeCampaign.php
 lib/Model/AdTreeCampaignBudget.php
 lib/Model/AdTreeCampaignCampaignBudget.php
 lib/Model/AdTreeCampaignOptimizationGoal.php
 lib/Model/AdTreeCampaignPromotedObject.php
+lib/Model/AdTreeCampaignSchedule.php
 lib/Model/AdTreeResponse.php
 lib/Model/AdTreeResponsePreviousRange.php
 lib/Model/AddAccountCallouts201Response.php
@@ -6595,3 +6599,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AdTreeAdSetScheduleTest.php
+test/Model/AdTreeCampaignScheduleTest.php
