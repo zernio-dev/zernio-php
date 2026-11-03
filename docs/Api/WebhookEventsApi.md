@@ -5379,7 +5379,7 @@ onReviewUpdated($webhook_payload_review_updated)
 
 Review updated event
 
-Fired when a Google Business Profile reviewer edits their review text or rating, or when a reply is posted through POST /v1/inbox/reviews/{reviewId}/reply. A reply written directly in Google's own interface does NOT fire this event, because Google emits no notification for it. Payload shape matches review.new. Requires the Inbox add-on.
+Fired when a Google Business Profile reviewer edits their review text or rating, or when a reply is added, edited or removed. Payload shape matches review.new. Requires the Inbox add-on.  A reply posted through POST /v1/inbox/reviews/{reviewId}/reply fires immediately. The periodic check then reports it again with the full review payload, so expect a second delivery.  Replies written or removed in Google's own interface, and replies removed through the API, are reported by the periodic check.  For replies written in Google, that is usually within 6 hours for reviews updated in the last 30 days, and usually within about 7 days for older ones. Only locations covered by a webhook subscribed to review.updated are checked. A removed reply fires with hasReply false.
 
 ### Example
 

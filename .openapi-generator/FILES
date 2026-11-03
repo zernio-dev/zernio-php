@@ -6609,8 +6609,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AdsPerformanceResponseAdsInnerCreativeTest.php
-test/Model/AdsPerformanceResponseAdsInnerMetricsTest.php
-test/Model/AdsPerformanceResponseAdsInnerTest.php
-test/Model/AdsPerformanceResponseTest.php
-test/Model/ListAdsByPerformance202ResponseTest.php
