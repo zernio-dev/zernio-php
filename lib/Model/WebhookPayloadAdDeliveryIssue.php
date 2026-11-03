@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * WebhookPayloadAdDeliveryIssue Class Doc Comment
  *
  * @category Class
- * @description Webhook payload for the &#x60;ad.delivery_issue&#x60; event. Fires when an ad Zernio already tracked moves into the platform&#39;s error state:  - Meta &#x60;WITH_ISSUES&#x60; (payment, policy and account problems) - TikTok account punishment or missing balance - LinkedIn removals - any platform status Zernio does not recognize yet (check &#x60;issue.raw&#x60;)  Ads seen for the first time by a sync never fire it.  Detected by Zernio&#39;s own ad sync, so it arrives within one sync cycle. Each ad fires at most once per 24 hours. On Meta, &#x60;ad.status_changed&#x60; with &#x60;WITH_ISSUES&#x60; can also fire for the same problem, straight from Meta&#39;s webhook.
+ * @description Webhook payload for the &#x60;ad.delivery_issue&#x60; event. Fires when an ad Zernio already tracked moves into the platform&#39;s error state:  - Meta &#x60;WITH_ISSUES&#x60; (payment, policy and account problems) - TikTok account punishment or missing balance - any platform status Zernio does not recognize yet (check &#x60;issue.raw&#x60;)  Ads seen for the first time by a sync never fire it.  Detected by Zernio&#39;s own ad sync, so it arrives within one sync cycle. Each ad fires at most once per 24 hours. On Meta, &#x60;ad.status_changed&#x60; with &#x60;WITH_ISSUES&#x60; can also fire for the same problem, straight from Meta&#39;s webhook.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
