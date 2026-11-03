@@ -86,7 +86,7 @@ getCampaignResultsUpload($upload_id): \Zernio\Model\GetCampaignResultsUpload200R
 
 Check a results upload
 
-How an upload was matched: rows matched and unmatched, and up to 100 unmatched rows with why (`no_campaign` or `ambiguous`).  `status` turns `done` once every row is processed, usually within seconds. Uploads are kept for 30 days.
+How an upload was matched: rows matched and unmatched, and up to 100 unmatched rows with why (`no_campaign` or `ambiguous`).  `status` turns `done` once every row is processed, usually within seconds. Uploads are kept for 30 days.  A `failed` upload says why in `failureReason`. Send it again: re-sending a day replaces it, so nothing is counted twice.
 
 ### Example
 

@@ -65,6 +65,7 @@ class GetCampaignResultsUpload200Response implements ModelInterface, ArrayAccess
         'rows_matched' => 'int',
         'rows_unmatched' => 'int',
         'unmatched' => '\Zernio\Model\GetCampaignResultsUpload200ResponseUnmatchedInner[]',
+        'failure_reason' => 'string',
         'created_at' => '\DateTime',
         'completed_at' => '\DateTime'
     ];
@@ -84,6 +85,7 @@ class GetCampaignResultsUpload200Response implements ModelInterface, ArrayAccess
         'rows_matched' => null,
         'rows_unmatched' => null,
         'unmatched' => null,
+        'failure_reason' => null,
         'created_at' => 'date-time',
         'completed_at' => 'date-time'
     ];
@@ -101,6 +103,7 @@ class GetCampaignResultsUpload200Response implements ModelInterface, ArrayAccess
         'rows_matched' => false,
         'rows_unmatched' => false,
         'unmatched' => false,
+        'failure_reason' => true,
         'created_at' => false,
         'completed_at' => true
     ];
@@ -198,6 +201,7 @@ class GetCampaignResultsUpload200Response implements ModelInterface, ArrayAccess
         'rows_matched' => 'rowsMatched',
         'rows_unmatched' => 'rowsUnmatched',
         'unmatched' => 'unmatched',
+        'failure_reason' => 'failureReason',
         'created_at' => 'createdAt',
         'completed_at' => 'completedAt'
     ];
@@ -215,6 +219,7 @@ class GetCampaignResultsUpload200Response implements ModelInterface, ArrayAccess
         'rows_matched' => 'setRowsMatched',
         'rows_unmatched' => 'setRowsUnmatched',
         'unmatched' => 'setUnmatched',
+        'failure_reason' => 'setFailureReason',
         'created_at' => 'setCreatedAt',
         'completed_at' => 'setCompletedAt'
     ];
@@ -232,6 +237,7 @@ class GetCampaignResultsUpload200Response implements ModelInterface, ArrayAccess
         'rows_matched' => 'getRowsMatched',
         'rows_unmatched' => 'getRowsUnmatched',
         'unmatched' => 'getUnmatched',
+        'failure_reason' => 'getFailureReason',
         'created_at' => 'getCreatedAt',
         'completed_at' => 'getCompletedAt'
     ];
@@ -283,6 +289,8 @@ class GetCampaignResultsUpload200Response implements ModelInterface, ArrayAccess
     public const SOURCE_API = 'api';
     public const SOURCE_CSV = 'csv';
     public const SOURCE_HUBSPOT = 'hubspot';
+    public const FAILURE_REASON_QUEUE_UNAVAILABLE = 'queue_unavailable';
+    public const FAILURE_REASON_PROCESSING_FAILED = 'processing_failed';
 
     /**
      * Gets allowable values of the enum
@@ -313,6 +321,19 @@ class GetCampaignResultsUpload200Response implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFailureReasonAllowableValues()
+    {
+        return [
+            self::FAILURE_REASON_QUEUE_UNAVAILABLE,
+            self::FAILURE_REASON_PROCESSING_FAILED,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -334,6 +355,7 @@ class GetCampaignResultsUpload200Response implements ModelInterface, ArrayAccess
         $this->setIfExists('rows_matched', $data ?? [], null);
         $this->setIfExists('rows_unmatched', $data ?? [], null);
         $this->setIfExists('unmatched', $data ?? [], null);
+        $this->setIfExists('failure_reason', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('completed_at', $data ?? [], null);
     }
@@ -404,6 +426,18 @@ class GetCampaignResultsUpload200Response implements ModelInterface, ArrayAccess
         if ($this->container['unmatched'] === null) {
             $invalidProperties[] = "'unmatched' can't be null";
         }
+        if ($this->container['failure_reason'] === null && !$this->isNullableSetToNull('failure_reason')) {
+            $invalidProperties[] = "'failure_reason' can't be null";
+        }
+        $allowedValues = $this->getFailureReasonAllowableValues();
+        if (!is_null($this->container['failure_reason']) && !in_array($this->container['failure_reason'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'failure_reason', must be one of '%s'",
+                $this->container['failure_reason'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
         }
@@ -630,6 +664,50 @@ class GetCampaignResultsUpload200Response implements ModelInterface, ArrayAccess
             throw new \InvalidArgumentException('non-nullable unmatched cannot be null');
         }
         $this->container['unmatched'] = $unmatched;
+
+        return $this;
+    }
+
+    /**
+     * Gets failure_reason
+     *
+     * @return string|null
+     */
+    public function getFailureReason()
+    {
+        return $this->container['failure_reason'];
+    }
+
+    /**
+     * Sets failure_reason
+     *
+     * @param string|null $failure_reason Set when `status` is `failed`. `queue_unavailable`: the upload could not be queued. `processing_failed`: its rows could not be stored after several retries. Both are on our side.
+     *
+     * @return self
+     */
+    public function setFailureReason($failure_reason)
+    {
+        if (is_null($failure_reason)) {
+            array_push($this->openAPINullablesSetToNull, 'failure_reason');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('failure_reason', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getFailureReasonAllowableValues();
+        if (!is_null($failure_reason) && !in_array($failure_reason, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'failure_reason', must be one of '%s'",
+                    $failure_reason,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['failure_reason'] = $failure_reason;
 
         return $this;
     }
