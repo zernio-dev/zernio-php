@@ -5,9 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **metric** | **string** |  |
-**window** | **string** | Days in the ad account&#39;s own timezone. &#x60;last_7d&#x60; is the 7 full days before today; only &#x60;today&#x60; reads the day in progress. |
+**window** | **string** |  |
 **op** | **string** |  |
 **value** | **float** |  |
+**compare_to** | **string** | Makes the condition relative: &#x60;value&#x60; becomes a ratio of the metric over &#x60;window&#x60; to the same metric over this window. &#x60;previous_period&#x60; is the same number of days just before &#x60;window&#x60;; any other value is a window, such as &#x60;30_to_2_days_ago&#x60;.  Spend, impressions, clicks, conversions and reach are compared per day, so windows of different lengths compare fairly; rates such as &#x60;cpc&#x60; compare as they are. A comparison window with no value never matches. | [optional]
 **actual** | **float** | The object&#39;s value over the window. Null when it cannot be computed. |
 **met** | **bool** |  |
 
