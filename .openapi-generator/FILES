@@ -1632,6 +1632,7 @@ docs/Model/ImessageAudienceContactOptIn.md
 docs/Model/ImessageSandboxContact.md
 docs/Model/ImessageSender.md
 docs/Model/ImessageSenderLifecycle.md
+docs/Model/InboundActivity.md
 docs/Model/InboxConversationAdMetadata.md
 docs/Model/InboxMessageEditAttachment.md
 docs/Model/InboxMessageEditHistoryEntry.md
@@ -2083,6 +2084,7 @@ docs/Model/ListWorkflowVersions200Response.md
 docs/Model/ListWorkflowVersions200ResponseVersionsInner.md
 docs/Model/ListWorkflows200Response.md
 docs/Model/ListWorkflows200ResponseWorkflowsInner.md
+docs/Model/ListedAccount.md
 docs/Model/LookupSmsNumber200Response.md
 docs/Model/MarkConversationRead200Response.md
 docs/Model/MediaContentType.md
@@ -4936,6 +4938,7 @@ lib/Model/ImessageAudienceContactOptIn.php
 lib/Model/ImessageSandboxContact.php
 lib/Model/ImessageSender.php
 lib/Model/ImessageSenderLifecycle.php
+lib/Model/InboundActivity.php
 lib/Model/InboxConversationAdMetadata.php
 lib/Model/InboxMessageEditAttachment.php
 lib/Model/InboxMessageEditHistoryEntry.php
@@ -5387,6 +5390,7 @@ lib/Model/ListWorkflowVersions200Response.php
 lib/Model/ListWorkflowVersions200ResponseVersionsInner.php
 lib/Model/ListWorkflows200Response.php
 lib/Model/ListWorkflows200ResponseWorkflowsInner.php
+lib/Model/ListedAccount.php
 lib/Model/LookupSmsNumber200Response.php
 lib/Model/MarkConversationRead200Response.php
 lib/Model/MediaContentType.php
@@ -6609,3 +6613,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/InboundActivityTest.php
+test/Model/ListedAccountTest.php

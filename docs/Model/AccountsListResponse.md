@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accounts** | [**\Zernio\Model\SocialAccount[]**](SocialAccount.md) |  |
+**accounts** | [**\Zernio\Model\ListedAccount[]**](ListedAccount.md) |  |
 **has_analytics_access** | **bool** | Whether user has analytics add-on access |
 **pagination** | [**\Zernio\Model\AccountsListResponsePagination**](AccountsListResponsePagination.md) |  | [optional]
 **profile_totals** | **array<string,int>** | Only with profileIds and perProfile. Accounts matching the filters per profile ID; a profile with none is absent. | [optional]
