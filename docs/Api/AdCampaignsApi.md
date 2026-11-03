@@ -46,6 +46,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listAdSets()**](AdCampaignsApi.md#listAdSets) | **GET** /v1/ads/ad-sets | List ad sets |
 | [**listAds()**](AdCampaignsApi.md#listAds) | **GET** /v1/ads | List ads |
 | [**listAdsAlerts()**](AdCampaignsApi.md#listAdsAlerts) | **GET** /v1/ads/alerts | List ads that need attention |
+| [**listAdsByPerformance()**](AdCampaignsApi.md#listAdsByPerformance) | **GET** /v1/ads/performance | Rank ads by performance |
 | [**listBidStrategies()**](AdCampaignsApi.md#listBidStrategies) | **GET** /v1/ads/bid-strategies | List portfolio bid strategies |
 | [**listCampaignAssets()**](AdCampaignsApi.md#listCampaignAssets) | **GET** /v1/ads/campaigns/{campaignId}/assets | List campaign assets |
 | [**listCampaignNegativeKeywordLists()**](AdCampaignsApi.md#listCampaignNegativeKeywordLists) | **GET** /v1/ads/campaigns/{campaignId}/negative-keyword-lists | List campaign negative lists |
@@ -2689,6 +2690,78 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListAdsAlerts200Response**](../Model/ListAdsAlerts200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listAdsByPerformance()`
+
+```php
+listAdsByPerformance($account_id, $from_date, $to_date, $ad_account_id, $platform, $sort_by, $limit): \Zernio\Model\AdsPerformanceResponse
+```
+
+Rank ads by performance
+
+Returns an ads account's ads ranked by spend, impressions, clicks, results or ROAS over a date range, each with its creative (type, thumbnail, headline, body, link) and campaign.  Use it to see which creatives perform best. `accountId` is sibling-expanded like `/v1/ads/timeline`.  Money is ranked by its raw amount, so pass `adAccountId` when the connection's ad accounts bill in different currencies.  A Meta range older than the imported history answers `202` with `backfillPending: true` and the covered part; repeat the request until it returns 200.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Account ID. Sibling-expanded to its linked posting and ads pair. An id the API key cannot reach answers 404.
+$from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive start of the range (YYYY-MM-DD).
+$to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive end of the range (YYYY-MM-DD). Max 730-day range.
+$ad_account_id = 'ad_account_id_example'; // string | Optional platform-native ad account ID (e.g. Meta `act_…`) to rank one ad account only.
+$platform = 'platform_example'; // string | Restrict to one platform.
+$sort_by = 'spend'; // string | Metric the ads are ranked by, highest first.
+$limit = 50; // int | How many ads to return.
+
+try {
+    $result = $apiInstance->listAdsByPerformance($account_id, $from_date, $to_date, $ad_account_id, $platform, $sort_by, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->listAdsByPerformance: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Account ID. Sibling-expanded to its linked posting and ads pair. An id the API key cannot reach answers 404. | |
+| **from_date** | **\DateTime**| Inclusive start of the range (YYYY-MM-DD). | |
+| **to_date** | **\DateTime**| Inclusive end of the range (YYYY-MM-DD). Max 730-day range. | |
+| **ad_account_id** | **string**| Optional platform-native ad account ID (e.g. Meta &#x60;act_…&#x60;) to rank one ad account only. | [optional] |
+| **platform** | **string**| Restrict to one platform. | [optional] |
+| **sort_by** | **string**| Metric the ads are ranked by, highest first. | [optional] [default to &#39;spend&#39;] |
+| **limit** | **int**| How many ads to return. | [optional] [default to 50] |
+
+### Return type
+
+[**\Zernio\Model\AdsPerformanceResponse**](../Model/AdsPerformanceResponse.md)
 
 ### Authorization
 

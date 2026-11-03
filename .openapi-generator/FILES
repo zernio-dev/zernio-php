@@ -218,6 +218,10 @@ docs/Model/AdsAlert.md
 docs/Model/AdsAlertEntity.md
 docs/Model/AdsAlertFix.md
 docs/Model/AdsListResponse.md
+docs/Model/AdsPerformanceResponse.md
+docs/Model/AdsPerformanceResponseAdsInner.md
+docs/Model/AdsPerformanceResponseAdsInnerCreative.md
+docs/Model/AdsPerformanceResponseAdsInnerMetrics.md
 docs/Model/AdsTimelineResponse.md
 docs/Model/AdsTimelineResponsePreviousRange.md
 docs/Model/AdsTimelineResponseRowsInner.md
@@ -1778,6 +1782,7 @@ docs/Model/ListAds202Response.md
 docs/Model/ListAdsAlerts200Response.md
 docs/Model/ListAdsAlerts200ResponseCounts.md
 docs/Model/ListAdsBusinessCenters200Response.md
+docs/Model/ListAdsByPerformance202Response.md
 docs/Model/ListAdsInstagramAccounts200Response.md
 docs/Model/ListAdsInstagramAccounts200ResponseAccountsInner.md
 docs/Model/ListAdsInstagramAccounts200ResponsePagesInner.md
@@ -3517,6 +3522,10 @@ lib/Model/AdsAlert.php
 lib/Model/AdsAlertEntity.php
 lib/Model/AdsAlertFix.php
 lib/Model/AdsListResponse.php
+lib/Model/AdsPerformanceResponse.php
+lib/Model/AdsPerformanceResponseAdsInner.php
+lib/Model/AdsPerformanceResponseAdsInnerCreative.php
+lib/Model/AdsPerformanceResponseAdsInnerMetrics.php
 lib/Model/AdsTimelineResponse.php
 lib/Model/AdsTimelineResponsePreviousRange.php
 lib/Model/AdsTimelineResponseRowsInner.php
@@ -5077,6 +5086,7 @@ lib/Model/ListAds202Response.php
 lib/Model/ListAdsAlerts200Response.php
 lib/Model/ListAdsAlerts200ResponseCounts.php
 lib/Model/ListAdsBusinessCenters200Response.php
+lib/Model/ListAdsByPerformance202Response.php
 lib/Model/ListAdsInstagramAccounts200Response.php
 lib/Model/ListAdsInstagramAccounts200ResponseAccountsInner.php
 lib/Model/ListAdsInstagramAccounts200ResponsePagesInner.php
@@ -6599,3 +6609,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AdsPerformanceResponseAdsInnerCreativeTest.php
+test/Model/AdsPerformanceResponseAdsInnerMetricsTest.php
+test/Model/AdsPerformanceResponseAdsInnerTest.php
+test/Model/AdsPerformanceResponseTest.php
+test/Model/ListAdsByPerformance202ResponseTest.php
