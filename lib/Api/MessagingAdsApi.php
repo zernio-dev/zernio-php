@@ -143,7 +143,7 @@ class MessagingAdsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateMessagingAd201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
+     * @return \Zernio\Model\CreateMessagingAd201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
     public function createCallAd($create_call_ad_request, $idempotency_key = null, string $contentType = self::contentTypes['createCallAd'][0])
     {
@@ -162,7 +162,7 @@ class MessagingAdsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateMessagingAd201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateMessagingAd201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createCallAdWithHttpInfo($create_call_ad_request, $idempotency_key = null, string $contentType = self::contentTypes['createCallAd'][0])
     {
@@ -211,6 +211,12 @@ class MessagingAdsApi
                         $response,
                     );
                 case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\ErrorResponse',
                         $request,
@@ -265,6 +271,14 @@ class MessagingAdsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\ErrorResponse',
@@ -469,7 +483,7 @@ class MessagingAdsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateMessagingAd201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
+     * @return \Zernio\Model\CreateMessagingAd201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      * @deprecated
      */
     public function createCtwaAd($ctwa_ad_request_body, $idempotency_key = null, string $contentType = self::contentTypes['createCtwaAd'][0])
@@ -489,7 +503,7 @@ class MessagingAdsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateMessagingAd201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateMessagingAd201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
     public function createCtwaAdWithHttpInfo($ctwa_ad_request_body, $idempotency_key = null, string $contentType = self::contentTypes['createCtwaAd'][0])
@@ -544,6 +558,12 @@ class MessagingAdsApi
                         $request,
                         $response,
                     );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -593,6 +613,14 @@ class MessagingAdsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\ErrorResponse',
@@ -800,7 +828,7 @@ class MessagingAdsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateMessagingAd200Response|\Zernio\Model\CreateMessagingAd201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
+     * @return \Zernio\Model\CreateMessagingAd200Response|\Zernio\Model\CreateMessagingAd201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
     public function createMessagingAd($create_messaging_ad_request, $idempotency_key = null, string $contentType = self::contentTypes['createMessagingAd'][0])
     {
@@ -819,7 +847,7 @@ class MessagingAdsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateMessagingAd200Response|\Zernio\Model\CreateMessagingAd201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateMessagingAd200Response|\Zernio\Model\CreateMessagingAd201Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createMessagingAdWithHttpInfo($create_messaging_ad_request, $idempotency_key = null, string $contentType = self::contentTypes['createMessagingAd'][0])
     {
@@ -874,6 +902,12 @@ class MessagingAdsApi
                         $response,
                     );
                 case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\ErrorResponse',
                         $request,
@@ -936,6 +970,14 @@ class MessagingAdsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\ErrorResponse',

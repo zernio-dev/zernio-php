@@ -6627,7 +6627,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetTikTokDemographics200ResponseDemographicsValueInnerTest.php
-test/Model/GetTikTokDemographics200ResponseTest.php
-test/Model/GetTikTokDemographics412ResponseScopeStatusTest.php
-test/Model/GetTikTokDemographics412ResponseTest.php
