@@ -22,6 +22,10 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onAdVideoProcessed()**](WebhookEventsApi.md#onAdVideoProcessed) | **POST** /ad.video.processed | Ad video processed event |
 | [**onAnalyticsSynced()**](WebhookEventsApi.md#onAnalyticsSynced) | **POST** /analytics.synced | Analytics synced event |
 | [**onApiChangelogPublished()**](WebhookEventsApi.md#onApiChangelogPublished) | **POST** /api.changelog.published | API changelog entry published event |
+| [**onAutomationActionApplied()**](WebhookEventsApi.md#onAutomationActionApplied) | **POST** /automation.action.applied | Automation action applied event |
+| [**onAutomationActionFailed()**](WebhookEventsApi.md#onAutomationActionFailed) | **POST** /automation.action.failed | Automation action failed event |
+| [**onAutomationActionUnknown()**](WebhookEventsApi.md#onAutomationActionUnknown) | **POST** /automation.action.unknown | Automation action unknown event |
+| [**onAutomationCheckCompleted()**](WebhookEventsApi.md#onAutomationCheckCompleted) | **POST** /automation.check.completed | Automation check completed event |
 | [**onBrandedCallingIdentityActionRequired()**](WebhookEventsApi.md#onBrandedCallingIdentityActionRequired) | **POST** /branded_calling.identity.action_required | Caller identity action required event |
 | [**onBrandedCallingIdentityStatusUpdated()**](WebhookEventsApi.md#onBrandedCallingIdentityStatusUpdated) | **POST** /branded_calling.identity.status_updated | Caller identity status updated event |
 | [**onBrandedCallingNumberStatusUpdated()**](WebhookEventsApi.md#onBrandedCallingNumberStatusUpdated) | **POST** /branded_calling.number.status_updated | Branded number status updated event |
@@ -1052,6 +1056,242 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_api_changelog_published** | [**\Zernio\Model\WebhookPayloadApiChangelogPublished**](../Model/WebhookPayloadApiChangelogPublished.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onAutomationActionApplied()`
+
+```php
+onAutomationActionApplied($webhook_payload_automation_action)
+```
+
+Automation action applied event
+
+One change an automation made or tried, sent as it settles. See `WebhookPayloadAutomationAction`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_automation_action = {"id":"7a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d","event":"automation.action.applied","automation":{"id":"65c8f7e2a1b3c4d5e6f7a8c1","kind":"ad_rule"},"accountId":"65c8f7e2a1b3c4d5e6f7a8b9","checkId":"65c8f7e2a1b3c4d5e6f7a8c2","action":{"id":"65c8f7e2a1b3c4d5e6f7a8c3","subjectId":"120210000000000002","type":"adjust_budget","status":"applied","reason":null,"previous":{"dailyBudget":40},"target":{"dailyBudget":48},"actedAt":"2026-10-22T09:17:02.000Z"},"timestamp":"2026-10-22T09:17:03.000Z"}; // \Zernio\Model\WebhookPayloadAutomationAction
+
+try {
+    $apiInstance->onAutomationActionApplied($webhook_payload_automation_action);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onAutomationActionApplied: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_automation_action** | [**\Zernio\Model\WebhookPayloadAutomationAction**](../Model/WebhookPayloadAutomationAction.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onAutomationActionFailed()`
+
+```php
+onAutomationActionFailed($webhook_payload_automation_action)
+```
+
+Automation action failed event
+
+One change an automation made or tried, sent as it settles. See `WebhookPayloadAutomationAction`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_automation_action = {"id":"7a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d","event":"automation.action.failed","automation":{"id":"65c8f7e2a1b3c4d5e6f7a8c1","kind":"ad_rule"},"accountId":"65c8f7e2a1b3c4d5e6f7a8b9","checkId":"65c8f7e2a1b3c4d5e6f7a8c2","action":{"id":"65c8f7e2a1b3c4d5e6f7a8c3","subjectId":"120210000000000002","type":"adjust_budget","status":"failed","reason":"The platform refused the budget: below the minimum daily budget.","previous":{"dailyBudget":40},"target":{"dailyBudget":48},"actedAt":"2026-10-22T09:17:02.000Z"},"timestamp":"2026-10-22T09:17:03.000Z"}; // \Zernio\Model\WebhookPayloadAutomationAction
+
+try {
+    $apiInstance->onAutomationActionFailed($webhook_payload_automation_action);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onAutomationActionFailed: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_automation_action** | [**\Zernio\Model\WebhookPayloadAutomationAction**](../Model/WebhookPayloadAutomationAction.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onAutomationActionUnknown()`
+
+```php
+onAutomationActionUnknown($webhook_payload_automation_action)
+```
+
+Automation action unknown event
+
+One change an automation made or tried, sent as it settles. See `WebhookPayloadAutomationAction`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_automation_action = {"id":"7a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d","event":"automation.action.unknown","automation":{"id":"65c8f7e2a1b3c4d5e6f7a8c1","kind":"ad_rule"},"accountId":"65c8f7e2a1b3c4d5e6f7a8b9","checkId":"65c8f7e2a1b3c4d5e6f7a8c2","action":{"id":"65c8f7e2a1b3c4d5e6f7a8c3","subjectId":"120210000000000002","type":"adjust_budget","status":"unknown","reason":"The platform did not answer in time.","previous":{"dailyBudget":40},"target":{"dailyBudget":48},"actedAt":"2026-10-22T09:17:02.000Z"},"timestamp":"2026-10-22T09:17:03.000Z"}; // \Zernio\Model\WebhookPayloadAutomationAction
+
+try {
+    $apiInstance->onAutomationActionUnknown($webhook_payload_automation_action);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onAutomationActionUnknown: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_automation_action** | [**\Zernio\Model\WebhookPayloadAutomationAction**](../Model/WebhookPayloadAutomationAction.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onAutomationCheckCompleted()`
+
+```php
+onAutomationCheckCompleted($webhook_payload_automation_check_completed)
+```
+
+Automation check completed event
+
+Fired once per scheduled check of an automation, whatever its outcome. See `WebhookPayloadAutomationCheckCompleted`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_automation_check_completed = {"id":"3f1c2a4b-5d6e-4f70-8a9b-0c1d2e3f4a5b","event":"automation.check.completed","automation":{"id":"65c8f7e2a1b3c4d5e6f7a8c1","kind":"ad_rule"},"accountId":"65c8f7e2a1b3c4d5e6f7a8b9","check":{"id":"65c8f7e2a1b3c4d5e6f7a8c2","slot":"2026-10-22T09:17:00.000Z","outcome":"triggered","subjectsEvaluated":12,"actionsCount":1,"error":null},"timestamp":"2026-10-22T09:17:04.000Z"}; // \Zernio\Model\WebhookPayloadAutomationCheckCompleted
+
+try {
+    $apiInstance->onAutomationCheckCompleted($webhook_payload_automation_check_completed);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onAutomationCheckCompleted: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_automation_check_completed** | [**\Zernio\Model\WebhookPayloadAutomationCheckCompleted**](../Model/WebhookPayloadAutomationCheckCompleted.md)|  | |
 
 ### Return type
 

@@ -3055,6 +3055,7 @@ docs/Model/Webhook.md
 docs/Model/WebhookAdsAccount.md
 docs/Model/WebhookAdsSyncAccount.md
 docs/Model/WebhookAdsSyncAdAccount.md
+docs/Model/WebhookAutomationRef.md
 docs/Model/WebhookLog.md
 docs/Model/WebhookPayloadAccountAdsInitialSyncCompleted.md
 docs/Model/WebhookPayloadAccountAdsInitialSyncCompletedAccount.md
@@ -3098,6 +3099,10 @@ docs/Model/WebhookPayloadAnalyticsSynced.md
 docs/Model/WebhookPayloadAnalyticsSyncedAccount.md
 docs/Model/WebhookPayloadAnalyticsSyncedSync.md
 docs/Model/WebhookPayloadApiChangelogPublished.md
+docs/Model/WebhookPayloadAutomationAction.md
+docs/Model/WebhookPayloadAutomationActionAction.md
+docs/Model/WebhookPayloadAutomationCheckCompleted.md
+docs/Model/WebhookPayloadAutomationCheckCompletedCheck.md
 docs/Model/WebhookPayloadCalendarEvent.md
 docs/Model/WebhookPayloadCalendarEventAccount.md
 docs/Model/WebhookPayloadCalendarEventCalendarEvent.md
@@ -6369,6 +6374,7 @@ lib/Model/Webhook.php
 lib/Model/WebhookAdsAccount.php
 lib/Model/WebhookAdsSyncAccount.php
 lib/Model/WebhookAdsSyncAdAccount.php
+lib/Model/WebhookAutomationRef.php
 lib/Model/WebhookLog.php
 lib/Model/WebhookPayloadAccountAdsInitialSyncCompleted.php
 lib/Model/WebhookPayloadAccountAdsInitialSyncCompletedAccount.php
@@ -6412,6 +6418,10 @@ lib/Model/WebhookPayloadAnalyticsSynced.php
 lib/Model/WebhookPayloadAnalyticsSyncedAccount.php
 lib/Model/WebhookPayloadAnalyticsSyncedSync.php
 lib/Model/WebhookPayloadApiChangelogPublished.php
+lib/Model/WebhookPayloadAutomationAction.php
+lib/Model/WebhookPayloadAutomationActionAction.php
+lib/Model/WebhookPayloadAutomationCheckCompleted.php
+lib/Model/WebhookPayloadAutomationCheckCompletedCheck.php
 lib/Model/WebhookPayloadCalendarEvent.php
 lib/Model/WebhookPayloadCalendarEventAccount.php
 lib/Model/WebhookPayloadCalendarEventCalendarEvent.php
@@ -6627,3 +6637,8 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/WebhookAutomationRefTest.php
+test/Model/WebhookPayloadAutomationActionActionTest.php
+test/Model/WebhookPayloadAutomationActionTest.php
+test/Model/WebhookPayloadAutomationCheckCompletedCheckTest.php
+test/Model/WebhookPayloadAutomationCheckCompletedTest.php
