@@ -6669,9 +6669,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AdRuleActionOneOf7Test.php
-test/Model/AdRuleLifecycleTest.php
-test/Model/ListAdRuleAlerts200ResponseAlertsInnerTest.php
-test/Model/ListAdRuleAlerts200ResponseTest.php
-test/Model/WebhookPayloadAutomationAlertAlertTest.php
-test/Model/WebhookPayloadAutomationAlertTest.php
