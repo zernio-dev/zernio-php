@@ -2714,6 +2714,8 @@ docs/Model/TwitterPlatformDataSensitiveMedia.md
 docs/Model/TwitterPlatformDataThreadItemsInner.md
 docs/Model/UnblockWhatsAppUsers200Response.md
 docs/Model/UnblockWhatsAppUsersRequest.md
+docs/Model/UndoAdRuleActivity200Response.md
+docs/Model/UndoAdRuleActivity200ResponseUndo.md
 docs/Model/UndoRetweet200Response.md
 docs/Model/UnfollowUser200Response.md
 docs/Model/UnlikeInboxComment200Response.md
@@ -6040,6 +6042,8 @@ lib/Model/TwitterPlatformDataSensitiveMedia.php
 lib/Model/TwitterPlatformDataThreadItemsInner.php
 lib/Model/UnblockWhatsAppUsers200Response.php
 lib/Model/UnblockWhatsAppUsersRequest.php
+lib/Model/UndoAdRuleActivity200Response.php
+lib/Model/UndoAdRuleActivity200ResponseUndo.php
 lib/Model/UndoRetweet200Response.php
 lib/Model/UnfollowUser200Response.php
 lib/Model/UnlikeInboxComment200Response.php
@@ -6651,3 +6655,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/UndoAdRuleActivity200ResponseTest.php
+test/Model/UndoAdRuleActivity200ResponseUndoTest.php

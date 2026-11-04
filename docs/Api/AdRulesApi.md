@@ -14,6 +14,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listAdRuleTemplates()**](AdRulesApi.md#listAdRuleTemplates) | **GET** /v1/ads/rules/templates | List ready-made ad rules |
 | [**listAdRules()**](AdRulesApi.md#listAdRules) | **GET** /v1/ads/rules | List ad rules |
 | [**previewAdRule()**](AdRulesApi.md#previewAdRule) | **POST** /v1/ads/rules/{ruleId}/preview | Preview an ad rule |
+| [**undoAdRuleActivity()**](AdRulesApi.md#undoAdRuleActivity) | **POST** /v1/ads/rules/activity/{activityId}/undo | Undo a change an ad rule made |
 | [**updateAdRule()**](AdRulesApi.md#updateAdRule) | **PATCH** /v1/ads/rules/{ruleId} | Update an ad rule |
 
 
@@ -502,6 +503,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\AdRuleEvaluation**](../Model/AdRuleEvaluation.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `undoAdRuleActivity()`
+
+```php
+undoAdRuleActivity($activity_id): \Zernio\Model\UndoAdRuleActivity200Response
+```
+
+Undo a change an ad rule made
+
+Puts back a pause, a reactivation or a budget change a rule applied, as a new change recorded in the activity feed. The rule's cooldown then covers the object. It is refused (409 `invalid_resource_state`) when the change was not applied, was already undone, is a copy, or when the object changed since: delivering again after a pause, paused again after a reactivation, or on another budget.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdRulesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$activity_id = 'activity_id_example'; // string | The `id` of an entry from `GET /v1/ads/rules/activity`.
+
+try {
+    $result = $apiInstance->undoAdRuleActivity($activity_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdRulesApi->undoAdRuleActivity: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **activity_id** | **string**| The &#x60;id&#x60; of an entry from &#x60;GET /v1/ads/rules/activity&#x60;. | |
+
+### Return type
+
+[**\Zernio\Model\UndoAdRuleActivity200Response**](../Model/UndoAdRuleActivity200Response.md)
 
 ### Authorization
 
