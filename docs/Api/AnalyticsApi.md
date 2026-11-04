@@ -35,6 +35,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getPostTimeline()**](AnalyticsApi.md#getPostTimeline) | **GET** /v1/analytics/post-timeline | Get post analytics timeline |
 | [**getPostingFrequency()**](AnalyticsApi.md#getPostingFrequency) | **GET** /v1/analytics/posting-frequency | Get frequency vs engagement |
 | [**getTikTokAccountInsights()**](AnalyticsApi.md#getTikTokAccountInsights) | **GET** /v1/analytics/tiktok/account-insights | Get TikTok account-level insights |
+| [**getTikTokDemographics()**](AnalyticsApi.md#getTikTokDemographics) | **GET** /v1/analytics/tiktok/demographics | Get TikTok follower demographics |
 | [**getTrackingWindow()**](AnalyticsApi.md#getTrackingWindow) | **GET** /v1/analytics/tracking/{windowId} | Get a tracking window |
 | [**getYouTubeChannelInsights()**](AnalyticsApi.md#getYouTubeChannelInsights) | **GET** /v1/analytics/youtube/channel-insights | Get YouTube channel insights |
 | [**getYouTubeDailyViews()**](AnalyticsApi.md#getYouTubeDailyViews) | **GET** /v1/analytics/youtube/daily-views | Get YouTube daily views |
@@ -1932,7 +1933,7 @@ getTikTokAccountInsights($account_id, $metrics, $from_date, $to_date, $since, $u
 
 Get TikTok account-level insights
 
-Returns account-level TikTok insights from /v2/user/info/ (live) plus historical time series joined from Zernio's daily snapshotter (AccountStats).  - Response shape matches /v1/analytics/instagram/account-insights. - Max 89 days, defaults to last 30 days. - Requires the user.info.stats scope on the account (412 if missing).  ### Why the scope is narrow  This ACCOUNT-level endpoint intentionally exposes only the four counter metrics below. These account-level figures are not on any public TikTok API, for any account type:  - account-level impressions / reach - follower inflow / outflow breakdown - account-level watch time and audience demographics  TikTok's Research API doesn't expose them either, and is restricted to non-commercial academic use per TikTok's eligibility policy.  ### Per-video metrics  PER-VIDEO is a different story on the Business lane. An account connected through the TikTok for Business app reports these per video on GET /v1/analytics?postId=...:  - profile views, website clicks, follows - full-watched rate, watch time - impression sources, viewer types and viewer countries  They arrive roughly 24-48h after publishing and only for posts active in the last 7 days.  Accounts on the original TikTok integration get the basic counters there (views, likes, comments, shares) and zeros for the rest. They must reconnect through the Business app.
+Returns account-level TikTok insights from /v2/user/info/ (live) plus historical time series joined from Zernio's daily snapshotter (AccountStats).  - Response shape matches /v1/analytics/instagram/account-insights. - Max 89 days, defaults to last 30 days. - Requires the user.info.stats scope on the account (412 if missing).  ### Why the scope is narrow  This ACCOUNT-level endpoint intentionally exposes only the four counter metrics below. It does not return:  - account-level impressions / reach - follower inflow / outflow breakdown - account-level watch time  Follower age, gender, country and city are on GET /v1/analytics/tiktok/demographics.  ### Per-video metrics  PER-VIDEO is a different story on the Business lane. An account connected through the TikTok for Business app reports these per video on GET /v1/analytics?postId=...:  - profile views, website clicks, follows - full-watched rate, watch time - impression sources, viewer types and viewer countries  They arrive roughly 24-48h after publishing and only for posts active in the last 7 days.  Accounts on the original TikTok integration get the basic counters there (views, likes, comments, shares) and zeros for the rest. They must reconnect through the Business app.
 
 ### Example
 
@@ -1982,6 +1983,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\InstagramAccountInsightsResponse**](../Model/InstagramAccountInsightsResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getTikTokDemographics()`
+
+```php
+getTikTokDemographics($account_id, $breakdown): \Zernio\Model\GetTikTokDemographics200Response
+```
+
+Get TikTok follower demographics
+
+Returns the share of a TikTok account's followers by age, gender, country and city. Without `breakdown` it returns all four.  - Each value is a share of followers from 0 to 1, and each list is sorted largest first. It is not a follower count. - Age, gender and country lists add up to 1. The city list can add up to less, because TikTok does not place every follower in a listed city. - These are followers of the account, not the viewers of its videos. Viewer countries per video are on GET /v1/analytics?postId=... - TikTok updates this data every 24-48 hours.  ### Requirements  - The account needs at least 100 followers (400 `tiktok_insufficient_followers` otherwise). - The account owner must turn on Analytics in the TikTok app and have published at least one video. Until then an account with enough followers gets empty lists. - Requires the user.insights scope, which an account gets by connecting through the TikTok for Business app (412 `tiktok_insights_scope_missing` otherwise). Accounts on the original TikTok integration must reconnect. - Requires the Analytics add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The Zernio SocialAccount ID for the TikTok account.
+$breakdown = 'breakdown_example'; // string | Comma-separated list of demographic dimensions: age, gender, country, city. Defaults to all four.
+
+try {
+    $result = $apiInstance->getTikTokDemographics($account_id, $breakdown);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->getTikTokDemographics: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The Zernio SocialAccount ID for the TikTok account. | |
+| **breakdown** | **string**| Comma-separated list of demographic dimensions: age, gender, country, city. Defaults to all four. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetTikTokDemographics200Response**](../Model/GetTikTokDemographics200Response.md)
 
 ### Authorization
 
