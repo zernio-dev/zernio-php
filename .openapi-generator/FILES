@@ -139,6 +139,10 @@ docs/Model/AdRuleActionOneOf.md
 docs/Model/AdRuleActionOneOf1.md
 docs/Model/AdRuleActionOneOf2.md
 docs/Model/AdRuleActionOneOf3.md
+docs/Model/AdRuleActionOneOf4.md
+docs/Model/AdRuleActionOneOfSendInner.md
+docs/Model/AdRuleActionOneOfSendInnerOneOf.md
+docs/Model/AdRuleActionOneOfSendInnerOneOf1.md
 docs/Model/AdRuleActivityEntry.md
 docs/Model/AdRuleCondition.md
 docs/Model/AdRuleConditionItem.md
@@ -3457,6 +3461,10 @@ lib/Model/AdRuleActionOneOf.php
 lib/Model/AdRuleActionOneOf1.php
 lib/Model/AdRuleActionOneOf2.php
 lib/Model/AdRuleActionOneOf3.php
+lib/Model/AdRuleActionOneOf4.php
+lib/Model/AdRuleActionOneOfSendInner.php
+lib/Model/AdRuleActionOneOfSendInnerOneOf.php
+lib/Model/AdRuleActionOneOfSendInnerOneOf1.php
 lib/Model/AdRuleActivityEntry.php
 lib/Model/AdRuleCondition.php
 lib/Model/AdRuleConditionItem.php
@@ -6637,8 +6645,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/WebhookAutomationRefTest.php
-test/Model/WebhookPayloadAutomationActionActionTest.php
-test/Model/WebhookPayloadAutomationActionTest.php
-test/Model/WebhookPayloadAutomationCheckCompletedCheckTest.php
-test/Model/WebhookPayloadAutomationCheckCompletedTest.php
+test/Model/AdRuleActionOneOf4Test.php
+test/Model/AdRuleActionOneOfSendInnerOneOf1Test.php
+test/Model/AdRuleActionOneOfSendInnerOneOfTest.php
+test/Model/AdRuleActionOneOfSendInnerTest.php
