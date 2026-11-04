@@ -3089,6 +3089,10 @@ docs/Model/WebhookPayloadAccountRateLimitedAccount.md
 docs/Model/WebhookPayloadAdAccountStatusChanged.md
 docs/Model/WebhookPayloadAdAccountStatusChangedAdAccount.md
 docs/Model/WebhookPayloadAdAccountStatusChangedStatus.md
+docs/Model/WebhookPayloadAdCreated.md
+docs/Model/WebhookPayloadAdCreatedAdObject.md
+docs/Model/WebhookPayloadAdCreatedAdObjectAdSet.md
+docs/Model/WebhookPayloadAdCreatedAdObjectCampaign.md
 docs/Model/WebhookPayloadAdDeliveryIssue.md
 docs/Model/WebhookPayloadAdDeliveryIssueIssue.md
 docs/Model/WebhookPayloadAdReview.md
@@ -3106,6 +3110,7 @@ docs/Model/WebhookPayloadAdStatusChangedAccount.md
 docs/Model/WebhookPayloadAdStatusChangedAdObject.md
 docs/Model/WebhookPayloadAdStatusChangedError.md
 docs/Model/WebhookPayloadAdStatusChangedStatus.md
+docs/Model/WebhookPayloadAdUpdated.md
 docs/Model/WebhookPayloadAdVideoProcessed.md
 docs/Model/WebhookPayloadAdVideoProcessedAccount.md
 docs/Model/WebhookPayloadAdVideoProcessedVideo.md
@@ -3134,6 +3139,8 @@ docs/Model/WebhookPayloadCallReceivedCall.md
 docs/Model/WebhookPayloadCampaignBudgetDepleted.md
 docs/Model/WebhookPayloadCampaignBudgetDepletedAdObject.md
 docs/Model/WebhookPayloadCampaignBudgetDepletedBudget.md
+docs/Model/WebhookPayloadCampaignCreated.md
+docs/Model/WebhookPayloadCampaignCreatedAdObject.md
 docs/Model/WebhookPayloadCampaignParticipant.md
 docs/Model/WebhookPayloadCampaignParticipantParticipant.md
 docs/Model/WebhookPayloadCampaignPayout.md
@@ -3146,6 +3153,7 @@ docs/Model/WebhookPayloadCampaignSubmissionCreator.md
 docs/Model/WebhookPayloadCampaignSubmissionParticipant.md
 docs/Model/WebhookPayloadCampaignSubmissionSubmission.md
 docs/Model/WebhookPayloadCampaignSubmissionSubmissionFlagsInner.md
+docs/Model/WebhookPayloadCampaignUpdated.md
 docs/Model/WebhookPayloadComment.md
 docs/Model/WebhookPayloadCommentAccount.md
 docs/Model/WebhookPayloadCommentComment.md
@@ -6424,6 +6432,10 @@ lib/Model/WebhookPayloadAccountRateLimitedAccount.php
 lib/Model/WebhookPayloadAdAccountStatusChanged.php
 lib/Model/WebhookPayloadAdAccountStatusChangedAdAccount.php
 lib/Model/WebhookPayloadAdAccountStatusChangedStatus.php
+lib/Model/WebhookPayloadAdCreated.php
+lib/Model/WebhookPayloadAdCreatedAdObject.php
+lib/Model/WebhookPayloadAdCreatedAdObjectAdSet.php
+lib/Model/WebhookPayloadAdCreatedAdObjectCampaign.php
 lib/Model/WebhookPayloadAdDeliveryIssue.php
 lib/Model/WebhookPayloadAdDeliveryIssueIssue.php
 lib/Model/WebhookPayloadAdReview.php
@@ -6441,6 +6453,7 @@ lib/Model/WebhookPayloadAdStatusChangedAccount.php
 lib/Model/WebhookPayloadAdStatusChangedAdObject.php
 lib/Model/WebhookPayloadAdStatusChangedError.php
 lib/Model/WebhookPayloadAdStatusChangedStatus.php
+lib/Model/WebhookPayloadAdUpdated.php
 lib/Model/WebhookPayloadAdVideoProcessed.php
 lib/Model/WebhookPayloadAdVideoProcessedAccount.php
 lib/Model/WebhookPayloadAdVideoProcessedVideo.php
@@ -6469,6 +6482,8 @@ lib/Model/WebhookPayloadCallReceivedCall.php
 lib/Model/WebhookPayloadCampaignBudgetDepleted.php
 lib/Model/WebhookPayloadCampaignBudgetDepletedAdObject.php
 lib/Model/WebhookPayloadCampaignBudgetDepletedBudget.php
+lib/Model/WebhookPayloadCampaignCreated.php
+lib/Model/WebhookPayloadCampaignCreatedAdObject.php
 lib/Model/WebhookPayloadCampaignParticipant.php
 lib/Model/WebhookPayloadCampaignParticipantParticipant.php
 lib/Model/WebhookPayloadCampaignPayout.php
@@ -6481,6 +6496,7 @@ lib/Model/WebhookPayloadCampaignSubmissionCreator.php
 lib/Model/WebhookPayloadCampaignSubmissionParticipant.php
 lib/Model/WebhookPayloadCampaignSubmissionSubmission.php
 lib/Model/WebhookPayloadCampaignSubmissionSubmissionFlagsInner.php
+lib/Model/WebhookPayloadCampaignUpdated.php
 lib/Model/WebhookPayloadComment.php
 lib/Model/WebhookPayloadCommentAccount.php
 lib/Model/WebhookPayloadCommentComment.php
@@ -6669,3 +6685,11 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/WebhookPayloadAdCreatedAdObjectAdSetTest.php
+test/Model/WebhookPayloadAdCreatedAdObjectCampaignTest.php
+test/Model/WebhookPayloadAdCreatedAdObjectTest.php
+test/Model/WebhookPayloadAdCreatedTest.php
+test/Model/WebhookPayloadAdUpdatedTest.php
+test/Model/WebhookPayloadCampaignCreatedAdObjectTest.php
+test/Model/WebhookPayloadCampaignCreatedTest.php
+test/Model/WebhookPayloadCampaignUpdatedTest.php

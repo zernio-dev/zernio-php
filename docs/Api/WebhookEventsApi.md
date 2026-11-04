@@ -14,11 +14,13 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onAccountPermissionsChanged()**](WebhookEventsApi.md#onAccountPermissionsChanged) | **POST** /account.permissions_changed | Account permissions changed event |
 | [**onAccountRateLimited()**](WebhookEventsApi.md#onAccountRateLimited) | **POST** /account.rate_limited | Mailbox sending cooldown started |
 | [**onAdAccountStatusChanged()**](WebhookEventsApi.md#onAdAccountStatusChanged) | **POST** /ad_account.status_changed | Ad account status changed event |
+| [**onAdCreated()**](WebhookEventsApi.md#onAdCreated) | **POST** /ad.created | Ad created event |
 | [**onAdDeliveryIssue()**](WebhookEventsApi.md#onAdDeliveryIssue) | **POST** /ad.delivery_issue | Ad delivery issue event |
 | [**onAdReviewApproved()**](WebhookEventsApi.md#onAdReviewApproved) | **POST** /ad.review.approved | Ad review approved event |
 | [**onAdReviewRejected()**](WebhookEventsApi.md#onAdReviewRejected) | **POST** /ad.review.rejected | Ad review rejected event |
 | [**onAdRuleTriggered()**](WebhookEventsApi.md#onAdRuleTriggered) | **POST** /ad_rule.triggered | Ad rule triggered event |
 | [**onAdStatusChanged()**](WebhookEventsApi.md#onAdStatusChanged) | **POST** /ad.status_changed | Ad status changed event |
+| [**onAdUpdated()**](WebhookEventsApi.md#onAdUpdated) | **POST** /ad.updated | Ad updated event |
 | [**onAdVideoProcessed()**](WebhookEventsApi.md#onAdVideoProcessed) | **POST** /ad.video.processed | Ad video processed event |
 | [**onAnalyticsSynced()**](WebhookEventsApi.md#onAnalyticsSynced) | **POST** /analytics.synced | Analytics synced event |
 | [**onApiChangelogPublished()**](WebhookEventsApi.md#onApiChangelogPublished) | **POST** /api.changelog.published | API changelog entry published event |
@@ -40,6 +42,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onCallPermissionRequest()**](WebhookEventsApi.md#onCallPermissionRequest) | **POST** /call.permission_request | Call permission request reply event |
 | [**onCallReceived()**](WebhookEventsApi.md#onCallReceived) | **POST** /call.received | Call received event |
 | [**onCampaignBudgetDepleted()**](WebhookEventsApi.md#onCampaignBudgetDepleted) | **POST** /campaign.budget.depleted | Campaign budget depleted event |
+| [**onCampaignCreated()**](WebhookEventsApi.md#onCampaignCreated) | **POST** /campaign.created | Campaign created event |
 | [**onCampaignParticipantJoined()**](WebhookEventsApi.md#onCampaignParticipantJoined) | **POST** /campaign_participant.joined | Campaign participant joined event |
 | [**onCampaignParticipantRemoved()**](WebhookEventsApi.md#onCampaignParticipantRemoved) | **POST** /campaign_participant.removed | Campaign participant removed event |
 | [**onCampaignParticipantSuspended()**](WebhookEventsApi.md#onCampaignParticipantSuspended) | **POST** /campaign_participant.suspended | Campaign participant suspended event |
@@ -51,6 +54,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onCampaignSubmissionPendingReview()**](WebhookEventsApi.md#onCampaignSubmissionPendingReview) | **POST** /campaign_submission.pending_review | Campaign submission pending review event |
 | [**onCampaignSubmissionReceived()**](WebhookEventsApi.md#onCampaignSubmissionReceived) | **POST** /campaign_submission.received | Campaign submission received event |
 | [**onCampaignSubmissionRejected()**](WebhookEventsApi.md#onCampaignSubmissionRejected) | **POST** /campaign_submission.rejected | Campaign submission rejected event |
+| [**onCampaignUpdated()**](WebhookEventsApi.md#onCampaignUpdated) | **POST** /campaign.updated | Campaign updated event |
 | [**onCommentReceived()**](WebhookEventsApi.md#onCommentReceived) | **POST** /comment.received | Comment received event |
 | [**onCommerceOrderCreated()**](WebhookEventsApi.md#onCommerceOrderCreated) | **POST** /commerce.order.created | Commerce order created event |
 | [**onCommerceOrderRefunded()**](WebhookEventsApi.md#onCommerceOrderRefunded) | **POST** /commerce.order.refunded | Commerce order refunded event |
@@ -605,6 +609,65 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `onAdCreated()`
+
+```php
+onAdCreated($webhook_payload_ad_created)
+```
+
+Ad created event
+
+Fired when an ad is created through Zernio (`source: \"zernio\"`) or detected by the sync (`source: \"platform\"`). Never for history loaded when an account connects, nor for ads older than 7 days. See `WebhookPayloadAdCreated`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_ad_created = {"id":"01J7K3P4N5Q6R7S8T9V0W1X2Z2","event":"ad.created","account":{"accountId":"65c8f7e2a1b3c4d5e6f7a8b9","profileId":"65c8f7e2a1b3c4d5e6f7a800","platform":"tiktokads","username":"acme-ads","displayName":"Acme Ads"},"adObject":{"level":"AD","platformId":"1870423675882786","platformAdAccountId":"7505325609036365841","adId":"65c8f7e2a1b3c4d5e6f7a8c1","name":"Spring promo","campaign":{"platformCampaignId":"1870423600000001","name":"Spring campaign"},"adSet":{"platformAdSetId":"1870423600000002","name":"Spring audience"}},"source":"zernio","timestamp":"2026-10-22T09:12:03.120Z"}; // \Zernio\Model\WebhookPayloadAdCreated
+
+try {
+    $apiInstance->onAdCreated($webhook_payload_ad_created);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onAdCreated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_ad_created** | [**\Zernio\Model\WebhookPayloadAdCreated**](../Model/WebhookPayloadAdCreated.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `onAdDeliveryIssue()`
 
 ```php
@@ -882,6 +945,65 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_ad_status_changed** | [**\Zernio\Model\WebhookPayloadAdStatusChanged**](../Model/WebhookPayloadAdStatusChanged.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onAdUpdated()`
+
+```php
+onAdUpdated($webhook_payload_ad_updated)
+```
+
+Ad updated event
+
+Fired when an ad is edited through Zernio (`source: \"zernio\"`) or when the sync detects an edit made outside Zernio (`source: \"platform\"`). `changes` lists the edited fields. See `WebhookPayloadAdUpdated`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_ad_updated = {"id":"01J7K3P4N5Q6R7S8T9V0W1X2Z5","event":"ad.updated","account":{"accountId":"65c8f7e2a1b3c4d5e6f7a8b9","profileId":"65c8f7e2a1b3c4d5e6f7a800","platform":"tiktokads","username":"acme-ads","displayName":"Acme Ads"},"adObject":{"level":"AD","platformId":"1870423675882786","platformAdAccountId":"7505325609036365841","adId":"65c8f7e2a1b3c4d5e6f7a8c1","name":"Spring promo","campaign":{"platformCampaignId":"1870423600000001","name":"Spring campaign"},"adSet":{"platformAdSetId":"1870423600000002","name":"Spring audience"}},"changes":["name","creative"],"source":"zernio","timestamp":"2026-10-22T09:12:03.120Z"}; // \Zernio\Model\WebhookPayloadAdUpdated
+
+try {
+    $apiInstance->onAdUpdated($webhook_payload_ad_updated);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onAdUpdated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_ad_updated** | [**\Zernio\Model\WebhookPayloadAdUpdated**](../Model/WebhookPayloadAdUpdated.md)|  | |
 
 ### Return type
 
@@ -2135,6 +2257,65 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `onCampaignCreated()`
+
+```php
+onCampaignCreated($webhook_payload_campaign_created)
+```
+
+Campaign created event
+
+Fired when a campaign is created through Zernio (`source: \"zernio\"`) or detected by the sync (`source: \"platform\"`). Never for history loaded when an account connects, nor for campaigns older than 7 days. See `WebhookPayloadCampaignCreated`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_created = {"id":"01J7K3P4N5Q6R7S8T9V0W1X2Z3","event":"campaign.created","account":{"accountId":"65c8f7e2a1b3c4d5e6f7a8b9","profileId":"65c8f7e2a1b3c4d5e6f7a800","platform":"tiktokads","username":"acme-ads","displayName":"Acme Ads"},"adObject":{"level":"CAMPAIGN","platformId":"1870423600000001","platformAdAccountId":"7505325609036365841","name":"Spring campaign"},"source":"zernio","timestamp":"2026-10-22T09:12:03.120Z"}; // \Zernio\Model\WebhookPayloadCampaignCreated
+
+try {
+    $apiInstance->onCampaignCreated($webhook_payload_campaign_created);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignCreated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_created** | [**\Zernio\Model\WebhookPayloadCampaignCreated**](../Model/WebhookPayloadCampaignCreated.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `onCampaignParticipantJoined()`
 
 ```php
@@ -2766,6 +2947,65 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_campaign_submission** | [**\Zernio\Model\WebhookPayloadCampaignSubmission**](../Model/WebhookPayloadCampaignSubmission.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCampaignUpdated()`
+
+```php
+onCampaignUpdated($webhook_payload_campaign_updated)
+```
+
+Campaign updated event
+
+Fired when a campaign is edited through Zernio (`source: \"zernio\"`) or when the sync detects an edit made outside Zernio (`source: \"platform\"`). `changes` lists the edited fields. See `WebhookPayloadCampaignUpdated`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_campaign_updated = {"id":"01J7K3P4N5Q6R7S8T9V0W1X2Z4","event":"campaign.updated","account":{"accountId":"65c8f7e2a1b3c4d5e6f7a8b9","profileId":"65c8f7e2a1b3c4d5e6f7a800","platform":"tiktokads","username":"acme-ads","displayName":"Acme Ads"},"adObject":{"level":"CAMPAIGN","platformId":"1870423600000001","platformAdAccountId":"7505325609036365841","name":"Spring campaign"},"changes":["name","budget"],"source":"zernio","timestamp":"2026-10-22T09:12:03.120Z"}; // \Zernio\Model\WebhookPayloadCampaignUpdated
+
+try {
+    $apiInstance->onCampaignUpdated($webhook_payload_campaign_updated);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCampaignUpdated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_campaign_updated** | [**\Zernio\Model\WebhookPayloadCampaignUpdated**](../Model/WebhookPayloadCampaignUpdated.md)|  | |
 
 ### Return type
 
