@@ -11,5 +11,6 @@ Name | Type | Description | Notes
 **currency** | **string** |  |
 **matched** | **int** | How many objects meet every condition. |
 **objects** | [**\Zernio\Model\AdRuleObjectEvaluation[]**](AdRuleObjectEvaluation.md) | Every delivering campaign or ad set in scope (for an &#x60;activate&#x60; rule, the rule-paused ones it may reactivate). |
+**groups** | [**\Zernio\Model\AdRuleEvaluationGroupsInner[]**](AdRuleEvaluationGroupsInner.md) | Each group&#39;s totals, for a rule with groups. Null otherwise. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
