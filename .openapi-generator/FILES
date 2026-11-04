@@ -164,6 +164,7 @@ docs/Model/AdRuleRunEvaluationActionsInner.md
 docs/Model/AdRuleRunEvaluationNotification.md
 docs/Model/AdRuleRunEvaluationRule.md
 docs/Model/AdRuleSchedule.md
+docs/Model/AdRuleScheduleQuietHours.md
 docs/Model/AdRuleScheduleTimesInner.md
 docs/Model/AdSchedule.md
 docs/Model/AdScheduleWindow.md
@@ -3510,6 +3511,7 @@ lib/Model/AdRuleRunEvaluationActionsInner.php
 lib/Model/AdRuleRunEvaluationNotification.php
 lib/Model/AdRuleRunEvaluationRule.php
 lib/Model/AdRuleSchedule.php
+lib/Model/AdRuleScheduleQuietHours.php
 lib/Model/AdRuleScheduleTimesInner.php
 lib/Model/AdSchedule.php
 lib/Model/AdScheduleWindow.php
@@ -6693,4 +6695,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/BudgetLevelTest.php
+test/Model/AdRuleScheduleQuietHoursTest.php
