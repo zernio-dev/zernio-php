@@ -1125,7 +1125,7 @@ updateAccount($account_id, $update_account_request): \Zernio\Model\UpdateAccount
 
 Update account
 
-Updates a connected account's display name or username override.  ### X capabilities  For X accounts on usage-based billing, also accepts an `xCapabilities` object to toggle background API operations that incur X API pass-through costs.  - Both fields are opt-in (default `false`). - When off, no analytics syncs or DM polling are performed for that account, and no API call is metered for those operations. - Publishing and deleting posts are always available regardless of these toggles. - Setting `xCapabilities` on a non-X account returns 400.
+Updates a connected account's display name or username override.  ### X capabilities  For X accounts on usage-based billing, also accepts an `xCapabilities` object to toggle background API operations that incur X API pass-through costs.  - Both fields are opt-in (default `false`). - When off, no analytics syncs or DM polling are performed for that account, and no API call is metered for those operations. - Publishing and deleting posts are always available regardless of these toggles. - Setting `xCapabilities` on a non-X account returns 400.  ### Meta ads sync  For Facebook accounts, also accepts `metaAdsSyncEnabled` to sync the Meta ads of the ad accounts the account reaches without a Meta Ads connection. See the field for what turning it on and off does.
 
 ### Example
 
