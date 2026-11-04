@@ -10,5 +10,7 @@ Name | Type | Description | Notes
 **reason** | **string** | Why it was skipped or failed, for example &#x60;already_paused&#x60;. | [optional]
 **previous_daily_budget** | **float** |  | [optional]
 **new_daily_budget** | **float** |  | [optional]
+**previous_name** | **string** |  | [optional]
+**new_name** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

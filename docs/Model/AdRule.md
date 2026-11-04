@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **campaign_ids** | **string[]** | Platform campaign IDs the rule is limited to. Null checks the whole ad account. |
 **filters** | [**\Zernio\Model\AdRuleFiltersInner[]**](AdRuleFiltersInner.md) | Narrows the objects the rule checks. Every filter must hold. Text compares without case, and a missing field reads as empty. |
 **conditions** | [**\Zernio\Model\AdRuleConditions**](AdRuleConditions.md) |  |
-**actions** | [**\Zernio\Model\AdRuleAction[]**](AdRuleAction.md) | Each type at most once, and at most one of &#x60;pause&#x60;, &#x60;activate&#x60;, &#x60;adjust_budget&#x60; and &#x60;duplicate&#x60;. |
+**actions** | [**\Zernio\Model\AdRuleAction[]**](AdRuleAction.md) | Each type at most once, and at most one of &#x60;pause&#x60;, &#x60;activate&#x60;, &#x60;adjust_budget&#x60;, &#x60;duplicate&#x60; and &#x60;edit_name&#x60;. |
 **schedule** | [**\Zernio\Model\AdRuleSchedule**](AdRuleSchedule.md) |  |
 **cooldown_minutes** | **int** |  |
 **enabled** | **bool** |  |

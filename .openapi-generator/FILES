@@ -141,6 +141,7 @@ docs/Model/AdRuleActionOneOf2.md
 docs/Model/AdRuleActionOneOf3.md
 docs/Model/AdRuleActionOneOf4.md
 docs/Model/AdRuleActionOneOf5.md
+docs/Model/AdRuleActionOneOf6.md
 docs/Model/AdRuleActionOneOfSendInner.md
 docs/Model/AdRuleActionOneOfSendInnerOneOf.md
 docs/Model/AdRuleActionOneOfSendInnerOneOf1.md
@@ -3468,6 +3469,7 @@ lib/Model/AdRuleActionOneOf2.php
 lib/Model/AdRuleActionOneOf3.php
 lib/Model/AdRuleActionOneOf4.php
 lib/Model/AdRuleActionOneOf5.php
+lib/Model/AdRuleActionOneOf6.php
 lib/Model/AdRuleActionOneOfSendInner.php
 lib/Model/AdRuleActionOneOfSendInnerOneOf.php
 lib/Model/AdRuleActionOneOfSendInnerOneOf1.php
@@ -6655,5 +6657,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/UndoAdRuleActivity200ResponseTest.php
-test/Model/UndoAdRuleActivity200ResponseUndoTest.php
+test/Model/AdRuleActionOneOf6Test.php
