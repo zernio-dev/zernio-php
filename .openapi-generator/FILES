@@ -927,6 +927,7 @@ docs/Model/CtwaSingleResponse.md
 docs/Model/CursorPagination.md
 docs/Model/CustomConversion.md
 docs/Model/CustomConversionResult.md
+docs/Model/DaysLive.md
 docs/Model/DeactivateSmsRegistration200Response.md
 docs/Model/DeleteAccountGroup200Response.md
 docs/Model/DeleteAdCampaign200Response.md
@@ -1644,6 +1645,7 @@ docs/Model/HideAdCommentRequest.md
 docs/Model/HideInboxComment200Response.md
 docs/Model/HideInboxCommentRequest.md
 docs/Model/HubSpotSettings.md
+docs/Model/Ids.md
 docs/Model/ImessageAudienceContact.md
 docs/Model/ImessageAudienceContactOptIn.md
 docs/Model/ImessageSandboxContact.md
@@ -2153,6 +2155,7 @@ docs/Model/MoveCampaignParticipant200ResponseSubmissions.md
 docs/Model/MoveCampaignParticipantRequest.md
 docs/Model/MoveWhatsAppNumberToProfile200Response.md
 docs/Model/MoveWhatsAppNumberToProfileRequest.md
+docs/Model/NameOrGoal.md
 docs/Model/OAuthApp.md
 docs/Model/OAuthAppSetup.md
 docs/Model/OAuthAppSetupScopeAreasInner.md
@@ -4269,6 +4272,7 @@ lib/Model/CtwaSingleResponse.php
 lib/Model/CursorPagination.php
 lib/Model/CustomConversion.php
 lib/Model/CustomConversionResult.php
+lib/Model/DaysLive.php
 lib/Model/DeactivateSmsRegistration200Response.php
 lib/Model/DeleteAccountGroup200Response.php
 lib/Model/DeleteAdCampaign200Response.php
@@ -4986,6 +4990,7 @@ lib/Model/HideAdCommentRequest.php
 lib/Model/HideInboxComment200Response.php
 lib/Model/HideInboxCommentRequest.php
 lib/Model/HubSpotSettings.php
+lib/Model/Ids.php
 lib/Model/ImessageAudienceContact.php
 lib/Model/ImessageAudienceContactOptIn.php
 lib/Model/ImessageSandboxContact.php
@@ -5496,6 +5501,7 @@ lib/Model/MoveCampaignParticipant200ResponseSubmissions.php
 lib/Model/MoveCampaignParticipantRequest.php
 lib/Model/MoveWhatsAppNumberToProfile200Response.php
 lib/Model/MoveWhatsAppNumberToProfileRequest.php
+lib/Model/NameOrGoal.php
 lib/Model/OAuthApp.php
 lib/Model/OAuthAppSetup.php
 lib/Model/OAuthAppSetupScopeAreasInner.php
@@ -6685,3 +6691,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/DaysLiveTest.php
+test/Model/IdsTest.php
+test/Model/NameOrGoalTest.php
