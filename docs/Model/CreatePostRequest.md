@@ -24,5 +24,6 @@ Name | Type | Description | Notes
 **recycling** | [**\Zernio\Model\RecyclingConfig**](RecyclingConfig.md) |  | [optional]
 **queued_from_profile** | **string** | Profile ID to schedule via queue. When provided without scheduledFor, the post is auto-assigned to the next available slot. Do not call /v1/queue/next-slot and use that time in scheduledFor, as that bypasses queue locking. | [optional]
 **queue_id** | **string** | Specific queue ID to use when scheduling via queue. Only used when queuedFromProfile is also provided. If omitted, uses the profile&#39;s default queue. | [optional]
+**profile_id** | **string** | Files a draft with no platforms under this profile so it lists under ?profileId&#x3D; and profile-scoped API keys. Ignored when platforms are set. When promoting the draft via PUT, send platforms, isDraft false and scheduledFor again. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
