@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ad_account_id** | **string** | Platform ad account ID, from &#x60;GET /v1/ads/accounts&#x60;. |
 **level** | [**\Zernio\Model\AdRuleLevel**](AdRuleLevel.md) |  |
 **campaign_ids** | **string[]** | Only check these platform campaign IDs (or their ad sets). Leave out to check the whole ad account. | [optional]
+**filters** | [**\Zernio\Model\AdRuleFiltersInner[]**](AdRuleFiltersInner.md) | Narrows the objects the rule checks. Every filter must hold. Text compares without case, and a missing field reads as empty. | [optional]
 **conditions** | [**\Zernio\Model\AdRuleConditions**](AdRuleConditions.md) |  |
 **actions** | [**\Zernio\Model\AdRuleAction[]**](AdRuleAction.md) | Each type at most once, and at most one of &#x60;pause&#x60;, &#x60;activate&#x60;, &#x60;adjust_budget&#x60; and &#x60;duplicate&#x60;. |
 **schedule** | [**\Zernio\Model\AdRuleSchedule**](AdRuleSchedule.md) | Leave it out to run every 60 minutes. | [optional]
