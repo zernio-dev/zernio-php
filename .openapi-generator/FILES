@@ -6685,11 +6685,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/WebhookPayloadAdCreatedAdObjectAdSetTest.php
-test/Model/WebhookPayloadAdCreatedAdObjectCampaignTest.php
-test/Model/WebhookPayloadAdCreatedAdObjectTest.php
-test/Model/WebhookPayloadAdCreatedTest.php
-test/Model/WebhookPayloadAdUpdatedTest.php
-test/Model/WebhookPayloadCampaignCreatedAdObjectTest.php
-test/Model/WebhookPayloadCampaignCreatedTest.php
-test/Model/WebhookPayloadCampaignUpdatedTest.php
