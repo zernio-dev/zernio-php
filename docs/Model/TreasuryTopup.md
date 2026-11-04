@@ -17,5 +17,6 @@ Name | Type | Description | Notes
 **status** | **string** | &#x60;pending&#x60; until the card is charged (or 3D Secure is finished) and credited. &#x60;expired&#x60; means it ended unpaid: cancelled, or 3D Secure left unfinished for 30 minutes. Only &#x60;pending&#x60; counts toward pendingTopupCents. | [optional]
 **created_at** | **\DateTime** |  | [optional]
 **succeeded_at** | **\DateTime** |  | [optional]
+**has_invoice** | **bool** | A Stripe invoice exists for this payment (Checkout payments). Every paid payment has a card receipt; see getTopupReceipt. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
