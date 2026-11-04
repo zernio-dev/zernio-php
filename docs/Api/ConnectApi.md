@@ -24,6 +24,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**connectWordPressWithApplicationPassword()**](ConnectApi.md#connectWordPressWithApplicationPassword) | **POST** /v1/connect/wordpress/token | Connect self-hosted WordPress with an application password |
 | [**createOAuthApp()**](ConnectApi.md#createOAuthApp) | **POST** /v1/connect/oauth-apps | Add an OAuth app |
 | [**createPinterestBoard()**](ConnectApi.md#createPinterestBoard) | **POST** /v1/accounts/{accountId}/pinterest-boards | Create Pinterest board |
+| [**createPlatformInvite()**](ConnectApi.md#createPlatformInvite) | **POST** /v1/platform-invites | Create a connect link |
 | [**createYoutubePlaylist()**](ConnectApi.md#createYoutubePlaylist) | **POST** /v1/accounts/{accountId}/youtube-playlists | Create YouTube playlist |
 | [**deleteOAuthApp()**](ConnectApi.md#deleteOAuthApp) | **DELETE** /v1/connect/oauth-apps/{appId} | Remove an OAuth app |
 | [**getConnectHandoff()**](ConnectApi.md#getConnectHandoff) | **GET** /v1/connect/handoffs/{handoffId} | Get a phone handoff |
@@ -1196,6 +1197,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreatePinterestBoard201Response**](../Model/CreatePinterestBoard201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createPlatformInvite()`
+
+```php
+createPlatformInvite($create_platform_invite_request): \Zernio\Model\CreatePlatformInvite200Response
+```
+
+Create a connect link
+
+Create a single-use link that lets someone else connect their account to one of your profiles, without a Zernio login.  For Instagram, choose how they sign in with loginMethod. With facebook_login they sign in with Facebook and pick the Page linked to their Instagram account.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_platform_invite_request = {"profileId":"64f0a1b2c3d4e5f6a7b8c9d0","platform":"instagram","loginMethod":"facebook_login","expiresInDays":14}; // \Zernio\Model\CreatePlatformInviteRequest
+
+try {
+    $result = $apiInstance->createPlatformInvite($create_platform_invite_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->createPlatformInvite: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_platform_invite_request** | [**\Zernio\Model\CreatePlatformInviteRequest**](../Model/CreatePlatformInviteRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreatePlatformInvite200Response**](../Model/CreatePlatformInvite200Response.md)
 
 ### Authorization
 

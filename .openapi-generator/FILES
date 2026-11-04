@@ -793,6 +793,9 @@ docs/Model/CreatePhoneNumberStockWatchRequest.md
 docs/Model/CreatePinterestBoard201Response.md
 docs/Model/CreatePinterestBoard201ResponseBoard.md
 docs/Model/CreatePinterestBoardRequest.md
+docs/Model/CreatePlatformInvite200Response.md
+docs/Model/CreatePlatformInvite200ResponseInvite.md
+docs/Model/CreatePlatformInviteRequest.md
 docs/Model/CreatePost200Response.md
 docs/Model/CreatePost400Response.md
 docs/Model/CreatePost400ResponseDetails.md
@@ -4142,6 +4145,9 @@ lib/Model/CreatePhoneNumberStockWatchRequest.php
 lib/Model/CreatePinterestBoard201Response.php
 lib/Model/CreatePinterestBoard201ResponseBoard.php
 lib/Model/CreatePinterestBoardRequest.php
+lib/Model/CreatePlatformInvite200Response.php
+lib/Model/CreatePlatformInvite200ResponseInvite.php
+lib/Model/CreatePlatformInviteRequest.php
 lib/Model/CreatePost200Response.php
 lib/Model/CreatePost400Response.php
 lib/Model/CreatePost400ResponseDetails.php
@@ -6699,3 +6705,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreatePlatformInvite200ResponseInviteTest.php
+test/Model/CreatePlatformInvite200ResponseTest.php
+test/Model/CreatePlatformInviteRequestTest.php
