@@ -25,6 +25,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onAutomationActionApplied()**](WebhookEventsApi.md#onAutomationActionApplied) | **POST** /automation.action.applied | Automation action applied event |
 | [**onAutomationActionFailed()**](WebhookEventsApi.md#onAutomationActionFailed) | **POST** /automation.action.failed | Automation action failed event |
 | [**onAutomationActionUnknown()**](WebhookEventsApi.md#onAutomationActionUnknown) | **POST** /automation.action.unknown | Automation action unknown event |
+| [**onAutomationAlertEscalated()**](WebhookEventsApi.md#onAutomationAlertEscalated) | **POST** /automation.alert.escalated | Automation alert escalated event |
+| [**onAutomationAlertOpened()**](WebhookEventsApi.md#onAutomationAlertOpened) | **POST** /automation.alert.opened | Automation alert opened event |
+| [**onAutomationAlertResolved()**](WebhookEventsApi.md#onAutomationAlertResolved) | **POST** /automation.alert.resolved | Automation alert resolved event |
 | [**onAutomationCheckCompleted()**](WebhookEventsApi.md#onAutomationCheckCompleted) | **POST** /automation.check.completed | Automation check completed event |
 | [**onBrandedCallingIdentityActionRequired()**](WebhookEventsApi.md#onBrandedCallingIdentityActionRequired) | **POST** /branded_calling.identity.action_required | Caller identity action required event |
 | [**onBrandedCallingIdentityStatusUpdated()**](WebhookEventsApi.md#onBrandedCallingIdentityStatusUpdated) | **POST** /branded_calling.identity.status_updated | Caller identity status updated event |
@@ -1233,6 +1236,183 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_automation_action** | [**\Zernio\Model\WebhookPayloadAutomationAction**](../Model/WebhookPayloadAutomationAction.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onAutomationAlertEscalated()`
+
+```php
+onAutomationAlertEscalated($webhook_payload_automation_alert)
+```
+
+Automation alert escalated event
+
+An alert episode of an automation with a lifecycle. See `WebhookPayloadAutomationAlert`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_automation_alert = {"id":"7a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c61","event":"automation.alert.escalated","automation":{"id":"65c8f7e2a1b3c4d5e6f7a8c1","kind":"ad_rule"},"accountId":"65c8f7e2a1b3c4d5e6f7a8b9","checkId":"65c8f7e2a1b3c4d5e6f7a8c2","alert":{"id":"65c8f7e2a1b3c4d5e6f7a8c4","subjectId":"120210000000000002","severity":"critical","reason":null},"timestamp":"2026-10-22T09:17:03.000Z"}; // \Zernio\Model\WebhookPayloadAutomationAlert
+
+try {
+    $apiInstance->onAutomationAlertEscalated($webhook_payload_automation_alert);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onAutomationAlertEscalated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_automation_alert** | [**\Zernio\Model\WebhookPayloadAutomationAlert**](../Model/WebhookPayloadAutomationAlert.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onAutomationAlertOpened()`
+
+```php
+onAutomationAlertOpened($webhook_payload_automation_alert)
+```
+
+Automation alert opened event
+
+An alert episode of an automation with a lifecycle. See `WebhookPayloadAutomationAlert`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_automation_alert = {"id":"7a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c60","event":"automation.alert.opened","automation":{"id":"65c8f7e2a1b3c4d5e6f7a8c1","kind":"ad_rule"},"accountId":"65c8f7e2a1b3c4d5e6f7a8b9","checkId":"65c8f7e2a1b3c4d5e6f7a8c2","alert":{"id":"65c8f7e2a1b3c4d5e6f7a8c4","subjectId":"120210000000000002","severity":"warning","reason":null},"timestamp":"2026-10-22T09:17:03.000Z"}; // \Zernio\Model\WebhookPayloadAutomationAlert
+
+try {
+    $apiInstance->onAutomationAlertOpened($webhook_payload_automation_alert);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onAutomationAlertOpened: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_automation_alert** | [**\Zernio\Model\WebhookPayloadAutomationAlert**](../Model/WebhookPayloadAutomationAlert.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onAutomationAlertResolved()`
+
+```php
+onAutomationAlertResolved($webhook_payload_automation_alert)
+```
+
+Automation alert resolved event
+
+An alert episode of an automation with a lifecycle. See `WebhookPayloadAutomationAlert`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_automation_alert = {"id":"7a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c62","event":"automation.alert.resolved","automation":{"id":"65c8f7e2a1b3c4d5e6f7a8c1","kind":"ad_rule"},"accountId":"65c8f7e2a1b3c4d5e6f7a8b9","checkId":"65c8f7e2a1b3c4d5e6f7a8c2","alert":{"id":"65c8f7e2a1b3c4d5e6f7a8c4","subjectId":"120210000000000002","severity":"critical","reason":"condition_cleared"},"timestamp":"2026-10-22T09:17:03.000Z"}; // \Zernio\Model\WebhookPayloadAutomationAlert
+
+try {
+    $apiInstance->onAutomationAlertResolved($webhook_payload_automation_alert);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onAutomationAlertResolved: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_automation_alert** | [**\Zernio\Model\WebhookPayloadAutomationAlert**](../Model/WebhookPayloadAutomationAlert.md)|  | |
 
 ### Return type
 

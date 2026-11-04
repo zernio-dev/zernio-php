@@ -10,6 +10,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**deleteAdRule()**](AdRulesApi.md#deleteAdRule) | **DELETE** /v1/ads/rules/{ruleId} | Delete an ad rule |
 | [**getAdRule()**](AdRulesApi.md#getAdRule) | **GET** /v1/ads/rules/{ruleId} | Get an ad rule |
 | [**listAdRuleActivity()**](AdRulesApi.md#listAdRuleActivity) | **GET** /v1/ads/rules/activity | List every change ad rules made |
+| [**listAdRuleAlerts()**](AdRulesApi.md#listAdRuleAlerts) | **GET** /v1/ads/rules/{ruleId}/alerts | List a rule&#39;s alerts |
 | [**listAdRuleRuns()**](AdRulesApi.md#listAdRuleRuns) | **GET** /v1/ads/rules/{ruleId}/runs | List an ad rule&#39;s runs |
 | [**listAdRuleTemplates()**](AdRulesApi.md#listAdRuleTemplates) | **GET** /v1/ads/rules/templates | List ready-made ad rules |
 | [**listAdRules()**](AdRulesApi.md#listAdRules) | **GET** /v1/ads/rules | List ad rules |
@@ -256,6 +257,72 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListAdRuleActivity200Response**](../Model/ListAdRuleActivity200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listAdRuleAlerts()`
+
+```php
+listAdRuleAlerts($rule_id, $state, $limit, $cursor): \Zernio\Model\ListAdRuleAlerts200Response
+```
+
+List a rule's alerts
+
+The alert episodes of a rule with a `lifecycle`, newest first. `pending` alerts are confirming, `open` ones were acted on, `resolved` ones ended, with `resolvedReason` saying why. Resolved alerts are kept 90 days.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdRulesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$rule_id = 'rule_id_example'; // string
+$state = 'state_example'; // string
+$limit = 50; // int
+$cursor = 'cursor_example'; // string | `nextCursor` from the previous page.
+
+try {
+    $result = $apiInstance->listAdRuleAlerts($rule_id, $state, $limit, $cursor);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdRulesApi->listAdRuleAlerts: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **rule_id** | **string**|  | |
+| **state** | **string**|  | [optional] |
+| **limit** | **int**|  | [optional] [default to 50] |
+| **cursor** | **string**| &#x60;nextCursor&#x60; from the previous page. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListAdRuleAlerts200Response**](../Model/ListAdRuleAlerts200Response.md)
 
 ### Authorization
 

@@ -21,6 +21,8 @@ Name | Type | Description | Notes
 **new_daily_budget** | **float** |  |
 **previous_name** | **string** | The name before an &#x60;edit_name&#x60;. |
 **new_name** | **string** | The name an applied &#x60;edit_name&#x60; set. |
+**previous_bid_amount** | **float** | The bid cap or cost cap before an &#x60;adjust_bid&#x60;. |
+**new_bid_amount** | **float** | The cap an applied &#x60;adjust_bid&#x60; set. |
 **currency** | **string** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

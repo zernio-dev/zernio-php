@@ -142,6 +142,7 @@ docs/Model/AdRuleActionOneOf3.md
 docs/Model/AdRuleActionOneOf4.md
 docs/Model/AdRuleActionOneOf5.md
 docs/Model/AdRuleActionOneOf6.md
+docs/Model/AdRuleActionOneOf7.md
 docs/Model/AdRuleActionOneOfSendInner.md
 docs/Model/AdRuleActionOneOfSendInnerOneOf.md
 docs/Model/AdRuleActionOneOfSendInnerOneOf1.md
@@ -154,6 +155,7 @@ docs/Model/AdRuleConditionsOneOf1.md
 docs/Model/AdRuleEvaluation.md
 docs/Model/AdRuleFiltersInner.md
 docs/Model/AdRuleLevel.md
+docs/Model/AdRuleLifecycle.md
 docs/Model/AdRuleObjectEvaluation.md
 docs/Model/AdRuleObjectEvaluationConditionsInner.md
 docs/Model/AdRuleRun.md
@@ -1783,6 +1785,8 @@ docs/Model/ListAdLabels200ResponseDataInner.md
 docs/Model/ListAdLabels200ResponsePaging.md
 docs/Model/ListAdNegativeKeywordLists200Response.md
 docs/Model/ListAdRuleActivity200Response.md
+docs/Model/ListAdRuleAlerts200Response.md
+docs/Model/ListAdRuleAlerts200ResponseAlertsInner.md
 docs/Model/ListAdRuleRuns200Response.md
 docs/Model/ListAdRuleTemplates200Response.md
 docs/Model/ListAdRuleTemplates200ResponseTemplatesInner.md
@@ -3111,6 +3115,8 @@ docs/Model/WebhookPayloadAnalyticsSyncedSync.md
 docs/Model/WebhookPayloadApiChangelogPublished.md
 docs/Model/WebhookPayloadAutomationAction.md
 docs/Model/WebhookPayloadAutomationActionAction.md
+docs/Model/WebhookPayloadAutomationAlert.md
+docs/Model/WebhookPayloadAutomationAlertAlert.md
 docs/Model/WebhookPayloadAutomationCheckCompleted.md
 docs/Model/WebhookPayloadAutomationCheckCompletedCheck.md
 docs/Model/WebhookPayloadCalendarEvent.md
@@ -3470,6 +3476,7 @@ lib/Model/AdRuleActionOneOf3.php
 lib/Model/AdRuleActionOneOf4.php
 lib/Model/AdRuleActionOneOf5.php
 lib/Model/AdRuleActionOneOf6.php
+lib/Model/AdRuleActionOneOf7.php
 lib/Model/AdRuleActionOneOfSendInner.php
 lib/Model/AdRuleActionOneOfSendInnerOneOf.php
 lib/Model/AdRuleActionOneOfSendInnerOneOf1.php
@@ -3482,6 +3489,7 @@ lib/Model/AdRuleConditionsOneOf1.php
 lib/Model/AdRuleEvaluation.php
 lib/Model/AdRuleFiltersInner.php
 lib/Model/AdRuleLevel.php
+lib/Model/AdRuleLifecycle.php
 lib/Model/AdRuleObjectEvaluation.php
 lib/Model/AdRuleObjectEvaluationConditionsInner.php
 lib/Model/AdRuleRun.php
@@ -5111,6 +5119,8 @@ lib/Model/ListAdLabels200ResponseDataInner.php
 lib/Model/ListAdLabels200ResponsePaging.php
 lib/Model/ListAdNegativeKeywordLists200Response.php
 lib/Model/ListAdRuleActivity200Response.php
+lib/Model/ListAdRuleAlerts200Response.php
+lib/Model/ListAdRuleAlerts200ResponseAlertsInner.php
 lib/Model/ListAdRuleRuns200Response.php
 lib/Model/ListAdRuleTemplates200Response.php
 lib/Model/ListAdRuleTemplates200ResponseTemplatesInner.php
@@ -6440,6 +6450,8 @@ lib/Model/WebhookPayloadAnalyticsSyncedSync.php
 lib/Model/WebhookPayloadApiChangelogPublished.php
 lib/Model/WebhookPayloadAutomationAction.php
 lib/Model/WebhookPayloadAutomationActionAction.php
+lib/Model/WebhookPayloadAutomationAlert.php
+lib/Model/WebhookPayloadAutomationAlertAlert.php
 lib/Model/WebhookPayloadAutomationCheckCompleted.php
 lib/Model/WebhookPayloadAutomationCheckCompletedCheck.php
 lib/Model/WebhookPayloadCalendarEvent.php
@@ -6657,4 +6669,9 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AdRuleActionOneOf6Test.php
+test/Model/AdRuleActionOneOf7Test.php
+test/Model/AdRuleLifecycleTest.php
+test/Model/ListAdRuleAlerts200ResponseAlertsInnerTest.php
+test/Model/ListAdRuleAlerts200ResponseTest.php
+test/Model/WebhookPayloadAutomationAlertAlertTest.php
+test/Model/WebhookPayloadAutomationAlertTest.php
