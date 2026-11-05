@@ -39,7 +39,7 @@ $apiInstance = new Zernio\Api\LogsApi(
 $type = 'publishing'; // string | Log category to query. Use `all` for the unified view across every category, or `api_request` for your API request logs (method, path, status, latency).
 $status = 'status_example'; // string | Filter by status
 $platform = 'platform_example'; // string | Filter by platform
-$action = 'action_example'; // string | Filter by action (e.g., post.published, message.sent, account.connected, webhook.delivered)
+$action = 'action_example'; // string | Filter by action (e.g., post.published, message.sent, message.media_download_failed, account.connected, webhook.delivered)
 $search = 'search_example'; // string | Free-text search across log fields
 $days = 90; // int | Number of days to look back (max 90)
 $limit = 50; // int | Maximum number of logs to return (max 100)
@@ -69,7 +69,7 @@ try {
 | **type** | **string**| Log category to query. Use &#x60;all&#x60; for the unified view across every category, or &#x60;api_request&#x60; for your API request logs (method, path, status, latency). | [optional] [default to &#39;publishing&#39;] |
 | **status** | **string**| Filter by status | [optional] |
 | **platform** | **string**| Filter by platform | [optional] |
-| **action** | **string**| Filter by action (e.g., post.published, message.sent, account.connected, webhook.delivered) | [optional] |
+| **action** | **string**| Filter by action (e.g., post.published, message.sent, message.media_download_failed, account.connected, webhook.delivered) | [optional] |
 | **search** | **string**| Free-text search across log fields | [optional] |
 | **days** | **int**| Number of days to look back (max 90) | [optional] [default to 90] |
 | **limit** | **int**| Maximum number of logs to return (max 100) | [optional] [default to 50] |
