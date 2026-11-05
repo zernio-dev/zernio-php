@@ -65,6 +65,7 @@ class TreasuryTopup implements ModelInterface, ArrayAccess, \JsonSerializable
         'fee_covered_by_zernio' => 'bool',
         'amount_cents' => 'int',
         'fee_cents' => 'int',
+        'tax_cents' => 'int',
         'charged_cents' => 'int',
         'stripe_fee_cents' => 'int',
         'net_cents' => 'int',
@@ -89,6 +90,7 @@ class TreasuryTopup implements ModelInterface, ArrayAccess, \JsonSerializable
         'fee_covered_by_zernio' => null,
         'amount_cents' => null,
         'fee_cents' => null,
+        'tax_cents' => null,
         'charged_cents' => null,
         'stripe_fee_cents' => null,
         'net_cents' => null,
@@ -111,6 +113,7 @@ class TreasuryTopup implements ModelInterface, ArrayAccess, \JsonSerializable
         'fee_covered_by_zernio' => false,
         'amount_cents' => false,
         'fee_cents' => true,
+        'tax_cents' => false,
         'charged_cents' => false,
         'stripe_fee_cents' => true,
         'net_cents' => true,
@@ -213,6 +216,7 @@ class TreasuryTopup implements ModelInterface, ArrayAccess, \JsonSerializable
         'fee_covered_by_zernio' => 'feeCoveredByZernio',
         'amount_cents' => 'amountCents',
         'fee_cents' => 'feeCents',
+        'tax_cents' => 'taxCents',
         'charged_cents' => 'chargedCents',
         'stripe_fee_cents' => 'stripeFeeCents',
         'net_cents' => 'netCents',
@@ -235,6 +239,7 @@ class TreasuryTopup implements ModelInterface, ArrayAccess, \JsonSerializable
         'fee_covered_by_zernio' => 'setFeeCoveredByZernio',
         'amount_cents' => 'setAmountCents',
         'fee_cents' => 'setFeeCents',
+        'tax_cents' => 'setTaxCents',
         'charged_cents' => 'setChargedCents',
         'stripe_fee_cents' => 'setStripeFeeCents',
         'net_cents' => 'setNetCents',
@@ -257,6 +262,7 @@ class TreasuryTopup implements ModelInterface, ArrayAccess, \JsonSerializable
         'fee_covered_by_zernio' => 'getFeeCoveredByZernio',
         'amount_cents' => 'getAmountCents',
         'fee_cents' => 'getFeeCents',
+        'tax_cents' => 'getTaxCents',
         'charged_cents' => 'getChargedCents',
         'stripe_fee_cents' => 'getStripeFeeCents',
         'net_cents' => 'getNetCents',
@@ -379,6 +385,7 @@ class TreasuryTopup implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('fee_covered_by_zernio', $data ?? [], null);
         $this->setIfExists('amount_cents', $data ?? [], null);
         $this->setIfExists('fee_cents', $data ?? [], null);
+        $this->setIfExists('tax_cents', $data ?? [], null);
         $this->setIfExists('charged_cents', $data ?? [], null);
         $this->setIfExists('stripe_fee_cents', $data ?? [], null);
         $this->setIfExists('net_cents', $data ?? [], null);
@@ -625,7 +632,7 @@ class TreasuryTopup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amount_cents
      *
-     * @param int|null $amount_cents The amount you asked for. A top-up charges exactly this and credits it whole. Top-ups from 2026-11-02 to 2026-11-05 charged a card fee on top and credited what Stripe delivered; older ones charged this amount and credited it minus the fee.
+     * @param int|null $amount_cents The amount you asked for. A top-up credits exactly this and charges it plus tax (taxCents). Top-ups from 2026-11-02 to 2026-11-05 charged a card fee on top and credited what Stripe delivered; older ones charged this amount and credited it minus the fee.
      *
      * @return self
      */
@@ -674,6 +681,33 @@ class TreasuryTopup implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets tax_cents
+     *
+     * @return int|null
+     */
+    public function getTaxCents()
+    {
+        return $this->container['tax_cents'];
+    }
+
+    /**
+     * Sets tax_cents
+     *
+     * @param int|null $tax_cents Tax charged on top of amountCents once paid (VAT where it applies, since 2026-11-05); 0 before payment, when reverse charged, outside the EU, and on older top-ups.
+     *
+     * @return self
+     */
+    public function setTaxCents($tax_cents)
+    {
+        if (is_null($tax_cents)) {
+            throw new \InvalidArgumentException('non-nullable tax_cents cannot be null');
+        }
+        $this->container['tax_cents'] = $tax_cents;
+
+        return $this;
+    }
+
+    /**
      * Gets charged_cents
      *
      * @return int|null
@@ -686,7 +720,7 @@ class TreasuryTopup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets charged_cents
      *
-     * @param int|null $charged_cents What your card was charged: amountCents, or amountCents plus the card fee on a top-up from 2026-11-02 to 2026-11-05.
+     * @param int|null $charged_cents What your card was charged: amountCents plus taxCents, or amountCents plus the card fee on a top-up from 2026-11-02 to 2026-11-05.
      *
      * @return self
      */
@@ -879,7 +913,7 @@ class TreasuryTopup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets has_invoice
      *
-     * @param bool|null $has_invoice A Checkout invoice exists for this payment (Checkout payments before 2026-10-29). Every paid payment has a card receipt (getTopupReceipt); a paid top-up has a statement (getTopupStatement).
+     * @param bool|null $has_invoice The paid payment has an invoice (getTopupInvoice): every balance top-up paid since 2026-11-05 (unless charged without one for a Stripe credit balance), and Checkout payments before 2026-10-29. Every paid payment has a card receipt (getTopupReceipt).
      *
      * @return self
      */

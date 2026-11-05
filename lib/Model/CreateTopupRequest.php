@@ -355,7 +355,7 @@ class CreateTopupRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets amount_cents
      *
-     * @param int $amount_cents Amount to charge and credit to your balance, in cents: $5 to $100,000. No card fee.
+     * @param int $amount_cents Amount to credit to your balance, in cents: $5 to $100,000. Tax is charged on top; no card fee.
      *
      * @return self
      */

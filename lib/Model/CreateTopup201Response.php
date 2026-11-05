@@ -60,6 +60,10 @@ class CreateTopup201Response implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $openAPITypes = [
         'topup_id' => 'string',
         'amount_cents' => 'int',
+        'tax_cents' => 'int',
+        'total_cents' => 'int',
+        'tax_label' => 'string',
+        'reverse_charge' => 'bool',
         'fee_cents' => 'int',
         'charged_cents' => 'int',
         'fee_is_exact' => 'bool',
@@ -77,6 +81,10 @@ class CreateTopup201Response implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $openAPIFormats = [
         'topup_id' => null,
         'amount_cents' => null,
+        'tax_cents' => null,
+        'total_cents' => null,
+        'tax_label' => null,
+        'reverse_charge' => null,
         'fee_cents' => null,
         'charged_cents' => null,
         'fee_is_exact' => null,
@@ -92,6 +100,10 @@ class CreateTopup201Response implements ModelInterface, ArrayAccess, \JsonSerial
     protected static array $openAPINullables = [
         'topup_id' => false,
         'amount_cents' => false,
+        'tax_cents' => false,
+        'total_cents' => false,
+        'tax_label' => true,
+        'reverse_charge' => false,
         'fee_cents' => false,
         'charged_cents' => false,
         'fee_is_exact' => false,
@@ -187,6 +199,10 @@ class CreateTopup201Response implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $attributeMap = [
         'topup_id' => 'topupId',
         'amount_cents' => 'amountCents',
+        'tax_cents' => 'taxCents',
+        'total_cents' => 'totalCents',
+        'tax_label' => 'taxLabel',
+        'reverse_charge' => 'reverseCharge',
         'fee_cents' => 'feeCents',
         'charged_cents' => 'chargedCents',
         'fee_is_exact' => 'feeIsExact',
@@ -202,6 +218,10 @@ class CreateTopup201Response implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $setters = [
         'topup_id' => 'setTopupId',
         'amount_cents' => 'setAmountCents',
+        'tax_cents' => 'setTaxCents',
+        'total_cents' => 'setTotalCents',
+        'tax_label' => 'setTaxLabel',
+        'reverse_charge' => 'setReverseCharge',
         'fee_cents' => 'setFeeCents',
         'charged_cents' => 'setChargedCents',
         'fee_is_exact' => 'setFeeIsExact',
@@ -217,6 +237,10 @@ class CreateTopup201Response implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $getters = [
         'topup_id' => 'getTopupId',
         'amount_cents' => 'getAmountCents',
+        'tax_cents' => 'getTaxCents',
+        'total_cents' => 'getTotalCents',
+        'tax_label' => 'getTaxLabel',
+        'reverse_charge' => 'getReverseCharge',
         'fee_cents' => 'getFeeCents',
         'charged_cents' => 'getChargedCents',
         'fee_is_exact' => 'getFeeIsExact',
@@ -300,6 +324,10 @@ class CreateTopup201Response implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $this->setIfExists('topup_id', $data ?? [], null);
         $this->setIfExists('amount_cents', $data ?? [], null);
+        $this->setIfExists('tax_cents', $data ?? [], null);
+        $this->setIfExists('total_cents', $data ?? [], null);
+        $this->setIfExists('tax_label', $data ?? [], null);
+        $this->setIfExists('reverse_charge', $data ?? [], null);
         $this->setIfExists('fee_cents', $data ?? [], null);
         $this->setIfExists('charged_cents', $data ?? [], null);
         $this->setIfExists('fee_is_exact', $data ?? [], null);
@@ -339,6 +367,18 @@ class CreateTopup201Response implements ModelInterface, ArrayAccess, \JsonSerial
         }
         if ($this->container['amount_cents'] === null) {
             $invalidProperties[] = "'amount_cents' can't be null";
+        }
+        if ($this->container['tax_cents'] === null) {
+            $invalidProperties[] = "'tax_cents' can't be null";
+        }
+        if ($this->container['total_cents'] === null) {
+            $invalidProperties[] = "'total_cents' can't be null";
+        }
+        if ($this->container['tax_label'] === null && !$this->isNullableSetToNull('tax_label')) {
+            $invalidProperties[] = "'tax_label' can't be null";
+        }
+        if ($this->container['reverse_charge'] === null) {
+            $invalidProperties[] = "'reverse_charge' can't be null";
         }
         if ($this->container['fee_cents'] === null) {
             $invalidProperties[] = "'fee_cents' can't be null";
@@ -419,7 +459,7 @@ class CreateTopup201Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets amount_cents
      *
-     * @param int $amount_cents Charged and credited to your balance once paid.
+     * @param int $amount_cents Credited to your balance once paid.
      *
      * @return self
      */
@@ -429,6 +469,121 @@ class CreateTopup201Response implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable amount_cents cannot be null');
         }
         $this->container['amount_cents'] = $amount_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax_cents
+     *
+     * @return int
+     */
+    public function getTaxCents()
+    {
+        return $this->container['tax_cents'];
+    }
+
+    /**
+     * Sets tax_cents
+     *
+     * @param int $tax_cents Tax added on top of amountCents (VAT where it applies). 0 when reverse charged or outside the EU.
+     *
+     * @return self
+     */
+    public function setTaxCents($tax_cents)
+    {
+        if (is_null($tax_cents)) {
+            throw new \InvalidArgumentException('non-nullable tax_cents cannot be null');
+        }
+        $this->container['tax_cents'] = $tax_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_cents
+     *
+     * @return int
+     */
+    public function getTotalCents()
+    {
+        return $this->container['total_cents'];
+    }
+
+    /**
+     * Sets total_cents
+     *
+     * @param int $total_cents What the card is charged: amountCents + taxCents.
+     *
+     * @return self
+     */
+    public function setTotalCents($total_cents)
+    {
+        if (is_null($total_cents)) {
+            throw new \InvalidArgumentException('non-nullable total_cents cannot be null');
+        }
+        $this->container['total_cents'] = $total_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax_label
+     *
+     * @return string|null
+     */
+    public function getTaxLabel()
+    {
+        return $this->container['tax_label'];
+    }
+
+    /**
+     * Sets tax_label
+     *
+     * @param string|null $tax_label The tax and its rate, for example \"VAT 21%\". Null when no tax is charged.
+     *
+     * @return self
+     */
+    public function setTaxLabel($tax_label)
+    {
+        if (is_null($tax_label)) {
+            array_push($this->openAPINullablesSetToNull, 'tax_label');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_label', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tax_label'] = $tax_label;
+
+        return $this;
+    }
+
+    /**
+     * Gets reverse_charge
+     *
+     * @return bool
+     */
+    public function getReverseCharge()
+    {
+        return $this->container['reverse_charge'];
+    }
+
+    /**
+     * Sets reverse_charge
+     *
+     * @param bool $reverse_charge True for an EU business with a valid VAT id: no VAT is charged and the invoice says reverse charge.
+     *
+     * @return self
+     */
+    public function setReverseCharge($reverse_charge)
+    {
+        if (is_null($reverse_charge)) {
+            throw new \InvalidArgumentException('non-nullable reverse_charge cannot be null');
+        }
+        $this->container['reverse_charge'] = $reverse_charge;
 
         return $this;
     }
@@ -473,7 +628,7 @@ class CreateTopup201Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets charged_cents
      *
-     * @param int $charged_cents What the card is charged: amountCents. Kept for older clients.
+     * @param int $charged_cents Same as totalCents. Kept for older clients.
      *
      * @return self
      */

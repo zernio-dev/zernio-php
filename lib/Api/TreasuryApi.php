@@ -102,6 +102,9 @@ class TreasuryApi
         'getPayoutBatch' => [
             'application/json',
         ],
+        'getTopupInvoice' => [
+            'application/json',
+        ],
         'getTopupReceipt' => [
             'application/json',
         ],
@@ -118,6 +121,9 @@ class TreasuryApi
             'application/json',
         ],
         'listTransfers' => [
+            'application/json',
+        ],
+        'previewTopup' => [
             'application/json',
         ],
     ];
@@ -3111,6 +3117,334 @@ class TreasuryApi
     }
 
     /**
+     * Operation getTopupInvoice
+     *
+     * Get a top-up invoice
+     *
+     * @param  string $topup_id topup_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTopupInvoice'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetTopupInvoice200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject4|\Zernio\Model\InlineObject2|\Zernio\Model\InlineObject1
+     */
+    public function getTopupInvoice($topup_id, string $contentType = self::contentTypes['getTopupInvoice'][0])
+    {
+        list($response) = $this->getTopupInvoiceWithHttpInfo($topup_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getTopupInvoiceWithHttpInfo
+     *
+     * Get a top-up invoice
+     *
+     * @param  string $topup_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTopupInvoice'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetTopupInvoice200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject4|\Zernio\Model\InlineObject2|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getTopupInvoiceWithHttpInfo($topup_id, string $contentType = self::contentTypes['getTopupInvoice'][0])
+    {
+        $request = $this->getTopupInvoiceRequest($topup_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetTopupInvoice200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject4',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetTopupInvoice200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetTopupInvoice200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject4',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getTopupInvoiceAsync
+     *
+     * Get a top-up invoice
+     *
+     * @param  string $topup_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTopupInvoice'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getTopupInvoiceAsync($topup_id, string $contentType = self::contentTypes['getTopupInvoice'][0])
+    {
+        return $this->getTopupInvoiceAsyncWithHttpInfo($topup_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getTopupInvoiceAsyncWithHttpInfo
+     *
+     * Get a top-up invoice
+     *
+     * @param  string $topup_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTopupInvoice'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getTopupInvoiceAsyncWithHttpInfo($topup_id, string $contentType = self::contentTypes['getTopupInvoice'][0])
+    {
+        $returnType = '\Zernio\Model\GetTopupInvoice200Response';
+        $request = $this->getTopupInvoiceRequest($topup_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getTopupInvoice'
+     *
+     * @param  string $topup_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTopupInvoice'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getTopupInvoiceRequest($topup_id, string $contentType = self::contentTypes['getTopupInvoice'][0])
+    {
+
+        // verify the required parameter 'topup_id' is set
+        if ($topup_id === null || (is_array($topup_id) && count($topup_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $topup_id when calling getTopupInvoice'
+            );
+        }
+
+
+        $resourcePath = '/v1/balance/top-ups/{topupId}/invoice';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($topup_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'topupId' . '}',
+                ObjectSerializer::toPathValue($topup_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getTopupReceipt
      *
      * Get a top-up receipt
@@ -3441,14 +3775,15 @@ class TreasuryApi
     /**
      * Operation getTopupStatement
      *
-     * Get a top-up statement
+     * Get a top-up invoice (alias)
      *
      * @param  string $topup_id topup_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTopupStatement'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetTopupStatement200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject4|\Zernio\Model\InlineObject2|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\GetTopupInvoice200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject4|\Zernio\Model\InlineObject2|\Zernio\Model\InlineObject1
+     * @deprecated
      */
     public function getTopupStatement($topup_id, string $contentType = self::contentTypes['getTopupStatement'][0])
     {
@@ -3459,14 +3794,15 @@ class TreasuryApi
     /**
      * Operation getTopupStatementWithHttpInfo
      *
-     * Get a top-up statement
+     * Get a top-up invoice (alias)
      *
      * @param  string $topup_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTopupStatement'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetTopupStatement200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject4|\Zernio\Model\InlineObject2|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetTopupInvoice200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject4|\Zernio\Model\InlineObject2|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getTopupStatementWithHttpInfo($topup_id, string $contentType = self::contentTypes['getTopupStatement'][0])
     {
@@ -3498,7 +3834,7 @@ class TreasuryApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\GetTopupStatement200Response',
+                        '\Zernio\Model\GetTopupInvoice200Response',
                         $request,
                         $response,
                     );
@@ -3544,7 +3880,7 @@ class TreasuryApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\GetTopupStatement200Response',
+                '\Zernio\Model\GetTopupInvoice200Response',
                 $request,
                 $response,
             );
@@ -3553,7 +3889,7 @@ class TreasuryApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\GetTopupStatement200Response',
+                        '\Zernio\Model\GetTopupInvoice200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3600,13 +3936,14 @@ class TreasuryApi
     /**
      * Operation getTopupStatementAsync
      *
-     * Get a top-up statement
+     * Get a top-up invoice (alias)
      *
      * @param  string $topup_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTopupStatement'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getTopupStatementAsync($topup_id, string $contentType = self::contentTypes['getTopupStatement'][0])
     {
@@ -3621,17 +3958,18 @@ class TreasuryApi
     /**
      * Operation getTopupStatementAsyncWithHttpInfo
      *
-     * Get a top-up statement
+     * Get a top-up invoice (alias)
      *
      * @param  string $topup_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTopupStatement'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getTopupStatementAsyncWithHttpInfo($topup_id, string $contentType = self::contentTypes['getTopupStatement'][0])
     {
-        $returnType = '\Zernio\Model\GetTopupStatement200Response';
+        $returnType = '\Zernio\Model\GetTopupInvoice200Response';
         $request = $this->getTopupStatementRequest($topup_id, $contentType);
 
         return $this->client
@@ -3678,6 +4016,7 @@ class TreasuryApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getTopupStatementRequest($topup_id, string $contentType = self::contentTypes['getTopupStatement'][0])
     {
@@ -5034,6 +5373,319 @@ class TreasuryApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation previewTopup
+     *
+     * Preview a top-up&#39;s tax
+     *
+     * @param  \Zernio\Model\PreviewTopupRequest $preview_topup_request preview_topup_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['previewTopup'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\PreviewTopup200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject4|\Zernio\Model\InlineObject2
+     */
+    public function previewTopup($preview_topup_request, string $contentType = self::contentTypes['previewTopup'][0])
+    {
+        list($response) = $this->previewTopupWithHttpInfo($preview_topup_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation previewTopupWithHttpInfo
+     *
+     * Preview a top-up&#39;s tax
+     *
+     * @param  \Zernio\Model\PreviewTopupRequest $preview_topup_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['previewTopup'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\PreviewTopup200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject4|\Zernio\Model\InlineObject2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function previewTopupWithHttpInfo($preview_topup_request, string $contentType = self::contentTypes['previewTopup'][0])
+    {
+        $request = $this->previewTopupRequest($preview_topup_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\PreviewTopup200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject4',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject2',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\PreviewTopup200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\PreviewTopup200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject4',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation previewTopupAsync
+     *
+     * Preview a top-up&#39;s tax
+     *
+     * @param  \Zernio\Model\PreviewTopupRequest $preview_topup_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['previewTopup'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function previewTopupAsync($preview_topup_request, string $contentType = self::contentTypes['previewTopup'][0])
+    {
+        return $this->previewTopupAsyncWithHttpInfo($preview_topup_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation previewTopupAsyncWithHttpInfo
+     *
+     * Preview a top-up&#39;s tax
+     *
+     * @param  \Zernio\Model\PreviewTopupRequest $preview_topup_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['previewTopup'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function previewTopupAsyncWithHttpInfo($preview_topup_request, string $contentType = self::contentTypes['previewTopup'][0])
+    {
+        $returnType = '\Zernio\Model\PreviewTopup200Response';
+        $request = $this->previewTopupRequest($preview_topup_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'previewTopup'
+     *
+     * @param  \Zernio\Model\PreviewTopupRequest $preview_topup_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['previewTopup'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function previewTopupRequest($preview_topup_request, string $contentType = self::contentTypes['previewTopup'][0])
+    {
+
+        // verify the required parameter 'preview_topup_request' is set
+        if ($preview_topup_request === null || (is_array($preview_topup_request) && count($preview_topup_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $preview_topup_request when calling previewTopup'
+            );
+        }
+
+
+        $resourcePath = '/v1/balance/top-ups/preview';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($preview_topup_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($preview_topup_request));
+            } else {
+                $httpBody = $preview_topup_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

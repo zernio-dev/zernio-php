@@ -64,6 +64,7 @@ class GetTopupReceipt200Response implements ModelInterface, ArrayAccess, \JsonSe
         'receipt_url' => 'string',
         'amount_cents' => 'int',
         'fee_cents' => 'int',
+        'tax_cents' => 'int',
         'charged_cents' => 'int'
     ];
 
@@ -81,6 +82,7 @@ class GetTopupReceipt200Response implements ModelInterface, ArrayAccess, \JsonSe
         'receipt_url' => 'uri',
         'amount_cents' => null,
         'fee_cents' => null,
+        'tax_cents' => null,
         'charged_cents' => null
     ];
 
@@ -96,6 +98,7 @@ class GetTopupReceipt200Response implements ModelInterface, ArrayAccess, \JsonSe
         'receipt_url' => true,
         'amount_cents' => false,
         'fee_cents' => true,
+        'tax_cents' => false,
         'charged_cents' => false
     ];
 
@@ -191,6 +194,7 @@ class GetTopupReceipt200Response implements ModelInterface, ArrayAccess, \JsonSe
         'receipt_url' => 'receiptUrl',
         'amount_cents' => 'amountCents',
         'fee_cents' => 'feeCents',
+        'tax_cents' => 'taxCents',
         'charged_cents' => 'chargedCents'
     ];
 
@@ -206,6 +210,7 @@ class GetTopupReceipt200Response implements ModelInterface, ArrayAccess, \JsonSe
         'receipt_url' => 'setReceiptUrl',
         'amount_cents' => 'setAmountCents',
         'fee_cents' => 'setFeeCents',
+        'tax_cents' => 'setTaxCents',
         'charged_cents' => 'setChargedCents'
     ];
 
@@ -221,6 +226,7 @@ class GetTopupReceipt200Response implements ModelInterface, ArrayAccess, \JsonSe
         'receipt_url' => 'getReceiptUrl',
         'amount_cents' => 'getAmountCents',
         'fee_cents' => 'getFeeCents',
+        'tax_cents' => 'getTaxCents',
         'charged_cents' => 'getChargedCents'
     ];
 
@@ -302,6 +308,7 @@ class GetTopupReceipt200Response implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('receipt_url', $data ?? [], null);
         $this->setIfExists('amount_cents', $data ?? [], null);
         $this->setIfExists('fee_cents', $data ?? [], null);
+        $this->setIfExists('tax_cents', $data ?? [], null);
         $this->setIfExists('charged_cents', $data ?? [], null);
     }
 
@@ -565,6 +572,33 @@ class GetTopupReceipt200Response implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
+     * Gets tax_cents
+     *
+     * @return int|null
+     */
+    public function getTaxCents()
+    {
+        return $this->container['tax_cents'];
+    }
+
+    /**
+     * Sets tax_cents
+     *
+     * @param int|null $tax_cents Tax charged on top of amountCents, as in the top-up list.
+     *
+     * @return self
+     */
+    public function setTaxCents($tax_cents)
+    {
+        if (is_null($tax_cents)) {
+            throw new \InvalidArgumentException('non-nullable tax_cents cannot be null');
+        }
+        $this->container['tax_cents'] = $tax_cents;
+
+        return $this;
+    }
+
+    /**
      * Gets charged_cents
      *
      * @return int
@@ -577,7 +611,7 @@ class GetTopupReceipt200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets charged_cents
      *
-     * @param int $charged_cents What the card was charged, the total on the receipt.
+     * @param int $charged_cents What the card was charged, tax included: the total on the receipt.
      *
      * @return self
      */

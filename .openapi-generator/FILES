@@ -1480,8 +1480,8 @@ docs/Model/GetTikTokSmartPlusAdReview200Response.md
 docs/Model/GetTikTokSmartPlusMaterialReport200Response.md
 docs/Model/GetTikTokSmartPlusMaterialReport200ResponseRowsInner.md
 docs/Model/GetTikTokSmartPlusMaterialReport200ResponseRowsInnerMetrics.md
+docs/Model/GetTopupInvoice200Response.md
 docs/Model/GetTopupReceipt200Response.md
-docs/Model/GetTopupStatement200Response.md
 docs/Model/GetTrackingTag200Response.md
 docs/Model/GetTrackingTagDiagnostics200Response.md
 docs/Model/GetTrackingTagStats200Response.md
@@ -2256,6 +2256,8 @@ docs/Model/PreflightSmsRegistration200ResponseComposed.md
 docs/Model/PreflightSmsRegistrationRequest.md
 docs/Model/PrepareMedia200Response.md
 docs/Model/PrepareMediaRequest.md
+docs/Model/PreviewTopup200Response.md
+docs/Model/PreviewTopupRequest.md
 docs/Model/Product.md
 docs/Model/ProductImage.md
 docs/Model/ProductOptionsInner.md
@@ -4834,8 +4836,8 @@ lib/Model/GetTikTokSmartPlusAdReview200Response.php
 lib/Model/GetTikTokSmartPlusMaterialReport200Response.php
 lib/Model/GetTikTokSmartPlusMaterialReport200ResponseRowsInner.php
 lib/Model/GetTikTokSmartPlusMaterialReport200ResponseRowsInnerMetrics.php
+lib/Model/GetTopupInvoice200Response.php
 lib/Model/GetTopupReceipt200Response.php
-lib/Model/GetTopupStatement200Response.php
 lib/Model/GetTrackingTag200Response.php
 lib/Model/GetTrackingTagDiagnostics200Response.php
 lib/Model/GetTrackingTagStats200Response.php
@@ -5611,6 +5613,8 @@ lib/Model/PreflightSmsRegistration200ResponseComposed.php
 lib/Model/PreflightSmsRegistrationRequest.php
 lib/Model/PrepareMedia200Response.php
 lib/Model/PrepareMediaRequest.php
+lib/Model/PreviewTopup200Response.php
+lib/Model/PreviewTopupRequest.php
 lib/Model/Product.php
 lib/Model/ProductImage.php
 lib/Model/ProductOptionsInner.php
@@ -6709,3 +6713,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetTopupInvoice200ResponseTest.php
+test/Model/PreviewTopup200ResponseTest.php
+test/Model/PreviewTopupRequestTest.php
