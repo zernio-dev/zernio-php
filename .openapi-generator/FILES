@@ -1480,8 +1480,8 @@ docs/Model/GetTikTokSmartPlusAdReview200Response.md
 docs/Model/GetTikTokSmartPlusMaterialReport200Response.md
 docs/Model/GetTikTokSmartPlusMaterialReport200ResponseRowsInner.md
 docs/Model/GetTikTokSmartPlusMaterialReport200ResponseRowsInnerMetrics.md
-docs/Model/GetTopupCardFee200Response.md
 docs/Model/GetTopupReceipt200Response.md
+docs/Model/GetTopupStatement200Response.md
 docs/Model/GetTrackingTag200Response.md
 docs/Model/GetTrackingTagDiagnostics200Response.md
 docs/Model/GetTrackingTagStats200Response.md
@@ -4834,8 +4834,8 @@ lib/Model/GetTikTokSmartPlusAdReview200Response.php
 lib/Model/GetTikTokSmartPlusMaterialReport200Response.php
 lib/Model/GetTikTokSmartPlusMaterialReport200ResponseRowsInner.php
 lib/Model/GetTikTokSmartPlusMaterialReport200ResponseRowsInnerMetrics.php
-lib/Model/GetTopupCardFee200Response.php
 lib/Model/GetTopupReceipt200Response.php
+lib/Model/GetTopupStatement200Response.php
 lib/Model/GetTrackingTag200Response.php
 lib/Model/GetTrackingTagDiagnostics200Response.php
 lib/Model/GetTrackingTagStats200Response.php
@@ -6709,3 +6709,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetTopupStatement200ResponseTest.php

@@ -15,8 +15,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createTransfer()**](TreasuryApi.md#createTransfer) | **POST** /v1/transfers | Create a transfer |
 | [**getBalance()**](TreasuryApi.md#getBalance) | **GET** /v1/balance | Get balance |
 | [**getPayoutBatch()**](TreasuryApi.md#getPayoutBatch) | **GET** /v1/payout-batches/{batchId} | Get a payout batch |
-| [**getTopupCardFee()**](TreasuryApi.md#getTopupCardFee) | **GET** /v1/balance/top-ups/card-fee | Get the card fee for a top-up |
 | [**getTopupReceipt()**](TreasuryApi.md#getTopupReceipt) | **GET** /v1/balance/top-ups/{topupId}/receipt | Get a top-up receipt |
+| [**getTopupStatement()**](TreasuryApi.md#getTopupStatement) | **GET** /v1/balance/top-ups/{topupId}/statement | Get a top-up statement |
 | [**getTransfer()**](TreasuryApi.md#getTransfer) | **GET** /v1/transfers/{transferId} | Get a transfer |
 | [**listPayees()**](TreasuryApi.md#listPayees) | **GET** /v1/payees | List payees |
 | [**listTopups()**](TreasuryApi.md#listTopups) | **GET** /v1/balance/top-ups | List top-ups |
@@ -331,7 +331,7 @@ createTopup($create_topup_request, $idempotency_key): \Zernio\Model\CreateTopup2
 
 Create a top-up
 
-Charges the billing owner's saved card (the default one, or `paymentMethodId`) `amountCents` plus the card fee, while the payer is present, and credits your balance what Stripe delivers.  The card fee is Stripe's own rate for the card, learned from its past charges (`GET /v1/balance/top-ups/card-fee` answers it).  - When `feeIsExact` is true you receive exactly `amountCents`. - When it is false (the first top-up on a card issued in the EEA, or Link, where Stripe prices by card product) the fee is the highest rate for the card's region. - You then receive at least `amountCents`: if Stripe charges less, the difference is added to your balance.  - `status: succeeded`: the card was charged. What Stripe delivered is credited to `availableCents` within seconds. Transfers to payees can use it from 7 days after the charge. - `status: requires_action`: the bank asked for 3D Secure. Complete it with Stripe.js `handleNextAction({ clientSecret })`, then call `POST /v1/balance/top-ups/{topupId}/confirm`. One left unconfirmed is cancelled after 30 minutes.  ### Errors  - 402 `payment_required`: no saved card. - 402 `card_declined`: the bank's reason. - 400: `method: bank_transfer` (bank transfers are not available yet).  Needs an owner, admin or billing admin, signed in or through a full-access key they created.
+Charges the billing owner's saved card (the default one, or `paymentMethodId`) exactly `amountCents`, while the payer is present, and credits your balance the same amount. There is no card fee.  Each top-up has a card receipt (`GET /v1/balance/top-ups/{topupId}/receipt`) and a top-up statement without VAT (`GET /v1/balance/top-ups/{topupId}/statement`): the balance is taxed when it is used, on your monthly invoice.  - `status: succeeded`: the card was charged. `amountCents` is credited to `availableCents` within seconds. Transfers to payees can use it from 7 days after the charge. - `status: requires_action`: the bank asked for 3D Secure. Complete it with Stripe.js `handleNextAction({ clientSecret })`, then call `POST /v1/balance/top-ups/{topupId}/confirm`. One left unconfirmed is cancelled after 30 minutes.  ### Errors  - 402 `payment_required`: no saved card. - 402 `card_declined`: the bank's reason. - 400: `method: bank_transfer` (bank transfers are not available yet).  Needs an owner, admin or billing admin, signed in or through a full-access key they created.
 
 ### Example
 
@@ -564,66 +564,6 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getTopupCardFee()`
-
-```php
-getTopupCardFee($payment_method_id): \Zernio\Model\GetTopupCardFee200Response
-```
-
-Get the card fee for a top-up
-
-The card fee a top-up on the billing owner's saved card pays: `feeBps` of the charge plus `fixedCents`. The card is charged the smallest amount that leaves `amountCents` once Stripe takes `round_half_up(charge * feeBps / 10000) + fixedCents`.  The rate is Stripe's own for the card, learned from its past charges.  `feeIsExact` is false for a card Zernio has not charged yet whose region Stripe prices by card product (EEA) or whose country is unknown (Link). The rate is then that region's highest, and the top-up credits at least the amount.  Needs an owner, admin or billing admin, signed in or through a full-access key they created.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer (JWT) authorization: bearerAuth
-$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Zernio\Api\TreasuryApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$payment_method_id = 'payment_method_id_example'; // string | A saved card of the billing owner's (`pm_...`). Defaults to the default payment method.
-
-try {
-    $result = $apiInstance->getTopupCardFee($payment_method_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling TreasuryApi->getTopupCardFee: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **payment_method_id** | **string**| A saved card of the billing owner&#39;s (&#x60;pm_...&#x60;). Defaults to the default payment method. | [optional] |
-
-### Return type
-
-[**\Zernio\Model\GetTopupCardFee200Response**](../Model/GetTopupCardFee200Response.md)
-
-### Authorization
-
-[bearerAuth](../../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
 ## `getTopupReceipt()`
 
 ```php
@@ -632,7 +572,7 @@ getTopupReceipt($topup_id): \Zernio\Model\GetTopupReceipt200Response
 
 Get a top-up receipt
 
-The receipt for a paid top-up or creator payout payment (`purpose: payout_batch`). `format: pdf` is the Stripe invoice PDF; `format: page` is Stripe's receipt page, for payments that have no invoice. The link is short-lived, so fetch it when you need it. A profile-scoped key answers 403.
+The receipt for a paid top-up or creator payout payment (`purpose: payout_batch`). `format: pdf` is the Checkout invoice PDF (payments before 2026-10-29); `format: page` is Stripe's card receipt page. A top-up's statement is at getTopupStatement. The link is short-lived, so fetch it when you need it. A profile-scoped key answers 403.
 
 ### Example
 
@@ -670,6 +610,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetTopupReceipt200Response**](../Model/GetTopupReceipt200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getTopupStatement()`
+
+```php
+getTopupStatement($topup_id): \Zernio\Model\GetTopupStatement200Response
+```
+
+Get a top-up statement
+
+The statement for a paid balance top-up: the PDF of the Stripe invoice it was paid through. It shows the amount added to your balance and no VAT: money added to the balance is taxed when it is used, on your monthly invoice.  - `format: pdf` is the statement PDF; `format: page` is its Stripe-hosted page when the PDF is not ready. - 404 before the top-up is paid, and for a payment with no statement (top-ups before 2026-11-05, creator payout payments). Its card receipt is at getTopupReceipt.  The link is short-lived, so fetch it when you need it. A profile-scoped key answers 403.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\TreasuryApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$topup_id = 'topup_id_example'; // string
+
+try {
+    $result = $apiInstance->getTopupStatement($topup_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TreasuryApi->getTopupStatement: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **topup_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\GetTopupStatement200Response**](../Model/GetTopupStatement200Response.md)
 
 ### Authorization
 
