@@ -6705,6 +6705,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreatePlatformInvite200ResponseInviteTest.php
-test/Model/CreatePlatformInvite200ResponseTest.php
-test/Model/CreatePlatformInviteRequestTest.php
