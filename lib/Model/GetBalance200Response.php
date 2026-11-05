@@ -374,7 +374,7 @@ class GetBalance200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets available_cents
      *
-     * @param int|null $available_cents Your balance, including card top-ups paid in the last 7 days (see payoutLockedCents). Negative after a dispute or refund of a top-up that was already spent, or, on balance billing, when pay-per-use already in flight (a connected call, an SMS already with the carrier) lands past zero; the next top-up covers it. Transfers are refused while it is negative.
+     * @param int|null $available_cents Your balance, including card top-ups paid in the last 7 days (see payoutLockedCents). It goes negative after a dispute or refund of a spent top-up, or when pay-per-use already in flight lands past zero. The next top-up covers it. Transfers are refused while it is negative.
      *
      * @return self
      */
