@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **account** | [**\Zernio\Model\WebhookAdsAccount**](WebhookAdsAccount.md) |  |
 **ad_object** | [**\Zernio\Model\WebhookPayloadAdSetCreatedAdObject**](WebhookPayloadAdSetCreatedAdObject.md) |  |
 **changes** | **string[]** | Fields edited by this request. &#x60;status&#x60; is the ad set&#39;s own on/off switch. Ignore values you do not know. |
-**source** | **string** | Where the edit was made. &#x60;zernio&#x60; for edits through Zernio. |
+**source** | **string** | Where the edit was made. &#x60;zernio&#x60; for edits through Zernio, &#x60;platform&#x60; for edits the sync detected outside Zernio. |
 **timestamp** | **\DateTime** | UTC time at which Zernio generated this event. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

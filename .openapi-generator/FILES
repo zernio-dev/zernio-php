@@ -7019,7 +7019,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/WebhookPayloadAdSetCreatedAdObjectCampaignTest.php
-test/Model/WebhookPayloadAdSetCreatedAdObjectTest.php
-test/Model/WebhookPayloadAdSetCreatedTest.php
-test/Model/WebhookPayloadAdSetUpdatedTest.php

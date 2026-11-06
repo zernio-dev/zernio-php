@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **event** | **string** |  |
 **account** | [**\Zernio\Model\WebhookAdsAccount**](WebhookAdsAccount.md) |  |
 **ad_object** | [**\Zernio\Model\WebhookPayloadAdSetCreatedAdObject**](WebhookPayloadAdSetCreatedAdObject.md) |  |
-**source** | **string** | Where the ad set was created. &#x60;zernio&#x60; for ad sets created through Zernio. |
+**source** | **string** | Where the ad set was created. &#x60;zernio&#x60; for ad sets created through Zernio, &#x60;platform&#x60; for ad sets the sync detected. |
 **timestamp** | **\DateTime** | UTC time at which Zernio generated this event. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
