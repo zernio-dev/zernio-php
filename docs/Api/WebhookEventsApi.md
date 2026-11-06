@@ -19,6 +19,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onAdReviewApproved()**](WebhookEventsApi.md#onAdReviewApproved) | **POST** /ad.review.approved | Ad review approved event |
 | [**onAdReviewRejected()**](WebhookEventsApi.md#onAdReviewRejected) | **POST** /ad.review.rejected | Ad review rejected event |
 | [**onAdRuleTriggered()**](WebhookEventsApi.md#onAdRuleTriggered) | **POST** /ad_rule.triggered | Ad rule triggered event |
+| [**onAdSetCreated()**](WebhookEventsApi.md#onAdSetCreated) | **POST** /ad_set.created | Ad set created event |
+| [**onAdSetUpdated()**](WebhookEventsApi.md#onAdSetUpdated) | **POST** /ad_set.updated | Ad set updated event |
 | [**onAdStatusChanged()**](WebhookEventsApi.md#onAdStatusChanged) | **POST** /ad.status_changed | Ad status changed event |
 | [**onAdUpdated()**](WebhookEventsApi.md#onAdUpdated) | **POST** /ad.updated | Ad updated event |
 | [**onAdVideoProcessed()**](WebhookEventsApi.md#onAdVideoProcessed) | **POST** /ad.video.processed | Ad video processed event |
@@ -886,6 +888,124 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_ad_rule_triggered** | [**\Zernio\Model\WebhookPayloadAdRuleTriggered**](../Model/WebhookPayloadAdRuleTriggered.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onAdSetCreated()`
+
+```php
+onAdSetCreated($webhook_payload_ad_set_created)
+```
+
+Ad set created event
+
+An ad set was created through Zernio (`source: \"zernio\"`).  ### When it fires  Fires once the ad set row is recorded, so `GET /v1/ads/ad-sets/{adSetId}` finds it.  ### Payload notes  `adObject.campaign` is the campaign the ad set belongs to, or null when the platform has none.  ### When it does not fire  History loaded when an account connects is never announced.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_ad_set_created = {"id":"00000000-0000-4000-8000-000000000000","event":"ad_set.created","timestamp":"2026-01-15T10:00:00Z","account":{"accountId":"507f1f77bcf86cd799439011","profileId":"507f1f77bcf86cd799439012","platform":"metaads","username":"sample_brand","displayName":"Sample Brand"},"adObject":{"level":"AD_SET","platformId":"120200000000000020","platformAdAccountId":"act_1234567890","name":"Spring audience","campaign":{"platformCampaignId":"120200000000000010","name":"Spring campaign"}},"source":"zernio","profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadAdSetCreated
+
+try {
+    $apiInstance->onAdSetCreated($webhook_payload_ad_set_created);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onAdSetCreated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_ad_set_created** | [**\Zernio\Model\WebhookPayloadAdSetCreated**](../Model/WebhookPayloadAdSetCreated.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onAdSetUpdated()`
+
+```php
+onAdSetUpdated($webhook_payload_ad_set_updated)
+```
+
+Ad set updated event
+
+An ad set was edited through Zernio (`source: \"zernio\"`).  ### When it fires  Fires after the platform and Zernio both accepted the edit.  ### Deduplication  Events are not deduplicated, so every edit is announced. Use the event `id` to drop repeats.  ### Payload notes  `changes` lists the edited fields: `name`, `status` (the ad set's own on/off switch), `budget`, `bid`, `schedule`, `targeting` or `settings`. Ignore unknown values. It never carries old or new values, so read the ad set.  ### When it does not fire  Budget and targeting edits made through `PUT /v1/ads/{adId}` arrive as `ad.updated`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_ad_set_updated = {"id":"00000000-0000-4000-8000-000000000000","event":"ad_set.updated","timestamp":"2026-01-15T10:00:00Z","account":{"accountId":"507f1f77bcf86cd799439011","profileId":"507f1f77bcf86cd799439012","platform":"metaads","username":"sample_brand","displayName":"Sample Brand"},"adObject":{"level":"AD_SET","platformId":"120200000000000020","platformAdAccountId":"act_1234567890","name":"Spring audience","campaign":{"platformCampaignId":"120200000000000010","name":"Spring campaign"}},"changes":["name","budget"],"source":"zernio","profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadAdSetUpdated
+
+try {
+    $apiInstance->onAdSetUpdated($webhook_payload_ad_set_updated);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onAdSetUpdated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_ad_set_updated** | [**\Zernio\Model\WebhookPayloadAdSetUpdated**](../Model/WebhookPayloadAdSetUpdated.md)|  | |
 
 ### Return type
 
@@ -2977,7 +3097,7 @@ onCampaignUpdated($webhook_payload_campaign_updated)
 
 Campaign updated event
 
-A campaign was edited through Zernio (`source: \"zernio\"`), or outside Zernio and detected by the sync (`source: \"platform\"`).  ### When it fires  Fires after the platform and Zernio both accepted the edit. Outside edits arrive up to one sync interval late, and only to the user whose sync saw them.  ### Deduplication  Events are not deduplicated, so every edit is announced. Use the event `id` to drop repeats.  ### Payload notes  `changes` lists the edited fields: `name`, `status` (the campaign's own on/off switch), `budget`, `bid` or `settings`. Ignore unknown values. It never carries old or new values, so read the campaign.  ### What the sync detects  From the sync, `changes` covers only `name`, `status` and `schedule`. Schedule is detected only on Google, LinkedIn, Pinterest and OpenAI Ads.  ### When it does not fire  Budget edits made outside Zernio, ad set edits and history loaded at connect are not announced. Ad rule changes arrive as `ad_rule.triggered`.  ### Google sub-resources  Edits to ad schedule, targeting, negative keywords, conversion goals, assets, asset groups and listing group filters are not announced.
+A campaign was edited through Zernio (`source: \"zernio\"`), or outside Zernio and detected by the sync (`source: \"platform\"`).  ### When it fires  Fires after the platform and Zernio both accepted the edit. Outside edits arrive up to one sync interval late, and only to the user whose sync saw them.  ### Deduplication  Events are not deduplicated, so every edit is announced. Use the event `id` to drop repeats.  ### Payload notes  `changes` lists the edited fields: `name`, `status` (the campaign's own on/off switch), `budget`, `bid` or `settings`. Ignore unknown values. It never carries old or new values, so read the campaign.  ### What the sync detects  From the sync, `changes` covers only `name`, `status` and `schedule`. Schedule is detected only on Google, LinkedIn, Pinterest and OpenAI Ads.  ### When it does not fire  Budget edits made outside Zernio and history loaded at connect are not announced. Ad set edits made through Zernio arrive as `ad_set.updated`. Ad rule changes arrive as `ad_rule.triggered`.  ### Google sub-resources  Edits to ad schedule, targeting, negative keywords, conversion goals, assets, asset groups and listing group filters are not announced.
 
 ### Example
 
