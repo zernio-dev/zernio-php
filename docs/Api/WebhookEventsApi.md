@@ -5567,7 +5567,7 @@ onPostTikTokUrlResolved($webhook_payload_post_platform)
 
 TikTok post URL resolved event
 
-Fired when an already-published TikTok platform entry gets its public URL backfilled.  TikTok exposes the numeric video id asynchronously (often minutes after PUBLISH_COMPLETE), so the terminal events can carry an empty `publishedUrl` for TikTok. This event delivers `platform.publishedUrl` and the resolved `platform.platformPostId` once available.  - Fires at most once per platform target. - Never fires for drafts or private posts (no public URL exists). - The payload shape is identical to `post.platform.published`.
+Fired when an already-published TikTok platform entry gets its public URL backfilled.  TikTok exposes the numeric video id asynchronously (often minutes after PUBLISH_COMPLETE), so the terminal events can carry an empty `publishedUrl` for TikTok. This event delivers `platform.publishedUrl` and the resolved `platform.platformPostId` once available.  - Fires at most once per platform target. - Never fires for private posts (no public URL exists). - For a draft, fires when the creator posts the draft publicly from the TikTok app. A draft the creator never posts never fires it. - The payload shape is identical to `post.platform.published`.
 
 ### Example
 
