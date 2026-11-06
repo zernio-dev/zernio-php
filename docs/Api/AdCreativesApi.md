@@ -34,7 +34,7 @@ createAdCreative($create_ad_creative_request): \Zernio\Model\CreateAdCreative201
 
 Create a standalone creative
 
-Creates a reusable Meta creative from an image or carousel without creating an ad, ready to attach to ads later.  The creative goes in the library WITHOUT an ad, reusable on the create endpoints via `existingCreativeId`.  ### Source  Provide exactly one of:  - `imageUrl` (uploaded server-side) - `imageHash` (from POST /v1/ads/images or the library list) - `carouselCards` (2-10 hand-built cards)  ### Other fields  - The Page (and linked Instagram account, when present) is resolved from `accountId` as the story actor. - `creativeFeatures` configures Advantage+ enhancements. - `promotion` is not supported and any object is rejected with 400.
+Creates a reusable Meta creative from an image or carousel without creating an ad, ready to attach to ads later.  The creative goes in the library WITHOUT an ad, reusable on the create endpoints via `existingCreativeId`.  ### Source  Provide exactly one of:  - `imageUrl` (uploaded server-side) - `imageHash` (from POST /v1/ads/images or the library list) - `carouselCards` (2-10 hand-built cards)  ### Other fields  - The Page (and linked Instagram account, when present) is resolved from `accountId` as the story actor. `instagramAccountId` overrides the Instagram account. - `creativeFeatures` configures Advantage+ enhancements. - `promotion` is not supported and any object is rejected with 400.
 
 ### Example
 
