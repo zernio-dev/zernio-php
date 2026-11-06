@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **budget_type** | **string** | Reddit only. Sent together with budgetAmount. | [optional]
 **start_date** | **string** | Reddit only. ISO 8601 start of the ad group. Defaults to now, or to the campaign start when it is in the future. | [optional]
 **end_date** | **string** | Reddit only. ISO 8601 end of the ad group. Defaults to the campaign end. | [optional]
-**targeting** | [**\Zernio\Model\TargetingSpec**](TargetingSpec.md) |  | [optional]
+**targeting** | [**\Zernio\Model\TargetingSpec**](TargetingSpec.md) | Reddit: the full targeting object. Google: locations and languages only, on a Demand Gen campaign. | [optional]
 **promoted_object** | [**\Zernio\Model\CreateAdSetRequestPromotedObject**](CreateAdSetRequestPromotedObject.md) |  | [optional]
 **optimization_goal** | **string** | Reddit only. VIDEO_VIEW_6S (default) or VIDEO_VIEW_15S on a video views campaign. | [optional]
 **bid_strategy** | **string** | Reddit only. Defaults to LOWEST_COST_WITHOUT_CAP. Not accepted under campaign budget optimization. | [optional]
