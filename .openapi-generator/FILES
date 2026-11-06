@@ -591,6 +591,7 @@ docs/Model/ConversionAction.md
 docs/Model/ConversionActionTagSnippetsInner.md
 docs/Model/ConversionDestination.md
 docs/Model/ConversionEvent.md
+docs/Model/ConversionEventCampaign.md
 docs/Model/ConversionEventItemsInner.md
 docs/Model/ConversionEventMessaging.md
 docs/Model/ConversionEventUser.md
@@ -3950,6 +3951,7 @@ lib/Model/ConversionAction.php
 lib/Model/ConversionActionTagSnippetsInner.php
 lib/Model/ConversionDestination.php
 lib/Model/ConversionEvent.php
+lib/Model/ConversionEventCampaign.php
 lib/Model/ConversionEventItemsInner.php
 lib/Model/ConversionEventMessaging.php
 lib/Model/ConversionEventUser.php
@@ -6719,3 +6721,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ConversionEventCampaignTest.php

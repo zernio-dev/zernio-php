@@ -22,7 +22,7 @@ getCampaignResultsTotals($from_date, $to_date, $ad_account_ids): \Zernio\Model\G
 
 Get your results totals
 
-Each metric you send summed over a date range across every campaign of the ad accounts your key can see, or of the ones you name. Each day counts its newest value only.  Formulas are not computed here, since they also read the platform's numbers: apply one to these totals and the account's spend for the same range, or read it per campaign from `GET /v1/ads/tree?results=true`.
+Each metric you send summed over a date range across every campaign of the ad accounts your key can see, or of the ones you name. Each day counts its newest uploaded value only, plus the events sent to `POST /v1/events` that are tied to a campaign.  Formulas are not computed here, since they also read the platform's numbers: apply one to these totals and the account's spend for the same range, or read it per campaign from `GET /v1/ads/tree?results=true`.
 
 ### Example
 
@@ -203,7 +203,7 @@ listCampaignResults($from_date, $to_date, $campaign_ids, $limit, $cursor): \Zern
 
 List your results per campaign
 
-Your results summed per campaign over a date range, one entry per campaign with every metric it has, for the ad accounts your key can see. Each day counts its newest value only.  Paginated by campaign: pass `nextCursor` back as `cursor` until it is null.
+Your results summed per campaign over a date range, one entry per campaign with every metric it has, for the ad accounts your key can see. Each day counts its newest uploaded value only, plus the events sent to `POST /v1/events` that are tied to the campaign (`sales`, `revenue`, `leads`, `qualified_leads`).  Paginated by campaign: pass `nextCursor` back as `cursor` until it is null.
 
 ### Example
 
