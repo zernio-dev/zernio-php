@@ -6713,6 +6713,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetTopupInvoice200ResponseTest.php
-test/Model/PreviewTopup200ResponseTest.php
-test/Model/PreviewTopupRequestTest.php
