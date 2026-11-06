@@ -142,7 +142,11 @@ docs/Model/AdRuleActionOneOf3.md
 docs/Model/AdRuleActionOneOf4.md
 docs/Model/AdRuleActionOneOf5.md
 docs/Model/AdRuleActionOneOf6.md
+docs/Model/AdRuleActionOneOf6From.md
+docs/Model/AdRuleActionOneOf6To.md
 docs/Model/AdRuleActionOneOf7.md
+docs/Model/AdRuleActionOneOf8.md
+docs/Model/AdRuleActionOneOf9.md
 docs/Model/AdRuleActionOneOfSendInner.md
 docs/Model/AdRuleActionOneOfSendInnerOneOf.md
 docs/Model/AdRuleActionOneOfSendInnerOneOf1.md
@@ -3502,7 +3506,11 @@ lib/Model/AdRuleActionOneOf3.php
 lib/Model/AdRuleActionOneOf4.php
 lib/Model/AdRuleActionOneOf5.php
 lib/Model/AdRuleActionOneOf6.php
+lib/Model/AdRuleActionOneOf6From.php
+lib/Model/AdRuleActionOneOf6To.php
 lib/Model/AdRuleActionOneOf7.php
+lib/Model/AdRuleActionOneOf8.php
+lib/Model/AdRuleActionOneOf9.php
 lib/Model/AdRuleActionOneOfSendInner.php
 lib/Model/AdRuleActionOneOfSendInnerOneOf.php
 lib/Model/AdRuleActionOneOfSendInnerOneOf1.php
@@ -6721,4 +6729,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ConversionEventCampaignTest.php
+test/Model/AdRuleActionOneOf6FromTest.php
+test/Model/AdRuleActionOneOf6ToTest.php
+test/Model/AdRuleActionOneOf8Test.php
+test/Model/AdRuleActionOneOf9Test.php
