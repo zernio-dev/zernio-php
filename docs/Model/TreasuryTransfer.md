@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **destination_type** | **string** |  | [optional]
 **amount_cents** | **int** | Amount the payee receives, in full | [optional]
 **fee_cents** | **int** | Zernio fee added on top, 4% with a 50 cent minimum | [optional]
-**total_cents** | **int** | Amount debited from your balance: amountCents plus feeCents | [optional]
+**total_cents** | **int** | amountCents plus feeCents, both paid by the payout batch card charge | [optional]
 **currency** | **string** |  | [optional]
 **reference** | [**\Zernio\Model\TreasuryTransferReference**](TreasuryTransferReference.md) |  | [optional]
 **status** | **string** |  | [optional]

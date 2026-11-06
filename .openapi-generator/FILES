@@ -2391,6 +2391,8 @@ docs/Model/PreflightSmsRegistration200ResponseComposed.md
 docs/Model/PreflightSmsRegistrationRequest.md
 docs/Model/PrepareMedia200Response.md
 docs/Model/PrepareMediaRequest.md
+docs/Model/PreviewCampaignPayoutBatch200Response.md
+docs/Model/PreviewCampaignPayoutBatchRequest.md
 docs/Model/PreviewTopup200Response.md
 docs/Model/PreviewTopupRequest.md
 docs/Model/Product.md
@@ -5901,6 +5903,8 @@ lib/Model/PreflightSmsRegistration200ResponseComposed.php
 lib/Model/PreflightSmsRegistrationRequest.php
 lib/Model/PrepareMedia200Response.php
 lib/Model/PrepareMediaRequest.php
+lib/Model/PreviewCampaignPayoutBatch200Response.php
+lib/Model/PreviewCampaignPayoutBatchRequest.php
 lib/Model/PreviewTopup200Response.php
 lib/Model/PreviewTopupRequest.php
 lib/Model/Product.php
@@ -7019,3 +7023,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/PreviewCampaignPayoutBatch200ResponseTest.php
+test/Model/PreviewCampaignPayoutBatchRequestTest.php

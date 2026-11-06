@@ -2625,7 +2625,7 @@ onCampaignPayoutFailed($webhook_payload_campaign_payout)
 
 Campaign payout failed event
 
-A payout through your Zernio balance did not reach the creator.  ### When it fires  Stripe refused it, it stayed unconfirmed for 24 hours, or it was reversed. The amount is payable again, minus anything a rejection claws back.
+A payout through Zernio did not reach the creator.  ### When it fires  Stripe refused it, it stayed unconfirmed for 24 hours, or it was reversed. The amount is payable again, minus anything a rejection claws back.
 
 ### Example
 
