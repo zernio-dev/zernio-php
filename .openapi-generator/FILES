@@ -2156,6 +2156,7 @@ docs/Model/MetaProductCatalog.md
 docs/Model/MetaProductFeed.md
 docs/Model/MetaProductFeedSchedule.md
 docs/Model/MetaProductSet.md
+docs/Model/MetaRecoveredWritesInner.md
 docs/Model/Money.md
 docs/Model/MoneyAmount.md
 docs/Model/MoveAccountToProfile200Response.md
@@ -5514,6 +5515,7 @@ lib/Model/MetaProductCatalog.php
 lib/Model/MetaProductFeed.php
 lib/Model/MetaProductFeedSchedule.php
 lib/Model/MetaProductSet.php
+lib/Model/MetaRecoveredWritesInner.php
 lib/Model/ModelInterface.php
 lib/Model/Money.php
 lib/Model/MoneyAmount.php
@@ -6717,3 +6719,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/MetaRecoveredWritesInnerTest.php
