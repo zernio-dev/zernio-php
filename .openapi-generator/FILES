@@ -293,6 +293,7 @@ docs/Model/AttachCampaignAssets201Response.md
 docs/Model/AttachCampaignAssetsRequest.md
 docs/Model/AttachNumberToSipTrunk200Response.md
 docs/Model/AttachNumberToSipTrunkRequest.md
+docs/Model/AutoRecharge.md
 docs/Model/BatchAdCatalogProducts202Response.md
 docs/Model/BatchAdCatalogProductsRequest.md
 docs/Model/BatchAdCatalogProductsRequestRequestsInner.md
@@ -2811,6 +2812,7 @@ docs/Model/UpdateAdTrackingTags200Response.md
 docs/Model/UpdateAdTrackingTagsRequest.md
 docs/Model/UpdateAdTrackingTagsRequestCreative.md
 docs/Model/UpdateAdTrackingTagsRequestUrlTagsInner.md
+docs/Model/UpdateAutoRechargeRequest.md
 docs/Model/UpdateBidStrategy200Response.md
 docs/Model/UpdateBidStrategy200ResponseStrategy.md
 docs/Model/UpdateBidStrategyRequest.md
@@ -3649,6 +3651,7 @@ lib/Model/AttachCampaignAssets201Response.php
 lib/Model/AttachCampaignAssetsRequest.php
 lib/Model/AttachNumberToSipTrunk200Response.php
 lib/Model/AttachNumberToSipTrunkRequest.php
+lib/Model/AutoRecharge.php
 lib/Model/BatchAdCatalogProducts202Response.php
 lib/Model/BatchAdCatalogProductsRequest.php
 lib/Model/BatchAdCatalogProductsRequestRequestsInner.php
@@ -6168,6 +6171,7 @@ lib/Model/UpdateAdTrackingTags200Response.php
 lib/Model/UpdateAdTrackingTagsRequest.php
 lib/Model/UpdateAdTrackingTagsRequestCreative.php
 lib/Model/UpdateAdTrackingTagsRequestUrlTagsInner.php
+lib/Model/UpdateAutoRechargeRequest.php
 lib/Model/UpdateBidStrategy200Response.php
 lib/Model/UpdateBidStrategy200ResponseStrategy.php
 lib/Model/UpdateBidStrategyRequest.php
@@ -6713,3 +6717,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AutoRechargeTest.php
+test/Model/UpdateAutoRechargeRequestTest.php
