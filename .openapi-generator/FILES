@@ -948,6 +948,7 @@ docs/Model/CreateStandaloneAdRequestAdditionalHeadlinesInner.md
 docs/Model/CreateStandaloneAdRequestBehaviorsInner.md
 docs/Model/CreateStandaloneAdRequestBrandIdentity.md
 docs/Model/CreateStandaloneAdRequestCarouselCardsInner.md
+docs/Model/CreateStandaloneAdRequestCatalogIntroCardsInner.md
 docs/Model/CreateStandaloneAdRequestCitiesInner.md
 docs/Model/CreateStandaloneAdRequestCitiesInnerOneOf.md
 docs/Model/CreateStandaloneAdRequestCreativesInner.md
@@ -4452,6 +4453,7 @@ lib/Model/CreateStandaloneAdRequestAdditionalHeadlinesInner.php
 lib/Model/CreateStandaloneAdRequestBehaviorsInner.php
 lib/Model/CreateStandaloneAdRequestBrandIdentity.php
 lib/Model/CreateStandaloneAdRequestCarouselCardsInner.php
+lib/Model/CreateStandaloneAdRequestCatalogIntroCardsInner.php
 lib/Model/CreateStandaloneAdRequestCitiesInner.php
 lib/Model/CreateStandaloneAdRequestCitiesInnerOneOf.php
 lib/Model/CreateStandaloneAdRequestCreativesInner.php
@@ -7009,3 +7011,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateStandaloneAdRequestCatalogIntroCardsInnerTest.php
