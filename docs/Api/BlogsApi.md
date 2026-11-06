@@ -110,7 +110,7 @@ $apiInstance = new Zernio\Api\BlogsApi(
 $account_id = 'account_id_example'; // string | Connected Shopify, WordPress, Wix or Webflow account id.
 $blog_id = 'blog_id_example'; // string | Platform-native blog/site id returned by the list operation.
 $create_blog_article_request = new \Zernio\Model\CreateBlogArticleRequest(); // \Zernio\Model\CreateBlogArticleRequest
-$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
 
 try {
     $result = $apiInstance->createBlogArticle($account_id, $blog_id, $create_blog_article_request, $idempotency_key);
@@ -127,7 +127,7 @@ try {
 | **account_id** | **string**| Connected Shopify, WordPress, Wix or Webflow account id. | |
 | **blog_id** | **string**| Platform-native blog/site id returned by the list operation. | |
 | **create_blog_article_request** | [**\Zernio\Model\CreateBlogArticleRequest**](../Model/CreateBlogArticleRequest.md)|  | |
-| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours. | [optional] |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
 
 ### Return type
 
