@@ -365,6 +365,37 @@ Class | Method | HTTP request | Description
 *AnalyticsApi* | [**runGoogleAnalyticsRealtimeReport**](docs/Api/AnalyticsApi.md#rungoogleanalyticsrealtimereport) | **POST** /v1/analytics/googleanalytics/realtime | Run a Google Analytics (GA4) realtime report
 *AnalyticsApi* | [**runGoogleAnalyticsReport**](docs/Api/AnalyticsApi.md#rungoogleanalyticsreport) | **POST** /v1/analytics/googleanalytics/report | Run a Google Analytics (GA4) report
 *AnalyticsApi* | [**syncExternalPosts**](docs/Api/AnalyticsApi.md#syncexternalposts) | **POST** /v1/posts/sync-external | Sync an external post
+*AutomationsApi* | [**activateAutomation**](docs/Api/AutomationsApi.md#activateautomation) | **POST** /v1/automations/{automationId}/activate | Turn an automation on
+*AutomationsApi* | [**approveAutomationApproval**](docs/Api/AutomationsApi.md#approveautomationapproval) | **POST** /v1/automations/{automationId}/approvals/{approvalId}/approve | Approve an approval request
+*AutomationsApi* | [**backtestAutomation**](docs/Api/AutomationsApi.md#backtestautomation) | **POST** /v1/automations/{automationId}/backtest | Backtest a saved automation
+*AutomationsApi* | [**backtestAutomationDraft**](docs/Api/AutomationsApi.md#backtestautomationdraft) | **POST** /v1/automations/backtest | Backtest an unsaved automation
+*AutomationsApi* | [**createAutomation**](docs/Api/AutomationsApi.md#createautomation) | **POST** /v1/automations | Create an automation
+*AutomationsApi* | [**createAutomationTemplate**](docs/Api/AutomationsApi.md#createautomationtemplate) | **POST** /v1/automations/templates | Create an automation template
+*AutomationsApi* | [**deleteAutomation**](docs/Api/AutomationsApi.md#deleteautomation) | **DELETE** /v1/automations/{automationId} | Delete an automation
+*AutomationsApi* | [**deleteAutomationTemplate**](docs/Api/AutomationsApi.md#deleteautomationtemplate) | **DELETE** /v1/automations/templates/{templateId} | Delete an automation template
+*AutomationsApi* | [**getAutomation**](docs/Api/AutomationsApi.md#getautomation) | **GET** /v1/automations/{automationId} | Get an automation
+*AutomationsApi* | [**getAutomationApproval**](docs/Api/AutomationsApi.md#getautomationapproval) | **GET** /v1/automations/{automationId}/approvals/{approvalId} | Get an approval request
+*AutomationsApi* | [**getAutomationCatalog**](docs/Api/AutomationsApi.md#getautomationcatalog) | **GET** /v1/automations/catalog | Get the automations catalog
+*AutomationsApi* | [**getAutomationControls**](docs/Api/AutomationsApi.md#getautomationcontrols) | **GET** /v1/automations/controls | Get automation controls
+*AutomationsApi* | [**getAutomationTemplate**](docs/Api/AutomationsApi.md#getautomationtemplate) | **GET** /v1/automations/templates/{templateId} | Get an automation template
+*AutomationsApi* | [**getSharedAutomationTemplate**](docs/Api/AutomationsApi.md#getsharedautomationtemplate) | **GET** /v1/automations/templates/shared/{shareToken} | Get a shared automation template
+*AutomationsApi* | [**getZernioAutomationTemplate**](docs/Api/AutomationsApi.md#getzernioautomationtemplate) | **GET** /v1/automations/templates/zernio/{templateId} | Get a Zernio automation template
+*AutomationsApi* | [**installAutomationTemplate**](docs/Api/AutomationsApi.md#installautomationtemplate) | **POST** /v1/automations/templates/{templateId}/install | Install an automation template
+*AutomationsApi* | [**installSharedAutomationTemplate**](docs/Api/AutomationsApi.md#installsharedautomationtemplate) | **POST** /v1/automations/templates/shared/{shareToken}/install | Install a shared automation template
+*AutomationsApi* | [**installZernioAutomationTemplate**](docs/Api/AutomationsApi.md#installzernioautomationtemplate) | **POST** /v1/automations/templates/zernio/{templateId}/install | Install a Zernio automation template
+*AutomationsApi* | [**listAutomationActions**](docs/Api/AutomationsApi.md#listautomationactions) | **GET** /v1/automations/actions | List automation actions
+*AutomationsApi* | [**listAutomationApprovals**](docs/Api/AutomationsApi.md#listautomationapprovals) | **GET** /v1/automations/{automationId}/approvals | List an automation&#39;s approval requests
+*AutomationsApi* | [**listAutomationChecks**](docs/Api/AutomationsApi.md#listautomationchecks) | **GET** /v1/automations/{automationId}/checks | List an automation&#39;s checks
+*AutomationsApi* | [**listAutomationTemplates**](docs/Api/AutomationsApi.md#listautomationtemplates) | **GET** /v1/automations/templates | List automation templates
+*AutomationsApi* | [**listAutomations**](docs/Api/AutomationsApi.md#listautomations) | **GET** /v1/automations | List automations
+*AutomationsApi* | [**pauseAutomation**](docs/Api/AutomationsApi.md#pauseautomation) | **POST** /v1/automations/{automationId}/pause | Turn an automation off
+*AutomationsApi* | [**previewAutomation**](docs/Api/AutomationsApi.md#previewautomation) | **POST** /v1/automations/{automationId}/preview | Preview a saved automation
+*AutomationsApi* | [**previewAutomationDraft**](docs/Api/AutomationsApi.md#previewautomationdraft) | **POST** /v1/automations/preview | Preview an unsaved automation
+*AutomationsApi* | [**rejectAutomationApproval**](docs/Api/AutomationsApi.md#rejectautomationapproval) | **POST** /v1/automations/{automationId}/approvals/{approvalId}/reject | Reject an approval request
+*AutomationsApi* | [**updateAutomation**](docs/Api/AutomationsApi.md#updateautomation) | **PATCH** /v1/automations/{automationId} | Edit an automation
+*AutomationsApi* | [**updateAutomationAdAccountControls**](docs/Api/AutomationsApi.md#updateautomationadaccountcontrols) | **PATCH** /v1/automations/controls/ad-accounts | Update one ad account&#39;s controls
+*AutomationsApi* | [**updateAutomationControls**](docs/Api/AutomationsApi.md#updateautomationcontrols) | **PATCH** /v1/automations/controls | Turn every ad automation off or on
+*AutomationsApi* | [**updateAutomationTemplate**](docs/Api/AutomationsApi.md#updateautomationtemplate) | **PATCH** /v1/automations/templates/{templateId} | Update an automation template
 *BlogsApi* | [**createBlog**](docs/Api/BlogsApi.md#createblog) | **POST** /v1/accounts/{accountId}/blogs | Create a blog
 *BlogsApi* | [**createBlogArticle**](docs/Api/BlogsApi.md#createblogarticle) | **POST** /v1/accounts/{accountId}/blogs/{blogId}/articles | Create a blog article
 *BlogsApi* | [**deleteBlog**](docs/Api/BlogsApi.md#deleteblog) | **DELETE** /v1/accounts/{accountId}/blogs/{blogId} | Delete a blog
@@ -1283,6 +1314,12 @@ Class | Method | HTTP request | Description
 - [AdRuleActionOneOfSendInnerOneOf](docs/Model/AdRuleActionOneOfSendInnerOneOf.md)
 - [AdRuleActionOneOfSendInnerOneOf1](docs/Model/AdRuleActionOneOfSendInnerOneOf1.md)
 - [AdRuleActivityEntry](docs/Model/AdRuleActivityEntry.md)
+- [AdRuleAutomationCheck](docs/Model/AdRuleAutomationCheck.md)
+- [AdRuleAutomationCheckActionsInner](docs/Model/AdRuleAutomationCheckActionsInner.md)
+- [AdRuleAutomationCheckNotification](docs/Model/AdRuleAutomationCheckNotification.md)
+- [AdRuleAutomationCheckSubjectsInner](docs/Model/AdRuleAutomationCheckSubjectsInner.md)
+- [AdRuleAutomationCheckSubjectsInnerSubject](docs/Model/AdRuleAutomationCheckSubjectsInnerSubject.md)
+- [AdRuleAutomationDefinition](docs/Model/AdRuleAutomationDefinition.md)
 - [AdRuleCondition](docs/Model/AdRuleCondition.md)
 - [AdRuleConditionItem](docs/Model/AdRuleConditionItem.md)
 - [AdRuleConditions](docs/Model/AdRuleConditions.md)
@@ -1430,6 +1467,100 @@ Class | Method | HTTP request | Description
 - [AttachNumberToSipTrunk200Response](docs/Model/AttachNumberToSipTrunk200Response.md)
 - [AttachNumberToSipTrunkRequest](docs/Model/AttachNumberToSipTrunkRequest.md)
 - [AutoRecharge](docs/Model/AutoRecharge.md)
+- [Automation](docs/Model/Automation.md)
+- [AutomationAction](docs/Model/AutomationAction.md)
+- [AutomationActionAllOfAdAccount](docs/Model/AutomationActionAllOfAdAccount.md)
+- [AutomationActionAllOfSubject](docs/Model/AutomationActionAllOfSubject.md)
+- [AutomationActionResult](docs/Model/AutomationActionResult.md)
+- [AutomationAdAccountControls](docs/Model/AutomationAdAccountControls.md)
+- [AutomationAdFilter](docs/Model/AutomationAdFilter.md)
+- [AutomationAdFilterOneOf](docs/Model/AutomationAdFilterOneOf.md)
+- [AutomationAdFilterOneOf1](docs/Model/AutomationAdFilterOneOf1.md)
+- [AutomationAdFilterOneOf2](docs/Model/AutomationAdFilterOneOf2.md)
+- [AutomationAdFilterOneOf3](docs/Model/AutomationAdFilterOneOf3.md)
+- [AutomationAlert](docs/Model/AutomationAlert.md)
+- [AutomationApproval](docs/Model/AutomationApproval.md)
+- [AutomationApprovalChange](docs/Model/AutomationApprovalChange.md)
+- [AutomationApprovalChangePrevious](docs/Model/AutomationApprovalChangePrevious.md)
+- [AutomationApprovalChangeSubject](docs/Model/AutomationApprovalChangeSubject.md)
+- [AutomationApprovalChangeTarget](docs/Model/AutomationApprovalChangeTarget.md)
+- [AutomationApprovalDecidedBy](docs/Model/AutomationApprovalDecidedBy.md)
+- [AutomationApprovalDecision](docs/Model/AutomationApprovalDecision.md)
+- [AutomationApprovalStep](docs/Model/AutomationApprovalStep.md)
+- [AutomationBacktest](docs/Model/AutomationBacktest.md)
+- [AutomationBacktestDay](docs/Model/AutomationBacktestDay.md)
+- [AutomationBacktestDayActionsInner](docs/Model/AutomationBacktestDayActionsInner.md)
+- [AutomationBacktestDayActionsInnerBudget](docs/Model/AutomationBacktestDayActionsInnerBudget.md)
+- [AutomationBacktestDayActionsInnerSubject](docs/Model/AutomationBacktestDayActionsInnerSubject.md)
+- [AutomationBacktestNotesInner](docs/Model/AutomationBacktestNotesInner.md)
+- [AutomationBacktestTotals](docs/Model/AutomationBacktestTotals.md)
+- [AutomationBoostStep](docs/Model/AutomationBoostStep.md)
+- [AutomationChangedValue](docs/Model/AutomationChangedValue.md)
+- [AutomationCheck](docs/Model/AutomationCheck.md)
+- [AutomationConditionResult](docs/Model/AutomationConditionResult.md)
+- [AutomationControls](docs/Model/AutomationControls.md)
+- [AutomationDefinition](docs/Model/AutomationDefinition.md)
+- [AutomationEventLimits](docs/Model/AutomationEventLimits.md)
+- [AutomationEventTrigger](docs/Model/AutomationEventTrigger.md)
+- [AutomationFactCondition](docs/Model/AutomationFactCondition.md)
+- [AutomationFactConditionOneOf](docs/Model/AutomationFactConditionOneOf.md)
+- [AutomationFactConditionOneOf1](docs/Model/AutomationFactConditionOneOf1.md)
+- [AutomationFactConditionOneOf2](docs/Model/AutomationFactConditionOneOf2.md)
+- [AutomationFactConditionOneOfValue](docs/Model/AutomationFactConditionOneOfValue.md)
+- [AutomationFactResult](docs/Model/AutomationFactResult.md)
+- [AutomationLimits](docs/Model/AutomationLimits.md)
+- [AutomationNotifyStep](docs/Model/AutomationNotifyStep.md)
+- [AutomationNotifyStepToInner](docs/Model/AutomationNotifyStepToInner.md)
+- [AutomationOneOf](docs/Model/AutomationOneOf.md)
+- [AutomationOneOf1](docs/Model/AutomationOneOf1.md)
+- [AutomationOneOf2](docs/Model/AutomationOneOf2.md)
+- [AutomationPostSchedule](docs/Model/AutomationPostSchedule.md)
+- [AutomationPostSubjects](docs/Model/AutomationPostSubjects.md)
+- [AutomationPreview](docs/Model/AutomationPreview.md)
+- [AutomationPreviewGroupsInner](docs/Model/AutomationPreviewGroupsInner.md)
+- [AutomationPreviewSubjectsInner](docs/Model/AutomationPreviewSubjectsInner.md)
+- [AutomationPreviewSubjectsInnerSubject](docs/Model/AutomationPreviewSubjectsInnerSubject.md)
+- [AutomationPreviewSubjectsInnerWouldRunInner](docs/Model/AutomationPreviewSubjectsInnerWouldRunInner.md)
+- [AutomationProblems](docs/Model/AutomationProblems.md)
+- [AutomationProblemsProblemsInner](docs/Model/AutomationProblemsProblemsInner.md)
+- [AutomationRecord](docs/Model/AutomationRecord.md)
+- [AutomationRecordTemplate](docs/Model/AutomationRecordTemplate.md)
+- [AutomationRunResult](docs/Model/AutomationRunResult.md)
+- [AutomationScheduleTrigger](docs/Model/AutomationScheduleTrigger.md)
+- [AutomationScheduleTriggerQuietHours](docs/Model/AutomationScheduleTriggerQuietHours.md)
+- [AutomationScheduleTriggerTimesInner](docs/Model/AutomationScheduleTriggerTimesInner.md)
+- [AutomationStep](docs/Model/AutomationStep.md)
+- [AutomationStepOneOf](docs/Model/AutomationStepOneOf.md)
+- [AutomationStepOneOf1](docs/Model/AutomationStepOneOf1.md)
+- [AutomationStepOneOf10](docs/Model/AutomationStepOneOf10.md)
+- [AutomationStepOneOf2](docs/Model/AutomationStepOneOf2.md)
+- [AutomationStepOneOf3](docs/Model/AutomationStepOneOf3.md)
+- [AutomationStepOneOf4](docs/Model/AutomationStepOneOf4.md)
+- [AutomationStepOneOf5](docs/Model/AutomationStepOneOf5.md)
+- [AutomationStepOneOf6](docs/Model/AutomationStepOneOf6.md)
+- [AutomationStepOneOf7](docs/Model/AutomationStepOneOf7.md)
+- [AutomationStepOneOf8](docs/Model/AutomationStepOneOf8.md)
+- [AutomationStepOneOf9](docs/Model/AutomationStepOneOf9.md)
+- [AutomationSubjects](docs/Model/AutomationSubjects.md)
+- [AutomationSubjectsAdAccountsInner](docs/Model/AutomationSubjectsAdAccountsInner.md)
+- [AutomationSubjectsGroupsInner](docs/Model/AutomationSubjectsGroupsInner.md)
+- [AutomationTemplate](docs/Model/AutomationTemplate.md)
+- [AutomationTemplateAutomation](docs/Model/AutomationTemplateAutomation.md)
+- [AutomationTemplateContent](docs/Model/AutomationTemplateContent.md)
+- [AutomationTemplateContentFrom](docs/Model/AutomationTemplateContentFrom.md)
+- [AutomationTemplateInput](docs/Model/AutomationTemplateInput.md)
+- [AutomationTemplateInputDefault](docs/Model/AutomationTemplateInputDefault.md)
+- [AutomationTemplateInputOptionsInner](docs/Model/AutomationTemplateInputOptionsInner.md)
+- [AutomationTemplateInputOptionsInnerValue](docs/Model/AutomationTemplateInputOptionsInnerValue.md)
+- [AutomationTemplateInstallRequest](docs/Model/AutomationTemplateInstallRequest.md)
+- [AutomationTemplateInstallRequestTargetsInner](docs/Model/AutomationTemplateInstallRequestTargetsInner.md)
+- [AutomationTemplateInstallResponse](docs/Model/AutomationTemplateInstallResponse.md)
+- [AutomationTemplateInstallation](docs/Model/AutomationTemplateInstallation.md)
+- [AutomationTemplatePublisher](docs/Model/AutomationTemplatePublisher.md)
+- [AutomationTemplateShare](docs/Model/AutomationTemplateShare.md)
+- [AutomationTemplateTargetResult](docs/Model/AutomationTemplateTargetResult.md)
+- [AutomationTemplateTargetResultError](docs/Model/AutomationTemplateTargetResultError.md)
+- [AutomationTrigger](docs/Model/AutomationTrigger.md)
 - [BatchAdCatalogProducts202Response](docs/Model/BatchAdCatalogProducts202Response.md)
 - [BatchAdCatalogProductsRequest](docs/Model/BatchAdCatalogProductsRequest.md)
 - [BatchAdCatalogProductsRequestRequestsInner](docs/Model/BatchAdCatalogProductsRequestRequestsInner.md)
@@ -1775,6 +1906,9 @@ Class | Method | HTTP request | Description
 - [CreateAdSetRequestPromotedObject](docs/Model/CreateAdSetRequestPromotedObject.md)
 - [CreateApiKey201Response](docs/Model/CreateApiKey201Response.md)
 - [CreateApiKeyRequest](docs/Model/CreateApiKeyRequest.md)
+- [CreateAutomation201Response](docs/Model/CreateAutomation201Response.md)
+- [CreateAutomationTemplate201Response](docs/Model/CreateAutomationTemplate201Response.md)
+- [CreateAutomationTemplateRequest](docs/Model/CreateAutomationTemplateRequest.md)
 - [CreateBidStrategy201Response](docs/Model/CreateBidStrategy201Response.md)
 - [CreateBidStrategy201ResponseStrategy](docs/Model/CreateBidStrategy201ResponseStrategy.md)
 - [CreateBidStrategyRequest](docs/Model/CreateBidStrategyRequest.md)
@@ -2084,6 +2218,7 @@ Class | Method | HTTP request | Description
 - [DeleteAdNegativeKeywordList200Response](docs/Model/DeleteAdNegativeKeywordList200Response.md)
 - [DeleteAdSet200Response](docs/Model/DeleteAdSet200Response.md)
 - [DeleteAdVideo200Response](docs/Model/DeleteAdVideo200Response.md)
+- [DeleteAutomationTemplate200Response](docs/Model/DeleteAutomationTemplate200Response.md)
 - [DeleteBrandedCallingEnterprise200Response](docs/Model/DeleteBrandedCallingEnterprise200Response.md)
 - [DeleteCalendarEvent200Response](docs/Model/DeleteCalendarEvent200Response.md)
 - [DeleteCalendarEvent200ResponseData](docs/Model/DeleteCalendarEvent200ResponseData.md)
@@ -2188,6 +2323,9 @@ Class | Method | HTTP request | Description
 - [ErrorResponseDetailsUnconfirmedWrite](docs/Model/ErrorResponseDetailsUnconfirmedWrite.md)
 - [EstimateAdReach200Response](docs/Model/EstimateAdReach200Response.md)
 - [EstimateAdReachRequest](docs/Model/EstimateAdReachRequest.md)
+- [EventAutomationCheck](docs/Model/EventAutomationCheck.md)
+- [EventAutomationCheckSubject](docs/Model/EventAutomationCheckSubject.md)
+- [EventAutomationDefinition](docs/Model/EventAutomationDefinition.md)
 - [EventDestination](docs/Model/EventDestination.md)
 - [Expired](docs/Model/Expired.md)
 - [ExternalPostMediaItem](docs/Model/ExternalPostMediaItem.md)
@@ -2227,6 +2365,9 @@ Class | Method | HTTP request | Description
 - [FoodMenuItemOptionsInner](docs/Model/FoodMenuItemOptionsInner.md)
 - [FoodMenuLabel](docs/Model/FoodMenuLabel.md)
 - [FoodMenuSection](docs/Model/FoodMenuSection.md)
+- [FromASharedTemplate](docs/Model/FromASharedTemplate.md)
+- [FromAZernioTemplate](docs/Model/FromAZernioTemplate.md)
+- [FromYourAutomations](docs/Model/FromYourAutomations.md)
 - [GenerateAdPreviews200Response](docs/Model/GenerateAdPreviews200Response.md)
 - [GenerateAdPreviews200ResponsePreviewsInner](docs/Model/GenerateAdPreviews200ResponsePreviewsInner.md)
 - [GenerateAdPreviewsRequest](docs/Model/GenerateAdPreviewsRequest.md)
@@ -2318,6 +2459,14 @@ Class | Method | HTTP request | Description
 - [GetAnalyticsDashboard200Response](docs/Model/GetAnalyticsDashboard200Response.md)
 - [GetAnalyticsDashboard200ResponseDailyInner](docs/Model/GetAnalyticsDashboard200ResponseDailyInner.md)
 - [GetAnalyticsDashboard200ResponseDateRange](docs/Model/GetAnalyticsDashboard200ResponseDateRange.md)
+- [GetAutomationApproval200Response](docs/Model/GetAutomationApproval200Response.md)
+- [GetAutomationCatalog200Response](docs/Model/GetAutomationCatalog200Response.md)
+- [GetAutomationCatalog200ResponseSubjectsInner](docs/Model/GetAutomationCatalog200ResponseSubjectsInner.md)
+- [GetAutomationCatalog200ResponseSubjectsInnerMetricsInner](docs/Model/GetAutomationCatalog200ResponseSubjectsInnerMetricsInner.md)
+- [GetAutomationCatalog200ResponseSubjectsInnerStepsInner](docs/Model/GetAutomationCatalog200ResponseSubjectsInnerStepsInner.md)
+- [GetAutomationCatalog200ResponseTriggersInner](docs/Model/GetAutomationCatalog200ResponseTriggersInner.md)
+- [GetAutomationCatalog200ResponseTriggersInnerFactsInner](docs/Model/GetAutomationCatalog200ResponseTriggersInnerFactsInner.md)
+- [GetAutomationControls200Response](docs/Model/GetAutomationControls200Response.md)
 - [GetBalance200Response](docs/Model/GetBalance200Response.md)
 - [GetBalance200ResponsePayoutLocksInner](docs/Model/GetBalance200ResponsePayoutLocksInner.md)
 - [GetBalance200ResponsePendingReleasesInner](docs/Model/GetBalance200ResponsePendingReleasesInner.md)
@@ -2846,6 +2995,8 @@ Class | Method | HTTP request | Description
 - [InstagramTaggedMedia](docs/Model/InstagramTaggedMedia.md)
 - [InstagramVideoFallback](docs/Model/InstagramVideoFallback.md)
 - [InstagramVideoFallbackPlatformError](docs/Model/InstagramVideoFallbackPlatformError.md)
+- [InstallAutomationTemplate207Response](docs/Model/InstallAutomationTemplate207Response.md)
+- [InstallAutomationTemplate400Response](docs/Model/InstallAutomationTemplate400Response.md)
 - [InstallTrackingTagOnStore200Response](docs/Model/InstallTrackingTagOnStore200Response.md)
 - [InstallTrackingTagOnStore200ResponseInstall](docs/Model/InstallTrackingTagOnStore200ResponseInstall.md)
 - [InstallTrackingTagOnStore422Response](docs/Model/InstallTrackingTagOnStore422Response.md)
@@ -2964,6 +3115,11 @@ Class | Method | HTTP request | Description
 - [ListAdvertisableApplications200Response](docs/Model/ListAdvertisableApplications200Response.md)
 - [ListAdvertisableApplications200ResponseApplicationsInner](docs/Model/ListAdvertisableApplications200ResponseApplicationsInner.md)
 - [ListApiKeys200Response](docs/Model/ListApiKeys200Response.md)
+- [ListAutomationActions200Response](docs/Model/ListAutomationActions200Response.md)
+- [ListAutomationApprovals200Response](docs/Model/ListAutomationApprovals200Response.md)
+- [ListAutomationChecks200Response](docs/Model/ListAutomationChecks200Response.md)
+- [ListAutomationTemplates200Response](docs/Model/ListAutomationTemplates200Response.md)
+- [ListAutomations200Response](docs/Model/ListAutomations200Response.md)
 - [ListBidStrategies200Response](docs/Model/ListBidStrategies200Response.md)
 - [ListBlogArticles200Response](docs/Model/ListBlogArticles200Response.md)
 - [ListBlogs200Response](docs/Model/ListBlogs200Response.md)
@@ -3341,6 +3497,7 @@ Class | Method | HTTP request | Description
 - [OnWhatsAppNumberSuspendedRequest](docs/Model/OnWhatsAppNumberSuspendedRequest.md)
 - [OnWhatsAppNumberVerificationRequiredRequest](docs/Model/OnWhatsAppNumberVerificationRequiredRequest.md)
 - [OnboardBusinessAgent201Response](docs/Model/OnboardBusinessAgent201Response.md)
+- [OneInstall](docs/Model/OneInstall.md)
 - [OpenHoursInner](docs/Model/OpenHoursInner.md)
 - [OpenTrackingWindowRequest](docs/Model/OpenTrackingWindowRequest.md)
 - [OrderImessageSender202Response](docs/Model/OrderImessageSender202Response.md)
@@ -3580,6 +3737,11 @@ Class | Method | HTTP request | Description
 - [ScheduleBroadcast200Response](docs/Model/ScheduleBroadcast200Response.md)
 - [ScheduleBroadcast200ResponseBroadcast](docs/Model/ScheduleBroadcast200ResponseBroadcast.md)
 - [ScheduleBroadcastRequest](docs/Model/ScheduleBroadcastRequest.md)
+- [ScheduledAutomationCheck](docs/Model/ScheduledAutomationCheck.md)
+- [ScheduledAutomationCheckActionsInner](docs/Model/ScheduledAutomationCheckActionsInner.md)
+- [ScheduledAutomationCheckMatchedInner](docs/Model/ScheduledAutomationCheckMatchedInner.md)
+- [ScheduledAutomationDefinition](docs/Model/ScheduledAutomationDefinition.md)
+- [ScheduledAutomationDefinitionStepsInner](docs/Model/ScheduledAutomationDefinitionStepsInner.md)
 - [SearchAdInterests200Response](docs/Model/SearchAdInterests200Response.md)
 - [SearchAdInterests200ResponseInterestsInner](docs/Model/SearchAdInterests200ResponseInterestsInner.md)
 - [SearchAdLibrary200Response](docs/Model/SearchAdLibrary200Response.md)
@@ -3769,6 +3931,7 @@ Class | Method | HTTP request | Description
 - [SetWhatsappBusinessUsernameRequest](docs/Model/SetWhatsappBusinessUsernameRequest.md)
 - [SettleCampaignParticipant201Response](docs/Model/SettleCampaignParticipant201Response.md)
 - [SettleCampaignParticipantRequest](docs/Model/SettleCampaignParticipantRequest.md)
+- [SeveralTargets](docs/Model/SeveralTargets.md)
 - [ShareBrandedCallingIdentityForm200Response](docs/Model/ShareBrandedCallingIdentityForm200Response.md)
 - [ShareBrandedCallingIdentityFormRequest](docs/Model/ShareBrandedCallingIdentityFormRequest.md)
 - [ShareSmsRegistrationRequest](docs/Model/ShareSmsRegistrationRequest.md)
@@ -3951,6 +4114,13 @@ Class | Method | HTTP request | Description
 - [UpdateAdTrackingTagsRequestCreative](docs/Model/UpdateAdTrackingTagsRequestCreative.md)
 - [UpdateAdTrackingTagsRequestUrlTagsInner](docs/Model/UpdateAdTrackingTagsRequestUrlTagsInner.md)
 - [UpdateAutoRechargeRequest](docs/Model/UpdateAutoRechargeRequest.md)
+- [UpdateAutomationAdAccountControlsRequest](docs/Model/UpdateAutomationAdAccountControlsRequest.md)
+- [UpdateAutomationControlsRequest](docs/Model/UpdateAutomationControlsRequest.md)
+- [UpdateAutomationRequest](docs/Model/UpdateAutomationRequest.md)
+- [UpdateAutomationRequestLimits](docs/Model/UpdateAutomationRequestLimits.md)
+- [UpdateAutomationRequestStepsInner](docs/Model/UpdateAutomationRequestStepsInner.md)
+- [UpdateAutomationRequestSubjects](docs/Model/UpdateAutomationRequestSubjects.md)
+- [UpdateAutomationTemplateRequest](docs/Model/UpdateAutomationTemplateRequest.md)
 - [UpdateBidStrategy200Response](docs/Model/UpdateBidStrategy200Response.md)
 - [UpdateBidStrategy200ResponseStrategy](docs/Model/UpdateBidStrategy200ResponseStrategy.md)
 - [UpdateBidStrategyRequest](docs/Model/UpdateBidStrategyRequest.md)
@@ -4526,6 +4696,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.514.3`
+- API version: `1.515.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
