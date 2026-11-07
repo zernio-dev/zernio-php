@@ -1309,6 +1309,7 @@ docs/Model/GetAutomationControls200Response.md
 docs/Model/GetBalance200Response.md
 docs/Model/GetBalance200ResponsePayoutLocksInner.md
 docs/Model/GetBalance200ResponsePendingReleasesInner.md
+docs/Model/GetBalance200ResponseRecentCreditRechargesInner.md
 docs/Model/GetBestTimeToPost200Response.md
 docs/Model/GetBestTimeToPost200ResponseSlotsInner.md
 docs/Model/GetBestTimeToPost403Response.md
@@ -4820,6 +4821,7 @@ lib/Model/GetAutomationControls200Response.php
 lib/Model/GetBalance200Response.php
 lib/Model/GetBalance200ResponsePayoutLocksInner.php
 lib/Model/GetBalance200ResponsePendingReleasesInner.php
+lib/Model/GetBalance200ResponseRecentCreditRechargesInner.php
 lib/Model/GetBestTimeToPost200Response.php
 lib/Model/GetBestTimeToPost200ResponseSlotsInner.php
 lib/Model/GetBestTimeToPost403Response.php
@@ -7023,3 +7025,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetBalance200ResponseRecentCreditRechargesInnerTest.php
