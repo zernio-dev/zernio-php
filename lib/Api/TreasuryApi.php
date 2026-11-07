@@ -3623,15 +3623,16 @@ class TreasuryApi
      * Get a top-up receipt
      *
      * @param  string $topup_id topup_id (required)
+     * @param  bool|null $download true answers the card receipt itself as a PDF file (application/pdf, as an attachment) instead of the JSON links. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTopupReceipt'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetTopupReceipt200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject4|\Zernio\Model\InlineObject2|\Zernio\Model\InlineObject1
+     * @return \SplFileObject|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject4|\Zernio\Model\InlineObject2|\Zernio\Model\InlineObject1
      */
-    public function getTopupReceipt($topup_id, string $contentType = self::contentTypes['getTopupReceipt'][0])
+    public function getTopupReceipt($topup_id, $download = null, string $contentType = self::contentTypes['getTopupReceipt'][0])
     {
-        list($response) = $this->getTopupReceiptWithHttpInfo($topup_id, $contentType);
+        list($response) = $this->getTopupReceiptWithHttpInfo($topup_id, $download, $contentType);
         return $response;
     }
 
@@ -3641,15 +3642,16 @@ class TreasuryApi
      * Get a top-up receipt
      *
      * @param  string $topup_id (required)
+     * @param  bool|null $download true answers the card receipt itself as a PDF file (application/pdf, as an attachment) instead of the JSON links. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTopupReceipt'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetTopupReceipt200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject4|\Zernio\Model\InlineObject2|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SplFileObject|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject4|\Zernio\Model\InlineObject2|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTopupReceiptWithHttpInfo($topup_id, string $contentType = self::contentTypes['getTopupReceipt'][0])
+    public function getTopupReceiptWithHttpInfo($topup_id, $download = null, string $contentType = self::contentTypes['getTopupReceipt'][0])
     {
-        $request = $this->getTopupReceiptRequest($topup_id, $contentType);
+        $request = $this->getTopupReceiptRequest($topup_id, $download, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3677,7 +3679,7 @@ class TreasuryApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\GetTopupReceipt200Response',
+                        '\SplFileObject',
                         $request,
                         $response,
                     );
@@ -3723,7 +3725,7 @@ class TreasuryApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\GetTopupReceipt200Response',
+                '\SplFileObject',
                 $request,
                 $response,
             );
@@ -3732,7 +3734,7 @@ class TreasuryApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\GetTopupReceipt200Response',
+                        '\SplFileObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3782,14 +3784,15 @@ class TreasuryApi
      * Get a top-up receipt
      *
      * @param  string $topup_id (required)
+     * @param  bool|null $download true answers the card receipt itself as a PDF file (application/pdf, as an attachment) instead of the JSON links. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTopupReceipt'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTopupReceiptAsync($topup_id, string $contentType = self::contentTypes['getTopupReceipt'][0])
+    public function getTopupReceiptAsync($topup_id, $download = null, string $contentType = self::contentTypes['getTopupReceipt'][0])
     {
-        return $this->getTopupReceiptAsyncWithHttpInfo($topup_id, $contentType)
+        return $this->getTopupReceiptAsyncWithHttpInfo($topup_id, $download, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3803,15 +3806,16 @@ class TreasuryApi
      * Get a top-up receipt
      *
      * @param  string $topup_id (required)
+     * @param  bool|null $download true answers the card receipt itself as a PDF file (application/pdf, as an attachment) instead of the JSON links. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTopupReceipt'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTopupReceiptAsyncWithHttpInfo($topup_id, string $contentType = self::contentTypes['getTopupReceipt'][0])
+    public function getTopupReceiptAsyncWithHttpInfo($topup_id, $download = null, string $contentType = self::contentTypes['getTopupReceipt'][0])
     {
-        $returnType = '\Zernio\Model\GetTopupReceipt200Response';
-        $request = $this->getTopupReceiptRequest($topup_id, $contentType);
+        $returnType = '\SplFileObject';
+        $request = $this->getTopupReceiptRequest($topup_id, $download, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3853,12 +3857,13 @@ class TreasuryApi
      * Create request for operation 'getTopupReceipt'
      *
      * @param  string $topup_id (required)
+     * @param  bool|null $download true answers the card receipt itself as a PDF file (application/pdf, as an attachment) instead of the JSON links. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTopupReceipt'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTopupReceiptRequest($topup_id, string $contentType = self::contentTypes['getTopupReceipt'][0])
+    public function getTopupReceiptRequest($topup_id, $download = null, string $contentType = self::contentTypes['getTopupReceipt'][0])
     {
 
         // verify the required parameter 'topup_id' is set
@@ -3869,6 +3874,7 @@ class TreasuryApi
         }
 
 
+
         $resourcePath = '/v1/balance/top-ups/{topupId}/receipt';
         $formParams = [];
         $queryParams = [];
@@ -3876,6 +3882,15 @@ class TreasuryApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $download,
+            'download', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params
@@ -3889,7 +3904,7 @@ class TreasuryApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['application/pdf', 'application/json', ],
             $contentType,
             $multipart
         );

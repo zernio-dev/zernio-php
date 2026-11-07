@@ -687,7 +687,7 @@ try {
 ## `getTopupReceipt()`
 
 ```php
-getTopupReceipt($topup_id): \Zernio\Model\GetTopupReceipt200Response
+getTopupReceipt($topup_id, $download): \SplFileObject
 ```
 
 Get a top-up receipt
@@ -712,9 +712,10 @@ $apiInstance = new Zernio\Api\TreasuryApi(
     $config
 );
 $topup_id = 'topup_id_example'; // string
+$download = True; // bool | true answers the card receipt itself as a PDF file (application/pdf, as an attachment) instead of the JSON links.
 
 try {
-    $result = $apiInstance->getTopupReceipt($topup_id);
+    $result = $apiInstance->getTopupReceipt($topup_id, $download);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TreasuryApi->getTopupReceipt: ', $e->getMessage(), PHP_EOL;
@@ -726,10 +727,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **topup_id** | **string**|  | |
+| **download** | **bool**| true answers the card receipt itself as a PDF file (application/pdf, as an attachment) instead of the JSON links. | [optional] |
 
 ### Return type
 
-[**\Zernio\Model\GetTopupReceipt200Response**](../Model/GetTopupReceipt200Response.md)
+**\SplFileObject**
 
 ### Authorization
 
@@ -738,7 +740,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`
+- **Accept**: `application/pdf`, `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
