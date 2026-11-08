@@ -461,7 +461,7 @@ class VerifyApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\Verification|\Zernio\Model\Verification|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
+     * @return \Zernio\Model\Verification|\Zernio\Model\Verification|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\BalanceRequiredError
      */
     public function createVerification($create_verification_request, string $contentType = self::contentTypes['createVerification'][0])
     {
@@ -479,7 +479,7 @@ class VerifyApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\Verification|\Zernio\Model\Verification|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\Verification|\Zernio\Model\Verification|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\BalanceRequiredError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createVerificationWithHttpInfo($create_verification_request, string $contentType = self::contentTypes['createVerification'][0])
     {
@@ -535,7 +535,7 @@ class VerifyApi
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\ErrorResponse',
+                        '\Zernio\Model\BalanceRequiredError',
                         $request,
                         $response,
                     );
@@ -598,7 +598,7 @@ class VerifyApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\ErrorResponse',
+                        '\Zernio\Model\BalanceRequiredError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

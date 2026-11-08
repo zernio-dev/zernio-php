@@ -33,6 +33,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onAutomationAlertOpened()**](WebhookEventsApi.md#onAutomationAlertOpened) | **POST** /automation.alert.opened | Automation alert opened event |
 | [**onAutomationAlertResolved()**](WebhookEventsApi.md#onAutomationAlertResolved) | **POST** /automation.alert.resolved | Automation alert resolved event |
 | [**onAutomationCheckCompleted()**](WebhookEventsApi.md#onAutomationCheckCompleted) | **POST** /automation.check.completed | Automation check completed event |
+| [**onBalanceCharged()**](WebhookEventsApi.md#onBalanceCharged) | **POST** /balance.charged | Balance charged event |
+| [**onBalanceEmpty()**](WebhookEventsApi.md#onBalanceEmpty) | **POST** /balance.empty | Balance empty event |
+| [**onBalanceLow()**](WebhookEventsApi.md#onBalanceLow) | **POST** /balance.low | Balance low event |
 | [**onBrandedCallingIdentityActionRequired()**](WebhookEventsApi.md#onBrandedCallingIdentityActionRequired) | **POST** /branded_calling.identity.action_required | Caller identity action required event |
 | [**onBrandedCallingIdentityStatusUpdated()**](WebhookEventsApi.md#onBrandedCallingIdentityStatusUpdated) | **POST** /branded_calling.identity.status_updated | Caller identity status updated event |
 | [**onBrandedCallingNumberStatusUpdated()**](WebhookEventsApi.md#onBrandedCallingNumberStatusUpdated) | **POST** /branded_calling.number.status_updated | Branded number status updated event |
@@ -1714,6 +1717,183 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_automation_check_completed** | [**\Zernio\Model\WebhookPayloadAutomationCheckCompleted**](../Model/WebhookPayloadAutomationCheckCompleted.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onBalanceCharged()`
+
+```php
+onBalanceCharged($webhook_payload_balance_charged)
+```
+
+Balance charged event
+
+Balance billing only. A card top-up of the balance succeeded: one someone made (`trigger: manual`) or one the auto top-up rule made (`trigger: auto_top_up`).  ### When it fires  Once per top-up, when the payment is credited to the balance. Stripe emails the billing owner its receipt for the charge.  ### Payload notes  `topup.amountCents` was added to the balance; the card was charged `topup.chargedCents`, which is that plus `topup.taxCents` (VAT, 0 when none applies). The invoice and receipt are at `GET /v1/balance/top-ups/{topupId}/invoice` and `/receipt`.  ### Who receives it  The billing owner's endpoints, like `balance.low`. Restricted keys need the `money` resource group.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_balance_charged = {"id":"00000000-0000-4000-8000-000000000000","event":"balance.charged","timestamp":"2026-01-15T10:00:00Z","topup":{"id":"6650a1b2c3d4e5f6a7b8c9d0","trigger":"auto_top_up","amountCents":2000,"taxCents":420,"chargedCents":2420,"currency":"usd","card":{"brand":"visa","last4":"4242"}},"balance":{"spendableCents":2000}}; // \Zernio\Model\WebhookPayloadBalanceCharged
+
+try {
+    $apiInstance->onBalanceCharged($webhook_payload_balance_charged);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onBalanceCharged: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_balance_charged** | [**\Zernio\Model\WebhookPayloadBalanceCharged**](../Model/WebhookPayloadBalanceCharged.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onBalanceEmpty()`
+
+```php
+onBalanceEmpty($webhook_payload_balance_empty)
+```
+
+Balance empty event
+
+Balance billing only. The balance reached $0 and no auto top-up covered it (auto top-up off, the card declined, or the monthly limit reached), so new pay-per-use (SMS, calls, numbers, X and the rest) answers 402 with `code` until the balance is funded.  ### When it fires  Once per time the balance runs out, within about a minute of the usage that emptied it. Funding the balance and running out again fires it again.  ### Who receives it  The billing owner's endpoints, like `balance.low`. Restricted keys need the `money` resource group.  ### How to act  Send the user to `fundingUrl`, or, for `usage_limit_reached`, raise `monthlyLimitCents` with `PATCH /v1/balance/auto-recharge`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_balance_empty = {"id":"00000000-0000-4000-8000-000000000000","event":"balance.empty","timestamp":"2026-01-15T10:00:00Z","balance":{"spendableCents":0},"code":"insufficient_balance","fundingUrl":"https://zernio.com/dashboard/billing?funding=1"}; // \Zernio\Model\WebhookPayloadBalanceEmpty
+
+try {
+    $apiInstance->onBalanceEmpty($webhook_payload_balance_empty);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onBalanceEmpty: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_balance_empty** | [**\Zernio\Model\WebhookPayloadBalanceEmpty**](../Model/WebhookPayloadBalanceEmpty.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onBalanceLow()`
+
+```php
+onBalanceLow($webhook_payload_balance_low)
+```
+
+Balance low event
+
+Balance billing only. The balance dropped below the low-balance alert set on auto-recharge (`alertBelowCents` on `GET /v1/balance/auto-recharge`).  ### When it fires  Once per drop below the threshold; a balance back at or above it re-arms the next one. It does not fire when an auto top-up is already covering the drop, and never when no alert is set.  ### Who receives it  It belongs to the billing owner, not to a profile or account: endpoints scoped with `profileIds` or `accountIds` do not receive it. Restricted keys need the `money` resource group.  ### How to act  Send the user to `fundingUrl` (Billing with the top-up drawer open), or top up through the API.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_balance_low = {"id":"00000000-0000-4000-8000-000000000000","event":"balance.low","timestamp":"2026-01-15T10:00:00Z","balance":{"spendableCents":420,"alertBelowCents":500},"fundingUrl":"https://zernio.com/dashboard/billing?funding=1"}; // \Zernio\Model\WebhookPayloadBalanceLow
+
+try {
+    $apiInstance->onBalanceLow($webhook_payload_balance_low);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onBalanceLow: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_balance_low** | [**\Zernio\Model\WebhookPayloadBalanceLow**](../Model/WebhookPayloadBalanceLow.md)|  | |
 
 ### Return type
 

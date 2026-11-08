@@ -364,6 +364,9 @@ class TestWebhookRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const EVENT_COMMERCE_ORDER_CREATED = 'commerce.order.created';
     public const EVENT_COMMERCE_ORDER_UPDATED = 'commerce.order.updated';
     public const EVENT_COMMERCE_ORDER_REFUNDED = 'commerce.order.refunded';
+    public const EVENT_BALANCE_LOW = 'balance.low';
+    public const EVENT_BALANCE_EMPTY = 'balance.empty';
+    public const EVENT_BALANCE_CHARGED = 'balance.charged';
     public const EVENT_API_CHANGELOG_PUBLISHED = 'api.changelog.published';
 
     /**
@@ -503,6 +506,9 @@ class TestWebhookRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::EVENT_COMMERCE_ORDER_CREATED,
             self::EVENT_COMMERCE_ORDER_UPDATED,
             self::EVENT_COMMERCE_ORDER_REFUNDED,
+            self::EVENT_BALANCE_LOW,
+            self::EVENT_BALANCE_EMPTY,
+            self::EVENT_BALANCE_CHARGED,
             self::EVENT_API_CHANGELOG_PUBLISHED,
         ];
     }

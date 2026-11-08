@@ -156,6 +156,15 @@ class WebhookEventsApi
         'onAutomationCheckCompleted' => [
             'application/json',
         ],
+        'onBalanceCharged' => [
+            'application/json',
+        ],
+        'onBalanceEmpty' => [
+            'application/json',
+        ],
+        'onBalanceLow' => [
+            'application/json',
+        ],
         'onBrandedCallingIdentityActionRequired' => [
             'application/json',
         ],
@@ -6432,6 +6441,669 @@ class WebhookEventsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_automation_check_completed));
             } else {
                 $httpBody = $webhook_payload_automation_check_completed;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation onBalanceCharged
+     *
+     * Balance charged event
+     *
+     * @param  \Zernio\Model\WebhookPayloadBalanceCharged $webhook_payload_balance_charged webhook_payload_balance_charged (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onBalanceCharged'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function onBalanceCharged($webhook_payload_balance_charged, string $contentType = self::contentTypes['onBalanceCharged'][0])
+    {
+        $this->onBalanceChargedWithHttpInfo($webhook_payload_balance_charged, $contentType);
+    }
+
+    /**
+     * Operation onBalanceChargedWithHttpInfo
+     *
+     * Balance charged event
+     *
+     * @param  \Zernio\Model\WebhookPayloadBalanceCharged $webhook_payload_balance_charged (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onBalanceCharged'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function onBalanceChargedWithHttpInfo($webhook_payload_balance_charged, string $contentType = self::contentTypes['onBalanceCharged'][0])
+    {
+        $request = $this->onBalanceChargedRequest($webhook_payload_balance_charged, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation onBalanceChargedAsync
+     *
+     * Balance charged event
+     *
+     * @param  \Zernio\Model\WebhookPayloadBalanceCharged $webhook_payload_balance_charged (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onBalanceCharged'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onBalanceChargedAsync($webhook_payload_balance_charged, string $contentType = self::contentTypes['onBalanceCharged'][0])
+    {
+        return $this->onBalanceChargedAsyncWithHttpInfo($webhook_payload_balance_charged, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation onBalanceChargedAsyncWithHttpInfo
+     *
+     * Balance charged event
+     *
+     * @param  \Zernio\Model\WebhookPayloadBalanceCharged $webhook_payload_balance_charged (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onBalanceCharged'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onBalanceChargedAsyncWithHttpInfo($webhook_payload_balance_charged, string $contentType = self::contentTypes['onBalanceCharged'][0])
+    {
+        $returnType = '';
+        $request = $this->onBalanceChargedRequest($webhook_payload_balance_charged, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'onBalanceCharged'
+     *
+     * @param  \Zernio\Model\WebhookPayloadBalanceCharged $webhook_payload_balance_charged (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onBalanceCharged'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function onBalanceChargedRequest($webhook_payload_balance_charged, string $contentType = self::contentTypes['onBalanceCharged'][0])
+    {
+
+        // verify the required parameter 'webhook_payload_balance_charged' is set
+        if ($webhook_payload_balance_charged === null || (is_array($webhook_payload_balance_charged) && count($webhook_payload_balance_charged) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $webhook_payload_balance_charged when calling onBalanceCharged'
+            );
+        }
+
+
+        $resourcePath = '/balance.charged';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($webhook_payload_balance_charged)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_balance_charged));
+            } else {
+                $httpBody = $webhook_payload_balance_charged;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation onBalanceEmpty
+     *
+     * Balance empty event
+     *
+     * @param  \Zernio\Model\WebhookPayloadBalanceEmpty $webhook_payload_balance_empty webhook_payload_balance_empty (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onBalanceEmpty'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function onBalanceEmpty($webhook_payload_balance_empty, string $contentType = self::contentTypes['onBalanceEmpty'][0])
+    {
+        $this->onBalanceEmptyWithHttpInfo($webhook_payload_balance_empty, $contentType);
+    }
+
+    /**
+     * Operation onBalanceEmptyWithHttpInfo
+     *
+     * Balance empty event
+     *
+     * @param  \Zernio\Model\WebhookPayloadBalanceEmpty $webhook_payload_balance_empty (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onBalanceEmpty'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function onBalanceEmptyWithHttpInfo($webhook_payload_balance_empty, string $contentType = self::contentTypes['onBalanceEmpty'][0])
+    {
+        $request = $this->onBalanceEmptyRequest($webhook_payload_balance_empty, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation onBalanceEmptyAsync
+     *
+     * Balance empty event
+     *
+     * @param  \Zernio\Model\WebhookPayloadBalanceEmpty $webhook_payload_balance_empty (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onBalanceEmpty'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onBalanceEmptyAsync($webhook_payload_balance_empty, string $contentType = self::contentTypes['onBalanceEmpty'][0])
+    {
+        return $this->onBalanceEmptyAsyncWithHttpInfo($webhook_payload_balance_empty, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation onBalanceEmptyAsyncWithHttpInfo
+     *
+     * Balance empty event
+     *
+     * @param  \Zernio\Model\WebhookPayloadBalanceEmpty $webhook_payload_balance_empty (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onBalanceEmpty'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onBalanceEmptyAsyncWithHttpInfo($webhook_payload_balance_empty, string $contentType = self::contentTypes['onBalanceEmpty'][0])
+    {
+        $returnType = '';
+        $request = $this->onBalanceEmptyRequest($webhook_payload_balance_empty, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'onBalanceEmpty'
+     *
+     * @param  \Zernio\Model\WebhookPayloadBalanceEmpty $webhook_payload_balance_empty (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onBalanceEmpty'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function onBalanceEmptyRequest($webhook_payload_balance_empty, string $contentType = self::contentTypes['onBalanceEmpty'][0])
+    {
+
+        // verify the required parameter 'webhook_payload_balance_empty' is set
+        if ($webhook_payload_balance_empty === null || (is_array($webhook_payload_balance_empty) && count($webhook_payload_balance_empty) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $webhook_payload_balance_empty when calling onBalanceEmpty'
+            );
+        }
+
+
+        $resourcePath = '/balance.empty';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($webhook_payload_balance_empty)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_balance_empty));
+            } else {
+                $httpBody = $webhook_payload_balance_empty;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation onBalanceLow
+     *
+     * Balance low event
+     *
+     * @param  \Zernio\Model\WebhookPayloadBalanceLow $webhook_payload_balance_low webhook_payload_balance_low (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onBalanceLow'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function onBalanceLow($webhook_payload_balance_low, string $contentType = self::contentTypes['onBalanceLow'][0])
+    {
+        $this->onBalanceLowWithHttpInfo($webhook_payload_balance_low, $contentType);
+    }
+
+    /**
+     * Operation onBalanceLowWithHttpInfo
+     *
+     * Balance low event
+     *
+     * @param  \Zernio\Model\WebhookPayloadBalanceLow $webhook_payload_balance_low (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onBalanceLow'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function onBalanceLowWithHttpInfo($webhook_payload_balance_low, string $contentType = self::contentTypes['onBalanceLow'][0])
+    {
+        $request = $this->onBalanceLowRequest($webhook_payload_balance_low, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation onBalanceLowAsync
+     *
+     * Balance low event
+     *
+     * @param  \Zernio\Model\WebhookPayloadBalanceLow $webhook_payload_balance_low (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onBalanceLow'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onBalanceLowAsync($webhook_payload_balance_low, string $contentType = self::contentTypes['onBalanceLow'][0])
+    {
+        return $this->onBalanceLowAsyncWithHttpInfo($webhook_payload_balance_low, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation onBalanceLowAsyncWithHttpInfo
+     *
+     * Balance low event
+     *
+     * @param  \Zernio\Model\WebhookPayloadBalanceLow $webhook_payload_balance_low (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onBalanceLow'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onBalanceLowAsyncWithHttpInfo($webhook_payload_balance_low, string $contentType = self::contentTypes['onBalanceLow'][0])
+    {
+        $returnType = '';
+        $request = $this->onBalanceLowRequest($webhook_payload_balance_low, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'onBalanceLow'
+     *
+     * @param  \Zernio\Model\WebhookPayloadBalanceLow $webhook_payload_balance_low (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onBalanceLow'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function onBalanceLowRequest($webhook_payload_balance_low, string $contentType = self::contentTypes['onBalanceLow'][0])
+    {
+
+        // verify the required parameter 'webhook_payload_balance_low' is set
+        if ($webhook_payload_balance_low === null || (is_array($webhook_payload_balance_low) && count($webhook_payload_balance_low) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $webhook_payload_balance_low when calling onBalanceLow'
+            );
+        }
+
+
+        $resourcePath = '/balance.low';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($webhook_payload_balance_low)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_balance_low));
+            } else {
+                $httpBody = $webhook_payload_balance_low;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

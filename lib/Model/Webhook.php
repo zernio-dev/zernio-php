@@ -426,6 +426,9 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
     public const EVENTS_FILE_PICKED = 'file.picked';
     public const EVENTS_CONTACT_UPDATED = 'contact.updated';
     public const EVENTS_CONTACT_DELETED = 'contact.deleted';
+    public const EVENTS_BALANCE_LOW = 'balance.low';
+    public const EVENTS_BALANCE_EMPTY = 'balance.empty';
+    public const EVENTS_BALANCE_CHARGED = 'balance.charged';
     public const DISABLED_RESOURCE_GROUPS_PUBLISHING = 'publishing';
     public const DISABLED_RESOURCE_GROUPS_ENGAGEMENT = 'engagement';
     public const DISABLED_RESOURCE_GROUPS_MESSAGES = 'messages';
@@ -580,6 +583,9 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
             self::EVENTS_FILE_PICKED,
             self::EVENTS_CONTACT_UPDATED,
             self::EVENTS_CONTACT_DELETED,
+            self::EVENTS_BALANCE_LOW,
+            self::EVENTS_BALANCE_EMPTY,
+            self::EVENTS_BALANCE_CHARGED,
         ];
     }
 

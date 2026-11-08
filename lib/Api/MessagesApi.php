@@ -6659,7 +6659,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\SendInboxMessage200Response|\Zernio\Model\SendInboxMessage400Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\SendInboxMessage429Response|\Zernio\Model\SendInboxMessage429Response|\Zernio\Model\ErrorResponse|\Zernio\Model\WhatsAppTemplateLookupError
+     * @return \Zernio\Model\SendInboxMessage200Response|\Zernio\Model\SendInboxMessage400Response|\Zernio\Model\ErrorResponse|\Zernio\Model\BalanceRequiredError|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\SendInboxMessage429Response|\Zernio\Model\SendInboxMessage429Response|\Zernio\Model\ErrorResponse|\Zernio\Model\WhatsAppTemplateLookupError
      */
     public function sendInboxMessage($conversation_id, $send_inbox_message_request, $idempotency_key = null, string $contentType = self::contentTypes['sendInboxMessage'][0])
     {
@@ -6679,7 +6679,7 @@ class MessagesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\SendInboxMessage200Response|\Zernio\Model\SendInboxMessage400Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\SendInboxMessage429Response|\Zernio\Model\SendInboxMessage429Response|\Zernio\Model\ErrorResponse|\Zernio\Model\WhatsAppTemplateLookupError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SendInboxMessage200Response|\Zernio\Model\SendInboxMessage400Response|\Zernio\Model\ErrorResponse|\Zernio\Model\BalanceRequiredError|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\SendInboxMessage429Response|\Zernio\Model\SendInboxMessage429Response|\Zernio\Model\ErrorResponse|\Zernio\Model\WhatsAppTemplateLookupError, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendInboxMessageWithHttpInfo($conversation_id, $send_inbox_message_request, $idempotency_key = null, string $contentType = self::contentTypes['sendInboxMessage'][0])
     {
@@ -6729,7 +6729,7 @@ class MessagesApi
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\ErrorResponse',
+                        '\Zernio\Model\BalanceRequiredError',
                         $request,
                         $response,
                     );
@@ -6826,7 +6826,7 @@ class MessagesApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\ErrorResponse',
+                        '\Zernio\Model\BalanceRequiredError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

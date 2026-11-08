@@ -409,6 +409,9 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     public const EVENTS_CAMPAIGN_PARTICIPANT_JOINED = 'campaign_participant.joined';
     public const EVENTS_CAMPAIGN_PARTICIPANT_SUSPENDED = 'campaign_participant.suspended';
     public const EVENTS_CAMPAIGN_PARTICIPANT_REMOVED = 'campaign_participant.removed';
+    public const EVENTS_BALANCE_LOW = 'balance.low';
+    public const EVENTS_BALANCE_EMPTY = 'balance.empty';
+    public const EVENTS_BALANCE_CHARGED = 'balance.charged';
     public const DISABLED_RESOURCE_GROUPS_PUBLISHING = 'publishing';
     public const DISABLED_RESOURCE_GROUPS_ENGAGEMENT = 'engagement';
     public const DISABLED_RESOURCE_GROUPS_MESSAGES = 'messages';
@@ -553,6 +556,9 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
             self::EVENTS_CAMPAIGN_PARTICIPANT_JOINED,
             self::EVENTS_CAMPAIGN_PARTICIPANT_SUSPENDED,
             self::EVENTS_CAMPAIGN_PARTICIPANT_REMOVED,
+            self::EVENTS_BALANCE_LOW,
+            self::EVENTS_BALANCE_EMPTY,
+            self::EVENTS_BALANCE_CHARGED,
         ];
     }
 

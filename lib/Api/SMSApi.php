@@ -5528,7 +5528,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\StartSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
+     * @return \Zernio\Model\StartSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\BalanceRequiredError
      */
     public function startSmsRegistration($start_sms_registration_request, string $contentType = self::contentTypes['startSmsRegistration'][0])
     {
@@ -5546,7 +5546,7 @@ class SMSApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\StartSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\StartSmsRegistration200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\BalanceRequiredError, HTTP status code, HTTP response headers (array of strings)
      */
     public function startSmsRegistrationWithHttpInfo($start_sms_registration_request, string $contentType = self::contentTypes['startSmsRegistration'][0])
     {
@@ -5596,7 +5596,7 @@ class SMSApi
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\ErrorResponse',
+                        '\Zernio\Model\BalanceRequiredError',
                         $request,
                         $response,
                     );
@@ -5651,7 +5651,7 @@ class SMSApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\ErrorResponse',
+                        '\Zernio\Model\BalanceRequiredError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
