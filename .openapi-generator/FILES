@@ -7043,12 +7043,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/BalanceRequiredErrorTest.php
-test/Model/WebhookPayloadBalanceChargedBalanceTest.php
-test/Model/WebhookPayloadBalanceChargedTest.php
-test/Model/WebhookPayloadBalanceChargedTopupCardTest.php
-test/Model/WebhookPayloadBalanceChargedTopupTest.php
-test/Model/WebhookPayloadBalanceEmptyBalanceTest.php
-test/Model/WebhookPayloadBalanceEmptyTest.php
-test/Model/WebhookPayloadBalanceLowBalanceTest.php
-test/Model/WebhookPayloadBalanceLowTest.php
