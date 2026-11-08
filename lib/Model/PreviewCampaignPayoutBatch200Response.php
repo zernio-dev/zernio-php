@@ -420,7 +420,7 @@ class PreviewCampaignPayoutBatch200Response implements ModelInterface, ArrayAcce
     /**
      * Sets fee_cents
      *
-     * @param int $fee_cents Zernio fee: 4% per creator, 50 cent minimum.
+     * @param int $fee_cents Zernio fee: 4%, 50 cents minimum per payout.
      *
      * @return self
      */

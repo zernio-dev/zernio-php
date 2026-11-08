@@ -1861,7 +1861,7 @@ onBalanceLow($webhook_payload_balance_low)
 
 Balance low event
 
-Balance billing only. The balance dropped below the low-balance alert set on auto-recharge (`alertBelowCents` on `GET /v1/balance/auto-recharge`).  ### When it fires  Once per drop below the threshold; a balance back at or above it re-arms the next one. It does not fire when an auto top-up is already covering the drop, and never when no alert is set.  ### Who receives it  It belongs to the billing owner, not to a profile or account: endpoints scoped with `profileIds` or `accountIds` do not receive it. Restricted keys need the `money` resource group.  ### How to act  Send the user to `fundingUrl` (Billing with the top-up drawer open), or top up through the API.
+Balance billing only. The balance dropped below the low-balance alert set on auto top-up (`alertBelowCents` on `GET /v1/balance/auto-recharge`).  ### When it fires  Once per drop below the threshold; a balance back at or above it re-arms the next one. It does not fire when an auto top-up is already covering the drop, and never when no alert is set.  ### Who receives it  It belongs to the billing owner, not to a profile or account: endpoints scoped with `profileIds` or `accountIds` do not receive it. Restricted keys need the `money` resource group.  ### How to act  Send the user to `fundingUrl` (Billing with the top-up drawer open), or top up through the API.
 
 ### Example
 

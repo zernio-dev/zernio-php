@@ -1074,7 +1074,7 @@ Class | Method | HTTP request | Description
 *TreasuryApi* | [**createPayeeOnboardingLink**](docs/Api/TreasuryApi.md#createpayeeonboardinglink) | **POST** /v1/payees/{payeeId}/onboarding-link | Create a payee onboarding link
 *TreasuryApi* | [**createTopup**](docs/Api/TreasuryApi.md#createtopup) | **POST** /v1/balance/top-ups | Create a top-up
 *TreasuryApi* | [**createTransfer**](docs/Api/TreasuryApi.md#createtransfer) | **POST** /v1/transfers | Create a transfer (removed)
-*TreasuryApi* | [**getAutoRecharge**](docs/Api/TreasuryApi.md#getautorecharge) | **GET** /v1/balance/auto-recharge | Get auto-recharge settings
+*TreasuryApi* | [**getAutoRecharge**](docs/Api/TreasuryApi.md#getautorecharge) | **GET** /v1/balance/auto-recharge | Get auto top-up settings
 *TreasuryApi* | [**getBalance**](docs/Api/TreasuryApi.md#getbalance) | **GET** /v1/balance | Get balance
 *TreasuryApi* | [**getPayoutBatch**](docs/Api/TreasuryApi.md#getpayoutbatch) | **GET** /v1/payout-batches/{batchId} | Get a payout batch
 *TreasuryApi* | [**getTopupInvoice**](docs/Api/TreasuryApi.md#gettopupinvoice) | **GET** /v1/balance/top-ups/{topupId}/invoice | Get a top-up invoice
@@ -1085,7 +1085,7 @@ Class | Method | HTTP request | Description
 *TreasuryApi* | [**listTopups**](docs/Api/TreasuryApi.md#listtopups) | **GET** /v1/balance/top-ups | List top-ups
 *TreasuryApi* | [**listTransfers**](docs/Api/TreasuryApi.md#listtransfers) | **GET** /v1/transfers | List transfers
 *TreasuryApi* | [**previewTopup**](docs/Api/TreasuryApi.md#previewtopup) | **POST** /v1/balance/top-ups/preview | Preview a top-up&#39;s tax
-*TreasuryApi* | [**updateAutoRecharge**](docs/Api/TreasuryApi.md#updateautorecharge) | **PATCH** /v1/balance/auto-recharge | Update auto-recharge settings
+*TreasuryApi* | [**updateAutoRecharge**](docs/Api/TreasuryApi.md#updateautorecharge) | **PATCH** /v1/balance/auto-recharge | Update auto top-up settings
 *TwitterEngagementApi* | [**bookmarkPost**](docs/Api/TwitterEngagementApi.md#bookmarkpost) | **POST** /v1/twitter/bookmark | Bookmark a tweet
 *TwitterEngagementApi* | [**followUser**](docs/Api/TwitterEngagementApi.md#followuser) | **POST** /v1/twitter/follow | Follow a user
 *TwitterEngagementApi* | [**getTweet**](docs/Api/TwitterEngagementApi.md#gettweet) | **GET** /v1/twitter/tweet | Look up a tweet

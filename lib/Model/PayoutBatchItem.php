@@ -534,7 +534,7 @@ class PayoutBatchItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fee_cents
      *
-     * @param int $fee_cents Zernio fee on top: 4% with a 50 cent minimum.
+     * @param int $fee_cents Zernio fee on top: 4%, 50 cents minimum per payout.
      *
      * @return self
      */

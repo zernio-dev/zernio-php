@@ -15,6 +15,6 @@ Name | Type | Description | Notes
 **pending_topup_cents** | **int** | Top-ups started but not paid yet. | [optional]
 **currency** | **string** |  | [optional]
 **recent_topups** | [**\Zernio\Model\TreasuryTopup[]**](TreasuryTopup.md) |  | [optional]
-**recent_credit_recharges** | [**\Zernio\Model\GetBalance200ResponseRecentCreditRechargesInner[]**](GetBalance200ResponseRecentCreditRechargesInner.md) | Balance billing only (absent otherwise). The 10 newest recharges paid from the account credit you held when you moved to the balance, newest first. Nothing was charged to your card and there is no invoice. The amount was added to promoCents with the credit&#39;s own expiry. | [optional]
+**recent_credit_recharges** | [**\Zernio\Model\GetBalance200ResponseRecentCreditRechargesInner[]**](GetBalance200ResponseRecentCreditRechargesInner.md) | Balance billing only (absent otherwise). The 10 newest auto top-ups paid from the account credit you held when you moved to the balance, newest first. Nothing was charged to your card and there is no invoice. The amount was added to promoCents with the credit&#39;s own expiry. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

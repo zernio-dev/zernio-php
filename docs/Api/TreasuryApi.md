@@ -13,7 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createPayeeOnboardingLink()**](TreasuryApi.md#createPayeeOnboardingLink) | **POST** /v1/payees/{payeeId}/onboarding-link | Create a payee onboarding link |
 | [**createTopup()**](TreasuryApi.md#createTopup) | **POST** /v1/balance/top-ups | Create a top-up |
 | [**createTransfer()**](TreasuryApi.md#createTransfer) | **POST** /v1/transfers | Create a transfer (removed) |
-| [**getAutoRecharge()**](TreasuryApi.md#getAutoRecharge) | **GET** /v1/balance/auto-recharge | Get auto-recharge settings |
+| [**getAutoRecharge()**](TreasuryApi.md#getAutoRecharge) | **GET** /v1/balance/auto-recharge | Get auto top-up settings |
 | [**getBalance()**](TreasuryApi.md#getBalance) | **GET** /v1/balance | Get balance |
 | [**getPayoutBatch()**](TreasuryApi.md#getPayoutBatch) | **GET** /v1/payout-batches/{batchId} | Get a payout batch |
 | [**getTopupInvoice()**](TreasuryApi.md#getTopupInvoice) | **GET** /v1/balance/top-ups/{topupId}/invoice | Get a top-up invoice |
@@ -24,7 +24,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listTopups()**](TreasuryApi.md#listTopups) | **GET** /v1/balance/top-ups | List top-ups |
 | [**listTransfers()**](TreasuryApi.md#listTransfers) | **GET** /v1/transfers | List transfers |
 | [**previewTopup()**](TreasuryApi.md#previewTopup) | **POST** /v1/balance/top-ups/preview | Preview a top-up&#39;s tax |
-| [**updateAutoRecharge()**](TreasuryApi.md#updateAutoRecharge) | **PATCH** /v1/balance/auto-recharge | Update auto-recharge settings |
+| [**updateAutoRecharge()**](TreasuryApi.md#updateAutoRecharge) | **PATCH** /v1/balance/auto-recharge | Update auto top-up settings |
 
 
 ## `cancelPayoutBatch()`
@@ -456,9 +456,9 @@ void (empty response body)
 getAutoRecharge(): \Zernio\Model\AutoRecharge
 ```
 
-Get auto-recharge settings
+Get auto top-up settings
 
-Your balance's auto-recharge rule: when the balance drops below `belowCents`, the billing owner's saved card is charged back up to `toCents`, tax added on top as for any top-up.  Account credit you held when you moved to the balance pays a recharge first, without a card charge or invoice (see `recentCreditRecharges` on `GET /v1/balance`). The card is charged only once that credit is used up, and only while the balance is still below `belowCents`.  The first read gives the default rule, sized from your last 30 days of pay-per-use: below about a week of spend (at least $5), back up by about two more weeks (at least $20).  - 409 `balance_billing_required`: the account is not on the prepaid balance.  A profile-scoped key answers 403.
+Your balance's auto top-up rule: when the balance drops below `belowCents`, the billing owner's saved card is charged back up to `toCents`, tax added on top as for any top-up.  Account credit you held when you moved to the balance pays an auto top-up first, without a card charge or invoice (see `recentCreditRecharges` on `GET /v1/balance`). The card is charged only once that credit is used up, and only while the balance is still below `belowCents`.  The first read gives the default rule, sized from your last 30 days of pay-per-use: below about a week of spend (at least $5), back up by about two more weeks (at least $20).  - 409 `balance_billing_required`: the account is not on the prepaid balance.  A profile-scoped key answers 403.
 
 ### Example
 
@@ -1107,9 +1107,9 @@ try {
 updateAutoRecharge($update_auto_recharge_request): \Zernio\Model\AutoRecharge
 ```
 
-Update auto-recharge settings
+Update auto top-up settings
 
-Changes the auto-recharge rule. Omitted fields keep their value.  A declined recharge is retried 1 hour, 1 day and 3 days later, with an email each time. After the last retry fails, auto-recharge switches off (`disabledReason: payment_failed`) until the card is updated. A top-up you make yourself resets the retries.  A bank asking for 3D Secure counts as a decline: the charge happens while you are away, so the email asks you to top up in Billing.  A pay-per-use request that finds the balance at $0 runs the recharge first (with the rule on, a saved card and no retry pending) and goes through when the charge lands, so a new balance at $0 is charged on first use.  When this month's auto-recharges plus the next one would pass `monthlyLimitCents`, the card is not charged and you get one email that month. At $0, pay-per-use then answers 402 `usage_limit_reached`.  - 400: a field is out of range, or `toCents` is not more than $5 above `belowCents`. - 409 `balance_billing_required`: the account is not on the prepaid balance.  Needs an owner, admin or billing admin, signed in or through a full-access key they created.
+Changes the auto top-up rule. Omitted fields keep their value.  A declined auto top-up is retried 1 hour, 1 day and 3 days later, with an email each time. After the last retry fails, auto top-up switches off (`disabledReason: payment_failed`) until the card is updated. A top-up you make yourself resets the retries.  A bank asking for 3D Secure counts as a decline: the charge happens while you are away, so the email asks you to top up in Billing.  A pay-per-use request that finds the balance at $0 runs the auto top-up first (with the rule on, a saved card and no retry pending) and goes through when the charge lands, so a new balance at $0 is charged on first use.  When this month's auto top-ups plus the next one would pass `monthlyLimitCents`, the card is not charged and you get one email that month. At $0, pay-per-use then answers 402 `usage_limit_reached`.  - 400: a field is out of range, or `toCents` is not more than $5 above `belowCents`. - 409 `balance_billing_required`: the account is not on the prepaid balance.  Needs an owner, admin or billing admin, signed in or through a full-access key they created.
 
 ### Example
 

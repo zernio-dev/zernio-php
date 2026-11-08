@@ -599,7 +599,7 @@ class TreasuryTransfer implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fee_cents
      *
-     * @param int|null $fee_cents Zernio fee added on top, 4% with a 50 cent minimum
+     * @param int|null $fee_cents Zernio fee added on top: 4%, 50 cents minimum per payout.
      *
      * @return self
      */

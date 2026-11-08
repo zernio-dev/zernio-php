@@ -408,7 +408,7 @@ class AutoRecharge implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets enabled
      *
-     * @param bool $enabled Whether auto-recharge is on. Charges happen only when this is true and disabledReason is null.
+     * @param bool $enabled Whether auto top-up is on. Charges happen only when this is true and disabledReason is null.
      *
      * @return self
      */
@@ -435,7 +435,7 @@ class AutoRecharge implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets below_cents
      *
-     * @param int $below_cents Recharge when the balance drops below this, in cents.
+     * @param int $below_cents Top up when the balance drops below this, in cents.
      *
      * @return self
      */
@@ -462,7 +462,7 @@ class AutoRecharge implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets to_cents
      *
-     * @param int $to_cents Recharge back up to this, in cents. The charge is toCents minus the balance, plus tax.
+     * @param int $to_cents Top back up to this, in cents. The charge is toCents minus the balance, plus tax.
      *
      * @return self
      */
@@ -489,7 +489,7 @@ class AutoRecharge implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets monthly_limit_cents
      *
-     * @param int|null $monthly_limit_cents Most auto-recharge may add per calendar month (UTC), before tax; null for no limit.
+     * @param int|null $monthly_limit_cents Most auto top-up may add per calendar month (UTC), before tax; null for no limit.
      *
      * @return self
      */
@@ -628,7 +628,7 @@ class AutoRecharge implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets next_retry_at
      *
-     * @param \DateTime|null $next_retry_at When a declined recharge is tried again; null when none is waiting.
+     * @param \DateTime|null $next_retry_at When a declined auto top-up is tried again; null when none is waiting.
      *
      * @return self
      */
@@ -662,7 +662,7 @@ class AutoRecharge implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets month_recharged_cents
      *
-     * @param int $month_recharged_cents Auto-recharge top-ups this calendar month (UTC), paid or being paid, before tax.
+     * @param int $month_recharged_cents Auto top-ups this calendar month (UTC), paid or being paid, before tax.
      *
      * @return self
      */

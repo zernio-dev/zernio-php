@@ -2446,7 +2446,7 @@ class TreasuryApi
     /**
      * Operation getAutoRecharge
      *
-     * Get auto-recharge settings
+     * Get auto top-up settings
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAutoRecharge'] to see the possible values for this operation
      *
@@ -2463,7 +2463,7 @@ class TreasuryApi
     /**
      * Operation getAutoRechargeWithHttpInfo
      *
-     * Get auto-recharge settings
+     * Get auto top-up settings
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAutoRecharge'] to see the possible values for this operation
      *
@@ -2561,7 +2561,7 @@ class TreasuryApi
     /**
      * Operation getAutoRechargeAsync
      *
-     * Get auto-recharge settings
+     * Get auto top-up settings
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAutoRecharge'] to see the possible values for this operation
      *
@@ -2581,7 +2581,7 @@ class TreasuryApi
     /**
      * Operation getAutoRechargeAsyncWithHttpInfo
      *
-     * Get auto-recharge settings
+     * Get auto top-up settings
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAutoRecharge'] to see the possible values for this operation
      *
@@ -5897,7 +5897,7 @@ class TreasuryApi
     /**
      * Operation updateAutoRecharge
      *
-     * Update auto-recharge settings
+     * Update auto top-up settings
      *
      * @param  \Zernio\Model\UpdateAutoRechargeRequest $update_auto_recharge_request update_auto_recharge_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAutoRecharge'] to see the possible values for this operation
@@ -5915,7 +5915,7 @@ class TreasuryApi
     /**
      * Operation updateAutoRechargeWithHttpInfo
      *
-     * Update auto-recharge settings
+     * Update auto top-up settings
      *
      * @param  \Zernio\Model\UpdateAutoRechargeRequest $update_auto_recharge_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAutoRecharge'] to see the possible values for this operation
@@ -6028,7 +6028,7 @@ class TreasuryApi
     /**
      * Operation updateAutoRechargeAsync
      *
-     * Update auto-recharge settings
+     * Update auto top-up settings
      *
      * @param  \Zernio\Model\UpdateAutoRechargeRequest $update_auto_recharge_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAutoRecharge'] to see the possible values for this operation
@@ -6049,7 +6049,7 @@ class TreasuryApi
     /**
      * Operation updateAutoRechargeAsyncWithHttpInfo
      *
-     * Update auto-recharge settings
+     * Update auto top-up settings
      *
      * @param  \Zernio\Model\UpdateAutoRechargeRequest $update_auto_recharge_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAutoRecharge'] to see the possible values for this operation

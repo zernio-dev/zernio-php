@@ -711,7 +711,7 @@ class GetBalance200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets recent_credit_recharges
      *
-     * @param \Zernio\Model\GetBalance200ResponseRecentCreditRechargesInner[]|null $recent_credit_recharges Balance billing only (absent otherwise). The 10 newest recharges paid from the account credit you held when you moved to the balance, newest first. Nothing was charged to your card and there is no invoice. The amount was added to promoCents with the credit's own expiry.
+     * @param \Zernio\Model\GetBalance200ResponseRecentCreditRechargesInner[]|null $recent_credit_recharges Balance billing only (absent otherwise). The 10 newest auto top-ups paid from the account credit you held when you moved to the balance, newest first. Nothing was charged to your card and there is no invoice. The amount was added to promoCents with the credit's own expiry.
      *
      * @return self
      */

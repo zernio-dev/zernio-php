@@ -363,7 +363,7 @@ class UpdateAutoRechargeRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets enabled
      *
-     * @param bool|null $enabled Turns auto-recharge on or off. A rule switched off by failed charges stays off until the card is updated.
+     * @param bool|null $enabled Turns auto top-up on or off. A rule switched off by failed charges stays off until the card is updated.
      *
      * @return self
      */
@@ -390,7 +390,7 @@ class UpdateAutoRechargeRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets below_cents
      *
-     * @param int|null $below_cents Recharge when the balance drops below this, in cents. At least $5.
+     * @param int|null $below_cents Top up when the balance drops below this, in cents. At least $5.
      *
      * @return self
      */
@@ -425,7 +425,7 @@ class UpdateAutoRechargeRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets to_cents
      *
-     * @param int|null $to_cents Recharge back up to this, in cents. More than $5 above belowCents.
+     * @param int|null $to_cents Top back up to this, in cents. More than $5 above belowCents.
      *
      * @return self
      */
@@ -460,7 +460,7 @@ class UpdateAutoRechargeRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets monthly_limit_cents
      *
-     * @param int|null $monthly_limit_cents Most auto-recharge may add per calendar month (UTC), before tax. Null for no limit.
+     * @param int|null $monthly_limit_cents Most auto top-up may add per calendar month (UTC), before tax. Null for no limit.
      *
      * @return self
      */
