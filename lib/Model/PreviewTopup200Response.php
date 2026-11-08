@@ -62,7 +62,8 @@ class PreviewTopup200Response implements ModelInterface, ArrayAccess, \JsonSeria
         'tax_cents' => 'int',
         'total_cents' => 'int',
         'tax_label' => 'string',
-        'reverse_charge' => 'bool'
+        'reverse_charge' => 'bool',
+        'country' => 'string'
     ];
 
     /**
@@ -77,7 +78,8 @@ class PreviewTopup200Response implements ModelInterface, ArrayAccess, \JsonSeria
         'tax_cents' => null,
         'total_cents' => null,
         'tax_label' => null,
-        'reverse_charge' => null
+        'reverse_charge' => null,
+        'country' => null
     ];
 
     /**
@@ -90,7 +92,8 @@ class PreviewTopup200Response implements ModelInterface, ArrayAccess, \JsonSeria
         'tax_cents' => false,
         'total_cents' => false,
         'tax_label' => true,
-        'reverse_charge' => false
+        'reverse_charge' => false,
+        'country' => true
     ];
 
     /**
@@ -183,7 +186,8 @@ class PreviewTopup200Response implements ModelInterface, ArrayAccess, \JsonSeria
         'tax_cents' => 'taxCents',
         'total_cents' => 'totalCents',
         'tax_label' => 'taxLabel',
-        'reverse_charge' => 'reverseCharge'
+        'reverse_charge' => 'reverseCharge',
+        'country' => 'country'
     ];
 
     /**
@@ -196,7 +200,8 @@ class PreviewTopup200Response implements ModelInterface, ArrayAccess, \JsonSeria
         'tax_cents' => 'setTaxCents',
         'total_cents' => 'setTotalCents',
         'tax_label' => 'setTaxLabel',
-        'reverse_charge' => 'setReverseCharge'
+        'reverse_charge' => 'setReverseCharge',
+        'country' => 'setCountry'
     ];
 
     /**
@@ -209,7 +214,8 @@ class PreviewTopup200Response implements ModelInterface, ArrayAccess, \JsonSeria
         'tax_cents' => 'getTaxCents',
         'total_cents' => 'getTotalCents',
         'tax_label' => 'getTaxLabel',
-        'reverse_charge' => 'getReverseCharge'
+        'reverse_charge' => 'getReverseCharge',
+        'country' => 'getCountry'
     ];
 
     /**
@@ -274,6 +280,7 @@ class PreviewTopup200Response implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('total_cents', $data ?? [], null);
         $this->setIfExists('tax_label', $data ?? [], null);
         $this->setIfExists('reverse_charge', $data ?? [], null);
+        $this->setIfExists('country', $data ?? [], null);
     }
 
     /**
@@ -471,6 +478,40 @@ class PreviewTopup200Response implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable reverse_charge cannot be null');
         }
         $this->container['reverse_charge'] = $reverse_charge;
+
+        return $this;
+    }
+
+    /**
+     * Gets country
+     *
+     * @return string|null
+     */
+    public function getCountry()
+    {
+        return $this->container['country'];
+    }
+
+    /**
+     * Sets country
+     *
+     * @param string|null $country Two-letter country the tax was placed in, from the billing address. Null when Stripe Tax returned no address.
+     *
+     * @return self
+     */
+    public function setCountry($country)
+    {
+        if (is_null($country)) {
+            array_push($this->openAPINullablesSetToNull, 'country');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('country', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['country'] = $country;
 
         return $this;
     }

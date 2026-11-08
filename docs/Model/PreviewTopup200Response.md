@@ -9,5 +9,6 @@ Name | Type | Description | Notes
 **total_cents** | **int** | What the card would be charged: amountCents + taxCents. |
 **tax_label** | **string** | The tax and its rate, for example \&quot;VAT 21%\&quot;. Null when no tax is charged. |
 **reverse_charge** | **bool** | True for an EU business with a valid VAT id: no VAT, reverse charge. |
+**country** | **string** | Two-letter country the tax was placed in, from the billing address. Null when Stripe Tax returned no address. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
