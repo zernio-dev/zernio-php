@@ -59,6 +59,8 @@ class GetBalance200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPITypes = [
         'available_cents' => 'int',
+        'balance_billing' => 'bool',
+        'spendable_cents' => 'int',
         'promo_cents' => 'int',
         'payout_locked_cents' => 'int',
         'payout_locks' => '\Zernio\Model\GetBalance200ResponsePayoutLocksInner[]',
@@ -79,6 +81,8 @@ class GetBalance200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPIFormats = [
         'available_cents' => null,
+        'balance_billing' => null,
+        'spendable_cents' => null,
         'promo_cents' => null,
         'payout_locked_cents' => null,
         'payout_locks' => null,
@@ -97,6 +101,8 @@ class GetBalance200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static array $openAPINullables = [
         'available_cents' => false,
+        'balance_billing' => false,
+        'spendable_cents' => false,
         'promo_cents' => false,
         'payout_locked_cents' => false,
         'payout_locks' => false,
@@ -195,6 +201,8 @@ class GetBalance200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $attributeMap = [
         'available_cents' => 'availableCents',
+        'balance_billing' => 'balanceBilling',
+        'spendable_cents' => 'spendableCents',
         'promo_cents' => 'promoCents',
         'payout_locked_cents' => 'payoutLockedCents',
         'payout_locks' => 'payoutLocks',
@@ -213,6 +221,8 @@ class GetBalance200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $setters = [
         'available_cents' => 'setAvailableCents',
+        'balance_billing' => 'setBalanceBilling',
+        'spendable_cents' => 'setSpendableCents',
         'promo_cents' => 'setPromoCents',
         'payout_locked_cents' => 'setPayoutLockedCents',
         'payout_locks' => 'setPayoutLocks',
@@ -231,6 +241,8 @@ class GetBalance200Response implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $getters = [
         'available_cents' => 'getAvailableCents',
+        'balance_billing' => 'getBalanceBilling',
+        'spendable_cents' => 'getSpendableCents',
         'promo_cents' => 'getPromoCents',
         'payout_locked_cents' => 'getPayoutLockedCents',
         'payout_locks' => 'getPayoutLocks',
@@ -313,6 +325,8 @@ class GetBalance200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     public function __construct(?array $data = null)
     {
         $this->setIfExists('available_cents', $data ?? [], null);
+        $this->setIfExists('balance_billing', $data ?? [], null);
+        $this->setIfExists('spendable_cents', $data ?? [], null);
         $this->setIfExists('promo_cents', $data ?? [], null);
         $this->setIfExists('payout_locked_cents', $data ?? [], null);
         $this->setIfExists('payout_locks', $data ?? [], null);
@@ -398,6 +412,60 @@ class GetBalance200Response implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable available_cents cannot be null');
         }
         $this->container['available_cents'] = $available_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets balance_billing
+     *
+     * @return bool|null
+     */
+    public function getBalanceBilling()
+    {
+        return $this->container['balance_billing'];
+    }
+
+    /**
+     * Sets balance_billing
+     *
+     * @param bool|null $balance_billing True when the account pays pay-per-use from this prepaid balance (new signups). Absent otherwise: that pay-per-use is on the monthly invoice.
+     *
+     * @return self
+     */
+    public function setBalanceBilling($balance_billing)
+    {
+        if (is_null($balance_billing)) {
+            throw new \InvalidArgumentException('non-nullable balance_billing cannot be null');
+        }
+        $this->container['balance_billing'] = $balance_billing;
+
+        return $this;
+    }
+
+    /**
+     * Gets spendable_cents
+     *
+     * @return int|null
+     */
+    public function getSpendableCents()
+    {
+        return $this->container['spendable_cents'];
+    }
+
+    /**
+     * Sets spendable_cents
+     *
+     * @param int|null $spendable_cents Balance billing only (absent otherwise). What pay-per-use can still spend: availableCents plus promoCents, minus usage not yet posted. At 0 or below, new pay-per-use answers 402 `insufficient_balance`.
+     *
+     * @return self
+     */
+    public function setSpendableCents($spendable_cents)
+    {
+        if (is_null($spendable_cents)) {
+            throw new \InvalidArgumentException('non-nullable spendable_cents cannot be null');
+        }
+        $this->container['spendable_cents'] = $spendable_cents;
 
         return $this;
     }
