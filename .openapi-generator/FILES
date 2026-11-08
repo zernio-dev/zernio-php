@@ -2554,6 +2554,7 @@ docs/Model/RestoreWorkflowVersion200Response.md
 docs/Model/RestoreWorkflowVersion200ResponseWorkflow.md
 docs/Model/ResyncPageWebhookSubscription200Response.md
 docs/Model/RetryPost207Response.md
+docs/Model/RetryPost402Response.md
 docs/Model/RetweetPost200Response.md
 docs/Model/RetweetPostRequest.md
 docs/Model/ReuseSmsRegistrationForNumber200Response.md
@@ -6076,6 +6077,7 @@ lib/Model/RestoreWorkflowVersion200Response.php
 lib/Model/RestoreWorkflowVersion200ResponseWorkflow.php
 lib/Model/ResyncPageWebhookSubscription200Response.php
 lib/Model/RetryPost207Response.php
+lib/Model/RetryPost402Response.php
 lib/Model/RetweetPost200Response.php
 lib/Model/RetweetPostRequest.php
 lib/Model/ReuseSmsRegistrationForNumber200Response.php
@@ -7043,3 +7045,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/RetryPost402ResponseTest.php
