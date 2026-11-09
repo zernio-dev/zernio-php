@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **date_range** | [**\Zernio\Model\YouTubeDailyViewsResponseDateRange**](YouTubeDailyViewsResponseDateRange.md) |  | [optional]
 **provisional_since** | **\DateTime** | Present only when the range reaches into YouTube&#39;s ~3-day processing window: the first date whose numbers are provisional and may still be revised by YouTube. | [optional]
 **total_views** | **int** | Sum of views across all days in the range | [optional]
+**stale** | **bool** | Present and true when YouTube refused the refresh (the Analytics quota or its rate limit) and the response serves the days Zernio already stored, so some days may be missing; lastSyncedAt says how old they are. Retry later for a full refresh. | [optional]
 **daily_views** | [**\Zernio\Model\YouTubeDailyViewsResponseDailyViewsInner[]**](YouTubeDailyViewsResponseDailyViewsInner.md) |  | [optional]
 **last_synced_at** | **\DateTime** | When the data was last synced from YouTube | [optional]
 **scope_status** | [**\Zernio\Model\YouTubeDailyViewsResponseScopeStatus**](YouTubeDailyViewsResponseScopeStatus.md) |  | [optional]

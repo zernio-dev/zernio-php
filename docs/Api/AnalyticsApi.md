@@ -30,6 +30,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getLinkedInOrgAggregateAnalytics()**](AnalyticsApi.md#getLinkedInOrgAggregateAnalytics) | **GET** /v1/analytics/linkedin/org-aggregate-analytics | Get LinkedIn org analytics |
 | [**getLinkedInPostAnalytics()**](AnalyticsApi.md#getLinkedInPostAnalytics) | **GET** /v1/accounts/{accountId}/linkedin-post-analytics | Get LinkedIn post stats |
 | [**getLinkedInPostReactions()**](AnalyticsApi.md#getLinkedInPostReactions) | **GET** /v1/accounts/{accountId}/linkedin-post-reactions | Get LinkedIn post reactions |
+| [**getPinterestAccountInsights()**](AnalyticsApi.md#getPinterestAccountInsights) | **GET** /v1/analytics/pinterest/account-insights | Get Pinterest account-level insights |
 | [**getPostAuthenticity()**](AnalyticsApi.md#getPostAuthenticity) | **GET** /v1/posts/{postId}/authenticity | Get a post&#39;s authenticity score |
 | [**getPostSamples()**](AnalyticsApi.md#getPostSamples) | **GET** /v1/analytics/samples | Get post samples |
 | [**getPostTimeline()**](AnalyticsApi.md#getPostTimeline) | **GET** /v1/analytics/post-timeline | Get post analytics timeline |
@@ -1669,6 +1670,78 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getPinterestAccountInsights()`
+
+```php
+getPinterestAccountInsights($account_id, $metrics, $from_date, $to_date, $since, $until, $metric_type): \Zernio\Model\InstagramAccountInsightsResponse
+```
+
+Get Pinterest account-level insights
+
+Returns account-level daily Pinterest metrics, read live from Pinterest's account analytics, plus the follower history from Zernio's daily snapshots.  These are account totals. They include every pin on the account, also pins published long before the account was connected to Zernio, which per-post analytics cannot cover.  - Response shape matches /v1/analytics/instagram/account-insights. - Defaults to the last 30 days. Pinterest serves at most the last 89 days, so a fromDate older than that returns 400. - Pinterest reports the latest 1-2 days as still processing. Those days are left out of values and totals until Pinterest settles them.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The Zernio SocialAccount ID for the Pinterest account.
+$metrics = 'metrics_example'; // string | Comma-separated list. Defaults to \"impressions,engagements,follower_count\".  Live from Pinterest, one value per day:   - impressions   - engagements   - saves   - pin_clicks   - outbound_clicks  From Zernio daily snapshots:   - follower_count    (follower count per day; total is the latest)   - followers_gained  (sum of positive daily follower deltas)   - followers_lost    (sum of absolute negative daily deltas)
+$from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start date (YYYY-MM-DD). Defaults to 30 days ago. At most 89 days before today.
+$to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date (YYYY-MM-DD). Defaults to today.
+$since = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Alias of fromDate, kept for existing callers
+$until = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Alias of toDate, kept for existing callers
+$metric_type = 'total_value'; // string | \"total_value\" returns one total per metric. \"time_series\" also returns the daily values.
+
+try {
+    $result = $apiInstance->getPinterestAccountInsights($account_id, $metrics, $from_date, $to_date, $since, $until, $metric_type);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->getPinterestAccountInsights: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The Zernio SocialAccount ID for the Pinterest account. | |
+| **metrics** | **string**| Comma-separated list. Defaults to \&quot;impressions,engagements,follower_count\&quot;.  Live from Pinterest, one value per day:   - impressions   - engagements   - saves   - pin_clicks   - outbound_clicks  From Zernio daily snapshots:   - follower_count    (follower count per day; total is the latest)   - followers_gained  (sum of positive daily follower deltas)   - followers_lost    (sum of absolute negative daily deltas) | [optional] |
+| **from_date** | **\DateTime**| Start date (YYYY-MM-DD). Defaults to 30 days ago. At most 89 days before today. | [optional] |
+| **to_date** | **\DateTime**| End date (YYYY-MM-DD). Defaults to today. | [optional] |
+| **since** | **\DateTime**| Alias of fromDate, kept for existing callers | [optional] |
+| **until** | **\DateTime**| Alias of toDate, kept for existing callers | [optional] |
+| **metric_type** | **string**| \&quot;total_value\&quot; returns one total per metric. \&quot;time_series\&quot; also returns the daily values. | [optional] [default to &#39;total_value&#39;] |
+
+### Return type
+
+[**\Zernio\Model\InstagramAccountInsightsResponse**](../Model/InstagramAccountInsightsResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getPostAuthenticity()`
 
 ```php
@@ -1933,7 +2006,7 @@ getTikTokAccountInsights($account_id, $metrics, $from_date, $to_date, $since, $u
 
 Get TikTok account-level insights
 
-Returns account-level TikTok insights from /v2/user/info/ (live) plus historical time series joined from Zernio's daily snapshotter (AccountStats).  - Response shape matches /v1/analytics/instagram/account-insights. - Max 89 days, defaults to last 30 days. - Requires the user.info.stats scope on the account (412 if missing).  ### Why the scope is narrow  This ACCOUNT-level endpoint intentionally exposes only the four counter metrics below. It does not return:  - account-level impressions / reach - follower inflow / outflow breakdown - account-level watch time  Follower age, gender, country and city are on GET /v1/analytics/tiktok/demographics.  ### Per-video metrics  PER-VIDEO is a different story on the Business lane. An account connected through the TikTok for Business app reports these per video on GET /v1/analytics?postId=...:  - profile views, website clicks, follows - full-watched rate, watch time - impression sources, viewer types and viewer countries  They arrive roughly 24-48h after publishing and only for posts active in the last 7 days.  Accounts on the original TikTok integration get the basic counters there (views, likes, comments, shares) and zeros for the rest. They must reconnect through the Business app.
+Returns account-level TikTok insights: the lifetime profile counters (live, with historical time series joined from Zernio's daily snapshotter) and TikTok's own daily account figures (video views, likes, comments, shares, profile views).  - Response shape matches /v1/analytics/instagram/account-insights. - Max 89 days, defaults to last 30 days. - Requires the user.info.stats scope on the account (412 if missing).  ### Daily account metrics  `video_views`, `likes`, `comments`, `shares` and `profile_views` are TikTok's daily figures for the whole account, read from the TikTok Business Accounts API. They count every video of the account, not only recent ones, so they differ from GET /v1/analytics/daily-metrics, which sums per-post analytics.  - With `metricType=time_series` each day is one entry in `values`. With `total_value` the total is the sum over the range. - The latest day available is yesterday, and TikTok can take 24-48 hours to settle a day. Days after the latest available one are left out of `values`. - They work for Business and personal TikTok accounts connected through Zernio's TikTok connection, with the user.insights scope. - Accounts on the original TikTok integration (or on your own TikTok app) cannot read them: each one is listed in `unavailableMetrics` with reason `unsupported_metric`, and reconnecting through Zernio's TikTok connection enables them. A grant without user.insights lists them with reason `permission_missing`. Either way the other requested metrics are still returned. - They are not in the default metric set: ask for them in `metrics`.  ### What is not exposed  This ACCOUNT-level endpoint does not return:  - account-level impressions / reach - follower inflow / outflow breakdown - account-level watch time  Follower age, gender, country and city are on GET /v1/analytics/tiktok/demographics.  ### Per-video metrics  PER-VIDEO is a different story on the Business lane. An account connected through the TikTok for Business app reports these per video on GET /v1/analytics?postId=...:  - profile views, website clicks, follows - full-watched rate, watch time - impression sources, viewer types and viewer countries  They arrive roughly 24-48h after publishing and only for posts active in the last 7 days.  Accounts on the original TikTok integration get the basic counters there (views, likes, comments, shares) and zeros for the rest. They must reconnect through the Business app.
 
 ### Example
 
@@ -1953,12 +2026,12 @@ $apiInstance = new Zernio\Api\AnalyticsApi(
     $config
 );
 $account_id = 'account_id_example'; // string | The Zernio SocialAccount ID for the TikTok account.
-$metrics = 'metrics_example'; // string | Comma-separated list. Defaults to \"follower_count,likes_count,video_count,followers_gained,followers_lost\".  Live from /v2/user/info/ (requires user.info.stats scope):   - follower_count  (cumulative; time series joined from AccountStats)   - following_count (cumulative; time series joined from AccountStats.metadata)   - likes_count     (cumulative; time series joined from AccountStats.metadata)   - video_count     (cumulative; time series joined from AccountStats.metadata)  Zernio-synthesized:   - followers_gained  (sum of positive daily follower deltas)   - followers_lost    (sum of absolute negative daily deltas)
+$metrics = 'metrics_example'; // string | Comma-separated list. Defaults to \"follower_count,likes_count,video_count,followers_gained,followers_lost\".  Live profile counters (requires user.info.stats scope):   - follower_count  (cumulative; time series joined from AccountStats)   - following_count (cumulative; time series joined from AccountStats.metadata)   - likes_count     (cumulative; time series joined from AccountStats.metadata)   - video_count     (cumulative; time series joined from AccountStats.metadata)  Daily account figures from TikTok (requires user.insights scope and an account on Zernio's TikTok connection):   - video_views     (views of all the account's videos that day)   - likes           (likes received that day)   - comments        (comments received that day)   - shares          (shares that day)   - profile_views   (profile views that day)  Zernio-synthesized:   - followers_gained  (sum of positive daily follower deltas)   - followers_lost    (sum of absolute negative daily deltas)
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start date (YYYY-MM-DD). Defaults to 30 days ago.
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date (YYYY-MM-DD). Defaults to today.
 $since = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Alias of fromDate, kept for existing callers
 $until = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Alias of toDate, kept for existing callers
-$metric_type = 'total_value'; // string | \"total_value\" returns the latest cumulative counter value. \"time_series\" returns daily values joined from AccountStats snapshots.
+$metric_type = 'total_value'; // string | \"total_value\" returns the latest value of a cumulative counter, and the sum over the range for a daily account metric. \"time_series\" returns daily values: joined from AccountStats snapshots for the counters, TikTok's own daily figures for the daily account metrics.
 
 try {
     $result = $apiInstance->getTikTokAccountInsights($account_id, $metrics, $from_date, $to_date, $since, $until, $metric_type);
@@ -1973,12 +2046,12 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The Zernio SocialAccount ID for the TikTok account. | |
-| **metrics** | **string**| Comma-separated list. Defaults to \&quot;follower_count,likes_count,video_count,followers_gained,followers_lost\&quot;.  Live from /v2/user/info/ (requires user.info.stats scope):   - follower_count  (cumulative; time series joined from AccountStats)   - following_count (cumulative; time series joined from AccountStats.metadata)   - likes_count     (cumulative; time series joined from AccountStats.metadata)   - video_count     (cumulative; time series joined from AccountStats.metadata)  Zernio-synthesized:   - followers_gained  (sum of positive daily follower deltas)   - followers_lost    (sum of absolute negative daily deltas) | [optional] |
+| **metrics** | **string**| Comma-separated list. Defaults to \&quot;follower_count,likes_count,video_count,followers_gained,followers_lost\&quot;.  Live profile counters (requires user.info.stats scope):   - follower_count  (cumulative; time series joined from AccountStats)   - following_count (cumulative; time series joined from AccountStats.metadata)   - likes_count     (cumulative; time series joined from AccountStats.metadata)   - video_count     (cumulative; time series joined from AccountStats.metadata)  Daily account figures from TikTok (requires user.insights scope and an account on Zernio&#39;s TikTok connection):   - video_views     (views of all the account&#39;s videos that day)   - likes           (likes received that day)   - comments        (comments received that day)   - shares          (shares that day)   - profile_views   (profile views that day)  Zernio-synthesized:   - followers_gained  (sum of positive daily follower deltas)   - followers_lost    (sum of absolute negative daily deltas) | [optional] |
 | **from_date** | **\DateTime**| Start date (YYYY-MM-DD). Defaults to 30 days ago. | [optional] |
 | **to_date** | **\DateTime**| End date (YYYY-MM-DD). Defaults to today. | [optional] |
 | **since** | **\DateTime**| Alias of fromDate, kept for existing callers | [optional] |
 | **until** | **\DateTime**| Alias of toDate, kept for existing callers | [optional] |
-| **metric_type** | **string**| \&quot;total_value\&quot; returns the latest cumulative counter value. \&quot;time_series\&quot; returns daily values joined from AccountStats snapshots. | [optional] [default to &#39;total_value&#39;] |
+| **metric_type** | **string**| \&quot;total_value\&quot; returns the latest value of a cumulative counter, and the sum over the range for a daily account metric. \&quot;time_series\&quot; returns daily values: joined from AccountStats snapshots for the counters, TikTok&#39;s own daily figures for the daily account metrics. | [optional] [default to &#39;total_value&#39;] |
 
 ### Return type
 

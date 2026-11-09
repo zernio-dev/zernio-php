@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **status** | **string** |  | [optional]
 **can_post** | **bool** |  | [optional]
 **can_fetch_analytics** | **bool** |  | [optional]
+**scope_areas** | **array<string,string>** | Present when the account connected with &#x60;scopes&#x60; or through your own OAuth app: each permission area the platform splits, as granted, missing or not_requested. An area never requested does not make the account unhealthy. | [optional]
 **token_valid** | **bool** |  | [optional]
 **token_expires_at** | **\DateTime** |  | [optional]
 **needs_reconnect** | **bool** | True when the token is expired or revoked, permissions are missing, the account is inactive, or the platform rejected its stored credentials (the same flag the account listing reports as needsReconnection). | [optional]
