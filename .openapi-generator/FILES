@@ -2523,6 +2523,8 @@ docs/Model/ReplyToGoogleBusinessReview200Response.md
 docs/Model/ReplyToGoogleBusinessReviewRequest.md
 docs/Model/ReplyToInboxPost200Response.md
 docs/Model/ReplyToInboxPost200ResponseData.md
+docs/Model/ReplyToInboxPost400Response.md
+docs/Model/ReplyToInboxPost400ResponseDetails.md
 docs/Model/ReplyToInboxPostRequest.md
 docs/Model/ReplyToInboxReview200Response.md
 docs/Model/ReplyToInboxReviewRequest.md
@@ -6049,6 +6051,8 @@ lib/Model/ReplyToGoogleBusinessReview200Response.php
 lib/Model/ReplyToGoogleBusinessReviewRequest.php
 lib/Model/ReplyToInboxPost200Response.php
 lib/Model/ReplyToInboxPost200ResponseData.php
+lib/Model/ReplyToInboxPost400Response.php
+lib/Model/ReplyToInboxPost400ResponseDetails.php
 lib/Model/ReplyToInboxPostRequest.php
 lib/Model/ReplyToInboxReview200Response.php
 lib/Model/ReplyToInboxReviewRequest.php
@@ -7051,3 +7055,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ReplyToInboxPost400ResponseDetailsTest.php
+test/Model/ReplyToInboxPost400ResponseTest.php
