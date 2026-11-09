@@ -22,5 +22,6 @@ Name | Type | Description | Notes
 **link** | **string** | Pinterest only: destination URL of the Pin, not the Pin page (see permalink) | [optional]
 **board_id** | **string** | Pinterest only: id of the board holding the Pin | [optional]
 **board_owner_username** | **string** | Pinterest only: username of the board owner | [optional]
+**is_owner** | **bool** | Pinterest: true when the account created the Pin, false when it saved it from another user. Facebook: false for a collab post by another Page. Absent when the platform does not report it. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
