@@ -516,12 +516,12 @@ try {
 ## `listInstagramStories()`
 
 ```php
-listInstagramStories($account_id): \Zernio\Model\ListInstagramStories200Response
+listInstagramStories($account_id, $include_expired, $limit): \Zernio\Model\ListInstagramStories200Response
 ```
 
 List active Instagram stories
 
-Returns the IG Business/Creator account's currently-active stories. Meta keeps stories live for 24h; expired stories are not returned.  Limitations propagated from Meta (these are NOT bugs): - 24h window only - Live videos excluded - Reshared stories not returned - `mediaUrl` may be null if Meta flagged the story for copyright - `caption`, `likeCount`, `commentsCount` do not apply to story media
+Returns the IG Business/Creator account's currently-active stories. Meta keeps stories live for 24h. Pass `includeExpired=true` to also get the stories Zernio archived before they expired: their media is copied into Zernio storage while the story is live, so `mediaUrl` and `thumbnailUrl` keep working after Meta deletes the story. Archiving needs the insights permission and covers stories posted since the account was connected (hourly readings, a final one at 23h, then Meta's end-of-story numbers when its webhook arrives).  Limitations propagated from Meta (these are NOT bugs): - 24h window only - Live videos excluded - Reshared stories not returned - `mediaUrl` may be null if Meta flagged the story for copyright - `caption`, `likeCount`, `commentsCount` do not apply to story media
 
 ### Example
 
@@ -541,9 +541,11 @@ $apiInstance = new Zernio\Api\InstagramApi(
     $config
 );
 $account_id = 'account_id_example'; // string | The Instagram account ID
+$include_expired = false; // bool | Also return archived stories that are no longer live, newest first after the live ones. Every item then carries `expired` and `metrics`.
+$limit = 100; // int | Maximum number of archived stories to read when `includeExpired=true` (live stories are always all returned).
 
 try {
-    $result = $apiInstance->listInstagramStories($account_id);
+    $result = $apiInstance->listInstagramStories($account_id, $include_expired, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InstagramApi->listInstagramStories: ', $e->getMessage(), PHP_EOL;
@@ -555,6 +557,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The Instagram account ID | |
+| **include_expired** | **bool**| Also return archived stories that are no longer live, newest first after the live ones. Every item then carries &#x60;expired&#x60; and &#x60;metrics&#x60;. | [optional] [default to false] |
+| **limit** | **int**| Maximum number of archived stories to read when &#x60;includeExpired&#x3D;true&#x60; (live stories are always all returned). | [optional] [default to 100] |
 
 ### Return type
 

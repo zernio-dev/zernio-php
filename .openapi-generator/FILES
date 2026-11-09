@@ -2114,6 +2114,7 @@ docs/Model/ListInstagramPages200ResponsePagesInner.md
 docs/Model/ListInstagramPages200ResponsePagesInnerInstagramBusinessAccount.md
 docs/Model/ListInstagramStories200Response.md
 docs/Model/ListInstagramStories200ResponseDataInner.md
+docs/Model/ListInstagramStories200ResponseDataInnerMetrics.md
 docs/Model/ListInstagramTaggedMedia200Response.md
 docs/Model/ListLeadForms200Response.md
 docs/Model/ListLeads200Response.md
@@ -5641,6 +5642,7 @@ lib/Model/ListInstagramPages200ResponsePagesInner.php
 lib/Model/ListInstagramPages200ResponsePagesInnerInstagramBusinessAccount.php
 lib/Model/ListInstagramStories200Response.php
 lib/Model/ListInstagramStories200ResponseDataInner.php
+lib/Model/ListInstagramStories200ResponseDataInnerMetrics.php
 lib/Model/ListInstagramTaggedMedia200Response.php
 lib/Model/ListLeadForms200Response.php
 lib/Model/ListLeads200Response.php
@@ -7055,3 +7057,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ListInstagramStories200ResponseDataInnerMetricsTest.php
