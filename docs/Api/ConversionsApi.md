@@ -1302,7 +1302,7 @@ try {
 ## `sendConversions()`
 
 ```php
-sendConversions($send_conversions_request): \Zernio\Model\SendConversions200Response
+sendConversions($send_conversions_request, $idempotency_key): \Zernio\Model\SendConversions200Response
 ```
 
 Send conversion events
@@ -1327,9 +1327,10 @@ $apiInstance = new Zernio\Api\ConversionsApi(
     $config
 );
 $send_conversions_request = new \Zernio\Model\SendConversionsRequest(); // \Zernio\Model\SendConversionsRequest
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
 
 try {
-    $result = $apiInstance->sendConversions($send_conversions_request);
+    $result = $apiInstance->sendConversions($send_conversions_request, $idempotency_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConversionsApi->sendConversions: ', $e->getMessage(), PHP_EOL;
@@ -1341,6 +1342,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **send_conversions_request** | [**\Zernio\Model\SendConversionsRequest**](../Model/SendConversionsRequest.md)|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
 
 ### Return type
 
@@ -1362,7 +1364,7 @@ try {
 ## `sendEvents()`
 
 ```php
-sendEvents($send_events_request): \Zernio\Model\SendEvents200Response
+sendEvents($send_events_request, $idempotency_key): \Zernio\Model\SendEvents200Response
 ```
 
 Send events to every destination
@@ -1387,9 +1389,10 @@ $apiInstance = new Zernio\Api\ConversionsApi(
     $config
 );
 $send_events_request = new \Zernio\Model\SendEventsRequest(); // \Zernio\Model\SendEventsRequest
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
 
 try {
-    $result = $apiInstance->sendEvents($send_events_request);
+    $result = $apiInstance->sendEvents($send_events_request, $idempotency_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConversionsApi->sendEvents: ', $e->getMessage(), PHP_EOL;
@@ -1401,6 +1404,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **send_events_request** | [**\Zernio\Model\SendEventsRequest**](../Model/SendEventsRequest.md)|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
 
 ### Return type
 
