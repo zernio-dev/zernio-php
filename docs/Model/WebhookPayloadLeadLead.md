@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Zernio lead ID (AdLead document ID) |
-**leadgen_id** | **string** | Meta lead ID (the platform&#39;s leadgen_id) |
+**platform** | **string** | The ad network the lead came from. | [optional]
+**leadgen_id** | **string** | The network&#39;s lead id: Meta&#39;s leadgen_id, or the Google lead form submission id |
 **form_id** | **string** | Lead Gen form ID the lead was submitted against |
 **form_name** | **string** | Human-readable form name (best-effort; may be null) | [optional]
 **ad_id** | **string** | Meta ad ID that drove the lead (null for organic/test leads) | [optional]
