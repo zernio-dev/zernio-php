@@ -13602,16 +13602,17 @@ class AdAccountsApi
      * @param  string $account_id Account ID (required)
      * @param  string|null $ad_account_id Filter response to a single platform ad account ID (e.g. &#x60;act_123&#x60; for Meta, advertiser_id for TikTok). Returns at most one item. (optional)
      * @param  int|null $limit Clamp the returned &#x60;accounts[]&#x60; length. Useful for typeahead pickers on agency tokens with hundreds of advertisers. (optional)
-     * @param  bool|null $in_scope_only &#x60;true&#x60; returns only the ad accounts this connection accepts as &#x60;adAccountId&#x60; on the other /v1/ads endpoints, i.e. those inside its ad-account selection (every item then has &#x60;selected: true&#x60;). Without it, every ad account the login can reach is listed and &#x60;selected&#x60; flags selection membership.  - Meta, LinkedIn, X and Reddit: drops the ad accounts with &#x60;selected: false&#x60;; a connection without a selection keeps them all. - Google Ads: also drops customers the login reaches that are not on this connection (for example ones selected on another connection of the same login), which those endpoints answer with a 400. - TikTok and Pinterest: no selection, so the list is unchanged. (optional, default to false)
+     * @param  bool|null $in_scope_only &#x60;true&#x60; returns only the ad accounts this connection accepts as &#x60;adAccountId&#x60; on the other /v1/ads endpoints, i.e. those inside its ad-account selection (every item then has &#x60;selected: true&#x60;).  Without it, every ad account the login can reach is listed and &#x60;selected&#x60; flags selection membership. Exception: a Meta connection with a selection lists unselected ad accounts only with &#x60;live&#x3D;true&#x60;.  - Meta, LinkedIn, X and Reddit: drops the ad accounts with &#x60;selected: false&#x60;; a connection without a selection keeps them all. - Google Ads: also drops customers the login reaches that are not on this connection (for example ones selected on another connection of the same login), which those endpoints answer with a 400. - TikTok and Pinterest: no selection, so the list is unchanged. (optional, default to false)
+     * @param  bool|null $live &#x60;true&#x60; lists the ad accounts the login reaches live from the platform instead of the stored catalog.  A Meta connection with an ad-account selection stores only its selected ad accounts, so without &#x60;live&#x3D;true&#x60; it lists only those (a stale catalog falls back to a live listing). With it, every reachable ad account is listed, the others with &#x60;selected: false&#x60;. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAccounts'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListAdAccounts200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
-    public function listAdAccounts($account_id, $ad_account_id = null, $limit = null, $in_scope_only = false, string $contentType = self::contentTypes['listAdAccounts'][0])
+    public function listAdAccounts($account_id, $ad_account_id = null, $limit = null, $in_scope_only = false, $live = false, string $contentType = self::contentTypes['listAdAccounts'][0])
     {
-        list($response) = $this->listAdAccountsWithHttpInfo($account_id, $ad_account_id, $limit, $in_scope_only, $contentType);
+        list($response) = $this->listAdAccountsWithHttpInfo($account_id, $ad_account_id, $limit, $in_scope_only, $live, $contentType);
         return $response;
     }
 
@@ -13623,16 +13624,17 @@ class AdAccountsApi
      * @param  string $account_id Account ID (required)
      * @param  string|null $ad_account_id Filter response to a single platform ad account ID (e.g. &#x60;act_123&#x60; for Meta, advertiser_id for TikTok). Returns at most one item. (optional)
      * @param  int|null $limit Clamp the returned &#x60;accounts[]&#x60; length. Useful for typeahead pickers on agency tokens with hundreds of advertisers. (optional)
-     * @param  bool|null $in_scope_only &#x60;true&#x60; returns only the ad accounts this connection accepts as &#x60;adAccountId&#x60; on the other /v1/ads endpoints, i.e. those inside its ad-account selection (every item then has &#x60;selected: true&#x60;). Without it, every ad account the login can reach is listed and &#x60;selected&#x60; flags selection membership.  - Meta, LinkedIn, X and Reddit: drops the ad accounts with &#x60;selected: false&#x60;; a connection without a selection keeps them all. - Google Ads: also drops customers the login reaches that are not on this connection (for example ones selected on another connection of the same login), which those endpoints answer with a 400. - TikTok and Pinterest: no selection, so the list is unchanged. (optional, default to false)
+     * @param  bool|null $in_scope_only &#x60;true&#x60; returns only the ad accounts this connection accepts as &#x60;adAccountId&#x60; on the other /v1/ads endpoints, i.e. those inside its ad-account selection (every item then has &#x60;selected: true&#x60;).  Without it, every ad account the login can reach is listed and &#x60;selected&#x60; flags selection membership. Exception: a Meta connection with a selection lists unselected ad accounts only with &#x60;live&#x3D;true&#x60;.  - Meta, LinkedIn, X and Reddit: drops the ad accounts with &#x60;selected: false&#x60;; a connection without a selection keeps them all. - Google Ads: also drops customers the login reaches that are not on this connection (for example ones selected on another connection of the same login), which those endpoints answer with a 400. - TikTok and Pinterest: no selection, so the list is unchanged. (optional, default to false)
+     * @param  bool|null $live &#x60;true&#x60; lists the ad accounts the login reaches live from the platform instead of the stored catalog.  A Meta connection with an ad-account selection stores only its selected ad accounts, so without &#x60;live&#x3D;true&#x60; it lists only those (a stale catalog falls back to a live listing). With it, every reachable ad account is listed, the others with &#x60;selected: false&#x60;. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAccounts'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListAdAccounts200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAdAccountsWithHttpInfo($account_id, $ad_account_id = null, $limit = null, $in_scope_only = false, string $contentType = self::contentTypes['listAdAccounts'][0])
+    public function listAdAccountsWithHttpInfo($account_id, $ad_account_id = null, $limit = null, $in_scope_only = false, $live = false, string $contentType = self::contentTypes['listAdAccounts'][0])
     {
-        $request = $this->listAdAccountsRequest($account_id, $ad_account_id, $limit, $in_scope_only, $contentType);
+        $request = $this->listAdAccountsRequest($account_id, $ad_account_id, $limit, $in_scope_only, $live, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13781,15 +13783,16 @@ class AdAccountsApi
      * @param  string $account_id Account ID (required)
      * @param  string|null $ad_account_id Filter response to a single platform ad account ID (e.g. &#x60;act_123&#x60; for Meta, advertiser_id for TikTok). Returns at most one item. (optional)
      * @param  int|null $limit Clamp the returned &#x60;accounts[]&#x60; length. Useful for typeahead pickers on agency tokens with hundreds of advertisers. (optional)
-     * @param  bool|null $in_scope_only &#x60;true&#x60; returns only the ad accounts this connection accepts as &#x60;adAccountId&#x60; on the other /v1/ads endpoints, i.e. those inside its ad-account selection (every item then has &#x60;selected: true&#x60;). Without it, every ad account the login can reach is listed and &#x60;selected&#x60; flags selection membership.  - Meta, LinkedIn, X and Reddit: drops the ad accounts with &#x60;selected: false&#x60;; a connection without a selection keeps them all. - Google Ads: also drops customers the login reaches that are not on this connection (for example ones selected on another connection of the same login), which those endpoints answer with a 400. - TikTok and Pinterest: no selection, so the list is unchanged. (optional, default to false)
+     * @param  bool|null $in_scope_only &#x60;true&#x60; returns only the ad accounts this connection accepts as &#x60;adAccountId&#x60; on the other /v1/ads endpoints, i.e. those inside its ad-account selection (every item then has &#x60;selected: true&#x60;).  Without it, every ad account the login can reach is listed and &#x60;selected&#x60; flags selection membership. Exception: a Meta connection with a selection lists unselected ad accounts only with &#x60;live&#x3D;true&#x60;.  - Meta, LinkedIn, X and Reddit: drops the ad accounts with &#x60;selected: false&#x60;; a connection without a selection keeps them all. - Google Ads: also drops customers the login reaches that are not on this connection (for example ones selected on another connection of the same login), which those endpoints answer with a 400. - TikTok and Pinterest: no selection, so the list is unchanged. (optional, default to false)
+     * @param  bool|null $live &#x60;true&#x60; lists the ad accounts the login reaches live from the platform instead of the stored catalog.  A Meta connection with an ad-account selection stores only its selected ad accounts, so without &#x60;live&#x3D;true&#x60; it lists only those (a stale catalog falls back to a live listing). With it, every reachable ad account is listed, the others with &#x60;selected: false&#x60;. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdAccountsAsync($account_id, $ad_account_id = null, $limit = null, $in_scope_only = false, string $contentType = self::contentTypes['listAdAccounts'][0])
+    public function listAdAccountsAsync($account_id, $ad_account_id = null, $limit = null, $in_scope_only = false, $live = false, string $contentType = self::contentTypes['listAdAccounts'][0])
     {
-        return $this->listAdAccountsAsyncWithHttpInfo($account_id, $ad_account_id, $limit, $in_scope_only, $contentType)
+        return $this->listAdAccountsAsyncWithHttpInfo($account_id, $ad_account_id, $limit, $in_scope_only, $live, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13805,16 +13808,17 @@ class AdAccountsApi
      * @param  string $account_id Account ID (required)
      * @param  string|null $ad_account_id Filter response to a single platform ad account ID (e.g. &#x60;act_123&#x60; for Meta, advertiser_id for TikTok). Returns at most one item. (optional)
      * @param  int|null $limit Clamp the returned &#x60;accounts[]&#x60; length. Useful for typeahead pickers on agency tokens with hundreds of advertisers. (optional)
-     * @param  bool|null $in_scope_only &#x60;true&#x60; returns only the ad accounts this connection accepts as &#x60;adAccountId&#x60; on the other /v1/ads endpoints, i.e. those inside its ad-account selection (every item then has &#x60;selected: true&#x60;). Without it, every ad account the login can reach is listed and &#x60;selected&#x60; flags selection membership.  - Meta, LinkedIn, X and Reddit: drops the ad accounts with &#x60;selected: false&#x60;; a connection without a selection keeps them all. - Google Ads: also drops customers the login reaches that are not on this connection (for example ones selected on another connection of the same login), which those endpoints answer with a 400. - TikTok and Pinterest: no selection, so the list is unchanged. (optional, default to false)
+     * @param  bool|null $in_scope_only &#x60;true&#x60; returns only the ad accounts this connection accepts as &#x60;adAccountId&#x60; on the other /v1/ads endpoints, i.e. those inside its ad-account selection (every item then has &#x60;selected: true&#x60;).  Without it, every ad account the login can reach is listed and &#x60;selected&#x60; flags selection membership. Exception: a Meta connection with a selection lists unselected ad accounts only with &#x60;live&#x3D;true&#x60;.  - Meta, LinkedIn, X and Reddit: drops the ad accounts with &#x60;selected: false&#x60;; a connection without a selection keeps them all. - Google Ads: also drops customers the login reaches that are not on this connection (for example ones selected on another connection of the same login), which those endpoints answer with a 400. - TikTok and Pinterest: no selection, so the list is unchanged. (optional, default to false)
+     * @param  bool|null $live &#x60;true&#x60; lists the ad accounts the login reaches live from the platform instead of the stored catalog.  A Meta connection with an ad-account selection stores only its selected ad accounts, so without &#x60;live&#x3D;true&#x60; it lists only those (a stale catalog falls back to a live listing). With it, every reachable ad account is listed, the others with &#x60;selected: false&#x60;. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdAccountsAsyncWithHttpInfo($account_id, $ad_account_id = null, $limit = null, $in_scope_only = false, string $contentType = self::contentTypes['listAdAccounts'][0])
+    public function listAdAccountsAsyncWithHttpInfo($account_id, $ad_account_id = null, $limit = null, $in_scope_only = false, $live = false, string $contentType = self::contentTypes['listAdAccounts'][0])
     {
         $returnType = '\Zernio\Model\ListAdAccounts200Response';
-        $request = $this->listAdAccountsRequest($account_id, $ad_account_id, $limit, $in_scope_only, $contentType);
+        $request = $this->listAdAccountsRequest($account_id, $ad_account_id, $limit, $in_scope_only, $live, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13858,13 +13862,14 @@ class AdAccountsApi
      * @param  string $account_id Account ID (required)
      * @param  string|null $ad_account_id Filter response to a single platform ad account ID (e.g. &#x60;act_123&#x60; for Meta, advertiser_id for TikTok). Returns at most one item. (optional)
      * @param  int|null $limit Clamp the returned &#x60;accounts[]&#x60; length. Useful for typeahead pickers on agency tokens with hundreds of advertisers. (optional)
-     * @param  bool|null $in_scope_only &#x60;true&#x60; returns only the ad accounts this connection accepts as &#x60;adAccountId&#x60; on the other /v1/ads endpoints, i.e. those inside its ad-account selection (every item then has &#x60;selected: true&#x60;). Without it, every ad account the login can reach is listed and &#x60;selected&#x60; flags selection membership.  - Meta, LinkedIn, X and Reddit: drops the ad accounts with &#x60;selected: false&#x60;; a connection without a selection keeps them all. - Google Ads: also drops customers the login reaches that are not on this connection (for example ones selected on another connection of the same login), which those endpoints answer with a 400. - TikTok and Pinterest: no selection, so the list is unchanged. (optional, default to false)
+     * @param  bool|null $in_scope_only &#x60;true&#x60; returns only the ad accounts this connection accepts as &#x60;adAccountId&#x60; on the other /v1/ads endpoints, i.e. those inside its ad-account selection (every item then has &#x60;selected: true&#x60;).  Without it, every ad account the login can reach is listed and &#x60;selected&#x60; flags selection membership. Exception: a Meta connection with a selection lists unselected ad accounts only with &#x60;live&#x3D;true&#x60;.  - Meta, LinkedIn, X and Reddit: drops the ad accounts with &#x60;selected: false&#x60;; a connection without a selection keeps them all. - Google Ads: also drops customers the login reaches that are not on this connection (for example ones selected on another connection of the same login), which those endpoints answer with a 400. - TikTok and Pinterest: no selection, so the list is unchanged. (optional, default to false)
+     * @param  bool|null $live &#x60;true&#x60; lists the ad accounts the login reaches live from the platform instead of the stored catalog.  A Meta connection with an ad-account selection stores only its selected ad accounts, so without &#x60;live&#x3D;true&#x60; it lists only those (a stale catalog falls back to a live listing). With it, every reachable ad account is listed, the others with &#x60;selected: false&#x60;. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAdAccountsRequest($account_id, $ad_account_id = null, $limit = null, $in_scope_only = false, string $contentType = self::contentTypes['listAdAccounts'][0])
+    public function listAdAccountsRequest($account_id, $ad_account_id = null, $limit = null, $in_scope_only = false, $live = false, string $contentType = self::contentTypes['listAdAccounts'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -13882,6 +13887,7 @@ class AdAccountsApi
             throw new \InvalidArgumentException('invalid value for "$limit" when calling AdAccountsApi.listAdAccounts, must be bigger than or equal to 1.');
         }
         
+
 
 
         $resourcePath = '/v1/ads/accounts';
@@ -13922,6 +13928,15 @@ class AdAccountsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $in_scope_only,
             'inScopeOnly', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $live,
+            'live', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
