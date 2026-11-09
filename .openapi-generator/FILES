@@ -7051,10 +7051,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetEvent200ResponseDeliveriesInnerTest.php
-test/Model/GetEvent200ResponseTest.php
-test/Model/SendEvents202ResponseTest.php
-test/Model/StoredEventAdTest.php
-test/Model/StoredEventClickIdsTest.php
-test/Model/StoredEventTest.php
-test/Model/StoredEventUtmTest.php
