@@ -36,7 +36,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getHubSpotConnectUrl()**](ConnectApi.md#getHubSpotConnectUrl) | **GET** /v1/connect/hubspot | Get HubSpot OAuth connect URL |
 | [**getLinkedInOrganizations()**](ConnectApi.md#getLinkedInOrganizations) | **GET** /v1/accounts/{accountId}/linkedin-organizations | List LinkedIn orgs |
 | [**getOAuthApp()**](ConnectApi.md#getOAuthApp) | **GET** /v1/connect/oauth-apps/{appId} | Get an OAuth app |
-| [**getPageWebhookSubscription()**](ConnectApi.md#getPageWebhookSubscription) | **GET** /v1/accounts/{accountId}/webhook-subscription | Read a Facebook Page&#39;s webhook subscription |
+| [**getPageWebhookSubscription()**](ConnectApi.md#getPageWebhookSubscription) | **GET** /v1/accounts/{accountId}/webhook-subscription | Read an account&#39;s webhook subscription |
 | [**getPendingOAuthData()**](ConnectApi.md#getPendingOAuthData) | **GET** /v1/connect/pending-data | Get pending OAuth data |
 | [**getPinterestBoards()**](ConnectApi.md#getPinterestBoards) | **GET** /v1/accounts/{accountId}/pinterest-boards | List Pinterest boards |
 | [**getRedditFlairs()**](ConnectApi.md#getRedditFlairs) | **GET** /v1/accounts/{accountId}/reddit-flairs | List subreddit flairs |
@@ -62,7 +62,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listSlackChannels()**](ConnectApi.md#listSlackChannels) | **GET** /v1/connect/slack | List Slack channels for the channel picker |
 | [**listSnapchatProfiles()**](ConnectApi.md#listSnapchatProfiles) | **GET** /v1/connect/snapchat/select-profile | List Snapchat profiles |
 | [**listWhatsAppPhoneNumbers()**](ConnectApi.md#listWhatsAppPhoneNumbers) | **GET** /v1/connect/whatsapp/select-phone-number | List numbers for selection |
-| [**resyncPageWebhookSubscription()**](ConnectApi.md#resyncPageWebhookSubscription) | **POST** /v1/accounts/{accountId}/webhook-subscription | Re-subscribe a Facebook Page to Zernio&#39;s webhooks |
+| [**resyncPageWebhookSubscription()**](ConnectApi.md#resyncPageWebhookSubscription) | **POST** /v1/accounts/{accountId}/webhook-subscription | Re-subscribe an account to Zernio&#39;s webhooks |
 | [**selectFacebookPage()**](ConnectApi.md#selectFacebookPage) | **POST** /v1/connect/facebook/select-page | Select Facebook page |
 | [**selectGoogleAnalyticsProperty()**](ConnectApi.md#selectGoogleAnalyticsProperty) | **POST** /v1/connect/googleanalytics/select-property | Connect the chosen Google Analytics property |
 | [**selectGoogleBusinessLocation()**](ConnectApi.md#selectGoogleBusinessLocation) | **POST** /v1/connect/googlebusiness/select-location | Select Google Business Profile location |
@@ -2000,9 +2000,9 @@ try {
 getPageWebhookSubscription($account_id): \Zernio\Model\GetPageWebhookSubscription200Response
 ```
 
-Read a Facebook Page's webhook subscription
+Read an account's webhook subscription
 
-Returns the webhook fields Zernio's app is subscribed to on the connected Page, read live from Meta. Use it to confirm `leadgen` is present: a Page missing it keeps delivering every other event while lead ads stop arriving, with nothing to indicate it.
+Returns the webhook fields Zernio's app is subscribed to on the connected Page, read live from Meta. Use it to confirm `leadgen` is present: a Page missing it keeps delivering every other event while lead ads stop arriving, with nothing to indicate it.  For an Instagram account connected through Instagram Login it returns the subscription record (`subscriptionId`) and the webhook fields Meta did not subscribe (`missingFields`). An Instagram account connected through Facebook Login returns 409: its webhooks ride the Facebook Page subscription.
 
 ### Example
 
@@ -3664,9 +3664,9 @@ try {
 resyncPageWebhookSubscription($account_id): \Zernio\Model\ResyncPageWebhookSubscription200Response
 ```
 
-Re-subscribe a Facebook Page to Zernio's webhooks
+Re-subscribe an account to Zernio's webhooks
 
-Re-sends the full field set to Meta and returns the subscription read back afterwards. Meta only honours the field set sent at subscribe time, so a Page connected before a field existed stays without it until this runs. The response reflects what Meta actually granted, not what was requested.
+Re-sends the full field set to Meta and returns the subscription read back afterwards. Meta only honours the field set sent at subscribe time, so a Page connected before a field existed stays without it until this runs. The response reflects what Meta actually granted, not what was requested.  For an Instagram account connected through Instagram Login, Meta can keep listing a subscription while delivering nothing, and re-sending the fields over it changes nothing. So this call deletes the subscription and creates it again, and `recreated` is true when the record id moved.  Events can be missed during the short window in between, so use it when delivery has stopped, not periodically. An Instagram account connected through Facebook Login returns 409.
 
 ### Example
 
