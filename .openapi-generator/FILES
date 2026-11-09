@@ -1381,6 +1381,8 @@ docs/Model/GetDsaDefaults200ResponseDsaDefaults.md
 docs/Model/GetDsaRecommendations200Response.md
 docs/Model/GetEmailThread200Response.md
 docs/Model/GetEmailThread200ResponseData.md
+docs/Model/GetEvent200Response.md
+docs/Model/GetEvent200ResponseDeliveriesInner.md
 docs/Model/GetFacebookDemographics200Response.md
 docs/Model/GetFacebookDemographics200ResponseDemographics.md
 docs/Model/GetFacebookDemographics200ResponseDemographicsCountryInner.md
@@ -2053,10 +2055,6 @@ docs/Model/ListEmailMessages200Response.md
 docs/Model/ListEmailThreads200Response.md
 docs/Model/ListEventDestinations200Response.md
 docs/Model/ListEvents200Response.md
-docs/Model/ListEvents200ResponseEventsInner.md
-docs/Model/ListEvents200ResponseEventsInnerAd.md
-docs/Model/ListEvents200ResponseEventsInnerClickIds.md
-docs/Model/ListEvents200ResponseEventsInnerUtm.md
 docs/Model/ListFacebookPages200Response.md
 docs/Model/ListFacebookPages200ResponsePagesInner.md
 docs/Model/ListFacebookTaggedPosts200Response.md
@@ -2665,6 +2663,7 @@ docs/Model/SendEmailRequestAttachmentsInner.md
 docs/Model/SendEvents200Response.md
 docs/Model/SendEvents200ResponseDestinationsInner.md
 docs/Model/SendEvents200ResponseDestinationsInnerFailuresInner.md
+docs/Model/SendEvents202Response.md
 docs/Model/SendEventsRequest.md
 docs/Model/SendEventsRequestConsent.md
 docs/Model/SendEventsRequestDestinationsInner.md
@@ -2807,6 +2806,10 @@ docs/Model/StartWhatsAppCallerIdVerification200Response.md
 docs/Model/StartWhatsAppCallerIdVerificationRequest.md
 docs/Model/StorePixelInstall.md
 docs/Model/StorePixelInstallTagsInner.md
+docs/Model/StoredEvent.md
+docs/Model/StoredEventAd.md
+docs/Model/StoredEventClickIds.md
+docs/Model/StoredEventUtm.md
 docs/Model/SubmitCreatorPost201Response.md
 docs/Model/SubmitCreatorPostRequest.md
 docs/Model/SubmitFeedbackRequest.md
@@ -4903,6 +4906,8 @@ lib/Model/GetDsaDefaults200ResponseDsaDefaults.php
 lib/Model/GetDsaRecommendations200Response.php
 lib/Model/GetEmailThread200Response.php
 lib/Model/GetEmailThread200ResponseData.php
+lib/Model/GetEvent200Response.php
+lib/Model/GetEvent200ResponseDeliveriesInner.php
 lib/Model/GetFacebookDemographics200Response.php
 lib/Model/GetFacebookDemographics200ResponseDemographics.php
 lib/Model/GetFacebookDemographics200ResponseDemographicsCountryInner.php
@@ -5575,10 +5580,6 @@ lib/Model/ListEmailMessages200Response.php
 lib/Model/ListEmailThreads200Response.php
 lib/Model/ListEventDestinations200Response.php
 lib/Model/ListEvents200Response.php
-lib/Model/ListEvents200ResponseEventsInner.php
-lib/Model/ListEvents200ResponseEventsInnerAd.php
-lib/Model/ListEvents200ResponseEventsInnerClickIds.php
-lib/Model/ListEvents200ResponseEventsInnerUtm.php
 lib/Model/ListFacebookPages200Response.php
 lib/Model/ListFacebookPages200ResponsePagesInner.php
 lib/Model/ListFacebookTaggedPosts200Response.php
@@ -6188,6 +6189,7 @@ lib/Model/SendEmailRequestAttachmentsInner.php
 lib/Model/SendEvents200Response.php
 lib/Model/SendEvents200ResponseDestinationsInner.php
 lib/Model/SendEvents200ResponseDestinationsInnerFailuresInner.php
+lib/Model/SendEvents202Response.php
 lib/Model/SendEventsRequest.php
 lib/Model/SendEventsRequestConsent.php
 lib/Model/SendEventsRequestDestinationsInner.php
@@ -6330,6 +6332,10 @@ lib/Model/StartWhatsAppCallerIdVerification200Response.php
 lib/Model/StartWhatsAppCallerIdVerificationRequest.php
 lib/Model/StorePixelInstall.php
 lib/Model/StorePixelInstallTagsInner.php
+lib/Model/StoredEvent.php
+lib/Model/StoredEventAd.php
+lib/Model/StoredEventClickIds.php
+lib/Model/StoredEventUtm.php
 lib/Model/SubmitCreatorPost201Response.php
 lib/Model/SubmitCreatorPostRequest.php
 lib/Model/SubmitFeedbackRequest.php
@@ -7045,3 +7051,10 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetEvent200ResponseDeliveriesInnerTest.php
+test/Model/GetEvent200ResponseTest.php
+test/Model/SendEvents202ResponseTest.php
+test/Model/StoredEventAdTest.php
+test/Model/StoredEventClickIdsTest.php
+test/Model/StoredEventTest.php
+test/Model/StoredEventUtmTest.php

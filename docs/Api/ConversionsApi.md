@@ -17,6 +17,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getConversionDestination()**](ConversionsApi.md#getConversionDestination) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Get a conversion destination |
 | [**getConversionMetrics()**](ConversionsApi.md#getConversionMetrics) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/metrics | Get attribution metrics |
 | [**getConversionsQuality()**](ConversionsApi.md#getConversionsQuality) | **GET** /v1/ads/conversions/quality | Get Event Match Quality |
+| [**getEvent()**](ConversionsApi.md#getEvent) | **GET** /v1/events/{eventId} | Get one stored event and its deliveries |
 | [**listAdConversionGoals()**](ConversionsApi.md#listAdConversionGoals) | **GET** /v1/ads/conversions/goals | List account conversion goals |
 | [**listConversionActions()**](ConversionsApi.md#listConversionActions) | **GET** /v1/ads/conversions/actions | List conversion actions |
 | [**listConversionAssociations()**](ConversionsApi.md#listConversionAssociations) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | List associated campaigns |
@@ -705,6 +706,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetConversionsQuality200Response**](../Model/GetConversionsQuality200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getEvent()`
+
+```php
+getEvent($event_id, $profile_id): \Zernio\Model\GetEvent200Response
+```
+
+Get one stored event and its deliveries
+
+Returns one stored event of a profile (the latest copy of it) and, for each destination it was forwarded to, the newest send: `sent`, `retrying` (failed for now and queued again) or `failed` (final). Requires the Ads add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ConversionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$event_id = 'event_id_example'; // string | The `eventId` the event was sent with.
+$profile_id = 'profile_id_example'; // string | Profile the event belongs to.
+
+try {
+    $result = $apiInstance->getEvent($event_id, $profile_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConversionsApi->getEvent: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **event_id** | **string**| The &#x60;eventId&#x60; the event was sent with. | |
+| **profile_id** | **string**| Profile the event belongs to. | |
+
+### Return type
+
+[**\Zernio\Model\GetEvent200Response**](../Model/GetEvent200Response.md)
 
 ### Authorization
 
