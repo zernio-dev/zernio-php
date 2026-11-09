@@ -805,7 +805,7 @@ updatePostMetadata($post_id, $update_post_metadata_request): \Zernio\Model\Updat
 
 Update post metadata
 
-Updates metadata of a published video on the specified platform without re-uploading. Currently only supported for YouTube. At least one updatable field is required.  ### Two modes  1. Post-based (video published through Zernio): pass the Zernio postId in the URL and platform in the body. 2. Direct video ID (video uploaded outside Zernio, e.g. directly to YouTube): use _ as the postId, and pass videoId + accountId + platform in the body. The accountId is the Zernio account ID for the connected YouTube channel.
+Updates metadata of a published video on the specified platform without re-uploading. Supported on YouTube and Facebook. At least one updatable field is required.  ### Platforms  - YouTube: every field below. - Facebook: `thumbnailUrl` only, on a feed video or Reel published through Zernio (post-based mode). It replaces the video's cover. Any other field, a Story, a non-video post, or direct `videoId` mode returns 400. - Instagram: not supported. Meta does not allow changing a Reel or video cover after publishing, so set `instagramThumbnail` when creating the post.  ### Two modes  1. Post-based (video published through Zernio): pass the Zernio postId in the URL and platform in the body. 2. Direct video ID (YouTube only, video uploaded outside Zernio): use _ as the postId, and pass videoId + accountId + platform in the body. The accountId is the Zernio account ID for the connected YouTube channel.
 
 ### Example
 
