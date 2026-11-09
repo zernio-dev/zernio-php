@@ -76,6 +76,10 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onConversationStarted()**](WebhookEventsApi.md#onConversationStarted) | **POST** /conversation.started | Conversation started event |
 | [**onCreatorCampaignBudgetExhausted()**](WebhookEventsApi.md#onCreatorCampaignBudgetExhausted) | **POST** /creator_campaign.budget_exhausted | Creator campaign budget exhausted event |
 | [**onCreatorCampaignClosed()**](WebhookEventsApi.md#onCreatorCampaignClosed) | **POST** /creator_campaign.closed | Creator campaign closed event |
+| [**onEmailLinkClicked()**](WebhookEventsApi.md#onEmailLinkClicked) | **POST** /email.link_clicked | Email link clicked |
+| [**onEmailOpened()**](WebhookEventsApi.md#onEmailOpened) | **POST** /email.opened | Email opened |
+| [**onEmailSendFailed()**](WebhookEventsApi.md#onEmailSendFailed) | **POST** /email.send_failed | Scheduled email failed |
+| [**onEmailThreadReplied()**](WebhookEventsApi.md#onEmailThreadReplied) | **POST** /email.thread_replied | Email thread replied |
 | [**onFileCreated()**](WebhookEventsApi.md#onFileCreated) | **POST** /file.created | File created |
 | [**onFileDeleted()**](WebhookEventsApi.md#onFileDeleted) | **POST** /file.deleted | File deleted |
 | [**onFilePicked()**](WebhookEventsApi.md#onFilePicked) | **POST** /file.picked | Files picked |
@@ -4254,6 +4258,242 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_creator_campaign** | [**\Zernio\Model\WebhookPayloadCreatorCampaign**](../Model/WebhookPayloadCreatorCampaign.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onEmailLinkClicked()`
+
+```php
+onEmailLinkClicked($webhook_payload_email_link_clicked)
+```
+
+Email link clicked
+
+A recipient followed a link of a message sent with `trackLinks: true`. Every http(s) link in the html was rewritten to a Zernio redirect that records the click and sends the reader on to `click.url`.  Security scanners in corporate mail gateways sometimes follow links on delivery, which reports as a click.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_email_link_clicked = {"id":"00000000-0000-4000-8000-000000000000","event":"email.link_clicked","timestamp":"2026-01-15T10:00:00Z","account":{"accountId":"507f1f77bcf86cd799439011","profileId":"507f1f77bcf86cd799439012","platform":"google","username":"jane@example.com","displayName":"Jane Doe"},"email":{"messageId":"18c2f3a4b5d6e7f8","threadId":"18c2f3a4b5d6e7f0","trackingId":"Xk2m9QpL4vR8sT1wY6zA3bC5","metadata":{"campaign":"onboarding"}},"click":{"url":"https://example.com/pricing","linkIndex":0,"clickedAt":"2026-01-15T10:00:00.000Z","count":1},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadEmailLinkClicked
+
+try {
+    $apiInstance->onEmailLinkClicked($webhook_payload_email_link_clicked);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onEmailLinkClicked: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_email_link_clicked** | [**\Zernio\Model\WebhookPayloadEmailLinkClicked**](../Model/WebhookPayloadEmailLinkClicked.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onEmailOpened()`
+
+```php
+onEmailOpened($webhook_payload_email_opened)
+```
+
+Email opened
+
+A mail client loaded the open pixel of a message sent with `trackOpens: true`.  Opens are a signal, not proof of reading:  - Gmail and Apple Mail fetch images through their own proxies, some as soon as the mail arrives. - Clients that block images never report an open. - The sender viewing the message in their own Sent folder counts too.  Repeat fetches within 10 seconds raise `count` without firing again.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_email_opened = {"id":"00000000-0000-4000-8000-000000000000","event":"email.opened","timestamp":"2026-01-15T10:00:00Z","account":{"accountId":"507f1f77bcf86cd799439011","profileId":"507f1f77bcf86cd799439012","platform":"google","username":"jane@example.com","displayName":"Jane Doe"},"email":{"messageId":"18c2f3a4b5d6e7f8","threadId":"18c2f3a4b5d6e7f0","trackingId":"Xk2m9QpL4vR8sT1wY6zA3bC5","metadata":{"campaign":"onboarding"}},"open":{"openedAt":"2026-01-15T10:00:00.000Z","firstOpenedAt":"2026-01-14T10:00:00.000Z","count":2},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadEmailOpened
+
+try {
+    $apiInstance->onEmailOpened($webhook_payload_email_opened);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onEmailOpened: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_email_opened** | [**\Zernio\Model\WebhookPayloadEmailOpened**](../Model/WebhookPayloadEmailOpened.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onEmailSendFailed()`
+
+```php
+onEmailSendFailed($webhook_payload_email_send_failed)
+```
+
+Scheduled email failed
+
+A send scheduled with `scheduledFor` could not leave at its time. Nothing reached the recipients. `error` says why, for example the mailbox was disconnected, the daily send cap was reached or the provider refused the mail. The send stays listed with `status: failed`; schedule it again to retry.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_email_send_failed = {"id":"00000000-0000-4000-8000-000000000000","event":"email.send_failed","timestamp":"2026-01-15T10:00:00Z","account":{"accountId":"507f1f77bcf86cd799439011","profileId":"507f1f77bcf86cd799439012","platform":"google","username":"jane@example.com","displayName":"Jane Doe"},"scheduledEmail":{"id":"507f1f77bcf86cd79943902f","scheduledFor":"2026-01-14T10:00:00.000Z","error":"Daily send limit of 200 reached for this mailbox. Resets at 2026-01-15T00:00:00.000Z.","metadata":{"campaign":"onboarding"}},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadEmailSendFailed
+
+try {
+    $apiInstance->onEmailSendFailed($webhook_payload_email_send_failed);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onEmailSendFailed: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_email_send_failed** | [**\Zernio\Model\WebhookPayloadEmailSendFailed**](../Model/WebhookPayloadEmailSendFailed.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onEmailThreadReplied()`
+
+```php
+onEmailThreadReplied($webhook_payload_email_thread_replied)
+```
+
+Email thread replied
+
+Mail from someone other than the mailbox arrived in the thread of a message sent with `trackReplies: true`. Works on text and html sends. Auto-replies and bounce reports in the thread count as replies.  The reply also arrives as `message.received` with its full content.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_email_thread_replied = {"id":"00000000-0000-4000-8000-000000000000","event":"email.thread_replied","timestamp":"2026-01-15T10:00:00Z","account":{"accountId":"507f1f77bcf86cd799439011","profileId":"507f1f77bcf86cd799439012","platform":"google","username":"jane@example.com","displayName":"Jane Doe"},"email":{"messageId":"18c2f3a4b5d6e7f8","threadId":"18c2f3a4b5d6e7f0","trackingId":"Xk2m9QpL4vR8sT1wY6zA3bC5","metadata":{"campaign":"onboarding"}},"reply":{"messageId":"18c2f3a4b5d6e7f9","from":{"email":"alex@example.com","name":"Alex Smith"},"receivedAt":"2026-01-15T10:00:00.000Z","count":1},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadEmailThreadReplied
+
+try {
+    $apiInstance->onEmailThreadReplied($webhook_payload_email_thread_replied);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onEmailThreadReplied: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_email_thread_replied** | [**\Zernio\Model\WebhookPayloadEmailThreadReplied**](../Model/WebhookPayloadEmailThreadReplied.md)|  | |
 
 ### Return type
 

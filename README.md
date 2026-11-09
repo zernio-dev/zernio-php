@@ -781,12 +781,15 @@ Class | Method | HTTP request | Description
 *DiscordApi* | [**unpinDiscordMessage**](docs/Api/DiscordApi.md#unpindiscordmessage) | **DELETE** /v1/discord/channels/{channelId}/pins/{messageId} | Unpin a Discord message
 *DiscordApi* | [**updateDiscordScheduledEvent**](docs/Api/DiscordApi.md#updatediscordscheduledevent) | **PATCH** /v1/discord/guilds/{guildId}/events/{eventId} | Update a Discord scheduled event
 *DiscordApi* | [**updateDiscordSettings**](docs/Api/DiscordApi.md#updatediscordsettings) | **PATCH** /v1/accounts/{accountId}/discord-settings | Update Discord settings
+*EmailApi* | [**cancelScheduledEmail**](docs/Api/EmailApi.md#cancelscheduledemail) | **DELETE** /v1/email/messages/scheduled/{scheduleId} | Cancel a scheduled email
 *EmailApi* | [**downloadEmailAttachment**](docs/Api/EmailApi.md#downloademailattachment) | **GET** /v1/email/attachments/{attachmentId} | Download an attachment
 *EmailApi* | [**getEmailMessage**](docs/Api/EmailApi.md#getemailmessage) | **GET** /v1/email/messages/{messageId} | Get an email message
 *EmailApi* | [**getEmailThread**](docs/Api/EmailApi.md#getemailthread) | **GET** /v1/email/threads/{threadId} | Get an email thread with its messages
+*EmailApi* | [**getScheduledEmail**](docs/Api/EmailApi.md#getscheduledemail) | **GET** /v1/email/messages/scheduled/{scheduleId} | Get a scheduled email
 *EmailApi* | [**listEmailFolders**](docs/Api/EmailApi.md#listemailfolders) | **GET** /v1/email/folders | List mailbox folders
 *EmailApi* | [**listEmailMessages**](docs/Api/EmailApi.md#listemailmessages) | **GET** /v1/email/messages | List email messages
 *EmailApi* | [**listEmailThreads**](docs/Api/EmailApi.md#listemailthreads) | **GET** /v1/email/threads | List email threads
+*EmailApi* | [**listScheduledEmails**](docs/Api/EmailApi.md#listscheduledemails) | **GET** /v1/email/messages/scheduled | List scheduled emails
 *EmailApi* | [**replyEmailMessage**](docs/Api/EmailApi.md#replyemailmessage) | **POST** /v1/email/messages/{messageId}/reply | Reply to a message
 *EmailApi* | [**sendEmailMessage**](docs/Api/EmailApi.md#sendemailmessage) | **POST** /v1/email/messages | Send an email
 *EmailApi* | [**trashEmailMessage**](docs/Api/EmailApi.md#trashemailmessage) | **DELETE** /v1/email/messages/{messageId} | Move a message to trash
@@ -3328,6 +3331,7 @@ Class | Method | HTTP request | Description
 - [ListRcsAgents200Response](docs/Model/ListRcsAgents200Response.md)
 - [ListRcsBrands200Response](docs/Model/ListRcsBrands200Response.md)
 - [ListRcsTestDevices200Response](docs/Model/ListRcsTestDevices200Response.md)
+- [ListScheduledEmails200Response](docs/Model/ListScheduledEmails200Response.md)
 - [ListSequenceEnrollments200Response](docs/Model/ListSequenceEnrollments200Response.md)
 - [ListSequenceEnrollments200ResponseEnrollmentsInner](docs/Model/ListSequenceEnrollments200ResponseEnrollmentsInner.md)
 - [ListSequences200Response](docs/Model/ListSequences200Response.md)
@@ -3752,6 +3756,7 @@ Class | Method | HTTP request | Description
 - [ScheduledAutomationCheckMatchedInner](docs/Model/ScheduledAutomationCheckMatchedInner.md)
 - [ScheduledAutomationDefinition](docs/Model/ScheduledAutomationDefinition.md)
 - [ScheduledAutomationDefinitionStepsInner](docs/Model/ScheduledAutomationDefinitionStepsInner.md)
+- [ScheduledEmail](docs/Model/ScheduledEmail.md)
 - [SearchAdInterests200Response](docs/Model/SearchAdInterests200Response.md)
 - [SearchAdInterests200ResponseInterestsInner](docs/Model/SearchAdInterests200ResponseInterestsInner.md)
 - [SearchAdLibrary200Response](docs/Model/SearchAdLibrary200Response.md)
@@ -3826,6 +3831,7 @@ Class | Method | HTTP request | Description
 - [SendDiscordDirectMessageRequest](docs/Model/SendDiscordDirectMessageRequest.md)
 - [SendDiscordDirectMessageRequestAttachmentsInner](docs/Model/SendDiscordDirectMessageRequestAttachmentsInner.md)
 - [SendEmailMessage201Response](docs/Model/SendEmailMessage201Response.md)
+- [SendEmailMessage202Response](docs/Model/SendEmailMessage202Response.md)
 - [SendEmailRequest](docs/Model/SendEmailRequest.md)
 - [SendEmailRequestAttachmentsInner](docs/Model/SendEmailRequestAttachmentsInner.md)
 - [SendEvents200Response](docs/Model/SendEvents200Response.md)
@@ -4409,6 +4415,7 @@ Class | Method | HTTP request | Description
 - [WebhookAdsSyncAccount](docs/Model/WebhookAdsSyncAccount.md)
 - [WebhookAdsSyncAdAccount](docs/Model/WebhookAdsSyncAdAccount.md)
 - [WebhookAutomationRef](docs/Model/WebhookAutomationRef.md)
+- [WebhookEmailTrackedMessage](docs/Model/WebhookEmailTrackedMessage.md)
 - [WebhookLog](docs/Model/WebhookLog.md)
 - [WebhookPayloadAccountAdsInitialSyncCompleted](docs/Model/WebhookPayloadAccountAdsInitialSyncCompleted.md)
 - [WebhookPayloadAccountAdsInitialSyncCompletedAccount](docs/Model/WebhookPayloadAccountAdsInitialSyncCompletedAccount.md)
@@ -4528,6 +4535,14 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadConversationStartedConversation](docs/Model/WebhookPayloadConversationStartedConversation.md)
 - [WebhookPayloadCreatorCampaign](docs/Model/WebhookPayloadCreatorCampaign.md)
 - [WebhookPayloadCreatorCampaignCampaign](docs/Model/WebhookPayloadCreatorCampaignCampaign.md)
+- [WebhookPayloadEmailLinkClicked](docs/Model/WebhookPayloadEmailLinkClicked.md)
+- [WebhookPayloadEmailLinkClickedClick](docs/Model/WebhookPayloadEmailLinkClickedClick.md)
+- [WebhookPayloadEmailOpened](docs/Model/WebhookPayloadEmailOpened.md)
+- [WebhookPayloadEmailOpenedOpen](docs/Model/WebhookPayloadEmailOpenedOpen.md)
+- [WebhookPayloadEmailSendFailed](docs/Model/WebhookPayloadEmailSendFailed.md)
+- [WebhookPayloadEmailSendFailedScheduledEmail](docs/Model/WebhookPayloadEmailSendFailedScheduledEmail.md)
+- [WebhookPayloadEmailThreadReplied](docs/Model/WebhookPayloadEmailThreadReplied.md)
+- [WebhookPayloadEmailThreadRepliedReply](docs/Model/WebhookPayloadEmailThreadRepliedReply.md)
 - [WebhookPayloadExternalPost](docs/Model/WebhookPayloadExternalPost.md)
 - [WebhookPayloadFile](docs/Model/WebhookPayloadFile.md)
 - [WebhookPayloadFilePicked](docs/Model/WebhookPayloadFilePicked.md)
@@ -4723,6 +4738,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.543.0`
+- API version: `1.544.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

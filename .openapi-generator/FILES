@@ -2163,6 +2163,7 @@ docs/Model/ListQueueSlots200ResponseOneOf.md
 docs/Model/ListRcsAgents200Response.md
 docs/Model/ListRcsBrands200Response.md
 docs/Model/ListRcsTestDevices200Response.md
+docs/Model/ListScheduledEmails200Response.md
 docs/Model/ListSequenceEnrollments200Response.md
 docs/Model/ListSequenceEnrollments200ResponseEnrollmentsInner.md
 docs/Model/ListSequences200Response.md
@@ -2587,6 +2588,7 @@ docs/Model/ScheduledAutomationCheckActionsInner.md
 docs/Model/ScheduledAutomationCheckMatchedInner.md
 docs/Model/ScheduledAutomationDefinition.md
 docs/Model/ScheduledAutomationDefinitionStepsInner.md
+docs/Model/ScheduledEmail.md
 docs/Model/SearchAdInterests200Response.md
 docs/Model/SearchAdInterests200ResponseInterestsInner.md
 docs/Model/SearchAdLibrary200Response.md
@@ -2661,6 +2663,7 @@ docs/Model/SendDiscordDirectMessage200ResponseRecipient.md
 docs/Model/SendDiscordDirectMessageRequest.md
 docs/Model/SendDiscordDirectMessageRequestAttachmentsInner.md
 docs/Model/SendEmailMessage201Response.md
+docs/Model/SendEmailMessage202Response.md
 docs/Model/SendEmailRequest.md
 docs/Model/SendEmailRequestAttachmentsInner.md
 docs/Model/SendEvents200Response.md
@@ -3244,6 +3247,7 @@ docs/Model/WebhookAdsAccount.md
 docs/Model/WebhookAdsSyncAccount.md
 docs/Model/WebhookAdsSyncAdAccount.md
 docs/Model/WebhookAutomationRef.md
+docs/Model/WebhookEmailTrackedMessage.md
 docs/Model/WebhookLog.md
 docs/Model/WebhookPayloadAccountAdsInitialSyncCompleted.md
 docs/Model/WebhookPayloadAccountAdsInitialSyncCompletedAccount.md
@@ -3363,6 +3367,14 @@ docs/Model/WebhookPayloadConversationStarted.md
 docs/Model/WebhookPayloadConversationStartedConversation.md
 docs/Model/WebhookPayloadCreatorCampaign.md
 docs/Model/WebhookPayloadCreatorCampaignCampaign.md
+docs/Model/WebhookPayloadEmailLinkClicked.md
+docs/Model/WebhookPayloadEmailLinkClickedClick.md
+docs/Model/WebhookPayloadEmailOpened.md
+docs/Model/WebhookPayloadEmailOpenedOpen.md
+docs/Model/WebhookPayloadEmailSendFailed.md
+docs/Model/WebhookPayloadEmailSendFailedScheduledEmail.md
+docs/Model/WebhookPayloadEmailThreadReplied.md
+docs/Model/WebhookPayloadEmailThreadRepliedReply.md
 docs/Model/WebhookPayloadExternalPost.md
 docs/Model/WebhookPayloadFile.md
 docs/Model/WebhookPayloadFilePicked.md
@@ -5691,6 +5703,7 @@ lib/Model/ListQueueSlots200ResponseOneOf.php
 lib/Model/ListRcsAgents200Response.php
 lib/Model/ListRcsBrands200Response.php
 lib/Model/ListRcsTestDevices200Response.php
+lib/Model/ListScheduledEmails200Response.php
 lib/Model/ListSequenceEnrollments200Response.php
 lib/Model/ListSequenceEnrollments200ResponseEnrollmentsInner.php
 lib/Model/ListSequences200Response.php
@@ -6116,6 +6129,7 @@ lib/Model/ScheduledAutomationCheckActionsInner.php
 lib/Model/ScheduledAutomationCheckMatchedInner.php
 lib/Model/ScheduledAutomationDefinition.php
 lib/Model/ScheduledAutomationDefinitionStepsInner.php
+lib/Model/ScheduledEmail.php
 lib/Model/SearchAdInterests200Response.php
 lib/Model/SearchAdInterests200ResponseInterestsInner.php
 lib/Model/SearchAdLibrary200Response.php
@@ -6190,6 +6204,7 @@ lib/Model/SendDiscordDirectMessage200ResponseRecipient.php
 lib/Model/SendDiscordDirectMessageRequest.php
 lib/Model/SendDiscordDirectMessageRequestAttachmentsInner.php
 lib/Model/SendEmailMessage201Response.php
+lib/Model/SendEmailMessage202Response.php
 lib/Model/SendEmailRequest.php
 lib/Model/SendEmailRequestAttachmentsInner.php
 lib/Model/SendEvents200Response.php
@@ -6773,6 +6788,7 @@ lib/Model/WebhookAdsAccount.php
 lib/Model/WebhookAdsSyncAccount.php
 lib/Model/WebhookAdsSyncAdAccount.php
 lib/Model/WebhookAutomationRef.php
+lib/Model/WebhookEmailTrackedMessage.php
 lib/Model/WebhookLog.php
 lib/Model/WebhookPayloadAccountAdsInitialSyncCompleted.php
 lib/Model/WebhookPayloadAccountAdsInitialSyncCompletedAccount.php
@@ -6892,6 +6908,14 @@ lib/Model/WebhookPayloadConversationStarted.php
 lib/Model/WebhookPayloadConversationStartedConversation.php
 lib/Model/WebhookPayloadCreatorCampaign.php
 lib/Model/WebhookPayloadCreatorCampaignCampaign.php
+lib/Model/WebhookPayloadEmailLinkClicked.php
+lib/Model/WebhookPayloadEmailLinkClickedClick.php
+lib/Model/WebhookPayloadEmailOpened.php
+lib/Model/WebhookPayloadEmailOpenedOpen.php
+lib/Model/WebhookPayloadEmailSendFailed.php
+lib/Model/WebhookPayloadEmailSendFailedScheduledEmail.php
+lib/Model/WebhookPayloadEmailThreadReplied.php
+lib/Model/WebhookPayloadEmailThreadRepliedReply.php
 lib/Model/WebhookPayloadExternalPost.php
 lib/Model/WebhookPayloadFile.php
 lib/Model/WebhookPayloadFilePicked.php
@@ -7057,4 +7081,15 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ListInstagramStories200ResponseDataInnerMetricsTest.php
+test/Model/ListScheduledEmails200ResponseTest.php
+test/Model/ScheduledEmailTest.php
+test/Model/SendEmailMessage202ResponseTest.php
+test/Model/WebhookEmailTrackedMessageTest.php
+test/Model/WebhookPayloadEmailLinkClickedClickTest.php
+test/Model/WebhookPayloadEmailLinkClickedTest.php
+test/Model/WebhookPayloadEmailOpenedOpenTest.php
+test/Model/WebhookPayloadEmailOpenedTest.php
+test/Model/WebhookPayloadEmailSendFailedScheduledEmailTest.php
+test/Model/WebhookPayloadEmailSendFailedTest.php
+test/Model/WebhookPayloadEmailThreadRepliedReplyTest.php
+test/Model/WebhookPayloadEmailThreadRepliedTest.php

@@ -6,18 +6,83 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**cancelScheduledEmail()**](EmailApi.md#cancelScheduledEmail) | **DELETE** /v1/email/messages/scheduled/{scheduleId} | Cancel a scheduled email |
 | [**downloadEmailAttachment()**](EmailApi.md#downloadEmailAttachment) | **GET** /v1/email/attachments/{attachmentId} | Download an attachment |
 | [**getEmailMessage()**](EmailApi.md#getEmailMessage) | **GET** /v1/email/messages/{messageId} | Get an email message |
 | [**getEmailThread()**](EmailApi.md#getEmailThread) | **GET** /v1/email/threads/{threadId} | Get an email thread with its messages |
+| [**getScheduledEmail()**](EmailApi.md#getScheduledEmail) | **GET** /v1/email/messages/scheduled/{scheduleId} | Get a scheduled email |
 | [**listEmailFolders()**](EmailApi.md#listEmailFolders) | **GET** /v1/email/folders | List mailbox folders |
 | [**listEmailMessages()**](EmailApi.md#listEmailMessages) | **GET** /v1/email/messages | List email messages |
 | [**listEmailThreads()**](EmailApi.md#listEmailThreads) | **GET** /v1/email/threads | List email threads |
+| [**listScheduledEmails()**](EmailApi.md#listScheduledEmails) | **GET** /v1/email/messages/scheduled | List scheduled emails |
 | [**replyEmailMessage()**](EmailApi.md#replyEmailMessage) | **POST** /v1/email/messages/{messageId}/reply | Reply to a message |
 | [**sendEmailMessage()**](EmailApi.md#sendEmailMessage) | **POST** /v1/email/messages | Send an email |
 | [**trashEmailMessage()**](EmailApi.md#trashEmailMessage) | **DELETE** /v1/email/messages/{messageId} | Move a message to trash |
 | [**updateEmailMessage()**](EmailApi.md#updateEmailMessage) | **PATCH** /v1/email/messages/{messageId} | Mark read or starred, or move a message |
 | [**updateEmailThread()**](EmailApi.md#updateEmailThread) | **PATCH** /v1/email/threads/{threadId} | Update every message in a thread |
 
+
+## `cancelScheduledEmail()`
+
+```php
+cancelScheduledEmail($schedule_id, $account_id): \Zernio\Model\SendEmailMessage202Response
+```
+
+Cancel a scheduled email
+
+Cancels a send still waiting for its time and returns it with `status: cancelled`. One that is sending, sent or failed answers 409.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$schedule_id = 'schedule_id_example'; // string
+$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+
+try {
+    $result = $apiInstance->cancelScheduledEmail($schedule_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->cancelScheduledEmail: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **schedule_id** | **string**|  | |
+| **account_id** | **string**| The connected Google or Microsoft account. | |
+
+### Return type
+
+[**\Zernio\Model\SendEmailMessage202Response**](../Model/SendEmailMessage202Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `downloadEmailAttachment()`
 
@@ -193,6 +258,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetEmailThread200Response**](../Model/GetEmailThread200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getScheduledEmail()`
+
+```php
+getScheduledEmail($schedule_id, $account_id): \Zernio\Model\SendEmailMessage202Response
+```
+
+Get a scheduled email
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$schedule_id = 'schedule_id_example'; // string
+$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+
+try {
+    $result = $apiInstance->getScheduledEmail($schedule_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->getScheduledEmail: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **schedule_id** | **string**|  | |
+| **account_id** | **string**| The connected Google or Microsoft account. | |
+
+### Return type
+
+[**\Zernio\Model\SendEmailMessage202Response**](../Model/SendEmailMessage202Response.md)
 
 ### Authorization
 
@@ -451,6 +576,72 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listScheduledEmails()`
+
+```php
+listScheduledEmails($account_id, $status, $cursor, $limit): \Zernio\Model\ListScheduledEmails200Response
+```
+
+List scheduled emails
+
+Sends made with `scheduledFor` on this mailbox, in send order. Sent, failed and cancelled ones stay listed; filter with `status`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$status = 'status_example'; // string
+$cursor = 'cursor_example'; // string | `pagination.nextCursor` of the previous page.
+$limit = 50; // int
+
+try {
+    $result = $apiInstance->listScheduledEmails($account_id, $status, $cursor, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->listScheduledEmails: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **status** | **string**|  | [optional] |
+| **cursor** | **string**| &#x60;pagination.nextCursor&#x60; of the previous page. | [optional] |
+| **limit** | **int**|  | [optional] [default to 50] |
+
+### Return type
+
+[**\Zernio\Model\ListScheduledEmails200Response**](../Model/ListScheduledEmails200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `replyEmailMessage()`
 
 ```php
@@ -459,7 +650,7 @@ replyEmailMessage($message_id, $reply_email_message_request): \Zernio\Model\Send
 
 Reply to a message
 
-Replies inside the provider's thread: the provider builds the quoted original and threading headers, your `html` or `text` goes above the quote. `to`, `cc`, `bcc`, `replyTo`, `subject`, `headers` and `attachments` are honoured; `scheduledFor` and `holdAsDraft` are rejected like on send. Same protection, caps and headers as sending.
+Replies inside the provider's thread: the provider builds the quoted original and threading headers, your `html` or `text` goes above the quote. `to`, `cc`, `bcc`, `replyTo`, `subject`, `headers` and `attachments` are honoured.  `scheduledFor` schedules the reply (202) and `trackOpens`, `trackLinks` and `trackReplies` track it, as on send; `holdAsDraft` is rejected. Same protection, caps and headers as sending.
 
 ### Example
 
@@ -521,7 +712,7 @@ sendEmailMessage($send_email_request): \Zernio\Model\SendEmailMessage201Response
 
 Send an email
 
-Sends from the connected mailbox and returns the stored sent copy.  The message is mirrored into the inbox (`message.sent` fires once) and counted against the mailbox's daily cap. The cap is reported in the `X-Zernio-Send-Limit`, `X-Zernio-Send-Remaining` and `X-Zernio-Send-Reset` response headers.  ### Sending limits  These mailboxes are for one-to-one mail, not bulk sends. Protection on every mailbox:  - Daily cap: Microsoft 1,000; Google Workspace 500; Gmail consumer 200. Reaching it answers 429 `email_send_cap_reached` with `details.cap`. - The same body reaching more than 50 distinct recipients within an hour pauses the mailbox with an escalating cooldown (429 `rate_limited`, `account.rate_limited` webhook).  ### Other errors  - 402: Gmail sends need a payment method on the workspace. Reading, calendar and files do not. - 400: `scheduledFor` and `holdAsDraft` are reserved and currently rejected.
+Sends from the connected mailbox and returns the stored sent copy.  The message is mirrored into the inbox (`message.sent` fires once) and counted against the mailbox's daily cap. The cap is reported in the `X-Zernio-Send-Limit`, `X-Zernio-Send-Remaining` and `X-Zernio-Send-Reset` response headers.  ### Sending limits  These mailboxes are for one-to-one mail, not bulk sends. Protection on every mailbox:  - Daily cap: Microsoft 1,000; Google Workspace 500; Gmail consumer 200. Reaching it answers 429 `email_send_cap_reached` with `details.cap`. - The same body reaching more than 50 distinct recipients within an hour pauses the mailbox with an escalating cooldown (429 `rate_limited`, `account.rate_limited` webhook).  ### Scheduling  With `scheduledFor` the request answers 202 with a `ScheduledEmail` instead of sending. The account and payment method are checked now; the caps, cooldowns and the send itself run at `scheduledFor`. A send that fails then fires `email.send_failed`. List, read and cancel scheduled sends under `/v1/email/messages/scheduled`.  ### Tracking  - `trackOpens` adds a 1x1 image to the html and fires `email.opened`. - `trackLinks` rewrites every http(s) link in the html through a Zernio redirect and fires `email.link_clicked`. - `trackReplies` fires `email.thread_replied` when someone else writes in the thread.  Tracking costs nothing extra. Opens are approximate: image proxies prefetch and image blocking hides them.  ### Other errors  - 402: Gmail sends need a payment method on the workspace. Reading, calendar and files do not. - 400: `holdAsDraft` is reserved and rejected; `trackOpens` or `trackLinks` without `html`; `scheduledFor` outside 1 minute to 30 days.
 
 ### Example
 
