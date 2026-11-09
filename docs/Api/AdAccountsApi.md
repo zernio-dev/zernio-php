@@ -2757,7 +2757,7 @@ listAdsInstagramAccounts($account_id, $ad_account_id): \Zernio\Model\ListAdsInst
 
 List Instagram ad identities
 
-Lists the Instagram accounts a Meta ad connection can run ads as, so you can pick the identity for a new ad.  Discovers identities through connected_instagram_accounts, Page linkage and Page-backed identities, with a best-effort business fallback. Business permission errors do not fail discovery. The resolved object uses the same profile-scoped resolver as ad creation; null means no identity was resolved. Format-specific observed-actor fallbacks at creative creation are not predicted.
+Lists the Instagram accounts a Meta ad connection can run ads as, so you can pick the identity for a new ad.  Discovers identities through connected_instagram_accounts, Page linkage and Page-backed identities, with a best-effort business fallback. Business permission errors do not fail discovery. The resolved object uses the same profile-scoped resolver as ad creation; null means no identity was resolved. Format-specific observed-actor fallbacks at creative creation are not predicted.  Instagram accounts and Pages that other businesses share with the ad account's business as partner assets are listed with source business_partner, and Pages the ad account promotes with source promote_pages. These reads are best effort: a failure there never fails discovery.
 
 ### Example
 
