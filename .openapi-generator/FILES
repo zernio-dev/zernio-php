@@ -7055,5 +7055,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ReplyToInboxPost400ResponseDetailsTest.php
-test/Model/ReplyToInboxPost400ResponseTest.php
