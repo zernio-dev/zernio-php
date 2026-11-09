@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**available_cents** | **int** | Your balance. It goes negative after a dispute or refund of a spent top-up, or when pay-per-use already in flight lands past zero. The next top-up covers it. New payout batches are refused while it is negative. | [optional]
+**available_cents** | **int** | Your balance. It goes negative after a dispute or refund of funds already spent, or when pay-per-use already in flight lands past zero. The next funds you add cover it. New payout batches are refused while it is negative. | [optional]
 **balance_billing** | **bool** | True when the account pays pay-per-use from this prepaid balance (new signups). Absent otherwise: that pay-per-use is on the monthly invoice. | [optional]
 **spendable_cents** | **int** | Balance billing only (absent otherwise). What pay-per-use can still spend: availableCents plus promoCents, minus usage not yet posted. At 0 or below, new pay-per-use answers 402 &#x60;insufficient_balance&#x60;. | [optional]
 **promo_cents** | **int** | Balance billing only (absent otherwise). Promotional and support credit Zernio added to your balance. Pay-per-use spends it before availableCents. It is never paid out to payees and is not part of availableCents. | [optional]

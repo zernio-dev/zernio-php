@@ -12,6 +12,6 @@ Name | Type | Description | Notes
 **platform** | **string** | Upstream platform (e.g. meta, google, tiktok), present when type is platform_error. | [optional]
 **platform_error** | **array<string,mixed>** | Raw error payload from the upstream platform, passed through verbatim so integrators can read provider-specific codes. For Meta this includes error_subcode, error_user_title, and error_user_msg. | [optional]
 **details** | [**\Zernio\Model\ErrorResponseDetails**](ErrorResponseDetails.md) |  | [optional]
-**funding_url** | **string** | Dashboard link to Billing that opens the top-up drawer (the add-card drawer first when there is no card). Send the user there, then retry. |
+**funding_url** | **string** | Dashboard link to Billing that opens the Add funds drawer (the add-card drawer first when there is no card). Send the user there, then retry. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

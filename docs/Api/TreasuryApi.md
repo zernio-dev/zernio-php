@@ -1,6 +1,6 @@
 # Zernio\TreasuryApi
 
-Fund a balance by card, then transfer money to payees (creators, ad accounts) through Zernio. The dashboard calls this your Balance. Requires usage-based billing. Every operation belongs to the &#x60;money&#x60; resource group.  - Money writes (top-ups, transfers, treasury settles, payout batches) need an owner, admin or billing admin, signed in or through a full-access key they created. - Reading the team&#39;s balance, top-ups, transfers and payees needs a full-access key or a signed-in session; a profile-scoped key answers 403.
+Fund a balance by card, then transfer money to payees (creators, ad accounts) through Zernio. The dashboard calls this your Balance. Requires usage-based billing. Every operation belongs to the &#x60;money&#x60; resource group.  - Money writes (adding funds, transfers, treasury settles, payout batches) need an owner, admin or billing admin, signed in or through a full-access key they created. - Reading the team&#39;s balance, added funds, transfers and payees needs a full-access key or a signed-in session; a profile-scoped key answers 403.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
@@ -11,7 +11,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**confirmPayoutBatch()**](TreasuryApi.md#confirmPayoutBatch) | **POST** /v1/payout-batches/{batchId}/confirm | Confirm a payout batch payment |
 | [**confirmTopup()**](TreasuryApi.md#confirmTopup) | **POST** /v1/balance/top-ups/{topupId}/confirm | Confirm a top-up |
 | [**createPayeeOnboardingLink()**](TreasuryApi.md#createPayeeOnboardingLink) | **POST** /v1/payees/{payeeId}/onboarding-link | Create a payee onboarding link |
-| [**createTopup()**](TreasuryApi.md#createTopup) | **POST** /v1/balance/top-ups | Create a top-up |
+| [**createTopup()**](TreasuryApi.md#createTopup) | **POST** /v1/balance/top-ups | Add funds |
 | [**createTransfer()**](TreasuryApi.md#createTransfer) | **POST** /v1/transfers | Create a transfer (removed) |
 | [**getAutoRecharge()**](TreasuryApi.md#getAutoRecharge) | **GET** /v1/balance/auto-recharge | Get auto top-up settings |
 | [**getBalance()**](TreasuryApi.md#getBalance) | **GET** /v1/balance | Get balance |
@@ -333,7 +333,7 @@ try {
 createTopup($create_topup_request, $idempotency_key): \Zernio\Model\CreateTopup201Response
 ```
 
-Create a top-up
+Add funds
 
 Charges the billing owner's saved card (the default one, or `paymentMethodId`) `amountCents` plus tax, while the payer is present, and credits your balance `amountCents`. There is no card fee.  Tax is added on top of the amount (`taxCents`, `totalCents`): VAT at 21% in Spain, at the customer's country rate for EU consumers; an EU business whose VAT id VIES confirms is reverse charged (no VAT, `reverseCharge: true`); outside the EU there is none.  The invoice also states the VAT in euros at the ECB rate of its date. Usage paid from the balance carries no further VAT. Get the figures before paying with `POST /v1/balance/top-ups/preview`.  Each top-up has an invoice, with VAT where it applies (`GET /v1/balance/top-ups/{topupId}/invoice`), and a card receipt (`GET /v1/balance/top-ups/{topupId}/receipt`).  - `status: succeeded`: the card was charged. `amountCents` is credited to `availableCents` within seconds. Transfers to payees can use it from 7 days after the charge. - `status: requires_action`: the bank asked for 3D Secure. Complete it with Stripe.js `handleNextAction({ clientSecret })`, then call `POST /v1/balance/top-ups/{topupId}/confirm`. One left unconfirmed is cancelled after 30 minutes.  ### Errors  - 402 `payment_required`: no saved card. - 402 `card_declined`: the bank's reason. - 400: `method: bank_transfer` (bank transfers are not available yet). - 400 `invalid_billing_address`: the billing address gives no tax location. Add it in Billing, then retry. - 429 `payment_attempts_limited`: five card payments were declined in 24 hours. Nothing reaches the bank until `Retry-After` runs out.  Needs an owner, admin or billing admin, signed in or through a full-access key they created.
 
@@ -515,7 +515,7 @@ getBalance(): \Zernio\Model\GetBalance200Response
 
 Get balance
 
-Returns your team's balance:  - the balance pay-per-use draws on - top-ups still waiting for payment - your latest top-ups and payout batch payments  A card top-up is in `availableCents` as soon as it is paid. The balance never pays creators: payouts are charged to your card per payout batch.  A card dispute or refund is debited from the available balance and can make it negative. New payout batches are refused until it is positive again.  A profile-scoped key answers 403, since the balance belongs to the whole team.
+Returns your team's balance:  - the balance pay-per-use draws on - funds added but still waiting for payment - your latest payments into the balance and payout batch payments  Funds added by card are in `availableCents` as soon as they are paid. The balance never pays creators: payouts are charged to your card per payout batch.  A card dispute or refund is debited from the available balance and can make it negative. New payout batches are refused until it is positive again.  A profile-scoped key answers 403, since the balance belongs to the whole team.
 
 ### Example
 
@@ -632,7 +632,7 @@ getTopupInvoice($topup_id): \Zernio\Model\GetTopupInvoice200Response
 
 Get a top-up invoice
 
-The invoice for a paid balance top-up: the PDF of the Stripe invoice it was paid through.  It shows the amount added to your balance and the tax charged on top: VAT where it applies, or a reverse charge note for an EU business with a valid VAT id. Usage paid from the balance carries no further VAT.  - `format: pdf` is the invoice PDF; `format: page` is its Stripe-hosted page when the PDF is not ready. - 404 before the top-up is paid, and for a payment with no invoice (top-ups before 2026-11-05, creator payout payments). Its card receipt is at getTopupReceipt.  The link is short-lived, so fetch it when you need it. A profile-scoped key answers 403.
+The invoice for funds added to the balance, once paid: the PDF of the Stripe invoice it was paid through.  It shows the amount added to your balance and the tax charged on top: VAT where it applies, or a reverse charge note for an EU business with a valid VAT id. Usage paid from the balance carries no further VAT.  - `format: pdf` is the invoice PDF; `format: page` is its Stripe-hosted page when the PDF is not ready. - 404 before the top-up is paid, and for a payment with no invoice (top-ups before 2026-11-05, creator payout payments). Its card receipt is at getTopupReceipt.  The link is short-lived, so fetch it when you need it. A profile-scoped key answers 403.
 
 ### Example
 
@@ -754,7 +754,7 @@ getTopupStatement($topup_id): \Zernio\Model\GetTopupInvoice200Response
 
 Get a top-up invoice (alias)
 
-Alias of getTopupInvoice, kept for clients written against its first name.  The invoice for a paid balance top-up: the PDF of the Stripe invoice it was paid through.  It shows the amount added to your balance and the tax charged on top: VAT where it applies, or a reverse charge note for an EU business with a valid VAT id. Usage paid from the balance carries no further VAT.  - `format: pdf` is the invoice PDF; `format: page` is its Stripe-hosted page when the PDF is not ready. - 404 before the top-up is paid, and for a payment with no invoice (top-ups before 2026-11-05, creator payout payments). Its card receipt is at getTopupReceipt.  The link is short-lived, so fetch it when you need it. A profile-scoped key answers 403.
+Alias of getTopupInvoice, kept for clients written against its first name.  The invoice for funds added to the balance, once paid: the PDF of the Stripe invoice it was paid through.  It shows the amount added to your balance and the tax charged on top: VAT where it applies, or a reverse charge note for an EU business with a valid VAT id. Usage paid from the balance carries no further VAT.  - `format: pdf` is the invoice PDF; `format: page` is its Stripe-hosted page when the PDF is not ready. - 404 before the top-up is paid, and for a payment with no invoice (top-ups before 2026-11-05, creator payout payments). Its card receipt is at getTopupReceipt.  The link is short-lived, so fetch it when you need it. A profile-scoped key answers 403.
 
 ### Example
 
@@ -1109,7 +1109,7 @@ updateAutoRecharge($update_auto_recharge_request): \Zernio\Model\AutoRecharge
 
 Update auto top-up settings
 
-Changes the auto top-up rule. Omitted fields keep their value.  A declined auto top-up is retried 1 hour, 1 day and 3 days later, with an email each time. After the last retry fails, auto top-up switches off (`disabledReason: payment_failed`) until the card is updated. A top-up you make yourself resets the retries.  A bank asking for 3D Secure counts as a decline: the charge happens while you are away, so the email asks you to top up in Billing.  A pay-per-use request that finds the balance at $0 runs the auto top-up first (with the rule on, a saved card and no retry pending) and goes through when the charge lands, so a new balance at $0 is charged on first use.  When this month's auto top-ups plus the next one would pass `monthlyLimitCents`, the card is not charged and you get one email that month. At $0, pay-per-use then answers 402 `usage_limit_reached`.  - 400: a field is out of range, or `toCents` is not more than $5 above `belowCents`. - 409 `balance_billing_required`: the account is not on the prepaid balance.  Needs an owner, admin or billing admin, signed in or through a full-access key they created.
+Changes the auto top-up rule. Omitted fields keep their value.  A declined auto top-up is retried 1 hour, 1 day and 3 days later, with an email each time. After the last retry fails, auto top-up switches off (`disabledReason: payment_failed`) until the card is updated. Adding funds yourself resets the retries.  A bank asking for 3D Secure counts as a decline: the charge happens while you are away, so the email asks you to add funds in Billing.  A pay-per-use request that finds the balance at $0 runs the auto top-up first (with the rule on, a saved card and no retry pending) and goes through when the charge lands, so a new balance at $0 is charged on first use.  When this month's auto top-ups plus the next one would pass `monthlyLimitCents`, the card is not charged and you get one email that month. At $0, pay-per-use then answers 402 `usage_limit_reached`.  - 400: a field is out of range, or `toCents` is not more than $5 above `belowCents`. - 409 `balance_billing_required`: the account is not on the prepaid balance.  Needs an owner, admin or billing admin, signed in or through a full-access key they created.
 
 ### Example
 

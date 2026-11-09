@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **event** | **string** |  |
 **balance** | [**\Zernio\Model\WebhookPayloadBalanceEmptyBalance**](WebhookPayloadBalanceEmptyBalance.md) |  |
 **code** | **string** | The 402 code pay-per-use calls get until the balance is funded. &#x60;usage_limit_reached&#x60; when the auto top-up monthly limit is what keeps it at $0. |
-**funding_url** | **string** | Dashboard link that opens the top-up drawer in Billing. |
+**funding_url** | **string** | Dashboard link that opens the Add funds drawer in Billing. |
 **timestamp** | **\DateTime** | UTC time at which Zernio generated this event. Retries and redeliveries keep the original value. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -1743,7 +1743,7 @@ onBalanceCharged($webhook_payload_balance_charged)
 
 Balance charged event
 
-Balance billing only. A card top-up of the balance succeeded: one someone made (`trigger: manual`) or one the auto top-up rule made (`trigger: auto_top_up`).  ### When it fires  Once per top-up, when the payment is credited to the balance. Stripe emails the billing owner its receipt for the charge.  ### Payload notes  `topup.amountCents` was added to the balance; the card was charged `topup.chargedCents`, which is that plus `topup.taxCents` (VAT, 0 when none applies). The invoice and receipt are at `GET /v1/balance/top-ups/{topupId}/invoice` and `/receipt`.  ### Who receives it  The billing owner's endpoints, like `balance.low`. Restricted keys need the `money` resource group.
+Balance billing only. Funds were added to the balance by card: by someone (`trigger: manual`) or by the auto top-up rule (`trigger: auto_top_up`).  ### When it fires  Once per card payment into the balance, when it is credited. Stripe emails the billing owner its receipt for the charge.  ### Payload notes  `topup.amountCents` was added to the balance; the card was charged `topup.chargedCents`, which is that plus `topup.taxCents` (VAT, 0 when none applies). The invoice and receipt are at `GET /v1/balance/top-ups/{topupId}/invoice` and `/receipt`.  ### Who receives it  The billing owner's endpoints, like `balance.low`. Restricted keys need the `money` resource group.
 
 ### Example
 
@@ -1861,7 +1861,7 @@ onBalanceLow($webhook_payload_balance_low)
 
 Balance low event
 
-Balance billing only. The balance dropped below the low-balance alert set on auto top-up (`alertBelowCents` on `GET /v1/balance/auto-recharge`).  ### When it fires  Once per drop below the threshold; a balance back at or above it re-arms the next one. It does not fire when an auto top-up is already covering the drop, and never when no alert is set.  ### Who receives it  It belongs to the billing owner, not to a profile or account: endpoints scoped with `profileIds` or `accountIds` do not receive it. Restricted keys need the `money` resource group.  ### How to act  Send the user to `fundingUrl` (Billing with the top-up drawer open), or top up through the API.
+Balance billing only. The balance dropped below the low-balance alert set on auto top-up (`alertBelowCents` on `GET /v1/balance/auto-recharge`).  ### When it fires  Once per drop below the threshold; a balance back at or above it re-arms the next one. It does not fire when an auto top-up is already covering the drop, and never when no alert is set.  ### Who receives it  It belongs to the billing owner, not to a profile or account: endpoints scoped with `profileIds` or `accountIds` do not receive it. Restricted keys need the `money` resource group.  ### How to act  Send the user to `fundingUrl` (Billing with the Add funds drawer open), or add funds through the API.
 
 ### Example
 
