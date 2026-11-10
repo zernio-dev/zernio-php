@@ -198,7 +198,7 @@ try {
 ## `deleteCalendarEvent()`
 
 ```php
-deleteCalendarEvent($event_id, $account_id, $calendar_id): \Zernio\Model\DeleteEmailLabel200Response
+deleteCalendarEvent($event_id, $account_id, $calendar_id): \Zernio\Model\DeleteEmailDraft200Response
 ```
 
 Delete an event
@@ -242,7 +242,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\DeleteEmailLabel200Response**](../Model/DeleteEmailLabel200Response.md)
+[**\Zernio\Model\DeleteEmailDraft200Response**](../Model/DeleteEmailDraft200Response.md)
 
 ### Authorization
 

@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **from** | [**\Zernio\Model\EmailAddress**](EmailAddress.md) |  | [optional]
 **received_at** | **\DateTime** |  | [optional]
 **count** | **int** | Replies in the thread so far. | [optional]
+**clean** | [**\Zernio\Model\WebhookPayloadEmailThreadRepliedReplyClean**](WebhookPayloadEmailThreadRepliedReplyClean.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

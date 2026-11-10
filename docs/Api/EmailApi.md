@@ -7,12 +7,17 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**cancelScheduledEmail()**](EmailApi.md#cancelScheduledEmail) | **DELETE** /v1/email/messages/scheduled/{scheduleId} | Cancel a scheduled email |
+| [**createEmailDraft()**](EmailApi.md#createEmailDraft) | **POST** /v1/email/drafts | Create a draft |
 | [**createEmailLabel()**](EmailApi.md#createEmailLabel) | **POST** /v1/email/labels | Create a label |
+| [**deleteEmailDraft()**](EmailApi.md#deleteEmailDraft) | **DELETE** /v1/email/drafts/{draftId} | Delete a draft |
 | [**deleteEmailLabel()**](EmailApi.md#deleteEmailLabel) | **DELETE** /v1/email/labels/{labelId} | Delete a label |
 | [**downloadEmailAttachment()**](EmailApi.md#downloadEmailAttachment) | **GET** /v1/email/attachments/{attachmentId} | Download an attachment |
+| [**forwardEmailMessage()**](EmailApi.md#forwardEmailMessage) | **POST** /v1/email/messages/{messageId}/forward | Forward a message |
+| [**getEmailDraft()**](EmailApi.md#getEmailDraft) | **GET** /v1/email/drafts/{draftId} | Get a draft |
 | [**getEmailMessage()**](EmailApi.md#getEmailMessage) | **GET** /v1/email/messages/{messageId} | Get an email message |
 | [**getEmailThread()**](EmailApi.md#getEmailThread) | **GET** /v1/email/threads/{threadId} | Get an email thread with its messages |
 | [**getScheduledEmail()**](EmailApi.md#getScheduledEmail) | **GET** /v1/email/messages/scheduled/{scheduleId} | Get a scheduled email |
+| [**listEmailDrafts()**](EmailApi.md#listEmailDrafts) | **GET** /v1/email/drafts | List drafts |
 | [**listEmailFolders()**](EmailApi.md#listEmailFolders) | **GET** /v1/email/folders | List mailbox folders |
 | [**listEmailLabels()**](EmailApi.md#listEmailLabels) | **GET** /v1/email/labels | List labels |
 | [**listEmailMessages()**](EmailApi.md#listEmailMessages) | **GET** /v1/email/messages | List email messages |
@@ -20,8 +25,10 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listEmailThreads()**](EmailApi.md#listEmailThreads) | **GET** /v1/email/threads | List email threads |
 | [**listScheduledEmails()**](EmailApi.md#listScheduledEmails) | **GET** /v1/email/messages/scheduled | List scheduled emails |
 | [**replyEmailMessage()**](EmailApi.md#replyEmailMessage) | **POST** /v1/email/messages/{messageId}/reply | Reply to a message |
+| [**sendEmailDraft()**](EmailApi.md#sendEmailDraft) | **POST** /v1/email/drafts/{draftId}/send | Send a draft |
 | [**sendEmailMessage()**](EmailApi.md#sendEmailMessage) | **POST** /v1/email/messages | Send an email |
 | [**trashEmailMessage()**](EmailApi.md#trashEmailMessage) | **DELETE** /v1/email/messages/{messageId} | Move a message to trash |
+| [**updateEmailDraft()**](EmailApi.md#updateEmailDraft) | **PATCH** /v1/email/drafts/{draftId} | Update a draft |
 | [**updateEmailMessage()**](EmailApi.md#updateEmailMessage) | **PATCH** /v1/email/messages/{messageId} | Mark read or starred, label, or move a message |
 | [**updateEmailThread()**](EmailApi.md#updateEmailThread) | **PATCH** /v1/email/threads/{threadId} | Update every message in a thread |
 
@@ -88,6 +95,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createEmailDraft()`
+
+```php
+createEmailDraft($create_email_draft_request, $idempotency_key): \Zernio\Model\CreateEmailDraft201Response
+```
+
+Create a draft
+
+Saves a draft in the user's mailbox, where they see it in Gmail or Outlook. Recipients and subject can come later. `inReplyTo` makes a reply draft in that thread and `forwardOf` a forward draft with the original's attachments; the `kind` is fixed for the life of the draft.  Send it with `POST /v1/email/drafts/{draftId}/send`. Edits the user makes in their mail client are what goes out. Store the draft `id`, and pass its `version` as `If-Match` so an update or send applies only to the version you saw.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_email_draft_request = new \Zernio\Model\CreateEmailDraftRequest(); // \Zernio\Model\CreateEmailDraftRequest
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
+
+try {
+    $result = $apiInstance->createEmailDraft($create_email_draft_request, $idempotency_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->createEmailDraft: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_email_draft_request** | [**\Zernio\Model\CreateEmailDraftRequest**](../Model/CreateEmailDraftRequest.md)|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\CreateEmailDraft201Response**](../Model/CreateEmailDraft201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `createEmailLabel()`
 
 ```php
@@ -148,10 +217,70 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `deleteEmailDraft()`
+
+```php
+deleteEmailDraft($draft_id, $account_id): \Zernio\Model\DeleteEmailDraft200Response
+```
+
+Delete a draft
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$draft_id = 'draft_id_example'; // string
+$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+
+try {
+    $result = $apiInstance->deleteEmailDraft($draft_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->deleteEmailDraft: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **draft_id** | **string**|  | |
+| **account_id** | **string**| The connected Google or Microsoft account. | |
+
+### Return type
+
+[**\Zernio\Model\DeleteEmailDraft200Response**](../Model/DeleteEmailDraft200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteEmailLabel()`
 
 ```php
-deleteEmailLabel($label_id, $account_id): \Zernio\Model\DeleteEmailLabel200Response
+deleteEmailLabel($label_id, $account_id): \Zernio\Model\DeleteEmailDraft200Response
 ```
 
 Delete a label
@@ -195,7 +324,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\DeleteEmailLabel200Response**](../Model/DeleteEmailLabel200Response.md)
+[**\Zernio\Model\DeleteEmailDraft200Response**](../Model/DeleteEmailDraft200Response.md)
 
 ### Authorization
 
@@ -274,10 +403,136 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `forwardEmailMessage()`
+
+```php
+forwardEmailMessage($message_id, $forward_email_request, $idempotency_key): \Zernio\Model\SendEmailMessage201Response
+```
+
+Forward a message
+
+Forwards the message with its attachments. Your `text` or `html` goes above the forwarded mail, and the subject defaults to \"Fwd: \" plus the original's. On Google the forward stays in the original thread; on Microsoft it goes through Outlook's own forward.  `includeAttachments: false` keeps only the original's inline images, and `excludeAttachmentIds` leaves out the ones you name. Everything together stays under 25 MB.  `trackOpens`, `trackLinks` and `trackReplies` work as on send. Same protection, caps and headers as sending. The response carries `forwardedFrom`, and `email.sent` fires with `source: forward`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$message_id = 'message_id_example'; // string
+$forward_email_request = new \Zernio\Model\ForwardEmailRequest(); // \Zernio\Model\ForwardEmailRequest
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
+
+try {
+    $result = $apiInstance->forwardEmailMessage($message_id, $forward_email_request, $idempotency_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->forwardEmailMessage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **message_id** | **string**|  | |
+| **forward_email_request** | [**\Zernio\Model\ForwardEmailRequest**](../Model/ForwardEmailRequest.md)|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\SendEmailMessage201Response**](../Model/SendEmailMessage201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getEmailDraft()`
+
+```php
+getEmailDraft($draft_id, $account_id): \Zernio\Model\CreateEmailDraft201Response
+```
+
+Get a draft
+
+The draft as it stands in the mailbox now, with its bodies. A draft deleted in the mail client answers 404.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$draft_id = 'draft_id_example'; // string
+$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+
+try {
+    $result = $apiInstance->getEmailDraft($draft_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->getEmailDraft: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **draft_id** | **string**|  | |
+| **account_id** | **string**| The connected Google or Microsoft account. | |
+
+### Return type
+
+[**\Zernio\Model\CreateEmailDraft201Response**](../Model/CreateEmailDraft201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getEmailMessage()`
 
 ```php
-getEmailMessage($message_id, $account_id, $include_headers, $raw): \Zernio\Model\SendEmailMessage201Response
+getEmailMessage($message_id, $account_id, $include_headers, $raw, $clean): \Zernio\Model\SendEmailMessage201Response
 ```
 
 Get an email message
@@ -303,9 +558,10 @@ $message_id = 'message_id_example'; // string
 $account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
 $include_headers = false; // bool | Include the raw internet headers under `headers`.
 $raw = false; // bool | Include the MIME source under `raw`.
+$clean = false; // bool | Add `cleanText`: the new text only, without quoted replies, forwarded history, signature or tracking pixels. Ready to hand to an LLM.
 
 try {
-    $result = $apiInstance->getEmailMessage($message_id, $account_id, $include_headers, $raw);
+    $result = $apiInstance->getEmailMessage($message_id, $account_id, $include_headers, $raw, $clean);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailApi->getEmailMessage: ', $e->getMessage(), PHP_EOL;
@@ -320,6 +576,7 @@ try {
 | **account_id** | **string**| The connected Google or Microsoft account. | |
 | **include_headers** | **bool**| Include the raw internet headers under &#x60;headers&#x60;. | [optional] [default to false] |
 | **raw** | **bool**| Include the MIME source under &#x60;raw&#x60;. | [optional] [default to false] |
+| **clean** | **bool**| Add &#x60;cleanText&#x60;: the new text only, without quoted replies, forwarded history, signature or tracking pixels. Ready to hand to an LLM. | [optional] [default to false] |
 
 ### Return type
 
@@ -341,7 +598,7 @@ try {
 ## `getEmailThread()`
 
 ```php
-getEmailThread($thread_id, $account_id): \Zernio\Model\GetEmailThread200Response
+getEmailThread($thread_id, $account_id, $clean): \Zernio\Model\GetEmailThread200Response
 ```
 
 Get an email thread with its messages
@@ -365,9 +622,10 @@ $apiInstance = new Zernio\Api\EmailApi(
 );
 $thread_id = 'thread_id_example'; // string
 $account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$clean = false; // bool | Add `cleanText` to every message: what each one added to the conversation, without the quoted history.
 
 try {
-    $result = $apiInstance->getEmailThread($thread_id, $account_id);
+    $result = $apiInstance->getEmailThread($thread_id, $account_id, $clean);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailApi->getEmailThread: ', $e->getMessage(), PHP_EOL;
@@ -380,6 +638,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **thread_id** | **string**|  | |
 | **account_id** | **string**| The connected Google or Microsoft account. | |
+| **clean** | **bool**| Add &#x60;cleanText&#x60; to every message: what each one added to the conversation, without the quoted history. | [optional] [default to false] |
 
 ### Return type
 
@@ -444,6 +703,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\SendEmailMessage202Response**](../Model/SendEmailMessage202Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listEmailDrafts()`
+
+```php
+listEmailDrafts($account_id, $limit, $cursor): \Zernio\Model\ListEmailDrafts200Response
+```
+
+List drafts
+
+The mailbox's drafts, newest first, including drafts the user wrote in Gmail or Outlook. Drafts in the trash are left out. Rows carry no bodies on Google; get a draft to read them.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The connected Google or Microsoft account.
+$limit = 25; // int
+$cursor = 'cursor_example'; // string
+
+try {
+    $result = $apiInstance->listEmailDrafts($account_id, $limit, $cursor);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->listEmailDrafts: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The connected Google or Microsoft account. | |
+| **limit** | **int**|  | [optional] [default to 25] |
+| **cursor** | **string**|  | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListEmailDrafts200Response**](../Model/ListEmailDrafts200Response.md)
 
 ### Authorization
 
@@ -891,7 +1214,7 @@ try {
 ## `replyEmailMessage()`
 
 ```php
-replyEmailMessage($message_id, $reply_email_message_request): \Zernio\Model\SendEmailMessage201Response
+replyEmailMessage($message_id, $reply_email_message_request, $idempotency_key): \Zernio\Model\SendEmailMessage201Response
 ```
 
 Reply to a message
@@ -917,9 +1240,10 @@ $apiInstance = new Zernio\Api\EmailApi(
 );
 $message_id = 'message_id_example'; // string
 $reply_email_message_request = new \Zernio\Model\ReplyEmailMessageRequest(); // \Zernio\Model\ReplyEmailMessageRequest
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
 
 try {
-    $result = $apiInstance->replyEmailMessage($message_id, $reply_email_message_request);
+    $result = $apiInstance->replyEmailMessage($message_id, $reply_email_message_request, $idempotency_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailApi->replyEmailMessage: ', $e->getMessage(), PHP_EOL;
@@ -932,6 +1256,73 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **message_id** | **string**|  | |
 | **reply_email_message_request** | [**\Zernio\Model\ReplyEmailMessageRequest**](../Model/ReplyEmailMessageRequest.md)|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\SendEmailMessage201Response**](../Model/SendEmailMessage201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `sendEmailDraft()`
+
+```php
+sendEmailDraft($draft_id, $send_email_draft_request, $if_match, $idempotency_key): \Zernio\Model\SendEmailMessage201Response
+```
+
+Send a draft
+
+Sends the draft as it stands in the mailbox now, edits made in Gmail or Outlook included, and returns the sent message with `draftId`. The draft needs at least one recipient. A draft the user deleted or already sent answers 404 `draft_not_found`.  With `If-Match` it goes out only if it is still the version the approver saw (412 `draft_conflict` otherwise). If the user removed the open pixel or rewrote links, tracking is put back before it is sent. Fires `email.sent` with `source: draft`.  Tracking set when the draft was created applies, and its `metadata` comes back on the sent message. Same protection, caps and headers as sending.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$draft_id = 'draft_id_example'; // string
+$send_email_draft_request = new \Zernio\Model\SendEmailDraftRequest(); // \Zernio\Model\SendEmailDraftRequest
+$if_match = 'if_match_example'; // string | The draft `version` (also its `ETag`). The request applies only if the draft is still that version; otherwise 412 `draft_conflict` with the current draft in `details.draft`.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
+
+try {
+    $result = $apiInstance->sendEmailDraft($draft_id, $send_email_draft_request, $if_match, $idempotency_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->sendEmailDraft: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **draft_id** | **string**|  | |
+| **send_email_draft_request** | [**\Zernio\Model\SendEmailDraftRequest**](../Model/SendEmailDraftRequest.md)|  | |
+| **if_match** | **string**| The draft &#x60;version&#x60; (also its &#x60;ETag&#x60;). The request applies only if the draft is still that version; otherwise 412 &#x60;draft_conflict&#x60; with the current draft in &#x60;details.draft&#x60;. | [optional] |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
 
 ### Return type
 
@@ -953,7 +1344,7 @@ try {
 ## `sendEmailMessage()`
 
 ```php
-sendEmailMessage($send_email_request): \Zernio\Model\SendEmailMessage201Response
+sendEmailMessage($send_email_request, $idempotency_key): \Zernio\Model\SendEmailMessage201Response
 ```
 
 Send an email
@@ -978,9 +1369,10 @@ $apiInstance = new Zernio\Api\EmailApi(
     $config
 );
 $send_email_request = new \Zernio\Model\SendEmailRequest(); // \Zernio\Model\SendEmailRequest
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago.
 
 try {
-    $result = $apiInstance->sendEmailMessage($send_email_request);
+    $result = $apiInstance->sendEmailMessage($send_email_request, $idempotency_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailApi->sendEmailMessage: ', $e->getMessage(), PHP_EOL;
@@ -992,6 +1384,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **send_email_request** | [**\Zernio\Model\SendEmailRequest**](../Model/SendEmailRequest.md)|  | |
+| **idempotency_key** | **string**| Optional client-generated unique key (e.g. a UUID) that makes retries safe.  - Same key + same body: replays the original response. - Same key + different body: 422. - Key still processing: 409.  A request cut off mid-handler (e.g. by a function timeout) can leave its key in progress, answering 409 until the key expires after 24 hours.  On the Ads create, boost and duplicate endpoints, a same-body retry runs again once the cut-off request started more than 15 minutes ago. | [optional] |
 
 ### Return type
 
@@ -1064,6 +1457,70 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateEmailDraft()`
+
+```php
+updateEmailDraft($draft_id, $update_email_draft_request, $if_match): \Zernio\Model\CreateEmailDraft201Response
+```
+
+Update a draft
+
+Changes the fields you send and keeps the rest. A reply draft stays in its thread, and a new body on a reply or forward draft goes above the quoted original. With `If-Match`, a draft someone edited since answers 412 `draft_conflict` with the current draft.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$draft_id = 'draft_id_example'; // string
+$update_email_draft_request = new \Zernio\Model\UpdateEmailDraftRequest(); // \Zernio\Model\UpdateEmailDraftRequest
+$if_match = 'if_match_example'; // string | The draft `version` (also its `ETag`). The request applies only if the draft is still that version; otherwise 412 `draft_conflict` with the current draft in `details.draft`.
+
+try {
+    $result = $apiInstance->updateEmailDraft($draft_id, $update_email_draft_request, $if_match);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->updateEmailDraft: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **draft_id** | **string**|  | |
+| **update_email_draft_request** | [**\Zernio\Model\UpdateEmailDraftRequest**](../Model/UpdateEmailDraftRequest.md)|  | |
+| **if_match** | **string**| The draft &#x60;version&#x60; (also its &#x60;ETag&#x60;). The request applies only if the draft is still that version; otherwise 412 &#x60;draft_conflict&#x60; with the current draft in &#x60;details.draft&#x60;. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\CreateEmailDraft201Response**](../Model/CreateEmailDraft201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

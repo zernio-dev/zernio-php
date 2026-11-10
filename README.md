@@ -784,12 +784,17 @@ Class | Method | HTTP request | Description
 *DiscordApi* | [**updateDiscordScheduledEvent**](docs/Api/DiscordApi.md#updatediscordscheduledevent) | **PATCH** /v1/discord/guilds/{guildId}/events/{eventId} | Update a Discord scheduled event
 *DiscordApi* | [**updateDiscordSettings**](docs/Api/DiscordApi.md#updatediscordsettings) | **PATCH** /v1/accounts/{accountId}/discord-settings | Update Discord settings
 *EmailApi* | [**cancelScheduledEmail**](docs/Api/EmailApi.md#cancelscheduledemail) | **DELETE** /v1/email/messages/scheduled/{scheduleId} | Cancel a scheduled email
+*EmailApi* | [**createEmailDraft**](docs/Api/EmailApi.md#createemaildraft) | **POST** /v1/email/drafts | Create a draft
 *EmailApi* | [**createEmailLabel**](docs/Api/EmailApi.md#createemaillabel) | **POST** /v1/email/labels | Create a label
+*EmailApi* | [**deleteEmailDraft**](docs/Api/EmailApi.md#deleteemaildraft) | **DELETE** /v1/email/drafts/{draftId} | Delete a draft
 *EmailApi* | [**deleteEmailLabel**](docs/Api/EmailApi.md#deleteemaillabel) | **DELETE** /v1/email/labels/{labelId} | Delete a label
 *EmailApi* | [**downloadEmailAttachment**](docs/Api/EmailApi.md#downloademailattachment) | **GET** /v1/email/attachments/{attachmentId} | Download an attachment
+*EmailApi* | [**forwardEmailMessage**](docs/Api/EmailApi.md#forwardemailmessage) | **POST** /v1/email/messages/{messageId}/forward | Forward a message
+*EmailApi* | [**getEmailDraft**](docs/Api/EmailApi.md#getemaildraft) | **GET** /v1/email/drafts/{draftId} | Get a draft
 *EmailApi* | [**getEmailMessage**](docs/Api/EmailApi.md#getemailmessage) | **GET** /v1/email/messages/{messageId} | Get an email message
 *EmailApi* | [**getEmailThread**](docs/Api/EmailApi.md#getemailthread) | **GET** /v1/email/threads/{threadId} | Get an email thread with its messages
 *EmailApi* | [**getScheduledEmail**](docs/Api/EmailApi.md#getscheduledemail) | **GET** /v1/email/messages/scheduled/{scheduleId} | Get a scheduled email
+*EmailApi* | [**listEmailDrafts**](docs/Api/EmailApi.md#listemaildrafts) | **GET** /v1/email/drafts | List drafts
 *EmailApi* | [**listEmailFolders**](docs/Api/EmailApi.md#listemailfolders) | **GET** /v1/email/folders | List mailbox folders
 *EmailApi* | [**listEmailLabels**](docs/Api/EmailApi.md#listemaillabels) | **GET** /v1/email/labels | List labels
 *EmailApi* | [**listEmailMessages**](docs/Api/EmailApi.md#listemailmessages) | **GET** /v1/email/messages | List email messages
@@ -797,8 +802,10 @@ Class | Method | HTTP request | Description
 *EmailApi* | [**listEmailThreads**](docs/Api/EmailApi.md#listemailthreads) | **GET** /v1/email/threads | List email threads
 *EmailApi* | [**listScheduledEmails**](docs/Api/EmailApi.md#listscheduledemails) | **GET** /v1/email/messages/scheduled | List scheduled emails
 *EmailApi* | [**replyEmailMessage**](docs/Api/EmailApi.md#replyemailmessage) | **POST** /v1/email/messages/{messageId}/reply | Reply to a message
+*EmailApi* | [**sendEmailDraft**](docs/Api/EmailApi.md#sendemaildraft) | **POST** /v1/email/drafts/{draftId}/send | Send a draft
 *EmailApi* | [**sendEmailMessage**](docs/Api/EmailApi.md#sendemailmessage) | **POST** /v1/email/messages | Send an email
 *EmailApi* | [**trashEmailMessage**](docs/Api/EmailApi.md#trashemailmessage) | **DELETE** /v1/email/messages/{messageId} | Move a message to trash
+*EmailApi* | [**updateEmailDraft**](docs/Api/EmailApi.md#updateemaildraft) | **PATCH** /v1/email/drafts/{draftId} | Update a draft
 *EmailApi* | [**updateEmailMessage**](docs/Api/EmailApi.md#updateemailmessage) | **PATCH** /v1/email/messages/{messageId} | Mark read or starred, label, or move a message
 *EmailApi* | [**updateEmailThread**](docs/Api/EmailApi.md#updateemailthread) | **PATCH** /v1/email/threads/{threadId} | Update every message in a thread
 *FeedbackApi* | [**submitFeedback**](docs/Api/FeedbackApi.md#submitfeedback) | **POST** /v1/feedback | Submit feedback
@@ -2010,6 +2017,8 @@ Class | Method | HTTP request | Description
 - [CreateDiscordThread200Response](docs/Model/CreateDiscordThread200Response.md)
 - [CreateDiscordThread200ResponseData](docs/Model/CreateDiscordThread200ResponseData.md)
 - [CreateDiscordThreadRequest](docs/Model/CreateDiscordThreadRequest.md)
+- [CreateEmailDraft201Response](docs/Model/CreateEmailDraft201Response.md)
+- [CreateEmailDraftRequest](docs/Model/CreateEmailDraftRequest.md)
 - [CreateEmailLabel200Response](docs/Model/CreateEmailLabel200Response.md)
 - [CreateEmailLabelRequest](docs/Model/CreateEmailLabelRequest.md)
 - [CreateEmailLabelRequestColor](docs/Model/CreateEmailLabelRequestColor.md)
@@ -2249,8 +2258,8 @@ Class | Method | HTTP request | Description
 - [DeleteCommerceProductMetafields200Response](docs/Model/DeleteCommerceProductMetafields200Response.md)
 - [DeleteCommerceRedirect200Response](docs/Model/DeleteCommerceRedirect200Response.md)
 - [DeleteDiscordScheduledEvent200Response](docs/Model/DeleteDiscordScheduledEvent200Response.md)
-- [DeleteEmailLabel200Response](docs/Model/DeleteEmailLabel200Response.md)
-- [DeleteEmailLabel200ResponseData](docs/Model/DeleteEmailLabel200ResponseData.md)
+- [DeleteEmailDraft200Response](docs/Model/DeleteEmailDraft200Response.md)
+- [DeleteEmailDraft200ResponseData](docs/Model/DeleteEmailDraft200ResponseData.md)
 - [DeleteGoogleBusinessMedia200Response](docs/Model/DeleteGoogleBusinessMedia200Response.md)
 - [DeleteGoogleBusinessPlaceAction200Response](docs/Model/DeleteGoogleBusinessPlaceAction200Response.md)
 - [DeleteGoogleBusinessReviewReply200Response](docs/Model/DeleteGoogleBusinessReviewReply200Response.md)
@@ -2317,6 +2326,20 @@ Class | Method | HTTP request | Description
 - [EditPostRequest](docs/Model/EditPostRequest.md)
 - [EmailAddress](docs/Model/EmailAddress.md)
 - [EmailAttachment](docs/Model/EmailAttachment.md)
+- [EmailAttachmentInput](docs/Model/EmailAttachmentInput.md)
+- [EmailCapabilities](docs/Model/EmailCapabilities.md)
+- [EmailCapabilitiesBounces](docs/Model/EmailCapabilitiesBounces.md)
+- [EmailCapabilitiesDrafts](docs/Model/EmailCapabilitiesDrafts.md)
+- [EmailCapabilitiesForward](docs/Model/EmailCapabilitiesForward.md)
+- [EmailCapabilitiesLabels](docs/Model/EmailCapabilitiesLabels.md)
+- [EmailCapabilitiesScheduledSend](docs/Model/EmailCapabilitiesScheduledSend.md)
+- [EmailCapabilitiesSendAs](docs/Model/EmailCapabilitiesSendAs.md)
+- [EmailCapabilitiesSignatures](docs/Model/EmailCapabilitiesSignatures.md)
+- [EmailCapabilitiesSync](docs/Model/EmailCapabilitiesSync.md)
+- [EmailClean](docs/Model/EmailClean.md)
+- [EmailCleanForwarded](docs/Model/EmailCleanForwarded.md)
+- [EmailCleanRemoved](docs/Model/EmailCleanRemoved.md)
+- [EmailDraft](docs/Model/EmailDraft.md)
 - [EmailFolder](docs/Model/EmailFolder.md)
 - [EmailLabel](docs/Model/EmailLabel.md)
 - [EmailLabelColor](docs/Model/EmailLabelColor.md)
@@ -2343,6 +2366,7 @@ Class | Method | HTTP request | Description
 - [ErrorResponseDetails](docs/Model/ErrorResponseDetails.md)
 - [ErrorResponseDetailsCreatedObjectsInner](docs/Model/ErrorResponseDetailsCreatedObjectsInner.md)
 - [ErrorResponseDetailsUnconfirmedWrite](docs/Model/ErrorResponseDetailsUnconfirmedWrite.md)
+- [ErrorResponseProviderError](docs/Model/ErrorResponseProviderError.md)
 - [EstimateAdReach200Response](docs/Model/EstimateAdReach200Response.md)
 - [EstimateAdReachRequest](docs/Model/EstimateAdReachRequest.md)
 - [EventAutomationCheck](docs/Model/EventAutomationCheck.md)
@@ -2387,6 +2411,7 @@ Class | Method | HTTP request | Description
 - [FoodMenuItemOptionsInner](docs/Model/FoodMenuItemOptionsInner.md)
 - [FoodMenuLabel](docs/Model/FoodMenuLabel.md)
 - [FoodMenuSection](docs/Model/FoodMenuSection.md)
+- [ForwardEmailRequest](docs/Model/ForwardEmailRequest.md)
 - [FromASharedTemplate](docs/Model/FromASharedTemplate.md)
 - [FromAZernioTemplate](docs/Model/FromAZernioTemplate.md)
 - [FromYourAutomations](docs/Model/FromYourAutomations.md)
@@ -3232,6 +3257,7 @@ Class | Method | HTTP request | Description
 - [ListDiscordPinnedMessages200Response](docs/Model/ListDiscordPinnedMessages200Response.md)
 - [ListDiscordPinnedMessages200ResponseDataInner](docs/Model/ListDiscordPinnedMessages200ResponseDataInner.md)
 - [ListDiscordScheduledEvents200Response](docs/Model/ListDiscordScheduledEvents200Response.md)
+- [ListEmailDrafts200Response](docs/Model/ListEmailDrafts200Response.md)
 - [ListEmailFolders200Response](docs/Model/ListEmailFolders200Response.md)
 - [ListEmailLabels200Response](docs/Model/ListEmailLabels200Response.md)
 - [ListEmailMessages200Response](docs/Model/ListEmailMessages200Response.md)
@@ -3848,6 +3874,7 @@ Class | Method | HTTP request | Description
 - [SendDiscordDirectMessage200ResponseRecipient](docs/Model/SendDiscordDirectMessage200ResponseRecipient.md)
 - [SendDiscordDirectMessageRequest](docs/Model/SendDiscordDirectMessageRequest.md)
 - [SendDiscordDirectMessageRequestAttachmentsInner](docs/Model/SendDiscordDirectMessageRequestAttachmentsInner.md)
+- [SendEmailDraftRequest](docs/Model/SendEmailDraftRequest.md)
 - [SendEmailMessage201Response](docs/Model/SendEmailMessage201Response.md)
 - [SendEmailMessage202Response](docs/Model/SendEmailMessage202Response.md)
 - [SendEmailRequest](docs/Model/SendEmailRequest.md)
@@ -4235,6 +4262,7 @@ Class | Method | HTTP request | Description
 - [UpdateDiscordSettings200Response](docs/Model/UpdateDiscordSettings200Response.md)
 - [UpdateDiscordSettings200ResponseAccount](docs/Model/UpdateDiscordSettings200ResponseAccount.md)
 - [UpdateDiscordSettingsRequest](docs/Model/UpdateDiscordSettingsRequest.md)
+- [UpdateEmailDraftRequest](docs/Model/UpdateEmailDraftRequest.md)
 - [UpdateEmailThread200Response](docs/Model/UpdateEmailThread200Response.md)
 - [UpdateFacebookPage200Response](docs/Model/UpdateFacebookPage200Response.md)
 - [UpdateFacebookPage200ResponseSelectedPage](docs/Model/UpdateFacebookPage200ResponseSelectedPage.md)
@@ -4560,14 +4588,20 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadConversationStartedConversation](docs/Model/WebhookPayloadConversationStartedConversation.md)
 - [WebhookPayloadCreatorCampaign](docs/Model/WebhookPayloadCreatorCampaign.md)
 - [WebhookPayloadCreatorCampaignCampaign](docs/Model/WebhookPayloadCreatorCampaignCampaign.md)
+- [WebhookPayloadEmailBounced](docs/Model/WebhookPayloadEmailBounced.md)
+- [WebhookPayloadEmailBouncedBounce](docs/Model/WebhookPayloadEmailBouncedBounce.md)
+- [WebhookPayloadEmailBouncedEmail](docs/Model/WebhookPayloadEmailBouncedEmail.md)
 - [WebhookPayloadEmailLinkClicked](docs/Model/WebhookPayloadEmailLinkClicked.md)
 - [WebhookPayloadEmailLinkClickedClick](docs/Model/WebhookPayloadEmailLinkClickedClick.md)
 - [WebhookPayloadEmailOpened](docs/Model/WebhookPayloadEmailOpened.md)
 - [WebhookPayloadEmailOpenedOpen](docs/Model/WebhookPayloadEmailOpenedOpen.md)
 - [WebhookPayloadEmailSendFailed](docs/Model/WebhookPayloadEmailSendFailed.md)
 - [WebhookPayloadEmailSendFailedScheduledEmail](docs/Model/WebhookPayloadEmailSendFailedScheduledEmail.md)
+- [WebhookPayloadEmailSent](docs/Model/WebhookPayloadEmailSent.md)
+- [WebhookPayloadEmailSentEmail](docs/Model/WebhookPayloadEmailSentEmail.md)
 - [WebhookPayloadEmailThreadReplied](docs/Model/WebhookPayloadEmailThreadReplied.md)
 - [WebhookPayloadEmailThreadRepliedReply](docs/Model/WebhookPayloadEmailThreadRepliedReply.md)
+- [WebhookPayloadEmailThreadRepliedReplyClean](docs/Model/WebhookPayloadEmailThreadRepliedReplyClean.md)
 - [WebhookPayloadExternalPost](docs/Model/WebhookPayloadExternalPost.md)
 - [WebhookPayloadFile](docs/Model/WebhookPayloadFile.md)
 - [WebhookPayloadFilePicked](docs/Model/WebhookPayloadFilePicked.md)
@@ -4766,6 +4800,6 @@ support@zernio.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.549.0`
+- API version: `1.550.0`
     - Generator version: `7.19.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

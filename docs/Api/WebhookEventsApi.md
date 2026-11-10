@@ -78,9 +78,11 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onConversationStarted()**](WebhookEventsApi.md#onConversationStarted) | **POST** /conversation.started | Conversation started event |
 | [**onCreatorCampaignBudgetExhausted()**](WebhookEventsApi.md#onCreatorCampaignBudgetExhausted) | **POST** /creator_campaign.budget_exhausted | Creator campaign budget exhausted event |
 | [**onCreatorCampaignClosed()**](WebhookEventsApi.md#onCreatorCampaignClosed) | **POST** /creator_campaign.closed | Creator campaign closed event |
+| [**onEmailBounced()**](WebhookEventsApi.md#onEmailBounced) | **POST** /email.bounced | Email bounced |
 | [**onEmailLinkClicked()**](WebhookEventsApi.md#onEmailLinkClicked) | **POST** /email.link_clicked | Email link clicked |
 | [**onEmailOpened()**](WebhookEventsApi.md#onEmailOpened) | **POST** /email.opened | Email opened |
 | [**onEmailSendFailed()**](WebhookEventsApi.md#onEmailSendFailed) | **POST** /email.send_failed | Scheduled email failed |
+| [**onEmailSent()**](WebhookEventsApi.md#onEmailSent) | **POST** /email.sent | Email sent |
 | [**onEmailThreadReplied()**](WebhookEventsApi.md#onEmailThreadReplied) | **POST** /email.thread_replied | Email thread replied |
 | [**onFileCreated()**](WebhookEventsApi.md#onFileCreated) | **POST** /file.created | File created |
 | [**onFileDeleted()**](WebhookEventsApi.md#onFileDeleted) | **POST** /file.deleted | File deleted |
@@ -4397,6 +4399,65 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `onEmailBounced()`
+
+```php
+onEmailBounced($webhook_payload_email_bounced)
+```
+
+Email bounced
+
+A delivery failure report for mail the mailbox sent arrived: the receiving server refused it for a recipient. Fires for every send from the mailbox, once per failed recipient. Delayed-delivery warnings and out-of-office replies do not fire it.  Act on `recommendedAction`: `remove` means the address does not take mail. Refusals on the sending side (`auth_failure`, `blocklisted`, `spam_blocked`, `policy_blocked`) never say `remove`. The report also arrives as `message.received`, and it does not count as a reply for `email.thread_replied`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_email_bounced = {"id":"00000000-0000-4000-8000-000000000000","event":"email.bounced","timestamp":"2026-01-15T10:00:00Z","account":{"accountId":"507f1f77bcf86cd799439011","profileId":"507f1f77bcf86cd799439012","platform":"google","username":"jane@example.com","displayName":"Jane Doe"},"email":{"messageId":"18c2f3a4b5d6e7f8","threadId":"18c2f3a4b5d6e7f0","internetMessageId":"<CAJx8Lq2pV9nR4mT6wY1zA3bC5dE7fG@mail.gmail.com>","trackingId":"Xk2m9QpL4vR8sT1wY6zA3bC5","metadata":{"campaign":"onboarding"},"subject":"Proposal for Q1","sentAt":"2026-01-14T10:00:00.000Z"},"bounce":{"recipient":"alex@example.com","type":"hard","category":"user_unknown","status":"5.1.1","smtpCode":550,"diagnostic":"550 5.1.1 The email account that you tried to reach does not exist.","recommendedAction":"remove","reportingMta":"mx.google.com","detection":"dsn","bounceMessageId":"18c2f3a4b5d6e7f9","bouncedAt":"2026-01-15T10:00:00.000Z","detectedAt":"2026-01-15T10:00:00.000Z"},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadEmailBounced
+
+try {
+    $apiInstance->onEmailBounced($webhook_payload_email_bounced);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onEmailBounced: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_email_bounced** | [**\Zernio\Model\WebhookPayloadEmailBounced**](../Model/WebhookPayloadEmailBounced.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `onEmailLinkClicked()`
 
 ```php
@@ -4574,15 +4635,15 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `onEmailThreadReplied()`
+## `onEmailSent()`
 
 ```php
-onEmailThreadReplied($webhook_payload_email_thread_replied)
+onEmailSent($webhook_payload_email_sent)
 ```
 
-Email thread replied
+Email sent
 
-Mail from someone other than the mailbox arrived in the thread of a message sent with `trackReplies: true`. Works on text and html sends. Auto-replies and bounce reports in the thread count as replies.  The reply also arrives as `message.received` with its full content.
+A mail left through the email API. Exactly one event per mail, whichever path sent it: `source` is `send`, `reply`, `forward`, `draft` or `scheduled`. A scheduled draft carries both `scheduleId` and `draftId`.  Use it to record sends in your own system with the `metadata` you passed. The sent copy also arrives as `message.sent` in the inbox.
 
 ### Example
 
@@ -4601,7 +4662,66 @@ $apiInstance = new Zernio\Api\WebhookEventsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_payload_email_thread_replied = {"id":"00000000-0000-4000-8000-000000000000","event":"email.thread_replied","timestamp":"2026-01-15T10:00:00Z","account":{"accountId":"507f1f77bcf86cd799439011","profileId":"507f1f77bcf86cd799439012","platform":"google","username":"jane@example.com","displayName":"Jane Doe"},"email":{"messageId":"18c2f3a4b5d6e7f8","threadId":"18c2f3a4b5d6e7f0","trackingId":"Xk2m9QpL4vR8sT1wY6zA3bC5","metadata":{"campaign":"onboarding"}},"reply":{"messageId":"18c2f3a4b5d6e7f9","from":{"email":"alex@example.com","name":"Alex Smith"},"receivedAt":"2026-01-15T10:00:00.000Z","count":1},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadEmailThreadReplied
+$webhook_payload_email_sent = {"id":"00000000-0000-4000-8000-000000000000","event":"email.sent","timestamp":"2026-01-15T10:00:00Z","account":{"accountId":"507f1f77bcf86cd799439011","profileId":"507f1f77bcf86cd799439012","platform":"google","username":"jane@example.com","displayName":"Jane Doe"},"source":"draft","email":{"messageId":"18c2f3a4b5d6e7f8","threadId":"18c2f3a4b5d6e7f0","trackingId":"Xk2m9QpL4vR8sT1wY6zA3bC5","metadata":{"campaign":"onboarding"},"subject":"Proposal for Q1","from":{"email":"jane@example.com","name":"Jane Doe"},"to":[{"email":"alex@example.com","name":"Alex Smith"}],"cc":[],"bcc":[],"sentAt":"2026-01-15T10:00:00.000Z"},"draftId":"r-1234567890123456789","scheduleId":null,"replyToMessageId":null,"forwardedFrom":null,"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadEmailSent
+
+try {
+    $apiInstance->onEmailSent($webhook_payload_email_sent);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onEmailSent: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_email_sent** | [**\Zernio\Model\WebhookPayloadEmailSent**](../Model/WebhookPayloadEmailSent.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onEmailThreadReplied()`
+
+```php
+onEmailThreadReplied($webhook_payload_email_thread_replied)
+```
+
+Email thread replied
+
+Mail from someone other than the mailbox arrived in the thread of a message sent with `trackReplies: true`. Works on text and html sends. Auto-replies count as replies; bounce reports do not and fire `email.bounced` instead.  `reply.clean.text` is the reply without the quoted history, so an agent can act on it without reading the message. The reply also arrives as `message.received` with its full content.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_email_thread_replied = {"id":"00000000-0000-4000-8000-000000000000","event":"email.thread_replied","timestamp":"2026-01-15T10:00:00Z","account":{"accountId":"507f1f77bcf86cd799439011","profileId":"507f1f77bcf86cd799439012","platform":"google","username":"jane@example.com","displayName":"Jane Doe"},"email":{"messageId":"18c2f3a4b5d6e7f8","threadId":"18c2f3a4b5d6e7f0","trackingId":"Xk2m9QpL4vR8sT1wY6zA3bC5","metadata":{"campaign":"onboarding"}},"reply":{"messageId":"18c2f3a4b5d6e7f9","from":{"email":"alex@example.com","name":"Alex Smith"},"receivedAt":"2026-01-15T10:00:00.000Z","count":1,"clean":{"text":"Thursday at 3 works for us.\n\nAlex","status":"stripped"}},"profiles":[{"id":"507f1f77bcf86cd799439012","externalId":"cus_8f3a2"}]}; // \Zernio\Model\WebhookPayloadEmailThreadReplied
 
 try {
     $apiInstance->onEmailThreadReplied($webhook_payload_email_thread_replied);
