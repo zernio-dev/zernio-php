@@ -2136,6 +2136,9 @@ docs/Model/ListCommerceProductMetafields200Response.md
 docs/Model/ListCommerceProducts200Response.md
 docs/Model/ListCommerceRedirects200Response.md
 docs/Model/ListConnectedApps200Response.md
+docs/Model/ListContactGroups200Response.md
+docs/Model/ListContactGroups200ResponseDataInner.md
+docs/Model/ListContactGroups200ResponseMeta.md
 docs/Model/ListContacts200Response.md
 docs/Model/ListContacts200ResponseContactsInner.md
 docs/Model/ListContacts200ResponseFilters.md
@@ -5839,6 +5842,9 @@ lib/Model/ListCommerceProductMetafields200Response.php
 lib/Model/ListCommerceProducts200Response.php
 lib/Model/ListCommerceRedirects200Response.php
 lib/Model/ListConnectedApps200Response.php
+lib/Model/ListContactGroups200Response.php
+lib/Model/ListContactGroups200ResponseDataInner.php
+lib/Model/ListContactGroups200ResponseMeta.php
 lib/Model/ListContacts200Response.php
 lib/Model/ListContacts200ResponseContactsInner.php
 lib/Model/ListContacts200ResponseFilters.php
@@ -7407,3 +7413,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ListContactGroups200ResponseDataInnerTest.php
+test/Model/ListContactGroups200ResponseMetaTest.php
+test/Model/ListContactGroups200ResponseTest.php

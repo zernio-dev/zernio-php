@@ -11,6 +11,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**deleteContact()**](ContactsApi.md#deleteContact) | **DELETE** /v1/contacts/{contactId} | Delete contact |
 | [**getContact()**](ContactsApi.md#getContact) | **GET** /v1/contacts/{contactId} | Get contact |
 | [**getContactChannels()**](ContactsApi.md#getContactChannels) | **GET** /v1/contacts/{contactId}/channels | List channels for a contact |
+| [**listContactGroups()**](ContactsApi.md#listContactGroups) | **GET** /v1/contacts/groups | List contact groups |
 | [**listContacts()**](ContactsApi.md#listContacts) | **GET** /v1/contacts | List contacts |
 | [**updateContact()**](ContactsApi.md#updateContact) | **PATCH** /v1/contacts/{contactId} | Update contact |
 
@@ -314,10 +315,70 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listContactGroups()`
+
+```php
+listContactGroups($account_id): \Zernio\Model\ListContactGroups200Response
+```
+
+List contact groups
+
+Lists the groups of a Google or Microsoft account's address book, read live from the provider: Google contact labels, and Outlook contact folders and categories. The account needs the contacts area.  Each group id is what synced contacts carry in their channel's metadata.groups, and what the group filter of GET /v1/contacts takes.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\ContactsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | A Google or Microsoft account connected with the contacts area.
+
+try {
+    $result = $apiInstance->listContactGroups($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ContactsApi->listContactGroups: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| A Google or Microsoft account connected with the contacts area. | |
+
+### Return type
+
+[**\Zernio\Model\ListContactGroups200Response**](../Model/ListContactGroups200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listContacts()`
 
 ```php
-listContacts($profile_id, $account_id, $search, $tag, $tags, $platform, $is_subscribed, $limit, $skip): \Zernio\Model\ListContacts200Response
+listContacts($profile_id, $account_id, $search, $tag, $tags, $platform, $group, $is_subscribed, $limit, $skip): \Zernio\Model\ListContacts200Response
 ```
 
 List contacts
@@ -347,12 +408,13 @@ $search = 'search_example'; // string | Case-insensitive substring match on the 
 $tag = 'tag_example'; // string
 $tags = 'tags_example'; // string | Comma-separated tags, matches contacts carrying any of them
 $platform = 'platform_example'; // string
+$group = 'group_example'; // string | A group id from GET /v1/contacts/groups, such as contactGroups/abc, folder:default or category:VIP. Returns the contacts the Google or Outlook contacts sync filed in that group on the account. Requires accountId. Memberships are not stored while content retention is off.
 $is_subscribed = 'is_subscribed_example'; // string
 $limit = 50; // int
 $skip = 0; // int
 
 try {
-    $result = $apiInstance->listContacts($profile_id, $account_id, $search, $tag, $tags, $platform, $is_subscribed, $limit, $skip);
+    $result = $apiInstance->listContacts($profile_id, $account_id, $search, $tag, $tags, $platform, $group, $is_subscribed, $limit, $skip);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactsApi->listContacts: ', $e->getMessage(), PHP_EOL;
@@ -369,6 +431,7 @@ try {
 | **tag** | **string**|  | [optional] |
 | **tags** | **string**| Comma-separated tags, matches contacts carrying any of them | [optional] |
 | **platform** | **string**|  | [optional] |
+| **group** | **string**| A group id from GET /v1/contacts/groups, such as contactGroups/abc, folder:default or category:VIP. Returns the contacts the Google or Outlook contacts sync filed in that group on the account. Requires accountId. Memberships are not stored while content retention is off. | [optional] |
 | **is_subscribed** | **string**|  | [optional] |
 | **limit** | **int**|  | [optional] [default to 50] |
 | **skip** | **int**|  | [optional] [default to 0] |
